@@ -8,7 +8,7 @@ To render a file like `index.html` on github (instead of just reading its text c
 
 Link to yours here once you've completed it:
 
-[Example Link to View a Project](http://htmlpreview.github.io/?https://github.com/vikingeducation/danebook_homepage/blob/master/README.md)
+[Example Link to View a Project](http://htmlpreview.github.io/?https://github.com/vikingeducation/danebook_homepage/blob/master/example.html)
 
 ## Project Requirements
 

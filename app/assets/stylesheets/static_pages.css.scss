@@ -1,3 +1,62 @@
 // Place all the styles related to the StaticPages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/* color of the main header background*/
+$danebook: #2B78E4;
+
+
+#login-navbar {
+    background-color: $danebook;
+    color: #fff;
+    border-bottom: 3px solid #333;
+    min-height: 96px;
+    padding-top: 20px;
+    .container-fluid {
+      .navbar-header {
+
+        a {
+          color: #fff;
+          font-size: 36px;
+        }
+      }
+    }
+}
+
+
+/* square and shadowed like the mockup */
+form button[type="submit"] {
+  border-radius: 0;
+  border: 2px solid black;
+  box-shadow: 3px 3px 3px black;
+}
+
+/* hack to get login submit button inline with labeled text fields*/
+#login-button-column {
+  height: 100%;
+  position: relative;
+  bottom: -24px;
+
+  button {
+    width: 100px;
+    font-weight: bold;
+    background-color: #9FC5F8;
+  }
+}
+
+
+
+/* pixel-perfect stuff on the signup portion*/
+main {
+    section {
+        input, select, option {
+            margin-bottom: 8px;
+        }
+    }
+}
+
+
+#btn-signup {
+    font-weight: bold;
+    margin: 15px 0 15px 0;
+}

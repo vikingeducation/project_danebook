@@ -1,7 +1,7 @@
 Danebook!
 ==========
 
-Michael Alexander(github: betweenparentheses)
+Michael Alexander(github: [betweenparentheses](https://github.com/betweenparentheses))
 
 Week 3 Solo Assignment for [Viking Code School](http://vikingcodeschool.com), the greatest online web development boot camp there is!
 

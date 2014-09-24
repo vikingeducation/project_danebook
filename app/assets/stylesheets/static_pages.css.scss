@@ -1,3 +1,135 @@
 // Place all the styles related to the static_pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+/* COLORS */
+
+$danish-flag:#C60C30;
+
+
+body {
+	font-family: "Lucida sans";
+	padding-top: 40px;
+}
+
+.homepage-content-wrapper {
+	margin-bottom: 0;
+}
+
+header {
+	font-family: "Freight sans bold";
+}
+
+.konami {
+	opacity: 0;
+	background-image:url("http://antiekllc.com/wp-content/uploads/2014/07/cartoon-banana-dancing-5.jpg")
+}
+
+/* NAVBAR STYLES */
+.danish-navbar {
+	background-color: $danish-flag;
+	border: $danish-flag;
+	height: 80px;
+}
+.navbar-header{
+	padding-left: 80px;
+	a{
+		.logo {
+			width:170px;
+			height:auto;
+		}
+	}
+}
+
+.menu-btn {
+	margin-top:20px;
+}
+
+.nav-responsive-wrapper {
+	background-color: $danish-flag;
+	border: $danish-flag;
+	.sign-in-wrapper {
+		border-color:$danish-flag;
+	}
+}
+
+.sign-in-label{
+	color: white!important;
+	p {
+		margin: 0;
+	}
+}
+
+.navbar-email-group {
+	display:block;
+}
+
+.sign-in-btn {
+	background-color:#940924;
+	color:white;
+	border:1px solid #333;
+	box-shadow: 1px 1px 1px 0 #333;
+
+
+}
+/* MESSAGING STYLES  */
+.messaging {
+	h2 {
+		padding: 40px 0 24px;
+	}
+}
+
+.value-messages {
+	color:#555;
+	ul {
+		list-style-type: none;
+		padding:0 0 30px;
+		li {
+			margin: 10px 0;
+			img {
+				padding: 10px;
+			}
+			#like {
+				height:70px;
+				width:auto;
+				opacity: 0.5;
+			}
+		}
+	}
+}
+
+/* SIGN UP BLOCK STYLES */
+.sign-up-block {
+	h2 {
+		font-size:36px;
+	}
+	.for-lawyers {	
+	font-size: 10px;
+	}
+}
+
+.sign-up-gender {
+	li{
+		list-style: none;
+		display: inline-block;
+		padding-right: 20px;
+	}
+}
+
+.sign-up-btn {
+	box-shadow: 2px 2px 1px rgba(50, 50, 50, 0.75);
+}
+
+hr {
+	padding:0;
+	margin:0;
+}
+
+footer {
+	margin: 20px;
+}
+
+
+
+
+
+

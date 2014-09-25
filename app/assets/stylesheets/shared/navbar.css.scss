@@ -1,0 +1,47 @@
+/* NAVBAR STYLES */
+@import "shared/variables";
+
+.danish-navbar {
+	background-color: $danish-flag;
+	border: $danish-flag;
+	height: 80px;
+}
+.navbar-header{
+	padding-left: 80px;
+	a{
+		.logo {
+			width:170px;
+			height:auto;
+		}
+	}
+}
+
+.menu-btn {
+	margin-top:20px;
+}
+
+.nav-responsive-wrapper {
+	background-color: $danish-flag;
+	border: $danish-flag;
+	.sign-in-wrapper {
+		border-color:$danish-flag;
+	}
+}
+
+.sign-in-label{
+	color: white!important;
+	p {
+		margin: 0;
+	}
+}
+
+.navbar-email-group {
+	display:block;
+}
+
+.sign-in-btn {
+	background-color:#940924;
+	color:white;
+	border:1px solid #333;
+	box-shadow: 1px 1px 1px 0 #333;
+}

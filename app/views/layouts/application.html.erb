@@ -12,18 +12,15 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <title>Danebook Homepage|| A Place for Danes</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/style.css">
+
 
   <!-- CSS -->
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
 
   <!-- SCRIPTS -->
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <script src="js/konami.js" async></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  // <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
   
-  <!-- JQUERY -->
-  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
 
   <!-- META -->
   <%= csrf_meta_tags %>
@@ -35,9 +32,15 @@
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
   <![endif]-->
 
-	<%= yield %>
+  <%= render "shared/home_navbar" %>
 
-	<% render "shared/footer" %>
+  <main class="container">
+
+	<%= yield %>
+	
+	</main>
+
+	<%= render "shared/footer" %>
 
 </body>
 </html>

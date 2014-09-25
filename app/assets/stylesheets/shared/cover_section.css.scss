@@ -1,0 +1,44 @@
+@import "shared/variables";
+
+.cover-profile-block {
+	border: 1px solid $primary-border-grey;
+	.profile-name {
+		position: relative;
+		color:#FFF;
+		margin-left:180px;
+		top:400px
+	}
+	.cover-photo {
+		background:url("http://s3.amazonaws.com/viking_education/web_development/web_app_eng/hogwarts_small.jpg") no-repeat center;
+		background-size: cover;
+		height: 450px;
+	}
+
+	.profile-photo-wrapper {
+		.profile-photo{
+			padding: 4px;
+			position: relative;
+			width: 160px;
+			height: 160px;
+			overflow: hidden;
+			z-index: 101;
+			top: 270px;
+			left: 10px;
+		}
+	}
+
+	.edit {
+		float:right;
+		padding-top:15px;
+	}
+
+	.menu-item {
+		float:left;
+		padding: 0 10px;
+		border: 1px solid $primary-border-grey;
+		a {
+			text-decoration: none;
+			color: #555;
+		}
+	}
+}

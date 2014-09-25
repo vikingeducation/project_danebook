@@ -2,12 +2,10 @@
 <div class="col-md-6 friend-list-entry">
   <div class="row">
     <div class="col-md-3 col-xs-6">
-      <a href="#">
-        <%= image_tag "user_silhouette_generic.gif", height: "100px", width: "100px"%>
-      </a>
+      <%= link_to image_tag("user_silhouette_generic.gif", height: "100px", width: "100px"), "#" %>
     </div>
     <div class="col-md-5 col-xs-6">
-      <p><a href="#">Hermione Granger</a></p>
+      <p><%= link_to "Hermione Granger", "#" %></p>
       <p>432 Friends</p>
     </div>
     <form class="col-md-4 col-xs-12">

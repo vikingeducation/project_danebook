@@ -1,6 +1,8 @@
 danebook_goes_live
 ==================
 
-Week 3 Solo Assignment
+*Danebook!*
 
-This is your README!
+Danebook is a social networking app for Danish people.
+
+[Viking Code School](http://vikingcodeschool.com) Week 3

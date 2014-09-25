@@ -1,5 +1,5 @@
-<%= if current_page?('/') %>
-  <%= render login_navbar %>
+<% if current_page?(action: 'home') %>
+  <%= render partial: "login_navbar" %>
 <% else %>
-  <%= render main_navbar %>
+  <%= render partial: "main_navbar" %>
 <% end %>

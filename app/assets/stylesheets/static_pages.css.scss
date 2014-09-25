@@ -1,0 +1,50 @@
+#home {
+  padding-top: 100px;
+  background-color: #EDF0F5;
+
+  nav {
+    height: 100px;
+    background: linear-gradient(#4C67A1, #3B5998);
+    border-bottom: 1px solid #21346B;
+    box-shadow: 0px 2px 2px #B9BABB;
+
+    button.navbar-toggle {
+      border-color: white;
+      margin-top: 36px;
+    }
+
+    h1 {
+      color: white;
+      font-size: 48px;
+      line-height: 64px;
+    }
+
+    form {
+      color: white;
+
+      p {
+        padding-top: 10px;
+        margin-bottom: 0;
+      }
+
+      button {
+        vertical-align: bottom;
+      }
+    }
+  }
+
+  aside {
+    ul {
+      line-height: 54px;
+      font-size: 16px;
+      color: #777;
+    }
+  }
+
+  form {
+    h3 {
+      font-size: 48px;
+      padding-bottom: 20px;
+    }
+  }
+}

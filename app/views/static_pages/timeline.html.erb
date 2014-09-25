@@ -49,10 +49,13 @@
                   <h4>Friends: 542 (copy text area)</h4>
               </header>
 
-              <% 9.times do %>
-                <%= render partial: "friend_thumbnail" %>
+
+              <% 1.upto(NUM_FRIENDS) do |index| %>
+                <%= render partial: "friend_thumbnail", locals: {name: @friends[index]} %>
               <% end %>
             </section>
+            
+            
 
           </aside>
 

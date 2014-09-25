@@ -11,8 +11,8 @@
           </button>
 
           <%= link_to root_path, class: "navbar-brand col-md-12" do %>
-          <%= image_tag("danish_flag.gif", class: "img-circle col-md-2", alt: "Denmark 4eva", height: "28px", width: "36px")%>
-          <p class = "col-md-8">Danebook</p>
+            <%= image_tag("danish_flag.gif", class: "img-circle col-md-2", alt: "Denmark 4eva", height: "28px", width: "36px")%>
+            <p class = "col-md-8">Danebook</p>
           <% end %>
         </div>
 
@@ -25,7 +25,9 @@
               </form>
 
           <ul class="nav navbar-nav navbar-right centered">
-            <li  class="hidden-sm pull-right"><a href="about.html" id = "navbar-username">Harry</a></li>
+            <li  class="hidden-sm pull-right">
+              <%= link_to "Harry", about_path, id: "navbar-username" %>
+            </li>
           </ul>
         </div><!-- /.navbar-collapse-->
       </div><!-- /.container-fluid -->

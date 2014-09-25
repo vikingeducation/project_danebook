@@ -38,73 +38,9 @@
                   <h4>Photos (123) (copied text area)</h4>
               </header>
 
-              <div class="col-md-4 photo">
-                <a class = "photo-link" href="#">
-                  <%= image_tag "user_silhouette_generic.gif" %>
-                </a>
-                <div class = "photo-upload-date">
-                  <p>Uploaded January 1, 2015</p>
-                </div>
-              </div>
-              <div class="col-md-4 photo">
-                <a class = "photo-link" href="#">
-                  <%= image_tag "user_silhouette_generic.gif" %>                </a>
-                <div class = "photo-upload-date">
-                  <p>Uploaded January 1, 2015</p>
-                </div>
-              </div>
-              <div class="col-md-4 photo">
-                <a class = "photo-link" href="#">
-                  <%= image_tag "user_silhouette_generic.gif" %>                </a>
-                <div class = "photo-upload-date">
-                  <p>Uploaded January 1, 2015</p>
-                </div>
-              </div>
-              <div class="col-md-4 photo">
-                <a class = "photo-link" href="#">
-                  <%= image_tag "user_silhouette_generic.gif" %>                </a>
-                <div class = "photo-upload-date">
-                  <p>Uploaded January 1, 2015</p>
-                </div>
-              </div>
-              <div class="col-md-4 photo">
-                <a class = "photo-link" href="#">
-                  <%= image_tag "user_silhouette_generic.gif" %>                </a>
-                <div class = "photo-upload-date">
-                  <p>Uploaded January 1, 2015</p>
-                </div>
-              </div>
-              <div class="col-md-4 photo">
-                <a class = "photo-link" href="#">
-                  <%= image_tag "user_silhouette_generic.gif" %>                </a>
-                <div class = "photo-upload-date">
-                  <p>Uploaded January 1, 2015</p>
-                </div>
-              </div>
-              <div class="col-md-4 photo">
-                <a class = "photo-link" href="#">
-                  <%= image_tag "user_silhouette_generic.gif" %>                </a>
-                <div class = "photo-upload-date">
-                  <p>Uploaded January 1, 2015</p>
-                </div>
-              </div>
-              <div class="col-md-4 photo">
-                <a class = "photo-link" href="#">
-                  <%= image_tag "user_silhouette_generic.gif" %>                </a>
-                <div class = "photo-upload-date">
-                  <p>Uploaded January 1, 2015</p>
-                </div>
-              </div>
-              <div class="col-md-4 photo">
-                <a class = "photo-link" href="#">
-                  <%= image_tag "user_silhouette_generic.gif" %>                </a>
-                <div class = "photo-upload-date">
-                  <p>Uploaded January 1, 2015</p>
-                </div>
-              </div>
-              <div class="col-md-12">
-                <a href="photos.html">See more photos!</a>
-              </div>
+              <% 9.times do %>
+                <%= render partial: "photo_nohover" %>
+              <% end %>
 
             </section><!--photos-->
 
@@ -113,40 +49,9 @@
                   <h4>Friends: 542 (copy text area)</h4>
               </header>
 
-              <div class="col-md-4 friend">
-                <a class = "photo-link" href="#">
-                  <%= image_tag "user_silhouette_generic.gif" %>                </a>
-                <p><a href="#">Ron<br> Weasley</a></p>
-              </div>
-              <div class="col-md-4 friend">
-                <a class = "photo-link" href="#">
-                  <%= image_tag "user_silhouette_generic.gif" %>                </a>
-                <p><a href="#">Ginny<br> Weasley</a></p>
-              </div>
-              <div class="col-md-4 friend">
-                <a class = "photo-link" href="#">
-                  <%= image_tag "user_silhouette_generic.gif" %>                </a>
-                <p><a href="#">Hermione<br> Granger</a></p>
-              </div>
-              <div class="col-md-4 friend">
-                <a class = "photo-link" href="#">
-                  <%= image_tag "user_silhouette_generic.gif" %>                </a>
-                <p><a href="#">paragraph<br> text</a></p>
-              </div>
-              <div class="col-md-4 friend">
-                <a class = "photo-link" href="#">
-                  <%= image_tag "user_silhouette_generic.gif" %>                </a>
-                <p><a href="#">paragraph<br> text</a></p>
-              </div>
-              <div class="col-md-4 friend">
-                <a class = "photo-link" href="#">
-                  <%= image_tag "user_silhouette_generic.gif" %>                </a>
-                <p><a href="#">paragraph<br> text</a></p>
-              </div>
-
-              <div class="col-md-12">
-                <a href="friends.html">See more friends</a>
-              </div>
+              <% 9.times do %>
+                <%= render partial: "friend_thumbnail" %>
+              <% end %>
             </section>
 
           </aside>

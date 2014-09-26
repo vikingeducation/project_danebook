@@ -1,0 +1,38 @@
+<div class="jumbotron"> <!-- NOTE: Style background image in CSS -->
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12"><%= image_tag("default_photo.png", :id => "banner_photo")%></div>
+    </div>
+
+
+      <div class="col-sm-12"><!--navbar -->
+          <div class="row main_nav"> 
+          <div class="col-sm-2"><%= image_tag("default_user.gif", :id => "profile_photo")%><!-- profile picture --></div>
+        
+         <!-- <button class="btn-default col-sm-1">Timeline
+          </button>   
+          <button class="btn-default col-sm-1">About
+          </button>
+          
+          <button class="btn-default col-sm-1">Photos (123)
+          </button>
+          
+          <button class="btn-default col-sm-1">Friends (542)
+          </button>
+        -->
+
+        <ul class="jumbotron-links"> <!-- NOTE: STYLE INLINE-BLOCK CSS-->
+            <li><a href="timeline.html">Timeline</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="photos.html">Photos <span class="counter">(123)</span></a></li>
+            <li><a href="friends.html">Friends <span class="counter">(542)</span></a></li>
+            <li class="pull-right"><a href="about_edit.html">Edit Profile</a></li>
+        </ul>
+
+
+        </div>
+      </div>
+  </div>
+</div>
+
+<!-- banner box -->

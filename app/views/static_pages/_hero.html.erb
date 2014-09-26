@@ -15,16 +15,16 @@
   <!--secondary navbar-->
   <div class = "col-md-7 col-md-offset-3">
     <ul class="nav nav-pills">
-      <li class="active"><a href="#">Timeline</a></li>
-      <li><a href="#">About</a></li>
-      <li><a href="#">Photos (123)</a></li>
-      <li><a href="#">Friends (542)</a></li>
+      <li><%= link_to 'Timeline', timeline_path %></li>
+      <li><%= link_to 'About', about_path %></li>
+      <li><%= link_to 'Photos (123)', photos_path %></li>
+      <li><%= link_to 'Friends (542)', friends_path %></li>
     </ul>
   </div>
 
   <div class = "col-md-2">
     <ul class = "nav">
-    <li><a href = "about_edit.html">Edit Profile</a></li>
+    <li><%= link_to 'Edit Profile', about_edit_path %></li>
     </ul>
   </div>
 </header>

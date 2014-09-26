@@ -50,14 +50,14 @@
               </header>
 
 
-              <% 1.upto(NUM_FRIENDS) do |index| %>
+              <% 0.upto(@friends.size-1) do |index| %>
                 <%= render partial: "friend_thumbnail", locals: {name: @friends[index]} %>
               <% end %>
-            </section>
             
-             <div class="col-md-12">
-                <a href="friends.html">See more friends</a>
+            <div class="col-md-12">
+              <%= link_to "See more friends", friends_path %>
             </div>
+            </section>
 
           </aside>
 

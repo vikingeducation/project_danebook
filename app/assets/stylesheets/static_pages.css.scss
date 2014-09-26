@@ -3,11 +3,9 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 /* color of the main header background*/
-$danebook: #2B78E4;
-
 
 #login-navbar {
-    background-color: $danebook;
+    background: linear-gradient(#4C67A1, #3B5998);
     color: #fff;
     border-bottom: 3px solid #333;
     min-height: 96px;

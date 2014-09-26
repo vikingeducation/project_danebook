@@ -5,54 +5,59 @@
   <section class = "row">
 
     <!-- user information -->
-    <aside class = "col-md-4" id = "details">
+    <aside class = "col-md-4">
       <!-- about -->
       <%= render "information" %>
 
       <!-- photos -->
-      <section class="row info-pane">
-        <header class="col-md-12">
-            Photos (123)
-        </header>
-
-        <section class="col-md-12">
-          <% 9.times do %>
-            <div class="col-md-4 col-xs-6">
-              <a class = "photo-link" href="#">
-                <%= image_tag("icon_photo_small.png", :alt => "Icon Photo") %>
-              </a>
-              <div class="photo-upload-date">
-                <p>Uploaded January 1, 2015</p>
+      <section class="info-pane">
+        <div class="row">
+          <header class="col-md-12">
+              Photos (123)
+          </header>
+        </div>
+        <div class="row">
+          <section class="col-md-12">
+            <% 9.times do %>
+              <div class="col-md-4 col-xs-6">
+                <a class = "photo-link" href="#">
+                  <%= image_tag("icon_photo_small.png", :alt => "Icon Photo") %>
+                </a>
               </div>
-            </div>
-          <% end %>
-        </section>
-
-        <footer class="col-md-12">
-          <a href="photos.html">See more photos!</a>
-        </footer>
+            <% end %>
+          </section>
+        </div>
+        <div class="row">
+          <footer class="col-md-12">
+            <a href="photos.html">See more photos!</a>
+          </footer>
+        </div>
 
       </section><!--photos-->
 
       <!-- Friend list -->
-      <section class="row info-pane">
-        <header class="col-md-12">
-            Friends (542)
-        </header>
-
-        <section class="col-md-12">
-          <% 6.times do %>
-            <div class="col-md-4 col-xs-6">
-              <a href="#">
-                <%= image_tag("user_silhouette_generic.gif", :alt => "User Silhouette") %>
-              <p>Ron<br> Weasley</p></a>
-            </div>
-          <% end %>
-        </section>
-
-        <footer class="col-md-12">
-          <a href="friends.html">See more friends!</a>
-        </footer>
+      <section class="info-pane">
+        <div class="row">
+          <header class="col-md-12">
+              Friends (542)
+          </header>
+        </div>
+        <div class="row">
+          <section class="col-md-12">
+            <% 6.times do %>
+              <div class="col-md-4 col-xs-6">
+                <a href="#">
+                  <%= image_tag("user_silhouette_generic.gif", :alt => "User Silhouette") %>
+                <p>Ron<br> Weasley</p></a>
+              </div>
+            <% end %>
+          </section>
+        </div>
+        <div class="row">
+          <footer class="col-md-12">
+            <a href="friends.html">See more friends!</a>
+          </footer>
+        </div>
       </section><!-- Friend list -->
 
     </aside><!-- user information -->

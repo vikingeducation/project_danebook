@@ -4,45 +4,48 @@ $flag-lighter: #EE5B78;
 $flag-dark: #A10020;
 $flag-darker: #7B0018;
 
-#home {
-  padding-top: 100px;
-  background-color: #EDF0F5;
+body {
+  background-color: #EDF0F5!important;
+}
 
-  nav {
+main {
+  margin-top: 50px;
+}
+
+#main-navbar {
+  background: linear-gradient($flag_dark, $flag_normal);
+  border-bottom: 1px solid $flag-darker;
+  box-shadow: 0px 1px 1px #B9BABB;
+
+  a, label, h1 {
+    color: white;
+  }
+
+  button {
+    vertical-align: bottom;
+    border-color: $flag-darker;
+    background-color: $flag-dark;
+    &:hover {
+      background-color: $flag-light;
+    }
+  }
+
+  &.signin-bar {
     height: 100px;
-    background: linear-gradient($flag_dark, $flag_normal);
-    border-bottom: 1px solid $flag-darker;
-    box-shadow: 0px 2px 2px #B9BABB;
-
     button.navbar-toggle {
       border-color: white;
       margin-top: 36px;
     }
 
-    h1 {
-      color: white;
+    a.navbar-brand {
       font-size: 48px;
       line-height: 64px;
     }
-
-    form {
-      color: white;
-
-      p {
-        padding-top: 10px;
-        margin-bottom: 0;
-      }
-
-      button {
-        vertical-align: bottom;
-        border-color: $flag-darker;
-        background-color: $flag-dark;
-        &:hover {
-          background-color: $flag-light;
-        }
-      }
-    }
   }
+}
+
+#home {
+  margin-top: 100px;
 
   aside {
     ul {
@@ -60,23 +63,32 @@ $flag-darker: #7B0018;
   }
 }
 
-#profile-picture {
-  position: absolute;
-  left: 40px;
-  bottom: -20px;
-  img {
-    height: 250px;
-    width: 180px;
+#hero {
+  border: 1px solid #ccc;
+  border-radius: 0 0 5px 5px;
+  li a {
+    border-radius: 0;
   }
-}
 
-#hero-image {
-  width: 100%;
-  height: 400px;
+  #profile-picture {
+    position: absolute;
+    left: 40px;
+    bottom: -20px;
+    img {
+      height: 250px;
+      width: 180px;
+    }
+  }
+
+  #hero-image {
+    width: 100%;
+    height: 400px;
+  }
 }
 
 .info-pane {
   margin-top: 15px;
+  margin-bottom: 15px;
   img {
     height: 100px;
     width: 100px;
@@ -89,7 +101,7 @@ $flag-darker: #7B0018;
     text-align: center;
     color: white;
     background-color: $flag-normal;
-    border-radius: 20px 20px 0 0;
+    border-radius: 10px 10px 0 0;
   }
 
   section {
@@ -103,7 +115,7 @@ $flag-darker: #7B0018;
       color: white;
     }
     background-color: $flag-normal;
-    border-radius: 0 0 20px 20px;
+    border-radius: 0 0 10px 10px;
     text-align: center;
   }
 }

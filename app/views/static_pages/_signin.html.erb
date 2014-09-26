@@ -1,28 +1,26 @@
-<nav class="navbar navbar-inverse navbar-fixed-top" id="home navbar">
+<nav id="main-navbar" class="navbar navbar-inverse navbar-fixed-top signin-bar" role="navigation">
   <div class="container">
-    <header class="navbar-header">
+    <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a>
-        <h1>Danebook</h1>
-      </a>
-    </header>
+      <a class="navbar-brand" href="#">Danebook</a>
+    </div>
     <div class="navbar-collapse collapse">
-      <form class="navbar-form navbar-right">
+      <form class="navbar-form navbar-right" role="form">
         <div class="form-group">
-          <p>Email</p>
-          <input type="email" class="form-control">
+          <label>Email</label><br>
+          <input type="text" class="form-control">
         </div>
         <div class="form-group">
-          <p>Password</p>
+          <label>Password</label><br>
           <input type="password" class="form-control">
         </div>
-        <button type="submit" class="btn btn-primary">Log in</button>
+        <button type="submit" class="btn btn-danger">Sign in</button>
       </form>
-    </div>
+    </div><!--/.navbar-collapse -->
   </div>
 </nav>

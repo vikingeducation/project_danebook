@@ -1,0 +1,29 @@
+<div class="row">
+
+  <!--cover images-->
+  <div class = "col-md-12">
+    <%= image_tag("hogwarts_small.jpg", :class => "hidden-sm hidden-xs", :id => "hero-image", :alt => "Hogwarts Castle") %>
+    <div class="hidden-xs hidden-sm" id="profile-picture">
+      <%= image_tag("harry_potter_small.jpg", :alt => "Harry Potter") %>
+    </div>
+  </div>
+
+</div>
+
+<header class="row">
+  <!--secondary navbar-->
+  <div class = "col-md-7 col-md-offset-3">
+    <ul class = "nav nav-tabs" role = "profile-nav">
+      <li class = "active"><a href = "timeline.html">Timeline</a></li>
+      <li><a href = "about.html">About</a></li>
+      <li><a href = "photos.html">Photos <span class="link-count hidden-xs">(123)</span></a></li>
+      <li><a href = "friends.html">Friends <span class="link-count hidden-xs">(542)</span></a></li>
+    </ul>
+  </div>
+
+  <div class = "col-md-2">
+    <ul class = "nav">
+    <li><a href = "about_edit.html">Edit Profile</a></li>
+    </ul>
+  </div>
+</header>

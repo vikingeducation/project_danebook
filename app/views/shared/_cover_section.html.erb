@@ -4,7 +4,7 @@
         <div class="profile-photo-wrapper">  
           <h3 class="profile-name">Harry Potter</h3>
           <div class="profile-photo">
-            <img src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/harry_potter_small.jpg" alt="Portrait of Harry Potter" class="img-thumbnail">
+            <%= image_tag("imgres.jpg", class: "img-thumbnail") %>
           </div>
         </div>
       </div>
@@ -14,25 +14,37 @@
     <div class="menu-wrapper">
       <div class="menu-row row">
         <div class="btn-group col-xs-offset-2 col-sm-10">
-          <button type="button" class="active menu-item col-xs-12 col-sm-2 btn-default">
-            <h5><a href="./timeline.html">Timeline</a></h5>
-          </button>
 
-          <button type="button" class="menu-item col-xs-12 col-sm-2 btn-default" >
-            <h5><a href="./about.html">About</a></h5>
-          </button>
-
+          <a href="./timeline.html">
           <button type="button" class="menu-item col-xs-12 col-sm-2 btn-default">
-            <h5><a href="./photos.html">Photos (800)</a></h5>
+            <h5>Timeline</h5>
           </button>
+          </a>
 
+          <a href="./about.html">
+          <button type="button" class="menu-item col-xs-12 col-sm-2 btn-default" >
+            <h5>About</h5>
+          </button>
+          </a>
+
+          <a href="./photos.html">
+          <button type="button" class="menu-item col-xs-12 col-sm-2 btn-default">
+            <h5>Photos (800)</h5>
+          </button>
+          </a>
+
+          <a href="./friends.html">
           <button type="button" class="menu-item col-xs-12 col-sm-3 btn-default">
-            <h5><a href="./friends.html">Friends (>9,000)</a></h5>
+            <h5>Friends (>9,000)</h5>
           </button>
+          </a>
 
+          <a href="./about_edit.html">
           <div class="edit col-sm-2">
-            <a href="./about_edit.html">Edit profile</a>
-          </div>    
+            Edit profile
+          </div>
+          </a>
+
         </div> <!-- /button group -->
   
       </div> <!-- /menu-row -->

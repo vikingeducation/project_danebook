@@ -6,84 +6,15 @@
   </div>
   
   <div class="photos-page col-sm-12">
-   
+    <% 4.times do %>
     <div class="row buffer">
-      
+      <% 4.times do %>
       <div class="col-sm-3">
-        <img class="img-thumbnail" src="icon_photo_small.png">
+        <%= image_tag("icon_photo_small.png", :class => "img-thumbnail", :alt => "photo on the photo page", :title => "Photo") %>
       </div>
-      
-      <div class="col-sm-3">
-        <img class="img-thumbnail" src="icon_photo_small.png">
-      </div>
-      
-      <div class="col-sm-3">
-        <img class="img-thumbnail" src="icon_photo_small.png">
-      </div>
-
-      <div class="col-sm-3">
-        <img class="img-thumbnail" src="icon_photo_small.png">
-      </div>
+      <% end %>
     </div>
-
-    <div class="row buffer">
-      
-      <div class="col-sm-3">
-        <img class="img-thumbnail" src="icon_photo_small.png">
-      </div>
-      
-      <div class="col-sm-3">
-        <img class="img-thumbnail" src="icon_photo_small.png">
-      </div>
-      
-      <div class="col-sm-3">
-        <img class="img-thumbnail" src="icon_photo_small.png">
-      </div>
-
-      <div class="col-sm-3">
-        <img class="img-thumbnail" src="icon_photo_small.png">
-      </div>
-
-    </div>          
-    <div class="row buffer">
-      
-      <div class="col-sm-3">
-        <img class="img-thumbnail" src="icon_photo_small.png">
-      </div>
-      
-      <div class="col-sm-3">
-        <img class="img-thumbnail" src="icon_photo_small.png">
-      </div>
-      
-      <div class="col-sm-3">
-        <img class="img-thumbnail" src="icon_photo_small.png">
-      </div>
-
-      <div class="col-sm-3">
-        <img class="img-thumbnail" src="icon_photo_small.png">
-      </div>
-
-    </div>
-
-    <div class="row buffer">
-      
-      <div class="col-sm-3">
-        <img class="img-thumbnail" src="icon_photo_small.png">
-      </div>
-      
-      <div class="col-sm-3">
-        <img class="img-thumbnail" src="icon_photo_small.png">
-      </div>
-      
-      <div class="col-sm-3">
-        <img class="img-thumbnail" src="icon_photo_small.png">
-      </div>
-
-      <div class="col-sm-3">
-        <img class="img-thumbnail" src="icon_photo_small.png">
-      </div>
-    </div>
-
+    <% end %>
   </div> <!-- /photos-body -->
   
 </section> <!-- /PHOTOS -->

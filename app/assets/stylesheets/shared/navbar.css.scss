@@ -45,3 +45,20 @@
 	border:1px solid #333;
 	box-shadow: 1px 1px 1px 0 #333;
 }
+
+.navbar-search-wrapper {
+	display:inline-block;
+	margin-top:15px;
+	width: 53%;
+	.nav-input {
+		width:100%;
+		.form-control{
+			width: 100%;
+		}
+	}
+}
+
+#navbar-usr-profile {
+padding: 15px 0 0 20px;
+display:inline-block;
+}

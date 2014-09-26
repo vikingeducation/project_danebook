@@ -29,50 +29,15 @@
         
         <div class="photos-body col-sm-12">
          
-          <div class="row">
-            
-            <div class="col-sm-3">
-              <img class="img-thumbnail" src="assets/images/icon_photo_small.png">
-            </div>
-            
-            <div class="col-sm-3">
-              <img class="img-thumbnail" src="assets/images/icon_photo_small.png">
-            </div>
-            
-            <div class="col-sm-3">
-              <img class="img-thumbnail" src="assets/images/icon_photo_small.png">
-            </div>
-          </div>
-
-          <div class="row">
-            
-            <div class="col-sm-3">
-              <img class="img-thumbnail" src="assets/images/icon_photo_small.png">
-            </div>
-            
-            <div class="col-sm-3">
-              <img class="img-thumbnail" src="assets/images/icon_photo_small.png">
-            </div>
-            
-            <div class="col-sm-3">
-              <img class="img-thumbnail" src="assets/images/icon_photo_small.png">
-            </div>
-          </div>
-
-          <div class="row">
-            
-            <div class="col-sm-3">
-              <img class="img-thumbnail" src="assets/images/icon_photo_small.png">
-            </div>
-            
-            <div class="col-sm-3">
-              <img class="img-thumbnail" src="assets/images/icon_photo_small.png">
-            </div>
-            
-            <div class="col-sm-3">
-              <img class="img-thumbnail" src="assets/images/icon_photo_small.png">
-            </div>
-          </div>
+			    <% 3.times do %>
+			    <div class="row buffer">
+			      <% 3.times do %>
+			      <div class="col-sm-3">
+			        <%= image_tag("icon_photo_small.png", :class => "img-thumbnail", :alt => "photo on the photo bar in the timeline", :title => "Timeline Photo") %>
+			      </div>
+			      <% end %>
+			    </div>
+			    <% end %>
 
         </div> <!-- /photos-body -->
         
@@ -94,21 +59,21 @@
             <div class="row">
               
               <div class="col-sm-3">
-                <img class="img-thumbnail" src="assets/images/icon_photo_small.png">
+               <%= image_tag("default.png", :class => "img-thumbnail") %>
                 <div class="col-sm-12">
                   <a href="#">Ron Weasley</a>
                 </div>
               </div>
               
               <div class="col-sm-3">
-                <img class="img-thumbnail" src="assets/images/icon_photo_small.png">
+                <%= image_tag("default.png", :class => "img-thumbnail") %>
                 <div class="col-sm-12">
                   <a href="#">Ron Weasley</a>
                 </div>
               </div>
               
               <div class="col-sm-3">
-                <img class="img-thumbnail" src="assets/images/icon_photo_small.png">
+                <%= image_tag("default.png", :class => "img-thumbnail") %>
                 <div class="col-sm-12">
                   <a href="#">Ron Weasley</a>
                 </div>
@@ -118,21 +83,21 @@
             <div class="row">
               
               <div class="col-sm-3">
-                <img class="img-thumbnail" src="assets/images/icon_photo_small.png">
+                <%= image_tag("default.png", :class => "img-thumbnail") %>
                 <div class="col-sm-12">
                   <a href="#">Ron Weasley</a>
                 </div>
               </div>
               
               <div class="col-sm-3">
-                <img class="img-thumbnail" src="assets/images/icon_photo_small.png">
+                <%= image_tag("default.png", :class => "img-thumbnail") %>
                 <div class="col-sm-12">
                   <a href="#">Ron Weasley</a>
                 </div>
               </div>
               
               <div class="col-sm-3">
-                <img class="img-thumbnail" src="assets/images/icon_photo_small.png">
+                <%= image_tag("default.png", :class => "img-thumbnail") %>
                 <div class="col-sm-12">
                   <a href="#">Ron Weasley</a>
                 </div>
@@ -172,7 +137,7 @@
       <section class="col-sm-12 bkg-fix buffer">
         <div class="post-body">
           <div class="post-friend row">
-            <img class="post-friend-thumb" src="assets/images/default.png">
+            <%= image_tag("default.png", class: "post-friend-thumb") %>
             <div class="post-friend-info">
               <a><h4>Herpderp Granger<h4></a>
               <span><p>Posted on Derpsday 6/1/2104</p></span>
@@ -206,7 +171,7 @@
       <section class="col-sm-12 bkg-fix buffer">
         <div class="post-body">
           <div class="post-friend row">
-            <img class="post-friend-thumb" src="assets/images/default.png">
+            <%= image_tag("default.png", class: "post-friend-thumb") %>
             <div class="post-friend-info">
               <a><h4>Herpderp Granger<h4></a>
               <span><p>Posted on Derpsday 5/1/2104</p></span>
@@ -217,7 +182,8 @@
             Quis nostrud non, adipisicing mixtape sriracha esse blog Neutra eu proident. Nesciunt veniam fanny pack, chillwave selvage ugh gluten-free eu cray irure nisi. Schlitz est aliquip velit flannel. Try-hard High Life ad letterpress you probably haven't heard of them ea. Est chambray placeat, distillery commodo Kickstarter nostrud fugiat veniam pug. Slow-carb.
           </div>
         </div>
-        
+    
+
         <div class="row grey-footer"> 
           <div class="bottom-of-post col-sm-12">
             <div class="row">  
@@ -242,7 +208,7 @@
       <section class="col-sm-12 bkg-fix buffer">
         <div class="post-body">
           <div class="post-friend row">
-            <img class="post-friend-thumb" src="assets/images/default.png">
+            <%= image_tag("default.png", class: "post-friend-thumb") %>
             <div class="post-friend-info">
               <a><h4>Herpderp Granger<h4></a>
               <span><p>Posted on Derpsday 6/1/2104</p></span>
@@ -272,7 +238,7 @@
               <div class="col-sm-12">
                 <div class="comment-body">
                   <div class="col-sm-2">
-                    <img class="comment-friend-thumb" src="assets/images/default.png">
+                    <%= image_tag("default.png", class: "post-friend-thumb") %>
                   </div>  
                   <div class="comment-friend">
                     <div class="comment-friend-info">
@@ -296,7 +262,7 @@
               <div class="col-sm-12">
                 <div class="comment-body">
                   <div class="col-sm-2">
-                    <img class="comment-friend-thumb" src="assets/images/imgres.jpg">
+                    <%= image_tag("imgres.jpg", class: "post-friend-thumb") %>
                   </div>  
                   <div class="comment-friend">
                     <div class="comment-friend-info">

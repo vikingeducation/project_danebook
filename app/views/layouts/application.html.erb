@@ -14,12 +14,14 @@
 <body>
 
 <% if current_page?(root_path) %>
-<%= render "signin" %>
+  <%= render "signin" %>
 <% else %>
-<%= render "navbar" %>
+  <%= render "navbar" %>
 <% end %>
 
-<%= yield %>
+<main class="container" <%= 'id="home"' if current_page?(root_path)%>>
+  <%= yield %>
+</main>
 
 </body>
 </html>

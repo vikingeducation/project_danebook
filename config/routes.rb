@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
-  root 'static_pages#home'
-  
+  root 'users#new'
+
+  resources :users, except: [:index]
+
   get '/timeline' => 'static_pages#timeline'
   get '/friends' => 'static_pages#friends'
   get '/photos' => 'static_pages#photos'

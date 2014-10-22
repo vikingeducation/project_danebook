@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root 'users#new'
 
   resources :users, except: [:index]
+  resource :session, only: [:new, :create, :destroy]
 
   get '/timeline' => 'static_pages#timeline'
   get '/friends' => 'static_pages#friends'

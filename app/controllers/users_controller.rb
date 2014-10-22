@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   layout "login", only: [:new]
+  skip_before_action :require_login, only: [:new, :create]
 
   def new
     @user = User.new
@@ -9,6 +10,7 @@ class UsersController < ApplicationController
     @user = User.new(whitelisted_params)
 
     if @user.save
+      log_in
       flash[:success] = "Welcome to Danebook!"
       redirect_to @user
     else

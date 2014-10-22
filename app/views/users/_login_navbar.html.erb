@@ -18,25 +18,25 @@
       
       <!-- rows and columns control button placement -->  
       <div class = "row">
-        <form class="navbar-form navbar-right" role="login" action = "timeline">
+        <%=form_tag session_path, class: "navbar-form navbar-right", role:"login", method: "post" do %>
           <div class = "col-md-4">
             <div class="form-group">
-              <label for="email">Email</label>
-              <input type="text" class="form-control" placeholder="Email">
+              <%=label_tag :email%>
+              <%=text_field_tag :email, nil, {class: "form-control", placeholder: "Email"}%>
             </div>
           </div>
 
           <div class = "col-md-4">
             <div class= "form-group">
-              <label for="password">Password</label>
-              <input type="password" class="form-control" placeholder="Password">
+              <%=label_tag :password%>
+              <%=password_field_tag :password, nil, {class: "form-control", placeholder: "Password"}%>
             </div>
           </div>
 
           <div class = "col-md-4" id = "login-button-column" >
-            <button type="submit" class="btn btn-info">Login</button>
+            <%= submit_tag "Login", class:"btn btn-info" %>
           </div>
-        </form>
+        <% end %>
         
 
       </div><!--row-->  

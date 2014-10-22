@@ -1,0 +1,31 @@
+<header class="container" id="cover">
+
+  <!--cover images-->
+  <div class = "row">
+    <div id="cover-photo">
+      <%= image_tag("hogwarts_small.jpg", class: "hidden-sm hidden-xs", width: "100%", height: "350px")%>
+    </div>
+    <div class="col-md-12 hidden-xs hidden-sm" id="profile-image">
+      <%= image_tag("harry_potter_small.jpg", height: "200px", width: "180px")%>
+    </div>
+  </div>
+
+  <!--mid-page navbar-->
+  <div id = "profile-nav" class = "row">
+    <div class = "col-md-7 col-md-offset-3">
+      <ul class = "nav nav-tabs " role = "profile-nav">
+        <li><%= link_to "Timeline", timeline_path %></li>
+        <li><%= link_to "About", about_path %></li>
+        <li ><%= link_to 'Photos <span class="link-count hidden-xs">(123)</span>'.html_safe, photos_path %></li>
+        <li><%= link_to 'Friends <span class="link-count hidden-xs">(542)</span>'.html_safe, friends_path %></li>
+    </div>
+
+    <div class = "col-md-2">
+      <ul class = "nav">
+        <li>
+        <%= render partial: 'about_link' unless current_page?('/about_edit') %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</header>

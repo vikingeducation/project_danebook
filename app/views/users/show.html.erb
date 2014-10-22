@@ -1,0 +1,70 @@
+<main>
+<%= render partial: "cover_header" %>
+
+<!-- This part changes page by page -->
+  <section class="container" id="information-pane">
+    <header class="row">
+      <div class="col-md-offset-2 col-md-8 about-header">
+        <h2>About</h2>
+      </div>
+      <form class="col-md-2 about-header" action="about_edit.html">
+        <div class="form-group">
+          <button type="submit" class="btn btn-default" id="edit-profile-button">Edit your Profile</button>
+        </div>
+      </form>
+    </header>
+
+
+    <div class = "row">
+      <div class = "col-md-5 col-md-offset-1">
+        <h3>Basic Information</h3>
+        <table class = "table about-table">
+          <tr>
+            <td>Birthday:</td>
+            <td>July 31st, 1980</td>
+          </tr>
+          <tr>
+            <td>College:</td>
+            <td>Hogwarts College</td>
+          </tr>
+          <tr>
+            <td>Hometown:</td>
+            <td>Godrick's Hollow, England</td>
+          </tr>
+          <tr>
+            <td>Currently Lives:</td>
+            <td>Godrick's Hollow, England</td>
+          </tr>
+        </table>
+
+        <h3>Contact Information</h3>
+        <table class = "table about-table">
+          <tr>
+            <td>Email:</td>
+            <td>harry_potter@hogwarts.edu</td>
+          </tr>
+          <tr>
+            <td>Telephone:</td>
+            <td>555-123-4567</td>
+          </tr>
+        </table>
+
+      </div>
+
+      <div class = "col-md-5">
+        <h3>Words to live by</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
+        <h3>About me</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+      </div>
+    </div>
+  </section>
+
+</main>

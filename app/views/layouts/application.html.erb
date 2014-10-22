@@ -13,13 +13,10 @@
 </head>
 <body>
 
-<% if current_page?(root_path) %>
-  <%= render "signin" %>
-<% else %>
-  <%= render "navbar" %>
-<% end %>
+<%= render "shared/navbar" %>
 
-<main class="container" <%= 'id="home"' if current_page?(root_path)%>>
+<main class="container">
+  <%= render 'shared/flashes' %>
   <%= yield %>
 </main>
 

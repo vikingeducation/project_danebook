@@ -1,0 +1,11 @@
+<%= form_tag(session_path, class: "navbar-form navbar-right") do %>
+  <div class="form-group">
+    <%= text_field_tag :email, '', class: "form-control", placeholder: "Email" %>
+  </div>
+
+  <div class="form-group">
+    <%= password_field_tag :password, '', class: "form-control", placeholder: "Password" %>
+  </div>
+
+  <%= submit_tag "Sign In", :class => "btn btn-danish" %>
+<% end %>

@@ -1,0 +1,51 @@
+<div class="col-md-6">
+
+  <%= form_for(@user, {:html => {:class => "home"}}) do |f| %>
+    <div class="col-xs-12">
+      <h3>Sign Up</h3>
+    </div>
+
+    <%= render 'shared/errors', :object => @user %>
+
+    <div class="form-group col-xs-6">
+      <%= f.label :first_name %><br>
+      <%= f.text_field :first_name, :class => "form-control", :placeholder => "Your First Name" %>
+    </div>
+
+    <div class="form-group col-xs-6">
+      <%= f.label :last_name %><br>
+      <%= f.text_field :last_name, :class => "form-control", :placeholder => "Your Last Name" %>
+    </div>
+
+    <div class="form-group col-xs-12">
+      <%= f.label :email %><br>
+      <%= f.text_field :email, :class => "form-control", :placeholder => "Your email address" %>
+    </div>
+
+    <div class="form-group col-xs-12">
+      <%= f.label :password %><br>
+      <%= f.password_field :password, :class => "form-control", :placeholder => "Enter your password here" %>
+    </div>
+
+    <div class="form-group col-xs-12">
+      <%= f.label :password_confirmation %><br>
+      <%= f.password_field :password_confirmation, :class => "form-control", :placeholder => "Re-enter the password here" %>
+    </div>
+
+    <div class="form-inline col-xs-12">
+      <%= f.label :birthday %>
+      <%= f.date_select(:birthday, {start_year: 1920, end_year: 1996, prompt: {day: "Day", month: "Month", year: "Year"}, order: [:month, :day, :year]}, {:class => "form-control"}) %>
+    </div>
+
+    <div class="form-group col-xs-12">
+      <%= f.radio_button :gender, "Female", :class => "radio-inline" %>
+      <%= f.label :gender, "Female" %>
+      <%= f.radio_button :gender, "Male", :class => "radio-inline" %>
+      <%= f.label :gender, "Male" %>
+    </div>
+
+    <div class="form-group col-xs-12">
+      <%= f.submit "Sign Up", :class => "btn btn-danish btn-large btn-block" %>
+    </div>
+  <% end %>
+</div>

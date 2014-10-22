@@ -10,4 +10,8 @@ class User < ActiveRecord::Base
                                     "Other"],
                      :allow_blank => true,
                      :allow_nil => true
+
+  def name
+    "#{first_name} #{last_name}"
+  end
 end

@@ -1,0 +1,91 @@
+<main class="container">
+  <%= render "hero" %>
+
+  <!-- everything below the hero -->
+  <section class = "row">
+
+    <!-- user information -->
+    <aside class = "col-md-4">
+      <!-- about -->
+      <%= render "information" %>
+
+      <!-- photos -->
+      <section class="info-pane">
+        <div class="row">
+          <header class="col-md-12">
+              Photos (123)
+          </header>
+        </div>
+        <div class="row">
+          <section class="col-md-12">
+            <% 9.times do %>
+              <div class="col-md-4 col-xs-6">
+                <a class = "photo-link" href="#">
+                  <%= image_tag("icon_photo_small.png", :alt => "Icon Photo") %>
+                </a>
+              </div>
+            <% end %>
+          </section>
+        </div>
+        <div class="row">
+          <footer class="col-md-12">
+            <a href="photos.html">See more photos!</a>
+          </footer>
+        </div>
+
+      </section><!--photos-->
+
+      <!-- Friend list -->
+      <section class="info-pane">
+        <div class="row">
+          <header class="col-md-12">
+              Friends (542)
+          </header>
+        </div>
+        <div class="row">
+          <section class="col-md-12">
+            <% 6.times do %>
+              <div class="col-md-4 col-xs-6">
+                <a href="#">
+                  <%= image_tag("user_silhouette_generic.gif", :alt => "User Silhouette") %>
+                <p>Ron<br> Weasley</p></a>
+              </div>
+            <% end %>
+          </section>
+        </div>
+        <div class="row">
+          <footer class="col-md-12">
+            <a href="friends.html">See more friends!</a>
+          </footer>
+        </div>
+      </section><!-- Friend list -->
+
+    </aside><!-- user information -->
+
+
+    <!--post feed-->
+    <div class = "col-md-7 col-md-offset-1" id = "post-feed">
+
+      <form class = "row" id = "post-form">
+        <div class = "col-md-12">
+          <h5>Post</h5>
+        </div>
+        <div class = "col-md-12" id = "post-textarea-col">
+          <div class = "form-group">
+            <textarea class = "form-control" rows = "3" placeholder = "Tell the world something..."></textarea>
+          </div>
+        </div>
+
+        <div class = "col-md-12" >
+          <div class = "form-group pull-right">
+            <button class = "btn btn-default" type = "submit" role="Post">Post</button>
+          </div>
+        </div>
+      </form>
+
+      <%= render "post" %>
+
+    </div>
+
+  </section>
+</main>

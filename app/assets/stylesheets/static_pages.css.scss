@@ -1,0 +1,147 @@
+$flag-normal: #C60C30;
+$flag-light: #E03153;
+$flag-lighter: #EE5B78;
+$flag-dark: #A10020;
+$flag-darker: #7B0018;
+
+body {
+  background-color: #EDF0F5!important;
+}
+
+main {
+  margin-top: 50px;
+}
+
+#main-navbar {
+  background: linear-gradient($flag_dark, $flag_normal);
+  border-bottom: 1px solid $flag-darker;
+  box-shadow: 0px 1px 1px #B9BABB;
+
+  a, label, h1 {
+    color: white;
+  }
+
+  button {
+    vertical-align: bottom;
+    border-color: $flag-darker;
+    background-color: $flag-dark;
+    &:hover {
+      background-color: $flag-light;
+    }
+  }
+
+  &.signin-bar {
+    height: 100px;
+    button.navbar-toggle {
+      border-color: white;
+      margin-top: 36px;
+    }
+
+    a.navbar-brand {
+      font-size: 48px;
+      line-height: 64px;
+    }
+  }
+}
+
+#home {
+  margin-top: 100px;
+
+  aside {
+    ul {
+      line-height: 54px;
+      font-size: 16px;
+      color: #777;
+    }
+  }
+
+  form {
+    h3 {
+      font-size: 48px;
+      padding-bottom: 20px;
+    }
+  }
+}
+
+#hero {
+  border: 1px solid #ccc;
+  border-radius: 0 0 5px 5px;
+  li a {
+    border-radius: 0;
+  }
+
+  #profile-picture {
+    position: absolute;
+    left: 40px;
+    bottom: -20px;
+    img {
+      height: 250px;
+      width: 180px;
+    }
+  }
+
+  #hero-image {
+    width: 100%;
+    height: 400px;
+  }
+}
+
+.info-pane {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  img {
+    height: 100px;
+    width: 100px;
+    padding: 5px;
+  }
+
+  header {
+    line-height: 36px;
+    font-size: 20px;
+    text-align: center;
+    color: white;
+    background-color: $flag-normal;
+    border-radius: 10px 10px 0 0;
+  }
+
+  section {
+    color: #333;
+    background-color: white!important;
+    border: 1px solid $flag-light;
+  }
+
+  footer {
+    a {
+      color: white;
+    }
+    background-color: $flag-normal;
+    border-radius: 0 0 10px 10px;
+    text-align: center;
+  }
+}
+
+.photo-upload-date {
+  position: absolute;
+  text-align: center;
+  bottom: 0;
+  width: 262px;
+  height: 30px;
+  color: white;
+  background-color: #444;
+  display: none;
+  opacity: .5;
+  border-top: 1px solid black;
+  font-weight: bold;
+}
+
+.timeline-post {
+  margin-top: 15px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: 1px solid $flag-normal;
+  border-radius: 20px;
+  img.user-image {
+    width: 70px;
+    height: 70px;
+  }
+}

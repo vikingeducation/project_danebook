@@ -1,0 +1,46 @@
+  <!-- navbar containing logo and logins-->
+  <nav id = "login-navbar" class = "navbar navbar-default navbar-static-top">
+    <div class = "container-fluid">
+      <!-- responsive mobile stuff -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      <!--company brand link -->
+        <%= link_to "Danebook", "#", class: "navbar-brand", id: "brand-link" %>
+      </div>
+      
+      <!-- wraps rest of links to collapse in mobile-->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      
+      <!-- rows and columns control button placement -->  
+      <div class = "row">
+        <form class="navbar-form navbar-right" role="login" action = "timeline">
+          <div class = "col-md-4">
+            <div class="form-group">
+              <label for="email">Email</label>
+              <input type="text" class="form-control" placeholder="Email">
+            </div>
+          </div>
+
+          <div class = "col-md-4">
+            <div class= "form-group">
+              <label for="password">Password</label>
+              <input type="password" class="form-control" placeholder="Password">
+            </div>
+          </div>
+
+          <div class = "col-md-4" id = "login-button-column" >
+            <button type="submit" class="btn btn-info">Login</button>
+          </div>
+        </form>
+        
+
+      </div><!--row-->  
+      </div><!--navbar-collapse-->
+    </div><!--container-->
+  </nav>
+  

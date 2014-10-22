@@ -1,0 +1,17 @@
+<!--Individual friend surrounded by border-->
+<div class="col-md-6 friend-list-entry">
+  <div class="row">
+    <div class="col-md-3 col-xs-6">
+      <%= link_to image_tag("user_silhouette_generic.gif", height: "100px", width: "100px"), "#" %>
+    </div>
+    <div class="col-md-5 col-xs-6">
+      <p><%= link_to "Hermione Granger", "#" %></p>
+      <p>432 Friends</p>
+    </div>
+    <form class="col-md-4 col-xs-12">
+      <div class="form-group">
+        <button type="submit" class="btn btn-default btn-unfriend">Unfriend Me</button>
+      </div>
+    </form>
+  </div>
+</div><!--friend entry-->

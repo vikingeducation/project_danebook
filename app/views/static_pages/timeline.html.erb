@@ -1,0 +1,67 @@
+    <main>
+      
+      <%= render partial: "cover_header" %>
+      
+      <section class = "container" id="timeline">
+        <div class = "row" id = "information-column">
+
+          <!--details-->
+          <aside class = "col-md-4" id = "details">
+            <section class = "row" id = "timeline-about">
+              <header class="col-md-12">
+                  <h4>About (text area)</h4>
+              </header>
+
+
+              <table class = "table about-table col-md-12">
+                <tr>
+                  <td>Born on:</td>
+                  <td>July 31st, 1980</td>
+                </tr>
+                <tr>
+                  <td>Went to school at:</td>
+                  <td>Hogwarts College</td>
+                </tr>
+                <tr>
+                  <td>Hometown:</td>
+                  <td>Godrick's Hollow, England</td>
+                </tr>
+                <tr>
+                  <td>Currently Lives:</td>
+                  <td>Godrick's Hollow</td>
+                </tr>
+              </table>
+            </section>
+
+            <section class = "row" id= "timeline-photos">
+              <header class="col-md-12">
+                  <h4>Photos (123) (copied text area)</h4>
+              </header>
+
+              <% 9.times do %>
+                <%= render partial: "photo_nohover" %>
+              <% end %>
+
+            </section><!--photos-->
+
+            <section class = "row" id = "timeline-friends">
+              <header class="col-md-12">
+                  <h4>Friends: 542 (copy text area)</h4>
+              </header>
+
+
+              <% 0.upto(@friends.size-1) do |index| %>
+                <%= render partial: "friend_thumbnail", locals: {name: @friends[index]} %>
+              <% end %>
+            
+            <div class="col-md-12">
+              <%= link_to "See more friends", friends_path %>
+            </div>
+            </section>
+
+          </aside>
+
+        <%= render partial: "post_feed" %>
+      </section>
+
+    </main>

@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   get '/friends' => 'static_pages#friends'
   get '/photos' => 'static_pages#photos'
 
-  resources :users
+  resources :users do
+    resource :profile, :only => [:show, :edit, :update]
+  end
   resource :session, :only => [:create, :destroy]
 
   # The priority is based upon order of creation: first created -> highest priority.

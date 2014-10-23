@@ -6,6 +6,9 @@ class User < ActiveRecord::Base
             :length => { in: 8..24 },
             allow_nil: true
 
+  has_one :profile
+  accepts_nested_attributes_for :profile
+
   before_create :generate_token
 
   #create new auth token

@@ -5,13 +5,14 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @profile = @user.build_profile
   end
 
   def create
     @user = User.new(whitelisted_params)
 
-    if @user.save
-      log_in
+    if @user.save!
+      sign_in(@user)
       flash[:success] = "Welcome to Danebook!"
       redirect_to @user
     else
@@ -35,6 +36,6 @@ class UsersController < ApplicationController
   private
 
   def whitelisted_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :profile_attributes => [:month, :day, :year, :gender, :user_id] )
   end
 end

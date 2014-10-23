@@ -16,7 +16,7 @@
 <%= render "shared/navbar" %>
 
 <main class="container">
-  <%= render 'shared/hero' unless current_page?(root_path) %>
+  <%= render 'shared/hero' if signed_in? %>
   <%= render 'shared/flashes' %>
   <%= yield %>
 </main>

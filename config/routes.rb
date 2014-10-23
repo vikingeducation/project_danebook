@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get '/friends' => 'static_pages#friends'
   get '/photos' => 'static_pages#photos'
 
-  resources :users do
+  resources(:users, :only => [:show, :create]) do
     resource :profile, :only => [:show, :edit, :update]
   end
   resource :session, :only => [:create, :destroy]

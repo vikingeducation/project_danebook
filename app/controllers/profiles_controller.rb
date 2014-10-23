@@ -12,10 +12,11 @@ class ProfilesController < ApplicationController
   end
 
   def update
+    @user = current_user
     @profile = current_user.profile
     if @profile.update_attributes(profile_params)
       flash[:success] = "Profile updated"
-      redirect_to profile_path
+      redirect_to user_profile_path(@user)
     else
       flash[:error] = "Something went wrong when saving your profile"
       render :edit

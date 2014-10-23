@@ -22,11 +22,13 @@
     </ul>
   </div>
 
-  <div class = "col-md-2">
-    <ul class = "nav">
-    <li><%= link_to 'Edit Profile', about_edit_path %></li>
-    </ul>
-  </div>
+  <% if current_user && @user == current_user %>
+    <div class = "col-md-2">
+      <ul class = "nav">
+      <li><%= link_to 'Edit Profile', edit_user_profile_path(@user) %></li>
+      </ul>
+    </div>
+  <% end %>
 </header>
 
 </div>

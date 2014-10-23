@@ -6,11 +6,11 @@
   </div>
 </header>
 
-<%= form_for(@profile) do |f| %>
+<%= form_for @profile, {:url => { :action => :update }} do |f| %>
   <div class="row">
     <div class = "col-md-6">
       <h3>Basic Information</h3>
-      <table class = "table about-table">
+      <table class="table">
         <tr>
           <td>Birthday:</td>
           <td><%= @user.birthday %></td>
@@ -30,7 +30,7 @@
       </table>
 
       <h3>Contact Information</h3>
-      <table class = "table about-table">
+      <table class="table">
         <tr>
           <td>Email:</td>
           <td><%= @user.email %></td>
@@ -42,7 +42,7 @@
       </table>
     </div>
 
-    <div class = "col-md-6">
+    <div class="form-group col-md-6">
       <h3>Words to live by</h3>
       <%= f.text_area :quotes, :class => "form-control", rows: 3 %>
       <h3>About me</h3>
@@ -51,7 +51,7 @@
   </div>
 
   <div class="row">
-    <div class="form-group col-md-6 col-md-offset-3">
+    <div class="form-group col-md-12">
       <%= f.submit 'Save Changes', :class => "btn btn-block btn-danish" %>
     </div>
   </div>

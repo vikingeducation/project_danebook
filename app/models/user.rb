@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
   before_create :generate_token
   has_secure_password
 
+  has_one :profile, dependent: :destroy
+
   validates :first_name, :last_name, :email, presence: true
   validates :email, uniqueness: true
   validates :password, length: { minimum: 8 },

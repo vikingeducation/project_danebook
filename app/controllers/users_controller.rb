@@ -14,6 +14,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
+      @user.build_profile.save
       sign_in(@user)
       flash[:success] = "Welcome to Danebook"
       redirect_to @user

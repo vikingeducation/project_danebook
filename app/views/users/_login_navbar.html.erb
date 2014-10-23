@@ -34,6 +34,10 @@
           </div>
 
           <div class = "col-md-4" id = "login-button-column" >
+            <div class = "form-group">
+              <%= label_tag :remember_me %>
+              <%= check_box_tag :remember_me %>
+            </div>
             <%= submit_tag "Login", class:"btn btn-info" %>
           </div>
         <% end %>

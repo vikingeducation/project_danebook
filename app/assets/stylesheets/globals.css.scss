@@ -25,6 +25,10 @@ main {
   a, label, h1 {
     color: white;
   }
+
+  li:hover {
+    background: $darker-dark;
+  }
 }
 
 .field_with_errors {

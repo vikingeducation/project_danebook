@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  skip_before_action :require_sign_in, :only => [:new, :create]
-  before_action :require_current_user, :only => [:edit, :update, :destroy]
+  skip_before_action :require_sign_in, only: [:new, :create]
+  before_action :require_current_user, only: [:edit, :update, :destroy]
 
   def new
     if signed_in?
@@ -18,7 +18,7 @@ class UsersController < ApplicationController
       flash[:success] = "Welcome to Danebook"
       redirect_to @user
     else
-      flash.now[:error] = "Account could not be created"
+      flash.now[:error] = "Your account could not be created"
       render :new
     end
   end

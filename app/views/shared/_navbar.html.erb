@@ -10,7 +10,7 @@
       <%= link_to 'Danebook', root_path, :class => "navbar-brand" %>
     </div>
     <div class="navbar-collapse collapse">
-      <% if current_user %>
+      <% if signed_in? %>
         <%= render 'shared/search' %>
       <% else %>
         <%= render 'shared/sign_in' %>

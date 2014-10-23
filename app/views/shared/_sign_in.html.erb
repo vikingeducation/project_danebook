@@ -7,5 +7,10 @@
     <%= password_field_tag :password, '', class: "form-control", placeholder: "Password" %>
   </div>
 
+  <%= label_tag do %>
+    <%= check_box_tag :remember %>
+    Stay signed in
+  <% end %>
+
   <%= submit_tag "Sign In", :class => "btn btn-danish" %>
 <% end %>

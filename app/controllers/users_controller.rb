@@ -3,7 +3,11 @@ class UsersController < ApplicationController
   before_action :require_current_user, :only => [:edit, :update, :destroy]
 
   def new
-    @user = User.new
+    if signed_in?
+      redirect_to current_user
+    else
+      @user = User.new
+    end
   end
 
   def create

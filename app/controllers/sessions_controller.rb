@@ -1,4 +1,5 @@
-class SessionController < ApplicationController
+class SessionsController < ApplicationController
+  skip_before_action :require_sign_in, :only => [:create]
 
   def create
     @user = User.find_by_email(params[:email])
@@ -7,8 +8,8 @@ class SessionController < ApplicationController
       flash[:success] = "Signed in"
       redirect_to @user
     else
-      flash.now[:error] = "Sign in failed. Uh oh!"
-      render root_path
+      flash[:error] = "Sign in failed. Uh oh!"
+      redirect_to root_path
     end
   end
 

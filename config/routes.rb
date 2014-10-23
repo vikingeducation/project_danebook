@@ -3,7 +3,10 @@ Rails.application.routes.draw do
   root 'users#new'
   delete '/logout' => 'sessions#destroy'
 
-  resources :users, except: [:index]
+  resources :users, except: [:index] do
+    resource :profile, only: [:edit, :update, :show]
+  end
+
   resource :session, only: [:new, :create, :destroy]
 
   get '/timeline' => 'static_pages#timeline'

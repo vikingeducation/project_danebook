@@ -124,11 +124,6 @@ section.container a {
 
 #profile-nav{
   border: 1px solid black;
-  .nav-tabs {
-    li {
-      border: 1px solid black;
-    }
-  }
 
   .link-count {
     color: #777;
@@ -178,6 +173,7 @@ section.container a {
     box-shadow: 3px 3px 3px black;
     border: 1px solid black;
     border-radius: 0;
+    margin-top: 10px;
 }
 
 #timeline {

@@ -18,4 +18,14 @@ class Profile < ActiveRecord::Base
   validates :words_to_live_by, length: { maximum: 140 }
   validates :about_me, length: { maximum: 400 }
 
+  def birthday
+    "#{month}\/#{day}\/#{year}"
+  end
+
+  def birthday= (datestring)
+    date = datestring.split("\/")
+    self.month = date[0]
+    self.day = date[1]
+    self.year = date[2]
+  end
 end

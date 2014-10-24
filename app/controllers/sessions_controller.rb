@@ -13,8 +13,8 @@ class SessionsController < ApplicationController
       flash[:success] = "You're signed in."
       redirect_to @user
     else
-      flash.now[:error] = "Something went wrong with your signin."
-      render root_path
+      flash[:error] = "Something went wrong with your signin."
+      redirect_to root_path
     end
   end
 

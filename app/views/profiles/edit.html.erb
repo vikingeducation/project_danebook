@@ -6,7 +6,7 @@
   </header>
 
   <%= form_for @profile, {:url => { :action => :update }} do |f| %>
-    <div class="row">
+    <section class="row">
       <div class = "col-md-6">
         <h3>Basic Information</h3>
         <table class="table">
@@ -47,13 +47,13 @@
         <h3>About me</h3>
         <%= f.text_area :about, :class => "form-control", rows: 9 %>
       </div>
-    </div>
+    </section>
 
-    <div class="row">
+    <footer class="row">
       <div class="form-group col-md-12">
-        <%= f.submit 'Save Changes', :class => "btn btn-block btn-danish" %>
+        <%= f.submit 'Save Changes', :class => "info-submit" %>
       </div>
-    </div>
+    </footer>
 
   <% end %>
 </section>

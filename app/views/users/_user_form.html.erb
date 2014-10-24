@@ -34,7 +34,7 @@
 
     <div class="form-inline col-xs-12">
       <%= f.label :birthday %>
-      <%= f.date_select(:birthday, {start_year: 1920, end_year: 1996, prompt: {day: "Day", month: "Month", year: "Year"}, order: [:month, :day, :year]}, {:class => "form-control"}) %>
+      <%= f.date_select(:birthday, {end_year: 1920, start_year: 1996, prompt: {day: "Day", month: "Month", year: "Year"}, order: [:month, :day, :year]}, {:class => "form-control"}) %>
     </div>
 
     <div class="form-group col-xs-12">

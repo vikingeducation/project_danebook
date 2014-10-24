@@ -1,4 +1,7 @@
 class ProfilesController < ApplicationController
+
+  before_action :require_current_user, only: [:edit, :update]
+
   def show
     @user = User.find(params[:user_id])
     @profile = @user.profile

@@ -1,1 +1,1 @@
-<%= link_to "Edit Profile", about_edit_path if @user == current_user %>
+<%= link_to "Edit Profile", edit_user_profile_path(current_user) if @user == current_user %>

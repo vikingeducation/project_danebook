@@ -23,7 +23,7 @@
     <div class = "col-md-2">
       <ul class = "nav">
         <li>
-        <%= render partial: 'about_link' unless current_page?('/about_edit') %>
+        <%= render partial: 'about_link' unless current_page?(edit_user_profile_url) %>
         </li>
       </ul>
     </div>

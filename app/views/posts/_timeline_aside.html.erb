@@ -1,0 +1,54 @@
+<aside class = "col-md-4" id = "details">
+  <section class = "row" id = "timeline-about">
+    <header class="col-md-12">
+        <h4>About</h4>
+    </header>
+
+
+    <table class = "table about-table col-md-12">
+      <tr>
+        <td>Born on:</td>
+        <td><%= @user.profile.birthday %></td>
+      </tr>
+      <tr>
+        <td>Went to school at:</td>
+        <td><%=@user.profile.college%></td>
+      </tr>
+      <tr>
+        <td>Hometown:</td>
+        <td><%=@user.profile.hometown %></td>
+      </tr>
+      <tr>
+        <td>Currently Lives:</td>
+        <td><%=@user.profile.currently_lives %></td>
+      </tr>
+    </table>
+  </section>
+
+  <section class = "row" id= "timeline-photos">
+    <header class="col-md-12">
+        <h4>Photos (123) (copied text area)</h4>
+    </header>
+
+    <% 9.times do %>
+      <%= render "photo_nohover" %>
+    <% end %>
+
+  </section><!--photos-->
+
+  <section class = "row" id = "timeline-friends">
+    <header class="col-md-12">
+        <h4>Friends: 542</h4>
+    </header>
+
+
+    <% 9.times do %>
+      <%= render "friend_thumbnail" %>
+    <% end %>
+
+  <div class="col-md-12">
+    <%= link_to "See more friends", friends_path %>
+  </div>
+  </section>
+
+</aside>

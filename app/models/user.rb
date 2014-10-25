@@ -10,6 +10,9 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :profile
 
   has_many :posts
+  has_many :likes
+
+  has_many :liked_posts, through: :likes, source: :likable, source_type: "Post"
 
   before_create :generate_token
 

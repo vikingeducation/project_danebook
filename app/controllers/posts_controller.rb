@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :require_current_user, except: [:index]
   def index
     @user = User.find(params[:user_id])
-    @posts = @user.posts
+    @posts = @user.posts.order("created_at DESC")
 
     @post = current_user.posts.build if @user == current_user
   end

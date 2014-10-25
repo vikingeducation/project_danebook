@@ -3,12 +3,16 @@ Rails.application.routes.draw do
 
   resources :users, except: [:index] do
     resource :profile, only: [:edit, :update, :show]
-    resources :posts
+    resources :posts do
+      resources :likes, only: [:create, :destroy], :defaults => { :likable => 'Post' }
+
+    end
+
     get '/timeline' => 'posts#index'
   end
 
+
   resource :session, only: [:new, :create, :destroy]
-  resources :posts, only: [:index]
 
 
   root 'users#new'

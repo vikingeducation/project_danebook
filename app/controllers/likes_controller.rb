@@ -14,7 +14,7 @@ class LikesController < ApplicationController
 
   def destroy
     session[:return_to] ||= request.referer
-    @like = likable.likes.find(params[:id])
+    @like = current_user.likes.find(params[:id])
     if @like.destroy
       flash[:success] = "#{params[:likable].capitalize} unliked"
       redirect_to session.delete(:return_to)

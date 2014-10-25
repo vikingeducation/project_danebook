@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   end
   resources(:posts, only: [:create, :destroy]) do
     resources :likes, only: [:create, :destroy], :defaults => { likable: 'Post' }
+    resources(:comments, only: [:create, :destroy], :defaults => { commentable: 'Post' }) do
+      resources :likes, only: [:create, :destroy], :defaults => { likable: 'Comment' }
+    end
   end
   resource  :session, only: [:create, :destroy]
 

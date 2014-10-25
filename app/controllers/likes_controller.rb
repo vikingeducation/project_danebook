@@ -27,11 +27,11 @@ class LikesController < ApplicationController
   private
 
   def parent_id
-    params[:post_id]
+    "#{params[:likable].to_s}_id".downcase.to_sym
   end
 
   def likable
     # use the params to find the appropriate model and object
-    params[:likable].capitalize.constantize.find(parent_id)
+    params[:likable].capitalize.constantize.find(params[parent_id])
   end
 end

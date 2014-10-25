@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :users, except: [:index] do
     resource :profile, only: [:edit, :update, :show]
     resources :posts
-    get '/timeline' => 'users/posts#index'
+    get '/timeline' => 'posts#index'
   end
 
   resource :session, only: [:new, :create, :destroy]
@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
 
   root 'users#new'
+  get '/login' => 'users#new'
   delete '/logout' => 'sessions#destroy'
 
 

@@ -6,8 +6,8 @@ class PostsController < ApplicationController
       flash[:success] = "Status updated"
       redirect_to @user
     else
-      flash.now[:error] = "Something went wrong with your post"
-      render user_path(@user)
+      flash[:error] = "Something went wrong with your post"
+      redirect_to @user
     end
   end
 

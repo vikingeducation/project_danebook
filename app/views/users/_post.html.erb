@@ -18,7 +18,6 @@
       <div class="col-xs-12">
         <div class="pull-left">
           <%= like_button(post) %>
-          <a href="#">Comment</a>
         </div>
         <% if current_user && post.user == current_user %>
           <div class="pull-right">
@@ -26,6 +25,7 @@
           </div>
         <% end %>
       </div>
+      <%= likes_count(post) %>
     </footer>
   </div>
 <% end %>

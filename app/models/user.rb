@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
 
   has_one :profile, dependent: :destroy
   has_many :posts, :foreign_key => :author_id, dependent: :destroy
+  has_many :comments, :foreign_key => :author_id, dependent: :destroy
   has_many :likes, :foreign_key => :liker_id, dependent: :destroy
 
   validates :first_name, :last_name, :email, presence: true

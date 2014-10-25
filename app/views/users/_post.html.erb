@@ -4,7 +4,7 @@
       <div class="col-xs-12">
         <%= image_tag("harry_potter_small.jpg", :alt => "Harry Potter", :class => "pull-left") %>
         <h3><%= link_to post.user.name, user_path(post.user) %></h3>
-        <p><%= time_ago_in_words(post.created_at) %> ago</p>
+        <p>Posted <%= time_ago_in_words(post.created_at) %> ago</p>
       </div>
     </header>
 

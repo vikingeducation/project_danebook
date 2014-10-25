@@ -62,8 +62,10 @@
   <!--post feed-->
   <div class = "col-md-7 col-md-offset-1">
 
-    <%= render 'post_form' %>
+    <%= render 'posts/post_form' %>
 
-    <%= render 'post', posts: @posts %>
+    <% @posts.each do |post| %>
+      <%= render 'posts/post', post: post %>
+    <% end %>
 
   </div>

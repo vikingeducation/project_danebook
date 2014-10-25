@@ -2,11 +2,7 @@ class LikesController < ApplicationController
   def create
     # so they can go back thence they came
     session[:return_to] ||= request.referer
-    # use the params to find the appropriate model and object
-    @class = params[:likable].capitalize.constantize
-    @likable = @class.find(parent_id)
-    # prepare the like with the current user's id
-    @like = @likable.likes.build(user_id: current_user.id)
+    @like = likable.likes.build(user_id: current_user.id)
     if @like.save
       flash[:success] = "#{params[:likable].capitalize} liked"
       redirect_to session.delete(:return_to)
@@ -17,11 +13,25 @@ class LikesController < ApplicationController
   end
 
   def destroy
+    session[:return_to] ||= request.referer
+    @like = likable.likes.find(params[:id])
+    if @like.destroy
+      flash[:success] = "#{params[:likable].capitalize} unliked"
+      redirect_to session.delete(:return_to)
+    else
+      flash[:error] = "An error occurred while unliking"
+      redirect_to session.delete(:return_to)
+    end
   end
 
   private
 
   def parent_id
     params[:post_id]
+  end
+
+  def likable
+    # use the params to find the appropriate model and object
+    params[:likable].capitalize.constantize.find(parent_id)
   end
 end

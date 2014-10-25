@@ -7,13 +7,11 @@
     </header>
 
     <section class="row">
-        <%= post_fields.text_area :content, :class => "form-control", rows: 3, placeholder: "Tell the world! Or at least Denmark..." %>
+      <%= post_fields.text_area :content, :class => "form-control", rows: 3, placeholder: "Tell the world! Or at least Denmark..." %>
     </section>
 
     <footer class="row">
-      <div class="form-group col-xs-12">
-        <%= post_fields.submit 'Post!', :class => "info-submit pull-right" %>
-      </div>
+      <%= post_fields.submit 'Post!', :class => "btn btn-large btn-danish btn-block" %>
     </footer>
   <% end %>
 <% end %>

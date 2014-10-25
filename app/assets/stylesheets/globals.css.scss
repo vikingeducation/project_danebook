@@ -74,7 +74,7 @@ main {
     font-size: 20px;
     text-align: center;
     color: white;
-    background-color: $flag-normal;
+    background: $normal-dark;
   }
 
   section {
@@ -87,13 +87,7 @@ main {
     a {
       color: white;
     }
-    background-color: $flag-normal;
+    background: $dark-normal;
     text-align: center;
   }
-}
-
-.info-submit {
-  background-color: $flag-normal;
-  color: white;
-  border: 0px;
 }

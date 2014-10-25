@@ -17,11 +17,7 @@
     <footer class="row">
       <div class="col-xs-12">
         <div class="pull-left">
-          <% if post.likes.find_by_user_id(current_user.id) %>
-            <%= link_to "Unlike", post_like_path(post, post.likes.find_by_user_id(current_user.id)), method: "DELETE" %>
-          <% else %>
-            <%= link_to "Like", post_likes_path(post), method: "POST" %>
-          <% end %>
+          <%= like_button(post) %>
           <a href="#">Comment</a>
         </div>
         <% if current_user && post.user == current_user %>

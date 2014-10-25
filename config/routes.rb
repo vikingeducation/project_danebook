@@ -1,13 +1,25 @@
 Rails.application.routes.draw do
 
-  root 'users#new'
-  delete '/logout' => 'sessions#destroy'
 
   resources :users, except: [:index] do
     resource :profile, only: [:edit, :update, :show]
+    resources :posts
+    get '/timeline' => 'users/posts#index'
   end
 
   resource :session, only: [:new, :create, :destroy]
+  resources :posts, only: [:index]
+
+
+  root 'users#new'
+  delete '/logout' => 'sessions#destroy'
+
+
+
+
+
+
+  # old static pages stuff, not for use
 
   get '/timeline' => 'static_pages#timeline'
   get '/friends' => 'static_pages#friends'

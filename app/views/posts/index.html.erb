@@ -48,10 +48,8 @@
               </header>
 
 
-              <% 0.upto(@friends.size-1) do |index| %>
-                <%= render partial: "friend_thumbnail", locals: {name: @friends[index]} %>
-              <% end %>
-            
+              <%= 9.times { render "friend_thumbnail" } %>
+
             <div class="col-md-12">
               <%= link_to "See more friends", friends_path %>
             </div>

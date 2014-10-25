@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
   has_one :profile
   accepts_nested_attributes_for :profile
 
+  has_many :posts
+
   before_create :generate_token
 
   #create new auth token

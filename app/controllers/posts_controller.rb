@@ -20,6 +20,17 @@ class PostsController < ApplicationController
     end
   end
 
+  def destroy
+    @post = current_user.posts.find(params[:id])
+    if @post.destroy
+      flash[:success] = "Post deleted."
+      redirect_to user_posts_url(current_user)
+    else
+      flash[:error] = "Something went wrong with this deletion."
+      render :index
+    end
+  end
+
   private
 
   def post_params

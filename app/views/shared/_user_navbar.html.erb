@@ -6,4 +6,5 @@
 </form> <!-- /search form -->
 <div id="navbar-usr-profile">
   <h4><%= current_user.fname %></h4>
+  <%= link_to("Log Out", session_path, method: :delete) %>
 </div>

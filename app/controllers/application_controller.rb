@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+
   private
   def sign_in(user)
     user.regenerate_auth_token
@@ -17,13 +18,17 @@ class ApplicationController < ActionController::Base
   end
 
   def sign_out
-      @current_user = nil
-      cookies.delete(:auth_token)
+    @current_user = nil
+    cookies.delete(:auth_token)
   end
 
   def current_user
     @current_user ||= User.find_by_auth_token(cookies[:auth_token]) if cookies[:auth_token]
   end
   helper_method :current_user
+
+  def signed_in?
+     !!current_user
+  end
 
 end

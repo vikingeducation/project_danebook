@@ -1,4 +1,4 @@
-<%= form_tag session_path, class: "sign-in-wrapper navbar-form navbar-right" do %>
+<%= form_tag session_path, method: "post", class: "sign-in-wrapper navbar-form navbar-right" do %>
 
 	<%= label_tag do %>
 		Email or Phone
@@ -7,7 +7,7 @@
 
 	<%= label_tag do %>
 		Password
-		<%= text_field_tag :password {class: "navbar-password", placeholder: "Password"} %>
+		<%= text_field_tag :password, nil, {class: "navbar-password", placeholder: "Password"} %>
 	<% end %>
 
   <%= label_tag do %>
@@ -18,19 +18,3 @@
   <%= submit_tag "Log ind", class: "sign-in-btn" %>
 <% end %>
 
-
-
-
-<!-- <form class="sign-in-wrapper navbar-form navbar-right">
-  <div class="navbar-email-group form-group">
-    <span class="sign-in-label"><p>Email or Phone</p></span>
-    <input type="text" class="navbar-email" role="email" placeholder="Email"/>
-  </div>
-
-  <div class="navbar-password-group form-group">
-    <span class="sign-in-label"><p>Password</p></span>
-    <input type="password" class="navbar-password" role="password" placeholder="Password"/>
-
-    <button type="submit" class="sign-in-btn"><%= #link_to("Log ind", timeline_path) %></button>
-  </div>
-</form> -->

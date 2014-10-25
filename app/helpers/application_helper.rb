@@ -4,7 +4,7 @@ module ApplicationHelper
 		if current_user
 			render 'shared/user_navbar'
 		else
-			render 'shated/home_navbar'
+			render 'shared/home_navbar'
 		end
 	end
 

@@ -1,5 +1,5 @@
 <% posts.each do |post| %>
-  <div class="post-pane">
+  <article class="post-pane">
     <header class="row">
       <div class="col-xs-12">
         <%= image_tag("harry_potter_small.jpg", :alt => "Harry Potter", :class => "pull-left") %>
@@ -27,5 +27,14 @@
       </div>
       <%= likes_count(post) %>
     </footer>
-  </div>
+    <% post.comments.each do |comment| %>
+      <%= render 'comments/comment', comment: comment %>
+    <% end %>
+    <%= form_for(post.comments.build, {html: { :class => "comment" }, url: {post_id: post.id, controller: 'comments', action: :create }}) do |comment_fields| %>
+      <section class="row">
+        <%= comment_fields.text_area :content, :class => "form-control", rows: 3, placeholder: "What do you think about what #{post.author.name} said?" %>
+        <%= comment_fields.submit 'Comment!', :class => "btn btn-large btn-danish btn-block" %>
+      </section>
+    <% end %>
+  </article>
 <% end %>

@@ -1,0 +1,8 @@
+<div class="comment row">
+  <div class="col-xs-12">
+    <%= image_tag("harry_potter_small.jpg", :alt => "Harry Potter", :class => "pull-left") %>
+    <h3><%= link_to comment.author.name, user_path(comment.author) %></h3>
+    <p>Commented <%= time_ago_in_words(comment.created_at) %> ago</p>
+    <p><%= comment.content %></p>
+  </div>
+</div>

@@ -26,7 +26,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @posts = @user.posts.includes(:author, :likes)
+    @posts = @user.posts.includes(:author, :likes, :comments)
     @post = current_user.posts.build
   end
 

@@ -35,4 +35,16 @@ class User < ActiveRecord::Base
     "#{first_name} #{last_name}"
   end
 
+  def posts_chronologically
+    posts.order("created_at DESC")
+  end
+
+  def likes_post?(post)
+    liked_posts.include?(post)
+  end
+
+  def like_of_post(post)
+    likes_post?(post) ? likes.find_by(:likable_id => post.id, :likable_type => "Post") : nil
+  end
+
 end

@@ -18,7 +18,7 @@ class PostsController < ApplicationController
       flash[:success] = "Post deleted"
       redirect_to user_path(@user)
     else
-      flash[:error] = "Something went wrong"
+      flash[:error] = "Something went wrong when deleting the post"
       redirect_to user_path(@user)
     end
   end

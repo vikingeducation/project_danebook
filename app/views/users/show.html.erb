@@ -62,26 +62,7 @@
   <!--post feed-->
   <div class = "col-md-7 col-md-offset-1">
 
-    <% if current_user && @user == current_user %>
-      <%= form_for(@post, {html: { :class => "info-pane" }, url: {controller: 'posts', action: :create }}) do |post_fields| %>
-        <header class="row">
-          <div class="col-xs-12">
-            <h5>New Post</h5>
-          </div>
-        </header>
-
-        <section class="row">
-            <%= post_fields.text_area :content, :class => "form-control", rows: 3, placeholder: "Tell the world! Or at least Denmark..." %>
-        </section>
-
-        <footer class="row">
-          <div class="form-group col-xs-12">
-            <%= post_fields.submit 'Post!', :class => "info-submit pull-right" %>
-          </div>
-        </footer>
-      <% end %>
-    <% end %>
-    <!-- render post form -->
+    <%= render 'post_form' %>
 
     <%= render 'post', posts: @posts %>
 

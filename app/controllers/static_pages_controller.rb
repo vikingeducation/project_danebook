@@ -4,10 +4,10 @@ class StaticPagesController < ApplicationController
 
 	def timeline
 	end
-	
+
 	def about
 	end
-	
+
 	def about_edit
 	end
 

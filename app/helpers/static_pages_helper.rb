@@ -7,4 +7,10 @@ module StaticPagesHelper
 			render "shared/user_navbar"
 		end
 	end
+
+	def date_maker
+		2014.downto(1900) do |yr|
+			raw("\<option value\=\'#{yr}\'>#{yr}\<\/option\>")
+		end
+	end
 end

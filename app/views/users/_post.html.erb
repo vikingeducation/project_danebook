@@ -20,9 +20,11 @@
           <a href="#">Like</a>
           <a href="#">Comment</a>
         </div>
-        <div class="pull-right">
-          <%= link_to "Delete", post_path(post), method: "DELETE", data: { confirm: "Are you sure you want to delete this post?" } %>
-        </div>
+        <% if current_user && post.user == current_user %>
+          <div class="pull-right">
+            <%= link_to "Delete", post_path(post), method: "DELETE", data: { confirm: "Are you sure you want to delete this post?" } %>
+          </div>
+        <% end %>
       </div>
     </footer>
   </div>

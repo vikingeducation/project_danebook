@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params)
-    @user = @post.user
+    @user = @post.author
     if @post.save
       flash[:success] = "Status updated"
       redirect_to @user
@@ -13,7 +13,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post = current_user.posts.find(params[:id])
-    @user = @post.user
+    @user = @post.author
     if @post.destroy
       flash[:success] = "Post deleted"
       redirect_to user_path(@user)

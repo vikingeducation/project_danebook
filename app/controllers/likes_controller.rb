@@ -2,7 +2,7 @@ class LikesController < ApplicationController
   def create
     # so they can go back thence they came
     session[:return_to] ||= request.referer
-    @like = likable.likes.build(user_id: current_user.id)
+    @like = likable.likes.build(liker_id: current_user.id)
     if @like.save
       flash[:success] = "#{params[:likable].capitalize} liked"
       redirect_to session.delete(:return_to)

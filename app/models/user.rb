@@ -3,8 +3,8 @@ class User < ActiveRecord::Base
   has_secure_password
 
   has_one :profile, dependent: :destroy
-  has_many :posts, dependent: :destroy
-  has_many :likes, dependent: :destroy
+  has_many :posts, :foreign_key => :author_id, dependent: :destroy
+  has_many :likes, :foreign_key => :liker_id, dependent: :destroy
 
   validates :first_name, :last_name, :email, presence: true
   validates :email, uniqueness: true

@@ -2,10 +2,9 @@
   <div class="post-pane">
     <header class="row">
       <div class="col-xs-12">
-        <div class="pull-left post-heading">
-          <h3><%= link_to post.user.name, user_path(post.user) %></h3>
-          <p><%= time_ago_in_words(post.created_at) %> ago</p>
-        </div>
+        <%= image_tag("harry_potter_small.jpg", :alt => "Harry Potter", :class => "pull-left") %>
+        <h3><%= link_to post.user.name, user_path(post.user) %></h3>
+        <p><%= time_ago_in_words(post.created_at) %> ago</p>
       </div>
     </header>
 

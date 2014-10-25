@@ -1,5 +1,5 @@
 class Like < ActiveRecord::Base
-  belongs_to :likable, polymorphic: true
+  belongs_to :likable, polymorphic: true, counter_cache: true
 
   # make sure that the user and liked item are real
   validates :user, :likable, presence: true

@@ -4,7 +4,7 @@ class LikesController < ApplicationController
     session[:return_to] ||= request.referer
     # use the params to find the appropriate model and object
     @class = params[:likable].capitalize.constantize
-    @likable = @class.find(params[:likable_id])
+    @likable = @class.find(parent_id)
     # prepare the like with the current user's id
     @like = @likable.likes.build(user_id: current_user.id)
     if @like.save
@@ -17,5 +17,11 @@ class LikesController < ApplicationController
   end
 
   def destroy
+  end
+
+  private
+
+  def parent_id
+    params[:post_id]
   end
 end

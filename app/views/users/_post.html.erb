@@ -17,7 +17,7 @@
     <footer class="row">
       <div class="col-xs-12">
         <div class="pull-left">
-          <a href="#">Like</a>
+          <%= link_to "Like", post_likes_path(post), method: "POST" %>
           <a href="#">Comment</a>
         </div>
         <% if current_user && post.user == current_user %>

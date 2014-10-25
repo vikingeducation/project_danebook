@@ -61,26 +61,30 @@
 
 
   <!--post feed-->
-  <div class = "col-md-7 col-md-offset-1" id = "post-feed">
+  <div class = "col-md-7 col-md-offset-1">
 
-    <form class = "row" id = "post-form">
-      <div class = "col-md-12">
-        <h5>Post</h5>
-      </div>
-      <div class = "col-md-12" id = "post-textarea-col">
-        <div class = "form-group">
-          <textarea class = "form-control" rows = "3" placeholder = "Tell the world something..."></textarea>
-        </div>
-      </div>
+    <% if current_user && @user == current_user %>
+      <%= form_for(@post, {html: { :class => "info-pane" }, url: { action: :create }}) do |post_fields| %>
+        <header class="row">
+          <div class="col-xs-12">
+            <h5>New Post</h5>
+          </div>
+        </header>
 
-      <div class = "col-md-12" >
-        <div class = "form-group pull-right">
-          <button class = "btn btn-default" type = "submit" role="Post">Post</button>
-        </div>
-      </div>
-    </form>
+        <section class="row">
+            <%= post_fields.text_area :content, :class => "form-control", rows: 3 %>
+        </section>
 
-    <!-- render "post" -->
+        <footer class="row">
+          <div class="form-group col-xs-12">
+            <%= post_fields.submit 'Post!', :class => "info-submit pull-right" %>
+          </div>
+        </footer>
+      <% end %>
+    <% end %>
+    <!-- render post form -->
+
+    <%= render @posts %>
 
   </div>
 

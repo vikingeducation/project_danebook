@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
     if @user.save
       sign_in(@user)
-      flash[:success] = "Welcome!"
+      flash[:success] = "Welcome #{@user.fname}!"
       redirect_to @user
     else
       flash.now[:error] = "Your account could not be created"

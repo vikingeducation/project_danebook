@@ -1,3 +1,35 @@
 // Place all the styles related to the Posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import 'colors';
+
+.post-pane {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  header, section {
+    background-color: white;
+    color: #333;
+    text-align: left;
+    font-size: 14px;
+    border: 1px solid $flag-darker;
+    border-bottom: 0;
+    a {
+      font-size: 18px;
+    }
+  }
+  footer {
+    background-color: $flag-normal;
+    border: 1px solid $flag-darker;
+    text-align: center;
+    a {
+      color: white;
+    }
+  }
+
+  img {
+    height: 100px;
+    width: 100px;
+    padding: 5px;
+  }
+}

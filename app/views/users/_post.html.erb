@@ -1,7 +1,30 @@
-<div class="info-pane">
-  <section class="row">
-    <div class="col-xs-12">
-      <p></p>
-    </div>
-  </section>
-</div>
+<% posts.each do |post| %>
+  <div class="post-pane">
+    <header class="row">
+      <div class="col-xs-12">
+        <div class="pull-left post-heading">
+          <h3><%= link_to post.user.name, user_path(post.user) %></h3>
+          <p><%= time_ago_in_words(post.created_at) %> ago</p>
+        </div>
+      </div>
+    </header>
+
+    <section class="row">
+      <div class="col-xs-12">
+        <p><%= post.content %></p>
+      </div>
+    </section>
+
+    <footer class="row">
+      <div class="col-xs-12">
+        <div class="pull-left">
+          <a href="#">Like</a>
+          <a href="#">Comment</a>
+        </div>
+        <div class="pull-right">
+          <a href="#">Delete</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+<% end %>

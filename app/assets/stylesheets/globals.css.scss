@@ -75,7 +75,6 @@ main {
     text-align: center;
     color: white;
     background-color: $flag-normal;
-    border-radius: 10px 10px 0 0;
   }
 
   section {
@@ -89,7 +88,6 @@ main {
       color: white;
     }
     background-color: $flag-normal;
-    border-radius: 0 0 10px 10px;
     text-align: center;
   }
 }

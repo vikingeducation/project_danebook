@@ -1,5 +1,4 @@
 <!-- everything below the hero -->
-<section class = "row">
 
   <!-- user information -->
   <aside class = "col-md-4">
@@ -72,7 +71,7 @@
         </header>
 
         <section class="row">
-            <%= post_fields.text_area :content, :class => "form-control", rows: 3 %>
+            <%= post_fields.text_area :content, :class => "form-control", rows: 3, placeholder: "Tell the world! Or at least Denmark..." %>
         </section>
 
         <footer class="row">
@@ -87,5 +86,3 @@
     <%= render 'post', posts: @posts %>
 
   </div>
-
-</section>

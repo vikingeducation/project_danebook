@@ -1,0 +1,125 @@
+<%= form_for @user, class: "sign-up-form-group" do |user_fields| %>
+
+  <div class="sign-up-names row">
+    <div class="form-group col-md-6">
+      <%= user_fields.text_field :fname, {class: "form-control", placeholder: "First Name"} %>
+    </div>
+    <div class="form-group col-md-6">
+      <%= user_fields.text_field :lname, {class: "form-control", placeholder: "Last Name"} %>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="sign-up-email form-group">
+    <%= user_fields.text_field :email, {class: "form-control", placeholder: "Email"} %>
+  </div>
+  <br>
+  <div class="sign-up-pwd form-group">
+    <%= user_fields.password_field :password, {class: "form-control", placeholder: "password"} %>
+  </div>
+  <br>
+  <div class="sign-up-pwd form-group">
+    <%= user_fields.password_field :password_confirmation, {class: "form-control", placeholder: "password confirmation"} %>
+  </div>
+
+  <div class="sign-up-birthday">
+    <h4>Birthday</h4>
+
+    <div class="birthday-dates form-group"></div>
+  </div>
+
+  <div class="sign-up-gender lg">
+    <h4>
+    <%= user_fields.radio_button :gender, "Female", class: "radio-inline" %>
+    <%= user_fields.label :gender, "Female" %>
+    <%= user_fields.radio_button :gender, "Male", class: "radio-inline" %>
+    <%= user_fields.label :gender, "Male" %>
+    </h4>
+  </div>
+
+    <p class="for-lawyers col-lg-8">By clicking sign-up you agree that we can and will use all of your data without pause or consideration of your privacy.</p>
+
+  </div>
+  <%= user_fields.submit "Sign Up!", class: "sign-up-btn btn btn-success btn-lg col-sm-5 col-xs-12" %>
+<% end %>
+
+
+<!--
+
+  <form class="sign-up-form-group" role="form">
+
+    <div class="sign-up-names row">
+      <div class="sign-up-first-name col-md-6 form-group" >
+        <input type="text" class="input-md form-control" id="sign-up-name-1" placeholder="First name">
+      </div>
+
+      <div class="sign-up-last-name col-md-6 form-group" >
+        <input type="text" class="input-md form-control" id="sign-up-name-2" placeholder="Last name">
+      </div>
+    </div>
+
+
+      <input type="email" class="input-md form-control" id="sign-up-email-1" placeholder="Email">
+
+
+    <div class="sign-up-email form-group">
+
+      <input type="email" class="input-md form-control" id="sign-up-email-2" placeholder="Re-enter email">
+    </div>
+
+
+      <input type="password" class="input-md form-control" id="exampleInputPassword1" placeholder="New password">
+
+    <div class="sign-up-birthday">
+
+      <h4>Birthday</h4>
+
+      <div class="birthday-dates form-group">
+
+        <select class="month-dropdown-select btn btn-lg btn-default">
+          <option>Month</option>
+          <option value="1">Jan</option>
+          <option value="2">Feb</option>
+          <option value="3">Mar</option>
+          <option value="4">Apr</option>
+          <option value="5">May</option>
+          <option value="6">Jun</option>
+          <option value="7">Jul</option>
+          <option value="8">Aug</option>
+          <option value="9">Sep</option>
+          <option value="10">Oct</option>
+          <option value="11">Nov</option>
+          <option value="12">Dec</option>
+        </select>
+
+        <select class="day-dropdown-select btn btn-lg btn-default">
+          <option>Day</option>
+          <%= 1.upto(31) do |day|%>
+          	<%= raw("<option>#{day}</option>") %>
+          <% end %>
+        </select>
+
+        <select class="year-dropdown-select btn btn-lg btn-default">
+          <option value="" selected>Year</option>
+          <%= 2014.downto(1900) do |yr| %>
+             <%=raw("<option value='#{yr}'>#{yr}</option>") %>
+          <% end %>
+        </select>
+      </div>
+    </div>
+
+    <div class="sign-up-gender lg">
+      <h4>
+        <li><input type="radio" name="gender"> Male</li>
+        <li><input type="radio" name="ge  nder"> Female</li>
+      </h4>
+    </div>
+
+    <p class="for-lawyers col-lg-8">By clicking sign-up you agree that we can and will use all of your data without pause or consideration of your privacy.</p>
+
+    <button class="sign-up-btn btn btn-success btn-lg col-sm-5 col-xs-12">
+      Sign Up!
+    </button>
+
+  </form> -->

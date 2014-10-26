@@ -2,7 +2,7 @@ class UsersController < ApplicationController
   layout "login", only: [:new]
 
   skip_before_action :require_login, only: [:new, :create]
-
+  before_action :skip_login, only: [:new]
   def new
     @user = User.new
     @profile = @user.build_profile
@@ -39,5 +39,9 @@ class UsersController < ApplicationController
 
   def whitelisted_params
     params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :profile_attributes => [:month, :day, :year, :gender, :user_id] )
+  end
+
+  def skip_login
+    redirect_to current_user if signed_in_user?
   end
 end

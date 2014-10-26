@@ -22,10 +22,11 @@
           <input type="text" class="custom-form form-control" id="search_bar" placeholder="search for users">
         </div>
 
-        <div class="navbar my_name col-sm-offset-11">
-            <%= image_tag("default_user.gif", :id => "profile_thumbnail")%><p><%= link_to current_user.first_name, current_user%></p>
+        <div class="navbar my_name col-xs-2 col-xs-offset-1">
+            <%= image_tag("default_user.gif", :id => "profile_thumbnail")%><p><%= link_to current_user.first_name, current_user%> | </p>
+            <p class="sign_out"><%= link_to "Sign Out", logout_path, method: :delete %></p>
         </div>
-                    <%= link_to "Sign Out", logout_path, method: :delete %>
+                    
       </div>
       </nav> <!-- closing nav -->
     </div><!-- closing row -->

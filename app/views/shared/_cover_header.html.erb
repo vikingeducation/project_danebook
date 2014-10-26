@@ -15,7 +15,7 @@
     <div class = "col-md-7 col-md-offset-3">
       <ul class = "nav nav-tabs " role = "profile-nav">
         <li><%= link_to "Timeline", user_timeline_path(@user) %></li>
-        <li><%= link_to "About", about_path %></li>
+        <li><%= link_to "About", user_profile_path(@user) %></li>
         <li ><%= link_to 'Photos <span class="link-count hidden-xs">(123)</span>'.html_safe, photos_path %></li>
         <li><%= link_to 'Friends <span class="link-count hidden-xs">(542)</span>'.html_safe, friends_path %></li>
     </div>

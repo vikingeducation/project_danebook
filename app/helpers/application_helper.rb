@@ -1,6 +1,6 @@
 module ApplicationHelper
 
-  # is this 
+  # is this page the current_user's?
   def current_user_page?(user)
     user != nil && user == current_user
   end
@@ -35,7 +35,7 @@ module ApplicationHelper
     when 2
       sentence << "#{user_link(likable.users_who_liked.first)} and #{user_link(likable.users_who_liked.second)}".html_safe
     else
-      sentence << "#{user_link(likable.users_who_liked.first)} and #{user_link(likable.users_who_liked.second)} and #{likable.likes.size - 2} other ".html_safe
+      sentence << "#{user_link(likable.users_who_liked.first)}, #{user_link(likable.users_who_liked.second)} and #{likable.likes.size - 2} other ".html_safe
       user_string = ((likable.likes.size - 2) > 1) ? "users" : "user"
       sentence << user_string
     end

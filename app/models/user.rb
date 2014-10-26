@@ -16,6 +16,23 @@ class User < ActiveRecord::Base
   has_many :liked_posts, through: :likes, source: :likable, source_type: "Post"
   has_many :liked_comments, through: :likes, source: :likable, source_type: "Comment"
 
+
+
+  has_many :friendship_requests_made, :foreign_key => :friender_id,
+                                :class_name => "Friending"
+
+  has_many :friends,   :through => :friendship_requests_made,
+                                :source  => :friendee
+
+
+  has_many :friendship_requests_received, :foreign_key => :friendee_id,
+                                  :class_name => "Friending"
+  has_many :friend_requesters,  :through => :friendship_requests_received,
+                                  :source => :friender
+
+
+
+
   before_create :generate_token
 
   #create new auth token

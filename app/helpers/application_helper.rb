@@ -4,24 +4,23 @@ module ApplicationHelper
     user != nil && user == current_user
   end
 
-  def like_link(post)
-
-    if current_user.likes_post?(post)
-      like = current_user.like_of_post(post)
-      link_to "Unlike", [post.user, post, like], method: "delete", class: "col-md-1"
+  def like_link(likable)
+    if likable.is_a? Comment
+      comment_like_link(likable)
+    elsif likable.is_a? Post
+      post_like_link(likable)
     else
-      link_to "Like", [post.user, post, :likes], method: "post", class: "col-md-1"
+      ""
     end
   end
 
-  def comment_like_link(comment)
-    if current_user.likes_comment?(comment)
-      like = current_user.like_of_comment(comment)
-      link_to "Unlike", [comment.user, comment, like], method: "delete", class: "col-md-1"
-    else
-      link_to "Like", [comment.user, comment, :likes], method: "post", class: "col-md-1"
+  def delete_comment_link(comment)
+    if comment.user == current_user
+      link_to "Delete Comment", [comment.commentable.user, comment.commentable, comment], method: "delete", class: "col-md-1"
     end
   end
+
+
 
   def like_sentence(likable)
     return nil unless likable
@@ -48,5 +47,26 @@ module ApplicationHelper
     end
   end
 
+private
+
+
+def post_like_link(post)
+
+  if current_user.likes_post?(post)
+    like = current_user.like_of_post(post)
+    link_to "Unlike", [post.user, post, like], method: "delete", class: "col-md-1"
+  else
+    link_to "Like", [post.user, post, :likes], method: "post", class: "col-md-1"
+  end
+end
+
+def comment_like_link(comment)
+  if current_user.likes_comment?(comment)
+    like = current_user.like_of_comment(comment)
+    link_to "Unlike", [comment.commentable.user, comment.commentable, comment, like], method: "delete", class: "col-md-1"
+  else
+    link_to "Like", [comment.commentable.user, comment.commentable, comment, :likes], method: "post", class: "col-md-1"
+  end
+end
 
 end

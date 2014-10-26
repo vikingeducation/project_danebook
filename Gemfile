@@ -8,6 +8,7 @@ group :production do
 end
 
 group :test, :development do
+  gem 'faker'
   gem 'sqlite3'
   gem 'better_errors'
   gem 'binding_of_caller'

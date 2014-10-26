@@ -31,18 +31,18 @@ module ApplicationHelper
     when 0
       return ""
     when 1
-      sentence << "#{user_link(likable.users_who_liked.first)}".html_safe
+      sentence << "#{user_link(likable.users_who_liked.first).capitalize}".html_safe
     when 2
-      sentence << "#{user_link(likable.users_who_liked.first)} and #{user_link(likable.users_who_liked.second)}".html_safe
+      sentence << "#{user_link(likable.users_who_liked.first).capitalize} and #{user_link(likable.users_who_liked.second)}".html_safe
     else
-      sentence << "#{user_link(likable.users_who_liked.first).upcase}. and #{user_link(likable.users_who_liked.second).downcase} and #{likable.likes.size - 2} other users".html_safe
+      sentence << "#{user_link(likable.users_who_liked.first).capitalize} and #{user_link(likable.users_who_liked.second).downcase} and #{likable.likes.size - 2} other users".html_safe
     end
     sentence << " liked this #{likable.class.to_s.downcase}."
   end
 
   def user_link(user)
     if user == current_user
-      "You"
+      "you"
     elsif user
       link_to user.name, user
     end

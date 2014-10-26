@@ -1,0 +1,72 @@
+<!-- banner box -->
+<%= render 'layouts/jumbotron'%>
+
+<div class="row">
+<!-- profile panel -->
+	<div class="box-container about-container about-page-container">
+      <h2 class="col-sm-6 col-sm-offset-1"><%= image_tag('about_icon.png')%>About</h2>
+        <button class="btn-default pull-right about-edit-button col-sm-2">
+        	<%= link_to "Edit your profile", edit_user_path %>
+        </button>    
+	</div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12 about-content">
+        <section class="col-sm-4 about-left-panel">
+          <h3 class="BI">Basic Information</h3>
+
+          <table>
+            <tr>
+              <td><strong>Birthday</strong></td>
+              <td>
+              	<%= month_to_text(@user.birth_month) %> 
+              	<%= @user.birth_day %>, 
+              	<%= @user.birth_year %>
+              </td>
+            </tr>
+
+            <tr>
+              <td><strong>College</strong></td>
+              <td><%= @user.school.name %></td>
+            </tr>
+
+            <tr>
+              <td><strong>Hometown</strong></td>
+              <td><%= @hometown %></td>
+            </tr>
+
+            <tr>
+              <td><strong>Currently Lives</strong></td>
+              <td><%= @current %></td>
+            </tr>
+          </table>
+
+          <h3 class="CI">Contact Information</h3>
+          <table>
+            <tr>
+              <td><strong>Email</strong></td>
+              <td><%= @user.email %></td>
+            </tr>
+
+            <tr>
+              <td><strong>Telephone</strong></td>
+              <td><%= @user.phone %></td>
+            </tr>
+          </table>
+        </section>
+
+        <section class="col-sm-7 about-right-panel">
+          <h3>Words To Live By</h3>
+          <p class="quotes-text">
+          	<%= @user.words %>
+          </p>
+
+          <h3>About Me</h3>
+          <p class="about-me-text">
+          	<%= @user.about %>
+          </p>
+        </section>
+      </div>
+</div>
+

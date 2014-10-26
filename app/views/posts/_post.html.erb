@@ -1,0 +1,39 @@
+<div class="post-box"><!-- the box that holds user posts -->
+	<div class="post-header"><!-- the header is where the User Name, picture and post date will be -->
+		<%= image_tag('default_user.gif', :class => "post-user-image")%><!-- small user image -->
+		<div class="name-date">
+			<h6><%= link_to Post.get_author(post), user_path(post.user_id) %></h6>
+			<p class="post-date">
+				Posted <%= post.created_at %>
+			</p>
+		</div>
+	</div>
+
+	<div class="post-body"><!-- post text will be in the post-body element -->
+		<p><%= post.content %></p>
+	</div>
+
+	<div class="post-footer"><!-- the footer holds the post comments, like buttons, etc -->
+		<ul class="post-footer-links">
+
+			<% if post.likes.any? {|like| like.user_id == current_user.id} %>
+				<li><%= link_to "Unlike", like_path(:user => current_user, :post => post), method: :delete%></li>
+			<% else %>
+				<li><%= link_to "Like", new_like_path(:user => current_user, :post => post)%></li>
+			<% end %>
+				<li>·</li>
+				<% unless post.likes.count == 0 %>
+					<li><%= get_like_count(post,current_user) %> this</a></li>
+				<% end %>
+			
+			<li>·</li>
+			<li><a id="comment" href="#">Comment</a></li>
+			<li class="pull-right" id="delete"><%= link_to "Delete", user_post_path(post.user_id,post), method: :delete, data: {confirm: "You sure?"} %></li>
+		</ul>
+	</div>
+</div>
+
+	<% post.comments.each do |comment| %>
+		<%= render :partial => "comment", :locals => { :comment => comment, :post => post } %>
+	<% end %>
+

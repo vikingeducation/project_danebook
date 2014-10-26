@@ -1,0 +1,93 @@
+<div class="row">
+    <div class="col-sm-12 about-content">
+
+    	<%= form_for @user do |user| %>
+
+        <section class="col-sm-4 about-left-panel">
+          <h3 class="BI">Basic Information</h3>
+
+          <table>
+            <tr>
+              <td><strong>Birthday</strong></td>
+              <td>
+              	<%= user.label :birth_month, "Month" %>
+              	<%= user.text_field :birth_month %>
+              	<%= user.label :birth_day, "Day" %>
+              	<%= user.text_field :birth_day %>
+				<%= user.label :birth_year, "Year" %>
+              	<%= user.text_field :birth_year %>
+              </td>
+            </tr>
+
+            <tr>
+              <td><strong>College</strong></td>
+              <td>
+              	<%= user.fields_for :school do |school_fields| %>
+              		<%= school_fields.label :name %>
+              		<%= school_fields.text_field :name %>
+              	<% end %>
+              </td>
+            </tr>
+
+            <tr>
+              <td><strong>Hometown</strong></td>
+              <td>
+              	<%= user.fields_for :location do |location_fields| %>
+              		<%= location_fields.label :city %>
+              		<%= location_fields.text_field :city %>
+
+              		<%= location_fields.label :country %>
+              		<%= location_fields.text_field :country %>
+              	<% end %>
+			  </td>
+            </tr>
+
+            <tr>
+              <td><strong>Currently Lives</strong></td>
+              <td>EDIT THIS</td>
+            </tr>
+          </table>
+
+          <h3 class="CI">Contact Information</h3>
+          <table>
+            <tr>
+              <td><strong>Email</strong></td>
+              <td>
+              	<%= user.label :email %>
+              	<%= user.text_field :email %>
+              </td>
+            </tr>
+
+            <tr>
+              <td><strong>Telephone</strong></td>
+              <td>
+              	<%= user.label :phone %>
+              	<%= user.text_field :phone %>
+              </td>
+            </tr>
+          </table>
+        </section>
+
+        <section class="col-sm-7 about-right-panel">
+          <h3>Words To Live By</h3>
+          <p class="quotes-text">
+          	<%= user.text_area :words %>
+          </p>
+
+          <h3>About Me</h3>
+          <p class="about-me-text">
+          	<%= user.text_area :about %>
+          </p>
+        </section>
+
+
+
+        <div class="row">
+	        <section class="col-sm-4 col-sm-offset-4 ">
+	        	<%= user.submit "Save Changes", class: "btn btn-primary btn-lg btn-success btn-block btn-signup save-button" %>
+	        </section>
+      	</div>
+
+           <% end %>
+      </div>
+</div>

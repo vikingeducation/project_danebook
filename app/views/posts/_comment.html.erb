@@ -1,0 +1,36 @@
+<div class="post-comments"><!-- contains other user comments on a user post -->
+	<div class="alt-user-header">
+		<%= image_tag('default_user.gif', :class => "post-user-image")%>
+		<div class="alt-name-date">
+			<h6><a href="#"><%= link_to Comment.get_author(comment), user_path(comment.user_id) %></a>
+			</h6>
+			<p class="alt-post-date">said on <%= comment.created_at %></p>
+		</div>
+	</div>
+
+	<div class="comment-body">
+		<p><%= comment.body %></p>
+	</div>
+
+	<div class="comm-like-bar grey-text"><!-- the footer holds the post comments, like buttons, etc -->
+		<ul class="post-footer-links">
+
+			<% if comment.likes.any? {|like| like.user_id == current_user.id} %>
+				<li><%= link_to "Unlike", like_path(:user => current_user, :comment => comment, :post => post), method: :delete%></li>
+			<% else %>
+				<li><%= link_to "Like", new_like_path(:user => current_user, :comment => comment, :post => post)%></li>
+			<% end %>
+				<li>·</li>
+				<% unless comment.likes.count == 0 %>
+					<li><%= get_comment_like_count(comment,current_user) %> this</a></li>
+					<li>·</li>
+				<% end %>
+			
+			
+			<li><a id="comment" href="#">Comment</a></li>
+			<%#<li class="pull-right" id="delete"><%= link_to "Delete", user_post_path(post.user_id,post), method: :delete, data: {confirm: "You sure?"} %></li>
+		</ul>
+	</div>
+
+</div>
+				

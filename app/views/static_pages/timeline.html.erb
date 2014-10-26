@@ -1,0 +1,233 @@
+<%= render 'layouts/navbar_logged_in' %>
+<main>
+<!-- nav bar -->
+
+<!-- banner box -->
+<%= render 'layouts/jumbotron'%>
+
+	<!-- Begin below banner photo -->
+	<div class="container"> 
+		<div class="row">
+			
+			<section class="col-sm-4"> <!-- left side -->
+				<div class="box-container">
+					<h3>About</h3>
+					    <table>
+						    <tr>
+							    <td><strong>Born on: </strong></td>
+							    <td>July 31st, 1980</td>
+						    </tr>
+
+						    <tr>
+							    <td><strong>Went to school at: </strong></td>
+							    <td>Hogwarts</td>
+						    </tr>
+
+						    <tr>
+							    <td><strong>Hometown: </strong></td>
+							    <td>Godrick's Hollow, England</td>
+						    </tr>
+
+						    <tr>
+							    <td><strong>Currently Lives: </strong></td>
+							    <td>Godrick's Hollow, England</td>
+						    </tr>
+						</table>   
+				</div>
+				<div class="box-container">
+					<h3>Photos (123)</h3>
+					    <table>
+							<tr>
+								<td><%= image_tag('default_user.gif')%></td>
+								<td><%= image_tag('default_user.gif')%></td>
+								<td><%= image_tag('default_user.gif')%></td>
+							</tr>
+							<tr>
+								<td><%= image_tag('default_user.gif')%></td>
+								<td><%= image_tag('default_user.gif')%></td>
+								<td><%= image_tag('default_user.gif')%></td>
+							</tr>
+							<tr>
+								<td><%= image_tag('default_user.gif')%></td>
+								<td><%= image_tag('default_user.gif')%></td>
+								<td><%= image_tag('default_user.gif')%></td>
+							</tr>
+						</table>   
+						<div class="box-container-span"><a href="#">See More Photos</a></div>
+				</div>
+				<div class="box-container">
+					<h3>Friends (542)</h3>
+						<table>
+							<tr>
+								<td><figure><%= image_tag('default_user.gif')%><figcaption><a href="#">Ron<br />Weasley</a></figcaption></figure></td>
+								<td><%= image_tag('default_user.gif')%><figure><figcaption><a href="#">Ginny<br />Weasley</a></figcaption></figure></td>
+								<td><%= image_tag('default_user.gif')%><figure><figcaption><a href="#">Hermione<br />Granger</a></figcaption></figure></td>
+							</tr>
+							<tr>
+								<td><%= image_tag('default_user.gif')%><figure><figcaption><a href="#">paragraph<br />text</a></figcaption></figure></td>
+								<td><%= image_tag('default_user.gif')%><figure><figcaption><a href="#">paragraph<br />text</a></figcaption></figure></td>
+								<td><%= image_tag('default_user.gif')%><figure><figcaption><a href="#">paragraph<br />text</a></figcaption></figure></td>
+							</tr>
+						</table>
+						<div class="box-container-span"><a href="#">See More Friends</a></div>  
+				</div>
+
+
+
+			</section>
+			<section class="col-sm-8"><!-- right side -->
+				<div class="box-container post-input-box">
+				<h3>Post</h3>
+					<textarea class="form-control" rows="3" placeholder="Tell the world something.."></textarea>
+					<div class="box-container-bottom">
+					<button class="btn btn-primary">Post</button>
+					</div>
+				</div>
+
+				<div class="post-box"><!-- the box that holds user posts -->
+					<div class="post-header"><!-- the header is where the User Name, picture and post date will be -->
+						<%= image_tag('default_user.gif', :class => "post-user-image")%><!-- small user image -->
+						<div class="name-date"><h6><a href="#">Harry Potter</a></h6>
+						<p class="post-date">Posted on Thursday 6/1/2014</p></div>
+					</div>
+
+					<div class="post-body"><!-- post text will be in the post-body element -->
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+						proident, sunt in culpa qui</p>
+					</div>
+
+					<div class="post-footer"><!-- the footer holds the post comments, like buttons, etc -->
+						<ul class="post-footer-links">
+							<li><a id="like" href="#">Like</a></li>
+							<li>·</li>
+							<li><a id="comment" href="#">Comment</a></li>
+							<li class="pull-right" id="delete"><a href="#">Delete</a></li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="post-box"><!-- the box that holds user posts -->
+					<div class="post-header"><!-- the header is where the User Name, picture and post date will be -->
+						<%= image_tag('default_user.gif', :class => "post-user-image")%><!-- small user image -->
+						<div class="name-date"><h6><a href="#">Harry Potter</a></h6>
+						<p class="post-date">Posted on Thursday 5/21/2014</p></div>
+					</div>
+
+					<div class="post-body"><!-- post text will be in the post-body element -->
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+						proident, sunt in culpa qui</p>
+					</div>
+
+					<div class="post-footer"><!-- the footer holds the post comments, like buttons, etc -->
+						<ul class="post-footer-links">
+							<li><a id="like" href="#">Like</a></li>
+							<li>·</li>
+							<li><a id="comment" href="#">Comment</a></li>
+							<li class="pull-right" id="delete"><a href="#">Delete</a></li>
+						</ul>
+						<div class="like-bar">
+							<p><a href="#">Hermione Granger</a> likes this.</p>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="post-box"><!-- the box that holds user posts -->
+					<div class="post-header"><!-- the header is where the User Name, picture and post date will be -->
+						<%= image_tag('default_user.gif', :class => "post-user-image")%><!-- small user image -->
+						<div class="name-date"><h6><a href="#">Harry Potter</a></h6>
+						<p class="post-date">Posted on Thursday 5/21/2014</p></div>
+					</div>
+
+					<div class="post-body"><!-- post text will be in the post-body element -->
+						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+						proident, sunt in culpa qui</p>
+					</div>
+
+					<div class="post-footer"><!-- the footer holds the post comments, like buttons, etc -->
+						<ul class="post-footer-links">
+							<li><a id="like" href="#">Like</a></li>
+							<li>·</li>
+							<li><a id="comment" href="#">Comment</a></li>
+							<li class="pull-right" id="delete"><a href="#">Delete</a></li>
+						</ul>
+						<div class="like-bar">
+							<p>You and <a href="#">Hermione Granger</a> and 3 others like this.</p>
+						</div>
+						<div class="post-comments"><!-- contains other user comments on a user post -->
+							<div class="alt-user-header">
+								<%= image_tag('default_user.gif', :class => "post-user-image")%>
+								<div class="alt-name-date"><h6> <a href="#">Ron Weasley</a></h6>
+								<p class="alt-post-date">said on Thursday 5/21/2014.</p>
+								</div>
+							</div>
+
+							<div class="comment-body">
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+							quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+							consequat. Duis aute irure dolor in reprehenderit in</p>
+							</div>
+							<div class="comm-like-bar grey-text">
+								<p><a href="#">Like</a> 3 other people like this</p> 
+							</div>
+
+							<div class="alt-user-header">
+								<%= image_tag('default_user.gif', :class => "post-user-image")%>
+								<div class="alt-name-date"><h6> <a href="#">Harry Potter</a></h6>
+								<p class="alt-post-date">said on Friday 5/22/2014.</p>
+								</div>
+							</div>
+
+							<div class="comment-body">
+							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+							tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+							quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+							consequat. Duis aute irure dolor in reprehenderit in</p>
+							</div>
+							<div class="comm-like-bar grey-text">
+								<p><a href="#">Like</a> 3 other people like this.<span class="pull-right" id="delete"><a href="#">Delete</a></span></p>
+							</div>
+						</div>
+						
+						<form role="form">
+							<div class="form-group">
+								<textarea id="comment_text" class="form-control" rows="3" placeholder="Write a comment.."></textarea>
+							</div>
+							
+							<div id="comm_cancel_bar">
+								<p><a href="#">Cancel</a></p>
+								<button class="pull-right btn btn-primary">Comment</button>
+							</div>
+						</form>
+					</div>	
+				</div>
+
+
+			</section>
+
+
+
+
+		
+		</div>
+	</div>
+
+
+
+
+
+	<!-- banner box -->
+	</main>

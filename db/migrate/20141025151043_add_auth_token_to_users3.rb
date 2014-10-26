@@ -1,6 +1,9 @@
 class AddAuthTokenToUsers3 < ActiveRecord::Migration
-  def change
+  def up
     add_column :users, :auth_token, :string
     add_index :users, :auth_token, :unique => true
+  end
+
+  def down
   end
 end

@@ -31,11 +31,13 @@ module ApplicationHelper
     when 0
       return ""
     when 1
-      sentence << "#{user_link(likable.users_who_liked.first).capitalize}".html_safe
+      sentence << "#{user_link(likable.users_who_liked.first)}".html_safe
     when 2
-      sentence << "#{user_link(likable.users_who_liked.first).capitalize} and #{user_link(likable.users_who_liked.second)}".html_safe
+      sentence << "#{user_link(likable.users_who_liked.first)} and #{user_link(likable.users_who_liked.second)}".html_safe
     else
-      sentence << "#{user_link(likable.users_who_liked.first).capitalize} and #{user_link(likable.users_who_liked.second).downcase} and #{likable.likes.size - 2} other users".html_safe
+      sentence << "#{user_link(likable.users_who_liked.first)} and #{user_link(likable.users_who_liked.second)} and #{likable.likes.size - 2} other ".html_safe
+      user_string = ((likable.likes.size - 2) > 1) ? "users" : "user"
+      sentence << user_string
     end
     sentence << " liked this #{likable.class.to_s.downcase}."
   end

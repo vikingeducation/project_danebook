@@ -14,21 +14,30 @@ module ApplicationHelper
     end
   end
 
-  def like_sentence(post)
-    return nil unless post
+  def comment_like_link(comment)
+    if current_user.likes_comment?(comment)
+      like = current_user.like_of_comment(comment)
+      link_to "Unlike", [comment.user, comment, like], method: "delete", class: "col-md-1"
+    else
+      link_to "Like", [comment.user, comment, :likes], method: "post", class: "col-md-1"
+    end
+  end
+
+  def like_sentence(likable)
+    return nil unless likable
     sentence = ""
 
-    case post.likes.size
+    case likable.likes.size
     when 0
       return ""
     when 1
-      sentence << "#{user_link(post.users_who_liked.first)}".html_safe
+      sentence << "#{user_link(likable.users_who_liked.first)}".html_safe
     when 2
-      sentence << "#{user_link(post.users_who_liked.first)} and #{user_link(post.users_who_liked.second)}".html_safe
+      sentence << "#{user_link(likable.users_who_liked.first)} and #{user_link(likable.users_who_liked.second)}".html_safe
     else
-      sentence << "#{user_link(post.users_who_liked.first).upcase}. and #{user_link(post.users_who_liked.second).downcase} and #{post.likes.size - 2} other users".html_safe
+      sentence << "#{user_link(likable.users_who_liked.first).upcase}. and #{user_link(likable.users_who_liked.second).downcase} and #{likable.likes.size - 2} other users".html_safe
     end
-    sentence << " liked this post."
+    sentence << " liked this #{likable.class.to_s.downcase}."
   end
 
   def user_link(user)

@@ -9,10 +9,12 @@ class User < ActiveRecord::Base
   has_one :profile
   accepts_nested_attributes_for :profile
 
+  has_many :comments
   has_many :posts
   has_many :likes
 
   has_many :liked_posts, through: :likes, source: :likable, source_type: "Post"
+  has_many :liked_comments, through: :likes, source: :likable, source_type: "Comment"
 
   before_create :generate_token
 
@@ -39,10 +41,24 @@ class User < ActiveRecord::Base
     posts.order("created_at DESC")
   end
 
+  # does this user like that post?
   def likes_post?(post)
     liked_posts.include?(post)
   end
 
+  # does this user like that comment?
+  def likes_comment?(comment)
+    liked_comments.include?(comment)
+  end
+
+  # given a comment, returns this user's Like of that comment from
+  # the Likes table. If this user doesn't like that comment, returns nil
+  def like_of_comment(comment)
+    likes_comment?(comment) ? likes.find_by(:likable_id => comment.id, :likable_type => "Comment") : nil
+  end
+
+  # given a post, returns this user's Like of that post from the Likes table.
+  # If this user doesn't like that post, returns nil
   def like_of_post(post)
     likes_post?(post) ? likes.find_by(:likable_id => post.id, :likable_type => "Post") : nil
   end

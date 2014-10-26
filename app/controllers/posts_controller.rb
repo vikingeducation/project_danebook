@@ -1,8 +1,9 @@
 class PostsController < ApplicationController
   def new
     @user = User.find(params[:id])
-    @hometown = Location.get_location(@user.location_id).to_s
-    @current = Location.get_location(@user.current_location_id).to_s
+
+    @hometown = Location.get_location(@user.location_id).to_s if @user.location_id
+    @current = Location.get_location(@user.current_location_id).to_s if @user.current_location_id
     
     #@posts means all posts and @post means creating a new post:
     @posts=@user.posts

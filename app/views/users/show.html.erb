@@ -28,7 +28,7 @@
 
             <tr>
               <td><strong>College</strong></td>
-              <td><%= @user.school.name %></td>
+              <td><%= @user.school.name unless @user.school.nil?%></td>
             </tr>
 
             <tr>
@@ -59,12 +59,12 @@
         <section class="col-sm-7 about-right-panel">
           <h3>Words To Live By</h3>
           <p class="quotes-text">
-          	<%= @user.words %>
+          	<%= @user.words unless @user.words.nil? %>
           </p>
 
           <h3>About Me</h3>
           <p class="about-me-text">
-          	<%= @user.about %>
+          	<%= @user.about unless @user.about.nil? %>
           </p>
         </section>
       </div>

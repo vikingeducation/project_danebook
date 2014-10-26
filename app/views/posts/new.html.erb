@@ -18,7 +18,7 @@
 				    <tr>
 					    <td><strong>Went to school at: </strong></td>
 					    <td>
-					    	<%= @user.school.name %>
+					    	<%= @user.school.name unless @user.school.nil? %>
 					    </td>
 				    </tr>
 

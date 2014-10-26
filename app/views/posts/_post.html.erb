@@ -36,11 +36,20 @@
 	<% end %>
 
 	<%= form_tag(comments_path(post)) do %>
-	  <%= label_tag(:body, "Comment") %>
-	  <%= text_field_tag(:body) %>
+	<div class="form-group post-input-box">
+	  <%= text_area_tag :body, nil, placeholder: 'Write a comment..', class: "form-control comment_text"%>
+	</div>
 	  <%= hidden_field_tag(:commentable_type, "Post") %>
-	  <%= submit_tag("Post Comment") %>
+	<div class="box-container-bottom">
+	  <%= submit_tag ("Post Comment"), class: "btn btn-primary" %>
+	</div>
 	<% end %>
+
+
+
+
+
+
 
 	</div>
 </div>

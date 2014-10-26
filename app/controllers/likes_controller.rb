@@ -7,7 +7,6 @@ class LikesController < ApplicationController
 
     if params[:comment]
       @comment = Comment.find(params[:comment])
-
       if Like.create_comment_like(@user,@comment)
         flash[:success] = "You liked it!"
         redirect_to session.delete(:return_to)

@@ -37,3 +37,11 @@
 		<%= render :partial => "comment", :locals => { :comment => comment, :post => post } %>
 	<% end %>
 
+	<%= form_tag(comments_path(post)) do %>
+	  <%= label_tag(:body, "Comment") %>
+	  <%= text_field_tag(:body) %>
+	  <%= hidden_field_tag(:commentable_type, "Post") %>
+	  <%= submit_tag("Post Comment") %>
+	<% end %>
+
+

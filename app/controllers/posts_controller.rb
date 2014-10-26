@@ -8,10 +8,6 @@ class PostsController < ApplicationController
     #@posts means all posts and @post means creating a new post:
     @posts=@user.posts
     @post = Post.new
-
-
-
-    
   end
 
   def create

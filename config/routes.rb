@@ -7,8 +7,14 @@ Danebook::Application.routes.draw do
   get '/about_edit' => 'static_pages#about_edit'
 
   resources :users do
-    resources :posts
+    resources :posts 
   end
+  
+  scope 'posts/:post_id' do
+    resources :comments, :only => [:create, :destroy]
+  end
+ 
+
   resources :likes
   resources :comments
 

@@ -9,12 +9,17 @@ module LikesHelper
 
   def likes_count(object)
     scale = object.likes.size
-    string = false if scale == 0
-    string = "#{object.likes[0].liker.name} " if scale > 0
-    string += "#{object.likes[1].liker.name} " if scale > 1
-    string += "#{pluralize(object.likes_count, 'other person')} " if scale > 2
-    like = (scale > 1 ? "like" : "likes")
 
-    string ? "<div class='col-xs-12'><p class='pull-left'>#{string + like + ' this.'}</p></div>".html_safe : nil
+    if scale > 2
+      string = "#{object.likes[0].liker.name}, #{object.likes[1].liker.name}, and #{pluralize(scale - 2, 'other person')} like this."
+    elsif scale == 2
+      string = "#{object.likes[0].liker.name} and #{object.likes[1].liker.name} like this."
+    elsif scale == 1
+      string = "#{object.likes[0].liker.name} likes this."
+    else
+      string = false
+    end
+
+    string ? content_tag(:div, content_tag(:p, string, :class => 'pull-left'), :class => 'col-xs-12') : nil
   end
 end

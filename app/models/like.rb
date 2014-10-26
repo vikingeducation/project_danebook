@@ -7,5 +7,5 @@ class Like < ActiveRecord::Base
   # make sure that likes are only possible for appropriate objects
   validates :likable_type, inclusion: ["Post", "Comment"]
   # a user can only like a thing once
-  validates :liker, uniqueness: { scope: :likable }
+  validates :liker, uniqueness: { scope: [:likable_type, :likable_id] }
 end

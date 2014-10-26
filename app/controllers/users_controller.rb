@@ -39,8 +39,12 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @hometown = Location.get_location(@user.location_id).to_s
-    @current = Location.get_location(@user.current_location_id).to_s
+    if @user.location_id
+      @hometown = Location.get_location(@user.location_id).to_s
+    end
+    if @user.current_location_id
+      @current = Location.get_location(@user.current_location_id).to_s
+    end
   end
 
   private

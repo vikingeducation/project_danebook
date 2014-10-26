@@ -10529,3 +10529,183 @@ Binary data inserted for `string` type on column `password_digest`
   [1m[36m (0.0ms)[0m  [1mbegin transaction[0m
   [1m[35mSQL (0.2ms)[0m  INSERT INTO "schools" ("created_at", "name", "updated_at") VALUES (?, ?, ?)  [["created_at", Sun, 26 Oct 2014 19:03:41 UTC +00:00], ["name", "Dibbert, Moen and Bahringer University"], ["updated_at", Sun, 26 Oct 2014 19:03:41 UTC +00:00]]
   [1m[36m (3.3ms)[0m  [1mcommit transaction[0m
+
+
+Started GET "/" for 127.0.0.1 at 2014-10-26 15:11:41 -0400
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsersController#new as HTML
+  [1m[35mUser Load (0.3ms)[0m  SELECT "users".* FROM "users" WHERE "users"."auth_token" = 'yJEy5PmbQWkHipyjT7Bq5g' LIMIT 1
+  Rendered users/_homepage_left.html.erb (31.3ms)
+  Rendered shared/_error_messages.html.erb (3.4ms)
+  Rendered users/_user_fields.html.erb (527.0ms)
+  Rendered users/new.html.erb within layouts/application (566.1ms)
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT "users".* FROM "users" WHERE "users"."auth_token" = 'yJEy5PmbQWkHipyjT7Bq5g' LIMIT 1[0m
+  Rendered layouts/_navbar.html.erb (17.3ms)
+Completed 200 OK in 1591ms (Views: 1533.8ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/assets/application.css?body=1" for 127.0.0.1 at 2014-10-26 15:11:43 -0400
+
+
+Started GET "/assets/likes.css?body=1" for 127.0.0.1 at 2014-10-26 15:11:43 -0400
+
+
+Started GET "/assets/posts.css?body=1" for 127.0.0.1 at 2014-10-26 15:11:43 -0400
+
+
+Started GET "/assets/users.css?body=1" for 127.0.0.1 at 2014-10-26 15:11:43 -0400
+
+
+Started GET "/assets/jquery_ujs.js?body=1" for 127.0.0.1 at 2014-10-26 15:11:43 -0400
+
+
+Started GET "/assets/likes.js?body=1" for 127.0.0.1 at 2014-10-26 15:11:43 -0400
+
+
+Started GET "/assets/sessions.css?body=1" for 127.0.0.1 at 2014-10-26 15:11:43 -0400
+
+
+Started GET "/assets/static_pages.css?body=1" for 127.0.0.1 at 2014-10-26 15:11:43 -0400
+
+
+Started GET "/assets/posts.js?body=1" for 127.0.0.1 at 2014-10-26 15:11:44 -0400
+
+
+Started GET "/assets/sessions.js?body=1" for 127.0.0.1 at 2014-10-26 15:11:44 -0400
+
+
+Started GET "/assets/turbolinks.js?body=1" for 127.0.0.1 at 2014-10-26 15:11:44 -0400
+
+
+Started GET "/assets/users.js?body=1" for 127.0.0.1 at 2014-10-26 15:11:44 -0400
+
+
+Started GET "/assets/static_pages.js?body=1" for 127.0.0.1 at 2014-10-26 15:11:44 -0400
+
+
+Started GET "/assets/application.js?body=1" for 127.0.0.1 at 2014-10-26 15:11:44 -0400
+
+
+Started GET "/assets/jquery.js?body=1" for 127.0.0.1 at 2014-10-26 15:11:44 -0400
+
+
+Started GET "/assets/logo.png" for 127.0.0.1 at 2014-10-26 15:11:44 -0400
+
+
+Started GET "/assets/homepage_1.png" for 127.0.0.1 at 2014-10-26 15:11:44 -0400
+
+
+Started GET "/assets/homepage_3.png" for 127.0.0.1 at 2014-10-26 15:11:44 -0400
+
+
+Started GET "/assets/homepage_2.png" for 127.0.0.1 at 2014-10-26 15:11:44 -0400
+
+
+Started GET "/assets/homepage_4.png" for 127.0.0.1 at 2014-10-26 15:11:44 -0400
+
+
+Started POST "/users" for 127.0.0.1 at 2014-10-26 15:11:50 -0400
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"VchpM2vQHJem7zrShBDXRtxK7jASKLagfDZ54rRbazY=", "user"=>{"first_name"=>"asdflkj", "last_name"=>"lkjadklf", "email"=>"asldkfjadkls@gmail.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "birth_month"=>"", "birth_day"=>"", "birth_year"=>""}, "commit"=>"Sign Up"}
+  [1m[35m (0.1ms)[0m  begin transaction
+  [1m[36mUser Exists (0.3ms)[0m  [1mSELECT 1 AS one FROM "users" WHERE "users"."auth_token" = 'z0HBxg4hNyXVZMhRZb-ZYg' LIMIT 1[0m
+Binary data inserted for `string` type on column `password_digest`
+  [1m[35mSQL (31.4ms)[0m  INSERT INTO "users" ("auth_token", "created_at", "email", "first_name", "last_name", "password_digest", "updated_at") VALUES (?, ?, ?, ?, ?, ?, ?)  [["auth_token", "z0HBxg4hNyXVZMhRZb-ZYg"], ["created_at", Sun, 26 Oct 2014 19:11:50 UTC +00:00], ["email", "asldkfjadkls@gmail.com"], ["first_name", "asdflkj"], ["last_name", "lkjadklf"], ["password_digest", "$2a$10$DHO0tpzhXhL3XDQRHqJSu.PzW0YObP02Xup0s64o9tw.5y2aAQf56"], ["updated_at", Sun, 26 Oct 2014 19:11:50 UTC +00:00]]
+  [1m[36m (2.4ms)[0m  [1mcommit transaction[0m
+  [1m[35mUser Exists (0.2ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."auth_token" = 'V7nMelbSomd6euF-yAf-wA' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mbegin transaction[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "users" SET "auth_token" = ?, "updated_at" = ? WHERE "users"."id" = 501  [["auth_token", "V7nMelbSomd6euF-yAf-wA"], ["updated_at", Sun, 26 Oct 2014 19:11:50 UTC +00:00]]
+  [1m[36m (2.4ms)[0m  [1mcommit transaction[0m
+Redirected to http://localhost:3000/users/501
+Completed 302 Found in 154ms (ActiveRecord: 37.3ms)
+
+
+Started GET "/users/501" for 127.0.0.1 at 2014-10-26 15:11:50 -0400
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"501"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = ? LIMIT 1  [["id", "501"]]
+Completed 404 Not Found in 15ms
+
+ActiveRecord::RecordNotFound - Couldn't find Location without an ID:
+  activerecord (4.0.4) lib/active_record/relation/finder_methods.rb:267:in `find_with_ids'
+  activerecord (4.0.4) lib/active_record/relation/finder_methods.rb:36:in `find'
+  activerecord-deprecated_finders (1.0.3) lib/active_record/deprecated_finders/relation.rb:122:in `find'
+  activerecord (4.0.4) lib/active_record/querying.rb:3:in `find'
+  app/models/location.rb:5:in `get_location'
+  app/controllers/users_controller.rb:42:in `show'
+  actionpack (4.0.4) lib/action_controller/metal/implicit_render.rb:4:in `send_action'
+  actionpack (4.0.4) lib/abstract_controller/base.rb:189:in `process_action'
+  actionpack (4.0.4) lib/action_controller/metal/rendering.rb:10:in `process_action'
+  actionpack (4.0.4) lib/abstract_controller/callbacks.rb:18:in `block in process_action'
+  activesupport (4.0.4) lib/active_support/callbacks.rb:403:in `_run__1709015786745568830__process_action__callbacks'
+  activesupport (4.0.4) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.4) lib/abstract_controller/callbacks.rb:17:in `process_action'
+  actionpack (4.0.4) lib/action_controller/metal/rescue.rb:29:in `process_action'
+  actionpack (4.0.4) lib/action_controller/metal/instrumentation.rb:31:in `block in process_action'
+  activesupport (4.0.4) lib/active_support/notifications.rb:159:in `block in instrument'
+  activesupport (4.0.4) lib/active_support/notifications/instrumenter.rb:20:in `instrument'
+  activesupport (4.0.4) lib/active_support/notifications.rb:159:in `instrument'
+  actionpack (4.0.4) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+  actionpack (4.0.4) lib/action_controller/metal/params_wrapper.rb:250:in `process_action'
+  activerecord (4.0.4) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+  actionpack (4.0.4) lib/abstract_controller/base.rb:136:in `process'
+  actionpack (4.0.4) lib/abstract_controller/rendering.rb:44:in `process'
+  actionpack (4.0.4) lib/action_controller/metal.rb:195:in `dispatch'
+  actionpack (4.0.4) lib/action_controller/metal/rack_delegation.rb:13:in `dispatch'
+  actionpack (4.0.4) lib/action_controller/metal.rb:231:in `block in action'
+  actionpack (4.0.4) lib/action_dispatch/routing/route_set.rb:80:in `dispatch'
+  actionpack (4.0.4) lib/action_dispatch/routing/route_set.rb:48:in `call'
+  actionpack (4.0.4) lib/action_dispatch/journey/router.rb:71:in `block in call'
+  actionpack (4.0.4) lib/action_dispatch/journey/router.rb:59:in `call'
+  actionpack (4.0.4) lib/action_dispatch/routing/route_set.rb:674:in `call'
+  rack (1.5.2) lib/rack/etag.rb:23:in `call'
+  rack (1.5.2) lib/rack/conditionalget.rb:25:in `call'
+  rack (1.5.2) lib/rack/head.rb:11:in `call'
+  actionpack (4.0.4) lib/action_dispatch/middleware/params_parser.rb:27:in `call'
+  actionpack (4.0.4) lib/action_dispatch/middleware/flash.rb:241:in `call'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:225:in `context'
+  rack (1.5.2) lib/rack/session/abstract/id.rb:220:in `call'
+  actionpack (4.0.4) lib/action_dispatch/middleware/cookies.rb:486:in `call'
+  activerecord (4.0.4) lib/active_record/query_cache.rb:36:in `call'
+  activerecord (4.0.4) lib/active_record/connection_adapters/abstract/connection_pool.rb:626:in `call'
+  activerecord (4.0.4) lib/active_record/migration.rb:373:in `call'
+  actionpack (4.0.4) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.0.4) lib/active_support/callbacks.rb:373:in `_run__2390845829003114971__call__callbacks'
+  activesupport (4.0.4) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.4) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.0.4) lib/action_dispatch/middleware/reloader.rb:64:in `call'
+  actionpack (4.0.4) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  better_errors (2.0.0) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (2.0.0) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (2.0.0) lib/better_errors/middleware.rb:57:in `call'
+  actionpack (4.0.4) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.0.4) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.4) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.4) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.4) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.0.4) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.0.4) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.0.4) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.4) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.4) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.4) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.4) lib/rails/engine.rb:511:in `call'
+  railties (4.0.4) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/staceypatrick/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/staceypatrick/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/staceypatrick/.rvm/rubies/ruby-2.1.2/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+
+Started POST "/__better_errors/a38747e7e31178a8/variables" for 127.0.0.1 at 2014-10-26 15:11:50 -0400
+  [1m[36mLocation Load (4.5ms)[0m  [1mSELECT "locations".* FROM "locations"[0m
+
+
+Started POST "/__better_errors/a38747e7e31178a8/variables" for 127.0.0.1 at 2014-10-26 15:12:16 -0400

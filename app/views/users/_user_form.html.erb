@@ -1,51 +1,25 @@
 <div class="col-md-6">
-
-  <%= form_for(@user) do |f| %>
+  <%= simple_form_for @user, defaults: { input_html: { class: 'form-control' }, wrapper_html: { class: 'form-group col-xs-12' } } do |f| %>
     <div class="col-xs-12">
       <h3>Sign Up</h3>
     </div>
 
-    <%= render 'shared/errors', :object => @user %>
+    <%= f.input :first_name, placeholder: 'Your first name', wrapper_html: { class: 'form-group col-xs-6' } %>
 
-    <div class="form-group col-xs-6">
-      <%= f.label :first_name %>
-      <%= f.text_field :first_name, :class => "form-control", :placeholder => "Your First Name" %>
-    </div>
+    <%= f.input :last_name, placeholder: 'Your last name', wrapper_html: { class: 'form-group col-xs-6' } %>
 
-    <div class="form-group col-xs-6">
-      <%= f.label :last_name %>
-      <%= f.text_field :last_name, :class => "form-control", :placeholder => "Your Last Name" %>
-    </div>
+    <%= f.input :email, placeholder: 'Your email address' %>
 
-    <div class="form-group col-xs-12">
-      <%= f.label :email %>
-      <%= f.email_field :email, :class => "form-control", :placeholder => "Your email address" %>
-    </div>
+    <%= f.input :password, placeholder: "Your new password" %>
+
+    <%= f.input :password_confirmation, placeholder: "Re-enter password" %>
+
+    <%= f.input :birthday, end_year: (Date.today.year-100), start_year: (Date.today.year-15), prompt: {day: "Day", month: "Month", year: "Year"}, order: [:month, :day, :year], wrapper_html: { class: 'form-inline col-xs-12' } %>
+
+    <%= f.input :gender, as: :radio_buttons, collection: ["Male", "Female"], input_html: { class: 'radio-inline' } %>
 
     <div class="form-group col-xs-12">
-      <%= f.label :password %>
-      <%= f.password_field :password, :class => "form-control", :placeholder => "Enter your password here" %>
-    </div>
-
-    <div class="form-group col-xs-12">
-      <%= f.label :password_confirmation %>
-      <%= f.password_field :password_confirmation, :class => "form-control", :placeholder => "Re-enter the password here" %>
-    </div>
-
-    <div class="form-inline col-xs-12">
-      <%= f.label :birthday %>
-      <%= f.date_select(:birthday, {end_year: 1920, start_year: 1996, prompt: {day: "Day", month: "Month", year: "Year"}, order: [:month, :day, :year]}, {:class => "form-control"}) %>
-    </div>
-
-    <div class="form-group col-xs-12">
-      <%= f.radio_button :gender, "Female", :class => "radio-inline" %>
-      <%= f.label :gender, "Female" %>
-      <%= f.radio_button :gender, "Male", :class => "radio-inline" %>
-      <%= f.label :gender, "Male" %>
-    </div>
-
-    <div class="form-group col-xs-12">
-      <%= f.submit "Sign Up", :class => "btn btn-danish btn-large btn-block" %>
+      <%= f.button :submit, "Sign Up", class: "btn btn-danish btn-large btn-block" %>
     </div>
   <% end %>
 </div>

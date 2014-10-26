@@ -10,14 +10,15 @@ module LikesHelper
   def likes_count(object)
     scale = object.likes.size
 
-    if scale > 2
-      string = "#{object.likes[0].liker.name}, #{object.likes[1].liker.name}, and #{pluralize(scale - 2, 'other person')} like this."
-    elsif scale == 2
-      string = "#{object.likes[0].liker.name} and #{object.likes[1].liker.name} like this."
-    elsif scale == 1
-      string = "#{object.likes[0].liker.name} likes this."
-    else
+    case scale
+    when 0
       string = false
+    when 1
+      string = "#{object.likes[0].liker.name} likes this."
+    when 2
+      string = "#{object.likes[0].liker.name} and #{object.likes[1].liker.name} like this."
+    else
+      string = "#{object.likes[0].liker.name}, #{object.likes[1].liker.name}, and #{pluralize(scale - 2, 'other person')} like this."
     end
 
     string ? content_tag(:div, content_tag(:p, string, :class => 'pull-left'), :class => 'col-xs-12') : nil

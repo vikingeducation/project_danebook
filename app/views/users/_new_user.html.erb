@@ -1,5 +1,5 @@
-<%= form_for @user, class: "sign-up-form-group" do |user_fields| %>
 
+<%= form_for @user, class: "sign-up-form-group" do |user_fields| %>
   <div class="sign-up-names row">
     <div class="form-group col-md-6">
       <%= user_fields.text_field :fname, {class: "form-control", placeholder: "First Name"} %>
@@ -9,24 +9,25 @@
     </div>
   </div>
 
-  <br>
+
 
   <div class="sign-up-email form-group">
     <%= user_fields.text_field :email, {class: "form-control", placeholder: "Email"} %>
   </div>
-  <br>
+
   <div class="sign-up-pwd form-group">
     <%= user_fields.password_field :password, {class: "form-control", placeholder: "password"} %>
   </div>
-  <br>
+
   <div class="sign-up-pwd form-group">
     <%= user_fields.password_field :password_confirmation, {class: "form-control", placeholder: "password confirmation"} %>
   </div>
 
   <div class="sign-up-birthday">
     <h4>Birthday</h4>
-
-    <div class="birthday-dates form-group"></div>
+    <div class="birthday-dates form-group">
+        <%= user_fields.date_select(:birthday, {order: [:month, :day, :year], start_year: (Date.today.year - 110), end_year: Date.today.year} )%>
+    </div>
   </div>
 
   <div class="sign-up-gender lg">

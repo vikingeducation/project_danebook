@@ -12,10 +12,10 @@ class SessionsController < ApplicationController
 	      sign_in(@user)
 	    end
 	    flash[:success] = "You've successfully signed in"
-	    redirect_to static_pages_timeline_path
+	    redirect_to timeline_path
 	  else
 	    flash.now[:error] = "We couldn't sign you in"
-	    render :new
+	    redirect_to root_path
 	  end
 	end
 
@@ -24,6 +24,5 @@ class SessionsController < ApplicationController
     flash[:success] = "Signed Out"
     redirect_to root_path
   end
-
 
 end

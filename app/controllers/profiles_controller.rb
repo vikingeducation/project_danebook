@@ -28,8 +28,7 @@ class ProfilesController < ApplicationController
   private
 
   def whitelisted_params
-    params.require(:profile).permit( :user_id,
-                                     :day,
+    params.require(:profile).permit( :day,
                                      :month,
                                      :year,
                                      :gender,

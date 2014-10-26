@@ -30,9 +30,7 @@
 			<li><a id="comment" href="#">Comment</a></li>
 			<li class="pull-right" id="delete"><%= link_to "Delete", user_post_path(post.user_id,post), method: :delete, data: {confirm: "You sure?"} %></li>
 		</ul>
-	</div>
-</div>
-
+	
 	<% post.comments.each do |comment| %>
 		<%= render :partial => "comment", :locals => { :comment => comment, :post => post } %>
 	<% end %>
@@ -44,4 +42,6 @@
 	  <%= submit_tag("Post Comment") %>
 	<% end %>
 
+	</div>
+</div>
 

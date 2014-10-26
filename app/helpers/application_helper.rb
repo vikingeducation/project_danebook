@@ -33,7 +33,7 @@ module ApplicationHelper
 
   def user_link(user)
     if user == current_user
-      "you"
+      "You"
     elsif user
       link_to user.name, user
     end

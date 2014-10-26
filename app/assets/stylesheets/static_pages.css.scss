@@ -371,6 +371,14 @@ button.btn-unfriend {
     }
   }
 
+  .comment-button {
+    background: linear-gradient(#4C67A1, #3B5998);
+    color: white;
+    font-weight: bold;
+    box-shadow: 3px 3px 3px black;
+    border: 1px solid black;
+    border-radius: 0;
+  }
   .comment-section {
     padding-bottom: 15px;
     border-top: 1px solid #999;
@@ -384,14 +392,6 @@ button.btn-unfriend {
       }
     }
 
-    button {
-      background: linear-gradient(#4C67A1, #3B5998);
-      color: white;
-      font-weight: bold;
-      box-shadow: 3px 3px 3px black;
-      border: 1px solid black;
-      border-radius: 0;
-    }
 
     form {
       .form-group {

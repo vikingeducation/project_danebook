@@ -6,10 +6,15 @@ Rails.application.routes.draw do
     resources :posts do
       resources :likes, only: [:create, :destroy], :defaults => { :likable => 'Post' }
 
+      resources :comments, only: [:create, :destroy], :defaults => { :commentable => 'Post' } do
+        resources :likes, only: [:create, :destroy], :defaults => { :likable => 'Comment'}
+      end
     end
 
     get '/timeline' => 'posts#index'
   end
+
+
 
 
   resource :session, only: [:new, :create, :destroy]

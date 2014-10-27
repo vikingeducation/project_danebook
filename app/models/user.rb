@@ -7,6 +7,18 @@ class User < ActiveRecord::Base
   has_many :comments, :foreign_key => :author_id, dependent: :destroy
   has_many :likes, :foreign_key => :liker_id, dependent: :destroy
 
+  # friend mechanics
+  has_many :initiated_friendings, :foreign_key => :friender_id,
+                                  :class_name => "Friending"
+  has_many :friended_users,       :through => :initiated_friendings,
+                                  :source => :friend_recipient
+
+  has_many :received_friendings,  :foreign_key => :friend_id,
+                                  :class_name => "Friending"
+  has_many :users_friended_by,    :through => :received_friendings,
+                                  :source => :friend_initiator
+  # end of friend mechanics
+
   validates :first_name, :last_name, :email, presence: true
   validates :email, uniqueness: true
   validates :password, length: { minimum: 8 },
@@ -19,6 +31,13 @@ class User < ActiveRecord::Base
 
   def name
     "#{first_name} #{last_name}"
+  end
+
+  def friends
+    User.where(id: Friending.
+         where(friend_id: self.id, friender_id: Friending.
+         where(friender_id: self.id).
+               pluck(:friend_id)).pluck(:friender_id))
   end
 
   def generate_token

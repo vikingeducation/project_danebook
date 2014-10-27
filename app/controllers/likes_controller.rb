@@ -6,19 +6,30 @@ class LikesController < ApplicationController
     @likable = klass.find(params[likable_id])
     @like = @likable.likes.build(:user_id => current_user.id)
 
+    if @likable.is_a? Post
+      @user = @likable.user
+    elsif @likable.is_a? Comment
+      @user = @likable.commentable.user
+    end
+
     if @like.save
       flash[:success] = "Liked!"
-      redirect_to user_timeline_url(@likable.user)
+      redirect_to user_timeline_url(@user)
     else
       flash[:error] = "Something went wrong with that like."
-      redirect_to user_timeline_url(@likable.user)
+      redirect_to user_timeline_url(@user)
     end
 
   end
 
   def destroy
     @like = Like.find(params[:id])
-    @user = @like.likable.user
+
+    if @like.likable.is_a? Post
+      @user = @like.likable.user
+    elsif @like.likable.is_a? Comment
+      @user = @like.likable.commentable.user
+    end
 
 
     if @like.destroy

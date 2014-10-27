@@ -8,10 +8,10 @@ class User < ActiveRecord::Base
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
 
-  accepts_nested_attributes_for :school,
-                              :reject_if => :all_blank;
-  accepts_nested_attributes_for :location,
-                              :reject_if => :all_blank;
+  accepts_nested_attributes_for :school;
+  accepts_nested_attributes_for :location;
+
+
 
 
   has_secure_password

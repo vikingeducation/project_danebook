@@ -14,7 +14,7 @@
               	<%= user.text_field :birth_month %>
               	<%= user.label :birth_day, "Day" %>
               	<%= user.text_field :birth_day %>
-				<%= user.label :birth_year, "Year" %>
+				        <%= user.label :birth_year, "Year" %>
               	<%= user.text_field :birth_year %>
               </td>
             </tr>
@@ -22,29 +22,48 @@
             <tr>
               <td><strong>College</strong></td>
               <td>
-              	<%= user.fields_for :school do |school_fields| %>
-              		<%= school_fields.label :name %>
-              		<%= school_fields.text_field :name %>
-              	<% end %>
+                <% if user.object.school_id %>
+                  	<%= user.fields_for :school do |school_fields| %>
+                      <%= school_fields.label :name %>
+                      <%= school_fields.text_field :name %>
+                    <% end %>
+                <% else %>
+                    <%= user.fields_for :school, School.new do |school_fields| %>
+                      <%= school_fields.label :name %>
+                      <%= school_fields.text_field :name %>
+                    <% end %>
+                <% end %>
               </td>
             </tr>
 
             <tr>
               <td><strong>Hometown</strong></td>
               <td>
-              	<%= user.fields_for :location do |location_fields| %>
-              		<%= location_fields.label :city %>
-              		<%= location_fields.text_field :city %>
+                <% if user.object.location_id %>
+                  <%= user.fields_for :location do |location_fields| %>
+                    <%= location_fields.label :city %>
+                    <%= location_fields.text_field :city %>
 
-              		<%= location_fields.label :country %>
-              		<%= location_fields.text_field :country %>
-              	<% end %>
-			  </td>
+                    <%= location_fields.label :country %>
+                    <%= location_fields.text_field :country %>
+                  <% end %>
+                <% else %>
+                  <%= user.fields_for :location, Location.new do |location_fields| %>
+                    <%= location_fields.label :city %>
+                    <%= location_fields.text_field :city %>
+
+                    <%= location_fields.label :country %>
+                    <%= location_fields.text_field :country %>
+                  <% end %>
+                <% end %>
+              </td>
             </tr>
 
             <tr>
               <td><strong>Currently Lives</strong></td>
-              <td>EDIT THIS</td>
+              <td>
+                  EDIT THIS
+              </td>
             </tr>
           </table>
 

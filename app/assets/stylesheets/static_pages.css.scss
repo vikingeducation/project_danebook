@@ -115,6 +115,11 @@ section.container a {
   img {
     border: 1px solid black;
   }
+  .user-headline {
+    position: relative;
+    bottom: -300px;
+    left: 150px;
+  }
 }
 
 #cover {

@@ -5,6 +5,23 @@ module ApplicationHelper
     user != nil && user == current_user
   end
 
+
+
+  # The friend button only shows up on another user’s profile/about pages and Timeline
+  # The button changes to “remove friend” after successful friending
+  def friend_button(user)
+    if user == current_user
+      ""
+    elsif current_user.has_friend?(user)
+      link_to "Remove Friend", user_friendings_path(user), method: "delete", class: "btn btn-lg btn-default"
+    else
+      link_to "Add Friend", user_friendings_path(user), method: "post", class: "btn btn-lg btn-default facebook-button"
+    end
+  end
+
+
+
+
   def like_link(likable)
     if likable.is_a? Comment
       comment_like_link(likable)

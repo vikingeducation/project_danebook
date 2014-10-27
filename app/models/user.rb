@@ -35,6 +35,10 @@ class User < ActiveRecord::Base
 
   before_create :generate_token
 
+  def has_friend?(user)
+    friends.include?(user)
+  end
+
   #create new auth token
   def generate_token
     begin

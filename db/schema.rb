@@ -11,9 +11,53 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140926022630) do
+ActiveRecord::Schema.define(version: 20141027035837) do
+
+  create_table "comments", force: true do |t|
+    t.integer  "user_id"
+    t.text     "comment_body"
+    t.integer  "commentable_id"
+    t.integer  "commentable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "friends", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "likes", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "likeable_id"
+    t.integer  "likeable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "posts", force: true do |t|
+    t.integer  "user_id"
+    t.text     "post_body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "users", force: true do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "email"
+    t.string   "password_digest"
+    t.string   "auth_token"
+    t.string   "gender"
+    t.integer  "month"
+    t.integer  "year"
+    t.integer  "day"
+    t.text     "words_to_live_by"
+    t.text     "about_me"
+    t.string   "phone"
+    t.string   "college"
+    t.string   "hometown"
+    t.string   "town"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

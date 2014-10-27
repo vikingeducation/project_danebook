@@ -17,11 +17,11 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 </head>
 <body>
-  <%#<% if signed_in? %>
-    <%#<%= render 'layouts/navbar_signed_in' %>
-  <%#<% else %>
-    <%#<%= render 'layouts/navbar' %>
-  <%#<% end %>
+  <% if 'x' == false %>
+    <% render 'layouts/navbar_logged_in' %>
+  <% else %>
+    <% render 'layouts/navbar' %>
+  <% end %>
 <%= yield %>
 
 </body>

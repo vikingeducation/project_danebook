@@ -1,57 +1,32 @@
-<section class="info-pane">
+<section class="info-pane col-md-12">
   <header class="row">
     <div class="col-md-offset-2 col-md-8 about-header">
       <h2>Edit Profile</h2>
     </div>
   </header>
 
-  <%= form_for @profile, {:url => { :action => :update }} do |f| %>
-    <section class="row">
-      <div class = "col-md-6">
-        <h3>Basic Information</h3>
-        <table class="table">
-          <tr>
-            <td>Birthday:</td>
-            <td><%= @user.birthday %></td>
-          </tr>
-          <tr>
-            <td>College:</td>
-            <td><%= f.text_field :school, :class => "form-control" %></td>
-          </tr>
-          <tr>
-            <td>Hometown:</td>
-            <td><%= f.text_field :hometown, :class => "form-control" %></td>
-          </tr>
-          <tr>
-            <td>Currently Lives:</td>
-            <td><%= f.text_field :current_town, :class => "form-control" %></td>
-          </tr>
-        </table>
+  <section class="row">
+    <%= simple_form_for @profile, {:url => { :action => :update }, defaults: { input_html: { class: 'form-control' }, wrapper_html: { class: 'form-group' } } }  do |f| %>
 
-        <h3>Contact Information</h3>
-        <table class="table">
-          <tr>
-            <td>Email:</td>
-            <td><%= @user.email %></td>
-          </tr>
-          <tr>
-            <td>Telephone:</td>
-            <td><%= f.telephone_field :phone_number, :class => "form-control" %></td>
-          </tr>
-        </table>
-      </div>
+    <div class="col-md-6">
+      <h3>Basic Information</h3>
+      <%= f.input :school %>
+      <%= f.input :hometown %>
+      <%= f.input :current_town %>
+      <h3>Contact Information</h3>
+      <%= f.input :phone_number %>
+    </div>
 
-      <div class="form-group col-md-6">
-        <h3>Words to live by</h3>
-        <%= f.text_area :quotes, :class => "form-control", rows: 3 %>
-        <h3>About me</h3>
-        <%= f.text_area :about, :class => "form-control", rows: 9 %>
-      </div>
-    </section>
+    <div class="col-md-6">
+      <h3>Words to Live By</h3>
+      <%= f.input :quotes, input_html: { rows: 3 }, label: false %>
+      <h3>About Me</h3>
+      <%= f.input :about, input_html: { rows: 9 }, label: false %>
+    </div>
+  </section>
 
-    <footer class="row">
-      <%= f.submit 'Save Changes', :class => "btn btn-large btn-danish btn-block" %>
-    </footer>
-
-  <% end %>
+  <footer class="row">
+    <%= f.button :submit, "Save Changes", class: "btn btn-danish btn-large btn-block" %>
+    <% end %>
+  </footer>
 </section>

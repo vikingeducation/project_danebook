@@ -1,6 +1,2 @@
-danebook_goes_live
-==================
+This is the Real Dane Deal.
 
-Week 3 Solo Assignment
-
-This is your README!

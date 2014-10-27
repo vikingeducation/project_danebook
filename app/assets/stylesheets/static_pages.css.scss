@@ -1,0 +1,592 @@
+// Place all the styles related to the StaticPages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+/* general elements */
+h1, h2, p{  /* change default text from black on white to grey on white to avoid contrast */
+  color:#4a4a4a;
+}
+h1,h2,h3,h4,h5,h6, .h1,.h2,.h3,.h4,.h5,.h6 {
+  font-family: 'Freight Sans Bold', 'lucida grande',tahoma,verdana,arial,sans-serif !important;
+}
+p {
+  font-family:'Freight Sans', 'lucida grande',tahoma,verdana,arial,sans-serif;
+}
+h6 {
+  padding-left:5px;
+}
+
+textarea {
+  margin-bottom:30px;
+  resize:none;
+}
+figcaption {
+  text-align:center;
+  text-decoration:underline;
+}
+
+body {
+  padding-top: 70px; /*necessary to compensate for nav bar */
+  margin-bottom:20px;
+  background-color:#edf0f5 !important;
+}
+
+/* header / navbar */
+
+.navbar {
+  background-color:#3B5998;
+  #logo {
+    color:#eee;
+    font-size:3em;
+    margin-top:10px;
+  } label {
+    color:#eee;
+    font-size:.8em; 
+  } button {
+    background-color:#5b74a8;
+    border-top:1px solid #7E92BB;
+    border-color:#29447e #29447e #1a356e;
+
+    border:1px solid #29447E;
+    border-radius:0;
+    box-shadow:1px 1px 3px #1A356E;
+  } button:hover {
+    background-color:#88afff;
+    border:1px solid #29447E;
+  }
+
+}
+
+.navbar-brand {
+  color: white;
+  padding: 0 0;
+  font-size: 32px;
+  line-height: 0px;
+  padding-top: 24px;
+  margin-top:-2px;
+  a:hover{
+    color: white;
+  }
+
+}
+
+.navbar-toggle .icon-bar { /* custom collapsed nav dropdown button (changed color scheme a bit */
+  display: block;
+  width: 22px;
+  height: 2px;
+  background-color: #cccccc;
+  border-radius: 1px;
+}
+
+header {
+  .navInput{
+    float:left;
+    padding-left:5px;
+    padding-right:5px;
+  } .navLabel {
+    display:block;
+  } button {
+    margin-top:4.5%;
+  }
+}
+
+navbar-collapse {
+  input {
+    margin-top: 10px;
+  }
+  padding-bottom:3px;
+}
+#search_bar {
+  margin-top:15px;
+  margin-bottom:-15px;
+  margin-left:30px;
+}
+
+
+#logo {
+  width:20px;
+}
+a {
+  color:white;
+}
+
+/* home page specific CSS */
+.home_left {
+  padding-left:5%;
+  h2 {
+    margin-top:18%;
+    font-weight:bold;
+  } ul {
+    list-style-type:none;
+    font-size:1.25em;
+    line-height:4;
+    padding-top:5px;
+    color:#818181;
+  } ul li {
+    margin-left:-10px;
+  } ul img {
+    padding-right:10px;
+  }
+
+}
+
+#birthday {
+  font-size:1.5em;
+}
+
+#sign_up_button {
+  box-shadow:3px 3px 5px 1px #ccc;
+  background: -webkit-linear-gradient(#78ba63, #5A8D46); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient(#78ba63, #5A8D46); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient(#78ba63, #5A8D46); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(#78ba63, #5A8D46); /* Standard syntax */
+  font-weight:bold;
+  box-shadow:inset 0 1px 1px #a4e388;
+  border-color: #3b6e22 #3b6e22 #2c5115;
+}
+
+#index_sign_up {
+  font-weight:bold;
+}
+#index_sign_up_text {
+  font-size: 19px;
+}
+
+.gender_choice {
+  font-size:18px;
+}
+
+
+
+
+/* banner photo specific CSS */
+#banner_photo {
+  width:100%;
+  height:225px;
+  border: 1px solid #d3d6db;
+}
+.jumbotron {
+  background-color:#fff;
+  margin-top:-46px; /* -45 puts it in line with the nav bar */
+  margin-bottom:-15px !important;
+}
+.jumbotron-links {
+  margin-left:168px; /* profile photo is 168px wide */
+
+}
+.jumbotron-links {
+  li {
+    display: inline-block;
+    font-weight: bold;
+    height: 43px;
+    border-right: 1px solid #e9eaed;
+    font-size: 14px;
+    float: left;
+    line-height: 3.05;
+    vertical-align: middle;
+    padding: 0 17px;
+  } li:nth-child(5){
+    border-right: none;
+  } .counter {
+    font-weight:normal;
+    color:#BEBBBB;
+  } a {
+    color:black;
+  }
+}
+
+
+.jumbotron-links {
+  li:hover  {
+    background-color:#F6F7F8;
+  }
+}
+
+
+#profile_photo {
+  width:168px;
+  height:168px;
+  margin-left:20px;
+  margin-top:-138px;
+  border:2px solid #fff;
+}
+ /*re-used elements cross-page */
+.box-header {
+  background-color: #EDF0F5;
+  border: 1px solid black;
+  h2 {
+    text-align:center;
+    line-height: 0.5px;
+    padding-top: -1px;
+  }
+}
+
+
+
+
+.box-container{
+  border:1px solid #D3D6DB;
+  background-color:#fff;
+  border-radius:5px;
+  margin-bottom:20px;
+  img {
+    width:100%
+  } td {
+    padding:4px;
+  } .box-container-span {
+    text-align:center;
+    text-decoration:underline;
+  } .photo-page-img {
+    width:100%;
+  } .photo-page-img:nth-child(odd) {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  } .photos figcaption {
+    display: none;
+    position: absolute;
+    bottom: 5px;
+    background-color: #FFF;
+    width: 100%;
+    font-weight: bold;
+  } h3 {
+    border-bottom: 1px solid #e9eaed;
+    margin: 0;
+    background-color: #F9FAFB;
+    color: #6a7480;
+    text-transform: uppercase;
+    font-size: 12px;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    font-weight: bold;
+    padding-left: 20px;
+  } h2 {
+    margin:0;
+    padding-top:12px;
+    padding-bottom:12px;
+    color:#37404e;
+
+
+
+  } table {
+    margin-left:auto;
+    margin-right:auto;
+    margin-top:7px;
+  } textarea {
+    margin-bottom:0;
+    width:99%;
+    margin:auto;
+    margin-top:3px;
+  } button {
+    color:#fff;
+    margin:12px 15px 0 0;
+  } button:hover{
+    color:#fff;
+  }.about-edit-button {
+    a {
+      color:#fff;
+    }
+    background-color: #5b74a8;
+    margin:12px 30px 0 0;
+    border-color: #29447e #29447e #1a356e;
+    border: 1px solid #29447E;
+    border-radius: 0;
+    box-shadow: 1px 1px 3px #1A356E;
+
+  } .about-edit-button:hover {
+    background-color:#88AFFF;
+  }
+}
+.about-container {
+  background-color:#F6F7F8;
+  img {
+    height:24px;
+    width:24px;
+    margin-left: 20px;
+    margin-right: 10px;
+    margin-top: -6px;
+  }
+  border-radius:0px;
+}
+
+.box-container-bottom {
+    text-align:right;
+    background-color:#EDF0F5;
+  button {
+    margin-right:30px;
+    margin-top:2px;
+    margin-bottom:2px;
+  }
+}
+
+
+
+
+
+
+.post-box {
+    border:1px solid #D3D6DB;
+    border-radius:5px;
+    margin-bottom:20px;
+  .post-user-image {
+    width:40px;
+    height:40px;
+    float:left;
+    margin:10px 0 0 10px;
+  } h6 {
+    display:inline-block;
+  }
+}
+
+.post-header {
+  background-color:#fff;
+  margin-bottom:-15px;
+  .name-date {
+  display:inline-block;
+  line-height: 0;
+  margin-left:5px;
+  margin-bottom:10px;
+  }
+}
+
+.post-comments {
+    border-top:1px solid #BEBBBB;
+    background-color:#EDF0F5;
+  .alt-post-date { 
+    display:inline-block;
+  } .comment-body p {
+    margin-top:15px;
+    margin-left:15px;
+  } .delete-button {
+    padding-left:30px;
+  }
+}
+
+.post-box .post-date, .alt-post-date {
+  color:#9A97A3;
+  font-size:.8em;
+}
+.post-box p {
+  padding:5px;
+}
+.post-body {
+  background-color:#fff;
+}
+
+.post-footer{
+  background-color:#fff;
+  margin-top:-10px;
+  ul {
+    margin:0;
+    padding-left: 15px;
+  } ul li a {
+    text-decoration: none;
+  } .comment-body p {
+    padding-left:45px;
+    margin-top:-10px;
+  }
+}
+
+.post-footer-links{
+  li {
+  display:inline-block;
+  } #delete {
+  margin-right:10px;
+  } #like {
+  padding-right:5px;
+  } #comment {
+  padding-left:5px;
+  }
+}
+
+.post-input-box textarea{
+    overflow:auto;
+    border:none;
+    box-shadow:none;
+}
+
+
+
+
+.photos {
+  figure:hover figcaption {
+  display:block;
+  background-color:#88AFFF;
+  color:#fff;
+  opacity:0.8;
+  } figure {
+    position: relative;
+    display: inline-block;
+  }
+}
+
+
+
+ 
+
+.my_name {
+  font-size: 30px;
+  margin-top:2px;
+  p {
+    font-size: .5em;
+    margin-top: 20px;
+    margin-bottom: -2px;
+    color:white;
+    display:inline-block;
+  }
+}
+#profile_thumbnail {
+  width:40px;
+  margin-left:-30px;
+  margin-right:10px;
+  border:2px solid white;
+}
+
+
+.present_tab{
+  background-color: #989899;
+}
+
+.edit-button{
+  background-color: #5b74a8;
+  color: #FFF;
+  margin-top: 2px;
+}
+.edit-button:hover {
+  background-color:#88AFFF;
+  color:#FFF;
+}
+
+.about-left-panel {
+  border-right:1px solid #d3d6db ;
+  padding-bottom:20px;
+  tr{
+  line-height: 3;
+  } td {
+    padding-left:20px;
+  }
+}
+.edit-left-panel tr{
+  line-height: 4;
+}
+.about-right-panel {
+  margin-left:20px;
+}
+
+.about-right-panel textarea {
+  margin-bottom:20px;
+  border: 1px solid #d3d6db;
+
+}
+
+
+.about-content{
+  border: 1px solid #d3d6db;
+  border-top:none;
+  margin-top:-20px; /* to compensate for the spacing above it */
+  margin-bottom: 100px;
+  padding-left: 50px;
+  padding-right: 50px;
+  background-color:#fff;
+}
+
+.save-button{
+
+  background:linear-gradient(#78ba63, #5a8d46) !important;
+  font-weight: bold;
+  box-shadow: inset 0 1px 1px #a4e388;
+  border-color: #3b6e22 #3b6e22 #2c5115;
+  
+  color: #FFF;
+  margin-top:20px;
+  margin-bottom:50px;
+
+}
+
+
+
+
+.alt-user-header {
+    padding-top:20px;
+  h6 {
+    margin-top:0;
+  } 
+}
+
+.like-bar {
+  border-top:1px solid #e1e2e3;
+  p {
+    margin:0;
+    background-color:#EDF0F5;
+    padding-left:5px;
+  }
+}
+
+.comm-like-bar p{
+  margin:0;
+  background-color:#EDF0F5;
+  padding-left:45px;
+}
+ 
+
+.comment-body p {
+  margin-bottom:-5px;
+}
+.grey-text p {
+  color:#BEBBBB;
+  a {
+    text-decoration: underline;
+  }
+}
+ 
+.comm-like-bar #delete {
+  margin-right:5px;
+}
+#comment_text {
+  margin-top:5px;
+  width:95%;
+  margin-left:auto;
+  margin-right:auto;
+  margin-bottom:-5px;
+}
+#comm_cancel_bar{
+  p {
+    display:inline-block;
+    padding-left:18px;
+  } button {
+    margin-right:18px;
+    background-color:#3B5998;
+    border:#29447e #29447e #1a356e;
+  }
+}
+
+
+.friend-container img {
+  width:186px;
+}
+.friend-tile {
+    border:1px solid #e9eaed;
+    margin-top:15px;
+    margin-bottom:15px;
+    margin-left:6%;
+    padding-top:20px;
+    padding-bottom:20px;
+  * {
+    display:inline-block;
+  }
+
+}
+
+.third-row{
+  margin-bottom:30px;
+}
+.first-row{
+  margin-top:30px;
+}
+.main_nav {
+  border:1px solid #D3D6DB;
+  background-color:white;
+  margin-top:-1px;
+  border-radius: 0 0 5px 5px;
+}
+.main_nav a {
+  color:#3B5998;
+}

@@ -1,0 +1,36 @@
+<%= render "shared/cover_section" %>
+
+<section class="col-sm-12 bkg-fix buffer" role="about">
+  <div class="row grey-title">
+    <div class="col-sm-7 col-sm-offset-2">
+      <h4>About</h4>
+    </div>
+    <%= only_user_edits(edit_button) %>
+  </div>
+
+  <div class="col-sm-6">
+    <h4>Basic Information</h4>
+    <ul>
+      <li><strong>Born on: </strong><%= @user.birthday %></li>
+      <li><strong>Went to school at:</strong> <%= @profile.school %></li>
+      <li><strong>Hometown:</strong> <%= @profile.hometown%></li>
+      <li><strong>Currently Lives:</strong> <%= @profile.current_city %></li>
+    </ul>
+
+    <h4>Contact Information</h4>
+    <ul>
+      <li><strong>Email: </strong><%= @user.email%></li>
+      <li><strong>Telephone:</strong> <%= @profile.telephone%></li>
+
+    </ul>
+  </div>
+
+  <div class="col-sm-6">
+  <h4>Words to Live By</h4>
+  <p> <%= @profile.life_words%> </p>
+
+  <h4>About Me</h4>
+  <p> <%= @profile.description%> </p>
+
+  </div>
+</section> <!-- /ABOUT -->

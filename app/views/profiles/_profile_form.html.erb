@@ -1,0 +1,29 @@
+<%= form_for [@user, @profile] do |profile_fields| %>
+
+
+
+  <div class="col-sm-6">
+    <h4>Basic Information</h4>
+    <ul>
+      <li><strong>Born on: </strong><%= @user.birthday %></li>
+      <li><strong>Went to school at:</strong> <%= profile_fields.text_field :school, class: "form-control" %></li>
+      <li><strong>Hometown:</strong> <%= profile_fields.text_field :hometown, class: "form-control"%></li>
+      <li><strong>Currently Lives:</strong> <%= profile_fields.text_field :current_city, class: "form-control" %></li>
+    </ul>
+
+    <h4>Contact Information</h4>
+    <ul>
+      <li><strong>Email: </strong><%= @user.email%></li>
+      <li><strong>Telephone:</strong> <%= profile_fields.text_field :telephone, class: "form-control" %></li>
+
+    </ul>
+  </div>
+
+  <div class="col-sm-6">
+  <h4>Words to Live By</h4>
+  <p> <%= profile_fields.text_area :life_words, rows: 2, class: "form-control" %> </p>
+
+  <h4>About Me</h4>
+  <p> <%= profile_fields.text_area :description, rows: 6, class: "form-control" %> </p>
+  <%= profile_fields.submit "Save Changes.", class: "post-button navbar-right btn btn-lg btn-block" %>
+<% end %>

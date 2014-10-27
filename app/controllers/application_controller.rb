@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
 
 
   private
+
+
   def sign_in(user)
     user.regenerate_auth_token
     cookies[:auth_token] = user.auth_token
@@ -29,6 +31,17 @@ class ApplicationController < ActionController::Base
 
   def signed_in?
      !!current_user
+  end
+
+  def require_new_user
+    redirect_to user_profile_path(current_user) if current_user
+  end
+
+  def require_current_user
+    unless params[:user_id] == current_user.id.to_s
+      flash[:error] = "You're not authorized to view this"
+      redirect_to root_url
+    end
   end
 
 end

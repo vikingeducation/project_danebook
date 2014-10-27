@@ -1,8 +1,8 @@
 <section class="cover-profile-block col-xs-12">
     <div class="cover-photo-wrapper">
       <div class="cover-photo row">
-        <div class="profile-photo-wrapper">  
-          <h3 class="profile-name">Harry Potter</h3>
+        <div class="profile-photo-wrapper">
+          <h3 class="profile-name"><%= user_profile_name %></h3>
           <div class="profile-photo">
             <%= image_tag("imgres.jpg", class: "img-thumbnail") %>
           </div>
@@ -39,14 +39,9 @@
           </button>
           </a>
 
-          <a href="./about_edit.html">
-          <div class="edit col-sm-2">
-            Edit profile
-          </div>
-          </a>
+          <%= only_user_edits(edit_link) %>
 
         </div> <!-- /button group -->
-  
       </div> <!-- /menu-row -->
     </div> <!-- /menu-wrapper -->
 </section> <!-- /cover-profile-block -->

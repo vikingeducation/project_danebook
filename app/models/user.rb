@@ -2,9 +2,14 @@ class User < ActiveRecord::Base
 	before_create :generate_token
 
 	has_secure_password
+	has_one :profile
 
 	validates :password, length: {in: 8..24}, allow_nil: true
 	validates :email, uniqueness: true
+
+	def name
+		"#{fname} #{lname}"
+	end
 
 	def generate_token
 		begin

@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  before_action :current_user, only: [:edit, :update, :destroy]
+  before_action :require_new_user, only: [:new]
+
   def new
     @user = User.new
   end
@@ -6,10 +9,13 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
+    # builds a profile with the user_id when @user.save runs
+    @profile = @user.build_profile
+
     if @user.save
       sign_in(@user)
       flash[:success] = "Welcome #{@user.fname}!"
-      redirect_to '/static_pages/timeline'
+      redirect_to timeline_path
     else
       flash.now[:error] = "Your account could not be created"
       render :new
@@ -17,7 +23,6 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
   end
 
   def edit

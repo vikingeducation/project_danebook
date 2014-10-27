@@ -10,7 +10,6 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(whitelisted_params)
-    asdfjklasfjkl
     if @user.save!
       sign_in(@user)
       flash[:success] = "Welcome to Danebook!"

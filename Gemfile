@@ -7,8 +7,9 @@ group :production do
   gem 'pg'
 end
 
+gem 'faker'
+
 group :test, :development do
-  gem 'faker'
   gem 'sqlite3'
   gem 'better_errors'
   gem 'binding_of_caller'

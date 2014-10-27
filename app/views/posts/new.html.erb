@@ -1,0 +1,100 @@
+
+<!-- banner box -->
+<%= render 'layouts/jumbotron'%>
+<div class="row">	
+	<section class="col-sm-4"> <!-- left side -->
+		<div class="box-container">
+			<h3>About</h3>
+			    <table>
+				    <tr>
+					    <td><strong>Born on: </strong></td>
+					    <td>
+						    <%= month_to_text(@user.birth_month) %> 
+						    <%= @user.birth_day %>, 
+						    <%= @user.birth_year %>
+						</td>
+				    </tr>
+
+				    <tr>
+					    <td><strong>Went to school at: </strong></td>
+					    <td>
+					    	<%= @user.school.name unless @user.school.nil? %>
+					    </td>
+				    </tr>
+
+				    <tr>
+					    <td><strong>Hometown: </strong></td>
+					    <td>
+					    	<%= @hometown %>
+					    </td>
+				    </tr>
+
+				    <tr>
+					    <td><strong>Currently Lives: </strong></td>
+					    <td>
+					    	<%= @current %>
+					    </td>
+				    </tr>
+				</table>   
+		</div>
+		<div class="box-container">
+			<h3>Photos (123)</h3>
+			    <table>
+					<tr>
+						<td><%= image_tag('default_user.gif')%></td>
+						<td><%= image_tag('default_user.gif')%></td>
+						<td><%= image_tag('default_user.gif')%></td>
+					</tr>
+					<tr>
+						<td><%= image_tag('default_user.gif')%></td>
+						<td><%= image_tag('default_user.gif')%></td>
+						<td><%= image_tag('default_user.gif')%></td>
+					</tr>
+					<tr>
+						<td><%= image_tag('default_user.gif')%></td>
+						<td><%= image_tag('default_user.gif')%></td>
+						<td><%= image_tag('default_user.gif')%></td>
+					</tr>
+				</table>   
+				<div class="box-container-span"><a href="#">See More Photos</a></div>
+		</div>
+		<div class="box-container">
+			<h3>Friends (542)</h3>
+				<table>
+					<tr>
+						<td><figure><%= image_tag('default_user.gif')%><figcaption><a href="#">Ron<br />Weasley</a></figcaption></figure></td>
+						<td><%= image_tag('default_user.gif')%><figure><figcaption><a href="#">Ginny<br />Weasley</a></figcaption></figure></td>
+						<td><%= image_tag('default_user.gif')%><figure><figcaption><a href="#">Hermione<br />Granger</a></figcaption></figure></td>
+					</tr>
+					<tr>
+						<td><%= image_tag('default_user.gif')%><figure><figcaption><a href="#">paragraph<br />text</a></figcaption></figure></td>
+						<td><%= image_tag('default_user.gif')%><figure><figcaption><a href="#">paragraph<br />text</a></figcaption></figure></td>
+						<td><%= image_tag('default_user.gif')%><figure><figcaption><a href="#">paragraph<br />text</a></figcaption></figure></td>
+					</tr>
+				</table>
+				<div class="box-container-span"><a href="#">See More Friends</a></div>  
+		</div>
+
+
+
+	</section>
+	<section class="col-sm-8"><!-- right side -->
+		<div class="box-container post-input-box">
+		<h3>Post</h3>
+			<%= form_for [@user, @post] do |post| %>
+				<%= post.text_area :content, class: "form-control", placeholder: "Tell the world something..", rows: 4 %>
+			
+				<div class="box-container-bottom">
+					<%= post.submit "Post", class: "btn btn-primary" %>
+				</div>
+			<% end %>
+		</div>
+
+		<% @posts.each do |post| %>
+			<%= render :partial => "post", :locals => { :post => post } %>
+		<% end %>
+
+	</section>
+</div>
+
+

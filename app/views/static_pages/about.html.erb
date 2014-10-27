@@ -1,0 +1,74 @@
+<%= render 'layouts/navbar_logged_in' %>
+<main>
+<!-- nav bar -->
+
+<!-- banner box -->
+<%= render 'layouts/jumbotron'%>
+
+
+<!-- profile panel -->
+
+<div class="container about-page-container">
+  <div class="box-container about-container">
+    <div class="row">
+          <h2 class="col-sm-6 col-sm-offset-1"><%= image_tag('about_icon.png')%>About</h2>
+            <button class="btn-default pull-right about-edit-button col-sm-2"><a href="about_edit.html">Edit your profile</a></button>    
+    </div>
+  </div>
+
+    <div class="col-sm-12 about-content">
+      <div class="row">
+        <section class="col-sm-4 about-left-panel">
+          <h3 class="BI">Basic Information</h3>
+
+          <table>
+            <tr>
+              <td><strong>Birthday</strong></td>
+              <td>July 31st, 1980</td>
+            </tr>
+
+            <tr>
+              <td><strong>College</strong></td>
+              <td>Hogwarts College</td>
+            </tr>
+
+            <tr>
+              <td><strong>Hometown</strong></td>
+              <td>Godrick's Hollow, England</td>
+            </tr>
+
+            <tr>
+              <td><strong>Currently Lives</strong></td>
+              <td>Godrick's Hollow, England</td>
+            </tr>
+          </table>
+
+          <h3 class="CI">Contact Information</h3>
+          <table>
+            <tr>
+              <td><strong>Email</strong></td>
+              <td>harry_potter@hogwarts.edu</td>
+            </tr>
+
+            <tr>
+              <td><strong>Telephone</strong>
+              <td>555-123-4567</td>
+            </tr>
+          </table>
+        </section>
+
+        <section class="col-sm-7 about-right-panel">
+          <h3>Words To Live By</h3>
+          <p class="quotes-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut</p>
+
+          <h3>About Me</h3>
+          <p class="about-me-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </section>
+      </div><!-- closing row -->
+    </div><!-- closingcolspace -->
+<!-- Closing container -->
+
+
+<!-- profile panel -->
+
+</main>

@@ -1,0 +1,57 @@
+<%= simple_form_for(@user, html: {class: 'form-horizontal' }) do |user| %>
+	<%= render 'shared/error_messages', object: user.object %>
+	<div class="form-group"> <!-- first and last name inputs -->
+		<div class="col-sm-6">
+			<%= user.text_field :first_name, :placeholder => "First Name", :class => 'form-control'%>
+		</div>
+		<div class="col-sm-6">
+			<%= user.text_field :last_name, :placeholder => "Last Name", :class => 'form-control'%>
+		</div>
+	</div>
+
+	<div class="form-group"><!-- rest of inputs, one per line -->
+		<div class="col-sm-12">
+			<%= user.text_field :email, :placeholder => "Your Email", :class => 'form-control' %>
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="col-sm-12">
+			<%= user.password_field :password, :placeholder => "Your New Password", :class => 'form-control' %>
+		</div>
+	</div>
+	<div class="form-group">
+		<div class="col-sm-12">
+			<%= user.password_field :password_confirmation, :placeholder => "Confirm Your Password", :class => 'form-control' %>
+		</div>
+	</div>
+
+	<div class="form-group">
+	<p class="col-sm-12" id="birthday">Birthday</p>
+		<div class="col-sm-3">
+			<%= user.input :birth_month, :collection => 1..12, :label => false, :prompt => "Month", :input_html => { :class => "form-control"} %>
+		</div>
+
+		<div class="col-sm-3">
+			<%= user.input :birth_day, :collection => 1..31, :label => false, :prompt => "Day", :input_html => { :class => "form-control"} %>
+		</div>
+
+		<div class="col-sm-3">
+			<%= user.input :birth_year, :collection => 1920..2000, :label => false, :prompt => "Year", :input_html => { :class => "form-control"} %>
+		</div>
+
+	</div>
+
+	<div class="form-group">
+		<div class="col-sm-12 gender_choice">
+			<label class="radio-inline">
+				<input type="radio" name="user[gender]" id="femaleRadio" value="female">Female
+			</label>
+			<label class="radio-inline">
+				<input type="radio" name="user[gender]" id="maleRadio" value="male">Male
+			</label>
+		</div>
+	</div>
+
+	<%= user.submit "Sign Up", :class => "btn btn-success btn-lg col-sm-6", :id => "sign_up_button" %>
+
+<% end %>

@@ -10,7 +10,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(whitelisted_params)
-    if @user.save!
+    if @user.save
       sign_in(@user)
       flash[:success] = "Welcome to Danebook!"
       redirect_to @user

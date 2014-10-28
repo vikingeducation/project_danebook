@@ -33,9 +33,9 @@
   <% end %>
   <!-- find a way to partialize this -->
   <%= form_for(post.comments.build, {url: {post_id: post.id, controller: 'comments', action: :create }}) do |comment_fields| %>
-    <section class="row">
+    <footer class="row">
       <%= comment_fields.text_area :content, :class => "form-control", rows: 3, placeholder: "What do you think about what #{post.author.name} said?" %>
       <%= comment_fields.submit 'Comment!', :class => "btn btn-large btn-danish btn-block" %>
-    </section>
+    </footer>
   <% end %>
 </article>

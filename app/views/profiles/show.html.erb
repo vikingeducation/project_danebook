@@ -50,8 +50,6 @@
   </section>
 
   <footer class="row">
-    <% if current_user && @user == current_user %>
-      <%= link_to 'Edit Profile', edit_user_profile_path(@user), :class => 'btn btn-large btn-danish btn-block' %>
-    <% end %>
+    <%= edit_profile_button(@user, "btn btn-large btn-danish btn-block") %>
   </footer>
 </section>

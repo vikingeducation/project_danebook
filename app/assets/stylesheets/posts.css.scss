@@ -12,15 +12,19 @@
     color: #333;
     text-align: left;
     font-size: 14px;
-    border: 1px solid $flag-darker;
-    border-bottom: 0;
+    border-left: 1px solid $flag-darker;
+    border-right: 1px solid $flag-darker;
     a {
       font-size: 18px;
     }
   }
+  header {
+    border-top: 1px solid $flag-darker;
+  }
   footer {
     background-color: $flag-normal;
     border: 1px solid $flag-darker;
+    border-bottom: 0;
     text-align: center;
     a {
       color: white;
@@ -29,10 +33,13 @@
       color: white;
     }
   }
+}
 
-  img {
-    height: 100px;
-    width: 100px;
-    padding: 5px;
-  }
+.post-picture {
+  padding: 1px;
+  margin: 10px;
+  border: 1px solid $flag-darker;
+  background-color: white;
+  height: 50px;
+  width: 50px;
 }

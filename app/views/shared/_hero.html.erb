@@ -1,7 +1,7 @@
 <div class="row hero">
   <%= image_tag("hogwarts_small.jpg", :class => "hidden-sm hidden-xs", class: "hero-image", :alt => "Hogwarts Castle") %>
   <%= image_tag("harry_potter_small.jpg", :alt => "Harry Potter", class: "profile-picture") %>
-  <%= friend_button(@user) %>
+  <%= friend_button(@user, "btn btn-danish") %>
   <h1><%= @user.name %></h1>
 </div>
 
@@ -12,9 +12,7 @@
     <li><%= link_to 'Photos (123)', photos_path %></li>
     <li><%= link_to "Friends (#{@user.friends.count})", user_friends_path(@user) %></li>
     <li>
-      <% if current_user && @user == current_user %>
-        <%= link_to 'Edit Profile', edit_user_profile_path(@user) %>
-      <% end %>
+      <%= edit_profile_button(@user) %>
     </li>
   </ul>
 </nav>

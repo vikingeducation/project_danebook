@@ -20,6 +20,7 @@ main {
 
 #main-navbar {
   background: $dark-normal;
+  border-bottom: 1px solid black;
 
   a, label, h1 {
     color: white;

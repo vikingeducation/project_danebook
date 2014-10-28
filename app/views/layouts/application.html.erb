@@ -12,8 +12,10 @@
 
 <main class="container">
   <%= render 'shared/hero' if signed_in? %>
-  <%= render 'shared/flashes' %>
-  <%= yield %>
+  <div class="row">
+    <%= render 'shared/flashes' %>
+    <%= yield %>
+  </div>
 </main>
 
 </body>

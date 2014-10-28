@@ -20,7 +20,6 @@ main {
 
 #main-navbar {
   background: $dark-normal;
-  border-bottom: 1px solid $flag-darker;
 
   a, label, h1 {
     color: white;
@@ -37,27 +36,44 @@ main {
   }
 }
 
-#hero {
-  border: 1px solid #ccc;
-  border-radius: 0 0 5px 5px;
-  li a {
-    border-radius: 0;
+.hero {
+  height: 300px;
+  a {
+    z-index: 1;
+    position: relative;
+    top: -145px;
+    left: 25px;
   }
 
-  #profile-picture {
-    position: absolute;
-    left: 40px;
-    bottom: -20px;
-    img {
-      height: 250px;
-      width: 180px;
-    }
+  h1 {
+    z-index: 1;
+    color: white;
+    position: relative;
+    top: -350px;
+    left: 210px;
   }
+}
 
-  #hero-image {
-    width: 100%;
-    height: 400px;
-  }
+.hero-image {
+  width: 100%;
+  height: 300px;
+  z-index: -1;
+}
+
+.profile-picture {
+  position: relative;
+  top: -240px;
+  left: 25px;
+  padding: 4px;
+  border: 1px solid $flag-darker;
+  background-color: white;
+  height: 250px;
+  width: 180px;
+}
+
+.profile-navbar {
+  border: 1px solid $flag-lighter;
+  background-color: white;
 }
 
 .info-pane {

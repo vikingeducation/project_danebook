@@ -5,10 +5,10 @@ Rails.application.routes.draw do
 
   resources(:users, only: [:show, :create]) do
     resource :profile, only: [:show, :edit, :update]
-    resources :friends, only: [:index]
+    resources :friends, only: [:index, :create]
   end
 
-  resources :friends, only: [:create, :destroy]
+  resources :friends, only: [:destroy]
 
   resources(:posts, only: [:create, :destroy]) do
     resources :likes, only: [:create, :destroy], :defaults => { likable: 'Post' }

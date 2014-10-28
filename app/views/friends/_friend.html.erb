@@ -1,1 +1,16 @@
-<%= link_to friend.name, user_path(friend) %>
+<div class="col-md-6">
+  <div class="row">
+    <div class="pull-left">
+      <a href="#">
+        <img src="user_silhouette_generic.gif" height="100px" width="100px">
+      </a>
+    </div>
+    <div class="pull-left">
+      <p><%= link_to friend.name, user_path(friend) %></p>
+      <p><%= "#{friend.friends.count} friends" %></p>
+    </div>
+    <div class="pull-right">
+      <%= friend_button(friend) %>
+    </div>
+  </div>
+</div>

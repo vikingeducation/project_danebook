@@ -1,13 +1,13 @@
 class FriendsController < ApplicationController
   def index
     @user = User.find(params[:user_id])
-    @friends = @user.friends
+    @friends = User.all
   end
 
   def create
     session[:return_to] ||= request.referer
     @user = current_user
-    @friend_request = @user.initiated_friendings.build(friend_id: params[:friend_id])
+    @friend_request = @user.initiated_friendings.build(friend_id: params[:user_id])
     if @friend_request.save!
       flash[:success] = "Friend request sent"
       redirect_to session.delete(:return_to)
@@ -20,14 +20,14 @@ class FriendsController < ApplicationController
   def destroy
     session[:return_to] ||= request.referer
     @user = current_user
-    @target = params[:friend_id]
+    @target = params[:id]
 
     # to delete the users initiated friending with the target
     friending1 = Friending.where(friend_id: @target).find_by_friender_id(@user.id)
     # to prevent the target from showing up in friend requests
     friending2 = Friending.where(friender_id: @target).find_by_friend_id(@user.id)
 
-    if friending1.destroy && friending2.destroy
+    if friending1.destroy && (!friending2 || friending2.destroy)
       flash[:success] = "User unfriended"
       redirect_to session.delete(:return_to)
     else

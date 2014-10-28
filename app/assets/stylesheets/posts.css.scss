@@ -26,10 +26,7 @@
     border-left: 1px solid $flag-darker;
     border-right: 1px solid $flag-darker;
     text-align: center;
-    a {
-      color: white;
-    }
-    p {
+    a, .like-count {
       color: white;
     }
   }

@@ -21,6 +21,6 @@ module LikesHelper
       string = "#{object.likes[0].liker.name}, #{object.likes[1].liker.name}, and #{pluralize(scale - 2, 'other person')} like this."
     end
 
-    string ? content_tag(:div, content_tag(:p, string, :class => 'pull-left'), :class => 'col-xs-12') : nil
+    string ? content_tag(:div, string, :class => 'col-xs-12 like-count') : nil
   end
 end

@@ -59,6 +59,7 @@ module ApplicationHelper
     sentence << " liked this #{likable.class.to_s.downcase}."
   end
 
+
   def user_link(user)
     if user == current_user
       "you"

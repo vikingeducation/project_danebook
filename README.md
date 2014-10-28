@@ -12,6 +12,6 @@ Multi-week Solo Assignment for [Viking Code School](http://vikingcodeschool.com)
 ##Weeks 7 and 8 (ongoing): Build full functionality in Rails
 
 
-Static pages currently live at [this Heroku address](danebooking.herokuapp.com).
+Currently live at [this Heroku address](http://danebooking.herokuapp.com).
 
 More functional version with User/Post/Comment models and roll-your-own auth coming soon.

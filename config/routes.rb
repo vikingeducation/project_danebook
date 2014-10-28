@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
     resource :friendings, only: [:create, :destroy]
     resource :profile, only: [:edit, :update, :show]
+
+
     resources :posts do
       resources :likes, only: [:create, :destroy], :defaults => { :likable => 'Post' }
 

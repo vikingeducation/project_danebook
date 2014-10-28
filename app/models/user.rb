@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
             :length => { in: 8..24 },
             allow_nil: true
 
+  validates_uniqueness_of :email
+
   has_one :profile
   accepts_nested_attributes_for :profile
 

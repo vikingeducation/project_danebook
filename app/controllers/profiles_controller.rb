@@ -17,7 +17,6 @@ class ProfilesController < ApplicationController
       flash[:error] = "Something has gone awry!"
       render :edit
     end
-
     # check if the user_id and user.id match/exist. If not, no profile.
   end
 

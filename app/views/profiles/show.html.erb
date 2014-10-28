@@ -5,7 +5,7 @@
     <div class="col-sm-7 col-sm-offset-2">
       <h4>About</h4>
     </div>
-    <%= only_user_edits(edit_button) %>
+    <%= only_user_sees(edit_button, @user) %>
   </div>
 
   <div class="col-sm-6">

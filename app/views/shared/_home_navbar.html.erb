@@ -1,19 +1,13 @@
 <%= form_tag session_path, method: "post", class: "sign-in-wrapper navbar-form navbar-right" do %>
 
-	<%= label_tag do %>
-		Email or Phone
-		<%= text_field_tag :email, nil, {class: "navbar-email", placeholder: "Email"} %>
-	<% end %>
+	<%= label_tag :email, "Email or Phone" %>
+	<%= text_field_tag :email, nil, {class: "navbar-email", placeholder: "Email"} %>
 
-	<%= label_tag do %>
-		Password
-		<%= password_field_tag :password, nil, {class: "navbar-password", placeholder: "Password"} %>
-	<% end %>
+	<%= label_tag :password, "Password"%>
+	<%= password_field_tag :password, nil, {class: "navbar-password", placeholder: "Password"} %>
 
-  <%= label_tag do %>
-    Remember me?
-    <%= check_box_tag :remember_me %>
-  <% end %>
+  <%= label_tag :remember_me, "Remember me" %>
+  <%= check_box_tag :remember_me %>
 
   <%= submit_tag "Log ind", class: "sign-in-btn" %>
 <% end %>

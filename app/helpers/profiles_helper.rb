@@ -3,8 +3,8 @@ module ProfilesHelper
 	def show_or_edit_profile
 	end
 
-	def only_user_edits(thing)
-		thing if (@current_user.id.to_s == params[:user_id])
+	def only_user_sees(edit_path, user)
+		edit_path if (current_user == user)
 	end
 
 	def edit_link

@@ -35,6 +35,11 @@
   <%= render "shared/navbar" %>
 
   <main class="container">
+  <% if flash %>
+    <% flash.each do |message|%>
+      <div class="flash-message"><%= message%></div>
+    <% end %>
+  <%end%>
 
 	<%= yield %>
 

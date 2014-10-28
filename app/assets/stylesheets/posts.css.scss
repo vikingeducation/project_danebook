@@ -23,8 +23,8 @@
   }
   footer, form {
     background-color: $flag-normal;
-    border: 1px solid $flag-darker;
-    border-bottom: 0;
+    border-left: 1px solid $flag-darker;
+    border-right: 1px solid $flag-darker;
     text-align: center;
     a {
       color: white;

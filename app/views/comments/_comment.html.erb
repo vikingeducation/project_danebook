@@ -7,20 +7,6 @@
         <p><%= comment.content %></p>
       </div>
     </div>
-    <div class="row">
-      <div class="col-xs-12">
-        <div class="pull-left">
-          <%= like_button(comment, comment.commentable) %>
-        </div>
-        <div class="pull-left">
-          <%= likes_count(comment) %>
-        </div>
-        <% if current_user && comment.author == current_user %>
-          <div class="pull-right">
-            <%= link_to "Delete", post_comment_path(comment.commentable, comment), method: "DELETE", data: { confirm: "Are you sure you want to delete this post?" } %>
-          </div>
-        <% end %>
-      </div>
-    </div>
+    <%= render 'shared/likes_bar', object: comment, parent: comment.commentable %>
   </div>
 </div>

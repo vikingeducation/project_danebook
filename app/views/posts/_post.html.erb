@@ -13,27 +13,10 @@
     </div>
   </section>
 
-  <footer class="row">
-    <div class="col-xs-12">
-      <div class="pull-left">
-        <%= like_button(post) %>
-      </div>
-      <div class="pull-left">
-        <%= likes_count(post) %>
-      </div>
-      <% if current_user && post.author == current_user %>
-        <div class="pull-right">
-          <%= link_to "Delete", post_path(post), method: "DELETE", data: { confirm: "Are you sure you want to delete this post?" } %>
-        </div>
-      <% end %>
-    </div>
-  </footer>
+  <%= render 'shared/likes_bar', object: post, parent: nil %>
+
   <% post.comments.each do |comment| %>
     <%= render 'comments/comment', comment: comment %>
   <% end %>
-  <!-- find a way to partialize this -->
-  <%= form_for(post.comments.build, {html: {class: "row"}, url: {post_id: post.id, controller: 'comments', action: :create }}) do |comment_fields| %>
-    <%= comment_fields.text_area :content, :class => "form-control", rows: 3, placeholder: "What do you think about what #{post.author.name} said?" %>
-    <%= comment_fields.submit 'Comment!', :class => "btn btn-large btn-danish btn-block" %>
-  <% end %>
+  <%= render 'comments/comment_form', object: post, id_symbol: :post_id %>
 </article>

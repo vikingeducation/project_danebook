@@ -4,8 +4,11 @@
   </div>
 
   <div class = "col-md-10">
-    <p class = "col-md-12"><%= user_link(comment.user) %> said on <%= comment.created_at %></p>
-    <p class = "col-md-12"><%= comment.body %></p>
+    <p class = "col-md-12 date-posted">
+      <%= user_link(comment.user) %> said on <%= comment.created_at %>
+    </p>
+
+    <p class = "col-md-12 comment-body"><%= comment.body %></p>
     <span class = "col-md-1">
       <%= like_link(comment) %>
     </span>

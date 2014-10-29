@@ -46,7 +46,7 @@ module ApplicationHelper
 
     case likable.likes.size
     when 0
-      return ""
+      return "&nbsp".html_safe
     when 1
       sentence << "#{user_link(likable.users_who_liked.first)}".html_safe
     when 2
@@ -62,7 +62,7 @@ module ApplicationHelper
 
   def user_link(user)
     if user == current_user
-      "you"
+      "You"
     elsif user
       link_to user.name, user
     end
@@ -89,5 +89,7 @@ def comment_like_link(comment)
     link_to "Like", [comment.commentable.user, comment.commentable, comment, :likes], method: "post", class: "col-md-1"
   end
 end
+
+
 
 end

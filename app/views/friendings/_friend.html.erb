@@ -6,7 +6,7 @@
     </div>
     <div class="col-md-5 col-xs-6">
       <p><%= link_to friend.name, user_path(friend) %></p>
-      <p><%=@friends.size %> Friends</p>
+      <p><%=friend.friends.size %> Friends</p>
     </div>
     <form class="col-md-4 col-xs-12">
       <div class="form-group">

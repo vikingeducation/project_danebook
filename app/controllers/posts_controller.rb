@@ -3,6 +3,7 @@ class PostsController < ApplicationController
   before_action :require_current_user, except: [:index]
   def index
     @user = User.find(params[:user_id])
+    @friends = @user.friends.shuffle
     @posts = @user.posts_chronologically
 
     @post = current_user.posts.build if @user == current_user

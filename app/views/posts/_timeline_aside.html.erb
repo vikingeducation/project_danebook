@@ -42,8 +42,8 @@
     </header>
 
 
-    <% 9.times do %>
-      <%= render "friend_thumbnail" %>
+    <% @friends.each_with_index do |friend, index| %>
+      <%= render partial: "friend_thumbnail", locals: {friend: friend} %>
     <% end %>
 
   <div class="col-md-12">

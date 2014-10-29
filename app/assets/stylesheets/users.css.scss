@@ -134,7 +134,7 @@ section.container a {
 
   li.active {
     a {
-      background-color: #ccc;
+      background-color: #ddd;
       margin-right: 0;
     }
   }
@@ -147,7 +147,7 @@ section.container a {
   header {
     text-align: center;
     border-bottom: 1px solid black;
-    background-color: #ccc;
+    background-color: #ddd;
 
     h2 {
       margin-top: 0;
@@ -356,13 +356,13 @@ button.btn-unfriend {
     }
 
     .date-posted {
-      color: #aaa;
+      color: #777;
     }
   }
 
   .like-section {
     border-top: 1px solid black;
-    background-color: #ccc;
+    background-color: #ddd;
     padding-bottom: 15px;
 
     & > * {
@@ -385,7 +385,7 @@ button.btn-unfriend {
   .comment-section {
     padding-bottom: 15px;
     border-top: 1px solid #999;
-    background-color: #ccc;
+    background-color: #ddd;
 
     article {
       padding-top: 15px;

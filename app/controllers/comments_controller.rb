@@ -7,6 +7,7 @@ class CommentsController < ApplicationController
 
     @commentable = klass.find(params[commentable_id])
     @comment = @commentable.comments.build(comment_params)
+    @comment.user = current_user
 
     if @comment.save
       flash[:success] = "Commented!"

@@ -1,0 +1,22 @@
+<main>
+  <%= render partial: "cover_header" %>
+
+<!-- This part changes page by page -->
+  <section class="container" id="information-pane">
+    <header class="row">
+      <div class="col-md-offset-2 col-md-8 about-header">
+        <h2>Friends</h2>
+      </div>
+    </header>
+
+
+    <div class = "row" id="friends-list">
+
+      <% 6.times do %>
+        <%= render partial: "friend" %>
+      <% end %>
+
+    </div>
+  </section>
+
+</main>

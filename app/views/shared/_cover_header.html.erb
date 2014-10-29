@@ -23,13 +23,13 @@
         <li><%= link_to "Timeline", user_timeline_path(@user) %></li>
         <li><%= link_to "About", user_profile_path(@user) %></li>
         <li ><%= link_to 'Photos <span class="link-count hidden-xs">(123)</span>'.html_safe, photos_path %></li>
-        <li><%= link_to 'Friends <span class="link-count hidden-xs">(542)</span>'.html_safe, friends_path %></li>
+        <li><%= link_to "Friends <span class='link-count hidden-xs'>(#{@user.friends.size})</span>".html_safe, user_friends_path %></li>
     </div>
 
     <div class = "col-md-2">
       <ul class = "nav">
         <li>
-        <%= render partial: 'about_link' if current_user_page?(@user) &&!current_page?(edit_user_profile_url) %>
+        <%= render partial: 'shared/about_link' if current_user_page?(@user) &&!current_page?(edit_user_profile_url) %>
         </li>
       </ul>
     </div>

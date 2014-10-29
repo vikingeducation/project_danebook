@@ -1,44 +1,34 @@
 class LikesController < ApplicationController
 
+  before_action :set_return_path, only: [:create, :destroy]
+
   def create
     klass, likable_id = parse_klass_and_id
 
     @likable = klass.find(params[likable_id])
     @like = @likable.likes.build(:user_id => current_user.id)
 
-    if @likable.is_a? Post
-      @user = @likable.user
-    elsif @likable.is_a? Comment
-      @user = @likable.commentable.user
-    end
-
     if @like.save
       flash[:success] = "Liked!"
-      redirect_to user_timeline_url(@user)
     else
       flash[:error] = "Something went wrong with that like."
-      redirect_to user_timeline_url(@user)
     end
 
+    #params too complex for render. redirect to referrer either way
+    redirect_to session.delete(:return_to)
   end
 
   def destroy
     @like = Like.find(params[:id])
 
-    if @like.likable.is_a? Post
-      @user = @like.likable.user
-    elsif @like.likable.is_a? Comment
-      @user = @like.likable.commentable.user
-    end
-
-
     if @like.destroy
       flash[:success] = "Unliked."
-      redirect_to user_timeline_url(@user)
     else
       flash[:error] = "Something went wrong with that unlike."
-      redirect_to user_timeline_url(@user)
     end
+
+    #no matter what, redirect to referring page. params too complex for render.
+    redirect_to session.delete(:return_to)
   end
 
   private

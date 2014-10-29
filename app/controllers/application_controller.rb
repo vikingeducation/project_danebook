@@ -49,4 +49,10 @@ class ApplicationController < ActionController::Base
   end
 
 
+
+#saves referring-page path to session for one-line go-back functionality
+  def set_return_path
+    session[:return_to] = request.referer
+  end
+
 end

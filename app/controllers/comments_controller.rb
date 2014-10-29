@@ -1,34 +1,33 @@
 class CommentsController < ApplicationController
 
+  before_action :set_return_path, only: [:create, :destroy]
+
   def create
     klass, commentable_id = parse_klass_and_id
 
     @commentable = klass.find(params[commentable_id])
     @comment = @commentable.comments.build(comment_params)
-    @comment.user = current_user
 
     if @comment.save
       flash[:success] = "Commented!"
-      redirect_to user_timeline_url(@commentable.user)
     else
       flash[:error] = "Something went wrong with that comment."
-      redirect_to user_timeline_url(@commentable.user)
     end
 
+    redirect_to session.delete(:return_to)
   end
 
   def destroy
     @comment = Comment.find(params[:id])
     @user = @comment.commentable.user
 
-
     if @comment.destroy
       flash[:success] = "Deleted."
-      redirect_to user_timeline_url(@user)
     else
       flash[:error] = "Something went wrong with that deletion."
-      redirect_to user_timeline_url(@user)
     end
+
+    redirect_to session.delete(:return_to)
   end
 
   private

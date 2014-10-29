@@ -11,7 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141026192417) do
+ActiveRecord::Schema.define(version: 20141028201147) do
+
+  create_table "posts", force: true do |t|
+    t.text     "body"
+    t.integer  "author_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "posts", ["author_id"], name: "index_posts_on_author_id"
 
   create_table "profiles", force: true do |t|
     t.integer  "user_id",      null: false

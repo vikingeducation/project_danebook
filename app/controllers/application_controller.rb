@@ -33,12 +33,24 @@ class ApplicationController < ActionController::Base
      !!current_user
   end
 
+  def require_signed_in
+    unless signed_in?
+      flash[:error] = "YOU NEED TO SIGN IN OR SIGN UP!"
+      redirect_to root_url
+    end
+  end
+
   def require_new_user
     redirect_to user_profile_path(current_user) if current_user
   end
 
+  def current_user?
+    params[:user_id] == current_user.id.to_s
+  end
+  helper_method :current_user?
+
   def require_current_user
-    unless params[:user_id] == current_user.id.to_s
+    unless current_user?
       flash[:error] = "You're not authorized to view this"
       redirect_to root_url
     end

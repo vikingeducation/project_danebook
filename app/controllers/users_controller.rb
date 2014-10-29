@@ -15,7 +15,7 @@ class UsersController < ApplicationController
     if @user.save
       sign_in(@user)
       flash[:success] = "Welcome #{@user.fname}!"
-      redirect_to timeline_path
+      redirect_to root_path
     else
       flash.now[:error] = "Your account could not be created"
       render :new

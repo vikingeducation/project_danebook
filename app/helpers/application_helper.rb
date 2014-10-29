@@ -8,4 +8,7 @@ module ApplicationHelper
 		end
 	end
 
+	def minutes_since_creation(object)
+		end_of_minute(Time.now - object.created_at)
+	end
 end

@@ -117,92 +117,15 @@
     <section class="col-sm-7 fill">
 
       <!-- New Post  -->
-      <section class="col-sm-12 bkg-fix buffer">
-
-        <!-- Fills full width  -->
-        <div class="row grey-title">
-          <h4>Post</h4>
-        </div>
-        <!-- Post text-box hack -->
-        <div>
-          <textarea class="post-input" placeholder="What's on your mind?" spellcheck="true"></textarea>
-
-          <div class="row grey-title">
-                <button class="post-button navbar-right">Post</button>
-          </div>
-        </div> <!-- /text-box and button -->
-      </section> <!-- /New Post -->
-
-      <!-- First post -->
-      <section class="col-sm-12 bkg-fix buffer">
-        <div class="post-body">
-          <div class="post-friend row">
-            <%= image_tag("default.png", class: "post-friend-thumb") %>
-            <div class="post-friend-info">
-              <a><h4>Herpderp Granger<h4></a>
-              <span><p>Posted on Derpsday 6/1/2104</p></span>
-            </div>
-          </div>
-
-          <div class="post-text buffer">
-            Quis nostrud non, adipisicing mixtape sriracha esse blog Neutra eu proident. Nesciunt veniam fanny pack, chillwave selvage ugh gluten-free eu cray irure nisi. Schlitz est aliquip velit flannel. Try-hard High Life ad letterpress you probably haven't heard of them ea. Est chambray placeat, distillery commodo Kickstarter nostrud fugiat veniam pug. Slow-carb.
-          </div>
-        </div>
-
-        <div class="row grey-footer">
-          <div class="bottom-of-post col-sm-12">
-            <div class="row">
-              <div class="like-or-comment col-sm-4">
-                <a>Like</a>
-                <a>Comment</a>
-              </div>
-              <div class="delete-post col-sm-8">
-                <a>Delete</a>
-              </div>
-            </div>
-            <div class="likes-and-comments">
-
-            </div>
-          </div>
-        </div>
-      </section> <!-- /First post -->
-
-      <!-- Second post with only like -->
-      <section class="col-sm-12 bkg-fix buffer">
-        <div class="post-body">
-          <div class="post-friend row">
-            <%= image_tag("default.png", class: "post-friend-thumb") %>
-            <div class="post-friend-info">
-              <a><h4>Herpderp Granger<h4></a>
-              <span><p>Posted on Derpsday 5/1/2104</p></span>
-            </div>
-          </div>
-
-          <div class="post-text buffer">
-            Quis nostrud non, adipisicing mixtape sriracha esse blog Neutra eu proident. Nesciunt veniam fanny pack, chillwave selvage ugh gluten-free eu cray irure nisi. Schlitz est aliquip velit flannel. Try-hard High Life ad letterpress you probably haven't heard of them ea. Est chambray placeat, distillery commodo Kickstarter nostrud fugiat veniam pug. Slow-carb.
-          </div>
-        </div>
+        <%= new_post %>
+      <!-- /New Post -->
 
 
-        <div class="row grey-footer">
-          <div class="bottom-of-post col-sm-12">
-            <div class="row">
-              <div class="like-or-comment col-sm-4">
-                <a>Like</a>
-                <a>Comment</a>
-              </div>
-              <div class="delete-post col-sm-8">
-                <a>Delete</a>
-              </div>
-            </div>
-            <hr>
-            <div class="likes-and-comments">
-              <a>Herpderp Granger</a> likes this.
+      <!-- Posts -->
 
-            </div>
-          </div>
-        </div>
-      </section> <!-- /Second post with only like -->
+          <%= render @posts %>
+
+       <!-- /Posts -->
 
       <!-- Last post with like and comments -->
       <section class="col-sm-12 bkg-fix buffer">

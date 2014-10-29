@@ -1,0 +1,35 @@
+      <section class="col-sm-12 bkg-fix buffer">
+        <div class="post-body">
+          <div class="post-friend row">
+            <%= image_tag("default.png", class: "post-friend-thumb") %>
+            <div class="post-friend-info">
+              <a><h4><%= @user.name %></h4></a>
+              <span><p>Posted on <%= date_in_words(post.created_at) %> </p></span>
+            </div>
+          </div>
+
+          <div class="post-text buffer">
+            <%= post.body %>
+          </div>
+        </div>
+
+
+        <div class="row grey-footer">
+          <div class="bottom-of-post col-sm-12">
+            <div class="row">
+              <div class="like-or-comment col-sm-4">
+                <a>Like</a>
+                <a>Comment</a>
+              </div>
+
+              <%= delete_post(post) %>
+
+            </div>
+            <hr>
+            <div class="likes-and-comments">
+              <a>Herpderp Granger</a> likes this.
+
+            </div>
+          </div>
+        </div>
+      </section>

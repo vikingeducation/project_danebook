@@ -1,0 +1,16 @@
+      <section class="col-sm-12 bkg-fix buffer">
+        <!-- Fills full width  -->
+        <div class="row grey-title">
+          <h4>Post</h4>
+        </div>
+        <!-- Post text-box hack -->
+        <div>
+          <%= form_for [@user, @post], {url: user_posts_path} do |post_fields| %>
+            <%= post_fields.text_area :body, class: "post-input" %>
+
+          <div class="row grey-title">
+            <%= post_fields.submit "Post", class: "post-button navbar-right" %>
+          </div>
+          <% end %>
+        </div> <!-- /text-box and button -->
+      </section>

@@ -12,9 +12,12 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show, :create] do
     resource :profile, only: [:show, :edit, :update]
+    resources :posts do
+      # resources :comments
+    end
   end
+
   resource :session
-  resources :posts
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

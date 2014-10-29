@@ -1,5 +1,6 @@
 class FriendingsController < ApplicationController
 
+  before_action :set_return_path, only: [:create, :destroy]
 
   def index
     @user = User.find(params[:user_id])
@@ -12,11 +13,11 @@ class FriendingsController < ApplicationController
 
     if current_user.save
       flash[:success] = "Added new friend!"
-      redirect_to @user
     else
       flash[:error] = "You can't add that person right now."
-      redirect_to @user
     end
+
+    redirect_to session.delete(:return_to)
   end
 
   def destroy
@@ -25,10 +26,10 @@ class FriendingsController < ApplicationController
 
     if current_user.save
       flash[:success] = "Unfriended!"
-      redirect_to @user
     else
       flash[:error] = "You can't let that person go just yet."
-      redirect_to @user
     end
+
+    redirect_to session.delete(:return_to)
   end
 end

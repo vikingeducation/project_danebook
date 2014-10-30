@@ -1,26 +1,36 @@
+<section class="container" id="information-pane">
+  <header class="row">
+    <div class="col-md-offset-2 col-md-8 about-header">
+      <h2>Photos</h2>
+    </div>
+  </header>
 
+  <div class = "row">
 
-<!-- This part changes page by page -->
-  <section class="container" id="information-pane">
-    <header class="row">
-      <div class="col-md-offset-2 col-md-8 about-header">
-        <h2>Photos</h2>
-      </div>
-      <form class="col-md-2 about-header">
-        <div class="form-group">
-          <button type="submit" class="btn btn-default" id="edit-profile-button">Add photo!</button>
-        </div>
-      </form>
-    </header>
+    <div class = "col-md-8">
+      <!--  Photo -->
+      
+      <!-- action links -->
+      Set as Profile
+      Set as Cover
+      delete photo
+      
+    </div>
 
-
-    <div class = "row" id="photo-field">
-
-    <% @photos.each_with_index do |photo, index| %>
-      <% break if index > 15 %>
-      <%= render partial: "photo", locals: { photo: photo } %>
-    <% end %>
+    <div class = "col-md-4">
+      
+      <!-- User image and name and photo date -->
+      
+      <!-- like link and like sentence -->
+      
+      <!-- comment form -->
+      
+      <!-- comment section -->
+      
+      
+    </div>
+  
  
-    </div> <!-- photo-field -->
-  </section> <!--information-pane -->
+  </div> <!-- photo-field -->
+</section> <!--information-pane -->
 

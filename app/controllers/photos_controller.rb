@@ -12,7 +12,13 @@ class PhotosController < ApplicationController
 
   def create
     @user = User.find(params[:user_id])
-    @photo = @user.photos.build(photo_params)
+    
+    if params[:user][:url]
+      @photo = @user.photos.build
+      @photo.picture_from_url(params[:user][:url])
+    else
+      @photo = @user.photos.build(photo_params)
+    end
 
     if @photo.save
       flash[:success] = "Saved new photo."
@@ -21,12 +27,6 @@ class PhotosController < ApplicationController
       flash[:error] = "Failed to upload."
       render :new
     end
-  end
-
-  def create_from_url
-    @user = User.find(params[:user_id])
-    @photo = @user.photos.build
-    @photo.picture_from_url(photo_params)
   end
 
   def show

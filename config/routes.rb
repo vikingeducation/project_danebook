@@ -7,6 +7,14 @@ Rails.application.routes.draw do
     resource :friendings, only: [:index, :create, :destroy]
     resource :profile, only: [:edit, :update, :show]
 
+    resources :photos do
+      resources :likes, only: [:create, :destroy], :defaults => { :likable => 'Post' }
+
+      resources :comments, only: [:create, :destroy], :defaults => { :commentable => 'Post' } do
+        resources :likes, only: [:create, :destroy], :defaults => { :likable => 'Comment'}
+      end
+    end
+
 
     resources :posts do
       resources :likes, only: [:create, :destroy], :defaults => { :likable => 'Post' }

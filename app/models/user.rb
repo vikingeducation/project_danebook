@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :posts
   has_many :likes
+  has_many :photos
 
   has_many :liked_posts, through: :likes, source: :likable, source_type: "Post"
   has_many :liked_comments, through: :likes, source: :likable, source_type: "Comment"

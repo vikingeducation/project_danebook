@@ -1,0 +1,31 @@
+<section class = "container photo-form" id="information-pane">
+  <header class="row">
+    <div class="col-md-offset-2 col-md-8 about-header">
+      <h2 class>Photos</h2>
+    </div>
+  </header>
+
+
+  <%= form_for [@user, @photo], class: "row" do |f| %>
+    <div class = "form-group col-md-12">
+      <%= f.label :url, "Paste the Url to a photo on the web..." %>
+      <%= f.text_field :url, placeholder: "http://example.com/photo1.jpg", class: "form-control" %>
+
+      <%= f.submit "Use Web Photo", class: "btn btn-default facebook-button" %>
+    </div>
+  <% end %>
+
+
+  <h4> or... </h4>
+
+  <%= form_for [@user, @photo], class: "row" do |f| %>
+
+    <div class = "form-group col-md-12">
+      <%= f.label :image, "Select a photo from your hard drive..." %>
+      <%= f.file_field :image, class: "form-control" %>
+
+      <%= f.submit "Upload Photo", class: "btn btn-default facebook-button" %>
+    </div>
+  <% end %>
+
+</section> <!--information-pane -->

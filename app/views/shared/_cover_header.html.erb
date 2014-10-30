@@ -22,7 +22,7 @@
       <ul class = "nav nav-tabs " role = "profile-nav">
         <li><%= link_to "Timeline", user_timeline_path(@user) %></li>
         <li><%= link_to "About", user_profile_path(@user) %></li>
-        <li ><%= link_to 'Photos <span class="link-count hidden-xs">(123)</span>'.html_safe, photos_path %></li>
+        <li ><%= link_to "Photos <span class='link-count hidden-xs'>(#{@user.photos.count})</span>".html_safe, user_photos_path(@user) %></li>
         <li><%= link_to "Friends <span class='link-count hidden-xs'>(#{@user.friends.size})</span>".html_safe, user_friends_path %></li>
     </div>
 

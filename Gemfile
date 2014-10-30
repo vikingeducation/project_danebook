@@ -7,6 +7,11 @@ group :production do
   gem 'pg'
 end
 
+
+gem 'figaro'
+gem 'paperclip'
+gem 'aws-sdk'
+
 gem 'faker'
 
 group :test, :development do

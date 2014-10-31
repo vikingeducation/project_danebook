@@ -1,3 +1,3 @@
-<div class="col-md-3 col-sm-4 col-xs-6">
- <%= image_tag photo.photo.url(:medium) %>
+<div class="col-md-3 col-sm-4 col-xs-6 show-photo">
+ <%= link_to (image_tag photo.photo.url(:medium)), photo %>
 </div>

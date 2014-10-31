@@ -1,6 +1,6 @@
 <div class="row">
   <p class="col-xs-6"><strong>Born on:</strong></p>
-  <p class="col-xs-6"><%= @user.birthday %></p>
+  <p class="col-xs-6"><%= @user.birthday.to_formatted_s(:long_ordinal) %></p>
 </div>
 <div class="row">
   <p class="col-xs-6"><strong>Went to school at:</strong></p>

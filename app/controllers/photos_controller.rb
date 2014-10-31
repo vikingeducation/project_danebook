@@ -16,7 +16,14 @@ class PhotosController < ApplicationController
 
   def create
     @user = current_user
-    @photo = current_user.photos.build(photo_params)
+
+    if params[:photo][:url].present?
+      @photo = current_user.photos.build
+      @photo.photo_from_url(params[:photo][:url])
+    else
+      @photo = current_user.photos.build(upload_photo_params)
+    end
+
     if @photo.save
       flash[:success] = "Photo uploaded"
       redirect_to @photo
@@ -39,7 +46,7 @@ class PhotosController < ApplicationController
 
   private
 
-  def photo_params
-    params.require(:photo).permit(:photo) if params[:photo]
+  def upload_photo_params
+    params.require(:photo).permit(:photo) if params[:photo][:photo]
   end
 end

@@ -1,0 +1,8 @@
+<section class = "col-md-4">
+
+  <%= render "shared/user_header" %>
+  <%= like_link(@photo) %>
+  <%= like_sentence(@photo)%>
+  <%= render partial: "shared/comments_section", locals: {parent: @photo} %>
+
+</section>

@@ -1,0 +1,9 @@
+<header class = "row">
+  <div class ="col-md-2">
+    <%= image_tag "user_silhouette_generic.gif" %>
+  </div>
+  <div class="col-md-10">
+    <p><%= link_to @user.name, @user %></p>
+    <p class = "date-posted">Created on <%= readable_date(@photo.created_at) %></p>
+  </div>
+</header>

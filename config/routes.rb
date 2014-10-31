@@ -8,9 +8,9 @@ Rails.application.routes.draw do
     resource :profile, only: [:edit, :update, :show]
 
     resources :photos do
-      resources :likes, only: [:create, :destroy], :defaults => { :likable => 'Post' }
+      resources :likes, only: [:create, :destroy], :defaults => { :likable => 'Photo' }
 
-      resources :comments, only: [:create, :destroy], :defaults => { :commentable => 'Post' } do
+      resources :comments, only: [:create, :destroy], :defaults => { :commentable => 'Photo' } do
         resources :likes, only: [:create, :destroy], :defaults => { :likable => 'Comment'}
       end
     end

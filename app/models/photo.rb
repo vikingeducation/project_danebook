@@ -2,6 +2,14 @@ require 'open-uri'
 
 class Photo < ActiveRecord::Base
   belongs_to :user
+
+  has_many :likes, as: :likable, dependent: :destroy
+  has_many :users_who_liked, through: :likes, source: :user
+
+  has_many :comments, as: :commentable
+  has_many :users_who_commented, through: :comments, source: :user
+
+
   has_attached_file :image, :styles => { :large => "500x500", :thumb => "262x262" }
 
   validates_attachment_content_type :image, :content_type => [ "image/jpeg",
@@ -11,11 +19,7 @@ class Photo < ActiveRecord::Base
 
   attr_accessor :url
 
-  def url=(url)
-    picture_from_url(url)
-  end
-
-  def picture_from_url(url)
-    self.picture = open(url)
+  def image_from_url(url)
+    self.image = open(url)
   end
 end

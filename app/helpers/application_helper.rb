@@ -1,5 +1,10 @@
 module ApplicationHelper
 
+
+  def readable_date(datetime)
+    datetime.to_date.inspect
+  end
+
   # is this page the current_user's?
   def current_user_page?(user)
     user != nil && user == current_user
@@ -21,14 +26,28 @@ module ApplicationHelper
 
 
 
-
+  #TODO: remove all of these in refactor
   def like_link(likable)
     if likable.is_a? Comment
       comment_like_link(likable)
     elsif likable.is_a? Post
       post_like_link(likable)
+    elsif likable.is_a? Photo
+      photo_like_link(likable)
     else
       ""
+    end
+
+  end
+
+
+  def like_button(likable, parent = nil)
+    like_object = likable.likes.find_by_liker_id(current_user.id)
+
+    if like_object
+      link_to "Unlike", [parent, likable, like_object], method: "DELETE"
+    else
+      link_to "Like", [parent, likable, :likes], method: "POST"
     end
   end
 
@@ -68,8 +87,29 @@ module ApplicationHelper
     end
   end
 
+  def photo_link(photo)
+    user = photo.user
+    if user == current_user || user.friends.include?(current_user)
+      link_to image_tag(photo.image.url(:thumb)), user_photo_path(user, photo), class: "photo-link"
+    else
+      image_tag photo.image.url(:thumb), class: "photo-link"
+    end
+  end
+
 private
 
+
+
+
+def photo_like_link(photo)
+
+  if current_user.likes_photo?(photo)
+    like = current_user.like_of_photo(photo)
+    link_to "Unlike", [photo.user, photo, like], method: "delete", class: "col-md-1"
+  else
+    link_to "Like", [photo.user, photo, :likes], method: "post", class: "col-md-1"
+  end
+end
 
 def post_like_link(post)
 

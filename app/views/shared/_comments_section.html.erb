@@ -1,7 +1,7 @@
 <section class="col-md-12 comment-section">
 
   <% parent.comments.each do |comment| %>
-    <%= render partial: "single_comment", locals: {comment: comment} %>
+    <%= render partial: "shared/single_comment", locals: {comment: comment} %>
   <% end %>
 
 

@@ -16,9 +16,16 @@ class User < ActiveRecord::Base
   has_many :likes
   has_many :photos
 
+
+  belongs_to :profile_photo, class: "Photo"
+  belongs_to :cover_photo, class: "Photo"
+
+
+
+
   has_many :liked_posts, through: :likes, source: :likable, source_type: "Post"
   has_many :liked_comments, through: :likes, source: :likable, source_type: "Comment"
-
+  has_many :liked_photos, through: :likes, source: :likable, source_type: "Photo"
 
 
   has_many :friendship_requests_made, :foreign_key => :friender_id,
@@ -75,10 +82,21 @@ class User < ActiveRecord::Base
     liked_comments.include?(comment)
   end
 
+  # does this user like that photo?
+  def likes_photo?(photo)
+    liked_photos.include?(photo)
+  end
+
   # given a comment, returns this user's Like of that comment from
   # the Likes table. If this user doesn't like that comment, returns nil
   def like_of_comment(comment)
     likes_comment?(comment) ? likes.find_by(:likable_id => comment.id, :likable_type => "Comment") : nil
+  end
+
+  # given a comment, returns this user's Like of that comment from
+  # the Likes table. If this user doesn't like that comment, returns nil
+  def like_of_photo(photo)
+    likes_photo?(photo) ? likes.find_by(:likable_id => photo.id, :likable_type => "Photo") : nil
   end
 
   # given a post, returns this user's Like of that post from the Likes table.

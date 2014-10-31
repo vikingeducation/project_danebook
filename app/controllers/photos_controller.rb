@@ -13,9 +13,9 @@ class PhotosController < ApplicationController
   def create
     @user = User.find(params[:user_id])
     
-    if params[:user][:url]
+    if params[:photo][:url] != ""
       @photo = @user.photos.build
-      @photo.picture_from_url(params[:user][:url])
+      @photo.image_from_url(params[:photo][:url])
     else
       @photo = @user.photos.build(photo_params)
     end
@@ -30,9 +30,22 @@ class PhotosController < ApplicationController
   end
 
   def show
+    @user = User.find(params[:user_id])
+    @photo = Photo.find(params[:id])
   end
 
   def destroy
+    @photo = current_user.photos.find(params[:id])
+    @user = current_user
+
+    if @photo.destroy
+      flash[:success] = "Unliked."
+      redirect_to user_photos_url(@user)
+    else
+      flash[:error] = "Something went wrong with that unlike."
+      render :show
+    end
+
   end
 
   private

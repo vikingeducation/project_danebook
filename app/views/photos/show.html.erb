@@ -17,9 +17,21 @@
       <!-- action links -->
       <div class = "row">
         <div class = "col-md-12">
-          <p><%= link_to "Set as Profile", "#" %></p>
-          <p><%= link_to "Set as Cover", "#" %></p>
-          <p><%= link_to "Delete Photo", user_photo_path(@user, @photo), method: "DELETE", data: {confirm: "Do you really want to delete this photo?"} %></p>
+          <p>
+            <%= link_to "Set as Profile", user_path(@user,
+                                          :profile_photo_id => @photo.id),
+                                          method: "PUT" %>
+          </p>
+          <p>
+            <%= link_to "Set as Cover", user_path(@user,
+                                          :cover_photo_id => @photo.id),
+                                          method: "PUT" %>
+          </p>
+          <p>
+            <%= link_to "Delete Photo", user_photo_path(@user, @photo),
+                                         method: "DELETE",
+                                         data: {confirm: "Do you really want to delete this photo?"} %>
+          </p>
         </div>
       </div>
     </div>

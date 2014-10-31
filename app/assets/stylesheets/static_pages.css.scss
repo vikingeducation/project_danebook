@@ -106,6 +106,12 @@ section.container a {
   min-width: 960px;
   opacity: 0.5;
   border: 1px solid black;
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    max-height: 450px;
+  }
 }
 
 #profile-image {

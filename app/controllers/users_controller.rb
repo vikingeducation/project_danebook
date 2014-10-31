@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   layout "login", only: [:new]
+  before_action :set_return_path, only: [:update]
 
   skip_before_action :require_login, only: [:new, :create]
   before_action :skip_login, only: [:new]
@@ -29,6 +30,20 @@ class UsersController < ApplicationController
   end
 
   def update
+    @user = current_user
+
+    if params[:profile_photo_id]
+      @user.profile_photo = @user.photos.find(params[:profile_photo_id])
+    elsif params[:cover_photo_id]
+      @user.cover_photo = @user.photos.find(params[:cover_photo_id])
+    end
+
+    if @user.save
+      flash[:success] = "Photo updated."
+    else
+      flash[:error] = "Sorry, that didn't work."
+    end
+    redirect_to session.delete(:return_to)
   end
 
   def destroy

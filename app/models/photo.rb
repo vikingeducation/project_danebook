@@ -9,6 +9,9 @@ class Photo < ActiveRecord::Base
   has_many :comments, as: :commentable
   has_many :users_who_commented, through: :comments, source: :user
 
+  has_one :profile_photo_user, foreign_key: :profile_photo_id, :class_name => "User"
+  has_one :cover_photo_user, foreign_key: :cover_photo_id, :class_name => "User"
+
 
   has_attached_file :image, :styles => { :large => "500x500", :thumb => "262x262" }
 

@@ -34,6 +34,7 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'bullet'
+  gem 'faker'
 end
 
 # Spruce up our console output
@@ -49,7 +50,6 @@ group :production do
   gem 'rails_12factor'
 end
 
-gem 'faker'
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'

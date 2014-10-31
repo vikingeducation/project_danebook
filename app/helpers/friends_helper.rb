@@ -12,4 +12,12 @@ module FriendsHelper
       link_to "Send Friend Request", user_friends_path(target), method: "POST", class: css_class
     end
   end
+
+  def random_friends(user)
+    if user.friends.count <= 6
+      user.friends
+    else
+      user.friends.limit(6)
+    end
+  end
 end

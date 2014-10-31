@@ -1,5 +1,5 @@
-<% @user.friends.each do |friend| %>
-  <div class="col-md-4 col-xs-6">
+<% random_friends(@user).each do |friend| %>
+  <div class="col-xs-4">
     <%= link_to image_tag("user_silhouette_generic.gif", :alt => "User Silhouette"), user_path(friend) %>
     <%= link_to friend.name, user_path(friend) %>
   </div>

@@ -3,12 +3,12 @@
   <!--cover images-->
   <div class = "row">
     <div id="cover-photo">
-      <%= image_tag(@user.cover_photo.image.url, class: "hidden-xs hidden-sm")%>
+      <%= cover_image(@user)%>
     </div>
 
 
     <div class="col-md-12 hidden-xs hidden-sm" id="profile-image">
-      <div class = "col-md-2"><%= image_tag(@user.profile_photo.image.url(:thumb))%></div>
+      <div class = "col-md-2"><%= profile_photo(@user) %></div>
       <div class = "user_headline col-md-6">
         <span class = "h2 name-header"><%=@user.name %></span>
         <%= friend_button(@user) %>

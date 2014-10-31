@@ -1,6 +1,23 @@
 module ApplicationHelper
 
 
+
+  def profile_photo(user)
+    if user && user.profile_photo && user.profile_photo.image
+      image_tag @user.profile_photo.image.url(:thumb)
+    else
+      image_tag "user_silhouette_generic.gif"
+    end
+  end
+
+  def cover_image(user)
+    if user && user.cover_photo && user.cover_photo.image
+      image_tag @user.cover_photo.image.url, class: "hidden-xs hidden-sm"
+    else
+      image_tag "hogwarts_small.jpg", class: "hidden-xs hidden-sm"
+    end
+  end
+
   def readable_date(datetime)
     datetime.to_date.inspect
   end

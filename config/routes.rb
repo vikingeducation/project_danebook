@@ -1,14 +1,18 @@
 Rails.application.routes.draw do
 
   root 'users#new'
-  get '/photos' => 'static_pages#photos'
 
   resources(:users, only: [:show, :create]) do
     resource :profile, only: [:show, :edit, :update]
     resources :friends, only: [:index, :create]
+    resources :photos, only: [:index]
   end
 
   resources :friends, only: [:destroy]
+
+  resources(:photos, only: [:show, :new, :create, :destroy]) do
+    resources :likes, only: [:create, :destroy], :defaults => { likable: 'Photo' }
+  end
 
   resources(:posts, only: [:create, :destroy]) do
     resources :likes, only: [:create, :destroy], :defaults => { likable: 'Post' }

@@ -5,14 +5,17 @@ class PhotosController < ApplicationController
   end
 
   def show
+    @user = current_user
     @photo = Photo.find(params[:id])
   end
 
   def new
+    @user = current_user
     @photo = current_user.photos.build
   end
 
   def create
+    @user = current_user
     @photo = current_user.photos.build(photo_params)
     if @photo.save
       flash[:success] = "Photo uploaded"

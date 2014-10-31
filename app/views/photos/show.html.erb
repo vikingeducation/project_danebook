@@ -1,0 +1,23 @@
+<div class="col-md-8">
+ <%= image_tag @photo.photo.url(:original) %>
+</div>
+
+<div class="col-md-4">
+  <article class="post-pane">
+    <header class="row">
+      <%= image_tag("harry_potter_small.jpg", :alt => "Harry Potter", :class => "col-xs-2 post-picture") %>
+      <div class="col-xs-10">
+        <h5><%= link_to @photo.author.name, user_path(@photo.author) %></h5>
+        <p>Posted <%= time_ago_in_words(@photo.created_at) %> ago</p>
+      </div>
+    </header>
+
+    <%= render 'shared/likes_bar', object: @photo, parent: nil %>
+
+    <% @photo.comments.each do |comment| %>
+      <%= render 'comments/comment', comment: comment %>
+    <% end %>
+
+    <%= render 'comments/comment_form', object: @photo, id_symbol: :photo_id %>
+  </article>
+</div>

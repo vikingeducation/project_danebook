@@ -9,7 +9,7 @@
   <ul class="nav nav-pills pull-right">
     <li><%= link_to 'Timeline', @user %></li>
     <li><%= link_to 'About', user_profile_path(@user) %></li>
-    <li><%= link_to 'Photos (123)', photos_path %></li>
+    <li><%= link_to 'Photos (123)', user_photos_path(@user) %></li>
     <li><%= link_to "Friends (#{@user.friends.count})", user_friends_path(@user) %></li>
     <li>
       <%= edit_profile_button(@user) %>

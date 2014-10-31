@@ -1,7 +1,7 @@
 <article class = "row">
   <header class = "col-md-12">
     <div class ="col-md-2">
-      <%= image_tag "user_silhouette_generic.gif" %>
+      <%= profile_photo(post.user) %>
     </div>
     <div class="col-md-10">
       <p><%= link_to post.user.name, post.user %></p>

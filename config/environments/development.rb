@@ -51,4 +51,6 @@ Rails.application.configure do
     Bullet.add_footer = true
     # Bullet.stacktrace_includes = [ 'your_gem', 'your_middleware' ]
   end
+
+  Paperclip.options[:command_path] = "usr/local/bin/convert"
 end

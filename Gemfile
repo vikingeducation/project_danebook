@@ -15,9 +15,9 @@ gem 'coffee-rails', '~> 4.0.0'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 gem 'therubyracer',  platforms: :ruby
 gem 'less-rails'
-gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
+gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git' # $ rails generate bootstrap:install static
 
-gem 'simple_form'
+gem 'simple_form' # $ rails generate simple_form:install --bootstrap
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -32,8 +32,8 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 group :development do
   gem 'spring'
   gem 'better_errors'
-  gem 'binding_of_caller'
-  gem 'bullet'
+  gem 'binding_of_caller' # for better_errors
+  gem 'bullet' # config/environments/development.rb (see docs)
   gem 'faker'
 end
 
@@ -50,6 +50,9 @@ group :production do
   gem 'rails_12factor'
 end
 
+gem 'figaro' # $ figaro install
+gem 'paperclip', :git => "git://github.com/thoughtbot/paperclip.git"
+gem 'aws-sdk'
 
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'

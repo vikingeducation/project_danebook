@@ -4,6 +4,7 @@ class Post < ActiveRecord::Base
   has_many :likes, as: :likable, dependent: :destroy
   has_many :comments, as: :commentable, dependent: :destroy
 
+  validates :author, presence: true
   validates :content, presence: true,
                         length: { maximum: 140 } # Twitter!
 end

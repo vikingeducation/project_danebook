@@ -7,7 +7,7 @@ class Comment < ActiveRecord::Base
   # make sure that the user and commented item are real
   validates :author, :commentable, presence: true
   # make sure that comments are only possible for appropriate objects
-  validates :commentable_type, inclusion: ["Post"]
+  validates :commentable_type, inclusion: ["Post", "Photo"]
   # make sure the comments are brief and present
   validates :content, presence: true,
                       length: { maximum: 140 }

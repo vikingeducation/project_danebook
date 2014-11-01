@@ -13,7 +13,7 @@ class Photo < ActiveRecord::Base
   has_one :cover_photo_user, foreign_key: :cover_photo_id, :class_name => "User"
 
 
-  has_attached_file :image, :styles => { :large => "500x500", :thumb => "262x262" }
+  has_attached_file :image, :styles => { :large => "500x500#", :thumb => "262x262#" }
 
   validates_attachment_content_type :image, :content_type => [ "image/jpeg",
                                                                "image/gif",

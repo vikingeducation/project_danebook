@@ -1,0 +1,21 @@
+<em>
+  Showing <%=@users.count %> users whose first or last names contain
+  '<%=@query%>'
+</em>
+
+<section class="container search-results-pane" id="information-pane">
+  <header class="row">
+    <div class="col-md-offset-2 col-md-8 about-header">
+      <h2>Search Results</h2>
+    </div>
+  </header>
+
+
+  <div class = "row">
+
+    <% @users.each do |user| %>
+      <%= render partial: "searched_user", locals: { user: user } %>
+    <% end %>
+
+  </div>
+</section>

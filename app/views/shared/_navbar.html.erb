@@ -18,11 +18,11 @@
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse col-md-8" id="bs-example-navbar-collapse-1">
-              <form class="navbar-form navbar-left" role="search">
+              <%=form_tag users_path , method: "GET", class: "navbar-form navbar-left", role: "search"  do %>
                 <div class="form-group">
-                  <input type="text" id="nav-search-bar" class="form-control" placeholder="Search">
+                  <%= text_field_tag :query, nil, id: "nav-search-bar", class: "form-control", placeholder: "Search" %>
                 </div>
-              </form>
+              <% end %>
 
           <ul class="nav navbar-nav navbar-right pull-right">
             <li  class="hidden-sm">

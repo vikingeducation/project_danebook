@@ -41,9 +41,14 @@ class User < ActiveRecord::Base
                                   :source => :friender
 
 
-
-
   before_create :generate_token
+
+
+
+
+  def self.search(query)
+    where("first_name LIKE ? OR last_name LIKE ?", "%#{query}%", "%#{query}%")
+  end
 
   def has_friend?(user)
     friends.include?(user)

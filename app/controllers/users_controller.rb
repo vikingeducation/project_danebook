@@ -1,9 +1,19 @@
 class UsersController < ApplicationController
   layout "login", only: [:new]
+  layout "search", only: [:index]
+
   before_action :set_return_path, only: [:update]
 
   skip_before_action :require_login, only: [:new, :create]
   before_action :skip_login, only: [:new]
+
+
+  # search function only
+  def index
+    @query = params[:query]
+    @users = User.search(@query)
+  end
+
   def new
     @user = User.new
     @profile = @user.build_profile

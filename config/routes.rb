@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
 
-  resources :users, except: [:index, :edit] do
+  resources :users, except: [:edit] do
 
     get '/friends' => 'friendings#index'
     resource :friendings, only: [:index, :create, :destroy]

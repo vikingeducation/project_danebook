@@ -50,8 +50,16 @@ main {
     z-index: 1;
     color: white;
     position: relative;
-    top: -350px;
-    left: 210px;
+    top: -330px;
+    left: 240px;
+  }
+
+  img.profile-photo {
+    position: relative;
+    top: -200px;
+    left: 25px;
+    height: 210px;
+    width: 210px;
   }
 }
 
@@ -61,15 +69,10 @@ main {
   z-index: -1;
 }
 
-.profile-picture {
-  position: relative;
-  top: -240px;
-  left: 25px;
+.profile-photo {
   padding: 4px;
   border: 1px solid $flag-darker;
   background-color: white;
-  height: 250px;
-  width: 180px;
 }
 
 .profile-navbar {
@@ -80,8 +83,9 @@ main {
 .info-pane {
   margin-top: 15px;
   margin-bottom: 15px;
+
   img {
-    width: 100%;
+    width: 100%
   }
 
   header {

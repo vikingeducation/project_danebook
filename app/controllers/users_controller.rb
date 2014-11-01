@@ -28,8 +28,12 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     # load items for an index of posts with comments and likes
     @posts = @user.posts.
-             includes(:author, likes: :liker, comments:
-                      [:author, :commentable, likes: :liker]).
+             includes(author: :profile_photo,
+                      likes: :liker,
+                      comments:
+                      [:commentable,
+                      author: :profile_photo,
+                      likes: :liker]).
                       order(created_at: :desc)
     @post = current_user.posts.build
   end

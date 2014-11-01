@@ -14,9 +14,14 @@ class ProfilesController < ApplicationController
   def update
     @user = current_user
     @profile = current_user.profile
-    if @profile.update_attributes(profile_params)
+    @profile.photo = @user.photos.find(params[:photo_id]) if params[:photo_id]
+    @profile.cover_photo = @user.photos.find(params[:cover_photo_id]) if params[:cover_photo_id]
+    if params[:profile] && @profile.update_attributes(profile_params)
       flash[:success] = "Profile updated"
       redirect_to user_profile_path(@user)
+    elsif @profile.save
+      flash[:success] = "Photo updated"
+      redirect_to @user
     else
       flash[:error] = "Something went wrong when saving your profile"
       render :edit
@@ -31,6 +36,6 @@ class ProfilesController < ApplicationController
                                     :current_town,
                                     :phone_number,
                                     :quotes,
-                                    :about)
+                                    :about) if params[:profile]
   end
 end

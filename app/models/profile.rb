@@ -1,5 +1,7 @@
 class Profile < ActiveRecord::Base
   belongs_to :user
+  belongs_to :photo
+  belongs_to :cover_photo, :class_name => "Photo"
 
   validates :quotes,
             :about, length: { maximum: 1000 }

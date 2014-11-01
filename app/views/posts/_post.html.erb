@@ -1,6 +1,6 @@
 <article class="post-pane">
   <header class="row">
-    <%= image_tag("harry_potter_small.jpg", :alt => "Harry Potter", :class => "col-xs-2 post-picture") %>
+    <%= profile_photo(post.author, :thumb, "col-xs-2 post-picture") %>
     <div class="col-xs-10">
       <h5><%= link_to post.author.name, user_path(post.author) %></h5>
       <p>Posted <%= time_ago_in_words(post.created_at) %> ago</p>

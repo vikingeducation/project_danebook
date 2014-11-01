@@ -1,6 +1,6 @@
 <div class="row hero">
-  <%= image_tag("hogwarts_small.jpg", :class => "hidden-sm hidden-xs", class: "hero-image", :alt => "Hogwarts Castle") %>
-  <%= image_tag("harry_potter_small.jpg", :alt => "Harry Potter", class: "profile-picture") %>
+  <%= cover_photo(@user) %>
+  <%= profile_photo(@user, :medium, "profile-photo") %>
   <%= friend_button(@user, "btn btn-danish") %>
   <h1><%= @user.name %></h1>
 </div>

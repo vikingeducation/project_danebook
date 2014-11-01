@@ -1,0 +1,10 @@
+<div class="row">
+  <%= link_to "Set Profile Photo", [@user, current_user.profile,
+                                    photo_id: @photo.id],
+                                    method: "PUT",
+                                    class: "pull-left col-xs-3" %>
+  <%= link_to "Set Cover Photo", [@user, current_user.profile,
+                                  cover_photo_id: @photo.id],
+                                  method: "PUT",
+                                  class: "pull-right col-xs-3" %>
+</div>

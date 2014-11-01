@@ -14,4 +14,10 @@ module PhotosHelper
       image_tag "user_silhouette_generic.gif", :alt => "#{user.name}", class: css_class
     end
   end
+
+  def set_photo_bar(user)
+    if user == current_user
+      render "set_photo_bar"
+    end
+  end
 end

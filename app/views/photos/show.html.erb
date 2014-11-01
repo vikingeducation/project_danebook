@@ -1,11 +1,6 @@
 <div class="col-md-8 show-photo">
   <%= image_tag @photo.photo.url(:original) %>
-  <p><%= link_to "Set Profile Photo", [@user, current_user.profile,
-                                      photo_id: @photo.id],
-                                      method: "PUT" %></p>
-  <p><%= link_to "Set Cover Photo", [@user, current_user.profile,
-                                    cover_photo_id: @photo.id],
-                                    method: "PUT" %></p>
+  <%= set_photo_bar(@photo.author) %>
 </div>
 
 <div class="col-md-4">

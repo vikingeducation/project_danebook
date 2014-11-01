@@ -1,7 +1,7 @@
 <div class="row">
   <% random_friends(@user).each do |friend| %>
     <div class="col-xs-4">
-      <%= link_to(profile_photo(friend, :small, "profile-photo"), user_path(friend)) %>
+      <%= link_to(profile_photo(friend, :medium, "profile-photo"), user_path(friend)) %>
       <%= link_to friend.name, user_path(friend) %>
     </div>
   <% end %>

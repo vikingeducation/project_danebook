@@ -1,7 +1,7 @@
 require 'open-uri'
 
 class Photo < ActiveRecord::Base
-  has_attached_file :photo, styles: { thumb: "50x50#", small: "100x100#", medium: "200x200#" }
+  has_attached_file :photo, styles: { thumb: "50x50#", medium: "200x200#" }
   belongs_to :author, :class_name => "User"
 
   has_many :likes, as: :likable, dependent: :destroy

@@ -1,7 +1,7 @@
 <div class="row">
   <% @user.photos.limit(9).each do |photo| %>
     <div class="col-xs-4">
-      <%= link_to (image_tag photo.photo.url(:small)), photo, class: "show-photo" %>
+      <%= link_to (image_tag photo.photo.url(:medium)), photo, class: "show-photo" %>
     </div>
   <% end %>
 </div>

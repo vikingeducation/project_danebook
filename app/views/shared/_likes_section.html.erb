@@ -7,9 +7,8 @@
 
   <div class = "col-md-12">
 
-    <% post.users_who_liked.each do |user| %>
-      <p><%=link_to user.name, user_path(user) %> liked this.</p>
-    <% end %>
-    
+
+    <p><%= like_sentence(post).html_safe %>
+
   </div>
 </section>

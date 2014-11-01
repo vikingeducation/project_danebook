@@ -10,7 +10,7 @@
             <span class="icon-bar"></span>
           </button>
 
-          <%= link_to root_path, class: "navbar-brand col-md-12" do %>
+          <%= link_to user_newsfeed_path(current_user), class: "navbar-brand col-md-12" do %>
             <%= image_tag("danish_flag.gif", class: "img-circle col-md-2", alt: "Denmark 4eva", height: "28px", width: "36px")%>
             <p class = "col-md-8">Danebook</p>
           <% end %>

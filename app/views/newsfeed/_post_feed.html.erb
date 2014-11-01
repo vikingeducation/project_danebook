@@ -1,0 +1,13 @@
+
+<!--post feed-->
+<div class = "col-md-7 col-md-offset-1" id = "post-feed">
+
+
+  <%= render "shared/post_form" %>
+
+
+  <% @posts.each do |post| %>
+    <%= render partial: "shared/single_post", locals: {post: post} %>
+  <% end %>
+
+</div>

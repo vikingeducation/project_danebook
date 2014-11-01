@@ -1,0 +1,16 @@
+<div class = "col-md-3">
+
+<% @posts.each do |post| %>
+  <div class = "row">
+    <div class ="col-md-2">
+      <%= profile_photo(post.user) %>
+    </div>
+    <div class="col-md-10">
+      <p><%= link_to post.user.name, post.user %></p>
+      <p class = "date-posted">Posted on <%= readable_date(post.created_at) %></p>
+    </div>
+  </div>
+<% end %>
+
+
+</div>

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  layout "login", only: [:new]
-  layout "search", only: [:index]
+
+  layout :choose_layout
 
   before_action :set_return_path, only: [:update]
 
@@ -63,6 +63,14 @@ class UsersController < ApplicationController
 
   def whitelisted_params
     params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :profile_attributes => [:month, :day, :year, :gender, :user_id] )
+  end
+
+  def choose_layout
+    case action_name
+      when "index" then "search"
+      when "new" then "login"
+      else ""
+    end
   end
 
   def skip_login

@@ -1,7 +1,13 @@
 Rails.application.routes.draw do
 
 
+
+
+
   resources :users, except: [:edit] do
+
+    get '/newsfeed' => 'newsfeed#index'
+    resource :newsfeed, only: [:index]
 
     get '/friends' => 'friendings#index'
     resource :friendings, only: [:index, :create, :destroy]
@@ -32,11 +38,9 @@ Rails.application.routes.draw do
 
   resource :session, only: [:new, :create, :destroy]
 
-
   root 'users#new'
   get '/login' => 'users#new'
   delete '/logout' => 'sessions#destroy'
-
 
 
 

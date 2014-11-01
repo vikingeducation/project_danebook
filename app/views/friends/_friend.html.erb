@@ -1,7 +1,7 @@
 <div class="col-md-6 friend-list-entry">
   <div class="row">
     <div class="pull-left col-xs-3">
-      <%= link_to(profile_photo(friend, :medium, "pull-left profile-photo"), user_path(friend)) %>
+      <%= link_to(profile_photo(friend, :medium, "pull-left img-responsive img-thumbnail"), user_path(friend)) %>
     </div>
     <div class="pull-left col-xs-6">
       <p><%= link_to friend.name, user_path(friend) %></p>

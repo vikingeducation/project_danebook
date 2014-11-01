@@ -37,44 +37,6 @@ main {
   }
 }
 
-.hero {
-  height: 300px;
-  a {
-    z-index: 1;
-    position: relative;
-    top: -145px;
-    left: 25px;
-  }
-
-  h1 {
-    z-index: 1;
-    color: white;
-    position: relative;
-    top: -330px;
-    left: 240px;
-  }
-
-  img.profile-photo {
-    position: relative;
-    top: -200px;
-    left: 25px;
-    height: 210px;
-    width: 210px;
-  }
-}
-
-.hero-image {
-  width: 100%;
-  height: 300px;
-  z-index: -1;
-}
-
-.profile-photo {
-  padding: 4px;
-  border: 1px solid $flag-darker;
-  background-color: white;
-}
-
 .profile-navbar {
   border: 1px solid $flag-lighter;
   background-color: white;
@@ -83,10 +45,6 @@ main {
 .info-pane {
   margin-top: 15px;
   margin-bottom: 15px;
-
-  img {
-    width: 100%;
-  }
 
   header {
     line-height: 36px;
@@ -97,8 +55,6 @@ main {
   }
 
   section {
-    padding-top: 15px;
-    padding-bottom: 15px;
     color: #333;
     background-color: white!important;
     border: 1px solid $flag-light;

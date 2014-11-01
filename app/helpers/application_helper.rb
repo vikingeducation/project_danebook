@@ -4,9 +4,9 @@ module ApplicationHelper
 
   def profile_photo(user)
     if user && user.profile_photo && user.profile_photo.image
-      image_tag user.profile_photo.image.url(:thumb)
+      image_tag user.profile_photo.image.url(:thumb), class: "profile-photo img-responsive"
     else
-      image_tag "user_silhouette_generic.gif"
+      image_tag "user_silhouette_generic.gif", class: "profile-photo img-responsive"
     end
   end
 

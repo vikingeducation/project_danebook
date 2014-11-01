@@ -1,7 +1,20 @@
 <div class = "col-md-3">
 
+<div class = "row">
+  <div class = "col-md-4">
+    <%= profile_photo(current_user) %>
+  </div>
+  <div class = "col-md-8">
+    <p><%=link_to current_user.name, user_path(current_user) %></p>
+    <p><%=link_to "Edit Profile", edit_user_profile_path(current_user) %></p>
+  </div>
+</div>
+
+
+
+<h4>Recently Active</h4>
 <% @posts.each do |post| %>
-  <div class = "row">
+  <div class = "row recently-active-user">
     <div class ="col-md-2">
       <%= profile_photo(post.user) %>
     </div>
@@ -13,4 +26,5 @@
 <% end %>
 
 
+<%= link_to "See All Your Friends", user_friends_path(current_user) %>
 </div>

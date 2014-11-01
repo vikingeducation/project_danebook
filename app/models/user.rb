@@ -4,7 +4,8 @@ class User < ActiveRecord::Base
 	has_secure_password
 	has_one :profile
 
-	has_many :posts, :foreign_key => :author_id
+	has_many :posts, foreign_key: :author_id
+	has_many :comments, foreign_key: :author_id
 
 	validates :password, length: {in: 8..24}, allow_nil: true
 	validates :email, uniqueness: true

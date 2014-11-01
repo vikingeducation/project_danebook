@@ -1,0 +1,25 @@
+<% resource.comments.each do |comment| %>
+  <div class="col-sm-12">
+    <div class="comment-body">
+      <div class="col-sm-2">
+        <%= image_tag("default.png", class: "post-friend-thumb") %>
+      </div>
+      <div class="comment-friend">
+        <div class="comment-friend-info">
+          <a><h5><%= commenter_name(1) %><h5></a> <span>Said on <%= date_in_words(comment.created_at) %></span>
+        </div>
+      </div>
+      <div class="comment-text col-sm-10 buffer">
+        <%= comment.body%>
+      </div>
+      <div class="">
+        <div class="like-or-comment col-sm-9">
+          <a>Like</a> <span>3 other people found this mildly interesting</span>
+        </div>
+        <div class="delete-post col-sm-3">
+          <%= link_to("Delete", user_post_comment_path(@user.id, comment.commentable_id, comment.id), method: 'DELETE') if comment.author_id == (current_user.id || @user.id)%>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

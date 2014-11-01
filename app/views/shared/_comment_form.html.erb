@@ -1,0 +1,12 @@
+<div>
+  <%= form_for build_comment(resource), {url: user_post_comments_path(current_user.id, resource.id)} do |comment| %>
+  <!-- <textarea class="post-input" placeholder="What's on your mind?" spellcheck="true"></textarea> -->
+  <%= comment.text_area :body, {class: "post-input", placeholder: "What's on your mind?", spellcheck: "true"} %>
+
+  <div class="col-sm-12">
+        <a id="cancel" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseCommentaForm<%=resource.id%>">Cancel</a>
+   	<%= comment.submit "Comment", class: "post-button navbar-right" %>
+        <!-- <button class="post-button navbar-right">Comment</button> -->
+  </div>
+  <% end %>
+</div>

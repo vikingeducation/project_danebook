@@ -14,21 +14,25 @@
         </div>
 
 
+        <a>Like</a> -
+        <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseCommentForm<%=post.id%>">Comment</a> -
+        <%= delete_post(post) %>
         <div class="row grey-footer">
           <div class="bottom-of-post col-sm-12">
             <div class="row">
               <div class="like-or-comment col-sm-4">
-                <a>Like</a>
-                <a>Comment</a>
               </div>
-
-              <%= delete_post(post) %>
-
             </div>
-            <hr>
             <div class="likes-and-comments">
               <a>Herpderp Granger</a> likes this.
-
+            <hr>
+              <%= render 'shared/comments', resource: post unless post.comments.blank? %>
+              <!-- This is a bit hacky, but it allows an easy way to open a new comment box for each post -->
+              <div id="collapseCommentForm<%=post.id%>" class="accordion-body collapse">
+                <div class="accordian-inner">
+                <%= render 'shared/comment_form', resource: post %>
+                </div>
+              </div>
             </div>
           </div>
         </div>

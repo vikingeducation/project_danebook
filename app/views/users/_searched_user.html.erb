@@ -13,6 +13,9 @@
     </div>
     <form class="col-md-4 col-xs-12">
       <div class="form-group">
+        <% if current_user.has_friend?(user) %>
+          <em>You are already friends!</em></b>
+        <% end %>
         <%= friend_button(user) %>
       </div>
     </form>

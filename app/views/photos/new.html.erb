@@ -7,6 +7,7 @@
 
   <section class="row">
     <div class="col-xs-12">
+      <%= render 'shared/errors', object: @photo %>
       <%= form_for @photo do |web_photo_field| %>
         <%= web_photo_field.label :url, "Paste the url to a photo on the web" %>
         <%= web_photo_field.text_field :url, class: "form-control" %>

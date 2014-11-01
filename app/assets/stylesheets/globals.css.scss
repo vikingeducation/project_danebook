@@ -85,7 +85,7 @@ main {
   margin-bottom: 15px;
 
   img {
-    width: 100%
+    width: 100%;
   }
 
   header {
@@ -97,6 +97,8 @@ main {
   }
 
   section {
+    padding-top: 15px;
+    padding-bottom: 15px;
     color: #333;
     background-color: white!important;
     border: 1px solid $flag-light;

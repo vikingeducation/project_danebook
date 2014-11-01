@@ -17,11 +17,13 @@ class PhotosController < ApplicationController
   def create
     @user = current_user
 
-    if params[:photo][:url].present?
+    if params[:photo] && params[:photo][:url].present?
       @photo = current_user.photos.build
       @photo.photo_from_url(params[:photo][:url])
-    else
+    elsif params[:photo] && params[:photo][:photo]
       @photo = current_user.photos.build(upload_photo_params)
+    else
+      @photo = current_user.photos.build
     end
 
     if @photo.save

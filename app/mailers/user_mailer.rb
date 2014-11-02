@@ -11,6 +11,6 @@ class UserMailer < ActionMailer::Base
     @commentable = commentable
     @class_name = commentable.class.to_s.downcase
 
-    mail(to: @user.email, subject: 'Someone commented on your #{@class_name}')
+    mail(to: @user.email, subject: "Someone commented on your #{@class_name}")
   end
 end

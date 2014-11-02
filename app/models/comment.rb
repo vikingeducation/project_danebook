@@ -10,7 +10,17 @@ class Comment < ActiveRecord::Base
   validates_presence_of :body, :user_id
 
 
+
+
+
   def self.send_notification_email(comment_id)
+    ENV["DELAY_EMAILS"] ? delay.notify(comment_id) : notify(comment_id)
+  end
+
+
+
+  # actual notification method
+  def self.notify(comment_id)
     comment = Comment.find(comment_id)
 
     # parse the polymorphic commentable
@@ -23,4 +33,6 @@ class Comment < ActiveRecord::Base
       UserMailer.notify_comment(user, commentable).deliver
     end
   end
+
+
 end

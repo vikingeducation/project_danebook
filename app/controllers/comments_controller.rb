@@ -3,8 +3,9 @@ class CommentsController < ApplicationController
 	before_action :require_signed_in
 
 
-	def create
-		@comment = hack_commentable.comments.build(comment_params)
+	def create # add validation for author_id (wink wink)
+		@comment = commentable_type.comments.build(comment_params)
+    @comment.author_id = current_user.id
     if @comment.save
       redirect_to request.referrer
     else
@@ -13,6 +14,7 @@ class CommentsController < ApplicationController
 	end
 
 	def edit
+    # lol yea right
 	end
 
 	def update
@@ -27,13 +29,13 @@ class CommentsController < ApplicationController
     else
       flash[:error] = "Something went wrong with that deletion."
     end
-
+    # Test the refresh of the page after an error
     redirect_to request.referrer
   end
 
   private
 
-  def hack_commentable
+  def commentable_type
   	commentable_class.find(params[parent_id])
   end
 
@@ -42,7 +44,7 @@ class CommentsController < ApplicationController
   end
 
   def comment_params
-    params.require(:comment).permit(:body, user_id: :author_id)
+    params.require(:comment).permit(:body)
   end
 
   # thanks Andur!

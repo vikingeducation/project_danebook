@@ -14,8 +14,10 @@ Rails.application.routes.draw do
     resource :profile, only: [:show, :edit, :update]
     resources :posts do
       resources :comments, only: [:create, :destroy], defaults: { commentable: 'Post' }
-      # resources :likes
+      resources :likes
     end
+    resources :friendings, only: [:create, :destroy]
+    resources :photos
   end
 
   resource :session

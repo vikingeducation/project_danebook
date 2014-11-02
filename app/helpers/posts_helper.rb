@@ -8,4 +8,8 @@ module PostsHelper
 		render "delete", post: post if current_user?
 	end
 
+	def count_friends(user)
+		user.friended_users.count
+	end
+
 end

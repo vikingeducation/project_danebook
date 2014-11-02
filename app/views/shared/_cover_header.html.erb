@@ -29,7 +29,7 @@
     <div class = "col-md-2">
       <ul class = "nav">
         <li>
-        <%= render partial: 'shared/about_link' if current_user_page?(@user) &&!current_page?(edit_user_profile_url) %>
+        <%= edit_profile_link(@user) %>
         </li>
       </ul>
     </div>

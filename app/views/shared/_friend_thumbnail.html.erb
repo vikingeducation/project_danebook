@@ -2,7 +2,7 @@
   <%= link_to profile_photo(friend), class: "photo-link" %>
   <figcaption>
     <div class = "photo-upload-date">
-      <p>Uploaded January 1, 2015</p>
+      <p>Uploaded <%= friend.profile_photo.created_at.to_formatted_s %> </p>
     </div>
     <p>
       <%= user_link(friend) %>

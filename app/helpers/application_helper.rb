@@ -2,6 +2,16 @@ module ApplicationHelper
 
 
 
+  def edit_profile_link(user)
+    if current_user_page?(user) && !current_page?(edit_user_profile_url)
+      link_to "Edit Profile", edit_user_profile_path(current_user)
+    else
+      "&nbsp;".html_safe
+    end
+
+  end
+
+
   def profile_photo(user)
     if user && user.profile_photo && user.profile_photo.image
       image_tag user.profile_photo.image.url(:thumb), class: "profile-photo img-responsive"

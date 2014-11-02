@@ -32,7 +32,7 @@
 
     <% @user.photos.each_with_index do |photo, index| %>
       <% break if index >= 9 %>
-      <%= render partial: "photo_nohover", locals: { photo: photo } %>
+      <%= render partial: "shared/photo_nohover", locals: { photo: photo } %>
     <% end %>
 
   </section><!--photos-->
@@ -45,11 +45,11 @@
 
     <% @friends.each_with_index do |friend, index| %>
       <% break if index >= 9 %>
-      <%= render partial: "friend_thumbnail", locals: {friend: friend} %>
+      <%= render partial: "shared/friend_thumbnail", locals: {friend: friend} %>
     <% end %>
 
   <div class="col-md-12">
-    <%= link_to "See more friends", friends_path %>
+    <%= link_to "See more friends", user_friends_path(@user) %>
   </div>
   </section>
 

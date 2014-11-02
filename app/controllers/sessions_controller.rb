@@ -10,17 +10,17 @@ class SessionsController < ApplicationController
         sign_in(@user)
       end
       flash[:success] = "Signed in"
-      redirect_to @user
+      redirect_to root_path
     else
       flash[:error] = "Sign in failed. Uh oh!"
-      redirect_to root_path
+      redirect_to new_user_path
     end
   end
 
   def destroy
     sign_out
     flash[:success] = "Signed Out"
-    redirect_to root_path
+    redirect_to new_user_path
   end
 
 end

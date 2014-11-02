@@ -15,7 +15,7 @@
 
   <%= render 'shared/likes_bar', object: post, parent: nil %>
 
-  <% post.comments.each do |comment| %>
+  <% post.comments.order(created_at: :asc).each do |comment| %>
     <%= render 'comments/comment', comment: comment %>
   <% end %>
   <%= render 'comments/comment_form', object: post, id_symbol: :post_id %>

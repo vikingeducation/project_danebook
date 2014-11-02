@@ -36,14 +36,14 @@ class ApplicationController < ActionController::Base
   def require_current_user
     unless current_user && (params[:id] == current_user.id.to_s || params[:user_id] == current_user.id.to_s)
       flash[:error] = "Inadequate authorization"
-      redirect_to root_path
+      redirect_to new_user_path
     end
   end
 
   def require_sign_in
     unless signed_in?
       flash[:error] = "Please sign in before viewing content."
-      redirect_to root_path
+      redirect_to new_user_path
     end
   end
 end

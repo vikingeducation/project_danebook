@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
-  root 'users#new'
+  root 'posts#index'
 
-  resources(:users, only: [:show, :create]) do
+  resources(:users, only: [:show, :new, :create]) do
     resource :profile, only: [:show, :edit, :update]
     resources :friends, only: [:index, :create]
     resources :photos, only: [:index]

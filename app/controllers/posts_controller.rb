@@ -11,6 +11,7 @@ class PostsController < ApplicationController
 			redirect_to new_user_post_path
 		else
 			@user = User.find(params[:user_id])
+			@friends = @user.friended_users
 			@posts = @user.posts.order('created_at DESC')
 		end
 	end
@@ -18,7 +19,7 @@ class PostsController < ApplicationController
 	def new
 		@user = current_user
 		@post = Post.new
-
+		@friends = @user.friended_users
 		@posts = @user.posts.order('created_at DESC')
 	end
 

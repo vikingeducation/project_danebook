@@ -27,22 +27,24 @@
 
   <section class = "row" id= "timeline-photos">
     <header class="col-md-12">
-        <h4>Photos (123) (copied text area)</h4>
+        <h4>Photos (<%= @user.photos.count %>)</h4>
     </header>
 
-    <% 9.times do %>
-      <%= render "photo_nohover" %>
+    <% @user.photos.each_with_index do |photo, index| %>
+      <% break if index >= 9 %>
+      <%= render partial: "photo_nohover", locals: { photo: photo } %>
     <% end %>
 
   </section><!--photos-->
 
   <section class = "row" id = "timeline-friends">
     <header class="col-md-12">
-        <h4>Friends: 542</h4>
+        <h4>Friends: <%= @user.friends.count %></h4>
     </header>
 
 
     <% @friends.each_with_index do |friend, index| %>
+      <% break if index >= 9 %>
       <%= render partial: "friend_thumbnail", locals: {friend: friend} %>
     <% end %>
 

@@ -9,13 +9,13 @@
 
 
   <!--post a comment form -->
-  <%= form_for [@user, parent, parent.comments.build], class: "col-md-12" do |f| %>
+  <%= form_for [@user, parent, parent.comments.build], class: "col-md-12 col-xs-12" do |f| %>
     <div class="form-group">
       <%= f.text_area :body, class: "form-control", rows: "4", placeholder: "Write a comment..." %>
     </div>
     <div class="form-group">
-      <a class="col-md-1" href="#">Cancel</a>
-      <%= f.submit "Post Comment", class: "comment-button col-md-3 pull-right btn btn-default"%>
+      <a class="col-md-1 col-xs-1" href="#">Cancel</a>
+      <%= f.submit "Post Comment", class: "comment-button col-md-3 col-xs-3 pull-right btn-primary facebook-button form-control"%>
     </div>
   <% end %>
 </section>

@@ -1,5 +1,12 @@
 module ApplicationHelper
 
+  def add_photo_link(user)
+    if user == current_user
+    link_to "Add Photo!", new_user_photo_path(@user), class: "btn btn-primary facebook-button comment-button"
+    else
+      "&nbsp".html_safe
+    end
+  end
 
 
   def edit_profile_link(user)
@@ -8,7 +15,6 @@ module ApplicationHelper
     else
       "&nbsp;".html_safe
     end
-
   end
 
 

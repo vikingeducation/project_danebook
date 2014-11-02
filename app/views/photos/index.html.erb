@@ -8,7 +8,7 @@
       </div>
       <form class="col-md-2 about-header">
         <div class="form-group">
-          <%= link_to "Add Photo!", new_user_photo_path(@user), class: "btn btn-default", id: "edit-profile-button" %>
+          <%= add_photo_link(@user) %>
         </div>
       </form>
     </header>
@@ -20,7 +20,7 @@
       <% break if index > 15 %>
       <%= render partial: "photo", locals: { photo: photo } %>
     <% end %>
- 
+
     </div> <!-- photo-field -->
   </section> <!--information-pane -->
 

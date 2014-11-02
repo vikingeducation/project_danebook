@@ -1,9 +1,6 @@
 <figure class="col-md-4 friend">
   <%= link_to profile_photo(friend), class: "photo-link" %>
   <figcaption>
-    <div class = "photo-upload-date">
-      <p>Uploaded <%= friend.profile_photo.created_at.to_formatted_s %> </p>
-    </div>
     <p>
       <%= user_link(friend) %>
     </p>

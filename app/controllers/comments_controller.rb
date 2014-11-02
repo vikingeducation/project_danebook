@@ -10,6 +10,7 @@ class CommentsController < ApplicationController
     @comment.user = current_user
 
     if @comment.save
+      Comment.send_notification_email(@comment.id)
       flash[:success] = "Commented!"
     else
       flash[:error] = "Something went wrong with that comment."

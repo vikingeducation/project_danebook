@@ -22,6 +22,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(whitelisted_params)
     if @user.save
+      User.send_welcome_email(@user.id)
       sign_in(@user)
       flash[:success] = "Welcome to Danebook!"
       redirect_to @user

@@ -2,6 +2,9 @@ source 'https://rubygems.org'
 
 ruby '2.1.2'
 
+# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem 'rails', '4.1.6'
+
 group :production do
   gem 'rails_12factor'
   gem 'pg'
@@ -11,8 +14,10 @@ end
 gem 'figaro'
 gem 'paperclip'
 gem 'aws-sdk'
-
 gem 'faker'
+gem 'delayed_job_active_record'
+gem 'letter_opener'
+gem 'pry'
 
 group :test, :development do
   gem 'sqlite3'
@@ -22,8 +27,6 @@ end
 
 gem 'twitter-bootstrap-rails'
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.1.6'
 # Use sqlite3 as the database for Active Record
 
 # Use SCSS for stylesheets

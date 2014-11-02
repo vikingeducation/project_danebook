@@ -9,6 +9,9 @@ class PostsController < ApplicationController
     @post = current_user.posts.build if @user == current_user
   end
 
+  def show
+    redirect_to user_timeline_path(params[:user_id])
+  end
 
   def create
     @post = current_user.posts.build(post_params)

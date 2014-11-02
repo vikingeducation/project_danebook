@@ -45,6 +45,10 @@ class User < ActiveRecord::Base
 
 
 
+  def self.send_welcome_email(user_id)
+    user = User.find(user_id)
+    UserMailer.welcome(user).deliver
+  end
 
   def self.search(query)
     where("first_name LIKE ? OR last_name LIKE ?", "%#{query}%", "%#{query}%")

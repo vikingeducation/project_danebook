@@ -51,6 +51,14 @@
       <!-- FRIENDS  -->
       <section class="col-sm-12 bkg-fix buffer" role="friends">
         <div class="row grey-title">
+          <h4>Friends <a href="#">(<%= count_friends(@user) %>)</a></h4>
+        </div>
+        <div class="col-sm-12">
+          <div class="photos-friends-body col-sm-12">
+            <%= render 'friendings/friends' %>
+          </div>
+        </div>
+        <!-- <div class="row grey-title">
           <h4>Friends <a href="#">(542)</a></h4>
         </div>
         <div class="col-sm-12">
@@ -104,12 +112,12 @@
               </div>
             </div>
 
-        </div> <!-- /photos-friends-body -->
+        </div> <!-- /photos-friends-body
         <div class="row">
           <div class="bottom-link col-sm-12">
             <a href="./friends.html">See More Friends</a>
           </div>
-        </div>
+        </div> -->
       </section> <!-- /FRIENDS-->
     </div> <!-- /LEFT - about, friends and photos column -->
 

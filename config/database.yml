@@ -22,3 +22,8 @@ test:
 
 production:
   adapter: postgresql
+  encoding: unicode
+  database: danebook_production
+  pool: 5
+  username: danebook
+  password:

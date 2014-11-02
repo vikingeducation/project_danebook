@@ -17,3 +17,9 @@
 
 # Ignore application configuration
 /config/application.yml
+
+#ignore .env file with ENV vars for running in production mode locally
+.env
+
+#Ignore precompiled assets run locally to test production
+/public/assets

@@ -2,9 +2,10 @@
     <div class="cover-photo-wrapper">
       <div class="cover-photo row">
         <div class="profile-photo-wrapper">
-          <h3 class="profile-name"><%= user_profile_name %></h3>
+          <h3 class="profile-name"><%= user_profile_name %>
+          <%= render 'friendings/friending_button' %>
           <div class="profile-photo">
-            <%= image_tag("imgres.jpg", class: "img-thumbnail") %>
+            <%= image_tag("imgres.jpg", class: "img-thumbnail") %></h3>
           </div>
         </div>
       </div>
@@ -15,13 +16,9 @@
       <div class="menu-row row">
         <div class="btn-group col-xs-offset-2 col-sm-10">
 
-          <%= link_to "Timeline", new_user_post_path, class:"menu-item col-xs-12 col-sm-2 btn-default" %>
+          <%= link_to "Timeline", new_user_post_path, class: "menu-item col-xs-12 col-sm-2 btn-default" %>
 
-          <a href="./about.html">
-          <button type="button" class="menu-item col-xs-12 col-sm-2 btn-default" >
-            <h5>About</h5>
-          </button>
-          </a>
+          <%= link_to "About", user_profile_path, class: "menu-item col-xs-12 col-sm-2 btn-default" %>
 
           <a href="./photos.html">
           <button type="button" class="menu-item col-xs-12 col-sm-2 btn-default">

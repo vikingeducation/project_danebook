@@ -43,6 +43,7 @@ class User < ActiveRecord::Base
 
   before_create :generate_token
 
+
   def self.send_welcome_email(user_id)
     ENV["DELAY_EMAILS"] == "true" ? delay.welcome(user_id) : welcome(user_id)
   end
@@ -56,6 +57,7 @@ class User < ActiveRecord::Base
 
 
   def self.search(query)
+    return none if query.blank?
     where("first_name LIKE ? OR last_name LIKE ?", "%#{query}%", "%#{query}%")
   end
 

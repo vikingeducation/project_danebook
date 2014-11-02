@@ -14,7 +14,7 @@ class Comment < ActiveRecord::Base
 
 
   def self.send_notification_email(comment_id)
-    ENV["DELAY_EMAILS"] ? delay.notify(comment_id) : notify(comment_id)
+    ENV["DELAY_EMAILS"] == "true" ? delay.notify(comment_id) : notify(comment_id)
   end
 
 

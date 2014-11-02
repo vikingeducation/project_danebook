@@ -12,7 +12,7 @@
     <div class = "row" id="friends-list">
 
       <% @friends.each_with_index do |friend, index| %>
-        <% break if index > 5 %>
+        <% break if index >= 6 %>
         <%= render partial: "friend", locals: { friend: friend } %>
       <% end %>
 

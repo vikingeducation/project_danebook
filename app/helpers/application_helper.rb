@@ -2,7 +2,7 @@ module ApplicationHelper
 
   def add_photo_link(user)
     if user == current_user
-    link_to "Add Photo!", new_user_photo_path(@user), class: "btn btn-primary facebook-button comment-button"
+    link_to "Add Photo!", new_user_photo_path(@user), class: "btn danebook-button"
     else
       "&nbsp".html_safe
     end
@@ -51,9 +51,9 @@ module ApplicationHelper
     if user == current_user
       ""
     elsif current_user.has_friend?(user)
-      link_to "Remove Friend", user_friendings_path(user), method: "delete", class: "btn btn-lg btn-default"
+      link_to "Remove Friend", user_friendings_path(user), method: "delete", class: "btn btn-lg danebook-button-grey"
     else
-      link_to "Add Friend", user_friendings_path(user), method: "post", class: "btn btn-lg btn-default facebook-button"
+      link_to "Add Friend", user_friendings_path(user), method: "post", class: "btn-lg danebook-button"
     end
   end
 

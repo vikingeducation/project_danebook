@@ -19,3 +19,4 @@ TO DO:
 -Set up combined Post and Photo index
 -Set up recent activity query
 -Style emails
+-Refactor friend routing

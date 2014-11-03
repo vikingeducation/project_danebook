@@ -5,6 +5,10 @@
 @import 'colors';
 
 .friend-list-entry {
-  border: 1px solid $flag-darker;
-  padding: 15px;
+  padding: 5px;
+  div.row {
+    border: 1px solid $flag-darker;
+    margin: 15px;
+    padding: 15px;
+  }
 }

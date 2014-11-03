@@ -1,14 +1,14 @@
 <div class="col-md-6 friend-list-entry">
   <div class="row">
-    <div class="pull-left col-xs-3">
-      <%= link_to(profile_photo(friend, :medium, "pull-left img-responsive img-thumbnail"), user_path(friend)) %>
+    <div class="col-xs-3">
+      <%= link_to(profile_photo(friend, :medium, "img-responsive img-thumbnail"), user_path(friend)) %>
     </div>
-    <div class="pull-left col-xs-6">
+    <div class="col-xs-4">
       <p><%= link_to friend.name, user_path(friend) %></p>
       <p><%= "#{friend.friends.count} friends" %></p>
     </div>
-    <div class="pull-right col-xs-3">
-      <%= friend_button(friend, "btn btn-danish") %>
+    <div class="col-xs-5">
+      <%= friend_button(friend, "btn btn-danish pull-right") %>
     </div>
   </div>
 </div>

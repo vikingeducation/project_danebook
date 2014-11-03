@@ -2,6 +2,11 @@ class UsersController < ApplicationController
   skip_before_action :require_sign_in, only: [:new, :create]
   before_action :require_current_user, only: [:edit, :update, :destroy]
 
+  def index
+    @user = current_user
+    @users = @user.users_friended_by.where.not(id: current_user.friends.pluck(:id)).includes(profile: :photo).paginate(:page => params[:page], :per_page => 12)
+  end
+
   def new
     if signed_in?
       redirect_to current_user

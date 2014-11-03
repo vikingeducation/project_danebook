@@ -51,6 +51,8 @@ module ApplicationHelper
     if user == current_user
       ""
     elsif current_user.has_friend?(user)
+      link_to "Unfriend User", "#", method: "delete", class: "btn btn-lg danebook-button-grey"
+    elsif current_user.friends_requested.include?(user)
       link_to "Cancel Request", user_friend_requests_path(user), method: "delete", class: "btn btn-lg danebook-button-grey"
     else
       link_to "Send Friend Request", user_friend_requests_path(user), method: "post", class: "btn-lg danebook-button"

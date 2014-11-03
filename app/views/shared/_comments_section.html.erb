@@ -10,12 +10,19 @@
 
   <!--post a comment form -->
   <%= form_for [@user, parent, parent.comments.build], class: "col-md-12 col-xs-12" do |f| %>
-    <div class="form-group">
-      <%= f.text_area :body, class: "form-control", rows: "4", placeholder: "Write a comment..." %>
+    <div class="form-group row">
+      <div class = "col-md-12">
+        <%= f.text_area :body, class: "form-control", rows: "4", placeholder: "Write a comment..." %>
+      </div>
     </div>
-    <div class="form-group">
-      <a class="col-md-1 col-xs-1" href="#">Cancel</a>
-      <%= f.submit "Post Comment", class: "comment-button col-md-3 col-xs-3 pull-right btn-primary danebook-button form-control"%>
+    <div class="form-group row">
+      <div class = "link-wrapper col-md-2 col-xs-2">
+        <a href="#">Cancel</a>
+      </div>
+
+      <div class = "submit-wrapper col-md-4 col-xs-4 col-md-offset-6 col-xs-offset-6">
+        <%= f.submit "Post Comment", class: "btn comment-button  danebook-button"%>
+      <div>
     </div>
   <% end %>
 </section>

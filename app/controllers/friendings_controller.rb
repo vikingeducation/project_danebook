@@ -1,6 +1,7 @@
 class FriendingsController < ApplicationController
 
   before_action :set_return_path, only: [:create, :destroy]
+  before_action :check_friend_requests, only: [:create]
 
   def index
     @user = User.find(params[:user_id])
@@ -31,5 +32,16 @@ class FriendingsController < ApplicationController
     end
 
     redirect_to session.delete(:return_to)
+  end
+
+  private
+
+  def check_friend_requests
+    @user = User.find(params[:user_id])
+
+    unless current_user.friend_requesters.include?(@user)
+      flash[:error] = "This person hasn't actually requested you be friends."
+      redirect_to session.delete(:return_to)
+    end
   end
 end

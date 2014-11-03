@@ -28,16 +28,32 @@ class User < ActiveRecord::Base
   has_many :liked_photos, through: :likes, source: :likable, source_type: "Photo"
 
 
-  has_many :friendship_requests_made, :foreign_key => :friender_id,
+# friend requests(one-sided)
+  has_many :friend_requests_made, :foreign_key => :requester_id,
+                                :class_name => "FriendRequest"
+
+  has_many :friends_requested,   :through => :friend_requests_made,
+                                :source  => :requestee
+
+
+  has_many :friend_requests_received, :foreign_key => :requestee_id,
+                                  :class_name => "FriendRequest"
+  has_many :friend_requesters,  :through => :friend_requests_received,
+                                  :source => :requester
+
+
+
+# reciprocal friends after request accepted
+  has_many :friendships, :foreign_key => :friender_id,
                                 :class_name => "Friending"
 
-  has_many :friends,   :through => :friendship_requests_made,
+  has_many :friends,   :through => :friendships,
                                 :source  => :friendee
 
 
-  has_many :friendship_requests_received, :foreign_key => :friendee_id,
+  has_many :_inverse_friendships, :foreign_key => :friendee_id,
                                   :class_name => "Friending"
-  has_many :friend_requesters,  :through => :friendship_requests_received,
+  has_many :_inverse_friends,  :through => :_inverse_friendships,
                                   :source => :friender
 
 

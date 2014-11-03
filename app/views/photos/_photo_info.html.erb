@@ -3,6 +3,8 @@
   <%= render "shared/user_header" %>
   <%= like_link(@photo) %>
   <%= like_sentence(@photo)%>
-  <%= render partial: "shared/comments_section", locals: {parent: @photo} %>
+  <div class = "row">
+    <%= render partial: "shared/comments_section", locals: {parent: @photo} %>
+  </div>
 
 </div>

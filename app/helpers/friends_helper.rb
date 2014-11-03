@@ -14,7 +14,7 @@ module FriendsHelper
   end
 
   def decline_button(target, css_class=nil)
-    if current_user.users_friended_by.include?(target) && !current_user.friends.include?(target)
+    if current_user.friend_requests.include?(target)
       link_to "Decline", friend_path(target), method: "DELETE", data: { confirm: "Are you sure you want to decline #{target.name}'s friend request?"}, class: css_class
     end
   end

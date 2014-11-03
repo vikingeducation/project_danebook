@@ -4,7 +4,7 @@ class UsersController < ApplicationController
 
   def index
     @user = current_user
-    @users = @user.users_friended_by.where.not(id: current_user.friends.pluck(:id)).includes(profile: :photo).paginate(:page => params[:page], :per_page => 12)
+    @users = @user.friend_requests.includes(profile: :photo).paginate(:page => params[:page], :per_page => 12)
   end
 
   def new

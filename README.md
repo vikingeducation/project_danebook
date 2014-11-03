@@ -15,7 +15,6 @@ TO DO:
 -Add [Premailer Gem](https://github.com/fphilipe/premailer-rails)
 -Add [Delayed Job Gem](https://github.com/collectiveidea/delayed_job)
 -Build search results page
--Build friend requests page and drop-down
 -Set up combined Post and Photo index
 -Set up recent activity query
 -Style emails

@@ -43,6 +43,10 @@ class User < ActiveRecord::Base
                pluck(:friend_id)).pluck(:friender_id))
   end
 
+  def friend_requests
+    users_friended_by.where.not(id: friends.pluck(:id))
+  end
+
   def generate_token
     begin
       self[:auth_token] = SecureRandom.urlsafe_base64

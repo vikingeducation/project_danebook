@@ -1,14 +1,14 @@
 class FriendsController < ApplicationController
   def index
     @user = User.find(params[:user_id])
-    @friends = @user.friends
+    @friends = @user.friends.includes(:profile_photo).paginate(:page => params[:page], :per_page => 12)
   end
 
   def create
     session[:return_to] ||= request.referer
     @user = current_user
-    @friend_request = @user.initiated_friendings.build(friend_id: params[:user_id])
-    if @friend_request.save!
+    @friend_request = @user.initiated_friendings.build(friend_id: params[:user_id].to_i)
+    if @user.id != params[:user_id] && @friend_request.save!
       flash[:success] = "Friend request sent"
       redirect_to session.delete(:return_to)
     else

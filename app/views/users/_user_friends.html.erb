@@ -1,5 +1,5 @@
 <div class="row">
-  <% random_friends(@user).each do |friend| %>
+  <% random_friends(@friends).each do |friend| %>
     <div class="col-xs-4">
       <%= link_to(profile_photo(friend, :medium, "img-responsive img-thumbnail"), user_path(friend)) %>
       <%= link_to friend.name, user_path(friend) %>

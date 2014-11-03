@@ -10,6 +10,7 @@
     <% @friends.each do |friend| %>
       <%= render 'friend', friend: friend %>
     <% end %>
+    <%= will_paginate @photos, renderer: BootstrapPagination::Rails %>
 
   </section>
 </section>

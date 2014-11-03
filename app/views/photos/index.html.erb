@@ -8,5 +8,6 @@
 
   <section class="row">
     <%= render @photos %>
+    <%= will_paginate @photos, renderer: BootstrapPagination::Rails %>
   </section>
 </section>

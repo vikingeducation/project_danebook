@@ -13,11 +13,11 @@ module FriendsHelper
     end
   end
 
-  def random_friends(user)
-    if user.friends.count <= 6
-      user.friends
+  def random_friends(friends)
+    if friends.count <= 6
+      friends
     else
-      user.friends.shuffle[0..5]
+      friends.shuffle[0..5]
     end
   end
 end

@@ -27,6 +27,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @friends = @user.friends.includes(:profile_photo)
     # load items for an index of posts with comments and likes
     @posts = @user.posts.
              includes(author: :profile_photo,

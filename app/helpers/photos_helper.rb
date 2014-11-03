@@ -8,8 +8,8 @@ module PhotosHelper
   end
 
   def profile_photo(user, size, css_class=nil)
-    if user.profile_photo
-      image_tag user.profile_photo.photo.url(size), alt: "#{user.name}", class: css_class
+    if user.profile.photo
+      image_tag user.profile.photo.photo.url(size), alt: "#{user.name}", class: css_class
     else
       image_tag "user_silhouette_generic.gif", :alt => "#{user.name}", class: css_class
     end

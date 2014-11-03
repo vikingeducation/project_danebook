@@ -27,14 +27,14 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @friends = @user.friends.includes(:profile_photo)
+    @friends = @user.friends.includes(profile: :photo)
     # load items for an index of posts with comments and likes
     @posts = @user.posts.
-             includes(author: :profile_photo,
+             includes(author: [profile: :photo],
                       likes: :liker,
                       comments:
                       [:commentable,
-                      author: :profile_photo,
+                      author: [profile: :photo],
                       likes: :liker]).
                       order(created_at: :desc)
     @post = current_user.posts.build

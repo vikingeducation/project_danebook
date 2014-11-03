@@ -9,6 +9,6 @@ Thank you for signing up for Danebook. Danebook is a social networking app for D
 Visit your own page <%= link_to "here", user_url(@user) %> or consider adding some of your fellow Danes to your friends' list:
 
 <% User.all.shuffle[0..2].each do |friend_candidate| %>
-  <%= image_tag friend_candidate.profile_photo.photo.url(:medium) if friend_candidate.profile_photo %>
+  <%= image_tag friend_candidate.profile.photo.photo.url(:medium) if friend_candidate.profile.photo %>
   <%= link_to friend_candidate.name, user_url(friend_candidate) %>
 <% end %>

@@ -3,11 +3,11 @@ class PostsController < ApplicationController
   def index
     @user = current_user
     @posts = Post.where(author_id: @user.friends.pluck(:id) << current_user.id).
-                        includes(author: :profile_photo,
+                        includes(author: [profile: :photo],
                         likes: :liker,
                         comments:
                         [:commentable,
-                        author: :profile_photo,
+                        author: [profile: :photo],
                         likes: :liker]).
                         order(created_at: :desc)
     @post = current_user.posts.build

@@ -3,7 +3,6 @@ class User < ActiveRecord::Base
   has_secure_password
 
   has_one :profile, dependent: :destroy
-  has_one :profile_photo, through: :profile, source: :photo
   has_one :cover_photo, through: :profile
 
   has_many :posts, :foreign_key => :author_id, dependent: :destroy

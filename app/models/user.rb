@@ -55,4 +55,9 @@ class User < ActiveRecord::Base
     generate_token
     save!
   end
+
+  def self.welcome_email(user_id)
+    user = User.find(user_id)
+    UserMailer.welcome(user).deliver!
+  end
 end

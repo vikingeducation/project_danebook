@@ -18,6 +18,7 @@ class UsersController < ApplicationController
       sign_in(@user)
       flash[:success] = "Welcome to Danebook"
       redirect_to @user
+      User.welcome_email(@user.id)
     else
       flash.now[:error] = "Your account could not be created"
       render :new

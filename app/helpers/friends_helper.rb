@@ -17,7 +17,7 @@ module FriendsHelper
     if user.friends.count <= 6
       user.friends
     else
-      user.friends.limit(6)
+      user.friends.shuffle[0..5]
     end
   end
 end

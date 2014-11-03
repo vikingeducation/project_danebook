@@ -20,4 +20,12 @@ module PhotosHelper
       render "set_photo_bar"
     end
   end
+
+  def random_photos(user)
+    if user.photos.count <= 9
+      user.photos
+    else
+      user.photos.shuffle[0..8]
+    end
+  end
 end

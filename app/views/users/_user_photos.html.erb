@@ -1,5 +1,5 @@
 <div class="row">
-  <% @user.photos.limit(9).each do |photo| %>
+  <% random_photos(@user).each do |photo| %>
     <div class="col-xs-4">
       <%= link_to (image_tag photo.photo.url(:medium), class: "img-responsive img-thumbnail"), photo %>
     </div>

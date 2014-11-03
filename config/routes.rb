@@ -10,7 +10,9 @@ Rails.application.routes.draw do
     resource :newsfeed, only: [:index]
 
     get '/friends' => 'friendings#index'
-    resource :friendings, only: [:index, :create, :destroy]
+    resources :friendings, only: [:index, :create, :destroy]
+    resources :friend_requests, only: [:index, :create, :destroy]
+
     resource :profile, only: [:edit, :update, :show]
 
     resources :photos do

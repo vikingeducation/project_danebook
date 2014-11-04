@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141101093713) do
+ActiveRecord::Schema.define(version: 20141104022130) do
 
   create_table "comments", force: true do |t|
     t.text     "body"
@@ -32,6 +32,24 @@ ActiveRecord::Schema.define(version: 20141101093713) do
   end
 
   add_index "friendings", ["friend_id", "friender_id"], name: "index_friendings_on_friend_id_and_friender_id", unique: true
+
+  create_table "likes", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "likeable_id"
+    t.string   "likeable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "photos", force: true do |t|
+    t.integer  "author_id",          null: false
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "posts", force: true do |t|
     t.text     "body"
@@ -57,15 +75,15 @@ ActiveRecord::Schema.define(version: 20141101093713) do
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", unique: true
 
   create_table "users", force: true do |t|
-    t.string   "email",                       null: false
-    t.string   "fname",                       null: false
-    t.string   "lname",                       null: false
-    t.string   "password_digest",             null: false
+    t.string   "email",           null: false
+    t.string   "fname",           null: false
+    t.string   "lname",           null: false
+    t.string   "password_digest", null: false
     t.string   "auth_token"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "gender"
-    t.date     "birthday",        limit: 255
+    t.date     "birthday"
   end
 
   add_index "users", ["auth_token"], name: "index_users_on_auth_token"

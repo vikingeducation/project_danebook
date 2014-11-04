@@ -1,0 +1,21 @@
+<section class="info-pane col-md-12">
+  <header class="row">
+    <div class="col-md-12">
+      <h2>New Photo</h2>
+    </div>
+  </header>
+
+  <section class="row">
+    <div class="col-xs-12">
+    <!-- upload a photo -->
+    <h4>Photo uploads coming soon...</h4>
+      <h4>or...</h4>
+
+      <%= form_for [@user, @photo] do |upload_field| %>
+        <span>Select a photo from your computer</span>
+        <%= upload_field.file_field :photo, class: "form-control" %>
+        <%= upload_field.submit "Upload Photo", class: "btn btn-danish btn-large" %>
+      <% end %>
+    </div>
+  </section>
+</section>

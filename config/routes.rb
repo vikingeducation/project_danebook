@@ -3,18 +3,17 @@ Rails.application.routes.draw do
 
   root "users#new"
 
-  get 'home' => 'static_pages#home'
-  get 'timeline' => 'static_pages#timeline'
-  get 'about' => 'static_pages#about'
-  get 'about_edit' => 'static_pages#about_edit'
+
   get 'friends' => 'static_pages#friends'
   get 'photos' => 'static_pages#photos'
 
   resources :users, only: [:show, :create] do
     resource :profile, only: [:show, :edit, :update]
     resources :posts do
-      resources :comments, only: [:create, :destroy], defaults: { commentable: 'Post' }
-      resources :likes
+      resources :comments, only: [:create, :destroy], defaults: { commentable: 'Post' } do
+        resources :likes, only: [:create, :destroy], defaults: {likeable: 'Comment'}
+      end
+      resources :likes, only: [:create, :destroy], defaults: {likeable: 'Post'}
     end
     resources :friendings, only: [:create, :destroy]
     resources :photos

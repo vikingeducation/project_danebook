@@ -28,16 +28,11 @@
         </div>
 
         <div class="photos-body col-sm-12">
-
-			    <% 3.times do %>
-			    <div class="row buffer">
-			      <% 3.times do %>
+          <% @photos.each_with_index do |photo| %>
 			      <div class="col-sm-3">
-			        <%= image_tag("icon_photo_small.png", :class => "img-thumbnail", :alt => "photo on the photo bar in the timeline", :title => "Timeline Photo") %>
+			        <%= image_tag(photo, :class => "img-thumbnail", :alt => "photo on the photo bar in the timeline", :title => "Timeline Photo") %>
 			      </div>
-			      <% end %>
-			    </div>
-			    <% end %>
+          <% end %>
 
         </div> <!-- /photos-body -->
 

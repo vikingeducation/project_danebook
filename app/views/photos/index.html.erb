@@ -1,0 +1,19 @@
+<%= render "shared/cover_section" %>
+<section class="col-sm-12 bkg-fix buffer" role="photos">
+  <div class="row grey-title">
+    <h4>Photos</h4>
+    <%= link_to("Add photo", new_user_photo_path, class: "post-button navbar-right btn-lg") if current_user? %>
+  </div>
+
+  <div class="photos-page col-sm-12">
+    <% @photos.each_with_index do |photo| %>
+    <div class="row buffer">
+      <div class="col-sm-3">
+        <%= link_to user_photo_path(photo.author_id, photo.id) do %>
+          <%= image_tag(photo.photo, :class => "img-thumbnail", :alt => "photo on the photo page", :title => "Photo") %>
+        <% end %>
+      </div>
+    </div>
+    <% end %>
+  </div> <!-- /photos-body -->
+</section> <!-- /PHOTOS -->

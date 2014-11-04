@@ -13,6 +13,7 @@ class PostsController < ApplicationController
 			@user = User.find(params[:user_id])
 			@friends = @user.friended_users
 			@posts = @user.posts.order('created_at DESC')
+			@photos = @user.photos
 		end
 	end
 
@@ -21,6 +22,7 @@ class PostsController < ApplicationController
 		@post = Post.new
 		@friends = @user.friended_users
 		@posts = @user.posts.order('created_at DESC')
+		@photos = @user.photos
 	end
 
 	def create

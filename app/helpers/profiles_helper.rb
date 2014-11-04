@@ -3,7 +3,7 @@ module ProfilesHelper
 	def show_or_edit_profile
 	end
 
-	def only_user_sees(edit_path, user)
+	def only_user_sees(edit_path, user) # this is a terrible method name
 		edit_path if (current_user == user)
 	end
 

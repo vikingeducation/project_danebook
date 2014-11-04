@@ -27,7 +27,7 @@ class FriendsController < ApplicationController
     # to prevent the target from showing up in friend requests
     friending2 = Friending.where(friender_id: @target).find_by_friend_id(@user.id)
 
-    if friending1.destroy && (!friending2 || friending2.destroy)
+    if (friending1 || friending2) && (!friending1 || friending1.destroy) && (!friending2 || friending2.destroy)
       flash[:success] = "User unfriended"
       redirect_to session.delete(:return_to)
     else

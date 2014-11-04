@@ -44,7 +44,7 @@ class User < ActiveRecord::Base
   end
 
   def friend_requests
-    users_friended_by.where.not(id: friends.pluck(:id))
+    users_friended_by.where.not(id: friended_users.pluck(:id))
   end
 
   def generate_token

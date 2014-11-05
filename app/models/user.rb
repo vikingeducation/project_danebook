@@ -66,6 +66,7 @@ class User < ActiveRecord::Base
 
 
   #would be private if I could
+
   def self.welcome(user_id)
     user = User.find(user_id)
     UserMailer.welcome(user).deliver

@@ -59,8 +59,6 @@ module ApplicationHelper
     end
   end
 
-
-
   #TODO: remove all of these in refactor
   def like_link(likable)
     if likable.is_a? Comment
@@ -125,8 +123,9 @@ module ApplicationHelper
   def photo_link(photo)
     return "" unless photo && photo.image_file_name
     user = photo.user
-    if user == current_user || user.friends.include?(current_user))
-      link_to image_tag(photo.image.url(:thumb)), user_photo_path(user, photo), class: "photo-link"
+    if user == current_user || user.friends.include?(current_user)
+      link_to image_tag(photo.image.url(:thumb)), 
+              user_photo_path(user, photo), class: "photo-link"
     else
       image_tag photo.image.url(:thumb), class: "photo-link"
     end

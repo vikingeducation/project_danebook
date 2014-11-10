@@ -25,8 +25,11 @@
               <% end %>
 
           <ul class="nav navbar-nav navbar-right pull-right">
-            <li  class="hidden-sm">
+            <li class="hidden-sm">
               <%= link_to current_user.first_name, user_timeline_path(current_user), id: "navbar-username" %>
+            </li>
+            <li class="hidden-sm">
+              <%= link_to "Friend Requests", user_friend_requests_path(current_user) %>
             </li>
             <li  class="hidden-sm pull-right">
               <%= link_to "Log Out", session_path, method: "delete" %>

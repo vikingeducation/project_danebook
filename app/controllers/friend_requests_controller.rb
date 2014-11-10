@@ -3,6 +3,11 @@ class FriendRequestsController < ApplicationController
 
   before_action :set_return_path, only: [:create, :destroy]
 
+  def index
+    @user = User.find(params[:user_id])
+    @friend_requesters = @user.friend_requesters
+  end
+
   def create
     @user = User.find(params[:user_id])
     current_user.friends_requested << @user
@@ -18,7 +23,10 @@ class FriendRequestsController < ApplicationController
 
   def destroy
     @user = User.find(params[:user_id])
+
+    #this is okay because only one of these ever exists at a time
     current_user.friends_requested.delete(@user)
+    current_user.friend_requesters.delete(@user)
 
     if current_user.save
       flash[:success] = "Request deleted!"

@@ -75,9 +75,19 @@ class User < ActiveRecord::Base
 
   def self.search(query)
     return none if query.blank?
-    query1 = query.split.first
-    query2 = query.split[2] || query1
-    where("first_name LIKE ? OR first_name LIKE ? OR last_name LIKE ? OR last_name LIKE ?", "%#{query1}%", "%#{query1.capitalize}%", "%#{query2}%", "%#{query2.capitalize}%")
+    queries = query.split
+    if queries.size > 1
+      where("first_name LIKE ? OR first_name LIKE ? OR last_name LIKE ? OR last_name LIKE ?", "%#{queries[0]}%", 
+                                     "%#{queries[0].capitalize}%",
+                                     "%#{queries[1]}%",
+                                     "%#{queries[1].capitalize}%" )
+    else
+      where("first_name LIKE ? OR first_name LIKE ? OR last_name LIKE ? OR last_name LIKE ?", "%#{queries[0]}%", 
+                                     "%#{queries[0].capitalize}%",
+                                     "%#{queries[0]}%",
+                                     "%#{queries[0].capitalize}%" )
+    end
+
   end
 
   def has_friend?(user)

@@ -2,6 +2,7 @@ class FriendRequestsController < ApplicationController
 
 
   before_action :set_return_path, only: [:create, :destroy]
+  before_action :require_current_user, only: [:index]
 
   def index
     @user = User.find(params[:user_id])

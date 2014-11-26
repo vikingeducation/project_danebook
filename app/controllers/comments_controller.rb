@@ -9,14 +9,14 @@ class CommentsController < ApplicationController
     @comment = @commentable.comments.build(comment_params)
     @comment.user = current_user
 
-    if @comment.save
-      Comment.send_notification_email(@comment.id)
-      flash[:success] = "Commented!"
-    else
-      flash[:error] = "Something went wrong with that comment."
+    respond_to do |format|
+      if @comment.save
+        Comment.send_notification_email(@comment.id) 
+      end
+      format.html { redirect_to session.delete(:return_to) }
+      format.js { render :create }
     end
-
-    redirect_to session.delete(:return_to)
+    
   end
 
   def destroy

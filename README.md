@@ -17,5 +17,6 @@ TO DO:
 -Build search results page
 -Set up combined Post and Photo index
 -Set up recent activity query
+-Finish post index page
 -Style emails
 -Refactor friend routing

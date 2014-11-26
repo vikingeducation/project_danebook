@@ -17,7 +17,8 @@ gem 'aws-sdk'
 gem 'faker'
 gem 'delayed_job_active_record'
 gem 'letter_opener'
-gem 'pry'
+
+gem 'pry-byebug'
 
 group :test, :development do
   gem 'sqlite3'

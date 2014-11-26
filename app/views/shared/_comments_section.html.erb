@@ -1,16 +1,17 @@
 <section class="col-md-12 comment-section">
 
+<div class = "comments-wrapper">
   <% parent.comments.each do |comment| %>
     <%= render partial: "shared/single_comment", locals: {comment: comment} %>
   <% end %>
-
+</div>
 
 
 
 
   <!--post a comment form -->
   <div class = "col-md-12 col-xs-12 comment-form">
-  <%= form_for [@user, parent, parent.comments.build], remote: true do |f| %>
+  <%= form_for [parent.user, parent, parent.comments.build], remote: true do |f| %>
     <div class="form-group row">
       <div class = "col-md-12">
         <%= f.text_area :body, class: "form-control", rows: "4", placeholder: "Write a comment..." %>
@@ -26,5 +27,6 @@
       <div>
     </div>
   <% end %>
+
   </div>
 </section>

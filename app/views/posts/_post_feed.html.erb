@@ -3,7 +3,7 @@
 <div class = "col-md-7 col-md-offset-1" id = "post-feed">
 
 
-  <%= render "post_form" if current_user_page?(@user) %>
+  <%= render "shared/post_form" if current_user_page?(@user) %>
 
 
   <% @posts.each do |post| %>

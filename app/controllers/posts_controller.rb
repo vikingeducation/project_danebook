@@ -16,11 +16,15 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params)
 
-    if @post.save
-      redirect_to user_posts_url(current_user)
-    else
-      flash[:error] = "Failed to post."
-      render :index
+    respond_to do |format|
+      if @post.save
+        format.html { redirect_to user_posts_url(current_user) }
+        format.js { render :create }
+      else
+        flash[:error] = "Failed to post."
+        format.html { render :index }
+        # format.js { render unprocessable object }
+      end
     end
   end
 

@@ -1,9 +1,9 @@
 $(document).ready(function(){
 
   //when on main newsfeed page
-  if ($('#newsfeed-index').length){
+  if ($('#post-feed').length){
 
-    $('#newsfeed-index').on('click', '.single-post .comment-link', 
+    $('#post-feed').on('click', '.single-post .comment-link', 
         function(event){
           $target = $(event.target)
           $commentForm = $target.parents('.single-post').find('.comment-form')

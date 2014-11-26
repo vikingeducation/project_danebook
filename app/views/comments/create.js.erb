@@ -1,4 +1,4 @@
 
 // renders the new comment right after the existing comments
 // on the same commentable object
-$('*[data-id="<%= @commentable.id %>"]').find('.comment').last().after("<%= escape_javascript(render partial: 'shared/single_comment', locals: { comment: @comment } ) %>");
+$('*[data-id="<%= @commentable.id %>"]').find('.comments-wrapper').append("<%= escape_javascript(render partial: 'shared/single_comment', locals: { comment: @comment } ) %>");

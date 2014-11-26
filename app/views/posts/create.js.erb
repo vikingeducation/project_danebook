@@ -1,0 +1,4 @@
+
+// renders the new comment right after the existing comments
+// on the same commentable object
+$('#post-form').after("<%= escape_javascript(render partial: 'shared/single_post', locals: { post: @post } ) %>");

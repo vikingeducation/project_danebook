@@ -24,7 +24,8 @@
   <% end %>
 </div>
 
-<div class = "container">
+<div id="<%= controller_name + "-" + action_name %>" 
+                                 class = "container">
   <%= yield %>
 </div>
 

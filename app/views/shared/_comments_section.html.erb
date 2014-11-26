@@ -9,7 +9,8 @@
 
 
   <!--post a comment form -->
-  <%= form_for [@user, parent, parent.comments.build], class: "col-md-12 col-xs-12" do |f| %>
+  <div class = "col-md-12 col-xs-12 comment-form">
+  <%= form_for [@user, parent, parent.comments.build] do |f| %>
     <div class="form-group row">
       <div class = "col-md-12">
         <%= f.text_area :body, class: "form-control", rows: "4", placeholder: "Write a comment..." %>
@@ -25,4 +26,5 @@
       <div>
     </div>
   <% end %>
+  </div>
 </section>

@@ -24,9 +24,11 @@
   <% end %>
 </div>
 
-<div class = "container">
-<%= render partial: "shared/cover_header" %>
-<%= yield %>
+<div id="<%= controller_name + "-" + action_name %>" 
+                                 class = "container">
+                                 
+  <%= render partial: "shared/cover_header" %>
+  <%= yield %>
 </div>
 
 </body>

@@ -1,6 +1,7 @@
 
 /* color of the main header background*/
 
+
 #login-navbar {
     background: linear-gradient(#4C67A1, #3B5998);
     color: #fff;
@@ -146,6 +147,7 @@ section.container a {
 }
 
 #information-pane {
+  min-height: 400px;
   border: 1px solid black;
   margin: 20px auto 50px auto;
   padding-bottom: 50px;
@@ -340,6 +342,11 @@ button.btn-unfriend {
 }
 
 #post-feed {
+  p {
+    padding-bottom: 15px;
+  }
+
+
   margin-bottom: 30px;
 
 
@@ -386,7 +393,6 @@ button.btn-unfriend {
     border-radius: 0;
   }
   .comment-section {
-    padding-bottom: 15px;
     border-top: 1px solid #999;
     background-color: #ccc;
 
@@ -396,6 +402,10 @@ button.btn-unfriend {
       span {
         color: #999;
       }
+    }
+
+    .comment-form {
+      display: none;
     }
 
 

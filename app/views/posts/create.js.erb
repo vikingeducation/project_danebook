@@ -1,4 +1,8 @@
 
-// renders the new comment right after the existing comments
-// on the same commentable object
-$('#post-form').after("<%= escape_javascript(render partial: 'shared/single_post', locals: { post: @post } ) %>");
+// post form text area clear after posting
+$('#post_body').val('');
+
+
+// renders the new post hidden right after the post-form, top of the page
+$newPost = $('#post-form').after("<%= escape_javascript(render partial: 'shared/single_post', locals: { post: @post } ) %>").hide();
+$newPost.slideDown('fast');

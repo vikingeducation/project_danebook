@@ -5,9 +5,8 @@ $(document).ready(function(){
 
     $('#post-feed').on('click', '.single-post .comment-link', 
         function(event){
-          $target = $(event.target)
-          $commentForm = $target.parents('.single-post').find('.comment-form')
-          $commentForm.slideToggle('fast');
+          $parentPost = $(event.target).parents('.single-post')
+          $parentPost.find('.comment-form').slideToggle('fast');
           event.preventDefault();
         });
 

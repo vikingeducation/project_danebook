@@ -71,13 +71,16 @@ class User < ActiveRecord::Base
     where( :github_provider => auth.provider, :github_uid => auth.uid ).first_or_initialize.tap do |user|
 
 
-        user.build_profile
+        user.build_profile(:gender => "Not Provided", :year => 1901, :month => 1, :day => 1)
+
         user.github_provider = auth.provider
         user.github_uid = auth.uid
 
         names = auth.info.name.split
         user.first_name, user.last_name = names[0], names[-1]
-        user.email = auth.info.email || "placeholder@email"
+
+        raise "Account needs email" unless auth.info.email.present?
+        user.email = auth.info.email
 
         # set a randomized password that can never be used
         # omniauth should be the only way in if this is an oauth acct
@@ -87,7 +90,7 @@ class User < ActiveRecord::Base
 
         user.github_token = auth.credentials.token
         user.github_token_expires = (auth.credentials.expires)
-        user.save!
+        user.save
     end
   end
 

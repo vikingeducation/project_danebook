@@ -70,6 +70,8 @@ class User < ActiveRecord::Base
     # logger.info "auth object is #{auth}"
     where( :github_provider => auth.provider, :github_uid => auth.uid ).first_or_initialize.tap do |user|
 
+
+        user.build_profile
         user.github_provider = auth.provider
         user.github_uid = auth.uid
 
@@ -80,6 +82,8 @@ class User < ActiveRecord::Base
         # set a randomized password that can never be used
         # omniauth should be the only way in if this is an oauth acct
         user.password = SecureRandom.random_number(36**12).to_s(36).rjust(22, "0")
+
+
 
         user.github_token = auth.credentials.token
         user.github_token_expires = (auth.credentials.expires)

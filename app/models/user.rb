@@ -67,7 +67,7 @@ class User < ActiveRecord::Base
     # the attributes we got from the `auth` object
 
     where( :github_provider => auth.provider, :github_uid => auth.uid ).first_or_initialize.tap do |user|
-        log.info "user is #{user}"
+        logger.info "user is #{user}"
         user.github_provider = auth.provider
         user.github_uid = auth.uid
         user.name = auth.info.name

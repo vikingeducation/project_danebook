@@ -66,7 +66,9 @@ class User < ActiveRecord::Base
     # If not, initialize a new user and pass along
     # the attributes we got from the `auth` object
 
+    logger.info "auth object is #{auth}"
     where( :github_provider => auth.provider, :github_uid => auth.uid ).first_or_initialize.tap do |user|
+
         user.github_provider = auth.provider
         user.github_uid = auth.uid
 

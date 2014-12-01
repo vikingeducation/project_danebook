@@ -10,11 +10,8 @@ class SessionsController < ApplicationController
 
     # if there's a provider, this login is an omniauth login
     omniauth = !!params[:provider]
-
-    e = env["omniauth.auth"]
-    logger.info "omniauth info: #{e}"
-
-    @user = omniauth ? User.from_omniauth(e) : User.find_by_email(params[:email])
+    
+    @user = omniauth ? User.from_omniauth(env["omniauth.auth"]) : User.find_by_email(params[:email])
 
     if @user && ( omniauth || @user.authenticate(params[:password]) )
       params[:remember_me] ? permanent_sign_in(@user) : sign_in(@user)

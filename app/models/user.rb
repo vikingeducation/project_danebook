@@ -67,12 +67,13 @@ class User < ActiveRecord::Base
     # the attributes we got from the `auth` object
 
     where( :github_provider => auth.provider, :github_uid => auth.uid ).first_or_initialize.tap do |user|
-      user.github_provider = auth.provider
-      user.github_uid = auth.uid
-      user.name = auth.info.name
-      user.github_token = auth.credentials.token
-      user.github_token_expires = Time.at(auth.credentials.expires_at)
-      user.save!
+        log.info "user is #{user}"
+        user.github_provider = auth.provider
+        user.github_uid = auth.uid
+        user.name = auth.info.name
+        user.github_token = auth.credentials.token
+        user.github_token_expires = Time.at(auth.credentials.expires_at)
+        user.save!
     end
   end
 

@@ -75,6 +75,7 @@ class User < ActiveRecord::Base
 
         names = auth.info.name.split
         user.first_name, user.last_name = names[0], names[-1]
+        user.email = auth.info.email || "placeholder@email"
 
         # set a randomized password that can never be used
         # omniauth should be the only way in if this is an oauth acct

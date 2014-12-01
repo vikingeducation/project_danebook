@@ -2,9 +2,10 @@ class User < ActiveRecord::Base
 
   has_secure_password
 
-  validates :password,
-            :length => { in: 8..24 },
-            allow_nil: true
+  # removed to allow no password and instead OmniAuth
+  # validates :password,
+  #           :length => { in: 8..24 },
+  #           allow_nil: true
 
   validates_uniqueness_of :email
 

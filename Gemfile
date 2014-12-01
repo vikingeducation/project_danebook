@@ -11,6 +11,9 @@ group :production do
 end
 
 
+gem 'omniauth'
+gem 'omniauth-github'
+
 gem 'figaro'
 gem 'paperclip'
 gem 'aws-sdk'

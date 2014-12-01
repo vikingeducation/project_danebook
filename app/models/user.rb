@@ -59,6 +59,24 @@ class User < ActiveRecord::Base
 
   before_create :generate_token
 
+  def self.from_omniauth(auth)
+    # Do we have a user who already matches the 
+    # `provider` and `uid`? 
+    # If so, return the first User from that
+    # If not, initialize a new user and pass along
+    # the attributes we got from the `auth` object
+
+    where( :github_provider => auth.provider, :github_uid => auth.uid ).first_or_initialize.tap do |user|
+      user.github_provider = auth.provider
+      user.github_uid = auth.uid
+      user.name = auth.info.name
+      user.github_token = auth.credentials.token
+      user.github_token_expires = Time.at(auth.credentials.expires_at)
+      user.save!
+    end
+  end
+
+
 
   def self.send_welcome_email(user_id)
     ENV["DELAY_EMAILS"] == "true" ? delay.welcome(user_id) : welcome(user_id)

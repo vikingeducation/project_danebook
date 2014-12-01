@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141102233420) do
+ActiveRecord::Schema.define(version: 20141201021042) do
 
   create_table "comments", force: true do |t|
     t.integer  "user_id"
@@ -100,15 +100,19 @@ ActiveRecord::Schema.define(version: 20141102233420) do
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", unique: true
 
   create_table "users", force: true do |t|
-    t.string   "first_name",       null: false
-    t.string   "last_name",        null: false
-    t.string   "email",            null: false
-    t.string   "password_digest",  null: false
+    t.string   "first_name",           null: false
+    t.string   "last_name",            null: false
+    t.string   "email",                null: false
+    t.string   "password_digest",      null: false
     t.string   "auth_token"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "profile_photo_id"
     t.integer  "cover_photo_id"
+    t.string   "github_uid"
+    t.string   "github_provider"
+    t.datetime "github_token_expires"
+    t.string   "github_token"
   end
 
   add_index "users", ["auth_token"], name: "index_users_on_auth_token", unique: true

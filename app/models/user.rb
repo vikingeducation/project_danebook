@@ -38,11 +38,6 @@ class User < ActiveRecord::Base
 
   def friends
     users_friended_by.where(id: friended_users.pluck(:id))
-
-    # User.where(id: Friending.
-    #      where(friend_id: self.id, friender_id: Friending.
-    #      where(friender_id: self.id).
-    #            pluck(:friend_id)).pluck(:friender_id))
   end
 
   def friend_requests

@@ -13,24 +13,25 @@
 
 .hero {
   height: 300px;
+  position: relative;
   a {
     z-index: 1;
-    position: relative;
-    top: -145px;
-    left: 25px;
+    position: absolute;
+    bottom: 5px;
+    left: 240px;
   }
 
   h1 {
     z-index: 1;
     color: white;
-    position: relative;
-    top: -330px;
+    position: absolute;
+    bottom: 30px;
     left: 240px;
   }
 
   img.profile-photo {
-    position: relative;
-    top: -200px;
+    position: absolute;
+    bottom: -10px;
     left: 25px;
     height: 210px;
     width: 210px;

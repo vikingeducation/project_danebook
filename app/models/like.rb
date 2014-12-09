@@ -1,6 +1,6 @@
 class Like < ActiveRecord::Base
   belongs_to :likable, polymorphic: true, counter_cache: true
-  belongs_to :liker, :class_name => "User"
+  belongs_to :liker, class_name: "User"
 
   # make sure that the user and liked item are real
   validates :liker, :likable, presence: true

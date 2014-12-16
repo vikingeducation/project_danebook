@@ -1,4 +1,4 @@
-$(document).on('page:load', function(){
+$(document).ready(function(){
 
   //when on main newsfeed page
   if ($('#post-feed').length){

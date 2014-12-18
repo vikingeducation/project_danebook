@@ -11,6 +11,8 @@ group :production do
 end
 
 
+gem 'newrelic_rpm'
+
 gem 'omniauth'
 gem 'omniauth-github'
 

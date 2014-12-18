@@ -1,4 +1,4 @@
-<article class="post-pane">
+<article class="post-pane" id="post-<%= post.id %>">
   <header class="row">
     <%= profile_photo(post.author, :thumb, "col-xs-2 post-picture") %>
     <div class="col-xs-10">
@@ -15,8 +15,11 @@
 
   <%= render 'shared/likes_bar', object: post, parent: nil %>
 
-  <% post.comments.order(created_at: :asc).each do |comment| %>
-    <%= render 'comments/comment', comment: comment %>
-  <% end %>
+  <div id="post-<%= post.id %>-comments">
+    <% post.comments.order(created_at: :asc).each do |comment| %>
+      <%= render 'comments/comment', comment: comment %>
+    <% end %>
+  </div>
+
   <%= render 'comments/comment_form', object: post, id_symbol: :post_id %>
 </article>

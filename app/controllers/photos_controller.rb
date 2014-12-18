@@ -37,12 +37,12 @@ class PhotosController < ApplicationController
 
   def destroy
     @photo = current_user.photos.find(params[:id])
-    if @photo.destroy
-      flash[:success] = "Photo deleted"
-      redirect_to user_photos_path(current_user)
-    else
-      flash[:error] = "Something went wrong when deleting the photo"
-      redirect_to user_photos_path(current_user)
+
+    @photo.destroy
+
+    respond_to do |format|
+      format.html { redirect_to user_photos_path(current_user), notice: "Photo deleted" }
+      format.js { render :js => "window.location.href = '#{user_photos_path(current_user)}'" }
     end
   end
 

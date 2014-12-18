@@ -1,0 +1,1 @@
+$("#<%= @parent_class + '-' + @comment.commentable.id.to_s %>-comments").append("<%= escape_javascript(render :partial => 'comment', :locals => { :comment => @comment } ) %>");

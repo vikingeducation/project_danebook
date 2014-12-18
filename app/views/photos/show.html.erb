@@ -15,9 +15,11 @@
 
     <%= render 'shared/likes_bar', object: @photo, parent: nil %>
 
-    <% @photo.comments.each do |comment| %>
-      <%= render 'comments/comment', comment: comment %>
-    <% end %>
+    <div id="photo-<%= @photo.id %>-comments">
+      <% @photo.comments.each do |comment| %>
+        <%= render 'comments/comment', comment: comment %>
+      <% end %>
+    </div>
 
     <%= render 'comments/comment_form', object: @photo, id_symbol: :photo_id %>
   </article>

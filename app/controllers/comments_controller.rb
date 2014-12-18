@@ -1,26 +1,29 @@
 class CommentsController < ApplicationController
   def create
-    # so they can go back thence they came
     session[:return_to] ||= request.referer
     @comment = commentable.comments.build(author_id: current_user.id, content: comment_params[:content])
-    if @comment.save
-      flash[:success] = "Commented"
-      redirect_to session.delete(:return_to)
-    else
-      flash[:error] = "An error occurred while commenting"
-      redirect_to session.delete(:return_to)
+    @parent_class = @comment.commentable.class.name.downcase
+
+    respond_to do |format|
+      if @comment.save
+        format.html { redirect_to session.delete(:return_to), notice: "Commented" }
+        format.js { render :create, status: :created }
+      else
+        format.html { redirect_to session.delete(:return_to), notice: "An error occurred" }
+        format.js { render json: @comment.errors, status: :unprocessable_entity }
+      end
     end
   end
 
   def destroy
     session[:return_to] ||= request.referer
     @comment = current_user.comments.find(params[:id])
-    if @comment.destroy
-      flash[:success] = "Comment deleted"
-      redirect_to session.delete(:return_to)
-    else
-      flash[:error] = "An error occurred while deleting the comment"
-      redirect_to session.delete(:return_to)
+
+    @comment.destroy
+
+    respond_to do |format|
+      format.html { redirect_to session.delete(:return_to), notice: "Comment deleted" }
+      format.js { render :destroy, status: 200 }
     end
   end
 

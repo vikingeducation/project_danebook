@@ -1,4 +1,4 @@
-<%= form_for(object.comments.build, {html: {class: "row"}, url: {id_symbol => object.id, controller: 'comments', action: :create }}) do |comment_fields| %>
+<%= form_for(object.comments.build, {html: {class: "row"}, url: {id_symbol => object.id, controller: 'comments', action: :create }, remote: true}) do |comment_fields| %>
   <%= comment_fields.text_area :content, :class => "form-control", rows: 3, placeholder: "Leave a comment!" %>
   <%= comment_fields.submit 'Comment!', :class => "btn btn-large btn-danish btn-block" %>
 <% end %>

@@ -31,12 +31,12 @@ class PostsController < ApplicationController
   def destroy
     @post = current_user.posts.find(params[:id])
     @user = @post.author
-    if @post.destroy
-      flash[:success] = "Post deleted"
-      redirect_to user_path(@user)
-    else
-      flash[:error] = "Something went wrong when deleting the post"
-      redirect_to user_path(@user)
+
+    @post.destroy
+
+    respond_to do |format|
+      format.html { redirect_to user_path(@user), notice: "Post deleted" }
+      format.js { render :destroy, status: 200 }
     end
   end
 

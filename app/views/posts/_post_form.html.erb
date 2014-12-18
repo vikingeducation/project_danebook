@@ -1,5 +1,5 @@
 <% if current_user && @user == current_user %>
-  <%= form_for(@post, {html: { :class => "info-pane" }, url: {controller: 'posts', action: :create }}) do |post_fields| %>
+  <%= form_for(@post, {html: { :class => "info-pane" }, url: {controller: 'posts', action: :create }, remote: true }) do |post_fields| %>
     <header class="row">
       <div class="col-xs-12">
         <h5>New Post</h5>

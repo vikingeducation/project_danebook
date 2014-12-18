@@ -1,24 +1,25 @@
 <!-- everything below the hero -->
 
-  <!-- user information -->
-  <aside class = "col-md-4">
-    <!-- about -->
-    <%= render "info_pane", info: "profile" %>
+<!-- user information -->
+<aside class = "col-md-4">
 
-    <%= render "info_pane", info: "photos" %>
+  <%= render "info_pane", info: "profile" %>
 
-    <%= render "info_pane", info: "friends" %>
+  <%= render "info_pane", info: "photos" %>
 
-  </aside><!-- user information -->
+  <%= render "info_pane", info: "friends" %>
+
+</aside><!-- user information -->
 
 
-  <!--post feed-->
-  <div class = "col-md-7 col-md-offset-1">
+<!--post feed-->
+<div class = "col-md-7 col-md-offset-1">
 
-    <%= render 'posts/post_form' %>
+  <%= render 'posts/post_form' %>
 
+  <div id="post-area">
     <% @posts.each do |post| %>
       <%= render 'posts/post', post: post %>
     <% end %>
-
   </div>
+</div>

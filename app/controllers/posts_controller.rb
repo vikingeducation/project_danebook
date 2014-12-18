@@ -16,12 +16,15 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params)
     @user = @post.author
-    if @post.save
-      flash[:success] = "Status updated"
-      redirect_to @user
-    else
-      flash[:error] = "Something went wrong with your post"
-      redirect_to @user
+
+    respond_to do |format|
+      if @post.save
+        format.html { redirect_to @user, notice: "Status updated" }
+        format.js { render :create, status: :created, location: @post }
+      else
+        format.html { redirect_to @user, notice: "Something went wrong with your post" }
+        format.js { render json: @post.errors, status: :unprocessable_entity }
+      end
     end
   end
 

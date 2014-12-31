@@ -1,4 +1,5 @@
 <div class="col-md-6">
+  <%= render 'shared/flashes' %>
   <%= simple_form_for @user, defaults: { input_html: { class: 'form-control' }, wrapper_html: { class: 'form-group col-xs-12' } } do |f| %>
     <div class="col-xs-12">
       <h3>Sign Up</h3>

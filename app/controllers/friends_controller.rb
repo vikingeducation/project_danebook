@@ -2,6 +2,7 @@ class FriendsController < ApplicationController
   def index
     @user = User.find(params[:user_id])
     @friends = @user.friends.includes(profile: :photo).paginate(:page => params[:page], :per_page => 12)
+    respond_to :html, :js
   end
 
   def create

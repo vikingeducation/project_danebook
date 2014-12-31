@@ -2,6 +2,8 @@ class PhotosController < ApplicationController
   def index
     @user = User.find(params[:user_id])
     @photos = @user.photos.paginate(:page => params[:page], :per_page => 16)
+
+    respond_to :html, :js
   end
 
   def show

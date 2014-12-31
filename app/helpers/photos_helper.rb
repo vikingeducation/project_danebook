@@ -3,7 +3,7 @@ module PhotosHelper
     if user.cover_photo
       image_tag user.cover_photo.photo.url(:original), alt: "Cover Photo", class: "hero-image"
     else
-      image_tag "hogwarts_small.jpg", :alt => "Hogwarts Castle", class: "hero-image"
+      image_tag "", class: "hero-image"
     end
   end
 

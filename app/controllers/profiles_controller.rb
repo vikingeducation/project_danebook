@@ -4,18 +4,24 @@ class ProfilesController < ApplicationController
   def show
     @user = User.find(params[:user_id])
     @profile = @user.profile
+
+    respond_to :html, :js
   end
 
   def edit
     @user = current_user
     @profile = current_user.profile
+
+    respond_to :html, :js
   end
 
+  # Way too complicated
   def update
     @user = current_user
     @profile = current_user.profile
     @profile.photo = @user.photos.find(params[:photo_id]) if params[:photo_id]
     @profile.cover_photo = @user.photos.find(params[:cover_photo_id]) if params[:cover_photo_id]
+
     if params[:profile] && @profile.update_attributes(profile_params)
       flash[:success] = "Profile updated"
       redirect_to user_profile_path(@user)

@@ -1,22 +1,5 @@
 <%= render 'shared/hero' %>
 
 <div id="profile-content">
-<section class="info-pane col-md-12">
-  <header class="row">
-    <div class="col-md-12">
-      <h2><%= "#{@user.name}'s Friends"%></h2>
-    </div>
-  </header>
-
-  <section class = "row">
-
-    <% @friends.each do |friend| %>
-      <%= render 'friend', friend: friend %>
-    <% end %>
-    <div class="col-xs-12 pagination">
-      <%= will_paginate @friends, renderer: BootstrapPagination::Rails %>
-    </div>
-
-  </section>
-</section>
+  <%= render :partial => 'profile_content' %>
 </div>

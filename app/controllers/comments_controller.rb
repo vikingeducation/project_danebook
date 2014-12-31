@@ -6,8 +6,8 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to session.delete(:return_to), notice: "Commented" }
-        format.js { render :create, status: :created }
+        format.html { redirect_to @comment.commentable }
+        format.js
       else
         format.html { redirect_to session.delete(:return_to), notice: "An error occurred" }
         format.js { render json: @comment.errors, status: :unprocessable_entity }
@@ -23,7 +23,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to session.delete(:return_to), notice: "Comment deleted" }
-      format.js { render :destroy, status: 200 }
+      format.js
     end
   end
 

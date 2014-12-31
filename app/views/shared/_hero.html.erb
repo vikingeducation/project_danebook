@@ -7,10 +7,10 @@
 
 <nav class="nav profile-navbar">
   <ul class="nav nav-pills pull-right">
-    <li><%= link_to 'Timeline', @user %></li>
-    <li><%= link_to 'About', user_profile_path(@user) %></li>
-    <li><%= link_to "Photos (#{@user.photos.count})", user_photos_path(@user) %></li>
-    <li><%= link_to "Friends (#{@user.friends.count})", user_friends_path(@user) %></li>
+    <li><%= link_to 'Timeline', @user, remote: true %></li>
+    <li><%= link_to 'About', user_profile_path(@user), remote: true %></li>
+    <li><%= link_to "Photos (#{@user.photos.count})", user_photos_path(@user), remote: true %></li>
+    <li><%= link_to "Friends (#{@user.friends.count})", user_friends_path(@user), remote: true %></li>
     <li>
       <%= edit_profile_button(@user) %>
     </li>

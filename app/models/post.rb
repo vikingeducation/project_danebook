@@ -7,4 +7,10 @@ class Post < ActiveRecord::Base
   validates :author,  presence: true
   validates :content, presence: true,
                         length: { maximum: 255 }
+
+  def self.include_post_info
+    includes(author: [profile: :photo], likes: :liker,
+            comments: [:commentable, author: [profile: :photo],
+            likes: :liker])
+  end
 end

@@ -23,6 +23,7 @@ class UsersController < ApplicationController
       sign_in(@user)
       flash[:success] = "Welcome to Danebook"
       redirect_to @user
+      # Uncomment the line below to send welcome emails to users
       # User.welcome_email(@user.id)
     else
       flash.now[:error] = "Your account could not be created"
@@ -33,7 +34,6 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @friends = @user.friends.includes(profile: :photo)
-    # load items for an index of posts with comments and likes
     @posts = @user.posts.include_post_info.order(created_at: :desc)
     @post = current_user.posts.build
   end

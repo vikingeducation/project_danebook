@@ -23,5 +23,11 @@
   </div>
 </div>
 
-<div class="col-sm-2 hidden-xs">
+<div class="col-sm-2 hidden-xs" id="recent-activity-feed">
+  Popular This Week
+  <ul>
+    <% @popular_week.each do |post| %>
+      <li><%= post.likes.size %> people like <%= link_to post.author.first_name, post.author %>'s <%= link_to "post", post %> from <%= time_ago_in_words(post.created_at) %> ago.</li>
+    <% end %>
+  </ul>
 </div>

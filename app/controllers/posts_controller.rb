@@ -2,8 +2,13 @@ class PostsController < ApplicationController
 
   def index
     @user = current_user
-    @posts = Post.where(author_id: @user.friends.pluck(:id) << current_user.id).include_post_info.order(created_at: :desc)
+    @posts = Post.friends_posts(@user).include_post_info.order(created_at: :desc)
     @post = current_user.posts.build
+    @popular_week = Post.recently_popular(@user, 7.days)
+  end
+
+  def show
+    @post = Post.find(params[:id])
   end
 
   def create

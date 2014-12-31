@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     end
   end
 
-  resources(:posts, only: [:create, :destroy]) do
+  resources(:posts, only: [:create, :destroy, :show]) do
     resources :likes, only: [:create, :destroy], :defaults => { likable: 'Post' }
     resources(:comments, only: [:create, :destroy], :defaults => { commentable: 'Post' }) do
       resources :likes, only: [:create, :destroy], :defaults => { likable: 'Comment' }

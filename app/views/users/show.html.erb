@@ -1,6 +1,8 @@
+<%= render 'shared/hero' %>
 <!-- everything below the hero -->
 
 <!-- user information -->
+<div id="profile-content">
 <aside class = "col-md-4">
 
   <%= render "info_pane", info: "profile" %>
@@ -22,4 +24,5 @@
       <%= render 'posts/post', post: post %>
     <% end %>
   </div>
+</div>
 </div>

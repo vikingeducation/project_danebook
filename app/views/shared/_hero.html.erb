@@ -1,11 +1,11 @@
-<div class="row hero">
+<div class="hero">
   <%= cover_photo(@user) %>
   <%= profile_photo(@user, :medium, "profile-photo img-thumbnail") %>
   <%= friend_button(@user, "btn btn-danish") %>
   <h1><%= @user.name %></h1>
 </div>
 
-<nav class="nav row profile-navbar">
+<nav class="nav profile-navbar">
   <ul class="nav nav-pills pull-right">
     <li><%= link_to 'Timeline', @user %></li>
     <li><%= link_to 'About', user_profile_path(@user) %></li>

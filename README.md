@@ -1,3 +1,3 @@
 # danebook_homepage
 
-*A [Viking Code School Bootstrap, HTML5, CSS3 and SASS](http://www.vikingcodeschool.com) project*
+*[A Bootstrap, HTML5, CSS3 and SASS project from the Viking Code School](http://www.vikingcodeschool.com)*

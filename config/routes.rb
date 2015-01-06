@@ -4,11 +4,11 @@ Rails.application.routes.draw do
 
   resources(:users, only: [:index, :show, :new, :create]) do
     resource :profile, only: [:show, :edit, :update]
-    resources :friends, only: [:index, :create]
+    resources :friends, only: [:index]
     resources :photos, only: [:index]
   end
 
-  resources :friends, only: [:destroy]
+  resources :friends, only: [:create, :destroy]
 
   resources(:photos, only: [:show, :new, :create, :destroy]) do
     resources :likes, only: [:create, :destroy], :defaults => { likable: 'Photo' }

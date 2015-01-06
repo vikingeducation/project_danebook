@@ -11,7 +11,7 @@
       <p>Born on <%= user.birthday.to_formatted_s(:long_ordinal) if user.birthday %></p>
     </div>
     <div class="col-xs-3">
-      <%= friend_button(user, "btn btn-danish pull-right") %>
+      <%= friend_button(user) %>
       <%= decline_button(user, "btn btn-danish pull-right") %>
     </div>
   </div>

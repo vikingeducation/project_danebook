@@ -8,32 +8,36 @@ class FriendsController < ApplicationController
   def create
     session[:return_to] ||= request.referer
     @user = current_user
-    @friend_request = @user.initiated_friendings.build(friend_id: params[:user_id].to_i)
-    if @user.id != params[:user_id] && @friend_request.save!
-      flash[:success] = "Friend request sent"
-      redirect_to session.delete(:return_to)
-    else
-      flash[:error] = "Something went wrong with your friend request!"
-      redirect_to session.delete(:return_to)
+    @target = User.find(params[:id])
+    @friend_request = @user.initiated_friendings.build(friend_id: @target.id)
+
+    respond_to do |format|
+      if @user != @target && @friend_request.save!
+        format.html { redirect_to session.delete(:return_to), notice: "Friend request sent" }
+        format.js { render :create, status: :created }
+      else
+        format.html { redirect_to session.delete(:return_to), notice: "Something went wrong with your friend request!" }
+        format.js { render json: @friend_request.errors, status: :unprocessable_entity }
+      end
     end
   end
 
   def destroy
     session[:return_to] ||= request.referer
     @user = current_user
-    @target = params[:id]
+    @target = User.find(params[:id])
 
     # to delete the users initiated friending with the target
-    friending1 = Friending.where(friend_id: @target).find_by_friender_id(@user.id)
+    friending1 = Friending.where(friend_id: @target.id).find_by_friender_id(@user.id)
     # to prevent the target from showing up in friend requests
-    friending2 = Friending.where(friender_id: @target).find_by_friend_id(@user.id)
+    friending2 = Friending.where(friender_id: @target.id).find_by_friend_id(@user.id)
 
-    if (friending1 || friending2) && (!friending1 || friending1.destroy) && (!friending2 || friending2.destroy)
-      flash[:success] = "User unfriended"
-      redirect_to session.delete(:return_to)
-    else
-      flash[:error] = "Something when wrong when unfriending"
-      redirect_to session.delete(:return_to)
+    respond_to do |format|
+      # Covers all cases, but needs refactoring
+      if (friending1 || friending2) && (!friending1 || friending1.destroy) && (!friending2 || friending2.destroy)
+        format.html { redirect_to session.delete(:return_to), notice: "User unfriended" }
+        format.js
+      end
     end
   end
 end

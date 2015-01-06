@@ -1,15 +1,23 @@
 module FriendsHelper
-  def friend_button(target, css_class=nil)
-    if current_user == target
-      nil
-    elsif current_user.friends.include?(target)
-      link_to "Unfriend", friend_path(target), method: "DELETE", data: { confirm: "Are you sure you want to unfriend #{target.name}?"}, class: css_class
+  def friend_button(target)
+    css_class = "btn btn-danish pull-right"
+
+    if current_user.friends.include?(target)
+      label, method, action = "Unfriend", "DELETE", :destroy
     elsif current_user.friended_users.include?(target)
-      link_to "Withdraw Request", friend_path(target), method: "DELETE", class: css_class
+      label, method, action = "Withdraw Request", "DELETE", :destroy
     elsif current_user.users_friended_by.include?(target)
-      link_to "Accept Friend Request", user_friends_path(target), method: "POST", class: css_class
+      label, method, action = "Accept Friend Request", "POST", :create
     else
-      link_to "Send Friend Request", user_friends_path(target), method: "POST", class: css_class
+      label, method, action = "Send Friend Request", "POST", :create
+    end
+
+    unless current_user == target
+      link_to label,
+              url_for(controller: 'friends', id: target.id, action: action),
+              method: method,
+              remote: true,
+              class: css_class, id: "friend-#{target.id}"
     end
   end
 

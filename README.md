@@ -16,11 +16,9 @@ Created by [Andur Carr](https://github.com/LaMarseillaise) for [Viking Code Scho
 - Set up recent activity query
 - Finish post index page
 - Style emails
-- Refactor friend routing
 
 - - -
 
 ####Javascript:
-- Friend button
 - Navbar Widgets
 - Like Button

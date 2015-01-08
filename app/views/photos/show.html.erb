@@ -16,7 +16,7 @@
     <%= render 'shared/likes_bar', object: @photo, parent: nil %>
 
     <div id="photo-<%= @photo.id %>-comments">
-      <% @photo.comments.each do |comment| %>
+      <% @photo.comments.order(created_at: :asc).each do |comment| %>
         <%= render 'comments/comment', comment: comment %>
       <% end %>
     </div>

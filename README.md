@@ -22,3 +22,9 @@ Created by [Andur Carr](https://github.com/LaMarseillaise) for [Viking Code Scho
 ####Javascript:
 - Navbar Widgets
 - Like Button
+
+- - -
+
+####Bugs:
+- Clear forms after Ajax submission.
+- Fix html redirects for likes

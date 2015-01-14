@@ -20,14 +20,18 @@
   <%= render 'post_form' %>
   <div id="post-area">
     <%= render @posts %>
+
+    <div class="col-xs-12 pagination">
+      <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
+    </div>
   </div>
 </div>
 
 <div class="col-sm-2 hidden-xs" id="recent-activity-feed">
-  Popular This Week
-  <ul>
+  <h3>Popular This Week</h3>
+  <ul class="list-group">
     <% @popular_week.each do |post| %>
-      <li><%= post.likes.size %> people like <%= link_to post.author.first_name, post.author %>'s <%= link_to "post", post %> from <%= time_ago_in_words(post.created_at) %> ago.</li>
+      <li class="list-group-item"><%= post.likes.size %> people like <%= link_to post.author.first_name, post.author %>'s <%= link_to "post", post %> from <%= time_ago_in_words(post.created_at) %> ago.</li>
     <% end %>
   </ul>
 </div>

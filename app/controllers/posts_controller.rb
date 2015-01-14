@@ -2,7 +2,7 @@ class PostsController < ApplicationController
 
   def index
     @user = current_user
-    @posts = Post.friends_posts(@user).include_post_info.order(created_at: :desc)
+    @posts = Post.friends_posts(@user).include_post_info.order(created_at: :desc).paginate(:page => params[:page], :per_page => 16)
     @post = current_user.posts.build
     @popular_week = Post.recently_popular(@user, 7.days)
   end

@@ -18,5 +18,9 @@
     <% @posts.each do |post| %>
       <%= render 'posts/post', post: post %>
     <% end %>
+
+    <div class="col-xs-12 pagination">
+      <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
+    </div>
   </div>
 </div>

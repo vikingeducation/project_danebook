@@ -34,7 +34,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     @friends = @user.friends.includes(profile: :photo)
-    @posts = @user.posts.include_post_info.order(created_at: :desc)
+    @posts = @user.posts.include_post_info.order(created_at: :desc).paginate(:page => params[:page], :per_page => 20)
     @post = current_user.posts.build
 
     respond_to :html, :js

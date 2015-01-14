@@ -23,6 +23,6 @@ class Post < ActiveRecord::Base
     friends_posts(user).
       where("created_at > ? AND likes_count > 2", Time.now - period).
       order(likes_count: :desc).
-      limit(10)
+      limit(8)
   end
 end

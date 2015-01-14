@@ -35,9 +35,10 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller' # for better_errors
   gem 'bullet' # config/environments/development.rb (see docs)
-  gem 'faker'
   gem 'letter_opener'
 end
+
+gem 'faker'
 
 # Spruce up our console output
 group :development, :test do

@@ -1,6 +1,5 @@
-danebook_goes_live
-==================
+# Danebook
 
-Week 3 Solo Assignment
+A project by [Dan Berger](https://github.com/dsberger) with the [Viking Code School](https://www.vikingcodeschool.com).
 
-This is your README!
+Danebook is a Facebook clone.

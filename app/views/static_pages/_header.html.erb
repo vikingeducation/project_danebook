@@ -1,0 +1,27 @@
+<header>
+  <div class="jumbotron">
+    <div id="photos-panel" class="container">
+      <%= image_tag 'hogwarts_small.jpg', alt: 'User Cover Photo', id: "cover-photo" %>
+      <%= image_tag 'harry_potter_small.jpg', alt: 'User Profile Photo', height: '200px', id: 'profile-photo' %>
+      <a id="user-name">Harry Potter</a>
+      <!-- Row with page names -->
+      <ul class="nav nav-tabs">
+        <li role="presentation" class="col-md-offset-2 active">
+          <%= link_to "Timeline", timeline_path %>
+        </li>
+        <li role="presentation">
+          <%= link_to "About", about_path %>
+        </li>
+        <li role="presentation">
+          <%= link_to "Photos (123)", photos_path %>
+        </li>
+        <li role="presentation">
+          <%= link_to "Friends (542)", friends_path %>
+        </li>
+        <li role="presentation" class="col-md-offset-3">
+          <%= link_to "Edit Profile", about_edit_path %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</header>

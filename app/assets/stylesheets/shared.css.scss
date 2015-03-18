@@ -1,57 +1,48 @@
-
-/* color of the main header background*/
+body {
+  background-color: #edf0f5!important;
+}
 
 
 #login-navbar {
+
     background: linear-gradient(#4C67A1, #3B5998);
     color: #fff;
-    border-bottom: 3px solid #333;
+    border-bottom: 3px solid #559;
     min-height: 96px;
     padding-top: 20px;
+
+
     .container-fluid {
+
       .navbar-header {
 
         a {
+
           color: #fff;
           font-size: 36px;
+          line-height: 48px;
+
         }
       }
+
+    }
+
+    // eg. hello form
+    .form-group {
+
+      padding: 10px 20px;
+
     }
 }
 
 
-/* square and shadowed like the mockup */
-form button[type="submit"] {
-  border-radius: 0;
-  border: 2px solid black;
-  box-shadow: 3px 3px 3px black;
-}
-
-/* hack to get login submit button inline with labeled text fields*/
-#login-button-column {
-  height: 100%;
-  position: relative;
-  bottom: -24px;
-
-  button {
-    width: 100px;
-    font-weight: bold;
-    background-color: #9FC5F8;
-  }
-}
-
-/* pixel-perfect stuff on the signup portion*/
 #login-main {
-    section {
-        input, select, option {
-            margin-bottom: 8px;
-        }
-    }
-}
-
-#btn-signup {
-    font-weight: bold;
-    margin: 15px 0 15px 0;
+  input, select, option {
+      margin-bottom: 8px;
+  }
+  li {
+    font-size: 18px;
+  }
 }
 
 /* END SIGNUP PAGE STUFF */

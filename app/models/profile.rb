@@ -5,7 +5,7 @@ class Profile < ActiveRecord::Base
   validates :day, :month, :year, :gender,
                                 presence: true
 
-  validates :gender, inclusion: { in: ["Male", "Female", "Another Identity", "Not Provided"] }
+  validates :gender, inclusion: { in: ["Male", "Female", "Another Identity", "Not Provided", "Rather Not Say"] }
   validates :day, inclusion: { in: (1..31) }
   validates :month, inclusion: { in: (1..12) }
   validates :year, inclusion: { in: (1901..Time.now.year) }

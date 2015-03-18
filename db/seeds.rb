@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-GENDERS = ["Female", "Male", "Another Identity"]
+GENDERS = ["Female", "Male", "Rather Not Say"]
 
 30.times do
   u = User.create(:first_name => Faker::Name.first_name,

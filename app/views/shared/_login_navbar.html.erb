@@ -1,7 +1,7 @@
   <!-- navbar containing logo and logins-->
-  <nav id = "login-navbar" class = "navbar navbar-default navbar-static-top">
+ <nav id = "login-navbar" class = "navbar navbar-default navbar-static-top">
     <div class = "container-fluid">
-      <!-- responsive mobile stuff -->
+       <!-- responsive mobile stuff -->
       <div class="navbar-header">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
           <span class="sr-only">Toggle navigation</span>
@@ -9,42 +9,54 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-      <!--company brand link -->
+
+
+      <!-- company brand link -->
         <%= link_to "Danebook", "#", class: "navbar-brand", id: "brand-link" %>
       </div>
-      
-      <!-- wraps rest of links to collapse in mobile-->
+
+
+
+       <!-- wraps rest of links to collapse in mobile -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      
-      <!-- rows and columns control button placement -->  
-      <div class = "row">
-        <%=form_tag session_path, class: "navbar-form navbar-right", role:"login", method: "post" do %>
-          <div class = "col-md-4">
-            <div class="form-group">
-              <%=label_tag :email%><br>
-              <%=text_field_tag :email, nil, {class: "form-control", placeholder: "Email"}%>
-            </div>
-          </div>
 
-          <div class = "col-md-4">
-            <div class= "form-group">
-              <%=label_tag :password%><br>
-              <%=password_field_tag :password, nil, {class: "form-control", placeholder: "Password"}%>
-            </div>
-          </div>
 
-          <div class = "col-md-4" id = "login-button-column" >
-            <div class = "form-group">
-              <%= label_tag :remember_me %>
-              <%= check_box_tag :remember_me %>
-            </div>
-            <%= submit_tag "Login", class:"btn btn-info" %>
-          </div>
-        <% end %>
-        
+         <!-- rows and columns control button placement  -->
+          <%=form_tag session_path, class: "navbar-form navbar-right", role:"login", method: "post" do %>
+              <div class="form-group">
+                <%=label_tag :email %><br>
+                <%=text_field_tag :email, nil, {class: "form-control", placeholder: "Email"}%>
+              </div>
 
-      </div><!--row-->  
-      </div><!--navbar-collapse-->
-    </div><!--container-->
+
+              <div class= "form-group">
+
+                <%=label_tag :password %><br>
+                <%=password_field_tag :password, nil, {class: "form-control", placeholder: "Password"}%>
+
+              </div>
+
+
+              <div class = "form-group checkbox">
+              <br>
+                <%= label_tag :remember_me do %>
+                  <%= check_box_tag :remember_me, "1", false%>
+                  Remember Me
+                <% end %>
+
+              </div>
+
+
+              <div class = "form-group">
+
+                <br>
+                <%= submit_tag "Login", class: "btn btn-info btn-lg btn-block" %>
+
+              </div>
+
+
+          <% end %>
+
+      </div><!-- navbar-collapse -->
+   </div><!--container -->
   </nav>
-  

@@ -51,7 +51,7 @@ module ApplicationHelper
     if user == current_user
       ""
     elsif current_user.has_friend?(user)
-      link_to "Unfriend User", "#", method: "delete", class: "btn btn-lg danebook-button-grey"
+      link_to "Unfriend User", user_friendings_path(user), method: "delete", class: "btn btn-lg danebook-button-grey"
     elsif current_user.friends_requested.include?(user)
       link_to "Cancel Request", user_friend_requests_path(user), method: "delete", class: "btn btn-lg danebook-button-grey"
     else
@@ -124,7 +124,7 @@ module ApplicationHelper
     return "" unless photo && photo.image_file_name
     user = photo.user
     if user == current_user || user.friends.include?(current_user)
-      link_to image_tag(photo.image.url(:thumb)), 
+      link_to image_tag(photo.image.url(:thumb)),
               user_photo_path(user, photo), class: "photo-link"
     else
       image_tag photo.image.url(:thumb), class: "photo-link"

@@ -15,29 +15,3 @@
  */
 
 
-  .container .row .danebook-button {
-   background: linear-gradient(#4C67A1, #3B5998);
-   color: white;
-   font-weight: bold;
-   box-shadow: 3px 3px 3px black;
-   border: 1px solid black;
-   border-radius: 0;
- }
-
-
-  .container .row .danebook-button-grey {
-   background: #ccc;
-   color: #555;
-   font-weight: bold;
-   box-shadow: 3px 3px 3px black;
-   border: 1px solid black;
-   border-radius: 0;
- }
-
-
-  .container .row .danebook-button-outlines {
-   font-weight: bold;
-   box-shadow: 3px 3px 3px black;
-   border: 1px solid black;
-   border-radius: 0;
- }

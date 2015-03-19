@@ -94,21 +94,25 @@ module ApplicationHelper
 
   def like_sentence(likable)
     return nil unless likable
+
+
     sentence = ""
 
     case likable.likes.size
     when 0
-      return "&nbsp".html_safe
+      return nil
     when 1
-      sentence << "#{user_link(likable.users_who_liked.first)}".html_safe
+      sentence << "#{user_link(likable.users_who_liked.first)}"
     when 2
-      sentence << "#{user_link(likable.users_who_liked.first)} and #{user_link(likable.users_who_liked.second)}".html_safe
+      sentence << "#{user_link(likable.users_who_liked.first)} and #{user_link(likable.users_who_liked.second)}"
     else
-      sentence << "#{user_link(likable.users_who_liked.first)}, #{user_link(likable.users_who_liked.second)} and #{likable.likes.size - 2} other ".html_safe
+      sentence << "#{user_link(likable.users_who_liked.first)}, #{user_link(likable.users_who_liked.second)} and #{likable.likes.size - 2} other "
       user_string = ((likable.likes.size - 2) > 1) ? "users" : "user"
       sentence << user_string
     end
     sentence << " liked this #{likable.class.to_s.downcase}."
+
+    sentence ? content_tag(:p, sentence.html_safe) : nil
   end
 
 

@@ -1,4 +1,6 @@
 <section class = "col-md-12 like-section">
+
+
   <%= like_link(post) %>
 
   <a class="col-md-2 comment-link" href = "#">Comment</a>
@@ -8,6 +10,8 @@
   <% end %>
 
   <div class = "col-md-12">
-    <p><%= like_sentence(post).html_safe %></p>
+    <%= like_sentence(post) %>
   </div>
+
+
 </section>

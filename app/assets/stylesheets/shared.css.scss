@@ -3,6 +3,33 @@ body {
 }
 
 
+ .container .row .danebook-button {
+  background: linear-gradient(#4C67A1, #3B5998);
+  color: white;
+  font-weight: bold;
+  box-shadow: 3px 3px 3px black;
+  border: 1px solid #3B5998;
+  border-radius: 0;
+}
+
+
+ .container .row .danebook-button-grey {
+  background: #ccc;
+  color: #555;
+  font-weight: bold;
+  box-shadow: 3px 3px 3px black;
+  border: 1px solid #646668;
+  border-radius: 0;
+}
+
+
+ .container .row .danebook-button-outlines {
+  font-weight: bold;
+  box-shadow: 3px 3px 3px black;
+  border: 1px solid #646668;
+  border-radius: 0;
+}
+
 #login-navbar {
 
     background: linear-gradient(#4C67A1, #3B5998);
@@ -75,7 +102,7 @@ section.container a {
   #navbar-user-links {
 
     a {
-      color: #ddd;
+      color: #ecedee;
     }
 
     #navbar-username {
@@ -105,7 +132,7 @@ section.container a {
   background-color: #999;
   min-width: 960px;
   opacity: 0.5;
-  border: 1px solid black;
+  border: 1px solid #444649;
   overflow: hidden;
 
   img {
@@ -119,7 +146,7 @@ section.container a {
   bottom: 20px;
   left: 20px;
   img {
-    border: 1px solid black;
+    border: 1px solid #444649;
   }
   .user-headline {
     position: relative;
@@ -134,7 +161,7 @@ section.container a {
 }
 
 #profile-nav{
-  border: 1px solid black;
+  border: 1px solid 444649;
 
   .link-count {
     color: #777;
@@ -148,22 +175,40 @@ section.container a {
   }
 }
 
+
+
+#recent-friends {
+  border-right: 1px solid #d4d6d8
+}
+
+
+
+
 #information-pane {
+
+  z-index: 5;
+  background-color: #fff;
   min-height: 400px;
-  border: 1px solid black;
+  border: 1px solid #555;
   margin: 20px auto 50px auto;
   padding-bottom: 50px;
+  border-radius: 8px;
+
   header {
     text-align: center;
-    border-bottom: 1px solid black;
-    background-color: #ccc;
+    border: 1px solid #888;
+    border-radius: 6px 6px 0px 0px;
+    background-color: #ddd;
+    z-index: 6;
 
     h2 {
       margin-top: 0;
     }
+
     .about-header {
       padding-top: 15px;
     }
+
   }
 
   .about-table {
@@ -183,13 +228,14 @@ section.container a {
     background: linear-gradient(#4C67A1, #3B5998);
     color: white;
     box-shadow: 3px 3px 3px black;
-    border: 1px solid black;
+    border: 1px solid #3B5998;
     border-radius: 0;
     margin-top: 10px;
 }
 
 #timeline {
   margin-top: 15px;
+  // background-color: #fff;
 
   h5 {
     font-weight: bold;
@@ -197,14 +243,21 @@ section.container a {
   }
 }
 
+#timeline-aside {
+  background-color: #fff;
+}
+
 #post-form {
   text-align: center;
-  border: 1px solid black;
+  border: 1px solid #c4c6c8;
+  border-radius: 6px;
+  background-color: #e7e9ea;
+  overflow: hidden;
 
     > * {
       padding-top: 15px;
-      border-top: 1px solid black;
-      background-color: #ccc;
+      // border-top: 1px solid black;
+      background-color: #e7e9ea;
     }
 
     button {
@@ -218,9 +271,6 @@ section.container a {
     }
 }
 
-#post-textarea-col {
-  background-color: white;
-}
 
 #save-profile {
   background: linear-gradient(#4C67A1, #3B5998);
@@ -237,7 +287,7 @@ section.container a {
     margin-top: 15px;
     margin-bottom: 15px;
     img {
-      border: 1px solid black;
+      border: 1px solid #646669;
     }
 
     .photo-link:hover + .photo-upload-date {
@@ -344,16 +394,19 @@ button.btn-unfriend {
 }
 
 #post-feed {
-  p {
-    padding-bottom: 15px;
-  }
-
 
   margin-bottom: 30px;
 
 
+  p {
+    padding-bottom: 15px;
+  }
+
   & > article {
-    border: 1px solid black;
+    border: 1px solid #c4c6c9;
+    overflow: hidden;
+    border-radius: 6px;
+    background-color: #fff;
     margin-top: 15px;
     padding-top: 15px;
 
@@ -364,7 +417,7 @@ button.btn-unfriend {
     img {
       height:100%;
       width: 100%;
-      border: 1px solid black;
+      border: 1px solid #949699;
     }
 
     .date-posted {
@@ -373,8 +426,8 @@ button.btn-unfriend {
   }
 
   .like-section {
-    border-top: 1px solid black;
-    background-color: #ccc;
+    border-top: 1px solid #e4e6e9;
+    background-color: #fff;
     padding-bottom: 15px;
 
     & > * {
@@ -395,8 +448,8 @@ button.btn-unfriend {
     border-radius: 0;
   }
   .comment-section {
-    border-top: 1px solid #999;
-    background-color: #ccc;
+    border-top: 1px solid #d4d6d9;
+    background-color: #f4f5f7;
 
     article {
       padding-top: 15px;
@@ -406,6 +459,7 @@ button.btn-unfriend {
       }
     }
 
+    // requires JS to display
     .comment-form {
       display: none;
     }

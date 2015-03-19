@@ -354,20 +354,31 @@ button.btn-unfriend {
 }
 
 #friends-list {
+
   .friend-list-entry {
+
     height: 150px;
     padding-top: 25px;
+
+    img {
+      border: 1px solid #b4b6b9;
+    }
+
     .row {
       margin: 15px;
       padding: 15px;
-      border: 1px solid black;
+      border: 1px solid #b4b6b9;
+      border-radius: 6px;
     }
+
     .col-md-5 {
       padding-top: 20px;
     }
+
     .col-md-4 {
       padding-top: 30px;
     }
+
   }
 }
 

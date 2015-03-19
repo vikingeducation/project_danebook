@@ -2,11 +2,54 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+#photo-field {
+  margin-top: 15px;
+  .photo {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    img {
+      border: 1px solid #646669;
+    }
+
+    .photo-link:hover + .photo-upload-date {
+      display: block;
+    }
+
+  }
+}
+
+
+
+
+
+.photo-upload-date {
+  position: absolute;
+  text-align: center;
+  z-index: 1000000;
+  bottom: 0;
+  width: 262px;
+  height: 30px;
+  color: white;
+  background-color: #444;
+  display: none;
+  opacity: .5;
+  border-top: 1px solid black;
+  font-weight: bold;
+}
+
+
 .photo-form {
   .col-sm-12 {
     text-align: center;
   }
 }
+
+
+.photo-show-img {
+  border: 1px solid #a4a6a9;
+}
+
 
 .user-header {
   img {

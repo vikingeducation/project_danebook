@@ -1,20 +1,32 @@
-<article class = "col-md-12 comment" data-comment-id = "<%= comment.id %>" >
-  <div class = "col-md-2">
-    <%= profile_photo(comment.user) %>
+<article class = "col-sm-12 comment" data-comment-id = "<%= comment.id %>" >
+  <div class = "row">
+    <div class = "col-sm-2">
+      <%= profile_photo(comment.user) %>
+    </div>
+
+    <div class = "col-sm-10">
+
+      <div class = "row">
+
+        <p class = "col-sm-12 date-posted">
+          <%= user_link(comment.user) %> said on <%= comment.created_at.to_formatted_s(:long) %>
+        </p>
+
+        <p class = "col-sm-12 comment-body"><%= comment.body %></p>
+
+        <span class = "col-sm-1">
+          <%= like_link(comment) %>
+        </span>
+
+        <span class = "col-sm-6 col-sm-offset-1">
+          <%=like_sentence(comment)%>
+        </span>
+        <span class = "col-sm-2">
+          <%= delete_comment_link(comment) %>
+        </span>
+
+      </div>
+    </div>
   </div>
 
-  <div class = "col-md-10">
-    <p class = "col-md-12 date-posted">
-      <%= user_link(comment.user) %> said on <%= comment.created_at.to_formatted_s(:long) %>
-    </p>
-
-    <p class = "col-md-12 comment-body"><%= comment.body %></p>
-    <span class = "col-md-1">
-      <%= like_link(comment) %>
-    </span>
-    <span class = "col-md-8 col-md-offset-1"><%=like_sentence(comment)%></span>
-    <span class = "col-md-2">
-      <%= delete_comment_link(comment) %>
-    </span>
-  </div>
 </article> <!--comment-->

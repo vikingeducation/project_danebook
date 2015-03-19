@@ -31,59 +31,17 @@ body {
   border-radius: 2px;
 }
 
-#login-navbar {
-
-    background: linear-gradient(#4C67A1, #3B5998);
-    color: #fff;
-    border-bottom: 3px solid #559;
-    min-height: 96px;
-    padding-top: 20px;
-
-
-    .container-fluid {
-
-      .navbar-header {
-
-        a {
-
-          color: #fff;
-          font-size: 36px;
-          line-height: 48px;
-
-        }
-      }
-
-    }
-
-    // eg. hello form
-    .form-group {
-
-      padding: 10px 20px;
-
-    }
-}
-
-
-#login-main {
-  input, select, option {
-      margin-bottom: 8px;
-  }
-  li {
-    font-size: 18px;
-  }
-}
-
-/* END SIGNUP PAGE STUFF */
-
 section.container a {
   text-decoration: underline;
 }
 
-#profile-nav {
 
-  .nav-tabs {
-    border-bottom: 0;
-  }
+
+
+// THE NAV THAT IS UNDERNEATH THE HEADLINE
+// LINKS USER PAGES TOGETHER
+
+#profile-nav {
 
   background-color: #fff;
   border-bottom: 1px solid #d4d6d9;
@@ -91,12 +49,40 @@ section.container a {
   border-left: 1px solid #d4d6d9;
   border-radius: 0 0 4px 4px;
 
-  .col-sm-2 {
+
+  li.active {
     a {
-      text-decoration: underline;
+      background-color: #ccc;
+      margin-right: 0;
+    }
+  }
+
+  .nav-tabs {
+    border-bottom: 0;
+  }
+
+  .link-count {
+    color: #747679;
+  }
+
+  .edit-profile-link {
+    text-decoration: underline;
+  }
+}
+
+
+#profile-nav{
+
+  li.active {
+    a {
+      background-color: #ccc;
+      margin-right: 0;
     }
   }
 }
+
+
+
 
 #top-navbar {
   background: linear-gradient(#4C67A1, #3B5998);
@@ -182,23 +168,6 @@ section.container a {
 
 }
 
-#profile-nav{
-  border: 1px solid 444649;
-
-  .link-count {
-    color: #777;
-  }
-
-  li.active {
-    a {
-      background-color: #ccc;
-      margin-right: 0;
-    }
-  }
-}
-
-
-
 #recent-friends {
 
   border-right: 1px solid #d4d6d8;
@@ -281,7 +250,7 @@ section.container a {
 #post-form {
   text-align: center;
   border: 1px solid #c4c6c8;
-  border-radius: 6px;
+  border-radius: 3px;
   background-color: #e7e9ea;
   overflow: hidden;
 

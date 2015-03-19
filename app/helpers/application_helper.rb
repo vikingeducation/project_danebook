@@ -11,7 +11,7 @@ module ApplicationHelper
 
   def edit_profile_link(user)
     if current_user_page?(user) && !current_page?(edit_user_profile_url)
-      link_to "Edit Profile", edit_user_profile_path(current_user)
+      link_to "Edit Profile", edit_user_profile_path(current_user), class: "edit-profile-link"
     else
       "&nbsp;".html_safe
     end

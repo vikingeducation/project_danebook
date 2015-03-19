@@ -60,38 +60,41 @@ class User < ActiveRecord::Base
 
   before_create :generate_token
 
+
+  # Do we have a user who already matches the
+  # `provider` and `uid`?
+  # If so, return that user
+  # otherwise, build one if possible
   def self.from_omniauth(auth)
-    # Do we have a user who already matches the 
-    # `provider` and `uid`? 
-    # If so, return the first User from that
-    # If not, initialize a new user and pass along
-    # the attributes we got from the `auth` object
-
-    # logger.info "auth object is #{auth}"
-    where( :github_provider => auth.provider, :github_uid => auth.uid ).first_or_initialize.tap do |user|
-
-
-        user.build_profile(:gender => "Not Provided", :year => 1901, :month => 1, :day => 1)
-
-        user.github_provider = auth.provider
-        user.github_uid = auth.uid
-
-        names = auth.info.name.split
-        user.first_name, user.last_name = names[0], names[-1]
-
-        raise "Account needs email" unless auth.info.email.present?
-        user.email = auth.info.email
-
-        # set a randomized password that can never be used
-        # omniauth should be the only way in if this is an oauth acct
-        user.password = SecureRandom.random_number(36**12).to_s(36).rjust(22, "0")
-
-
-
-        user.github_token = auth.credentials.token
-        user.github_token_expires = (auth.credentials.expires)
-        user.save
+    if user = find_by( :github_provider => auth.provider, :github_uid => auth.uid )
+      return user
+    else
+      build_from_github(auth)
     end
+  end
+
+
+
+  # builds a new account for a Github user
+  # set a randomized password that can never be used
+  # fails to save if the user doesn't have an email
+  # omniauth should be the only way in if this is an oauth acct
+  def self.build_from_github(auth)
+    user = User.new(:github_provider => auth.provider,
+                    :github_uid => auth.uid,
+                    :first_name => auth.info.name.split[0],
+                    :last_name => auth.info.name.split[-1],
+                    :email => (auth.info.email if auth.info.email.present?),
+                    :password => SecureRandom.random_number(36**12).to_s(36).rjust(22, "0"),
+                    :github_token => auth.credentials.token,
+                    :github_token_expires => auth.credentials.expires )
+
+    user.build_profile( :gender => "Not Provided",
+                        :year => 1901,
+                        :month => 1,
+                        :day => 1 )
+
+    user.save && user.profile.save ? user : nil
   end
 
 
@@ -113,12 +116,12 @@ class User < ActiveRecord::Base
     return none if query.blank?
     queries = query.split
     if queries.size > 1
-      where("first_name LIKE ? OR first_name LIKE ? OR last_name LIKE ? OR last_name LIKE ?", "%#{queries[0]}%", 
+      where("first_name LIKE ? OR first_name LIKE ? OR last_name LIKE ? OR last_name LIKE ?", "%#{queries[0]}%",
                                      "%#{queries[0].capitalize}%",
                                      "%#{queries[1]}%",
                                      "%#{queries[1].capitalize}%" )
     else
-      where("first_name LIKE ? OR first_name LIKE ? OR last_name LIKE ? OR last_name LIKE ?", "%#{queries[0]}%", 
+      where("first_name LIKE ? OR first_name LIKE ? OR last_name LIKE ? OR last_name LIKE ?", "%#{queries[0]}%",
                                      "%#{queries[0].capitalize}%",
                                      "%#{queries[0]}%",
                                      "%#{queries[0].capitalize}%" )

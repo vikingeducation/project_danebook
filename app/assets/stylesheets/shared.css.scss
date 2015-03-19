@@ -7,27 +7,28 @@ body {
   background: linear-gradient(#4C67A1, #3B5998);
   color: white;
   font-weight: bold;
-  box-shadow: 3px 3px 3px black;
+  box-shadow: 2px 2px 2px #333;
   border: 1px solid #3B5998;
-  border-radius: 0;
+  border-radius: 2px;
 }
 
 
  .container .row .danebook-button-grey {
   background: #d4d6d9;
-  color: #555;
+  color: #646869;
   font-weight: bold;
-  box-shadow: 3px 3px 3px black;
+  box-shadow: 2px 2px 2px #444;
   border: 1px solid #646668;
-  border-radius: 0;
+  border-radius: 2px;
+  text-decoration: none;
 }
 
 
  .container .row .danebook-button-outlines {
   font-weight: bold;
-  box-shadow: 3px 3px 3px black;
+  box-shadow: 2px 2px 2px #444;
   border: 1px solid #646668;
-  border-radius: 0;
+  border-radius: 2px;
 }
 
 #login-navbar {
@@ -343,14 +344,15 @@ section.container a {
   font-weight: bold;
 }
 
-button.btn-unfriend {
-  background: #bbb;
-  color: black;
+.btn-unfriend {
+  background: #b4b6b9;
+  color: #666869;
   font-weight: bold;
   box-shadow: 3px 3px 3px black;
-  border: 1px solid black;
+  border: 1px solid #666869;
   border-radius: 0;
   width: 120px;
+
 }
 
 #friends-list {

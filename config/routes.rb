@@ -3,11 +3,11 @@ Rails.application.routes.draw do
 
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')
+  get '/newsfeed' => 'newsfeed#index'
 
   resources :users, except: [:edit] do
 
-    get '/newsfeed' => 'newsfeed#index'
-    resource :newsfeed, only: [:index]
+    # resource :newsfeed, only: [:index]
 
 
     get '/friend_requests' => 'friend_requests#index'

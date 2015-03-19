@@ -18,11 +18,8 @@
 <body>
 
 <%= render partial: "shared/navbar" %>
-<div class = "col-sm-12 flash-messages" %>
-  <% flash.each do |key, value| %>
-    <%= content_tag :div, value, class: "flash #{key}" %>
-  <% end %>
-</div>
+
+<%= render partial: "shared/flash", locals: { flash: flash } %>
 
 <div id="<%= controller_name + "-" + action_name %>"
                                  class = "container">

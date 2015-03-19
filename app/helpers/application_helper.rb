@@ -38,6 +38,21 @@ module ApplicationHelper
     datetime.to_date.inspect
   end
 
+
+
+  # returns the proper Twitter Bootstrap classes for various
+  # types of flash message
+  def flash_class(level)
+    case level.to_sym
+        when :notice then "alert alert-info"
+        when :info then "alert alert-info"
+        when :success then "alert alert-success"
+        when :error then "alert alert-error"
+        when :alert then "alert alert-error"
+    end
+  end
+
+
   # is this page the current_user's?
   def current_user_page?(user)
     user != nil && user == current_user
@@ -168,6 +183,7 @@ def comment_like_link(comment)
     link_to "Like", [comment.commentable.user, comment.commentable, comment, :likes], method: "post", class: "col-sm-1"
   end
 end
+
 
 
 

@@ -127,7 +127,7 @@ module ApplicationHelper
     end
     sentence << " liked this #{likable.class.to_s.downcase}."
 
-    sentence ? content_tag(:p, sentence.html_safe) : nil
+    sentence ? content_tag(:p, sentence.html_safe, class: "like-sentence") : nil
   end
 
 
@@ -159,10 +159,11 @@ def photo_like_link(photo)
 
   if current_user.likes_photo?(photo)
     like = current_user.like_of_photo(photo)
-    link_to "Unlike", [photo.user, photo, like], method: "delete", class: "col-sm-1"
+    link_to "Unlike", [photo.user, photo, like], method: "delete", class: "col-sm-1 photo-like-link"
   else
-    link_to "Like", [photo.user, photo, :likes], method: "post", class: "col-sm-1"
+    link_to "Like", [photo.user, photo, :likes], method: "post", class: "col-sm-1 photo-like-link"
   end
+
 end
 
 def post_like_link(post)
@@ -173,6 +174,7 @@ def post_like_link(post)
   else
     link_to "Like", [post.user, post, :likes], method: "post", class: "col-sm-1"
   end
+
 end
 
 def comment_like_link(comment)
@@ -182,6 +184,7 @@ def comment_like_link(comment)
   else
     link_to "Like", [comment.commentable.user, comment.commentable, comment, :likes], method: "post", class: "col-sm-1"
   end
+
 end
 
 

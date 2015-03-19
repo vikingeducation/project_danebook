@@ -1,15 +1,11 @@
-<div class = "col-sm-4">
+<div class = "col-sm-5">
 
   <%= render "shared/user_header" %>
 
-  <%= like_link(@photo) %>
-
-  <span class = "col-sm-5 col-sm-offset-1">
-    <%= like_sentence(@photo)%>
-  </span>
 
   <div class = "row">
-    <%= render partial: "shared/comments_section", locals: { parent: @photo } %>
+
+    <%= render partial: "photo_comments", locals: { photo: @photo } %>
   </div>
 
 </div>

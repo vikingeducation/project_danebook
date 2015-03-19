@@ -1,15 +1,15 @@
-<p>
-  <%= link_to "Set as Profile", user_path(@user,
-                                :profile_photo_id => @photo.id),
-                                method: "PUT" %>
-</p>
-<p>
-  <%= link_to "Set as Cover", user_path(@user,
-                                :cover_photo_id => @photo.id),
-                                method: "PUT" %>
-</p>
-<p>
-  <%= link_to "Delete Photo", user_photo_path(@user, @photo),
-                               method: "DELETE",
-                               data: {confirm: "Do you really want to delete this photo?"} %>
+<p class = "photo-settings">
+  <strong>
+    <%= link_to "Set as Profile", user_path(@user,
+                                  :profile_photo_id => @photo.id),
+                                  method: "PUT" %>
+
+    <%= link_to "Set as Cover", user_path(@user,
+                                  :cover_photo_id => @photo.id),
+                                  method: "PUT" %>
+
+    <%= link_to "Delete Photo", user_photo_path(@user, @photo),
+                                 method: "DELETE",
+                                 data: {confirm: "Do you really want to delete this photo?"} %>
+  </strong>
 </p>

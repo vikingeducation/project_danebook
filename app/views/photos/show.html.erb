@@ -5,11 +5,11 @@
     </div>
   </header>
 
-  <div class = "row">
+  <div class = "row" id = "photo-show-section">
     <div class = "col-sm-10 col-sm-offset-1">
       <div class = "row">
 
-        <div class = "col-sm-8">
+        <div class = "col-sm-7">
 
           <div class = "row">
             <div class = "col-sm-12">
@@ -22,6 +22,17 @@
               <%= render partial: "photo_settings" if @user == current_user %>
             </div>
           </div>
+
+          <div class = "row">
+            <div class = "col-sm-12">
+              <%= like_link(@photo) %>
+            </div>
+
+            <div class = "col-sm-12">
+              <%= like_sentence(@photo)%>
+            </div>
+          </div>
+
         </div>
 
         <%= render partial: "photo_info" %>

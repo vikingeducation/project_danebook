@@ -1,17 +1,17 @@
 <!--Individual user surrounded by border-->
-<div class="col-md-10 col-md-offset-1 search-result">
+<div class="col-sm-10 col-sm-offset-1 search-result">
   <div class="row">
-    <div class="col-md-3 col-xs-6">
+    <div class="col-sm-3 col-xs-6">
       <%= profile_photo(user) %>
     </div>
-    <div class="col-md-5 col-xs-6">
+    <div class="col-sm-5 col-xs-6">
       <p><%= link_to user.name, user_path(user) %></p>
       <p><%=user.friends.size %> Friends</p><br>
       <p>Currently lives in <%= user.profile.currently_lives %></p>
       <p>From <%= user.profile.hometown %></p>
       <p>Born on <%= user.profile.birthday %></p>
     </div>
-    <form class="col-md-4 col-xs-12">
+    <form class="col-sm-4 col-xs-12">
       <div class="form-group">
         <% if current_user.has_friend?(user) %>
           <em>You are already friends!</em></b>

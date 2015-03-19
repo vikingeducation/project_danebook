@@ -7,9 +7,9 @@
     </div>
 
 
-    <div class="col-md-12 hidden-xs hidden-sm" id="profile-image">
-      <div class = "col-md-2"><%= profile_photo(@user) %></div>
-      <div class = "user-headline col-md-6">
+    <div class="col-sm-12 hidden-xs hidden-sm" id="profile-image">
+      <div class = "col-sm-2"><%= profile_photo(@user) %></div>
+      <div class = "user-headline col-sm-6">
         <p class = "h2 name-header"><%=@user.name %></p>
         <%= friend_button(@user) %>
       </div>
@@ -18,7 +18,7 @@
 
   <!--mid-page navbar-->
   <div id = "profile-nav" class = "row">
-    <div class = "col-md-7 col-md-offset-3">
+    <div class = "col-sm-7 col-sm-offset-3">
       <ul class = "nav nav-tabs " role = "profile-nav">
         <li><%= link_to "Timeline", user_timeline_path(@user) %></li>
         <li><%= link_to "About", user_profile_path(@user) %></li>
@@ -26,7 +26,7 @@
         <li><%= link_to "Friends <span class='link-count hidden-xs'>(#{@user.friends.size})</span>".html_safe, user_friends_path %></li>
     </div>
 
-    <div class = "col-md-2">
+    <div class = "col-sm-2">
       <ul class = "nav">
         <li>
         <%= edit_profile_link(@user) %>

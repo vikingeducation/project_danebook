@@ -18,13 +18,13 @@
 <body>
 
 <%= render partial: "shared/login_navbar" %>
-<div class = "col-md-12 flash-messages" %>
+<div class = "col-sm-12 flash-messages" %>
   <% flash.each do |key, value| %>
     <%= content_tag :div, value, class: "flash #{key}" %>
   <% end %>
 </div>
 
-<div id="<%= controller_name + "-" + action_name %>" 
+<div id="<%= controller_name + "-" + action_name %>"
                                  class = "container">
   <%= yield %>
 </div>

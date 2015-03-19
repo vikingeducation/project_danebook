@@ -86,7 +86,7 @@ module ApplicationHelper
 
   def delete_comment_link(comment)
     if comment.user == current_user
-      link_to "Delete Comment", [comment.commentable.user, comment.commentable, comment], method: "delete", class: "col-md-1"
+      link_to "Delete Comment", [comment.commentable.user, comment.commentable, comment], method: "delete", class: "col-sm-1"
     end
   end
 
@@ -144,9 +144,9 @@ def photo_like_link(photo)
 
   if current_user.likes_photo?(photo)
     like = current_user.like_of_photo(photo)
-    link_to "Unlike", [photo.user, photo, like], method: "delete", class: "col-md-1"
+    link_to "Unlike", [photo.user, photo, like], method: "delete", class: "col-sm-1"
   else
-    link_to "Like", [photo.user, photo, :likes], method: "post", class: "col-md-1"
+    link_to "Like", [photo.user, photo, :likes], method: "post", class: "col-sm-1"
   end
 end
 
@@ -154,18 +154,18 @@ def post_like_link(post)
 
   if current_user.likes_post?(post)
     like = current_user.like_of_post(post)
-    link_to "Unlike", [post.user, post, like], method: "delete", class: "col-md-1"
+    link_to "Unlike", [post.user, post, like], method: "delete", class: "col-sm-1"
   else
-    link_to "Like", [post.user, post, :likes], method: "post", class: "col-md-1"
+    link_to "Like", [post.user, post, :likes], method: "post", class: "col-sm-1"
   end
 end
 
 def comment_like_link(comment)
   if current_user.likes_comment?(comment)
     like = current_user.like_of_comment(comment)
-    link_to "Unlike", [comment.commentable.user, comment.commentable, comment, like], method: "delete", class: "col-md-1"
+    link_to "Unlike", [comment.commentable.user, comment.commentable, comment, like], method: "delete", class: "col-sm-1"
   else
-    link_to "Like", [comment.commentable.user, comment.commentable, comment, :likes], method: "post", class: "col-md-1"
+    link_to "Like", [comment.commentable.user, comment.commentable, comment, :likes], method: "post", class: "col-sm-1"
   end
 end
 

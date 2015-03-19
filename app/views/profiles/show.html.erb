@@ -3,7 +3,7 @@
 <!-- This part changes page by page -->
   <section class="container" id="information-pane">
     <header class="row">
-      <div class="col-md-offset-2 col-md-8 about-header">
+      <div class="col-sm-offset-2 col-sm-8 about-header">
         <h2>About</h2>
       </div>
       <%= render "edit_profile_button" if @user == current_user %>
@@ -11,7 +11,7 @@
 
 
     <div class = "row">
-      <div class = "col-md-5 col-md-offset-1">
+      <div class = "col-sm-5 col-sm-offset-1">
         <h3>Basic Information</h3>
         <table class = "table about-table">
           <tr>
@@ -46,7 +46,7 @@
 
       </div>
 
-      <div class = "col-md-5">
+      <div class = "col-sm-5">
         <h3>Words to live by</h3>
         <p><%=@profile.words_to_live_by%></p>
         <h3>About me</h3>

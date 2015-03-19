@@ -90,7 +90,7 @@ section.container a {
   border-left: 1px solid #d4d6d9;
   border-radius: 0 0 4px 4px;
 
-  .col-md-2 {
+  .col-sm-2 {
     a {
       text-decoration: underline;
     }
@@ -371,11 +371,11 @@ button.btn-unfriend {
       border-radius: 6px;
     }
 
-    .col-md-5 {
+    .col-sm-5 {
       padding-top: 20px;
     }
 
-    .col-md-4 {
+    .col-sm-4 {
       padding-top: 30px;
     }
 
@@ -439,6 +439,11 @@ button.btn-unfriend {
   }
 }
 
+.photo-show-img {
+  border: 1px solid #a4a6a9;
+}
+
+
 #post-feed {
 
   margin-bottom: 30px;
@@ -451,7 +456,7 @@ button.btn-unfriend {
   & > article {
     border: 1px solid #c4c6c9;
     overflow: hidden;
-    border-radius: 6px;
+    border-radius: 3px;
     background-color: #fff;
     margin-top: 15px;
     padding-top: 15px;

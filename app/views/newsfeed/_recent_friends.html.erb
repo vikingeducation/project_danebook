@@ -1,12 +1,12 @@
-<div class = "col-md-3" id = "recent-friends">
+<div class = "col-sm-3" id = "recent-friends">
 
 <div class = "row">
 
-  <div class = "col-md-4">
+  <div class = "col-sm-4">
     <%= profile_photo(current_user) %>
   </div>
 
-  <div class = "col-md-8">
+  <div class = "col-sm-8">
 
     <p>
       <%=link_to current_user.name, user_path(current_user) %>
@@ -28,11 +28,11 @@
 
   <div class = "row recently-active-user">
 
-    <div class ="col-md-2">
+    <div class ="col-sm-2">
       <%= profile_photo(post.user) %>
     </div>
 
-    <div class="col-md-10">
+    <div class="col-sm-10">
       <p><%= link_to post.user.name, post.user %></p>
       <p class = "date-posted">Posted on <%= readable_date(post.created_at) %></p>
     </div>

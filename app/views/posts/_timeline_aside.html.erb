@@ -1,11 +1,11 @@
-<aside class = "col-md-4" id = "details">
+<aside class = "col-sm-4" id = "details">
   <section class = "row" id = "timeline-about">
-    <header class="col-md-12">
+    <header class="col-sm-12">
         <h4>About</h4>
     </header>
 
 
-    <table class = "table about-table col-md-12">
+    <table class = "table about-table col-sm-12">
       <tr>
         <td>Born on:</td>
         <td><%= @user.profile.birthday %></td>
@@ -26,7 +26,7 @@
   </section>
 
   <section class = "row" id= "timeline-photos">
-    <header class="col-md-12">
+    <header class="col-sm-12">
         <h4>Photos (<%= @user.photos.count %>)</h4>
     </header>
 
@@ -38,7 +38,7 @@
   </section><!--photos-->
 
   <section class = "row" id = "timeline-friends">
-    <header class="col-md-12">
+    <header class="col-sm-12">
         <h4>Friends: <%= @user.friends.count %></h4>
     </header>
 
@@ -48,7 +48,7 @@
       <%= render partial: "shared/friend_thumbnail", locals: {friend: friend} %>
     <% end %>
 
-  <div class="col-md-12">
+  <div class="col-sm-12">
     <%= link_to "See more friends", user_friends_path(@user) %>
   </div>
   </section>

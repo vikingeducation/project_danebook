@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
   root 'static_pages#home'
+  resources :users
+  resource :session
 
   get 'timeline' => 'static_pages#timeline'
   get 'friends' => 'static_pages#friends'

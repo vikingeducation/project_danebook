@@ -14,7 +14,7 @@ body {
 
 
  .container .row .danebook-button-grey {
-  background: #ccc;
+  background: #d4d6d9;
   color: #555;
   font-weight: bold;
   box-shadow: 3px 3px 3px black;
@@ -79,6 +79,17 @@ section.container a {
 }
 
 #profile-nav {
+
+  .nav-tabs {
+    border-bottom: 0;
+  }
+
+  background-color: #fff;
+  border-bottom: 1px solid #d4d6d9;
+  border-right: 1px solid #d4d6d9;
+  border-left: 1px solid #d4d6d9;
+  border-radius: 0 0 4px 4px;
+
   .col-md-2 {
     a {
       text-decoration: underline;
@@ -146,18 +157,28 @@ section.container a {
   bottom: 20px;
   left: 20px;
   img {
-    border: 1px solid #444649;
+    border: 1px solid #949699;
   }
   .user-headline {
     position: relative;
-    bottom: -50px;
+    bottom: -10px;
     left: 0px;
+
+    .name-header {
+      color: #fff;
+      text-shadow:
+       -1px -1px 0 #aaf,
+       1px -1px 0 #aaf,
+       -1px 1px 0 #aaf,
+       1px 1px 0 #aaf;
+    }
   }
 }
 
 #cover {
   position: relative;
   margin-top: -20px;
+
 }
 
 #profile-nav{
@@ -178,7 +199,16 @@ section.container a {
 
 
 #recent-friends {
-  border-right: 1px solid #d4d6d8
+
+  border-right: 1px solid #d4d6d8;
+
+  h4 {
+    margin-bottom: 25px;
+  }
+
+  .recently-active-user {
+    margin: 10px 0px;
+  }
 }
 
 
@@ -192,13 +222,14 @@ section.container a {
   border: 1px solid #555;
   margin: 20px auto 50px auto;
   padding-bottom: 50px;
-  border-radius: 8px;
+  border-radius: 6px;
+  overflow: hidden;
 
   header {
     text-align: center;
-    border: 1px solid #888;
-    border-radius: 6px 6px 0px 0px;
-    background-color: #ddd;
+    border-bottom: 1px solid #888;
+    margin-bottom: 30px;
+    background-color: #e4e6e9;
     z-index: 6;
 
     h2 {
@@ -235,7 +266,6 @@ section.container a {
 
 #timeline {
   margin-top: 15px;
-  // background-color: #fff;
 
   h5 {
     font-weight: bold;
@@ -344,7 +374,10 @@ button.btn-unfriend {
 
 #details {
   & > * {
-    border: 1px solid black;
+    border: 1px solid #949699;
+    border-radius: 6px;
+    overflow: hidden;
+    background-color: #fff;
   }
 
   .about-table {
@@ -359,8 +392,8 @@ button.btn-unfriend {
 
   header {
     text-align: center;
-    border-bottom: 1px solid black;
-    background-color: #ccc;
+    border-bottom: 1px solid #b4b6b9;
+    background-color: #f4f5f7;
   }
 }
 
@@ -374,6 +407,7 @@ button.btn-unfriend {
     img {
       width: 100px;
       height: 100px;
+      border: 1px solid #c4c6c9;
     }
   }
 }
@@ -389,6 +423,7 @@ button.btn-unfriend {
     img {
       width: 100px;
       height: 100px;
+      border: 1px solid #949699;
     }
   }
 }

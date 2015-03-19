@@ -55,7 +55,7 @@ module ApplicationHelper
     elsif current_user.friends_requested.include?(user)
       link_to "Cancel Request", user_friend_requests_path(user), method: "delete", class: "btn btn-lg danebook-button-grey"
     else
-      link_to "Send Friend Request", user_friend_requests_path(user), method: "post", class: "btn-lg danebook-button"
+      link_to "Send Friend Request", user_friend_requests_path(user), method: "post", class: "btn btn-lg danebook-button"
     end
   end
 

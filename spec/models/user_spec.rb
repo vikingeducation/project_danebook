@@ -4,33 +4,48 @@ describe User do
 
   let(:user) { FactoryGirl.build(:user) }
 
-  it 'is valid with first_name, last_name, email and password' do
-    expect(user).to be_valid
-  end
-  it 'is invalid without email' do
-    expect(FactoryGirl.build(:user, email: nil)).not_to be_valid
+  describe '.new' do
+
+    it 'is valid with first_name, last_name, email and password' do
+      expect(user).to be_valid
+    end
+    it 'is invalid without email' do
+      expect(FactoryGirl.build(:user, email: nil)).not_to be_valid
+    end
+
+    it 'is invalid with a non-unique email' do
+      FactoryGirl.create(:user, email: "blahblah@blah.com")
+      ripoff = FactoryGirl.build(:user, email: "blahblah@blah.com")
+      expect(ripoff).not_to be_valid
+    end
+
+    it 'is invalid without first_name' do
+      expect(FactoryGirl.build(:user, first_name: nil)).not_to be_valid
+    end
+
+    it 'is invalid without last_name' do
+      expect(FactoryGirl.build(:user, last_name: nil)).not_to be_valid
+    end
+
+    it 'is invalid without password' do
+      expect(FactoryGirl.build(:user, password: nil)).not_to be_valid
+    end
+
+    it 'is invalid if password length is greater than 24' do
+      expect(FactoryGirl.build(:user, password: "abcdefghijklmnopqrstuvwxy")).
+             not_to be_valid
+    end
+
+    it 'is invalid if password length is less than 8' do
+      expect(FactoryGirl.build(:user, password: "2short")).not_to be_valid
+    end
+
   end
 
-  it 'is invalid without first_name' do
-    expect(FactoryGirl.build(:user, first_name: nil)).not_to be_valid
+  describe '.search' do
+    it 'finds users with names matching the query'
   end
 
-  it 'is invalid without last_name' do
-    expect(FactoryGirl.build(:user, last_name: nil)).not_to be_valid
-  end
-
-  it 'is invalid without password' do
-    expect(FactoryGirl.build(:user, password: nil)).not_to be_valid
-  end
-
-  it 'is invalid if password length is greater than 24' do
-    expect(FactoryGirl.build(:user, password: "abcdefghijklmnopqrstuvwxy")).
-           not_to be_valid
-  end
-
-  it 'is invalid if password length is less than 8' do
-    expect(FactoryGirl.build(:user, password: "2short")).not_to be_valid
-  end
 
   describe '#name' do
     it 'returns first and last name as a string' do
@@ -39,7 +54,16 @@ describe User do
   end
 
   describe '#posts_chronologically' do
-    it 'returns a specific user\'s posts from newest to oldest'
+    it 'returns a specific user\'s posts from newest to oldest' do
+      #passing time does the trick here
+      user.save
+      oldest = FactoryGirl.create(:post, user_id: user.id )
+      middle = FactoryGirl.create(:post, user_id: user.id )
+      newest = FactoryGirl.create(:post, user_id: user.id )
+
+      expect(user.posts_chronologically).to eq([newest, middle, oldest])
+
+    end
   end
 
 
@@ -97,6 +121,18 @@ describe User do
     end
   end
 
+  describe '#has_friend?' do
+    let(:other_user) { FactoryGirl.create(:user) }
+
+    it 'returns true if a user has this friend' do
+      user.friends << other_user
+      expect(user.has_friend?(other_user)).to equal true
+    end
+
+    it 'returns true if a user does not have this friend' do
+      expect(user.has_friend?(other_user)).not_to equal true
+    end
+  end
 
 
 end

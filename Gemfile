@@ -24,14 +24,28 @@ gem 'delayed_job_active_record'
 gem 'letter_opener'
 
 gem 'pry-byebug'
+gem 'twitter-bootstrap-rails'
 
 group :test, :development do
   gem 'sqlite3'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
 end
 
-gem 'twitter-bootstrap-rails'
+
+
+group :test do
+  gem 'capybara'
+  gem 'database_cleaner'
+  gem 'launchy'
+  gem 'selenium-webdriver'
+end
+
+
+
+
 
 # Use sqlite3 as the database for Active Record
 
@@ -50,7 +64,7 @@ gem 'jquery-rails'
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
 #fix $(document).ready() for turbolinks
-gem 'jquery-turbolinks' 
+gem 'jquery-turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.

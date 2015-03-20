@@ -1,8 +1,9 @@
 class User < ActiveRecord::Base
 
+
   has_secure_password
 
-
+  validates_presence_of :first_name, :last_name, :email
   validates :password,
             :length => { in: 8..24 },
             allow_nil: true
@@ -23,6 +24,7 @@ class User < ActiveRecord::Base
 
 
 
+  LIKABLES = [:posts, :comments, :photos]
 
   has_many :liked_posts, through: :likes, source: :likable, source_type: "Post"
   has_many :liked_comments, through: :likes, source: :likable, source_type: "Comment"
@@ -155,6 +157,19 @@ class User < ActiveRecord::Base
   def posts_chronologically
     posts.order("created_at DESC")
   end
+
+
+  # master boolean for likables
+  # user.likes?(a_post_she_likes) => true
+  # user.likes?(a_comment_he_does_not_like) => false
+
+  def likes?(likable_object)
+    LIKABLES.any? do |likable_type|
+      self.send("liked_#{likable_type}").
+           include?(likable_object)
+    end
+  end
+
 
   # does this user like that post?
   def likes_post?(post)

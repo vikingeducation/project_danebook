@@ -10,4 +10,11 @@ class Post < ActiveRecord::Base
   validates_presence_of :body, :user
 
 
+
+  def self.newsfeed_for(user)
+    where("user_id IN (?)", user.friends.pluck(:id)).
+    order("created_at DESC").
+    limit(13)
+  end
+
 end

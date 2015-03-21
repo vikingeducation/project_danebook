@@ -66,11 +66,11 @@ module ApplicationHelper
     if user == current_user
       ""
     elsif current_user.has_friend?(user)
-      link_to "Unfriend User", user_friendings_path(user), method: "delete", class: "btn btn-lg danebook-button-grey form-control"
+      link_to "Unfriend User", user_friendings_path(user), method: "delete", class: "btn btn-warning form-control"
     elsif current_user.friends_requested.include?(user)
-      link_to "Cancel Request", user_friend_requests_path(user), method: "delete", class: "btn btn-lg danebook-button-grey form-control"
+      link_to "Cancel Request", user_friend_requests_path(user), method: "delete", class: "btn btn-info form-control"
     else
-      link_to "Send Friend Request", user_friend_requests_path(user), method: "post", class: "btn btn-lg danebook-button form-control"
+      link_to "Send Friend Request", user_friend_requests_path(user), method: "post", class: "btn btn-primary form-control"
     end
   end
 
@@ -91,18 +91,6 @@ module ApplicationHelper
                       class: "#{likable.class.name}-like-link"
     end
 
-  end
-
-  # same thing but in button form
-  def like_button(likable, parent = nil)
-    return "" unless likable.respond_to?(:likes)
-    like_object = current_user.like_of(likable)
-
-    if like_object
-      link_to "Unlike", [parent, likable, like_object], method: "DELETE"
-    else
-      link_to "Like", [parent, likable, :likes], method: "POST"
-    end
   end
 
   def delete_comment_link(comment)

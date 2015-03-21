@@ -174,14 +174,8 @@ class User < ActiveRecord::Base
 
   # limit is only till we have pagination or infinite scroll
   def newsfeed
-    Post.where("user_id IN (?)", self.friends.pluck(:id)).
-    order("created_at DESC").
-    limit(13)
+    Post.newsfeed_for(self)
   end
-
-
-
-
 
 
   # given a Likable(post/comment/photo), returns this user's Like of that

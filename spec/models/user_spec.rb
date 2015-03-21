@@ -100,8 +100,7 @@ describe User do
       end
 
       it "returns false if the user has not liked this comment" do
-        comment = FactoryGirl.build(:comment)
-        expect(user.likes?(comment)).to equal false
+        expect(user.likes?(FactoryGirl.build(:comment))).to equal false
       end
 
       it "returns false if the user has unliked this comment" do
@@ -115,9 +114,23 @@ describe User do
     end
 
     context 'if the parameter is a photo' do
-      it "returns true if the user has liked this photo"
-      it "returns false if the user has not liked this photo"
-      it "returns false if the user has unliked this photo"
+      it "returns true if the user has liked this photo" do
+        photo = FactoryGirl.build(:photo)
+        user.liked_photos << photo
+        expect(user.likes?(photo)).to equal true
+      end
+
+      it "returns false if the user has not liked this photo" do
+        expect(user.likes?(FactoryGirl.build(:photo))).to equal false
+      end
+
+      it "returns false if the user has unliked this photo" do
+        user.save
+        photo = FactoryGirl.create(:photo)
+        user.liked_photos << photo
+        user.liked_photos.destroy(photo)
+        expect(user.likes?(photo)).to equal false
+      end
     end
   end
 

@@ -16,11 +16,11 @@ describe Photo do
     expect(FactoryGirl.build(:photo, user_id: nil)).not_to be_valid
   end
 
-  it 'allows jpegs' do
+  it 'allows JPEGS' do
     expect(FactoryGirl.build(:photo, image_content_type: "image/jpeg")).to be_valid
   end
 
-  it 'allows gifs' do
+  it 'allows GIFs' do
     expect(FactoryGirl.build(:photo, image_content_type: "image/gif")).to be_valid
   end
 
@@ -37,6 +37,11 @@ describe Photo do
   end
 
 
+  describe '#url' do
+    it 'returns the S3 url of the image' do
+      expect(photo).to respond_to(:url)
+    end
+  end
 
 
 end

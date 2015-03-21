@@ -4,6 +4,9 @@ describe User do
 
   let(:user) { FactoryGirl.build(:user) }
 
+
+
+
   describe '.new' do
 
     it 'is valid with first_name, last_name, email and password' do
@@ -42,9 +45,49 @@ describe User do
 
   end
 
+
+
+
   describe '.search' do
-    it 'finds users with names matching the query'
+    let!(:george){ FactoryGirl.create(:user, first_name: "George", last_name: "Costanza")}
+
+    it 'finds users with first names matching the query' do
+      expect(User.search("George")).to include(george)
+    end
+
+    it 'is not case sensitive' do
+      expect(User.search("george")).to include(george)
+    end
+
+    it 'finds users with last names matching the query' do
+      expect(User.search("costanza")).to include(george)
+    end
+
+    it 'finds a user by first name and last name' do
+      expect(User.search("george costanza")).to include(george)
+    end
+
+    it 'finds a user by partial first name' do
+      expect(User.search("geo")).to include(george)
+    end
+
+    it 'finds a user by partial last name' do
+      expect(User.search("cost")).to include(george)
+    end
+
+    it 'finds a user by partial first and last name' do
+      expect(User.search("rge ostanz")).to include(george)
+    end
+
+    it 'does not find a user if their name is not in the query' do
+      george.destroy
+      expect(User.search("George")).not_to include(george)
+    end
+
   end
+
+
+
 
 
   describe '#name' do
@@ -52,6 +95,9 @@ describe User do
       expect(user.name).to eq("#{user.first_name} #{user.last_name}")
     end
   end
+
+
+
 
   describe '#posts_chronologically' do
     it 'returns a specific user\'s posts from newest to oldest' do
@@ -65,6 +111,8 @@ describe User do
 
     end
   end
+
+
 
 
   describe 'likes?' do
@@ -91,6 +139,7 @@ describe User do
       end
     end
 
+
     context 'if the parameter is a comment' do
 
       it "returns true if the user has liked this comment" do
@@ -113,6 +162,7 @@ describe User do
 
     end
 
+
     context 'if the parameter is a photo' do
       it "returns true if the user has liked this photo" do
         photo = FactoryGirl.build(:photo)
@@ -133,6 +183,8 @@ describe User do
       end
     end
   end
+
+
 
   describe '#has_friend?' do
     let(:other_user) { FactoryGirl.create(:user) }

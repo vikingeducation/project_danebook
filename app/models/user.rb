@@ -24,7 +24,8 @@ class User < ActiveRecord::Base
 
 
 
-  LIKABLES = [:posts, :comments, :photos]
+
+
 
   has_many :liked_posts, through: :likes, source: :likable, source_type: "Post"
   has_many :liked_comments, through: :likes, source: :likable, source_type: "Comment"
@@ -164,9 +165,8 @@ class User < ActiveRecord::Base
   # user.likes?(a_comment_he_does_not_like) => false
 
   def likes?(likable_object)
-    LIKABLES.any? do |likable_type|
-      self.send("liked_#{likable_type}").
-           include?(likable_object)
+    Like::LIKABLES.any? do |likable_type|
+      self.send( "liked_#{ likable_type }" ).include?( likable_object )
     end
   end
 

@@ -66,31 +66,37 @@ module ApplicationHelper
     if user == current_user
       ""
     elsif current_user.has_friend?(user)
-      link_to "Unfriend User", user_friendings_path(user), method: "delete", class: "btn btn-lg danebook-button-grey"
+      link_to "Unfriend User", user_friendings_path(user), method: "delete", class: "btn btn-lg danebook-button-grey form-control"
     elsif current_user.friends_requested.include?(user)
-      link_to "Cancel Request", user_friend_requests_path(user), method: "delete", class: "btn btn-lg danebook-button-grey"
+      link_to "Cancel Request", user_friend_requests_path(user), method: "delete", class: "btn btn-lg danebook-button-grey form-control"
     else
-      link_to "Send Friend Request", user_friend_requests_path(user), method: "post", class: "btn btn-lg danebook-button"
+      link_to "Send Friend Request", user_friend_requests_path(user), method: "post", class: "btn btn-lg danebook-button form-control"
     end
   end
 
-  #TODO: remove all of these in refactor
-  def like_link(likable)
-    if likable.is_a? Comment
-      comment_like_link(likable)
-    elsif likable.is_a? Post
-      post_like_link(likable)
-    elsif likable.is_a? Photo
-      photo_like_link(likable)
+
+  # COMPLETELY POLYMORPHIC link for liking things
+  def like_link(likable, parent = nil)
+
+    # check if this is a thing that can have likes
+    return "" unless likable.respond_to?(:likes)
+
+    existing_like = current_user.like_of(likable)
+
+    if existing_like
+      link_to "Unlike", unlike_url(likable, existing_like), method: "delete",
+                        class: "#{likable.class.name}-like-link"
     else
-      ""
+      link_to "Like", like_url(likable), method: "post",
+                      class: "#{likable.class.name}-like-link"
     end
 
   end
 
-
+  # same thing but in button form
   def like_button(likable, parent = nil)
-    like_object = likable.likes.find_by_liker_id(current_user.id)
+    return "" unless likable.respond_to?(:likes)
+    like_object = current_user.like_of(likable)
 
     if like_object
       link_to "Unlike", [parent, likable, like_object], method: "DELETE"
@@ -150,43 +156,23 @@ module ApplicationHelper
     end
   end
 
-private
+  private
 
-
-
-
-def photo_like_link(photo)
-
-  if current_user.likes_photo?(photo)
-    like = current_user.like_of_photo(photo)
-    link_to "Unlike", [photo.user, photo, like], method: "delete", class: "col-sm-1 photo-like-link"
-  else
-    link_to "Like", [photo.user, photo, :likes], method: "post", class: "col-sm-1 photo-like-link"
+  def like_url(likable)
+    if likable.is_a? Comment
+      url_for([likable.commentable.user, likable.commentable, likable, :likes])
+    else
+      url_for([likable.user, likable, :likes])
+    end
   end
 
-end
-
-def post_like_link(post)
-
-  if current_user.likes_post?(post)
-    like = current_user.like_of_post(post)
-    link_to "Unlike", [post.user, post, like], method: "delete", class: "col-sm-1"
-  else
-    link_to "Like", [post.user, post, :likes], method: "post", class: "col-sm-1"
+  def unlike_url(likable, like)
+    if likable.is_a? Comment
+      url_for([likable.commentable.user, likable.commentable, likable, like])
+    else
+      url_for([likable.user, likable, like])
+    end
   end
-
-end
-
-def comment_like_link(comment)
-  if current_user.likes_comment?(comment)
-    like = current_user.like_of_comment(comment)
-    link_to "Unlike", [comment.commentable.user, comment.commentable, comment, like], method: "delete", class: "col-sm-1"
-  else
-    link_to "Like", [comment.commentable.user, comment.commentable, comment, :likes], method: "post", class: "col-sm-1"
-  end
-
-end
-
 
 
 

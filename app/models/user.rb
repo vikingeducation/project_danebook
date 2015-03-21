@@ -171,37 +171,24 @@ class User < ActiveRecord::Base
   end
 
 
-  # does this user like that post?
-  def likes_post?(post)
-    liked_posts.include?(post)
+
+  # limit is only till we have pagination or infinite scroll
+  def newsfeed
+    Post.where("user_id IN (?)", self.friends.pluck(:id)).
+    order("created_at DESC").
+    limit(13)
   end
 
-  # does this user like that comment?
-  def likes_comment?(comment)
-    liked_comments.include?(comment)
-  end
 
-  # does this user like that photo?
-  def likes_photo?(photo)
-    liked_photos.include?(photo)
-  end
 
-  # given a comment, returns this user's Like of that comment from
-  # the Likes table. If this user doesn't like that comment, returns nil
-  def like_of_comment(comment)
-    likes_comment?(comment) ? likes.find_by(:likable_id => comment.id, :likable_type => "Comment") : nil
-  end
 
-  # given a comment, returns this user's Like of that comment from
-  # the Likes table. If this user doesn't like that comment, returns nil
-  def like_of_photo(photo)
-    likes_photo?(photo) ? likes.find_by(:likable_id => photo.id, :likable_type => "Photo") : nil
-  end
 
-  # given a post, returns this user's Like of that post from the Likes table.
-  # If this user doesn't like that post, returns nil
-  def like_of_post(post)
-    likes_post?(post) ? likes.find_by(:likable_id => post.id, :likable_type => "Post") : nil
-  end
 
+  # given a Likable(post/comment/photo), returns this user's Like of that
+  # comment from the Likes table. If this user doesn't like that comment,
+  # returns nil
+
+  def like_of(likable)
+    likes?(likable) ? likes.find_by(:likable_id => likable.id, :likable_type => likable.class.name) : nil
+  end
 end

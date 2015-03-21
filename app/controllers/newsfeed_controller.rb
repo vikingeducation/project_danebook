@@ -4,6 +4,6 @@ class NewsfeedController < ApplicationController
   def index
     @user = current_user
     @post = current_user.posts.new
-    @posts = Post.newsfeed(current_user)
+    @posts = current_user.newsfeed
   end
 end

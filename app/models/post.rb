@@ -7,11 +7,7 @@ class Post < ActiveRecord::Base
   has_many :comments, as: :commentable
   has_many :users_who_commented, through: :comments, source: :user
 
-  validates_presence_of :body
+  validates_presence_of :body, :user
 
-  # limit is only till we have pagination or infinite scroll
-  def self.newsfeed(user)
-    where("user_id IN (?)", user.friends.pluck(:id)).
-    order("created_at DESC").limit(13)
-  end
+
 end

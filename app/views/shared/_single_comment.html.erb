@@ -15,7 +15,7 @@
         <p class = "col-sm-12 comment-body"><%= comment.body %></p>
 
         <span class = "col-sm-1">
-          <%= like_link(comment) %>
+          <%= like_link(comment, comment.commentable) %>
         </span>
 
         <span class = "col-sm-6 col-sm-offset-1">

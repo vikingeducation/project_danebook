@@ -22,7 +22,8 @@
         </div>
       </form>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Harry</a></li>
+        <li><%= link_to "Homepage", user_path(current_user.id) %></li>
+        <li><%= link_to "Logout", logout_path, :method => :delete %>
       </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :users
   resources :profile
   resource :session
+  delete "logout" => "sessions#destroy"
 
   get 'timeline' => 'static_pages#timeline'
   get 'friends' => 'static_pages#friends'

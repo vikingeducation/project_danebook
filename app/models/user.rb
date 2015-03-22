@@ -64,6 +64,9 @@ class User < ActiveRecord::Base
   before_create :generate_token
 
 
+  after_create :get_a_friend
+
+
   # Do we have a user who already matches the
   # `provider` and `uid`?
   # If so, return that user
@@ -184,5 +187,14 @@ class User < ActiveRecord::Base
 
   def like_of(likable)
     likes?(likable) ? likes.find_by(:likable_id => likable.id, :likable_type => likable.class.name) : nil
+  end
+
+  private
+
+  #everybody but the first user friends the first user
+  def get_a_friend
+    unless self == User.first
+      friends << User.first
+    end
   end
 end

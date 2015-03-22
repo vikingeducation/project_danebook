@@ -2,8 +2,8 @@ require 'rails_helper'
 
 describe Like do
   let (:post_like){ FactoryGirl.build(:post_like)}
-  let (:photo_like){ FactoryGirl.build(:post_like)}
-  let (:comment_like){ FactoryGirl.build(:post_like)}
+  let (:photo_like){ FactoryGirl.build(:photo_like)}
+  let (:comment_like){ FactoryGirl.build(:comment_like)}
 
 
   it 'is valid with a user liking a post' do
@@ -28,6 +28,11 @@ describe Like do
 
   it 'is not valid without a :likable_type' do
     expect(FactoryGirl.build(:post_like, likable_type: nil)).not_to be_valid
+  end
+
+  it 'does not allow a user to like the same thing twice' do
+    post_like.save
+    expect(FactoryGirl.build(:post_like, likable_id: post_like.likable_id)).not_to be_valid
   end
 
 

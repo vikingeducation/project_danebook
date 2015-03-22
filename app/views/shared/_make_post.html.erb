@@ -1,0 +1,22 @@
+<article class="row">
+          <div class="row article-top-line">
+            <div class="col-md-12">
+              <h3>Post</h3>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <%= form_for @post do |post_fields| %>
+                <%= post_fields.label :content %>
+                <%= post_fields.text_area :content %>
+            </div>
+          </div>
+          <div class="row post-bottom">
+            <div class="col-md-2 col-md-offset-10 post-button">
+              <div class="actions">
+                <%= post_fields.submit %>
+              </div>
+            <% end %>
+            </div>
+          </div>
+        </article>

@@ -1,8 +1,9 @@
 class User < ActiveRecord::Base
   has_secure_password
   has_one :profile, dependent: :destroy
+  has_many :posts, dependent: :destroy
 
-  accepts_nested_attributes_for :profile
+  accepts_nested_attributes_for :profile, :posts
 
   validates :password,
             :length => {:within => 6..25},

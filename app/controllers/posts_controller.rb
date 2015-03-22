@@ -1,15 +1,11 @@
-class UsersController < ApplicationController
+class PostsController < ApplicationController
   before_action :require_current_user, :only => [:edit, :update, :destroy]
   before_action :set_user, :only => [:destroy, :edit, :update, :show ]
 
   def index
     @users = User.all
-    @new_user = User.new
-    @new_profile = @new_user.build_profile
     if @user && @user.authenticate(params[:password])
       sign_in(@user)
-      flash[:success] = "Signed in successfully!"
-      redirect_to friends_path # schwadtidy when architecture built
     else
       flash.now[:error] = "Please sign up or sign in"
       render :index
@@ -21,7 +17,9 @@ class UsersController < ApplicationController
   end
 
   def new
-    @user = User.new
+    @user = current_user
+    @new_post = @user.build_post
+    jfkdl;sa
   end
 
   def edit
@@ -34,7 +32,7 @@ class UsersController < ApplicationController
     if @user.save    
       sign_in(@user)
       flash[:success] = "created new user!"
-      redirect_to @user
+      redirect_to profiles_path(current_user.id)
     else
       flash.now[:error] = "There was an error"
       redirect_to profiles_path(current_user.id)
@@ -86,6 +84,3 @@ class UsersController < ApplicationController
                 :user_id ] } )
   end
 end
-
-
-

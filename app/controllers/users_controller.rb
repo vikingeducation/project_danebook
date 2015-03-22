@@ -4,6 +4,16 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+    @new_user = User.new
+    @new_profile = @new_user.build_profile
+    if @user && @user.authenticate(params[:password])
+      sign_in(@user)
+      flash[:success] = "Signed in successfully!"
+      redirect_to friends_path # schwadtidy when architecture built
+    else
+      flash.now[:error] = "Please sign up or sign in"
+      render :index
+    end
   end
 
   def show
@@ -18,7 +28,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if @user.save
+    if @user.save    
       sign_in(@user)
       flash[:success] = "created new user!"
       redirect_to @user
@@ -58,14 +68,14 @@ class UsersController < ApplicationController
   def user_params
     params.
       require(:user).
-      permit(:username,
-             :email,
+      permit(:email,
              :password,
-             :password_confirmation
-             )
+             :password_confirmation,
+             { :profile_attributes => [
+              :user_id,
+              :birthday] } )
   end
 end
 
 
 
-end

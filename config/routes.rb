@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
-  root 'static_pages#home'
+  root 'users#index'
   resources :users
+  resources :profile
   resource :session
 
   get 'timeline' => 'static_pages#timeline'

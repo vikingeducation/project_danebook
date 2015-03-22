@@ -1,5 +1,11 @@
 <div id="home">
-  <%= render "logged_out_navbar" %>
+  <% if signed_in_user? %>
+    <%= render "logged_in_navbar" %>
+  <% else %>
+    <%= render "logged_out_navbar" %>  
+  <% end %>
+
+
 
   <main class="container">
     <div class="row">
@@ -13,12 +19,8 @@
         </ul>
       </div>
 
-      <div class="sign-up-form col-sm-5">
-        <div class="row">
-          <div class="col-md-12">
-            <h1>Sign up</h1>
-          </div>
-        </div>
+
+      <%= render :new %>
         <form>
           <div class="row">
             <div class="col-md-6" id="first-name">

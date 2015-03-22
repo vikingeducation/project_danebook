@@ -1,0 +1,99 @@
+<div class="static-pages">
+  <%= render "/shared/header" %>
+  <main id="about" class="container">
+    <div class="row section-banner">
+      <div class="col-md-2 col-md-offset-5 section-header">
+        <h1>About</h1>
+      </div>
+      <div class="col-md-2 col-md-offset-3 edit-button">
+        <a href="about_edit.html">
+          <%= link_to "Edit Profile", edit_user_path, :class => 'btn btn-default' %>
+        </a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 col-md-offset-1">
+        <div class="row">
+          <div class="col-md-12">
+            <h3>Basic Information</h3>
+          </div>
+        </div>
+        <div class="row extra-line-height">
+          <div class="col-xs-4">
+            <strong>Birthday:</strong>
+          </div>
+          <div class="col-xs-8">
+           <%= current_user.profile.birthday %>
+          </div>
+        </div>
+        <div class="row extra-line-height">
+          <div class="col-xs-4">
+            <strong>College:</strong>
+          </div>
+          <div class="col-xs-8">
+            <%= current_user.profile.college %>
+          </div>
+        </div>
+        <div class="row extra-line-height">
+          <div class="col-xs-4">
+            <strong>Hometown:</strong>
+          </div>
+          <div class="col-xs-8">
+            <%= current_user.profile.hometown %>
+          </div>
+        </div>
+        <div class="row extra-line-height">
+          <div class="col-xs-4">
+            <strong>Currently lives:</strong>
+          </div>
+          <div class="col-xs-8">
+            <%= current_user.profile.currenttown %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12">
+            <h3>Contact Information</h3>
+          </div>
+        </div>
+        <div class="row extra-line-height">
+          <div class="col-xs-4">
+            <strong>Email:</strong>
+          </div>
+          <div class="col-xs-8">
+            <%= current_user.email %>
+          </div>
+        </div>
+        <div class="row extra-line-height">
+          <div class="col-xs-4">
+            <strong>Telephone:</strong>
+          </div>
+          <div class="col-xs-8">
+            <%= current_user.profile.telephone %>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-5 col-md-offset-1">
+        <div class="row">
+          <div class="col-md-12">
+            <h3>Words to live by</h3>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <p><%= current_user.profile.words %></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <h3>About Me</h3>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <p><%= current_user.profile.aboutme %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

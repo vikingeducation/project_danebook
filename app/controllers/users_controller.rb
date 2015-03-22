@@ -24,6 +24,7 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = current_user
   end
 
   def create
@@ -39,14 +40,12 @@ class UsersController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @user.update(user_params)
-        flash[:success] = "Successfully updated"
-        redirect_to @user
-      else
-        flash.now[:failure] = "failed to update"
-        render :edit
-      end
+    if @user.update(user_params)
+      flash[:success] = "Successfully updated"
+      redirect_to @user
+    else
+      flash.now[:failure] = "failed to update"
+      render :edit
     end
   end
 
@@ -73,6 +72,12 @@ class UsersController < ApplicationController
              :password_confirmation,
              { :profile_attributes => [
               :user_id,
+              :hometown,
+              :college,
+              :currenttown,
+              :words,
+              :aboutme,
+              :telephone,
               :birthday] } )
   end
 end

@@ -7,7 +7,13 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
+<div id="home">  
+<% if signed_in_user? %>
+    <%= render "/shared/logged_in_navbar" %>
+  <% else %>
+    <%= render "/shared/logged_out_navbar" %>  
+  <% end %>
+</div>
 <%= yield %>
 
 </body>

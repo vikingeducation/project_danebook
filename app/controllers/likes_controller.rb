@@ -6,6 +6,12 @@ class LikesController < ApplicationController
       :post_id => @post_id,
       :user_id => @user_id
       )
+    redirect_to profile_path(@user_id)
+  end
+
+  def destroy
+    @like = Like.find(params[:id].to_i)
+    @like.destroy
     redirect_to profile_path(current_user.id)
   end
 end

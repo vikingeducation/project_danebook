@@ -13,8 +13,9 @@ class ProfilesController < ApplicationController
   end
 
   def show
-    @user = current_user
+    @user = User.find(params[:id].to_i)
     @post = Post.create
+    @comment = Comment.create
     # @post = Post.create(:user_id => @user.id)
     # @post.save
   end
@@ -63,6 +64,13 @@ class ProfilesController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def likes_array
+    like_array = []
+    post.likes.each do |like|
+      like_array << like.user_id
+    end
   end
 
   def user_params

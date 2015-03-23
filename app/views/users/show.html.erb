@@ -23,7 +23,7 @@
             <strong>Birthday:</strong>
           </div>
           <div class="col-xs-8">
-           <%= current_user.profile.birthday %>
+           <%= @user.profile.birthday %>
           </div>
         </div>
         <div class="row extra-line-height">
@@ -31,7 +31,7 @@
             <strong>College:</strong>
           </div>
           <div class="col-xs-8">
-            <%= current_user.profile.college %>
+            <%= @user.profile.college %>
           </div>
         </div>
         <div class="row extra-line-height">
@@ -39,7 +39,7 @@
             <strong>Hometown:</strong>
           </div>
           <div class="col-xs-8">
-            <%= current_user.profile.hometown %>
+            <%= @user.profile.hometown %>
           </div>
         </div>
         <div class="row extra-line-height">
@@ -47,7 +47,7 @@
             <strong>Currently lives:</strong>
           </div>
           <div class="col-xs-8">
-            <%= current_user.profile.currenttown %>
+            <%= @user.profile.currenttown %>
           </div>
         </div>
         <div class="row">
@@ -60,7 +60,7 @@
             <strong>Email:</strong>
           </div>
           <div class="col-xs-8">
-            <%= current_user.email %>
+            <%= @user.email %>
           </div>
         </div>
         <div class="row extra-line-height">
@@ -68,7 +68,7 @@
             <strong>Telephone:</strong>
           </div>
           <div class="col-xs-8">
-            <%= current_user.profile.telephone %>
+            <%= @user.profile.telephone %>
           </div>
         </div>
       </div>
@@ -80,7 +80,7 @@
         </div>
         <div class="row">
           <div class="col-md-12">
-            <p><%= current_user.profile.words %></p>
+            <p><%= @user.profile.words %></p>
           </div>
         </div>
         <div class="row">
@@ -90,7 +90,7 @@
         </div>
         <div class="row">
           <div class="col-md-12">
-            <p><%= current_user.profile.aboutme %></p>
+            <p><%= @user.profile.aboutme %></p>
           </div>
         </div>
       </div>

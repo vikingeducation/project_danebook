@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    @current_user = @user
   end
 
   helper_method :current_user
@@ -35,6 +35,7 @@ class ApplicationController < ActionController::Base
 
   def require_current_user
 
+    current_user = User.find(params[:id].to_i)
     #most hacking here due to not nesting. 
     post_ids = []
     current_user.posts.each do |post|
@@ -59,4 +60,11 @@ class ApplicationController < ActionController::Base
       )
   end
 
+  def comment_it
+    Comment.create(
+      :content => params["comment"]["content"],
+      # :user_id => current_user.id,
+      :post_id => post.id
+      )
+  end
 end

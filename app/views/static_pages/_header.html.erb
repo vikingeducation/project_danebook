@@ -3,7 +3,7 @@
     <div id="photos-panel" class="container">
       <%= image_tag 'hogwarts_small.jpg', alt: 'User Cover Photo', id: "cover-photo" %>
       <%= image_tag 'harry_potter_small.jpg', alt: 'User Profile Photo', height: '200px', id: 'profile-photo' %>
-      <a id="user-name">Harry Potter</a>
+      <a id="user-name"><%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %></a>
       <!-- Row with page names -->
       <ul class="nav nav-tabs">
         <li role="presentation" class="col-md-offset-2 active">

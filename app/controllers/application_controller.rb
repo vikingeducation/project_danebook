@@ -34,10 +34,18 @@ class ApplicationController < ActionController::Base
   end
 
   def require_current_user
+
+    #most hacking here due to not nesting. 
+    post_ids = []
+    current_user.posts.each do |post|
+      post_ids << post.id.to_i
+    end
+
     unless current_user && params[:id] == current_user.id.to_s
       if params["post"]
         # post_it
-      else       
+      elsif post_ids.include? params[:id].to_i  
+      else    
       flash[:error] = "You're not authorized to access this page"
       redirect_to root_url
       end

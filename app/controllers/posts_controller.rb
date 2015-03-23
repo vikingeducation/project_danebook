@@ -50,18 +50,15 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @user.destroy
-    sign_out
-    respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    @post = Post.find(params[:id].to_i)
+    @post.destroy
+    redirect_to profile_path(current_user.id)
   end
 
   private
 
   def set_user
-    @user = User.find(params[:id])
+    @user = current_user
   end
 
   def post_params

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :profiles
   resources :posts
   resource :session
+  resources :likes
   delete "logout" => "sessions#destroy"
 
   # The priority is based upon order of creation: first created -> highest priority.

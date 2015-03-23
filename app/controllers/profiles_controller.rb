@@ -14,8 +14,9 @@ class ProfilesController < ApplicationController
 
   def show
     @user = current_user
-    @post = Post.create(:user_id => @user.id)
-    @post.save
+    @post = Post.create
+    # @post = Post.create(:user_id => @user.id)
+    # @post.save
   end
 
   def new

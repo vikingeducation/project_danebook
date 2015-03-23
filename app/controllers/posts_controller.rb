@@ -3,6 +3,7 @@ class PostsController < ApplicationController
   before_action :set_user, :only => [:destroy, :edit, :update, :show ]
 
   def index
+
     @users = User.all
     if @user && @user.authenticate(params[:password])
       sign_in(@user)
@@ -13,13 +14,11 @@ class PostsController < ApplicationController
   end
 
   def show
-
   end
 
   def new
     @user = current_user
     @new_post = @user.build_post
-    jfkdl;sa
   end
 
   def edit
@@ -40,13 +39,14 @@ class PostsController < ApplicationController
   end
 
   def update
-    if @user.update(user_params)
+    @user = current_user
+    if post_it
       flash[:success] = "Successfully updated"
-      redirect_to @user
     else
       flash.now[:failure] = "failed to update"
       render :edit
-    end
+    end    
+    redirect_to profile_path(current_user.id)
   end
 
   def destroy
@@ -64,23 +64,10 @@ class PostsController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  def user_params
+  def post_params
     params.
-      require(:user).
-      permit(:email,
-             :password,
-             :password_confirmation,
-             { :profile_attributes => [
-              :user_id,
-              :hometown,
-              :college,
-              :currenttown,
-              :words,
-              :aboutme,
-              :telephone,
-              :birthday] },
-              { :posts_attributes => [
-                :content,
-                :user_id ] } )
+      require(:post).
+      permit(:content,
+             :user_id )
   end
 end

@@ -60,7 +60,7 @@ describe PostsController do
 
           get :index, :user_id => user.id
 
-          expect(assigns(:friends)).to eq posts.reverse
+          expect(assigns(:friends).sort).to eq friends.sort
         end
       end
     end

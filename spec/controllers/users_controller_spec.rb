@@ -34,9 +34,9 @@ describe UsersController do
 
   context 'user logged in' do
     before(:each) do
+      #sneaky way to log in a user
       @current_user = FactoryGirl.create(:user)
       cookies[:auth_token] = @current_user.auth_token
-      controller.current_user
     end
 
     describe 'GET #new' do

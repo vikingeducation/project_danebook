@@ -39,7 +39,6 @@ describe PostsController do
     before(:each) do
       @current_user = FactoryGirl.create(:user)
       cookies[:auth_token] = @current_user.auth_token
-      controller.current_user
     end
 
 

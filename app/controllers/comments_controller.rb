@@ -11,12 +11,12 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        Comment.send_notification_email(@comment.id) 
+        Comment.send_notification_email(@comment.id)
       end
       format.html { redirect_to session.delete(:return_to) }
       format.js { render :create }
     end
-    
+
   end
 
   def destroy

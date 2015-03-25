@@ -55,12 +55,11 @@ describe PostsController do
 
         it 'collects that users friends' do
 
-          friends = FactoryGirl.create_list(:user, 3)
-          friends.each {|friend| user.friends << friend}
+          3.times { user.friends << FactoryGirl.create(:user)}
 
           get :index, :user_id => user.id
 
-          expect(assigns(:friends).sort).to eq friends.sort
+          expect(assigns(:friends).sort).to eq user.friends.sort
         end
       end
     end

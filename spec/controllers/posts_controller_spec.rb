@@ -45,19 +45,14 @@ describe PostsController do
 
     describe 'GET #index' do
       it 'collects that users posts in descending date order' do
-
         posts = FactoryGirl.create_list(:post, 3, user_id: user.id)
         get :index, :user_id => user.id
-
         expect(assigns(:posts)).to eq posts.reverse
       end
 
       it 'collects that users friends' do
-
         3.times { user.friends << FactoryGirl.create(:user)}
-
         get :index, :user_id => user.id
-
         expect(assigns(:friends).sort).to eq user.friends.sort
       end
     end

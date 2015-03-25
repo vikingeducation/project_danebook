@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
 
+  # method below picks which layout to use
   layout :choose_layout
 
   before_action :set_return_path, only: [:update]
@@ -63,9 +64,11 @@ class UsersController < ApplicationController
   private
 
   def whitelisted_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :profile_attributes => [:month, :day, :year, :gender, :user_id] )
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation,
+                                 :profile_attributes => [:month, :day, :year, :gender, :user_id] )
   end
 
+  # this is sneaky. check how it's used above in before_action
   def choose_layout
     case action_name
       when "index" then "search"
@@ -74,6 +77,7 @@ class UsersController < ApplicationController
     end
   end
 
+  # logged in users shouldn't be able to see a login page
   def skip_login
     redirect_to current_user if signed_in_user?
   end

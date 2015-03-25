@@ -42,24 +42,46 @@ describe PostsController do
       controller.current_user
     end
 
-    context 'looking at another users posts' do
 
-      describe 'GET #index' do
-        it 'collects that users posts in descending date order' do
+    describe 'GET #index' do
+      it 'collects that users posts in descending date order' do
 
-          posts = FactoryGirl.create_list(:post, 3, user_id: user.id)
-          get :index, :user_id => user.id
+        posts = FactoryGirl.create_list(:post, 3, user_id: user.id)
+        get :index, :user_id => user.id
 
-          expect(assigns(:posts)).to eq posts.reverse
+        expect(assigns(:posts)).to eq posts.reverse
+      end
+
+      it 'collects that users friends' do
+
+        3.times { user.friends << FactoryGirl.create(:user)}
+
+        get :index, :user_id => user.id
+
+        expect(assigns(:friends).sort).to eq user.friends.sort
+      end
+    end
+
+    describe 'GET #show' do
+      it 'does not show the post' do
+        user.posts << user_post
+        get :show, { user_id: user.id, id: user_post.id }
+        expect(response).not_to render_template(:show)
+      end
+
+      context 'when user is current_user' do
+        it 'redirects to the timeline' do
+          controller.current_user.posts << user_post
+          get :show, { user_id: controller.current_user.id, id: user_post.id }
+          expect(response).to redirect_to user_timeline_path(controller.current_user)
         end
+      end
 
-        it 'collects that users friends' do
-
-          3.times { user.friends << FactoryGirl.create(:user)}
-
-          get :index, :user_id => user.id
-
-          expect(assigns(:friends).sort).to eq user.friends.sort
+      context 'when user is another user' do
+        it 'redirects to root path' do
+          user.posts << user_post
+          get :show, { user_id: user.id, id: user_post.id }
+          expect(response).to redirect_to root_path
         end
       end
     end

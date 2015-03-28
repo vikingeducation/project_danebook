@@ -145,6 +145,23 @@ feature 'Timeline', js: true do
 
     end
 
+
+    scenario 'user can like other user comments' do
+      post = FactoryGirl.create(:post, user_id: other_user.id )
+      FactoryGirl.create(:comment,
+                         user_id: other_user.id,
+                         commentable_id: post.id,
+                         commentable_type: post.class.name)
+      visit user_timeline_path(other_user)
+
+      expect(find('article.comment')).to have_link("Like")
+      expect{ find('.Comment-like-link').click}.
+                              to change(Like, :count).from(0).to(1)
+
+      expect(find('.Comment-like-link')).to have_content("Unlike")
+      expect{click_link("Unlike")}.to change(Like, :count).from(1).to(0)
+    end
+
   end
 
 

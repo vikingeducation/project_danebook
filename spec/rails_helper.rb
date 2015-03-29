@@ -31,6 +31,7 @@ Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
 ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
+  config.include FactoryGirl::Syntax::Methods
 
   config.include LoginMacros
 
@@ -52,6 +53,21 @@ RSpec.configure do |config|
 
   config.after(:each) do
     DatabaseCleaner.clean
+  end
+
+
+  # allow you to mock controller helper methods on view specs only
+  # turn off the verification of double methods
+  config.before(:each, type: :view) do
+    config.mock_with :rspec do |mocks|
+      mocks.verify_partial_doubles = false
+    end
+  end
+
+  config.after(:each, type: :view) do
+    config.mock_with :rspec do |mocks|
+      mocks.verify_partial_doubles = true
+    end
   end
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your

@@ -21,9 +21,9 @@ Using `remote: true` forms and custom `js.erb` files, Danebook uses Rails' built
 
 Both `Likes` and `Comments` can attach to Posts, Photos, or other Likable or Commentable objects via polymorphic associations. This app implements completely polymorphic routes and controllers for each of these models. A single `Likes#create` controller action can handle requests to `POST /users/4/posts/3/likes` and to `POST /users/4/photos/9/likes` to like Posts and Comments, respectively. Deletion (unliking and deleting comments) is similarly polymorphic.
 
-###Friends
+###Reciprocal Friends
 
-This app implements a reciprocal user friendship using callbacks and separate `FriendRequest` and `Friending` models. A User may create a Friend Request targeting another user, implemented via self-join table. That second User may then click the "Accept Friend Request" button, which uses `after_create` callbacks to destroy the existing friend request and create `Friending` objects for both directions of the friendship. This way, any friendship appears in queries on either foreign-key of the `Friendings` join table.
+This app implements a reciprocal user friendship using callbacks and separate `FriendRequest` and `Friending` models. A User may create a Friend Request targeting another user, implemented via self-join table. That second User may then click the "Accept Friend Request" button, which uses `after_create` callbacks to destroy the existing friend request and create `Friending` objects for both directions of the friendship. This way, any friendship appears in queries on either foreign-key of the `Friendings` join table, and unfriended users do not appear as Friend Requests when someone is unfriended.
 
 ###Delayed-Job Emails
 Uses the Delayed Job gem to send ActionMailer notification emails asynchronously using a worker queue. Emails implemented thus far are a signup welcome email and a notification for new comments on a user's posts and photos.

@@ -4,5 +4,8 @@ $('#post_body').val('');
 
 
 // renders the new post hidden right after the post-form, top of the page
-$newPost = $('#post-form').after("<%= escape_javascript(render partial: 'shared/single_post', locals: { post: @post } ) %>").hide();
+$newPost = $('#post-form')
+          .after("<%= escape_javascript(render partial: 'shared/single_post',
+                  locals: { post: @post } ) %>")
+          .hide();
 $newPost.slideDown('fast');

@@ -16,6 +16,7 @@
 
     <div class = "row" id="photo-field">
 
+    <!-- TODO: stop this hardcoding. BAD DEVELOPER -->
     <% @photos.each_with_index do |photo, index| %>
       <% break if index > 15 %>
       <%= render partial: "photo", locals: { photo: photo } %>

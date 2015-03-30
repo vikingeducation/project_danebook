@@ -14,7 +14,7 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <!-- <div class="collapse navbar-collapse" id="log-in-fields"> -->
       <!-- <form class="navbar-form navbar-right"> -->
-        <%= form_tag session_path, :class => "sign-in-form" do %>
+        <%= form_tag session_path, :method => "POST", :class => "sign-in-form" do %>
           <%= label_tag do %>
             Email
             <%= text_field_tag :email %>
@@ -24,7 +24,7 @@
             <%= password_field_tag :password %>
           <% end %>
         </div>
-       <%= submit_tag "Log in", :class => 'btn btn-default' %>
+         <%= submit_tag "Log in", :class => 'btn btn-default' %>
       <% end %>
       
       <!-- </form> -->

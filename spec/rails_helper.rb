@@ -4,6 +4,7 @@ require 'spec_helper'
 require File.expand_path('../../config/environment', __FILE__)
 require 'rspec/rails'
 require 'factory_girl_rails'
+require 'capybara/rails'
 # Add additional requires below this line. Rails is not loaded until this point!
 RSpec.describe User, :type => :model do
   pending "add some examples to (or delete) #{__FILE__}"

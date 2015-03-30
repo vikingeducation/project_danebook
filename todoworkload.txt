@@ -1,10 +1,14 @@
 MODEL TESTING
 
-**All model spec pages created
 **Resolve Association tests
+**Fill out remainder model specs
 
 FEATURE TESTING
 
+**integrate views and capybara
+
+--Issues
+  -Login redirecting to home page via capybara
 
 CONTROLLER TESTING
 

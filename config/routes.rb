@@ -1,23 +1,27 @@
 Rails.application.routes.draw do
 
-
+  # OAUTH ROUTES
   get 'auth/:provider/callback', to: 'sessions#create'
   get 'auth/failure', to: redirect('/')
+
+
+
   get '/newsfeed' => 'newsfeed#index'
 
   resources :users, except: [:edit] do
 
-    # resource :newsfeed, only: [:index]
+    resource :profile, only: [:edit, :update, :show]
 
 
     get '/friend_requests' => 'friend_requests#index'
     resource :friend_requests, only: [ :index, :create, :destroy ]
 
+
     get '/friends' => 'friendings#index'
     resource :friendings, only: [ :index, :create, :destroy ]
     resource :friend_requests, only: [ :index, :create, :destroy ]
 
-    resource :profile, only: [:edit, :update, :show]
+
 
     resources :photos do
       resources :likes, only: [:create, :destroy], :defaults => { :likable => 'Photo' }
@@ -28,6 +32,7 @@ Rails.application.routes.draw do
     end
 
 
+
     resources :posts do
       resources :likes, only: [:create, :destroy], :defaults => { :likable => 'Post' }
 
@@ -36,11 +41,13 @@ Rails.application.routes.draw do
       end
     end
 
+    # user post timeline index
     get '/timeline' => 'posts#index'
   end
 
 
 
+  # LOGIN AND LOGOUT
 
   resource :session, only: [:new, :create, :destroy]
 

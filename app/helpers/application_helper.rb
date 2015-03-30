@@ -1,5 +1,39 @@
 module ApplicationHelper
 
+
+  # all shared view helpers live here
+
+
+  # filters datetime info the way I want it for posts/comments/etc
+  def readable_date(datetime)
+    datetime.to_date.inspect
+  end
+
+
+
+  # returns the proper Twitter Bootstrap classes for various
+  # types of flash message
+  def flash_class(level)
+    case level.to_sym
+        when :notice then "alert alert-info"
+        when :info then "alert alert-info"
+        when :success then "alert alert-success"
+        when :error then "alert alert-error"
+        when :alert then "alert alert-error"
+    end
+  end
+
+
+  # is this page the current_user's?
+  def current_user_page?(user)
+    user != nil && user == current_user
+  end
+
+
+
+
+  # helpers for links and buttons and image conditionals
+
   def add_photo_link(user)
     if user == current_user
     link_to "Add Photo!", new_user_photo_path(@user), class: "btn danebook-button"
@@ -32,30 +66,6 @@ module ApplicationHelper
     else
       image_tag "hogwarts_small.jpg", class: "hidden-xs hidden-sm"
     end
-  end
-
-  def readable_date(datetime)
-    datetime.to_date.inspect
-  end
-
-
-
-  # returns the proper Twitter Bootstrap classes for various
-  # types of flash message
-  def flash_class(level)
-    case level.to_sym
-        when :notice then "alert alert-info"
-        when :info then "alert alert-info"
-        when :success then "alert alert-success"
-        when :error then "alert alert-error"
-        when :alert then "alert alert-error"
-    end
-  end
-
-
-  # is this page the current_user's?
-  def current_user_page?(user)
-    user != nil && user == current_user
   end
 
 
@@ -101,6 +111,9 @@ module ApplicationHelper
 
 
 
+  # returns like sentence for a likable object
+  # ex: "You, Bob Bobson and 9 other users liked this post."
+  # returns nil if nobody liked the object
   def like_sentence(likable)
     return nil unless likable
 

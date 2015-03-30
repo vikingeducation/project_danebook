@@ -1,0 +1,21 @@
+MODEL TESTING
+
+**All model spec pages created
+**Resolve Association tests
+
+FEATURE TESTING
+
+
+CONTROLLER TESTING
+
+
+VIEW TESTING
+
+
+SESSIONS/AUTH
+
+**Resolve consistency of auth with user.
+
+NESTING
+
+**need to nest routes, forms, etc. 

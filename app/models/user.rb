@@ -63,9 +63,9 @@ class User < ActiveRecord::Base
                                   :source => :friender
 
 
+
+
   before_create :generate_token
-
-
   after_create :get_a_friend
 
 

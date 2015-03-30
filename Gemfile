@@ -4,7 +4,6 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.6'
 # Use sqlite3 as the database for Active Record
-gem 'pg', group: :development
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
@@ -35,6 +34,10 @@ gem 'better_errors'
 
 gem 'faker'
 
+group :development, :test do
+  gem 'rspec-rails'
+end
+
 gem 'twitter-bootstrap-rails'
 
 group :production do
@@ -55,4 +58,4 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'debugger', group: [:development, :test]
 gem 'rails_12factor', group: :production
 
-ruby "2.2.0"
+# ruby "2.2.0"

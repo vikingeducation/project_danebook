@@ -6,6 +6,7 @@ class PostsController < ApplicationController
     @friends = @user.friends.shuffle
     @posts = @user.posts_chronologically
 
+    # you only need a new post form if you're on your own timeline
     @post = current_user.posts.build if @user == current_user
   end
 

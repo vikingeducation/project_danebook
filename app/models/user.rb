@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
 
   validates_uniqueness_of :email
 
+
+# BASIC ASSOCIATIONS
   has_one :profile
   accepts_nested_attributes_for :profile
 
@@ -18,7 +20,7 @@ class User < ActiveRecord::Base
   has_many :likes
   has_many :photos
 
-
+# PHOTOS
   belongs_to :profile_photo, class_name: "Photo"
   belongs_to :cover_photo, class_name: "Photo"
 
@@ -26,7 +28,7 @@ class User < ActiveRecord::Base
 
 
 
-
+# LIKES
   has_many :liked_posts, through: :likes, source: :likable, source_type: "Post"
   has_many :liked_comments, through: :likes, source: :likable, source_type: "Comment"
   has_many :liked_photos, through: :likes, source: :likable, source_type: "Photo"
@@ -110,14 +112,24 @@ class User < ActiveRecord::Base
   end
 
 
-  #would be private if I could
-
   def self.welcome(user_id)
     user = User.find(user_id)
     UserMailer.welcome(user).deliver
   end
 
 
+
+  # searches all existing Users by a query string for names
+  # intentionally case-insensitive, so "michael" finds all Michaels
+  #
+  # User.search("Michael Alexander") finds all users firstnamed Michael
+  # AND all users lastnamed Alexander
+  #
+  # Additionally, partial matches work:
+  # User.search("mich") finds Michael Alexander, Denise Michaels and Michie Michigan
+  #
+  # Finally, a one-word query matches on both firstnames and last-names
+  # a multi-word query matches first word on firstnames, second word on lastnames
   def self.search(query)
     return none if query.blank?
     queries = query.split
@@ -163,7 +175,7 @@ class User < ActiveRecord::Base
   end
 
 
-  # master boolean for likables
+  # master boolean for checking what a user likes
   # user.likes?(a_post_she_likes) => true
   # user.likes?(a_comment_he_does_not_like) => false
 
@@ -175,18 +187,18 @@ class User < ActiveRecord::Base
 
 
 
-  # limit is only till we have pagination or infinite scroll
-  def newsfeed
-    Post.newsfeed_for(self)
-  end
-
-
   # given a Likable(post/comment/photo), returns this user's Like of that
   # comment from the Likes table. If this user doesn't like that comment,
   # returns nil
 
   def like_of(likable)
     likes?(likable) ? likes.find_by(:likable_id => likable.id, :likable_type => likable.class.name) : nil
+  end
+
+
+  # returns the most recent posts in newsfeed
+  def newsfeed
+    Post.newsfeed_for(self)
   end
 
   private

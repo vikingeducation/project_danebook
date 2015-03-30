@@ -4,6 +4,6 @@ class FriendRequest < ActiveRecord::Base
 
   belongs_to :requestee, :class_name => "User", :foreign_key => :requestee_id
 
-
+  validates_presence_of :requester, :requestee
 
 end

@@ -1,4 +1,5 @@
 class FriendingsController < ApplicationController
+  # For actual 2-way friendships, not 1-way requests
 
   before_action :set_return_path, only: [:create, :destroy]
   before_action :check_friend_requests, only: [:create]

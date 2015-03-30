@@ -8,12 +8,13 @@ class SessionsController < ApplicationController
 
   def create
 
-    # if there's a provider, this login is an omniauth login
+    # if there's a provider, this login is an Omniauth login
     omniauth = !!params[:provider]
 
     @user = omniauth ? User.from_omniauth(env["omniauth.auth"]) :
                        User.find_by_email(params[:email])
 
+    # works for either omniauth or regular signin
     if @user && ( omniauth || @user.authenticate(params[:password]) )
       params[:remember_me] ? permanent_sign_in(@user) : sign_in(@user)
       flash[:success] = "You're signed in."

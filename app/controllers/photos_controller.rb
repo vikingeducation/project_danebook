@@ -12,7 +12,7 @@ class PhotosController < ApplicationController
 
   def create
     @user = User.find(params[:user_id])
-    
+
     if params[:photo][:url] != ""
       @photo = @user.photos.build
       @photo.image_from_url(params[:photo][:url])

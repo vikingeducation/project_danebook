@@ -8,6 +8,7 @@ class Comment < ActiveRecord::Base
   has_many :users_who_liked, through: :likes, source: :user
 
   validates_presence_of :body, :user_id
+  validates :body, length: { maximum: 500 }
 
 
 

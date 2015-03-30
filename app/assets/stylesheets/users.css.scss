@@ -103,6 +103,11 @@
 
 
 
+//**********************************************************
+//Below-the-fold styles on user pages
+//**********************************************************
+
+
 #information-pane {
 
   z-index: 5;
@@ -197,11 +202,14 @@
 
 
 
-// TIMELINE SECTION
-// TIMELINE TIMELINE TIMELINE
+
+//**********************************************************
+//Timeline User Page
+//**********************************************************
 
 
 #details {
+  //Any object direct child of the #details div
   & > * {
     border: 1px solid #949699;
     border-radius: 6px;
@@ -279,7 +287,9 @@
 
 
 
-// SEARCH PAGE(INDEX USERS)
+//**********************************************************
+// SEARCH PAGE(routed as Index for USERS)
+//**********************************************************
 
 .search-result {
   border: 1px solid #333;

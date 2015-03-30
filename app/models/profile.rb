@@ -18,10 +18,15 @@ class Profile < ActiveRecord::Base
   validates :words_to_live_by, length: { maximum: 140 }
   validates :about_me, length: { maximum: 400 }
 
+
+
+  # Birthday is combo of Day, Month, and Year columns for now
+  # TODO: refactor to use Datetime field and combined date helpers
   def birthday
     "#{month}\/#{day}\/#{year}"
   end
 
+  #takes a string like '03/29/1994' and sets the appropriate date fields
   def birthday= (datestring)
     date = datestring.split("\/")
     self.month = date[0]

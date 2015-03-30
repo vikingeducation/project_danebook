@@ -22,10 +22,11 @@ class FriendRequestsController < ApplicationController
     redirect_to session.delete(:return_to)
   end
 
+  # to reject a friend request OR to delete your own
   def destroy
     @user = User.find(params[:user_id])
 
-    #this is okay because only one of these ever exists at a time
+    #this is okay because only one of these EVER exists at a time
     current_user.friends_requested.delete(@user)
     current_user.friend_requesters.delete(@user)
 

@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
   before_action :require_login
 
 
+  #Cookie-based auth, temporary and permanent, starts here
+
   def sign_in(user)
     user.regenerate_token
     cookies[:auth_token] = user.auth_token
@@ -27,12 +29,12 @@ class ApplicationController < ActionController::Base
   def current_user
     @current_user ||= User.find_by_auth_token(cookies[:auth_token]) if cookies[:auth_token]
   end
-  helper_method :current_user
+  helper_method :current_user #auto-included into view helpers
 
   def signed_in_user?
     !!current_user
   end
-  helper_method :signed_in_user?
+  helper_method :signed_in_user? #auto-included into view helpers
 
   def require_login
     unless signed_in_user?

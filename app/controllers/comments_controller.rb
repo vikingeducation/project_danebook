@@ -2,6 +2,9 @@ class CommentsController < ApplicationController
 
   before_action :set_return_path, only: [:create, :destroy]
 
+
+  # Polymorphic controller action
+  # grabs class type from params and dynamically assigns parent object
   def create
     klass, commentable_id = parse_klass_and_id
 
@@ -38,6 +41,9 @@ class CommentsController < ApplicationController
     params.require(:comment).permit(:body)
   end
 
+  # polymorphic class method
+  # returns actual class object as klass
+  # returns the ID of the commentable parent object
   def parse_klass_and_id
     klass = params[:commentable].constantize
     commentable_id = "#{klass}_id".downcase.to_sym

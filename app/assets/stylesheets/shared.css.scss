@@ -1,8 +1,20 @@
+//SHARED CSS THAT DOESNT FIT ANYWHERE ELSE
+
+
+// ****************************************************************************
+// DEFAULTS GO HERE, EXPECT TO BE OVERRIDDEN
+// ****************************************************************************
+
+
 body {
+  //!important is bad, but Bootstrap is brutal that way
   background-color: #edf0f5!important;
 }
 
 
+  // gratuitous specificity to beat Bootstrap
+  // since ANY balid Bootstrap object is in a container and a row
+  // shouldn't have any unusual side effects
  .container .row .danebook-button {
   background: linear-gradient(#4C67A1, #3B5998);
   color: white;
@@ -31,13 +43,29 @@ body {
   border-radius: 2px;
 }
 
+
+
+.btn-unfriend {
+  background: #b4b6b9;
+  color: #666869;
+  font-weight: bold;
+  box-shadow: 3px 3px 3px black;
+  border: 1px solid #666869;
+  border-radius: 0;
+  width: 120px;
+
+}
+
+
 section.container a {
   text-decoration: underline;
 }
 
 
 
-
+// ****************************************************************************
+// NAVBAR SECTION
+// ****************************************************************************
 
 
 #top-navbar {
@@ -78,16 +106,4 @@ section.container a {
 
 }
 
-
-
-.btn-unfriend {
-  background: #b4b6b9;
-  color: #666869;
-  font-weight: bold;
-  box-shadow: 3px 3px 3px black;
-  border: 1px solid #666869;
-  border-radius: 0;
-  width: 120px;
-
-}
 

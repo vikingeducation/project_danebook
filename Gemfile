@@ -39,6 +39,10 @@ group :development, :test do
   gem 'rspec-rails'
 end
 
+group :development do
+  gem 'guard-rspec', require: false
+end
+
 gem 'twitter-bootstrap-rails'
 
 # Use ActiveModel has_secure_password

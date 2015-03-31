@@ -73,7 +73,20 @@ Methods on the parent ApplicationController allow for all controllers and views 
 
 A complex app like this one encompasses dozens upon dozens of views, partials and helper methods.
 
-TKTKTKTKTK
+Rather than walk through every single one of them, here are a couple unusually complicated pieces of the puzzle:
+
+
+####Conditional Button Helper Methods
+In order to keep complicating logic out of the views, this app uses helper methods to handle buttons with conditions on their appearance.
+
+For example, a single `friend_button` method takes a User as parameter and returns either the button to make a friend request, the button to cancel that request if it was already made, or the button to cancel the friendship if the reciprocal friendship already exists. It also returns a blank placeholder if the User is the `current_user`, in order to keep you from friending yourself.
+
+A `like_link` for polymorphic Likes is similarly well-suited to a view helper method.
+
+
+####Conditional Sentences
+
+Another good candidate for such methods was the extremely complicated `like_sentence` method, which returns sentences like "You, Bob Bobson and 9 other users liked this Post." Since it needs to handle zero, one, two, and many users, with and without the current user included, and it also needs to handle case statements, it was far too complex to use a partial. A complex case statement with some introspection on the parent object was enough to produce a working `like_sentence` method. It is also thoroughly tested in Rspec under the View Tests section.
 
 
 ## Extra Features of Note

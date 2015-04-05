@@ -5,6 +5,12 @@ WORKFLOW AGENDA
 
 sunday notes::::
   
+  -delete muck from require_current_user application controller
+  -still can look at anyones profile
+  -repair line 18-20 appcontroller current user
+  -add flashsuccess to application view
+  POMO 6
+  gitcommit
   -discovered everything is in sessions hash not params
   POMO 5
   -gitcommit

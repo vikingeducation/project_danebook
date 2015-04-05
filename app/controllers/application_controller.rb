@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    @current_user = @user
+    @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
   helper_method :current_user
@@ -34,14 +34,6 @@ class ApplicationController < ActionController::Base
   end
 
   def require_current_user
-
-    current_user = User.find(params[:id].to_i)
-    #most hacking here due to not nesting. 
-    post_ids = []
-    current_user.posts.each do |post|
-      post_ids << post.id.to_i
-    end
-
     unless current_user && params[:id] == current_user.id.to_s
       if params["post"]
         # post_it

@@ -1,6 +1,5 @@
 class SessionsController < ApplicationController
-  #I think I always want a requirement
-  # skip_before_action :require_login, :only => 
+  skip_before_action :require_login, :only => [:new, :create]
   def create
     @user = User.find_by_email(params[:email])
     if @user && @user.authenticate(params[:password])

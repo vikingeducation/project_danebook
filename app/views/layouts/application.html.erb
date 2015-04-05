@@ -19,6 +19,8 @@
     <div class="now"><%= flash[:now] %></div>
   <% elsif flash[:error] %>
     <div class="error"><%= flash[:error] %></div>
+  <% elsif flash[:success] %>
+    <div class="success"><%= flash[:success] %></div>
   <% end %>
  </h3>
 <%= yield %>

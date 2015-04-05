@@ -4,12 +4,13 @@ Rails.application.routes.draw do
   resources :users
   resources :posts
   resource :session
+  get "login" => "session#new"
+  delete "logout" => "sessions#destroy"
   resources :likes
   resources :comments
   resources :users do
     resource :profile
   end
-  delete "logout" => "sessions#destroy"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

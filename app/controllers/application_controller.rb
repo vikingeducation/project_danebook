@@ -35,13 +35,8 @@ class ApplicationController < ActionController::Base
 
   def require_current_user
     unless current_user && params[:id] == current_user.id.to_s
-      if params["post"]
-        # post_it
-      elsif post_ids.include? params[:id].to_i  
-      else    
       flash[:error] = "You're not authorized to access this page"
-      redirect_to root_url
-      end
+      redirect_to root_path
     end
   end
 

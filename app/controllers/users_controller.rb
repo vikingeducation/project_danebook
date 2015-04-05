@@ -43,9 +43,9 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @user.update(user_params)
+    if current_user.update(user_params)
       flash[:success] = "Successfully updated"
-      redirect_to @user
+      redirect_to current_user
     else
       flash.now[:failure] = "failed to update"
       render :edit
@@ -53,7 +53,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user.destroy
+    current_user.destroy
     sign_out
     respond_to do |format|
       format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
@@ -67,6 +67,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  
   def user_params
     params.
       require(:user).

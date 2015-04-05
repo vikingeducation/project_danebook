@@ -13,7 +13,7 @@
       <!-- Row with page names -->
       <ul class="nav nav-tabs">
         <li role="presentation" class="col-md-offset-2 active">
-          <%= link_to "Timeline", profile_path(@user.id) %>
+          <%= link_to "Timeline", user_profile_path(@user.id, @user.profile.id) %>
         </li>
         <li role="presentation">
           <%= link_to "About", user_path(@user.id) %>

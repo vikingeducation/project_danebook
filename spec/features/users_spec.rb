@@ -17,7 +17,6 @@ feature 'User accounts' do
       fill_in "Birthday", with: birthday
     end
     click_button "Create User"
-    binding.pry
     expect(page).to have_content "1/1/61"
     expect(page).to have_content "About Me"
   end

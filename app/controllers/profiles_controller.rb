@@ -13,7 +13,8 @@ class ProfilesController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id].to_i)
+    @profile = Profile.find(params[:format].to_i)
+    @user = User.find(@profile.user.id)
     @post = Post.create
     @comment = Comment.create
     # @post = Post.create(:user_id => @user.id)
@@ -63,7 +64,7 @@ class ProfilesController < ApplicationController
   private
 
   def set_user
-    @user = User.find(params[:id])
+    @user = User.find(params[:user_id].to_i)
   end
 
   def likes_array

@@ -47,13 +47,13 @@ class CommentsController < ApplicationController
       flash.now[:failure] = "failed to update"
       render :edit
     end    
-    redirect_to profile_path(current_user.id)
+    redirect_to user_profile_path(current_user.id, current_user.profile.id)
   end
 
   def destroy
     @comment = Comment.find(params[:id].to_i)
     @comment.destroy
-    redirect_to profile_path(current_user.id)
+    redirect_to user_profile_path(current_user.id, current_user.profile.id)
   end
 
   private

@@ -1,3 +1,63 @@
+WORKFLOW AGENDA
+
+4/5-12
+
+
+sunday notes::::
+
+  -named myself
+  POMO 3
+  -now nesty checked w/ erik about full stop
+  -signup needs name yo
+  -clicky worky now nesty
+
+SUNDAY 
+
+  misc:
+
+  -get flash.now flash.error working! :O
+  -signup form to have name
+  -about me profile page show shit
+  -write and pass validations (wit tests too)
+
+  mains:
+  -auth reading & user persistence; reading implementation
+  -forms reading & implementation
+
+M-Su
+
+-general overlay-
+?-1pm : muscle memory & portfolio
+1pm-? : danebook project
+
+MON: MORE TEST COVERAGE
+
+-----------------------------------
+
+CONCEPT COVERAGE
+-RESTFUL ROUTES READING
+-NESTING ROUTES
+-AUTH READING
+-FORMS, NESTED FORMS, ADVANCED FORMS READING
+
+
+DANEBOOK TASKS
+-NESTED ROUTES & IMPROVED FORMS
+  -ALL ABOUT ROUTES BABY
+
+-TIGHTEN UP AUTH/COOKIES
+-MODEL/FEATURE/CONTROLLER/VIEW TESTING
+-MAILERS/PHOTOS/STORAGE SPRINTS & PROJECT
+
+
+
+
+
+
+
+
+
+***********************8
 MODEL TESTING
 
 **Resolve Association tests

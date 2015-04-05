@@ -2,11 +2,13 @@ Rails.application.routes.draw do
 
   root 'users#index'
   resources :users
-  resources :profiles
   resources :posts
   resource :session
   resources :likes
   resources :comments
+  resources :users do
+    resource :profile
+  end
   delete "logout" => "sessions#destroy"
 
   # The priority is based upon order of creation: first created -> highest priority.

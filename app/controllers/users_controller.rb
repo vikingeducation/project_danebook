@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_action :set_user, :only => [:destroy, :edit, :update, :show ]
 
   def index
+
     @users = User.all
     @new_user = User.new
     @new_profile = @new_user.build_profile
@@ -72,6 +73,8 @@ class UsersController < ApplicationController
       permit(:email,
              :password,
              :password_confirmation,
+             :first_name,
+             :last_name,
              { :profile_attributes => [
               :user_id,
               :hometown,

@@ -4,7 +4,14 @@ WORKFLOW AGENDA
 
 
 sunday notes::::
+passnames
+change links
 
+  -figured out need whitelisting
+  POMO 4
+  -git commit
+  -name not passing!
+  -name added
   -signup now has more info
   -can now edit college and show on about me
   -itisnowschwadbook
@@ -18,6 +25,7 @@ sunday notes::::
 SUNDAY 
 
   misc:
+
 
   -get flash.now flash.error working! :O
   -signup form to have name

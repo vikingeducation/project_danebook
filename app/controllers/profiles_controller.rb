@@ -13,8 +13,8 @@ class ProfilesController < ApplicationController
   end
 
   def show
-    @profile = Profile.find(params[:format].to_i)
-    @user = User.find(@profile.user.id)
+    @user = User.find(params[:user_id].to_i)
+    @profile = Profile.find(@user.profile.id)
     @post = Post.create
     @comment = Comment.create
     # @post = Post.create(:user_id => @user.id)

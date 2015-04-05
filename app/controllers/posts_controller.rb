@@ -46,13 +46,13 @@ class PostsController < ApplicationController
       flash.now[:failure] = "failed to update"
       render :edit
     end    
-    redirect_to user_profile_path(current_user.id, current_user.profile.id)
+    redirect_to user_profile_path(current_user.id)
   end
 
   def destroy
     @post = Post.find(params[:id].to_i)
     @post.destroy
-    redirect_to user_profile_path(current_user.id, current_user.profile.id)
+    redirect_to user_profile_path(current_user.id)
   end
 
   private

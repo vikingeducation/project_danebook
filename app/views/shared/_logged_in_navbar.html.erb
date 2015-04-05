@@ -24,7 +24,7 @@
         </div>
       </form>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "Profile Page", user_profile_path(current_user.id, current_user.profile.id) %></li>
+        <li><%= link_to "Profile Page", user_profile_path(current_user.id) %></li>
         <li><%= link_to "Logout", logout_path, :method => :delete %>
       </ul>
     </div><!-- /.navbar-collapse -->

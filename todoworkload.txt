@@ -4,9 +4,10 @@ WORKFLOW AGENDA
 
 
 sunday notes::::
-passnames
 change links
-
+  
+  -global replace all link changes
+  -gitcommit
   -figured out need whitelisting
   POMO 4
   -git commit

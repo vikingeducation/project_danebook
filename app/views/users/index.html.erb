@@ -19,7 +19,7 @@
             <%= form_for @new_user do |f| %>
               <br>
               <%= f.label :email %>
-              <%= f.text_field :email %>
+              <%= f.text_field :email, :placeholder => "e.g. schwad@schwad.com" %>
               <br>
               <%= f.label :password %>
               <%= f.password_field :password %>
@@ -27,9 +27,23 @@
               <%= f.label :password_confirmation %>
               <%= f.password_field :password_confirmation %>
               <br>
+              <strong>Name</strong>
+              <br>
+              <%= f.label :first_name %>
+              <%= f.text_field :first_name, :placeholder => "e.g. John" %>
+              <%= f.label :last_name %>
+              <%= f.text_field :last_name, :placeholder => "e.g. Smith" %>
+              <br>
               <%= f.fields_for :profile do |profile_fields| %>
+              <br>
                 <%= profile_fields.label :birthday %>
-                <%= profile_fields.text_field :birthday %>
+                <%= profile_fields.text_field :birthday, :placeholder => "e.g. 1/1/1911" %><br>
+
+                <%= profile_fields.label :hometown %>
+                <%= profile_fields.text_field :hometown, :placeholder => "Smallville, KY" %><br>
+
+                <%= profile_fields.label :college %>
+                <%= profile_fields.text_field :college, :placeholder => "University of Schwad" %><br>
               <br>
               <% end %>
               <div class="actions">

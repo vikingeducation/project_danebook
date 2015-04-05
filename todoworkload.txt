@@ -6,6 +6,10 @@ WORKFLOW AGENDA
 sunday notes::::
 change links
   
+  POMO 5
+  -gitcommit
+  -add flash now and flash error to layout so they are ready with appropriate divs
+  -gitcommit
   -global replace all link changes
   -gitcommit
   -figured out need whitelisting
@@ -29,8 +33,6 @@ SUNDAY
 
 
   -get flash.now flash.error working! :O
-  -signup form to have name
-  -about me profile page show shit
   -write and pass validations (wit tests too)
   -change all link to's to not pass profile id
 
@@ -39,6 +41,7 @@ SUNDAY
     -placeholders
 
   mains:
+  @2pm
   -auth reading & user persistence; reading implementation
   -forms reading & implementation
 
@@ -48,8 +51,10 @@ M-Su
 ?-1pm : muscle memory & portfolio
 1pm-? : danebook project
 
-MON: MORE TEST COVERAGE
+MON: 
 
+-MORE TEST COVERAGE
+-COMMENTING, POSTING AND LIKING FIX
 -----------------------------------
 
 CONCEPT COVERAGE

@@ -14,6 +14,13 @@
     <%= render "/shared/logged_out_navbar" %>  
   <% end %>
 </div>
+<h3>
+  <% if flash[:now] %>
+    <div class="now"><%= flash[:now] %></div>
+  <% elsif flash[:error] %>
+    <div class="error"><%= flash[:error] %></div>
+  <% end %>
+ </h3>
 <%= yield %>
 
 </body>

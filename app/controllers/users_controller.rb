@@ -26,7 +26,9 @@ class UsersController < ApplicationController
   end
 
   def edit
-    require_current_user
+    if require_current_user
+      redirect_to user_path(params[:id].to_i)
+    end
     @user = current_user
   end
 
@@ -67,7 +69,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
-  
+
   def user_params
     params.
       require(:user).

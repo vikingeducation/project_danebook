@@ -6,9 +6,16 @@ MONDAY THOUGHTS
   -unliking works but redirects to user profile page
   -commenting redirects to root
   -if I like i like as sammie corwin
+  -identify correct post id for posting
 
 sunday notes::::
   
+  -I NEED TO NEST COMMENTS UNDER POSTS
+  -starting onto monday work posts and comments
+  -if manually hacking (like user/234/edit) reroutes back
+  -clear up edit profile button under user#show view
+  POMO 7
+  -gitcommit
   -can't see other people's edit pages now
   -unliking works but redirects to user profile page
   -commenting redirects to root
@@ -57,9 +64,7 @@ SUNDAY
     -placeholders
 
   mains:
-  @2pm
-  -auth reading & user persistence; reading implementation
-  -forms reading & implementation
+
 
 M-Su
 
@@ -88,6 +93,8 @@ DANEBOOK TASKS
 -TIGHTEN UP AUTH/COOKIES
 -MODEL/FEATURE/CONTROLLER/VIEW TESTING
 -MAILERS/PHOTOS/STORAGE SPRINTS & PROJECT
+
+-MAKE SHIT MORE MODULAR
 
 
 

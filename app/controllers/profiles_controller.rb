@@ -13,7 +13,16 @@ class ProfilesController < ApplicationController
   end
 
   def show
+    if params[:user]
+      Post.create(
+        :content => params[:user][:post][:content],
+        :user_id => current_user.id,
+        :receiver_id => params[:user_id].to_i
+        )
+        redirect_to user_profile_path(params[:user_id].to_i)
+    end
     @user = User.find(params[:user_id].to_i)
+
     @profile = Profile.find(@user.profile.id)
     @post = Post.create
     @comment = Comment.create

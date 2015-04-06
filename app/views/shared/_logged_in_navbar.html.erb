@@ -11,9 +11,10 @@
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="/">
-        <%= image_tag "danish_flag.gif", class: 'img-circle', height: '23px', alt: 'Danebook Icon' %>
         Schwadbook
+        
       </a>
+      
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -22,8 +23,8 @@
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search for users" id="user-search-bar">
         </div>
-      </form>
       <ul class="nav navbar-nav navbar-right">
+
         <li><%= link_to "Profile Page", user_profile_path(current_user.id) %></li>
         <li><%= link_to "Logout", logout_path, :method => :delete %>
       </ul>

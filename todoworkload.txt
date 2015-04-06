@@ -22,7 +22,26 @@ MONDAY THOUGHTS
     -NEED TO MIGRATE
 
 monday notes:::
+  likes liking deletes deleting links linking
+
   
+  POMO 8
+  git commit
+  -comment name link working
+  -link post name working not on comment
+  -liking isn't right yet does current users page
+  -commenting on schwads post
+  -"and elliot clayton like this"
+  -new user now commenting own page
+  -new user now posting on own page
+  -new user posts and comments and edit do not show up.
+  -looks like today will be all debugging and testing will have to wait same with likes
+  -edit profile button only shows up on profile page....
+  POMO 7 
+  profile pic change logo change
+  misc stuff
+  comments and postings live
+  gitcommit
   -time to associate back
   POMO 6
   -gitcommit

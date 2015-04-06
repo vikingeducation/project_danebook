@@ -6,15 +6,17 @@
           </div>
           <div class="row">
             <div class="col-md-12">
-              <%= form_for @post do |post_fields| %>
-                <%= post_fields.label :content %>
-                <%= post_fields.text_area :content %>
+              <%= form_for @user do |f| %>
+                <%= f.fields_for :post do |post_fields| %>
+                  <%= post_fields.label :content %>
+                  <%= post_fields.text_area :content, :placeholder => "Say something..." %>
+                  <% end %>
             </div>
           </div>
           <div class="row post-bottom">
             <div class="col-md-2 col-md-offset-10 post-button">
               <div class="actions">
-                <%= post_fields.submit %>
+                <%= f.submit %>
               </div>
             <% end %>
             </div>

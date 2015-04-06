@@ -19,10 +19,20 @@ MONDAY THOUGHTS
 
     -basically get everything good to dive into photos for tuesday
 
-
+    -NEED TO MIGRATE
 
 monday notes:::
 
+  -gonna see if foreign key works
+  -it routes thru user update now, just wrote in to try and create post
+  -just did a nested form for with post under user
+  -add receiver id migration to post
+  POMO 4
+  -next pomodoro run a migration to add posted user columns to posts so that I can comment on someone else's page. it may require a bit of restructuring but it is good for ya. 
+  -if I post
+   a comment on someone else's wall it redirects me back to my wall
+  -note it seems that we are getting right people on posting statuses and comments for their links
+  -gitcommit
   -can post on own page. HACK ALERT LINE60 UNDER DEF UPDATE IN POSTS CONTROLLER FOR DEFINING LOCAL VARIABLE WORKING_USER
   -let us make it for now i can only post on mine. worry about friending later first posting on my page
 

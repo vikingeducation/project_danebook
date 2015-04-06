@@ -47,7 +47,7 @@ class PostsController < ApplicationController
       )
       working_user = Post.find((params[:id].to_i)).user.id
       redirect_to user_profile_path(working_user)
-    elsif
+    else
       @user = current_user
       if post_it
         flash[:success] = "Successfully updated"
@@ -56,12 +56,10 @@ class PostsController < ApplicationController
         render :edit
       end   
       # HACK ALERT; I DO NOT KNOW WHY BUT I HAVE TO ADD ONEPost
-      
+
       working_user = Post.find((params[:id].to_i + 1)).user.id
 
       redirect_to user_profile_path(working_user)
-    else
-      redirect_to root_path
     end    
   end
 

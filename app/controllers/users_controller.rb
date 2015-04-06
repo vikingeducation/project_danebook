@@ -45,7 +45,15 @@ class UsersController < ApplicationController
   end
 
   def update
-    if current_user.update(user_params)
+    if params[:user][:post][:content]
+      Post.create(
+        :content => params[:user][:post][:content],
+        :user_id => current_user.id,
+        :receiver_id => params[:id].to_i
+        )
+      redirect_to user_profile_path(params[:id].to_i)
+      
+    elsif current_user.update(user_params)
       flash[:success] = "Successfully updated"
       redirect_to current_user
     else

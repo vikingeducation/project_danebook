@@ -13,7 +13,7 @@ class ProfilesController < ApplicationController
   end
 
   def show
-    @user = current_user
+    @user = User.find(params[:user_id].to_i)
     @profile = Profile.find(@user.profile.id)
     @post = Post.create
     @comment = Comment.create

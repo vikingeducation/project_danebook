@@ -24,7 +24,7 @@ class CommentsController < ApplicationController
       :post_id => session[:real_post_id].to_i,
       :user_id => @user.id
       )
-    redirect_to user_profile_path(@user.id)
+    redirect_to user_profile_path(params[:user_id].to_i)
   end
 
   def edit

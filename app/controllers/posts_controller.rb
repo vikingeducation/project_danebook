@@ -45,6 +45,8 @@ class PostsController < ApplicationController
       :post_id => params[:id].to_i,
       :user_id => current_user.id
       )
+      working_user = Post.find(params[:id].to_i).user.id
+      redirect_to user_profile_path(working_user)
     else
       @user = current_user
       if post_it
@@ -52,9 +54,9 @@ class PostsController < ApplicationController
       else
         flash.now[:failure] = "failed to update"
         render :edit
-      end    
+      end   
+      redirect_to user_profile_path(params[:user_id].to_i)
     end    
-    redirect_to user_profile_path(current_user.id)
   end
 
   def destroy

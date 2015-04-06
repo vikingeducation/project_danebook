@@ -11,15 +11,28 @@ MONDAY THOUGHTS
 
   MONDAY MORNING AGENDA
 
-    -commenting: burn it down and start again completely nested. read about nested forms again in first pomodoro or so
+    -commenting: test it out and get it functional. 
 
     -liking: make it functional; no weird "ands" and liking as the current and correct user.
 
     -testing: add to your module and feature testing suite to support what you currently have to make it more robust
 
-  MONDAY AFTERNOON AGENDA
+    -basically get everything good to dive into photos for tuesday
 
-    -to be set during panda express.
+
+
+monday notes:::
+
+  -gitcommit
+  -now redirects to current page and updates comments. VICTORY
+  POMO 2
+  -trying to get it to redirect correctly upon comment
+  -whatever I've done now every page is nick schwad
+  -reroutes wrong way when commenting on others
+  -need to refresh for comment button to work
+  -can do multiple comments
+  -testing comments
+  POMO 1
 
 sunday notes::::
 cookie after comments
@@ -96,6 +109,7 @@ SUNDAY
   -urrything pretty
     -signup form
     -placeholders
+    -schwadbook aligned
 
   mains:
 

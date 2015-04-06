@@ -24,7 +24,8 @@ MONDAY THOUGHTS
 monday notes:::
   likes liking deletes deleting links linking
 
-  
+  -
+  -changed to current_user to show right name
   POMO 8
   git commit
   -comment name link working

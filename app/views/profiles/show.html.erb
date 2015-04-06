@@ -174,7 +174,7 @@
               <% if like_array.include? @user.id %>
                 <%= link_to 'Unlike', like_path(@user_like.id), method: :delete, data: { confirm: 'Are you sure?' } %>
               <% else %> 
-              <%= link_to "Like", new_like_path(:user_id => @user.id, :post_id => post.id) %>
+              <%= link_to "Like", new_like_path(:user_id => current_user.id, :post_id => post.id) %>
               <% end %>
 
             </div>

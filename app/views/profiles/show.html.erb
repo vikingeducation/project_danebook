@@ -192,7 +192,7 @@
             <div class="col-md-12">
               <div class="row comment">
                 <div class="col-md-12">
-                  <%= form_for @post do |f| %>
+                  <%= form_for @current_post do |f| %>
                     <%= f.fields_for :comment do |comment_fields| %>
                       <%= comment_fields.label :content %>
                       <%= comment_fields.text_area :content, :placeholder => "Make a comment..." %>
@@ -220,8 +220,10 @@
                 <div class="col-md-10">
                   <div class="row">
                     <div class="col-md-12">
+                      <% if comment.user %>
                       <% @commenter_name = "#{comment.user.first_name} #{comment.user.last_name}" %>
                       <%= link_to "#{@commenter_name}", "#" %> <span class="post-date">said on <%= comment.created_at %>:</span>
+                      <% end %>
                     </div>
                   </div>
                   <div class="row">

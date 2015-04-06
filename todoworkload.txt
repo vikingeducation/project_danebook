@@ -8,6 +8,19 @@ MONDAY THOUGHTS
   -if I like i like as sammie corwin
   -identify correct post id for posting
 
+
+  MONDAY MORNING AGENDA
+
+    -commenting: burn it down and start again completely nested. read about nested forms again in first pomodoro or so
+
+    -liking: make it functional; no weird "ands" and liking as the current and correct user.
+
+    -testing: add to your module and feature testing suite to support what you currently have to make it more robust
+
+  MONDAY AFTERNOON AGENDA
+
+    -to be set during panda express.
+
 sunday notes::::
 cookie after comments
   

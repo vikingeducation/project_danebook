@@ -41,7 +41,9 @@ class PostsController < ApplicationController
   def update
     if params[:post][:comment]
       Comment.create(
-      :content => params[:content]
+      :content => params[:post][:comment][:content],
+      :post_id => params[:id].to_i,
+      :user_id => current_user.id
       )
     else
       @user = current_user

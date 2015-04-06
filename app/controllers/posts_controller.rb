@@ -39,6 +39,7 @@ class PostsController < ApplicationController
   end
 
   def update
+    fdjkasl;
     if params[:post][:comment]
       Comment.create(
       :content => params[:post][:comment][:content],

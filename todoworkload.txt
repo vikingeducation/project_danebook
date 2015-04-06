@@ -22,7 +22,11 @@ MONDAY THOUGHTS
     -NEED TO MIGRATE
 
 monday notes:::
-
+  
+  POMO 6
+  -gitcommit
+  -create authored and received associations next
+  -comment currently redirecting back to user
   -association changed can make posts on other peopls pages
   -change user association to has_many received posts w/ foreign key
   -talk erik

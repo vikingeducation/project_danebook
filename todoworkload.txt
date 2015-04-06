@@ -23,6 +23,8 @@ MONDAY THOUGHTS
 
 monday notes:::
 
+  -need to only show delete link if I'm the user
+  -now daring to check some pivotal tracker on comments. 
   -gitcommit
   -now redirects to current page and updates comments. VICTORY
   POMO 2

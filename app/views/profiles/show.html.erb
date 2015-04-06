@@ -183,7 +183,9 @@
               <a href="#">Comment</a>
             </div>
             <div class="col-md-1 col-md-offset-8">
-              <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <% if post.user_id == current_user.id %>
+                <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <% end %>
             </div>
             <!-- artifact: render make comment partial used to be here -->
             <!-- make comment explicitly here -->
@@ -209,7 +211,6 @@
 
 
             <!-- end make comment explicitly -->
-
 
             <% post.comments.each do |comment| %>
               <!-- Comments for stuff --> 
@@ -239,7 +240,9 @@
                       <!-- people liking -->
                     </div>
                     <div class="col-md-1">
-                      <a href="#">Delete</a>
+                      <% if comment.user_id == current_user.id %>
+                        <a href="#">Delete</a>
+                      <% end %>
                     </div>
                   </div>
                 </div>

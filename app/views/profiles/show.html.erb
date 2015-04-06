@@ -166,15 +166,15 @@
               <% like_array = [] %>
               <% post.likes.each do |like| %>
                 <% like_array << like.user_id %>
-                <% if like.user_id == @user.id %>
+                <% if like.user_id == current_user.id %>
                   <% @user_like = like %>
                 <% end %>
               <% end %>
 
-              <% if like_array.include? @user.id %>
-                <%= link_to 'Unlike', like_path(@user_like.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+              <% if like_array.include? current_user.id %>
+                <%= link_to 'Unlike', like_path(@user_like.id, :original_man => @user.id), method: :delete, data: { confirm: 'Are you sure?' } %>
               <% else %> 
-              <%= link_to "Like", new_like_path(:user_id => current_user.id, :post_id => post.id) %>
+              <%= link_to "Like", new_like_path(:user_id => current_user.id, :post_id => post.id, :liking_person => @user.id) %>
               <% end %>
 
             </div>

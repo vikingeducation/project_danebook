@@ -20,11 +20,20 @@ MONDAY THOUGHTS
     -basically get everything good to dive into photos for tuesday
 
     -NEED TO MIGRATE
+TUESDAY AGENDA
+
+  -- like/unlike/delete comments
+  --writing test coverage for it all
+  --if bonus time then start reading photos stuff
+
+
 
 monday notes:::
   likes liking deletes deleting links linking
 
-  -
+  liking unliking posting commenting all good just need to like unlike and delete comments
+  -unliking is hating me again
+  -link routing home need to change
   -changed to current_user to show right name
   POMO 8
   git commit

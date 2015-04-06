@@ -17,6 +17,7 @@ class ProfilesController < ApplicationController
     @profile = Profile.find(@user.profile.id)
     @post = Post.create
     @comment = Comment.create
+    
     # @post = Post.create(:user_id => @user.id)
     # @post.save
   end

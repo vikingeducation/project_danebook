@@ -39,12 +39,18 @@ class PostsController < ApplicationController
   end
 
   def update
-    @user = current_user
-    if post_it
-      flash[:success] = "Successfully updated"
+    if params[:post][:comment]
+      Comment.create(
+      :content => params[:content]
+      )
     else
-      flash.now[:failure] = "failed to update"
-      render :edit
+      @user = current_user
+      if post_it
+        flash[:success] = "Successfully updated"
+      else
+        flash.now[:failure] = "failed to update"
+        render :edit
+      end    
     end    
     redirect_to user_profile_path(current_user.id)
   end

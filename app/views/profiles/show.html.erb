@@ -192,15 +192,16 @@
             <div class="col-md-12">
               <div class="row comment">
                 <div class="col-md-12">
-                  <%= form_tag(new_post_comment_path(@post), method: "GET") do %>
-                    <%= label_tag(:content, "") %>
-                    <%= text_area_tag(:content, "Make a comment...") %>
+                  <%= form_for @post do |f| %>
+                    <%= f.fields_for :comment do |comment_fields| %>
+                      <%= comment_fields.label :content %>
+                      <%= comment_fields.text_area :content, :placeholder => "Make a comment..." %>
+                    <% end %>
                 </div>
               </div>
               <div class="row post-bottom">
                 <div class="col-md-2 col-md-offset-8 post-button">
-                    <% session[:real_post_id] = post.id %>
-                  <%= submit_tag("Comment") %>
+                  <%= f.submit %>
                 <% end %>
                 </div>
               </div>

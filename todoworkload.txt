@@ -23,6 +23,11 @@ MONDAY THOUGHTS
 
 monday notes:::
 
+  -association changed can make posts on other peopls pages
+  -change user association to has_many received posts w/ foreign key
+  -talk erik
+  POMO 5
+  -checking in foreign key with tutors
   -gonna see if foreign key works
   -it routes thru user update now, just wrote in to try and create post
   -just did a nested form for with post under user

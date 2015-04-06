@@ -127,7 +127,7 @@
 
       <div class="col-md-8">
         <%= render "/shared/make_post" %>
-        <% @user.posts.reverse_each do |post| %>
+        <% @user.received_posts.reverse_each do |post| %>
           <% @current_post = post %>
           <article class="row post">
           <div class="row">

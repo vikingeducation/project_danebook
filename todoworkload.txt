@@ -11,6 +11,18 @@ MONDAY THOUGHTS
 sunday notes::::
 cookie after comments
   
+  POMO 12
+  gitcommit
+  -it does BOTTOM post on page so have to set it to right spot
+
+  -cannot delete comment
+  -it will need a fix def new comments controller to redirect properly
+  -cleaning up more muck. trying to see if comments sticking or showing
+  POMO 11
+  -missing template comments/new still
+  -create form tag to test
+  POMO 10
+  -have to decide whether to nestify the whole damn page and burn it down or make it work. I think I can make it work. 
   -when trying to make a comment I just create a new post. darn.
   -delete still working
   POMO 9

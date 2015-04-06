@@ -124,7 +124,7 @@
         </article>
       </div>
       <!-- right hand post feed -->
-      
+
       <div class="col-md-8">
         <%= render "/shared/make_post" %>
         <% @user.posts.reverse_each do |post| %>
@@ -192,16 +192,15 @@
             <div class="col-md-12">
               <div class="row comment">
                 <div class="col-md-12">
-                  <%= form_for @current_post do |p| %>
-                    <%= p.fields_for :comment, Comment.new do |comment_fields| %>
-                      <%= comment_fields.label :content %>
-                      <%= comment_fields.text_area :content, :placeholder => "Make a comment..." %>
-                    <% end %>
+                  <%= form_tag(new_post_comment_path(@post), method: "GET") do %>
+                    <%= label_tag(:content, "") %>
+                    <%= text_area_tag(:content, "Make a comment...") %>
                 </div>
               </div>
               <div class="row post-bottom">
                 <div class="col-md-2 col-md-offset-8 post-button">
-                  <%= p.submit %>
+                    <% session[:real_post_id] = post.id %>
+                  <%= submit_tag("Comment") %>
                 <% end %>
                 </div>
               </div>

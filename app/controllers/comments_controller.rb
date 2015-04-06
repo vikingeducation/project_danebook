@@ -19,7 +19,12 @@ class CommentsController < ApplicationController
 
   def new
     @user = current_user
-    @new_post = @user.build_post
+    @comment = Comment.create(
+      :content => params[:content],
+      :post_id => session[:real_post_id].to_i,
+      :user_id => @user.id
+      )
+    redirect_to user_profile_path(@user.id)
   end
 
   def edit
@@ -28,15 +33,14 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
-    if @user.save    
-      sign_in(@user)
-      flash[:success] = "created new user!"
-      redirect_to profiles_path(current_user.id)
+    @user = current_user
+    if comment_it
+      flash[:success] = "Successfully updated"
     else
-      flash.now[:error] = "There was an error"
-      redirect_to profiles_path(current_user.id)
-    end
+      flash.now[:failure] = "failed to update"
+      render :edit
+    end    
+    redirect_to user_profile_path(current_user.id)
   end
 
   def update

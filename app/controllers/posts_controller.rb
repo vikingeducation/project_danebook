@@ -31,10 +31,10 @@ class PostsController < ApplicationController
     if @user.save    
       sign_in(@user)
       flash[:success] = "created new user!"
-      redirect_to profiles_path(current_user.id)
+      redirect_to user_profile_path(current_user.id)
     else
       flash.now[:error] = "There was an error"
-      redirect_to profiles_path(current_user.id)
+      redirect_to user_profile_path(current_user.id)
     end
   end
 

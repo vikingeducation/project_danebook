@@ -23,6 +23,7 @@ MONDAY THOUGHTS
 
 monday notes:::
   
+  -time to associate back
   POMO 6
   -gitcommit
   -create authored and received associations next

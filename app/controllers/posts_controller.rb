@@ -39,14 +39,13 @@ class PostsController < ApplicationController
   end
 
   def update
-    fdjkasl;
     if params[:post][:comment]
       Comment.create(
       :content => params[:post][:comment][:content],
       :post_id => params[:id].to_i,
       :user_id => current_user.id
       )
-      working_user = Post.find((params[:id].to_i)).user.id
+      working_user = Post.find(params[:id].to_i).receiver.id
       redirect_to user_profile_path(working_user)
     else
       @user = current_user

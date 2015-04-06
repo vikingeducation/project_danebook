@@ -23,6 +23,15 @@ MONDAY THOUGHTS
 
 monday notes:::
 
+  -can post on own page. HACK ALERT LINE60 UNDER DEF UPDATE IN POSTS CONTROLLER FOR DEFINING LOCAL VARIABLE WORKING_USER
+  -let us make it for now i can only post on mine. worry about friending later first posting on my page
+
+  POMO 3
+  -break postcontroller#update to dig in
+  -gonna just post on my own wall
+  -can not post on other peoples profiles
+  -got right name to show (I think)
+  -only shows delete on MY posts and comments
   -need to only show delete link if I'm the user
   -now daring to check some pivotal tracker on comments. 
   -gitcommit

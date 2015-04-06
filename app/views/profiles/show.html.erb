@@ -124,9 +124,11 @@
         </article>
       </div>
       <!-- right hand post feed -->
+      
       <div class="col-md-8">
         <%= render "/shared/make_post" %>
         <% @user.posts.reverse_each do |post| %>
+          <% @current_post = post %>
           <article class="row post">
           <div class="row">
             <div class="col-md-2">
@@ -183,7 +185,32 @@
             <div class="col-md-1 col-md-offset-8">
               <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %>
             </div>
-            <%= render "/shared/make_comment" %>
+            <!-- artifact: render make comment partial used to be here -->
+            <!-- make comment explicitly here -->
+
+
+            <div class="col-md-12">
+              <div class="row comment">
+                <div class="col-md-12">
+                  <%= form_for @current_post do |p| %>
+                    <%= p.fields_for :comment, Comment.new do |comment_fields| %>
+                      <%= comment_fields.label :content %>
+                      <%= comment_fields.text_area :content, :placeholder => "Make a comment..." %>
+                    <% end %>
+                </div>
+              </div>
+              <div class="row post-bottom">
+                <div class="col-md-2 col-md-offset-8 post-button">
+                  <%= p.submit %>
+                <% end %>
+                </div>
+              </div>
+            </div>
+
+
+            <!-- end make comment explicitly -->
+
+
             <% post.comments.each do |comment| %>
               <!-- Comments for stuff --> 
               <div class="row comment">

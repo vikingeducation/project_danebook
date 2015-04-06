@@ -9,7 +9,14 @@ MONDAY THOUGHTS
   -identify correct post id for posting
 
 sunday notes::::
+cookie after comments
   
+  -when trying to make a comment I just create a new post. darn.
+  -delete still working
+  POMO 9
+  -resourced comment under posts don't forget to do likes
+  gitcommit
+  POMO 8
   -I NEED TO NEST COMMENTS UNDER POSTS
   -starting onto monday work posts and comments
   -if manually hacking (like user/234/edit) reroutes back

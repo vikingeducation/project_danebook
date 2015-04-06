@@ -7,7 +7,10 @@ Rails.application.routes.draw do
   get "login" => "session#new"
   delete "logout" => "sessions#destroy"
   resources :likes
-  resources :comments
+  #likes next
+  resources :posts do
+    resources :comments
+  end
   resources :users do
     resource :profile
   end

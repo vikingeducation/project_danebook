@@ -65,6 +65,8 @@ class PostsController < ApplicationController
     params.
       require(:post).
       permit(:content,
-             :user_id )
+             :user_id,
+             { :comment_attributes => [
+              :content ] } )
   end
 end

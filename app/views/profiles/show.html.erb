@@ -154,6 +154,9 @@
                   <%= User.find(post.likes[1].user_id).first_name %> <%= User.find(post.likes[1].user_id).last_name %>,
                   <%= User.find(post.likes[2].user_id).first_name %> <%= User.find(post.likes[2].user_id).last_name %> and
                   <%= (post.likes.count / 2) - 3 %> others like this.
+                <% elsif post.likes.count == 1 %>
+                  <% my_like = post.likes[0] %>
+                  <%= User.find(my_like.user_id).first_name %> <%= User.find(my_like.user_id).last_name %> likes this.
                 <% else %>
                   <% post.likes[0..-2].each do |like| %>
                     <%= User.find(like.user_id).first_name %> <%= User.find(like.user_id).last_name %> 

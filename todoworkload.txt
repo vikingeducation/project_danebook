@@ -2,31 +2,21 @@ WORKFLOW AGENDA
 
 4/5-12
 
-MONDAY THOUGHTS
-  -unliking works but redirects to user profile page
-  -commenting redirects to root
-  -if I like i like as sammie corwin
-  -identify correct post id for posting
 
-
-  MONDAY MORNING AGENDA
-
-    -commenting: test it out and get it functional. 
-
-    -liking: make it functional; no weird "ands" and liking as the current and correct user.
-
-    -testing: add to your module and feature testing suite to support what you currently have to make it more robust
-
-    -basically get everything good to dive into photos for tuesday
-
-    -NEED TO MIGRATE
 TUESDAY AGENDA
 
   -- like/unlike/delete comments
-  --writing test coverage for it all
+  --writing test coverage for it all & validations
   --if bonus time then start reading photos stuff
+  --button edit profile show
 
 
+tuesday notes:::
+
+  -bug : need to refresh to post
+  -now back onto testing after tidying up how likes look!
+  -commenting/liking/posting good
+POMO1
 
 monday notes:::
   likes liking deletes deleting links linking

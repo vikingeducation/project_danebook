@@ -12,26 +12,26 @@ describe User do
       it "only allows one email" do
         new_user = build(:user, :email => user.email)
         new_user.valid?
-        expect(user.errors[:email]).to include("That email is already taken, sorry!")
+        expect(new_user.errors[:email]).to include("That email is already taken, sorry!")
       end
     end
     context "wrong lengths" do
       it "hates short passwords" do 
         new_user = build(:user, :password => "jll")
         new_user.valid?
-        expect(user.errors[:password]).to include("Please write a password between 9 and 25 characters!")
+        expect(new_user.errors[:password]).to include("Please write a password between 9 and 25 characters!")
       end
       it "hates long passwords" do
         new_user = build(:user, :password => "WHYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY")
         new_user.valid?
-        expect(user.errors[:password]).to include("Please write a password between 9 and 25 characters!")
+        expect(new_user.errors[:password]).to include("Please write a password between 9 and 25 characters!")
       end
     end
   end
 
   describe "associations" do
     let(:user){ build(:user) }
-    
+
     context "users and other objects" do
       it "responds to posts association" do
         expect(user).to respond_to(:posts)

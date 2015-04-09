@@ -7,10 +7,11 @@ class User < ActiveRecord::Base
   has_many :comments, dependent: :destroy
 
   accepts_nested_attributes_for :profile, :received_posts, :authored_posts, :likes
-  validates :email, :uniqueness => true
+  validates :email, 
+            :presence => {:message => "Please include an email!"},
+            :uniqueness => {:message => "That email is already taken, sorry!"}
   validates :password,
-            :length => {:within => 9..25},
-            :allow_nil => true,
-            :message => "Please write a password between 9 and 25 characters!"
+            :length => {:within => 9..25, :message => "Please write a password between 9 and 25 characters!"},
+            :allow_nil => true
   validates_format_of :email, :with => /@.*\./, :message => "Please use a valid email format, e.q. 'john.doe@yahoo.com'"
 end

@@ -11,7 +11,6 @@ describe User do
     context "already have an account" do
       it "only allows one email" do
         new_user = build(:user, :email => user.email)
-        new_user.valid?
         expect(new_user.errors[:email]).to include("That email is already taken, sorry!")
       end
     end

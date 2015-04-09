@@ -23,6 +23,14 @@
     <div class="success"><%= flash[:success] %></div>
   <% end %>
  </h3>
+ <% if current_user %>
+    <% if current_user.errors.any? %>
+     <br><br><br>
+     <% current_user.errors.each do |error| %>
+       <p><div class="error"><%= error %></div></p>
+     <% end %>
+   <% end %>
+ <% end %>
 <%= yield %>
 
 </body>

@@ -15,10 +15,56 @@ feature 'User accounts' do
       fill_in "Password", with: "greybull", :match => :prefer_exact
       fill_in "Password confirmation", with: "greybull"
       fill_in "Birthday", with: birthday
+      fill_in "First name", with: user.first_name
+      fill_in "Last name", with: user.last_name
     end
     click_button "Create User"
     expect(page).to have_content "1/1/61"
     expect(page).to have_content "About Me"
+  end
+
+  scenario "reject short password" do
+    within("div.sign-up-form") do
+      birthday = "1/1/61"
+      fill_in "Email", with: user.email, :match => :prefer_exact
+      fill_in "Password", with: "gr", :match => :prefer_exact
+      fill_in "Password confirmation", with: "gr"
+      fill_in "Birthday", with: birthday
+      fill_in "First name", with: user.first_name
+      fill_in "Last name", with: user.last_name
+    end
+    click_button "Create User"
+    expect(page).to have_content "New School Form"
+  end
+
+  scenario "reject long password" do
+    within("div.sign-up-form") do
+      birthday = "1/1/61"
+      fill_in "Email", with: user.email, :match => :prefer_exact
+      fill_in "Password", with: "greybulllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll", :match => :prefer_exact
+      fill_in "Password confirmation", with: "greybulllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllllll"
+      fill_in "Birthday", with: birthday
+    expect(page).to have_content "New School Form"
+      
+    end
+    click_button "Create User"
+    expect(page).to have_content "1/1/61"
+    expect(page).to have_content "About Me"
+  end
+
+  scenario "reject unconfirmed password"do
+    within("div.sign-up-form") do
+      birthday = "1/1/61"
+      fill_in "Email", with: user.email, :match => :prefer_exact
+      fill_in "Password", with: "greybull", :match => :prefer_exact
+      fill_in "Password confirmation", with: "bullgrey"
+      fill_in "Birthday", with: birthday
+      fill_in "First name", with: user.first_name
+      fill_in "Last name", with: user.last_name
+    end
+    click_button "Create User"
+    expect(page).to have_content "New School Form"
+    
   end
 
   scenario "sign in as a current user" do
@@ -27,7 +73,6 @@ feature 'User accounts' do
       fill_in "password", with: "greybull"
       click_button "Log in"
     end
-    binding.pry
     expect(page).to have_content "Basic Information"
   end
 

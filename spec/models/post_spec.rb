@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe Post do
-  let(:post){ build(:like) }
+  let(:post){ build(:post) }
 
   it "is valid out of the gate" do
     expect(post).to be_valid

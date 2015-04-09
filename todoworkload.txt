@@ -5,7 +5,6 @@ WORKFLOW AGENDA
 
 TUESDAY AGENDA
 
-  -- like/unlike/delete comments
   --writing test coverage for it all & validations
   --if bonus time then start reading photos stuff
   --button edit profile show
@@ -13,6 +12,23 @@ TUESDAY AGENDA
 
 tuesday notes:::
 
+  -testing most important part
+  
+  -moving on to photos and mailers
+POMO 4
+  -my feature tests still hate me
+  -kill old school form
+  -redirect on users_controller#create fixed
+  -moving password validation to feature
+  -killed all likes
+POMO 3
+  -killed parent_post line too
+  -killed "author" line of likes factory
+  -working on passing current failures; like 'author' factory not happy
+  -MODEL TEST TIME BEYATCH
+POMO2
+  -write more tests for models, update them, validate them, one pomodoro. next pomodoro feature tests
+  -likes properly displaying now
   -bug : need to refresh to post
   -now back onto testing after tidying up how likes look!
   -commenting/liking/posting good

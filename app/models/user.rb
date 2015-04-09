@@ -9,6 +9,8 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :profile, :received_posts, :authored_posts, :likes
   validates :email, :uniqueness => true
   validates :password,
-            :length => {:within => 6..25},
-            :allow_nil => true
+            :length => {:within => 9..25},
+            :allow_nil => true,
+            :message => "Please write a password between 9 and 25 characters!"
+  validates_format_of :email, :with => /@.*\./, :message => "Please use a valid email format, e.q. 'john.doe@yahoo.com'"
 end

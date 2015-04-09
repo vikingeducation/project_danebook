@@ -40,7 +40,7 @@ class UsersController < ApplicationController
       redirect_to @user
     else
       flash.now[:error] = "There was an error"
-      redirect_to profiles_path(current_user.id)
+      redirect_to root_path
     end
   end
 

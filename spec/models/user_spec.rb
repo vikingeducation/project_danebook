@@ -32,9 +32,6 @@ describe User do
     let(:user){ build(:user) }
 
     context "users and other objects" do
-      it "responds to posts association" do
-        expect(user).to respond_to(:posts)
-      end
       it "responds to likes association" do
         expect(user).to respond_to(:likes)
       end

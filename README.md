@@ -33,6 +33,7 @@ Created by [Andur Carr](https://github.com/LaMarseillaise) for [Viking Code Scho
 - Build search results page
 - Set up combined Post and Photo index
 - Style emails
+- Mutual friends; friends.where(id: target.friends.pluck(:id))
 
 - - -
 

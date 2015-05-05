@@ -1,0 +1,58 @@
+<main>
+
+<!-- This part changes page by page -->
+  <section class="container" id="information-pane">
+    <header class="row">
+      <div class="col-sm-offset-2 col-sm-8 about-header">
+        <h2>About</h2>
+      </div>
+      <%= render "edit_profile_button" if @user == current_user %>
+    </header>
+
+
+    <div class = "row">
+      <div class = "col-sm-5 col-sm-offset-1">
+        <h3>Basic Information</h3>
+        <table class = "table about-table">
+          <tr>
+            <td>Birthday:</td>
+            <td><%=@profile.birthday%></td>
+          </tr>
+          <tr>
+            <td>College:</td>
+            <td><%=@profile.college%></td>
+          </tr>
+          <tr>
+            <td>Hometown:</td>
+            <td><%=@profile.hometown%></td>
+          </tr>
+          <tr>
+            <td>Currently Lives:</td>
+            <td><%=@profile.currently_lives%></td>
+          </tr>
+        </table>
+
+        <h3>Contact Information</h3>
+        <table class = "table about-table">
+          <tr>
+            <td>Email:</td>
+            <td><%=@user.email%></td>
+          </tr>
+          <tr>
+            <td>Telephone:</td>
+            <td><%=@profile.telephone%></td>
+          </tr>
+        </table>
+
+      </div>
+
+      <div class = "col-sm-5">
+        <h3>Words to live by</h3>
+        <p><%=@profile.words_to_live_by%></p>
+        <h3>About me</h3>
+        <p><%=@profile.about_me%></p>
+      </div>
+    </div>
+  </section>
+
+</main>

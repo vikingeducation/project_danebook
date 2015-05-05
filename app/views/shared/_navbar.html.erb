@@ -1,0 +1,55 @@
+<!-- navbar -->
+<nav id="top-navbar" class="navbar navbar-default navbar-static" role="navigation">
+  <div class = "container-fluid">
+      <div class = "container">
+
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+
+          <%= link_to newsfeed_path, class: "navbar-brand" do %>
+
+            <p>
+              <%= image_tag("danish_flag.gif", class: "img-circle", alt: "Denmark 4eva", height: "28px", width: "36px")%>
+              Danebook
+            </p>
+
+          <% end %>
+
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse">
+
+              <%=form_tag users_path , method: "GET", class: "navbar-form navbar-left", role: "search"  do %>
+                <div class="form-group">
+                  <%= text_field_tag :query, nil, id: "nav-search-bar", class: "form-control", placeholder: "Search" %>
+                </div>
+              <% end %>
+
+          <ul id = "navbar-user-links" class="nav navbar-nav navbar-right pull-right">
+
+            <li class="hidden-sm">
+              <%= link_to current_user.first_name, user_timeline_path(current_user), id: "navbar-username" %>
+            </li>
+
+            <li class="hidden-sm">
+              <%= link_to "Friend Requests", user_friend_requests_path(current_user) %>
+            </li>
+
+            <li class="hidden-sm pull-right">
+              <%= link_to "Log Out", session_path, method: "delete" %>
+            </li>
+
+          </ul>
+
+        </div><!-- /.navbar-collapse-->
+      </div>
+  </div><!-- /.container-fluid -->
+</nav>

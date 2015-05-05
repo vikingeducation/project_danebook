@@ -1,0 +1,20 @@
+<section class = "col-sm-12 like-section">
+  <div class = "row">
+
+  <div class = "col-md-1">
+    <%= like_link(post) %>
+  </div>
+
+  <a class="col-sm-2 comment-link" href = "#">Comment</a>
+
+  <% if current_user_page?(@user) %>
+    <%= link_to "Delete", user_post_path(current_user, post), method: "delete", class: "col-sm-1 pull-right", data: {confirm: "Are you sure you want to delete this post?"} %>
+  <% end %>
+
+  <div class = "col-sm-12">
+    <%= like_sentence(post) %>
+  </div>
+
+
+  </div>
+</section>

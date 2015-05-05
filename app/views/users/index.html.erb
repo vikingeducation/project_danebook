@@ -1,0 +1,27 @@
+<div class = "container">
+<div class = "row">
+    <div class = "col-md-12 alert alert-success">
+        <p>
+          Showing <%=@users.count %> users whose first or last names contain
+        '<%=@query%>'
+        </p>
+    </div>
+  </div>
+</div>
+
+<section class="container search-results-pane" id="information-pane">
+  <header class="row">
+    <div class="col-sm-offset-2 col-sm-8 about-header">
+      <h2>Search Results</h2>
+    </div>
+  </header>
+
+
+  <div class = "row">
+
+    <% @users.each do |user| %>
+      <%= render partial: "searched_user", locals: { user: user } %>
+    <% end %>
+
+  </div>
+</section>

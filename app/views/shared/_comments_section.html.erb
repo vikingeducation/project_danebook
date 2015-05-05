@@ -1,0 +1,43 @@
+<section class="col-sm-12 comment-section">
+
+<div class = "comments-wrapper">
+  <% parent.comments.each do |comment| %>
+    <%= render partial: "shared/single_comment", locals: {comment: comment} %>
+  <% end %>
+</div>
+
+
+
+<div class = "row">
+  <!--post a comment form -->
+  <div class = "col-sm-12 col-xs-12 comment-form">
+
+    <%= form_for [parent.user, parent, parent.comments.build], remote: true do |f| %>
+
+      <div class="form-group row">
+
+        <div class = "col-sm-12">
+          <%= f.text_area :body, class: "form-control", rows: "4", placeholder: "Write a comment..." %>
+        </div>
+
+      </div>
+
+      <div class="form-group row">
+
+
+        <div class = "link-wrapper col-sm-2 col-xs-2">
+          <a href="#">Cancel</a>
+        </div>
+
+        <div class = "submit-wrapper col-sm-4 col-xs-6 col-sm-offset-6 col-xs-offset-6">
+          <%= f.submit "Comment", class: "btn btn-block comment-button  danebook-button"%>
+        </div>
+
+
+      </div>
+
+    <% end %>
+
+  </div>
+  </div>
+</section>

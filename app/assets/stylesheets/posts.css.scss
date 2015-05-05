@@ -1,0 +1,128 @@
+// Place all the styles related to the posts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+
+#post-feed {
+
+  margin-bottom: 30px;
+
+
+  p {
+    padding-bottom: 15px;
+  }
+
+  & > article {
+    border: 1px solid #c4c6c9;
+    overflow: hidden;
+    border-radius: 3px;
+    background-color: #fff;
+    margin-top: 15px;
+    padding-top: 15px;
+
+    .post-body {
+      padding-top: 30px;
+      padding-left: 30px;
+      padding-right: 30px;
+    }
+
+    img {
+      height:100%;
+      width: 100%;
+      border: 1px solid #949699;
+    }
+
+    .date-posted {
+      color: #aaa;
+    }
+  }
+
+  .like-section {
+    border-top: 1px solid #e4e6e9;
+    background-color: #fff;
+    padding-bottom: 15px;
+
+    & > * {
+      padding-top: 15px;
+    }
+
+    span {
+      color: #999;
+    }
+  }
+
+  .comment-button {
+    background: linear-gradient(#4C67A1, #3B5998);
+    color: white;
+    font-weight: bold;
+    box-shadow: 3px 3px 3px black;
+    border: 1px solid black;
+    border-radius: 0;
+  }
+
+
+
+  .comment-section {
+    border-top: 1px solid #d4d6d9;
+    background-color: #f4f5f7;
+
+    article {
+      padding-top: 15px;
+
+      span {
+        color: #999;
+      }
+    }
+
+    // requires JS to display
+    .comment-form {
+      display: none;
+    }
+
+
+    form {
+      .form-group {
+        margin-top: 15px;
+        margin-bottom: 15px;
+      }
+
+      textarea {
+        border: 1px solid #777;
+      }
+    }
+
+
+
+  }
+}
+
+
+
+
+
+#post-form {
+  text-align: center;
+  border: 1px solid #c4c6c8;
+  border-radius: 3px;
+  background-color: #e7e9ea;
+  overflow: hidden;
+
+  > * {
+    padding-top: 15px;
+    // border-top: 1px solid black;
+    background-color: #e7e9ea;
+  }
+
+  button {
+    background: linear-gradient(#4C67A1, #3B5998);
+    color: white;
+    font-weight: bold;
+    box-shadow: 3px 3px 3px black;
+    border: 1px solid black;
+    border-radius: 0;
+    width: 100px;
+  }
+}
+

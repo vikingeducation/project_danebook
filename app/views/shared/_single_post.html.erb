@@ -1,0 +1,19 @@
+<article class = "row single-post" data-id = "<%=post.id%>">
+  <header class = "col-sm-12">
+    <div class ="col-sm-2">
+      <%= profile_photo(post.user) %>
+    </div>
+    <div class="col-sm-10">
+      <p><%= link_to post.user.name, post.user %></p>
+      <p class = "date-posted">Posted on <%= post.created_at.to_formatted_s(:long) %></p>
+    </div>
+  </header>
+
+  <section class = "col-sm-12 post-body">
+    <p><%= post.body %></p>
+  </section>
+
+  <%= render partial: "shared/likes_section", locals: {post: post} %>
+  <%= render partial: "shared/comments_section", locals: {parent: post} %>
+
+</article><!--post 1-->

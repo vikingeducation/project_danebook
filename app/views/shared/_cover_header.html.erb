@@ -1,0 +1,37 @@
+<header class="container" id="cover">
+
+  <!--cover images-->
+  <div class = "row">
+    <div id="cover-photo">
+      <%= cover_image(@user)%>
+    </div>
+
+
+    <div class="col-sm-12 hidden-xs hidden-sm" id="profile-image">
+      <div class = "col-sm-2"><%= profile_photo(@user) %></div>
+      <div class = "user-headline col-sm-3">
+        <p class = "h2 name-header"><%=@user.name %></p>
+        <%= friend_button(@user) %>
+      </div>
+    </div>
+  </div>
+
+  <!--mid-page navbar-->
+  <div id = "profile-nav" class = "row">
+    <div class = "col-sm-7 col-sm-offset-3">
+      <ul class = "nav nav-tabs " role = "profile-nav">
+        <li><%= link_to "Timeline", user_timeline_path(@user) %></li>
+        <li><%= link_to "About", user_profile_path(@user) %></li>
+        <li ><%= link_to "Photos <span class='link-count hidden-xs'>(#{@user.photos.count})</span>".html_safe, user_photos_path(@user) %></li>
+        <li><%= link_to "Friends <span class='link-count hidden-xs'>(#{@user.friends.size})</span>".html_safe, user_friends_path %></li>
+    </div>
+
+    <div class = "col-sm-2">
+      <ul class = "nav">
+        <li>
+        <%= edit_profile_link(@user) %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</header>

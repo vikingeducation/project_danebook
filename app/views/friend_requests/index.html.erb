@@ -1,0 +1,22 @@
+<main>
+
+<!-- This part changes page by page -->
+  <section class="container" id="information-pane">
+    <header class="row">
+      <div class="col-sm-offset-2 col-sm-8 about-header">
+        <h2>Friend Requests</h2>
+      </div>
+    </header>
+
+
+    <div class = "row" id="friends-list">
+
+      <% @friend_requesters.each_with_index do | friend_requester, index | %>
+        <% break if index >= 6 %>
+        <%= render partial: "friend_requester", locals: { friend_requester: friend_requester } %>
+      <% end %>
+
+    </div>
+  </section>
+
+</main>

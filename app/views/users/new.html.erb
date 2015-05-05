@@ -1,0 +1,134 @@
+<main id = "login-main" class = "container">
+  <div class = "row">
+
+
+    <!--Promo copy-->
+    <section class = "col-sm-7 promo">
+
+      <h2>Connect with all your friends!</h2>
+
+      <ul>
+
+        <li><strong>See photos and updates</strong> in your news feed.</li>
+
+        <li><strong>Post your status for the world to see</strong> from your profile.</li>
+
+        <li><strong>Get in touch with your friends</strong> by "friending" them.</li>
+
+        <li><strong>Like things</strong> because you're a positive person!</li>
+
+      </ul>
+
+    </section>
+
+
+
+    <!--Signup form section-->
+    <section class = "col-sm-5">
+      <div class = "row">
+        <div class = "col-sm-12">
+          <h2>Sign Up</h2>
+        </div>
+      </div>
+      <%= form_for @user, class: "row", role: "signup" do |user_fields| %>
+        <div class = "form-group">
+          <div class = "col-sm-6">
+            <%= user_fields.text_field :first_name,
+                                        class: "form-control col-sm-6",
+                                        placeholder: "First Name" %>
+          </div>
+        </div>
+
+        <div class = "form-group">
+          <div class = "col-sm-6">
+            <%= user_fields.text_field :last_name,
+                                        class: "form-control col-sm-6",
+                                        placeholder: "Last Name" %>
+          </div>
+        </div>
+
+
+        <div class="form-group col-sm-12">
+
+          <%= user_fields.email_field :email,
+                                       placeholder: "Email Address",
+                                       class: "form-control" %>
+
+          <%= user_fields.password_field :password,
+                                          placeholder: "Password",
+                                          class: "form-control" %>
+
+          <%= user_fields.password_field :password_confirmation,
+                                          placeholder: "Confirm Your Password",
+                                          class: "form-control" %>
+
+        </div>
+
+        <%= user_fields.fields_for :profile do |profile_fields| %>
+          <div id="birthday" class="form-group col-sm-12">
+            <label for="birthday">Birthday</label><br>
+            <div class = "row">
+
+              <div class = "col-sm-4" >
+                <%=profile_fields.select :month, (1..12),
+                                        { prompt: "Month" },
+                                        { class: "form-control col-sm-4" } %>
+              </div>
+              <div class = "col-sm-4" >
+                <%=profile_fields.select :day, (1..31),
+                                        { prompt: "Day" },
+                                        { class: "form-control col-sm-4" } %>
+              </div>
+              <div class = "col-sm-4" >
+                <%=profile_fields.select :year,
+                                        (1905..Date.today.year),
+                                        { prompt: "Year", selected: Date.today.year},
+                                        { class: "form-control col-sm-4" } %>
+              </div>
+            </div>
+
+          </div> <!--form-group-->
+
+          <div class = "form-group col-sm-12">
+
+            <label for="gender">Gender</label>
+            <br>
+
+            <div class = "row" >
+
+              <div class = "col-sm-4">
+                <%= profile_fields.radio_button :gender, "Female" %>
+                <%= profile_fields.label :gender, "Female" %><br>
+              </div>
+
+              <div class = "col-sm-4">
+                <%= profile_fields.radio_button :gender, "Male" %>
+                <%= profile_fields.label :gender, "Male" %><br>
+              </div>
+
+              <div class = "col-sm-4">
+                <%= profile_fields.radio_button :gender, "Rather Not Say" %>
+                <%= profile_fields.label :gender, "Rather Not Say" %>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- fields_for profile -->
+        <% end %>
+
+        <div class = "form-group col-sm-12">
+
+        <%=user_fields.submit "Sign Up!", id:"btn-signup",
+                            class: "btn btn-success btn-block btn-lg" %>
+
+        <%= link_to "Login with Github", "/auth/github", class: "btn btn-default btn-block btn-lg" %>
+
+      </div> <!--form-group col-sm-12-->
+      <% end %>
+
+    </section>
+
+  </div><!--row-->
+</main> <!--container-->
+

@@ -1,0 +1,6 @@
+Something's Social in Denmark
+
+Dear <%= @user.first_name %>,
+Someone just commented on your <%=@class_name %>. Must be popular.
+
+Want to check it out? Here's the link to your <%=@class_name %>: <%=  polymorphic_url([@user, @commentable]) %>

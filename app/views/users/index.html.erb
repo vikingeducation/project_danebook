@@ -1,0 +1,61 @@
+<div id="home">
+  <main class="container">
+    <div class="row">
+      <div class="home-page-left col-sm-6">
+        <h3>Connect with all your friends!</h3>
+        <ul class="things-to-do-with-friends">
+          <li>See photos and update your news feed.</li>
+          <li>Post your status for the world to see from your profile.</li>
+          <li>Get in touch with friends by "friending" them.</li>
+          <li>Like things because you're a positive person!</li>
+        </ul>
+      </div>
+
+
+      <div class="sign-up-form col-sm-5">
+        <div class="row">
+          <div class="col-md-12">
+            <h4>New School Form</h4>
+            <%= form_for @new_user do |f| %>
+              <br>
+              <%= f.label :email %>
+              <%= f.text_field :email, :placeholder => "e.g. schwad@schwad.com" %>
+              <br>
+            <strong>Name</strong>
+              <br>
+              <%= f.label :first_name %>
+              <%= f.text_field :first_name, :placeholder => "e.g. John" %>
+              <%= f.label :last_name %>
+              <%= f.text_field :last_name, :placeholder => "e.g. Smith" %>
+              <br>
+              <%= f.label :password %>
+              <%= f.password_field :password %>
+              <br>
+              <%= f.label :password_confirmation %>
+              <%= f.password_field :password_confirmation %>
+              <br>
+
+              <%= f.fields_for :profile do |profile_fields| %>
+              <br>
+                <%= profile_fields.label :birthday %>
+                <%= profile_fields.text_field :birthday, :placeholder => "e.g. 1/1/1911" %><br>
+
+                <%= profile_fields.label :hometown %>
+                <%= profile_fields.text_field :hometown, :placeholder => "Smallville, KY" %><br>
+
+                <%= profile_fields.label :college %>
+                <%= profile_fields.text_field :college, :placeholder => "University of Schwad" %><br>
+              <br>
+              <% end %>
+              <div class="actions">
+                  <%= f.submit %>
+              </div>
+            <% end %>
+            <h4> Old school form</h4>
+            <h1>Sign up</h1>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>

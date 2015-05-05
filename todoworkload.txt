@@ -1,0 +1,246 @@
+WORKFLOW AGENDA
+
+4/5-12
+
+
+TUESDAY AGENDA
+
+  --writing test coverage for it all & validations
+  --if bonus time then start reading photos stuff
+  --button edit profile show
+
+
+tuesday notes:::
+
+  -testing most important part
+  
+  -moving on to photos and mailers
+POMO 4
+  -my feature tests still hate me
+  -kill old school form
+  -redirect on users_controller#create fixed
+  -moving password validation to feature
+  -killed all likes
+POMO 3
+  -killed parent_post line too
+  -killed "author" line of likes factory
+  -working on passing current failures; like 'author' factory not happy
+  -MODEL TEST TIME BEYATCH
+POMO2
+  -write more tests for models, update them, validate them, one pomodoro. next pomodoro feature tests
+  -likes properly displaying now
+  -bug : need to refresh to post
+  -now back onto testing after tidying up how likes look!
+  -commenting/liking/posting good
+POMO1
+
+monday notes:::
+  likes liking deletes deleting links linking
+
+  liking unliking posting commenting all good just need to like unlike and delete comments
+  -unliking is hating me again
+  -link routing home need to change
+  -changed to current_user to show right name
+  POMO 8
+  git commit
+  -comment name link working
+  -link post name working not on comment
+  -liking isn't right yet does current users page
+  -commenting on schwads post
+  -"and elliot clayton like this"
+  -new user now commenting own page
+  -new user now posting on own page
+  -new user posts and comments and edit do not show up.
+  -looks like today will be all debugging and testing will have to wait same with likes
+  -edit profile button only shows up on profile page....
+  POMO 7 
+  profile pic change logo change
+  misc stuff
+  comments and postings live
+  gitcommit
+  -time to associate back
+  POMO 6
+  -gitcommit
+  -create authored and received associations next
+  -comment currently redirecting back to user
+  -association changed can make posts on other peopls pages
+  -change user association to has_many received posts w/ foreign key
+  -talk erik
+  POMO 5
+  -checking in foreign key with tutors
+  -gonna see if foreign key works
+  -it routes thru user update now, just wrote in to try and create post
+  -just did a nested form for with post under user
+  -add receiver id migration to post
+  POMO 4
+  -next pomodoro run a migration to add posted user columns to posts so that I can comment on someone else's page. it may require a bit of restructuring but it is good for ya. 
+  -if I post
+   a comment on someone else's wall it redirects me back to my wall
+  -note it seems that we are getting right people on posting statuses and comments for their links
+  -gitcommit
+  -can post on own page. HACK ALERT LINE60 UNDER DEF UPDATE IN POSTS CONTROLLER FOR DEFINING LOCAL VARIABLE WORKING_USER
+  -let us make it for now i can only post on mine. worry about friending later first posting on my page
+
+  POMO 3
+  -break postcontroller#update to dig in
+  -gonna just post on my own wall
+  -can not post on other peoples profiles
+  -got right name to show (I think)
+  -only shows delete on MY posts and comments
+  -need to only show delete link if I'm the user
+  -now daring to check some pivotal tracker on comments. 
+  -gitcommit
+  -now redirects to current page and updates comments. VICTORY
+  POMO 2
+  -trying to get it to redirect correctly upon comment
+  -whatever I've done now every page is nick schwad
+  -reroutes wrong way when commenting on others
+  -need to refresh for comment button to work
+  -can do multiple comments
+  -testing comments
+  POMO 1
+
+sunday notes::::
+cookie after comments
+  
+  -i am fucked go back to form for
+  let us break it! in the show
+  POMO 12
+  gitcommit
+  -it does BOTTOM post on page so have to set it to right spot
+
+  -cannot delete comment
+  -it will need a fix def new comments controller to redirect properly
+  -cleaning up more muck. trying to see if comments sticking or showing
+  POMO 11
+  -missing template comments/new still
+  -create form tag to test
+  POMO 10
+  -have to decide whether to nestify the whole damn page and burn it down or make it work. I think I can make it work. 
+  -when trying to make a comment I just create a new post. darn.
+  -delete still working
+  POMO 9
+  -resourced comment under posts don't forget to do likes
+  gitcommit
+  POMO 8
+  -I NEED TO NEST COMMENTS UNDER POSTS
+  -starting onto monday work posts and comments
+  -if manually hacking (like user/234/edit) reroutes back
+  -clear up edit profile button under user#show view
+  POMO 7
+  -gitcommit
+  -can't see other people's edit pages now
+  -unliking works but redirects to user profile page
+  -commenting redirects to root
+  -if I like i like as sammie corwin
+  -delete muck from require_current_user application controller
+  -still can look at anyones profile
+  -repair line 18-20 appcontroller current user
+  -add flashsuccess to application view
+  POMO 6
+  gitcommit
+  -discovered everything is in sessions hash not params
+  POMO 5
+  -gitcommit
+  -add flash now and flash error to layout so they are ready with appropriate divs
+  -gitcommit
+  -global replace all link changes
+  -gitcommit
+  -figured out need whitelisting
+  POMO 4
+  -git commit
+  -name not passing!
+  -name added
+  -signup now has more info
+  -can now edit college and show on about me
+  -itisnowschwadbook
+  -gitcommit
+  -named myself
+  POMO 3
+  -now nesty checked w/ erik about full stop
+  -signup needs name yo
+  -clicky worky now nesty
+
+SUNDAY 
+
+  NIGHT 2 POMODORO:
+  -PLAN TOMORROW DANEBOOK AGENDA
+  -RESEARCH PORTFOLIO PROJECT AGENDA
+
+  misc:
+
+  controllers/application_controller#require_current_user params are not sending user id (lines 38-9)
+  -change all link to's to not pass profile id
+
+  -urrything pretty
+    -signup form
+    -placeholders
+    -schwadbook aligned
+
+  mains:
+
+
+M-Su
+
+-general overlay-
+?-1pm : muscle memory & portfolio
+1pm-? : danebook project
+
+MON: 
+
+-MORE TEST COVERAGE
+  -write and pass validations (wit tests too)
+-COMMENTING, POSTING AND LIKING FIX
+-----------------------------------
+
+CONCEPT COVERAGE
+-RESTFUL ROUTES READING
+-NESTING ROUTES
+-AUTH READING
+-FORMS, NESTED FORMS, ADVANCED FORMS READING
+
+
+DANEBOOK TASKS
+-NESTED ROUTES & IMPROVED FORMS
+  -ALL ABOUT ROUTES BABY
+
+-TIGHTEN UP AUTH/COOKIES
+-MODEL/FEATURE/CONTROLLER/VIEW TESTING
+-MAILERS/PHOTOS/STORAGE SPRINTS & PROJECT
+
+-MAKE SHIT MORE MODULAR
+
+
+
+
+
+
+
+
+
+***********************8
+MODEL TESTING
+
+**Resolve Association tests
+**Fill out remainder model specs
+
+FEATURE TESTING
+
+**integrate views and capybara
+
+--Issues
+  -Login redirecting to home page via capybara
+
+CONTROLLER TESTING
+
+
+VIEW TESTING
+
+
+SESSIONS/AUTH
+
+**Resolve consistency of auth with user.
+
+NESTING
+
+**need to nest routes, forms, etc. 

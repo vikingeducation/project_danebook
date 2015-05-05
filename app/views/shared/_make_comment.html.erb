@@ -1,0 +1,15 @@
+<div class="col-md-12">
+  <div class="row comment">
+    <div class="col-md-12">
+      <%= form_for @comment do |comment_fields| %>
+        <%= comment_fields.label :content %>
+        <%= comment_fields.text_area :content %>
+    </div>
+  </div>
+  <div class="row post-bottom">
+    <div class="col-md-2 col-md-offset-8 post-button">
+        <%= comment_fields.submit %>
+    <% end %>
+    </div>
+  </div>
+</div>

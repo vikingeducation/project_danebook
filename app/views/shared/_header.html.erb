@@ -1,0 +1,35 @@
+<header>
+  <div class="jumbotron">
+    <div id="photos-panel" class="container">
+      <%= image_tag 'hogwarts_small.jpg', alt: 'User Cover Photo', id: "cover-photo" %>
+      <%= image_tag 'harry_potter_small.jpg', alt: 'User Profile Photo', height: '200px', id: 'profile-photo' %>
+      <a id="user-name">
+        <% if @user.first_name %>
+          <%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %>
+        <% else %>
+          You didn't give us a name, you are NAMELESS
+        <% end %>
+      </a>
+      <!-- Row with page names -->
+      <ul class="nav nav-tabs">
+        <li role="presentation" class="col-md-offset-2 active">
+          <%= link_to "Timeline", user_profile_path(@user.id) %>
+        </li>
+        <li role="presentation">
+          <%= link_to "About", user_path(@user.id) %>
+        </li>
+        <li role="presentation">
+          <%= link_to "Photos (123)", "#" %>
+        </li>
+        <li role="presentation">
+          <%= link_to "Friends (542)", "#" %>
+        </li>
+        <li role="presentation" class="col-md-offset-3">
+          <% if params[:user_id] == session[:user_id].to_s %>
+            <%= link_to "Edit Profile", edit_user_path(@user.id) %>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+  </div>
+</header>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Danebook</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div id="home">  
+<% if signed_in_user? %>
+    <%= render "/shared/logged_in_navbar" %>
+  <% else %>
+    <%= render "/shared/logged_out_navbar" %>  
+  <% end %>
+</div>
+<h3>
+  <% if flash[:now] %>
+    <div class="now"><%= flash[:now] %></div>
+  <% elsif flash[:error] %>
+    <div class="error"><%= flash[:error] %></div>
+  <% elsif flash[:success] %>
+    <div class="success"><%= flash[:success] %></div>
+  <% end %>
+ </h3>
+ <% if current_user %>
+    <% if current_user.errors.any? %>
+     <br><br><br>
+     <% current_user.errors.each do |error| %>
+       <p><div class="error"><%= error %></div></p>
+     <% end %>
+   <% end %>
+ <% end %>
+<%= yield %>
+
+</body>
+</html>

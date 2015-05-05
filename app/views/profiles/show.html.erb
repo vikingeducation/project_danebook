@@ -1,0 +1,259 @@
+<div class="static-pages">
+
+  <%= render "/shared/header" %>
+  <main id="timeline" class="container">
+    <div class="row">
+      <!-- left hand column -->
+      <div class="col-md-4">
+        <article>
+          <div class="row article-top-line">
+            <div class="col-md-12">
+              <h3>About</h3>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <strong>Born on:</strong> <%= @profile.birthday %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <strong>Went to school at:</strong> <%= @profile.college %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <strong>Hometown:</strong> <%= @profile.hometown %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <strong>Currently Lives:</strong> <%= @profile.currenttown %>
+            </div>
+          </div>
+        </article>
+        <article>
+          <div class="row">
+            <div class="col-md-12 article-top-line">
+              <h3>Photos (123)</h3>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <%= image_tag 'icon_photo_small.png', class: 'img-responsive' %>
+            </div>
+            <div class="col-md-4">
+              <%= image_tag 'icon_photo_small.png', class: 'img-responsive' %>
+            </div>
+            <div class="col-md-4">
+              <%= image_tag 'icon_photo_small.png', class: 'img-responsive' %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <%= image_tag 'icon_photo_small.png', class: 'img-responsive' %>
+            </div>
+            <div class="col-md-4">
+              <%= image_tag 'icon_photo_small.png', class: 'img-responsive' %>
+            </div>
+            <div class="col-md-4">
+              <%= image_tag 'icon_photo_small.png', class: 'img-responsive' %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <%= image_tag 'icon_photo_small.png', class: 'img-responsive' %>
+            </div>
+            <div class="col-md-4">
+              <%= image_tag 'icon_photo_small.png', class: 'img-responsive' %>
+            </div>
+            <div class="col-md-4">
+              <%= image_tag 'icon_photo_small.png', class: 'img-responsive' %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 centered-text">
+              <a href="photos.html">
+                See more photos
+              </a>
+            </div>
+          </div>
+        </article>
+        <article>
+          <div class="row article-top-line">
+            <div class="col-md-12">
+              <h3>Friends (542)</h3>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <%= image_tag 'user_silhouette_generic.gif', class: 'img-responsive' %>
+              <a href="#">Ron Weasley</a>
+            </div>
+            <div class="col-md-4">
+              <%= image_tag 'user_silhouette_generic.gif', class: 'img-responsive' %>
+              <a href="#">Ginny Weasley</a>
+            </div>
+            <div class="col-md-4">
+              <%= image_tag 'user_silhouette_generic.gif', class: 'img-responsive' %>
+              <a href="#">Hermione Granger</a>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">
+              <%= image_tag 'user_silhouette_generic.gif', class: 'img-responsive' %>
+            <a href="#">Draco Malfoy</a>
+            </div>
+            <div class="col-md-4">
+              <%= image_tag 'user_silhouette_generic.gif', class: 'img-responsive' %>
+            <a href="#">Parvati Patil</a>
+            </div>
+            <div class="col-md-4">
+              <%= image_tag 'user_silhouette_generic.gif', class: 'img-responsive' %>
+            <a href="#">Luna Lovegood</a>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 centered-text">
+              <a href="friends.html">
+                See more friends
+              </a>
+            </div>
+          </div>
+        </article>
+      </div>
+      <!-- right hand post feed -->
+
+      <div class="col-md-8">
+        <%= render "/shared/make_post" %>
+        <% @user.received_posts.reverse_each do |post| %>
+          <% @current_post = post %>
+          <article class="row post">
+          <div class="row">
+            <div class="col-md-2">
+              <a href="#">
+                <%= image_tag 'user_silhouette_generic.gif', class: 'img-responsive' %>
+              </a>
+            </div>
+            <div class="col-md-10">
+              <%= link_to "#{post.author.first_name} #{post.author.last_name}", user_profile_path(post.author.id) %>
+              <p class="post-date">Posted on <%= post.created_at %></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+            <p><%= post.content %></p>
+            </div>
+          </div>
+          <div class="row comment-section post-bottom">
+            <div class="col-md-3">
+
+              <% if post.likes[0] && post.likes.count > 0 %>
+                <% if post.likes.count / 2 > 3 %>
+                  <%= User.find(post.likes[0].user_id).first_name %> <%= User.find(post.likes[0].user_id).last_name %>,
+                  <%= User.find(post.likes[1].user_id).first_name %> <%= User.find(post.likes[1].user_id).last_name %>,
+                  <%= User.find(post.likes[2].user_id).first_name %> <%= User.find(post.likes[2].user_id).last_name %> and
+                  <%= (post.likes.count / 2) - 3 %> others like this.
+                <% elsif post.likes.count == 1 %>
+                  <% my_like = post.likes[0] %>
+                  <%= User.find(my_like.user_id).first_name %> <%= User.find(my_like.user_id).last_name %> likes this.
+                <% else %>
+                  <% post.likes[0..-2].each do |like| %>
+                    <%= User.find(like.user_id).first_name %> <%= User.find(like.user_id).last_name %> 
+                  <% end %>
+                  and <%= User.find(post.likes[-1].user_id).first_name %> <%= User.find(post.likes[-1].user_id).last_name %> like this.
+                <% end %>
+              <% end %>
+
+              <!-- code to do likes -->
+              <% like_array = [] %>
+              <% post.likes.each do |like| %>
+                <% like_array << like.user_id %>
+                <% if like.user_id == current_user.id %>
+                  <% @user_like = like %>
+                <% end %>
+              <% end %>
+
+              <% if like_array.include? current_user.id %>
+                <%= link_to 'Unlike', like_path(@user_like.id, :original_man => @user.id), method: :delete, data: { confirm: 'Are you sure?' } %>
+              <% else %> 
+              <%= link_to "Like", new_like_path(:user_id => current_user.id, :post_id => post.id, :liking_person => @user.id) %>
+              <% end %>
+
+            </div>
+            <div class="col-md-1">
+              <a href="#">Comment</a>
+            </div>
+            <div class="col-md-1 col-md-offset-8">
+              <% if post.user_id == current_user.id %>
+                <%= link_to 'Delete', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+              <% end %>
+            </div>
+            <!-- artifact: render make comment partial used to be here -->
+            <!-- make comment explicitly here -->
+
+
+            <div class="col-md-12">
+              <div class="row comment">
+                <div class="col-md-12">
+                  <%= form_for @current_post do |f| %>
+                    <%= f.fields_for :comment do |comment_fields| %>
+                      <%= comment_fields.label :content %>
+                      <%= comment_fields.text_area :content, :placeholder => "Make a comment..." %>
+                    <% end %>
+                </div>
+              </div>
+              <div class="row post-bottom">
+                <div class="col-md-2 col-md-offset-8 post-button">
+                  <%= f.submit %>
+                <% end %>
+                </div>
+              </div>
+            </div>
+
+
+            <!-- end make comment explicitly -->
+
+            <% post.comments.each do |comment| %>
+              <!-- Comments for stuff --> 
+              <div class="row comment">
+                <div class="col-md-2">
+                    <%= image_tag 'user_silhouette_generic.gif', class: 'img-responsive' %>
+                </div>
+                <div class="col-md-10">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <% if comment.user %>
+                      <% @commenter_name = "#{comment.user.first_name} #{comment.user.last_name}" %>
+                      <%= link_to "#{@commenter_name}", user_profile_path(comment.user.id) %> <span class="post-date">said on <%= comment.created_at %>:</span>
+                      <% end %>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-12">
+                      <p><%= comment.content %></p>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-1">
+                      <a href="#">Like</a>
+                    </div>
+                    <div class="col-md-7 col-md-offset-1">
+                      <!-- people liking -->
+                    </div>
+                    <div class="col-md-1">
+                      <% if comment.user_id == current_user.id %>
+                        <a href="#">Delete</a>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </article>
+        <% end %>
+      </div>
+    </div>
+  </main>
+</div>

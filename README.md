@@ -1,6 +1,5 @@
 The Danebook
 ============
-
 Rails Project from [Viking Code School][1]
 -------------------------------------
 

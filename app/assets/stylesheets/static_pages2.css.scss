@@ -1,0 +1,235 @@
+// Navbar custom styles
+
+.navbar-default {
+  background-color: #2b78e4;
+  border-bottom: 2px solid #333;
+
+  .container {
+    margin-top: 0;
+  }
+
+  a span {
+    color: #fff;
+  }
+}
+
+
+.navbar-brand {
+  font-size: 24px;
+
+  img {
+    display: inline;
+    margin-top: -5px;
+  }
+}
+
+
+.navbar-text {
+  font-weight: bold;
+  margin-right: 0;
+}
+
+
+
+// Main content custom styles
+
+.container {
+  max-width: 846px; //applies to navbar as well
+  margin-top: 50px;
+}
+
+
+#user-photo {
+  object-fit: cover;
+  object-position: top;
+}
+
+
+
+// Header styles
+.cover-photo-row {
+
+  .cover-box:before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: url(images/hogwarts_small.jpg) no-repeat center;
+    background-size: cover;
+    opacity: 0.8;
+  }
+
+  .cover-box {
+    height: 263px;
+
+    .spacer {
+      height: 263px - 69px;
+    }
+
+    .user-name {
+      color: #000;
+      padding-left: 170px;
+
+      h1 {
+        font-weight: bold;
+      }
+    }
+  }
+}
+
+
+
+
+.page-links-row {
+
+
+  #user-photo {
+    margin: 16px;
+    position: relative;
+    top: -130px;
+  }
+
+
+  .nav {
+      outline: 1px solid #ddd;
+
+      li {
+        outline: 1px solid #ddd;
+        max-height: 42px;
+      }
+
+      a {
+        color: #333;
+        font-weight: bold;
+      }
+
+      .pull-right {
+        outline: none;
+      }
+  }
+}
+
+
+
+// Main section styles
+#about, #edit-about, #timeline, #friends, #photos {
+  margin-top: 20px;
+
+  h1 {
+    font-size: 28px;
+  }
+
+  h1, h3 {
+    font-weight: bold;
+  }
+
+  dl * {
+    height: 30px;
+    margin-bottom: 4px;
+  }
+
+  dt {
+    text-align: left;
+    width: 120px;
+  }
+
+  dd {
+    width: 180px;
+    margin-left: 140px;
+  }
+
+
+}
+
+
+// Timeline section styles
+#timeline {
+  .panel-body {
+    img {
+      max-width: 75px;
+      max-height: 75px;
+    }
+  }
+
+
+  .media {
+    padding-top: 8px;
+
+    .media-heading {
+      margin-top: 8px;
+    }
+
+    .pull-left {
+      padding-right: 6px;
+    }
+  }
+
+  #comments-wrapper {
+    border-top: 1px solid #999;
+  }
+}
+
+
+#comment-form {
+  margin-top: 16px;
+  vertical-align: middle;
+
+  a {
+    line-height: 50px; //equal to btn-sm height+margin
+  }
+
+  .comment-button-wrapper {
+    margin-top: 10px;
+  }
+}
+
+
+
+// Friends page custom styles
+
+#friends {
+
+  .panel-body {
+    img {
+      max-width: 75px;
+      max-height: 75px;
+    }
+
+    #friend-wrapper {
+
+      div {
+
+        position: relative;
+
+        .vcenter {
+          position: absolute;
+          top: 50%;
+          transform: translateY(50%);
+
+          p {
+            margin-bottom: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+// Photos page custom styles
+
+#photos {
+
+  .panel-body {
+
+    .img-thumbnail {
+      margin-bottom: 6px;
+    }
+
+    img:hover {
+
+    }
+  }
+}

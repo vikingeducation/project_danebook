@@ -18,7 +18,7 @@ $brand-primary: #2b78e4;
 
 
 // Navbar
-
+// old navbar
 .navbar-inverse {
   background-color: $brand-primary;
   color: #fff;
@@ -36,8 +36,37 @@ $brand-primary: #2b78e4;
   }
 }
 
+// new navbar
+/*
+.navbar-default {
+  background-color: #2b78e4;
+  border-bottom: 2px solid #333;
+
+  .container {
+    margin-top: 0;
+  }
+
+  a span {
+    color: #fff;
+  }
+}
 
 
+.navbar-brand {
+  font-size: 24px;
+
+  img {
+    display: inline;
+    margin-top: -5px;
+  }
+}
+
+
+.navbar-text {
+  font-weight: bold;
+  margin-right: 0;
+}
+*/
 
 // Text of features listed on left side
 

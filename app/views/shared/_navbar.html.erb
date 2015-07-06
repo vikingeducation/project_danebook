@@ -2,57 +2,106 @@
 
   <div class="container">
 
-    <header class="navbar-header">
+    <% if current_page?('/') %>
+      <header class="navbar-header">
 
-      <a class="navbar-brand brand-text brand-large" href="#">
-        Danebook
-      </a>
+        <a class="navbar-brand brand-text brand-large" href="#">
+          Danebook
+        </a>
 
-    </header>
+      </header>
 
 
-<!-- sign-in form -->
+  <!-- sign-in form -->
 
-    <form class="sign-in-wrapper navbar-form navbar-right">
+      <form class="sign-in-wrapper navbar-form navbar-right">
 
-      <div class="form-group">
+        <div class="form-group">
 
-        <div class="row">
+          <div class="row">
 
-          <label class="col-xs-5 brand-text" for="user-email">
-            Email
-          </label>
+            <label class="col-xs-5 brand-text" for="user-email">
+              Email
+            </label>
 
-          <label class="col-xs-5 brand-text" for="user-password">
-            Password
-          </label>
+            <label class="col-xs-5 brand-text" for="user-password">
+              Password
+            </label>
+
+          </div>
+
+
+          <div class="row">
+
+            <div class="col-xs-5">
+              <input type="email" class="form-control input-sm" id="user-email">
+            </div>
+
+            <div class="col-xs-5">
+              <input type="password" class="form-control input-sm" id="user-password">
+            </div>
+
+            <div class="col-xs-2">
+              <button type="submit" class="btn btn-primary input-sm custom-button">
+                Log In
+              </button>
+            </div>
+
+          </div>
+
+
+        </div> <!-- form-group -->
+
+      </form>
+
+      <% else %>
+
+        <!-- from Bootstrap template: enables nav collapsing -->
+        <!-- Brand and toggle get grouped for better mobile display   -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+
+
+          <!-- brand image and title -->
+          <a class="navbar-brand brand-text" href="home.html">
+            <img class="img-circle" width="30" height="30" src="images/danish_flag.gif" alt="Danish flag logo">
+           Danebook
+          </a>
 
         </div>
 
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
-        <div class="row">
 
-          <div class="col-xs-5">
-            <input type="email" class="form-control input-sm" id="user-email">
+          <!-- search box -->
+          <form class="navbar-form navbar-left" role="search">
+            <div class="form-group">
+
+              <input type="search" class="form-control" placeholder="Search for Users">
+
+            </div>
+          </form>
+
+
+          <!-- user navigation -->
+          <div class="nav navbar-text navbar-right">
+
+            <a class="brand-text" href="#">
+              Harry
+            </a>
+
           </div>
 
-          <div class="col-xs-5">
-            <input type="password" class="form-control input-sm" id="user-password">
-          </div>
+        </div><!-- /.navbar-collapse -->
 
-          <div class="col-xs-2">
-            <button type="submit" class="btn btn-primary input-sm custom-button">
-              Log In
-            </button>
-          </div>
+    <% end %>
 
-        </div>
-
-
-      </div> <!-- form-group -->
-
-    </form>
-
-  </div>
+  </div> <!-- container -->
 
 </nav>

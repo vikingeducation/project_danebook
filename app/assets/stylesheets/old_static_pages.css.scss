@@ -1,0 +1,83 @@
+// Place all the styles related to the StaticPages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+// Bootstrap colors
+$brand-primary: #2b78e4;
+
+
+// customized button formatting in navbar and sign-up
+
+.custom-button {
+  font-weight: bold;
+  border: 2px solid #333;
+  box-shadow: 2px 2px #333;
+}
+
+
+
+
+// Navbar
+// old navbar
+.navbar-inverse {
+  background-color: $brand-primary;
+  color: #fff;
+
+  header {
+    font-size: 40px;
+    font-weight: bold;
+    height: 75px;
+    line-height: 75px;
+  }
+
+  .custom-button {
+    background-color: #9fc5f8;
+    color: #333;
+  }
+}
+
+
+// Text of features listed on left side
+
+.text-spacer {
+  height: 80px;
+}
+
+.home-text-wrapper {
+
+  h2 {
+    margin-bottom: 40px;
+  }
+
+  li {
+    font-size: 16px;
+    margin-top: 1.5em;
+    margin-bottom: 1.5em;
+  }
+}
+
+
+
+
+// New User Sign Up
+
+.sign-up-wrapper {
+  .user-input-row {
+    margin-bottom: 1.5em;
+  }
+}
+
+.sign-up-section {
+  h1 {
+    font-size: 40px;
+    margin-bottom: 24px;
+  }
+  .submit-wrapper {
+    height: 2em;
+    line-height: 2em;
+  }
+  .custom-button {
+    font-size: 20px;
+    color: #fff;
+  }
+}

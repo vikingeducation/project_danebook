@@ -124,7 +124,7 @@
 
 
 
-// Main section styles
+// Home page custom styles
 #home {
   margin-top: 25px;
 
@@ -145,10 +145,6 @@
     }
   }
 
-
-
-
-  // New User Sign Up
 
   .sign-up-wrapper {
     .user-input-row {
@@ -173,6 +169,9 @@
 }
 
 
+
+
+// Common styles for pages other than Home
 
 #about, #edit-about, #timeline, #friends, #photos {
   margin-top: 20px;
@@ -202,6 +201,8 @@
 
 
 }
+
+
 
 
 // Timeline section styles
@@ -276,6 +277,8 @@
     }
   }
 }
+
+
 
 // Photos page custom styles
 

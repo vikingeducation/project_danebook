@@ -19,24 +19,21 @@
     height: 75px;
     line-height: 1.5em;
   }
-}
 
+  .navbar-brand {
+    font-size: 24px;
 
-.navbar-brand {
-  font-size: 24px;
+    img {
+      display: inline;
+      margin-top: -5px;
+    }
+  }
 
-  img {
-    display: inline;
-    margin-top: -5px;
+  .navbar-text {
+    font-weight: bold;
+    margin-right: 0;
   }
 }
-
-
-.navbar-text {
-  font-weight: bold;
-  margin-right: 0;
-}
-
 
 
 
@@ -53,6 +50,8 @@
   object-fit: cover;
   object-position: top;
 }
+
+
 
 
 
@@ -121,6 +120,7 @@
       }
   }
 }
+
 
 
 

@@ -4,6 +4,9 @@ Rails.application.routes.draw do
   root "static_pages#home"
 
   get "/timeline" => "static_pages#timeline"
+  get "/about" => "static_pages#about"
+  get "/friends" => "static_pages#friends"
+  get "/photos" => "static_pages#photos"
 
 
   # The priority is based upon order of creation: first created -> highest priority.

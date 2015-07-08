@@ -40,9 +40,11 @@
           <%= render :partial => "nav_tab", :locals => { :page => "Friends", :badge => "542" } %>
 
 
-          <li class="text-center pull-right" role="presentation">
-            <%= link_to "Edit Profile", about_edit_path, alt: "Edit your user profile" %>
-          </li>
+          <% unless current_page?("/about_edit") %>
+            <li class="text-center pull-right" role="presentation">
+              <%= link_to "Edit Profile", about_edit_path, alt: "Edit your user profile" %>
+            </li>
+          <% end %>
 
         </ul>
 

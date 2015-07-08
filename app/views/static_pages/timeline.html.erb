@@ -213,217 +213,32 @@
 
 
 <!-- EXISTING POST -->
+        <%= render :partial => "timeline_post",
+            :locals => {  :post_info => {
+                            author: "Harry Potter",
+                            date: "2014-06-01",
+                            body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+                            self_like: false,
+                            likes: []
+                          },
+                          :comments => [] } %>
 
-        <div class="row">
-          <div class="col-xs-12">
-
-            <div class=" panel panel-default">
-
-
-
-              <div class="panel-body">
-
-                <div class="row">
-
-                  <div class="media">
-
-                    <div class="col-md-12">
-
-
-                      <!-- Media list image -->
-                      <div class="media-left">
-
-                        <a href="#">
-                          <img id="user-photo" class="media-object" src="assets/harry_potter_small.jpg" height="50" width="50" alt="Post author's photo">
-                          <img>
-                        </a>
-
-                      </div>  <!-- end of image section -->
-
-
-                      <div class="media-body">
-
-
-                        <!-- Post name and date -->
-                        <div class="media-heading">
-
-                          <%= link_to "Harry Potter", about_path %>
-
-                          <br>
-
-                          <time datetime="2014-06-01" pubdate>
-                            <small>Posted on Thursday 6/1/2014</small>
-                          </time>
-
-                        </div>
-
-
-                        <!-- Post text -->
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                          cillum dolore eu fugiat nulla pariatur.
-                        </p>
-
-                      </div> <!-- end of post body -->
-
-                    </div>
-
-                  </div> <!-- end of Media List -->
-
-                </div>
-
-              </div> <!-- end of panel body -->
-
-
-              <!-- Feedback section for likes and comments -->
-              <div class="panel-footer">
-
-
-                <!-- Row to hold links -->
-                <div class="row">
-
-                  <div class="col-xs-12">
-
-                    <div class="pull-left">
-                      <a href="#" alt="Like this post">Like</a>
-                      <a href="#" alt="Comment on this post">Comment</a>
-                    </div>
-
-                    <div class="pull-right">
-                      <a href="#" alt="Like this post">Delete</a>
-                    </div>
-
-                  </div>  <!-- end of links row -->
-
-
-                </div>
-
-              </div> <!-- end of panel footer -->
-
-
-            </div> <!-- end of panel -->
-
-
-          </div>
-        </div>
 <!--  end of Existing Post-->
 
 
 
 
 <!-- LIKED EXISTING POST -->
+        <%= render :partial => "timeline_post",
+            :locals => {  :post_info => {
+                            author: "Harry Potter",
+                            date: "2014-05-21",
+                            body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+                            self_like: false,
+                            likes: ["Hermione Granger"]
+                          },
+                          :comments => [] } %>
 
-        <div class="row">
-          <div class="col-xs-12">
-
-            <div class=" panel panel-default">
-
-
-
-              <div class="panel-body">
-
-                <div class="row">
-
-                  <div class="media">
-
-                    <div class="col-md-12">
-
-
-                      <!-- Media list image -->
-                      <div class="media-left">
-
-                        <a href="#">
-                          <img id="user-photo" class="media-object" src="assets/harry_potter_small.jpg" height="50" width="50" alt="Post author's photo">
-                          <img>
-                        </a>
-
-                      </div>  <!-- end of image section -->
-
-
-                      <div class="media-body">
-
-
-                        <!-- Post name and date -->
-                        <div class="media-heading">
-
-                          <%= link_to "Harry Potter", about_path %>
-
-                          <br>
-
-                          <time datetime="2014-05-21" pubdate>
-                            <small>Posted on Thursday 5/21/2014</small>
-                          </time>
-
-                        </div>
-
-
-                        <!-- Post text -->
-                        <p>
-                          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                          cillum dolore eu fugiat nulla pariatur.
-                        </p>
-
-                      </div> <!-- end of post body -->
-
-                    </div>
-
-                  </div> <!-- end of Media List -->
-
-                </div>
-
-              </div> <!-- end of panel body -->
-
-
-              <!-- Feedback section for likes and comments -->
-              <div class="panel-footer">
-
-
-                <!-- Row to hold links -->
-                <div class="row">
-
-                  <div class="col-xs-12">
-
-                    <div class="pull-left">
-                      <a href="#" alt="Like this post">Like</a>
-                      <a href="#" alt="Comment on this post">Comment</a>
-                    </div>
-
-                    <div class="pull-right">
-                      <a href="#" alt="Like this post">Delete</a>
-                    </div>
-
-                  </div>
-
-                </div>  <!-- end of links row -->
-
-
-                <!-- Row to track likes -->
-                <div class="row">
-
-                  <div class="col-xs-12">
-
-                    <div class="pull-left">
-                      <a href="#" alt="Link to profile of the person who liked this post.">Hermione Granger</a> likes this.
-                    </div>
-
-                  </div>
-
-                </div>  <!-- end of likes row -->
-
-              </div> <!-- end of panel footer -->
-
-
-            </div> <!-- end of panel -->
-
-
-          </div>
-        </div>
 <!--  end of Liked Existing Post-->
 
 

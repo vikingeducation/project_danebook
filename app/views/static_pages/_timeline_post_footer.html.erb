@@ -23,30 +23,20 @@
 
 
 <!-- Row to track likes -->
-<div class="row">
+<% unless post_likes == "" %>
 
-  <div class="col-xs-12">
+  <div class="row">
 
-    <div class="pull-left">
-      <p>
-        <% if post_self_like %>
-          You
-        <% end %>
+    <div class="col-xs-12">
 
-        <% if post_likes.count > 0 %>
-          and
-          <%= link_to post_likes.first, "#", alt: "Link to profile of the person who liked this post." %>
-        <% end %>
+      <div class="pull-left">
+        <p>
+          <%= post_likes %>
+        </p>
+      </div>
 
-        <% if post_likes.count > 1 %>
-          and
-          <%= post_likes.count - 1 %> others
-        <% end %>
-
-        like this.
-      </p>
     </div>
 
-  </div>
+  </div>  <!-- end of likes row -->
 
-</div>  <!-- end of likes row -->
+<% end %>

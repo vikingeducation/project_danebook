@@ -28,11 +28,19 @@
 
   <!-- Comment Likes section -->
       <div class="pull-left">
-        <a href="#" alt="Like this post">Like</a>
+
+        <a href="#" alt="Like this post">
+          <% unless comment_self_like %>
+            Like
+          <% else %>
+            Unlike
+          <% end %>
+        </a>
+
       </div>
 
       <div class="pull-left">
-        <p><%= comment_likes.count %> other people like this</p>
+        <p><%= comment_likes %></p>
       </div>
 
       <div class="pull-right">

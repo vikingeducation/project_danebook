@@ -19,26 +19,24 @@
                             :post_likes => post_info[:likes] } %>
 
 
-
-        <!-- Comments media list -->
-        <div id="comments-wrapper" class="row">
-
-          <% comments.each do |comment_info| %>
-            <%= render :partial => "timeline_post_comment",
-              :locals => {  :comment_author => comment_info[:author],
-                            :comment_date => comment_info[:date],
-                            :comment_body => comment_info[:body],
-                            :comment_self_like => comment_info[:self_like],
-                            :comment_likes => comment_info[:likes] } %>
-          <% end %>
-
-        </div>
-  <!-- End of Comments media list -->
-
-
-  <!-- Post another comment ONLY IF LASTT!!!!!!-->
         <% if comments.count > 0 %>
 
+          <!-- Comments media list -->
+          <div id="comments-wrapper" class="row">
+
+            <% comments.each do |comment_info| %>
+              <%= render :partial => "timeline_post_comment",
+                :locals => {  :comment_author => comment_info[:author],
+                              :comment_date => comment_info[:date],
+                              :comment_body => comment_info[:body],
+                              :comment_self_like => comment_info[:self_like],
+                              :comment_likes => comment_info[:likes] } %>
+            <% end %>
+
+          </div> <!-- End of Comments media list -->
+
+
+          <!-- Post another comment (only if there are comments) -->
           <div class="row">
 
             <div class="col-xs-12">
@@ -70,12 +68,10 @@
 
             </div>
 
-          </div>
-    <!-- End of Post another comment -->
+          </div> <!-- End of Post another comment -->
+
+
         <% end %>
-
-
-
 
 
 

@@ -9,6 +9,15 @@
     margin-top: 0;
   }
 
+  .navbar-brand {
+    font-size: 24px;
+
+    img {
+      display: inline;
+      margin-top: -5px;
+    }
+  }
+
   .brand-text {
     color: #fff;
   }
@@ -18,15 +27,6 @@
     font-weight: bold;
     height: 75px;
     line-height: 1.5em;
-  }
-
-  .navbar-brand {
-    font-size: 24px;
-
-    img {
-      display: inline;
-      margin-top: -5px;
-    }
   }
 
   .navbar-text {
@@ -103,21 +103,21 @@
 
 
   .nav {
+    outline: 1px solid #ddd;
+
+    li {
       outline: 1px solid #ddd;
+      max-height: 42px;
+    }
 
-      li {
-        outline: 1px solid #ddd;
-        max-height: 42px;
-      }
+    a {
+      color: #333;
+      font-weight: bold;
+    }
 
-      a {
-        color: #333;
-        font-weight: bold;
-      }
-
-      .pull-right {
-        outline: none;
-      }
+    .pull-right {
+      outline: none;
+    }
   }
 }
 
@@ -253,26 +253,21 @@
 #friends {
 
   .panel-body {
+
+    position: relative;
+
     img {
       max-width: 75px;
       max-height: 75px;
     }
 
-    #friend-wrapper {
+    .vcenter {
+      position: absolute;
+      top: 50%;
+      transform: translateY(50%);
 
-      div {
-
-        position: relative;
-
-        .vcenter {
-          position: absolute;
-          top: 50%;
-          transform: translateY(50%);
-
-          p {
-            margin-bottom: 0;
-          }
-        }
+      p {
+        margin-bottom: 0;
       }
     }
   }

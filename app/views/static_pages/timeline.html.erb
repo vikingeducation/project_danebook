@@ -429,7 +429,27 @@
 
 
 
-      <%= render "timeline_post" %>
+      <%= render :partial => "timeline_post",
+            :locals => {  :post_info => {
+                            author: "Harry Potter",
+                            date: "2014-05-21",
+                            body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+                            self_like: true,
+                            likes: ["Hermione Granger","One","Two","Three"]
+                          },
+                          :comments => [
+                            { author: "Ron Weasley",
+                              date: "2014-05-21",
+                              body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                              self_like: false,
+                              likes: ["One","Two","Three"] },
+                            { author: "Harry Potter",
+                              date: "2014-05-22",
+                              body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                              self_like: false,
+                              likes: ["One","Two","Three"] }
+                            ]
+                          } %>
 
 
 

@@ -5,9 +5,9 @@
 
 
       <%= render :partial => "timeline_post_body",
-            :locals => {  :post_author => "Harry Potter",
-                          :post_date => "2014-05-21",
-                          :post_body => "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur." } %>
+            :locals => {  :post_author => post_info[:author],
+                          :post_date => post_info[:date],
+                          :post_body => post_info[:body] } %>
 
 
 
@@ -15,27 +15,22 @@
       <div class="panel-footer">
 
         <%= render :partial => "timeline_post_footer",
-              :locals => {  :post_self_like => true,
-                            :post_likes => ["Hermione Granger","One","Two","Three"] } %>
+              :locals => {  :post_self_like => post_info[:self_like],
+                            :post_likes => post_info[:likes] } %>
 
 
 
         <!-- Comments media list -->
         <div id="comments-wrapper" class="row">
 
-    <!-- First Comment -->
-          <%= render :partial => "timeline_post_comment",
-              :locals => {  :comment_author => "Ron Weasley",
-                            :comment_date => "2014-05-21",
-                            :comment_body => "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-                            :comment_likes => ["One","Two","Three"] } %>
-
-    <!-- Second Comment -->
-          <%= render :partial => "timeline_post_comment",
-              :locals => {  :comment_author => "Harry Potter",
-                            :comment_date => "2014-05-22",
-                            :comment_body => "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-                            :comment_likes => ["One","Two","Three"] } %>
+          <% comments.each do |comment_info| %>
+            <%= render :partial => "timeline_post_comment",
+              :locals => {  :comment_author => comment_info[:author],
+                            :comment_date => comment_info[:date],
+                            :comment_body => comment_info[:body],
+                            :comment_self_like => comment_info[:self_like],
+                            :comment_likes => comment_info[:likes] } %>
+          <% end %>
 
         </div>
 <!-- End of Comments media list -->

@@ -1,0 +1,46 @@
+<!-- Row to hold links -->
+<div class="row">
+
+  <div class="col-xs-12">
+
+    <div class="pull-left">
+      <a href="#" alt="Like this post">Unlike</a>
+    </div>
+
+    <div class="pull-right">
+      <a href="#" alt="Delete this post">Delete</a>
+    </div>
+
+  </div>
+
+</div>  <!-- end of links row -->
+
+
+<!-- Row to track likes -->
+<div class="row">
+
+  <div class="col-xs-12">
+
+    <div class="pull-left">
+      <p>
+        <% if post_self_like %>
+          You
+        <% end %>
+
+        <% if post_likes.count > 0 %>
+          and
+          <%= link_to post_likes.first, "#", alt: "Link to profile of the person who liked this post." %>
+        <% end %>
+
+        <% if post_likes.count > 1 %>
+          and
+          <%= post_likes.count - 1 %> others
+        <% end %>
+
+        like this.
+      </p>
+    </div>
+
+  </div>
+
+</div>  <!-- end of likes row -->

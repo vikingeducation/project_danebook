@@ -1,75 +1,7 @@
 <main class="container content-container">
 
 <!-- cover photo -->
-  <header>
-    <div class="row cover-photo-row">
-
-      <div class="col-xs-12 cover-box">
-
-        <div class="row spacer"></div>
-
-        <div class="row user-name">
-          <h1>Harry Potter</h1>
-        </div>
-
-      </div>
-
-    </div>  <!-- cover photo row -->
-
-
-
-
-<!-- row for user photo and page links -->
-
-    <div class="row page-links-row">
-
-
-        <!-- main links column -->
-        <div class="row">
-
-          <div class="col-md-12">
-
-            <ul class="nav nav-tabs">
-
-              <li class="text-bottom" role="presentation">
-                <img id="user-photo" src="assets/harry_potter_small.jpg" width="140" height="140" alt="User's personal photo">
-              </li>
-
-              <li class="text-center" role="presentation">
-                <%= link_to "Timeline", timeline_path, alt: "Link to Timeline page" %>
-              </li>
-
-              <li class="text-center disabled" role="presentation">
-                <%= link_to "About", about_path, alt: "Link to About page" %>
-              </li>
-
-              <li class=" text-center" role="presentation">
-                <%= link_to photos_path, alt: "Link to Photos page" do %>
-                  Photos <span class="badge">123</span>
-                <% end %>
-              </li>
-
-              <li class="text-center" role="presentation">
-                <%= link_to friends_path, alt: "Link to Friends page" do %>
-                  Friends <span class="badge">542</span>
-                <% end %>
-              </li>
-
-              <li class="text-center pull-right" role="presentation">
-                <%= link_to "Edit Profile", about_edit_path, alt: "Edit your user profile" %>
-              </li>
-
-            </ul>
-
-          </div>
-
-        </div>
-
-
-    </div> <!-- page links row -->
-
-  </header>
-
+  <%= render :partial => "header", :locals => { :toggled => "about" } %>
 
 
 

@@ -7,9 +7,7 @@
 
       <header class="navbar-header">
 
-        <a class="navbar-brand brand-text brand-large" href="#">
-          Danebook
-        </a>
+        <%= link_to "Danebook",root_path, class: "navbar-brand brand-text brand-large" %>
 
       </header>
 
@@ -73,10 +71,10 @@
 
 
           <!-- brand image and title -->
-          <a class="navbar-brand brand-text" href="home.html">
-            <img class="img-circle" width="30" height="30" src="/assets/danish_flag.gif" alt="Danish flag logo">
-           Danebook
-          </a>
+          <%= link_to timeline_path, class: "navbar-brand brand-text" do %>
+            <%= image_tag "danish_flag.gif", class: "img-circle", width: "30", height: "30", alt: "Danish flag logo" %>
+            Danebook
+          <% end %>
 
         </div>
 
@@ -97,9 +95,7 @@
           <!-- user navigation -->
           <div class="nav navbar-text navbar-right">
 
-            <a class="brand-text" href="#">
-              Harry
-            </a>
+            <%= link_to "Harry", about_path, class: "brand-text" %>
 
           </div>
 

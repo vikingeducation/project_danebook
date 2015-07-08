@@ -36,35 +36,27 @@
               </li>
 
               <li class="text-center disabled" role="presentation">
-                <a href="timeline" alt="Link to Timeline page">
-                  Timeline
-                </a>
+                <%= link_to "Timeline", timeline_path, alt: "Link to Timeline page" %>
               </li>
 
               <li class="text-center" role="presentation">
-                <a href="about" alt="Link to About page">
-                  About
-                </a>
+                <%= link_to "About", about_path, alt: "Link to About page" %>
               </li>
 
               <li class=" text-center" role="presentation">
-                <a href="photos" alt="Link to Photos page">
-                  Photos
-                  <span class="badge">123</span>
-                </a>
+                <%= link_to photos_path, alt: "Link to Photos page" do %>
+                  Photos <span class="badge">123</span>
+                <% end %>
               </li>
 
               <li class="text-center" role="presentation">
-                <a href="friends" alt="Link to Friends page">
-                  Friends
-                  <span class="badge">542</span>
-                </a>
+                <%= link_to friends_path, alt: "Link to Friends page" do %>
+                  Friends <span class="badge">542</span>
+                <% end %>
               </li>
 
               <li class="text-center pull-right" role="presentation">
-                <a href="about_edit" alt="Edit your user profile">
-                  Edit Profile
-                </a>
+                <%= link_to "Edit Profile", about_edit_path, alt: "Edit your user profile" %>
               </li>
 
             </ul>
@@ -203,7 +195,7 @@
 
                   <div class="col-xs-12 text-center">
 
-                    <a href="photos" alt="See more photos">See More Photos</a>
+                    <%= link_to "See more photos", photos_path, alt: "See more photos" %>
 
                   </div>
 
@@ -286,7 +278,7 @@
 
                   <div class="col-xs-12 text-center">
 
-                    <a href="friends" alt="See more friends">See More Friends</a>
+                    <%= link_to "See More Friends", friends_path, alt: "See more friends" %>
 
                   </div>
 
@@ -405,9 +397,7 @@
                         <!-- Post name and date -->
                         <div class="media-heading">
 
-                          <a href="about">
-                            Harry Potter
-                          </a>
+                          <%= link_to "Harry Potter", about_path %>
 
                           <br>
 
@@ -509,9 +499,7 @@
                         <!-- Post name and date -->
                         <div class="media-heading">
 
-                          <a href="about">
-                            Harry Potter
-                          </a>
+                          <%= link_to "Harry Potter", about_path %>
 
                           <br>
 
@@ -626,9 +614,7 @@
                         <!-- Post name and date -->
                         <div class="media-heading">
 
-                          <a href="about">
-                            Harry Potter
-                          </a>
+                          <%= link_to "Harry Potter", about_path %>
 
                           <br>
 
@@ -772,8 +758,7 @@
 
                         <div class="media-heading">
 
-                          <a href="about">
-                            Harry Potter</a>
+                          <%= link_to "Harry Potter", about_path %>
 
                           <time datetime="2014-05-22" pubdate>
                             <small>Said on Friday 5/22/2014</small>

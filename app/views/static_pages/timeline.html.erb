@@ -1,6 +1,6 @@
 <main class="container content-container">
 
-  <%= render :partial => "header", :locals => { :toggled => "about" } %>
+  <%= render :partial => "shared/header", :locals => { :toggled => "about" } %>
 
 
 
@@ -70,7 +70,7 @@
                 <% 3.times do %>
                   <div class="row">
                     <% 3.times do %>
-                      <%= render "timeline_photo" %>
+                      <%= render "static_pages/timeline/timeline_photo" %>
                     <% end %>
                   </div>
                 <% end %>
@@ -114,7 +114,7 @@
                 <% 2.times do %>
                   <div class="row">
                     <% 3.times do %>
-                      <%= render "timeline_friend" %>
+                      <%= render "static_pages/timeline/timeline_friend" %>
                     <% end %>
                   </div>
                 <% end %>
@@ -209,7 +209,7 @@
 
 
 <!-- EXISTING POST -->
-        <%= render :partial => "timeline_post",
+        <%= render :partial => "static_pages/timeline/timeline_post",
             :locals => {  :post_info => {
                             author: "Harry Potter",
                             date: "2014-06-01",
@@ -225,7 +225,7 @@
 
 
 <!-- LIKED EXISTING POST -->
-        <%= render :partial => "timeline_post",
+        <%= render :partial => "static_pages/timeline/timeline_post",
             :locals => {  :post_info => {
                             author: "Harry Potter",
                             date: "2014-05-21",
@@ -240,7 +240,7 @@
 
 
 
-      <%= render :partial => "timeline_post",
+      <%= render :partial => "static_pages/timeline/timeline_post",
             :locals => {  :post_info => {
                             author: "Harry Potter",
                             date: "2014-05-21",

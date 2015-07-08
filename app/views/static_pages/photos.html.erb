@@ -1,6 +1,6 @@
 <main class="container content-container">
 
-  <%= render :partial => "header", :locals => { :toggled => "about" } %>
+  <%= render :partial => "shared/header", :locals => { :toggled => "about" } %>
 
 
 
@@ -41,7 +41,7 @@
               <div class="col-md-12 text-center">
 
                 <% 16.times do %>
-                  <%= render "photo" %>
+                  <%= render "static_pages/photos/photo" %>
                 <% end %>
 
               </div> <!-- photo column -->

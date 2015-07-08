@@ -31,13 +31,13 @@
             <img id="user-photo" src="assets/harry_potter_small.jpg" width="140" height="140" alt="User's personal photo">
           </li>
 
-          <%= render :partial => "nav_tab", :locals => { :page => "Timeline", :badge => nil } %>
+          <%= render :partial => "shared/nav_tab", :locals => { :page => "Timeline", :badge => nil } %>
 
-          <%= render :partial => "nav_tab", :locals => { :page => "About", :badge => nil  } %>
+          <%= render :partial => "shared/nav_tab", :locals => { :page => "About", :badge => nil  } %>
 
-          <%= render :partial => "nav_tab", :locals => { :page => "Photos", :badge => "123" } %>
+          <%= render :partial => "shared/nav_tab", :locals => { :page => "Photos", :badge => "123" } %>
 
-          <%= render :partial => "nav_tab", :locals => { :page => "Friends", :badge => "542" } %>
+          <%= render :partial => "shared/nav_tab", :locals => { :page => "Friends", :badge => "542" } %>
 
 
           <% unless current_page?("/about_edit") %>

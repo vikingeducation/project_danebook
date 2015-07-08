@@ -4,7 +4,7 @@
     <div class=" panel panel-default">
 
 
-      <%= render :partial => "timeline_post_body",
+      <%= render :partial => "static_pages/timeline/timeline_post_body",
             :locals => {  :post_author => post_info[:author],
                           :post_date => post_info[:date],
                           :post_body => post_info[:body] } %>
@@ -14,7 +14,7 @@
       <!-- Feedback section for likes and comments -->
       <div class="panel-footer">
 
-        <%= render :partial => "timeline_post_footer",
+        <%= render :partial => "static_pages/timeline/timeline_post_footer",
               :locals => {  :post_self_like => post_info[:self_like],
                             :post_likes => post_info[:likes] } %>
 
@@ -25,7 +25,7 @@
           <div id="comments-wrapper" class="row">
 
             <% comments.each do |comment_info| %>
-              <%= render :partial => "timeline_post_comment",
+              <%= render :partial => "static_pages/timeline/timeline_post_comment",
                 :locals => {  :comment_author => comment_info[:author],
                               :comment_date => comment_info[:date],
                               :comment_body => comment_info[:body],

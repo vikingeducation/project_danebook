@@ -37,39 +37,42 @@
 
 
   <!-- Post another comment ONLY IF LASTT!!!!!!-->
-        <div class="row">
+        <% if comments.count > 0 %>
 
-          <div class="col-xs-12">
+          <div class="row">
 
-            <form id="comment-form">
+            <div class="col-xs-12">
 
-              <textarea class="form-control" rows="3">Write a comment...</textarea>
+              <form id="comment-form">
 
-              <!-- separate row for Cancel & Comment buttons -->
-              <div class="row center-block">
-                <div class="col-xs-12">
+                <textarea class="form-control" rows="3">Write a comment...</textarea>
 
-                  <div class="pull-left">
-                    <a href="#" alt="Cancel writing a comment">Cancel</a>
+                <!-- separate row for Cancel & Comment buttons -->
+                <div class="row center-block">
+                  <div class="col-xs-12">
+
+                    <div class="pull-left">
+                      <a href="#" alt="Cancel writing a comment">Cancel</a>
+                    </div>
+
+                    <div class="pull-right comment-button-wrapper">
+
+                      <button type="submit" class="btn btn-primary btn-sm">
+                        Comment
+                      </button>
+
+                    </div>
+
                   </div>
+                </div> <!-- end of Cancel & Comment row -->
 
-                  <div class="pull-right comment-button-wrapper">
+              </form>
 
-                    <button type="submit" class="btn btn-primary btn-sm">
-                      Comment
-                    </button>
-
-                  </div>
-
-                </div>
-              </div> <!-- end of Cancel & Comment row -->
-
-            </form>
+            </div>
 
           </div>
-
-        </div>
-  <!-- End of Post another comment -->
+    <!-- End of Post another comment -->
+        <% end %>
 
 
 

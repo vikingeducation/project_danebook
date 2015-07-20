@@ -1,0 +1,183 @@
+<nav class = "navbar navbar-default navbar-fixed-top" id = "navbar-color">
+  <div class = "container-fluid" >
+    <div class = "navbar-header">
+
+      <button type="button" class="btn btn-navbar navbar-toggle collapsed" id = "toggle-colors" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+      <a class = "navbar-brand" href="home.html">
+        <img src="danish_flag.gif" class = "img-circle img-responsive" height = "30px" width = "40px">
+      </a>
+      <a class = "navbar-brand" id = "brand-color" href="home.html">
+        Danebook
+      </a>
+    </div>
+
+    <div id = "navbar" class = "navbar-collapse collapse">
+
+      <form class="navbar-form navbar-left" role = "search">
+        <div class = "form-group">
+          <input type="search" class = "form-control" placeholder = "Search for Users" size = "30">
+        </div>
+
+        <button type = "submit" class = "btn btn-default">
+          Submit  <span class="glyphicon glyphicon-search"></span>
+        </button>
+      </form>
+
+      <p class="navbar-text navbar-right">
+        Signed in as 
+        <a href="#" class="navbar-link">Harry Potter</a>
+      </p>
+
+    </div>
+  </div>
+
+</nav>
+
+<main class = "container">
+
+  <header>
+
+    <div class = "photo-container">
+      <img src="hogwarts_small.jpg" class = "img-responsive" id = "cover-photo">
+    </div>
+
+    <div id = "pages-nav">
+      <div class = "row">
+
+        <div class = "col-md-3">
+          <div class = "profile-pic-container">
+            <img src="harry_potter_small.jpg" class = "img-responsive">
+          </div>
+          <h1 class = "profile-name">Harry Potter</h1>
+        </div>
+
+        <div class = "col-xs-7 navigation-container">
+          <ul class = "nav navbar-nav nav-pills">
+            <li>
+              <a href="timeline.html">Timeline</a>
+            </li>
+
+            <li class = "active">
+              <a href="about.html">About</a>
+            </li>
+
+            <li>
+              <a href="photos.html">Photos <span>(123)</span></a>
+            </li>
+
+            <li>
+              <a href="friends.html">Friends <span>(542)</span></a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- <div class = "col-sm-2 pull-right">
+          <ul class = "nav navbar-nav">
+            <li>
+              <a href="about_edit.html">Edit Profile</a>
+            </li>
+          </ul>
+        </div> -->
+      </div>
+    </div>
+
+  </header>
+
+
+  <section id="about-edit">
+      <header>
+        <div class="row">
+          <div class="col-xs-12">
+            <h2>Edit Profile</h2>
+          </div>
+        </div>
+      </header>
+
+
+      <div class="row about-info">
+        <div class="col-sm-4 col-sm-offset-1">
+          <h3>Basic Information</h3>
+
+          <div class="row">
+            <div class = "col-xs-4">
+              <b>Birthday:</b>
+            </div>
+            <div class = "col-xs-8">
+              July 31st, 1980
+            </div>
+          </div>
+
+          <div class="row">
+            <div class = "col-xs-4">
+              <b>College:</b>
+            </div>
+            <div class = "col-xs-8">
+              <input type = "text" class = "form-control" placeholder = "Hogwarts College">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class = "col-xs-4">
+              <b>Hometown:</b>
+            </div>
+            <div class = "col-xs-8">
+              <input type = "text" class = "form-control" placeholder = "Godrick's Hollow, England">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class = "col-xs-4">
+              <b>Currently Lives:</b>
+            </div>
+            <div class = "col-xs-8">
+              <input type = "text" class = "form-control" placeholder = "Godrick's Hollow, England">
+            </div>
+          </div>
+
+
+          <h3>Contact Information</h3>
+
+          <div class="row">
+            <div class = "col-xs-4">
+              <b>Email:</b>
+            </div>
+            <div class = "col-xs-8">
+              harry_potter@hogwarts.edu
+            </div>
+          </div>
+
+          <div class="row">
+            <div class = "col-xs-4">
+              <b>Telephone:</b>
+            </div>
+            <div class = "col-xs-8">
+              <input type = "text" class = "form-control" placeholder = "555-123-4567">
+            </div>
+          </div>
+
+        </div>
+
+        <div class="col-sm-5 col-sm-offset-1" >
+
+          <h3>Words to live by</h3>
+          <textarea class = "form-control" rows = "5" >Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</textarea>
+
+          <h3>About me</h3>
+          <textarea class = "form-control" rows = "8" >Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</textarea>
+        </div>
+      </div>
+
+      <div class = "row" id = "save-changes">
+        <form class = "col-sm-6 col-sm-offset-3" action = "about.html">
+          <button type="submit" class="btn btn-success">Save Changes</button>
+        </form>
+      </div>
+    </section>
+</main>
+
+<br>

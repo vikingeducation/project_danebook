@@ -4,4 +4,10 @@ class StaticPagesController < ApplicationController
 
   end
 
+  def timeline
+  end
+
+  def about
+  end
+
 end

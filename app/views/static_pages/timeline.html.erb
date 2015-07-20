@@ -1,0 +1,444 @@
+<%= render :partial => 'shared/signed_in_navbar' %>
+
+<main class = "container">
+
+    <header>
+
+      <div class = "photo-container">
+        <img src="hogwarts_small.jpg" class = "img-responsive" id = "cover-photo">
+      </div>
+
+      <div id = "pages-nav">
+        <div class = "row">
+
+          <div class = "col-md-3">
+            <div class = "profile-pic-container">
+              <img src="harry_potter_small.jpg" class = "img-responsive">
+            </div>
+            <h1 class = "profile-name">Harry Potter</h1>
+          </div>
+
+          <div class = "col-xs-7 navigation-container">
+            <ul class = "nav navbar-nav nav-pills">
+              <li class = "active">
+                <a href="timeline.html">Timeline</a>
+              </li>
+
+              <li>
+                <a href="about.html">About</a>
+              </li>
+
+              <li>
+                <a href="photos.html">Photos <span>(123)</span></a>
+              </li>
+
+              <li>
+                <a href="friends.html">Friends <span>(542)</span></a>
+              </li>
+            </ul>
+          </div>
+
+          <div class = "col-sm-2 pull-right">
+            <ul class = "nav navbar-nav">
+              <li>
+                <a href="about_edit.html">Edit Profile</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </header>
+
+
+    <section class = "container" id="timeline-section">
+      <div class="row">
+
+        <aside class="col-md-4" id="basic-info">
+
+
+          <section class="row" id="timeline-about">
+            <header class="col-md-12">
+                <h4>About</h4>
+            </header>
+
+            <div class="row">
+              <div class = "col-xs-5">
+                <b>Born on:</b>
+              </div>
+              <div class = "col-xs-7">
+                July 31st, 1980
+              </div>
+            </div>
+
+            <div class="row">
+              <div class = "col-xs-5">
+                <b>Went to school at:</b>
+              </div>
+              <div class = "col-xs-7">
+                Hogwarts College
+              </div>
+            </div>
+
+            <div class="row">
+              <div class = "col-xs-5">
+                <b>Hometown:</b>
+              </div>
+              <div class = "col-xs-7">
+                Godrick's Hollow, England
+              </div>
+            </div>
+
+            <div class="row">
+              <div class = "col-xs-5">
+                <b>Currently Lives:</b>
+              </div>
+              <div class = "col-xs-7">
+                Godrick's Hollow, England
+              </div>
+            </div>
+          </section>
+
+
+
+          <section class="row" id="timeline-photos">
+            <header class="col-md-12">
+                <h4>Photos</h4>
+            </header>
+
+            <div class="col-xs-4 photo">
+              <a href="#">
+                <img src="icon_photo_small.png" height = "85px" width = "85px">
+              </a>
+              <div class="upload-date">
+                <p>Uploaded June 15, 2015</p>
+              </div>
+            </div>
+            <div class="col-xs-4 photo">
+              <a href="#">
+                <img src="icon_photo_small.png" height = "85px" width = "85px">
+              </a>
+              <div class="upload-date">
+                <p>Uploaded June 15, 2015</p>
+              </div>
+            </div>
+            <div class="col-xs-4 photo">
+              <a href="#">
+                <img src="icon_photo_small.png" height = "85px" width = "85px">
+              </a>
+              <div class="upload-date">
+                <p>Uploaded June 15, 2015</p>
+              </div>
+            </div>
+            <div class="col-xs-4 photo">
+              <a href="#">
+                <img src="icon_photo_small.png" height = "85px" width = "85px">
+              </a>
+              <div class="upload-date">
+                <p>Uploaded June 15, 2015</p>
+              </div>
+            </div>
+            <div class="col-xs-4 photo">
+              <a href="#">
+                <img src="icon_photo_small.png" height = "85px" width = "85px">
+              </a>
+              <div class="upload-date">
+                <p>Uploaded June 15, 2015</p>
+              </div>
+            </div>
+            <div class="col-xs-4 photo">
+              <a href="#">
+                <img src="icon_photo_small.png" height = "85px" width = "85px">
+              </a>
+              <div class="upload-date">
+                <p>Uploaded June 15, 2015</p>
+              </div>
+            </div>
+            <div class="col-xs-4 photo">
+              <a href="#">
+                <img src="icon_photo_small.png" height = "85px" width = "85px">
+              </a>
+              <div class="upload-date">
+                <p>Uploaded June 15, 2015</p>
+              </div>
+            </div>
+            <div class="col-xs-4 photo">
+              <a href="#">
+                <img src="icon_photo_small.png" height = "85px" width = "85px">
+              </a>
+              <div class="upload-date">
+                <p>Uploaded June 15, 2015</p>
+              </div>
+            </div>
+            <div class="col-xs-4 photo">
+              <a href="#">
+                <img src="icon_photo_small.png" height = "85px" width = "85px">
+              </a>
+              <div class="upload-date">
+                <p>Uploaded June 15, 2015</p>
+              </div>
+            </div>
+            <div class="col-md-12 more-photos">
+              <a href="photos.html">See more photos!</a>
+            </div>
+          </section>
+
+
+
+            <section class="row" id="timeline-friends">
+              <header class="col-md-12">
+                  <h4>Friends: 542</h4>
+              </header>
+
+              <div class="col-xs-4 friend">
+                <a href="#">
+                  <img src="img/hermione-granger.jpg" height = "84px" width = "84px">
+                </a>
+                <p><a href="#">Hermione</a></p>
+              </div>
+              <div class="col-xs-4 friend">
+                <a href="#">
+                  <img src="img/bonnie-wright.jpg" height = "84px" width = "84px">
+                </a>
+                <p><a href="#">Ginny Weasley</a></p>
+              </div>
+              <div class="col-xs-4 friend">
+                <a href="#">
+                  <img src="img/ronweasley.jpg" height = "84px" width = "84px">
+                </a>
+                <p><a href="#">Ron Weasley</a></p>
+              </div>
+              <div class="col-xs-4 friend">
+                <a href="#">
+                  <img src="img/cho-chang.jpg" height = "84px" width = "84px">
+                </a>
+                <p><a href="#">Cho Chang</a></p>
+              </div>
+              <div class="col-xs-4 friend">
+                <a href="#">
+                  <img src="img/cedric-diggory.jpeg" height = "84px" width = "84px">
+                </a>
+                <p><a href="#">Cedric Diggory</a></p>
+              </div>
+              <div class="col-xs-4 friend">
+                <a href="#">
+                  <img src="img/Rubeus_Hagrid.jpg" height = "84px" width = "84px">
+                </a>
+                <p><a href="#">Rubeus Hagrid</a></p>
+              </div>
+
+              <div class="col-md-12 friend">
+                <a href="friends.html" class = "friend-link">
+                  See more friends!
+                </a>
+              </div>
+            </section>
+
+          </aside>
+
+
+          <!--news feed-->
+          <div class="col-md-7 col-md-offset-1" id="news-feed">
+
+            <section>
+              <form id="post-box">
+                <header class="row">
+                  <h4 class = "col-md-12">Post</h4>
+                </header>
+                <div class = "row" >
+                  <div class="col-md-12 form-group comment-area">
+                    <textarea class="form-control" rows="3" placeholder="Tell the world something..."></textarea>
+                  </div>
+                </div>
+                <div class = "row" >
+                  <footer class="col-md-12">
+                    <button class="btn btn-primary" type="submit" role="Post">Post</button>
+                  </footer>
+                </div>
+              </form>
+            </section><!-- Ends status update -->
+
+<!-- First comment -->
+            <article class = "feed-posts">
+              <div class="row">
+                <div class="col-xs-2">
+                  <img src="user_silhouette_generic.gif" width = "50px" height = "50px">
+                </div>
+                <div class="col-xs-10">
+                  <p><a href="about.html">Harry Potter</a></p>
+                  <p class="date-posted">Posted on Monday 6/15/2015</p>
+                </div>
+              </div>
+
+              <div class = "row">
+                <div class="col-md-12 post-body">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                  proident, sunt in culpa qui</p>
+                </div>
+              </div>
+
+              <div class = "row">
+                <footer class="col-md-12 like-section">
+                  <div class = "row">
+                    <a class="col-xs-2" href="#">Like</a>
+                    <a class="col-xs-2" href="#">Comment</a>
+                    <a class="col-xs-1 col-xs-offset-6" href="#">Delete</a>
+                  </div>
+                </footer>
+              </div>
+            </article><!--First comment end-->
+
+<!-- Second comment -->
+            <article class = "feed-posts">
+              <div class="row">
+                <div class="col-xs-2">
+                  <img src="user_silhouette_generic.gif" width = "50px" height = "50px">
+                </div>
+                <div class="col-xs-10">
+                  <p><a href="about.html">Harry Potter</a></p>
+                  <p class="date-posted">Posted on Monday 6/1/2015</p>
+                </div>
+              </div>
+
+              <div class = "row">
+                <div class="col-md-12 post-body">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                  proident, sunt in culpa qui</p>
+                </div>
+              </div>
+
+              <div class = "row">
+                <footer class="col-md-12 like-section">
+                  <div class = "row">
+                    <a class="col-xs-2" href="#">Like</a>
+                    <a class="col-xs-2" href="#">Comment</a>
+                    <a class="col-xs-1 col-xs-offset-6" href="#">Delete</a>
+                  </div>
+                  <div class = "row">
+                    <p class="col-xs-8">
+                      <a href="#">Hermione Granger</a> likes this
+                    </p>
+                  </div>
+                </footer>
+              </div>
+            </article><!--Second comment end-->
+
+<!-- Third comment -->
+            <article class = "feed-posts">
+              <div class="row">
+                <div class="col-xs-2">
+                  <img src="user_silhouette_generic.gif" width = "50px" height = "50px">
+                </div>
+                <div class="col-xs-10">
+                  <p><a href="about.html">Harry Potter</a></p>
+                  <p class="date-posted">Posted on Monday 6/1/2015</p>
+                </div>
+              </div>
+
+              <div class = "row">
+                <div class="col-md-12 post-body">
+                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                  cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                  proident, sunt in culpa qui</p>
+                </div>
+              </div>
+
+              <div class = "row">
+                <footer class="col-md-12">
+                  <div class = "row">
+                    <a class="col-xs-2" href="#">Unlike</a>
+                    <a class="col-xs-1 col-xs-offset-8" href="#">Delete</a>
+                  </div>
+                  <div class = "row">
+                    <p class="col-xs-12">
+                      You, <a href="#">Hermione Granger</a>, and 3 others like this
+                    </p>
+                  </div>
+                  <div class = "divider-line"></div>
+
+<!-- Response 1 -->
+                  <div class = "row">
+                    <div class="col-xs-2">
+                      <img src="user_silhouette_generic.gif" width = "50px" height = "50px">
+                    </div>
+
+                    <div class="col-xs-10">
+                      <div class = "row">
+                        <p class="col-md-12">
+                          <a href="#">Ron Weasley</a> <span>said on Tuesday, 6/2/2015</span>
+                        </p>
+                      </div>
+                      <div class = "row">
+                        <p class="col-md-12">
+                          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                          consequat. Duis aute irure dolor in reprehenderit in
+                        </p>
+                      </div>
+                      <div class = "row">
+                        <a href="#" class="col-xs-2">Like</a>
+                        <span class="col-xs-10">3 other people like this</span>
+                      </div>
+                    </div>
+                  </div> <!-- Response 1 -->
+
+
+  <!-- Response 2 -->
+                  <div class "row">
+                    <div class="col-xs-2">
+                      <img src="user_silhouette_generic.gif" width = "50px" height = "50px">
+                    </div>
+
+                    <div class="col-xs-10">
+                      <div class = "row">
+                        <p class="col-md-12">
+                          <a href="#">Harry Potter</a> <span>said on Wednesday, 6/3/2015</span>
+                        </p>
+                      </div>
+                      <div class = "row">
+                        <p class="col-md-12">
+                          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                          consequat. Duis aute irure dolor in reprehenderit in
+                        </p>
+                      </div>
+                      <div class = "row">
+                        <a href="#" class="col-xs-2">Like</a>
+                        <span class="col-xs-8">3 other people like this</span>
+                        <a href="#" class="col-xs-2">Delete</a>
+                      </div>
+                    </div>
+                  </div> <!-- Response 2 -->
+
+                  <form class="col-md-12">
+                    <div class="form-group">
+                      <textarea class="form-control" rows="4" placeholder="Write a comment..."></textarea>
+                    </div>
+                    <div class="form-group">
+                      <a class="col-md-1" href="#">Cancel</a>
+                      <button type="submit" class="col-md-3 pull-right btn btn-primary">Comment</button>
+                    </div>
+                  </form>
+                </footer>
+              </div>
+            </article><!--Third comment end-->
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <br>

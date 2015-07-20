@@ -1,6 +1,11 @@
 danebook_goes_live
 ==================
 
-Week 3 Solo Assignment
+Week 3 Assignment
 
-This is your README!
+Danebook is a website that functions similar to Facebook
+
+[Alice Fung](http://github.com/alicefung) & [David Meza](https://github.com/david-meza/)
+
+[A Viking Code School Project](http://www.vikingcodeschool.com/)
+

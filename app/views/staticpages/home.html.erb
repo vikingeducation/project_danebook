@@ -24,7 +24,7 @@
 						<p class="named-form">Password</p>
 						<input type="password" placeholder="Password" class="form-control"/>
 					</div>
-					<button type="submit" class="btn btn-primary sign-in-button"><%= link_to "Log in!", about_path%></button>
+					<%= link_to "Log In", about_path, class: "btn btn-primary log-in-button"%>
 				</form>
 			</div>
 		</div>
@@ -243,7 +243,7 @@
 
 				<div class="row">
 					<div class="col-md-12">
-						<button type="submit" class="btn btn-success sign-up-button"><%= link_to "Sign Up!", about_path%></button>
+						<%= link_to "Sign Up!", about_path, class: "btn btn-success sign-up-button"%>
 					</div>
 				</div>
 

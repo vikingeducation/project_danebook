@@ -10,4 +10,16 @@ class StaticPagesController < ApplicationController
   def about
   end
 
+  def about_edit
+
+  end
+
+  def photos
+
+  end
+
+  def friends
+
+  end
+
 end

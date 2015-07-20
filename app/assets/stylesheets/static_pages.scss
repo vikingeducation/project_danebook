@@ -2,6 +2,82 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#home{
+  nav {
+
+ #brand-color {
+   color: #fff;
+   font-size: 40px;
+   padding: 30px 0;
+ }
+
+ .navbar-form {
+
+   h6 {
+     color: #fff;
+   }
+
+   .form-group {
+     margin: auto 7px;
+   }
+
+   .btn {
+     position: relative;
+     top: 17px;
+     background-color: #5E77AA ;
+     border: 1px solid #2A457D ;
+   }
+ }
+
+ #toggle-colors {
+   border: 1px solid #8ca7e1 ;
+   position: relative;
+   top: 5px;
+
+   .icon-bar {
+     border: 1px solid #8ca7e1 ;
+   }
+ }
+}
+
+
+.navbar-default {
+ background-color: #3A5795 ;
+ }
+
+main {
+ .col-sm-12 {
+   h2 {
+     padding: 40px 0 20px;
+   }
+
+   ul li {
+     padding: 8px 0;
+   }
+ }
+
+ form {
+   input, select {
+     margin: 8px 0;
+   }
+
+   .top-bottom-margin {
+     margin: 10px 0;
+   }
+
+   .large-width {
+     width: 100%;
+   }
+ }
+}
+}
+
+// end of home page styles
+// -----------------------------------
+// -----------------------------------
+// -----------------------------------
+
+
 @mixin vertical-align {
   position: relative;
   top: 50%;

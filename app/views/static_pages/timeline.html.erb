@@ -2,53 +2,7 @@
 
 <main class = "container">
 
-    <header>
-
-      <div class = "photo-container">
-        <img src="hogwarts_small.jpg" class = "img-responsive" id = "cover-photo">
-      </div>
-
-      <div id = "pages-nav">
-        <div class = "row">
-
-          <div class = "col-md-3">
-            <div class = "profile-pic-container">
-              <img src="harry_potter_small.jpg" class = "img-responsive">
-            </div>
-            <h1 class = "profile-name">Harry Potter</h1>
-          </div>
-
-          <div class = "col-xs-7 navigation-container">
-            <ul class = "nav navbar-nav nav-pills">
-              <li class = "active">
-                <a href="timeline.html">Timeline</a>
-              </li>
-
-              <li>
-                <a href="about.html">About</a>
-              </li>
-
-              <li>
-                <a href="photos.html">Photos <span>(123)</span></a>
-              </li>
-
-              <li>
-                <a href="friends.html">Friends <span>(542)</span></a>
-              </li>
-            </ul>
-          </div>
-
-          <div class = "col-sm-2 pull-right">
-            <ul class = "nav navbar-nav">
-              <li>
-                <a href="about_edit.html">Edit Profile</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-    </header>
+  <%= render :partial => 'middle_navbar' %>
 
 
     <section class = "container" id="timeline-section">

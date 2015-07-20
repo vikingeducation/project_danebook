@@ -16,19 +16,19 @@
 
           <div class = "col-xs-7 navigation-container">
             <ul class = "nav navbar-nav nav-pills">
-              <li class = "active">
+              <li <%= "class ='active'" if (controller.class == StaticPagesController && controller.action_name == "timeline")%> >
                 <%= link_to "Timeline", timeline_path %>
               </li>
 
-              <li>
+              <li <%= "class ='active'" if (controller.class == StaticPagesController && controller.action_name == "about")%>>
                 <%= link_to "About", about_path %>
               </li>
 
-              <li>
+              <li <%= "class ='active'" if (controller.class == StaticPagesController && controller.action_name == "photos")%>>
                 <%= link_to "Photos <span>(123)</span>".html_safe, photos_path %>
               </li>
 
-              <li>
+              <li <%= "class ='active'" if (controller.class == StaticPagesController && controller.action_name == "friends")%>>
                 <%= link_to "Friends <span>(542)</span>".html_safe, friends_path %>
               </li>
             </ul>
@@ -36,9 +36,11 @@
 
           <div class = "col-sm-2 pull-right">
             <ul class = "nav navbar-nav">
+              <% unless (controller.class == StaticPagesController && controller.action_name == "about_edit") %>
               <li>
                 <%= link_to "Edit Profile", about_edit_path %>
               </li>
+              <% end %>
             </ul>
           </div>
         </div>

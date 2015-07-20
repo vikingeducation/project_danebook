@@ -1,0 +1,268 @@
+  @mixin vertical-align {
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+  }
+
+.grey-text{
+  color: #ccc;
+}
+  .navbar{
+
+    background: -webkit-linear-gradient(#4C67A1, #3B5998);
+    background: -o-linear-gradient(#4C67A1, #3B5998); 
+    background: -moz-linear-gradient(#4C67A1, #3B5998);
+    background: linear-gradient(#4C67A1, #3B5998); 
+   
+    margin-bottom: 0px;
+
+    }
+
+  .navbar {
+
+    a{
+
+      color: white;
+      font-size: 2em;
+      
+      img{
+
+        margin-top: -7px;
+        height: 1.3em;
+        float: left;
+        margin-right: 6px;
+
+      }
+   } 
+    }
+  .test{
+    float:right;
+    font-size: 1.3em;
+    color:white;
+    margin-top: 10px;
+  }
+
+
+ 
+@media (min-width: 800px) {
+
+  .navbar-form .input-group>.form-control {
+
+      min-width: 600px;
+
+      }
+}
+
+/******************** about page **********************************/
+
+
+
+
+
+
+.cover-photo {
+
+  width:100%;
+  min-width: 992px;
+  height: 400px;
+  position:relative;
+
+}
+
+.profile-photo{
+
+  position: absolute;
+  bottom: -20px;
+  margin-left: 15px;
+  z-index:2;
+
+}
+
+.profile-photo img {
+  
+  width: 150px;
+  display: block;
+  
+
+}
+
+.profile-link{
+
+  list-style: none;
+}
+
+.panel-custom{
+
+  margin-top: 20px;
+
+}
+.panel-body{
+  
+    margin-right: 40px;
+    margin-left: 20px;
+}
+
+.panel-heading h4{
+    
+    font-size: 2.3em;
+    margin-top: -3px;
+    margin-bottom: -3px;
+}
+
+.about-info {
+
+  h3, h5{
+
+    font-weight: bold;
+  }
+
+}
+
+.dl-horizontal dt{
+
+    
+    text-align: left;
+    margin-bottom: .5em;
+}
+
+.dl-horizontal dd{
+    margin-bottom: .5em;
+}
+
+/************************************about_edit page ****************/
+
+.btn-block{
+    
+    margin-top: 50px;
+    margin-bottom: 50px;
+
+}
+
+
+    ::-webkit-input-placeholder {
+   color: black;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: black;  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: black;  
+}
+
+:-ms-input-placeholder {  
+   color: black;  
+}
+
+.friends-list{
+  
+  border: 1px solid #ccc;
+  padding-top: 20px;
+  margin: 10px;
+  .friends-margin{
+    margin-top: 20px;
+  }
+}
+
+
+/********************  TIMELINE ****************************/
+
+.friends {
+
+  li{
+
+    list-style:none;
+    padding: 0 5px;
+    display: inline;
+    float:left;
+    }
+  
+    .panel-body{
+    
+    padding: 10px;
+    margin: auto;
+
+  }
+  .text-center{
+
+    font-weight: bold;
+
+  }
+
+}
+.clear-div{
+
+  clear:both;
+
+}
+.timeline-panel-header{
+
+    text-align: center;
+    font-weight: bold;
+
+}
+
+.timeline-wrap{
+
+  margin-top: 15px;
+
+}
+
+.poster{
+
+  margin-top: 10px;
+  
+  textarea{
+      
+    margin-top: 15px;
+    margin-bottom: 15px;
+
+  }
+}
+
+.comments img{  
+    
+    height:70px;
+  }
+
+.liked {
+
+  padding-top: 15px;
+}
+
+.commented{
+        
+        margin-right: 0;
+        margin-left: 0;
+        background-color: #f5f5f5;
+    
+    p{
+      padding-top: 10px;
+    }
+
+   .thumbnail{
+      margin-top: 10px;
+   }
+
+   hr{
+      
+      border-color: 696969;
+
+<<<<<<< HEAD
+   }
+}
+=======
+/******************** photos **************************/
+
+.photo-grid{
+
+  margin: 25px;
+}
+
+
+
+
+>>>>>>> 917c4efccd662fec9892ef08ef074d60b6f3d769

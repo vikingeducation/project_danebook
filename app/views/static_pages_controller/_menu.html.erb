@@ -1,0 +1,38 @@
+<div class = "container">
+
+    <div class = "row">
+
+      <div class = "col-sm-12 header-photo">
+
+        <div class = "profile-name">
+
+          <h1>Harry Potter</h1>
+
+        </div>
+
+        <img src = "http://s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif">
+
+      </div>
+
+    </div>
+
+    <div class = "row header-nav">
+
+      <div class = "col-xs-8 col-xs-offset-4 centered-pills">
+
+        <ul class="nav nav-pills header-nav-pills">
+          <li role="presentation" <% if active == 'Timeline' %> class="active"<% end %>><%= link_to "Timeline", timeline_path %></li>
+          <li role="presentation" <% if active == 'About' %> class="active"<% end %>><%= link_to "About", about_path %></li>
+          
+          <li role="presentation" <% if active == 'Photos' %> class="active"<% end %>><%= link_to "Photos", photos_path %></li>
+          <li role="presentation" <% if active == 'Friends' %> class="active"<% end %>><%= link_to "Friends", friends_path %></li>
+        </ul>
+        <section class="col-md-13 pull-right edit-profile navbar-text">
+        <%= link_to "Edit Profile", about_edit_path %>
+        </section>
+
+      </div>
+
+    </div>
+
+  </div>

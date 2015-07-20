@@ -5,4 +5,6 @@ class StaticPagesControllerController < ApplicationController
 
   
 
+  
+
 end

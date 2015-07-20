@@ -3,44 +3,7 @@
 
   <!-- Profile Header -->
 
-  <div class = "container">
-
-    <div class = "row">
-
-      <div class = "col-sm-12 header-photo">
-
-        <div class = "profile-name">
-
-          <h1>Harry Potter</h1>
-
-        </div>
-
-        <img src = "http://s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif">
-
-      </div>
-
-    </div>
-
-    <div class = "row header-nav">
-
-      <div class = "col-xs-8 col-xs-offset-4 centered-pills">
-
-        <ul class="nav nav-pills header-nav-pills">
-          <li role="presentation" class = "active"><a href="timeline.html">Timeline</a></li>
-          <li role="presentation"><a href="about.html">About</a></li>
-          <li role="presentation"><a href="photos.html">Photos</a></li>
-          <li role="presentation"><a href="friends.html">Friends</a></li>
-        </ul>
-        <section class="col-md-13 pull-right edit-profile navbar-text">
-        <a href="about_edit.html edit-hide">Edit Profile</a>
-        </section>
-
-      </div>
-
-    </div>
-
-  </div>
-
+  <%= render partial: "static_pages_controller/menu", :locals => { :active => 'About' }  %>
 
   <!-- /profile header -->
 

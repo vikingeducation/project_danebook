@@ -1,11 +1,23 @@
 class StaticpagesController < ApplicationController
 
-def home
+  def home
 
-end
+  end
 
-def timeline
+  def timeline
 
-end
+  end
+  
+  def friends
 
+  end
+
+  def about
+
+  end
+
+  def photos
+
+  end
+  
 end

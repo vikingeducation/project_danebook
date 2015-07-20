@@ -1,35 +1,4 @@
-<!-- Your markup here! -->
-<html>
-<head>
-  <title> Danebook - About </title>
-  
-  <link href="bootstrap.min.css" rel="stylesheet" type="text/css">
-  <link href="custom.css" rel="stylesheet" type="text/css">
 
-</head>
-<body>
-  <header class="navbar">
-    <div class="container">
-      <div class="row">
-
-        <div class="navbar-header">
-
-          <a class="navbar-brand" href="#"><img class="logo" src="images/danish_flag.gif" alt="the logo">Danebook</a>
-
-        </div>
-        <div class="test"><p >Harry</p></div>
-        
-
-        <form class="navbar-form " role="search">
-          <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search this site">
-
-          </div>
-        </form>
-        
-      </div> <!-- end row -->
-      </div>  
-    </header>
     <main>
       <div class="container">
         <div class="row">
@@ -42,31 +11,7 @@
         </div>
 
         <div class="row">
-
-          <nav class="col-md-7 col-md-offset-2">
-            <ul class="nav nav-tabs">
-              <li>
-                <a href="timeline.html">Timeline</a>
-              </li>
-              <li class="active">
-                <a href="about.html">About</a>
-              </li>
-              <li>
-                <a href="photos.html">Photos <span class="unread-number">(123)</span></a>
-              </li>
-              <li>
-                <a href="friends.html">Friends <span class="unread-number">(542)</span></a>
-              </li>
-            </ul>
-          </nav>
-
-          <div class="col-md-2 pull-right">
-            <ul class="nav profile-link">
-              <li>
-                <a href="about_edit.html" class="pull-right ">Edit Profile</a>
-              </li>
-            </ul>
-          </div>
+          <%= render 'layouts/navbar' %>
         </div> <!-- end of row -->
 
         <section class="panel panel-default panel-custom">
@@ -146,8 +91,7 @@
     </div>
 
   </main>
-</body>
-</html>
+
 
 
 

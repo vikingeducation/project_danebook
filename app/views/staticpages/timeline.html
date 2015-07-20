@@ -4,7 +4,7 @@
     <div class="row">
       <div class="col-md-12">
         <img src="images/hogwarts_small.jpg" class="cover-photo hidden-xs hidden-sm img-responsive" alt="profile cover photo">
-        <div class="profile-photo"> 
+        <div class="profile-photo">
           <img src="images/harry_potter_small.jpg" class="hidden-xs hidden-sm">
         </div>
       </div>
@@ -12,19 +12,7 @@
 
 
   <div class="row">
-    <nav class="col-md-7 col-md-offset-2">
-      <ul class="nav nav-tabs">
-        <li><a href="timeline.html">Timeline</a></li>
-        <li class="active"><a href="about.html">About</a></li>
-        <li><a href="photos.html">Photos <span class="unread-number">(123)</span></a></li>
-        <li><a href="friends.html">Friends <span class="unread-number">(542)</span></a></li>
-      </ul>
-    </nav>
-    <div class="col-md-2 pull-right">
-      <ul class="nav profile-link">
-      <li><a href="about_edit.html" class="pull-right ">Edit Profile</a></li>
-      </ul>
-    </div>
+    <%= render 'layouts/navbar' %>
   </div>
 
   <section class="timeline-wrap">
@@ -281,16 +269,12 @@
                   </div>
                 </div>
 
-
               </div> <!-- col-md-7 end -->
             </div> <!-- row end -->
         </article> <!-- end comment panel -->
       </div><!-- col-md-8 end -->
-    
     </div> <!-- end of row -->
-
   </section>
-
 </div> <!-- end of container -->
 </main>
 

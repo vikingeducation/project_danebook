@@ -13,8 +13,12 @@
             </div>
             <form class="col-xs-2" action="about_edit.html">
               <div class="form-group">
-                <button type="submit" class="btn btn-active" id="edit-profile">Edit your Profile</button>
-              </div>
+                <%= link_to about_edit_path  do %>
+                  <button class= "btn btn-active", id= "edit-profile">
+                    Edit Your Profile
+                  </button>
+                <% end %>
+               </div>
             </form>
           </div>
         </header>

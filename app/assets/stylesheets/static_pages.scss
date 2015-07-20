@@ -234,6 +234,10 @@ main {
 
       .friend-img {
         margin: 10px;
+        img {
+          height: 100px;
+          width: 100px;
+        }
       }
 
       .friend-name {
@@ -262,6 +266,10 @@ main {
       }
 
       #timeline-photos {
+        img {
+          height: 85px;
+          width: 85px;
+        }
         .upload-date {
           visibility: hidden;
           text-align: center;
@@ -291,6 +299,10 @@ main {
           // margin-bottom: 10px;
         }
         .friend {
+          img {
+            height: 84px;
+            width: 84px;
+          }
           text-align: center;
           margin: 10px 0;
           .friend-link {
@@ -341,6 +353,11 @@ main {
   }
 
   #photos-section {
+    img {
+      height: 200px;
+      width: 200px;
+    }
+
     border: 1px solid #aaa;
     header {
       form div button {
@@ -353,6 +370,7 @@ main {
         top: 12px;
       }
     }
+
 
     .upload-date {
       visibility: hidden;

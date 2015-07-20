@@ -12,3 +12,5 @@ Garrett Weinert
 Assignment to port Danebook pages from HTML/CSS chapter to rails.
 
 project for [vikingcodeschool](www.vikingcodeschool.com)
+
+heroku url: https://warm-taiga-2812.herokuapp.com/

@@ -1,0 +1,33 @@
+.vcenter {
+    display: flex;
+    align-items: center;
+}
+
+.about-bar {
+	background-color: #ccc;
+	border-bottom: solid black 1px
+}
+
+.about{
+	border: solid black 1px;
+}
+
+
+.about-table textarea {
+	height: 22px;
+	width: 300px;
+}
+
+.words textarea {
+	height: 100px;
+	width: 460px;
+}
+
+.about-me textarea {
+	width: 460px;
+	height: 150px;
+}
+
+textarea {
+	resize: none;
+}

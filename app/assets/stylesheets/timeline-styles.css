@@ -1,0 +1,93 @@
+body {
+	margin-bottom: 100px;
+}
+
+textarea{
+	resize:none;
+}
+
+
+
+.about-me-box, .photos-box, .friends-box, .newpost-box {
+	border: solid black 1px;
+	margin-top: 25px;
+}
+
+.about-me-box, .newpost-box{
+	margin-top: 0px;
+}
+
+.box-title {
+	
+	text-align: center;
+	background-color: #bbb;
+	border-bottom: solid black 1px;
+}
+
+.photos-box img, .friends-box img, .post img {
+
+	width:100%;
+	height:100%;
+}
+
+textarea {
+
+	width: 90%;
+	height: 100px;
+	margin: 5%;
+}
+
+.submit-bar{
+
+	background-color: #bbb;
+	border-top: solid black 1px;
+}
+
+.submit-bar a {
+
+	height: 50%;
+	line-height: 1;
+	margin: 5px auto;
+}
+
+.post {
+
+	margin-top: 25px;
+	border: solid black 1px;
+}
+
+.post img {
+
+	margin-top: 10%;
+}
+
+.posted-name {
+
+	margin-left: -3%;
+	margin-top: 1%
+}
+
+.post-text {
+
+	margin-left: 5%;
+}
+
+.like-bar, .combox {
+
+	background-color: #bbb;
+	border-top: solid black 1px;
+}
+
+.liked {
+	border-top: none;
+}
+
+.grey {
+
+	color: #ddd;
+}
+
+.combox .submit-bar{
+	border-top: none;
+	margin-top: -2%;
+}

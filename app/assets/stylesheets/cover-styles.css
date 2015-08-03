@@ -1,0 +1,22 @@
+.cover {
+  border: solid black 1px;
+  margin-bottom: 20px;
+}
+
+
+.cover-profile {
+
+	position: absolute;
+	top: 190px;
+  left: 120px;
+}
+
+.profile-pic {
+  height: 180px;
+  width: 180px;
+}
+
+.cover-menu .col-md-1 {
+
+	padding: 0px;
+}

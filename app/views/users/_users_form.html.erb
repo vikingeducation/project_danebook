@@ -37,11 +37,11 @@
     </div>
   </div>
 
-  <%= fields_for :birthdate do %>
+  <%= fields_for :birthdate do |b|%>
 
   <div class = "row">
     <div class = "col-xs-4">
-      <%= user_fields.select_tag(:month,
+      <%= b.select_tag(:month,
         '<option value=nil>Month</option>
         <option value="1">Jan</option>
         <option value="2">Feb</option>
@@ -58,7 +58,7 @@
     </div>
 
     <div class = "col-xs-4">
-      <%= user_fields.select_tag(:day,
+      <%= b.select_tag(:day,
         '<option value=nil>Day</option>
         <option value="1">1</option>
         <option value="2">2</option>
@@ -94,7 +94,7 @@
     </div>
 
     <div class = "col-xs-4">
-      <%= user_fields.select_tag(:year,
+      <%= b.select_tag(:year,
         '<option value=nil>Year</option>
         <option value="2015">2015</option>
         <option value="2014">2014</option>
@@ -134,21 +134,19 @@
   <div class = "row">
 
     <div class = "col-xs-4 top-bottom-margin">
-      <input type="radio" name="gender" >
-      <label>Female</label>
+      <%= b.label :gender %>
+      <%= b.radio_button(:gender, "female") %>
     </div>
 
     <div class = "col-xs-4 top-bottom-margin">
-      <input type="radio" name="gender">
-      <label>Male</label>
+      <%= b.radio_button(:gender, "female") %>
     </div>
 
   </div>
 
   <div class = "row">
     <div class = "col-sm-12">
-      <input class = "btn btn-success large-width" type="submit" value = "Sign Up" target = "#">
-
+      <%= user_fields.submit, "Sign Up", class: "btn btn-success large-width" %>
     </div>
   </div>
 </form>

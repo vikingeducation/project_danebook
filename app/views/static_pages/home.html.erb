@@ -33,14 +33,14 @@
         </div>
       </div>
 
-      <form>
+      <%= form_tag users_path, method: "post" do%>
 
         <div class = "row">
           <div class = "col-sm-6">
-            <input type = "text" placeholder = "First Name" name = "first-name" class = "form-control">
+            <input type = "text" placeholder = "First Name" name = "first_name" class = "form-control">
           </div>
           <div class = "col-sm-6">
-            <input type = "text" placeholder = "Last Name" name = "last-name" class = "form-control">
+            <input type = "text" placeholder = "Last Name" name = "last_name" class = "form-control">
           </div>
         </div>
 
@@ -58,7 +58,7 @@
 
         <div class = "row">
           <div class = "col-sm-12">
-            <input type = "password" placeholder = "Confirm Your Password" name = "password-confirm" class = "form-control">
+            <input type = "password" placeholder = "Confirm Your Password" name = "password_confirmation" class = "form-control">
           </div>
         </div>
 
@@ -175,11 +175,11 @@
 
         <div class = "row">
           <div class = "col-sm-12">
-            <input class = "btn btn-success large-width" type="submit" value = "Sign Up" target = "#">
+            <%= submit_tag "Sign Up", class: "btn btn-success large-width"%>
 
           </div>
         </div>
-      </form>
+      <% end %>
 
     </div>
   </div>

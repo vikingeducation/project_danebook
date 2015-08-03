@@ -7,10 +7,13 @@ class User < ActiveRecord::Base
 
   validates :password, :presence => true,
                         :length => {:in => 8..25},
-                        :on => :create, :update,
+                        :on => [:create, :update],
                         :allow_nil => true
 
   validates :first_name, :last_name, :length => {:in => 5..30}
+
+
+  has_one :birthdate
 
 
 end

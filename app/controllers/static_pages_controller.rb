@@ -1,7 +1,8 @@
 class StaticPagesController < ApplicationController
 
   def home
-
+    @user = User.new
+    # @user.birthdate.build
   end
 
   def timeline

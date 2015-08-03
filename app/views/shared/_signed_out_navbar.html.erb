@@ -19,6 +19,10 @@
         <div class="form-group">
           <h6>Email</h6>
           <%= text_field_tag :email, "", class: "form-control", placeholder: "example@email.com" %>
+          <%= label_tag do %>
+            Keep me logged in
+            <%= check_box_tag :remember_me %>
+          <% end %>
         </div>
 
         <div class="form-group">

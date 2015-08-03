@@ -40,8 +40,8 @@ group :development, :test do
   gem 'byebug'
 
   gem 'better_errors'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+  # Use sqlite3 as the database for Active Record
+  gem 'sqlite3'
 
   gem 'binding_of_caller'
 

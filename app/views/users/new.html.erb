@@ -1,2 +1,113 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<%= render partial: 'shared/top_bar' %>
+  <ma in>
+    <div class="row">
+      <section class="col-md-7">
+        <div class="row">
+        <div class="col-md-6 col-md-offset-3 test">
+        <h1 >Connect with all your friends!</h1>
+          <ul>
+            <li>See photos and updates in your news feeds</li>
+            <li>Post your status for the world to see from your profile</li>
+            <li>Get in touch with your friends by "friending" them</li>
+            <li>Like things because you're a positive person!</li>
+          </ul>
+        </div>
+        </div>
+      </section>
+      <section class="col-md-3">
+          <h1>Sign Up</h1>
+
+          <%= form_for @user, url: timeline_path do |f| %>
+
+          <div class="form-group">
+            <div class="row">
+              <div class="col-md-6">
+                <%= f.text_field :first_name, placeholder: "First Name", class: "form-control" %>
+              </div>
+              <div class="col-md-6">
+                <%= f.text_field :last_name, placeholder: "Last Name", class: "form-control" %>
+              </div>
+            </div>
+          </div>
+                      
+          <div class="form-group">
+            <%= f.text_field :email, placeholder: "Email", class: "form-control" %>
+          </div>
+          <div class="form-group">
+          <%= f.password_field :password, placeholder: "Password", class: "form-control" %>
+
+          </div>
+          <div class="form-group">
+          <%= f.password_field :password_confirmation, placeholder: "Password", class: "form-control" %>
+          </div>
+          <h3>Birthday</h3>
+          <div class="row">
+            <div class="col-sm-4">
+              <select class="form-control">
+                <option>Month</option>
+                <option>Jan</option>
+                <option>Feb</option>
+                <option>Mar</option>
+                <option>Apr</option>
+                <option>May</option>
+                <option>Jun</option>
+                <option>Jul</option>
+                <option>Aug</option>
+                <option>Sep</option>
+                <option>Oct</option>
+                <option>Nov</option>
+                <option>Dec</option>
+              </select> 
+            </div>
+            <div class="col-sm-4">
+              <select class="form-control">
+                <option value="">Day</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="31">31</option>
+              </select>
+            </div>
+            <div class="col-sm-4">
+              <select class="form-control">
+                <option value="">Year</option>
+                <option value="1906">1906</option>
+                <option value="1907">1907</option>
+                <option value="1908">1908</option>
+                <option value="1999">1999</option>
+                <option value="2000">2000</option>
+                <option value="2001">2001</option>
+                <option value="2002">2002</option>
+              </select>
+            </div>
+          </div>
+          <h4>Gender</h4>
+          <div class="row form-group">
+            
+            <div class="col-sm-4">
+              <div class="radio">
+                <label>
+                  <input type="radio" name="gender" value="male">
+                  Male
+                </label>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <div class="radio">
+                <label>
+                  <input type="radio" name="gender" value="female">
+                  Female
+                </label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <%= f.submit "Sign-Up", class: "btn btn-success btn-block" %>
+            <% end %>
+          </div>
+
+
+      </section>
+    </div>
+  </main>
+

@@ -1,6 +1,2 @@
-
-This is your README!
-
-Joseph Lozano
-Xin Liu
-
+danebook
+This is the Real Dane Deal.

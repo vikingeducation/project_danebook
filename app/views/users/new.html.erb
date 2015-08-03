@@ -47,16 +47,19 @@
         <%= form_for @user do |f| %>
         <div class="row">
           <div class="col-sm-6 naming-form">
+            <%= field_with_errors(@user, :first_name) %>
             <%= f.text_field :first_name, {:required => true, :placeholder => "First Name", :class => "form-control"} %>
           </div>
-      
+
           <div class="col-sm-6 naming-form-left">
+            <%= field_with_errors(@user, :last_name) %>
             <%= f.text_field :last_name, {:required => true, :placeholder => "Last Name", :class => "form-control"} %>
           </div>
         </div>
 
         <div class="row">
           <div class="col-sm-12 input-form">
+            <%= field_with_errors(@user, :last_name) %>
             <%= f.text_field :email, {:required => true, :placeholder => "Email", :class => "form-control"} %>
           </div>
         </div>
@@ -64,12 +67,14 @@
 
         <div class="row">
           <div class="col-sm-12 input-form">
+            <%= field_with_errors(@user, :password) %>
             <%= f.password_field :password, {:required => true, :placeholder => "Password", :class => "form-control"} %>
           </div>
         </div>
 
         <div class="row">
           <div class="col-sm-12 input-form">
+            <%= field_with_errors(@user, :password_confirmation) %>
             <%= f.password_field :password_confirmation, {:required => true, :placeholder => "Password Confirmation", :class => "form-control"} %>
           </div>
         </div>
@@ -78,25 +83,27 @@
 
         <h4>Birthday</h4>
         <div class="row">
-          <%= f.date_select(:dob)%>
+          <%= field_with_errors(@user, :dob) %>
+          <%= f.date_select(:dob, {}, required: true)%>
         </div>
 
         <div class="row">
           <div class="col-md-12">
+            <%= field_with_errors(@user, :gender) %>
             <%= f.label :gender, "Male" %>
             <%= f.radio_button(:gender, 0) %>
             <%= f.label :gender, "Female" %>
             <%= f.radio_button(:gender, 1) %>
           </div>
         </div>
-        
+
 
         <div class="row">
           <div class="col-md-12">
             <%= f.submit "Sign Up", class: "btn btn-success sign-up-button"%>
           </div>
         </div>
-      <% end %> 
+      <% end %>
       </div>
     </div>
   </div>

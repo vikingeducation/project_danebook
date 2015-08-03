@@ -8,4 +8,5 @@ Rails.application.routes.draw do
   get '/about_edit' => "staticpages#about_edit"
 
   resources :users, only: [:new, :create, :show, :destroy]
+  resource :logins, only: [:new, :create, :destroy]
 end

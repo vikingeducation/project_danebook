@@ -7,8 +7,10 @@ class CreateUsers < ActiveRecord::Migration
       t.datetime :dob, null: false
       t.string :first_name, null: false
       t.string :last_name, null: false
+      t.string :auth_token
 
       t.timestamps null: false
     end
+    add_index :users, :auth_token, :unique => true
   end
 end

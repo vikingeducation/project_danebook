@@ -20,8 +20,11 @@ ActiveRecord::Schema.define(version: 20150803184129) do
     t.datetime "dob",             null: false
     t.string   "first_name",      null: false
     t.string   "last_name",       null: false
+    t.string   "auth_token"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
   end
+
+  add_index "users", ["auth_token"], name: "index_users_on_auth_token", unique: true
 
 end

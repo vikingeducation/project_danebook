@@ -1,9 +1,17 @@
 class User < ActiveRecord::Base
 
-  def create
+  has_secure_password
 
-  end
+  validates :email, :presence => true,
+                    :format => { :with => /@/ }
 
-  def show
-  end
+  validates :password, :presence => true,
+                        :length => {:in => 8..25},
+                        :on => :create, :update,
+                        :allow_nil => true
+
+  validates :first_name, :last_name, :presence => true,
+                                    :length => {:in => 5..30}
+
+
 end

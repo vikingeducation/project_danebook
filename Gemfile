@@ -27,7 +27,7 @@ group :production do
 end
 
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+  gem 'bcrypt', '~> 3.1.7'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
@@ -40,8 +40,10 @@ group :development, :test do
   gem 'byebug'
 
   gem 'better_errors'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+  # Use sqlite3 as the database for Active Record
+  gem 'sqlite3'
+  gem 'faker'
+  gem 'pry-rails'
 
   gem 'binding_of_caller'
 

@@ -1,0 +1,393 @@
+// Place all the styles related to the static_pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#home{
+  nav {
+
+ #brand-color {
+   color: #fff;
+   font-size: 40px;
+   padding: 30px 0;
+ }
+
+ .navbar-form {
+
+   h6 {
+     color: #fff;
+   }
+
+   .form-group {
+     margin: auto 7px;
+   }
+
+   .btn {
+     position: relative;
+     top: 17px;
+     background-color: #5E77AA ;
+     border: 1px solid #2A457D ;
+   }
+ }
+
+ #toggle-colors {
+   border: 1px solid #8ca7e1 ;
+   position: relative;
+   top: 5px;
+
+   .icon-bar {
+     border: 1px solid #8ca7e1 ;
+   }
+ }
+}
+
+
+.navbar-default {
+ background-color: #3A5795 ;
+ }
+
+main {
+ .col-sm-12 {
+   h2 {
+     padding: 40px 0 20px;
+   }
+
+   ul li {
+     padding: 8px 0;
+   }
+ }
+
+ form {
+   input, select {
+     margin: 8px 0;
+   }
+
+   .top-bottom-margin {
+     margin: 10px 0;
+   }
+
+   .large-width {
+     width: 100%;
+   }
+ }
+}
+}
+
+// end of home page styles
+// -----------------------------------
+// -----------------------------------
+// -----------------------------------
+
+
+@mixin vertical-align {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+      -ms-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+#navbar-color{
+    background-color: #3A5795;
+    border: 1px solid #1B316B;
+  }
+
+nav {
+
+  #brand-color {
+    color: #fff;
+    font-size: 26px;
+  }
+
+  #navbar {
+    p {
+      padding-right: 10px;
+      color: #fff;
+      a {
+        color: #fff;
+      }
+    }
+
+  }
+
+  .icon-bar {
+    border: 1px solid #fff;
+  }
+
+  // .navbar-toggle:hover {
+  //   background-color: #1a3775;
+  // }
+}
+
+main {
+  header {
+
+    .photo-container {
+      #cover-photo {
+        width: 100%;
+        height: 400px;
+        opacity: 0.7;
+      }
+    }
+
+    #pages-nav {
+    border: 1px solid #aaa;
+
+      .profile-pic-container {
+        border: 1px solid #777;
+        height: 200px;
+        width: 200px;
+        position: absolute;
+        top: -165px;
+        left: 35px;
+
+        img {
+          height: 100%;
+          width: 100%;
+        }
+      }
+
+      .profile-name {
+        position: relative;
+        top: -80px;
+        left: 240px;
+        color: #fff;
+        display: inline;
+      }
+
+      .navigation-container {
+        ul li {
+          span {
+            color: #aaa;
+          }
+        }
+
+      }
+    }
+  }
+
+  section {
+    margin-top: 10px;
+
+
+    header {
+      background-color: #eee;
+      text-align: center;
+      border: 1px solid #aaa;
+    }
+
+    footer {
+      background-color: #eee;
+      border: 1px solid #aaa;
+    }
+  }
+
+
+  #about-section {
+    border: 1px solid #aaa;
+
+    header {
+      form div button {
+        background-color: #3A5795;
+        color: #fff;
+        border: 1px solid #1B316B;
+        box-shadow: 3px 3px 3px #333;
+        position: absolute;
+        right: 23px;
+        top: 12px;
+      }
+    }
+
+    .about-info {
+      div div {
+        padding: 5px 0 5px 10px;
+      }
+    }
+  }
+
+
+  #about-edit {
+    border: 1px solid #aaa;
+
+    .about-info {
+      div div {
+        padding: 5px 0 5px 10px;
+      }
+    }
+
+    #save-changes {
+      text-align: center;
+      padding: 20px 0 30px;
+      button {
+        padding: 15px 0;
+        width: 75%;
+        font-size: 20px;
+      }
+    }
+  }
+
+  #friends-section {
+    border: 1px solid #aaa;
+
+    .friend-wrapper {
+      margin: 20px 10px;
+      border: 1px solid #eee;
+
+      .friend-img {
+        margin: 10px;
+        img {
+          height: 100px;
+          width: 100px;
+        }
+      }
+
+      .friend-name {
+        padding: 25px 5px 0px;
+        h6 {
+          color: #aaa;
+        }
+      }
+
+      .friend-options {
+        padding: 40px 0;
+        button {
+          color: #555;
+          box-shadow: 2px 2px 2px #333;
+        }
+      }
+    }
+  }
+
+  #timeline-section {
+    #basic-info {
+      #timeline-about {
+        div {
+          padding: 5px 0px 5px 10px;
+        }
+      }
+
+      #timeline-photos {
+        img {
+          height: 85px;
+          width: 85px;
+        }
+        .upload-date {
+          visibility: hidden;
+          text-align: center;
+          p {
+            font-size: 11px;
+            background-color: #000;
+            color: #fff;
+            opacity: 0.7;
+            position: relative;
+            top: -40px;
+            left: 4px;
+          }
+        }
+        .photo:hover .upload-date {
+          visibility: visible;
+        }
+
+        .more-photos {
+          text-align: center;
+          font-size: 18px;
+          margin-bottom: 15px;
+        }
+      }
+
+      #timeline-friends {
+        header {
+          // margin-bottom: 10px;
+        }
+        .friend {
+          img {
+            height: 84px;
+            width: 84px;
+          }
+          text-align: center;
+          margin: 10px 0;
+          .friend-link {
+            font-size: 18px;
+          }
+        }
+      }
+    }
+    //Right side of timeline
+
+    #news-feed {
+      #post-box {
+        .comment-area {
+          margin-top: 15px;
+        }
+        footer {
+          text-align: right;
+          padding: 10px;
+        }
+        margin-bottom: 20px;
+      }
+
+      .feed-posts {
+        padding: 15px 15px 0;
+        border: 1px solid #aaa;
+        margin-bottom: 20px;
+
+        .date-posted {
+          color: #777;
+        }
+
+        footer {
+          padding: 10px;
+          p {
+            padding: 15px 15px 10px;
+            margin-bottom: 0px;
+          }
+          .divider-line {
+            border-bottom: 1px solid #aaa;
+            margin-bottom: 20px;
+          }
+          span {
+            color: #aaa;
+          }
+        }
+      }
+    }
+  }
+
+  #photos-section {
+    img {
+      height: 200px;
+      width: 200px;
+    }
+
+    border: 1px solid #aaa;
+    header {
+      form div button {
+        background-color: #3A5795;
+        color: #fff;
+        border: 1px solid #1B316B;
+        box-shadow: 3px 3px 3px #333;
+        position: absolute;
+        right: 23px;
+        top: 12px;
+      }
+    }
+
+
+    .upload-date {
+      visibility: hidden;
+      text-align: center;
+      p {
+        font-size: 16px;
+        background-color: #000;
+        color: #fff;
+        opacity: 0.7;
+        position: relative;
+        top: -50px;
+        width: 200px;
+        }
+      }
+    .photo:hover .upload-date {
+      visibility: visible;
+    }
+  }
+
+}

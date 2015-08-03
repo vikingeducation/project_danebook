@@ -1,0 +1,37 @@
+<nav class = "navbar navbar-default navbar-fixed-top" id = "navbar-color">
+    <div class = "container-fluid" >
+      <div class = "navbar-header">
+
+        <button type="button" class="btn btn-navbar navbar-toggle collapsed" id = "toggle-colors" data-toggle="collapse" data-target="#navbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <%= link_to timeline_path, class: "navbar-brand" do %>
+          <%= image_tag 'danish_flag.gif', :class => "img-circle img-responsive", :height => "30px", :width => "40px" %>
+        <% end %>
+        <%= link_to "Danebook", timeline_path, id: "brand-color", class: "navbar-brand" %>
+      </div>
+
+      <div id = "navbar" class = "navbar-collapse collapse">
+
+        <form class="navbar-form navbar-left" role = "search">
+          <div class = "form-group">
+            <input type="search" class = "form-control" placeholder = "Search for Users" size = "30">
+          </div>
+
+          <button type = "submit" class = "btn btn-default">
+            Submit  <span class="glyphicon glyphicon-search"></span>
+          </button>
+        </form>
+
+        <p class="navbar-text navbar-right">
+          Signed in as 
+          <a href="#" class="navbar-link">Harry Potter</a>
+        </p>
+
+      </div>
+    </div>
+
+  </nav>

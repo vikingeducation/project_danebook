@@ -1,0 +1,155 @@
+// Place all the styles related to the staticpages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.danebook-logo {
+  width: 30px;
+  height: 30px;
+  margin-top: -3px;
+  margin-right: 5px;
+  border: 1px solid black; }
+
+.danebook-navbar {
+  background-color: #2B78E4;
+  border-bottom: 1px solid black; }
+
+.danebook-search {
+  margin-top: 12px; }
+
+.danebook-navbar-text {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 24px;
+  color: white; }
+
+#danebook-brand {
+  margin-top: 2px;
+  font-size: 24px;
+  color: white;
+  height: 100%; }
+
+.cover-photo {
+  width: 100%;
+  max-height: 400px;
+  border: 1px solid black; }
+
+.profile-info {
+  position: relative;
+  margin-top: 80px; }
+
+.cover-photo-menu {
+  border: 1px solid black;
+  margin-left: 0;
+  margin-right: 0; }
+
+@media (min-width: 1024px) {
+  .cover-photo-menu-tabs {
+    text-align: center;
+    height: 50px; } }
+@media (max-width: 1023px) {
+  .cover-photo-menu-tabs {
+    text-align: center;
+    height: 200px; } }
+.cover-photo-menu-tabs div {
+  border: 1px solid black;
+  height: 50px; }
+
+.cover-photo-menu-tabs a {
+  color: black; }
+
+.cover-photo-menu-tabs h5 {
+  line-height: 30px; }
+
+.profile-picture-large img {
+  width: 140px;
+  height: 140px;
+  border: 2px solid black; }
+
+.profile-picture-large {
+  position: absolute;
+  top: 65%;
+  left: 3%; }
+
+.profile-picture-small img {
+  width: 80px;
+  height: 80px;
+  border: 1px solid black; }
+
+.profile-picture-small {
+  position: absolute;
+  top: 50%;
+  left: 6%; }
+
+.profile-name-large {
+  color: white;
+  position: absolute;
+  top: 75%;
+  left: 20%; }
+
+.profile-name-small {
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 20%; }
+
+.profile-edit-button {
+  padding-top: 4px;
+  height: 50px;
+  text-align: center;
+  line-height: 40px; }
+
+.selected {
+  background-color: #EEEEEE; }
+
+.info-section {
+  padding-bottom: 10px;
+  margin: 20px 0px 50px 0px;
+  border: 1px solid black; }
+
+.info-section-topbar {
+  text-align: center;
+  font-size: 40px;
+  border-bottom: 1px solid black;
+  background-color: #EEEEEE; }
+
+.about-right-col textarea {
+  width: 100%;
+  height: 100px; }
+
+.update-profile-btn {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  height: 50px;
+  width: 100%; }
+
+.center {
+  text-align: center;
+}
+
+
+
+/* iHover override and photo page image sizing */
+.ih-item.square {
+  width:100%;
+  height:100%;
+}
+
+.photo-page-photo img {
+  width:100%;
+  height:100%;
+}
+
+
+
+
+
+/* Friends.html */
+.friends-list img{
+  margin-top: 15px;
+  width: 60px;
+  height: 60px;
+}
+
+.friends-list button {
+  margin-top:25px;
+}

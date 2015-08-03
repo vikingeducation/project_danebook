@@ -1,6 +1,8 @@
 class User < ActiveRecord::Base
 
-  has_secure_password
+  before_create :generate_token
+
+  # has_secure_password #for session_based auth
 
   validates :email, :presence => true,
                     :format => { :with => /@/ }
@@ -15,5 +17,24 @@ class User < ActiveRecord::Base
 
   has_one :birthdate
 
+
+  def generate_token
+    begin
+      self[:auth_token] = SecureRandom.urlsafe_base64
+    end while User.exists?(:auth_token => self[:auth_token])
+  end
+
+  def regenerate_auth_token
+    self.auth_token = nil
+    generate_token
+    save!
+  end
+
+  private
+
+  def whitelisted_user_params
+    params.require(:user).permit( :first_name, :last_name, :email,
+                                  :password, :password_confirmation)
+  end
 
 end

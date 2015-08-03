@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   get 'photos' => 'static_pages#photos'
 
   resources :users, only: [:create, :show]
+  resource :session, :only => [:new, :create, :destroy]
+  get "login" => "sessions#new"
+  delete "logout" => "sessions#destroy"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

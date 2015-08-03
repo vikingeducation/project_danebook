@@ -14,3 +14,5 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+$('select[id*="birthday"]').wrapAll('<div class="col-xs-4">');

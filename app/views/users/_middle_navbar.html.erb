@@ -1,0 +1,49 @@
+    <header>
+
+      <div class = "photo-container">
+        <%= image_tag "hogwarts_small.jpg", class: "img-responsive", id: "cover-photo" %>
+      </div>
+
+      <div id = "pages-nav">
+        <div class = "row">
+
+          <div class = "col-md-3">
+            <div class = "profile-pic-container">
+              <%= image_tag "harry_potter_small.jpg", class: "img-responsive" %>
+            </div>
+            <h1 class = "profile-name">Harry Potter</h1>
+          </div>
+
+          <div class = "col-xs-7 navigation-container">
+            <ul class = "nav navbar-nav nav-pills">
+              <li class ="<%= controller.class == StaticPagesController && controller.action_name == "timeline" ? 'active' : '' %>" >
+                <%= link_to "Timeline", timeline_path %>
+              </li>
+
+              <li class ="<%= controller.class == StaticPagesController && controller.action_name == "about" ? 'active' : '' %>" >
+                <%= link_to "About", about_path %>
+              </li>
+
+              <li class ="<%= controller.class == StaticPagesController && controller.action_name == "photos" ? 'active' : '' %>" >
+                <%= link_to "Photos <span>(123)</span>".html_safe, photos_path %>
+              </li>
+
+              <li class ="<%= controller.class == StaticPagesController && controller.action_name == "friends" ? 'active' : '' %>" >
+                <%= link_to "Friends <span>(542)</span>".html_safe, friends_path %>
+              </li>
+            </ul>
+          </div>
+
+          <div class = "col-sm-2 pull-right">
+            <ul class = "nav navbar-nav">
+              <% unless (controller.class == StaticPagesController && controller.action_name == "about_edit") %>
+              <li>
+                <%= link_to "Edit Profile", about_edit_path %>
+              </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </header>

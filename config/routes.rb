@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   get '/about' => "staticpages#about"
   get '/photos' => "staticpages#photos"
   get '/about_edit' => "staticpages#about_edit"
+
+  resources :users, only: [:new, :create, :show, :destroy]
 end

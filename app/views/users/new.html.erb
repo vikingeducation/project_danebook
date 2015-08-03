@@ -43,20 +43,19 @@
 
         <div class="row form-group">
           <div class = "col-sm-12">
-            <%= f.text_field :email, :class => "form-control"} %>
-            <input class = "form-control" type = "text" id = "email" placeholder = "Your Email">
+            <%= f.text_field :email, placeholder: "Your Email", :class => "form-control" %>
           </div>
         </div>
 
         <div class="row form-group">
           <div class = "col-sm-12">
-            <input class = "form-control" type = "text" id = "pw" placeholder = "Your Password">
+            <%= f.password_field :password, placeholder: "Your Password", :class => "form-control" %>
           </div>
         </div>
 
         <div class="row form-group">
           <div class = "col-sm-12">
-            <input class = "form-control" type = "text" id = "pw-confirm" placeholder = "Confirm Your Password">
+            <%= f.password_field :password_confirmation, placeholder: "Confirm Your Password", :class => "form-control" %>
           </div>
         </div>
 
@@ -179,7 +178,7 @@
 
           <div class = "row form-group">
             <div class = "col-sm-12">
-              <%= submit_tag %>
+              <%= submit_tag "Sign Up!", class: "btn btn-success form-control" %>
             </div>
           </div>
           <% end %>

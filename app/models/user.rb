@@ -10,8 +10,7 @@ class User < ActiveRecord::Base
                         :on => :create, :update,
                         :allow_nil => true
 
-  validates :first_name, :last_name, :presence => true,
-                                    :length => {:in => 5..30}
+  validates :first_name, :last_name, :length => {:in => 5..30}
 
 
 end

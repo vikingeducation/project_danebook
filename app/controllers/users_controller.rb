@@ -1,5 +1,11 @@
 class UsersController < ApplicationController
 
+  # Require login to see content about a user
+  before_action :require_login, :except => [:new, :create]
+
+  # Only a user can see his/her own edit page, or delete his/her account
+  before_action :require_current_user, :only => [:edit, :update, :destroy]
+
   def new
     @user = User.new
   end
@@ -13,6 +19,25 @@ class UsersController < ApplicationController
       flash[:error] = @user.errors.full_messages
       render :new
     end
+  end
+
+  def edit
+  end
+
+  def update
+    if current_user.update(user_params)
+      flash[:success] = "Your profile was updated"
+      redirect_to user_path(current_user)
+    else
+      flash[:error] = @user.errors.full_messages
+      render :edit
+    end
+  end
+
+  def destroy
+    current_user.destroy
+    sign_out
+    flash[:success] = "Your account was successfully deleted from Danebook."
   end
 
   private

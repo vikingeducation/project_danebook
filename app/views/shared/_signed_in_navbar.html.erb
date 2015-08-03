@@ -28,7 +28,10 @@
 
         <p class="navbar-text navbar-right">
           Signed in as 
-          <a href="#" class="navbar-link">Harry Potter</a>
+          <%= link_to "#{current_user.name}", current_user, class: "navbar-link" %>
+          <%= link_to session_path, method: :delete, class: "btn btn-sm" do %>
+            <span class="glyphicon glyphicon-log-out"></span>Log out
+          <% end -%>
         </p>
 
       </div>

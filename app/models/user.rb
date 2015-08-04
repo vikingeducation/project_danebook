@@ -27,6 +27,10 @@ class User < ActiveRecord::Base
     self.first_name + " " + self.last_name
   end
 
+  def birthday
+    self.dob.strftime("%B %d, %Y")
+  end
+
   def generate_token
     begin
       self[:auth_token] = SecureRandom.urlsafe_base64

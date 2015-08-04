@@ -10,7 +10,7 @@
 					<div class="col-sm-5">
 						<div>
 						<h4><%= link_to post.author.full_name, post.author %></h4>
-						<h6><%= post.created_at %></h6>
+						<h6><%= post.posted_on %></h6>
 						</div>
 					</div>
 				</div>
@@ -23,7 +23,7 @@
 		</div>
 
 		<!-- Bottom section of a post -->
-		<% if current_user %>
+		<% if current_user || post.has_likes? %>
 			<div class="row timeline-post-bottombar">
 				<div class="col-xs-12 selected">
 					<div class="row">

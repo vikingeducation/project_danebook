@@ -1,6 +1,6 @@
-<%= render partial: "navbar" %>
+<%= render partial: "shared/navbar" %>
 <main>
-	<%= render partial: "info" %>
+	<%= render partial: "shared/info" %>
 
 		<!-- This row will hold the "About" Information. -->
 		<!-- The info-section and info-section-topbar css classes are re-used for about_edit and about -->
@@ -26,7 +26,7 @@
 						</div>
 						<div class="row">
 							<div class="col-md-12">
-								<b>Birthday:</b> <%= profile_helper(@user.dob) %>
+								<b>Birthday:</b> <%= profile_helper(@user.birthday) %>
 							</div>
 						</div>
 						<div class="row">

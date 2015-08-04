@@ -20,7 +20,7 @@
 						    		<!-- Conveniently, we can just re-use these from about.html and bootstrap scales it for us -->
 									<div class="row">
 										<div class="col-md-12">
-											<b>Birthday:</b> <%= profile_helper(@user.dob) %>
+											<b>Birthday:</b> <%= profile_helper(@user.birthday) %>
 										</div>
 									</div>
 									<div class="row">
@@ -108,12 +108,19 @@
 				<!-- This column will represent the right side of the timeline. -->
 				<div class="col-md-7 col-md-offset-1">
 					<!-- This row will represent the post window. -->
-					<%= render partial: "new_post_form" %>
+					<% if current_user %>
+					  <%= render partial: "new_post_form" %>
+					<% end %>
 
 					<!-- This row will represent a post -->
 					<%= render @posts %>
 
 					<!-- This row will represent a post -->
+					<div class="row">
+				    =====================<br>
+					  MOCKUP POSTS<br>
+					=====================<br>
+					</div>
 					<div class="row timeline-post">
 						<div class="col-xs-12">
 							<!-- Top section of a post -->

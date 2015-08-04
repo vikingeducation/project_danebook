@@ -38,7 +38,11 @@
                   <div class="col-sm-12">
                     <%= profile_fields.label :birthday, "Birthday" %>
                     <br>
-                    <%= profile_fields.date_select(:birthday_year, class: "form-control") %>
+                    <%= profile_fields.date_select(:birthday_year, 
+                                                   :order => [:month, :day, :year], 
+                                                   :start_year => 1900, 
+                                                   :end_year => Date.today.year - 18, 
+                                                   class: "form-control") %>
                   </div>
                   <div class="col-sm-12">
                     <%= profile_fields.radio_button(:gender, "male") %>
@@ -47,7 +51,7 @@
                     <%= label :gender_female, "Female" %>
                   </div>
                   <div class="col-sm-12">
-                    <%= user_fields.submit "Sign Up", class: "btn btn-success full-width" %>
+                    <%= user_fields.submit "Sign Up", class: "btn btn-lg btn-success full-width center-block" %>
                   </div>
                 <% end %>
               </div>

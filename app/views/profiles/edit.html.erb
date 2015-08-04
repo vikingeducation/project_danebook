@@ -1,0 +1,91 @@
+<div class="container cover">
+  <div class="row">
+    <div class="col-md-12">
+      <img src="http://i.imgur.com/RqYVi8w.jpg" width="99%" class="cover-pic hidden-sm hidden-xs" />
+    </div>
+  </div>
+  <div class="row cover-profile">
+    <div class="col-md-2 col-md-offset-1">
+        <img src="http://img3.wikia.nocookie.net/__cb20140407015951/degrassi/images/8/8b/Jon-Snow-S3.jpg" alt ="Jon Snow" height="100%" width="100%" class="hidden-sm hidden-xs profile-pic">
+
+    </div>
+  </div>
+  <div class="row cover-menu">
+    <div class="col-md-1 col-md-offset-3">
+      <a class="btn btn-default btn-block" href=<%= timeline_path %> role="button">Timeline</a>
+    </div>
+    <div class="col-md-1">
+      <a class="btn btn-default btn-block" href="about.html" role="button">About</a>
+    </div>
+    <div class="col-md-1">
+      <a class="btn btn-default btn-block" href="photos.html" role="button">Photos</a>
+    </div>
+    <div class="col-md-1">
+      <a class="btn btn-default btn-block" href="friends.html" role="button">Friends</a>
+    </div>
+  </div>
+</div>
+
+<!--
+End Cover/End Common Content
+Begin Page Specific Conent
+ -->
+
+
+<div class="container about">
+  <div class="row about-bar vcenter">
+    <div class="col-sm-2 col-sm-offset-5">
+      <h3>About</h3>
+    </div>
+  </div>
+    <%= form_for @profile, class: "form-group" do |profile_fields| %>
+  <div class = "row">
+    <div class = "col-md-5 col-md-offset-1">
+      <h3>Basic Information</h3>
+      <table class = "table about-table">
+        <tr>
+          <td>Birthday:</td>
+          <td><%= @profile.birthday %></td>
+        </tr>
+        <tr>
+          <td><%= profile_fields.label :college, "College:" %></td>
+          <td><%= profile_fields.text_field :college, class: "form-control" %></td>
+        </tr>
+        <tr>
+          <td><%= profile_fields.label :hometown, "Hometown:" %></td>
+          <td><%= profile_fields.text_field :hometown, class: "form-control" %></td>
+        </tr>
+        <tr>
+          <td><%= profile_fields.label :current_lives, "Currently Lives:" %></td>
+          <td><%= profile_fields.text_field :current_lives, class: "form-control" %></td>
+        </tr>
+      </table>
+
+      <h3>Contact Information</h3>
+      <table class = "table about-table">
+        <tr>
+          <td>Email:</td>
+          <td><%= @profile.user.email %></td>
+        </tr>
+        <tr>
+          <td><%= profile_fields.label :telephone, "Telephone:" %></td>
+          <td><%= profile_fields.text_field :telephone, class: "form-control" %></td>
+        </tr>
+      </table>
+
+    </div>
+
+    <div class = "col-md-5">
+      <h3><%= profile_fields.label :words_to_live_by, "Words to live by:" %></h3>
+      <p><%= profile_fields.text_area :words_to_live_by, class: "form-control" %></p>
+      <h3><%= profile_fields.label :about_me, "About me:" %></h3>
+      <p><%= profile_fields.text_area :about_me, class: "form-control" %></p>
+    </div>
+  </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <%= profile_fields.submit "Save Changes", class: "btn btn-lg btn-primary full-width center-block" %>
+      </div>
+    </div>
+    <% end %>
+</div>

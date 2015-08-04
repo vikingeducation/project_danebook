@@ -10,11 +10,10 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(whitelisted_user_params)
-    # dhsk
     if @user.save
       sign_in(@user)
       flash[:success] = "Congrats! You are a member now!"
-      redirect_to signin_path
+      redirect_to edit_profile_path(@user.profile.id)
     else
       flash[:error] = "Error. Please try again!"
       render signin_path

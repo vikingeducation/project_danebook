@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-    # @user.birthdate.build
+    @user.birthdates.build
   end
 
   def create

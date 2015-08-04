@@ -14,8 +14,9 @@ class User < ActiveRecord::Base
 
   validates :first_name, :last_name, :length => {:in => 1..30}
 
+  # has_one :birthdate_listing
 
-  has_one :birthdate
+  # accepts_nested_attributes_for :birthdates, :reject_if => :all_blank
 
 
 

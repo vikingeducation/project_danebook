@@ -35,7 +35,7 @@
 							</div>
 							<% if current_user && post.author == current_user %>
 								<div class="col-xs-1 col-xs-offset-8">
-									<a href="#">Delete</a>
+									<%= link_to "Delete", user_post_path(@user, post), method: 'delete' %>
 								</div>
 							<% end %>
 					</div>

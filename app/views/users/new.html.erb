@@ -14,18 +14,8 @@
       <!-- This is appears to wrap the right portion of the navbar and is id'd to be controlled to collapse when the screen shrinks too much.-->
       <div id="navbar" class="navbar-collapse collapse" aria-expanded="true">
         <!-- This is the actual right part of the navbar -->
-        <form class="navbar-form navbar-right">
           <!-- We have two inputs, one for email, one for the password, and a button to submit. -->
-          <div class="form-group">
-            <p class="named-form">Email</p>
-            <input type="email" placeholder="Email" class="form-control"/>
-          </div>
-          <div class="form-group">
-            <p class="named-form">Password</p>
-            <input type="password" placeholder="Password" class="form-control"/>
-          </div>
-          <%= link_to "Log In", about_path, class: "btn btn-primary sign-in-button"%>
-        </form>
+          <%= render partial: "logins/login" %>
       </div>
     </div>
   </div>
@@ -59,8 +49,8 @@
 
         <div class="row">
           <div class="col-sm-12 input-form">
-            <%= field_with_errors(@user, :last_name) %>
-            <%= f.text_field :email, {:required => true, :placeholder => "Email", :class => "form-control"} %>
+            <%= field_with_errors(@user, :email) %>
+            <%= f.email_field :email, {:required => true, :placeholder => "Email", :class => "form-control"} %>
           </div>
         </div>
 

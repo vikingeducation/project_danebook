@@ -1,0 +1,46 @@
+<div class="row timeline-post">
+	<div class="col-xs-12">
+		<!-- Top section of a post -->
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="row">
+					<div class="col-sm-1">
+						<%= image_tag "harry.jpg" %>
+					</div>
+					<div class="col-sm-5">
+						<div>
+						<h4><%= link_to post.author.full_name, post.author %></h4>
+						<h6><%= post.created_at %></h6>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-12">
+						<%= post.body %>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Bottom section of a post -->
+		<% if current_user %>
+			<div class="row timeline-post-bottombar">
+				<div class="col-xs-12 selected">
+					<div class="row">
+							<div class="col-xs-1">
+								<a href="#">Like</a>
+							</div>
+							<div class="col-xs-1">
+								<a href="#">Comment</a>
+							</div>
+							<% if current_user && post.author == current_user %>
+								<div class="col-xs-1 col-xs-offset-8">
+									<a href="#">Delete</a>
+								</div>
+							<% end %>
+					</div>
+				</div>
+			</div>
+		<% end %>
+	</div>
+</div>

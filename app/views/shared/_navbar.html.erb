@@ -1,0 +1,41 @@
+<nav class="navbar navbar-default navbar-fixed-top danebook-navbar">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3 navbar-header">
+					<button type="button" id="collapse-button"class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+						<!-- These spans draw the lines inside the button -->
+						<span class="sr-only">Toggle Navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<div class="navbar-brand" id="danebook-brand"aria-expanded="true">
+						<%= link_to (image_tag "logo.gif", class:"img-circle danebook-logo"), new_user_path%>
+					</div>
+				</div>
+				<div id="navbar"  class="navbar-collapse collapse">
+					<% if current_user %>
+					<div class="col-md-6">
+						<input type="text" class="form-control danebook-search" placeholder="Search for Users">
+					</div>
+					<div class="dropdown pull-right ">
+						<button class="danebook-navbar-text dropdown-toggle button" type="button" id="dropdownMenu1" data-toggle="dropdown">
+						  <%= current_user.first_name %>
+						  <span class="caret"></span>
+						</button>
+						<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
+						  <li class="menu-item" role="presentation">
+						    <%= link_to "Sign Out", logins_path, method: "delete", role: "menuitem", tabindex: "-1" %>
+						  </li>
+						</ul>
+					</div>
+					<% else %>
+					<div class="col-md-2">
+						<input type="text" class="form-control danebook-search" placeholder="Search for Users">
+					</div>
+					  <%= render partial: "logins/login" %>
+					<% end %>
+				</div>
+			</div>
+		</div>
+	</nav>

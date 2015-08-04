@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: "staticpages#home"
+  root to: "users#new"
   get '/home' => "staticpages#home"
   get '/timeline' => "staticpages#timeline"
   get '/friends' => "staticpages#friends"
@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get '/photos' => "staticpages#photos"
   get '/about_edit' => "staticpages#about_edit"
 
-  resources :users, only: [:new, :create, :show, :edit, :update, :destroy]
+  resources :users, except: [:index] do
+    resources :posts
+  end
   resource :logins, only: [:new, :create, :destroy]
 end

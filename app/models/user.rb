@@ -15,13 +15,14 @@ class User < ActiveRecord::Base
   has_one :profile
   accepts_nested_attributes_for :profile
 
-  has_many :written_posts, class_name: "Post", foreign_key: :user_id
+  has_many :written_posts, -> { order('created_at DESC') } , class_name: "Post", foreign_key: :user_id
 
   has_many :comments
   has_many :things_commented_on, through: :comments
 
   has_many :likes
-  has_many :liked_things, through: :likes
+  has_many :liked_posts, through: :likes, source: :likable, source_type: 'Post'
+  has_many :liked_comments, through: :likes, source: :likable, source_type: 'Comment'
 
   def full_name
     self.first_name + " " + self.last_name
@@ -29,6 +30,10 @@ class User < ActiveRecord::Base
 
   def birthday
     self.dob.strftime("%B %d, %Y")
+  end
+
+  def likes? (likable_thing)
+    Like.where(user: self, likable_id: likable_thing.id, likable_type: likable_thing.class).any?
   end
 
   def generate_token

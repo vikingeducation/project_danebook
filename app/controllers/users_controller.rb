@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-    @user.birthdates.build
+    # @user.birthdates.build #if nested form
   end
 
   def create

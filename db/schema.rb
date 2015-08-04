@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150803232521) do
+ActiveRecord::Schema.define(version: 20150804001936) do
 
   create_table "birthdates", force: :cascade do |t|
     t.integer  "month"
@@ -26,11 +26,13 @@ ActiveRecord::Schema.define(version: 20150803232521) do
     t.string   "last_name"
     t.string   "email",           null: false
     t.string   "password_digest", null: false
-    t.integer  "birthdate_id"
     t.string   "sex"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.string   "auth_token"
+    t.integer  "birth_month"
+    t.integer  "birth_day"
+    t.integer  "birth_year"
   end
 
   add_index "users", ["auth_token"], name: "index_users_on_auth_token", unique: true

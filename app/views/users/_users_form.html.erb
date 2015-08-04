@@ -37,11 +37,10 @@
     </div>
   </div>
 
-  <%= fields_for :birthdate do |b|%>
 
   <div class = "row">
     <div class = "col-xs-4">
-      <%= b.select_tag(:month,
+      <%= user_fields.select_tag(:month,
         '<option value=nil>Month</option>
         <option value="1">Jan</option>
         <option value="2">Feb</option>
@@ -58,7 +57,7 @@
     </div>
 
     <div class = "col-xs-4">
-      <%= b.select_tag(:day,
+      <%= user_fields.select_tag(:day,
         '<option value=nil>Day</option>
         <option value="1">1</option>
         <option value="2">2</option>
@@ -94,7 +93,7 @@
     </div>
 
     <div class = "col-xs-4">
-      <%= b.select_tag(:year,
+      <%= user_fields.select_tag(:year,
         '<option value=nil>Year</option>
         <option value="2015">2015</option>
         <option value="2014">2014</option>
@@ -135,12 +134,12 @@
   <div class = "row">
 
     <div class = "col-xs-4 top-bottom-margin">
-      <%= b.label :gender %>
-      <%= b.radio_button(:gender, "female") %>
+      <%= user_fields.label :gender %>
+      <%= user_fields.radio_button(:gender, "female") %>
     </div>
 
     <div class = "col-xs-4 top-bottom-margin">
-      <%= b.radio_button(:gender, "female") %>
+      <%= user_fields.radio_button(:gender, "female") %>
     </div>
 
   </div>

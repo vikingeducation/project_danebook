@@ -25,7 +25,7 @@
               <b>Birthday:</b>
             </div>
             <div class = "col-xs-8">
-              <%= ff.date_select(:birthdate, :start_year => (Date.current.year - 13), :end_year => 1900, order: [:month, :day, :year],  :prompt => true)%>
+              <%= current_user.birthdate %>
             </div>
           </div>
 

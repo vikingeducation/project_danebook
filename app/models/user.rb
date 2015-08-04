@@ -13,6 +13,8 @@ class User < ActiveRecord::Base
                         :on => [:create, :update],
                         :allow_nil => true
 
+  validates :birthdate, :presence => true
+
   validates :first_name, :last_name, :length => {:in => 1..30}
 
   has_one :profile

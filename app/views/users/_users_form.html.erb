@@ -47,7 +47,7 @@
   <div class = "row">
     <div class = "col-md-12">
 
-      <%= ff.date_select(:birthdate, :start_year => (Date.current.year - 13), :end_year => 1900, order: [:month, :day, :year],  :prompt => true)%>
+      <%= user_fields.date_select(:birthdate, :start_year => (Date.current.year - 13), :end_year => 1900, order: [:month, :day, :year],  :prompt => true)%>
 
     </div>
   </div>
@@ -56,14 +56,14 @@
   <div class = "row">
 
     <div class = "col-xs-4 top-bottom-margin">
-      <%= user_fields.label :gender %>
-      <%= user_fields.label :gender, "Female" %>
-      <%= user_fields.radio_button(:gender, "Female") %>
+      <%= ff.label :gender %>
+      <%= ff.label :gender, "Female" %>
+      <%= ff.radio_button(:gender, "Female") %>
     </div>
 
     <div class = "col-xs-4 top-bottom-margin">
-      <%= user_fields.label :gender, "Male" %>
-      <%= user_fields.radio_button(:gender, "Male") %>
+      <%= ff.label :gender, "Male" %>
+      <%= ff.radio_button(:gender, "Male") %>
     </div>
 
   </div>

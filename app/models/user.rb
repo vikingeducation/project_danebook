@@ -24,6 +24,9 @@ class User < ActiveRecord::Base
   has_many :liked_posts, through: :likes, source: :likable, source_type: 'Post'
   has_many :liked_comments, through: :likes, source: :likable, source_type: 'Comment'
 
+  has_many :friendings, dependent: :destroy
+  has_many :friends, through: :friendings
+
   def full_name
     self.first_name + " " + self.last_name
   end

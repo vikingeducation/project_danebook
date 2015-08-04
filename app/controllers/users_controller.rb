@@ -8,6 +8,7 @@ class UsersController < ApplicationController
     @user = User.new(params_hash)
 
     if @user.save
+      sign_in @user
       flash[:success] = "Successfully created a user"
       redirect_to @user
     else

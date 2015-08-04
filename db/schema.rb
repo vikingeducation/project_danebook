@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150803234603) do
+ActiveRecord::Schema.define(version: 20150804224106) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "comments", force: :cascade do |t|
     t.integer  "user_id"
@@ -22,7 +25,16 @@ ActiveRecord::Schema.define(version: 20150803234603) do
     t.datetime "updated_at",       null: false
   end
 
-  add_index "comments", ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id"
+  add_index "comments", ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id", using: :btree
+
+  create_table "friendings", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "friend_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "friendings", ["user_id", "friend_id"], name: "index_friendings_on_user_id_and_friend_id", unique: true, using: :btree
 
   create_table "likes", force: :cascade do |t|
     t.integer  "user_id"
@@ -32,7 +44,7 @@ ActiveRecord::Schema.define(version: 20150803234603) do
     t.datetime "updated_at",   null: false
   end
 
-  add_index "likes", ["likable_type", "likable_id"], name: "index_likes_on_likable_type_and_likable_id"
+  add_index "likes", ["likable_type", "likable_id"], name: "index_likes_on_likable_type_and_likable_id", using: :btree
 
   create_table "posts", force: :cascade do |t|
     t.integer  "user_id"
@@ -65,6 +77,6 @@ ActiveRecord::Schema.define(version: 20150803234603) do
     t.datetime "updated_at",      null: false
   end
 
-  add_index "users", ["auth_token"], name: "index_users_on_auth_token", unique: true
+  add_index "users", ["auth_token"], name: "index_users_on_auth_token", unique: true, using: :btree
 
 end

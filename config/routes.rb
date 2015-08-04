@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   resources :users, except: [:index] do
     resources :posts
+    # resources :friends
   end
   resource :likes, only: [:create, :destroy]
   resources :comments, only: [:create, :destroy]

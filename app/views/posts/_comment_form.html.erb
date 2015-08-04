@@ -1,5 +1,5 @@
-<%= form_for Comment.new, {:name => "comment_form"} do |f| %>
-<%= f.hidden_field :user_id, value: @user.id %>
+<%= form_for Comment.new do |f| %>
+<%= f.hidden_field :user_id, {value: user_id} %>
 <%= f.hidden_field :commentable_id, value: post.id %>
 <%= f.hidden_field :commentable_type, value: post.class %>
 <div class="row">

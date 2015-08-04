@@ -27,7 +27,7 @@
 									<%= display_like_or_unlike_button(comment) %>
 								</div>
 							<% end %>
-							<% if current_user && current_user.id = comment.user_id %>
+							<% if current_user && current_user.id == comment.user_id %>
 								<div class="col-sm-1">
 								    <%= link_to "Delete", comment, method: "delete" %>
 								</div>

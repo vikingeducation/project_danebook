@@ -1,28 +1,3 @@
-<%= form_for @user do |f| %>
+<%= render :partial => '/sessions/login_form' %>
+<%= render :partial => 'sign_up_form', locals: {:user => @user} %>
 
-	<% if @user.errors.any? %>
-    <div id="error_explanation">
-      <h5><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h5>
-      <ul>
-      <% @user.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-	<%= f.label :username %>
-	<%= f.text_field :username %>
-
-	<%= f.label :email %>
-	<%= f.text_field :email %>
-
-	<%= f.label :password %>
-	<%= f.password_field :password %>
-
-	<%= f.label :password_confirmation %>
-	<%= f.password_field :password_confirmation %> 
-
-	<%= f.submit "Sign Up" %>
-
-<% end %>

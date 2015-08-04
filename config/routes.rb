@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'staticpages#home'
+  root 'users#new'
   get '/' => 'staticpages#home'
   # resources :staticpages
   get 'timeline' => 'staticpages#timeline'
@@ -11,5 +11,5 @@ Rails.application.routes.draw do
   get 'login' => 'sessions#new'
   delete 'logout' => 'sessions#destroy'
 
-  resources :users, :only => [:new, :create, :index]
+  resources :users
 end

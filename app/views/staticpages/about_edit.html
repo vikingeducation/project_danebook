@@ -13,7 +13,7 @@
 				<ul class="nav nav-tabs">
 					<li><a href="timeline.html">Timeline</a></li>
 					<li class="active"><a href="about.html">About</a></li>
-					<li><a href="photos.html">Photos <span class="unread-number">(123)</span></a></li>
+					<li><a href="photos.html">Photos<span class="unread-number">(123)</span></a></li>
 					<li><a href="friends.html">Friends <span class="unread-number">(542)</span></a></li>
 				</ul>
 			</nav>
@@ -37,7 +37,7 @@
 						<h3>Basic Information</h3>
 						<dl class="dl-horizontal">
 							<dt class="basic-info">Birthday:</dt>
-							 <dd>July, 31st, 1980</dd>
+							 <dd><%= current_user.birthday %></dd>
 							<dt class="basic-info">College:</dt>
 							<dd><input type="text" placeholder="Hogwarts College"></dd>
 							<dt class="basic-info">Hometown:</dt>

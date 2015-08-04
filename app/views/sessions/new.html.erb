@@ -1,20 +1,5 @@
-<%= form_tag login_path method: :post do %>
+<%= render :partial => 'login_form' %>
 
-	<%= label_tag do %>
-		Username
-		<%= text_field_tag :username %>
-	<% end %>
 
-	<%= label_tag do %>
-		Email
-		<%= email_field_tag :email %> 
-	<% end %>
 
-	<%= label_tag do %> 
-		Password
-		<%= password_field_tag :password_digest %>
-	<% end %>
 
-	<%= submit_tag "Log In" %>
-
-<% end %> 

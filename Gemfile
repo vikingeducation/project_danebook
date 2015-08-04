@@ -46,5 +46,8 @@ group :development, :test do
   # Use jazz_hands for debugging. It includes pry and byebug. 
   gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
 
+  gem 'better_errors'
+  gem 'binding_of_caller'
+
 end
 

@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
 	validates :email, 
 						:format => {:with => /@/}, 
 						:uniqueness => true
- 	validates :username, 
- 						:presence => {:message => "required"}
+ 	# validates :username, 
+ 	# 					:presence => {:message => "required"}
 
 end

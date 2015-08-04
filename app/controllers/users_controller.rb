@@ -13,14 +13,19 @@ class UsersController < ApplicationController
 
 	def create
 		@user = User.new(whitelisted_user_params)
+		fail
 		if @user.save
 			sign_in(@user)
 			flash[:success] = "Welcome to Danebook"
-			redirect_to users_path
+			redirect_to user_path(@user.id)
 		else
 			flash.now[:error] = "Unable to create profile"
 			render :new
 		end
+	end
+
+	def show
+		@user = User.find(params[:id])
 	end
 
 	def edit
@@ -46,7 +51,14 @@ class UsersController < ApplicationController
 	private
 
 	def whitelisted_user_params
-		params.require(:user).permit(:username, :email, :password, :password_confirmation)
+		params.require(:user).permit(	:username, 
+																	:first_name, 
+																	:last_name, 
+																	:email, 
+																	:password, 
+																	:password_confirmation,
+																	:gender,
+																	:birthday)
 	end
 
 end

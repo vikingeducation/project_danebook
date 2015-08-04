@@ -17,7 +17,7 @@
       <section class="col-md-3">
           <h1>Sign Up</h1>
 
-          <%= form_for @user, url: timeline_path do |f| %>
+          <%= form_for @user do |f| %>
 
           <div class="form-group">
             <div class="row">
@@ -38,7 +38,7 @@
 
           </div>
           <div class="form-group">
-          <%= f.password_field :password_confirmation, placeholder: "Password", class: "form-control" %>
+          <%= f.password_field :password_confirmation, placeholder: "Confirm Password", class: "form-control" %>
           </div>
           <h3>Birthday</h3>
           <div class="row">
@@ -47,14 +47,6 @@
                 <option>Month</option>
                 <option>Jan</option>
                 <option>Feb</option>
-                <option>Mar</option>
-                <option>Apr</option>
-                <option>May</option>
-                <option>Jun</option>
-                <option>Jul</option>
-                <option>Aug</option>
-                <option>Sep</option>
-                <option>Oct</option>
                 <option>Nov</option>
                 <option>Dec</option>
               </select> 

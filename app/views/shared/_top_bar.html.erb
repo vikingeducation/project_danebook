@@ -14,22 +14,23 @@
       
       <div class="collapse navbar-collapse" id="slide-out">
 
-        <form class="navbar-form navbar-right" role="login">
-          <section class="form-group inline-form">
-            <div class="form-group">
-              <label> Name </label>
-              <br>
-              <input type="text" class="form-control" placeholder="Email">
-            </div>
-            <div class="form-group">
-              <label> Email </label>
-              <br>
-              <input type="text" class="form-control" placeholder="Password">
-            </div>
-            <button type="submit" class="btn btn-info">Submit</button>
-          </section>
+
+        <%= form_for @user, url: login_path, html: {class: "navbar-form navbar-right"}  do |f| %>
+        <section class="form-group inline-form">
+          <div class="form-group">
+            <%= f.label :email %>
+            <%= f.text_field :email, placeholder: "Email", class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.label :password%>
+            <%= f.password_field :password, class: "form-control" %>
+          </div>
+          <%= f.submit "Sign In", class: "btn btn-info" %>
+
+        </section>
+            
+        <% end %>
           
-        </form>
 
       </div><!-- /.navbar-collapse -->
     </section><!-- /.container-fluid -->

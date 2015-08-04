@@ -6,8 +6,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:succeess] = "A thing a happened"
-      redirect_to users_timeline_path
+      flash[:success] = "A thing a happened"
+      redirect_to timeline_path
     else
       flash[:error] = "A thing didn't happend"
       render :new

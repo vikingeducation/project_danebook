@@ -178,7 +178,11 @@
               <div class = "row">
                 <footer class="col-md-12 like-section">
                   <div class = "row">
-                    <a class="col-xs-2" href="#">Like</a>
+                    <% if post.liked? %>
+                      <%= link_to "Unlike", like_path(post_id: post.id), method: :delete, class: "col-xs-2" %>
+                    <% else %>
+                      <%= link_to "Like", like_path(post_id: post.id), method: :post, class: "col-xs-2" %>
+                    <% end -%>
                     <a class="col-xs-2" href="#">Comment</a>
                     <%= link_to "Delete", post_path(post), method: :delete, class: "col-xs-1 col-xs-offset-6", data: {confirm: "Are you sure you want to delete this post?"} %>
                   </div>

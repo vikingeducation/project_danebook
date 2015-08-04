@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
 
   has_many :posts, dependent: :destroy
 
+  has_many :likes, dependent: :destroy
+
   has_secure_password
 
   accepts_nested_attributes_for :profile

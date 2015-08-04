@@ -6,7 +6,7 @@ class PostsController < ApplicationController
       flash[:success] = "Post successfully submitted"
       redirect_to timeline_path
     else
-      flash.now[:error] = @user.errors.full_messages
+      flash.now[:error] = @post.errors.full_messages
       render 'timelines/show'
     end
   end

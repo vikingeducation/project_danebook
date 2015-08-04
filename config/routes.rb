@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   resource :profile, only: [:new, :create, :edit, :update]
   resource :timeline, only: [:show]
   resource :session, :only => [:create, :destroy]
+  resource :like, :only => [:create, :destroy]
 
 # ------------------------ Aliases ----------------------------
   get "login" => "users#new"

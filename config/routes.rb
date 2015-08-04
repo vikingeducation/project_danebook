@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get 'photos' => 'static_pages#photos'
 
   resources :users, except: [:index]
+  resources :profiles, except: [:index, :destroy, :show]
   resource :session, :only => [:create, :destroy]
   get "login" => "users#new"
   delete "logout" => "sessions#destroy"

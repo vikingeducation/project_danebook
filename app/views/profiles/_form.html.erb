@@ -1,0 +1,84 @@
+<%= form_for @profile do |profile_fields| %>
+
+<div class="row about-info">
+  <div class="col-sm-4 col-sm-offset-1">
+    <h3>Basic Information</h3>
+
+    <div class="row">
+      <div class = "col-xs-4">
+        <b>Birthday:</b>
+      </div>
+      <div class = "col-xs-8">
+        <%= current_user.birthday.to_formatted_s(:long) %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class = "col-xs-4">
+        <b>College:</b>
+      </div>
+      <div class = "col-xs-8">
+        <%= profile_fields.text_field :college, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class = "col-xs-4">
+        <b>Hometown:</b>
+      </div>
+      <div class = "col-xs-8">
+        <%= profile_fields.text_field :hometown, class: "form-control" %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class = "col-xs-4">
+        <b>Currently Lives:</b>
+      </div>
+      <div class = "col-xs-8">
+        <%= profile_fields.text_field :current_home, class: "form-control" %>
+      </div>
+    </div>
+
+
+    <h3>Contact Information</h3>
+
+    <div class="row">
+      <div class = "col-xs-4">
+        <b>Email:</b>
+      </div>
+      <div class = "col-xs-8">
+        <%= current_user.email %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class = "col-xs-4">
+        <b>Telephone:</b>
+      </div>
+      <div class = "col-xs-8">
+        <%= profile_fields.text_field :mobile, class: "form-control" %>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="col-sm-5 col-sm-offset-1" >
+
+    <h3>Words to live by</h3>
+    <%= profile_fields.text_area :summary, class: "form-control", rows: "5" %>
+
+    <h3>About me</h3>
+    <%= profile_fields.text_area :about, class: "form-control", rows: "8" %>
+  </div>
+</div>
+
+<div class = "row" id = "save-changes">
+  <div class = "col-sm-6 col-sm-offset-3">
+    <%= profile_fields.submit "Save Changes", class: "btn btn-lg btn-block btn-success" %>
+  </div>
+</div>
+
+<%= profile_fields.hidden_field(:user_id, value: current_user.id) %>
+
+<% end -%>

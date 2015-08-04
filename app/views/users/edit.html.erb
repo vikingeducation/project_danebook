@@ -1,0 +1,22 @@
+<%= render :partial => 'shared/signed_in_navbar' %>
+
+<main class = "container">
+
+  <%= render :partial => 'middle_navbar' %>
+
+  <section id="about-edit">
+    <header>
+      <div class="row">
+        <div class="col-xs-12">
+          <h2>Edit Profile</h2>
+        </div>
+      </div>
+    </header>
+
+    <%= render :partial => '/profiles/form' %>
+
+  </section>
+
+</main>
+
+<br>

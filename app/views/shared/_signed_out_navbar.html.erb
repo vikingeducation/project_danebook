@@ -15,19 +15,21 @@
 
     <div id = "navbar" class = "navbar-collapse collapse">
 
-      <%= form_tag session_path, class: "navbar-form navbar-right" do %>
+      <%= form_tag session_path, class: "navbar-form navbar-right", id: "sign-in-form" do %>
         <div class="form-group">
           <h6>Email</h6>
-          <%= text_field_tag :email, "", class: "form-control", placeholder: "example@email.com" %>
-          <%= label_tag do %>
-            Keep me logged in
-            <%= check_box_tag :remember_me %>
-          <% end %>
+          <%= text_field_tag :email, "", class: "", placeholder: "example@email.com" %>
+          <h6>
+            <%= check_box_tag :remember_me %> Keep me logged in
+          </h6>
         </div>
 
         <div class="form-group">
           <h6>Password</h6>
-          <%= password_field_tag :password, "", class: "form-control", placeholder: "Password" %>
+          <%= password_field_tag :password, "", class: "", placeholder: "Password" %>
+          <h6>
+            Forgot your password?
+          </h6>
         </div>
 
         <%= submit_tag "Sign in", class: "btn btn-primary" %>

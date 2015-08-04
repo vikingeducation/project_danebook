@@ -1,6 +1,12 @@
 class User < ActiveRecord::Base
 
+  # ----------------------- Relationships --------------------
+
+  has_one :profile
+
   has_secure_password
+
+  accepts_nested_attributes_for :profile
 
   # ----------------------- Validations --------------------
 

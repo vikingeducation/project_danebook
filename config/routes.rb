@@ -1,10 +1,11 @@
 Rails.application.routes.draw do
 
-  resources :users
-
-  get 'timeline' => 'users#timeline'
-
-  get 'about' => 'users#about'
+  root 'users#new'
+  resources :users do
+    resource :profile, only: [:edit, :update, :show]
+    get 'timeline'
+    get 'about'
+  end
 
   post 'login' => 'sessions#create'
 

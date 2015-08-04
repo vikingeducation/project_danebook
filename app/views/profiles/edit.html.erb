@@ -1,0 +1,97 @@
+<header class="navbar">
+  <div class="container">
+    <div class="row">
+
+      <div class="navbar-header">
+
+        <a class="navbar-brand" href="#"><img class="logo" src="images/danish_flag.gif" alt="the logo">Danebook</a>
+
+      </div>
+      <div class="test"><p >Harry</p></div>
+      <form class="navbar-form " role="search">
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Search this site">
+
+        </div>
+      </form>
+    </div>
+
+  </header>
+  <main>
+    <header class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <img src="images/hogwarts_small.jpg" class="cover-photo hidden-xs hidden-sm img-responsive" alt="profile cover photo">
+          <div class="profile-photo"> 
+            <img src="images/harry_potter_small.jpg" class="hidden-xs hidden-sm">
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <nav class="col-md-7 col-md-offset-2">
+          <ul class="nav nav-tabs">
+            <li><a href="timeline.html">Timeline</a></li>
+            <li class="active"><a href="about.html">About</a></li>
+            <li><a href="photos.html">Photos <span class="unread-number">(123)</span></a></li>
+            <li><a href="friends.html">Friends <span class="unread-number">(542)</span></a></li>
+          </ul>
+        </nav>
+        <div class="col-md-2 pull-right">
+          <ul class="nav profile-link">
+            <li><a href="#" class="pull-right ">Edit Profile</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <section class="panel panel-default panel-custom">
+        <div class="panel-heading clearfix">
+          <a href="#" class=" btn btn-primary btn-sm pull-right">Edit your profile</a>
+          <h4 class="panel-text text-center">Edit Profile</h4>
+
+
+        </div>
+        <div class="panel-body">
+          <div class="row about-info dark-inputs">
+            <div class="col-sm-5">
+              <h3>Basic Information</h3>
+              <%= simple_form_for @profile, url: user_profile_path do |f| %>
+
+
+              <%= f.input :birthday, disabled: true, class: 'form-inline', hint: 'You cannot change your birthday' %>
+              <%= f.input :college, placeholder: "College" %>
+              <%= f.input :hometown, placeholder: "Hometown" %>
+              <%= f.input :current_town, placeholder: "Current Town" %>
+
+              <h3>Contact Information</h3>
+              
+
+
+              <%= f.input :email, disabled: true, hint: "You cannot change your email" %>
+              <%= f.input :telephone, placeholder: "Phone Number" %>
+            </div>
+            <div class="col-sm-7">
+              <div>
+                <h3>Words to Live By</h3>
+                <%= f.input :words_to_live_by, as: :text %>
+              </div>
+              <div>
+                <h3>About Me</h3>
+                <%= f.input :about_me, as: :text %>
+              </div>
+            </div>
+
+
+          </div>
+          <div class="row">
+            <div class="col-md-8 col-md-offset-2" >
+              <%= f.button :submit, "Save", html: {class: "btn btn-primary btn-block btn-lg"} %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+</main>

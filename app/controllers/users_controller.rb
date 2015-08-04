@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  after_action :build_profile, :only => [:create]
+
   def new
     @user = User.new
   end
@@ -6,16 +8,16 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      @user.build_profile.save
       flash[:success] = "A thing a happened"
-      redirect_to timeline_path
+      redirect_to edit_user_path(@user)
     else
-      flash[:error] = "A thing didn't happend"
+      flash[:error] = "A thing didn't happened"
       render :new
     end
   end
 
   def edit
+    @user = User.find(params[:id])
   end
 
   def index
@@ -26,6 +28,10 @@ class UsersController < ApplicationController
   end
 
   def about
+  end
+
+  def build_profile
+    @user.build_profile.save
   end
 
   private

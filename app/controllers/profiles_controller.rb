@@ -29,6 +29,10 @@ class ProfilesController < ApplicationController
     end
   end
 
+  def show
+    @profile = Profile.find_by_user_id(params[:user_id])
+  end
+
   private
 
   def whitelisted_user_params

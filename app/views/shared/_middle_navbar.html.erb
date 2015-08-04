@@ -38,7 +38,7 @@
         <ul class = "nav navbar-nav">
           <% unless (controller.class == StaticPagesController && controller.action_name == "about_edit") %>
           <li>
-            <%= link_to "Edit Profile", edit_user_path(current_user) %>
+            <%= link_to "Edit Profile", edit_user_profile_path(current_user) %>
           </li>
           <% end %>
         </ul>

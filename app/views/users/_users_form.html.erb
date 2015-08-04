@@ -47,7 +47,8 @@
   <div class = "row">
     <div class = "col-md-12">
 
-      <%= ff.date_select(:birthdate)%>
+      <%= ff.date_select(:birthdate, :start_year => (Date.current.year - 13), :end_year => 1900, order: [:month, :day, :year],  :prompt => true)%>
+
     </div>
   </div>
 

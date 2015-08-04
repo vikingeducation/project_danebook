@@ -2,17 +2,22 @@ Rails.application.routes.draw do
 
   root 'users#new'
 
-  get 'about' => 'static_pages#about'
-  get 'timeline' => 'static_pages#timeline'
+#  get 'about' => 'static_pages#about'
+#  get 'timeline' => 'static_pages#timeline'
   get 'friends' => 'static_pages#friends'
   get 'about_edit' => 'static_pages#about_edit'
   get 'photos' => 'static_pages#photos'
 
   resources :users, except: [:index]
-  resources :profiles, except: [:index, :destroy, :show]
+  resources :posts, only: [:create, :update, :destroy]
+  resource :profile, only: [:new, :create, :edit, :update]
+  resource :timeline, only: [:show]
   resource :session, :only => [:create, :destroy]
+
+# ------------------------ Aliases ----------------------------
   get "login" => "users#new"
   delete "logout" => "sessions#destroy"
+  get "about" => "users#show"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

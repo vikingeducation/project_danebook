@@ -7,7 +7,8 @@ class SessionsController < ApplicationController
       flash[:success] = "You've successfully signed in"
       redirect_to current_user
     else
-      flash.now[:error] = "We couldn't sign you in, please try again!"
+      flash.now[:error] = "Wrong email/password combination, please try again!"
+      @user = User.new
       render 'users/new'
     end
   end

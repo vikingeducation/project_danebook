@@ -1,7 +1,12 @@
 class ProfilesController < ApplicationController
 
   def new
-    @profile = Profile.new
+    if current_user.profile
+      flash[:notice] = "No need to create a new profile. You can edit your existing one."
+      redirect_to edit_profile_path
+    else
+      @profile = Profile.new
+    end
   end
 
   def create

@@ -13,10 +13,11 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      sign_in(@user)
       flash[:success] = "Welcome to Danebook #{@user.name}"
       redirect_to user_path(@user)
     else
-      flash[:error] = @user.errors.full_messages
+      flash.now[:error] = @user.errors.full_messages
       render :new
     end
   end
@@ -29,7 +30,7 @@ class UsersController < ApplicationController
       flash[:success] = "Your profile was updated"
       redirect_to user_path(current_user)
     else
-      flash[:error] = @user.errors.full_messages
+      flash.now[:error] = @user.errors.full_messages
       render :edit
     end
   end
@@ -43,15 +44,15 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit( 
-        :first_name, 
-        :last_name, 
-        :email, 
-        :password, 
-        :password_confirmation, 
-        :birthday, 
+    params.require(:user).permit(
+        :first_name,
+        :last_name,
+        :email,
+        :password,
+        :password_confirmation,
+        :birthday,
         :gender,
-        { profile_attributes: [ 
+        { profile_attributes: [
             :college,
             :hometown,
             :current_home,

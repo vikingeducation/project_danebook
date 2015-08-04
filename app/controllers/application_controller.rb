@@ -34,7 +34,7 @@ class ApplicationController < ActionController::Base
 
   def require_login
     unless signed_in_user?
-      flash[:error] = "Not authorized, please sign in!"
+      flash[:error] = "Please sign in or sign up to view this content"
       redirect_to login_path
     end
   end

@@ -7,7 +7,7 @@ class CreateProfiles < ActiveRecord::Migration
       t.string  :mobile
       t.text    :summary
       t.text    :about
-      t.integer :user_id, null: false
+      t.integer :user_id, null: false, unique: true
 
       t.timestamps null: false
     end

@@ -15,15 +15,17 @@
   <%= csrf_meta_tags %>
   <!-- Latest compiled and minified CSS -->
 </head>
+
+<% if current_user %>
+  <%= render partial: "shared/signed_in_navbar" %>
+<% else %>
+  <div id="home">
+    <%= render partial: "shared/signed_out_navbar" %>
+  </div>
+<% end -%>
+
 <body data-no-turbolink>
 
-  <% if current_user %>
-    <%= render partial: "shared/signed_in_navbar" %>
-  <% else %>
-    <div id="home">
-      <%= render partial: "shared/signed_out_navbar" %>
-    </div>
-  <% end -%>
 
   <div class="container">
     <%= flash_messages %>

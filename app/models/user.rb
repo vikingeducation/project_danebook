@@ -12,15 +12,15 @@ class User < ActiveRecord::Base
              confirmation: true,
              allow_nil: true
 
-  has_one :profile
+  has_one :profile, dependent: :destroy
   accepts_nested_attributes_for :profile
 
   has_many :written_posts, -> { order('created_at DESC') } , class_name: "Post", foreign_key: :user_id
 
-  has_many :comments
+  has_many :comments, dependent: :destroy
   has_many :things_commented_on, through: :comments
 
-  has_many :likes
+  has_many :likes, dependent: :destroy
   has_many :liked_posts, through: :likes, source: :likable, source_type: 'Post'
   has_many :liked_comments, through: :likes, source: :likable, source_type: 'Comment'
 

@@ -23,21 +23,20 @@
 		</div>
 
 		<!-- Bottom section of a post -->
-		<% if current_user || post.has_likes? %>
+		<% if current_user || post.has_likes?%>
 			<div class="row timeline-post-bottombar">
 				<div class="col-xs-12 selected">
 					<div class="row">
+				        <% if current_user %>
 							<div class="col-xs-1">
 							    <%= display_like_or_unlike_button(post) %>
 							</div>
-							<div class="col-xs-1">
-								<a href="#">Comment</a>
+						<% end %>
+						<% if current_user && post.author == current_user %>
+							<div class="col-xs-1 col-xs-offset-8">
+								<%= link_to "Delete", user_post_path(@user, post), method: 'delete' %>
 							</div>
-							<% if current_user && post.author == current_user %>
-								<div class="col-xs-1 col-xs-offset-8">
-									<%= link_to "Delete", user_post_path(@user, post), method: 'delete' %>
-								</div>
-							<% end %>
+						<% end %>
 					</div>
 					<% if post.has_likes? %>
 					<div class="row">
@@ -48,6 +47,10 @@
 					<% end %>
 				</div>
 			</div>
+		<% end %>
+		<%= render post.comments %>
+		<% if current_user %>
+			<%= render partial: "posts/comment_form", locals: {post: post} %>
 		<% end %>
 	</div>
 </div>

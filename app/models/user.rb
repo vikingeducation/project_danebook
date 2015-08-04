@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
 
   before_create :generate_token
 
-  # has_secure_password #for session_based auth
+  has_secure_password
 
   validates :email, :presence => true,
                     :format => { :with => /@/ }
@@ -12,12 +12,15 @@ class User < ActiveRecord::Base
                         :on => [:create, :update],
                         :allow_nil => true
 
-  validates :first_name, :last_name, :length => {:in => 5..30}
+  validates :first_name, :last_name, :length => {:in => 1..30}
 
 
   has_one :birthdate
 
 
+
+
+  #sign in cookies!
   def generate_token
     begin
       self[:auth_token] = SecureRandom.urlsafe_base64
@@ -30,11 +33,7 @@ class User < ActiveRecord::Base
     save!
   end
 
-  private
 
-  def whitelisted_user_params
-    params.require(:user).permit( :first_name, :last_name, :email,
-                                  :password, :password_confirmation)
-  end
+
 
 end

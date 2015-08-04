@@ -21,7 +21,7 @@
           </li>
 
           <li class ="<%= controller.class == StaticPagesController && controller.action_name == "about" ? 'active' : '' %>" >
-            <%= link_to "About", user_path(current_user) %>
+            <%= link_to "About", user_profile_path(current_user) %>
           </li>
 
           <li class ="<%= controller.class == StaticPagesController && controller.action_name == "photos" ? 'active' : '' %>" >

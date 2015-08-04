@@ -15,7 +15,8 @@ class User < ActiveRecord::Base
 
   validates :birthdate, :presence => true
 
-  validates :first_name, :last_name, :length => {:in => 1..30}
+  validates :first_name, :last_name, :presence => true,
+                                      :length => {:in => 1..30}
 
   has_one :profile
 

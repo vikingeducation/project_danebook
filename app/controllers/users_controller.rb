@@ -12,9 +12,10 @@ class UsersController < ApplicationController
   def create
     @user = User.new(whitelisted_user_params)
     if @user.save
+      @user.profile.save
       sign_in(@user)
       flash[:success]="Your account was successfully created!"
-      redirect_to edit_user_path(@user)
+      redirect_to edit_user_profile_path(@user)
     else
       flash.now[:error]="We couldn't create your account."
       render :new
@@ -50,11 +51,11 @@ class UsersController < ApplicationController
   def whitelisted_user_params
     params.require(:user).permit( :first_name, :last_name, :email,
                                   :password, :password_confirmation,
-                                  :gender, :birthdate,
+                                  :birthdate,
                                 { :profile_attributes =>
                                 [ :id, :phone, :motto,
                                   :about, :college, :hometown,
-                                  :location] })
+                                  :location, :gender] })
   end
 
 

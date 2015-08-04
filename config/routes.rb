@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'users#new'
 
   # get 'about' => 'static_pages#about'
-  # get 'about' => 'profiles#show'
+  # get 'about' => 'profile#show'
   get 'timeline' => 'static_pages#timeline'
   get 'friends' => 'static_pages#friends'
   get 'about_edit' => 'static_pages#about_edit'
@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create, :show, :edit, :update] do
     resource :profile, only: [:create, :show, :edit, :update]
+    resources :posts
   end
 
   resource :session, :only => [:create, :destroy]

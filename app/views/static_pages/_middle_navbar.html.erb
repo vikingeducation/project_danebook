@@ -17,11 +17,11 @@
           <div class = "col-xs-7 navigation-container">
             <ul class = "nav navbar-nav nav-pills">
               <li class ="<%= controller.class == StaticPagesController && controller.action_name == "timeline" ? 'active' : '' %>" >
-                <%= link_to "Timeline", timeline_path %>
+                <%= link_to "Timeline", user_posts_path(current_user) %>
               </li>
 
               <li class ="<%= controller.class == StaticPagesController && controller.action_name == "about" ? 'active' : '' %>" >
-                <%= link_to "About", about_path %>
+                <%= link_to "About", "about_path" %>
               </li>
 
               <li class ="<%= controller.class == StaticPagesController && controller.action_name == "photos" ? 'active' : '' %>" >

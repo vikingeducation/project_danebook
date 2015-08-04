@@ -1,6 +1,8 @@
 class ProfilesController < ApplicationController
 
   # before_action #check if currentuser = profile.user
+  before_action :require_login, :except => [:new, :create, :show]
+  before_action :require_current_user, :only => [:edit, :update, :destroy]
 
   def create
     @profile = Profile.new(whitelisted_user_params)

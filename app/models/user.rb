@@ -19,6 +19,7 @@ class User < ActiveRecord::Base
                                       :length => {:in => 1..30}
 
   has_one :profile
+  has_many :posts
 
   accepts_nested_attributes_for :profile, :reject_if => :all_blank
 

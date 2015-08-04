@@ -6,6 +6,7 @@ class TimelinesController < ApplicationController
 
   def show
     @post = Post.new
+    @comment = Comment.new
   end
 
 end

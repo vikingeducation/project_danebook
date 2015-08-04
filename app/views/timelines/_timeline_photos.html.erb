@@ -1,0 +1,20 @@
+<section class="row" id="timeline-photos">
+  <header class="col-md-12">
+      <h4>Photos</h4>
+  </header>
+
+  <% 9.times do |num| %>
+    <div class="col-xs-4 photo">
+      <a href="#">
+        <%=image_tag "icon_photo_small.png" %>
+      </a>
+      <div class="upload-date">
+        <p>Uploaded June 15, 2015</p>
+      </div>
+    </div>
+  <% end %>
+
+    <div class="col-md-12 more-photos">
+      <%= link_to "See more photos!", photos_path %>
+    </div>
+</section>

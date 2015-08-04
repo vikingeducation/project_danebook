@@ -1,0 +1,41 @@
+<section class="row" id="timeline-about">
+  <header class="col-md-12">
+      <h4>About</h4>
+  </header>
+
+  <div class="row">
+    <div class = "col-xs-5">
+      <b>Born on:</b>
+    </div>
+    <div class = "col-xs-7">
+      <%= current_user.birthday.to_formatted_s(:long) %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class = "col-xs-5">
+      <b>Went to school at:</b>
+    </div>
+    <div class = "col-xs-7">
+      <%= current_user.profile ? current_user.profile.college : "None" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class = "col-xs-5">
+      <b>Hometown:</b>
+    </div>
+    <div class = "col-xs-7">
+      <%= current_user.profile ? current_user.profile.hometown : "None" %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class = "col-xs-5">
+      <b>Currently Lives:</b>
+    </div>
+    <div class = "col-xs-7">
+      <%= current_user.profile ? current_user.profile.current_home : "None" %>
+    </div>
+  </div>
+</section>

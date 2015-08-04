@@ -8,7 +8,10 @@ Rails.application.routes.draw do
   get 'about_edit' => 'static_pages#about_edit'
   get 'photos' => 'static_pages#photos'
 
-  resources :users, only: [:new, :create, :show, :edit, :update]
+  resources :users, only: [:new, :create, :show, :edit, :update] do
+    resource :profile, only: [:create, :edit, :update]
+  end
+
   resource :session, :only => [:create, :destroy]
   # get "login" => "sessions#new"
   get "login" => "users#new"

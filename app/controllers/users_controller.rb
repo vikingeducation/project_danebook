@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-    @user.profiles.build
+    @user.build_profile
     redirect_to current_user if current_user
   end
 
@@ -23,7 +23,7 @@ class UsersController < ApplicationController
 
   def edit
     current_user
-    @profile = current_user.profiles.first
+    # @profile = current_user.profile
   end
 
   def update
@@ -50,7 +50,8 @@ class UsersController < ApplicationController
   def whitelisted_user_params
     params.require(:user).permit( :first_name, :last_name, :email,
                                   :password, :password_confirmation,
-                                { :profiles_attributes =>
+                                  :gender,
+                                { :profile_attributes =>
                                 [ :birthdate, :id, :phone, :motto,
                                   :about, :college, :hometown,
                                   :location] })

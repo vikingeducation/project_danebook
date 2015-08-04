@@ -15,14 +15,14 @@ class User < ActiveRecord::Base
 
   validates :first_name, :last_name, :length => {:in => 1..30}
 
-  has_many :profiles
+  has_one :profile
 
-  accepts_nested_attributes_for :profiles, :reject_if => :all_blank
+  accepts_nested_attributes_for :profile, :reject_if => :all_blank
 
 
-  def build_profile
-    current_user.profiles.create
-  end
+  # def build_profile
+  #   current_user.profile.create
+  # end
 
   def full_name
     self.first_name + " " + self.last_name

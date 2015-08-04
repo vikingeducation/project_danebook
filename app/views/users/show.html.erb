@@ -35,7 +35,7 @@
               <b>Birthday:</b>
             </div>
             <div class = "col-xs-8">
-              <%= current_user.profiles.first.birthdate %>
+              <%= current_user.profile.birthdate %>
             </div>
           </div>
 
@@ -44,7 +44,7 @@
               <b>College:</b>
             </div>
             <div class = "col-xs-8">
-              <%= current_user.profiles.first.college %>
+              <%= current_user.profile.college %>
             </div>
           </div>
 
@@ -53,7 +53,7 @@
               <b>Hometown:</b>
             </div>
             <div class = "col-xs-8">
-              <%= current_user.profiles.first.hometown %>
+              <%= current_user.profile.hometown %>
             </div>
           </div>
 
@@ -62,7 +62,7 @@
               <b>Currently Lives:</b>
             </div>
             <div class = "col-xs-8">
-              <%= current_user.profiles.first.location %>
+              <%= current_user.profile.location %>
             </div>
           </div>
 
@@ -83,7 +83,7 @@
               <b>Telephone:</b>
             </div>
             <div class = "col-xs-8">
-              <%= current_user.profiles.first.phone %>
+              <%= current_user.profile.phone %>
             </div>
           </div>
 
@@ -93,12 +93,12 @@
 
           <h3>Words to live by</h3>
           <p>
-            <%= current_user.profiles.first.motto %>
+            <%= current_user.profile.motto %>
           </p>
 
           <h3>About me</h3>
           <p>
-            <%= current_user.profiles.first.about %>
+            <%= current_user.profile.about %>
           </p>
         </div>
       </div>

@@ -1,0 +1,14 @@
+<div class="panel">
+  <div class="panel-heading text-center"><h1>Sign Up</h1></div>
+  <div class="panel-body">
+    <%= form_for @user, class: "form-group" do |user_fields| %>
+      <%= user_fields.label :email, "Email" %>
+      <%= user_fields.email_field :email, class: "form-control" %>
+      <%= user_fields.label :password, "Password" %>
+      <%= user_fields.password_field :password, class: "form-control" %>
+      <%= user_fields.label :password_confirmation, "Password Confirmation" %>
+      <%= user_fields.password_field :password_confirmation, class: "form-control" %>
+      <%= user_fields.submit "Sign Up", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

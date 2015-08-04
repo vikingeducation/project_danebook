@@ -1,0 +1,59 @@
+    <main class="container">
+      <div class="row">
+        <div class="panel col-sm-7">
+          <div class="panel-heading">
+            <h2>Connect with all of your friends!</h2>
+          </div>
+          <div class="panel-body">
+            <ul>
+              <li>See photos and updates in your new feed.</li>
+              <li>Post your status for the world to see from your profile</li>
+              <li>Get in touch with your friends by "friending" them</li>
+              <li>Like things because you're a positive person!</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="panel col-sm-5">
+          <div class="panel-heading text-center"><h2>Sign Up</h2></div>
+          <div class="panel-body">
+            <%= form_for @user, class: "form-group" do |user_fields| %>
+              <div class="row">
+                <%= user_fields.fields_for :profile, Profile.new do |profile_fields| %>
+                  <div class="col-sm-6">
+                    <%= profile_fields.text_field :first_name, placeholder: "First Name", class: "form-control" %>
+                  </div>
+                  <div class="col-sm-6">
+                    <%= profile_fields.text_field :last_name, placeholder: "Last Name", class: "form-control" %>
+                  </div>
+                  <div class="col-sm-12">
+                    <%= user_fields.email_field :email, placeholder: "Your Email", class: "form-control" %>
+                  </div>
+                  <div class="col-sm-12">
+                    <%= user_fields.password_field :password, placeholder: "Your New Password", class: "form-control" %>
+                  </div>
+                  <div class="col-sm-12">
+                    <%= user_fields.password_field :password_confirmation, placeholder: "Confirm Your Password", class: "form-control" %>
+                  </div>
+                  <div class="col-sm-12">
+                    <%= profile_fields.label :birthday, "Birthday" %>
+                    <br>
+                    <%= profile_fields.date_select(:birthday_year, class: "form-control") %>
+                  </div>
+                  <div class="col-sm-12">
+                    <%= profile_fields.radio_button(:gender, "male") %>
+                    <%= label :gender_male, "Male" %>
+                    <%= profile_fields.radio_button(:gender, "female") %>
+                    <%= label :gender_female, "Female" %>
+                  </div>
+                  <div class="col-sm-12">
+                    <%= user_fields.submit "Sign Up", class: "btn btn-success full-width" %>
+                  </div>
+                <% end %>
+              </div>
+            <% end %>
+
+          </div> <!-- panel-body  -->
+        </div>
+      </div>
+    </main>

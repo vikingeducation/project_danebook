@@ -14,7 +14,9 @@
 
 </head>
 <body>
-<%= render partial: "shared/navbar" %>
+
+<%= render partial: "shared/home_navbar" %>
+
 <% flash.each do |type, msg| %>
   <%= "#{type}: #{msg}" %>
 <% end %>

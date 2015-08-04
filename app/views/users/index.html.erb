@@ -1,0 +1,15 @@
+
+  <table class="table-bordered">
+    <tr>
+      <th>User ID</th>
+      <th>Email</th>
+      <th>Password</th>
+    </tr>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.id %></td>
+        <td><%= user.email %></td>
+        <td><%= user.password_digest %></td>
+      </tr>
+    <% end %>
+  </table>

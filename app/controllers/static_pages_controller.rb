@@ -4,6 +4,7 @@ class StaticPagesController < ApplicationController
   end
 
   def edit
+    render :about_edit
   end
 
   def friends

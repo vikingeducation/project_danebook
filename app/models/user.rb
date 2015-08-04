@@ -14,6 +14,16 @@ class User < ActiveRecord::Base
 
   validates :first_name, :last_name, :length => {:in => 1..30}
 
+  # validates :birth_month,
+  #               numericality: { :greater_than_or_equal_to => 1,
+  #                               :less_than_or_equal_to => 31 }
+  # validates :birth_day,
+  #               numericality: { :greater_than_or_equal_to => 1,
+  #                               :less_than_or_equal_to => 31 }
+  # validates :birth_year,
+  #               numericality: { :greater_than_or_equal_to => 1,
+  #                               :less_than_or_equal_to => 31 }
+
   # has_one :birthdate_listing
 
   # accepts_nested_attributes_for :birthdates, :reject_if => :all_blank

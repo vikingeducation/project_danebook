@@ -10,7 +10,8 @@ Rails.application.routes.draw do
 
   resources :users, only: [:create, :show]
   resource :session, :only => [:new, :create, :destroy]
-  get "login" => "sessions#new"
+  # get "login" => "sessions#new"
+  get "login" => "static_pages#home"
   delete "logout" => "sessions#destroy"
 
   # The priority is based upon order of creation: first created -> highest priority.

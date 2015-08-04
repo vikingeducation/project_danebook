@@ -13,7 +13,7 @@ class UsersController < ApplicationController
       redirect_to root_path
     else
       flash[:error]="We couldn't create your account."
-      render :new #currently blank page
+      redirect_to root_path#currently blank page
     end
   end
 
@@ -25,6 +25,13 @@ class UsersController < ApplicationController
   def whitelisted_user_params
     params.require(:user).permit( :first_name, :last_name, :email,
                                   :password, :password_confirmation,
-                                  :id)
+                                  :id, :birth_month, :birth_day,
+                                  :birth_year)
   end
+
+  # def change_birthdate_to_i
+  #   params[:user][:birth_month] = params[:user][:birth_month].to_i
+  #   params[:user][:birth_day] = params[:user][:birth_day].to_i
+  #   params[:user][:birth_year] = params[:user][:birth_year].to_i
+  # end
 end

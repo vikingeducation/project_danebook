@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
 
+
   def create
     @user = User.find_by_email(params[:email])
     if @user && @user.authenticate(params[:password])
@@ -10,10 +11,10 @@ class SessionsController < ApplicationController
         permanent_sign_in(@user)
       end
       flash[:success] = "You've successfully signed in"
-      redirect_to root_url
+      redirect_to root_path
     else
-      flash.now[:error] = "We couldn't sign you in"
-      render :new
+      flash[:error] = "We couldn't sign you in"
+      redirect_to root_path
     end
   end
 

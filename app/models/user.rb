@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
 
   before_create :generate_token
-  # after_create :build_profile
+  after_create :build_profile
 
   has_secure_password
 
@@ -21,7 +21,11 @@ class User < ActiveRecord::Base
 
 
   def build_profile
+    current_user.profiles.create
+  end
 
+  def full_name
+    self.first_name + " " + self.last_name
   end
 
 

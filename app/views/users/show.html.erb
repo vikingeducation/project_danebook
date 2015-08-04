@@ -1,1 +1,109 @@
-temp show page
+
+
+<main class = "container">
+
+  <%= render :partial => 'middle_navbar' %>
+
+
+  <section id="about-section">
+      <header>
+        <div class="row">
+          <div class="col-xs-offset-2 col-xs-8">
+            <h2>About</h2>
+          </div>
+
+          <div>
+            <% if current_user %>
+              <%= link_to edit_user_path(current_user)  do %>
+                <button class= "btn btn-active", id= "edit-profile">
+                  Edit Your Profile
+                </button>
+              <% end %>
+            <% end %>
+         </div>
+
+        </div>
+      </header>
+
+
+      <div class="row about-info">
+        <div class="col-sm-5 col-sm-offset-1">
+          <h3>Basic Information</h3>
+
+          <div class="row">
+            <div class = "col-xs-4">
+              <b>Birthday:</b>
+            </div>
+            <div class = "col-xs-8">
+              <%= current_user.profiles.first.birthdate %>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class = "col-xs-4">
+              <b>College:</b>
+            </div>
+            <div class = "col-xs-8">
+              <%= current_user.profiles.first.college %>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class = "col-xs-4">
+              <b>Hometown:</b>
+            </div>
+            <div class = "col-xs-8">
+              <%= current_user.profiles.first.hometown %>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class = "col-xs-4">
+              <b>Currently Lives:</b>
+            </div>
+            <div class = "col-xs-8">
+              <%= current_user.profiles.first.location %>
+            </div>
+          </div>
+
+
+          <h3>Contact Information</h3>
+
+          <div class="row">
+            <div class = "col-xs-4">
+              <b>Email:</b>
+            </div>
+            <div class = "col-xs-8">
+              <%= current_user.email %>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class = "col-xs-4">
+              <b>Telephone:</b>
+            </div>
+            <div class = "col-xs-8">
+              <%= current_user.profiles.first.phone %>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="col-sm-5">
+
+          <h3>Words to live by</h3>
+          <p>
+            <%= current_user.profiles.first.motto %>
+          </p>
+
+          <h3>About me</h3>
+          <p>
+            <%= current_user.profiles.first.about %>
+          </p>
+        </div>
+      </div>
+      <br>
+  </section>
+</main>
+
+<br>

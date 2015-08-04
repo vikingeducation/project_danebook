@@ -23,17 +23,18 @@ class UsersController < ApplicationController
 
   def edit
     current_user
+    @profile = current_user.profiles.first
   end
 
-  # def update
-  #   if current_user.update(whitelisted_user_params)  # <<<<<
-  #     flash[:success] = "Successfully updated your profile"
-  #     redirect_to current_user
-  #   else
-  #     flash.now[:failure] = "Failed to update your profile"
-  #     render :edit
-  #   end
-  # end
+  def update
+    if current_user.update(whitelisted_user_params)
+      flash[:success] = "Successfully updated your profile"
+      redirect_to current_user
+    else
+      flash.now[:failure] = "Failed to update your profile"
+      render :edit
+    end
+  end
 
   def show
     current_user
@@ -49,7 +50,10 @@ class UsersController < ApplicationController
   def whitelisted_user_params
     params.require(:user).permit( :first_name, :last_name, :email,
                                   :password, :password_confirmation,
-                                  { :profile_attributes => [:birthdate, :id] })
+                                { :profiles_attributes =>
+                                [ :birthdate, :id, :phone, :motto,
+                                  :about, :college, :hometown,
+                                  :location] })
   end
 
 

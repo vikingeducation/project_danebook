@@ -11,7 +11,7 @@
         <div class = "profile-pic-container">
           <%= image_tag "harry_potter_small.jpg", class: "img-responsive" %>
         </div>
-        <h1 class = "profile-name">Harry Potter</h1>
+        <h1 class = "profile-name"><%= current_user.full_name %></h1>
       </div>
 
       <div class = "col-xs-7 navigation-container">

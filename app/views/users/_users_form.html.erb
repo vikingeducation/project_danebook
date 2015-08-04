@@ -2,40 +2,40 @@
 
   <div class = "row">
     <div class = "col-sm-6">
-      <%= field_with_errors(user, :last_name) %>
+
       <%= user_fields.text_field :first_name, class: "form-control", placeholder: "First Name" %>
     </div>
   </div>
 
   <div class = "row">
     <div class = "col-sm-6">
-      <%= field_with_errors(user, :last_name) %>
+
       <%= user_fields.text_field :last_name, class: "form-control", placeholder: "Last Name" %>
     </div>
   </div>
 
   <div class = "row">
     <div class = "col-sm-12">
-      <%= field_with_errors(user, :email) %>
+
       <%= user_fields.email_field :email, class: "form-control", placeholder: "Your Email" %>
     </div>
   </div>
 
   <div class = "row">
     <div class = "col-sm-12">
-      <%= field_with_errors(user, :password) %>
+
       <%= user_fields.email_field :password, class: "form-control", placeholder: "Your New Password" %>
     </div>
   </div>
 
   <div class = "row">
     <div class = "col-sm-12">
-      <%= field_with_errors(user, :password_confirmation) %>
+
       <%= user_fields.email_field :password_confirmation, class: "form-control", placeholder: "Confirm Your Password" %>
     </div>
   </div>
 
-  <%= user_fields.fields_for :profile do |f| %>
+  <%= user_fields.fields_for :profile do |ff| %>
 
   <div class = "row">
     <div class = "col-sm-6">
@@ -46,7 +46,7 @@
 
   <div class = "row">
     <div class = "col-md-12">
-      <%= field_with_errors(user, :birthdate) %>
+
       <%= ff.date_select(:birthdate)%>
     </div>
   </div>

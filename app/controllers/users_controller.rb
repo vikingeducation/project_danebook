@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @user.profiles.build
     # redirect_to current_user if current_user
   end
 
@@ -25,8 +26,7 @@ class UsersController < ApplicationController
   def whitelisted_user_params
     params.require(:user).permit( :first_name, :last_name, :email,
                                   :password, :password_confirmation,
-                                  :id, :gender, :birth_month,
-                                  :birth_day, :birth_year)
+                                  { :profile_attributes => [:birthdate, :id] })
   end
 
   # def change_birthdate_to_i

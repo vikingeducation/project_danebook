@@ -21,7 +21,7 @@ class UsersController < ApplicationController
       if @user.save
         sign_in(@user)
         flash[:success] = "New User Created!"
-        redirect_to user_path
+        redirect_to user_path(@user)
       else
         flash[:error] = "An Error Has Occurred."
         render :new
@@ -50,7 +50,7 @@ class UsersController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :id)
+    params.require(:user).permit(:id, :first_name, :last_name, :email, :password, :password_confirmation, :birthday, :gender)
   end
 
 end

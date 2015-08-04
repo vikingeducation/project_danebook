@@ -13,8 +13,11 @@ Rails.application.routes.draw do
   get 'timeline', to: 'static_pages_controller#timeline', as: 'timeline'
 
   resources :users
+
   resource :session, :only => [:new, :create, :destroy]
+
   get "login" => "sessions#new"
+
   delete "logout" => "sessions#destroy"
 
 

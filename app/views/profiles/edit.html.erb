@@ -1,0 +1,84 @@
+<main>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<img src="/images/hogwarts_small.jpg" class="cover-photo hidden-xs hidden-sm img-responsive" alt="profile cover photo">
+				<div class="profile-photo">
+					<img src="/images/harry_potter_small.jpg" class="hidden-xs hidden-sm">
+				</div>
+			</div>
+		</div> <!-- end of row -->
+		<div class="row">
+			<nav class="col-md-7 col-md-offset-2">
+				<ul class="nav nav-tabs">
+					<li><a href="timeline.html">Timeline</a></li>
+					<li class="active"><a href="about.html">About</a></li>
+					<li><a href="photos.html">Photos <span class="unread-number">(123)</span></a></li>
+					<li><a href="friends.html">Friends <span class="unread-number">(542)</span></a></li>
+				</ul>
+			</nav>
+		</div> <!-- end of row -->
+  </div>
+
+	<section class="panel panel-default panel-custom">
+		<div class="panel-heading clearfix">
+			<h4 class="panel-text text-center">About</h4>
+		</div><!-- end of panel -->
+		<%= form_for [@profile.user, @profile] do |f| %> 
+		<div class="panel-body">
+			<div class="row about-info">
+				<div class="col-sm-5">
+					<h3>Basic Information</h3>
+
+					<dl class="dl-horizontal">
+						<dt class="basic-info">Birthday:</dt>
+						<dd><%= @profile.user.birthday.strftime("%B %d, %Y") %></dd>
+						<dt class="basic-info">College:</dt>
+						<dd><%= f.text_field :college %></dd>
+						<dt class="basic-info">Hometown:</dt>
+						<dd><%= f.text_field :home_city, 
+									:placeholder => "city" %> 
+								<%= f.text_field :home_country,
+									:placeholder => "country" %></dd>
+						<dt class="basic-info">Currently Lives:</dt>
+						<dd><%= f.text_field :current_city, 
+									:placeholder => "city"  %> 
+								<%= f.text_field :current_country,
+									:placeholder => "country" %></dd>
+					</dl>
+
+					<h3>Contact Information</h3>
+
+					<dl class="dl-horizontal">
+						<dt class="basic-info">Email:</dt>
+						<dd><%= @profile.user.email %></dd>
+						<dt class="basic-info">Telephone::</dt>
+						<dd><%= f.text_field :telephone %></dd>
+					</dl>
+				</div>
+
+				<div class="col-sm-7">
+					<div>
+						<h3>Words to Live By</h3>
+						<p>
+							<%= f.text_area :words_to_live_by, class: "edit-profile-text-box" %>
+						</p>
+					</div>
+					<div>
+						<h3>About Me</h3>
+						<p>
+							<%= f.text_area :about_me, class: "edit-profile-text-box" %>
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="row text-center">
+			<%= f.submit "Save Changes", class: "btn btn-primary edit-profile-button" %>
+			<% end %> 
+		</div>
+	</section>
+
+		</div>
+	</div>
+
+</main>

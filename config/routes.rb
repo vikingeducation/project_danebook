@@ -11,5 +11,8 @@ Rails.application.routes.draw do
   get 'login' => 'sessions#new'
   delete 'logout' => 'sessions#destroy'
 
-  resources :users
+  resources :users do 
+    resources :profiles, :only => [:edit, :update, :show]
+  end
+
 end

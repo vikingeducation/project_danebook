@@ -12,12 +12,11 @@ class UsersController < ApplicationController
 	end
 
 	def create
-		@user = User.new(whitelisted_user_params)
-		fail
-		if @user.save
+		@user = User.create(whitelisted_user_params)
+		if @user.persisted?
 			sign_in(@user)
 			flash[:success] = "Welcome to Danebook"
-			redirect_to user_path(@user.id)
+			redirect_to user_profile_path(:id => @user.profile.id, :user_id => @user.id)
 		else
 			flash.now[:error] = "Unable to create profile"
 			render :new

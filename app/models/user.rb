@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
 
+	has_one :profile, :dependent => :destroy
 	has_secure_password
 	
 	validates :password, 
@@ -10,5 +11,10 @@ class User < ActiveRecord::Base
 						:uniqueness => true
  	# validates :username, 
  	# 					:presence => {:message => "required"}
+
+ 	after_create :create_profile
+
+ 	private
+
 
 end

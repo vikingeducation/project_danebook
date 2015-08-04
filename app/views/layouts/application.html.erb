@@ -8,7 +8,10 @@
   	<%= csrf_meta_tags %>
 </head>
 <body>
-	<% unless current_page?(root_path || new_user_path || login_path || logout_path) %>
+	<% unless current_page?(root_path) || 
+						current_page?(new_user_path) || 
+						current_page?(login_path) || 
+						current_page?(logout_path) %>
 		<%= render 'layouts/header' %>
 	<% end %>
 	<div class="text-center">

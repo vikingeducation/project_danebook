@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
 
+  skip_before_action :require_login, :only => [:new, :create]
 
   def create
     @user = User.find_by_email(params[:email])
@@ -21,7 +22,7 @@ class SessionsController < ApplicationController
   def destroy
     sign_out
     flash[:success] = "You've successfully signed out"
-    redirect_to root_url
+    redirect_to root_path
   end
 
 

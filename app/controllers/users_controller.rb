@@ -1,9 +1,12 @@
 class UsersController < ApplicationController
 
+  before_action :require_login, :except => [:new, :create]
+  before_action :require_current_user, :only => [:edit, :update, :destroy]
+
   def new
     @user = User.new
     @user.profiles.build
-    # redirect_to current_user if current_user
+    redirect_to current_user if current_user
   end
 
   def create
@@ -11,15 +14,35 @@ class UsersController < ApplicationController
     if @user.save
       sign_in(@user)
       flash[:success]="Your account was successfully created!"
-      redirect_to root_path
+      redirect_to edit_user_path(@user)
     else
-      flash[:error]="We couldn't create your account."
-      redirect_to root_path#currently blank page
+      flash.now[:error]="We couldn't create your account."
+      render :new
     end
   end
 
-  def show
+  def edit
+    current_user
   end
+
+  # def update
+  #   if current_user.update(whitelisted_user_params)  # <<<<<
+  #     flash[:success] = "Successfully updated your profile"
+  #     redirect_to current_user
+  #   else
+  #     flash.now[:failure] = "Failed to update your profile"
+  #     render :edit
+  #   end
+  # end
+
+  def show
+    current_user
+  end
+
+  # def destroy
+  #   sign_out
+  #   redirect_to root_path
+  # end
 
   private
 
@@ -29,9 +52,5 @@ class UsersController < ApplicationController
                                   { :profile_attributes => [:birthdate, :id] })
   end
 
-  # def change_birthdate_to_i
-  #   params[:user][:birth_month] = params[:user][:birth_month].to_i
-  #   params[:user][:birth_day] = params[:user][:birth_day].to_i
-  #   params[:user][:birth_year] = params[:user][:birth_year].to_i
-  # end
+
 end

@@ -13,15 +13,28 @@
   <!-- Latest compiled and minified CSS -->
 </head>
 <body>
-  <% if signed_in_user? %>
-    Welcome, <%= link_to current_user.first_name, current_user %>!
+  <div class="container-fluid">
+    <div class="row" id="home">
 
-    <%= link_to "Logout", logout_path, :method => :delete %>
-  <% else %>
-    <%= link_to "Login", login_path %>
-  <% end %>
+      <% if signed_in_user? %>
+        <%= render partial: "shared/signed_in_navbar" %>
 
-<%= yield %>
+      <% else %>
+        <%= render partial: "shared/signed_out_navbar" %>
+        <%= link_to "Login", login_path %>
+      <% end %>
 
+    </div>
+
+    <div class="row">
+      <div class = "col-xs-10 col-xs-offset-1">
+        <%= render partial: "shared/flash" %>
+      </div>
+    </div>
+
+    <div class="row">
+      <%= yield %>
+    </div>
+  </div>
 </body>
 </html>

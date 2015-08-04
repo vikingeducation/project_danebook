@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class BirthdateTest < ActiveSupport::TestCase
+class ProfileTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

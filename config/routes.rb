@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root 'static_pages#home'
+  root 'users#new'
 
   get 'about' => 'static_pages#about'
   get 'timeline' => 'static_pages#timeline'
@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources :users, only: [:create, :show]
   resource :session, :only => [:new, :create, :destroy]
   # get "login" => "sessions#new"
-  get "login" => "static_pages#home"
+  get "login" => "users#new"
   delete "logout" => "sessions#destroy"
 
   # The priority is based upon order of creation: first created -> highest priority.

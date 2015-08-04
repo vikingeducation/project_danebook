@@ -27,8 +27,9 @@
         </form>
 
         <p class="navbar-text navbar-right">
-          Signed in as 
-          <a href="#" class="navbar-link">Harry Potter</a>
+          Signed in as
+          <%= link_to current_user.first_name, current_user %>
+          <%= link_to "Logout", logout_path, :method => :delete %>
         </p>
 
       </div>

@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
 
   before_create :generate_token
+  # after_create :build_profile
 
   has_secure_password
 
@@ -14,21 +15,14 @@ class User < ActiveRecord::Base
 
   validates :first_name, :last_name, :length => {:in => 1..30}
 
-  # validates :birth_month,
-  #               numericality: { :greater_than_or_equal_to => 1,
-  #                               :less_than_or_equal_to => 31 }
-  # validates :birth_day,
-  #               numericality: { :greater_than_or_equal_to => 1,
-  #                               :less_than_or_equal_to => 31 }
-  # validates :birth_year,
-  #               numericality: { :greater_than_or_equal_to => 1,
-  #                               :less_than_or_equal_to => 31 }
+  has_one :profile
 
-  # has_one :birthdate_listing
-
-  # accepts_nested_attributes_for :birthdates, :reject_if => :all_blank
+  accepts_nested_attributes_for :profile, :reject_if => :all_blank
 
 
+  def build_profile
+
+  end
 
 
   #sign in cookies!

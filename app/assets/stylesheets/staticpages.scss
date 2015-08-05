@@ -1,7 +1,6 @@
 // Place all the styles related to the staticpages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-
 .danebook-logo {
   width: 30px;
   height: 30px;
@@ -152,4 +151,8 @@
 
 .friends-list button {
   margin-top:25px;
+}
+.friend_button {
+  left: 450px;
+  up: 20px;
 }

@@ -81,17 +81,14 @@
 						<div class="col-xs-12">
 							<div class="row">
 								<div class="col-xs-12 selected post-topbar">
-									<div class="center"> Photos (123) (Copied Text Area)</div>
+									<div class="center"> Friends (<%= @user.friends.count %>) </div>
 								</div>
 							</div>
 
 							<div class="row timeline-photos">
-						    	<div class="col-xs-4"><a href="#"><%= image_tag "default_photo.png" %>Ron Weasley</a></div>
-								<div class="col-xs-4"><a href="#"><%= image_tag "default_photo.png" %>Ginny Weasley</a></div>
-						    	<div class="col-xs-4"><a href="#"><%= image_tag "default_photo.png" %>Hermione Granger</a></div>
-								<div class="col-xs-4"><a href="#"><%= image_tag "default_photo.png" %>Albus Dumbledore</a></div>
-						    	<div class="col-xs-4"><a href="#"><%= image_tag "default_photo.png" %>Severus Snape</a></div>
-								<div class="col-xs-4"><a href="#"><%= image_tag "default_photo.png" %>Fred Weasley</a></div>
+		    					<% @user.friends.each do |friend| %>
+									<%= render partial: "users/sidebar_friend", locals: {friend: friend} %>
+								<% end %>
 						    </div>
 
 						    <div class="row">
@@ -115,152 +112,6 @@
 					<!-- This row will represent a post -->
 					<%= render @posts %>
 
-					<!-- This row will represent a post -->
-					<div class="row">
-				    =====================<br>
-					  MOCKUP POSTS<br>
-					=====================<br>
-					</div>
-					<div class="row timeline-post">
-						<div class="col-xs-12">
-							<!-- Top section of a post -->
-							<div class="row">
-								<div class="col-xs-12">
-									<div class="row">
-										<div class="col-sm-1">
-											<%= image_tag "harry.jpg" %>
-										</div>
-										<div class="col-sm-5">
-											<div>
-											<h4><a href="about.html">Harry Potter</a></h4>
-											<h6>Posted on Thursday 6/1/2014</h6>
-											</div>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-xs-12">
-											Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde totam tempora, molestiae iure quam officiis blanditiis laudantium eius cum minima, laborum, necessitatibus quia eaque harum amet corporis quod, dolorem rem.
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<!-- Bottom section of a post -->
-							<div class="row timeline-post-bottombar">
-								<div class="col-xs-12 selected">
-									<div class="row">
-										<div class="col-xs-1">
-											<a href="#">Like</a>
-										</div>
-										<div class="col-xs-1">
-											<a href="#">Comment</a>
-										</div>
-										<div class="col-xs-1 col-xs-offset-8">
-											<a href="#">Delete</a>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-xs-12">
-											<a href="#">Hermione Granger</a> likes this.
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<!-- This row will represent a post -->
-					<div class="row timeline-post">
-						<div class="col-xs-12">
-							<!-- Top section of a post -->
-							<div class="row">
-								<div class="col-xs-12">
-									<div class="row">
-										<div class="col-sm-1">
-											<%= image_tag "harry.jpg" %>
-										</div>
-										<div class="col-sm-5">
-											<div>
-											<h4><a href="about.html">Harry Potter</a></h4>
-											<h6>Posted on Thursday 6/1/2014</h6>
-											</div>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-xs-12">
-											Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde totam tempora, molestiae iure quam officiis blanditiis laudantium eius cum minima, laborum, necessitatibus quia eaque harum amet corporis quod, dolorem rem.
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<!-- Bottom section of a post -->
-							<div class="row timeline-post-bottombar">
-								<div class="col-xs-12 selected">
-									<div class="row">
-										<div class="col-xs-1">
-											<a href="#">Like</a>
-										</div>
-										<div class="col-xs-1">
-											<a href="#">Comment</a>
-										</div>
-										<div class="col-xs-1 col-xs-offset-8">
-											<a href="#">Delete</a>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-xs-12">
-											You and <a href="#">Hermione Granger</a> and 3 others like this.
-										</div>
-									</div>
-									<!-- I'll have to find a way to make this less confusing, but this following section contains comments. -->
-
-									<!-- Another comment, this time owned by Harry. This means he can delete his own post. -->
-									<div class="row">
-										<div class="col-xs-12">
-											<div class="row timeline-post-comment">
-												<div class="col-xs-12">
-													<!-- Top section of a post -->
-													<div class="row">
-														<div class="col-xs-12">
-															<div class="row">
-																<div class="col-sm-1">
-																	<%= image_tag "harry.jpg" %>
-																</div>
-																<div class="col-sm-5">
-																	<div>
-																	<h4><a href="about.html">Harry Potter</a></h4>
-																	<h6>Said on Thursday 6/1/2014</h6>
-																	</div>
-																</div>
-															</div>
-															<div class="row">
-																<div class="col-xs-12">
-																	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo, quia repellendus fugit rerum magnam facere nobis culpa perferendis fuga natus laudantium dicta quas doloribus, laborum provident in facilis optio aut!
-																</div>
-															</div>
-															<!-- This row has the like/delete links, and who/how many liked the comment. -->
-															<div class="row">
-																<div class="col-sm-1">
-																	<a href="#">Like</a>
-																</div>
-																<div class="col-sm-5">
-																	3 other people like this.
-																</div>
-																<div class="col-sm-1 col-sm-offset-4 timeline-comment-delete">
-																	<a href="#">Delete</a>
-																</div>
-															</div>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
 				</div>
 			</div>
 		</div>

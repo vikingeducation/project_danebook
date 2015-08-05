@@ -21,6 +21,9 @@
           <div class="profile-name-small hidden-xs hidden-md hidden-lg">
             <h2> <%= @user.full_name %> </h2>
           </div>
+          <div class="profile-name-large friend_button">
+              <%= friend_button %>
+          </div>
         </div>
         <!-- This row will hold the bar under the cover photo -->
         <div class="row cover-photo-menu">
@@ -44,7 +47,7 @@
               </a>
               <a href="friends.html">
                   <div class="col-md-3">
-                    <h5>Friends (546)</h5>
+                    <h5>Friends (<%= @user.friends.count %>)</h5>
                   </div>
               </a>
             </div>

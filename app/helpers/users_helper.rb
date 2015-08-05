@@ -19,4 +19,22 @@ module UsersHelper
       "This user has not yet added this information!"
     end
   end
+
+  def friend_button
+    unless current_user.nil? || on_own_page
+      if can_friend
+        return link_to "Friend", friendings_path(id: @user.id), method: 'post', class: "btn btn-primary"
+      else
+        return link_to "Unfriend", friendings_path(id: @user.id), method: 'delete', class: "btn btn-primary"
+      end
+    end
+  end
+
+  def can_friend
+    !current_user.friend_ids.include? (@user.id)
+  end
+
+  def on_own_page
+    current_user.id == @user.id
+  end
 end

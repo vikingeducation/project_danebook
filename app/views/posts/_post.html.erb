@@ -22,8 +22,7 @@
         <a class="col-xs-2" href="#">Like</a>
         <a class="col-xs-2" href="#">Comment</a>
         <% if current_user.id == post.user_id %>
-          <%= link_to "delete", user_post_path(current_user, post), method: :delete, class: "alert-danger", data: { confirm: "Are you sure?" } %>
-          <%= link_to user_post_path(current_user, post), method: :delete, class: "col-xs-1 col-xs-offset-6"  %>
+          <%= link_to "delete", user_post_path(current_user, post), method: :delete, class: "col-xs-1 col-xs-offset-6", data: { confirm: "Are you sure?" } %>
         <% end %>
       </div>
     </footer>

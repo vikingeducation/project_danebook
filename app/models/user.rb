@@ -26,8 +26,8 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :profile, :reject_if => :all_blank
 
 
-  def match_like(obj)
-    likes.where("likings_id = ? AND likings_type = ?", obj.id, obj.class.to_s).first
+  def match_like(params)
+    likes.where("likings_id = ? AND likings_type = ?", params[:likings_id], params[:likings_type]).first
     # fail
   end
 

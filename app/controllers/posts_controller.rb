@@ -4,11 +4,10 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     if @post.save
       flash[:success] = "Post successfully submitted"
-      redirect_to timeline_path
     else
-      flash.now[:error] = @post.errors.full_messages
-      render 'timelines/show'
+      flash[:error] = @post.errors.full_messages.first
     end
+    redirect_to timeline_path
   end
 
   def destroy

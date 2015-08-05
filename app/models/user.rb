@@ -4,7 +4,8 @@ class User < ActiveRecord::Base
 
   has_one :profile, dependent: :destroy
 
-  has_many :posts, dependent: :destroy
+  has_many :posts, -> { order('created_at DESC') },
+            dependent: :destroy
 
   has_many :comments, dependent: :destroy
 

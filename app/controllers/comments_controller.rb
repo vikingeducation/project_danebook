@@ -4,13 +4,21 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     if @comment.save
       flash[:success] = "Comment successfully posted"
-      redirect_to timeline_path
     else
-      flash.now[:error] = @comment.errors.full_messages
-      render 'timelines/show'
+      flash[:error] = @comment.errors.full_messages.first
     end
+    redirect_to timeline_path
   end
 
+  def destroy
+    @comment = Comment.find(params[:id])
+    if @comment.destroy
+      flash[:success] = "Comment deleted!"
+    else
+      flash[:error] = "Something went wrong! Please try again."
+    end
+    redirect_to timeline_path
+  end
 
   private
 

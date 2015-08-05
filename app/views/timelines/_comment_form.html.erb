@@ -1,0 +1,15 @@
+<!-- Comments form for new comments -->
+<%= form_for [post, @comment] do |comment_fields| %>
+  <div class="col-md-12">
+    <div class="form-group">
+      <%= comment_fields.text_area :body, class: "form-control", rows: "4", placeholder: "Write a comment..." %>
+      <%= comment_fields.hidden_field(:author_id, value: current_user.id) %>
+      <%= comment_fields.hidden_field(:commentable_type, value: post.class.to_s) %>
+      <%= comment_fields.hidden_field(:commentable_id, value: post.id) %>
+    </div>
+    <div class="form-group">
+      <a class="col-md-1" href="#">Cancel</a>
+      <%= comment_fields.submit "Comment", class: "col-md-3 pull-right btn btn-primary" %>
+    </div>
+  </div>
+<% end -%><!-- End Comments form -->

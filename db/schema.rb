@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150804221223) do
+ActiveRecord::Schema.define(version: 20150805002557) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,13 +28,14 @@ ActiveRecord::Schema.define(version: 20150804221223) do
   add_index "comments", ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id", using: :btree
 
   create_table "likes", force: :cascade do |t|
-    t.integer  "post_id",    null: false
-    t.integer  "user_id",    null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "user_id",       null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "likeable_id"
+    t.string   "likeable_type"
   end
 
-  add_index "likes", ["post_id", "user_id"], name: "index_likes_on_post_id_and_user_id", using: :btree
+  add_index "likes", ["likeable_id", "likeable_type", "user_id"], name: "like_index", unique: true, using: :btree
 
   create_table "posts", force: :cascade do |t|
     t.text     "body",       null: false

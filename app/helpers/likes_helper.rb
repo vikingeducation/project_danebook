@@ -1,0 +1,4 @@
+module LikesHelper
+
+  
+end

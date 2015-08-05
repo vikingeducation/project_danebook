@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: "staticpages#home"
+  root to: "users#show"
   get '/home' => "staticpages#home"
   get '/timeline' => "staticpages#timeline"
   get '/friends' => "staticpages#friends"
@@ -7,6 +7,12 @@ Rails.application.routes.draw do
   get '/photos' => "staticpages#photos"
   get '/about_edit' => "staticpages#about_edit"
 
-  resources :users, only: [:new, :create, :show, :destroy]
-  resource :logins, only: [:new, :create, :destroy]
+  resources :users do
+    resources :profiles, only: [:edit, :index, :update]
+    resources :posts, only: [:new, :create, :index, :show, :destroy] do
+      resources :likes, only: [:create, :index, :destroy]
+    end
+  end
+  resource :session, only: [:new, :create, :destroy]
+  resources :comments, only: [:new, :create]
 end

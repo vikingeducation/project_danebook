@@ -13,19 +13,30 @@
       </div>
       <!-- This is appears to wrap the right portion of the navbar and is id'd to be controlled to collapse when the screen shrinks too much.-->
       <div id="navbar" class="navbar-collapse collapse" aria-expanded="true">
+        <% if signed_in_user? %>
+          <div class="navbar navbar-right">
+            <p><%= current_user.full_name %></p>
+          </div>
+        <% else %>
         <!-- This is the actual right part of the navbar -->
-        <form class="navbar-form navbar-right">
-          <!-- We have two inputs, one for email, one for the password, and a button to submit. -->
-          <div class="form-group">
-            <p class="named-form">Email</p>
-            <input type="email" placeholder="Email" class="form-control"/>
-          </div>
-          <div class="form-group">
-            <p class="named-form">Password</p>
-            <input type="password" placeholder="Password" class="form-control"/>
-          </div>
-          <%= link_to "Log In", about_path, class: "btn btn-primary sign-in-button"%>
-        </form>
+          <%= form_tag session_path, :class=>"navbar-form navbar-right" do %>
+            <!-- We have two inputs, one for email, one for the password, and a button to submit. -->
+            <div class="form-group">
+              <%= label_tag do %>
+                <%= text_field_tag :email, value=nil,{:placeholder => "Email", :class=>"form-control"} %>
+              <% end %>
+            </div>
+            
+            <div class="form-group">
+              <%= label_tag do %>
+                <%= password_field_tag :password, value=nil, {:placeholder => "Password", :class=>"form-control"}%>
+              <% end %>
+            </div>
+
+            <%= submit_tag "Log in", class: "btn btn-primary sign-in-button"%>
+          <% end %>
+        <% end %>
+          
       </div>
     </div>
   </div>

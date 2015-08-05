@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   resources :users, except: [:index] do
     resource :timeline, only: [:show]
+    resource :friendings, :only => [:create, :destroy]
   end
   resources :posts, only: [:create, :update, :destroy] do
     resources :comments, only: [:create, :update, :destroy], :defaults => { :commentable => 'Post' }
@@ -17,7 +18,6 @@ Rails.application.routes.draw do
   resource :profile, only: [:new, :create, :show, :edit, :update]
   resource :session, :only => [:create, :destroy]
   resource :like, :only => [:create, :destroy]
-  resource :friendings, :only => [:create, :destroy]
 
 # ------------------------ Aliases ----------------------------
   get "login" => "users#new"

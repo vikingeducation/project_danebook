@@ -55,6 +55,10 @@ class User < ActiveRecord::Base
     "#{first_name} #{last_name}"
   end
 
+  def friended_by?(user)
+    Friending.find_by({friend_id: self.id, friender_id: user.id })
+  end
+
   def generate_token
     begin
       self[:auth_token] = SecureRandom.urlsafe_base64

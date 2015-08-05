@@ -11,7 +11,11 @@
         <div class = "profile-pic-container">
           <%= image_tag "harry_potter_small.jpg", class: "img-responsive" %>
         </div>
-        <h1 class = "profile-name"><%= @user.name %></h1>
+        <h1 class = "profile-name">
+          <%= @user.name %>
+          <%= friending_button(@user) unless @user == current_user %>
+        </h1>
+
       </div>
 
       <div class = "col-xs-6 navigation-container">

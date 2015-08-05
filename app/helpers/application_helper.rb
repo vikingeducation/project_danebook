@@ -62,5 +62,13 @@ module ApplicationHelper
             class: "col-xs-2"
   end
 
+  def friending_button(user)
+    friended = user.friended_by?(current_user)
+    link_to friended ? "Remove Friend" : "Add as Friend",
+            user_friendings_path(user),
+            method: friended ? :delete : :post,
+            class: friended ? "btn btn-sm btn-default" : "btn btn-sm btn-primary"
+  end
+
 
 end

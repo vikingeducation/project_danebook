@@ -9,4 +9,8 @@ class Like < ActiveRecord::Base
                   likings_type, likings_id).order("created_at DESC")
   end
 
+  def you_liked(type, id)
+
+  end
+
 end

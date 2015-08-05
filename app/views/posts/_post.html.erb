@@ -19,9 +19,7 @@
   <div class = "row">
     <footer class="col-md-12 like-section">
       <div class = "row">
-        <%= form_for [post.user, post] do |f| %>
-          <%= f.submit "Like", class: "col-xs-2" %>
-        <% end %>
+        <%= link_to like_display, like_path(like: {:likings_id => post.id, :likings_type => "Post"}), method: :post, class: "col-xs-2" %>
         <a class="col-xs-2" href="#">Comment</a>
         <% if current_user.id == post.user_id %>
           <%= link_to "Delete", user_post_path(current_user, post), method: :delete, class: "col-xs-1 col-xs-offset-6", data: { confirm: "Are you sure?" } %>

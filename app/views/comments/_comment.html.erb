@@ -34,7 +34,7 @@
 							<% end %>
 							<% if comment.likes.count > 0 %>
 								<div class="col-sm-5">
-									<%= present_likes_count(comment) %>
+									<%= present_likes_count(comment).html_safe %>
 								</div>
 							<% end %>
 						</div>

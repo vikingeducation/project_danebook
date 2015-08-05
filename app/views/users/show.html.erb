@@ -1,0 +1,105 @@
+<main class="container content-container">
+
+  <%= render :partial => "shared/header", :locals => { :user => @user, :toggled => "about" } %>
+
+
+
+<!-- Start of main About section -->
+  <section id="about" class="row">
+
+    <div class="row">
+      <div class="col-md-12">
+
+        <div class="panel panel-default">
+
+
+          <div class="panel-heading">
+            <div class="row">
+
+              <div class="col-xs-4 col-xs-offset-4 text-center">
+                <h1 class="panel-title">About</h1>
+              </div>
+
+              <div class="col-xs-4 text-right">
+                <%= link_to "Edit your profile", edit_user_path(current_user), class: "btn btn-primary btn-sm pull-right", alt: "Edit your profile" if @user == current_user %>
+              </div>
+
+            </div>
+
+          </div> <!-- end of panel heading -->
+
+
+
+
+          <div class="panel-body">
+            <div class="row">
+
+
+              <!-- left side -->
+              <div class="col-md-5 col-md-offset-1">
+                <h3>
+                  Basic Information
+                </h3>
+
+                <dl class="dl-horizontal">
+                  <dt>Birthday:</dt>
+                  <dd><%= @user.profile.birthdate.to_formatted_s(:long_ordinal) %></dd>
+                  <dt>College:</dt>
+                  <dd><%= @user.profile.college %></dd>
+                  <dt>Hometown:</dt>
+                  <dd><%= @user.profile.hometown %></dd>
+                  <dt>Currently Lives:</dt>
+                  <dd><%= @user.profile.currently_lives %></dd>
+                </dl>
+
+                <h3>
+                  Contact Information
+                </h3>
+
+                <dl class="dl-horizontal">
+                  <dt>Email:</dt>
+                  <dd><%= @user.email %></dd>
+                  <dt>Telephone:</dt>
+                  <dd><%= @user.profile.telephone %></dd>
+                </dl>
+
+              </div> <!-- end of left side -->
+
+
+              <!-- right side -->
+              <div class="col-md-6">
+                <h3>
+                  Words to Live By
+                </h3>
+
+                <p>
+                  <%= @user.profile.words_to_live_by %>
+                </p>
+
+
+                <h3>
+                  About Me
+                </h3>
+
+                <p>
+                  <%= @user.profile.description %>
+                </p>
+
+              </div> <!-- end of right side -->
+
+            </div>
+
+          </div> <!-- end of panel body -->
+
+
+
+        </div> <!-- end of panel -->
+
+      </div>
+    </div>
+  </section>
+
+
+
+
+</main> <!-- container -->

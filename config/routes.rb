@@ -7,8 +7,8 @@ Rails.application.routes.draw do
   get 'login' => 'sessions#new'
   delete 'logout' => 'sessions#destroy'
 
-  resources :users do
-    resource :profile
+  resources :users, :only => [:new, :create, :show, :edit, :update] do
+    resource :profile, :only => [:new]
   end
 
   get "/timeline" => "static_pages#timeline"

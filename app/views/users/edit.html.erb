@@ -1,0 +1,124 @@
+<main class="container content-container">
+
+  <%= render :partial => "shared/header", :locals => { :user => @user, :toggled => "about" } %>
+
+
+
+<!-- Start of main Edit section -->
+  <section id="edit-about" class="row">
+
+    <div class="row">
+      <div class="col-md-12">
+
+        <div class="panel panel-default">
+
+
+          <div class="panel-heading">
+            <div class="row">
+
+              <div class="col-xs-12 text-center">
+                <h1 class="panel-title">Edit Profile</h1>
+              </div>
+
+            </div>
+
+          </div> <!-- end of panel heading -->
+
+
+
+
+          <div class="panel-body">
+
+            <%= form_for @user do |user_fields| %>
+
+              <%= user_fields.fields_for :profile do |profile_fields| %>
+
+                <div class="row">
+
+
+                  <!-- left side -->
+                  <div class="col-md-5 col-md-offset-1">
+                    <h3>
+                      Basic Information
+                    </h3>
+
+                    <dl class="dl-horizontal">
+                      <dt>Birthday:</dt>
+                      <dd><%= @user.profile.birthdate.to_formatted_s(:long_ordinal) %></dd>
+                      <dt>College:</dt>
+                      <dd>
+                        <%= profile_fields.text_field :college, class: 'form-control' %>
+                      </dd>
+                      <dt>Hometown:</dt>
+                      <dd>
+                        <%= profile_fields.text_field :hometown, class: 'form-control' %>
+                      </dd>
+                      <dt>Currently Lives:</dt>
+                      <dd>
+                        <%= profile_fields.text_field :currently_lives, class: 'form-control' %>
+                      </dd>
+                      </dl>
+
+                    <h3>
+                      Contact Information
+                    </h3>
+
+                    <dl class="dl-horizontal">
+                      <dt>Email:</dt>
+                      <dd><%= @user.email %></dd>
+                      <dt>Telephone:</dt>
+                      <dd>
+                        <%= profile_fields.text_field :telephone, class: 'form-control' %>
+                      </dd>
+                    </dl>
+
+                  </div> <!-- end of left side -->
+
+
+                  <!-- right side -->
+                  <div class="col-md-6">
+                    <h3>
+                      Words to Live By
+                    </h3>
+
+                    <p>
+                      <%= profile_fields.text_area :words_to_live_by, rows: 2, class: 'form-control', placeholder: 'Add a favorite quote...' %>
+                    </p>
+
+
+                    <h3>
+                      About Me
+                    </h3>
+
+                    <p>
+                      <%= profile_fields.text_area :description, rows: 6, class: 'form-control', placeholder: 'Tell us more about yourself...' %>
+                    </p>
+
+
+                  </div> <!-- end of right side -->
+
+                </div>
+
+                <!-- submit button -->
+                <div class="row">
+                  <div class="col-md-6 col-md-offset-3 text-center">
+                    <%= user_fields.submit 'Save Changes', class: 'btn btn-primary btn-lg btn-block' %>
+                  </div>
+                </div>
+
+              <% end %>
+            <% end %>
+
+          </div> <!-- end of panel body -->
+
+
+
+        </div> <!-- end of panel -->
+
+      </div>
+    </div>
+  </section>
+
+
+
+</main> <!-- container -->

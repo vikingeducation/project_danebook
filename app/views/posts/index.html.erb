@@ -1,0 +1,281 @@
+<%= render partial: "shared/cover", locals: {user: @user} %>
+
+<main class="container">
+  <div class="row">
+    <div class="col-sm-4">
+
+
+
+      <div class="row about-me-box">
+        <div class="col-sm-12 box-title">
+          <h5>About Me</h5>
+        </div>
+        <div class="col-sm-12">
+          <table class="table">
+            <tr>
+                  <td>Birthday:</td>
+                  <td><%= @user.profile.birthday %></td>
+                </tr>
+                <tr>
+                  <td>Went to school at:</td>
+                  <td><%= @user.profile.college %></td>
+                </tr>
+                <tr>
+                  <td>Hometown:</td>
+                  <td><%= @user.profile.hometown %></td>
+                </tr>
+                <tr>
+                  <td>Currently Lives:</td>
+                  <td><%= @user.profile.current_lives %></td>
+                </tr>
+          </table>
+        </div>
+      </div>
+
+      <div class="row photos-box">
+        <div class="col-sm-12 box-title">
+          <h5> Photos (123)</h5>
+        </div>
+        <div class="col-sm-4">
+          <img src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png" class="image">
+          <br><p>Uploaded Mar 24, 299</p>
+        </div>
+        <div class="col-sm-4">
+          <img src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png" class="image">
+          <br><p>Uploaded Mar 24, 299</p>
+        </div>
+        <div class="col-sm-4">
+          <img src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png" class="image">
+          <br><p>Uploaded Mar 24, 299</p>
+        </div>
+        <div class="col-sm-4">
+          <img src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png" class="image">
+          <br><p>Uploaded Mar 24, 299</p>
+        </div>
+        <div class="col-sm-4">
+          <img src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png" class="image">
+          <br><p>Uploaded Mar 24, 299</p>
+        </div>
+        <div class="col-sm-4">
+          <img src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png" class="image">
+          <br><p>Uploaded Mar 24, 299</p>
+        </div>
+        <div class="col-sm-4">
+          <img src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png" class="image">
+          <br><p>Uploaded Mar 24, 299</p>
+        </div>
+        <div class="col-sm-4">
+          <img src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png" class="image">
+          <br><p>Uploaded Mar 24, 299</p>
+        </div>
+        <div class="col-sm-4">
+          <img src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png" class="image">
+          <br><p>Uploaded Mar 24, 299</p>
+        </div>
+        <div class="col-sm-4">
+          <img src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png" class="image">
+          <br><p>Uploaded Mar 24, 299</p>
+        </div>
+        <div class="col-sm-4">
+          <img src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png" class="image">
+          <br><p>Uploaded Mar 24, 299</p>
+        </div>
+        <div class="col-sm-4">
+          <img src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png" class="image">
+          <br><p>Uploaded Mar 24, 299</p>
+        </div>
+        <div class="col-sm-4">
+          <img src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png" class="image">
+          <br><p>Uploaded Mar 24, 299</p>
+        </div>
+      </div>
+
+      <div class="row friends-box">
+        <div class="col-sm-12 box-title">
+          <h5> Friends (456)</h5>
+        </div>
+        <div class="col-sm-4">
+          <img src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif" class="image">
+          <br><p>Sam Tarly</p>
+        </div>
+        <div class="col-sm-4">
+          <img src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif" class="image">
+          <br><p>Sam Tarly</p>
+        </div>
+        <div class="col-sm-4">
+          <img src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif" class="image">
+          <br><p>Sam Tarly</p>
+        </div>
+        <div class="col-sm-4">
+          <img src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif" class="image">
+          <br><p>Sam Tarly</p>
+        </div>
+        <div class="col-sm-4">
+          <img src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif" class="image">
+          <br><p>Sam Tarly</p>
+        </div>
+        <div class="col-sm-4">
+          <img src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif" class="image">
+          <br><p>Sam Tarly</p>
+        </div>
+      </div>
+    </div>
+
+
+
+
+    <div class="col-sm-7 col-sm-offset-1">
+      <% if current_user == @user %>
+        <article class="row newpost-box">
+          <div class="col-sm-12 box-title">
+            <h5> Post </h5>
+          </div>
+          <%= form_for @post, class: "form-group" do |post_fields| %>
+            <%= post_fields.hidden_field :user_id, value: @user.id %>
+            <div class="col-sm-12">
+              <%= post_fields.text_area :body, 
+                                         placeholder: "Share Your Thoughts",
+                                         class: "form-control" %>
+            </div>
+            <div class="col-sm-12 submit-bar">
+              <%= post_fields.submit "Post", class: "btn btn-primary pull-right" %>
+            </div>
+          <% end %>
+        </article>
+      <% end %>
+
+      <% @posts.each do |post| %>
+        <article class ="row post">
+          <div class="col-sm-2 posted-by">
+            <img src="http://images6.fanpop.com/image/polls/1384000/1384462_1402305957008_full.jpg">
+          </div>
+          <div class="col-sm-10 posted-name">
+            <p><%= @user.profile.full_name %><br>Posted on <%= post.created_at.to_date %></p>
+          </div>
+
+            <div class="col-sm-12">
+              <p class="post-text">
+                <%= post.body %>
+              </p>
+            </div>
+
+          <div class="col-sm-12 like-bar">
+            <div class="col-sm-1 ">
+              <a href="#">Like</a>
+            </div>
+            <div class="col-sm-1">
+              <a href="#">Comment</a>
+            </div>
+            <% if current_user == @user %>
+              <div class="col-sm-1 col-sm-offset-8">
+                <%= link_to "Delete", post_path(post.id), method: :delete %>
+              </div>
+            <% end %>
+          </div>
+        </article>
+      <% end %>
+
+      <article class ="row post">
+        <div class="col-sm-2 posted-by">
+          <img src="http://images6.fanpop.com/image/polls/1384000/1384462_1402305957008_full.jpg">
+        </div>
+        <div class="col-sm-10 posted-name">
+          <p>Samwell Tarly<br>Posted on June 29, 302</p>
+        </div>
+
+          <div class="col-sm-12">
+            <p class="post-text">
+              <br>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+          </div>
+
+        <div class="col-sm-12 like-bar">
+          <div class="col-sm-1 ">
+            <a href="#">Unlike</a>
+          </div>
+          <div class="col-sm-1 col-sm-offset-9">
+            <a href="#">Delete</a>
+          </div>
+        </div>
+        <div class="col-sm-12 like-bar liked">
+          <div class="col-sm-12 ">
+            You and <a href="#">Samwell Tarly</a> like this.
+          </div>
+        </div>
+        <div class="col-sm-12 combox">
+          <div class="col-sm-2 posted-by">
+            <img src="http://images6.fanpop.com/image/polls/1384000/1384462_1402305957008_full.jpg">
+          </div>
+          <div class="col-sm-10 posted-name">
+            <p>Samwell Tarly said on June 29, 302</p>
+          </div>
+          <div class="col-sm-12">
+            <p class="post-text">
+              <br>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+            
+              <div class="col-sm-1 ">
+                <a href="#">Like</a>
+              </div>
+              <div class="col-sm-8">
+                <span class="grey">3 other people like this</span>
+              </div>
+              <div class="col-sm-1 col-sm-offset-1">
+                <a href="#">Delete</a>
+              </div>
+
+          </div>
+
+          <div class="col-sm-2 posted-by">
+            <img src="http://images6.fanpop.com/image/polls/1384000/1384462_1402305957008_full.jpg">
+          </div>
+          <div class="col-sm-10 posted-name">
+            <p>Samwell Tarly said on June 29, 302</p>
+          </div>
+          <div class="col-sm-12">
+            <p class="post-text">
+              <br>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+            <div class="col-sm-1 ">
+              <a href="#">Like</a>
+            </div>
+            <div class="col-sm-8">
+              <span class="grey">3 other people like this</span>
+            </div>
+            <div class="col-sm-1 col-sm-offset-1">
+              <a href="#">Delete</a>
+            </div>
+            <div class="col-sm-12">
+              <textarea placeholder="Write a comment"></textarea>
+            </div>
+            <div class="col-sm-12 submit-bar">
+              <a href="#">Cancel</a><span class="pull-right"><a class="btn btn-primary" href="#.html" role="button">Post</a></span>
+
+            </div>
+
+          </div>
+
+
+        </div>
+      </article>
+
+
+    </div>
+
+  </div>
+</main>

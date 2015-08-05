@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :profile
 
+  has_many :posts
+
 
   def generate_token
     begin

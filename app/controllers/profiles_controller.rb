@@ -8,7 +8,7 @@ class ProfilesController < ApplicationController
   def update
     if @profile && @profile.update(whitelisted_profile_params)
       flash[:success] = "Your profile is successfully updated!"
-      redirect_to @profile
+      redirect_to posts_path(user_id: @profile.user_id)
     else
       flash[:error] = "Something went wrong. Try again."
       render :edit

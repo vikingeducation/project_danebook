@@ -1,0 +1,32 @@
+<div class="container cover">
+  <div class="row">
+    <div class="col-md-12">
+      <img src="http://i.imgur.com/RqYVi8w.jpg" width="99%" class="cover-pic hidden-sm hidden-xs" />
+    </div>
+  </div>
+  <div class="row cover-profile">
+    <div class="col-md-2 col-md-offset-1">
+        <img src="http://img3.wikia.nocookie.net/__cb20140407015951/degrassi/images/8/8b/Jon-Snow-S3.jpg" alt ="Jon Snow" height="100%" width="100%" class="hidden-sm hidden-xs profile-pic">
+
+    </div>
+  </div>
+  <div class="row cover-menu">
+    <div class="col-md-1 col-md-offset-3">
+      <%= link_to "Timeline", posts_path(user_id: user.id), class: "btn btn-default btn-block" %>
+    </div>
+    <div class="col-md-1">
+      <%= link_to "About", profile_path(user.profile.id), class: "btn btn-default btn-block" %>
+    </div>
+    <div class="col-md-1">
+      <%= link_to "Photos", "profile_path(user.profile.id)", class: "btn btn-default btn-block" %>
+    </div>
+    <div class="col-md-1">
+      <%= link_to "Friends", "profile_path(user.profile.id)", class: "btn btn-default btn-block" %>
+    </div>
+    <% if current_user == user %>
+      <div class="col-md-1 pull-right">
+        <%= link_to "Edit Profile", edit_profile_path(user.profile.id) %>
+      </div>
+    <% end %>
+  </div>
+</div>

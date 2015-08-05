@@ -39,8 +39,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    current_user
-    @profile = current_user.profile
+    redirect_to user_posts_path(current_user)
   end
 
   # def destroy

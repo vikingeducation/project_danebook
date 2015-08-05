@@ -155,55 +155,7 @@
 
 
 <!-- MAKE POST -->
-
-        <div class=" panel panel-default">
-
-          <div class="panel-heading">
-
-            <h3 class="panel-title text-center">
-              Post
-            </h3>
-
-          </div>
-
-
-
-          <form id="post-form">
-
-
-            <div class="panel-body">
-
-              <div class="row">
-
-                <textarea class="form-control" rows="3">Tell the world something...</textarea>
-
-              </div>
-
-            </div>
-
-
-            <div class="panel-footer">
-
-              <div class="row">
-
-                <div class="col-md-12">
-
-                  <button type="submit" class="btn btn-primary btn-sm pull-right">
-                    Post
-                  </button>
-
-                </div>
-
-              </div>
-
-            </div> <!-- end of footer -->
-
-
-          </form>
-
-        </div> <!-- end of panel -->
-
-<!-- end of Make Post section -->
+        <%= render :partial => 'new', :locals => { :user => @user, :new_post => @new_post } if @user == current_user %>
 
 
 

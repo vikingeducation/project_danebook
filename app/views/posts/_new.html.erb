@@ -1,0 +1,46 @@
+<!-- MAKE POST -->
+
+        <div class=" panel panel-default">
+
+          <div class="panel-heading">
+
+            <h3 class="panel-title text-center">
+              Post
+            </h3>
+
+          </div>
+
+
+
+          <!-- <form id="post-form"> -->
+          <%= form_for [user, new_post] do |f| %>
+
+            <%= f.hidden_field :author_id %>
+
+
+            <div class="panel-body">
+              <div class="row">
+                <%= f.text_area :body, class:'form-control', placeholder: 'Tell the world something...' %>
+                <!-- <textarea class="form-control" rows="3">Tell the world something...</textarea> -->
+              </div>
+            </div>
+
+
+            <div class="panel-footer">
+              <div class="row">
+                <div class="col-md-12">
+                  <%= f.submit 'Post', class: 'btn btn-primary btn-sm pull-right' %>
+                  <!-- <button type="submit" class="btn btn-primary btn-sm pull-right">
+                    Post
+                  </button> -->
+                </div>
+              </div>
+            </div> <!-- end of footer -->
+
+
+          <% end %>
+          <!-- </form> -->
+
+        </div> <!-- end of panel -->
+
+<!-- end of Make Post section -->

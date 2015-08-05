@@ -20,14 +20,16 @@ class User < ActiveRecord::Base
 
   has_one :profile
   has_many :posts
-  has_many :likes, through: :posts
+  has_many :likings, through: :posts
+  has_many :likes
 
   accepts_nested_attributes_for :profile, :reject_if => :all_blank
 
 
-  # def build_profile
-  #   current_user.profile.create
-  # end
+  def match_like(params_list)
+    likes.where("likings_id = ? AND likings_type = ?", params_list[:likings_id], params_list[:likings_type]).first
+    # fail
+  end
 
   def full_name
     self.first_name + " " + self.last_name

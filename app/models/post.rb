@@ -5,4 +5,8 @@ class Post < ActiveRecord::Base
 
   validates :body, :presence => :true
 
+  def you_liked?
+
+  end
+
 end

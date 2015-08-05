@@ -19,12 +19,12 @@ class LikesController < ApplicationController
 
   def destroy
     session[:return_to] ||= request.referer
-    @like = current_user.likes
-    if @like.save
+    like = current_user.match_like(params_list)
+    if current_user.id == like.user_id && like.destroy
       # fail
-      flash[:success] = "You have liked this!"
+      flash[:success] = "You have unliked this!"
     else
-      flash[:error] = "There was an error, please try liking again!"
+      flash[:error] = "There was an error, please try again!"
     end
     redirect_to session.delete(:return_to)
   end

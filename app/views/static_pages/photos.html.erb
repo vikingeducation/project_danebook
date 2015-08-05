@@ -1,0 +1,61 @@
+<main class="container content-container">
+
+  <%= render :partial => "shared/header", :locals => { :toggled => "about" } %>
+
+
+
+
+<!-- Start of main Friends section -->
+  <section id="photos" class="row">
+
+    <div class="row">
+      <div class="col-md-12">
+
+        <div class="panel panel-default">
+
+
+          <div class="panel-heading">
+            <div class="row">
+
+              <div class="col-xs-4 col-xs-offset-4 text-center">
+                <h1 class="panel-title">Photos</h1>
+              </div>
+
+              <div class="col-xs-4 text-right">
+                <a href="#" class="btn btn-primary btn-sm pull-right" alt="Add a photo.">
+                  Add Photo!
+                </a>
+              </div>
+
+            </div>
+
+          </div> <!-- end of panel heading -->
+
+
+
+
+          <div class="panel-body">
+            <div class="row center-block">
+
+    <!-- photo column -->
+              <div class="col-md-12 text-center">
+
+                <% 16.times do %>
+                  <%= render "static_pages/photos/photo" %>
+                <% end %>
+
+              </div> <!-- photo column -->
+
+            </div>
+          </div> <!-- end of larger panel body -->
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+
+
+</main> <!-- container -->

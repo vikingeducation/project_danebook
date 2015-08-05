@@ -1,0 +1,156 @@
+<main class="container">
+
+  <section id="home">
+
+
+  <!-- Text of features listed on left side -->
+    <div class="row">
+
+      <div class="col-md-7 feature-list-section">
+
+        <div class="row text-spacer hidden-xs hidden-sm">
+      <!-- used to make space on md & lg screens -->
+        </div>
+
+        <header class="home-text-wrapper col-md-offset-1">
+
+          <h2>Connect with all your friends!</h2>
+
+          <ul>
+            <li><strong>See photos and updates</strong> in your news feed.</li>
+            <li><strong>Post your status for the world to see</strong> from your profile</li>
+            <li><strong>Get in touch with your friends</strong> by "friending" them</li>
+            <li><strong>Like things</strong> because you're a positive person!</li>
+          </ul>
+
+        </header>
+
+      </div>
+
+
+
+
+  <!-- New User Sign Up -->
+      <div class="col-md-5 sign-up-section">
+
+        <form class="sign-up-wrapper">
+
+          <h1>Sign Up</h1>
+
+          <!-- First & Last Name -->
+          <div class="row user-input-row">
+            <div class="col-md-6">
+              <input type="text" class="form-control" id="first-name" placeholder="First Name">
+            </div>
+            <div class="col-md-6">
+              <input type="text" class="form-control" id="last-name" placeholder="Last Name">
+            </div>
+          </div>
+
+          <!-- Email address -->
+          <div class="row user-input-row">
+            <div class="col-md-12">
+              <input type="email" class="form-control" id="new-email" placeholder="Your Email">
+            </div>
+          </div>
+
+          <!-- Password -->
+          <div class="row user-input-row">
+            <div class="col-md-12">
+              <input type="password" class="form-control" id="new-password" placeholder="Your New Password">
+            </div>
+          </div>
+
+          <!-- Password confirmation -->
+          <div class="row user-input-row">
+            <div class="col-md-12">
+              <input type="password" class="form-control" id="confirm-password" placeholder="Confirm Your Password">
+            </div>
+          </div>
+
+
+          <!-- Birthday header-->
+          <div class="row">
+            <div class="col-md-12">
+              <h4>Birthday</h4>
+            </div>
+          </div>
+
+          <!-- Birthday input-->
+          <div class="row user-input-row">
+            <div class="col-xs-3">
+              <select class="form-control">
+                <option>Month</option>
+
+                <% @months.each do |month| %>
+                  <option><%= month %></option>
+                <% end %>
+
+              </select>
+            </div>
+
+            <div class="col-xs-3">
+              <select class="form-control">
+                <option>Day</option>
+
+                <% 1.upto(31) do |day| %>
+                  <option><%= day %></option>
+                <% end %>
+
+              </select>
+            </div>
+
+            <div class="col-xs-3">
+              <select class="form-control">
+                <option>Year</option>
+
+                <% 1900.upto(2015) do |year| %>
+                  <option><%= year %></option>
+                <% end %>
+
+              </select>
+            </div>
+
+          </div> <!-- End of birthday rows -->
+
+
+
+
+          <!-- Gender radio buttons -->
+          <div class="row user-input-row">
+            <div class="col-md-12">
+
+              <label class="radio-inline">
+                <input type="radio" name="gender" id="gender_female" value="female">
+                Female
+              </label>
+
+              <label class="radio-inline">
+                <input type="radio" name="gender" id="gender_male" value="male">
+                Male
+              </label>
+
+            </div> <!-- column for radio buttons-->
+
+          </div> <!-- radio button row -->
+
+
+          <!-- Submit button -->
+          <div class="row submit-wrapper">
+            <button type="submit" class="col-md-12 btn btn-success btn-lg custom-button">
+              Sign Up!
+            </button>
+          </div>
+
+
+        </form>
+
+
+
+      </div> <!-- sign-up section -->
+
+    </div> <!-- row for all content -->
+
+  </section>
+
+</main>

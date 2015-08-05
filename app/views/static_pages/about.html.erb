@@ -1,0 +1,109 @@
+<main class="container content-container">
+
+  <%= render :partial => "shared/header", :locals => { :toggled => "about" } %>
+
+
+
+<!-- Start of main About section -->
+  <section id="about" class="row">
+
+    <div class="row">
+      <div class="col-md-12">
+
+        <div class="panel panel-default">
+
+
+          <div class="panel-heading">
+            <div class="row">
+
+              <div class="col-xs-4 col-xs-offset-4 text-center">
+                <h1 class="panel-title">About</h1>
+              </div>
+
+              <div class="col-xs-4 text-right">
+                <%= link_to "Edit your profile", about_edit_path, class: "btn btn-primary btn-sm pull-right", alt: "Edit your profile" %>
+              </div>
+
+            </div>
+
+          </div> <!-- end of panel heading -->
+
+
+
+
+          <div class="panel-body">
+            <div class="row">
+
+
+              <!-- left side -->
+              <div class="col-md-5 col-md-offset-1">
+                <h3>
+                  Basic Information
+                </h3>
+
+                <dl class="dl-horizontal">
+                  <dt>Birthday:</dt>
+                  <dd>July 31st, 1980</dd>
+                  <dt>College:</dt>
+                  <dd>Hogwarts College</dd>
+                  <dt>Hometown:</dt>
+                  <dd>Godrick's Hollow, England</dd>
+                  <dt>Currently Lives:</dt>
+                  <dd>Godrick's Hollow, England</dd>
+                </dl>
+
+                <h3>
+                  Contact Information
+                </h3>
+
+                <dl class="dl-horizontal">
+                  <dt>Email:</dt>
+                  <dd>harry_potter@hogwarts.edu</dd>
+                  <dt>Telephone:</dt>
+                  <dd>555-123-4567</dd>
+                </dl>
+
+              </div> <!-- end of left side -->
+
+
+              <!-- right side -->
+              <div class="col-md-6">
+                <h3>
+                  Words to Live By
+                </h3>
+
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                </p>
+
+
+                <h3>
+                  About Me
+                </h3>
+
+                <p>
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                  quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                  consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                  cillum dolore eu fugiat nulla pariatur.
+                </p>
+
+              </div> <!-- end of right side -->
+
+            </div>
+
+          </div> <!-- end of panel body -->
+
+
+
+        </div> <!-- end of panel -->
+
+      </div>
+    </div>
+  </section>
+
+
+
+
+</main> <!-- container -->

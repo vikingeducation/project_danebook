@@ -1,0 +1,277 @@
+<main class="container content-container">
+
+  <%= render :partial => "shared/header", :locals => { :toggled => "about" } %>
+
+
+
+
+<!-- Start of main Timeline section -->
+  <section id="timeline" class="row">
+    <div class="row">
+
+
+
+<!-- LEFT side -->
+<!--            -->
+<!--            -->
+<!--            -->
+
+      <div class="col-lg-5 visible-lg">
+
+  <!-- row for Basic Info  -->
+        <div class="row">
+          <div class="col-xs-12">
+
+            <div class=" panel panel-default">
+
+              <div class="panel-heading">
+
+                <h3 class="panel-title text-center">
+                  About
+                </h3>
+
+              </div>
+
+
+              <div class="panel-body col-sm-offset-1">
+
+                <p><strong>Born on: </strong>July 31st, 1980</p>
+                <p><strong>Went to school at: </strong>Hogwarts</p>
+                <p><strong>Hometown: </strong>Godrick's Hollow, England</p>
+                <p><strong>Currently lives: </strong>Godrick's Hollow</p>
+
+              </div>
+
+            </div> <!-- end of panel -->
+
+          </div> <!-- end of col -->
+
+        </div> <!-- end of row -->
+<!-- end of Basic Info -->
+
+
+  <!-- row for Photos  -->
+        <div class="row">
+          <div class="col-xs-12">
+
+            <div class=" panel panel-default">
+
+              <div class="panel-heading">
+
+                <h3 class="panel-title text-center">
+                  Photos <small>(123)</small>
+                </h3>
+
+              </div>
+
+
+              <div class="panel-body">
+
+                <% 3.times do %>
+                  <div class="row">
+                    <% 3.times do %>
+                      <%= render "static_pages/timeline/timeline_photo" %>
+                    <% end %>
+                  </div>
+                <% end %>
+
+
+                <div class="col-xs-12 text-center">
+
+                  <%= link_to "See more photos", photos_path, alt: "See more photos" %>
+
+                </div>
+
+              </div> <!-- end of panel body -->
+
+            </div> <!-- end of panel -->
+
+          </div> <!-- end of col -->
+
+        </div> <!-- end of row -->
+<!-- end of Photos panel -->
+
+
+
+
+<!-- row for Friends  -->
+        <div class="row">
+          <div class="col-xs-12">
+
+            <div class=" panel panel-default">
+
+              <div class="panel-heading">
+
+                <h3 class="panel-title text-center">
+                  Friends <small>(542)</small>
+                </h3>
+
+              </div>
+
+
+              <div class="panel-body">
+
+                <% 2.times do %>
+                  <div class="row">
+                    <% 3.times do %>
+                      <%= render "static_pages/timeline/timeline_friend" %>
+                    <% end %>
+                  </div>
+                <% end %>
+
+
+                <div class="row">
+
+                  <div class="col-xs-12 text-center">
+
+                    <%= link_to "See More Friends", friends_path, alt: "See more friends" %>
+
+                  </div>
+
+                </div>
+
+              </div> <!-- end of panel body -->
+
+            </div> <!-- end of panel -->
+
+          </div> <!-- end of col -->
+
+        </div> <!-- end of row -->
+<!-- end of Friends panel -->
+
+      </div>
+<!-- end of LEFT side -->
+
+
+
+
+
+<!-- RIGHT side -->
+<!--            -->
+<!--            -->
+<!--            -->
+
+      <div class="col-lg-7">
+
+
+<!-- MAKE POST -->
+
+        <div class=" panel panel-default">
+
+          <div class="panel-heading">
+
+            <h3 class="panel-title text-center">
+              Post
+            </h3>
+
+          </div>
+
+
+
+          <form id="post-form">
+
+
+            <div class="panel-body">
+
+              <div class="row">
+
+                <textarea class="form-control" rows="3">Tell the world something...</textarea>
+
+              </div>
+
+            </div>
+
+
+            <div class="panel-footer">
+
+              <div class="row">
+
+                <div class="col-md-12">
+
+                  <button type="submit" class="btn btn-primary btn-sm pull-right">
+                    Post
+                  </button>
+
+                </div>
+
+              </div>
+
+            </div> <!-- end of footer -->
+
+
+          </form>
+
+        </div> <!-- end of panel -->
+
+<!-- end of Make Post section -->
+
+
+
+
+<!-- EXISTING POST -->
+        <%= render :partial => "static_pages/timeline/timeline_post",
+            :locals => {  :post_info => {
+                            author: "Harry Potter",
+                            date: "2014-06-01",
+                            body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+                            self_like: false,
+                            likes: ""
+                          },
+                          :comments => [] } %>
+
+<!--  end of Existing Post-->
+
+
+
+
+<!-- LIKED EXISTING POST -->
+        <%= render :partial => "static_pages/timeline/timeline_post",
+            :locals => {  :post_info => {
+                            author: "Harry Potter",
+                            date: "2014-05-21",
+                            body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+                            self_like: false,
+                            likes: "Hermione Granger likes this."
+                          },
+                          :comments => [] } %>
+
+<!--  end of Liked Existing Post-->
+
+
+
+
+      <%= render :partial => "static_pages/timeline/timeline_post",
+            :locals => {  :post_info => {
+                            author: "Harry Potter",
+                            date: "2014-05-21",
+                            body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+                            self_like: true,
+                            likes: "Hermione Granger and 3 others like this."
+                          },
+                          :comments => [
+                            { author: "Ron Weasley",
+                              date: "2014-05-21",
+                              body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                              self_like: false,
+                              likes: "3 other people like this." },
+                            { author: "Harry Potter",
+                              date: "2014-05-22",
+                              body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                              self_like: false,
+                              likes: "3 other people like this." }
+                            ]
+                          } %>
+
+
+
+      </div>
+<!-- end of RIGHT side -->
+
+    </div>
+  </section>
+
+
+
+
+</main> <!-- container -->
+

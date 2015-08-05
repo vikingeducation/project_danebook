@@ -1,0 +1,86 @@
+<div class="row">
+  <div class="col-xs-12">
+
+    <div class=" panel panel-default">
+
+
+      <%= render :partial => "static_pages/timeline/timeline_post_body",
+            :locals => {  :post_author => post_info[:author],
+                          :post_date => post_info[:date],
+                          :post_body => post_info[:body] } %>
+
+
+
+      <!-- Feedback section for likes and comments -->
+      <div class="panel-footer">
+
+        <%= render :partial => "static_pages/timeline/timeline_post_footer",
+              :locals => {  :post_self_like => post_info[:self_like],
+                            :post_likes => post_info[:likes] } %>
+
+
+        <% if comments.count > 0 %>
+
+          <!-- Comments media list -->
+          <div id="comments-wrapper" class="row">
+
+            <% comments.each do |comment_info| %>
+              <%= render :partial => "static_pages/timeline/timeline_post_comment",
+                :locals => {  :comment_author => comment_info[:author],
+                              :comment_date => comment_info[:date],
+                              :comment_body => comment_info[:body],
+                              :comment_self_like => comment_info[:self_like],
+                              :comment_likes => comment_info[:likes] } %>
+            <% end %>
+
+          </div> <!-- End of Comments media list -->
+
+
+          <!-- Post another comment (only if there are comments) -->
+          <div class="row">
+
+            <div class="col-xs-12">
+
+              <form id="comment-form">
+
+                <textarea class="form-control" rows="3">Write a comment...</textarea>
+
+                <!-- separate row for Cancel & Comment buttons -->
+                <div class="row center-block">
+                  <div class="col-xs-12">
+
+                    <div class="pull-left">
+                      <a href="#" alt="Cancel writing a comment">Cancel</a>
+                    </div>
+
+                    <div class="pull-right comment-button-wrapper">
+
+                      <button type="submit" class="btn btn-primary btn-sm">
+                        Comment
+                      </button>
+
+                    </div>
+
+                  </div>
+                </div> <!-- end of Cancel & Comment row -->
+
+              </form>
+
+            </div>
+
+          </div> <!-- End of Post another comment -->
+
+
+        <% end %>
+
+
+
+      </div> <!-- end of panel footer -->
+
+
+    </div> <!-- end of panel -->
+
+
+  </div>
+</div>
+  <!--  end of Post With Comments-->

@@ -1,0 +1,110 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+
+  <div class="container">
+
+
+    <% if current_page?('/') %>
+
+      <header class="navbar-header">
+
+        <%= link_to "Danebook",root_path, class: "navbar-brand brand-text brand-large" %>
+
+      </header>
+
+
+  <!-- sign-in form -->
+
+      <form class="sign-in-wrapper navbar-form navbar-right">
+
+        <div class="form-group">
+
+          <div class="row">
+
+            <label class="col-xs-5 brand-text" for="user-email">
+              Email
+            </label>
+
+            <label class="col-xs-5 brand-text" for="user-password">
+              Password
+            </label>
+
+          </div>
+
+
+          <div class="row">
+
+            <div class="col-xs-5">
+              <input type="email" class="form-control input-sm" id="user-email">
+            </div>
+
+            <div class="col-xs-5">
+              <input type="password" class="form-control input-sm" id="user-password">
+            </div>
+
+            <div class="col-xs-2">
+              <button type="submit" class="btn btn-primary input-sm custom-button">
+                Log In
+              </button>
+            </div>
+
+          </div>
+
+
+        </div> <!-- form-group -->
+
+      </form>
+
+
+
+      <% else %>
+
+        <!-- from Bootstrap template: enables nav collapsing -->
+        <!-- Brand and toggle get grouped for better mobile display   -->
+        <div class="navbar-header">
+
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+
+
+          <!-- brand image and title -->
+          <%= link_to timeline_path, class: "navbar-brand brand-text" do %>
+            <%= image_tag "danish_flag.gif", class: "img-circle", width: "30", height: "30", alt: "Danish flag logo" %>
+            Danebook
+          <% end %>
+
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+
+          <!-- search box -->
+          <form class="navbar-form navbar-left" role="search">
+            <div class="form-group">
+
+              <input type="search" class="form-control" placeholder="Search for Users">
+
+            </div>
+          </form>
+
+
+          <!-- user navigation -->
+          <div class="nav navbar-text navbar-right">
+
+            <%= link_to "Harry", about_path, class: "brand-text" %>
+
+          </div>
+
+        </div><!-- /.navbar-collapse -->
+
+    <% end %>
+
+
+
+  </div> <!-- container -->
+
+</nav>

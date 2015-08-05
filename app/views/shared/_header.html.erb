@@ -1,0 +1,58 @@
+<header>
+  <div class="row cover-photo-row">
+
+    <div class="col-xs-12 cover-box">
+
+      <div class="row spacer"></div>
+
+      <div class="row user-name">
+        <h1>Harry Potter</h1>
+      </div>
+
+    </div>
+
+  </div>  <!-- cover photo row -->
+
+
+
+
+<!-- row for user photo and page links -->
+  <div class="row page-links-row">
+
+
+    <!-- main links column -->
+    <div class="row">
+
+      <div class="col-md-12">
+
+        <ul class="nav nav-tabs">
+
+          <li class="text-bottom" role="presentation">
+            <img id="user-photo" src="assets/harry_potter_small.jpg" width="140" height="140" alt="User's personal photo">
+          </li>
+
+          <%= render :partial => "shared/nav_tab", :locals => { :page => "Timeline", :badge => nil } %>
+
+          <%= render :partial => "shared/nav_tab", :locals => { :page => "About", :badge => nil  } %>
+
+          <%= render :partial => "shared/nav_tab", :locals => { :page => "Photos", :badge => "123" } %>
+
+          <%= render :partial => "shared/nav_tab", :locals => { :page => "Friends", :badge => "542" } %>
+
+
+          <% unless current_page?("/about_edit") %>
+            <li class="text-center pull-right" role="presentation">
+              <%= link_to "Edit Profile", about_edit_path, alt: "Edit your user profile" %>
+            </li>
+          <% end %>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+
+  </div> <!-- page links row -->
+
+</header>

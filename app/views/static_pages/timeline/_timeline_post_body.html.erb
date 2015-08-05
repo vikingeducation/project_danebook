@@ -1,0 +1,49 @@
+<div class="panel-body">
+
+  <div class="row">
+
+    <div class="media">
+
+      <div class="col-md-12">
+
+
+        <!-- Media list image -->
+        <div class="media-left">
+
+          <a href="#">
+            <img id="user-photo" class="media-object" src="assets/harry_potter_small.jpg" height="50" width="50" alt="Post author's photo">
+            <img>
+          </a>
+
+        </div>  <!-- end of image section -->
+
+
+        <div class="media-body">
+
+
+          <!-- Post name and date -->
+          <div class="media-heading">
+
+            <%= link_to post_author, about_path %>
+
+            <br>
+
+            <time datetime=<%= post_date %> pubdate>
+              <small>Posted on <%= post_date %></small>
+            </time>
+
+          </div>
+
+
+          <!-- Post text -->
+          <p><%= post_body %></p>
+
+        </div> <!-- end of post body -->
+
+      </div>
+
+    </div> <!-- end of Media List -->
+
+  </div>
+
+</div> <!-- end of panel body -->

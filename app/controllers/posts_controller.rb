@@ -5,6 +5,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.where("user_id = ?", params[:user_id])
+    # fail
     @post = Post.new
     @profile = current_user.profile
   end

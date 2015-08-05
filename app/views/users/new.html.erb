@@ -33,120 +33,103 @@
   <!-- New User Sign Up -->
       <div class="col-md-5 sign-up-section">
 
-        <%= form_for @user, html: { class: 'sign-up-wrapper' } do |f| %>
+        <%= form_for @user, html: { class: 'sign-up-wrapper' } do |user_fields| %>
 
-          <h1>Sign Up</h1>
+          <%= user_fields.fields_for :profile do |profile_fields| %>
 
-          <!-- First & Last Name -->
-          <div class="row user-input-row">
-            <div class="col-md-6">
-              <!-- <input type="text" class="form-control" id="first-name" placeholder="First Name"> -->
-            </div>
-            <div class="col-md-6">
-              <!-- <input type="text" class="form-control" id="last-name" placeholder="Last Name"> -->
-            </div>
-          </div>
+            <h1>Sign Up</h1>
 
-          <!-- Email address -->
-          <div class="row user-input-row">
-            <div class="col-md-12">
-              <%= f.email_field :email, class: 'form-control', id: 'new-email', placeholder: 'Your Email' %>
-              <!-- <input type="email" class="form-control" id="new-email" placeholder="Your Email"> -->
-            </div>
-          </div>
-
-          <!-- Password -->
-          <div class="row user-input-row">
-            <div class="col-md-12">
-              <%= f.password_field :password, class: 'form-control', id: 'new-password', placeholder: 'Your New Password' %>
-              <!-- <input type="password" class="form-control" id="new-password" placeholder="Your New Password"> -->
-            </div>
-          </div>
-
-          <!-- Password confirmation -->
-          <div class="row user-input-row">
-            <div class="col-md-12">
-              <%= f.password_field :password_confirmation, class: 'form-control', id: 'confirm-password', placeholder: 'Confirm Your Password' %>
-              <!-- <input type="password" class="form-control" id="confirm-password" placeholder="Confirm Your Password"> -->
-            </div>
-          </div>
-
-
-          <!-- Birthday header-->
-          <div class="row">
-            <div class="col-md-12">
-              <h4>Birthday</h4>
-            </div>
-          </div>
-
-          <!-- Birthday input-->
-          <div class="row user-input-row">
-            <div class="col-xs-3">
-              <!-- <select class="form-control">
-                <option>Month</option>
-
-                <%# @months.each do |month| %>
-                  <option><%# month %></option>
-                <%# end %>
-
-              </select> -->
+            <!-- First & Last Name -->
+            <div class="row user-input-row">
+              <div class="col-md-6">
+                <%= profile_fields.text_field :first_name, class: 'form-control', placeholder: 'First Name' %>
+                <!-- <input type="text" class="form-control" id="first-name" placeholder="First Name"> -->
+              </div>
+              <div class="col-md-6">
+                <%= profile_fields.text_field :last_name, class: 'form-control', placeholder: 'Last Name' %>
+                <!-- <input type="text" class="form-control" id="last-name" placeholder="Last Name"> -->
+              </div>
             </div>
 
-            <div class="col-xs-3">
-              <!-- <select class="form-control">
-                <option>Day</option>
-
-                <%# 1.upto(31) do |day| %>
-                  <option><%# day %></option>
-                <%# end %>
-
-              </select> -->
+            <!-- Email address -->
+            <div class="row user-input-row">
+              <div class="col-md-12">
+                <%= user_fields.email_field :email, class: 'form-control', id: 'new-email', placeholder: 'Your Email' %>
+              </div>
             </div>
 
-            <div class="col-xs-3">
-              <!-- <select class="form-control">
-                <option>Year</option>
-
-                <%# 1900.upto(2015) do |year| %>
-                  <option><%# year %></option>
-                <%# end %>
-
-              </select> -->
+            <!-- Password -->
+            <div class="row user-input-row">
+              <div class="col-md-12">
+                <%= user_fields.password_field :password, class: 'form-control', id: 'new-password', placeholder: 'Your New Password' %>
+              </div>
             </div>
 
-          </div> <!-- End of birthday rows -->
+            <!-- Password confirmation -->
+            <div class="row user-input-row">
+              <div class="col-md-12">
+                <%= user_fields.password_field :password_confirmation, class: 'form-control', id: 'confirm-password', placeholder: 'Confirm Your Password' %>
+              </div>
+            </div>
+
+
+            <!-- Birthday header-->
+            <div class="row">
+              <div class="col-md-12">
+                <h4>Birthday</h4>
+              </div>
+            </div>
+
+            <!-- Birthday input-->
+            <div class="row user-input-row">
+              <div class="col-xs-12">
+                <%= profile_fields.date_select(:birthdate,
+                                              {
+                                                prompt: true,
+                                                order: [:month, :day, :year],
+                                                start_year: 1900,
+                                                end_year: Date.current.year
+                                              },
+                                              {
+                                                class: 'form-control'
+                                              }
+                                              ) %>
+              </div>
+
+            </div> <!-- End of birthday rows -->
 
 
 
 
-          <!-- Gender radio buttons -->
-          <div class="row user-input-row">
-            <div class="col-md-12">
+            <!-- Gender radio buttons -->
+            <div class="row user-input-row">
+              <div class="col-md-12">
 
-              <label class="radio-inline">
-                <!-- <input type="radio" name="gender" id="gender_female" value="female">
-                Female -->
-              </label>
+                <label class="radio-inline">
+                  <%= profile_fields.radio_button(:gender, 'Female') %>
+                  Female
+                </label>
 
-              <label class="radio-inline">
-                <!-- <input type="radio" name="gender" id="gender_male" value="male">
-                Male -->
-              </label>
+                <label class="radio-inline">
+                  <%= profile_fields.radio_button(:gender, 'Male') %>
+                  Male
+                </label>
 
-            </div> <!-- column for radio buttons-->
+              </div> <!-- column for radio buttons-->
 
-          </div> <!-- radio button row -->
-
-
-          <!-- Submit button -->
-          <div class="row submit-wrapper">
-            <%= f.submit 'Sign Up!', class: 'col-md-12 btn btn-success btn-lg custom-button' %>
-            <!-- <button type="submit" class="col-md-12 btn btn-success btn-lg custom-button">
-              Sign Up!
-            </button> -->
-          </div>
+            </div> <!-- radio button row -->
 
 
+            <!-- Submit button -->
+            <div class="row submit-wrapper">
+              <%= user_fields.submit 'Sign Up!', class: 'col-md-12 btn btn-success btn-lg custom-button' %>
+              <!-- <button type="submit" class="col-md-12 btn btn-success btn-lg custom-button">
+                Sign Up!
+              </button> -->
+            </div>
+
+
+          <% end %>
 
         <% end %>
 

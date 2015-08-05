@@ -25,7 +25,8 @@ User.all.each do |user|
                  hometown: Faker::Address.street_address + ", " + Faker::Address.state,
                  location: Faker::Address.street_address + ", " + Faker::Address.state,
                  words: Faker::Lorem.paragraph,
-                 about: Faker::Lorem.paragraph)
+                 about: Faker::Lorem.paragraph,
+                 telephone: Faker::PhoneNumber.phone_number)
 
 end
 

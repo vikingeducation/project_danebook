@@ -6,7 +6,7 @@
 
         <div class = "col-sm-3 profile-name">
 
-          <h1><%= link_to @profile, user_profile_path(:id => @profile.id, :user_id => @profile.user.id), :class => "profile-name"%></h1>
+          <h1><%= link_to @profile, user_profile_path(@profile.user, @profile), :class => "profile-name"%></h1>
 
         </div>
 
@@ -28,7 +28,7 @@
           <li role="presentation" <% if active == 'Friends' %> class="active"<% end %>><%= link_to "Friends", friends_path %></li>
 
         </ul>
-        <% if current_user=(@profile.user) %>
+        <% if current_user.id==(@profile.user_id) %>
         <section class="col-md-13 pull-right edit-profile navbar-text">
        <%= link_to "Edit Profile", edit_user_profile_path(:id => @profile.id, :user_id => @profile.user.id) %>
         

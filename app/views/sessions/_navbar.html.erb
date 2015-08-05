@@ -33,11 +33,11 @@
 
           <div class="navbar-text navbar-right navbar-user">
 
-            <a href="about.html">
+         
 
-              <strong><%= link_to"#{@profile.user.first_name.capitalize} #{@profile.user.last_name.capitalize}", user_profile_path(:id => @profile.id, :user_id => @profile.user.id) %></strong>
+              <strong><%= link_to "#{current_user.first_name.capitalize} #{current_user.last_name.capitalize}", user_profile_path(current_user.id) %></strong>
 
-            </a>
+       
 
           </div>
 

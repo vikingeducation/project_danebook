@@ -29,7 +29,7 @@
   <% end %>
 </div>
 
-<% if current_user=(nil) %>
+<% if current_user.nil? %>
   <%= render partial: "sessions/navbar_sign_up" %>
 <% else %>
   <%= render partial: "sessions/navbar" %>

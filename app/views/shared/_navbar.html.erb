@@ -19,15 +19,15 @@
 					<div class="col-md-6">
 						<input type="text" class="form-control danebook-search" placeholder="Search for Users">
 					</div>
-
-					<div class="col-md-1 danebook-navbar-text">
-						<p><%= link_to current_user.full_name, user_posts_path(current_user)  %></p>
-					</div>
-					<% if signed_in_user? %>
-						<div class="col-md-1 danebook-navbar-text">
-							<p><%= link_to "logout", session_path(current_user), method: :delete %></p>
-						</div>
+					<ul class="nav navbar-nav navbar-right">
+						<li><%= link_to current_user.full_name, user_posts_path(current_user)  %></li>
+						<% if signed_in_user? %>
+							<li><%= link_to "logout", session_path(current_user), method: :delete %></li>
 					<% end %>
+				</ul>
+
+
+					
 				</div>
 			</div>
 		</div>

@@ -1,0 +1,30 @@
+<% if post.likes.include_user?(current_user) %>
+  <%= link_to "Like", likes_path(post_id:post.id), method: :post%>
+  <% else %>
+  <%= link_to "Unlike", like_path(post.likes.where(:user_id=>current_user.id), post_id:post.id), method: :delete %>
+  <% end %>
+
+
+  <% if post.likes.length > 0 %>
+            <div class="row">
+              <div class="col-xs-12">
+                <% if post.likes.length < 4 %>
+                  <% post.likes.each do |like| %>
+                    <%= like.user.full_name %> and
+                  <% end %>
+                  like this.
+                <% else %>
+                  <%= post.likes.count %> others like this.
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+
+
+
+                  <!-- <div class="col-md-1 danebook-navbar-text">
+            <p><%= link_to current_user.full_name, user_posts_path(current_user)  %></p>
+          </div> -->
+          <div class="col-md-1 danebook-navbar-text">
+              <!-- <p><%= link_to "logout", session_path(current_user), method: :delete %></p> -->

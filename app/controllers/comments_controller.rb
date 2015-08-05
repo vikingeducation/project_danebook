@@ -15,7 +15,7 @@ class CommentsController < ApplicationController
     else
       flash[:error] = "Failed to create comment"
     end
-    redirect_to user_posts_path(params[:comment][:user_id])
+    redirect_to user_posts_path(params[:comment][:comment_reciever])
   
   end
 

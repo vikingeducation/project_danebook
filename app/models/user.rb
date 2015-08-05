@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
   has_secure_password
   before_create :generate_token
 
+  after_create :profile_create
+
   # has_many :posts, :through => :user_postings
   # has_many :user_postings
   has_many :posts
@@ -28,6 +30,13 @@ class User < ActiveRecord::Base
   def full_name
     self.first_name + " " + self.last_name
   end
+
+  private
+
+   def profile_create
+    self.profile = Profile.new
+   end
+
 
 
 end

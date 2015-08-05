@@ -3,6 +3,7 @@
   <!-- hidden values safe? cool?-->
   <!-- @comment is polymorphic -->
   <%= f.hidden_field :user_id, value: current_user.id %>
+  <%= f.hidden_field :comment_reciever, value: post.user_id %>
   <%= f.hidden_field :commentable_id, value: post.id %>
   <%= f.hidden_field :commentable_type, value: post.class %>
   <%= f.submit "Comment", :class=>"btn btn-primary" %>

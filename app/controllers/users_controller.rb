@@ -57,6 +57,7 @@ class UsersController < ApplicationController
 
   private
 
+
     def params_hash
       params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :dob, :gender, :college_name, :hometown, :current_home, :telephone, :words_live_by, :about_me)
     end

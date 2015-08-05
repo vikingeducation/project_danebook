@@ -5,12 +5,14 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if @user.save
+    if @user.save 
       @user.build_profile.save
-      flash[:success] = "A thing a happened"
-      redirect_to timeline_path
+       #needs call back to save together.
+      flash[:success] = "Thank you for signing up on Danebook!"
+      sign_in
+      redirect_to edit_user_profile
     else
-      flash[:error] = "A thing didn't happend"
+      flash[:error] = "Aw, there was an error, try again!"
       render :new
     end
   end

@@ -15,7 +15,7 @@
       <%= link_to "Timeline", posts_path(user_id: user.id), class: "btn btn-default btn-block" %>
     </div>
     <div class="col-md-1">
-      <%= link_to "About", profile_path(user.profile.id), class: "btn btn-default btn-block" %>
+      <%= link_to "About", profile_path(user.profile.id, user_id: user.id), class: "btn btn-default btn-block" %>
     </div>
     <div class="col-md-1">
       <%= link_to "Photos", "profile_path(user.profile.id)", class: "btn btn-default btn-block" %>
@@ -25,7 +25,7 @@
     </div>
     <% if current_user == user %>
       <div class="col-md-1 pull-right">
-        <%= link_to "Edit Profile", edit_profile_path(user.profile.id) %>
+        <%= link_to "Edit Profile", edit_profile_path(user.profile.id, user_id: user.id) %>
       </div>
     <% end %>
   </div>

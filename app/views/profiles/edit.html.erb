@@ -52,6 +52,7 @@
   </div>
     <div class="row">
       <div class="col-xs-12">
+        <%= hidden_field_tag :user_id, @profile.user.id %>
         <%= profile_fields.submit "Save Changes", class: "btn btn-lg btn-primary full-width center-block" %>
       </div>
     </div>

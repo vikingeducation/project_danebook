@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
 
+  skip_before_action :require_current_user, only: [:index]
+
   def index
     @user = User.includes(:profile).includes(:posts).find(params[:user_id])
     @posts = @user.posts.order(created_at: :desc)
@@ -13,7 +15,7 @@ class PostsController < ApplicationController
     else
       flash[:error] = "Cannot post this!"
     end
-    redirect_to posts_path(user_id: @post.user_id)
+    redirect_to posts_path(user_id: current_user.id)
 
   end
 
@@ -24,7 +26,7 @@ class PostsController < ApplicationController
     else
       flash[:error] = "Indestructible"
     end
-    redirect_to posts_path(user_id: @post.user_id)
+    redirect_to posts_path(user_id: current_user.id)
   end
 
   private

@@ -2,6 +2,9 @@ class SessionsController < ApplicationController
 
   layout 'home_layout.html.erb'
 
+  skip_before_action :require_signin, only: [:new, :create]
+  skip_before_action :require_current_user, only: [:new, :create]
+
   def new
     @user = User.new
     render "home"
@@ -16,7 +19,7 @@ class SessionsController < ApplicationController
         sign_in(@user)
       end
       flash[:success] = "Thanks for signing in!"
-      redirect_to timeline_path
+      redirect_to posts_path(user_id: current_user.id)
     else
       flash.now[:error] = "Error! We couldn't sign you in."
       render :new
@@ -29,7 +32,7 @@ class SessionsController < ApplicationController
       redirect_to signin_path
     else
       flash[:error] = "Angry robots have prevented you from signing out.  You're stuck here forever."
-      redirect_to timeline_path
+      redirect_to posts_path(user_id: current_user.id)
     end
   end
   

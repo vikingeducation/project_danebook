@@ -1,6 +1,7 @@
 class ProfilesController < ApplicationController
 
   before_action :find_profile
+  skip_before_action :require_current_user, only: [:show]
 
   def edit
   end

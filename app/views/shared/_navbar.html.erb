@@ -28,7 +28,7 @@
               <%= link_to "#{current_user.profile.first_name}", "#" %>
             </div>
             <div class="col-sm-6">
-              <%= button_to "Sign Out", signout_path, method: :delete, class: "btn btn-primary" %>
+              <%= button_to "Sign Out", signout_path(user_id: current_user.id), method: :delete, class: "btn btn-primary" %>
             </div>
           </div>
         <% end %>

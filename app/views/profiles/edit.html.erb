@@ -1,0 +1,150 @@
+
+<main>
+
+  <!-- Profile Header -->
+
+  <%= render partial: "profiles/menu", :locals => { :active => 'About' }  %>
+
+  <!-- /profile header -->
+
+
+  <!-- Main Content -->
+
+  <div class="container">
+
+    <div class="row test">
+
+      <div class="col-xs-6 col-xs-offset-3">
+
+        <h3>Edit Your Profile</h3>
+
+      </div>
+
+    </div>
+  <%= form_for [@profile.user, @profile] do |f| %> 
+    <div class="row main-content">
+
+      <div class="col-md-6">
+
+        <div class="row">
+
+          <div class="col-xs-12">
+
+            <h3>Basic Information</h3>
+
+          </div>
+
+          <div class="col-xs-6">
+            <strong>Birthday:</strong>
+          </div>
+
+          <div class="col-xs-6">
+            <%= @profile.user.birthday.strftime("%B %d, %Y") %>
+          </div>
+
+          <div class="col-xs-6">
+            <strong>College:</strong>
+          </div>
+
+          <div class="col-xs-6">
+            <%= f.text_field :college, :placeholder => "Your college", :class => "form-control" %>
+          </div>
+
+          <div class="col-xs-6">
+            <strong>Hometown:</strong>
+          </div>
+
+          <div class="col-xs-6">
+            <%= f.text_field :hometown, 
+                 :placeholder => "City", :class => "form-control"%> 
+               <%= f.text_field :homecountry,
+                 :placeholder => "Country", :class => "form-control" %>
+          </div>
+
+          <div class="col-xs-6">
+
+            <strong>Currently Lives:</strong>
+
+          </div>
+
+          <div class="col-xs-6 ">
+            <%= f.text_field :livesintown, 
+                 :placeholder => "City", :class => "form-control" %> 
+               <%= f.text_field :livesincountry,
+                 :placeholder => "Country", :class => "form-control" %>
+          
+
+          </div>
+
+          <div class="col-xs-12">
+
+            <h3>Contact Information</h3>
+
+          </div>
+
+          <div class="col-xs-6">
+
+            <strong>Email:</strong>
+
+          </div>
+
+          <div class="col-xs-6 ">
+            <%= f.text_field :email, :value => @profile.user.email, :class => "form-control" %>
+          </div>
+
+          <div class="col-xs-6">
+            <strong>Telephone:</strong>
+          </div>
+
+          <div class="col-xs-6 ">
+            <%= f.text_field :phone, :class => "form-control" %>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="col-md-6">
+
+        <div class="row row-last">
+
+          <div class="col-xs-12">
+
+            <h3>Words to Live By</h3>
+
+          </div>
+
+          <div class="col-xs-12 ">
+
+            <%= f.text_area :wordsby, :class => "form-control"%>
+
+          </div>
+
+          <div class="col-xs-12">
+
+            <h3>About Me</h3>
+
+          </div>
+
+          <div class="col-xs-12">
+            <%= f.text_area :wordsabout, :class => "form-control" %>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="col-xs-8 col-xs-offset-2 btn-save-changes">
+          <%= f.submit "Save Changes", class: 'btn btn-lg btn-primary' %>
+          <% end %>
+
+      </div>
+
+      <div class="col-xs-2">
+      </div>
+
+    </div>
+
+  </div>
+
+</main>

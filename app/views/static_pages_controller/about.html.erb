@@ -1,0 +1,164 @@
+<%= render partial: "static_pages_controller/navbar" %>
+<main>
+
+  <!-- Profile Header -->
+
+  <%= render partial: "static_pages_controller/menu", :locals => { :active => 'About' } %>
+
+
+  <!-- /profile header -->
+
+
+  <!-- Main Content -->
+
+  <div class="container">
+
+    <div class="row test">
+
+      <div class="col-xs-2 col-xs-offset-5">
+
+        <h3>About</h3>
+
+      </div>
+
+      <div class="col-xs-5 edit-btn">
+
+      <%= link_to "Edit Your Profile", about_edit_path, class: "btn btn-primary pull-right" %>
+
+      </div>
+
+    </div>
+
+    <div class="row main-content">
+
+      <div class="col-md-6">
+
+        <div class="row">
+
+          <div class="col-xs-12">
+
+            <h3>Basic Information</h3>
+
+          </div>
+
+          <div class="col-xs-6">
+
+            <strong>Birthday:</strong>
+
+          </div>
+
+          <div class="col-xs-6">
+
+            July 31st, 1980
+
+          </div>
+
+          <div class="col-xs-6">
+
+            <strong>College:</strong>
+
+          </div>
+
+          <div class="col-xs-6">
+
+            Hogwarts College
+
+          </div>
+
+          <div class="col-xs-6">
+
+            <strong>Hometown:</strong>
+
+          </div>
+
+          <div class="col-xs-6">
+
+            Godrick's Hollow, England
+
+          </div>
+
+          <div class="col-xs-6">
+
+            <strong>Currently Lives:</strong>
+
+          </div>
+
+          <div class="col-xs-6">
+
+            Godrick's Hollow, England
+
+          </div>
+
+          <div class="col-xs-12">
+
+            <h3>Contact Information</h3>
+
+          </div>
+
+          <div class="col-xs-6">
+
+            <strong>Email:</strong>
+
+          </div>
+
+          <div class="col-xs-6">
+
+            harry_potter@hogwarts.edu
+
+          </div>
+
+          <div class="col-xs-6">
+
+            <strong>Telephone:</strong>
+
+          </div>
+
+          <div class="col-xs-6">
+
+            555-123-4567
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="col-md-6">
+
+        <div class="row">
+
+          <div class="col-xs-12">
+
+            <h3>Words to Live By</h3>
+
+          </div>
+
+          <div class="col-xs-12">
+
+            <p>Lorem ipsum dolor sit amet, ea pro dolorum consequat. Mei magna referrentur complectitur ne, falli eripuit ullamcorper cum cu. In sea nostrum explicari disputationi, ut nam dolorem delicatissimi, et pro bonorum lucilius tractatos. Eos putant perpetua intellegam cu, facer evertitur per eu.</p>
+
+          </div>
+
+          <div class="col-xs-12">
+
+            <h3>About Me</h3>
+
+          </div>
+
+          <div class="col-xs-12">
+
+            <p>Lorem ipsum dolor sit amet, ea pro dolorum consequat. Mei magna referrentur complectitur ne, falli eripuit ullamcorper cum cu. In sea nostrum explicari disputationi, ut nam dolorem delicatissimi, et pro bonorum lucilius tractatos. Eos putant perpetua intellegam cu, facer evertitur per eu.In sea nostrum explicari disputationi, ut nam dolorem delicatissimi, et pro bonorum lucilius tractatos. Eos putant perpetua intellegam cu, facer evertitur per eu.</p>
+
+          </div>
+
+        </div>
+
+        <hr>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</main>

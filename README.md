@@ -1,4 +1,4 @@
-danebook
-========
+Danebook User Authentication
 
-This is the Real Dane Deal.
+Olga (https://github.com/ayva/) 
+

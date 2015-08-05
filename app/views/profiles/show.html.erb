@@ -1,0 +1,134 @@
+
+<main>
+
+  <!-- Profile Header -->
+
+  <%= render partial: "profiles/menu", :locals => { :active => 'About' , :profile => @profile}  %>
+
+  <!-- /profile header -->
+
+
+  <!-- Main Content -->
+
+  <div class="container">
+
+    <div class="row test">
+
+      <div class="col-xs-6 col-xs-offset-3">
+
+        <h3>About</h3>
+
+      </div>
+
+    </div>
+  
+    <div class="row main-content">
+
+      <div class="col-md-6">
+
+        <div class="row">
+
+          <div class="col-xs-12">
+
+            <h3>Basic Information</h3>
+
+          </div>
+
+          <div class="col-xs-6">
+            <strong>Birthday:</strong>
+          </div>
+
+          <div class="col-xs-6">
+            <%= @profile.user.birthday.strftime("%B %d, %Y") %>
+          </div>
+
+          <div class="col-xs-6">
+            <strong>College:</strong>
+          </div>
+
+          <div class="col-xs-6">
+            <%= @profile.college.nil? ? "Not specified" : @profile.college %>
+        
+          </div>
+          <br>
+          <div class="col-xs-6">
+            <strong>Hometown:</strong>
+          </div>
+
+          <div class="col-xs-6 ">
+            <%= "#{@profile.hometown}, #{@profile.homecountry}" %>
+          </div>
+
+          <div class="col-xs-6">
+
+            <strong>Currently Lives:</strong>
+
+          </div>
+
+          <div class="col-xs-6 ">
+            <%= "#{@profile.livesintown}, #{@profile.livesincountry}" %>
+          </div>
+
+          <div class="col-xs-12">
+
+            <h3>Contact Information</h3>
+
+          </div>
+
+          <div class="col-xs-6">
+
+            <strong>Email:</strong>
+
+          </div>
+
+          <div class="col-xs-6 ">
+            <%= @profile.user.email %>
+          </div>
+
+          <div class="col-xs-6">
+            <strong>Telephone:</strong>
+          </div>
+
+          <div class="col-xs-6 ">
+            <%= @profile.phone %>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="col-md-6">
+
+        <div class="row row-last">
+
+          <div class="col-xs-12">
+
+            <h3>Words to Live By</h3>
+
+          </div>
+
+          <div class="col-xs-12 ">
+            <%= @profile.wordsby %>
+          </div>
+
+          <div class="col-xs-12">
+
+            <h3>About Me</h3>
+
+          </div>
+
+          <div class="col-xs-12 ">
+            <%= @profile.wordsabout %>
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+    </div>
+
+  </div>
+
+</main>

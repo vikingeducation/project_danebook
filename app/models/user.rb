@@ -27,6 +27,10 @@ class User < ActiveRecord::Base
   has_many :friendings, dependent: :destroy
   has_many :friends, through: :friendings
 
+  def self.search(term)
+    User.where("first_name ILIKE ? OR last_name ILIKE ?", '%' + term.to_s + '%', '%' + term.to_s + '%')
+  end
+
   def full_name
     self.first_name + " " + self.last_name
   end

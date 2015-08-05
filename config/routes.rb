@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get '/photos' => "staticpages#photos"
   get '/about_edit' => "staticpages#about_edit"
 
-  resources :users, except: [:index] do
+  resources :users do
     resources :posts, only: [:index, :create, :destroy]
     resources :friends, only: [:index]
   end

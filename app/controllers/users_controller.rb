@@ -4,6 +4,10 @@ class UsersController < ApplicationController
     redirect_to current_user if current_user
   end
 
+  def index
+    @users = User.search(params[:name])
+  end
+
   def create
     @user = User.new(params_hash)
 

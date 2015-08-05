@@ -16,7 +16,11 @@
 				<div id="navbar"  class="navbar-collapse collapse">
 					<% if current_user %>
 					<div class="col-md-6">
-						<input type="text" class="form-control danebook-search" placeholder="Search for Users">
+					<%= form_tag users_path, method: "get" do %>
+					    <%= text_field_tag :name, '', class: "form-control danebook-search", placeholder: "Search for Users" %>
+					    <%= submit_tag :name, type: 'hidden' %>
+					<% end %>
+
 					</div>
 					<div class="dropdown pull-right ">
 						<button class="danebook-navbar-text dropdown-toggle button" type="button" id="dropdownMenu1" data-toggle="dropdown">

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150805003644) do
+ActiveRecord::Schema.define(version: 20150805192110) do
 
   create_table "birthdates", force: :cascade do |t|
     t.integer  "month"
@@ -21,16 +21,27 @@ ActiveRecord::Schema.define(version: 20150805003644) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.integer  "user_id",          null: false
+    t.integer  "commentable_id",   null: false
+    t.string   "commentable_type", null: false
+    t.text     "body",             null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "comments", ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id"
+
   create_table "likes", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "likings_id"
-    t.string   "likings_type"
+    t.integer  "user_id",      null: false
+    t.integer  "likings_id",   null: false
+    t.string   "likings_type", null: false
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
 
   add_index "likes", ["created_at"], name: "index_likes_on_created_at"
-  add_index "likes", ["likings_id", "likings_type"], name: "index_likes_on_likings_id_and_likings_type"
+  add_index "likes", ["likings_id", "likings_type"], name: "index_likes_on_likings_id_and_likings_type", unique: true
 
   create_table "posts", force: :cascade do |t|
     t.integer  "user_id"

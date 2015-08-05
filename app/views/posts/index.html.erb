@@ -151,7 +151,7 @@
           <% end %>
 
 
-            <%= render @posts %>
+            <%= render @posts, locals: {new_comment: @new_comment} %>
 
         </div>
       </div>

@@ -19,14 +19,17 @@
   <div class = "row">
     <footer class="col-md-12 like-section">
       <div class = "row">
-        <%= like_display(post.likes).html_safe %>
+        <%= like_display(post.likes).html_safe if post.likes.any? %>
 
-        <%= render partial: "shared/like_unlike_links", locals: {object: post} %>
+        <%= like_or_unlike_link(post) %>
 
-        <a class="col-xs-2" href="#">Comment</a>
         <% if current_user.id == post.user_id %>
           <%= link_to "Delete", user_post_path(current_user, post), method: :delete, class: "col-xs-1 col-xs-offset-6", data: { confirm: "Are you sure?" } %>
         <% end %>
+
+        <a class="col-xs-2" href="#">Comment</a>
+        <%= render partial: "shared/comment_form", locals: {parent: post} %>
+
       </div>
     </footer>
   </div>

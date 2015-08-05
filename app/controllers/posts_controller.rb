@@ -8,11 +8,12 @@ class PostsController < ApplicationController
     # fail
     @post = Post.new
     @profile = current_user.profile
+    @new_comment = Comment.new
   end
 
   def create
     @post = Post.new(params_list)
-    @post.user_id = params[:user_id]
+    @post.user_id = current_user.id
     if @post.save
       # fail
       redirect_to user_posts_path(current_user)

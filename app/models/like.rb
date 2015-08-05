@@ -3,7 +3,8 @@ class Like < ActiveRecord::Base
   belongs_to :user
   validates :user_id, uniqueness: { scope: [:likeable_id, :likeable_type] }
 
-  def profile
-    self.likeable.profile_id
+  def timeline
+    self.likeable.profile
   end
+
 end

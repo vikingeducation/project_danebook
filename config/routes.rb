@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :posts, only: [:index, :create, :destroy] do
     resources :likes, only: [:create]
   end
+  resources :likes, only: [:destroy]
   resources :users
 
   post 'login' => 'sessions#create'

@@ -3,7 +3,7 @@ module ProfilesHelper
     count = post.likes.count
 
     if count == 0
-      str = link_to "Like", post_likes_path(post), method: :post
+      str = link_to "Be the first to like this", post_likes_path(post), method: :post
     elsif post.already_liked_by?(current_user) && count == 1
       str = "You like this"
     elsif post.already_liked_by?(current_user) && count == 2
@@ -22,5 +22,14 @@ module ProfilesHelper
     else
       " (#{post.likes.count} others like this)"
     end
+  end
+
+  def like_str(post)
+    if post.already_liked_by?(current_user)
+      str = link_to("Unlike", like_path(like), method: :delete)
+    else
+      str = ''
+    end
+    str + likes_counter(post)
   end
 end

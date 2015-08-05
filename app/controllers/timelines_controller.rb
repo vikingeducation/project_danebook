@@ -7,6 +7,7 @@ class TimelinesController < ApplicationController
   def show
     @post = Post.new
     @comment = Comment.new
+    @posts = current_user.posts.includes(:likes, :comments => [:likes, :author] )
   end
 
 end

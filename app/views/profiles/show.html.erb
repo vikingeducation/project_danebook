@@ -9,7 +9,7 @@
           <h2>About</h2>
         </div>
         <div class="col-xs-2">
-          <%= link_to @user.profile ? edit_profile_path : new_profile_path do %>
+          <%= link_to current_user.profile ? edit_profile_path : new_profile_path do %>
             <button class= "btn btn-active", id= "edit-profile">
               Edit Your Profile
             </button>
@@ -28,7 +28,7 @@
             <b>Birthday:</b>
           </div>
           <div class = "col-xs-8">
-            <%= @user.birthday.to_formatted_s(:long) %>
+            <%= current_user.birthday.to_formatted_s(:long) %>
           </div>
         </div>
 
@@ -37,7 +37,7 @@
             <b>College:</b>
           </div>
           <div class = "col-xs-8">
-            <%= @user.profile ? @user.profile.college : "None" %>
+            <%= current_user.profile ? current_user.profile.college : "None" %>
           </div>
         </div>
 
@@ -46,7 +46,7 @@
             <b>Hometown:</b>
           </div>
           <div class = "col-xs-8">
-            <%= @user.profile ? @user.profile.hometown : "None" %>
+            <%= current_user.profile ? current_user.profile.hometown : "None" %>
           </div>
         </div>
 
@@ -55,7 +55,7 @@
             <b>Currently Lives:</b>
           </div>
           <div class = "col-xs-8">
-            <%= @user.profile ? @user.profile.current_home : "None" %>
+            <%= current_user.profile ? current_user.profile.current_home : "None" %>
           </div>
         </div>
 
@@ -67,7 +67,7 @@
             <b>Email:</b>
           </div>
           <div class = "col-xs-8">
-            <%= @user.email %>
+            <%= current_user.email %>
           </div>
         </div>
 
@@ -76,7 +76,7 @@
             <b>Telephone:</b>
           </div>
           <div class = "col-xs-8">
-            <%= @user.profile ? @user.profile.mobile : "None" %>
+            <%= current_user.profile ? current_user.profile.mobile : "None" %>
           </div>
         </div>
 
@@ -86,12 +86,12 @@
 
         <h3>Words to live by</h3>
         <p>
-          <%= @user.profile ? @user.profile.summary : "None" %>
+          <%= current_user.profile ? current_user.profile.summary : "None" %>
         </p>
 
         <h3>About me</h3>
         <p>
-          <%= @user.profile ? @user.profile.about : "" %>
+          <%= current_user.profile ? current_user.profile.about : "" %>
         </p>
       </div>
     </div>

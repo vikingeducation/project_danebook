@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
   has_many :posts, -> { order('created_at DESC') },
             dependent: :destroy
 
-  has_many :comments, dependent: :destroy
+  has_many :comments, dependent: :destroy, foreign_key: :author_id
 
   has_many :likes, dependent: :destroy
 

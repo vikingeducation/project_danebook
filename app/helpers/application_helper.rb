@@ -17,5 +17,36 @@ module ApplicationHelper
     nil
   end
 
+  def likes_count_message(commentable_type)
+    str = ""
+    likes = commentable_type.likes
+    like_count = likes.size
+    if like_count > 3
+      likes[0..2].each do |like|
+        str += link_to like.user.name, user_path(like.user.id) + ", "
+      end
+      str += ", and #{like_count-3}" + like_count-3 == 1 ? "other likes" : " others like" + " this"
+    elsif like_count <= 0
+      str = "Be the first one to like this!"
+    else
+      likes.each_with_index do |like, index|
+        str += link_to like.user.name, user_path(like.user.id)
+        str += ", " unless index >= like_count - 2
+        str += ", and" if index == like_count - 2
+      end
+      str += like_count == 1 ? " likes this" : " like this"
+    end
+    str.html_safe
+  end
+
+  def like_or_unlike_button(likeable_type)
+    if likeable_type.liked?
+       str = link_to "Unlike", like_path(likeable_type: likeable_type.class.to_s, likeable_id: likeable_type.id), method: :delete, class: "col-xs-2"
+    else
+       str = link_to "Like", like_path(likeable_type: likeable_type.class.to_s, likeable_id: likeable_type.id), method: :post, class: "col-xs-2"
+    end
+    str
+  end
+
 
 end

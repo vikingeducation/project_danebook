@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
 
   def create
-    @post = Post.new(post_params)
+    @post = current_user.posts.build(post_params)
     if @post.save
       flash[:success] = "Post successfully submitted"
     else
@@ -21,7 +21,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:body, :user_id)
+    params.require(:post).permit(:body)
   end
 
 end

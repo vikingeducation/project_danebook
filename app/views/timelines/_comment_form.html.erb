@@ -3,7 +3,6 @@
   <div class="col-md-12">
     <div class="form-group">
       <%= comment_fields.text_area :body, class: "form-control", rows: "4", placeholder: "Write a comment..." %>
-      <%= comment_fields.hidden_field(:author_id, value: current_user.id) %>
       <%= comment_fields.hidden_field(:commentable_type, value: post.class.to_s) %>
       <%= comment_fields.hidden_field(:commentable_id, value: post.id) %>
     </div>

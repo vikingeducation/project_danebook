@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
 
   def create
-    @comment = Comment.new(comment_params)
+    @comment = current_user.comments.build(comment_params)
     if @comment.save
       flash[:success] = "Comment successfully posted"
     else
@@ -23,7 +23,7 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:body, :author_id, :commentable_type, :commentable_id)
+    params.require(:comment).permit(:body, :commentable_type, :commentable_id)
   end
 
   def extract_commentable

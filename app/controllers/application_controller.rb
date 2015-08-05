@@ -45,4 +45,12 @@ class ApplicationController < ActionController::Base
       redirect_to root_path
     end
   end
+
+  def store_referer
+    session[:referer] = URI(request.referer).path
+  end
+
+  def referer
+    session[:referer].delete
+  end
 end

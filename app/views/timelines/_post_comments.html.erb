@@ -11,19 +11,24 @@
           <%= link_to comment.author.name, user_path(comment.author) %> <span>said on <%= comment.created_at.to_formatted_s(:long) %></span>
         </p>
       </div>
+      
       <div class = "row">
         <p class="col-md-12">
           <%= comment.body %>
         </p>
       </div>
+
       <div class = "row">
-        <%= like_or_unlike_button(comment, @user) %>
-        <span class="col-xs-8"><%= likes_count_message(comment) %></span>
-          <%= link_to "Delete",
-              post_comment_path(post.id, comment.id),
-              method: :delete,
-              class: "col-xs-2",
-              data: {confirm: "Are you sure you want to delete this comment?"} if comment.author == current_user %>
+        <%= like_or_unlike_button(comment) %>
+        <span class="col-xs-8">
+          <%= comment_likes_message(comment) %>
+        </span>
+
+        <%= link_to "Delete",
+            post_comment_path(post.id, comment.id),
+            method: :delete,
+            class: "col-xs-2",
+            data: {confirm: "Are you sure you want to delete this comment?"} if comment.author == current_user %>
       </div>
     </div>
   </div><br> <!-- End Comments / Responses -->

@@ -39,13 +39,27 @@ module ApplicationHelper
     str.html_safe
   end
 
-  def like_or_unlike_button(likeable_type, user)
-    if likeable_type.liked?
-       str = link_to "Unlike", like_path(likeable_type: likeable_type.class.to_s, likeable_id: likeable_type.id, user_id: user.id), method: :delete, class: "col-xs-2"
+  def comment_likes_message(comment)
+    likes_count = comment.likes.size
+    case likes_count
+    when 0
+      "Be the first one to like this comment!"
+    when 1
+      "1 person likes this"
+    when likes_count > 2
+      "#{likes_count} other people like this"
     else
-       str = link_to "Like", like_path(likeable_type: likeable_type.class.to_s, likeable_id: likeable_type.id, user_id: user.id), method: :post, class: "col-xs-2"
+      "Huh???"
     end
-    str
+  end
+
+  def like_or_unlike_button(likeable_type)
+    liked = likeable_type.liked?
+    link_to liked ? "Unlike" : "Like",
+            like_path(likeable_type: likeable_type.class.to_s,
+                      likeable_id: likeable_type.id),
+            method: liked ? :delete : :post,
+            class: "col-xs-2"
   end
 
 

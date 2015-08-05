@@ -1,5 +1,7 @@
 class ProfilesController < ApplicationController
 
+  #before_action :set_user, only: [:new, :edit]
+
   def new
     if current_user.profile
       flash[:notice] = "No need to create a new profile. You can edit your existing one."
@@ -18,6 +20,10 @@ class ProfilesController < ApplicationController
       flash.now[:error] = @profile.errors.full_messages.first
       render :new
     end
+  end
+
+  def show
+    @profile = current_user.profile
   end
 
   def edit
@@ -47,5 +53,9 @@ class ProfilesController < ApplicationController
                                     :about,
                                     :user_id)
   end
+
+  # def set_user
+  #   @user = current_user
+  # end
 
 end

@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
     else
       flash[:error] = @comment.errors.full_messages.first
     end
-    redirect_to timeline_path
+    redirect_to URI(request.referer).path
   end
 
   def destroy
@@ -17,7 +17,7 @@ class CommentsController < ApplicationController
     else
       flash[:error] = "Something went wrong! Please try again."
     end
-    redirect_to timeline_path
+    redirect_to URI(request.referer).path
   end
 
   private
@@ -25,11 +25,5 @@ class CommentsController < ApplicationController
   def comment_params
     params.require(:comment).permit(:body, :commentable_type, :commentable_id)
   end
-
-  def extract_commentable
-    resource, id = request.path.split('/')[1,2]
-    resource.singularize.classify.constantize.find(id)
-  end
-
 
 end

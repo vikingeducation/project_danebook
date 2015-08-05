@@ -2,7 +2,7 @@
 
 <main class = "container">
 
-  <%= render :partial => 'shared/middle_navbar' %>
+  <%= render :partial => 'shared/middle_navbar', locals: {:@user => current_user} %>
 
   <section id="about-edit">
     <header>

@@ -8,7 +8,7 @@ class TimelinesController < ApplicationController
     @user = User.find(params[:user_id])
     @post = Post.new
     @comment = Comment.new
-    @posts = @user.posts_received.includes(:user, :likes, :comments => [:likes, :author] )
+    @posts = @user.posts_received.includes(:author, :likes, :comments => :author )
   end
 
 end

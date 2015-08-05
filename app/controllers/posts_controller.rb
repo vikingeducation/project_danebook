@@ -1,14 +1,15 @@
 class PostsController < ApplicationController
 
+  #before_filter :store_referer, :only => [:create, :destroy]
+
   def create
-    @user = User.find(params[:post][:user_id])
     @post = current_user.posts.build(post_params)
     if @post.save
       flash[:success] = "Post successfully submitted"
     else
       flash[:error] = @post.errors.full_messages.first
     end
-    redirect_to user_timeline_path(@user)
+    redirect_to URI(request.referer).path
   end
 
   def destroy
@@ -16,7 +17,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.destroy
     flash[:alert] = "Your post was deleted!"
-    redirect_to user_timeline_path(@user)
+    redirect_to URI(request.referer).path
   end
 
 

@@ -1,6 +1,6 @@
 <main class = "container">
 
-  <%= render :partial => 'shared/middle_navbar' %>
+  <%= render :partial => 'shared/middle_navbar', locals: {:@user => current_user} %>
 
   <section id="about-section">
     <header>
@@ -9,7 +9,7 @@
           <h2>About</h2>
         </div>
         <div class="col-xs-2">
-          <%= link_to current_user.profile ? edit_profile_path : new_profile_path do %>
+          <%= link_to @profile ? edit_profile_path : new_profile_path do %>
             <button class= "btn btn-active", id= "edit-profile">
               Edit Your Profile
             </button>
@@ -37,7 +37,7 @@
             <b>College:</b>
           </div>
           <div class = "col-xs-8">
-            <%= current_user.profile ? current_user.profile.college : "None" %>
+            <%= @profile ? @profile.college : "None" %>
           </div>
         </div>
 
@@ -46,7 +46,7 @@
             <b>Hometown:</b>
           </div>
           <div class = "col-xs-8">
-            <%= current_user.profile ? current_user.profile.hometown : "None" %>
+            <%= @profile ? @profile.hometown : "None" %>
           </div>
         </div>
 
@@ -55,7 +55,7 @@
             <b>Currently Lives:</b>
           </div>
           <div class = "col-xs-8">
-            <%= current_user.profile ? current_user.profile.current_home : "None" %>
+            <%= @profile ? @profile.current_home : "None" %>
           </div>
         </div>
 
@@ -76,7 +76,7 @@
             <b>Telephone:</b>
           </div>
           <div class = "col-xs-8">
-            <%= current_user.profile ? current_user.profile.mobile : "None" %>
+            <%= @profile ? @profile.mobile : "None" %>
           </div>
         </div>
 
@@ -86,12 +86,12 @@
 
         <h3>Words to live by</h3>
         <p>
-          <%= current_user.profile ? current_user.profile.summary : "None" %>
+          <%= @profile ? @profile.summary : "None" %>
         </p>
 
         <h3>About me</h3>
         <p>
-          <%= current_user.profile ? current_user.profile.about : "" %>
+          <%= @profile ? @profile.about : "" %>
         </p>
       </div>
     </div>

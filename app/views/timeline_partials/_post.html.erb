@@ -1,0 +1,30 @@
+<article class="panel panel-default comments">
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-sm-2">
+        <div class="thumbnail">
+         <img src="images/harry_potter_small.jpg">
+        </div>
+      </div> <!-- col-md-2 end -->
+    
+      <div class="col-md-7 poster">
+        <a href="#"><%= p.user.first_name %></a>
+        <p class="grey-text"><%= p.created_at.strftime("Posted on %A %D") %></p>
+      </div>
+    </div> <!-- row end -->
+    <div class="row">
+      <div class="col-md-12">
+        <p><%= p.body %></p>
+      </div>
+    </div>
+  </div>
+    <div class="panel-footer clearfix">
+      <div class="pull-right">
+        <%= link_to "Delete", user_post_path(current_user, p), method: :delete  %>
+      </div>
+      <div class="pull-left">
+        <a href="#">Like</a>
+        <a href="#">Comment</a> 
+      </div>
+    </div>
+</article> <!-- end comment panel -->

@@ -1,10 +1,15 @@
 class User < ActiveRecord::Base
-  has_one :profile
+  has_one :profile, dependent: :destroy
+  has_many :posts, dependent: :destroy
 
   has_secure_password
 
-  before_create :generate_token
+  before_create  :generate_token
+  after_create :make_profile
 
+  def make_profile
+    self.build_profile.save
+  end
 
   def generate_token
     begin 

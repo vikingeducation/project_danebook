@@ -11,8 +11,14 @@
   
 
 </head>
-<body>
-
+<body "data-no-turbolink">
+  <% if current_user %>
+  <%= render partial: '/shared/signed_in_header' %>
+  <% else %>
+  <%= render partial: '/shared/top_bar' %>
+  <% end %>
+  <%= flash[:success] %>
+  <%= flash[:error] %>
 <%= yield %>
 
 </body>

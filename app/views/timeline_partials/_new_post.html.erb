@@ -1,0 +1,17 @@
+<%= form_for(current_user.posts.build, url: user_posts_path(@user)) do |f| %>
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title timeline-panel-header">Post</h3>
+  </div>
+
+  <div class="panel-body">
+    <div class="form-group">
+      <%= f.text_area :body, class: "form-control", 
+      placeholder: "Write on the wall" %>
+    </div>    
+  </div>
+  <div class="panel-footer clearfix">
+    <%= f.submit "Post", class: "pull-right btn btn-primary" %>
+  </div>
+</div> <!-- end panel default -->
+<% end %>

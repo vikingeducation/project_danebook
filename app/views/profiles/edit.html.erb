@@ -1,47 +1,7 @@
-<header class="navbar">
-  <div class="container">
-    <div class="row">
-
-      <div class="navbar-header">
-
-        <a class="navbar-brand" href="#"><img class="logo" src="images/danish_flag.gif" alt="the logo">Danebook</a>
-
-      </div>
-      <div class="test"><p >Harry</p></div>
-      <form class="navbar-form " role="search">
-        <div class="input-group">
-          <input type="text" class="form-control" placeholder="Search this site">
-
-        </div>
-      </form>
-    </div>
-
-  </header>
   <main>
     <header class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <img src="images/hogwarts_small.jpg" class="cover-photo hidden-xs hidden-sm img-responsive" alt="profile cover photo">
-          <div class="profile-photo"> 
-            <img src="images/harry_potter_small.jpg" class="hidden-xs hidden-sm">
-          </div>
-        </div>
-      </div>
-      <div class="row">
-        <nav class="col-md-7 col-md-offset-2">
-          <ul class="nav nav-tabs">
-            <li><a href="timeline.html">Timeline</a></li>
-            <li class="active"><a href="about.html">About</a></li>
-            <li><a href="photos.html">Photos <span class="unread-number">(123)</span></a></li>
-            <li><a href="friends.html">Friends <span class="unread-number">(542)</span></a></li>
-          </ul>
-        </nav>
-        <div class="col-md-2 pull-right">
-          <ul class="nav profile-link">
-            <li><a href="#" class="pull-right ">Edit Profile</a></li>
-          </ul>
-        </div>
-      </div>
+
+      <%= render partial: '/shared/nav_menu' %>
 
       <section class="panel panel-default panel-custom">
         <div class="panel-heading clearfix">

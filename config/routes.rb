@@ -3,11 +3,13 @@ Rails.application.routes.draw do
   root 'users#new'
   resources :users do
     resource :profile, only: [:edit, :update, :show]
+    resources :posts, only: [:create, :destroy]
     get 'timeline'
     get 'about'
   end
 
   post 'login' => 'sessions#create'
+  delete 'logout' => 'sessions#destroy'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

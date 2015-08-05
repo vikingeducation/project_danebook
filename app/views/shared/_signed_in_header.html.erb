@@ -4,10 +4,12 @@
       <div class="row">
         
         <div class="navbar-header">
-          <a class="navbar-brand" href="#"><img class="logo" src="images/danish_flag.gif" alt="the logo">Danebook</a>
+          <%= image_tag 'danish_flag.jpg', class: 'navbar-brand'  %>
         </div>
 
-        <div class="test"><p >Harry</p></div>
+        <div class="test"><p ><%= current_user.first_name %></p>
+        <p><%= link_to "Log Out", logout_path, method: :delete %></p></div>
+
         
         <form class="navbar-form " role="search">
           <div class="input-group">

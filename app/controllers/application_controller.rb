@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   private
 
   def sign_in(user)
-    user.regenerate_auth_token
+    user.regenerate_token
     cookies[:auth_token] = user.auth_token
     @current_user = user
   end

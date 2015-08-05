@@ -1,0 +1,9 @@
+<div class="panel-footer clearfix">
+  <div class="pull-right">
+    <%= link_to "Delete", post_path(p), method: :delete  %>
+  </div>
+  <div class="pull-left">
+    <%=likes_counter(p) %>
+    <a href="#">Comment</a> 
+  </div>
+</div>

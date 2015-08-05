@@ -1,12 +1,12 @@
 class PostsController < ApplicationController
   def create
-    post = current_user.posts.build(:body => params[:post][:body])
+    post = current_user.profile.posts.build(:body => params[:post][:body])
     if post.save
       flash[:success] = "New Post"
     else
       flash[:error] = "Could not save. Try again"
     end
-      redirect_to user_timeline_path(current_user)
+      redirect_to profile_timeline_path(current_user.profile)
   end
 
   def destroy

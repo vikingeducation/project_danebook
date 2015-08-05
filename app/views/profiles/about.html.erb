@@ -1,5 +1,4 @@
 <!-- Your markup here! -->
-<body>
 
   <main>
       <%= render partial: '/shared/cover' %>
@@ -11,7 +10,7 @@
     <section class="panel panel-default panel-custom">
 
       <div class="panel-heading clearfix">
-        <%= link_to "Edit Your Profile", edit_user_profile_path, class: "btn btn-primary btn-sm pull-right" %>
+        <%= edit_or_sign_up_button %>
         <h4 class="panel-text text-center">About</h4>
       </div><!-- end of panel -->
 
@@ -22,33 +21,33 @@
 
             <dl class="dl-horizontal">
               <dt class="basic-info">Birthday:</dt>
-              <dd><%= @user.profile.birthday %></dd>
+              <dd><%= @profile.birthday %></dd>
               <dt class="basic-info">College:</dt>
-              <dd><%= @user.profile.college %></dd>
+              <dd><%= @profile.college %></dd>
               <dt class="basic-info">Hometown:</dt>
-              <dd><%= @user.profile.hometown %></dd>
+              <dd><%= @profile.hometown %></dd>
               <dt class="basic-info">Currently Lives:</dt>
-              <dd><%= @user.profile.current_town %></dd>
+              <dd><%= @profile.current_town %></dd>
             </dl>
 
             <h3>Contact Information</h3>
 
             <dl class="dl-horizontal">
               <dt class="basic-info">Email:</dt>
-              <dd><%= @user.email %></dd>
+              <dd><%= @profile.user.email %></dd>
               <dt class="basic-info">Telephone::</dt>
-              <dd><%= @user.profile.telephone %></dd>
+              <dd><%= @profile.telephone %></dd>
             </dl>
           </div>
 
           <div class="col-sm-7">
             <div>
               <h3>Words to Live By</h3>
-              <p><%= @user.profile.words_to_live_by %></p>
+              <p><%= @profile.words_to_live_by %></p>
             </div>
             <div>
               <h3>About Me</h3>
-              <p> <%= @user.profile.about_me %></p>
+              <p> <%= @profile.about_me %></p>
             </div>
           </div>
         </div>
@@ -57,8 +56,7 @@
   </div>
 </div>
 </main>
-</body>
-</html>
+
 
 
 

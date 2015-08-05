@@ -5,7 +5,7 @@ class ProfilesController < ApplicationController
   end
 
   def update
-    @profile = User.find(params[:user_id]).profile
+    @profile = Profile.find(params[:id]).profile
     if @profile.update(profile_params)
       flash[:success] = "Profile updated"
       redirect_to user_profile_path(@profile.user)
@@ -15,9 +15,15 @@ class ProfilesController < ApplicationController
     end
   end
 
+  def timeline
+   @profile = Profile.find(params[:profile_id])
+   @posts = @profile.posts.order("created_at DESC")
+ end
+
   def show
-    @user = User.find(params[:user_id])
-    render :about
+   @profile = Profile.find(params[:id])
+   @posts = @profile.posts.order("created_at DESC")
+   render :about
   end
 
   private

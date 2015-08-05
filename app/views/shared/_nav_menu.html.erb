@@ -1,19 +1,15 @@
 <div class="row">
   <nav class="col-md-7 col-md-offset-2">
     <ul class="nav nav-tabs">
-      <li><%= link_to "Timeline", user_timeline_path  %></li>
-      <li><%= link_to "About", user_profile_path%></li>
+      <li><%= link_to "Timeline", profile_timeline_path(@profile)  %></li>
+      <li><%= link_to "About", profile_path(@profile)%></li>
       <li><a href="#">Photos <span class="unread-number">(123)</span></a></li>
       <li><a href="#">Friends <span class="unread-number">(542)</span></a></li>
     </ul>
   </nav>
   <div class="col-md-2 pull-right">
     <ul class="nav profile-link">
-      <% if current_user %>
-        <li><%= link_to "Edit Your Profile", edit_user_profile_path(current_user)  %></li>
-      <% else %>
-        <li><%= link_to "Sign Up", new_user_path  %></li>
-      <% end %>
+      <%= edit_or_sign_up %>
     </ul>
   </div>
 </div>

@@ -1,4 +1,4 @@
-<%= form_for(current_user.posts.build, url: user_posts_path(@user)) do |f| %>
+<%= form_for(current_user.profile.posts.build, url: posts_path(@user)) do |f| %>
 <div class="panel panel-default">
   <div class="panel-heading">
     <h3 class="panel-title timeline-panel-header">Post</h3>

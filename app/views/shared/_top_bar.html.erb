@@ -15,7 +15,7 @@
       <div class="collapse navbar-collapse" id="slide-out">
 
 
-        <%= form_for @user, url: login_path, method: :post, html: {class: "navbar-form navbar-right"}  do |f| %>
+        <%= form_for User.new, url: login_path, method: :post, html: {class: "navbar-form navbar-right"}  do |f| %>
         <section class="form-group inline-form">
           <div class="form-group">
             <%= f.label :email %>

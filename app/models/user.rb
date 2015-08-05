@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
   has_one :profile, :dependent => :destroy
   accepts_nested_attributes_for :profile
 
+  has_many :posts, :foreign_key => :author_id, :dependent => :destroy
+
   has_secure_password
 
   validates :email, :uniqueness => true, :format => { :with => /.+@.+/, :message => "format is invalid." }

@@ -9,13 +9,14 @@ Rails.application.routes.draw do
 
   resources :users, :only => [:new, :create, :show, :edit, :update] do
     resource :profile, :only => [:new]
+    resources :posts, :only => [:new, :index]
   end
 
-  get "/timeline" => "static_pages#timeline"
-  get "/about" => "static_pages#about"
+  get "/about" => "users#show"
+  get "/about_edit" => "users#edit"
+  get "/timeline" => "posts#index"
   get "/friends" => "static_pages#friends"
   get "/photos" => "static_pages#photos"
-  get "/about_edit" => "static_pages#about_edit"
 
 
   # The priority is based upon order of creation: first created -> highest priority.

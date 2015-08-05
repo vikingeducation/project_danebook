@@ -6,6 +6,13 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def require_login
+    unless current_user
+      flash[:error] = "You must be logged in"
+      redirect_to request.referrer # halts request cycle
+    end
+  end
+
   def sign_in(user)
     user.regenerate_token
     cookies[:auth_token] = user.auth_token

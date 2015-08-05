@@ -3,6 +3,8 @@ class LikesController < ApplicationController
   before_action :require_login, :only => [:create, :destroy]
 
   def create
+    #refactor later into creating like through object association
+    #but obj not passed in parameters
     session[:return_to] ||= request.referer
     like = Like.new(params_list)
     # like = Like.new(extract_likings)

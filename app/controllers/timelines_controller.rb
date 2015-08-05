@@ -5,9 +5,10 @@ class TimelinesController < ApplicationController
   # before_action :require_current_user, :only => [:show]
 
   def show
+    @user = User.find(params[:user_id])
     @post = Post.new
     @comment = Comment.new
-    @posts = current_user.posts.includes(:likes, :comments => [:likes, :author] )
+    @posts = @user.posts.includes(:user, :likes, :comments => [:likes, :author] )
   end
 
 end

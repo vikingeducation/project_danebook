@@ -8,12 +8,13 @@ Rails.application.routes.draw do
   get 'about_edit' => 'static_pages#about_edit'
   get 'photos' => 'static_pages#photos'
 
-  resources :users, except: [:index]
+  resources :users, except: [:index] do
+    resource :timeline, only: [:show]
+  end
   resources :posts, only: [:create, :update, :destroy] do
     resources :comments, only: [:create, :update, :destroy], :defaults => { :commentable => 'Post' }
   end
   resource :profile, only: [:new, :create, :edit, :update]
-  resource :timeline, only: [:show]
   resource :session, :only => [:create, :destroy]
   resource :like, :only => [:create, :destroy]
 

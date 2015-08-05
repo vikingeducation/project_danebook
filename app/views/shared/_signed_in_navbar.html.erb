@@ -8,10 +8,10 @@
           <span class="icon-bar"></span>
         </button>
 
-        <%= link_to timeline_path, class: "navbar-brand" do %>
+        <%= link_to user_timeline_path(current_user), class: "navbar-brand" do %>
           <%= image_tag 'danish_flag.gif', :class => "img-circle img-responsive", :height => "30px", :width => "40px" %>
         <% end %>
-        <%= link_to "Danebook", timeline_path, id: "brand-color", class: "navbar-brand" %>
+        <%= link_to "Danebook", user_timeline_path(current_user), id: "brand-color", class: "navbar-brand" %>
       </div>
 
       <div id = "navbar" class = "navbar-collapse collapse">

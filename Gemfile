@@ -42,7 +42,7 @@ group :development, :test do
 
   gem 'better_errors'
 
-  gem 'faker'
+  gem 'faker', '1.4.3'
   gem 'pry-rails'
 
   gem 'binding_of_caller'

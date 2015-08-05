@@ -7,21 +7,21 @@
   <div id = "pages-nav">
     <div class = "row">
 
-      <div class = "col-md-3">
+      <div class = "col-md-4">
         <div class = "profile-pic-container">
           <%= image_tag "harry_potter_small.jpg", class: "img-responsive" %>
         </div>
-        <h1 class = "profile-name"><%= current_user.name %></h1>
+        <h1 class = "profile-name"><%= @user.name %></h1>
       </div>
 
-      <div class = "col-xs-7 navigation-container">
+      <div class = "col-xs-6 navigation-container">
         <ul class = "nav navbar-nav nav-pills">
           <li class ="<%= controller.class == TimelinesController && controller.action_name == "show" ? 'active' : '' %>" >
-            <%= link_to "Timeline", timeline_path %>
+            <%= link_to "Timeline", user_timeline_path(@user) %>
           </li>
 
           <li class ="<%= controller.class == UsersController && controller.action_name == "show" ? 'active' : '' %>" >
-            <%= link_to "About", about_path %>
+            <%= link_to "About", @user %>
           </li>
 
           <li class ="<%= controller.class == UsersController && controller.action_name == "photos" ? 'active' : '' %>" >
@@ -36,9 +36,9 @@
 
       <div class = "col-sm-2 pull-right">
         <ul class = "nav navbar-nav">
-          <% unless (controller.class == UsersController && controller.action_name == "about_edit") %>
+          <% if current_user.id == @user.id && !(controller.class == UsersController && controller.action_name == "about_edit") %>
           <li>
-            <%= link_to "Edit Profile", current_user.profile ? edit_profile_path : new_profile_path %>
+            <%= link_to "Edit Profile", @user.profile ? edit_profile_path : new_profile_path %>
           </li>
           <% end %>
         </ul>

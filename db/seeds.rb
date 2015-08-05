@@ -6,6 +6,8 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+#User.destroy_all
+
 MULTIPLIER = 20
 
 
@@ -40,14 +42,15 @@ def generate_user_with_profile
   user.gender = ["male", "female"].sample
   user.save
 
-  profile_params = {college: Faker::University.name,
+  profile_params = {college: Faker::Address.city + " University",
                     hometown: Faker::Address.city,
                     current_home: Faker::Address.city,
                     mobile: Faker::PhoneNumber.cell_phone,
                     summary: Faker::Lorem.sentence,
-                    about: Faker::Lorem.paragraph }
+                    about: Faker::Lorem.paragraph,
+                    user_id: user.id }
 
-  profile = user.profile.build(profile_params)
+  profile = Profile.new(profile_params)
   profile.save
 end
 

@@ -172,7 +172,7 @@ DEPENDENCIES
   bullet
   byebug
   coffee-rails (~> 4.1.0)
-  faker
+  faker (= 1.4.3)
   jbuilder (~> 2.0)
   jquery-rails
   pg

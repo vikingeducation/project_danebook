@@ -3,7 +3,10 @@ Rails.application.routes.draw do
   root 'users#new'
   resources :users do
     resource :profile, only: [:edit, :update, :show]
-    resources :posts, only: [:create, :destroy]
+    resources :posts, only: [:create, :destroy] do
+      resources :likes, only: [:create]
+    end
+
     get 'timeline'
     get 'about'
   end

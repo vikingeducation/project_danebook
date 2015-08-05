@@ -23,7 +23,7 @@
         <%= link_to "Delete", user_post_path(current_user, p), method: :delete  %>
       </div>
       <div class="pull-left">
-        <a href="#">Like</a>
+        <%= link_to "Like", user_post_likes_path(current_user, p), method: :post  %>
         <a href="#">Comment</a> 
       </div>
     </div>

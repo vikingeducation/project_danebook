@@ -8,73 +8,60 @@
 				</div>
 			</div>
 		</div> <!-- end of row -->
+		
 		<div class="row">
-			<nav class="col-md-7 col-md-offset-2">
-				<ul class="nav nav-tabs">
-					<li><a href="timeline.html">Timeline</a></li>
-					<li class="active"><a href="about.html">About</a></li>
-					<li><a href="photos.html">Photos <span class="unread-number">(123)</span></a></li>
-					<li><a href="friends.html">Friends <span class="unread-number">(542)</span></a></li>
-				</ul>
-			</nav>
-			<div class="col-md-2 pull-right">
-				<ul class="nav profile-link">
-					<li>
-						<%= link_to "Edit Profile", edit_user_profile_path(:user_id => @profile.user.id), class: "pull-right" %>
-					</li>
-				</ul>
-			</div>
-		</div> <!-- end of row -->
-  </div>
+    	<%= render 'layouts/navbar' %>
+  	</div>
 
-	<section class="panel panel-default panel-custom">
+		<section class="panel panel-default panel-custom">
 
-		<div class="panel-heading clearfix">
-			<%= link_to "Edit your profile", edit_user_profile_path(:user_id => @profile.user.id), class: "btn btn-primary btn-sm pull-right" %>
-			<h4 class="panel-text text-center">About</h4>
-		</div><!-- end of panel -->
+			<div class="panel-heading clearfix">
+				<% if object_owner? %>
+					<%= link_to "Edit your profile", edit_user_profile_path(:user_id => @profile.user.id), class: "btn btn-primary btn-sm pull-right" %>
+				<% end %>
+				<h4 class="panel-text text-center">About</h4>
+			</div><!-- end of panel -->
 
-		<div class="panel-body">
-			<div class="row about-info">
-				<div class="col-sm-5">
-					<h3>Basic Information</h3>
+			<div class="panel-body">
+				<div class="row about-info">
+					<div class="col-sm-5">
+						<h3>Basic Information</h3>
 
-					<dl class="dl-horizontal">
-						<dt class="basic-info">Birthday:</dt>
-						<dd><%= @profile.user.birthday.strftime("%B %d, %Y") %></dd>
-						<dt class="basic-info">College:</dt>
-						<dd><%= @profile.college %></dd>
-						<dt class="basic-info">Hometown:</dt>
-						<dd><%= "#{@profile.home_city}, #{@profile.home_country}" %></dd>
-						<dt class="basic-info">Currently Lives:</dt>
-						<dd><%= "#{@profile.current_city}, #{@profile.current_country}" %></dd>
-					</dl>
+						<dl class="dl-horizontal">
+							<dt class="basic-info">Birthday:</dt>
+							<dd><%= @profile.user.birthday.strftime("%B %d, %Y") %></dd>
+							<dt class="basic-info">College:</dt>
+							<dd><%= @profile.college %></dd>
+							<dt class="basic-info">Hometown:</dt>
+							<dd><%= "#{@profile.home_city}, #{@profile.home_country}" %></dd>
+							<dt class="basic-info">Currently Lives:</dt>
+							<dd><%= "#{@profile.current_city}, #{@profile.current_country}" %></dd>
+						</dl>
 
-					<h3>Contact Information</h3>
+						<h3>Contact Information</h3>
 
-					<dl class="dl-horizontal">
-						<dt class="basic-info">Email:</dt>
-						<dd><%= @profile.user.email %></dd>
-						<dt class="basic-info">Telephone:</dt>
-						<dd><%= @profile.telephone %></dd>
-					</dl>
-				</div>
-
-				<div class="col-sm-7">
-					<div>
-						<h3>Words to Live By</h3>
-						<p><%= @profile.words_to_live_by %></p>
+						<dl class="dl-horizontal">
+							<dt class="basic-info">Email:</dt>
+							<dd><%= @profile.user.email %></dd>
+							<dt class="basic-info">Telephone:</dt>
+							<dd><%= @profile.telephone %></dd>
+						</dl>
 					</div>
-					<div>
-						<h3>About Me</h3>
-						<p> <%= @profile.about_me %></p>
+
+					<div class="col-sm-7">
+						<div>
+							<h3>Words to Live By</h3>
+							<p><%= @profile.words_to_live_by %></p>
+						</div>
+						<div>
+							<h3>About Me</h3>
+							<p><%= @profile.about_me %></p>
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-	</section>
+		</section>
 
-		</div>
 	</div>
 
 </main>

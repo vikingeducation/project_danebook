@@ -1,5 +1,8 @@
 class PostsController < ApplicationController
 
+	before_action :require_login
+	before_action :require_object_owner, only: [:destroy]
+
 def index
 	@posts = Post.where(:user_id => params[:user_id])
 	@new_post = Post.new
@@ -29,7 +32,6 @@ end
 private
 
 def whitelist_post_params
-	# user_id = params[:user_id]
 	params.require(:post).permit(:body)
 end
 

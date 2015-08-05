@@ -19,7 +19,7 @@
       <div class="col-md-3 text-right">
         <% if signed_in_user? %>
           <div class="top-navbar-link"> 
-            <%= link_to "#{current_user.first_name} #{current_user.last_name}", "#" %>
+            <%= link_to "#{current_user.first_name} #{current_user.last_name}", user_profile_path(current_user.id) %>
           </div>
           <div class="top-navbar-link">
             <%= link_to "Sign Out", logout_path, method: :delete %>

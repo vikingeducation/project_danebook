@@ -9,6 +9,10 @@
 
 <div class="col-md-2 pull-right">
 	<ul class="nav profile-link">
-		<li><a href="about_edit.html" class="pull-right">Edit Profile</a></li>
+		<li>
+			<% if object_owner? %>
+				<%= link_to "Edit Profile", edit_user_profile_path(current_user.id), class: 'pull-right' %> 
+			<% end %>
+		</li>
 	</ul>
 </div>

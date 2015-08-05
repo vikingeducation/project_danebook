@@ -8,7 +8,6 @@ class PostsController < ApplicationController
     # fail
     @post = Post.new
     @profile = current_user.profile
-    @new_comment = Comment.new
   end
 
   def create

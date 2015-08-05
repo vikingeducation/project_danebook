@@ -29,10 +29,11 @@
           <%= link_to "Delete", user_post_path(current_user, post), method: :delete, class: "col-xs-1 col-xs-offset-6", data: { confirm: "Are you sure?" } %>
         <% end %>
 
-        <a class="col-xs-2" href="#">Comment</a>
-        <%= render partial: "shared/comment_form", locals: {parent: post} %>
 
       </div>
+      <!-- <a class="col-xs-2" href="#">Comment</a> -->
+      <%= render @comments= post.comments  %>
+      <%= render partial: "shared/comment_form", locals: {parent: post} %>
     </footer>
   </div>
 </article>

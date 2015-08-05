@@ -15,7 +15,8 @@ module LikesHelper
     if likes.you_liked?(current_user)
       str += "You and "
     end
-    str += likes.recent_user_like
+    last_user = likes.recent_user_like
+    str += "<%= link_to last_user.full_name, user_path(last_user) %>"
     count = likes.count
     if count = 1
       str += " likes this."

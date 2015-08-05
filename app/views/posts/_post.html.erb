@@ -19,11 +19,9 @@
   <div class = "row">
     <footer class="col-md-12 like-section">
       <div class = "row">
-        <%= link_to like_display(post.likes), like_path(like: {:likings_id => post.id, :likings_type => "Post"}), method: :post, class: "col-xs-12" %>
+        <%= like_display(post.likes).html_safe %>
 
-        <% if post.likes.you_liked?(current_user) %>
-          <%= link_to "Unlike", unlike_path(like: {:likings_id => post.id, :likings_type => "Post"}), method: :delete, class: "col-xs-2" %>
-        <% end %>
+        <%= render partial: "shared/like_unlike_links", locals: {object: post} %>
 
         <a class="col-xs-2" href="#">Comment</a>
         <% if current_user.id == post.user_id %>

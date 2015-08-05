@@ -1,0 +1,9 @@
+<% if object.likes.you_liked?(current_user) %>
+
+  <%= link_to "Unlike", unlike_path(like: {:likings_id => object.id, :likings_type => object.class.to_s}), method: :delete, class: "col-xs-2" %>
+
+<% else %>
+
+  <%= link_to "Like", like_path(like: {:likings_id => object.id, :likings_type => object.class.to_s}), method: :post, class: "col-xs-12" %>
+
+<% end %>

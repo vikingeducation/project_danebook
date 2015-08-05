@@ -12,7 +12,7 @@ class Like < ActiveRecord::Base
   end
 
   def self.recent_user_like
-    recent_likes.first.user.full_name
+    recent_likes.first.user
   end
 
   def like_list(likings_type, likings_id)

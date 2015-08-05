@@ -21,7 +21,9 @@
       <div class = "row">
         <%= like_or_unlike_link(comment) %>
         <a class="col-xs-2" href="#">Comment</a>
+        <% if current_user == comment.user %>
         <%= link_to "Delete", comment_path(comment), method: :delete, class: "col-xs-1 col-xs-offset-6" %>
+        <% end %>
       </div>
     </footer>
   </div>

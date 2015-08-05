@@ -2,7 +2,7 @@ class LikesController < ApplicationController
   before_action :store_referer
   before_action :require_logged_in_user
   def create
-    if Like.create(likable: @likable, user: current_user)
+    if Like.create(likable: get_likable, user: current_user)
       flash[:success] = "Successfully liked!"
     else
       flash[:notice] = "ERROR: Unable to like."

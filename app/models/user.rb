@@ -40,7 +40,7 @@ class User < ActiveRecord::Base
   end
 
   def likes? (likable_thing)
-    Like.where(user: self, likable: likable_thing).any?
+    Like.where(user: self, likable_id: likable_thing.id, likable_type: likable_thing.class).any?
   end
 
   def generate_token

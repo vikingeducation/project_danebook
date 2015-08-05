@@ -14,4 +14,12 @@ module PostsHelper
       link_to "Like", likes_path(likable_id: likable.id, likable_type: likable.class), method: 'post'
     end
   end
+
+  def present_likes_count(likable)
+    if current_user && current_user.likes?(likable)
+      return "You and #{pluralize(likable.likes.count - 1, 'other person like', 'other people like')} this!"
+    else
+      return "#{likable.likes.count} people like this!"
+    end
+  end
 end

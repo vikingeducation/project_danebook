@@ -41,7 +41,7 @@
 					<% if post.has_likes? %>
 					<div class="row">
 						<div class="col-xs-12">
-							<%= post.likes.count %> people like this!
+							<%= present_likes_count(post) %>
 						</div>
 					</div>
 					<% end %>

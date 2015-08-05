@@ -9,10 +9,9 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :profiles, only: [:edit, :index, :update]
-    resources :posts, only: [:new, :create, :index, :show, :destroy] do
-      resources :likes, only: [:create, :index, :destroy]
-    end
+    resources :posts, only: [:new, :create, :index, :show, :destroy]
   end
   resource :session, only: [:new, :create, :destroy]
-  resources :comments, only: [:new, :create]
+  resources :comments, only: [:new, :create, :destroy]
+  resources :likes, only: [:create, :destroy]
 end

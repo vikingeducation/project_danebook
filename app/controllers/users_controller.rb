@@ -27,7 +27,11 @@ class UsersController < ApplicationController
   end
 
   def show
-    redirect_to user_profiles_path(params[:id])
+    if params[:id]
+      redirect_to user_profiles_path(params[:id])
+    else
+      redirect_to user_profiles_path(current_user)
+    end
   end
 
   

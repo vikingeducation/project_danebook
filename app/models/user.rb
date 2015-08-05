@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   # has_many :user_postings
   has_many :posts
   has_one :profile
-  has_one :like
+  has_many :likes
   has_many :comments
   
   validates :email, presence: true, uniqueness: true

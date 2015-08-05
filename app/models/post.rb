@@ -2,7 +2,7 @@ class Post < ActiveRecord::Base
   # has_many :users, :through => :user_postings
   # has_many :user_postings
   belongs_to :user
-  has_many :likes, through: :post_likings
+  has_many :likes, as: :likeable
   has_many :post_likings
 
   has_many :comments, :as => :commentable

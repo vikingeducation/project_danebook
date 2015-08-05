@@ -1,9 +1,11 @@
 class Like < ActiveRecord::Base
+  belongs_to :post
+  belongs_to :comment
   belongs_to :user
-  has_many :post_likings
-  has_many :posts, through: :post_likings
 
-  def self.include_user?(user)
-    self.where("user_id = ?", user.id).length < 1
+  belongs_to :likeable, polymorphic: true
+
+  def self.include_user?(current_user)
+    self.where("user_id = ?", current_user.id).length < 1
   end
 end

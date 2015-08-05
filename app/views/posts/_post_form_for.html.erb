@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-xs-12 post-control">
+    <div class="row post-topbar selected">
+      <div class="col-xs-12">
+        <div class="center">Post (copied)</div>
+      </div>
+    </div>
+    <%= form_for [current_user, @post] do |f|%>
+      <div class="row">
+        <div class="col-xs-12">
+          
+            <%= f.text_area :body, :class=> "form-control" %>
+            
+        </div>
+      </div>
+      <div class="row post-bottombar selected">
+        <div class="col-xs-12">
+          <div class="row">
+            <div class="col-xs-2 col-xs-offset-10">
+              <%= f.submit "Post", :class => "btn btn-primary" %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

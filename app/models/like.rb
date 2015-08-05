@@ -6,6 +6,9 @@ class Like < ActiveRecord::Base
 
   belongs_to :likeable, :polymorphic => true
 
+  # Make sure we validate uniqueness to avoid duplicate likes.
+  validates :user_id, :uniqueness => { :scope => [:likeable_id, :likeable_type] }
+
   # ----------------------- Methods --------------------
 
   def self.search_record(likeable_type, likeable_id, user_id)

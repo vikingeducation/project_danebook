@@ -7,6 +7,7 @@
     <div class = "row" >
       <div class="col-md-12 form-group comment-area">
         <%= post_fields.text_area :body, class: "form-control", rows: "3", placeholder: "Tell the world something..." %>
+        <%= post_fields.hidden_field(:recipient_user_id, value: @user.id) %>
       </div>
     </div>
     <div class = "row" >

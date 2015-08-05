@@ -39,11 +39,11 @@ module ApplicationHelper
     str.html_safe
   end
 
-  def like_or_unlike_button(likeable_type)
+  def like_or_unlike_button(likeable_type, user)
     if likeable_type.liked?
-       str = link_to "Unlike", like_path(likeable_type: likeable_type.class.to_s, likeable_id: likeable_type.id), method: :delete, class: "col-xs-2"
+       str = link_to "Unlike", like_path(likeable_type: likeable_type.class.to_s, likeable_id: likeable_type.id, user_id: user.id), method: :delete, class: "col-xs-2"
     else
-       str = link_to "Like", like_path(likeable_type: likeable_type.class.to_s, likeable_id: likeable_type.id), method: :post, class: "col-xs-2"
+       str = link_to "Like", like_path(likeable_type: likeable_type.class.to_s, likeable_id: likeable_type.id, user_id: user.id), method: :post, class: "col-xs-2"
     end
     str
   end

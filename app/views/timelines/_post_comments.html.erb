@@ -17,7 +17,7 @@
         </p>
       </div>
       <div class = "row">
-        <%= like_or_unlike_button(comment) %>
+        <%= like_or_unlike_button(comment, @user) %>
         <span class="col-xs-8"><%= likes_count_message(comment) %></span>
           <%= link_to "Delete",
               post_comment_path(post.id, comment.id),

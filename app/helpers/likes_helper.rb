@@ -4,8 +4,7 @@ module LikesHelper
     likes = obj.likes
     count = likes.size
     str =""
-    user = name_of_other_liker(likes)
-    if likes <= 0
+    if count <= 0
       str += link_to "Be the first to like this", like_path(post), method: post
     elsif likes.you_liked?(current_user) && count == 1
       str += "You like this."
@@ -17,9 +16,11 @@ module LikesHelper
         num += 1
       end
 
+      user = name_of_other_liker(likes)
+
       str += link_to user.full_name, user_path(user.id)
-      str += "and " + pluralize (count - num, "other")
-      count > 2 ? str += "like this." : str += "likes this"
+      num_ppl = pluralize( (count-num), 'other' )
+      count > 2 ? str += ", and #{num_ppl} like this." : str += "and #{num_ppl} likes this"
 
     end
     str.html_safe

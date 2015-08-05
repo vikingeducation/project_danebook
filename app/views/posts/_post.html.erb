@@ -18,8 +18,10 @@
 
   <div class = "row">
     <footer class="col-md-12 like-section">
+
+        <%= like_display(post).html_safe if post.likes.any?%>
+
       <div class = "row">
-        <%= like_display(post.likes).html_safe if post.likes.any? %>
 
         <%= like_or_unlike_link(post) %>
 

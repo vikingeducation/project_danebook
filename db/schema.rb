@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 20150805192110) do
   end
 
   add_index "likes", ["created_at"], name: "index_likes_on_created_at"
-  add_index "likes", ["likings_id", "likings_type"], name: "index_likes_on_likings_id_and_likings_type", unique: true
+  add_index "likes", ["user_id", "likings_id", "likings_type"], name: "index_likes_on_user_id_and_likings_id_and_likings_type", unique: true
 
   create_table "posts", force: :cascade do |t|
     t.integer  "user_id"

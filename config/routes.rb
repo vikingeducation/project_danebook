@@ -8,8 +8,8 @@ Rails.application.routes.draw do
   get '/about_edit' => "staticpages#about_edit"
 
   resources :users, except: [:index] do
-    resources :posts
-    # resources :friends
+    resources :posts, only: [:index, :create, :destroy]
+    resources :friends, only: [:index]
   end
   resource :likes, only: [:create, :destroy]
   resource :friendings, only: [:create, :destroy]

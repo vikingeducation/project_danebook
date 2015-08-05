@@ -47,7 +47,7 @@
               </a>
               <a href="friends.html">
                   <div class="col-md-3">
-                    <h5>Friends (<%= @user.friends.count %>)</h5>
+                    <h5><%= link_to "Friends (#{@user.friends.count})", user_friends_path(@user) %> </h5>
                   </div>
               </a>
             </div>

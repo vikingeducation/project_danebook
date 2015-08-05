@@ -20,21 +20,21 @@ module UsersHelper
     end
   end
 
-  def friend_button
-    unless current_user.nil? || on_own_page
-      if can_friend
-        return link_to "Friend", friendings_path(id: @user.id), method: 'post', class: "btn btn-primary"
+  def friend_button(target=@user)
+    unless current_user.nil? || is_own_user?(target)
+      if can_friend(target)
+        return link_to "Friend", friendings_path(id: target.id), method: 'post', class: "btn btn-primary"
       else
-        return link_to "Unfriend", friendings_path(id: @user.id), method: 'delete', class: "btn btn-primary"
+        return link_to "Unfriend", friendings_path(id: target.id), method: 'delete', class: "btn btn-default selected"
       end
     end
   end
 
-  def can_friend
-    !current_user.friend_ids.include? (@user.id)
+  def can_friend(target)
+    !current_user.friend_ids.include? (target.id)
   end
 
-  def on_own_page
-    current_user.id == @user.id
+  def is_own_user?(target)
+    current_user.id == target.id
   end
 end

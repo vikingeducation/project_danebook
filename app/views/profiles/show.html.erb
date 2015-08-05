@@ -20,7 +20,7 @@
 			<div class="col-md-2 pull-right">
 				<ul class="nav profile-link">
 					<li>
-						<%= link_to "Edit Profile", edit_user_profile_path(:id => @profile.id, :user_id => @profile.user.id), class: "pull-right" %>
+						<%= link_to "Edit Profile", edit_user_profile_path(:user_id => @profile.user.id), class: "pull-right" %>
 					</li>
 				</ul>
 			</div>
@@ -30,7 +30,7 @@
 	<section class="panel panel-default panel-custom">
 
 		<div class="panel-heading clearfix">
-			<%= link_to "Edit your profile", edit_user_profile_path(:id => @profile.id, :user_id => @profile.user.id), class: "btn btn-primary btn-sm pull-right" %>
+			<%= link_to "Edit your profile", edit_user_profile_path(:user_id => @profile.user.id), class: "btn btn-primary btn-sm pull-right" %>
 			<h4 class="panel-text text-center">About</h4>
 		</div><!-- end of panel -->
 
@@ -45,7 +45,7 @@
 						<dt class="basic-info">College:</dt>
 						<dd><%= @profile.college %></dd>
 						<dt class="basic-info">Hometown:</dt>
-						<dd><%= "#{@profile.home_city}, #{@profile.home_country}"  %></dd>
+						<dd><%= "#{@profile.home_city}, #{@profile.home_country}" %></dd>
 						<dt class="basic-info">Currently Lives:</dt>
 						<dd><%= "#{@profile.current_city}, #{@profile.current_country}" %></dd>
 					</dl>
@@ -55,8 +55,8 @@
 					<dl class="dl-horizontal">
 						<dt class="basic-info">Email:</dt>
 						<dd><%= @profile.user.email %></dd>
-						<dt class="basic-info">Telephone::</dt>
-						<dd> @profile.telephone </dd>
+						<dt class="basic-info">Telephone:</dt>
+						<dd><%= @profile.telephone %></dd>
 					</dl>
 				</div>
 

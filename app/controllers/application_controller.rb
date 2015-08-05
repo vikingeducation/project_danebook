@@ -42,4 +42,10 @@ class ApplicationController < ActionController::Base
   	end
   end
 
+  def require_object_owner
+    unless User.find(params[:user_id]) == current_user 
+      flash[:error] = "Sorry! Viewing not authorized."
+    end
+  end
+
 end

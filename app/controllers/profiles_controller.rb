@@ -1,15 +1,18 @@
 class ProfilesController < ApplicationController
 
+	before_action :require_login
+	before_action :require_object_owner, :only => [:edit, :update, :destroy]
+
 def show
-	@profile = Profile.find(params[:id])
+	@profile = Profile.find_by_user_id(params[:user_id])
 end
 
 def edit
-	@profile = Profile.find(params[:id])
+	@profile = Profile.find_by_user_id(params[:user_id])
 end
 
 def update
-	@profile = Profile.find(params[:id])
+	@profile = Profile.find_by_user_id(params[:user_id])
 	if @profile.update(whitelisted_profile_params)
 		flash[:success] = "Updates saved"
 		redirect_to user_profile_path(:id => @profile.id, :user_id => @profile.user.id)
@@ -17,6 +20,9 @@ def update
 		flash[:error] = "Unable to save profile"
 		render :edit
 	end
+end
+
+def destroy
 end
 
 private
@@ -29,7 +35,9 @@ def whitelisted_profile_params
 																	:home_city,
 																	:home_country,
 																	:current_city,
-																	:current_country)
+																	:current_country, 
+																	:college,
+																	:telephone)
 end
 
 end

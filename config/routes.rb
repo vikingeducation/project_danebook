@@ -2,9 +2,9 @@ Rails.application.routes.draw do
   root 'users#new'
   get '/' => 'staticpages#home'
   # resources :staticpages
-  get 'timeline' => 'staticpages#timeline'
+  # get 'timeline' => 'staticpages#timeline'
   get 'friends' => 'staticpages#friends'
-  get 'about' => 'staticpages#about'
+  # get 'about' => 'staticpages#about'
   get 'photos' => 'staticpages#photos'
 
   resource :session, :only => [:new, :create, :destroy]
@@ -12,7 +12,11 @@ Rails.application.routes.draw do
   delete 'logout' => 'sessions#destroy'
 
   resources :users do 
-    resources :profiles, :only => [:edit, :update, :show]
+    resource :profile, :only => [:edit, :update, :show]
+    get 'about' => 'profiles#show'
+
+    resources :posts, :except => [:show]
+    get 'timeline' => 'posts#index'
   end
 
 end

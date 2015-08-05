@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
 		if @user && @user.authenticate(params[:password_digest])
 			sign_in(@user)
 			flash[:success] = "Signed in successfully!"
-			redirect_to user_path(@user.id)
+			redirect_to user_profile_path(@user.id)
 		else 
 			flash.now[:error] = "Unable to sign in."
 			render :new

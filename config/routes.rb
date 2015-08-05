@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-  root "static_pages_controller#index"
-
   get 'about', to: 'static_pages_controller#about', as: 'about'
 
   get 'about_edit', to: 'static_pages_controller#about_edit', as: 'about_edit'
@@ -10,13 +8,19 @@ Rails.application.routes.draw do
 
   get 'photos', to: 'static_pages_controller#photos', as: 'photos'
 
-  get 'timeline', to: 'static_pages_controller#timeline', as: 'timeline'
+  root "users#new"
 
-  resources :users
+  resources :users do
+    resources :posts
+  end
+
+  resources :profiles
 
   resource :session, :only => [:new, :create, :destroy]
 
   get "login" => "sessions#new"
+
+  get "timeline", to: "timelines#show", as: "timeline"
 
   delete "logout" => "sessions#destroy"
 

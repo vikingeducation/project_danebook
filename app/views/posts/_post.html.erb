@@ -1,0 +1,25 @@
+<div class="post-update-container">
+
+  <div class="post-update-title">
+
+    <strong>Post</strong>
+
+  </div>
+
+  <%= form_for [current_user, @new_post do |f| %>
+
+    <%= f.hidden_field_tag :user_id, current_user.id %>
+    <%= f.textarea :body, "Tell the world something...", class: "form-control" %>
+
+  <% end %>
+
+  <textarea rows="4" style="width: 95%">Tell the world something...</textarea>
+
+
+  <div class="post-end-box">
+
+    <button type="button" class="btn btn-primary pull-right post-btn">Post</button>
+
+  </div>
+
+</div>

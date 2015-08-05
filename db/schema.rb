@@ -11,27 +11,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150804003716) do
+ActiveRecord::Schema.define(version: 20150804224934) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "users", force: :cascade do |t|
+  create_table "posts", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "profiles", force: :cascade do |t|
+    t.integer  "user_id",          null: false
+    t.string   "college"
+    t.string   "telephone"
+    t.string   "hometown"
+    t.string   "current_location"
+    t.text     "about_me"
+    t.text     "words_to_live_by"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.string   "email"
-    t.string   "password"
     t.string   "password_digest"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "gender"
     t.datetime "birthday"
-    t.string   "college"
-    t.string   "hometown"
-    t.string   "current_town"
-    t.string   "telephone"
-    t.text     "words_to_live_by"
-    t.text     "about_me"
   end
 
 end

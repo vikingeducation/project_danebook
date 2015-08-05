@@ -12,13 +12,20 @@ class UsersController < ApplicationController
   end
 
   def new
-    @user = User.new
+    # edge cases
+    if session[:user_id] && User.find(session[:user_id])
+      @user = User.find(session[:user_id])
+      redirect_to user_path(@user)
+    else
+      @user = User.new
+    end
   end
 
   def create
     @user = User.new(user_params)
     if user_params[:password] == user_params[:password_confirmation]
       if @user.save
+        Profile.create(:user_id => @user.id)
         sign_in(@user)
         flash[:success] = "New User Created!"
         redirect_to user_path(@user)
@@ -33,6 +40,7 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = User.find(params[:id])
   end
 
   def update

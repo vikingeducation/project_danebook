@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150804223417) do
+ActiveRecord::Schema.define(version: 20150805003644) do
 
   create_table "birthdates", force: :cascade do |t|
     t.integer  "month"
@@ -20,6 +20,17 @@ ActiveRecord::Schema.define(version: 20150804223417) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "likes", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "likings_id"
+    t.string   "likings_type"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "likes", ["created_at"], name: "index_likes_on_created_at"
+  add_index "likes", ["likings_id", "likings_type"], name: "index_likes_on_likings_id_and_likings_type"
 
   create_table "posts", force: :cascade do |t|
     t.integer  "user_id"

@@ -1,5 +1,8 @@
 // Navbar custom styles
 
+.nav-spacer {
+  height: 52px;
+}
 
 .navbar-default {
   background-color: #2b78e4;
@@ -42,7 +45,7 @@
 
 .container {
   max-width: 846px; //applies to navbar as well
-  margin-top: 52px; // variable?
+  //margin-top: 52px; // variable?
 }
 
 

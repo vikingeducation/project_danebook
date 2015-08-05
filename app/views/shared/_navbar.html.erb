@@ -2,8 +2,58 @@
 
   <div class="container">
 
+    <% if signed_in_user? %>
 
-    <% if current_page?('/') %>
+      <div class="navbar-header">
+
+
+        <!-- from Bootstrap template: enables nav collapsing -->
+        <!-- Brand and toggle get grouped for better mobile display   -->
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+
+        <!-- brand image and title -->
+        <%= link_to timeline_path, class: "navbar-brand brand-text" do %>
+          <%= image_tag "danish_flag.gif", class: "img-circle", width: "30", height: "30", alt: "Danish flag logo" %>
+          Danebook
+        <% end %>
+
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+
+        <!-- search box -->
+        <form class="navbar-form navbar-left" role="search">
+          <div class="form-group">
+
+            <input type="search" class="form-control" placeholder="Search for Users">
+
+          </div>
+        </form>
+
+
+        <!-- user navigation -->
+        <div class="nav navbar-text navbar-right">
+
+          <%= link_to current_user.email, about_path, class: "brand-text" %>
+          <%= link_to "Log Out", logout_path, :method => :delete, class: 'brand-text' %>
+
+        </div>
+
+      </div><!-- /.navbar-collapse -->
+
+
+
+
+
+    <% else %>
 
       <header class="navbar-header">
 
@@ -14,37 +64,28 @@
 
   <!-- sign-in form -->
 
-      <form class="sign-in-wrapper navbar-form navbar-right">
+      <%= form_tag session_path, { class: 'sign-in-wrapper navbar-form navbar-right'} do %>
 
         <div class="form-group">
 
           <div class="row">
-
-            <label class="col-xs-5 brand-text" for="user-email">
-              Email
-            </label>
-
-            <label class="col-xs-5 brand-text" for="user-password">
-              Password
-            </label>
-
+            <%= label_tag :email, 'Email', class: 'col-xs-5 brand-text' %>
+            <%= label_tag :password, 'Password', class: 'col-xs-5 brand-text' %>
           </div>
 
 
           <div class="row">
 
             <div class="col-xs-5">
-              <input type="email" class="form-control input-sm" id="user-email">
+              <%= text_field_tag :email, nil, class: 'form-control input-sm' %>
             </div>
 
             <div class="col-xs-5">
-              <input type="password" class="form-control input-sm" id="user-password">
+              <%= password_field_tag :password, nil, class: 'form-control input-sm' %>
             </div>
 
             <div class="col-xs-2">
-              <button type="submit" class="btn btn-primary input-sm custom-button">
-                Log In
-              </button>
+              <%= submit_tag 'Log In', class: 'btn btn-default input-sm custom-button' %>
             </div>
 
           </div>
@@ -52,56 +93,12 @@
 
         </div> <!-- form-group -->
 
-      </form>
+      <% end %>
 
 
-
-      <% else %>
-
-        <!-- from Bootstrap template: enables nav collapsing -->
-        <!-- Brand and toggle get grouped for better mobile display   -->
-        <div class="navbar-header">
-
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-
-
-          <!-- brand image and title -->
-          <%= link_to timeline_path, class: "navbar-brand brand-text" do %>
-            <%= image_tag "danish_flag.gif", class: "img-circle", width: "30", height: "30", alt: "Danish flag logo" %>
-            Danebook
-          <% end %>
-
-        </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
-
-          <!-- search box -->
-          <form class="navbar-form navbar-left" role="search">
-            <div class="form-group">
-
-              <input type="search" class="form-control" placeholder="Search for Users">
-
-            </div>
-          </form>
-
-
-          <!-- user navigation -->
-          <div class="nav navbar-text navbar-right">
-
-            <%= link_to "Harry", about_path, class: "brand-text" %>
-
-          </div>
-
-        </div><!-- /.navbar-collapse -->
 
     <% end %>
+
 
 
 

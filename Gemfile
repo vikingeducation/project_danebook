@@ -1,8 +1,6 @@
 source 'https://rubygems.org'
 
-group :production do
-  gem 'pg'
-end
+gem 'faker'
 
 gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
 

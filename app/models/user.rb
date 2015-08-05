@@ -20,6 +20,7 @@ class User < ActiveRecord::Base
 
   has_one :profile
   has_many :posts
+  has_many :likes, through: :posts
 
   accepts_nested_attributes_for :profile, :reject_if => :all_blank
 

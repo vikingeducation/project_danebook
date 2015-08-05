@@ -19,6 +19,9 @@ Rails.application.routes.draw do
   get "login" => "users#new"
   delete "logout" => "sessions#destroy"
 
+  post "like" => "likes#create"
+  delete "unlike"  => 'likes#destroy'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

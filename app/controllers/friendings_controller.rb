@@ -1,5 +1,6 @@
 class FriendingsController < ApplicationController
   before_filter :store_referer
+  before_action :require_logged_in_user
   def create
     @user = User.find(params[:id])
     Friending.create(user: current_user, friend: @user)

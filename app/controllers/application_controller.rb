@@ -4,6 +4,13 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   private
 
+    def require_logged_in_user
+      unless current_user
+        flash[:notice] = "You must be logged in to perform that action."
+        redirect_to referer
+      end
+    end
+
     def sign_in(user)
       user.regenerate_auth_token
       cookies[:auth_token] = user.auth_token

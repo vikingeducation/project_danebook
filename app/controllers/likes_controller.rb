@@ -1,5 +1,6 @@
 class LikesController < ApplicationController
-  before_filter :store_referer
+  before_action :store_referer
+  before_action :require_logged_in_user
   def create
     @user = current_user
     @likable = get_likable

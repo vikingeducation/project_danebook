@@ -2,16 +2,21 @@ class LikesController < ApplicationController
   before_action :store_referer
   before_action :require_logged_in_user
   def create
-    @user = current_user
-    @likable = get_likable
-    @like = Like.create(likable: @likable, user: @user)
-    flash[:success] = "Successfully liked!"
+    if Like.create(likable: @likable, user: current_user)
+      flash[:success] = "Successfully liked!"
+    else
+      flash[:notice] = "ERROR: Unable to like."
+    end
     redirect_to referer
   end
 
   def destroy
-    @like = Like.find_by(user_id: params[:user_id], likable_id: params[:likable_id], likable_type: params[:likable_type].capitalize)
-    @like.destroy
+    like = Like.find_by(user_id: params[:user_id], likable_id: params[:likable_id], likable_type: params[:likable_type].capitalize)
+    if like.destroy
+      flash[:success] = "Succesfully unliked!"
+    else
+      flash[:notice] = "ERROR: Unable to unlike."
+    end
     redirect_to referer
   end
 

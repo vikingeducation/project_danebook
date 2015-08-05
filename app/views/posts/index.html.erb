@@ -105,7 +105,7 @@
 				<!-- This column will represent the right side of the timeline. -->
 				<div class="col-md-7 col-md-offset-1">
 					<!-- This row will represent the post window. -->
-					<% if current_user %>
+					<% if current_user && current_user == @user %>
 					  <%= render partial: "new_post_form" %>
 					<% end %>
 

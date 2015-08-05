@@ -1,0 +1,33 @@
+<div class="comment-section">
+
+  <div class="row comment">
+
+    <div class="comment-pic col-xs-2">
+
+      <img src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif">
+
+    </div>
+
+    <div class="comment-author col-xs-10">
+
+      <%= link_to comment.author.full_name %> Said on  <%= comment.posted_on %>
+
+    </div>
+
+    <div class="col-xs-10 comment-content">
+
+      <p><%= comment.body %></p>
+
+      <p>
+      <a href="#">Like</a>3 other people like this
+
+      <% if current_user && current_user.id = comment.user_id %>
+        <div class="col-sm-1">
+            <%= link_to "Delete", comment, method: "delete" %>
+        </div>
+      <% end %>
+      </p>
+    </div>
+
+  </div>
+</div>

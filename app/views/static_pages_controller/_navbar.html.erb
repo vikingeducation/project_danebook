@@ -35,7 +35,7 @@
 
             <a href="about.html">
 
-              <strong><%= link_to"#{@current_user.first_name.capitalize} #{@current_user.last_name.capitalize}", "#{url_for(current_user)}" %></strong>
+              <strong><%= link_to"#{current_user.first_name.capitalize} #{current_user.last_name.capitalize}", "#{url_for(current_user)}" %></strong>
 
             </a>
 

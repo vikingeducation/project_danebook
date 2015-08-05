@@ -1,0 +1,49 @@
+<div class="post">
+  <div class="post-container">
+    <div class="post-header-row">
+
+      <div class="col-xs-2 post-pic">
+
+        <img src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif">
+
+      </div>
+
+      <div class="col-xs-10 post-info">
+        <%= link_to post.author.full_name, post.author %>
+        
+        <br>
+        <%= post.posted_on %>
+      </div>
+    </div>
+
+    <div class="post-content">
+      <p><%= post.body %></p>
+    </div>
+
+  </div>
+
+  <div class="comment-end-box">
+
+    <div class="like-btn">
+
+      <a href="#">Like</a>
+
+    </div>
+
+    <div class="like-btn pull-right">
+
+      <%= link_to "Delete", user_post_path(@user, post), method: 'delete' %>
+
+    </div>
+
+    <div class="comment-section">
+      <%= render post.comments %>
+        <% if current_user %>
+          <%= render partial: "posts/comment_form", locals: {post: post} %>
+        <% end %>
+
+    </div>
+
+  </div>
+
+</div>

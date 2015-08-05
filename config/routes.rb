@@ -21,5 +21,9 @@ Rails.application.routes.draw do
   resources :users do
     resource :profile, :only => [:edit,:update,:show]
   end
-
+  resources :comments, only: [:create, :destroy]
+    #resource :likes, only: [:create, :destroy]
+  resources :users, except: [:index] do
+    resources :posts
+  end
 end

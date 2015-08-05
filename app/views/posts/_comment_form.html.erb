@@ -1,0 +1,15 @@
+<%= form_for Comment.new, {:name => "comment_form"} do |f| %>
+<%= f.hidden_field :user_id, value: @user.id %>
+<%= f.hidden_field :commenting_id, value: post.id %>
+<%= f.hidden_field :commenting_type, value: post.class %>
+<div class="row">
+  <div class="col-xs-12 timeline-comment-box">
+    <%= f.text_area :body, {class: "form-control", placeholder: "Write a comment."} %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-3 col-sm-offset-9 timeline-comment-button">
+    <div class="center"><button class="btn btn-primary">Comment</button></div>
+  </div>
+</div>
+<% end %>

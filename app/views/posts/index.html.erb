@@ -1,9 +1,9 @@
-<%= render partial: "static_pages_controller/navbar" %>
+
 <main>
 
   <!-- Profile Header -->
 
-  <%= render partial: "static_pages_controller/menu", :locals => { :active => 'Timeline', :profile => @profile } %>
+  <%= render partial: "profiles/menu", :locals => { :active => 'Timeline', :profile => @profile } %>
 
   <!-- /profile header -->
 
@@ -30,10 +30,10 @@
 
             </header>
 
-              <p><strong>Born on:</strong> July 31st, 1980</p>
-              <p><strong>Went to school at:</strong> Hogwarts</p>
-              <p><strong>Hometown:</strong> Godrick's Hollow, England</p>
-              <p><strong>Currently Lives:</strong> Godrick's Hollow</p>
+              <p><b>Born on:</b> <%=@user.birthday %></p>
+              <p><b>College:</b> <%= p@user.profile.college %></p>
+              <p><b>Hometown:</b>  <%=@user.profile.hometown %></p>
+              <p><b>Currently Lives:</b>  <%= @user.profile.livesintown %></p>
 
           </section>
 
@@ -238,164 +238,12 @@
 
       <div class="col-sm-8">
 
-        <div class="post-update-container">
+        <% if current_user %>
+            <%= render partial: "new_post_form" %>
+        <% end %>
 
-          <div class="post-update-title">
+        <%= render @posts %>
 
-            <strong>Post</strong>
-
-          </div>
-
-          <textarea rows="4" style="width: 95%">Tell the world something...</textarea>
-
-
-          <div class="post-end-box">
-
-            <button type="button" class="btn btn-primary pull-right post-btn">Post</button>
-
-          </div>
-
-        </div>
-
-        <div class="post">
-
-          <div class="post-container">
-
-            <div class="post-header-row">
-
-              <div class="col-xs-2 post-pic">
-
-                <img src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif">
-
-              </div>
-
-              <div class="col-xs-10 post-info">
-
-                <a href="about.html">Harry Potter</a>
-                <br>
-                Posted on Thursday 6/1/2015
-
-              </div>
-
-            </div>
-
-            <div class="post-content">
-
-              <p>Lorem ipsum dolor sit amet, ferri iudico delicata id sea, cu facilisis tincidunt mea. Ei vis vidit tation. In sale nostro duo, brute ullum expetendis his ut, cu dolor mediocrem sit. No adhuc clita tantas usu, ne nemore eirmod repudiandae est.</p>
-
-            </div>
-
-          </div>
-
-          <div class="comment-end-box">
-
-            <div class="like-btn">
-
-              <a href="#">Like</a>
-
-            </div>
-
-            <div class="like-btn">
-
-              <a href="#">Comment</a>
-
-            </div>
-
-            <div class="like-btn pull-right">
-
-              <a href="#">Delete</a>
-
-            </div>
-
-            <div class="comment-section">
-
-            </div>
-
-          </div>
-
-        </div>
-
-        <div class="post">
-
-          <div class="post-container">
-
-            <div class="post-header-row">
-
-              <div class="col-xs-2 post-pic">
-
-                <img src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif">
-
-              </div>
-
-              <div class="col-xs-10 post-info">
-
-                <a href="about.html">Harry Potter</a>
-                <br>
-                Posted on Thursday 6/1/2015
-
-              </div>
-
-            </div>
-
-            <div class="post-content">
-
-              <p>Lorem ipsum dolor sit amet, ferri iudico delicata id sea, cu facilisis tincidunt mea. Ei vis vidit tation. In sale nostro duo, brute ullum expetendis his ut, cu dolor mediocrem sit. No adhuc clita tantas usu, ne nemore eirmod repudiandae est.</p>
-
-            </div>
-
-          </div>
-
-          <div class="comment-end-box">
-
-            <div class="like-btn">
-
-              <a href="#">Like</a>
-
-            </div>
-
-            <div class="like-btn">
-
-              <a href="#">Comment</a>
-
-            </div>
-
-            <div class="like-btn pull-right">
-
-              <a href="#">Delete</a>
-
-            </div>
-
-            <div class="comment-section">
-
-              <div class="row comment">
-
-                <div class="comment-pic col-xs-2">
-
-                  <img src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif">
-
-                </div>
-
-                <div class="comment-author col-xs-10">
-
-                  <a href="#">Ron Weasley</a> Said on Thursday 5/21/2014
-
-                </div>
-
-                <div class="col-xs-10 comment-content">
-
-                  <p>Lorem ipsum dolor sit amet, id primis utamur vix. Mutat officiis at pri, sadipscing disputationi ne vix. At epicurei nominati rationibus per, conceptam mnesarchum id vel, his nonumes percipitur no. Utinam noluisse at per, ut vel vocent complectitur.</p>
-
-                  <p><a href="#">Like</a>3 other people like this</p>
-
-                </div>
-
-              </div>
-
-            </div>
-
-          </div>
-
-        </div>
 
       </div>
 

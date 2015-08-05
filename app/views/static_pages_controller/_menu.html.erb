@@ -28,9 +28,12 @@
           <li role="presentation" <% if active == 'Friends' %> class="active"<% end %>><%= link_to "Friends", friends_path %></li>
         </ul>
         <section class="col-md-13 pull-right edit-profile navbar-text">
-        <h3>
-          <%= link_to "Edit Profile", edit_user_profile_path(:id => @profile.id, :user_id => @profile.user.id) %>
-        </h3>
+             <% if current_user.id==(@profile.user_id) %>
+        <section class="col-md-13 pull-right edit-profile navbar-text">
+       <%= link_to "Edit Profile", edit_user_profile_path(:id => @profile.id, :user_id => @profile.user.id) %>
+        
+        </section>
+        <% end %>
         
         </section>
 

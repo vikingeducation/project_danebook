@@ -43,11 +43,11 @@
             <div class="row user-input-row">
               <div class="col-md-6">
                 <%= profile_fields.text_field :first_name, class: 'form-control', placeholder: 'First Name' %>
-                <!-- <input type="text" class="form-control" id="first-name" placeholder="First Name"> -->
+                <%= render_error(profile_fields.object, :first_name) %>
               </div>
               <div class="col-md-6">
                 <%= profile_fields.text_field :last_name, class: 'form-control', placeholder: 'Last Name' %>
-                <!-- <input type="text" class="form-control" id="last-name" placeholder="Last Name"> -->
+                <%= render_error(profile_fields.object, :last_name) %>
               </div>
             </div>
 
@@ -55,6 +55,7 @@
             <div class="row user-input-row">
               <div class="col-md-12">
                 <%= user_fields.email_field :email, class: 'form-control', id: 'new-email', placeholder: 'Your Email' %>
+                <%= render_error(user_fields.object, :email) %>
               </div>
             </div>
 
@@ -62,6 +63,7 @@
             <div class="row user-input-row">
               <div class="col-md-12">
                 <%= user_fields.password_field :password, class: 'form-control', id: 'new-password', placeholder: 'Your New Password' %>
+                <%= render_error(user_fields.object, :password) %>
               </div>
             </div>
 
@@ -69,6 +71,7 @@
             <div class="row user-input-row">
               <div class="col-md-12">
                 <%= user_fields.password_field :password_confirmation, class: 'form-control', id: 'confirm-password', placeholder: 'Confirm Your Password' %>
+                <%= render_error(user_fields.object, :password_confirmation) %>
               </div>
             </div>
 
@@ -94,6 +97,7 @@
                                                 class: 'form-control'
                                               }
                                               ) %>
+                <%= render_error(profile_fields.object, :birthdate) %>
               </div>
 
             </div> <!-- End of birthday rows -->
@@ -115,6 +119,10 @@
                   Male
                 </label>
 
+                <div>
+                  <%= render_error(profile_fields.object, :gender) %>
+                </div>
+
               </div> <!-- column for radio buttons-->
 
             </div> <!-- radio button row -->
@@ -123,9 +131,6 @@
             <!-- Submit button -->
             <div class="row submit-wrapper">
               <%= user_fields.submit 'Sign Up!', class: 'col-md-12 btn btn-success btn-lg custom-button' %>
-              <!-- <button type="submit" class="col-md-12 btn btn-success btn-lg custom-button">
-                Sign Up!
-              </button> -->
             </div>
 
 

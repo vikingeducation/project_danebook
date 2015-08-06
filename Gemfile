@@ -40,6 +40,9 @@ group :development, :test do
   gem 'faker'
   gem 'better_errors'
   gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
+  gem 'guard-rspec', require: false
+  gem 'rspec-rails'
+  gem 'factory_girl_rails', '~> 4.0'
 
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'

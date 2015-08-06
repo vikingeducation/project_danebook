@@ -12,6 +12,8 @@ class User < ActiveRecord::Base
              confirmation: true,
              allow_nil: true
 
+  validates :password_confirmation, presence: true, on: :create
+
   has_one :profile, dependent: :destroy
   accepts_nested_attributes_for :profile
 

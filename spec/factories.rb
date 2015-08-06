@@ -2,6 +2,7 @@ FactoryGirl.define do
   factory :user, aliases: [:author] do
     sequence(:email) {|n| "test#{n}@test.com" }
     password "foobar12"
+    password_confirmation "foobar12"
     gender 0
     dob Time.now
     sequence(:first_name) {|n| "#{n}y"}

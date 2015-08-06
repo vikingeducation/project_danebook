@@ -70,5 +70,9 @@ module ApplicationHelper
             class: friended ? "btn btn-sm btn-default" : "btn btn-sm btn-primary"
   end
 
+  def random_user_image
+    ["Hermione-Granger.jpg", "RonWeasley.jpg", "Rubeus_Hagrid.jpg", "Cho-Chang.jpg", "Bonnie-Wright.jpg", "cedric-diggory.jpg", "albus-dumbledore.jpg", "lord-voldemort-smiling.jpg"].sample
+  end
+
 
 end

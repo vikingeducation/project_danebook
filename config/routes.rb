@@ -4,13 +4,14 @@ Rails.application.routes.draw do
 
 #  get 'about' => 'static_pages#about'
 #  get 'timeline' => 'static_pages#timeline'
-  get 'friends' => 'static_pages#friends'
+#  get 'friends' => 'static_pages#friends'
   get 'about_edit' => 'static_pages#about_edit'
   get 'photos' => 'static_pages#photos'
 
   resources :users, except: [:index] do
     resource :timeline, only: [:show]
     resource :friendings, :only => [:create, :destroy]
+    resources :friends, only: [:index]
   end
   resources :posts, only: [:create, :update, :destroy] do
     resources :comments, only: [:create, :update, :destroy], :defaults => { :commentable => 'Post' }

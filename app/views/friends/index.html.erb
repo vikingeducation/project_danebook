@@ -1,0 +1,54 @@
+<main class = "container">
+
+  <%= render :partial => 'shared/middle_navbar', locals: {:@user => @user}  %>
+
+
+  <section id="friends-section">
+    <header>
+      <div class="row">
+        <div class="col-xs-12">
+          <h2>Friends</h2>
+        </div>
+      </div>
+    </header>
+
+    <div class = "row">
+      <% @friends.each do |friend| %>
+        <div class = "col-md-6">
+          <!-- Friend box wrap -->
+          <div class = "friend-wrapper">
+            <div class = "row">
+              <div class = "col-xs-3">
+                <div class = "friend-img">
+                  <%= image_tag random_user_image %>
+                </div>
+              </div>
+              <div class = "col-xs-5">
+                <div class = "friend-name">
+                  <%= link_to user_path(friend) do %>
+                    <h4>
+                      <%= friend.name %>
+                    </h4>
+                  <% end -%>
+                  <a href="#">
+                    <h6>
+                      <%= friend.friended_users.count %> Friends
+                    </h6>
+                  </a>
+                </div>
+              </div>
+              <div class = "col-xs-4">
+                <div class = "friend-options">
+                  <%= link_to "Unfriend", user_friendings_path(friend), method: :delete, class: "btn btn-default" %>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- ^ Ends Friend Box Wrap -->
+        </div>
+      <% end -%>
+    </div>
+  </section>
+</main>
+
+<br>

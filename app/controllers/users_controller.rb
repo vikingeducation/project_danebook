@@ -13,11 +13,12 @@ class UsersController < ApplicationController
 
   def new
     # edge cases
-    if session[:user_id] && User.find(session[:user_id])
+    if session[:user_id] && User.where(:id => session[:user_id]).present?
       @user = User.find(session[:user_id])
       redirect_to user_path(@user)
     else
       @user = User.new
+      session.delete(:user_id)
     end
   end
 

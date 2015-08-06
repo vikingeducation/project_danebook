@@ -9,15 +9,15 @@ class SessionsController < ApplicationController
     if @user && @user.authenticate(params[:password])
       sign_in(@user)
       flash[:success] = "Successfully signed in"
-      redirect_to users_path
+      redirect_to user_path(current_user)
     else
       flash.now[:error] = "Unable to sign in"
-      render :new
+      redirect_to root_path
     end
   end
 
   def destroy
     sign_out
-    redirect_to users_path
+    redirect_to root_path
   end
 end

@@ -14,15 +14,16 @@ Rails.application.routes.draw do
     resources :posts
   end
 
+  resources :timelines, :only => [:show]
   resources :profiles
+  resources :likes
+
 
   resource :session, :only => [:new, :create, :destroy]
 
   get "login" => "sessions#new"
 
-  get "timeline", to: "timelines#show", as: "timeline"
-
-  delete "logout" => "sessions#destroy"
+  get "logout" => "sessions#destroy"
 
 
 end

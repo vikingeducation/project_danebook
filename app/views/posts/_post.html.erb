@@ -6,20 +6,16 @@
 
   </div>
 
-  <%= form_for [current_user, @new_post do |f| %>
-
-    <%= f.hidden_field_tag :user_id, current_user.id %>
-    <%= f.textarea :body, "Tell the world something...", class: "form-control" %>
-
-  <% end %>
-
-  <textarea rows="4" style="width: 95%">Tell the world something...</textarea>
-
+  <%= form_for [current_user, @new_post] do |f| %>
+    <%= f.hidden_field :user_id, value: current_user.id, class: "form-control" %>
+    <%= f.text_area :body, class: "form-control" %>
 
   <div class="post-end-box">
 
-    <button type="button" class="btn btn-primary pull-right post-btn">Post</button>
+    <%= f.submit "Post", class: "btn btn-primary pull-right post-btn" %>
 
   </div>
+
+  <% end %>
 
 </div>

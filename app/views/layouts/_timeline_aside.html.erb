@@ -12,10 +12,10 @@
 
             </header>
 
-              <p><strong>Born on:</strong> <%= current_user.birthday.strftime("%B %d, %Y") %></p>
-              <p><strong>Went to school at:</strong> <%= current_user.profile.college %></p>
-              <p><strong>Hometown:</strong> <%= current_user.profile.hometown %></p>
-              <p><strong>Currently Lives:</strong> <%= current_user.profile.current_location %></p>
+              <p><strong>Born on:</strong> <%= @user.birthday.strftime("%B %d, %Y") %></p>
+              <p><strong>Went to school at:</strong> <%= @user.profile.college %></p>
+              <p><strong>Hometown:</strong> <%= @user.profile.hometown %></p>
+              <p><strong>Currently Lives:</strong> <%= @user.profile.current_location %></p>
 
           </section>
 

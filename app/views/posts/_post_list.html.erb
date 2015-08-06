@@ -1,0 +1,84 @@
+<% @posts.each do |p| %>
+
+      <div class="post">
+
+        <div class="post-container">
+
+          <div class="post-header-row">
+
+            <div class="col-xs-2 post-pic">
+
+              <img src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif">
+
+            </div>
+
+              <%= link_to User.find(p.user_id).full_name, user_path(User.find(p.user_id)) %>
+
+              <br>
+
+              Posted on <%= p.created_at.strftime("%A %-m/%-d/%Y") %>
+
+            </div>
+
+          </div>
+
+          <div class="post-content">
+
+            <p><%= p.body %></p>
+
+          </div>
+
+        </div>
+
+       <div class="comment-end-box">
+
+        <div class="like-btn">
+
+          <%= link_to "Like", likes_path(:likeable_id => 1, :likeable_type => :post, :user_id => current_user.id), method: :post %>
+
+        </div>
+
+        <div class="like-btn">
+
+          <a href="#">Comment</a>
+
+        </div>
+
+        <div class="like-btn pull-right">
+
+          <%= link_to "Delete", user_post_path(@user.id, p.id), :method => :delete if @user == current_user %>
+        </div>
+
+        <div class="comment-section">
+
+          <div class="row comment">
+
+            <div class="comment-pic col-xs-2">
+
+              <img src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif">
+
+            </div>
+
+            <div class="comment-author col-xs-10">
+
+              <a href="#">Ron Weasley</a> Said on Thursday 5/21/2014
+
+            </div>
+
+            <div class="col-xs-10 comment-content">
+
+              <p>Lorem ipsum dolor sit amet, id primis utamur vix. Mutat officiis at pri, sadipscing disputationi ne vix. At epicurei nominati rationibus per, conceptam mnesarchum id vel, his nonumes percipitur no. Utinam noluisse at per, ut vel vocent complectitur.</p>
+
+              <p><a href="#">Like</a>3 other people like this</p>
+
+            </div>
+
+          </div>
+
+      </div>
+
+    </div>
+
+    <hr>
+
+  <% end %>

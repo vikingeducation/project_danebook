@@ -124,8 +124,120 @@ describe Comment do
     end
   end
 
-  context 'commenting on things' do
-    let(:post) { build(:post) }
+  context 'post creation' do
+    it 'should attribute a post to a user' do
+      create(:post, author: user)
+      expect(user.written_posts.count).to eq(1)
+    end
+  end
 
+  context 'commenting on posts' do
+    let(:new_comment) { build(:commented_post) }
+    it 'should allow a user to have comments on posts' do
+      user.comments << new_comment
+      user.save
+      expect(user.comments.count).to eq(1)
+    end
+
+    it 'should allow a user to retrieve a post based on the comment' do
+      user.comments << new_comment
+      user.save
+      expect(user.posts_commented_on.first).to eq(new_comment.commentable)
+    end
+  end
+
+  context 'liking posts' do
+    let(:post){ create(:post) }
+
+    it 'should allow a user to like a post' do
+      new_like = create(:liked_post, likable: post, user: user)
+      expect(user.liked_posts.count).to eq(1)
+    end
+
+    it 'should not allow a user to like a post more than once' do
+      new_like = create(:liked_post, likable: post, user: user)
+      new_like2 = build(:liked_post, likable: post, user: user)
+      expect(new_like2).to be_invalid
+    end
+
+    it 'should allow two random users to like the same post' do
+      new_like = create(:liked_post, likable: post)
+      new_like2 = build(:liked_post, likable: post)
+      expect(new_like2).to be_valid
+    end
+  end
+
+  context 'liking comments' do
+    let(:comment){ create(:comment) }
+
+    it 'should allow a user to like a comment' do
+      new_like = create(:liked_comment, likable: comment, user: user)
+      expect(user.liked_comments.count).to eq(1)
+    end
+
+    it 'should not allow a user to like a comment more than once' do
+      new_like = create(:liked_comment, likable: comment, user: user)
+      new_like2 = build(:liked_comment, likable: comment, user: user)
+      expect(new_like2).to be_invalid
+    end
+
+    it 'should allow two random users to like the same comment' do
+      new_like = create(:liked_comment, likable: comment)
+      new_like2 = build(:liked_comment, likable: comment)
+      expect(new_like2).to be_valid
+    end
+  end
+
+  context 'friending users' do
+    let(:friend) { build(:user) }
+
+    it 'should allow a user to friend another' do
+      user.friends << friend
+      user.save
+      expect(user.friends.count).to eq(1)
+    end
+
+    it 'should not allow a user to friend a user more than once' do
+      user.friends << friend
+      user.save
+      expect{user.friends << friend}.to raise_error(ActiveRecord::RecordNotUnique)
+    end
+  end
+
+  describe '.search' do
+
+    before do
+      create_list(:user, 12)
+    end
+
+    it 'should find a user that exists' do
+      expect(User.search('y')).to_not be_empty
+    end
+
+    it 'should find users by last name' do
+      expect(User.search('1son')).to_not be_empty
+    end
+
+    it 'should not find users that do not exist' do
+      expect(User.search('idonexist')).to be_empty
+    end
+  end
+
+  describe '#full_name' do
+    it 'should properly return the full name' do
+      expect(user.full_name).to eq(user.first_name + " " + user.last_name)
+    end
+  end
+
+  describe '#likes?' do
+    let(:post){ create(:post) }
+    it 'should return true if the user likes something' do
+      new_like = create(:liked_post, likable: post, user: user)
+      expect(user.likes?(post)).to be true
+    end
+
+    it 'should return false if the user does not like something' do
+      expect(user.likes?(post)).to be false
+    end
   end
 end

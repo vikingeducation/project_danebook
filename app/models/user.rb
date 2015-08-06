@@ -20,7 +20,8 @@ class User < ActiveRecord::Base
   has_many :written_posts, -> { order('created_at DESC') } , class_name: "Post", foreign_key: :user_id
 
   has_many :comments, dependent: :destroy
-  has_many :things_commented_on, through: :comments
+  has_many :posts_commented_on, through: :comments, source: :commentable, source_type: 'Post'
+  has_many :comments_commented_on, through: :comments, source: :commentable, source_type: 'Comment'
 
   has_many :likes, dependent: :destroy
   has_many :liked_posts, through: :likes, source: :likable, source_type: 'Post'
@@ -57,8 +58,10 @@ class User < ActiveRecord::Base
     save!
   end
 
-  def generate_empty_profile
-    self.profile = Profile.new
-  end
+  private
+
+    def generate_empty_profile
+      self.profile = Profile.new
+    end
 
 end

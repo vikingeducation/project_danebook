@@ -26,7 +26,6 @@ describe Comment do
       comment.likes << create(:liked_comment)
       expect(comment.people_who_like.count).to eq(1)
     end
-
   end
 
   context 'author association' do
@@ -37,7 +36,6 @@ describe Comment do
     it 'should return an author by defualt' do
       expect(comment.author).to be_a(User)
     end
-
   end
 
 end

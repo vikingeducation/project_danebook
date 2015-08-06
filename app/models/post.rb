@@ -1,8 +1,13 @@
 class Post < ActiveRecord::Base
+	# post belongs_to :profile
 	belongs_to :user
-	# belongs_to :profile
-	has_many :likes
+	
+	# likes are polymorphic
+	has_many :likes, as: :liking
 	has_many :liked_by, through: :likes, source: :user
+	
+	# comments are polymorphic
+	has_many :comments, as: :commentable
 
 	def count_likes(id)
 		Post.find(id).likes.count

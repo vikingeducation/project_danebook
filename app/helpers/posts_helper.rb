@@ -1,21 +1,5 @@
 module PostsHelper
 
-	def show_like_or_unlike(post)
-		if post.user_likes_post?(post.id, current_user)
-			show_unlike(Like.find_liked_post(post.id, current_user)) 
-		else
-			show_like(post)
-		end
-	end
-
-	def show_unlike(like) 
-		link_to("Unlike", user_like_path(:id => like.id, :user_id => current_user.id), method: :delete)
-	end
-
-	def show_like(post)
-		link_to("Like", user_likes_path(:like => {:user_id => current_user.id, :post_id => post.id}), method: :post)
-	end
-
 	# Returns the names of two others who like the post
 	def other_users_liking_post(post_id)
 		users_liking_post = Post.all_users_liking_post(post_id, current_user)

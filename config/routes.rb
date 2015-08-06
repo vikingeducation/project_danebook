@@ -18,7 +18,9 @@ Rails.application.routes.draw do
     resources :posts, :except => [:show]
     get 'timeline' => 'posts#index'
 
-    resources :likes, :only => [:new, :create, :destroy]
+    resources :likes, :only => [:create, :destroy]
+
+    resources :comments, :only => [:create, :update, :destroy]
   end
 
 end

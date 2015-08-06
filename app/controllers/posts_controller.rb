@@ -6,6 +6,7 @@ class PostsController < ApplicationController
 def index
 	@posts = Post.where(:user_id => params[:user_id])
 	@new_post = Post.new
+	@new_comment = Comment.new
 end
 
 def create

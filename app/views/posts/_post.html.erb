@@ -14,9 +14,10 @@
       <!-- Feedback section for likes and comments -->
       <div class="panel-footer">
 
-        <%# render :partial => "post_footer",
-              :locals => {  :post_self_like => post_info[:self_like],
-                            :post_likes => post_info[:likes] } %>
+        <%= render :partial => "post_footer",
+              :locals => {  :post => post,
+                            :post_self_like => false,
+                            :post_likes => "Hermione Granger likes this." } %>
 
 
         <%# if comments.count > 0 %>

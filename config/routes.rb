@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   resources :users, :only => [:new, :create, :show, :edit, :update] do
     resource :profile, :only => [:new]
-    resources :posts, :only => [:new, :create, :index]
+    resources :posts, :only => [:new, :create, :index, :destroy]
   end
 
   get "/about" => "users#show"

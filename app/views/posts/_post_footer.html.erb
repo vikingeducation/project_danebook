@@ -14,7 +14,7 @@
     </div>
 
     <div class="pull-right">
-      <a href="#" alt="Delete this post">Delete</a>
+      <%= link_to 'Delete', user_post_path(post.author, post), method: 'DELETE', alt: 'Delete this post' %>
     </div>
 
   </div>

@@ -126,9 +126,11 @@
         </aside>
 
 
-        <!--news feed-->
+        <!--timeline posts!-->
         <div class="col-md-7 col-md-offset-1" id="news-feed">
+
           <% if current_user.id==params[:user_id].to_i %>
+
             <section id ="post-box">
               <%= form_for [current_user, @post] do |f|%>
 
@@ -147,11 +149,11 @@
                 </div>
 
               <% end %>
-            </section><!-- Ends status update -->
+            </section><!-- Ends post form -->
           <% end %>
 
-
-            <%= render @posts %>
+          <!-- list all existing post below -->
+          <%= render @posts %>
 
         </div>
       </div>

@@ -5,7 +5,6 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.where("user_id = ?", params[:user_id]).includes(:comments => :likes)
-    # fail
     @post = Post.new
     @profile = current_user.profile
   end
@@ -14,7 +13,6 @@ class PostsController < ApplicationController
     @post = Post.new(params_list)
     @post.user_id = current_user.id
     if @post.save
-      # fail
       redirect_to user_posts_path(current_user)
     else
       render :new

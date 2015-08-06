@@ -1,5 +1,6 @@
 class Friending < ActiveRecord::Base
 
+  #person clicking friend button
   belongs_to :friend_initiator, :foreign_key => :friender_id,
                                 :class_name => "User"
 

@@ -2,12 +2,6 @@ Rails.application.routes.draw do
 
   root 'users#new'
 
-  # get 'about' => 'static_pages#about'
-  # get 'about' => 'profile#show'
-  get 'timeline' => 'static_pages#timeline'
-  get 'friends' => 'static_pages#friends'
-  get 'about_edit' => 'static_pages#about_edit'
-  get 'photos' => 'static_pages#photos'
 
   resources :users, only: [:new, :create, :show, :edit, :update] do
     resource :profile, only: [:create, :show, :edit, :update]
@@ -16,13 +10,24 @@ Rails.application.routes.draw do
 
   resource :session, :only => [:create, :destroy]
   resources :comments, :only => [:create, :destroy]
-  # get "login" => "sessions#new"
+  resources :friendings, :only => [:create, :destroy]
+
   get "login" => "users#new"
   delete "logout" => "sessions#destroy"
 
   post "like" => "likes#create"
   delete "unlike"  => 'likes#destroy'
 
+
+  # OLD STATIC ROUTES BELOW (remove after all dynamic pages work)
+  #==============================================================
+
+  # get 'about' => 'static_pages#about'
+  # get 'about' => 'profile#show'
+  get 'timeline' => 'static_pages#timeline'
+  get 'friends' => 'static_pages#friends'
+  get 'about_edit' => 'static_pages#about_edit'
+  get 'photos' => 'static_pages#photos'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

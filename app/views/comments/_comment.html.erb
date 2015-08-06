@@ -1,12 +1,15 @@
 <article class = "feed-posts">
   <div class="row">
+
     <div class="col-xs-2">
       <%=image_tag "user_silhouette_generic.gif", width: "50px", height: "50px" %>
     </div>
+
     <div class="col-xs-10">
       <p><%= link_to comment.user.full_name, user_path(comment.user.id) %></p>
       <p class="date-posted">Posted on <%=comment.created_at %></p>
     </div>
+
   </div>
 
   <div class = "row">
@@ -20,11 +23,14 @@
       <%= like_display(comment).html_safe if comment.likes.any?%>
       <div class = "row">
         <%= like_or_unlike_link(comment) %>
-        <a class="col-xs-2" href="#">Comment</a>
+
+        <!-- <a class="col-xs-2" href="#">Comment</a> #this link not needed at the moment-->
+
         <% if current_user == comment.user %>
         <%= link_to "Delete", comment_path(comment), method: :delete, class: "col-xs-1 col-xs-offset-6" %>
         <% end %>
       </div>
     </footer>
   </div>
-</article><!--First comment end-->
+
+</article><!--comment end-->

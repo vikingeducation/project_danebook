@@ -23,6 +23,7 @@ class User < ActiveRecord::Base
   has_many :likings, through: :posts
   has_many :likes
 
+  # person who want to be friends
   has_many :initiated_friendings, :foreign_key => :friender_id,
                                   :class_name => "Friending"
   has_many :friended_users,       :through => :initiated_friendings,

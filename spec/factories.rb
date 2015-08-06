@@ -31,4 +31,17 @@ FactoryGirl.define do
     user
   end
 
+  factory :profile do
+    sequence(:first_name) { |n| "foo#{n}" }
+    sequence(:last_name) { |n| "bar#{n}" }
+    sequence(:college) { |n| "college #{n}" }
+    sequence(:hometown) { |n| "town #{n}" }
+    sequence(:current_lives) { |n| "city #{n}" }
+    gender ["male", "female"].shuffle[0]
+    user
+  end
+
 end
+
+
+

@@ -1,0 +1,56 @@
+<% if post.persisted? %>
+<article class="panel panel-default comments">
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-sm-2">
+        <div class="thumbnail">
+         <img src="<%= post.user.profile.photo_url %>">
+       </div>
+     </div> <!-- col-md-2 end -->
+
+     <div class="col-md-7 poster">
+       <%= link_to "#{post.user.first_name} #{post.user.last_name}", user_posts_path(post.user.id) %>
+       <p class="grey-text">
+        Posted on <%= post.created_at.strftime("%A %m/%d/%y") %>
+      </p>
+    </div>
+  </div> <!-- row end -->
+  <div class="row">
+    <div class="col-md-12">
+      <p><%= post.body %></p>
+    </div>
+  </div>
+</div>
+
+<div class="panel-footer clearfix">
+
+  <div class="pull-right">
+    <a href="#">Delete</a>
+  </div>
+  <div class="pull-left">
+    <a href="#">UnLike</a> 
+    <a href="#" id='comment_link'>add comment</a>
+<div id='comment' style="display:none;" data-no-turbolink>
+ COMMENT BO
+</div>
+  </div>
+  <br>
+  <div class="pull-left liked">
+    <span class="grey-text">You and </span><a href="#">Hermione Granger</a> <span class="grey-text"> and 3 others like this</span>
+  </div>
+</div>
+
+    <% unless post.comments.empty? %>
+        <%= render :partial=>'comment' , 
+                    :locals=>{:comment => post.comments},
+                    :collection => post.comments %>
+    <% end %>
+
+</article> <!-- end comment panel -->
+<% end %>
+
+<script type='text/javascript'>
+function fade_some_stuff(){
+   $('#comment_link').click( function(){ $('#comment').fadeIn(); $('#comment_link').fadeOut(); });
+}
+</script>

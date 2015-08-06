@@ -9,8 +9,8 @@ class UsersController < ApplicationController
       @user.build_profile.save
        #needs call back to save together.
       flash[:success] = "Thank you for signing up on Danebook!"
-      sign_in
-      redirect_to edit_user_profile
+      sign_in(@user)
+      redirect_to edit_user_profile_path(@user)
     else
       flash[:error] = "Aw, there was an error, try again!"
       render :new

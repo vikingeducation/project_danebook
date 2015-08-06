@@ -1,11 +1,15 @@
 class User < ActiveRecord::Base
   has_one :profile
   has_many :posts
-  
+  has_many :comments
+
   has_secure_password
 
   before_create :generate_token
 
+  def full_name
+     self.first_name + " " + self.last_name
+  end
 
   def generate_token
     begin 

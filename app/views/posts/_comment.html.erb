@@ -1,0 +1,31 @@
+
+ <section class="row commented">
+    <hr>
+    <div class="col-sm-2">
+      <div class="thumbnail">
+       <img src="images/user_silhouette_generic.gif">
+      </div>
+    </div> <!-- col-md-2 end -->
+
+    <div class="col-md-7 poster">
+      <a href="#">
+        <%=  link_to comment.author.full_name, user_posts_path(comment.author) %>
+      </a>
+      <span class="grey-text">
+        Said on <%= comment.created_at.strftime("%A %m/%d/%y") %>
+      </span>
+    <p>
+
+    </p>
+    <div class="clearfix">
+       <div class="pull-right">
+        <a href="#">Delete</a>
+       </div>
+       <div class="pull-left">
+       <a href="#">Like</a>
+        <span class="grey-text">    3 other people like this</span>
+
+       </div>
+      </div>
+    </div> <!-- col-md-7 end -->
+  </section> <!-- row end -->

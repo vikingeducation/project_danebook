@@ -10,4 +10,25 @@ FactoryGirl.define do
     password "foobar"
   end
 
+  factory :post do
+    sequence(:body) { |n| "post #{n}" }
+    user
+  end
+
+  factory :comment do
+    sequence(:body) { |n| "comment #{n}"}
+    user
+    post
+  end
+
+  factory :post_like, class: "Like" do
+    association :likable, :factory => :post
+    user
+  end
+
+  factory :comment_like, class: "Like" do
+    association :likable, :factory => :comment
+    user
+  end
+
 end

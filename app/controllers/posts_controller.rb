@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :require_current_user, only: [:create, :destroy]
 
   def index
-    @posts = @user.written_posts
+    @posts = @user.written_posts.includes(comments: [:author])
     @new_post = Post.new(author: @user)
   end
 

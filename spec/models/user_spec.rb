@@ -13,35 +13,85 @@ describe User do
     expect{user.save!}.to_not raise_error
   end
 
-  it "will fail without email" do
+  it "will fail without an email" do
     user = build(:user, email: nil)
     expect(user).to_not be_valid
   end
 
-  xit "will fail without a unique email" do
+  it "will fail without a unique email" do
     user = build(:user, email: "foo@bar.com")
     user.save
 
-    new_user = build(:user, name: "foobar", email: "foo@bar.com",
-                password: "foobar", password_confirmation: "foobar")
+    new_user = build(:user, first_name: "foo", last_name: "bar",
+                      email: "foo@bar.com", password: "password",
+                      password_confirmation: "password",
+                      birthdate: Date.parse('20-10-2000') )
 
     expect(new_user).to_not be_valid
 
   end
 
-  xit "will fail without name" do
-    new_user = build(:user, name: nil, email: "foobar@bar.com",
-                password: "foobar", password_confirmation: "foobar")
-    expect(new_user).to_not be_valid
+  it "will fail if email input doesn't have '@'" do
+    user = build(:user, email: "foo.bar.com")
+    expect(user).to_not be_valid
   end
 
-  xit "name should be betweeen 3 and 20 characters" do
-    user =build(:user, :name => "f")
+  it "will fail without a first name" do
+    user = build(:user, first_name: nil)
+    expect(user).to_not be_valid
+  end
+
+  it "has a first name between 1 and 30 characters" do
+    user = build(:user, first_name: "")
     expect(user).to_not be_valid
 
-    user = build(:user, :name => "kkkkkkkkkkkkkkkkkkkkkkkkk")
+    user = build(:user, first_name: "A")
+    expect(user).to be_valid
+
+    str= "foobarbaz"*4
+    user = build(:user, first_name: str)
     expect(user).to_not be_valid
 
+    str= "foobarbaz"*3
+    user = build(:user, first_name: str)
+    expect(user).to be_valid
+  end
+
+  it "will fail if first_name has no letters" do
+    user = build(:user, first_name: "  ")
+    expect(user).to_not be_valid
+
+    user = build(:user, first_name: "1238")
+    expect(user).to_not be_valid
+  end
+
+  it "will fail without a last name" do
+    user = build(:user, last_name: nil)
+    expect(user).to_not be_valid
+  end
+
+  it "has a last name between 1 and 30 characters" do
+    user = build(:user, last_name: "")
+    expect(user).to_not be_valid
+
+    user = build(:user, last_name: "A")
+    expect(user).to be_valid
+
+    str= "foobarbaz"*4
+    user = build(:user, last_name: str)
+    expect(user).to_not be_valid
+
+    str= "foobarbaz"*3
+    user = build(:user, last_name: str)
+    expect(user).to be_valid
+  end
+
+  it "will fail if last_name has no letters" do
+    user = build(:user, last_name: "  ")
+    expect(user).to_not be_valid
+
+    user = build(:user, last_name: "1238")
+    expect(user).to_not be_valid
   end
 
   xit "password length should be between 6 and 16 characters" do

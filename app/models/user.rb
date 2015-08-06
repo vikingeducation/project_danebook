@@ -6,7 +6,8 @@ class User < ActiveRecord::Base
   has_secure_password
 
   validates :email, :presence => true,
-                    :format => { :with => /@/ }
+                    :format => { :with => /@/ },
+                    :uniqueness => true
 
   validates :password, :presence => true,
                         :length => {:in => 8..25},
@@ -16,7 +17,8 @@ class User < ActiveRecord::Base
   validates :birthdate, :presence => true
 
   validates :first_name, :last_name, :presence => true,
-                                      :length => {:in => 1..30}
+                                    :length => {:in => 1..30},
+                                    :format => {:with => /[a-zA-Z]/}
 
   has_one :profile
   has_many :posts

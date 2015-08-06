@@ -13,6 +13,10 @@
 #                :email => Faker::Internet.email,
 #                :password_digest)
 # end
+# 
+  t_start = Time.now
+
+  puts "Starting now"
 
   10.times do
     User.create(first_name: Faker::Name.first_name,
@@ -21,6 +25,8 @@
                 password: "password",
                 password_confirmation: "password")
   end
+
+  puts "Created Users; #{Time.now - t_start} seconds"
 
   User.all.each do |user|
     user.profile.birthday = Faker::Date.between(60.years.ago, 13.years.ago)
@@ -33,8 +39,39 @@
     user.profile.save
   end
 
+  puts "Assigned Profiles to users; #{Time.now - t_start} seconds"
+
   Profile.all.each do |profile|
     rand(2..10).times do
-      profile.posts.create(:body => Faker::Lorem.paragraph(rand(1..20)))
+      post = profile.posts.create(:body => Faker::Lorem.paragraph(rand(1..20)))
+      post.user_id = rand(1..User.count)
+      post.save
     end
   end
+
+  puts "Created Posts; #{Time.now - t_start} seconds"
+
+  Post.all.each do |post|
+    rand(0..3).times do
+      post.comments.create(:body => Faker::Lorem.paragraph(rand(1..3)))
+    end
+  end
+
+  puts "Created Comments; #{Time.now - t_start} seconds"
+
+  likeables = ["Post", "Comment"]
+
+  200.times do
+    like = Like.new(likeable_type: likeables.sample)
+    if like.likeable_type == "Post"
+      like.likeable_id = rand(1..Post.count)
+    else
+      like.likeable_id = rand(1.. Comment.count)
+    end
+    like.user_id = rand(1..User.count)
+    like.save
+  end
+  puts "Created Likes; #{Time.now - t_start} seconds"
+
+
+

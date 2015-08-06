@@ -3,12 +3,38 @@ require 'rails_helper'
 FactoryGirl.define do
 
   factory :user do
+
     sequence(:first_name){ |n| "Foo#{n}"}
     email    { "#{first_name}@bar.com"}
     last_name "bar"
     password "password"
     password_confirmation "password"
     birthdate   {Date.parse('20-10-2000')}
+
+  end
+
+  factory :post_like, class: "Like" do
+    association :likings, :factory => :post
+    # body  {"something in post body"}
+  end
+
+  factory :comment_like, class: "Like" do
+    association :likings, :factory => :post
+    # body  "something in comment body"
+  end
+
+
+  factory :post_comment, class: "Comment" do
+    association :commentable, :factory => :post
+
+    body  "something in post body"
+    user
+  end
+
+  factory :post do
+    body  "something in post body"
+
+    user
   end
 
   factory :profile do
@@ -21,18 +47,6 @@ FactoryGirl.define do
     gender      "male"
 
     user
-  end
-
-  factory :post do
-
-  end
-
-  factory :comment do
-
-  end
-
-  factory :like do
-
   end
 
   # factory :friend do

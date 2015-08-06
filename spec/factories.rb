@@ -6,4 +6,33 @@ FactoryGirl.define do
     password {"foobar"}
     password_confirmation {"foobar"}
   end
+
+  factory :profile do
+    college {"Foo State"}
+    hometown {"Foo City"}
+    current_town {"Foo Town"}
+    telephone {"555.555.5555"}
+    words_to_live_by {"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel debitis, ut. Amet quae, commodi modi neque beatae asperiores dolores autem praesentium libero obcaecati a voluptate eos ab consequuntur dignissimos quam!"}
+    about_me {"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem in quasi dolor odio vel ex voluptas dolorem at, nobis cumque est suscipit consectetur perferendis, adipisci architecto non fugiat exercitationem voluptate."}
+    user   
+  end
+
+  factory :post do
+    body {"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus dolores, consequuntur voluptatem? Natus doloremque impedit alias mollitia, atque nostrum, veniam possimus iure consectetur, unde iusto, cumque dolores nemo quibusdam officia?"}
+    profile
+  end
+
+  factory :comment do
+    body {"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit odio accusamus magnam excepturi nostrum doloremque sed praesentium, ullam, numquam adipisci ipsa inventore! Quibusdam aliquid placeat beatae porro voluptatum quod, eaque!"}
+    post
+  end
+
+  factory :comment_like, class: "Like" do
+    association :likeable, factory: :comment
+  end
+
+  factory :post_like, class: "Like" do
+    association :likeable, factory: :post
+  end
+
 end

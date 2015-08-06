@@ -9,7 +9,7 @@ describe User do
 
   it "should have a profile after creation" do
     user.save
-    expect(user.profile.id).not_to be_nil
+    expect(user.profile.persisted?).to be true
   end
 
   it "should have likes association" do

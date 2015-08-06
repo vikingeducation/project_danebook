@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root 'users#new'
+  root 'profiles#timeline'
   resources :profiles, only: [:edit, :update, :show] do
     get 'timeline'
   end

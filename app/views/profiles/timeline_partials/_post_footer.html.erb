@@ -1,3 +1,4 @@
+
 <%= form_for(Comment.new ) do |f| %>
 <div class="panel-footer clearfix">
   <div class="pull-right">
@@ -10,7 +11,7 @@
     <%= render partial: '/profiles/timeline_partials/comment', locals: {:comment => comment} %>
     <% end %>
     <hr>
-    <div class="col-md-7 col-md-offset-2">
+    <div class="col-md-10 col-md-offset-1 new-comment-field">
      <%= f.text_area :body, class: 'full_width' %>
      <%= f.submit "Comment", class: "pull-right" %> 
    </div>

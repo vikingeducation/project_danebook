@@ -5,7 +5,7 @@ module ProfilesHelper
     if count == 0
       str = link_to "Be the first to like this.", post_likes_path(likeable), method: :post
     elsif likeable.already_liked_by?(current_user) && count == 1
-      str = "(You like this)."
+      str = ""
     elsif likeable.already_liked_by?(current_user) && count == 2
       str = "(You and 1 other like this)."
     elsif likeable.already_liked_by?(current_user) && count > 1

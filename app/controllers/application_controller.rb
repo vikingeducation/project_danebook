@@ -2,6 +2,8 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
+  before_action :direct_to_signup
+
 
 
   private
@@ -34,6 +36,12 @@ class ApplicationController < ActionController::Base
   def sign_out
     @current_user = nil
     cookies.delete(:auth_token)
+  end
+
+  def direct_to_signup
+    unless current_user
+      redirect_to new_user_path
+    end
   end
 
 end

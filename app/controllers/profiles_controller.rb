@@ -1,14 +1,18 @@
 class ProfilesController < ApplicationController
+  
+
+
   def edit
-    @user = User.find(params[:user_id])
-    @profile = @user.profile
+    
+    @profile = Profile.find(params[:id])
+    @user = @profile.user
   end
 
   def update
-    @profile = Profile.find(params[:id]).profile
+    @profile = Profile.find(params[:id])
     if @profile.update(profile_params)
       flash[:success] = "Profile updated"
-      redirect_to user_profile_path(@profile.user)
+      redirect_to profile_path(@profile)
     else
       flash[:error] = "Could not save"
       render :edit
@@ -16,7 +20,8 @@ class ProfilesController < ApplicationController
   end
 
   def timeline
-   @profile = Profile.find(params[:profile_id])
+   @profile = Profile.find_by_id(params[:profile_id])
+   @profile ||= Profile.find(current_user.id)
    @posts = @profile.posts.order("created_at DESC")
  end
 
@@ -27,6 +32,8 @@ class ProfilesController < ApplicationController
   end
 
   private
+
+
 
   def profile_params
     params.require(:profile).permit(:college, :hometown, :current_town,

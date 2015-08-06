@@ -131,6 +131,15 @@ describe Comment do
     end
   end
 
+  context 'written posts ordering' do
+    it 'should return written posts in descending order' do
+      posts = create_list(:post, 10)
+      user.written_posts << posts
+      user.save
+      expect(user.written_posts.all).to eq(posts.reverse)
+    end
+  end
+
   context 'commenting on posts' do
     let(:new_comment) { build(:commented_post) }
     it 'should allow a user to have comments on posts' do

@@ -13,14 +13,6 @@
 
 ActiveRecord::Schema.define(version: 20150806001703) do
 
-  create_table "birthdates", force: :cascade do |t|
-    t.integer  "month"
-    t.integer  "day"
-    t.integer  "year"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "comments", force: :cascade do |t|
     t.integer  "user_id",          null: false
     t.integer  "commentable_id",   null: false
@@ -61,12 +53,13 @@ ActiveRecord::Schema.define(version: 20150806001703) do
 
   create_table "profiles", force: :cascade do |t|
     t.integer  "user_id"
+    t.date     "birthdate"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string   "college"
     t.string   "hometown"
     t.string   "location"
-    t.integer  "phone"
+    t.string   "phone"
     t.text     "motto"
     t.text     "about"
     t.string   "gender"
@@ -77,10 +70,11 @@ ActiveRecord::Schema.define(version: 20150806001703) do
     t.string   "last_name"
     t.string   "email",           null: false
     t.string   "password_digest", null: false
+    t.date     "birthdate"
+    t.string   "sex"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.string   "auth_token"
-    t.date     "birthdate"
   end
 
   add_index "users", ["auth_token"], name: "index_users_on_auth_token", unique: true

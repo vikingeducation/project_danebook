@@ -18,13 +18,13 @@
 
               Posted on <%= p.created_at.strftime("%A %-m/%-d/%Y") %>
 
-            </div>
-
           </div>
 
           <div class="post-content">
 
             <p><%= p.body %></p>
+
+            <br>
 
           </div>
 
@@ -34,7 +34,7 @@
 
         <div class="like-btn">
 
-          <%= link_to "Like", likes_path(:likeable_id => 1, :likeable_type => :post, :user_id => current_user.id), method: :post %>
+          <%= link_to "Like", likes_path(:likeable_id => 1, :likeable_type => "post", :user_id => current_user.id), method: :post %>
 
         </div>
 

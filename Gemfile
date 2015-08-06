@@ -51,6 +51,7 @@ group :development, :test do
   gem 'sqlite3'
 
   gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
+  gem "bullet"
 end
 
 group :production do

@@ -6,6 +6,7 @@ class PostsController < ApplicationController
     @user = User.includes(:profile).includes(:posts).find(params[:user_id])
     @posts = @user.posts.order(created_at: :desc)
     @post = Post.new
+    @like = Like.new
   end
 
   def create

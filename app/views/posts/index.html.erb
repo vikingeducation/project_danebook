@@ -32,7 +32,7 @@
       <% @posts.each do |post| %>
         <article class ="row post">
           <div class="col-sm-2 posted-by">
-            <img src="http://images6.fanpop.com/image/polls/1384000/1384462_1402305957008_full.jpg">
+            <img src="https://www.blastr.com/sites/blastr/files/styles/blog_post_media/public/dawn_apes_caesar.jpg?itok=-jHgIwlD">
           </div>
           <div class="col-sm-10 posted-name">
             <div class="col-sm-12">
@@ -48,119 +48,32 @@
 
           <div class="col-sm-12 like-bar">
             <div class="col-sm-1 ">
-              <a href="#">Like</a>
+              <% if current_user.like?(post.id, "Post") %>
+                <%= link_to "Unlike", like_path(current_user.get_like_id(post.id, "Post")), 
+                                    method: :delete %>
+              <% else %>
+                <%= link_to "Like", likes_path(user_id: current_user.id,
+                                              likable_id: post.id,
+                                              likable_type: "Post"), 
+                                    method: :post %>
+              <% end %>
             </div>
             <div class="col-sm-1">
               <a href="#">Comment</a>
             </div>
             <% if current_user == @user %>
               <div class="col-sm-1 col-sm-offset-8">
-                <%= link_to "Delete", post_path(post.id), method: :delete %>
+                <%= link_to "Delete", post_path(post.id, user_id: current_user.id), method: :delete %>
               </div>
             <% end %>
           </div>
+
+          <div class="col-sm-12">
+            <%= Like.display_likes_msg(post) %>
+          </div>
+          <%= render partial: "comments/comments", locals: {post: post} %>
         </article>
       <% end %>
-
-      <article class ="row post">
-        <div class="col-sm-2 posted-by">
-          <img src="http://images6.fanpop.com/image/polls/1384000/1384462_1402305957008_full.jpg">
-        </div>
-        <div class="col-sm-10 posted-name">
-          <p>Samwell Tarly<br>Posted on June 29, 302</p>
-        </div>
-
-          <div class="col-sm-12">
-            <p class="post-text">
-              <br>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-          </div>
-
-        <div class="col-sm-12 like-bar">
-          <div class="col-sm-1 ">
-            <a href="#">Unlike</a>
-          </div>
-          <div class="col-sm-1 col-sm-offset-9">
-            <a href="#">Delete</a>
-          </div>
-        </div>
-        <div class="col-sm-12 like-bar liked">
-          <div class="col-sm-12 ">
-            You and <a href="#">Samwell Tarly</a> like this.
-          </div>
-        </div>
-        <div class="col-sm-12 combox">
-          <div class="col-sm-2 posted-by">
-            <img src="http://images6.fanpop.com/image/polls/1384000/1384462_1402305957008_full.jpg">
-          </div>
-          <div class="col-sm-10 posted-name">
-            <p>Samwell Tarly said on June 29, 302</p>
-          </div>
-          <div class="col-sm-12">
-            <p class="post-text">
-              <br>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-            
-              <div class="col-sm-1 ">
-                <a href="#">Like</a>
-              </div>
-              <div class="col-sm-8">
-                <span class="grey">3 other people like this</span>
-              </div>
-              <div class="col-sm-1 col-sm-offset-1">
-                <a href="#">Delete</a>
-              </div>
-
-          </div>
-
-          <div class="col-sm-2 posted-by">
-            <img src="http://images6.fanpop.com/image/polls/1384000/1384462_1402305957008_full.jpg">
-          </div>
-          <div class="col-sm-10 posted-name">
-            <p>Samwell Tarly said on June 29, 302</p>
-          </div>
-          <div class="col-sm-12">
-            <p class="post-text">
-              <br>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-            </p>
-            <div class="col-sm-1 ">
-              <a href="#">Like</a>
-            </div>
-            <div class="col-sm-8">
-              <span class="grey">3 other people like this</span>
-            </div>
-            <div class="col-sm-1 col-sm-offset-1">
-              <a href="#">Delete</a>
-            </div>
-            <div class="col-sm-12">
-              <textarea placeholder="Write a comment"></textarea>
-            </div>
-            <div class="col-sm-12 submit-bar">
-              <a href="#">Cancel</a><span class="pull-right"><a class="btn btn-primary" href="#.html" role="button">Post</a></span>
-
-            </div>
-
-          </div>
-
-
-        </div>
-      </article>
-
 
     </div>
 

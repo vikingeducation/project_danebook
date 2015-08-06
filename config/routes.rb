@@ -11,12 +11,16 @@ Rails.application.routes.draw do
   get '/timeline', to: 'static_pages#timeline'
 
   resources :users
+  resources :comments
+  
 
   resources :profiles, only: [:edit, :show, :update]
 
   resources :posts, only: [:index, :create, :destroy]
 
   resource :session, only: [:new, :create, :destroy]
+
+  resources :likes, only: [:create, :destroy]
 
   get "/signin", to: "sessions#new"
   delete "signout", to: "sessions#destroy"

@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
 
+  skip_before_action :require_signin
+  skip_before_action :require_current_user
+
   def index
     @users = User.all
   end
@@ -13,7 +16,7 @@ class UsersController < ApplicationController
     if @user.save
       sign_in(@user)
       flash[:success] = "Congrats! You are a member now!"
-      redirect_to edit_profile_path(@user.profile.id)
+      redirect_to edit_profile_path(@user.profile.id, user_id: current_user.id)
     else
       flash[:error] = "Error. Please try again!"
       render signin_path

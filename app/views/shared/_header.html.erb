@@ -28,7 +28,7 @@
         <ul class="nav nav-tabs">
 
           <li class="text-bottom" role="presentation">
-            <img id="user-photo" src="assets/harry_potter_small.jpg" width="140" height="140" alt="User's personal photo">
+            <%= image_tag 'harry_potter_small.jpg', id: 'user-photo', class: 'media-object', size: '140x140', alt: "User's personal photo" %>
           </li>
 
           <%= render :partial => "shared/nav_tab", :locals => { :page => "Timeline", :user => user, :badge => nil } %>

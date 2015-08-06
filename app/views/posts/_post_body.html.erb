@@ -10,10 +10,9 @@
         <!-- Media list image -->
         <div class="media-left">
 
-          <a href="#">
-            <img id="user-photo" class="media-object" src="assets/harry_potter_small.jpg" height="50" width="50" alt="Post author's photo">
-            <img>
-          </a>
+          <%= link_to user_path(post_author) do %>
+            <%= image_tag 'harry_potter_small.jpg', id: 'user-photo', class: 'media-object', size: '50x50', alt: "Post author's photo" %>
+          <% end %>
 
         </div>  <!-- end of image section -->
 

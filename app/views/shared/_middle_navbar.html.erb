@@ -32,7 +32,7 @@
             <%= link_to "Photos <span>(123)</span>".html_safe, photos_path %>
           </li>
 
-          <li class ="<%= controller.class == UsersController && controller.action_name == "friends" ? 'active' : '' %>" >
+          <li class ="<%= controller.class == FriendsController && controller.action_name == "index" ? 'active' : '' %>" >
             <%= link_to "Friends <span>(542)</span>".html_safe, user_friends_path(@user) %>
           </li>
         </ul>

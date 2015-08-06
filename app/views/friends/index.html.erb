@@ -47,6 +47,11 @@
           <!-- ^ Ends Friend Box Wrap -->
         </div>
       <% end -%>
+      <% if @friends.empty? %>
+      <div class="col-md-12 text-center">
+        <h3>This user doesn't have any friends yet :(</h3>
+      </div>
+      <% end -%>
     </div>
   </section>
 </main>

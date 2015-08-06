@@ -1,20 +1,19 @@
 class User < ActiveRecord::Base
   validates :email,    presence: { message: "Must have an email." },
                        uniqueness: true
-  validates :password, length:   { in: 1..20 },
+  validates :password, length:   { in: 6..20 },
                        allow_nil: true
   has_secure_password
-
-  before_create :generate_token
-
-  has_one :profile
-
-  accepts_nested_attributes_for :profile
 
   has_many :posts
   has_many :likes
   has_many :comments
 
+  has_one :profile
+
+  accepts_nested_attributes_for :profile
+
+  before_create :generate_token
 
   def generate_token
     begin

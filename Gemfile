@@ -52,6 +52,10 @@ group :development, :test do
 
   gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
   gem "bullet"
+  # test
+  gem 'factory_girl_rails', '~> 4.0'
+  gem 'rspec-rails'
+  gem 'guard-rspec', require: false
 end
 
 group :production do

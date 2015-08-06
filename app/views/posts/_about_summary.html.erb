@@ -11,22 +11,22 @@
           <!-- Conveniently, we can just re-use these from about.html and bootstrap scales it for us -->
         <div class="row">
           <div class="col-md-12">
-            <b>Birthday:</b> July 31st, 1980
+            <b>Birthday:</b> <%= @profile.user.dob %>
           </div>
         </div>
         <div class="row">
           <div class="col-md-12">
-            <b>College:</b> Hogwart's School of Witchcraft and Wizardry
+            <b>College:</b> <%= @profile.college_name %>
           </div>
         </div>
         <div class="row">
           <div class="col-md-12">
-            <b>Hometown:</b> Godrick's Hollow, England
+            <b>Hometown:</b> <%= @profile.hometown %>
           </div>
         </div>
         <div class="row">
           <div class="col-md-12">
-            <b>Currently Lives:</b> Godrick's Hollow, England
+            <b>Currently Lives:</b> <%= @profile.current_home %>
           </div>
         </div>
         </div>

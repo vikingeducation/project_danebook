@@ -67,7 +67,9 @@
 
                       </div>
                       <div class="col-xs-1 col-xs-offset-8">
-                        <%= link_to "Delete", user_post_path(current_user, post), method: :delete  %>
+                        <% if current_user.id == post.user_id %>
+                          <%= link_to "Delete", user_post_path(current_user, post), method: :delete  %>
+                          <% end %>
                       </div>
                       <%= user_like_info(post) %>
                     </div>
@@ -76,52 +78,9 @@
               </div>
               <div class="row">
                 <% post.comments.each do |comment| %>
-                  <% unless comment.body.nil? %>
 
-                    
-                      <div class="col-xs-12">
-                        <div class="row timeline-post-comment">
-                          <div class="col-xs-12">
-                            <!-- Top section of a post -->
-                            <div class="row">
-                              <div class="col-xs-12">
-                                <div class="row">
-                                  <!-- <div class="col-sm-1">
-                                    <%= image_tag "default_photo.png" %>
-                                  </div> -->
-                                  <div class="col-sm-5">
-                                    <div>
-                                    <h4><%= link_to comment.user.full_name, user_profiles_path(comment.user)   %>
-                                    <h6><%= comment.created_at %></h6>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="row">
-                                  <div class="col-xs-12">
-                                    <%= comment.body %>
-                                  </div>
-                                </div>
-                                <div class="row">
-                                  <div class="col-sm-1">
-                                    <!-- In application_helper -->
-                                    <%= like_links(post) %>
-                                  </div>
-                                  <div class="col-sm-5">
-                                    <%= user_like_info(post) %>
-                                    <% if comment.user_id == current_user.id%>
-                                      <div class="col-sm-1 col-sm-offset-4 timeline-comment-delete">
-                                      <%= link_to "Delete", comment_path(comment), method: :delete %>
-                                    <% end %>
-                                  
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  <% end %>
+                  <%= render partial: './comments/comment_partial', locals: {comment: comment} %>  
+                      
                 <% end %>
               </div>
               <%= render partial: "./comments/comment_form_for", locals: { post: post} %>

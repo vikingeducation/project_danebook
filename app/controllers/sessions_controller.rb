@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
       permanent_sign_in(@user)
     
       flash[:success] = "You've successfully signed in"
-      redirect_to user_profiles(current_user)
+      redirect_to user_profiles_path(current_user)
     else
       flash[:error] = "We couldn't sign you in"
       redirect_to new_user_path(@user)

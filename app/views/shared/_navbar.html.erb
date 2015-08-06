@@ -17,7 +17,13 @@
 				</div>
 				<div id="navbar"  class="navbar-collapse collapse">
 					<div class="col-md-6">
-						<input type="text" class="form-control danebook-search" placeholder="Search for Users">
+						<div class="form-group">
+							<%= form_tag('/users', :class=>"navbar-form navbar-left", :method => :get)  do %>
+						</div>
+						
+							<%= text_field_tag("user[first_name]", nil, :class=> "form-control danebook-search") %>
+							<%= submit_tag "Search", :class=> "btn btn-default" %>
+						<% end %>
 					</div>
 					<ul class="nav navbar-nav navbar-right">
 						<li><%= link_to current_user.full_name, user_posts_path(current_user)  %></li>

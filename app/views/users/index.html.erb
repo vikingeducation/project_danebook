@@ -1,0 +1,25 @@
+<%= render partial: "./shared/navbar" %>
+<main class ="search-results">
+  <div class="container">
+    <div class="row">
+      <div class="panel panel-default">
+        <div class="panel-heading">Search Results</div>
+        <div class="panel-body">
+          <% @users.each do |user| %>
+            <ul>
+              <div class="panel panel-default">
+                <div class="panel-body">
+                  <li><%= user.full_name %></li>
+                  <li><%= user.dob %></li>
+                  <li><%= link_to "friend", friendings_path(:friender_id => current_user.id, :friend_id => user.id), method: :post  %></li>
+                </div>
+              </div> 
+            </ul>
+          <% end %>
+        </div>
+            
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

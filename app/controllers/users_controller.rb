@@ -5,11 +5,12 @@ class UsersController < ApplicationController
   before_action :require_current_user, :only => [:edit, :update, :destroy]
 
   def index
-    @post = Post.new
+    @users = User.find_user_by_keyword(params[:user][:first_name])
   end
 
 
   def new
+    fail
     @user = User.new
   end
 

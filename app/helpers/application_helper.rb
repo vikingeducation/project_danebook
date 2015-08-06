@@ -14,29 +14,29 @@ module ApplicationHelper
     nil
   end
 
-  def like_links(post)
-    if post.likes.include_user?(current_user)
-      str = link_to "Like", likes_path(post_id:post.id), method: :post
+  def like_links(object)
+    if object.likes.include_user?(current_user)
+      str = link_to "Like", likes_path( :like => {likeable_id: object.id, likeable_type: object.class, user_id: current_user.id} ), method: :post
     else
-      str = link_to "Unlike", like_path(post.likes.where(:user_id=>current_user.id), post_id:post.id), method: :delete
+      str = link_to "Unlike", like_path(object.likes.where(:user_id=>current_user.id)[0]), method: :delete
     end
     str.html_safe
   end
 
-  def user_like_info(post)
-    if post.likes.length > 0
+  def user_like_info(object)
+    if object.likes.length > 0
       string = '<div class="row"><div class="col-xs-12">'
-      if post.likes.length == 1
-        string += "#{post.likes[0].user.full_name} likes this"
-      elsif post.likes.length < 4 && post.likes.length > 1
-        post.likes.each do |like|
+      if object.likes.length == 1
+        string += "#{object.likes[0].user.full_name} likes this"
+      elsif object.likes.length < 4 && object.likes.length > 1
+        object.likes.each do |like|
 
-          string += "#{like.user.full_name} and"
+          string += "#{like.user.full_name} and "
         end
         string = string[0..-4]
         string += "like this"
       else
-        string = "#{post.likes.length} others like this"
+        string = "#{object.likes.length} others like this"
       end
       string += "</div></div>"
       string.html_safe

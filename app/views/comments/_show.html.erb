@@ -12,9 +12,15 @@
   </div>
 
   <div class="panel-footer clearfix">
-  	<% if object_owner_for_resource?(comment) %>
-  		<%= link_to "Delete", user_comment_path(:user_id => current_user.id, :id => comment.id),  method: :delete %>
-  	<% end %> 
+    <div class="pull-left">
+    <%= show_like_or_unlike(comment) %>
+    <%= like_count_to_display(comment) %>
+    </div>
+    <div class="pull-right">
+    <% if object_owner_for_resource?(comment) %>
+      <%= link_to "Delete", user_comment_path(:user_id => current_user.id, :id => comment.id), method: :delete %>
+    <% end %> 
+    </div>
   </div>
 
 </div> <!-- end panel default -->

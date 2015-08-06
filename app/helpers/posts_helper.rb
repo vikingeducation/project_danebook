@@ -32,7 +32,7 @@ module PostsHelper
 	# returns string of names to display who have liked a post
 	def names_to_display(id)
 		str = ""
-		num_of_likes = Post.find(id).count_likes(id)
+		num_of_likes = Post.find(id).count_likes
 		like_or_likes = num_of_likes
 
 		# add people other than current user
@@ -43,7 +43,7 @@ module PostsHelper
 		end
 
 		# add current user
-		if Post.find(id).user_likes_post?(id, current_user) 
+		if Post.find(id).user_likes_post?(current_user) 
 			if like_or_likes > 1
 				str = "You and" + str 
 			elsif like_or_likes > 0
@@ -56,7 +56,7 @@ module PostsHelper
 		str += " and #{num_of_likes} others" if num_of_likes > 0 
 
 		# add like or likes to the end
-		if like_or_likes > 1 || Post.find(id).user_likes_post?(id, current_user) 
+		if like_or_likes > 1 || Post.find(id).user_likes_post?(current_user) 
 		 	str += " like this post" 
 		elsif like_or_likes > 0 
 		 	str += " likes this post"

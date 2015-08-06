@@ -9,12 +9,12 @@ class Post < ActiveRecord::Base
 	# comments are polymorphic
 	has_many :comments, as: :commentable
 
-	def count_likes(id)
-		Post.find(id).likes.count
+	def count_likes
+		likes.count
 	end
 
-	def user_likes_post?(post_id, current_user)
-		Post.find(post_id).liked_by.ids.include?(current_user.id)
+	def user_likes_post?(current_user)
+		liked_by.include?(current_user)
 	end
 
 	def self.all_users_liking_post(post_id, current_user)

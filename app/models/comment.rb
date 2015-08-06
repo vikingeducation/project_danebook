@@ -6,5 +6,11 @@ class Comment < ActiveRecord::Base
 	# a comment can have comments
 	has_many :comments, as: :commentable
 
+	has_many :likes, as: :liking
+	has_many :users_liking_comment, through: :likes, source: :user 
+
+	def count_likes
+		users_liking_comment.count
+	end
 
 end

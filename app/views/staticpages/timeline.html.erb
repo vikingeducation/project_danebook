@@ -1,0 +1,373 @@
+<%= render partial: "navbar" %>
+<main>
+	<%= render partial: "info" %>
+	
+		<div class="row timeline">
+			<div class="col-md-12">
+				<!-- This column will represent the left side of the timeline. -->
+				<div class="col-md-4">
+					<!-- This row will represent the About summary -->
+					<div class="row post-control">
+						<div class="col-xs-12">
+							<div class="row">
+								<div class="col-xs-12 selected post-topbar">
+									<div class="center"> About (Text Area)</div>
+								</div>
+							</div>
+
+							<div class="row">
+						    	<div class="col-xs-12">
+						    		<!-- Conveniently, we can just re-use these from about.html and bootstrap scales it for us -->
+									<div class="row">
+										<div class="col-md-12">
+											<b>Birthday:</b> July 31st, 1980
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-12">
+											<b>College:</b> Hogwart's School of Witchcraft and Wizardry
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-12">
+											<b>Hometown:</b> Godrick's Hollow, England
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-12">
+											<b>Currently Lives:</b> Godrick's Hollow, England
+										</div>
+									</div>
+						    	</div>
+						    </div>
+
+						</div>
+					</div>
+
+					<div class="row post-control">
+						<div class="col-xs-12">
+							<div class="row">
+								<div class="col-xs-12 selected post-topbar">
+									<div class="center"> Photos (123) (Copied Text Area)</div>
+								</div>
+							</div>
+
+							<!-- We can just put them all in one row since cols that go past 12 overflow into a new row! -->
+							<div class="row timeline-photos">
+						    	<div class="col-xs-4"><a href="#"><%= image_tag "default_photo.png" %></a></div>
+								<div class="col-xs-4"><a href="#"><%= image_tag "default_photo.png" %></a></div>
+						    	<div class="col-xs-4"><a href="#"><%= image_tag "default_photo.png" %></a></div>
+								<div class="col-xs-4"><a href="#"><%= image_tag "default_photo.png" %></a></div>
+						    	<div class="col-xs-4"><a href="#"><%= image_tag "default_photo.png" %></a></div>
+								<div class="col-xs-4"><a href="#"><%= image_tag "default_photo.png" %></a></div>
+						    	<div class="col-xs-4"><a href="#"><%= image_tag "default_photo.png" %></a></div>
+								<div class="col-xs-4"><a href="#"><%= image_tag "default_photo.png" %></a></div>
+						    	<div class="col-xs-4"><a href="#"><%= image_tag "default_photo.png" %></a></div>
+								<div class="col-xs-4"><a href="#"><%= image_tag "default_photo.png" %></a></div>
+						    	<div class="col-xs-4"><a href="#"><%= image_tag "default_photo.png" %></a></div>
+								<div class="col-xs-4"><a href="#"><%= image_tag "default_photo.png" %></a></div>
+						    </div>
+
+						    <div class="row">
+						    	<div class="col-xs-12">
+						    		<div class="center"><a href="photos.html">See More Photos</a></div>
+						    	</div>
+						    </div>
+
+						</div>
+					</div>
+
+					<div class="row post-control">
+						<div class="col-xs-12">
+							<div class="row">
+								<div class="col-xs-12 selected post-topbar">
+									<div class="center"> Photos (123) (Copied Text Area)</div>
+								</div>
+							</div>
+
+							<div class="row timeline-photos">
+						    	<div class="col-xs-4"><a href="#"><%= image_tag "default_photo.png" %>Ron Weasley</a></div>
+								<div class="col-xs-4"><a href="#"><%= image_tag "default_photo.png" %>Ginny Weasley</a></div>
+						    	<div class="col-xs-4"><a href="#"><%= image_tag "default_photo.png" %>Hermione Granger</a></div>
+								<div class="col-xs-4"><a href="#"><%= image_tag "default_photo.png" %>Albus Dumbledore</a></div>
+						    	<div class="col-xs-4"><a href="#"><%= image_tag "default_photo.png" %>Severus Snape</a></div>
+								<div class="col-xs-4"><a href="#"><%= image_tag "default_photo.png" %>Fred Weasley</a></div>
+						    </div>
+
+						    <div class="row">
+						    	<div class="col-xs-12">
+						    		<div class="center"><a href="friends.html">See More Friends</a></div>
+						    	</div>
+						    </div>
+
+						</div>
+					</div>
+
+				</div>
+
+				<!-- This column will represent the right side of the timeline. -->
+				<div class="col-md-7 col-md-offset-1">
+					<!-- This row will represent the post window. -->
+					<div class="row">
+						<div class="col-xs-12 post-control">
+							<div class="row post-topbar selected">
+								<div class="col-xs-12">
+									<div class="center">Post (copied)</div>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-xs-12">
+									<textarea class="form-control" placeholder="Tell the world something..."></textarea>
+								</div>
+							</div>
+							<div class="row post-bottombar selected">
+								<div class="col-xs-12">
+									<div class="row">
+										<div class="col-xs-2 col-xs-offset-10">
+											<button class="btn btn-primary">Post</button>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- This row will represent a post -->
+					<div class="row timeline-post">
+						<div class="col-xs-12">
+							<!-- Top section of a post -->
+							<div class="row">
+								<div class="col-xs-12">
+									<div class="row">
+										<div class="col-sm-1">
+											<%= image_tag "harry.jpg" %>
+										</div>
+										<div class="col-sm-5">
+											<div>
+											<h4><a href="about.html">Harry Potter</a></h4>
+											<h6>Posted on Thursday 6/1/2014</h6>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-xs-12">
+											Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde totam tempora, molestiae iure quam officiis blanditiis laudantium eius cum minima, laborum, necessitatibus quia eaque harum amet corporis quod, dolorem rem.
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- Bottom section of a post -->
+							<div class="row timeline-post-bottombar">
+								<div class="col-xs-12 selected">
+									<div class="row">
+										<div class="col-xs-1">
+											<a href="#">Like</a>
+										</div>
+										<div class="col-xs-1">
+											<a href="#">Comment</a>
+										</div>
+										<div class="col-xs-1 col-xs-offset-8">
+											<a href="#">Delete</a>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- This row will represent a post -->
+					<div class="row timeline-post">
+						<div class="col-xs-12">
+							<!-- Top section of a post -->
+							<div class="row">
+								<div class="col-xs-12">
+									<div class="row">
+										<div class="col-sm-1">
+											<%= image_tag "harry.jpg" %>
+										</div>
+										<div class="col-sm-5">
+											<div>
+											<h4><a href="about.html">Harry Potter</a></h4>
+											<h6>Posted on Thursday 6/1/2014</h6>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-xs-12">
+											Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde totam tempora, molestiae iure quam officiis blanditiis laudantium eius cum minima, laborum, necessitatibus quia eaque harum amet corporis quod, dolorem rem.
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- Bottom section of a post -->
+							<div class="row timeline-post-bottombar">
+								<div class="col-xs-12 selected">
+									<div class="row">
+										<div class="col-xs-1">
+											<a href="#">Like</a>
+										</div>
+										<div class="col-xs-1">
+											<a href="#">Comment</a>
+										</div>
+										<div class="col-xs-1 col-xs-offset-8">
+											<a href="#">Delete</a>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-xs-12">
+											<a href="#">Hermione Granger</a> likes this.
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<!-- This row will represent a post -->
+					<div class="row timeline-post">
+						<div class="col-xs-12">
+							<!-- Top section of a post -->
+							<div class="row">
+								<div class="col-xs-12">
+									<div class="row">
+										<div class="col-sm-1">
+											<%= image_tag "harry.jpg" %>
+										</div>
+										<div class="col-sm-5">
+											<div>
+											<h4><a href="about.html">Harry Potter</a></h4>
+											<h6>Posted on Thursday 6/1/2014</h6>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-xs-12">
+											Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde totam tempora, molestiae iure quam officiis blanditiis laudantium eius cum minima, laborum, necessitatibus quia eaque harum amet corporis quod, dolorem rem.
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<!-- Bottom section of a post -->
+							<div class="row timeline-post-bottombar">
+								<div class="col-xs-12 selected">
+									<div class="row">
+										<div class="col-xs-1">
+											<a href="#">Like</a>
+										</div>
+										<div class="col-xs-1">
+											<a href="#">Comment</a>
+										</div>
+										<div class="col-xs-1 col-xs-offset-8">
+											<a href="#">Delete</a>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-xs-12">
+											You and <a href="#">Hermione Granger</a> and 3 others like this.
+										</div>
+									</div>
+									<!-- I'll have to find a way to make this less confusing, but this following section contains comments. -->
+									<div class="row">
+										<div class="col-xs-12">
+											<div class="row timeline-post-comment">
+												<div class="col-xs-12">
+													<!-- Top section of a post -->
+													<div class="row">
+														<div class="col-xs-12">
+															<div class="row">
+																<div class="col-sm-1">
+																	<%= image_tag "default_photo.png" %></img>
+																</div>
+																<div class="col-sm-5">
+																	<div>
+																	<h4><a href="about.html">Ron Weasley</a></h4>
+																	<h6>Said on Thursday 6/1/2014</h6>
+																	</div>
+																</div>
+															</div>
+															<div class="row">
+																<div class="col-xs-12">
+																	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Unde totam tempora, molestiae iure quam officiis blanditiis laudantium eius cum minima, laborum, necessitatibus quia eaque harum amet corporis quod, dolorem rem.
+																</div>
+															</div>
+															<div class="row">
+																<div class="col-sm-1">
+																	<a href="#">Like</a>
+																</div>
+																<div class="col-sm-5">
+																	3 other people like this.
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<!-- Another comment, this time owned by Harry. This means he can delete his own post. -->
+									<div class="row">
+										<div class="col-xs-12">
+											<div class="row timeline-post-comment">
+												<div class="col-xs-12">
+													<!-- Top section of a post -->
+													<div class="row">
+														<div class="col-xs-12">
+															<div class="row">
+																<div class="col-sm-1">
+																	<%= image_tag "harry.jpg" %>
+																</div>
+																<div class="col-sm-5">
+																	<div>
+																	<h4><a href="about.html">Harry Potter</a></h4>
+																	<h6>Said on Thursday 6/1/2014</h6>
+																	</div>
+																</div>
+															</div>
+															<div class="row">
+																<div class="col-xs-12">
+																	Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nemo, quia repellendus fugit rerum magnam facere nobis culpa perferendis fuga natus laudantium dicta quas doloribus, laborum provident in facilis optio aut!
+																</div>
+															</div>
+															<!-- This row has the like/delete links, and who/how many liked the comment. -->
+															<div class="row">
+																<div class="col-sm-1">
+																	<a href="#">Like</a>
+																</div>
+																<div class="col-sm-5">
+																	3 other people like this.
+																</div>
+																<div class="col-sm-1 col-sm-offset-4 timeline-comment-delete">
+																	<a href="#">Delete</a>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-xs-12 timeline-comment-box">
+											<textarea class="form-control" placeholder="Write a comment."></textarea>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-sm-2">
+											<div class="center"><a href="#">Cancel</a></div>
+										</div>
+										<div class="col-sm-3 col-sm-offset-7 timeline-comment-button">
+											<div class="center"><button class="btn btn-primary">Comment</button></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</main>

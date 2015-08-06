@@ -53,6 +53,7 @@ Rails.application.configure do
     # Bullet.bugsnag = true
     # Bullet.airbrake = true
     Bullet.add_footer = true
+    Bullet.unused_eager_loading_enable = false
     # Bullet.stacktrace_includes = [ 'your_gem', 'your_middleware' ]
   end
 end

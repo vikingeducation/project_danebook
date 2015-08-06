@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :require_current_user, only: [:create, :destroy]
 
   def index
-    @posts = @user.written_posts.includes(:people_who_like, :author, comments: [:people_who_like, :author])
+    @posts = @user.written_posts.includes(people_who_like: :friends, author: :friends, comments: [people_who_like: :friends, author: :friends])
     @new_post = Post.new(author: @user)
   end
 
@@ -40,7 +40,7 @@ class PostsController < ApplicationController
     end
 
     def find_user
-      @user = User.includes(:profile).find(params[:user_id])
+      @user = User.includes(:profile, :friends).find(params[:user_id])
     end
 
     def whitelist_post_params

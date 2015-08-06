@@ -1,0 +1,24 @@
+<div class="row commented">
+  <hr>
+  <div class="col-sm-2">
+    <div class="thumbnail">
+      <img src="images/user_silhouette_generic.gif">
+    </div>
+  </div> <!-- col-md-2 end -->
+
+  <div class="col-md-7 poster">
+    <%= comment.user.first_name %><span class="grey-text">  <%= comment.created_at.strftime('Said on %A %D') %></span>
+    <p>
+      <%= comment.body %>
+    </p>
+    <div class="clearfix">
+      <div class="pull-left">
+         <%= like_str(comment) %>
+        </span>
+        </div>
+      <div class="pull-right">
+        <%= link_to "Delete", comment_path(comment), method: :delete, class: 'pull-right'  %>
+      </div>
+    </div>
+  </div> <!-- col-md-7 end -->
+</div>

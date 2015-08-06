@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   end
   resources :likes, only: [:destroy]
   resources :users
+  resources :comments, only: [:create, :destroy] do
+    post 'likes' => 'comments/likes#create'
+  end
 
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'

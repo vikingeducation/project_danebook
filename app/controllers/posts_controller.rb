@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   before_action :require_current_user, only: [:create, :destroy]
 
   def index
-    @posts = @user.written_posts.includes(comments: [:author])
+    @posts = @user.written_posts.includes(:people_who_like, :author, comments: [:people_who_like, :author])
     @new_post = Post.new(author: @user)
   end
 

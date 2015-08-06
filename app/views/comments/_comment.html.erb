@@ -18,15 +18,24 @@
 
       <p><%= comment.body %></p>
 
-      <p>
-      <a href="#">Like</a>3 other people like this
+      <p>  
+
+      <%if @user.likes?(comment)%>
+      <%=link_to "Unlike", likes_path(user_id: @user.id, liking_id: comment.id, liking_type: comment.class), method: 'delete'%>
+      <%else%>
+      <%=link_to "Like", likes_path(liking_id: comment.id, liking_type: comment.class), method: 'post'%>
+       <%end%>
+       
+      <%=people_like_this(comment)%>
 
       <% if current_user && current_user.id = comment.user_id %>
-        <div class="col-sm-1">
-            <%= link_to "Delete", comment, method: "delete" %>
-        </div>
+        
+            <%= link_to "Delete", comment, method: "delete", class: "col-sm-1" %>
+        
       <% end %>
+
       </p>
+
     </div>
 
   </div>

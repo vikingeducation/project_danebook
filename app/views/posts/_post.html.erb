@@ -25,8 +25,16 @@
   <div class="comment-end-box">
 
     <div class="like-btn">
+ 
 
-      <a href="#">Like</a>
+      <%if @user.likes?(post) %>
+      <%=link_to "Unlike", likes_path(user_id: @user.id, liking_id: post.id, liking_type: post.class), method: 'delete'%>
+      <%else%>
+      <%=link_to "Like", likes_path(liking_id: post.id, liking_type: post.class), method: 'post'%>
+       <%end%>
+
+       <%=people_like_this(post)%>
+       
 
     </div>
 

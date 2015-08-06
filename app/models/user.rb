@@ -21,4 +21,7 @@ class User < ActiveRecord::Base
       self.first_name + " " + self.last_name
   end
 
+  def likes?(thing)
+    Like.where(user: self, liking_id: thing.id, liking_type: thing.class).any?
+  end
 end

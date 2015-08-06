@@ -1,6 +1,6 @@
 class Post < ActiveRecord::Base
   has_many :comments, -> { order('created_at ASC') }, as: :commenting, dependent: :destroy
-  #has_many :likes, as: :likable, dependent: :destroy
+  has_many :likes, as: :liking, dependent: :destroy
   belongs_to :author, class_name: "User", foreign_key: :user_id
 
   def has_likes?

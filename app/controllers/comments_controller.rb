@@ -1,7 +1,6 @@
 class CommentsController < ApplicationController
 
-  before_action :require_login, :except => [:index, :show]
-  # before_action :require_current_user, :only => [:create, :destroy]
+  skip_before_action :require_current_user, :only => [:index, :create, :destroy]
 
   def create
     session[:return_to] ||= request.referer

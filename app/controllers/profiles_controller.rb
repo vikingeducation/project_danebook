@@ -1,8 +1,6 @@
 class ProfilesController < ApplicationController
 
-  # before_action #check if currentuser = profile.user
-  before_action :require_login, :except => [:new, :create, :show]
-  before_action :require_current_user, :only => [:edit, :update, :destroy]
+  skip_before_action :require_current_user, :only => [:show]
 
   def create
     @profile = Profile.new(whitelisted_user_params)
@@ -32,7 +30,8 @@ class ProfilesController < ApplicationController
   end
 
   def show
-    @profile = Profile.find_by_user_id(params[:user_id])
+    @user= User.find(params[:user_id])
+    @profile = @user.profile
   end
 
   private

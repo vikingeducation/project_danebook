@@ -3,6 +3,9 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  before_action :require_login
+  before_action :require_current_user
+
   private
 
   #the session-length cookie, not used right now
@@ -45,7 +48,7 @@ class ApplicationController < ActionController::Base
   def require_current_user
     unless params[:user_id] == current_user.id.to_s
       flash[:error] = "You're not authorized to view this"
-      redirect_to root_url
+      redirect_to root_path
     end
   end
 

@@ -1,6 +1,6 @@
 class LikesController < ApplicationController
 
-  before_action :require_login, :only => [:create, :destroy]
+  skip_before_action :require_current_user, :only => [:create, :destroy]
 
   def create
     session[:return_to] ||= request.referer

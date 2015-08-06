@@ -20,7 +20,13 @@ module LikesHelper
 
       str += link_to user.full_name, user_path(user.id)
       num_ppl = pluralize( (count-num), 'other' )
-      count > 2 ? str += ", and #{num_ppl} like this." : str += " and #{num_ppl} likes this"
+      if count > 2 && (count-num) > 0
+        str += ", and #{num_ppl} like this."
+      elsif count == 1
+        str += " likes this"
+      else
+        str += " like this."
+      end
 
     end
     str.html_safe

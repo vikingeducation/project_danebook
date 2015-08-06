@@ -1,12 +1,12 @@
 class PostsController < ApplicationController
 
-  before_action :require_login, :except => [:new, :create]
-  before_action :require_current_user, :only => [:edit, :update, :destroy]
+  skip_before_action :require_current_user, :only => [:index]
 
   def index
     @posts = Post.where("user_id = ?", params[:user_id]).includes(:comments => :likes)
     @post = Post.new
-    @profile = current_user.profile
+    @user = User.find(params[:user_id])
+    @profile = @user.profile
   end
 
   def create

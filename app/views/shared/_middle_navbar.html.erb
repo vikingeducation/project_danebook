@@ -11,17 +11,17 @@
         <div class = "profile-pic-container">
           <%= image_tag "harry_potter_small.jpg", class: "img-responsive" %>
         </div>
-        <h1 class = "profile-name"><%= current_user.full_name %></h1>
+        <h1 class = "profile-name"><%= User.find(params[:user_id]).full_name %></h1>
       </div>
 
       <div class = "col-xs-7 navigation-container">
         <ul class = "nav navbar-nav nav-pills">
           <li class ="<%= controller.class == StaticPagesController && controller.action_name == "timeline" ? 'active' : '' %>" >
-            <%= link_to "Timeline", timeline_path %>
+            <%= link_to "Timeline", user_posts_path(params[:user_id]) %>
           </li>
 
           <li class ="<%= controller.class == StaticPagesController && controller.action_name == "about" ? 'active' : '' %>" >
-            <%= link_to "About", user_profile_path(current_user) %>
+            <%= link_to "About", user_profile_path(params[:user_id]) %>
           </li>
 
           <li class ="<%= controller.class == StaticPagesController && controller.action_name == "photos" ? 'active' : '' %>" >
@@ -36,7 +36,7 @@
 
       <div class = "col-sm-2 pull-right">
         <ul class = "nav navbar-nav">
-          <% unless (controller.class == StaticPagesController && controller.action_name == "about_edit") %>
+          <% if (params[:user_id]==current_user.id.to_s && (controller.class != ProfilesController && controller.action_name != "edit"))  %>
           <li>
             <%= link_to "Edit Profile", edit_user_profile_path(current_user) %>
           </li>

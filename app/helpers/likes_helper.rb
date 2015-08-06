@@ -33,9 +33,9 @@ module LikesHelper
 
   def like_or_unlike_link(object)
     if object.likes.you_liked?(current_user)
-      str = link_to "Unlike", unlike_path(like: {:likings_id => object.id, :likings_type => object.class.to_s}), method: :delete, class: "col-xs-2"
+      link_to "Unlike", unlike_path(like: {:likings_id => object.id, :likings_type => object.class}), method: :delete, class: "col-xs-2"
     else
-      str = link_to "Like", like_path(like: {:likings_id => object.id, :likings_type => object.class.to_s}), method: :post, class: "col-xs-12"
+      link_to "Like", like_path(like: {:likings_id => object.id, :likings_type => object.class}), method: :post, class: "col-xs-12"
     end
   end
 

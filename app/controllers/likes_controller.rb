@@ -7,11 +7,10 @@ class LikesController < ApplicationController
     #but obj not passed in parameters
     session[:return_to] ||= request.referer
     like = Like.new(params_list)
-    # like = Like.new(extract_likings)
+    #find obj with params_list, then build
+
     like.user_id = current_user.id
-    # fail
     if like.save
-      # fail
       flash[:success] = "You have liked this!"
     else
       flash[:error] = "There was an error, please try liking again!"
@@ -23,7 +22,6 @@ class LikesController < ApplicationController
     session[:return_to] ||= request.referer
     like = current_user.match_like(params_list)
     if current_user.id == like.user_id && like.destroy
-      # fail
       flash[:success] = "You have unliked this!"
     else
       flash[:error] = "There was an error, please try again!"

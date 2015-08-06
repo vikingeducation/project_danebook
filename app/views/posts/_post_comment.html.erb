@@ -1,0 +1,53 @@
+<div class="media">
+
+  <div class="col-xs-12">
+
+    <div class="media-left">
+
+      <a href="#">
+        <img id="user-photo" class="media-object" src="assets/user_silhouette_generic.gif" height="50" width="50" alt="Commenter's photo">
+        <img>
+      </a>
+
+    </div>
+
+    <div class="media-body">
+
+      <div class="media-heading">
+
+        <%= link_to comment_author, about_path %>
+
+        <time datetime=<%= comment_date %> pubdate>
+          <small>Said on <%= comment_date %></small>
+        </time>
+
+      </div>
+
+      <p><%= comment_body %></p>
+
+
+  <!-- Comment Likes section -->
+      <div class="pull-left">
+
+        <a href="#" alt="Like this post">
+          <% unless comment_self_like %>
+            Like
+          <% else %>
+            Unlike
+          <% end %>
+        </a>
+
+      </div>
+
+      <div class="pull-left">
+        <p><%= comment_likes %></p>
+      </div>
+
+      <div class="pull-right">
+        <a href="#" alt="Like this post">Delete</a>
+      </div>
+    </div>
+
+  </div> <!-- end of Comment Likes section -->
+
+</div> <!-- end of Second Comment -->

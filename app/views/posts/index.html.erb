@@ -158,61 +158,7 @@
         <%= render :partial => 'new', :locals => { :user => @user, :new_post => @new_post } if @user == current_user %>
 
 
-
-
-<!-- EXISTING POST -->
-        <%= render :partial => "static_pages/timeline/timeline_post",
-            :locals => {  :post_info => {
-                            author: "Harry Potter",
-                            date: "2014-06-01",
-                            body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-                            self_like: false,
-                            likes: ""
-                          },
-                          :comments => [] } %>
-
-<!--  end of Existing Post-->
-
-
-
-
-<!-- LIKED EXISTING POST -->
-        <%= render :partial => "static_pages/timeline/timeline_post",
-            :locals => {  :post_info => {
-                            author: "Harry Potter",
-                            date: "2014-05-21",
-                            body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-                            self_like: false,
-                            likes: "Hermione Granger likes this."
-                          },
-                          :comments => [] } %>
-
-<!--  end of Liked Existing Post-->
-
-
-
-
-      <%= render :partial => "static_pages/timeline/timeline_post",
-            :locals => {  :post_info => {
-                            author: "Harry Potter",
-                            date: "2014-05-21",
-                            body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
-                            self_like: true,
-                            likes: "Hermione Granger and 3 others like this."
-                          },
-                          :comments => [
-                            { author: "Ron Weasley",
-                              date: "2014-05-21",
-                              body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-                              self_like: false,
-                              likes: "3 other people like this." },
-                            { author: "Harry Potter",
-                              date: "2014-05-22",
-                              body: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-                              self_like: false,
-                              likes: "3 other people like this." }
-                            ]
-                          } %>
+        <%= render @posts %>
 
 
 

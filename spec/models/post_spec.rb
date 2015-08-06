@@ -2,6 +2,7 @@ require 'rails_helper'
 
 describe Post do
   let(:post) { create(:post) }
+
   describe '#posted_on' do
     it 'should respond to posted on method' do
       expect(post).to respond_to(:posted_on)
@@ -43,7 +44,6 @@ describe Post do
       post.likes << create(:liked_post)
       expect(post.people_who_like.count).to eq(1)
     end
-
   end
 
   context 'author association' do
@@ -54,7 +54,30 @@ describe Post do
     it 'should return an author by defualt' do
       expect(post.author).to be_a(User)
     end
+  end
 
+  context 'post creation' do
+    let(:user) { build(:user) }
+    it 'should attribute a post to a user' do
+      create(:post, author: user)
+      expect(user.written_posts.count).to eq(1)
+    end
+  end
+
+  context 'commenting on posts' do
+    let(:user) { build(:user) }
+    let(:new_comment) { build(:commented_post) }
+    it 'should allow a user to have comments on posts' do
+      user.comments << new_comment
+      user.save
+      expect(user.comments.count).to eq(1)
+    end
+
+    it 'should allow a user to retrieve a post based on the comment' do
+      user.comments << new_comment
+      user.save
+      expect(user.posts_commented_on.first).to eq(new_comment.commentable)
+    end
   end
 
 end

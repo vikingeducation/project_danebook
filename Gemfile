@@ -36,6 +36,12 @@ gem 'bcrypt', '~> 3.1.7'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+group :development do
+  gem 'better_errors'
+  gem 'guard-rspec' , require: false
+  gem 'binding_of_caller'
+end
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
@@ -47,5 +53,8 @@ group :development, :test do
   gem 'spring'
 
   gem "bullet"
+
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
 end
 

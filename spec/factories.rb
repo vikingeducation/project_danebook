@@ -19,7 +19,7 @@ FactoryGirl.define do
   end
 
   factory :comment_like, class: "Like" do
-    association :likings, :factory => :post
+    association :likings, :factory => :post_comment
     # body  "something in comment body"
   end
 
@@ -36,6 +36,7 @@ FactoryGirl.define do
 
     user
   end
+
 
   factory :profile do
     college     "Some College"

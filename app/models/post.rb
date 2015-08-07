@@ -5,7 +5,7 @@ class Post < ActiveRecord::Base
   has_many :likes, as: :likings, class_name: "Like", dependent: :destroy
   has_many :comments, as: :commentable, class_name: "Comment"
 
-  validates :body, :presence => :true
+  validates :body, :user_id, :presence => :true
 
 
 

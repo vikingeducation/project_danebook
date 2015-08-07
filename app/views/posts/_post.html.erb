@@ -32,54 +32,55 @@
 
           </div> <!-- End of Comments media list -->
 
+        <% end %>
 
-          <!-- Post another comment (only if there are comments) -->
-          <div class="row">
 
-            <div class="col-xs-12">
+        <!-- Post another comment (only if there are comments) -->
+        <div class="row">
 
-              <!-- <form id="comment-form"> -->
-              <div class='comment-form'>
+          <div class="col-xs-12">
 
-                <%= form_for Comment.new do |comment_fields| %>
+            <!-- <form id="comment-form"> -->
+            <div class='comment-form'>
 
-                  <%= comment_fields.hidden_field :author_id, value: current_user.id %>
-                  <%= comment_fields.hidden_field :post_id, value: post.id %>
+              <%= form_for [current_user, post, Comment.new] do |comment_fields| %>
 
-                  <%= comment_fields.text_area  :body, class: 'form-control', rows: '3', placeholder: 'Write a comment...' %>
-                  <!-- <textarea class="form-control" rows="3">Write a comment...</textarea> -->
+                <%= comment_fields.hidden_field :author_id, value: current_user.id %>
+                <%= comment_fields.hidden_field :post_id, value: post.id %>
 
-                  <!-- separate row for Cancel & Comment buttons -->
-                  <div class="row center-block">
-                    <div class="col-xs-12">
+                <%= comment_fields.text_area  :body, class: 'form-control', rows: '3', placeholder: 'Write a comment...' %>
+                <!-- <textarea class="form-control" rows="3">Write a comment...</textarea> -->
 
-                      <div class="pull-left">
-                        <a href="#" alt="Cancel writing a comment">Cancel</a>
-                      </div>
+                <!-- separate row for Cancel & Comment buttons -->
+                <div class="row center-block">
+                  <div class="col-xs-12">
 
-                      <div class="pull-right comment-button-wrapper">
+                    <div class="pull-left">
+                      <a href="#" alt="Cancel writing a comment">Cancel</a>
+                    </div>
 
-                        <%= comment_fields.submit 'Comment', class: 'btn btn-primary btn-sm' %>
-                        <!-- <button type="submit" class="btn btn-primary btn-sm">
-                          Comment
-                        </button> -->
+                    <div class="pull-right comment-button-wrapper">
 
-                      </div>
+                      <%= comment_fields.submit 'Comment', class: 'btn btn-primary btn-sm' %>
+                      <!-- <button type="submit" class="btn btn-primary btn-sm">
+                        Comment
+                      </button> -->
 
                     </div>
-                  </div> <!-- end of Cancel & Comment row -->
 
-                <% end %>
+                  </div>
+                </div> <!-- end of Cancel & Comment row -->
 
-              </div> <!-- comment-form -->
-              <!-- </form> -->
+              <% end %>
 
-            </div>
+            </div> <!-- comment-form -->
+            <!-- </form> -->
 
-          </div> <!-- End of Post another comment -->
+          </div>
+
+        </div> <!-- End of Post another comment -->
 
 
-        <% end %>
 
 
 

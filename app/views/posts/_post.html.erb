@@ -12,9 +12,7 @@
       <div class="panel-footer">
 
         <%= render :partial => "post_footer",
-              :locals => {  :post => post,
-                            :post_self_like => false,
-                            :post_likes => "Hermione Granger likes this." } %>
+              :locals => { :post => post } %>
 
 
         <%# if comments.count > 0 %>

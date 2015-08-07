@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     resources :posts, :only => [:new, :create, :index, :destroy]
   end
 
+  resources :likes, :only => [:create, :destroy]
+
   get "/about" => "users#show"
   get "/about_edit" => "users#edit"
   get "/timeline" => "posts#index"

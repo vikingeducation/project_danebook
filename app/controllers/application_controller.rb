@@ -37,4 +37,12 @@ class ApplicationController < ActionController::Base
     end
     helper_method :signed_in_user?
 
+
+    def require_login
+      unless signed_in_user?
+        flash[:error] = 'You must be logged in to Like things.'
+        redirect_to login_path
+      end
+    end
+
 end

@@ -4,17 +4,15 @@
   <div class="col-xs-12">
 
     <div class="pull-left">
-      <a href="#" alt="Like this post">
-        <% unless post_self_like %>
-          Like
+        <% unless post.likers.include?(current_user) %>
+          <%= link_to 'Like', likes_path(:liked_id => post.id), method: 'create', alt: 'Like this post' %>
         <% else %>
-          Unlike
+          <%= link_to 'Unlike', like_path(current_user.likes.find_by_liked_id(post.id)), method: 'delete', alt: 'Unlike this post' %>
         <% end %>
-      </a>
     </div>
 
     <div class="pull-right">
-      <%= link_to 'Delete', user_post_path(post.author, post), method: 'DELETE', alt: 'Delete this post' %>
+      <%= link_to 'Delete', user_post_path(post.author, post), method: 'post', alt: 'Delete this post' %>
     </div>
 
   </div>
@@ -23,7 +21,7 @@
 
 
 <!-- Row to track likes -->
-<% unless post_likes == "" %>
+<% unless post.likers.empty? %>
 
   <div class="row">
 
@@ -31,7 +29,7 @@
 
       <div class="pull-left">
         <p>
-          <%= post_likes %>
+          <%= display_likers(post) %>
         </p>
       </div>
 

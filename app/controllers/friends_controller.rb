@@ -1,6 +1,12 @@
 class FriendsController < ApplicationController
 
-  before_action :require_login
+  before_action :require_login, :except => [:index]
+
+
+  def index
+    @user = User.find(params[:user_id])
+    @friends = @user.friended_users
+  end
 
 
   def create

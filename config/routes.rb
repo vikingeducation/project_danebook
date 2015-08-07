@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :users, :only => [:new, :create, :show, :edit, :update] do
     resource :profile, :only => [:new]
     resources :posts, :only => [:create, :index, :destroy]
-    resources :friends, :only => [:create, :destroy]
+    resources :friends, :only => [:create, :index, :destroy]
   end
 
   resources :comments, :only => [:create, :destroy]

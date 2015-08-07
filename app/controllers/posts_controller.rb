@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
 
-  skip_before_action :require_current_user, :only => [:index]
+  before_action :require_current_user, :except => [:index]
 
   def index
     @posts = Post.where("user_id = ?", params[:user_id]).includes(:comments => :likes)

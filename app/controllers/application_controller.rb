@@ -3,8 +3,6 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  # before_action :require_login
-  # before_action :require_current_user
 
   private
 
@@ -52,12 +50,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  # def store_referer
-  #   session[:referer] = URI(request.referer).path
-  # end
+  def store_referer
+    session[:referer] = URI(request.referer).path
+  end
 
-  # def referer
-  #   session[:referer].delete
-  # end
+  def referer
+    session.delete(:referer)
+  end
 
 end

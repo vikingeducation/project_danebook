@@ -1,6 +1,6 @@
 class FriendingsController < ApplicationController
 
-  # skip_before_action :require_current_user, :only => [:index]
+  # before_action :require_current_users
 
   def create
     current_user = User.find(params[:current_user_id])

@@ -1,6 +1,6 @@
 class ProfilesController < ApplicationController
 
-  skip_before_action :require_current_user, :only => [:create, :show]
+  before_action :require_current_user, :except => [:create, :show]
 
   def create
     @profile = Profile.new(whitelisted_user_params)

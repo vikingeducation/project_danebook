@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
-  # skip_before_action :require_login, :only => [:new, :create]
-  # skip_before_action :require_current_user, :only => [:new, :create, :show]
+  before_action :require_login, :except => [:new, :create]
+  before_action :require_current_user, :except => [:new, :create, :show]
 
   def new
     @user = User.new
@@ -11,7 +11,6 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(whitelisted_user_params)
-    # fail
     if @user.save
       sign_in(@user)
       flash[:success]="Your account was successfully created!"

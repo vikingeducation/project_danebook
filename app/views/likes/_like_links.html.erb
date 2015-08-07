@@ -1,0 +1,7 @@
+<div class="pull-left">
+  <% unless liked_object.likers.include?(current_user) %>
+    <%= link_to 'Like', url_for([liked_object.author, liked_object, :likes]), method: 'create', alt: 'Like this post' %>
+  <% else %>
+    <%= link_to 'Unlike', user_post_like_path(liked_object.author, liked_object, liked_object.likes.find_by_liker_id(current_user)), method: 'delete', alt: 'Unlike this post' %>
+  <% end %>
+</div>

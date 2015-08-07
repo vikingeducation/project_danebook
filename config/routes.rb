@@ -11,7 +11,9 @@ Rails.application.routes.draw do
     resource :profile, :only => [:new]
     resources :posts, :only => [:create, :index, :destroy] do
       resources :likes, :only => [:create, :destroy]
-      resources :comments, :only => [:create]
+      resources :comments, :only => [:create] do
+        resources :likes, :only => [:create, :destroy]
+      end
     end
   end
 

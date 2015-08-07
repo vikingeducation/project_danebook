@@ -12,7 +12,20 @@
       <div class="panel-footer">
 
 
-        <%= render :partial => 'likes/likes', :locals => { :liked_object => post } %>
+        <!-- Row to hold links -->
+        <div class="row">
+          <div class="col-xs-12">
+
+            <%= render :partial => 'likes/like_links', :locals => { :liked_object => post } %>
+
+            <div class="pull-right">
+              <%= link_to 'Delete', user_post_path(post.author, post), method: 'delete', alt: 'Delete this post' if post.author == current_user %>
+            </div>
+
+          </div>
+        </div>  <!-- end of links row -->
+
+        <%= render :partial => 'likes/likes_display', :locals => { :liked_object => post } if post.likers %>
 
 
         <% if post.comments.count > 0 %>
@@ -40,41 +53,7 @@
 
           <div class="col-xs-12">
 
-            <!-- <form id="comment-form"> -->
-            <div class='comment-form'>
-
-              <%= form_for [current_user, post, Comment.new] do |comment_fields| %>
-
-                <%= comment_fields.hidden_field :author_id, value: current_user.id %>
-                <%= comment_fields.hidden_field :post_id, value: post.id %>
-
-                <%= comment_fields.text_area  :body, class: 'form-control', rows: '3', placeholder: 'Write a comment...' %>
-                <!-- <textarea class="form-control" rows="3">Write a comment...</textarea> -->
-
-                <!-- separate row for Cancel & Comment buttons -->
-                <div class="row center-block">
-                  <div class="col-xs-12">
-
-                    <div class="pull-left">
-                      <a href="#" alt="Cancel writing a comment">Cancel</a>
-                    </div>
-
-                    <div class="pull-right comment-button-wrapper">
-
-                      <%= comment_fields.submit 'Comment', class: 'btn btn-primary btn-sm' %>
-                      <!-- <button type="submit" class="btn btn-primary btn-sm">
-                        Comment
-                      </button> -->
-
-                    </div>
-
-                  </div>
-                </div> <!-- end of Cancel & Comment row -->
-
-              <% end %>
-
-            </div> <!-- comment-form -->
-            <!-- </form> -->
+            <%= render :partial => 'comments/new', :locals => { :post => post } %>
 
           </div>
 

@@ -1,0 +1,29 @@
+<div class='comment-form'>
+
+  <%= form_for [current_user, post, Comment.new] do |comment_fields| %>
+
+    <%= comment_fields.hidden_field :author_id, value: current_user.id %>
+    <%= comment_fields.hidden_field :post_id, value: post.id %>
+
+    <%= comment_fields.text_area  :body, class: 'form-control', rows: '3', placeholder: 'Write a comment...' %>
+
+    <!-- separate row for Cancel & Comment buttons -->
+    <div class="row center-block">
+      <div class="col-xs-12">
+
+        <div class="pull-left">
+          <a href="#" alt="Cancel writing a comment">Cancel</a>
+        </div>
+
+        <div class="pull-right comment-button-wrapper">
+
+          <%= comment_fields.submit 'Comment', class: 'btn btn-primary btn-sm' %>
+
+        </div>
+
+      </div>
+    </div> <!-- end of Cancel & Comment row -->
+
+  <% end %>
+
+</div> <!-- comment-form -->

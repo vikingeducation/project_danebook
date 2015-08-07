@@ -3,9 +3,8 @@ class LikesController < ApplicationController
   before_action :require_login
 
   def create
-    @liker = current_user
     @liked = Post.find(params[:post_id])
-    if @liker.liked_posts << @liked
+    if @liked.likers << current_user
       flash[:success] = 'Post liked!'
     else
       flash[:danger] = 'Error!'

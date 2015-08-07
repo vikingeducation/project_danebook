@@ -9,6 +9,9 @@ class Comment < ActiveRecord::Base
 	has_many :likes, as: :liking
 	has_many :users_liking_comment, through: :likes, source: :user 
 
+	validates :body, :user, presence: true
+	validates :commentable, presence: true
+
 	def count_likes
 		users_liking_comment.count
 	end

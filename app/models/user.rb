@@ -16,8 +16,7 @@ class User < ActiveRecord::Base
 	validates :email, 
 						:format => {:with => /@/}, 
 						:uniqueness => true
- 	# validates :username, 
- 	# 					:presence => {:message => "required"}
+ 	validates :first_name, :last_name, :presence => true
 
  	after_create :create_profile
 

@@ -1,0 +1,116 @@
+buglist.txt
+
+Models 
+
+A. User
+1. New/Create
+a. Email address
+Requires an email address to be created 
+Cannot be created without an email address
+Requires an email address to be unique *
+Cannot be created without a unique email address *
+
+b. Password
+Requires a password to be created 
+Cannot be created without a password *
+Password must be between 4 and 24 characters *
+Password cannot be less than 4 chars
+Password cannot be more than 24 chars
+
+c. Name
+Requires a first_name to be created *
+Cannot be created without a first name
+Requires a last name to be created *
+Cannot be created without a last name
+
+d. Birthday
+Does not require a birthday to be created
+Can be created without a birthday
+Does not require a username
+Can be created without a username
+
+2. Edit/Update
+Email cannot be changed
+Email cannot be nil
+Email must remain unique
+Password cannot be nil
+
+3. Associations
+Creates a profile after creation *
+Has many posts
+Has many likes
+Has many comments
+
+--------
+B. Post
+1. Index
+
+2. Create
+Requires a user to be created
+Cannot be created without a user
+Only wall owner can create a post on his own wall *
+
+3. Destroy
+Can only be destroyed by creator *
+
+4. Associations
+Belongs to a user
+Has many likes
+Has many liked_by
+Has many comments *
+Destroying a post will destroy associated comments *
+
+--------
+C. Comment
+1. Create
+Requires a user to be created
+Cannot be created without a user
+Requires a body *
+Cannot be created without a body * 
+A comment is polymorphic *
+A comment can comment on another comment *
+A comment can comment on a post *
+
+2. Destroy
+
+3. Associations
+Belongs to a user
+Has many likes * 
+Has many users_liking_comments *
+
+4. Methods
+Count likes accurately returns number of likes on a comment *
+
+--------
+D. Like
+1. Create
+Is polymorphic
+Requires a user
+
+2. Destroy
+Can be destroyed only by creating user *
+
+3. Associations
+Belongs to a user
+Each user_id must be unique within a liking *
+A post can have multiple likes *
+A user can only like a post once *
+A comment can have multiple likes
+A user can only like one comment once *
+
+--------
+E. Profile
+1. Edit/Update
+Can modify phone number
+Can modify About Me
+Can modify Words to Live By
+X Only current user can modify their own profile  Controller
+
+2. Destroy
+Profile cannot be destroyed unless user is deleted *
+Deleting a user deletes a profile *
+
+3. Associations
+Has many posts
+Belongs to a user
+

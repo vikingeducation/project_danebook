@@ -32,7 +32,7 @@ def whitelisted_profile_params
 																	:id, 
 																	:about_me, 
 																	:words_to_live_by,
-																	:home_city,
+																	:home_city, 
 																	:home_country,
 																	:current_city,
 																	:current_country, 

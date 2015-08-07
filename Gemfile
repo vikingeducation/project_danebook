@@ -45,9 +45,12 @@ group :development, :test do
   # gem 'sqlite3'
   # Use jazz_hands for debugging. It includes pry and byebug. 
   gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
-
   gem 'better_errors'
   gem 'binding_of_caller'
-
+  gem 'rspec-rails'
+  gem 'factory_girl_rails', '~> 4.0'
 end
 
+group :development do
+  gem 'guard-rspec', require: false
+end

@@ -9,6 +9,9 @@ class Post < ActiveRecord::Base
 	# comments are polymorphic
 	has_many :comments, as: :commentable
 
+	validates :body, :user_id, :presence => true
+	validates :body, :length => {:in => 1..250}
+
 	def count_likes
 		likes.count
 	end

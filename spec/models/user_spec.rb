@@ -62,5 +62,35 @@ describe User do
 
   end
 
+  describe "validations" do
+
+    specify "first name must be present" do
+      user.first_name = nil
+      expect(user).not_to be_valid
+    end
+
+    specify "last name must be present" do
+      user.last_name = nil
+      expect(user).not_to be_valid
+    end
+
+    specify "email must be present" do
+      user.email = nil
+      expect(user).not_to be_valid
+    end
+
+    specify "email must be unique" do
+      user.save
+      user2 = build(:user, email: user.email)
+      expect(user2).not_to be_valid
+    end
+
+    specify "password must be present" do
+      user.password = nil
+      expect(user).not_to be_valid
+    end
+
+  end
+
 
 end

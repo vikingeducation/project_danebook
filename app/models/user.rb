@@ -41,7 +41,8 @@ class User < ActiveRecord::Base
             :presence => true
 
   validates :email,
-            :format => { :with => /@/ }
+            :format => { :with => /@/ },
+            uniqueness: true
 
   validates :password,
             :length => { :in => 8..24 },

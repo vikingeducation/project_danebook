@@ -1,0 +1,29 @@
+<nav class="navbar navbar-default navbar-fixed-top danebook-navbar">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3 navbar-header">
+					<button type="button" id="collapse-button"class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+						<!-- These spans draw the lines inside the button -->
+						<span class="sr-only">Toggle Navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<div class="navbar-brand" id="danebook-brand"aria-expanded="true">
+						<a href="home.html">
+							<%= image_tag "logo.gif", class:"img-circle danebook-logo"%>
+						</a>Danebook
+					</div>
+				</div>
+				<div id="navbar"  class="navbar-collapse collapse">
+					<div class="col-md-6">
+						<input type="text" class="form-control danebook-search" placeholder="Search for Users">
+					</div>
+
+					<div class="col-md-1 col-md-offset-1 danebook-navbar-text">
+						<p>Harry</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</nav>

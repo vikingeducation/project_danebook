@@ -34,13 +34,19 @@
 
         <div class="like-btn">
 
-          <%= link_to "Like", likes_path(:likeable_id => 1, :likeable_type => "post", :user_id => current_user.id), method: :post %>
+          <%= show_like_or_unlike(p) %>
 
         </div>
 
         <div class="like-btn">
 
-          <a href="#">Comment</a>
+        <!--   <a href="#">Comment</a> -->
+
+        </div>
+
+        <div class="like-btn">
+
+          <%= show_like_count(p) %>
 
         </div>
 
@@ -51,29 +57,9 @@
 
         <div class="comment-section">
 
-          <div class="row comment">
+          <%= render partial: "comments/comment" %>
 
-            <div class="comment-pic col-xs-2">
-
-              <img src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif">
-
-            </div>
-
-            <div class="comment-author col-xs-10">
-
-              <a href="#">Ron Weasley</a> Said on Thursday 5/21/2014
-
-            </div>
-
-            <div class="col-xs-10 comment-content">
-
-              <p>Lorem ipsum dolor sit amet, id primis utamur vix. Mutat officiis at pri, sadipscing disputationi ne vix. At epicurei nominati rationibus per, conceptam mnesarchum id vel, his nonumes percipitur no. Utinam noluisse at per, ut vel vocent complectitur.</p>
-
-              <p><a href="#">Like</a>3 other people like this</p>
-
-            </div>
-
-          </div>
+          <%= render partial: "comments/comment_list" %>
 
       </div>
 

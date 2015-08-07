@@ -3,14 +3,6 @@ class UsersController < ApplicationController
   before_action :require_login, :except => [:new, :create]
   before_action :require_current_user, :only => [:edit, :update, :destroy]
 
-  def index
-    @users = User.all
-  end
-
-  def show
-    @user = User.find(params[:id])
-  end
-
   def new
     # edge cases
     if session[:user_id] && User.where(:id => session[:user_id]).present?
@@ -42,9 +34,6 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
-  end
-
-  def update
   end
 
   def destroy

@@ -12,11 +12,12 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :posts
+    resources :likes
+    resources :comments
   end
 
   resources :timelines, :only => [:show]
   resources :profiles
-  resources :likes
 
 
   resource :session, :only => [:new, :create, :destroy]

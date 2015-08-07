@@ -42,7 +42,7 @@
                   <h5>Photos (123)</h5>
                 </div>
               </a>
-              <%= link_to friendings_path do  %>
+              <%= link_to friendings_path(:user_id => @profile.user.id) do  %>
                 <div class="col-md-3">
                   <h5>Friends</h5>
                 </div>

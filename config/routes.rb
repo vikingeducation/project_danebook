@@ -14,5 +14,5 @@ Rails.application.routes.draw do
   resource :session, only: [:new, :create, :destroy]
   resources :comments, only: [:new, :create, :destroy]
   resources :likes, only: [:create, :destroy]
-  resources :friendings, only: [:create, :index]
+  resources :friendings, only: [:create, :index, :destroy]
 end

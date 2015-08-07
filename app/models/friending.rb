@@ -1,5 +1,7 @@
 class Friending < ActiveRecord::Base
 
+  #not being used
+
   belongs_to :friend_initiator, :foreign_key => :friender_id, 
                                 :class_name => "User"
 

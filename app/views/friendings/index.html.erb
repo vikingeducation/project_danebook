@@ -1,6 +1,6 @@
-<%= render partial: "navbar" %>
+<%= render partial: "./shared/navbar" %>
 <main>
-  <%= render partial: "info" %>
+  <%= render partial: "./users/info" %>
 
     <!-- This row will hold the "About" Information. -->
     <!-- The info-section and info-section-topbar css classes are re-used for about_edit and about -->
@@ -21,12 +21,12 @@
                 </div>
                 <div class="col-md-4">
                   <div>
-                  <h4><a href="#">friend.user.full_name</a></h4>
+                  <h4><a href="#"><%= friend.user.full_name %></a></h4>
                   <h6>432 Friends</h6>
                   </div>
                 </div>
                 <div class="col-md-2 col-md-offset-1">
-                  <button class="btn btn-default selected">Unfriend Me</button>
+                  <%= link_to "Unfriend", friending_path(friend.user), method: :delete, :class=>"btn btn-primary"  %>
                 </div>
               </div>
             </div>

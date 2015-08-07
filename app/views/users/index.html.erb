@@ -11,7 +11,11 @@
                 <div class="panel-body">
                   <li><%= user.full_name %></li>
                   <li><%= user.dob %></li>
-                  <li><%= link_to "friend", friendings_path(:friender_id => current_user.id, :friend_id => user.id), method: :post  %></li>
+                  <% if current_user.friends.exists?(user.id) %>
+                    <li><%= link_to "Unfriend", friending_path(:friend_id => user.id), method: :delete  %></li>
+                  <% else %>
+                    <li><%= link_to "Friend", friendings_path(:friend_id => user.id), method: :post  %></li>
+                  <% end %>
                 </div>
               </div> 
             </ul>

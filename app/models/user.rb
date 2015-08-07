@@ -7,24 +7,25 @@ class User < ActiveRecord::Base
   has_one :profile
   has_many :likes
   has_many :comments
+  has_many :friends
 
   #When acting as the initiator
-  has_many :initiated_friendings, :foreign_key => :friender_id,
-                                  :class_name => "Friending"
+  # has_many :initiated_friendings, :foreign_key => :friender_id,
+  #                                 :class_name => "Friending"
 
-  has_many :friended_users, :through => :initiated_friendings,
-                            :source => :friend_recipient
+  # has_many :friended_users, :through => :initiated_friendings,
+  #                           :source => :friend_recipient
 
-  #When acting as the recipient of the friending
-  has_many :recieved_friendings, :foreign_key => :friend_id,
-                                 :class_name => "Friending"
+  # #When acting as the recipient of the friending
+  # has_many :recieved_friendings, :foreign_key => :friend_id,
+  #                                :class_name => "Friending"
 
-  has_many :users_friended_by, :through => :recieved_friendings,
-                               :source => :friend_initiator
+  # has_many :users_friended_by, :through => :recieved_friendings,
+  #                              :source => :friend_initiator
   
   validates :email, presence: true, uniqueness: true
   validates :first_name, :last_name, :dob, :gender, presence: true
-  validates :password, presence: true, length: {in: 7..24}, confirmation: true, :on=> [:new]
+  validates :password, presence: true, length: {in: 7..24}, confirmation: true, :on=> [:new, :create]
 
   def generate_token
     begin

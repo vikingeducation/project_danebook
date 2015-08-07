@@ -1,12 +1,11 @@
-<% if current_page?(send("#{page.downcase}_path")) %>
+<% if current_page?(link) %>
   <li class="text-center disabled" role="presentation">
 <% else %>
   <li class="text-center" role="presentation">
 <% end %>
 
-
-  <%= link_to send("#{page.downcase}_path"), alt: "Link to #{page} page" do %>
-    <%= page %>
+  <%= link_to link, alt: "Link to #{label} label" do %>
+    <%= label %>
 
     <% if badge %>
       <span class='badge'><%= badge %></span>

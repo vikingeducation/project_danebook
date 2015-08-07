@@ -25,6 +25,7 @@
           </div>
         </div>  <!-- end of links row -->
 
+
         <%= render :partial => 'likes/likes_display', :locals => { :liked_object => post } if post.likers %>
 
 
@@ -32,17 +33,7 @@
 
           <!-- Comments media list -->
           <div id="comments-wrapper" class="row">
-
             <%= render :partial => 'comments/comment', :collection => post.comments %>
-            <%# post.comments.each do |comment_info| %>
-              <%# render :partial => "static_pages/timeline/timeline_post_comment",
-                :locals => {  :comment_author => comment_info[:author],
-                              :comment_date => comment_info[:date],
-                              :comment_body => comment_info[:body],
-                              :comment_self_like => comment_info[:self_like],
-                              :comment_likes => comment_info[:likes] } %>
-            <%# end %>
-
           </div> <!-- End of Comments media list -->
 
         <% end %>

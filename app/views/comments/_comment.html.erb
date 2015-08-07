@@ -25,32 +25,24 @@
       <p><%= comment.body %></p>
 
     </div>
-      <%# render :partial => 'likes/likes', :locals => { :liked_object => comment } %>
+
+
+    <div class="row">
+      <div class="col-xs-12">
+
+        <%= render :partial => 'likes/like_links', :locals => { :liked_object => comment } %>
+
+        <div class="pull-right">
+          <%= link_to 'Delete', comment_path(comment), method: 'delete', alt: 'Delete this post' if comment.author == current_user %>
+        </div>
+
+      </div>
+    </div>  <!-- end of links row -->
+
+
+    <%= render :partial => 'likes/likes_display', :locals => { :liked_object => comment } if comment.likers %>
 
 
   </div>
 
 </div>
-
-<!--
-
-      <div class="pull-left">
-
-        <a href="#" alt="Like this post">
-          <%# unless comment_self_like %>
-            Like
-          <%# else %>
-            Unlike
-          <%# end %>
-        </a>
-
-      </div>
-
-      <div class="pull-left">
-        <p><%# comment_likes %></p>
-      </div>
-
-      <div class="pull-right">
-        <a href="#" alt="Like this post">Delete</a>
-      </div>
-    </div> -->

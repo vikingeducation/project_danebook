@@ -3,9 +3,9 @@ class LikesController < ApplicationController
   before_action :require_login
 
   def create
-    @liked = Post.find(params[:post_id])
+    @liked = params[:liked_type].constantize.find(params[:liked_id])
     if @liked.likers << current_user
-      flash[:success] = 'Post liked!'
+      flash[:success] = 'Liked!'
     else
       flash[:danger] = 'Error!'
     end
@@ -15,7 +15,7 @@ class LikesController < ApplicationController
 
   def destroy
     if Like.find(params[:id]).destroy
-      flash[:success] = 'Post unliked!'
+      flash[:success] = 'Unliked!'
     else
       flash[:danger] = 'Error!'
     end

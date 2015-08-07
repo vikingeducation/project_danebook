@@ -1,6 +1,6 @@
 <div class='comment-form'>
 
-  <%= form_for [current_user, post, Comment.new] do |comment_fields| %>
+  <%= form_for Comment.new do |comment_fields| %>
 
     <%= comment_fields.hidden_field :author_id, value: current_user.id %>
     <%= comment_fields.hidden_field :post_id, value: post.id %>

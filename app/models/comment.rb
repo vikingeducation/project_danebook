@@ -4,10 +4,6 @@ class Comment < ActiveRecord::Base
   belongs_to :commenting, polymorphic: true
   belongs_to :author, class_name: "User", foreign_key: :user_id
 
-  # def nested_comments
-  #   Comment.includes(child_comments: [child_comments: [child_comments: [child_comments: [child_comments: :child_comments]]]])
-  # end
-
   def posted_on
     "Posted on " + self.created_at.strftime("%A %m/%d/%Y")
   end

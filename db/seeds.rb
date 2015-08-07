@@ -6,30 +6,40 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-# MULT=30
-#   create_table "profiles", force: :cascade do |t|
-#     t.integer  "user_id"
-#     t.string   "email"
-#     t.string   "college"
-#     t.string   "phone"
-#     t.string   "hometown"
-#     t.string   "homecountry"
-#     t.string   "livesintown"
-#     t.string   "livesincountry"
-#     t.string   "wordsby"
-#     t.string   "wordsabout"
-#     t.datetime "created_at",     null: false
-#     t.datetime "updated_at",     null: false
-#   end
-# MULT.times do 
-#   User.create()
-#   create_table "users", force: :cascade do |t|
-#     t.string   "email"
-#     t.string   "first_name"
-#     t.string   "last_name"
-#     t.date     "birthday"
-#     t.string   "gender"
-#     t.datetime "created_at",      null: false
-#     t.datetime "updated_at",      null: false
-#     t.string   "password_digest"
-#   end
+User.delete_all
+Profile.delete_all
+Comment.delete_all
+Post.delete_all
+Like.delete_all
+MULT=30
+
+MULT.times do |i|
+  User.create(:email => Faker::Internet.email, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, password_digest: "password")
+end
+
+User.all.each do |user|
+
+  Profile.create(user_id: user.id, 
+                college: Faker::Name.title, 
+                phone: Faker::PhoneNumber.cell_phone, 
+                hometown: Faker::Address.city, 
+                homecountry: "USA", 
+                livesintown: Faker::Address.city, 
+                livesincountry: "USA", 
+                wordsby: Faker::Lorem.sentence, 
+                wordsabout: Faker::Lorem.sentence)
+
+  rand(1..MULT/10).times do
+    Post.create(user_id: user.id, body: Faker::Name.title+"Post from user #{user.full_name}")
+  end
+
+  rand(1..MULT/10).times do
+    Comment.create(user_id: user.id, body: Faker::Name.title+" from user #{user.full_name}", commenting_id: rand(1..MULT), commenting_type: ["Post","Comment"].sample)
+  end
+
+  rand(1..MULT/6).times do
+    Like.create(user_id: user.id, liking_id: rand(1..MULT), liking_type: ["Post","Comment"].sample)
+  end
+
+end
+

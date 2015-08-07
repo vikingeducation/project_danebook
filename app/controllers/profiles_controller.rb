@@ -11,6 +11,7 @@ class ProfilesController < ApplicationController
   def update
     @profile = Profile.find_by_user_id(params[:user_id])
     if @profile.update(whitelisted_profile_params)
+      
       flash[:success]="Updates saved"
       redirect_to user_profile_path(:id => @profile.id, :user_id => @profile.user.id)
     else
@@ -28,11 +29,11 @@ class ProfilesController < ApplicationController
                                     :homecountry,
                                     :livesintown,
                                     :livesincountry,
-                                    :email,
                                     :phone,
                                     :wordsby,
                                     :wordsabout
                                     )
+
   end
 
 end

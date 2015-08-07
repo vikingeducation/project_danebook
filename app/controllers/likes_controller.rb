@@ -5,9 +5,14 @@ class LikesController < ApplicationController
   def create
     @user = current_user
     @liking = params[:liking_type].singularize.classify.constantize.find(params[:liking_id])
-    @like = Like.create(liking: @liking, user: @user)
-    flash[:success] = "Successfully liked!"
-    redirect_to referer
+    @like = Like.new(liking: @liking, user: @user)
+    if @like.save
+      flash[:success] = "Successfully liked!"
+      redirect_to referer
+    else
+      flash.now[:success] = "Failed to like!"
+      redirect_to referer
+    end
   end
 
   def destroy

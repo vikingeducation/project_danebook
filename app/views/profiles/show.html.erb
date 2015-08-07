@@ -39,7 +39,7 @@
           </div>
 
           <div class="col-xs-6">
-            <%= @profile.user.birthday.strftime("%B %d, %Y") %>
+            <%= show_birthday(@profile)%>
           </div>
 
           <div class="col-xs-6">
@@ -47,7 +47,7 @@
           </div>
 
           <div class="col-xs-6">
-            <%= @profile.college.nil? ? "Not specified" : @profile.college %>
+            <%= show_college(@profile) %>
         
           </div>
           <br>

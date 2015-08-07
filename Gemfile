@@ -40,7 +40,7 @@ group :development, :test do
 
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
-
+  gem 'faker'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
@@ -48,8 +48,14 @@ group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'
 
-  
+  gem 'factory_girl_rails', '~> 4.0'
+  gem 'rspec-rails'
+  gem 'guard-rspec' 
 
+end
+
+group :development do
+  gem 'guard-rspec', require: false
 end
 
 gem 'pg'

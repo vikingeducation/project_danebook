@@ -9,7 +9,7 @@
       </div>
 
       <div class="col-xs-10 post-info">
-        <%= link_to post.author.full_name, post.author %>
+        <%= link_to post.author.full_name, user_profile_path(post.author) %>
         
         <br>
         <%= post.posted_on %>
@@ -25,31 +25,24 @@
   <div class="comment-end-box">
 
     <div class="like-btn">
- 
-
-      <%if @user.likes?(post) %>
-      <%=link_to "Unlike", likes_path(user_id: @user.id, liking_id: post.id, liking_type: post.class), method: 'delete'%>
+      <%if current_user.likes?(post) %>
+        <%=link_to "Unlike post", likes_path(user_id: current_user.id, liking_id: post.id, liking_type: post.class), method: 'delete'%>
       <%else%>
-      <%=link_to "Like", likes_path(liking_id: post.id, liking_type: post.class), method: 'post'%>
+        <%=link_to "Like post ", likes_path(liking_id: post.id, liking_type: post.class), method: 'post'%>
        <%end%>
-
-       <%=people_like_this(post)%>
-       
-
     </div>
 
     <div class="like-btn pull-right">
-
-      <%= link_to "Delete", user_post_path(@user, post), method: 'delete' %>
-
+      <% if current_user == post.user_id %>
+        <%= link_to "Delete", user_post_path(@user, post), method: 'delete' %>
+      <% end %>
     </div>
 
     <div class="comment-section">
       <%= render post.comments %>
-        <% if current_user %>
-          <%= render partial: "posts/comment_form", locals: {post: post} %>
-        <% end %>
-
+      <% if current_user %>
+        <%= render partial: "posts/comment_form", locals: {post: post} %>
+      <% end %>
     </div>
 
   </div>

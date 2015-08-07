@@ -25,32 +25,55 @@
 <div class="panel-footer clearfix">
 
   <div class="pull-right">
-    <a href="#">Delete</a>
+    <% if post.user.id == current_user.id %>
+    <%= link_to 'Delete' , user_posts_path(post), method: :delete,  data: { confirm: "Are you positive you want to delete this post?" } %>
+    <% end %>
   </div>
   <div class="pull-left">
-    <a href="#">UnLike</a> 
-    <a href="#" id='comment_link'>add comment</a>
-<div id='comment' style="display:none;" data-no-turbolink>
- COMMENT BO
-</div>
+     <%= like_or_unlike(post) %>
+
   </div>
   <br>
-  <div class="pull-left liked">
-    <span class="grey-text">You and </span><a href="#">Hermione Granger</a> <span class="grey-text"> and 3 others like this</span>
+    <div class="pull-left liked">
+    
+    </div>
+    <%= render partial: "comments/comment_form", locals: {parent: post, user_id: @user.id} %>
   </div>
-</div>
 
-    <% unless post.comments.empty? %>
-        <%= render :partial=>'comment' , 
-                    :locals=>{:comment => post.comments},
-                    :collection => post.comments %>
-    <% end %>
+  <% unless post.comments.empty? %>
+  <%= render :partial=>'comment' , 
+  :locals=>{:comment => post.comments},
+  :collection => post.comments %>
+  <% end %>
+
 
 </article> <!-- end comment panel -->
 <% end %>
 
 <script type='text/javascript'>
-function fade_some_stuff(){
-   $('#comment_link').click( function(){ $('#comment').fadeIn(); $('#comment_link').fadeOut(); });
-}
+  var ready;
+
+ready = function() {      
+$("#comment").hide();
+      $("#comment_link`").click(function(event) {
+          event.preventDefault();
+          $("#comment").toggle();};
+
+$(document).ready(ready);
+
+$(document).on('page:load', ready);
+
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+

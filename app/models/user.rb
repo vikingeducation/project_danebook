@@ -1,12 +1,27 @@
 class User < ActiveRecord::Base
+
   has_one :profile
   has_many :posts
   has_many :comments
+  has_many :likes
 
   has_secure_password
 
   before_create :generate_token
+  after_create :build_profile
+  
+  validates :first_name, :last_name, :presence => true
+  validates :birthdate, :presence => true
+  validates :email, :presence => true, :format => { :with => /@/ }
+  validates :password, :presence => true,
+            :on => [:create, :update],
+            :length => {:in => 8..16},
+            :allow_nil => false
 
+ 
+
+  
+                                      
   def full_name
      self.first_name + " " + self.last_name
   end

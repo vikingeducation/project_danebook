@@ -6,13 +6,14 @@ Rails.application.routes.draw do
     resource :posts
   end
   
+  resources :comments, :only => [:create, :destroy]
+
   root to: 'users#new'
 
   get 'timeline' => 'users#timeline'
-
   get 'about' => 'users#about'
-
   post 'login' => 'sessions#create'
   get  'logout' => 'sessions#destroy'
-  
+  post "like" => "likes#create"
+  delete "unlike"  => 'likes#destroy'
 end

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150805172051) do
+ActiveRecord::Schema.define(version: 20150806220444) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "author_id"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 20150805172051) do
   create_table "likes", force: :cascade do |t|
     t.integer  "duty_id"
     t.string   "duty_type"
-    t.integer  "liker_id"
+    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

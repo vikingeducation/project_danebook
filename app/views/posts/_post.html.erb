@@ -26,7 +26,12 @@
         </div>  <!-- end of links row -->
 
 
-        <%= render :partial => 'likes/likes_display', :locals => { :liked_object => post } if post.likers %>
+        <!-- Row to track likes -->
+        <div class="row">
+          <div class="col-xs-12">
+            <%= render :partial => 'likes/likes_display', :locals => { :liked_object => post } if post.likers %>
+          </div>
+        </div>  <!-- end of likes row -->
 
 
         <% if post.comments.count > 0 %>

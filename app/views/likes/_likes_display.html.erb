@@ -1,10 +1,5 @@
-<!-- Row to track likes -->
-<div class="row">
-  <div class="col-xs-12">
-
-    <div class="pull-left">
-      <p><%= display_likers(liked_object) %></p>
-    </div>
-
-  </div>
-</div>  <!-- end of likes row -->
+<div class="pull-left">
+  <p <%= 'class=text-muted' if liked_object.class.to_s == 'Comment' %>>
+    <%= display_likers(liked_object) %>
+  </p>
+</div>

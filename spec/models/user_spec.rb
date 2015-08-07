@@ -5,12 +5,64 @@ describe User do
 
   let(:user){build(:user)}
 
+
   it "with all fields completed is valid" do
     expect(user).to be_valid
   end
 
   it "saves without error" do
     expect{user.save!}.to_not raise_error
+  end
+
+
+  context "birthdate" do
+
+    it "cannot be nil" do
+      user = build(:user, birthdate: nil)
+      expect(user).to_not be_valid
+    end
+
+    #need to add date validations for this
+    xit "will raise error if birthdate is not a date" do
+      user = build(:user, birthdate: "password")
+      expect{user.birthdate}.to raise_error
+    end
+  end
+
+  context "associations" do
+
+    it "should have a profile after user created" do
+      user.save
+      expect(user).to receive(:profile)
+      user.profile
+    end
+
+    it "cannot have more than one profile" do
+      # user.profile = create_list(:profile, 2)
+      # expect{user.save}.to raise_error
+      user.save
+      new_profile = build(:profile)
+      expect{user.profile << new_profile}.to raise_error
+    end
+
+    it "should have a token after creation" do
+      user.save
+      expect(user.auth_token).to be_truthy
+    end
+
+    it "cannot have the same token as another user" do
+      user.save
+      token = user.auth_token
+      new_user = build(:user, auth_token: token)
+      new_user.save
+      expect(new_user.auth_token).to_not eq(token)
+    end
+
+    it "can have many posts" do
+      user.posts = create_list(:post, 5)
+      user.save
+      expect(user.posts.count).to eq(5)
+    end
   end
 
   context "email field" do
@@ -133,56 +185,6 @@ describe User do
       expect(user).to_not be_valid
     end
 
-  end
-
-  context "birthdate" do
-
-    it "cannot be nil" do
-      user = build(:user, birthdate: nil)
-      expect(user).to_not be_valid
-    end
-
-    #need to add date validations for this
-    xit "will raise error if birthdate is not a date" do
-      user = build(:user, birthdate: "password")
-      expect{user.birthdate}.to raise_error
-    end
-  end
-
-  context "associations" do
-
-    it "should have a profile after user created" do
-      user.save
-      expect(user).to receive(:profile)
-      user.profile
-      # expect(user.profile).to_not be_nil
-    end
-
-    xit "cannot have more than one profile" do
-      user.profile = create_list(:profile, 2)
-      expect{user.save}.to raise_error
-      # user.save
-      # expect(user.profile.count).to eq(1)
-    end
-
-    it "should have a token after creation" do
-      user.save
-      expect(user.auth_token).to be_truthy
-    end
-
-    it "cannot have the same token as another user" do
-      user.save
-      token = user.auth_token
-      new_user = build(:user, auth_token: token)
-      new_user.save
-      expect(new_user.auth_token).to_not eq(token)
-    end
-
-    it "can have many posts" do
-      user.posts = create_list(:post, 5)
-      user.save
-      expect(user.posts.count).to eq(5)
-    end
   end
 
 

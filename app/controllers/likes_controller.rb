@@ -4,7 +4,7 @@ class LikesController < ApplicationController
 
   def create
     @liker = current_user
-    @liked = Post.find(params[:liked_id])
+    @liked = Post.find(params[:post_id])
     if @liker.liked_posts << @liked
       flash[:success] = 'Post liked!'
     else

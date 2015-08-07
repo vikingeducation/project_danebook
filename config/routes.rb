@@ -9,11 +9,12 @@ Rails.application.routes.draw do
 
   resources :users, :only => [:new, :create, :show, :edit, :update] do
     resource :profile, :only => [:new]
-    resources :posts, :only => [:create, :index, :destroy]
+    resources :posts, :only => [:create, :index, :destroy] do
+      resources :likes, :only => [:create, :destroy]
+      resources :comments, :only => [:create]
+    end
   end
 
-  resources :likes, :only => [:create, :destroy]
-  resources :comments, :only => [:create]
 
   get "/about" => "users#show"
   get "/about_edit" => "users#edit"

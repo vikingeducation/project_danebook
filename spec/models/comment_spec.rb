@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe comment do
+describe Comment do
   let(:comment){build(:comment)}
 
   it "has a user id" do

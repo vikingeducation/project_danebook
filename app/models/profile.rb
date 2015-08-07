@@ -4,4 +4,11 @@ class Profile < ActiveRecord::Base
 
   belongs_to :user
 
+
+  # ----------------------- Validations --------------------
+
+  validates :user_id,
+            uniqueness: true,
+            presence: true
+
 end

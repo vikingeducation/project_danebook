@@ -11,16 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150805212151) do
+ActiveRecord::Schema.define(version: 20150806235646) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "comments", force: :cascade do |t|
-    t.integer  "author_id"
-    t.string   "body"
-    t.integer  "commentable_id"
-    t.string   "commentable_type"
+    t.integer  "author_id",        null: false
+    t.string   "body",             null: false
+    t.integer  "commentable_id",   null: false
+    t.string   "commentable_type", null: false
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
   end
@@ -30,8 +30,8 @@ ActiveRecord::Schema.define(version: 20150805212151) do
   create_table "friendings", force: :cascade do |t|
     t.integer  "friend_id",   null: false
     t.integer  "friender_id", null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   add_index "friendings", ["friend_id", "friender_id"], name: "index_friendings_on_friend_id_and_friender_id", unique: true, using: :btree
@@ -40,8 +40,8 @@ ActiveRecord::Schema.define(version: 20150805212151) do
     t.integer  "user_id",       null: false
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
-    t.integer  "likeable_id"
-    t.string   "likeable_type"
+    t.integer  "likeable_id",   null: false
+    t.string   "likeable_type", null: false
   end
 
   add_index "likes", ["likeable_id", "likeable_type", "user_id"], name: "like_index", unique: true, using: :btree

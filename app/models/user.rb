@@ -1,18 +1,18 @@
 class User < ActiveRecord::Base
 
-  # ----------------------- Relationships --------------------
+  # ----------------------- Associations --------------------
 
   has_one :profile, dependent: :destroy
 
   has_many :posts, -> { order('created_at DESC') },
-                      dependent: :destroy,
-                      foreign_key: :author_id,
-                      class_name: "Post"
+            dependent: :destroy,
+            foreign_key: :author_id,
+            class_name: "Post"
 
   has_many :posts_received, -> { order('created_at DESC') },
-                      dependent: :destroy,
-                      foreign_key: :recipient_user_id,
-                      class_name: "Post"
+            dependent: :destroy,
+            foreign_key: :recipient_user_id,
+            class_name: "Post"
 
   has_many :comments, dependent: :destroy, foreign_key: :author_id
 
@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
 
   has_secure_password
 
-  accepts_nested_attributes_for :profile
+  # accepts_nested_attributes_for :profile
 
   # When acting as the initiator of the friending
   has_many :initiated_friendings, :foreign_key => :friender_id,

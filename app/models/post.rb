@@ -7,9 +7,9 @@ class Post < ActiveRecord::Base
   belongs_to :recipient_user,   foreign_key: :recipient_user_id,
                                 class_name: "User"
 
-  has_many :likes, as: :likeable, dependent: :destroy
-  has_many :comments, -> { order('created_at ASC') },
-            as: :commentable
+  include Likeable
+
+  include Commentable
 
   # ----------------------- Validations --------------------
 
@@ -17,9 +17,5 @@ class Post < ActiveRecord::Base
             presence: true
 
   # ----------------------- Methods --------------------
-
-  def liked?
-    Like.find_by({likeable_type: 'Post', likeable_id: self.id, user_id: self.author.id })
-  end
 
 end

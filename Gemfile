@@ -21,6 +21,9 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+# gem 'will_paginate',           '3.0.7'
+# gem 'bootstrap-will_paginate', '0.0.10'
+
 group :production do
   gem 'rails_12factor'
   gem 'pg'
@@ -41,11 +44,17 @@ group :development, :test do
   gem 'bullet'
 
   gem 'better_errors'
+  gem 'binding_of_caller'
 
   gem 'faker', '1.4.3'
-  gem 'pry-rails'
 
-  gem 'binding_of_caller'
+  gem 'guard-rspec', require: false
+  gem 'rspec-rails'
+  gem 'factory_girl_rails', '~> 4.0'
+
+  gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
+#  gem 'pry-byebug'
+
 
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'

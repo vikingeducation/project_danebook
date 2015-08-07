@@ -4,20 +4,18 @@ class Comment < ActiveRecord::Base
 
   belongs_to :commentable, :polymorphic => true
 
-  has_many :likes, as: :likeable, dependent: :destroy
+  include Commentable
+
+  include Likeable
 
   belongs_to :author, foreign_key: "author_id",
                       class_name: "User"
 
   # ----------------------- Validations --------------------
 
-  validates :author_id, :body,
+  validates :author_id, :body, :commentable,
             presence: true
 
   # ----------------------- Methods --------------------
-
-  def liked?
-    Like.find_by({likeable_type: 'Comment', likeable_id: self.id, user_id: self.author.id })
-  end
 
 end

@@ -49,12 +49,12 @@ module ApplicationHelper
     when likes_count > 2
       "#{likes_count} other people like this"
     else
-      "Huh???"
+      "Huh??? It seems this got a DISlike!"
     end
   end
 
   def like_or_unlike_button(likeable_type)
-    liked = likeable_type.liked?
+    liked = likeable_type.liked_by?(current_user)
     link_to liked ? "Unlike" : "Like",
             like_path(likeable_type: likeable_type.class.to_s,
                       likeable_id: likeable_type.id),

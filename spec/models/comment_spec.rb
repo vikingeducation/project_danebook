@@ -9,7 +9,7 @@ it "should be valid" do
 end
 
 it "should belong to a post" do
-  expect(comment.post).not_to be_nil
+  expect(comment.post_id).not_to be_nil
 end
 
 it "should not be empty" do

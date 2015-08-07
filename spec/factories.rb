@@ -7,6 +7,7 @@ FactoryGirl.define do
     password_confirmation {"foobar"}
   end
 
+
   factory :profile do
     college {"Foo State"}
     hometown {"Foo City"}
@@ -18,21 +19,25 @@ FactoryGirl.define do
   end
 
   factory :post do
-    body {"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus dolores, consequuntur voluptatem? Natus doloremque impedit alias mollitia, atque nostrum, veniam possimus iure consectetur, unde iusto, cumque dolores nemo quibusdam officia?"}
     profile
+    user
+    body {"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus dolores, consequuntur voluptatem? Natus doloremque impedit alias mollitia, atque nostrum, veniam possimus iure consectetur, unde iusto, cumque dolores nemo quibusdam officia?"}
   end
 
   factory :comment do
-    body {"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit odio accusamus magnam excepturi nostrum doloremque sed praesentium, ullam, numquam adipisci ipsa inventore! Quibusdam aliquid placeat beatae porro voluptatum quod, eaque!"}
     post
+    user
+    body {"Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odit odio accusamus magnam excepturi nostrum doloremque sed praesentium, ullam, numquam adipisci ipsa inventore! Quibusdam aliquid placeat beatae porro voluptatum quod, eaque!"}
   end
 
   factory :comment_like, class: "Like" do
     association :likeable, factory: :comment
+    user
   end
 
   factory :post_like, class: "Like" do
     association :likeable, factory: :post
+    user
   end
 
 end

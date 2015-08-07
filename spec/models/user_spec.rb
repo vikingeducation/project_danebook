@@ -67,14 +67,13 @@ end
 
 describe "#likes?" do
 
-  let(:user){ build(:user) }
+  let(:user){ create(:user) }
   
-  before do
-    postlike = create(:post_like)
-    post = postlike.post
-  end
+  let(:like){ create(:post_like, :user => user) }
+  let(:post){ like.liking }
+
   it "gives true when user has a like" do
-    expect(user.likes?(post)).to eq(true)
+    expect(user.likes?(post)).to be(true)
   end
 
 end

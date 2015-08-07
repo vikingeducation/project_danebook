@@ -11,6 +11,18 @@ FactoryGirl.define do
     
   end
 
+  factory :profile do
+    user 
+    college "MIT"
+    phone "123456789"
+    hometown "Smalltown"
+    homecountry "USA"
+    livesintown "Bigtown"
+    livesincountry "USA"
+    wordsby 'word'*10
+    wordsabout "about"*10
+  end
+
   factory :post do
     body      "Stand alone Post"
     author 
@@ -23,8 +35,7 @@ FactoryGirl.define do
 
   factory :post_like, class: "Like" do
     association :liking, :factory => :post
-    body      "Post for like"
-    author
+    user
   end
 
   factory :comment_like, class: "Like" do
@@ -33,17 +44,6 @@ FactoryGirl.define do
     author
   end
 
-  factory :profile do
-    user
-    college "MIT"
-    phone "123456789"
-    hometown "Smalltown"
-    homecountry "USA"
-    livesintown "Bigtown"
-    livesincountry "USA"
-    wordsby 'word'*10
-    wordsabout "about"*10
-  end
 
   factory :comments do
     user

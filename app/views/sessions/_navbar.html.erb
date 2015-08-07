@@ -37,7 +37,7 @@
 
               <strong><%= link_to "#{current_user.first_name.capitalize} #{current_user.last_name.capitalize}", user_profile_path(current_user.id) %></strong>
 
-       
+                <%= link_to "    Sign Out", session_path, method: "delete"%>
 
           </div>
 

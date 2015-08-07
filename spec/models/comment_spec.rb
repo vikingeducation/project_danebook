@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 describe Comment do 
-  let(:user){ build(:user) }
-  let(:comment){ build(:comment) }
+  #let(:user){ create(:user) }
+  let(:comment){ create(:comment) }
 
 
   # Happy
@@ -21,7 +21,11 @@ describe Comment do
 
   # Sad
   it "deleted if author is deleted" do
+    user = comment.author
+    user.save
+    comment.save
     user.destroy
-    expect(comment.nil?).to eq(true)
+
+    expect{Comment.find(comment.id)}.to raise_error
   end
 end

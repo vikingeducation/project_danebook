@@ -1,5 +1,5 @@
 class Comment < ActiveRecord::Base
-  has_many :child_comments, as: :commenting, class_name: "Comment", foreign_key: :commenting_id, dependent: :destroy
+  
   has_many :likes, as: :liking, dependent: :destroy
   belongs_to :commenting, polymorphic: true
   belongs_to :author, class_name: "User", foreign_key: :user_id

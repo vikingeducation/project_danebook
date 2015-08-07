@@ -1,0 +1,455 @@
+// Place all the styles related to the StaticPagesController controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+// Headers
+
+.navbar-top{
+  background: #2B78E4;
+}
+
+.navbar-header {
+
+  a{
+    font-size: 30px;
+    color: #fff;
+  }
+
+}
+
+.icon-bar {
+  background-color: #fff;
+}
+
+.navbar-toggle {
+  border-color: #fff;
+}
+
+.navbar-brand {
+
+  img {
+    display: inline-block;
+    height: 30px;
+    width: 30px;
+    border-radius: 15px;
+  }
+
+}
+
+.header-photo {
+
+  height: 450px;
+  background-image: url("http://s3.amazonaws.com/viking_education/web_development/web_app_eng/hogwarts_small.jpg");
+  background-position: center;
+  background-size: cover;
+  border: 1px solid black;
+
+}
+
+.navbar-user {
+
+  a {
+    font-size: 16px;
+    color: #fff;
+  }
+
+}
+
+.nav-search {
+  width: 500px;
+}
+
+
+
+
+// Main Left
+
+.sign-up-main-left {
+
+  padding-top: 100px;
+
+  h1 {
+    font-size: 40px;
+  }
+
+  ul {
+    margin-top: 20px;
+  }
+
+  li {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
+}
+
+
+
+
+// Main Right
+
+.sign-up-main-right {
+
+  h1 {
+    font-size: 50px
+  }
+}
+
+.form-control-fname {
+  margin-bottom: 15px;
+}
+
+.sign-up-radio {
+  font-size: 16px;
+}
+
+.btn-sign-up {
+  height: 60px;
+  font-size: 30px;
+}
+
+.header-nav {
+
+  border: 1px solid black;
+  height: 42px;
+
+}
+
+.profile-pic-cont {
+
+  position: relative;
+
+  img {
+    display: inline-block;
+    wdith: 100%;
+    max-height: 400px;  }
+
+}
+
+.header-photo {
+
+  img {
+
+    position: absolute;
+    bottom: -30px;
+    max-width: 20%;
+  }
+}
+
+.profile-name {
+  position: absolute;
+  bottom: 0;
+  left: 23%;
+
+  h1 {
+    color: #fff;
+    font-size: 3em;
+  }
+}
+
+
+
+
+// Centered Pills
+
+.centered-pills { 
+  text-align:center; 
+}
+
+.centered-pills ul.nav-pills { display:inline-block; }
+
+.centered-pills li { display:inline; }
+
+.centered-pills a { float:left; }
+
+* html .centered-pills ul.nav-pills { display:inline; } /* IE6 */
+
+*+html .centered-pills ul.nav-pills { display:inline; } /* IE7 */
+
+
+
+
+
+
+
+// Pictures
+
+.pic-col {
+  text-align: center;
+
+  img{
+    max-width: 100%;
+  }
+
+}
+
+.pic-col:after {
+    content:'\A';
+    position:absolute;
+    width:100%; height:100%;
+    top:0; left:0;
+    background:rgba(0,0,0,0.3);
+    opacity:0;
+    transition: all 1s;
+    -webkit-transition: all 1s;
+}
+
+.pic-col:hover:after {
+    opacity:1;
+}
+
+.pic-row {
+  margin-bottom: 1em;
+}
+
+
+
+
+
+
+
+// Timeline Asides
+
+@media (max-width: 768px) {
+  aside {
+    display: none;
+  }
+
+  .edit-profile {
+    display: none;
+  }
+}
+
+.aside-container {
+  border: 1px solid black;
+  margin-bottom: 20px;
+
+  a {
+    text-justify: center;
+  }
+
+}
+
+.aside-container-link {
+  text-align: center;
+}
+
+.aside-container-header {
+  text-align: center;
+  font-size: 20px;
+  border-bottom: 1px solid black;
+  margin-bottom: 5px;
+}
+
+
+
+
+// Timeline Main
+
+.post-update-container {
+  border: 1px solid black;
+  text-align: center;
+  margin-bottom: 40px;
+
+  textarea {
+    margin: 15px auto;
+  }
+
+}
+
+.post-update-title {
+  text-align: center;
+  border: 1px solid black;
+  background: #EEEEEE;
+  font-size: 16px;
+}
+
+.post {
+  margin-bottom: 40px;
+}
+
+.post-update-box {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.post-end-box {
+  background: #EEEEEE;
+  padding: 10px 15px;
+  min-height: 60px;
+  border: 1px solid black;
+}
+
+.comment-content {
+
+  a{
+    margin-right: 20px;
+  }
+
+}
+
+.comment-end-box {
+  background: #EEEEEE;
+  padding: 10px 15px;
+  border: 1px solid black;
+}
+
+.comment-section {
+  border-top: 1px solid grey;
+  padding-top: 10px;
+  margin-top: 10px
+}
+
+.comment-author {
+  margin-bottom: 1em;
+}
+
+.comment-pic {
+
+  img {
+    width: 100%;
+  }
+
+}
+
+.like-btn {
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.delete-btn {
+  dislay: inline-block;
+}
+
+.post-container {
+  border: 1px solid black;
+  padding: 10px;
+
+  img {
+    width: 100%;
+  }
+
+  a {
+    text-decoration: underline;
+  }
+}
+
+.post-btn {
+  display: inline-block;
+}
+
+.post-comment-section {
+  background: #EEEEEE;
+  border-top: 1px solid black;
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.post-content {
+  display: inline-block;
+  margin-top: 10px;
+}
+
+.post-info {
+  margin-top: 20px;
+}
+.timeline-main-right {
+  padding-right: 0;
+}
+
+// Main
+
+.test {
+  border: 1px solid black;
+  text-align: center;
+  h3 { 
+    display: inline-block;
+  }
+}
+
+.edit-btn {
+  padding-top: 15px;
+}
+
+.main-content {
+  border: 1px solid black;
+  padding-top: 40px;
+}
+
+.row-last {
+  margin-bottom: 80px;
+}
+
+.btn-save-changes {
+  padding: 20px 50px;
+  font-size: 30px;
+  text-align: center;
+
+}
+
+.friend-container {
+  display: inline-block;
+  margin-top: 10px;
+  border: 1px solid black;
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  img {
+    display: inline-block;
+    width: 100%;
+  }
+
+}
+
+.friend-info {
+  text-align: left;
+  margin-top: 35px;
+
+  a {
+    text-decoration: underline;
+  }
+}
+
+.btn-unfriend {
+  margin-top: 35px;
+  background: #EEEEEE;
+  color: #000;
+  border-color: #000;
+}
+
+
+
+
+// Photos
+
+.photo-container {
+  text-align: center;
+  position: relative;
+
+  img {
+    height: auto;
+    width: 100%;
+  }
+
+}
+
+.photo-overlay {
+  display: none;
+  width: 100%;
+  position: absolute;
+  background:rgba(0,0,0,.75);
+  text-align:center;
+  opacity:0;
+-webkit-transition: opacity .25s ease;
+-moz-transition: opacity .25s ease;
+  color: white;
+  bottom: 0px;
+  left: 0px;
+  height: 40px;
+  line-height: 40px;
+}
+
+.photo-container:hover .photo-overlay {
+  display: inline-block;
+  opacity: 1;
+}

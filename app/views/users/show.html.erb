@@ -1,0 +1,163 @@
+<%= render partial: "static_pages_controller/navbar", :locals => {first_name: current_user.first_name } %>
+<main>
+
+  <!-- Profile Header -->
+
+  <%= render partial: "static_pages_controller/menu", :locals => { :active => 'About', first_name: @user.first_name, last_name: @user.last_name } %>
+
+  <!-- /profile header -->
+
+
+  <!-- Main Content -->
+
+  <div class="container">
+
+    <div class="row test">
+
+      <div class="col-xs-2 col-xs-offset-5">
+
+        <h3>About</h3>
+
+      </div>
+
+      <div class="col-xs-5 edit-btn">
+      <% if current_user == @user %>
+        <%= link_to "Edit Your Profile", edit_user_path, class: "btn btn-primary pull-right" %>
+      <% end %>
+      </div>
+
+    </div>
+
+    <div class="row main-content">
+
+      <div class="col-md-6">
+
+        <div class="row">
+
+          <div class="col-xs-12">
+
+            <h3>Basic Information</h3>
+
+          </div>
+
+          <div class="col-xs-6">
+
+            <strong>Birthday:</strong>
+
+          </div>
+
+          <div class="col-xs-6">
+
+            <%= @user.birthday.strftime("%B %d, %Y") %>
+
+          </div>
+
+          <div class="col-xs-6">
+
+            <strong>College:</strong>
+
+          </div>
+
+          <div class="col-xs-6">
+
+            <%= @user.profile.college %>
+
+          </div>
+
+          <div class="col-xs-6">
+
+            <strong>Hometown:</strong>
+
+          </div>
+
+          <div class="col-xs-6">
+
+            <%= @user.profile.hometown %>
+
+          </div>
+
+          <div class="col-xs-6">
+
+            <strong>Currently Lives:</strong>
+
+          </div>
+
+          <div class="col-xs-6">
+
+            <%= @user.profile.current_location %>
+
+          </div>
+
+          <div class="col-xs-12">
+
+            <h3>Contact Information</h3>
+
+          </div>
+
+          <div class="col-xs-6">
+
+            <strong>Email:</strong>
+
+          </div>
+
+          <div class="col-xs-6">
+
+            <%= @user.email %>
+
+          </div>
+
+          <div class="col-xs-6">
+
+            <strong>Telephone:</strong>
+
+          </div>
+
+          <div class="col-xs-6">
+
+            <%= @user.profile.telephone %>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="col-md-6">
+
+        <div class="row">
+
+          <div class="col-xs-12">
+
+            <h3>Words to Live By</h3>
+
+          </div>
+
+          <div class="col-xs-12">
+
+            <p><%= @user.profile.words_to_live_by %></p>
+
+          </div>
+
+          <div class="col-xs-12">
+
+            <h3>About Me</h3>
+
+          </div>
+
+          <div class="col-xs-12">
+
+            <p><%= @user.profile.about_me %></p>
+
+          </div>
+
+        </div>
+
+        <hr>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</main>

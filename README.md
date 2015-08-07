@@ -1,4 +1,2 @@
-danebook
-========
-
-This is the Real Dane Deal.
+Danebook Live Deployment
+Nick Sarlo (https://github.com/sicknarlo/)

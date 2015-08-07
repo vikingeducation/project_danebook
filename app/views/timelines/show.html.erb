@@ -1,0 +1,28 @@
+<%= render partial: "static_pages_controller/navbar", :locals => {first_name: current_user.first_name } %>
+<main>
+
+  <!-- Profile Header -->
+
+  <%= render partial: "static_pages_controller/menu", :locals => { :active => 'Timeline', first_name: @user.first_name, last_name: @user.last_name} %>
+
+  <!-- /profile header -->
+
+  <div class="container">
+
+    <div class="row">
+
+        <%= render partial: "layouts/timeline_aside" %>
+
+      <div class="col-sm-8">
+
+        <%= render :partial => 'posts/post' if @user == current_user %>
+
+        <%= render :partial => 'posts/post_list' %>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</main>

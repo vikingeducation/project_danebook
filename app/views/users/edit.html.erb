@@ -1,0 +1,170 @@
+<%= render partial: "static_pages_controller/navbar", :locals => {first_name: @user.first_name } %>
+<main>
+
+  <!-- Profile Header -->
+
+  <%= render partial: "static_pages_controller/menu", :locals => { :active => 'About', first_name: @user.first_name, last_name: @user.last_name } %>
+
+  <!-- /profile header -->
+
+
+  <!-- Main Content -->
+
+  <div class="container">
+
+    <div class="row test">
+
+      <div class="col-xs-2 col-xs-offset-5">
+
+        <h3>About</h3>
+
+      </div>
+
+      <%= form_for @user.profile do |f| %>
+
+      <div class="col-xs-5 edit-btn">
+
+      <%= f.submit "Save Changes", class: "btn btn-primary pull-right" %>
+
+      </div>
+
+    </div>
+
+    <div class="row main-content">
+
+      <div class="col-md-6">
+
+        <div class="row">
+
+          <div class="col-xs-12">
+
+            <h3>Basic Information</h3>
+
+          </div>
+
+          <div class="col-xs-6">
+
+            <strong>Birthday:</strong>
+
+          </div>
+
+          <div class="col-xs-6">
+
+            <%= @user.birthday.strftime("%B %d, %Y") %>
+
+          </div>
+
+          <div class="col-xs-6">
+
+            <strong>College:</strong>
+
+          </div>
+
+          <div class="col-xs-6">
+
+            <%= f.text_field :college, class: "form-control" %>
+
+          </div>
+
+          <div class="col-xs-6">
+
+            <strong>Hometown:</strong>
+
+          </div>
+
+          <div class="col-xs-6">
+
+            <%= f.text_field :hometown, class: "form-control" %>
+
+          </div>
+
+          <div class="col-xs-6">
+
+            <strong>Currently Lives:</strong>
+
+          </div>
+
+          <div class="col-xs-6">
+
+            <%= f.text_field :current_location, class: "form-control" %>
+
+          </div>
+
+          <div class="col-xs-12">
+
+            <h3>Contact Information</h3>
+
+          </div>
+
+          <div class="col-xs-6">
+
+            <strong>Email:</strong>
+
+          </div>
+
+          <div class="col-xs-6">
+
+            <%= @user.email %>
+
+          </div>
+
+          <div class="col-xs-6">
+
+            <strong>Telephone:</strong>
+
+          </div>
+
+          <div class="col-xs-6">
+
+            <%= f.text_field :telephone, class: "form-control" %>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="col-md-6">
+
+        <div class="row">
+
+          <div class="col-xs-12">
+
+            <h3>Words to Live By</h3>
+
+          </div>
+
+          <div class="col-xs-12">
+
+            <p><%= f.text_area :words_to_live_by, class: "form-control" %></p>
+
+          </div>
+
+          <div class="col-xs-12">
+
+            <h3>About Me</h3>
+
+          </div>
+
+          <div class="col-xs-12">
+
+            <p><%= f.text_area :about_me, class: "form-control" %></p>
+
+          </div>
+
+          <div class="col-xs-12">
+            <%= hidden_field_tag :user_id, @user.id  %>
+          </div>
+          <% end %>
+
+        </div>
+
+        <hr>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</main>

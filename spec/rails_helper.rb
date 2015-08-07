@@ -22,7 +22,11 @@ require 'capybara/rails'
 # directory. Alternatively, in the individual `*_spec.rb` files, manually
 # require only the support files necessary.
 #
-# Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+Dir[Rails.root.join('spec/support/**/*.rb')].each { |f| require f }
+
+RSpec.configure do |config|
+  config.include SignupMacros
+end
 
 # Checks for pending migrations before tests are run.
 # If you are not using ActiveRecord, you can remove this line.

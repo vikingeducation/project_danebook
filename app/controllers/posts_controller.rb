@@ -8,7 +8,7 @@ class PostsController < ApplicationController
     if @post.save
       flash[:success] = "Posted new story!"
     else
-      flash[:error] = "hit, your post didnt post, bro"
+      flash[:error] = "Your post didn't post, bro"
     end
     redirect_to user_posts_path(current_user)
   end

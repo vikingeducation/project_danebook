@@ -10,7 +10,6 @@ class UsersController < ApplicationController
 
 
   def new
-    fail
     @user = User.new
   end
 

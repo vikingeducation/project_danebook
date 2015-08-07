@@ -6,4 +6,6 @@ class Comment < ActiveRecord::Base
   has_many :likes, as: :likeable
 
   belongs_to :commentable, :polymorphic => true
+
+  validates :body, presence: true
 end

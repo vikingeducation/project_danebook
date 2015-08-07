@@ -7,6 +7,8 @@ class Post < ActiveRecord::Base
 
   has_many :comments, :as => :commentable
 
+  validates :body, presence: true
+
 
   #like model has similar helpermethod
   # def likes_include_current_user?

@@ -14,7 +14,7 @@ class ProfilesController < ApplicationController
       #check if valid!
       current_user.email = params[:user][:email]
       current_user.save
-      flash[:notice] ="Profile updated successfully!"
+      flash[:success] ="Profile updated successfully!"
       redirect_to user_profiles_path(current_user)
     else
       flash.now[:error] = "Profile failed to update"

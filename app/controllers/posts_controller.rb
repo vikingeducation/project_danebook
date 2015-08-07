@@ -6,7 +6,7 @@ class PostsController < ApplicationController
   def index
     @user = User.find(params[:user_id])
     @posts = @user.posts
-    @new_post = Post.new(:author_id => current_user.id)
+    @new_post = Post.new(:author_id => current_user.id) if current_user
   end
 
 
@@ -25,6 +25,16 @@ class PostsController < ApplicationController
       @posts = @user.posts
       render :index
     end
+  end
+
+
+  def destroy
+    if Post.find(params[:id]).destroy!
+      flash[:success] = 'Post deleted!'
+    else
+      flash[:danger] = "Sorry, we couldn't delete your post. Please try again."
+    end
+    redirect_to user_posts_path(current_user)
   end
 
 

@@ -10,7 +10,7 @@
         <!-- Media list image -->
         <div class="media-left">
 
-          <%= link_to user_path(post_author) do %>
+          <%= link_to user_path(post.author) do %>
             <%= image_tag 'harry_potter_small.jpg', id: 'user-photo', class: 'media-object', size: '50x50', alt: "Post author's photo" %>
           <% end %>
 
@@ -23,19 +23,19 @@
           <!-- Post name and date -->
           <div class="media-heading">
 
-            <%= link_to post_author.profile.full_name, user_path(post_author) %>
+            <%= link_to post.author.profile.full_name, user_path(post.author) %>
 
             <br>
 
-            <time datetime=<%= post_date %> pubdate>
-              <small>Posted on <%= post_date %></small>
+            <time datetime=<%= post.created_at %> pubdate>
+              <small>Posted on <%= post.created_at %></small>
             </time>
 
           </div>
 
 
           <!-- Post text -->
-          <p><%= post_body %></p>
+          <p><%= post.body %></p>
 
         </div> <!-- end of post body -->
 

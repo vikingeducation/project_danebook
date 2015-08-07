@@ -4,10 +4,7 @@
     <div class=" panel panel-default">
 
 
-      <%= render :partial => 'post_body',
-            :locals => {  :post_author => post.author,
-                          :post_date => post.created_at,
-                          :post_body => post.body } %>
+      <%= render :partial => 'post_body', :locals => {  :post => post } %>
 
 
 

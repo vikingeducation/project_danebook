@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   def create
     post = current_user.profile.posts.build(:body => params[:post][:body])
+    post.user_id = current_user.id
     if post.save
       flash[:success] = "New Post"
     else

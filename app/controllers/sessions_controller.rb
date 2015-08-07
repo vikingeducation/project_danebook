@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+skip_before_action :direct_to_signup, only: :create
 
   def create
     # fail

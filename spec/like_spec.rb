@@ -20,7 +20,8 @@ end
 it "should not allow a user to like the same thing twice" do
   post_like.likeable_id = 32
   post_like.save
-  new_like = build(:post_like, likeable_id: 32, likeable_type: "Post")
+  new_like = build(:post_like, likeable_id: 32, likeable_type: "Post",
+                    user_id: post_like.user_id)
   expect(new_like).not_to be_valid 
 end
 

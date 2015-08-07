@@ -8,8 +8,15 @@ it "should be valid" do
   expect(post).to be_valid
 end
 
-it "should belong to a profile" do
-  expect(post.profile).not_to be_nil
+it "should have a profile_id" do
+  post.profile_id = nil
+  expect(post).not_to be_valid 
+end
+
+
+it "should have a user_id" do
+  post.user_id = nil
+  expect(post).not_to be_valid 
 end
 
 it "should not be empty" do

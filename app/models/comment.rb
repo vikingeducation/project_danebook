@@ -4,6 +4,9 @@ class Comment < ActiveRecord::Base
   has_many :likes, as: :likeable
 
   validates :body, length: {minimum: 1}
+  validates :user_id, presence: true
+  validates :post_id, presence: true
+
 
   def already_liked_by?(current_user)
     return false unless current_user

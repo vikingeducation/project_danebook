@@ -7,18 +7,18 @@ class User < ActiveRecord::Base
 
   validates :email, :presence => true,
                     :uniqueness => true,
-                    :format => { :with => /([\w\.-]+)@([\w\.-]+)\.([a-z\.]{2,6})/ }
+                    :format => { :with => /@/ }
 
   validates :password, :presence => true,
                         :length => {:in => 8..25},
                         :on => [:create, :update],
                         :allow_nil => true
 
-  validates :birthdate, :presence => true
+  # validates :birthdate, :presence => true
 
   validates :first_name, :last_name, :presence => true,
-                                    :length => {:in => 1..30},
-                                    :format => {:with => /[a-zA-Z]+/}
+                                    :length => {:in => 1..30}#,
+                                    # :format => {:with => /[a-zA-Z]+/}
 
   has_one :profile,   dependent: :destroy
   has_many :posts,    dependent: :destroy

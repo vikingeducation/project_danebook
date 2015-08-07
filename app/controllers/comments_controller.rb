@@ -1,10 +1,9 @@
 class CommentsController < ApplicationController
 
+  before_action :store_referer
   skip_before_action :require_current_user, :only => [:index, :create, :destroy]
 
   def create
-    session[:return_to] ||= request.referer
-
     comment = Comment.new(params_list)
     comment.user_id = current_user.id
 
@@ -14,12 +13,10 @@ class CommentsController < ApplicationController
       flash[:error] = "There was an error, please try again!"
     end
 
-    redirect_to session.delete(:return_to)
+    redirect_to referer
   end
 
   def destroy
-    session[:return_to] ||= request.referer
-
     comment = Comment.find(params[:id])
 
     if (current_user.id == comment.user_id) && comment.destroy
@@ -27,7 +24,7 @@ class CommentsController < ApplicationController
     else
       flash[:error] = "The comment was not deleted."
     end
-    redirect_to session.delete(:return_to)
+    redirect_to referer
 
   end
 

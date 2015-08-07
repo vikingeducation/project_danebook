@@ -1,10 +1,9 @@
 class LikesController < ApplicationController
 
+  before_action :store_referer
   skip_before_action :require_current_user, :only => [:create, :destroy]
 
   def create
-    session[:return_to] ||= request.referer
-
     like = Like.new(params_list)
     like.user_id = current_user.id
     if like.save
@@ -12,18 +11,17 @@ class LikesController < ApplicationController
     else
       flash[:error] = "There was an error, please try liking again!"
     end
-    redirect_to session.delete(:return_to)
+    redirect_to referer
   end
 
   def destroy
-    session[:return_to] ||= request.referer
     like = current_user.match_like(params_list)
     if current_user.id == like.user_id && like.destroy
       flash[:success] = "You have unliked this!"
     else
       flash[:error] = "There was an error, please try again!"
     end
-    redirect_to session.delete(:return_to)
+    redirect_to referer
   end
 
   def show

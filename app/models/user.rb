@@ -18,12 +18,12 @@ class User < ActiveRecord::Base
 
   validates :first_name, :last_name, :presence => true,
                                     :length => {:in => 1..30},
-                                    :format => {:with => /[a-zA-Z]/}
+                                    :format => {:with => /[a-zA-Z]+/}
 
-  has_one :profile
-  has_many :posts
+  has_one :profile,   dependent: :destroy
+  has_many :posts,    dependent: :destroy
   has_many :likings, through: :posts
-  has_many :likes
+  has_many :likes,    dependent: :destroy
 
   # person who want to be friends
   has_many :initiated_friendings, :foreign_key => :friender_id,

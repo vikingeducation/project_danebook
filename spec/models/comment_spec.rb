@@ -10,6 +10,10 @@ describe Comment do
     expect(post_comment.commentable).to be_a(Post)
   end
 
+  it "on a post is valid" do
+    expect(post_comment).to be_valid
+  end
+
   it "requires a user_id" do
     comment = build(:post_comment, user_id: nil)
     expect(comment).to_not be_valid

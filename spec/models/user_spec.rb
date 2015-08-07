@@ -10,11 +10,6 @@ describe User do
     expect(user).to be_valid
   end
 
-  it "saves without error" do
-    expect{user.save!}.to_not raise_error
-  end
-
-
   context "birthdate" do
 
     it "cannot be nil" do
@@ -38,8 +33,6 @@ describe User do
     end
 
     it "cannot have more than one profile" do
-      # user.profile = create_list(:profile, 2)
-      # expect{user.save}.to raise_error
       user.save
       new_profile = build(:profile)
       expect{user.profile << new_profile}.to raise_error

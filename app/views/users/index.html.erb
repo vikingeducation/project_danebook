@@ -1,0 +1,15 @@
+<%= render 'shared/signed_in_header' %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12" style='background-color: #D3D3D3; border: 1px solid black'>
+        <h2 class='text-center' >Search Results</h2>
+    </div>
+    <div class="col-md-12">
+      <% if @users.present? %>
+      <%= render @users %>
+    <% else %>
+      <p>There are no Users containing the term(s) <%= params[:search] %>.</p>
+    <% end %>
+    </div>
+  </div>
+</div>

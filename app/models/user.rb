@@ -5,20 +5,37 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :likes
 
-  has_secure_password
+  #intiating friendships
+  has_many :initiated_friendings, :foreign_key => :friender_id,
+                                  :class_name => "Friending"
+  has_many :friended_users,       :through => :initiated_friendings,
+                                  :source => :friend_recipient
+  
+  #recieving friendships.
+  has_many :received_friendings,  :foreign_key => :friend_id,
+                                  :class_name => "Friending"
+  has_many :users_friended_by,    :through => :received_friendings,
+                                  :source => :friend_initiator
 
   before_create :generate_token
+  #build a profile after user being created
   after_create :build_profile
   
+  has_secure_password
+  
   validates :first_name, :last_name, :presence => true
-  validates :birthdate, :presence => true
   validates :email, :presence => true, :format => { :with => /@/ }
-  validates :password, :presence => true,
-            :on => [:create, :update],
-            :length => {:in => 8..16},
-            :allow_nil => false
+  # validates :password, :presence => true,
+  #           :on => [:create, :update],
+  #           :length => {:in => 8..16},
+  #           :allow_nil => false
 
+  
  
+
+ def self.search(search)
+   User.where("first_name like :s or last_name like :s or first_name || ' ' || last_name like :s", :s => "%#{search}")
+end
 
   
                                       

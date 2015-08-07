@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
 .navbar{
   background: -webkit-linear-gradient(#4C67A1, #3B5998);
   background: -o-linear-gradient(#4C67A1, #3B5998); 
@@ -16,7 +17,7 @@
   a{
     color: #fff;
     font-size: 3em;
-    line-height: 60px;
+    // line-height: 60px;
   }
 }
 .navbar>.container .navbar-brand,

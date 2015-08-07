@@ -16,10 +16,11 @@ module PostsHelper
     count = collection.post_likes.size 
     if count == 1 
       you_like = current_user_post_like(collection)
-      return '<span class="grey-text"> #{you_like} like this</span>'
+      return '#{you_like} like this'
+
     elsif count > 1
       you_like = current_user_post_like(collection)
-      return '<span class="grey-text">#{you_like} and </span><span class="grey-text"> and #{count - 1} others like this</span>'
+      return '<span class="grey-text">#{you_like} and </span><span class="grey-text"> and #{count - 1} others like this</span>'.html_safe
     end
     return ""
   end
@@ -28,24 +29,24 @@ module PostsHelper
     count = collection.comment_likes.size 
     if count == 1
       you_like = current_user_comment_like(collection)
-      return '<span class="grey-text"> #{you_like}  like this </span>'
+      return '<span class="grey-text"> #{you_like}  like this </span>'.html_safe
     elsif count > 1
       you_like = current_user_comment_like(collection)
-      '<span class="grey-text">#{you_like} and </span><span class="grey-text"> and #{count - 1} others like this</span>'
+      '<span class="grey-text">#{you_like} and </span><span class="grey-text"> and #{count - 1} others like this</span>'.html_safe
     end
     return ""
   end  
 
   def current_user_post_like(collection)
     collection.post_likes.each do |like|
-        return "You" if like.liker_id == current_user.id
+        return "You" if like.user_id == current_user.id
     end
       return collection.post_likes.first.user
   end
 
   def current_user_comment_like(collection)
     collection.comment_likes.each do |like|
-        return "You" if like.liker_id == current_user.id
+        return "You" if like.user_id == current_user.id
     end
       return collection.comment_likes.first.user
   end

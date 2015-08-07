@@ -1,21 +1,28 @@
 <header class="navbar">
-    <div class="container">
+  <div class="container">
 
-      <div class="row">
-        
-        <div class="navbar-header">
-          <a class="navbar-brand" href="#"><img class="logo" src="images/danish_flag.gif" alt="the logo">Danebook</a>
-        </div>
+    <div class="row center-row">
 
-        <div class="test"><p><%= @user.first_name %> </p></div>
-        
-        <form class="navbar-form " role="search">
-          <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search this site">
-          </div>
-        </form> 
-
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">
+          <img class="logo" src="/images/danish_flag.gif" alt="the logo">Danebook
+        </a>
       </div>
 
-    </div>
-  </header>
+      <div class="test"><p><%= @user.first_name %> </p></div>
+
+  <!--         <form class="navbar-form " role="search">
+            <div class="input-group">
+              <input type="text" class="form-control" placeholder="Search this site">
+            </div>
+          </form>  -->
+          <div class="input-group">
+            <%= form_tag(users_path, :method => "get", class: "navbar-form") do %>
+            <%= text_field_tag :search, params[:search], placeholder: "Search Users" ,class: 'grey-text form-control' %>
+            <%= submit_tag "Search", class: 'btn btn-default' %>
+            <% end %>
+          </div>
+        </div>
+
+      </div>
+    </header>

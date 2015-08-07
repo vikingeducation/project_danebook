@@ -1,28 +1,27 @@
 class LikesController < ApplicationController
-
+  
 
   def create
-    session[:return_to] ||= request.referer
-
-    like = Like.new(params_list)
+    like = Like.new(like_params_list)
     like.user_id = current_user.id
     if like.save
-      redirect_to session.delete(:return_to)
+      redirect_to URI(request.referer).path and return
     else
       flash[:error] = "An error has occurred"
     end
-    redirect_to session.delete(:return_to)
+    redirect_to URI(request.referer).path and return
   end
 
   def destroy
-    session[:return_to] ||= request.referer
+    like = Like.find(params[:id])
     
-    if current_user.id == like.user_id && like.destroy
-      redirect_to session.delete(:return_to)
+    if current_user.id == like.user_id 
+      like.destroy
+      redirect_to URI(request.referer).path and return
     else
       flash[:error] = "An error has occurred"
     end
-    redirect_to session.delete(:return_to)
+    redirect_to URI(request.referer).path and return
   end
 
   private

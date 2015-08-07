@@ -7,7 +7,8 @@ Rails.application.routes.draw do
   end
   
   resources :comments, :only => [:create, :destroy]
-
+  resources :friendings, :only => [:create, :destroy]
+  
   root to: 'users#new'
 
   get 'timeline' => 'users#timeline'

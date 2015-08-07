@@ -21,6 +21,13 @@ class UsersController < ApplicationController
   end
 
   def index
+    @user = current_user
+    @users = User.all
+    if params[:search]
+      @users = User.search(params[:search]).order("created_at DESC")
+    else
+      @users = User.all.order('created_at DESC')
+  end
   end
 
   def timeline

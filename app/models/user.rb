@@ -6,8 +6,8 @@ class User < ActiveRecord::Base
   has_secure_password
 
   validates :email, :presence => true,
-                    :format => { :with => /@/ },
-                    :uniqueness => true
+                    :uniqueness => true,
+                    :format => { :with => /^([\w\.-]+)@([\w\.-]+)\.([a-z\.]{2,6})$/ }
 
   validates :password, :presence => true,
                         :length => {:in => 8..25},

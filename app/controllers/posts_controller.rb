@@ -10,10 +10,6 @@ class PostsController < ApplicationController
   end
 
 
-  def new
-  end
-
-
   def create
     @new_post = Post.new(post_params)
     if @new_post.save

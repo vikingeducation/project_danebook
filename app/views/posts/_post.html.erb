@@ -11,8 +11,7 @@
       <!-- Feedback section for likes and comments -->
       <div class="panel-footer">
 
-        <%= render :partial => "post_footer",
-              :locals => { :post => post } %>
+        <%= render :partial => "post_footer", :locals => { :post => post } %>
 
 
         <%# if comments.count > 0 %>
@@ -37,30 +36,41 @@
 
             <div class="col-xs-12">
 
-              <form id="comment-form">
+              <!-- <form id="comment-form"> -->
+              <div class='comment-form'>
 
-                <textarea class="form-control" rows="3">Write a comment...</textarea>
+                <%= form_for Comment.new do |comment_fields| %>
 
-                <!-- separate row for Cancel & Comment buttons -->
-                <div class="row center-block">
-                  <div class="col-xs-12">
+                  <%= comment_fields.hidden_field :author_id, value: current_user.id %>
+                  <%= comment_fields.hidden_field :post_id, value: post.id %>
 
-                    <div class="pull-left">
-                      <a href="#" alt="Cancel writing a comment">Cancel</a>
+                  <%= comment_fields.text_area  :body, class: 'form-control', rows: '3', placeholder: 'Write a comment...' %>
+                  <!-- <textarea class="form-control" rows="3">Write a comment...</textarea> -->
+
+                  <!-- separate row for Cancel & Comment buttons -->
+                  <div class="row center-block">
+                    <div class="col-xs-12">
+
+                      <div class="pull-left">
+                        <a href="#" alt="Cancel writing a comment">Cancel</a>
+                      </div>
+
+                      <div class="pull-right comment-button-wrapper">
+
+                        <%= comment_fields.submit 'Comment', class: 'btn btn-primary btn-sm' %>
+                        <!-- <button type="submit" class="btn btn-primary btn-sm">
+                          Comment
+                        </button> -->
+
+                      </div>
+
                     </div>
+                  </div> <!-- end of Cancel & Comment row -->
 
-                    <div class="pull-right comment-button-wrapper">
+                <% end %>
 
-                      <button type="submit" class="btn btn-primary btn-sm">
-                        Comment
-                      </button>
-
-                    </div>
-
-                  </div>
-                </div> <!-- end of Cancel & Comment row -->
-
-              </form>
+              </div> <!-- comment-form -->
+              <!-- </form> -->
 
             </div>
 

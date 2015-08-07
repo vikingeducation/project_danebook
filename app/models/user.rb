@@ -8,6 +8,9 @@ class User < ActiveRecord::Base
   has_many :likes, :foreign_key => :liker_id, :dependent => :destroy
   has_many :liked_posts, :through => :likes, :source => :post
 
+  has_many :comments, :foreign_key => :author_id
+
+
   has_secure_password
 
   validates :email, :uniqueness => true, :format => { :with => /.+@.+/, :message => "format is invalid." }

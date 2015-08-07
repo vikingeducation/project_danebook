@@ -1,10 +1,10 @@
 require 'rails_helper'
 
 describe Friending do
-  let(:user) { build(:user) }
+  let(:user) { create(:user) }
 
   context 'friending users' do
-    let(:friend) { build(:user) }
+    let(:friend) { create(:user) }
 
     it 'should allow a user to friend another' do
       user.friends << friend
@@ -13,9 +13,8 @@ describe Friending do
     end
 
     it 'should not allow a user to friend a user more than once' do
-      user.friends << friend
-      user.save
-      expect{user.friends << friend}.to raise_error(ActiveRecord::RecordNotUnique)
+      create(:friending, user: user, friend: friend)
+      expect(build(:friending, user: user, friend: friend)).to be_invalid
     end
   end
 end

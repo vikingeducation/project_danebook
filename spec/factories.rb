@@ -39,4 +39,9 @@ FactoryGirl.define do
       likable factory: :comment
     end
   end
+
+  factory :friending do
+    association :user
+    association :friend
+  end
 end

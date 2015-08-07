@@ -10,7 +10,7 @@ module LikesHelper
       str = "You like this."
 
     elsif count == 1 && !likes.you_liked?(current_user)
-      str = name_of_other_liker(likes) + " likes this."
+      str = name_of_other_liker(likes).full_name + " likes this."
 
     elsif count > 1
       str = ""

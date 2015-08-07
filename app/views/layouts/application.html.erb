@@ -16,13 +16,7 @@
   <div class="container-fluid">
     <div class="row" id="home">
 
-      <% if signed_in_user? %>
-        <%= render partial: "shared/signed_in_navbar" %>
-
-      <% else %>
-        <%= render partial: "shared/signed_out_navbar" %>
-        <%= link_to "Login", login_path %>
-      <% end %>
+      <%= navbar_display %>
 
     </div>
 

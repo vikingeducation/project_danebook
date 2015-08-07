@@ -15,12 +15,10 @@ FactoryGirl.define do
 
   factory :post_like, class: "Like" do
     association :likings, :factory => :post
-    # body  {"something in post body"}
   end
 
   factory :comment_like, class: "Like" do
     association :likings, :factory => :post_comment
-    # body  "something in comment body"
   end
 
 

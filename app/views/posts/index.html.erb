@@ -2,129 +2,18 @@
 
   <%= render :partial => 'shared/middle_navbar' %>
 
-
     <section class = "container" id="timeline-section">
       <div class="row">
 
         <aside class="col-md-4" id="basic-info">
 
+          <%= render partial: 'about_panel', locals: {user: @user, profile: @profile} %>
 
-          <section class="row" id="timeline-about">
-            <header class="col-md-12">
-              <h4>About</h4>
-            </header>
+          <%= render partial: 'photo_panel' %>
 
-            <div class="row">
-              <div class = "col-xs-5">
-                <b>Born on:</b>
-              </div>
-              <div class = "col-xs-7">
-                <%= @user.birthdate %>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class = "col-xs-5">
-                <b>Went to school at:</b>
-              </div>
-              <div class = "col-xs-7">
-                <%= @profile.college %>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class = "col-xs-5">
-                <b>Hometown:</b>
-              </div>
-              <div class = "col-xs-7">
-                <%= @profile.hometown %>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class = "col-xs-5">
-                <b>Currently Lives:</b>
-              </div>
-              <div class = "col-xs-7">
-                <%= @profile.location %>
-              </div>
-            </div>
-          </section>
-
-
-
-          <section class="row" id="timeline-photos">
-            <header class="col-md-12">
-              <h4>Photos</h4>
-            </header>
-
-            <% 9.times do |num| %>
-              <div class="col-xs-4 photo">
-                <a href="#">
-                  <%=image_tag "icon_photo_small.png" %>
-                </a>
-                <div class="upload-date">
-                  <p>Uploaded June 15, 2015</p>
-                </div>
-              </div>
-            <% end %>
-
-              <div class="col-md-12 more-photos">
-                <%= link_to "See more photos!", photos_path %>
-              </div>
-          </section>
-
-
-
-          <section class="row" id="timeline-friends">
-            <header class="col-md-12">
-                <h4>Friends: 542</h4>
-            </header>
-
-            <div class="col-xs-4 friend">
-              <a href="#">
-                <%=image_tag "Hermione-Granger.jpg" %>
-              </a>
-              <p><a href="#">Hermione</a></p>
-            </div>
-            <div class="col-xs-4 friend">
-              <a href="#">
-                <%=image_tag "Bonnie-Wright.jpg" %>
-              </a>
-              <p><a href="#">Ginny Weasley</a></p>
-            </div>
-            <div class="col-xs-4 friend">
-              <a href="#">
-                <%=image_tag "RonWeasley.jpg" %>
-              </a>
-              <p><a href="#">Ron Weasley</a></p>
-            </div>
-            <div class="col-xs-4 friend">
-              <a href="#">
-                <%=image_tag "Cho-Chang.jpg" %>
-              </a>
-              <p><a href="#">Cho Chang</a></p>
-            </div>
-            <div class="col-xs-4 friend">
-              <a href="#">
-                <%=image_tag "cedric-diggory.jpeg" %>
-              </a>
-              <p><a href="#">Cedric Diggory</a></p>
-            </div>
-            <div class="col-xs-4 friend">
-              <a href="#">
-                <%=image_tag "Rubeus_Hagrid.jpg" %>
-              </a>
-              <p><a href="#">Rubeus Hagrid</a></p>
-            </div>
-
-            <div class="col-md-12 friend">
-              <%= link_to "See more friends!", friends_path %>
-            </div>
-          </section>
+          <%= render partial: 'friend_panel' %>
 
         </aside>
-
 
         <!--timeline posts!-->
         <div class="col-md-7 col-md-offset-1" id="news-feed">

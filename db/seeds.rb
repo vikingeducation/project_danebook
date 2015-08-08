@@ -35,6 +35,8 @@
 
   Profile.all.each do |profile|
     rand(2..10).times do
-      profile.posts.create(:body => Faker::Lorem.paragraph(rand(1..20)))
+      post = profile.posts.build(:body => Faker::Lorem.paragraph(rand(1..20)))
+      post.user_id = User.all.ids.sample
+      post.save!
     end
   end

@@ -27,25 +27,22 @@ context "posts" do
 #NOT YET WORKING
   context "destroy" do
 
-     scenario 'should be able to destroy a post' # do
-    #   post = create(:post)
-    #   user = post.user
-    #   profile = post.profile
-    #   user.profile = post.profile
-    #   binding.pry
-    #   visit profile_timeline_path(post.profile)
-    #   save_and_open_page
-    #   expect(page).to have_content(post.body)
+     scenario 'should be able to destroy a post'  do
+      post = create(:post, user_id: user.id, profile_id: user.profile.id)
+      # binding.pry
+      visit profile_timeline_path(post.profile)
+      save_and_open_page
+      expect(page).to have_content(post.body)
 
-    #   p Post.count
-    #   expect(page).to have_content("Delete")
-    #   click_link "Delete"
-    #   expect(page).to have_content("Delete")
+      p Post.count
+      expect(page).to have_content("Delete")
+      click_link "Delete"
+      expect(page).to have_content("Delete")
 
-    #   # expect{click_link "Delete"}.to change(Post, :count).by(-1)
-    #   p Post.count
+      # expect{click_link "Delete"}.to change(Post, :count).by(-1)
+      p Post.count
       
-    # end
+    end
   end
 end
 

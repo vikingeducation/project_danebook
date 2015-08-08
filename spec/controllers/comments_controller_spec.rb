@@ -22,9 +22,9 @@ describe CommentsController do
 
         expect do
           post :create, comment: attributes_for(:post_comment,
-                        :user_id => user.id,
-                        :commentable_id => @post.id,
-                        :commentable_type => "Post")
+                        user_id:          user.id,
+                        commentable_id:   @post.id,
+                        commentable_type: "Post")
 
         end.to change(Comment, :count).by(1)
 
@@ -32,9 +32,9 @@ describe CommentsController do
 
       it 'redirects to index/refreshes after comment creation' do
         post :create, comment: attributes_for(:post_comment,
-                        :user_id => user.id,
-                        :commentable_id => @post.id,
-                        :commentable_type => "Post")
+                        user_id:          user.id,
+                        commentable_id:   @post.id,
+                        commentable_type: "Post")
         expect(response).to redirect_to (user_posts_path(user.id))
       end
 
@@ -42,9 +42,9 @@ describe CommentsController do
         another_user = create(:user)
         expect do
           post :create, comment: attributes_for(:post_comment,
-                        :user_id => another_user.id,
-                        :commentable_id => @post.id,
-                        :commentable_type => "Post")
+                        user_id:          user.id,
+                        commentable_id:   @post.id,
+                        commentable_type: "Post")
 
         end.to change(Comment, :count).by(1)
       end
@@ -55,8 +55,11 @@ describe CommentsController do
 
       before :each do
         @comment = create(:post_comment, user: user)
+
         @another_user = create(:user)
-        @comment2 = create(:post_comment, user: @another_user)
+        @comment2 = create(:post_comment, user: @another_user,
+                        commentable_id:   @post.id,
+                        commentable_type: "Post")
       end
 
       it 'can destroy their own comment' do

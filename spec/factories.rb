@@ -16,6 +16,7 @@ FactoryGirl.define do
   end
 
   factory :profile do
+    college         "South American University"
     hometown        "My Town"
     current_home    "A Town"
     mobile          "1234"

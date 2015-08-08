@@ -3,6 +3,7 @@ class Like < ActiveRecord::Base
   validates :user_id, uniqueness: { scope: [:likable_id, :likable_type] }
 
   belongs_to :user
+  has_one :profile, through: :user
   belongs_to :likable, :polymorphic => true
 
   
@@ -12,7 +13,7 @@ class Like < ActiveRecord::Base
   end
 
   def self.creator_name(like_list)
-    str = like_list.inject("") do |str, like|
+    str = like_list.includes(:user, :profile).inject("") do |str, like|
       str + "#{like.user.profile.full_name} and "
     end
     str[0..-5]

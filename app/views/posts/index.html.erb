@@ -13,7 +13,7 @@
         <%= render partial: "post_form" %>
       <% end %>
 
-      <% @posts.includes(:comments).each do |post| %>
+      <% @posts.each do |post| %>
         <article class ="row post">
           <div class="col-sm-2 posted-by">
             <img src="https://www.blastr.com/sites/blastr/files/styles/blog_post_media/public/dawn_apes_caesar.jpg?itok=-jHgIwlD">

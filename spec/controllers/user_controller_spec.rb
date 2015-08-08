@@ -22,8 +22,13 @@ describe UsersController do
       cookies[:auth_token] = user.auth_token
     end
 
-    it 'signed in user is redirected to timeline' do
-      get :show, user_id: user.id
+    it 'signed in user is redirected to show page' do
+      get :new
+      expect(response).to redirect_to(user_path(user.id))
+    end
+
+    it 'signed in user #show to redirect to timeline' do
+      get :show, id: user.id
       expect(response).to redirect_to(user_posts_path(user.id))
     end
 

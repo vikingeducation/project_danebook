@@ -21,6 +21,10 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+    redirect_to user_posts_path(params[:id])
+  end
+
   # def edit
   #   # binding.pry
   #   current_user
@@ -35,10 +39,6 @@ class UsersController < ApplicationController
   #     render :edit
   #   end
   # end
-
-  def show
-    redirect_to user_posts_path(params[:id])
-  end
 
   # def destroy
   #   sign_out

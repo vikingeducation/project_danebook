@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
 
+  before_action :require_login
   before_action :require_current_user, :except => [:index]
 
   def index

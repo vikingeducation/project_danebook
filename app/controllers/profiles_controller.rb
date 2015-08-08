@@ -14,6 +14,11 @@ class ProfilesController < ApplicationController
     end
   end
 
+  def show
+    @user= User.find(params[:user_id])
+    @profile = @user.profile
+  end
+
   def edit
     @profile = current_user.profile
   end
@@ -27,11 +32,6 @@ class ProfilesController < ApplicationController
       flash.now[:failure] = "Failed to update your profile"
       render :edit
     end
-  end
-
-  def show
-    @user= User.find(params[:user_id])
-    @profile = @user.profile
   end
 
   private

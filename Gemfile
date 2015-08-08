@@ -48,9 +48,17 @@ group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'rspec-rails'
+  
+  # Mock data and associations for all tests
   gem 'factory_girl_rails', '~> 4.0'
 end
 
 group :development do
   gem 'guard-rspec', require: false
+end
+
+group :test do
+  # For integration tests
+  gem 'capybara'
+  gem 'launchy'
 end

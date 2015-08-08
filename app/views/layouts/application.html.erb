@@ -11,7 +11,7 @@
 	<% unless current_page?(root_path) %>
 		<%= render :partial => '/layouts/header' %>
 	<% end %>
-	<div class="text-center">
+	<div class="error-messages text-center">
 		<% flash.each do |type, msg| %>
 			<%= "#{type.upcase}: #{msg}" %> 
 		<% end %>  

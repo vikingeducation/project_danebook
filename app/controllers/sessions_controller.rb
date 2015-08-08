@@ -10,8 +10,8 @@ class SessionsController < ApplicationController
 			flash[:success] = "Signed in successfully!"
 			redirect_to user_profile_path(@user.id)
 		else 
-			flash.now[:error] = "Unable to sign in."
-			render :new
+			flash[:error] = "Unable to sign in."
+			redirect_to root_path
 		end
 	end
 

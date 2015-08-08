@@ -87,10 +87,20 @@ describe User do
 	end
 	
 	context "after creation" do
+
 		it "creates a profile object" do
 			user.save
 			expect(user.profile).to be_valid
 		end
+		
+	end
+
+	context "associations" do
+
+	end
+
+	context "methods" do
+
 	end
 
 end

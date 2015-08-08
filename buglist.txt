@@ -1,6 +1,49 @@
 buglist.txt
 
-Models 
+II. Feature Tests
+
+A. User
+1. Sign in 
+Cannot view profile page without signing in
+Cannot access any page other than signup page
+Directs to Timeline page
+
+2. Sign up
+Requires fields filled correctly
+Fields filled correctly creates user and generates profile
+Directs to profile page after signing up
+
+B. Post
+1. Create a post
+Can only create post on own wall
+
+2. Delete a post
+Can only delete own post
+
+C. Comment
+1. Write a comment on a post
+Can write a comment on friends wall
+Can write a comment on own wall
+
+2. Delete a comment
+Can delete an authored comment on own wall
+Cannot delete an unauthored comment on own wall
+
+Can delete an authored comment on friends wall
+Cannot delete an unauthored comment on friends wall
+
+D. Like
+1. Like a post
+
+2. Like a comment
+
+E. Profile
+3. Edit information
+
+
+--------
+
+I. Model Tests
 
 A. User
 1. New/Create

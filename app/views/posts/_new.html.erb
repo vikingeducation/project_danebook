@@ -3,16 +3,17 @@
     <h3 class="panel-title timeline-panel-header">Post</h3>
   </div>
 
-  <div class="panel-body">
-    <%= form_for [:user, @new_post] do |p| %> 
-        <div class="form-group">
+  <%= form_for [:user, @new_post] do |p| %> 
+  
+    <div class="panel-body">
+      <div class="form-group">
         <%= p.text_area :body, class: "form-control",  placeholder: "Write on the wall" %>   
-        </div>
-  </div>
+      </div>
+    </div>
 
-  <div class="panel-footer clearfix">
-    <%= p.submit "Post", class: "pull-right btn btn-sm btn-primary" %> 
-  </div>
+    <div class="panel-footer clearfix">
+      <%= p.submit "Post", class: "pull-right btn btn-sm btn-primary" %> 
+    </div>
 
   <% end %>
 </div> <!-- end panel default -->

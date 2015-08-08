@@ -1,7 +1,7 @@
 class Like < ActiveRecord::Base
 
 	belongs_to :user
-	belongs_to :likings, :polymorphic => true
+	belongs_to :liking, :polymorphic => true
 	# user_id is unique for each post
 	validates :user_id, :uniqueness => {:scope => [:liking_id, :liking_type]}
 	# validates :post, :user, :presence => true

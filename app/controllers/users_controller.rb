@@ -18,8 +18,8 @@ class UsersController < ApplicationController
 			flash[:success] = "Welcome to Danebook"
 			redirect_to user_profile_path(:user_id => @user.id)
 		else
-			flash.now[:error] = "Unable to create profile"
-			render :new
+			flash[:error] = "Unable to create profile"
+			redirect_to root_path
 		end
 	end
 
@@ -44,7 +44,7 @@ class UsersController < ApplicationController
 	def destroy
 		sign_out
 		flash[:success] = "Signed out."
-		redirect_to login_path
+		redirect_to root_path
 	end
 
 	private

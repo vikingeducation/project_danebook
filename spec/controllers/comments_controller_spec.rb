@@ -55,21 +55,29 @@ describe CommentsController do
 
       before :each do
         @comment = create(:post_comment, user: user)
+        @another_user = create(:user)
+        @comment2 = create(:post_comment, user: @another_user)
       end
 
-      it 'can destroy their own post' do
+      it 'can destroy their own comment' do
         expect do
           delete :destroy, user_id: user.id, id: @comment
         end.to change(Comment, :count).by(-1)
       end
 
-      it "cannot create a post on another user's timeline" do
-        another_user = create(:user)
+      it "cannot destroy someone else's comment" do
         expect do
-          delete :destroy, user_id: another_user.id, id: @comment
+          delete :destroy, user_id: @another_user.id, id: @comment
         end.to change(Comment, :count).by(0)
+      end
+
+      it "can destroy your comment on someone else's timeline" do
+        cookies[:auth_token] = @another_user.auth_token
+        expect do
+          delete :destroy, user_id: @another_user.id, id: @comment2
+        end.to change(Comment, :count).by(-1)
       end
     end
 
-  end #end logged in context block
+  end
 end

@@ -77,7 +77,7 @@ describe PostsController do
         end.to change(Post, :count).by(-1)
       end
 
-      it "cannot create a post on another user's timeline" do
+      it "cannot destroy a post on another user's timeline" do
         another_user = create(:user)
         expect do
           delete :destroy, user_id: another_user.id, id: @post

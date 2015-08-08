@@ -11,9 +11,9 @@ describe UsersController do
   end
 
   it 'should have #index return a list of user results ' do
-    user_1 = create(:user, first_name: "aa")
-    user_2 = create(:user, first_name: "aab")
-    user_3 = create(:user, first_name: "c")
+    create(:user, first_name: "aa")
+    create(:user, first_name: "aab")
+    create(:user, first_name: "c")
 
     get :index, name: "a"
 
@@ -21,9 +21,9 @@ describe UsersController do
   end
 
   it 'should have #index assign no users if no results ' do
-    user_1 = create(:user, first_name: "aa")
-    user_2 = create(:user, first_name: "aab")
-    user_3 = create(:user, first_name: "c")
+    create(:user, first_name: "aa")
+    create(:user, first_name: "aab")
+    create(:user, first_name: "c")
 
     get :index, name: "d"
 
@@ -42,28 +42,59 @@ describe UsersController do
 
   context 'showing/editing' do
 
+    # Why not use user in let block? That one is built, trying to avoid
+    # writing to test db.
     before :all do
       @new_user = create(:user)
     end
 
+    # WARNING: YOU MUST DO THIS
+    # WITHOUT THIS LINE THE CREATED USERS ABOVE DO NOT GET ROLLED BACK!
     after :all do
       User.destroy_all
     end
 
     it 'should have #show assign a user by a given id' do
-      # Why not use user in let block? That one is built, trying to avoid
-      # writing to test db.
-      @new_user = create(:user)
       get :show, id: @new_user.id
       expect(assigns(:user)).to eq(@new_user)
+    end
+
+    it 'should have #show raise an error if user does not exist' do
+      expect{get :show, id: User.last.id + 1}.to raise_error(ActiveRecord::RecordNotFound)
     end
 
     it 'should have #edit assign a user by a given id' do
       # Why not use user in let block? That one is built, trying to avoid
       # writing to test db.
-      @new_user = create(:user)
       get :show, id: @new_user.id
       expect(assigns(:user)).to eq(@new_user)
+    end
+
+    it 'should have #edit raise an error if user does not exist' do
+      expect{get :edit, id: -1}.to raise_error(ActiveRecord::RecordNotFound)
+    end
+
+    it 'should have #update assign a user by a given id' do
+      # You use @new_user.attributes rather than attributes_for(@new_user)
+      # because @new_user is actually an instance of User ?
+      post :update, id: @new_user.id, user: @new_user.attributes
+      expect(assigns(:user)).to eq(@new_user)
+    end
+
+    it 'should actually update the user' do
+      new_first_name = "NEWBIE"
+      @new_user.first_name = new_first_name
+      post :update, id: @new_user.id, user: @new_user.attributes
+      expect(User.first.first_name).to eq(new_first_name)
+    end
+
+    it 'should not update the first name if invalid' do
+      # @new_user still thinks its old name is the factory preset.
+      @new_user.reload
+      old_first_name = @new_user.first_name
+      @new_user.first_name = ""
+      post :update, id: @new_user.id, user: @new_user.attributes
+      expect(User.first.first_name).to eq(old_first_name)
     end
   end
 end

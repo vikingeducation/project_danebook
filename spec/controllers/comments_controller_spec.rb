@@ -11,6 +11,7 @@ describe CommentsController do
     expect do
       post :create, comment: new_comment.attributes
     end.to change(Comment, :count).by (1)
+    expect(response).to redirect_to(root_path)
   end
 
   it 'should not make a new comment without a user' do
@@ -18,6 +19,7 @@ describe CommentsController do
     expect do
       post :create, comment: new_comment.attributes
     end.to change(Comment, :count).by (0)
+    expect(response).to redirect_to(root_path)
   end
 
   context 'comment deletion' do
@@ -32,6 +34,7 @@ describe CommentsController do
       expect do
         delete :destroy, id: comment.id
       end.to change(Comment, :count).by(-1)
+      expect(response).to redirect_to(root_path)
     end
 
     it 'should not let the user delete a different user comment' do
@@ -39,6 +42,7 @@ describe CommentsController do
       expect do
         delete :destroy, id: comment.id
       end.to change(Comment, :count).by(0)
+      expect(response).to redirect_to(root_path)
     end
 
   end

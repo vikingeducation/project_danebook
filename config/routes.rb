@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'users#new'
 
 
-  resources :users, only: [:new, :create, :show, :edit, :update] do
+  resources :users, only: [:new, :create, :show] do
     resource :profile, only: [:create, :show, :edit, :update]
     resources :posts
   end

@@ -59,7 +59,7 @@ class User < ActiveRecord::Base
   end
 
   def has_friended?(user)
-    friended_users.include?(user)
+    friended_users.includes(:friended_users, :profile).include?(user)
   end
 
 end

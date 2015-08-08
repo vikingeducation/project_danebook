@@ -8,12 +8,7 @@ describe Profile do
     it "is valid with attributes" do
       expect(profile).to be_valid
     end
-
-    it "is invalid without user_id" do
-      profile.user_id = nil
-      expect(profile).not_to be_valid
-    end
-
+    
   end
 
   context "Associations" do

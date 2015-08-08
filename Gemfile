@@ -1,8 +1,5 @@
 source 'https://rubygems.org'
 
-
-
-
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'
 # Use sqlite3 as the database for Active Record
@@ -52,14 +49,18 @@ group :development, :test do
 
   gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
   gem "bullet"
-  # test
-  gem 'factory_girl_rails', '~> 4.0'
-  gem 'rspec-rails'
-  gem 'guard-rspec', require: false
 end
 
 group :production do
   gem 'rails_12factor'
   gem 'pg'
+end
+
+group :test do
+  gem 'factory_girl_rails', '~> 4.0'
+  gem 'rspec-rails'
+  gem 'guard-rspec', require: false
+  gem 'capybara'
+  gem 'launchy'
 end
 

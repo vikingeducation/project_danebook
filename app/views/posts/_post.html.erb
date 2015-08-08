@@ -33,7 +33,7 @@
     </div>
 
     <div class="like-btn pull-right">
-      <% if current_user == post.user_id %>
+      <% if current_user.id == post.user_id %>
         <%= link_to "Delete", user_post_path(@user, post), method: 'delete' %>
       <% end %>
     </div>

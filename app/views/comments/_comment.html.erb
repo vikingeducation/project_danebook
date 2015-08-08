@@ -28,7 +28,7 @@
        
       
 
-      <% if current_user && current_user == comment.user_id %>
+      <% if current_user && current_user.id == comment.user_id %>
        
             <%= link_to "Delete", comment, method: "delete", class: "col-sm-2 like-btn pull-right" %>
         

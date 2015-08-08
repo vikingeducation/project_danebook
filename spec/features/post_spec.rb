@@ -23,10 +23,11 @@ feature 'Post' do
         expect(page).to have_content "New post coming!"
       end
       
-      # scenario "can delete its own post" do 
-      #   expect(page).to have_content "#{post.body}"
-      #   click_link "Delete"
-      # end
+      scenario "can delete its own post" do 
+        expect(page).to have_content "#{post.body}"
+        expect(page).to have_content "Delete"
+       
+      end
 
       scenario "can comment on post" do
         text="New comment coming!"

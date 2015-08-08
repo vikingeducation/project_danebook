@@ -18,8 +18,10 @@
   <%= render partial: '/shared/top_bar' %>
   <% end %>
 <main class="container">
-  <%= flash[:success] %>
-  <%= flash[:error] %>
+  <div>
+    <%= flash[:success] %>
+    <%= flash[:error] %>
+  </div>
 <%= yield %>
 
 </main>

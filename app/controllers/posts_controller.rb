@@ -5,18 +5,18 @@ class PostsController < ApplicationController
     if post.save
       flash[:success] = "New Post"
     else
-      flash[:error] = "Could not save. Try again"
+      flash[:error] = "Could not save the post"
     end
       redirect_to profile_timeline_path(current_user.profile)
   end
 
   def destroy
-    if current_user && current_user.id == params[:user_id]
+    if current_user && current_user.id.to_s == params[:profile_id]
       Post.destroy(params[:id])
     else
       flash[:error] = "You can only delete you own posts"
     end
-    redirect_to user_timeline_path(current_user)
+    redirect_to profile_timeline_path(current_user)
   end
 end
 

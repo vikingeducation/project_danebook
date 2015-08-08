@@ -19,7 +19,7 @@ class UsersController < ApplicationController
       redirect_to edit_profile_path(@user.profile.id, user_id: current_user.id)
     else
       flash[:error] = "Error. Please try again!"
-      render signin_path
+      redirect_to root_path
     end
   end
 

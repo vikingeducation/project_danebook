@@ -1,0 +1,37 @@
+<main class="container">
+  <div class="panel panel-default">
+    <div class="panel-heading text-center">
+      <h1>Friends</h1>
+    </div>
+
+    <div class="panel-body">
+      <div class="row">
+        <% @friends.each do |friend| %>
+          <div class="col-md-6 thumbnail">
+            <div class="row">
+              <div class="col-md-2">
+                <img src="http://cdn.photoaffections.com/images/icon-profile.png" class="icon">
+              </div>
+
+              <div class="col-md-6">
+                <div class="row">
+                  <div class="col-xs-12">
+                    <%= friend.profile.full_name %>
+                  </div>
+                  <div class="col-xs-12">
+                    <%= friend.display_num_of_friends %>
+                  </div>
+                </div>
+              </div>
+
+              <div class="col-md-4 fillp">
+                <%= friending_button(friend) %>
+              </div>
+
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</main>

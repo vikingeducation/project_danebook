@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  root to: "sessions#new"
+
   get '/about', to: 'static_pages#about'
 
   get '/about/edit', to: 'static_pages#edit'

@@ -38,6 +38,7 @@ describe Comment do
       end
 
       it "returns a relation if the user liked the comment" do
+        post_comment.save
         create(:comment_like, user_id: user.id, likeable: post_comment)
         expect(post_comment.liked_by?(user)).to be_a(Like)
       end

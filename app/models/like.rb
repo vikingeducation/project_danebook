@@ -15,8 +15,7 @@ class Like < ActiveRecord::Base
   # ----------------------- Methods --------------------
 
   def self.search_record(likeable_type, likeable_id, user_id)
-    find_by({
-              likeable_type: likeable_type,
+    find_by({ likeable_type: likeable_type,
               likeable_id: likeable_id,
               user_id: user_id })
   end

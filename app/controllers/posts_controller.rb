@@ -3,8 +3,8 @@ class PostsController < ApplicationController
   skip_before_action :require_current_user, only: [:index]
 
   def index
-    @user = User.includes(:profile).includes(:posts).find(params[:user_id])
-    @posts = @user.posts.order(created_at: :desc)
+    @user = User.find(params[:user_id])
+    @posts = @user.posts.order(created_at: :desc).includes(:likes)
     @post = Post.new
     @like = Like.new
   end

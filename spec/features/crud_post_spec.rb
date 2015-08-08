@@ -49,7 +49,11 @@ feature 'Signed In User' do
     end
 
     scenario "does not see a new post form on other user's timeline" do
-      user_2 = create(:user)
+      sign_out
+
+      other_user = create(:user, email: "other@email.com")
+      sign_in(other_user)
+
       visit user_profile_path(user.id)
       expect(page).to_not have_css('textarea[placeholder="Tell the world something..."]')
     end

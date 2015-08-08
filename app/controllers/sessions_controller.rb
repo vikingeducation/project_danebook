@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
       flash[:success] = "Successfully signed in"
       redirect_to user_path(current_user)
     else
-      flash.now[:error] = "Unable to sign in"
+      flash[:error] = "Invalid email or password"
       redirect_to root_path
     end
   end

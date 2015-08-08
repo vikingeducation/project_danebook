@@ -16,18 +16,13 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if user_params[:password] == user_params[:password_confirmation]
-      if @user.save
-        Profile.create(:user_id => @user.id)
-        sign_in(@user)
-        flash[:success] = "New User Created!"
-        redirect_to user_path(@user)
-      else
-        flash[:error] = "An Error Has Occurred."
-        render :new
-      end
+    if @user.save
+      Profile.create(:user_id => @user.id)
+      sign_in(@user)
+      flash[:success] = "New User Created!"
+      redirect_to user_path(@user)
     else
-      flash[:error] = "Passwords much match"
+      flash[:error] = "An Error Has Occurred."
       render :new
     end
   end

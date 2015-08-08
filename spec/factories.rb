@@ -3,10 +3,12 @@ FactoryGirl.define do
   factory :user do
     first_name  "Foo"
     last_name   "Bar"
-    sequence(:email) do |n| "foo#{n}@gmail.com" end
+    email "testest@test.com"
+    # sequence(:email) do |n| "foo#{n}@gmail.com" end
     gender      "male"
     birthday    Time.now
     password "password"
+
   end
 
   factory :profile do

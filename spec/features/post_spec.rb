@@ -14,7 +14,7 @@ feature 'Posting' do
   scenario 'user can delete own post' do
     visit root_path
     login_user
-    new_post = create(:post, author: User.first)
+    create(:post, author: User.first)
     first(:link, 'Timeline').click
     expect{click_link "Delete"}.to change(Post, :count).by(-1)
   end
@@ -22,7 +22,7 @@ feature 'Posting' do
   scenario 'user cannot see delete button for unowned post' do
     visit root_path
     login_user
-    new_post = create(:post)
+    create(:post)
     first(:link, 'Timeline').click
     expect{click_link "Delete"}.to raise_error(Capybara::ElementNotFound)
   end

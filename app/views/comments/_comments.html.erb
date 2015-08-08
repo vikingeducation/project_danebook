@@ -17,7 +17,7 @@
       <%= comment.body %>
     </p>
     <div class="col-sm-1 ">
-      <%= like_button(comment.id, "Comment") %>
+      <%= like_button(comment) %>
     </div>
     <div class="col-sm-8">
       <span class="grey"><%= Like.display_likes_msg(comment) %></span>

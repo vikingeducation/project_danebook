@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :users
   resources :comments
   get '/friends', to: 'friends#index'
+  
   resources :friendings, only: [:create, :destroy]
   
 

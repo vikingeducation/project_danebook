@@ -5,8 +5,11 @@ class Post < ActiveRecord::Base
   belongs_to :user
   has_one :profile, through: :user
 
-  has_many :comments, :dependent => :destroy
-  has_many :likes, :as => :likable, :dependent => :destroy
+  has_many :comments, 
+           :dependent => :destroy
+  has_many :likes, 
+           :as => :likable, 
+           :dependent => :destroy
 
   def likes_by(user)
     likes.where(user_id: user.id).includes(:user)

@@ -6,7 +6,9 @@ class Comment < ActiveRecord::Base
   belongs_to :post
   has_one :profile, through: :user
 
-  has_many :likes, :as => :likable
+  has_many :likes, 
+           :as => :likable, 
+           :dependent => :destroy
 
 
   def likes_by(user)

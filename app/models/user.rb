@@ -39,11 +39,15 @@ class User < ActiveRecord::Base
     save!
   end
 
+  def get_likes(likable_id, likable_type)
+    likes.where(likable_id: likable_id, likable_type: likable_type)
+  end
+
   def like?(likable_id, likable_type)
-    likes.where(likable_id: likable_id, likable_type: likable_type).any?
+    get_likes(likable_id, likable_type).any?
   end
 
   def get_like_id(likable_id, likable_type)
-    like?(likable_id, likable_type) ? likes.where(likable_id: likable_id, likable_type: likable_type)[0].id : nil
+    like?(likable_id, likable_type) ? get_likes(likable_id, likable_type).pluck(:id)[0] : nil
   end
 end

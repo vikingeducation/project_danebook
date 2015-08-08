@@ -1,13 +1,12 @@
 <div class="container cover">
   <div class="row">
     <div class="col-md-12">
-      <img src="http://extendcreative.com/wp-content/uploads/2014/09/Golden-Gate-Bridge-Clouds-Photography.jpg" height="400px" width="100%" class="cover-pic hidden-sm hidden-xs" />
+      <img src=<%= image_path("hogwarts_small.jpg") %> height="450px" width="100%" class="cover-pic hidden-sm hidden-xs" />
     </div>
   </div>
   <div class="row cover-profile">
     <div class="col-md-2 col-md-offset-1">
-        <img src="https://www.blastr.com/sites/blastr/files/styles/blog_post_media/public/dawn_apes_caesar.jpg?itok=-jHgIwlD" alt ="Arthur" height="100%" width="100%" class="hidden-sm hidden-xs profile-pic">
-
+        <img src=<%= image_path("harry_potter_small.jpg") %> alt ="Harry" class="hidden-sm hidden-xs profile-pic">
     </div>
   </div>
   <div class="row cover-menu">
@@ -15,7 +14,7 @@
       <%= link_to "Timeline", posts_path(user_id: user.id), class: "btn btn-default btn-block" %>
     </div>
     <div class="col-md-1">
-      <%= link_to "About", profile_path(user.profile.id, user_id: user.id), class: "btn btn-default btn-block" %>
+      <%= link_to "About", profile_path(user.profile.id), class: "btn btn-default btn-block" %>
     </div>
     <div class="col-md-1">
       <%= link_to "Photos", "profile_path(user.profile.id)", class: "btn btn-default btn-block" %>
@@ -25,7 +24,7 @@
     </div>
     <% if current_user == user %>
       <div class="col-md-1 pull-right">
-        <%= link_to "Edit Profile", edit_profile_path(user.profile.id, user_id: user.id) %>
+        <%= link_to "Edit Profile", edit_profile_path(user.profile.id) %>
       </div>
     <% end %>
   </div>

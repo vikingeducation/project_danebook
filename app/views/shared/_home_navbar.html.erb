@@ -24,24 +24,11 @@
             <%= link_to "#{current_user.profile.first_name}", "#" %>
           </div>
           <div class="col-sm-6">
-            <%= button_to "Sign Out", signout_path(user_id: current_user.id), method: :delete, class: "btn btn-primary" %>
+            <%= button_to "Sign Out", signout_path, method: :delete, class: "btn btn-primary" %>
           </div>
         </div>
       <% else %>
-        <%= form_tag session_path, method: :post, class: "navbar-form navbar-right" do %>
-          <div class="form-group">
-            <%= label_tag :email, "Email" %>
-            <%= email_field_tag :email, "" %>
-
-            <%= label_tag :password, "Password" %>
-            <%= password_field_tag :password, "" %>
-
-            <%= check_box_tag :remember_me %>
-            <%= label_tag :remember_me, "Remember me" %>
-
-            <%= submit_tag "Sign In", class: "btn btn-primary" %>
-          </div>
-        <% end %>
+        <%= render partial: "signin_form" %>
       <% end %>
 
       </div><!-- /.navbar-collapse -->

@@ -7,7 +7,7 @@
     </div>
     <% if @profile.user == current_user %>
       <div class="col-sm-2 col-sm-offset-3">
-        <%= link_to "Edit your Profile", edit_profile_path(@profile.id, user_id: @profile.user.id), class: "btn btn-primary btn-block" %>
+        <%= link_to "Edit your Profile", edit_profile_path(@profile.id), class: "btn btn-primary btn-block" %>
       </div>
     <% end %>
   </div>

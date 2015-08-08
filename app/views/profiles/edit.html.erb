@@ -6,55 +6,54 @@
       <h3>About</h3>
     </div>
   </div>
-    <%= form_for @profile, class: "form-group" do |profile_fields| %>
-  <div class = "row">
-    <div class = "col-md-5 col-md-offset-1">
-      <h3>Basic Information</h3>
-      <table class = "table about-table">
-        <tr>
-          <td>Birthday:</td>
-          <td><%= @profile.birthday %></td>
-        </tr>
-        <tr>
-          <td><%= profile_fields.label :college, "College:" %></td>
-          <td><%= profile_fields.text_field :college, class: "form-control" %></td>
-        </tr>
-        <tr>
-          <td><%= profile_fields.label :hometown, "Hometown:" %></td>
-          <td><%= profile_fields.text_field :hometown, class: "form-control" %></td>
-        </tr>
-        <tr>
-          <td><%= profile_fields.label :current_lives, "Currently Lives:" %></td>
-          <td><%= profile_fields.text_field :current_lives, class: "form-control" %></td>
-        </tr>
-      </table>
+  <%= form_for @profile, class: "form-group" do |profile_fields| %>
+    <div class = "row">
+      <div class = "col-md-5 col-md-offset-1">
+        <h3>Basic Information</h3>
+        <table class = "table about-table">
+          <tr>
+            <td>Birthday:</td>
+            <td><%= @profile.birthday %></td>
+          </tr>
+          <tr>
+            <td><%= profile_fields.label :college, "College:" %></td>
+            <td><%= profile_fields.text_field :college, class: "form-control" %></td>
+          </tr>
+          <tr>
+            <td><%= profile_fields.label :hometown, "Hometown:" %></td>
+            <td><%= profile_fields.text_field :hometown, class: "form-control" %></td>
+          </tr>
+          <tr>
+            <td><%= profile_fields.label :current_lives, "Currently Lives:" %></td>
+            <td><%= profile_fields.text_field :current_lives, class: "form-control" %></td>
+          </tr>
+        </table>
 
-      <h3>Contact Information</h3>
-      <table class = "table about-table">
-        <tr>
-          <td>Email:</td>
-          <td><%= @profile.user.email %></td>
-        </tr>
-        <tr>
-          <td><%= profile_fields.label :telephone, "Telephone:" %></td>
-          <td><%= profile_fields.text_field :telephone, class: "form-control" %></td>
-        </tr>
-      </table>
+        <h3>Contact Information</h3>
+        <table class = "table about-table">
+          <tr>
+            <td>Email:</td>
+            <td><%= @profile.user.email %></td>
+          </tr>
+          <tr>
+            <td><%= profile_fields.label :telephone, "Telephone:" %></td>
+            <td><%= profile_fields.text_field :telephone, class: "form-control" %></td>
+          </tr>
+        </table>
 
+      </div>
+
+      <div class = "col-md-5">
+        <h3><%= profile_fields.label :words_to_live_by, "Words to live by:" %></h3>
+        <p><%= profile_fields.text_area :words_to_live_by, class: "form-control" %></p>
+        <h3><%= profile_fields.label :about_me, "About me:" %></h3>
+        <p><%= profile_fields.text_area :about_me, class: "form-control" %></p>
+      </div>
     </div>
-
-    <div class = "col-md-5">
-      <h3><%= profile_fields.label :words_to_live_by, "Words to live by:" %></h3>
-      <p><%= profile_fields.text_area :words_to_live_by, class: "form-control" %></p>
-      <h3><%= profile_fields.label :about_me, "About me:" %></h3>
-      <p><%= profile_fields.text_area :about_me, class: "form-control" %></p>
-    </div>
-  </div>
     <div class="row">
       <div class="col-xs-12">
-        <%= hidden_field_tag :user_id, @profile.user.id %>
         <%= profile_fields.submit "Save Changes", class: "btn btn-lg btn-primary full-width center-block" %>
       </div>
     </div>
-    <% end %>
+  <% end %>
 </div>

@@ -1,6 +1,6 @@
 <div class="col-sm-12 combox">
 
-  <% post.comments.each do |comment| %>
+  <% post.comments.includes(:user).includes(:likes).each do |comment| %>
 
   <div class="col-sm-2 posted-by">
     <img src="https://www.blastr.com/sites/blastr/files/styles/blog_post_media/public/dawn_apes_caesar.jpg?itok=-jHgIwlD">
@@ -17,15 +17,7 @@
       <%= comment.body %>
     </p>
     <div class="col-sm-1 ">
-      <% if current_user.like?(comment.id, "Comment") %>
-        <%= link_to "Unlike", like_path(current_user.get_like_id(comment.id, "Comment")), 
-                            method: :delete %>
-      <% else %>
-        <%= link_to "Like", likes_path(user_id: current_user.id,
-                                      likable_id: comment.id,
-                                      likable_type: "Comment"), 
-                            method: :post %>
-      <% end %>
+      <%= like_button(comment.id, "Comment") %>
     </div>
     <div class="col-sm-8">
       <span class="grey"><%= Like.display_likes_msg(comment) %></span>

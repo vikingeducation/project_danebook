@@ -4,7 +4,11 @@ class UsersController < ApplicationController
   skip_before_action :require_current_user
 
   def index
-    @users = User.all
+    if params[:keyword] && !params[:keyword].strip.empty?
+      @users = User.where("email LIKE ?", params[:keyword].strip).includes(:profile)
+    else
+      @users = User.includes(:profile).all
+    end
   end
 
   def new
@@ -16,7 +20,7 @@ class UsersController < ApplicationController
     if @user.save
       sign_in(@user)
       flash[:success] = "Congrats! You are a member now!"
-      redirect_to edit_profile_path(@user.profile.id, user_id: current_user.id)
+      redirect_to edit_profile_path(@user.profile.id)
     else
       flash[:error] = "Error. Please try again!"
       redirect_to root_path

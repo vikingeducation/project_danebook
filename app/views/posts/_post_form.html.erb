@@ -1,0 +1,17 @@
+<article class="row newpost-box">
+  <div class="col-sm-12 box-title">
+    <h5> Post </h5>
+  </div>
+  <%= form_for @post, class: "form-group" do |post_fields| %>
+    <%= post_fields.hidden_field :user_id, value: @user.id %>
+    <div class="col-sm-12">
+      <%= post_fields.text_area :body, 
+                                 placeholder: "Share Your Thoughts",
+                                 class: "form-control" %>
+    </div>
+    <div class="col-sm-12 submit-bar">
+      <%= hidden_field_tag :user_id, @user.id %>
+      <%= post_fields.submit "Post", class: "btn btn-primary pull-right" %>
+    </div>
+  <% end %>
+</article>

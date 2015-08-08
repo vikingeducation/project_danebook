@@ -3,7 +3,7 @@ class LikesController < ApplicationController
   def create
     @like = Like.new({likeable_type: params[:likeable_type],likeable_id: params[:likeable_id], user_id: current_user.id})
     flash[:alert] = "You already liked this, no need to do it again" unless @like.save
-    redirect_to URI(request.referer).path
+    redirect_to ref
   end
 
   def destroy
@@ -13,7 +13,7 @@ class LikesController < ApplicationController
     else
       flash[:alert] = "You already unliked this, no need to do it again"
     end
-    redirect_to URI(request.referer).path
+    redirect_to ref
   end
 
 

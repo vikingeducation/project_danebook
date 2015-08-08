@@ -7,6 +7,10 @@ class UsersController < ApplicationController
   before_action :require_current_user, :only => [:edit, :update, :destroy]
 
   def new
+    if cookies[:auth_token]
+      flash[:success] = "Welcome back #{current_user.name}"
+      redirect_to user_timeline_path(current_user)
+    end
     @user = User.new
   end
 
@@ -14,10 +18,15 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       sign_in(@user)
-      flash[:success] = "Welcome to Danebook #{@user.name}"
+      flash[:success] = "Welcome to Danebook #{@user.name}!"
       redirect_to user_path(@user)
     else
-      flash.now[:error] = @user.errors.full_messages
+      str = ""
+      @user.errors.full_messages.each do |message|
+        str += "<li>#{message}</li>"
+      end
+      flash.now[:error] = str.html_safe
+      #  flash.now[:error] = @user.errors.full_messages.join(', ')
       render :new
     end
   end

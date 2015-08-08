@@ -28,7 +28,7 @@
             <b>Birthday:</b>
           </div>
           <div class = "col-xs-8">
-            <%= @user.birthday.to_formatted_s(:long) %>
+            <%= @user.birthday ? @user.birthday.to_formatted_s(:long) : "No Birthday Provided" %>
           </div>
         </div>
 

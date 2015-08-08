@@ -36,12 +36,14 @@ class User < ActiveRecord::Base
 
   # ----------------------- Validations --------------------
 
-  validates :first_name, :last_name, :email,
+  validates :first_name, :last_name,
             :length => { :in => 1..30 },
-            :presence => true
+            presence: true
 
   validates :email,
-            :format => { :with => /@/ },
+            :format => { :with => /\A([\w\.%\+\-]+)@([\w\-]+\.)+([\w]{2,})\z/i },
+            length: { in: 6..30 },
+            presence: true,
             uniqueness: true
 
   validates :password,

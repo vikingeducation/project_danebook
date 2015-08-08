@@ -53,4 +53,8 @@ class ApplicationController < ActionController::Base
   def referer
     session[:referer].delete
   end
+
+  def ref
+    URI(request.referer).path
+  end
 end

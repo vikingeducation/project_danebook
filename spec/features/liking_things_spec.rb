@@ -16,7 +16,7 @@ feature 'Like a post' do
 
     click_link 'Like'
     expect(page).to have_content(user.birthdate)
-    expect(page).to have_content("You like this.")
+    expect(page).to have_content("You have liked this!".upcase)
   end
 
   scenario "user can 'unlike' something they liked already" do
@@ -26,7 +26,7 @@ feature 'Like a post' do
     expect(find_link('Unlike').visible?).to be true
 
     click_link 'Unlike'
-    expect(page).to_not have_content("You like this.")
+    expect(page).to have_content("You have unliked this!".upcase)
   end
 
   scenario "user can 'like' a comment"

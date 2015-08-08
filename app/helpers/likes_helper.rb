@@ -1,5 +1,6 @@
 module LikesHelper
 
+  #need to refactor this super long method
   def like_display(obj)
     likes = obj.likes
     count = likes.size
@@ -27,7 +28,8 @@ module LikesHelper
       str += link_to user.full_name, user_path(user.id)
 
       num_ppl = pluralize( (count-num), 'other' )
-      if count > 2 && (count-num) > 0
+
+      if count >= 2 && (count-num) > 0
         str += ", and #{num_ppl} like this."
       else
         str += " like this."

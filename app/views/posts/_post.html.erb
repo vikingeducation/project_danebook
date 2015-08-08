@@ -29,9 +29,7 @@
 
         <%= like_or_unlike_link(post) %>
 
-        <% if current_user.id == post.user_id %>
-          <%= link_to "Delete", user_post_path(current_user, post), method: :delete, class: "col-xs-1 col-xs-offset-6", data: { confirm: "Are you sure?" } %>
-        <% end %>
+        <%= post_owner_link_option(post) %>
 
       </div>
       <!-- <a class="col-xs-2" href="#">Comment</a> -->

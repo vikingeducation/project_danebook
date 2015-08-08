@@ -26,9 +26,7 @@
 
         <!-- <a class="col-xs-2" href="#">Comment</a> #this link not needed at the moment-->
 
-        <% if current_user == comment.user %>
-        <%= link_to "Delete", comment_path(comment), method: :delete, class: "col-xs-1 col-xs-offset-6" %>
-        <% end %>
+        <%= comment_owner_link_option(comment) %>
       </div>
     </footer>
   </div>

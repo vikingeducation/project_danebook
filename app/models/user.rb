@@ -3,6 +3,8 @@ class User < ActiveRecord::Base
                        uniqueness: true
   validates :password, length:   { in: 6..20 },
                        allow_nil: true
+
+
   has_secure_password
 
   has_many :posts
@@ -39,15 +41,20 @@ class User < ActiveRecord::Base
     save!
   end
 
-  def get_likes(likable_id, likable_type)
-    likes.where(likable_id: likable_id, likable_type: likable_type)
+  def num_of_friends
+    friended_users.count
   end
 
-  def like?(likable_id, likable_type)
-    get_likes(likable_id, likable_type).any?
+  def display_num_of_friends
+    if (0..1).include?(num_of_friends)
+      "#{num_of_friends} friend"
+    elsif num_of_friends > 1
+      "#{num_of_friends} friends"
+    end
   end
 
-  def get_like_id(likable_id, likable_type)
-    like?(likable_id, likable_type) ? get_likes(likable_id, likable_type).pluck(:id)[0] : nil
+  def has_friended?(user)
+    friended_users.include?(user)
   end
+
 end

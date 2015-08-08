@@ -1,0 +1,10 @@
+<%= form_tag users_path, 
+             method: :get, 
+             class: "navbar-form navbar-left", 
+             role: "search" do%>
+  <%= text_field_tag :keyword, 
+                     "", 
+                     placeholder: "Search", 
+                     class: "input-xxlarge" %>
+  <%= submit_tag "Submit", class: "btn btn-default" %>
+<% end %>

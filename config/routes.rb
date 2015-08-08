@@ -6,7 +6,6 @@ Rails.application.routes.draw do
 
   get '/about/edit', to: 'static_pages#edit'
 
-  get '/friends', to: 'static_pages#friends'
 
   get '/photos', to: 'static_pages#photos'
 
@@ -14,6 +13,8 @@ Rails.application.routes.draw do
 
   resources :users
   resources :comments
+  get '/friends', to: 'users#friends'
+  resources :friendings, only: [:create, :destroy]
   
 
   resources :profiles, only: [:edit, :show, :update]

@@ -5,10 +5,21 @@ class UsersController < ApplicationController
 
   def index
     if params[:keyword] && !params[:keyword].strip.empty?
-      @users = User.where("email LIKE ?", params[:keyword].strip).includes(:profile)
+      @users = User.where("email LIKE '%#{params[:keyword].strip}%'")
+                   .includes(:friended_users)
+                   .includes(:profile)
     else
-      @users = User.includes(:profile).all
+      @users = User.all.includes(:friended_users)
+                       .includes(:profile)
     end
+  end
+
+  def friends
+    @user = User.find(params[:user_id]) if params[:user_id]
+    @user ||= current_user
+    @friends = @user.friended_users
+                    .includes(:friended_users)
+                    .includes(:profile)
   end
 
   def new

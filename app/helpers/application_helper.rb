@@ -15,7 +15,21 @@ module ApplicationHelper
     str.html_safe
   end
 
-  def friend_button()
+  def friending_button(friend)
+    if current_user == friend
+      str = ""
+    elsif current_user.has_friended?(friend)
+      str = link_to("Unfriend Me", 
+                    friending_path(id: friend.id),
+                    method: :delete, 
+                    class: "btn btn-primary")
+    else
+      str = link_to("Friend Me", 
+                    friendings_path(id: friend.id),
+                    method: :post, 
+                    class: "btn btn-primary")
+    end
+    str.html_safe
   end
   
 end

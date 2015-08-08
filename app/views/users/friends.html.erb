@@ -1,3 +1,5 @@
+<%= render partial: "shared/cover", locals: { user: @user } %>
+
 <main class="container">
   <div class="panel panel-default">
     <div class="panel-heading text-center">
@@ -16,7 +18,7 @@
               <div class="col-md-6">
                 <div class="row">
                   <div class="col-xs-12">
-                    <%= friend.profile.full_name %>
+                    <%= link_to friend.profile.full_name, posts_path(user_id: friend.id) %>
                   </div>
                   <div class="col-xs-12">
                     <%= friend.display_num_of_friends %>

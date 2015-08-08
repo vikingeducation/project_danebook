@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_filter :store_referer
+  before_filter :require_author, only: [:destroy]
   def create
     @comment = Comment.new(whitelisted_comment_params)
     if @comment.save
@@ -11,7 +12,6 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @comment = Comment.find(params[:id])
     if @comment.destroy
       flash[:success] = "Comment successfully deleted!"
     else
@@ -21,6 +21,15 @@ class CommentsController < ApplicationController
   end
 
   private
+
+    def require_author
+      @comment = Comment.find(params[:id])
+      unless current_user == @comment.author
+        flash[:notice] = "You cannot delete another user's comment."
+        redirect_to referer
+      end
+    end
+
     def whitelisted_comment_params
       params.require(:comment).permit(:user_id, :commentable_id, :commentable_type, :body)
     end

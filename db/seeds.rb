@@ -11,6 +11,7 @@ Profile.destroy_all
 Like.destroy_all
 Comment.destroy_all
 
+
 Multiplier = 10
 duty_types = ["Post", "Comment"]
 
@@ -59,7 +60,7 @@ count_of_post = Post.count
 count_of_comment = Comment.count
 
 (15*Multiplier).times do
-  p = Comment.find(rand(0...Comment.count))
+  p = Comment.find(rand(1...Comment.count))
   c = p.comments.new(
                     :author_id => all_user_ids.sample.id,
                     :body => Faker::Lorem.paragraph(rand(2..10), true)
@@ -80,10 +81,18 @@ end
   l = Like.create(
                   duty_type: duty, 
                   duty_id: duty_id,
-                  liker_id: rand(0...50)
+                  user_id: rand(0...50)
                   )
   l.save
 end
+
+count_of_users = User.count
+200.times do
+  user1_id = User.offset(rand(count_of_users)).first.id
+  user2_id = User.offset(rand(count_of_users)).first.id
+  Friending .create(friender_id: user1_id, friend_id: user2_id) if user1_id != user2_id
+end
+
 
 
   

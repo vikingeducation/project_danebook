@@ -8,9 +8,9 @@
           <img class="logo" src="/images/danish_flag.gif" alt="the logo">Danebook
         </a>
       </div>
-
+       <% if current_user %>
       <div class="test"><p><%= @user.first_name %> </p></div>
-
+       <% end %>
   <!--         <form class="navbar-form " role="search">
             <div class="input-group">
               <input type="text" class="form-control" placeholder="Search this site">

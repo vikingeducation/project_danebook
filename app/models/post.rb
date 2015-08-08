@@ -8,6 +8,6 @@ class Post < ActiveRecord::Base
   end
 
   def posted_on
-    "Posted on " + self.created_at.strftime("%A %m/%d/%Y")
+    "#{self.class}ed on " + self.created_at.strftime("%A %m/%d/%Y")
   end
 end

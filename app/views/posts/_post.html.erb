@@ -1,0 +1,35 @@
+<article class ="row post">
+  <div class="col-sm-2 posted-by">
+    <img src="https://www.blastr.com/sites/blastr/files/styles/blog_post_media/public/dawn_apes_caesar.jpg?itok=-jHgIwlD">
+  </div>
+  <div class="col-sm-10 posted-name">
+    <div class="col-sm-12">
+      <p><%= user.profile.full_name %><br>Posted on <%= post.created_at.to_date %></p>
+    </div>
+    <div class="col-sm-12">
+      <p class="post-text">
+        <%= post.body %>
+      </p>
+    </div>
+
+  </div>
+
+  <div class="col-sm-12 like-bar">
+    <div class="col-sm-1 ">
+      <%= like_button(post) %>
+    </div>
+    <div class="col-sm-1">
+      <a href="#">Comment</a>
+    </div>
+    <% if current_user == user %>
+      <div class="col-sm-1 col-sm-offset-8">
+        <%= link_to "Delete", post_path(post.id, user_id: current_user.id), method: :delete %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="col-sm-12">
+    <%= Like.display_likes_msg(post) %>
+  </div>
+  <%= render partial: "comments/comments", locals: {post: post} %>
+</article>

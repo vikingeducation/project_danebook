@@ -29,15 +29,6 @@
     <% end %>
   </div>
   <% end %>
-  <%= form_for Comment.new, class: "form-group" do |comment_fields| %>
-    <div class="col-sm-12">
-      <%= comment_fields.text_area :body, placeholder: "Write a comment", class: "form-control" %>
-    </div>
-    <div class="col-sm-12 submit-bar">
-      <%= comment_fields.hidden_field :user_id, value: current_user.id %>
-      <%= comment_fields.hidden_field :post_id, value: post.id %> 
-      <%= button_tag 'Cancel', :type => 'reset' %>
-      <%= comment_fields.submit "Comment", class: "btn btn-primary pull-right" %>
-    </div>
-  <% end %>
+
+  <%= render partial: "comments/comment_form", locals: { post: post } %>
 </div>

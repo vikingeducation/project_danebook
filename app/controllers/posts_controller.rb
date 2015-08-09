@@ -7,6 +7,7 @@ class PostsController < ApplicationController
     @user = User.find(params[:user_id])
     @posts = @user.posts
     @new_post = Post.new(:author_id => current_user.id) if current_user
+    @friends = @user.friended_users.sample(6)
   end
 
 

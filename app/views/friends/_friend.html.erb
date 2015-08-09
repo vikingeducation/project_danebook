@@ -20,7 +20,7 @@
 
         <div class="col-xs-4">
           <div class="vcenter">
-            <%= friend_unfriend_button(friend) %>
+            <%= friend_unfriend_button(friend) if signed_in_user? %>
           </div>
         </div>
 

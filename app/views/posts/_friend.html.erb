@@ -1,0 +1,6 @@
+<div class="col-md-4 text-center">
+  <%= link_to user_path(friend) do %>
+    <%= image_tag 'user_silhouette_generic.gif', alt: "#{friend.profile.full_name}Friend's photo" %>
+    <%= friend.profile.full_name %>
+  <% end %>
+</div>

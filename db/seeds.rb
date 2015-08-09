@@ -53,7 +53,7 @@ User.all.each do |u|
   end
 
   # Create a bunch of friendships
-  rand(8..30).times do
+  rand(0..50).times do
     potential_friend = User.all.sample
     u.friended_users << potential_friend unless u.friended_users.include?(potential_friend)
   end

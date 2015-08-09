@@ -37,7 +37,7 @@
 
           <%= render :partial => "shared/nav_tab", :locals => { :label => "Photos", :link => photos_path, :user => user, :badge => "123" } %>
 
-          <%= render :partial => "shared/nav_tab", :locals => { :label => "Friends", :link => user_friends_path(user.id), :user => user, :badge => "542" } %>
+          <%= render :partial => "shared/nav_tab", :locals => { :label => "Friends", :link => user_friends_path(user.id), :user => user, :badge => user.friended_users.count } %>
 
 
           <% unless current_page?("/about_edit") %>

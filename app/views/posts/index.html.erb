@@ -35,10 +35,23 @@
 
               <div class="panel-body col-sm-offset-1">
 
-                <p><strong>Born on: </strong>July 31st, 1980</p>
-                <p><strong>Went to school at: </strong>Hogwarts</p>
-                <p><strong>Hometown: </strong>Godrick's Hollow, England</p>
-                <p><strong>Currently lives: </strong>Godrick's Hollow</p>
+                <p>
+                  <strong>Born on: </strong>
+                  <%= @user.profile.birthdate.to_formatted_s(:long_ordinal) %>
+                </p>
+                <p>
+                  <strong>Went to school at: </strong>
+                  <%= @user.profile.college %>
+                </p>
+                <p><strong>
+                  Hometown: </strong>
+                  <%= @user.profile.hometown %>
+                </p>
+                <p><strong>
+                  Currently lives: </strong>
+                  <%= @user.profile.currently_lives %>
+                </p>
+
 
               </div>
 
@@ -97,47 +110,9 @@
 <!-- row for Friends  -->
         <div class="row">
           <div class="col-xs-12">
-
-            <div class=" panel panel-default">
-
-              <div class="panel-heading">
-
-                <h3 class="panel-title text-center">
-                  Friends <small>(542)</small>
-                </h3>
-
-              </div>
-
-
-              <div class="panel-body">
-
-                <% 2.times do %>
-                  <div class="row">
-                    <% 3.times do %>
-                      <%= render "static_pages/timeline/timeline_friend" %>
-                    <% end %>
-                  </div>
-                <% end %>
-
-
-                <div class="row">
-
-                  <div class="col-xs-12 text-center">
-
-                    <%= link_to "See More Friends", friends_path, alt: "See more friends" %>
-
-                  </div>
-
-                </div>
-
-              </div> <!-- end of panel body -->
-
-            </div> <!-- end of panel -->
-
-          </div> <!-- end of col -->
-
-        </div> <!-- end of row -->
-<!-- end of Friends panel -->
+            <%= render :partial => 'posts/friends', :locals => { :user => @user, :friends => @friends } unless @friends.empty? %>
+          </div>
+        </div>
 
       </div>
 <!-- end of LEFT side -->

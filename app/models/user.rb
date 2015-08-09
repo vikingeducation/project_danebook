@@ -33,6 +33,7 @@ class User < ActiveRecord::Base
                                   :source => :friend_initiator
 
   before_create :generate_token
+  after_create :create_profile
 
   def generate_token
     begin
@@ -44,6 +45,13 @@ class User < ActiveRecord::Base
     self.auth_token = nil
     generate_token
     save!
+  end
+
+  def create_profile
+    unless profile
+      profile = build_profile
+      profile.save
+    end
   end
 
   def num_of_friends

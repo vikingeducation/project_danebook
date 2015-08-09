@@ -7,7 +7,7 @@ class PostsController < ApplicationController
     else
       flash[:error] = "Could not save the post"
     end
-      redirect_to profile_timeline_path(current_user.profile)
+      redirect_to profile_timeline_path(post.profile)
   end
 
   def destroy

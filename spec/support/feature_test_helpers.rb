@@ -1,6 +1,6 @@
-module TestHelpers
+module FeatureTestHelpers
 
-  def sign_in(user)
+  def feature_sign_in(user)
     visit root_path
     within('nav') do
       fill_in "Email", with: user.email

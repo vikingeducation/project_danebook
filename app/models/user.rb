@@ -31,11 +31,23 @@ class User < ActiveRecord::Base
   #           :allow_nil => false
 
   
- 
+  def friends_count
+    self.friends.count
+  end
+  
+  def friends
+    all_friends = []
+    self.friended_users.each{|friend| all_friends << friend}
+    
+    self.users_friended_by.each{|friend| all_friends << friend if all_friends.include?(friend) == false}
+    
+    all_friends
+  
+  end
 
- def self.search(search)
+  def self.search(search)
    User.where("first_name like :s or last_name like :s or first_name || ' ' || last_name like :s", :s => "%#{search}")
-end
+  end
 
   
                                       

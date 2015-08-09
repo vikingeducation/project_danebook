@@ -1,10 +1,13 @@
-    class ProfilesController < ApplicationController
+class ProfilesController < ApplicationController
+  
+  # before_action :require_current_user, :except => [:show]
+  # before_action :require_login, :except => [:show]
+
   def index
     @user = @current_user
   end
 
   def show
-
     @user = User.find(params[:user_id])
   end
 

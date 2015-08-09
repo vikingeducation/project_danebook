@@ -1,5 +1,5 @@
 require 'factory_girl_rails'
-require 'capybara/rails'
+
 
 
 ENV['RAILS_ENV'] ||= 'test'

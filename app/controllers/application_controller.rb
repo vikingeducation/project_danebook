@@ -33,9 +33,30 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_user
 
+
+  def signed_in_user?
+    !!current_user
+  end
+  helper_method :signed_in_user?
+
   def sign_out
     @current_user = nil
     cookies.delete(:auth_token)
   end
+
+  def require_current_user
+    unless params[:user_id] == current_user.id.to_s
+      flash[:error] = "You're not authorized to view this"
+      redirect_to root_path
+    end
+  end
+
+  def require_login
+    unless signed_in_user?
+      flash[:error] = "Not authorized, please sign in!"
+      redirect_to root_path
+    end
+  end
+
 
 end

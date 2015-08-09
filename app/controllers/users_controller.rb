@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+
+  before_action :require_login, :except => [:new, :create]
+
   def new
     @user = User.new
   end
@@ -17,8 +20,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def edit
-  end
 
   def index
     @user = current_user
@@ -27,14 +28,7 @@ class UsersController < ApplicationController
       @users = User.search(params[:search]).order("created_at DESC")
     else
       @users = User.all.order('created_at DESC')
-  end
-  end
-
-  def timeline
-    # render :timeline
-  end
-
-  def about
+    end
   end
 
   private

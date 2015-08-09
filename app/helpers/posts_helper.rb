@@ -39,14 +39,14 @@ module PostsHelper
 
   def current_user_post_like(collection)
     collection.post_likes.each do |like|
-        return "You" if like.user_id == current_user.id
+        return "You" if current_user && like.user_id == current_user.id
     end
       return collection.post_likes.first.user
   end
 
   def current_user_comment_like(collection)
     collection.comment_likes.each do |like|
-        return "You" if like.user_id == current_user.id
+        return "You" if current_user && like.user_id == current_user.id
     end
       return collection.comment_likes.first.user
   end

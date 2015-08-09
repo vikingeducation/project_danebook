@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  resources :users do
+  resources :users, only: [:new, :create,:index] do
     resource :profile
     resource :timeline
     resource :posts
@@ -17,4 +17,7 @@ Rails.application.routes.draw do
   get  'logout' => 'sessions#destroy'
   post "like" => "likes#create"
   delete "unlike"  => 'likes#destroy'
+
+
+  get "*path", to: redirect { |p, req| req.flash[:error] = "Oh snaps you dont want to go there "; '/' }
 end

@@ -10,20 +10,20 @@ User.destroy_all
 Profile.destroy_all
 Like.destroy_all
 Comment.destroy_all
-
+Post.destroy_all
 
 Multiplier = 10
 duty_types = ["Post", "Comment"]
 
 (5*Multiplier).times do 
   password = Faker::Internet.password
-  user = User.new(:first_name => Faker::Name.first_name, 
+  user = User.create(:first_name => Faker::Name.first_name, 
                   :last_name => Faker::Name.last_name,
                   :email => Faker::Internet.email,  
                   :password => password, 
                   :password_confirmation => password)
-
-  user.build_profile(
+  user.save
+  user.profile.update(
                      :user_id => user.id,
                      :birthday => Faker::Date.between(14.years.ago, 80.years.ago),
                      :college => Faker::Lorem.word,
@@ -34,7 +34,7 @@ duty_types = ["Post", "Comment"]
                      :words_to_live_by => Faker::Company.catch_phrase,
                      :about_me => Faker::Lorem.paragraph(8, true)
                      )
-  user.save
+
 end
 
 all_user_ids = User.select("id")

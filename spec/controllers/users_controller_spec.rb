@@ -8,7 +8,7 @@
 require 'rails_helper'
 
 describe UsersController do
-	
+
 	let(:user) { build(:user) }
 
 	context 'RESTful user actions' do
@@ -25,7 +25,7 @@ describe UsersController do
 		describe 'POST #create' do
 
 			specify 'valid submissions create new user' do
-				expect do 
+				expect do
 					post :create, user: attributes_for(:user)
 				end.to change(User, :count).by(1)
 			end
@@ -50,7 +50,7 @@ describe UsersController do
 
 				xit 'can delete own account' do
 					binding.pry
-					expect do 
+					expect do
 						delete :destroy, id: user.id
 					end.to change(User, :count).by(-1)
 				end

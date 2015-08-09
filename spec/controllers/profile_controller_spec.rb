@@ -89,26 +89,26 @@ describe ProfilesController do
 			end
 
 			specify 'saving redirects to user timeline' do
-				put :update, user_id: user.id, 
-										 profile: attributes_for(:profile, 
+				put :update, user_id: user.id,
+										 profile: attributes_for(:profile,
 										 about_me: "Controller testing"
-										 ) 
+										 )
 				expect(response).to redirect_to(user_profile_url(user.id))
 			end
 
 			specify 'failing save renders edit page again' do
-				# put :update, user_id: user.id, 
-				# 						 profile: attributes_for(:profile, 
+				# put :update, user_id: user.id,
+				# 						 profile: attributes_for(:profile,
 				# 						 user_id: nil
-				# 						 ) 
+				# 						 )
 				# expect(response).to redirect_to(user_profile_url(user.id))
 			end
 
 			specify 'changes are saved successfully' do
-				put :update, user_id: user.id, 
-										 profile: attributes_for(:profile, 
+				put :update, user_id: user.id,
+										 profile: attributes_for(:profile,
 										 about_me: "Controller testing"
-										 ) 
+										 )
 				user.reload
 				expect(user.profile.about_me).to eq("Controller testing")
 			end

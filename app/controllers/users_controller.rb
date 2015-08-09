@@ -3,10 +3,14 @@ class UsersController < ApplicationController
   # Require login to see content about a user
   before_action :require_login, :except => [:new, :create]
 
+  # Sets @user so shared views don't break
   before_action :set_user, :only => [:edit, :update]
 
   # Only a user can see his/her own edit page, or delete his/her account
   before_action :require_current_user, :only => [:edit, :update, :destroy]
+
+  # Creates a user profile after user creation
+  after_action :build_profile, only: :create
 
   def new
     if cookies[:auth_token]
@@ -81,6 +85,10 @@ class UsersController < ApplicationController
 
   def set_user
     @user = current_user
+  end
+
+  def build_profile
+    Profile.new(user_id: @user.id).save
   end
 
 end

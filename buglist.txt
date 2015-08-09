@@ -1,24 +1,54 @@
 buglist.txt
 
+III. Controller Tests
+A. User
+1. Create
+Creating a user saves a new user
+Creating a user redirects to user profile
+
+2. Delete
+Deleting a user redirects to login page
+
+B. Post
+
+C. Comment
+
+D. Like
+
+E. Profile
+1. Create
+Creating a user creates a profile
+
+2. Edit
+Editing a profile renders the right page
+A user can only see own profile edit page
+
+3. Update
+Saving redirects to user timeline
+Failing save renders edit page again
+
+
+--------
+
 II. Feature Tests
 
 A. User
 1. Sign in 
-Cannot view profile page without signing in
-Cannot access any page other than signup page
-Directs to Timeline page
+Cannot view profile page without signing in *
+Cannot access any page other than signup page *
+Directs to Timeline page *
 
 2. Sign up
-Requires fields filled correctly
-Fields filled correctly creates user and generates profile
-Directs to profile page after signing up
+Requires fields filled correctly *
+Fields filled correctly creates user and generates profile *
+Directs to profile page after signing up *
 
 B. Post
 1. Create a post
-Can only create post on own wall
+Can only create post on own wall *
 
 2. Delete a post
-Can only delete own post
+Can only delete own post *
 
 C. Comment
 1. Write a comment on a post

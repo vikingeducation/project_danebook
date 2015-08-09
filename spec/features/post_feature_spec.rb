@@ -9,13 +9,10 @@ require 'rails_helper'
 
 describe Post do
 
-	let(:user){create(:user, :with_profile)}
+	let(:user){create(:user)}
 	
 	before do
-		visit root_path
-		fill_in 'email', with:  user.email
-		fill_in 'password_digest', with:  user.password
-		click_button 'Log In'
+		sign_in
 	end
 
 	context 'creation' do
@@ -32,7 +29,6 @@ describe Post do
 		scenario 'cannot create post on other users timeline' do
 			user2 = create(:user)
 			visit user_timeline_path(user2)
-			save_and_open_page
 			#checking that text area does not render
 			expect(page).to_not have_css('.post_body')
 			expect(page).to_not have_button('Post')
@@ -41,9 +37,24 @@ describe Post do
 	end
 
 	context 'deletion' do
+	
 		scenario 'only allowed by creator' do
-
+			user2 = create(:user)
+			create(:post, user: user2)
+			visit user_timeline_path(user2)
+			click_link 'Delete'
+			expect(page).to have_content('ERROR')
 		end
+
+		scenario 'owner can delete post' do
+			post = create(:post, user: user)
+			visit user_timeline_path(user)
+			click_link 'Delete'
+			expect(page).to_not have_content(post.body)
+			expect(page).to have_content("SUCCESS: Post deleted")
+			expect(current_url).to eq user_timeline_url(user)
+		end
+
 	end
 
 end

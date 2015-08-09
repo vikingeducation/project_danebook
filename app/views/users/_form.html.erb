@@ -36,12 +36,12 @@
 
   <div class = "row">
     <div class = "col-xs-4">
-      <%= user_fields.date_select(:birthday, 
-        {order: [:month, :day, :year], 
-        use_short_month: true, 
-        #include_blank: true, 
-        start_year: Date.today.year - 90, 
-        end_year: Date.today.year, 
+      <%= user_fields.date_select(:birthday,
+        {order: [:month, :day, :year],
+        use_short_month: true,
+        #include_blank: true,
+        start_year: Date.today.year - 90,
+        end_year: Date.today.year,
         date_separator: '</div><div class="col-xs-4">',
         prompt: true },
          {class: "form-control"}) %>
@@ -64,7 +64,7 @@
 
   <div class = "row">
     <div class = "col-sm-12">
-      <%= user_fields.submit "Sign Up", class: "btn btn-success btn-lg btn-block" %>
+      <%= user_fields.submit user_fields.object.persisted? ? "Update Account" : "Sign Up!", class: "btn btn-success btn-lg btn-block" %>
     </div>
   </div>
 

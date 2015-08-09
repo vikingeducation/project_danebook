@@ -25,6 +25,9 @@ Rails.application.routes.draw do
   delete "logout" => "sessions#destroy"
   get "about" => "users#show"
 
+# ------------------------ Page not found -----------------------
+  get "*path", to: redirect { |p, req| req.flash[:error] = "Oh snaps you dont want to go there "; '/' }
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

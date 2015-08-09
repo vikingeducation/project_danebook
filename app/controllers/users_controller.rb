@@ -3,12 +3,14 @@ class UsersController < ApplicationController
   # Require login to see content about a user
   before_action :require_login, :except => [:new, :create]
 
+  before_action :set_user, :only => [:edit, :update]
+
   # Only a user can see his/her own edit page, or delete his/her account
   before_action :require_current_user, :only => [:edit, :update, :destroy]
 
   def new
     if cookies[:auth_token]
-      flash[:success] = "Welcome back #{current_user.name}"
+      flash[:success] = "Welcome back #{current_user.name}!"
       redirect_to user_timeline_path(current_user)
     end
     @user = User.new
@@ -43,7 +45,7 @@ class UsersController < ApplicationController
       flash[:success] = "Your profile was updated"
       redirect_to user_path(current_user)
     else
-      flash.now[:error] = @user.errors.full_messages
+      flash.now[:error] = current_user.errors.full_messages
       render :edit
     end
   end
@@ -51,7 +53,8 @@ class UsersController < ApplicationController
   def destroy
     current_user.destroy
     sign_out
-    flash[:success] = "Your account was successfully deleted from Danebook."
+    flash[:success] = "Your account was successfully deleted from Danebook. Sad to see you leave!"
+    redirect_to root_path
   end
 
   private
@@ -76,5 +79,8 @@ class UsersController < ApplicationController
           })
   end
 
+  def set_user
+    @user = current_user
+  end
 
 end

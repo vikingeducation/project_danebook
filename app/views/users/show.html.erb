@@ -95,6 +95,12 @@
         </p>
       </div>
     </div>
+
+    <div class="row">
+      <div class="col-xs-2 col-xs-push-10">
+        <%= link_to "Modify Account", edit_user_path(@user), class: "btn btn-warning" if current_user == @user %>
+      </div>
+    </div>
     <br>
   </section>
 </main>

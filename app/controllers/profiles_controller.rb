@@ -6,6 +6,13 @@ class ProfilesController < ApplicationController
 
   def edit 
     @profile = Profile.find_by_user_id(params[:user_id])
+    if @profile.user_id==current_user.id
+      
+    else
+      flash[:error]="Don't even think about it!"
+      
+      redirect_to user_profile_path(:id => @profile.id, :user_id => @profile.user.id)
+    end
   end
 
   def update

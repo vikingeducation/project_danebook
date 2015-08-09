@@ -8,7 +8,11 @@ FactoryGirl.define do
     birthday Time.now
     gender ["Female","Male"].sample
     password_digest "password"
-    
+
+    # after(:create) do
+    #   create :profile
+    #   profile.user = user
+    # end
   end
 
   factory :profile do

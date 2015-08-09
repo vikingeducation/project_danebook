@@ -19,7 +19,6 @@ require 'rails_helper'
 
       scenario "can unlike comment" do
         visit user_posts_path(user.id)
-        save_and_open_page
         click_on("Like")
         expect(page).to have_content("Unlike")
       end 

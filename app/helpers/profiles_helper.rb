@@ -7,4 +7,5 @@ module ProfilesHelper
   def show_college(profile)
     @profile.college.nil? ? "Not specified" : @profile.college
   end
+
 end

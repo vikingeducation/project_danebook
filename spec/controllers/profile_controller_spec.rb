@@ -117,6 +117,4 @@ describe ProfilesController do
 
 	end
 
-
-
 end

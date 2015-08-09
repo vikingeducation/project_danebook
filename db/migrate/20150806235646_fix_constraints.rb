@@ -21,5 +21,11 @@ class FixConstraints < ActiveRecord::Migration
     # User email must be unique
     change_column :users, :email, :string, null: false, unique: true
 
+    # User profile should be unique in database to match current validation
+    change_column :profiles, :user_id, :integer, null: false, unique: true
+
+    # User auth token must be unique
+    change_column :users, :auth_token, :string, null: false, unique: true
+
   end
 end

@@ -42,7 +42,7 @@
         <ul class = "nav navbar-nav">
           <% if current_user.id == @user.id && !(controller.class == UsersController && controller.action_name == "about_edit") %>
           <li>
-            <%= link_to "Edit Profile", @user.profile ? edit_profile_path : new_profile_path %>
+            <%= link_to "Edit Profile", edit_profile_path %>
           </li>
           <% end %>
         </ul>

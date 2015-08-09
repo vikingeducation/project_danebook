@@ -23,7 +23,7 @@ feature "Users Profile" do
     fill_in "profile_summary",      with: "Words words"
     fill_in "profile_about",        with: "More words!"
 
-    expect{click_button "Save Changes"}.to change(Profile, :count).by(1)
+    expect{click_button "Save Changes"}.to change(Profile, :count).by(0)
     expect(page).to have_content("Profile Updated!")
     expect(page).to have_content("All American University")
 
@@ -32,30 +32,31 @@ feature "Users Profile" do
   #--------------- Sad Path :( -----------------
 
     scenario "fields can actually be left blank and the form will still be valid" do
-      expect(page).to have_content("None")
+      expect(page).to have_content("No college provided")
       click_link "Edit Your Profile"
-      expect{click_button "Save Changes"}.to change(Profile, :count).by(1)
+      expect{click_button "Save Changes"}.to change(Profile, :count).by(0)
       expect(page).to have_content("Profile Updated!")
-      expect(page).not_to have_content("None")
+      expect(page).not_to have_content("No college provided")
     end
 
   # ------------------ Bad Path! 😠 *Angry Emoji* ---------------
 
-  context "User cannot make a second profile" do
+  # PATHS NO LONGER SUPPORTED
+  # context "User cannot make a second profile" do
 
-    scenario "After profile has been created I will only be able to modify my profile" do
-      click_link "Edit Your Profile"
-      expect(current_path).to eq(new_profile_path)
-      create(:profile, user_id: user.id)
-      visit current_path # Refresh the page
-      expect(current_path).to eq(edit_profile_path)
-    end
+  #   scenario "After profile has been created I will only be able to modify my profile" do
+  #     click_link "Edit Your Profile"
+  #     expect(current_path).to eq(new_profile_path)
+  #     create(:profile, user_id: user.id)
+  #     visit current_path # Refresh the page
+  #     expect(current_path).to eq(edit_profile_path)
+  #   end
 
-    scenario "I will be redirected if I maliciously input the new_profile_path in my browser" do
-      create(:profile, user_id: user.id)
-      visit new_profile_path
-      expect(current_path).to eq(edit_profile_path)
-    end
-  end
+  #   scenario "I will be redirected if I maliciously input the new_profile_path in my browser" do
+  #     create(:profile, user_id: user.id)
+  #     visit new_profile_path
+  #     expect(current_path).to eq(edit_profile_path)
+  #   end
+  # end
 
 end

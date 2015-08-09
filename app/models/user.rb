@@ -50,7 +50,13 @@ class User < ActiveRecord::Base
             :length => { :in => 8..24 },
             :allow_nil => true
 
+  # ----------------------- Callbacks --------------------
+
   before_create :generate_token
+
+  # Creates a user profile after user creation
+  after_create :build_profile
+
 
   # ----------------------- Methods --------------------
 
@@ -65,13 +71,17 @@ class User < ActiveRecord::Base
   def generate_token
     begin
       self[:auth_token] = SecureRandom.urlsafe_base64
-    end while User.exists?(:auth_token => self[:auth_token])
+    end while User.exists?(auth_token: self[:auth_token]) # No repeat tokens among users. Reflects database unique constraint
   end
 
   def regenerate_auth_token
     self.auth_token = nil
     generate_token
     save!
+  end
+
+  def build_profile
+    Profile.new(user_id: self.id).save
   end
 
 end

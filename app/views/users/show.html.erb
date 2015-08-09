@@ -9,7 +9,7 @@
           <h2>About</h2>
         </div>
         <div class="col-xs-2">
-          <%= link_to @user.profile ? edit_profile_path : new_profile_path do %>
+          <%= link_to edit_profile_path do %>
             <button class= "btn btn-active", id= "edit-profile">
               Edit Your Profile
             </button>
@@ -28,7 +28,7 @@
             <b>Birthday:</b>
           </div>
           <div class = "col-xs-8">
-            <%= @user.birthday ? @user.birthday.to_formatted_s(:long) : "No Birthday Provided" %>
+            <%= @user.birthday ? @user.birthday.to_formatted_s(:long) : "No birthday provided" %>
           </div>
         </div>
 
@@ -37,7 +37,7 @@
             <b>College:</b>
           </div>
           <div class = "col-xs-8">
-            <%= @user.profile ? @user.profile.college : "None" %>
+            <%= @user.profile.college ? @user.profile.college : "No college provided" %>
           </div>
         </div>
 
@@ -46,7 +46,7 @@
             <b>Hometown:</b>
           </div>
           <div class = "col-xs-8">
-            <%= @user.profile ? @user.profile.hometown : "None" %>
+            <%= @user.profile.hometown ? @user.profile.hometown : "No hometown provided" %>
           </div>
         </div>
 
@@ -55,7 +55,7 @@
             <b>Currently Lives:</b>
           </div>
           <div class = "col-xs-8">
-            <%= @user.profile ? @user.profile.current_home : "None" %>
+            <%= @user.profile.current_home ? @user.profile.current_home : "No current home information" %>
           </div>
         </div>
 
@@ -76,7 +76,7 @@
             <b>Telephone:</b>
           </div>
           <div class = "col-xs-8">
-            <%= @user.profile ? @user.profile.mobile : "None" %>
+            <%= @user.profile.mobile ? @user.profile.mobile : "No mobile information" %>
           </div>
         </div>
 
@@ -86,12 +86,12 @@
 
         <h3>Words to live by</h3>
         <p>
-          <%= @user.profile ? @user.profile.summary : "None" %>
+          <%= @user.profile.summary ? @user.profile.summary : "Share some corny quote that makes your ears tingle every time you hear it" %>
         </p>
 
         <h3>About me</h3>
         <p>
-          <%= @user.profile ? @user.profile.about : "" %>
+          <%= @user.profile.about ? @user.profile.about : "Share how awesome you are with the world!" %>
         </p>
       </div>
     </div>

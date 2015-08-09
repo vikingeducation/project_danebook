@@ -6,9 +6,9 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-#User.destroy_all
+User.destroy_all
 
-MULTIPLIER = 20
+MULTIPLIER = 25
 
 
 def generate_user
@@ -50,11 +50,23 @@ def generate_user_with_profile
                     about: Faker::Lorem.paragraph,
                     user_id: user.id }
 
-  profile = Profile.new(profile_params)
+  profile = user.profile
+  profile.update(profile_params)
   profile.save
+end
+
+def generate_posts
+
+  post = Post.new
+  post.body = Faker::Lorem.sentence
+  post.author_id = rand(1..MULTIPLIER)
+  post.recipient_user_id = rand(1..MULTIPLIER)
+  post.save
+
 end
 
 
 MULTIPLIER.times do
   generate_user_with_profile
+  2.times { generate_posts }
 end

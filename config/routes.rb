@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   resources :posts, only: [:create, :update, :destroy] do
     resources :comments, only: [:create, :update, :destroy], :defaults => { :commentable => 'Post' }
   end
-  resource :profile, only: [:new, :create, :show, :edit, :update]
+  resource :profile, only: [:show, :edit, :update]
   resource :session, :only => [:create, :destroy]
   resource :like, :only => [:create, :destroy]
 

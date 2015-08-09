@@ -75,7 +75,7 @@ ActiveRecord::Schema.define(version: 20150806235646) do
     t.string   "gender"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-    t.string   "auth_token"
+    t.string   "auth_token",      null: false
   end
 
   add_index "users", ["auth_token"], name: "index_users_on_auth_token", unique: true, using: :btree

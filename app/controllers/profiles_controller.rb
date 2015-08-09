@@ -1,29 +1,7 @@
 class ProfilesController < ApplicationController
 
-  #before_action :set_user, only: [:new, :edit]
-
-  def new
-    if current_user.profile
-      flash[:notice] = "No need to create a new profile. You can edit your existing one."
-      redirect_to edit_profile_path
-    else
-      @profile = Profile.new
-    end
-  end
-
-  def create
-    @profile = Profile.new(profile_params)
-    if @profile.save
-      flash[:success] = "Profile Updated!"
-      redirect_to current_user
-    else
-      flash.now[:error] = @profile.errors.full_messages.first
-      render :new
-    end
-  end
-
   def show
-    @profile = current_user.profile
+    @profile = current_user.profile # We only hit the database once
   end
 
   def edit
@@ -53,9 +31,5 @@ class ProfilesController < ApplicationController
                                     :about,
                                     :user_id)
   end
-
-  # def set_user
-  #   @user = current_user
-  # end
 
 end

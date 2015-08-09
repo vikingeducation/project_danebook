@@ -35,7 +35,6 @@ describe User do
       end
 
       it "can only have one profile" do
-        saved_user.profile = create(:profile)
         profile2 = build(:profile, user_id: saved_user.id)
         expect(profile2).not_to be_valid
       end

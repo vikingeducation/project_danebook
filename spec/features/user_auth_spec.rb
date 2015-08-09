@@ -63,10 +63,10 @@ feature "Users sign ups" do
       expect(page).to have_content("Password confirmation doesn't match Password")
     end
 
-    scenario "Form is still valid if user doesn't want to disclose his age and gender" do
+    scenario "Form is still valid if user doesn't want to disclose his age and gender and null values are handled" do
       sign_up(month: "", day: "", year: "", gender: "")
       expect{click_button "Sign Up"}.to change(User, :count).by(1)
-      expect(page).to have_content("No Birthday Provided")
+      expect(page).to have_content("No birthday provided")
     end
 
   end

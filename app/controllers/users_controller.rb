@@ -9,9 +9,6 @@ class UsersController < ApplicationController
   # Only a user can see his/her own edit page, or delete his/her account
   before_action :require_current_user, :only => [:edit, :update, :destroy]
 
-  # Creates a user profile after user creation
-  after_action :build_profile, only: :create
-
   def new
     if cookies[:auth_token]
       flash[:success] = "Welcome back #{current_user.name}!"
@@ -85,10 +82,6 @@ class UsersController < ApplicationController
 
   def set_user
     @user = current_user
-  end
-
-  def build_profile
-    Profile.new(user_id: @user.id).save
   end
 
 end

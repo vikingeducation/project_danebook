@@ -1,0 +1,33 @@
+<% if friends %>
+  <% friends.each do |friend| %>
+    <div class = "friend-wrapper">
+      <div class = "row">
+        <div class = "col-xs-3">
+          <div class = "friend-img">
+            <%= image_tag "Hermione-Granger.jpg" %>
+          </div>
+        </div>
+        <div class = "col-xs-5">
+          <div class = "friend-name">
+            <a href="#">
+              <h4><%= friend.full_name %></h4>
+            </a>
+            <a href="#">
+              <h6><%= friend.friends.size %> Friends</h6>
+            </a>
+          </div>
+        </div>
+        <div class = "col-xs-4">
+          <div class = "friend-options">
+
+            <!-- button below is in reference to current_user -->
+            <%= friend_unfriend_button(friend.id) %>
+
+            <%# link_to "Unfriend Me", friending_path(friend_id => friend.id), method: :delete, class: "btn btn-default", id: "friending" %>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>

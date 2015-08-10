@@ -14,7 +14,7 @@
     <div class = "row">
       <div class = "col-md-6">
         <!-- Friend box wrap -->
-        <%= render @friends %>
+        <%= render partial: "friends", locals: {friends: @friends} %>
         <!-- ^ Ends Friend Box Wrap -->
       </div>
     </div>

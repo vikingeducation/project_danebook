@@ -29,7 +29,7 @@
           </li>
 
           <li class ="<%= controller.class == StaticPagesController && controller.action_name == "friends" ? 'active' : '' %>" >
-            <%= link_to "Friends <span>(542)</span>".html_safe, friends_path %>
+            <%= link_to "Friends", friendings_path(user_id: params[:user_id]) %>
           </li>
         </ul>
       </div>

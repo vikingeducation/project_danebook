@@ -30,6 +30,8 @@ class User < ActiveRecord::Base
   has_many :friendings, dependent: :destroy
   has_many :friends, through: :friendings
 
+  has_many :uploaded_photos, class_name: "Photo", foreign_key: :user_id
+
   def self.search(term)
     User.where("first_name ILIKE ? OR last_name ILIKE ?", '%' + term.to_s + '%', '%' + term.to_s + '%')
   end

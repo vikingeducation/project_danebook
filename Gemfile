@@ -1,7 +1,8 @@
 source 'https://rubygems.org'
 
 gem 'faker'
-
+gem 'paperclip'
+gem 'aws-sdk'
 gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
 
 gem "twitter-bootstrap-rails"

@@ -9,6 +9,7 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :posts, only: [:index, :create, :destroy]
+    resources :photos, except: [:edit, :update]
     resources :friends, only: [:index]
   end
   resource :likes, only: [:create, :destroy]

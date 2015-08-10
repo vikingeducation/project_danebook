@@ -1,8 +1,9 @@
-FactoryGirl.define do  factory :photo do
-    
+FactoryGirl.define do
+  factory :photo do
+    uploader
   end
 
-  factory :user, aliases: [:author] do
+  factory :user, aliases: [:author, :uploader] do
     sequence(:email) {|n| "test#{n}@test.com" }
     password "foobar12"
     password_confirmation "foobar12"

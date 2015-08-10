@@ -1,8 +1,8 @@
 class CommentsController < ApplicationController
 
   before_action :store_referer
-  before_action :require_current_user, :only => [:create, :destroy]
-  before_action :require_login, :except => [:create]
+  before_action :require_current_user, :only => [:destroy]
+  before_action :require_login
 
   def create
     comment = Comment.new(params_list)

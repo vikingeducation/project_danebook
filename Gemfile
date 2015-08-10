@@ -29,6 +29,11 @@ end
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+#adding paperclip and aws
+gem 'paperclip'
+gem 'figaro'
+gem 'aws-sdk', '< 2.0'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 

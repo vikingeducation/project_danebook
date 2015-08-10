@@ -5,7 +5,7 @@ module LikesHelper
     likes = obj.likes
     count = likes.size
     if count <= 0
-      str = link_to "Be the first to like this", like_path(post), method: post
+      str = link_to "Be the first to like this.", like_path(post), method: post
 
     elsif likes.you_liked?(current_user) && count == 1
       str = "You like this."

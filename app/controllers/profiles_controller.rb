@@ -1,7 +1,6 @@
 class ProfilesController < ApplicationController
 
   before_action :require_login
-  before_action :require_current_user, :only => [:edit, :update]
 
   def show
     @profile = current_user.profile # We only hit the database once

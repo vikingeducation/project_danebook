@@ -1,6 +1,6 @@
 class Post < ActiveRecord::Base
 
-  # ----------------------- Relationships --------------------
+  # ----------------------- Associations --------------------
 
   belongs_to :author,           foreign_key: :author_id,
                                 class_name: "User"

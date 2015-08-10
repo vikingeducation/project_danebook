@@ -1,7 +1,6 @@
 class CommentsController < ApplicationController
 
   before_action :require_login
-  before_action :require_current_user, :only => [:create, :destroy]
 
   def create
     @comment = current_user.comments.build(comment_params)
@@ -10,17 +9,18 @@ class CommentsController < ApplicationController
     else
       flash[:error] = @comment.errors.full_messages.first
     end
-    redirect_to URI(request.referer).path
+    redirect_to ref
   end
 
   def destroy
     @comment = Comment.find(params[:id])
-    if @comment.destroy
-      flash[:success] = "Comment deleted!"
+    if @comment.author == current_user
+      @comment.destroy
+      flash[:alert] = "Comment deleted!"
     else
-      flash[:error] = "Something went wrong! Please try again."
+      flash[:error] = "You're not allowed to delete other user's comments"
     end
-    redirect_to URI(request.referer).path
+    redirect_to ref
   end
 
   private

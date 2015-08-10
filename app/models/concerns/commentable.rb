@@ -3,7 +3,7 @@ module Commentable
 
   included do
     has_many :comments, -> { order('created_at ASC') },
-            as: :commentable
+            as: :commentable, dependent: :destroy
   end
 
   # module ClassMethods

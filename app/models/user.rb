@@ -14,25 +14,32 @@ class User < ActiveRecord::Base
             foreign_key: :recipient_user_id,
             class_name: "Post"
 
-  has_many :comments, dependent: :destroy, foreign_key: :author_id
+  has_many  :comments,
+            dependent: :destroy,
+            foreign_key: :author_id
 
-  has_many :likes, dependent: :destroy
+  has_many  :likes, 
+            dependent: :destroy
 
   has_secure_password
 
   # accepts_nested_attributes_for :profile
 
   # When acting as the initiator of the friending
-  has_many :initiated_friendings, :foreign_key => :friender_id,
-                                  :class_name => "Friending"
-  has_many :friends,              :through => :initiated_friendings,
-                                  :source => :friend_recipient
+  has_many :initiated_friendings, foreign_key: :friender_id,
+                                  class_name: "Friending",
+                                  dependent: :destroy
+
+  has_many :friends,              through: :initiated_friendings,
+                                  source: :friend_recipient
 
   # When acting as the recipient of the friending
-  has_many :received_friendings,  :foreign_key => :friend_id,
-                                  :class_name => "Friending"
-  has_many :users_friended_by,    :through => :received_friendings,
-                                  :source => :friend_initiator
+  has_many :received_friendings,  foreign_key: :friend_id,
+                                  class_name: "Friending",
+                                  dependent: :destroy
+
+  has_many :users_friended_by,    through: :received_friendings,
+                                  source: :friend_initiator
 
   # ----------------------- Validations --------------------
 

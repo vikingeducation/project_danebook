@@ -1,6 +1,6 @@
 class Comment < ActiveRecord::Base
 
-  # ----------------------- Relationships --------------------
+  # ----------------------- Associations --------------------
 
   belongs_to :commentable, :polymorphic => true
 

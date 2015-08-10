@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
 
 #  before_filter :store_referer, :only => [:create, :destroy]
+  before_action :require_login
 
   def create
     @post = current_user.posts.build(post_params)
@@ -14,8 +15,12 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
-    @post.destroy
-    flash[:alert] = "Your post was deleted!"
+    if @post.author == current_user
+      @post.destroy
+      flash[:alert] = "Your post was deleted!"
+    else
+      flash[:error] = "You're not authorized to delete this post!"
+    end
     redirect_to ref
   end
 

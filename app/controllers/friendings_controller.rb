@@ -21,6 +21,14 @@ class FriendingsController < ApplicationController
     if current_user.friended_users.delete(unfriended_user)
       flash[:success] = "Unfriended #{unfriended_user.full_name}!"
       redirect_to current_user
+
+    #if friended by, still considered friend by button (not in db)
+    #can destroy friending even if someone else initiated it,
+    # as long as user current user is in the relationship
+    elsif current_user.users_friended_by.delete(unfriended_user)
+      flash[:success] = "Unfriended #{unfriended_user.full_name}!"
+      redirect_to current_user
+
     else
       flash[:error] = "Unfriending failure. Try again!"
       redirect_to unfriended_user #not unfriended yet

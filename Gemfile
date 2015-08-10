@@ -24,6 +24,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'will_paginate',           '3.0.7'
 # gem 'bootstrap-will_paginate', '0.0.10'
 
+gem 'paperclip'
+gem 'aws-sdk'
+gem 'figaro'
+
 group :production do
   gem 'rails_12factor'
   gem 'pg'

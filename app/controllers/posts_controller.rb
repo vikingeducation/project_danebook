@@ -6,13 +6,14 @@ class PostsController < ApplicationController
   def index
     @user = User.find(params[:user_id])
     @posts = @user.posts
-    @new_post = Post.new(:author_id => current_user.id) if current_user
+    @new_post = Post.new(:author_id => current_user.id) if current_user # move to create action; no hidden field; 
     @friends = @user.friended_users.sample(6)
   end
 
 
   def create
-    @new_post = Post.new(post_params)
+    # assign author id always to current user
+    @new_post = Post.new(post_params) #user.posts.build
     if @new_post.save
       flash[:success] = "New post created!"
       redirect_to [current_user, :posts]

@@ -1,5 +1,8 @@
 class FriendingsController < ApplicationController
 
+  before_action :require_login
+  before_action :require_current_user, :only => [:create, :destroy]
+
   def create
     friending_recipient = User.find(params[:user_id])
     if current_user.friended_users << friending_recipient

@@ -1,8 +1,10 @@
 class FriendsController < ApplicationController
 
+  before_action :require_login
+
   def index
-    @user = User.includes(:friended_users).find(params[:user_id])
-    @friends = @user.friended_users
+    @user = User.includes(:friends).find(params[:user_id])
+    @friends = @user.friends
   end
 
 end

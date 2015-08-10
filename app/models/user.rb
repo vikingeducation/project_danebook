@@ -25,7 +25,7 @@ class User < ActiveRecord::Base
   # When acting as the initiator of the friending
   has_many :initiated_friendings, :foreign_key => :friender_id,
                                   :class_name => "Friending"
-  has_many :friended_users,       :through => :initiated_friendings,
+  has_many :friends,              :through => :initiated_friendings,
                                   :source => :friend_recipient
 
   # When acting as the recipient of the friending

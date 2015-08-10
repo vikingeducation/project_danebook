@@ -61,11 +61,11 @@ describe Post do
       end
 
       it "can only be liked once by the same user" do
-        create(:post_like, 
-                user_id: user.id, 
+        create(:post_like,
+                user_id: user.id,
                 likeable: post)
-        second_like = build(:post_like, 
-                            user_id: user.id, 
+        second_like = build(:post_like,
+                            user_id: user.id,
                             likeable: post)
         expect(second_like).not_to be_valid
       end

@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
 
-  #before_filter :store_referer, :only => [:create, :destroy]
+#  before_filter :store_referer, :only => [:create, :destroy]
 
   def create
     @post = current_user.posts.build(post_params)
@@ -9,15 +9,14 @@ class PostsController < ApplicationController
     else
       flash[:error] = @post.errors.full_messages.first
     end
-    redirect_to URI(request.referer).path
+    redirect_to ref
   end
 
   def destroy
-    @user = User.find(params[:user_id])
     @post = Post.find(params[:id])
     @post.destroy
     flash[:alert] = "Your post was deleted!"
-    redirect_to URI(request.referer).path
+    redirect_to ref
   end
 
 

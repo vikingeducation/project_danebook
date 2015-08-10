@@ -31,6 +31,12 @@ describe FriendsController do
         get :index, user_id: user.id
         expect(response).to render_template :index
       end
+
+      it "doesn't show for users who are not logged in" do
+        sign_me_out
+        get :index, user_id: user.id
+        expect(response).to redirect_to login_path
+      end
     end
 
   end

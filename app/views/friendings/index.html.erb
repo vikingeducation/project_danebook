@@ -1,0 +1,25 @@
+<main class = "container">
+
+  <%= render :partial => 'shared/middle_navbar' %>
+
+  <section class = "container" id="friends-section">
+    <header>
+      <div class="row">
+        <div class="col-xs-12">
+          <h2>Friends</h2>
+        </div>
+      </div>
+    </header>
+
+    <div class = "row">
+      <div class = "col-md-6">
+        <!-- Friend box wrap -->
+        <%= render @friends %>
+        <!-- ^ Ends Friend Box Wrap -->
+      </div>
+    </div>
+
+  </section>
+</main>
+
+  <br>

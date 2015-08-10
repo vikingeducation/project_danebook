@@ -8,9 +8,9 @@ Rails.application.routes.draw do
     resources :posts
   end
 
+  resources :friendings, :only => [:index, :create, :destroy]
   resource :session, :only => [:create, :destroy]
   resources :comments, :only => [:create, :destroy]
-  resources :friendings, :only => [:create, :destroy]
 
   get "login" => "users#new"
   delete "logout" => "sessions#destroy"

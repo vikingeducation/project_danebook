@@ -39,6 +39,10 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :profile, :reject_if => :all_blank
 
+  def friends
+    #currently one-way initiated_friendings list
+    friended_users
+  end
 
   def match_like(params)
     likes.where("likings_id = ? AND likings_type = ?", params[:likings_id], params[:likings_type]).first

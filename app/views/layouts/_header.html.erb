@@ -1,13 +1,13 @@
 <header class="navbar">
-	<div class="container">	
+	<div class="container">
     <div class="row">
-      
+
       <div class="col-md-3">
   			<div class="navbar-header">
   				<a class="navbar-brand" href="#"><img class="logo" src="/images/danish_flag.gif" alt="the logo">Danebook</a>
   			</div>
       </div>
-      
+
       <div class="col-md-6 text-center">
         <form class="navbar-form " role="search">
           <div class="input-group">
@@ -18,7 +18,7 @@
 
       <div class="col-md-3 text-right">
         <% if signed_in_user? %>
-          <div class="top-navbar-link"> 
+          <div class="top-navbar-link">
             <%= link_to "#{current_user.first_name} #{current_user.last_name}", user_profile_path(current_user.id) %>
           </div>
           <div class="top-navbar-link">
@@ -26,7 +26,7 @@
           </div>
         <% end %>
       </div>
-    
+
     </div>
   </div>
 </header>

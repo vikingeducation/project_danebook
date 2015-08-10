@@ -22,7 +22,9 @@
       <div class="row">
         <div class="col-sm-10 col-md-10 col-offset-sm-1 col-offset-md-1">
           <div class="pull-right">
-            <%= link_to "Delete", user_post_path(post.user.id, post.id), method: :delete  %>
+            <% if object_owner_for_resource?(post) %>
+              <%= link_to "Delete", user_post_path(post.user.id, post.id), method: :delete  %>
+            <% end %>
           </div>
 
           <div class="pull-left">

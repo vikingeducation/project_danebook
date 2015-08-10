@@ -24,4 +24,12 @@ module ApplicationHelper
     end
   end
 
+  def edit_or_friend_link
+    if (params[:user_id]==current_user.id.to_s && (controller.class != ProfilesController && controller.action_name != "edit"))
+          link_to "Edit Profile", edit_user_profile_path(current_user)
+    elsif current_user.id.to_s != params[:user_id]
+      friend_unfriend_button
+    end
+  end
+
 end

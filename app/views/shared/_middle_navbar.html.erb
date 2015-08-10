@@ -36,11 +36,9 @@
 
       <div class = "col-sm-2 pull-right">
         <ul class = "nav navbar-nav">
-          <% if (params[:user_id]==current_user.id.to_s && (controller.class != ProfilesController && controller.action_name != "edit"))  %>
           <li>
-            <%= link_to "Edit Profile", edit_user_profile_path(current_user) %>
+            <%= edit_or_friend_link %>
           </li>
-          <% end %>
         </ul>
       </div>
     </div>

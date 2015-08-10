@@ -9,14 +9,14 @@ describe PostsController do
   context 'create' do
 
     it "should create a post" do
-      expect { post :create, post: {body: new_post.body}
+      expect { post :create, post: {body: new_post.body, profile_id: profile.id}
       }.to change(Post, :count).by(1)
       
     end
 
-    xit "should redirect to timeline path" do
-      post :create, post: {body: new_post.body}
-      expect(response).to redirect_to profile_timeline_path(new_post.profile)
+    it "should redirect to timeline path" do
+      post :create, post: {body: new_post.body, profile_id: profile.id}
+      expect(response).to redirect_to profile_timeline_path(new_post.profile.id)
     end
 
 

@@ -1,4 +1,7 @@
-FactoryGirl.define do
+FactoryGirl.define do  factory :photo do
+    
+  end
+
   factory :user, aliases: [:author] do
     sequence(:email) {|n| "test#{n}@test.com" }
     password "foobar12"

@@ -20,7 +20,7 @@
       <%= link_to "About", profile_path(user.profile.id), class: "btn btn-default btn-block" %>
     </div>
     <div class="col-md-1">
-      <%= link_to "Photos", "#", class: "btn btn-default btn-block" %>
+      <%= link_to "Photos(#{user.num_of_photos})", photos_path(user_id: user.id), class: "btn btn-default btn-block" %>
     </div>
     <div class="col-md-1">
       <%= link_to "Friends(#{user.num_of_friends})", friends_path(user_id: user.id), class: "btn btn-default btn-block" %>

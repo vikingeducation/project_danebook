@@ -1,44 +1,12 @@
-<div class="panel panel-default">
-  <div class="panel-heading text-center">
-    <h2>Search Results</h2>
-  </div>
-  <div class="panel-body">
-    <div class="row">
-      <% @users.each do |user| %>
-        <div class="col-xs-12 thumbnail">
-          <div class="row">
-            <div class="col-md-2">
-              <img src="http://cdn.photoaffections.com/images/icon-profile.png" class="icon pull-right">
-            </div>
-
-            <div class="col-md-6">
-              <div class="row">
-                <div class="col-xs-12">
-                  <%= link_to user.profile.full_name, posts_path(user_id: user.id) %>
-                </div>
-                <div class="col-xs-12">
-                  <%= user.display_num_of_friends %>
-                </div>
-                <div class="col-xs-12">
-                  Currently Lives in <%= user.profile.current_lives %>
-                </div>
-                <div class="col-xs-12">
-                  From <%= user.profile.hometown %>
-                </div>
-                <div class="col-xs-12">
-                  Born on <%= user.profile.birthday %>
-                </div>
-              </div>
-            </div>
-
-            <div class="col-md-4 fillp">
-              <%= friending_button(user) %>
-            </div>
-
-          </div>
-        </div>
-      <% end %>
+<div class="container">
+  <div class="panel panel-default">
+    <div class="panel-heading text-center">
+      <h2>Search Results</h2>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <%= render @users %>
+      </div>
     </div>
   </div>
 </div>
-

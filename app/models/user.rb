@@ -32,6 +32,9 @@ class User < ActiveRecord::Base
   has_many :users_friended_by,    :through => :received_friendings,
                                   :source => :friend_initiator
 
+  has_many :photos,
+           :dependent => :destroy
+
   before_create :generate_token
   after_create :create_profile
 
@@ -64,6 +67,10 @@ class User < ActiveRecord::Base
 
   def has_friended?(user)
     friended_users.includes(:friended_users, :profile).include?(user)
+  end
+
+  def num_of_photos
+    photos.count
   end
 
 end

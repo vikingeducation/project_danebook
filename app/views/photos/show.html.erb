@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="panel panel-default">
+    <div class="panel-heading text-center">
+      <h2>Photos</h2>
+    </div>
+    <div class="panel-body">
+      <%= image_tag @photo.user_photo.url %>
+      <br>
+      <% if @photo.user == current_user %>
+        <%= like_button(@photo) %><br>
+        <%= link_to "Set as Profile", "#" %><br>
+        <%= link_to "Set as Cover", "#" %><br>
+        <%= link_to "delete photo", photo_path(@photo.id), method: :delete %>
+      <% end %>
+    </div>
+  </div>
+</div>

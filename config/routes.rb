@@ -6,9 +6,6 @@ Rails.application.routes.draw do
 
   get '/about/edit', to: 'static_pages#edit'
 
-
-  get '/photos', to: 'static_pages#photos'
-
   get '/timeline', to: 'static_pages#timeline'
 
   resources :users
@@ -25,6 +22,8 @@ Rails.application.routes.draw do
   resource :session, only: [:new, :create, :destroy]
 
   resources :likes, only: [:create, :destroy]
+
+  resources :photos, only: [:index, :new, :create, :show, :destroy]
 
   get "/signin", to: "sessions#new"
   delete "signout", to: "sessions#destroy"

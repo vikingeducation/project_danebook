@@ -21,13 +21,16 @@
                 </div>
                 <div class="col-md-4">
                   <div>
-                  <h4><a href="#"><%= friend.user.full_name %></a></h4>
+                  <h4><%= link_to friend.user.full_name, user_posts_path(friend.user) %></h4>
                   <h6>432 Friends</h6>
                   </div>
                 </div>
-                <div class="col-md-2 col-md-offset-1">
-                  <%= link_to "Unfriend", friending_path(friend.user), method: :delete, :class=>"btn btn-primary"  %>
-                </div>
+                <% if current_user.id == @profile.user_id%>
+                  <div class="col-md-2 col-md-offset-1">
+                    <%= link_to "Unfriend", friending_path(friend.user), method: :delete, :class=>"btn btn-primary"  %>
+                  </div>
+                <% end %>
+      
               </div>
             </div>
             <% end %>

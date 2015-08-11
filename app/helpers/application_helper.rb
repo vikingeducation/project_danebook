@@ -44,4 +44,29 @@ module ApplicationHelper
 
   end
 
+  # % current_user.friends.each do |friend| %>
+  #               <% if friend.friend_id == @profile.user.id %>
+  #                 <%= link_to "Unfriend", friending_path(:id => @profile.user.id), method: :delete, :class=>"btn btn-primary"  %>
+  #               <% elsif index == current_user.friends.length %>
+  #                 <%= link_to "Friend", friendings_path(:friend_id => @profile.user.id), method: :post, :class=>"btn btn-primary"  %>
+  #               <% end %>
+  #               <% index += 1 %>
+  #             <% end %>
+  #           <% end %>
+
+  def friend_links(user)
+    friend_bool = false
+    string = ""
+    current_user.friends.each do |friend|
+      if friend.friend_id == user.id
+        friend_bool = true
+        string = link_to "Unfriend", friending_path(:id => user.id), method: :delete, :class=>"btn btn-primary"
+      end
+    end
+    if friend_bool == false
+      string = link_to "Friend", friendings_path(:friend_id => user.id), method: :post, :class=>"btn btn-primary"
+    end
+    string.html_safe
+  end
+
 end

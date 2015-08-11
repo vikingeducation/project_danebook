@@ -53,6 +53,8 @@
           <div class="col-md-2 col-md-offset-1 profile-edit-button">
             <% if current_user.id == @profile.user.id %>
               <%= link_to "Edit User Profile", edit_user_profile_path(current_user, current_user.profile), :class=>"btn btn-primary"  %>
+            <% else %>
+              <%= friend_links(@profile.user) %>
             <% end %>
           </div>
         </div>

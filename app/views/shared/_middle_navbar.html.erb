@@ -25,7 +25,7 @@
           </li>
 
           <li class ="<%= controller.class == StaticPagesController && controller.action_name == "photos" ? 'active' : '' %>" >
-            <%= link_to "Photos <span>(123)</span>".html_safe, photos_path %>
+            <%= link_to ("Photos <span>"+ photo_num+ "</span>").html_safe, user_photos_path(params[:user_id]) %>
           </li>
 
           <li class ="<%= controller.class == StaticPagesController && controller.action_name == "friends" ? 'active' : '' %>" >

@@ -1,0 +1,29 @@
+<main class = "container">
+
+  <%= render :partial => 'shared/middle_navbar' %>
+
+  <section id="photos-section">
+    <header>
+      <div class="row">
+        <div class="col-xs-offset-2 col-xs-8">
+          <h2>Photos</h2>
+        </div>
+        <div class="form-group col-xs-2">
+          <%= link_to "Add Photo", new_user_photo_path(params[:user_id]), class: "btn btn-primary", id: "edit-profile" %>
+        </div>
+      </div>
+    </header>
+
+
+    <div class = "photo-row">
+
+      <%= render @photos %>
+
+    </div>
+
+
+    <div class = "clearfix"></div>
+  </section>
+</main>
+
+<br>

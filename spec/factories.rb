@@ -5,9 +5,9 @@ FactoryGirl.define do
   factory :user, aliases: [:friend_recipient, :friend_initiator] do
 
     sequence(:first_name){ |n| "Foo#{n}"}
-    email    { "#{first_name}@bar.com"}
+    email     { "#{first_name}@bar.com"}
     last_name "bar"
-    password "password"
+    password  "password"
     password_confirmation "password"
     birthdate   {Date.parse('20-10-2000')}
 
@@ -42,10 +42,10 @@ FactoryGirl.define do
   end
 
   factory :photo do
-    file_name
-    content_type
-    file_size
-    created_at
+    picture_file_name
+    picture_content_type
+    picture_file_size
+    picture_updated_at  {Date.parse('20-09-2014')}
 
     user
   end

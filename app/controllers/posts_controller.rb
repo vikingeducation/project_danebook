@@ -14,8 +14,10 @@ class PostsController < ApplicationController
     @post = Post.new(params_list)
     @post.user_id = current_user.id
     if @post.save
+      flash[:success] = "You created a post"
       redirect_to user_posts_path(current_user)
     else
+      flash[:error] = "There was an error creating your post."
       render :new
     end
   end
@@ -26,7 +28,7 @@ class PostsController < ApplicationController
       flash[:success] = "Your post has been deleted!"
       redirect_to user_posts_path(current_user)
     else
-      flash[:danger] = "There was an error deleting your post, try again."
+      flash[:error] = "There was an error deleting your post, try again."
       redirect_to user_posts_path(current_user)
     end
   end

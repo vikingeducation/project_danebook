@@ -1,0 +1,47 @@
+<main class = "container">
+
+  <%= render :partial => 'shared/middle_navbar' %>
+
+  <section id="photos-section">
+    <header>
+      <div class="row">
+        <div class="col-xs-offset-2 col-xs-8">
+          <h2>Photos</h2>
+        </div>
+      </div>
+    </header>
+
+    <%= form_for [current_user, @photo] do |f| %>
+      <div class = "row">
+        <div class="col-xs-12">
+          <h3 class='text-center'>Paste the URL to a photo on the web ...</h3>
+          <%= f.text_field :photo_link, class: "form-control text-center", placeholder: "http://example.com/photo1.jpg" %>
+        </div>
+      </div>
+
+      <div class = "row">
+        <div class = "col-xs-12 text-center">
+          <%= f.submit "Use Web Photo", class: "btn btn-info large-width" %>
+        </div>
+      </div>
+    <% end %>
+
+    <%= form_for [current_user, @photo], html: { multipart: true } do |f| %>
+      <div class = "row">
+        <div class = "col-xs-12 text-center">
+          <h2>or...</h2>
+          <h3>Select a photo from your hard drive</h3>
+
+            <%= f.file_field :picture %>
+
+          <%= f.submit "Upload Photo", class: "btn btn-success large-width" %>
+        </div>
+      </div>
+    <% end %>
+
+
+    <div class = "clearfix"></div>
+  </section>
+</main>
+
+<br>

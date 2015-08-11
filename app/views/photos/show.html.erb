@@ -1,0 +1,24 @@
+<main class = "container">
+
+  <%= render :partial => 'shared/middle_navbar' %>
+
+  <section id="photos-section">
+    <header>
+      <div class="row">
+        <div class="col-xs-offset-2 col-xs-8">
+          <h2>Photos</h2>
+        </div>
+      </div>
+    </header>
+
+    <div class = "row">
+      <div class = "col-xs-12 text-center">
+        <%= image_tag @photo.picture.expiring_url(10) %>
+      </div>
+    </div>
+
+    <div class = "clearfix"></div>
+  </section>
+</main>
+
+<br>

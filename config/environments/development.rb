@@ -39,15 +39,18 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 
-  #for images on aws
-  config.paperclip_defaults = {
-    storage: :s3,
-    s3_host_name: "s3.amazonaws.com",
-    :s3_credentials => {
-      :secret_access_key => Rails.application.secrets.secret_access_key,
-      :bucket => Rails.application.secrets.s3_bucket_name,
-      :access_key_id => Rails.application.secrets.access_key_id
+  #for storing images in db
+  Paperclip.options[:command_path] = "/usr/local/bin"
 
-    }
-  }
+  # #for images on aws
+  # config.paperclip_defaults = {
+  #   storage: :s3,
+  #   s3_host_name: "s3.amazonaws.com",
+  #   :s3_credentials => {
+  #     :secret_access_key => Rails.application.secrets.secret_access_key,
+  #     :bucket => Rails.application.secrets.s3_bucket_name,
+  #     :access_key_id => Rails.application.secrets.access_key_id
+
+  #   }
+  # }
 end

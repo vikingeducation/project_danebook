@@ -35,9 +35,19 @@ FactoryGirl.define do
     user
   end
 
+  #User self-association join table
   factory :friending do
     :friend_recipient
     :friend_initiator
+  end
+
+  factory :photo do
+    file_name
+    content_type
+    file_size
+    created_at
+
+    user
   end
 
 
@@ -52,11 +62,5 @@ FactoryGirl.define do
 
     user
   end
-
-  # factory :friend do
-  # end
-
-  # factory :friending do
-  # end
 
 end

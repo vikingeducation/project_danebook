@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150806203533) do
+ActiveRecord::Schema.define(version: 20150811210749) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "user_id",          null: false
@@ -43,6 +43,16 @@ ActiveRecord::Schema.define(version: 20150806203533) do
 
   add_index "likes", ["created_at"], name: "index_likes_on_created_at"
   add_index "likes", ["user_id", "likings_id", "likings_type"], name: "index_likes_on_user_id_and_likings_id_and_likings_type", unique: true
+
+  create_table "photos", force: :cascade do |t|
+    t.integer  "user_id",              null: false
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
 
   create_table "posts", force: :cascade do |t|
     t.integer  "user_id"

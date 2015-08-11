@@ -17,7 +17,10 @@ feature 'Like/Comment on a post' do
     scenario "users can 'like' a post" do
 
       click_link 'Like'
+      #to make sure we're on the right page
       expect(page).to have_content(user.birthdate)
+
+      #check flash msg
       expect(page).to have_content("You have liked this!".upcase)
     end
 

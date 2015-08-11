@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create, :show] do
     resource :profile, only: [:create, :show, :edit, :update]
     resources :posts
+    resources :photos
   end
 
   resources :friendings, :only => [:index, :create, :destroy]

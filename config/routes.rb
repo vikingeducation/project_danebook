@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   
   resources :users do
     resource :profile, :only => [:edit,:update,:show]
+    get 'friends' => 'user#friends'
   end
   resources :comments, only: [:create, :destroy]
   resource :likes, only: [:create, :destroy]

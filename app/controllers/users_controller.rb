@@ -11,6 +11,14 @@ class UsersController < ApplicationController
     @user=User.new
   end
 
+  def friends
+    @user=User.find(params[:id])
+    @friends=@user.friends
+    redirect_to user_friends_path(@user,@friends)
+
+
+  end
+
   def create
     @user=User.create(whitelisted_user_params)
     if @user.persisted?

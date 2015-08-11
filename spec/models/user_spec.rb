@@ -65,7 +65,7 @@ end
 
 
 
-describe "#likes?" do
+  describe "#likes?" do
 
   let(:user){ create(:user) }
   
@@ -74,6 +74,24 @@ describe "#likes?" do
 
   it "gives true when user has a like" do
     expect(user.likes?(post)).to be(true)
+  end
+
+  context 'Friend' do
+    it 'has a button Friend Me on timeline'
+
+    it 'has a button Friend Me on about'
+
+    it 'has a button UnFriend Me for friended users'
+
+    it 'can add a friend'
+
+    it 'can have many friends'
+
+    it 'does no have a button Friend Me on own page'
+
+    it 'has a count of friends'
+
+    it 'has his friends on timeline'
   end
 
 end

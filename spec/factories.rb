@@ -1,4 +1,7 @@
-FactoryGirl.define do
+FactoryGirl.define do  factory :friending do
+    
+  end
+
   factory :user, aliases: [:author] do
     sequence(:email) do |n| 
       ("A".."z").to_a.sample+"#{n}@gmail.com" 

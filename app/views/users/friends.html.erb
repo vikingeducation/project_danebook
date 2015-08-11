@@ -1,0 +1,37 @@
+<%= render partial: "static_pages_controller/navbar" %>
+<main>
+
+  <!-- Profile Header -->
+
+  <%= render partial: "static_pages_controller/menu", :locals => { :active => 'Friends' } %>
+
+
+  <!-- Main Content -->
+
+  <div class="container">
+
+    <div class="row test">
+
+      <div class="col-xs-2 col-xs-offset-5">
+
+        <h3>Friends</h3>
+
+      </div>
+
+      <div class="col-xs-5 edit-btn">
+         <%= link_to "Edit Your Profile", about_edit_path, class: "btn btn-primary pull-right" %>
+        <!-- <a class="btn btn-primary pull-right" href="about_edit.html" type="button">Edit Your Profile</a>
+ -->
+      </div>
+
+    </div>
+
+    <div class="row main-content">
+      <% @friends.each do |friend| %>
+      <%= render partial: "friend_card" , locals: {friend: friend}%>
+      <% end %>
+    </div>
+
+  </div>
+
+</main>

@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
 
+  has_many :friends, through: :friendings 
+
 
   has_secure_password
 
@@ -24,5 +26,9 @@ class User < ActiveRecord::Base
 
   def likes?(thing)
     Like.where(user: self, liking_id: thing.id, liking_type: thing.class).any?
+  end
+
+  def self.search(word)
+    User.where("first_name ILIKE ? OR last_name ILIKE ?", "%#{word}%", "%#{word}%")
   end
 end

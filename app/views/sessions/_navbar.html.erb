@@ -25,8 +25,11 @@
           <form class="navbar-form navbar-left user-search">
 
             <div class="form-group">
-
-              <input type="text" placeholder="Search for Users" class="form-control">
+              <%= form_tag users_path, method: "get" do %>
+              <%= text_field_tag :name, '', class: "form-control", placeholder: "Search for Users"%>
+              <%= submit_tag :name, type: 'hidden' %>
+              <% end %>
+           
             </div>
 
           </form>

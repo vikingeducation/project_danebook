@@ -21,7 +21,11 @@ class ProfilesController < ApplicationController
   end
 
   def timeline
-    @profile = Profile.find_by_id(params[:profile_id])
+    if params[:profile_id]
+      @profile = Profile.find_by_id(params[:profile_id])
+    else
+      @profile = current_user.profile
+    end
     @user = @profile.user
     @profile ||= Profile.find(current_user.id)
     @posts = @profile.posts.order("created_at DESC")

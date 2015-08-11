@@ -3,14 +3,19 @@ class LikesController < ApplicationController
   before_action :require_login
 
   def create
-    post = Post.find(params[:post_id])
-    like = post.likes.new
-
+    if params[:likeable_type] == "Post"
+      likeable = Post.find(params[:likeable_id])
+      like = likeable.likes.new
+    else
+      likeable = Comment.find(params[:likeable_id])
+      like = likeable.likes.new
+    end
+    
     like.user_id = current_user.id if current_user
     if like.save
       redirect_to request.referrer
     else
-      flash[:error] = "Could not like this post. Please try again"
+      flash[:error] = "Could not like this. Please try again"
       redirect_to request.referrer
     end
   end

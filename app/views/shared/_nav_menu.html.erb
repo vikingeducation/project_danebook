@@ -1,15 +1,16 @@
 <div class="row">
   <nav class="col-md-7 col-md-offset-2">
     <ul class="nav nav-tabs">
-      <li><%= link_to "Timeline", profile_timeline_path(@profile)  %></li>
-      <li><%= link_to "About", profile_path(@profile)%></li>
+      <li><%= link_to "Timeline", profile_timeline_path(current_user.profile)  %></li>
+      <li><%= link_to "About", profile_path(current_user.profile)%></li>
       <li><a href="#">Photos <span class="unread-number">(123)</span></a></li>
-      <li><a href="#">Friends <span class="unread-number">(<%= @user.friends.count %>)</span></a></li>
+      <li><a href="#">Friends <span class="unread-number">(<%= current_user.friends.count %>)</span></a></li>
+      <li><%= friend_button(@user) %></li>
     </ul>
   </nav>
   <div class="col-md-2 pull-right">
-    <ul class="nav profile-link">
-      <%= edit_or_sign_up %>
+    <ul class="nav nav-tabs">
+      <li><%= edit_or_sign_up %></li>
     </ul>
   </div>
 </div>

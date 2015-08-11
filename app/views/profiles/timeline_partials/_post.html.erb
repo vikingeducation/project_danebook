@@ -3,12 +3,12 @@
     <div class="row">
       <div class="col-sm-2">
         <div class="thumbnail">
-          <img src="images/harry_potter_small.jpg">
+          <%= image_tag p.user.profile.avatar_url %>
         </div>
       </div> <!-- col-md-2 end -->
 
       <div class="col-md-7 poster">
-        <a href="#"><%= @profile.user.first_name %></a>
+        <a href="#"><%= link_to p.user.first_name, profile_timeline_path(p.user.profile) %></a>
         <p class="grey-text"><%= p.created_at.strftime("Posted on %A %D") %></p>
       </div>
     </div> <!-- row end -->

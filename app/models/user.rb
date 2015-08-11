@@ -38,19 +38,24 @@ class User < ActiveRecord::Base
   end
 
   def friends
-    sql = "
-    SELECT DISTINCT users.*
-    FROM users
-    JOIN friendings
-    ON users.id = friendings.friender_id
-    JOIN friendings AS reflected_friendings
-    ON reflected_friendings.friender_id = friendings.friend_id
-    WHERE reflected_friendings.friender_id = ?
-    "
 
-    # Pass in our sql and the User id that we're expecting
-    # Note that these are a single Array input
-    # because find_by_sql is weird.
-    User.find_by_sql([sql,self.id])
+    self.friended_users & self.users_friended_by
+
+
+
+    # sql = "
+    # SELECT DISTINCT users.*
+    # FROM users
+    # JOIN friendings
+    # ON users.id = friendings.friender_id
+    # JOIN friendings AS reflected_friendings
+    # ON reflected_friendings.friender_id = friendings.friend_id
+    # WHERE reflected_friendings.friender_id = ?
+    # "
+
+    # # Pass in our sql and the User id that we're expecting
+    # # Note that these are a single Array input
+    # # because find_by_sql is weird.
+    # User.find_by_sql([sql,self.id])
   end
 end

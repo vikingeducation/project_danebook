@@ -2,12 +2,12 @@
   <hr>
   <div class="col-sm-2">
     <div class="thumbnail">
-      <img src="images/user_silhouette_generic.gif">
+      <%= image_tag comment.user.profile.avatar_url %>
     </div>
   </div> <!-- col-md-2 end -->
 
   <div class="col-md-7 poster">
-    <%= comment.user.first_name %><span class="grey-text">  <%= comment.created_at.strftime('Said on %A %D') %></span>
+    <%= link_to comment.user.first_name, profile_timeline_path(comment.user.profile) %><span class="grey-text">  <%= comment.created_at.strftime('Said on %A %D') %></span>
     <p>
       <%= comment.body %>
     </p>

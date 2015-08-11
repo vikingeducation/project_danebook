@@ -5,4 +5,8 @@ class Profile < ActiveRecord::Base
   def email
     self.user.email
   end
+
+  def avatar_url
+    "https://robohash.org/#{self.user_id}"
+  end
 end

@@ -1,13 +1,13 @@
 class Post < ActiveRecord::Base
 	# post belongs_to :profile
 	belongs_to :user
-	
+
 	# likes are polymorphic
-	has_many :likes, as: :liking
+	has_many :likes, as: :liking, dependent: :destroy
 	has_many :liked_by, through: :likes, source: :user
-	
+
 	# comments are polymorphic
-	has_many :comments, as: :commentable
+	has_many :comments, as: :commentable, dependent: :destroy
 
 	validates :body, :user_id, :presence => true
 	validates :body, :length => {:in => 1..250}

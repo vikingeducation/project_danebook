@@ -4,17 +4,31 @@ class User < ActiveRecord::Base
 	has_many 	:posts
 	# likes are polymorphic
 	has_many 	:likes
-	has_many 	:posts_liked_by_users, through: :likes, source: :post 
+	has_many 	:posts_liked_by_users, through: :likes, source: :post
 
 	has_many :comments
 
 	has_secure_password
-	
-	validates :password, 
+
+	has_many :initiated_friendships,
+						foreign_key: :initiator_id,
+						class_name: 'Friendship'
+	has_many :friends_added,
+						through: :initiated_friendships,
+						source: :friend_acceptor
+
+	has_many :accepted_friendships,
+						foreign_key: :acceptor_id,
+						class_name: 'Friendship'
+	has_many :friends_accepted,
+						through: :accepted_friendships,
+						source: :friend_initiator
+
+	validates :password,
 						:presence => true,
 						:length => {:in => 4..24}
-	validates :email, 
-						:format => {:with => /@/}, 
+	validates :email,
+						:format => {:with => /@/},
 						:uniqueness => true
  	validates :first_name, :last_name, :presence => true
 

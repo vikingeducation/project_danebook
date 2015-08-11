@@ -4,9 +4,9 @@ class User < ActiveRecord::Base
   has_many :comments
 
   # Self Associations
-  has_many :iniiated_friendings, foreign_key: :friender_id,
+  has_many :initiated_friendings, foreign_key: :friender_id,
   class_name: "Friending"
-  has_many :friended_users,      foreign_key: :iniiated_friendings,
+  has_many :friended_users,      through: :initiated_friendings,
   source: :friend_recipient                                 
 
   has_many :received_friendings,  foreign_key: :friend_id,

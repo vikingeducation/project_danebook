@@ -1,3 +1,5 @@
+<% post.comments.each do |c| %>
+
 <div class="row comment">
 
   <div class="comment-pic col-xs-2">
@@ -8,16 +10,19 @@
 
   <div class="comment-author col-xs-10">
 
-    <a href="#">Ron Weasley</a> Said on Thursday 5/21/2014
+    <%= link_to c.user.full_name, user_path(c) %> Said on <%= c.created_at.strftime("%A %-m/%-d/%Y") %>
 
   </div>
 
   <div class="col-xs-10 comment-content">
 
-    <p>Lorem ipsum dolor sit amet, id primis utamur vix. Mutat officiis at pri, sadipscing disputationi ne vix. At epicurei nominati rationibus per, conceptam mnesarchum id vel, his nonumes percipitur no. Utinam noluisse at per, ut vel vocent complectitur.</p>
+    <p><%= c.body %></p>
 
-    <p><a href="#">Like</a>3 other people like this</p>
+    <p><%= show_like_or_unlike(c) %> <%= show_like_count(c) %></p>
 
   </div>
 
 </div>
+
+<hr>
+<% end %>

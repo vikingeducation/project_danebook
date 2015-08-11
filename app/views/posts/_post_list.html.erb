@@ -57,9 +57,9 @@
 
         <div class="comment-section">
 
-          <%= render partial: "comments/comment" %>
+          <%= render partial: "comments/comment_list", :locals => {:post => p} %>
 
-          <%= render partial: "comments/comment_list" %>
+          <%= render partial: "comments/comment", :locals => {:post => p} %>
 
       </div>
 

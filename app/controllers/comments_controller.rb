@@ -1,14 +1,14 @@
 class CommentsController < ApplicationController
 
   def new
-    @comment = Comment.new(comment_params)
+    @comment = Comment.new
   end
 
   def create
     @comment = Comment.new(comment_params)
     if @comment.save
       flash[:success] = "comment created!"
-      redirect_to timeline_path(current_user)
+      redirect_to URI(request.referer).path
     else
       flash[:error] = "Unable to create comment"
       redirect_to timeline_path(current_user)
@@ -29,6 +29,6 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:user_id, :body, :created_at, :updated_at)
+    params.require(:comment).permit(:user_id, :body, :created_at, :updated_at, :post_id)
   end
 end

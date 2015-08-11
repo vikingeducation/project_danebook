@@ -25,6 +25,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'twitter-bootstrap-rails'
 
+gem 'faker'
+
 gem 'font-awesome-rails'
 
 # Use ActiveModel has_secure_password

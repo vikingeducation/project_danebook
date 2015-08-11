@@ -24,7 +24,7 @@ module LikesHelper
     like_count = Like.where(:likeable_id => object.id).count
     likers = Like.select(:user_id).where(:likeable_id => object.id)
     if like_count == 0
-      return "Be the first to like this post"
+      return "Be the first to like this #{object.class}"
     elsif like_count == 1
       str = "#{User.find(likers.first.user_id).full_name}"
     elsif like_count > 1 && like_count < 4
@@ -32,7 +32,7 @@ module LikesHelper
     else
       str = up_to_4_likers(likers) + " and #{like_count} others"
     end
-    str += " liked this post"
+    str += " liked this #{object.class}"
   end
 
   def up_to_4_likers(likers)

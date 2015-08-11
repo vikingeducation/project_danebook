@@ -2,6 +2,7 @@ class TimelinesController < ApplicationController
 
   def show
     @new_post = Post.new(:user_id => current_user.id)
+    @comment = Comment.new
     if params[:id]
       @user = User.find(params[:id])
     else

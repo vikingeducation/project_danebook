@@ -1,21 +1,6 @@
-<div class="post-update-container">
-
-  <div class="post-update-title">
-
-    <strong>Comment</strong>
-
-  </div>
-
-  <%= form_for [current_user, @comment] do |f| %>
-    <%= f.hidden_field :user_id, value: current_user.id, class: "form-control" %>
-    <%= f.text_area :body, class: "form-control" %>
-
-  <div class="post-end-box">
-
-    <%= f.submit "Post Comment", class: "btn btn-primary pull-right post-btn" %>
-
-  </div>
-
-  <% end %>
-
-</div>
+<%= form_for [current_user, @comment] do |f| %>
+  <%= f.hidden_field :user_id, value: current_user.id, class: "form-control" %>
+  <%= f.hidden_field :post_id, value: post.id, class: "form-control" %>
+  <%= f.text_area :body, class: "form-control" %>
+  <%= f.submit "Post Comment", class: "btn btn-primary pull-right post-btn" %>
+<% end %>

@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-
+  skip_before_action :direct_to_signup
   def create
     # fail
     @user = User.find_by_email(params[:user][:email])
@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
     else
       flash[:error] = 'An error has occurred'
       redirect_to new_user_path
-   end
+    end
   end
 
   def destroy

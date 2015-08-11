@@ -9,15 +9,18 @@ describe User do
 
   it "should have a profile after creation" do
     user.save
-    expect(user.profile.persisted?).to be true
+    expect(user).to receive(:profile)
+    user.profile
   end
 
   it "should have likes association" do
-    expect{user.likes}.to_not raise_error
+    expect(user).to receive(:likes)
+    user.likes
   end
 
   it "should have comments association" do
-    expect{user.comments}.to_not raise_error
+    expect(user).to receive(:comments) 
+    user.comments
   end
 
   it "should have an auth_token on save" do

@@ -1,16 +1,9 @@
-# Flows
-# 1. Create a post
-# Can only create post on own wall
-
-# 2. Delete a post
-# Can only delete own post
-
 require 'rails_helper'
 
 describe Post do
 
 	let(:user){create(:user)}
-	
+
 	before do
 		sign_in
 	end
@@ -37,7 +30,7 @@ describe Post do
 	end
 
 	context 'deletion' do
-	
+
 		scenario 'only allowed by creator' do
 			user2 = create(:user)
 			create(:post, user: user2)
@@ -56,5 +49,4 @@ describe Post do
 		end
 
 	end
-
 end

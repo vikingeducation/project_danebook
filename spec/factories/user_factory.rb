@@ -1,4 +1,4 @@
-FactoryGirl.define do 
+FactoryGirl.define do
 
 	factory :user do
 		sequence(:first_name) { |n| "foo#{n}" }
@@ -8,13 +8,12 @@ FactoryGirl.define do
 		birthday "#{Time.now}"
 		password "123456"
 		password_confirmation "123456"
-	
-		trait :with_profile do 
+
+		trait :with_profile do
 			after(:build) { |user| user.profile = build(:profile)}
 		end
 
 	end
-
 end
 
 # -------
@@ -31,6 +30,6 @@ end
 # end
 
 # trait :user_profile do
-# 	after :create do |profile| 
-# 		create 
+# 	after :create do |profile|
+# 		create
 # end

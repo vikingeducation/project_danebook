@@ -1,10 +1,3 @@
-# 1. Create
-# Creating a user saves a new user
-# Creating a user redirects to user profile
-
-# 2. Delete
-# Deleting a user redirects to login page
-
 require 'rails_helper'
 
 describe UsersController do
@@ -64,7 +57,5 @@ describe UsersController do
 			end
 
 		end
-
 	end
-
 end

@@ -1,18 +1,7 @@
-# Flows
-# 1. Sign in 
-# Cannot view profile page without signing in
-# Cannot access any page other than signup page
-# Directs to Timeline page
-
-# 2. Sign up
-# Requires fields filled correctly
-# Fields filled correctly creates user and generates profile
-# Directs to profile page after signing up
-
 require 'rails_helper'
 
 describe User do
-	
+
 	let(:user){create(:user)}
 
 	context 'sign in' do
@@ -25,7 +14,7 @@ describe User do
 		scenario 'requires valid credentials' do
 		 visit root_path
 		 click_button 'Log In'
-		 expect(current_url).to eq(root_url) 
+		 expect(current_url).to eq(root_url)
 		 expect(page).to have_content('ERROR')
 		end
 
@@ -43,7 +32,7 @@ describe User do
 	end
 
 	context 'sign up' do
-			
+
 		scenario 'requires unique email' do
 			fill_sign_up_form(email: user.email)
 			# cannot register a user
@@ -64,12 +53,11 @@ describe User do
 			fill_sign_up_form
 			# registers a user
 			expect{click_button 'Sign Up!'}.to change(User, :count).by(1)
-			# generates a user profile object 
+			# generates a user profile object
 			expect(Profile.all.count).to eq(1)
 			# directs to profile page
 			expect(current_url).to eq(user_profile_url(User.last))
 		end
 
 	end
-
 end

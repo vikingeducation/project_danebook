@@ -1,24 +1,11 @@
-# B. Post
-
-# 2. Create
-# Only wall owner can create a post on own wall *
-
-# 3. Destroy
-# Can only be destroyed by creator *
-
-# 4. Associations
-# Has many comments *
-# Destroying a post will destroy associated comments *
-
-require 'pry'
 require 'rails_helper'
 
-describe Post do 
+describe Post do
 
 	let(:post){build(:post)}
 
 	context "create" do
-		
+
 		specify "only by profile owner"
 
 		it "must have a body" do
@@ -30,12 +17,6 @@ describe Post do
 			post.user = nil
 			expect(post).to be_invalid
 		end
-	
-	end
-	
-	context "destroy" do
-
-		it "can only be by owner"
 
 	end
 
@@ -67,8 +48,7 @@ describe Post do
 			post.likes = create_list(:like_post, 3)
 			post.save!
 			expect(post.count_likes).to eq(3)
-		end 
+		end
 
 	end
-
 end

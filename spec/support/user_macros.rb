@@ -3,7 +3,7 @@ module UserMacros
 	def fill_sign_up_form(**args)
 		visit root_path
 		fill_in 'user_first_name', with: args[:first_name] || "James"
-		fill_in 'user_last_name', with: args[:last_name] ||"Bond"
+		fill_in 'user_last_name', with: args[:last_name] || "Bond"
 		fill_in 'user_email', with: args[:email] || "j@b.com"
 		fill_in 'user_password', with: args[:pwd] || "1234567"
 		fill_in 'user_password_confirmation', with: args[:pwd_confirmation] || "1234567"

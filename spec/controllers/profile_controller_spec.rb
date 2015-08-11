@@ -1,19 +1,8 @@
-# 1. Create
-# Creating a user creates a profile
-
-# 2. Edit
-# Editing a profile renders the right page
-# A user can only see own profile edit page
-
-# 3. Update
-# Saving redirects to user timeline
-# Failing save renders edit page again
-
 require 'rails_helper'
 
 describe ProfilesController do
 
-	let!(:user){create(:user)}
+	let(:user){create(:user)}
 
 	before do
 		controller_sign_in
@@ -81,7 +70,6 @@ describe ProfilesController do
 
 		end
 
-
 		describe 'PUT #update' do
 
 			it 'can only be changed by owner' do
@@ -114,7 +102,5 @@ describe ProfilesController do
 			end
 
 		end
-
 	end
-
 end

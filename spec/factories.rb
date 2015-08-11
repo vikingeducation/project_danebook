@@ -2,7 +2,7 @@ require 'rails_helper'
 
 FactoryGirl.define do
 
-  factory :user do
+  factory :user, aliases: [:friend_recipient, :friend_initiator] do
 
     sequence(:first_name){ |n| "Foo#{n}"}
     email    { "#{first_name}@bar.com"}
@@ -33,6 +33,11 @@ FactoryGirl.define do
     body  "something in post body"
 
     user
+  end
+
+  factory :friending do
+    :friend_recipient
+    :friend_initiator
   end
 
 

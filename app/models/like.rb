@@ -21,15 +21,11 @@ class Like < ActiveRecord::Base
   end
 
   def self.like_msg_base(like_list)
-    case 
-    when like_list.count == 1
-      "likes this."
-    when like_list.count == 2
-      "like this."
-    when like_list.count == 3
-      "and 1 other like this."
-    when like_list.count > 3
-      "and #{like_list.count - 2} others like this."
+    num = like_list.count
+    if num <= 2
+      "like".pluralize(num) + " this."
+    else
+      "and #{num - 2} " + "other".pluralize(num-2) + " this."
     end
 
   end

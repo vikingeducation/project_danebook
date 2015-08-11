@@ -59,11 +59,7 @@ class User < ActiveRecord::Base
   end
 
   def display_num_of_friends
-    if (0..1).include?(num_of_friends)
-      "#{num_of_friends} friend"
-    elsif num_of_friends > 1
-      "#{num_of_friends} friends"
-    end
+    "#{num_of_friends} " + "friend".pluralize(num_of_friends)
   end
 
   def has_friended?(user)

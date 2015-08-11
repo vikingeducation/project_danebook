@@ -11,7 +11,12 @@
     </div>
 
     <div class="row">
-      <%= render :partial => 'layouts/navbar' %>
+      <div class="col-sm-10">
+        <%= render :partial => 'layouts/navbar' %>
+      </div>
+      <div class="col-sm-2 timeline-add-friend-button">
+        <%= render partial: 'friendships/new' %>
+      </div>
     </div>
 
   <section class="timeline-wrap">
@@ -82,12 +87,12 @@
       	 <%= render partial: 'new', :locals => {:user => current_user} %>
         <% end %>
       <!-- new comment partial -->
-        <% if @posts %> 
-          <% @posts.each do |post| %> 
+        <% if @posts %>
+          <% @posts.each do |post| %>
             <%= render partial: 'show', :locals => {:post => post} %>
-          <% end %> 
-        <% end %> 
-      <!-- end comment panel -->  
+          <% end %>
+        <% end %>
+      <!-- end comment panel -->
       </div><!-- col-md-8 end -->
     </div> <!-- end of row -->
   </section>

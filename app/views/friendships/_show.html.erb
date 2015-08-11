@@ -1,0 +1,24 @@
+<div class="row about-info">
+  <div class="col-sm-6 friend-box">
+    <article class="panel panel-default comments">
+      <div class="panel-body">
+        <% if friend.friend_acceptor == object_owner %>
+          <%= link_to friend.friend_initiator.full_name, user_posts_path(user_id: friend.friend_initiator.id) %>
+          <%= friend.friend_initiator.all_friendships.count %>
+      <% else %>
+          <%= link_to friend.friend_acceptor.full_name, user_posts_path(user_id: friend.friend_acceptor.id) %>
+          <%= friend.friend_acceptor.all_friendships.count %>
+      <% end %>
+
+          <% if object_owner? && friend.status == 'Accepted' %>
+            <%= link_to "Unfriend Me", user_friendship_path(:id => friend.id, :user_id => current_user.id), class: "btn btn-default active btn-sm pull-right", method: :delete %>
+          <% elsif object_owner? && friend.status == 'Pending' %>
+            <%= link_to "Confirm Friend", user_friendship_path(:id => friend.id, :user_id => current_user.id), class: "btn btn-success active btn-sm pull-right", method: :put %>
+          <% else %>
+            <%= link_to "Add Friend", user_friendships_path(:user_id => object_owner.id), class: "btn btn-primary btn-sm pull-right", method: :post %>
+          <% end %>
+
+        </div>
+    </article>
+  </div>
+</div>

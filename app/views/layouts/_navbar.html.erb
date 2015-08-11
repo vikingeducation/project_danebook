@@ -3,7 +3,7 @@
 		<li><%= link_to 'Timeline', user_timeline_path %><li>
 		<li><%= link_to 'About', user_about_path %><li>
 		<li><%= link_to 'Photos', photos_path %><li>
-		<li><%= link_to 'Friends', friends_path %><li>
+		<li><%= link_to 'Friends', user_friendships_path(object_owner.id) %><li>
 	</ul>
 </nav>
 
@@ -11,7 +11,7 @@
 	<ul class="nav profile-link">
 		<li>
 			<% if object_owner? %>
-				<%= link_to "Edit Profile", edit_user_profile_path(current_user.id), class: 'pull-right' %> 
+				<%= link_to "Edit Profile", edit_user_profile_path(current_user.id), class: 'pull-right' %>
 			<% end %>
 		</li>
 	</ul>

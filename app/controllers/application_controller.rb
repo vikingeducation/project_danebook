@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  private 
+  private
 
   def sign_in(user)
   	session[:user_id] = user.id
@@ -19,6 +19,11 @@ class ApplicationController < ActionController::Base
   	@current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
   helper_method :current_user
+
+  def object_owner
+    @object_owner ||= User.find(params[:user_id])
+  end
+  helper_method :object_owner
 
   def current_user=(user)
   	@current_user = user
@@ -46,7 +51,7 @@ class ApplicationController < ActionController::Base
 
   #requires a user to own the current page with parameter user id (all except user pages)
   def require_object_owner
-    if User.find(params[:user_id]) != current_user 
+    if User.find(params[:user_id]) != current_user
       flash[:error] = "Sorry! Viewing not authorized."
       redirect_to URI(request.referer).path
     end
@@ -55,13 +60,13 @@ class ApplicationController < ActionController::Base
 
   #checks if a user owns the current page he/she is on
   def object_owner?
-    User.find(params[:user_id]) == current_user 
+    User.find(params[:user_id]) == current_user
   end
   helper_method :object_owner?
 
   #checks if user owns a particular object
   def object_owner_for_resource?(object)
-    object.user == current_user 
+    object.user == current_user
   end
   helper_method :object_owner_for_resource?
 

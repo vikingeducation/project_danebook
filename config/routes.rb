@@ -23,7 +23,7 @@ Rails.application.routes.draw do
 
     resources :comments, :only => [:create, :update, :destroy]
 
-    resources :friends, :only => [:create, :update, :destroy]
+    resources :friendships, :only => [:index, :create, :update, :destroy]
   end
 
 end

@@ -34,6 +34,22 @@ class User < ActiveRecord::Base
 
  	after_create :create_profile
 
+	def full_name
+		first_name + " " + last_name
+	end
+
+	def friends
+		accepted_friendships.
+		where(status: 'Accepted').
+		joins('JOIN users on users.id = initiator_id').
+		select(:users)
+	end
+
+	def all_friendships
+		initiated_friendships.where(status: 'Accepted') +
+		accepted_friendships.where(status: 'Accepted')
+	end
+
 private
 
 end

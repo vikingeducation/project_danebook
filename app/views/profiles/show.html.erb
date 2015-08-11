@@ -8,7 +8,7 @@
 				</div>
 			</div>
 		</div> <!-- end of row -->
-		
+
 		<div class="row">
     	<%= render 'layouts/navbar' %>
   	</div>
@@ -18,6 +18,8 @@
 			<div class="panel-heading clearfix">
 				<% if object_owner? %>
 					<%= link_to "Edit your profile", edit_user_profile_path(:user_id => @profile.user.id), class: "btn btn-primary btn-sm pull-right" %>
+				<% else %>
+					<%= link_to "Add Friend", user_friendships_path(:user_id => @profile.user.id), class: "btn btn-primary btn-sm pull-right", method: :post %>
 				<% end %>
 				<h4 class="panel-text text-center">About</h4>
 			</div><!-- end of panel -->
@@ -29,7 +31,7 @@
 
 						<dl class="dl-horizontal">
 							<dt class="basic-info">Birthday:</dt>
-							<dd><%= @profile.user.birthday.strftime("%B %d, %Y") %></dd>
+							<dd><%= @profile.user.birthday.strftime("%B %d, %Y") if @profile.user.birthday %></dd>
 							<dt class="basic-info">College:</dt>
 							<dd><%= @profile.college %></dd>
 							<dt class="basic-info">Hometown:</dt>

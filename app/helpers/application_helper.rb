@@ -39,11 +39,11 @@ module ApplicationHelper
     str.html_safe
   end
 
-  def comment_likes_message(comment)
-    likes_count = comment.likes.size
+  def comment_likes_message(commentable)
+    likes_count = commentable.likes.size
     case likes_count
     when 0
-      "Be the first one to like this comment!"
+      "Be the first one to like this #{commentable.class.to_s.downcase}!"
     when 1
       "1 person likes this"
     when likes_count > 2

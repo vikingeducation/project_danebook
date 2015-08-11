@@ -11,6 +11,10 @@ class Photo < ActiveRecord::Base
                               thumb: "150x150>" },
                     default_url: "/images/icon_photo_small.png"
 
+  include Likeable
+
+  include Commentable
+
   # ----------------------- Validations --------------------
 
   validates_attachment_content_type :photo,

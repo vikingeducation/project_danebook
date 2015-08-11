@@ -10,7 +10,7 @@
           <h2>Photos</h2>
         </div>
         <div class="col-xs-2">
-          <%= link_to "Add Photo!", new_user_photo_path(@user), class: "btn btn-primary" if @user == current_user %>
+          <%= link_to "Add Photo!", new_photo_path, class: "btn btn-primary" if @user == current_user %>
         </div>
       </div>
     </header>
@@ -18,7 +18,7 @@
     <div class = "photo-row">
       <% @photos.each do |photo| %>
         <div class="col-md-3 col-xs-6 photo">
-          <%= link_to user_photo_path(@user, photo) do %>
+          <%= link_to photo_path(photo) do %>
             <%= image_tag photo.photo.url(:medium) %>
           <% end -%>
           <div class="upload-date">

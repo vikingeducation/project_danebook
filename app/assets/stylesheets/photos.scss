@@ -8,8 +8,59 @@ main {
     border: 1px solid #ddd;
 
     form {
+      margin: 10px 45px;
       div div {
         padding: 12px 0;
+      }
+    }
+  }
+
+  #photo-show {
+
+    border: 1px solid #ddd;
+
+    header {
+      margin-bottom: 50px;
+    }
+
+    img {
+      margin: 4px;
+    }
+
+    #photo-container {
+      margin-bottom: 20px;
+    }
+
+    .date-posted {
+      color: #888;
+    }
+
+    #like-block {
+      margin-left: -25px;
+      margin-top: 10px;
+      color: #555;
+    }
+
+    form {
+      #comment-box {
+        margin: 20px 0;
+      }
+
+      input {
+        background-color: #49649E;
+        border: 2px solid #29447E;
+        box-shadow: 2px 2px 2px #333;
+      }
+    }
+
+    #comments-container {
+      margin: 10px 5px 10px 0;
+      border: 2px solid #aaa;
+      background-color: #eee;
+      padding: 15px;
+
+      span {
+        color: #777;
       }
     }
   }

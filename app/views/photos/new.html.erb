@@ -9,20 +9,20 @@
       </div>
     </header>
 
-    <div class = "row">
-      <div class="col-md-8 col-md-push-2 text-center">
+    <%=  form_for @photo do |photo_fields| %>
 
-        <%=  form_for [:user, @photo] do |photo_fields| %>
+      <div class = "row">
+        <div class="col-md-4 col-md-offset-1 text-center">
 
           <div class="row">
             <div class="col-xs-12">
-              <h4>Post the URL to a photo on the web...</h4>
+              <h4>Post the URL to a photo on the web</h4>
             </div>
           </div>
 
           <div class="row">
             <div class="col-xs-12">
-              <%= photo_fields.text_field :img_url, class: "form-control", placeholder: "https://www.google.com/images/srpr/logo11w.png" %>
+              <%= photo_fields.text_field :img_url, class: "form-control", placeholder: "https://www.example.com/picture.png" %>
             </div>
           </div>
 
@@ -31,26 +31,28 @@
               <%= photo_fields.submit "Use Web Photo", class: "btn btn-primary btn-lg" %>
             </div>
           </div>
+        </div>
+
+        <div class="col-md-1 col-md-offset-1">
+          <div class="row">
+            <div class="col-xs-12">
+              <h4>or...</h4>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4 text-center">
 
           <div class="row">
             <div class="col-xs-12">
-              <h2>or...</h2>
+              <h4>Select a photo from your hard drive!</h4>
             </div>
           </div>
 
           <div class="row">
             <div class="col-xs-12">
-              <h4>Select a photo from your hard drive...</h4>
-            </div>
-          </div>
+              <%= photo_fields.file_field :photo, class: "form-control btn" %>
 
-          <div class="row">
-            <div class="col-xs-12">
-              <div class="row">
-                <div class="col-xs-4 col-xs-push-4">
-                  <%= photo_fields.file_field :photo, class: "form-control btn" %>
-                </div>
-              </div>
               <%= photo_fields.submit "Upload Photo!", class: "btn btn-success btn-lg" %>
             </div>
           </div>
@@ -58,7 +60,6 @@
 
       </div>
     </div>
-  <div class = "clearfix"></div>
 
   </section>
 </main>

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   root 'users#new'
   get '/' => 'staticpages#home'
   # resources :staticpages
@@ -11,7 +12,7 @@ Rails.application.routes.draw do
   get 'login' => 'sessions#new'
   delete 'logout' => 'sessions#destroy'
 
-  resources :users do 
+  resources :users do
     resource :profile, :only => [:edit, :update, :show]
     get 'about' => 'profiles#show'
 
@@ -21,6 +22,8 @@ Rails.application.routes.draw do
     resources :likes, :only => [:create, :destroy]
 
     resources :comments, :only => [:create, :update, :destroy]
+
+    resources :friends, :only => [:create, :update, :destroy]
   end
 
 end

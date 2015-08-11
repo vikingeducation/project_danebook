@@ -1,12 +1,11 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+User.destroy_all
+Comment.destroy_all
+Post.destroy_all
+Like.destroy_all
+Profile.destroy_all
+Friendship.destroy_all
 
-
+# create users
 20.times do |n|
 
   User.create(:username => "foo#{n}",
@@ -16,4 +15,57 @@
               :first_name => "foo#{n}",
               :last_name => "bar")
 
+  Profile.last.update(:about_me => "I am the #{n}th
+                                   person signed up",
+                      :words_to_live_by => "Be No. #{n}!",
+                      :college => "Hogwarts")
 end
+
+
+# create 30 posts
+30.times do |n|
+  Post.create(:user_id => User.ids.sample,
+              :body => "This is post #{n}")
+end
+
+# create 25 comments on comments and posts each
+50.times do |n|
+
+  if n % 2 == 0 && Comment.all.count > 0
+    Comment.create(:user_id => User.ids.sample,
+                  :body => "comment #{n} on a comment",
+                  :commentable => Comment.find(Comment.ids.sample))
+  elsif Post.all.count > 0
+    Comment.create(:user_id => User.ids.sample,
+                  :body => "comment #{n} on a post",
+                  :commentable => Post.find(Post.ids.sample))
+  end
+
+end
+
+# create 50 likes on comments and posts each
+100.times do |n|
+
+  if n % 2 == 0 && Comment.all.count > 0
+    Like.create(:user_id => User.ids.sample,
+                :liking => Comment.find(Comment.ids.sample))
+  elsif Post.all.count > 0
+    Like.create(:user_id => User.ids.sample,
+                :liking => Post.find(Post.ids.sample))
+  end
+
+end
+
+# create less than 50 Pending friendships
+50.times do |n|
+  Friendship.create(:initiator_id => User.ids.sample,
+                    :acceptor_id => User.ids.sample,
+                    :status => 'Pending')
+end
+
+# Create 20 accepted friendships
+20.times do |n|
+  Friendship.find(Friendship.ids.sample).
+              update(:status => 'Accepted')
+end
+

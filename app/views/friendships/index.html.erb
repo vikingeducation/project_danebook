@@ -21,11 +21,24 @@
         <% end %>
       </div><!-- end of panel -->
 
+      <% if object_owner? %>
       <div class="panel-body">
-        <% @friendships.each do |friend| %>
-          <%= render partial: 'friendships/show',
-                      locals: {friend: friend} %>
-        <% end %>
+        <div class="row about-info">
+          <% @pending_friends.each do |friendship| %>
+            <%= render partial: 'friendships/show_pending',
+                        locals: {friendship: friendship} %>
+          <% end %>
+        </div>
+      </div>
+      <% end %>
+
+      <div class="panel-body">
+        <div class="row about-info">
+          <% @accepted_friends.each do |friendship| %>
+            <%= render partial: 'friendships/show_accepted',
+                        locals: {friendship: friendship} %>
+          <% end %>
+        </div>
       </div>
 
     </section> <!-- end of section -->

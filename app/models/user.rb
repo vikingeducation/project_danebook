@@ -45,9 +45,13 @@ class User < ActiveRecord::Base
 		select(:users)
 	end
 
-	def all_friendships
+	def accepted_friends
 		initiated_friendships.where(status: 'Accepted') +
 		accepted_friendships.where(status: 'Accepted')
+	end
+
+	def pending_friends
+		accepted_friendships.where(status: 'Pending')
 	end
 
 private

@@ -4,8 +4,8 @@ before_action :require_login
 before_action :require_object_owner, only: [:update]
 
 def index
-  @friendships = object_owner.all_friendships
-  @friends = object_owner.friends
+  @accepted_friends = object_owner.accepted_friends
+  @pending_friends = object_owner.pending_friends
 end
 
 def create

@@ -1,8 +1,9 @@
 source 'https://rubygems.org'
 
+gem 'figaro'
 gem 'faker'
 gem 'paperclip'
-gem 'aws-sdk'
+gem 'aws-sdk', '< 2.0'
 gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
 
 gem "twitter-bootstrap-rails"
@@ -60,6 +61,8 @@ group :development, :test do
 end
 
 group :test do
+  gem 'vcr'
+  gem 'webmock'
   gem 'capybara'
   gem 'launchy'
 end

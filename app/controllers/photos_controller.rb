@@ -7,7 +7,7 @@ class PhotosController < ApplicationController
   end
 
   def index
-    @photos = @user.uploaded_photos
+    @photos = @user.uploaded_photos.includes(:uploader)
   end
 
   def create

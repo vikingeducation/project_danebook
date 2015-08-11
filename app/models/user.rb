@@ -23,8 +23,6 @@ class User < ActiveRecord::Base
 
   has_secure_password
 
-  # accepts_nested_attributes_for :profile
-
   # When acting as the initiator of the friending
   has_many :initiated_friendings, foreign_key: :friender_id,
                                   class_name: "Friending",
@@ -41,6 +39,10 @@ class User < ActiveRecord::Base
   has_many :users_friended_by,    through: :received_friendings,
                                   source: :friend_initiator
 
+  has_many :photos, dependent: :destroy
+
+  # ----------------------- Attributes --------------------
+
   has_attached_file :profile_pic,
                     styles: { medium: "300x300>",
                               thumb: "100x100>" },
@@ -49,8 +51,6 @@ class User < ActiveRecord::Base
   has_attached_file :cover_photo,
                     styles: { landscape: "800x450>" },
                     default_url: "hogwarts_small.jpg"
-
-  has_many :photos, dependent: :destroy
 
   # ----------------------- Validations --------------------
 
@@ -81,6 +81,8 @@ class User < ActiveRecord::Base
   # Creates a user profile after user creation
   after_create :build_profile
 
+  after_create :delay_welcome_email
+
 
   # ----------------------- Methods --------------------
 
@@ -106,6 +108,15 @@ class User < ActiveRecord::Base
 
   def build_profile
     Profile.new(user_id: self.id).save
+  end
+
+  def self.send_welcome_email(id)
+    user = User.find(id)
+    UserMailer.welcome(user).deliver
+  end
+
+  def delay_welcome_email
+    User.delay.send_welcome_email(self.id)
   end
 
 end

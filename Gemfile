@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 ruby '2.2.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.2'
+gem 'rails', '~> 4.2.2'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -30,10 +30,6 @@ gem 'figaro'
 
 gem 'delayed_job_active_record'
 
-group :production do
-  gem 'rails_12factor'
-  gem 'pg'
-end
 
 # Use ActiveModel has_secure_password
   gem 'bcrypt', '~> 3.1.7'
@@ -59,8 +55,8 @@ group :development, :test do
   gem 'factory_girl_rails', '~> 4.0'
 
   gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
-#  gem 'pry-byebug'
 
+  gem "letter_opener"
 
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
@@ -74,3 +70,7 @@ group :test do
   gem 'launchy'
 end
 
+group :production do
+  gem 'rails_12factor'
+  gem 'pg'
+end

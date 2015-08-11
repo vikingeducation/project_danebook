@@ -68,16 +68,7 @@ class UsersController < ApplicationController
         :password,
         :password_confirmation,
         :birthday,
-        :gender,
-        { profile_attributes: [
-            :college,
-            :hometown,
-            :current_home,
-            :mobile,
-            :summary,
-            :about
-            ]
-          })
+        :gender)
   end
 
   def set_user

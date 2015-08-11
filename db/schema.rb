@@ -63,13 +63,13 @@ ActiveRecord::Schema.define(version: 20150811140142) do
   add_index "likes", ["likeable_id", "likeable_type", "user_id"], name: "like_index", unique: true, using: :btree
 
   create_table "photos", force: :cascade do |t|
-    t.string   "photo_file_name",    null: false
-    t.string   "photo_content_type", null: false
-    t.integer  "photo_file_size",    null: false
-    t.datetime "photo_updated_at",   null: false
-    t.integer  "user_id",            null: false
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.string   "data_file_name",    null: false
+    t.string   "data_content_type", null: false
+    t.integer  "data_file_size",    null: false
+    t.datetime "data_updated_at",   null: false
+    t.integer  "user_id",           null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
     t.string   "img_url"
   end
 
@@ -94,23 +94,17 @@ ActiveRecord::Schema.define(version: 20150811140142) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "first_name",               null: false
-    t.string   "last_name",                null: false
-    t.string   "email",                    null: false
-    t.string   "password_digest",          null: false
+    t.string   "first_name",      null: false
+    t.string   "last_name",       null: false
+    t.string   "email",           null: false
+    t.string   "password_digest", null: false
     t.date     "birthday"
     t.string   "gender"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
-    t.string   "auth_token",               null: false
-    t.string   "profile_pic_file_name"
-    t.string   "profile_pic_content_type"
-    t.integer  "profile_pic_file_size"
-    t.datetime "profile_pic_updated_at"
-    t.string   "cover_photo_file_name"
-    t.string   "cover_photo_content_type"
-    t.integer  "cover_photo_file_size"
-    t.datetime "cover_photo_updated_at"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.string   "auth_token",      null: false
+    t.integer  "profile_pic"
+    t.integer  "cover_photo"
   end
 
   add_index "users", ["auth_token"], name: "index_users_on_auth_token", unique: true, using: :btree

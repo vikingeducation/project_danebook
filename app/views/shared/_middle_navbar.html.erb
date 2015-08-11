@@ -1,7 +1,7 @@
 <header>
 
   <div class = "photo-container">
-    <%= image_tag @user.cover_photo, class: "img-responsive", id: "cover-photo" %>
+    <%= image_tag @user.cover_photo ? @user.cover_photo.data.url : "https://s3.amazonaws.com/davidmeza/itm_2013-01-23_18-24-28_6.jpg" , class: "img-responsive", id: "cover-photo" %>
   </div>
 
   <div id = "pages-nav">
@@ -9,7 +9,7 @@
 
       <div class = "col-md-4">
         <div class = "profile-pic-container">
-          <%= image_tag @user.profile_pic, class: "img-responsive" %>
+          <%= image_tag @user.profile_pic ? @user.profile_pic.data.url : "https://s3.amazonaws.com/davidmeza/profile_picture_by_veerayne-d57nuq0.jpg", class: "img-responsive" %>
         </div>
         <h1 class = "profile-name">
           <%= @user.name %>

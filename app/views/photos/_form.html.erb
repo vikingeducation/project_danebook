@@ -40,7 +40,12 @@
 
       <div class="row">
         <div class="col-xs-12">
-          <%= photo_fields.file_field :photo, class: "form-control btn" %>
+
+          <div class="row">
+            <div class="col-xs-8 col-xs-push-2">
+              <%= photo_fields.file_field :data, class: "form-control btn" %>
+            </div>
+          </div>
 
           <%= photo_fields.submit "Upload Photo!", class: "btn btn-success btn-lg" %>
         </div>

@@ -40,14 +40,14 @@ class PhotosController < ApplicationController
 
   def set_as_profile
     @photo = Photo.find(params[:photo_id])
-    current_user.profile_pic = @photo.photo
+    current_user.profile_pic = @photo
     current_user.save
     redirect_to user_photos_path(current_user)
   end
 
   def set_as_cover
     @photo = Photo.find(params[:photo_id])
-    current_user.cover_photo = @photo.photo
+    current_user.cover_photo = @photo
     current_user.save
     redirect_to user_photos_path(current_user)
   end
@@ -55,7 +55,7 @@ class PhotosController < ApplicationController
   private
 
   def photo_params
-    params.require(:photo).permit(:photo, :img_url)
+    params.require(:photo).permit(:data, :img_url)
   end
 
 end

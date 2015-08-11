@@ -1,8 +1,8 @@
 <div class="col-md-3 col-xs-6 photo">
   <%= link_to photo_path(photo) do %>
-    <%= image_tag photo.photo.url(:medium) %>
+    <%= image_tag photo.data.url(:medium) %>
   <% end -%>
   <div class="upload-date">
-    <p>Uploaded <%= photo.photo_updated_at.to_formatted_s(:long) %></p>
+    <p>Uploaded <%= photo.data_updated_at.to_formatted_s(:long) %></p>
   </div>
 </div>

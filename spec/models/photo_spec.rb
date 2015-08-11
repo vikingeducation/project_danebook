@@ -1,5 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe Photo, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  let(:photo) { build(:photo) }
+
+  it "is valid with default attributes" do
+    expect(photo).to be_valid
+  end
+
+
 end

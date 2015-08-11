@@ -41,16 +41,22 @@ class User < ActiveRecord::Base
 
   has_many :photos, dependent: :destroy
 
+  belongs_to :profile_pic, foreign_key: :profile_pic,
+                            class_name: "Photo"
+
+  belongs_to :cover_photo, foreign_key: :cover_photo,
+                            class_name: "Photo"
+
   # ----------------------- Attributes --------------------
 
-  has_attached_file :profile_pic,
-                    styles: { medium: "300x300>",
-                              thumb: "100x100>" },
-                    default_url: "user_silhouette_generic.gif"
+  # has_attached_file :profile_pic,
+  #                   styles: { medium: "300x300>",
+  #                             thumb: "100x100>" },
+  #                   default_url: "user_silhouette_generic.gif"
 
-  has_attached_file :cover_photo,
-                    styles: { landscape: "800x450>" },
-                    default_url: "hogwarts_small.jpg"
+  # has_attached_file :cover_photo,
+  #                   styles: { landscape: "800x450>" },
+  #                   default_url: "hogwarts_small.jpg"
 
   # ----------------------- Validations --------------------
 
@@ -68,11 +74,11 @@ class User < ActiveRecord::Base
             :length => { :in => 8..24 },
             :allow_nil => true
 
-  validates_attachment_content_type :profile_pic,
-                                    :content_type => /\Aimage\/.*\Z/
+  # validates_attachment_content_type :profile_pic,
+  #                                   :content_type => /\Aimage\/.*\Z/
 
-  validates_attachment_content_type :cover_photo,
-                                    :content_type => /\Aimage\/.*\Z/
+  # validates_attachment_content_type :cover_photo,
+  #                                   :content_type => /\Aimage\/.*\Z/
 
   # ----------------------- Callbacks --------------------
 

@@ -3,16 +3,26 @@
       <h4>Photos</h4>
   </header>
 
-  <% 9.times do |num| %>
+  <% @user.photos.limit(9) do |photo| %>
     <div class="col-xs-4 photo">
-      <a href="#">
-        <%=image_tag "icon_photo_small.png" %>
-      </a>
+      <%= link_to photo_path(photo.id) do %>
+        <%=image_tag photo.data.url(:thumb) %>
+      <% end -%>
       <div class="upload-date">
-        <p>Uploaded June 15, 2015</p>
+        <p>
+          Uploaded <%= photo.data_updated_at.to_formatted_s(:long) %>
+        </p>
       </div>
     </div>
   <% end %>
+
+  <div class="row">
+    <div class="col-xs-6 col-xs-push-3">
+      <h5 class = "text-center">
+        <%= no_pictures_message(@user) %>
+      </h5>
+    </div>
+  </div>
 
     <div class="col-md-12 more-photos">
       <%= link_to "See more photos!", user_photos_path(@user) %>

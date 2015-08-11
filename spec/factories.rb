@@ -1,13 +1,27 @@
 # spec/factories.rb
-FactoryGirl.define do  factory :photo do
-    
+FactoryGirl.define do
+
+  factory :photo_attributes do
+    data_file_name        "beast.png"
+    data_content_type     "image/png"
+    data_file_size        27720
+    data_updated_at       Date.today
+    association           :user, factory: :user
+    img_url               ""
   end
 
-  # A block defining the attributes of a model
-  # The symbol is how you will later call it
-  # Factory Girl assumes that your class name
-  # is the same as the symbol you passed
-  # (so here, it assumes this is a User)
+  factory :photo do
+    # attached_file     :data, factory: :data
+    user
+    img_url   ""
+  end
+
+  factory :data do
+    supporting_documentation_file_name { 'test.pdf' }
+    supporting_documentation_content_type { 'application/pdf' }
+    supporting_documentation_file_size { 1024 }
+  end
+
   factory :user do
     sequence(:first_name) { |n| "Foo#{n}" }
     last_name                   "Bar"

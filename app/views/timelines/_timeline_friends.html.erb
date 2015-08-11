@@ -3,7 +3,7 @@
       <h4>Friends: <%= @friends.count %></h4>
   </header>
 
-  <% @friends.each do |friend| %>
+  <% @friends.limit(9) do |friend| %>
     <div class="col-xs-4 friend">
       <%= link_to user_path(friend) do %>
         <%=image_tag random_user_image %>
@@ -13,6 +13,14 @@
       </p>
     </div>
   <% end -%>
+
+  <div class="row">
+    <div class="col-xs-6 col-xs-push-3">
+      <h5 class = "text-center">
+        <%= no_friends_message(@friends) %>
+      </h5>
+    </div>
+  </div>
 
   <div class="col-md-12 friend">
     <h4><%= link_to "See more friends!", user_friends_path(@user) %></h4>

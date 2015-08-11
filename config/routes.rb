@@ -11,6 +11,8 @@ Rails.application.routes.draw do
 
   resources :photos, except: [:index] do
     resources :comments, only: [:create, :update, :destroy], :defaults => { :commentable => 'Photo' }
+    post "set_as_profile"
+    post "set_as_cover"
   end
 
   resources :posts, only: [:create, :update, :destroy] do

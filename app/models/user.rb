@@ -44,11 +44,11 @@ class User < ActiveRecord::Base
   has_attached_file :profile_pic,
                     styles: { medium: "300x300>",
                               thumb: "100x100>" },
-                    default_url: "/images/user_silhouette_generic.gif"
+                    default_url: "user_silhouette_generic.gif"
 
   has_attached_file :cover_photo,
                     styles: { landscape: "800x450>" },
-                    default_url: "/images/hogwarts_small.jpg"
+                    default_url: "hogwarts_small.jpg"
 
   has_many :photos, dependent: :destroy
 

@@ -13,7 +13,7 @@ class PhotosController < ApplicationController
 
   def create
     @photo = current_user.photos.build(photo_params)
-    @photo.pic_from_url(params[:photo][:img_url]) if params[:photo][:img_url]
+    @photo.pic_from_url(params[:photo][:img_url]) if params[:photo][:img_url].length > 5
     if @photo.save
       flash[:success] = "Photo successfully posted"
     else
@@ -25,6 +25,31 @@ class PhotosController < ApplicationController
   def show
     @photo = Photo.find(params[:id])
     @comment = Comment.new
+  end
+
+  def destroy
+    @photo = Photo.find(params[:id])
+    if @photo.user == current_user
+      @photo.destroy
+      flash[:success] = "Your photo was deleted successfully"
+    else
+      flash[:error] = "You cannot delete another person's photos!"
+    end
+    redirect_to user_photos_path(current_user)
+  end
+
+  def set_as_profile
+    @photo = Photo.find(params[:photo_id])
+    current_user.profile_pic = @photo.photo
+    current_user.save
+    redirect_to user_photos_path(current_user)
+  end
+
+  def set_as_cover
+    @photo = Photo.find(params[:photo_id])
+    current_user.cover_photo = @photo.photo
+    current_user.save
+    redirect_to user_photos_path(current_user)
   end
 
   private

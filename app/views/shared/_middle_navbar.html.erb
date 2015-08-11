@@ -1,7 +1,7 @@
 <header>
 
   <div class = "photo-container">
-    <%= image_tag "hogwarts_small.jpg", class: "img-responsive", id: "cover-photo" %>
+    <%= image_tag @user.cover_photo, class: "img-responsive", id: "cover-photo" %>
   </div>
 
   <div id = "pages-nav">
@@ -9,7 +9,7 @@
 
       <div class = "col-md-4">
         <div class = "profile-pic-container">
-          <%= image_tag "harry_potter_small.jpg", class: "img-responsive" %>
+          <%= image_tag @user.profile_pic, class: "img-responsive" %>
         </div>
         <h1 class = "profile-name">
           <%= @user.name %>

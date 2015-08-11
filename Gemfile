@@ -28,6 +28,8 @@ gem 'paperclip'
 gem 'aws-sdk', '~> 1.6'
 gem 'figaro'
 
+gem 'delayed_job_active_record'
+
 group :production do
   gem 'rails_12factor'
   gem 'pg'

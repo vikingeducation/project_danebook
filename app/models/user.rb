@@ -3,6 +3,19 @@ class User < ActiveRecord::Base
   has_many :likes, dependent: :destroy
   has_many :comments
 
+  # Self Associations
+  has_many :iniiated_friendings, foreign_key: :friender_id,
+  class_name: "Friending"
+  has_many :friended_users,      foreign_key: :iniiated_friendings,
+  source: :friend_recipient                                 
+
+  has_many :received_friendings,  foreign_key: :friend_id,
+  class_name: "Friending"
+  has_many :users_friended_by,    through: :received_friendings,
+  source: :friend_initiator
+
+  #AUTH
+  #                                                                  
   has_secure_password
 
   before_create  :generate_token
@@ -22,5 +35,22 @@ class User < ActiveRecord::Base
     self.auth_token = nil
     generate_token
     save!
+  end
+
+  def friends
+    sql = "
+    SELECT DISTINCT users.*
+    FROM users
+    JOIN friendings
+    ON users.id = friendings.friender_id
+    JOIN friendings AS reflected_friendings
+    ON reflected_friendings.friender_id = friendings.friend_id
+    WHERE reflected_friendings.friender_id = ?
+    "
+
+    # Pass in our sql and the User id that we're expecting
+    # Note that these are a single Array input
+    # because find_by_sql is weird.
+    User.find_by_sql([sql,self.id])
   end
 end

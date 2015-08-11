@@ -1,4 +1,7 @@
-FactoryGirl.define do
+FactoryGirl.define do  factory :friending do
+    
+  end
+
   factory :user do
     first_name {"foo"}
     last_name {"bar"}

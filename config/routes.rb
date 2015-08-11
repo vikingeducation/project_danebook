@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+
   root 'profiles#timeline'
   resources :profiles, only: [:edit, :update, :show] do
     get 'timeline'
@@ -12,6 +13,7 @@ Rails.application.routes.draw do
   resources :comments, only: [:create, :destroy] do
     post 'likes' => 'comments/likes#create'
   end
+  resources :friendings, only: [:create, :destroy]
 
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'

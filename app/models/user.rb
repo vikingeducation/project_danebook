@@ -39,7 +39,8 @@ class User < ActiveRecord::Base
   has_many :users_friended_by,    through: :received_friendings,
                                   source: :friend_initiator
 
-  has_many :photos, dependent: :destroy
+  has_many :photos, -> { order('created_at DESC') },
+            dependent: :destroy
 
   belongs_to :profile_pic, foreign_key: :profile_pic,
                             class_name: "Photo"

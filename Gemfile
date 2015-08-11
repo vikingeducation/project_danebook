@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'
 # Use sqlite3 as the database for Active Record
+gem 'pg'
 
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
@@ -35,6 +36,10 @@ gem "twitter-bootstrap-rails"
 
 # Upload photos
 gem 'paperclip'
+# Setup enviroment variables
+gem "figaro"
+# Setup aws s3
+gem 'aws-sdk', '< 2.0'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -48,7 +53,6 @@ group :development, :test do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 
-  gem 'sqlite3'
 
   gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
   gem "bullet"
@@ -56,7 +60,6 @@ end
 
 group :production do
   gem 'rails_12factor'
-  gem 'pg'
 end
 
 group :test do

@@ -18,4 +18,10 @@ module FriendingsHelper
     num = User.find(params[:user_id]).friends.size
     num > 0 ? "(#{num.to_s})"  : ""
   end
+
+  def friends_widget
+    if @user.friends.any?
+      render partial: 'friend_panel', locals: {friends: @user.friends}
+    end
+  end
 end

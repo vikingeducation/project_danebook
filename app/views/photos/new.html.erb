@@ -1,0 +1,66 @@
+<main class = "container">
+
+  <section id="photo-upload">
+    <header>
+      <div class="row">
+        <div class="col-xs-12">
+          <h2>Photos</h2>
+        </div>
+      </div>
+    </header>
+
+    <div class = "row">
+      <div class="col-md-8 col-md-push-2 text-center">
+
+        <%=  form_for [:user, @photo] do |photo_fields| %>
+
+          <div class="row">
+            <div class="col-xs-12">
+              <h4>Post the URL to a photo on the web...</h4>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-12">
+              <%= photo_fields.text_field :img_url, class: "form-control", placeholder: "https://www.google.com/images/srpr/logo11w.png" %>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-12">
+              <%= photo_fields.submit "Use Web Photo", class: "btn btn-primary btn-lg" %>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-12">
+              <h2>or...</h2>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-12">
+              <h4>Select a photo from your hard drive...</h4>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="row">
+                <div class="col-xs-4 col-xs-push-4">
+                  <%= photo_fields.file_field :photo, class: "form-control btn" %>
+                </div>
+              </div>
+              <%= photo_fields.submit "Upload Photo!", class: "btn btn-success btn-lg" %>
+            </div>
+          </div>
+        <% end -%>
+
+      </div>
+    </div>
+  <div class = "clearfix"></div>
+
+  </section>
+</main>
+
+<br>

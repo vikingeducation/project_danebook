@@ -1,0 +1,52 @@
+<main class = "container">
+
+  <section id="photo-upload">
+    <header>
+      <div class="row">
+        <div class="col-xs-12">
+          <h2>Photos</h2>
+        </div>
+      </div>
+    </header>
+
+    <div class = "row">
+
+      <div class="col-md-6">
+        <div class="row">
+          <div class="col-md-12 text-center">
+            <%= image_tag @photo.photo.url %>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-3 pull-right">
+            <p><%= link_to "Set as Profile", "#" %></p>
+            <p><%= link_to "Set as Cover", "#" %></p>
+            <p><%= link_to "Delete Photo", "#" %></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="row">
+          <div class="col-xs-2">
+            <%=image_tag "user_silhouette_generic.gif", width: "50px", height: "50px" %>
+          </div>
+          <div class="col-xs-10">
+            <p>
+              <%= link_to @photo.user.name, @photo.user %>
+            </p>
+            <p class="date-posted">
+              Posted on <%= @photo.created_at.to_formatted_s(:long) %>
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  <div class = "clearfix"></div>
+
+  </section>
+</main>
+
+<br>

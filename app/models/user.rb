@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
             dependent: :destroy,
             foreign_key: :author_id
 
-  has_many  :likes, 
+  has_many  :likes,
             dependent: :destroy
 
   has_secure_password
@@ -41,6 +41,17 @@ class User < ActiveRecord::Base
   has_many :users_friended_by,    through: :received_friendings,
                                   source: :friend_initiator
 
+  has_attached_file :profile_pic,
+                    styles: { medium: "300x300>",
+                              thumb: "100x100>" },
+                    default_url: "/images/user_silhouette_generic.gif"
+
+  has_attached_file :cover_photo,
+                    styles: { landscape: "800x450>" },
+                    default_url: "/images/hogwarts_small.jpg"
+
+  has_many :photos, dependent: :destroy
+
   # ----------------------- Validations --------------------
 
   validates :first_name, :last_name,
@@ -56,6 +67,12 @@ class User < ActiveRecord::Base
   validates :password,
             :length => { :in => 8..24 },
             :allow_nil => true
+
+  validates_attachment_content_type :profile_pic,
+                                    :content_type => /\Aimage\/.*\Z/
+
+  validates_attachment_content_type :cover_photo,
+                                    :content_type => /\Aimage\/.*\Z/
 
   # ----------------------- Callbacks --------------------
 

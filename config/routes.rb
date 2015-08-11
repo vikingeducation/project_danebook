@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     resource :timeline, only: [:show]
     resource :friendings, :only => [:create, :destroy]
     resources :friends, only: [:index]
-    resources :photos, only: [:index]
+    resources :photos
   end
   resources :posts, only: [:create, :update, :destroy] do
     resources :comments, only: [:create, :update, :destroy], :defaults => { :commentable => 'Post' }

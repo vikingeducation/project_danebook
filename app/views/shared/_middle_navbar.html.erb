@@ -29,7 +29,7 @@
           </li>
 
           <li class ="<%= controller.class == UsersController && controller.action_name == "photos" ? 'active' : '' %>" >
-            <%= link_to "Photos <span>(123)</span>".html_safe, user_photos_path(@user) %>
+            <%= link_to "Photos <span>(#{@user.photos.count})</span>".html_safe, user_photos_path(@user) %>
           </li>
 
           <li class ="<%= controller.class == FriendsController && controller.action_name == "index" ? 'active' : '' %>" >

@@ -1,10 +1,11 @@
 class User < ActiveRecord::Base
 
-  has_one :profile
+  has_one  :profile
   has_many :posts
   has_many :comments
   has_many :likes
-
+  has_many :photos
+  
   #intiating friendships
   has_many :initiated_friendings, :foreign_key => :friender_id,
                                   :class_name => "Friending"

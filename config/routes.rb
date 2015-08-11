@@ -4,8 +4,10 @@ Rails.application.routes.draw do
     resource :profile
     resource :timeline
     resource :posts
+    resources :photos
   end
-  
+
+
   resources :comments, :only => [:create, :destroy]
   resources :friendings, :only => [:create, :destroy]
   

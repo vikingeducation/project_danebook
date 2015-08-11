@@ -1,25 +1,14 @@
 <div class="panel panel-default friends">
   <div class="panel-heading ">
-    <h3 class="panel-title timeline-panel-header">Friends <span class="grey-text">(542)</span></h3>
+    <h3 class="panel-title timeline-panel-header">Friends <span class="grey-text"><%= @user.friends.count %></span></h3>
   </div>
   <div class="panel-body">
-    <div class="row">
-      <div class="col-sm-4">
-        <a href="profile.html" class="thumbnail"><img src="images/user_silhouette_generic.gif" alt=""></a>
-        <a href="profile.html" class="thumbnail"><img src="images/user_silhouette_generic.gif" alt=""></a>
 
-      </div>
       <div class="col-sm-4">
-        <a href="profile.html" class="thumbnail"><img src="images/user_silhouette_generic.gif" alt=""></a>
-        <a href="profile.html" class="thumbnail"><img src="images/user_silhouette_generic.gif" alt=""></a>
-
+        <%= link_to image_tag(Faker::Avatar.image, class: 'thumbnail'), profile_timeline_path(@profile)%>  <a href= class="thumbnail">
       </div>
-      <div class="col-sm-4">
-        <a href="profile.html" class="thumbnail"><img src="images/user_silhouette_generic.gif" alt=""></a>
-        <a href="profile.html" class="thumbnail"><img src="images/user_silhouette_generic.gif" alt=""></a>
 
-      </div>
-    </div> <!-- end row -->
+
     <div class="text-center">
       <a href="#" class="text-center">See More Friends</a>
     </div>

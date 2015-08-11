@@ -4,7 +4,7 @@ class FriendingsController < ApplicationController
 
   def index
     user = User.find(params[:user_id])
-    @friends = user.friends
+    @friends = user.friends.shuffle
   end
 
   def create

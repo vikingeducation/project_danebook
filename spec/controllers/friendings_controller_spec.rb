@@ -64,6 +64,10 @@ describe FriendingsController do
 
       end
 
+      context 'display friends' do
+        #add more tests later
+      end
+
     end
   end
 end

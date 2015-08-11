@@ -21,7 +21,7 @@ module FriendingsHelper
 
   def friends_widget
     if @user.friends.any?
-      render partial: 'friend_panel', locals: {friends: @user.friends}
+      render partial: 'friend_panel', locals: {friends: @user.friends.shuffle}
     end
   end
 end

@@ -32,10 +32,16 @@ module FriendshipsHelper
     elsif friendship.is_a_friend?(current_user)
       content_tag(:div, 'Your Friend', class:['btn', 'btn-default', 'btn-sm', 'pull-right'])
     else
-      link_to("Add Friend", user_friendships_path(:user_id => object_owner.id),
-              class: "btn btn-primary btn-sm pull-right", method: :post)
+      link_to("Add Friend",
+      user_friendships_path(:user_id => friend_to_add(friendship)),
+      class: "btn btn-primary btn-sm pull-right", method: :post)
     end
   end
+
+def friend_to_add(friendship)
+  friendship.friend_initiator == object_owner ?
+  friendship.friend_acceptor.id : friendship.friend_initiator.id
+end
 
 # For Pending Friendships
 

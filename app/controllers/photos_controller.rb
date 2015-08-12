@@ -13,7 +13,13 @@ def new
 end
 
 def create
-  @photo = Photo.new(whitelisted_photo_params)
+  if params[:commit] = "Use Web Photo"
+    @photo = Photo.new(:user_id => params[:user_id])
+    @photo.image_from_url(params[:image_url])
+  else
+    @photo = Photo.new(whitelisted_photo_params)
+  end
+
   if @photo.save
     flash[:success] = "Photo Uploaded"
     redirect_to user_photos_path(current_user)
@@ -27,11 +33,10 @@ def destroy
 
 end
 
-
 private
 
 def whitelisted_photo_params
-  params.require(:photo).permit(:user_id, :image)
+  params.require(:photo).permit(:user_id, :image, :image_url)
 end
 
 end

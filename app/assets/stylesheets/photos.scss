@@ -12,3 +12,38 @@
   height:70px;
   width:300px;
 }
+
+.col-centered{
+  float: none;
+  margin: 0 auto;
+}
+
+.upload-photos-spacer {
+  height: 80px;
+}
+
+#text-padding {
+  padding: 20px;
+
+}
+
+#image_url {
+  width: 100%;
+  height: 200%;
+  border: 2px solid black;
+}
+
+// input placeholder {
+//   color: grey;
+// }
+
+// #photo_image {
+//   width: 100%;
+//   .upload-button button {
+//     height: 50px;
+//   }
+// }
+
+// -webkit-file-upload-button, button {
+// height: 50px;
+// }

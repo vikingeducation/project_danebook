@@ -8,6 +8,15 @@ class Photo < ActiveRecord::Base
   has_many :people_who_like, through: :likes, source: :user
   belongs_to :uploader, class_name: "User", foreign_key: :user_id
   validates :uploader, presence: true
+  has_one :user_profile_photo,
+           class_name: "User",
+           foreign_key: :profile_photo_id,
+           dependent: :nullify
+
+  has_one :user_cover_photo,
+           class_name: "User",
+           foreign_key: :cover_photo_id,
+           dependent: :nullify
 
   def uploaded_on
     "Uploaded on " + self.created_at.strftime("%A %m/%d/%Y")

@@ -266,10 +266,12 @@ feature 'Uploading Photos' do
 
         # His cover and/or profile photos should now be nil.
         # Todo
-        fail
         @new_user.reload
         expect(@new_user.cover_photo).to be_nil
         expect(@new_user.profile_photo).to be_nil
+
+        # His account should still exist, though.
+        expect(@new_user).to_not be_nil
       end
     end
   end

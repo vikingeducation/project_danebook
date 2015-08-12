@@ -1,7 +1,7 @@
 <header>
 
   <div class = "photo-container">
-    <%= image_tag "hogwarts_small.jpg", class: "img-responsive", id: "cover-photo" %>
+    <%= cover_pic_display %>
   </div>
 
   <div id = "pages-nav">
@@ -9,7 +9,7 @@
 
       <div class = "col-md-3">
         <div class = "profile-pic-container">
-          <%= image_tag "harry_potter_small.jpg", class: "img-responsive" %>
+          <%= profile_pic_display %>
         </div>
         <h1 class = "profile-name"><%= User.find(params[:user_id]).full_name %></h1>
       </div>

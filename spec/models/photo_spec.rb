@@ -1,6 +1,7 @@
 require 'rails_helper'
+require 'support/factory_girl'
 
-RSpec.describe Photo, type: :model do
+describe Photo do
 
   let(:photo){build(:photo)}
 

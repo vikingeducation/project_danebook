@@ -24,7 +24,12 @@ class User < ActiveRecord::Base
   has_many :posts,    dependent: :destroy
   has_many :likings,  through: :posts
   has_many :likes,    dependent: :destroy
+
   has_many :photos,   dependent: :destroy
+  belongs_to :profile_photo, class_name: "Photo",
+                            foreign_key: :profile_photo_id
+  belongs_to :cover_photo, class_name: "Photo",
+                            foreign_key: :cover_photo_id
 
   # person who want to be friends
   has_many :initiated_friendings, :foreign_key => :friender_id,

@@ -13,14 +13,15 @@ class PhotosController < ApplicationController
   end
 
   def create
-    if photo_params[:photo_link]
-      @photo = current_user.photos.build
-      @photo.picture_from_url(photo_params[:photo_link])
-    else
-      @photo = current_user.photos.build(photo_params)
-    end
+    # if photo_params[:photo_link]
+    #   @photo = current_user.photos.build
+    #   @photo.picture_from_url(photo_params[:photo_link])
+    # else
+    #   @photo = current_user.photos.build(photo_params)
+    # end
+    @photo = current_user.photos.build(photo_params)
     if @photo.save
-      flash[:success] = "You created a photo"
+      flash[:success] = "You uploaded a photo"
       redirect_to user_photo_path(params[:user_id], @photo)
     else
       flash[:error] = "There was an error saving your photo."

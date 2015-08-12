@@ -15,13 +15,15 @@ class Comment < ActiveRecord::Base
   end
 
   def send_delayed_notification_email
-    Comment.delay.send_notification_email(self.commentable.author.id, self.author.id)
+    Comment.delay.send_notification_email(self.commentable.author.id,
+                                          self.author.id,
+                                          self.commentable.class)
   end
 
-  def self.send_notification_email(to_id, from_id)
+  def self.send_notification_email(to_id, from_id, type)
     user = User.find(to_id)
     from = User.find(from_id)
-    UserMailer.comment_notification(user, from).deliver
+    UserMailer.comment_notification(user, from, type).deliver
   end
 
 end

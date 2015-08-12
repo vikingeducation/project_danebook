@@ -23,13 +23,24 @@ describe Comment do
     #   expect(UserMailer).to receive(:comment_notification)
     #   new_comment = create(:comment)
     # end
-
     it 'should send email if commentable owner is not comment author' do
       new_commentable = create(:post, author: user)
       other_user = create(:user)
+
+      ActionMailer::Base.deliveries.clear
+      Delayed::Job.destroy_all
+
       expect do
          create(:comment, commentable: new_commentable, author: other_user)
       end.to change(Delayed::Job, :count).by(1)
+
+      Delayed::Worker.new.work_off
+      expect(ActionMailer::Base.deliveries.first.to).to eq([user.email])
+      expect(
+        ActionMailer::Base.deliveries.first.subject
+      ).to eq("#{other_user.full_name} has commented on your Post!")
+
+      expect(ActionMailer::Base.deliveries.first.from).to eq(['danebook@shadefinale.com'])
     end
 
     it 'should not send an email if commentable owner is comment author' do
@@ -42,13 +53,26 @@ describe Comment do
     it 'should send an email if photo owner is comment author' do
       new_photo = create(:photo, author: user)
       other_user = create(:user)
+
+      ActionMailer::Base.deliveries.clear
+      Delayed::Job.destroy_all
+
       expect do
          create(:comment, commentable: new_photo, author: other_user)
       end.to change(Delayed::Job, :count).by(1)
+
+      Delayed::Worker.new.work_off
+      expect(ActionMailer::Base.deliveries.first.to).to eq([user.email])
+      expect(
+        ActionMailer::Base.deliveries.first.subject
+      ).to eq("#{other_user.full_name} has commented on your Photo!")
+
+      expect(ActionMailer::Base.deliveries.first.from).to eq(['danebook@shadefinale.com'])
     end
 
     it 'should not send an email if photo owner is comment author' do
       new_photo = create(:photo, author: user)
+
       expect do
          create(:comment, commentable: new_photo, author: user)
       end.to change(Delayed::Job, :count).by(0)

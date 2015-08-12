@@ -38,27 +38,17 @@ feature 'email sent when commenting on commentable' do
       visit root_path
       jim_bob_user = login_user
 
-
       create(:friending, user: @new_user, friend: jim_bob_user)
       create(:friending, user: jim_bob_user, friend: @new_user)
 
       visit user_photo_path(user_id:@new_user.id, id: @new_photo.id)
 
-
-
       # Then, Jim comments on Joe's Photo.
-
       fill_in "comment_body", with: @jim_text
 
+      # Click the button and expect an email to be sent.
       expect{click_button "Comment"}.to change(Delayed::Job, :count).by(1)
-      Delayed::Worker.new.work_off
 
-      expect(ActionMailer::Base.deliveries.last.to).to eq([@new_user.email])
-      expect(
-        ActionMailer::Base.deliveries.last.subject
-      ).to eq("#{jim_bob_user.full_name} has commented on your Photo!")
-
-      expect(ActionMailer::Base.deliveries.last.from).to eq(['danebook@shadefinale.com'])
     end
 
     it 'should not send an email if a user comments on his/her own photo' do

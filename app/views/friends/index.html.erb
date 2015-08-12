@@ -1,0 +1,33 @@
+
+<main>
+
+  <!-- Profile Header -->
+
+  <%= render partial: "shared/menu", :locals => { :active => 'Friends', user: @user } %>
+
+
+  <!-- Main Content -->
+
+  <div class="container">
+
+    <div class="row test">
+
+      <div class="col-xs-2 col-xs-offset-5">
+
+        <h3>Friends</h3>
+
+      </div>
+
+
+
+    </div>
+
+    <div class="row main-content">
+      <% @friends.each do |friend| %>
+      <%= render partial: "friendings/friend_card" , locals: {friend: friend}%>
+      <% end %>
+    </div>
+
+  </div>
+
+</main>

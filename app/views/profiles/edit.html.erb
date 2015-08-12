@@ -3,7 +3,7 @@
 
   <!-- Profile Header -->
 
-  <%= render partial: "profiles/menu", :locals => { :active => 'About' }  %>
+  <%= render partial: "shared/menu", :locals => { :active => 'About' }  %>
 
   <!-- /profile header -->
 
@@ -107,37 +107,26 @@
       <div class="col-md-6">
 
         <div class="row row-last">
-
-          <div class="col-xs-12">
-
-            <h3>Words to Live By</h3>
-
-          </div>
-
           <div class="col-xs-12 ">
 
+            <h3>Words to Live By</h3>
             <%= f.text_area :wordsby, :class => "form-control"%>
 
-          </div>
-
-          <div class="col-xs-12">
-
             <h3>About Me</h3>
-
-          </div>
-
-          <div class="col-xs-12">
             <%= f.text_area :wordsabout, :class => "form-control" %>
+      
+            <h3>Add an avatar photo</h3>
+            <%= f.file_field :avatar %>
+
+            <h3>Add a cover photo</h3>
+            <%= f.file_field :cover %>
           </div>
-
         </div>
-
       </div>
 
       <div class="col-xs-8 col-xs-offset-2 btn-save-changes">
           <%= f.submit "Save Changes", class: 'btn btn-lg btn-primary' %>
           <% end %>
-
       </div>
 
       <div class="col-xs-2">

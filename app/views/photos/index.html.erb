@@ -1,0 +1,36 @@
+
+  <main>
+
+  <!-- Profile Header -->
+
+  <%= render partial: "shared/menu", :locals => { :active => 'Timeline', :profile => @profile } %>
+
+  <!-- Photos Header -->
+
+  <div class="container">
+    <div class="row test">
+      <div class="col-xs-2 col-xs-offset-5">
+        <h3>Photos</h3>
+      </div>
+      <div class="col-xs-5 edit-btn">
+      <% if current_user.id == @profile.user_id %>
+      <%= link_to "Add Photo", new_user_photo_path(@profile.user_id), class: "btn btn-primary pull-right" %>
+      <% end %>
+      </div>
+    </div>
+
+    <%= @photos.each do |photo| %>
+    <div class="row main-content">
+      <div class="col-sm-3">
+        <div class="photo-container">
+          <%= image_tag photo.url.expiring_url(10)%>
+
+          <div class="photo-overlay">
+            <strong><%= photo.created_at%></strong>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% end %>
+
+  </main>

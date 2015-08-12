@@ -1,4 +1,7 @@
-FactoryGirl.define do  factory :friending do
+FactoryGirl.define do  factory :photo do
+    
+  end
+  factory :friending do
     
   end
 
@@ -12,10 +15,6 @@ FactoryGirl.define do  factory :friending do
     gender ["Female","Male"].sample
     password_digest "password"
 
-    # after(:create) do
-    #   create :profile
-    #   profile.user = user
-    # end
   end
 
   factory :profile do

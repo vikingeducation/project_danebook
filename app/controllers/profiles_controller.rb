@@ -38,7 +38,9 @@ class ProfilesController < ApplicationController
                                     :livesincountry,
                                     :phone,
                                     :wordsby,
-                                    :wordsabout
+                                    :wordsabout,
+                                    :avatar,
+                                    :cover
                                     )
 
   end

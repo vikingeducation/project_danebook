@@ -32,14 +32,14 @@ class ApplicationController < ActionController::Base
 
   def require_login
    unless signed_in_user?
-     flash[:error] = "Not authorized. Please sign in."
+     flash[:error] = "Please sign in first."
      redirect_to login_path
    end
   end
 
   def require_current_user
    unless User.find(params[:user_id]) == current_user
-     flash[:error] = "Sorry! Viewing not authorized."
+     flash[:error] = "Viewing not authorized."
    end
   end
 

@@ -1,0 +1,52 @@
+<div class = "container">
+
+    <div class = "row">
+
+      <div class = "col-sm-12 header-photo">
+
+        <div class = "col-sm-3 profile-name">
+
+          <h1><%= link_to @profile, user_profile_path(@profile.user_id), :class => "profile-name"%></h1>
+
+        </div>
+        <%=image_tag @profile.avatar.url(:thumb)%>
+
+     
+
+      </div>
+
+    </div>
+
+    <div class = "row header-nav">
+
+      <div class = "col-xs-8 col-xs-offset-4 centered-pills">
+
+        <ul class="nav nav-pills header-nav-pills">
+          <li role="presentation" <% if active == 'Timeline' %> class="active"<% end %>>
+            <%= link_to "Timeline", user_posts_path(@profile.user_id) %>
+          </li>
+
+          <li role="presentation" <% if active == 'About' %> class="active"<% end %>>
+            <%= link_to "About", user_profile_path(@profile) %>
+          </li>
+          
+          <li role="presentation" <% if active == 'Photos' %> class="active"<% end %>>
+            <%= link_to "Photos", user_photos_path %>
+          </li>
+
+          <li role="presentation" <% if active == 'Friends' %> class="active"<% end %>>
+            <%= link_to "Friends", user_friends_path(@profile.user_id)%>
+          </li>
+
+        </ul>
+        <% if current_user.id==(@profile.user_id) %>
+        <section class="col-md-13 pull-right edit-profile navbar-text">
+       <%= link_to "Edit Profile", edit_user_profile_path(:id => @profile.id, :user_id => @profile.user.id) %>
+        
+        </section>
+        <% end %>
+      </div>
+
+    </div>
+
+</div>

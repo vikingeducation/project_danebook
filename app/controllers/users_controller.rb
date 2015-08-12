@@ -14,7 +14,8 @@ class UsersController < ApplicationController
   def friends
     @user=User.find(params[:id])
     @friends=@user.friends
-    redirect_to user_friends_path(@user,@friends)
+    render :friends
+    #redirect_to user_friends_path(@user, @friends)
 
 
   end

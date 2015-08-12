@@ -1,4 +1,6 @@
 source 'https://rubygems.org'
+#Mail feature
+gem 'delayed_job_active_record'
 
 
 ruby '2.2.1'
@@ -62,13 +64,14 @@ end
 
 group :development do
   gem 'guard-rspec', require: false
+  gem 'letter_opener'
 end
 
 gem 'pg'
 gem 'bcrypt', '~> 3.1.7'
 
 group :production do
-
+  gem 'faker'
   gem 'rails_12factor'
 
 end

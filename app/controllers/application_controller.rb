@@ -57,4 +57,5 @@ class ApplicationController < ActionController::Base
   def ref
     URI(request.referer).path
   end
+
 end

@@ -20,7 +20,7 @@ module ApplicationHelper
   def likes_count_message(commentable_type)
     str = ""
     likes = commentable_type.likes
-    like_count = likes.size
+    like_count = likes.count
     if like_count > 3
       likes[0..2].each do |like|
         str += link_to like.user.name, user_path(like.user.id) + ", "
@@ -40,7 +40,7 @@ module ApplicationHelper
   end
 
   def comment_likes_message(commentable)
-    likes_count = commentable.likes.size
+    likes_count = commentable.likes.count
     case likes_count
     when 0
       "Be the first one to like this #{commentable.class.to_s.downcase}!"

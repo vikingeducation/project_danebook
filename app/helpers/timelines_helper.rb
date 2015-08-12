@@ -22,5 +22,9 @@ module TimelinesHelper
     end
   end
 
+  def profile_pic_or_generic(post)
+    image_tag post.author.profile_pic ? post.author.profile_pic.data.url(:thumb) : "user_silhouette_generic.gif"
+  end
+
 
 end

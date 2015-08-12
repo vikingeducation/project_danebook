@@ -24,12 +24,12 @@ class User < ActiveRecord::Base
   has_secure_password
 
   # When acting as the initiator of the friending
-  has_many :initiated_friendings, foreign_key: :friender_id,
+  has_many :requests,             foreign_key: :friender_id,
                                   class_name: "Friending",
                                   dependent: :destroy
 
-  has_many :friends,              through: :initiated_friendings,
-                                  source: :friend_recipient
+  has_many :friends,              through: :requests,
+                                  source: :target
 
   # When acting as the recipient of the friending
   has_many :received_friendings,  foreign_key: :friend_id,
@@ -37,7 +37,7 @@ class User < ActiveRecord::Base
                                   dependent: :destroy
 
   has_many :users_friended_by,    through: :received_friendings,
-                                  source: :friend_initiator
+                                  source: :friender
 
   has_many :photos, -> { order('created_at DESC') },
             dependent: :destroy

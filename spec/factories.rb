@@ -49,8 +49,8 @@ FactoryGirl.define do
   end
 
   factory :friending do
-    association     :friend_initiator,   :factory => :user
-    association     :friend_recipient, :factory => :user
+    association     :friender,    :factory => :user
+    association     :target,      :factory => :user
   end
 
 

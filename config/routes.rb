@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :friendings, :only => [:index, :create, :destroy]
   resource :session, :only => [:create, :destroy]
   resources :comments, :only => [:create, :destroy]
+  resource :search, :only => [:show]
 
   get "login" => "users#new"
   delete "logout" => "sessions#destroy"

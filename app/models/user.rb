@@ -68,6 +68,16 @@ class User < ActiveRecord::Base
     self.first_name + " " + self.last_name
   end
 
+  #for search
+  def self.search(query)
+    if query
+      where("first_name LIKE ? OR last_name LIKE ?",
+                "%#{query}%", "%#{query}%")
+    else
+      where("")
+    end
+  end
+
 
   #sign in cookies!
   def generate_token

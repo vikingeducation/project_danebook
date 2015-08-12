@@ -1,14 +1,17 @@
 FactoryGirl.define do
 
-  #factory :user, aliases: [:author, :liker, :friend_initiator, :friend_recipient] do
-  #  first_name  "Foo"
-  #  sequence(:last_name) { |n| "Bar#{n}" }
-  #  email       "#{first_name}@#{last_name}.com"
-  #end
-
-  #factory :post do
-  #  title "Foo Title"
-  #  author
-  #end
+  factory :profile do
+    first_name            "Foo"
+    sequence(:last_name)  { |n| "Bar#{n}" }
+    gender                "Male"
+    birthdate             20.years.ago
+    college               "Foo University"
+    hometown              "Fooville"
+    currently_lives       "Foo City"
+    telephone             "123-456-7890"
+    words_to_live_by      "Foo quote."
+    description           "Foo biography."
+    user
+  end
 
 end

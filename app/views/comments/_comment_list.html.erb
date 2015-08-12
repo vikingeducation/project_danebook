@@ -22,6 +22,11 @@
 
   </div>
 
+  <div class="like-btn pull-right">
+
+    <%= link_to "Delete", user_comment_path(@user.id, c.id), :method => :delete if c.user_id == current_user.id %>
+  </div>
+
 </div>
 
 <hr>

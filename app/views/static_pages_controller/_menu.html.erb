@@ -22,10 +22,10 @@
 
         <ul class="nav nav-pills header-nav-pills">
           <li role="presentation" <% if active == 'Timeline' %> class="active"<% end %>><%= link_to "Timeline", timeline_path %></li>
-          <li role="presentation" <% if active == 'About' %> class="active"<% end %>><%= link_to "About", about_path %></li>
+          <li role="presentation" <% if active == 'About' %> class="active"<% end %>><%= link_to "About", user_path %></li>
 
           <li role="presentation" <% if active == 'Photos' %> class="active"<% end %>><%= link_to "Photos", photos_path %></li>
-          <li role="presentation" <% if active == 'Friends' %> class="active"<% end %>><%= link_to "Friends", friends_path %></li>
+          <li role="presentation" <% if active == 'Friends' %> class="active"<% end %>><%= link_to "Friends", friend_path %></li>
         </ul>
       </div>
 

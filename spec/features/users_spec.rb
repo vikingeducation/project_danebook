@@ -144,6 +144,7 @@ feature "User is logged in" do
     user = create(:user)
     user.profile = create(:profile)
     visit user_path(user)
+    save_and_open_page
   end
 
   scenario "user clicks timeline link" do

@@ -1,10 +1,9 @@
-<%= render partial: "static_pages_controller/navbar" %>
+<%= render partial: "static_pages_controller/navbar", :locals => {first_name: current_user.first_name } %>
 <main>
 
   <!-- Profile Header -->
 
-  <%= render partial: "static_pages_controller/menu", :locals => { :active => 'Friends' } %>
-
+  <%= render partial: "static_pages_controller/menu", :locals => { :active => 'Friends', first_name: @user.first_name, last_name: @user.last_name } %>
 
   <!-- /profile header -->
 

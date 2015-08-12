@@ -20,35 +20,87 @@ module LikesHelper
                                               }), method: :post)
   end
 
+  # def show_like_count(object)
+  #   like_count = Like.where(:likeable_id => object.id).count
+  #   likers = Like.select(:user_id).where(:likeable_id => object.id)
+  #   if like_count == 0
+  #     return "Be the first to like this #{object.class}"
+  #   elsif like_count == 1
+  #     if current_user_like?(likers)
+  #       str = "You"
+  #     else
+  #       str = "#{User.find(likers.first.user_id).full_name}"
+  #     end
+  #   elsif like_count > 1 && like_count < 4
+  #     str = up_to_4_likers(likers)
+  #   else
+  #     str = up_to_4_likers(likers) + " and #{like_count} others"
+  #   end
+  #   str += " liked this #{object.class}"
+  # end
+
   def show_like_count(object)
-    like_count = Like.where(:likeable_id => object.id).count
-    likers = Like.select(:user_id).where(:likeable_id => object.id)
-    if like_count == 0
-      return "Be the first to like this #{object.class}"
-    elsif like_count == 1
-      str = "#{User.find(likers.first.user_id).full_name}"
-    elsif like_count > 1 && like_count < 4
-      str = up_to_4_likers(likers)
-    else
-      str = up_to_4_likers(likers) + " and #{like_count} others"
-    end
-    str += " liked this #{object.class}"
+    current_user_like_or_other(object)
   end
 
-  def up_to_4_likers(likers)
+  def current_user_like_or_other(object)
+    likers = Like.select(:user_id).where(:likeable_id => object.id)
+    if likers.include?(current_user.id)
+      show_like_count_current_user(object, likers)
+    else
+      show_like_count_no_current_user(object, likers)
+    end
+  end
+
+  def show_like_count_current_user(object, likers)
     str = ""
-    likers.each_with_index do |liker, i|
-      if liker[i] == liker[-1]
-        str += ", and #{User.find(liker.user_id).full_name}"
-      elsif i == 1
-        str += "#{User.find(liker.user_id).full_name}"
-      else
-        str += ", #{User.find(liker.user_id).full_name}"
+    like_count = likers.count
+    if like_count == 0
+      return "Be the First to Like This #{object.class}"
+    elsif like_count == 1
+      return "You liked this #{object.class}"
+    elsif like_count > 1 && like_count < 4
+      return up_to_4_likers(likers, true) + " liked this #{object.class}"
+    else
+      return up_to_4_likers(likers, true) + " and #{like_count - 3} 1 others liked this #{object.class}"
+    end
+  end
+
+  def show_like_count_no_current_user(object, likers)
+    str = ""
+    like_count = likers.count
+    if like_count == 0
+      return "Be the First to Like This #{object.class}"
+    elsif like_count == 1
+      return "#{User.find(likers[0].user_id).full_name} liked this #{object.class}"
+    elsif like_count > 1 && like_count < 4
+      return up_to_4_likers(likers) + " liked this #{object.class}"
+    else
+      return up_to_4_likers(likers) + " and #{like_count - 3} others liked this #{object.class}"
+    end
+  end
+
+
+  def up_to_4_likers(likers, c_user = false)
+    str = ""
+    if c_user
+      str = "You"
+      likers.each do |liker|
+        binding.pry
+        str += ", #{User.find(liker.user_id).full_name}" unless liker.user_id == current_user.id
+      end
+    else
+      likers.each_with_index do |liker, i|
+        if i == 0
+          str += "#{User.find(liker.user_id).full_name}"
+        elsif i > 3
+          break
+        else
+          str += ", #{User.find(liker.user_id).full_name}"
+        end
       end
     end
     str
   end
-
-
 
 end

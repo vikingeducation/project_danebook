@@ -27,6 +27,8 @@ gem 'twitter-bootstrap-rails'
 
 gem 'faker'
 
+gem 'paperclip'
+
 gem 'font-awesome-rails'
 
 # Use ActiveModel has_secure_password
@@ -45,6 +47,7 @@ group :development, :test do
   gem 'guard'
   gem 'guard-rspec'
   gem 'factory_girl_rails', '~> 4.0'
+  gem 'pry-rails'
 
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'

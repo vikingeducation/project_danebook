@@ -46,4 +46,8 @@ class UsersController < ApplicationController
     params.require(:user).permit(:id, :first_name, :last_name, :email, :password, :password_confirmation, :birthday, :gender)
   end
 
+  def friends_with?(user)
+    self.friendships.where(:friend_id => user.id)
+  end
+
 end

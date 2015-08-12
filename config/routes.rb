@@ -16,11 +16,12 @@ Rails.application.routes.draw do
     resources :comments
   end
 
+  resources :photos
   resources :timelines, :only => [:show]
+  resources :friends, :only => [:show]
   resources :profiles
-
-
   resource :session, :only => [:new, :create, :destroy]
+  resources :friendships, :only => [:create, :destroy]
 
   get "login" => "sessions#new"
 

@@ -33,7 +33,7 @@
 
           <div class="navbar-text navbar-right navbar-user">
 
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><strong><%= first_name %></strong><span class="caret"></span></a>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><strong><%= current_user.first_name %></strong><span class="caret"></span></a>
               <ul class="dropdown-menu">
                 <li><%= link_to "Logout", logout_path %></li>
               </ul>

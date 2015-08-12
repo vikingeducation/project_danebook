@@ -1,7 +1,5 @@
 # spec/factories.rb
-FactoryGirl.define do  factory :friending do
-    
-  end
+FactoryGirl.define do
 
   # A block defining the attributes of a model
   # The symbol is how you will later call it
@@ -18,10 +16,24 @@ FactoryGirl.define do  factory :friending do
     user
   end
 
-  factory :comment do
-    sequence(:body) { |n| "comment #{n}"}
+  factory :post_comment do
+    sequence(:body) { |n| "post comment #{n}"}
     user
-    post
+    association :commentable, :factory => :post
+  end
+
+  factory :photo do
+    sequence(:user_photo_file_name) { |n| "Photo#{n}"}
+    user_photo_content_type "image/jpeg"
+    user_photo_file_size 1000
+    user_photo_updated_at DateTime.now
+    user
+  end
+
+  factory :photo_comment do
+    sequence(:body) { |n| "photo comment #{n}"}
+    user
+    association :commentable, :factory => :photo
   end
 
   factory :post_like, class: "Like" do
@@ -42,6 +54,11 @@ FactoryGirl.define do  factory :friending do
     sequence(:current_lives) { |n| "city #{n}" }
     gender ["male", "female"].shuffle[0]
     user
+  end
+
+  factory :friending do
+    association :friend_initiator, :factory => :user
+    association :friend_recipient, :factory => :user
   end
 
 end

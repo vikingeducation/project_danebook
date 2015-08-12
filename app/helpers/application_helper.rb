@@ -4,7 +4,8 @@ module ApplicationHelper
     if likable.liked_by?(current_user)
       str = link_to("Unlike", 
                     like_path(likable.get_id_of_the_like_by(current_user)), 
-                    method: :delete)
+                    method: :delete, 
+                    style: "color:red;")
     else
       str = link_to("Like", 
                     likes_path(user_id: current_user.id,
@@ -22,7 +23,7 @@ module ApplicationHelper
       str = link_to("Unfriend Me", 
                     friending_path(id: friend.id),
                     method: :delete, 
-                    class: "btn btn-primary")
+                    class: "btn btn-danger")
     else
       str = link_to("Friend Me", 
                     friendings_path(id: friend.id),

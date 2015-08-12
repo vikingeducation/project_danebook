@@ -1,5 +1,7 @@
 <div class="col-md-3 col-xs-6 photo">
-  <%= image_or_linked_image(photo, @user) %>
+	<div class="image-container">
+  	<%= image_or_linked_image(photo, @user) %>
+  </div>
   <div class="upload-date">
     <p>Uploaded <%= photo.data_updated_at.to_formatted_s(:long) %></p>
   </div>

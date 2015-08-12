@@ -6,11 +6,13 @@ class Photo < ActiveRecord::Base
 
   belongs_to :user
 
-  has_many :users_with_profile_pics, foreign_key: :profile_pic,
-                                      class_name: "User"
+  has_many :users_with_profile_pics,  foreign_key: :profile_pic,
+                                      class_name: "User",
+                                      dependent: :nullify
 
-  has_many :users_with_cover_photos, foreign_key: :cover_photo,
-                                      class_name: "User"
+  has_many :users_with_cover_photos,  foreign_key: :cover_photo,
+                                      class_name: "User",
+                                      dependent: :nullify
 
   has_attached_file :data,
                     styles: { medium: "200x200>",
@@ -18,7 +20,8 @@ class Photo < ActiveRecord::Base
                               cover: "800x450>" },
                     default_url: "/images/icon_photo_small.png"
 
-  process_in_background :data, processing_image_url: "https://s3.amazonaws.com/davidmeza/animation_processing.gif"
+  process_in_background :data,
+                        processing_image_url: "https://s3.amazonaws.com/davidmeza/animation_processing.gif"
 
   include Likeable
 

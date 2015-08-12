@@ -11,18 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150811140142) do
+ActiveRecord::Schema.define(version: 20150812022645) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "comments", force: :cascade do |t|
-    t.integer  "author_id",        null: false
-    t.string   "body",             null: false
-    t.integer  "commentable_id",   null: false
-    t.string   "commentable_type", null: false
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.integer  "author_id",                    null: false
+    t.string   "body",                         null: false
+    t.integer  "commentable_id",               null: false
+    t.string   "commentable_type",             null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.integer  "number_of_likes",  default: 0, null: false
   end
 
   add_index "comments", ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id", using: :btree
@@ -48,6 +49,7 @@ ActiveRecord::Schema.define(version: 20150811140142) do
     t.integer  "friender_id", null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.string   "status"
   end
 
   add_index "friendings", ["friend_id", "friender_id"], name: "index_friendings_on_friend_id_and_friender_id", unique: true, using: :btree
@@ -63,22 +65,25 @@ ActiveRecord::Schema.define(version: 20150811140142) do
   add_index "likes", ["likeable_id", "likeable_type", "user_id"], name: "like_index", unique: true, using: :btree
 
   create_table "photos", force: :cascade do |t|
-    t.string   "data_file_name",    null: false
-    t.string   "data_content_type", null: false
-    t.integer  "data_file_size",    null: false
-    t.datetime "data_updated_at",   null: false
-    t.integer  "user_id",           null: false
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.string   "data_file_name",                null: false
+    t.string   "data_content_type",             null: false
+    t.integer  "data_file_size",                null: false
+    t.datetime "data_updated_at",               null: false
+    t.integer  "user_id",                       null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
     t.string   "img_url"
+    t.boolean  "data_processing"
+    t.integer  "number_of_likes",   default: 0, null: false
   end
 
   create_table "posts", force: :cascade do |t|
-    t.text     "body",              null: false
-    t.integer  "author_id",         null: false
-    t.integer  "recipient_user_id", null: false
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.text     "body",                          null: false
+    t.integer  "author_id",                     null: false
+    t.integer  "recipient_user_id",             null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.integer  "number_of_likes",   default: 0, null: false
   end
 
   create_table "profiles", force: :cascade do |t|

@@ -32,7 +32,7 @@ module ApplicationHelper
       likes.each_with_index do |like, index|
         str += link_to like.user.name, user_path(like.user.id)
         str += ", " unless index >= like_count - 2
-        str += ", and" if index == like_count - 2
+        str += ", and " if index == like_count - 2
       end
       str += like_count == 1 ? " likes this" : " like this"
     end

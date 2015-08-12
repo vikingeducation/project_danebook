@@ -13,8 +13,9 @@
     <div class="panel-body">
       <div class="row about-info">
         <% @user.photos.each do |photo| %>
-        <div class="col-md-4">
-        <%= image_tag photo.url(:medium) %> 
+        <div class="col-md-4 picture-box">
+          <%= image_tag photo.picture.url(:medium) %>
+          <div class="row remove-picture">remove photo</div>
         </div>
         <% end %>
       </div>

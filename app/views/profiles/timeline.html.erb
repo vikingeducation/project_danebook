@@ -11,7 +11,7 @@
           <%= render partial: 'profiles/timeline_partials/friends_panel' %>
         </div> <!--col-md -4 -->
         <div class="col-md-8">
-          <% if current_user && current_user.profile == @profile  %>
+          <% if current_user %>
           <%= render partial: 'profiles/timeline_partials/new_post' %>
           <% end %>
           <% @posts.each do |p| %>

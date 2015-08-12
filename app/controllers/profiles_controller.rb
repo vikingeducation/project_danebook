@@ -49,7 +49,7 @@ class ProfilesController < ApplicationController
 
   def profile_params
     params.require(:profile).permit(:college, :hometown, :current_town,
-      :telephone, :words_to_live_by, :about_me, :profile_pic)
+      :telephone, :words_to_live_by, :about_me, :profile_pic, :cover_pic)
   end
 
 end

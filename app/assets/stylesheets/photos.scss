@@ -1,3 +1,15 @@
 // Place all the styles related to the photos controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.picture-box{
+  width: 350px;
+  height: 375px;
+}
+
+.remove-picture {
+   position: absolute;
+   bottom: 0;
+   left: 45px
+}

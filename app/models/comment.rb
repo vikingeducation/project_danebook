@@ -7,4 +7,7 @@ class Comment < ActiveRecord::Base
   has_many :likes, :as => :liked, :dependent => :destroy
   has_many :likers, :through => :likes, :source => :user
 
+
+  validates :body, :presence => true, :length => { in: 3..140 }
+
 end

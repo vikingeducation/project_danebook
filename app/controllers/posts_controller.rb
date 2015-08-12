@@ -7,7 +7,11 @@ class PostsController < ApplicationController
     @posts = Post.where("user_id = ?", params[:user_id]).
                   includes(:likes, :comments => [:likes, :user])
     @post = Post.new
+
+    # currently doubling as timeline,
+    # will separate to timeline controller
     @user = User.find(params[:user_id])
+    @photos = @user.photos
     @profile = @user.profile
   end
 

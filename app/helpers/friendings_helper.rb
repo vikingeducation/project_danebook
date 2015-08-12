@@ -8,7 +8,7 @@ module FriendingsHelper
     # friended ||= current_user.users_friended_by.
     #                           find_by_id(friend_id)
     if friended
-      link_to "Remove Friend", friending_path(friended.id, :friend_id => friend_id), method: :delete, class: "btn btn-info btn-lg", id: "friending"
+      link_to "Remove Friend", friending_path(friended.id, :friend_id => friend_id), method: :delete, class: "btn btn-default btn-lg", id: "friending"
     else
       link_to "Friend Me", friendings_path(:friend_id => friend_id), method: :post, class: "btn btn-info btn-lg", id: "friending"
     end

@@ -3,18 +3,9 @@
     <h4>Photos</h4>
   </header>
 
-  <% 9.times do |num| %>
-    <div class="col-xs-4 photo">
-      <a href="#">
-        <%=image_tag "icon_photo_small.png" %>
-      </a>
-      <div class="upload-date">
-        <p>Uploaded June 15, 2015</p>
-      </div>
-    </div>
-  <% end %>
+  <%= render @photos %>
 
-    <div class="col-md-12 more-photos">
-      <%= link_to "See more photos!", photos_path %>
-    </div>
+  <div class="col-md-12 more-photos">
+    <%= link_to "See more photos!", user_photos_path(params[:user_id]) %>
+  </div>
 </section>

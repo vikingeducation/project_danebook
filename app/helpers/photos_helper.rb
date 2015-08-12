@@ -24,4 +24,10 @@ module PhotosHelper
       image_tag "hogwarts_small.jpg", class: "img-responsive", id: "cover-photo"
     end
   end
+
+  def photos_widget
+    if @photos.any?
+      render partial: 'photo_panel'
+    end
+  end
 end

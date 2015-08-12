@@ -4,6 +4,10 @@ group :production do
   gem 'pg'
 end
 
+gem 'paperclip'
+gem 'aws-sdk','<2.0'
+gem 'figaro'
+
 gem 'faker'
 
 gem "twitter-bootstrap-rails"

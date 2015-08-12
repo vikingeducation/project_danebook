@@ -37,12 +37,12 @@
                   <h5>About</h5>
                 </div>
               <% end %>
-              <a href="photos.html">
+              <%= link_to user_photos_path(@profile.user) do  %>
                 <div class="col-md-3">
-                  <h5>Photos (123)</h5>
+                  <h5>Photos</h5>
                 </div>
-              </a>
-              <%= link_to friendings_path(:user_id => @profile.user.id) do  %>
+              <% end %>
+              <%= link_to user_friendings_path(@profile.user) do  %>
                 <div class="col-md-3">
                   <h5>Friends</h5>
                 </div>

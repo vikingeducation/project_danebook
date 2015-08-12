@@ -2,22 +2,19 @@
   <div class="col-xs-12">
     <div class="row">
       <div class="col-xs-12 selected post-topbar">
-        <div class="center"> Photos (123) (Copied Text Area)</div>
+        <div class="center"> Friends (<%= @profile.user.num_of_friends %>) </div>
       </div>
     </div>
 
     <div class="row timeline-photos">
-      <div class="col-xs-4"><a href="#"><%= image_tag "default_photo.png" %>Ron Weasley</a></div>
-      <div class="col-xs-4"><a href="#"><%= image_tag "default_photo.png" %>Ginny Weasley</a></div>
-      <div class="col-xs-4"><a href="#"><%= image_tag "default_photo.png" %>Hermione Granger</a></div>
-      <div class="col-xs-4"><a href="#"><%= image_tag "default_photo.png" %>Albus Dumbledore</a></div>
-      <div class="col-xs-4"><a href="#"><%= image_tag "default_photo.png" %>Severus Snape</a></div>
-      <div class="col-xs-4"><a href="#"><%= image_tag "default_photo.png" %>Fred Weasley</a></div>
+      <% @profile.user.friends.each do |friend| %>
+        <div class="col-xs-4"><a href="#"><%= image_tag "default_photo.png" %> <%= friend.user.full_name %> </a></div>
+        <% end %>
     </div>
 
     <div class="row">
       <div class="col-xs-12">
-        <div class="center"><a href="friends.html">See More Friends</a></div>
+        <div class="center"><%= link_to "See More Friends", user_friendings_path(@profile.user) %></div>
       </div>
     </div>
 </div>

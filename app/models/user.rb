@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
   has_many :likes
   has_many :comments
   has_many :friends
+  has_many :photos
 
   #When acting as the initiator
   # has_many :initiated_friendings, :foreign_key => :friender_id,
@@ -45,6 +46,10 @@ class User < ActiveRecord::Base
 
   def self.find_user_by_keyword(string)
     self.all.where("first_name LIKE ? OR last_name LIKE ?", "#{string}%", "#{string}%")
+  end
+
+  def num_of_friends
+    self.friends.count
   end
 
   private

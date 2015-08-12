@@ -1,5 +1,7 @@
 class CommentsController < ApplicationController
 
+  before_filter :store_referer, :only => [:create, :destroy]
+
   def new
     
     @comment = Comment.new
@@ -16,7 +18,8 @@ class CommentsController < ApplicationController
       flash[:error] = "Failed to create comment"
     end
 
-    redirect_to user_posts_path(params[:comment][:comment_reciever])
+    # redirect_to user_posts_path(params[:comment][:comment_reciever])
+    redirect_to referer
   
   end
 
@@ -29,7 +32,8 @@ class CommentsController < ApplicationController
     else
       flash[:error] = "Failed to delete comment"
     end
-    redirect_to user_posts_path(user_id)
+    # redirect_to user_posts_path(user_id)
+    redirect_to referer
   
   end
 
@@ -37,5 +41,13 @@ class CommentsController < ApplicationController
 
     def whitelisted_comment_params
       params.require(:comment).permit(:body, :user_id, :commentable_id, :commentable_type)
+    end
+
+    def store_referer
+      session[:referer] = URI(request.referer).path
+    end
+
+    def referer
+      session.delete(:referer)
     end
 end

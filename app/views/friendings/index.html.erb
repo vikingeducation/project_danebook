@@ -27,7 +27,7 @@
                 </div>
                 <% if current_user.id == @profile.user_id%>
                   <div class="col-md-2 col-md-offset-1">
-                    <%= link_to "Unfriend", friending_path(friend.user), method: :delete, :class=>"btn btn-primary"  %>
+                    <%= link_to "Unfriend", user_friending_path(@profile.user, friend.user), method: :delete, :class=>"btn btn-primary"  %>
                   </div>
                 <% end %>
       

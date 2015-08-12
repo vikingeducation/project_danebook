@@ -25,7 +25,8 @@ module ApplicationHelper
 
   def user_like_info(object)
     if object.likes.length > 0
-      string = '<div class="row"><div class="col-xs-12">'
+      # string = '<div class="row"><div class="col-xs-12">'
+      string = ''
       if object.likes.length == 1
         string += "#{object.likes[0].user.full_name} likes this"
       elsif object.likes.length < 4 && object.likes.length > 1
@@ -38,21 +39,11 @@ module ApplicationHelper
       else
         string = "#{object.likes.length} others like this"
       end
-      string += "</div></div>"
+      # string += "</div></div>"
       string.html_safe
     end
 
   end
-
-  # % current_user.friends.each do |friend| %>
-  #               <% if friend.friend_id == @profile.user.id %>
-  #                 <%= link_to "Unfriend", friending_path(:id => @profile.user.id), method: :delete, :class=>"btn btn-primary"  %>
-  #               <% elsif index == current_user.friends.length %>
-  #                 <%= link_to "Friend", friendings_path(:friend_id => @profile.user.id), method: :post, :class=>"btn btn-primary"  %>
-  #               <% end %>
-  #               <% index += 1 %>
-  #             <% end %>
-  #           <% end %>
 
   def friend_links(user)
     friend_bool = false
@@ -60,13 +51,15 @@ module ApplicationHelper
     current_user.friends.each do |friend|
       if friend.friend_id == user.id
         friend_bool = true
-        string = link_to "Unfriend", friending_path(:id => user.id), method: :delete, :class=>"btn btn-primary"
+        string = link_to "Unfriend", user_friending_path(user, friend, :friend_id => friend.friend_id), method: :delete, :class=>"btn btn-default"
       end
     end
     if friend_bool == false
-      string = link_to "Friend", friendings_path(:friend_id => user.id), method: :post, :class=>"btn btn-primary"
+      string = link_to "Friend", user_friendings_path(:user_id => user.id), method: :post, :class=>"btn btn-primary"
     end
     string.html_safe
   end
+
+
 
 end

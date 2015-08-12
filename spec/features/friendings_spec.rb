@@ -29,6 +29,8 @@ feature 'Create Friendship' do
       # save_and_open_page
       expect{ click_button("Friend")}.to change(Friend, :count).by(1)
     end
+
+    it 'shoud create friendship for both users'
   end
 
   context 'friendship already exists' do
@@ -47,6 +49,9 @@ feature 'Create Friendship' do
       expect{ click_link("Unfriend") }.to change(Friend, :count).by(-1)
 
     end
+
+    it 'should remvoe it for both users'
+
   end
 end
 

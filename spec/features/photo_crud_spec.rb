@@ -97,12 +97,12 @@ feature 'User photo CRUD' do
         scenario "can delete own comment on other user's photo" do
           fill_in "comment[body]", with: "witty photo comment"
           click_button "Comment"
-          save_and_open_page
-          expect{click_link "Delete"}.to change(Photo, :count).by(-1)
+          # save_and_open_page
+          expect{click_link "Delete"}.to change(Comment, :count).by(-1)
           expect(page).to_not have_content("witty photo comment")
         end
 
-        xscenario "can like a photo and then unlike same photo" do
+        scenario "can like a photo and then unlike same photo" do
           expect{click_link "Like"}.to change(Like, :count).by(1)
 
           #check flash msg
@@ -111,7 +111,7 @@ feature 'User photo CRUD' do
           expect{click_link "Unlike"}.to change(Like, :count).by(-1)
 
           #check flash msg
-          expect(page).to have_content("You unliked this!".upcase)
+          expect(page).to have_content("YOU HAVE UNLIKED THIS!")
         end
       end
     end

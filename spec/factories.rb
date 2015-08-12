@@ -29,6 +29,13 @@ FactoryGirl.define do
     user
   end
 
+  factory :photo_comment, class: "Comment" do
+    association :commentable, :factory => :photo
+
+    body  "something in photo body"
+    user
+  end
+
   factory :post do
     body  "something in post body"
 

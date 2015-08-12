@@ -62,6 +62,7 @@ describe CommentsController do
                         commentable_type: "Post")
       end
 
+      #currently logged in as user
       it 'can destroy their own comment' do
         expect do
           delete :destroy, user_id: user.id, id: @comment
@@ -70,7 +71,7 @@ describe CommentsController do
 
       it "cannot destroy someone else's comment" do
         expect do
-          delete :destroy, user_id: @another_user.id, id: @comment
+          delete :destroy, user_id: @another_user.id, id: @comment2
         end.to change(Comment, :count).by(0)
       end
 

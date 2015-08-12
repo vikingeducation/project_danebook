@@ -3,14 +3,12 @@
       <h4>Photos</h4>
   </header>
 
-  <% @user.photos.limit(9) do |photo| %>
+  <% @user.photos.limit(9).each do |photo| %>
     <div class="col-xs-4 photo">
-      <%= link_to photo_path(photo.id) do %>
-        <%=image_tag photo.data.url(:thumb) %>
-      <% end -%>
+      <%= image_or_linked_image(photo, @user) %>
       <div class="upload-date">
         <p>
-          Uploaded <%= photo.data_updated_at.to_formatted_s(:long) %>
+          Uploaded <%= photo.data_updated_at.to_formatted_s(:short) %>
         </p>
       </div>
     </div>

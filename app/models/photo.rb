@@ -18,7 +18,7 @@ class Photo < ActiveRecord::Base
                               cover: "800x450>" },
                     default_url: "/images/icon_photo_small.png"
 
-  process_in_background :data # Delayed Paperclip Upload
+  process_in_background :data, processing_image_url: "https://s3.amazonaws.com/davidmeza/animation_processing.gif"
 
   include Likeable
 

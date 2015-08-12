@@ -8,7 +8,7 @@ class TimelinesController < ApplicationController
     @post = Post.new
     @comment = Comment.new
     @posts = @user.posts_received.includes(:author, :comments => :author )
-    @friends = @user.friends # + @user.users_friended_by
+    @friends = @user.friends.includes(:profile_pic) #+ @user.users_friended_by
   end
 
 end

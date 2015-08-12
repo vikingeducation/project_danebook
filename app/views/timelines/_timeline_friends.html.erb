@@ -3,10 +3,10 @@
       <h4>Friends: <%= @friends.count %></h4>
   </header>
 
-  <% @friends.limit(9) do |friend| %>
+  <% @friends.limit(9).each do |friend| %>
     <div class="col-xs-4 friend">
       <%= link_to user_path(friend) do %>
-        <%=image_tag random_user_image %>
+        <%=image_tag friend.profile_pic ? friend.profile_pic.data.url : random_user_image %>
       <% end -%>
       <p>
         <%= link_to friend.name, user_path(friend) %>

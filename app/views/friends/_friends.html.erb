@@ -1,0 +1,35 @@
+<% @friends.each do |friend| %>
+	<div class = "col-md-6">
+	  <div class = "friend-wrapper">
+	    <div class = "row">
+	      <div class = "col-xs-3">
+	        <div class = "friend-img">
+	          <%= image_tag friend.profile_pic ? friend.profile_pic.data.url : random_user_image %>
+	        </div>
+	      </div>
+	      <div class = "col-xs-5">
+	        <div class = "friend-name">
+	          <%= link_to user_path(friend) do %>
+	            <h4>
+	              <%= friend.name %>
+	            </h4>
+	          <% end -%>
+	          <a href="#">
+	            <h6>
+	              <%= friend.friends.count %> Friends
+	            </h6>
+	          </a>
+	        </div>
+	      </div>
+	      <div class = "col-xs-4">
+	        <div class = "friend-options">
+	          <%= link_to "Unfriend", 
+	          						user_friendings_path(friend), 
+	          						method: :delete, 
+	          						class: "btn btn-default" if @user == current_user %>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+	</div>
+<% end -%>

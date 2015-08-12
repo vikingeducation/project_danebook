@@ -279,21 +279,26 @@ main {
       }
 
       #timeline-photos {
+        header {
+          margin-bottom: 10px;
+        }
         img {
           height: 85px;
           width: 85px;
+          // z-index: 1;
         }
         .upload-date {
           visibility: hidden;
           text-align: center;
+          width: 85px;
           p {
             font-size: 11px;
             background-color: #000;
             color: #fff;
             opacity: 0.7;
             position: relative;
-            top: -40px;
-            left: 4px;
+            top: -29px;
+            // left: 4px;
           }
         }
         .photo:hover .upload-date {
@@ -304,6 +309,7 @@ main {
           text-align: center;
           font-size: 18px;
           margin-bottom: 15px;
+          font-weight: bold;
         }
       }
 
@@ -395,7 +401,7 @@ main {
         color: #fff;
         opacity: 0.7;
         position: relative;
-        top: -50px;
+        top: -40px;
         width: 200px;
         }
       }

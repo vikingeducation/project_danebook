@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
                         :length => {:in => 4..24}
   
   after_create :create_profile
-  after_create :send_delayed_email
+  #after_create :send_delayed_email
 
   def full_name
       self.first_name + " " + self.last_name

@@ -71,7 +71,7 @@ gem 'pg'
 gem 'bcrypt', '~> 3.1.7'
 
 group :production do
-  gem 'faker'
+  
   gem 'rails_12factor'
 
 end

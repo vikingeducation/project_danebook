@@ -5,7 +5,7 @@ class PhotosController < ApplicationController
   before_action :require_friend, :only => [:show]
 
   def index
-    @photos = User.find(params[:user_id]).photos
+    @photos = User.find(params[:user_id]).photos.includes(:user, :likes, :comments => [:likes, :user])
   end
 
   def new
@@ -13,12 +13,6 @@ class PhotosController < ApplicationController
   end
 
   def create
-    # if photo_params[:photo_link]
-    #   @photo = current_user.photos.build
-    #   @photo.picture_from_url(photo_params[:photo_link])
-    # else
-    #   @photo = current_user.photos.build(photo_params)
-    # end
     @photo = current_user.photos.build(photo_params)
     if @photo.save
       flash[:success] = "You uploaded a photo"

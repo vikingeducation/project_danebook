@@ -32,4 +32,8 @@ module ApplicationHelper
     end
   end
 
+  def page_owner
+    User.find(params[:user_id])
+  end
+
 end

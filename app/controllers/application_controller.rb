@@ -46,6 +46,7 @@ class ApplicationController < ActionController::Base
 
   def require_current_user
     unless params[:user_id] == current_user.id.to_s
+      binding.pry
       flash[:error] = "You're not authorized to view this"
       redirect_to root_path
     end
@@ -58,5 +59,10 @@ class ApplicationController < ActionController::Base
   def referer
     session.delete(:referer)
   end
+
+  def object_owner?(thing)
+    current_user.id == thing.user_id
+  end
+  helper_method :object_owner?
 
 end

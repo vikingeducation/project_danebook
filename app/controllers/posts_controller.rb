@@ -4,7 +4,8 @@ class PostsController < ApplicationController
   before_action :require_current_user, :except => [:index]
 
   def index
-    @posts = Post.where("user_id = ?", params[:user_id]).includes(:comments => :likes)
+    @posts = Post.where("user_id = ?", params[:user_id]).
+                  includes(:likes, :comments => [:likes, :user])
     @post = Post.new
     @user = User.find(params[:user_id])
     @profile = @user.profile

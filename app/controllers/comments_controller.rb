@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
 
   before_action :store_referer
-  before_action :require_current_user, :only => [:destroy]
+  # before_action :require_object_owner, :only => [:destroy]
   before_action :require_login
 
   def create

@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
 
   has_secure_password
 
+  #========================= validations =========================
+
   validates :email, :presence => true,
                     :uniqueness => true,
                     :format => { :with => /([\w\.-]+)@([\w\.-]+)\.([a-z\.]{2,6})/ }
@@ -20,6 +22,8 @@ class User < ActiveRecord::Base
                                     :length => {:in => 1..30},
                                     :format => {:with => /[a-zA-Z]+/}
 
+  #========================= associations =========================
+
   has_one :profile,   dependent: :destroy
   has_many :posts,    dependent: :destroy
   has_many :likings,  through: :posts
@@ -30,6 +34,8 @@ class User < ActiveRecord::Base
                             foreign_key: :profile_photo_id
   belongs_to :cover_photo, class_name: "Photo",
                             foreign_key: :cover_photo_id
+
+  #===================== self-association =======================
 
   # person who want to be friends
   has_many :initiated_friendings, :foreign_key => :friender_id,
@@ -44,6 +50,9 @@ class User < ActiveRecord::Base
                                   :source => :friend_initiator
 
   accepts_nested_attributes_for :profile, :reject_if => :all_blank
+
+
+  #========================= methods =========================
 
   def friends
     #currently one-way initiated_friendings list

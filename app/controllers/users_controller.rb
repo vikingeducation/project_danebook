@@ -4,12 +4,7 @@ class UsersController < ApplicationController
   skip_before_action :require_current_user
 
   def index
-    if params[:keyword] && !params[:keyword].strip.empty?
-      @users = User.where("email LIKE '%#{params[:keyword].strip}%'")
-                   .includes(:profile)
-    else
-      @users = User.all.includes(:profile)
-    end
+    @users = User.search_user_by(params[:keyword])
   end
 
   def new

@@ -57,6 +57,14 @@ class User < ActiveRecord::Base
     end
   end
 
+  def self.search_user_by(keyword)
+    if keyword && !keyword.strip.empty?
+      where("email LIKE ?", "%"+keyword.strip+"%").includes(:profile)
+    else
+      all.includes(:profile)
+    end
+  end
+
   def num_of_friends
     friended_users.count
   end
@@ -71,6 +79,10 @@ class User < ActiveRecord::Base
 
   def num_of_photos
     photos.count
+  end
+
+  def last_30_days_photos
+    photos.where("created_at > ?", DateTime.now - 30).limit(12)
   end
 
 end

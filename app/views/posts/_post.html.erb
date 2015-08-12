@@ -1,6 +1,6 @@
 <article class ="row post">
   <div class="col-sm-2 posted-by">
-    <img src="https://www.blastr.com/sites/blastr/files/styles/blog_post_media/public/dawn_apes_caesar.jpg?itok=-jHgIwlD">
+    <%= image_tag image_path("user_silhouette_generic.gif") %>
   </div>
   <div class="col-sm-10 posted-name">
     <div class="col-sm-12">
@@ -31,5 +31,5 @@
   <div class="col-sm-12">
     <%= Like.display_likes_msg(post) %>
   </div>
-  <%= render partial: "comments/comments", locals: {post: post} %>
+  <%= render partial: "comments/comments", locals: {commentable: post} %>
 </article>

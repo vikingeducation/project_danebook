@@ -1,57 +1,14 @@
-      <div class="row photos-box">
-        <div class="col-sm-12 box-title">
-          <h5> Photos (123)</h5>
-        </div>
-        <div class="col-sm-4">
-          <img src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png" class="image">
-          <br><p>Uploaded Mar 24, 299</p>
-        </div>
-        <div class="col-sm-4">
-          <img src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png" class="image">
-          <br><p>Uploaded Mar 24, 299</p>
-        </div>
-        <div class="col-sm-4">
-          <img src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png" class="image">
-          <br><p>Uploaded Mar 24, 299</p>
-        </div>
-        <div class="col-sm-4">
-          <img src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png" class="image">
-          <br><p>Uploaded Mar 24, 299</p>
-        </div>
-        <div class="col-sm-4">
-          <img src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png" class="image">
-          <br><p>Uploaded Mar 24, 299</p>
-        </div>
-        <div class="col-sm-4">
-          <img src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png" class="image">
-          <br><p>Uploaded Mar 24, 299</p>
-        </div>
-        <div class="col-sm-4">
-          <img src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png" class="image">
-          <br><p>Uploaded Mar 24, 299</p>
-        </div>
-        <div class="col-sm-4">
-          <img src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png" class="image">
-          <br><p>Uploaded Mar 24, 299</p>
-        </div>
-        <div class="col-sm-4">
-          <img src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png" class="image">
-          <br><p>Uploaded Mar 24, 299</p>
-        </div>
-        <div class="col-sm-4">
-          <img src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png" class="image">
-          <br><p>Uploaded Mar 24, 299</p>
-        </div>
-        <div class="col-sm-4">
-          <img src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png" class="image">
-          <br><p>Uploaded Mar 24, 299</p>
-        </div>
-        <div class="col-sm-4">
-          <img src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png" class="image">
-          <br><p>Uploaded Mar 24, 299</p>
-        </div>
-        <div class="col-sm-4">
-          <img src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png" class="image">
-          <br><p>Uploaded Mar 24, 299</p>
-        </div>
-      </div>
+<div class="row photos-box">
+  <div class="col-sm-12 box-title">
+    <h5>Photos(<%= user.num_of_photos %>)</h5>
+  </div>
+
+  <% user.last_30_days_photos.each do |photo| %>
+    <div class="col-sm-4">
+      <%= link_to photo_path(photo.id), class: "thumbnail" do %>
+        <%= image_tag photo.user_photo.url(:thumb) %>
+      <% end %>
+      <br><p>Uploaded <%= photo.created_at.to_date %></p>
+    </div>
+  <% end %>
+</div>

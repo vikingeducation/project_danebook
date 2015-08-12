@@ -4,7 +4,8 @@
   </div>
   <div class="col-sm-12 submit-bar">
     <%= comment_fields.hidden_field :user_id, value: current_user.id %>
-    <%= comment_fields.hidden_field :post_id, value: post.id %> 
+    <%= comment_fields.hidden_field :commentable_id, value: commentable.id %>
+    <%= comment_fields.hidden_field :commentable_type, value: commentable.class.to_s %> 
     <%= button_tag 'Cancel', :type => 'reset' %>
     <%= comment_fields.submit "Comment", class: "btn btn-primary pull-right" %>
   </div>

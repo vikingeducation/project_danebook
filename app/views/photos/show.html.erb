@@ -4,14 +4,36 @@
       <h2>Photos</h2>
     </div>
     <div class="panel-body">
-      <%= image_tag @photo.user_photo.url %>
-      <br>
-      <% if @photo.user == current_user %>
-        <%= like_button(@photo) %><br>
-        <%= link_to "Set as Profile", "#" %><br>
-        <%= link_to "Set as Cover", "#" %><br>
-        <%= link_to "delete photo", photo_path(@photo.id), method: :delete %>
-      <% end %>
+      <div class="col-sm-8">
+        <%= image_tag @photo.user_photo.url, class: "fillwidth" %>
+        <br>
+        <% if @photo.user == current_user %>
+          <%= link_to "Set as Profile", "#" %><br>
+          <%= link_to "Set as Cover", "#" %><br>
+          <%= link_to "delete photo", photo_path(@photo.id), method: :delete %>
+        <% end %>
+      </div>
+      <div class="col-sm-4">
+        <div class="row post">
+          <div class="col-sm-6 posted-by">
+            <%= image_tag image_path("user_silhouette_generic.gif") %>
+          </div>
+          <div class="col-sm-6 posted-name">
+            <div class="col-sm-12">
+              <p><%= @photo.user.profile.full_name %><br>
+              Posted on <%= @photo.created_at.to_date %></p>
+            </div>
+          </div>
+          <div class="col-xs-12">
+            <%= like_button(@photo) %><br>
+            <%= Like.display_likes_msg(@photo) %>
+          </div>
+
+          <div class="col-xs-12 post">
+            <%= render partial: "comments/comments", locals: {commentable: @photo} %>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>

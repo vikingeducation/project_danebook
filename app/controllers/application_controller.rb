@@ -34,7 +34,11 @@ class ApplicationController < ActionController::Base
     helper_method :current_user
 
     def store_referer
-      session[:referer] = URI(request.referer).path
+      if request && request.referer
+        session[:referer] = URI(request.referer).path
+      else
+        session[:referer] = root_path
+      end
     end
 
     def referer

@@ -6,7 +6,10 @@ class Photo < ActiveRecord::Base
   has_many :comments, -> { order('created_at ASC') }, as: :commentable, dependent: :destroy
   has_many :likes, as: :likable, dependent: :destroy
   has_many :people_who_like, through: :likes, source: :user
+
   belongs_to :uploader, class_name: "User", foreign_key: :user_id
+  belongs_to :author, class_name: "User", foreign_key: :user_id
+
   validates :uploader, presence: true
   has_one :user_profile_photo,
            class_name: "User",

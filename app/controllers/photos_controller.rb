@@ -72,7 +72,7 @@ class PhotosController < ApplicationController
     def require_friendship
       unless current_user == @user || @user.friends.find_by(id: current_user.id)
         flash[:notice] = "You must be friends with this user!"
-        redirect_to referer
+        redirect_to user_photos_path(@user)
       end
     end
 

@@ -14,6 +14,24 @@ describe Comment do
     # end
   end
 
+  context 'email sent on creation unless commentable owner is comment author' do
+    let(:user) { create(:user) }
+    it 'should send email if commentable owner is not comment author' do
+      new_commentable = create(:post, author: user)
+      other_user = create(:user)
+      expect do
+         create(:comment, commentable: new_commentable, author: other_user)
+      end.to change(Delayed::Job, :count).by(1)
+    end
+
+    it 'should not send an email if commentable owner is comment author' do
+      new_commentable = create(:post, author: user)
+      expect do
+         create(:comment, commentable: new_commentable, author: user)
+      end.to change(Delayed::Job, :count).by(0)
+    end
+  end
+
   context 'people who like association' do
     it 'should respond to people_who_like association' do
       expect(comment).to respond_to(:people_who_like)

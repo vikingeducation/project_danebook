@@ -1,8 +1,11 @@
+require "open-uri"
+
 class Photo < ActiveRecord::Base
 
   belongs_to :user
 
-  has_attached_file :picture, :styles => {:thumb => "100x100"}
+  has_attached_file :picture, :styles => {large: "1000X1000",
+                                          thumb: "100x100"}
 
   validates_attachment_content_type :picture, :content_type => /\Aimage\/.*\Z/
 
@@ -13,11 +16,9 @@ class Photo < ActiveRecord::Base
             dependent: :destroy
 
 
-  # def photo_picture=(photo_picture)
-  #   self.picture      = photo_picture.read
-  #   self.filename  = photo_picture.original_filename
-  #   self.mime_type = photo_picture.content_type
-  # end
+  def picture_from_url(url)
+    self.picture = open(url)
+  end
 
   def photo_link
 

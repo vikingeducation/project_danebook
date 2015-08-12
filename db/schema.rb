@@ -11,11 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20150811184644) do
-=======
+
 ActiveRecord::Schema.define(version: 20150812182320) do
->>>>>>> mailing
+
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,8 +29,6 @@ ActiveRecord::Schema.define(version: 20150812182320) do
 
   add_index "comments", ["commenting_type", "commenting_id"], name: "index_comments_on_commenting_type_and_commenting_id", using: :btree
 
-<<<<<<< HEAD
-=======
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer  "priority",   default: 0, null: false
     t.integer  "attempts",   default: 0, null: false
@@ -49,7 +45,6 @@ ActiveRecord::Schema.define(version: 20150812182320) do
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
 
->>>>>>> mailing
   create_table "friendings", force: :cascade do |t|
     t.integer  "user_id",    null: false
     t.integer  "friend_id",  null: false

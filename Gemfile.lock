@@ -305,11 +305,11 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   launchy
-<<<<<<< HEAD
+
   paperclip
-=======
+
   letter_opener
->>>>>>> mailing
+
   pg
   rails (= 4.2.2)
   rails_12factor

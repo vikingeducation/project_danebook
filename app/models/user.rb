@@ -5,7 +5,9 @@ class User < ActiveRecord::Base
   has_many :likes, dependent: :destroy
   has_many :friendings, dependent: :destroy
 
+
   has_many :friends, through: :friendings 
+
 
   has_secure_password
 
@@ -29,14 +31,14 @@ class User < ActiveRecord::Base
     Like.where(user: self, liking_id: thing.id, liking_type: thing.class).any?
   end
 
-<<<<<<< HEAD
   def self.search(word)
     User.where("first_name ILIKE ? OR last_name ILIKE ?", "%#{word}%", "%#{word}%")
   end
 
   def self.create_profile
     Profile.new(user_id: self.id)
-=======
+  end
+
   private
 
   def send_delayed_email
@@ -46,6 +48,5 @@ class User < ActiveRecord::Base
   def self.send_welcome_email(id)
     user = User.find(id)
     UserMailer.welcome(user).deliver
->>>>>>> mailing
   end
 end

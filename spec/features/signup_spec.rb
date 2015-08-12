@@ -44,4 +44,32 @@ feature 'signing up' do
       expect{select 11.years.ago.year.to_s, from: 'user_dob_1i'}.to raise_error(Capybara::ElementNotFound)
     end
   end
+
+  context 'email upon signing up' do
+    before :each do
+      ActionMailer::Base.delivery_method = :test
+      ActionMailer::Base.perform_deliveries = true
+      ActionMailer::Base.deliveries = []
+    end
+
+    after :each do
+      ActionMailer::Base.deliveries.clear
+    end
+
+    it 'should send an email when the user signs up' do
+      # A new user signs up for our site.
+      fill_out_signup_form
+      click_button "Sign Up"
+      current_user = User.last
+
+      # it should send one email, to the proper person, with the proper
+      # subject, and from the proper email.
+
+      expect(ActionMailer::Base.deliveries.count).to eq(1)
+      expect(ActionMailer::Base.deliveries.first.to).to eq([current_user.email])
+      expect(ActionMailer::Base.deliveries.first.subject).to eq("Welcome to Danebook!")
+      expect(ActionMailer::Base.deliveries.first.from).to eq(['danebook@shadefinale.com'])
+
+    end
+  end
 end

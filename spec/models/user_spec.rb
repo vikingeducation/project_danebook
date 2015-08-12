@@ -133,6 +133,19 @@ describe User do
     end
   end
 
+  context 'email sending on creation' do
+    it 'should send email if user is created' do
+      expect{ create(:user)}.to change {ActionMailer::Base.deliveries.count}.by(1)
+    end
+
+    it 'should not send email if user is invalid' do
+      expect do
+       new_user = build(:user, password:"12312333")
+       new_user.save
+      end.to change {ActionMailer::Base.deliveries.count}.by(0)
+    end
+  end
+
   describe '.search' do
 
     before do

@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   before_create :generate_token
-  after_create :generate_empty_profile
+  after_create :generate_empty_profile, :send_welcome_email
 
   has_secure_password
 
@@ -34,6 +34,10 @@ class User < ActiveRecord::Base
 
   belongs_to :cover_photo, class_name: "Photo"
   belongs_to :profile_photo, class_name: "Photo"
+
+  def send_welcome_email
+    UserMailer.welcome(self).deliver
+  end
 
   def self.search(term)
     User.where("first_name ILIKE ? OR last_name ILIKE ?", '%' + term.to_s + '%', '%' + term.to_s + '%')

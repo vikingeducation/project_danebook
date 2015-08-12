@@ -11,15 +11,9 @@ FactoryGirl.define do
   end
 
   factory :photo do
-    # attached_file     :data, factory: :data
     user
+    data { fixture_file_upload(Rails.root.join('spec', 'photos', 'pic.jpg'), 'image/jpg') }
     img_url   ""
-  end
-
-  factory :data do
-    supporting_documentation_file_name { 'test.pdf' }
-    supporting_documentation_content_type { 'application/pdf' }
-    supporting_documentation_file_size { 1024 }
   end
 
   factory :user do

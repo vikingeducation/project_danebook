@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-User.destroy_all
+#User.destroy_all
 
 MULTIPLIER = 25
 
@@ -65,8 +65,39 @@ def generate_posts
 
 end
 
+def generate_comments
+  comment = Comment.new
+  comment.author_id = rand(1..MULTIPLIER)
+  comment.body = Faker::Lorem.sentence
+  comment.commentable_id = rand(1..MULTIPLIER * 2)
+  comment.commentable_type = ["Photo", "Post", "Comment"].sample
+end
+
+def generate_photos
+  photo = Photo.new
+  photo.user_id = rand(1..MULTIPLIER)
+  photo.data = File.new("spec/photos/pic.jpg")
+end
+
+def generate_likes
+  Like.create(  user_id: rand(1..MULTIPLIER),
+                likeable_type: ["Photo", "Post", "Comment"].sample,
+                likeable_id: rand(1..MULTIPLIER))
+end
+
+def generate_friendships
+  Friending.create( friender_id: rand(1..MULTIPLIER),
+                    friend_id: rand(1..MULTIPLIER))
+end
+
 
 MULTIPLIER.times do
   generate_user_with_profile
-  2.times { generate_posts }
+  2.times do
+    generate_posts
+    generate_photos
+    generate_comments
+    3.times { generate_likes }
+    generate_friendships
+  end
 end

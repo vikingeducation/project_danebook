@@ -8,8 +8,8 @@ describe FriendsController do
     let(:user){ create(:user) }
     let(:friend) { create(:user) }
     let(:friending) { create( :friending,
-                              friend_initiator: user,
-                              friend_recipient: friend)}
+                              friender: user,
+                              target: friend)}
 
     before do
       sign_me_in(user)
@@ -21,8 +21,8 @@ describe FriendsController do
         friending #Loads the lazy let block
         another_friend = create(:user)
         create( :friending,
-                friend_initiator: user,
-                friend_recipient: another_friend)
+                friender: user,
+                target: another_friend)
         get :index, user_id: user.id
         expect(assigns(:friends)).to match_array [friend, another_friend]
       end

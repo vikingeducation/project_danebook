@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 feature 'email sent when commenting on commentable' do
-
+  ActionMailer::Base.delivery_method = :test
   context 'email after commenting on photo' do
     before do
       VCR.use_cassette "uploading_2", match_requests_on: [:host, :method] do
@@ -44,10 +44,21 @@ feature 'email sent when commenting on commentable' do
 
       visit user_photo_path(user_id:@new_user.id, id: @new_photo.id)
 
+
+
       # Then, Jim comments on Joe's Photo.
 
       fill_in "comment_body", with: @jim_text
+
       expect{click_button "Comment"}.to change(Delayed::Job, :count).by(1)
+      Delayed::Worker.new.work_off
+
+      expect(ActionMailer::Base.deliveries.last.to).to eq([@new_user.email])
+      expect(
+        ActionMailer::Base.deliveries.last.subject
+      ).to eq("#{jim_bob_user.full_name} has commented on your Photo!")
+
+      expect(ActionMailer::Base.deliveries.last.from).to eq(['danebook@shadefinale.com'])
     end
 
     it 'should not send an email if a user comments on his/her own photo' do
@@ -61,15 +72,13 @@ feature 'email sent when commenting on commentable' do
               user: @new_user,
               likable: @new_photo)
 
-      # Jim Bob's recently been convinced by Joe Schmoe to sign up to the site.
-      # Jim Bob wants to look at Joe Schmoe's new photo, so he logs in.
+      # Joe wants to comment on his own photo.
       visit root_path
       login_user(previous_user: @new_user)
 
       visit user_photo_path(user_id:@new_user.id, id: @new_photo.id)
 
-      # Then, Jim comments on Joe's Photo.
-
+      # Joe predictably does not get an email.
       fill_in "comment_body", with: @joe_text
       expect{click_button "Comment"}.to change(Delayed::Job, :count).by(0)
     end

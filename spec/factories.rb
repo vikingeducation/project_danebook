@@ -25,6 +25,8 @@ FactoryGirl.define do
     created_at DateTime.now
     author
 
+    commentable factory: :post
+
     factory :commented_comment do
       commentable factory: :comment
     end

@@ -66,7 +66,8 @@ feature "Users sign ups" do
     scenario "Form is still valid if user doesn't want to disclose his age and gender and null values are handled" do
       sign_up(month: "", day: "", year: "", gender: "")
       expect{click_button "Sign Up"}.to change(User, :count).by(1)
-      expect(page).to have_content("No birthday provided")
+      expect(page).to have_content("No birthday information")
+      expect(page).to have_content("No college information") # And so on...
     end
 
   end

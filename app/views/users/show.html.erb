@@ -9,11 +9,7 @@
           <h2>About</h2>
         </div>
         <div class="col-xs-2">
-          <%= link_to edit_profile_path do %>
-            <button class= "btn btn-active", id= "edit-profile">
-              Edit Your Profile
-            </button>
-          <% end if current_user == @user %>
+          <%= edit_profile_button(@user) %>
         </div>
       </div>
     </header>
@@ -28,7 +24,7 @@
             <b>Birthday:</b>
           </div>
           <div class = "col-xs-8">
-            <%= @user.birthday ? @user.birthday.to_formatted_s(:long) : "No birthday provided" %>
+            <%= user_birthday(@user, prepend: "") %>
           </div>
         </div>
 
@@ -37,7 +33,7 @@
             <b>College:</b>
           </div>
           <div class = "col-xs-8">
-            <%= @user.profile.college ? @user.profile.college : "No college provided" %>
+            <%= user_college(@user) %>
           </div>
         </div>
 
@@ -46,7 +42,7 @@
             <b>Hometown:</b>
           </div>
           <div class = "col-xs-8">
-            <%= @user.profile.hometown ? @user.profile.hometown : "No hometown provided" %>
+            <%= user_hometown(@user, prepend: "", default: "No hometown information") %>
           </div>
         </div>
 
@@ -55,7 +51,7 @@
             <b>Currently Lives:</b>
           </div>
           <div class = "col-xs-8">
-            <%= @user.profile.current_home ? @user.profile.current_home : "No current home information" %>
+            <%= user_currently_lives(@user, prepend: "", default: "No current home information") %>
           </div>
         </div>
 
@@ -76,7 +72,7 @@
             <b>Telephone:</b>
           </div>
           <div class = "col-xs-8">
-            <%= @user.profile.mobile ? @user.profile.mobile : "No mobile information" %>
+            <%= user_mobile(@user) %>
           </div>
         </div>
 
@@ -86,19 +82,19 @@
 
         <h3>Words to live by</h3>
         <p>
-          <%= @user.profile.summary ? @user.profile.summary : "Share some corny quote that makes your ears tingle every time you hear it" %>
+          <%= words_to_live_by(@user) %>
         </p>
 
         <h3>About me</h3>
         <p>
-          <%= @user.profile.about ? @user.profile.about : "Share how awesome you are with the world!" %>
+          <%= about(@user) %>
         </p>
       </div>
     </div>
 
     <div class="row">
       <div class="col-xs-2 col-xs-push-10">
-        <%= link_to "Modify Account", edit_user_path(@user), class: "btn btn-warning" if current_user == @user %>
+        <%= modify_account_button(@user) %>
       </div>
     </div>
     <br>

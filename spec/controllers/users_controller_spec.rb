@@ -24,6 +24,32 @@ describe UsersController do
       end
     end
 
+    describe "GET #index" do
+
+      it "renders a page for a signed in visitor" do
+        get :index
+        expect(response).to render_template :index
+      end
+
+      it "redirects a visitor to login page" do
+        sign_me_out
+        get :index
+        expect(response).to redirect_to(login_path)
+      end
+
+      it "returns a list of all users if there is no query" do
+        user_list = create_list(:user, 20) + [user]
+        get :index
+        expect(assigns(:users)).to match_array(user_list)
+      end
+
+      it "returns the result of the query if it's present" do
+        create_list(:user, 20)
+        get :index, query: "#{user.name}"
+        expect(assigns(:users)).to match_array([user])
+      end
+    end
+
     describe "GET #show" do
 
       it "renders a user's about page" do

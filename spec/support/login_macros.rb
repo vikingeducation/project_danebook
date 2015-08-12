@@ -12,6 +12,11 @@ module LoginMacros
     click_on "Log out"
   end
 
+  def search(options = {})
+    fill_in "Search for Users", with: options[:terms] || ""
+    click_button "Search"
+  end
+
   def sign_up(options = {})
     fill_in "First Name", with: options[:first_name] || "Foo"
     fill_in "Last Name",  with: options[:last_name]  || "Bar"

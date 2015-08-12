@@ -10,7 +10,6 @@ class UsersController < ApplicationController
   before_action :require_current_user, :only => [:edit, :update, :destroy]
 
   def index
-    # fail
     @query = params[:query]
     @users = User.filter_results(@query).paginate(:page => params[:page], :per_page => 30)
   end

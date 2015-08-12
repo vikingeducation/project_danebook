@@ -79,9 +79,14 @@ class User < ActiveRecord::Base
 
 
   def self.filter_results(query)
-    where("first_name ILIKE ? OR last_name ILIKE ?", "%#{query}%", "%#{query}%").
-    includes(:profile, :profile_pic).
-    order("first_name ASC, last_name ASC")
+    words = query ? query.split(/\s/) : ""
+    if words.size > 1
+      where("first_name ILIKE ? AND last_name ILIKE ?", "%#{words[0]}%", "%#{words[1]}%")
+    else
+      where("first_name ILIKE ? OR last_name ILIKE ?", "%#{query}%", "%#{query}%")
+    end.
+      includes(:profile, :profile_pic).
+      order("first_name ASC, last_name ASC")
   end
 
 

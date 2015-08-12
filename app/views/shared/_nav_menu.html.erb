@@ -3,9 +3,8 @@
     <ul class="nav nav-tabs">
       <li><%= link_to "Timeline", profile_timeline_path(current_user.profile)  %></li>
       <li><%= link_to "About", profile_path(current_user.profile)%></li>
-      <li><a href="#">Photos <span class="unread-number">(123)</span></a></li>
-      <li>
-      <%= link_to "Friends <span class='unread-number'>#{current_user.friends.count}</span>".html_safe, user_friends_path(current_user)  %></li>
+      <li> <%= link_to "Photos <span class='unread-number'>#{current_user.photos.count}</span>".html_safe,   user_photos_path(current_user) %></li>
+      <li> <%= link_to "Friends <span class='unread-number'>#{current_user.friends.count}</span>".html_safe, user_friends_path(current_user)  %></li>
       <li><%= friend_button(@user) %></li>
     </ul>
   </nav>

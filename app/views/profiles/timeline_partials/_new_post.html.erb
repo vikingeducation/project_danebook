@@ -11,7 +11,7 @@
     </div>    
   </div>
   <div class="panel-footer clearfix">
-    <%= f.hidden_field :profile_id, profile.id %>
+    <%= f.hidden_field :profile_id, value: @profile.id %>
     <%= f.submit "Post", class: "pull-right btn btn-primary" %>
   </div>
 </div> <!-- end panel default -->

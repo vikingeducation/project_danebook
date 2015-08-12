@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
 
-
-  get 'friends/index'
-
   root 'profiles#timeline'
   resources :profiles, only: [:edit, :update, :show] do
     get 'timeline'
@@ -12,6 +9,7 @@ Rails.application.routes.draw do
   resources :likes, only: [:destroy]
   resources :users do
     resources :friends, only: [:index]
+    resources :photos, only: [:index, :new, :create, :destroy]
   end
   resources :comments, only: [:create, :destroy]
   resources :friendings, only: [:create, :destroy]

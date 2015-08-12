@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   has_one :profile, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :comments
+  has_many :photos
 
   # Self Associations
   has_many :initiated_friendings, foreign_key: :friender_id,

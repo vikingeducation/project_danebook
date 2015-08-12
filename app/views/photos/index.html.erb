@@ -1,0 +1,24 @@
+<main>
+    <div class="container">
+      <%= render partial: 'shared/cover' %>
+      <%= render partial: '/shared/nav_menu' %>
+
+  <section class="panel panel-default panel-custom">
+    
+    <div class="panel-heading clearfix">
+      <%= link_to "Add a Photo", new_user_photo_path, class: 'btn btn-primary btn-sm pull-right'  %>
+      <h4 class="panel-text text-center">Photos</h4>
+    </div><!-- end of panel -->
+
+    <div class="panel-body">
+      <div class="row about-info">
+        <% @user.photos.each do |photo| %>
+        <div class="col-md-4">
+        <%= image_tag photo.url(:medium) %> 
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </section>
+  </div> <!-- end of container -->
+</main>

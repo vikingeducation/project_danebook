@@ -31,6 +31,7 @@ class ProfilesController < ApplicationController
   def timeline
    @profile = Profile.find_by_id(params[:profile_id])
    @profile ||= Profile.find(current_user.id)
+   @user = @profile.user
    @posts = @profile.posts.order("created_at DESC")
   end
 

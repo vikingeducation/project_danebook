@@ -1,0 +1,25 @@
+<main>
+  <div class="container">
+    <%= render partial: 'shared/cover' %>
+    <%= render partial: '/shared/nav_menu' %>
+
+    <section class="panel panel-default panel-custom">
+      
+      <div class="panel-heading clearfix">
+        <h4 class="panel-text text-center">New Photo</h4>
+      </div><!-- end of panel -->
+
+      <div class="panel-body">
+        <div class="row about-info">
+          <%= form_for(Photo.new, url: user_photos_path) do |f| %>
+          <%= f.file_field :picture %>
+          <br>
+          <%= f.submit %>
+          <% end %>
+          
+          <hr>
+        </div>
+      </div>
+    </section>
+  </div> <!-- end of container -->
+</main>

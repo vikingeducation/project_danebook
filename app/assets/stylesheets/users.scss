@@ -14,3 +14,60 @@
    }
   }
 }
+
+#users-index {
+
+
+  #search-results {
+
+    border: 2px solid #eee;
+
+    header {
+      margin-bottom: 20px;
+    }
+
+    .user-wrapper {
+
+      border: 2px solid #ccc;
+      margin: 20px 10px;
+
+      .user-img {
+        max-height: 200px;
+        width: 200px;
+        overflow: hidden;
+        margin: 20px;
+      }
+
+      .user-name {
+        padding: 10px 0 15px;
+        h6 {
+          color: #999;
+        }
+      }
+
+      .user-details {
+        p {
+          color: #444;
+          line-height: 12px;
+        }
+      }
+
+      // .box-center {
+        // position: relative;
+        // height: 100%;
+        .friend-options {
+          // margin: 0;
+          // position: absolute;
+          // top: 50%;
+          // transform: translate(0, -50%)
+          margin: 50px 15px 10px;
+
+          a {
+            box-shadow: 3px 3px 3px #333;
+          }
+        }
+      // }
+
+    }
+  }
+}

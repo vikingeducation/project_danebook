@@ -10,48 +10,49 @@ body {
 }
 
 #home{
+
   nav {
 
- #brand-color {
-   color: #fff;
-   font-size: 40px;
-   padding: 30px 0;
- }
-
- #sign-in-form {
-  h6 {
-    margin: 5px 0px;
-  }
- }
-
- .navbar-form {
-
-   h6 {
+    #brand-color {
      color: #fff;
-   }
+     font-size: 40px;
+     padding: 30px 0;
+    }
 
-   .form-group {
-     margin: auto 7px;
-   }
+    #sign-in-form {
+      h6 {
+        margin: 5px 0px;
+      }
+    }
 
-   .btn {
-     // position: relative;
-     // top: 17px;
-     background-color: #5E77AA ;
-     border: 1px solid #2A457D ;
-   }
- }
+    .navbar-form {
 
- #toggle-colors {
-   border: 1px solid #8ca7e1 ;
-   position: relative;
-   top: 5px;
+      h6 {
+        color: #fff;
+      }
 
-   .icon-bar {
-     border: 1px solid #8ca7e1 ;
-   }
- }
-}
+      .form-group {
+        margin: auto 7px;
+      }
+
+      .btn {
+        // position: relative;
+        // top: 17px;
+        background-color: #5E77AA ;
+        border: 1px solid #2A457D ;
+      }
+    }
+
+    #toggle-colors {
+      border: 1px solid #8ca7e1 ;
+      position: relative;
+      top: 5px;
+
+      .icon-bar {
+        border: 1px solid #8ca7e1 ;
+      }
+    }
+  }
 
 
 .navbar-default {
@@ -106,12 +107,29 @@ main {
 
 nav {
 
-  #brand-color {
-    color: #fff;
-    font-size: 26px;
+  #logo-container {
+    img {
+      height: 30px;
+      width: 40px;
+    }
+    #brand-color {
+      padding-top: 20px;
+      color: #fff;
+      font-size: 26px;
+    }
   }
 
+  .icon-bar {
+    border: 1px solid #fff;
+  }
+
+
   #navbar {
+
+    form {
+      margin: 15px 0 0 40px;
+    }
+
     p {
       padding-right: 10px;
       color: #fff;
@@ -119,12 +137,8 @@ nav {
         color: #fff;
       }
     }
-
   }
 
-  .icon-bar {
-    border: 1px solid #fff;
-  }
 
   // .navbar-toggle:hover {
   //   background-color: #1a3775;

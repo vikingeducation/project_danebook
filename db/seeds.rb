@@ -71,12 +71,14 @@ def generate_comments
   comment.body = Faker::Lorem.sentence
   comment.commentable_id = rand(1..MULTIPLIER * 2)
   comment.commentable_type = ["Photo", "Post", "Comment"].sample
+  comment.save
 end
 
 def generate_photos
   photo = Photo.new
   photo.user_id = rand(1..MULTIPLIER)
   photo.data = File.new("spec/photos/pic.jpg")
+  photo.save
 end
 
 def generate_likes

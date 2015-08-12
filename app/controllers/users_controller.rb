@@ -9,6 +9,12 @@ class UsersController < ApplicationController
   # Only a user can see his/her own edit page, or delete his/her account
   before_action :require_current_user, :only => [:edit, :update, :destroy]
 
+  def index
+    # fail
+    @query = params[:query]
+    @users = User.filter_results(@query)
+  end
+
   def new
     if cookies[:auth_token]
       flash[:success] = "Welcome back #{current_user.name}!"

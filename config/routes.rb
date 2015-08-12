@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   root 'users#new'
 
-  resources :users, except: [:index] do
+  resources :users do
     resource :timeline, only: [:show]
     resource :friendings, :only => [:create, :destroy]
     resources :friends, only: [:index]

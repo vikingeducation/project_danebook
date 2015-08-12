@@ -91,7 +91,22 @@ class User < ActiveRecord::Base
   after_create :delay_welcome_email
 
 
-  # ----------------------- Methods --------------------
+  # ----------------------- Class Methods --------------------
+
+
+  def self.filter_results(query)
+    where("first_name ILIKE ? OR last_name ILIKE ?", "%#{query}%", "%#{query}%").
+    includes(:profile, :profile_pic).
+    order("first_name ASC, last_name ASC")
+  end
+
+
+  def self.send_welcome_email(id)
+    user = User.find(id)
+    UserMailer.welcome(user).deliver
+  end
+
+  # ----------------------- Instance Methods --------------------
 
   def name
     "#{first_name} #{last_name}"
@@ -115,11 +130,6 @@ class User < ActiveRecord::Base
 
   def build_profile
     Profile.new(user_id: self.id).save
-  end
-
-  def self.send_welcome_email(id)
-    user = User.find(id)
-    UserMailer.welcome(user).deliver
   end
 
   def delay_welcome_email

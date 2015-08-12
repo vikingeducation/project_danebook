@@ -1,0 +1,22 @@
+<main class="container" id = "users-index">
+
+  <div class="row">
+    <div class="col-xs-12 text-center">
+      <h5>Showing <%= @users.count %> users whose first or last names contain "<%= @query %>"</h5>
+    </div>
+  </div>
+
+  <section id="search-results"> <!-- Whole results table -->
+
+    <header>
+      <div class="row">
+        <div class="col-xs-12">
+          <h2>Search Results</h2>
+        </div>
+      </div>
+    </header>
+
+    <%= render @users %>
+
+  </section>
+</main>

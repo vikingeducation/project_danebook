@@ -1,40 +1,44 @@
 <nav class = "navbar navbar-default navbar-fixed-top" id = "navbar-color">
-    <div class = "container-fluid" >
-      <div class = "navbar-header">
+  <div class = "container-fluid" >
+    <div class = "navbar-header">
 
-        <button type="button" class="btn btn-navbar navbar-toggle collapsed" id = "toggle-colors" data-toggle="collapse" data-target="#navbar">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
+      <button type="button" class="btn btn-navbar navbar-toggle collapsed" id = "toggle-colors" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
 
+      <div id="logo-container">
         <%= link_to user_timeline_path(current_user), class: "navbar-brand" do %>
-          <%= image_tag 'danish_flag.gif', :class => "img-circle img-responsive", :height => "30px", :width => "40px" %>
+          <%= image_tag 'danish_flag.gif', :class => "img-circle img-responsive" %>
         <% end %>
-        <%= link_to "Danebook", user_timeline_path(current_user), id: "brand-color", class: "navbar-brand" %>
-      </div>
 
-      <div id = "navbar" class = "navbar-collapse collapse">
-
-        <form class="navbar-form navbar-left" role = "search">
-          <div class = "form-group">
-            <input type="search" class = "form-control" placeholder = "Search for Users" size = "30">
-          </div>
-
-          <button type = "submit" class = "btn btn-default">
-            Submit  <span class="glyphicon glyphicon-search"></span>
-          </button>
-        </form>
-
-        <p class="navbar-text navbar-right">
-          Signed in as 
-          <%= link_to "#{current_user.name}", current_user, class: "navbar-link" %>
-          <%= link_to session_path, method: :delete, class: "btn btn-sm" do %>
-            <span class="glyphicon glyphicon-log-out"></span>Log out
-          <% end -%>
-        </p>
-
+      <%= link_to "Danebook", user_timeline_path(current_user), id: "brand-color", class: "navbar-brand" %>
       </div>
     </div>
 
-  </nav>
+    <div id = "navbar" class = "navbar-collapse collapse">
+
+      <%= form_tag users_path, method: :get, class: "navbar-form navbar-left" do %>
+        <div class = "form-group">
+          <%= text_field_tag :query, "", class: "form-control", placeholder: "Search for Users", size: "25" %>
+        </div>
+
+        <%= button_tag type: "submit", class: "btn btn-default" do %>
+            Search  <span class="glyphicon glyphicon-search"></span>
+        <% end -%>
+      <% end -%>
+
+      <p class="navbar-text navbar-right">
+        Signed in as 
+        <%= link_to "#{current_user.name}", current_user, class: "navbar-link" %>
+        <%= link_to session_path, method: :delete, class: "btn btn-sm" do %>
+          <span class="glyphicon glyphicon-log-out"></span>Log out
+        <% end -%>
+      </p>
+
+    </div>
+
+  </div>
+
+</nav>

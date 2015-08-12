@@ -2,7 +2,7 @@
 <%= form_for(Comment.new ) do |f| %>
 <div class="panel-footer clearfix">
   <div class="pull-right">
-    <%= link_to "Delete", post_path(p), method: :delete  %>
+    <%= link_to "Delete", post_path(id: p.id, profile_id: p.profile.id), method: :delete  %>
   </div>
   <div >
     <%=like_str(p) %>

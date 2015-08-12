@@ -1,5 +1,6 @@
 class SessionsController < ApplicationController
-  skip_before_action :direct_to_signup
+skip_before_action :direct_to_signup, only: :create
+
   def create
     # fail
     @user = User.find_by_email(params[:user][:email])

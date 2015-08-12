@@ -1,15 +1,27 @@
     <div class="row">
-      <nav class="col-md-7 col-md-offset-2">
+      <nav class=" col-md-offset-2">
         <ul class="nav nav-tabs">
           <li><a href="timeline.html">Timeline</a></li>
-          <li class="active"><a href="about.html">About</a></li>
-          <li><a href="photos.html">Photos <span class="unread-number">(123)</span></a></li>
-          <li><a href="friends.html">Friends <span class="unread-number">(542)</span></a></li>
+          <li class="active">
+            <a href="about.html">About</a>
+          </li>
+          <li>
+            <a href="photos.html">Photos 
+              <span class="unread-number">(123)</span>
+            </a>
+          </li>
+          <li>
+            <a href="friends.html">Friends 
+              <span class="unread-number">(542)</span>
+            </a>
+          </li>
+       
+          <li class="pull-right">
+            <a href="about_edit.html" >Edit Profile</a>
+          </li>
+          <li class="pull-right">
+            <%= relationship(current_user, :user_id %>
+          </li>
         </ul>
       </nav>
-      <div class="col-md-2 pull-right">
-        <ul class="nav profile-link">
-          <li><a href="about_edit.html" class="pull-right ">Edit Profile</a></li>
-        </ul>
-      </div>
     </div>

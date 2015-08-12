@@ -90,7 +90,7 @@ count_of_users = User.count
 200.times do
   user1_id = User.offset(rand(count_of_users)).first.id
   user2_id = User.offset(rand(count_of_users)).first.id
-  Friending .create(friender_id: user1_id, friend_id: user2_id) if user1_id != user2_id
+  Friending.create(friender_id: user1_id, friend_id: user2_id) && Friending.create(friender_id: user2_id, friend_id: user1_id)  if user1_id != user2_id
 end
 
 

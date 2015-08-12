@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150810233440) do
+ActiveRecord::Schema.define(version: 20150811173948) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "author_id"
@@ -27,10 +27,11 @@ ActiveRecord::Schema.define(version: 20150810233440) do
   add_index "comments", ["post_id"], name: "index_comments_on_post_id"
 
   create_table "friendings", force: :cascade do |t|
-    t.integer  "friend_id",   null: false
-    t.integer  "friender_id", null: false
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.integer  "friend_id",                           null: false
+    t.integer  "friender_id",                         null: false
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.string   "status",      default: "not_friends"
   end
 
   create_table "likes", force: :cascade do |t|

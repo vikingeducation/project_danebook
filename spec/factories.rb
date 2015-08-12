@@ -4,7 +4,7 @@ FactoryGirl.define do  factory :photo do
 
 
   factory :user do
-    first_name  "foo"
+    first_name  "Foo"
     last_name   "Bar"
     email       "foo@bar.com"
     password "password"
@@ -21,5 +21,11 @@ FactoryGirl.define do  factory :photo do
     about_me          "i code"
     user_id           1
   end
+
+  factory :post do
+    body  "Just livin the posting dream"
+    user
+  end
+
 
 end

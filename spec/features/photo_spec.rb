@@ -36,6 +36,12 @@ feature 'Uploading Photos' do
 
       # Joe is redirected to the show page for his image.
       expect(page).to have_content("Set as profile")
+
+      # Joe clicks on his timeline button and sees that his sidebar also
+      # only has one photo.
+      click_link "Timeline"
+      expect(page).to have_content("Photos (1)", count: 2)
+      expect(page).to have_css(".col-xs-4", count: 1)
     end
   end
 

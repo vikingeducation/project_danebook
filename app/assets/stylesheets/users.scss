@@ -20,3 +20,26 @@
 .login-form {
 	margin-top: 12px;
 }
+
+.info-cover-photo img{
+	max-width: 100%
+}
+
+.profile-picture-large, .profile-picture-small{
+	background-color: white;
+}
+
+.profile-name-large h2{
+	-webkit-text-stroke: 1px #000;
+}
+
+.profile-name-small h2{
+	-webkit-text-stroke: 1px #000;
+}
+
+.info-picture-name-button {
+	position: relative;
+	height:100%;
+	top:-100px;
+
+}

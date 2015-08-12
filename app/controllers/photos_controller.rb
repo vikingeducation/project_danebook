@@ -40,7 +40,7 @@ class PhotosController < ApplicationController
     end
 
     if @user.save
-      flash[:success] = "Successfully updated your profile photo!"
+      flash[:success] = "Successfully updated your photo!"
     else
       flash[:notice] = "Couldn't update your profile photo."
     end

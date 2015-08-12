@@ -5,24 +5,37 @@
     <!-- This row will hold the cover photo -->
     <div class="row">
       <div class="col-md-12">
-        <%= image_tag "default_cover.jpg", class:"cover-photo"%>
-      </div>
+        <div class="row">
+          <div class="info-cover-photo text-center">
+            <%= display_cover_photo(@user) %>
+          </div>
+        </div>
 
-      <!-- We have a resized profile photo and name that plays nice with smaller screens, but extra small in certain configurations is very difficult so I have opted to just turn off the cover photo and name when the screen is extra small. -->
-      <div class="profile-picture-large hidden-xs hidden-sm">
-        <%= display_profile_photo(@user) %>
-      </div>
-      <div class="profile-picture-small hidden-xs hidden-md hidden-lg">
-        <%= display_profile_photo(@user) %>
-      </div>
-      <div class="profile-name-large hidden-xs hidden-sm">
-        <h2> <%= @user.full_name %> </h2>
-      </div>
-      <div class="profile-name-small hidden-xs hidden-md hidden-lg">
-        <h2> <%= @user.full_name %> </h2>
-      </div>
-      <div class="profile-name-large friend_button">
-          <%= friend_button %>
+        <!-- We have a resized profile photo and name that plays nice with smaller screens, but extra small in certain configurations is very difficult so I have opted to just turn off the cover photo and name when the screen is extra small. -->
+        <div class="row info-picture-name-button">
+          <div class="col-xs-3">
+            <div class="profile-picture-large hidden-xs hidden-sm">
+              <%= display_profile_photo(@user) %>
+            </div>
+            <div class="profile-picture-small hidden-xs hidden-md hidden-lg">
+              <%= display_profile_photo(@user) %>
+            </div>
+          </div>
+
+          <div class="col-xs-3">
+            <div class="profile-name-large hidden-xs hidden-sm">
+              <h2> <%= @user.full_name %> </h2>
+            </div>
+            <div class="profile-name-small hidden-xs hidden-md hidden-lg">
+              <h2> <%= @user.full_name %> </h2>
+            </div>
+          </div>
+          <div class="col-xs-2">
+            <div class="profile-name-large">
+                <%= friend_button %>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <!-- This row will hold the bar under the cover photo -->

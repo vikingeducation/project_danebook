@@ -2,6 +2,7 @@ require 'rails_helper'
 
 describe Comment do
   AWS.stub!
+  ActionMailer::Base.delivery_method = :test
   let(:comment) { create(:comment) }
   describe '#posted_on' do
     it 'should respond to posted on method' do
@@ -19,10 +20,12 @@ describe Comment do
 
     # How do I test that UserMailer.comment_notification(args).deliver!
     # is called?
-    # it 'should use the proper mailer method to send mail' do
-    #   expect(UserMailer).to receive(:comment_notification)
-    #   new_comment = create(:comment)
-    # end
+    it 'should use the proper mailer method to send mail' do
+      expect(UserMailer).to receive(:comment_notification)
+      new_comment = create(:comment)
+      Delayed::Worker.new.work_off
+    end
+
     it 'should send email if commentable owner is not comment author' do
       new_commentable = create(:post, author: user)
       other_user = create(:user)

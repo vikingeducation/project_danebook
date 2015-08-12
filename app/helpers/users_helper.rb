@@ -40,9 +40,18 @@ module UsersHelper
 
   def display_profile_photo(user)
     if user.profile_photo
-      return image_tag @user.profile_photo.uploaded_file(:small)
+      return image_tag user.profile_photo.uploaded_file(:small)
     else
-      return image_tag "harry.jpg"
+      return image_tag "https://s3.amazonaws.com/basicbucketdkelsey/default.svg"
+    end
+  end
+
+  def display_cover_photo(user)
+    if user.cover_photo
+      return image_tag user.cover_photo.uploaded_file
+    else
+      return image_tag "https://s3.amazonaws.com/basicbucketdkelsey/default_cover.jpg",
+       alt: "Image by Sam Hawley: https://www.flickr.com/photos/samhawleywood/8333235080"
     end
   end
 end

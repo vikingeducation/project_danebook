@@ -6,8 +6,8 @@
 				<div class="row">
 					<div class="col-xs-12">
 						<div class="row">
-							<div class="col-sm-1">
-								<%= image_tag "default_photo.png" %></img>
+							<div class="col-sm-2 photo-page-photo">
+								<%= display_profile_photo(comment.author) %></img>
 							</div>
 							<div class="col-sm-5">
 								<div>
@@ -33,7 +33,7 @@
 								</div>
 							<% end %>
 							<% if comment.likes.count > 0 %>
-								<div class="col-sm-5">
+								<div class="col-sm-8">
 									<%= present_likes_count(comment).html_safe %>
 								</div>
 							<% end %>

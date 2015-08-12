@@ -14,7 +14,11 @@ class PostsController < ApplicationController
   end
 
   def index
-    user = User.find(params[:user_id])
+    if params[:user_id]
+      user = User.find(params[:user_id])
+    else
+      user = current_user
+    end
     @profile = user.profile
     @posts = user.posts.order(:created_at => :DESC)
     @post = user.posts.build

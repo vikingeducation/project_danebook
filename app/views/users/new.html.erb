@@ -1,4 +1,4 @@
-<div class="navbar navbar-default danebook-navbar">
+<div class="navbar navbar-default navbar-fixed-top danebook-navbar">
     <!-- Can't tell if the mockup wants Danebook logo to the very left of the page at all times, or centered like the main content container. -->
     <div class="container">
       <div class="navbar-header danebook-navbar-logo">
@@ -32,8 +32,8 @@
                 <%= password_field_tag :password, value=nil, {:placeholder => "Password", :class=>"form-control"}%>
               <% end %>
             </div>
-
-            <%= submit_tag "Log in", class: "btn btn-primary sign-in-button"%>
+            
+            <%= submit_tag "Log in", class: "btn btn-default"%>
           <% end %>
         <% end %>
           

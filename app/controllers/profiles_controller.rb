@@ -11,9 +11,8 @@ class ProfilesController < ApplicationController
 
   def update
     if current_user.profile.update(profile_params)
-      #check if valid!
-      current_user.email = params[:user][:email]
-      current_user.save
+      
+      # current_user.save
       flash[:success] ="Profile updated successfully!"
       redirect_to user_profiles_path(current_user)
     else
@@ -26,6 +25,6 @@ class ProfilesController < ApplicationController
   private
 
     def profile_params
-      params.require(:profile).permit(:college_name, :hometown, :current_home, :telephone, :words_to_live_by, :about_me)
+      params.require(:profile).permit(:college_name, :hometown, :current_home, :telephone, :words_to_live_by, :about_me, :profile_photo_id, :cover_photo_id)
     end
 end

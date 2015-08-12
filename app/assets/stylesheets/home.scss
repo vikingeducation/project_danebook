@@ -1,5 +1,25 @@
 body{
-	margin-top: 85px;
+	margin-top: 60px;
+}
+
+.navbar-right {
+	li a {
+		color: white !important;
+	}
+}
+
+#user_first_name {
+	width: 100%;
+}
+
+.cover-wrap {
+	height: 315px;
+	overflow: hidden;
+}
+
+.cover-img {
+	min-width: 100%;
+	min-height: 100%;
 }
 
 .danebook-navbar{

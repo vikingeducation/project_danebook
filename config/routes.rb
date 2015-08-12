@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: "users#show"
+  root to: "posts#index"
   get '/home' => "staticpages#home"
   get '/timeline' => "staticpages#timeline"
   get '/friends' => "staticpages#friends"

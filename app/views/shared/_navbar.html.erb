@@ -10,18 +10,17 @@
 						<span class="icon-bar"></span>
 					</button>
 					<div class="navbar-brand" id="danebook-brand"aria-expanded="true">
-						<a href="home.html">
+						<a href="#">
 							<%= image_tag "logo.gif", class:"img-circle danebook-logo"%>
 						</a>Danebook
 					</div>
 				</div>
 				<div id="navbar"  class="navbar-collapse collapse">
 					<div class="col-md-6">
-						<div class="form-group">
-							<%= form_tag('/users', :class=>"navbar-form navbar-left", :method => :get)  do %>
-						</div>
-						
-							<%= text_field_tag("user[first_name]", nil, :class=> "form-control danebook-search") %>
+						<%= form_tag('/users', :class=>"navbar-form navbar-left", :method => :get)  do %>
+							<div class="form-group">
+								<%= text_field_tag("user[first_name]", nil, :class=> "form-control") %>
+							</div>
 							<%= submit_tag "Search", :class=> "btn btn-default" %>
 						<% end %>
 					</div>

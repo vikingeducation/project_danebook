@@ -7,20 +7,13 @@
     </div>
 
   <!-- We can just put them all in one row since cols that go past 12 overflow into a new row! -->
+
     <div class="row timeline-photos">
-        <div class="col-xs-4"><a href="#"><%= image_tag "default_photo.png" %></a></div>
-      <div class="col-xs-4"><a href="#"><%= image_tag "default_photo.png" %></a></div>
-        <div class="col-xs-4"><a href="#"><%= image_tag "default_photo.png" %></a></div>
-      <div class="col-xs-4"><a href="#"><%= image_tag "default_photo.png" %></a></div>
-        <div class="col-xs-4"><a href="#"><%= image_tag "default_photo.png" %></a></div>
-      <div class="col-xs-4"><a href="#"><%= image_tag "default_photo.png" %></a></div>
-        <div class="col-xs-4"><a href="#"><%= image_tag "default_photo.png" %></a></div>
-      <div class="col-xs-4"><a href="#"><%= image_tag "default_photo.png" %></a></div>
-        <div class="col-xs-4"><a href="#"><%= image_tag "default_photo.png" %></a></div>
-      <div class="col-xs-4"><a href="#"><%= image_tag "default_photo.png" %></a></div>
-        <div class="col-xs-4"><a href="#"><%= image_tag "default_photo.png" %></a></div>
-      <div class="col-xs-4"><a href="#"><%= image_tag "default_photo.png" %></a></div>
-      </div>
+      <% @profile.user.photos.each do |photo| %>
+        <div class="col-xs-4">
+          <%= link_to image_tag( photo.photo_data.url(:thumb) ), user_photo_path(@profile.user, photo) %>
+        </div>
+      <% end %>
 
       <div class="row">
         <div class="col-xs-12">
@@ -30,4 +23,5 @@
 
     </div>
   </div>
+</div>
   

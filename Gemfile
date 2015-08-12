@@ -29,7 +29,15 @@ gem 'bcrypt', '~> 3.1.7'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# Use postgres as default
 gem 'pg'
+
+# Use paperclip for attaching and converting photo files
+gem 'paperclip'
+# Use figaro for sensitive token management
+gem 'figaro'
+# Use Amazon S3 for photo storage and delivery
+gem 'aws-sdk'
 
 group :production do
 end
@@ -43,12 +51,12 @@ group :development, :test do
   gem 'spring'
   # Use sqlite3 as the database for Active Record
   # gem 'sqlite3'
-  # Use jazz_hands for debugging. It includes pry and byebug. 
+  # Use jazz_hands for debugging. It includes pry and byebug.
   gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'rspec-rails'
-  
+
   # Mock data and associations for all tests
   gem 'factory_girl_rails', '~> 4.0'
 end

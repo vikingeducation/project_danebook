@@ -5,8 +5,8 @@ class User < ActiveRecord::Base
 	# likes are polymorphic
 	has_many 	:likes
 	has_many 	:posts_liked_by_users, through: :likes, source: :post
-
 	has_many :comments
+	has_many :photos
 
 	has_secure_password
 

@@ -1,0 +1,40 @@
+<main>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <img src="/images/hogwarts_small.jpg" class="cover-photo hidden-xs hidden-sm img-responsive" alt="profile cover photo">
+        <div class="profile-photo">
+          <img src="/images/harry_potter_small.jpg" class="hidden-xs hidden-sm">
+        </div>
+      </div> <!-- end of row -->
+    </div>
+
+    <div class="row">
+      <%= render 'layouts/navbar' %>
+    </div> <!-- end of row -->
+
+    <section class="panel panel-default panel-custom">
+
+      <div class="panel-heading clearfix">
+        <h4 class="panel-text text-center">Photos</h4>
+      </div>
+
+      <div class="panel-body">
+        <div class="row">
+        </div>
+        <div class="row">
+          <h5>OR</h5>
+        </div>
+        <div class="row">
+          <p>Select a photo from your hard drive...</p>
+          <%= form_for [:user, @photo] do |f| %>
+            <%= f.file_field :image, class: 'image-file-field' %>
+            <%= f.hidden_field :user_id, value: current_user.id %>
+            <%= f.submit "Upload Photo", class: 'btn btn-success' %>
+          <% end %>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>

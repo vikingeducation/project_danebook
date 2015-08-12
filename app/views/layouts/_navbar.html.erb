@@ -1,8 +1,8 @@
 <nav class="col-md-7 col-md-offset-2">
 	<ul class="nav nav-tabs">
-		<li><%= link_to 'Timeline', user_timeline_path %><li>
-		<li><%= link_to 'About', user_about_path %><li>
-		<li><%= link_to 'Photos', photos_path %><li>
+		<li><%= link_to 'Timeline', user_timeline_path(object_owner.id) %><li>
+		<li><%= link_to 'About', user_about_path(object_owner.id) %><li>
+		<li><%= link_to 'Photos', user_photos_path(object_owner.id) %><li>
 		<li><%= link_to 'Friends', user_friendships_path(object_owner.id) %><li>
 	</ul>
 </nav>

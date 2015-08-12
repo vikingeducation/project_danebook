@@ -1,6 +1,8 @@
 class Profile < ActiveRecord::Base
 	belongs_to :user
 	has_many :posts
+  belongs_to :profile_photo, class_name: 'Photo'
+  belongs_to :cover_photo, class_name: 'Photo'
 
 
 # def home_city_and_country

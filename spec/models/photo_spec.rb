@@ -15,9 +15,8 @@ describe Photo do
   end
 
   it "must be an image file" do
-    photo = build(:photo, content_type: "something")
+    photo = build(:photo, picture_content_type: "something")
     expect(photo).to_not be_valid
   end
-
 
 end

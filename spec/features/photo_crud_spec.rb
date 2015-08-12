@@ -19,11 +19,19 @@ feature 'User photo CRUD' do
       @pic_file_path = File.expand_path('../support/test.png', File.dirname(__FILE__))
     end
 
-    scenario "can upload to his/her photos" do
+    scenario "can upload to his/her photos from local drive" do
       expect(page).to have_content("Add Photo")
       click_link "Add Photo"
       attach_file "photo_picture", @pic_file_path
       expect{click_button "Upload Photo"}.to change(Photo, :count).by(1)
+      expect(page).to have_content("You uploaded a photo".upcase)
+    end
+
+    scenario "can upload to his/her photos from weblink" do
+      expect(page).to have_content("Add Photo")
+      click_link "Add Photo"
+      fill_in "photo_photo_link", with: "https://www.google.com/images/srpr/logo11w.png"
+      expect{click_button "Use Web Photo"}.to change(Photo, :count).by(1)
       expect(page).to have_content("You uploaded a photo".upcase)
     end
 

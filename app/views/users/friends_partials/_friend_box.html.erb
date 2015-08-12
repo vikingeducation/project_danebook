@@ -1,0 +1,14 @@
+<div class="row text-center friends-list">
+  <div class="col-sm-3">
+    <div class="thumbnail">
+    <%= image_tag friend.profile.avatar_url %>
+    </div>
+  </div>
+  <div class="col-sm-4 friends-margin">
+    <h5> <%= link_to friend.full_name, profile_timeline_path(friend.profile) %></h5>    
+    <p class="grayed-out"><%= friend.friends.count %></p>
+  </div>
+  <div class="col-sm-5 friends-margin">
+    <%= link_to "Unfriend", friending_path(friend), method: :delete, class: "btn btn-danger" %>
+  </div>
+</div>

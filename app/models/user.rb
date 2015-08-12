@@ -37,25 +37,23 @@ class User < ActiveRecord::Base
     save!
   end
 
+  def full_name
+    "#{self.first_name} #{self.last_name}"
+  end
+
   def friends
-
     self.friended_users & self.users_friended_by
+  end
 
+  def friends_with?(user)
+    self.friends.include?(user)
+  end
 
+  def friended_by?(user)
+    self.users_friended_by.include?(user)
+  end
 
-    # sql = "
-    # SELECT DISTINCT users.*
-    # FROM users
-    # JOIN friendings
-    # ON users.id = friendings.friender_id
-    # JOIN friendings AS reflected_friendings
-    # ON reflected_friendings.friender_id = friendings.friend_id
-    # WHERE reflected_friendings.friender_id = ?
-    # "
-
-    # # Pass in our sql and the User id that we're expecting
-    # # Note that these are a single Array input
-    # # because find_by_sql is weird.
-    # User.find_by_sql([sql,self.id])
+  def friended?(user)
+    self.friended_users.include?(user)
   end
 end

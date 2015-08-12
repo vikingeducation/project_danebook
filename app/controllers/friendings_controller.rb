@@ -16,5 +16,6 @@ class FriendingsController < ApplicationController
     current_user.friended_users.delete(unfriended_user)
     flash[:success] = "Successfully unfriended"
     redirect_to profile_timeline_path(current_user.profile)
+    binding.pry
   end
 end

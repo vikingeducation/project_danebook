@@ -37,6 +37,14 @@ User.all.each do |user|
   user.profile.words_to_live_by = Faker::Lorem.sentence
   user.profile.about_me = Faker::Lorem.paragraph(10)
   user.profile.save
+
+  users_arr = (1..User.count).to_a
+
+  rand(0..9).times do
+    friend = users_arr.delete(users_arr.sample)
+    next if friend == user.id
+    user.friended_users << User.find(friend)
+  end
 end
 
 puts "Assigned Profiles to users; #{Time.now - t_start} seconds"
@@ -72,6 +80,8 @@ likeables = ["Post", "Comment"]
   like.save
 end
 puts "Created Likes; #{Time.now - t_start} seconds"
+
+
 
 
 

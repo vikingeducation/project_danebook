@@ -38,13 +38,14 @@ class ProfilesController < ApplicationController
     render :about
   end
 
+
   private
 
 
 
   def profile_params
     params.require(:profile).permit(:college, :hometown, :current_town,
-      :telephone, :words_to_live_by, :about_me)
+      :telephone, :words_to_live_by, :about_me, :profile_pic)
   end
 
 end

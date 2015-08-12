@@ -1,0 +1,23 @@
+<main>
+    <div class="container">
+      <%= render partial: 'shared/cover' %>
+      <%= render partial: '/shared/nav_menu' %>
+
+  <section class="panel panel-default panel-custom">
+
+    <div class="panel-heading clearfix">
+      <h4 class="panel-text text-center">Friends</h4>
+    </div><!-- end of panel -->
+
+    <div class="panel-body">
+      <div class="row about-info">
+        <% @user.friends.each do |friend| %>
+        <div class="col-md-6">
+        <%= render partial: 'users/friends_partials/friend_box', locals: {friend: friend} %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </section>
+  </div> <!-- end of container -->
+</main>

@@ -43,4 +43,14 @@ FactoryGirl.define do  factory :friending do
     user
   end
 
+  factory :friender, class: "User" do
+    association :friended_users, factory: :user
+  end
+
+  factory :friendee, class: "User" do
+    association :users_friended_by, factory: :user
+  end
+
+
+
 end

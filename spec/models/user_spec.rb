@@ -36,5 +36,83 @@ describe User do
     expect(token).not_to eql(regen_token)
   end
 
+   context "Friending" do
+
+    #All tests are from user_one's perspective
+    let(:user_one){create(:user)}
+    let(:user_two){create(:user)}
+
+    context "friends_with?" do
+
+      it "should return true for friends" do
+        user_one.friended_users << user_two
+        user_two.friended_users << user_one
+        expect(user_one.friends_with?(user_two)).to be(true) 
+      end
+
+      it "should return false only a friend request was received" do
+        user_two.friended_users << user_one
+        expect(user_one.friends_with?(user_two)).to be(false) 
+      end
+
+      it "should return false if only a friend request was sent" do
+        user_one.friended_users << user_two
+        expect(user_one.friends_with?(user_two)).to be(false) 
+      end
+
+      it "should return false if no request was sent" do
+        expect(user_one.friends_with?(user_two)).to be(false) 
+      end
+    end
+
+    context "friended_by?" do
+
+      it "should return true for friends" do
+        user_one.friended_users << user_two
+        user_two.friended_users << user_one
+        expect(user_one.friended_by?(user_two)).to be(true) 
+      end
+
+      it "should return true if only a friend request was received" do
+        user_two.friended_users << user_one
+        expect(user_one.friended_by?(user_two)).to be(true) 
+      end
+
+      it "should return false only a friend request was sent" do
+        user_one.friended_users << user_two
+        expect(user_one.friended_by?(user_two)).to be(false) 
+      end
+
+      it "should return false if no requests was sent" do
+        expect(user_one.friended_by?(user_two)).to be(false) 
+      end
+    end
+
+    context "friended?" do
+
+      it "should return true for friends" do
+        user_one.friended_users << user_two
+        user_two.friended_users << user_one
+        expect(user_one.friended?(user_two)).to be(true) 
+      end
+
+      it "should return false only a friend request was received" do
+        user_two.friended_users << user_one
+        expect(user_one.friended?(user_two)).to be(false) 
+      end
+
+      it "should return true if only a friend request was sent" do
+        user_one.friended_users << user_two
+        expect(user_one.friended?(user_two)).to be(true) 
+      end
+
+      it "should return false if no request was sent" do
+        expect(user_one.friended?(user_two)).to be(false) 
+      end
+    end
+
+
+  end
+
   
 end

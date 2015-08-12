@@ -40,26 +40,32 @@ module ProfilesHelper
     else 
       return link_to("#{friend_button_text(user)}", "#{friendings_path(id: @user.id)}" , method: :post)
     end
-      str
   end
 
   def friend_button_text(user)
     return unless current_user
     if current_user == user
       str = ''
-    elsif current_user.friends.include?(user)
+    elsif current_user.friends_with?(user)
       str = 'You are friends'
-    elsif current_user.friended_users.include?(user) && 
-          !current_user.users_friended_by.include?(user)
+    elsif request_pending?(user)
       str = 'Friend Request Pending'
-    elsif !current_user.friended_users.include?(user) && 
-          current_user.users_friended_by.include?(user)
+    elsif request_recieved?(user)
       str = "Accept #{user.first_name}'s Friend Request"
     else
       str = "Add #{user.first_name} as a Friend"
     end
     str
   end
+
+  def request_pending?(user)
+    current_user.friended?(user) && !current_user.friended_by?(user)
+  end
+
+  def request_recieved?(user)
+    !current_user.friended?(user) && current_user.friended_by?(user)
+  end
+
 
   private
 

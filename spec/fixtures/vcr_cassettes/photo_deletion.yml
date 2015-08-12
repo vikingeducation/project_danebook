@@ -1,0 +1,126 @@
+---
+http_interactions:
+- request:
+    method: head
+    uri: https://basicbucketdkelsey.s3.amazonaws.com/photos/uploaded_files/000/000/491/original/test_photo.jpg
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby/1.64.0 ruby/2.2.0 x86_64-linux
+      Date:
+      - Wed, 12 Aug 2015 00:24:34 GMT
+      Authorization:
+      - AWS AKIAJ5FG4NKYIASOUHPA:RjCb6e2Sr0apoyIEKu3cMyqe9h4=
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      X-Amz-Request-Id:
+      - C6BBEF1751481411
+      X-Amz-Id-2:
+      - U/FBAkTBK1Pt08tg1swkzbP+U0fEr+Uw5kfQWo2IGWrHRnoDlHCh3YrEXMBDS1BDK4CiQmYZGIU=
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Wed, 12 Aug 2015 00:24:33 GMT
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 12 Aug 2015 00:24:34 GMT
+- request:
+    method: head
+    uri: https://basicbucketdkelsey.s3.amazonaws.com/photos/uploaded_files/000/000/491/medium/test_photo.jpg
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby/1.64.0 ruby/2.2.0 x86_64-linux
+      Date:
+      - Wed, 12 Aug 2015 00:24:34 GMT
+      Authorization:
+      - AWS AKIAJ5FG4NKYIASOUHPA:5Otqazvp6XKXSAcjgDgSemAmzoA=
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      X-Amz-Request-Id:
+      - CB184A7CED607FAF
+      X-Amz-Id-2:
+      - qxb7u88cUPxO8E9eI6XgNGMrVFNIHzd+JuvUhKK6DSDuAqL2moqxPtyTfoK/KjZQ
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Wed, 12 Aug 2015 00:24:33 GMT
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 12 Aug 2015 00:24:34 GMT
+- request:
+    method: head
+    uri: https://basicbucketdkelsey.s3.amazonaws.com/photos/uploaded_files/000/000/491/small/test_photo.jpg
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Content-Type:
+      - ''
+      Accept-Encoding:
+      - ''
+      User-Agent:
+      - aws-sdk-ruby/1.64.0 ruby/2.2.0 x86_64-linux
+      Date:
+      - Wed, 12 Aug 2015 00:24:34 GMT
+      Authorization:
+      - AWS AKIAJ5FG4NKYIASOUHPA:7VerDRLTOyK0R9jQyAnvRFvhIJY=
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      X-Amz-Request-Id:
+      - 46D6B846917CCEF7
+      X-Amz-Id-2:
+      - xYmkPNa2iXasRo08IV5O9O1E71CSI7C1xEuwDi05RlrpQN0zR7FI8JrWxoQSXFRHt5k400N5eEs=
+      Content-Type:
+      - application/xml
+      Transfer-Encoding:
+      - chunked
+      Date:
+      - Wed, 12 Aug 2015 00:24:34 GMT
+      Server:
+      - AmazonS3
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Wed, 12 Aug 2015 00:24:34 GMT
+recorded_with: VCR 2.9.3

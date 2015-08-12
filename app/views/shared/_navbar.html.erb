@@ -18,7 +18,7 @@
 					<div class="col-md-6">
 					<%= form_tag users_path, method: "get" do %>
 					    <%= text_field_tag :name, '', class: "form-control danebook-search", placeholder: "Search for Users" %>
-					    <%= submit_tag :name, type: 'hidden' %>
+					    <%= submit_tag :name, {id: "hidden_search_button"} %>
 					<% end %>
 
 					</div>

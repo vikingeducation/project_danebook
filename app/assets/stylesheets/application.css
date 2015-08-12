@@ -13,3 +13,8 @@
  *= require_tree .
  *= require_self
  */
+
+#hidden_search_button {
+	position: fixed;
+	margin-top: -100px;
+}

@@ -1,7 +1,7 @@
 <%= form_for Comment.new do |f| %>
 <%= f.hidden_field :user_id, {value: user_id} %>
-<%= f.hidden_field :commentable_id, value: post.id %>
-<%= f.hidden_field :commentable_type, value: post.class %>
+<%= f.hidden_field :commentable_id, value: commentable.id %>
+<%= f.hidden_field :commentable_type, value: commentable.class %>
 <div class="row">
 	<div class="col-xs-12 timeline-comment-box">
 		<%= f.text_area :body, {class: "form-control", placeholder: "Write a comment."} %>

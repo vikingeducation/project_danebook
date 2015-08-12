@@ -10,10 +10,10 @@
 
       <!-- We have a resized profile photo and name that plays nice with smaller screens, but extra small in certain configurations is very difficult so I have opted to just turn off the cover photo and name when the screen is extra small. -->
       <div class="profile-picture-large hidden-xs hidden-sm">
-        <%= image_tag "harry.jpg"%>
+        <%= display_profile_photo(@user) %>
       </div>
       <div class="profile-picture-small hidden-xs hidden-md hidden-lg">
-        <%= image_tag "harry.jpg"%>
+        <%= display_profile_photo(@user) %>
       </div>
       <div class="profile-name-large hidden-xs hidden-sm">
         <h2> <%= @user.full_name %> </h2>

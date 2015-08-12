@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: put
-    uri: https://basicbucketdkelsey.s3.amazonaws.com/photos/uploaded_files/000/000/015/original/test_photo.jpg
+    uri: https://basicbucketdkelsey.s3.amazonaws.com/photos/uploaded_files/000/000/027/original/test_photo.jpg
     body:
       encoding: ASCII-8BIT
       string: !binary |-
@@ -777,9 +777,9 @@ http_interactions:
       Expect:
       - 100-continue
       Date:
-      - Tue, 11 Aug 2015 18:13:44 GMT
+      - Tue, 11 Aug 2015 21:00:43 GMT
       Authorization:
-      - AWS AKIAJ5FG4NKYIASOUHPA:AT/qe7R7SDttkOkqBvzhM2UvO70=
+      - AWS AKIAJ5FG4NKYIASOUHPA:IMKYFvR4PZaf3XDMZD5WnX2PIHs=
       Accept:
       - "*/*"
   response:
@@ -788,11 +788,11 @@ http_interactions:
       message: OK
     headers:
       X-Amz-Id-2:
-      - sNlF/LO/9pLIPU0F6tdDS/ieEyNGoW4c0Y/5XvkRbe3v3jeQBAeglDWJWPc7aVbfAS3J+yLJ6+A=
+      - c1NoBy/DZTNi5u/9W66T9G2YSmJKHLYkI65v1LUxbuy6iUBTEC4/OaUpuWlbMXTKH6oAfNmu5HU=
       X-Amz-Request-Id:
-      - 353D3CC637F59AE9
+      - 27EB6B45E4D3B769
       Date:
-      - Tue, 11 Aug 2015 18:13:45 GMT
+      - Tue, 11 Aug 2015 21:00:44 GMT
       Etag:
       - '"4618d8358c2faa6df7c26efdbb339000"'
       Content-Length:
@@ -803,10 +803,10 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Tue, 11 Aug 2015 18:13:44 GMT
+  recorded_at: Tue, 11 Aug 2015 21:00:44 GMT
 - request:
     method: put
-    uri: https://basicbucketdkelsey.s3.amazonaws.com/photos/uploaded_files/000/000/015/medium/test_photo.jpg
+    uri: https://basicbucketdkelsey.s3.amazonaws.com/photos/uploaded_files/000/000/027/medium/test_photo.jpg
     body:
       encoding: ASCII-8BIT
       string: !binary |-
@@ -1595,9 +1595,9 @@ http_interactions:
       Expect:
       - 100-continue
       Date:
-      - Tue, 11 Aug 2015 18:13:44 GMT
+      - Tue, 11 Aug 2015 21:00:44 GMT
       Authorization:
-      - AWS AKIAJ5FG4NKYIASOUHPA:DF/sh+hXxb4DZGNLQA5aZqP7Xng=
+      - AWS AKIAJ5FG4NKYIASOUHPA:rCqfsCLwJ48Mu6/U1owIf4ZFQik=
       Accept:
       - "*/*"
   response:
@@ -1606,11 +1606,11 @@ http_interactions:
       message: OK
     headers:
       X-Amz-Id-2:
-      - 8fxvfBKYASDh+bN1cjzrl5+VuOFIhkpVw6FHivS2KP4iExWMLcNz+NRBTSDbNjwc8NlJFnhEvK0=
+      - 4+wfby0kncDrNJPqrfl5l3AByY84QT98GHiCl9YmI4JxqFTGsoSfL8UsJRvjnWQj+ZnX3bBjGIg=
       X-Amz-Request-Id:
-      - 1E6F8CBEAD7DCEDF
+      - CB589E25771E1CC9
       Date:
-      - Tue, 11 Aug 2015 18:13:45 GMT
+      - Tue, 11 Aug 2015 21:00:45 GMT
       Etag:
       - '"e39d950cfdcee4d0e3f42f546b16fa86"'
       Content-Length:
@@ -1621,10 +1621,10 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Tue, 11 Aug 2015 18:13:45 GMT
+  recorded_at: Tue, 11 Aug 2015 21:00:44 GMT
 - request:
     method: put
-    uri: https://basicbucketdkelsey.s3.amazonaws.com/photos/uploaded_files/000/000/015/small/test_photo.jpg
+    uri: https://basicbucketdkelsey.s3.amazonaws.com/photos/uploaded_files/000/000/027/small/test_photo.jpg
     body:
       encoding: ASCII-8BIT
       string: !binary |-
@@ -2302,9 +2302,9 @@ http_interactions:
       Expect:
       - 100-continue
       Date:
-      - Tue, 11 Aug 2015 18:13:45 GMT
+      - Tue, 11 Aug 2015 21:00:44 GMT
       Authorization:
-      - AWS AKIAJ5FG4NKYIASOUHPA:I/HbxslcfF1uuIWPPaYVUmVf47U=
+      - AWS AKIAJ5FG4NKYIASOUHPA:eoT8RznVi5ObOHhhkK8N85Z+9CA=
       Accept:
       - "*/*"
   response:
@@ -2313,11 +2313,11 @@ http_interactions:
       message: OK
     headers:
       X-Amz-Id-2:
-      - e1GJQYu2y2Wub9JE8UaLwjt8JAGXZ1Rij+F8T/4Jmg6gj3WUy2RUvLxxAieBOXbVlOkiCBlnKfU=
+      - NjY6u2Qh7jsyruCrxumAXjUf8RyGWRot6gpRlT4+wNMhF5OpI/jgWRz0ojlIAdjF
       X-Amz-Request-Id:
-      - DA691C922852C728
+      - D8B57F3C8BFFFFAC
       Date:
-      - Tue, 11 Aug 2015 18:13:46 GMT
+      - Tue, 11 Aug 2015 21:00:45 GMT
       Etag:
       - '"f47a445177c8065b711a13963fcff6d3"'
       Content-Length:
@@ -2328,5 +2328,5 @@ http_interactions:
       encoding: UTF-8
       string: ''
     http_version: 
-  recorded_at: Tue, 11 Aug 2015 18:13:45 GMT
+  recorded_at: Tue, 11 Aug 2015 21:00:44 GMT
 recorded_with: VCR 2.9.3

@@ -37,4 +37,12 @@ module UsersHelper
   def is_own_user?(target)
     current_user.id == target.id
   end
+
+  def display_profile_photo(user)
+    if user.profile_photo
+      return image_tag @user.profile_photo.uploaded_file(:small)
+    else
+      return image_tag "harry.jpg"
+    end
+  end
 end

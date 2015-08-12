@@ -5,7 +5,7 @@
 			<div class="col-xs-12">
 				<div class="row">
 					<div class="col-sm-1">
-						<%= image_tag "harry.jpg" %>
+						<%= display_profile_photo(post.author) %>
 					</div>
 					<div class="col-sm-5">
 						<div>
@@ -50,7 +50,7 @@
 		<% end %>
 		<%= render post.comments %>
 		<% if current_user %>
-			<%= render partial: "posts/comment_form", locals: {post: post, user_id: current_user.id} %>
+			<%= render partial: "posts/comment_form", locals: {commentable: post, user_id: current_user.id} %>
 		<% end %>
 	</div>
 </div>

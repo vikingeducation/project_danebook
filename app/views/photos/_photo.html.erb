@@ -1,7 +1,7 @@
 <div class="col-md-3 photo-page-photo">
 	<div class="ih-item square colored effect3 bottom_to_top">
-		<%= link_to photo.uploader do %>
-    		<div class="img"><%= image_tag photo.uploaded_file, alt:"img"%></div>
+		<%= link_to user_photo_path(photo.uploader, photo) do %>
+    		<div class="img"><%= image_tag photo.uploaded_file(:medium), alt:"img"%></div>
     		<div class="info">
       			<h3><%= photo.uploader.full_name %>'s Photo</h3>
       			<p><%= photo.uploaded_on %></p>

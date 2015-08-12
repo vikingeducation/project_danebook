@@ -3,11 +3,12 @@ module SigninMacros
   # Fills out the form with passing values. Override values by passing
   # them in as arguments in the format fill_out_signup_form(arg1: val1, arg2: val2)
   def login_user(**args)
-    new_user = create(:user)
-    fill_in 'email', with: args[:email] || new_user.email
-    fill_in 'password', with: args[:password] || new_user.password
+    user = args[:previous_user] || create(:user)
+    fill_in 'email', with: args[:email] || user.email
+    fill_in 'password', with: args[:password] || user.password
     find(:css, "#remember_me[value='1']").set(args[:remember_me] || false)
     click_button 'Log In'
+    return user
   end
 
   # Put together after reading the source of 'show_me_the_cookies' gem.

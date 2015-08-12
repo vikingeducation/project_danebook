@@ -1,6 +1,7 @@
 FactoryGirl.define do
   factory :photo do
     uploader
+    uploaded_file { File.new(Rails.root.join('spec', 'asset_specs', 'images', 'test_photo.jpg'))}
   end
 
   factory :user, aliases: [:author, :uploader] do
@@ -31,6 +32,10 @@ FactoryGirl.define do
     factory :commented_post do
       commentable factory: :post
     end
+
+    factory :commented_photo do
+      commentable photo: :photo
+    end
   end
 
   factory :like do
@@ -41,6 +46,10 @@ FactoryGirl.define do
 
     factory :liked_comment do
       likable factory: :comment
+    end
+
+    factory :liked_photo do
+      likable factory: :photo
     end
   end
 

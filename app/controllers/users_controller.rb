@@ -53,6 +53,8 @@ class UsersController < ApplicationController
                                     :password_confirmation,
                                     :dob,
                                     :gender,
+                                    :profile_photo,
+                                    :cover_photo,
                                     profile_attributes: [:college,
                                                          :hometown,
                                                          :location,

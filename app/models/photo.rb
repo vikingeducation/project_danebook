@@ -1,5 +1,5 @@
 class Photo < ActiveRecord::Base
-  has_attached_file :uploaded_file, storage: :s3
+  has_attached_file :uploaded_file, storage: :s3, styles: {medium: "200x200", small: "100x100"}
   validates_attachment_content_type :uploaded_file, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
 
 

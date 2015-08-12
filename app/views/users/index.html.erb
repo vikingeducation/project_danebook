@@ -1,0 +1,17 @@
+<%= render partial: "shared/navbar" %>
+
+<div class="row info-section search_results">
+	<div class="col-md-12">
+		<!-- This row holds the top bar of the about section -->
+		<div class="row info-section-topbar">
+			<div class="col-md-2 col-md-offset-5">
+				<h2>Results</h2>
+			</div>
+		</div>
+		<div class="row">
+			<% @users.each do |user| %>
+			    <%= render partial: "users/user", locals: {friend: user} %>
+			<% end %>
+		</div>
+	</div>
+</div>

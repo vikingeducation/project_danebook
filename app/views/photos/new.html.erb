@@ -1,0 +1,24 @@
+<%= render partial: "shared/navbar" %>
+<main>
+	<%= render partial: "shared/info" %>
+
+		<!-- This row will hold the "About" Information. -->
+		<!-- The info-section and info-section-topbar css classes are re-used for about_edit and about -->
+		<div class="row info-section">
+			<div class="col-md-12">
+				<!-- This row holds the top bar of the about section -->
+				<div class="row info-section-topbar">
+					<div class="col-md-2 col-md-offset-5">
+						<h2>Photos</h2>
+					</div>
+				</div>
+				<div class="row">
+					<%= form_for [:user, @photo] do |f| %>
+						<%= f.label :uploaded_file, "Choose a file!" %>
+						<%= f.file_field :uploaded_file %>
+						<%= f.submit "Upload Photo", class: "btn btn-success" %>
+					<% end %>
+				</div>
+			</div>
+		</div>
+</main>

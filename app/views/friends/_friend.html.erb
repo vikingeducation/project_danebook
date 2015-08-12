@@ -1,0 +1,16 @@
+<div class="col-md-6">
+	<div class="row friends-list">
+		<div class="col-md-2 col-md-offset-1">
+			<%= image_tag "default_photo.png" %>
+		</div>
+		<div class="col-md-4">
+			<div>
+			<h4><%= link_to friend.full_name, friend %></h4>
+			<h6><%= friend.friends.count %> friend(s)</h6>
+			</div>
+		</div>
+		<div class="col-md-2 col-md-offset-1">
+			<%= friend_button(friend) %>
+		</div>
+	</div>
+</div>

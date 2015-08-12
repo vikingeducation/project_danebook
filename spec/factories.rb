@@ -42,10 +42,10 @@ FactoryGirl.define do
   end
 
   factory :photo do
-    picture_file_name
-    picture_content_type
-    picture_file_size
-    picture_updated_at  {Date.parse('20-09-2014')}
+    picture_file_name     "thing.jpeg"
+    picture_content_type  "image/jpeg"
+    picture_file_size     "2758"
+    picture_updated_at    {Date.parse('20-09-2014')}
 
     user
   end

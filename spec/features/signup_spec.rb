@@ -56,16 +56,16 @@ feature 'signing up' do
       ActionMailer::Base.deliveries.clear
     end
 
-    it 'should send an email when the user signs up' do
+    it 'should send a delayed job email when the user signs up' do
       # A new user signs up for our site.
       fill_out_signup_form
-      click_button "Sign Up"
-      current_user = User.last
 
       # it should send one email, to the proper person, with the proper
       # subject, and from the proper email.
+      expect{click_button "Sign Up"}.to change(Delayed::Job, :count).by(1)
+      current_user = User.last
 
-      expect(ActionMailer::Base.deliveries.count).to eq(1)
+      Delayed::Worker.new.work_off
       expect(ActionMailer::Base.deliveries.first.to).to eq([current_user.email])
       expect(ActionMailer::Base.deliveries.first.subject).to eq("Welcome to Danebook!")
       expect(ActionMailer::Base.deliveries.first.from).to eq(['danebook@shadefinale.com'])

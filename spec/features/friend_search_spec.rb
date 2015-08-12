@@ -21,7 +21,7 @@ feature "Friend search" do
 
     # Foo should be able to see all users that include his name
     expect(page).to have_content("#{another_user.name}")
-    expect(page).to have_content("Friend me!")
+    expect(page).to have_content("Friend Me!")
 
   end
 end

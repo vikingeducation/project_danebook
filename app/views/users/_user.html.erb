@@ -1,15 +1,14 @@
-
 <div class = "user-wrapper">
 
   <div class = "row">
 
-    <div class = "col-md-3">
+    <div class = "col-md-3 col-xs-6 text-center">
       <div class = "user-img">
-        <%= image_tag user.profile_pic ? user.profile_pic.data.url(:medium) : random_user_image, class: "img-responsive img-thumbnail" %>
+        <%= user_profile_pic(user) %>
       </div>
     </div>
 
-    <div class = "col-md-5">
+    <div class = "col-md-5 col-xs-6">
       <div class = "user-name">
         <%= link_to user_path(user) do %>
           <h4>
@@ -26,18 +25,18 @@
 
       <div class="user-details">
         <p>
-          Currently Lives in <%= user.profile.current_home %>
+          <%= user_currently_lives(user) %>
         </p>
         <p>
-          From <%= user.profile.hometown %>
+          <%= user_hometown(user) %>
         </p>
         <p>
-          Born on <%= current_user.birthday ? current_user.birthday.to_formatted_s(:long) : "No Birthday Provided" %>
+          <%= user_birthday(user) %>
         </p>
       </div>
     </div>
 
-    <div class = "col-md-4 text-center">
+    <div class = "col-md-4 col-xs-4 text-center">
       <div class = "friend-options">
         <%= friend_or_unfriend(user) %>
       </div>

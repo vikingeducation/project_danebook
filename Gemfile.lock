@@ -68,6 +68,8 @@ GEM
       rack (>= 0.9.0)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
+    bootstrap-will_paginate (0.0.10)
+      will_paginate
     builder (3.2.2)
     bullet (4.14.7)
       activesupport (>= 3.0.0)
@@ -291,6 +293,7 @@ GEM
       binding_of_caller (>= 0.7.2)
       railties (>= 4.0)
       sprockets-rails (>= 2.0, < 4.0)
+    will_paginate (3.0.7)
     xpath (2.0.0)
       nokogiri (~> 1.3)
     yard (0.8.7.6)
@@ -303,6 +306,7 @@ DEPENDENCIES
   bcrypt (~> 3.1.7)
   better_errors
   binding_of_caller
+  bootstrap-will_paginate (= 0.0.10)
   bullet
   byebug
   capybara
@@ -329,6 +333,7 @@ DEPENDENCIES
   turbolinks
   uglifier (>= 1.3.0)
   web-console (~> 2.0)
+  will_paginate (= 3.0.7)
 
 BUNDLED WITH
    1.10.6

@@ -25,13 +25,15 @@ module FriendshipsHelper
 
   def display_button(friendship)
     if object_owner?
-      link_to("Unfriend Me", user_friendship_path(:id => friendship.id, :user_id => current_user.id), class: "btn btn-default active btn-sm pull-right", method: :delete)
+      link_to("Unfriend Me", user_friendship_path(:id => friendship.id, :user_id => current_user.id),
+              class: "btn btn-default active btn-sm pull-right", method: :delete)
     elsif friendship.is_you?(current_user, object_owner)
       content_tag(:div, 'This Is You', class:['btn', 'btn-danger', 'btn-sm', 'pull-right'])
     elsif friendship.is_a_friend?(current_user)
       content_tag(:div, 'Your Friend', class:['btn', 'btn-default', 'btn-sm', 'pull-right'])
     else
-      link_to("Add Friend", user_friendships_path(:user_id => object_owner.id), class: "btn btn-primary btn-sm pull-right", method: :post)
+      link_to("Add Friend", user_friendships_path(:user_id => object_owner.id),
+              class: "btn btn-primary btn-sm pull-right", method: :post)
     end
   end
 

@@ -61,7 +61,6 @@ class ApplicationController < ActionController::Base
   end
 
   def check_for_expired_user
-    binding.pry
     sign_out if current_user.nil? && cookies[:auth_token]
   end
 

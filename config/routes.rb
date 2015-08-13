@@ -10,14 +10,16 @@ Rails.application.routes.draw do
   end
 
   resources :photos, except: [:index] do
-    resources :comments, only: [:create, :update, :destroy], :defaults => { :commentable => 'Photo' }
+    resources :comments, only: [:create], :defaults => { :commentable => 'Photo' }
     post "set_as_profile"
     post "set_as_cover"
   end
 
   resources :posts, only: [:create, :update, :destroy] do
-    resources :comments, only: [:create, :update, :destroy], :defaults => { :commentable => 'Post' }
+    resources :comments, only: [:create], :defaults => { :commentable => 'Post' }
   end
+
+  resources :comments, only: [:update, :destroy]
 
   resource :profile, only: [:show, :edit, :update]
   resource :session, :only => [:create, :destroy]

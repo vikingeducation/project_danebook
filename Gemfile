@@ -70,6 +70,7 @@ end
 group :test do
   gem 'capybara'
   gem 'launchy'
+  gem 'vcr'
 end
 
 group :production do

@@ -32,11 +32,10 @@ feature "Users Profile" do
   #--------------- Sad Path :( -----------------
 
     scenario "fields can actually be left blank and the form will still be valid" do
-      expect(page).to have_content("No college provided")
       click_link "Edit Your Profile"
       expect{click_button "Save Changes"}.to change(Profile, :count).by(0)
       expect(page).to have_content("Profile Updated!")
-      expect(page).not_to have_content("No college provided")
+      expect(page).not_to have_content("No college information")
     end
 
   # ------------------ Bad Path! 😠 *Angry Emoji* ---------------

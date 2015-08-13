@@ -46,7 +46,7 @@ module ApplicationHelper
       "Be the first one to like this #{commentable.class.to_s.downcase}!"
     when 1
       "1 person likes this"
-    when likes_count > 2
+    when (2..Float::INFINITY)
       "#{likes_count} other people like this"
     else
       "Huh??? It seems this got a DISlike!"

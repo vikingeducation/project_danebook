@@ -5,7 +5,11 @@ class UsersController < ApplicationController
   before_action :require_current_user, :only => [:edit, :update, :destroy]
 
   def index
-    @users = User.find_user_by_keyword(params[:user][:first_name])
+    if params[:user][:first_name]
+      @users = User.find_user_by_keyword(params[:user][:first_name])
+    else
+      @users = current_user
+    end  
   end
 
 

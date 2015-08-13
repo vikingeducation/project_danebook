@@ -26,6 +26,7 @@ class User < ActiveRecord::Base
   
   validates :email, presence: true, uniqueness: true
   validates :first_name, :last_name, :dob, :gender, presence: true
+  validates_format_of :first_name, :last_name, :with => /\A[a-zA-Z0-9_]{2,30}\Z/
   validates :password, presence: true, length: {in: 7..24}, confirmation: true, :on=> [:new, :create]
 
   def generate_token

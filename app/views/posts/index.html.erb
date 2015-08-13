@@ -9,7 +9,7 @@
       </div>
       <div class="col-sm-2 timeline-add-friend-button">
         <% if !object_owner? %>
-          <%= render partial: 'friendships/new' %>
+          <%= link_to("Add Friend", user_friendships_path(:user_id => object_owner.id), class: "btn btn-primary btn-sm pull-right", method: :post) %>
         <% end %>
       </div>
     </div>

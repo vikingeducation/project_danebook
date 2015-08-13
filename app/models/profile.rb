@@ -7,7 +7,7 @@ class Profile < ActiveRecord::Base
   belongs_to :cover_photo, class_name: 'Photo'
   # accepts_nested_attributes_for :cover_photo
 
-  # after_create :set_default_photos
+  after_create :set_default_photos
 
 private
 

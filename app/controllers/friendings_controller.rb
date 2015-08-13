@@ -1,15 +1,25 @@
 class FriendingsController < ApplicationController
 
+#Adds the friended user to the current users friend list
+  #parms[:user_id] is the user we are friending
+  #we are on their page
+#Also adds the current user to the friended user's friend list
   def create
-    current_user.friends.build(:friend_id => params[:user_id])
-    friend = User.find(params[:user_id])
+    
+    current_user.friends.build(:friend_id => params[:friend_id])
+    friend = User.find(params[:friend_id])
     friend.friends.build(:friend_id => current_user.id)
+    
     friend.save
     current_user.save
-    redirect_to user_posts_path(params[:user_id])
+    
+    redirect_to user_posts_path(params[:friend_id])
   end
 
-  def index
+#Lists all the friends of a specified user
+#If parameters are passed, means we are on another user's page
+#If no parameters are passed, we are on the current_user's page
+  def index 
     if params[:user_id].nil?
       @profile = current_user.profile
       @friends = current_user.friends
@@ -20,6 +30,9 @@ class FriendingsController < ApplicationController
     end
   end
 
+#Finds the current user's friendship with the other user
+#Also finds the friended user's friendship with the current user
+#Deletes both the friendships
   def destroy
     user_friendship = Friend.where("user_id = ? AND friend_id = ?", current_user.id, params[:user_id])
     friend_friendship = Friend.where("user_id = ? AND friend_id = ?", params[:user_id], current_user.id )

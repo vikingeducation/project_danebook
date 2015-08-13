@@ -55,7 +55,7 @@ module ApplicationHelper
       end
     end
     if friend_bool == false
-      string = link_to "Friend", user_friendings_path(:user_id => user.id), method: :post, :class=>"btn btn-primary"
+      string = link_to "Friend", user_friendings_path(:friend_id => user.id, :user_id => current_user.id), method: :post, :class=>"btn btn-primary"
     end
     string.html_safe
   end

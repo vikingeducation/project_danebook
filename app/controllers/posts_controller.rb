@@ -31,7 +31,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
-    unless @post.author.id == params[:user_id]
+    if @post.author.id == params[:user_id]
       if @post.destroy
         flash[:success] = "Post deleted Successfully!"
       else

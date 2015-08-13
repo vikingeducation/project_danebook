@@ -32,5 +32,28 @@ module ApplicationHelper
     end
     str.html_safe
   end
-  
+
+  def display_likes_msg(likable)
+    return nil if likable.likes.empty?
+    creator_name(likable.likes) + like_msg_base(likable.likes)      
+  end
+
+  def creator_name(like_list)
+    str = like_list.limit(3).includes(:profile).inject("") do |str, like|
+      str + "#{like.user.profile.full_name} and "
+    end
+    str[0..-5]
+  end
+
+  def like_msg_base(like_list)
+    num = like_list.count
+    if num == 1
+      "likes this."
+    elsif num <= 3
+      "like this."
+    else
+      "and #{num - 3} " + "other".pluralize(num-3) + " like this."
+    end
+
+  end
 end

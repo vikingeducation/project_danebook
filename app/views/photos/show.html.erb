@@ -8,8 +8,8 @@
         <%= image_tag @photo.user_photo.url, class: "fillwidth" %>
         <br>
         <% if @photo.user == current_user %>
-          <%= link_to "Set as Profile", "#" %><br>
-          <%= link_to "Set as Cover", "#" %><br>
+          <%= link_to "Set as Profile", set_profile_photo_path(photo_id: @photo.id), method: :patch %><br>
+          <%= link_to "Set as Cover", set_cover_photo_path(photo_id: @photo.id), method: :patch %><br>
           <%= link_to "delete photo", photo_path(@photo.id), method: :delete %>
         <% end %>
       </div>
@@ -26,7 +26,7 @@
           </div>
           <div class="col-xs-12">
             <%= like_button(@photo) %><br>
-            <%= Like.display_likes_msg(@photo) %>
+            <%= display_likes_msg(@photo) %>
           </div>
 
           <div class="col-xs-12 post">

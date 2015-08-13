@@ -2,7 +2,8 @@ require "rails_helper"
 
 describe Like do
   let(:post_like) { build(:post_like) }
-  let(:comment_like) { build(:comment_like) }
+  let(:post_comment_like) { build(:post_comment_like) }
+  let(:photo_comment_like) { build(:photo_comment_like) }
 
   context "Validations" do
 
@@ -51,13 +52,23 @@ describe Like do
       end
     end
 
-    context "Comment like" do
+    context "Post comment like" do
       it "should respond to user" do
-        expect(comment_like).to respond_to(:user)
+        expect(post_comment_like).to respond_to(:user)
       end
 
       it "should respond to likable" do
-        expect(comment_like).to respond_to(:likable)
+        expect(post_comment_like).to respond_to(:likable)
+      end
+    end
+
+    context "Photo comment like" do
+      it "should respond to user" do
+        expect(photo_comment_like).to respond_to(:user)
+      end
+
+      it "should respond to likable" do
+        expect(photo_comment_like).to respond_to(:likable)
       end
     end
   end

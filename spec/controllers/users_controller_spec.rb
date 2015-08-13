@@ -41,7 +41,7 @@ describe UsersController do
         # Now expect a redirect instead of a render
         # AND we'll utilize our newly-assigned instance
         # variable to make sure we get to the right user
-        expect(response).to redirect_to edit_profile_path(assigns(:user))
+        expect(response).to redirect_to edit_profile_path(assigns(:user).profile)
       end
 
       it "actually creates the user" do

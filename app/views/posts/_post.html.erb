@@ -29,7 +29,7 @@
   </div>
 
   <div class="col-sm-12">
-    <%= Like.display_likes_msg(post) %>
+    <%= display_likes_msg(post) %>
   </div>
   <%= render partial: "comments/comments", locals: {commentable: post} %>
 </article>

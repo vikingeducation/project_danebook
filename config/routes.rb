@@ -9,6 +9,9 @@ Rails.application.routes.draw do
   get '/timeline', to: 'static_pages#timeline'
 
   resources :users
+  patch 'set_profile_photo', to: 'users#set_profile_photo'
+  patch 'set_cover_photo', to: 'users#set_cover_photo'
+
   resources :comments
   get '/friends', to: 'friends#index'
   

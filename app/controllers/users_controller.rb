@@ -23,6 +23,28 @@ class UsersController < ApplicationController
     end
   end
 
+  def set_profile_photo
+    session[:return_to] ||= request.referer
+    current_user.profile_photo = Photo.find(params[:photo_id])
+    if current_user.save
+      flash[:success] = "Your profile photo has successfully set!"
+    else
+      flash[:error] = "Error! Try again!"
+    end
+    redirect_to session.delete(:return_to)
+  end
+
+  def set_cover_photo
+    session[:return_to] ||= request.referer
+    current_user.cover_photo = Photo.find(params[:photo_id])
+    if current_user.save
+      flash[:success] = "Your cover photo has successfully set!"
+    else
+      flash[:error] = "Error! Try again!"
+    end
+    redirect_to session.delete(:return_to)
+  end
+
 
   private 
 

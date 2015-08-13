@@ -41,7 +41,7 @@ class User < ActiveRecord::Base
              :class_name => "Photo"
 
   before_create :generate_token
-  after_create :create_profile
+  after_create :auto_generate_profile
 
   def generate_token
     begin
@@ -55,10 +55,9 @@ class User < ActiveRecord::Base
     save!
   end
 
-  def create_profile
+  def auto_generate_profile
     unless profile
-      profile = build_profile
-      profile.save
+      create_profile
     end
   end
 

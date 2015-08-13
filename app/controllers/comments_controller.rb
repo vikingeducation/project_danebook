@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  skip_before_action :require_current_user
+  before_action :require_current_user
 
   def create
     session[:return_to] ||= request.referer
@@ -30,5 +30,13 @@ class CommentsController < ApplicationController
                                     :body, 
                                     :commentable_id,
                                     :commentable_type)
-  end 
+  end
+
+  def require_current_user
+    session[:return_to] ||= request.referer
+    unless params[:comment][:user_id] == current_user.id
+      flash[:warning] = "You are not authorized to do this!"
+      redirect_to session.delete(:return_to)
+    end
+  end
 end

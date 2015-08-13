@@ -16,12 +16,6 @@ FactoryGirl.define do
     user
   end
 
-  factory :post_comment do
-    sequence(:body) { |n| "post comment #{n}"}
-    user
-    association :commentable, :factory => :post
-  end
-
   factory :photo do
     sequence(:user_photo_file_name) { |n| "Photo#{n}"}
     user_photo_content_type "image/jpeg"
@@ -30,20 +24,41 @@ FactoryGirl.define do
     user
   end
 
-  factory :photo_comment do
-    sequence(:body) { |n| "photo comment #{n}"}
-    user
-    association :commentable, :factory => :photo
+  factory :comment do
+    factory :post_comment do
+      association :commentable, :factory => :post
+      sequence(:body) { |n| "post comment #{n}"}
+      user
+    end
+    
+    factory :photo_comment do
+      association :commentable, :factory => :photo
+      sequence(:body) { |n| "photo comment #{n}"}
+      user
+    end
   end
 
-  factory :post_like, class: "Like" do
-    association :likable, :factory => :post
-    user
-  end
 
-  factory :comment_like, class: "Like" do
-    association :likable, :factory => :comment
-    user
+  factory :like do
+    factory :post_like do
+      association :likable, :factory => :post
+      user
+    end
+
+    factory :post_comment_like do
+      association :likable, :factory => :post_comment
+      user
+    end
+
+    factory :photo_comment_like do
+      association :likable, :factory => :photo_comment
+      user
+    end
+
+    factory :photo_like do
+      association :likable, :factory => :photo
+      user
+    end
   end
 
   factory :profile do

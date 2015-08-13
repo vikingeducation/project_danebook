@@ -5,7 +5,6 @@ feature 'User accounts' do
     visit root_path
   end
   let!(:user) { create(:user) }
-  let!(:profile) { create(:profile) }
 
   scenario "Successfully sign up a new account and go to profile edit page" do
     fill_in "user_profile_attributes_first_name", with: "Foo"
@@ -38,13 +37,12 @@ feature 'User accounts' do
   end
 
   scenario "Sign in to an existing account and go to user's timeline page" do
-    profile.user_id = user.id
-    profile.save!
+    profile = user.create_profile( attributes_for(:profile) )
     fill_in "email", with: user.email
     fill_in "password", with: user.password
 
     click_button "Sign In"
-
+    
     expect(page).to have_content("About Me")
     expect(page).to have_content("#{profile.full_name}")
     expect(page).to have_button("Post")

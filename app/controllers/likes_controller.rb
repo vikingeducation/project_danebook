@@ -1,5 +1,5 @@
 class LikesController < ApplicationController
-  skip_before_action :require_current_user
+  before_action :require_current_user
 
   def create
     session[:return_to] ||= request.referer
@@ -30,5 +30,13 @@ class LikesController < ApplicationController
     params.permit(:user_id,
                   :likable_type,
                   :likable_id)
-  end 
+  end
+
+  def require_current_user
+    session[:return_to] ||= request.referer
+    unless params[:user_id] == current_user.id
+      flash[:warning] = "You are not authorized to do this!"
+      redirect_to session.delete(:return_to)
+    end
+  end
 end

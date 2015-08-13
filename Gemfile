@@ -62,7 +62,7 @@ group :production do
   gem 'rails_12factor'
 end
 
-group :test do
+group :test, :development do
   gem 'factory_girl_rails', '~> 4.0'
   gem 'rspec-rails'
   gem 'guard-rspec', require: false

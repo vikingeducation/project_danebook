@@ -1,6 +1,7 @@
 class PhotosController < ApplicationController
   
   def index
+    @user = User.find(params[:user_id])
     @photos = Photo.all.where("user_id = #{params[:user_id]}").order("created_at DESC")
   end
 

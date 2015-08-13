@@ -1,5 +1,12 @@
-<h1><%= @user.full_name %>'s Friends</h1>
+<%= render 'shared/signed_in_header' %>
+<div class="container">
+  <%= render 'shared/cover_main' %>
+  <%= render 'shared/mid_navigation' %>
 
-<div class="row">
-  <%= render @friends %>
+
+  <h1><%= @user.full_name %>'s Friends</h1>
+
+  <div class="row">
+   <%= render partial: "friends", locals: {friends: @friends} %>
+  </div>
 </div>

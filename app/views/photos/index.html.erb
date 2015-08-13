@@ -1,3 +1,11 @@
-<% @photos.each do |photo| %>
- <%= photo %>
- <% end %>
+<%= render 'shared/signed_in_header' %>
+<div class="container">
+    <%= render 'shared/cover_main' %>
+    <%= render 'shared/mid_navigation' %>
+
+  <h1><%= @user.full_name %>'s Photos</h1>
+  
+  <% @photos.each do |photo| %>
+    <%= photo %>
+  <% end %>
+ </div>

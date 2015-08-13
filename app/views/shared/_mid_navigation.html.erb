@@ -1,0 +1,29 @@
+    <div class="row">
+      <nav class=" col-md-offset-2">
+        <ul class="nav nav-tabs">
+          <li>
+            <%= link_to  'Timeline',  user_posts_path(@user) %>
+          </li>
+          <li>
+            <%= link_to  'About',  user_profile_path(@user) %>
+          </li>
+          <li>
+            <%= link_to  user_photos_path(@user)  do %>
+              Photos <span id="span"> (123)</span>
+            <% end %>
+          </li>
+          <li>
+            <%= link_to 'Friends', user_friendings_path(@user) %>
+          </li>
+       
+          <li class="pull-right">
+             <%= link_to 'Edit profile', edit_user_profile_path %>
+          </li>
+          <% if current_user %>
+          <li class="pull-right">
+            <%= friending_status(@user) %>
+          </li>
+          <% end %>
+        </ul>
+      </nav>
+    </div>

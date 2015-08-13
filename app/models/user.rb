@@ -3,7 +3,6 @@ class User < ActiveRecord::Base
   before_create :generate_token
   #build a profile after user being created
   after_create :build_profile
-  
   has_secure_password
 
   has_one  :profile
@@ -11,21 +10,15 @@ class User < ActiveRecord::Base
   has_many :comments
   has_many :likes
   has_many :photos
-    
-  #intiating friendships
-  has_many :initiated_friendings, :foreign_key => :friender_id,
-                                  :class_name => "Friending"
-
-  has_many :friended_users,       :through => :initiated_friendings,
-                                  :source => :friend_recipient
+  has_many :friendings
   
-  #recieving friendships.
-  has_many :received_friendings,  :foreign_key => :friend_id,
-                                  :class_name => "Friending"
+  has_many :friends, -> { Friending.accepted_friendings }, :foreign_key => :friend_id,
+                                                           :class_name => "Friending"
+  has_many :pending_friendings, -> { Friending.pending_friendings }, :foreign_key => :friend_id,
+                                                                     :class_name => "Friending"
+  has_many :requested_friendings, -> { Friending.requested_friendings }, :foreign_key => :friend_id,
+                                                                         :class_name => "Friending"
 
-  has_many :users_friended_by,    :through => :received_friendings,
-                                  :source => :friend_initiator
-  
   validates :first_name, :last_name, :presence => true,
                                     :length => {:in => 3...15},
                                     :format => {:with => /[a-zA-Z]/}
@@ -37,20 +30,21 @@ class User < ActiveRecord::Base
   validates :password, :presence => true,
                         :length => {:in => 8..25}
 
-  
+  accepts_nested_attributes_for :profile, :reject_if => :all_blank
+
   def friends_count
-    self.friends.count
+    friends.count
   end
   
-  def friends
-    all_friends = []
-    self.friended_users.each{|friend| all_friends << friend}
+  # def friends
+  #   all_friends = []
+  #   self.friended_users.each{|friend| all_friends << friend}
     
-    self.users_friended_by.each{|friend| all_friends << friend if all_friends.include?(friend) == false}
+  #   self.users_friended_by.each{|friend| all_friends << friend if all_friends.include?(friend) == false}
     
-    all_friends
+  #   all_friends
   
-  end
+  # end
 
   def self.search(search)
    User.where("first_name like :s or last_name like :s or first_name || ' ' || last_name like :s", :s => "%#{search}")

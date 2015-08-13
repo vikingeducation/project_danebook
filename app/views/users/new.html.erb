@@ -40,59 +40,38 @@
           <div class="form-group">
           <%= f.password_field :password_confirmation, placeholder: "Confirm Password", class: "form-control" %>
           </div>
-          <h3>Birthday</h3>
+
+
+
+  <%= f.fields_for :profile do |profile_field| %>
+
+ 
+
+  
+          <h3><%= profile_field.label :birthdate, "Birthday" %></%></h3>
           <div class="row">
-            <div class="col-sm-4">
-              <select class="form-control">
-                <option>Month</option>
-                <option>Jan</option>
-                <option>Feb</option>
-                <option>Nov</option>
-                <option>Dec</option>
-              </select> 
+            <div class="col-sm-4  form-group">
+              <%= profile_field.date_select :birthdate,     
+                                            {:start_year => (Date.current.year - 13),
+                                            :end_year => 1908,
+                                            :order => [:month, :day, :year],
+                                            :date_separator => '</div><div class="col-xs-4">',
+                                            :prompt => true}, 
+                                            :class => 'form-control' %>
             </div>
-            <div class="col-sm-4">
-              <select class="form-control">
-                <option value="">Day</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="31">31</option>
-              </select>
-            </div>
-            <div class="col-sm-4">
-              <select class="form-control">
-                <option value="">Year</option>
-                <option value="1906">1906</option>
-                <option value="1907">1907</option>
-                <option value="1908">1908</option>
-                <option value="1999">1999</option>
-                <option value="2000">2000</option>
-                <option value="2001">2001</option>
-                <option value="2002">2002</option>
-              </select>
-            </div>
-          </div>
-          <h4>Gender</h4>
+         </div>
+         <h4>Gender</h4>
           <div class="row form-group">
-            
             <div class="col-sm-4">
-              <div class="radio">
-                <label>
-                  <input type="radio" name="gender" value="male">
-                  Male
-                </label>
-              </div>
+              <%= profile_field.label :gender, "Female" %>
+              <%= profile_field.radio_button(:gender, "Female") %>
             </div>
             <div class="col-sm-4">
-              <div class="radio">
-                <label>
-                  <input type="radio" name="gender" value="female">
-                  Female
-                </label>
-              </div>
+                 <%= profile_field.label :gender, "Male" %>
+               <%= profile_field.radio_button(:gender, "Male") %>
             </div>
           </div>
+          <% end %>
           <div class="form-group">
             <%= f.submit "Sign-Up", class: "btn btn-success btn-block" %>
             <% end %>

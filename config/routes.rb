@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resource :timeline
     resource :posts
     resources :photos
+    resources :friendings, only: [:index]
   end
 
 

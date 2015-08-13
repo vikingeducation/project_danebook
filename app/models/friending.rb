@@ -1,12 +1,11 @@
   class Friending < ActiveRecord::Base
 
-    # being intiated into friendships
-    belongs_to :friend_initiator, :foreign_key => :friender_id,
-                                  :class_name => "User"
+    belongs_to :user
 
-    # being reciepient of friendships
-    belongs_to :friend_recipient, :foreign_key => :friend_id,
-                                  :class_name => "User"
+    scope :accepted_friendings, -> { where(status: 'accepted') }
+    scope :pending_friendings, -> { where(status: 'pending') }
+    scope :requested_friendings, -> { where(status: 'requested') }
+
 
       #make sure friendships are unique
     validates :friend_id, :uniqueness => { :scope => :friender_id }

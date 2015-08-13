@@ -3,35 +3,9 @@
 <%= render partial: 'shared/signed_in_header'  %>
   <main>
     <div class="container">
-      <div class="row">
-        <div class="col-md-12 cover-img">
-          <img src="/images/bgs/<%= rand(1...10) %>.jpg" class="cover-photo hidden-xs hidden-sm img-responsive" alt="profile cover photo">
-          <div class="profile-photo"> 
-            <img src="<%= @user.profile.photo_url %>" class="hidden-xs hidden-sm">
-          </div>
-        </div>
-      </div> <!-- end of row -->
-      <div class="row">
-        <nav class="col-md-7 col-md-offset-2">
-          <ul class="nav nav-tabs">
-            <li><a href="timeline.html">Timeline</a></li>
-            <li class="active"><a href="about.html">About</a></li>
-            <li><a href="photos.html">Photos <span class="unread-number">(123)</span></a></li>
-            <li><a href="friends.html">Frie nds <span class="unread-number">(542)</span></a></li>
-          </ul>
-        </nav>
-        <div class="col-md-2 pull-right">
-          <ul class="nav profile-link">
-            <li>
-               <%= link_to 'Edit Profile', edit_user_profile_path, class: 'pull-right' %>
-            </li>
-            
-              <%= link_to 'Logout' , logout_path, class: 'pull-right' %>
-            
-          </ul>
-        </div>
-      </div> <!-- end of row -->
-    </div>
+      <%= render 'shared/cover_main' %>
+      <%= render 'shared/mid_navigation' %>      
+    
 
       <section class="panel panel-default panel-custom">
 
@@ -77,7 +51,7 @@
               </div>
             </div>
 
-
+            </div>
           </div>
         </div>
       </section>

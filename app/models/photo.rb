@@ -1,7 +1,7 @@
 class Photo < ActiveRecord::Base
   has_attached_file :uploaded_file, storage: :s3, styles: {medium: "200x200", small: "100x100"}
   validates_attachment_content_type :uploaded_file, :content_type => ["image/jpg", "image/jpeg", "image/png", "image/gif"]
-
+  validates_attachment_size :uploaded_file, :less_than => 10.megabytes
 
   has_many :comments, -> { order('created_at ASC') }, as: :commentable, dependent: :destroy
   has_many :likes, as: :likable, dependent: :destroy

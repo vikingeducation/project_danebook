@@ -44,4 +44,11 @@ class ApplicationController < ActionController::Base
     def referer
       session.delete(:referer)
     end
+
+    def require_current_user
+      unless current_user == @user
+        flash[:notice] = "You cannot perform this action as a different user."
+        redirect_to user_posts_path(@user)
+      end
+    end
 end

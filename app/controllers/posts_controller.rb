@@ -31,25 +31,20 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
-    if @post.destroy
-      flash[:success] = "Post deleted Successfully!"
-      redirect_to user_posts_path(current_user)
+    unless @post.author.id == params[:user_id]
+      if @post.destroy
+        flash[:success] = "Post deleted Successfully!"
+      else
+        flash[:notice] = "Couldn't delete post, try again."
+      end
     else
-      flash[:notice] = "Couldn't delete post, try again."
-      redirect_to user_posts_path(current_user)
+      flash[:notice] = "Cannot delete other user's posts."
     end
+    redirect_to user_posts_path(current_user)
   end
 
 
   private
-
-    def require_current_user
-      unless current_user == @user
-        flash[:notice] = "You cannot perform this action as a different user."
-        redirect_to user_posts_path(@user)
-      end
-    end
-
     def find_user
       @user = User.includes(:profile, friends: :profile_photo).find(params[:user_id])
     end

@@ -20,29 +20,33 @@ module PostsHelper
   def present_likes_count(likable)
     # Get all the people that like a post
     people_who_like = likable.people_who_like
+    if current_user
 
-    # Get the intersection of you & your friends, and people that like a post.
-    user_and_friends_that_like = ((current_user.friends + [current_user]) & people_who_like)
+      # Get the intersection of you & your friends, and people that like a post.
+      user_and_friends_that_like = ((current_user.friends + [current_user]) & people_who_like)
 
-    # Get the friends that like a post which is the above minus you.
-    friends_that_like = user_and_friends_that_like - [current_user]
+      # Get the friends that like a post which is the above minus you.
+      friends_that_like = user_and_friends_that_like - [current_user]
 
-    # Limit the amount of friends to 3 randomly selected ones.
-    friends_that_like = friends_that_like.sample(3)
+      # Limit the amount of friends to 3 randomly selected ones.
+      friends_that_like = friends_that_like.sample(3)
 
-    likes_array = []
-    likes_array << "You" if people_who_like.include?(current_user)
-    likes_array += links_to_friends(friends_that_like)
-    likes_array << others_that_like(people_who_like, user_and_friends_that_like)
-    likes_array.delete("")
-    if likes_array.length == 1
-      if likes_array[0] == "You"
-        return "You like this."
+      likes_array = []
+      likes_array << "You" if people_who_like.include?(current_user)
+      likes_array += links_to_friends(friends_that_like)
+      likes_array << others_that_like(people_who_like, user_and_friends_that_like)
+      likes_array.delete("")
+      if likes_array.length == 1
+        if likes_array[0] == "You"
+          return "You like this."
+        else
+          return likes_array[0].to_s + pluralize(people_who_like.length, " likes", " like")[2..-1] + " this."
+        end
       else
-        return likes_array[0].to_s + pluralize(people_who_like.length, " likes", " like")[2..-1] + " this."
+        return likes_array[0..-2].join(", ") + " and " + likes_array[-1].to_s + " like this."
       end
     else
-      return likes_array[0..-2].join(", ") + " and " + likes_array[-1].to_s + " like this."
+      return pluralize(people_who_like.count, " person likes this", "people like this")
     end
   end
 

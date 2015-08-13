@@ -13,7 +13,9 @@
 					</div>
 
 					<div class="col-md-3 pull-right">
+					<% if current_user && current_user == @user %>
 						<%= link_to "Upload", new_user_photo_path(user_id: @user.id), class: "btn btn-primary", id: "Upload" %>
+					<% end %>
 					</div>
 				</div>
 				<div class="row">

@@ -31,18 +31,22 @@ class PhotosController < ApplicationController
   def update
     @photo = Photo.find(params[:id])
     @user = User.find(params[:user_id])
-    if params[:type] == "profile"
-      @user.profile_photo = @photo
-    elsif params[:type] == "cover"
-      @user.cover_photo = @photo
-    else
-      flash[:notice] = "Unable to determine photo action."
-    end
+    unless @photo.uploader == params[:user_id]
+      if params[:type] == "profile"
+        @user.profile_photo = @photo
+      elsif params[:type] == "cover"
+        @user.cover_photo = @photo
+      else
+        flash[:notice] = "Unable to determine photo action."
+      end
 
-    if @user.save
-      flash[:success] = "Successfully updated your photo!"
+      if @user.save
+        flash[:success] = "Successfully updated your photo!"
+      else
+        flash[:notice] = "Couldn't update your profile photo."
+      end
     else
-      flash[:notice] = "Couldn't update your profile photo."
+      flash[:notice] = "A cover/profile photo must belong to the uploader"
     end
 
     redirect_to user_photo_path(@user, @photo)
@@ -50,13 +54,16 @@ class PhotosController < ApplicationController
 
   def destroy
     @photo = Photo.find(params[:id])
-    if @photo.destroy
-      flash[:success] = "Photo deleted Successfully!"
-      redirect_to user_photos_path(current_user)
+    unless @photo.uploader == params[:user_id]
+      if @photo.destroy
+        flash[:success] = "Photo deleted Successfully!"
+      else
+        flash[:notice] = "Couldn't delete photo, try again."
+      end
     else
-      flash[:notice] = "Couldn't delete photo, try again."
-      redirect_to user_photos_path(current_user)
+      flash[:notice] = "You must own this photo to delete it."
     end
+    redirect_to user_photos_path(current_user)
   end
 
 

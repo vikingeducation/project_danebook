@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :require_current_user, only: [:edit, :update, :destroy]
   def new
     @user = User.new
     redirect_to current_user if current_user

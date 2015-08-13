@@ -15,10 +15,14 @@ class FriendingsController < ApplicationController
 
   def destroy
     f = Friending.find_by(user: current_user, friend: @user)
-    if f.destroy
-      flash[:success] = "You and #{@user.full_name} are no longer friends."
+    if f
+      if f.destroy
+        flash[:success] = "You and #{@user.full_name} are no longer friends."
+      else
+        flash[:notice] = "Unable to unfriend user #{@user.full_name}."
+      end
     else
-      flash[:notice] = "Unable to unfriend user #{@user.full_name}."
+      flash[:notice] = "Couldn't unfriend, probably already unfriended."
     end
     redirect_to referer
   end

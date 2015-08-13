@@ -12,7 +12,7 @@
         <h4 class="panel-text text-center">Friends</h4>
         <!-- show Add Friend button in case the current user is visiting another persons profile -->
         <% if !object_owner? %>
-          <%= render partial: new %>
+          <%= render partial: 'new' %>
         <% end %>
       </div>
 

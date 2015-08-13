@@ -35,7 +35,7 @@ class UsersController < ApplicationController
 		if current_user.update(whitelisted_user_params)
 			flash[:success] = "Profile updated"
 			redirect_to users_path
-		else 
+		else
 			flash.now[:error] = "Unable to update profile"
 			render :edit
 		end
@@ -50,11 +50,11 @@ class UsersController < ApplicationController
 	private
 
 	def whitelisted_user_params
-		params.require(:user).permit(	:username, 
-																	:first_name, 
-																	:last_name, 
-																	:email, 
-																	:password, 
+		params.require(:user).permit(	:username,
+																	:first_name,
+																	:last_name,
+																	:email,
+																	:password,
 																	:password_confirmation,
 																	:gender,
 																	:birthday)

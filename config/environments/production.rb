@@ -14,7 +14,7 @@ Rails.application.configure do
     }
   }
 
-  config.action_mailer.default_url_options = {:host => "danebook.com"}
+  config.action_mailer.default_url_options = {:host => "danebooker.herokuapp.com"}
 
   config.action_mailer.smtp_settings = {
     :address        => 'smtp.sendgrid.net',

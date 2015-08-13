@@ -37,7 +37,8 @@ class Photo < ActiveRecord::Base
 
   validates :img_url,
             allow_blank: true,
-            url: true
+            url: true,
+            image: true
 
   # ----------------------- Methods --------------------
 
@@ -45,11 +46,9 @@ class Photo < ActiveRecord::Base
     self.data = open(url)
   end
 
-  def self.pass_url_validations?(url)
-    uri = URI.parse(url)
-    uri.kind_of?(URI::HTTP)
-    rescue URI::InvalidURIError
-    false
-  end
+  # def self.pass_image_validations?(url)
+  #   [".jpg", ".png", ".gif", ".bmp", ".svg", ".rif"].include?(url[-4..-1]) ||
+  #   [".jpeg", ".jfif", "tiff"].include?(url[-5..-1])
+  # end
 
 end

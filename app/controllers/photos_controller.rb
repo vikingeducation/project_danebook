@@ -13,12 +13,16 @@ class PhotosController < ApplicationController
 
   def create
     @photo = current_user.photos.build(photo_params)
-    @photo.pic_from_url(params[:photo][:img_url]) if Photo.pass_url_validations?(params[:photo][:img_url])
+    @photo.pic_from_url(params[:photo][:img_url]) if Photo.pass_image_validations?(params[:photo][:img_url])
     if @photo.save
       flash[:success] = "Photo successfully posted"
       redirect_to user_photos_path(current_user)
     else
-      flash.now[:error] = @photo.errors.full_messages.first
+      str = ""
+      @photo.errors.full_messages.each do |message|
+        str += "<li>#{message}</li>"
+      end
+      flash.now[:error] = str.html_safe
       render :new
     end
   end

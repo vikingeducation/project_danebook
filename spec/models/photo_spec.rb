@@ -36,6 +36,16 @@ RSpec.describe Photo, type: :model do
       expect(photo).not_to be_valid
     end
 
+    it "is not valid if the url is a url, but not a picture file" do
+      photo.img_url = "http://test.com"
+      expect(photo).not_to be_valid
+    end
+
+    it "is valid if passes url and image type validations" do
+      photo.img_url = "http://test.com/image.jpg"
+      expect(photo).to be_valid
+    end
+
   end
 
 

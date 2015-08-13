@@ -28,13 +28,23 @@ class PhotosController < ApplicationController
     @photo = Photo.find(params[:id])
   end
 
+  def destroy
+    @photo = Photo.find(params[:id])
+    if (current_user.id == @photo.user_id) && @photo.destroy
+      flash[:success] = "Your photo was deleted!"
+    else
+      flash[:error] = "The photo was not deleted."
+    end
+    redirect_to user_photos_path(current_user)
+  end
+
   private
 
   def photo_params
     params.require(:photo).permit(:picture, :photo_link)
   end
 
-  # check if friender of user
+  # check if current_user is friender of user
   def require_friend
     unless current_user.id.to_s == params[:user_id] ||
       current_user.friends.include?(User.find(params[:user_id]))

@@ -4,7 +4,7 @@ class FriendingsController < ApplicationController
 
   def index
     user = User.find(params[:user_id])
-    @friends = user.friends.shuffle
+    @friends = user.friends
   end
 
   def create
@@ -35,7 +35,7 @@ class FriendingsController < ApplicationController
     #   redirect_to current_user
 
     else
-      flash[:error] = "Unfriending failure. Try again!"
+      flash[:error] = "Unfriending failure. Guess you're stuck with this one!"
       redirect_to unfriended_user #not unfriended yet
     end
   end

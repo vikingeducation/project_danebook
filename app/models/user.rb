@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
 
   before_create :generate_token
   after_create :build_profile, :if => Proc.new{ self.profile.nil? }
-  after_create :send_welcome_email
+  # after_create :send_welcome_email
 
   has_secure_password
 

@@ -1,7 +1,7 @@
 class LikesController < ApplicationController
 
+  before_action :require_login
   before_action :store_referer
-  skip_before_action :require_current_user, :only => [:create, :destroy]
 
   def create
     like = Like.new(params_list)
@@ -24,9 +24,9 @@ class LikesController < ApplicationController
     redirect_to referer
   end
 
-  def show
-    @likes = Like.recent_likes(extract_likings)
-  end
+  # def show
+  #   @likes = Like.recent_likes(extract_likings)
+  # end
 
 
   private

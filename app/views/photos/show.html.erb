@@ -40,7 +40,8 @@
 
               <p>
                 <%= link_to "Delete Photo",
-                    user_photo_path(@photo.user_id, @photo.id) %>
+                    user_photo_path(@photo.user_id, @photo.id),
+                              method: :delete %>
               </p>
             <% end %>
 

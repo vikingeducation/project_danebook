@@ -5,11 +5,11 @@ Rails.application.routes.draw do
 
   resources :users, only: [:new, :create, :show, :update] do
     resource :profile, only: [:create, :show, :edit, :update]
-    resources :posts
-    resources :photos
+    resources :posts, only: [:index, :create, :destroy]
+    resources :photos, only: [:index, :show, :new, :create, :destroy]
   end
 
-  resources :friendings, :only => [:index, :create, :destroy]
+  resources :friendings, :only => [:create, :destroy, :index]
   resource :session, :only => [:create, :destroy]
   resources :comments, :only => [:create, :destroy]
   resource :search, :only => [:show]
@@ -26,9 +26,9 @@ Rails.application.routes.draw do
 
   # get 'about' => 'static_pages#about'
   # get 'about' => 'profile#show'
-  get 'timeline' => 'static_pages#timeline'
-  get 'friends' => 'static_pages#friends'
-  get 'about_edit' => 'static_pages#about_edit'
-  get 'photos' => 'static_pages#photos'
+  # get 'timeline' => 'static_pages#timeline'
+  # get 'friends' => 'static_pages#friends'
+  # get 'about_edit' => 'static_pages#about_edit'
+  # get 'photos' => 'static_pages#photos'
 
 end

@@ -30,7 +30,7 @@
           <h4>Select a photo from your harddrive</h4>
         </div>
           <%= form_for [:user, @photo] do |f| %> 
-            <%= f.file_field :photo_content_type %>
+            <%= f.file_field :photo %>
             <br>
             <%= f.submit "Upload photo", class: 'btn btn-md btn-success' %>
           <% end %>

@@ -1,7 +1,11 @@
 class Photo < ActiveRecord::Base
+  include PhotosHelper
+
   belongs_to :profile
 
-  has_attached_file :photo, :styles => { :thumb => ["32x32#", :png] }
+  has_many :comments, -> { order('created_at ASC') }, as: :commenting, dependent: :destroy
+
+  has_attached_file :photo, :styles => { :thumb => ["100x100#", :png] }
   validates_attachment_content_type :photo, :content_type => /\Aimage\/.*\Z/
   validates_attachment :photo, :presence => true,
   :content_type => { :content_type => "image/jpeg" },

@@ -23,11 +23,13 @@
     <div class="row main-content">
       <div class="col-sm-3">
         <div class="photo-container">
-          <%= image_tag photo.url.expiring_url(10)%>
+             <%= link_to user_photo_path(@profile.user_id, photo) do%>
+          <%= image_tag photo.photo.expiring_url(10)%>
 
           <div class="photo-overlay">
             <strong><%= photo.created_at%></strong>
           </div>
+          <%end%>
         </div>
       </div>
     </div>

@@ -2,7 +2,8 @@ FactoryGirl.define do  factory :photo do
     
   end
   factory :friending do
-    
+    user_id 
+    friend_id 
   end
 
   factory :user, aliases: [:author] do
@@ -27,6 +28,8 @@ FactoryGirl.define do  factory :photo do
     livesincountry "USA"
     wordsby 'word'*10
     wordsabout "about"*10
+    avatar_id 1
+    cover_id 1
   end
 
   factory :post do

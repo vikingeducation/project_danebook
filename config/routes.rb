@@ -16,7 +16,7 @@ Rails.application.routes.draw do
   
   resources :users do
     resource :profile, only: [:edit,:update,:show]
-    resources :photos, except: [:edit,:update]
+    resources :photos, except: [:edit]
     resources :posts, only: [:index,:create,:destroy]
     resources :friends, only: [:index]
 

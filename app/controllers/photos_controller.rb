@@ -53,7 +53,7 @@ class PhotosController < ApplicationController
   end
 
   def valid_link?(link)
-    regex = /\b(([\w-]+:\/\/?|www[.])[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:]\s]|\/)))/
+    regex = /(https?:\/\/)([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?/
     link.match(regex)
   end
 

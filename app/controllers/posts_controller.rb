@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
 
+  before_action :require_login
+
   def new
   end
 
@@ -17,7 +19,11 @@ class PostsController < ApplicationController
     if params[:user_id]
       user = User.find(params[:user_id])
     else
-      user = current_user
+      if current_user
+        user = current_user
+      else
+        redirect_to new_users_path
+      end
     end
     @profile = user.profile
     @posts = user.posts.order(:created_at => :DESC)

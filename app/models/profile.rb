@@ -12,8 +12,9 @@ class Profile < ActiveRecord::Base
 private
 
   def set_default_photos
-    create_profile_photo(user_id: self.user_id).image_from_url('app/assets/images/blank_profile_photo.jpg')
-    create_cover_photo(user_id: self.user_id).image_from_url('app/assets/images/blank_profile_photo.jpg')
+    update(profile_photo: Photo.first, cover_photo: Photo.second)
+    # create_profile_photo.image_from_url('app/assets/images/blank_profile_photo.jpg')
+    # create_cover_photo.image_from_url('app/assets/images/blank_profile_photo.jpg')
   end
 
 # def home_city_and_country

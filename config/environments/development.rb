@@ -11,7 +11,7 @@ Rails.application.configure do
     Bullet.add_footer = true
   end
 
-    config.paperclip_defaults = {
+  config.paperclip_defaults = {
     storage: :s3,
     s3_host_name: 's3.amazonaws.com',
     :s3_credentials => {

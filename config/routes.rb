@@ -30,5 +30,5 @@ Rails.application.routes.draw do
   get 'login' => 'session#new'
   delete 'logout' => 'session#destroy'
 
-  get '*unmatched_route', to: 'application#raise_not_found'
+  #get '*unmatched_route', to: 'application#raise_not_found'
 end

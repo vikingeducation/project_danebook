@@ -7,10 +7,10 @@ Friendship.destroy_all
 Photo.destroy_all
 
 # set default profile photo
-Photo.create(:image => open(asset_path 'blank_profile_photo.jpg'))
+Photo.create(:image => open(image_path 'blank_profile_photo.jpg'))
 
 # set default cover photo
-Photo.create(:image => open(asset_path 'blank_cover_photo.jpg'))
+Photo.create(:image => open(image_path 'blank_cover_photo.jpg'))
 
 # create users
 20.times do |n|

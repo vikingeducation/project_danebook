@@ -25,13 +25,13 @@ class PhotosController < ApplicationController
   end
 
   def show
-    @photo = Photo.find(params[:id])
+    @photo = @user.find(params[:user_id]).uploaded_photos.find(params[:id])
   end
 
   def update
     @photo = Photo.find(params[:id])
     @user = User.find(params[:user_id])
-    unless @photo.uploader == params[:user_id]
+    if @photo.uploader.id == params[:user_id]
       if params[:type] == "profile"
         @user.profile_photo = @photo
       elsif params[:type] == "cover"

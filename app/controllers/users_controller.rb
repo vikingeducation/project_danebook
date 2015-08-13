@@ -26,9 +26,8 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = User.find(params[:id])
     unless current_user && @user.id == current_user
-      @user = User.find(params[:id])
-    else
       flash[:notice] = "You cannot edit another user's info."
       redirect_to @user
     end

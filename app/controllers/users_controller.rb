@@ -17,6 +17,7 @@ class UsersController < ApplicationController
       redirect_to edit_user_profile_path(@user)
     else
       flash.now[:error]="We couldn't create your account."
+      @user.build_profile
       render :new
     end
   end

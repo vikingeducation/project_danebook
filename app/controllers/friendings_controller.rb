@@ -10,7 +10,10 @@ class FriendingsController < ApplicationController
   def create
     friending_recipient = User.find(params[:friend_id])
 
-    if current_user.friended_users << friending_recipient
+    if params[:user_id] == current_user.id.to_s
+      flash[:error] = "You can't friend yourself!"
+      redirect_to friending_recipient
+    elsif current_user.friended_users << friending_recipient
       flash[:success] = "You friended #{friending_recipient.full_name}"
       redirect_to friending_recipient
     else

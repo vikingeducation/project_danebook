@@ -12,6 +12,6 @@ class Comment < ActiveRecord::Base
   validates :commentable_id, :commentable_type, :body, :user_id,
             :presence => :true
 
-  validates :body, :format => {:with => /[a-zA-Z]+/}
+  validates :body, :format => {:with => /[\S]+/}, :length => {:in => 1..1000}
 
 end

@@ -23,7 +23,7 @@ class PostsController < ApplicationController
       redirect_to user_posts_path(current_user)
     else
       flash[:error] = "There was an error creating your post."
-      render :new
+      render :index
     end
   end
 

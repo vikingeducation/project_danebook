@@ -1,8 +1,8 @@
 <div class="row">
   <div class="col-md-12">
-    <%= image_tag object_owner.profile.cover_photo.image.url, class: 'img-responsive cover-photo hidden-xs hidden-sm', alt: '/images/blank_profile_photo.jpg' %>
+    <%= display_cover_photo %>
     <div class="profile-photo">
-      <%= image_tag object_owner.profile.profile_photo.image.url, class: 'img-responsive hidden-xs hidden-sm', alt: '/images/blank_profile_photo.jpg' %>
+      <%= display_profile_photo %>
     </div>
   </div>
 </div>

@@ -1,0 +1,356 @@
+/* line 2, /Users/apdev/Documents/Coding/viking_education/Unit13:Photos_Mailers_and_Task_Queues/danebook/app/assets/stylesheets/home.scss */
+.homepage .navbar {
+  background: -webkit-linear-gradient(#4C67A1, #3B5998);
+  background: -o-linear-gradient(#4C67A1, #3B5998);
+  background: -moz-linear-gradient(#4C67A1, #3B5998);
+  background: linear-gradient(#4C67A1, #3B5998);
+  height: 100px;
+}
+/* line 11, /Users/apdev/Documents/Coding/viking_education/Unit13:Photos_Mailers_and_Task_Queues/danebook/app/assets/stylesheets/home.scss */
+.homepage .navbar-header navbar-brand {
+  margin-left: 35px;
+}
+/* line 14, /Users/apdev/Documents/Coding/viking_education/Unit13:Photos_Mailers_and_Task_Queues/danebook/app/assets/stylesheets/home.scss */
+.homepage .navbar-header a {
+  color: #fff;
+  font-size: 3em;
+  line-height: 60px;
+}
+/* line 20, /Users/apdev/Documents/Coding/viking_education/Unit13:Photos_Mailers_and_Task_Queues/danebook/app/assets/stylesheets/home.scss */
+.homepage .navbar > .container .navbar-brand,
+.homepage .navbar > .container-fluid .navbar-brand {
+  margin-left: 10px;
+}
+/* line 25, /Users/apdev/Documents/Coding/viking_education/Unit13:Photos_Mailers_and_Task_Queues/danebook/app/assets/stylesheets/home.scss */
+.homepage label {
+  display: block;
+}
+/* line 29, /Users/apdev/Documents/Coding/viking_education/Unit13:Photos_Mailers_and_Task_Queues/danebook/app/assets/stylesheets/home.scss */
+.homepage .inline-form {
+  margin-top: 15px;
+  line-height: 5px;
+  color: #fff;
+}
+/* line 34, /Users/apdev/Documents/Coding/viking_education/Unit13:Photos_Mailers_and_Task_Queues/danebook/app/assets/stylesheets/home.scss */
+.homepage .inline-form > button {
+  margin-top: 1.1em;
+}
+/* line 37, /Users/apdev/Documents/Coding/viking_education/Unit13:Photos_Mailers_and_Task_Queues/danebook/app/assets/stylesheets/home.scss */
+.homepage .test {
+  margin-top: 100px;
+}
+/* line 41, /Users/apdev/Documents/Coding/viking_education/Unit13:Photos_Mailers_and_Task_Queues/danebook/app/assets/stylesheets/home.scss */
+.homepage .main-text {
+  color: black;
+}
+/* line 6, /Users/apdev/Documents/Coding/viking_education/Unit13:Photos_Mailers_and_Task_Queues/danebook/app/assets/stylesheets/photos.scss */
+.photo-grid-photo {
+  padding: 20px;
+}
+
+/* line 10, /Users/apdev/Documents/Coding/viking_education/Unit13:Photos_Mailers_and_Task_Queues/danebook/app/assets/stylesheets/photos.scss */
+.image-file-field {
+  padding: 20px;
+  height: 70px;
+  width: 300px;
+}
+
+/* line 16, /Users/apdev/Documents/Coding/viking_education/Unit13:Photos_Mailers_and_Task_Queues/danebook/app/assets/stylesheets/photos.scss */
+.col-centered {
+  float: none;
+  margin: 0 auto;
+}
+
+/* line 21, /Users/apdev/Documents/Coding/viking_education/Unit13:Photos_Mailers_and_Task_Queues/danebook/app/assets/stylesheets/photos.scss */
+.upload-photos-spacer {
+  height: 80px;
+}
+
+/* line 25, /Users/apdev/Documents/Coding/viking_education/Unit13:Photos_Mailers_and_Task_Queues/danebook/app/assets/stylesheets/photos.scss */
+#text-padding {
+  padding: 20px;
+}
+
+/* line 30, /Users/apdev/Documents/Coding/viking_education/Unit13:Photos_Mailers_and_Task_Queues/danebook/app/assets/stylesheets/photos.scss */
+#image_url {
+  width: 100%;
+  height: 200%;
+  border: 2px solid black;
+}
+
+/* line 36, /Users/apdev/Documents/Coding/viking_education/Unit13:Photos_Mailers_and_Task_Queues/danebook/app/assets/stylesheets/photos.scss */
+.photo-display {
+  width: 500px;
+}
+/* line 5, /Users/apdev/Documents/Coding/viking_education/Unit13:Photos_Mailers_and_Task_Queues/danebook/app/assets/stylesheets/posts.scss */
+.timeline-add-friend-button {
+  margin-top: 5px;
+}
+/* line 6, /Users/apdev/Documents/Coding/viking_education/Unit13:Photos_Mailers_and_Task_Queues/danebook/app/assets/stylesheets/profiles.scss */
+.edit-profile-text-box {
+  width: 80%;
+  height: 100px;
+}
+
+/* line 11, /Users/apdev/Documents/Coding/viking_education/Unit13:Photos_Mailers_and_Task_Queues/danebook/app/assets/stylesheets/profiles.scss */
+.edit-profile-button {
+  width: 400px;
+  height: 50px;
+  margin: 20px;
+}
+/* line 9, /Users/apdev/Documents/Coding/viking_education/Unit13:Photos_Mailers_and_Task_Queues/danebook/app/assets/stylesheets/staticpages.scss */
+.grey-text {
+  color: #ccc;
+}
+
+/* line 13, /Users/apdev/Documents/Coding/viking_education/Unit13:Photos_Mailers_and_Task_Queues/danebook/app/assets/stylesheets/staticpages.scss */
+.navbar {
+  background: -webkit-linear-gradient(#4C67A1, #3B5998);
+  background: -o-linear-gradient(#4C67A1, #3B5998);
+  background: -moz-linear-gradient(#4C67A1, #3B5998);
+  background: linear-gradient(#4C67A1, #3B5998);
+  margin-bottom: 0px;
+}
+
+/* line 22, /Users/apdev/Documents/Coding/viking_education/Unit13:Photos_Mailers_and_Task_Queues/danebook/app/assets/stylesheets/staticpages.scss */
+.navbar a {
+  color: white;
+  font-size: 2em;
+}
+/* line 26, /Users/apdev/Documents/Coding/viking_education/Unit13:Photos_Mailers_and_Task_Queues/danebook/app/assets/stylesheets/staticpages.scss */
+.navbar a img {
+  margin-top: -7px;
+  height: 1.3em;
+  float: left;
+  margin-right: 6px;
+}
+
+/* line 35, /Users/apdev/Documents/Coding/viking_education/Unit13:Photos_Mailers_and_Task_Queues/danebook/app/assets/stylesheets/staticpages.scss */
+.test {
+  float: right;
+  font-size: 1.3em;
+  color: white;
+  margin-top: 10px;
+}
+
+@media (min-width: 800px) {
+  /* line 43, /Users/apdev/Documents/Coding/viking_education/Unit13:Photos_Mailers_and_Task_Queues/danebook/app/assets/stylesheets/staticpages.scss */
+  .navbar-form .input-group > .form-control {
+    min-width: 600px;
+  }
+}
+/******************** about page **********************************/
+/* line 50, /Users/apdev/Documents/Coding/viking_education/Unit13:Photos_Mailers_and_Task_Queues/danebook/app/assets/stylesheets/staticpages.scss */
+.cover-photo {
+  width: 100%;
+  min-width: 992px;
+  height: 400px;
+  position: relative;
+}
+
+/* line 57, /Users/apdev/Documents/Coding/viking_education/Unit13:Photos_Mailers_and_Task_Queues/danebook/app/assets/stylesheets/staticpages.scss */
+.profile-photo {
+  position: absolute;
+  bottom: -20px;
+  margin-left: 15px;
+  z-index: 2;
+}
+
+/* line 64, /Users/apdev/Documents/Coding/viking_education/Unit13:Photos_Mailers_and_Task_Queues/danebook/app/assets/stylesheets/staticpages.scss */
+.profile-photo img {
+  width: 150px;
+  display: block;
+}
+
+/* line 69, /Users/apdev/Documents/Coding/viking_education/Unit13:Photos_Mailers_and_Task_Queues/danebook/app/assets/stylesheets/staticpages.scss */
+.profile-link {
+  list-style: none;
+}
+
+/* line 73, /Users/apdev/Documents/Coding/viking_education/Unit13:Photos_Mailers_and_Task_Queues/danebook/app/assets/stylesheets/staticpages.scss */
+.panel-custom {
+  margin-top: 20px;
+}
+
+/* line 76, /Users/apdev/Documents/Coding/viking_education/Unit13:Photos_Mailers_and_Task_Queues/danebook/app/assets/stylesheets/staticpages.scss */
+.panel-body {
+  margin-right: 40px;
+  margin-left: 20px;
+}
+
+/* line 81, /Users/apdev/Documents/Coding/viking_education/Unit13:Photos_Mailers_and_Task_Queues/danebook/app/assets/stylesheets/staticpages.scss */
+.panel-heading h4 {
+  font-size: 2.3em;
+  margin-top: -3px;
+  margin-bottom: -3px;
+}
+
+/* line 88, /Users/apdev/Documents/Coding/viking_education/Unit13:Photos_Mailers_and_Task_Queues/danebook/app/assets/stylesheets/staticpages.scss */
+.about-info h3, .about-info h5 {
+  font-weight: bold;
+}
+
+/* line 93, /Users/apdev/Documents/Coding/viking_education/Unit13:Photos_Mailers_and_Task_Queues/danebook/app/assets/stylesheets/staticpages.scss */
+.dl-horizontal dt {
+  text-align: left;
+  margin-bottom: .5em;
+}
+
+/* line 98, /Users/apdev/Documents/Coding/viking_education/Unit13:Photos_Mailers_and_Task_Queues/danebook/app/assets/stylesheets/staticpages.scss */
+.dl-horizontal dd {
+  margin-bottom: .5em;
+}
+
+/************************************ about_edit page ****************/
+/* line 104, /Users/apdev/Documents/Coding/viking_education/Unit13:Photos_Mailers_and_Task_Queues/danebook/app/assets/stylesheets/staticpages.scss */
+.btn-block {
+  margin-top: 50px;
+  margin-bottom: 50px;
+}
+
+/* line 110, /Users/apdev/Documents/Coding/viking_education/Unit13:Photos_Mailers_and_Task_Queues/danebook/app/assets/stylesheets/staticpages.scss */
+::-webkit-input-placeholder {
+  color: black;
+}
+
+/* line 114, /Users/apdev/Documents/Coding/viking_education/Unit13:Photos_Mailers_and_Task_Queues/danebook/app/assets/stylesheets/staticpages.scss */
+:-moz-placeholder {
+  /* Firefox 18- */
+  color: black;
+}
+
+/* line 118, /Users/apdev/Documents/Coding/viking_education/Unit13:Photos_Mailers_and_Task_Queues/danebook/app/assets/stylesheets/staticpages.scss */
+::-moz-placeholder {
+  /* Firefox 19+ */
+  color: black;
+}
+
+/* line 122, /Users/apdev/Documents/Coding/viking_education/Unit13:Photos_Mailers_and_Task_Queues/danebook/app/assets/stylesheets/staticpages.scss */
+:-ms-input-placeholder {
+  color: black;
+}
+
+/* line 126, /Users/apdev/Documents/Coding/viking_education/Unit13:Photos_Mailers_and_Task_Queues/danebook/app/assets/stylesheets/staticpages.scss */
+.friends-list {
+  border: 1px solid #ccc;
+  padding-top: 20px;
+  margin: 10px;
+}
+/* line 130, /Users/apdev/Documents/Coding/viking_education/Unit13:Photos_Mailers_and_Task_Queues/danebook/app/assets/stylesheets/staticpages.scss */
+.friends-list .friends-margin {
+  margin-top: 20px;
+}
+
+/********************  timeline ****************************/
+/* line 139, /Users/apdev/Documents/Coding/viking_education/Unit13:Photos_Mailers_and_Task_Queues/danebook/app/assets/stylesheets/staticpages.scss */
+.friends li {
+  list-style: none;
+  padding: 0 5px;
+  display: inline;
+  float: left;
+}
+/* line 146, /Users/apdev/Documents/Coding/viking_education/Unit13:Photos_Mailers_and_Task_Queues/danebook/app/assets/stylesheets/staticpages.scss */
+.friends .panel-body {
+  padding: 10px;
+  margin: auto;
+}
+/* line 151, /Users/apdev/Documents/Coding/viking_education/Unit13:Photos_Mailers_and_Task_Queues/danebook/app/assets/stylesheets/staticpages.scss */
+.friends .text-center {
+  font-weight: bold;
+}
+
+/* line 156, /Users/apdev/Documents/Coding/viking_education/Unit13:Photos_Mailers_and_Task_Queues/danebook/app/assets/stylesheets/staticpages.scss */
+.clear-div {
+  clear: both;
+}
+
+/* line 160, /Users/apdev/Documents/Coding/viking_education/Unit13:Photos_Mailers_and_Task_Queues/danebook/app/assets/stylesheets/staticpages.scss */
+.timeline-panel-header {
+  text-align: center;
+  font-weight: bold;
+}
+
+/* line 165, /Users/apdev/Documents/Coding/viking_education/Unit13:Photos_Mailers_and_Task_Queues/danebook/app/assets/stylesheets/staticpages.scss */
+.timeline-wrap {
+  margin-top: 15px;
+}
+
+/* line 169, /Users/apdev/Documents/Coding/viking_education/Unit13:Photos_Mailers_and_Task_Queues/danebook/app/assets/stylesheets/staticpages.scss */
+.poster {
+  margin-top: 10px;
+}
+/* line 172, /Users/apdev/Documents/Coding/viking_education/Unit13:Photos_Mailers_and_Task_Queues/danebook/app/assets/stylesheets/staticpages.scss */
+.poster textarea {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+/* line 178, /Users/apdev/Documents/Coding/viking_education/Unit13:Photos_Mailers_and_Task_Queues/danebook/app/assets/stylesheets/staticpages.scss */
+.comments img {
+  height: 70px;
+}
+
+/* line 182, /Users/apdev/Documents/Coding/viking_education/Unit13:Photos_Mailers_and_Task_Queues/danebook/app/assets/stylesheets/staticpages.scss */
+.liked {
+  padding-top: 15px;
+}
+
+/* line 186, /Users/apdev/Documents/Coding/viking_education/Unit13:Photos_Mailers_and_Task_Queues/danebook/app/assets/stylesheets/staticpages.scss */
+.commented {
+  margin-right: 0;
+  margin-left: 0;
+  background-color: #f5f5f5;
+}
+/* line 191, /Users/apdev/Documents/Coding/viking_education/Unit13:Photos_Mailers_and_Task_Queues/danebook/app/assets/stylesheets/staticpages.scss */
+.commented p {
+  padding-top: 10px;
+}
+/* line 195, /Users/apdev/Documents/Coding/viking_education/Unit13:Photos_Mailers_and_Task_Queues/danebook/app/assets/stylesheets/staticpages.scss */
+.commented .thumbnail {
+  margin-top: 10px;
+}
+/* line 199, /Users/apdev/Documents/Coding/viking_education/Unit13:Photos_Mailers_and_Task_Queues/danebook/app/assets/stylesheets/staticpages.scss */
+.commented hr {
+  border-color: 696969;
+}
+
+/******************** photos **************************/
+/* line 206, /Users/apdev/Documents/Coding/viking_education/Unit13:Photos_Mailers_and_Task_Queues/danebook/app/assets/stylesheets/staticpages.scss */
+.photo-grid {
+  margin: 25px;
+}
+/* line 5, /Users/apdev/Documents/Coding/viking_education/Unit13:Photos_Mailers_and_Task_Queues/danebook/app/assets/stylesheets/users.scss */
+.field_with_errors input {
+  border: 1px solid red;
+}
+
+/* line 9, /Users/apdev/Documents/Coding/viking_education/Unit13:Photos_Mailers_and_Task_Queues/danebook/app/assets/stylesheets/users.scss */
+.date-select {
+  display: inline;
+  float: left;
+  width: 88px;
+  margin: 2px;
+}
+
+/* line 16, /Users/apdev/Documents/Coding/viking_education/Unit13:Photos_Mailers_and_Task_Queues/danebook/app/assets/stylesheets/users.scss */
+.top-navbar-link {
+  font-size: 8px;
+  margin: 12px;
+  display: inline-block;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+
+
+ */
+

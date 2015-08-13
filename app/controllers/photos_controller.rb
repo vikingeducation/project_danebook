@@ -1,5 +1,5 @@
 class PhotosController < ApplicationController
-  before_action :require_current_user, :only => [:edit, :update, :destroy, :new]
+  # before_action :require_current_user, :only => [:edit, :update, :destroy, :new]
 
   def new
     @user = User.find(params[:user_id])
@@ -7,7 +7,8 @@ class PhotosController < ApplicationController
   end
 
   def create
-    @comment = Comment.new    @photo = Photo.new(photo_params)
+    @comment = Comment.new
+    @photo = Photo.new(photo_params)
     if @photo.save
       flash[:success] = "Photo added!"
       redirect_to user_photos_path(@user)

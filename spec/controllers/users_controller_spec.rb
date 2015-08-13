@@ -84,6 +84,7 @@ describe UsersController do
     it 'should actually update the user' do
       new_first_name = "NEWBIE"
       @new_user.first_name = new_first_name
+      allow(controller).to receive(:current_user) { @new_user }
       post :update, id: @new_user.id, user: @new_user.attributes
       expect(User.first.first_name).to eq(new_first_name)
     end

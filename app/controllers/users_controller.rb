@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :get_user, only: [:show, :edit, :update]
+  before_action :require_current_user, only: [:edit, :update]
   def new
     @user = User.new
     redirect_to current_user if current_user
@@ -22,27 +24,16 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
   end
 
   def edit
-    @user = User.find(params[:id])
-    unless current_user && @user.id == current_user.id
-      flash[:notice] = "You cannot edit another user's info."
-      redirect_to @user
-    end
   end
 
   def update
-    @user = User.find(params[:id])
-    unless current_user && @user.id == current_user
-      if @user.update(params_hash)
-        flash[:success] = "Successfully updated your information!"
-      else
-        flash[:error] = "There was an error updating your information."
-      end
+    if @user.update(params_hash)
+      flash[:success] = "Successfully updated your information!"
     else
-      flash[:notice] = "You cannot edit another user's info."
+      flash[:error] = "There was an error updating your information."
     end
     redirect_to @user
   end
@@ -51,6 +42,16 @@ class UsersController < ApplicationController
   end
 
   private
+    def get_user
+      @user = User.find(params[:id])
+    end
+
+    def require_current_user
+      unless current_user == @user
+        flash[:notice] = "You cannot edit another user's info."
+        redirect_to @user
+      end
+    end
 
     def params_hash
       params.require(:user).permit(:first_name,

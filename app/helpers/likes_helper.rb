@@ -21,4 +21,13 @@ module LikesHelper
 																		}), method: :post)
 	end
 
+	def like_count_to_display(object)
+	count = object.count_likes
+		if count > 1
+			"#{count} people like this #{object.class.to_s.downcase}"
+		elsif count == 1
+			"#{count} person likes this #{object.class.to_s.downcase}"
+		end
+	end
+
 end

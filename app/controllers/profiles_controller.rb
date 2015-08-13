@@ -13,6 +13,7 @@ end
 
 def update
 	@profile = Profile.find_by_user_id(params[:user_id])
+	fail
 	if @profile.update(whitelisted_profile_params)
 		flash[:success] = "Updates saved"
 		redirect_to user_profile_path(:user_id => @profile.user.id)
@@ -28,16 +29,18 @@ end
 private
 
 def whitelisted_profile_params
-	params.require(:profile).permit(:user_id, 
-																	:id, 
-																	:about_me, 
+	params.require(:profile).permit(:user_id,
+																	:id,
+																	:about_me,
 																	:words_to_live_by,
-																	:home_city, 
+																	:home_city,
 																	:home_country,
 																	:current_city,
-																	:current_country, 
+																	:current_country,
 																	:college,
-																	:telephone)
+																	:telephone,
+																	:profile_photo_id,
+																	:cover_photo_id)
 end
 
 end

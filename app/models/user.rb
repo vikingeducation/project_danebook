@@ -54,6 +54,8 @@ class User < ActiveRecord::Base
 		accepted_friendships.where(status: 'Pending')
 	end
 
-private
+	def check_friend?(current_user)
+    accepted_friends.include?(current_user)
+  end
 
 end

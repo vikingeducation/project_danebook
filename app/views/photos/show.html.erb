@@ -1,1 +1,101 @@
+<main>
 
+  <div class="container">
+
+    <div class="row">
+      <div class="col-md-12">
+        <img src="/images/hogwarts_small.jpg" class="cover-photo hidden-xs hidden-sm img-responsive" alt="profile cover photo">
+        <div class="profile-photo">
+          <img src="/images/harry_potter_small.jpg" class="hidden-xs hidden-sm">
+        </div>
+      </div> <!-- end of row -->
+    </div>
+
+    <div class="row">
+      <%= render 'layouts/navbar' %>
+    </div> <!-- end of row -->
+
+    <section class="panel panel-default panel-custom">
+
+      <div class="panel-heading clearfix">
+        <h4 class="panel-text text-center">Photos</h4>
+      </div>
+
+      <div class="panel-body">
+        <div class="row">
+
+          <div class="col-sm-7 col-md-7">
+            <p><%= image_tag @photo.image.expiring_url(10),
+              class: 'photo-display' %></p>
+
+            <% if object_owner? %>
+              <p>
+                <%= form_tag user_profile_path(current_user.id), method: :put do %>
+                  <%= hidden_field_tag 'profile[profile_photo_id]', @photo.id %>
+                  <%= submit_tag 'Set as Profile photo' %>
+                <% end %>
+              </p>
+
+              <p>
+                <%= form_tag user_profile_path(current_user.id), method: :put do %>
+                  <%= hidden_field_tag 'profile[cover_photo_id]', @photo.id %>
+                  <%= submit_tag 'Set as Cover photo' %>
+                <% end %>
+              </p>
+
+              <p>
+                <%= link_to 'Delete photo', '#' %>
+              </p>
+
+            <% end %>
+          </div>
+
+          <div class="col-sm-5 col-md-5">
+
+            <div class="row">
+
+              <div class="col-md-2">
+                <%= image_tag @photo.user.profile.profile_photo.image.url, class: 'img-responsive' %>
+              </div>
+
+              <div class="col-md-9">
+                <p>
+                  <%= link_to full_name(@photo.user), user_timeline_path(@photo.user) %>
+                </p>
+                <p>
+                  <%= @photo.created_at.strftime("%B %d, %Y") %>
+                </p>
+              </div>
+            </div>
+
+            <div class='row'>
+                <p>
+                  <%= show_like_or_unlike(@photo) %>
+                  <%= like_count_to_display(@photo) %>
+                </p>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-10 col-offset-sm-1">
+                <p><%= render partial: '/comments/new', locals: {:commentable => @photo} %></p>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-10 col-offset-sm-1">
+                <p>
+                  <% unless @photo.comments.ids.nil? %>
+                    <%= render :partial => '/comments/show', locals: {:comments => @photo.comments } %></p>
+                  <% end %>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+</main>

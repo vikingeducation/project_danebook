@@ -2,13 +2,30 @@
 <div class="panel panel-default">
 
   <div class="panel-body">
-    	<p>
-    		<%= link_to full_name(comment.user), user_timeline_path(comment.user.id) %> Said on 
-    		<%= comment.created_at.strftime("%B %d, %Y") %>
-    	</p>
-    	<p>
-    		<%= comment.body %>
-    	</p>
+    	<div class="row">
+        <% if request.original_url.include?(user_photos_url(object_owner.id)) %>
+        <div class="col-md-2">
+          <%= image_tag current_user.profile.profile_photo, class: 'img-responsive' %>
+        </div>
+        <% end %>
+        <div class="col-md-9">
+          <p>
+            <%= link_to full_name(comment.user), user_timeline_path(comment.user.id) %>
+          </p>
+          <p>
+            Said on
+            <%= comment.created_at.strftime("%B %d, %Y") %>
+          </p>
+        </div>
+      </div>
+
+      <div class="row">
+        <p>
+          <%= comment.body %>
+        </p>
+      </div>
+
+
   </div>
 
   <div class="panel-footer clearfix">
@@ -19,7 +36,7 @@
     <div class="pull-right">
     <% if object_owner_for_resource?(comment) %>
       <%= link_to "Delete", user_comment_path(:user_id => current_user.id, :id => comment.id), method: :delete %>
-    <% end %> 
+    <% end %>
     </div>
   </div>
 

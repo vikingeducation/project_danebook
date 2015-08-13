@@ -9,6 +9,9 @@ class Photo < ActiveRecord::Base
                     default_url: "/images/:style/missing.png"
   belongs_to :user
   has_one :profile
+  has_many :comments, as: :commentable, dependent: :destroy
+  has_many :likes, as: :liking, dependent: :destroy
+  has_many :users_liking_photos, through: :likes, source: :user
 
   validates_attachment_content_type :image,
                                     content_type: /\Aimage\/.*\Z/
@@ -17,5 +20,10 @@ class Photo < ActiveRecord::Base
   def image_from_url(url)
     self.image = open(url)
   end
+
+  def count_likes
+    users_liking_photos.count
+  end
+
 
 end

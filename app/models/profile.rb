@@ -1,8 +1,12 @@
 class Profile < ActiveRecord::Base
+
 	belongs_to :user
 	has_many :posts
   belongs_to :profile_photo, class_name: 'Photo'
+  # accepts_nested_attributes_for :profile_photo
   belongs_to :cover_photo, class_name: 'Photo'
+  # accepts_nested_attributes_for :cover_photo
+
 
 
 # def home_city_and_country

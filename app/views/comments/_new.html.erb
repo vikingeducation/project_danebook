@@ -1,18 +1,18 @@
 <div class="panel panel-default">
 
-  <%= form_for [current_user, @new_comment] do |c| %> 
-  
+  <%= form_for [current_user, @new_comment] do |c| %>
+
   <div class="panel-body">
     <div class="form-group">
       <%= c.label "Comment" %>
-      <%= c.text_area :body, class: "form-control",  placeholder: "Write on the wall" %>
+      <%= c.text_area :body, class: "form-control",  placeholder: "Write a comment" %>
     </div>
   </div>
 
   <div class="panel-footer clearfix">
   	<%= c.hidden_field :commentable_id, :value => commentable.id %>
   	<%= c.hidden_field :commentable_type, :value => commentable.class %>
-    <%= c.submit "Comment", class: "pull-right btn btn-sm btn-primary" %> 
+    <%= c.submit "Comment", class: "pull-right btn btn-sm btn-primary" %>
   </div>
 
   <% end %>

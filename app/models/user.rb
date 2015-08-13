@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
 
   before_create :generate_token
   after_create :build_profile, :if => Proc.new{ self.profile.nil? }
+  after_create :send_welcome_email
 
   has_secure_password
 
@@ -59,16 +60,18 @@ class User < ActiveRecord::Base
     friended_users
   end
 
+  #confirm match of user to their like on a post/comment/photo
   def match_like(params)
-    likes.where("likings_id = ? AND likings_type = ?", params[:likings_id], params[:likings_type]).first
-    # fail
+    likes.where("likings_id = ? AND likings_type = ?",
+          params[:likings_id], params[:likings_type]).first
   end
 
   def full_name
     self.first_name + " " + self.last_name
   end
 
-  #for search
+  #=========== for search ================
+
   def self.search(query)
     if query
       where("first_name LIKE ? OR last_name LIKE ?",
@@ -78,8 +81,19 @@ class User < ActiveRecord::Base
     end
   end
 
+  #=========== mailer methods =============
 
-  #sign in cookies!
+  def send_welcome_email
+    User.send_welcome_email(self.id)
+  end
+
+  def self.send_welcome_email(id)
+    user= User.find(id)
+    UserMailer.welcome(user).deliver!
+  end
+
+
+  #=========== sign in cookies! ===========
   def generate_token
     begin
       self[:auth_token] = SecureRandom.urlsafe_base64

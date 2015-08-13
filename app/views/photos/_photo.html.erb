@@ -1,11 +1,16 @@
 <div class="col-md-3 col-xs-6 photo">
 
-  <%= link_to user_photo_path(params[:user_id], photo), id: photo.picture_file_name do %>
+  <%= link_to user_photo_path(params[:user_id], photo),
+                            id: photo.picture_file_name do %>
+
     <%= image_tag photo.picture.expiring_url(10, :thumb) %>
+
   <% end %>
 
   <div class="upload-date">
+
     <p>Uploaded <%= photo.created_at %></p>
+
   </div>
 
 </div>

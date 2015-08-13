@@ -182,9 +182,17 @@ describe User do
 
 
 
-  context "instance methods" do
+  context "methods" do
     it "should respond to full_name method" do
       expect{user.full_name}.to_not raise_error
+    end
+
+    it "return a list of user matching query" do
+      10.times{ create(:user) }
+      expect(User.search("oo").count).to eq(10)
+
+      #factory setup has unique first name based on email
+      expect(User.search(User.last.first_name).count).to eq(1)
     end
   end
 

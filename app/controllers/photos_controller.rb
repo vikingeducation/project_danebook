@@ -34,13 +34,14 @@ class PhotosController < ApplicationController
     params.require(:photo).permit(:picture, :photo_link)
   end
 
+  # check if friender of user
   def require_friend
-    # binding.pry
-    # User.find(params[:user_id]).friends.include?(current_user)
-    unless current_user.id.to_s == params[:user_id] || current_user.
-                friends.include?(User.find(params[:user_id]))
+    unless current_user.id.to_s == params[:user_id] ||
+      current_user.friends.include?(User.find(params[:user_id]))
+
       flash[:error] = "You have to be a friend to view this."
       redirect_to user_photos_path(params[:user_id])
     end
+
   end
 end

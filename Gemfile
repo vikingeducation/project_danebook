@@ -59,6 +59,9 @@ group :development, :test do
   gem 'spring'
   gem 'rspec-rails'
   gem 'guard-rspec', require: false
+
+  #to fake sending emails without sending them
+  gem "letter_opener"
 end
 
 group :test do

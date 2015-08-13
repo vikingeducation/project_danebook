@@ -4,15 +4,19 @@
   </header>
 
   <% friends.each do |friend| %>
+
     <div class="col-xs-4 friend">
       <a href= <%=user_posts_path(friend.id)%> >
         <%=image_tag friend.profile_photo %>
       </a>
-      <p><%=link_to friend.full_name, user_posts_path(friend.id) %></p>
+      <p><%=link_to friend.full_name,
+                        user_posts_path(friend.id) %></p>
     </div>
+
   <% end %>
 
   <div class="col-md-12 friend">
-    <%= link_to "See more friends!", friendings_path(user_id: params[:user_id]) %>
+    <%= link_to "See more friends!",
+                        friendings_path(user_id: params[:user_id]) %>
   </div>
 </section>

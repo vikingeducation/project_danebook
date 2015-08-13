@@ -19,6 +19,7 @@ module FriendingsHelper
     num > 0 ? "(#{num.to_s})"  : ""
   end
 
+  #if no friends, do not display widget on timeline
   def friends_widget
     if @user.friends.any?
       render partial: 'friend_panel', locals: {friends: @user.friends.shuffle}

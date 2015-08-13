@@ -32,13 +32,16 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    if @user.update(params_hash)
-      flash[:success] = "Successfully updated your information!"
-      redirect_to @user
+    unless @user.id == current_user
+      if @user.update(params_hash)
+        flash[:success] = "Successfully updated your information!"
+      else
+        flash[:error] = "There was an error updating your information."
+      end
     else
-      flash[:error] = "There was an error updating your information."
-      redirect_to @user
+      flash[:notice] = "You cannot edit another user's info."
     end
+    redirect_to @user
   end
 
   def destroy

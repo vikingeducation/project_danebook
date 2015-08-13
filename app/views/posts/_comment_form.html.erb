@@ -4,7 +4,7 @@
 <%= f.hidden_field :commenting_type, value: post.class %>
 <div class="row">
   <div class="col-xs-12 timeline-comment-box">
-    <%= f.label :body, "Will be shown as #{current_user.full_name}\'s comment"%>
+    <%= f.label :body, "Will be shown as #{current_user.first_name.capitalize}\'s comment"%>
     <%= f.text_area :body, {class: "form-control", placeholder: "Write a comment."} %>
   </div>
 </div>

@@ -2,9 +2,32 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
+  
 
+  rescue_from ActiveRecord::RecordNotFound, with: :not_found 
+  rescue_from Exception, with: :not_found
+  rescue_from ActionController::RoutingError, with: :not_found
 
-  private 
+  def raise_not_found
+  raise ActionController::RoutingError.new("No route matches #{params[:unmatched_route]}")
+  end
+
+  def not_found
+    if current_user
+      flash[:failure]="No page found"
+      redirect_to user_profile_path(current_user)
+    else
+      flash.now[:failure]="Please login"
+      redirect_to root_path
+    end
+  end
+
+  def error
+    redirect_to root_path
+  end
+
+  private
+
 
   def sign_in(user)
    session[:user_id] = user.id

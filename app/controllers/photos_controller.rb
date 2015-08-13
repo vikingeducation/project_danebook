@@ -36,9 +36,11 @@ class PhotosController < ApplicationController
     if params[:type] == "avatar"
       @profile.avatar_id = @photo.id
       @profile.save
+      flash[:success] = "Your avatar updated"
     elsif params[:type] == "cover"
       @profile.cover_id = @photo.id
       @profile.save
+      flash[:failure] = "This option coming soon"
     else
       flash[:failure]="Picture was not set"
     end

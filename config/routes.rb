@@ -14,14 +14,14 @@ Rails.application.routes.draw do
   # get 'timeline', to: 'static_pages_controller#timeline', as: 'timeline'
 
   
+
   resources :users do
     resource :profile, only: [:edit,:update,:show]
     resources :photos, except: [:edit]
     resources :posts, only: [:index,:create,:destroy]
     resources :friends, only: [:index]
-
-    #get 'friends' => 'user#friends'
   end
+  
   resources :comments, only: [:create, :destroy]
   resource :likes, only: [:create, :destroy]
   resource :friendings, only: [:create, :destroy]
@@ -30,4 +30,5 @@ Rails.application.routes.draw do
   get 'login' => 'session#new'
   delete 'logout' => 'session#destroy'
 
+  get '*unmatched_route', to: 'application#raise_not_found'
 end

@@ -17,6 +17,7 @@ class ProfilesController < ApplicationController
 
   def update
     @profile = Profile.find_by_user_id(params[:user_id])
+    @photo=Photo.new(user_id: current_user.id) 
     if @profile.update(whitelisted_profile_params)
       
       flash[:success]="Updates saved"
@@ -39,8 +40,8 @@ class ProfilesController < ApplicationController
                                     :phone,
                                     :wordsby,
                                     :wordsabout,
-                                    :avatar_id,
-                                    :cover_id
+                                    :avatar,
+                                    :cover
                                     )
 
   end

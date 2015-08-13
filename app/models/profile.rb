@@ -25,4 +25,9 @@ include ProfilesHelper
     send_data(@user.avatar, filename: "avatar.jpg", disposition: 'inline')
 
   end
+
+  def full_name
+      user=User.find(self.user_id)
+      user.first_name + " " + user.last_name
+  end
 end

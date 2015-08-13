@@ -3,15 +3,19 @@
     <div class = "row">
 
       <div class = "col-sm-12 header-photo">
-
+        
         <div class = "col-sm-3 profile-name">
 
           <h1><%= link_to @profile, user_profile_path(@profile.user_id), :class => "profile-name"%></h1>
 
         </div>
-        <%=image_tag @profile.avatar.photo.url(:thumb)%>
 
-     
+            <%if @profile.avatar%>
+              <%=image_tag @profile.avatar.photo.url(:thumb)%>
+            <% else %>
+              <%=image_tag "http://icons.iconarchive.com/icons/hopstarter/halloween-avatars/256/Mask-3-icon.png"%>
+            <% end %>
+
 
       </div>
 

@@ -19,6 +19,8 @@ end
 
 Photo.create(user_id: User.all.last.id, 
               photo: File.new("#{Rails.root}/tmp/avatar.jpg"))
+Photo.create(user_id: User.all.last.id, 
+              photo: File.new("#{Rails.root}/tmp/cover.jpg"))
 
 User.all.each do |user|
 
@@ -31,7 +33,7 @@ User.all.each do |user|
                 livesincountry: "USA", 
                 wordsby: Faker::Lorem.sentence, 
                 wordsabout: Faker::Lorem.sentence,
-                avatar_id: Photo.last.id, cover_id: nil)
+                avatar_id: Photo.first.id, cover_id: Photo.last.id)
 
   rand(1..MULT/4).times do
     Post.create!(user_id: user.id, body: Faker::Name.title+"Post from user #{user.full_name}")

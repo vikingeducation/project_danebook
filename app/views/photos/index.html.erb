@@ -19,20 +19,22 @@
       </div>
     </div>
 
-    <%= @photos.each do |photo| %>
     <div class="row main-content">
+
+          <% @photos.each do |photo| %>
       <div class="col-sm-3">
         <div class="photo-container">
-             <%= link_to user_photo_path(@profile.user_id, photo) do%>
-          <%= image_tag photo.photo.expiring_url(10)%>
+            <%= link_to user_photo_path(@profile.user_id, photo) do%>
+              <%= image_tag photo.photo.expiring_url(10)%>
 
-          <div class="photo-overlay">
-            <strong><%= photo.created_at%></strong>
-          </div>
-          <%end%>
+              <div class="photo-overlay">
+                <strong><%= photo.created_at%></strong>
+              </div>
+            <% end %>
         </div>
       </div>
+          <% end %>
+      
     </div>
-    <% end %>
 
   </main>

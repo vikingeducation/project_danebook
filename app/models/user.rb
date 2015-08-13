@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
 
   has_secure_password
 
+  validates :password_confirmation,  :presence => true
   validates :password,  :presence => true,
                         :length => {:in => 4..24},
                         :allow_nil => true
@@ -49,4 +50,5 @@ class User < ActiveRecord::Base
     user = User.find(id)
     UserMailer.welcome(user).deliver
   end
+
 end

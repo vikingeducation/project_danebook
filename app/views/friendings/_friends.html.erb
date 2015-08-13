@@ -10,12 +10,12 @@
 
         <div class = "col-xs-5">
           <div class = "friend-name">
-            <a href="#">
+            <a href=<%=user_posts_path(friend.id)%>>
               <h4><%= friend.full_name %></h4>
             </a>
-            <a href="#">
+            <!-- <a href="#"> -->
               <h6><%= friend.friends.size %> Friends</h6>
-            </a>
+            <!-- </a> -->
             <%# display_about_details if search %>
           </div>
         </div>

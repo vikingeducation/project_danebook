@@ -9,7 +9,11 @@
           <h2>Photos</h2>
         </div>
         <div class="form-group col-xs-2">
-          <%= link_to "Add Photo", new_user_photo_path(params[:user_id]), class: "btn btn-primary", id: "edit-profile" %>
+          <% if current_user.id.to_s == params[:user_id] %>
+            <%= link_to "Add Photo",
+                    new_user_photo_path(params[:user_id]),
+                    class: "btn btn-primary", id: "edit-profile" %>
+          <% end %>
         </div>
       </div>
     </header>

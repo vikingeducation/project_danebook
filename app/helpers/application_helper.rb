@@ -33,6 +33,26 @@ module ApplicationHelper
     str.html_safe
   end
 
+  def cover_image(user)
+    if user.cover_photo
+      image_tag(user.cover_photo.user_photo.url, 
+                class: "cover-pic hidden-sm hidden-xs")
+    else
+      image_tag(image_path("icon_photo_small.png"), 
+                class: "cover-pic hidden-sm hidden-xs")
+    end
+  end
+
+  def profile_image(user)
+    if user.profile_photo
+      image_tag(user.profile_photo.user_photo.url, 
+                class: "hidden-sm hidden-xs profile-pic")
+    else
+      image_tag(image_path("user_silhouette_generic.gif"), 
+                class: "hidden-sm hidden-xs profile-pic")
+    end
+  end
+
   def display_likes_msg(likable)
     return nil if likable.likes.empty?
     creator_name(likable.likes) + like_msg_base(likable.likes)      

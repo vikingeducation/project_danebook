@@ -4,6 +4,10 @@ class ProfilesController < ApplicationController
   skip_before_action :require_current_user, only: [:show]
 
   def edit
+    unless @profile.user == current_user
+      flash[:warning] = "You are not authorized to do this!"
+      redirect_to root_path
+    end
   end
 
   def update

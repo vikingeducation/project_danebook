@@ -1,12 +1,12 @@
 <div class="container cover">
   <div class="row">
     <div class="col-md-12">
-      <img src=<%= image_path("hogwarts_small.jpg") %> height="450px" width="100%" class="cover-pic hidden-sm hidden-xs" />
+      <%= cover_image(user) %>
     </div>
   </div>
   <div class="row cover-profile">
     <div class="col-md-2 col-md-offset-1">
-        <img src=<%= image_path("harry_potter_small.jpg") %> alt ="Harry" class="hidden-sm hidden-xs profile-pic">
+      <%= profile_image(user) %>
     </div>
     <div class="col-md-2 col-md-offset-5">
       <%= friending_button(user) %>

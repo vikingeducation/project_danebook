@@ -11,6 +11,11 @@
   left: 120px;
 }
 
+.cover-pic {
+  height: 450px;
+  width: 100%;
+}
+
 .profile-pic {
   height: 240px;
   width: 180px;

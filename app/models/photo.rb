@@ -49,4 +49,8 @@ class Photo < ActiveRecord::Base
 
   private
 
+   def self.photo_exists?(id)
+    where("id = ?", id).any?
+  end
+
 end

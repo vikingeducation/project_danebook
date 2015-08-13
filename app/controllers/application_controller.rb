@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
+  before_action :require_valid_user
 
   private
 
@@ -63,5 +64,12 @@ class ApplicationController < ActionController::Base
     current_user.id == thing.user_id
   end
   helper_method :object_owner?
+
+  def require_valid_user
+    unless User.user_exists?(params[:user_id])
+      flash[:error] = "This page doesn't exist"
+      redirect_to user_posts_path(current_user.id)
+    end
+  end
 
 end

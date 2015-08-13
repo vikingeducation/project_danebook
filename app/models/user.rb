@@ -70,7 +70,7 @@ class User < ActiveRecord::Base
     self.first_name + " " + self.last_name
   end
 
-  #=========== for search ================
+  #=========== for search and routes ================
 
   def self.search(query)
     if query
@@ -79,6 +79,10 @@ class User < ActiveRecord::Base
     else
       where("")
     end
+  end
+
+  def self.user_exists?(id)
+    where("id = ?", id).any?
   end
 
   #=========== mailer methods =============

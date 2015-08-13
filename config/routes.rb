@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   post "like" => "likes#create"
   delete "unlike"  => 'likes#destroy'
 
-
+  # get '*path' => redirect('/')
   # OLD STATIC ROUTES BELOW (remove after all dynamic pages work)
   #==============================================================
 

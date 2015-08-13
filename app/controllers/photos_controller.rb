@@ -2,7 +2,8 @@ class PhotosController < ApplicationController
 
   before_action :require_login
   before_action :require_current_user, :except => [:index, :show]
-  before_action :require_friend, :only => [:show]
+  before_action :require_friend_or_self, :only => [:show]
+  before_action :require_photo, :only => [:show]
 
   def index
     @photos = User.find(params[:user_id]).photos.includes(:user, :likes, :comments => [:likes, :user])
@@ -26,6 +27,9 @@ class PhotosController < ApplicationController
 
   def show
     @photo = Photo.find(params[:id])
+    # if @photo.user_id != current_user.id &&
+    #   redirect_to user_photos_path(current_user)
+    # end
   end
 
   def destroy
@@ -58,13 +62,21 @@ class PhotosController < ApplicationController
   end
 
   # check if current_user is friender of user
-  def require_friend
-    unless current_user.id.to_s == params[:user_id] ||
-      current_user.friends.include?(User.find(params[:user_id]))
+  def require_friend_or_self
+    unless ((current_user.id.to_s == params[:user_id] && Photo.find(params[:id]).user_id == current_user.id) ||
+      current_user.friends.include?(User.find(params[:user_id])))
 
       flash[:error] = "You have to be a friend to view this."
       redirect_to user_photos_path(params[:user_id])
     end
 
   end
+
+  def require_photo
+    unless Photo.photo_exists?(params[:id])
+      flash[:error] = "This page doesn't exist"
+      redirect_to user_posts_path(current_user.id)
+    end
+  end
+
 end

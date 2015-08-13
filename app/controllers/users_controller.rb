@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_action :require_login, :except => [:new, :create]
   before_action :require_current_user, :except => [:new, :create, :show]
 
+
   def new
     @user = User.new
     @user.build_profile

@@ -2,7 +2,7 @@
   <div class="panel-body">
     <div class="row">
       <div class="col-sm-2">
-         <%= image_tag post.user.profile.profile_photo.image.expiring_url(10), class: 'img-responsive' %>
+         <%= display_profile_photo(post.user) %>
       </div>
       <div class="col-sm-7 poster">
       	<p> <%= link_to full_name(post.user), user_profile_path(post.user.id) %> </p>

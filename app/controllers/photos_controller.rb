@@ -11,9 +11,14 @@ class PhotosController < ApplicationController
   end
 
   def destroy
-    @photo = Photo.find(params[:id])
-    @photo.destroy
-    redirect_to user_photos_path(@user)
+    if @photo.user_id == current_user.id
+      @photo = Photo.find(params[:id])
+      @photo.destroy
+      redirect_to user_photos_path(@user)
+    else
+      flash[:error] = "You can only delete your own photos"
+      redirect_to user_photos_path(@user)
+    end
   end
 
   def new

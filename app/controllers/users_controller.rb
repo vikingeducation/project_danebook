@@ -17,7 +17,10 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      Profile.create(:user_id => @user.id)
+      Profile.create(:user_id => @user.id,
+                     :college => "Add Your College!",
+                     :hometown => "Add Your Hometown!",
+                     :current_location => "Add Your Current Location!")
       sign_in(@user)
       flash[:success] = "New User Created!"
       redirect_to user_path(@user)

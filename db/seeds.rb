@@ -6,12 +6,18 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 require 'faker'
+p "Clearing data..."
+User.destroy_all
+Profile.destroy_all
+Post.destroy_all
+Comment.destroy_all
+Friendship.destroy_all
 
-MULTIPLIER = 1
+MULTIPLIER = 5
 
+p "Creating users..."
 (10 * MULTIPLIER).times do |i|
   u = User.new
-  u.id = i
   u.first_name = Faker::Name.first_name
   u.last_name = Faker::Name.last_name
   u.email = Faker::Internet.email
@@ -20,7 +26,7 @@ MULTIPLIER = 1
   u.birthday = Time.now
   u.created_at = Time.now
   u.updated_at = Time.now
-  u.save
+  u.save!
   u.create_profile(
                   college: Faker::Name.first_name,
                   telephone: Faker::PhoneNumber.phone_number,
@@ -42,7 +48,8 @@ end
   Comment.create(
                  :user_id => User.all.sample.id,
                  :body => Faker::Lorem.sentence,
-                 :post_id => Post.all.sample.id
+                 :commentable_id => Post.all.sample.id,
+                 :commentable_type => "Post"
                  )
 end
 
@@ -60,3 +67,10 @@ end
               :likeable_type => type)
   end
 end
+
+(10 * MULTIPLIER).times do |i|
+  Friendship.create(
+                    :user_id => User.all.sample.id,
+                    :friend_id => User.all.sample.id)
+end
+

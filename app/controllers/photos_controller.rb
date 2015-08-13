@@ -25,7 +25,7 @@ class PhotosController < ApplicationController
   end
 
   def show
-    @photo = @user.find(params[:user_id]).uploaded_photos.where(id: params[:id]).first
+    @photo = User.find(params[:user_id]).uploaded_photos.find(params[:id])
   end
 
   def update

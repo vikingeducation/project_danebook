@@ -1,0 +1,42 @@
+
+<main>
+  <%= render partial: "./users/info" %>
+
+    <!-- This row will hold the "About" Information. -->
+    <!-- The info-section and info-section-topbar css classes are re-used for about_edit and about -->
+    <div class="row info-section">
+      <div class="col-md-12">
+        <!-- This row holds the top bar of the about section -->
+        <div class="row info-section-topbar">
+          <div class="col-md-2 col-md-offset-5">
+            <h2>Friends</h2>
+          </div>
+        </div>
+        <% @friends.each do |friend| %>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="row friends-list">
+                <div class="col-md-2 col-md-offset-1">
+                  <%= image_tag "default_photo.png" %>
+                </div>
+                <div class="col-md-4">
+                  <div>
+                  <h4><%= link_to friend.user.full_name, user_posts_path(friend.user) %></h4>
+                  <h6>432 Friends</h6>
+                  </div>
+                </div>
+                <% if current_user.id == @profile.user_id%>
+                  <div class="col-md-2 col-md-offset-1">
+                    <%= link_to "Unfriend", user_friending_path(@profile.user, friend.user), method: :delete, :class=>"btn btn-primary"  %>
+                  </div>
+                <% end %>
+      
+              </div>
+            </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

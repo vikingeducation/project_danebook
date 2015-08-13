@@ -1,0 +1,20 @@
+<div class="row post-control">
+  <div class="col-xs-12">
+    <div class="row">
+      <div class="col-xs-12 selected post-topbar">
+        <div class="center"> Friends (<%= @profile.user.num_of_friends %>) </div>
+      </div>
+    </div>
+
+    <div class="row timeline-photos">
+      <% @profile.user.friends.each do |friend| %>
+        <div class="col-xs-4"><a href="#"><%= image_tag "default_photo.png" %> <%= friend.user.full_name %> </a></div>
+        <% end %>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12">
+        <div class="center"><%= link_to "See More Friends", user_friendings_path(@profile.user) %></div>
+      </div>
+    </div>
+</div>

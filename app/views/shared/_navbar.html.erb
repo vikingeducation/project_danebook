@@ -1,0 +1,37 @@
+<nav class="navbar navbar-default navbar-fixed-top danebook-navbar">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3 navbar-header">
+					<button type="button" id="collapse-button"class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+						<!-- These spans draw the lines inside the button -->
+						<span class="sr-only">Toggle Navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<div class="navbar-brand" id="danebook-brand"aria-expanded="true">
+						<a href="#">
+							<%= image_tag "logo.gif", class:"img-circle danebook-logo"%>
+						</a>Danebook
+					</div>
+				</div>
+				<div id="navbar"  class="navbar-collapse collapse">
+					<div class="col-md-6">
+						<%= form_tag('/users', :class=>"navbar-form navbar-left", :method => :get)  do %>
+							<div class="form-group">
+								<%= text_field_tag("user[first_name]", nil, :class=> "form-control") %>
+							</div>
+							<%= submit_tag "Search", :class=> "btn btn-default" %>
+						<% end %>
+					</div>
+					<ul class="nav navbar-nav navbar-right">
+						<% if signed_in_user? %>
+							<li><%= link_to current_user.full_name, user_posts_path(current_user)  %></li>
+						
+							<li><%= link_to "logout", session_path(current_user), method: :delete %></li>
+						<% end %>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</nav>

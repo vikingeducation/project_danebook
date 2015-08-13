@@ -1,0 +1,37 @@
+
+<main class ="search-results">
+  <div class="container">
+    <div class="row">
+      <div class="panel panel-default">
+        <div class="panel-heading">Search Results</div>
+        <div class="panel-body">
+          <% @users.each do |user| %>
+              <div class="panel panel-default">
+                <div class="panel-body">
+                  <div class="row">
+                    <div class="col-md-2">
+                      <%= image_tag "default_photo.png" %>
+                    </div>
+                    <div class="col-md-4">
+                      <ul class="list-unstyled">
+                        <li><h4><%= link_to user.full_name, user_posts_path(user) %><h4></li>
+                        <li><%= user.num_of_friends %> Friend(s)</li>
+                        <br>
+                        <li>Currently lives in<%= user.profile.current_home %></li>
+                        <li>From <%= user.profile.hometown %></li>
+                        <li>Born on <%= user.dob %></li>
+                    </div>
+                    <div class="col-md-6 text-center">
+                      <%= friend_links(user) %>
+                    </div>
+                  </div>
+                </div>
+              </div> 
+          <% end %>
+        </div>
+            
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

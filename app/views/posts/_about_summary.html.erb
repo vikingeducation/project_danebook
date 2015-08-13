@@ -1,0 +1,36 @@
+<div class="row post-control">
+  <div class="col-xs-12">
+    <div class="row">
+      <div class="col-xs-12 selected post-topbar">
+        <div class="center"> About (Text Area)</div>
+      </div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12">
+          <!-- Conveniently, we can just re-use these from about.html and bootstrap scales it for us -->
+        <div class="row">
+          <div class="col-md-12">
+            <b>Birthday:</b> <%= @profile.user.dob %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <b>College:</b> <%= @profile.college_name %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <b>Hometown:</b> <%= @profile.hometown %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <b>Currently Lives:</b> <%= @profile.current_home %>
+          </div>
+        </div>
+        </div>
+      </div>
+
+  </div>
+</div>

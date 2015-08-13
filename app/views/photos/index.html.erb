@@ -1,0 +1,35 @@
+<div class="container">
+  <div class="row info-section">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-md-2 col-md-offset-5">
+          <h2 class="panel-title text-center">Photos</h2>
+          </div>
+          <% if current_user.id == params[:user_id].to_i %>
+            <%= link_to "Add Photo", new_user_photo_path(current_user), class:"col-md-2 col-md-offset-3"  %>
+          <% end %>
+        </div>
+      </div>
+        
+    <div class="panel-body">
+      <div class="row">
+        <!-- Tons of photos! If you hover over them, thanks to iHover they will be able to display a title and an upload date! -->
+        <% @photos.each do |photo| %>
+          <div class="col-md-3 photo-page-photo">
+            <div class="ih-item square colored effect3 bottom_to_top">
+              <%= link_to user_photo_path(@user, photo) do %>
+                <div class="img"><%= image_tag photo.photo_data.url(:medium)%></div>
+                <div class="info">
+                    <h3><%= @user.full_name %></h3>
+                    <p>Uploaded <%= photo.photo_data_updated_at %></p>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+    <!-- This row will hold all of the photos. Since we need 4 to a row, we do col-md-3, and we only need one row since overflow makes a new row. -->

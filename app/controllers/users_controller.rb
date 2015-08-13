@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-  before_action :require_current_user, only: [:edit, :update, :destroy]
   def new
     @user = User.new
     redirect_to current_user if current_user
@@ -27,12 +26,17 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
+    unless current_user && @user.id == current_user
+      @user = User.find(params[:id])
+    else
+      flash[:notice] = "You cannot edit another user's info."
+      redirect_to @user
+    end
   end
 
   def update
     @user = User.find(params[:id])
-    unless @user.id == current_user
+    unless current_user && @user.id == current_user
       if @user.update(params_hash)
         flash[:success] = "Successfully updated your information!"
       else

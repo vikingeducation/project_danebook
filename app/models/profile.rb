@@ -7,13 +7,13 @@ class Profile < ActiveRecord::Base
   belongs_to :cover_photo, class_name: 'Photo'
   # accepts_nested_attributes_for :cover_photo
 
-  after_create :set_default_photos
+  # after_create :set_default_photos
 
 private
 
-  def set_default_photos
-    update(profile_photo: Photo.first, cover_photo: Photo.second)
-  end
+  # def set_default_photos
+  #   update(profile_photo: Photo.first, cover_photo: Photo.second)
+  # end
 
 # def home_city_and_country
 # 	home_city + " " + home_country

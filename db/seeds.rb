@@ -1,5 +1,5 @@
-include ActionView::Helpers
-require 'open-uri'
+# include ActionView::Helpers
+# require 'open-uri'
 
 User.destroy_all
 Comment.destroy_all
@@ -9,11 +9,12 @@ Profile.destroy_all
 Friendship.destroy_all
 Photo.destroy_all
 
+#THIS DID NOT WORK
 # set default profile photo
-Photo.create(image: open('app/assets/images/blank_profile_photo.jpg'))
+# Photo.create(image: open('app/assets/images/blank_profile_photo.jpg'))
 
 # set default cover photo
-Photo.create(image: open('app/assets/images/blank_cover_photo.jpg'))
+# Photo.create(image: open('app/assets/images/blank_cover_photo.jpg'))
 
 # create users
 20.times do |n|

@@ -19,9 +19,11 @@
           <li class="pull-right">
             <a href="about_edit.html" >Edit Profile</a>
           </li>
+          <% if current_user %>
           <li class="pull-right">
-            <%= relationship(current_user, :user_id %>
+            <%= friending_status(@user) %>
           </li>
+          <% end %>
         </ul>
       </nav>
     </div>

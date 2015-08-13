@@ -9,10 +9,13 @@ Rails.application.routes.draw do
 
 
   resources :comments, :only => [:create, :destroy]
-  resources :friendings, :only => [:create, :destroy]
+  # resources :friendings, :only => [:create, :destroy]
   
   root to: 'users#new'
-
+  
+  get 'accept' => 'friendings#accept'
+  get 'decline' => 'friendings#decline'
+  get 'friendings' => 'friendings#create'
   get 'timeline' => 'users#timeline'
   get 'about' => 'users#about'
   post 'login' => 'sessions#create'
@@ -21,5 +24,5 @@ Rails.application.routes.draw do
   delete "unlike"  => 'likes#destroy'
 
 
-  get "*path", to: redirect { |p, req| req.flash[:error] = "Oh snaps you dont want to go there "; '/' }
+  # get "*path", to: redirect { |p, req| req.flash[:error] = "Oh snaps you dont want to go there "; '/' }
 end

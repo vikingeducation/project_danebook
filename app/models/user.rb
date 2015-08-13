@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
   
   validates :first_name, :last_name, :presence => true,
                                     :length => {:in => 3...15},
-                                    :format => {:with => /[a-zA-Z]+/}
+                                    :format => {:with => /[a-zA-Z]/}
                                     
   validates :email, :presence => true,
                     :uniqueness => true,
@@ -88,4 +88,8 @@ class User < ActiveRecord::Base
    self.password = "" # This bypasses password encryption, thus leaving password intact self.save_with_validation(false) end
   end
 
+  def self.send_welcome_email(user_id)
+    UserMailer.welcome(user_id).deliver!
+  end
 end
+  

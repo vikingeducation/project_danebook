@@ -1,24 +1,37 @@
 class FriendingsController < ApplicationController
 
+  before_action :require_login
+
+  #sending friend requests
   def create
-    current_user = User.find(params[:current_user_id])
-    friending_recipient = User.find(params[:id])
+    @user = User.find(params[:id])
 
-    if current_user.friended_users << friending_recipient
-      flash[:success] = "You have friended #{friending_recipient.name}"
-      redirect_to friending_recipient
-    else
-      flash[:error] = "An error have occurred"
-      redirect_to friending_recipient
-    end
+    Friending.request_friend(current_user, @user)
+
+     mailer = UserMailer.friend_request(
+      :user => current_user,
+      :friend => @user,
+      :user_url => user_posts_path(@user),
+      :accept_url => url_for(controller: 'friendings', action: 'accept', id: @user.id),
+      :decline_url => url_for(controller: 'friendings', action: 'decline', id: @user.id)
+      )
+     mailer.deliver!
+      flash[:success] = "Friend request sent"
+      redirect_to @user
   end
 
-  def destroy
-    current_user = User.find(params[:current_user_id])
-    unfriended_user = User.find(params[:id])
-    current_user.friended_users.delete(unfriended_user)
-    flash[:success] = "Successfully unfriended"
-    redirect_to current_user
+  def accept
+    Friendship.accept(current_user)
+  end     
+
+  def decline
   end
+  # def destroy
+  #   current_user = User.find(params[:current_user_id])
+  #   unfriended_user = User.find(params[:id])
+  #   current_user.friended_users.delete(unfriended_user)
+  #   flash[:success] = "Successfully unfriended"
+  #   redirect_to current_user
+  # end
 
 end

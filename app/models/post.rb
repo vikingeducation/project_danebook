@@ -2,7 +2,7 @@ class Post < ActiveRecord::Base
   belongs_to :user 
   belongs_to :profile
   has_many :likes, as: :likeable, dependent: :destroy
-  has_many :comments, dependent: :destroy
+  has_many :comments, as: :commentable, dependent: :destroy
 
   validates :body, length: {minimum: 1}
   validates :user_id, presence: true

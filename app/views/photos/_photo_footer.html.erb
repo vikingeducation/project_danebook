@@ -1,19 +1,19 @@
 
-<%= form_for(Comment.new ) do |f| %>
 <div class="panel-footer clearfix">
   <div class="pull-right">
-    <%= link_to "Delete", post_path(id: p.id, profile_id: p.profile.id), method: :delete  %>
+    <%= link_to "Delete", user_photo_path(current_user, p.id), method: :delete  %>
   </div>
   <div >
     <%=like_str(p) %>
-    <%= f.hidden_field :likeable_id, value: p.id %>
+<%= form_for(Comment.new ) do |f| %>
+    <%= f.hidden_field :commentable_id, value: p.id %>
     <% p.comments.each do |comment| %>
     <%= render partial: '/profiles/timeline_partials/comment', locals: {:comment => comment} %>
     <% end %>
     <hr>
     <div class="col-md-10 col-md-offset-1 new-comment-field">
      <%= f.text_area :body, class: 'full_width' %>
-     <%= f.hiddent_field :likeable_type value: p.class %>
+     <%= f.hidden_field :commentable_type, value: p.class %>
      <%= f.submit "Comment", class: "pull-right" %> 
    </div>
 

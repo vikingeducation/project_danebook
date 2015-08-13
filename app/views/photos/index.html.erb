@@ -15,7 +15,15 @@
         <% @user.photos.each do |photo| %>
         <div class="col-md-4 picture-box">
           <%= image_tag photo.picture.url(:medium) %>
-          <div class="row remove-picture">remove photo</div>
+          <% %>
+          <div class="pic-links">
+            <div class="col-md-12">
+              <%= link_to "Remove Picture", user_photo_path(current_user, photo), method: :delete if @user = current_user  %>
+              <br>
+              <%= link_to like_str(photo) %>   |       
+              <%= link_to "Comment on this Photo.", user_photo_path(@user, photo)  %>
+            </div>
+          </div>
         </div>
         <% end %>
       </div>

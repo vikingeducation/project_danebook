@@ -7,7 +7,7 @@
           <%= image_tag 'danish_flag.jpg', class: 'navbar-brand'  %>
         </div>
 
-        <div class="test"><p ><%= current_user.first_name %></p>
+        <div class="test"><p><%= link_to current_user.first_name, profile_timeline_path(current_user.profile) %></p>
         <p><%= link_to "Log Out", logout_path, method: :delete %></p></div>
 
         

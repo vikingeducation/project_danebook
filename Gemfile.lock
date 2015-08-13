@@ -168,6 +168,7 @@ GEM
       cocaine (~> 0.5.5)
       mime-types
       mimemagic (= 0.3.0)
+    pg (0.18.2)
     pry (0.9.12.6)
       coderay (~> 1.0)
       method_source (~> 0.8)
@@ -299,6 +300,7 @@ DEPENDENCIES
   launchy
   letter_opener
   paperclip
+  pg
   rails (= 4.2.3)
   rspec-rails
   sass-rails (~> 5.0)

@@ -12,4 +12,13 @@ describe Comment do
     expect(comment).not_to be_valid
   end
 
+  it "responds to likes" do
+    expect(comment).to respond_to(:likes)
+  end
+
+  it "has a user" do
+    expect(comment).to respond_to(:user)
+  end
+
+
 end

@@ -91,6 +91,7 @@ feature "Guest interactions" do
     pwc = "password"
     gender = "male"
     user.email = email
+    user.save!
     fill_in "user_first_name", with: fname
     fill_in "user_last_name", with: lname
     fill_in "user_email", with: email
@@ -136,19 +137,5 @@ feature "User log in" do
     fill_in "password", with: user.password
     click_button "Sign In"
     expect(page).to have_content "About"
-  end
-end
-
-feature "User is logged in" do
-  before do
-    user = create(:user)
-    user.profile = create(:profile)
-    visit user_path(user)
-    save_and_open_page
-  end
-
-  scenario "user clicks timeline link" do
-    click_link "Timeline"
-    expect(page).to have_content "Timeline"
   end
 end

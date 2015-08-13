@@ -1,0 +1,56 @@
+<%= render partial: "static_pages_controller/navbar", :locals => {first_name: current_user.first_name } %>
+<main>
+
+  <!-- Profile Header -->
+
+  <%= render partial: "static_pages_controller/menu", :locals => { :active => 'Photos', first_name: @user.first_name, last_name: @user.last_name } %>
+
+  <!-- /profile header -->
+
+<!-- Main Content -->
+
+  <div class="container">
+
+    <div class="row test">
+
+      <div class="col-xs-2 col-xs-offset-5">
+
+        <h3>Photos</h3>
+
+      </div>
+
+      <div class="col-xs-5 edit-btn">
+
+        <%= link_to "Add Photo", new_user_photo_path, class: "btn btn-primary pull-right" %>
+
+      </div>
+
+    </div>
+
+    <div class="row main-content">
+
+    <% @photos.each do |photo| %>
+
+      <div class="col-sm-3">
+
+        <div class="photo-container">
+
+          <%= link_to image_tag(photo.data.url(:thumb)), user_photo_path(@user, photo) %>
+
+          <div class="photo-overlay">
+
+            <strong>Uploaded <%= photo.created_at.strftime("%A %-m/%-d/%Y") %></strong>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <% end %>
+
+    </div>
+
+  </div>
+
+</main>

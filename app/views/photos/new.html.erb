@@ -1,6 +1,18 @@
-<h1>Upload a photo!</h1>
+<%= render partial: "static_pages_controller/navbar", :locals => {first_name: current_user.first_name } %>
+<main>
 
-<%= form_for @photo do |f| %>
-  <%= f.file_field :photo_data %>
-  <%= f.submit %>
-<% end %>
+  <!-- Profile Header -->
+
+  <%= render partial: "static_pages_controller/menu", :locals => { :active => 'Photos', first_name: @user.first_name, last_name: @user.last_name } %>
+
+  <!-- /profile header -->
+
+  <div class="col-md-offset-3 col-md-6 text-center">
+    <%=  form_for [current_user, @photo] do |p| %>
+      <h3>Select Photo to Upload</h3>
+      <%= p.file_field :data, class: "form-control" %>
+      <%= p.hidden_field :user_id, :value => current_user.id %>
+      <br>
+      <%= p.submit "Upload Photo", class: "btn btn-success" %>
+    <% end %>
+  </div>

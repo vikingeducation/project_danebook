@@ -14,9 +14,9 @@ Rails.application.routes.draw do
     resources :posts
     resources :likes
     resources :comments
+    resources :photos
   end
 
-  resources :photos
   resources :timelines, :only => [:show]
   resources :friends, :only => [:show]
   resources :profiles

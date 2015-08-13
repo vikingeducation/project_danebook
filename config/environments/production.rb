@@ -1,6 +1,9 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  # Liking paperclip to imagemagick directory
+  Paperclip.options[:command_path] = "blooming-escarpment-2596.herokuapp.com/"
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 

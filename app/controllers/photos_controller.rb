@@ -1,5 +1,6 @@
 class PhotosController < ApplicationController
 
+  before_action :require_login
 
   def new
     @photo = current_user.photos.build

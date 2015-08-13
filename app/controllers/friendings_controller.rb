@@ -1,5 +1,6 @@
 class FriendingsController < ApplicationController
 
+  before_action :require_login
 #Adds the friended user to the current users friend list
   #parms[:user_id] is the user we are friending
   #we are on their page

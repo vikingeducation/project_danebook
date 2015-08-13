@@ -27,66 +27,53 @@
           <% @posts.each do |post| %>
           <!-- This row will represent a post -->
             <div class="row timeline-post">
+              <!-- Top section of a post -->
               <div class="col-xs-12">
-                <!-- Top section of a post -->
-                <div class="row">
-                  <div class="col-xs-12">
-                    <div class="row">
-                      <div class="col-sm-1">
-                        <%= image_tag "harry.jpg" %>
-                      </div>
-                      <div class="col-sm-5">
-                        <div>
-                          <h4>
-                            <%= link_to post.user.full_name, user_path(post.user_id)  %>
-                          </h4>
-                          <h6>Posted on <%= post.created_at %></h6>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row">
-                      <div class="col-xs-12">
-                        <p><%= post.body%></p>
-                      </div>
-                    </div>
+                <div class="col-sm-1">
+                  <%= image_tag "harry.jpg" %>
+                </div>
+                <div class="col-sm-5">
+                  <div>
+                    <h4>
+                      <%= link_to post.user.full_name, user_path(post.user_id)  %>
+                    </h4>
+                    <h6>Posted on <%= post.created_at %></h6>
                   </div>
                 </div>
-          
-
+              </div>
+              <div class="col-xs-12">
+                <p><%= post.body%></p>
+              </div>
+        
               <!-- Bottom section of a post -->
-                <div class="row timeline-post-bottombar">
-                  <div class="col-xs-12 selected">
-                    <div class="row">
-                      <div class="col-xs-1">
-                        <%= like_links(post) %>
-                      </div>
-                      <div class="col-xs-1">
-                        <%= link_to "Comment", new_comment_path(:user_id => current_user.id, :post_id =>post.id)  %>
-            
-
-                      </div>
-                      <div class="col-xs-1 col-xs-offset-8">
-                        <% if current_user.id == post.user_id %>
-                          <%= link_to "Delete", user_post_path(current_user, post), method: :delete  %>
-                          <% end %>
-                      </div>
-                      <%= user_like_info(post) %>
+              <div class="row">
+                <div class="col-xs-12">
+                  <div class="col-xs-1">
+                    <%= like_links(post) %>
+                  </div>
+                  <div class="col-xs-1">
+                     <!-- link_to "Comment", new_comment_path(:user_id => current_user.id, :post_id =>post.id)  -->
+                  </div>
+                  <div class="col-xs-1 col-xs-offset-9">
+                    <% if current_user.id == post.user_id %>
+                      <%= link_to "Delete", user_post_path(current_user, post), method: :delete  %>
+                    <% end %>
                     </div>
+                    <%= user_like_info(post) %>
                   </div>
                 </div>
-              </div>
-              <div class="row">
-                <% post.comments.each do |comment| %>
+                <div class="row">
+                  <% post.comments.each do |comment| %>
 
-                  <%= render partial: './comments/comment_partial', locals: {comment: comment} %>  
+                    <%= render partial: './comments/comment_partial', locals: {comment: comment} %>  
                       
-                <% end %>
+                  <% end %>
+                </div>
+                <%= render partial: "./comments/comment_form_for", locals: { object: post} %>
               </div>
-              <%= render partial: "./comments/comment_form_for", locals: { object: post} %>
             </div>
           <% end %>
         </div>
       </div>
     </div>
-  </div>
 </main>

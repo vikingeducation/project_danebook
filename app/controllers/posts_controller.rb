@@ -2,8 +2,7 @@ class PostsController < ApplicationController
 
   before_action :require_login
 
-  def new
-  end
+  
 
   def create
     @post = current_user.posts.build(params_hash)

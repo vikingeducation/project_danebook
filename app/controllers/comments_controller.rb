@@ -2,12 +2,12 @@ class CommentsController < ApplicationController
 
   before_filter :store_referer, :only => [:create, :destroy]
 
-  def new
+  # def new
     
-    @comment = Comment.new
-    redirect_to user_posts_path(params[:user_id])
+  #   @comment = Comment.new
+  #   redirect_to user_posts_path(params[:user_id])
   
-  end
+  # end
 
   def create
 
@@ -26,7 +26,7 @@ class CommentsController < ApplicationController
   def destroy
     
     comment = Comment.find(params[:id])
-    user_id = comment.user_id
+    # user_id = comment.user_id
     if comment.destroy
       flash[:success] = "Successfully deleted comment"
     else

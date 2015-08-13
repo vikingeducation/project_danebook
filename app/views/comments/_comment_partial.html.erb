@@ -21,16 +21,17 @@
             </div>
           </div>
           <div class="row">
-            <div class="col-sm-4">
+            <div class="col-sm-2">
               <!-- In application_helper -->
               <%= like_links(comment) %>
             </div>
-            <div class="col-sm-8">
+            <div class="col-sm-6">
               <%= user_like_info(comment) %>
-              <% if comment.user_id == current_user.id%>
-                <div class="col-sm-1 col-sm-offset-4 timeline-comment-delete">
-                <%= link_to "Delete", comment_path(comment), method: :delete %>
-              <% end %>
+            </div>
+            <% if comment.user_id == current_user.id%>
+              <div class="pull-right">
+              <p><%= link_to "Delete", comment_path(comment), method: :delete %></p>
+            <% end %>
             
             </div>
           </div>
@@ -38,5 +39,4 @@
       </div>
     </div>
   </div>
-</div>
 </div>

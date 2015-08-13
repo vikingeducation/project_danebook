@@ -3,6 +3,7 @@ class SessionsController < ApplicationController
   skip_before_action :require_login, :only=>[:new, :create]
 
   def new
+    redirect_to new_user_path
   end
 
   def create

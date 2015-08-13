@@ -1,14 +1,17 @@
 <article class="panel panel-default comments">
+
   <div class="panel-body">
     <div class="row">
       <div class="col-sm-2">
          <%= display_profile_photo(post.user) %>
       </div>
+
       <div class="col-sm-7 poster">
       	<p> <%= link_to full_name(post.user), user_profile_path(post.user.id) %> </p>
         <p class="grey-text"> Posted on <%= post.created_at.strftime("%B %d, %Y")%> </p>
       </div>
-    </div> <!-- row end -->
+    </div>
+
     <div class="row">
       <div class="col-md-12">
         <br>

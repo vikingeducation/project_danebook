@@ -9,7 +9,7 @@ class Comment < ActiveRecord::Base
            :as => :duty,
            :dependent => :destroy
 
-  validates :commentable_id, :commentable_type, :body, :user_id,
+  validates :commentable_id, :commentable_type, :body,
             :presence => :true
 
   validates :body, :format => {:with => /[a-zA-Z]+/}

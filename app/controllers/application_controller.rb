@@ -53,7 +53,7 @@ class ApplicationController < ActionController::Base
   def require_object_owner
     if User.find(params[:user_id]) != current_user
       flash[:error] = "Sorry! Viewing not authorized."
-      redirect_to URI(request.referer).path
+      redirect_to :back
     end
   end
   helper_method :require_object_owner

@@ -11,7 +11,7 @@ class PhotosController < ApplicationController
     @photo = Photo.new(photo_params)
     if @photo.save
       flash[:success] = "Photo added!"
-      redirect_to user_photos_path(@user)
+      redirect_to user_photos_path(params[:id])
     else
       flash[:error] = "There was a problem uploading your photo!"
       render :action => "new"

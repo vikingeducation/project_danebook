@@ -7,6 +7,7 @@
             <%= image_tag friend.profile_photo %>
           </div>
         </div>
+
         <div class = "col-xs-5">
           <div class = "friend-name">
             <a href="#">
@@ -15,15 +16,16 @@
             <a href="#">
               <h6><%= friend.friends.size %> Friends</h6>
             </a>
+            <%# display_about_details if search %>
           </div>
         </div>
+
         <div class = "col-xs-4">
           <div class = "friend-options">
+            <%# "You are already friends!" if search %>
 
             <!-- button below is in reference to current_user -->
             <%= friend_unfriend_button(friend.id) %>
-
-            <%# link_to "Unfriend Me", friending_path(friend_id => friend.id), method: :delete, class: "btn btn-default", id: "friending" %>
 
           </div>
         </div>

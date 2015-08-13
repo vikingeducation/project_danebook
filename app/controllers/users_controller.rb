@@ -31,6 +31,7 @@ class UsersController < ApplicationController
   # end
 
   def update
+    redirect_to user_posts_path(params[:id]) unless photo_is_yours?
     if current_user.update(whitelisted_user_params)
       flash[:success] = "Successfully updated your profile"
       redirect_to current_user
@@ -57,6 +58,18 @@ class UsersController < ApplicationController
                                   :about, :college, :hometown,
                                   :location, :gender] })
   end
+
+  def photo_is_yours?
+    if params[:cover_photo_id]
+      return false if current_user.id != params[:cover_photo_id].user_id.to_i
+    end
+
+    if params[:profile_photo_id]
+      return false if current_user.id != params[:profile_photo_id].user_id.to_i
+    end
+    true
+  end
+
 
 
 end

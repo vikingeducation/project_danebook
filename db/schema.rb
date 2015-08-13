@@ -58,6 +58,20 @@ ActiveRecord::Schema.define(version: 20150812003149) do
     t.datetime "photo_data_updated_at"
   end
 
+  create_table "post_commentings", force: :cascade do |t|
+    t.integer  "post_id"
+    t.integer  "comment_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "post_likings", force: :cascade do |t|
+    t.integer  "like_id"
+    t.integer  "post_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "posts", force: :cascade do |t|
     t.text     "body"
     t.datetime "created_at", null: false

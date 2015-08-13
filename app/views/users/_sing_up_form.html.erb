@@ -1,14 +1,4 @@
-<% form_for user do |f| %>
-  <div id="error_explanation text-center">
-    <% if user.errors %>
-    <%= "Total #{user.errors.count} validation(s) failed"%>
-    <ul>
-      <%user.errors.full_messages.each do |m|%>
-        <li><%=m %></li>
-      <% end %>
-    </ul>
-  </div>
-  <% end %>
+
 
 <main class = "container">
 
@@ -27,6 +17,17 @@
 
     </article>
 
+        <%= form_for user do |f| %>
+          <div id="error_explanation text-center">
+            <% if user.errors.count > 0  %>
+            <%= "Total #{user.errors.count} validation(s) failed"%>
+            <ul>
+              <%user.errors.full_messages.each do |m|%>
+                <li><%=m %></li>
+              <% end %>
+            </ul>
+          </div>
+            <% end %>
     <article class = "col-sm-5 sign-up-main-right">
 
       <h1>Sign Up</h1>

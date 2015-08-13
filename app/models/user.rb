@@ -13,13 +13,13 @@ class User < ActiveRecord::Base
 
   validates :password_confirmation,  :presence => true
   validates :password,  :presence => true,
-                        :length => {:in => 4..24},
+                        :length => {:in => 4..34},
                         :allow_nil => true
 
   validates :email,     :presence => true,
-                        :format => {:with => /@/},
+                        :format => /\A([\w+\-].?)+@[a-z\d\-]+(\.[a-z]+)*\.[a-z]+\z/i,
                         :uniqueness => true,
-                        :length => {:in => 4..24}
+                        :length => {:in => 4..54}
   
   after_create :create_profile
   #after_create :send_delayed_email

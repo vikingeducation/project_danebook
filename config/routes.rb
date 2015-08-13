@@ -2,19 +2,7 @@ Rails.application.routes.draw do
   
   #root "static_pages_controller#index"
   root to: 'users#new'
-  # get '/', to: 'static_pages_controller#index'
-  # get 'about', to: 'static_pages_controller#about', as: 'about'
-
-  # get 'about_edit', to: 'static_pages_controller#about_edit', as: 'about_edit'
-
-  # get 'friends', to: 'static_pages_controller#friends', as: 'friends'
-
-  # get 'photos', to: 'static_pages_controller#photos', as: 'photos'
-
-  # get 'timeline', to: 'static_pages_controller#timeline', as: 'timeline'
-
   
-
   resources :users do
     resource :profile, only: [:edit,:update,:show]
     resources :photos, except: [:edit]
@@ -30,5 +18,5 @@ Rails.application.routes.draw do
   get 'login' => 'session#new'
   delete 'logout' => 'session#destroy'
 
-  #get '*unmatched_route', to: 'application#raise_not_found'
+  get '*unmatched_route', to: 'application#raise_not_found'
 end

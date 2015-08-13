@@ -14,13 +14,14 @@ Like.destroy_all
 MULT=30
 
 MULT.times do |i|
-  User.create(:email => Faker::Internet.email, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, password_digest: "password", birthday: Time.now, gender: ["Male","Female"].sample)
+  User.create!(:email => Faker::Internet.email, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, password_digest: "password", password_confirmation: "password", birthday: Time.now, gender: ["Male","Female"].sample)
 end
 
-Photo.create(user_id: User.all.last.id, 
+Photo.create(user_id: 1, 
               photo: File.new("#{Rails.root}/public/avatar.jpg"))
-Photo.create(user_id: User.all.last.id, 
+Photo.create(user_id: 1, 
               photo: File.new("#{Rails.root}/public/cover.jpg"))
+binding.pry
 
 User.all.each do |user|
 

@@ -1,15 +1,11 @@
 class Profile < ActiveRecord::Base
 include ProfilesHelper
-
+  belongs_to :cover, class_name: "Photo"
+  belongs_to :avatar, class_name: "Photo"
   belongs_to :user
   has_many :photos
   
-  #Photos part
-  has_attached_file :avatar, :styles => { :thumb => "100x100" }
-  validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
-  validates_attachment :avatar, :presence => true,
-  :content_type => { :content_type => "image/jpeg" },
-  :size => { :in => 0..1.megabytes }
+  validates :user_id, uniqueness: true
 
   #Methods
   def to_s

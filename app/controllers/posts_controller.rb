@@ -5,7 +5,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = @user.posts
-     @profile = Profile.find_by_user_id(params[:user_id])
+    @profile = Profile.find_by_user_id(params[:user_id])
     @new_post = Post.new(author: @user)
   end
 
@@ -13,11 +13,10 @@ class PostsController < ApplicationController
     @post = Post.new(whitelist_post_params)
     if @post.save
       flash[:success] = "Posted on timeline."
-      redirect_to user_posts_path(current_user)
     else
       flash[:notice] = "Didn't post."
-      redirect_to user_posts_path(current_user)
     end
+      redirect_to user_posts_path(current_user)
   end
 
   def destroy
@@ -33,16 +32,14 @@ class PostsController < ApplicationController
 
 
   private
-
+    def find_user
+      @user=User.find(params[:user_id])
+    end
     def require_current_user
       unless current_user == @user
         flash[:notice] = "You can not do this."
         redirect_to user_posts_path(@user)
       end
-    end
-
-    def find_user
-      @user = User.includes(:profile).find(params[:user_id])
     end
 
     def whitelist_post_params

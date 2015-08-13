@@ -9,7 +9,7 @@
           <h1><%= link_to @profile, user_profile_path(@profile.user_id), :class => "profile-name"%></h1>
 
         </div>
-        <%=image_tag @profile.avatar.url(:thumb)%>
+        <%=image_tag @profile.avatar.photo.url(:thumb)%>
 
      
 

@@ -12,7 +12,7 @@
 
             <div class="friend-info">
 
-              <h4><%=link_to friend.full_name, user_path(friend)%></h4>
+              <h4><%=link_to friend.full_name, user_posts_path(friend.profile) %></h4>
               <%= friend.friends.count %> friend(s)
 
 

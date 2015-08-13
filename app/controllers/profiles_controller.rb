@@ -1,4 +1,5 @@
 class ProfilesController < ApplicationController
+  before_action :require_current_user, :only => [:edit, :update, :destroy]
 
   def edit
     @profile = current_user.profile

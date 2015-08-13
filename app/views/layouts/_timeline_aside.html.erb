@@ -35,7 +35,7 @@
             </header>
 
               <div class="row pic-row">
-                <% @users.photos.each do |photo| %>
+                <% @user.photos.each do |photo| %>
 
                   <div class="pic-col col-sm-4">
 
@@ -89,7 +89,7 @@
 
           <article class="aside-container-link">
 
-            <%= link_to "See More Friends", user_friends_path(@user) %>
+            <%= link_to "See More Friends", friend_path(@user) %>
 
           </article>
 

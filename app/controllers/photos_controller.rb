@@ -18,6 +18,10 @@ def new
 end
 
 def create
+  if params[:photo].nil?
+    flash.now[:error] = "Please select a file"
+    render :new
+  end
   @photo = Photo.new(whitelisted_photo_params)
   if @photo.save
     flash[:success] = "Photo Uploaded"

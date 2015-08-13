@@ -14,7 +14,9 @@ class Photo < ActiveRecord::Base
   has_many :users_liking_photos, through: :likes, source: :user
 
   validates_attachment_content_type :image,
-                                    content_type: /\Aimage\/.*\Z/
+                                    presence: { message: "Please select a photo" },
+                                    content_type: /\Aimage\/.*\Z/,
+                                    reject_if: proc { |attributes| !attributes['image'].present? }
 
 
   def image_from_url(url)

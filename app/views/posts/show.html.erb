@@ -1,0 +1,19 @@
+<%= render 'shared/signed_in_header' %>
+<main>
+  <div class="container">
+    <%= render 'shared/cover_main' %>
+   <%= render 'shared/mid_navigation' %>
+    <section class="timeline-wrap">
+      <div class="row">
+        <div class="col-md-4">
+          <%= render 'posts/photo_panel' %>
+          <%= render 'posts/friends_panel' %>
+        </div> <!--col-md -4 -->
+        <div class="col-md-8">
+         <%= render 'posts/form_panel' %>
+         <%= render @posts %>
+       </div><!-- col-md-8 end -->
+     </div> <!-- end of row -->
+   </section>
+ </div> <!-- end of container -->
+</main>

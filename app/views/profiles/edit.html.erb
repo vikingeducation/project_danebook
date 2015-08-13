@@ -1,0 +1,102 @@
+<%= render 'shared/signed_in_header' %>
+<main>
+    <header class="container">
+      <%= render 'shared/cover_main' %>
+      <%= render 'shared/mid_navigation' %>
+      <section class="panel panel-default panel-custom">
+        <div class="panel-heading clearfix">
+
+          <%= link_to 'Edit your profile', edit_user_profile_path, class: ' btn btn-primary btn-sm pull-right' %>
+          <h4 class="panel-text text-center">Edit Profile</h4>
+          
+
+        </div>
+        <div class="panel-body">
+          <div class="row about-info dark-inputs">
+            <%= form_for [current_user, @profile] do |f| %>
+            <div class="col-sm-5">
+              <h3>Basic Information</h3>
+              
+<!--               <dl class="dl-horizontal">
+                <dt class="basic-info">Birthday:</dt>
+                 <dd>July, 31st, 1980</dd>
+                <dt class="basic-info">College:</dt>
+                <dd><input type="text" placeholder="Hogwarts College"></dd>
+                <dt class="basic-info">Hometown:</dt>
+                <dd><input type="text" placeholder="Godrick's Hollow, England"</input></dd>
+                <dt class="basic-info">Currently Lives:</dt>
+                <dd><input type="text" placeholder="Godrick's Hollow"></dd>
+              </dl> -->
+              <div >
+                <dl >
+                  <dt class="basic-info" style="display:inline">      Birthday:
+                  </dt>
+                  <dd style="display:inline">
+                    <%= @profile.birthday %>
+                  </dd>
+                </dl>
+                <div class="form-group">
+                  <%= f.label :college %>
+                  <%= f.text_field :college, placeholder: 'Hogwarts College' %>
+                </div>
+                <div class="form-group">
+                  <%= f.label :hometown %>
+                  <%= f.text_field :hometown, placeholder: "Godrick's Hollow, England" %>
+                </div>
+                <div class="form-group">
+                  <%= f.label :current_town %>
+                  <%= f.text_field :current_town, placeholder: "Godrick's Hollow, England" %>
+                </div>      
+              </div>  
+
+              <h3>Contact Information</h3>
+              
+<!--               <dl class="dl-horizontal">
+                <dt class="basic-info">Email:</dt>
+                <dd>harry_potter@hogwarts.edu</dd>
+                <dt class="basic-info">Telephone::</dt>
+                <dd><input type="text" placeholder="555-123-4567"></dd> -->
+                 <dl >
+                  <dt class="basic-info" style="display:inline">Email:</dt>
+                  <dd style="display:inline">
+                    <%= @profile.user.email %>
+                  </dd>
+                </dl>
+                <div class="form-group">
+                  <%= f.label :telephone %>
+                  <%= f.text_field :hometown, placeholder: "555-555-5555" %>
+                </div>
+            </div>
+            <div class="col-sm-7">
+              <div>
+                <h3>Words to Live By</h3>
+                <div class="form-group">
+                  <%= f.text_area :words_to_live_by,
+                                  :rows => 3,
+                                  class: 'form-control' %>
+                </div>               
+              </div>
+              <div>
+                <h3>About Me</h3>
+                <div class="form-group">
+                  <%= f.text_area :about_me,
+                                  :rows => 5,
+                                  class: 'form-control' %>                
+              </div>
+            </div>
+
+           
+          </div>
+          <div class="row">
+            <div class="col-md-8 col-md-offset-2" >
+              <%= f.submit 'Save Changes', class: 'btn btn-primary btn-block btn-lg' %>
+            </div>
+          </div>
+           <% end %>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+</main>

@@ -28,6 +28,8 @@ gem 'paperclip'
 gem 'aws-sdk', '~> 1.6'
 gem 'figaro'
 
+gem 'valid_url'
+
 gem 'delayed_job_active_record'
 
 gem 'delayed_paperclip'

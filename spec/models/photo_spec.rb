@@ -27,11 +27,15 @@ RSpec.describe Photo, type: :model do
     end
 
     it "is valid if it doesn't come from an outside source" do
-      photo.img_url = nil
-      expect(photo).to be_valid
-      photo.img_url = "test"
+      photo.img_url = ""
       expect(photo).to be_valid
     end
+
+    it "is not valid if the url is not a url" do
+      photo.img_url = "htp://test.com"
+      expect(photo).not_to be_valid
+    end
+
   end
 
 

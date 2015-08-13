@@ -35,9 +35,9 @@ class Photo < ActiveRecord::Base
   validates :user_id, :data,
             presence: true
 
-  validates :img_url, 
+  validates :img_url,
             allow_blank: true,
-            length: { minimum: 5}
+            url: true
 
   # ----------------------- Methods --------------------
 

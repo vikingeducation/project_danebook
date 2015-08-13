@@ -28,7 +28,8 @@ class UsersController < ApplicationController
 	end
 
 	def edit
-		@user = User.find(params[:id])
+		# @user = User.find(params[:id])
+		redirect_to user_posts_path(current_user.id)
 	end
 
 	def update

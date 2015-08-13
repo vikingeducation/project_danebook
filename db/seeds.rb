@@ -18,9 +18,9 @@ MULT.times do |i|
 end
 
 Photo.create(user_id: User.all.last.id, 
-              photo: File.new("#{Rails.root}/tmp/avatar.jpg"))
+              photo: File.new("#{Rails.root}/public/avatar.jpg"))
 Photo.create(user_id: User.all.last.id, 
-              photo: File.new("#{Rails.root}/tmp/cover.jpg"))
+              photo: File.new("#{Rails.root}/public/cover.jpg"))
 
 User.all.each do |user|
 

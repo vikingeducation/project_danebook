@@ -13,7 +13,6 @@ end
 
 def update
 	@profile = Profile.find_by_user_id(params[:user_id])
-	fail
 	if @profile.update(whitelisted_profile_params)
 		flash[:success] = "Updates saved"
 		redirect_to user_profile_path(:user_id => @profile.user.id)

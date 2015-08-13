@@ -3,12 +3,10 @@
 
   <div class="panel-body">
     	<div class="row">
-        <% if request.original_url.include?(user_photos_url(object_owner.id)) %>
-        <div class="col-md-2">
-          <%= image_tag current_user.profile.profile_photo, class: 'img-responsive' %>
+        <div class="col-sm-2">
+          <%= image_tag comment.user.profile.profile_photo.image.expiring_url(10), class: 'img-responsive' %>
         </div>
-        <% end %>
-        <div class="col-md-9">
+        <div class="col-sm-9">
           <p>
             <%= link_to full_name(comment.user), user_timeline_path(comment.user.id) %>
           </p>
@@ -20,6 +18,7 @@
       </div>
 
       <div class="row">
+        <br>
         <p>
           <%= comment.body %>
         </p>

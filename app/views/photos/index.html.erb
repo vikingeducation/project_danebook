@@ -1,32 +1,29 @@
 <main>
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <img src="/images/hogwarts_small.jpg" class="cover-photo hidden-xs hidden-sm img-responsive" alt="profile cover photo">
-          <div class="profile-photo">
-            <img src="/images/harry_potter_small.jpg" class="hidden-xs hidden-sm">
-          </div>
-        </div> <!-- end of row -->
+  <div class="container">
+
+    <%= render partial: 'layouts/cover_and_profile_banner' %>
+
+    <div class="row">
+      <%= render 'layouts/navbar' %>
+    </div>
+
+    <section class="panel panel-default panel-custom">
+
+      <div class="panel-heading clearfix">
+        <% if object_owner? %>
+          <%= link_to 'Add Photos', new_user_photo_path(:user_id => current_user.id), class: 'btn btn-primary btn-sm pull-right' %>
+        <% end %>
+        <h4 class="panel-text text-center">Photos</h4>
       </div>
 
-      <div class="row">
-        <%= render 'layouts/navbar' %>
-      </div> <!-- end of row -->
-
-      <section class="panel panel-default panel-custom">
-        <div class="panel-heading clearfix">
-          <% if object_owner? %>
-            <%= link_to 'Add Photos', new_user_photo_path(:user_id => current_user.id), class: 'btn btn-primary btn-sm pull-right' %>
+      <div class="photo-grid">
+        <div class="row photo-grid-row">
+          <% @photos.each do |photo| %>
+            <%= render photo, locals: {:photo => photo} %>
           <% end %>
-          <h4 class="panel-text text-center">Photos</h4>
         </div>
-        <div class="photo-grid">
-          <div class="row photo-grid-row">
-            <% @photos.each do |photo| %>
-              <%= render photo, locals: {:photo => photo} %>
-            <% end %>
-          </div> <!-- end of row -->
-        </div> <!-- end of photo-grid -->
-      </section>
+      </div> <!-- end of photo-grid -->
+
+    </section>
   </div>
 </main>

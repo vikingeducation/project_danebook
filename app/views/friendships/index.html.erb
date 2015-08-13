@@ -1,13 +1,6 @@
 <main>
   <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <img src="/images/hogwarts_small.jpg" class="cover-photo hidden-xs hidden-sm img-responsive" alt="profile cover photo">
-        <div class="profile-photo">
-          <img src="/images/harry_potter_small.jpg" class="hidden-xs hidden-sm">
-        </div>
-      </div>
-    </div> <!-- end of row -->
+    <%= render partial: 'layouts/cover_and_profile_banner' %>
 
     <div class="row">
       <%= render 'layouts/navbar' %>
@@ -16,11 +9,14 @@
     <section class="panel panel-default panel-custom">
 
       <div class="panel-heading clearfix">
+        <h4 class="panel-text text-center">Friends</h4>
+        <!-- show Add Friend button in case the current user is visiting another persons profile -->
         <% if !object_owner? %>
-          <%= link_to "Add Friend", user_friendships_path(:user_id => current_user.id), class: "btn btn-primary btn-sm pull-right", method: :post %>
+          <%= render partial: new %>
         <% end %>
-      </div><!-- end of panel -->
+      </div>
 
+      <!-- show pending friend requests in case the current user is visiting own friends page -->
       <% if object_owner? %>
       <div class="panel-body">
         <div class="row about-info">
@@ -41,7 +37,6 @@
         </div>
       </div>
 
-    </section> <!-- end of section -->
-
+    </section>
   </div>
 </main>

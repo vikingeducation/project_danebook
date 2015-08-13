@@ -18,7 +18,7 @@ class Photo < ActiveRecord::Base
 
 
   def image_from_url(url)
-    self.image = open(url)
+    self.image = open(url) unless url.nil?
   end
 
   def count_likes

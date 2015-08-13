@@ -1,17 +1,11 @@
 <main>
   <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <img src="/images/hogwarts_small.jpg" class="cover-photo hidden-xs hidden-sm img-responsive" alt="profile cover photo">
-        <div class="profile-photo">
-          <img src="/images/harry_potter_small.jpg" class="hidden-xs hidden-sm">
-        </div>
-      </div> <!-- end of row -->
-    </div>
+
+    <%= render partial: 'layouts/cover_and_profile_banner' %>
 
     <div class="row">
       <%= render 'layouts/navbar' %>
-    </div> <!-- end of row -->
+    </div>
 
     <section class="panel panel-default panel-custom">
 
@@ -23,7 +17,7 @@
         <div class="col-md-4 col-centered">
 
           <div class="row text-center">
-              <h4>Past the URL to a photo on the web...</h4>
+              <h4>Paste the URL to a photo on the web...</h4>
                <%= form_tag user_photos_path(current_user.id), method: 'post' do %>
                 <p> <%= url_field_tag 'image_url', nil, placeholder: 'http://example.com/photo1.jpg' %>
                     <%= hidden_field_tag :user_id, value: current_user.id %>

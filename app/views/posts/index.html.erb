@@ -1,21 +1,16 @@
 <main>
   <div class="container">
 
-    <div class="row">
-      <div class="col-md-12">
-        <img src="/images/hogwarts_small.jpg" class="cover-photo hidden-xs hidden-sm img-responsive" alt="profile cover photo">
-        <div class="profile-photo">
-          <img src="/images/harry_potter_small.jpg" class="hidden-xs hidden-sm">
-        </div>
-      </div>
-    </div>
+    <%= render partial: 'layouts/cover_and_profile_banner' %>
 
     <div class="row">
       <div class="col-sm-10">
         <%= render :partial => 'layouts/navbar' %>
       </div>
       <div class="col-sm-2 timeline-add-friend-button">
-        <%= render partial: 'friendships/new' %>
+        <% if !object_owner? %>
+          <%= render partial: 'friendships/new' %>
+        <% end %>
       </div>
     </div>
 

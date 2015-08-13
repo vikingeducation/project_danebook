@@ -60,6 +60,22 @@ class User < ActiveRecord::Base
     Like.where(user: self, likable_id: likable_thing.id, likable_type: likable_thing.class).any?
   end
 
+  def get_posts
+    self.written_posts.includes(people_who_like: :friends, author: [:friends, :profile_photo], comments: [people_who_like: :friends, author: [:friends, :profile_photo]] )
+  end
+
+  def newsfeed
+    Post.where("user_id IN (?)", [self.id] + self.friend_ids).includes(people_who_like: :friends, author: [:friends, :profile_photo], comments: [people_who_like: :friends, author: [:friends, :profile_photo]] ).reverse
+  end
+
+  def last_post
+    written_posts.order("created_at DESC").first
+  end
+
+  def recent_active_friends
+    self.friends.includes(:written_posts).group("users.id, posts.created_at, posts.id").having("count(posts) > 0").order("posts.created_at ASC").limit(10)
+  end
+
   def generate_token
     begin
       self[:auth_token] = SecureRandom.urlsafe_base64

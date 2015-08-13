@@ -3,7 +3,11 @@
 			<div class="row">
 				<div class="col-sm-3 col-xs-12">
 					<div class="navbar-brand" id="danebook-brand"aria-expanded="true">
-						<%= link_to (image_tag "logo.gif", class:"img-circle danebook-logo"), new_user_path%>
+					    <% if current_user %>
+							<%= link_to (image_tag "logo.gif", class:"img-circle danebook-logo"), user_posts_path(current_user, newsfeed:true) %>
+						<% else %>
+							<%= link_to (image_tag "logo.gif", class:"img-circle danebook-logo"), new_user_path %>
+						<% end %>
 					</div>
 					<button type="button" id="collapse-button"class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
 						<!-- These spans draw the lines inside the button -->
@@ -30,6 +34,7 @@
 						<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
 						  <li class="menu-item" role="presentation">
 						    <%= link_to "Sign Out", logins_path, method: "delete", role: "menuitem", tabindex: "-1" %>
+						    <%= link_to "View Timeline", user_posts_path(current_user, newsfeed: "false") %>
 						  </li>
 						</ul>
 					</div>

@@ -9,10 +9,11 @@ feature 'Uploading Photos' do
       visit root_path
 
       # He fills out the form with the proper information and logs in.
-      login_user
+      current_user = login_user
 
       # Then, after being redirected to his profile, he clicks on the
       # tab that reads 'Photos.'
+      visit(user_posts_path(current_user, newsfeed: false))
       first(:link, 'Photos (0)').click
 
       # Now on a new page, he sees there is a button to begin uploading a file.
@@ -72,6 +73,7 @@ feature 'Uploading Photos' do
       expect(@new_user.profile_photo).to be_nil
 
       # He goes back to the picture in question
+      visit(user_posts_path(@new_user, newsfeed: false))
       first(:link, 'Photos (1)').click
       first('.photo-page-photo').click_link("Photo")
 
@@ -93,6 +95,7 @@ feature 'Uploading Photos' do
       expect(@new_user.cover_photo).to be_nil
 
       # He goes back to the picture in question
+      visit(user_posts_path(@new_user, newsfeed: false))
       first(:link, 'Photos (1)').click
       first('.photo-page-photo').click_link("Photo")
 
@@ -112,13 +115,7 @@ feature 'Uploading Photos' do
       login_user(previous_user: @new_user)
 
       # Joe sees that his previously uploaded photo still persists.
-      expect(page).to have_content("Photos (1)")
-
-      # Joe clicks on the photos tab.
-      click_link("Photos")
-
-      # Joe sees his single photo uploaded, and clicks on it
-      first('.photo-page-photo').click_link("Photo")
+      visit(user_photo_path(@new_user, @new_photo))
 
       # Joe is once again redirected to the show page for his image.
       # Since he's the owner, he also can expect an option to set it
@@ -257,7 +254,7 @@ feature 'Uploading Photos' do
 
         # Joe has seen Jim's deleted comment and wants to delete his photo anyway.
         login_user(previous_user: @new_user)
-        click_link("Photos")
+        visit(user_photos_path(@new_user))
         first('.photo-page-photo').click_link("Photo")
 
         # For whatever reason, Joe first unlikes his own photo.

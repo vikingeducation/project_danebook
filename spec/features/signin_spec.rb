@@ -15,7 +15,7 @@ feature 'signing in' do
       login_user
 
       expect(page).to_not have_css('div.error')
-      expect(current_url).to eq(user_url(User.first))
+      expect(current_url).to eq(user_posts_url(User.first, newsfeed: "true"))
       expect(Capybara.current_session.driver.request.cookies.[]('auth_token')).to_not be_nil
     end
 
@@ -49,13 +49,6 @@ feature 'signing in' do
       delete_temporary_cookies
       visit root_path
       expect(current_url).to eq(user_url(User.first))
-    end
-
-    scenario 'should be able to log in from another user page and come back' do
-      other_user = create(:user)
-      visit user_path(other_user)
-      login_user
-      expect(current_url).to eq(user_url(other_user))
     end
   end
 

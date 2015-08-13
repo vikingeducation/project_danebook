@@ -3,7 +3,7 @@
     <div class="row">
       <section class="col-md-7">
         <div class="row">
-        <div class="col-md-6 col-md-offset-3 test">
+        <div class="col-md-6 col-md-offset-3 black-text">
         <h1 >Connect with all your friends!</h1>
           <ul>
             <li>See photos and updates in your news feeds</li>
@@ -40,16 +40,12 @@
           <div class="form-group">
           <%= f.password_field :password_confirmation, placeholder: "Confirm Password", class: "form-control" %>
           </div>
-
-
-
-  <%= f.fields_for :profile do |profile_field| %>
-
  
+          <%= f.fields_for :profile do |profile_field| %>
 
-  
-          <h3><%= profile_field.label :birthdate, "Birthday" %></%></h3>
+          <h3><%= f.profile_field.label :birthdate, "Birthday" %></h3>
           <div class="row">
+
             <div class="col-sm-4  form-group">
               <%= profile_field.date_select :birthdate,     
                                             {:start_year => (Date.current.year - 13),
@@ -71,7 +67,7 @@
                <%= profile_field.radio_button(:gender, "Male") %>
             </div>
           </div>
-          <% end %>
+            <% end %>
           <div class="form-group">
             <%= f.submit "Sign-Up", class: "btn btn-success btn-block" %>
             <% end %>

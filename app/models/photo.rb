@@ -35,10 +35,21 @@ class Photo < ActiveRecord::Base
   validates :user_id, :data,
             presence: true
 
+  validates :img_url, 
+            allow_blank: true,
+            length: { minimum: 5}
+
   # ----------------------- Methods --------------------
 
   def pic_from_url(url)
     self.data = open(url)
+  end
+
+  def self.pass_url_validations?(url)
+    uri = URI.parse(url)
+    uri.kind_of?(URI::HTTP)
+    rescue URI::InvalidURIError
+    false
   end
 
 end

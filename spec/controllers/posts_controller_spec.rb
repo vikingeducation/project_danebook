@@ -22,7 +22,7 @@ describe PostsController do
     end
 
     it 'should create a new post if valid params are passed' do
-      p = build(:post)
+      p = build(:post, author: user)
       p.user_id = user.id
       expect do
         post :create, user_id: user.id, post: p.attributes

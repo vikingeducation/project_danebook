@@ -43,6 +43,12 @@ group :development do
   gem 'better_errors'
   gem 'guard-rspec' , require: false
   gem 'binding_of_caller'
+
+  gem 'capistrano'
+  gem 'capistrano-bundler'
+  gem 'capistrano-passenger', '>= 0.1.1'
+  gem 'capistrano-rails'
+  gem 'capistrano-rvm'
 end
 
 group :development, :test do

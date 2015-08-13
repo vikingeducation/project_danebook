@@ -5,7 +5,7 @@ class PhotosController < ApplicationController
   before_action :require_current_user, only: [:new, :create, :destroy]
 
   def new
-    @photo = Photo.new(user_id: current_user.id)
+    @photo = Photo.new
   end
 
   def index
@@ -14,14 +14,17 @@ class PhotosController < ApplicationController
 
   def create
     @photo = Photo.new(whitelist_photo_params)
-    @photo.user_id = params[:user_id]
-    if @photo.save
-      flash[:success] = "Successfully uploaded photo to your timeline!"
-      redirect_to user_photos_path(current_user)
+    if current_user
+      @photo.uploader = current_user
+      if @photo.save
+        flash[:success] = "Successfully uploaded photo to your timeline!"
+      else
+        flash[:notice] = "Couldn't upload photo to your timeline because #{@photo.errors.full_messages}"
+      end
     else
-      flash[:notice] = "Couldn't upload photo to your timeline because #{@photo.errors.full_messages}"
-      redirect_to user_photos_path(current_user)
+      flash[:notice] = "You cannot upload a photo as another user!"
     end
+    redirect_to user_photos_path(current_user)
   end
 
   def show
@@ -31,7 +34,7 @@ class PhotosController < ApplicationController
   def update
     @photo = Photo.find(params[:id])
     @user = User.find(params[:user_id])
-    if @photo.uploader.id == params[:user_id]
+    if @photo.uploader.id == params[:user_id].to_i
       if params[:type] == "profile"
         @user.profile_photo = @photo
       elsif params[:type] == "cover"
@@ -55,7 +58,7 @@ class PhotosController < ApplicationController
 
   def destroy
     @photo = Photo.find(params[:id])
-    if @photo.uploader.id == params[:user_id]
+    if @photo.uploader == current_user
       if @photo.destroy
         flash[:success] = "Photo deleted Successfully!"
       else

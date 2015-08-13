@@ -3,10 +3,14 @@ class CommentsController < ApplicationController
   before_filter :require_author, only: [:destroy]
   def create
     @comment = Comment.new(whitelisted_comment_params)
-    if @comment.save
-      flash[:success] = "Comment successfully saved!"
+    if current_user && current_user == @comment.author
+      if @comment.save
+        flash[:success] = "Comment successfully saved!"
+      else
+        flash[:notice] = "Comment coudln't be saved!"
+      end
     else
-      flash[:notice] = "Comment coudln't be saved!"
+      flash[:notice] = "You cannot comment as someone else!"
     end
     redirect_to referer
   end

@@ -21,7 +21,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(whitelist_post_params)
-    if current_user.id == params[:user_id]
+    if current_user.id == params[:user_id].to_i
       if @post.save
         flash[:success] = "Successfully posted to your timeline!"
       else
@@ -35,7 +35,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
-    if current_user.id == params[:user_id]
+    if current_user.id == params[:user_id].to_i
       if @post.destroy
         flash[:success] = "Post deleted Successfully!"
       else

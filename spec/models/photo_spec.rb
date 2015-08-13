@@ -34,11 +34,19 @@ RSpec.describe Photo, type: :model do
     it "is not valid if the url is not a url" do
       photo.img_url = "htp://test.com"
       expect(photo).not_to be_valid
+      expect(photo.errors.full_messages).to eq(["Img url is an invalid URL", "Img url must end in a valid image format"])
     end
 
-    it "is not valid if the url is a url, but not a picture file" do
+    it "is not valid if the url is a just a url, with no extension" do
       photo.img_url = "http://test.com"
       expect(photo).not_to be_valid
+      expect(photo.errors.full_messages).to eq(["Img url must end in a valid image format"])
+    end
+
+    it "is isn't valid if the file type is not an image extension" do
+      photo.img_url = "http://test.com/image.pdf"
+      expect(photo).to_not be_valid
+      expect(photo.errors.full_messages).to eq(["Img url must end in a valid image format"])
     end
 
     it "is valid if passes url and image type validations" do

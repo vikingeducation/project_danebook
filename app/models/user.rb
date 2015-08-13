@@ -1,6 +1,5 @@
 class User < ActiveRecord::Base
   has_secure_password
-
   # Assoscitions
   has_one :profile, dependent: :destroy
   has_many :posts, dependent: :destroy

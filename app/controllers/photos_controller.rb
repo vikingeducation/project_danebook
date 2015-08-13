@@ -1,4 +1,5 @@
 class PhotosController < ApplicationController
+  before_action :require_current_user, :only => [:edit, :update, :destroy, :new]
 
   def new
     @user = User.find(params[:user_id])
@@ -6,8 +7,7 @@ class PhotosController < ApplicationController
   end
 
   def create
-    @user = User.find(params[:user_id])
-    @photo = Photo.new(photo_params)
+    @comment = Comment.new    @photo = Photo.new(photo_params)
     if @photo.save
       flash[:success] = "Photo added!"
       redirect_to user_photos_path(@user)
@@ -25,6 +25,18 @@ class PhotosController < ApplicationController
   def show
     @user = User.find(params[:user_id])
     @photo = Photo.find(params[:id])
+    @comment = Comment.new
+  end
+
+  def destroy
+    @photo = Photo.find(params[:id])
+    if @photo.destroy
+      flash[:success] = "Photo deleted!"
+      redirect_to timeline_path(current_user)
+    else
+      flash[:error] = "Unable to delete photo!"
+      redirect_to timeline_path(current_user)
+    end
   end
 
   private

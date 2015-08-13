@@ -28,7 +28,7 @@ class User < ActiveRecord::Base
 						:presence => true,
 						:length => {:in => 4..24}
 	validates :email,
-						:format => {with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i,},
+						:format => {with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i},
 						:uniqueness => true
  	validates :first_name, :last_name, :presence => true
 

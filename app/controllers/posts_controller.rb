@@ -21,10 +21,14 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(whitelist_post_params)
-    if @post.save
-      flash[:success] = "Successfully posted to your timeline!"
+    if current_user.id == params[:user_id]
+      if @post.save
+        flash[:success] = "Successfully posted to your timeline!"
+      else
+        flash[:notice] = "Couldn't post to your timeline..."
+      end
     else
-      flash[:notice] = "Couldn't post to your timeline..."
+      flash[:notice] = "You can only post as yourself!"
     end
     redirect_to user_posts_path(current_user)
   end

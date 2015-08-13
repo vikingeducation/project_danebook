@@ -14,7 +14,7 @@ class PhotosController < ApplicationController
 
   def create
     @photo = current_user.photos.build(photo_params)
-    if @photo.save
+    if @photo && @photo.save
       flash[:success] = "You uploaded a photo"
       redirect_to user_photo_path(params[:user_id], @photo)
     else
@@ -41,7 +41,20 @@ class PhotosController < ApplicationController
   private
 
   def photo_params
-    params.require(:photo).permit(:picture, :photo_link)
+    return nil if params[:photo].nil?
+
+    params_list =params.require(:photo).permit(:picture, :photo_link)
+
+    if params_list[:photo_link]
+      params_list[:photo_link] = nil unless valid_link?(params_list[:photo_link])
+    end
+    params_list
+
+  end
+
+  def valid_link?(link)
+    regex = /\b(([\w-]+:\/\/?|www[.])[^\s()<>]+(?:\([\w\d]+\)|([^[:punct:]\s]|\/)))/
+    link.match(regex)
   end
 
   # check if current_user is friender of user

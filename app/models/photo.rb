@@ -6,6 +6,10 @@ class Photo < ActiveRecord::Base
                                           thumb: "100x100"}
 
   validates_attachment_content_type :picture, :content_type => /\Aimage\/.*\Z/
+  validates :picture, :attachment_presence => true
+  validates_with AttachmentPresenceValidator, :attributes => :picture
+  validates_with AttachmentSizeValidator, :attributes => :picture,
+                                          :less_than => 1.megabytes
 
   validates :user_id, :presence => true
 
@@ -35,12 +39,14 @@ class Photo < ActiveRecord::Base
 
   #virtual attribute writer
   def photo_link=(photo_link)
-    self.picture_from_url(photo_link)
+    self.picture_from_url(photo_link) unless photo_link.nil?
   end
 
   #virtual attribute reader (to keep form_for from complaining)
   def photo_link
     #something to read from, not used in code
   end
+
+  private
 
 end

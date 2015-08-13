@@ -5,5 +5,8 @@
            class_name: "Like", 
            :as => :duty,
            :dependent => :destroy
-  validates :body, :presence => :true
+  
+  validates :body, :user_id, :presence => :true
+  validates :body, :format => {:with => /[a-zA-Z]+/}
+
 end

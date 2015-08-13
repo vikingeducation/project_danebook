@@ -2,7 +2,7 @@
   <% photo.comments.includes(:author).each do |comment| %>
     <div class = "row">
       <div class="col-xs-2">
-        <%=image_tag "user_silhouette_generic.gif", width: "50px", height: "50px" %>
+        <%= profile_pic_or_generic(comment) %>
       </div>
 
       <div class="col-xs-10">
@@ -27,11 +27,7 @@
             <%= comment_likes_message(comment) %>
           </span>
 
-          <%= link_to "Delete",
-              photo_comment_path(photo.id, comment.id),
-              method: :delete,
-              class: "col-xs-2",
-              data: {confirm: "Are you sure you want to delete this comment?"} if comment.author == current_user %>
+          <%= delete_comment_button(comment) %>
         </div>
       </div>
     </div><br>

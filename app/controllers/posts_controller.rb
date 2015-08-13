@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
 
-  skip_before_action :require_current_user, only: [:index]
+  before_action :require_current_user, only: [:create]
 
   def index
     @user = User.find(params[:user_id]) if params[:user_id]
@@ -24,7 +24,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
-    if @post.destroy
+    if @post.user == current_user && @post.destroy
       flash[:success] = "Deleted"
     else
       flash[:error] = "Indestructible"
@@ -36,6 +36,14 @@ class PostsController < ApplicationController
 
   def whitelisted_post_params
     params.require(:post).permit(:user_id, :body)
+  end
+
+  def require_current_user
+    session[:return_to] ||= request.referer
+    unless params[:post][:user_id] == current_user.id.to_s
+      flash[:warning] = "You are not authorized to do this!"
+      redirect_to session.delete(:return_to)
+    end
   end
 
 end

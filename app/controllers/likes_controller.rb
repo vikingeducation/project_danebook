@@ -1,5 +1,5 @@
 class LikesController < ApplicationController
-  before_action :require_current_user
+  before_action :require_current_user,  only: [:create]
 
   def create
     session[:return_to] ||= request.referer
@@ -16,7 +16,7 @@ class LikesController < ApplicationController
   def destroy
     session[:return_to] ||= request.referer
     @like = Like.find(params[:id])
-    if @like.destroy
+    if @like.user == current_user && @like.destroy
       flash[:success] = "You have unliked it."
     else
       flash[:error] = "You have to like it!"
@@ -34,7 +34,7 @@ class LikesController < ApplicationController
 
   def require_current_user
     session[:return_to] ||= request.referer
-    unless params[:user_id] == current_user.id
+    unless params[:user_id] == current_user.id.to_s
       flash[:warning] = "You are not authorized to do this!"
       redirect_to session.delete(:return_to)
     end

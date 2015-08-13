@@ -2,7 +2,7 @@
   <div class="col-sm-12 box-title">
     <h5> Friends(<%= user.num_of_friends %>)</h5>
   </div>
-  <% user.friended_users.limit(6).each do |friend| %>
+  <% user.friended_users.includes(:profile).limit(6).each do |friend| %>
     <div class="col-sm-4">
       <img src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif" class="image">
       <br>

@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :require_current_user
+  before_action :require_current_user, only: [:create]
 
   def create
     session[:return_to] ||= request.referer
@@ -15,7 +15,7 @@ class CommentsController < ApplicationController
   def destroy
     session[:return_to] ||= request.referer
     @comment = Comment.find(params[:id])
-    if @comment.destroy
+    if @comment.user == current_user && @comment.destroy
       flash[:success] = "Deleted"
     else
       flash[:error] = "Indestructible"
@@ -34,7 +34,7 @@ class CommentsController < ApplicationController
 
   def require_current_user
     session[:return_to] ||= request.referer
-    unless params[:comment][:user_id] == current_user.id
+    unless params[:comment][:user_id] == current_user.id.to_s
       flash[:warning] = "You are not authorized to do this!"
       redirect_to session.delete(:return_to)
     end

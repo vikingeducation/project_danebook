@@ -9,13 +9,13 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a href="home.html" class="navbar-brand" id="danebook-logo">Danebook</a>
+        <a href="#" class="navbar-brand" id="danebook-logo">Danebook</a>
       </div>
       <!-- This is appears to wrap the right portion of the navbar and is id'd to be controlled to collapse when the screen shrinks too much.-->
       <div id="navbar" class="navbar-collapse collapse" aria-expanded="true">
         <% if signed_in_user? %>
           <div class="navbar navbar-right">
-            <p><%= current_user.full_name %></p>
+            <p><%= link_to current_user.full_name, user_posts_path(current_user)  %></p>
           </div>
         <% else %>
         <!-- This is the actual right part of the navbar -->

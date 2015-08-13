@@ -4,7 +4,7 @@ module PhotosHelper
     if owner.profile.cover_photo
       image_tag(owner.profile.cover_photo.image.expiring_url(10), class: 'img-responsive cover-photo hidden-xs hidden-sm').html_safe
     else
-      asset_path 'blank_cover_photo.jpg'
+      image_tag('blank_cover_photo.jpg', class: 'img-responsive cover-photo hidden-xs hidden-sm')
     end
   end
 
@@ -12,7 +12,7 @@ module PhotosHelper
     if owner.profile.cover_photo
       image_tag(owner.profile.profile_photo.image.expiring_url(10), class: 'img-responsive hidden-xs hidden-sm')
     else
-      asset_path 'blank_profile_photo.jpg'
+      image_tag('blank_profile_photo.jpg', class: 'img-responsive hidden-xs hidden-sm')
     end
   end
 

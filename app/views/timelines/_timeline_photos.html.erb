@@ -3,7 +3,7 @@
       <h4>Photos</h4>
   </header>
 
-  <% @user.photos.limit(9).each do |photo| %>
+  <% @user.photos.limit(9).each_with_index do |photo, index| %>
     <div class="col-xs-4 photo">
       <%= image_or_linked_image(photo, @user) %>
       <div class="upload-date">
@@ -23,6 +23,6 @@
   </div>
 
     <div class="col-md-12 more-photos">
-      <%= link_to "See more photos!", user_photos_path(@user) %>
+      <%= link_to_all_photos(@user) %>
     </div>
 </section>

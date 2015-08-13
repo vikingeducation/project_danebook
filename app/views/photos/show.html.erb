@@ -52,13 +52,13 @@
 
         <div class="row">
           <div class="col-sm-12">
-            <%= render partial: 'comment_form', locals: {photo: @photo} %>
+            <%= render partial: 'shared/comment_form', locals: {commentable: @photo} %>
           </div>
         </div>
 
         <div class="row">
           <div class="col-sm-12">
-            <%= render partial: 'photo_comments', locals: {photo: @photo} %>
+            <%= render partial: 'shared/comments', locals: {commentable: @photo} %>
           </div>
         </div>
 

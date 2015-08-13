@@ -1,5 +1,7 @@
 class LikesController < ApplicationController
 
+  before_action :require_login
+
   def create
     @like = Like.new({likeable_type: params[:likeable_type],likeable_id: params[:likeable_id], user_id: current_user.id})
     flash[:alert] = "You already liked this, no need to do it again" unless @like.save

@@ -47,7 +47,7 @@ module ApplicationHelper
     when 1
       "1 person likes this"
     when (2..Float::INFINITY)
-      "#{likes_count} other people like this"
+      "#{likes_count} people like this"
     else
       "Huh??? It seems this got a DISlike!"
     end

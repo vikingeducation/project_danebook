@@ -10,6 +10,14 @@ describe User do
     expect(user).to be_valid
   end
 
+  it "sends a delayed email after creation" do
+    expect { create(:user) }.to change(Delayed::Job, :count).by(1)
+  end
+
+  it "doesn't send a delayed email if user is invalid" do
+    expect { build(:user, email: "sf.cs").save }.to change(Delayed::Job, :count).by(0)
+  end
+
   describe "virtual attributes" do
 
     context "#name" do

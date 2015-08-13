@@ -20,7 +20,7 @@ module UsersHelper
 
   def user_currently_lives(user, options = {})
     if user.profile.current_home
-      (options[:prepend] || "Currently Lives in") + "#{user.profile.current_home}"
+      (options[:prepend] || "Currently Lives in ") + "#{user.profile.current_home}"
     else
       options[:default] || "No information about their current home"
     end
@@ -28,7 +28,7 @@ module UsersHelper
 
   def user_hometown(user, options = {})
     if user.profile.hometown
-      (options[:prepend] || "From") + "#{user.profile.hometown}"
+      (options[:prepend] || "From ") + "#{user.profile.hometown}"
     else
       options[:default] || "No information about their hometown"
     end
@@ -36,7 +36,7 @@ module UsersHelper
 
   def user_birthday(user, options = {})
     if current_user.birthday
-      (options[:prepend] || "Born on") + "#{current_user.birthday.to_formatted_s(:long)}"
+      (options[:prepend] || "Born on ") + "#{current_user.birthday.to_formatted_s(:long)}"
     else
       options[:default] || "No birthday information"
     end

@@ -8,11 +8,10 @@ class FriendingsController < ApplicationController
                               friender: current_user)
     if friending.save
       flash[:success] = "Successfully friended #{@recipient.name}"
-      redirect_to @recipient # user show page
     else
       flash[:alert] = "You're already friends with this person!"
-      redirect_to ref
     end
+    redirect_to ref
   end
 
   def destroy

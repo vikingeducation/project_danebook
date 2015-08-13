@@ -39,9 +39,9 @@
 
         <div class = "divider-line"></div>
 
-        <%= render partial: 'post_comments', locals: {post: post} %>
+        <%= render partial: 'shared/comments', locals: {commentable: post} %>
 
-        <%= render partial: 'comment_form', locals: {post: post} %>
+        <%= render partial: 'shared/comment_form', locals: {commentable: post} %>
 
       </footer>
     </div>

@@ -26,4 +26,10 @@ module PhotosHelper
       "</p> ").html_safe
     end
   end
+
+  def link_to_all_photos(user)
+    link_to "See more photos!", user_photos_path(user) if user.photos.count > 3
+  end
+
+
 end

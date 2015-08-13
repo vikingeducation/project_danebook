@@ -20,19 +20,19 @@
 
       <div class = "col-xs-6 navigation-container">
         <ul class = "nav navbar-nav nav-pills">
-          <li class ="<%= controller.class == TimelinesController && controller.action_name == "show" ? 'active' : '' %>" >
+          <li class ="<%= controller.class == TimelinesController ? 'active' : '' %>" >
             <%= link_to "Timeline", user_timeline_path(@user) %>
           </li>
 
-          <li class ="<%= controller.class == UsersController && controller.action_name == "show" ? 'active' : '' %>" >
+          <li class ="<%= controller.class == UsersController ? 'active' : '' %>" >
             <%= link_to "About", @user %>
           </li>
 
-          <li class ="<%= controller.class == UsersController && controller.action_name == "photos" ? 'active' : '' %>" >
+          <li class ="<%= controller.class == PhotosController ? 'active' : '' %>" >
             <%= link_to "Photos <span>(#{@user.photos.count})</span>".html_safe, user_photos_path(@user) %>
           </li>
 
-          <li class ="<%= controller.class == FriendsController && controller.action_name == "index" ? 'active' : '' %>" >
+          <li class ="<%= controller.class == FriendsController ? 'active' : '' %>" >
             <%= link_to "Friends <span>(#{@user.friends.count})</span>".html_safe, user_friends_path(@user) %>
           </li>
         </ul>

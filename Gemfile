@@ -25,6 +25,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'twitter-bootstrap-rails'
 
+gem 'pg'
+
 gem 'faker'
 
 gem 'paperclip'
@@ -57,8 +59,6 @@ group :development, :test do
 
   gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
 
-  gem 'pg'
-
 end
 
 group :test do
@@ -69,8 +69,6 @@ end
 group :production do
 
   gem 'rails_12factor'
-
-  gem 'pg'
 
 end
 

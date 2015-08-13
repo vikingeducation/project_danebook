@@ -45,11 +45,12 @@ class PhotosController < ApplicationController
       else
         flash[:notice] = "Couldn't update your profile photo."
       end
+      redirect_to user_photo_path(@user, @photo)
     else
       flash[:notice] = "A cover/profile photo must belong to the uploader"
+      redirect_to user_photos_path(@user)
     end
 
-    redirect_to user_photo_path(@user, @photo)
   end
 
   def destroy

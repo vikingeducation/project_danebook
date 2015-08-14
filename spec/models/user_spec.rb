@@ -56,20 +56,19 @@ describe User do
 
     context 'when accepting Profile attributes' do
 
-      let(:user_with_profile) { create(:user, :profile_attributes => attributes_for(:profile)) }
+      let(:user_with_profile) { create(:user, :profile_attributes => attributes_for(:base_profile)) }
 
       it 'saves profile with user when attributes are valid' do
         expect(user_with_profile).to be_persisted
         expect(user_with_profile.profile).to be_persisted
 
-        check_profile = build(:profile)
+        check_profile = build(:base_profile)
         expect(user_with_profile.profile.first_name).to eq(check_profile.first_name)
-        expect(user_with_profile.profile.hometown).to eq(check_profile.hometown)
-        expect(user_with_profile.profile.description).to eq(check_profile.description)
+        expect(user_with_profile.profile.gender).to eq(check_profile.gender)
       end
 
       it 'does not save profile when attributes are invalid' do
-        invalid_attributes = attributes_for(:profile, :first_name => nil)
+        invalid_attributes = attributes_for(:base_profile, :first_name => nil)
         expect{ create(:user, :profile_attributes => invalid_attributes) }.to raise_exception(ActiveRecord::RecordInvalid)
       end
 
@@ -137,7 +136,7 @@ describe User do
 
   context 'when deleting a user' do
 
-    let(:profile) { build(:profile) }
+    let(:profile) { build(:base_profile) }
     let(:post) { build(:post) }
     let(:comment) { build(:comment) }
     let(:like) { build(:post_like) }

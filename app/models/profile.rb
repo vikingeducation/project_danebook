@@ -8,6 +8,11 @@ class Profile < ActiveRecord::Base
   #validates :user_id, :uniqueness => true, :numericality => { only_integer: true }
   validate :birthdate_must_be_within_past_120_years
 
+  validates :college, :hometown, :currently_lives, :length => { maximum: 64 }
+  validates :telephone, :length => { maximum: 16 }
+  validates :words_to_live_by, :length => { maximum: 140 }
+  validates :description, :length => { maximum: 500 }
+
 
   def birthdate_must_be_within_past_120_years
     unless birthdate && birthdate.between?(Date.today - 120.years, Date.today)

@@ -38,7 +38,8 @@ class UsersController < ApplicationController
       flash[:success] = 'Profile updated!'
       redirect_to current_user
     else
-      flash[:danger] = 'Sorry, there was an error.  Please try again.'
+      flash.now[:danger] = 'Sorry, there was an error.  Please try again.'
+      @user = current_user
       render :edit
     end
   end

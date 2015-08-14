@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe Profile do
 
-  let(:profile) { build(:profile) }
+  let(:profile) { build(:base_profile) }
 
   describe 'custom birthdate validator' do
 

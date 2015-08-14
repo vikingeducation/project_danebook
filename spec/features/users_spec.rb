@@ -4,14 +4,16 @@ require 'rails_helper'
 feature 'Create new User' do
 
   let(:new_user) { build(:user) }
-  let(:profile) { build(:profile, user: new_user) }
+  let(:profile) { build(:base_profile, user: new_user) }
 
   before do
     visit root_path
   end
 
+
   scenario 'with valid attributes' do
     fill_out_new_user_form(new_user, profile)
+
     click_button 'Sign Up!'
 
     expect(page).to have_content 'Thank you for signing up!'
@@ -21,8 +23,9 @@ feature 'Create new User' do
 
 
   scenario 'with invalid attributes' do
-    profile.first_name = nil
     fill_out_new_user_form(new_user, profile)
+    fill_in 'user_profile_attributes_first_name', with: ""
+
     click_button 'Sign Up!'
 
     expect(page).to have_content 'Sign up failed'
@@ -31,10 +34,13 @@ feature 'Create new User' do
     expect(page.current_path).to eq(users_path)
   end
 
+
   scenario 'if user email is already in use' do
     existing_user = create(:user)
-    new_user.email = existing_user.email
+
     fill_out_new_user_form(new_user, profile)
+    fill_in 'user[email]', with: existing_user.email
+
     click_button 'Sign Up!'
 
     expect(page).to have_content 'Sign up failed'

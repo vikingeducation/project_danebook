@@ -11,4 +11,20 @@ module UsersHelper
   end
 
 
+  def user_show_field(label, field)
+    unless field.nil? || field.empty?
+      "<dt>#{label}:</dt>
+      <dd>#{field}</dd>".html_safe
+    end
+  end
+
+
+  def user_show_text(label, field)
+    unless field.nil? || field.empty?
+      "<h3>#{label}</h3>
+      <p>#{field}</p>".html_safe
+    end
+  end
+
+
 end

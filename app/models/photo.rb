@@ -34,7 +34,11 @@ class Photo < ActiveRecord::Base
   #========================= methods =========================
 
   def picture_from_url(url)
-    self.picture = open(url)
+    begin
+      self.picture = open(url)
+    rescue
+      return flash = {:error => "Problems with that link"}
+    end
   end
 
   #virtual attribute writer
@@ -44,13 +48,14 @@ class Photo < ActiveRecord::Base
 
   #virtual attribute reader (to keep form_for from complaining)
   def photo_link
+    # raise NotImplementedError
     #something to read from, not used in code
   end
 
   private
 
    def self.photo_exists?(id)
-    where("id = ?", id).any?
+    where("id = ?", id.to_i).any?
   end
 
 end

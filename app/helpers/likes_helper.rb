@@ -5,7 +5,7 @@ module LikesHelper
     likes = obj.likes
     count = likes.size
     if count <= 0
-      str = link_to "Be the first to like this.", like_path(post), method: post
+      str = "Be the first to like this."
 
     elsif likes.you_liked?(current_user) && count == 1
       str = "You like this."
@@ -48,9 +48,9 @@ module LikesHelper
 
   def like_or_unlike_link(object)
     if object.likes.you_liked?(current_user)
-      link_to "Unlike", unlike_path(like: {:likings_id => object.id, :likings_type => object.class}), method: :delete, class: "col-xs-2"
+      link_to "Unlike", unlike_path(like: {:likings_id => object.id, :likings_type => object.class}), method: :delete, class: "col-md-2 pull-left"
     else
-      link_to "Like", like_path(like: {:likings_id => object.id, :likings_type => object.class}), method: :post, class: "col-xs-12"
+      link_to "Like", like_path(like: {:likings_id => object.id, :likings_type => object.class}), method: :post, class: "col-md-3 pull-left"
     end
   end
 

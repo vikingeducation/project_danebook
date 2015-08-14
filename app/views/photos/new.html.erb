@@ -11,20 +11,20 @@
       </div>
     </header>
 
-    <%# form_for [current_user, @photo] do |f| %>
-<!--       <div class = "row">
+    <%= form_for [current_user, @photo] do |f| %>
+      <div class = "row">
         <div class="col-xs-12">
           <h3 class='text-center'>Paste the URL to a photo on the web ...</h3>
-          <%# f.url_field :photo_link, class: "form-control text-center", placeholder: "http://example.com/photo1.jpg" %>
+          <%= f.url_field :photo_link, class: "form-control text-center", placeholder: "http://example.com/photo1.jpg" %>
         </div>
       </div>
 
       <div class = "row">
         <div class = "col-xs-12 text-center">
-          <%# f.submit "Use Web Photo", class: "btn btn-info large-width" %>
+          <%= f.submit "Use Web Photo", class: "btn btn-info large-width" %>
         </div>
-      </div> -->
-    <%# end %>
+      </div>
+    <% end %>
 
     <%= form_for [current_user, @photo], html: { multipart: true } do |f| %>
       <div class = "row">

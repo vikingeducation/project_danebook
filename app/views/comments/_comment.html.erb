@@ -20,7 +20,7 @@
 
   <div class = "row">
     <footer class="col-md-12 like-section">
-      <%= like_display(comment).html_safe if comment.likes.any?%>
+      <%= like_display(comment).html_safe %>
       <div class = "row">
         <%= like_or_unlike_link(comment) %>
 

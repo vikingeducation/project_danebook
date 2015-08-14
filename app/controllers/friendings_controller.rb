@@ -1,9 +1,7 @@
 class FriendingsController < ApplicationController
 
-  before_action :require_login
-
   def index
-    user = User.find(params[:user_id])
+    user = User.find(params[:user_id]) if require_valid_user
     @friends = user.friends
   end
 
@@ -12,14 +10,12 @@ class FriendingsController < ApplicationController
 
     if params[:user_id] == current_user.id.to_s
       flash[:error] = "You can't friend yourself!"
-      redirect_to friending_recipient
     elsif current_user.friended_users << friending_recipient
       flash[:success] = "You friended #{friending_recipient.full_name}"
-      redirect_to friending_recipient
     else
       flash[:error] = "Friending failure. Try again!"
-      redirect_to friending_recipient
     end
+    redirect_to user_posts_path(params[:friend_id])
   end
 
    def destroy
@@ -28,7 +24,7 @@ class FriendingsController < ApplicationController
     unfriended_user = User.find(params[:friend_id])
     if current_user.friended_users.delete(unfriended_user)
       flash[:success] = "Unfriended #{unfriended_user.full_name}!"
-      redirect_to current_user
+      redirect_to user_posts_path(current_user)
 
     # #if friended by, still considered friend by button (not in db)
     # #can destroy friending even if someone else initiated it,

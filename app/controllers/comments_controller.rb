@@ -2,7 +2,6 @@ class CommentsController < ApplicationController
 
   before_action :store_referer
   # before_action :require_object_owner, :only => [:destroy]
-  before_action :require_login
 
   def create
     comment = Comment.new(params_list)
@@ -32,7 +31,7 @@ class CommentsController < ApplicationController
   private
 
   def params_list
-      params.require(:comment).permit(:body, :id, :user_id,
+      params.require(:comment).permit(:body, :id,
                         :commentable_type, :commentable_id )
   end
 end

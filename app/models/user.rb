@@ -27,6 +27,8 @@ class User < ActiveRecord::Base
 
   has_one :profile,   dependent: :destroy
   has_many :posts,    dependent: :destroy
+  has_many :comments, through: :posts
+
   has_many :likings,  through: :posts
   has_many :likes,    dependent: :destroy
 
@@ -79,10 +81,6 @@ class User < ActiveRecord::Base
     else
       where("")
     end
-  end
-
-  def self.user_exists?(id)
-    where("id = ?", id).any?
   end
 
   #=========== mailer methods =============

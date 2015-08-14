@@ -20,6 +20,7 @@ feature 'User photo CRUD' do
     end
 
     scenario "can upload to his/her photos from local drive" do
+      save_and_open_page
       expect(page).to have_content("Add Photo")
       click_link "Add Photo"
       attach_file "photo_picture", @pic_file_path

@@ -1,7 +1,8 @@
 class UsersController < ApplicationController
 
-  before_action :require_login, :except => [:new, :create]
+  skip_before_action :require_login, :only => [:new, :create]
   before_action :require_current_user, :except => [:new, :create, :show]
+  before_action :require_valid_user, :except => [:new, :create]
 
 
   def new
@@ -71,7 +72,5 @@ class UsersController < ApplicationController
     end
     true
   end
-
-
 
 end

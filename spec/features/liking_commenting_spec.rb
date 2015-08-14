@@ -45,7 +45,7 @@ feature 'Like/Comment on a post' do
 
     expect{click_button "Create Comment"}.to change(Comment, :count).by(1)
 
-    expect(page).to have_content("This is a super cool comment!")
+    expect(page).to have_content("This is a super comment!")
     # save_and_open_page
     # expect(page).to have_content("YOU HAVE COMMENTED!")
   end

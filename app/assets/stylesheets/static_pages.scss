@@ -179,7 +179,12 @@ main {
         left: 240px;
         color: #fff;
         display: inline;
-        text-shadow: 4px 4px 4px #333;
+        h1 {
+          text-shadow: 4px 4px 4px #333;
+        }
+        a {
+          box-shadow: 3px 3px 3px #444;
+        }
       }
 
       .navigation-container {

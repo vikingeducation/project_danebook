@@ -42,13 +42,13 @@ class Photo < ActiveRecord::Base
 
   # ----------------------- Methods --------------------
 
-  def pic_from_url(url)
-    self.data = open(url)
+  def img_url=(url)
+    begin
+      self.data = open(url)
+    rescue OpenURI::HTTPError, Errno::ENOENT
+      self.errors[:URL] << "Sorry, did not find the given url. Try a different one"
+    end
   end
 
-  # def self.pass_image_validations?(url)
-  #   [".jpg", ".png", ".gif", ".bmp", ".svg", ".rif"].include?(url[-4..-1]) ||
-  #   [".jpeg", ".jfif", "tiff"].include?(url[-5..-1])
-  # end
 
 end

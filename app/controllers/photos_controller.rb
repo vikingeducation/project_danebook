@@ -13,7 +13,6 @@ class PhotosController < ApplicationController
 
   def create
     @photo = current_user.photos.build(photo_params)
-    @photo.pic_from_url(params[:photo][:img_url]) if Photo.pass_image_validations?(params[:photo][:img_url])
     if @photo.save
       flash[:success] = "Photo successfully posted"
       redirect_to user_photos_path(current_user)

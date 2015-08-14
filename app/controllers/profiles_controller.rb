@@ -5,11 +5,11 @@ class ProfilesController < ApplicationController
   end
 
   def edit 
-    @profile = Profile.find_by_user_id(params[:user_id])
-    if @profile.user_id==current_user.id
-      
-    else
-      flash[:error]="Don't even think about it!"
+    @user=User.find(current_user.id)
+    @profile = @user.profile
+    unless params[:user_id]==current_user.id
+
+      flash[:error]="You can't edit other's profiles!"
       
       redirect_to user_profile_path(:id => @profile.id, :user_id => @profile.user.id)
     end

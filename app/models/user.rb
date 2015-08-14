@@ -5,11 +5,10 @@ class User < ActiveRecord::Base
   has_many :likes, dependent: :destroy
   has_many :friendings, dependent: :destroy
 
-
+  has_one :avatar, class_name: Photo
   has_many :friends, through: :friendings 
 
 
-  has_secure_password
 
   validates :password_confirmation,  :presence => true
   validates :password,  :presence => true,
@@ -21,6 +20,7 @@ class User < ActiveRecord::Base
                         :uniqueness => true,
                         :length => {:in => 4..54}
   
+  has_secure_password
   after_create :create_profile
   #after_create :send_delayed_email
 

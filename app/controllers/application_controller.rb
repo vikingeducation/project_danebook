@@ -8,23 +8,23 @@ class ApplicationController < ActionController::Base
   # rescue_from Exception, with: :not_found
   # rescue_from ActionController::RoutingError, with: :not_found
 
-  # def raise_not_found
-  # raise ActionController::RoutingError.new("No route matches #{params[:unmatched_route]}")
-  # end
+  def raise_not_found
+  raise ActionController::RoutingError.new("No route matches #{params[:unmatched_route]}")
+  end
 
-  # def not_found
-  #   if current_user
-  #     flash[:failure]="No page found"
-  #     redirect_to user_profile_path(current_user)
-  #   else
-  #     flash.now[:failure]="Please login"
-  #     redirect_to root_path
-  #   end
-  # end
+  def not_found
+    if current_user
+      flash[:failure]="Invalid routes check caught request"
+      redirect_to user_profile_path(current_user)
+    else
+      flash.now[:failure]="Please login"
+      redirect_to root_path
+    end
+  end
 
-  # def error
-  #   redirect_to root_path
-  # end
+  def error
+    redirect_to root_path
+  end
   private
 
 

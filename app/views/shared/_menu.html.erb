@@ -41,6 +41,19 @@
           <li role="presentation" <% if active == 'Friends' %> class="active"<% end %>>
             <%= link_to "Friends", user_friends_path(@profile.user_id)%>
           </li>
+          <li>
+            <% unless current_user.id == @profile.user_id %>
+              <% if notfriends?(current_user.id, @profile.user_id)%>
+                <div class="col-xs-3">
+                  <%= link_to "Friend Me", friendings_path(@profile.user_id), method: "post", class: "btn btn-primary" %>
+                </div>
+              <%else%>
+                <div class="col-xs-3">
+                  <%= link_to "Unfriend Me", friendings_path(@profile.user_id), method: "delete", class: "btn btn-default" %>
+                </div>
+              <%end%>
+            <%end%>
+          </li>
 
         </ul>
         <% if current_user.id==(@profile.user_id) %>

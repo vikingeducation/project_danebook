@@ -61,3 +61,10 @@ end
   end
 
 end
+
+# For displaying the right thumbnail
+
+def user_thumb_to_display(friendship)
+  friendship.friend_initiator == object_owner ?
+  friendship.friend_acceptor : friendship.friend_initiator
+end

@@ -1,6 +1,19 @@
 module LoginMacros
 
 
+  def sign_in(user)
+    visit new_session_path
+    fill_in "Email", with: user.email
+    fill_in "Password", with: user.password
+    click_button "Log In"
+  end
+
+
+  def sign_out
+    click_link 'Log Out'
+  end
+
+
   def fill_out_new_user_form(user)
     fill_in 'user_profile_attributes_first_name', with: user.profile.first_name
     fill_in 'user_profile_attributes_last_name', with: user.profile.last_name
@@ -17,13 +30,6 @@ module LoginMacros
     choose user.profile.gender
   end
 
-
-  def sign_in(user)
-    visit new_session_path
-    fill_in "Email", with: user.email
-    fill_in "Password", with: user.password
-    click_button "Log In"
-  end
 
 
   def fill_out_user_profile(profile_fields)

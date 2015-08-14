@@ -45,4 +45,15 @@ class ApplicationController < ActionController::Base
       end
     end
 
+
+    def redirect_back_or_to(destination)
+      if URI.parse(request.referer).host == request.host
+        redirect_to :back
+      else
+        redirect_to destination
+      end
+    end
+
+
+
 end

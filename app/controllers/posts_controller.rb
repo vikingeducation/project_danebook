@@ -6,14 +6,13 @@ class PostsController < ApplicationController
   def index
     @user = User.find(params[:user_id])
     @posts = @user.posts
-    @new_post = Post.new(:author_id => current_user.id) if current_user # move to create action; no hidden field; 
+    @new_post = current_user.posts.build if signed_in_user?
     @friends = @user.friended_users.sample(6)
   end
 
 
   def create
-    # assign author id always to current user
-    @new_post = Post.new(post_params) #user.posts.build
+    @new_post = current_user.posts.build(post_params)
     if @new_post.save
       flash[:success] = "New post created!"
       redirect_to [current_user, :posts]
@@ -41,7 +40,7 @@ class PostsController < ApplicationController
 
 
     def post_params
-      params.require(:post).permit(:author_id, :body)
+      params.require(:post).permit(:body)
     end
 
 

@@ -16,7 +16,8 @@ class FriendsController < ApplicationController
     else
       flash[:error] = "Friend not added. Please verify you're not already friends and try again."
     end
-    redirect_to :back
+
+    redirect_back_or_to( user_path(recipient) )
   end
 
 

@@ -130,7 +130,7 @@
 
 
 <!-- MAKE POST -->
-        <%= render :partial => 'new', :locals => { :user => @user, :new_post => @new_post } if @user == current_user %>
+        <%= render :partial => 'new', :locals => { :new_post => @new_post } if @user == current_user %>
 
 
         <%= render @posts %>

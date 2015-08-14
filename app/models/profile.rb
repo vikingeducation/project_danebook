@@ -9,7 +9,7 @@ class Profile < ActiveRecord::Base
   validate :birthdate_must_be_within_past_120_years
 
   validates :college, :hometown, :currently_lives, :length => { maximum: 64 }
-  validates :telephone, :length => { maximum: 16 }
+  validates :telephone, :length => { maximum: 24 }
   validates :words_to_live_by, :length => { maximum: 140 }
   validates :description, :length => { maximum: 500 }
 

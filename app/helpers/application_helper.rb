@@ -71,7 +71,7 @@ module ApplicationHelper
   end
 
   def random_user_image
-    ["Hermione-Granger.jpg", "RonWeasley.jpg", "Rubeus_Hagrid.jpg", "Cho-Chang.jpg", "Bonnie-Wright.jpg", "cedric-diggory.jpg", "albus-dumbledore.jpg", "lord-voldemort-smiling.jpg"].sample
+    "https://s3.amazonaws.com/davidmeza/danebook/user_silhouette_generic.gif"
   end
 
 

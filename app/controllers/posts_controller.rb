@@ -21,6 +21,7 @@ class PostsController < ApplicationController
       flash.now[:danger] = "New post not saved. Please try again."
       @user = User.find(params[:user_id])
       @posts = @user.posts
+      @friends = @user.friended_users.sample(6)
       render :index
     end
   end

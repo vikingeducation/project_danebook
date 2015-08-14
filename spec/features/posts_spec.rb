@@ -6,7 +6,6 @@ feature 'Make a new Post' do
   let(:user) { create(:user) }
 
   before do
-    create(:full_profile, user: user)
     sign_in(user)
     visit(user_posts_path(user))
   end

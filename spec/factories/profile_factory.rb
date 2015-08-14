@@ -5,7 +5,6 @@ FactoryGirl.define do
     sequence(:last_name)  { |n| "Bar#{n}" }
     gender                "Male"
     birthdate             20.years.ago
-    user
 
     factory :full_profile do
       college               "Foo University"

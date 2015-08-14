@@ -3,12 +3,12 @@ require 'rails_helper'
 
 feature 'Edit User Profile' do
 
-  let(:base_profile) { create(:base_profile) }
+  let(:user) { create(:user, :profile => build(:base_profile)) }
   let(:full_profile_fields) { build(:full_profile) }
 
   before do
-    sign_in(base_profile.user)
-    visit(user_path(base_profile.user))
+    sign_in(user)
+    visit(user_path(user))
     click_link 'Edit your profile'
   end
 
@@ -20,7 +20,7 @@ feature 'Edit User Profile' do
 
     expect(page).to have_content 'Profile updated'
     expect(page).to have_content full_profile_fields.hometown
-    expect(page.current_path).to eq(user_path(base_profile.user))
+    expect(page.current_path).to eq(user_path(user))
   end
 
 
@@ -35,7 +35,7 @@ feature 'Edit User Profile' do
     expect(page).to have_content full_profile_fields.hometown
     expect(page).not_to have_content 'Telephone:'
     expect(page).not_to have_content full_profile_fields.telephone
-    expect(page.current_path).to eq(user_path(base_profile.user))
+    expect(page.current_path).to eq(user_path(user))
   end
 
 
@@ -49,12 +49,12 @@ feature 'Edit User Profile' do
 
     expect(page).to have_content 'error'
     expect(page).not_to have_content invalid_town
-    expect(page.current_path).to eq(user_path(base_profile.user))
+    expect(page.current_path).to eq(user_path(user))
   end
 
 
   scenario 'for an unauthorized user' do
-    other_user = build(:full_profile).user
+    other_user = create(:user, :profile => full_profile_fields)
     visit edit_user_path(other_user)
 
     # what about forcing in some edit params without hitting Edit page?

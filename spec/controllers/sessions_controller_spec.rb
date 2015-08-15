@@ -23,6 +23,10 @@ describe SessionsController do
         expect(flash[:success]).to eq("You've successfully signed in!")
       end
 
+      it 'redirects to user timeline' do
+        expect(response).to redirect_to user_posts_path(existing_user)
+      end
+
     end
 
 
@@ -34,6 +38,10 @@ describe SessionsController do
 
       it 'flashes failure message' do
         expect(flash[:danger]).to eq("Sign in failed.  Please try again.")
+      end
+
+      it 'redirects to root' do
+        expect(response).to redirect_to root_path
       end
 
     end

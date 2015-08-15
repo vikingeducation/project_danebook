@@ -6,21 +6,35 @@ describe SessionsController do
 
   describe 'POST #create' do
 
+    let(:existing_user) { create(:user) }
+
 
     context 'when given valid login' do
 
-      it 'assigns @user properly'
+      before do
+        post :create, :email => existing_user.email, :password => existing_user.password
+      end
 
-      it 'flashes success message'
+      it 'assigns @user properly' do
+        expect(assigns(:user)).to eq(existing_user)
+      end
+
+      it 'flashes success message' do
+        expect(flash[:success]).to eq("You've successfully signed in!")
+      end
 
     end
 
 
     context 'when given invalid login' do
 
-      it 'does not assign @user'
+      before do
+        post :create, :email => existing_user.email, :password => 'badpassword'
+      end
 
-      it 'flashes failure message'
+      it 'flashes failure message' do
+        expect(flash[:danger]).to eq("Sign in failed.  Please try again.")
+      end
 
     end
 

@@ -1,12 +1,21 @@
 require 'rails_helper'
 
-
+# Can I not test these because they're private methods?
+=begin
 describe ApplicationController do
 
+  let(:user) { create(:user) }
 
   describe '#permanent_sign_in' do
 
-    it 'sets cookies[:auth_token]'
+    #before do
+    #  sign_in(user)
+    #end
+
+
+    xit 'sets cookies[:auth_token]' do
+      expect(cookies[:auth_token]).to eq(user.auth_token)
+    end
 
     it 'assigns @current_user'
 
@@ -30,5 +39,5 @@ describe ApplicationController do
 
   end
 
-
 end
+=end

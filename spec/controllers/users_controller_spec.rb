@@ -10,6 +10,7 @@ describe UsersController do
 
     before do
       initiator
+      victim
       request.cookies[:auth_token] = initiator.auth_token
     end
 

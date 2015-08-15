@@ -22,7 +22,7 @@ describe Profile do
     end
 
     it 'rejects a birthdate of 120 years ago from yesterday' do
-      profile.birthdate = Date.yesterday - 120.years
+      profile.birthdate = Date.yesterday - (120.years + 1.day)
       expect(profile).to be_invalid
     end
 

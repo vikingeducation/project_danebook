@@ -9,7 +9,7 @@ class LikesController < ApplicationController
     else
       flash[:danger] = 'Error!'
     end
-    redirect_to :back
+    redirect_back_or_to(root_path)
   end
 
 
@@ -19,7 +19,7 @@ class LikesController < ApplicationController
     else
       flash[:danger] = 'Error!'
     end
-    redirect_to :back
+    redirect_back_or_to(root_path)
   end
 
 end

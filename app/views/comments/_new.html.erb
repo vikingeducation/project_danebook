@@ -3,7 +3,6 @@
   <% if signed_in_user? %>
     <%= form_for Comment.new do |comment_fields| %>
 
-      <%# comment_fields.hidden_field :author_id, value: current_user.id %>
       <%= comment_fields.hidden_field :post_id, value: post.id %>
 
       <%= comment_fields.text_area  :body, class: 'form-control', rows: '3', placeholder: 'Write a comment...' %>

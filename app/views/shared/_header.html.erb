@@ -39,7 +39,7 @@
 
           <%= render :partial => "shared/nav_tab", :locals => { :label => "Friends", :link => user_friends_path(user.id), :user => user, :badge => user.friended_users.count } %>
 
-
+          <!-- refactor me, please! -->
           <% unless current_page?("/about_edit") %>
             <li class="text-center pull-right" role="presentation">
               <%= link_to "Edit Profile", edit_user_path(current_user), alt: "Edit your user profile" if user == current_user %>

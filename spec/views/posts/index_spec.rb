@@ -18,6 +18,7 @@ describe "posts/index.html.erb" do
   end
 
 
+
   context "when on current user's page" do
 
     before do

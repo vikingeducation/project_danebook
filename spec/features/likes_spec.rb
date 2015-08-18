@@ -6,6 +6,7 @@ feature 'Liking Posts' do
 
   let(:user) { create(:user) }
   let(:post) { create(:post) }
+  # add another post that I don't intend to click on?
   let(:like_post_href) { "/likes?liked_id=#{post.id}&liked_type=Post" }
 
   before do

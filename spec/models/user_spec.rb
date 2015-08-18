@@ -56,6 +56,7 @@ describe User do
 
     context 'when accepting Profile attributes' do
 
+      # using trait could shorten this line
       let(:user_with_profile) { create(:user, :profile_attributes => attributes_for(:base_profile)) }
 
       it 'saves profile with user when attributes are valid' do
@@ -137,6 +138,7 @@ describe User do
   context 'when deleting a user' do
 
     let(:profile) { build(:base_profile) }
+    # what if did let(:user) here?
     let(:post) { build(:post) }
     let(:comment) { build(:comment) }
     let(:like) { build(:post_like) }
@@ -161,7 +163,7 @@ describe User do
       expect_destroyed_orphan(post)
     end
 
-    it 'should nullify dependent Comments' do
+    it 'should delete dependent Comments' do
       expect_destroyed_orphan(comment)
     end
 

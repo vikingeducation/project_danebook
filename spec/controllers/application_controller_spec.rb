@@ -1,6 +1,10 @@
 require 'rails_helper'
 
+######################################################
 # Can I not test these because they're private methods?
+# -- can open by testing them directly
+######################################################
+
 =begin
 describe ApplicationController do
 

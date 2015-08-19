@@ -51,6 +51,7 @@ group :development, :test do
 
   gem 'rspec-rails'
   gem 'factory_girl_rails', '~> 4.0'
+  gem 'shoulda-matchers'
 end
 
 group :development do
@@ -69,3 +70,5 @@ group :test do
 end
 
 gem 'faker'
+gem 'paperclip'
+gem 'aws-sdk', '< 2.0'

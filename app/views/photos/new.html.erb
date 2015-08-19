@@ -1,0 +1,76 @@
+<main class="container content-container">
+
+  <%= render :partial => "shared/header", :locals => { :user => @user } %>
+
+
+
+<!-- Start of main About section -->
+  <section id="about" class="row">
+
+    <div class="row">
+      <div class="col-md-12">
+
+        <div class="panel panel-default">
+
+
+          <div class="panel-heading">
+            <div class="row">
+
+              <div class="col-xs-4 col-xs-offset-4 text-center">
+                <h1 class="panel-title">Photos</h1>
+              </div>
+
+              <div class="col-xs-4 text-right">
+                <%# add_photo if current user  not on New %>
+              </div>
+
+            </div>
+
+          </div> <!-- end of panel heading -->
+
+
+
+
+          <div class="panel-body">
+            <div class="row">
+
+
+
+              <div class="col-md-10 col-md-offset-1 text-center">
+                <%= form_for @photo do |f| %>
+                <h3>
+                  Paste the URL to a photo on the web...
+                </h3>
+
+                  <p>URL input goes here</p>
+                  <%# f.text_field :url %>
+                  <p>Use Web Photo button</p>
+
+                <h2>or...</h2>
+
+                <h3>
+                  Select a photo from your hard drive...
+                </h3>
+
+                  <%= f.file_field :photo_data %>
+
+                  <%= f.submit 'Upload!', class: 'btn btn-primary' %>
+                <% end %>
+              </div>
+
+            </div>
+
+          </div> <!-- end of panel body -->
+
+
+
+        </div> <!-- end of panel -->
+
+      </div>
+    </div>
+  </section>
+
+
+
+
+</main> <!-- container -->

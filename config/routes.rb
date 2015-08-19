@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resource :profile, :only => [:new]
     resources :posts, :only => [:create, :index, :destroy]
     resources :friends, :only => [:create, :index, :destroy]
+    resources :photos, :only => [:new, :create, :index]
   end
 
   resources :comments, :only => [:create, :destroy]

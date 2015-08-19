@@ -181,4 +181,11 @@ describe User do
 
   end
 
+
+  context 'Photos association' do
+
+    it { should have_many(:photos).dependent(:destroy) }
+
+  end
+
 end

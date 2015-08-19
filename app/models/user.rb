@@ -15,6 +15,8 @@ class User < ActiveRecord::Base
   has_many :received_friendings, :foreign_key => :friend_id, :class_name => 'Friending', :dependent => :destroy
   has_many :users_friended_by, :through => :received_friendings, :source => :friend_initiator
 
+  has_many :photos, :foreign_key => :owner_id, :dependent => :destroy
+
 
   has_secure_password
 

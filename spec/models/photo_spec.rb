@@ -8,5 +8,4 @@ describe Photo do
 
   end
 
-
 end

@@ -26,17 +26,17 @@ describe PhotosController do
 
   describe 'POST#create' do
 
-    let(:current_user) { create(:user) }
-    let(:photo) { build(:photo) }
+    #let(:current_user) { create(:user) }
+    let(:new_photo) { create(:photo) }
 
     before do
-      request.cookies[:auth_token] = current_user.auth_token
-      photo = create(:photo, :owner => current_user)
+      request.cookies[:auth_token] = new_photo.owner.auth_token
     end
 
-    it do
-      post :create, :user_id => current_user.id,
-                    :photo => photo
+    it 'whitelists photo params' do
+      post :create, :user_id => new_photo.owner.id,
+                    :photo => new_photo
+
       should permit(:photo).for(:create)
     end
 
@@ -58,9 +58,10 @@ describe PhotosController do
       expect(assigns(:user)).to eq(current_user)
     end
 
-    xit 'assigns @photos collection' do
+    it 'assigns @photos collection' do
+      current_user.photos.create(attributes_for(:photo))
       get :index, :user_id => current_user
-      expect(assigns(:photos)).to be_a_new(Photo)
+      expect(assigns(:photos)).to eq(current_user.photos)
     end
 
   end

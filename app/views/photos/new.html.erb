@@ -37,7 +37,7 @@
 
 
               <div class="col-md-10 col-md-offset-1 text-center">
-                <%= form_for @photo do |f| %>
+                <%= form_for [@user, @photo] do |f| %>
                 <h3>
                   Paste the URL to a photo on the web...
                 </h3>
@@ -52,7 +52,7 @@
                   Select a photo from your hard drive...
                 </h3>
 
-                  <%= f.file_field :photo_data %>
+                  <%= f.file_field :photo %>
 
                   <%= f.submit 'Upload!', class: 'btn btn-primary' %>
                 <% end %>

@@ -6,16 +6,18 @@ feature 'current user can upload a photo (via their Photos page)' do
   let(:user) { create(:user) }
 
   before do
+    sign_in(user)
     visit user_photos_path(user)
-    click_button "Add Photo"
+    click_link "Add Photo"
   end
 
 
   context 'uploading from the web' do
 
     scenario 'with valid size and file type' do
-      photo = nil
       # enter photo url and click button
+      attach_file('photo[photo]', Rails.root.join('spec', 'support', 'test.jpg'))
+      click_button 'Upload!'
 
       # expect to redirect back to user photos
       expect(page.current_path).to eq(user_photos_path(user))

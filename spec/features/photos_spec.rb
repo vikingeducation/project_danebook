@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 
-feature 'current user can upload a photo (via their Photos page)' do
+feature 'current user uploading a photo (via their Photos page)' do
 
   let(:user) { create(:user) }
 
@@ -40,11 +40,15 @@ feature 'current user can upload a photo (via their Photos page)' do
   end
 
 
+  scenario 'with invalid file type' do
+    attach_file('photo[photo]', Rails.root.join('spec', 'support', 'bad_photo.txt'))
+    click_button 'Upload!'
 
-  scenario 'with too large a file'
-
-
-  scenario 'with invalid file type'
+    expect(page.current_path).to eq(user_photos_path(user))
+    expect(user.photos.count).to eq(0)
+    expect(page).to have_content("Photo not saved")
+    expect(page).to have_button("Upload!")
+  end
 
 
 end

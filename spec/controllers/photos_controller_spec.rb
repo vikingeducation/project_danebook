@@ -30,14 +30,25 @@ describe PhotosController do
     let(:new_photo) { create(:photo) }
 
     before do
-      request.cookies[:auth_token] = new_photo.owner.auth_token
+        request.cookies[:auth_token] = new_photo.owner.auth_token
     end
 
-    it 'whitelists photo params' do
-      post :create, :user_id => new_photo.owner.id,
-                    :photo => new_photo
 
-      should permit(:photo).for(:create)
+    context 'with a valid upload' do
+
+      before do
+        post :create, :user_id => new_photo.owner.id,
+                      :photo => new_photo.attributes
+      end
+
+      it { should use_before_action(:require_current_user) }
+
+      #it 'whitelists photo params' do
+      #  should permit(:photo).for(:create)
+      #end
+
+      it { should set_flash[:success].to('Photo successfully uploaded!') }
+
     end
 
 

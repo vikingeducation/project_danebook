@@ -15,16 +15,12 @@ feature 'current user can upload a photo (via their Photos page)' do
   context 'uploading from the web' do
 
     scenario 'with valid size and file type' do
-      # enter photo url and click button
-      attach_file('photo[photo]', Rails.root.join('spec', 'support', 'test.jpg'))
-      click_button 'Upload!'
+      fill_in 'photo[photo_from_url]', with: 'https://www.google.com/images/srpr/logo11w.png'
+      click_button 'Use Web Photo'
 
-      # expect to redirect back to user photos
       expect(page.current_path).to eq(user_photos_path(user))
-      # expect photo count to increase by 1
-      expect{ user.photos.count }.to change.by(1)
-      # expect new photo to be there
-      expect(page).to have_content(photo)
+      expect(user.photos.count).to eq(1)
+      expect(page).to have_content("Photo successfully uploaded!")
     end
 
   end
@@ -32,11 +28,13 @@ feature 'current user can upload a photo (via their Photos page)' do
 
   context 'uploading from hard drive' do
 
-    xscenario 'with valid size and file type' do
-      # click button and select file
-      # expect to redirect back to user photos
-      # expect photo count to increase by 1
-      # expect new photo to be there
+    scenario 'with valid size and file type' do
+      attach_file('photo[photo]', Rails.root.join('spec', 'support', 'test.jpg'))
+      click_button 'Upload!'
+
+      expect(page.current_path).to eq(user_photos_path(user))
+      expect(user.photos.count).to eq(1)
+      expect(page).to have_content("Photo successfully uploaded!")
     end
 
   end

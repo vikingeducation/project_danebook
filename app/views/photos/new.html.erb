@@ -36,15 +36,17 @@
 
 
 
-              <div class="col-md-10 col-md-offset-1 text-center">
+              <div class="col-md-8 col-md-offset-2 text-center">
                 <%= form_for [@user, @photo] do |f| %>
-                <h3>
-                  Paste the URL to a photo on the web...
-                </h3>
+                  <h3>
+                    Paste the URL to a photo on the web...
+                  </h3>
 
-                  <p>URL input goes here</p>
-                  <%# f.text_field :url %>
-                  <p>Use Web Photo button</p>
+                  <div class='form-group'>
+                    <%= f.text_field :photo_from_url, placeholder: "http://example.com/photo1.jpg", class: 'form-control' %>
+                  </div>
+
+                  <%= f.submit 'Use Web Photo', class: 'btn btn-primary' %>
 
                 <h2>or...</h2>
 

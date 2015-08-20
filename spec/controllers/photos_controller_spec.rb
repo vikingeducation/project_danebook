@@ -105,4 +105,29 @@ describe PhotosController do
 
   end
 
+
+  describe 'GET#show' do
+
+    #let(:current_user) { create(:user) }
+    let(:photo) { create(:photo) }
+
+    before do
+      #request.cookies[:auth_token] = current_user.auth_token
+    end
+
+
+    it 'assigns @user' do
+      get :show, :user_id => photo.owner.id, :id => photo.id
+      expect(assigns(:user)).to eq(photo.owner)
+    end
+
+
+    it 'assigns @photo to view' do
+      get :show, :user_id => photo.owner.id, :id => photo.id
+      expect(assigns(:photo)).to eq(photo)
+    end
+
+  end
+
+
 end

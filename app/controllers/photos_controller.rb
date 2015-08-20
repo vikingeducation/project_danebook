@@ -1,6 +1,6 @@
 class PhotosController < ApplicationController
 
-  before_action :require_current_user, :except => [:index]
+  before_action :require_current_user, :except => [:index, :show]
 
 
   def index
@@ -19,14 +19,18 @@ class PhotosController < ApplicationController
     @photo = current_user.photos.build(photo_params)
     if @photo.save
       flash[:success] = "Photo successfully uploaded!"
-      redirect_to user_photos_path(current_user) #:show
+      redirect_to user_photo_path(current_user, @photo)
     else
       flash.now[:danger] = "Photo not saved. Please try again."
       @user = current_user
       render :new
     end
+  end
 
-    #redirect_to user_photos_path(current_user)
+
+  def show
+    @photo = Photo.find(params[:id])
+    @user = @photo.owner
   end
 
 

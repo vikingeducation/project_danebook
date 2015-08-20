@@ -3,8 +3,8 @@ require 'open-uri'
 class Photo < ActiveRecord::Base
 
   has_attached_file :photo,
-    :styles => { :medium => "300x300", :thumb => "150x150#" },
-    convert_options: { thumbnail: " -gravity center" }
+    :styles => { :medium => "512x512", :thumb => "150x150#" },
+    convert_options: { thumbnail: "-gravity center" }
   validates_attachment_content_type :photo, :content_type => /\Aimage\/.*\Z/
   validates_attachment_size :photo, :less_than => 2.megabytes
 

@@ -18,7 +18,7 @@ feature 'current user uploading a photo (via their Photos page)' do
       fill_in 'photo[photo_from_url]', with: 'https://www.google.com/images/srpr/logo11w.png'
       click_button 'Use Web Photo'
 
-      expect(page.current_path).to eq(user_photos_path(user))
+      expect(page.current_path).to eq(user_photo_path(user, user.photos.last))
       expect(user.photos.count).to eq(1)
       expect(page).to have_content("Photo successfully uploaded!")
     end
@@ -32,7 +32,7 @@ feature 'current user uploading a photo (via their Photos page)' do
       attach_file('photo[photo]', Rails.root.join('spec', 'support', 'test.jpg'))
       click_button 'Upload!'
 
-      expect(page.current_path).to eq(user_photos_path(user))
+      expect(page.current_path).to eq(user_photo_path(user, user.photos.last))
       expect(user.photos.count).to eq(1)
       expect(page).to have_content("Photo successfully uploaded!")
     end
@@ -71,5 +71,46 @@ feature 'user photo index displays collection of thumbnails' do
   scenario 'displays 16 image thumbnails' do
     expect(page).to have_css('.img-thumbnail', :count => image_count)
   end
+
+end
+
+
+
+feature 'photo show page' do
+  let(:viewer) { create(:user) }
+  let(:photo) { create(:photo) }
+
+  before do
+    visit user_photo_path(photo.owner, photo)
+  end
+
+
+  scenario 'displays photo, owner, and comments' do
+    expect(page).to have_css("img[src*='#{photo.photo.url(:medium)}']")
+    expect(page).to have_content(photo.photo_updated_at)
+  end
+
+
+  #scenario 'displays owner'
+
+
+  #scenario 'displays comments'
+
+
+  context 'when logged in as any user' do
+
+    scenario 'displays new comment form'
+
+    scenario 'displays Like/Unlike links'
+
+  end
+
+
+  context 'when logged in as photo owner' do
+
+    scenario 'displays action links'
+
+  end
+
 
 end

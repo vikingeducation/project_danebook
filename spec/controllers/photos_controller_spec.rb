@@ -75,6 +75,34 @@ describe PhotosController do
       expect(assigns(:photos)).to eq(current_user.photos)
     end
 
+
+    context 'when user has <= 16 photos' do
+
+      let(:photo_count) { 5 }
+
+      it 'includes all photos in @photos' do
+        photo_count.times { current_user.photos.create(attributes_for(:photo)) }
+        get :index, :user_id => current_user
+        expect(assigns(:photos).count).to eq(photo_count)
+      end
+
+    end
+
+
+    context 'when user has > 16 photos' do
+
+      let(:photo_count) { 17 }
+
+      it 'limits @photos to 16' do
+        photo_count.times { current_user.photos.create(attributes_for(:photo)) }
+        get :index, :user_id => current_user
+        expect(assigns(:photos).count).to eq(16)
+      end
+
+
+    end
+
+
   end
 
 end

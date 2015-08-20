@@ -55,6 +55,21 @@ end
 
 
 
-feature 'photo collection displays thumbnail' do
+
+feature 'user photo index displays collection of thumbnails' do
+
+  let(:user) { create(:user) }
+  let(:image_count) { 5 }
+
+  before do
+    sign_in(user)
+    image_count.times { user.photos.create(attributes_for(:photo)) }
+    visit user_photos_path(user)
+  end
+
+
+  scenario 'displays 16 image thumbnails' do
+    expect(page).to have_css('.img-thumbnail', :count => image_count)
+  end
 
 end

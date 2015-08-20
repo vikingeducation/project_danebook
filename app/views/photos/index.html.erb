@@ -5,7 +5,7 @@
 
 
 <!-- Start of main About section -->
-  <section id="about" class="row">
+  <section id="photos" class="row">
 
     <div class="row">
       <div class="col-md-12">
@@ -38,9 +38,9 @@
     <!-- photo column -->
               <div class="col-md-12 text-center">
 
-                <% 16.times do %>
-                  <%= render "static_pages/photos/photo" %>
-                <% end %>
+                <div class='row'>
+                  <%= render @photos %>
+                </div>
 
               </div> <!-- photo column -->
 

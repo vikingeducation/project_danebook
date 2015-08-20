@@ -5,7 +5,7 @@ class PhotosController < ApplicationController
 
   def index
     @user = User.find(params[:user_id])
-    @photos = @user.photos
+    @photos = @user.photos.limit(16)
   end
 
 

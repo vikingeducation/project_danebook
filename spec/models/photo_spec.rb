@@ -8,6 +8,8 @@ describe Photo do
 
     it { should have_many(:comments).dependent(:destroy) }
 
+    it { should have_many(:likes).dependent(:destroy) }
+
   end
 
 

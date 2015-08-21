@@ -108,23 +108,43 @@ describe PhotosController do
 
   describe 'GET#show' do
 
-    #let(:current_user) { create(:user) }
+    let(:current_user) { create(:user) }
     let(:photo) { create(:photo) }
 
     before do
-      #request.cookies[:auth_token] = current_user.auth_token
+      request.cookies[:auth_token] = current_user.auth_token
     end
 
 
-    it 'assigns @user' do
+    it 'redirects non-friends to Photo index' do
       get :show, :user_id => photo.owner.id, :id => photo.id
-      expect(assigns(:user)).to eq(photo.owner)
+      expect(response).to redirect_to(user_photos_path(photo.owner))
+      should set_flash[:danger].to("You're not authorized to do this!")
     end
 
 
-    it 'assigns @photo to view' do
-      get :show, :user_id => photo.owner.id, :id => photo.id
-      expect(assigns(:photo)).to eq(photo)
+    context 'when Owner is friends with Viewer' do
+
+      before do
+        photo.owner.friended_users << current_user
+      end
+
+
+      it 'assigns @user' do
+        get :show, :user_id => photo.owner.id, :id => photo.id
+        expect(assigns(:user)).to eq(photo.owner)
+      end
+
+      it 'assigns @photo to view' do
+        get :show, :user_id => photo.owner.id, :id => photo.id
+        expect(assigns(:photo)).to eq(photo)
+      end
+
+      it 'allows friends to reach the Show page' do
+        get :show, :user_id => photo.owner.id, :id => photo.id
+        expect(response).to render_template(:show)
+      end
+
     end
 
   end

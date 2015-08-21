@@ -81,7 +81,9 @@ feature 'photo show page' do
   let(:photo) { create(:photo) }
 
   before do
+    sign_in(viewer)
     photo.comments.create(attributes_for(:comment, :on_photo, author_id: viewer.id))
+    photo.owner.friended_users << viewer
     visit user_photo_path(photo.owner, photo)
   end
 
@@ -98,20 +100,9 @@ feature 'photo show page' do
 
 
 
-  context 'when logged in as any user' do
+  scenario 'user can add a comment'
+  scenario 'user can delete a comment'
 
-    scenario 'displays new comment form'
-
-    scenario 'displays Like/Unlike links'
-
-  end
-
-
-  context 'when logged in as photo owner' do
-
-    scenario 'displays action links'
-
-  end
 
 
 end

@@ -30,7 +30,7 @@
     <div class="row">
       <div class="col-xs-12">
 
-        <%= render :partial => 'likes/like_links', :locals => { :liked_object => comment } %>
+        <%= render :partial => 'likes/like_links', :locals => { :liked_object => comment } if signed_in_user? %>
 
         <%= render :partial => 'likes/likes_display', :locals => { :liked_object => comment } if comment.likers %>
 

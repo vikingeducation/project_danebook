@@ -1,6 +1,7 @@
 class PhotosController < ApplicationController
 
   before_action :require_current_user, :except => [:index, :show]
+  before_action :require_friendship, :only => [:show]
 
 
   def index
@@ -44,7 +45,17 @@ class PhotosController < ApplicationController
     def require_current_user
       unless params[:user_id] == current_user.id.to_s
         flash[:danger] = "You're not authorized to do this!"
-        redirect_to user_posts_path(params[:user_id])
+        redirect_to user_photos_path(params[:user_id])
+      end
+    end
+
+
+    def require_friendship
+      owner = User.find(params[:user_id])
+
+      unless owner == current_user || owner.friended_users.include?(current_user)
+        flash[:danger] = "You're not authorized to do this!"
+        redirect_to user_photos_path(params[:user_id])
       end
     end
 

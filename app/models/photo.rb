@@ -10,6 +10,9 @@ class Photo < ActiveRecord::Base
 
   belongs_to :owner, :class_name => 'User'
 
+  has_many :likes, :as => :liked, :dependent => :destroy
+  has_many :likers, :through => :likes, :source => :user
+
   has_many :comments, :as => :commentable, :dependent => :destroy
 
 

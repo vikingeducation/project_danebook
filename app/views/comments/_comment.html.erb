@@ -6,14 +6,14 @@
 				<div class="row">
 					<div class="col-xs-12">
 						<div class="row">
-							<div class="col-sm-2 photo-page-photo">
-								<%= display_profile_photo(comment.author) %></img>
+							<div class="col-xs-2 photo-page-photo">
+								<%= display_profile_photo(comment.author) %>
 							</div>
-							<div class="col-sm-5">
-								<div>
+							<div class="col-xs-5">
+
 								<h4><%= link_to comment.author.full_name, comment.author %></h4>
 								<h6>Said on <%= comment.posted_on %></h6>
-								</div>
+
 							</div>
 						</div>
 						<div class="row">
@@ -23,17 +23,17 @@
 						</div>
 						<div class="row">
 						    <% if current_user %>
-								<div class="col-sm-1">
+								<div class="col-xs-1">
 									<%= display_like_or_unlike_button(comment) %>
 								</div>
 							<% end %>
 							<% if current_user && current_user.id == comment.user_id %>
-								<div class="col-sm-1">
+								<div class="col-xs-1">
 								    <%= link_to "Delete", comment, method: "delete" %>
 								</div>
 							<% end %>
 							<% if comment.likes.count > 0 %>
-								<div class="col-sm-8">
+								<div class="col-xs-8">
 									<%= present_likes_count(comment).html_safe %>
 								</div>
 							<% end %>

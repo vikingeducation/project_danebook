@@ -14,23 +14,15 @@
         <!-- We have a resized profile photo and name that plays nice with smaller screens, but extra small in certain configurations is very difficult so I have opted to just turn off the cover photo and name when the screen is extra small. -->
         <div class="row info-picture-name-button">
           <div class="col-xs-3">
-            <div class="profile-picture-large hidden-xs hidden-sm">
-              <%= display_profile_photo(@user) %>
-            </div>
-            <div class="profile-picture-small hidden-xs hidden-md hidden-lg">
+            <div class="profile-picture-large">
               <%= display_profile_photo(@user) %>
             </div>
           </div>
 
-          <div class="col-xs-3">
-            <div class="profile-name-large hidden-xs hidden-sm">
-              <h2> <%= @user.full_name %> </h2>
-            </div>
-            <div class="profile-name-small hidden-xs hidden-md hidden-lg">
-              <h2> <%= @user.full_name %> </h2>
-            </div>
+          <div class="col-xs-3 profile-name-large">
+            <h2> <%= @user.full_name %> </h2>
           </div>
-          <div class="col-xs-2">
+          <div class="col-xs-2 col-xs-offset-5">
             <div class="profile-name-large">
                 <%= friend_button %>
             </div>
@@ -46,7 +38,7 @@
           <div class="col-md-3">
             <h5><%= link_to "Timeline", user_posts_path(@user, newsfeed: "false") %></h5>
           </div>
-          <div class="col-md-3 selected">
+          <div class="col-md-3">
             <h5><%= link_to "About", @user %></h5>
           </div>
           <div class="col-md-3">
@@ -65,3 +57,4 @@
     </div>
   </div>
 </div>
+

@@ -2,10 +2,15 @@ require 'rails_helper'
 
 describe Post do
 
+  context 'associations' do
+    it { should have_many(:comments).dependent(:destroy) }
+  end
+
+
   context 'when deleting a post' do
 
     let(:post) { create(:post) }
-    let(:comment) { build(:comment) }
+    let(:comment) { build(:comment, :on_post) }
     let(:like) { build(:post_like) }
 
     before do

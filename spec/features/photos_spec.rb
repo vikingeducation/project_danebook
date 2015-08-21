@@ -81,20 +81,21 @@ feature 'photo show page' do
   let(:photo) { create(:photo) }
 
   before do
+    photo.comments.create(attributes_for(:comment, :on_photo, author_id: viewer.id))
     visit user_photo_path(photo.owner, photo)
   end
 
 
-  scenario 'displays photo, owner, and comments' do
+  scenario 'displays photo and owner' do
     expect(page).to have_css("img[src*='#{photo.photo.url(:medium)}']")
     expect(page).to have_content(photo.photo_updated_at)
   end
 
 
-  #scenario 'displays owner'
+  scenario 'displays comments' do
+    expect(page).to have_content(photo.comments.first.body)
+  end
 
-
-  #scenario 'displays comments'
 
 
   context 'when logged in as any user' do

@@ -2,7 +2,21 @@ require 'rails_helper'
 
 describe Comment do
 
-  let(:comment) { build(:comment) }
+  let(:comment) { build(:comment, :on_post) }
+
+
+  context 'polymorphic parents' do
+
+    it 'has commentable_id and _type columns' do
+      should have_db_column(:commentable_id)
+      should have_db_column(:commentable_type)
+      should have_db_index([:commentable_id, :commentable_type])
+    end
+
+    it { should belong_to(:commentable) }
+
+  end
+
 
   it 'saves with valid attributes' do
     expect(comment).to be_valid

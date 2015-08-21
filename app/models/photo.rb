@@ -10,6 +10,8 @@ class Photo < ActiveRecord::Base
 
   belongs_to :owner, :class_name => 'User'
 
+  has_many :comments, :as => :commentable, :dependent => :destroy
+
 
   attr_accessor :photo_from_url
 

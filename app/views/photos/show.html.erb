@@ -36,50 +36,77 @@
                 <%= image_tag @photo.photo.url(:medium) %>
               </div>
 
+
+
+
               <!-- RIGHT SIDE -->
               <div class="col-md-4">
 
 
-                <div class="media">
+                <!-- inner panel -->
+                <div class=" panel panel-default">
 
-                  <div class="col-md-12">
+                  <!-- body -->
+                  <div class="media">
+                    <div class='row'>
 
-                    <!-- Media list image -->
-                    <div class="media-left">
-                      <%= link_to user_path(@photo.owner) do %>
-                        <%= image_tag 'user_silhouette_generic.gif', id: 'user-photo', class: 'media-object', size: '50x50', alt: "Photo owner's photo" %>
-                      <% end %>
-                    </div>  <!-- end of image section -->
+                      <div class="col-md-12">
+
+                        <!-- Media list image -->
+                        <div class="media-left">
+                          <%= link_to user_path(@photo.owner) do %>
+                            <%= image_tag 'user_silhouette_generic.gif', id: 'user-photo', class: 'media-object', size: '75x75', alt: "Photo owner's photo" %>
+                          <% end %>
+                        </div>  <!-- end of image section -->
 
 
-                    <!-- Photo owner name and posted date -->
-                    <div class="media-body">
-                      <div class="media-heading">
+                        <!-- Photo owner name and posted date -->
+                        <div class="media-body">
+                          <div class="media-heading">
 
-                        <%= link_to @photo.owner.profile.full_name, user_path(@photo.owner) %>
+                            <%= link_to @photo.owner.profile.full_name, user_path(@photo.owner) %>
 
-                        <br>
+                            <br>
 
-                        <time datetime=<%= @photo.photo_updated_at %> pubdate>
-                          <small><%= @photo.photo_updated_at %></small>
-                        </time>
+                            <time datetime=<%= @photo.photo_updated_at %> pubdate>
+                              <small><%= @photo.photo_updated_at %></small>
+                            </time>
+
+                          </div>
+                        </div> <!-- media-body -->
+                      </div>
+                    </div>
+                  </div> <!-- media object -->
+
+
+                  <div class="panel-footer">
+
+                    <div class='row'>
+                      <div class='col-md-12'>
+
+                        <% if @photo.comments.count > 0 %>
+
+                          <!-- Comments media list -->
+                          <div id="comments-wrapper" class="row">
+                            <%= render :partial => 'comments/comment', :collection => @photo.comments %>
+                          </div> <!-- End of Comments media list -->
+
+                        <% end %>
 
                       </div>
-                    </div> <!-- media-body -->
-                  </div>
-                </div> <!-- media object -->
+                    </div>
+
+                  </div> <!-- end of inner panel-footer -->
 
 
+                </div> <!-- end of inner panel -->
               </div>
-
-
             </div>
-
-          </div> <!-- end of panel body -->
-
+          </div> <!-- end of outer panel body -->
 
 
-        </div> <!-- end of panel -->
+
+        </div> <!-- end of outer panel -->
 
       </div>
     </div>

@@ -5,6 +5,10 @@ describe User do
   let(:user) { create(:user) }
 
 
+  context 'associations' do
+  end
+
+
   context 'when saving a user' do
 
     it 'saves with valid attributes' do

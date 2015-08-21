@@ -2,9 +2,11 @@ require 'rails_helper'
 
 describe Photo do
 
-  describe 'Owner association' do
+  describe 'associations' do
 
     it { should belong_to(:owner) }
+
+    it { should have_many(:comments).dependent(:destroy) }
 
   end
 

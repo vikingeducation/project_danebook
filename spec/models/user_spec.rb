@@ -5,7 +5,15 @@ describe User do
   let(:user) { create(:user) }
 
 
+  context 'table columns' do
+    it { should have_db_column(:profile_photo_id) }
+    it { should have_db_column(:cover_photo_id) }
+  end
+
+
   context 'associations' do
+    it { should belong_to(:profile_photo) }
+    it { should belong_to(:cover_photo) }
   end
 
 

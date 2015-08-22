@@ -16,6 +16,8 @@ class User < ActiveRecord::Base
   has_many :users_friended_by, :through => :received_friendings, :source => :friend_initiator
 
   has_many :photos, :foreign_key => :owner_id, :dependent => :destroy
+  belongs_to :profile_photo, :class_name => 'Photo'
+  belongs_to :cover_photo, :class_name => 'Photo'
 
 
   has_secure_password

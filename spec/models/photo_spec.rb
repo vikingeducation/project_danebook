@@ -3,13 +3,11 @@ require 'rails_helper'
 describe Photo do
 
   describe 'associations' do
-
     it { should belong_to(:owner) }
-
     it { should have_many(:comments).dependent(:destroy) }
-
     it { should have_many(:likes).dependent(:destroy) }
-
+    it { should have_one(:profile_photo_user) }
+    it { should have_one(:cover_photo_user) }
   end
 
 

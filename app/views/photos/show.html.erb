@@ -52,7 +52,7 @@
                       <%= link_to 'Set as Cover', user_photo_cover_photo_path(@user, @photo), method: 'PATCH' %>
                     </li>
                     <li>
-                      <%= link_to 'delete photo', '#' %>
+                      <%= link_to 'delete photo', user_photo_path(@user, @photo), method: 'DELETE', data: { confirm: "Delete photo?" } %>
                     </li>
                   </ul>
                 <% end %>

@@ -11,19 +11,18 @@ class CommentsController < ApplicationController
     else
       flash[:danger] = "Comment not saved. Please try again."
     end
-    redirect_to user_posts_path(@new_comment.commentable.author)
+    redirect_to :back
   end
 
 
   def destroy
     comment = Comment.find(params[:id])
-    author = comment.commentable.author
     if comment.destroy!
       flash[:success] = 'Comment deleted!'
     else
       flash[:danger] = "Sorry, we couldn't delete your comment. Please try again."
     end
-    redirect_to user_posts_path(author)
+    redirect_to :back
   end
 
 

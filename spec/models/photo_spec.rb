@@ -6,8 +6,8 @@ describe Photo do
     it { should belong_to(:owner) }
     it { should have_many(:comments).dependent(:destroy) }
     it { should have_many(:likes).dependent(:destroy) }
-    it { should have_one(:profile_photo_user) }
-    it { should have_one(:cover_photo_user) }
+    it { should have_one(:profile_photo_user).dependent(:nullify) }
+    it { should have_one(:cover_photo_user).dependent(:nullify) }
   end
 
 
@@ -23,6 +23,7 @@ describe Photo do
                 less_than(2.megabytes) }
 
   end
+
 
 
   describe 'when saving via URL' do

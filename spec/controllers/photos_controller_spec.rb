@@ -150,4 +150,42 @@ describe PhotosController do
   end
 
 
+  describe 'POST #destroy' do
+
+    let(:photo) { create(:photo) }
+
+    before do
+      request.cookies[:auth_token] = photo.owner.auth_token
+    end
+
+
+    it 'assigns @photo' do
+      delete :destroy, id: photo.id, user_id: photo.owner.id
+      expect(assigns(:photo)).to eq(photo)
+    end
+
+    it 'assigns @user' do
+      delete :destroy, id: photo.id, user_id: photo.owner.id
+      expect(assigns(:user)).to eq(photo.owner)
+    end
+
+    it 'lets a user delete her photo' do
+      delete :destroy, id: photo.id, user_id: photo.owner.id
+      expect(flash[:success]).to eq("Photo successfully deleted!")
+    end
+
+    it 'redirects to the Post that the deleted Comment was under' do
+      delete :destroy, id: photo.id, user_id: photo.owner.id
+      expect(response).to redirect_to user_photos_path(photo.owner)
+    end
+
+    it 'prevents an unauthorized user from deleting' do
+      request.cookies[:auth_token] = create(:user).auth_token
+      delete :destroy, id: photo.id, user_id: photo.owner.id
+      expect(flash[:danger]).to eq("You're not authorized to do this!")
+    end
+
+  end
+
+
 end

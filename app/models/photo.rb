@@ -13,8 +13,15 @@ class Photo < ActiveRecord::Base
 
   belongs_to :owner, :class_name => 'User'
 
-  has_one :profile_photo_user, :foreign_key => :profile_photo_id, :class_name => 'User'
-  has_one :cover_photo_user, :foreign_key => :cover_photo_id, :class_name => 'User'
+  has_one :profile_photo_user,
+            :foreign_key => :profile_photo_id,
+            :class_name => 'User',
+            :dependent => :nullify
+
+  has_one :cover_photo_user,
+            :foreign_key => :cover_photo_id,
+            :class_name => 'User',
+            :dependent => :nullify
 
   has_many :likes, :as => :liked, :dependent => :destroy
   has_many :likers, :through => :likes, :source => :user

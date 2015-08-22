@@ -16,6 +16,7 @@ describe CommentsController do
 
 
     it 'does not allow the current user from changing the author_id in params' do
+      request.env["HTTP_REFERER"] = user_posts_path(victim)
       # create a dummy comment to prevent false positives below
       create(:comment, :on_post)
 

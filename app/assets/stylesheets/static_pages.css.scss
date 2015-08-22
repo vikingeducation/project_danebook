@@ -60,6 +60,9 @@
 
 // Header styles
 .cover-photo-row {
+  /* background-size: cover; */
+  background: no-repeat center;
+  background-size: contain;
 
   .cover-box:before {
     content: "";
@@ -69,9 +72,6 @@
     bottom: 0;
     left: 0;
     right: 0;
-    background: url(hogwarts_small.jpg) no-repeat center;
-    background-size: cover;
-    opacity: 0.6;
   }
 
   .cover-box {
@@ -102,6 +102,7 @@
     margin: 16px;
     position: relative;
     top: -130px;
+    border: 1px solid #CCC;
   }
 
 

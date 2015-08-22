@@ -12,4 +12,12 @@ module ApplicationHelper
     end
   end
 
+  def cover_image(user)
+    if user.cover_photo
+      user.cover_photo.photo.url
+    else
+      asset_path 'cover_photo_default.png'
+    end
+  end
+
 end

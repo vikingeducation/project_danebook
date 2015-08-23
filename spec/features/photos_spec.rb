@@ -99,10 +99,4 @@ feature 'photo show page' do
   end
 
 
-
-  scenario 'user can add a comment'
-  scenario 'user can delete a comment'
-
-
-
 end

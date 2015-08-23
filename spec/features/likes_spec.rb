@@ -78,3 +78,43 @@ feature 'Liking Comments' do
   end
 
 end
+
+
+
+feature 'Liking Photos' do
+
+  let(:user) { create(:user) }
+  let(:photo) { create(:photo) }
+  let(:like_photo_href) { "/likes?liked_id=#{photo.id}&liked_type=Photo" }
+
+  before do
+    sign_in(user)
+    photo.owner.friended_users << user
+  end
+
+
+  scenario 'Like an unliked photo' do
+    visit user_photo_path(photo.owner, photo)
+
+    click_link 'Like', href: like_photo_href
+
+    expect(page.current_path).to eq(user_photo_path(photo.owner, photo))
+    expect(page).to have_content('Liked!')
+    expect(page).not_to have_link('Like', href: like_photo_href )
+    expect(page).to have_link('Unlike', href: like_path(Like.last.id) )
+  end
+
+
+  scenario 'Unlike an already liked photo' do
+    photo.likers << user
+    visit user_photo_path(photo.owner, photo)
+
+    click_link 'Unlike', href: like_path(Like.last.id)
+
+    expect(page.current_path).to eq(user_photo_path(photo.owner, photo))
+    expect(page).to have_content('Unliked!')
+    expect(page).not_to have_link('Unlike')
+    expect(page).to have_link('Like', href: like_photo_href )
+  end
+
+end

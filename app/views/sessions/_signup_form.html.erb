@@ -1,39 +1,54 @@
-<%= form_for user, class: "form-group" do |user_fields| %>
+<%= simple_form_for user, html: {class: "form-group"} do |user_fields| %>
   <div class="row">
-    <%= user_fields.fields_for :profile, Profile.new do |profile_fields| %>
+    <%= user_fields.simple_fields_for :profile do |profile_fields| %>
+
       <div class="col-sm-6">
-        <%= profile_fields.text_field :first_name, placeholder: "First Name", class: "form-control" %>
+        <%= profile_fields.input :first_name, label: false, placeholder: "First Name", input_html: {class: "form-control"} %>
       </div>
+
       <div class="col-sm-6">
-        <%= profile_fields.text_field :last_name, placeholder: "Last Name", class: "form-control" %>
+        <%= profile_fields.input :last_name, label: false, placeholder: "Last Name", input_html: {class: "form-control"} %>
       </div>
+
       <div class="col-sm-12">
-        <%= user_fields.email_field :email, placeholder: "Your Email", class: "form-control" %>
+        <%= user_fields.input :email, label: false, placeholder: "Your Email", input_html: {class: "form-control"} %>
       </div>
+
       <div class="col-sm-12">
-        <%= user_fields.password_field :password, placeholder: "Your New Password", class: "form-control" %>
+        <%= user_fields.input :password, 
+                              label: false, 
+                              placeholder: "Your New Password", 
+                              input_html: {class: "form-control"} %>
       </div>
+
       <div class="col-sm-12">
-        <%= user_fields.password_field :password_confirmation, placeholder: "Confirm Your Password", class: "form-control" %>
+        <%= user_fields.input :password_confirmation, 
+                              label: false, 
+                              placeholder: "Confirm Your Password", 
+                              input_html: {class: "form-control"} %>
       </div>
+
       <div class="col-sm-12">
-        <%= profile_fields.label :birthday, "Birthday" %>
-        <br>
-        <%= profile_fields.date_select(:birthday_year, 
-                                       :order => [:month, :day, :year], 
-                                       :start_year => 1900, 
-                                       :end_year => Date.today.year - 18, 
-                                       class: "form-control") %>
+        <%= profile_fields.input :birthday, 
+                                 as: :date,
+                                 start_year: Time.now.year - 12, 
+                                 end_year: Time.now.year - 100, 
+                                 html5: true
+                                  %>
       </div>
+
       <div class="col-sm-12">
-        <%= profile_fields.radio_button(:gender, "male") %>
-        <%= label :gender_male, "Male" %>
-        <%= profile_fields.radio_button(:gender, "female") %>
-        <%= label :gender_female, "Female" %>
+        <%= profile_fields.input :gender, 
+                                 :collection => ['Male', 'Female'],
+                                 :as         => :radio_buttons,
+                                 :label      => false, 
+                                 :item_wrapper_class => 'inline' %>
       </div>
-      <div class="col-sm-12">
-        <%= user_fields.submit "Sign Up", class: "btn btn-lg btn-success full-width center-block" %>
+
+      <div class="col-sm-6 col-sm-offset-3">
+        <%= user_fields.submit "Sign Up", class: "btn btn-block btn-success" %>
       </div>
+
     <% end %>
   </div>
 <% end %>

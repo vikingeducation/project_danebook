@@ -15,6 +15,14 @@ GIT
       pry-stack_explorer (~> 0.4.9)
       railties (>= 3.0, < 5.0)
 
+GIT
+  remote: git://github.com/plataformatec/simple_form.git
+  revision: eac1e0108e6c95e291c2065e7005e0cbcb4c2bac
+  specs:
+    simple_form (3.1.0)
+      actionpack (~> 4.0)
+      activemodel (~> 4.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -316,6 +324,7 @@ DEPENDENCIES
   rspec-rails
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
+  simple_form!
   spring
   turbolinks
   twitter-bootstrap-rails

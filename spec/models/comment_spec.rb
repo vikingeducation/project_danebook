@@ -59,9 +59,9 @@ describe Comment do
 
     context "Dependency" do
       let(:comment) { create(:post_comment) }
+      let(:user) { create(:user) }
       specify "Destroy a comment will also destroy a comment's likes" do
-        like = comment.likes.create(attributes_for(:post_comment_like))
-        binding.pry
+        like = comment.likes.create(:user_id => user.id)
         expect{ comment.destroy }.to change(Like, :count).by(-1)
         expect{ Like.find(like.id)}.to raise_error(ActiveRecord::RecordNotFound)
       end

@@ -67,6 +67,9 @@ FactoryGirl.define do
     sequence(:college) { |n| "college #{n}" }
     sequence(:hometown) { |n| "town #{n}" }
     sequence(:current_lives) { |n| "city #{n}" }
+    birthday_year (1900..2000).to_a.sample
+    birthday_month (1..12).to_a.sample
+    birthday_day (1..30).to_a.sample
     gender ["male", "female"].shuffle[0]
     user
   end

@@ -18,8 +18,8 @@ class UsersController < ApplicationController
       flash[:success] = "Congrats! You are a member now!"
       redirect_to edit_profile_path(@user.profile.id)
     else
-      flash[:error] = "Error. Please try again!"
-      redirect_to root_path
+      flash.now[:error] = "Error. Please try again!"
+      render "sessions/new"
     end
   end
 
@@ -55,19 +55,9 @@ class UsersController < ApplicationController
                                                :profile_attributes => [ 
                                                   :first_name,
                                                   :last_name,
-                                                  "birthday_year(1i)",
-                                                  "birthday_year(2i)",
-                                                  "birthday_year(3i)",
+                                                  :birthday,
                                                   :gender
                                                 ])
-    user_params[:profile_attributes][:birthday_year] = user_params[:profile_attributes]["birthday_year(1i)"]
-    user_params[:profile_attributes].delete("birthday_year(1i)")
-    user_params[:profile_attributes][:birthday_month] = user_params[:profile_attributes]["birthday_year(2i)"]
-    user_params[:profile_attributes].delete("birthday_year(2i)")
-    user_params[:profile_attributes][:birthday_day] = user_params[:profile_attributes]["birthday_year(3i)"]
-    user_params[:profile_attributes].delete("birthday_year(3i)")
-
-    user_params
   end
 end
 

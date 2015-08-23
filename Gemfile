@@ -41,6 +41,8 @@ gem "figaro"
 # Setup aws s3
 gem 'aws-sdk', '< 2.0'
 
+gem 'simple_form', github: 'plataformatec/simple_form'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'

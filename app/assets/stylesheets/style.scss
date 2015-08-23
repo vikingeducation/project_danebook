@@ -98,7 +98,33 @@ main {padding-top: 20px;}
   height: 100%;
 }
 
+#vertical-center {
+  float:none;
+  display:inline-block;
+  vertical-align:middle;
+}
+
 .fillwidth {
   width: 100%;
   height: auto;
+}
+
+.field_with_errors {
+  color: red;
+  border: 1px solid red;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+  font-style: italic;
+}
+
+.push-content {
+  height: 50px;
+}
+
+.intro-list {
+  font-size: 1.2em;
+  margin-bottom: 10px;
 }

@@ -43,9 +43,9 @@ describe PhotosController do
 
       it { should use_before_action(:require_current_user) }
 
-      #it 'whitelists photo params' do
-      #  should permit(:photo).for(:create)
-      #end
+      it 'whitelists photo params' do
+        should permit(:photo).for(:create)
+      end
 
       it { should set_flash[:success].to('Photo successfully uploaded!') }
 

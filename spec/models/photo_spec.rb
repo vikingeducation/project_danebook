@@ -32,8 +32,11 @@ describe Photo do
 
     it 'successfully saves the file' do
       photo = user.photos.build
+
+      # this should be mocked out (vcr gem)
       photo.photo_from_url=("https://www.google.com/images/srpr/logo11w.png")
-      photo.save!
+
+      #photo.save! <--- this is a problem; false positive
 
       expect(photo.photo_file_name).not_to be_nil
       expect(photo.photo_content_type).not_to be_nil

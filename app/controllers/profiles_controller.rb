@@ -1,7 +1,8 @@
 class ProfilesController < ApplicationController
 
   def index
-    @profiles = Profile.search(params[:search])
+    response = Profile.search(params[:search])
+    @users = response.map { |profile| profile.user }
   end
 
 end

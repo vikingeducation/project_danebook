@@ -1,6 +1,3 @@
-require 'elasticsearch/model'
-
-
 class Profile < ActiveRecord::Base
 
   belongs_to :user
@@ -16,9 +13,6 @@ class Profile < ActiveRecord::Base
   validates :words_to_live_by, :length => { maximum: 140 }
   validates :description, :length => { maximum: 500 }
 
-  include Elasticsearch::Model
-  include Elasticsearch::Model::Callbacks
-
 
   def birthdate_must_be_within_past_120_years
     unless birthdate && birthdate.between?(Date.today - 120.years, Date.today)
@@ -27,9 +21,17 @@ class Profile < ActiveRecord::Base
   end
 
 
-
   def full_name
     self.first_name + " " + self.last_name
+  end
+
+
+  def self.search(query)
+    if query
+      where('lower(first_name) LIKE ? OR lower(last_name) LIKE ?', "%#{query.downcase}%", "%#{query.downcase}%")
+    else
+      where("")
+    end
   end
 
 end

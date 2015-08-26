@@ -8,7 +8,7 @@ module ApplicationHelper
     if user.profile_photo
       user.profile_photo.photo.url(:thumb)
     else
-      'user_silhouette_generic.gif'
+      asset_path 'profile_photo_default.png'
     end
   end
 

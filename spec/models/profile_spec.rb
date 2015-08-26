@@ -29,10 +29,10 @@ describe Profile do
   end
 
 
-  describe 'searching' do
+  describe 'Profile.search' do
 
     before do
-      Profile.import
+      # Profile.import
       create_list(:full_profile, 2,
                   :first_name => 'Good',
                   :last_name => 'Result')
@@ -43,25 +43,31 @@ describe Profile do
 
     it 'returns results based on first name' do
       response = Profile.search('Good')
-      expect(response.records.total).to eq(2)
+      expect(response.size).to eq(2)
     end
 
     it 'returns results based on last name' do
       response = Profile.search('Result')
-      expect(response.records.total).to eq(3)
+      expect(response.size).to eq(3)
+    end
+
+    it 'is case insensitive' do
+      response = Profile.search('reSUlt')
+      expect(response.size).to eq(3)
     end
 
     it 'returns 0 for no matches' do
       response = Profile.search('Mismatch')
-      expect(response.records.total).to eq(0)
+      expect(response.size).to eq(0)
     end
 
-    it 'returns nil for no parameters' do
+    it 'returns all for no parameters' do
       response = Profile.search('')
-      expect(response.records.total).to eq(0)
+      expect(response.size).to eq(Profile.all.count)
     end
 
   end
+
 
 
 end

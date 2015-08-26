@@ -72,4 +72,20 @@ describe Comment do
 
   end
 
+
+  describe 'Sending notification email' do
+
+    let(:comment) { create(:comment) }
+    let(:mailer) { class_double("UserMailer").as_stubbed_const }
+    let(:message) { double("UserMailer", deliver!: true)}
+
+    it 'calls notify(comment) on UserMailer' do
+
+      allow(mailer).to receive(:notify).and_return(message)
+      expect(mailer).to receive(:notify).with(comment)
+      Comment.send_notification(comment.id)
+    end
+
+  end
+
 end

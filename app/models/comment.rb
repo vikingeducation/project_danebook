@@ -10,4 +10,10 @@ class Comment < ActiveRecord::Base
 
   validates :body, :presence => true, :length => { in: 3..140 }
 
+
+  def self.send_notification(id)
+    comment = Comment.find(id)
+    UserMailer.notify(comment).deliver!
+  end
+
 end

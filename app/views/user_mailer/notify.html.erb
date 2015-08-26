@@ -1,0 +1,5 @@
+<h1>Hi <%= @user.profile.full_name %>!</h1>
+
+<p>
+  <%= @commenter_name %> has recently commented on your <%= @commentable_type %>.  View the discussion at <%= link_to "#{user_posts_url(@user.id)}", user_posts_url(@user.id) %>
+</p>

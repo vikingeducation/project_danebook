@@ -12,11 +12,11 @@ describe CommentsController do
 
     before do
       request.cookies[:auth_token] = initiator.auth_token
+      request.env["HTTP_REFERER"] = user_posts_path(victim)
     end
 
 
     it 'does not allow the current user from changing the author_id in params' do
-      request.env["HTTP_REFERER"] = user_posts_path(victim)
       # create a dummy comment to prevent false positives below
       create(:comment, :on_post)
 
@@ -31,6 +31,16 @@ describe CommentsController do
 
       expect(created_comment.author).to eq(initiator)
       expect(created_comment.body).to eq(test_comment)
+    end
+
+
+    it 'should call Comment.send_notification(@comment.id)' do
+      test_id = create(:comment).id + 1
+      allow(Comment).to receive(:send_notification).and_return(true)
+      expect(Comment).to receive(:send_notification).with(test_id)
+      post :create, :comment => attributes_for( :comment,
+                                                :commentable_id => parent_post.id,
+                                                :commentable_type => parent_post.class )
     end
 
   end

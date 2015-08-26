@@ -7,11 +7,12 @@ class CommentsController < ApplicationController
   def create
     @new_comment = current_user.comments.build(comment_params)
     if @new_comment.save
+      Comment.send_notification(@new_comment.id)
       flash[:success] = "Comment created!"
     else
       flash[:danger] = "Comment not saved. Please try again."
     end
-    redirect_to :back
+    redirect_back_or_to(user_posts_path(@new_comment.commentable.author))
   end
 
 
@@ -22,7 +23,7 @@ class CommentsController < ApplicationController
     else
       flash[:danger] = "Sorry, we couldn't delete your comment. Please try again."
     end
-    redirect_to :back
+    redirect_back_or_to(user_posts_path(comment.commentable.author))
   end
 
 

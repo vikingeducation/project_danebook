@@ -1,0 +1,9 @@
+<h1>Welcome to Danebook!</h1>
+
+<p>
+  Hi <%= @user.profile.full_name %>! Thank you for checking out AJK's version of the Danebook, created as part of the Viking Code School's web development curriculum.
+</p>
+
+<p>
+  View your profile at <%= link_to "#{user_url(@user.id)}", user_url(@user.id) %>
+</p>

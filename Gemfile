@@ -56,6 +56,7 @@ end
 
 group :development do
   gem 'guard-rspec', require: false
+  gem 'letter_opener'
   gem "better_errors"
 end
 gem "binding_of_caller"

@@ -200,4 +200,20 @@ describe User do
 
   end
 
+
+  describe 'Sending welcome email' do
+
+    let(:user) { create(:user) }
+    let(:mailer) { class_double("UserMailer").as_stubbed_const }
+    let(:message) { double("UserMailer", deliver!: true)}
+
+    it 'calls welcome(user) on UserMailer' do
+
+      allow(mailer).to receive(:welcome).and_return(message)
+      expect(mailer).to receive(:welcome).with(user)
+      User.send_welcome_email(user.id)
+    end
+
+  end
+
 end

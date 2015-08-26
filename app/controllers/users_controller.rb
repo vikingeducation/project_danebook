@@ -13,6 +13,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
+      User.send_welcome_email(@user.id)
       sign_in(@user)
       flash[:success] = 'Thank you for signing up!'
       redirect_to user_posts_path(@user)

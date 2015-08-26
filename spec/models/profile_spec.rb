@@ -32,7 +32,6 @@ describe Profile do
   describe 'Profile.search' do
 
     before do
-      # Profile.import
       create_list(:full_profile, 2,
                   :first_name => 'Good',
                   :last_name => 'Result')

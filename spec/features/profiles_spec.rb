@@ -64,3 +64,22 @@ feature 'Edit User Profile' do
   end
 
 end
+
+
+feature 'Search by first or last name' do
+
+  let(:user) { create(:user) }
+  let(:user_to_find) { create(:user) }
+
+  before do
+    sign_in(user)
+  end
+
+  it 'finds the target user' do
+    fill_in "search", with: user_to_find.profile.last_name
+    click_button "Search!"
+    expect(page.current_path).to eq(search_path)
+    expect(page).to have_content(user_to_find.profile.first_name)
+  end
+
+end

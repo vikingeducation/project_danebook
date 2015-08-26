@@ -20,12 +20,8 @@ Rails.application.routes.draw do
   resources :comments, :only => [:create, :destroy]
   resources :likes, :only => [:create, :destroy]
 
-
-  get "/about" => "users#show"
-  get "/about_edit" => "users#edit"
-  get "/timeline" => "posts#index"
-  get "/friends" => "static_pages#friends"
-  get "/photos" => "static_pages#photos"
+  resources :profiles, :only => [:index]
+  get 'search' => 'profiles#index'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

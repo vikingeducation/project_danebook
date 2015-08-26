@@ -1,0 +1,33 @@
+<% post.comments.each do |c| %>
+
+<div class="row comment">
+
+  <div class="comment-pic col-xs-2">
+
+    <img src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif">
+
+  </div>
+
+  <div class="comment-author col-xs-10">
+
+    <%= link_to c.user.full_name, user_path(c) %> Said on <%= c.created_at.strftime("%A %-m/%-d/%Y") %>
+
+  </div>
+
+  <div class="col-xs-10 comment-content">
+
+    <p><%= c.body %></p>
+
+    <p><%= show_like_or_unlike(c) %> <%= show_like_count(c) %></p>
+
+  </div>
+
+  <div class="like-btn pull-right">
+
+    <%= link_to "Delete", user_comment_path(@user.id, c.id), :method => :delete if c.user_id == current_user.id %>
+  </div>
+
+</div>
+
+<hr>
+<% end %>

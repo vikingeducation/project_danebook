@@ -1,0 +1,38 @@
+<nav class="navbar navbar-top">
+
+  <div class="container">
+
+    <div class="navbar-header">
+
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+
+      </button>
+
+      <a class="navbar-brand" href="#">Danebook</a>
+
+    </div>
+
+    <div id="navbar" class="navbar-collapse collapse">
+
+      <%= form_tag session_path, class: "navbar-form navbar-right" do |f| %>
+        <div class="form-group">
+          <%= text_field_tag :email, "Email", class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= password_field_tag :password, "Password", class: "form-control" %>
+        </div>
+        <div class="form-group">
+          <%= submit_tag "Sign In", class: "btn btn-success" %>
+        </div>
+      <% end %>
+
+    </div><!--/.navbar-collapse -->
+
+  </div>
+
+</nav>

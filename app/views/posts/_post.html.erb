@@ -1,0 +1,21 @@
+<div class="post-update-container">
+
+  <div class="post-update-title">
+
+    <strong>Post</strong>
+
+  </div>
+
+  <%= form_for [current_user, @new_post] do |f| %>
+    <%= f.hidden_field :user_id, value: current_user.id, class: "form-control" %>
+    <%= f.text_area :body, class: "form-control" %>
+
+  <div class="post-end-box">
+
+    <%= f.submit "Post", class: "btn btn-primary pull-right post-btn" %>
+
+  </div>
+
+  <% end %>
+
+</div>

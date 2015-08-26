@@ -1,0 +1,98 @@
+<aside class="col-sm-4">
+
+        <!-- About -->
+
+        <div class = "row aside-container">
+
+          <section class="col-sm-12">
+
+            <header class="aside-container-header">
+
+              About
+
+            </header>
+
+              <p><strong>Born on:</strong> <%= @user.birthday.strftime("%B %d, %Y") %></p>
+              <p><strong>Went to school at:</strong> <%= @user.profile.college %></p>
+              <p><strong>Hometown:</strong> <%= @user.profile.hometown %></p>
+              <p><strong>Currently Lives:</strong> <%= @user.profile.current_location %></p>
+
+          </section>
+
+        </div>
+
+        <!-- Photos -->
+
+
+        <div class="row aside-container">
+
+          <section class="col-sm-12">
+
+            <header class="aside-container-header">
+
+              Photos (<%= @user.photos.count %>)
+
+            </header>
+
+              <div class="row pic-row">
+                <% @user.photos.each do |photo| %>
+
+                  <div class="pic-col col-sm-4">
+
+                    <%= link_to image_tag(photo.data.url(:thumb)), user_photo_path(@user, photo) %>
+
+                  </div>
+
+                <% end %>
+
+              </div>
+
+          </section>
+
+          <article class="aside-container-link">
+
+            <%= link_to "See More Photos", user_photos_path(@user) %>
+
+          </article>
+
+        </div>
+
+        <!-- Friends -->
+
+        <div class="row aside-container">
+
+          <section class="col-sm-12">
+
+            <header class="aside-container-header">
+
+              Friends (<%= @user.friends.count %>)
+
+            </header>
+
+              <div class="row pic-row">
+
+                <% @user.friends.each do |friend| %>
+
+                <div class="pic-col col-sm-4">
+
+                  <img src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif">
+
+                  <%= link_to friend.full_name, user_path(friend) %>
+
+                </div>
+
+                <% end %>
+
+              </div>
+
+          </section>
+
+          <article class="aside-container-link">
+
+            <%= link_to "See More Friends", friend_path(@user) %>
+
+          </article>
+
+        </div>
+
+      </aside>

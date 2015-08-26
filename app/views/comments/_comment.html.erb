@@ -1,0 +1,7 @@
+<%= form_for [current_user, @comment] do |f| %>
+  <%= f.hidden_field :user_id, value: current_user.id, class: "form-control" %>
+  <%= f.hidden_field :commentable_id, value: post.id, class: "form-control" %>
+  <%= f.hidden_field :commentable_type, value: post.class, class: "form-control" %>
+  <%= f.text_area :body, class: "form-control" %>
+  <%= f.submit "Post Comment", class: "btn btn-primary pull-right post-btn" %>
+<% end %>

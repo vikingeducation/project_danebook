@@ -1,0 +1,70 @@
+<% @posts.each do |p| %>
+
+      <div class="post">
+
+        <div class="post-container">
+
+          <div class="post-header-row">
+
+            <div class="col-xs-2 post-pic">
+
+              <img src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif">
+
+            </div>
+
+              <%= link_to User.find(p.user_id).full_name, user_path(User.find(p.user_id)) %>
+
+              <br>
+
+              Posted on <%= p.created_at.strftime("%A %-m/%-d/%Y") %>
+
+          </div>
+
+          <div class="post-content">
+
+            <p><%= p.body %></p>
+
+            <br>
+
+          </div>
+
+        </div>
+
+       <div class="comment-end-box">
+
+        <div class="like-btn">
+
+          <%= show_like_or_unlike(p) %>
+
+        </div>
+
+        <div class="like-btn">
+
+        <!--   <a href="#">Comment</a> -->
+
+        </div>
+
+        <div class="like-btn">
+
+          <%= show_like_count(p) %>
+
+        </div>
+
+        <div class="like-btn pull-right">
+
+          <%= link_to "Delete", user_post_path(@user.id, p.id), :method => :delete if @user == current_user %>
+        </div>
+
+        <div class="comment-section">
+
+          <%= render partial: "comments/comment_list", :locals => {:post => p} %>
+
+          <%= render partial: "comments/comment", :locals => {:post => p} %>
+
+      </div>
+
+    </div>
+
+    <hr>
+
+  <% end %>

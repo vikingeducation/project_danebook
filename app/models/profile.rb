@@ -1,3 +1,6 @@
+require 'elasticsearch/model'
+
+
 class Profile < ActiveRecord::Base
 
   belongs_to :user
@@ -12,6 +15,9 @@ class Profile < ActiveRecord::Base
   validates :telephone, :length => { maximum: 24 }
   validates :words_to_live_by, :length => { maximum: 140 }
   validates :description, :length => { maximum: 500 }
+
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
 
 
   def birthdate_must_be_within_past_120_years

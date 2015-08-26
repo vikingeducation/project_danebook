@@ -26,7 +26,6 @@ describe PhotosController do
 
   describe 'POST#create' do
 
-    #let(:current_user) { create(:user) }
     let(:new_photo) { create(:photo) }
 
     before do
@@ -42,10 +41,6 @@ describe PhotosController do
       end
 
       it { should use_before_action(:require_current_user) }
-
-      it 'whitelists photo params' do
-        should permit(:photo).for(:create)
-      end
 
       it { should set_flash[:success].to('Photo successfully uploaded!') }
 

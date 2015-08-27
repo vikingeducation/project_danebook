@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
   def create
     @new_comment = current_user.comments.build(comment_params)
     if @new_comment.save
-      Comment.send_notification(@new_comment.id)
+      Comment.delay.send_notification(@new_comment.id)
       flash[:success] = "Comment created!"
     else
       flash[:danger] = "Comment not saved. Please try again."

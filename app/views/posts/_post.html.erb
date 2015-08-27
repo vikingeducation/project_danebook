@@ -38,7 +38,7 @@
 
           <!-- Comments media list -->
           <div id="comments-wrapper" class="row">
-            <%= render :partial => 'comments/comment', :collection => post.comments %>
+            <%= render :partial => 'comments/comment', :collection => post.comments.order(:created_at) %>
           </div> <!-- End of Comments media list -->
 
         <% end %>

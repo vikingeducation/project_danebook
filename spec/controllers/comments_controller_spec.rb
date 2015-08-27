@@ -36,6 +36,10 @@ describe CommentsController do
 
     it 'should call Comment.send_notification(@comment.id)' do
       test_id = create(:comment).id + 1
+
+      # ignore delay
+      allow(Comment).to receive(:delay).and_return(Comment)
+
       allow(Comment).to receive(:send_notification).and_return(true)
       expect(Comment).to receive(:send_notification).with(test_id)
       post :create, :comment => attributes_for( :comment,

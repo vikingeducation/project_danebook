@@ -7,7 +7,7 @@ describe 'photos/show.html.erb' do
 
   before do
     assign(:photo, photo)
-    assign(:user, photo.owner)
+    assign(:user, photo.poster)
   end
 
 
@@ -15,7 +15,7 @@ describe 'photos/show.html.erb' do
 
     before do
 
-      photo.comments.create(attributes_for(:comment, :author_id => photo.owner.id))
+      photo.comments.create(attributes_for(:comment, :author_id => photo.poster.id))
 
       def view.signed_in_user?
         false
@@ -30,7 +30,7 @@ describe 'photos/show.html.erb' do
     end
 
 
-    it 'displays photo and owner' do
+    it 'displays photo and poster' do
       expect(rendered).to have_css("img[src*='#{photo.photo.url(:medium)}']")
       expect(rendered).to have_content(photo.photo_updated_at)
     end
@@ -88,20 +88,20 @@ describe 'photos/show.html.erb' do
   end
 
 
-  context 'when logged in as photo owner' do
+  context 'when logged in as photo poster' do
 
 
-    let(:photo_owner) { create(:user) }
+    let(:photo_poster) { create(:user) }
 
     before do
-      assign(:photo_owner, photo_owner)
+      assign(:photo_poster, photo_poster)
 
       def view.signed_in_user?
         true
       end
 
       def view.current_user
-        @photo_owner
+        @photo_poster
       end
 
       render

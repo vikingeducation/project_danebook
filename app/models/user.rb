@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   has_one :profile, :dependent => :destroy
   accepts_nested_attributes_for :profile
 
-  has_many :posts, :foreign_key => :author_id, :dependent => :destroy
+  has_many :posts, :foreign_key => :poster_id, :dependent => :destroy
 
   has_many :likes, :foreign_key => :liker_id, :dependent => :destroy
 
@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
   has_many :received_friendings, :foreign_key => :friend_id, :class_name => 'Friending', :dependent => :destroy
   has_many :users_friended_by, :through => :received_friendings, :source => :friend_initiator
 
-  has_many :photos, :foreign_key => :owner_id, :dependent => :destroy
+  has_many :photos, :foreign_key => :poster_id, :dependent => :destroy
   belongs_to :profile_photo, :class_name => 'Photo'
   belongs_to :cover_photo, :class_name => 'Photo'
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150826204413) do
+ActiveRecord::Schema.define(version: 20150826231314) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 20150826204413) do
   add_index "likes", ["liked_id", "liked_type"], name: "index_likes_on_liked_id_and_liked_type", using: :btree
 
   create_table "photos", force: :cascade do |t|
-    t.integer  "owner_id",           null: false
+    t.integer  "poster_id",          null: false
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
     t.string   "photo_file_name"
@@ -72,11 +72,11 @@ ActiveRecord::Schema.define(version: 20150826204413) do
     t.datetime "photo_updated_at"
   end
 
-  add_index "photos", ["owner_id"], name: "index_photos_on_owner_id", using: :btree
+  add_index "photos", ["poster_id"], name: "index_photos_on_poster_id", using: :btree
 
   create_table "posts", force: :cascade do |t|
     t.text     "body",       null: false
-    t.integer  "author_id",  null: false
+    t.integer  "poster_id",  null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

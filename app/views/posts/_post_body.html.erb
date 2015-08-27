@@ -10,8 +10,8 @@
         <!-- Media list image -->
         <div class="media-left">
 
-          <%= link_to user_path(post.author) do %>
-            <%= image_tag 'user_silhouette_generic.gif', id: 'user-photo', class: 'media-object', size: '50x50', alt: "Post author's photo" %>
+          <%= link_to user_path(post.poster) do %>
+            <%= image_tag 'user_silhouette_generic.gif', id: 'user-photo', class: 'media-object', size: '50x50', alt: "Post poster's photo" %>
           <% end %>
 
         </div>  <!-- end of image section -->
@@ -23,7 +23,7 @@
           <!-- Post name and date -->
           <div class="media-heading">
 
-            <%= link_to post.author.profile.full_name, user_path(post.author) %>
+            <%= link_to post.poster.profile.full_name, user_path(post.poster) %>
 
             <br>
 

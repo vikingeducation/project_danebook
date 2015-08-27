@@ -15,11 +15,11 @@ feature 'Liking Posts' do
 
 
   scenario 'Like an unliked Post' do
-    visit user_posts_path(post.author)
+    visit user_posts_path(post.poster)
 
     click_link 'Like', href: like_post_href
 
-    expect(page.current_path).to eq(user_posts_path(post.author))
+    expect(page.current_path).to eq(user_posts_path(post.poster))
     expect(page).to have_content('Liked!')
     expect(page).not_to have_link('Like', href: like_post_href )
     expect(page).to have_link('Unlike', href: like_path(Like.last.id) )
@@ -28,11 +28,11 @@ feature 'Liking Posts' do
 
   scenario 'Unlike an already liked Post' do
     post.likers << user
-    visit user_posts_path(post.author)
+    visit user_posts_path(post.poster)
 
     click_link 'Unlike', href: like_path(Like.last.id)
 
-    expect(page.current_path).to eq(user_posts_path(post.author))
+    expect(page.current_path).to eq(user_posts_path(post.poster))
     expect(page).to have_content('Unliked!')
     expect(page).not_to have_link('Unlike')
     expect(page).to have_link('Like', href: like_post_href )
@@ -54,11 +54,11 @@ feature 'Liking Comments' do
 
 
   scenario 'Like an unliked comment' do
-    visit user_posts_path(comment.commentable.author)
+    visit user_posts_path(comment.commentable.poster)
 
     click_link 'Like', href: like_comment_href
 
-    expect(page.current_path).to eq(user_posts_path(comment.commentable.author))
+    expect(page.current_path).to eq(user_posts_path(comment.commentable.poster))
     expect(page).to have_content('Liked!')
     expect(page).not_to have_link('Like', href: like_comment_href )
     expect(page).to have_link('Unlike', href: like_path(Like.last.id) )
@@ -67,11 +67,11 @@ feature 'Liking Comments' do
 
   scenario 'Unlike an already liked comment' do
     comment.likers << user
-    visit user_posts_path(comment.commentable.author)
+    visit user_posts_path(comment.commentable.poster)
 
     click_link 'Unlike', href: like_path(Like.last.id)
 
-    expect(page.current_path).to eq(user_posts_path(comment.commentable.author))
+    expect(page.current_path).to eq(user_posts_path(comment.commentable.poster))
     expect(page).to have_content('Unliked!')
     expect(page).not_to have_link('Unlike')
     expect(page).to have_link('Like', href: like_comment_href )
@@ -89,16 +89,16 @@ feature 'Liking Photos' do
 
   before do
     sign_in(user)
-    photo.owner.friended_users << user
+    photo.poster.friended_users << user
   end
 
 
   scenario 'Like an unliked photo' do
-    visit user_photo_path(photo.owner, photo)
+    visit user_photo_path(photo.poster, photo)
 
     click_link 'Like', href: like_photo_href
 
-    expect(page.current_path).to eq(user_photo_path(photo.owner, photo))
+    expect(page.current_path).to eq(user_photo_path(photo.poster, photo))
     expect(page).to have_content('Liked!')
     expect(page).not_to have_link('Like', href: like_photo_href )
     expect(page).to have_link('Unlike', href: like_path(Like.last.id) )
@@ -107,11 +107,11 @@ feature 'Liking Photos' do
 
   scenario 'Unlike an already liked photo' do
     photo.likers << user
-    visit user_photo_path(photo.owner, photo)
+    visit user_photo_path(photo.poster, photo)
 
     click_link 'Unlike', href: like_path(Like.last.id)
 
-    expect(page.current_path).to eq(user_photo_path(photo.owner, photo))
+    expect(page.current_path).to eq(user_photo_path(photo.poster, photo))
     expect(page).to have_content('Unliked!')
     expect(page).not_to have_link('Unlike')
     expect(page).to have_link('Like', href: like_photo_href )

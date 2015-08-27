@@ -11,7 +11,7 @@ class Photo < ActiveRecord::Base
   validates_attachment_content_type :photo, :content_type => /\Aimage\/.*\Z/
   validates_attachment_size :photo, :less_than => 2.megabytes
 
-  belongs_to :owner, :class_name => 'User'
+  belongs_to :poster, :class_name => 'User'
 
   has_one :profile_photo_user,
             :foreign_key => :profile_photo_id,

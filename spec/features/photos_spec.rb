@@ -83,12 +83,12 @@ feature 'photo show page' do
   before do
     sign_in(viewer)
     photo.comments.create(attributes_for(:comment, :on_photo, author_id: viewer.id))
-    photo.owner.friended_users << viewer
-    visit user_photo_path(photo.owner, photo)
+    photo.poster.friended_users << viewer
+    visit user_photo_path(photo.poster, photo)
   end
 
 
-  scenario 'displays photo and owner' do
+  scenario 'displays photo and poster' do
     expect(page).to have_css("img[src*='#{photo.photo.url(:medium)}']")
     expect(page).to have_content(photo.photo_updated_at)
   end

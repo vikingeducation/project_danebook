@@ -2,8 +2,12 @@ require 'rails_helper'
 
 describe Photo do
 
+  describe 'table structure' do
+    it { should have_db_column(:poster_id) }
+  end
+
   describe 'associations' do
-    it { should belong_to(:owner) }
+    it { should belong_to(:poster) }
     it { should have_many(:comments).dependent(:destroy) }
     it { should have_many(:likes).dependent(:destroy) }
     it { should have_one(:profile_photo_user).dependent(:nullify) }

@@ -81,17 +81,17 @@
 
                         <!-- Media list image -->
                         <div class="media-left">
-                          <%= link_to user_path(@photo.owner) do %>
-                            <%= image_tag 'user_silhouette_generic.gif', id: 'user-photo', class: 'media-object', size: '75x75', alt: "Photo owner's photo" %>
+                          <%= link_to user_path(@photo.poster) do %>
+                            <%= image_tag 'user_silhouette_generic.gif', id: 'user-photo', class: 'media-object', size: '75x75', alt: "Photo poster's photo" %>
                           <% end %>
                         </div>  <!-- end of image section -->
 
 
-                        <!-- Photo owner name and posted date -->
+                        <!-- Photo poster name and posted date -->
                         <div class="media-body">
                           <div class="media-heading">
 
-                            <%= link_to @photo.owner.profile.full_name, user_path(@photo.owner) %>
+                            <%= link_to @photo.poster.profile.full_name, user_path(@photo.poster) %>
 
                             <br>
 

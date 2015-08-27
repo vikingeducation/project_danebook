@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
     else
       flash[:danger] = "Comment not saved. Please try again."
     end
-    redirect_back_or_to(user_posts_path(@new_comment.commentable.author))
+    redirect_back_or_to(user_posts_path(@new_comment.commentable.poster))
   end
 
 
@@ -23,7 +23,7 @@ class CommentsController < ApplicationController
     else
       flash[:danger] = "Sorry, we couldn't delete your comment. Please try again."
     end
-    redirect_back_or_to(user_posts_path(comment.commentable.author))
+    redirect_back_or_to(user_posts_path(comment.commentable.poster))
   end
 
 
@@ -39,7 +39,7 @@ class CommentsController < ApplicationController
       comment = Comment.find(params[:id])
       unless comment.author == current_user
         flash[:danger] = "You're not authorized to do this!"
-        redirect_to user_posts_path(comment.commentable.author)
+        redirect_to user_posts_path(comment.commentable.poster)
       end
     end
 

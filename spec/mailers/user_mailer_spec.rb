@@ -41,7 +41,7 @@ RSpec.describe UserMailer, type: :mailer do
     end
 
     it 'renders the receiver email' do
-      expect(mail.to).to eq([comment.commentable.author.email])
+      expect(mail.to).to eq([comment.commentable.poster.email])
     end
 
     it 'renders the sender email' do
@@ -49,11 +49,11 @@ RSpec.describe UserMailer, type: :mailer do
     end
 
     it "includes the notified user's name" do
-      expect(mail.body.encoded).to match(comment.commentable.author.profile.full_name)
+      expect(mail.body.encoded).to match(comment.commentable.poster.profile.full_name)
     end
 
     it 'includes user post path' do
-      expect(mail.body.encoded).to match("http://test.host/users/#{comment.commentable.author.id}/posts")
+      expect(mail.body.encoded).to match("http://test.host/users/#{comment.commentable.poster.id}/posts")
     end
 
   end
@@ -69,7 +69,7 @@ RSpec.describe UserMailer, type: :mailer do
     end
 
     it 'renders the receiver email' do
-      expect(mail.to).to eq([comment.commentable.author.email])
+      expect(mail.to).to eq([comment.commentable.poster.email])
     end
 
     it 'renders the sender email' do
@@ -77,11 +77,11 @@ RSpec.describe UserMailer, type: :mailer do
     end
 
     it "includes the notified user's name" do
-      expect(mail.body.encoded).to match(comment.commentable.author.profile.full_name)
+      expect(mail.body.encoded).to match(comment.commentable.poster.profile.full_name)
     end
 
     it 'includes user post path' do
-      expect(mail.body.encoded).to match("http://test.host/users/#{comment.commentable.author.id}/photos/#{comment.commentable.id}")
+      expect(mail.body.encoded).to match("http://test.host/users/#{comment.commentable.poster.id}/photos/#{comment.commentable.id}")
     end
 
   end

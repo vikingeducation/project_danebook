@@ -52,7 +52,7 @@ describe CommentsController do
 
     it 'redirects to the Post that the deleted Comment was under' do
       delete :destroy, id: comment.id
-      expect(response).to redirect_to user_posts_path(comment.commentable.author)
+      expect(response).to redirect_to user_posts_path(comment.commentable.poster)
     end
 
   end

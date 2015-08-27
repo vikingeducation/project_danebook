@@ -12,6 +12,8 @@ describe User do
 
 
   context 'associations' do
+    it { should have_many(:posts).dependent(:destroy) }
+    it { should have_many(:photos).dependent(:destroy) }
     it { should belong_to(:profile_photo) }
     it { should belong_to(:cover_photo) }
   end

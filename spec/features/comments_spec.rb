@@ -8,7 +8,7 @@ feature 'Comment on a Post' do
 
   before do
     sign_in(user)
-    visit user_posts_path(post.author)
+    visit user_posts_path(post.poster)
   end
 
 
@@ -19,7 +19,7 @@ feature 'Comment on a Post' do
 
     expect(page).to have_content comment_text
     expect(page).to have_content 'Comment created'
-    expect(page.current_path).to eq(user_posts_path(post.author))
+    expect(page.current_path).to eq(user_posts_path(post.poster))
   end
 
 
@@ -29,7 +29,7 @@ feature 'Comment on a Post' do
     click_button 'Comment'
 
     expect(page).to have_content 'not saved'
-    expect(page.current_path).to eq(user_posts_path(post.author))
+    expect(page.current_path).to eq(user_posts_path(post.poster))
   end
 
 
@@ -39,13 +39,13 @@ feature 'Comment on a Post' do
     click_button 'Comment'
 
     expect(page).to have_content 'not saved'
-    expect(page.current_path).to eq(user_posts_path(post.author))
+    expect(page.current_path).to eq(user_posts_path(post.poster))
   end
 
 
   scenario 'if unauthorized User' do
     sign_out
-    visit(user_posts_path(post.author))
+    visit(user_posts_path(post.poster))
 
     expect(page).not_to have_button('Comment')
   end
@@ -62,8 +62,8 @@ feature 'Comment on a Photo' do
 
   before do
     sign_in(user)
-    photo.owner.friended_users << user
-    visit user_photo_path(photo.owner, photo)
+    photo.poster.friended_users << user
+    visit user_photo_path(photo.poster, photo)
   end
 
 
@@ -74,7 +74,7 @@ feature 'Comment on a Photo' do
 
     expect(page).to have_content comment_text
     expect(page).to have_content 'Comment created'
-    expect(page.current_path).to eq(user_photo_path(photo.owner, photo))
+    expect(page.current_path).to eq(user_photo_path(photo.poster, photo))
   end
 
 
@@ -84,7 +84,7 @@ feature 'Comment on a Photo' do
     click_button 'Comment'
 
     expect(page).to have_content 'not saved'
-    expect(page.current_path).to eq(user_photo_path(photo.owner, photo))
+    expect(page.current_path).to eq(user_photo_path(photo.poster, photo))
   end
 
 
@@ -94,7 +94,7 @@ feature 'Comment on a Photo' do
     click_button 'Comment'
 
     expect(page).to have_content 'not saved'
-    expect(page.current_path).to eq(user_photo_path(photo.owner, photo))
+    expect(page.current_path).to eq(user_photo_path(photo.poster, photo))
   end
 
 end

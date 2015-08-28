@@ -8,15 +8,21 @@
 
       <%= comment_fields.text_area  :body, class: 'form-control', rows: '3', placeholder: 'Write a comment...' %>
 
+
       <!-- separate row for Cancel & Comment buttons -->
       <div class="row center-block">
         <div class="col-xs-12">
+
+
+<!-- TEMPORARILY hidden until it can be implemented with JS
 
           <div class="pull-left">
             <a href="#" alt="Cancel writing a comment">Cancel</a>
           </div>
 
-          <div class="pull-right comment-button-wrapper">
+ -->
+
+           <div class="pull-right comment-button-wrapper">
 
             <%= comment_fields.submit 'Comment', class: 'btn btn-primary btn-sm' %>
 

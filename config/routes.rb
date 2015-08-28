@@ -15,14 +15,16 @@ Rails.application.routes.draw do
       resource :profile_photo, :only => [:update]
       resource :cover_photo, :only => [:update]
     end
-    resource :newsfeed, :only => [:show, :update]
+    resource :newsfeed, :only => [:show]
   end
 
   resources :comments, :only => [:create, :destroy]
   resources :likes, :only => [:create, :destroy]
 
   resources :profiles, :only => [:index]
+
   get 'search' => 'profiles#index'
+  get 'newsfeed' => 'newsfeed#show'
 
 
   # The priority is based upon order of creation: first created -> highest priority.

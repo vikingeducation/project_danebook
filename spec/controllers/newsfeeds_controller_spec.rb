@@ -21,15 +21,16 @@ RSpec.describe NewsfeedsController, type: :controller do
       expect(assigns[:user]).to eq(user)
     end
 
-    it 'collects latest posts from friends into @latest_posts' do
+    it 'collects latest posts from friends into @posts' do
       posts = create_list(:post, 2, :poster_id => friend.id)
 
       # dummy post that should not be pulled
       create(:post)
 
-      expect(assigns[:latest_posts].size).to eq(2)
-      expect(posts).to include(assigns[:latest_posts].first)
+      expect(assigns[:posts].size).to eq(2)
+      expect(posts).to include(assigns[:posts].first)
     end
+
 
   end
 

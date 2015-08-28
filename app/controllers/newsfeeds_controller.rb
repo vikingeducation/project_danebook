@@ -4,7 +4,7 @@ class NewsfeedsController < ApplicationController
 
   def show
     @user = current_user
-    @latest_posts = Post.get_newsfeed(@user.friended_user_ids)
+    @posts = Post.get_newsfeed(@user.friended_user_ids)
   end
 
 
@@ -14,10 +14,10 @@ class NewsfeedsController < ApplicationController
 
 
     def require_current_user
-      #unless params[:user_id] == current_user.id.to_s
-      #  flash[:danger] = "You're not authorized to do this!"
-      #  redirect_to root_url
-      #end
+      unless params[:user_id] == current_user.id.to_s
+        flash[:danger] = "You're not authorized to do this!"
+        redirect_to root_url
+      end
     end
 
 end

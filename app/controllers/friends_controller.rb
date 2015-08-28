@@ -11,7 +11,7 @@ class FriendsController < ApplicationController
 
   def create
     recipient = User.find(params[:recipient_id])
-    if current_user.friended_users << recipient
+    if current_user.initiated_friendings.create(friend_id: recipient.id)
       flash[:success] = "Added #{recipient.profile.full_name} as a Friend!"
     else
       flash[:error] = "Friend not added. Please verify you're not already friends and try again."

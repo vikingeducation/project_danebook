@@ -20,7 +20,12 @@ describe Friending do
 
   context 'when Friending oneself' do
 
-    #it 'does not save if the user is trying to friend himself'
+    let(:friending) { build(:friending) }
+
+    it 'does not save if the user is trying to friend himself' do
+      friending.friend_id = friending.friender_id
+      expect(friending).to be_invalid
+    end
 
   end
 

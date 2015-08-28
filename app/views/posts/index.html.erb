@@ -35,23 +35,10 @@
 
               <div class="panel-body col-sm-offset-1">
 
-                <p>
-                  <strong>Born on: </strong>
-                  <%= @user.profile.birthdate.to_formatted_s(:long_ordinal) %>
-                </p>
-                <p>
-                  <strong>Went to school at: </strong>
-                  <%= @user.profile.college %>
-                </p>
-                <p><strong>
-                  Hometown: </strong>
-                  <%= @user.profile.hometown %>
-                </p>
-                <p><strong>
-                  Currently lives: </strong>
-                  <%= @user.profile.currently_lives %>
-                </p>
-
+                <%= post_index_user_field('Born on', @user.profile.birthdate.to_formatted_s(:long_ordinal) ) %>
+                <%= post_index_user_field('Went to school at', @user.profile.college) %>
+                <%= post_index_user_field('Hometown', @user.profile.hometown) %>
+                <%= post_index_user_field('Currently Lives', @user.profile.currently_lives) %>
 
               </div>
 

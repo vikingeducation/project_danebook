@@ -23,12 +23,8 @@ describe SessionsController do
         expect(flash[:success]).to eq("You've successfully signed in!")
       end
 
-      #it 'redirects to user timeline' do
-      #  expect(response).to redirect_to user_posts_path(existing_user)
-      #end
-
       it 'redirects to user newsfeed' do
-        expect(response).to redirect_to user_newsfeed_path(existing_user)
+        expect(response).to redirect_to newsfeed_path
       end
 
     end

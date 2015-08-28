@@ -16,11 +16,11 @@ RSpec.describe NewsfeedsController, type: :controller do
       end
 
 
-      it { should use_before_action(:require_current_user) }
+      it { should use_before_action(:require_login) }
 
 
       it 'assigns @user to current user' do
-        get :show, :user_id => user.id
+        get :show
         expect(assigns[:user]).to eq(user)
       end
 
@@ -31,7 +31,7 @@ RSpec.describe NewsfeedsController, type: :controller do
         # dummy post that should not be pulled
         create(:post)
 
-        get :show, :user_id => user.id
+        get :show
 
         expect(assigns[:posts].size).to eq(2)
         expect(posts).to include(assigns[:posts].first)
@@ -39,7 +39,7 @@ RSpec.describe NewsfeedsController, type: :controller do
 
 
       it 'renders the show template' do
-        get :show, :user_id => user.id
+        get :show
         should render_template('show')
       end
 
@@ -52,7 +52,7 @@ RSpec.describe NewsfeedsController, type: :controller do
         # dummy user that should not be pulled in as a friend
         create(:user)
 
-        get :show, :user_id => user.id
+        get :show
 
         expect(assigns[:friends].size).to eq(2)
         expect(user.friended_users).to include(assigns[:friends].first)
@@ -67,7 +67,7 @@ RSpec.describe NewsfeedsController, type: :controller do
         # dummy user that should not be pulled in as a friend
         create(:user)
 
-        get :show, :user_id => user.id
+        get :show
 
         expect(assigns[:friends].size).to eq(2)
         expect(user.friended_users).to include(assigns[:friends].last)
@@ -76,19 +76,12 @@ RSpec.describe NewsfeedsController, type: :controller do
     end
 
 
-    context "other user's newsfeed" do
+    context "when not logged in" do
 
-      let(:user) { create(:user) }
-      let(:other_user) { create(:user) }
-
-      before do
-        request.cookies[:auth_token] = user.auth_token
-      end
-
-      it "prevents viewing another user's feed" do
-        get :show, :user_id => other_user.id
-        expect(flash[:danger]).to eq("You're not authorized to do this!")
-        expect(response).to redirect_to(root_path)
+      it "prevents viewing any newsfeed" do
+        get :show
+        expect(flash[:danger]).to eq("You must be logged in to do this.")
+        expect(response).to redirect_to(login_path)
       end
 
     end

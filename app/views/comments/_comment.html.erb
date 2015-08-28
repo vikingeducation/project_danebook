@@ -17,7 +17,7 @@
         <%= link_to comment.author.profile.full_name, user_path(comment.author) %>
 
         <time datetime=<%= comment.created_at %> pubdate>
-          <small>Said on <%= comment.created_at %></small>
+          <small>Said on <%= comment.render_date %></small>
         </time>
 
       </div>

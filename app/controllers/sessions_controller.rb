@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
     if @user && @user.authenticate(params[:password])
       permanent_sign_in(@user)
       flash[:success] = "You've successfully signed in!"
-      redirect_to user_newsfeed_path(@user)
+      redirect_to newsfeed_path
     else
       flash[:danger] = "Sign in failed.  Please try again."
       redirect_to root_url

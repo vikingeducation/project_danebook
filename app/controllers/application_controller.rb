@@ -40,7 +40,7 @@ class ApplicationController < ActionController::Base
 
     def require_login
       unless signed_in_user?
-        flash[:error] = 'You must be logged in to Like things.'
+        flash[:danger] = 'You must be logged in to do this.'
         redirect_to login_path
       end
     end

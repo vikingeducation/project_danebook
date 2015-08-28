@@ -16,4 +16,8 @@ class Comment < ActiveRecord::Base
     UserMailer.notify(comment).deliver!
   end
 
+  def render_date
+    self.created_at.to_date.to_formatted_s(:long_ordinal)
+  end
+
 end

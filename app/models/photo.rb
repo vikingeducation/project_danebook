@@ -35,4 +35,8 @@ class Photo < ActiveRecord::Base
     self.photo = open(url) unless url.empty?
   end
 
+  def render_date
+    self.created_at.to_date.to_formatted_s(:long_ordinal)
+  end
+
 end

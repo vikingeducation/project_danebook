@@ -45,6 +45,7 @@ feature 'Friending other Users' do
 
 
     scenario 'add a User as a Friend' do
+      save_and_open_page
       click_link 'Friend Me',
         href: user_friends_path(user, :recipient_id => potential_friend.id)
 

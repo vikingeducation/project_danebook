@@ -6,7 +6,12 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+
+# MULTIPLIER base of 1 includes:
+#   10 Users
+#   21 days of history
 MULTIPLIER = 1
+
 
 User.delete_all
 Profile.delete_all
@@ -16,11 +21,17 @@ Like.delete_all
 Photo.all.each { |p| p.destroy } if Photo.all
 
 
+def random_date
+  DateTime.now - rand(0..21).days
+end
+
 
 # Create 10 Users with Profiles
 (MULTIPLIER*10).times do
   u = User.new
   u.password = 'password'
+  u.created_at = u.updated_at = random_date
+
   p = u.build_profile
   p.first_name = Faker::Name.first_name
   p.last_name = Faker::Name.last_name
@@ -33,6 +44,9 @@ Photo.all.each { |p| p.destroy } if Photo.all
   p.telephone = Faker::PhoneNumber.phone_number
   p.words_to_live_by = Faker::Lorem.sentence
   p.description = Faker::Lorem.paragraph(1,true,3)
+  p.created_at = u.created_at
+  p.updated_at = p.created_at + 1.day
+
   u.save!
 end
 
@@ -42,6 +56,7 @@ User.all.each do |u|
   (MULTIPLIER*rand(0..2)).times do
     p = u.posts.build
     p.body = Faker::Lorem.paragraph(1,true,3)
+    p.created_at = p.updated_at = [random_date, u.created_at].min
     p.save!
   end
 
@@ -49,6 +64,7 @@ User.all.each do |u|
   (MULTIPLIER*rand(0..2)).times do
     p = u.photos.build
     p.photo = open(Faker::Avatar.image)
+    p.created_at = p.updated_at = [random_date, u.created_at].min
     p.save!
   end
 

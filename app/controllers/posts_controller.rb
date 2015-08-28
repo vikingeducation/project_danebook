@@ -8,6 +8,7 @@ class PostsController < ApplicationController
     @posts = @user.posts
     @new_post = current_user.posts.build if signed_in_user?
     @friends = @user.friended_users.sample(6)
+    @photos = @user.photos.sample(9)
   end
 
 

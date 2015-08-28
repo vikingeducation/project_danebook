@@ -1,0 +1,38 @@
+<div class=" panel panel-default">
+
+  <div class="panel-heading">
+
+    <h3 class="panel-title text-center">
+      Photos <small>(<%= user.photos.count %>)</small>
+    </h3>
+
+  </div>
+
+
+  <div class="panel-body">
+
+
+    <div class="row thumbnail-row">
+      <%= render :partial => 'posts/photo', :collection => photos[0..2] %>
+    </div>
+    <div class="row thumbnail-row">
+      <%= render :partial => 'posts/photo', :collection => photos[3..5] %>
+    </div>
+    <div class="row thumbnail-row">
+      <%= render :partial => 'posts/photo', :collection => photos[6..8] %>
+    </div>
+
+
+    <div class="row">
+
+      <div class="col-xs-12 text-center">
+
+        <%= link_to "See more photos", user_photos_path(user), alt: "See more photos" %>
+
+      </div>
+
+    </div>
+
+  </div> <!-- end of panel body -->
+
+</div> <!-- end of panel -->

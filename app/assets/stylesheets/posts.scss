@@ -1,3 +1,34 @@
 // Place all the styles related to the Posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+// Timeline section styles (posts#index)
+#timeline {
+  .thumbnail-row {
+    margin-top: 5px;
+    margin-bottom: 10px;
+
+    img {
+      max-width: 75px;
+      max-height: 75px;
+    }
+  }
+
+
+  .media {
+    padding-top: 8px;
+
+    .media-heading {
+      margin-top: 8px;
+    }
+
+    .pull-left {
+      padding-right: 6px;
+    }
+  }
+
+  #comments-wrapper {
+    border-top: 1px solid #999;
+  }
+}

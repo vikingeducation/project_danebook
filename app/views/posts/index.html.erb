@@ -63,48 +63,12 @@
 <!-- end of Basic Info -->
 
 
-  <!-- row for Photos  -->
+<!-- row for Photos  -->
         <div class="row">
           <div class="col-xs-12">
-
-            <div class=" panel panel-default">
-
-              <div class="panel-heading">
-
-                <h3 class="panel-title text-center">
-                  Photos <small>(123)</small>
-                </h3>
-
-              </div>
-
-
-              <div class="panel-body">
-
-                <% 3.times do %>
-                  <div class="row">
-                    <% 3.times do %>
-                      <%= render "static_pages/timeline/timeline_photo" %>
-                    <% end %>
-                  </div>
-                <% end %>
-
-
-                <div class="col-xs-12 text-center">
-
-                  <%= link_to "See more photos", user_photos_path(@user), alt: "See more photos" %>
-
-                </div>
-
-              </div> <!-- end of panel body -->
-
-            </div> <!-- end of panel -->
-
-          </div> <!-- end of col -->
-
-        </div> <!-- end of row -->
-<!-- end of Photos panel -->
-
-
+            <%= render :partial => 'posts/photos', :locals => { :user => @user, :photos => @photos } unless @photos.nil? %>
+          </div>
+        </div>
 
 
 <!-- row for Friends  -->

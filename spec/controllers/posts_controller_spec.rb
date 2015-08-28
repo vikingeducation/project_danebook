@@ -59,6 +59,31 @@ describe PostsController do
 
     end
 
+
+
+    context 'when counting photos' do
+
+      it '@photos size is equal to 9 if total photos > 9' do
+        photo_count = 10
+        photo_count.times { create(:photo, :poster => viewed_user) }
+
+        get :index, :user_id => viewed_user
+
+        expect(assigns(:photos).size).to eq(9)
+      end
+
+
+      it '@photos size is equal to total photo count if total < 9' do
+        photo_count = 2
+        photo_count.times { create(:photo, :poster => viewed_user) }
+
+        get :index, :user_id => viewed_user
+
+        expect(assigns(:photos).size).to eq(photo_count)
+      end
+
+    end
+
   end
 
 

@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       resource :profile_photo, :only => [:update]
       resource :cover_photo, :only => [:update]
     end
+    resource :newsfeed, :only => [:show, :update]
   end
 
   resources :comments, :only => [:create, :destroy]

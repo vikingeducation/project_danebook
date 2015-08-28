@@ -114,7 +114,10 @@ end
 def write_comments(object)
   (MULTIPLIER*rand(0..2)).times do
     random_user = User.all.sample
-    object.likers << random_user unless object.liker_ids.include?(random_user.id)
+    c = object.comments.build
+    c.author_id = random_user.id
+    c.body = Faker::Lorem.paragraph(1,true,1)
+    c.save!
   end
 end
 

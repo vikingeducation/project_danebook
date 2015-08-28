@@ -6,7 +6,7 @@
 
         <div class="col-xs-3">
           <%= link_to user_path(friend) do %>
-            <%= image_tag 'user_silhouette_generic.gif', alt: "#{friend.profile.full_name}'s photo" %>
+            <%= image_tag user_image(friend), id: 'user-photo', alt: "#{friend.profile.full_name}'s photo" %>
           <% end %>
         </div>
 

@@ -5,7 +5,7 @@
     <div class="media-left">
 
       <%= link_to user_path(comment.author) do %>
-        <%= image_tag 'user_silhouette_generic.gif', id: 'user-photo', class: 'media-object', size: '50x50', alt: "Commenter's photo" %>
+        <%= image_tag user_image(comment.author), id: 'user-photo', class: 'media-object', size: '50x50', alt: "Commenter's photo" %>
       <% end %>
 
     </div>

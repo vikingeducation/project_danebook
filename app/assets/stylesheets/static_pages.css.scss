@@ -52,6 +52,8 @@
 #user-photo {
   object-fit: cover;
   object-position: top;
+  border: 1px solid #CCC;
+  background-color: #FFF;
 }
 
 
@@ -102,7 +104,6 @@
     margin: 16px;
     position: relative;
     top: -130px;
-    border: 1px solid #CCC;
   }
 
 

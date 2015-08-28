@@ -30,7 +30,7 @@
                         <!-- Media list image -->
                         <div class="media-left">
                           <%= link_to user_path(@user) do %>
-                            <%= image_tag 'user_silhouette_generic.gif', id: 'user-photo', class: 'media-object', size: '75x75', alt: "Photo poster's photo" %>
+                            <%= image_tag user_image(@user), id: 'user-photo', class: 'media-object', size: '75x75', alt: "Photo poster's photo" %>
                           <% end %>
                         </div>  <!-- end of image section -->
 

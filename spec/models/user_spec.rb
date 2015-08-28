@@ -219,4 +219,25 @@ describe User do
   end
 
 
+
+  describe 'User#get_recently_active_friends' do
+
+    let(:user) { create(:user) }
+
+
+    it 'gets posts by friends' do
+      create_list(:post, 8)
+      user.friended_user_ids = Post.pluck(:poster_id)
+      newsfeed_posts = Post.where('poster_id IN (?)', user.friended_users.pluck(:id))
+
+      # create a dummy post/user that shouldn't be pulled
+      create(:post)
+
+      results = User.get_recently_active_friends(newsfeed_posts)
+      expect(results.size).to eq(8)
+    end
+
+
+  end
+
 end

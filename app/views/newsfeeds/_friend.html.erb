@@ -1,0 +1,57 @@
+<div class="row">
+
+  <div class=" panel panel-default">
+
+
+
+    <div class="panel-body">
+
+      <div class="row">
+
+        <div class="media">
+
+          <div class="col-md-12">
+
+
+            <!-- Media list image -->
+            <div class="media-left">
+
+              <%= link_to user_path(post.poster) do %>
+                <%= image_tag 'user_silhouette_generic.gif', id: 'user-photo', class: 'media-object', size: '50x50', alt: "Post poster's photo" %>
+              <% end %>
+
+            </div>  <!-- end of image section -->
+
+
+            <div class="media-body">
+
+
+              <!-- Post name and date -->
+              <div class="media-heading">
+
+                <%= link_to post.poster.profile.full_name, user_path(post.poster) %>
+
+                <br>
+
+                <time datetime=<%= post.created_at %> pubdate>
+                  <small>Posted on <%= post.created_at %></small>
+                </time>
+
+              </div>
+
+
+            </div> <!-- end of post body -->
+
+          </div>
+
+        </div> <!-- end of Media List -->
+
+      </div>
+
+    </div> <!-- end of panel body -->
+
+
+
+  </div> <!-- end of panel -->
+
+</div>

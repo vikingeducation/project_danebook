@@ -11,7 +11,7 @@ class Post < ActiveRecord::Base
   validates :body, :length => { in: 1..255 }
 
 
-  def self.get_newsfeed(friend_ids)
+  def self.get_newsfeed_posts(friend_ids)
     Post.where('poster_id IN (?) AND created_at >= ?', friend_ids, 7.days.ago).
           order(:created_at => :desc).
           limit(10)

@@ -52,4 +52,10 @@ class User < ActiveRecord::Base
     UserMailer.welcome(user).deliver!
   end
 
+
+  def self.get_recently_active_friends(newsfeed_posts)
+    User.where('id IN (?)', newsfeed_posts.pluck(:poster_id).uniq)
+  end
+
+
 end

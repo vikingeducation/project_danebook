@@ -13,15 +13,17 @@ RSpec.describe NewsfeedsController, type: :controller do
       before do
         request.cookies[:auth_token] = user.auth_token
         user.friended_users << friend
-        get :show, :user_id => user.id
       end
 
 
       it { should use_before_action(:require_current_user) }
 
+
       it 'assigns @user to current user' do
+        get :show, :user_id => user.id
         expect(assigns[:user]).to eq(user)
       end
+
 
       it 'collects latest posts from friends into @posts' do
         posts = create_list(:post, 2, :poster_id => friend.id)
@@ -29,11 +31,47 @@ RSpec.describe NewsfeedsController, type: :controller do
         # dummy post that should not be pulled
         create(:post)
 
+        get :show, :user_id => user.id
+
         expect(assigns[:posts].size).to eq(2)
         expect(posts).to include(assigns[:posts].first)
       end
 
-      it { should render_template('show') }
+
+      it 'renders the show template' do
+        get :show, :user_id => user.id
+        should render_template('show')
+      end
+
+
+      it 'collects recently active friends into @friends' do
+        user.friended_users << create(:user)
+        create(:post, :poster_id => user.friended_users.first.id)
+        create(:post, :poster_id => user.friended_users.last.id)
+
+        # dummy user that should not be pulled in as a friend
+        create(:user)
+
+        get :show, :user_id => user.id
+
+        expect(assigns[:friends].size).to eq(2)
+        expect(user.friended_users).to include(assigns[:friends].first)
+      end
+
+
+      it 'does not include duplicated users in @friends' do
+        user.friended_users << create(:user)
+        create(:post, :poster_id => user.friended_users.first.id)
+        2.times { create(:post, :poster_id => user.friended_users.last.id) }
+
+        # dummy user that should not be pulled in as a friend
+        create(:user)
+
+        get :show, :user_id => user.id
+
+        expect(assigns[:friends].size).to eq(2)
+        expect(user.friended_users).to include(assigns[:friends].last)
+      end
 
     end
 

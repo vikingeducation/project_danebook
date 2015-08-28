@@ -4,7 +4,8 @@ class NewsfeedsController < ApplicationController
 
   def show
     @user = current_user
-    @posts = Post.get_newsfeed(@user.friended_user_ids)
+    @posts = Post.get_newsfeed_posts(@user.friended_user_ids)
+    @friends = User.get_recently_active_friends(@posts)
   end
 
 

@@ -35,10 +35,8 @@ describe Post do
   end
 
 
-  describe '#get_newsfeed' do
 
-    before do
-    end
+  describe 'Post#get_newsfeed_posts' do
 
 
     it 'gets posts by friends' do
@@ -48,7 +46,7 @@ describe Post do
       # create a dummy post that shouldn't be pulled
       create(:post)
 
-      results = Post.get_newsfeed(friend_ids)
+      results = Post.get_newsfeed_posts(friend_ids)
       expect(results.size).to eq(8)
     end
 
@@ -58,7 +56,7 @@ describe Post do
       later_post = create(:post, :created_at => 1.day.ago)
 
       friend_ids = Post.pluck(:poster_id)
-      results = Post.get_newsfeed(friend_ids)
+      results = Post.get_newsfeed_posts(friend_ids)
 
       expect(results.first).to eq(later_post)
       expect(results.last).to eq(early_post)
@@ -69,7 +67,7 @@ describe Post do
       create_list(:post, 11)
       friend_ids = Post.pluck(:poster_id)
 
-      results = Post.get_newsfeed(friend_ids)
+      results = Post.get_newsfeed_posts(friend_ids)
       expect(results.size).to eq(10)
     end
 
@@ -79,11 +77,12 @@ describe Post do
       old_post = create(:post, :created_at => 8.days.ago)
 
       friend_ids = Post.pluck(:poster_id)
-      results = Post.get_newsfeed(friend_ids)
+      results = Post.get_newsfeed_posts(friend_ids)
 
       expect(results.pluck(:id)).not_to include(old_post.id)
     end
 
   end
+
 
 end

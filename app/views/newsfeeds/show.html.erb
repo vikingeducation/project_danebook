@@ -81,11 +81,7 @@
 
               <div class="panel-body">
 
-                <% 3.times do %>
-                  <div class="row">
-                    <p>friend</p>
-                  </div>
-                <% end %>
+                <%= render :partial => 'friend', :collection => @posts, :as => :post %>
 
 
                 <div class="col-xs-12 text-center">

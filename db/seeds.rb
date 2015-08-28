@@ -9,8 +9,8 @@
 
 # MULTIPLIER base of 1 includes:
 #   10 Users
-#   21 days of history
-MULTIPLIER = 1
+#   14 days of history
+MULTIPLIER = 2
 
 
 User.delete_all
@@ -22,7 +22,7 @@ Photo.all.each { |p| p.destroy } if Photo.all
 
 
 def random_date
-  DateTime.now - rand(0..21).days
+  DateTime.now - rand(0..14).days
 end
 
 
@@ -56,7 +56,7 @@ User.all.each do |u|
   (MULTIPLIER*rand(0..2)).times do
     p = u.posts.build
     p.body = Faker::Lorem.paragraph(1,true,3)
-    p.created_at = p.updated_at = [random_date, u.created_at].min
+    p.created_at = p.updated_at = [random_date, u.created_at].max
     p.save!
   end
 
@@ -64,14 +64,16 @@ User.all.each do |u|
   (MULTIPLIER*rand(0..2)).times do
     p = u.photos.build
     p.photo = open(Faker::Avatar.image)
-    p.created_at = p.updated_at = [random_date, u.created_at].min
+    p.created_at = p.updated_at = [random_date, u.created_at].max
     p.save!
   end
 
   # Create a bunch of friendships
-  (MULTIPLIER*rand(0..5)).times do
+  (MULTIPLIER*rand(0..7)).times do
     potential_friend = User.all.sample
-    u.friended_users << potential_friend unless u.friended_users.include?(potential_friend)
+    unless potential_friend == u || u.friended_users.include?(potential_friend)
+      u.friended_users << potential_friend
+    end
   end
 end
 

@@ -6,17 +6,19 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
+MULTIPLIER = 1
 
 User.delete_all
 Profile.delete_all
 Post.delete_all
 Comment.delete_all
 Like.delete_all
+Photo.delete_all
 
 
 
-# Create 50 Users with Profiles
-50.times do
+# Create 10 Users with Profiles
+(MULTIPLIER*10).times do
   u = User.new
   u.password = 'password'
   p = u.build_profile
@@ -36,33 +38,49 @@ end
 
 
 User.all.each do |u|
-  # Create 2-6 Posts for each User
-  rand(2..6).times do
+  # Create Posts for each User
+  (MULTIPLIER*rand(0..2)).times do
     p = u.posts.build
     p.body = Faker::Lorem.paragraph(1,true,3)
     p.save!
   end
 
-  # Create 3-10 Comments for each User on random other user posts
-  rand(3..10).times do
-    p = Post.all.sample
-    c = p.comments.build
-    c.author_id = u.id
-    c.body = Faker::Lorem.paragraph(1,true,1)
+  # Create Photos for each User
+  (MULTIPLIER*rand(0..2)).times do
+    p = u.photos.build
+    p.photo = open(Faker::Avatar.image)
     p.save!
   end
 
+  # Create 3-10 Comments for each User on random other user posts
+  #rand(3..10).times do
+  #  p = Post.all.sample # or photo
+  #  c = p.comments.build
+  #  c.author_id = u.id
+  #  c.body = Faker::Lorem.paragraph(1,true,1)
+  #  p.save!
+  #end
+
   # Create a bunch of friendships
-  rand(0..50).times do
+  (MULTIPLIER*rand(0..5)).times do
     potential_friend = User.all.sample
     u.friended_users << potential_friend unless u.friended_users.include?(potential_friend)
   end
 end
 
 
+# For each Post & each Photo, pick 0-3 random Users to Comment on it
+def write_comments(object)
+  (MULTIPLIER*rand(0..2)).times do
+    random_user = User.all.sample
+    object.likers << random_user unless object.liker_ids.include?(random_user.id)
+  end
+end
+
+
 # For each Post & each Comment, pick 0-7 random Users to Like it
 def assign_likes(object)
-  rand(0..7).times do
+  (MULTIPLIER*rand(0..4)).times do
     random_user = User.all.sample
     object.likers << random_user unless object.liker_ids.include?(random_user.id)
   end
@@ -70,6 +88,12 @@ end
 
 
 Post.all.each do |p|
+  write_comments(p)
+  assign_likes(p)
+end
+
+Photo.all.each do |p|
+  write_comments(p)
   assign_likes(p)
 end
 

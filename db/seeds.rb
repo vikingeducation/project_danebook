@@ -11,6 +11,7 @@
 #   10 Users
 #   14 days of history
 MULTIPLIER = 2
+HISTORICAL_DAYS = 14
 
 
 User.delete_all
@@ -22,8 +23,35 @@ Photo.all.each { |p| p.destroy } if Photo.all
 
 
 def random_date
-  DateTime.now - rand(0..14).days
+  DateTime.now - rand(0..HISTORICAL_DAYS).days
 end
+
+
+# Create a User named Foo Bar for playing around
+def make_foobar
+  u = User.new
+  u.password = 'foobar'
+  u.created_at = u.updated_at = DateTime.now - HISTORICAL_DAYS.days
+
+  p = u.build_profile
+  p.first_name = "Foo"
+  p.last_name = "Bar"
+  u.email = "foo@bar.com"
+  p.gender = "Male"
+  p.birthdate = Faker::Date.between(90.years.ago, 12.years.ago)
+  p.college = Faker::Lorem.word.titleize
+  p.hometown = Faker::Address.city
+  p.currently_lives = Faker::Address.city
+  p.telephone = Faker::PhoneNumber.phone_number
+  p.words_to_live_by = Faker::Lorem.sentence
+  p.description = Faker::Lorem.paragraph(1,true,3)
+  p.created_at = u.created_at
+  p.updated_at = p.created_at + 1.day
+
+  u.save!
+end
+
+make_foobar
 
 
 # Create 10 Users with Profiles
@@ -53,7 +81,7 @@ end
 
 User.all.each do |u|
   # Create Posts for each User
-  (MULTIPLIER*rand(0..2)).times do
+  (MULTIPLIER*rand(0..4)).times do
     p = u.posts.build
     p.body = Faker::Lorem.paragraph(1,true,3)
     p.created_at = p.updated_at = [random_date, u.created_at].max
@@ -61,7 +89,7 @@ User.all.each do |u|
   end
 
   # Create Photos for each User
-  (MULTIPLIER*rand(0..2)).times do
+  (1 + MULTIPLIER*rand(0..2)).times do
     p = u.photos.build
     p.photo = open(Faker::Avatar.image)
     p.created_at = p.updated_at = [random_date, u.created_at].max
@@ -69,12 +97,16 @@ User.all.each do |u|
   end
 
   # Create a bunch of friendships
-  (MULTIPLIER*rand(0..7)).times do
+  (MULTIPLIER*rand(0..8)).times do
     potential_friend = User.all.sample
     unless potential_friend == u || u.friended_users.include?(potential_friend)
       u.friended_users << potential_friend
     end
   end
+
+  # Pick a random photo as the user's profile pic
+  u.profile_photo = u.photos.sample
+  u.save!
 end
 
 

@@ -13,7 +13,7 @@ Profile.delete_all
 Post.delete_all
 Comment.delete_all
 Like.delete_all
-Photo.delete_all
+Photo.all.each { |p| p.destroy } if Photo.all
 
 
 
@@ -52,15 +52,6 @@ User.all.each do |u|
     p.save!
   end
 
-  # Create 3-10 Comments for each User on random other user posts
-  #rand(3..10).times do
-  #  p = Post.all.sample # or photo
-  #  c = p.comments.build
-  #  c.author_id = u.id
-  #  c.body = Faker::Lorem.paragraph(1,true,1)
-  #  p.save!
-  #end
-
   # Create a bunch of friendships
   (MULTIPLIER*rand(0..5)).times do
     potential_friend = User.all.sample
@@ -69,7 +60,7 @@ User.all.each do |u|
 end
 
 
-# For each Post & each Photo, pick 0-3 random Users to Comment on it
+# For each Post & each Photo, pick 0-2 random Users to Comment on it
 def write_comments(object)
   (MULTIPLIER*rand(0..2)).times do
     random_user = User.all.sample
@@ -78,7 +69,7 @@ def write_comments(object)
 end
 
 
-# For each Post & each Comment, pick 0-7 random Users to Like it
+# For each Post & each Comment, pick 0-4 random Users to Like it
 def assign_likes(object)
   (MULTIPLIER*rand(0..4)).times do
     random_user = User.all.sample

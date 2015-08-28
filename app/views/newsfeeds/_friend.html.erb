@@ -1,57 +1,30 @@
-<div class="row">
-
-  <div class=" panel panel-default">
+<li class="media">
 
 
+  <div class="media-left">
 
-    <div class="panel-body">
+    <%= link_to user_path(friend) do %>
+      <%= image_tag user_image(friend), id: 'user-photo', class: 'media-object', size: '50x50', alt: "Post poster's photo" %>
+    <% end %>
 
-      <div class="row">
-
-        <div class="media">
-
-          <div class="col-md-12">
-
-
-            <!-- Media list image -->
-            <div class="media-left">
-
-              <%= link_to user_path(post.poster) do %>
-                <%= image_tag user_image(post.poster), id: 'user-photo', class: 'media-object', size: '50x50', alt: "Post poster's photo" %>
-              <% end %>
-
-            </div>  <!-- end of image section -->
+  </div>
 
 
-            <div class="media-body">
+  <div class="media-body">
+
+    <div class="media-heading">
+      <%= link_to friend.profile.full_name, user_path(friend) %>
+
+      <br>
+
+      <time datetime=<%= friend.posts.maximum(:created_at) %> pubdate>
+        <small>Posted on <%= friend.posts.maximum(:created_at).to_date.to_formatted_s(:long_ordinal) %></small>
+      </time>
+
+    </div>
+
+  </div>
 
 
-              <!-- Post name and date -->
-              <div class="media-heading">
+</li>
 
-                <%= link_to post.poster.profile.full_name, user_path(post.poster) %>
-
-                <br>
-
-                <time datetime=<%= post.created_at %> pubdate>
-                  <small>Posted on <%= post.render_date %></small>
-                </time>
-
-              </div>
-
-
-            </div> <!-- end of post body -->
-
-          </div>
-
-        </div> <!-- end of Media List -->
-
-      </div>
-
-    </div> <!-- end of panel body -->
-
-
-
-  </div> <!-- end of panel -->
-
-</div>

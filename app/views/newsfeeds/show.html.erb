@@ -79,10 +79,11 @@
               </div>
 
 
-              <div class="panel-body">
+              <div class="panel-body recently-active">
 
-                <%= render :partial => 'friend', :collection => @posts, :as => :post %>
-
+                <ul class='media-list'>
+                  <%= render :partial => 'friend', :collection => @friends %>
+                </ul>
 
                 <div class="col-xs-12 text-center">
 

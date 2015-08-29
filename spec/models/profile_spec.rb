@@ -60,9 +60,9 @@ describe Profile do
       expect(response.size).to eq(0)
     end
 
-    it 'returns all for no parameters' do
+    it 'returns no results for no parameters' do
       response = Profile.search('')
-      expect(response.size).to eq(Profile.all.count)
+      expect(response.size).to eq(0)
     end
 
   end

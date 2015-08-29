@@ -7,11 +7,11 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-# MULTIPLIER base of 1 includes:
-#   10 Users
-#   14 days of history
-MULTIPLIER = 2
-HISTORICAL_DAYS = 14
+# MULTIPLIER base of 1 includes 10 Users
+MULTIPLIER = 1
+
+# Number of days since app launch
+HISTORICAL_DAYS = 10
 
 
 User.delete_all

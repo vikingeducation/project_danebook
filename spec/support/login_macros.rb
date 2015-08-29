@@ -33,12 +33,12 @@ module LoginMacros
 
 
   def fill_out_user_profile(profile_fields)
-    fill_in 'user_profile_attributes_college', with: profile_fields.college
-    fill_in 'user_profile_attributes_hometown', with: profile_fields.hometown
-    fill_in 'user_profile_attributes_currently_lives', with: profile_fields.currently_lives
-    fill_in 'user_profile_attributes_telephone', with: profile_fields.telephone
-    fill_in 'user_profile_attributes_words_to_live_by', with: profile_fields.words_to_live_by
-    fill_in 'user_profile_attributes_description', with: profile_fields.description
+    fill_in 'profile_college', with: profile_fields.college
+    fill_in 'profile_hometown', with: profile_fields.hometown
+    fill_in 'profile_currently_lives', with: profile_fields.currently_lives
+    fill_in 'profile_telephone', with: profile_fields.telephone
+    fill_in 'profile_words_to_live_by', with: profile_fields.words_to_live_by
+    fill_in 'profile_description', with: profile_fields.description
   end
 
 end

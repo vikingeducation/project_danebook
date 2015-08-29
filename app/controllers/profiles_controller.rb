@@ -11,15 +11,17 @@ class ProfilesController < ApplicationController
 
   def edit
     @profile = Profile.find_by_user_id(params[:user_id])
+    @user = @profile.user
   end
 
 
   def update
-    @profile = Profile.find(params[:id])
+    @profile = Profile.find_by_user_id(params[:user_id])
+    @user = @profile.user
 
     if @profile.update(profile_params)
       flash[:success] = 'Profile updated!'
-      redirect_to user_path(params[:user_id])
+      redirect_to user_path(@user)
     else
       flash.now[:danger] = 'Sorry, there was an error.  Please try again.'
       render :edit
@@ -37,16 +39,12 @@ class ProfilesController < ApplicationController
     end
 
     def profile_params
-      params.require(:profile).permit(
-                                      #:id,
-                                      :college,
+      params.require(:profile).permit(:college,
                                       :hometown,
                                       :currently_lives,
-                                      #:gender,
                                       :telephone,
                                       :words_to_live_by,
-                                      :description
-                                      )
+                                      :description)
     end
 
 end

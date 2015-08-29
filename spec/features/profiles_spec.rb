@@ -27,7 +27,7 @@ feature 'Edit User Profile' do
   scenario 'with a valid blank input' do
     fill_out_user_profile(full_profile_fields)
 
-    fill_in 'user_profile_attributes_telephone', with: ""
+    fill_in 'profile_telephone', with: ""
 
     click_button 'Save Changes'
 
@@ -43,13 +43,12 @@ feature 'Edit User Profile' do
     fill_out_user_profile(full_profile_fields)
 
     invalid_town = "a"*65
-    fill_in 'user_profile_attributes_hometown', with: invalid_town
+    fill_in 'profile_hometown', with: invalid_town
 
     click_button 'Save Changes'
 
     expect(page).to have_content 'error'
     expect(page).not_to have_content invalid_town
-    expect(page.current_path).to eq(user_path(user))
   end
 
 
@@ -60,7 +59,7 @@ feature 'Edit User Profile' do
     # what about forcing in some edit params without hitting Edit page?
 
     expect(page).to have_content 'not authorized'
-    expect(page.current_path).to eq(root_path)
+    expect(page.current_path).to eq(user_path(other_user))
   end
 
 end

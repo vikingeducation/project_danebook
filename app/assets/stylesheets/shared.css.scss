@@ -1,3 +1,13 @@
 .buffer-top {
     margin-top: 30px;
 }
+
+.field_with_errors {
+  input {
+    border-color: #FF4040;
+  }
+}
+
+.error-message {
+  color: #FF2020;
+}

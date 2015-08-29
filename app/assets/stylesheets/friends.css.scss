@@ -1,0 +1,30 @@
+// Place all the styles related to the Friends controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+// Friends page custom styles
+
+#friends {
+
+  .panel-body {
+
+    position: relative;
+
+    img {
+      max-width: 75px;
+      max-height: 75px;
+    }
+
+    .vcenter {
+      position: absolute;
+      top: 50%;
+      transform: translateY(50%);
+      width: 80%;
+
+      p {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

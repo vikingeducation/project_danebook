@@ -1,0 +1,52 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+
+  <div class="container">
+
+
+    <header class="navbar-header">
+
+      <%= link_to "Danebook",root_path, class: "navbar-brand brand-text brand-large" %>
+
+    </header>
+
+
+    <!-- sign-in form -->
+
+    <%= form_tag session_path, { class: 'sign-in-wrapper navbar-form navbar-right'} do %>
+
+      <div class="form-group">
+
+        <div class="row">
+          <%= label_tag :email, 'Email', class: 'col-xs-5 brand-text' %>
+          <%= label_tag :password, 'Password', class: 'col-xs-5 brand-text' %>
+        </div>
+
+
+        <div class="row">
+
+          <div class="col-xs-5">
+            <%= text_field_tag :email, nil, class: 'form-control input-sm' %>
+          </div>
+
+          <div class="col-xs-5">
+            <%= password_field_tag :password, nil, class: 'form-control input-sm' %>
+          </div>
+
+          <div class="col-xs-2">
+            <%= submit_tag 'Log In', class: 'btn btn-default input-sm custom-button' %>
+          </div>
+
+        </div>
+
+
+      </div> <!-- form-group -->
+
+    <% end %>
+
+
+  </div>
+
+</nav>
+
+
+<div class='nav-spacer-guest'></div>

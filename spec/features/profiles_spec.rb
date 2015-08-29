@@ -55,7 +55,7 @@ feature 'Edit User Profile' do
 
   scenario 'for an unauthorized user' do
     other_user = create(:user, :profile => full_profile_fields)
-    visit edit_user_path(other_user)
+    visit edit_user_profile_path(other_user)
 
     # what about forcing in some edit params without hitting Edit page?
 

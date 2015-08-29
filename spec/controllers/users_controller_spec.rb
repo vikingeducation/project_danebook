@@ -18,7 +18,7 @@ describe UsersController do
 
   end
 
-
+=begin
   describe 'PATCH #update' do
 
     let(:initiator) { create(:user) }
@@ -56,5 +56,6 @@ describe UsersController do
 
 
   end
+=end
 
 end

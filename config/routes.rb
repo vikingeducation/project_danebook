@@ -7,8 +7,8 @@ Rails.application.routes.draw do
   get 'login' => 'sessions#new'
   delete 'logout' => 'sessions#destroy'
 
-  resources :users, :only => [:new, :create, :show, :edit, :update] do
-    resource :profile, :only => [:new]
+  resources :users, :only => [:new, :create, :show] do
+    resource :profile, :only => [:edit, :update]
     resources :posts, :only => [:create, :index, :destroy]
     resources :friends, :only => [:create, :index, :destroy]
     resources :photos, :only => [:new, :create, :index, :show, :destroy] do

@@ -49,7 +49,7 @@
 
           <div class="col-xs-12">
 
-            <%= render :partial => 'comments/new', :locals => { :commentable => post } %>
+            <%= render :partial => 'comments/new', :locals => { :commentable => post } if signed_in_user? %>
 
           </div>
 

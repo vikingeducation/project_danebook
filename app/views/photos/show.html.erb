@@ -32,7 +32,7 @@
 
 
               <!-- LEFT SIDE -->
-              <div class="col-md-8">
+              <div class="col-md-7">
 
                 <div class='row'>
                   <div class='col-xs-12'>
@@ -67,7 +67,7 @@
 
 
               <!-- RIGHT SIDE -->
-              <div class="col-md-4">
+              <div class="col-md-5">
 
 
                 <!-- inner panel -->
@@ -118,7 +118,7 @@
                   <!-- New comment -->
                   <div class="row">
                     <div class="col-xs-12">
-                      <%= render :partial => 'comments/new', :locals => { :commentable => @photo } %>
+                      <%= render :partial => 'comments/new', :locals => { :commentable => @photo } if signed_in_user? %>
                     </div>
                   </div> <!-- End of New comment -->
 

@@ -1,21 +1,17 @@
 <% if current_user == photo.poster %>
 
-  <div class='row'>
-    <div class='col-xs-12'>
 
-      <ul class="list-unstyled pull-right">
-        <li>
-          <%= link_to 'Set as Profile', user_photo_profile_photo_path(photo.poster, photo), method: 'PATCH' %>
-        </li>
-        <li>
-          <%= link_to 'Set as Cover', user_photo_cover_photo_path(photo.poster, photo), method: 'PATCH' %>
-        </li>
-        <li>
-          <%= link_to 'delete photo', user_photo_path(photo.poster, photo), method: 'DELETE', data: { confirm: "Delete photo?" } %>
-        </li>
-      </ul>
+  <ul class="list-unstyled pull-right">
+    <li>
+      <%= link_to 'Set as Profile', user_photo_profile_photo_path(photo.poster, photo), method: 'PATCH' %>
+    </li>
+    <li>
+      <%= link_to 'Set as Cover', user_photo_cover_photo_path(photo.poster, photo), method: 'PATCH' %>
+    </li>
+    <li>
+      <%= link_to 'delete photo', user_photo_path(photo.poster, photo), method: 'DELETE', data: { confirm: "Delete photo?" } %>
+    </li>
+  </ul>
 
-    </div>
-  </div>
 
 <% end %>

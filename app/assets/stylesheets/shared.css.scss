@@ -15,6 +15,19 @@
 }
 
 
+.media {
+  padding-top: 8px;
+  .media-heading {
+    margin-top: 8px;
+  }
+}
+
+
+.pull-left {
+  padding-right: 6px;
+}
+
+
 // Common styles for pages other than Home
 
 #about, #edit-about, #timeline, #friends, #photos, #newsfeed {

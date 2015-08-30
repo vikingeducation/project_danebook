@@ -42,7 +42,19 @@
                   </div>
                 </div>
 
-                <%= render :partial => 'show_action_links', :locals => { :photo => @photo } %>
+                <div class='row'>
+                  <div class='col-xs-12'>
+
+                    <%= render :partial => 'show_action_links', :locals => { :photo => @photo } %>
+
+                    <div class="pull-left">
+                      <%= display_like_links(@photo) %>
+                    </div>
+
+                    <%= render :partial => 'likes/likes_display', :locals => { :liked_object => @photo } if @photo.likers %>
+
+                  </div>
+                </div>
 
               </div>
 
@@ -54,62 +66,54 @@
 
 
                 <!-- inner panel -->
-                <div class=" panel panel-default">
+                <div class="panel panel-default">
 
                   <!-- body -->
-                  <div class="media">
-                    <div class='row'>
+                  <div class="panel-body">
 
-                      <div class="col-md-12">
+                    <div class="media">
+                      <div class='row'>
 
-                        <!-- Media list image -->
-                        <div class="media-left">
-                          <%= link_to user_path(@photo.poster) do %>
-                            <%= image_tag user_image(@photo.poster), id: 'user-photo', class: 'media-object', size: '75x75', alt: "Photo poster's photo" %>
-                          <% end %>
-                        </div>  <!-- end of image section -->
+                        <div class="col-md-12">
+
+                          <!-- Media list image -->
+                          <div class="media-left">
+                            <%= link_to user_path(@photo.poster) do %>
+                              <%= image_tag user_image(@photo.poster), id: 'user-photo', class: 'media-object', size: '75x75', alt: "Photo poster's photo" %>
+                            <% end %>
+                          </div>  <!-- end of image section -->
 
 
-                        <!-- Photo poster name and posted date -->
-                        <div class="media-body">
-                          <div class="media-heading">
+                          <!-- Photo poster name and posted date -->
+                          <div class="media-body">
+                            <div class="media-heading">
 
-                            <%= link_to @photo.poster.profile.full_name, user_path(@photo.poster) %>
+                              <%= link_to @photo.poster.profile.full_name, user_path(@photo.poster) %>
 
-                            <br>
+                              <br>
 
-                            <time datetime=<%= @photo.photo_updated_at %> pubdate>
-                              <small><%= @photo.render_date %></small>
-                            </time>
+                              <time datetime=<%= @photo.photo_updated_at %> pubdate>
+                                <small><%= @photo.render_date %></small>
+                              </time>
 
-                          </div>
-                        </div> <!-- media-body -->
+                            </div>
+                          </div> <!-- media-body -->
+                        </div>
                       </div>
-                    </div>
-                  </div> <!-- media object -->
+                    </div> <!-- media object -->
 
-
-                  <!-- Like links -->
-                  <div class='row'>
-                    <div class='col-xs-12'>
-                      <div class="pull-left">
-                        <%= display_like_links(@photo) %>
-                      </div>
-                    </div>
-                  </div>
-
-
-
-                  <!-- New comment -->
-                  <div class="row">
-                    <div class="col-xs-12">
-                      <%= render :partial => 'comments/new', :locals => { :commentable => @photo } if signed_in_user? %>
-                    </div>
-                  </div> <!-- End of New comment -->
+                  </div> <!-- inner panel-body -->
 
 
 
                   <div class="panel-footer">
+
+                    <!-- New comment -->
+                    <div class="row">
+                      <div class="col-xs-12">
+                        <%= render :partial => 'comments/new', :locals => { :commentable => @photo } if signed_in_user? %>
+                      </div>
+                    </div> <!-- End of New comment -->
 
                     <div class='row'>
                       <div class='col-md-12'>

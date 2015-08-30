@@ -122,9 +122,9 @@ describe "likes/_likes_display.html.erb" do
 
     context 'when current user does not like it' do
 
-      it "displays no user names" do
+      it "displays one user names" do
         render :partial => 'likes/likes_display', :locals => { :liked_object => liked_comment }
-        expect(rendered).not_to have_content(liked_comment.likers.first.profile.full_name)
+        expect(rendered).not_to have_content(liked_comment.likers[1].profile.full_name)
       end
 
     end

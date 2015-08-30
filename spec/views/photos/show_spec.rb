@@ -32,7 +32,7 @@ describe 'photos/show.html.erb' do
 
     it 'displays photo and poster' do
       expect(rendered).to have_css("img[src*='#{photo.photo.url(:medium)}']")
-      expect(rendered).to have_content(photo.photo_updated_at)
+      expect(rendered).to have_content(photo.render_date)
     end
 
 
@@ -101,15 +101,14 @@ describe 'photos/show.html.erb' do
       end
 
       def view.current_user
-        @photo_poster
+        @user
       end
-
-      render
 
     end
 
 
     it 'displays action links' do
+      render
       expect(rendered).to have_link('delete photo')
     end
 

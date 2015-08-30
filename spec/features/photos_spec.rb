@@ -90,7 +90,7 @@ feature 'photo show page' do
 
   scenario 'displays photo and poster' do
     expect(page).to have_css("img[src*='#{photo.photo.url(:medium)}']")
-    expect(page).to have_content(photo.photo_updated_at)
+    expect(page).to have_content(photo.render_date)
   end
 
 

@@ -17,8 +17,8 @@ describe "comments/_new.html.erb" do
 
 
   xit "renders form with errors for invalid comment" do
-    comment = user.comments.build(attributes_for(:comment))
-    comment.body = "a"*141
+    comment = post.comments.build(attributes_for(:comment))
+    comment.errors[:body] = 'Body is too long (maximum is 140 characters)'
     render :partial => 'new', :locals => { :commentable => post }
     expect(rendered).to have_css('.error-message')
   end

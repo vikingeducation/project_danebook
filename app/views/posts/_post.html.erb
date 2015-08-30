@@ -36,14 +36,10 @@
         </div>  <!-- end of likes row -->
 
 
-        <% if post.comments.count > 0 %>
-
-          <!-- Comments media list -->
-          <div id="comments-wrapper">
-            <%= render :partial => 'comments/comment', :collection => post.comments.order(:created_at) %>
-          </div> <!-- End of Comments media list -->
-
-        <% end %>
+        <!-- Comments media list -->
+        <div class="row comments-wrapper">
+          <%= render_comments(post) %>
+        </div> <!-- End of Comments media list -->
 
 
         <!-- Post another comment (only if there are comments) -->

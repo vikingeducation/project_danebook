@@ -5,7 +5,7 @@
 
 
 <!-- Start of main About section -->
-  <section id="photos" class="row">
+  <section id="photo-show" class="row">
 
     <div class="row">
       <div class="col-md-12">
@@ -79,7 +79,7 @@
                             <br>
 
                             <time datetime=<%= @photo.photo_updated_at %> pubdate>
-                              <small><%= @photo.photo_updated_at %></small>
+                              <small><%= @photo.render_date %></small>
                             </time>
 
                           </div>
@@ -114,14 +114,12 @@
                     <div class='row'>
                       <div class='col-md-12'>
 
-                        <% if @photo.comments.count > 0 %>
 
-                          <!-- Comments media list -->
-                          <div id="comments-wrapper" class="row">
-                            <%= render :partial => 'comments/comment', :collection => @photo.comments %>
-                          </div> <!-- End of Comments media list -->
+                        <!-- Comments media list -->
+                        <div class="row comments-wrapper">
+                          <%= render_comments(@photo) %>
+                        </div> <!-- End of Comments media list -->
 
-                        <% end %>
 
                       </div>
                     </div>

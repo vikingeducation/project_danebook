@@ -16,7 +16,9 @@
         <div class="row">
           <div class="col-xs-12">
 
-            <%= render :partial => 'likes/like_links', :locals => { :liked_object => post } %>
+            <div class="pull-left">
+              <%= display_like_links(post) %>
+            </div>
 
             <div class="pull-right">
               <%= link_to 'Delete', user_post_path(post.poster, post), method: 'delete', alt: 'Delete this post', data: { confirm: "Delete post?" } if post.poster == current_user %>
@@ -37,7 +39,7 @@
         <% if post.comments.count > 0 %>
 
           <!-- Comments media list -->
-          <div id="comments-wrapper" class="row">
+          <div id="comments-wrapper">
             <%= render :partial => 'comments/comment', :collection => post.comments.order(:created_at) %>
           </div> <!-- End of Comments media list -->
 

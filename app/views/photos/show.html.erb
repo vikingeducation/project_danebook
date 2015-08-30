@@ -92,7 +92,9 @@
                   <!-- Like links -->
                   <div class='row'>
                     <div class='col-xs-12'>
-                      <%= render :partial => 'likes/like_links', :locals => { :liked_object => @photo } if signed_in_user? %>
+                      <div class="pull-left">
+                        <%= display_like_links(@photo) %>
+                      </div>
                     </div>
                   </div>
 

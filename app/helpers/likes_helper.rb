@@ -10,6 +10,17 @@ module LikesHelper
   end
 
 
+  def display_like_links(liked_object)
+    if signed_in_user?
+      if liked_object.likers.include?(current_user)
+        link_to 'Unlike', like_path(liked_object.likes.find_by_liker_id(current_user)), method: 'delete', alt: 'Unlike this post'
+      else
+        link_to 'Like', likes_path(:liked_id => liked_object.id, :liked_type => liked_object.class), method: 'post', alt: 'Like this post'
+      end
+    end
+  end
+
+
   private
 
 

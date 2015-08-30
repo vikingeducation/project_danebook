@@ -1,5 +1,3 @@
-require 'open-uri'
-
 class Photo < ActiveRecord::Base
 
   has_attached_file :photo,

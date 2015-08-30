@@ -43,7 +43,7 @@ class PhotosController < ApplicationController
       flash[:success] = "Photo successfully deleted!"
       redirect_to user_photos_path(@user)
     else
-      flash[:danger] = "There was an error. Please try again."
+      flash.now[:danger] = "There was an error. Please try again."
       render :show
     end
   end

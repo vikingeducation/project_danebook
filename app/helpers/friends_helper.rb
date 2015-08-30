@@ -1,5 +1,6 @@
 module FriendsHelper
 
+
   def friend_unfriend_button(friend)
     if friend == current_user
       link_to "(this is you!)", '#', class: "btn btn-block disabled"

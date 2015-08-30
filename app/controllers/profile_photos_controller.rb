@@ -12,7 +12,7 @@ class ProfilePhotosController < ApplicationController
       flash[:success] = 'Profile photo updated!'
       redirect_to user_path(@user)
     else
-      flash.now[:warning] = 'Sorry, there was an error. Please try again.'
+      flash[:warning] = 'Sorry, there was an error. Please try again.'
       redirect_back_or_to(user_photo_path(@photo))
     end
 

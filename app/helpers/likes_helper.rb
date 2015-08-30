@@ -63,19 +63,4 @@ module LikesHelper
       end
     end
 
-=begin
-    def comment_display(object)
-      names = get_liker_names(object, 1)
-
-      name_string = names.join(" and ")
-      verb = conjugate_like(names)
-
-      if object.likers.count > 1
-        "#{name_string} and #{pluralize(object.likers.count - 1, 'other person')} #{verb} this."
-      elsif object.likers.count > 0
-         "#{name_string} #{verb} this."
-      end
-    end
-=end
-
 end

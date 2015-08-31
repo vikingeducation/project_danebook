@@ -6,13 +6,20 @@ Rails Project from [Viking Code School][2]
 
 ### Student: [Adam Kinson][3]
 
-This project is a mock social network site built with Ruby on Rails.
+This project is a mock social network site built with Ruby on Rails.  Some of the included features are:
+* Photo uploads to Amazon S3
+* Secure passwords and cookie-based authentication
+* RSpec test coverage, with some features (e.g. Photos) being built strictly test-first
+* Delayed job email notifications with a worker dyno
+* Twitter Bootstrap front end
+* Simple user search using SQL and regex matchers
+
 
 Feel free to create your own user or log in as our default user to explore:
-  email: foo@bar.com
-  password: foobar
+* email: foo@bar.com
+* password: foobar
 
-If you sign up with a valid email address, you'll even get to see our email notification system in action!
+If you sign up with a valid email address in production, you'll get to see our email notification system in action.  The development environment uses the letter_opener gem to preview outgoing emails.
 
 
 [1]: http://ajk-danebook.herokuapp.com

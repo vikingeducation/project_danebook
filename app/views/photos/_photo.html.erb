@@ -1,7 +1,19 @@
 <div class='col-xs-3'>
 
-  <%= link_to user_photo_path(photo.poster, photo), alt: 'Individual photo page' do %>
-    <%= image_tag photo.photo.url(:thumb), class: 'img-thumbnail' %>
-  <% end %>
+  <div class='thumbnail-wrapper'>
+
+    <%= link_to user_photo_path(photo.poster, photo), alt: 'Individual photo page' do %>
+      <%= image_tag photo.photo.url(:thumb), class: 'img-thumbnail' %>
+      <div class='overlay'>
+        <div class='row'>
+          <div class='col-xs-10 col-xs-offset-1'>
+            <p>Uploaded on<br><%= photo.render_date %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+
+
+  </div>
 
 </div>

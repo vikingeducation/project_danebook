@@ -13,8 +13,23 @@
       margin-bottom: 6px;
     }
 
-    img:hover {
+    .overlay {
+      width: 160px;
+      height: 40px;
+      margin: 6px;
+      font-size: 14px;
+      color: #333;
+      vertical-align: middle;
+      position: absolute;
+      bottom: 0;
+      background: rgba(210,210,210,0.75);
+      opacity: 0;
+      -webkit-transition: opacity .25s ease;
+      -moz-transition: opacity .25s ease;
+    }
 
+    .thumbnail-wrapper:hover .overlay {
+      opacity: 1;
     }
   }
 

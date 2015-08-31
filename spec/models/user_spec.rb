@@ -240,4 +240,19 @@ describe User do
 
   end
 
+
+  describe 'user#recommend_friends' do
+
+    let(:user) { create(:user) }
+
+    before do
+      create_list(:user, 4)
+    end
+
+    it 'returns a list of 3 users' do
+      expect(user.recommended_friends.size).to eq(3)
+    end
+
+  end
+
 end

@@ -17,6 +17,12 @@ class UserMailer < ApplicationMailer
   end
 
 
+  def recommend_friends(user)
+    @user = user
+    mail(to: @user.email, subject: "Find your friends on Danebook!")
+  end
+
+
   private
 
     def notify_link(commentable)

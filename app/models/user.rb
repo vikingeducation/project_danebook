@@ -32,7 +32,6 @@ class User < ActiveRecord::Base
   before_create :generate_token
 
 
-
   def generate_token
     begin
       self[:auth_token] = SecureRandom.urlsafe_base64

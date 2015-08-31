@@ -29,96 +29,94 @@
 
           <div class="panel-body">
 
-            <%# form_for @user do |user_fields| %>
 
-              <%= form_for [@user, @profile] do |profile_fields| %>
+            <%= form_for [@user, @profile] do |profile_fields| %>
 
-                <div class="row">
-
-
-                  <!-- left side -->
-                  <div class="col-md-5 col-md-offset-1">
-                    <h3>
-                      Basic Information
-                    </h3>
-
-                    <dl class="dl-horizontal">
-
-                      <dt>Birthday:</dt>
-                      <dd><%= @profile.birthdate.to_formatted_s(:long_ordinal) %></dd>
-
-                      <dt>College:</dt>
-                      <dd>
-                        <%= profile_fields.text_field :college, class: 'form-control' %>
-                      </dd>
-                      <%= render_error(profile_fields.object, :college) %>
-
-                      <dt>Hometown:</dt>
-                      <dd>
-                        <%= profile_fields.text_field :hometown, class: 'form-control' %>
-                      </dd>
-                      <%= render_error(profile_fields.object, :hometown) %>
-
-                      <dt>Currently Lives:</dt>
-                      <dd>
-                        <%= profile_fields.text_field :currently_lives, class: 'form-control' %>
-                      </dd>
-                      <%= render_error(profile_fields.object, :currently_lives) %>
-
-                    </dl>
-
-                    <h3>
-                      Contact Information
-                    </h3>
-
-                    <dl class="dl-horizontal">
-                      <dt>Email:</dt>
-                      <dd><%= @user.email %></dd>
-                      <dt>Telephone:</dt>
-                      <dd>
-                        <%= profile_fields.text_field :telephone, class: 'form-control' %>
-                      </dd>
-                      <%= render_error(profile_fields.object, :telephone) %>
-                    </dl>
-
-                  </div> <!-- end of left side -->
+              <div class="row">
 
 
-                  <!-- right side -->
-                  <div class="col-md-6">
-                    <h3>
-                      Words to Live By
-                    </h3>
+                <!-- left side -->
+                <div class="col-md-5 col-md-offset-1">
+                  <h3>
+                    Basic Information
+                  </h3>
 
-                    <p>
-                      <%= profile_fields.text_area :words_to_live_by, rows: 2, class: 'form-control', placeholder: 'Add a favorite quote...' %>
-                      <%= render_error(profile_fields.object, :words_to_live_by) %>
-                    </p>
+                  <dl class="dl-horizontal">
+
+                    <dt>Birthday:</dt>
+                    <dd><%= @profile.birthdate.to_formatted_s(:long_ordinal) %></dd>
+
+                    <dt>College:</dt>
+                    <dd>
+                      <%= profile_fields.text_field :college, class: 'form-control' %>
+                    </dd>
+                    <%= render_error(profile_fields.object, :college) %>
+
+                    <dt>Hometown:</dt>
+                    <dd>
+                      <%= profile_fields.text_field :hometown, class: 'form-control' %>
+                    </dd>
+                    <%= render_error(profile_fields.object, :hometown) %>
+
+                    <dt>Currently Lives:</dt>
+                    <dd>
+                      <%= profile_fields.text_field :currently_lives, class: 'form-control' %>
+                    </dd>
+                    <%= render_error(profile_fields.object, :currently_lives) %>
+
+                  </dl>
+
+                  <h3>
+                    Contact Information
+                  </h3>
+
+                  <dl class="dl-horizontal">
+                    <dt>Email:</dt>
+                    <dd><%= @user.email %></dd>
+                    <dt>Telephone:</dt>
+                    <dd>
+                      <%= profile_fields.text_field :telephone, class: 'form-control' %>
+                    </dd>
+                    <%= render_error(profile_fields.object, :telephone) %>
+                  </dl>
+
+                </div> <!-- end of left side -->
 
 
-                    <h3>
-                      About Me
-                    </h3>
+                <!-- right side -->
+                <div class="col-md-6">
+                  <h3>
+                    Words to Live By
+                  </h3>
 
-                    <p>
-                      <%= profile_fields.text_area :description, rows: 6, class: 'form-control', placeholder: 'Tell us more about yourself...' %>
-                      <%= render_error(profile_fields.object, :description) %>
-                    </p>
+                  <p>
+                    <%= profile_fields.text_area :words_to_live_by, rows: 2, class: 'form-control', placeholder: 'Add a favorite quote...' %>
+                    <%= render_error(profile_fields.object, :words_to_live_by) %>
+                  </p>
 
 
-                  </div> <!-- end of right side -->
+                  <h3>
+                    About Me
+                  </h3>
 
+                  <p>
+                    <%= profile_fields.text_area :description, rows: 6, class: 'form-control', placeholder: 'Tell us more about yourself...' %>
+                    <%= render_error(profile_fields.object, :description) %>
+                  </p>
+
+
+                </div> <!-- end of right side -->
+
+              </div>
+
+              <!-- submit button -->
+              <div class="row">
+                <div class="col-md-6 col-md-offset-3 text-center">
+                  <%= profile_fields.submit 'Save Changes', class: 'btn btn-primary btn-lg btn-block' %>
                 </div>
+              </div>
 
-                <!-- submit button -->
-                <div class="row">
-                  <div class="col-md-6 col-md-offset-3 text-center">
-                    <%= profile_fields.submit 'Save Changes', class: 'btn btn-primary btn-lg btn-block' %>
-                  </div>
-                </div>
-
-              <% end %>
-            <%# end %>
+            <% end %>
 
           </div> <!-- end of panel body -->
 

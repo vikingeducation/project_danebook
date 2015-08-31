@@ -82,7 +82,7 @@
               <div class="panel-body recently-active">
 
                 <ul class='media-list'>
-                  <%= render :partial => 'friend', :collection => @friends %>
+                  <%= render_recently_active(@friends, "No one's been active...") %>
                 </ul>
 
                 <div class="col-xs-12 text-center">
@@ -121,7 +121,7 @@
         <%= render :partial => 'posts/new', :locals => { :new_post => @user.posts.build } %>
 
 
-        <%= render @posts %>
+        <%= render_posts(@posts, "No recent activity...") %>
 
 
 

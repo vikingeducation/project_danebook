@@ -84,7 +84,7 @@
         <%= render :partial => 'new', :locals => { :new_post => @new_post } if @user == current_user %>
 
 
-        <%= render @posts %>
+        <%= render_posts(@posts, "No activity...") %>
 
 
 

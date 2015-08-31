@@ -16,8 +16,10 @@
 
             <div class="panel-body">
               <div class="row">
-                <%= f.text_area :body, class:'form-control', placeholder: 'Tell the world something...' %>
-                <%= render_error(f.object, :body) %>
+                <div class='col-xs-12'>
+                  <%= f.text_area :body, class:'form-control', placeholder: 'Tell the world something...' %>
+                  <%= render_error(f.object, :body) %>
+                </div>
               </div>
             </div>
 

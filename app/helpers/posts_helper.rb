@@ -10,4 +10,13 @@ module PostsHelper
   end
 
 
+  def render_posts(collection, message_if_empty)
+    if collection.size == 0
+      "<h4 class='text-center text-muted'><em>#{message_if_empty}</em></h4>".html_safe
+    else
+      render collection
+    end
+  end
+
+
 end

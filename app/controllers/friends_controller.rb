@@ -26,7 +26,7 @@ class FriendsController < ApplicationController
     if current_user.friended_users.delete(recipient)
       flash[:warning] = "Unfriended #{recipient.profile.full_name}."
     else
-      flash[:error] = "Error!"
+      flash[:error] = "An error occurred.  Please try again."
     end
     redirect_back_or_to(user_path(current_user))
   end

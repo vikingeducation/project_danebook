@@ -68,7 +68,7 @@ class PhotosController < ApplicationController
       poster = User.find(params[:user_id])
 
       unless poster == current_user || poster.friended_users.include?(current_user)
-        flash[:danger] = "You're not authorized to do this!"
+        flash[:danger] = "Sorry, only users who #{poster.profile.first_name} has friended can view this photo."
         redirect_to user_photos_path(params[:user_id])
       end
     end

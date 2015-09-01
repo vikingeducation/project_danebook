@@ -114,7 +114,7 @@ describe PhotosController do
     it 'redirects non-friends to Photo index' do
       get :show, :user_id => photo.poster.id, :id => photo.id
       expect(response).to redirect_to(user_photos_path(photo.poster))
-      should set_flash[:danger].to("You're not authorized to do this!")
+      should set_flash[:danger].to("Sorry, only users who #{photo.poster.profile.first_name} has friended can view this photo.")
     end
 
 

@@ -7,7 +7,7 @@ class LikesController < ApplicationController
     if @liked.likers << current_user
       flash[:success] = 'Liked!'
     else
-      flash[:danger] = 'Error!'
+      flash[:danger] = 'An error occurred. Please try again.'
     end
     redirect_back_or_to(root_path)
   end
@@ -17,7 +17,7 @@ class LikesController < ApplicationController
     if Like.find(params[:id]).destroy
       flash[:success] = 'Unliked!'
     else
-      flash[:danger] = 'Error!'
+      flash[:danger] = 'An error occurred. Please try again.'
     end
     redirect_back_or_to(root_path)
   end

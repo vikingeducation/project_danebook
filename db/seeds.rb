@@ -8,7 +8,7 @@
 
 
 # MULTIPLIER base of 1 includes 10 Users
-MULTIPLIER = 3
+MULTIPLIER = 1
 
 # Number of days since app launch
 HISTORICAL_DAYS = 21
@@ -39,7 +39,7 @@ def make_foobar
   u.email = "foo@bar.com"
   p.gender = "Male"
   p.birthdate = Faker::Date.between(90.years.ago, 12.years.ago)
-  p.college = Faker::Lorem.word.titleize
+  p.college = Faker::Lorem.word.titleize + [" College", " University"].sample
   p.hometown = Faker::Address.city
   p.currently_lives = Faker::Address.city
   p.telephone = Faker::PhoneNumber.phone_number

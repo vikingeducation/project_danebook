@@ -4,11 +4,8 @@ class PostsController < ApplicationController
 
 
   def index
-    @user = User.find(params[:user_id])
-    @posts = @user.posts
+    set_assigns(params[:user_id])
     @new_post = current_user.posts.build if signed_in_user?
-    @friends = @user.friended_users.sample(6)
-    @photos = @user.photos.sample(9)
   end
 
 
@@ -19,9 +16,7 @@ class PostsController < ApplicationController
       redirect_to [current_user, :posts]
     else
       flash.now[:danger] = "New post not saved. Please try again."
-      @user = User.find(params[:user_id])
-      @posts = @user.posts
-      @friends = @user.friended_users.sample(6)
+      set_assigns(params[:user_id])
       render :index
     end
   end
@@ -38,6 +33,13 @@ class PostsController < ApplicationController
 
 
   private
+
+    def set_assigns(user_id)
+      @user = User.find(user_id)
+      @posts = @user.posts
+      @friends = @user.friended_users.sample(6)
+      @photos = @user.photos.sample(9)
+    end
 
 
     def post_params

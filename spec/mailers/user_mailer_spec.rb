@@ -87,28 +87,4 @@ RSpec.describe UserMailer, type: :mailer do
   end
 
 
-  describe 'recommend friends to new users' do
-
-    let(:user) { create(:user) }
-    let(:mail) { UserMailer.recommend_friends(user) }
-
-    it 'renders the subject' do
-      expect(mail.subject).to eq("Find your friends on Danebook!")
-    end
-
-    it 'renders the receiver email' do
-      expect(mail.to).to eq([user.email])
-    end
-
-    it 'renders the sender email' do
-      expect(mail.from).to eq(['no_reply@ajk-danebook.herokuapp.com'])
-    end
-
-    it "includes a list of potential friends"
-
-    xit 'includes user post path' do
-      expect(mail.body.encoded).to match("http://test.host/users/#{comment.commentable.poster.id}/photos/#{comment.commentable.id}")
-    end
-  end
-
 end

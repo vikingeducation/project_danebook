@@ -152,7 +152,6 @@ describe User do
   context 'when deleting a user' do
 
     let(:profile) { build(:base_profile) }
-    # what if did let(:user) here?
     let(:post) { build(:post) }
     let(:comment) { build(:comment) }
     let(:like) { build(:post_like) }
@@ -240,19 +239,5 @@ describe User do
 
   end
 
-
-  describe 'user#recommend_friends' do
-
-    let(:user) { create(:user) }
-
-    before do
-      create_list(:user, 4)
-    end
-
-    it 'returns a list of 3 users' do
-      expect(user.recommended_friends.size).to eq(3)
-    end
-
-  end
 
 end

@@ -8,6 +8,7 @@ describe "posts/index.html.erb" do
     assign(:user, user)
     assign(:posts, Array.new(2) { create(:post, :poster => user) } )
     assign(:new_post, Post.new(:poster_id => user.id) )
+    assign(:photos, Array.new(2) { create(:photo, :poster => user) } )
 
     3.times { create(:friending, :friend_initiator => user) }
     assign(:friends, user.friended_users)

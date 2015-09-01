@@ -30,7 +30,7 @@
           <div class="panel-body">
 
 
-            <%= form_for [@user, @profile] do |profile_fields| %>
+            <%= form_for @profile, url: user_profile_path(@user) do |profile_fields| %>
 
               <div class="row">
 

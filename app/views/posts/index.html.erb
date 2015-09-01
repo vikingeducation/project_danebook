@@ -53,7 +53,7 @@
 <!-- row for Photos  -->
         <div class="row">
           <div class="col-xs-12">
-            <%= render :partial => 'posts/photos', :locals => { :user => @user, :photos => @photos } unless @photos.nil? %>
+            <%= render :partial => 'posts/photos', :locals => { :user => @user, :photos => @photos } unless @photos.empty? %>
           </div>
         </div>
 

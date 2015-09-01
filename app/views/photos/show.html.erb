@@ -49,9 +49,10 @@
 
                     <div class="pull-left">
                       <%= display_like_links(@photo) %>
+                      <br>
+                      <%= render :partial => 'likes/likes_display', :locals => { :liked_object => @photo } if @photo.likers %>
                     </div>
 
-                    <%= render :partial => 'likes/likes_display', :locals => { :liked_object => @photo } if @photo.likers %>
 
                   </div>
                 </div>

@@ -39,11 +39,11 @@
                         <div class="media-body">
                           <div class="media-heading">
 
-                            <h4>
+                            <h3>
                               <%= link_to @user.profile.full_name, user_path(@user) %>
-                            </h4>
+                            </h3>
 
-                            <%= link_to 'Edit Profile', edit_user_profile_path(@user) %>
+                            <small><%= link_to 'Edit Profile', edit_user_profile_path(@user), class: 'pull-right' %></small>
 
                           </div>
                         </div> <!-- media-body -->

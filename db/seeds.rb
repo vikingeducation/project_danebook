@@ -8,10 +8,10 @@
 
 
 # MULTIPLIER base of 1 includes 10 Users
-MULTIPLIER = 1
+MULTIPLIER = 2
 
 # Number of days since app launch
-HISTORICAL_DAYS = 14
+HISTORICAL_DAYS = 15
 
 
 User.delete_all

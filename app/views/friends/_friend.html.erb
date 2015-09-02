@@ -12,15 +12,19 @@
 
 
         <div class="col-xs-5">
-          <div class="vcenter">
-            <%= link_to friend.profile.full_name, user_path(friend) %>
-            <p><%= "#{friend.friended_users.count} Friends" %></p>
+          <div class='vcenter-block'>
+            <div class="vcenter">
+              <%= link_to friend.profile.full_name, user_path(friend) %>
+              <p><%= "#{friend.friended_users.count} Friends" %></p>
+            </div>
           </div>
         </div>
 
         <div class="col-xs-4">
-          <div class="vcenter">
-            <%= friend_unfriend_button(friend) if signed_in_user? %>
+          <div class='vcenter-block'>
+            <div class="vcenter">
+              <%= friend_unfriend_button(friend) if signed_in_user? %>
+            </div>
           </div>
         </div>
 

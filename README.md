@@ -4,7 +4,7 @@ Rails Project from [Viking Code School][2]
 -------------------------------------
 
 
-### [Adam Kinson][3]
+### By: [Adam Kinson][3]
 
 This project is a mock social network site built with Ruby on Rails.  Some of the included features are:
 * Photo uploads to Amazon S3

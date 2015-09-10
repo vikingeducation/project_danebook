@@ -31,9 +31,9 @@
       <div class="col-sm-12">
         <%= profile_fields.input :birthday, 
                                  as: :date,
-                                 start_year: Time.now.year - 12, 
-                                 end_year: Time.now.year - 100, 
-                                 html5: true
+                                 html5: true,
+                                 input_html: { max: Time.now.to_date - 12*365, 
+                                               min: Time.now.to_date - 100*365 } 
                                   %>
       </div>
 

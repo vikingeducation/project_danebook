@@ -15,7 +15,7 @@ feature 'email sent when commenting on commentable' do
         visit root_path
         @new_user = login_user
         @new_photo = create(:photo, uploader: @new_user)
-        click_link "Sign Out"
+        click_link("Sign Out", match: :first)
       end
     end
 

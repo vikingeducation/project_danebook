@@ -60,7 +60,7 @@ feature 'Uploading Photos' do
         visit root_path
         @new_user = login_user
         @new_photo = create(:photo, uploader: @new_user)
-        click_link "Sign Out"
+        click_link("Sign Out", match: :first)
       end
     end
 
@@ -85,7 +85,7 @@ feature 'Uploading Photos' do
       expect(@new_user.profile_photo).to eq(@new_photo)
 
       # Then, he signs out
-      click_link "Sign Out"
+      click_link("Sign Out", match: :first)
     end
 
     scenario 'user sets new photo to cover photo' do
@@ -107,7 +107,7 @@ feature 'Uploading Photos' do
       expect(@new_user.cover_photo).to eq(@new_photo)
 
       # Then, he signs out
-      click_link "Sign Out"
+      click_link("Sign Out", match: :first)
     end
 
     scenario 'user commenting/liking own photo' do
@@ -240,7 +240,7 @@ feature 'Uploading Photos' do
       expect(page).not_to have_content(@jim_text)
 
       # Jim signs out
-      click_link "Sign Out"
+      click_link("Sign Out", match: :first)
     end
 
     scenario 'user deletes photo and associated information' do

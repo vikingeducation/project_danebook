@@ -57,7 +57,7 @@ feature 'signing in' do
     scenario 'should be able to sign out from user page' do
       login_user
       click_button "dropdownMenu1"
-      click_link 'Sign Out'
+      click_link("Sign Out", match: :first)
       expect(current_url).to eq(new_user_url)
       expect(Capybara.current_session.driver.request.cookies.[]('auth_token')).to be_nil
     end

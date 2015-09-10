@@ -1,4 +1,4 @@
-<div class="row">
+<div data-type=comment data-id=<%=comment.id%> class="row">
 	<div class="col-xs-12">
 		<div class="row timeline-post-comment">
 			<div class="col-xs-12">
@@ -29,7 +29,7 @@
 							<% end %>
 							<% if current_user && current_user.id == comment.user_id %>
 								<div class="col-xs-1">
-								    <%= link_to "Delete", comment, method: "delete" %>
+								    <%= link_to "Delete", comment, method: "delete", remote: true %>
 								</div>
 							<% end %>
 							<% if comment.likes.count > 0 %>

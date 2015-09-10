@@ -21,30 +21,38 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(whitelist_post_params)
-    if current_user.id == params[:user_id].to_i
-      if @post.save
-        flash[:success] = "Successfully posted to your timeline!"
+    respond_to do |format|
+      if current_user.id == params[:user_id].to_i
+        if @post.save
+          flash[:success] = "Successfully posted to your timeline!"
+          format.js {}
+        else
+          flash[:notice] = "Couldn't post to your timeline..."
+        end
       else
-        flash[:notice] = "Couldn't post to your timeline..."
+        flash[:notice] = "You can only post as yourself!"
       end
-    else
-      flash[:notice] = "You can only post as yourself!"
+      format.html { redirect_to user_posts_path(current_user) }
     end
-    redirect_to user_posts_path(current_user)
   end
 
   def destroy
     @post = Post.find(params[:id])
-    if current_user.id == params[:user_id].to_i
-      if @post.destroy
-        flash[:success] = "Post deleted Successfully!"
+    @target_id = @post.id
+
+    respond_to do |format|
+      if current_user.id == params[:user_id].to_i
+        if @post.destroy
+          flash[:success] = "Post deleted Successfully!"
+          format.js {}
+        else
+          flash[:notice] = "Couldn't delete post, try again."
+        end
       else
-        flash[:notice] = "Couldn't delete post, try again."
+        flash[:notice] = "Cannot delete other user's posts."
       end
-    else
-      flash[:notice] = "Cannot delete other user's posts."
+      format.html { redirect_to user_posts_path(current_user) }
     end
-    redirect_to user_posts_path(current_user)
   end
 
 

@@ -3,25 +3,33 @@ class CommentsController < ApplicationController
   before_filter :require_author, only: [:destroy]
   def create
     @comment = Comment.new(whitelisted_comment_params)
-    if current_user && current_user == @comment.author
-      if @comment.save
-        flash[:success] = "Comment successfully saved!"
+
+    respond_to do |format|
+      if current_user && current_user == @comment.author
+        if @comment.save
+          flash[:success] = "Comment successfully saved!"
+          format.js {}
+        else
+          flash[:notice] = "Comment coudln't be saved!"
+        end
       else
-        flash[:notice] = "Comment coudln't be saved!"
+        flash[:notice] = "You cannot comment as someone else!"
       end
-    else
-      flash[:notice] = "You cannot comment as someone else!"
+      format.html { redirect_to referer }
     end
-    redirect_to referer
   end
 
   def destroy
-    if @comment.destroy
-      flash[:success] = "Comment successfully deleted!"
-    else
-      flash[:notice] = "Comment coudln't be deleted!"
+    @target_id = @comment.id
+    respond_to do |format|
+      if @comment.destroy
+        flash[:success] = "Comment successfully deleted!"
+        format.js {}
+      else
+        flash[:notice] = "Comment coudln't be deleted!"
+      end
+      format.html { redirect_to referer }
     end
-    redirect_to referer
   end
 
   private

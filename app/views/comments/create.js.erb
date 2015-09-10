@@ -1,0 +1,4 @@
+var $parent = $('div[data-type=post][data-id=<%= @comment.commentable_id %>]');
+var $commentList = $parent.find('#post-comments-list');
+$("<%= j(render partial: 'comment', locals: { comment: @comment } ) %>").appendTo($commentList).hide().slideDown();
+$parent.find(".form-control").val("");

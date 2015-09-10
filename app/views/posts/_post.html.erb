@@ -1,4 +1,4 @@
-<div class="row timeline-post">
+<div data-type=post data-id=<%=post.id%> class="row timeline-post">
 	<div class="col-xs-12">
 		<!-- Top section of a post -->
 		<div class="row">
@@ -34,7 +34,7 @@
 						<% end %>
 						<% if current_user && post.author == current_user %>
 							<div class="col-xs-1 col-xs-offset-8">
-								<%= link_to "Delete", user_post_path(@user, post), method: 'delete' %>
+								<%= link_to "Delete", user_post_path(@user, post), method: 'delete', remote: true %>
 							</div>
 						<% end %>
 					</div>
@@ -47,14 +47,16 @@
 					<% end %>
 				</div>
 			<div class="col-xs-12 selected">
-				<%= render post.comments %>
+			  <div id="post-comments-list" >
+					<%= render post.comments %>
+				</div>
 				<% if current_user %>
 					<%= render partial: "posts/comment_form", locals: {commentable: post, user_id: current_user.id} %>
 				<% end %>
 			</div>
 		</div>
 		<% else %>
-			<div class="col-xs-12 selected">
+			<div id="post-comments-list" class="col-xs-12 selected">
 				<%= render post.comments %>
 			</div>
 		<% end %>

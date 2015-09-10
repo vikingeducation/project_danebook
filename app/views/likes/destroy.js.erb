@@ -1,0 +1,4 @@
+var $target = $('div[data-type=<%= @likable_type %>][data-id=<%= @likable_id %>]');
+console.log('div[data-type=<%= @likable_type %>][data-id=<%= @likable_id %>]');
+console.log($target);
+$target.replaceWith("<%= j( render @likable ) %>");

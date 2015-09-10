@@ -8,9 +8,7 @@ Try it:
 Danebook is my stab at social media site. It features fully working posting, commenting, photo-uploading, and friending.
 
 
-Some things of note: Comments are polymorphic, and the same model is used for comments on both posts and photos.
-
-Likes are also polymorphic, and Posts, Comments, and Photos are likeable.
+Some things of note: Comments are polymorphic, and the same model is used for comments on both posts and photos. Likes are also polymorphic: Posts, Comments, and Photos are likeable.
 
 Adding and deleting comments and posts, as well as liking and unliking are all handled via AJAX requests. Only the relevant information is sent and requested, preventing a completing page refresh. jQuery is used to update the page on a successful AJAX request.
 

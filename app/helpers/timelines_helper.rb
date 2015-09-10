@@ -23,7 +23,7 @@ module TimelinesHelper
   end
 
   def profile_pic_or_generic(authorable)
-    image_tag authorable.author.profile_pic ? authorable.author.profile_pic.data.url(:thumb) : "user_silhouette_generic.gif"
+    image_tag authorable.author.profile_pic ? authorable.author.profile_pic.data.url(:thumb) : random_user_image
   end
 
 

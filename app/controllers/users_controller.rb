@@ -17,7 +17,7 @@ class UsersController < ApplicationController
   def new
     if cookies[:auth_token]
       flash[:success] = "Welcome back #{current_user.name}!"
-      redirect_to user_timeline_path(current_user)
+      redirect_to user_newsfeed_path(current_user)
     end
     @user = User.new
   end

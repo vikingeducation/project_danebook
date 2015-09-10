@@ -3,10 +3,11 @@ Rails.application.routes.draw do
   root 'users#new'
 
   resources :users do
-    resource :timeline, only: [:show]
-    resource :friendings, :only => [:create, :destroy]
-    resources :friends, only: [:index]
-    resources :photos, only: [:index]
+    resource :timeline,   only: [:show]
+    resource :newsfeed,   only: [:show]
+    resource :friendings, only: [:create, :destroy]
+    resources :friends,   only: [:index]
+    resources :photos,    only: [:index]
   end
 
   resources :photos, except: [:index] do

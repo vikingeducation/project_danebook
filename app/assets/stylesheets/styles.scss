@@ -146,6 +146,7 @@ nav {
 }
 
 main {
+
   header {
 
     .photo-container {
@@ -350,50 +351,6 @@ main {
         }
       }
     }
-    //Right side of timeline
-
-    #news-feed {
-      #post-box {
-        .comment-area {
-          margin-top: 15px;
-        }
-        footer {
-          text-align: right;
-          padding: 10px;
-        }
-        margin-bottom: 20px;
-      }
-
-      .feed-posts {
-        padding: 15px 15px 0;
-        border: 1px solid #aaa;
-        margin-bottom: 20px;
-
-        img {
-          width: 50px;
-          height: 50px;
-        }
-
-        .date-posted {
-          color: #777;
-        }
-
-        footer {
-          padding: 10px;
-          p {
-            padding: 15px 15px 10px;
-            margin-bottom: 0px;
-          }
-          .divider-line {
-            border-bottom: 1px solid #aaa;
-            margin-bottom: 20px;
-          }
-          span {
-            color: #aaa;
-          }
-        }
-      }
-    }
   }
 
   #photos-section {
@@ -437,6 +394,88 @@ main {
       }
     .photo:hover .upload-date {
       visibility: visible;
+    }
+  }
+
+}
+
+//Right side of timeline
+
+#news-feed {
+  #post-box {
+    .comment-area {
+      margin-top: 15px;
+    }
+    footer {
+      text-align: right;
+      padding: 10px;
+    }
+    margin-bottom: 20px;
+  }
+
+  .feed-posts {
+    padding: 15px 15px 0;
+    border: 1px solid #aaa;
+    margin-bottom: 20px;
+
+    img {
+      width: 50px;
+      height: 50px;
+    }
+
+    .date-posted {
+      color: #777;
+    }
+
+    footer {
+      padding: 10px;
+      p {
+        padding: 15px 15px 10px;
+        margin-bottom: 0px;
+      }
+      .divider-line {
+        border-bottom: 1px solid #aaa;
+        margin-bottom: 20px;
+      }
+      span {
+        color: #aaa;
+      }
+    }
+  }
+}
+
+#user-newsfeed {
+  #news-feed {
+    border-left: 3px ridge #333;
+  }
+
+  .active-friend {
+    margin: 10px 0;
+    p {
+      line-height: 8px;
+      font-size: 13px;
+      &.date {
+        color: #777;
+      }
+    }
+  }
+
+  .friends-link {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 18px;
+  }
+}
+
+@media (max-width:991px) {
+
+  #user-newsfeed {
+    aside {
+      display: none;
+    }
+
+    #news-feed {
+      border-left: none;
     }
   }
 

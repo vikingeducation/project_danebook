@@ -4,11 +4,11 @@ Rails.application.configure do
   # Configure the Bullet Gem
   config.after_initialize do
     Bullet.enable = true
-    Bullet.alert = true
+    Bullet.alert = false
     Bullet.bullet_logger = true
     Bullet.console = true
     Bullet.rails_logger = true
-    Bullet.add_footer = true
+    Bullet.add_footer = false
   end
 
   config.paperclip_defaults = {

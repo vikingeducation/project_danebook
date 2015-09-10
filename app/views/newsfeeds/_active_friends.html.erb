@@ -1,0 +1,21 @@
+<% posts.each do |post| %>
+<div class = "active-friend">
+
+  <div class="row">
+
+    <div class="col-xs-3">
+      <%= user_profile_pic(post.author) %>
+    </div>
+
+    <div class="col-xs-9">
+      <p>
+        <%= link_to post.author.name, post.author %>
+      </p>
+      <p class="date">
+        Posted on <%= post.created_at.to_formatted_s(:short) %>
+      </p>
+    </div>
+
+  </div>
+</div>
+<% end -%>

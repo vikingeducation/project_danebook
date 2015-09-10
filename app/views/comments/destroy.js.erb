@@ -1,0 +1,6 @@
+var $comment = DANE.Comments.getComment('<%= @comment.id %>');
+$("<%= j(render partial: 'shared/flash', locals: { message: 'Your comment was deleted!', flash_type: 'warning' }) %>").insertBefore($comment).hide().fadeIn(500);
+
+$comment.slideUp("normal", function() {
+        $(this).remove();
+    });;

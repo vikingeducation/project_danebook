@@ -1,5 +1,5 @@
-<div id="comments-container">
-  <% commentable.comments.includes(:author).each do |comment| %>
+<% comments.each do |comment| %>
+  <div data-comment-id = "<%= comment.id %>">
     <div class = "row">
       <div class="col-xs-2">
         <%= profile_pic_or_generic(comment) %>
@@ -32,5 +32,5 @@
       </div>
     </div><br>
     <div class = "divider-line"></div>
-  <% end -%>
-</div>
+  </div>
+<% end -%>

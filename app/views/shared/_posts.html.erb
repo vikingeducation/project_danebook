@@ -39,7 +39,10 @@
 
         <div class = "divider-line"></div>
 
-        <%= render partial: 'shared/comments', locals: {commentable: post} %>
+          <div data-commentable-id = '<%= post.id %>' data-commentable-type = '<%= post.class.to_s %>'>
+            <%= render partial: 'shared/comments', locals: {comments: post.comments.includes(:author) } %>
+          </div>
+
 
         <%= render partial: 'shared/comment_form', locals: {commentable: post} %>
 

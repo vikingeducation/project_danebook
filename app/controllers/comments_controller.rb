@@ -4,23 +4,31 @@ class CommentsController < ApplicationController
 
   def create
     @comment = current_user.comments.build(comment_params)
-    if @comment.save
-      flash[:success] = "Comment successfully posted"
-    else
-      flash[:error] = @comment.errors.full_messages.first
+    respond_to do |format|
+      if @comment.save
+        flash[:success] = "Comment successfully posted"
+        format.js
+      else
+        flash[:error] = @comment.errors.full_messages.first
+        format.js { render "shared/flash" }
+      end
+      format.html { redirect_to ref }
     end
-    redirect_to ref
   end
 
   def destroy
     @comment = Comment.find(params[:id])
-    if @comment.author == current_user
-      @comment.destroy
-      flash[:alert] = "Comment deleted!"
-    else
-      flash[:error] = "You're not allowed to delete other user's comments"
+    respond_to do |format|
+      if @comment.author == current_user
+        @comment.destroy
+        flash[:alert] = "Comment deleted!"
+        format.js
+      else
+        flash[:error] = "You're not allowed to delete other user's comments"
+        format.js { render "shared/flash" }
+      end
+      format.html { redirect_to ref }
     end
-    redirect_to ref
   end
 
   private

@@ -1,6 +1,7 @@
-<%= form_for [commentable, @comment] do |comment_fields| %>
+<%= form_for [commentable, @comment], remote: true do |comment_fields| %>
 
   <div class="col-md-12">
+
     <div class="form-group" id = "comment-box">
 
       <%= comment_fields.text_area :body, class: "form-control", rows: "4", placeholder: "Write a comment..." %>

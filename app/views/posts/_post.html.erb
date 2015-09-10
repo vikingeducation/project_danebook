@@ -47,7 +47,7 @@
 					<% end %>
 				</div>
 			<div class="col-xs-12 selected">
-			  <div id="post-comments-list" >
+			  <div id="comments-list" >
 					<%= render post.comments %>
 				</div>
 				<% if current_user %>
@@ -56,7 +56,7 @@
 			</div>
 		</div>
 		<% else %>
-			<div id="post-comments-list" class="col-xs-12 selected">
+			<div id="comments-list" class="col-xs-12 selected">
 				<%= render post.comments %>
 			</div>
 		<% end %>

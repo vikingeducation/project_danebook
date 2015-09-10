@@ -1,0 +1,10 @@
+console.log('inside destroy.js.erb');
+// console.log('this is the id: ' + @post.id);
+
+//remove the deleted post
+$('#post-<%= @post.id%>').remove();
+
+// PostModule.displayFlash();
+
+$("#flash-messages").html("<%= escape_javascript(render partial: 'shared/flash') %>").slideDown();
+<% flash.clear %>

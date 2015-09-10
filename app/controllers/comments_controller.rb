@@ -4,16 +4,18 @@ class CommentsController < ApplicationController
   # before_action :require_object_owner, :only => [:destroy]
 
   def create
-    comment = Comment.new(params_list)
-    comment.user_id = current_user.id
-
-    if comment.save
+    @comment = Comment.new(params_list)
+    @comment.user_id = current_user.id
+    if @comment.save
       flash[:success] = "You have commented!"
     else
       flash[:error] = "There was an error, please try again!"
     end
 
-    redirect_to referer
+    respond_to do |format|
+      format.html {redirect_to referer}
+      format.js #{render :create, comment: comment}
+    end
   end
 
   def destroy

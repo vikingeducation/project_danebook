@@ -6,7 +6,8 @@ var $list = PostModule.getPostList();
 $list.prepend( $recentPost );
 
 //clear post form
-$('.post-text-area textarea').val("")
+$('.post-text-area textarea').val("");
 
-$("#flash-messages").html("<%= escape_javascript(render partial: 'shared/flash') %>").slideDown();
+
+$("#flash-messages").html("<%= j(render partial: 'shared/flash') %>").slideDown();
 <% flash.clear %>

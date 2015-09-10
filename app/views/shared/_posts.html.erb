@@ -1,6 +1,5 @@
-<!--  Posted posts -->
 <% @posts.each do |post| %>
-  <article class = "feed-posts">
+  <article class = "feed-posts" data-post-id = "<%= post.id %>">
     <div class="row">
       <div class="col-xs-2">
         <%= profile_pic_or_generic(post) %>
@@ -49,4 +48,4 @@
       </footer>
     </div>
   </article>
-<% end -%><!-- Posted posts end-->
+<% end -%>

@@ -35,8 +35,9 @@ describe Post do
 			user2 = create(:user)
 			create(:post, user: user2)
 			visit user_timeline_path(user2)
-			click_link 'Delete'
-			expect(page).to have_content('ERROR')
+			expect(page).to_not have_content('Delete')
+			# click_link 'Delete'
+			# expect(page).to have_content('ERROR')
 		end
 
 		scenario 'owner can delete post' do

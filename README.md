@@ -1,3 +1,3 @@
 README
 
-(joseph-lozano-danebook.herokuapp.com/)[Link]
+[Link](joseph-lozano-danebook.herokuapp.com/)

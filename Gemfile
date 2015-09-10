@@ -31,18 +31,18 @@ gem 'bcrypt', '~> 3.1.7'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-# 
+#
 gem 'simple_form'
 gem 'paperclip'
 gem 'figaro'
 gem 'aws-sdk', '< 2.0'
 
 gem 'rails_12factor', group: :production
+gem 'faker'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-  gem 'faker'
   gem 'better_errors'
   gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
   gem 'guard-rspec', require: false

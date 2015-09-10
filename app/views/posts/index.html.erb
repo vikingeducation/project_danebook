@@ -16,12 +16,14 @@
         </aside>
 
         <!--timeline posts!-->
-        <div class="col-md-7 col-md-offset-1" id="news-feed">
+        <div class="col-md-7 col-md-offset-1" id="post-index">
 
           <%= post_form_display %>
 
           <!-- list all existing post below -->
-          <%= render @posts %>
+          <div id="post-list">
+            <%= render @posts %>
+          </div>
 
         </div>
       </div>

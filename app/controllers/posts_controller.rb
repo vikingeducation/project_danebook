@@ -9,23 +9,34 @@ class PostsController < ApplicationController
     @post = Post.new
 
     @user = User.includes(:profile, :friended_users, :posts => [:likes, :comments], :comments => [:likes, :user]).find(params[:user_id])
-    @posts = @user.posts
+    @posts = @user.posts.order("created_at DESC")
     # currently doubling as timeline,
-    # will separate to timeline controller
+    # may separate to timeline controller
     # @user = User.find(params[:user_id])
     @photos = @user.photos
     @profile = @user.profile
+
+    respond_to do |format|
+      format.html
+      format.js {}
+    end
   end
 
   def create
     @post = Post.new(params_list)
     @post.user_id = current_user.id
-    if @post.save
-      flash[:success] = "You created a post"
-      redirect_to user_posts_path(current_user)
-    else
-      flash[:error] = "There was an error creating your post."
-      redirect_to user_posts_path(current_user)
+    respond_to do |format|
+      if @post.save
+        flash[:success] = "You created a post"
+        format.html { redirect_to user_posts_path(current_user) }
+        format.js
+      else
+        flash[:error] = "There was an error creating your post."
+        format.html { render :index }
+
+        # render empty template
+        format.js { head :none }
+      end
     end
   end
 

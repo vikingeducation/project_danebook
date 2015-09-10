@@ -1,6 +1,6 @@
 <div class="post-update-container">
 
-  <%= form_for [@user, @new_post] do |f| %>
+  <%= form_for [@user, @new_post], remote: true do |f| %>
   
   <div class="post-update-title"><strong>Post</strong></div>
 

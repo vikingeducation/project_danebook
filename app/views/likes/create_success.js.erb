@@ -1,0 +1,11 @@
+
+$('#like<%=@like.liking_id%><%=@like.liking_type%>').remove()
+
+//Build a new html for link
+var unlike = '<a id="like<%=@like.liking_id%><%=@like.liking_type%>" data-remote="true" rel="nofollow" data-method="delete" href="/likes?liking_id=<%=@like.liking_id%>&liking_type=<%=@like.liking_type%>&user_id=<%=@user.id%>">Unlike</a>'
+
+$('#<%=@like.liking_type%><%=@like.liking_id%>').first().prepend(unlike)
+
+$(".flashes").html("<%= j(render partial: 'shared/flash') %>").slideDown();
+<% flash.clear %>
+

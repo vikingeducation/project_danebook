@@ -1,0 +1,6 @@
+
+
+$('#post<%=@id%>').remove();
+
+$(".flashes").html("<%= j(render partial: 'shared/flash') %>").slideDown();
+<% flash.clear %>

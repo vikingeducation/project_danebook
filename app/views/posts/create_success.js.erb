@@ -1,0 +1,12 @@
+
+var newPost = "<%= j(render partial: 'post', locals: { post: @post } )%>"
+var $newPost = $(newPost);
+
+var $postsList = PostModule.getPosts();
+
+$postsList.first().prepend($newPost);
+
+$(".flashes").html("<%= j(render partial: 'shared/flash') %>").slideDown();
+<% flash.clear %>
+
+$('#post_body').first().val(" ");

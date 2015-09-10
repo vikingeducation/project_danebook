@@ -1,4 +1,4 @@
-<div class="comment-section">
+<div class="comment-section" id="comment<%=comment.id%>">
 
   <div class="row comment">
 
@@ -18,14 +18,15 @@
 
       <p><%= comment.body %></p>
 
-      <p>  
+      <div class="link-container" id="<%=comment.class%><%=comment.id%>">  
 
-      <%if current_user.likes?(comment)%>
-        <%=link_to "Unlike", likes_path(user_id: current_user.id, liking_id: comment.id, liking_type: comment.class), method: 'delete' , class: "col-sm-2"%>
-      <%else%>
-        <%=link_to "Like", likes_path(liking_id: comment.id, liking_type: comment.class), method: 'post' , class: "col-sm-2"%>
-      <%end%>
+        <%if current_user.likes?(comment)%>
+          <%=link_to "Unlike", likes_path(user_id: current_user.id, liking_id: comment.id, liking_type: comment.class), method: 'delete' ,  id: "like#{comment.id}#{comment.class}" ,remote: true%>
+        <%else%>
+          <%=link_to "Like", likes_path(liking_id: comment.id, liking_type: comment.class), method: 'post' ,  id: "like#{comment.id}#{comment.class}", remote: true%>
+        <%end%>
        
+      </div>
       
 
       <% if current_user && current_user.id == comment.user_id %>

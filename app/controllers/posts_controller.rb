@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   before_action :require_current_user, only: [:create, :destroy]
 
   def index
-    @posts = @user.posts
+    @posts = @user.posts.reverse
     @profile = @user.profile 
     @new_post = Post.new(author: @user)
   end
@@ -14,20 +14,40 @@ class PostsController < ApplicationController
     @post.user_id = current_user.id
     if @post.save
       flash[:success] = "Posted on timeline."
+      
+      respond_to do |format|
+        format.html {redirect_to user_posts_path(current_user)}
+        format.js {render :create_success}
+      end
     else
       flash[:notice] = "Didn't post."
+      
+      respond_to do |format|
+        format.html {render :index}
+        format.js {render :create_error}
+      end
     end
-      redirect_to user_posts_path(current_user)
+      
   end
 
   def destroy
-    @post = Post.find(params[:id])
+    @id = params[:id]
+    @post = Post.find(@id)
     if @post.destroy
       flash[:success] = "Post deleted."
-      redirect_to user_posts_path(current_user)
+      respond_to do |format|
+        format.html {redirect_to user_posts_path(current_user)}
+        format.js {render :delete_success}
+      end
+  
     else
       flash[:notice] = "Not deleted, try again."
-      redirect_to user_posts_path(current_user)
+
+      respond_to do |format|
+        format.html {redirect_to user_posts_path(current_user)}
+        format.js {render :delete_error}
+      end
+      
     end
   end
 

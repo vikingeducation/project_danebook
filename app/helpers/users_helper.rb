@@ -12,4 +12,5 @@ module UsersHelper
 
     text_field_tag(field) + error
   end
+
 end

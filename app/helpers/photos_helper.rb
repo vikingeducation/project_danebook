@@ -5,8 +5,8 @@ module PhotosHelper
     num > 0 ? "(#{num.to_s})"  : ""
   end
 
-  def profile_pic_display
-    user = page_owner
+  def profile_pic_display(user)
+    # user = page_owner
 
     if user.profile_photo
       image_tag user.profile_photo.picture.expiring_url(10, :thumb),

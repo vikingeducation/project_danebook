@@ -56,7 +56,7 @@
         <div class="row">
 
           <div class="col-sm-3">
-            <%= profile_pic_display %>
+            <%= profile_pic_display(@photo.user) %>
           </div>
 
           <div class="col-sm-9">
@@ -66,9 +66,15 @@
 
           <div class = "col-sm-12">
 
-            <%= like_or_unlike_link(@photo) %>
+            <span data-id=<%="Like-Photo-"+
+                              @photo.id.to_s + "-text"%> >
+              <%= like_display(@photo).html_safe %>
+            </span>
 
-            <%= like_display(@photo).html_safe if @photo.likes.any?%>
+            <span data-id=<%="Like-Photo-"+
+                              @photo.id.to_s + "-link"%> >
+              <%= like_or_unlike_link(@photo) %>
+            </span>
 
           </div>
         </div>

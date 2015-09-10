@@ -5,7 +5,7 @@ var PostModule = (function(){
   };
 
   var setListeners = function(){
-
+    //for future unhiding/hiding of comment form
   };
 
   var getPostList = function(){

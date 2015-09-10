@@ -1,5 +1,5 @@
 <section id ="post-box">
-  <%= form_for [current_user, @post] do |f|%>
+  <%= form_for [current_user, @post], :remote => true do |f|%>
 
     <header class="row">
       <h4 class = "col-md-12">Post</h4>

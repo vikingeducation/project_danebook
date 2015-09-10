@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   def new
     @user = User.new
     @user.build_profile
-    redirect_to current_user if current_user
+    redirect_to user_posts_path(current_user) if current_user
   end
 
   def create

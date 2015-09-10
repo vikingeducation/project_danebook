@@ -46,10 +46,10 @@ group :development, :test do
   gem 'byebug'
   gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
   gem 'pry-byebug'
-  gem 'better_errors'
   # Use sqlite3 as the database for Active Record
   # gem 'sqlite3'
 
+  gem 'better_errors'
   gem 'binding_of_caller'
 
   # Access an IRB console on exception pages or by using <%= console %> in views

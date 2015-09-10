@@ -29,8 +29,10 @@ module LikesHelper
 
       num_ppl = pluralize( (count-num), 'other' )
 
-      if count >= 2 && (count-num) > 0
+      if count > 2 && (count-num) > 0
         str += ", and #{num_ppl} like this."
+      elsif count = 2 && num = 1
+        str += " and #{num_ppl} like this."
       else
         str += " like this."
       end
@@ -40,9 +42,7 @@ module LikesHelper
 
 
   def name_of_other_liker(likes)
-
     likes.first.user == current_user ? likes.second.user : likes.first.user
-
   end
 
 

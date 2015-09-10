@@ -52,10 +52,4 @@ class Photo < ActiveRecord::Base
     #something to read from, not used in code
   end
 
-  private
-
-   def self.photo_exists?(id)
-    where("id = ?", id.to_i).any?
-  end
-
 end

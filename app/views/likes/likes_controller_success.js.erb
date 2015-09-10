@@ -1,15 +1,20 @@
 console.log('inside likes_controller_success');
+console.log('<%= obj %>');
+console.log('<%= @like.likings_id %>');
 
-var data_id_prefix = "Like-<%=@like.likings_type%>-<%=@like.likings_id.to_s%>";
+var dataIdPrefix = "Like-<%=@like.likings_type%>-<%=@like.likings_id.to_s%>";
 
-var $likeText= $('span[data-id='+ data_id_prefix+ '-text]');
-var $likeLink = $('span[data-id='+ data_id_prefix+ '-link]');
+var $likeText= $('span[data-id='+ dataIdPrefix+ '-text]');
+var $likeLink = $('span[data-id='+ dataIdPrefix+ '-link]');
 
-
-if (<%= flash[:success].length %>){
-  $likeText.text("<%= like_display(obj).html_safe %>");
+if (<%= !flash[:success].blank? %>){
+  console.log('inside if statement');
+  $likeText.html("<%= like_display(obj).html_safe %>");
   $likeLink.html("<%= like_or_unlike_link(obj) %>");
-}
+};
+
+
+
 
 $("#flash-messages").html("<%= j(render partial: 'shared/flash') %>").slideDown();
 <% flash.clear %>

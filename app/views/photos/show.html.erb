@@ -50,36 +50,37 @@
 
       </div>
 
-    <!-- comments column -->
+      <!-- comments column -->
 
       <div class="col-md-4">
         <div class="row">
 
-        <div class="col-sm-3">
-          <%= profile_pic_display %>
+          <div class="col-sm-3">
+            <%= profile_pic_display %>
+          </div>
+
+          <div class="col-sm-9">
+            <p><%= @photo.user.full_name %></p>
+            <p class="date-posted"><%= @photo.created_at %></p>
+          </div>
+
+          <div class = "col-sm-12">
+
+            <%= like_or_unlike_link(@photo) %>
+
+            <%= like_display(@photo).html_safe if @photo.likes.any?%>
+
+          </div>
         </div>
-
-        <div class="col-sm-9">
-          <p><%= @photo.user.full_name %></p>
-          <p class="date-posted"><%= @photo.created_at %></p>
-        </div>
-
-      <div class = "col-sm-12">
-
-        <%= like_or_unlike_link(@photo) %>
-
-        <%= like_display(@photo).html_safe if @photo.likes.any?%>
-
-      </div>
 
         <div class= "row">
           <%= render partial: "shared/comment_form", locals: {parent: @photo} %>
         </div>
-
+        <div data-type=<%="comments-Photo-"+@photo.id.to_s%>>
           <%= render @comments= @photo.comments  %>
-
         </div>
       </div>
+
     </div>
 
     <div class = "clearfix"></div>

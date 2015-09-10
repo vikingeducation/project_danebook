@@ -31,22 +31,23 @@ class PostsController < ApplicationController
       else
         flash[:error] = "There was an error creating your post."
         format.html { redirect_to user_posts_path(current_user) }
-        format.js { head :none }
+        format.js { render template: 'shared/flash_display' }
       end
     end
   end
 
   def destroy
     @post = Post.find(params[:id])
+    # @thing = @post
     respond_to do |format|
       if (current_user.id == @post.user_id) && @post.destroy
         flash[:success] = "Your post has been deleted!"
         format.html {redirect_to user_posts_path(current_user)}
-        format.js #{id: params[:id]}
+        format.js {render template: "shared/destroy_success", locals: {thing: @post}}
       else
         flash[:error] = "There was an error deleting your post, try again."
         format.html {redirect_to user_posts_path(current_user)}
-        format.js { head :none }
+        format.js { render template: 'shared/flash_display'  }
       end
     end
   end

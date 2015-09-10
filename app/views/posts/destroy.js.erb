@@ -2,7 +2,8 @@ console.log('inside destroy.js.erb');
 // console.log('this is the id: ' + @post.id);
 
 //remove the deleted post
-$('#post-<%= @post.id%>').remove();
+$post = $('article[data-id=post-<%= @post.id%>]');
+$post.slideUp(500, function(){this.remove();});
 
 // PostModule.displayFlash();
 

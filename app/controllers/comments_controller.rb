@@ -14,19 +14,23 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       format.html {redirect_to referer}
-      format.js #{render :create, comment: comment}
+      format.js
     end
   end
 
   def destroy
-    comment = Comment.find(params[:id])
+    @comment = Comment.find(params[:id])
 
-    if (current_user.id == comment.user_id) && comment.destroy
+    if (current_user.id == @comment.user_id) && @comment.destroy
       flash[:success] = "Your comment was deleted!"
     else
       flash[:error] = "The comment was not deleted."
     end
-    redirect_to referer
+
+    respond_to do |format|
+      format.html {redirect_to referer}
+      format.js {render template: "shared/destroy_success", locals: {thing: @comment}}
+    end
 
   end
 

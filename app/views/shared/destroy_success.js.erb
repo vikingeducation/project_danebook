@@ -1,0 +1,9 @@
+console.log('inside destroy success');
+
+$thingToDestroy = $('article[data-id=<%=thing.class%>-<%= thing.id%>]');
+$thingToDestroy.slideUp(500, function(){this.remove();});
+
+// PostModule.displayFlash();
+
+$("#flash-messages").html("<%= escape_javascript(render partial: 'shared/flash') %>").slideDown();
+<% flash.clear %>

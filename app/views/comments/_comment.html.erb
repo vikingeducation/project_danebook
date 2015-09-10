@@ -1,4 +1,4 @@
-<article class = "feed-posts">
+<article class = "feed-posts" data-id=<%="Comment-" + comment.id.to_s%>>
   <div class="row">
 
     <div class="col-xs-2">
@@ -20,9 +20,13 @@
 
   <div class = "row">
     <footer class="col-md-12 like-section">
-      <%= like_display(comment).html_safe %>
+      <span data-id=<%="Like-Comment-"+ comment.id.to_s + "-text"%> >
+        <%= like_display(comment).html_safe %>
+      </span>
       <div class = "row">
-        <%= like_or_unlike_link(comment) %>
+        <span data-id=<%="Like-Comment-"+ comment.id.to_s + "-link"%> >
+          <%= like_or_unlike_link(comment) %>
+        </span>
 
         <!-- <a class="col-xs-2" href="#">Comment</a> #this link not needed at the moment-->
 

@@ -1,7 +1,7 @@
 <% if post.persisted? %>
 
 
-<article class = "feed-posts" id =<%="post-" + post.id.to_s%> >
+<article class = "feed-posts" data-id=<%="Post-" + post.id.to_s%> >
   <div class="row">
 
     <div class="col-xs-2">
@@ -24,21 +24,24 @@
   <div class = "row">
 
     <footer class="col-md-12 like-section">
-
+      <span data-id=<%="Like-Post-"+ post.id.to_s + "-text"%> >
         <%= like_display(post).html_safe %>
+      </span>
 
       <div class = "row">
-
-        <%= like_or_unlike_link(post) %>
+        <span data-id=<%="Like-Post-"+ post.id.to_s + "-link"%> >
+          <%= like_or_unlike_link(post) %>
+        </span>
 
         <%= post_owner_link_option(post) %>
 
       </div>
       <!-- <a class="col-xs-2" href="#">Comment</a> -->
+      <div data-type=<%="comments-Post-"+post.id.to_s%>>
+        <%= render @comments= post.comments  %>
 
-      <%= render @comments= post.comments  %>
-
-      <%= render partial: "shared/comment_form", locals: {parent: post} %>
+      </div>
+        <%= render partial: "shared/comment_form", locals: {parent: post} %>
     </footer>
 
   </div>

@@ -1,5 +1,13 @@
 var PostModule = (function(){
 
+  var init = function(){
+    setListeners();
+  };
+
+  var setListeners = function(){
+
+  };
+
   var getPostList = function(){
     return $("#post-list");
   };
@@ -10,8 +18,11 @@ var PostModule = (function(){
   };
 
   return {
+    init: init,
     getPostList: getPostList,
     displayFlash: displayFlash
   };
 
 })();
+
+// $(document).ready( PostModule.init());

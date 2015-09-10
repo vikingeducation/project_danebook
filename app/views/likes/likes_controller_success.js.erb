@@ -1,14 +1,11 @@
-console.log('inside likes_controller_success');
-console.log('<%= obj %>');
-console.log('<%= @like.likings_id %>');
-
 var dataIdPrefix = "Like-<%=@like.likings_type%>-<%=@like.likings_id.to_s%>";
 
 var $likeText= $('span[data-id='+ dataIdPrefix+ '-text]');
 var $likeLink = $('span[data-id='+ dataIdPrefix+ '-link]');
 
 if (<%= !flash[:success].blank? %>){
-  console.log('inside if statement');
+  //update link and display
+
   $likeText.html("<%= j(like_display(obj).html_safe )%>");
   $likeLink.html("<%= j(like_or_unlike_link(obj)) %>");
 };

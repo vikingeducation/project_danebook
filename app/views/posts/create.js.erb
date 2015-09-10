@@ -3,7 +3,8 @@ var recentPost = "<%= j( render partial: 'post', locals: { post: @post } ) %>"
 var $recentPost = $( recentPost );
 
 var $list = PostModule.getPostList();
-$list.prepend( $recentPost ).hide().slideDown(1000);
+// $list.prepend( $recentPost ).hide().slideDown(1000);
+$recentPost.hide().prependTo($list).slideDown(1000);
 
 //clear post form
 $('.post-text-area textarea').val("");

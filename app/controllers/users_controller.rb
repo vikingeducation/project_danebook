@@ -37,7 +37,7 @@ class UsersController < ApplicationController
     redirect_to user_posts_path(params[:id]) unless photo_is_yours?
     if current_user.update(whitelisted_user_params)
       flash[:success] = "Successfully updated your profile"
-      redirect_to current_user
+      redirect_to user_posts_path(current_user)
     else
       flash.now[:failure] = "Failed to update your profile"
       render :edit

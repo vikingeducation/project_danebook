@@ -33,10 +33,15 @@
           <%= like_or_unlike_link(post) %>
         </span>
 
+        <a class="col-xs-3" data-link="comment-box" href="#">
+            Comment
+        </a>
+
         <%= post_owner_link_option(post) %>
 
       </div>
-      <!-- <a class="col-xs-2" href="#">Comment</a> -->
+
+
       <div data-type=<%="comments-Post-"+post.id.to_s%>>
         <%= render @comments= post.comments  %>
 

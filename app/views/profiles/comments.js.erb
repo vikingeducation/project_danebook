@@ -1,0 +1,22 @@
+(function(){
+
+  var $form = $('article[data-type="<%= @comment.commentable_type.to_s %>"][data-id="<%=@comment.commentable_id %>"] .new-comment-field')
+
+  var addComment = function(){
+    $form.before("<%= j render partial: 'profiles/timeline_partials/comment', :locals => {:comment => @comment} %>").prev().hide().slideDown()
+  }
+
+  var removeComment = function(){
+    $comment = $('div[data-type="Comment"][data-id="<%=@comment.id %>"]')
+    $comment.slideUp();
+  }
+
+  $form.children('textarea').val("")
+
+  if (<%= @comment.persisted? %>){
+    addComment();
+  } else {
+    removeComment();
+  }
+
+})()

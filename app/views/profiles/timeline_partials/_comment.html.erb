@@ -1,4 +1,4 @@
-<div class="row commented">
+<div class="row commented" data-type="Comment" data-id="<%=comment.id%>">
   <hr>
   <div class="col-sm-2">
     <div class="thumbnail">
@@ -17,7 +17,7 @@
         </span>
         </div>
       <div class="pull-right">
-        <%= link_to "Delete", comment_path(comment), method: :delete, class: 'pull-right'  %>
+        <%= link_to "Delete", comment_path(comment), method: :delete, remote: true, class: 'pull-right'  %>
       </div>
     </div>
   </div> <!-- col-md-7 end -->

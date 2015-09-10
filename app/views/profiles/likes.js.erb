@@ -1,4 +1,4 @@
-var LikeModule = function(){
+(function(){
 
 
   if (<%= @like.persisted? %>){
@@ -15,16 +15,12 @@ var LikeModule = function(){
     $link.replaceWith('<%= like_str(@like.likeable) %>')
   }
 
-  return function(){
-    removeSpan();
-    replaceText();
-    console.log('<%= @like.persisted? %>')
-  }
+
+  removeSpan();
+  replaceText();
 
 
-}();
-
-LikeModule();
+})();
 
 
 

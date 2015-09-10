@@ -1,4 +1,4 @@
-var postModule = function(){
+(function(){
   var $posts = $('.posts')
 
   var addPost = function() {
@@ -6,7 +6,7 @@ var postModule = function(){
   }
 
   var removePost = function(){
-    $post = $('article[data-content="Post-<%=@post.id%>"]')
+    $post = $('article[data-type="Post"][data-id="<%=@post.id%>"]')
     console.log($post)
     $post.slideUp();
   }
@@ -15,19 +15,14 @@ var postModule = function(){
     $('#post_body').val("")
   }
 
-  return function(){
-    if (<%= @post.persisted? %>){
-      addPost();
-    } else {
-      removePost();
-    }
-    clearForm();
+
+  if (<%= @post.persisted? %>){
+    addPost();
+  } else {
+    removePost();
   }
 
-}()
 
-postModule();
-
-console.log(<%= @post.persisted? %>)
+})();
 
 

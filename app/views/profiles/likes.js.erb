@@ -1,0 +1,32 @@
+var LikeModule = function(){
+
+
+  if (<%= @like.persisted? %>){
+    var $link = $('a[href="/likes?likeable_id=<%= @like.likeable.id %>&likeable_type=<%= @like.likeable.class %>"]')
+  } else {
+    var $link = $('a[href="/likes/<%= @like.id %>"]')
+  }
+
+  var removeSpan = function(){
+    $link.siblings('span').remove()
+  }
+
+  var replaceText = function(){
+    $link.replaceWith('<%= like_str(@like.likeable) %>')
+  }
+
+  return function(){
+    removeSpan();
+    replaceText();
+    console.log('<%= @like.persisted? %>')
+  }
+
+
+}();
+
+LikeModule();
+
+
+
+
+

@@ -16,7 +16,7 @@ class ProfilesController < ApplicationController
 
     if current_user.profile.id == params[:id]
       redirect_to edit_profile_path(current_user)
-    else 
+    else
       @profile = current_user.profile
       if @profile.update(profile_params)
         flash[:success] = "Profile updated"

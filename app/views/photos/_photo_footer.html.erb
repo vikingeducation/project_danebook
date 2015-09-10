@@ -5,16 +5,15 @@
   </div>
   <div >
     <%=like_str(p) %>
-<%= form_for(Comment.new ) do |f| %>
+<%= form_for(Comment.new, remote: true ) do |f| %>
     <%= f.hidden_field :commentable_id, value: p.id %>
     <% p.comments.each do |comment| %>
     <%= render partial: '/profiles/timeline_partials/comment', locals: {:comment => comment} %>
     <% end %>
-    <hr>
     <div class="col-md-10 col-md-offset-1 new-comment-field">
      <%= f.text_area :body, class: 'full_width' %>
      <%= f.hidden_field :commentable_type, value: p.class %>
-     <%= f.submit "Comment", class: "pull-right" %> 
+     <%= f.submit "Comment", class: "pull-right" %>
    </div>
 
  </div>

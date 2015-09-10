@@ -9,7 +9,7 @@ class Comment < ActiveRecord::Base
   validates :commentable_id, presence: true
   validates :commentable_type, presence: true
 
-  validates_uniqueness_of :commentable_id, :scope => [:commentable_type]
+  # validates_uniqueness_of :commentable_id, :scope => [:commentable_type]
 
 
   def already_liked_by?(current_user)

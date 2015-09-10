@@ -1,0 +1,33 @@
+var postModule = function(){
+  var $posts = $('.posts')
+
+  var addPost = function() {
+    $posts.prepend("<%= j render partial: 'profiles/timeline_partials/post', :locals => {:p => @post} %>").children().first().hide().slideDown()
+  }
+
+  var removePost = function(){
+    $post = $('article[data-content="Post-<%=@post.id%>"]')
+    console.log($post)
+    $post.slideUp();
+  }
+
+  var clearForm = function(){
+    $('#post_body').val("")
+  }
+
+  return function(){
+    if (<%= @post.persisted? %>){
+      addPost();
+    } else {
+      removePost();
+    }
+    clearForm();
+  }
+
+}()
+
+postModule();
+
+console.log(<%= @post.persisted? %>)
+
+

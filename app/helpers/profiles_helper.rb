@@ -3,15 +3,15 @@ module ProfilesHelper
     count = likeable.likes.count
 
     if count == 0
-      str = link_to "Be the first to like this.", likes_path(likeable_id: likeable.id, likeable_type: likeable.class), method: :post
+      str = link_to "Be the first to like this.", likes_path(likeable_id: likeable.id, likeable_type: likeable.class), method: :post, remote: true
     elsif likeable.already_liked_by?(current_user) && count == 1
-      str = ""
+      str = "<span></span>".html_safe
     elsif likeable.already_liked_by?(current_user) && count == 2
-      str = "(You and 1 other like this)."
+      str = "<span>(You and 1 other like this).</span>".html_safe
     elsif likeable.already_liked_by?(current_user) && count > 1
-      str = "(You and #{count-1} others like this)."
+      str = "<span>(You and #{count-1} others like this).</span>".html_safe
     else
-      str = link_to("Like", likes_path(likeable_id: likeable.id, likeable_type: likeable.class), method: :post)
+      str = link_to("Like", likes_path(likeable_id: likeable.id, likeable_type: likeable.class), method: :post, remote: true)
       str + other_likes(likeable)
     end
   end
@@ -27,7 +27,7 @@ module ProfilesHelper
 
   def like_str(likeable)
     if likeable.already_liked_by?(current_user)
-      str = link_to("Unlike ", like_path(current_user_like(likeable)), method: :delete)
+      str = link_to("Unlike ", like_path(current_user_like(likeable)), method: :delete, remote: true)
     else
       str = ''
     end
@@ -37,7 +37,7 @@ module ProfilesHelper
   def friend_button(user)
     if current_user.friended_users.include?(user)
       return "<a> #{friend_button_text(user)}</a>".html_safe
-    else 
+    else
       return link_to("#{friend_button_text(user)}", "#{friendings_path(id: @user.id)}" , method: :post)
     end
   end

@@ -11,12 +11,16 @@
           <%= render partial: 'profiles/timeline_partials/friends_panel' %>
         </div> <!--col-md -4 -->
         <div class="col-md-8">
+        <div class="new-post">
           <% if current_user %>
           <%= render partial: 'profiles/timeline_partials/new_post' %>
           <% end %>
+          </div> <!-- div.new-post form -->
+          <div class="posts">
           <% @posts.each do |p| %>
             <%= render partial: 'profiles/timeline_partials/post', :locals => {:p => p} %>
           <% end %>
+          </div> <!-- div.posts -->
         </div> <!-- col-md -8 -->
     </section>
   </div> <!-- end of container -->

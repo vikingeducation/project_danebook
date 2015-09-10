@@ -1,0 +1,4 @@
+$link = $('[href="/likes?likeable_id=<%= @like.likeable.id %>&likeable_type=<%= @like.likeable.class %>"]')
+
+$link.siblings('span').remove()
+$link.replaceWith('<%= j like_str(@like.likeable) %>')

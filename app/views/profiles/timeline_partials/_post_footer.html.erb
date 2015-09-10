@@ -1,20 +1,21 @@
 
-<%= form_for(Comment.new ) do |f| %>
+<%= form_for(Comment.new, remote: true ) do |f| %>
 <div class="panel-footer clearfix">
   <div class="pull-right">
-    <%= link_to "Delete", post_path(id: p.id, profile_id: p.profile.id), method: :delete  %>
+  <% if current_user && current_user.id == p.user_id %>
+    <%= link_to "Delete", post_path(id: p.id, profile_id: p.profile.id), method: :delete, remote: true  %>
+  <% end %>
   </div>
-  <div >
     <%=like_str(p) %>
-    <%= f.hidden_field :commentable_id, value: p.id %>
+  <div class="comments">
     <% p.comments.each do |comment| %>
-    <%= render partial: '/profiles/timeline_partials/comment', locals: {:comment => comment} %>
+      <%= render partial: '/profiles/timeline_partials/comment', locals: {:comment => comment} %>
     <% end %>
-    <hr>
     <div class="col-md-10 col-md-offset-1 new-comment-field">
      <%= f.text_area :body, class: 'full_width' %>
+      <%= f.hidden_field :commentable_id, value: p.id %>
      <%= f.hidden_field :commentable_type, value: p.class %>
-     <%= f.submit "Comment", class: "pull-right" %> 
+     <%= f.submit "Comment", class: "pull-right" %>
    </div>
 
  </div>

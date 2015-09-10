@@ -4,24 +4,26 @@ class LikesController < ApplicationController
 
   def create
 
-    like = Like.new(likes_params)
+    @like = Like.new(likes_params)
 
-    if like.save
-      flash[:success] = "Liked successfully!"
-      redirect_to request.referrer
-    else
-      flash[:error] = "Could not like this. Please try again"
-      redirect_to request.referrer
+    @like.save
+
+    respond_to do |format|
+      format.js {render template: 'profiles/likes.js.erb'}
     end
+
   end
 
   def destroy
-    like = Like.find(params[:id])
-    like.destroy
-    redirect_to request.referrer
+    @like = Like.find(params[:id])
+    @likeable = @like.likeable
+    @like.destroy
+    respond_to do |format|
+      format.js {render template: 'profiles/likes.js.erb'}
+    end
   end
 
-   
+
 
   def require_login
     unless current_user

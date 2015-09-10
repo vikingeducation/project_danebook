@@ -1,7 +1,10 @@
 console.log('inside destroy success');
 
-$thingToDestroy = $('article[data-id=<%=thing.class%>-<%= thing.id%>]');
-$thingToDestroy.slideUp(500, function(){this.remove();});
+if (<%= !flash[:success].blank? %>){
+  var dataID = "<%=thing.class%>-<%= thing.id%>"
+  var $thingToDestroy = $('article[data-id='+ dataID+']');
+  $thingToDestroy.slideUp(500, function(){this.remove();});
+}
 
 // PostModule.displayFlash();
 

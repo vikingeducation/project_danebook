@@ -9,11 +9,9 @@ var $likeLink = $('span[data-id='+ dataIdPrefix+ '-link]');
 
 if (<%= !flash[:success].blank? %>){
   console.log('inside if statement');
-  $likeText.html("<%= like_display(obj).html_safe %>");
-  $likeLink.html("<%= like_or_unlike_link(obj) %>");
+  $likeText.html("<%= j(like_display(obj).html_safe )%>");
+  $likeLink.html("<%= j(like_or_unlike_link(obj)) %>");
 };
-
-
 
 
 $("#flash-messages").html("<%= j(render partial: 'shared/flash') %>").slideDown();

@@ -1,14 +1,16 @@
 console.log('inside comment/create.js.erb');
-var parent = "<%=@comment.commentable_type%>-<%=@comment.commentable_id.to_s%>";
+if (<%= !flash[:success].blank? %>){
+  var parent = "<%=@comment.commentable_type%>-<%=@comment.commentable_id.to_s%>";
 
-var recentComment = "<%= j( render partial: 'comment', locals: { comment: @comment } ) %>"
-var $recentComment = $( recentComment );
+  var recentComment = "<%= j( render partial: 'comment', locals: { comment: @comment } ) %>"
+  var $recentComment = $( recentComment );
 
-var $post = CommentModule.getCommentParent(parent);
-$post.append( $recentComment ).hide().slideDown(1000);
+  var $post = CommentModule.getCommentParent(parent);
+  $post.append( $recentComment ).hide().slideDown(1000);
 
-//clear post form
-$('.post-text-area textarea').val("");
+  //clear post form
+  $('.post-text-area textarea').val("");
+}
 
 $("#flash-messages").html("<%= j(render partial: 'shared/flash') %>").slideDown();
 <% flash.clear %>

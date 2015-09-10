@@ -1,9 +1,7 @@
 README
+======
 
-Try it:
-
-[Link](joseph-lozano-danebook.herokuapp.com/)
-
+Try it: [Link](joseph-lozano-danebook.herokuapp.com/)
 
 Danebook is my stab at social media site. It features fully working posting, commenting, photo-uploading, and friending.
 

@@ -8,5 +8,5 @@ if (<%= !flash[:success].blank? %>){
 
 // PostModule.displayFlash();
 
-$("#flash-messages").html("<%= escape_javascript(render partial: 'shared/flash') %>").slideDown();
+$("#flash-messages").html("<%= escape_javascript(render partial: 'shared/flash') %>").hide().slideDown();
 <% flash.clear %>

@@ -10,5 +10,5 @@ $recentPost.hide().prependTo($list).slideDown(1000);
 $('.post-text-area textarea').val("");
 
 
-$("#flash-messages").html("<%= j(render partial: 'shared/flash') %>").slideDown();
+$("#flash-messages").html("<%= j(render partial: 'shared/flash') %>").hide().slideDown();
 <% flash.clear %>

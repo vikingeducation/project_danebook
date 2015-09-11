@@ -5,13 +5,13 @@ class LikesController < ApplicationController
   def create
     @like = Like.new(params_list)
     @like.user_id = current_user.id
-    respond_to do |format|
-      if @like.save
-        flash[:success] = "You have liked this!"
-      else
-        flash[:error] = "There was an error. Try liking again!"
-      end
+    if @like.save
+      flash[:success] = "You have liked this!"
+    else
+      flash[:error] = "There was an error. Try liking again!"
+    end
 
+    respond_to do |format|
       format.html {redirect_to referer}
       format.js {render template: 'likes/likes_controller_success',
                 locals: {obj: @like.likings}}

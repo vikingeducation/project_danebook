@@ -28,8 +28,3 @@ end
 #   t.date     "birthday"
 #   t.string   "gender"
 # end
-
-# trait :user_profile do
-# 	after :create do |profile|
-# 		create
-# end

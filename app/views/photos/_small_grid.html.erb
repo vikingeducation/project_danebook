@@ -1,0 +1,25 @@
+<div class="panel panel-default friends">
+
+  <div class="panel-heading">
+    <h3 class="panel-title timeline-panel-header">
+      Photos
+      <span class="grey-text">
+        (<%=count_of_photos%>)
+      </span>
+    </h3>
+  </div>
+
+  <div class="panel-body">
+
+    <div class="row small-photo-grid">
+      <% photos.each do |photo| %>
+          <%= render partial: 'photos/photo', locals: {:photo => photo} %>
+      <% end %>
+    </div>
+
+    <div class="row text-center">
+      <%= link_to 'See More Photos', user_photos_path(object_owner.id) %>
+    </div>
+
+  </div> <!-- end panel -->
+</div> <!-- end friends panel-->

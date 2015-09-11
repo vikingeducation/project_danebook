@@ -1,6 +1,6 @@
 <div class="panel panel-default">
 
-  <%= form_for [current_user, @new_comment] do |c| %>
+  <%= form_for [current_user, new_comment], remote:true do |c| %>
 
   <div class="panel-body">
     <div class="form-group">

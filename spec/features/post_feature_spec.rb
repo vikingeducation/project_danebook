@@ -9,6 +9,7 @@ describe Post do
 	end
 
 	context 'creation' do
+
 		scenario 'can create post on own timeline' do
 			visit user_timeline_path(user)
 			fill_in 'post_body', with: "This is a capy post"

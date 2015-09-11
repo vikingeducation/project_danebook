@@ -1,4 +1,4 @@
-<article class="panel panel-default comments">
+<article class="panel panel-default comments" data-post-id='<%= post.id %>' >
 
   <div class="panel-body">
     <div class="row">
@@ -25,8 +25,13 @@
 
       <div class="col-sm-10 col-md-10 col-offset-sm-1 col-offset-md-1">
         <div class="pull-right">
+          <%= link_to "Comment",'#', data: {new_post_comment: post.id} %>
           <% if object_owner_for_resource?(post) %>
-            <%= link_to "Delete", user_post_path(post.user.id, post.id), method: :delete  %>
+            <%= link_to "Delete",
+                user_post_path(post.user.id, post.id),
+                method: :delete,
+                data: {confirm: 'Delete post?'},
+                remote: true  %>
           <% end %>
         </div>
 
@@ -39,14 +44,17 @@
     </div>
 
     <div class="row">
-      <div class="col-sm-10 col-offset-sm-2">
-        <p><%= render :partial => '/comments/new', locals: {:commentable => post} %></p>
+      <div class="col-sm-10 col-offset-sm-2" data-new-post='<%= post.id %>' hidden>
+        <p><%= render :partial => '/comments/new', locals: {:commentable => post, :new_comment => new_comment} %></p>
       </div>
     </div>
 
     <div class="row">
-      <div class="col-sm-10 col-offset-sm-1">
-        <p><%= render :partial => '/comments/show', locals: {:comments => post.comments } %></p>
+      <div class="col-sm-10 col-offset-sm-1 comments-list">
+        <!-- Need to add a commentable type and commentable id to each comment -->
+        <% post.comments.each do |comment| %>
+          <p><%= render :partial => '/comments/show', locals: {:comment => comment } %></p>
+        <% end %>
       </div>
     </div>
 

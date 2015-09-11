@@ -11,9 +11,7 @@
       <div class="panel-heading clearfix">
         <h4 class="panel-text text-center">Friends</h4>
         <!-- show Add Friend button in case the current user is visiting another persons profile -->
-        <% if !object_owner? %>
-          <%= link_to("Add Friend", user_friendships_path(:user_id => object_owner.id), class: "btn btn-primary btn-sm pull-right", method: :post) %>
-        <% end %>
+        <%= display_add_friend_button %>
       </div>
 
       <!-- show pending friend requests in case the current user is visiting own friends page -->

@@ -1,0 +1,27 @@
+<div class="panel panel-default friends">
+
+  <div class="panel-heading">
+    <h3 class="panel-title timeline-panel-header">
+      Friends
+      <span class="grey-text">
+        (<%= friend_count(object_owner) %>)
+      </span>
+    </h3>
+  </div>
+
+  <div class="panel-body">
+
+    <div class="row small-photo-grid">
+      <% object_owner.accepted_friends.each do |friendship| %>
+        <div class="col-xs-4">
+          <%= display_grid_profile_photo(friendship) %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="row text-center">
+      <%= link_to 'See More Friends', user_friendships_path(object_owner.id) %>
+    </div>
+
+  </div>
+</div>

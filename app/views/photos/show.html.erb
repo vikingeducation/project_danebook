@@ -69,15 +69,18 @@
 
             <div class="row">
               <div class="col-sm-10 col-offset-sm-1">
-                <p><%= render partial: '/comments/new', locals: {:commentable => @photo} %></p>
+                <p><%= render partial: '/comments/new', locals: {:commentable => @photo, :new_comment => @new_comment} %></p>
               </div>
             </div>
 
             <div class="row">
-              <div class="col-sm-10 col-offset-sm-1">
+              <div class="col-sm-10 col-offset-sm-1 comments-list">
                 <p>
                   <% unless @photo.comments.ids.nil? %>
-                    <%= render :partial => '/comments/show', locals: {:comments => @photo.comments } %></p>
+                  <% @photo.comments.each do |comment| %>
+                    <%= render :partial => '/comments/show', locals: {:comment => comment } %>
+                  <%end%>
+                  </p>
                   <% end %>
               </div>
             </div>

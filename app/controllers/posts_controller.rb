@@ -4,7 +4,7 @@ class PostsController < ApplicationController
 	before_action :require_object_owner, only: [:destroy]
 
 def index
-	@posts = Post.where(:user_id => params[:user_id])
+	@posts = Post.where(:user_id => params[:user_id]).reverse
 	@new_post = Post.new
 	@new_comment = Comment.new
 end
@@ -12,22 +12,42 @@ end
 def create
 	@post = Post.new(whitelist_post_params)
 	@post.user_id = current_user.id
-	if @post.save
-		flash[:success] = "Post created"
-	else
-		flash[:error] = "Unable to save post"
+	@new_comment = Comment.new # Sent in from format.js to render new comment partial from post show
+
+	respond_to do |format|
+
+		if @post.save
+			flash[:success] = "Post created"
+			format.html {redirect_to user_timeline_path}
+			format.js
+		else
+			flash[:error] = "Unable to save post"
+			format.html {redirect_to user_timeline_path}
+			format.js {redirect_to user_timeline_path}
+		end
+
 	end
-	redirect_to user_timeline_path
+
 end
 
 def destroy
 	@post = Post.find(params[:id])
+
+	respond_to do |format|
+
 	if @post.destroy
 		flash[:success] = "Post deleted"
+		format.html {redirect_to user_timeline_path}
+		format.js
 	else
 		flash[:error] = "Post not deleted"
+		format.html {redirect_to user_timeline_path}
+		format.js {redirect_to user_timeline_path}
 	end
-	redirect_to user_timeline_path
+
+
+	end
+
 end
 
 private

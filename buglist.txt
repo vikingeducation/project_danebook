@@ -1,5 +1,8 @@
 buglist.txt
 
+A. CREATE FRIENDSHIPS TESTS (factory > feature > controller > model)
+B. CREATE PHOTOS TESTS
+
 III. Controller Tests
 A. User
 1. Create
@@ -33,7 +36,7 @@ Failing save renders edit page again
 II. Feature Tests
 
 A. User
-1. Sign in 
+1. Sign in
 Cannot view profile page without signing in *
 Cannot access any page other than signup page *
 Directs to Timeline page *
@@ -78,13 +81,13 @@ I. Model Tests
 A. User
 1. New/Create
 a. Email address
-Requires an email address to be created 
+Requires an email address to be created
 Cannot be created without an email address
 Requires an email address to be unique *
 Cannot be created without a unique email address *
 
 b. Password
-Requires a password to be created 
+Requires a password to be created
 Cannot be created without a password *
 Password must be between 4 and 24 characters *
 Password cannot be less than 4 chars
@@ -139,7 +142,7 @@ C. Comment
 Requires a user to be created
 Cannot be created without a user
 Requires a body *
-Cannot be created without a body * 
+Cannot be created without a body *
 A comment is polymorphic *
 A comment can comment on another comment *
 A comment can comment on a post *
@@ -148,7 +151,7 @@ A comment can comment on a post *
 
 3. Associations
 Belongs to a user
-Has many likes * 
+Has many likes *
 Has many users_liking_comments *
 
 4. Methods
@@ -186,4 +189,25 @@ Deleting a user deletes a profile *
 3. Associations
 Has many posts
 Belongs to a user
+
+-------
+F. Friendship
+1. Create
+Send request
+
+2. Update
+Accept request
+
+3. Destroy
+Remove friend
+
+4. Associations
+Initiator-Acceptor relationship must be unique
+
+5. Methods
+is_a_friend? returns if a user is a friend
+is_you? returns if a user is visiting own Friends page
+
+
+
 

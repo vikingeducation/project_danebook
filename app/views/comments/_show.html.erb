@@ -1,5 +1,4 @@
-<% comments.each do |comment| %>
-<div class="panel panel-default">
+<div class="panel panel-default" data-comment-id='<%= comment.id %>'>
 
   <div class="panel-body">
     	<div class="row">
@@ -23,8 +22,6 @@
           <%= comment.body %>
         </p>
       </div>
-
-
   </div>
 
   <div class="panel-footer clearfix">
@@ -34,10 +31,13 @@
     </div>
     <div class="pull-right">
     <% if object_owner_for_resource?(comment) %>
-      <%= link_to "Delete", user_comment_path(:user_id => current_user.id, :id => comment.id), method: :delete %>
+      <%= link_to "Delete",
+          user_comment_path(:user_id => current_user.id, :id => comment.id),
+          method: :delete,
+          data: {confirm: 'Delete post?'},
+          remote: true %>
     <% end %>
     </div>
   </div>
 
 </div> <!-- end panel default -->
-<% end %>

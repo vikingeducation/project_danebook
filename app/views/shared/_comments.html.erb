@@ -1,5 +1,5 @@
 <% comments.each do |comment| %>
-  <div data-comment-id = "<%= comment.id %>">
+  <div data-comment-id = "<%= comment.id %>" class = "comment-container">
     <div class = "row">
       <div class="col-xs-2">
         <%= profile_pic_or_generic(comment) %>

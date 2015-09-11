@@ -30,6 +30,14 @@ main {
     #photo-container {
       margin-bottom: 20px;
     }
+
+    .comment-container {
+      margin: 20px 0 10px 10px;
+      span {
+        color: #777;
+      }
+    }
+
     #uploader-panel {
       img {
         height: 75px;

@@ -34,7 +34,7 @@
 						<% end %>
 						<% if current_user && post.author == current_user %>
 							<div class="col-xs-1 col-xs-offset-8">
-								<%= link_to "Delete", user_post_path(@user, post), method: 'delete', remote: true %>
+								<%= link_to "Delete", user_post_path(@user, post), method: 'delete', data: { confirm: "Really?" }, remote: true %>
 							</div>
 						<% end %>
 					</div>

@@ -19,7 +19,9 @@
 					</div>
 				</div>
 				<div class="row">
-					<%= render @photos %>
+				  <% @photos.each do |photo| %>
+				    <%= render partial: 'photo_preview', locals: { photo: photo } %>
+					<% end %>
 				</div>
 			</div>
 		</div>

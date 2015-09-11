@@ -9,7 +9,7 @@ module PhotosHelper
   end
 
   def display_profile_photo(owner=object_owner)
-    if owner.profile.cover_photo
+    if owner.profile.profile_photo
       image_tag(owner.profile.profile_photo.image.expiring_url(10), class: 'img-responsive').html_safe
     else
       image_tag('blank_profile_photo.jpg', class: 'img-responsive').html_safe

@@ -55,11 +55,14 @@ module ApplicationHelper
 
   def like_or_unlike_button(likeable_type)
     liked = likeable_type.liked_by?(current_user)
-    link_to liked ? "Unlike" : "Like",
-            like_path(likeable_type: likeable_type.class.to_s,
-                      likeable_id: likeable_type.id),
-            method: liked ? :delete : :post,
-            class: "col-xs-2"
+    content_tag(:div, data: { likeable_type: likeable_type.class.to_s, likeable_id: likeable_type.id }) do
+      link_to liked ? "Unlike" : "Like",
+              like_path(likeable_type: likeable_type.class.to_s,
+                        likeable_id: likeable_type.id),
+              method: liked ? :delete : :post,
+              remote: true,
+              class: "col-xs-2"
+    end
   end
 
   def friending_button(user)

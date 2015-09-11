@@ -1,0 +1,5 @@
+var $change = $("<%= j(like_or_unlike_button(@like.likeable)) %>")
+
+var $target = $("div[data-likeable-type='<%= @like.likeable_type %>'][data-likeable-id='<%= @like.likeable_id %>']");
+
+$target.replaceWith( $change );

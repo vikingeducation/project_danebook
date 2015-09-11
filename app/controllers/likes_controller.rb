@@ -6,7 +6,7 @@ class LikesController < ApplicationController
     @like = Like.new({likeable_type: params[:likeable_type],likeable_id: params[:likeable_id], user_id: current_user.id})
     respond_to do |format|
       if @like.save
-        format.js
+        format.js { render :change }
       else
         flash[:alert] = "You already liked this, no need to do it again"
         format.js { render "shared/flash" }
@@ -20,7 +20,7 @@ class LikesController < ApplicationController
     respond_to do |format|
       if @like
         @like.destroy
-        format.js
+        format.js { render :change }
       else
         flash[:alert] = "You already unliked this, no need to do it again"
         format.js { render "shared/flash" }

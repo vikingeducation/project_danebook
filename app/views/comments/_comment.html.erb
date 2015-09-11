@@ -1,4 +1,4 @@
-<div class="comment-section" id="comment<%=comment.id%>">
+<div class="comment-section" data-type=<%=comment.class%> data-id=<%=comment.id%>>
 
   <div class="row comment">
 
@@ -18,22 +18,22 @@
 
       <p><%= comment.body %></p>
 
-      <div class="link-container" id="<%=comment.class%><%=comment.id%>">  
+      <div class="link-container" data-type=<%=comment.class%> data-id=<%=comment.id%> >  
 
         <%if current_user.likes?(comment)%>
-          <%=link_to "Unlike", likes_path(user_id: current_user.id, liking_id: comment.id, liking_type: comment.class), method: 'delete' ,  id: "like#{comment.id}#{comment.class}" ,remote: true%>
+          <%=link_to "Unlike", likes_path(user_id: current_user.id, liking_id: comment.id, liking_type: comment.class), method: 'delete' , remote: true%>
         <%else%>
-          <%=link_to "Like", likes_path(liking_id: comment.id, liking_type: comment.class), method: 'post' ,  id: "like#{comment.id}#{comment.class}", remote: true%>
+          <%=link_to "Like", likes_path(liking_id: comment.id, liking_type: comment.class), method: 'post' ,  remote: true%>
         <%end%>
        
+        <% if current_user && current_user.id == comment.user_id %>
+         
+              <%= link_to "Delete", comment, method: "delete", remote: true, class: "col-sm-2 like-btn pull-right" %>
+          
+        <% end %>
       </div>
       
 
-      <% if current_user && current_user.id == comment.user_id %>
-       
-            <%= link_to "Delete", comment, method: "delete", class: "col-sm-2 like-btn pull-right" %>
-        
-      <% end %>
 
       </p>
 

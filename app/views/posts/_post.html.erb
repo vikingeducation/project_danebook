@@ -1,5 +1,5 @@
-<div class="post" id="post<%=post.id%>">
-  <div class="post-container">
+<div class="post" data-type=<%=post.class%> data-id=<%=post.id%>>
+  <div class="post-container" >
     <div class="post-header-row">
 
       <div class="col-xs-2 post-pic">
@@ -21,12 +21,12 @@
     </div>
 
 
-  <div class="link-container" id="<%=post.class%><%=post.id%>">
+  <div class="link-container" data-type=<%=post.class%> data-id=<%=post.id%> >
     <div class="like-btn ">
       <%if current_user.likes?(post) %>
-        <%=link_to "Unlike", likes_path(user_id: current_user.id, liking_id: post.id, liking_type: post.class), method: 'delete', id: "like#{post.id}#{post.class}", remote: true%>
+        <%=link_to "Unlike", likes_path(user_id: current_user.id, liking_id: post.id, liking_type: post.class), method: 'delete',  remote: true%>
       <%else%>
-        <%=link_to "Like", likes_path(liking_id: post.id, liking_type: post.class), method: 'post', id: "like#{post.id}#{post.class}", remote: true %>
+        <%=link_to "Like", likes_path(liking_id: post.id, liking_type: post.class), method: 'post', remote: true %>
        <%end%>
     </div>
 
@@ -41,12 +41,12 @@
   </div>
 
   <div class="comment-end-box">
-    <div class="comment-section">
+    
       <%= render post.comments %>
       <% if current_user %>
         <%= render partial: "posts/comment_form", locals: {post: post} %>
       <% end %>
-    </div>
+    
 
   </div>
 

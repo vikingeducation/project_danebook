@@ -4,13 +4,12 @@ var PostModule = (function(){
     return $('.post');
   };
   var clearPostForm = function(){
-    //Doesn't work here, but works in the console
+    
     $('#post_body').val(" ");
   };
 
-  var removePost = function(){
-    //How to get id info drom controller here?
-    $('#post<%=@post.id%>').remove()
+  var removePost = function(id){
+    $('#post'+id).remove();
   };
 
   return {
@@ -19,3 +18,6 @@ var PostModule = (function(){
     removePost:removePost
   };
 })();
+
+
+

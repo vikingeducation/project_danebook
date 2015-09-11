@@ -1,4 +1,4 @@
-<%= form_for Comment.new, {:name => "comment_form"} do |f| %>
+<%= form_for Comment.new, name: "comment_form", remote: true do |f| %>
 
 <%= f.hidden_field :commenting_id, value: post.id %>
 <%= f.hidden_field :commenting_type, value: post.class %>

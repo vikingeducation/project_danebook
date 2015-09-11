@@ -12,14 +12,14 @@ class LikesController < ApplicationController
       flash[:success] = "Successfully liked!"
       respond_to do |format|
         format.html {redirect_to referer}
-        format.js {render :create_success}
+        format.js {render :likes}
       end
       
     else
       flash.now[:success] = "Failed to like!"
       respond_to do |format|
         format.html {redirect_to referer}
-        format.js {render :create_error}
+        format.js {render :likes}
       end
       
     end
@@ -30,12 +30,14 @@ class LikesController < ApplicationController
     @like = Like.find_by(user_id: params[:user_id], liking_id: params[:liking_id], liking_type: params[:liking_type].capitalize)
     if @like.destroy
       flash[:error] = "You unliked this post!"
+      puts "-------------You unliked this post!"
       respond_to do |format|
         format.html {redirect_to referer}
-        format.js {render :delete_success}
+        format.js {render :likes}
       end
     else
       flash[:error] = "Can't unlike this post!"
+      puts "-------------Can't unlike this post!"
     end
     
   end

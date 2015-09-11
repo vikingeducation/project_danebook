@@ -10,16 +10,25 @@ class CommentsController < ApplicationController
     #Check that db does have the object user is tring to comment on
     if @comment.save && @comment.commenting_id && @comment.commenting_type
       flash[:success] = "Comment saved."
+      respond_to do |format|
+        format.html {redirect_to referer}
+        format.js {render :comments}
+      end
     else
       flash[:notice] = "Comment wasn't saved."
     end
-    redirect_to referer
+    
   end
 
   def destroy
     @comment = Comment.find(params[:id])
-    @comment.destroy
-    redirect_to referer
+    if @comment.destroy
+      flash[:notice] = "Comment deleted."
+      respond_to do |format|
+          format.html {redirect_to referer}
+          format.js {render :comments}
+      end
+    end
   end
 
   private

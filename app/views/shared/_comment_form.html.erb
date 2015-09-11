@@ -1,4 +1,4 @@
-<%= form_for [commentable, @comment], remote: true do |comment_fields| %>
+<%= form_for [commentable, @comment], remote: true, data: { "commentable-id": commentable.id, "commentable-type": commentable.class.to_s } do |comment_fields| %>
 
   <div class="col-md-12">
 
@@ -13,7 +13,7 @@
     </div>
 
     <div class="form-group">
-      <a class="col-md-1" href="#">Cancel</a>
+      <a class="col-md-1 comment-box" href="#" data-commentable-id = '<%= commentable.id %>' data-commentable-type = '<%= commentable.class.to_s %>'>Cancel</a>
       <%= comment_fields.submit "Comment", class: "col-md-3 pull-right btn btn-primary" %>
     </div>
 

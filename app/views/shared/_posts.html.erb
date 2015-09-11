@@ -26,7 +26,7 @@
       <footer class="col-md-12 like-section">
         <div class = "row">
           <%= like_or_unlike_button(post) %>
-          <a class="col-xs-2" href="#">Comment</a>
+          <a class="col-xs-2 comment-box" href="#" data-commentable-id = '<%= post.id %>' data-commentable-type = '<%= post.class.to_s %>'>Comment</a>
           <%= posts_delete_button(post) %>
         </div>
 
@@ -36,7 +36,7 @@
           </p>
         </div>
 
-        <div class = "divider-line"></div>
+        <!-- <div class = "divider-line"></div> -->
 
           <div data-commentable-id = '<%= post.id %>' data-commentable-type = '<%= post.class.to_s %>'>
             <%= render partial: 'shared/comments', locals: {comments: post.comments.includes(:author) } %>

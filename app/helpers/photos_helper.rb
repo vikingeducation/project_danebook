@@ -10,7 +10,7 @@ module PhotosHelper
 	end
 
   def profile_pic_if_avail(photo)
-    image_tag photo.user.profile_pic ? photo.user.profile_pic.data.url(:thumb) : "user_silhouette_generic.gif"
+    image_tag photo.user.profile_pic ? photo.user.profile_pic.data.url(:thumb) : "user_silhouette_generic.gif", class: "img img-responsive"
   end
 
   def photo_owner_options(photo)

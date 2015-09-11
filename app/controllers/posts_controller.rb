@@ -15,21 +15,32 @@ class PostsController < ApplicationController
     @post = Post.new(whitelisted_post_params)
     if @post.save
       flash[:success] = "Posted"
+      respond_to do |format|
+        format.html { redirect_to posts_path(user_id: current_user.id) }
+        format.js { render :create_success }
+      end
     else
       flash[:error] = "Cannot post this!"
+      respond_to do |format|
+        format.html { redirect_to posts_path(user_id: current_user.id) }
+      end
     end
-    redirect_to posts_path(user_id: current_user.id)
-
   end
 
   def destroy
     @post = Post.find(params[:id])
     if @post.user == current_user && @post.destroy
       flash[:success] = "Deleted"
+      respond_to do |format|
+        format.html { redirect_to posts_path(user_id: current_user.id) }
+        format.js { render :delete_success }
+      end
     else
       flash[:error] = "Indestructible"
+      respond_to do |format|
+        format.html { redirect_to posts_path(user_id: current_user.id) }
+      end
     end
-    redirect_to posts_path(user_id: current_user.id)
   end
 
   private

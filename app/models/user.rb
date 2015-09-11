@@ -86,7 +86,11 @@ class User < ActiveRecord::Base
   end
 
   def last_30_days_photos
-    photos.where("created_at > ?", DateTime.now - 30).limit(12)
+    photos.where("created_at > ?", DateTime.now - 30.days).limit(12)
+  end
+
+  def recent_posts
+    posts.where("created_at > ?", DateTime.now - 100.days)
   end
 
 end

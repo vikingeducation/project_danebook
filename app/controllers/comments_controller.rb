@@ -6,10 +6,16 @@ class CommentsController < ApplicationController
     @comment = Comment.new(whitelisted_comment_params)
     if @comment.save
       flash[:success] = "You have commented on this post."
+      respond_to do |format|
+        format.html { redirect_to session.delete(:return_to) }
+        format.js { render :create_success }
+      end
     else
       flash[:error] = "Error!"
+      respond_to do |format|
+        format.html { redirect_to session.delete(:return_to) }
+      end
     end
-    redirect_to session.delete(:return_to)
   end
 
   def destroy
@@ -17,10 +23,16 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     if @comment.user == current_user && @comment.destroy
       flash[:success] = "Deleted"
+      respond_to do |format|
+        format.html { redirect_to session.delete(:return_to) }
+        format.js { render :delete_success }
+      end
     else
       flash[:error] = "Indestructible"
+      respond_to do |format|
+        format.html { redirect_to session.delete(:return_to) }
+      end
     end
-    redirect_to session.delete(:return_to)
   end
 
   private

@@ -1,0 +1,32 @@
+<div data-type="Comment" data-id="<%=comment.id%>">
+  <div class="col-sm-2 posted-by">
+    <%= profile_image(comment.user, "small-icon") %>
+  </div>
+
+  <div class="col-sm-10 posted-name">
+    <p>
+      <%= comment.user.profile.full_name %>
+      <br>
+      Commented on <%= comment.created_at.to_date %>
+    </p>
+  </div>
+
+  <div class="col-sm-12">
+    <p class="post-text">
+      <%= comment.body %>
+    </p>
+    <div class="col-sm-6" data-type="Comment-Like" data-id="<%=comment.id%>">
+      <%= like_button(comment) %>
+    </div>
+
+    <% if current_user == comment.user %>
+      <div class="col-sm-6">
+        <%= link_to "Delete", comment_path(comment.id), method: :delete, remote: true, class: "pull-right" %>
+      </div>
+    <% end %>
+
+    <div class="col-sm-12">
+      <span class="grey"><%= display_likes_msg(comment) %></span>
+    </div>
+  </div>
+</div>

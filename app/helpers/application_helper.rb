@@ -5,13 +5,15 @@ module ApplicationHelper
       str = link_to("Unlike", 
                     like_path(likable.get_id_of_the_like_by(current_user)), 
                     method: :delete, 
+                    remote: true,
                     style: "color:red;")
     else
       str = link_to("Like", 
                     likes_path(user_id: current_user.id,
                                likable_id: likable.id,
                                likable_type: likable.class.to_s), 
-                    method: :post)
+                    method: :post,
+                    remote: true)
     end
     str.html_safe
   end
@@ -43,13 +45,13 @@ module ApplicationHelper
     end
   end
 
-  def profile_image(user)
+  def profile_image(user, icon_class="")
     if user.profile_photo
       image_tag(user.profile_photo.user_photo.url, 
-                class: "hidden-sm hidden-xs profile-pic")
+                class: "hidden-sm hidden-xs profile-pic #{icon_class}")
     else
       image_tag(image_path("user_silhouette_generic.gif"), 
-                class: "hidden-sm hidden-xs profile-pic")
+                class: "hidden-sm hidden-xs profile-pic #{icon_class}")
     end
   end
 

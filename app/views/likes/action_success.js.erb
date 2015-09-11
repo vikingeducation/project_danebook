@@ -1,0 +1,5 @@
+var dataType = '[data-type="<%=@like.likable_type%>-Like"]';
+var dataId = '[data-id="<%=@like.likable_id%>"]';
+
+var $likeBtn = $(dataType + dataId);
+$likeBtn.empty().html('<%= like_button(@like.likable) %>');

@@ -2,11 +2,11 @@ Rails.application.routes.draw do
 
   root to: "sessions#new"
 
-  get '/about', to: 'static_pages#about'
+  # get '/about', to: 'static_pages#about'
 
-  get '/about/edit', to: 'static_pages#edit'
+  # get '/about/edit', to: 'static_pages#edit'
 
-  get '/timeline', to: 'static_pages#timeline'
+  # get '/timeline', to: 'static_pages#timeline'
 
   resources :users
   patch 'set_profile_photo', to: 'users#set_profile_photo'
@@ -21,6 +21,8 @@ Rails.application.routes.draw do
   resources :profiles, only: [:edit, :show, :update]
 
   resources :posts, only: [:index, :create, :destroy]
+
+  get "/newsfeed", to: "newsfeed#index"
 
   resource :session, only: [:new, :create, :destroy]
 

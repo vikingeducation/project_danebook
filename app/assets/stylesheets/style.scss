@@ -2,7 +2,8 @@ $navbar-bg: #3083FF;
 $navbar-bd: #000;
 $nav-middle-bd: #000;
 $active-bg: #DBDBDB;
-$icon-size: 75px;
+$icon-size: 100px;
+$small-icon-size: 60px;
 
 main {padding-top: 20px;}
 
@@ -94,6 +95,11 @@ main {padding-top: 20px;}
   height: $icon-size;
 }
 
+.small-icon {
+  width: $small-icon-size;
+  height: $small-icon-size;  
+}
+
 .fillp {
   height: 100%;
 }
@@ -127,4 +133,8 @@ main {padding-top: 20px;}
 .intro-list {
   font-size: 1.2em;
   margin-bottom: 10px;
+}
+
+.comment-form {
+  display: none;
 }

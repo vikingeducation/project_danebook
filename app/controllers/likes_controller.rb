@@ -7,10 +7,17 @@ class LikesController < ApplicationController
     if @like.save
       flash[:success] = "You have liked #{whitelisted_like_params[:likable_type]} 
       #{whitelisted_like_params[:likable_id]}"
+      respond_to do |format|
+        format.html { redirect_to session.delete(:return_to) }
+        format.js { render :action_success }
+      end
     else
       flash[:error] = "This is not likable!"
+      respond_to do |format|
+        format.html { redirect_to session.delete(:return_to) }
+      end
     end
-    redirect_to session.delete(:return_to)
+    
   end
 
   def destroy
@@ -18,10 +25,16 @@ class LikesController < ApplicationController
     @like = Like.find(params[:id])
     if @like.user == current_user && @like.destroy
       flash[:success] = "You have unliked it."
+      respond_to do |format|
+        format.html { redirect_to session.delete(:return_to) }
+        format.js { render :action_success }
+      end
     else
       flash[:error] = "You have to like it!"
+      respond_to do |format|
+        format.html { redirect_to session.delete(:return_to) }
+      end
     end
-    redirect_to session.delete(:return_to)
   end
 
   private

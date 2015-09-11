@@ -1,6 +1,6 @@
-<article class ="row post">
+<article class ="row post" data-type="Post" data-id="<%=post.id%>">
   <div class="col-sm-2 posted-by">
-    <%= image_tag image_path("user_silhouette_generic.gif") %>
+    <%= profile_image(user, "small-icon") %>
   </div>
   <div class="col-sm-10 posted-name">
     <div class="col-sm-12">
@@ -15,15 +15,15 @@
   </div>
 
   <div class="col-sm-12 like-bar">
-    <div class="col-sm-1 ">
+    <div class="col-sm-2" data-type="Post-Like" data-id="<%=post.id%>">
       <%= like_button(post) %>
     </div>
-    <div class="col-sm-1">
-      <a href="#">Comment</a>
+    <div class="col-sm-2">
+      <a href="#" class="show-comment-form">Comment</a>
     </div>
     <% if current_user == user %>
-      <div class="col-sm-1 col-sm-offset-8">
-        <%= link_to "Delete", post_path(post.id, user_id: current_user.id), method: :delete %>
+      <div class="col-sm-1 col-sm-offset-6">
+        <%= link_to "Delete", post_path(post.id, user_id: current_user.id), method: :delete, remote: true %>
       </div>
     <% end %>
   </div>

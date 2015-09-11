@@ -30,7 +30,9 @@ class Profile < ActiveRecord::Base
 #----------------  Validator  --------------- 
 
   def validate_birthday_within
-    if self.birthday < (Time.now.to_date - 100*365)
+    if !self.birthday
+      self.errors.add(:birthday, "Must have a birthday!")
+    elsif self.birthday < (Time.now.to_date - 100*365)
       self.errors.add(:birthday, "Sorry, our site is too dangerous for a 100-year-old man!")
     elsif self.birthday > (Time.now.to_date - 12*365)
       self.errors.add(:birthday, "Sorry, you must be at least 12 to use our site!")
@@ -46,9 +48,11 @@ class Profile < ActiveRecord::Base
   end
 
   def birthday=(date)
-    fields = date.split('-')
-    self.birthday_year = fields[0].to_i
-    self.birthday_month = fields[1].to_i
-    self.birthday_day = fields[2].to_i
+    unless date.empty?
+      fields = date.split('-')
+      self.birthday_year = fields[0].to_i
+      self.birthday_month = fields[1].to_i
+      self.birthday_day = fields[2].to_i
+    end
   end
 end

@@ -1,0 +1,22 @@
+<div class="row">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h4>Recently Active</h4>  
+    </div>
+    <div class="panel-body">
+      <% user.friended_users.each do |friend| %>
+        <% friend.recent_posts.each do |post| %>
+          <div class="col-sm-6 posted-by">
+            <%= profile_image(friend, "small-icon") %>
+          </div>
+          <div class="col-sm-6 posted-name">
+            <div class="col-sm-12">
+              <p><%= friend.profile.full_name %></p>
+              <p>Posted on <%= post.created_at.to_date %></p></p>
+            </div>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -3,13 +3,14 @@ class PostsController < ApplicationController
   before_action :require_valid_user
   before_action :require_current_user, :except => [:index]
 
+  # timeline
   def index
     @post = Post.new
 
-    @user = User.includes(:profile, :friended_users, :posts => [:likes, :comments], :comments => [:likes, :user]).find(params[:user_id])
+    @user = User.includes(:profile, :friended_users,
+                :posts => [:likes, :comments],
+                :comments => [:likes, :user]).find(params[:user_id])
     @posts = @user.posts.order("created_at DESC")
-    # currently doubling as timeline,
-    # may separate to timeline controller
 
     @photos = @user.photos
     @profile = @user.profile
@@ -23,16 +24,15 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(params_list)
     @post.user_id = current_user.id
+    if @post.save
+      flash[:success] = "You created a post"
+    else
+      flash[:error] = "There was an error creating your post."
+    end
+
     respond_to do |format|
-      if @post.save
-        flash[:success] = "You created a post"
-        format.html { redirect_to user_posts_path(current_user) }
-        format.js
-      else
-        flash[:error] = "There was an error creating your post."
         format.html { redirect_to user_posts_path(current_user) }
         format.js { render template: 'shared/flash_display' }
-      end
     end
   end
 
@@ -43,9 +43,10 @@ class PostsController < ApplicationController
       if (current_user.id == @post.user_id) && @post.destroy
         flash[:success] = "Your post has been deleted!"
         format.html {redirect_to user_posts_path(current_user)}
-        format.js {render template: "shared/destroy_success", locals: {thing: @post}}
+        format.js {render template: "shared/destroy_success",
+                            locals: {thing: @post}}
       else
-        flash[:error] = "There was an error deleting your post, try again."
+        flash[:error] = "There was an error deleting your post."
         format.html {redirect_to user_posts_path(current_user)}
         format.js { render template: 'shared/flash_display'  }
       end

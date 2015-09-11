@@ -29,7 +29,8 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       format.html {redirect_to referer}
-      format.js {render template: "shared/destroy_success", locals: {thing: @comment}}
+      format.js {render template: "shared/destroy_success",
+                        locals: {thing: @comment}}
     end
 
   end

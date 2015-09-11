@@ -6,7 +6,7 @@ if (<%= !flash[:success].blank? %>){
   var $recentComment = $( recentComment );
 
   var $post = CommentModule.getCommentParent(parent);
-  // $post.append( $recentComment ).hide().slideDown(1000);
+
   $recentComment.appendTo($post).hide().slideDown(1000);
 
   //clear post form

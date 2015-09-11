@@ -9,8 +9,9 @@
         </button>
 
         <%= link_to user_posts_path(current_user.id),
-                                 class: "navbar-brand" do %>
-          <%= image_tag 'danish_flag.gif', :class => "img-circle img-responsive", :height => "30px", :width => "40px" %>
+                class: "navbar-brand" do %>
+          <%= image_tag 'danish_flag.gif',
+                :class => "img-circle img-responsive", id: "logo" %>
         <% end %>
         <%= link_to "Danebook", user_posts_path(current_user.id),
                         id: "brand-color", class: "navbar-brand" %>

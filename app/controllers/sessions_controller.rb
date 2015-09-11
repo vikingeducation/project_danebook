@@ -1,7 +1,8 @@
 class SessionsController < ApplicationController
 
   def create
-    @user = User.find_by_email(params[:email])
+    auth = request.env["omniauth.auth"]
+    @user = User.find_by_email(params[:email]) || User.find_by_provider_and_uid(auth["provider"], auth["uid"]) || User.create_with_omniauth(auth)
     if @user && @user.authenticate(params[:password])
       params[:remember_me] ? permanent_sign_in(@user) : sign_in(@user)
       flash[:success] = "You've successfully signed in"

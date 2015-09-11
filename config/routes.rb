@@ -25,6 +25,8 @@ Rails.application.routes.draw do
   resource :profile, only: [:show, :edit, :update]
   resource :session, :only => [:create, :destroy]
   resource :like, :only => [:create, :destroy]
+  get "/auth/:provider/callback" => "sessions#create", as: "oauth"
+
 
 # ------------------------ Aliases ----------------------------
 

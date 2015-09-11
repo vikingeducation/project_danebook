@@ -95,6 +95,16 @@ class User < ActiveRecord::Base
     UserMailer.welcome(user).deliver
   end
 
+  def self.create_with_omniauth(auth)
+    create! do |user|
+      user.provider = auth["provider"]
+      user.uid = auth["uid"]
+      full_name = auth["info"]["name"].split(" ")
+      user.first_name = full_name[0]
+      user.last_name = full_name[1]
+    end
+  end
+
   # ----------------------- Instance Methods --------------------
 
   def name

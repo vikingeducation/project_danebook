@@ -1,7 +1,3 @@
-
-
-This is the Real Dane Deal.
+Danebook - A social media example application.
 
 Donald Kelsey
-Garrett Weinert
-

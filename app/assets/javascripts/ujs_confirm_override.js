@@ -19,7 +19,6 @@ $.rails.allowAction = function(link) {
 
   // After however long, just set our link back to before we clicked it.
   setTimeout(function(){
-    link.off("click")
     link.attr('data-confirm', previousDataConfirm);
     link.text(previousText);
   }, 2000)

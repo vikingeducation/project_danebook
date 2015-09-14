@@ -50,7 +50,7 @@ class PostsController < ApplicationController
   end
 
   def require_current_user
-    session[:return_to] ||= request.referer
+    session[:return_to] = request.referer
     unless params[:post][:user_id] == current_user.id.to_s
       flash[:warning] = "You are not authorized to do this!"
       redirect_to session.delete(:return_to)

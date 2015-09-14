@@ -27,7 +27,7 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    session[:return_to] ||= request.referer
+    session[:return_to] = request.referer
     if sign_out
       flash[:success] = "You have successfully signed out"
       redirect_to root_path

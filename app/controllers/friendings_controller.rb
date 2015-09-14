@@ -1,7 +1,7 @@
 class FriendingsController < ApplicationController
 
   def create
-    session[:return_to] ||= request.referer
+    session[:return_to] = request.referer
 
     friending_recipient = User.find(params[:id])
 
@@ -14,7 +14,7 @@ class FriendingsController < ApplicationController
   end
 
   def destroy
-    session[:return_to] ||= request.referer
+    session[:return_to] = request.referer
 
     unfriended_user = User.find(params[:id])
 

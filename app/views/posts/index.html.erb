@@ -13,7 +13,9 @@
         <%= render partial: "post_form" %>
       <% end %>
 
-      <%= render partial: @posts, locals: { user: @user } %>
+      <div id="newsfeed-posts-list">
+        <%= render partial: @posts, locals: { user: @user } %>
+      </div>
 
     </div>
 

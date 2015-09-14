@@ -2,7 +2,7 @@
   <div class="col-sm-12 box-title">
     <h5> Post </h5>
   </div>
-  <%= form_for @post, class: "form-group" do |post_fields| %>
+  <%= form_for @post, remote: true, class: "form-group" do |post_fields| %>
     <%= post_fields.hidden_field :user_id, value: @user.id %>
     <div class="col-sm-12">
       <%= post_fields.text_area :body, 

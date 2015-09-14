@@ -29,7 +29,9 @@
             <%= display_likes_msg(@photo) %>
           </div>
           <div class="col-xs-12">
-            <a href="#" class="show-comment-form">Comment</a>
+            <a href="#" class="show-comment-form" data-id="Photo-<%=@photo.id%>">
+              Comment
+            </a>
           </div>
 
           <div class="col-xs-12 post">

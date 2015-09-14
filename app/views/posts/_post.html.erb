@@ -19,7 +19,9 @@
       <%= like_button(post) %>
     </div>
     <div class="col-sm-2">
-      <a href="#" class="show-comment-form">Comment</a>
+      <a href="#" class="show-comment-form" data-id="Post-<%=post.id%>">
+        Comment
+      </a>
     </div>
     <% if current_user == user %>
       <div class="col-sm-1 col-sm-offset-6">

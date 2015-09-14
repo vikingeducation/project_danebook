@@ -1,4 +1,4 @@
-<div class="comment-form">
+<div class="comment-form" data-id="<%=commentable.class.to_s%>-<%=commentable.id%>">
   <%= form_for Comment.new, remote: true, class: "form-group" do |comment_fields| %>
     <div class="col-sm-12">
       <%= comment_fields.text_area :body, placeholder: "Write a comment", class: "form-control" %>

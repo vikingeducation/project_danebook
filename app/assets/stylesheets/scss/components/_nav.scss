@@ -1,5 +1,7 @@
 // nav
 
+// nav
+
 #navbar {
 	position: static;
 	border-radius: 0;
@@ -27,6 +29,22 @@
 			font-size: 24px;
 			padding: 0 8px;
 			color: $light;
+		}
+	}
+
+	// --------------------
+	// login
+	// --------------------
+
+	#navbar-signin {
+		.btn-default {
+			color: $light;
+			background: $primary;
+
+			&:hover {
+				background: $light;
+				color: $primary;
+			}
 		}
 	}
 
@@ -87,6 +105,7 @@
 		height: 100%;
 	}
 
+	#navbar-signin,
 	#navbar-collapse,
 	#navbar-search {
 		border-color: darken($primary, 10%);

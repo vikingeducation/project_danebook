@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get '/friends', :to => 'static_pages#friends'
   get '/news_feed', :to => 'static_pages#news_feed'
   get '/photos', :to => 'static_pages#photos'
+  get '/signup', :to => 'static_pages#signup'
   get '/timeline', :to => 'static_pages#timeline'
   root :to => 'static_pages#index'
 

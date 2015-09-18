@@ -1,0 +1,158 @@
+.clearfix:after, .clearfix:before {
+  display: table;
+  content: ""; }
+.clearfix:after {
+  clear: both; }
+
+#navbar {
+  position: static;
+  border-radius: 0;
+  border: none;
+  margin: 0;
+  line-height: 64px;
+  z-index: 100;
+  background: #3E76DA; }
+  #navbar .navbar-brand {
+    display: block;
+    height: 100%;
+    line-height: 32px; }
+    #navbar .navbar-brand img {
+      width: 32px;
+      height: 32px; }
+    #navbar .navbar-brand span {
+      font-size: 24px;
+      padding: 0 8px;
+      color: #eee; }
+  #navbar #navbar-search .form-group,
+  #navbar #navbar-search input {
+    width: 100%; }
+  #navbar .navbar-username {
+    font-size: 18px;
+    padding-left: 16px;
+    padding-right: 16px;
+    text-align: right; }
+    #navbar .navbar-username a {
+      color: #eee; }
+  #navbar .navbar-username {
+    width: 100%; }
+  #navbar .navbar-toggle:hover, #navbar .navbar-toggle:focus {
+    background: #6994e2; }
+  #navbar .navbar-toggle .icon-bar {
+    background: #eee; }
+  #navbar .navbar-brand,
+  #navbar #navbar-search,
+  #navbar .navbar-username {
+    margin: 0;
+    display: block;
+    height: 100%; }
+  #navbar #navbar-collapse,
+  #navbar #navbar-search {
+    border-color: #255dc0; }
+  @media only screen and (max-width: 768px) {
+    #navbar .navbar-username {
+      text-align: center; }
+    #navbar .col-sm-2,
+    #navbar .col-sm-6 {
+      padding-left: 0;
+      padding-right: 0; } }
+
+@media only screen and (min-width: 768px) {
+  body {
+    padding-top: 64px; }
+
+  #navbar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0; } }
+#profile-header {
+  position: relative;
+  border-bottom-left-radius: 4px;
+  border-bottom-right-radius: 4px; }
+  #profile-header .profile-image-container,
+  #profile-header .cover-image-container {
+    border-radius: 4px; }
+  #profile-header .cover-image-container {
+    background: url("../../images/hogwarts_small.jpg") no-repeat;
+    background-position: center;
+    background-size: cover;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    height: 384px; }
+  #profile-header .profile-image-container {
+    position: absolute;
+    width: 192px;
+    height: 192px;
+    overflow: hidden;
+    left: 56px;
+    bottom: 16px; }
+    #profile-header .profile-image-container img {
+      display: block;
+      width: 192px; }
+  #profile-header .profile-nav-container {
+    line-height: 64px;
+    text-align: center; }
+    #profile-header .profile-nav-container .current {
+      color: #111; }
+  @media only screen and (min-width: 768px) {
+    #profile-header .profile-nav-container .edit {
+      text-align: right; } }
+  @media only screen and (min-width: 992px) and (max-width: 1199px) {
+    #profile-header .profile-image-container {
+      left: 32px; } }
+  @media only screen and (min-width: 768px) and (max-width: 991px) {
+    #profile-header .profile-image-container {
+      width: 128px;
+      height: 128px;
+      left: 36px; }
+      #profile-header .profile-image-container img {
+        width: 128px; }
+    #profile-header .profile-nav-container div {
+      padding-left: 4px;
+      padding-right: 4px; } }
+  @media only screen and (max-width: 767px) {
+    #profile-header .profile-image-container {
+      left: 32px;
+      top: -75%; } }
+
+#profile-header,
+#profile-header .cover-image-container,
+#profile-header .profile-image-container,
+#profile-header .profile-nav-container div {
+  border: 1px solid #d5d5d5; }
+
+#profile-header,
+#profile-header .cover-image-container,
+#profile-header .profile-nav-container div {
+  border-top: none; }
+
+#profile-header .profile-nav-container div {
+  border-right: none;
+  border-bottom: none; }
+
+@media only screen and (max-width: 767px) {
+  #profile-header,
+  #profile-header .cover-image-container,
+  #profile-header .profile-nav-container div {
+    border: none; } }
+.profile-page-container {
+  margin-top: 64px;
+  margin-bottom: 128px;
+  border: 1px solid #d5d5d5;
+  border-radius: 4px; }
+  .profile-page-container .profile-page-header {
+    border-bottom: 1px solid #d5d5d5;
+    background: #ddd; }
+    .profile-page-container .profile-page-header h1 {
+      text-align: center; }
+
+#about-edit textarea.form-control {
+  height: 196px; }
+#about-edit .submit-container {
+  margin-top: 32px;
+  margin-bottom: 64px;
+  text-align: center; }
+  #about-edit .submit-container .submit {
+    padding: 16px 32px; }
+
+/*# sourceMappingURL=about_edit.css.map */

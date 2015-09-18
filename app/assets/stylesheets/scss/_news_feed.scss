@@ -1,0 +1,109 @@
+// news feed
+
+#news-feed {
+	margin-top: 0;
+	border: none;
+
+	.news-feed-header,
+	.news-feed-footer {
+		border-bottom: 1px solid $border;
+		background: #ddd;
+
+		h1 {
+			text-align: center;
+		}
+	}
+
+	.news-feed-container {
+		border-left: 1px solid $border;
+	}
+
+	.details-container,
+	.news-feed-container {
+		padding-top: 32px;
+	}
+
+	.news-feed-container {
+		padding-left: 8.333333333333%;
+	}
+
+	@media only screen and (max-width: 767px) {
+		#profile-avatar {
+			margin-top: 56px;
+		}
+
+		.news-feed-container {
+			padding-left: 30px;
+			padding-right: 30px;
+		}
+
+		.details-container {
+			margin-left: 15px;
+			margin-right: 15px;
+		}
+	}
+}
+
+#profile-avatar {
+	.profile-image-container {
+		width: 128px;
+		height: 128px;
+		border-radius: 4px;
+		border: 1px solid $border;
+
+		a {
+			display: block;
+		}
+
+		img {
+			width: 128px;
+		}
+	}
+
+	.profile-avatar-links-container {
+		a {
+			display: block;
+		}
+		.profile-link {
+			font-size: 18px;
+		}
+	}
+}
+
+#recently-active {
+	.profile-image-container {
+		width: 64px;
+		height: 64px;
+
+		a {
+			display: block;
+		}
+
+		img {
+			width: 64px;
+		}
+	}
+
+	.activity-link-container {
+		margin-bottom: 16px;
+	}
+
+	.activity-info-container {
+		a,
+		time {
+			display: block;
+		}
+	}
+
+	footer {
+		text-align: center;
+	}
+}
+
+#profile-avatar,
+#recently-active {
+	.profile-image-container {
+		overflow: hidden;
+	}
+}
+

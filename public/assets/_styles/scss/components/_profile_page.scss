@@ -1,0 +1,19 @@
+// profile page
+
+@import '../config/colors';
+
+.profile-page-container {
+	margin-top: 64px;
+	margin-bottom: 128px;
+	border: 1px solid $border;
+	border-radius: 4px;
+
+	.profile-page-header {
+		border-bottom: 1px solid $border;
+		background: #ddd;
+
+		h1 {
+			text-align: center;
+		}
+	}
+}

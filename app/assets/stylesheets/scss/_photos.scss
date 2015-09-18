@@ -1,0 +1,57 @@
+// photos
+
+#photos {
+	.profile-page-header {
+		position: relative;
+	}
+
+	.add-photo-link-container {
+		position: absolute;
+		top: 50%;
+		right: 16px;
+		transform: translateY(-50%);
+	}
+
+	.photos-container {
+		margin-left: 0;
+		margin-right: 0;
+		padding-left: 15px;
+		padding-right: 15px;
+	}
+
+	.photo-container {
+		position: relative;
+		overflow: hidden;
+		margin-top: 8px;
+		margin-bottom: 8px;
+		padding-left: 15px;
+		padding-right: 15px;
+
+		img {
+			width: 100%;
+		}
+
+		.pub-date-container {
+			position: absolute;
+			text-align: center;
+			bottom: -50px;
+			left: 0;
+			width: 100%;
+			padding-top: 8px;
+			padding-bottom: 8px;
+			background: $dark;
+			color: $light;
+		}
+		
+		&:focus,
+		&:hover {
+			border-radius: 4px;
+			border: 1px solid $dark;
+
+			.pub-date-container {
+				bottom: 0;
+				@include transition(bottom 0.5s linear);
+			}
+		}
+	}
+}

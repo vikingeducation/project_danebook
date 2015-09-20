@@ -1,0 +1,32 @@
+<main class="container">
+  <%= render "hero" %>
+
+  <!-- everything below the hero -->
+  <section class="container" id="information-pane">
+    <header class="row">
+      <div class="col-md-offset-2 col-md-8 about-header">
+        <h2>Photos</h2>
+      </div>
+      <form class="col-md-2 about-header">
+        <div class="form-group">
+          <button type="submit" class="btn btn-default" id="edit-profile-button">Add photo!</button>
+        </div>
+      </form>
+    </header>
+
+
+    <div class = "row" id="photo-field">
+      <% 16.times do %>
+        <div class="col-md-3 photo">
+          <a class = "photo-link" href="#">
+            <%= image_tag("icon_photo_small.png", :alt => "Icon Photo") %>
+          </a>
+          <div class = "photo-upload-date">
+            <p>Uploaded January 1, 2015</p>
+          </div>
+        </div>
+      <% end %>
+    </div> <!-- photo-field -->
+  </section> <!--information-pane -->
+
+</main>

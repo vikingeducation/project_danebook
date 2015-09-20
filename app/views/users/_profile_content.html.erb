@@ -1,0 +1,26 @@
+<aside class = "col-md-4">
+
+  <%= render "info_pane", info: "profile" %>
+
+  <%= render "info_pane", info: "photos" %>
+
+  <%= render "info_pane", info: "friends" %>
+
+</aside><!-- user information -->
+
+
+<!--post feed-->
+<div class = "col-md-7 col-md-offset-1">
+
+  <%= render 'posts/post_form' %>
+
+  <div id="post-area">
+    <% @posts.each do |post| %>
+      <%= render 'posts/post', post: post %>
+    <% end %>
+
+    <div class="col-xs-12 pagination">
+      <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
+    </div>
+  </div>
+</div>

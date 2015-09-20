@@ -1,0 +1,28 @@
+<div class="col-md-6">
+  <%= render 'shared/flashes' %>
+  <%= simple_form_for @user, defaults: { input_html: { class: 'form-control' }, wrapper_html: { class: 'form-group col-xs-12' } } do |f| %>
+    <div class="col-xs-12">
+      <h3>Sign Up</h3>
+    </div>
+
+    <%= f.input :first_name, placeholder: 'Your first name', wrapper_html: { class: 'form-group col-xs-6' } %>
+
+    <%= f.input :last_name, placeholder: 'Your last name', wrapper_html: { class: 'form-group col-xs-6' } %>
+
+    <%= f.input :email, placeholder: 'Your email address' %>
+
+    <%= f.input :password, placeholder: "Your new password" %>
+
+    <%= f.input :password_confirmation, placeholder: "Re-enter password" %>
+
+    <%= f.input :birthday, end_year: (Date.today.year-100), start_year: (Date.today.year-15), prompt: {day: "Day", month: "Month", year: "Year"}, order: [:month, :day, :year], wrapper_html: { class: 'form-inline col-xs-12' } %>
+
+    <div class="form-group col-xs-12">
+      <%= f.input :gender, as: :radio_buttons, collection: ["Female", "Male"], wrapper_html: { class: 'form-inline' } %>
+    </div>
+
+    <div class="form-group col-xs-12">
+      <%= f.button :submit, "Sign Up", class: "btn btn-danish btn-large btn-block" %>
+    </div>
+  <% end %>
+</div>

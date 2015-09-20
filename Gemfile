@@ -1,0 +1,71 @@
+source 'https://rubygems.org'
+
+ruby '2.2.0'
+# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem 'rails', '4.1.4'
+# Use PostgreSQL as the database for Active Record
+gem 'pg'
+
+# Use SCSS for stylesheets
+gem 'sass-rails', '~> 4.0.3'
+# Use Uglifier as compressor for JavaScript assets
+gem 'uglifier', '>= 1.3.0'
+# Use CoffeeScript for .js.coffee assets and views
+gem 'coffee-rails', '~> 4.0.0'
+# See https://github.com/sstephenson/execjs#readme for more supported runtimes
+gem 'therubyracer',  platforms: :ruby
+gem 'less-rails'
+gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git' # $ rails generate bootstrap:install static
+gem 'will_paginate-bootstrap'
+
+gem 'simple_form' # $ rails generate simple_form:install --bootstrap
+
+# Use jquery as the JavaScript library
+gem 'jquery-rails'
+# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
+gem 'turbolinks'
+# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
+gem 'jbuilder', '~> 2.0'
+# bundle exec rake doc:rails generates the API under doc/api.
+gem 'sdoc', '~> 0.4.0',          group: :doc
+
+# Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+group :development do
+  gem 'spring'
+  gem 'better_errors'
+  gem 'binding_of_caller' # for better_errors
+  gem 'bullet' # config/environments/development.rb (see docs)
+  gem 'letter_opener'
+end
+
+gem 'faker'
+
+# Spruce up our console output
+group :development, :test do
+  # Note: Need to pull this fork directly because
+  # the original uses pry-debugger which doesn't work
+  # with Ruby 2
+  gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
+  gem 'pry-byebug'
+end
+
+group :production do
+  gem 'rails_12factor'
+end
+
+gem 'figaro' # $ figaro install
+gem 'paperclip', :git => "git://github.com/thoughtbot/paperclip.git"
+gem 'aws-sdk'
+
+# Use ActiveModel has_secure_password
+gem 'bcrypt', '~> 3.1.7'
+
+# Use unicorn as the app server
+# gem 'unicorn'
+
+# Use Capistrano for deployment
+# gem 'capistrano-rails', group: :development
+
+# Use debugger
+# gem 'debugger', group: [:development, :test]
+

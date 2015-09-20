@@ -1,0 +1,26 @@
+<section class="info-pane col-md-12">
+  <header class="row">
+    <div class="col-md-12">
+      <h2>New Photo</h2>
+    </div>
+  </header>
+
+  <section class="row">
+    <div class="col-xs-12">
+      <%= render 'shared/errors', object: @photo %>
+      <%= form_for @photo do |web_photo_field| %>
+        <%= web_photo_field.label :url, "Paste the url to a photo on the web" %>
+        <%= web_photo_field.text_field :url, class: "form-control" %>
+        <%= web_photo_field.submit "Use Web Photo", class: "btn btn-danish btn-large" %>
+      <% end %>
+
+      <h4>-or-</h4>
+
+      <%= form_for @photo do |upload_photo_field| %>
+        <%= upload_photo_field.label :photo, "Select a photo from your computer" %>
+        <%= upload_photo_field.file_field :photo, class: "form-control" %>
+        <%= upload_photo_field.submit "Upload Photo", class: "btn btn-danish btn-large" %>
+      <% end %>
+    </div>
+  </section>
+</section>

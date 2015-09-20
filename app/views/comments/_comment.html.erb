@@ -1,0 +1,12 @@
+<div class="comment row" id="comment-<%= comment.id %>">
+  <div class="col-xs-12">
+    <div class="row">
+      <%= profile_photo(comment.author, :thumb, "col-xs-2 post-picture") %>
+      <div class="col-xs-10">
+        <h5><%= link_to comment.author.name, user_path(comment.author) %> commented <%= time_ago_in_words(comment.created_at) %> ago</h5>
+        <p><%= comment.content %></p>
+      </div>
+    </div>
+    <%= render 'shared/likes_bar', object: comment, parent: comment.commentable %>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+<nav id="main-navbar" class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to 'Danebook', timeline_path, :class => "navbar-brand" %>
+    </div>
+    <div class="navbar-collapse collapse">
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to 'Harry Potter', timeline_path %></li>
+      </ul>
+      <form class="navbar-form navbar-right">
+        <input type="text" class="form-control" placeholder="Search...">
+      </form>
+    </div><!--/.navbar-collapse -->
+  </div>
+</nav>

@@ -1,0 +1,74 @@
+@import 'colors';
+
+.btn-danish {
+  background: $flag-normal;
+  color: white;
+  border: 1px solid $flag-dark!important;
+  &:hover {
+    background: $flag-light;
+    color: white!important;
+  }
+}
+
+body {
+  background-color: #EDF0F5!important;
+}
+
+main {
+  margin-top: 50px;
+}
+
+#main-navbar {
+  background: $dark-normal;
+  border-bottom: 1px solid black;
+
+  a, label, h1 {
+    color: white;
+  }
+
+  li a:hover {
+    background: $darker-dark;
+  }
+}
+
+.field_with_errors, .error {
+  * {
+    border-color: red!important;
+  }
+}
+
+.profile-navbar {
+  border: 1px solid $flag-lighter;
+  background-color: white;
+}
+
+.info-pane {
+  margin-top: 15px;
+  margin-bottom: 15px;
+
+  header {
+    line-height: 36px;
+    font-size: 20px;
+    text-align: center;
+    color: white;
+    background: $normal-dark;
+  }
+
+  section {
+    color: #333;
+    background-color: white!important;
+    border: 1px solid $flag-light;
+  }
+
+  footer {
+    a {
+      color: white;
+    }
+    background: $dark-normal;
+    text-align: center;
+  }
+}
+
+.pagination {
+  text-align: center;
+}

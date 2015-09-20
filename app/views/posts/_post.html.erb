@@ -1,0 +1,25 @@
+<article class="post-pane" id="post-<%= post.id %>">
+  <header class="row">
+    <%= profile_photo(post.author, :thumb, "col-xs-2 post-picture") %>
+    <div class="col-xs-10">
+      <h5><%= link_to post.author.name, user_path(post.author) %></h5>
+      <p>Posted <%= time_ago_in_words(post.created_at) %> ago</p>
+    </div>
+  </header>
+
+  <section class="row">
+    <div class="col-xs-12">
+      <p><%= post.content %></p>
+    </div>
+  </section>
+
+  <%= render 'shared/likes_bar', object: post, parent: nil %>
+
+  <div id="post-<%= post.id %>-comments">
+    <% post.comments.order(created_at: :asc).each do |comment| %>
+      <%= render 'comments/comment', comment: comment %>
+    <% end %>
+  </div>
+
+  <%= render 'comments/comment_form', object: post, id_symbol: :post_id %>
+</article>

@@ -1,0 +1,14 @@
+<div class="col-md-6 friend-list-entry">
+  <div class="row">
+    <div class="col-xs-3">
+      <%= link_to(profile_photo(friend, :medium, "img-responsive img-thumbnail"), user_path(friend)) %>
+    </div>
+    <div class="col-xs-4">
+      <p><%= link_to friend.name, user_path(friend) %></p>
+      <p><%= "#{friend.friends.count} friends" %></p>
+    </div>
+    <div class="col-xs-5">
+      <%= friend_button(friend) %>
+    </div>
+  </div>
+</div>

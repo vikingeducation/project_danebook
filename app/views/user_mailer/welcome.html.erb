@@ -1,0 +1,17 @@
+<h1>Welcome to Danebook, <%= "#{@user.first_name}" %>!</h1>
+
+<p>Thank you for signing up for Danebook. Danebook is a social networking app for Danish students.</p>
+
+<ul>
+  <li>Build your friends' list so you can see what your friends are up to.</li>
+  <li>Posts your thoughts so your friends know what's new with you.</li>
+  <li>Upload your photos to share.</li>
+</ul>
+
+<p>Visit your own page <%= link_to "here", polymorphic_url(@user) %> or consider adding some of your fellow Danes to your friends' list:</p>
+
+<ul>
+  <% User.all.shuffle[0..2].each do |friend_candidate| %>
+    <li><%= link_to friend_candidate.name, polymorphic_url(friend_candidate) %></li>
+  <% end %>
+</ul>

@@ -1,0 +1,17 @@
+<section class="info-pane">
+  <div class="row">
+    <header class="col-md-12">
+      <%= info =="profile" ? "About" : "#{info.capitalize} (#{@user.send(info).count})" %>
+    </header>
+  </div>
+  <div class="row">
+    <section class="col-md-12">
+      <%= render "user_#{info}" %>
+    </section>
+  </div>
+  <div class="row">
+    <footer class="col-md-12">
+      <%= link_to "See more #{info}!", [@user, info] %>
+    </footer>
+  </div>
+</section>

@@ -1,0 +1,30 @@
+$flag-normal: #C60C30;
+$flag-light: #E03153;
+$flag-lighter: #EE5B78;
+$flag-dark: #A10020;
+$flag-darker: #7B0018;
+
+$normal-dark:     linear-gradient($flag-normal, $flag-dark);
+$normal-darker:   linear-gradient($flag-normal, $flag-darker);
+$normal-light:    linear-gradient($flag-normal, $flag-light);
+$normal-lighter:  linear-gradient($flag-normal, $flag-lighter);
+
+$light-dark:      linear-gradient($flag-light, $flag-dark);
+$light-darker:    linear-gradient($flag-light, $flag-darker);
+$light-normal:    linear-gradient($flag-light, $flag-normal);
+$light-lighter:   linear-gradient($flag-light, $flag-lighter);
+
+$lighter-dark:    linear-gradient($flag-lighter, $flag-dark);
+$lighter-darker:  linear-gradient($flag-lighter, $flag-darker);
+$lighter-normal:  linear-gradient($flag-lighter, $flag-normal);
+$lighter-light:   linear-gradient($flag-lighter, $flag-light);
+
+$dark-normal:     linear-gradient($flag-dark, $flag-normal);
+$dark-darker:     linear-gradient($flag-dark, $flag-darker);
+$dark-light:      linear-gradient($flag-dark, $flag-light);
+$dark-lighter:    linear-gradient($flag-dark, $flag-lighter);
+
+$darker-normal:   linear-gradient($flag-darker, $flag-normal);
+$darker-dark:     linear-gradient($flag-darker, $flag-dark);
+$darker-light:    linear-gradient($flag-darker, $flag-light);
+$darker-lighter:  linear-gradient($flag-darker, $flag-lighter);

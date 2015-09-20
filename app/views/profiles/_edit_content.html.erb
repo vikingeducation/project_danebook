@@ -1,0 +1,34 @@
+<section class="info-pane col-md-12">
+  <header class="row">
+    <div class="col-md-12">
+      <h2>Edit Profile</h2>
+    </div>
+  </header>
+
+  <%= simple_form_for @profile, {:url => { :action => :update }, remote: true, defaults: { input_html: { class: 'form-control' }, wrapper_html: { class: 'form-group' } } }  do |f| %>
+
+    <section class="row">
+      <div class="col-md-6">
+        <h3>Basic Information</h3>
+        <%= f.input :school %>
+        <%= f.input :hometown %>
+        <%= f.input :current_town %>
+        <h3>Contact Information</h3>
+        <%= f.input :phone_number %>
+      </div>
+
+      <div class="col-md-6">
+        <h3>Words to Live By</h3>
+        <%= f.input :quotes, input_html: { rows: 3 }, label: false %>
+        <h3>About Me</h3>
+        <%= f.input :about, input_html: { rows: 9 }, label: false %>
+      </div>
+    </section>
+
+    <footer class="row">
+      <%= f.button :submit, "Save Changes", class: "btn btn-danish btn-large btn-block" %>
+    </footer>
+
+  <% end %>
+
+</section>

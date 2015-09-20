@@ -1,0 +1,37 @@
+<div class="col-sm-3 hidden-xs">
+  <div class="sidebar-nav-fixed affix">
+    <div class="well">
+      <ul class="nav">
+        <li>My Danebook</li>
+        <li><%= link_to 'Timeline', current_user %></li>
+        <li><%= link_to 'Profile', user_profile_path(current_user) %></li>
+        <li><%= link_to "Photos", user_photos_path(current_user) %></li>
+        <li><%= link_to "Friends", user_friends_path(current_user) %></li>
+        <li class="nav-divider"></li>
+        <li>Actions</li>
+        <li><%= link_to "Upload a Photo", new_photo_path %></li>
+        <li><%= link_to "Friend Requests", users_path %></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="col-sm-7 col-xs-10 col-sm-offset-0 col-xs-offset-1">
+  <%= render 'post_form' %>
+  <div id="post-area">
+    <%= render @posts %>
+
+    <div class="col-xs-12 pagination">
+      <%= will_paginate @posts, renderer: BootstrapPagination::Rails %>
+    </div>
+  </div>
+</div>
+
+<div class="col-sm-2 hidden-xs" id="recent-activity-feed">
+  <h3>Popular This Week</h3>
+  <ul class="list-group">
+    <% @popular_week.each do |post| %>
+      <li class="list-group-item"><%= post.likes.size %> people like <%= link_to post.author.first_name, post.author %>'s <%= link_to "post", post %> from <%= time_ago_in_words(post.created_at) %> ago.</li>
+    <% end %>
+  </ul>
+</div>

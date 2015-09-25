@@ -23,8 +23,9 @@ describe PostsController do
 
     it "gathers all of user's posts into @posts" do
       get :index, :user_id => viewed_user
+      sorted_posts = viewed_user.posts.order(:created_at => :desc)
       expect(assigns(:posts).size).to eq(post_count)
-      expect(assigns(:posts)).to eq(viewed_user.posts)
+      expect(assigns(:posts)).to eq(sorted_posts)
     end
 
 

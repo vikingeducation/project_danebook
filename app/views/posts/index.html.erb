@@ -83,8 +83,9 @@
 <!-- MAKE POST -->
         <%= render :partial => 'new', :locals => { :new_post => @new_post } if @user == current_user %>
 
-
-        <%= render_posts(@posts, "No activity...") %>
+        <div data-content='posts'>
+          <%= render_posts(@posts, "No activity...") %>
+        </div>
 
 
 

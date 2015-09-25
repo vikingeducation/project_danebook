@@ -1,3 +1,6 @@
+## should Newsfeed contain my own posts?  Right now AJAX does, but not HTML version...
+# what do I actually want?
+
 class NewsfeedsController < ApplicationController
 
   before_action :require_login

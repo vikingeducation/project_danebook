@@ -11,13 +11,26 @@ class PostsController < ApplicationController
 
   def create
     @new_post = current_user.posts.build(post_params)
+
     if @new_post.save
       flash[:success] = "New post created!"
-      redirect_to [current_user, :posts]
+
+      respond_to do |format|
+        format.html { redirect_to [current_user, :posts] }
+        format.js { render :create_success }
+      end
+
     else
       flash.now[:danger] = "New post not saved. Please try again."
-      set_assigns(params[:user_id])
-      render :index
+
+      respond_to do |format|
+        format.html do
+          set_assigns(params[:user_id])
+          render :index
+        end
+        format.js { render :nothing => true, :status => 400 }
+      end
+
     end
   end
 
@@ -36,7 +49,7 @@ class PostsController < ApplicationController
 
     def set_assigns(user_id)
       @user = User.find(user_id)
-      @posts = @user.posts
+      @posts = @user.posts.order(:created_at => :desc)
       @friends = @user.friended_users.sample(6)
       @photos = @user.photos.sample(9)
     end

@@ -121,7 +121,9 @@
         <%= render :partial => 'posts/new', :locals => { :new_post => @user.posts.build } %>
 
 
-        <%= render_posts(@posts, "No recent activity...") %>
+        <div data-content='posts'>
+          <%= render_posts(@posts, "No recent activity...") %>
+        </div>
 
 
 

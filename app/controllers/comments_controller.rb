@@ -6,13 +6,25 @@ class CommentsController < ApplicationController
 
   def create
     @new_comment = current_user.comments.build(comment_params)
+
     if @new_comment.save
       Comment.delay.send_notification(@new_comment.id)
       flash[:success] = "Comment created!"
+
+      respond_to do |format|
+        format.html { redirect_back_or_to(user_posts_path(@new_comment.commentable.poster)) }
+        format.js { render :create_success, :status => 200 }
+      end
+
     else
       flash[:danger] = "Comment not saved. Please try again."
+
+      respond_to do |format|
+        format.html { redirect_back_or_to(user_posts_path(@new_comment.commentable.poster)) }
+        format.js { render :nothing => true, :status => 400 }
+      end
     end
-    redirect_back_or_to(user_posts_path(@new_comment.commentable.poster))
+
   end
 
 

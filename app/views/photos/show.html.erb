@@ -112,7 +112,8 @@
                     <!-- New comment -->
                     <div class="row">
                       <div class="col-xs-12">
-                        <%= render :partial => 'comments/new', :locals => { :commentable => @photo } if signed_in_user? %>
+                        <%= render :partial => 'comments/new', :locals => { :commentable => @photo,
+                                                                            :new_comment => @photo.comments.build } if signed_in_user? %>
                       </div>
                     </div> <!-- End of New comment -->
 

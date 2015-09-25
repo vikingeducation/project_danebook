@@ -17,7 +17,7 @@ class PostsController < ApplicationController
 
       respond_to do |format|
         format.html { redirect_to [current_user, :posts] }
-        format.js { render :create_success }
+        format.js { render :create_success, :status => 200 }
       end
 
     else

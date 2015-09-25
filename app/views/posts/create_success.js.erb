@@ -3,6 +3,9 @@ var $newPost = $(newPost);
 
 var $posts = $("div[data-content='posts']");
 
-$newPost.prependTo($posts).hide().slideDown(750);
+$newPost.prependTo($posts).hide();
+
+$newPost.find('.comment-form').hide();
+$newPost.slideDown(750);
 
 $('#post_body').val('');

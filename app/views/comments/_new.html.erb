@@ -1,37 +1,47 @@
-<div class='comment-form'>
+<div class='comment-wrapper' data-type="<%= new_comment.commentable_type %>" data-id="<%= new_comment.commentable_id %>">
 
-  <!-- Will refactor this to use @comment and allow for displaying error messages once comment forms can be dynamically created via JS -->
-  <%= form_for new_comment, remote: true do |comment_fields| %>
+  <div class='comment-form'>
 
-    <%= comment_fields.hidden_field :commentable_id %>
-    <%= comment_fields.hidden_field :commentable_type %>
+    <!-- Will refactor this to use @comment and allow for displaying error messages once comment forms can be dynamically created via JS -->
+    <%= form_for new_comment, remote: true do |comment_fields| %>
 
-    <%= comment_fields.text_area  :body, class: 'form-control', rows: '3', placeholder: 'Write a comment...' %>
-    <%= render_error(comment_fields.object, :body) %>
+      <%= comment_fields.hidden_field :commentable_id %>
+      <%= comment_fields.hidden_field :commentable_type %>
 
-
-    <!-- separate row for Cancel & Comment buttons -->
-    <div class="row center-block">
-      <div class="col-xs-12">
+      <%= comment_fields.text_area  :body, class: 'form-control', rows: '3', placeholder: 'Write a comment...' %>
+      <%= render_error(comment_fields.object, :body) %>
 
 
-<!-- TEMPORARILY hidden until it can be implemented with JS
+      <!-- separate row for Cancel & Comment buttons -->
+      <div class="row center-block">
+        <div class="col-xs-12">
 
-        <div class="pull-left">
-          <a href="#" alt="Cancel writing a comment">Cancel</a>
+
+
+
+          <div class="pull-left">
+            <a class='toggle-comment' alt="Cancel writing a comment">Cancel</a>
+          </div>
+
+
+
+           <div class="pull-right comment-button-wrapper">
+
+            <%= comment_fields.submit 'Comment', class: 'btn btn-primary btn-sm' %>
+
+          </div>
+
         </div>
+      </div> <!-- end of Cancel & Comment row -->
 
--->
+    <% end %>
 
-         <div class="pull-right comment-button-wrapper">
+  </div> <!-- comment-form -->
 
-          <%= comment_fields.submit 'Comment', class: 'btn btn-primary btn-sm' %>
 
-        </div>
+  <div class='comment-opener'>
+    <a class='toggle-comment' alt="Open the Add Comment text field">Add a Comment</a>
+  </div>
 
-      </div>
-    </div> <!-- end of Cancel & Comment row -->
 
-  <% end %>
-
-</div> <!-- comment-form -->
+</div> <!-- comment-wrapper -->

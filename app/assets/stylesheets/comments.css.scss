@@ -7,14 +7,16 @@
   margin-top: 16px;
   vertical-align: middle;
 
-  a {
-    line-height: 50px; //equal to btn-sm height+margin
-  }
 
   .comment-button-wrapper {
     margin-top: 8px;
     margin-bottom: 4px;
   }
+}
+
+.toggle-comment {
+  line-height: 50px; //equal to btn-sm height+margin
+  cursor: pointer;
 }
 
 .comments-wrapper {

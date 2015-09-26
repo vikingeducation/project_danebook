@@ -1,0 +1,4 @@
+$("[data-type='Post'][data-id='" + <%= @id %> + "']").remove()
+
+$("<%= j(bootstrap_flash) %>").insertBefore('main');
+<% flash.clear %>

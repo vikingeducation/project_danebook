@@ -12,7 +12,7 @@ module PostsHelper
 
   def render_posts(collection, message_if_empty)
     if collection.size == 0
-      "<h4 class='text-center text-muted'><em>#{message_if_empty}</em></h4>".html_safe
+      "<h4 class='text-center text-muted' data-info='no-activity'><em>#{message_if_empty}</em></h4>".html_safe
     else
       render collection
     end

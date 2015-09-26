@@ -28,7 +28,7 @@ class PostsController < ApplicationController
           set_assigns(params[:user_id])
           render :index
         end
-        format.js { render :nothing => true, :status => 400 }
+        format.js { render 'shared/action_failure', :status => 400 }
       end
 
     end
@@ -51,7 +51,7 @@ class PostsController < ApplicationController
 
       respond_to do |format|
         format.html { redirect_to user_posts_path(current_user) }
-        format.js { render :nothing => true, :status => 400 }
+        format.js { render 'shared/action_failure', :status => 400 }
       end
     end
   end

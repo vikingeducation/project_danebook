@@ -1,3 +1,6 @@
+// remove any old flashes
+$('.alert').remove();
+
 var newPost = "<%= j(render :partial => 'post', :locals => { :post => @new_post }) %>";
 var $newPost = $(newPost);
 

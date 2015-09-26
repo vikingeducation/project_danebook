@@ -21,7 +21,7 @@ class CommentsController < ApplicationController
 
       respond_to do |format|
         format.html { redirect_back_or_to(user_posts_path(@new_comment.commentable.poster)) }
-        format.js { render :nothing => true, :status => 400 }
+        format.js { render 'shared/action_failure', :status => 400 }
       end
     end
 
@@ -29,13 +29,26 @@ class CommentsController < ApplicationController
 
 
   def destroy
-    comment = Comment.find(params[:id])
-    if comment.destroy!
+    @comment = Comment.find(params[:id])
+    @id = @comment.id
+    @parent_poster = @comment.commentable.poster
+
+    if @comment.destroy!
       flash[:success] = 'Comment deleted!'
+
+      respond_to do |format|
+        format.html { redirect_to user_posts_path(@parent_poster) }
+        format.js { render :destroy_success, :status => 200 }
+      end
+
     else
       flash[:danger] = "Sorry, we couldn't delete your comment. Please try again."
+
+      respond_to do |format|
+        format.html { redirect_to user_posts_path(@parent_poster) }
+        format.js { render 'shared/action_failure', :status => 400 }
+      end
     end
-    redirect_back_or_to(user_posts_path(comment.commentable.poster))
   end
 
 

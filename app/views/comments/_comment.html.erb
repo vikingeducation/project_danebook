@@ -1,4 +1,4 @@
-<div class="media">
+<div class="media" data-comment-id="<%= comment.id %>">
 
   <div class="col-xs-12">
 
@@ -37,7 +37,7 @@
         <%= render :partial => 'likes/likes_display', :locals => { :liked_object => comment } if comment.likers %>
 
         <div class="pull-right">
-          <%= link_to 'Delete', comment_path(comment), method: 'delete', alt: 'Delete this post', data: { confirm: "Delete comment?" } if comment.author == current_user %>
+          <%= link_to 'Delete', comment_path(comment), method: 'delete', remote: true, alt: 'Delete this post', data: { confirm: "Delete comment?" } if comment.author == current_user %>
         </div>
 
       </div>

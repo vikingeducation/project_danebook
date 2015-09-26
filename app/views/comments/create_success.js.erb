@@ -14,3 +14,6 @@ $('.comment-form').hide();
 $('.comment-opener').show();
 
 $('textarea[name="comment[body]"]').val('')
+
+$("<%= j(bootstrap_flash) %>").insertBefore('main');
+<% flash.clear %>

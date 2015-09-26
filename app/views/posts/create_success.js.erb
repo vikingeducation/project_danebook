@@ -10,3 +10,6 @@ $newPost.slideDown(750);
 
 $('#post_body').val('');
 $("[data-info='no-activity']").hide();
+
+$("<%= j(bootstrap_flash) %>").insertBefore('main');
+<% flash.clear %>

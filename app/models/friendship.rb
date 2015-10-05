@@ -18,10 +18,10 @@ class Friendship < ActiveRecord::Base
   end
 
   def is_you?(current_visitor, page_owner)
-    friend_acceptor == current_visitor &&
-    friend_initiator == page_owner ||
-    friend_acceptor == page_owner  &&
-    friend_initiator == current_visitor
+    friend_acceptor   ==  current_visitor  &&
+    friend_initiator  ==  page_owner       ||
+    friend_acceptor   ==  page_owner       &&
+    friend_initiator  ==  current_visitor
   end
 
 end

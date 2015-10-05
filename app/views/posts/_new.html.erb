@@ -1,0 +1,19 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title timeline-panel-header">Post</h3>
+  </div>
+
+  <%= form_for [:user, new_post], remote:true do |p| %>
+
+    <div class="panel-body">
+      <div class="form-group">
+        <%= p.text_area :body, class: "form-control",  placeholder: "Write on the wall" %>
+      </div>
+    </div>
+
+    <div class="panel-footer clearfix">
+      <%= p.submit "Post", class: "pull-right btn btn-sm btn-primary" %>
+    </div>
+
+  <% end %>
+</div> <!-- end panel default -->

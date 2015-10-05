@@ -1,0 +1,64 @@
+<article class="panel panel-default comments" data-post-id='<%= post.id %>' >
+
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-sm-2">
+         <%= display_profile_photo(post.user) %>
+      </div>
+
+      <div class="col-sm-7 poster">
+      	<p> <%= link_to full_name(post.user), user_profile_path(post.user.id) %> </p>
+        <p class="grey-text"> Posted on <%= post.created_at.strftime("%B %d, %Y")%> </p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-12">
+        <br>
+        <p><%= post.body %></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel-footer clearfix">
+    <div class="row">
+
+      <div class="col-sm-10 col-md-10 col-offset-sm-1 col-offset-md-1">
+        <div class="pull-right">
+          <%= link_to "Comment",'#', data: {new_post_comment: post.id} %>
+          <% if object_owner_for_resource?(post) %>
+            <%= link_to "Delete",
+                user_post_path(post.user.id, post.id),
+                method: :delete,
+                data: {confirm: 'Delete post?'},
+                remote: true  %>
+          <% end %>
+        </div>
+
+        <div class="pull-left">
+          <p><%= show_like_or_unlike(post) %></p>
+          <p><%= names_to_display(post.id) %></p>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row">
+      <div class="col-sm-10 col-offset-sm-2" data-new-post='<%= post.id %>' hidden>
+        <p><%= render :partial => '/comments/new', locals: {:commentable => post, :new_comment => new_comment} %></p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-10 col-offset-sm-1 comments-list">
+        <!-- Need to add a commentable type and commentable id to each comment -->
+        <% post.comments.each do |comment| %>
+          <p><%= render :partial => '/comments/show', locals: {:comment => comment } %></p>
+        <% end %>
+      </div>
+    </div>
+
+  </div>
+
+</article>
+

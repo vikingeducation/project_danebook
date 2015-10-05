@@ -1,0 +1,21 @@
+<div class="col-sm-6 friend-box">
+  <article class="panel panel-default comments">
+    <div class="panel-body">
+      <div class="row">
+
+        <div class="profile-thumb col-sm-3 col-md-3">
+          <%= display_profile_photo(friendship.friend_initiator) %>
+        </div>
+
+        <div class="user-info col-sm-6 col-md-6">
+          <p>
+            <%= display_pending_friend_info(friendship) %>
+        </div>
+
+        <div class="button col-sm-3 col-md-3">
+          <%= display_confirm_button(friendship) %>
+        </div>
+
+      </div>
+  </article>
+</div>

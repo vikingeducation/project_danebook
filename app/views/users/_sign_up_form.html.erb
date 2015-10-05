@@ -1,0 +1,80 @@
+<%= form_for user do |f| %>
+
+	<% if user.errors.any? %>
+    <div id="error_explanation text-center">
+      <h5><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h5>
+      <ul>
+      <% user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+<main>
+<div class="row">
+	<section class="col-md-7">
+		<div class="row">
+		<div class="col-md-9 col-md-offset-3 test">
+      <div class="main-text">
+    		<h1 >Connect with all your friends!</h1>
+    			<ul>
+    				<li>See photos and updates in your news feeds</li>
+    				<li>Post your status for the world to see from your profile</li>
+    				<li>Get in touch with your friends by "friending" them</li>
+    				<li>Like things because you're a positive person!</li>
+    			</ul>
+      </div>
+		</div>
+		</div>
+	</section>
+	<section class="col-md-3">
+			<h1>Sign Up</h1>
+			<div class="form-group row">
+					<div class="col-md-6">
+						<%= f.text_field :first_name, class: 'form-control', placeholder: 'First Name' %>
+					</div>
+					<div class="col-md-6">
+						<%= f.text_field :last_name, class: 'form-control', placeholder: 'Last Name' %>
+					</div>
+			</div>
+
+			<div class="form-group">
+				<%= f.text_field :email, class: 'form-control', placeholder: 'Your Email' %>
+			</div>
+
+			<div class="form-group">
+				<%= f.password_field :password, class: 'form-control', placeholder: 'Your New Password' %>
+			</div>
+
+			<div class="form-group">
+				<%= f.password_field :password_confirmation, class: 'form-control', placeholder: 'Confirm Your Password' %> 
+			</div>
+
+			<h3>Birthday</h3>
+			<div class="row form-group">
+				<div class="col-sm-12">
+							<%= f.date_select :birthday, {:prompt => { :day => 'Day', :month => 'Month', :year => 'Year' }, :start_year => 1975, :end_year => 2010}, {:class => 'form-control date-select'}  %>
+				</div>
+			</div>
+			<!-- Gender -->
+			<h3></h3>
+			<div class="row form-group">
+				<div class="col-sm-4">
+					Male
+					<%= f.radio_button("gender", "Male") %>
+				</div>
+				<div class="col-sm-4">
+					Female
+					<%= f.radio_button("gender", "Female") %>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<%= f.submit "Sign Up!", class: 'btn btn-success btn-block'  %>
+			</div>
+	</section>
+</div>
+</main>
+</div>
+<% end %>

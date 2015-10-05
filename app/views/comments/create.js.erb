@@ -1,0 +1,9 @@
+// Create post element
+var $element =  $("<%= escape_javascript(render :partial => 'show',
+                  :locals => { :comment => @comment } ) %>");
+
+// Add element to DOM
+$element.appendTo('.comments-list').hide().slideDown('slow');
+
+// Clear posts form
+$('#new_comment').trigger('reset');

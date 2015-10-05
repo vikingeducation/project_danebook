@@ -1,0 +1,18 @@
+<nav class="col-md-7 col-md-offset-2">
+	<ul class="nav nav-tabs">
+		<li><%= link_to 'Timeline', user_timeline_path(object_owner.id) %><li>
+		<li><%= link_to 'About', user_about_path(object_owner.id) %><li>
+		<li><%= link_to 'Photos', user_photos_path(object_owner.id) %><li>
+		<li><%= link_to 'Friends', user_friendships_path(object_owner.id) %><li>
+	</ul>
+</nav>
+
+<div class="col-md-2 pull-right">
+	<ul class="nav profile-link">
+		<li>
+			<% if object_owner? %>
+				<%= link_to "Edit Profile", edit_user_profile_path(current_user.id), class: 'pull-right' %>
+			<% end %>
+		</li>
+	</ul>
+</div>

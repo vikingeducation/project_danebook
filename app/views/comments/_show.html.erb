@@ -1,0 +1,43 @@
+<div class="panel panel-default" data-comment-id='<%= comment.id %>'>
+
+  <div class="panel-body">
+    	<div class="row">
+        <div class="col-sm-2">
+          <%= display_profile_photo(comment.user) %>
+        </div>
+        <div class="col-sm-9">
+          <p>
+            <%= link_to full_name(comment.user), user_timeline_path(comment.user.id) %>
+          </p>
+          <p>
+            Said on
+            <%= comment.created_at.strftime("%B %d, %Y") %>
+          </p>
+        </div>
+      </div>
+
+      <div class="row">
+        <br>
+        <p>
+          <%= comment.body %>
+        </p>
+      </div>
+  </div>
+
+  <div class="panel-footer clearfix">
+    <div class="pull-left">
+    <%= show_like_or_unlike(comment) %>
+    <%= like_count_to_display(comment) %>
+    </div>
+    <div class="pull-right">
+    <% if object_owner_for_resource?(comment) %>
+      <%= link_to "Delete",
+          user_comment_path(:user_id => current_user.id, :id => comment.id),
+          method: :delete,
+          data: {confirm: 'Delete post?'},
+          remote: true %>
+    <% end %>
+    </div>
+  </div>
+
+</div> <!-- end panel default -->

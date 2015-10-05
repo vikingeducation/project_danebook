@@ -1,0 +1,49 @@
+<main>
+  <div class="container">
+
+    <%= render partial: 'layouts/cover_and_profile_banner' %>
+
+    <div class="row">
+      <%= render 'layouts/navbar' %>
+    </div>
+
+    <section class="panel panel-default panel-custom">
+
+      <div class="panel-heading clearfix">
+        <h4 class="panel-text text-center">Photos</h4>
+      </div>
+
+      <div class="panel-body">
+        <div class="col-md-4 col-centered">
+
+          <div class="row text-center">
+              <h4>Paste the URL to a photo on the web...</h4>
+               <%= form_tag user_photos_path(current_user.id), method: 'post' do %>
+                <p> <%= url_field_tag 'image_url', nil, placeholder: 'http://example.com/photo1.jpg' %>
+                    <%= hidden_field_tag :user_id, value: current_user.id %>
+                </p>
+                <p>
+                  <%= submit_tag "Use Web Photo", class: 'btn btn-primary' %>
+                </p>
+              <% end %>
+          </div>
+
+          <div class="row text-center upload-photos-spacer vcenter">
+            <h3 id="text-padding">or...</h3>
+          </div>
+
+          <div class="row text-center">
+            <h4>Select a photo from your hard drive...</h4>
+            <%= form_for [:user, @photo] do |f| %>
+              <%= f.file_field :image, class: 'image-file-field' %>
+              <%= f.hidden_field :user_id, value: current_user.id %>
+              <%= f.submit "Upload Photo", class: 'btn btn-success' %>
+            <% end %>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>

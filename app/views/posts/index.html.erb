@@ -1,0 +1,47 @@
+<main>
+  <div class="container" data-page='posts-index'>
+
+  <%= render partial: 'layouts/cover_and_profile_banner' %>
+
+  <div class="row">
+    <div class="col-sm-10">
+      <%= render :partial => 'layouts/navbar' %>
+    </div>
+    <div class="col-sm-2 timeline-add-friend-button">
+      <%= display_add_friend_button %>
+    </div>
+  </div>
+
+  <section class="timeline-wrap">
+    <div class="row">
+      <div class="col-md-4">
+
+      <%= render partial: 'photos/small_grid',
+          locals: {:photos => object_owner.photos} %>
+
+      <%= render partial: 'friendships/small_friend_photo_grid',
+          locals: {:photos => object_owner.photos} %>
+
+      </div>
+
+      <!-- new post partial	 -->
+      <div class="col-md-8">
+        <% if object_owner? %>
+      	 <%= render partial: 'new', :locals => {:user => current_user, :new_post => @new_post} %>
+        <% end %>
+      </div>
+
+      <!-- new comment partial -->
+      <div class="col-md-8" id='posts-list'>
+        <% if @posts %>
+          <% @posts.each do |post| %>
+            <%= render partial: 'show', :locals => {:post => post, :new_comment => @new_comment} %>
+          <% end %>
+        <% end %>
+
+      </div><!-- col-md-8 end -->
+    </div> <!-- end of row -->
+  </section>
+
+</div> <!-- end of container -->
+</main>

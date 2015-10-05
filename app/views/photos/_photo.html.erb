@@ -1,0 +1,5 @@
+<div class="col-xs-3">
+  <%= link_to user_photo_path(photo.user.id, photo.id) do %>
+    <%= image_tag photo.image.url, class: 'img-responsive' %>
+  <% end %>
+</div>

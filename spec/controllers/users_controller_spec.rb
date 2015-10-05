@@ -42,7 +42,6 @@ describe UsersController do
 			describe 'DELETE #destroy' do
 
 				xit 'can delete own account' do
-					binding.pry
 					expect do
 						delete :destroy, id: user.id
 					end.to change(User, :count).by(-1)

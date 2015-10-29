@@ -1,0 +1,22 @@
+// Place all the styles related to the StaticPages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import 'scss/lib/mixins';
+@import 'scss/config/colors';
+@import 'scss/config/images';
+
+@import 'scss/components/nav';
+@import 'scss/components/profile_header';
+@import 'scss/components/profile_page';
+@import 'scss/components/offcanvas';
+@import 'scss/components/post_form';
+@import 'scss/components/posts_comments';
+
+@import 'scss/about';
+@import 'scss/about_edit';
+@import 'scss/friends';
+@import 'scss/news_feed';
+@import 'scss/photos';
+@import 'scss/signup';
+@import 'scss/timeline';

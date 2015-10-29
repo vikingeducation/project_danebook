@@ -1,0 +1,42 @@
+// signup
+
+#signup {
+	margin-bottom: 128px;
+
+	.info {
+
+		.info-list-container {
+			margin-top: 32px;
+		}
+
+		.info-list {
+			li {
+				font-size: 18px;
+				margin-top: 32px;
+				color: #666;
+			}
+		}
+	}
+
+	#signup {
+		.btn-default {
+			background: #009E0F;
+			border: none;
+			color: #eee;
+			line-height: 32px;
+			font-size: 24px;
+			width: 100%;
+
+			&:hover,
+			&:focus {
+				background: darken(#009E0F, 10%);
+			}
+		}
+	}
+
+	@media only screen and (min-width: 768px) {
+		.info {
+			margin-top: 64px;
+		}
+	}
+}

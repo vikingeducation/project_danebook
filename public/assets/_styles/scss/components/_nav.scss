@@ -1,0 +1,130 @@
+// nav
+
+@import '../config/colors';
+
+#navbar {
+	position: static;
+	border-radius: 0;
+	border: none;
+	margin: 0;
+	line-height: 64px;
+	z-index: 100;
+	background: $primary;
+
+	// --------------------
+	// brand
+	// --------------------
+
+	.navbar-brand {
+		display: block;
+		height: 100%;
+		line-height: 32px;
+
+		img {
+			width: 32px;
+			height: 32px;
+		}
+
+		span {
+			font-size: 24px;
+			padding: 0 8px;
+			color: $light;
+		}
+	}
+
+	// --------------------
+	// search
+	// --------------------
+
+	#navbar-search {
+		.form-group,
+		input {
+			width: 100%;
+		}
+	}
+
+	// --------------------
+	// username
+	// --------------------
+
+	.navbar-username {
+		font-size: 18px;
+		padding-left: 16px;
+		padding-right: 16px;
+		text-align: right;
+
+		a {
+			color: $light;
+		}
+	}
+
+	.navbar-username {
+		width: 100%;
+	}
+
+	// --------------------
+	// toggle
+	// --------------------
+
+	.navbar-toggle {
+		&:hover,
+		&:focus {
+			background: lighten($primary, 10%);
+		}
+
+		.icon-bar {
+			background: $light;
+		}
+	}
+
+	// --------------------
+	// shared styles
+	// --------------------
+
+	.navbar-brand,
+	#navbar-search,
+	.navbar-username {
+		margin: 0;
+		display: block;
+		height: 100%;
+	}
+
+	#navbar-collapse,
+	#navbar-search {
+		border-color: darken($primary, 10%);
+	}
+
+	// --------------------
+	// media queries
+	// --------------------
+
+	@media only screen and (max-width: 768px) {
+		.navbar-username {
+			text-align: center;
+		}
+
+		.col-sm-2,
+		.col-sm-6 {
+			padding-left: 0;
+			padding-right: 0;
+		}
+	}
+}
+
+// --------------------
+// fixed position
+// --------------------
+
+@media only screen and (min-width: 768px) {
+	body {
+		padding-top: 64px;
+	}
+
+	#navbar {
+		position: fixed;
+		top: 0;
+		right: 0;
+		left: 0;
+
+	}
+}

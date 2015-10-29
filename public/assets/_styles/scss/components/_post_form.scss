@@ -1,0 +1,37 @@
+// post form
+
+@import '../config/colors';
+
+.profile-page-container
+
+#post-form-wrapper {
+	border: 1px solid $border;
+	border-radius: 4px;
+	padding: 0;
+
+	.post-form-header {
+		h1 {
+			margin-top: 0;
+			margin-bottom: 0;
+		}
+	}
+	
+	.post-form-header,
+	.post-form-footer {
+		@extend .profile-page-header;
+	}
+
+	.form-group {
+		padding: 16px 32px;
+	}
+	textarea.form-control {
+		max-width: 100%;
+		height: 128px;
+		resize:vertical;
+	}
+
+	.post-form-footer {
+		text-align: right;
+		padding: 8px;
+	}
+}

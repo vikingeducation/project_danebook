@@ -1,0 +1,473 @@
+<%= render :partial => 'shared/nav' %>
+<%= render :partial => 'shared/profile_header' %>
+
+<!-- Profile Page / Timeline -->
+<section id="timeline" class="row profile-page-container row-offcanvas row-offcanvas-left">
+
+	<!-- Details -->
+	<div class="col-sm-4 details-container sidebar-offcanvas">
+
+		<div class="row">
+
+			<!-- About -->
+			<section id="about" class="col-xs-10 col-sm-12">
+				<header class="details-header">
+					<h1>
+						About
+					</h1>
+				</header>
+				<div class="about-container">
+					<dl>
+						<dt>Birthday:</dt><dd>July 31st, 1980</dd>
+						<dt>College:</dt><dd>Magic School</dd>
+						<dt>Hometown:</dt><dd>Magicville, Earth</dd>
+						<dt>Currently Lives:</dt><dd>Magicville, Earth</dd>
+					</dl>
+				</div>
+			</section>
+
+			<!-- Photos -->
+			<section id="photos" class="col-xs-10 col-sm-12">
+				<header class="details-header">
+					<h1>
+						Photos
+					</h1>
+				</header>
+
+				<!-- Photo -->
+				<div class="photos-container">
+
+					<div class="row">
+						
+						<div class="col-xs-12 col-sm-4">
+							<a href="/photos">
+								<img src="/assets/images/icon_photo_small.png" alt="Photo"/>
+							</a>
+						</div>
+						<div class="col-xs-12 col-sm-4">
+							<a href="/photos">
+								<img src="/assets/images/icon_photo_small.png" alt="Photo"/>
+							</a>
+						</div>
+						<div class="col-xs-12 col-sm-4">
+							<a href="/photos">
+								<img src="/assets/images/icon_photo_small.png" alt="Photo"/>
+							</a>
+						</div>
+
+						<div class="col-xs-12 col-sm-4">
+							<a href="/photos">
+								<img src="/assets/images/icon_photo_small.png" alt="Photo"/>
+							</a>
+						</div>
+						<div class="col-xs-12 col-sm-4">
+							<a href="/photos">
+								<img src="/assets/images/icon_photo_small.png" alt="Photo"/>
+							</a>
+						</div>
+						<div class="col-xs-12 col-sm-4">
+							<a href="/photos">
+								<img src="/assets/images/icon_photo_small.png" alt="Photo"/>
+							</a>
+						</div>
+
+						<div class="col-xs-12 col-sm-4">
+							<a href="/photos">
+								<img src="/assets/images/icon_photo_small.png" alt="Photo"/>
+							</a>
+						</div>
+						<div class="col-xs-12 col-sm-4">
+							<a href="/photos">
+								<img src="/assets/images/icon_photo_small.png" alt="Photo"/>
+							</a>
+						</div>
+						<div class="col-xs-12 col-sm-4">
+							<a href="/photos">
+								<img src="/assets/images/icon_photo_small.png" alt="Photo"/>
+							</a>
+						</div>
+
+					</div>
+
+				</div>
+				<footer>
+					<a href="/photos">
+						See More Photos
+					</a>
+				</footer>
+			</section>
+
+			<!-- Friends -->
+			<section id="friends" class="col-xs-10 col-sm-12">
+				<header class="details-header">
+					<h1>
+						Friends
+					</h1>
+				</header>
+				<div class="friends-container">
+
+					<div class="row">
+						
+						<div class="col-xs-12 col-sm-4">
+							<img src="/assets/images/user_silhouette_generic.gif.png" alt="Friend"/>
+							<a href="#">
+								Friend's Name
+							</a>
+						</div>
+						<div class="col-xs-12 col-sm-4">
+							<img src="/assets/images/user_silhouette_generic.gif.png" alt="Friend"/>
+							<a href="#">
+								Friend's Name
+							</a>
+						</div>
+						<div class="col-xs-12 col-sm-4">
+							<img src="/assets/images/user_silhouette_generic.gif.png" alt="Friend"/>
+							<a href="#">
+								Friend's Name
+							</a>
+						</div>
+
+						<div class="col-xs-12 col-sm-4">
+							<img src="/assets/images/user_silhouette_generic.gif.png" alt="Friend"/>
+							<a href="#">
+								Friend's Name
+							</a>
+						</div>
+						<div class="col-xs-12 col-sm-4">
+							<img src="/assets/images/user_silhouette_generic.gif.png" alt="Friend"/>
+							<a href="#">
+								Friend's Name
+							</a>
+						</div>
+						<div class="col-xs-12 col-sm-4">
+							<img src="/assets/images/user_silhouette_generic.gif.png" alt="Friend"/>
+							<a href="#">
+								Friend's Name
+							</a>
+						</div>
+
+					</div>
+
+				</div>
+				<footer>
+					<a href="/photos">
+						See More Friends
+					</a>
+				</footer>
+			</section>
+		</div>
+
+	</div>
+
+	<!-- Timeline -->
+	<div class="col-sm-7 col-sm-offset-1 timeline-container">
+
+		<div class="pull-left visible-xs offcanvas-toggle-container">
+			<button type="button" class="btn btn-primary offcanvas-toggle" data-toggle="offcanvas">
+				<span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+			</button>
+		</div>
+
+		<div class="row">
+			
+			<!-- Post Form -->
+			<div id="post-form-wrapper" class="col-xs-12">
+				<header class="post-form-header">
+					<h1>
+						Post
+					</h1>
+				</header>
+				<div class="post-form-container">
+					<form>
+						<div class="form-group">
+							<textarea id="post" name="post" class="form-control" placeholder="Tell the world something..."></textarea>
+						</div>
+						<footer class="post-form-footer">
+							<button class="btn btn-primary submit" type="submit">
+								Post
+							</button>
+						</footer>
+					</form>
+				</div>
+			</div>
+
+			<!-- Posts -->
+			<div class="post col-xs-12">
+				<header>
+					<div class="row">
+						<div class="col-xs-2">
+							<div class="post-profile-image-container">
+								<a href="/about">
+									<img src="/assets/images/harry_potter_small.jpg" alt="Image"/>
+								</a>
+							</div>
+						</div>
+						<div class="col-xs-8 post-info-container">
+							<a href="/about">
+								Harry Potter
+							</a>
+							<time>
+								Posted on Thursday 7/30/2015
+							</time>
+						</div>
+					</div>
+				</header>
+				<article>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos eos distinctio ut iusto fuga, soluta. In cupiditate excepturi repudiandae consectetur unde optio, doloribus recusandae amet tenetur nobis sequi, corporis quaerat!</p>
+				</article>
+				<footer>
+					<div class="row post-footer-links">
+						<div class="col-xs-1 like-link-container">
+							<a href="#">
+								Like
+							</a>
+						</div>
+						<div class="col-xs-2 col-xs-offset-1 comment-link-container">
+							<a href="#">
+								Comment
+							</a>
+						</div>
+						<div class="col-xs-8 delete-link-container">
+							<a href="#">
+								Delete
+							</a>
+						</div>
+					</div>
+				</footer>
+			</div>
+
+			<!-- Post With Likes -->
+			<div class="post col-xs-12">
+				<header>
+					<div class="row">
+						<div class="col-xs-2">
+							<div class="post-profile-image-container">
+								<a href="/about">
+									<img src="/assets/images/harry_potter_small.jpg" alt="Image"/>
+								</a>
+							</div>
+						</div>
+						<div class="col-xs-8 post-info-container">
+							<a href="/about">
+								Harry Potter
+							</a>
+							<time>
+								Posted on Thursday 7/30/2015
+							</time>
+						</div>
+					</div>
+				</header>
+				<article>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos eos distinctio ut iusto fuga, soluta. In cupiditate excepturi repudiandae consectetur unde optio, doloribus recusandae amet tenetur nobis sequi, corporis quaerat!</p>
+				</article>
+				<footer>
+					<div class="row post-footer-links">
+						<div class="col-xs-1 like-link-container">
+							<a href="#">
+								Like
+							</a>
+						</div>
+						<div class="col-xs-2 col-xs-offset-1 comment-link-container">
+							<a href="#">
+								Comment
+							</a>
+						</div>
+						<div class="col-xs-8 delete-link-container">
+							<a href="#">
+								Delete
+							</a>
+						</div>
+					</div>
+
+					<!-- Post Likes -->
+					<div class="post-likes">
+						<a href="#">
+							Somebody Else
+						</a>
+						likes this
+					</div>
+				</footer>
+			</div>
+
+			<!-- Post With Comments -->
+			<div class="post col-xs-12">
+				<header>
+					<div class="row">
+						<div class="col-xs-2">
+							<div class="post-profile-image-container">
+								<a href="/about">
+									<img src="/assets/images/harry_potter_small.jpg" alt="Image"/>
+								</a>
+							</div>
+						</div>
+						<div class="col-xs-8 post-info-container">
+							<a href="/about">
+								Harry Potter
+							</a>
+							<time>
+								Posted on Thursday 7/30/2015
+							</time>
+						</div>
+					</div>
+				</header>
+				<article>
+					<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos eos distinctio ut iusto fuga, soluta. In cupiditate excepturi repudiandae consectetur unde optio, doloribus recusandae amet tenetur nobis sequi, corporis quaerat!</p>
+				</article>
+				<footer>
+					<div class="row post-footer-links">
+						<div class="col-xs-1 like-link-container">
+							<a href="#">
+								Like
+							</a>
+						</div>
+						<div class="col-xs-2 col-xs-offset-1 comment-link-container">
+							<a href="#">
+								Comment
+							</a>
+						</div>
+						<div class="col-xs-8 delete-link-container">
+							<a href="#">
+								Delete
+							</a>
+						</div>
+					</div>
+
+					<div class="post-likes">
+						You and 
+						<a href="#">
+							Somebody Else
+						</a>
+						and 
+						<a href="#">
+							3 others
+						</a>
+						like this
+					</div>
+				</footer>
+
+				<!-- Post Comments -->
+				<section class="post-comments">
+
+					<!-- Comments -->
+					<div class="comment">
+						<header>
+							<div class="row">
+								<div class="col-xs-2 col-xs-offset-1">
+									<div class="post-profile-image-container">
+										<a href="#">
+											<img src="/assets/images/user_silhouette_generic.gif.png" alt="Image"/>
+										</a>
+									</div>
+								</div>
+								<div class="col-xs-8 comment-info-container">
+									<a href="#">
+										Somebody Else
+									</a>
+									<time>
+										Commented on Thursday 7/30/2015
+									</time>
+								</div>
+							</div>
+						</header>
+						<article>
+							<div class="row">
+								<div class="col-xs-8 col-xs-offset-3">
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos eos distinctio ut iusto fuga, soluta. In cupiditate excepturi repudiandae consectetur unde optio, doloribus recusandae amet tenetur nobis sequi, corporis quaerat!</p>
+								</div>
+							</div>
+						</article>
+						<footer>
+							<div class="row post-footer-links">
+								<div class="col-xs-12 like-link-container">
+									<a href="#">
+										Like
+									</a>
+									<a href="#">
+										3
+									</a>
+									other people like this
+								</div>
+							</div>
+						</footer>
+					</div>
+
+					<div class="comment">
+						<header>
+							<div class="row">
+								<div class="col-xs-2 col-xs-offset-1">
+									<div class="post-profile-image-container">
+										<a href="/about">
+											<img src="/assets/images/harry_potter_small.jpg" alt="Image"/>
+										</a>
+									</div>
+								</div>
+								<div class="col-xs-8 comment-info-container">
+									<a href="/about">
+										Harry Potter
+									</a>
+									<time>
+										Commented on Thursday 7/30/2015
+									</time>
+								</div>
+							</div>
+						</header>
+						<article>
+							<div class="row">
+								<div class="col-xs-8 col-xs-offset-3">
+									<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos eos distinctio ut iusto fuga, soluta. In cupiditate excepturi repudiandae consectetur unde optio, doloribus recusandae amet tenetur nobis sequi, corporis quaerat!</p>
+								</div>
+							</div>
+						</article>
+						<footer>
+							<div class="row post-footer-links">
+								<div class="col-xs-7 link-link-container">
+									<a href="#">
+										Like
+									</a>
+									<a href="#">
+										3
+									</a>
+									other people like this
+								</div>
+								<div class="col-xs-5 delete-link-container">
+									<a href="#">
+										Delete
+									</a>
+								</div>
+							</div>
+						</footer>
+					</div>
+
+					<!-- Comment Form -->
+					<div class="comment-form-container">
+						<form class="comment-form">
+							<div class="form-group">
+								<textarea id="comment" name="comment" class="form-control" placeholder="Write a comment..."></textarea>
+							</div>
+							<footer class="comment-form-footer">
+								<div class="pull-left">
+									<a href="#">
+										Cancel
+									</a>
+								</div>
+								<div class="pull-right">
+									<button class="btn btn-primary submit" type="submit">
+										Comment
+									</button>
+								</div>
+							</footer>
+						</form>
+					</div>
+				</section>
+
+			</div>
+
+		</div>
+
+	</div>
+
+</section>
+
+
+
+

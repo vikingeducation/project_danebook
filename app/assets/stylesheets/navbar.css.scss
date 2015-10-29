@@ -1,0 +1,53 @@
+// Navbar custom styles
+
+.nav-spacer-user {
+  height: 51px;
+}
+
+.nav-spacer-guest {
+  height: 75px;
+}
+
+.navbar-default {
+  background-color: #2b78e4;
+  border-bottom: 1px solid #333;
+
+  .navbar-brand {
+    font-size: 24px;
+
+    img {
+      display: inline;
+      margin-top: -5px;
+    }
+  }
+
+  .brand-text {
+    color: #fff;
+  }
+
+  .brand-large {
+    font-size: 40px;
+    font-weight: bold;
+    height: 75px;
+    line-height: 1.5em;
+  }
+
+  input#search {
+    width: 300px;
+  }
+
+  .navbar-text {
+    font-weight: bold;
+    margin: 1px 0;
+  }
+
+  #navbar-photo {
+    height: 48px;
+    width: 48px;
+    object-fit: cover;
+    object-position: top;
+    border: 1px solid #CCC;
+    background-color: #FFF;
+    margin-right: 8px;
+  }
+}

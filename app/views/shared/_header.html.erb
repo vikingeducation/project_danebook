@@ -1,0 +1,76 @@
+<header>
+  <div class="row cover-photo-row" style="background-image: url(<%= cover_image(user) %>)" >
+
+    <div class="col-xs-12 cover-box" >
+
+      <div class="row spacer"></div>
+
+      <div class="row user-name">
+        <h1><%= user.profile.full_name %></h1>
+      </div>
+
+    </div>
+
+  </div>  <!-- cover photo row -->
+
+
+
+
+<!-- row for user photo and page links -->
+  <div class="row page-links-row">
+
+
+    <!-- main links column -->
+    <div class="row">
+
+      <div class="col-md-12">
+
+        <ul class="nav nav-tabs">
+
+          <li class="text-bottom" role="presentation">
+            <%= image_tag user_image(user), id: 'user-photo', class: 'media-object', alt: "User's personal photo" %>
+          </li>
+
+
+          <%= render  :partial => "shared/nav_tab",
+                      :locals => {:label => "Timeline",
+                                  :link => user_posts_path(user.id),
+                                  :user => user,
+                                  :badge => nil } %>
+
+          <%= render  :partial => "shared/nav_tab",
+                      :locals => {:label => "About",
+                                  :link => user_path(user.id),
+                                  :user => user,
+                                  :badge => nil  } %>
+
+          <%= render  :partial => "shared/nav_tab",
+                      :locals => {:label => "Photos",
+                                  :link => user_photos_path(user.id),
+                                  :user => user,
+                                  :badge => user.photos.count } %>
+
+          <%= render  :partial => "shared/nav_tab",
+                      :locals => {:label => "Friends",
+                                  :link => user_friends_path(user.id),
+                                  :user => user,
+                                  :badge => user.friended_users.count } %>
+
+
+          <!-- refactor me, please! -->
+          <% unless current_page?("/about_edit") %>
+            <li class="text-center pull-right" role="presentation">
+              <%= link_to "Edit Profile", edit_user_profile_path(current_user), alt: "Edit your user profile" if user == current_user %>
+            </li>
+          <% end %>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+
+  </div> <!-- page links row -->
+
+</header>

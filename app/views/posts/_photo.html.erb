@@ -1,0 +1,5 @@
+<div class="col-md-4 text-center">
+  <%= link_to user_photo_path(photo.poster, photo) do %>
+    <%= image_tag photo.photo.url(:thumb), id: 'user-photo', alt: "#{photo.poster.profile.full_name}'s photo" %>
+  <% end %>
+</div>

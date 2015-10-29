@@ -1,0 +1,40 @@
+<!-- MAKE POST -->
+
+        <div class=" panel panel-default">
+
+          <div class="panel-heading">
+
+            <h3 class="panel-title text-center">
+              Post
+            </h3>
+
+          </div>
+
+
+
+          <%= form_for [current_user, new_post], remote: true do |f| %>
+
+            <div class="panel-body">
+              <div class="row">
+                <div class='col-xs-12'>
+                  <%= f.text_area :body, class:'form-control', placeholder: 'Tell the world something...' %>
+                  <%= render_error(f.object, :body) %>
+                </div>
+              </div>
+            </div>
+
+
+            <div class="panel-footer">
+              <div class="row">
+                <div class="col-md-12">
+                  <%= f.submit 'Post', class: 'btn btn-primary btn-sm pull-right' %>
+                </div>
+              </div>
+            </div> <!-- end of footer -->
+
+
+          <% end %>
+
+        </div> <!-- end of panel -->
+
+<!-- end of Make Post section -->

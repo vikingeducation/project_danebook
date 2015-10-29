@@ -1,0 +1,22 @@
+// remove any old flashes
+$('.alert').remove();
+
+var newComment = "<%= j(render :partial => 'comment', :locals => { :comment => @new_comment }) %>";
+var $newComment = $(newComment);
+
+
+var parent_type = "<%= @new_comment.commentable_type %>";
+var parent_id = "<%= @new_comment.commentable_id %>";
+var $parent = $("[data-type='" + parent_type + "'][data-id='" + parent_id + "']");
+console.log('hey')
+
+
+$newComment.appendTo($parent.find('.comments-wrapper')).hide().slideDown(750);
+
+$('.comment-form').hide();
+$('.comment-opener').show();
+
+$('textarea[name="comment[body]"]').val('')
+
+$("<%= j(bootstrap_flash) %>").insertBefore('main');
+<% flash.clear %>

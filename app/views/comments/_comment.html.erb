@@ -1,0 +1,48 @@
+<div class="media" data-comment-id="<%= comment.id %>">
+
+  <div class="col-xs-12">
+
+    <div class="media-left">
+
+      <%= link_to user_path(comment.author) do %>
+        <%= image_tag user_image(comment.author), id: 'user-photo', class: 'media-object', size: '50x50', alt: "Commenter's photo" %>
+      <% end %>
+
+    </div>
+
+    <div class="media-body">
+
+      <div class="media-heading">
+
+        <%= link_to comment.author.profile.full_name, user_path(comment.author) %>
+
+        <time datetime=<%= comment.created_at %> pubdate>
+          <small><%= display_comment_date(comment) %></small>
+        </time>
+
+      </div>
+
+      <p><%= comment.body %></p>
+
+    </div>
+
+
+    <div class="row">
+      <div class="col-xs-12">
+
+        <div class="pull-left">
+          <%= display_like_links(comment) %>
+        </div>
+
+        <%= render :partial => 'likes/likes_display', :locals => { :liked_object => comment } if comment.likers %>
+
+        <div class="pull-right">
+          <%= link_to 'Delete', comment_path(comment), method: 'delete', remote: true, alt: 'Delete this post', data: { confirm: "Delete comment?" } if comment.author == current_user %>
+        </div>
+
+      </div>
+    </div>  <!-- end of links row -->
+
+  </div>
+
+</div>

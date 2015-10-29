@@ -1,0 +1,139 @@
+<main class="container content-container">
+
+
+<!-- Start of main Timeline section -->
+  <section id="newsfeed" class="row">
+    <div class="row">
+
+
+
+<!-- LEFT side -->
+<!--            -->
+<!--            -->
+<!--            -->
+
+      <div class="col-lg-4 visible-lg">
+
+  <!-- row for User Image  -->
+        <div class="row">
+          <div class="col-xs-12">
+
+            <div class=" panel panel-default">
+
+              <div class="panel-body col-sm-offset-1">
+
+                <div class="media">
+                    <div class='row'>
+
+                      <div class="col-md-12">
+
+                        <!-- Media list image -->
+                        <div class="media-left">
+                          <%= link_to user_path(@user) do %>
+                            <%= image_tag user_image(@user), id: 'user-photo', class: 'media-object', size: '75x75', alt: "Photo poster's photo" %>
+                          <% end %>
+                        </div>  <!-- end of image section -->
+
+
+                        <!-- Photo poster name and posted date -->
+                        <div class="media-body">
+                          <div class="media-heading">
+
+                            <h3>
+                              <%= link_to @user.profile.full_name, user_path(@user) %>
+                            </h3>
+
+                            <small><%= link_to 'Edit Profile', edit_user_profile_path(@user), class: 'pull-right' %></small>
+
+                          </div>
+                        </div> <!-- media-body -->
+                      </div>
+                    </div>
+                  </div> <!-- media object -->
+
+
+
+              </div>
+
+            </div> <!-- end of panel -->
+
+          </div> <!-- end of col -->
+
+        </div> <!-- end of row -->
+
+
+
+
+  <!-- row for Recently Active Friends  -->
+        <div class="row">
+          <div class="col-xs-12">
+
+            <div class=" panel panel-default">
+
+              <div class="panel-heading">
+
+                <h3 class="panel-title text-center">
+                  Recently Active
+                </h3>
+
+              </div>
+
+
+              <div class="panel-body recently-active">
+
+                <ul class='media-list'>
+                  <%= render_recently_active(@friends, "No one's been active...") %>
+                </ul>
+
+                <div class="col-xs-12 text-center">
+
+                  <%= link_to "See All Your Friends", '#', alt: "See all your friends" %>
+
+                </div>
+
+              </div> <!-- end of panel body -->
+
+            </div> <!-- end of panel -->
+
+          </div> <!-- end of col -->
+
+        </div> <!-- end of row -->
+<!-- end of Recently Active panel -->
+
+
+
+      </div>
+<!-- end of LEFT side -->
+
+
+
+
+
+<!-- RIGHT side -->
+<!--            -->
+<!--            -->
+<!--            -->
+
+      <div class="col-lg-8">
+
+
+<!-- MAKE POST -->
+        <%= render :partial => 'posts/new', :locals => { :new_post => @user.posts.build } %>
+
+
+        <div data-content='posts'>
+          <%= render_posts(@posts, "No recent activity...") %>
+        </div>
+
+
+
+      </div>
+<!-- end of RIGHT side -->
+
+    </div>
+  </section>
+
+
+
+
+</main> <!-- container -->

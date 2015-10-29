@@ -1,0 +1,23 @@
+<main class="container content-container">
+
+
+  <section id="search-results" class="row">
+
+    <div class="row">
+      <div class="col-md-12">
+
+        <p class='text-center text-muted buffer-top'>
+          <em><%= describe_results(params[:search], @users.count) %></em>
+        </p>
+
+
+        <%= render :partial => 'results', :locals => { :users => @users } unless @users.count == 0 %>
+
+      </div>
+    </div>
+  </section>
+
+
+
+
+</main> <!-- container -->

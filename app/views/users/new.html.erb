@@ -1,0 +1,149 @@
+<main class="container">
+
+  <section id="signup">
+
+
+  <!-- Text of features listed on left side -->
+    <div class="row">
+
+      <div class="col-md-7 feature-list-section">
+
+        <div class="row text-spacer hidden-xs hidden-sm">
+      <!-- used to make space on md & lg screens -->
+        </div>
+
+        <header class="home-text-wrapper col-md-offset-1">
+
+          <h2>Connect with all your friends!</h2>
+
+          <ul>
+            <li><strong>See photos and updates</strong> in your news feed.</li>
+            <li><strong>Post your status for the world to see</strong> from your profile</li>
+            <li><strong>Get in touch with your friends</strong> by "friending" them</li>
+            <li><strong>Like things</strong> because you're a positive person!</li>
+          </ul>
+
+        </header>
+
+      </div>
+
+
+
+
+  <!-- New User Sign Up -->
+      <div class="col-md-5 sign-up-section">
+
+        <%= form_for @user, html: { class: 'sign-up-wrapper' } do |user_fields| %>
+
+          <%= user_fields.fields_for :profile do |profile_fields| %>
+
+            <h1>Sign Up</h1>
+
+            <!-- First & Last Name -->
+            <div class="row user-input-row">
+              <div class="col-md-6">
+                <%= profile_fields.text_field :first_name, class: 'form-control', placeholder: 'First Name' %>
+                <%= render_error(profile_fields.object, :first_name) %>
+              </div>
+              <div class="col-md-6">
+                <%= profile_fields.text_field :last_name, class: 'form-control', placeholder: 'Last Name' %>
+                <%= render_error(profile_fields.object, :last_name) %>
+              </div>
+            </div>
+
+            <!-- Email address -->
+            <div class="row user-input-row">
+              <div class="col-md-12">
+                <%= user_fields.email_field :email, class: 'form-control', id: 'new-email', placeholder: 'Your Email' %>
+                <%= render_error(user_fields.object, :email) %>
+              </div>
+            </div>
+
+            <!-- Password -->
+            <div class="row user-input-row">
+              <div class="col-md-12">
+                <%= user_fields.password_field :password, class: 'form-control', id: 'new-password', placeholder: 'Your New Password' %>
+                <%= render_error(user_fields.object, :password) %>
+              </div>
+            </div>
+
+            <!-- Password confirmation -->
+            <div class="row user-input-row">
+              <div class="col-md-12">
+                <%= user_fields.password_field :password_confirmation, class: 'form-control', id: 'confirm-password', placeholder: 'Confirm Your Password' %>
+                <%= render_error(user_fields.object, :password_confirmation) %>
+              </div>
+            </div>
+
+
+            <!-- Birthday header-->
+            <div class="row">
+              <div class="col-md-12">
+                <h4>Birthday</h4>
+              </div>
+            </div>
+
+            <!-- Birthday input-->
+            <div class="row user-input-row">
+              <div class="col-xs-12">
+                <%= profile_fields.date_select(:birthdate,
+                                              {
+                                                prompt: true,
+                                                order: [:month, :day, :year],
+                                                start_year: 1900,
+                                                end_year: Date.current.year
+                                              },
+                                              {
+                                                class: 'form-control'
+                                              }
+                                              ) %>
+                <%= render_error(profile_fields.object, :birthdate) %>
+              </div>
+
+            </div> <!-- End of birthday rows -->
+
+
+
+
+            <!-- Gender radio buttons -->
+            <div class="row user-input-row">
+              <div class="col-md-12">
+
+                <label class="radio-inline">
+                  <%= profile_fields.radio_button(:gender, 'Female') %>
+                  Female
+                </label>
+
+                <label class="radio-inline">
+                  <%= profile_fields.radio_button(:gender, 'Male') %>
+                  Male
+                </label>
+
+                <div>
+                  <%= render_error(profile_fields.object, :gender) %>
+                </div>
+
+              </div> <!-- column for radio buttons-->
+
+            </div> <!-- radio button row -->
+
+
+            <!-- Submit button -->
+            <div class="row submit-wrapper">
+              <%= user_fields.submit 'Sign Up!', class: 'col-md-12 btn btn-success btn-lg custom-button' %>
+            </div>
+
+
+          <% end %>
+
+        <% end %>
+
+
+
+      </div> <!-- sign-up section -->
+
+    </div> <!-- row for all content -->
+
+  </section>
+
+</main>

@@ -1,0 +1,31 @@
+<div class="panel panel-default">
+  <div class="panel-body result-panel">
+
+    <div class="row result-wrapper">
+
+      <div class="col-xs-3">
+        <%= link_to user_path(user) do %>
+          <%= image_tag user_image(user), alt: "#{user.profile.full_name}'s photo" %>
+        <% end %>
+      </div>
+
+
+      <div class="col-xs-5" >
+        <h4>
+          <%= link_to user.profile.full_name, user_path(user) %>
+          <p class='text-muted'><%= "#{user.friended_users.count} Friends" %></p>
+        </h4>
+        <p>
+          Currently Lives in <%= user.profile.currently_lives %><br>
+          From <%= user.profile.hometown %><br>
+          Born on <%= user.profile.birthdate %>
+        </p>
+      </div>
+
+      <div class="col-xs-4">
+        <%= friend_unfriend_button(user) if signed_in_user? %>
+      </div>
+
+    </div>
+  </div>
+</div>

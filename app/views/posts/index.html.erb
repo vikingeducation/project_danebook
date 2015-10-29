@@ -1,0 +1,101 @@
+<main class="container content-container">
+
+  <%= render :partial => "shared/header", :locals => { :user => @user } %>
+
+
+
+
+<!-- Start of main Timeline section -->
+  <section id="timeline" class="row">
+    <div class="row">
+
+
+
+<!-- LEFT side -->
+<!--            -->
+<!--            -->
+<!--            -->
+
+      <div class="col-lg-5 visible-lg">
+
+  <!-- row for Basic Info  -->
+        <div class="row">
+          <div class="col-xs-12">
+
+            <div class=" panel panel-default">
+
+              <div class="panel-heading">
+
+                <h3 class="panel-title text-center">
+                  About
+                </h3>
+
+              </div>
+
+
+              <div class="panel-body col-sm-offset-1">
+
+                <%= post_index_user_field('Born on', @user.profile.birthdate.to_formatted_s(:long_ordinal) ) %>
+                <%= post_index_user_field('Went to school at', @user.profile.college) %>
+                <%= post_index_user_field('Hometown', @user.profile.hometown) %>
+                <%= post_index_user_field('Currently Lives', @user.profile.currently_lives) %>
+
+              </div>
+
+            </div> <!-- end of panel -->
+
+          </div> <!-- end of col -->
+
+        </div> <!-- end of row -->
+<!-- end of Basic Info -->
+
+
+<!-- row for Photos  -->
+        <div class="row">
+          <div class="col-xs-12">
+            <%= render :partial => 'posts/photos', :locals => { :user => @user, :photos => @photos } unless @photos.empty? %>
+          </div>
+        </div>
+
+
+<!-- row for Friends  -->
+        <div class="row">
+          <div class="col-xs-12">
+            <%= render :partial => 'posts/friends', :locals => { :user => @user, :friends => @friends } unless @friends.empty? %>
+          </div>
+        </div>
+
+      </div>
+<!-- end of LEFT side -->
+
+
+
+
+
+<!-- RIGHT side -->
+<!--            -->
+<!--            -->
+<!--            -->
+
+      <div class="col-lg-7">
+
+
+<!-- MAKE POST -->
+        <%= render :partial => 'new', :locals => { :new_post => @new_post } if @user == current_user %>
+
+        <div data-content='posts'>
+          <%= render_posts(@posts, "No activity...") %>
+        </div>
+
+
+
+      </div>
+<!-- end of RIGHT side -->
+
+    </div>
+  </section>
+
+
+
+
+</main> <!-- container -->

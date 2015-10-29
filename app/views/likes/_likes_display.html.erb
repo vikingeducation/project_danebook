@@ -1,0 +1,5 @@
+<div class="pull-left">
+  <p <%= 'class=text-muted' if liked_object.class.to_s == 'Comment' %>>
+    <%= display_likers(liked_object) %>
+  </p>
+</div>

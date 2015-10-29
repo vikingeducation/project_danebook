@@ -1,0 +1,3 @@
+Hi <%= @user.profile.full_name %>!
+
+<%= @commenter_name %> has recently commented on your <%= @commentable_type %>.  View the discussion at <%= link_to "#{@link.to_s}", @link %>

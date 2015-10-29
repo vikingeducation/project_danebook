@@ -1,0 +1,38 @@
+// Place all the styles related to the Comments controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.comment-form {
+  margin-top: 16px;
+  vertical-align: middle;
+
+
+  .comment-button-wrapper {
+    margin-top: 8px;
+    margin-bottom: 4px;
+  }
+}
+
+.toggle-comment {
+  line-height: 50px; //equal to btn-sm height+margin
+  cursor: pointer;
+}
+
+.comments-wrapper {
+  border-top: 1px solid #999;
+  margin-left: 2px;
+  margin-right: 2px;
+
+  .media {
+    padding-top: 8px;
+
+    .media-heading {
+      margin-top: 8px;
+    }
+
+    .pull-left {
+      padding-right: 6px;
+    }
+  }
+}

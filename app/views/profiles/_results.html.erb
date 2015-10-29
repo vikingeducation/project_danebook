@@ -1,0 +1,29 @@
+<div class="panel panel-default">
+
+
+  <div class="panel-heading">
+    <div class="row">
+
+      <div class="col-xs-12 text-center">
+        <h1 class="panel-title"><strong>Search Results</strong></h1>
+      </div>
+
+    </div>
+
+  </div> <!-- end of panel heading -->
+
+
+
+
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-md-12">
+
+      <%= render :partial => 'result', :collection => users, :as => :user %>
+
+      </div>
+    </div>
+  </div> <!-- end of larger panel body -->
+
+
+</div>

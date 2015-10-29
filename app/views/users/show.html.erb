@@ -1,0 +1,82 @@
+<main class="container content-container">
+
+  <%= render :partial => "shared/header", :locals => { :user => @user } %>
+
+
+
+<!-- Start of main About section -->
+  <section id="about" class="row">
+
+    <div class="row">
+      <div class="col-md-12">
+
+        <div class="panel panel-default">
+
+
+          <div class="panel-heading">
+            <div class="row">
+
+              <div class="col-xs-4 col-xs-offset-4 text-center">
+                <h1 class="panel-title">About</h1>
+              </div>
+
+              <div class="col-xs-4 text-right">
+                <%= about_page_action if signed_in_user? %>
+              </div>
+
+            </div>
+
+          </div> <!-- end of panel heading -->
+
+
+
+
+          <div class="panel-body">
+            <div class="row">
+
+
+              <!-- left side -->
+              <div class="col-md-5 col-md-offset-1">
+                <h3>
+                  Basic Information
+                </h3>
+                <dl class="dl-horizontal">
+                  <%= user_show_field('Birthday', @user.profile.birthdate.to_formatted_s(:long_ordinal)) %>
+                  <%= user_show_field('College', @user.profile.college) %>
+                  <%= user_show_field('Hometown', @user.profile.hometown) %>
+                  <%= user_show_field('Currently Lives', @user.profile.currently_lives) %>
+                </dl>
+
+                <h3>
+                  Contact Information
+                </h3>
+                <dl class="dl-horizontal">
+                  <%= user_show_field('Email', @user.email) %>
+                  <%= user_show_field('Telephone', @user.profile.telephone) %>
+                </dl>
+
+              </div> <!-- end of left side -->
+
+
+              <!-- right side -->
+              <div class="col-md-6">
+                <%= user_show_text('Words to Live By', @user.profile.words_to_live_by) %>
+                <%= user_show_text('About Me', @user.profile.description) %>
+              </div> <!-- end of right side -->
+
+            </div>
+
+          </div> <!-- end of panel body -->
+
+
+
+        </div> <!-- end of panel -->
+
+      </div>
+    </div>
+  </section>
+
+
+
+
+</main> <!-- container -->

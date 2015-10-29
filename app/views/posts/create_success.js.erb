@@ -1,0 +1,19 @@
+// remove any old flashes
+$('.alert').remove();
+
+var newPost = "<%= j(render :partial => 'post', :locals => { :post => @new_post }) %>";
+var $newPost = $(newPost);
+
+var $posts = $("div[data-content='posts']");
+
+$newPost.prependTo($posts).hide();
+
+$newPost.find('.comment-form').hide();
+$newPost.slideDown(750);
+
+$('#post_body').val('');
+$("[data-info='no-activity']").hide();
+
+// make sure flash is positioned statically!
+$("<%= j(bootstrap_flash) %>").insertBefore('main');
+<% flash.clear %>

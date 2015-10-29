@@ -1,0 +1,42 @@
+// Place all the styles related to the Photos controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+// Photos page custom styles
+
+#photos {
+
+  .panel-body {
+
+    .img-thumbnail {
+      margin-bottom: 6px;
+    }
+
+    .overlay {
+      width: 160px;
+      height: 40px;
+      margin: 6px;
+      font-size: 13px;
+      color: #333;
+      vertical-align: middle;
+      position: absolute;
+      bottom: 0;
+      background: rgba(210,210,210,0.75);
+      opacity: 0;
+      -webkit-transition: opacity .25s ease;
+      -moz-transition: opacity .25s ease;
+    }
+
+    .thumbnail-wrapper:hover .overlay {
+      opacity: 1;
+    }
+  }
+
+}
+
+#photo-show {
+  .show-photo {
+    border: 1px solid #999;
+  }
+}

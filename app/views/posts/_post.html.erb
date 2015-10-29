@@ -1,0 +1,68 @@
+<div class="row" data-type='Post' data-id="<%= post.id %>">
+  <div class="col-xs-12">
+
+    <div class="panel panel-default">
+
+
+      <%= render :partial => 'posts/post_body', :locals => {  :post => post } %>
+
+
+
+      <!-- Feedback section for likes and comments -->
+      <div class="panel-footer">
+
+
+        <!-- Row to hold links -->
+        <div class="row">
+          <div class="col-xs-12">
+
+            <div class="pull-left">
+              <%= display_like_links(post) %>
+            </div>
+
+            <div class="pull-right">
+              <%= link_to 'Delete', user_post_path(post.poster, post), method: 'delete', remote: true, alt: 'Delete this post', data: { confirm: "Delete post?" } if post.poster == current_user %>
+            </div>
+
+          </div>
+        </div>  <!-- end of links row -->
+
+
+        <!-- Row to track likes -->
+        <div class="row">
+          <div class="col-xs-12">
+            <%= render :partial => 'likes/likes_display', :locals => { :liked_object => post } if post.likers %>
+          </div>
+        </div>  <!-- end of likes row -->
+
+
+        <!-- Comments media list -->
+        <div class="row comments-wrapper">
+          <%= render_comments(post) %>
+        </div> <!-- End of Comments media list -->
+
+
+        <!-- Post another comment (only if there are comments) -->
+        <div class="row">
+
+          <div class="col-xs-12">
+
+            <%= render :partial => 'comments/new', :locals => { :commentable => post,
+                                                                :new_comment => post.comments.build } if signed_in_user? %>
+
+          </div>
+
+        </div> <!-- End of Post another comment -->
+
+
+
+
+
+      </div> <!-- end of panel footer -->
+
+
+    </div> <!-- end of panel -->
+
+
+  </div>
+</div>

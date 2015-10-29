@@ -1,0 +1,5 @@
+// remove any old flashes
+$('.alert').remove();
+
+$("<%= j(bootstrap_flash) %>").insertBefore('main');
+<% flash.clear %>

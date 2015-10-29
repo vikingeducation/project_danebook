@@ -1,0 +1,7 @@
+// remove any old flashes
+$('.alert').remove();
+
+$("[data-comment-id='" + <%= @id %> + "']").slideUp(400)
+
+$("<%= j(bootstrap_flash) %>").insertBefore('main');
+<% flash.clear %>

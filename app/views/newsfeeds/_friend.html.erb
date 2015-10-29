@@ -1,0 +1,30 @@
+<li class="media">
+
+
+  <div class="media-left">
+
+    <%= link_to user_path(friend) do %>
+      <%= image_tag user_image(friend), id: 'user-photo', class: 'media-object', size: '50x50', alt: "Post poster's photo" %>
+    <% end %>
+
+  </div>
+
+
+  <div class="media-body">
+
+    <div class="media-heading">
+      <%= link_to friend.profile.full_name, user_path(friend) %>
+
+      <br>
+
+      <time datetime=<%= friend.posts.maximum(:created_at) %> pubdate>
+        <small>Posted on <%= friend.posts.maximum(:created_at).to_date.to_formatted_s(:long_ordinal) %></small>
+      </time>
+
+    </div>
+
+  </div>
+
+
+</li>
+

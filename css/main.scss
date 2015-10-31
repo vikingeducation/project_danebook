@@ -31,15 +31,15 @@
 
 // Main content
 .main {
-  padding-right: 50px;
   margin-top: 20px;
   padding-bottom: 40px;
   border: 1px solid;
 
   .nav {
+  	border-bottom: 1px solid;
   	text-align: center;
   	.btn {
-  	  margin-right: 5px;
+  	  margin-right: 10px;
   	  margin-top: 15px;
   	  box-shadow: 5px 5px 2px #000;
   	}

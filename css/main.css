@@ -3,4 +3,7 @@
   height: 25px;
   border-radius: 20px; }
 
+.container-fluid #cover-photo {
+  max-height: 400px; }
+
 /*# sourceMappingURL=main.css.map */

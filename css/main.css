@@ -5,5 +5,8 @@
 
 .container-fluid #cover-photo {
   max-height: 400px; }
+.container-fluid #profile-pic {
+  position: relative;
+  margin: -255px 0 0 45px; }
 
 /*# sourceMappingURL=main.css.map */

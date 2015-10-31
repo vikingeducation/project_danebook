@@ -5,11 +5,20 @@
  }
 
 .container-fluid {
+  border:1px solid;
   #cover-photo {
   	max-height: 400px;
   }
-  #profile-pic {
+}
+
+#profile-pic {
   	position: relative;
-  	margin: -255px 0 0 45px;
+  	top: -325px;
+  	right: -70px;
   }
+
+.nav {
+ #active {
+   background-color: #aaa;
+ }
 }

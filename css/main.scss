@@ -11,14 +11,12 @@
   }
 }
 //profile pic
-#profile-pic {
-  	position: relative;
-  	top: -325px;
-  	right: -70px;
-  }
+.img-wrapper {
+  margin-top: -255px;
+}
 // Navbar
 .nav {
- #active {
+  #active {
    background-color: #aaa;
    a:hover {
    	background-color: #aaa;
@@ -27,4 +25,33 @@
  span {
    color: #aaa;
  }
+}
+
+
+
+// Main content
+.main {
+  padding-right: 50px;
+  margin-top: 20px;
+  padding-bottom: 40px;
+  border: 1px solid;
+
+  .nav {
+  	text-align: center;
+  	.btn {
+  	  margin-right: 5px;
+  	  margin-top: 15px;
+  	  box-shadow: 5px 5px 2px #000;
+  	}
+  }
+}
+.header {
+  margin-bottom: 10px;
+}
+.header2 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+.content {
+  margin-top: 10px;
 }

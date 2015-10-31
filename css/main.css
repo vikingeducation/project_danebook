@@ -8,10 +8,8 @@
   .container-fluid #cover-photo {
     max-height: 400px; }
 
-#profile-pic {
-  position: relative;
-  top: -325px;
-  right: -70px; }
+.img-wrapper {
+  margin-top: -255px; }
 
 .nav #active {
   background-color: #aaa; }
@@ -19,5 +17,27 @@
     background-color: #aaa; }
 .nav span {
   color: #aaa; }
+
+.main {
+  padding-right: 50px;
+  margin-top: 20px;
+  padding-bottom: 40px;
+  border: 1px solid; }
+  .main .nav {
+    text-align: center; }
+    .main .nav .btn {
+      margin-right: 5px;
+      margin-top: 15px;
+      box-shadow: 5px 5px 2px #000; }
+
+.header {
+  margin-bottom: 10px; }
+
+.header2 {
+  margin-top: 20px;
+  margin-bottom: 10px; }
+
+.content {
+  margin-top: 10px; }
 
 /*# sourceMappingURL=main.css.map */

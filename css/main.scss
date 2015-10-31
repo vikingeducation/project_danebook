@@ -3,22 +3,28 @@
   height: 25px;
   border-radius: 20px;
  }
-
+//Cover-photo
 .container-fluid {
   border:1px solid;
   #cover-photo {
   	max-height: 400px;
   }
 }
-
+//profile pic
 #profile-pic {
   	position: relative;
   	top: -325px;
   	right: -70px;
   }
-
+// Navbar
 .nav {
  #active {
    background-color: #aaa;
+   a:hover {
+   	background-color: #aaa;
+   }
+ }
+ span {
+   color: #aaa;
  }
 }

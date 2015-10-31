@@ -15,5 +15,9 @@
 
 .nav #active {
   background-color: #aaa; }
+  .nav #active a:hover {
+    background-color: #aaa; }
+.nav span {
+  color: #aaa; }
 
 /*# sourceMappingURL=main.css.map */

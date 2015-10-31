@@ -58,25 +58,31 @@
     </main>
 
     <div class="container-fluid">
+        <!-- Full Width Cover Photo -->
   	    <img id="cover-photo"  src="img/hogwarts_small.jpg" class="img-responsive col-sm-12" alt="Responsive Cover">
 
   
   	    <footer>
   	      <div class="container">
-  	      <div class="col-sm-offset-2">
-  	      	<nav class="nav navbar-nav">
 
-		  	  <div class="btn btn-group" role="navigation">
-				<a type="a" class="btn btn-default btn-lg">Timeline</a>
-				<a type="a" id="active" class="btn btn-default btn-lg">About</a>
-				<a type="a" class="btn btn-default btn-lg">Photos<span> (124)</span></a>
-				<a type="a" class="btn btn-default btn-lg">Friends<span> (343)</span></a>
-		      </div>
-			</nav>
-		  </div>
+  	      <!-- Navbar Links -->
+  	      <div class="col-sm-offset-2">
+
+  	      	<!-- Links listed -->
+  	      	<ul class="nav navbar-nav">
+		      <li class="btn btn-default btn-md"><a href="#">Timeline</a></li>
+
+		      <!-- Id selector 'Active' for current location -->
+		      <li class="btn btn-default btn-md" id="active"><a href="#">About</a></li>
+		      <li class="btn btn-default btn-md"><a href="#">Photos<span> (124)</span></a></li>
+		      <li class="btn btn-default btn-md"><a href="#">Friends<span> (124)</span></a></li>
+			</ul>
 	  	  </div>
+
+	  	  <p class="navbar-text navbar-right"><a href="#" class="navbar-link">Edit-Profile</a></p>
   	    </footer>
 	</div>
+	<!-- Profile Pic -->
 	<img id="profile-pic"  src="img/harry_potter_small.jpg" class="navbar-form" alt="Responsive Cover">
 
 

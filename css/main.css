@@ -64,4 +64,31 @@
   margin-left: 60px;
   box-shadow: 5px 5px 2px #aaa; }
 
+.left-content .about-row {
+  margin-top: 10px;
+  border: 1px solid; }
+  .left-content .about-row .about-header {
+    border-bottom: 1px solid;
+    text-align: center;
+    background-color: #aaa; }
+  .left-content .about-row .about-wrapper {
+    padding-bottom: 15px; }
+.left-content .photos-row, .left-content .friends-row {
+  margin-top: 10px;
+  border: 1px solid; }
+  .left-content .photos-row .photos-header, .left-content .photos-row .friends-header, .left-content .friends-row .photos-header, .left-content .friends-row .friends-header {
+    border-bottom: 1px solid;
+    text-align: center;
+    background-color: #aaa; }
+  .left-content .photos-row .thumbnails, .left-content .friends-row .thumbnails {
+    margin-top: 10px; }
+    .left-content .photos-row .thumbnails img, .left-content .friends-row .thumbnails img {
+      width: 100px;
+      height: 100px; }
+  .left-content .photos-row footer, .left-content .friends-row footer {
+    text-align: center; }
+    .left-content .photos-row footer .more-photos, .left-content .photos-row footer .more-friends, .left-content .friends-row footer .more-photos, .left-content .friends-row footer .more-friends {
+      text-decoration: underline;
+      font-size: 20px; }
+
 /*# sourceMappingURL=main.css.map */

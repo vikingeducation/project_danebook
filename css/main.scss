@@ -94,3 +94,49 @@
   	box-shadow: 5px 5px 2px #aaa;
   }
 }
+
+// Timeline Styles
+
+.left-content {
+  .about-row {
+  	margin-top: 10px;
+  	border: 1px solid;
+    .about-header {
+      border-bottom: 1px solid;
+      text-align: center;
+      background-color: #aaa;
+    }
+
+    .about-wrapper {
+      padding-bottom: 15px;
+    }
+  }
+  
+  .photos-row, .friends-row {
+  	margin-top: 10px;
+  	border: 1px solid;
+
+  	.photos-header, .friends-header {
+  	  border-bottom: 1px solid;
+  	  text-align: center;
+  	  background-color: #aaa;
+  	}
+
+  	.thumbnails {
+  	  margin-top: 10px;
+  	  img {
+  	  	width: 100px;
+  	  	height: 100px;
+  	  }
+  	}
+  	footer {
+  	  text-align: center;
+  	  .more-photos, .more-friends {
+  	  	text-decoration: underline;
+  	  	font-size: 20px;
+  	  }
+  	}
+  }
+
+
+}

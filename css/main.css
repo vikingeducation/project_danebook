@@ -16,7 +16,7 @@
   .nav #active a:hover {
     background-color: #aaa; }
 .nav span {
-  color: #aaa; }
+  color: #0E1717; }
 
 .main {
   margin-top: 20px;
@@ -45,5 +45,23 @@
 
 .save-button {
   margin-top: 50px; }
+
+.friends .frnd-img {
+  width: 100px;
+  height: 100px;
+  display: inline-block; }
+.friends .profile {
+  margin-left: 10px;
+  display: inline-block; }
+  .friends .profile a {
+    font-size: 20px;
+    text-decoration: underline; }
+  .friends .profile span {
+    display: block; }
+.friends .col-sm-10 {
+  border: 1px solid #aaa; }
+.friends button {
+  margin-left: 60px;
+  box-shadow: 5px 5px 2px #aaa; }
 
 /*# sourceMappingURL=main.css.map */

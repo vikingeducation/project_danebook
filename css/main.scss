@@ -223,6 +223,13 @@
   	  	  .row {
   	  	  	margin-top: 10px;
   	  	  }
+  	  	  a {
+  	  	  	text-decoration: underline;
+  	  	  }
+  	  	  span {
+  	  	    font-size: 0.9em;
+  	  	    color: #aaa;
+  	  	  }
   	  	}
   	  }
 
@@ -230,6 +237,11 @@
   	  	margin: 10px;
   	  	.btn {
   	  	  margin-top: 5px;
+  	  	  box-shadow: 5px 5px 5px #000;
+  	  	}
+  	  	.cancel {
+  	  	  text-decoration: underline;
+  	  	  margin-top: 10px;
   	  	}
   	  }
 

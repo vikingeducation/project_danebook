@@ -141,10 +141,19 @@
         height: 70px; }
       .right-content .post-row .comment-footer .expanded-row .col-sm-9 .row, .right-content .comment-row .comment-footer .expanded-row .col-sm-9 .row {
         margin-top: 10px; }
+      .right-content .post-row .comment-footer .expanded-row .col-sm-9 a, .right-content .comment-row .comment-footer .expanded-row .col-sm-9 a {
+        text-decoration: underline; }
+      .right-content .post-row .comment-footer .expanded-row .col-sm-9 span, .right-content .comment-row .comment-footer .expanded-row .col-sm-9 span {
+        font-size: 0.9em;
+        color: #aaa; }
     .right-content .post-row .comment-footer .text-area, .right-content .comment-row .comment-footer .text-area {
       margin: 10px; }
       .right-content .post-row .comment-footer .text-area .btn, .right-content .comment-row .comment-footer .text-area .btn {
-        margin-top: 5px; }
+        margin-top: 5px;
+        box-shadow: 5px 5px 5px #000; }
+      .right-content .post-row .comment-footer .text-area .cancel, .right-content .comment-row .comment-footer .text-area .cancel {
+        text-decoration: underline;
+        margin-top: 10px; }
   .right-content .post-row .active-comment, .right-content .comment-row .active-comment {
     padding-left: 10px; }
 

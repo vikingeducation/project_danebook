@@ -17,9 +17,9 @@
 // Navbar
 .nav {
   #active {
-   background-color: #aaa;
+   background-color: #eee;
    a:hover {
-   	background-color: #aaa;
+   	background-color: #eee;
    }
  }
  span {
@@ -86,25 +86,26 @@
   	}
   }
   .col-sm-10 {
-   border: 1px solid #aaa;
+   border: 1px solid #eee;
   }
   
   button {
   	margin-left: 60px;
-  	box-shadow: 5px 5px 2px #aaa;
+  	box-shadow: 5px 5px 2px #eee;
   }
 }
 
 // Timeline Styles
 
 .left-content {
+ 
   .about-row {
   	margin-top: 10px;
   	border: 1px solid;
     .about-header {
       border-bottom: 1px solid;
       text-align: center;
-      background-color: #aaa;
+      background-color: #eee;
     }
 
     .about-wrapper {
@@ -119,7 +120,7 @@
   	.photos-header, .friends-header {
   	  border-bottom: 1px solid;
   	  text-align: center;
-  	  background-color: #aaa;
+  	  background-color: #eee;
   	}
 
   	.thumbnails {
@@ -135,6 +136,107 @@
   	  	text-decoration: underline;
   	  	font-size: 20px;
   	  }
+  	}
+  }
+
+}
+
+.right-content {
+  
+  .post-row, .comment-row {
+  	margin-top: 10px;
+  	border: 1px solid;
+
+  	.post-header {
+  	  border-bottom: 1px solid;
+      text-align: center;
+      background-color: #eee;
+  	}
+
+  	.text-area {
+  	  margin: 5px;
+  	}
+
+  	.post-footer {
+  	  background-color: #eee;
+  	  .btn {
+  	  	margin-right: 15px;
+  	  	box-shadow: 5px 5px 2px #000;
+  	  }
+  	}
+
+  	.comment-header {
+
+  	  img {
+  	  	margin: 10px;
+  	  	width: 70px;
+  	  	height: 70px;
+  	  }
+  	  .profile-name {
+  	  	display: inline-block;
+  	  	font-size: 17px;
+
+  	  	a {
+  	  	  text-decoration: underline;
+  	  	}
+
+  	  	span {
+  	  	  display: block;
+  	  	  color: #999;
+  	  	  font-size: 0.7em;
+  	  	}
+  	  }
+  	}
+
+  	.comment-content {
+      padding: 0 10px;
+  	}
+
+  	.comment-footer {
+  	  border-top: 1px solid;
+  	  background-color: #eee;
+  	  .navbar-form {
+  	  	a {
+  	  	  margin: 10px;
+  	  	  text-decoration: underline;
+  	  	}
+  	  	span {
+  	  	  margin-left: -5px;
+  	  	}
+  	  }
+  	  .navbar-right {
+  	  	margin-right: 10px;
+  	  }
+  	  .line-sep {
+  	  	margin-top: 10px;
+  	  	border: 1px solid #aaa;
+  	  }
+
+  	  .expanded-row {
+  	  	margin-top: 10px;
+  	  	img {
+  	  	  margin: 10px;
+  	  	  width: 70px;
+  	  	  height: 70px;
+  	  	}
+  	  	.col-sm-9 {
+  	  	  .row {
+  	  	  	margin-top: 10px;
+  	  	  }
+  	  	}
+  	  }
+
+  	  .text-area {
+  	  	margin: 10px;
+  	  	.btn {
+  	  	  margin-top: 5px;
+  	  	}
+  	  }
+
+  	}
+
+  	.active-comment {
+  	  padding-left: 10px;
   	}
   }
 

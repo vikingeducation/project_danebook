@@ -12,9 +12,9 @@
   margin-top: -255px; }
 
 .nav #active {
-  background-color: #aaa; }
+  background-color: #eee; }
   .nav #active a:hover {
-    background-color: #aaa; }
+    background-color: #eee; }
 .nav span {
   color: #0E1717; }
 
@@ -59,10 +59,10 @@
   .friends .profile span {
     display: block; }
 .friends .col-sm-10 {
-  border: 1px solid #aaa; }
+  border: 1px solid #eee; }
 .friends button {
   margin-left: 60px;
-  box-shadow: 5px 5px 2px #aaa; }
+  box-shadow: 5px 5px 2px #eee; }
 
 .left-content .about-row {
   margin-top: 10px;
@@ -70,7 +70,7 @@
   .left-content .about-row .about-header {
     border-bottom: 1px solid;
     text-align: center;
-    background-color: #aaa; }
+    background-color: #eee; }
   .left-content .about-row .about-wrapper {
     padding-bottom: 15px; }
 .left-content .photos-row, .left-content .friends-row {
@@ -79,7 +79,7 @@
   .left-content .photos-row .photos-header, .left-content .photos-row .friends-header, .left-content .friends-row .photos-header, .left-content .friends-row .friends-header {
     border-bottom: 1px solid;
     text-align: center;
-    background-color: #aaa; }
+    background-color: #eee; }
   .left-content .photos-row .thumbnails, .left-content .friends-row .thumbnails {
     margin-top: 10px; }
     .left-content .photos-row .thumbnails img, .left-content .friends-row .thumbnails img {
@@ -90,5 +90,62 @@
     .left-content .photos-row footer .more-photos, .left-content .photos-row footer .more-friends, .left-content .friends-row footer .more-photos, .left-content .friends-row footer .more-friends {
       text-decoration: underline;
       font-size: 20px; }
+
+.right-content .post-row, .right-content .comment-row {
+  margin-top: 10px;
+  border: 1px solid; }
+  .right-content .post-row .post-header, .right-content .comment-row .post-header {
+    border-bottom: 1px solid;
+    text-align: center;
+    background-color: #eee; }
+  .right-content .post-row .text-area, .right-content .comment-row .text-area {
+    margin: 5px; }
+  .right-content .post-row .post-footer, .right-content .comment-row .post-footer {
+    background-color: #eee; }
+    .right-content .post-row .post-footer .btn, .right-content .comment-row .post-footer .btn {
+      margin-right: 15px;
+      box-shadow: 5px 5px 2px #000; }
+  .right-content .post-row .comment-header img, .right-content .comment-row .comment-header img {
+    margin: 10px;
+    width: 70px;
+    height: 70px; }
+  .right-content .post-row .comment-header .profile-name, .right-content .comment-row .comment-header .profile-name {
+    display: inline-block;
+    font-size: 17px; }
+    .right-content .post-row .comment-header .profile-name a, .right-content .comment-row .comment-header .profile-name a {
+      text-decoration: underline; }
+    .right-content .post-row .comment-header .profile-name span, .right-content .comment-row .comment-header .profile-name span {
+      display: block;
+      color: #999;
+      font-size: 0.7em; }
+  .right-content .post-row .comment-content, .right-content .comment-row .comment-content {
+    padding: 0 10px; }
+  .right-content .post-row .comment-footer, .right-content .comment-row .comment-footer {
+    border-top: 1px solid;
+    background-color: #eee; }
+    .right-content .post-row .comment-footer .navbar-form a, .right-content .comment-row .comment-footer .navbar-form a {
+      margin: 10px;
+      text-decoration: underline; }
+    .right-content .post-row .comment-footer .navbar-form span, .right-content .comment-row .comment-footer .navbar-form span {
+      margin-left: -5px; }
+    .right-content .post-row .comment-footer .navbar-right, .right-content .comment-row .comment-footer .navbar-right {
+      margin-right: 10px; }
+    .right-content .post-row .comment-footer .line-sep, .right-content .comment-row .comment-footer .line-sep {
+      margin-top: 10px;
+      border: 1px solid #aaa; }
+    .right-content .post-row .comment-footer .expanded-row, .right-content .comment-row .comment-footer .expanded-row {
+      margin-top: 10px; }
+      .right-content .post-row .comment-footer .expanded-row img, .right-content .comment-row .comment-footer .expanded-row img {
+        margin: 10px;
+        width: 70px;
+        height: 70px; }
+      .right-content .post-row .comment-footer .expanded-row .col-sm-9 .row, .right-content .comment-row .comment-footer .expanded-row .col-sm-9 .row {
+        margin-top: 10px; }
+    .right-content .post-row .comment-footer .text-area, .right-content .comment-row .comment-footer .text-area {
+      margin: 10px; }
+      .right-content .post-row .comment-footer .text-area .btn, .right-content .comment-row .comment-footer .text-area .btn {
+        margin-top: 5px; }
+  .right-content .post-row .active-comment, .right-content .comment-row .active-comment {
+    padding-left: 10px; }
 
 /*# sourceMappingURL=main.css.map */

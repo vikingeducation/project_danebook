@@ -1,12 +1,16 @@
 Rails.application.routes.draw do
   get '/home', :to => 'static_pages#index'
-  get '/about', :to => 'static_pages#about'
   get '/about_edit', :to => 'static_pages#about_edit'
   get '/friends', :to => 'static_pages#friends'
   get '/news_feed', :to => 'static_pages#news_feed'
   get '/photos', :to => 'static_pages#photos'
-  get '/signup', :to => 'static_pages#signup'
   get '/timeline', :to => 'static_pages#timeline'
+
+  resources :users
+  get '/signup', :to => 'users#new'
+
+  resource :session, :only => [:create, :destroy]
+
   root :to => 'static_pages#index'
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -1,6 +1,7 @@
 // signup
 
 #signup {
+	margin-top: 16px;
 	margin-bottom: 128px;
 
 	.info {
@@ -18,7 +19,14 @@
 		}
 	}
 
-	#signup {
+	.submit-btn-container {
+		margin-top: 32px;
+	}
+
+	#signup-form {
+		margin-top: 16px;
+		margin-bottom: 16px;
+
 		.btn-default {
 			background: #009E0F;
 			border: none;

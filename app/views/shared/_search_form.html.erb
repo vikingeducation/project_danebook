@@ -15,12 +15,14 @@
 		</div>
 
 		<!-- Username -->
-		<div class="col-sm-2 col-md-2">
+		<div class="col-sm-3 col-md-3">
 
 			<p class="navbar-username navbar-text">
 				<a href="/about">
 					Harry
 				</a>
+
+				<%= link_to('Sign Out', session_path, :method => :delete, :class => 'btn btn-primary navbar-btn') %>
 			</p>
 
 		</div>

@@ -1,0 +1,33 @@
+<% unless flash.empty? %>
+
+  <div id="flash" class="row">
+    <div class="col-xs-12">
+      
+      <% if flash[:success] %>
+        <div class="alert alert-success">
+          <%= flash[:success] %>
+        </div>
+      <% end %>
+
+      <% if flash[:notice] %>
+        <div class="alert alert-info">
+          <%= flash[:notice] %>
+        </div>
+      <% end %>
+
+      <% if flash[:warning] %>
+        <div class="alert alert-warning">
+          <%= flash[:warning] %>
+        </div>
+      <% end %>
+
+      <% if flash[:error] %>
+        <div class="alert alert-danger">
+          <%= flash[:error] %>
+        </div>
+      <% end %>      
+
+    </div>
+  </div>
+
+<% end %>

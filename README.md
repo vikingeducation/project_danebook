@@ -6,7 +6,9 @@ This is the Real Dane Deal.
 
 
 
-Danebook is a website that functions similar to Facebook
+Danebook is Facebook clone.
+
+[Try it here](https://danebook-of-alice.herokuapp.com/)
 
 [Alice Fung](http://github.com/alicefung/)
 

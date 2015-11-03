@@ -24,16 +24,13 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(user_params)
-
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @user }
-      else
-        format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+    @user = User.new(whitelisted_user_params)
+    if @user.save
+      flash[:success] = "successfully create a new user"
+      redirect_to user_path(@user)
+    else
+      flash[:errors] = "user profile creation fail"
+      redirect_to root_url
     end
   end
 
@@ -71,4 +68,23 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:email)
     end
+    
+    def whitelisted_user_params
+      params.
+        require(:user).
+        permit( 
+          :email,
+          :password,
+          :password_confirmation,
+          {
+            :profile_attributes => [
+              :first_name,
+              :last_name,
+              :birthday,
+              :gender
+              ]
+          }
+          )
+    end
+    
 end

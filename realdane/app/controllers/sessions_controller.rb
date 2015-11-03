@@ -1,4 +1,13 @@
 class SessionsController < ApplicationController
+  
+  def index
+    @user = User.new
+    @user.build_profile
+  end
+  
+  def new
+    
+  end
     
   def create
     @user = User.find_by_email(params[:email])
@@ -8,11 +17,11 @@ class SessionsController < ApplicationController
       else
         sign_in(@user)
       end
-      flash[:success] = "You've successfully signed in"
+      #flash[:success] = "You've successfully signed in"
       redirect_to root_url
     else
-      flash.now[:error] = "Sign In failed"
-      render :new
+      flash[:error] = ""
+      redirect_to root_url
     end
   end
   

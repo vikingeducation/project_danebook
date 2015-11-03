@@ -10,8 +10,10 @@
 # Destroy Old Data
 # --------------------------------------------
 
-puts 'Destroying old data'
-Rake::Task['db:migrate:reset'].invoke
+unless Rails.env == 'production'
+  puts 'Destroying old data'
+  Rake::Task['db:migrate:reset'].invoke
+end
 
 # --------------------------------------------
 # Create Genders

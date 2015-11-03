@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def current_user
-    @current_user ||= User.find(session[:user_id]) if User.exists?(session[:user_id])
+    @current_user ||= User.find_by_auth_token(cookies[:auth_token]) if User.where(:auth_token => cookies[:auth_token]).present?
   end
   helper_method :current_user
 
@@ -16,15 +16,21 @@ class ApplicationController < ActionController::Base
 
   protected
   def sign_in(user)
-    session[:user_id] = user.id
+    cookies[:auth_token] = user.create_auth_token
     @current_user = user
-    @current_user == user && session[:user_id] == user.id
+    @current_user == user && cookies[:auth_token] == user.auth_token
+  end
+
+  def remember_sign_in(user)
+    cookies.permanent[:auth_token] = user.create_auth_token
+    @current_user = user
+    @current_user == user && cookies[:auth_token] == user.auth_token
   end
 
   def sign_out
     @current_user = nil
-    reset_session
-    @current_user.nil? && session[:user_id].nil?
+    cookies.permanent[:auth_token] = cookies[:auth_token] = nil
+    @current_user.nil? && cookies[:auth_token].nil?
   end
 
   def require_login

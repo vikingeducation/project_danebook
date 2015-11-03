@@ -24,6 +24,13 @@
           ) %>
     </div>
 
+    <div class="checkbox">
+      <%= label_tag do %>
+        Remember me?
+        <%= check_box_tag(:remember_me) %>
+      <% end %>
+    </div>
+
     <%= submit_tag('Sign In', :class => 'btn btn-default') %>
   <% end %>
 

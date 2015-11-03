@@ -24,7 +24,7 @@
       </div>
 
       <!-- Form -->
-      <% partial = session[:logged_in] ? 'shared/search_form' : 'sessions/form' %>
+      <% partial = current_user ? 'shared/search_form' : 'sessions/form' %>
       <%= render :partial => partial %>
     </div>
   </nav>

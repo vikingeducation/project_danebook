@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20151102212838) do
   create_table "users", force: :cascade do |t|
     t.string   "email"
     t.string   "password_digest"
+    t.string   "auth_token"
     t.string   "first_name"
     t.string   "last_name"
     t.date     "birthday"
@@ -34,6 +35,7 @@ ActiveRecord::Schema.define(version: 20151102212838) do
     t.datetime "updated_at",      null: false
   end
 
+  add_index "users", ["auth_token"], name: "index_users_on_auth_token", unique: true
   add_index "users", ["birthday"], name: "index_users_on_birthday"
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["first_name"], name: "index_users_on_first_name"

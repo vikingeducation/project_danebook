@@ -5,6 +5,7 @@ class User < ActiveRecord::Base
 
   validates :email,
             :presence => true,
+            :uniqueness => true,
             :format => /@/
 
   validates :password,
@@ -25,4 +26,12 @@ class User < ActiveRecord::Base
 
   validates :gender,
             :presence => true
+
+  def create_auth_token
+    str = SecureRandom.uuid
+    str += persisted? ? email : ''
+    auth_token = SecureRandom.urlsafe_base64 + Base64.urlsafe_encode64(str)
+    update!(:auth_token => auth_token)
+    auth_token
+  end
 end

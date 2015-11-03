@@ -30,7 +30,7 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :profile
 
-  after_create :create_profile
+  before_create :create_profile
 
   def create_auth_token
     str = SecureRandom.uuid

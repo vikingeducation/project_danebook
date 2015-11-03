@@ -43,7 +43,7 @@ class UsersController < ApplicationController
   def destroy
     if sign_out
       if @user.destroy
-        redirect_to rooth_path, :flash => {:success => 'User signed out and destroyed'}
+        redirect_to root_path, :flash => {:success => 'User signed out and destroyed'}
       else
         redirect_to root_path, :flash => {:error => 'User signed out but unable to destroy'}
       end
@@ -56,7 +56,11 @@ class UsersController < ApplicationController
 
   private
   def set_user
-    @user = User.exists?(params[:id]) ? User.find(params[:id]) : User.new
+    if User.exists?(params[:id])
+      @user = User.find(params[:id])
+    else
+      redirect_to root_path, :flash => {:error => 'Unable to find that user'}
+    end
   end
 
   def user_params
@@ -69,7 +73,15 @@ class UsersController < ApplicationController
         :first_name,
         :last_name,
         :birthday,
-        :gender_id
+        :gender_id,
+        :profile_attributes => [
+          :college,
+          :hometown,
+          :currently_lives,
+          :telephone,
+          :words_to_live_by,
+          :about_me
+        ]
       )
   end
 end

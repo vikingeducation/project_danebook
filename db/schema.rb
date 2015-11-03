@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151102212838) do
+ActiveRecord::Schema.define(version: 20151103080204) do
 
   create_table "genders", force: :cascade do |t|
     t.string   "name"
@@ -22,6 +22,24 @@ ActiveRecord::Schema.define(version: 20151102212838) do
 
   add_index "genders", ["name"], name: "index_genders_on_name"
   add_index "genders", ["short_name"], name: "index_genders_on_short_name"
+
+  create_table "profiles", force: :cascade do |t|
+    t.string   "college"
+    t.string   "hometown"
+    t.string   "currently_lives"
+    t.string   "telephone"
+    t.text     "words_to_live_by"
+    t.text     "about_me"
+    t.integer  "user_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "profiles", ["college"], name: "index_profiles_on_college"
+  add_index "profiles", ["currently_lives"], name: "index_profiles_on_currently_lives"
+  add_index "profiles", ["hometown"], name: "index_profiles_on_hometown"
+  add_index "profiles", ["telephone"], name: "index_profiles_on_telephone"
+  add_index "profiles", ["user_id"], name: "index_profiles_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email"

@@ -1,13 +1,13 @@
 <%= render :partial => 'shared/nav' %>
   
-<div class="row">
+<div class="row" style="margin-top: 32px;">
   
   <div class="col-xs-12">
     <ul class="nav nav-tabs">
       <%
       [
         ['About', current_user ? user_path(current_user) : '#'],
-        ['About Edit', '/about_edit'],
+        ['About Edit', current_user ? edit_user_path(current_user) : '#'],
         ['Friends', '/friends'],
         ['News Feed', '/news_feed'],
         ['Photos', '/photos'],

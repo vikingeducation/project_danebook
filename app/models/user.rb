@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  has_one :profile, :dependent => :destroy
   belongs_to :gender
 
   has_secure_password
@@ -26,6 +27,10 @@ class User < ActiveRecord::Base
 
   validates :gender,
             :presence => true
+
+  accepts_nested_attributes_for :profile
+
+  after_create :create_profile
 
   def create_auth_token
     str = SecureRandom.uuid

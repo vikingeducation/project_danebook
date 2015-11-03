@@ -28,10 +28,10 @@
           <div class="row">
             <div class="col-xs-12 about-info-container">
               <dl>
-                <dt>Birthday:</dt><dd>July 31st, 1980</dd>
-                <dt>College:</dt><dd>Magic School</dd>
-                <dt>Hometown:</dt><dd>Magicville, Earth</dd>
-                <dt>Currently Lives:</dt><dd>Magicville, Earth</dd>
+                <dt>Birthday:</dt><dd><%= @user.birthday.to_formatted_s(:long) %></dd>
+                <dt>College:</dt><dd><%= @user.profile ? @user.profile.college : '-' %></dd>
+                <dt>Hometown:</dt><dd><%= @user.profile ? @user.profile.hometown : '-' %></dd>
+                <dt>Currently Lives:</dt><dd><%= @user.profile ? @user.profile.currently_lives : '-' %></dd>
               </dl>
             </div>
           </div>
@@ -47,8 +47,8 @@
           <div class="row">
             <div class="col-xs-12 about-info-container">
               <dl>
-                <dt>Email:</dt><dd>harry_potter@hogwarts.edu</dd>
-                <dt>Telephone:</dt><dd>1-800-DO-MAGIC</dd>
+                <dt>Email:</dt><dd><%= @user.email %></dd>
+                <dt>Telephone:</dt><dd><%= @user.profile ? @user.profile.telephone : '-' %></dd>
               </dl>
             </div>
           </div>
@@ -67,7 +67,7 @@
           </header>
           <div class="about-info-container">
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Placeat qui eligendi tempore enim repellendus perspiciatis molestiae explicabo accusamus autem? Architecto quia velit delectus blanditiis labore, pariatur doloribus quibusdam id praesentium?
+              <%= @user.profile ? @user.profile.words_to_live_by : '-' %>
             </p>
           </div>
         </article>
@@ -81,10 +81,7 @@
           </header>
           <div class="about-info-container">
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequatur iusto quae ipsam asperiores vero minima adipisci labore voluptates modi officia molestiae tempore fuga et illo provident, eligendi, odit quod veniam.
-            </p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus optio, aperiam ea quos maxime magnam veniam autem culpa voluptate dolore ratione corporis dolorum, ducimus porro quia, minima repudiandae. Facilis, totam.
+              <%= @user.profile ? @user.profile.about_me : '-' %>
             </p>
           </div>
         </article>

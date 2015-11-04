@@ -6,9 +6,45 @@ nav {
   background-color: #3b5998;
   color:white;
 }
-    
+
    .navbar-bottom ul{
     border: 2px solid black;
     color: black;
    }
+}
+
+section {
+  .top{
+    position:relative;
+    padding-top: 15%;
+    padding-left: 1%;
+  }
+  #name{
+    position: relative;
+    display:inline-block;
+    padding-left: 10%;
+    padding-top: 12%;
+    color: white;
+  }
+  .menu{
+    display: inline-block;
+  }
+  table{
+    width:100%;
+    background-color: white;
+    padding-left: 200px;
+    border-style: solid;
+    td{
+      border-style: solid;
+    }
+    td{
+      border-style: solid;
+    }
+  }
+  .top{
+    background-image: url("http://s3.amazonaws.com/viking_education/web_development/web_app_eng/hogwarts_small.jpg");
+     background-repeat: 2;
+     border:4px solid black;
+  }
+
 }

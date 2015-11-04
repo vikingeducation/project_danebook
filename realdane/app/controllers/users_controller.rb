@@ -1,13 +1,12 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
-  
+
   def index
-    @user = User.find_by(params[:id])
-    redirect_to user_path(@user)
+    @user = User.find(params[:id])
+    #redirect_to user_path(@user)
   end
-  
+
   def show
-    @user = User.find_by(params[:id])
+    @user = User.find(params[:id])
   end
 
   # GET /users/new
@@ -26,7 +25,7 @@ class UsersController < ApplicationController
     if @user.save
       flash[:success] = "successfully create a new user"
       sign_in(@user)
-      #redirect_to user_path(@user)
+      redirect_to user_path(@user)
     else
       flash[:errors] = "user profile creation failed for some reason"
       redirect_to root_url
@@ -49,14 +48,11 @@ class UsersController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_user
-      @user = User.find(params[:id])
-    end
-    
+
     def whitelisted_user_params
       params.
         require(:user).
-        permit( 
+        permit(
           :email,
           :password,
           :password_confirmation,
@@ -70,5 +66,5 @@ class UsersController < ApplicationController
           }
           )
     end
-    
+
 end

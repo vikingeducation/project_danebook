@@ -1,7 +1,7 @@
 <section class = "col-md-6">
 <h1>Sign Up</h1>
 
-<%=form_for @user, url: { :controller => "users", :action => "create" } do |user_field|%>
+<%=form_for @user, url: users_path(@user), method: :post do |user_field|%>
     <%=user_field.fields_for :profile do |profile_field|%>
         <div class="form-group col-md-6">
             <%=profile_field.text_field :first_name, :placeholder => "First Name", :class => "form-control"%>
@@ -19,7 +19,7 @@
     <div class="form-group col-md-12">
         <%=user_field.password_field :password_confirmation, :placeholder => "Confirm your password", :class => "form-control"%>
         <h3 class="row form-group col-md-12">Birthday Choose</h3>
-        
+
         <%=user_field.fields_for :profile do |profile_field|%>
             <%=profile_field.date_field :birthday%>
             <div class="radio" id="inlineRadio">
@@ -31,7 +31,7 @@
                 </label>
             </div>
         <%end%>
-        
+
         <div class="sign-up col-md-12">
           <p>
             <%=user_field.submit "sign up now", :class => "btn btn-success btn-lg btn-block"%>  

@@ -1,0 +1,350 @@
+<%=render :partial => 'users/sign_in_navbar', :locals => {:email => @user.email}%>
+      <main class="container-fluid">
+      <section class="main-top row">
+        <section class="col-md-8 col-md-offset-2">
+          <figure class="top">
+            <img src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/harry_potter_small.jpg" alt="harry">
+            <h1 id="name">Harry Potter</h1>
+          </figure>
+        </section>
+        <section class="col-md-8 col-md-offset-2">
+          <nav class="navbar navbar-default">
+            <div class="container-fluid">
+              <ul class="nav navbar-nav">
+                <li><a href="dane_timeline.html">Timeline</a></li>
+                <li><a href="dane_about.html">About</a></li>
+                <li><a href="dane_photo.html">Photos(num)</a></li>
+                <li><a href="dane_friends.html">Friends(num)</a></li>
+              </ul>
+              <ul class="nav navbar-nav navbar-right">
+                <li><a id="editprofile" href="dane_edit.html">edit your profile</a></li>
+              </ul>
+            </div>
+          </nav>
+        </section>
+      </section>
+      <section class="main-top row">
+        <div class="panel panel-primary col-md-8 col-md-offset-2">
+          <div class="panel-heading">
+            <h1 class="panel-title">Timeline</h1>
+          </div>
+          <div class="panel-body"></div>
+          <div class="col-md-4">
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <h1 class="panel-title">About</h1>
+              </div>
+              <div class="panel-body">
+                <article class="basic-information">
+                  <h3>Basic Information</h3>
+                  <ul>
+                    <li>Birthday: July 31 2015</li>
+                    <li>Birthday: July 31 2015</li>
+                    <li>Birthday: July 31 2015</li>
+                    <li>Birthday: July 31 2015</li>
+                  </ul>
+                  <h3>Contact Information</h3>
+                  <ul>
+                    <li>Email: hsjkas@gmail.com</li>
+                    <li>Telephone: 123445566</li>
+                  </ul>
+                </article>
+              </div>
+            </div>
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <h1 class="panel-title">Photos</h1>
+              </div>
+              <div class="panel-body">
+                <div class="col-md-4">
+                  <div class="panel friends panel-default">
+                    <img class="friends-head" src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png" alt="friends"/>
+                  </div>
+                  <div class="panel friends panel-default">
+                    <img class="friends-head" src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png" alt="friends"/>
+                  </div>
+                  <div class="panel friends panel-default">
+                    <img class="friends-head" src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png" alt="friends"/>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="panel friends panel-default">
+                    <img class="friends-head" src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png" alt="friends"/>
+                  </div>
+                  <div class="panel friends panel-default">
+                    <img class="friends-head" src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png" alt="friends"/>
+                  </div>
+                  <div class="panel friends panel-default">
+                    <img class="friends-head" src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png" alt="friends"/>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="panel friends panel-default">
+                    <img class="friends-head" src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png" alt="friends"/>
+                  </div>
+                  <div class="panel friends panel-default">
+                    <img class="friends-head" src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png" alt="friends"/>
+                  </div>
+                  <div class="panel friends panel-default">
+                    <img class="friends-head" src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png" alt="friends"/>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div id="add-friends" class="col-md-10 col-md-offset-3">
+                  <a href="#">add more photos</a>
+                </div>
+              </div>
+            </div>
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <h1 class="panel-title">Friends</h1>
+              </div>
+              <div class="panel-body">
+                <div class="col-md-4">
+                  <div class="panel friends panel-default">
+                    <img class="friends-head" src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif" alt="friends"/>
+                    <p><a>John doe</a>
+                    </p><p><a>text</a></p>
+                  </div>
+                  <div class="panel friends panel-default">
+                    <img class="friends-head" src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif" alt="friends"/>
+                    <p><a>John doe</a>
+                    </p><p><a>text</a></p>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="panel friends panel-default">
+                    <img class="friends-head" src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif" alt="friends"/>
+                    <p><a>John doe</a></p>
+                    <p><a>text</a></p>
+                  </div>
+                  <div class="panel friends panel-default">
+                    <img class="friends-head" src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif" alt="friends"/>
+                    <p><a>John doe</a></p>
+                    <p><a>text</a></p>
+                  </div>
+                </div>
+                <div class="col-md-4">
+                  <div class="panel friends panel-default">
+                    <img class="friends-head" src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif" alt="friends"/>
+                    <p><a>John doe</a></p>
+                    <p><a>text</a></p>
+                  </div>
+                  <div class="panel friends panel-default">
+                    <img class="friends-head" src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif" alt="friends"/>
+                    <p><a>John doe</a></p>
+                    <p><a>text</a></p>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div id="add-friends" class="col-md-10 col-md-offset-3">
+                  <a href="#">add more friends</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
+
+
+          <div class="col-md-8">
+
+
+
+            <div class="panel panel-primary">
+              <div class="panel-heading">
+                <h3 class="panel-title">POST</h3>
+              </div>
+              <div class="panel-body">
+                <textarea rows="5" cols="75">Post What you want to say.
+                </textarea>
+              </div>
+              <div class="panel-footer"><button class="post-button btn-default col-md-offset-10">Post</button></div>
+            </div>
+
+            <div class="panel panel-primary">
+              <div class="panel-body">
+              <div class="row">
+              <div class="col-md-2">
+              <img class="friends-head" src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif" alt="friends"/>
+              </div>
+              <div id="post-time" class="col-md-10">
+              <p><a>John Doe</a> posted on XX/XX/XXXX</p>
+              </div>
+
+              </div>
+              <hr>
+              <div class="row">
+              <div class="col-md-12">
+              <p> Midnight Sun Social liked the first page you created and now they want a lot more -- they want a full HTML prototype of the site with links between pages so they can more easily show it off to users and investors. We're a victim of our own success!</p>
+              </div>
+              </div>
+              </div>
+              <div class="panel-footer">
+              <div class="row">
+              <div id = "footerinput" class="col-md-1">
+              <p><a>Like</a></p>
+              </div>
+              <div id = "footerinput" class="col-md-1">
+              <p><a>Comment</a></p>
+              </div>
+              <div id = "footerinput" class="col-md-2 col-md-offset-8">
+              <p><a>Delete</a></p>
+              </div>
+              </div>
+              </div>
+            </div>
+
+
+            <div class="panel panel-primary">
+              <div class="panel-body">
+              <div class="row">
+              <div class="col-md-2">
+              <img class="friends-head" src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif" alt="friends"/>
+              </div>
+              <div id="post-time" class="col-md-10">
+              <p><a>John Doe</a> posted on XX/XX/XXXX</p>
+              </div>
+
+              </div>
+              <hr>
+              <div class="row">
+              <div class="col-md-12">
+              <p> Midnight Sun Social liked the first page you created and now they want a lot more -- they want a full HTML prototype of the site with links between pages so they can more easily show it off to users and investors. We're a victim of our own success!</p>
+              </div>
+              </div>
+              </div>
+              <div class="panel-footer">
+              <div class="row">
+              <div id = "footerinput" class="col-md-1">
+              <p><a>Like</a></p>
+              </div>
+              <div id = "footerinput" class="col-md-1">
+              <p><a>Comment</a></p>
+              </div>
+              <div id = "footerinput" class="col-md-2 col-md-offset-8">
+              <p><a>Delete</a></p>
+              </div>
+              </div>
+                            <div class="row">
+              <div id = "footerinput" class="col-md-12">
+              <p><a>John Doe</a> like it </p>
+              </div>
+              </div>
+              </div>
+            </div>
+
+            <div class="panel panel-primary">
+              <div class="panel-body">
+              <div class="row">
+              <div class="col-md-2">
+              <img class="friends-head" src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif" alt="friends"/>
+              </div>
+              <div id="post-time" class="col-md-10">
+              <p><a>John Doe</a> posted on XX/XX/XXXX</p>
+              </div>
+
+              </div>
+              <hr>
+              <div class="row">
+              <div class="col-md-12">
+              <p> Midnight Sun Social liked the first page you created and now they want a lot more -- they want a full HTML prototype of the site with links between pages so they can more easily show it off to users and investors. We're a victim of our own success!</p>
+              </div>
+              </div>
+              </div>
+              <div class="panel-footer">
+              <div class="row">
+              <div id = "footerinput" class="col-md-1">
+              <p><a>unLike</a></p>
+              </div>
+              <div id = "footerinput" class="col-md-2 col-md-offset-8">
+              <p><a>Delete</a></p>
+              </div>
+              </div>
+                            <div class="row">
+              <div id = "footerinput" class="col-md-12">
+              <p>You and <a>John Doe</a> like it </p>
+              </div>
+
+
+              <hr>
+
+
+              <div class="comment">
+              <div class="row">
+              <div class="col-md-2 col-md-offset-2">
+              <img class="friends-head" src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif" alt="friends"/>
+              </div>
+              <div id="post-time" class="col-md-8">
+              <p><a>John Doe</a> posted on XX/XX/XXXX</p>
+              </div>
+              </div>
+              <div class="row">
+              <div class="col-md-8 col-md-offset-2">
+              <p> Midnight Sun Social liked the first page you created and now they want a lot more -- they want a full HTML prototype of the site with links between pages so they can more easily show it off to users and investors. We're a victim of our own success!</p>
+              </div>
+              </div>
+              <div class="row">
+              <div class="col-md-2 col-md-offset-2">
+              <p> <a>like</a></p>
+              </div>
+              </div>
+              </div>
+
+             <hr>
+
+              <div class="comment">
+              <div class="row">
+              <div class="col-md-2 col-md-offset-2">
+              <img class="friends-head" src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif" alt="friends"/>
+              </div>
+              <div id="post-time" class="col-md-8">
+              <p>Harry Potter posted on XX/XX/XXXX</p>
+              </div>
+              </div>
+              <div class="row">
+              <div class="col-md-8 col-md-offset-2">
+              <p> Midnight Sun Social liked the first page you created and now they want a lot more -- they want a full HTML prototype of the site with links between pages so they can more easily show it off to users and investors. We're a victim of our own success!</p>
+              </div>
+              </div>
+              <div class="row">
+              <div class="col-md-2 col-md-offset-2">
+              <p> <a>like</a></p>
+              </div>
+              <div class="col-md-2 col-md-offset-4">
+              <p> <a>delete</a></p>
+              </div>
+              </div>
+              </div>
+
+             <hr>
+
+             <div class="row">
+             <div class="col-md-1 col-md-offset-2">
+                <textarea rows="5" cols="55">Post What you want to say.
+                </textarea>
+                </div>
+              </div>
+
+              <div class="row">
+              <div class="col-md-2 col-md-offset-2">
+              <p> <a>Cancel</a></p>
+              </div>
+              <div class="col-md-2 col-md-offset-4">
+              <button class="post-button btn-default">Post</button>
+              </div>
+              </div>
+
+
+              </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+    </section>
+<hr>

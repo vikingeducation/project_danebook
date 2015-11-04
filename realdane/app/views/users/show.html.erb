@@ -1,9 +1,6 @@
-<p id="notice"><%= notice %></p>
+<%=render 'users/sign_in_navbar'%>
+<main class="container">
+<p>teste test </p>
+<%=link_to "log out", user_path, :method => "delete"%>
+</main>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
-
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>

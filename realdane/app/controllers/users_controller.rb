@@ -1,15 +1,13 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-
-  # GET /users
-  # GET /users.json
+  
   def index
-    @users = User.all
+    @user = User.find_by(params[:id])
+    redirect_to user_path(@user)
   end
-
-  # GET /users/1
-  # GET /users/1.json
+  
   def show
+    @user = User.find_by(params[:id])
   end
 
   # GET /users/new
@@ -27,9 +25,10 @@ class UsersController < ApplicationController
     @user = User.new(whitelisted_user_params)
     if @user.save
       flash[:success] = "successfully create a new user"
-      redirect_to user_path(@user)
+      sign_in(@user)
+      #redirect_to user_path(@user)
     else
-      flash[:errors] = "user profile creation fail"
+      flash[:errors] = "user profile creation failed for some reason"
       redirect_to root_url
     end
   end
@@ -37,36 +36,21 @@ class UsersController < ApplicationController
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
-    respond_to do |format|
-      if @user.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
-        format.json { render :show, status: :ok, location: @user }
-      else
-        format.html { render :edit }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
-    end
+
   end
 
   # DELETE /users/1
   # DELETE /users/1.json
   def destroy
-    @user.destroy
-    respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    #@user.destroy
+    sign_out
+    redirect_to root_url
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
       @user = User.find(params[:id])
-    end
-
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def user_params
-      params.require(:user).permit(:email)
     end
     
     def whitelisted_user_params

@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
         sign_in(@user)
       end
       #flash[:success] = "You've successfully signed in"
-      redirect_to root_url
+      #redirect_to root_url
     else
       flash[:error] = ""
       redirect_to root_url

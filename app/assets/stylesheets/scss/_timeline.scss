@@ -78,6 +78,11 @@
 		}
 	}
 
+	.no-posts {
+		padding: 16px;
+		text-align: center;
+	}
+
 	@media only screen and (max-width: 767px) {
 		.details-container {
 			margin-left: 15px;

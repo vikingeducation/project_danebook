@@ -9,10 +9,10 @@
         ['About', current_user ? user_path(current_user) : '#'],
         ['About Edit', current_user ? edit_user_path(current_user) : '#'],
         ['Friends', '/friends'],
-        ['News Feed', '/news_feed'],
+        ['News Feed', current_user ? posts_path : '#'],
         ['Photos', '/photos'],
         ['Signup', '/signup'],
-        ['Timeline', '/timeline'],
+        ['Timeline', current_user ? user_posts_path(current_user) : '#'],
         ['Sign Out', session_path, :method => :delete]
       ].each do |link_args|
       %>

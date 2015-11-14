@@ -1,0 +1,257 @@
+<%= render :partial => 'shared/profile_header' %>
+
+<!-- Profile Page / Timeline -->
+<section id="timeline" class="row profile-page-container row-offcanvas row-offcanvas-left">
+
+  <!-- Details -->
+  <div class="col-sm-4 details-container sidebar-offcanvas">
+
+    <div class="row">
+
+      <!-- About -->
+      <section id="about" class="col-xs-10 col-sm-12">
+        <header class="details-header">
+          <h1>
+            About
+          </h1>
+        </header>
+        <div class="about-container">
+          <dl>
+            <dt>Birthday:</dt><dd><%= user.birthday %></dd>
+            <dt>College:</dt><dd><%= user.profile.college %></dd>
+            <dt>Hometown:</dt><dd><%= user.profile.hometown %></dd>
+            <dt>Currently Lives:</dt><dd><%= user.profile.currently_lives %></dd>
+          </dl>
+        </div>
+      </section>
+
+      <!-- Photos -->
+      <section id="photos" class="col-xs-10 col-sm-12">
+        <header class="details-header">
+          <h1>
+            Photos
+          </h1>
+        </header>
+
+        <!-- Photo -->
+        <div class="photos-container">
+
+          <div class="row">
+            
+            <div class="col-xs-12 col-sm-4">
+              <a href="/photos">
+                <img src="/assets/images/icon_photo_small.png" alt="Photo"/>
+              </a>
+            </div>
+            <div class="col-xs-12 col-sm-4">
+              <a href="/photos">
+                <img src="/assets/images/icon_photo_small.png" alt="Photo"/>
+              </a>
+            </div>
+            <div class="col-xs-12 col-sm-4">
+              <a href="/photos">
+                <img src="/assets/images/icon_photo_small.png" alt="Photo"/>
+              </a>
+            </div>
+
+            <div class="col-xs-12 col-sm-4">
+              <a href="/photos">
+                <img src="/assets/images/icon_photo_small.png" alt="Photo"/>
+              </a>
+            </div>
+            <div class="col-xs-12 col-sm-4">
+              <a href="/photos">
+                <img src="/assets/images/icon_photo_small.png" alt="Photo"/>
+              </a>
+            </div>
+            <div class="col-xs-12 col-sm-4">
+              <a href="/photos">
+                <img src="/assets/images/icon_photo_small.png" alt="Photo"/>
+              </a>
+            </div>
+
+            <div class="col-xs-12 col-sm-4">
+              <a href="/photos">
+                <img src="/assets/images/icon_photo_small.png" alt="Photo"/>
+              </a>
+            </div>
+            <div class="col-xs-12 col-sm-4">
+              <a href="/photos">
+                <img src="/assets/images/icon_photo_small.png" alt="Photo"/>
+              </a>
+            </div>
+            <div class="col-xs-12 col-sm-4">
+              <a href="/photos">
+                <img src="/assets/images/icon_photo_small.png" alt="Photo"/>
+              </a>
+            </div>
+
+          </div>
+
+        </div>
+        <footer>
+          <a href="/photos">
+            See More Photos
+          </a>
+        </footer>
+      </section>
+
+      <!-- Friends -->
+      <section id="friends" class="col-xs-10 col-sm-12">
+        <header class="details-header">
+          <h1>
+            Friends
+          </h1>
+        </header>
+        <div class="friends-container">
+
+          <div class="row">
+            
+            <div class="col-xs-12 col-sm-4">
+              <img src="/assets/images/user_silhouette_generic.gif.png" alt="Friend"/>
+              <a href="#">
+                Friend's Name
+              </a>
+            </div>
+            <div class="col-xs-12 col-sm-4">
+              <img src="/assets/images/user_silhouette_generic.gif.png" alt="Friend"/>
+              <a href="#">
+                Friend's Name
+              </a>
+            </div>
+            <div class="col-xs-12 col-sm-4">
+              <img src="/assets/images/user_silhouette_generic.gif.png" alt="Friend"/>
+              <a href="#">
+                Friend's Name
+              </a>
+            </div>
+
+            <div class="col-xs-12 col-sm-4">
+              <img src="/assets/images/user_silhouette_generic.gif.png" alt="Friend"/>
+              <a href="#">
+                Friend's Name
+              </a>
+            </div>
+            <div class="col-xs-12 col-sm-4">
+              <img src="/assets/images/user_silhouette_generic.gif.png" alt="Friend"/>
+              <a href="#">
+                Friend's Name
+              </a>
+            </div>
+            <div class="col-xs-12 col-sm-4">
+              <img src="/assets/images/user_silhouette_generic.gif.png" alt="Friend"/>
+              <a href="#">
+                Friend's Name
+              </a>
+            </div>
+
+          </div>
+
+        </div>
+        <footer>
+          <a href="/photos">
+            See More Friends
+          </a>
+        </footer>
+      </section>
+    </div>
+
+  </div>
+
+  <!-- Timeline -->
+  <div class="col-sm-7 col-sm-offset-1 timeline-container clearfix">
+
+    <div class="pull-left visible-xs offcanvas-toggle-container">
+      <button type="button" class="btn btn-primary offcanvas-toggle" data-toggle="offcanvas">
+        <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+      </button>
+    </div>
+
+    <div class="row">
+
+      <%# Render post form only if current user is this user %>
+      <% if is_current_user?(user) %>
+
+        <%= render :partial => 'posts/form', :locals => {:post => user.posts.build} %>
+
+      <% end %>
+
+      <!-- Posts -->
+      <% if posts.present? %>
+        <% posts.order(:created_at => 'DESC').each do |post| %>
+
+          <%# This could go into a partial under posts? %>
+          <div class="post col-xs-12">
+            <header>
+              <div class="row">
+                <div class="col-xs-2">
+                  <div class="post-profile-image-container">
+                    <a href="/about">
+                      <img src="/assets/images/harry_potter_small.jpg" alt="Image"/>
+                    </a>
+                  </div>
+                </div>
+                <div class="col-xs-8 post-info-container">
+                  <a href="/about">
+                    <%= post.user.name %>
+                  </a>
+                  <time>
+                    Posted on <%= post.date %>
+                  </time>
+                </div>
+              </div>
+            </header>
+            <article>
+              <p>
+                <%= post.body %>
+              </p>
+            </article>
+            <footer>
+              <div class="row post-footer-links">
+                <div class="col-xs-1 like-link-container">
+                  <a href="#">
+                    Like
+                  </a>
+                </div>
+                <div class="col-xs-2 col-xs-offset-1 comment-link-container">
+                  <a href="#">
+                    Comment
+                  </a>
+                </div>
+
+                <% if is_current_user?(post.user) %>
+
+                  <div class="col-xs-8 delete-link-container">
+                    <%= link_to('Delete', user_post_path(user, post), :method => :delete, :data => {:confirm => 'Are you sure?'}, :class => 'text-danger') %>
+                  </div>
+
+                <% end %>
+
+
+              </div>
+            </footer>
+          </div><!-- post col -->
+
+        <% end %>
+
+      <% else %>
+
+        <div class="no-posts col-xs-12">
+          <article>
+            <p class="text-warning">
+              No posts yet!
+            </p>
+          </article>
+        </div><!-- post col -->
+
+      <% end %>
+
+    </div><!-- row -->
+
+  </div><!-- col -->
+
+</section><!-- timeline row -->
+
+
+
+

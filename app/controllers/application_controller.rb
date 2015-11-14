@@ -13,6 +13,11 @@ class ApplicationController < ActionController::Base
   end
   helper_method :signed_in_user?
 
+  def is_current_user?(user)
+    user.id == current_user.id
+  end
+  helper_method :is_current_user?
+
 
   protected
   def sign_in(user)
@@ -41,7 +46,8 @@ class ApplicationController < ActionController::Base
   end
 
   def require_current_user
-    unless current_user && params[:id].to_i == current_user.id.to_i
+    user_id = controller_name == 'users' ? params[:id] : params[:user_id]
+    unless current_user && user_id.to_i == current_user.id.to_i
       flash[:error] = 'You are unauthorized to perform that action'
       redirect_to root_path
     end

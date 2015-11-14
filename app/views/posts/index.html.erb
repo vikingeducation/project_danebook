@@ -1,0 +1,7 @@
+<%= render :partial => 'shared/nav' %>
+
+<% if @user %>
+  <%= render :partial => 'users/timeline', :locals => {:user => @user, :posts => @posts} %>
+<% else %>
+  <%= render :partial => 'news_feed', :locals => {:posts => @posts} %>
+<% end %>

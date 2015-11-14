@@ -16,6 +16,19 @@ unless Rails.env == 'production'
 end
 
 # --------------------------------------------
+# Global Variables
+# --------------------------------------------
+
+TEXT_BODIES = [
+  'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam cupiditate quibusdam nulla nobis, recusandae velit, commodi non amet delectus saepe doloribus cum ratione est excepturi porro a consectetur aliquam iste!',
+  'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam in quas facilis possimus deleniti blanditiis mollitia et quam nisi, maiores labore est. Nemo ducimus non, velit explicabo libero maiores facilis!',
+  'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus omnis maxime ducimus officiis magni quas dolore odio minus harum iusto, cumque dolorum mollitia sequi, facere voluptatem temporibus laboriosam placeat non?',
+  'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit laboriosam, atque. Esse non fuga laudantium iure quo sint inventore mollitia provident nisi beatae quod atque, voluptatum, hic maxime maiores sunt.',
+  'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium provident repudiandae qui harum, corporis repellendus illo impedit voluptatum rem nulla quae est aspernatur minus quam nesciunt doloremque fuga sequi culpa.',
+  'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet accusamus, veritatis fuga id nam corrupti quis quos inventore, perspiciatis ab! Fugiat animi, qui doloribus aut quas enim dignissimos libero dolorum?'
+]
+
+# --------------------------------------------
 # Create Genders
 # --------------------------------------------
 
@@ -77,10 +90,6 @@ TELEPHONES = [
   '867-5309'
 ]
 
-WORDS_TO_LIVE_BY = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam cupiditate quibusdam nulla nobis, recusandae velit, commodi non amet delectus saepe doloribus cum ratione est excepturi porro a consectetur aliquam iste!'
-
-ABOUT_ME = 'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam in quas facilis possimus deleniti blanditiis mollitia et quam nisi, maiores labore est. Nemo ducimus non, velit explicabo libero maiores facilis!'
-
 users = []
 FIRST_NAMES.each_with_index do |first_name, i|
   LAST_NAMES.each_with_index do |last_name, j|
@@ -96,15 +105,40 @@ FIRST_NAMES.each_with_index do |first_name, i|
         :hometown => HOMETOWNS.sample,
         :currently_lives => HOMETOWNS.sample,
         :telephone => TELEPHONES.sample,
-        :words_to_live_by => WORDS_TO_LIVE_BY,
-        :about_me => ABOUT_ME
+        :words_to_live_by => TEXT_BODIES.sample,
+        :about_me => TEXT_BODIES.sample
       }
     }
   end
 end
 User.create(users)
 
+# --------------------------------------------
+# Create Posts
+# --------------------------------------------
+
+puts 'Creating Posts'
+user_ids = User.pluck(:id)
+posts = []
+user_ids.each do |user_id|
+  0.times do |i|
+    date = i.days.ago
+    posts << {
+      :user_id => user_id,
+      :body => TEXT_BODIES.shuffle.sample,
+      :created_at => date,
+      :updated_at => date
+    }
+  end
+end
+Post.create(posts)
+
 puts 'done!'
+
+
+
+
+
 
 
 

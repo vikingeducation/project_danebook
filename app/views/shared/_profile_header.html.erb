@@ -17,9 +17,9 @@
     <div class="row profile-nav-container">
       
       <div class="col-sm-1 col-sm-offset-3">
-        <a href="/timeline">
-          Timeline
-        </a>
+        
+        <%= link_to('Timeline', user_posts_path(current_user)) %>
+
       </div>
       <div class="col-sm-1">
         <%= link_to('About', user_path(current_user), :class => 'current') %>

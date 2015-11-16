@@ -1,5 +1,5 @@
 <%= render :partial => 'shared/nav' %>
-<%= render :partial => 'shared/profile_header' %>
+<%= render :partial => 'shared/profile_header', :locals => {:user => User.first} %>
 
 <!-- Profile Page / Photos -->
 <section id="photos" class="row profile-page-container">

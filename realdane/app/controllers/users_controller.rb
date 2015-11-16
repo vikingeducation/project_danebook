@@ -11,6 +11,9 @@ class UsersController < ApplicationController
     @post = @user.posts.build
     #@post.user_id = session[:user_id]
     @posts = Post.all
+    @posts.each do |ipost|
+      ipost.comments.build
+    end
   end
 
   def show

@@ -1,6 +1,11 @@
 # CHANGELOG
 
 ## (Uncommited)
+
+- 
+
+## 9e04ac8
+
 - Move post markup to `posts/post` partial
 - Enable comment creation on posts
 - Perform authorization checks for comment create/destroy

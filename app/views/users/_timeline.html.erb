@@ -1,4 +1,4 @@
-<%= render :partial => 'shared/profile_header' %>
+<%= render :partial => 'shared/profile_header', :locals => {:user => user} %>
 
 <!-- Profile Page / Timeline -->
 <section id="timeline" class="row profile-page-container row-offcanvas row-offcanvas-left">
@@ -12,7 +12,7 @@
       <section id="about" class="col-xs-10 col-sm-12">
         <header class="details-header">
           <h1>
-            About
+            <%= user.name %>
           </h1>
         </header>
         <div class="about-container">

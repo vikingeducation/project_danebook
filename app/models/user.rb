@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   belongs_to :gender
   has_many :posts, :dependent => :destroy
   has_many :comments, :dependent => :destroy
+  has_many :likes, :dependent => :destroy
 
   has_secure_password
 

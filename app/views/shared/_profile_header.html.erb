@@ -18,11 +18,11 @@
       
       <div class="col-sm-1 col-sm-offset-3">
         
-        <%= link_to('Timeline', user_posts_path(current_user)) %>
+        <%= link_to('Timeline', user_posts_path(user)) %>
 
       </div>
       <div class="col-sm-1">
-        <%= link_to('About', user_path(current_user), :class => 'current') %>
+        <%= link_to('About', user_path(user), :class => 'current') %>
       </div>
       <div class="col-sm-2">
         <a href="/photos">
@@ -35,9 +35,9 @@
         </a>
       </div>
 
-      <% if current_user.id == @user.id %>
+      <% if user.id == @user.id %>
         <div class="col-sm-3 edit">
-          <%= link_to('Edit Profile', edit_user_path(current_user)) %>
+          <%= link_to('Edit Profile', edit_user_path(user)) %>
         </div>
       <% end %>
 

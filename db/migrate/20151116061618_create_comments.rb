@@ -8,6 +8,7 @@ class CreateComments < ActiveRecord::Migration
 
       t.index :user_id
       t.index :commentable_id
+      t.index :commentable_type
 
       t.timestamps null: false
     end

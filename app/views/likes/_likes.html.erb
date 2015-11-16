@@ -1,0 +1,59 @@
+<!-- Likes -->
+<%
+user_links = user_like_links_for(likeable)
+num_displayed_likes = user_links.length
+%>
+
+<%# If we have likes %>
+<% if likeable.likes.present? %>
+
+  <%# If the current user likes this likeable %>
+  <% if current_user_like_for(likeable)
+      num_displayed_likes += 1 %>
+
+    <%# Set separator between You and other user links and output link %>
+    <%
+    separator = ''
+    separator = ',' if user_links.present?
+    separator = ' and' if user_links.length == 1
+    %>
+    <%= link_to('You', user_path(current_user)) %><%= separator %>
+
+  <% end %>
+
+  <%# Get number of likes other than those shown in links %>
+  <% num_hidden_likes = likeable.likes.length - num_displayed_likes %>
+
+  <%# If we have links for more user likes %>
+  <% if user_links.present? %>
+
+    <%# Set the separator between those like links and output link %>
+    <% 
+    separator = ''
+    separator = ' and ' if user_links.length > 1
+    separator = ', ' if num_hidden_likes > 0
+    %>
+    <%= user_links.join(separator).html_safe %>
+
+  <% end %>
+
+  <%# If we have likes not displayed with links %>
+  <% if num_hidden_likes > 0 %>
+
+    <%# Display the number of hidden likes %>
+    and
+    <%= num_hidden_likes %>
+    other
+    <%= (num_hidden_likes) > 1 ? 'people' : 'person' %>
+
+  <% end %>
+
+  like this
+
+<%# If no likes %>
+<% else %>
+
+  No likes
+
+<% end %>
+

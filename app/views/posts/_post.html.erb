@@ -26,16 +26,16 @@
   </article>
   <footer class="post-footer">
     <div class="row post-footer-links">
-      <div class="col-xs-1 like-link-container">
-        <a href="#">
-          Like
-        </a>
+      <div class="col-xs-4 like-link-container">
+        
+        <%= render :partial => 'likes/form', :locals => {:likeable => post} %>
+
       </div>
-      <div class="col-xs-2 col-xs-offset-1 comment-link-container">
+<!--       <div class="col-xs-2 col-xs-offset-1 comment-link-container">
         <a href="#">
           Comment
         </a>
-      </div>
+      </div> -->
 
       <% if is_current_user?(post.user) %>
 
@@ -49,10 +49,9 @@
 
     <!-- Post Likes -->
     <div class="post-likes">
-      <a href="#">
-        Somebody Else
-      </a>
-      likes this
+      
+      <%= render :partial => 'likes/likes', :locals => {:likeable => post} %>
+
     </div>
 
   </footer>
@@ -62,7 +61,7 @@
 
     <% if post.comments.present? %>
 
-      <%= render post.comments %>
+      <%= render post.comments.order(:created_at => 'ASC') %>
 
     <% end %>
 

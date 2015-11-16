@@ -1,0 +1,10 @@
+<h1>
+  Users Index
+</h1>
+<ul class="list-group">
+  <% @users.each do |user| %>
+    <li class="list-group-item">
+      <%= link_to(user.name, user_posts_path(user)) %>
+    </li>
+  <% end %>
+</ul>

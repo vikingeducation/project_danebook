@@ -16,6 +16,12 @@ unless Rails.env == 'production'
 end
 
 # --------------------------------------------
+# Multiplier
+# --------------------------------------------
+
+MULTIPLIER = 1
+
+# --------------------------------------------
 # Global Variables
 # --------------------------------------------
 
@@ -121,17 +127,66 @@ puts 'Creating Posts'
 user_ids = User.pluck(:id)
 posts = []
 user_ids.each do |user_id|
-  0.times do |i|
-    date = i.days.ago
+  rand(0..(5 * MULTIPLIER)).times do
+    date = rand(0..1000).days.ago
     posts << {
       :user_id => user_id,
-      :body => TEXT_BODIES.shuffle.sample,
+      :body => TEXT_BODIES.shuffle.first,
       :created_at => date,
       :updated_at => date
     }
   end
 end
 Post.create(posts)
+
+# --------------------------------------------
+# Create Comments
+# --------------------------------------------
+
+puts 'Creating Comments'
+post_ids = Post.pluck(:id)
+comments = []
+user_ids.each do |user_id|
+  rand(0..(5 * MULTIPLIER)).times do
+    date = rand(0..1000).days.ago
+    comments << {
+      :user_id => user_id,
+      :commentable_id => post_ids.shuffle.first,
+      :commentable_type => 'Post',
+      :body => TEXT_BODIES.shuffle.first,
+      :created_at => date,
+      :updated_at => date
+    }
+  end
+end
+Comment.create(comments)
+
+# --------------------------------------------
+# Create Likes
+# --------------------------------------------
+
+puts 'Creating Likes'
+likes = []
+post_ids.each do |post_id|
+  rand(0..(5 * MULTIPLIER)).times do
+    likes << {
+      :likeable_id => post_id,
+      :likeable_type => 'Post',
+      :user_id => user_ids.shuffle.first
+    }
+  end
+end
+comment_ids = Comment.pluck(:id)
+comment_ids.each do |comment_id|
+  rand(0..(5 * MULTIPLIER)).times do
+    likes << {
+      :likeable_id => comment_id,
+      :likeable_type => 'Comment',
+      :user_id => user_ids.shuffle.first
+    }
+  end
+end
+Like.create(likes)
 
 puts 'done!'
 

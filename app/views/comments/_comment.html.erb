@@ -35,13 +35,13 @@
   <footer class="comment-footer">
     <div class="row post-footer-links">
       <div class="col-xs-8 like-link-container">
-        <a href="#">
-          Like
-        </a>
-        <a href="#">
-          3
-        </a>
-        other people like this
+        
+        <%= render :partial => 'likes/form', :locals => {:likeable => comment} %>
+
+        |
+
+        <%= render :partial => 'likes/likes', :locals => {:likeable => comment} %>
+
       </div>
       <div class="col-xs-4 delete-link-container">
         

@@ -1,5 +1,5 @@
 <%= render :partial => 'shared/nav' %>
-<%= render :partial => 'shared/profile_header' %>
+<%= render :partial => 'shared/profile_header', :locals => {:user => @user} %>
 
 <br>
 <%= render :partial => 'shared/errors', :locals => {:object => @user} %>

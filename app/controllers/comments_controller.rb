@@ -15,7 +15,7 @@ class CommentsController < ApplicationController
 
   def destroy
     if @comment.destroy
-      flash[:success] = 'Commment destroyed'
+      flash[:success] = 'Comment destroyed'
     else
       flash[:error] = 'Comment not destroyed: ' +
         @comment.errors.full_messages.join(', ')

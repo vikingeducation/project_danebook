@@ -2,7 +2,7 @@
 
 ## (Uncommited)
 
-- 
+- Create separate layout with profile header
 
 ## ee89b3d
 

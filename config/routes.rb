@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get '/home', :to => 'static_pages#index'
-  get '/about_edit', :to => 'static_pages#about_edit'
+  get '/about_edit', :to => 'static_pages#about_edit' # <<< used??
   get '/friends', :to => 'static_pages#friends'
   get '/photos', :to => 'static_pages#photos'
 
@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get '/signup', :to => 'users#new'
 
   resources :posts, :only => [:index]
-
+  resources :comments, :only => [:create, :destroy]
 
   resource :session, :only => [:create, :destroy]
 

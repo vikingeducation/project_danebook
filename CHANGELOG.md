@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## (Uncommited)
+- Move post markup to `posts/post` partial
+- Enable comment creation on posts
+- Perform authorization checks for comment create/destroy
+- Create commentable polymorphic relationship with posts
+
 ## 3038988
 
 - Added posts resource

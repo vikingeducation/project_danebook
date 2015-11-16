@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  skip_before_action :user_check, :except => [:destroy]
 
   def index
     @user = User.new

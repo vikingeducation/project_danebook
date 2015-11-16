@@ -4,9 +4,11 @@ class User < ActiveRecord::Base
     has_secure_password
     #before_save :create_profile
     validates :email, :presence => true
-    validates :password,
-              :length => { :in => 6..10 },
-              :presence => true
+    validates :password, 
+              :presence => true,
+              :allow_nil => true
+              #:length => { :in => 6..10 },
+
 
     has_one :profile, dependent: :destroy
     accepts_nested_attributes_for :profile
@@ -17,7 +19,7 @@ class User < ActiveRecord::Base
     def regenerate_auth_token
         self.auth_token = nil
         generate_token
-        #save!
+        save!
     end
 
 private

@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  resources :users
+  resources :users do
+    member do 
+      get 'timeline'
+    end
+  end
+  resources :posts, :only => [:create, :update, :destroy]
   resources :sessions, :only => [:index, :new, :create, :destroy]
   get 'login' => 'sessions#index'
   root to: 'sessions#index'

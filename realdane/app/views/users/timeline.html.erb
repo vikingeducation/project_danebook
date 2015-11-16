@@ -1,28 +1,6 @@
-<%=render :partial => 'users/sign_in_navbar', :locals => {:email => @user.email}%>
+<%=render :partial => 'users/sign_in_navbar', :locals => {:user => @user}%>
       <main class="container-fluid">
-      <section class="main-top row">
-        <section class="col-md-8 col-md-offset-2">
-          <figure class="top">
-            <img src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/harry_potter_small.jpg" alt="harry">
-            <h1 id="name">Harry Potter</h1>
-          </figure>
-        </section>
-        <section class="col-md-8 col-md-offset-2">
-          <nav class="navbar navbar-default">
-            <div class="container-fluid">
-              <ul class="nav navbar-nav">
-                <li><a href="dane_timeline.html">Timeline</a></li>
-                <li><a href="dane_about.html">About</a></li>
-                <li><a href="dane_photo.html">Photos(num)</a></li>
-                <li><a href="dane_friends.html">Friends(num)</a></li>
-              </ul>
-              <ul class="nav navbar-nav navbar-right">
-                <li><a id="editprofile" href="dane_edit.html">edit your profile</a></li>
-              </ul>
-            </div>
-          </nav>
-        </section>
-      </section>
+      <%=render :partial => 'users/face_choice_bar', :locals => {:user => @user}%>
       <section class="main-top row">
         <div class="panel panel-primary col-md-8 col-md-offset-2">
           <div class="panel-heading">
@@ -150,18 +128,17 @@
 
 
           <div class="col-md-8">
-
-
-
             <div class="panel panel-primary">
               <div class="panel-heading">
                 <h3 class="panel-title">POST</h3>
               </div>
               <div class="panel-body">
-                <textarea rows="5" cols="75">Post What you want to say.
-                </textarea>
+                  <%=form_for @post, url: posts_path(@post) do |p|%>
+                      <%#=p.hidden_field(:user_id, :value)%>
+                      <%=p.text_area(:words, :cols => 65, :rows => 5, :placeholder => "Post what you want to say")%>
+                      <%=p.submit 'Post', :class => "post-button btn-default col-md-offset-10"%>
+                  <%end%>
               </div>
-              <div class="panel-footer"><button class="post-button btn-default col-md-offset-10">Post</button></div>
             </div>
 
             <div class="panel panel-primary">

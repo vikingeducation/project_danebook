@@ -22,11 +22,14 @@ ActiveRecord::Schema.define(version: 20151104180745) do
   end
 
   create_table "likes", force: :cascade do |t|
-    t.integer  "post_id",    null: false
-    t.integer  "user_id",    null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "user_id",        null: false
+    t.integer  "user_chat_id",   null: false
+    t.string   "user_chat_type", null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
+
+  add_index "likes", ["user_chat_type", "user_chat_id"], name: "index_likes_on_user_chat_type_and_user_chat_id"
 
   create_table "posts", force: :cascade do |t|
     t.string   "words",      null: false
@@ -36,16 +39,16 @@ ActiveRecord::Schema.define(version: 20151104180745) do
   end
 
   create_table "profiles", force: :cascade do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.date     "birthday"
-    t.string   "gender"
-    t.string   "tel_number"
-    t.string   "words_to_live_by"
-    t.string   "about_me"
+    t.string   "first_name",       null: false
+    t.string   "last_name",        null: false
+    t.date     "birthday",         null: false
+    t.string   "gender",           null: false
+    t.string   "tel_number",       null: false
+    t.string   "words_to_live_by", null: false
+    t.string   "about_me",         null: false  
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
-    t.integer  "user_id"
+    t.integer  "user_id",          null: false
   end
 
   create_table "users", force: :cascade do |t|

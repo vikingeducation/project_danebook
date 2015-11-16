@@ -1,8 +1,16 @@
 class UsersController < ApplicationController
+  skip_before_action :user_check, :only =>[:create]
 
   def index
-    @user = User.find(params[:id])
+    #@user = User.find(params[:id])
     #redirect_to user_path(@user)
+  end
+  
+  def timeline
+    @user = User.find(params[:id])
+    @post = @user.posts.build
+    #@post.user_id = session[:user_id]
+    @posts = Post.all
   end
 
   def show
@@ -16,6 +24,7 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
+    @user = User.find(params[:id])
   end
 
   # POST /users

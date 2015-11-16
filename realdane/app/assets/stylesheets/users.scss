@@ -48,3 +48,82 @@ section {
   }
 
 }
+
+.friends-head {
+  height: 100%;
+  width: 100%;
+}
+.panel-footer{
+  padding-bottom: 50px;
+.post-button{
+  display: inline-block;
+}
+
+}
+
+hr { border-color: red;
+  height: 1px;
+  border: 0;
+}
+
+#footerinput{
+  margin-top: 15px;
+}
+#post-time{
+  padding-top: 10px;
+}
+
+#footerinput{
+  display:inline-block;
+}
+
+.navbar-default {
+  background-color: #ffffff;
+  border-color: #3b5998; }
+  .navbar-default .navbar-brand {
+    color: #0b0b0b; }
+    .navbar-default .navbar-brand:hover, .navbar-default .navbar-brand:focus {
+      color: #f3f0f7; }
+  .navbar-default .navbar-text {
+    color: #0b0b0b; }
+  .navbar-default .navbar-nav > li > a {
+    color: #0b0b0b; }
+    .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+      color: #f3f0f7; }
+  .navbar-default .navbar-nav > li > .dropdown-menu {
+    background-color: #ffffff; }
+    .navbar-default .navbar-nav > li > .dropdown-menu > li > a {
+      color: #0b0b0b; }
+      .navbar-default .navbar-nav > li > .dropdown-menu > li > a:hover, .navbar-default .navbar-nav > li > .dropdown-menu > li > a:focus {
+        color: #f3f0f7;
+        background-color: #3b5998; }
+    .navbar-default .navbar-nav > li > .dropdown-menu .divider {
+      background-color: #3b5998; }
+  .navbar-default .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+    color: #f3f0f7;
+    background-color: #3b5998; }
+  .navbar-default .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+    color: #f3f0f7;
+    background-color: #3b5998; }
+  .navbar-default .navbar-toggle {
+    border-color: #3b5998; }
+    .navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+      background-color: #3b5998; }
+    .navbar-default .navbar-toggle .icon-bar {
+      background-color: #0b0b0b; }
+  .navbar-default .navbar-collapse,
+  .navbar-default .navbar-form {
+    border-color: #0b0b0b; }
+  .navbar-default .navbar-link {
+    color: #0b0b0b; }
+    .navbar-default .navbar-link:hover {
+      color: #f3f0f7; }
+
+@media (max-width: 767px) {
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+    color: #0b0b0b; }
+    .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+      color: #f3f0f7; }
+  .navbar-default .navbar-nav .open .dropdown-menu > .active > a, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover, .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
+    color: #f3f0f7;
+    background-color: #3b5998; } }

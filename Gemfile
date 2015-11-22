@@ -9,6 +9,14 @@ group :development do
 	gem 'sqlite3'
 
   gem 'hirb'
+  gem 'rspec-rails'
+  gem 'guard'
+  gem 'guard-rspec'
+  gem 'factory_girl_rails'
+  gem 'database_cleaner'
+  gem 'capybara'
+  gem 'launchy'
+  gem 'selenium-webdriver'
 end
 
 group :production do

@@ -47,7 +47,6 @@ class ApplicationController < ActionController::Base
 
   def require_current_user
     user_id = controller_name == 'users' ? params[:id] : params[:user_id]
-    p [user_id, current_user.id]
     unless current_user && user_id.to_i == current_user.id.to_i
       flash[:error] = 'You are unauthorized to perform that action'
       redirect_to root_path

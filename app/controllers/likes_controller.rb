@@ -1,5 +1,5 @@
 class LikesController < ApplicationController
-  before_action :require_current_user, :only => [:create]
+  before_action :require_current_user, :only => [:create, :destroy]
   before_action :require_current_user_is_like_user, :only => [:destroy]
 
   def create
@@ -35,8 +35,8 @@ class LikesController < ApplicationController
   end
 
   def require_current_user_is_like_user
-    @like = Like.find(params[:id])
-    unless current_user && current_user.id == @like.user_id
+    @like = current_user.likes.find(params[:id])
+    unless @like
       flash[:error] = 'You are unauthorized to perform that action'
       redirect_to root_path
     end

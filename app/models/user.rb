@@ -19,11 +19,11 @@ class User < ActiveRecord::Base
 
   validates :first_name,
             :presence => true,
-            :format => {:with => /[a-zA-Z]+/}
+            :format => {:with => /\A[a-zA-Z]+\z/}
 
   validates :last_name,
             :presence => true,
-            :format => {:with => /[a-zA-Z]+/}
+            :format => {:with => /\A[a-zA-Z]+\z/}
 
   validates :birthday,
             :presence => true
@@ -40,10 +40,17 @@ class User < ActiveRecord::Base
   end
 
   def create_auth_token
-    str = SecureRandom.uuid
-    str += persisted? ? email : ''
-    auth_token = SecureRandom.urlsafe_base64 + Base64.urlsafe_encode64(str)
-    update!(:auth_token => auth_token)
+    update!(:auth_token => generate_auth_token)
     auth_token
   end
+
+
+  private
+  def generate_auth_token
+    str = SecureRandom.uuid
+    str += persisted? ? email : Time.now.to_s
+    SecureRandom.urlsafe_base64 + Base64.urlsafe_encode64(str)
+  end
 end
+
+

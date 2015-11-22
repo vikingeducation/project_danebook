@@ -3,6 +3,7 @@
 ## (Uncommited)
 
 - Create separate layout with profile header
+- Correct position of flash message with profile header
 
 ## ee89b3d
 

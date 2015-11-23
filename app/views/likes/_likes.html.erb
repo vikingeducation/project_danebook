@@ -7,6 +7,9 @@ num_displayed_likes = user_links.length
 <%# If we have likes %>
 <% if likeable.likes.present? %>
 
+  <%# You starts the like string? %>
+  <% you = nil %>
+
   <%# If the current user likes this likeable %>
   <% if current_user_like_for(likeable)
       num_displayed_likes += 1 %>
@@ -16,8 +19,9 @@ num_displayed_likes = user_links.length
     separator = ''
     separator = ',' if user_links.present?
     separator = ' and' if user_links.length == 1
+    you = 'You'
     %>
-    <%= link_to('You', user_path(current_user)) %><%= separator %>
+    <%= link_to(you, user_path(current_user)) %><%= separator %>
 
   <% end %>
 
@@ -48,7 +52,13 @@ num_displayed_likes = user_links.length
 
   <% end %>
 
-  like this
+  <%
+  pluralized = ''
+  pluralized = 's' if likeable.likes.length == 1
+  pluralized = '' if you
+  %>
+
+  like<%= pluralized %> this
 
 <%# If no likes %>
 <% else %>

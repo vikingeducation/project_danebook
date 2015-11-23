@@ -36,7 +36,6 @@ describe PostsController do
       post :create, :user_id => user.id,
                     :post => attributes_for(
                       :post,
-                      :body => FactoryHelper.text,
                       :user_id => user.id
                     )
     end

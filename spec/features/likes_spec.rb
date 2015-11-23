@@ -9,7 +9,6 @@ describe 'Likes' do
   let(:post_like){create(:post_like, :user => user, :likeable => post)}
 
   before do
-    sign_out
     visit login_path
     sign_in(user)
   end
@@ -44,3 +43,4 @@ describe 'Likes' do
     end
   end
 end
+

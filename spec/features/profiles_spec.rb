@@ -6,7 +6,6 @@ describe 'Profile' do
   let(:words_to_live_by){'This is my life and it is now or never!'}
 
   before do
-    sign_out
     visit login_path
     sign_in(user)
   end

@@ -48,8 +48,7 @@ class User < ActiveRecord::Base
 
   private
   def generate_auth_token
-    str = SecureRandom.uuid
-    str += persisted? ? email : Time.now.to_s
+    str = SecureRandom.uuid + email
     SecureRandom.urlsafe_base64 + Base64.urlsafe_encode64(str)
   end
 end

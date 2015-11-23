@@ -8,7 +8,6 @@ describe 'Post' do
   let(:post_body){'This is my post body'}
 
   before do
-    sign_out
     visit login_path
     sign_in(user)
   end

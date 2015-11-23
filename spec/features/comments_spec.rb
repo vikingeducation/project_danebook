@@ -10,7 +10,6 @@ describe 'Comments' do
 
   before do
     post_comment
-    sign_out
     visit login_path
     sign_in(user)
   end

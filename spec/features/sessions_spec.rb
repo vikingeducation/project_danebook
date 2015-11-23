@@ -5,7 +5,6 @@ describe 'Sessions' do
   let(:user){create(:user, :gender => male)}
 
   before do
-    sign_out
     visit login_path
     sign_in(user)
   end

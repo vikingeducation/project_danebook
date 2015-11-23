@@ -1,10 +1,9 @@
 class SessionsController < ApplicationController
-  def new
-  end
+  before_action :require_logout, :only => [:create]
 
   def create
     @user = User.find_by_email(params[:email])
-    if @user && @user.authenticate(params[:password]) && sign_in(@user)
+    if @user && @user.authenticate(params[:password])
       if params[:remember_me]
         remember_sign_in(@user)
       else

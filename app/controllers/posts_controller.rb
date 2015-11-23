@@ -26,11 +26,10 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.find_by_id(params[:id])
-    if @post.destroy
+    if @post && @post.destroy
       flash[:success] = 'Post destroyed'
     else
-      flash[:error] = 'Post not destroyed: ' +
-        @post.errors.full_messages.join(', ')
+      flash[:error] = 'Post not destroyed'
     end
     redirect_to user_posts_path(current_user)
   end

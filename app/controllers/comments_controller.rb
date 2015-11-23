@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
       flash[:error] = 'Comment not created: ' +
         @comment.errors.full_messages.join(', ')
     end
-    redirect_to request.referer
+    redirect_to request.referer ? request.referer : root_path
   end
 
   def destroy
@@ -20,7 +20,7 @@ class CommentsController < ApplicationController
       flash[:error] = 'Comment not destroyed: ' +
         @comment.errors.full_messages.join(', ')
     end
-    redirect_to request.referer
+    redirect_to request.referer ? request.referer : root_path
   end
 
 
@@ -35,7 +35,7 @@ class CommentsController < ApplicationController
   end
 
   def require_current_user_is_comment_user
-    @comment = current_user.comments.find(params[:id])
+    @comment = current_user.comments.find_by_id(params[:id])
     unless @comment
       flash[:error] = 'You are unauthorized to perform that action'
       redirect_to root_path

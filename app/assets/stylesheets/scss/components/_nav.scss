@@ -34,23 +34,30 @@
 	// login
 	// --------------------
 
-	#navbar-signin {
-		.btn-default {
-			color: $light;
-			background: $primary;
+	.btn-default {
+		color: $light;
+		background: $primary;
 
-			&:hover {
-				background: $light;
-				color: $primary;
-			}
+		&:hover {
+			background: $light;
+			color: $primary;
 		}
 	}
+  .btn-default {
+    display: inline-block;
+    padding: 8px;
+    margin-right: 16px;
+    line-height: 32px;
+    min-width: 64px;
+  }
+
 
 	// --------------------
 	// search
 	// --------------------
 
 	#navbar-search {
+    width: 40%;
 		.form-group,
 		input {
 			width: 100%;

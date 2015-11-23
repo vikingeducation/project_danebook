@@ -38,6 +38,13 @@ class ApplicationController < ActionController::Base
     @current_user.nil? && cookies[:auth_token].nil?
   end
 
+  def require_logout
+    if signed_in_user?
+      flash[:error] = 'Are you trying to signup a new user? Logout first!'
+      redirect_to user_posts_path(current_user)
+    end
+  end
+
   def require_login
     unless signed_in_user?
       flash[:error] = 'Please sign in to perform that action'

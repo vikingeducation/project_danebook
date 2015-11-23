@@ -4,4 +4,14 @@ class Like < ActiveRecord::Base
 
   validates :user,
             :presence => true
+
+  validate :presence_of_likeable
+
+
+  private
+  def presence_of_likeable
+    unless likeable_type.present? && likeable_id.present?
+      errors.add(:base, 'You cannot like that!')
+    end
+  end
 end

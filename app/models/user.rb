@@ -34,6 +34,7 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :profile
 
   before_create :create_profile
+  after_create :create_auth_token
 
   def name
     "#{first_name} #{last_name}"

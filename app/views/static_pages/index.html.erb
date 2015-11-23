@@ -14,7 +14,7 @@
         ['Photos', '/photos'],
         ['Signup', '/signup'],
         ['Timeline', current_user ? user_posts_path(current_user) : '#'],
-        ['Sign Out', session_path, :method => :delete]
+        ['Sign Out', logout_path]
       ].each do |link_args|
       %>
         <li role="presentation">

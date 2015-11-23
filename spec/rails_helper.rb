@@ -40,6 +40,12 @@ RSpec.configure do |config|
   # ------------------------------------
   config.include FactoryGirl::Syntax::Methods
 
+  config.include Macros::Post
+  config.include Macros::Session
+  config.include Macros::User
+  
+  config.include ControllerHelper
+
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   # config.fixture_path = "#{::Rails.root}/spec/fixtures"

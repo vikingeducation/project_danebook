@@ -3,7 +3,7 @@ require 'rails_helper'
 describe User do
   let(:male){create(:male)}
   let(:user){create(:user, :gender => male)}
-  let(:profile){create(:profile, :user => user)}
+  let(:profile){user.profile}
   let(:posts){create_list(:post, 2, :user => user)}
   let(:post_comments){create_list(:post_comment, 2, :user => user, :commentable => posts.first)}
   let(:post_like){create(:post_like, :user => user, :likeable => posts.first)}
@@ -15,7 +15,7 @@ describe User do
 
   describe '#profile' do
     it 'returns the profile that belongs to this user' do
-      expect(user.profile.user_id).to eq(user.id)
+      expect(profile.user_id).to eq(user.id)
     end
   end
 

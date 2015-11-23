@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   resources :likes, :only => [:create, :destroy]
 
   resource :session, :only => [:create, :destroy]
+  get '/login', :to => 'users#new'
+  get '/logout', :to => 'sessions#destroy'
 
   root :to => 'static_pages#index'
 

@@ -23,7 +23,7 @@ class SessionsController < ApplicationController
       flash[:success] = 'You are now signed out'
       redirect_to root_path
     else
-      redirect_to request.referer
+      redirect_to request.referer ? request.referer : root_path
       flash[:error] = 'Unable to sign out'
     end
   end

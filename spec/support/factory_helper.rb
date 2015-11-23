@@ -52,31 +52,31 @@ module FactoryHelper
     '867-5309'
   ]
 
-  def self.first_name(n)
+  def self.first_name(n=0)
     FIRST_NAMES[n % FIRST_NAMES.length]
   end
 
-  def self.last_name(n)
+  def self.last_name(n=0)
     LAST_NAMES[n % LAST_NAMES.length]
   end
 
-  def self.email(n)
+  def self.email(n=0)
     "#{first_name(n).downcase}-#{n}@#{last_name(n).downcase}.com"
   end
 
-  def self.college(n)
+  def self.college(n=0)
     COLLEGES[n % COLLEGES.length]
   end
 
-  def self.hometown(n)
+  def self.hometown(n=0)
     HOMETOWNS[n % HOMETOWNS.length]
   end
 
-  def self.telephone(n)
+  def self.telephone(n=0)
     TELEPHONES[n % TELEPHONES.length]
   end
 
-  def self.text(n)
+  def self.text(n=0)
     TEXT_BODIES[n % TEXT_BODIES.length]
   end
 end

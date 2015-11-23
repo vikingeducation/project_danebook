@@ -3,7 +3,6 @@ require 'rails_helper'
 describe Like do
   let(:male){create(:male)}
   let(:user){create(:user, :gender => male)}
-  let(:profile){create(:profile, :user => user)}
   let(:post){create(:post, :user => user)}
   let(:post_like){create(:post_like, :user => user, :likeable => post)}
 

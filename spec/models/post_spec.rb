@@ -3,7 +3,6 @@ require 'rails_helper'
 describe Post do
   let(:male){create(:male)}
   let(:user){create(:user, :gender => male)}
-  let(:profile){create(:profile, :user => user)}
   let(:post){create(:post, :user => user)}
   let(:post_comments){create_list(:post_comment, 2, :user => user, :commentable => post)}
   let(:post_likes){create_list(:post_like, 2, :user => user, :likeable => post)}

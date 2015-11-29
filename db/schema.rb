@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151116084007) do
+ActiveRecord::Schema.define(version: 20151128062124) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "body"
@@ -25,6 +25,27 @@ ActiveRecord::Schema.define(version: 20151116084007) do
   add_index "comments", ["commentable_id"], name: "index_comments_on_commentable_id"
   add_index "comments", ["commentable_type"], name: "index_comments_on_commentable_type"
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
+
+  create_table "friend_requests", force: :cascade do |t|
+    t.integer  "initiator_id"
+    t.integer  "approver_id"
+    t.boolean  "approved"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "friend_requests", ["approver_id"], name: "index_friend_requests_on_approver_id"
+  add_index "friend_requests", ["initiator_id"], name: "index_friend_requests_on_initiator_id"
+
+  create_table "friendships", force: :cascade do |t|
+    t.integer  "initiator_id"
+    t.integer  "approver_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "friendships", ["approver_id"], name: "index_friendships_on_approver_id"
+  add_index "friendships", ["initiator_id"], name: "index_friendships_on_initiator_id"
 
   create_table "genders", force: :cascade do |t|
     t.string   "name"

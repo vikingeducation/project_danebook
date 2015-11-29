@@ -118,13 +118,31 @@ FIRST_NAMES.each_with_index do |first_name, i|
   end
 end
 User.create(users)
+user_ids = User.pluck(:id)
+
+# --------------------------------------------
+# Create FriendRequests
+# --------------------------------------------
+
+puts 'Creating FriendRequests'
+user_ids.each do |user_id|
+
+end
+
+# --------------------------------------------
+# Create Friendships
+# --------------------------------------------
+
+puts 'Creating Friendships'
+user_ids.each do |user_id|
+  
+end
 
 # --------------------------------------------
 # Create Posts
 # --------------------------------------------
 
 puts 'Creating Posts'
-user_ids = User.pluck(:id)
 posts = []
 user_ids.each do |user_id|
   rand(0..(5 * MULTIPLIER)).times do

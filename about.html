@@ -1,1 +1,186 @@
-<!-- Your markup here! -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Danebook Homepage</title>
+
+    <!-- Meta Stuff -->
+    <meta charset="utf-8">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+    <!-- Our CSS -->
+    <link href="styles.css" rel="stylesheet">
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+    <!-- Bootstrap Javascripts -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+  </head>
+  
+  <body>
+
+    <nav id="topnav" class="navbar navbar-default">
+      <div class="navbar-header"> 
+        <a class="navbar-brand" href="#">DaneBook</a>
+      </div>
+      <!---  a bunch of extra stuff to make that little pressable
+              icon on mobile browsers to expand the navbar -->
+      <button type="button" 
+              class="navbar-toggle collapsed" 
+              data-toggle="collapse" 
+              data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <!--  end of extra mobile stuff -->
+
+      <ul class="nav navbar-nav navbar-right">
+      
+        <li>
+          <div class="form-group">
+            <label for="usr">Email:</label>
+            <input type="text" class="form-control" id="usr">
+          </div>
+        </li>
+      
+        <li>  
+          <div class="form-group">
+            <label for="pwd">Password:</label>
+            <input type="password" class="form-control" id="pwd">
+          </div>
+        </li>
+      
+        <li> 
+          <div class="btn-group">
+            <button type="button" class="btn btn-primary btn-md highlighted-btn">Login</button>
+          </div>
+        </li>
+      
+      </ul>
+    
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6">
+            <h3>Connect with all your friends!</h3>
+            <br><br>
+            <ul>
+              <li>See photos and updates in your feed</li>
+              <li>Post the status for the world to see from your profile</li>
+              <li>Get in touch with your friends by freinding them</li>
+              <li>Like things because you are a positive person!</li>
+            </ul>
+        </div>
+        
+        <div class="col-md-4">
+          <form action="r" method="post" class="form" role="form">
+        
+            <h2>Sign Up</h2>
+            <h4>It's free and always will be.</h4>
+        
+            <div class="row">
+        
+              <div class="col-md-6 signup-field">
+                <input type="text" name="firstname" value="" class="form-control input-lg" placeholder="First Name"/>
+              </div>
+            
+              <div class="col-md-6 signup-field">
+                <input type="text" name="lastname" value="" class="form-control input-lg" placeholder="Last Name"/>
+              </div>
+            </div>
+
+            <input type="text" name="email" value="" class="form-control input-lg signup-field" placeholder="Your Email"/>
+            <input type="password" name="password" value="" class="form-control input-lg signup-field" placeholder="Password"/>
+            <input type="password" name="confirm_password" value="" class="form-control input-lg signup-field" placeholder="Confirm Password"/> 
+            
+            <h4>Birth Date</h4> 
+
+            <div class="row">
+              <div class="col-md-4">
+                <select name="month" class = "form-control input-lg">
+                  <option value="01">Jan</option>
+                  <option value="02">Feb</option>
+                  <option value="03">Mar</option>
+                  <option value="04">Apr</option>
+                  <option value="05">May</option>
+                  <option value="06">Jun</option>
+                  <option value="07">Jul</option>
+                  <option value="08">Aug</option>
+                  <option value="09">Sep</option>
+                  <option value="10">Oct</option>
+                  <option value="11">Nov</option>
+                  <option value="12">Dec</option>
+                </select>
+              </div>
+            
+              <div class="col-md-4">
+                <select name="day" class = "form-control input-lg">
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                  <option value="9">9</option>
+                  <option value="10">10</option>
+                  <option value="11">11</option>
+                  <option value="12">12</option>
+                  <option value="13">13</option>
+                  <option value="14">14</option>
+                  <option value="15">15</option>
+                  <option value="16">16</option>
+                  <option value="17">17</option>
+                  <option value="18">18</option>
+                  <option value="19">19</option>
+                  <option value="20">20</option>
+                  <option value="21">21</option>
+                  <option value="22">22</option>
+                  <option value="23">23</option>
+                  <option value="24">24</option>
+                  <option value="25">25</option>
+                  <option value="26">26</option>
+                  <option value="27">27</option>
+                  <option value="28">28</option>
+                  <option value="29">29</option>
+                  <option value="30">30</option>
+                  <option value="31">31</option>
+                </select>
+              </div>
+              
+              <div class="col-lg-4">
+                <select name="year" class = "form-control input-lg">
+                  <option value="1935">1935</option>
+                  <option value="1936">1936</option>
+                  <option value="1937">1937</option>
+                  <option value="1938">1938</option>
+                </select>
+              </div>
+            </div>
+           
+            <h4>Gender : </h4>
+            <label class="radio-inline">
+              <input type="radio" name="gender" value="M" id=male/>
+              Male
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="gender" value="F" id=female /> 
+              Female
+            </label>
+            <br />
+            <button class="btn btn-lg btn-primary btn-block signup-btn" type="submit">
+                  Sign Up!
+            </button>
+          </form>          
+        </div>      
+      </div>
+    </div>
+  </body>
+</html>

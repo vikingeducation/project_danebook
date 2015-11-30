@@ -97,13 +97,15 @@ class User < ActiveRecord::Base
     FriendRequest.find_by_user(self)
   end
 
-  def friendable_for(user)
+  def friendship_with(user)
     friendships_with_user = friendships.find_by_user(user)
     friend_requests_with_user = friend_requests.find_by_user(user)
     if friendships_with_user.present?
       friendships_with_user.first
     elsif friend_requests_with_user.present?
       friend_requests_with_user.first
+    else
+      FriendRequest.new
     end
   end
 

@@ -1,7 +1,7 @@
-class FriendsController < ApplicationController
+class FriendRequestsController < ApplicationController
   before_action :require_current_user
   before_action :require_current_user_is_friend
-  before_action :set_friendable, :except => [:create]
+  before_action :set_friend_request, :except => [:create]
 
   def create
     @friend_request = FriendRequest.new(friend_params)
@@ -14,29 +14,28 @@ class FriendsController < ApplicationController
   end
 
   def update
-    if @friendable.accept
-      flash[:success] = 'Friendship created'
+    if @friend_request.accept
+      flash[:success] = 'Friend request accepted'
     else
-      flash[:error] = 'Friendship not created'
+      flash[:error] = 'Friendship not accepted'
     end
     redirect_to user_path(current_user)
   end
 
   def destroy
-    if @friendable.destroy
-      flash[:success] = "#{@friendable.model_name.human} destroyed"
+    if @friend_request.destroy
+      flash[:success] = "Friend request destroyed"
     else
-      flash[:error] = "#{@friendable.model_name.human} not destroyed"
+      flash[:error] = "Friend request not destroyed"
     end
     redirect_to request.referer ? request.referer : root_path
   end
 
 
   private
-  def set_friendable
-    @friendable = FriendRequest.find_by_id(params[:id])
-    @friendable = Friendship.find_by_id(params[:id]) unless @friendable || action_name == 'update'
-    redirect_to root_path, :flash => {:error => 'That was not friendly'} unless @friendable
+  def set_friend_request
+    @friend_request = FriendRequest.find_by_id(params[:id])
+    redirect_to root_path, :flash => {:error => 'Friend request not found'} unless @friend_request
   end
 
   def friend_params
@@ -60,4 +59,3 @@ class FriendsController < ApplicationController
     !!is_friend
   end
 end
-

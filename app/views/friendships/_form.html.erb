@@ -1,0 +1,9 @@
+You Are Friends:
+
+<%= link_to('- Unfriend', friendship_path(
+  friendship,
+  :user_id => current_user.id,
+  :initiator_id => friendship.initiator_id,
+  :approver_id => friendship.approver_id
+), :method => :delete, :class => 'text-danger') %>
+

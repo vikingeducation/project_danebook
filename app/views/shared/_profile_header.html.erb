@@ -45,7 +45,14 @@
 
         <% else %>
 
-          <%= render :partial => 'friends/form', :locals => {:user => user} %>
+          <%
+          friendable = current_user.friendship_with(user)
+          resource_name = friendable.class.name.underscore
+          partial = "#{resource_name.pluralize}/form"
+          locals = {:user => user}
+          locals[resource_name.to_sym] = friendable
+          %>
+          <%= render :partial => partial, :locals => locals %>
 
         <% end %>
 
@@ -56,3 +63,9 @@
   </div>
 
 </header>
+
+
+
+
+
+

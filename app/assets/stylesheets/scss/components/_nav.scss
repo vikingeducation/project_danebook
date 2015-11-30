@@ -1,48 +1,48 @@
 // nav
 
 #navbar {
-	position: static;
-	border-radius: 0;
-	border: none;
-	margin: 0;
-	line-height: 64px;
-	z-index: 100;
-	background: $primary;
+  position: static;
+  border-radius: 0;
+  border: none;
+  margin: 0;
+  line-height: 64px;
+  z-index: 100;
+  background: $primary;
 
-	// --------------------
-	// brand
-	// --------------------
+  // --------------------
+  // brand
+  // --------------------
 
-	.navbar-brand {
-		display: block;
-		height: 100%;
-		line-height: 32px;
+  .navbar-brand {
+    display: block;
+    height: 100%;
+    line-height: 32px;
 
-		img {
-			width: 32px;
-			height: 32px;
-		}
+    img {
+      width: 32px;
+      height: 32px;
+    }
 
-		span {
-			font-size: 24px;
-			padding: 0 8px;
-			color: $light;
-		}
-	}
+    span {
+      font-size: 24px;
+      padding: 0 8px;
+      color: $light;
+    }
+  }
 
-	// --------------------
-	// login
-	// --------------------
+  // --------------------
+  // login
+  // --------------------
 
-	.btn-default {
-		color: $light;
-		background: $primary;
+  .btn-default {
+    color: $light;
+    background: $primary;
 
-		&:hover {
-			background: $light;
-			color: $primary;
-		}
-	}
+    &:hover {
+      background: $light;
+      color: $primary;
+    }
+  }
   .btn-default {
     display: inline-block;
     padding: 8px;
@@ -52,85 +52,99 @@
   }
 
 
-	// --------------------
-	// search
-	// --------------------
+  // --------------------
+  // search
+  // --------------------
 
-	#navbar-search {
+  #navbar-search {
     width: 40%;
-		.form-group,
-		input {
-			width: 100%;
-		}
-	}
+    .form-group,
+    input {
+      width: 100%;
+    }
+  }
 
-	// --------------------
-	// username
-	// --------------------
+  // --------------------
+  // dropdowns
+  // --------------------
 
-	.navbar-username {
-		font-size: 18px;
-		padding-left: 16px;
-		padding-right: 16px;
-		text-align: right;
+  .dropdown-toggle {
+    background: $primary;
+    color: $light;
+  }
 
-		a {
-			color: $light;
-		}
-	}
+  .dropdown-menu {
+    padding: 8px;
+    white-space: nowrap;
+  }
 
-	.navbar-username {
-		width: 100%;
-	}
+  // --------------------
+  // username
+  // --------------------
 
-	// --------------------
-	// toggle
-	// --------------------
+  .navbar-username {
+    font-size: 18px;
+    padding-left: 16px;
+    padding-right: 16px;
+    text-align: right;
 
-	.navbar-toggle {
-		&:hover,
-		&:focus {
-			background: lighten($primary, 10%);
-		}
+    a {
+      color: $light;
+    }
+  }
 
-		.icon-bar {
-			background: $light;
-		}
-	}
+  .navbar-username {
+    width: 100%;
+  }
 
-	// --------------------
-	// shared styles
-	// --------------------
+  // --------------------
+  // toggle
+  // --------------------
 
-	.navbar-brand,
-	#navbar-search,
-	.navbar-username {
-		margin: 0;
-		display: block;
-		height: 100%;
-	}
+  .navbar-toggle {
+    &:hover,
+    &:focus {
+      background: lighten($primary, 10%);
+    }
 
-	#navbar-signin,
-	#navbar-collapse,
-	#navbar-search {
-		border-color: darken($primary, 10%);
-	}
+    .icon-bar {
+      background: $light;
+    }
+  }
 
-	// --------------------
-	// media queries
-	// --------------------
+  // --------------------
+  // shared styles
+  // --------------------
 
-	@media only screen and (max-width: 768px) {
-		.navbar-username {
-			text-align: center;
-		}
+  .navbar-brand,
+  #navbar-search,
+  .navbar-username {
+    margin: 0;
+    display: block;
+    height: 100%;
+  }
 
-		.col-sm-2,
-		.col-sm-6 {
-			padding-left: 0;
-			padding-right: 0;
-		}
-	}
+  #navbar-signin,
+  #navbar-collapse,
+  #navbar-search {
+    border-color: darken($primary, 10%);
+  }
+
+  // --------------------
+  // media queries
+  // --------------------
+
+  @media only screen and (max-width: 768px) {
+    .navbar-username {
+      text-align: center;
+    }
+
+    .col-sm-2,
+    .col-sm-6 {
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
 }
 
 // --------------------
@@ -138,15 +152,15 @@
 // --------------------
 
 @media only screen and (min-width: 768px) {
-	body {
-		padding-top: 64px;
-	}
+  body {
+    padding-top: 64px;
+  }
 
-	#navbar {
-		position: fixed;
-		top: 0;
-		right: 0;
-		left: 0;
+  #navbar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
 
-	}
+  }
 }

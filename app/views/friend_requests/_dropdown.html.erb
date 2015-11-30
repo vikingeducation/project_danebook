@@ -1,0 +1,60 @@
+<% friend_requests = current_user.received_friend_requests %>
+
+<li class="dropdown friend-requests-dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+
+    Friend Requests (<%= friend_requests.length %>)
+
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu">
+
+    <% if friend_requests.present? %>
+      <% friend_requests.each do |friend_request| %>
+        
+        <li>
+
+          <span>
+            <%= link_to(
+              friend_request.initiator.name,
+              user_posts_path(friend_request.initiator)
+            ) %>
+            :
+            
+            <% query_params = {
+              :user_id => current_user.id,
+              :initiator_id => friend_request.initiator_id,
+              :approver_id => friend_request.approver_id
+            } %>
+            
+            <%= link_to(
+              'Accept',
+              friend_request_path(
+                friend_request,
+                query_params
+              ),
+              :method => :put,
+              :class => 'text-success'
+            ) %>
+            
+            <%= link_to(
+              'Reject',
+              friend_request_path(
+                friend_request,
+                query_params
+              ),
+              :method => :delete,
+              :class => 'text-danger'
+            ) %>
+          </span>
+
+        </li>
+
+      <% end %>
+    <% else %>
+      No Friend Requests :(
+    <% end %>
+
+  </ul>
+</li>
+

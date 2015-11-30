@@ -37,15 +37,19 @@
         </a>
       </div>
 
-      <% if current_user.id == user.id %>
+      <div class="col-sm-3 edit">
 
-        <div class="col-sm-3 edit">
+        <% if current_user.id == user.id %>
 
           <%= link_to('Edit Profile', edit_user_path(user)) %>
 
-        </div>
+        <% else %>
 
-      <% end %>
+          <%= render :partial => 'friends/form', :locals => {:user => user} %>
+
+        <% end %>
+
+      </div>
 
     </div>
 

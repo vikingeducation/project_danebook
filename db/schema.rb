@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 20151128062124) do
   end
 
   add_index "friend_requests", ["approver_id"], name: "index_friend_requests_on_approver_id"
+  add_index "friend_requests", ["initiator_id", "approver_id"], name: "index_friend_requests_on_initiator_id_and_approver_id", unique: true
   add_index "friend_requests", ["initiator_id"], name: "index_friend_requests_on_initiator_id"
 
   create_table "friendships", force: :cascade do |t|
@@ -45,6 +46,7 @@ ActiveRecord::Schema.define(version: 20151128062124) do
   end
 
   add_index "friendships", ["approver_id"], name: "index_friendships_on_approver_id"
+  add_index "friendships", ["initiator_id", "approver_id"], name: "index_friendships_on_initiator_id_and_approver_id", unique: true
   add_index "friendships", ["initiator_id"], name: "index_friendships_on_initiator_id"
 
   create_table "genders", force: :cascade do |t|

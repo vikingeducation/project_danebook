@@ -15,7 +15,7 @@ class User < ActiveRecord::Base
 
   has_many  :friendship_accepters,
             :through => :requested_friendships,
-            :foreign_key => :approver_id
+            :source => :approver
 
   has_many  :accepted_friendships,
             :class_name => 'Friendship',
@@ -23,7 +23,7 @@ class User < ActiveRecord::Base
 
   has_many  :friendship_requesters,
             :through => :accepted_friendships,
-            :foreign_key => :initiator_id
+            :source => :initiator
 
   has_many  :sent_friend_requests,
             :class_name => 'FriendRequest',
@@ -31,7 +31,7 @@ class User < ActiveRecord::Base
 
   has_many  :friend_request_receivers,
             :through => :sent_friend_requests,
-            :foreign_key => :approver_id
+            :source => :approver
 
   has_many  :received_friend_requests,
             :class_name => 'FriendRequest',
@@ -39,7 +39,7 @@ class User < ActiveRecord::Base
 
   has_many  :friend_request_senders,
             :through => :received_friend_requests,
-            :foreign_key => :initiator_id
+            :source => :initiator
 
   has_secure_password
 
@@ -82,11 +82,29 @@ class User < ActiveRecord::Base
   end
 
   def friends
+    User.where(
+      'id IN (?) OR id IN (?)',
+      friendship_requesters.pluck(:id),
+      friendship_accepters.pluck(:id)
+    )
+  end
+
+  def friendships
     Friendship.find_by_user(self)
   end
 
   def friend_requests
     FriendRequest.find_by_user(self)
+  end
+
+  def friendable_for(user)
+    friendships_with_user = friendships.find_by_user(user)
+    friend_requests_with_user = friend_requests.find_by_user(user)
+    if friendships_with_user.present?
+      friendships_with_user.first
+    elsif friend_requests_with_user.present?
+      friend_requests_with_user.first
+    end
   end
 
 

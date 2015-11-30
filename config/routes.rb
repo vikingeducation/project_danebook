@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :posts, :only => [:index]
   resources :comments, :only => [:create, :destroy]
   resources :likes, :only => [:create, :destroy]
+  resources :friends, :only => [:create, :update, :destroy]
 
   resource :session, :only => [:create, :destroy]
   get '/login', :to => 'users#new'

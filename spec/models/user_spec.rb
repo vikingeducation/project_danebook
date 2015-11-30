@@ -13,6 +13,10 @@ describe User do
     user
   end
 
+  # ----------------------------------------
+  # Associations
+  # ----------------------------------------
+
   describe '#profile' do
     it 'returns the profile that belongs to this user' do
       expect(profile.user_id).to eq(user.id)
@@ -31,17 +35,53 @@ describe User do
     end
   end
 
-  describe 'comments' do
+  describe '#comments' do
     it 'returns all the comments that belong to this user' do
       expect(user.comments).to eq(post_comments)
     end
   end
 
-  describe 'likes' do
+  describe '#likes' do
     it 'returns all the likes that belong to this user' do
       expect(user.likes).to eq([post_like, comment_like])
     end
   end
+
+  describe '#requested_friendships' do
+    it 'returns the friendships where this user was the initiator'
+  end
+
+  describe '#friendship_accepters' do
+    it 'returns the users who approved the friendship of this user'
+  end
+
+  describe '#accepted_friendships' do
+    it 'returns the friendships where this user was the approver'
+  end
+
+  describe '#friendship_requesters' do
+    it 'returns the users who initiated friendship with this user'
+  end
+
+  describe '#sent_friend_requests' do
+    it 'returns the friend requests that this user initiated'
+  end
+
+  describe '#friend_request_receivers' do
+    it 'returns the users that are the approvers of the initiated friend requests of this user'
+  end
+
+  describe '#received_friend_requests' do
+    it 'returns the friend requests where this user is the approver'
+  end
+
+  describe '#friend_request_senders' do
+    it 'returns the users that are the initiators of the friend requests this user has to approve'
+  end
+
+  # ----------------------------------------
+  # Validations
+  # ----------------------------------------
 
   describe 'validates' do
     describe 'email' do
@@ -106,6 +146,10 @@ describe User do
     end
   end
 
+  # ----------------------------------------
+  # Methods
+  # ----------------------------------------
+
   describe '#name' do
     it 'returns the full name of the user' do
       expect(user.name).to eq("#{user.first_name} #{user.last_name}")
@@ -119,6 +163,40 @@ describe User do
       expect(user.auth_token).to_not eq(auth_token)
     end
   end
+
+  describe '#friends' do
+    it 'returns all of the users with whom this user is friends'
+  end
+
+  describe '#add_friend' do
+    it 'creates a new friendship between the calling user and passed user'
+    it 'destroys the pending friend request if one exists'
+  end
+
+  describe '#remove_friend' do
+    it 'destroys the friendship between the calling user and passed user'
+  end
+
+  describe '#request_friend' do
+    it 'creates a friend request between the calling user and passed user'
+  end
+
+  describe '#accept_friend' do
+    it 'results in the friend request between the calling user and passed user being destroyed'
+    it 'results in the creation of a friendship between the calling and passed user'
+  end
+
+  describe '#friendships' do
+    it 'returns all of the friendships associated with this user'
+  end
+
+  describe '#friend_requests' do
+    it 'returns all of the friend requests associated with this user'
+  end
+
+  # ----------------------------------------
+  # Hooks
+  # ----------------------------------------
 
   describe '#destroy' do
     before do

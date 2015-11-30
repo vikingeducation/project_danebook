@@ -4,6 +4,9 @@ module Friendable
   included do
     belongs_to :initiator, :class_name => 'User'
     belongs_to :approver, :class_name => 'User'
+
+    validate :enforce_unique_user_pair
+    validate :enforce_frozen_ids, :on => :update
   end
 
   class_methods do
@@ -29,6 +32,21 @@ module Friendable
         "#{logic} OR #{logic}",
         id_one, id_two, id_two, id_one
       )
+    end
+  end
+
+
+  private
+  def enforce_unique_user_pair
+    friendables = self.class.find_by_user_ids(initiator_id, approver_id)
+    if friendables.present? && friendables.pluck(:id).exclude?(id)
+      errors.add(:base, "A #{self.model_name.human.downcase} already exists with that #{initiator.model_name.human.downcase} pair")
+    end
+  end
+
+  def enforce_frozen_ids
+    if initiator_id_changed? || approver_id_changed?
+      errors.add(:base, "Cannot alter the #{initiator.model_name.human.downcase} of a #{self.model_name.human.downcase}")
     end
   end
 end

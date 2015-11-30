@@ -10,6 +10,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @friendable = current_user.friendable_for(@user) || FriendRequest.new
   end
 
   def new

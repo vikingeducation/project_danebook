@@ -91,6 +91,10 @@ img {
   width: 130px;
   height: 130px; }
 
+.smallest-photos {
+  width: 80px;
+  height: 80px; }
+
 #profile-image {
   position: absolute;
   bottom: -40px;

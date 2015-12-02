@@ -18,18 +18,17 @@
     <!-- Bootstrap Javascripts -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 
-  </head>
+ </head>
   
-  <body>
+<!-- One container wraps everything else -->
+<body class = "container-fluid">
 
-    <nav id="topnav" class="navbar navbar-default">
-      <div class="navbar-header"> 
-        <a class="navbar-brand" href="#">DaneBook</a>
-      </div>
-      <!---  a bunch of extra stuff to make that little pressable
-              icon on mobile browsers to expand the navbar -->
-      <button type="button" 
-              class="navbar-toggle collapsed" 
+  <!-- notice that this is a ROW as well as a navbar -->
+  <nav id ="search-navbar" class="navbar navbar-default row">
+
+    <!-- responsive mobile stuff collapses down  -->
+    <div class="navbar-header col-md-3 logo-container">
+      <button type="button" class="navbar-toggle collapsed" 
               data-toggle="collapse" 
               data-target="#bs-example-navbar-collapse-1">
         <span class="sr-only">Toggle navigation</span>
@@ -37,150 +36,135 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <!--  end of extra mobile stuff -->
+ 
+      <!--company brand link -->
+      <img class="pull-left img-rounded" 
+           src="http://www.mapsofworld.com/images/world-countries-flags/denmark-flag.gif">
+      <a class="navbar-brand" id = "brand-link" href="#">Danebook</a>
+    </div>
+      
+    <!-- wraps rest of links to collapse in mobile-->
+    <div class="collapse navbar-collapse col-md-9 navbar-left">
+      <form class="navbar-form" role="search">
+        <div class="search-bar input-group input-group-sm col-md-4 col-sm-4
+                    form-group">
+          <input type="text" class="form-control pull-right" 
+                 placeholder="Search">
+        </div>
+      </form>
+   
+    </div><!--navbar-collapse-->
+  </nav>
 
-      <ul class="nav navbar-nav navbar-right">
-      
-        <li>
-          <div class="form-group">
-            <label for="usr">Email:</label>
-            <input type="text" class="form-control" id="usr">
-          </div>
-        </li>
-      
-        <li>  
-          <div class="form-group">
-            <label for="pwd">Password:</label>
-            <input type="password" class="form-control" id="pwd">
-          </div>
-        </li>
-      
-        <li> 
-          <div class="btn-group">
-            <button type="button" class="btn btn-primary btn-md highlighted-btn">Login</button>
-          </div>
-        </li>
-      
-      </ul>
+  <div class="main"> <!--main container for rest of page-->
+    <div class="row no-pad"> <!--main row-->
     
-    </nav>
+      <div class="col-md-2"><!--empty left column space-->
+      </div>
+        
+      <div class="col-md-8"><!--main middle for image and nav links--> 
+  
+        <!--for the cover image -->
+        <div class="container-border row no-pad">
+         
+          <div class="image-container">
+            <img src="http://vignette3.wikia.nocookie.net/harrypotter/images/b/bd/Dhogwarts.jpg/revision/latest?cb=20120128145344"
+            class="img-responsive cover-image" alt="Responsive image">
 
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-6">
-            <h3>Connect with all your friends!</h3>
-            <br><br>
-            <ul>
-              <li>See photos and updates in your feed</li>
-              <li>Post the status for the world to see from your profile</li>
-              <li>Get in touch with your friends by freinding them</li>
-              <li>Like things because you are a positive person!</li>
-            </ul>
+            <img src="assets/Neelam_Deepa_at_Broads_Run_Broadway_1.jpg" 
+                 class="img-thumbnail" id ="profile-image" alt="profile">    
+          </div>
+          
+        <div class="row no-pad" style="border:1px solid gray;padding:0 !important;
+              margin:0;">
+          <div  class="col-md-12 text-center">
+            <div class="list-group list-group-horizontal">
+              <a href="#" class="list-group-item">Timeline</a>
+              <a href="#" class="list-group-item active">About</a>
+              <a href="#" class="list-group-item">Photos</a>
+              <a href="friends.html" class="list-group-item">Friends</a>
+              <a href="about_edit.html" class="list-group-item">Edit Profile</a>
+             </div>
+          </div>
+        </div>
+      
+        <!--
+        <div class="panel-container row no-pad">
+          <div class="col-md-3"></div>
+          <div class="panel panel-default col-md-6 panel-style"> 
+            <div class="panel-body panel-body-style">
+              <strong>About</strong>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <a href="about_edit.html">
+            <input type="button" class="btn btn-info" value="Edit Your Profile"
+                   style="margin-top:10px;background-color:#336699;">
+            </a>
+          </div>
+        </div>
+        -->
+
+        <div class="panel-container row no-pad">
+          <div class="panel panel-default page-type-panel-body panel-style"> 
+            <div class="panel-body panel-body-style">
+              <strong>About</strong>
+
+              <a href="about_edit.html">
+                <input type="button" class="btn btn-info pull-right btn-edit-profile" 
+                       value="Edit Your Profile">
+              </a>
+            </div>
+          </div>
         </div>
         
-        <div class="col-md-4">
-          <form action="r" method="post" class="form" role="form">
-        
-            <h2>Sign Up</h2>
-            <h4>It's free and always will be.</h4>
-        
-            <div class="row">
-        
-              <div class="col-md-6 signup-field">
-                <input type="text" name="firstname" value="" class="form-control input-lg" placeholder="First Name"/>
-              </div>
+        <div class="edit-profile-container">
+          <section class="col-md-6">
+            <article>
+              <h4>Basic Information</h4>
+              <dl class='dl-horizontal'>
+                <dt style="text-align:left;margin-top:0.5em;">Birthday</dt>
+                <dd style="margin-top:0.5em;">4th October 2015</dd>
+                <dt style="text-align:left;margin-top:0.5em;">College</dt>
+                <dd style="margin-top:0.5em;">CalState EastBay (CA)</dd>
+                <dt style="text-align:left;margin-top:0.5em;">Hometown</dt>
+                <dd style="margin-top:0.5em;">Mumbai, India</dd>
+                <dt style="text-align:left;margin-top:0.5em;">Currently Lives</dt>
+                <dd style="margin-top:0.5em;">San Jose, CA</dd>
+              </dl>
+            </article>
             
-              <div class="col-md-6 signup-field">
-                <input type="text" name="lastname" value="" class="form-control input-lg" placeholder="Last Name"/>
-              </div>
-            </div>
-
-            <input type="text" name="email" value="" class="form-control input-lg signup-field" placeholder="Your Email"/>
-            <input type="password" name="password" value="" class="form-control input-lg signup-field" placeholder="Password"/>
-            <input type="password" name="confirm_password" value="" class="form-control input-lg signup-field" placeholder="Confirm Password"/> 
+            <article>
+              <h4>Contact Information</h4>
+              <dl class='dl-horizontal'>
+                <dt style="text-align:left;margin-top:0.5em;">Email</dt>
+                <dd style="margin-top:0.5em;">dkackar99@yahoo.com</dd>
+                <dt style="text-align:left;margin-top:0.5em;">Phone</dt>
+                <dd style="margin-top:0.5em;">408-8964196</dd>
+              </dl>
+            </article>
+          </section>
+        
+          <section class="col-md-6">
+            <article>
+              <h4>Words to live by</h4>
+              Everything should be made as simple as possible, but not simpler.
+            </article>
             
-            <h4>Birth Date</h4> 
-
-            <div class="row">
-              <div class="col-md-4">
-                <select name="month" class = "form-control input-lg">
-                  <option value="01">Jan</option>
-                  <option value="02">Feb</option>
-                  <option value="03">Mar</option>
-                  <option value="04">Apr</option>
-                  <option value="05">May</option>
-                  <option value="06">Jun</option>
-                  <option value="07">Jul</option>
-                  <option value="08">Aug</option>
-                  <option value="09">Sep</option>
-                  <option value="10">Oct</option>
-                  <option value="11">Nov</option>
-                  <option value="12">Dec</option>
-                </select>
-              </div>
-            
-              <div class="col-md-4">
-                <select name="day" class = "form-control input-lg">
-                  <option value="1">1</option>
-                  <option value="2">2</option>
-                  <option value="3">3</option>
-                  <option value="4">4</option>
-                  <option value="5">5</option>
-                  <option value="6">6</option>
-                  <option value="7">7</option>
-                  <option value="8">8</option>
-                  <option value="9">9</option>
-                  <option value="10">10</option>
-                  <option value="11">11</option>
-                  <option value="12">12</option>
-                  <option value="13">13</option>
-                  <option value="14">14</option>
-                  <option value="15">15</option>
-                  <option value="16">16</option>
-                  <option value="17">17</option>
-                  <option value="18">18</option>
-                  <option value="19">19</option>
-                  <option value="20">20</option>
-                  <option value="21">21</option>
-                  <option value="22">22</option>
-                  <option value="23">23</option>
-                  <option value="24">24</option>
-                  <option value="25">25</option>
-                  <option value="26">26</option>
-                  <option value="27">27</option>
-                  <option value="28">28</option>
-                  <option value="29">29</option>
-                  <option value="30">30</option>
-                  <option value="31">31</option>
-                </select>
-              </div>
-              
-              <div class="col-lg-4">
-                <select name="year" class = "form-control input-lg">
-                  <option value="1935">1935</option>
-                  <option value="1936">1936</option>
-                  <option value="1937">1937</option>
-                  <option value="1938">1938</option>
-                </select>
-              </div>
-            </div>
-           
-            <h4>Gender : </h4>
-            <label class="radio-inline">
-              <input type="radio" name="gender" value="M" id=male/>
-              Male
-            </label>
-            <label class="radio-inline">
-              <input type="radio" name="gender" value="F" id=female /> 
-              Female
-            </label>
-            <br />
-            <button class="btn btn-lg btn-primary btn-block signup-btn" type="submit">
-                  Sign Up!
-            </button>
-          </form>          
-        </div>      
+            <article>
+              <h4>About me</h4>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vulputate ante tristique tempus volutpat. Sed vitae lacus quis arcu tempus mollis vitae sed justo. In aliquam, augue ut mollis efficitur, arcu diam finibus lacus, a molestie libero neque vel nisl. Nulla iaculis justo eu sagittis dapibus. Nunc sollicitudin ex et lobortis efficitur. Aenean sed nibh cong
+            </article>
+          </section>
+      
+        </div>
+      
+      </div>
+        
+      <div class="col-md-2">
       </div>
     </div>
+  </div> 
+  
   </body>
 </html>

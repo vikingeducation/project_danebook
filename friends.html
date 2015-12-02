@@ -1,1 +1,227 @@
-<!-- Your markup here! -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Danebook - Edit Profile</title>
+
+    <!-- Meta Stuff -->
+    <meta charset="utf-8">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+    <!-- Our CSS -->
+    <link href="styles.css" rel="stylesheet">
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+    <!-- Bootstrap Javascripts -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+ </head>
+  
+<!-- One container wraps everything else -->
+<body class = "container-fluid">
+
+  <!-- notice that this is a ROW as well as a navbar -->
+  <nav id ="search-navbar" class="navbar navbar-default row">
+
+    <!-- responsive mobile stuff collapses down  -->
+    <div class="navbar-header col-md-3 logo-container">
+      <button type="button" class="navbar-toggle collapsed" 
+              data-toggle="collapse" 
+              data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+ 
+      <!--company brand link -->
+      <img class="pull-left img-rounded" 
+           src="http://www.mapsofworld.com/images/world-countries-flags/denmark-flag.gif">
+      <a class="navbar-brand" id = "brand-link" href="#">Danebook</a>
+    </div>
+      
+    <!-- wraps rest of links to collapse in mobile-->
+    <div class="collapse navbar-collapse col-md-9 navbar-left">
+      <form class="navbar-form" role="search">
+        <div class="search-bar input-group input-group-sm col-md-4 col-sm-4
+                    form-group">
+          <input type="text" class="form-control pull-right" 
+                 placeholder="Search">
+        </div>
+      </form>
+   
+    </div><!--navbar-collapse-->
+  </nav>
+
+  <div class="main"> <!--main container for rest of page-->
+    <div class="row no-pad"> <!--main row-->
+    
+      <div class="col-md-2"><!--empty left column space-->
+      </div>
+        
+      <div class="col-md-8"><!--main middle for image and nav links--> 
+  
+        <!--for the cover image -->
+        <div class="container-border row no-pad">
+         
+          <div class="image-container">
+            <img src="http://vignette3.wikia.nocookie.net/harrypotter/images/b/bd/Dhogwarts.jpg/revision/latest?cb=20120128145344"
+            class="img-responsive cover-image" alt="Responsive image">
+
+            <img src="assets/Neelam_Deepa_at_Broads_Run_Broadway_1.jpg" 
+                 class="img-thumbnail" id ="profile-image" alt="profile">    
+          </div>
+          
+          <!--for the navigation bar to diffetent pages-->
+          <div class="row no-pad border-container"> 
+
+            <div  class="col-md-12 text-center">
+              <div class="list-group list-group-horizontal">
+                <a href="#" class="list-group-item">Timeline</a>
+                <a href="about.html" class="list-group-item">About</a>
+                <a href="#" class="list-group-item">Photos</a>
+                <a href="#" class="list-group-item active">Friends</a>
+                <a href="about_edit.html" class="list-group-item">
+                   Edit Profile
+                </a>
+               </div>
+            </div>
+          </div> <!--end navigation bar to diffetent pages-->
+        </div> <!--end top container-->
+
+        <!--Friends info header-->
+        <div class="row no-pad container-border page-type">
+          
+          <div class="panel-container row no-pad">
+            <div class="panel panel-default page-type-panel-body panel-style"> 
+              <div class="panel-body panel-body-style">
+                <strong>Friends</strong>
+              </div>
+            </div>
+          </div>
+
+          <!--outer photo cont-->
+          <div class="row no-pad" style="margin:4px;">
+            
+            <div class="col-md-6 container-border">
+
+              <div class="row no-pad">
+                <div class="col-md-4">
+                  <img src="assets/vishal.jpeg" alt="vishal kackar"
+                       class="friend-photos img-rounded img-thumbnail
+                              pull-left">
+                </div>
+                
+                <div class="col-md-4 text-capitalize small-font">
+                     <p class="center-friend-info">
+                     <a href="#">vishal Kackar</a><br>500 Friends</p>
+                </div>
+                
+                <div class="col-md-4 text-capitalize">
+                  <p class="center-unfriend">
+                    <button type="button" class="btn btn-secondary btn-sm">
+                          Unfriend me!
+                    </button> 
+                  </p>
+                </div>
+              
+              </div>  
+
+            </div>
+            
+            <div class="col-md-6 container-border">
+
+              <div class="row no-pad">
+                <div class="col-md-4">
+                  <img src="assets/komal.jpg" alt="komal kackar"
+                       class="friend-photos img-rounded img-thumbnail
+                              pull-left">
+                </div>
+                
+                <div class="col-md-4 text-capitalize small-font">
+                     <p class="center-friend-info">
+                     <a href="#">komal kackar</a><br>1520 Friends</p>
+                </div>
+                
+                <div class="col-md-4 text-capitalize">
+                  <p class="center-unfriend">
+                    <button type="button" class="btn btn-secondary btn-sm">
+                          Unfriend me!
+                    </button> 
+                  </p>
+                </div>
+              
+              </div>
+              
+            </div>
+          </div>
+          
+          <!--outer photo cont-->
+          <div class="row no-pad" style="margin:4px;">
+            
+            <div class="col-md-6 container-border">
+
+              <div class="row no-pad">
+                <div class="col-md-4">
+                  <img src="assets/ManishProfile.png" alt="manish kackar"
+                       class="friend-photos img-rounded img-thumbnail
+                              pull-left">
+                </div>
+                
+                <div class="col-md-4 text-capitalize small-font">
+                     <p class="center-friend-info">
+                     <a href="#">Manish Kackar</a><br>2Friends</p>
+                </div>
+                
+                <div class="col-md-4 text-capitalize">
+                  <p class="center-unfriend">
+                    <button type="button" class="btn btn-secondary btn-sm">
+                          Unfriend me!
+                    </button> 
+                  </p>
+                </div>
+              
+              </div>  
+
+            </div>
+            
+            <div class="col-md-6 container-border">
+
+              <div class="row no-pad">
+                <div class="col-md-4">
+                  <img src="assets/neelam.jpg" alt="Neelam Thakkar"
+                       class="friend-photos img-rounded img-thumbnail
+                              pull-left">
+                </div>
+                
+                <div class="col-md-4 text-capitalize small-font">
+                     <p class="center-friend-info">
+                     <a href="#">neelam thakkar</a><br>20 Friends</p>
+                </div>
+                
+                <div class="col-md-4 text-capitalize">
+                  <p class="center-unfriend">
+                    <button type="button" class="btn btn-secondary btn-sm">
+                          Unfriend me!
+                    </button> 
+                  </p>
+                </div>
+              
+              </div>
+              
+            </div>
+          </div>
+          
+        </div>  
+      </div><!--End of main middle for image and nav links--> 
+        
+      <div class="col-md-2">
+      </div>
+    </div>   
+  </div> 
+  
+  </body>
+</html>

@@ -1,73 +1,127 @@
+body {
+  font-szie: 10px; }
+
+.search-bar {
+  width: 400px; }
+
+.btn-edit-profile {
+  margin-top: -3px;
+  background-color: #336699; }
+
+.panel-container {
+  height: 40px; }
+
+.panel-style {
+  text-align: center;
+  background-color: #F0F0F0;
+  height: 100%; }
+
+.panel-body-style {
+  margin: 0;
+  margin-top: 5px;
+  padding: 0;
+  height: 100%; }
+
+.container-border {
+  border: 1px solid gray; }
+
+.page-type {
+  margin-top: 8px; }
+
+.logo-container img {
+  width: 30px;
+  height: 30px;
+  margin-top: 8px;
+  vertical-align: middle; }
+
+.list-group-horizontal {
+  margin: 0;
+  margin-left: 175px; }
+
+.navigation-list {
+  margin: 0; }
+
+.row.no-pad {
+  margin-right: 0;
+  margin-left: 0; }
+
+.row.no-pad > [class*='col-'] {
+  padding-right: 0;
+  padding-left: 0; }
+
+.list-group-horizontal .list-group-item {
+  display: inline-block; }
+
+.list-group-horizontal .list-group-item {
+  margin-bottom: 0;
+  margin-right: 0;
+  margin-left: -4px;
+  border-collapse: collapse; }
+
+.list-group-horizontal #empty-list-group-item:empty {
+  display: none;
+  width: 150px; }
+
+.cover-image {
+  width: 100%;
+  height: 100%; }
+
+.friend-photos {
+  width: 120px;
+  height: 120px; }
+
+.image-container {
+  width: 100%;
+  height: 180px;
+  position: relative;
+  display: block;
+  padding: 0 !important;
+  margin: 0; }
+
+.navbar-outer {
+  width: 100%;
+  margin: auto; }
+
+.vertical-align {
+  display: flex;
+  align-items: center;
+  justify-content: center; }
+
+img {
+  width: 130px;
+  height: 130px; }
+
+#profile-image {
+  position: absolute;
+  bottom: -40px;
+  left: 10px;
+  width: 150px;
+  height: 150px; }
+
 .navbar-default .navbar-header .navbar-brand {
   color: white;
   vertical-align: center;
-  margin-top: 10%;
-  font-size: 24px; }
+  font-size: 2em; }
 
-#topnav {
-  padding: 0 10px;
+#search-navbar {
   background-color: #336699; }
-  #topnav .highlighted-btn {
+  #search-navbar .highlighted-btn {
     margin-top: 25%;
     margin-left: 1em;
     margin-right: 2em; }
-    #topnav .highlighted-btn a {
+    #search-navbar .highlighted-btn a {
       color: black; }
-      #topnav .highlighted-btn a:hover {
+      #search-navbar .highlighted-btn a:hover {
         color: #eee; }
-    #topnav .highlighted-btn:active {
+    #search-navbar .highlighted-btn:active {
       background-color: #085394; }
-  #topnav .nav-links > li {
-    width: 195px;
-    text-align: center;
-    font-size: 1.25em; }
-
-#search-container {
-  margin-top: 30px;
-  margin-bottom: 10px; }
-  #search-container form {
-    margin: auto; }
 
 h3 {
-  font-size: 18px;
   margin: .5em 0;
-  text-align: left; }
+  text-align: center; }
 
-.post {
-  margin-top: 40px;
-  margin-bottom: 40px;
-  border: 2px solid #ddd;
-  padding: 40px 0 80px; }
-  .post h1 {
-    font-size: 24px;
-    margin: .5em 0; }
-  .post .post-date-wrapper {
-    text-align: right; }
-  .post time {
-    font-size: 14px;
-    color: #ccc;
-    display: block;
-    margin: 1em 0 1em auto; }
-  .post .post-body {
-    font-size: 16px;
-    color: #444;
-    line-height: 1.25em; }
-  .post .comment-links-wrapper {
-    margin: 20px 0;
-    font-size: 14px; }
-  .post .view-comments {
-    float: left; }
-  .post .write-comment {
-    float: right; }
-  .post .post-photo-wrapper {
-    width: 100%;
-    height: 450px;
-    background-color: #eee; }
-  .post .post-photo-wrapper img {
-    display: block;
-    margin: auto;
-    height: 200px;
-    width: 200px; }
+.navbar-default {
+  color: #fff; }
 
 .signup-field {
   margin-top: 10px; }
@@ -75,5 +129,18 @@ h3 {
 .col-centered {
   float: none;
   margin: 0 auto; }
+
+.friend-info-container {
+  margin: 4px; }
+
+.small-font {
+  font-size: 0.75em; }
+
+.center-friend-info {
+  margin-top: 30%;
+  margin-left: 30%; }
+
+.center-unfriend {
+  margin-top: 30%; }
 
 /*# sourceMappingURL=styles.css.map */

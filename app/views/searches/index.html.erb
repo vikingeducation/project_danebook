@@ -1,4 +1,5 @@
 <%= render :partial => 'shared/nav' %>
+<%= render :partial => 'shared/flash' %>
 
 <!-- Search -->
 <section id="search" class="row profile-page-container">
@@ -10,7 +11,7 @@
         Found
         <%= pluralize(@results.length, @resource) %>
         that matched
-        '<%= @q%>'
+        '<%= @q %>'
       </small>
     </h1>
   </header>

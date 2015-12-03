@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   resources :friend_requests, :only => [:create, :update, :destroy]
   resources :friendships, :only => [:destroy]
 
+  get 'search/:resource' => 'searches#index'
+
   resource :session, :only => [:create, :destroy]
   get '/login', :to => 'users#new'
   get '/logout', :to => 'sessions#destroy'

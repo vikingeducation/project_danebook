@@ -10,7 +10,7 @@ class FriendRequestsController < ApplicationController
     else
       flash[:error] = 'Friend request not created'
     end
-    redirect_to user_path(@friend_request.approver)
+    redirect_to request.referer ? request.referer : user_path(@friend_request.approver)
   end
 
   def update

@@ -42,16 +42,17 @@
                   <%= friend.friends.length %> Friends
                 </span>
               </div>
-              <div class="col-xs-12 col-sm-3 col-sm-offset-1 unfriend-link-container">
 
-                <%= link_to('- Unfriend', friendship_path(
-                  friendship,
-                  :user_id => current_user.id,
-                  :initiator_id => friendship.initiator_id,
-                  :approver_id => friendship.approver_id
-                ), :method => :delete, :class => 'btn btn-danger') %>
+              <% unless friend == current_user %>
+              
+                <div class="col-xs-12 col-sm-3 col-sm-offset-1 unfriend-link-container">
 
-              </div>
+                  <%= friend_form_for(friend, :type => :button) %>
+
+                </div>
+
+              <% end %>
+
             </div>
           </div>
 

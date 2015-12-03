@@ -1,38 +1,48 @@
-<% query_string_params = {
-  :user_id => current_user.id,
-  :initiator_id => friend_request.initiator_id,
-  :approver_id => friend_request.approver_id
-} %>
+<% 
+# If the type is button render buttons
+if defined?(type) && type == :button
+%>
 
-<%= friend_request.persisted? ? 'Friend Request Pending: ' : '' %>
+  <% if friend_request.persisted? &&
+        friend_request.approver == current_user %>
 
-<% if friend_request.approver == current_user %>
+    <%= accept_friend_request_button(friend_request) %>
 
-  <%= link_to('Accept', friend_request_path(
-    friend_request,
-    query_string_params
-  ), :method => :put) %>
+    <%= reject_friend_request_button(friend_request) %>
 
-  <%= link_to('Reject', friend_request_path(
-    friend_request,
-    query_string_params
-  ), :method => :delete, :class => 'text-danger') %>
+  <% elsif  friend_request.persisted? &&
+            friend_request.initiator == current_user %>
 
-<% elsif friend_request.initiator == current_user %>
+    <%= cancel_friend_request_button(friend_request) %>
 
-  <%= link_to('Cancel', friend_request_path(
-    friend_request,
-    query_string_params
-  ), :method => :delete, :class => 'text-danger') %>
+  <% else %>
 
-<% else %>
+    <%= send_friend_request_button(friend_request) %>
 
-  <%= link_to('+ Add Friend', friend_requests_path(
-    friend_request,
-    :user_id => current_user.id,
-    :initiator_id => current_user.id,
-    :approver_id => user.id
-  ), :method => :post) %>
+  <% end %>
+
+<%
+# Else render links
+else
+%>
+  
+  <% if friend_request.persisted? &&
+        friend_request.approver == current_user %>
+
+    <%= accept_friend_request_link(friend_request) %>
+
+    <%= reject_friend_request_link(friend_request) %>
+
+  <% elsif  friend_request.persisted? &&
+            friend_request.initiator == current_user %>
+
+    <%= cancel_friend_request_link(friend_request) %>
+
+  <% else %>
+
+    <%= send_friend_request_link(friend_request) %>
+
+  <% end %>
 
 <% end %>
 

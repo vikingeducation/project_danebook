@@ -1,0 +1,20 @@
+<%= render :partial => 'shared/nav' %>
+
+<!-- Search -->
+<section id="search" class="row profile-page-container">
+  
+  <header class="well col-xs-12 profile-page-header">
+    <h1>
+      Search Results
+      <small>
+        Found
+        <%= pluralize(@results.length, @resource) %>
+        that matched
+        '<%= @q%>'
+      </small>
+    </h1>
+  </header>
+
+  <%= render :partial => @resource, :locals => {:results => @results} %>
+
+</section><!-- #search -->

@@ -105,7 +105,10 @@ class User < ActiveRecord::Base
     elsif friend_requests_with_user.present?
       friend_requests_with_user.first
     else
-      FriendRequest.new
+      FriendRequest.new(
+        :initiator_id => id,
+        :approver_id => user.id
+      )
     end
   end
 

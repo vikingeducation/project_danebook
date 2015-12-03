@@ -6,6 +6,12 @@
 		padding-bottom: 16px;
 	}
 
+  .friend-container.no-friends {
+    text-align: center;
+    padding-top: 128px;
+    padding-bottom: 128px;
+  }
+
 	.friend-info-container {
 		line-height: (96px / 2);
 	}

@@ -68,6 +68,10 @@
   // dropdowns
   // --------------------
 
+  .user-actions a {
+    line-height: 32px;
+  }
+
   .dropdown-toggle {
     background: $primary;
     color: $light;

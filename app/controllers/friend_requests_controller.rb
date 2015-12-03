@@ -19,7 +19,7 @@ class FriendRequestsController < ApplicationController
     else
       flash[:error] = 'Friendship not accepted'
     end
-    redirect_to user_path(current_user)
+    redirect_to request.referer ? request.referer : user_path(@friend_request.initiator)
   end
 
   def destroy

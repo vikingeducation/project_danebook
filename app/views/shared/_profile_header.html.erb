@@ -23,7 +23,7 @@
       </div>
       <div class="col-sm-1">
 
-        <%= link_to('About', user_path(user), :class => 'current') %>
+        <%= link_to('About', user_path(user)) %>
 
       </div>
       <div class="col-sm-2">
@@ -32,9 +32,9 @@
         </a>
       </div>
       <div class="col-sm-2">
-        <a href="/friends">
-          Friends (567)
-        </a>
+        
+        <%= link_to("Friends (#{user.friends.length})", user_friendships_path(user)) %>
+
       </div>
 
       <div class="col-sm-3 edit">

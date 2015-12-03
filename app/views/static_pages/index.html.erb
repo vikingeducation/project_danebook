@@ -9,7 +9,7 @@
         ['Users', users_path],
         ['About', current_user ? user_path(current_user) : '#'],
         ['About Edit', current_user ? edit_user_path(current_user) : '#'],
-        ['Friends', '/friends'],
+        ['Friends', current_user ? user_friendships_path(current_user) : '#'],
         ['News Feed', current_user ? posts_path : '#'],
         ['Photos', '/photos'],
         ['Signup', '/signup'],

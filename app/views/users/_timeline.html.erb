@@ -100,58 +100,41 @@
       <section id="friends" class="col-xs-10 col-sm-12">
         <header class="details-header">
           <h1>
-            Friends
+            Friends (<%= user.friends.length %>)
           </h1>
         </header>
         <div class="friends-container">
 
           <div class="row">
-            
-            <div class="col-xs-12 col-sm-4">
-              <img src="/assets/images/user_silhouette_generic.gif.png" alt="Friend"/>
-              <a href="#">
-                Friend's Name
-              </a>
-            </div>
-            <div class="col-xs-12 col-sm-4">
-              <img src="/assets/images/user_silhouette_generic.gif.png" alt="Friend"/>
-              <a href="#">
-                Friend's Name
-              </a>
-            </div>
-            <div class="col-xs-12 col-sm-4">
-              <img src="/assets/images/user_silhouette_generic.gif.png" alt="Friend"/>
-              <a href="#">
-                Friend's Name
-              </a>
-            </div>
 
-            <div class="col-xs-12 col-sm-4">
-              <img src="/assets/images/user_silhouette_generic.gif.png" alt="Friend"/>
-              <a href="#">
-                Friend's Name
-              </a>
-            </div>
-            <div class="col-xs-12 col-sm-4">
-              <img src="/assets/images/user_silhouette_generic.gif.png" alt="Friend"/>
-              <a href="#">
-                Friend's Name
-              </a>
-            </div>
-            <div class="col-xs-12 col-sm-4">
-              <img src="/assets/images/user_silhouette_generic.gif.png" alt="Friend"/>
-              <a href="#">
-                Friend's Name
-              </a>
-            </div>
+            <% if user.friends.present? %>
+            
+              <% user.friends.each do |friend| %>
+              
+                <div class="col-xs-12 col-sm-4">
+                  <img src="/assets/images/user_silhouette_generic.gif.png" alt="Friend"/>
+                  
+                  <%= link_to(friend.name, user_path(friend)) %>
+
+                </div>
+
+              <% end %>
+
+            <% else %>
+
+              <div class="col-xs-12 no-friends">
+                No Friends
+              </div>
+
+            <% end %>
 
           </div>
 
         </div>
         <footer>
-          <a href="/photos">
-            See More Friends
-          </a>
+
+          <%= link_to('See more friends', user_friendships_path(user)) %>
+
         </footer>
       </section>
     </div>

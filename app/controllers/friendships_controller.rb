@@ -1,7 +1,17 @@
 class FriendshipsController < ApplicationController
-  before_action :require_current_user
-  before_action :require_current_user_is_friend
-  before_action :set_friendship
+  before_action :require_login
+  before_action :require_current_user, :except => [:index]
+  before_action :require_current_user_is_friend, :except => [:index]
+  before_action :set_friendship, :except => [:index]
+
+  def index
+    if User.exists?(params[:user_id])
+      @user = User.find(params[:user_id])
+      @friends = @user.friends
+    else
+      redirect_to root_path, :flash => {:error => 'A user must exist to have friends, it\'s science'}
+    end
+  end
 
   def destroy
     if @friendship.destroy

@@ -24,10 +24,13 @@
 <body class = "container-fluid">
 
   <!-- notice that this is a ROW as well as a navbar -->
+  <!-- notice that this is a ROW as well as a navbar -->
   <nav id ="search-navbar" class="navbar navbar-default row">
-
+    
+    <div class="col-md-2"> 
+    </div>
     <!-- responsive mobile stuff collapses down  -->
-    <div class="navbar-header col-md-3 logo-container">
+    <div class="logo-container col-md-2">
       <button type="button" class="navbar-toggle collapsed" 
               data-toggle="collapse" 
               data-target="#bs-example-navbar-collapse-1">
@@ -44,16 +47,21 @@
     </div>
       
     <!-- wraps rest of links to collapse in mobile-->
-    <div class="collapse navbar-collapse col-md-9 navbar-left">
+    <div class="nav navbar-nav navbar-left col-md-4">
       <form class="navbar-form" role="search">
         <div class="search-bar input-group input-group-sm col-md-4 col-sm-4
                     form-group">
-          <input type="text" class="form-control pull-right" 
+          <input type="text" class="form-control pull-left" 
                  placeholder="Search">
         </div>
       </form>
-   
+    </div>
+         <!-- wraps rest of links to collapse in mobile-->
+    <div class="nav navbar-nav col-md-2">
+      <a href="about.html" class="pull-right nav-personal-link">Deepa Kackar</a>
     </div><!--navbar-collapse-->
+     <div class="col-md-2"> 
+    </div>  
   </nav>
 
   <div class="main"> <!--main container for rest of page-->
@@ -71,8 +79,8 @@
             <img src="http://vignette3.wikia.nocookie.net/harrypotter/images/b/bd/Dhogwarts.jpg/revision/latest?cb=20120128145344"
             class="img-responsive cover-image" alt="Responsive image">
 
-            <img src="assets/Neelam_Deepa_at_Broads_Run_Broadway_1.jpg" 
-                 class="img-thumbnail" id ="profile-image" alt="profile">    
+            <img src="http://ndl.mgccw.com/mu3/000/488/259/sss/42409d600b984fc9934a52f28291ba27_small.png" 
+                 class="img-thumbnail" id ="profile-image" alt="profile">     
           </div>
           
           <!--for the navigation bar to diffetent pages-->
@@ -82,8 +90,8 @@
               <div class="list-group list-group-horizontal">
                 <a href="timeline.html" class="list-group-item">Timeline</a>
                 <a href="about.html" class="list-group-item">About</a>
-                <a href="photos.html" class="list-group-item">Photos</a>
-                <a href="#" class="list-group-item active">Friends</a>
+                <a href="#" class="list-group-item active">Photos</a>
+                <a href="friends.html" class="list-group-item">Friends</a>
                 <a href="about_edit.html" class="list-group-item">
                    Edit Profile
                 </a>

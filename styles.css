@@ -1,4 +1,29 @@
 @charset "UTF-8";
+hr {
+  height: 1px;
+  width: 80%;
+  background-color: #808080; }
+
+.commment-background {
+  background-color: #d9d9d9; }
+
+.dd-dt-style {
+  margin-top: 0.5em;
+  text-align: left; }
+
+.logo-container img {
+  width: 30px;
+  height: 30px;
+  margin-top: 8px;
+  vertical-align: middle; }
+
+.nav-personal-link {
+  margin-top: 1em;
+  color: white; }
+
+.nav-personal-link:link {
+  text-decoration: underline; }
+
 body {
   font-szie: 10px; }
 
@@ -44,16 +69,13 @@ body {
   height: 100%; }
 
 .container-border {
-  border: 1px solid gray; }
+  border: 1px solid #bfbfbf; }
+
+.post-button {
+  margin-left: 75%; }
 
 .page-type {
   margin-top: 8px; }
-
-.logo-container img {
-  width: 30px;
-  height: 30px;
-  margin-top: 8px;
-  vertical-align: middle; }
 
 .list-group-horizontal {
   margin: 0;
@@ -123,10 +145,10 @@ img {
   width: 150px;
   height: 150px; }
 
-.navbar-default .navbar-header .navbar-brand {
+.navbar-default .navbar-brand {
   color: white;
   vertical-align: center;
-  font-size: 2em; }
+  font-size: 1.5em; }
 
 #search-navbar {
   background-color: #336699; }
@@ -155,11 +177,20 @@ h3 {
   float: none;
   margin: 0 auto; }
 
-.friend-info-container {
+.basic-margin {
   margin: 4px; }
 
-.small-font {
+.tiny-font {
   font-size: 0.75em; }
+
+.reduced-font {
+  font-size: 0.85em; }
+
+.slightly-reduced-font {
+  font-size: 0.90em; }
+
+.regular-font {
+  font-size: 1em; }
 
 .center-friend-info {
   margin-top: 30%;

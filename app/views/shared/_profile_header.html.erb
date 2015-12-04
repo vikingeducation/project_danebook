@@ -27,9 +27,9 @@
 
       </div>
       <div class="col-sm-2">
-        <a href="/photos">
-          Photos (123)
-        </a>
+        
+        <%= link_to("Photos (#{user.photos.length})", user_photos_path(user)) %>
+
       </div>
       <div class="col-sm-2">
         

@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
       flash[:error] = 'Comment not created: ' +
         @comment.errors.full_messages.join(', ')
     end
-    redirect_to request.referer ? request.referer : root_path
+    redirect_to_referer
   end
 
   def destroy
@@ -20,7 +20,7 @@ class CommentsController < ApplicationController
       flash[:error] = 'Comment not destroyed: ' +
         @comment.errors.full_messages.join(', ')
     end
-    redirect_to request.referer ? request.referer : root_path
+    redirect_to_referer
   end
 
 

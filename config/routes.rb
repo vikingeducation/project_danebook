@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :users do
     resources :posts, :only => [:index, :create, :destroy]
     resources :friendships, :only => [:index]
+    resources :photos
   end
   get '/signup', :to => 'users#new'
 

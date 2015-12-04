@@ -12,7 +12,7 @@
         ['About Edit', current_user ? edit_user_path(current_user) : '#'],
         ['Friends', current_user ? user_friendships_path(current_user) : '#'],
         ['News Feed', current_user ? posts_path : '#'],
-        ['Photos', '/photos'],
+        ['Photos', current_user ? user_photos_path(current_user) : '#'],
         ['Signup', '/signup'],
         ['Timeline', current_user ? user_posts_path(current_user) : '#'],
         ['Sign Out', logout_path]

@@ -21,3 +21,5 @@
 # ----------------------------------------
 __SERVER__.sh
 /__USER_STORIES__
+# Ignore application configuration
+/config/application.yml

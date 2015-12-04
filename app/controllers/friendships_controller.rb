@@ -9,7 +9,7 @@ class FriendshipsController < ApplicationController
       @user = User.find(params[:user_id])
       @friends = @user.friends
     else
-      redirect_to root_path, :flash => {:error => 'A user must exist to have friends, it\'s science'}
+      redirect_to_referer root_path, :flash => {:error => 'A user must exist to have friends, it\'s science'}
     end
   end
 
@@ -19,14 +19,14 @@ class FriendshipsController < ApplicationController
     else
       flash[:error] = "Friendship not destroyed"
     end
-    redirect_to request.referer ? request.referer : root_path
+    redirect_to_referer
   end
 
 
   private
   def set_friendship
     @friendship = Friendship.find_by_id(params[:id])
-    redirect_to root_path, :flash => {:error => 'That was not friendly'} unless @friendship
+    redirect_to_referer root_path, :flash => {:error => 'That was not friendly'} unless @friendship
   end
 
   def friend_params
@@ -39,7 +39,7 @@ class FriendshipsController < ApplicationController
 
   def require_current_user_is_friend
     unless is_friend_current_user?
-      redirect_to root_path, :flash => {:error => 'You must be part of a friendship to do that'}
+      redirect_to_referer root_path, :flash => {:error => 'You must be part of a friendship to do that'}
     end
   end
 

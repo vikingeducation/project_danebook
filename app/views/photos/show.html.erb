@@ -1,0 +1,123 @@
+<%= render :partial => 'shared/nav' %>
+<%= render :partial => 'shared/profile_header', :locals => {:user => @user} %>
+<%= render :partial => 'shared/flash' %>
+
+<!-- Profile Page / Photos -->
+<section id="photos" class="row profile-page-container">
+  
+  <header class="col-xs-12 profile-page-header">
+    <h1>
+
+      <%= @user.name %>: Photo
+
+    </h1>
+  </header>
+
+  <!-- Photos -->
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="well">
+
+         <div class="row">
+          <div class="col-xs-12 col-md-7">
+
+            <!-- Photo -->
+            <div class="photo-container">
+
+              <%= image_tag(@photo.file.url) %>
+
+            </div>
+
+            <% if @user == current_user %>
+
+              <!-- Photo Actions -->
+              <div class="action-links text-right">
+                <%= link_to('Set as Profile Photo', '#') %>
+                <br>
+                <%= link_to('Set as Cover Photo', '#') %>
+                <br>
+                <%= link_to('Delete Photo', user_photo_path(@user, @photo), :method => :delete, :class => 'text-danger') %>
+              </div>
+
+            <% end %>
+
+          </div><!-- col -->
+
+          <div class="col-xs-12 col-md-5">
+
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="photo-details-container">
+
+                  <!-- User Details -->
+                  <div class="media">
+                    <div class="media-left">
+                      <a href="#">
+
+                        <%= image_tag('http://placehold.it/128x128', :class => 'media-object') %>
+
+                      </a>
+                    </div>
+                    <div class="media-body">
+                      <h4 class="media-heading">Media heading</h4>
+                    </div>
+                  </div>
+                  
+                  <br>
+                  <!-- Likes -->
+                  <div class="like-container">
+                    <a href="#">
+                      Like
+                    </a>
+                    | 3 other people like this
+                  </div>
+
+                  <!-- Comments -->
+                  <!-- Comment Form -->
+                  <div class="comment-form-container clearfix">
+                    <h2>
+                      Post a Comment
+                    </h2>
+                    <form action="#">
+                      <div class="form-group">
+                        <textarea name="comment" id="comment" class="form-control"></textarea>
+                      </div>
+                      <div class="pull-right">
+                        <button type="submit" class="btn btn-primary">
+                          Comment
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+
+                  <!-- Comment -->
+                  <div class="media">
+                    <div class="media-left">
+                      <a href="#">
+
+                        <%= image_tag('http://placehold.it/128x128', :class => 'media-object') %>
+
+                      </a>
+                    </div>
+                    <div class="media-body">
+                      <h4 class="media-heading">Media heading</h4>
+                      Comment here
+                    </div>
+                  </div>
+
+                </div><!-- well -->
+              </div><!-- col -->
+            </div><!-- row -->
+            
+          </div><!-- col -->
+        </div><!-- row -->
+
+      </div><!-- well -->
+    </div><!-- col -->
+  </div><!-- row -->
+
+</section><!-- #photos -->
+
+
+
+

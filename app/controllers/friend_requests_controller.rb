@@ -10,7 +10,7 @@ class FriendRequestsController < ApplicationController
     else
       flash[:error] = 'Friend request not created'
     end
-    redirect_to request.referer ? request.referer : user_path(@friend_request.approver)
+    redirect_to_referer user_path(@friend_request.approver)
   end
 
   def update
@@ -19,7 +19,7 @@ class FriendRequestsController < ApplicationController
     else
       flash[:error] = 'Friendship not accepted'
     end
-    redirect_to request.referer ? request.referer : user_path(@friend_request.initiator)
+    redirect_to_referer user_path(@friend_request.initiator)
   end
 
   def destroy
@@ -28,14 +28,14 @@ class FriendRequestsController < ApplicationController
     else
       flash[:error] = "Friend request not destroyed"
     end
-    redirect_to request.referer ? request.referer : root_path
+    redirect_to_referer
   end
 
 
   private
   def set_friend_request
     @friend_request = FriendRequest.find_by_id(params[:id])
-    redirect_to root_path, :flash => {:error => 'Friend request not found'} unless @friend_request
+    redirect_to_referer root_path, :flash => {:error => 'Friend request not found'} unless @friend_request
   end
 
   def friend_params
@@ -48,7 +48,7 @@ class FriendRequestsController < ApplicationController
 
   def require_current_user_is_friend
     unless is_friend_current_user?
-      redirect_to root_path, :flash => {:error => 'You must be part of a friendship to do that'}
+      redirect_to_referer root_path, :flash => {:error => 'You must be part of a friendship to do that'}
     end
   end
 

@@ -51,7 +51,7 @@ class UsersController < ApplicationController
       end
     else
       flash[:error] = 'Unable to sign out'
-      redirect_to request.referer
+      redirect_to_referer
     end
   end
 
@@ -61,7 +61,7 @@ class UsersController < ApplicationController
     if User.exists?(params[:id])
       @user = User.find(params[:id])
     else
-      redirect_to root_path, :flash => {:error => 'Unable to find that user'}
+      redirect_to_referer root_path, :flash => {:error => 'Unable to find that user'}
     end
   end
 

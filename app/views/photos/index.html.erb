@@ -1,0 +1,59 @@
+<%= render :partial => 'shared/nav' %>
+<%= render :partial => 'shared/profile_header', :locals => {:user => @user} %>
+<%= render :partial => 'shared/flash' %>
+
+<!-- Profile Page / Photos -->
+<section id="photos" class="row profile-page-container">
+  
+  <header class="col-xs-12 profile-page-header">
+    <h1>
+
+      <%= @user.name %>'s Photos
+
+    </h1>
+    <div class="add-photo-link-container">
+      
+      <%= link_to('+ Add Photo', new_user_photo_path(@user), :class => 'btn btn-primary') %>
+
+    </div>
+  </header>
+
+  <!-- Photos -->
+  <div class="row">
+    <div class="col-xs-12">
+      
+      <!-- Photo -->
+      <div class="row photos-container">
+        
+        <% if @photos.present? %>
+          <% @photos.each do |photo| %>
+
+            <div class="col-xs-6 col-sm-4 col-md-3 photo-container">
+
+              <% image_markup = capture do %>
+
+                <%= image_tag(photo.file.url(:thumb)) %>
+
+                <div class="pub-date-container">
+                  Uploaded on <%= photo.created_at.strftime('%a %B %e, %Y') %>
+                </div>
+              <% end %>
+              <%= current_user.friend?(@user) || current_user == @user ? link_to(user_photo_path(@user, photo)) {image_markup} : image_markup %>
+
+            </div>
+
+          <% end %>
+        <% else %>
+
+          <div class="no-photos">
+            No Photos
+          </div>
+
+        <% end %>
+
+      </div><!-- .photos-container -->
+
+    </div><!-- col -->
+  </div><!-- row -->
+
+</section><!-- #photos -->

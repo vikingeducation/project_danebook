@@ -4,10 +4,13 @@ class User < ActiveRecord::Base
   searchable_scope ->(q){where("first_name || ' ' || last_name LIKE ?", "%#{q}%")}
 
   has_one :profile, :dependent => :destroy
+  has_one :profile_photo, :dependent => :destroy, :class_name => 'Photo'
+  has_one :cover_photo, :dependent => :destroy, :class_name => 'Photo'
   belongs_to :gender
   has_many :posts, :dependent => :destroy
   has_many :comments, :dependent => :destroy
   has_many :likes, :dependent => :destroy
+  has_many :photos, :dependent => :destroy
 
   has_many  :requested_friendships,
             :class_name => 'Friendship',
@@ -110,6 +113,10 @@ class User < ActiveRecord::Base
         :approver_id => user.id
       )
     end
+  end
+
+  def friend?(user)
+    Friendship.find_by_users(self, user).present?
   end
 
 

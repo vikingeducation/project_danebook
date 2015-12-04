@@ -10,7 +10,7 @@ class LikesController < ApplicationController
       flash[:error] = 'Like not created: ' +
         @like.errors.full_messages.join(', ')
     end
-    redirect_to request.referer ? request.referer : root_path
+    redirect_to_referer
   end
 
   def destroy
@@ -20,7 +20,7 @@ class LikesController < ApplicationController
       flash[:error] = 'Like not destroyed: ' +
         @like.errors.full_messages.join(', ')
     end
-    redirect_to request.referer ? request.referer : root_path
+    redirect_to_referer
   end
 
 
@@ -36,7 +36,7 @@ class LikesController < ApplicationController
     @like = current_user.likes.find_by_id(params[:id])
     unless @like
       flash[:error] = 'You are unauthorized to perform that action'
-      redirect_to root_path
+      redirect_to_referer
     end
   end
 end

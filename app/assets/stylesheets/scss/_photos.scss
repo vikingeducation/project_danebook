@@ -1,6 +1,12 @@
 // photos
 
 #photos {
+  .no-photos {
+    text-align: center;
+    padding-top: 128px;
+    padding-bottom: 128px;
+  }
+
 	.profile-page-header {
 		position: relative;
 	}
@@ -54,4 +60,23 @@
 			}
 		}
 	}
+
+  .form-container {
+    h2,
+    h3,
+    .url-field-container,
+    .file-field-container {
+      margin-bottom: 64px;
+    }
+
+    .url-field-container,
+    .file-field-container {
+      max-width: 768px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
 }
+
+
+

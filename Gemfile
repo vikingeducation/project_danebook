@@ -4,10 +4,12 @@ ruby ENV["RBENV_VERSION"] || '2.2.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
 
-group :development do
-	# Use sqlite3 as the database for Active Record
-	gem 'sqlite3'
+gem 'paperclip'
+gem 'figaro'
+gem 'aws-sdk', '< 2.0'
 
+group :development do
+	gem 'sqlite3'
   gem 'hirb'
 end
 
@@ -23,13 +25,8 @@ group :test do
 end
 
 group :production do
-	# Heroku specific
 	gem 'rails_12factor'
-
-	# Server
 	gem 'puma'
-
-	# PostgreSQL for Heroku
 	gem 'pg'
 end
 

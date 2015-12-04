@@ -59,4 +59,12 @@ class ApplicationController < ActionController::Base
       redirect_to root_path
     end
   end
+
+  def redirect_to_referer(options={}, response_status={})
+    options = options.empty? ? root_path : options
+    redirect_to(
+      request.referer ? request.referer : options,
+      response_status
+    )
+  end
 end

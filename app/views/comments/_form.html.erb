@@ -10,11 +10,16 @@
     <%= hidden_field_tag(:user_id, current_user.id) %>
 
     <footer class="comment-form-footer">
+      
+      <!-- Commented out until enable AJAX -->
+      <!-- 
       <div class="pull-left">
         <a href="#">
           Cancel
         </a>
       </div>
+      -->
+
       <div class="pull-right">
         
         <%= f.submit('Submit Comment', :class => 'btn btn-primary') %>
@@ -24,4 +29,5 @@
 
   <% end %>
 
-</div><!-- comment form -->
+</div><!-- .comment-form-container -->
+

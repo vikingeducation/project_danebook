@@ -28,19 +28,16 @@
         <% if @photos.present? %>
           <% @photos.each do |photo| %>
 
-            <div class="col-xs-6 col-sm-4 col-md-3 photo-container">
+            <% image_markup = capture do %>
 
-              <% image_markup = capture do %>
-
-                <%= image_tag(photo.file.url(:thumb)) %>
-
-                <div class="pub-date-container">
-                  Uploaded on <%= photo.created_at.strftime('%a %B %e, %Y') %>
-                </div>
-              <% end %>
-              <%= current_user.friend?(@user) || current_user == @user ? link_to(user_photo_path(@user, photo)) {image_markup} : image_markup %>
-
-            </div>
+              <div class="col-xs-6 col-sm-4 col-md-3 photo-container" style="background: url('<%= photo.file.url(:medium) %>')">
+                  <div class="pub-date-container">
+                    Uploaded on <%= photo.created_at.strftime('%a %B %e, %Y') %>
+                  </div>
+              </div>
+            
+            <% end %>
+            <%= current_user.friend?(@user) || current_user == @user ? link_to(user_photo_path(@user, photo)) {image_markup} : image_markup %>
 
           <% end %>
         <% else %>

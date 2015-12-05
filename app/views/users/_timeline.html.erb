@@ -31,6 +31,9 @@
         <header class="details-header">
           <h1>
             Photos
+            <small>
+              (<%= user.photos.length %>)
+            </small>
           </h1>
         </header>
 
@@ -38,62 +41,28 @@
         <div class="photos-container">
 
           <div class="row">
-            
-            <div class="col-xs-12 col-sm-4">
-              <a href="/photos">
-                <img src="/assets/images/icon_photo_small.png" alt="Photo"/>
-              </a>
-            </div>
-            <div class="col-xs-12 col-sm-4">
-              <a href="/photos">
-                <img src="/assets/images/icon_photo_small.png" alt="Photo"/>
-              </a>
-            </div>
-            <div class="col-xs-12 col-sm-4">
-              <a href="/photos">
-                <img src="/assets/images/icon_photo_small.png" alt="Photo"/>
-              </a>
-            </div>
 
-            <div class="col-xs-12 col-sm-4">
-              <a href="/photos">
-                <img src="/assets/images/icon_photo_small.png" alt="Photo"/>
-              </a>
-            </div>
-            <div class="col-xs-12 col-sm-4">
-              <a href="/photos">
-                <img src="/assets/images/icon_photo_small.png" alt="Photo"/>
-              </a>
-            </div>
-            <div class="col-xs-12 col-sm-4">
-              <a href="/photos">
-                <img src="/assets/images/icon_photo_small.png" alt="Photo"/>
-              </a>
-            </div>
+            <% if user.photos.present? %>
+              <% user.photos.each do |photo| %>
+                <%= link_to(user_photo_path(user, photo)) do %>
+                <div class="col-xs-12 col-sm-4 photo-thumb" style="background: url('<%= photo.file.url(:thumb) %>')"></div>
+                <% end %>
+              <% end %>
+            <% else %>
 
-            <div class="col-xs-12 col-sm-4">
-              <a href="/photos">
-                <img src="/assets/images/icon_photo_small.png" alt="Photo"/>
-              </a>
-            </div>
-            <div class="col-xs-12 col-sm-4">
-              <a href="/photos">
-                <img src="/assets/images/icon_photo_small.png" alt="Photo"/>
-              </a>
-            </div>
-            <div class="col-xs-12 col-sm-4">
-              <a href="/photos">
-                <img src="/assets/images/icon_photo_small.png" alt="Photo"/>
-              </a>
-            </div>
+              <div class="no-photos">
+                No Photos
+              </div>
+
+            <% end %>
 
           </div>
-
         </div>
+
         <footer>
-          <a href="/photos">
-            See More Photos
-          </a>
+          
+          <%= link_to('See more photos...', user_photos_path(user)) %>
+
         </footer>
       </section>
 
@@ -101,7 +70,10 @@
       <section id="friends" class="col-xs-10 col-sm-12">
         <header class="details-header">
           <h1>
-            Friends (<%= user.friends.length %>)
+            Friends
+            <small>
+              (<%= user.friends.length %>)
+            </small>
           </h1>
         </header>
         <div class="friends-container">
@@ -113,7 +85,8 @@
               <% user.friends.each do |friend| %>
               
                 <div class="col-xs-12 col-sm-4">
-                  <img src="/assets/images/user_silhouette_generic.gif.png" alt="Friend"/>
+
+                  <%= image_tag(friend.profile_photo_url) %>
                   
                   <%= link_to(friend.name, user_path(friend)) %>
 

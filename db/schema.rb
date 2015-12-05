@@ -118,15 +118,19 @@ ActiveRecord::Schema.define(version: 20151204172034) do
     t.string   "last_name"
     t.date     "birthday"
     t.integer  "gender_id"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.integer  "profile_photo_id"
+    t.integer  "cover_photo_id"
   end
 
   add_index "users", ["auth_token"], name: "index_users_on_auth_token", unique: true
   add_index "users", ["birthday"], name: "index_users_on_birthday"
+  add_index "users", ["cover_photo_id"], name: "index_users_on_cover_photo_id"
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["first_name"], name: "index_users_on_first_name"
   add_index "users", ["gender_id"], name: "index_users_on_gender_id"
   add_index "users", ["last_name"], name: "index_users_on_last_name"
+  add_index "users", ["profile_photo_id"], name: "index_users_on_profile_photo_id"
 
 end

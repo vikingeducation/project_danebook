@@ -1,11 +1,12 @@
 class User < ActiveRecord::Base
+  include Dateable
   include Searchable
 
   searchable_scope ->(q){where("first_name || ' ' || last_name LIKE ?", "%#{q}%")}
 
   has_one :profile, :dependent => :destroy
-  has_one :profile_photo, :dependent => :destroy, :class_name => 'Photo'
-  has_one :cover_photo, :dependent => :destroy, :class_name => 'Photo'
+  belongs_to :profile_photo, :foreign_key => :profile_photo_id, :class_name => 'Photo'
+  belongs_to :cover_photo, :foreign_key => :cover_photo_id, :class_name => 'Photo'
   belongs_to :gender
   has_many :posts, :dependent => :destroy
   has_many :comments, :dependent => :destroy
@@ -70,10 +71,24 @@ class User < ActiveRecord::Base
   validates :gender,
             :presence => true
 
+  validate :cover_photo_belongs_to_user, :on => :update, :if => ->{cover_photo_id.present?}
+  validate :profile_photo_belongs_to_user, :on => :update, :if => ->{profile_photo_id.present?}
+
   accepts_nested_attributes_for :profile
 
   before_create :create_profile
   after_create :create_auth_token
+
+  DEFAULT_PROFILE_PHOTO_URL = '/assets/images/user_silhouette_generic.gif.png'
+  DEFAULT_COVER_PHOTO_URL = 'http://placehold.it/768x512'
+
+  def profile_photo_url
+    profile_photo ? profile_photo.file.url : DEFAULT_PROFILE_PHOTO_URL
+  end
+
+  def cover_photo_url
+    cover_photo ? cover_photo.file.url : DEFAULT_COVER_PHOTO_URL
+  end
 
   def name
     "#{first_name} #{last_name}"
@@ -124,6 +139,22 @@ class User < ActiveRecord::Base
   def generate_auth_token
     str = SecureRandom.uuid + email
     SecureRandom.urlsafe_base64 + Base64.urlsafe_encode64(str)
+  end
+
+  def cover_photo_belongs_to_user
+    photo_belongs_to_user(cover_photo_id)
+  end
+
+  def profile_photo_belongs_to_user
+    photo_belongs_to_user(profile_photo_id)
+  end
+
+  def photo_belongs_to_user(photo)
+    photo_id = photo.is_a?(Photo) ? photo.id : photo
+    unless photos.where(:id => photo_id).present?
+      reload
+      errors.add(:base, 'Photo must belong to user')
+    end
   end
 end
 

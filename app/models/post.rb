@@ -1,4 +1,6 @@
 class Post < ActiveRecord::Base
+  include Dateable
+
   belongs_to :user
   has_many :comments, :as => :commentable, :dependent => :destroy
   has_many :likes, :as => :likeable, :dependent => :destroy
@@ -8,8 +10,4 @@ class Post < ActiveRecord::Base
 
   validates :user,
             :presence => true
-
-  def date
-    created_at.strftime('%A, %B %e %Y')
-  end
 end

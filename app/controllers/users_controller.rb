@@ -76,6 +76,8 @@ class UsersController < ApplicationController
         :last_name,
         :birthday,
         :gender_id,
+        :cover_photo_id,
+        :profile_photo_id,
         :profile_attributes => [
           :college,
           :hometown,

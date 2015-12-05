@@ -3,14 +3,16 @@
   
   <!-- Cover Image -->
   <div class="col-xs-12">
-    <div class="cover-image-container"></div>
+    <div class="cover-image-container" style="background-image: url('<%= user.cover_photo_url %>')"></div>
   </div>
   
   <div class="col-xs-12">
     
     <!-- Profile Image -->
     <div class="profile-image-container">
-      <img src="/assets/images/harry_potter_small.jpg" alt="Profile Image"/>
+
+      <%= image_tag(user.profile_photo_url) %>
+
     </div>
 
     <!-- Profile Nav -->

@@ -5,13 +5,17 @@
       <div class="col-xs-2">
         <div class="post-profile-image-container">
           <a href="/about">
-            <img src="/assets/images/harry_potter_small.jpg" alt="Image"/>
+
+            <%= image_tag(post.user.profile_photo_url) %>
+
           </a>
         </div>
       </div>
       <div class="col-xs-8 post-info-container">
         <a href="/about">
+
           <%= post.user.name %>
+
         </a>
         <time>
           Posted on <%= post.date %>
@@ -31,16 +35,22 @@
         <%= render :partial => 'likes/form', :locals => {:likeable => post} %>
 
       </div>
-<!--       <div class="col-xs-2 col-xs-offset-1 comment-link-container">
+     
+      <!--  Commented out until AJAX enabled -->
+      <!-- 
+      <div class="col-xs-2 col-xs-offset-1 comment-link-container">
         <a href="#">
           Comment
         </a>
-      </div> -->
+      </div>
+       -->
 
       <% if is_current_user?(post.user) %>
 
         <div class="col-xs-8 delete-link-container">
+
           <%= link_to('Delete Post', user_post_path(post.user, post), :method => :delete, :data => {:confirm => 'Are you sure you want to delete this post?'}, :class => 'text-danger') %>
+          
         </div>
 
       <% end %>

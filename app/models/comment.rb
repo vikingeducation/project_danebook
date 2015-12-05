@@ -1,4 +1,6 @@
 class Comment < ActiveRecord::Base
+  include Dateable
+
   belongs_to :user
   belongs_to :commentable, :polymorphic => true
   has_many :likes, :as => :likeable, :dependent => :destroy
@@ -10,10 +12,6 @@ class Comment < ActiveRecord::Base
             :presence => true
 
   validate :presence_of_commentable
-
-  def date
-    created_at.strftime('%A, %B %e %Y')
-  end
 
 
   private

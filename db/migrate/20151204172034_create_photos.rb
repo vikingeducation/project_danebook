@@ -8,5 +8,11 @@ class CreatePhotos < ActiveRecord::Migration
       t.timestamps null: false
     end
     add_attachment :photos, :file
+
+    add_column :users, :profile_photo_id, :integer
+    add_column :users, :cover_photo_id, :integer
+
+    add_index :users, :profile_photo_id
+    add_index :users, :cover_photo_id
   end
 end

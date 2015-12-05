@@ -22,9 +22,9 @@
           <div class="col-xs-12 col-md-7">
 
             <!-- Photo -->
-            <div class="photo-container">
+            <div class="photo-show-container">
 
-              <%= image_tag(@photo.file.url) %>
+              <%= image_tag(@photo.file.url, :class => 'img-responsive center-block') %>
 
             </div>
 
@@ -32,9 +32,25 @@
 
               <!-- Photo Actions -->
               <div class="action-links text-right">
-                <%= link_to('Set as Profile Photo', '#') %>
+                <%= link_to(
+                  'Set as Profile Photo',
+                  user_path(current_user,
+                    :user => {
+                      :profile_photo_id => @photo.id
+                    }
+                  ),
+                  :method => :put
+                ) %>
                 <br>
-                <%= link_to('Set as Cover Photo', '#') %>
+                <%= link_to(
+                  'Set as Cover Photo',
+                  user_path(current_user,
+                    :user => {
+                      :cover_photo_id => @photo.id
+                    }
+                  ),
+                  :method => :put
+                ) %>
                 <br>
                 <%= link_to('Delete Photo', user_photo_path(@user, @photo), :method => :delete, :class => 'text-danger') %>
               </div>
@@ -54,55 +70,50 @@
                     <div class="media-left">
                       <a href="#">
 
-                        <%= image_tag('http://placehold.it/128x128', :class => 'media-object') %>
+                        <%= image_tag(@user.profile_photo_url, :class => 'media-object') %>
 
                       </a>
                     </div>
                     <div class="media-body">
-                      <h4 class="media-heading">Media heading</h4>
+                      <h4 class="media-heading">
+
+                        <%= @user.name %>
+
+                      </h4>
                     </div>
                   </div>
                   
                   <br>
                   <!-- Likes -->
                   <div class="like-container">
-                    <a href="#">
-                      Like
-                    </a>
-                    | 3 other people like this
+                    <div class="photo-likes">
+                      
+                      <%= render :partial => 'likes/form', :locals => {:likeable => @photo} %>
+                      |
+                      <%= render :partial => 'likes/likes', :locals => {:likeable => @photo} %>
+
+                    </div>
                   </div>
 
-                  <!-- Comments -->
                   <!-- Comment Form -->
-                  <div class="comment-form-container clearfix">
+                  <div class="well comment-form-container clearfix">
                     <h2>
                       Post a Comment
                     </h2>
-                    <form action="#">
-                      <div class="form-group">
-                        <textarea name="comment" id="comment" class="form-control"></textarea>
-                      </div>
-                      <div class="pull-right">
-                        <button type="submit" class="btn btn-primary">
-                          Comment
-                        </button>
-                      </div>
-                    </form>
+
+                    <%= render :partial => 'comments/form', :locals => {:comment => @photo.comments.build, :commentable => @photo} %>
+
                   </div>
 
-                  <!-- Comment -->
-                  <div class="media">
-                    <div class="media-left">
-                      <a href="#">
+                  <!-- Photo Comments -->
+                  <div class="photo-comments">
 
-                        <%= image_tag('http://placehold.it/128x128', :class => 'media-object') %>
+                    <% if @photo.comments.present? %>
 
-                      </a>
-                    </div>
-                    <div class="media-body">
-                      <h4 class="media-heading">Media heading</h4>
-                      Comment here
-                    </div>
+                      <%= render @photo.comments.order(:created_at => 'ASC') %>
+
+                    <% end %>
+
                   </div>
 
                 </div><!-- well -->

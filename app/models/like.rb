@@ -1,4 +1,6 @@
 class Like < ActiveRecord::Base
+  include Dateable
+  
   belongs_to :user
   belongs_to :likeable, :polymorphic => true
 

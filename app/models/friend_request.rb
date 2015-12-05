@@ -1,4 +1,5 @@
 class FriendRequest < ActiveRecord::Base
+  include Dateable
   include Friendable
 
   after_update :create_friendship_if_approved

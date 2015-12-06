@@ -82,12 +82,20 @@ class User < ActiveRecord::Base
   DEFAULT_PROFILE_PHOTO_URL = '/assets/images/user_silhouette_generic.gif.png'
   DEFAULT_COVER_PHOTO_URL = 'http://placehold.it/768x512'
 
-  def profile_photo_url
-    profile_photo ? profile_photo.file.url : DEFAULT_PROFILE_PHOTO_URL
+  def profile_photo_url(style=nil)
+    if profile_photo
+      style ? profile_photo.file.url(style) : profile_photo.file.url
+    else
+      DEFAULT_PROFILE_PHOTO_URL
+    end
   end
 
-  def cover_photo_url
-    cover_photo ? cover_photo.file.url : DEFAULT_COVER_PHOTO_URL
+  def cover_photo_url(style=nil)
+    if cover_photo
+      style ? cover_photo.file.url(style) : cover_photo.file.url
+    else
+      DEFAULT_COVER_PHOTO_URL
+    end
   end
 
   def name

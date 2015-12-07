@@ -14,4 +14,21 @@ class Photo < ActiveRecord::Base
                         :presence => true,
                         :content_type => {:content_type => /\Aimage\/.*\Z/},
                         :size => {:in => 0..2.megabytes}
+
+  before_destroy  :nullify_if_profile_photo,
+                  :nullify_if_cover_photo
+
+  def nullify_if_profile_photo
+    if user.profile_photo_id == id
+      user.profile_photo_id = nil
+      user.save!
+    end
+  end
+
+  def nullify_if_cover_photo
+    if user.cover_photo_id == id
+      user.cover_photo_id = nil
+      user.save!
+    end
+  end
 end

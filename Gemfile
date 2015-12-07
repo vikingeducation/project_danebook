@@ -6,10 +6,10 @@ gem 'delayed_job_active_record'
 gem 'paperclip'
 gem 'figaro'
 gem 'aws-sdk', '< 2.0'
+gem 'hirb'
 
 group :development do
-	gem 'sqlite3'
-  gem 'hirb'
+  gem 'sqlite3'
 end
 
 group :test do

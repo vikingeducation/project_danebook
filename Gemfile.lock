@@ -68,8 +68,14 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.10.0)
+    daemons (1.2.3)
     database_cleaner (1.5.1)
     debug_inspector (0.0.2)
+    delayed_job (4.1.1)
+      activesupport (>= 3.0, < 5.0)
+    delayed_job_active_record (4.1.0)
+      activerecord (>= 3.0, < 5)
+      delayed_job (>= 3.0, < 5)
     diff-lcs (1.2.5)
     erubis (2.7.0)
     execjs (2.6.0)
@@ -110,6 +116,8 @@ GEM
     json (1.8.3)
     launchy (2.4.3)
       addressable (~> 2.3)
+    letter_opener (1.4.1)
+      launchy (~> 2.2)
     listen (3.0.5)
       rb-fsevent (>= 0.9.3)
       rb-inotify (>= 0.9)
@@ -252,7 +260,9 @@ DEPENDENCIES
   byebug
   capybara
   coffee-rails (~> 4.1.0)
+  daemons
   database_cleaner
+  delayed_job_active_record
   factory_girl_rails
   figaro
   guard
@@ -261,6 +271,7 @@ DEPENDENCIES
   jbuilder (~> 2.0)
   jquery-rails
   launchy
+  letter_opener
   paperclip
   pg
   puma

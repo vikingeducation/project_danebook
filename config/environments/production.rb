@@ -1,4 +1,33 @@
 Rails.application.configure do
+  # ----------------------------------------
+  # Paperclip Defaults
+  # ----------------------------------------
+  config.paperclip_defaults = {
+    :storage => :s3,
+    :s3_credentials => {
+      :s3_host_name => Rails.application.secrets.s3_host_name,
+      :bucket => Rails.application.secrets.bucket,
+      :access_key_id => Rails.application.secrets.access_key_id,
+      :secret_access_key => Rails.application.secrets.secret_access_key
+    }
+  }
+
+  # ----------------------------------------
+  # Letter Opener
+  # ----------------------------------------
+  config.action_mailer.smtp_settings = {
+    :address        => 'smtp.sendgrid.net',
+    :port           => '587',
+    :authentication => :plain,
+    :user_name      => ENV['SENDGRID_USERNAME'],
+    :password       => ENV['SENDGRID_PASSWORD'],
+    :domain         => 'heroku.com',
+    :enable_starttls_auto => true
+  }
+  config.action_mailer.delivery_method ||= :smtp
+  config.action_mailer.default_url_options = {:host => 'www.bideowego-photos-emails-delays.herokuapp.com'}
+
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.

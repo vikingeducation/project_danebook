@@ -1,9 +1,8 @@
 source 'https://rubygems.org'
 ruby ENV["RBENV_VERSION"] || '2.2.0'
 
-# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.4'
-
+gem 'letter_opener', :group => :development
+gem 'delayed_job_active_record'
 gem 'paperclip'
 gem 'figaro'
 gem 'aws-sdk', '< 2.0'
@@ -28,8 +27,11 @@ group :production do
 	gem 'rails_12factor'
 	gem 'puma'
 	gem 'pg'
+  gem 'daemons'
 end
 
+# Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
+gem 'rails', '4.2.4'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets

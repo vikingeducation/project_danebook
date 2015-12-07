@@ -1,0 +1,3 @@
+Hello <%= @friend_request.approver.name %>!
+You've just received a new friend request from <%= @friend_request.initiator.name %>.
+Visit your profile <%= user_url(@friend_request.approver) %> to accept or reject the request.

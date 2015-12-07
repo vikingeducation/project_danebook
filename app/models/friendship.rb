@@ -4,6 +4,17 @@ class Friendship < ActiveRecord::Base
 
   before_create :create_friendship_if_request_exists
 
+  after_create :queue_notification_email
+
+  def queue_notification_email
+    Friendship.delay.send_notification_email(id)
+  end
+
+  def self.send_notification_email(id)
+    friendship = Friendship.find(id)
+    NotificationMailer.friendship(friendship).deliver!
+  end
+
 
   private
   def create_friendship_if_request_exists

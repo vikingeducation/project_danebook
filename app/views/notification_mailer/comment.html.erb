@@ -1,0 +1,9 @@
+<p>
+  Hello <%= @comment.commentable.user.name %>!
+</p>
+<p>
+  You've just received a new comment on your <%= @comment.commentable.class.name.downcase %> from <%= @comment.user.name %>.
+</p>
+<p>
+  View the comment <%= link_to('here', user_posts_url(@comment.commentable.user)) %>.
+</p>

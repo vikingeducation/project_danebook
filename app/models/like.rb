@@ -9,6 +9,17 @@ class Like < ActiveRecord::Base
 
   validate :presence_of_likeable
 
+  after_create :queue_notification_email
+
+  def queue_notification_email
+    Like.delay.send_notification_email(id)
+  end
+
+  def self.send_notification_email(id)
+    like = Like.find(id)
+    NotificationMailer.like(like).deliver!
+  end
+
 
   private
   def presence_of_likeable

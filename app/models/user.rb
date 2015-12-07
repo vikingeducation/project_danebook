@@ -77,7 +77,8 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :profile
 
   before_create :create_profile
-  after_create :create_auth_token
+  after_create  :create_auth_token,
+                :queue_welcome_email
 
   DEFAULT_PROFILE_PHOTO_URL = '/assets/images/user_silhouette_generic.gif.png'
   DEFAULT_COVER_PHOTO_URL = 'http://placehold.it/768x512'
@@ -140,6 +141,15 @@ class User < ActiveRecord::Base
 
   def friend?(user)
     Friendship.find_by_users(self, user).present?
+  end
+
+  def queue_welcome_email
+    User.delay.send_welcome_email(id)
+  end
+
+  def self.send_welcome_email(user_id)
+    user = User.find(user_id)
+    UserMailer.welcome(user).deliver!
   end
 
 

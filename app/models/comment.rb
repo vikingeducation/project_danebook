@@ -13,6 +13,16 @@ class Comment < ActiveRecord::Base
 
   validate :presence_of_commentable
 
+  after_create :queue_notification_email
+
+  def queue_notification_email
+    Comment.delay.send_notification_email(id)
+  end
+
+  def self.send_notification_email(id)
+    comment = Comment.find(id)
+    NotificationMailer.comment(comment).deliver!
+  end
 
   private
   def presence_of_commentable

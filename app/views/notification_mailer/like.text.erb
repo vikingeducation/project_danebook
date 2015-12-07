@@ -1,0 +1,3 @@
+Hello <%= @like.likeable.user.name %>!
+Your <%= @like.likeable.class.name.downcase %> was just liked by <%= @like.user.name %>.
+Check it out <%= user_url(@like.likeable.user) %>

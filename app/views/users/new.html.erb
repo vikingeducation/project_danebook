@@ -95,7 +95,9 @@
                 :birthday,
                 {
                   :order => [:day, :month, :year],
-                  :date_separator => date_separator
+                  :date_separator => date_separator,
+                  :start_year => Date.today.year,
+                  :end_year => 150.years.ago.year
                 },
                 {:class => 'form-control'}
               ) %>

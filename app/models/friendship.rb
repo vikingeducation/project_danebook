@@ -3,12 +3,25 @@ class Friendship < ActiveRecord::Base
   include Friendable
   include Feedable
 
-  feedable_user_method :initiator
   feedable_actions :create
 
   before_create :create_friendship_if_request_exists
 
   after_create :queue_notification_email
+
+  def feedable_created
+    Activity.create!(
+      :user => initiator,
+      :feedable => self,
+      :verb => :create
+    )
+
+    Activity.create!(
+      :user => approver,
+      :feedable => self,
+      :verb => :create
+    )
+  end
 
   def queue_notification_email
     Friendship.delay.send_notification_email(id)

@@ -1,5 +1,9 @@
 class Post < ActiveRecord::Base
   include Dateable
+  include Feedable
+
+  feedable_user_method :user
+  feedable_actions :create
 
   belongs_to :user
   has_many :comments, :as => :commentable, :dependent => :destroy

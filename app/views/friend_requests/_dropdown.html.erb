@@ -9,7 +9,7 @@
 
     <span class="caret"></span>
   </a>
-  <ul class="dropdown-menu">
+  <ul class="dropdown-menu <%= friend_requests.length > 4 ? 'scroll' : %Q[num-friend-requests-#{friend_requests.length}] %>">
 
     <% if friend_requests.present? %>
       <% friend_requests.each do |friend_request| %>

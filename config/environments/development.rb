@@ -1,18 +1,5 @@
 Rails.application.configure do
   # ----------------------------------------
-  # Paperclip Defaults
-  # ----------------------------------------
-  config.paperclip_defaults = {
-    :storage => :s3,
-    :s3_credentials => {
-      :s3_host_name => Rails.application.secrets.s3_host_name,
-      :bucket => Rails.application.secrets.bucket,
-      :access_key_id => Rails.application.secrets.access_key_id,
-      :secret_access_key => Rails.application.secrets.secret_access_key
-    }
-  }
-
-  # ----------------------------------------
   # Letter Opener
   # ----------------------------------------
   config.action_mailer.delivery_method = :letter_opener

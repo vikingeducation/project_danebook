@@ -1,5 +1,9 @@
 class Comment < ActiveRecord::Base
   include Dateable
+  include Feedable
+
+  feedable_user_method :user
+  feedable_actions :create
 
   belongs_to :user
   belongs_to :commentable, :polymorphic => true

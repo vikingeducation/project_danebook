@@ -1,6 +1,10 @@
 class Friendship < ActiveRecord::Base
   include Dateable
   include Friendable
+  include Feedable
+
+  feedable_user_method :initiator
+  feedable_actions :create
 
   before_create :create_friendship_if_request_exists
 

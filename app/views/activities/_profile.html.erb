@@ -1,0 +1,25 @@
+<!-- Profile -->
+<div class="post col-xs-12">
+  <header>
+    <div class="row">
+      <div class="col-xs-2">
+        <div class="post-profile-image-container">
+
+            <%= link_to(user_path(profile.user)) {image_tag(profile.user.profile_photo_url)} %>
+
+        </div>
+      </div>
+      <div class="col-xs-8 post-info-container">
+
+        <%= link_to(profile.user.name, user_path(profile.user)) %>
+
+        updated their profile on
+
+        <time>
+          <%= profile.date %>
+        </time>
+      </div>
+    </div>
+  </header>
+</div><!-- col -->
+

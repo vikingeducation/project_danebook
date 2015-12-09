@@ -89,7 +89,10 @@ class PhotosController < ApplicationController
 
   def require_is_friend
     @user = User.find(params[:user_id])
-    redirect_to user_path(@user) unless current_user == @user || current_user.friend?(@user)
+    unless current_user == @user || current_user.friend?(@user)
+      flash[:error] = 'You must be friends to do that'
+      redirect_to user_path(@user)
+    end
   end
 end
 

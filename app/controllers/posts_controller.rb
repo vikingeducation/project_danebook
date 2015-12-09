@@ -3,14 +3,16 @@ class PostsController < ApplicationController
   before_action :require_current_user, :except => [:index]
 
   def index
-    user_id = params[:user_id]
-    if user_id
-      @user = User.find_by_id(user_id)
-      @posts = Post.where(:user_id => user_id)
+    @user = User.find_by_id(params[:user_id])
+    if @user
+      @posts = Post.where(:user_id => @user.id)
+      @posts.order(:created_at => 'DESC')
     else
-      @posts = Post.all
+      redirect_to_referer(
+        root_path,
+        :flash => {:error => 'User not found'}
+      )
     end
-    @posts.order(:created_at => 'DESC')
   end
 
   def create
@@ -21,7 +23,7 @@ class PostsController < ApplicationController
       flash[:error] = 'Post not created: ' +
         @post.errors.full_messages.join(', ')
     end
-    redirect_to user_posts_path(current_user)
+    redirect_to_referer user_posts_path(current_user)
   end
 
   def destroy

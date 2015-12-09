@@ -1,0 +1,130 @@
+<%= render :partial => 'shared/nav' %>
+<%= render :partial => 'shared/flash' %>
+
+<!-- Profile Page / News Feed -->
+<section id="news-feed" class="row profile-page-container row-offcanvas row-offcanvas-left">
+
+  <!-- Details -->
+  <div class="col-sm-3 details-container sidebar-offcanvas">
+
+    <div class="row">
+
+      <!-- Profile Avatar -->
+      <section id="profile-avatar" class="col-xs-12">
+        <div class="row">
+          <div class="col-md-12 col-lg-6">
+            <div class="profile-image-container">
+
+              <%= link_to(user_path(current_user)) {image_tag(current_user.profile_photo_url(:thumb))} %>
+
+            </div>
+          </div>
+          <div class="col-md-12 col-lg-6">
+            <div class="profile-avatar-links-container">
+
+              <%= link_to(current_user.name, user_path(current_user), :class => 'profile-link') %>
+
+              <%= link_to('Edit Profile', edit_user_path(current_user)) %>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Recently Active -->
+      <section id="recently-active" class="col-xs-12">
+        <header class="details-header">
+          <h1>
+            Recently Active
+          </h1>
+        </header>
+
+        <!-- Activity Links -->
+        <div class="activity-container">
+
+          <div class="row">
+
+            <% @activities.take(5).each do |activity| %>
+
+              <div class="activity-link-container col-xs-12">
+                <div class="row">
+                    <div class="col-md-12 col-lg-3">
+                      <div class="profile-image-container">
+
+                        <%= link_to(user_path(activity.user)) {image_tag(activity.user.profile_photo_url)} %>
+
+                      </div>
+                    </div>
+                    <div class="col-md-12 col-lg-8 col-lg-offset-1 activity-info-container">
+                      
+                      <%= link_to(activity.user.name, user_path(activity.user)) %>
+
+                      <time>
+                        Recently active on <%= activity.date %>
+                      </time>
+                    </div>
+                </div>  
+              </div>
+
+            <% end %>
+
+
+          </div>
+
+        </div>
+        <footer>
+
+          <%= link_to('See all your friends...', user_friendships_path(current_user)) %>
+
+        </footer>
+      </section><!-- .activity-links -->
+    </div><!-- row -->
+
+  </div>
+
+  <!-- News Feed -->
+  <div class="col-sm-8 col-sm-offset-1 news-feed-container">
+
+    <div class="pull-left visible-xs offcanvas-toggle-container">
+      <button type="button" class="btn btn-primary offcanvas-toggle" data-toggle="offcanvas">
+        <span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"></span>
+      </button>
+    </div>
+
+    <div class="row">
+      
+      <%= render :partial => 'posts/form', :locals => {:post => current_user.posts.build} %>
+
+      <!-- Activities -->
+      <% if @activities.present? %>
+
+        <% @activities.each do |activity| %>
+          <%
+          resource = "#{activity.feedable_type.underscore}"
+          partial = resource
+          locals = {resource.to_sym => activity.feedable}
+          %>
+          <%= render :partial => partial, :locals => locals %>
+        <% end %>
+
+        <div class="col-xs-12 text-success feed-end">
+          You've successfully reached the end of the news feed! Whoot!
+          <br>
+          No more news is good news right?
+        </div>
+
+      <% else %>
+
+        <div class="col-xs-12 no-activity">
+          No activity yet!
+        </div>
+
+      <% end %>
+
+    </div><!-- row -->
+
+</section><!-- #news-feed -->
+
+
+
+

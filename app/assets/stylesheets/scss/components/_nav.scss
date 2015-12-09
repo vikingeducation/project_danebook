@@ -82,6 +82,26 @@
     white-space: nowrap;
   }
 
+  $dropdown-height: 96px;
+  .friend-requests-dropdown.open {
+    .dropdown-menu {  
+      height: $dropdown-height;
+    }
+    .dropdown-menu.scroll {
+      overflow-y: scroll;
+      height: $dropdown-height * 3;
+    }
+    .dropdown-menu.num-friend-requests-2 {
+      height: $dropdown-height * 1.5;
+    }
+    .dropdown-menu.num-friend-requests-3 {
+      height: $dropdown-height * 2;
+    }
+    .dropdown-menu.num-friend-requests-4 {
+      height: $dropdown-height * 2.5;
+    }
+  }
+
   // --------------------
   // username
   // --------------------

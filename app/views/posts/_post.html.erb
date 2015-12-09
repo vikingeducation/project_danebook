@@ -4,21 +4,17 @@
     <div class="row">
       <div class="col-xs-2">
         <div class="post-profile-image-container">
-          <a href="/about">
 
-            <%= image_tag(post.user.profile_photo_url) %>
+            <%= link_to(user_path(post.user)) {image_tag(post.user.profile_photo_url)} %>
 
-          </a>
         </div>
       </div>
       <div class="col-xs-8 post-info-container">
-        <a href="/about">
 
-          <%= post.user.name %>
+        <%= link_to(post.user.name, user_path(post.user)) %>
 
-        </a>
         <time>
-          Posted on <%= post.date %>
+          posted on <%= post.date %>
         </time>
       </div>
     </div>

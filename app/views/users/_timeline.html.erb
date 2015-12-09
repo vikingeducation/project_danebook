@@ -43,7 +43,7 @@
           <div class="row">
 
             <% if user.photos.present? %>
-              <% user.photos.each do |photo| %>
+              <% user.photos.take(9).each do |photo| %>
                 <%= link_to(user_photo_path(user, photo)) do %>
                 <div class="col-xs-12 col-sm-4 photo-thumb" style="background: url('<%= photo.file.url(:thumb) %>')"></div>
                 <% end %>
@@ -82,7 +82,7 @@
 
             <% if user.friends.present? %>
             
-              <% user.friends.each do |friend| %>
+              <% user.friends.take(9).each do |friend| %>
               
                 <div class="col-xs-12 col-sm-4">
 

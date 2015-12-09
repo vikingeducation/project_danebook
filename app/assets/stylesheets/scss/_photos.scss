@@ -1,5 +1,12 @@
 // photos
 
+.photo-link {
+  &:focus,
+  &:hover {
+    border: 1px solid $dark;
+  }
+}
+
 #photos {
   .no-photos {
     text-align: center;
@@ -55,10 +62,10 @@
       color: $light;
     }
     
+    @extend .photo-link;
+
     &:focus,
     &:hover {
-      border: 1px solid $dark;
-
       .pub-date-container {
         bottom: 0;
         @include transition(bottom 0.5s linear);
@@ -88,10 +95,7 @@
   border-radius: 4px;
   height: 128px;
 
-  &:focus,
-  &:hover {
-    border: 1px solid $dark;
-  }
+  @extend .photo-link;
 }
 
 

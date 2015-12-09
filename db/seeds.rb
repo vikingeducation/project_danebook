@@ -34,22 +34,6 @@ TEXT_BODIES = [
   'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet accusamus, veritatis fuga id nam corrupti quis quos inventore, perspiciatis ab! Fugiat animi, qui doloribus aut quas enim dignissimos libero dolorum?'
 ]
 
-# --------------------------------------------
-# Create Genders
-# --------------------------------------------
-
-puts 'Creating genders'
-GENDERS = [
-  {:name => 'Male', :short_name => 'm'},
-  {:name => 'Female', :short_name => 'f'}
-]
-Gender.create(GENDERS)
-
-# --------------------------------------------
-# Create Users and Profiles
-# --------------------------------------------
-
-puts 'Creating users and profiles'
 FIRST_NAMES = [
   'Moe',
   'Larry',
@@ -72,8 +56,6 @@ LAST_NAMES = [
   'Cat'
 ]
 PASSWORD = 'password'
-birthday_year_range = 18..50
-gender_id_range = 1..Gender.count
 
 COLLEGES = [
   'School Academy',
@@ -96,24 +78,83 @@ TELEPHONES = [
   '867-5309'
 ]
 
+GENDERS = [
+  {:name => 'Male', :short_name => 'm'},
+  {:name => 'Female', :short_name => 'f'}
+]
+
+IMAGES_PATH = "#{Rails.root}/public/assets/images/"
+PROFILE_PHOTO_PATHS = Dir["#{IMAGES_PATH}profile-photos/*"] - ["#{IMAGES_PATH}profile-photos/default.png"]
+COVER_PHOTO_PATHS = Dir["#{IMAGES_PATH}cover-photos/*"] - ["#{IMAGES_PATH}cover-photos/default.png"]
+OTHER_PHOTO_PATHS = Dir["#{IMAGES_PATH}other-photos/*"]
+
+# --------------------------------------------
+# Skip Callbacks
+# --------------------------------------------
+
+Comment.skip_callback(:create, :after, :feedable_created)
+Comment.skip_callback(:create, :after, :queue_notification_email)
+FriendRequest.skip_callback(:create, :after, :queue_notification_email)
+Friendship.skip_callback(:create, :after, :queue_notification_email)
+Friendship.skip_callback(:create, :after, :feedable_created)
+Photo.skip_callback(:create, :after, :feedable_created)
+Post.skip_callback(:create, :after, :feedable_created)
+Profile.skip_callback(:update, :after, :feedable_updated)
+Like.skip_callback(:create, :after, :queue_notification_email)
+Like.skip_callback(:create, :after, :feedable_created)
+User.skip_callback(:create, :before, :create_profile)
+User.skip_callback(:create, :after, :queue_welcome_email)
+
+# --------------------------------------------
+# Helper Methods
+# --------------------------------------------
+
+def random_birthday
+  rand(1..100).years.ago
+end
+
+def random_date
+  rand(0..5000).days.ago
+end
+
+def days_between_now_and(date)
+  (Date.today - date.to_date).to_i
+end
+
+def random_photo_file_path(type=:other)
+  {
+    :profile => PROFILE_PHOTO_PATHS.sample,
+    :cover => COVER_PHOTO_PATHS.sample,
+    :other => OTHER_PHOTO_PATHS.sample
+  }[type]
+end
+
+# --------------------------------------------
+# Create Genders
+# --------------------------------------------
+
+puts 'Creating Genders'
+Gender.create(GENDERS)
+gender_ids = Gender.pluck(:id)
+
+# --------------------------------------------
+# Create Users
+# --------------------------------------------
+
+puts 'Creating Users'
 users = []
 FIRST_NAMES.each_with_index do |first_name, i|
   LAST_NAMES.each_with_index do |last_name, j|
+    date = random_date
     users << {
       :email => "#{first_name.downcase}@#{last_name.downcase}.com",
       :password => PASSWORD,
       :first_name => first_name,
       :last_name => last_name,
-      :birthday => rand(birthday_year_range).years.ago,
-      :gender_id => rand(gender_id_range),
-      :profile_attributes => {
-        :college => COLLEGES.sample,
-        :hometown => HOMETOWNS.sample,
-        :currently_lives => HOMETOWNS.sample,
-        :telephone => TELEPHONES.sample,
-        :words_to_live_by => TEXT_BODIES.sample,
-        :about_me => TEXT_BODIES.sample
-      }
+      :birthday => random_birthday,
+      :gender_id => gender_ids.sample,
+      :created_at => date,
+      :updated_at => date
     }
   end
 end
@@ -121,22 +162,177 @@ User.create(users)
 user_ids = User.pluck(:id)
 
 # --------------------------------------------
+# Initialize Activity Accumulator
+# --------------------------------------------
+
+activities = []
+
+# --------------------------------------------
+# Create Profiles
+# --------------------------------------------
+
+puts 'Creating Profiles'
+profiles = []
+user_ids.each do |user_id|
+  date = random_date
+  profiles << {
+    :user_id => user_id,
+    :college => COLLEGES.sample,
+    :hometown => HOMETOWNS.sample,
+    :currently_lives => HOMETOWNS.sample,
+    :telephone => TELEPHONES.sample,
+    :words_to_live_by => TEXT_BODIES.sample,
+    :about_me => TEXT_BODIES.sample,
+    :created_at => date,
+    :updated_at => date
+  }
+
+  activities << {
+    :user_id => user_id,
+    :feedable_id => profiles.length,
+    :feedable_type => 'Profile',
+    :verb => :update,
+    :created_at => date,
+    :updated_at => date
+  }
+end
+Profile.create(profiles)
+profile_ids = Profile.pluck(:id)
+
+# --------------------------------------------
 # Create FriendRequests
 # --------------------------------------------
 
 puts 'Creating FriendRequests'
-user_ids.each do |user_id|
-
+friend_requests = []
+user_ids.each do |initiator_id|
+  user_ids[0..rand(user_ids.length - 1)].each do |approver_id|
+    date = random_date
+    friend_requests << {
+      :initiator_id => initiator_id,
+      :approver_id => approver_id,
+      :created_at => date,
+      :updated_at => date
+    } unless initiator_id == approver_id
+  end
 end
+FriendRequest.create(friend_requests)
+friend_request_ids = FriendRequest.pluck(:id)
 
 # --------------------------------------------
 # Create Friendships
 # --------------------------------------------
 
 puts 'Creating Friendships'
-user_ids.each do |user_id|
-  
+friendships = []
+FriendRequest.all.each do |friend_request|
+  if friend_request.id.even?
+    friend_request.approved = true
+    friend_request.save
+
+    date = friend_request.created_at
+
+    friendships << {
+      :initiator_id => friend_request.initiator_id,
+      :approver_id => friend_request.approver_id,
+      :created_at => date,
+      :updated_at => date
+    }
+
+    activities << {
+      :user_id => friend_request.initiator_id,
+      :feedable_id => friendships.length,
+      :feedable_type => 'Friendship',
+      :verb => :create,
+      :created_at => date,
+      :updated_at => date
+    }
+
+    activities << {
+      :user_id => friend_request.approver_id,
+      :feedable_id => friendships.length,
+      :feedable_type => 'Friendship',
+      :verb => :create,
+      :created_at => date,
+      :updated_at => date
+    }
+  end
 end
+Friendship.create(friendships)
+friendship_ids = Friendship.pluck(:id)
+
+# --------------------------------------------
+# Create Photos
+# --------------------------------------------
+
+puts 'Creating Photos'
+photos = []
+user_ids.each do |user_id|
+  rand(0..(10 * MULTIPLIER)).times do
+    date = random_date
+    photo_file = File.new(random_photo_file_path)
+    other_photo = Photo.create(
+      :file => photo_file,
+      :user_id => user_id,
+      :created_at => date,
+      :updated_at => date
+    )
+    photo_file.close
+
+    activities << {
+      :user_id => user_id,
+      :feedable_id => other_photo.id,
+      :feedable_type => 'Photo',
+      :verb => :create,
+      :created_at => date,
+      :updated_at => date
+    }
+  end
+
+  date = random_date
+  user = User.find(user_id)
+  photo_file = File.new(random_photo_file_path(:profile))
+  profile_photo = Photo.create(
+    :file => photo_file,
+    :user_id => user_id,
+    :created_at => date,
+    :updated_at => date
+  )
+  user.profile_photo_id = profile_photo.id
+  photo_file.close
+
+  activities << {
+    :user_id => user_id,
+    :feedable_id => profile_photo.id,
+    :feedable_type => 'Photo',
+    :verb => :create,
+    :created_at => date,
+    :updated_at => date
+  }
+
+  date = random_date
+  photo_file = File.new(random_photo_file_path(:cover))
+  cover_photo = Photo.create(
+    :file => photo_file,
+    :user_id => user_id,
+    :created_at => date,
+    :updated_at => date
+  )
+  user.cover_photo_id = cover_photo.id
+  photo_file.close
+
+  activities << {
+    :user_id => user_id,
+    :feedable_id => cover_photo.id,
+    :feedable_type => 'Photo',
+    :verb => :create,
+    :created_at => date,
+    :updated_at => date
+  }
+
+  user.save
+end
+photo_ids = Photo.pluck(:id)
 
 # --------------------------------------------
 # Create Posts
@@ -146,27 +342,36 @@ puts 'Creating Posts'
 posts = []
 user_ids.each do |user_id|
   rand(0..(5 * MULTIPLIER)).times do
-    date = rand(0..1000).days.ago
+    date = random_date
     posts << {
       :user_id => user_id,
       :body => TEXT_BODIES.shuffle.first,
       :created_at => date,
       :updated_at => date
     }
+
+    activities << {
+      :user_id => user_id,
+      :feedable_id => posts.length,
+      :feedable_type => 'Post',
+      :verb => :create,
+      :created_at => date,
+      :updated_at => date
+    }
   end
 end
 Post.create(posts)
+post_ids = Post.pluck(:id)
 
 # --------------------------------------------
 # Create Comments
 # --------------------------------------------
 
 puts 'Creating Comments'
-post_ids = Post.pluck(:id)
 comments = []
 user_ids.each do |user_id|
   rand(0..(5 * MULTIPLIER)).times do
-    date = rand(0..1000).days.ago
+    date = random_date
     comments << {
       :user_id => user_id,
       :commentable_id => post_ids.shuffle.first,
@@ -175,9 +380,40 @@ user_ids.each do |user_id|
       :created_at => date,
       :updated_at => date
     }
+
+    activities << {
+      :user_id => user_id,
+      :feedable_id => comments.length,
+      :feedable_type => 'Comment',
+      :verb => :create,
+      :created_at => date,
+      :updated_at => date
+    }
+  end
+
+  rand(0..(5 * MULTIPLIER)).times do
+    date = random_date
+    comments << {
+      :user_id => user_id,
+      :commentable_id => photo_ids.shuffle.first,
+      :commentable_type => 'Photo',
+      :body => TEXT_BODIES.shuffle.first,
+      :created_at => date,
+      :updated_at => date
+    }
+
+    activities << {
+      :user_id => user_id,
+      :feedable_id => comments.length,
+      :feedable_type => 'Comment',
+      :verb => :create,
+      :created_at => date,
+      :updated_at => date
+    }
   end
 end
 Comment.create(comments)
+comment_ids = Comment.pluck(:id)
 
 # --------------------------------------------
 # Create Likes
@@ -185,29 +421,86 @@ Comment.create(comments)
 
 puts 'Creating Likes'
 likes = []
-post_ids.each do |post_id|
+Post.all.each do |post|
+  post_id = post.id
   rand(0..(5 * MULTIPLIER)).times do
+    date = random_date
     likes << {
       :likeable_id => post_id,
       :likeable_type => 'Post',
-      :user_id => user_ids.shuffle.first
+      :user_id => user_ids.shuffle.first,
+      :created_at => date,
+      :updated_at => date
+    }
+
+    activities << {
+      :user_id => post.user_id,
+      :feedable_id => likes.length,
+      :feedable_type => 'Like',
+      :verb => :create,
+      :created_at => date,
+      :updated_at => date
     }
   end
 end
-comment_ids = Comment.pluck(:id)
-comment_ids.each do |comment_id|
+
+Comment.all.each do |comment|
+  comment_id = comment.id
   rand(0..(5 * MULTIPLIER)).times do
+    date = random_date
     likes << {
       :likeable_id => comment_id,
       :likeable_type => 'Comment',
-      :user_id => user_ids.shuffle.first
+      :user_id => user_ids.shuffle.first,
+      :created_at => date,
+      :updated_at => date
+    }
+
+    activities << {
+      :user_id => comment.user_id,
+      :feedable_id => likes.length,
+      :feedable_type => 'Like',
+      :verb => :create,
+      :created_at => date,
+      :updated_at => date
+    }
+  end
+end
+
+Photo.all.each do |photo|
+  photo_id = photo.id
+  rand(0..(5 * MULTIPLIER)).times do
+    date = random_date
+    likes << {
+      :likeable_id => photo_id,
+      :likeable_type => 'Photo',
+      :user_id => user_ids.shuffle.first,
+      :created_at => date,
+      :updated_at => date
+    }
+
+    activities << {
+      :user_id => photo.user_id,
+      :feedable_id => likes.length,
+      :feedable_type => 'Like',
+      :verb => :create,
+      :created_at => date,
+      :updated_at => date
     }
   end
 end
 Like.create(likes)
+like_ids = Like.pluck(:id)
+
+# --------------------------------------------
+# Create Activities
+# --------------------------------------------
+
+puts 'Creating Activities'
+Activity.create(activities)
+activity_ids = Activity.pluck(:id)
 
 puts 'done!'
-
 
 
 

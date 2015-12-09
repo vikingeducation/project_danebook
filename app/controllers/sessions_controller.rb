@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
         sign_in(@user)
       end
       flash[:success] = 'You are now signed in'
-      redirect_to root_path
+      redirect_to news_feed_path
     else
       flash[:error] = 'Unable to sign in'
       redirect_to signup_path

@@ -33,17 +33,17 @@ module FriendRequestsHelper
 
   def accept_friend_request_form(friend_request, options={})
     options[:method] = :put
-    friend_request_form('Accept Friendship', friend_request, options)
+    friend_request_form('Accept Friend', friend_request, options)
   end
 
   def reject_friend_request_form(friend_request, options={})
     options[:method] = :delete
-    friend_request_form('Reject Friendship', friend_request, options)
+    friend_request_form('Reject Friend', friend_request, options)
   end
 
   def cancel_friend_request_form(friend_request, options={})
     options[:method] = :delete
-    friend_request_form('Cancel Friend Request', friend_request, options)
+    friend_request_form('Cancel Request', friend_request, options)
   end
 
   def send_friend_request_form(friend_request, options={})

@@ -12,9 +12,9 @@
           
           <div class="well media">
             <div class="media-left">
-              <a href="#">
-                <img class="media-object" src="http://placehold.it/128x128" alt="Image">
-              </a>
+
+              <%= link_to(user_path(user)) {image_tag(user.profile_photo_url(:thumb))} %>
+
             </div>
             <div class="media-body clearfix">
               <h4 class="media-heading">

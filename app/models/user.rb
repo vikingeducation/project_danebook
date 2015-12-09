@@ -80,8 +80,8 @@ class User < ActiveRecord::Base
   after_create  :create_auth_token,
                 :queue_welcome_email
 
-  DEFAULT_PROFILE_PHOTO_URL = '/assets/images/user_silhouette_generic.gif.png'
-  DEFAULT_COVER_PHOTO_URL = 'http://placehold.it/768x512'
+  DEFAULT_PROFILE_PHOTO_URL = '/assets/images/profile-photos/default.png'
+  DEFAULT_COVER_PHOTO_URL = '/assets/images/cover-photos/default.png'
 
   def profile_photo_url(style=nil)
     if profile_photo

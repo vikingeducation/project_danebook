@@ -148,8 +148,8 @@ class User < ActiveRecord::Base
   end
 
   def self.send_welcome_email(user_id)
-    user = User.find(user_id)
-    UserMailer.welcome(user).deliver!
+    user = User.find_by_id(user_id)
+    UserMailer.welcome(user).deliver! if user
   end
 
 

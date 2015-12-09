@@ -2,12 +2,11 @@ class Friendship < ActiveRecord::Base
   include Dateable
   include Friendable
   include Feedable
+  include Notifiable
 
   feedable_actions :create
 
   before_create :create_friendship_if_request_exists
-
-  after_create :queue_notification_email
 
   def feedable_created
     Activity.create!(
@@ -21,15 +20,6 @@ class Friendship < ActiveRecord::Base
       :feedable => self,
       :verb => :create
     )
-  end
-
-  def queue_notification_email
-    Friendship.delay.send_notification_email(id)
-  end
-
-  def self.send_notification_email(id)
-    friendship = Friendship.find(id)
-    NotificationMailer.friendship(friendship).deliver!
   end
 
 

@@ -1,6 +1,7 @@
 class Comment < ActiveRecord::Base
   include Dateable
   include Feedable
+  include Notifiable
 
   feedable_user_method :user
   feedable_actions :create
@@ -17,16 +18,6 @@ class Comment < ActiveRecord::Base
 
   validate :presence_of_commentable
 
-  after_create :queue_notification_email
-
-  def queue_notification_email
-    Comment.delay.send_notification_email(id)
-  end
-
-  def self.send_notification_email(id)
-    comment = Comment.find(id)
-    NotificationMailer.comment(comment).deliver!
-  end
 
   private
   def presence_of_commentable

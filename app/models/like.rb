@@ -1,6 +1,7 @@
 class Like < ActiveRecord::Base
   include Dateable
   include Feedable
+  include Notifiable
 
   feedable_user_method :user
   feedable_actions :create
@@ -12,17 +13,6 @@ class Like < ActiveRecord::Base
             :presence => true
 
   validate :presence_of_likeable
-
-  after_create :queue_notification_email
-
-  def queue_notification_email
-    Like.delay.send_notification_email(id)
-  end
-
-  def self.send_notification_email(id)
-    like = Like.find(id)
-    NotificationMailer.like(like).deliver!
-  end
 
 
   private

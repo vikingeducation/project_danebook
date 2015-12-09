@@ -17,7 +17,9 @@
 
         <%= link_to(comment.commentable.user.name, user_path(comment.commentable.user)) %>'s
 
-        <%= link_to(comment.commentable_type.downcase, polymorphic_path([comment.commentable.user, comment.commentable])) %>
+        <%# Hash tag anchor if post %>
+        <%# link_to(comment.commentable_type.downcase, polymorphic_path([comment.commentable.user, comment.commentable])) %>
+        <%= link_to(comment.commentable_type.downcase, user_path(comment.commentable.user)) %>
 
         on
 

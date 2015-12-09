@@ -41,7 +41,7 @@ class ApplicationController < ActionController::Base
   def require_logout
     if signed_in_user?
       flash[:error] = 'Are you trying to signup a new user? Logout first!'
-      redirect_to user_posts_path(current_user)
+      redirect_to user_activity_path(current_user)
     end
   end
 

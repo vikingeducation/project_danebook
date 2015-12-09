@@ -9,7 +9,7 @@ class PostsController < ApplicationController
       flash[:error] = 'Post not created: ' +
         @post.errors.full_messages.join(', ')
     end
-    redirect_to_referer user_posts_path(current_user)
+    redirect_to_referer user_activity_path(current_user)
   end
 
   def destroy
@@ -19,7 +19,7 @@ class PostsController < ApplicationController
     else
       flash[:error] = 'Post not destroyed'
     end
-    redirect_to user_posts_path(current_user)
+    redirect_to user_activity_path(current_user)
   end
 
 

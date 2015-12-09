@@ -12,4 +12,13 @@
 //
 //= require jquery2
 //= require jquery_ujs
-//= require static_pages
+
+// offcanvas
+
+(function() {
+  $(document).ready(function () {
+    $('[data-toggle="offcanvas"]').click(function () {
+      $('.row-offcanvas').toggleClass('active')
+    });
+  });
+})($);

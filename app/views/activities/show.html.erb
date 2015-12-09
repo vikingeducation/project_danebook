@@ -1,4 +1,5 @@
-<%= render :partial => 'shared/profile_header', :locals => {:user => user} %>
+<%= render :partial => 'shared/nav' %>
+<%= render :partial => 'shared/profile_header', :locals => {:user => @user} %>
 <%= render :partial => 'shared/flash' %>
 
 <!-- Profile Page / Timeline -->
@@ -13,15 +14,15 @@
       <section id="about" class="col-xs-10 col-sm-12">
         <header class="details-header">
           <h1>
-            About: <%= user.name %>
+            About: <%= @user.name %>
           </h1>
         </header>
         <div class="about-container">
           <dl>
-            <dt>Birthday:</dt><dd><%= user.birthday %></dd>
-            <dt>College:</dt><dd><%= user.profile.college %></dd>
-            <dt>Hometown:</dt><dd><%= user.profile.hometown %></dd>
-            <dt>Currently Lives:</dt><dd><%= user.profile.currently_lives %></dd>
+            <dt>Birthday:</dt><dd><%= @user.birthday %></dd>
+            <dt>College:</dt><dd><%= @user.profile.college %></dd>
+            <dt>Hometown:</dt><dd><%= @user.profile.hometown %></dd>
+            <dt>Currently Lives:</dt><dd><%= @user.profile.currently_lives %></dd>
           </dl>
         </div>
       </section>
@@ -32,7 +33,7 @@
           <h1>
             Photos
             <small>
-              (<%= user.photos.length %>)
+              (<%= @user.photos.length %>)
             </small>
           </h1>
         </header>
@@ -42,9 +43,9 @@
 
           <div class="row">
 
-            <% if user.photos.present? %>
-              <% user.photos.take(9).each do |photo| %>
-                <%= link_to(user_photo_path(user, photo)) do %>
+            <% if @user.photos.present? %>
+              <% @user.photos.take(9).each do |photo| %>
+                <%= link_to(user_photo_path(@user, photo)) do %>
                 <div class="col-xs-12 col-sm-4 photo-thumb" style="background: url('<%= photo.file.url(:thumb) %>')"></div>
                 <% end %>
               <% end %>
@@ -61,7 +62,7 @@
 
         <footer>
           
-          <%= link_to('See more photos...', user_photos_path(user)) %>
+          <%= link_to('See more photos...', user_photos_path(@user)) %>
 
         </footer>
       </section>
@@ -72,7 +73,7 @@
           <h1>
             Friends
             <small>
-              (<%= user.friends.length %>)
+              (<%= @user.friends.length %>)
             </small>
           </h1>
         </header>
@@ -80,9 +81,9 @@
 
           <div class="row">
 
-            <% if user.friends.present? %>
+            <% if @user.friends.present? %>
             
-              <% user.friends.take(9).each do |friend| %>
+              <% @user.friends.take(9).each do |friend| %>
               
                 <div class="col-xs-12 col-sm-4">
 
@@ -107,7 +108,7 @@
         </div>
         <footer>
 
-          <%= link_to('See more friends', user_friendships_path(user)) %>
+          <%= link_to('See more friends', user_friendships_path(@user)) %>
 
         </footer>
       </section>
@@ -127,29 +128,35 @@
     <div class="row">
 
       <%# Render post form only if current user is this user %>
-      <% if is_current_user?(user) %>
+      <% if is_current_user?(@user) %>
 
-        <%= render :partial => 'posts/form', :locals => {:post => user.posts.build} %>
+        <%= render :partial => 'posts/form', :locals => {:post => @user.posts.build} %>
 
       <% end %>
 
-      <!-- Posts -->
-      <% if posts.present? %>
-        <% posts.order(:created_at => 'DESC').each do |post| %>
+      <!-- Activities -->
+      <% if @activities.present? %>
 
-          <%= render post %>
-
+        <% @activities.each do |activity| %>
+          <%
+          resource = "#{activity.feedable_type.underscore}"
+          partial = resource
+          locals = {resource.to_sym => activity.feedable}
+          %>
+          <%= render :partial => partial, :locals => locals %>
         <% end %>
+
+        <div class="col-xs-12 text-success feed-end">
+          You've successfully reached the beginning of time! Whoot!
+          <br>
+          Well... the beginning of <%= @user.name %>'s timeline at least.
+        </div>
 
       <% else %>
 
-        <div class="no-posts col-xs-12">
-          <article>
-            <p class="text-warning">
-              No posts yet!
-            </p>
-          </article>
-        </div><!-- post col -->
+        <div class="col-xs-12 no-activity">
+          No activity yet!
+        </div>
 
       <% end %>
 

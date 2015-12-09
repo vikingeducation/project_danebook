@@ -3,6 +3,13 @@
 #timeline {
 	border: none;
 
+  .no-activity,
+  .feed-end {
+    text-align: center;
+    padding-top: 128px;
+    padding-bottom: 128px;
+  }
+
 	.details-header,
 	.timeline-header,
 	.timeline-footer {

@@ -12,4 +12,8 @@ class Activity < ActiveRecord::Base
       user.id
     ).order(:created_at => :desc)
   end
+
+  def self.timeline_for(user)
+    where(:user_id => user.id).order(:created_at => :desc)
+  end
 end

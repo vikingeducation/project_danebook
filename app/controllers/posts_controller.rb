@@ -1,19 +1,5 @@
 class PostsController < ApplicationController
-  before_action :require_login, :only => [:index]
-  before_action :require_current_user, :except => [:index]
-
-  def index
-    @user = User.find_by_id(params[:user_id])
-    if @user
-      @posts = Post.where(:user_id => @user.id)
-      @posts.order(:created_at => 'DESC')
-    else
-      redirect_to_referer(
-        root_path,
-        :flash => {:error => 'User not found'}
-      )
-    end
-  end
+  before_action :require_current_user
 
   def create
     @post = Post.new(post_params)

@@ -15,7 +15,8 @@ class User < ActiveRecord::Base
 
   has_many  :requested_friendships,
             :class_name => 'Friendship',
-            :foreign_key => :initiator_id
+            :foreign_key => :initiator_id,
+            :dependent => :destroy
 
   has_many  :friendship_accepters,
             :through => :requested_friendships,
@@ -23,7 +24,8 @@ class User < ActiveRecord::Base
 
   has_many  :accepted_friendships,
             :class_name => 'Friendship',
-            :foreign_key => :approver_id
+            :foreign_key => :approver_id,
+            :dependent => :destroy
 
   has_many  :friendship_requesters,
             :through => :accepted_friendships,
@@ -31,7 +33,8 @@ class User < ActiveRecord::Base
 
   has_many  :sent_friend_requests,
             :class_name => 'FriendRequest',
-            :foreign_key => :initiator_id
+            :foreign_key => :initiator_id,
+            :dependent => :destroy
 
   has_many  :friend_request_receivers,
             :through => :sent_friend_requests,
@@ -39,7 +42,8 @@ class User < ActiveRecord::Base
 
   has_many  :received_friend_requests,
             :class_name => 'FriendRequest',
-            :foreign_key => :approver_id
+            :foreign_key => :approver_id,
+            :dependent => :destroy
 
   has_many  :friend_request_senders,
             :through => :received_friend_requests,
@@ -71,8 +75,8 @@ class User < ActiveRecord::Base
   validates :gender,
             :presence => true
 
-  validate :cover_photo_belongs_to_user, :on => :update, :if => ->{cover_photo_id.present?}
-  validate :profile_photo_belongs_to_user, :on => :update, :if => ->{profile_photo_id.present?}
+  validate :cover_photo_belongs_to_user, :if => ->{cover_photo_id.present?}
+  validate :profile_photo_belongs_to_user, :if => ->{profile_photo_id.present?}
 
   accepts_nested_attributes_for :profile
 
@@ -143,17 +147,12 @@ class User < ActiveRecord::Base
     Friendship.find_by_users(self, user).present?
   end
 
+
+  private
   def queue_welcome_email
     User.delay.send_welcome_email(id)
   end
 
-  def self.send_welcome_email(user_id)
-    user = User.find_by_id(user_id)
-    UserMailer.welcome(user).deliver! if user
-  end
-
-
-  private
   def generate_auth_token
     str = SecureRandom.uuid + email
     SecureRandom.urlsafe_base64 + Base64.urlsafe_encode64(str)
@@ -173,6 +172,11 @@ class User < ActiveRecord::Base
       reload
       errors.add(:base, 'Photo must belong to user')
     end
+  end
+
+  def self.send_welcome_email(user_id)
+    user = User.find_by_id(user_id)
+    UserMailer.welcome(user).deliver! if user
   end
 end
 

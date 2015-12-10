@@ -117,6 +117,11 @@ describe ApplicationController do
       expect(response).to redirect_to root_path
     end
   end
+
+  describe '#redirect_to_referer' do
+    it 'redirects to the referer when set'
+    it 'redirects to root path when there is no referer'
+  end
 end
 
 

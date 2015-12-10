@@ -4,11 +4,6 @@ class UsersController < ApplicationController
   before_action :require_current_user, :only => [:edit, :update, :destroy]
   before_action :set_user, :only => [:show, :edit, :update, :destroy]
 
-  def index
-    # friends functionality here
-    @users = User.all
-  end
-
   def show
   end
 

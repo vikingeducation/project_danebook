@@ -1,6 +1,9 @@
 require 'rails_helper'
 
 describe Profile do
+  it_behaves_like 'Dateable'
+  it_behaves_like 'Feedable'
+
   let(:female){create(:female)}
   let(:user){create(:user, :gender => female)}
   let(:profile){user.profile}

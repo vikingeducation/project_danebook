@@ -2,7 +2,7 @@ class Photo < ActiveRecord::Base
   include Dateable
   include Feedable
 
-  feedable_user_method :user
+  feedable_user_methods :user
   feedable_actions :create
 
   belongs_to :user
@@ -16,7 +16,7 @@ class Photo < ActiveRecord::Base
 
   validates_attachment  :file,
                         :presence => true,
-                        :content_type => {:content_type => /\Aimage\/.*\Z/},
+                        :content_type => {:content_type => ["image/jpeg", "image/gif", "image/png"]},
                         :size => {:in => 0..2.megabytes}
 
   before_destroy  :nullify_if_profile_photo,

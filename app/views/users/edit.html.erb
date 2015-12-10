@@ -1,6 +1,6 @@
-<%= render :partial => 'shared/nav' %>
-<%= render :partial => 'shared/profile_header', :locals => {:user => @user} %>
-<%= render :partial => 'shared/flash' %>
+<% content_for(:profile_header) do %>
+  <%= render :partial => 'shared/profile_header', :locals => {:user => @user} %>
+<% end %>
 
 <br>
 <%= render :partial => 'shared/errors', :locals => {:object => @user} %>

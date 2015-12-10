@@ -1,6 +1,6 @@
-<%= render :partial => 'shared/nav' %>
-<%= render :partial => 'shared/profile_header', :locals => {:user => @user} %>
-<%= render :partial => 'shared/flash' %>
+<% content_for(:profile_header) do %>
+  <%= render :partial => 'shared/profile_header', :locals => {:user => @user} %>
+<% end %>
 
 <!-- Profile Page / Friends -->
 <section id="friends" class="row profile-page-container">
@@ -29,11 +29,9 @@
             <div class="row">
               <div class="col-xs-4">
                 <div class="profile-image-container">
-                  <a href="#">
+                  
+                  <%= link_to(user_path(friend)) {image_tag(friend.profile_photo_url)} %>
 
-                    <%= image_tag(friend.profile_photo_url) %>
-
-                  </a>
                 </div>
               </div>
               <div class="col-xs-3 friend-info-container">

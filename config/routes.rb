@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :users do
+  resources :users, :except => [:index] do
     resources :posts, :only => [:create, :destroy]
     resources :friendships, :only => [:index]
     resources :photos, :except => [:edit, :update]

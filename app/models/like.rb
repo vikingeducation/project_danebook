@@ -3,7 +3,7 @@ class Like < ActiveRecord::Base
   include Feedable
   include Notifiable
 
-  feedable_user_method :user
+  feedable_user_methods :user
   feedable_actions :create
   
   belongs_to :user

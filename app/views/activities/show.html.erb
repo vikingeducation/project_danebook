@@ -1,6 +1,7 @@
-<%= render :partial => 'shared/nav' %>
-<%= render :partial => 'shared/profile_header', :locals => {:user => @user} %>
-<%= render :partial => 'shared/flash' %>
+<% content_for(:profile_header) do %>
+  <%= render :partial => 'shared/profile_header', :locals => {:user => @user} %>
+<% end %>
+
 
 <!-- Profile Page / Timeline -->
 <section id="timeline" class="row profile-page-container row-offcanvas row-offcanvas-left">

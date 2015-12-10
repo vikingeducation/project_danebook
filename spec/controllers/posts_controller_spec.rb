@@ -9,28 +9,6 @@ describe PostsController do
     login(user)
   end
 
-  describe 'GET #index' do
-    context 'the user is signed in' do
-      it 'sets an instance variable to all of the user posts' do
-        get :index, :user_id => user.id
-        expect(assigns(:posts)).to eq(user_posts)
-      end
-
-      it 'sets an instance variable to the current user' do
-        get :index, :user_id => user.id
-        expect(assigns(:user)).to eq(user)
-      end
-    end
-
-    context 'the user is signed out' do
-      it 'redirects to the root path' do
-        logout
-        get :index, :user_id => user.id
-        expect(response).to redirect_to root_path
-      end
-    end
-  end
-
   describe 'POST #create' do
     let(:post_create_post) do
       post :create, :user_id => user.id,

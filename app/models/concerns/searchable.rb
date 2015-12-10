@@ -1,7 +1,6 @@
 module Searchable
   def self.included(base)
     base.extend(ClassMethods)
-    base.include(AdapterAcknowledgeable)
   end
 
   module ClassMethods

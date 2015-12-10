@@ -1,7 +1,9 @@
 class FriendRequestsController < ApplicationController
   before_action :require_current_user
-  before_action :require_current_user_is_friend
   before_action :set_friend_request, :except => [:create]
+  before_action :require_current_user_is_initiator, :only => [:create]
+  before_action :require_current_user_is_approver, :only => [:update]
+  before_action :require_current_user_is_initiator_or_approver, :only => [:destroy]
 
   def create
     @friend_request = FriendRequest.new(friend_params)
@@ -46,16 +48,32 @@ class FriendRequestsController < ApplicationController
     )
   end
 
-  def require_current_user_is_friend
-    unless is_friend_current_user?
-      redirect_to_referer root_path, :flash => {:error => 'You must be part of a friendship to do that'}
+  def require_current_user_is_initiator
+    unless current_user.id.to_s == params[:initiator_id]
+      redirect_to_referer(
+        root_path,
+        :flash => {:error => 'You cannot send friend requests on behalf of other users'}
+      )
     end
   end
 
-  def is_friend_current_user?
-    is_friend = current_user.id.to_s == params[:initiator_id] if action_name == 'create'
-    is_friend = current_user.id.to_s == params[:approver_id] if action_name == 'update'
-    is_friend = [params[:initiator_id], params[:approver_id]].include?(current_user.id.to_s) if action_name == 'destroy'
-    !!is_friend
+  def require_current_user_is_approver
+    unless current_user == @friend_request.approver
+      redirect_to_referer(
+        root_path,
+        :flash => {:error => 'You cannot accept friend requests on behalf of other users'}
+      )
+    end
+  end
+
+  def require_current_user_is_initiator_or_approver
+    unless [@friend_request.initiator, @friend_request.approver].include?(current_user)
+      redirect_to_referer(
+        root_path,
+        :flash => {:error => 'You cannot reject nor cancel friend requests on behalf of other users'}
+      )
+    end
   end
 end
+
+

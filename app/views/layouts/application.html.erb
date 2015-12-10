@@ -15,10 +15,12 @@
     <%= yield(:styles) %>
   </head>
   <body>
-    <%= yield(:nav) %>
+    <%= render :partial => 'shared/nav' %>
 
     <!-- Main Content -->
     <main id="main-content" class="container">
+      <%= yield(:profile_header) %>
+      <%= render :partial => 'shared/flash' %>
       <%= yield %>
     </main>
 

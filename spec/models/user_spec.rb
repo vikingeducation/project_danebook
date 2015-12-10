@@ -1,6 +1,9 @@
 require 'rails_helper'
 
 describe User do
+  it_behaves_like 'Dateable'
+  it_behaves_like 'Searchable'
+
   let(:male){create(:male)}
   let(:user){create(:user, :gender => male)}
   let(:profile){user.profile}
@@ -21,6 +24,14 @@ describe User do
     it 'returns the profile that belongs to this user' do
       expect(profile.user_id).to eq(user.id)
     end
+  end
+
+  describe '#profile_photo' do
+    it 'returns the profile photo for this user'
+  end
+
+  describe '#cover_photo' do
+    it 'returns the cover photo for this user'
   end
 
   describe '#gender' do
@@ -45,6 +56,10 @@ describe User do
     it 'returns all the likes that belong to this user' do
       expect(user.likes).to eq([post_like, comment_like])
     end
+  end
+
+  describe '#photos' do
+    it 'returns all photos for this user'
   end
 
   describe '#requested_friendships' do
@@ -144,11 +159,35 @@ describe User do
         expect {create(:user, :gender => nil)}.to raise_error(ActiveRecord::RecordInvalid)
       end
     end
+
+    describe 'cover_photo' do
+      it 'belongs to this user'
+    end
+
+    describe 'profile_photo' do
+      it 'belongs to this user'
+    end
   end
 
   # ----------------------------------------
   # Methods
   # ----------------------------------------
+
+  describe '#create' do
+    it 'queues a welcome email to be sent'
+  end
+
+  describe '#profile_photo_url' do
+    it 'has a default value when the user has no profile photo'
+    it 'returns the url of the photo when a profile photo is set'
+    it 'allows a style to be passed as a parameter'
+  end
+
+  describe '#cover_photo_url' do
+    it 'has a default value when the user has no cover photo'
+    it 'returns the url of the photo when a cover photo is set'
+    it 'allows a style to be passed as a parameter'
+  end
 
   describe '#name' do
     it 'returns the full name of the user' do
@@ -168,30 +207,22 @@ describe User do
     it 'returns all of the users with whom this user is friends'
   end
 
-  describe '#add_friend' do
-    it 'creates a new friendship between the calling user and passed user'
-    it 'destroys the pending friend request if one exists'
-  end
-
-  describe '#remove_friend' do
-    it 'destroys the friendship between the calling user and passed user'
-  end
-
-  describe '#request_friend' do
-    it 'creates a friend request between the calling user and passed user'
-  end
-
-  describe '#accept_friend' do
-    it 'results in the friend request between the calling user and passed user being destroyed'
-    it 'results in the creation of a friendship between the calling and passed user'
-  end
-
   describe '#friendships' do
     it 'returns all of the friendships associated with this user'
   end
 
   describe '#friend_requests' do
     it 'returns all of the friend requests associated with this user'
+  end
+
+  describe '#friendship_with' do
+    it 'returns the friendship between the user and the given user'
+    it 'returns a friend request if one exists'
+    it 'returns a new friend request if no friend request nor friendship exists'
+  end
+
+  describe '#friend?' do
+    it 'returns true if the user is friends with the given user'
   end
 
   # ----------------------------------------
@@ -218,6 +249,10 @@ describe User do
     it 'destroys the profile that belongs to this user' do
       expect(Profile.where(:user_id => user.id)).to be_empty
     end
+
+    it 'destroys all associated friendships'
+
+    it 'destroys all associated friend requests'
   end
 end
 

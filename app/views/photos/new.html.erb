@@ -1,6 +1,6 @@
-<%= render :partial => 'shared/nav' %>
-<%= render :partial => 'shared/profile_header', :locals => {:user => current_user} %>
-<%= render :partial => 'shared/flash' %>
+<% content_for(:profile_header) do %>
+  <%= render :partial => 'shared/profile_header', :locals => {:user => current_user} %>
+<% end %>
 
 <!-- Profile Page / Photos -->
 <section id="photos" class="row profile-page-container">

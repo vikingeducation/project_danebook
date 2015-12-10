@@ -2,7 +2,7 @@ class Post < ActiveRecord::Base
   include Dateable
   include Feedable
 
-  feedable_user_method :user
+  feedable_user_methods :user
   feedable_actions :create
 
   belongs_to :user

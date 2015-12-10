@@ -4,16 +4,6 @@ describe UsersController do
   let(:female){create(:female)}
   let(:user){create(:user, :gender => female)}
 
-  # describe 'GET #index' do
-  #   context 'the user is signed in' do
-  #     # friends functionality here
-  #   end
-
-  #   context 'the user is signed out' do
-  #     # friends functionality here
-  #   end
-  # end
-
   describe 'GET #show' do
     before do
       user

@@ -1,12 +1,12 @@
 class FriendshipsController < ApplicationController
   before_action :require_login
-  before_action :require_current_user, :except => [:index]
-  before_action :require_current_user_is_friend, :except => [:index]
   before_action :set_friendship, :except => [:index]
+  before_action :require_current_user, :except => [:index]
+  before_action :require_current_user_is_initiator_or_approver, :except => [:index]
 
   def index
-    if User.exists?(params[:user_id])
-      @user = User.find(params[:user_id])
+     @user = User.find_by_id(params[:user_id])
+    if @user
       @friends = @user.friends
     else
       redirect_to_referer root_path, :flash => {:error => 'A user must exist to have friends, it\'s science'}
@@ -37,13 +37,9 @@ class FriendshipsController < ApplicationController
     )
   end
 
-  def require_current_user_is_friend
-    unless is_friend_current_user?
-      redirect_to_referer root_path, :flash => {:error => 'You must be part of a friendship to do that'}
+  def require_current_user_is_initiator_or_approver
+    unless [@friendship.initiator, @friendship.approver].include?(current_user)
+      redirect_to_referer root_path, :flash => {:error => 'You must be a part of a friendship to destroy it'}
     end
-  end
-
-  def is_friend_current_user?
-    [params[:initiator_id], params[:approver_id]].include?(current_user.id.to_s)
   end
 end

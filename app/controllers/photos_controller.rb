@@ -72,8 +72,8 @@ class PhotosController < ApplicationController
     file = photo_params[:file]
     if file.is_a?(String)
       begin
-        Timeout.timeout(10) {open(URI.parse(file).to_s)}
-      rescue Exception => e
+        raise_error_if_not_image(file)
+      rescue StandardError => e
         flash[:error] = 'URL invalid: ' + e.to_s
         redirect_to new_user_photo_path
       end
@@ -92,6 +92,18 @@ class PhotosController < ApplicationController
     unless current_user == @user || current_user.friend?(@user)
       flash[:error] = 'You must be friends to do that'
       redirect_to user_path(@user)
+    end
+  end
+
+  def raise_error_if_not_image(url)
+    Timeout.timeout(10) do
+      url = URI.parse(url)
+      Net::HTTP.start(url.host, url.port) do |http|
+        content_type = http.head(url.request_uri)['Content-Type']
+        unless ['image/jpeg', 'image/gif', 'image/png'].include?(content_type)
+          raise 'URL must be an JPEG, GIF, or PNG image file'
+        end
+      end
     end
   end
 end

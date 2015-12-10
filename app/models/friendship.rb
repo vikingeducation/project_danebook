@@ -4,23 +4,10 @@ class Friendship < ActiveRecord::Base
   include Feedable
   include Notifiable
 
+  feedable_user_methods :initiator, :approver
   feedable_actions :create
 
   before_create :create_friendship_if_request_exists
-
-  def feedable_created
-    Activity.create!(
-      :user => initiator,
-      :feedable => self,
-      :verb => :create
-    )
-
-    Activity.create!(
-      :user => approver,
-      :feedable => self,
-      :verb => :create
-    )
-  end
 
 
   private

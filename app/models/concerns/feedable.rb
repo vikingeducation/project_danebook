@@ -10,29 +10,34 @@ module Feedable
   end
 
   def feedable_created
-    create_activity(:create) if self.class.feedable_actions.include?(:create)
+    create_activity(:create)
   end
 
   def feedable_updated
-    create_activity(:update) if self.class.feedable_actions.include?(:update)
+    create_activity(:update)
   end
 
   def feedable_destroyed
-    create_activity(:destroy) if self.class.feedable_actions.include?(:destroy)
+    create_activity(:destroy)
   end
 
   def create_activity(verb)
-    Activity.create!(
-      :user => self.send(self.class.feedable_user_method),
-      :feedable => self,
-      :verb => verb
-    )
+    if self.class.feedable_actions.include?(verb)
+      methods = self.class.feedable_user_methods
+      methods.each do |method|
+        Activity.create!(
+          :user => self.send(method),
+          :feedable => self,
+          :verb => verb
+        )
+      end
+    end
   end
 
   class_methods do
-    def feedable_user_method(method=nil)
-      @feedable_user_method = method unless method.nil?
-      @feedable_user_method
+    def feedable_user_methods(*methods)
+      @feedable_user_methods = methods if methods.present?
+      @feedable_user_methods
     end
 
     def feedable_actions(*actions)

@@ -6,5 +6,10 @@ FactoryGirl.define do
     factory :post_comment do
       association :commentable, :factory => :post
     end
+
+    factory :photo_comment do
+      association :commentable, :factory => :photo
+    end
   end
 end
+

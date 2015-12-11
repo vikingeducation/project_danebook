@@ -5,6 +5,7 @@ class PhotosController < ApplicationController
   before_action :require_current_user, :only => [:new, :create, :destroy]
   before_action :require_is_friend, :only => [:show]
   before_action :set_photo, :only => [:show, :destroy]
+  before_action :require_user_is_photo_user, :only => [:create, :destroy]
 
   def index
     @user =  User.find(params[:user_id])
@@ -54,20 +55,10 @@ class PhotosController < ApplicationController
     params.require(:photo)
       .permit(
         :file,
-        :user_id,
-        :cover_photo_id,
-        :profile_photo_id
+        :user_id
       )
   end
 
-  # https://bideowego.com/favicon-194x194.png
-  # http://placehold.it/128x128
-  # https://asdf.com
-  # http://asdf.com
-  # ftp://bideowego.com
-  # ftps://bideowego.com
-  # :
-  # //
   def redirect_if_photo_url_invalid
     file = photo_params[:file]
     if file.is_a?(String)
@@ -91,7 +82,7 @@ class PhotosController < ApplicationController
     @user = User.find(params[:user_id])
     unless current_user == @user || current_user.friend?(@user)
       flash[:error] = 'You must be friends to do that'
-      redirect_to user_path(@user)
+      redirect_to_referer user_photos_path(@user)
     end
   end
 
@@ -104,6 +95,20 @@ class PhotosController < ApplicationController
           raise 'URL must be an JPEG, GIF, or PNG image file'
         end
       end
+    end
+  end
+
+  def require_user_is_photo_user
+    if action_name == 'create' && current_user.id != photo_params[:user_id].to_i
+      redirect_to_referer(
+        new_user_photo_path,
+        :flash => {:error => 'You cannot create a photo for another user'}
+      )
+    elsif action_name == 'destroy' && current_user.id != @photo.user_id
+      redirect_to_referer(
+        new_user_photo_path,
+        :flash => {:error => 'You cannot destroy a photo for another user'}
+      )
     end
   end
 end

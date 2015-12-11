@@ -8,6 +8,7 @@ class Friendship < ActiveRecord::Base
   feedable_actions :create
 
   before_create :create_friendship_if_request_exists
+  after_create :destroy_approved_friend_request
 
 
   private
@@ -16,5 +17,11 @@ class Friendship < ActiveRecord::Base
     unless friend_request.present? && friend_request.first.approved?
       raise ActiveRecord::RecordNotFound, 'Cannot create friendship without an approved friend request'
     end
+  end
+
+  def destroy_approved_friend_request
+    FriendRequest.find_by_user_ids(initiator_id, approver_id)
+      .first
+      .destroy!
   end
 end

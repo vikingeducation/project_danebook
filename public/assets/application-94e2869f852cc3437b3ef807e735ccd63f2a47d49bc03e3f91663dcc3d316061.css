@@ -1,3 +1,17 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+
+ */
 /* line 4, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/lib/_mixins.scss */
 .clearfix:after, .clearfix:before {
   display: table;
@@ -81,30 +95,51 @@
   padding: 8px;
   white-space: nowrap;
 }
-/* line 89, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/components/_nav.scss */
+/* line 87, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/components/_nav.scss */
+#navbar .friend-requests-dropdown.open .dropdown-menu {
+  height: 96px;
+}
+/* line 90, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/components/_nav.scss */
+#navbar .friend-requests-dropdown.open .dropdown-menu.scroll {
+  overflow-y: scroll;
+  height: 288px;
+}
+/* line 94, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/components/_nav.scss */
+#navbar .friend-requests-dropdown.open .dropdown-menu.num-friend-requests-2 {
+  height: 144px;
+}
+/* line 97, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/components/_nav.scss */
+#navbar .friend-requests-dropdown.open .dropdown-menu.num-friend-requests-3 {
+  height: 192px;
+}
+/* line 100, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/components/_nav.scss */
+#navbar .friend-requests-dropdown.open .dropdown-menu.num-friend-requests-4 {
+  height: 240px;
+}
+/* line 109, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/components/_nav.scss */
 #navbar .navbar-username {
   font-size: 18px;
   padding-left: 16px;
   padding-right: 16px;
   text-align: right;
 }
-/* line 95, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/components/_nav.scss */
+/* line 115, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/components/_nav.scss */
 #navbar .navbar-username a {
   color: #eee;
 }
-/* line 100, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/components/_nav.scss */
+/* line 120, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/components/_nav.scss */
 #navbar .navbar-username {
   width: 100%;
 }
-/* line 109, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/components/_nav.scss */
+/* line 129, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/components/_nav.scss */
 #navbar .navbar-toggle:hover, #navbar .navbar-toggle:focus {
   background: #6994e2;
 }
-/* line 114, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/components/_nav.scss */
+/* line 134, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/components/_nav.scss */
 #navbar .navbar-toggle .icon-bar {
   background: #eee;
 }
-/* line 123, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/components/_nav.scss */
+/* line 143, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/components/_nav.scss */
 #navbar .navbar-brand,
 #navbar #navbar-search,
 #navbar .navbar-username {
@@ -112,18 +147,18 @@
   display: block;
   height: 100%;
 }
-/* line 131, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/components/_nav.scss */
+/* line 151, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/components/_nav.scss */
 #navbar #navbar-signin,
 #navbar #navbar-collapse,
 #navbar #navbar-search {
   border-color: #255dc0;
 }
 @media only screen and (max-width: 768px) {
-  /* line 142, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/components/_nav.scss */
+  /* line 162, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/components/_nav.scss */
   #navbar .navbar-username {
     text-align: center;
   }
-  /* line 146, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/components/_nav.scss */
+  /* line 166, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/components/_nav.scss */
   #navbar .col-sm-2,
   #navbar .col-sm-6 {
     padding-left: 0;
@@ -132,12 +167,12 @@
 }
 
 @media only screen and (min-width: 768px) {
-  /* line 159, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/components/_nav.scss */
+  /* line 179, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/components/_nav.scss */
   body {
     padding-top: 64px;
   }
 
-  /* line 163, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/components/_nav.scss */
+  /* line 183, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/components/_nav.scss */
   #navbar {
     position: fixed;
     top: 0;
@@ -418,19 +453,18 @@ body {
   }
 }
 /* line 34, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/components/_posts_comments.scss */
-.post .post-info-container a,
 .post .post-info-container time {
   display: block;
 }
-/* line 40, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/components/_posts_comments.scss */
+/* line 39, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/components/_posts_comments.scss */
 .post .post-likes {
   clear: both;
 }
-/* line 44, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/components/_posts_comments.scss */
+/* line 43, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/components/_posts_comments.scss */
 .post article {
   padding: 8px;
 }
-/* line 48, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/components/_posts_comments.scss */
+/* line 47, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/components/_posts_comments.scss */
 .post footer {
   border-top: 1px solid #d5d5d5;
   padding: 8px;
@@ -444,17 +478,17 @@ body {
 .post footer:after {
   clear: both;
 }
-/* line 57, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/components/_posts_comments.scss */
+/* line 56, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/components/_posts_comments.scss */
 .post footer .post-footer-links,
 .post footer .post-likes {
   padding-top: 8px;
   padding-bottom: 8px;
 }
-/* line 63, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/components/_posts_comments.scss */
+/* line 62, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/components/_posts_comments.scss */
 .post footer .delete-link-container {
   text-align: right;
 }
-/* line 68, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/components/_posts_comments.scss */
+/* line 67, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/components/_posts_comments.scss */
 .post footer,
 .post .post-comments,
 .post .comment,
@@ -462,7 +496,7 @@ body {
   background: #ddd;
 }
 
-/* line 76, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/components/_posts_comments.scss */
+/* line 75, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/components/_posts_comments.scss */
 .comment,
 .comment-form-container,
 .post footer {
@@ -470,25 +504,25 @@ body {
   margin-right: -15px;
 }
 
-/* line 83, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/components/_posts_comments.scss */
+/* line 82, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/components/_posts_comments.scss */
 .comment {
   padding-top: 16px;
   clear: both;
 }
 
-/* line 88, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/components/_posts_comments.scss */
+/* line 87, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/components/_posts_comments.scss */
 .comment footer,
 .comment-form-container footer {
   margin-left: 0;
   margin-right: 0;
 }
 
-/* line 94, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/components/_posts_comments.scss */
+/* line 93, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/components/_posts_comments.scss */
 .comment-form-container .form-group {
   padding: 8px;
 }
 
-/* line 98, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/components/_posts_comments.scss */
+/* line 97, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/components/_posts_comments.scss */
 .post-footer,
 .comment-footer {
   border-bottom: 1px solid #999;
@@ -594,110 +628,117 @@ body {
   border: none;
 }
 /* line 7, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_news_feed.scss */
+#news-feed .no-activity,
+#news-feed .feed-end {
+  text-align: center;
+  padding-top: 128px;
+  padding-bottom: 128px;
+}
+/* line 14, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_news_feed.scss */
 #news-feed .news-feed-header,
 #news-feed .news-feed-footer {
   border-bottom: 1px solid #d5d5d5;
   background: #ddd;
 }
-/* line 12, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_news_feed.scss */
+/* line 19, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_news_feed.scss */
 #news-feed .news-feed-header h1,
 #news-feed .news-feed-footer h1 {
   text-align: center;
 }
-/* line 17, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_news_feed.scss */
+/* line 24, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_news_feed.scss */
 #news-feed .news-feed-container {
   border-left: 1px solid #d5d5d5;
 }
-/* line 21, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_news_feed.scss */
+/* line 28, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_news_feed.scss */
 #news-feed .details-container,
 #news-feed .news-feed-container {
   padding-top: 32px;
 }
-/* line 26, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_news_feed.scss */
+/* line 33, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_news_feed.scss */
 #news-feed .news-feed-container {
   padding-left: 8.333333333333%;
 }
 @media only screen and (max-width: 767px) {
-  /* line 31, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_news_feed.scss */
+  /* line 38, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_news_feed.scss */
   #news-feed #profile-avatar {
     margin-top: 56px;
   }
-  /* line 35, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_news_feed.scss */
+  /* line 42, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_news_feed.scss */
   #news-feed .news-feed-container {
     padding-left: 30px;
     padding-right: 30px;
   }
-  /* line 40, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_news_feed.scss */
+  /* line 47, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_news_feed.scss */
   #news-feed .details-container {
     margin-left: 15px;
     margin-right: 15px;
   }
 }
 
-/* line 48, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_news_feed.scss */
+/* line 55, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_news_feed.scss */
 #profile-avatar .profile-image-container {
   width: 128px;
   height: 128px;
   border-radius: 4px;
   border: 1px solid #d5d5d5;
 }
-/* line 54, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_news_feed.scss */
-#profile-avatar .profile-image-container a {
-  display: block;
-}
-/* line 58, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_news_feed.scss */
+/* line 61, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_news_feed.scss */
 #profile-avatar .profile-image-container img {
   width: 128px;
 }
-/* line 64, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_news_feed.scss */
+/* line 67, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_news_feed.scss */
 #profile-avatar .profile-avatar-links-container a {
   display: block;
 }
-/* line 67, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_news_feed.scss */
+/* line 70, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_news_feed.scss */
 #profile-avatar .profile-avatar-links-container .profile-link {
   font-size: 18px;
 }
 
-/* line 74, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_news_feed.scss */
+/* line 77, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_news_feed.scss */
 #recently-active .profile-image-container {
   width: 64px;
   height: 64px;
 }
-/* line 78, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_news_feed.scss */
+/* line 81, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_news_feed.scss */
 #recently-active .profile-image-container a {
   display: block;
 }
-/* line 82, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_news_feed.scss */
+/* line 85, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_news_feed.scss */
 #recently-active .profile-image-container img {
   width: 64px;
 }
-/* line 87, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_news_feed.scss */
+/* line 90, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_news_feed.scss */
 #recently-active .activity-link-container {
   margin-bottom: 16px;
 }
-/* line 92, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_news_feed.scss */
-#recently-active .activity-info-container a,
+/* line 95, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_news_feed.scss */
 #recently-active .activity-info-container time {
   display: block;
 }
-/* line 98, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_news_feed.scss */
+/* line 100, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_news_feed.scss */
 #recently-active footer {
   text-align: center;
 }
 
-/* line 105, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_news_feed.scss */
+/* line 107, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_news_feed.scss */
 #profile-avatar .profile-image-container,
 #recently-active .profile-image-container {
   overflow: hidden;
 }
 
 /* line 4, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_photos.scss */
+.photo-link:focus, #photos .photo-container:focus, .photo-thumb:focus, .photo-link:hover, #photos .photo-container:hover, .photo-thumb:hover {
+  border: 1px solid #111;
+}
+
+/* line 11, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_photos.scss */
 #photos .no-photos {
   text-align: center;
   padding-top: 128px;
   padding-bottom: 128px;
 }
-/* line 10, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_photos.scss */
+/* line 17, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_photos.scss */
 #photos .profile-page-header, #photos .profile-page-container
 #post-form-wrapper .post-form-header, .profile-page-container
 #post-form-wrapper #photos .post-form-header,
@@ -707,27 +748,27 @@ body {
 #post-form-wrapper #photos .post-form-footer {
   position: relative;
 }
-/* line 14, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_photos.scss */
+/* line 21, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_photos.scss */
 #photos .add-photo-link-container {
   position: absolute;
   top: 50%;
   right: 16px;
   transform: translateY(-50%);
 }
-/* line 21, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_photos.scss */
+/* line 28, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_photos.scss */
 #photos .photos-container {
   margin-left: 0;
   margin-right: 0;
   padding-left: 15px;
   padding-right: 15px;
 }
-/* line 28, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_photos.scss */
+/* line 35, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_photos.scss */
 #photos .photo-show-container {
   background: #d5d5d5;
   padding: 8px;
   border-radius: 4px;
 }
-/* line 34, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_photos.scss */
+/* line 41, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_photos.scss */
 #photos .photo-container {
   position: relative;
   overflow: hidden;
@@ -741,7 +782,7 @@ body {
   height: 256px;
   border-radius: 4px;
 }
-/* line 46, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_photos.scss */
+/* line 53, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_photos.scss */
 #photos .photo-container .pub-date-container {
   position: absolute;
   text-align: center;
@@ -753,11 +794,7 @@ body {
   background: #111;
   color: #eee;
 }
-/* line 58, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_photos.scss */
-#photos .photo-container:focus, #photos .photo-container:hover {
-  border: 1px solid #111;
-}
-/* line 62, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_photos.scss */
+/* line 69, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_photos.scss */
 #photos .photo-container:focus .pub-date-container, #photos .photo-container:hover .pub-date-container {
   bottom: 0;
   -webkit-transition: bottom 0.5s linear;
@@ -765,14 +802,14 @@ body {
   -o-transitiion: bottom 0.5s linear;
   transition: bottom 0.5s linear;
 }
-/* line 70, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_photos.scss */
+/* line 77, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_photos.scss */
 #photos .form-container h2,
 #photos .form-container h3,
 #photos .form-container .url-field-container,
 #photos .form-container .file-field-container {
   margin-bottom: 64px;
 }
-/* line 77, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_photos.scss */
+/* line 84, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_photos.scss */
 #photos .form-container .url-field-container,
 #photos .form-container .file-field-container {
   max-width: 768px;
@@ -780,17 +817,13 @@ body {
   margin-right: auto;
 }
 
-/* line 86, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_photos.scss */
+/* line 93, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_photos.scss */
 .photo-thumb {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover !important;
   border-radius: 4px;
   height: 128px;
-}
-/* line 91, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_photos.scss */
-.photo-thumb:focus, .photo-thumb:hover {
-  border: 1px solid #111;
 }
 
 /* line 4, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_search.scss */
@@ -849,13 +882,20 @@ body {
   border: none;
 }
 /* line 6, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_timeline.scss */
+#timeline .no-activity,
+#timeline .feed-end {
+  text-align: center;
+  padding-top: 128px;
+  padding-bottom: 128px;
+}
+/* line 13, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_timeline.scss */
 #timeline .details-header,
 #timeline .timeline-header,
 #timeline .timeline-footer {
   border-bottom: 1px solid #d5d5d5;
   background: #ddd;
 }
-/* line 12, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_timeline.scss */
+/* line 19, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_timeline.scss */
 #timeline .details-header h1,
 #timeline .timeline-header h1,
 #timeline .timeline-footer h1 {
@@ -873,28 +913,28 @@ body {
 #timeline #about dl:after {
   clear: both;
 }
-/* line 22, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_timeline.scss */
+/* line 29, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_timeline.scss */
 #timeline #about dt {
   width: 45%;
   clear: both;
 }
-/* line 26, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_timeline.scss */
+/* line 33, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_timeline.scss */
 #timeline #about dt,
 #timeline #about dd {
   margin-top: 16px;
   float: left;
 }
-/* line 35, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_timeline.scss */
+/* line 42, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_timeline.scss */
 #timeline #photos img,
 #timeline #friends img {
   width: 100%;
 }
-/* line 39, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_timeline.scss */
+/* line 46, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_timeline.scss */
 #timeline #photos footer,
 #timeline #friends footer {
   text-align: center;
 }
-/* line 44, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_timeline.scss */
+/* line 51, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_timeline.scss */
 #timeline #about,
 #timeline #photos,
 #timeline #friends {
@@ -903,37 +943,37 @@ body {
   margin-bottom: 32px;
   padding: 0 0 16px 0;
 }
-/* line 54, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_timeline.scss */
+/* line 61, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_timeline.scss */
 #timeline .details-header h1 {
   margin-top: 0;
   margin-bottom: 0;
 }
-/* line 60, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_timeline.scss */
+/* line 67, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_timeline.scss */
 #timeline .about-container,
 #timeline .photos-container,
 #timeline .friends-container {
   padding: 16px;
 }
-/* line 69, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_timeline.scss */
+/* line 76, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_timeline.scss */
 #timeline .photos-container .row div,
 #timeline .friends-container .row div {
   padding: 16px;
 }
-/* line 75, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_timeline.scss */
+/* line 82, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_timeline.scss */
 #timeline .friends-container .no-friends {
   text-align: center;
 }
-/* line 80, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_timeline.scss */
+/* line 87, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_timeline.scss */
 #timeline .photos-container a {
   display: block;
 }
-/* line 85, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_timeline.scss */
+/* line 92, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_timeline.scss */
 #timeline .no-posts {
   padding: 16px;
   text-align: center;
 }
 @media only screen and (max-width: 767px) {
-  /* line 91, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_timeline.scss */
+  /* line 98, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_timeline.scss */
   #timeline .details-container {
     margin-left: 15px;
     margin-right: 15px;
@@ -941,24 +981,8 @@ body {
 }
 
 @media only screen and (max-width: 767px) {
-  /* line 99, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_timeline.scss */
+  /* line 106, /Users/christopherscavello/Desktop/danebook/app/assets/stylesheets/scss/_timeline.scss */
   #about {
     margin-top: 50px;
   }
 }
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any styles
- * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
- * file per style scope.
- *
-
-
- */
-

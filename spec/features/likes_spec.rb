@@ -16,30 +16,30 @@ describe 'Likes' do
   describe 'creation' do
     it 'is enabled on posts' do
       post 
-      visit user_posts_path(user)
-      expect(find('.post')).to have_link('Like')
+      visit user_activity_path(user)
+      expect(find('.post', :match => :first)).to have_link('Like')
     end
 
     it 'is enabled on comments' do 
       post_comment
-      visit user_posts_path(user)
+      visit user_activity_path(user)
       expect(find('.comment')).to have_link('Like')
     end
 
     it 'changes text to Unlike' do 
       post
-      visit user_posts_path(user)
+      visit user_activity_path(user)
       first(:link, :text => 'Like').click
-      expect(find('.post')).to have_link('Unlike')
+      expect(page).to have_link('Unlike')
     end
   end
 
   describe 'deletion' do
     it 'is enabled only on likeables liked by the current user' do 
       post_like
-      visit user_posts_path(user)
+      visit user_activity_path(user)
       first(:link, :text => 'Unlike').click
-      expect(find('.post')).to have_link('Like')
+      expect(find('.post', :match => :first)).to have_link('Like')
     end
   end
 end

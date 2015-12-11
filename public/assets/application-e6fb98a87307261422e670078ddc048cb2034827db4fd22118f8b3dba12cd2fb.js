@@ -9719,17 +9719,6 @@ return jQuery;
   }
 
 })( jQuery );
-// Static Pages JS
-
-// offcanvas
-
-(function() {
-	$(document).ready(function () {
-		$('[data-toggle="offcanvas"]').click(function () {
-			$('.row-offcanvas').toggleClass('active')
-		});
-	});
-})($);
 // This is a manifest file that'll be compiled into application.js, which will include all the files
 // listed below.
 //
@@ -9745,3 +9734,12 @@ return jQuery;
 
 
 
+// offcanvas
+
+(function() {
+  $(document).ready(function () {
+    $('[data-toggle="offcanvas"]').click(function () {
+      $('.row-offcanvas').toggleClass('active')
+    });
+  });
+})($);

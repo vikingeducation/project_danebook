@@ -21,6 +21,9 @@
 # ----------------------------------------
 __SERVER__.sh
 /__USER_STORIES__
+**/.DS_Store
+/public/system
+
+
 # Ignore application configuration
 /config/application.yml
-/public/system

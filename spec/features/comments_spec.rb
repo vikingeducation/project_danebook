@@ -16,7 +16,7 @@ describe 'Comments' do
 
   describe 'listing' do
     it 'appears under the post that is commented' do
-      visit user_posts_path(user)
+      visit user_activity_path(user)
       post = find('.post', :text => 'Post')
       expect(post.find('.comment')).to have_content(comment_body)
     end
@@ -26,7 +26,7 @@ describe 'Comments' do
     it 'is only enabled for comments created by the current user' do
       body = 'Another comment'
       create(:post_comment, :user => another_user, :commentable => post, :body => body)
-      visit user_posts_path(user)
+      visit user_activity_path(user)
       expect(find('.comment', :text => body)).to_not have_content('Delete Comment')
     end
   end

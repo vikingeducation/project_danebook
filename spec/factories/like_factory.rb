@@ -9,5 +9,9 @@ FactoryGirl.define do
     factory :comment_like do
       association :likeable, :factory => :comment
     end
+
+    factory :photo_like do
+      association :likeable, :factory => :photo
+    end
   end
 end

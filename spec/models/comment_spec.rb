@@ -1,10 +1,6 @@
 require 'rails_helper'
 
 describe Comment do
-  it_behaves_like 'Dateable'
-  it_behaves_like 'Feedable'
-  it_behaves_like 'Notifiable'
-
   let(:male){create(:male)}
   let(:user){create(:user, :gender => male)}
   let(:post){create(:post, :user => user)}

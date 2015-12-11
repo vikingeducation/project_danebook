@@ -14,9 +14,9 @@ Rails.application.routes.draw do
 
   resource :session, :only => [:create, :destroy]
 
+  get '/search', :to => 'searches#index'
   get '/news_feed', :to => 'activities#index'
   get '/signup', :to => 'users#new'
-  get '/search/:resource' => 'searches#index'
   get '/login', :to => 'users#new'
   get '/logout', :to => 'sessions#destroy'
 

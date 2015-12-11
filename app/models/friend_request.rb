@@ -13,13 +13,10 @@ class FriendRequest < ActiveRecord::Base
   private
   def create_friendship_if_approved
     if approved?
-      transaction do
-        Friendship.create!(
-          :initiator_id => initiator.id,
-          :approver_id => approver.id
-        )
-        destroy!
-      end
+      Friendship.create!(
+        :initiator_id => initiator.id,
+        :approver_id => approver.id
+      )
     end
   end
 end

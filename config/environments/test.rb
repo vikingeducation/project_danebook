@@ -1,5 +1,13 @@
 Rails.application.configure do
   # ----------------------------------------
+  # Paperclip Defaults
+  # ----------------------------------------
+  config.paperclip_defaults = {
+    :path => ':rails_root/public/system/test/:class/:attachment/:id_partition/:style/:filename',
+    :url => ':rails_root/public/system/test/:class/:attachment/:id_partition/:style/:filename'
+  }
+
+  # ----------------------------------------
   # Letter Opener
   # ----------------------------------------
   config.action_mailer.delivery_method = :letter_opener

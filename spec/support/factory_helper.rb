@@ -52,6 +52,11 @@ module FactoryHelper
     '867-5309'
   ]
 
+  IMAGES_PATH = "#{Rails.root}/public/assets/images/"
+  PROFILE_PHOTO_PATHS = Dir["#{IMAGES_PATH}profile-photos/*"] - ["#{IMAGES_PATH}profile-photos/default.png"]
+  COVER_PHOTO_PATHS = Dir["#{IMAGES_PATH}cover-photos/*"] - ["#{IMAGES_PATH}cover-photos/default.png"]
+  OTHER_PHOTO_PATHS = Dir["#{IMAGES_PATH}other-photos/*"]
+
   def self.first_name(n=0)
     FIRST_NAMES[n % FIRST_NAMES.length]
   end
@@ -79,6 +84,19 @@ module FactoryHelper
   def self.text(n=0)
     TEXT_BODIES[n % TEXT_BODIES.length]
   end
+
+  def self.profile_photo(n=0)
+    PROFILE_PHOTO_PATHS[n % PROFILE_PHOTO_PATHS.length]
+  end
+
+  def self.cover_photo(n=0)
+    COVER_PHOTO_PATHS[n % COVER_PHOTO_PATHS.length]
+  end
+
+  def self.other_photo(n=0)
+    OTHER_PHOTO_PATHS[n % OTHER_PHOTO_PATHS.length]
+  end
 end
+
 
 

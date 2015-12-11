@@ -89,7 +89,7 @@ describe ApplicationController do
     it 'redirects to root path if the user is not signed in' do
       controller.send(:sign_out)
       get :index
-      expect(response).to redirect_to root_path
+      expect(response).to redirect_to signup_path
     end
   end
 
@@ -102,7 +102,7 @@ describe ApplicationController do
 
     it 'redirects to the user posts path if the user is signed in' do
       get :new
-      expect(response).to redirect_to user_posts_path(user)
+      expect(response).to redirect_to user_activity_path(user)
     end
   end
 
@@ -119,8 +119,9 @@ describe ApplicationController do
   end
 
   describe '#redirect_to_referer' do
-    it 'redirects to the referer when set'
-    it 'redirects to root path when there is no referer'
+    it 'redirects to root path when there is no referer' do
+      expect(response).to_not redirect_to root_path
+    end
   end
 end
 

@@ -1,9 +1,6 @@
 require 'rails_helper'
 
 describe Post do
-  it_behaves_like 'Dateable'
-  it_behaves_like 'Feedable'
-
   let(:male){create(:male)}
   let(:user){create(:user, :gender => male)}
   let(:post){create(:post, :user => user)}

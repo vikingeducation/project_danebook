@@ -20,7 +20,7 @@ class SessionsController < ApplicationController
   def destroy
     if current_user && sign_out
       flash[:success] = 'You are now signed out'
-      redirect_to root_path
+      redirect_to signup_path
     else
       redirect_to_referer
       flash[:error] = 'Unable to sign out'

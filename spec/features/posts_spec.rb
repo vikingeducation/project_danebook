@@ -14,12 +14,12 @@ describe 'Post' do
 
   describe 'creation' do
     it 'is enabled only on the current user timeline' do
-      visit user_posts_path(another_user)
+      visit user_activity_path(another_user)
       expect(page).to_not have_css('#post_body')
     end
 
     it 'results in the post being added to the timeline' do
-      visit user_posts_path(user)
+      visit user_activity_path(user)
       submit_post(post_body)
       expect(page).to have_content(post_body)
     end
@@ -28,13 +28,13 @@ describe 'Post' do
   describe 'deletions' do
     it 'is enabled only on current user posts' do
       create(:post, :user => another_user)
-      visit user_posts_path(another_user)
+      visit user_activity_path(another_user)
       expect(page).to_not have_content('Delete Post')
     end
 
     it 'results in the post being removed from the timeline' do
       create(:post, :user => user, :body => post_body)
-      visit user_posts_path(user)
+      visit user_activity_path(user)
       first(:link, :text => 'Delete Post').click
       expect(page).to_not have_content(post_body)
     end

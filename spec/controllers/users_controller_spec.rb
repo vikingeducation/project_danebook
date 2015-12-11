@@ -35,8 +35,8 @@ describe UsersController do
         get :show, :id => user.id
       end
 
-      it 'redirects to root path' do
-        expect(response).to redirect_to root_path
+      it 'redirects to signup path' do
+        expect(response).to redirect_to signup_path
       end
 
       it 'sets an error flash' do
@@ -47,10 +47,10 @@ describe UsersController do
 
   describe 'GET #new' do
     context 'the user is signed in' do
-      it 'redirects to the current user posts path' do
+      it 'redirects to the current user activity path' do
         login(user)
         get :new
-        expect(response).to redirect_to user_posts_path(user)
+        expect(response).to redirect_to user_activity_path(user)
       end
     end
 
@@ -94,8 +94,8 @@ describe UsersController do
         get :edit, :id => user.id
       end
 
-      it 'redirects to the root path' do
-        expect(response).to redirect_to root_path
+      it 'redirects to the signup path' do
+        expect(response).to redirect_to signup_path
       end
 
       it 'sets an error flash' do
@@ -126,8 +126,8 @@ describe UsersController do
         post_create_user
       end
 
-      it 'redirects to the user posts path' do
-        expect(response).to redirect_to user_posts_path(user)
+      it 'redirects to the user activity path' do
+        expect(response).to redirect_to user_activity_path(user)
       end
 
       it 'sets an error flash' do
@@ -209,9 +209,9 @@ describe UsersController do
     end
 
     context 'the user is signed out' do
-      it 'redirects to the root path' do
+      it 'redirects to the signup path' do
         patch_update_user
-        expect(response).to redirect_to root_path
+        expect(response).to redirect_to signup_path
       end
 
       it 'sets an error flash' do
@@ -250,9 +250,9 @@ describe UsersController do
     end
 
     context 'the user is signed out' do
-      it 'redirects the user to root path' do
+      it 'redirects the user to signup path' do
         delete_destroy_user
-        expect(response).to redirect_to root_path
+        expect(response).to redirect_to signup_path
       end
 
       it 'sets an error flash' do

@@ -7,7 +7,7 @@
 <section id="timeline" class="row profile-page-container row-offcanvas row-offcanvas-left">
 
   <!-- Details -->
-  <div class="col-sm-4 details-container sidebar-offcanvas">
+  <div class="col-xs-10 col-sm-4 details-container sidebar-offcanvas">
 
     <div class="row">
 
@@ -45,7 +45,7 @@
           <div class="row">
 
             <% if @user.photos.present? %>
-              <% @user.photos.take(9).each do |photo| %>
+              <% @user.photos.take(8).each do |photo| %>
                 <%= link_to(user_photo_path(@user, photo)) do %>
                 <div class="col-xs-12 col-sm-4 photo-thumb" style="background: url('<%= photo.file.url(:thumb) %>')"></div>
                 <% end %>
@@ -84,11 +84,13 @@
 
             <% if @user.friends.present? %>
             
-              <% @user.friends.take(9).each do |friend| %>
+              <% @user.friends.take(8).each do |friend| %>
               
-                <div class="col-xs-12 col-sm-4">
+                <div class="col-xs-12 col-sm-4 profile-image-container">
 
-                  <%= image_tag(friend.profile_photo_url) %>
+                  <%= link_to(user_path(friend)) do %>
+                    <%= image_tag(friend.profile_photo_url(:thumb)) %>
+                  <% end %>
                   
                   <%= link_to(friend.name, user_path(friend)) %>
 

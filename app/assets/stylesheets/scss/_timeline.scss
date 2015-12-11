@@ -63,6 +63,13 @@
 			margin-bottom: 0;
 		}
 	}
+
+  .photos-container {
+    .photo-thumb {
+      width: 96px;
+      height: 96px;
+    }
+  }
 	
 	.about-container,
 	.photos-container,
@@ -78,6 +85,10 @@
 			}
 		}
 	}
+
+  .friends-container .profile-image-container {
+    margin-bottom: 16px;
+  }
 
   .friends-container .no-friends {
     text-align: center;
@@ -107,3 +118,6 @@
 		margin-top: 50px;
 	}
 }
+
+
+

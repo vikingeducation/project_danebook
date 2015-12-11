@@ -353,27 +353,23 @@ body {
   /* line 32, /Users/christopherscavello/Viking-Code-School/__UNITS__/13-Photos-Mailers/danebook/app/assets/stylesheets/scss/components/_offcanvas.scss */
   .row-offcanvas-right
   .sidebar-offcanvas {
-    right: -50%;
-    /* 6 columns */
+    right: -80%;
   }
 
   /* line 37, /Users/christopherscavello/Viking-Code-School/__UNITS__/13-Photos-Mailers/danebook/app/assets/stylesheets/scss/components/_offcanvas.scss */
   .row-offcanvas-left
   .sidebar-offcanvas {
-    left: -50%;
-    /* 6 columns */
+    left: -80%;
   }
 
   /* line 42, /Users/christopherscavello/Viking-Code-School/__UNITS__/13-Photos-Mailers/danebook/app/assets/stylesheets/scss/components/_offcanvas.scss */
   .row-offcanvas-right.active {
-    right: 50%;
-    /* 6 columns */
+    right: 80%;
   }
 
   /* line 46, /Users/christopherscavello/Viking-Code-School/__UNITS__/13-Photos-Mailers/danebook/app/assets/stylesheets/scss/components/_offcanvas.scss */
   .row-offcanvas-left.active {
-    left: 50%;
-    /* 6 columns */
+    left: 80%;
   }
 
   /* line 50, /Users/christopherscavello/Viking-Code-School/__UNITS__/13-Photos-Mailers/danebook/app/assets/stylesheets/scss/components/_offcanvas.scss */
@@ -533,8 +529,8 @@ body {
 }
 
 /* line 102, /Users/christopherscavello/Viking-Code-School/__UNITS__/13-Photos-Mailers/danebook/app/assets/stylesheets/scss/components/_posts_comments.scss */
-.post:target,
-.comment:target {
+span:target + .post,
+span:target + .comment {
   background: #D1C67C;
 }
 
@@ -958,32 +954,41 @@ body {
   margin-top: 0;
   margin-bottom: 0;
 }
-/* line 67, /Users/christopherscavello/Viking-Code-School/__UNITS__/13-Photos-Mailers/danebook/app/assets/stylesheets/scss/_timeline.scss */
+/* line 68, /Users/christopherscavello/Viking-Code-School/__UNITS__/13-Photos-Mailers/danebook/app/assets/stylesheets/scss/_timeline.scss */
+#timeline .photos-container .photo-thumb {
+  width: 96px;
+  height: 96px;
+}
+/* line 74, /Users/christopherscavello/Viking-Code-School/__UNITS__/13-Photos-Mailers/danebook/app/assets/stylesheets/scss/_timeline.scss */
 #timeline .about-container,
 #timeline .photos-container,
 #timeline .friends-container {
   padding: 16px;
 }
-/* line 76, /Users/christopherscavello/Viking-Code-School/__UNITS__/13-Photos-Mailers/danebook/app/assets/stylesheets/scss/_timeline.scss */
+/* line 83, /Users/christopherscavello/Viking-Code-School/__UNITS__/13-Photos-Mailers/danebook/app/assets/stylesheets/scss/_timeline.scss */
 #timeline .photos-container .row div,
 #timeline .friends-container .row div {
   padding: 16px;
 }
-/* line 82, /Users/christopherscavello/Viking-Code-School/__UNITS__/13-Photos-Mailers/danebook/app/assets/stylesheets/scss/_timeline.scss */
+/* line 89, /Users/christopherscavello/Viking-Code-School/__UNITS__/13-Photos-Mailers/danebook/app/assets/stylesheets/scss/_timeline.scss */
+#timeline .friends-container .profile-image-container {
+  margin-bottom: 16px;
+}
+/* line 93, /Users/christopherscavello/Viking-Code-School/__UNITS__/13-Photos-Mailers/danebook/app/assets/stylesheets/scss/_timeline.scss */
 #timeline .friends-container .no-friends {
   text-align: center;
 }
-/* line 87, /Users/christopherscavello/Viking-Code-School/__UNITS__/13-Photos-Mailers/danebook/app/assets/stylesheets/scss/_timeline.scss */
+/* line 98, /Users/christopherscavello/Viking-Code-School/__UNITS__/13-Photos-Mailers/danebook/app/assets/stylesheets/scss/_timeline.scss */
 #timeline .photos-container a {
   display: block;
 }
-/* line 92, /Users/christopherscavello/Viking-Code-School/__UNITS__/13-Photos-Mailers/danebook/app/assets/stylesheets/scss/_timeline.scss */
+/* line 103, /Users/christopherscavello/Viking-Code-School/__UNITS__/13-Photos-Mailers/danebook/app/assets/stylesheets/scss/_timeline.scss */
 #timeline .no-posts {
   padding: 16px;
   text-align: center;
 }
 @media only screen and (max-width: 767px) {
-  /* line 98, /Users/christopherscavello/Viking-Code-School/__UNITS__/13-Photos-Mailers/danebook/app/assets/stylesheets/scss/_timeline.scss */
+  /* line 109, /Users/christopherscavello/Viking-Code-School/__UNITS__/13-Photos-Mailers/danebook/app/assets/stylesheets/scss/_timeline.scss */
   #timeline .details-container {
     margin-left: 15px;
     margin-right: 15px;
@@ -991,7 +996,7 @@ body {
 }
 
 @media only screen and (max-width: 767px) {
-  /* line 106, /Users/christopherscavello/Viking-Code-School/__UNITS__/13-Photos-Mailers/danebook/app/assets/stylesheets/scss/_timeline.scss */
+  /* line 117, /Users/christopherscavello/Viking-Code-School/__UNITS__/13-Photos-Mailers/danebook/app/assets/stylesheets/scss/_timeline.scss */
   #about {
     margin-top: 50px;
   }

@@ -99,3 +99,13 @@
 	border-bottom: 1px solid #999;
 }
 
+.post:target,
+.comment:target {
+  background: $highlight;
+}
+
+
+
+
+
+

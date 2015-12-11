@@ -13,7 +13,11 @@
 
         <%= link_to(profile.user.name, user_path(profile.user)) %>
 
-        updated their profile on
+        updated their
+
+        <%= link_to('profile', user_path(profile.user)) %>
+
+        on
 
         <time>
           <%= profile.date %>

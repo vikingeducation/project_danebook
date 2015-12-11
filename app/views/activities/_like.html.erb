@@ -17,12 +17,7 @@
 
         <%= link_to(like.likeable.user.name, user_path(like.likeable.user)) %>'s
 
-        <%# Hash tag anchor if post or comment %>
-        <%#
-        path_params = like.likeable_type == 'Comment' ? like.likeable : [like.likeable.user, like.likeable]
-        %>
-        <%# link_to(like.likeable_type.downcase, polymorphic_path(path_params)) %>
-        <%= link_to(like.likeable_type.downcase, user_path(like.likeable.user)) %>
+        <%= link_to(like.likeable_type.downcase, feedable_path_for(like.likeable)) %>
 
         on
 

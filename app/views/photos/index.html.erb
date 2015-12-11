@@ -2,6 +2,15 @@
   <%= render :partial => 'shared/profile_header', :locals => {:user => @user} %>
 <% end %>
 
+<% unless current_user.friend?(@user) %>
+  <br>
+  <div class="alert alert-info">
+    You are not friends with <%= @user.name %>
+    and will not be able to view or comment on their
+    photos.
+  </div>
+<% end %>
+
 <!-- Profile Page / Photos -->
 <section id="photos" class="row profile-page-container">
   
@@ -21,7 +30,7 @@
   <!-- Photos -->
   <div class="row">
     <div class="col-xs-12">
-      
+
       <!-- Photo -->
       <div class="row photos-container">
         

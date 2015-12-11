@@ -23,9 +23,11 @@
 
             <!-- Photo -->
             <div class="photo-show-container">
+              <a href="#photo-modal-<%= @photo.id %>" data-toggle="modal" data-target="#photo-modal-<%= @photo.id %>">
 
-              <%= image_tag(@photo.file.url, :class => 'img-responsive center-block') %>
+                <%= image_tag(@photo.file.url, :class => 'img-responsive center-block') %>
 
+              </a>
             </div>
 
             <% if @user == current_user %>
@@ -128,6 +130,16 @@
   </div><!-- row -->
 
 </section><!-- #photos -->
+
+<div id="photo-modal-<%= @photo.id %>" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+      <%= image_tag(@photo.file.url, :class => 'img-responsive center-block') %>
+      
+    </div>
+  </div>
+</div>
 
 
 

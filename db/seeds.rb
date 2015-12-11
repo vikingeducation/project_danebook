@@ -143,6 +143,19 @@ gender_ids = Gender.pluck(:id)
 
 puts 'Creating Users'
 users = []
+
+date = random_date
+users << {
+  :email => "guest@user.com",
+  :password => PASSWORD,
+  :first_name => 'Guest',
+  :last_name => 'User',
+  :birthday => random_birthday,
+  :gender_id => gender_ids.sample,
+  :created_at => date,
+  :updated_at => date
+}
+
 FIRST_NAMES.each_with_index do |first_name, i|
   LAST_NAMES.each_with_index do |last_name, j|
     date = random_date
@@ -206,7 +219,7 @@ profile_ids = Profile.pluck(:id)
 puts 'Creating FriendRequests'
 friend_requests = []
 user_ids.each do |initiator_id|
-  user_ids[0..rand(user_ids.length - 1)].each do |approver_id|
+  user_ids[0..rand(5..user_ids.length - 1)].each do |approver_id|
     date = random_date
     friend_requests << {
       :initiator_id => initiator_id,
@@ -268,7 +281,7 @@ friendship_ids = Friendship.pluck(:id)
 puts 'Creating Photos'
 photos = []
 user_ids.each do |user_id|
-  rand(0..(10 * MULTIPLIER)).times do
+  rand(0..(3 * MULTIPLIER)).times do
     date = random_date
     photo_file = File.new(random_photo_file_path)
     other_photo = Photo.create(
@@ -341,7 +354,7 @@ photo_ids = Photo.pluck(:id)
 puts 'Creating Posts'
 posts = []
 user_ids.each do |user_id|
-  rand(0..(5 * MULTIPLIER)).times do
+  rand(0..(3 * MULTIPLIER)).times do
     date = random_date
     posts << {
       :user_id => user_id,
@@ -370,7 +383,7 @@ post_ids = Post.pluck(:id)
 puts 'Creating Comments'
 comments = []
 user_ids.each do |user_id|
-  rand(0..(5 * MULTIPLIER)).times do
+  rand(0..(3 * MULTIPLIER)).times do
     date = random_date
     comments << {
       :user_id => user_id,
@@ -423,7 +436,7 @@ puts 'Creating Likes'
 likes = []
 Post.all.each do |post|
   post_id = post.id
-  rand(0..(5 * MULTIPLIER)).times do
+  rand(0..(2 * MULTIPLIER)).times do
     date = random_date
     likes << {
       :likeable_id => post_id,
@@ -446,7 +459,7 @@ end
 
 Comment.all.each do |comment|
   comment_id = comment.id
-  rand(0..(5 * MULTIPLIER)).times do
+  rand(0..(2 * MULTIPLIER)).times do
     date = random_date
     likes << {
       :likeable_id => comment_id,
@@ -469,7 +482,7 @@ end
 
 Photo.all.each do |photo|
   photo_id = photo.id
-  rand(0..(5 * MULTIPLIER)).times do
+  rand(0..(2 * MULTIPLIER)).times do
     date = random_date
     likes << {
       :likeable_id => photo_id,

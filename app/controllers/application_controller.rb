@@ -47,7 +47,9 @@ class ApplicationController < ActionController::Base
 
   def require_login
     unless signed_in_user?
-      flash[:error] = 'Please sign in to perform that action'
+      unless request.path == root_path
+        flash[:error] = 'Please sign in to perform that action'
+      end
       redirect_to signup_path
     end
   end

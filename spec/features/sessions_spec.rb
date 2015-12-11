@@ -24,7 +24,7 @@ describe 'Sessions' do
     it 'displays a flash messages telling the user they cannot sign out if they are already signed out' do
       sign_out
       sign_out
-      expect(page).to have_content('Please sign in to perform that action')
+      expect(page).to have_content('Unable to sign out')
     end
   end
 end

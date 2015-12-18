@@ -1,0 +1,8 @@
+var commentRow = "<%= j( render partial: "comments/comment", locals: { comment: @comment } ) %>"
+var $commentRow = $( commentRow );
+
+var dataType = '[data-type="<%=@comment.commentable_type%>-comment-list"]';
+var dataId = '[data-id="<%=@comment.commentable_id%>"]';
+
+var $commentable_comment_list = $(dataType + dataId);
+$commentRow.prependTo( $commentable_comment_list ).hide().slideDown(500);

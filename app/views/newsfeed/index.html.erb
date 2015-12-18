@@ -1,0 +1,20 @@
+<main class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <%= render partial: "me",  locals: { user: @user } %>
+      <%= render partial: "recently_active",  locals: { user: @user } %>
+    </div>
+
+    <div class="col-sm-7 col-sm-offset-1">
+      <% if current_user == @user %>
+        <%= render partial: "post_form" %>
+      <% end %>
+
+      <div id="newsfeed-posts-list">
+        <%= render partial: @posts, locals: { user: @user } %>
+      </div>
+
+    </div>
+
+  </div>
+</main>

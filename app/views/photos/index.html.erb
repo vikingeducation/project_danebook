@@ -1,0 +1,22 @@
+<%= render partial: "shared/cover", locals: { user: @user } %>
+
+<main class="container">
+  <div class="panel panel-default">
+    <div class="panel-heading vcenter">
+      <div class="col-sm-2 col-sm-offset-5">
+        <h2>Photos</h2>
+      </div>
+      <% if @user == current_user %>
+        <div class="col-sm-2 col-sm-offset-3">
+          <%= link_to "Add Photo", new_photo_path, class: "btn btn-primary btn-block" %>
+        </div>
+      <% end %>
+      
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <%= render @photos %>
+      </div>
+    </div>
+  </div>
+</main>

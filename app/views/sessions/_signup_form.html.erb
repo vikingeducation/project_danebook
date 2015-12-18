@@ -1,0 +1,54 @@
+<%= simple_form_for user, html: {class: "form-group"} do |user_fields| %>
+  <div class="row">
+    <%= user_fields.simple_fields_for :profile do |profile_fields| %>
+
+      <div class="col-sm-6">
+        <%= profile_fields.input :first_name, label: false, placeholder: "First Name", input_html: {class: "form-control"} %>
+      </div>
+
+      <div class="col-sm-6">
+        <%= profile_fields.input :last_name, label: false, placeholder: "Last Name", input_html: {class: "form-control"} %>
+      </div>
+
+      <div class="col-sm-12">
+        <%= user_fields.input :email, label: false, placeholder: "Your Email", input_html: {class: "form-control"} %>
+      </div>
+
+      <div class="col-sm-12">
+        <%= user_fields.input :password, 
+                              label: false, 
+                              placeholder: "Your New Password", 
+                              input_html: {class: "form-control"} %>
+      </div>
+
+      <div class="col-sm-12">
+        <%= user_fields.input :password_confirmation, 
+                              label: false, 
+                              placeholder: "Confirm Your Password", 
+                              input_html: {class: "form-control"} %>
+      </div>
+
+      <div class="col-sm-12">
+        <%= profile_fields.input :birthday, 
+                                 as: :date,
+                                 html5: true,
+                                 input_html: { max: Time.now.to_date - 12*365, 
+                                               min: Time.now.to_date - 100*365 } 
+                                  %>
+      </div>
+
+      <div class="col-sm-12">
+        <%= profile_fields.input :gender, 
+                                 :collection => ['Male', 'Female'],
+                                 :as         => :radio_buttons,
+                                 :label      => false, 
+                                 :item_wrapper_class => 'inline' %>
+      </div>
+
+      <div class="col-sm-6 col-sm-offset-3">
+        <%= user_fields.submit "Sign Up", class: "btn btn-block btn-success" %>
+      </div>
+
+    <% end %>
+  </div>
+<% end %>

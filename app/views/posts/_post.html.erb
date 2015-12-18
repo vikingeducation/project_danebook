@@ -1,0 +1,37 @@
+<article class ="row post" data-type="Post" data-id="<%=post.id%>">
+  <div class="col-sm-2 posted-by">
+    <%= profile_image(user, "small-icon") %>
+  </div>
+  <div class="col-sm-10 posted-name">
+    <div class="col-sm-12">
+      <p><%= user.profile.full_name %><br>Posted on <%= post.created_at.to_date %></p>
+    </div>
+    <div class="col-sm-12">
+      <p class="post-text">
+        <%= post.body %>
+      </p>
+    </div>
+
+  </div>
+
+  <div class="col-sm-12 like-bar">
+    <div class="col-sm-2" data-type="Post-Like" data-id="<%=post.id%>">
+      <%= like_button(post) %>
+    </div>
+    <div class="col-sm-2">
+      <a href="#" class="show-comment-form" data-id="Post-<%=post.id%>">
+        Comment
+      </a>
+    </div>
+    <% if current_user == user %>
+      <div class="col-sm-1 col-sm-offset-6">
+        <%= link_to "Delete", post_path(post.id, user_id: current_user.id), method: :delete, remote: true %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="col-sm-12">
+    <%= display_likes_msg(post) %>
+  </div>
+  <%= render partial: "comments/comments", locals: {commentable: post} %>
+</article>

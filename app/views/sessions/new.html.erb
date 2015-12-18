@@ -1,0 +1,25 @@
+    <main class="container">
+      <div class="row">
+        <div class="panel col-sm-5 col-sm-offset-1">
+          <div class="push-content"></div>
+          <div class="panel-heading">
+            <h3>Connect with all of your friends!</h3>
+          </div>
+          <div class="panel-body">
+            <ul>
+              <li class="intro-list">See photos and updates in your new feed.</li>
+              <li class="intro-list">Post your status for the world to see from your profile</li>
+              <li class="intro-list">Get in touch with your friends by "friending" them</li>
+              <li class="intro-list">Like things because you're a positive person!</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="panel col-sm-5">
+          <div class="panel-heading text-center"><h2>Sign Up</h2></div>
+          <div class="panel-body">
+            <%= render partial: "sessions/signup_form", locals: { user: @user } %>
+          </div>
+        </div>
+      </div>
+    </main>

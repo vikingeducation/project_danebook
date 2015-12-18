@@ -1,0 +1,23 @@
+<%= render partial: "shared/cover", locals: {user: @user} %>
+
+<main class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <%= render partial: "about_me" %>
+      <%= render partial: "photos", locals: { user: @user } %>
+      <%= render partial: "friends", locals: { user: @user } %>
+    </div>
+
+    <div class="col-sm-7 col-sm-offset-1">
+      <% if current_user == @user %>
+        <%= render partial: "post_form" %>
+      <% end %>
+
+      <div id="newsfeed-posts-list">
+        <%= render partial: @posts, locals: { user: @user } %>
+      </div>
+
+    </div>
+
+  </div>
+</main>

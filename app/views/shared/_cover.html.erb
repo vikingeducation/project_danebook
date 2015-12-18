@@ -1,0 +1,34 @@
+<div class="container cover">
+  <div class="row">
+    <div class="col-md-12">
+      <%= cover_image(user) %>
+    </div>
+  </div>
+  <div class="row cover-profile">
+    <div class="col-md-2 col-md-offset-1">
+      <%= profile_image(user) %>
+    </div>
+    <div class="col-md-2 col-md-offset-5">
+      <%= friending_button(user) %>
+    </div>
+  </div>
+  <div class="row cover-menu">
+    <div class="col-md-1 col-md-offset-3">
+      <%= link_to "Timeline", posts_path(user_id: user.id), class: "btn btn-default btn-block" %>
+    </div>
+    <div class="col-md-1">
+      <%= link_to "About", profile_path(user.profile.id), class: "btn btn-default btn-block" %>
+    </div>
+    <div class="col-md-1">
+      <%= link_to "Photos(#{user.num_of_photos})", photos_path(user_id: user.id), class: "btn btn-default btn-block" %>
+    </div>
+    <div class="col-md-1">
+      <%= link_to "Friends(#{user.num_of_friends})", friends_path(user_id: user.id), class: "btn btn-default btn-block" %>
+    </div>
+    <% if current_user == user %>
+      <div class="col-md-1 pull-right">
+        <%= link_to "Edit Profile", edit_profile_path(user.profile.id) %>
+      </div>
+    <% end %>
+  </div>
+</div>

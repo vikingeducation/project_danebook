@@ -1,0 +1,27 @@
+.cover {
+  border: solid black 1px;
+  margin-bottom: 20px;
+}
+
+
+.cover-profile {
+
+	position: absolute;
+	top: 300px;
+  left: 120px;
+}
+
+.cover-pic {
+  height: 450px;
+  width: 100%;
+}
+
+.profile-pic {
+  height: 240px;
+  width: 180px;
+}
+
+.cover-menu .col-md-1 {
+
+	padding: 0px;
+}

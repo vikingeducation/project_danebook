@@ -1,0 +1,5 @@
+var postRow = "<%= j( render partial: "post", locals: { post: @post, user: @post.user } ) %>"
+var $postRow = $( postRow );
+
+var $post_list = $("#newsfeed-posts-list");
+$postRow.prependTo( $post_list ).hide().slideDown(500);

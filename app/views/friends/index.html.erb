@@ -1,0 +1,15 @@
+<%= render partial: "shared/cover", locals: { user: @user } %>
+
+<main class="container">
+  <div class="panel panel-default">
+    <div class="panel-heading text-center">
+      <h1>Friends</h1>
+    </div>
+
+    <div class="panel-body">
+      <div class="row">
+        <%= render partial: "friends", locals: { friends: @friends } %>
+      </div>
+    </div>
+  </div>
+</main>

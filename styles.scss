@@ -9,7 +9,9 @@ body{
   padding-bottom: 20px;
 }
 
+
 /* nav bar css */
+
 .container-fluid{
   width: 1170px;
 }
@@ -19,6 +21,7 @@ body{
   height: 100px;
   margin-bottom: 0px;
   margin-top: -50px;
+  border: 2px black solid;
 } 
 
 .navbar-default .navbar-brand {
@@ -51,4 +54,17 @@ button{
 
 .navbar-form .form-control{
   border: 2px solid black;
+}
+
+
+/* left-hand side css */
+.about {
+  padding-top: 70px
+}
+.bullet-points{
+  font-size: 22px;
+  line-height: 2;
+  padding-top: 10px;
+  padding-left: 70px;
+  color: #666;
 }

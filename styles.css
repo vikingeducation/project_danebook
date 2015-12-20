@@ -14,7 +14,8 @@ body {
   background-color: #3385ff;
   height: 100px;
   margin-bottom: 0px;
-  margin-top: -50px; }
+  margin-top: -50px;
+  border: 2px black solid; }
 
 .navbar-default .navbar-brand {
   color: #fff;
@@ -40,5 +41,16 @@ button {
 
 .navbar-form .form-control {
   border: 2px solid black; }
+
+/* left-hand side css */
+.about {
+  padding-top: 70px; }
+
+.bullet-points {
+  font-size: 22px;
+  line-height: 2;
+  padding-top: 10px;
+  padding-left: 70px;
+  color: #666; }
 
 /*# sourceMappingURL=styles.css.map */

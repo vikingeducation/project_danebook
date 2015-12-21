@@ -22,19 +22,22 @@
   background-size: cover; }
 
 /* profile pic css */
-.profile-pic > img {
+.profile-pic {
   width: 250px;
   height: 250px;
-  margin-top: -290px; }
+  margin-top: -255px;
+  overflow: hidden; }
+  .profile-pic img {
+    width: 100%; }
 
 /* middle navigation css */
 .middle-nav {
-  margin-top: -50px;
+  margin-top: -30px;
   z-index: -1;
   border: 2px solid black; }
 
 .img-bucket {
-  width: 280px;
+  width: 250px;
   height: 42px; }
 
 .clickable {

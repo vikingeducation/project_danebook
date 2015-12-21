@@ -1,7 +1,7 @@
 /* navbar css */
 
 .container-fluid {
-  padding: 0 10% 0 10%;
+  padding: 0 12% 0 12%;
 }
 
 .navbar {
@@ -19,6 +19,7 @@
   border-radius: 15px;
 }
 
+
 /* main photo css */
 .jumbotron {
   height: 400px;
@@ -27,9 +28,36 @@
   background-size: cover;
 }
 
+
 /* profile pic css */
 .profile-pic > img {
-  width:  300px;
-  height: 300px; 
-  margin-top: -250px;
+  width:  250px;
+  height: 250px; 
+  margin-top: -290px;
 }
+
+
+/* middle navigation css */
+.middle-nav {
+  margin-top: -50px;
+  z-index: -1;
+  border: 2px solid black;
+}
+
+.img-bucket {
+  width: 280px;
+  height: 42px;
+}
+
+.clickable {
+  border-left: 2px solid black;
+  border-radius: 0px;
+  a {
+    color: #333;
+  }
+}
+
+.navbar-right > a {
+  text-decoration: underline;
+}
+

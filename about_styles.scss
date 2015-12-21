@@ -7,25 +7,33 @@
 .navbar {
   background-color: #3385ff;
   border: 2px black solid;
+
+  .navbar-brand {
+    font-size: 32px;
+    color: #fff;
+  }
 }
 
-.navbar-default .navbar-brand, .navbar-default .navbar-nav>li>a {
+.navbar-default .navbar-nav>li>a {
   color: #fff;
+  font-size: 18px;
 }
 
 .navbar-img {
   height: 25px;
   width: 25px;
   border-radius: 15px;
+  margin-top: -5px;
 }
 
 
 /* main photo css */
-.jumbotron {
+.container .jumbotron {
   height: 400px;
   z-index: -1;
   background-image: url("hogwarts_small.jpg");
   background-size: cover;
+  border-radius: 0px;
 }
 
 
@@ -56,12 +64,32 @@
 .clickable {
   border-left: 2px solid black;
   border-radius: 0px;
+
   a {
     color: #333;
   }
 }
 
+
+.border-right {
+    border-right: 2px solid black;
+  }
+
+
 .navbar-right > a {
   text-decoration: underline;
 }
 
+
+
+
+/* about bar css */
+.about-bar {
+  height: 50px;
+  background-color: #eee;
+}
+
+
+.edit-profile-lg {
+
+}

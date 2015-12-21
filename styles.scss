@@ -58,6 +58,7 @@ button{
 
 
 /* left-hand side css */
+
 .about, .signup {
   padding-top: 70px
 }
@@ -67,4 +68,18 @@ button{
   padding-top: 10px;
   padding-left: 70px;
   color: #666;
+}
+
+
+/* right-hand side css */
+
+div.col-sm-5.form-group.firstname, 
+div.col-sm-5.form-group.lastname,
+.birthday, form > button {
+  margin-left: 15px;
+}
+
+.gender{
+  margin-left: 15px;
+  padding-top: 15px;
 }

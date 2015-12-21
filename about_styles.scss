@@ -18,3 +18,18 @@
   width: 25px;
   border-radius: 15px;
 }
+
+/* main photo css */
+.jumbotron {
+  height: 400px;
+  z-index: -1;
+  background-image: url("hogwarts_small.jpg");
+  background-size: cover;
+}
+
+/* profile pic css */
+.profile-pic > img {
+  width:  300px;
+  height: 300px; 
+  margin-top: -250px;
+}

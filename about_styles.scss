@@ -85,11 +85,37 @@
 
 /* about bar css */
 .about-bar {
-  height: 50px;
-  background-color: #eee;
+  background-color: #ccc;
+  margin: 0 -15px 0 -15px;
+  border-radius: 0px;
+}
+
+.about-text {
+  margin-left: 50%;
+  margin-bottom: 17px;
+}
+
+.about-btn {
+  margin-right: 8px;
+  margin-top: 15px;
 }
 
 
-.edit-profile-lg {
 
+/* tables */
+
+.box-border {
+  border: 2px black solid;
+}
+
+
+.table>thead>tr>th {
+  font-size: 18px;
+  border-bottom: none;
+  padding-top: 15px;
+}
+
+
+.table>tbody>tr>td {
+  border-top: none;
 }

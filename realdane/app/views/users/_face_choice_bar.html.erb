@@ -1,0 +1,23 @@
+<section class="main-top row">
+  <section class="col-md-8 col-md-offset-2">
+    <figure class="top">
+      <img src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/harry_potter_small.jpg" alt="harry">
+      <h1 id="name"><%=@user.profile.first_name+" "+@user.profile.last_name%></h1>
+    </figure>
+  </section>
+  <section class="col-md-8 col-md-offset-2">
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <ul class="nav navbar-nav">
+          <li><%=link_to "Timeline", timeline_user_path(user)%></li>
+          <li><%=link_to "About me", user_path(user)%></li>
+          <li><a href="dane_photo.html">Photos(num)</a></li>
+          <li><a href="dane_friends.html">Friends(num)</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><%=link_to "edit your profile", edit_user_path(user)%></li>
+        </ul>
+      </div>
+    </nav>
+  </section>
+</section>

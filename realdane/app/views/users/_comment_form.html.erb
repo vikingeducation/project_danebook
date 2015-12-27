@@ -1,0 +1,21 @@
+<div class="comment">
+      <div class="row">
+              <div class="col-md-2 col-md-offset-2">
+                      <img class="friends-head" src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif" alt="friends"/>
+              </div>
+
+              <div id="post-time" class="col-md-8">
+                      <p><%=comment.user.profile.first_name + comment.user.profile.last_name%> posted on <%=comment.created_at%></p>
+              </div>
+      </div>
+      <div class="row">
+              <div class="col-md-8 col-md-offset-2">
+                      <p><%=comment.words%></p>
+              </div>
+      </div>
+      <div class="row">
+              <div class="col-md-2 col-md-offset-2">
+                      <p> <a>like</a></p>
+              </div>
+      </div>
+</div>

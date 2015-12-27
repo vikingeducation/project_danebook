@@ -1,0 +1,39 @@
+<%#=render :partial => 'users/sign_in_navbar', :locals => {:user => @user}%>
+<main class="container-fluid">
+<%=render :partial => 'users/face_choice_bar', :locals => {:user => @user}%>
+<section class="main-top row">
+<div class="panel panel-primary col-md-8 col-md-offset-2">
+  <div class="panel-heading">
+    <h1 class="panel-title">ABOUT</h1>
+  </div>
+  <div class="panel-body">
+    <div class="col-md-6">
+    <article class="basic-information">
+    <h2>Basic Information</h2>
+    <ul>
+      <li>Birthday: <%=@user.profile.birthday%></li>
+    </ul>
+    <h2>Contact Information</h2>
+    <ul>
+      <li>Email: <%=@user.email%></li>
+    </ul>
+    </div>
+    </article>
+    <div class="col-md-6">
+    <article class="basic-information">
+    <h2>Words to live by</h2>
+    <p>
+      <%=@user.profile.words_to_live_by%>
+    </p>
+    <h2>About me</h2>
+    <p>
+      <%=@user.profile.about_me%>
+    </p>
+    </article>
+    </div>
+    </section>
+  </div>
+</div>
+</section>
+</main>
+

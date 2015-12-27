@@ -1,0 +1,152 @@
+<%#=render :partial => 'users/sign_in_navbar', :locals => {:user => @user}%>
+      <main class="container-fluid">
+      <%=render :partial => 'users/face_choice_bar', :locals => {:user => @user}%>
+      <section class="main-top row">
+          <div class="panel panel-primary col-md-8 col-md-offset-2">
+                
+                <div class="panel-heading">
+                  <h1 class="panel-title">Timeline</h1>
+                </div>
+                
+              <div class="panel-body"></div>
+              
+              <div class="col-md-4">
+                  <div class="panel panel-primary">
+                      <div class="panel-heading">
+                        <h1 class="panel-title">About</h1>
+                      </div>
+                  <div class="panel-body">
+                    <article class="basic-information">
+                      <h3>Basic Information</h3>
+                      <ul>
+                        <li><%=@user.profile.birthday%></li>
+                      </ul>
+                      <h3>Contact Information</h3>
+                      <ul>
+                        <li>Email: <%=@user.email%></li>
+                      </ul>
+                    </article>
+                  </div>
+                </div>
+                <div class="panel panel-primary">
+                  <div class="panel-heading">
+                    <h1 class="panel-title">Photos</h1>
+                  </div>
+                  <div class="panel-body">
+                    <div class="col-md-4">
+                      <div class="panel friends panel-default">
+                        <img class="friends-head" src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png" alt="friends"/>
+                      </div>
+                      <div class="panel friends panel-default">
+                        <img class="friends-head" src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png" alt="friends"/>
+                      </div>
+                      <div class="panel friends panel-default">
+                        <img class="friends-head" src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png" alt="friends"/>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="panel friends panel-default">
+                        <img class="friends-head" src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png" alt="friends"/>
+                      </div>
+                      <div class="panel friends panel-default">
+                        <img class="friends-head" src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png" alt="friends"/>
+                      </div>
+                      <div class="panel friends panel-default">
+                        <img class="friends-head" src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png" alt="friends"/>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="panel friends panel-default">
+                        <img class="friends-head" src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png" alt="friends"/>
+                      </div>
+                      <div class="panel friends panel-default">
+                        <img class="friends-head" src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png" alt="friends"/>
+                      </div>
+                      <div class="panel friends panel-default">
+                        <img class="friends-head" src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png" alt="friends"/>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div id="add-friends" class="col-md-10 col-md-offset-3">
+                      <a href="#">add more photos</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel panel-primary">
+                  <div class="panel-heading">
+                    <h1 class="panel-title">Friends</h1>
+                  </div>
+                  <div class="panel-body">
+                    <div class="col-md-4">
+                      <div class="panel friends panel-default">
+                        <img class="friends-head" src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif" alt="friends"/>
+                        <p><a>John doe</a>
+                        </p><p><a>text</a></p>
+                      </div>
+                      <div class="panel friends panel-default">
+                        <img class="friends-head" src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif" alt="friends"/>
+                        <p><a>John doe</a>
+                        </p><p><a>text</a></p>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="panel friends panel-default">
+                        <img class="friends-head" src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif" alt="friends"/>
+                        <p><a>John doe</a></p>
+                        <p><a>text</a></p>
+                      </div>
+                      <div class="panel friends panel-default">
+                        <img class="friends-head" src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif" alt="friends"/>
+                        <p><a>John doe</a></p>
+                        <p><a>text</a></p>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="panel friends panel-default">
+                        <img class="friends-head" src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif" alt="friends"/>
+                        <p><a>John doe</a></p>
+                        <p><a>text</a></p>
+                      </div>
+                      <div class="panel friends panel-default">
+                        <img class="friends-head" src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif" alt="friends"/>
+                        <p><a>John doe</a></p>
+                        <p><a>text</a></p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div id="add-friends" class="col-md-10 col-md-offset-3">
+                      <a href="#">add more friends</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+    
+    
+    
+    
+              <div class="col-md-8">
+                <div class="panel panel-primary">
+                  <div class="panel-heading">
+                    <h3 class="panel-title">POST</h3>
+                  </div>
+                  <div class="panel-body">
+                      <%=form_for @post, url: posts_path(@post) do |p|%>
+                          <%#=p.hidden_field(:user_id, :value)%>
+                          <%=p.text_area(:words, :cols => 65, :rows => 5, :placeholder => "Post what you want to say")%>
+                          <%=p.submit 'Post', :class => "post-button btn-default col-md-offset-10"%>
+                      <%end%>
+                      
+                  </div>
+                </div>
+                <%=render :partial => 'users/post_form', :locals => {:user => @user,
+                                                                     :posts => @posts}%>
+                
+    
+              </div>
+        </div>
+
+      </div>
+    </section>
+<hr>

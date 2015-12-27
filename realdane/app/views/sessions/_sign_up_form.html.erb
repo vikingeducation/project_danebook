@@ -1,0 +1,80 @@
+<section class = "col-md-6">
+<h1>Sign Up</h1>
+
+<%=form_for @user, url: users_path(@user), method: :post do |user_field|%>
+    <%=user_field.fields_for :profile do |profile_field|%>
+        <div class="form-group col-md-6">
+            <%=profile_field.text_field :first_name, :placeholder => "First Name", :class => "form-control"%>
+        </div>
+        <div class="form-group col-md-6">
+            <%=profile_field.text_field :last_name, :placeholder => "Last Name", :class => "form-control"%>
+        </div>
+    <%end%>
+    <div class="form-group col-md-12">
+        <%=user_field.text_field :email, :placeholder => "Your Email", :class => "form-control"%>
+    </div>
+    <div class="form-group col-md-12">
+        <%=user_field.password_field :password, :placeholder => "Your Password", :class => "form-control"%>
+    </div>
+    <div class="form-group col-md-12">
+        <%=user_field.password_field :password_confirmation, :placeholder => "Confirm your password", :class => "form-control"%>
+        <h3 class="row form-group col-md-12">Birthday Choose</h3>
+
+        <%=user_field.fields_for :profile do |profile_field|%>
+            <%=profile_field.date_field :birthday%>
+            <div class="radio" id="inlineRadio">
+                <label class="radio-inline">
+                    <%=profile_field.radio_button("gender", "male")%>Male
+                </label>
+                <label class="radio-inline">
+                    <%=profile_field.radio_button("gender", "female")%>Female
+                </label>
+            </div>
+        <%end%>
+
+        <div class="sign-up col-md-12">
+          <p>
+            <%=user_field.submit "sign up now", :class => "btn btn-success btn-lg btn-block"%>  
+          </p>
+        </div>
+    </div>
+<%end%>
+</section>
+<!--
+<section class="col-md-6">
+  <h1>Sign Up</h1>
+  <div class="form-group col-md-6">
+    <input type="input" class="form-control" placeholder="First Name">
+  </div>
+  <div class="form-group col-md-6">
+    <input type="input" class="form-control" placeholder="Last Name">
+  </div>
+  <div class="form-group col-md-12">
+    <input type="input" class="form-control" placeholder="Your Email">
+  </div>
+  <div class="form-group col-md-12">
+    <input type="input" class="form-control" placeholder="Password">
+  </div>
+
+  <div class="form-group col-md-12">
+    <input type="input" class="form-control" placeholder="Confirm Password">
+    <h3 class="row form-group col-md-12">Birthday Choose</h3>
+    <input type="date">
+
+    <div class="radio" id="inlineRadio">
+      <label class="radio-inline">
+        <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">male
+      </label>
+      <label class="radio-inline">
+        <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> female
+      </label>
+    </div>
+
+    <div class="sign-up col-md-12">
+      <p>
+        <button type="button" class="btn btn-success btn-lg btn-block">sign up now</button>
+      </p>
+    </div>
+  </div>
+</section>
+-->

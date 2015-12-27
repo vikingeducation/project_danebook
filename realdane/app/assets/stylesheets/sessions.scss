@@ -1,0 +1,67 @@
+// Place all the styles related to the sessions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.navbar-fixed-top{
+    background-color: #3b5998;
+}
+
+.navbar-inverse {
+    background-color: #3b5998;
+    border-color: #090909;
+}
+
+.navbar {
+      //background-color: #3b5998;
+      height: 85px;
+      color: white;
+      font-weight: bold
+}
+
+.navbar-form {
+  color: #black ;
+}
+
+.navbar .brand {
+  font-size: 20px;
+  margin-top: 15px;
+}
+
+.navbar .brand a {
+  float: left;
+  text-indent: 10px;
+  font-size: 35px;
+  color: white;
+}
+
+
+main {
+  margin-top: 120px;
+}
+
+main ul {
+  margin-top: 40px;
+  margin-right: 80px
+}
+
+footer {
+  background-color: #B8B8B8;
+  padding-bottom: 40px
+}
+
+footer p {
+  text-indent: 45%
+}
+
+.radio{
+  font-size:20px;
+}
+
+.radio input{
+  vertical-align: middle;
+  margin:0px;
+}
+
+#inlineRadio input{
+   margin-top: 10px;
+}

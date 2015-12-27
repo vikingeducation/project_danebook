@@ -6,10 +6,9 @@ class User < ActiveRecord::Base
     validates :email, :presence => true
     validates :password, 
               :presence => true,
-              :allow_nil => true
-              #:length => { :in => 6..10 },
-
-
+              :allow_nil => true,
+              :length => { :in => 6..20 }
+    validates_uniqueness_of :email
     has_one :profile, dependent: :destroy
     accepts_nested_attributes_for :profile
     has_many :posts, dependent: :destroy

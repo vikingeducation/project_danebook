@@ -8,8 +8,15 @@
 </head>
 <body>
 
+<%if user_signed_in?%>
+  <%=render :partial => 'users/sign_in_navbar', :locals => {:user => current_user}%>
+<%else%>
+  <%=render 'sessions/sign_up_navbar'%>
+<%end%>
   
-
+<% flash.each do |key, value| %>
+  <%= content_tag :div, value, class: "flash #{key}" %>
+<% end %>
   
 
 <%= yield %>

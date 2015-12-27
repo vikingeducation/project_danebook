@@ -1,6 +1,6 @@
 class Comment < ActiveRecord::Base
     belongs_to :user
-    belongs_to :post
+    belongs_to :commentable, :polymorphic => true
     
-    has_many :likes, :as => :user_chat
+    has_many :likes, :as => :likeble
 end

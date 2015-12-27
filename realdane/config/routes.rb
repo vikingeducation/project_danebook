@@ -5,14 +5,16 @@ Rails.application.routes.draw do
     end
   end
   resources :posts, :only => [:create, :update, :destroy] do
-    member do
-      get 'create_comment'
-    end
-    resources :likes, :only => [:create, :destroy], :defaults => { :user_chat_type => 'posts' }
+    
+      resources :comments, :only => [:create, :update, :destroy] do
+        
+          resources :likes, :only => [:create, :destroy], :defaults => { :user_chat_type => 'comment' }
+          
+      end
+    
+    resources :likes, :only => [:create, :destroy], :defaults => { :user_chat_type => 'post' }
   end
-  resources :comments, :only => [:create, :update, :destroy] do
-    resources :likes, :only => [:create, :destroy], :defaults => { :user_chat_type => 'comment' }
-  end
+  
   resources :sessions, :only => [:index, :new, :create, :destroy]
   get 'login' => 'sessions#index'
   root to: 'sessions#index'

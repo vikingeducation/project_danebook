@@ -55,7 +55,6 @@
                     
                   <div class="row">
                           <div id = "footerinput" class="col-md-12">
-                              <p>You and <a>John Doe</a> like it </p>
                           </div>
                             <hr>
                             <div class="comment">
@@ -79,7 +78,16 @@
                                           </div>
                                           <div class="row">
                                                   <div class="col-md-2 col-md-offset-2">
-                                                          <p> <a>like</a></p>
+                                                    <%if Like.find_by(:user_id => current_user.id,
+                                                                      :user_chat_id => c.id,
+                                                                      :user_chat_type => "Comment") %>
+                                                          <%@like = Like.find_by(:user_id => current_user.id,
+                                                                      :user_chat_id => c.id,
+                                                                      :user_chat_type => "Comment")%>
+                                                          <p> <%=link_to"unlike", post_comment_like_path(c, @like, @like.id), method: "delete"%></p>
+                                                    <%else%>
+                                                          <p> <%=link_to"like", post_comment_likes_path(post, c), method: "post"%></p>
+                                                    <%end%>
                                                   </div>
                                                   
                                                   
@@ -90,21 +98,19 @@
                             <hr>
                           <div class="row">
                             <div class="col-md-1 col-md-offset-2">
-                              <%=form_for post, url: create_comment_post_path(post), method: 'get' do |p|%>
-                                  <%=p.fields_for :comments, Comment.new do |comment_field|%>
-                                      <%=comment_field.text_area(:words, :cols => 45, :rows => 3, :placeholder => "Comment what you want to say")%>
-                                 </div>
+                              <%=form_for ([post, post.comments.build]) do |p|%>
+                                      <%=p.text_area(:words, :cols => 45, :rows => 3, :placeholder => "Comment what you want to say")%>
                           </div>
     
                           <div class="row">
                               <div class="col-md-2 col-md-offset-8">
-                                      <%=comment_field.submit 'Post', :class => "post-button btn-default"%>
+                                      <%=p.submit 'Post', :class => "post-button btn-default"%>
                               </div>
-                                      <%end%>
                                 <%end%>
                           </div>
                   </div>
          </div>
-    </div>
-
+      </div>
+  </div>
+    <br>
 <%end%>

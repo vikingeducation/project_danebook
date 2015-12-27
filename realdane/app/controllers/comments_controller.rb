@@ -2,11 +2,12 @@ class CommentsController < ApplicationController
     
     def create
         @comment = current_user.comments.build(comment_params)
+        @comment.post_id = params[:post_id]
         if @comment.save
             flash[:success] = "post posted"
             redirect_to timeline_user_path(current_user)
         else
-            flash[:success] = "post not posted"
+            flash[:error] = "post not posted"
             redirect_to timeline_user_path(current_user)
         end
     end
@@ -17,7 +18,6 @@ private
         require(:comment).
         permit(
             :words,
-            #:user_id,
             :post_id
             )
     end

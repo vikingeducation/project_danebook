@@ -1,4 +1,4 @@
-<%=render :partial => 'users/sign_in_navbar', :locals => {:user => @user}%>
+<%#=render :partial => 'users/sign_in_navbar', :locals => {:user => @user}%>
       <main class="container-fluid">
       <%=render :partial => 'users/face_choice_bar', :locals => {:user => @user}%>
       <section class="main-top row">
@@ -137,6 +137,7 @@
                           <%=p.text_area(:words, :cols => 65, :rows => 5, :placeholder => "Post what you want to say")%>
                           <%=p.submit 'Post', :class => "post-button btn-default col-md-offset-10"%>
                       <%end%>
+                      
                   </div>
                 </div>
                 <%=render :partial => 'users/post_form', :locals => {:user => @user,

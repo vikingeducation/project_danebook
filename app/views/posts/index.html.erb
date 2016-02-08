@@ -1,0 +1,110 @@
+<%= render partial: "shared/navbar" %>
+<main>
+	<%= render partial: "shared/info" %>
+
+		<div class="row timeline">
+			<div class="col-md-12">
+				<!-- This column will represent the left side of the timeline. -->
+				<div class="col-md-4">
+					<!-- This row will represent the About summary -->
+					<div class="row post-control">
+						<div class="col-xs-12">
+							<div class="row">
+								<div class="col-xs-12 selected post-topbar">
+									<div class="center"> About (Text Area)</div>
+								</div>
+							</div>
+
+							<div class="row">
+						    	<div class="col-xs-12">
+						    		<!-- Conveniently, we can just re-use these from about.html and bootstrap scales it for us -->
+									<div class="row">
+										<div class="col-md-12">
+											<b>Birthday:</b> <%= profile_helper(@user.birthday) %>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-12">
+											<b>College:</b> <%= profile_helper(@user.profile.college) %>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-12">
+											<b>Hometown:</b>  <%= profile_helper(@user.profile.hometown) %>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-md-12">
+											<b>Currently Lives:</b>  <%= profile_helper(@user.profile.location) %>
+										</div>
+									</div>
+						    	</div>
+						    </div>
+
+						</div>
+					</div>
+
+					<div class="row post-control">
+						<div class="col-xs-12">
+							<div class="row">
+								<div class="col-xs-12 selected post-topbar">
+									<div class="center"> <%= link_to "Photos (#{@user.uploaded_photos.count})", user_photos_path(@user) %></div>
+								</div>
+							</div>
+
+							<!-- We can just put them all in one row since cols that go past 12 overflow into a new row! -->
+							<div class="row timeline-photos">
+							    <% @user.uploaded_photos.limit(12).each do |photo| %>
+						    		<div class="col-xs-4"><%= link_to (image_tag photo.uploaded_file(:medium)), user_photo_path(@user.id, photo.id) %></div>
+								<% end %>
+						    </div>
+
+						    <div class="row">
+						    	<div class="col-xs-12">
+						    		<div class="center"><%= link_to "See more Photos", user_photos_path(@user.id) %></div>
+						    	</div>
+						    </div>
+
+						</div>
+					</div>
+
+					<div class="row post-control">
+						<div class="col-xs-12">
+							<div class="row">
+								<div class="col-xs-12 selected post-topbar">
+									<div class="center"> Friends (<%= @user.friends.count %>) </div>
+								</div>
+							</div>
+
+							<div class="row timeline-photos">
+		    					<% @user.friends.each do |friend| %>
+									<%= render partial: "users/sidebar_friend", locals: {friend: friend} %>
+								<% end %>
+						    </div>
+
+						    <div class="row">
+						    	<div class="col-xs-12">
+					    		<div class="center"><%= link_to "See more friends", user_friends_path(@user) %></div>
+						    	</div>
+						    </div>
+
+						</div>
+					</div>
+
+				</div>
+
+				<!-- This column will represent the right side of the timeline. -->
+				<div id="post-list" class="col-md-7 col-md-offset-1">
+					<!-- This row will represent the post window. -->
+					<% if current_user && current_user == @user %>
+					  <%= render partial: "new_post_form" %>
+					<% end %>
+
+					<!-- This row will represent a post -->
+					<%= render @posts %>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</main>

@@ -1,0 +1,66 @@
+<%= render partial: "shared/navbar" %>
+<main>
+<div class="container newsfeed">
+	<div class="row timeline">
+		<div class="col-md-12">
+			<!-- This column will represent the left side of the timeline. -->
+			<div class="col-md-3">
+				<!-- This row will represent the user profile, name, edit -->
+				<div class="row">
+					<div class="col-xs-12">
+						<div class="row">
+							<div class="col-xs-5 photo-page-photo">
+								<%= display_profile_photo(@user) %>
+							</div>
+							<div class="col-xs-5">
+								<div>
+								<h4><%= link_to @user.full_name, @user %></h4>
+								<h6><%= link_to "Edit Profile", edit_user_path(@user) %>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- this column is for the list of users -->
+				<div class="row">
+					<div class="col-xs-12">
+						<h3> Recently Active </h3>
+						<% @recent.each do |friend| %>
+							<div class="row">
+								<div class="col-xs-12">
+									<div class="row">
+										<div class="col-xs-3 photo-page-photo">
+											<%= display_profile_photo(friend) %>
+										</div>
+										<div class="col-xs-9">
+											<div>
+											<h4><%= link_to friend.full_name, friend %></h4>
+											<h6>Last Post: <%= friend.last_post.posted_on %></h6>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						<% end %>
+					</div>
+				</div>
+
+			</div>
+
+			<!-- This column will represent the right side of the timeline. -->
+			<div id="newsfeed" class="col-md-8 col-md-offset-1">
+				<!-- This row will represent the post window. -->
+				<% if current_user && current_user == @user %>
+				  <%= render partial: "new_post_form" %>
+				<% end %>
+
+				<!-- This row will represent a post -->
+				<%= render @posts %>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+</main>

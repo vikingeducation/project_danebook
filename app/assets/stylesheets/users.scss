@@ -1,0 +1,46 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.error {
+	color: red;
+	font-size: 12px;
+	font-style: italic;
+}
+
+.field_with_errors {
+	color: red;
+	border: 1px solid red;
+}
+
+.danebook-navbar-text {
+	background-color: #2B78E4;
+}
+
+.login-form {
+	line-height: 35px;
+	margin-right: -30px;
+}
+
+.info-cover-photo img{
+	max-width: 100%
+}
+
+.profile-picture-large, .profile-picture-small{
+	background-color: white;
+}
+
+.profile-name-large h2{
+	-webkit-text-stroke: 1px #000;
+}
+
+.profile-name-small h2{
+	-webkit-text-stroke: 1px #000;
+}
+
+.info-picture-name-button {
+	position: relative;
+	height:100%;
+	top:-100px;
+
+}

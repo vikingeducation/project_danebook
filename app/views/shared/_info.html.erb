@@ -1,0 +1,60 @@
+<div class="container">
+    <!-- This row will hold the profile information. -->
+<div class="row">
+  <div class="col-md-12 profile-info">
+    <!-- This row will hold the cover photo -->
+    <div class="row">
+      <div class="col-md-12">
+        <div class="row">
+          <div class="info-cover-photo text-center">
+            <%= display_cover_photo(@user) %>
+          </div>
+        </div>
+
+        <!-- We have a resized profile photo and name that plays nice with smaller screens, but extra small in certain configurations is very difficult so I have opted to just turn off the cover photo and name when the screen is extra small. -->
+        <div class="row info-picture-name-button">
+          <div class="col-xs-3">
+            <div class="profile-picture-large">
+              <%= display_profile_photo(@user) %>
+            </div>
+          </div>
+
+          <div class="col-xs-3 profile-name-large">
+            <h2> <%= @user.full_name %> </h2>
+          </div>
+          <div class="col-xs-2 col-xs-offset-5">
+            <div class="profile-name-large">
+                <%= friend_button %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- This row will hold the bar under the cover photo -->
+    <div class="row cover-photo-menu">
+      <!-- The tabs won't nicely fit into 2 or 3 lenghth columns -->
+      <div class="col-md-7 col-md-offset-2">
+        <div class="row cover-photo-menu-tabs">
+          <div class="col-md-3">
+            <h5><%= link_to "Timeline", user_posts_path(@user, newsfeed: "false") %></h5>
+          </div>
+          <div class="col-md-3">
+            <h5><%= link_to "About", @user %></h5>
+          </div>
+          <div class="col-md-3">
+            <h5><%= link_to "Photos (#{@user.uploaded_photos.count})", user_photos_path(@user) %></h5>
+          </div>
+          <div class="col-md-3">
+            <h5><%= link_to "Friends (#{@user.friends.count})", user_friends_path(@user) %> </h5>
+          </div>
+        </div>
+      </div>
+      <% if current_user && current_user.id == @user.id %>
+      <div class="col-md-2 col-md-offset-1 profile-edit-button">
+        <%= link_to "Edit your Profile", edit_user_path(@user), class: "btn btn-primary" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+

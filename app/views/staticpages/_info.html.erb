@@ -1,0 +1,58 @@
+<div class="container">
+    <!-- This row will hold the profile information. -->
+    <div class="row">
+      <div class="col-md-12 profile-info">
+        <!-- This row will hold the cover photo -->
+        <div class="row">
+          <div class="col-md-12">
+            <%= image_tag "default_cover.jpg", class:"cover-photo"%>
+          </div>
+
+          <!-- We have a resized profile photo and name that plays nice with smaller screens, but extra small in certain configurations is very difficult so I have opted to just turn off the cover photo and name when the screen is extra small. -->
+          <div class="profile-picture-large hidden-xs hidden-sm">
+            <%= image_tag "harry.jpg"%>
+          </div>
+          <div class="profile-picture-small hidden-xs hidden-md hidden-lg">
+            <%= image_tag "harry.jpg"%>
+          </div>
+          <div class="profile-name-large hidden-xs hidden-sm">
+            <h2> Harry Potter </h2>
+          </div>
+          <div class="profile-name-small hidden-xs hidden-md hidden-lg">
+            <h2> Harry Potter </h2>
+          </div>
+        </div>
+        <!-- This row will hold the bar under the cover photo -->
+        <div class="row cover-photo-menu">
+          <!-- The tabs won't nicely fit into 2 or 3 lenghth columns -->
+          <div class="col-md-7 col-md-offset-2">
+            <div class="row cover-photo-menu-tabs">
+              <a href="timeline.html">
+                <div class="col-md-3">
+                  <h5>Timeline</h5>
+                </div>
+              </a>
+              <a href="about.html">
+                <div class="col-md-3 selected">
+                  <h5>About</h5>
+                </div>
+              </a>
+              <a href="photos.html">
+                <div class="col-md-3">
+                  <h5>Photos (123)</h5>
+                </div>
+              </a>
+              <a href="friends.html">
+                  <div class="col-md-3">
+                    <h5>Friends (546)</h5>
+                  </div>
+              </a>
+            </div>
+          </div>
+
+          <div class="col-md-2 col-md-offset-1 profile-edit-button">
+            <a href="about_edit.html"><button class="btn btn-primary ">Edit your Profile</button></a>
+          </div>
+        </div>
+      </div>
+    </div>

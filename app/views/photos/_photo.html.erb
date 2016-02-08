@@ -1,0 +1,50 @@
+        <div class="row" data-type=photo data-id=<%=photo.id%> >
+          <div class="col-md-7 photo-page-photo">
+
+              <div class="img"><%= image_tag photo.uploaded_file, alt:"img"%></div>
+              <div class="col-md-7 pull-right text-right">
+                  <h3><%= photo.uploader.full_name %>'s Photo</h3>
+                  <% if current_user && photo.uploader == current_user %>
+                    <%= link_to "Delete", user_photo_path(photo.uploader, photo), method: 'delete' %>
+                    <%= link_to "Set as profile photo", user_photo_path(photo.uploader, photo, type: "profile"), method: 'patch' %>
+                    <%= link_to "Set as cover photo", user_photo_path(photo.uploader, photo, type: "cover"), method: 'patch' %>
+                    <% end %>
+              </div>
+          </div>
+
+
+          <div class="col-md-5">
+            <div class="row photo_uploader">
+              <div class="col-sm-2">
+                <%= display_profile_photo(photo.uploader) %>
+              </div>
+              <div class="col-sm-5">
+                <div>
+                  <h4><%= link_to photo.uploader.full_name, photo.uploader %></h4>
+                  <h6><%= photo.uploaded_on %></h6>
+                </div>
+
+              </div>
+              <div class="col-md-12">
+                <% if current_user %>
+                  <div class="col-xs-2">
+                      <%= display_like_or_unlike_button(photo) %>
+                  </div>
+                <% end %>
+                <% if current_user && photo.uploader == current_user %>
+                <% end %>
+                <% if photo.has_likes? %>
+                <div class="col-xs-5">
+                  <%= present_likes_count(photo).html_safe %>
+                </div>
+                <% end %>
+              </div>
+            </div>
+            <div>
+              <%= render partial: "posts/comment_form", locals: {commentable: photo, user_id: current_user.id} %>
+              <div id="comments-list">
+                <%= render photo.comments if photo.comments.any? %>
+              </div>
+            </div>
+          </div>
+        </div>

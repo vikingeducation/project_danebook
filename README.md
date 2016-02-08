@@ -1,4 +1,3 @@
-danebook
-========
+Danebook - A social media example application.
 
-This is the Real Dane Deal.
+Donald Kelsey

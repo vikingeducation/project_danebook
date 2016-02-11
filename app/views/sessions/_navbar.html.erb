@@ -14,21 +14,22 @@
 
     <!-- Email field, password field, login button -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-      </ul>
-      <form class="navbar-form navbar-right" role="email">
-        <!-- Email box with label-->
+      <div class="navbar-form navbar-right">
         <div class="form-group">
-          <label for="form-control" class="label">Email</label>
-          <input type="text" class="form-control">
+          <%= form_tag session_path do %>
+
+            <%= label_tag :email %>
+            <%= text_field_tag :email, nil, {class: "form-control"} %>
+
+            <%= label_tag :password %>
+            <%= password_field_tag :password, nil, {class: "form-control"}  %>
+
+            <%= submit_tag "Log In", class: "btn btn-info"  %>
+
+          <% end %>
         </div>
-        <!-- Password box with label-->
-        <div class="form-group">
-            <label for="password" class="label">Password</label>
-          <input type="text" class="form-control">
-        </div>
-        <button type="submit" class="btn btn-info">Log In</button>
-      </form>
+      </div>
     </div><!-- /.navbar-collapse -->
+
   </div><!-- /.container-fluid -->
 </nav>

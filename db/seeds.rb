@@ -11,7 +11,8 @@ User.delete_all
 puts "Creating users..."
 
 10.times do
-  User.create(email: Faker::Internet.email, password_digest: "$2a$10$.MSTCUKj.7tpap8LswJXa.AeTlsa9Qmh0TWTcYJjqZd8bhMokgPbO")
+  User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: Faker::Internet.email, password_digest: "$2a$10$.MSTCUKj.7tpap8LswJXa.AeTlsa9Qmh0TWTcYJjqZd8bhMokgPbO", birthday: Time.now, gender: ["Male", "Female"].sample)
 end
 
-User.create(email: "admin@admin.com", password_digest: "$2a$10$.MSTCUKj.7tpap8LswJXa.AeTlsa9Qmh0TWTcYJjqZd8bhMokgPbO")
+
+User.create(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, email: "admin@admin.com", password_digest: "$2a$10$.MSTCUKj.7tpap8LswJXa.AeTlsa9Qmh0TWTcYJjqZd8bhMokgPbO", birthday: Time.now, gender: "Female")

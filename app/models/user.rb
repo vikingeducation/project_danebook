@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
 
 
   validates :password, length: { :in => 8..24 }, allow_nil: true
+  validates :first_name, :last_name, length: { :in => 1..24 }, presence: true
+  validates :email, length: { :in => 1..24 }, presence: true, uniqueness: true
 
 
   def generate_token

@@ -53,7 +53,7 @@ class UsersController < ApplicationController
     else
       flash[:error] = "User was not deleted"
     end
-    redirect_to root_path
+    redirect_to users_path
   end
 
 
@@ -65,7 +65,7 @@ class UsersController < ApplicationController
   private
 
   def whitelisted_params
-    params.require(:user).permit(:email, :password, :password_confirmation)
+    params.require(:user).permit(:email, :password, :password_confirmation, :first_name, :last_name, :birthday, :gender)
   end
 
 end

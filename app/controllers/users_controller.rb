@@ -18,23 +18,23 @@ class UsersController < ApplicationController
       redirect_to user_path(@user)
     else
       flash[:error] = "User was not created"
-      redirect_to :new
+      render :new
     end
   end
 
 
   def show
-    @user = @user.find(params[:id])
+    @user = User.find(params[:id])
   end
 
 
   def edit
-    @user = @user.find(params[:id])
+    @user = User.find(params[:id])
   end
 
 
   def update
-    @user = @user.find(params[:id])
+    @user = User.find(params[:id])
     if @user.update(whitelisted_params)
       flash[:success] = "User has been updated"
       redirect_to user_path(@user)
@@ -46,7 +46,7 @@ class UsersController < ApplicationController
 
 
   def destroy
-    @user = @user.find(params[:id])
+    @user = User.find(params[:id])
     if @user.destroy
       flash[:success] = "User was deleted"
       sign_out(@user)

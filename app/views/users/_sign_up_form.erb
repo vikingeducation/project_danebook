@@ -1,0 +1,116 @@
+<!-- Sign up form on right-hand side -->
+<section class="col-sm-4 signup">
+
+  <div> <!-- sign up form -->
+
+    <%= form_for @user do |f| %>
+
+      <div class="col-sm-6 form-group">
+        <%= f.label "First Name", class: "form-control" %>
+      </div>
+
+      <div class="col-sm-6 form-group">
+        <%= f.label "Last Name", class: "form-control" %>
+      </div>        
+
+      <div class="form-group">
+        <%= field_with_errors(@user, :email) %>
+        <%= f.text_field :email, class: "form-control", placeholder: "Your Email" %>
+      </div>
+
+      <div class="form-group">
+        <%= field_with_errors(@user, :password) %>
+        <%= f.password_field :password, class: "form-control", placeholder: "Your New Password" %>
+      </div>
+
+      <div class="form-group">
+        <%= field_with_errors(@user, :password_confirmation) %>
+        <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Confirm Your Password" %>
+      </div>
+
+
+    <!-- Birthday dropdown options -->
+    <div class="row form-inline birthday">
+    <h4>Birthday</h4>
+      <select class="form-control col-sm-2">
+        <option>Month</option>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+        <option>6</option>
+        <option>7</option>
+        <option>8</option>
+        <option>9</option>
+        <option>10</option>
+        <option>11</option>
+        <option>12</option>
+      </select>
+
+      <select class="form-control col-sm-2 col-sm-offset-1">
+        <option>Day</option>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+        <option>6</option>
+        <option>7</option>
+        <option>8</option>
+        <option>9</option>
+        <option>10</option>
+        <option>11</option>
+        <option>12</option>
+        <option>13</option>
+        <option>14</option>
+        <option>15</option>
+        <option>16</option>
+        <option>17</option>
+        <option>18</option>
+        <option>19</option>
+        <option>20</option>
+        <option>21</option>
+        <option>22</option>
+        <option>23</option>
+        <option>24</option>
+        <option>25</option>
+        <option>26</option>
+        <option>27</option>
+        <option>28</option>
+        <option>29</option>
+        <option>30</option>
+        <option>31</option>
+      </select>
+
+      <select class="form-control col-sm-2 col-sm-offset-1">
+        <option>Year</option>
+        <option>1988</option>
+        <option>1989</option>
+        <option>1990</option>
+      </select>
+    </div>
+
+    <!-- Gender radio options -->
+    <div class="row gender">
+        <label class="radio-inline">
+          <input type="radio" value="Female">Female
+        </label>
+        <label class="radio-inline">
+          <input type="radio" value="Male">Male
+        </label>
+    </div><br/> 
+
+    <div class="form-group">
+      <%= f.submit "Sign Up!", class: "btn btn-success btn-lg btn-block" %>
+    </div>
+
+  </form>
+
+  <% end %>
+
+
+
+  </div> <!-- sign up form -->
+
+</section>

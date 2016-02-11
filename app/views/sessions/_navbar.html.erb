@@ -1,5 +1,5 @@
 <!-- Navigation bar -->
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-fixed">
   <div class="container-fluid">
     <div class="navbar-header">
       <!-- This part handles login for smaller screens -->
@@ -13,9 +13,9 @@
     </div>
 
     <!-- Email field, password field, login button -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <div class="navbar-form navbar-right form-group">
-        <div class="form-group">
+    <div class="collapse navbar-collapse">
+      <div class="navbar-form navbar-right">
+        <div class="form-group inline-form">
           <%= form_tag session_path do %>
 
             <%= label_tag :email %>

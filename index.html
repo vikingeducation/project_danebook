@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Danebook</title>
+
+    <!-- Meta Stuff -->
+    <meta charset="utf-8">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <!-- Our CSS -->
+    <link href="styles.css" rel="stylesheet">
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <!-- Bootstrap Javascripts -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+  </head>
+
+  <body>
+
+    <!-- Navigation bar -->
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <!-- This part handles login for smaller screens -->
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#">Danebook</a>
+        </div>
+
+        <!-- Email field, password field, login button -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+          </ul>
+          <form class="navbar-form navbar-right" role="email">
+            <!-- Email box with label-->
+            <div class="form-group">
+              <label for="form-control" class="label">Email</label>
+              <input type="text" class="form-control">
+            </div>
+            <!-- Password box with label-->
+            <div class="form-group">
+                <label for="password" class="label">Password</label>
+              <input type="text" class="form-control">
+            </div>
+            <button type="submit" class="btn btn-info">Log In</button>
+          </form>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+
+
+    <main class="container">
+      <div class="row">
+
+        <!-- Bullet points on left-hand side -->
+        <section class="col-sm-7 about">
+          <h1 class="large-text">Connect with all your friends!</h1>
+            <ul class="bullet-points">
+              <li>See photos and updates in your news feed</li>
+              <li>Post your status for the word to see from your profile</li>
+              <li>Get in touch with your friends by "friending" them</li>
+              <li>Like things because you're a positive person!</li>
+            </ul>
+        </section>
+      
+
+
+        <!-- Sign up form on right-hand side -->
+        <section class="col-sm-4 signup">
+
+          <form>
+            <!-- First name and last name share the same line -->
+            <div class="row">
+                <div class="col-sm-5 form-group firstname">
+                  <input type="text" class="form-control" placeholder="First Name">
+                </div>
+                <div class="col-sm-5 form-group lastname">
+                  <input type="text" class="form-control" placeholder="Last Name">
+                </div>
+            </div>
+
+            <!-- Email, password, confirm password -->
+            <div class="form-group">
+              <input type="email" class="form-control" placeholder="Your Email">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Your New Password">
+            </div>
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Confirm Your Password">
+            </div>
+
+            <!-- Birthday dropdown options -->
+            <div class="row form-inline birthday">
+            <h4>Birthday</h4>
+              <select class="form-control col-sm-2">
+                <option>Month</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+                <option>10</option>
+                <option>11</option>
+                <option>12</option>
+              </select>
+
+              <select class="form-control col-sm-2 col-sm-offset-1">
+                <option>Day</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+                <option>10</option>
+                <option>11</option>
+                <option>12</option>
+                <option>13</option>
+                <option>14</option>
+                <option>15</option>
+                <option>16</option>
+                <option>17</option>
+                <option>18</option>
+                <option>19</option>
+                <option>20</option>
+                <option>21</option>
+                <option>22</option>
+                <option>23</option>
+                <option>24</option>
+                <option>25</option>
+                <option>26</option>
+                <option>27</option>
+                <option>28</option>
+                <option>29</option>
+                <option>30</option>
+                <option>31</option>
+              </select>
+
+              <select class="form-control col-sm-2 col-sm-offset-1">
+                <option>Year</option>
+                <option>1988</option>
+                <option>1989</option>
+                <option>1990</option>
+              </select>
+            </div>
+
+            <!-- Gender radio options -->
+            <div class="row gender">
+                <label class="radio-inline">
+                  <input type="radio" value="Female">Female
+                </label>
+                <label class="radio-inline">
+                  <input type="radio" value="Male">Male
+                </label>
+            </div>
+
+            <!-- Green Sign Up button -->
+            <button type="button" class="btn btn-success col-sm-12">Sign Up!</button>
+
+          </form>
+        </section>
+
+
+
+      </div>
+
+    </main>
+
+
+
+  </body>

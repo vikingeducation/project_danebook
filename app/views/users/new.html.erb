@@ -18,23 +18,18 @@
         <%= f.password_field :password, class: "form-control", placeholder: "Password" %>
         <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Password Confirmation" %>
         <h5>Birthday</h5>
-        <%= f.date_select :birthday, {
-            :order => [:month, :day, :year],
-            prompt: {day: 'Day', month: 'Month', year: 'Year'},
-            start_year: 1900,
-            end_year: 2016,
-          },
-          {class: "form-control"}
-          %>
-          <h5>Gender</h5>
-          <label>
-            <%= radio_button_tag :gender, "Male" %>
-            Male
-          </label>
-          <label>
-            <%= radio_button_tag :gender, "Female" %>
-            Female
-          </label>
+        <%= select_month(0, {prompt: "Month"}) %>
+        <%= select_day(0, {prompt: "Day"}) %>
+        <%= select_year(0, {prompt: "Year", start_year: 1900, end_year: 2016}) %>
+        <h5>Gender</h5>
+        <label>
+          <%= radio_button_tag :gender, "Male" %>
+          Male
+        </label>
+        <label>
+          <%= radio_button_tag :gender, "Female" %>
+          Female
+        </label>
         <%= f.submit "Sign Up", class: "btn btn-block btn-success" %>
       <% end %>
     </div>

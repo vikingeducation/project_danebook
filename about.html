@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Danebook Homepage</title>
+
+    <!-- Meta Stuff -->
+    <meta charset="utf-8">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+    <!-- Our CSS -->
+    <link href="styles.css" rel="stylesheet">
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+    <!-- Bootstrap Javascripts -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+ </head>
+  
+<!-- One container wraps everything else -->
+<body class = "container-fluid">
+
+  <!-- notice that this is a ROW as well as a navbar -->
+  <nav id ="search-navbar" class="navbar navbar-default row">
+    
+    <div class="col-md-2"> 
+    </div>
+    <!-- responsive mobile stuff collapses down  -->
+    <div class="logo-container col-md-2">
+      <button type="button" class="navbar-toggle collapsed" 
+              data-toggle="collapse" 
+              data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+ 
+      <!--company brand link -->
+      <img class="pull-left img-rounded" 
+           src="http://www.mapsofworld.com/images/world-countries-flags/denmark-flag.gif">
+      <a class="navbar-brand" id = "brand-link" href="#">Danebook</a>
+    </div>
+      
+    <!-- wraps rest of links to collapse in mobile-->
+    <div class="nav navbar-nav navbar-left col-md-4">
+      <form class="navbar-form" role="search">
+        <div class="search-bar input-group input-group-sm col-md-4 col-sm-4
+                    form-group">
+          <input type="text" class="form-control pull-left" 
+                 placeholder="Search">
+        </div>
+      </form>
+    </div>
+         <!-- wraps rest of links to collapse in mobile-->
+    <div class="nav navbar-nav col-md-2">
+      <a href="#" class="pull-right nav-personal-link">Deepa Kackar</a>
+    </div><!--navbar-collapse-->
+     <div class="col-md-2"> 
+    </div>  
+  </nav>
+
+  <div class="main"> <!--main container for rest of page-->
+    <div class="row"> <!--main row-->
+    
+      <div class="col-md-2"><!--empty left column space-->
+      </div>
+        
+      <div class="col-md-8"><!--main middle for image and nav links--> 
+  
+        <!--for the cover image -->
+        <div class="row no-pad container-border">
+         
+          <div class="image-container">
+            <img src="http://vignette3.wikia.nocookie.net/harrypotter/images/b/bd/Dhogwarts.jpg/revision/latest?cb=20120128145344"
+            class="img-responsive cover-image" alt="Responsive image">
+
+            <img src="http://ndl.mgccw.com/mu3/000/488/259/sss/42409d600b984fc9934a52f28291ba27_small.png" 
+                 class="img-thumbnail" id ="profile-image" alt="profile">      
+          </div>
+          
+        <div class="row no-pad container-border" >
+          <div  class="col-md-12 text-center">
+            <div class="list-group list-group-horizontal">
+              <a href="timeline.html" class="list-group-item">Timeline</a>
+              <a href="#" class="list-group-item active">About</a>
+              <a href="photos.html" class="list-group-item">Photos</a>
+              <a href="friends.html" class="list-group-item">Friends</a>
+              <a href="about_edit.html" class="list-group-item">Edit Profile</a>
+             </div>
+          </div>
+        </div>
+      
+        <div class="panel-container row no-pad">
+          <div class="panel panel-default page-type-panel-body panel-style"> 
+            <div class="panel-body panel-body-style">
+              <strong>About</strong>
+
+              <a href="about_edit.html">
+                <input type="button" class="btn btn-info pull-right btn-edit-profile" 
+                       value="Edit Your Profile">
+              </a>
+            </div>
+          </div>
+        </div>
+        
+        <div class="edit-profile-container">
+          <section class="col-md-6">
+            <article>
+              <h4>Basic Information</h4>
+              <dl class='dl-horizontal slightly-reduced-font'>
+                <dt class="dd-dt-style" style="text-align:left;">Birthday</dt>
+                <dd class="dd-dt-style" style="text-align:left;">
+                    4th October 2015
+                </dd>
+                <dt class="dd-dt-style" style="text-align:left;">College</dt>
+                <dd class="dd-dt-style" style="text-align:left;">
+                     CalState EastBay (CA)
+                </dd>
+                <dt class="dd-dt-style" style="text-align:left;">Hometown</dt>
+                <dd class="dd-dt-style" style="text-align:left;">Mumbai, India</dd>
+                <dt sclass="dd-dt-style" style="text-align:left;">
+                    Currently Lives
+                </dt>
+                <dd class="dd-dt-style" style="text-align:left;">San Jose, CA</dd>
+              </dl>
+            </article>
+            
+            <article>
+              <h4>Contact Information</h4>
+              <dl class="dl-horizontal slightly-reduced-font">
+                <dt class="dd-dt-style" style="text-align:left;">Email</dt>
+                <dd class="dd-dt-style" style="text-align:left;">
+                    dkackar99@yahoo.com
+                </dd>
+                <dt class="dd-dt-style" style="text-align:left;">Phone</dt>
+                <dd class="dd-dt-style" style="text-align:left;">408-8964196</dd>
+              </dl>
+            </article>
+          </section>
+        
+          <section class="col-md-6 reduced-font">
+            <article>
+              <h4>Words to live by</h4>
+              Everything should be made as simple as possible, but not simpler.
+            </article>
+            
+            <article>
+              <h4>About me</h4>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vulputate ante tristique tempus volutpat. Sed vitae lacus quis arcu tempus mollis vitae sed justo. In aliquam, augue ut mollis efficitur, arcu diam finibus lacus, a molestie libero neque vel nisl. Nulla iaculis justo eu sagittis dapibus. Nunc sollicitudin ex et lobortis efficitur. Aenean sed nibh cong
+            </article>
+          </section>
+      
+        </div>
+      
+      </div>
+        
+      <div class="col-md-2">
+      </div>
+    </div>
+  </div> 
+  
+  </body>
+</html>

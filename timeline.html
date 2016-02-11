@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Danebook - Edit Profile</title>
+
+    <!-- Meta Stuff -->
+    <meta charset="utf-8">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+    <!-- Our CSS -->
+    <link href="styles.css" rel="stylesheet">
+
+    <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+    <!-- Bootstrap Javascripts -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+ </head>
+  
+<!-- One container wraps everything else -->
+<body class = "container-fluid">
+
+  <nav id ="search-navbar" class="navbar navbar-default row">
+    
+    <div class="col-md-2"> 
+    </div>
+    <!-- responsive mobile stuff collapses down  -->
+    <div class="logo-container col-md-2">
+      <button type="button" class="navbar-toggle collapsed" 
+              data-toggle="collapse" 
+              data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+ 
+      <!--company brand link -->
+      <img class="pull-left img-rounded" 
+           src="http://www.mapsofworld.com/images/world-countries-flags/denmark-flag.gif">
+      <a class="navbar-brand" id = "brand-link" href="#">Danebook</a>
+    </div>
+      
+    <!-- wraps rest of links to collapse in mobile-->
+    <div class="nav navbar-nav navbar-left col-md-4">
+      <form class="navbar-form" role="search">
+        <div class="search-bar input-group input-group-sm col-md-4 col-sm-4
+                    form-group">
+          <input type="text" class="form-control pull-left" 
+                 placeholder="Search">
+        </div>
+      </form>
+    </div>
+         <!-- wraps rest of links to collapse in mobile-->
+    <div class="nav navbar-nav col-md-2">
+      <a href="about.html" class="pull-right nav-personal-link">Deepa Kackar</a>
+    </div><!--navbar-collapse-->
+     <div class="col-md-2"> 
+    </div>  
+  </nav>
+
+  <div class="main"> <!--main container for rest of page-->
+    <div class="row"> <!--main row for rest of page-->
+    
+      <div class="col-md-2"><!--empty left column space-->
+      </div>
+        
+      <div class="col-md-8"><!--main middle for image and nav links--> 
+  
+        <!--for the cover image -->
+        <div class="container-border row no-pad">
+         
+          <div class="image-container">
+            <img src="http://vignette3.wikia.nocookie.net/harrypotter/images/b/bd/Dhogwarts.jpg/revision/latest?cb=20120128145344"
+            class="img-responsive cover-image" alt="Responsive image">
+
+            <img src="http://ndl.mgccw.com/mu3/000/488/259/sss/42409d600b984fc9934a52f28291ba27_small.png" 
+                 class="img-thumbnail" id ="profile-image" alt="profile">   
+          </div>
+          
+          <!--for the navigation bar to diffetent pages-->
+          <div class="row no-pad border-container"> 
+
+            <div  class="col-md-12 text-center">
+              <div class="list-group list-group-horizontal">
+                <a href="#" class="list-group-item active">Timeline</a>
+                <a href="about.html" class="list-group-item">About</a>
+                <a href="photos.html" class="list-group-item">Photos</a>
+                <a href="friends.html" class="list-group-item">Friends</a>
+                <a href="about_edit.html" class="list-group-item">
+                   Edit Profile
+                </a>
+               </div>
+            </div>
+          </div> <!--end navigation bar to diffetent pages-->
+        </div> <!--end top container-->
+
+        <!--Timeline events info container-->
+        <div class="row no-pad container-border page-type">
+
+          <div class="col-md-4">
+
+            <!--About info container on left-->
+            <div class="panel panel-default panel-style">
+              <div class="panel-heading">
+                <h3 class="panel-title">About</h3>
+              </div>
+  
+              <div class="panel-body panel-body-style basic-margin">
+                <p style="text-align:left;font-size:0.9em;">
+                  Born on 9th Feb 2015<br>
+                  Went to school at CalState East Bay, CA<br>
+                  Hometown in Mumbai, India<br>
+                  Currently lives in San Jose, CA
+                </p>
+              </div>
+
+            </div>
+
+            <!--Display Photos container on left-->
+            <div class="panel panel-default panel-style">
+              <div class="panel-heading">
+                <h3 class="panel-title">Photos (230)</h3>
+              </div>
+  
+              <div class="panel-body panel-body-style basic-margin">
+                <p style="text-align:left;">
+                   <img src="assets/neelam.jpg" class="smallest-photos">
+                   <img src="assets/komal.jpg" class="smallest-photos">
+                   <img src="assets/vishal.jpeg" class="smallest-photos">
+                   <img src="assets/ManishProfile.png" class="smallest-photos">
+                   <img src="assets/vinnie.jpg" class="smallest-photos">
+                   <img src="assets/vishal.jpeg" class="smallest-photos">
+                </p>
+              </div>
+
+            </div>
+
+            <!--Display friends photos container on left-->
+            <div class="panel panel-default panel-style">
+              <div class="panel-heading">
+                <h3 class="panel-title">Friends (10)</h3>
+              </div>
+  
+              <div class="panel-body panel-body-style" style="margin:4px;">
+                <p style="text-align:left;">
+                   <img src="assets/neelam.jpg" class="smallest-photos">
+                   <img src="assets/komal.jpg" class="smallest-photos">
+                   <img src="assets/vishal.jpeg" class="smallest-photos">
+                   <img src="assets/ManishProfile.png" class="smallest-photos">
+                   <img src="assets/vinnie.jpg" class="smallest-photos">
+                   <img src="assets/vishal.jpeg" class="smallest-photos">
+                </p>
+              </div>
+
+            </div> 
+          </div>
+          
+          <div class="col-md-8">
+
+            <form class="panel panel-default panel-style container-border">
+              <div class="panel-heading">
+                <h3 class="panel-title">Post</h3>
+              </div>
+  
+              <div class="panel-body panel-body-style basic-margin">
+                <textarea class="form-control" rows="2" id="words"></textarea>
+              </div>
+              <div class="panel-footer container-border">
+                <button type="submit" class="btn btn-info post-button">
+                        Post
+                </button>
+              </div>
+            </form>
+
+            <div class="panel panel-default panel-style container-border">
+              <div class="panel-body panel-body-style basic-margin">
+                
+                <div class="tiny-font text-left">
+                  <img src="assets/komal.jpg" class="smallest-photos pull-left">
+                  <br>
+                  <a href="#">Komal Kackar</a><br>Posted On 6th Nov 2015
+                </div>
+
+                <div style="clear:both;text-align:left;font-size:0.75em;">  
+                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </div>
+              </div>
+              <div class="panel-footer">
+                <div class="row">
+                  <div class="col-md-1" style="font-size:0.75em;">
+                    <a href="#">Like</a> 
+                  </div>
+                  <div class="col-md-1 tiny-font">     
+                    <a href="#">Comment</a>
+                  </div>
+                   <div class="col-md-8 tiny-font">
+                  </div>
+                  <div class="col-md-2 tiny-font"> 
+                    <a href="#">Delete</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="panel panel-default panel-style container-border">
+              <div class="panel-body panel-body-style basic-margin">
+                
+                <div class="tiny-font text-left">
+                  <img src="assets/vishal.jpeg" class="smallest-photos pull-left">
+                  <br>
+                  <a href="#">Vishal Kackar</a><br>Posted On 12th Nov 2015
+                </div>
+
+                <div class="tiny-font text-left">
+                  <div class="row pull-left basic-margin">  
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                  </div>
+                </div>
+              </div>
+              <div class="panel-footer">
+                <div class="row">
+                  <div class="col-md-1 tiny-font">
+                    <a href="#">Like</a> 
+                  </div>
+                  <div class="col-md-1 tiny-font">     
+                    <a href="#">Comment</a>
+                  </div>
+                   <div class="col-md-8 tiny-font">
+                  </div>
+                  <div class="col-md-2 tiny-font"> 
+                    <a href="#">Delete</a>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-8">
+                    <p class="tiny-font text-left">
+                        You and <a href="#">Hermoine Granger</a> likes this</p>
+                  </div>
+                   <div class="col-md-4">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="panel panel-default panel-style container-border">
+              <div class="panel-body panel-body-style basic-margin">
+                
+                <div style="tiny-font text-left">
+                  <img src="assets/ManishProfile.png" class="smallest-photos pull-left">
+                  <br>
+                  <a href="#">Manish Kackar</a><br>Posted On 12th Nov 2015
+                </div>
+
+                <div class="tiny-font text-left">
+                  <div class="row pull-left basic-margin">  
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                  </div>
+                </div>
+              </div>
+             
+              <div class="panel-footer container-border">
+                <div class="row">
+                  <div class="col-md-1 tiny-font">
+                    <a href="#">Unlike</a> 
+                  </div>
+                  <div class="col-md-1 tiny-font">
+                  </div>
+                   <div class="col-md-8 tiny-font">
+                  </div>
+                  <div class="col-md-2 tiny-font"> 
+                    <a href="#">Delete</a>
+                  </div>
+                </div>
+             
+                <div class="row">
+                  <div class="col-md-8">
+                    <p class="tiny-font text-left">
+                        You and <a href="#">Hermoine Granger</a> and 3
+                        others like this</p>
+                  </div>
+
+                  <div class="col-md-4">
+                  </div>
+
+                </div>
+                
+                <div class="row">
+                   <hr>
+                 </div>
+                
+                <div class="row container-border comment-background">
+                  <div class="col-md-12">
+                    <div class="tiny-font text-left">
+                      <img src="assets/vinnie.jpg" class="smallest-photos
+                                pull-left">
+                      <br>
+                      <a href="#">Vinnie</a><br>Said On 22nd Nov 2015
+                    </div>
+
+                    <div class="tiny-font text-left">
+                      <div class="row pull-left basic-margin">  
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+                
+                <div class="row container-border comment-background">
+                  <div class="col-md-12">
+                    <div class="tiny-font text-left">
+                      <img src="assets/vinnie.jpg" class="smallest-photos
+                          pull-left">
+                      <br>
+                      <a href="#">Vinnie</a><br>Said On 22nd Nov 2015
+                    </div>
+
+                    <div class="tiny-font text-left">
+                      <div class="row pull-left basic-margin">  
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                      </div>
+                    </div>
+                  </div>
+
+                </div>  
+
+                <div class="row">   
+                  <form>        
+                    <div class="form-group" >
+                      <label for="comment"></label>
+                      <textarea class="form-control" rows="2" 
+                                id="comment">Write a comment...</textarea>
+                    </div>
+                  </form>  
+                </div>
+
+              <div>
+
+            </div>
+
+          </div> 
+
+        </div>  
+      </div><!--End of main middle for image and nav links--> 
+        
+      <div class="col-md-2">
+      </div>
+    </div>   
+  </div> 
+  
+  </body>
+</html>

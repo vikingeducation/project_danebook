@@ -1,3 +1,92 @@
 // Place all the styles related to the Sessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+$navbarpadding: 35px;
+
+.sessions-controller {
+
+  body{
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 14px;
+    line-height: 1.42857143;
+    background-color: #fff;
+    padding-top: 50px;
+    padding-bottom: 20px;
+  }
+
+
+  /* nav bar css */
+
+  .container-fluid{
+    width: 1170px;
+  }
+
+  .navbar {
+    background-color: #3385ff;
+    height: 100px;
+    margin-bottom: 0px;
+  } 
+
+  .navbar-default .navbar-brand {
+    color: #fff;
+    font-size: 40px;
+    padding-top: $navbarpadding;
+  }
+
+  .navbar-form .navbar-right {
+    padding-top: $navbarpadding;
+  }
+
+  .label{
+    display:flex;
+    font-size: 14px;
+    padding: 5px 0 0;
+  }
+
+  button{
+    margin-top: 26px;
+  }
+
+  .btn-info{
+    color: #333;
+  }
+
+  .form-group{
+    padding-left: 10px;
+  }
+
+
+  /* left-hand side css */
+
+  .about, .signup {
+    padding-top: 70px
+  }
+  .bullet-points{
+    font-size: 22px;
+    line-height: 2;
+    padding-top: 10px;
+    padding-left: 70px;
+    color: #666;
+  }
+
+
+  /* right-hand side css */
+
+  div.col-sm-5.form-group.firstname, 
+  div.col-sm-5.form-group.lastname,
+  .birthday, form > button {
+    margin-left: 15px;
+  }
+
+  .gender{
+    margin-left: 15px;
+    padding-top: 15px;
+  }
+
+}
+
+
+@import "bootstrap-sprockets";
+@import "bootstrap";

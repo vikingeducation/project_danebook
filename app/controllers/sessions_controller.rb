@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
   def create
     @user = User.find_by_email(params[:email])
 
-    if @user && @user.authentication(params[:password])
+    if @user && @user.authenticate(params[:password])
       params[:remember_me] ? permament_sign_in(@user) : sign_in(@user)
       flash[:success] = "You've successfully signed in"
       redirect_to root_path

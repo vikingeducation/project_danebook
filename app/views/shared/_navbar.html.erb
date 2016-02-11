@@ -17,7 +17,7 @@
           <%= form_tag session_path, class: "navbar-form navbar-right" do %>
             <div class="form-group">
               <%= text_field_tag :email, nil, placeholder: "Email", class: "form-control" %>
-              <%= text_field_tag :password, nil, placeholder: "Password", class: "form-control" %>
+              <%= password_field_tag :password, nil, placeholder: "Password", class: "form-control" %>
               <%= label_tag do %>
                 Remember me?
                 <%= check_box_tag :remember_me, class: "form-control"%>

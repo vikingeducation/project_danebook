@@ -1,6 +1,9 @@
 class User < ActiveRecord::Base
 
   before_create :generate_token
+  after_create :create_profile
+
+  has_one :profile, dependent: :destroy
   has_secure_password
 
 

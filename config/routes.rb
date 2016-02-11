@@ -3,12 +3,14 @@ Rails.application.routes.draw do
   root "users#new"
 
 
-  resources :users
   resource :session, only: [:new, :create, :destroy]
   get "login" => "sessions#new"
   delete "logout" => "sessions#destroy"
 
 
+  resources :users do
+    resource :profile, only: [:edit, :update, :show]
+  end
 
 
   # The priority is based upon order of creation: first created -> highest priority.

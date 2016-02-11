@@ -26,6 +26,15 @@
           },
           {class: "form-control"}
           %>
+          <h5>Gender</h5>
+          <label>
+            <%= radio_button_tag :gender, "Male" %>
+            Male
+          </label>
+          <label>
+            <%= radio_button_tag :gender, "Female" %>
+            Female
+          </label>
         <%= f.submit "Sign Up", class: "btn btn-block btn-success" %>
       <% end %>
     </div>

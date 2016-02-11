@@ -1,0 +1,181 @@
+<!-- Your markup here! -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>photos</title>
+
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+  </head>
+
+  <body>
+    
+    <header>
+
+    <!-- Navbar Container -->
+      <nav class="navbar navbar-default">
+        <div class="container">
+
+        <!-- Header Wrapper -->
+		  <div class="navbar-header">
+
+		   <!-- Collapses search and profile under toggle button -->
+		    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+		      <span class="sr-only">Toggle navigation</span>
+		      <span class="icon-bar"></span>
+		      <span class="icon-bar"></span>
+		      <span class="icon-bar"></span>
+		    </button>
+
+		   <!-- Brand Logo -->
+		    <a class="navbar-brand" href="#"><img src="img/danish_flag.gif" class="logo"></a>
+		    <a class="navbar-brand">Danebook</a>
+		  </div>
+
+		 <!-- Input form & profile set to collapse -->
+		  <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+		   <!-- Search Bar -->
+		    <form class="navbar-form navbar-left" role="search">
+		     <div class="form-group">
+		      	<input type="text" class="form-control" placeholder="Search for Users">
+		  	  </div>
+		    </form>
+
+		   <!-- Link to profile -->
+		    <ul class="nav navbar-nav navbar-right">
+		     <li><a href="profile.html">Harry</a></li>
+		    </ul>
+		  </div><!-- /.navbar-collapse -->
+		</div><!-- /.container-fluid -->
+      </nav>
+
+    </header>
+
+    <div class="container-fluid">
+        <!-- Full Width Cover Photo -->
+        <div class="row">
+  	    <img id="cover-photo"  src="img/hogwarts_small.jpg" class="img-responsive col-md-12" alt="Responsive Cover">
+  	    </div>
+  
+  	    <footer>
+  	      <div class="container">
+
+  	      <!-- Profile Pic -->
+  	      <div class="img-wrapper col-md-3">
+  	      	<img id="profile-pic"  src="img/harry_potter_small.jpg" class="navbar-form" alt="Responsive Cover">
+  	      </div>
+
+  	      <!-- Navbar Links -->
+  	      <div class="col-md-offset-3">
+
+  	      	<!-- Links listed -->
+  	      	<ul class="nav navbar-nav">
+		      <li class="btn btn-default btn-md"><a href="#">Timeline</a></li>
+
+		      <li class="btn btn-default btn-md"><a href="#">About</a></li>
+
+		      <!-- Id selector 'Active' for current location -->
+		      <li class="btn btn-default btn-md" id="active"><a href="#">Photos<span> (124)</span></a></li>
+		      <li class="btn btn-default btn-md"><a href="#">Friends<span> (124)</span></a></li>
+			</ul>
+	  	  </div>
+
+	  	  <p class="navbar-text navbar-right"><a href="#" class="navbar-link">Edit-Profile</a></p>
+  	    </footer>
+	</div>
+
+	<main>
+	  <!-- Main Container -->
+	  <div class="container main">
+
+	    <!-- Photos Container -->
+	    <div class="photos-header nav row">
+		  <div class="center col-md-2 col-md-offset-5"><h1>Photos</h1></div>
+	  	  <div class="col-md-2 col-md-offset-3">
+
+	  	  <!-- Edit Profile Button -->
+	  	  	<div class="navbar-right edit-button">
+	  	  	  <button type="button" class="btn btn-primary">Add Photos!</a>
+  	  		  </button>
+	  	    </div>
+	  	  </div>
+	  	</div><!-- End Photos Header Container-->
+
+	  	<!-- Photos Grid Container -->
+	  	<div class="photos-row row">
+	  	  <div class="col-sm-12">
+	  	    <div class="row heading-row">
+	  	      <div class="photos-thumb col-sm-3">
+	  	        <a href="#"><img src="img/default_user.gif"><div class="panel-footer hover-date">Uploaded October 31, 2015</div></a>
+	  	      </div>
+	  	      <div class="photos-thumb col-sm-3">
+	  	        <a href="#"><img src="img/default_user.gif"><div class="panel-footer hover-date">Uploaded October 31, 2015</div></a>
+	  	      </div>
+	  	      <div class="photos-thumb col-sm-3">
+	  	        <a href="#"><img src="img/default_user.gif"><div class="panel-footer hover-date">Uploaded October 31, 2015</div></a>
+	  	      </div>
+	  	      <div class="photos-thumb col-sm-3">
+	  	        <a href="#"><img src="img/default_user.gif"><div class="panel-footer hover-date">Uploaded October 31, 2015</div></a>
+	  	      </div>
+	  	    </div>
+	  	    <div class="row">
+	  	      <div class="photos-thumb col-sm-3">
+	  	        <a href="#"><img src="img/default_user.gif"><div class="panel-footer hover-date">Uploaded October 31, 2015</div></a>
+	  	      </div>
+	  	      <div class="photos-thumb col-sm-3">
+	  	        <a href="#"><img src="img/default_user.gif"><div class="panel-footer hover-date">Uploaded October 31, 2015</div></a>
+	  	      </div>
+	  	      <div class="photos-thumb col-sm-3">
+	  	        <a href="#"><img src="img/default_user.gif"><div class="panel-footer hover-date">Uploaded October 31, 2015</div></a>
+	  	      </div>
+	  	      <div class="photos-thumb col-sm-3">
+	  	        <a href="#"><img src="img/default_user.gif"><div class="panel-footer hover-date">Uploaded October 31, 2015</div></a>
+	  	      </div>
+	  	    </div>
+	  	    <div class="row">
+	  	      <div class="photos-thumb col-sm-3">
+	  	        <a href="#"><img src="img/default_user.gif"><div class="panel-footer hover-date">Uploaded October 31, 2015</div></a>
+	  	      </div>
+	  	      <div class="photos-thumb col-sm-3">
+	  	        <a href="#"><img src="img/default_user.gif"><div class="panel-footer hover-date">Uploaded October 31, 2015</div></a>
+	  	      </div>
+	  	      <div class="photos-thumb col-sm-3">
+	  	        <a href="#"><img src="img/default_user.gif"><div class="panel-footer hover-date">Uploaded October 31, 2015</div></a>
+	  	      </div>
+	  	      <div class="photos-thumb col-sm-3">
+	  	        <a href="#"><img src="img/default_user.gif"><div class="panel-footer hover-date">Uploaded October 31, 2015</div></a>
+	  	      </div>
+	  	    </div>
+	  	    <div class="row">
+	  	      <div class="photos-thumb col-sm-3">
+	  	        <a href="#"><img src="img/default_user.gif"><div class="panel-footer hover-date">Uploaded October 31, 2015</div></a>
+	  	      </div>
+	  	      <div class="photos-thumb col-sm-3">
+	  	        <a href="#"><img src="img/default_user.gif"><div class="panel-footer hover-date">Uploaded October 31, 2015</div></a>
+	  	      </div>
+	  	      <div class="photos-thumb col-sm-3">
+	  	        <a href="#"><img src="img/default_user.gif"><div class="panel-footer hover-date">Uploaded October 31, 2015</div></a>
+	  	      </div>
+	  	      <div class="photos-thumb col-sm-3">
+	  	        <a href="#"><img src="img/default_user.gif"><div class="panel-footer hover-date">Uploaded October 31, 2015</div></a>
+	  	      </div>
+	  	    </div>
+	  	  </div>
+	  	</div>
+
+    
+
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+  </body>
+</html>

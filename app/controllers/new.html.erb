@@ -1,0 +1,26 @@
+<%= form_for @user do |f| %>
+
+  <div class="form-group">
+    <%= f.label :email %>
+    <%= field_with_errors(@user, :email) %>
+    <%= f.text_field :email, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password %>
+    <%= field_with_errors(@user, :password) %>
+    <%= f.password_field :password, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :password_confirmation %>
+    <%= field_with_errors(@user, :password_confirmation) %>
+    <%= f.password_field :password_confirmation, class: "form-control" %>
+  </div>
+
+
+  <div class="form-group">
+    <%= f.submit "Sign Up", class: "btn btn-warning btn-lg btn-block" %>
+  </div>
+
+<% end %>

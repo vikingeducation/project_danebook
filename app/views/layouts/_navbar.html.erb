@@ -1,0 +1,34 @@
+<!-- Navigation bar -->
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <!-- This part handles login for smaller screens -->
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Danebook</a>
+    </div>
+
+    <!-- Email field, password field, login button -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+      </ul>
+      <form class="navbar-form navbar-right" role="email">
+        <!-- Email box with label-->
+        <div class="form-group">
+          <label for="form-control" class="label">Email</label>
+          <input type="text" class="form-control">
+        </div>
+        <!-- Password box with label-->
+        <div class="form-group">
+            <label for="password" class="label">Password</label>
+          <input type="text" class="form-control">
+        </div>
+        <button type="submit" class="btn btn-info">Log In</button>
+      </form>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>

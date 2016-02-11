@@ -1,0 +1,33 @@
+<div class="container">
+  <div clas="row">
+    <div class="col-md-6">
+      <h3>Connect with all your Friends!</h3>
+      <ul>
+        <li>See photos and updates in your news feed</li>
+        <li>Post your status for the world to see from your profile</li>
+        <li>Get in touch with your friends by "friending" them</li>
+        <li>Like things because you're a positive person!</li>
+      </ul>
+    </div>
+    <div class="col-md-6">
+      <h1>Sign Up</h1>
+      <%= form_for @user do |f| %>
+        <%= f.text_field :first_name, class: "form-control", placeholder: "First Name"%>
+        <%= f.text_field :last_name,  class: "form-control", placeholder: "Last Name"%>
+        <%= f.text_field :email, class: "form-control", placeholder: "Email"%>
+        <%= f.password_field :password, class: "form-control", placeholder: "Password" %>
+        <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Password Confirmation" %>
+        <h5>Birthday</h5>
+        <%= f.date_select :birthday, {
+            :order => [:month, :day, :year],
+            prompt: {day: 'Day', month: 'Month', year: 'Year'},
+            start_year: 1900,
+            end_year: 2016,
+          },
+          {class: "form-control"}
+          %>
+        <%= f.submit "Sign Up", class: "btn btn-block btn-success" %>
+      <% end %>
+    </div>
+  </div>
+</div>

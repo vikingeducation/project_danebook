@@ -21,9 +21,7 @@ ActiveRecord::Schema.define(version: 20160211191307) do
     t.string   "last_name",       null: false
     t.string   "email",           null: false
     t.string   "password_digest", null: false
-    t.string   "birth_day"
-    t.integer  "birth_month"
-    t.integer  "birth_year"
+    t.date     "birthday"
     t.string   "gender"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false

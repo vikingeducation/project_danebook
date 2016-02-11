@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Profile</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body data-no-turbolink>
+
+  <% flash.each do |type, message| %>
+    <div class="alert alert-<%=type%>">
+      <div>
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      <strong><%= type.titleize %>! <%= message %></strong>
+      </div>
+      </div>
+  <% end %> 
+
+  <div class="profile-controller">
+
+    <%= render partial: "shared/navbar" %>
+
+    <%= yield %>
+
+  </div>
+
+</body>
+</html>

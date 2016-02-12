@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   resources :users do
     resource :profile, only: [:edit, :update, :show]
+    resources :posts
   end
 
 

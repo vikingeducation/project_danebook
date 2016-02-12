@@ -4,6 +4,7 @@ class User < ActiveRecord::Base
   after_create :create_profile
 
   has_one :profile, dependent: :destroy
+  has_many :posts
   has_secure_password
 
 

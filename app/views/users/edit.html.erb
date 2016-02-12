@@ -43,48 +43,43 @@
 
  			<!-- Second Row Content -->
  			<div class="content row">
- 			  <div class="col-md-4 col-md-offset-2">
- 			    <strong>Birthday:</strong>
- 			  </div>
- 			  <div class="col-md-6">
-				<textarea class="form-control">July 31st, 1980
- 			    </textarea>
- 			  </div>
- 			</div>
+        <div class="col-md-4 col-md-offset-2">
+          <%= pf.label :birthday %>
+        </div>
+        <div class="col-md-6">
+          <%= pf.date_field(:birthday, {order: [:month, :day, :year]}) %>
+        </div>
+      </div>
 
  			<!-- Third Row Content -->
  			<div class="content row">
  			  <div class="col-md-4 col-md-offset-2">
-<!--  			    <strong>College:</strong> -->
           <%= pf.label :school %>
  			  </div>
  			  <div class="col-md-6">
-          <%= pf.test_field :school, class: "form-control" %>
-<!-- 				<textarea class="form-control">Hogwarts College
- 			    </textarea></div> -->
+          <%= pf.text_field :school, class: "form-control" %>
+        </div>
  			</div>
-      <% end %>
-
-      <% end %>
+      
  			<!-- Fourth Row Content -->
  			<div class="content row">
  			  <div class="col-md-4 col-md-offset-2">
- 			  	<strong>Hometown:</strong>
+          <%= pf.label :hometown %>
  			  </div>
  			  <div class="col-md-6">
-				<textarea class="form-control">Godrick's Hollow, England
- 			    </textarea></div>
+          <%= pf.text_field :hometown %>
+        </div>
  			</div>
 
  			<!-- Fifth Row Content -->
  			<div class="content row">
- 			  <div class="col-md-4 col-md-offset-2">
- 			  	<strong>Birthday:</strong>
- 			  </div>
- 			  <div class="col-md-6">
-				<textarea class="form-control">Godrick's Hollow, England
- 			    </textarea></div>
- 			</div>
+        <div class="col-md-4 col-md-offset-2">
+          <%= pf.label :current_location %>
+        </div>
+        <div class="col-md-6">
+          <%= pf.text_field :current_location %>
+        </div>
+      </div>
 
  			<!-- Left Bottom Content -->
 			<div class="header2 row">
@@ -96,20 +91,20 @@
  			<!-- First Bottom Row -->
  			<div class="content row">
  			  <div class="col-md-4 col-md-offset-2">
- 			  	<strong>Email:</strong>
+          <%= pf.label :email %>
  			  </div>
  			  <div class="col-md-6">
- 			    <textarea class="form-control">Harry_potter@hogwarts.edu</textarea>
+ 			    <%= pf.text_field :email %>
  			  </div>
  			</div>
 
  			<!-- Second Bottom Row -->
  			<div class="content row">
  			  <div class="col-md-4 col-md-offset-2">
- 			  	<strong>Telephone:</strong>
+ 			  	<%= pf.label :telephone %>
  			  </div>
  			  <div class="col-md-6">
- 			    <textarea class="form-control">555 - 123 - 4567</textarea>
+ 			    <%= pf.text_field :telephone %>
  			  </div>
  			</div>
 
@@ -118,16 +113,16 @@
  		  <!-- Right Side Content -->
  		  <div class="col-md-5 col-md-offset-1">
  		   <div class="header row">
- 		     <h1>Words to Live By</h1>
+ 		     <%= pf.label :motto, "Words to live by" %>
  		   </div>
  		   <div class="conent row">
- 		   	 <textarea class="form-control edit-profile" rows="6">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, Duis aute irure dolor in reprehenderit in voluptate velit esse.</textarea>
+         <%= pf.text_area :motto, rows: "6" %>
  		   </div>
  		   <div class="header row">
- 		     <h1>About Me</h1>
+ 		     <%= pf.label :about %>
  		   </div>
  		   <div class="conent row">
- 		     <textarea class="form-control edit-profile" rows="6">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmodtemp orincididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</textarea>
+ 		     <%= pf.text_area :about, rows: "8" %>
  		   </div>
  		  </div><!-- End Right Side for left content-->
  		</div><!-- End Content Row -->
@@ -136,11 +131,13 @@
  		<div class="save-button row">
  		  <div class="col-sm-6 col-sm-offset-3">
  		  <!-- Big Save button CTA -->
- 		  	<button type="button" class="btn btn-primary btn-lg btn-block">Save Changes</button>
+        <%= pf.submit "Save Changes", class: "btn btn-primary btn-lg btn-block" %>
  		  </div>
  		</div>
-	  </div>
-	</main>
+    <% end %>
+  <% end %>
+  </div>
+</main>
 
 
     

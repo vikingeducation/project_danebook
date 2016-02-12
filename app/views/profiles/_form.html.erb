@@ -1,13 +1,86 @@
-<div class="form-group">
-<%= form_for @profile.user do |f| %>
+<%= render partial: "profiles/middle_nav" %>
 
+<!-- About bar -->
+<div class="navbar about-bar">
+  <section>
+      <h3 class="navbar-header about-text">About</h3>
+  </section>
+</div>
+
+
+<!-- profile form -->
+<div class="row box-border">
+<div class="form-group">
+<%= form_for [profile.user, profile] do |f| %>
+
+  <!-- Left-hand chunk of text-->
+  <section class="col-sm-5">
+    <!-- Basic Information table -->
+    <table class="table col-sm-offset-1">
+    <thead>
+    <tr>
+      <th class="col-sm-6">Basic Information</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>Birthday:</td>
+      <td><%= @profile.user.birthday.strftime("%B %d, %Y") if @profile.user.birthday%></td>
+    </tr>
+    <tr>
+      <td>College:</td>
+      <td>Hogwarts College</td>
+    </tr>
+              <tr>
+      <td>Hometown</td>
+      <td><%= f.text_field :hometown %></td>
+    </tr>
+              <tr>
+      <td>Currently Lives:</td>
+      <td><%= f.text_field :current_city %></td>
+    </tr>
+    </tbody>
+    </table>
+
+    <!-- Contact Information table -->
+    <table class="table col-sm-offset-1">
+    <thead>
+    <tr>
+      <th class="col-sm-6">Contact Information</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>Email:</td>
+      <td><%= @profile.user.email %></td>
+    </tr>
+    <tr>
+      <td>Telephone:</td>
+      <td>555-123-4567</td>
+    </tr>
+    </tbody>
+    </table>
+
+  </section>
+
+<!-- Right-hand side text -->
+  <section class="pull-right col-sm-6">
+  <h3>Words to Live by</h3>
+  <p><%= f.text_area :words_to_live_by, size: "40x5" %></p>
+
+  <h3>About Me</h3>
+  <p><%= f.text_area :about_me, size: "40x5" %></p>
+  </section>
 
   <div class="form-group">
-    <%= f.label :first_name %>
-    <%= field_with_errors(@profile.user, :first_name) %>
-    <%= f.text_area :first_name, class: "form-control"  %>
+    <%= f.submit "Save Changes", class: "btn btn-primary btn-md btn-block col-sm-6" %>
   </div>
 
+    <% end %> <!-- end of profile form -->
+</div>
+</div>
 
 
-<% end %>
+

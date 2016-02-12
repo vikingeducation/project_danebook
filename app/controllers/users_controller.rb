@@ -23,7 +23,7 @@ class UsersController < ApplicationController
     if @user.save
       flash[:success] = "User has been created"
       sign_in(@user)
-      redirect_to user_profile_path(@user)
+      redirect_to edit_user_profile_path(@user)
     else
       flash[:error] = "User was not created"
       render :new

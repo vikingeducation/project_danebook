@@ -1,39 +1,16 @@
 <main class="container">
-  <div class="row">
-    <!-- Main photo -->
-    <section>
-      <div class="jumbotron"></div>
-    </section>
-  </div>
 
-    <!-- Profile photo -->
-  <div class="row">
-    <section class="col-sm-4 img-responsive profile-pic">
-      <%= image_tag 'harry_potter_small.jpg' %>
-    </section>
-  </div>
-
-  <!-- Middle navigation links -->
-  <div class="row">
-    <section>
-      <ul class="nav nav-pills middle-nav">
-        <li role="presentation" class="img-bucket"></li>
-        <li><%= link_to "Timeline", {}, {class: "clickable"} %></li>
-        <li><%= link_to "About", {}, {class: "clickable"} %></li>
-        <li><%= link_to "Photos", {}, {class: "clickable"} %></li>
-        <li><%= link_to "Friends", {}, {class: "clickable"} %></li>
-        <li><%= link_to "Edit Profile", edit_user_profile_path(@profile.user), {class: "navbar-right"} %></li>
-      </ul>
-
-    </section>
-  </div>
-
+    <%= render partial: "profiles/middle_nav" %>
 
   <!-- About bar -->
   <div class="navbar about-bar">
     <section>
         <h3 class="navbar-header about-text">About</h3>
+
+        <% if @profile.user == current_user %>
         <%= button_to "Edit Profile", edit_user_profile_path(@profile.user), method: :get, class: "btn btn-primary navbar-right navbar-btn about-btn" %>
+        <% end %>
+
     </section>
   </div>
 
@@ -103,8 +80,5 @@
     </section>
   </div>
 
-  <div class="row bottom-spacer">
-  <br>
-  </div>
 
 </main>

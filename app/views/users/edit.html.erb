@@ -1,48 +1,27 @@
 <!-- Your markup here! -->
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>About_edit</title>
-
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/main.css" rel="stylesheet">
-  </head>
-
-  <body>
     
   <%= render partial: 'header' %>
-	<!-- Profile Pic -->
-
-	<main>
-	
-	<!-- Navbar for Main Content -->
-	  <div class="container main">
-		<div class="nav row">
-		  <div class="center col-md-12"><h1><strong>Edit Profile</strong></h1></div>
-	  	</div>
-
-	  	<div class="content row">
-
-	  	<!-- Content Left -->
-	  	  <div class="col-md-5">
-
-	  	  <!-- First row Header -->
-	  	    <div class="header row">
- 			  <div class="col-md-10 col-md-offset-2">
- 			    <h1>Basic Information</h1>
- 			  </div>
- 			</div>
-
+  <!-- Profile Pic -->
+  <main>
+  
+  <!-- Navbar for Main Content -->
+    <div class="container main">
+    <div class="nav row">
+      <div class="center col-md-12"><h1><strong>Edit Profile</strong></h1></div>
+      </div>
+      <div class="content row">
+      <!-- Content Left -->
+        <div class="col-md-5">
+        <!-- First row Header -->
+          <div class="header row">
+        <div class="col-md-10 col-md-offset-2">
+          <h1>Basic Information</h1>
+        </div>
+      </div>
       <%= form_for @user do |user_field| %>
-        <%= user_field.fields_for :profiles do |pf| %>
-
- 			<!-- Second Row Content -->
- 			<div class="content row">
+        <%= user_field.fields_for :profile do |pf| %>
+      <!-- Second Row Content -->
+      <div class="content row">
         <div class="col-md-4 col-md-offset-2">
           <%= pf.label :birthday %>
         </div>
@@ -50,29 +29,27 @@
           <%= pf.date_field(:birthday, class: "form-control") %>
         </div>
       </div>
-
- 			<!-- Third Row Content -->
- 			<div class="content row">
- 			  <div class="col-md-4 col-md-offset-2">
+      <!-- Third Row Content -->
+      <div class="content row">
+        <div class="col-md-4 col-md-offset-2">
           <%= pf.label :school %>
- 			  </div>
- 			  <div class="col-md-6">
+        </div>
+        <div class="col-md-6">
           <%= pf.text_field :school, class: "form-control" %>
         </div>
- 			</div>
+      </div>
       
- 			<!-- Fourth Row Content -->
- 			<div class="content row">
- 			  <div class="col-md-4 col-md-offset-2">
+      <!-- Fourth Row Content -->
+      <div class="content row">
+        <div class="col-md-4 col-md-offset-2">
           <%= pf.label :hometown %>
- 			  </div>
- 			  <div class="col-md-6">
+        </div>
+        <div class="col-md-6">
           <%= pf.text_field :hometown, class: "form-control" %>
         </div>
- 			</div>
-
- 			<!-- Fifth Row Content -->
- 			<div class="content row">
+      </div>
+      <!-- Fifth Row Content -->
+      <div class="content row">
         <div class="col-md-4 col-md-offset-2">
           <%= pf.label :current_location %>
         </div>
@@ -80,73 +57,55 @@
           <%= pf.text_field :current_location, class: "form-control" %>
         </div>
       </div>
-
- 			<!-- Left Bottom Content -->
-			<div class="header2 row">
- 			  <div class="col-md-10 col-md-offset-2">
- 			    <h1>Contact Information</h1>
- 			  </div>
- 			</div>
-
- 			<!-- First Bottom Row -->
- 			<div class="content row">
- 			  <div class="col-md-4 col-md-offset-2">
-          <%= pf.label :email %>
- 			  </div>
- 			  <div class="col-md-6">
- 			    <%= pf.text_field :email, class: "form-control" %>
- 			  </div>
- 			</div>
-
- 			<!-- Second Bottom Row -->
- 			<div class="content row">
- 			  <div class="col-md-4 col-md-offset-2">
- 			  	<%= pf.label :telephone %>
- 			  </div>
- 			  <div class="col-md-6">
- 			    <%= pf.text_field :telephone, class: "form-control" %>
- 			  </div>
- 			</div>
-
- 		  </div><!-- End Left Content Container -->
-
- 		  <!-- Right Side Content -->
- 		  <div class="col-md-5 col-md-offset-1">
- 		   <div class="header row">
- 		     <%= pf.label :motto, "Words to live by" %>
- 		   </div>
- 		   <div class="conent row">
+      <!-- Left Bottom Content -->
+      <div class="header2 row">
+        <div class="col-md-10 col-md-offset-2">
+          <h1>Contact Information</h1>
+        </div>
+      </div>
+      <!-- First Bottom Row -->
+      <div class="content row">
+        <div class="col-md-4 col-md-offset-2">
+          <%= user_field.label :email %>
+        </div>
+        <div class="col-md-6">
+          <%= user_field.text_field :email, class: "form-control" %>
+        </div>
+      </div>
+      <!-- Second Bottom Row -->
+      <div class="content row">
+        <div class="col-md-4 col-md-offset-2">
+          <%= pf.label :telephone %>
+        </div>
+        <div class="col-md-6">
+          <%= pf.text_field :telephone, class: "form-control" %>
+        </div>
+      </div>
+      </div><!-- End Left Content Container -->
+      <!-- Right Side Content -->
+      <div class="col-md-5 col-md-offset-1">
+       <div class="header row">
+         <%= pf.label :motto, "Words to live by" %>
+       </div>
+       <div class="conent row">
          <%= pf.text_area :motto, rows: "6" %>
- 		   </div>
- 		   <div class="header row">
- 		     <%= pf.label :about %>
- 		   </div>
- 		   <div class="conent row">
- 		     <%= pf.text_area :about, rows: "8" %>
- 		   </div>
- 		  </div><!-- End Right Side for left content-->
- 		</div><!-- End Content Row -->
-
- 		<!-- Save Button Row -->
- 		<div class="save-button row">
- 		  <div class="col-sm-6 col-sm-offset-3">
- 		  <!-- Big Save button CTA -->
-        <%= pf.submit "Save Changes", class: "btn btn-primary btn-lg btn-block" %>
- 		  </div>
- 		</div>
+       </div>
+       <div class="header row">
+         <%= pf.label :about %>
+       </div>
+       <div class="conent row">
+         <%= pf.text_area :about, rows: "8" %>
+       </div>
+      </div><!-- End Right Side for left content-->
+    </div><!-- End Content Row -->
     <% end %>
+    <!-- Save Button Row -->
+    <div class="save-button row">
+      <div class="col-sm-6 col-sm-offset-3">
+      <!-- Big Save button CTA -->
+        <%= user_field.submit "Save Changes", class: "btn btn-primary btn-lg btn-block" %>
+      </div>
+    </div>
   <% end %>
   </div>
 </main>
-
-
-    
-
-
-
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>
-  </body>
-</html>

@@ -12,7 +12,7 @@ Rails.application.routes.draw do
     resource :profile, only: [:edit, :update, :show]
 
     resources :posts, only: [:index, :create, :destroy] do
-      resources :likes, defaults: { :likeable => 'Post'}
+      resources :likes, only: [:create, :destroy], defaults: { :likeable => 'Post'}
     end
 
     get 'timeline' => 'posts#index'

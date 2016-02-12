@@ -4,7 +4,7 @@ class User < ActiveRecord::Base
 
   has_one :profile, inverse_of: :user, dependent: :destroy
 
-  accepts_nested_attributes_for :profile, reject_if: :all_blank
+  accepts_nested_attributes_for :profile
 
   validates :password, length: { in: 8..24 }, allow_nil: true
   validates :first_name, :last_name, :email, presence: true, length: { maximum: 36 }

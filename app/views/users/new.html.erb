@@ -10,7 +10,7 @@
       </ul>
     </div>
     <div class="col-md-5">
-      <h1>Sign Up</h1>
+      <h1>Sign Up!</h1>
       <br>
       <%= form_for @user do |f| %>
         <div class="row">
@@ -33,11 +33,12 @@
           <div class="form-inline">
             <div class="form-group">
               <%= up.date_select(
-                :birthday,
-                { order: [:month, :day, :year],
-                start_year: Date.today.year,
-                end_year: Date.today.year - 150,
-                prompt: {month: "Month", day: "Day", year: "Year"}},
+                :birthday, {
+                  order: [:month, :day, :year],
+                  start_year: Date.today.year,
+                  end_year: Date.today.year - 150,
+                  prompt: { month: "Month", day: "Day", year: "Year" }
+                },
                 { class: "form-control" })
               %>
             </div>

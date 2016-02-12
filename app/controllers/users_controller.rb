@@ -14,21 +14,17 @@ class UsersController < ApplicationController
     if @user.save
       sign_in(@user)
       flash[:success] = "Created a new User!"
-      redirect_to @user
+      redirect_to profile_path(@user)
     else
       flash.now[:danger] = "Failed to create User!"
       render :new
     end
   end
 
-  def show
-
-  end
-
   def update
     if current_user.update(user_params)
       flash[:success] = "Successfully updated profile!"
-      redirect_to current_user
+      redirect_to profile_path(current_user)
     else
       flash.now[:danger] = "Failed to update your profile!"
       render :edit
@@ -43,8 +39,15 @@ class UsersController < ApplicationController
       :last_name,
       :email,
       :password,
-      :password_confirmation,
-      :birthday,
-      :gender)
+      profile: [
+        :gender,
+        :birthday,
+        :college,
+        :from,
+        :lives,
+        :number,
+        :words,
+        :about
+      ])
   end
 end

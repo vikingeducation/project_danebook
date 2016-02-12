@@ -5,63 +5,6 @@
 
 .profile-controller {
 
-
-  /* main photo css */
-  .container .jumbotron {
-    height: 400px;
-    z-index: -1;
-    background-image: url("hogwarts_small.jpg");
-    background-size: cover;
-    border-radius: 0px;
-  }
-
-
-  /* profile pic css */
-  .profile-pic {
-    width: 250px;
-    height: 250px;
-    margin-top: -255px;
-    overflow: hidden;
-    img {
-      width: 100%;
-    }
-  }
-
-
-  /* middle navigation css */
-  .middle-nav {
-    margin-top: -30px;
-    z-index: -1;
-    border: 1px solid black;
-  }
-
-  .img-bucket {
-    width: 250px;
-    height: 42px;
-  }
-
-  .clickable {
-    border-left: 1px solid black;
-    border-radius: 0px;
-
-    a {
-      color: #333;
-    }
-  }
-
-
-  .border-right {
-      border-right: 1px solid black;
-    }
-
-
-  .navbar-right > a {
-    text-decoration: underline;
-  }
-
-
-
-
   /* about bar css */
   .about-bar {
     background-color: #ccc;
@@ -79,7 +22,6 @@
     margin-right: 8px;
     margin-top: 15px;
   }
-
 
 
   /* tables */

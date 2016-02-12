@@ -22,6 +22,12 @@
   </div>
 
 
+<main class="container">
+
+  <div class="middle-navbar">
+    <%= render partial: "shared/middle_nav", locals: { profile: @profile } %>
+  </div>
+
   <div class="profile-controller">
     <%= yield %>
   </div>
@@ -30,6 +36,8 @@
   <div class="row bottom-spacer">
   <br>
   </div>
+
+</main>
 
 </body>
 </html>

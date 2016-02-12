@@ -21,6 +21,10 @@
     <%= render partial: "shared/general_navbar", locals: { profile: current_user.profile } %>
   </div>
 
+  <div class="middle-navbar">
+    <%= render partial: "shared/middle_nav", locals: { profile: current_user.profile } %>
+  </div>
+
   <div class="timeline-controller">
     <%= yield %>
   </div>

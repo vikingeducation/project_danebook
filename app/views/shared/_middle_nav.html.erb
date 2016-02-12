@@ -18,12 +18,12 @@
     <ul class="nav nav-pills middle-nav">
       <li role="presentation" class="img-bucket"></li>
       <li><%= link_to "Timeline", user_timeline_path, {class: "clickable"} %></li>
-      <li><%= link_to "About", user_profile_path(@profile.user), {class: "clickable"} %></li>
+      <li><%= link_to "About", user_profile_path(profile.user), {class: "clickable"} %></li>
       <li><%= link_to "Photos", {}, {class: "clickable"} %></li>
       <li><%= link_to "Friends", {}, {class: "clickable"} %></li>
 
-      <% if @profile.user == current_user %>
-      <li><%= link_to "Edit Profile", edit_user_profile_path(@profile.user), {class: "navbar-right"} %></li>
+      <% if profile.user == current_user %>
+      <li><%= link_to "Edit Profile", edit_user_profile_path(profile.user), {class: "navbar-right"} %></li>
       <% end %>
     </ul>
 

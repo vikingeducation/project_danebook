@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
 
   validates :password, length: { in: 8..24 }, allow_nil: true
   validates :first_name, :last_name, :email, presence: true, length: { maximum: 36 }
+  validates :email, format { with: /@{1}/ }
 
   def name
     "#{self.first_name} #{self.last_name}"

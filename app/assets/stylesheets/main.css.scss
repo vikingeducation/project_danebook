@@ -1,9 +1,12 @@
-@import 'bootstrap-sass';
-@import 'bootstrap-sprockets';
+@import "bootstrap-sprockets";
+@import "bootstrap";
 
 .navbar-default {
   background-color: #3B5998;
   color: white; }
+
+
+
   .navbar-default .navbar-header h1 {
     font-size: 50px; }
 
@@ -42,7 +45,7 @@
 
 .container-fluid {
   border: 1px solid; }
-  .container-fluid #cover-photo {
+  .container #cover-photo {
     max-height: 400px; }
 
 .img-wrapper {

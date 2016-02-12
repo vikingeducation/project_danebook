@@ -1,0 +1,151 @@
+ <body>
+  <!-- Navbar -->
+    <nav class="navbar navbar-default">
+      <div class="container">
+
+      <!-- Navbar Header -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <h1>Danebook</h1></a>
+        </div>
+
+      <!-- Navbar Login form -->
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+          <%= form_tag login_path, class: "navbar-form navbar-right" do %>
+            <div class="row form-group">
+              <div class="col-xs-6">
+                <%= label_tag(:email, "Email") %><br>
+                <%= text_field_tag :email, "", class: "form-control", placeholder: "Email" %>
+              </div>
+
+              <div class="col-xs-6">
+                <%= label_tag(:password, "Password") %><br>
+                <%= text_field_tag :password, "", class: "form-control", placeholder: "Password" %>
+              </div>
+            </div>
+            <%= submit_tag "Log In", class: "btn btn-default login" %>
+            <div class="row">
+              <div class="col-xs-6">
+                <%= check_box_tag :remember_me %>
+                <%= label_tag :remember_me, "Remember me?" %>
+              </div>
+            </div>
+            
+          <% end %>
+        </div>
+      </div>
+    </nav>
+
+    
+
+    <main>
+      <div class="container">
+        <div class="row">
+          <!-- Main content on the left -->
+          <div class="col-sm-6 left">
+            <strong><h1>Connect with all your friends!</h1></strong>
+            <ul>
+              <li><h3>See photos and updates<small> in your news feed.</small></h3></li>
+              <li><h3>Post your status for the world to see<small> from your profile</h3></small></li>
+              <li><h3>Get in touch with your friends<small> by "friending" them</small></h3></li>
+              <li><h3>Like things<small> because you're a positive person!</small></h3></li>
+            </ul>
+          </div>
+
+        <!-- Main content on the right -->
+        <div class="col-sm-5 col-sm-offset-1">
+        <!-- Sign Up heading -->
+          <div class="row header">
+           <strong><h1>Sign Up</h1></strong>
+          </div>
+        <%= form_for @user do |user_field| %>
+          <!-- Name input form -->
+          <div class="row form-group">
+            <div class="col-xs-6">
+              <%= user_field.text_field :first_name, class: "form-control", placeholder: "First Name" %>
+            </div>
+            <div class="col-xs-6">
+              <%= user_field.text_field :last_name, class: "form-control", placeholder: "Last Name" %>
+            </div>
+          </div>
+
+          <!-- Email input form -->
+          <div class="row form-group">
+            <div class="col-xs-12">
+              <%= user_field.text_field :email, class: "form-control", placeholder: "Your Email" %>
+            </div>
+          </div>
+
+          <!-- New Password Input -->
+          <div class="row form-group">
+            <div class="col-xs-12">
+              <%= user_field.text_field :password, class: "form-control", placeholder: "Your New Password" %>
+            </div>
+          </div>
+
+          <!-- Confirm Password -->
+          <div class="row form-group">
+            <div class="col-xs-12">
+              <%= user_field.text_field :password_confirmation, class: "form-control", placeholder: "Your New Password" %>
+            </div>
+          </div>
+
+          <h3>Birthday</h3>
+
+          <%= user_field.fields_for :profile do |pf| %>
+            <div class="form-inline">
+              <div class="form-group">
+                <%= pf.date_select(
+                                  :birthday,
+                                  { 
+                                    order: [
+                                    :month,
+                                    :day,
+                                    :year],
+                                    start_year: Date.today.year - 18,
+                                    end_year: Date.today.year - 100,
+                                    prompt: {
+                                      month: "Month",
+                                      day: "Day",
+                                      year: "Year"
+                                    }
+                                  },
+                                  { class: "form-control" })
+                                  %>
+              </div>
+            </div>
+      
+          <!-- Radio Icons -->
+          <div class="row radio-group">
+            <div class="col-xs-12">
+              <%= pf.radio_button :gender, value="female" %>
+              <%= pf.label :gender, "female" %>
+              <%= pf.radio_button :gender, value="male" %>
+              <%= pf.label :gender, "male" %>
+            </div>
+          </div>
+          <% end %>
+
+          <!-- CTA Sign Up -->
+          <div class="row">
+            <div class="col-xs-12">
+             <%= user_field.submit "Sign Up!", class: "btn btn-success btn-lg btn-block" %>
+            </div>
+          </div>
+        <% end %>
+        </div>
+      </div>
+    </main>
+
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+  </body>

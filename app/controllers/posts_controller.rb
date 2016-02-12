@@ -6,7 +6,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.find_by_user_id(params[:user_id])
-    @new_post = Post.new
+    @new_post = current_user.posts.build if signed_in_user?
   end
 
 
@@ -18,7 +18,7 @@ class PostsController < ApplicationController
     else
       flash[:error] = "Unable to save post"
     end
-    redirect_to user_timeline_path(current_user)
+    redirect_to user_timeline_path
   end
 
 
@@ -29,7 +29,7 @@ class PostsController < ApplicationController
     else
       flash[:error] = "Unable to delete post"
     end
-    redirect_to user_timeline_path(current_user)
+    redirect_to user_timeline_path
   end
 
 

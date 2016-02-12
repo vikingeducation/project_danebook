@@ -12,6 +12,17 @@
   </section>
 </div>
 
+  <!-- Name -->
+<div class="row">
+  <section>
+    <div class="float-name"><%= "#{profile.user.first_name} #{profile.user.last_name}" %></div>
+    <% unless profile.user == current_user %>
+      <%= button_to "Add Friend" %>
+    <% end %>
+  </section>
+</div>
+
+
 <!-- Middle navigation links -->
 <div class="row">
   <section>

@@ -56,6 +56,11 @@ admin_profile.save
 
 puts "Creating posts..."
 
-10.times do
+def create_post
   Post.create(user_id: User.pluck(:id).sample, body: Faker::Hipster.sentence)
+end
+
+
+User.all.each do
+  3.times { create_post }
 end

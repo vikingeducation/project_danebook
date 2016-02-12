@@ -1,0 +1,20 @@
+<%= form_for [:user, post] do |f| %>
+
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title text-center">Post</h3>
+  </div>
+  <div class="panel-body">
+    <div class="form-group">
+      <%= field_with_errors(post, :body) %>
+      <%= f.text_field :body, class: "form-control", placeholder: "Tell the world something..." %>
+    </div>  
+  </div>
+  <div class="panel-footer">
+    <%= f.submit "Post", class: "btn btn-primary" %>
+
+  </div>
+</div>
+
+
+<% end %>

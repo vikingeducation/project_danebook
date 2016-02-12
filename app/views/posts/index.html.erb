@@ -2,13 +2,27 @@
 <div class="row">
 
   <div class="col-sm-4">
+    <% if @posts %>
     <%= render partial: "left_side", locals: { user: @posts.user } %>
+    <% end %>
   </div>
 
   <div class="col-sm-7 col-sm-offset-1">
-
-    <%= render @posts %>
+    <% if @posts && current_user == @posts.user %>
+      <%= render partial: "new", locals: { post: @new_post } %>
+      <%= @posts.each { render partial: "post" } %>
+    <% end %>
   </div>
 
 
 </div>
+
+
+
+<!-- Processing by PostsController#create as HTML
+  Parameters: 
+  {"utf8"=>"✓", 
+  "authenticity_token"=>"js/eLWEzIWCaWKqwGmnsEvpIyAtNorG2FaCcr1nu2hrOc6ODspugwDrfxklijgipKYY0oeCoL0eNOSsUw8lbnw==",
+  "post"=>{"body"=>""}, 
+  "commit"=>"Post", 
+  "user_id"=>"135"} -->

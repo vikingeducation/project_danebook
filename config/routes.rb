@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   root "users#new"
   resources :users
-  get "about" => "users#about"
+  get "timeline" => "users#timeline"
   get "friends" => "users#friends"
   get "photos" => "users#photos"
 

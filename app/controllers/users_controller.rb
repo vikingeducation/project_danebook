@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   # before_action :require_logout, only: [:new]
-  before_action :require_login, except: [:new, :create]
+  before_action :require_login, except: [:new, :create, :show]
   before_action :require_current_user, only: [:edit, :update, :destroy]
 
 
@@ -40,15 +40,13 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
   end
 
   def edit
     @user = User.find(params[:id])
   end
 
-  def about
-
+  def timeline
   end
 
   def photos

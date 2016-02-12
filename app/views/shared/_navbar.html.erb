@@ -6,30 +6,39 @@
         <!-- Brand Name -->
         <div class="navbar-header">
           <%= link_to "Danebook", current_user ? timeline_path : signup_path, class: "navbar-brand" %>
+          <!-- Navbar responsive collapse button -->
+          <!-- the data-target value targets the ID found in the collapsable portion -->
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#top-navbar">
+            <% 3.times do %>
+            <%= content_tag(:span, "",class: "icon-bar") %>
+            <% end %>
+          </button>
         </div>
       </div>
       <!-- Login Form/User Nav Menu -->
-      <div class="col-md-10">
-        <% if signed_in_user? %>
-          <div class="navbar-form navbar-right">
-            <div class="btn-group btn-sm">
-              <%= link_to current_user.first_name, profile_path(current_user) , class: "btn btn-default" %>
-              <%= link_to "Logout", session_path, method: :delete, class: "btn btn-default" %>
+      <div id="top-navbar" class="collapse navbar-collapse">
+        <div class="col-md-10">
+          <% if signed_in_user? %>
+            <div class="navbar-form navbar-right">
+              <div class="btn-group btn-sm">
+                <%= link_to current_user.first_name, profile_path(current_user) , class: "btn btn-default" %>
+                <%= link_to "Logout", session_path, method: :delete, class: "btn btn-default" %>
+              </div>
             </div>
-          </div>
-        <% else %>
-          <%= form_tag session_path, class: "navbar-form navbar-right" do %>
-            <div class="form-group">
-              <%= text_field_tag :email, nil, placeholder: "Email", class: "form-control input-sm" %>
-              <%= password_field_tag :password, nil, placeholder: "Password", class: "form-control input-sm" %>
-              <label class="radio-inline">
-                Remember me?
-                <%= check_box_tag :remember_me, class: "form-control"%>
-              </label>
-            </div>
-            <%= submit_tag "Login", class: "btn btn-default btn-sm" %>
+          <% else %>
+            <%= form_tag session_path, class: "navbar-form navbar-right" do %>
+              <div class="form-group">
+                <%= text_field_tag :email, nil, placeholder: "Email", class: "form-control input-sm" %>
+                <%= password_field_tag :password, nil, placeholder: "Password", class: "form-control input-sm" %>
+                <label class="radio-inline">
+                  Remember me?
+                  <%= check_box_tag :remember_me, class: "form-control"%>
+                </label>
+              </div>
+              <%= submit_tag "Login", class: "btn btn-default btn-sm" %>
+            <% end %>
           <% end %>
-        <% end %>
+        </div>
       </div>
     </div>
   </div>

@@ -9,6 +9,7 @@
 <body>
   <%= render partial: 'shared/navbar' %>
   <%= render partial: 'shared/flash' %>
+  <%= render partial: 'shared/menu' if signed_in_user? %>
   <%= yield %>
   <%= render partial: 'shared/footer' %>
 </body>

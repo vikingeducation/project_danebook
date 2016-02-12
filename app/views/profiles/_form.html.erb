@@ -1,0 +1,13 @@
+<div class="form-group">
+<%= form_for @profile.user do |f| %>
+
+
+  <div class="form-group">
+    <%= f.label :first_name %>
+    <%= field_with_errors(@profile.user, :first_name) %>
+    <%= f.text_area :first_name, class: "form-control"  %>
+  </div>
+
+
+
+<% end %>

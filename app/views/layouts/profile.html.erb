@@ -19,7 +19,7 @@
 
   <div class="profile-controller">
 
-    <%= render partial: "shared/navbar" %>
+    <%= render partial: "shared/profile_navbar", locals: { profile: @profile } %>
 
     <%= yield %>
 

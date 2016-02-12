@@ -18,10 +18,10 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-       # another simple helper
-       sign_out
-       flash[:success] = "You've successfully signed out"
-       redirect_to root_url
+   # another simple helper
+   sign_out
+   flash[:success] = "You've successfully signed out"
+   redirect_to root_url
   end
 
 end

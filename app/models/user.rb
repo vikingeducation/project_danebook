@@ -23,4 +23,17 @@ class User < ActiveRecord::Base
     generate_token
     save!
   end
+
+  def self.full_name
+    first_name + " " + last_name
+  end
+
+  def self.domicile
+    str = city + " " + state + " " + country
+  end
+
+  def self.hometown
+    str = hometown_city + " " + hometown_state + " " + hometown_country
+  end
+  
 end

@@ -27,16 +27,15 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
-    respond_to do |format|
-      if @user.save
-        sign_in(@user)
-        format.html { redirect_to @user, notice: 'You have been signed up!' }
-        format.json { render :show, status: :created, location: @user }
-      else
-        format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+    if @user.save
+      flash[:success] = "Your sign up was successfull!"
+      sign_in(@user)
+      redirect_to edit_user_path(@user)
+    else
+      flash[:alert] = "Your sign up was NOT successfull!"
+      format.html { render :new }
     end
+
   end
 
   # PATCH/PUT /users/1
@@ -76,7 +75,15 @@ class UsersController < ApplicationController
         :first_name, 
         :last_name, 
         :email, 
-        :password, 
+        :hometown,
+        :domicile,
+        :birth_day,
+        :birth_year,
+        :birth_month,
+        :about_me,
+        :my_words,
+        :password,
+        :college, 
         :password_confirmation)
     end
 end

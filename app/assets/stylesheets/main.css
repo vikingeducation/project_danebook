@@ -26,15 +26,11 @@ td {
 }
 
 #left {
-    width:60%;
-    height:510px;
     float:left;
     background-color:#ecf2f9;
 }
 
 #right {
-    width:40%;
-    height:510px;
     float:left;
     background-color:#ecf2f9;
 }

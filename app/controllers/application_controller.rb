@@ -66,4 +66,8 @@ class ApplicationController < ActionController::Base
     end
   end 
 
+  def current_user_view?
+    params[:id] == current_user.id.to_s
+  end  
+  helper_method :current_user_view?
 end

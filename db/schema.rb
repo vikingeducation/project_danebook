@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160211204417) do
+ActiveRecord::Schema.define(version: 20160211224010) do
 
   create_table "users", force: :cascade do |t|
     t.string   "username"
@@ -22,6 +22,16 @@ ActiveRecord::Schema.define(version: 20160211204417) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "auth_token"
+    t.string   "gender"
+    t.integer  "birth_day"
+    t.integer  "birth_month"
+    t.integer  "birth_year"
+    t.string   "college"
+    t.string   "domicile"
+    t.string   "hometown"
+    t.string   "phone"
+    t.string   "my_words"
+    t.text     "about_me"
   end
 
   add_index "users", ["auth_token"], name: "index_users_on_auth_token", unique: true

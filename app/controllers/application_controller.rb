@@ -11,9 +11,9 @@ class ApplicationController < ActionController::Base
     @current_user = user
   end
 
-  def permament_sign_in(user)
+  def permanent_sign_in(user)
     user.regenerate_auth_token
-    cookies.permament[:auth_token] = user.auth_token
+    cookies.permanent[:auth_token] = user.auth_token
     @current_user = user
   end
 
@@ -32,5 +32,17 @@ class ApplicationController < ActionController::Base
   end
   helper_method :signed_in_user?
 
-  
+  def require_login
+    unless signed_in_user?
+      flash[:danger] = "Not authorized! SIGN IN DIPSHIT!"
+      redirect_to root_path
+    end
+  end
+
+  def require_current_user
+    unless params[:id] == current_user.id.to_s
+      flash[:error] = "You're not authorized to do this!"
+      redirect_to root_path
+    end
+  end
 end

@@ -1,7 +1,13 @@
 class User < ActiveRecord::Base
+
   has_secure_password
 
+  accepts_nested_attributes 
+
   validates :password, length: { in: 8..24 }, allow_nil: true
+  validates :first_name, :last_name, :email, presence: true, length: { maximum: 36 }
+
+
 
   def generate_token
     begin

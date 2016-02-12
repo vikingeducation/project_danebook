@@ -1,11 +1,13 @@
 class SessionsController < ApplicationController
+  skip_before_action :require_login, only: [:new, :create]
+
   def create
     @user = User.find_by_email(params[:email])
 
     if @user && @user.authenticate(params[:password])
-      params[:remember_me] ? permament_sign_in(@user) : sign_in(@user)
+      params[:remember_me] ? permanent_sign_in(@user) : sign_in(@user)
       flash[:success] = "You've successfully signed in"
-      redirect_to root_path
+      redirect_to @user
     else
       flash[:danger] = "Wrong username/password combination"
       redirect_to :back

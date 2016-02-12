@@ -2,9 +2,64 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+// Index Page
 #marketing {
   ul li {
     line-height: 50px;
     font-size: 20px;
   }
 }
+
+// Menu stylings
+.cover-photo {
+  margin: -21px 0 0 0;
+  width: 100%;
+  height: 400px;
+  max-height: 400px; }
+
+.profile-photo {
+  margin: -175px 0 0 25px;
+  height: 200px;
+  width: 200px;
+  max-height: 200px;
+  max-width: 200px;
+  position: relative;
+  z-index: 10; }
+
+.profile-name {
+  color: #fff;
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: -50px; }
+
+.timeline-nav {
+  background-color: #fff;
+  border-radius: 0;
+  border: 1px solid #ddd;
+  margin-top: -25px; }
+
+.nav-pills > li + li {
+  margin-left: 0px;
+  border: none; }
+
+.tl-menu .tl-menu-link {
+  padding: 10px;
+  border-radius: 0px;
+  margin-top: 4px;
+  border: none; }
+
+.count-disp {
+  float: right;
+  margin-left: 5px;
+  color: #aaa; }
+
+.v-line {
+  float: left;
+  height: 40px;
+  margin-top: 4px;
+  border-left: 1px solid #ddd; }
+
+.tl-edit-profile {
+  float: right;
+  position: relative;
+  margin-top: -30px; }

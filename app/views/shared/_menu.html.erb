@@ -36,37 +36,35 @@
             <!--vertical divider-->
             <div class="v-line"></div>
             <li>
-              <a class="btn btn-default tl-menu-link active" role="button" href="timeline.html">
-                Timeline
-              </a>
+              <%= link_to "Timeline", timeline_path, class: "btn btn-default tl-menu-link active" %>
             </li>
             <!--vertical divider-->
             <div class="v-line"></div>
             <li>
-              <a class="btn btn-default tl-menu-link" role="button" href="about.html">
-                About
-              </a>
+              <%= link_to "About", profile_path(current_user.id), class: "btn btn-default tl-menu-link" %>
             </li>
             <!--vertical divider-->
             <div class="v-line"></div>
             <li>
-              <a class="btn btn-default tl-menu-link" role="button" href="photos.html">
+              <!-- <a class="btn btn-default tl-menu-link" role="button" href="photos.html">
                 Photos
                 <p class="count-disp">(9000)</p>
-              </a>
+              </a> -->
+              <%= link_to "Photos", "#", class: "btn btn-default tl-menu-link" %>
             </li>
             <!--vertical divider-->
             <div class="v-line"></div>
             <li>
-              <a class="btn btn-default tl-menu-link" role="button" href="friends.html">
+              <!-- <a class="btn btn-default tl-menu-link" role="button" href="friends.html">
                 Friends
                 <p class="count-disp">(9000)</p>
-              </a>
+              </a> -->
+              <%= link_to "Friends", "#", class: "btn btn-default tl-menu-link" %>
             </li>
             <!--vertical divider-->
             <div class="v-line"></div>
           </ul>
-          <a class="tl-edit-profile" href="about_edit.html">Edit Profile</a>
+          <%= link_to "Edit Profile", edit_profile_path(current_user.id), class: "tl-edit-profile" %>
         </div>
         <!-- End of Timeline Menu links -->
       </nav>

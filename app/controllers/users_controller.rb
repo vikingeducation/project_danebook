@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
   before_action :require_login, except: [:new, :create]
+  before_action :require_logout, only: [:new]
   before_action :require_current_user, only: [:edit, :update, :destroy]
 
   def new
@@ -20,7 +21,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    
+
   end
 
   def update

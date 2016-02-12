@@ -39,6 +39,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def require_logout
+    redirect_to users_path if signed_in_user?
+  end
+
   def require_current_user
     unless params[:id] == current_user.id.to_s
       flash[:error] = "You're not authorized to do this!"

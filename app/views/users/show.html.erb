@@ -4,41 +4,12 @@
   <%= render partial: 'timeline_panels' %>
   <!-- Timeline Section -->
   <div class="col-sm-8">
-    <div class="row">
 
-      <!-- Edit Post Header -->
-      <div class="col-sm-12">
-        <nav class="navbar navbar-default about-nav">
-          <p class="box-header">Post</p>
-        </nav>
-      </div>
-    </div>
-    <!-- End of Post Header -->
+  <%= render partial: 'post_form' if current_user && current_user.id == @profile.id %>
 
-    <!-- Timeline Contents -->
     <div class="row">
       <div class="col-sm-12">
-        <!-- Post Textarea input -->
-        <div clas="row">
-          <div class="col-xs-12 about-info">
-            <form class="form col-xs-12">
-              <div class="input-group textarea-size txtbox-bg">
-                <textarea class="form-control edit-textarea" rows="3" placeholder="Tell the world something..."></textarea>
-              </div>
-            </form>
-          </div>
-        </div>
-        <!-- End Textarea input -->
 
-        <!-- Post CTA -->
-        <div class="row">
-          <div class="col-xs-12">
-            <div class="post-cta-bg text-right">
-            <button type="submit" class="btn btn-primary post-cta">Post</button>
-            </div>
-          </div>
-        </div>
-        <!-- End of Post CTA -->
 
         <!--Spacing between posts -->
         <div clas="row">

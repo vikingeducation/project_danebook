@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   def index
     @user = params[:id] ? User.find(params[:id]) : current_user
     @profile = @user.profile
+    @post = Post.new
     render :show
   end
 

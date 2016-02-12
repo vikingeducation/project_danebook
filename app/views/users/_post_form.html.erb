@@ -1,0 +1,28 @@
+<div class="row">
+  <!-- Post Header -->
+  <div class="col-sm-12">
+    <nav class="navbar navbar-default about-nav">
+      <p class="box-header">Post</p>
+    </nav>
+  </div>
+</div>
+<!-- End of Post Header -->
+
+<!-- Textarea input -->
+<div clas="row">
+  <div class="col-xs-12 about-info">
+    <%= form_for @post do |f| %>
+      <div class="col-xs-12">
+        <div class="form-group textarea-size txtbox-bg" style="margin:0 0 10px 0">
+          <%= f.text_area :body, class: "form-control edit-textarea", rows: "4", placeholder: "Tell the world something..." %>
+      </div>
+      <!-- Post CTA -->
+      <div class="post-cta-bg text-right" style="padding:0 0 10px 0;">
+        <%= f.submit class: "btn btn-primary post-cta" %>
+      </div>
+      <!-- End of Post CTA -->
+    <% end %>
+  </div>
+  </div>
+</div>
+<!-- End Textarea input -->

@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
 
   has_secure_password
   has_one :profile, inverse_of: :user, dependent: :destroy
+  has_many :posts, dependent: :destroy
 
   accepts_nested_attributes_for :profile
 

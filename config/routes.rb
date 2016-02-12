@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :new, :create, :update, :destroy]
   resources :profiles, only:  [:show, :edit, :update]
   resource :session, only: [:create, :destroy]
+  resources :posts, only: [:create, :destroy]
   get '/' => 'users#new', as: :signup
   get '/' => 'users#index', as: :timeline
   # The priority is based upon order of creation: first created -> highest priority.

@@ -65,3 +65,23 @@
   float: right;
   position: relative;
   margin-top: -30px; }
+
+// Timeline Styling (Left Column of Panels)
+
+.panel-spacing {
+  margin: 10px;
+  padding: 10px;
+}
+
+.white-bg {
+  background-color: #fff;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  margin: -10px 0 10px 0;
+}
+
+.photo-link {
+  margin-top: 5px;
+  padding-bottom: 5px;
+  text-align: center;
+}

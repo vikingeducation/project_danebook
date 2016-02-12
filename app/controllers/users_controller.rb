@@ -5,7 +5,9 @@ class UsersController < ApplicationController
   before_action :require_current_user, only: [:edit, :update, :destroy]
 
   def index
-
+    @user = params[:id] ? User.find(params[:id]) : current_user
+    @profile = @user.profile
+    render :show
   end
 
   def new

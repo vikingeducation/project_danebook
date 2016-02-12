@@ -1,0 +1,126 @@
+<!--Left Panel section-->
+<div class="col-sm-4">
+  <!-- About Panel -->
+  <div class="row">
+    <div class="col-xs-12">
+      <nav class="navbar navbar-default about-nav">
+        <p class="box-header">About</p>
+      </nav>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="white-bg">
+        <table class="table">
+          <tr>
+            <th style="border:none">Birthday:</td>
+            <td style="border:none"><%= @profile.birthday.inspect %></td>
+          </tr>
+          <tr>
+            <th style="border:none">College:</td>
+            <td style="border:none"><%= @profile.college %></td>
+          </tr>
+          <tr>
+            <th style="border:none">Hometown:</td>
+            <td style="border:none"><%= @profile.from %></td>
+          </tr>
+          <tr>
+            <th style="border:none">Currently Lives:</td>
+            <td style="border:none"><%= @profile.lives %></td>
+          </tr>
+
+        </table>
+      </div>
+    </div>
+  </div>
+  <!--End of About Panel-->
+
+  <!--Spacing between posts -->
+  <div clas="row">
+    <div class="col-xs-12 post-spacing">
+    </div>
+  </div>
+
+  <!-- Photos panel -->
+  <div class="row">
+    <div class="col-xs-12">
+      <nav class="navbar navbar-default about-nav">
+        <p class="box-header">Photos (123)</p>
+      </nav>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="white-bg section-spacing">
+        <% 3.times do %>
+        <div class="row">
+          <div class="col-xs-12">
+            <a href="#">
+              <img src="assets/icon_photo_small.png" class="img-thumbnail panel-pic col-xs-4">
+            </a>
+            <a href="#">
+              <img src="assets/icon_photo_small.png" class="img-thumbnail panel-pic col-xs-4">
+            </a>
+            <a href="#">
+              <img src="assets/icon_photo_small.png" class="img-thumbnail panel-pic col-xs-4">
+            </a>
+          </div>
+        </div>
+        <% end %>
+        <div class="row">
+          <div class="photo-link">
+              <a href="#">See more photos</a>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- end of Photos panel -->
+
+  <!--Spacing between posts -->
+  <div clas="row">
+    <div class="col-xs-12 post-spacing">
+    </div>
+  </div>
+
+  <!-- Friends Panel -->
+  <div class="row">
+    <div class="col-xs-12">
+      <nav class="navbar navbar-default about-nav">
+        <p class="box-header">Friends (542)</p>
+      </nav>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="white-bg section-spacing">
+        <% 2.times do %>
+          <div class="row">
+            <div class="col-xs-12">
+              <% 3.times do %>
+                <div class="col-xs-4">
+                  <a href="#">
+                    <img src="assets/user_pic.png" class="img-thumbnail panel-pic">
+                  </a>
+                  <a href="#">
+                    Ron
+                  </a>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        <% end %>
+        <div class="row">
+          <div class="photo-link">
+              <a href="#">See more Friends</a>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End of Friends Panel -->
+</div>
+<!--End of Left Panel section-->

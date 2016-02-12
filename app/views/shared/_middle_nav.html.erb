@@ -12,13 +12,13 @@
   </section>
 </div>
 
+
   <!-- Name -->
 <div class="row">
   <section>
-    <div class="float-name"><%= "#{profile.user.first_name} #{profile.user.last_name}" %></div>
-    <% unless profile.user == current_user %>
-      <%= button_to "Add Friend" %>
-    <% end %>
+    <div class="float-name">
+      <%= "#{profile.user.first_name} #{profile.user.last_name}" %>
+    </div>
   </section>
 </div>
 
@@ -28,14 +28,20 @@
   <section>
     <ul class="nav nav-pills middle-nav">
       <li role="presentation" class="img-bucket"></li>
-      <li><%= link_to "Timeline", user_timeline_path, {class: "clickable"} %></li>
+      <li><%= link_to "Timeline", user_timeline_path(params[:user_id]), {class: "clickable"} %></li>
       <li><%= link_to "About", user_profile_path(profile.user), {class: "clickable"} %></li>
       <li><%= link_to "Photos", {}, {class: "clickable"} %></li>
       <li><%= link_to "Friends", {}, {class: "clickable"} %></li>
 
+
       <% if profile.user == current_user %>
-      <li><%= link_to "Edit Profile", edit_user_profile_path(profile.user), {class: "navbar-right"} %></li>
+        <li><%= link_to "Edit Profile", edit_user_profile_path(current_user), {class: "navbar-right"} %></li>
+
+      <% else profile.user == current_user %>
+        <li class="form-group pull-right"><%= link_to "Add Friend", {}, class: "btn btn-primary" %></li>
+
       <% end %>
+
     </ul>
 
   </section>

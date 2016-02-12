@@ -18,14 +18,14 @@
   <% end %> 
 
   <div class="general-navbar">
-    <%= render partial: "shared/general_navbar", locals: { profile: current_user.profile } %>
+    <%= render partial: "shared/general_navbar" %>
   </div>
 
 
   <main class="container">
 
     <div class="middle-navbar">
-      <%= render partial: "shared/middle_nav", locals: { profile: current_user.profile } %>
+      <%= render partial: "shared/middle_nav", locals: { profile: @posts.first.user.profile } %>
     </div>
 
     <div class="timeline-controller">

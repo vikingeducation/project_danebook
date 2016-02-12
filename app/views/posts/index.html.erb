@@ -10,19 +10,10 @@
   <div class="col-sm-7 col-sm-offset-1">
     <% if @posts && current_user == @posts.first.user %>
       <%= render partial: "new", locals: { post: @new_post } %>
-      <%= render @posts %>
     <% end %>
+    
+    <%= render @posts %>
   </div>
 
 
 </div>
-
-
-
-<!-- Processing by PostsController#create as HTML
-  Parameters: 
-  {"utf8"=>"✓", 
-  "authenticity_token"=>"js/eLWEzIWCaWKqwGmnsEvpIyAtNorG2FaCcr1nu2hrOc6ODspugwDrfxklijgipKYY0oeCoL0eNOSsUw8lbnw==",
-  "post"=>{"body"=>""}, 
-  "commit"=>"Post", 
-  "user_id"=>"135"} -->

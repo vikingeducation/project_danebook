@@ -1,8 +1,12 @@
 class UsersController < ApplicationController
 
-  before_action :require_login, except: [:new, :create]
+  before_action :require_login, except: [:new, :index, :create]
   before_action :require_logout, only: [:new]
   before_action :require_current_user, only: [:edit, :update, :destroy]
+
+  def index
+
+  end
 
   def new
     @user = User.new
@@ -21,15 +25,18 @@ class UsersController < ApplicationController
     end
   end
 
-  def update
-    if current_user.update(user_params)
-      flash[:success] = "Successfully updated profile!"
-      redirect_to profile_path(current_user)
-    else
-      flash.now[:danger] = "Failed to update your profile!"
-      render :edit
-    end
-  end
+  # def update
+  #   if current_user.update(user_params)
+  #     flash[:success] = "Successfully updated profile!"
+  #     redirect_to profile_path(current_user)
+  #   else
+  #     flash.now[:danger] = "Failed to update your profile!"
+  #     render :edit
+  #   end
+  # end
+
+  # def destroy
+  # end
 
   private
 

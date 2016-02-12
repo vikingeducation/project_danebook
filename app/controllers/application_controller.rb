@@ -35,7 +35,7 @@ class ApplicationController < ActionController::Base
   def require_login
     unless signed_in_user?
       flash[:danger] = "Not authorized! SIGN IN DIPSHIT!"
-      redirect_to root_path
+      redirect_to signup_path
     end
   end
 
@@ -46,7 +46,7 @@ class ApplicationController < ActionController::Base
   def require_current_user
     unless params[:id] == current_user.id.to_s
       flash[:error] = "You're not authorized to do this!"
-      redirect_to root_path
+      redirect_to signup_path
     end
   end
 end

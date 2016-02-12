@@ -1,16 +1,17 @@
 Rails.application.routes.draw do
 
-  root "users#new"
+  root 'users#new'
 
 
   resource :session, only: [:new, :create, :destroy]
-  get "login" => "sessions#new"
-  delete "logout" => "sessions#destroy"
+  get 'login' => 'sessions#new'
+  delete 'logout' => 'sessions#destroy'
 
 
   resources :users do
     resource :profile, only: [:edit, :update, :show]
-    resources :posts
+    resources :posts, only: [:index, :create, :destroy]
+    get 'timeline' => 'posts#index'
   end
 
 

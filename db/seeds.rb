@@ -7,6 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 Profile.delete_all
+Post.delete_all
 User.delete_all
 
 puts "Creating users..."
@@ -51,3 +52,10 @@ admin_profile.words_to_live_by = Faker::Hipster.paragraph
 admin_profile.hometown = Faker::Address.city
 admin_profile.current_city = Faker::Address.city
 admin_profile.save
+
+
+puts "Creating posts..."
+
+10.times do
+  Post.create(user_id: User.pluck(:id).sample, body: Faker::Hipster.sentence)
+end

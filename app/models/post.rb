@@ -4,7 +4,7 @@ class Post < ActiveRecord::Base
 
 
   validates :body, :user_id, presence: true
-  valides :body, length: { in: 1..250 }
+  validates :body, length: { in: 1..250 }
 
 
 

@@ -18,11 +18,10 @@
   <% end %> 
 
   <div class="general-navbar">
-  <%= render partial: "shared/general_navbar", locals: { profile: @profile } %>
+    <%= render partial: "shared/general_navbar", locals: { profile: current_user.profile } %>
   </div>
 
-
-  <div class="profile-controller">
+  <div class="timeline-controller">
     <%= yield %>
   </div>
 

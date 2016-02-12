@@ -13,5 +13,10 @@
  */
  @import "bootstrap-sprockets";
  @import "bootstrap";
+ 
+ body {
+   background-color: #eee;
+ }
 
  @import "users.scss";
+ @import "profiles.scss";

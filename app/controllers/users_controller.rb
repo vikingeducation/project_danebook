@@ -15,18 +15,17 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if @user.save
+    if @user.save(user_params)
       sign_in(@user)
       flash[:success] = "Created a new User!"
       redirect_to profile_path(@user)
     else
       flash.now[:danger] = "Failed to create User!"
+      @user.build_profile
       render :new
     end
   end
 
-  def show
-  end
 
   # def update
   #   if current_user.update(user_params)
@@ -49,7 +48,7 @@ class UsersController < ApplicationController
       :last_name,
       :email,
       :password,
-      profile: [
+      profile_attributes: [
         :gender,
         :birthday,
         :college,

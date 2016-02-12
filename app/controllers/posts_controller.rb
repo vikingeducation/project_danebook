@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   layout "timeline"
 
   before_action :require_login
+  before_action :require_object_owner, only: [:destroy]
 
 
   def index

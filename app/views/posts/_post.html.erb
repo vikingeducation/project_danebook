@@ -12,7 +12,12 @@
   <div class="panel-footer">
     <%= link_to "Like" %>
   <%= link_to "Comment" %>
+
+
+  <% if current_user == post.user %>
   <%= link_to "Delete", user_post_path(post.user, post), method: :delete, class: "pull-right" %>
+  <% end %>
+  
   </div>
 </div>
 

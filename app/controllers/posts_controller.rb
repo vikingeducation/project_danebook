@@ -5,7 +5,7 @@ class PostsController < ApplicationController
 
 
   def index
-    @posts = Post.find_by_user_id(params[:user_id])
+    @posts = Post.where(user_id: params[:user_id])
     @new_post = current_user.posts.build if signed_in_user?
   end
 

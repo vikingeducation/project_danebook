@@ -3,14 +3,14 @@
 
   <div class="col-sm-4">
     <% if @posts %>
-    <%= render partial: "left_side", locals: { user: @posts.user } %>
+    <%= render partial: "left_side", locals: { user: @posts.first.user } %>
     <% end %>
   </div>
 
   <div class="col-sm-7 col-sm-offset-1">
-    <% if @posts && current_user == @posts.user %>
+    <% if @posts && current_user == @posts.first.user %>
       <%= render partial: "new", locals: { post: @new_post } %>
-      <%= @posts.each { render partial: "post" } %>
+      <%= render @posts %>
     <% end %>
   </div>
 

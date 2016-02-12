@@ -4,9 +4,7 @@ class CreateProfiles < ActiveRecord::Migration
       t.integer :user_id, null: false
       t.string :gender
 
-      t.integer :birth_day
-      t.integer :birth_month
-      t.integer :birth_year
+      t.date :birthday
       t.string :college
       t.string :from
       t.string :lives

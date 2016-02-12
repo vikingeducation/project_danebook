@@ -1,7 +1,7 @@
 <div class="container">
   <div clas="row">
-    <div class="col-md-6">
-      <h3>Connect with all your Friends!</h3>
+    <div class="col-md-7" id="marketing">
+      <h1>Connect with all your Friends!</h1>
       <ul>
         <li>See photos and updates in your news feed</li>
         <li>Post your status for the world to see from your profile</li>
@@ -9,28 +9,53 @@
         <li>Like things because you're a positive person!</li>
       </ul>
     </div>
-    <div class="col-md-6">
+    <div class="col-md-5">
       <h1>Sign Up</h1>
+      <br>
       <%= form_for @user do |f| %>
-        <%= f.text_field :first_name, class: "form-control", placeholder: "First Name"%>
-        <%= f.text_field :last_name,  class: "form-control", placeholder: "Last Name"%>
+        <div class="row">
+          <div class="col-md-6">
+            <%= f.text_field :first_name, class: "form-control", placeholder: "First Name"%>
+          </div>
+          <div class="col-md-6">
+            <%= f.text_field :last_name,  class: "form-control", placeholder: "Last Name"%>
+          </div>
+        </div>
+        <br>
         <%= f.text_field :email, class: "form-control", placeholder: "Email"%>
+        <br>
         <%= f.password_field :password, class: "form-control", placeholder: "Password" %>
+        <br>
         <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Password Confirmation" %>
-        <h5>Birthday</h5>
-        <%= select_month(0, {prompt: "Month"}) %>
-        <%= select_day(0, {prompt: "Day"}) %>
-        <%= select_year(0, {prompt: "Year", start_year: 1900, end_year: 2016}) %>
-        <h5>Gender</h5>
-        <label>
-          <%= radio_button_tag :gender, "Male" %>
-          Male
-        </label>
-        <label>
-          <%= radio_button_tag :gender, "Female" %>
-          Female
-        </label>
-        <%= f.submit "Sign Up", class: "btn btn-block btn-success" %>
+
+        <h3>Birthday</h3>
+        <%= f.fields_for :profile do |up| %>
+          <div class="form-inline">
+            <div class="form-group">
+              <%= up.date_select(
+                :birthday,
+                { order: [:month, :day, :year],
+                start_year: Date.today.year,
+                end_year: Date.today.year - 150,
+                prompt: {month: "Month", day: "Day", year: "Year"}},
+                { class: "form-control" })
+              %>
+            </div>
+          </div>
+
+          <h3>Gender</h3>
+          <label class="radio-inline">
+            <%= up.radio_button :gender, "Male" %>
+            Male
+          </label>
+          <label class="radio-inline">
+            <%= up.radio_button :gender, "Female" %>
+            Female
+          </label>
+        <% end %>
+        <br>
+        <br>
+        <%= f.submit "Sign Up", class: "btn btn-lg btn-block btn-success" %>
       <% end %>
     </div>
   </div>

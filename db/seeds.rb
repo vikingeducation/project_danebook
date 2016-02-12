@@ -8,6 +8,7 @@
 
 Profile.delete_all
 Post.delete_all
+Like.delete_all
 User.delete_all
 
 puts "Creating users..."
@@ -63,4 +64,11 @@ end
 
 User.all.each do
   3.times { create_post }
+end
+
+
+puts "Creating likes..."
+
+100.times do
+  Like.create(user_id: User.pluck(:id).sample, likeable_id: Post.pluck(:id).sample, likeable_type: "Post")
 end

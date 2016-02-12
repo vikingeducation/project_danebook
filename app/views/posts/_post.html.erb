@@ -10,14 +10,21 @@
   </div>
 
   <div class="panel-footer">
+    <!-- TODO: write logic to switch to Unlike -->
     <%= link_to "Like" %>
-  <%= link_to "Comment" %>
+    <%= link_to "Comment" %>
+
+    <% if current_user == post.user %>
+    <%= link_to "Delete", user_post_path(post.user, post), method: :delete, class: "pull-right" %>
+    <% end %>
+
+    <% unless post.likes.empty? %>
+      <div class="panel-footer">
+      <%= render partial: "shared/likes", locals: { likes: post.likes } %>
+      </div>
+    <% end %>
 
 
-  <% if current_user == post.user %>
-  <%= link_to "Delete", user_post_path(post.user, post), method: :delete, class: "pull-right" %>
-  <% end %>
-  
   </div>
 </div>
 

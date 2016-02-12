@@ -1,1 +1,14 @@
-<%= render @posts %>
+
+<div class="row">
+
+  <div class="col-sm-4">
+    <%= render partial: "left_side", locals: { user: @posts.user } %>
+  </div>
+
+  <div class="col-sm-7 col-sm-offset-1">
+
+    <%= render @posts %>
+  </div>
+
+
+</div>

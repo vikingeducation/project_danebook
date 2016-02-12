@@ -1,0 +1,78 @@
+<div class="about">
+  <table class="table table-bordered">
+  <caption class="text-center">About</caption>
+  <tbody>
+    <tr>
+      <td>Born On:</td>
+      <td><%= user.birthday.strftime("%B %d, %Y") %></td>
+    </tr>
+    <tr>
+      <td>Went to school at:</td>
+      <td>Hogwarts</td>
+    </tr>
+    <tr>
+      <td>Hometown:</td>
+      <td><%= user.profile.hometown %></td>
+    </tr>
+    <tr>
+      <td>Currently Lives:</td>
+      <td><%= user.profile.current_city %></td>
+    </tr>
+  </tbody>
+  </table>
+</div>
+
+
+
+<div class="photos">
+  <table class="table table-bordered">
+    <caption class="text-center">Photos</caption>
+  <tbody>
+    <tr>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td colspan="2"><%= link_to "See more Photos", {}, class: "text-center" %></td>
+    </tr>
+  </tbody>
+  </table>
+</div>
+
+
+
+
+
+
+
+
+<div class="friends">
+  <table class="table table-bordered">
+    <caption class="text-center">Friends</caption>
+  <tbody>
+    <tr>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td colspan="2"><%= link_to "See more Friends", {}, class: "text-center" %></td>
+    </tr>
+  </tbody>
+  </table>
+</div>

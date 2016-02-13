@@ -47,6 +47,7 @@ class UsersController < ApplicationController
   end
 
   def timeline
+    @current_user.posts.build
   end
 
   def photos

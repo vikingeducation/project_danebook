@@ -6,6 +6,8 @@ Rails.application.routes.draw do
   get "friends" => "users#friends"
   get "photos" => "users#photos"
 
+  resources :posts, only: [:create, :delete]
+
   resource :session, only: [:create, :delete]
   post "login" => "sessions#create"
   delete "logout" => "sessions#destroy"

@@ -204,17 +204,20 @@
             Post (Copied)
           </div><!-- End Post Header -->
 
-          <!-- Post Text Area -->
+        <%= form_tag posts_path do %>
           <div class="text-area row">
-            <textarea type="text" class="form-control" rows="4" placeholder="Tell the world something.."></textarea>
+            <%= text_area_tag :body, "", class: "form-control", placeholder: "Tell the world something.." %>
           </div>
-
-          <!-- Post Footer -->
           <footer class="post-footer panel-footer row">
-
-            <!-- Post Button -->
-            <button type="submit" class="btn navbar-right btn-primary">Post</button>
+            <%= submit_tag "Post", class: "btn navbar-right btn-primary" %>
+          <% end %>
           </footer><!-- End Post Footer -->
+          <h1>User posts</h1>
+          <% @current_user.posts.each do |post| %>
+
+            <%= post.body %>
+
+          <% end %>
         </div><!-- End Post Wrapper -->
       </div><!-- End Post Area Container -->
 

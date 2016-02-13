@@ -6,9 +6,10 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Profile.delete_all
-Post.delete_all
 Like.delete_all
+Post.delete_all
+Comment.delete_all
+Profile.delete_all
 User.delete_all
 
 puts "Creating users..."
@@ -61,14 +62,29 @@ def create_post
   Post.create(user_id: User.pluck(:id).sample, body: Faker::Hipster.sentence)
 end
 
-
 User.all.each do
   3.times { create_post }
 end
 
 
+
+puts "Creating comments..."
+
+
+50.times do
+  Comment.create(body: Faker::Hipster.paragraph, user_id: User.pluck(:id).sample, post_id: Post.pluck(:id).sample)
+end
+
+
+
+
 puts "Creating likes..."
 
-100.times do
+50.times do
   Like.create(user_id: User.pluck(:id).sample, likeable_id: Post.pluck(:id).sample, likeable_type: "Post")
 end
+
+50.times do
+  Like.create(user_id: User.pluck(:id).sample, likeable_id: Comment.pluck(:id).sample, likeable_type: "Comment")
+end
+

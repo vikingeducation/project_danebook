@@ -17,18 +17,25 @@
 
     <%= link_to "Comment" %>
 
-
-
     <% if current_user == post.user %>
     <%= link_to "Delete", user_post_path(post.user, post), method: :delete, class: "pull-right" %>
     <% end %>
 
+    <!-- likes -->
     <% unless post.likes.empty? %>
       <div class="panel-footer">
       <%= render partial: "shared/likes", locals: { likes: post.likes } %>
       </div>
     <% end %>
 
+    <!--  comments -->
+    <% if post.comments %>
+      <% post.comments.each do |comment| %>
+      <div class="panel-footer">
+      <%= render partial: "comments/show_comment", locals: { comment: comment } %>
+      </div>
+      <% end %>
+    <% end %>
 
   </div>
 </div>

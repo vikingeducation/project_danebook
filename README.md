@@ -19,7 +19,6 @@ ASSOCIATIONS
 
 user has ONE profile, created after a new user is created
 
-
 user has MANY posts, post belongs_to ONE user
 "timeline" is just the name for the 'posts#index' route
 
@@ -33,3 +32,9 @@ posts and comments are "likeable"
 likes table will look like this:
 id | user_id | likeable_id | likeable_type | created_at
 
+
+
+=======
+post has_many comments
+comment belongs_to post
+comment can have many likes

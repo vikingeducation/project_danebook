@@ -19,10 +19,4 @@ class Profile < ActiveRecord::Base
     allow_nil: true,
     allow_blank: true
 
-  private
-
-  def at_least_one_day_old
-    # errors.add(:birthday, "Have to be older than 1 day old.") if self.birthday == Date.today - 1
-    true
-  end
 end

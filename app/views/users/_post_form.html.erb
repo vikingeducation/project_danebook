@@ -14,7 +14,7 @@
     <%= form_for @user do |u| %>
       <div class="col-xs-12">
         <div class="form-group textarea-size txtbox-bg" style="margin:0 0 10px 0">
-          <%= u.fields_for :posts do |up| %>
+          <%= u.fields_for :posts, Post.new do |up| %>
             <%= up.text_area :body, class: "form-control edit-textarea", rows: "4", placeholder: "Tell the world something..." %>
           <% end %>
       </div>

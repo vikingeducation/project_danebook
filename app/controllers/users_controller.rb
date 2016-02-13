@@ -39,10 +39,10 @@ class UsersController < ApplicationController
 
   # create posts via update user using nested parameters
   def update
-    @user = User.new(user_params)
-    if @user.save
+    @user = User.find(current_user.id)
+    if @user.update(user_params)
       flash[:success] = "Success!"
-      redirect_to profile_path(@user)
+      redirect_to user_path(@user)
     else
       flash[:danger] = "Failed!"
       redirect_to user_path(current_user)
@@ -67,7 +67,7 @@ class UsersController < ApplicationController
         :words,
         :about
       ],
-      posts_attributes: [:body]
+      posts_attributes: [:id, :body]
     )
   end
 end

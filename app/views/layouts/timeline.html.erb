@@ -8,6 +8,10 @@
 </head>
 <body data-no-turbolink>
 
+  <div class="general-navbar">
+    <%= render partial: "shared/general_navbar" %>
+  </div>
+
   <% flash.each do |type, message| %>
     <div class="alert alert-<%=type%>">
       <div>
@@ -16,10 +20,6 @@
       </div>
       </div>
   <% end %> 
-
-  <div class="general-navbar">
-    <%= render partial: "shared/general_navbar" %>
-  </div>
 
 
   <main class="container">

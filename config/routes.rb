@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
 
   root "users#new"
-  resources :users
-  get "timeline" => "users#timeline"
-  get "friends" => "users#friends"
-  get "photos" => "users#photos"
+  
+  resources :users do
+    get "timeline" => "users#timeline"
+    get "friends" => "users#friends"
+    get "photos" => "users#photos"
+  end
 
   resources :posts, only: [:create, :delete]
 

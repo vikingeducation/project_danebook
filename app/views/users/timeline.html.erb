@@ -195,54 +195,46 @@
     <!-- Right Side Content -->
     <section class="right-content col-sm-7 col-sm-offset-1">
 
-      <!-- Post Area Container -->
+
       <div class="post-row row">
-        <!-- Post Area Wrapper -->
         <div class="post-wrapper col-sm-12">
-          <!-- Post Area Header -->
           <div class="post-header row">
             Post (Copied)
-          </div><!-- End Post Header -->
-
-        <%= form_tag posts_path do %>
-          <div class="text-area row">
-            <%= text_area_tag :body, "", class: "form-control", placeholder: "Tell the world something.." %>
           </div>
-          <footer class="post-footer panel-footer row">
-            <%= submit_tag "Post", class: "btn navbar-right btn-primary" %>
+
+          <% if signed_in_user? %>
+            <%= form_tag posts_path do %>
+            <div class="text-area row">
+              <%= text_area_tag :body, "", class: "form-control", placeholder: "Tell the world something.." %>
+            </div>
+            <footer class="post-footer panel-footer row">
+              <%= submit_tag "Post", class: "btn navbar-right btn-primary" %>
+            <% end %>
           <% end %>
           </footer><!-- End Post Footer -->
-          <h1>User posts</h1>
-          <% @current_user.posts.each do |post| %>
-
-            <%= post.body %>
-
-          <% end %>
         </div><!-- End Post Wrapper -->
       </div><!-- End Post Area Container -->
 
       <!-- Comment Container -->
+      <% @user.posts.each do |post| %>
       <div class="comment-row row">
         <!-- Comment Wrapper -->
         <div class="comment-wrapper col-sm-12">
           <!-- Comment-Header -->
           <div class="comment-header row">
-
             <img src="/assets/default_user.gif">
-            <div class="profile-name"><a href="#">Harry Potter</a><span>Posted on Thursday 10/31/2015</span></div>
+            <div class="profile-name">
+              <%= link_to "#{@current_user.first_name} #{@current_user.last_name}", @current_user %>
+              <span>Posted on <%= post.created_at %></span>
+              </div>
           </div><!-- End Comment Header -->
 
-          <!-- Comment Content Area -->
           <div class="comment-content row">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p>
+              <%= post.body %>
+            </p>
           </div><!-- End Content Row -->
 
-          <!-- Comment Footer -->
           <footer class="comment-footer row">
             <div class="row">
               <div class="navbar-form navbar-left">
@@ -256,49 +248,7 @@
           </footer><!-- End Comment Footer -->
         </div><!-- End Comment Wrapper -->
       </div><!-- End Comment Container -->
-
-      <!-- Comment Container -->
-      <div class="comment-row row">
-        <!-- Comment Wrapper -->
-        <div class="comment-wrapper col-sm-12">
-          <!-- Comment-Header -->
-          <div class="comment-header row">
-
-            <img src="/assets/default_user.gif">
-            <div class="profile-name"><a href="#">Harry Potter</a><span>Posted on Thursday 10/31/2015</span></div>
-          </div><!-- End Comment Header -->
-
-          <!-- Comment Content Area -->
-          <div class="comment-content row">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-            cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          </div><!-- End Content Row -->
-
-          <!-- Comment Footer -->
-          <footer class="comment-footer row">
-            <div class="row">
-            <div class="navbar-form navbar-left">
-              <a>Like</a>
-              <a>Comment</a>
-            </div>
-            <div class="navbar-form navbar-right">
-              <a>Delete</a>
-            </div>
-          </div>
-
-          <div class="row">
-            <div class="navbar-form navbar-left">
-              <a>Hermione Granger</a><span>likes this</span>
-            </div>
-          </div>
-
-          </footer><!-- End Comment Footer -->
-        </div><!-- End Comment Wrapper -->
-      </div><!-- End Comment Container -->
+      <% end %>
 
       <!-- Comment Container -->
       <div class="comment-row row">

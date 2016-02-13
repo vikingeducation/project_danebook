@@ -199,7 +199,7 @@
       <div class="post-row row">
         <div class="post-wrapper col-sm-12">
           <div class="post-header row">
-            Post (Copied)
+            Post
           </div>
 
           <% if signed_in_user? %>
@@ -224,9 +224,9 @@
           <div class="comment-header row">
             <img src="/assets/default_user.gif">
             <div class="profile-name">
-              <%= link_to "#{@current_user.first_name} #{@current_user.last_name}", @current_user %>
+              <%= link_to "#{@user.first_name} #{@user.last_name}", @user %>
               <span>Posted on <%= post.created_at %></span>
-              </div>
+            </div>
           </div><!-- End Comment Header -->
 
           <div class="comment-content row">
@@ -235,20 +235,53 @@
             </p>
           </div><!-- End Content Row -->
 
-          <footer class="comment-footer row">
-            <div class="row">
-              <div class="navbar-form navbar-left">
-                <a>Like</a>
-                <a>Comment</a>
-              </div>
-              <div class="navbar-form navbar-right">
-                <a>Delete</a>
-              </div>
+          <div class="comment-footer row">
+            <div class="navbar-form navbar-left">
+              <% if current_user.liked_post?(post) %>
+                <%= link_to "Unlike", post_like_path(post, current_user.id_of_like(post)), method: :delete %>
+              <% else %>
+                <%= link_to "Like", post_likes_path(post), method: :post %>
+              <% end %>
+              <%= post.likes.count unless post.likes.empty? %>
+              <a>Comment</a>
             </div>
-          </footer><!-- End Comment Footer -->
+            <div class="navbar-form navbar-right">
+              <% if current_user %>
+                <%= link_to "Delete", post_path(post), method: :delete %>
+              <% end %>
+            </div>
+            <div class="col-xs-12">
+              <% post.likes.each do |like| %>
+                <span><%= like.author.first_name %></span>
+              <% end %>
+            </div>
+          </div><!-- End Comment Footer -->
+
+          <% post.comments.each do |comment| %>
+            <div class="comment-content row">
+              <span><%= comment.author.first_name %></span>
+              <p>
+                <%= comment.body %>
+              </p>
+            </div>
+          <% end %>
+
+          <div class="form-group row">
+          <%= form_tag post_comments_path(post) do %>
+            <div class="col-xs-12">
+              <%= text_area_tag :body, "", class: "form-control", placeholder: "Write a comment.." %>
+            </div>
+            <div class="col-xs-12">
+              <%= submit_tag "Comment", class: "btn navbar-right btn-primary btn-sm" %>
+            </div>
+            <% end %>
+          </div>
+
         </div><!-- End Comment Wrapper -->
       </div><!-- End Comment Container -->
       <% end %>
+
+
 
       <!-- Comment Container -->
       <div class="comment-row row">
@@ -356,11 +389,10 @@
         </div>
 
         <div class="text-area row">
-              <textarea type="text" class="form-control" rows="4" placeholder="Write a comment.."></textarea>
-              <a class="navbar-left cancel" href="#">Cancel</a>
-              <button type="submit" class="btn navbar-right btn-primary btn-md">Comment</button>
-            </div>
-
+          <textarea type="text" class="form-control" rows="4" placeholder="Write a comment.."></textarea>
+          <a class="navbar-left cancel" href="#">Cancel</a>
+          <button type="submit" class="btn navbar-right btn-primary btn-md">Comment</button>
+        </div>
 
 
 
@@ -368,7 +400,7 @@
           </footer><!-- End Comment Footer -->
         </div><!-- End Comment Wrapper -->
       </div><!-- End Comment Container -->
-
+      <
 
     </section>
 </main>

@@ -34,7 +34,11 @@ class ApplicationController < ActionController::Base
     end
     helper_method :signed_in_user?
 
-
+    def current_user?
+      params[:id] == current_user.id.to_s
+    end
+    helper_method :current_user?
+    
     def require_login
       unless signed_in_user?
         flash[:error] = "Not authorized, please sign in!"

@@ -2,30 +2,27 @@
 <div class="row">
 
   <%= render partial: 'timeline_panels' %>
+
   <!-- Timeline Section -->
   <div class="col-sm-8">
-
-  <%= render partial: 'post_form' if current_user && current_user.id == @profile.id %>
+    <% if current_user && current_user.id == @profile.id %>
+      <%= render partial: 'post_form' %>
+      <%= render partial: 'post_spacing' %>
+    <% end %>
 
     <div class="row">
       <div class="col-sm-12">
 
-
-        <!--Spacing between posts -->
-        <div clas="row">
-          <div class="col-xs-12 post-spacing"></div>
-        </div>
-
         <!-- Recent post -->
         <div class="row">
           <div class="col-xs-12">
-            <div class="post-bg">
+            <div class="white-bg">
               <!-- Post Header -->
               <div class="row">
                 <!-- Post author pic -->
                 <div class="col-xs-3 col-sm-2">
-                  <a href="about.html">
-                    <img src="images/harry_potter_profile.png" class="img-thumbnail poster-pic">
+                  <a href="#">
+                    <img src="/images/harry_potter_profile.png" class="img-thumbnail" style="margin: 5px">
                   </a>
                 </div>
                 <!-- End of Post author pic -->
@@ -90,7 +87,7 @@
                 <!-- Post author pic -->
                 <div class="col-xs-3 col-sm-2">
                   <a href="about.html">
-                    <img src="images/harry_potter_profile.png" class="img-thumbnail poster-pic">
+                    <img src="/images/harry_potter_profile.png" class="img-thumbnail poster-pic">
                   </a>
                 </div>
                 <!-- End of Post author pic -->
@@ -169,7 +166,7 @@
                 <!-- Post author pic -->
                 <div class="col-xs-3 col-sm-2">
                   <a href="about.html">
-                    <img src="images/harry_potter_profile.png" class="img-thumbnail poster-pic">
+                    <img src="/images/harry_potter_profile.png" class="img-thumbnail poster-pic">
                   </a>
                 </div>
                 <!-- End of Post author pic -->
@@ -238,7 +235,7 @@
                     <div class="row">
                       <div class="col-xs-3 col-sm-2">
                         <a href="#">
-                          <img src="images/user_pic.png" class="img-thumbnail commentor-pic">
+                          <img src="/images/user_pic.png" class="img-thumbnail commentor-pic">
                         </a>
                       </div>
                       <div class="col-xs-8 col-sm-9">
@@ -280,7 +277,7 @@
                     <div class="row">
                       <div class="col-xs-3 col-sm-2">
                         <a href="about.html">
-                          <img src="images/harry_potter_profile.png" class="img-thumbnail commentor-pic">
+                          <img src="/images/harry_potter_profile.png" class="img-thumbnail commentor-pic">
                         </a>
                       </div>
                       <div class="col-xs-8 col-sm-9">

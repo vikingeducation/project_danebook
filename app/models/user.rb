@@ -2,9 +2,11 @@ class User < ActiveRecord::Base
 
   has_secure_password
   has_one :profile, inverse_of: :user, dependent: :destroy
-  has_many :posts, dependent: :destroy
-
   accepts_nested_attributes_for :profile
+
+  has_many :posts, inverse_of: :user, dependent: :destroy
+  accepts_nested_attributes_for :posts, reject_if: :all_blank, allow_destroy: :true
+
 
   validates :password, length: { in: 8..24 }, allow_nil: true
   validates :first_name, :last_name, :email, presence: true, length: { maximum: 36 }

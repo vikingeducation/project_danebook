@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  
+
   skip_before_action :require_login, only: [:new, :create]
 
   def create
@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
     if @user && @user.authenticate(params[:password])
       params[:remember_me] ? permanent_sign_in(@user) : sign_in(@user)
       flash[:success] = "You've successfully signed in"
-      redirect_to timeline_path
+      redirect_to user_path(@user)
     else
       flash[:danger] = "Wrong username/password combination"
       redirect_to :back

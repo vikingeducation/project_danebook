@@ -1,8 +1,8 @@
 class ProfilesController < ApplicationController
 
   before_action :require_login, only: [:edit, :update]
-  before_action :require_current_user, only: [:edit]
-  before_action :my_profile?, only: [:update]
+  before_action :require_current_user, only: [:edit, :update]
+  before_action :my_profile?, only: [:edit, :update]
 
   def show
     @profile = Profile.find(params[:id])

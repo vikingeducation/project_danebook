@@ -5,7 +5,7 @@
       <div class="col-md-2">
         <!-- Brand Name -->
         <div class="navbar-header">
-          <%= link_to "Danebook", current_user ? timeline_path : signup_path, class: "navbar-brand" %>
+          <%= link_to "Danebook", current_user ? user_path(current_user) : signup_path, class: "navbar-brand" %>
           <!-- Navbar responsive collapse button -->
           <!-- the data-target value targets the ID found in the collapsable portion -->
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#top-navbar">

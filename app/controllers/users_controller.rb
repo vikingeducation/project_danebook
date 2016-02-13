@@ -1,21 +1,29 @@
 class UsersController < ApplicationController
 
-  before_action :require_login, except: [:new, :create]
+  before_action :require_login, except: [:new, :create, :update]
   before_action :require_logout, only: [:new]
-  before_action :require_current_user, only: [:edit, :update, :destroy]
+  before_action :require_current_user, only: [:edit, :update]
 
-  def index
-    @user = params[:id] ? User.find(params[:id]) : current_user
-    @profile = @user.profile
-    @post = Post.new
-    render :show
-  end
-
+  #SIGNUP FORM
   def new
     @user = User.new
     @user.build_profile
   end
 
+  # ANY USERS TIMELINE
+  def show
+    @user = User.exists?(params[:id]) ? User.find(params[:id]) : current_user
+    if User.exists?(params[:id])
+      @user = User.find(params[:id])
+    else
+      flash[:danger] = "That User Doesn't Exist!"
+      @user = current_user
+    end
+    @profile = @user.profile
+    @user.posts.build
+  end
+
+  # user signup
   def create
     @user = User.new(user_params)
     if @user.save(user_params)
@@ -29,19 +37,17 @@ class UsersController < ApplicationController
     end
   end
 
-
-  # def update
-  #   if current_user.update(user_params)
-  #     flash[:success] = "Successfully updated profile!"
-  #     redirect_to profile_path(current_user)
-  #   else
-  #     flash.now[:danger] = "Failed to update your profile!"
-  #     render :edit
-  #   end
-  # end
-
-  # def destroy
-  # end
+  # create posts via update user using nested parameters
+  def update
+    @user = User.new(user_params)
+    if @user.save
+      flash[:success] = "Success!"
+      redirect_to profile_path(@user)
+    else
+      flash[:danger] = "Failed!"
+      redirect_to user_path(current_user)
+    end
+  end
 
   private
 
@@ -60,6 +66,8 @@ class UsersController < ApplicationController
         :number,
         :words,
         :about
-      ])
+      ],
+      posts_attributes: [:body]
+    )
   end
 end

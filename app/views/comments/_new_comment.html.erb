@@ -1,8 +1,9 @@
-<%= form_for [:user, @comment] do |f| %>
+<%= form_for [:user, @new_comment] do |f| %>
 
+  <%= f.text_area :body, placeholder: "Write a comment...", class: "form-control" %>
+  <%= f.hidden_field :post_id, value: post.id %>
 
-
-
+  <%= f.submit "Comment", class: "form-control btn btn-primary btn-sm" %>
 
 
 <% end %>

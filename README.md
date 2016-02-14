@@ -36,5 +36,6 @@ id | user_id | likeable_id | likeable_type | created_at
 
 =======
 post has_many comments
+user has_many comments
 comment belongs_to post
 comment can have many likes

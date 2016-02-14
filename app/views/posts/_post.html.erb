@@ -28,7 +28,7 @@
       </div>
     <% end %>
 
-    <!--  comments -->
+    <!-- existing comments -->
     <% if post.comments %>
       <% post.comments.each do |comment| %>
       <div class="panel-footer">
@@ -36,6 +36,11 @@
       </div>
       <% end %>
     <% end %>
+
+    <!-- new comment form -->
+    <div class="panel-footer">
+      <%= render partial: "comments/new_comment", locals: { post: post } %>
+    </div>
 
   </div>
 </div>

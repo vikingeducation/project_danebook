@@ -1,18 +1,17 @@
 class UsersController < ApplicationController
 
-  before_action :require_login, except: [:new, :create, :update]
+  before_action :require_login, except: [:new, :show, :create]
   before_action :require_logout, only: [:new]
   before_action :require_current_user, only: [:edit, :update]
 
-  #SIGNUP FORM
+  # Signup Page
   def new
     @user = User.new
     @user.build_profile
   end
 
-  # ANY USERS TIMELINE
+  # Any User's Timeline
   def show
-    @user = User.exists?(params[:id]) ? User.find(params[:id]) : current_user
     if User.exists?(params[:id])
       @user = User.find(params[:id])
     else
@@ -23,7 +22,7 @@ class UsersController < ApplicationController
     @user.posts.build
   end
 
-  # user signup
+  # Create User
   def create
     @user = User.new(user_params)
     if @user.save(user_params)
@@ -37,10 +36,9 @@ class UsersController < ApplicationController
     end
   end
 
-  # create posts via update user using nested parameters
+  # Create A Post via Nested Params
   def update
-    @user = User.find(current_user.id)
-    if @user.update(user_params)
+    if current_user.update(user_params)
       flash[:success] = "Success!"
       redirect_to user_path(@user)
     else
@@ -67,7 +65,7 @@ class UsersController < ApplicationController
         :words,
         :about
       ],
-      posts_attributes: [:id, :body]
+      posts_attributes: [:body]
     )
   end
 end

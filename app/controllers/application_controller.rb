@@ -40,13 +40,13 @@ class ApplicationController < ActionController::Base
   end
 
   def require_logout
-    redirect_to users_path if signed_in_user?
+    redirect_to user_path(current_user) if signed_in_user?
   end
 
   def require_current_user
     unless params[:id] == current_user.id.to_s
-      flash[:error] = "You're not authorized to do this!"
-      redirect_to signup_path
+      flash[:danger] = "You're not authorized to do this!"
+      redirect_to user_path(current_user)
     end
   end
 end

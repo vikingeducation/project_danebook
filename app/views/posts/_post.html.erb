@@ -38,9 +38,11 @@
     <% end %>
 
     <!-- new comment form -->
-    <div class="panel-footer">
-      <%= render partial: "comments/new_comment", locals: { post: post } %>
-    </div>
+    <% if current_user %>
+      <div class="panel-footer">
+        <%= render partial: "comments/new_comment", locals: { post: post } %>
+      </div>
+    <% end %>
 
   </div>
 </div>

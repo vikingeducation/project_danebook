@@ -5,7 +5,7 @@
 <%= like_or_unlike(comment) %>
 
 
-<% if current_user.id == comment.user_id %>
+<% if current_user && current_user.id == comment.user_id %>
   <%= link_to "Delete", user_comment_path(comment.user_id, comment), method: :delete, class: "pull-right" %>
 <% end %>
 

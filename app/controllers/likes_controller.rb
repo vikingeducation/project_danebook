@@ -1,7 +1,8 @@
 class LikesController < ApplicationController
 
   before_action :require_login
-
+  before_action :require_object_owner
+  
 
   def create
     @like = Like.new(whitelisted_params)

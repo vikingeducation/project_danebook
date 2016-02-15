@@ -19,7 +19,7 @@ class CommentsController < ApplicationController
         @user = current_user
         @current_post = Post.find(params[:post_id])
         @profile = @current_post.user.profile
-        @posts = @user.posts.order("created_at DESC")
+        @posts = @current_post.user.posts.order("created_at DESC")
         render "users/show"
       end
     else

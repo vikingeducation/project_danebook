@@ -36,7 +36,8 @@
             <!--vertical divider-->
             <div class="v-line"></div>
             <li>
-              <%= link_to "Timeline", user_path(@profile.user.id), class: "btn btn-default tl-menu-link active" %>
+              <!-- add "active" class to give element the "pushed down" look -->
+              <%= link_to "Timeline", user_path(@profile.user.id), class: "btn btn-default tl-menu-link" %>
             </li>
             <!--vertical divider-->
             <div class="v-line"></div>

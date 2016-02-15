@@ -1,0 +1,36 @@
+<!--Comment by Harry-->
+<div class="col-xs-12">
+  <div class="post-response-bg" style="border-top: 1px solid #aaa; padding-top: 20px;">
+    <div class="row">
+      <div class="col-xs-3 col-sm-2">
+        <a href="about.html">
+          <img src="/images/harry_potter_profile.png" class="img-thumbnail commentor-pic">
+        </a>
+      </div>
+      <div class="col-xs-8 col-sm-9">
+        <p class="comment-info">
+          <%= link_to comment.user.name, user_path(comment.user) %> said on <%=" #{comment.created_at.strftime("%A %m/%d/%Y %I:%M %p")}" %>
+        </p>
+        <p class="comment-content">
+          <%= comment.body %>
+        </p>
+        <!-- comment options -->
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="like-link">
+                <a href="#">Like</a>
+                3 others people like this
+            </div>
+            <div class="delete-link">
+              <p>
+                <a href="#">Delete</a>
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- End of comment options -->
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End of Harry comment -->

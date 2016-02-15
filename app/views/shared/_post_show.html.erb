@@ -50,7 +50,7 @@
               </div>
               <div class="delete-link">
                 <% if current_user && current_user.id == @profile.user.id %>
-                  <%= link_to "Delete", post_path(post), class: "delete-link", method: :delete %>
+                  <%= link_to "Delete", post_path(post), class: "delete-link", method: :delete, data: { confirm: "Are you sure?" } %>
                 <% end %>
               </div>
             </div>
@@ -58,7 +58,16 @@
           <!-- Display Like Statistics -->
           <%= render partial: "likes/like_statistics", locals: { post: post } %>
           <!-- End of Like Statistics -->
+
+          <!-- Display all Comments -->
+          <% post.comments.each do |comment| %>
+            <%= render partial: 'comments/comment_show', locals: { comment: comment } %>
+          <% end %>
+          <!-- End of Dispaly all Comments -->
+
+          <!-- Comment Form -->
           <%= render partial: 'comments/comment_form', locals: { post: post } if post.id %>
+          <!-- End of Comment Form -->
         </div>
       <% end %>
       <!-- End of Post options -->

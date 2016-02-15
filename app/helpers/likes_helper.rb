@@ -31,22 +31,6 @@ module LikesHelper
 
     result += " likes this."
     return result
-    # else
-    #   liked = false
-    #   result = ""
-    #     post_likes.each_with_index do |l, index|
-    #       user = User.find(l.user_id)
-    #       if index <= 2
-    #         result += link_to(user.name, user_path(user))
-    #       else
-    #         result += link_to(user.name, user_path(user)) + " and "
-    #       end
-    #     end
-    #     remaining = liked ? size - 3: size - 2
-    #     result += " and #{remaining} others"
-    #   result += " likes this."
-    #   return result
-    # end
   end
 
 end

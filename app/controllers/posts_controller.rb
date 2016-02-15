@@ -6,10 +6,14 @@ class PostsController < ApplicationController
     @post.user_id = current_user.id if current_user
     if @post.save
       flash[:success] = "You've created a post!"
+      redirect_to user_path(current_user)
     else
       flash[:danger] = "Failed to create a post!"
+      @user = current_user
+      @profile = current_user.profile
+      @posts = current_user.posts.order("created_at DESC")
+      render "users/show"
     end
-    redirect_to user_path(current_user)
   end
 
   def destroy

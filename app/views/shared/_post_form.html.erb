@@ -1,10 +1,3 @@
-<div class="row">
-  <% if @user.errors.any? %>
-    <% @user.errors.full_messages.each do |msg| %>
-      <%= content_tag :div, msg, class: "alert alert-danger" %>
-    <% end %>
-  <% end %>
-</div>
 
 <div class="row">
   <!-- Post Header -->
@@ -19,11 +12,12 @@
 <!-- Textarea input -->
 <div clas="row">
   <div class="col-xs-12 about-info">
+    <div class="col-xs-12">
+    <%= errors(@post,:body) if @post %>
     <%= form_for current_user.posts.build do |f| %>
-      <div class="col-xs-12">
-        <div class="form-group textarea-size txtbox-bg" style="margin:0 0 10px 0">
-          <%= f.text_area :body, class: "form-control edit-textarea", rows: "4", placeholder: "Tell the world something..." %>
-        </div>
+      <div class="form-group textarea-size txtbox-bg" style="margin:0 0 10px 0">
+        <%= f.text_area :body, class: "form-control edit-textarea", rows: "4", placeholder: "Tell the world something..." %>
+      </div>
       <!-- Post CTA -->
       <div class="text-right" style="padding:0 0 10px 0;">
         <%= f.submit class: "btn btn-primary post-cta" %>

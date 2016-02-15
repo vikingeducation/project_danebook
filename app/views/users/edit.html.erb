@@ -1,48 +1,6 @@
-<!-- notice that this is a ROW as well as a navbar -->
-<nav id ="search-navbar" class="navbar navbar-default row">
-  
-  <div class="col-md-2"> 
-  </div>
-  <!-- responsive mobile stuff collapses down  -->
-  <div class="logo-container col-md-2">
-    <button type="button" class="navbar-toggle collapsed" 
-            data-toggle="collapse" 
-            data-target="#bs-example-navbar-collapse-1">
-      <span class="sr-only">Toggle navigation</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
 
-    <!--company brand link -->
-    <img class="pull-left img-rounded" 
-         src="http://www.mapsofworld.com/images/world-countries-flags/denmark-flag.gif">
-    <a class="navbar-brand" id = "brand-link" href="#">Danebook</a>
-  </div>
-    
-  <!-- wraps rest of links to collapse in mobile-->
-  <div class="nav navbar-nav navbar-left col-md-4">
-    
-    <form class="navbar-form" role="search">
-      <div class="search-bar input-group input-group-sm col-md-4 col-sm-4
-                  form-group">
-        <input type="text" class="form-control pull-left" 
-               placeholder="Search">
-      </div>
-    </form>
+  <%= render partial: "layouts/shared/navbar_signed_in" %>
   
-  </div>
-       <!-- wraps rest of links to collapse in mobile-->
-  <div class="nav navbar-nav col-md-2">
-    <a href="#" class="pull-right nav-personal-link"><%=@user.first_name%> <%=@user.last_name%></a>
-  </div><!--navbar-collapse-->
-  
-  <div class="col-md-2"> 
-  </div>  
-
-</nav>
-
-<div class="main"> <!--main container for rest of page-->
   <div class="row"> <!--main row-->
   
     <div class="col-md-2"><!--empty left column space-->
@@ -64,15 +22,15 @@
         <div class="row no-pad container-border" >
           <div  class="col-md-12 text-center">
             <div class="list-group list-group-horizontal">
-              <a href="timeline.html" class="list-group-item">Timeline</a>
-              <a href="#" class="list-group-item">About</a>
+              <a href="<%= new_user_post_path(@user) %>" class="list-group-item">Timeline</a>
+              <a href="<%= user_path(@user) %>" class="list-group-item">About</a>
               <a href="photos.html" class="list-group-item">Photos</a>
               <a href="friends.html" class="list-group-item">Friends</a>
 
               <%if current_user_view?%>
-                <a href="<%= edit_user_path(@user)%>" class="list-group-item active">Edit Profile</a>
+                <a href=" <%= edit_user_path(@user) %>" class="list-group-item active">Edit Profile</a>
               <% else %>
-                <a href="#" class="list-group-item">Edit Profile</a>
+                <a href="<%= edit_user_path(@user) %>" class="list-group-item">Edit Profile</a>
               <% end %>  
 
             </div>
@@ -88,56 +46,80 @@
       </div>
 
       <%= form_for @user do |user_fields| %>
-      
+        <ul>
+          <% @user.errors.full_messages.each do |error| %>
+            <li><%= error %></li>
+          <% end %>
+        </ul>
         <section class="col-md-6">
-          <h4 style="text-align:center;">Basic Information</h4>
-          
+
+          <div class="form-group form-group-xs">
+            <h4> Basic Information </h4>
+          </div>
+           
           <div class="form-group form-group-xs">
             <label class="col-sm-4 control-label" for="birthday">Birthday
             </label>
-            <div class="col-sm-8">
-             <%= @user.birth_month %>/<%= @user.birth_day %>/<%= @user.birth_year %>
-            </div>
+            <p>
+             <%= user_fields.fields_for :profile do |profile_fields| %>
+               <%= @profile.birthdate.strftime("%B %d, %Y") %>
+              <% end %>
+            </p>
           </div>
           
           <div class="form-group form-group-xs">
             <label class="col-sm-4 control-label" for="college">College</label>
-            <div class="col-sm-8">
-              <input class="form-control" type="text" "user[college]" id="college">
-            </div>
+            <p>
+              <%= user_fields.fields_for :profile do |profile_fields| %>
+                <%= profile_fields.text_field :college, 
+                    class: "form-control" %>
+              <% end %> 
+            </p>
           </div>
           
           <div class="form-group form-group-xs">
             <label class="col-sm-4 control-label" for="hometown">
               Hometown
             </label>
-            <div class="col-sm-8">
-              <input class="form-control" type="text" name="user[hometown]" id="hometown">
-            </div>
+            <p>
+              <%= user_fields.fields_for :profile do |profile_fields| %>
+                <%= profile_fields.text_field :hometown,
+                    class: "form-control" %>
+              <% end %> 
+            </p>
           </div> 
           
           <div class="form-group form-group-xs">
-            <label class="col-sm-4 control-label" for="country-lived">
+            <label class="col-sm-4 control-label" for="domicile">
               Currenty lives in
             </label>
-            <div class="col-sm-8">
-              <input class="form-control" type="text" name="user[domicile]" id="domicile">
-            </div>
-          </div> 
+            <p>
+             <%= user_fields.fields_for :profile do |profile_fields| %>
+                <%= profile_fields.text_field :domicile,
+                   class: "form-control" %>
+              <% end %> 
+            </p>
+          </div>
         </section>    
   
         <section class="col-md-6">
           <div style="margin:0;padding:0;margin-top:1em;">
             <div class="form-group">
               <label for="words">Words to live by:</label>
-              <textarea class="form-control" rows="2" id="words" name="user[my_words]"></textarea>
+               <%= user_fields.fields_for :profile do |profile_fields| %>
+                 <%= profile_fields.text_area :my_words,
+                   class: "form-control" %>
+              <% end %> 
             </div>
           </div>
 
           <div style="margin:0;padding:0;margin-top:1em;">
             <div class="form-group">
               <label for="about">About me:</label>
-              <textarea class="form-control" rows="4"  name="user[about_me]" id="about"></textarea>
+               <%= user_fields.fields_for :profile do |profile_fields| %>
+                 <%= profile_fields.text_area :about_me,
+                   class: "form-control" %>
+              <% end %> 
             </div>
           </div>
         </section>
@@ -152,4 +134,4 @@
     <div class="col-md-2">
     </div>
   </div>
-</div> 
+

@@ -6,35 +6,48 @@
   
   <div id="login_bar">
     <p>
-      <table id="login">
-   	    <tr>
-          <td>Email or Phone</td>
-          <td>Password</td> 
-          <td></td>
-        </tr>
-        <tr>
-          <td><input type="text" name="email_phone" tabindex="1"></td>
-          <td><input type="text" name="login_password" tabindex="2"></td>
-          <td><input type="submit" value="Log In" tabindex="3"></td>
-        </tr>
-        <tr>
-          <td><input type="checkbox" name="keep_logged_in">Keep me logged in</td>
-          <td><a href="dummy_url" id="hover_link">Forgot your password?</a></td>
-        </tr>
-      </table>
+      <%= form_for(@user, url: session_path) do |user_fields| %>
+        <table id="login">
+   	      <tr>
+            <td><%= user_fields.label 'Email' %> </td>
+            <td><%= user_fields.label 'Password'%></td> 
+            <td></td>
+          </tr>
+          <tr>
+            <td> <%= user_fields.text_field :email, placeholder: "email",
+                 class: "form_control"  
+                 %> 
+            </td>
+            <td> <%= user_fields.password_field :password, placeholder: "password",
+                    class: "form_control"
+                  %>
+            </td>
+            <td> <%= user_fields.submit "Log In", class: "btn btn-info" %></td>
+          </tr>
+          <tr>
+            <td><input type="checkbox" name="keep_logged_in">Keep me logged in</td>
+            <td><a href="dummy_url" id="hover_link">Forgot your password?</a></td>
+          </tr>
+        </table>
+      <% end %>
     </p>
   </div>
 
   <div class="row">
+    
     <div class="col-md-1">
-    </div>  
+    </div>
+
     <div class="col-md-5">
       <br>
       <br>
       <br>
+    
       <h1>Connect with all your friends</h1>
+    
       <br>
-      <h3>
+    
+      <h3 class="text-left">
         <ul>
           <li>See photos and updates in your news feed</li>
           <br>
@@ -46,109 +59,99 @@
         <ul>
       </h3>  
     </div>
+    
     <div class="col-md-1">
     </div>  
+    
     <div class="col-md-5">
+      
       <%= form_for @user do |user_fields| %>
-  	   <table id="login_details">
-		 
-        <tr>
-          <td><br><span style="font-size:30px;font-family:Tahoma,Verdana,Arial Narrow">Sign up<br><font size=3>It's free and always will be</font></span><br></td>
-        </tr>
-     
-        <tr>
-          <td>
-            <input class="login_details" type="text" name="user[first_name]" placeholder="First name" size="20">
-            <input class="login_details" type="text" name="user[last_name]" placeholder="Last name" size="20">
-          </td>
-        </tr>
 
-        <tr>
-          <td><input class="login_details" type="text" name="user[username]" placeholder="Your username" size="20"></td>
-        </tr>
-     
-
-        <tr>
-          <td><input class="login_details" type="text" name="user[email]" placeholder="Your Email" size="42"></td>
-        </tr>
-     
-        <tr>
-          <td><input class="login_details" type="password" name="user[password]" placeholder="Password" size="24"></td>
-        </tr>
-
-        <tr>
-          <td><input class="login_details" type="password" name="user[password_confirmation]" placeholder="Confirm Password" size="24">
-          </td>
-        </tr>
-
-        <tr>
-          <td>
-            <br><font size=5>Birthday</font><br>
-            <select name="user[birth_month]" title="Month">
-              <font size="6">
-              <option value="0" selected> Month </option>	
-              <option value="1"> Jan </option> <option value="2"> Feb </option>
-              <option value="3"> Mar </option> <option value="4"> Apr </option>
-              <option value="5"> May </option> <option value="6"> Jun </option>
-              <option value="7"> Jul </option> <option value="8"> Aug </option>
-              <option value="9'"> Sep </option> <option value="10"> Oct </option>
-              <option value="11"> Nov </option> <option value="12"> Dec </option>
-              </font>
-            </select>
+        <ul>
         
-            <select name="user[birth_day]" title="Day">
-              <option value="0" selected> Day </option>
-              <option> 1 </option> <option> 2 </option> <option> 3 </option>
-              <option> 4 </option> <option> 5 </option> <option> 6 </option>
-              <option> 7 </option> <option> 8 </option> <option> 9 </option>
-              <option> 10 </option> <option> 11 </option> <option> 12 </option>
-              <option> 13 </option> <option> 14 </option> <option> 15 </option>
-              <option> 16 </option> <option> 17 </option> <option> 18 </option>
-              <option> 19 </option> <option> 20 </option> <option> 21 </option>
-              <option> 22 </option> <option> 23 </option> <option> 24 </option>
-              <option> 25 </option> <option> 26 </option> <option> 27 </option>
-              <option> 28 </option> <option> 29 </option> <option> 30 </option>
-              <option>31</option>
-            </select>
-          
-            <select name="user[birth_year]" title="Year">
-              <option value="0" selected> Year </option>
-              <option> 1950 </option> <option> 1951 </option> <option> 1952 </option>
-              <option> 1953 </option>
-              <option> 1954 </option> <option> 1955 </option> <option> 1956 </option>
-              <option> 1957 </option> <option> 1958 </option> <option> 1959 </option>
-              <option> 1960 </option> <option> 1961 </option> <option> 1962 </option>
-              <option> 1963 </option> <option> 1964 </option> <option> 1965 </option>
-              <option> 1966 </option> <option> 1967 </option> <option> 1968 </option>
-              <option> 1969 </option> <option> 1970 </option> <option> 1971 </option>
-              <option> 1972 </option> <option> 1973 </option> <option> 1974 </option>
-              <option> 1975 </option> <option> 1976 </option> <option> 1977 </option>
-              <option> 1978 </option> <option> 1979 </option> <option> 1980 </option>
-              <option> 1981 </option> <option> 1982 </option> <option> 1983 </option>
-              <option> 1984 </option> <option> 1985 </option> <option> 1986 </option>
-              <option> 1987 </option> <option> 1988 </option> <option> 1989 </option>
-              <option> 1990 </option> <option> 1991 </option> <option> 1992 </option>
-              <option> 1993 </option> <option> 1994 </option> <option> 1995 </option>
-              <option> 1996 </option> <option> 1997 </option> <option> 1998 </option>
-              <option> 1999 </option> <option> 2000 </option> <option> 2001 </option>
-              <option> 2002 </option> <option> 2003 </option> <option> 2004 </option>
-              <option> 2005 </option> <option> 2006 </option> <option> 2007 </option>
-              <option> 2008 </option> <option> 2009 </option> <option> 2010 </option>
-            </select><span style="font-size:12px;color:navy;"> Why do I need to provide my birthday?</span>
-     
-            <p>
-              <input type="radio" name="sex" value="Male">Male
-              <input type="radio" name="sex" value="female">Female
-            </p>
-     
-            <span style="font-size:12px;color:gray;">
-            	By clicking Sign Up, you agree to our <b>Terms</b> and that you have<br> read our <b>Data Policy</b>, including our Cookie Use
-        	  </span>
-            <p><%= user_fields.submit "Sign Up!", class: "btn btn-block btn-info" %></p>
-          </td>
-        </tr>
-      </table>  
+          <% @user.errors.full_messages.each do |error| %>
+            <li><%= error %></li>
+          <% end %>
+        
+        </ul>
+  	   
+        <table id="login_details">
+		 
+          <tr>
+            <td><br><span style="font-size:30px;font-family:Tahoma,Verdana,Arial Narrow">Sign up<br><font size=3>It's free and always will be</font></span><br></td>
+          </tr>
+ 
+          <tr>
+            <td>
+              <%= user_fields.fields_for :profile do |profile_fields| %>
+             
+                <%= profile_fields.text_field :first_name, placeholder: "First Name",
+                    class: "login_details form-control" %>
+                <%= profile_fields.text_field :last_name, placeholder: "Last Name",
+                    class: "login_details form-control" %>
+             
+              <% end %>      
+            </td>
+          </tr>
+
+          <tr>
+            <td> <%= user_fields.text_field :username, placeholder: "Your User Name",
+                  class: "login_details form-control" %>
+            </td>
+          </tr>
+
+          <tr>
+            <td><%= user_fields.text_field :email, placeholder: "Your Email",
+               class: "login_details form-control" %> 
+            </td>
+          </tr>
+       
+          <tr>
+            <td> <%= user_fields.password_field :password, placeholder: "Your Password",
+                class: "login_details form-control" %>
+            </td>
+          </tr>
+
+          <tr>
+            <td> <%= user_fields.password_field :password_confirmation, 
+                 placeholder: "Confirm Password",
+                 class: "login_details form-control" %>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <br><font size=5>Birthday</font><br>
+             
+              <%= user_fields.fields_for :profile do |profile_fields| %>
+                <%= profile_fields.date_field :birthdate %>
+              <% end %>
+             
+              <span style="font-size:12px;color:navy;">
+               Why do I need to provide my birthday?
+              </span>
+       
+              <p>
+                <input type="radio" name="sex" value="Male">Male
+                <input type="radio" name="sex" value="female">Female
+              </p>
+       
+              <span style="font-size:12px;color:gray;">
+              	By clicking Sign Up, you agree to our <b>Terms</b> and that you have<br> read our <b>Data Policy</b>, including our Cookie Use
+          	  </span>
+            </td>
+          </tr>
+
+          <tr> 
+            <td>
+              <p><%= user_fields.submit "Sign Up!", class: "btn btn-block btn-info" %></p>
+            </td>
+          </tr>
+
+        </table>  
+   
       <% end %>  
+   
     </div>
   </div>
 </div>

@@ -1,6 +1,11 @@
 class User < ActiveRecord::Base
-  before_create :generate_token
+
+  has_one  :profile,  dependent:   :destroy
+  has_many :posts,    dependent:   :destroy
+  has_many :comments, dependent:   :destroy
+  has_many :likes,    dependent:   :destroy
   
+  before_create :generate_token
   has_secure_password
 
   validates_presence_of :username,  uniqueness: true
@@ -10,6 +15,10 @@ class User < ActiveRecord::Base
             :length => {:in => 8..20},
             :allow_nil => true
 
+
+  accepts_nested_attributes_for :profile,
+                               :reject_if => :all_blank,
+                               :allow_destroy => true
   def generate_token
     begin
       self[:auth_token] = SecureRandom.urlsafe_base64
@@ -27,13 +36,8 @@ class User < ActiveRecord::Base
   def self.full_name
     first_name + " " + last_name
   end
-
-  def self.domicile
-    str = city + " " + state + " " + country
-  end
-
-  def self.hometown
-    str = hometown_city + " " + hometown_state + " " + hometown_country
-  end
   
+  def recent_posts
+    self.posts.order("id DESC")
+  end  
 end

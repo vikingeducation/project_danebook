@@ -1,0 +1,112 @@
+<%= render partial: "layouts/shared/navbar_signed_in" %>
+<div class="row"> <!--main row for rest of page-->
+
+  <div class="col-md-8 col-md-offset-2"><!--main middle for image and nav links--> 
+
+    <!--for the cover image -->
+    <div class="container-border row no-pad">
+     
+      <div class="image-container">
+        <img src="http://vignette3.wikia.nocookie.net/harrypotter/images/b/bd/Dhogwarts.jpg/revision/latest?cb=20120128145344"
+        class="img-responsive cover-image" alt="Responsive image">
+
+        <img src="http://ndl.mgccw.com/mu3/000/488/259/sss/42409d600b984fc9934a52f28291ba27_small.png" 
+             class="img-thumbnail" id ="profile-image" alt="profile">   
+      </div>
+      
+      <!--for the navigation bar to diffetent pages-->
+      <div class="row no-pad border-container"> 
+
+        <div  class="col-md-12 text-center">
+          <div class="list-group list-group-horizontal">
+            <a href="#" class="list-group-item active">Timeline</a>
+            <a href="<%= user_path(@user) %>" class="list-group-item">About</a>
+            <a href="photos.html" class="list-group-item">Photos</a>
+            <a href="friends.html" class="list-group-item">Friends</a>
+            <a href="<%= edit_user_path(@user) %>" class="list-group-item">
+               Edit Profile
+            </a>
+           </div>
+        </div>
+      </div> <!--end navigation bar to diffetent pages-->
+    </div> <!--end top container-->
+
+    <!--Timeline events info container-->
+    <div class="row no-pad container-border page-type">
+
+      <div class="col-md-4">
+
+        <!--About info container on left-->
+        <div class="panel panel-default panel-style">
+          <div class="panel-heading">
+            <h3 class="panel-title">About</h3>
+          </div>
+
+          <div class="text-left panel-body panel-body-style basic-margin">
+            <p style="font-size:0.9em;">
+              <table>
+                <tbody>
+                  <tr>
+                    <td class="col-md-6"> Born on </td>
+                    <td><%= @profile.birthdate.strftime("%B %d, %Y") %>  
+                  </tr>
+                  <tr>
+                    <td class="col-md-6"> Went to school at </td>
+                    <td> <%= @profile.college %> </td>
+                  </tr>
+                  <tr>
+                    <td class="col-md-6"> Hometown in </td>
+                    <td> <%= @profile.hometown %> </td>
+                  </tr> 
+                  <tr>
+                    <td class="col-md-6"> Currently lives in </td>
+                    <td> <%= @profile.domicile %> </td>
+                  </tr>
+                </tbody>    
+              </table>  
+            </p>
+          </div>
+
+        </div>
+
+        <!--Display Photos container on left-->
+        <div class="panel panel-default panel-style">
+          <div class="panel-heading">
+            <h3 class="panel-title">Photos (230)</h3>
+          </div>
+
+          <div class="panel-body panel-body-style basic-margin">
+            <p style="text-align:left;">
+            </p>
+          </div>
+
+        </div>
+
+        <!--Display friends photos container on left-->
+        <div class="panel panel-default panel-style">
+          <div class="panel-heading">
+            <h3 class="panel-title">Friends (10)</h3>
+          </div>
+
+          <div class="panel-body panel-body-style" style="margin:4px;">
+            <p style="text-align:left;">
+            </p>
+          </div>
+
+        </div> 
+      
+      </div>
+      
+      <div class="col-md-8">
+        <%= render partial: 'post_form' %>
+        
+        <%= render partial: @posts %>
+       
+      </div> 
+
+    </div>  
+  </div><!--End of main middle for image and nav links--> 
+    
+  <div class="col-md-2">
+  </div>
+</div>    

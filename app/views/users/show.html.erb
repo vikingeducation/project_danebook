@@ -1,49 +1,5 @@
-
-<!-- notice that this is a ROW as well as a navbar -->
-<nav id ="search-navbar" class="navbar navbar-default row">
+  <%= render partial: "layouts/shared/navbar_signed_in" %>
   
-  <div class="col-md-2"> 
-  </div>
-  <!-- responsive mobile stuff collapses down  -->
-  <div class="logo-container col-md-2">
-    <button type="button" class="navbar-toggle collapsed" 
-            data-toggle="collapse" 
-            data-target="#bs-example-navbar-collapse-1">
-      <span class="sr-only">Toggle navigation</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
-
-    <!--company brand link -->
-    <img class="pull-left img-rounded" 
-         src="http://www.mapsofworld.com/images/world-countries-flags/denmark-flag.gif">
-    <a class="navbar-brand" id = "brand-link" href="#">Danebook</a>
-  </div>
-    
-  <!-- wraps rest of links to collapse in mobile-->
-  <div class="nav navbar-nav navbar-left col-md-4">
-    
-    <form class="navbar-form" role="search">
-      <div class="search-bar input-group input-group-sm col-md-4 col-sm-4
-                  form-group">
-        <input type="text" class="form-control pull-left" 
-               placeholder="Search">
-      </div>
-    </form>
-  
-  </div>
-       <!-- wraps rest of links to collapse in mobile-->
-  <div class="nav navbar-nav col-md-2">
-    <a href="#" class="pull-right nav-personal-link"><%=@user.first_name%> <%=@user.last_name%></a>
-  </div><!--navbar-collapse-->
-  
-  <div class="col-md-2"> 
-  </div>  
-
-</nav>
-
-<div class="main"> <!--main container for rest of page-->
   <div class="row"> <!--main row-->
   
     <div class="col-md-2"><!--empty left column space-->
@@ -65,8 +21,8 @@
       <div class="row no-pad container-border" >
         <div  class="col-md-12 text-center">
           <div class="list-group list-group-horizontal">
-            <a href="timeline.html" class="list-group-item">Timeline</a>
-            <a href="#" class="list-group-item active">About</a>
+            <a href="<%= new_user_post_path(@user) %>" class="list-group-item">Timeline</a>
+            <a href= "<%= user_path(@user) %>" class="list-group-item active">About</a>
             <a href="photos.html" class="list-group-item">Photos</a>
             <a href="friends.html" class="list-group-item">Friends</a>
             <%if current_user_view?%>
@@ -88,7 +44,7 @@
                        value="Edit Your Profile">
               </a>
             <% else %>
-              <a href="#">
+              <a href="<%= edit_user_path(@user) %>">
                 <input type="button" class="btn btn-info pull-right btn-edit-profile" 
                        value="Edit Your Profile">
             <% end %>  
@@ -97,50 +53,58 @@
       </div>
       
       <div class="edit-profile-container">
-        <div class="col-md-6">
+        <div class="col-md-6 text-left">
 
-            <h4>Basic Information</h4>
-            <dl class='dl-horizontal slightly-reduced-font'>
-              <dt class="dd-dt-style" style="text-align:left;">Birthday</dt>
-              <dd class="dd-dt-style" style="text-align:left;">
-                 <%= @user.birth_month %>/<%= @user.birth_day %>/<%= @user.birth_year %>
-              </dd>
-              <dt class="dd-dt-style" style="text-align:left;">College</dt>
-              <dd class="dd-dt-style" style="text-align:left;">
-                   <%= @user.college %>
-              </dd>
-              <dt class="dd-dt-style" style="text-align:left;">Hometown</dt>
-              <dd class="dd-dt-style" style="text-align:left;"><%= @user.hometown %></dd>
-              <dt sclass="dd-dt-style" style="text-align:left;">
-                  Currently Lives in
-              </dt>
-              <dd class="dd-dt-style" style="text-align:left;"><%= @user.domicile %></dd>
-            </dl>
-          
-            <h4>Contact Information</h4>
-            <dl class="dl-horizontal slightly-reduced-font">
-              <dt class="dd-dt-style" style="text-align:left;">Email</dt>
-              <dd class="dd-dt-style" style="text-align:left;">
-                  <%= @user.email %>
-              </dd>
-              <dt class="dd-dt-style" style="text-align:left;">Phone</dt>
-              <dd class="dd-dt-style" style="text-align:left;"><%= @user.phone %></dd>
-            </dl>
-  
+          <h4>Basic Information</h4>
+          <table>
+            <tbody>
+              <tr>
+               <td class="col-md-6"> Birthday </td>
+               <td> <%= @profile.birthdate.strftime("%B %d, %Y") %> </td>
+              </tr>
+              <tr>
+                <td class="col-md-6">College</td>
+                <td><%= @profile.college %></td>
+              </tr>
+              <tr>
+                <td class="col-md-6">Hometown</td>
+                <td><%= @profile.hometown %></td>
+              </tr>  
+              <tr>
+                <td class="col-md-6"> Currently Lives in</td>
+                <td><%= @profile.domicile %></td>
+              </tr>
+            </tbody>
+          </table> 
+          <br>
+          <h4>Contact Information</h4>
+          <table>
+            <tbody>
+              <tr>
+                 <td class="col-md-6">Email</td>
+                 <td> <%= @user.email %></td>
+              </tr>
+              <tr>
+                 <td class="col-md-6">Phone</td>
+                 <td> <%= @profile.phone %></td>
+              </tr>
+            </tbody>
+          </table>
+          <br>
         </div>
       
         <section class="col-md-6 reduced-font">
           <article>
             <h4>Words to live by</h4>
-            <%= @user.my_words %>
+            <%= @profile.my_words %>
           </article>
           
           <article>
             <h4>About me</h4>
-            <%= @user.about_me %>
+            <%= @profile.about_me %>
           </article>
         </section>
-    
+        
       </div>
     
     </div>
@@ -148,4 +112,3 @@
     <div class="col-md-2">
     </div>
   </div>
-</div> 

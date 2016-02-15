@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :set_user_and_profile, only: [:show, :edit, :update, :destroy]
   before_action :require_login, :except => [:new, :create]
   before_action :require_current_user, :only => [:edit, :update, :destroy]
 
@@ -8,82 +8,78 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
-  # GET /users/1
-  # GET /users/1.json
   def show
   end
 
-  # GET /users/new
   def new
     @user = User.new
+    @user.build_profile
   end
 
-  # GET /users/1/edit
   def edit
   end
 
-  # POST /users
-  # POST /users.json
   def create
-    @user = User.new(user_params)
 
+    @user = User.new(user_params)
+    
     if @user.save
-      flash[:success] = "Your sign up was successfull!"
+      flash[:success] = "#{@user.email} was signed up was successfully!"
       sign_in(@user)
       redirect_to edit_user_path(@user)
     else
       flash[:alert] = "Your sign up was NOT successfull!"
-      format.html { render :new }
+      render :new
     end
 
   end
 
-  # PATCH/PUT /users/1
-  # PATCH/PUT /users/1.json
   def update
-    respond_to do |format|
-      if current_user.update(user_params)
-        format.html { redirect_to current_user, notice: 'Your details have been updated!' }
-        format.json { render :show, status: :ok, location: current_user }
-      else
-        format.html { render :edit }
-        format.json { render json: current_user.errors, status: :unprocessable_entity }
-      end
+    if current_user.update(user_params)
+        flash[:success] = "#{@user.email} was updated successfully!"
+        redirect_to user_path(@user)
+    else    
+      flash[:alert] = "Your update was NOT successfull!"
+      render :edit
     end
   end
 
-  # DELETE /users/1
-  # DELETE /users/1.json
   def destroy
-    @user.destroy
-    respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
-      format.json { head :no_content }
+    if current_user.destroy
+      flash[:success] = "#{current.email} was removed!"
+      redirect_to user_path(current_user)
+    else    
+      flash[:alert] = "#{current.email} could not be removed!"
+      render :edit
     end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_user
+    def set_user_and_profile
       @user = User.find(params[:id])
+      @profile = Profile.find_by_user_id(params[:id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
+
       params.require(:user).permit(
         :username,
-        :first_name, 
-        :last_name, 
-        :email, 
-        :hometown,
-        :domicile,
-        :birth_day,
-        :birth_year,
-        :birth_month,
-        :about_me,
-        :my_words,
+        :email,
         :password,
-        :college, 
-        :password_confirmation)
+        :password_confirmation,
+        {:profile_attributes => [
+         :id,
+         :user_id,
+         :college, 
+         :first_name, 
+         :last_name, 
+         :hometown,
+         :domicile,
+         :birthdate,
+         :about_me,
+         :my_words ] }
+      )
     end
 end

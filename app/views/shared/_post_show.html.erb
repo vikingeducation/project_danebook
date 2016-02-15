@@ -42,7 +42,9 @@
               <a class="comment-link" href="#">Comment</a>
             </div>
             <div class="delete-link">
-              <a class="delete-link" href="#">Delete</a>
+              <% if current_user && current_user.id == @profile.user.id %>
+                <%= link_to "Delete", post_path(post), class: "delete-link", method: :delete %>
+              <% end %>
             </div>
           </div>
         </div>

@@ -23,7 +23,10 @@ class PostsController < ApplicationController
       redirect_to user_path(current_user)
     else
       flash[:danger] = "Failed to delete a post!"
-
+      @user = current_user
+      @profile = current_user.profile
+      @posts = current_user.posts.order("created_at DESC")
+      render "users/show"
     end
   end
 

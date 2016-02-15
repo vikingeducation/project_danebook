@@ -55,15 +55,13 @@
               </div>
             </div>
           </div>
+          <!-- Display Like Statistics -->
+          <%= render partial: "likes/like_statistics", locals: { post: post } %>
+          <!-- End of Like Statistics -->
           <%= render partial: 'comments/comment_form', locals: { post: post } if post.id %>
         </div>
       <% end %>
-
       <!-- End of Post options -->
-
-      <!-- Display Like Statistics -->
-      <%= render partial: "likes/like_statistics", locals: { post: post } %>
-      <!-- End of Like Statistics -->
 
     </div>
   </div>

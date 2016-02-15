@@ -20,6 +20,7 @@ class UsersController < ApplicationController
     end
     @profile = @user.profile
     @user.posts.build
+    @posts = @user.posts.order("created_at DESC")
   end
 
   # Create User

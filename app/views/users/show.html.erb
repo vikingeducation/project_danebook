@@ -12,11 +12,13 @@
       <%= render partial: 'post_spacing' %>
     <% end %>
 
-    <div class="row" style="margin-top: 10px">
-      <div class="col-sm-12">
-        <%= render partial: 'post_show' %>
+    <% @posts.each do |post| %>
+      <div class="row" style="margin-top: 10px">
+        <div class="col-sm-12">
+          <%= render partial: 'post_show', locals: { post: post } if post.id %>
+        </div>
       </div>
-    </div>
+    <% end %>
 
   </div>
 </div>

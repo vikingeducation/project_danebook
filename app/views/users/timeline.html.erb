@@ -230,26 +230,25 @@
           </div><!-- End Comment Header -->
 
           <div class="comment-content row">
-            <p>
-              <%= post.body %>
-            </p>
+            <%= post.body %>
           </div><!-- End Content Row -->
 
           <div class="comment-footer row">
-            <div class="navbar-form navbar-left">
-              <% if current_user.liked_post?(post) %>
-                <%= link_to "Unlike", post_like_path(post, current_user.id_of_like(post)), method: :delete %>
+            <div class="clearfix col-xs-12">
+              <% if current_user.liked_resource?(post) %>
+                <%= link_to "Unlike", post_like_path(post, current_user.id_of_like(post)), method: :delete, class: "pull-left" %>
               <% else %>
-                <%= link_to "Like", post_likes_path(post), method: :post %>
+                <%= link_to "Like", post_likes_path(post), method: :post, class: "pull-left" %>
               <% end %>
-              <%= post.likes.count unless post.likes.empty? %>
-              <a>Comment</a>
-            </div>
-            <div class="navbar-form navbar-right">
+              <span class="pull-left">
+                <%= post.likes.count unless post.likes.empty? %>
+              </span>
               <% if current_user %>
-                <%= link_to "Delete", post_path(post), method: :delete %>
+                <%= link_to "Delete", post_path(post), method: :delete, class: "pull-right" %>
               <% end %>
+
             </div>
+
             <div class="col-xs-12">
               <% post.likes.each do |like| %>
                 <span><%= like.author.first_name %></span>
@@ -258,12 +257,28 @@
           </div><!-- End Comment Footer -->
 
           <% post.comments.each do |comment| %>
-            <div class="comment-content row">
-              <span><%= comment.author.first_name %></span>
-              <p>
+            <div class="panel panel-default row">
+              <div class="panel-heading">
+                <%= link_to comment.author.first_name, user_path(comment.author) %>
+                <span>Posted on <%= comment.created_at %></span>
+              </div>
+              <div class="panel-body">
                 <%= comment.body %>
-              </p>
+              </div>
+
+              <div class="panel-footer clearfix">
+                <% if current_user.liked_resource?(comment) %>
+                <%= link_to "Unlike", comment_like_path(comment, current_user.id_of_like(comment)), method: :delete %>
+                <% else %>
+                  <%= link_to "Like", comment_likes_path(comment), method: :post %>
+                <% end %>
+                <%= comment.likes.count unless comment.likes.empty? %>
+                <% if current_user == comment.author %>
+                  <%= link_to "Delete", post_comment_path(post, comment), method: :delete, class: "pull-right" %>
+                <% end %>
+              </div>
             </div>
+
           <% end %>
 
           <div class="form-group row">
@@ -400,7 +415,6 @@
           </footer><!-- End Comment Footer -->
         </div><!-- End Comment Wrapper -->
       </div><!-- End Comment Container -->
-      <
 
     </section>
 </main>

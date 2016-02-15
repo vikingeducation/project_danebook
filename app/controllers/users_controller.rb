@@ -72,6 +72,7 @@ class UsersController < ApplicationController
         :password, 
         :password_confirmation,
         :profile_attributes => [
+            :gender,
             :birthday,
             :current_location,
             :hometown,

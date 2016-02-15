@@ -32,23 +32,31 @@
       <!-- End of Post Content -->
 
       <!-- Post options -->
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="post-cta-bg">
-            <div class="like-link">
-              <%= link_to "Like", post_likes_path(post.id), method: :post %>
-            </div>
-            <div class="comment-link">
-              <a class="comment-link" href="#">Comment</a>
-            </div>
-            <div class="delete-link">
-              <% if current_user && current_user.id == @profile.user.id %>
-                <%= link_to "Delete", post_path(post), class: "delete-link", method: :delete %>
+      <% if signed_in_user? %>
+        <div class="row">
+          <div class="col-xs-12">
+            <div class="post-cta-bg">
+              <% if liked_post?(post) %>
+              <div class="like-link">
+                <%= link_to "Unlike", post_like_path(post.id, get_like(post)), method: :delete %>
+              </div>
+              <% else %>
+                <div class="like-link">
+                  <%= link_to "Like", post_likes_path(post.id), method: :post %>
+                </div>
               <% end %>
+              <div class="comment-link">
+                <a class="comment-link" href="#">Comment</a>
+              </div>
+              <div class="delete-link">
+                <% if current_user && current_user.id == @profile.user.id %>
+                  <%= link_to "Delete", post_path(post), class: "delete-link", method: :delete %>
+                <% end %>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      <% end %>
       <!-- End of Post options -->
 
       <!-- Display Like Statistics -->

@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :profile
 
   has_many :posts, inverse_of: :user, dependent: :destroy
+  has_many :comments
+  
   accepts_nested_attributes_for :posts,
     reject_if: proc { |attributes| attributes['body'].blank? },
     allow_destroy: :true

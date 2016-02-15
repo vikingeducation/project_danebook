@@ -55,8 +55,10 @@
               </div>
             </div>
           </div>
+          <%= render partial: 'comments/comment_form', locals: { post: post } if post.id %>
         </div>
       <% end %>
+
       <!-- End of Post options -->
 
       <!-- Display Like Statistics -->

@@ -7,12 +7,12 @@
   border-top: 1px solid #aaa;
 }
 
-.post-spacing {
-  height: 20px;
+.post-cta {
+  margin: 10px 0 0 0;
 }
 
-.post-bg {
-  background-color: #fff;
+.post-spacing {
+  height: 20px;
 }
 
 .poster-pic {
@@ -54,6 +54,8 @@
 
 .post-response-bg {
   background-color: #d8d8d8;
+  border-left: 1px solid #ddd;
+  border-right: 1px solid #ddd;
 }
 
 .commentor-pic {

@@ -40,7 +40,7 @@ class UsersController < ApplicationController
   def update
     if current_user.update(user_params)
       flash[:success] = "Success!"
-      redirect_to user_path(@user)
+      redirect_to user_path(current_user)
     else
       flash[:danger] = "Failed!"
       redirect_to user_path(current_user)

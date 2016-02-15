@@ -1,3 +1,75 @@
 // Place all the styles related to the posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.post-cta-bg {
+  background-color: #d8d8d8;
+  border-top: 1px solid #aaa;
+}
+
+.post-spacing {
+  height: 20px;
+}
+
+.post-bg {
+  background-color: #fff;
+}
+
+.poster-pic {
+  margin: 5px;
+}
+
+.post-author {
+  margin: 20px 0 0 0;
+  font-size: 18px;
+}
+
+.post-datetime {
+  color: #999;
+}
+
+.post-content {
+  margin: 10px;
+}
+
+.like-link {
+  margin: 10px 5px 10px 20px;
+  display: inline-block;
+}
+
+.unlike-link {
+  margin: 20px;
+  display: inline-block;
+}
+
+.comment-link {
+  margin: 10px 0 10px 10px;
+  display: inline-block;
+}
+
+.delete-link {
+  float: right;
+  margin: 10px 10px 10px 0;
+}
+
+.post-response-bg {
+  background-color: #d8d8d8;
+}
+
+.commentor-pic {
+  margin: 0 5px 0 15px;
+}
+
+.comment-info {
+  font-size: 16px;
+}
+
+.comment-content {
+  margin-top: 30px;
+}
+
+.h-line {
+  height: 1px;
+  border-top: 1px solid #aaa;
+  width: 100%;
+}

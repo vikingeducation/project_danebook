@@ -14,13 +14,19 @@ class UsersController < ApplicationController
   def show
     if User.exists?(params[:id])
       @user = User.find(params[:id])
+      @profile = @user.profile
+      @posts = @user.posts.order("created_at DESC")
     else
       flash[:danger] = "That User Doesn't Exist!"
-      @user = current_user
+      if signed_in_user?
+        @profile = current_user.profile
+        current_user.posts.build
+        @posts = current_user.posts.order("created_at DESC")
+        redirect_to user_path(current_user)
+      else
+        redirect_to signup_path
+      end
     end
-    @profile = @user.profile
-    @user.posts.build
-    @posts = @user.posts.order("created_at DESC")
   end
 
   # Create User

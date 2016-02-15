@@ -1,4 +1,12 @@
 <div class="row">
+  <% if @user.errors.any? %>
+    <% @user.errors.full_messages.each do |msg| %>
+      <%= content_tag :div, msg, class: "alert alert-danger" %>
+    <% end %>
+  <% end %>
+</div>
+
+<div class="row">
   <!-- Post Header -->
   <div class="col-sm-12">
     <nav class="navbar navbar-default about-nav">

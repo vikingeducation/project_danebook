@@ -11,23 +11,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160215095221) do
+ActiveRecord::Schema.define(version: 20160215203530) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "comments", force: :cascade do |t|
+    t.text     "body",             null: false
+    t.integer  "user_id",          null: false
+    t.integer  "commentable_id",   null: false
+    t.string   "commentable_type", null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "comments", ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type", using: :btree
+
   create_table "likes", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "likeable_id"
-    t.string   "likeable_type"
+    t.integer  "user_id",       null: false
+    t.integer  "likeable_id",   null: false
+    t.string   "likeable_type", null: false
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end
 
-  add_index "likes", ["likeable_id", "likeable_type"], name: "index_likes_on_likeable_id_and_likeable_type", using: :btree
+  add_index "likes", ["user_id", "likeable_id", "likeable_type"], name: "index_likes_on_user_id_and_likeable_id_and_likeable_type", unique: true, using: :btree
 
   create_table "posts", force: :cascade do |t|
-    t.string   "body",       null: false
+    t.text     "body",       null: false
     t.integer  "user_id",    null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -43,8 +54,8 @@ ActiveRecord::Schema.define(version: 20160215095221) do
     t.string   "from"
     t.string   "lives"
     t.string   "number"
-    t.string   "words"
-    t.string   "about"
+    t.text     "words"
+    t.text     "about"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

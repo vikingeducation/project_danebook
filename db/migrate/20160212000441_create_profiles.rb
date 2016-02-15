@@ -9,8 +9,8 @@ class CreateProfiles < ActiveRecord::Migration
       t.string :from
       t.string :lives
       t.string :number
-      t.string :words
-      t.string :about
+      t.text :words
+      t.text :about
 
       t.index :user_id, unique: true
 

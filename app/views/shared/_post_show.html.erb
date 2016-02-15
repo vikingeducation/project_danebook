@@ -36,7 +36,7 @@
         <div class="col-xs-12">
           <div class="post-cta-bg">
             <div class="like-link">
-              <a href="#">Like</a>
+              <%= link_to "Like", post_likes_path(post.id), method: :post %>
             </div>
             <div class="comment-link">
               <a class="comment-link" href="#">Comment</a>

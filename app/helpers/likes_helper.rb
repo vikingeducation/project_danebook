@@ -9,8 +9,13 @@ module LikesHelper
     else
       liked = false
     end
+
     result = ""
-    result += "You and " if liked
+    if liked
+      result += size > 1 ? "You and " : "You "
+    else
+
+    end
 
     remaining = liked ? size - 3: size - 2
 
@@ -29,7 +34,11 @@ module LikesHelper
 
     result += " and #{remaining} others" if remaining > 0
 
-    result += " likes this."
+    if size > 3
+      result += " likes this."
+    elsif
+        result += liked ? " like this." : " likes this."
+    end
     return result
   end
 

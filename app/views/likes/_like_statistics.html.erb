@@ -1,11 +1,13 @@
-<div class="row">
-  <div class="col-xs-12">
-    <div class="post-response-bg">
-      <div class="like-link">
-        <p>
-          <%= display_like_stats(post).html_safe %>
-        </p>
+<% if post.likes.size > 0 %>
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="post-response-bg">
+        <div class="like-link">
+          <p>
+            <%= display_like_stats(post).html_safe %>
+          </p>
+        </div>
       </div>
     </div>
   </div>
-</div>
+<% end %>

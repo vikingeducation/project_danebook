@@ -5,7 +5,7 @@ class FriendingsController < ApplicationController
 
   def create
     friending_recipient = User.find(params[:id])
-    if current_user.friended_users << friending_recipient
+    if current_user.friendeds << friending_recipient
       flash[:success] = "Successfully friended #{friending_recipient.name}"
       redirect_to friending_recipient
     else
@@ -23,5 +23,9 @@ class FriendingsController < ApplicationController
       flash[:danger] = "Failed to unfriend"
       redirect_to current_user
     end
+  end
+
+  def show
+    
   end
 end

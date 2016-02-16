@@ -55,13 +55,29 @@
             <!--vertical divider-->
             <div class="v-line"></div>
             <li>
-              <a class="btn btn-default tl-menu-link" role="button" href="#">
+              <a class="btn btn-default tl-menu-link" role="button" href="">
                 Friends
-                <p class="count-disp">(9000)</p>
+                <%= content_tag :p, @profile.user.friendeds.size, class: "count-disp" %>
               </a>
             </li>
             <!--vertical divider-->
             <div class="v-line"></div>
+
+            <% if signed_in_user? %>
+              <% if current_user.friendeds.pluck(:id).include?(@profile.user.id) %>
+                <%= link_to "Unfriend #{@profile.user.name}",
+                      friending_path(id: @profile.user.id, current_user_id: current_user.id),
+                      method: "delete",
+                      class: "btn btn-danger",
+                      style: "margin: 6px"%>
+              <% else %>
+                <%= link_to "Friend #{@profile.user.name}",
+                      friendings_path(id: @profile.user.id, current_user_id: current_user.id),
+                      method: "post",
+                      class: "btn btn-primary",
+                      style: "margin: 6px" %>
+              <% end %>
+            <% end %>
           </ul>
           <% if current_user && current_user.id == @profile.user.id %>
             <%= link_to "Edit Profile", edit_profile_path(current_user.id), class: "tl-edit-profile" %>

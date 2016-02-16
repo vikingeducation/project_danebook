@@ -4,12 +4,14 @@ Rails.application.routes.draw do
     resources :posts, only: [:new, :create, :destroy, :index] do
     end  
   end  
-  resources :comments, :defaults => { :commentable => 'Post'}, only: [:create, :destroy]
-  resources :likes, :defaults => { :likeable => 'Post' }, only: [:create, :destroy]
+  resources :comments,  only: [:create, :destroy]
+  resources :likes,  only: [:create, :destroy]
 
   resource :session, :only => [:new, :create, :destroy]
     get "login" => "sessions#new"
     delete "logout" => "sessions#destroy"
+
+  resources :friendships, :only => [:index, :new, :create, :destroy]
 
   root 'users#new'
   

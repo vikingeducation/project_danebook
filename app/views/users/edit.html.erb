@@ -22,10 +22,14 @@
         <div class="row no-pad container-border" >
           <div  class="col-md-12 text-center">
             <div class="list-group list-group-horizontal">
-              <a href="<%= new_user_post_path(@user) %>" class="list-group-item">Timeline</a>
+             <% if current_user_view? %>
+                <a href="<%= new_user_post_path(@user) %>" class="list-group-item">Timeline</a>
+              <% else %>
+                <a href="<%= user_posts_path(@user) %>" class="list-group-item">Timeline</a>
+              <% end %>
               <a href="<%= user_path(@user) %>" class="list-group-item">About</a>
               <a href="photos.html" class="list-group-item">Photos</a>
-              <a href="friends.html" class="list-group-item">Friends</a>
+              <a href="<%= friendships_path(user_id: @user) %>" class="list-group-item">Friends</a>
 
               <%if current_user_view?%>
                 <a href=" <%= edit_user_path(@user) %>" class="list-group-item active">Edit Profile</a>

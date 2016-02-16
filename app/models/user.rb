@@ -7,7 +7,19 @@ class User < ActiveRecord::Base
   
   has_many :commented_posts, through: :comments, source: :commentable, source_type: 'Post'
   has_many :liked_posts, through: :likes, source: :likeable, source_type: 'Post'
-  
+
+  # When acting as the initiator of the friending
+  has_many :initiated_friend_requests, :foreign_key => :friend_requestor_id,
+                             :class_name => "Friendship"
+  has_many :friends,         :through => :initiated_friend_requests,
+                             :source => :friend_receiver
+
+  # When acting as the recipient of the friending
+  has_many :received_friend_requests,  :foreign_key => :friend_receiver_id,
+                                       :class_name => "Friending"
+  has_many :users_friended_by,         :through => :received_friend_requests,
+                                       :source => :friend_requestor 
+
   before_create :generate_token
   has_secure_password
 

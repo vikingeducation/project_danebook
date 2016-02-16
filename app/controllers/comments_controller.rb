@@ -9,15 +9,26 @@ class CommentsController < ApplicationController
       flash[:success] = "Comment saved!"
       redirect_user_path(params["comment"][:user_id])
     else
-      flash[:alert] = "Post not saved!"
+      flash[:alert] = "Comment not saved!"
       redirect_user_path(params["comment"][:user_id])
     end
-  end  
- 
+  end 
+
+  def destroy
+    @comment = Comment.find(params[:id])
+    if @comment.destroy
+      flash[:success] = "Comment deleted!"
+      redirect_to new_user_post_path(params[:user_id])
+    else
+      flash[:alert] = "Cmment not deleted!"
+      redirect_to new_user_post_path(params[:user_id])
+    end
+ end
+
   private
 
   def redirect_user_path(user_id)
-    if user_id == current_user.id
+    if user_id == current_user.id.to_s
        redirect_to new_user_post_path(user_id)
     else
        redirect_to user_posts_path(user_id)

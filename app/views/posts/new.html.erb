@@ -22,7 +22,7 @@
             <a href="#" class="list-group-item active">Timeline</a>
             <a href="<%= user_path(@user) %>" class="list-group-item">About</a>
             <a href="photos.html" class="list-group-item">Photos</a>
-            <a href="friends.html" class="list-group-item">Friends</a>
+            <a href="<%= friendships_path(user_id: @user) %>" class="list-group-item">Friends</a>
             <a href="<%= edit_user_path(@user) %>" class="list-group-item">
                Edit Profile
             </a>

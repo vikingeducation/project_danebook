@@ -10,12 +10,9 @@ class PostsController < ApplicationController
   end
 
   def new
-    # @user = User.find(params[:user_id])
-    # @profile = @user.profile
     @posts   = @user.recent_posts
     @post    = @user.posts.build
-    #@like    = @post.likes.build
-    #@comment = @post.comments.build 
+       puts "****** IN NEW POST"
   end  
 
   def create

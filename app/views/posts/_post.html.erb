@@ -3,7 +3,7 @@
   <div class="panel-body panel-body-style basic-margin">
     
     <div class="tiny-font text-left">
-      <img src="assets/komal.jpg" class="smallest-photos pull-left">
+      <img src="assets/noun_121658_cc.png" class="smallest-photos pull-left">
       <br>
       <a href="<%= user_path(@user) %>"> 
         <%= @profile.first_name %> <%= @profile.last_name %>
@@ -44,7 +44,7 @@
 
       <div class="col-md-12 text-left" style="font-size:0.75em;">
         <%= render partial: post.comments %>
-        <%= render partial: "comments/form", locals: {post: post} %>
+        <%= render partial: "comments/form", locals: {commentable: post} %>
       </div>  
 
     </div>  

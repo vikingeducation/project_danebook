@@ -5,8 +5,8 @@
                         panel-style container-border") do |comment_fields| %>
 
     <%= comment_fields.hidden_field :user_id, value: @user.id %>
-    <%= comment_fields.hidden_field :commentable_type, value: post.class %>
-    <%= comment_fields.hidden_field :commentable_id, value: post.id %>
+    <%= comment_fields.hidden_field :commentable_type, value: commentable.class %>
+    <%= comment_fields.hidden_field :commentable_id, value: commentable.id %>
 
     <div class="panel-body panel-body-style basic-margin">
       <%= comment_fields.text_area :body, placeholder:"Comment", class: "form-control",

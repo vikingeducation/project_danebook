@@ -1,8 +1,14 @@
 
 <div class="panel panel-default panel-styler">
   <div class="panel-body panel-body-style basic-margin">
-    <div style="clear:both;text-align:left;font-size:0.75em;">  
+    <div style="clear:both;text-align:left;font-size:1.0em;">  
       <%= comment.body %>
+      <p>
+        <%= comment_like_unlike_link(comment) %>
+        <% if current_user.id == comment.user_id %>
+           <%= link_to "Delete", comment_path(comment.id, user_id: comment.user_id), method: :delete %>
+        <% end %>   
+      </p>
     </div>
   </div>
 </div>    

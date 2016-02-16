@@ -32,8 +32,8 @@
       <!-- End of Post Content -->
 
       <!-- Post options -->
-      <% if signed_in_user? %>
-        <div class="row">
+      <div class="row">
+        <% if signed_in_user? %>
           <div class="col-xs-12">
             <div class="post-cta-bg">
               <% if liked_post?(post) %>
@@ -55,21 +55,23 @@
               </div>
             </div>
           </div>
-          <!-- Display Like Statistics -->
-          <%= render partial: "likes/like_statistics", locals: { post: post } %>
-          <!-- End of Like Statistics -->
+        <% end %>
 
-          <!-- Display all Comments -->
-          <% post.comments.each do |comment| %>
-            <%= render partial: 'comments/comment_show', locals: { comment: comment } %>
-          <% end %>
-          <!-- End of Dispaly all Comments -->
+        <!-- Display Like Statistics -->
+        <%= render partial: "likes/like_statistics", locals: { post: post } %>
+        <!-- End of Like Statistics -->
 
-          <!-- Comment Form -->
-          <%= render partial: 'comments/comment_form', locals: { post: post } if post.id %>
-          <!-- End of Comment Form -->
-        </div>
-      <% end %>
+        <!-- Display all Comments -->
+        <% post.comments.each do |comment| %>
+          <%= render partial: 'comments/comment_show', locals: { comment: comment } %>
+        <% end %>
+        <!-- End of Dispaly all Comments -->
+
+        <!-- Comment Form -->
+        <%= render partial: 'comments/comment_form', locals: { post: post } if post.id && signed_in_user? %>
+        <!-- End of Comment Form -->
+      </div>
+
       <!-- End of Post options -->
 
     </div>

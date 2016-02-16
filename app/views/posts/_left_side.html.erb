@@ -51,28 +51,38 @@
 
 
 
-
-
-
 <div class="friends">
   <table class="table table-bordered">
     <caption class="text-center">Friends</caption>
   <tbody>
-    <tr>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-    </tr>
+    <% if all_friends(user).count.between?(1,6) %>
+
+      <% all_friends(user).each do |friend| %>
+      <tr>
+        <td><%= link_to "#{friend.first_name} #{friend.last_name}", user_timeline_path(friend) %></td>
+      </tr>
+      <% end %>
+
+    <% elsif all_friends(user).count > 6 %>
+      <% 2.times do %>
+        <tr>
+          <% 3.times do %>
+            <% friend = all_friends(user).sample %>
+            <td><%= link_to "#{friend.first_name} #{friend.last_name}", user_timeline_path(friend) %></td>
+        </tr>
+      <% end %>
+    <% end %>
+
+
+    <% else %>
+      <td class="text-center">No friends yet.</td>
+
+    <% end %>
+
     <tr>
       <td colspan="2" class="text-center"><%= link_to "See more Friends"%></td>
     </tr>
+
   </tbody>
   </table>
 </div>

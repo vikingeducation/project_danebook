@@ -7,6 +7,13 @@ class User < ActiveRecord::Base
 
   has_many :posts, inverse_of: :user, dependent: :destroy
   has_many :comments
+
+  has_many :initiated_friendings, foreign_key: :friender_id, class_name: "Friending"
+  has_many :friendeds, through: :initiated_friendings
+
+  has_many :received_friendings, foreign_key: :friended_id, class_name: "Friending"
+  has_many :frienders, through: :received_friendings
+
 # ======================================================
   accepts_nested_attributes_for :posts,
     reject_if: proc { |attributes| attributes['body'].blank? },

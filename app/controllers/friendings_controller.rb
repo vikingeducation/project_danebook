@@ -1,7 +1,7 @@
 class FriendingsController < ApplicationController
   layout "friends"
 
-  before_action :require_login
+  before_action :require_login, except: [:index]
 
 
   def index

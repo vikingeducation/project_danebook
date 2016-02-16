@@ -1,8 +1,14 @@
 
 <div class="panel panel-default">
-  <div class="panel-heading">
-    <%= link_to "#{post.user.first_name} #{post.user.last_name}", user_timeline_path %><br/>
-    Posted on <%= post.created_at.strftime("%A %D") %>
+  <div class="panel-heading"> 
+
+    <% if post.user == current_user %>
+      You posted on <%= post.created_at.strftime("%A %D") %>:
+
+    <% else %>
+      <%= link_to "#{post.user.first_name} #{post.user.last_name}", user_timeline_path %><br/>
+      Posted on <%= post.created_at.strftime("%A %D") %>
+    <% end %>
   </div>
 
   <div class="panel-body">

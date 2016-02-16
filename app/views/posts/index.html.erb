@@ -7,12 +7,15 @@
 
   <div class="col-sm-7 col-sm-offset-1">
     <% unless @posts.empty? %>
-      <% if current_user == @posts.first.user %>
-        <%= render partial: "new", locals: { post: @new_post } %>
-      <% end %>
-    
+
       <% @posts.each do |post| %>
         <%= render partial: 'post', locals: { post: post } %>
+      <% end %>
+
+    <% else %>
+
+      <% if current_user == @user %>
+        <%= render partial: "new", locals: { post: @new_post } %>
       <% end %>
 
     <% end %>

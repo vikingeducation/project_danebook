@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   resources :users, only: [:new, :create, :update, :show]
+  resources :friendings, :only => [:create, :destroy]
   resources :profiles, only: [:show, :edit, :update]
   resource :session, only: [:create, :destroy]
   resources :posts, only: [:create, :destroy] do

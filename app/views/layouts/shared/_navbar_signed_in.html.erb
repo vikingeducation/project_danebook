@@ -34,7 +34,8 @@
   </div>
        <!-- wraps rest of links to collapse in mobile-->
   <div class="nav navbar-nav col-md-2">
-    <a href="#" class="pull-right nav-personal-link"><%=@profile.first_name%> <%=@profile.last_name%></a>
+    <a href="<%= user_path(current_user) %>" class="pull-right nav-personal-link">
+            <%= current_user.profile.first_name%> <%=current_user.profile.last_name %></a>
   </div><!--navbar-collapse-->
   
   <div class="col-md-2"> 

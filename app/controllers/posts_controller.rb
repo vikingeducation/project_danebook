@@ -1,8 +1,8 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :destroy]
-  before_action :set_post_user_profile, only: [:index, :create]
+  before_action :set_post_user_profile, only: [:index, :create, :new]
   before_action :require_login
-  before_action :require_current_user, :only => [:new, :update, :destroy]
+  before_action :require_current_user, :only => [:new, :create, :update, :destroy]
 
   def index
     @posts = @user.recent_posts
@@ -10,8 +10,8 @@ class PostsController < ApplicationController
   end
 
   def new
-    @user = User.find(params[:user_id])
-    @profile = @user.profile
+    # @user = User.find(params[:user_id])
+    # @profile = @user.profile
     @posts   = @user.recent_posts
     @post    = @user.posts.build
     #@like    = @post.likes.build

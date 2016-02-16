@@ -1,8 +1,12 @@
 
-  <%= form_for([@user, post, post.comments.build],
+  <%= form_for(Comment.new,
                 method: "post",
                 class: "panel panel-default 
                         panel-style container-border") do |comment_fields| %>
+
+    <%= comment_fields.hidden_field :user_id, value: @user.id %>
+    <%= comment_fields.hidden_field :commentable_type, value: post.class %>
+    <%= comment_fields.hidden_field :commentable_id, value: post.id %>
 
     <div class="panel-body panel-body-style basic-margin">
       <%= comment_fields.text_area :body, placeholder:"Comment", class: "form-control",

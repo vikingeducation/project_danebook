@@ -58,7 +58,7 @@ class UsersController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_user_and_profile
       @user = User.find(params[:id])
-      @profile = Profile.find_by_user_id(params[:id])
+      @profile = @user.profile
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

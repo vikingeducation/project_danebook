@@ -5,6 +5,9 @@ class User < ActiveRecord::Base
   has_many :comments, dependent:   :destroy
   has_many :likes,    dependent:   :destroy
   
+  has_many :commented_posts, through: :comments, source: :commentable, source_type: 'Post'
+  has_many :liked_posts, through: :likes, source: :likeable, source_type: 'Post'
+  
   before_create :generate_token
   has_secure_password
 
@@ -33,7 +36,7 @@ class User < ActiveRecord::Base
     save!
   end
 
-  def self.full_name
+  def full_name
     first_name + " " + last_name
   end
   

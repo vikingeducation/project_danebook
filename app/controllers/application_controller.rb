@@ -47,7 +47,6 @@ class ApplicationController < ActionController::Base
 # Will turn the current_user into a boolean
 # e.g. `nil` becomes false and anything else true.
   def signed_in_user?
-    puts "CURRENT USER #{current_user} - #{!!current_user} ******"
     !!current_user
   end
   helper_method :signed_in_user?
@@ -62,10 +61,12 @@ class ApplicationController < ActionController::Base
   def require_current_user
     # don't forget that params is a string!!!
     puts "CURRENT is #{current_user.id.to_s}and USER IS #{params[:user_id]} **"
-    unless params[:user_id] == current_user.id.to_s ||
-           (!params[:user_id] && params[:id] == current_user.id.to_s)
-      flash[:error] = "You're not authorized to view this"
-      redirect_to root_url
+    puts "Current controller is #{params[:controller]}"
+
+    if (params[:controller] == "users" && params[:id] != current_user.id.to_s) ||
+       (params[:controller] != "users" && params[:user_id] != current_user.id.to_s) 
+        flash[:error] = "You're not authorized to view this"
+        redirect_to root_url
     end
   end 
 

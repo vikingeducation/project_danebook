@@ -1,6 +1,14 @@
 class FriendingsController < ApplicationController
+  layout "friends"
 
   before_action :require_login
+
+
+  def index
+    @user = User.find(params[:user_id])
+    @friended_users = User.find(params[:user_id]).friended_users
+    @users_friended_by = User.find(params[:user_id]).users_friended_by
+  end
 
 
   def create

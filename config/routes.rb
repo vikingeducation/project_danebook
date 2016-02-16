@@ -9,8 +9,8 @@ Rails.application.routes.draw do
 
 
   resources :users do
-    
-    resources :friendings, only: [:create, :destroy]
+
+    resources :friendings, only: [:index, :create, :destroy]
 
     resource :profile, only: [:edit, :update, :show]
 

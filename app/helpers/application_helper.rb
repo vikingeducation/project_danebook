@@ -11,7 +11,11 @@ module ApplicationHelper
   end
 
 
-
+  def friend_or_unfriend(user)
+    if current_user && current_user.friended_users.include?(user)
+      button_to "Remove Friend", user_friending_path(current_user, profile.user), class: "btn btn-primary"
+    end
+  end 
 
 
 end

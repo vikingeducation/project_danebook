@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Friends</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body data-no-turbolink>
+
+  <div class="general-navbar">
+  <%= render partial: "shared/general_navbar", locals: { profile: @profile } %>
+  </div>
+
+  <% flash.each do |type, message| %>
+    <div class="alert alert-<%=type%>">
+      <div>
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      <strong><%= type.titleize %>! <%= message %></strong>
+      </div>
+      </div>
+  <% end %> 
+
+
+  <main class="container">
+
+    <div class="middle-navbar">
+      <%= render partial: "shared/middle_nav", locals: { profile: @user.profile } %>
+    </div>
+
+    <div class="friends-controller">
+      <%= yield %>
+    </div>
+
+    
+    <div class="row bottom-spacer">
+    <br>
+    </div>
+
+  </main>
+
+</body>
+</html>

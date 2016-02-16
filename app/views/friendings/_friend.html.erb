@@ -1,0 +1,20 @@
+<article class="col-md-4 col-sm-6 col-xs-12">
+  <div class="panel panel-default">
+
+    <div class="row ">
+      <div class="col-md-12">
+        <h4><%= "#{friend.first_name} #{friend.last_name}" %></h4>
+        <h4><%= all_friends(friend) %> Friend(s)</h4>
+
+      <% if current_user && current_user.friended_users.include?(friend) %>
+        <div class="form-group pull-right">
+          <%= button_to "Remove Friend", user_friending_path(current_user, friend), method: :delete, class: "btn btn-primary" %>
+        </div>  
+
+        <% end %>
+
+      </div>
+    </div>
+
+  </div>
+</article>

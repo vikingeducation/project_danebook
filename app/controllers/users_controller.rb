@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 
 
   def index
+
   end
 
   def new
@@ -29,10 +30,9 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
-    if @user.update( whitelisted_params )
+    if current_user.update( whitelisted_params )
       flash[:success] = "user updated"
-      redirect_to user_path(@user)
+      redirect_to current_user
     else
       flash[:error] = "user not updated"
       render :edit

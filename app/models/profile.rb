@@ -6,16 +6,16 @@ class Profile < ActiveRecord::Base
     allow_nil: true,
     allow_blank: true
   validates :college, :from, :lives,
-    length: { maximum: 36 },
+    length: { maximum: 140 },
     allow_nil: true,
     allow_blank: true
   validates :number,
     format: {with: /\d/},
-    length: { maximum: 16 },
+    length: { maximum: 30 },
     allow_nil: true,
     allow_blank: true
   validates :words, :about,
-    length: { maximum: 1000 },
+    length: { maximum: 2000 },
     allow_nil: true,
     allow_blank: true
 

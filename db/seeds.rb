@@ -88,3 +88,12 @@ end
   Like.create(user_id: User.pluck(:id).sample, likeable_id: Comment.pluck(:id).sample, likeable_type: "Comment")
 end
 
+
+
+
+
+puts "Creating friendships..."
+
+200.times do
+  Friending.create(friender_id: User.pluck(:id).sample, friend_id: User.pluck(:id).sample)
+end

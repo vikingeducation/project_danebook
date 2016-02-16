@@ -3,8 +3,8 @@
 
     <div class="row ">
       <div class="col-md-12">
-        <h4><%= "#{friend.first_name} #{friend.last_name}" %></h4>
-        <h4><%= all_friends(friend) %> Friend(s)</h4>
+        <h4><%= link_to "#{friend.first_name} #{friend.last_name}", user_timeline_path(friend) %></h4>
+        <h4><%= all_friends_count(friend) %> Friend(s)</h4>
 
       <% if current_user && current_user.friended_users.include?(friend) %>
         <div class="form-group pull-right">

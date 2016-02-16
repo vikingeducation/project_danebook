@@ -7,6 +7,7 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.where(user_id: params[:user_id]).order("created_at DESC")
+    @user = User.find(params[:user_id])
     @new_post = current_user.posts.build if signed_in_user?
     @new_comment = Comment.new
   end

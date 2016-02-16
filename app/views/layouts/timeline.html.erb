@@ -25,7 +25,7 @@
   <main class="container">
 
     <div class="middle-navbar">
-      <%= render partial: "shared/middle_nav", locals: { profile: @posts.first.user.profile } %>
+      <%= render partial: "shared/middle_nav", locals: { profile: @user.profile } %>
     </div>
 
     <div class="timeline-controller">

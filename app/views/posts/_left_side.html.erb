@@ -4,7 +4,7 @@
   <tbody>
     <tr>
       <td>Born On:</td>
-      <td><%= user.birthday.strftime("%B %d, %Y") %></td>
+      <td><%= user.birthday.strftime("%B %d, %Y") if user.birthday %></td>
     </tr>
     <tr>
       <td>Went to school at:</td>
@@ -12,11 +12,11 @@
     </tr>
     <tr>
       <td>Hometown:</td>
-      <td><%= user.profile.hometown %></td>
+      <td><%= user.profile.hometown if user.profile.hometown %></td>
     </tr>
     <tr>
       <td>Currently Lives:</td>
-      <td><%= user.profile.current_city %></td>
+      <td><%= user.profile.current_city if user.profile.current_city %></td>
     </tr>
   </tbody>
   </table>

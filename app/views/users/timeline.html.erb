@@ -135,60 +135,20 @@
         <div class="friends-wrapper col-sm-12">
           <!-- Header Row -->
           <div class="friends-header row">
-            friends (542) (Copied Text Area)
+            Friends (<%= @user.friended_users.count %>)
           </div>
-
-          <!-- Photo Thumbnails Container -->
-          <div class="thumbnails row">
-
+          <% @friends.each do |friend| %>
             <!-- Thumbnail wrapper -->
-            <div class="thumbnails-wrapper col-sm-12">
 
-              <div class="row">
-                <div class="col-sm-4">
-                  <a href="#"><img src="/assets/default_user.gif"></a>
-                  <a href="#"><div>Hermione</div> <div>Granger</div></a>
-                </div>
-                <div class="col-sm-4">
-                  <a href="#"><img src="/assets/default_user.gif"></a>
-                  <a href="#"><div>Hermione</div> <div>Granger</div></a>
-                </div>
-                <div class="col-sm-4">
-                  <a href="#"><img src="/assets/default_user.gif"></a>
-                  <a href="#"><div>Hermione</div> <div>Granger</div></a>
-                </div>
+              <div class="thumbnails col-sm-4">
+                <a href="#"><img src="/assets/default_user.gif", class="timeline-img"></a>
+                <%= link_to "#{friend.first_name} #{friend.last_name}", friend %>
               </div>
-            </div><!-- End Thumbnails Wrapper -->
-          </div><!-- End Thumbnail Container -->
 
-          <!-- Photo Thumbnails Container -->
-          <div class="thumbnails row">
-            <!-- Thumbnail wrapper -->
-            <div class="thumbnails-wrapper col-sm-12">
-
-              <div class="row">
-                <div class="col-sm-4">
-                  <a href="#"><img src="/assets/default_user.gif"></a>
-                  <a href="#"><div>Hermione</div> <div>Granger</div></a>
-                </div>
-                <div class="col-sm-4">
-                  <a href="#"><img src="/assets/default_user.gif"></a>
-                  <a href="#"><div>Hermione</div> <div>Granger</div></a>
-                </div>
-                <div class="col-sm-4">
-                  <a href="#"><img src="/assets/default_user.gif"></a>
-                  <a href="#"><div>Hermione</div> <div>Granger</div></a>
-                </div>
-              </div>
-            </div><!-- End Thumbnails Wrapper -->
-          </div><!-- End Thumbnail Container -->
-        </div><!-- End friends Wrapper -->
-
-        <footer class="friends-footer row">
-          <a href="#" class="more-friends">See More friends</a>
-        </footer>
-        
-      </div><!-- End friends Container -->
+          <% end %>
+          <footer class="friends-footer row">
+            <a href="#" class="more-friends">See More friends</a>
+          </footer> 
 
     </section>
 

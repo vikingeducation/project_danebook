@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     get "timeline" => "users#timeline"
     get "friends" => "users#friends"
     get "photos" => "users#photos"
+    get "searches" => "users#searches"
+    resources :friendings, only: [:create, :destroy]
   end
 
   resources :posts, only: [:create, :destroy] do

@@ -52,6 +52,12 @@ class UsersController < ApplicationController
       @current_user.posts.build
     end
     @user = User.find(params[:user_id])
+    @friends = @user.sample_friends
+  end
+
+  def searches
+    @matches = User.find_users(params[:search_name])
+    dsfhdksjfhdjksf
   end
 
   def photos
@@ -59,6 +65,7 @@ class UsersController < ApplicationController
   end
 
   def friends
+    @user = User.find(params[:user_id])
   end
 
   

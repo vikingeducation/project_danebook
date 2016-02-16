@@ -5,7 +5,7 @@
 	<!-- Navbar for Main Content -->
 	  <div class="container main">
 		<div class="nav row">
-		  <div class="center col-md-2 col-md-offset-5"><h1>About</h1></div>
+		  <div class="center col-md-2 col-md-offset-5"><h1>About: <%= @user.first_name %></h1></div>
 	  	  <div class="col-md-2 col-md-offset-3">
 
 	  	  <!-- Edit Profile Button -->
@@ -13,6 +13,18 @@
 	  	  	<div class="navbar-right edit-button">
 	  	  	  <%= link_to "Edit your profile", edit_user_path(@user), class: "btn btn-primary" %>
 	  	    </div>
+        <% else %>
+          <% if signed_in_user? %>
+            <% if current_user.friended_user?(@user) %>
+                <div class="navbar-right edit-button">
+                  <%= link_to "Unfriend",user_friending_path(current_user, @user), method: :delete, class: "btn btn-primary" %>
+                </div>
+              <% else %>
+                <div class="navbar-right edit-button">
+                  <%= link_to "Add Friend",user_friendings_path(@user), method: :post, class: "btn btn-primary" %>
+                </div>
+            <% end %>
+          <% end %>
         <% end %>
 	  	  </div>
 	  	</div>

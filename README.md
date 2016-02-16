@@ -40,3 +40,13 @@ comment belongs_to post
 comment can have many likes
 
 when a comment is deleted, the likes should be destroyed
+
+=======
+FRIENDING
+(if one person clicks "Add Friend", it creates the friendship)
+self-referencing many-many relationship
+
+create join table called friendings, plus Friending model
+- foreign keys are "friender_id" and "friend_id"
+- in Friending.rb, "belongs_to :friend_initiator"
+- in User, "has_many :initiated_friendings" to get to join table, and "has_many_friended_users" through the join table

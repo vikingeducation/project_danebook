@@ -6,7 +6,18 @@ class User < ActiveRecord::Base
   has_one :profile, dependent: :destroy
   has_many :posts
   has_many :comments
+
+  # initiator side:
+  has_many :initiated_friendings, foreign_key: :friender_id, class_name: "Friending"
+  has_many :friended_users, through: :initiated_friendings, source: :friend_recipient
+
+  # receiving side:
+  has_many :received_friendings, foreign_key: :friend_id, class_name: "Friending"
+  has_many :users_friended_by, through: :received_friendings, source: :friend_initiator
+
+
   has_secure_password
+
 
 
   validates :password, length: { :in => 8..24 }, allow_nil: true

@@ -9,6 +9,9 @@ Rails.application.routes.draw do
 
 
   resources :users do
+    
+    resources :friendings, only: [:create, :destroy]
+
     resource :profile, only: [:edit, :update, :show]
 
     resources :posts, only: [:index, :create, :destroy] do
@@ -21,6 +24,8 @@ Rails.application.routes.draw do
 
     get 'timeline' => 'posts#index'
   end
+
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.

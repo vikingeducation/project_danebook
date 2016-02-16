@@ -37,8 +37,11 @@
       <% if profile.user == current_user %>
         <li><%= link_to "Edit Profile", edit_user_profile_path(current_user), {class: "navbar-right"} %></li>
 
-      <% elsif current_user && profile.user != current_user %>
-        <li class="form-group pull-right"><%= link_to "Add Friend", {}, class: "btn btn-primary" %></li>
+      <% elsif current_user && !current_user.friended_users.include?(profile.user) %>
+        <li class="form-group pull-right"><%= button_to "Add Friend", user_friendings_path, method: :post, class: "btn btn-primary" %></li>
+
+      <% elsif current_user && current_user.friended_users.include?(profile.user) %>
+        <li class="form-group pull-right"><%= button_to "Remove Friend", user_friending_path(current_user, profile.user), method: :delete, class: "btn btn-primary" %></li>        
 
       <% end %>
 

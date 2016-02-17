@@ -35,6 +35,7 @@ class ApplicationController < ActionController::Base
     helper_method :signed_in_user?
 
     def current_user?
+      params[:id] ||= params[:user_id]
       params[:id] == current_user.id.to_s unless current_user.nil?
     end
     helper_method :current_user?
@@ -55,7 +56,7 @@ class ApplicationController < ActionController::Base
     def require_current_user
       unless params[:id] == current_user.id.to_s
         flash[:error] = "You're not authorized to view this"
-        redirect_to root_url
+        redirect_to current_user
       end
     end
 end

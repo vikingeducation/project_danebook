@@ -57,7 +57,6 @@ class UsersController < ApplicationController
 
   def searches
     @matches = User.find_users(params[:search_name])
-    dsfhdksjfhdjksf
   end
 
   def photos

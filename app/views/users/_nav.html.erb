@@ -21,10 +21,12 @@
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
        <!-- Search Bar -->
-        <%= form_tag user_searches_path(current_user), method: :get, class: "navbar-form navbar-left" do %>
-          <div class="form-group">
-            <%= text_field_tag(:search_name, "", class: "form-control", placeholder: "Search for Users") %>
-          </div>
+        <% if signed_in_user? %>
+          <%= form_tag user_searches_path(current_user), method: :get, class: "navbar-form navbar-left" do %>
+            <div class="form-group">
+              <%= text_field_tag(:search_name, "", class: "form-control", placeholder: "Search for Users") %>
+            </div>
+          <% end %>
         <% end %>
 
         <!-- Link to profile -->

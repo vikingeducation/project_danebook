@@ -35,7 +35,7 @@ class ApplicationController < ActionController::Base
     helper_method :signed_in_user?
 
     def current_user?
-      params[:id] == current_user.id.to_s
+      params[:id] == current_user.id.to_s unless current_user.nil?
     end
     helper_method :current_user?
     

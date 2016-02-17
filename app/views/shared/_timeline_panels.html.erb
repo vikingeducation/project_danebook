@@ -89,7 +89,7 @@
   <div class="row">
     <div class="col-xs-12">
       <nav class="navbar navbar-default about-nav">
-        <p class="box-header">Friends (542)</p>
+        <%= content_tag :p, "Friends #{@user.friendeds.size}", class: "box-header" %>
       </nav>
     </div>
   </div>
@@ -97,25 +97,21 @@
   <div class="row">
     <div class="col-xs-12">
       <div class="white-bg section-spacing">
-        <% 2.times do %>
           <div class="row">
             <div class="col-xs-12">
-              <% 3.times do %>
+              <% @user.friendeds.each do |friend| %>
                 <div class="col-xs-4">
-                  <a href="#">
+                  <a href="<%= user_path(friend) %>">
                     <img src="/images/user_pic.png" class="img-thumbnail panel-pic">
                   </a>
-                  <a href="#">
-                    Ron
-                  </a>
+                  <%= link_to friend.name, user_path(friend) %>
                 </div>
               <% end %>
             </div>
           </div>
-        <% end %>
         <div class="row">
           <div class="photo-link">
-              <a href="#">See more Friends</a>
+              <%= link_to "See more Friends", friending_path(current_user) %>
             </div>
         </div>
       </div>

@@ -5,7 +5,7 @@ class Comment < ActiveRecord::Base
   has_many :likes, as: :likeable, dependent: :destroy
 
 
-  validates :body, length: { in: 1..250 }
+  validates :body, length: { in: 1..250 }, presence: true
 
 
 end

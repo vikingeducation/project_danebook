@@ -40,5 +40,6 @@ like:
 
 
 comment:
-- belongs to a post and a user
-- likes are deleted when a comment is deleted
+"can't create a comment without a body"
+"can't create a comment with a super-long body"
+"likes are deleted when a comment is deleted"

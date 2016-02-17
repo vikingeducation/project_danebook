@@ -163,7 +163,7 @@
           </div>
 
           <% if signed_in_user? %>
-            <%= form_tag posts_path do %>
+            <%= form_tag posts_path(user_id: @user.id) do %>
             <div class="text-area row">
               <%= text_area_tag :body, "", class: "form-control", placeholder: "Tell the world something.." %>
             </div>

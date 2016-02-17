@@ -20,18 +20,44 @@ describe User do
     expect(build(:user, email: user.email)).to_not be_valid
   end
 
-  xit "generate_token gets called before user create" do
-    create(:user)
-    expect(user).to receive(:generate_token)
+  it "token is generated around user create" do
+    user.save
+    expect(user.auth_token).to_not be nil
   end
 
-  it "generate_token creates a different token"
-  it "regenerate_auth_token invalidates old token"
-  it "regenerate_auth_token creates a different new token"
-  it "creating a new user creates a new profile too"
-  it "deleting a user deletes their profile too"
+  it "creating a new user creates a new profile too" do
+    user.save
+    expect(user.profile).to be_instance_of(Profile)
+  end
+
+  it "deleting a user deletes their profile too" do
+    user.save
+    user.destroy
+    binding.pry
+    expect(user.profile.persisted?).to be false
+  end
 
 
+
+
+
+  describe '#regenerate_auth_token' do
+
+    it "gives the user a new auth token" do
+      user.save
+      old_token = user.auth_token
+      user.regenerate_auth_token
+      new_token = user.auth_token
+      expect(new_token).to_not eq(old_token)
+    end
+
+    it "no users have the old token" do
+      user.save
+      old_token = user.auth_token
+      user.regenerate_auth_token
+      expect(User.find_by_auth_token(old_token)).to be nil
+    end
+  end
 
 
 end

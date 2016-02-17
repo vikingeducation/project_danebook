@@ -4,7 +4,7 @@ class Like < ActiveRecord::Base
   belongs_to :user
 
 
-  validates :user_id, uniqueness: { scope: [:likeable_id, :likeable_type]}
+  validates :user_id, uniqueness: { scope: [:likeable_id, :likeable_type]}, presence: true
 
 
 

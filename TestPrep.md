@@ -32,9 +32,11 @@ post:
 
 
 like: 
-- belongs to user
+- can't be created without a user_id
 - can be created on a post
 - can be created on a comment
+- can't create multiple likes on the same post by the same user
+- can't create multiple likes on the same comment by the same user
 
 
 comment:

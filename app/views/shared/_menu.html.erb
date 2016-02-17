@@ -55,7 +55,7 @@
             <!--vertical divider-->
             <div class="v-line"></div>
             <li>
-              <a class="btn btn-default tl-menu-link" role="button" href="">
+              <a class="btn btn-default tl-menu-link" role="button" href="<%= friending_path(@profile.user.id) %>">
                 Friends
                 <%= content_tag :p, @profile.user.friendeds.size, class: "count-disp" %>
               </a>
@@ -63,7 +63,7 @@
             <!--vertical divider-->
             <div class="v-line"></div>
 
-            <% if signed_in_user? %>
+            <% if signed_in_user? && @profile.id != current_user.id %>
               <% if current_user.friendeds.pluck(:id).include?(@profile.user.id) %>
                 <%= link_to "Unfriend #{@profile.user.name}",
                       friending_path(id: @profile.user.id, current_user_id: current_user.id),

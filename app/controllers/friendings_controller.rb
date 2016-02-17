@@ -1,7 +1,6 @@
 class FriendingsController < ApplicationController
 
   before_action :require_login, only: [:create, :destroy]
-  before_action :require_current_user, only: [:create, :destroy]
 
   def create
     friending_recipient = User.find(params[:id])
@@ -26,6 +25,8 @@ class FriendingsController < ApplicationController
   end
 
   def show
-    
+    @user = User.find(params[:id])
+    @friendeds = @user.friendeds
+    @profile = @user.profile
   end
 end

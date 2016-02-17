@@ -21,6 +21,7 @@ group :development, :test do
   gem 'factory_girl'
   gem 'guard'
   gem 'guard-rspec', require: false
+  gem 'database_cleaner'
 end
 
 group :development do

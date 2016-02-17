@@ -18,7 +18,7 @@ gem 'binding_of_caller'
 group :development, :test do
   gem 'byebug'
   gem 'rspec-rails'
-  gem 'factory_girl'
+  gem "factory_girl_rails", "~> 4.0"
   gem 'guard'
   gem 'guard-rspec', require: false
   gem 'database_cleaner'

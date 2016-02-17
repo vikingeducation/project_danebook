@@ -20,8 +20,8 @@ class User < ActiveRecord::Base
     allow_destroy: :true
 # ======================================================
   validates :password, length: { in: 8..24 }, allow_nil: true
-  validates :first_name, :last_name, presence: true
-  validates :email, presence: true, format: { with: /@{1}/ }
+  validates :first_name, :last_name, presence: true, length: { in: 1..64 }
+  validates :email, presence: true, format: { with: /@{1}/ }, length: { minimum: 3 }, uniqueness: true
 # ======================================================
   before_create :generate_token
 # ======================================================

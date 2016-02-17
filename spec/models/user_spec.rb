@@ -33,7 +33,6 @@ describe User do
   it "deleting a user deletes their profile too" do
     user.save
     user.destroy
-    binding.pry
     expect(user.profile.persisted?).to be false
   end
 

@@ -18,10 +18,15 @@ users:
 
 friending:
 - can't create the exact same friendship
+- can't have the same friend_id and friender_id
+- has a friend initiator
+- has a friend recipient
 
 
 post:
 - can't create a post without a user_id
+- can't create a post without a body
+- can't create a post with a super-long body
 - comments are deleted when a post is deleted
 - likes are deleted when a post is deleted
 
@@ -34,3 +39,4 @@ like:
 
 comment:
 - belongs to a post and a user
+- likes are deleted when a comment is deleted

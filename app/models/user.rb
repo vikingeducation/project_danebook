@@ -19,9 +19,13 @@ class User < ActiveRecord::Base
   has_many :likes, foreign_key: :author_id, dependent: :destroy
 
   accepts_nested_attributes_for :profile
+  
+  validates :first_name, :last_name, :email,
+                              presence: true
 
+  validates :email, uniqueness: true
   validates :password,
-            :length => {:in => 2..24 },
+            :length => {:in => 7..72 },
             :allow_nil => true
 
 

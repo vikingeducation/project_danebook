@@ -37,14 +37,14 @@ describe Comment do
       expect(new_post_comment).to respond_to(:likes)
     end
 
-  describe "polymorphic comment associations" do
-    it "respond to the commentable association" do
-      expect(new_post_comment).to respond_to(:commentable)
-    end
+    describe "polymorphic comment associations" do
+      it "respond to the commentable association" do
+        expect(new_post_comment).to respond_to(:commentable)
+      end
 
-    it "parents respond to their child associations" do
-      expect( new_post_comment.commentable).to respond_to(:comments)
-    end
+      it "parents respond to their child associations" do
+        expect(new_post_comment.commentable).to respond_to(:comments)
+      end
     end
   end
 end

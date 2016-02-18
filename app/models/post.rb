@@ -4,4 +4,5 @@ class Post < ActiveRecord::Base
   has_many :comments, as: :commentable, dependent: :destroy
 
   validates :body, presence: true, length: { maximum: 2000 }
+  validates :user, presence: true
 end

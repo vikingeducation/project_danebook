@@ -22,6 +22,8 @@ group :development, :test do
   gem 'guard'
   gem 'guard-rspec', require: false
   gem 'database_cleaner'
+  gem 'capybara'
+  gem 'launchy'
 end
 
 group :development do

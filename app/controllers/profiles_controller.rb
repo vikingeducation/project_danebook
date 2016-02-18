@@ -1,6 +1,8 @@
 class ProfilesController < ApplicationController
   layout "profile"
 
+  before_action :require_login
+
 
 
   def show

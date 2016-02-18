@@ -56,22 +56,27 @@ visitor:
 "cannot access profile"
 "cannot access friendings"
 
-logged in user:
+existing user:
 "can log in with valid credentials"
 "cannot log in with invalid credentials"
-"can edit their profile"
-"invalid profile attributes are rejected"
-"can create a post"
-"can delete a post"
-"cannot delete a post they didn't write"
-"can like a post"
-"can like a comment"
-"cannot delete a comment they didn't write"
 
+
+profile:
+"logged in user can edit their profile"
+"invalid profile attributes are rejected"
 
 
 posts:
 "are sorted in descending chronological order"
+"logged in user can create a post"
+"logged in user can delete a post"
+"logged in user cannot delete a post they didn't write"
+
+
+likes:
+"logged in user can like a post"
+"logged in user can like a comment"
+"logged in user cannot delete a comment they didn't write"
 
 
 friendings:

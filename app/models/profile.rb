@@ -10,7 +10,6 @@ class Profile < ActiveRecord::Base
     allow_nil: true,
     allow_blank: true
   validates :number,
-    format: {with: /\d/},
     length: { maximum: 30 },
     allow_nil: true,
     allow_blank: true
@@ -19,4 +18,5 @@ class Profile < ActiveRecord::Base
     allow_nil: true,
     allow_blank: true
 
+  validates :user, presence: true
 end

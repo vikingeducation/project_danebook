@@ -35,8 +35,8 @@ describe Post do
       end
 
       it "linking a valid user succeeds" do
-        user = create(:user)
-        post.user = user
+        new_user = create(:user)
+        post.user = new_user
         expect { post.save }.to_not raise_error
       end
 

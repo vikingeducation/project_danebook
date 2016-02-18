@@ -9,7 +9,7 @@ describe Comment do
 
 
 
-  it "can't create a comment without a body" do
+  it "requires a body" do
     expect { create(:comment, body: nil) }.to raise_error(ActiveRecord::RecordInvalid)
   end
 
@@ -27,6 +27,21 @@ describe Comment do
 
     comment.destroy
     expect(comment.likes.count).to eq(0)
+  end
+
+
+  context 'associations' do
+
+    it "responds to likes" do
+      expect(comment).to respond_to(:likes)
+    end
+
+    it "responds to post" do
+      expect(comment).to respond_to(:post)
+    end
+
+
+
   end
 
 

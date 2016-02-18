@@ -15,4 +15,5 @@ describe Friending do
     expect { create(:friending, friend_id: 1, friender_id: 1)}.to raise_error(ActiveRecord::RecordInvalid)
   end
 
+
 end

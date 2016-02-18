@@ -45,4 +45,21 @@ describe Post do
     expect(post.likes.count).to eq(0)
   end
 
+
+
+  context 'associations' do
+
+    it "should respond to likes" do
+      expect(post).to respond_to(:likes)
+    end
+
+    it "should respond to comments" do
+      expect(post).to respond_to(:comments)
+    end
+
+
+  end
+
+
+
 end

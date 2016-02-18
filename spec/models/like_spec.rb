@@ -15,28 +15,41 @@ describe Like do
   end
 
 
+  context 'polymorphism' do
 
-  it "can be created on a post" do
-    create(:post_like, likeable_id: post.id)
-    expect(post.likes.first).to be_instance_of(Like)
+    it "can be created on a post" do
+      create(:post_like, likeable_id: post.id)
+      expect(post.likes.first).to be_instance_of(Like)
+    end
+
+
+    it "can be created on a comment" do
+      create(:comment_like, likeable_id: comment.id)
+      expect(comment.likes.first).to be_instance_of(Like)
+    end
+
+
+    it "can't create multiple likes on the same post by the same user" do
+      post_like.save
+      expect { create(:post_like) }.to raise_error(ActiveRecord::RecordInvalid)
+    end
+
+
+    it "can't create multiple likes on the same comment by the same user" do
+          comment_like.save
+      expect { create(:comment_like) }.to raise_error(ActiveRecord::RecordInvalid)
+    end
+
   end
 
 
-  it "can be created on a comment" do
-    create(:comment_like, likeable_id: comment.id)
-    expect(comment.likes.first).to be_instance_of(Like)
-  end
 
+  context "associations" do
 
-  it "can't create multiple likes on the same post by the same user" do
-    post_like.save
-    expect { create(:post_like) }.to raise_error(ActiveRecord::RecordInvalid)
-  end
+    it "should respond to user" do
+      expect(post_like).to respond_to(:user)
+    end
 
-
-  it "can't create multiple likes on the same comment by the same user" do
-    comment_like.save
-    expect { create(:comment_like) }.to raise_error(ActiveRecord::RecordInvalid)
   end
 
 

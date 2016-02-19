@@ -6,7 +6,6 @@ class SessionsController < ApplicationController
     @user = User.find_by_email(params["user"]["email"])
     if @user && @user.authenticate(params["user"]["password"])
       if params[:remember_me] 
-        puts "******** REMEMBER ME HERE ******"
         permanent_sign_in(@user)
       else
         sign_in(@user)

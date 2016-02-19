@@ -60,8 +60,8 @@ class ApplicationController < ActionController::Base
 
   def require_current_user
     # don't forget that params is a string!!!
-    puts "CURRENT is #{current_user.id.to_s}and USER IS #{params[:user_id]} **"
-    puts "Current controller is #{params[:controller]}"
+    #puts "CURRENT is #{current_user.id.to_s}and USER IS #{params[:user_id]} **"
+    #puts "Current controller is #{params[:controller]}"
 
     if (params[:controller] == "users" && params[:id] != current_user.id.to_s) ||
        (params[:controller] != "users" && params[:user_id] != current_user.id.to_s) 

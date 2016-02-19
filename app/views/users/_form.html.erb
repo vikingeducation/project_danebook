@@ -132,8 +132,13 @@
               </span>
        
               <p>
-                <input type="radio" name="sex" value="Male">Male
-                <input type="radio" name="sex" value="female">Female
+                <%= user_fields.fields_for :profile do |profile_fields| %>
+                  <%= profile_fields.radio_button :gender, 'male'%> 
+                  <%= label 'male-gender', 'Male' %>
+
+                  <%= profile_fields.radio_button :gender, 'female'%> 
+                  <%= label 'female-gender', 'Female' %>
+                <% end %>  
               </p>
        
               <span style="font-size:12px;color:gray;">

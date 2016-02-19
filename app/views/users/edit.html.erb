@@ -65,8 +65,12 @@
             <label class="col-sm-4 control-label" for="birthday">Birthday
             </label>
             <p>
-             <%= user_fields.fields_for :profile do |profile_fields| %>
-               <%= @profile.birthdate.strftime("%B %d, %Y") %>
+              <%= user_fields.fields_for :profile do |profile_fields| %>
+                <% if @profile.birthdate %>
+                  <%= @profile.birthdate.strftime("%B %d, %Y") %>
+                <% else %>
+                    -
+                <% end %> 
               <% end %>
             </p>
           </div>

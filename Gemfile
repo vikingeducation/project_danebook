@@ -48,12 +48,19 @@ gem "binding_of_caller"
 
 group :development do
   gem "better_errors"
+  gem 'binding_of_caller'
+  gem 'rspec-rails'
+  gem 'guard-rspec', require: false
+  gem 'factory_girl_rails', '~> 4.0'
+  gem 'capybara'
+  gem 'launchy'
 end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 end
+
 
 group :production do
   gem 'rails_12factor'
@@ -68,3 +75,9 @@ group :development do
   gem 'spring'
 end
 
+group :test do
+  gem 'rspec-rails'
+  gem 'factory_girl_rails', '~> 4.0'
+  gem 'capybara'
+  gem 'launchy'
+end

@@ -23,9 +23,10 @@ class User < ActiveRecord::Base
   before_create :generate_token
   has_secure_password
 
-  validates_presence_of :username,  uniqueness: true
-  validates_presence_of :email,     uniqueness: true
-  validates_format_of   :email,     without: /NOSPAM/
+  validates :username, :email, :uniqueness => true
+  validates :username, :email, :presence => true
+  
+  #validates_format_of   :email,     without: /NOSPAM/
   validates :password,
             :length => {:in => 8..20},
             :allow_nil => true

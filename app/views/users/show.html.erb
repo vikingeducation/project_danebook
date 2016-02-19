@@ -74,19 +74,25 @@
             <tbody>
               <tr>
                <td class="col-md-6"> Birthday </td>
-               <td> <%= @profile.birthdate.strftime("%B %d, %Y") %> </td>
+               <td id="birthdate"> 
+                  <% if @profile.birthdate %>
+                    <%= @profile.birthdate.strftime("%B %d, %Y") %>
+                  <% else %>
+                     -
+                  <% end %>
+                </td>
               </tr>
               <tr>
                 <td class="col-md-6">College</td>
-                <td><%= @profile.college %></td>
+                <td id="college"><%= @profile.college %></td>
               </tr>
               <tr>
                 <td class="col-md-6">Hometown</td>
-                <td><%= @profile.hometown %></td>
+                <td id="hometown"><%= @profile.hometown %></td>
               </tr>  
               <tr>
                 <td class="col-md-6"> Currently Lives in</td>
-                <td><%= @profile.domicile %></td>
+                <td id="domicile"><%= @profile.domicile %></td>
               </tr>
             </tbody>
           </table> 
@@ -96,28 +102,28 @@
             <tbody>
               <tr>
                  <td class="col-md-6">Email</td>
-                 <td> <%= @user.email %></td>
+                 <td id="email"> <%= @user.email %></td>
               </tr>
               <tr>
                  <td class="col-md-6">Phone</td>
-                 <td> <%= @profile.phone %></td>
+                 <td id="phone"> <%= @profile.phone %></td>
               </tr>
             </tbody>
           </table>
           <br>
         </div>
       
-        <section class="col-md-6 reduced-font">
-          <article>
-            <h4>Words to live by</h4>
-            <%= @profile.my_words %>
-          </article>
+        <div class="col-md-6 reduced-font">
+          <div>
+            <h4 id="my-words">Words to live by</h4>
+            <div><%= @profile.my_words %></div>
+          </div>
           
-          <article>
-            <h4>About me</h4>
-            <%= @profile.about_me %>
-          </article>
-        </section>
+          <div>
+            <h4 id="about_me">About me</h4>
+            <div><%= @profile.about_me %></div>
+          </div
+        </div>
         
       </div>
     

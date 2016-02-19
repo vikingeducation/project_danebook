@@ -4,9 +4,9 @@ class UsersController < ApplicationController
   before_action :require_login, :except => [:new, :create]
   before_action :require_current_user, :only => [:edit, :update, :destroy]
 
-  def index
-    @users = User.all
-  end
+  # def index
+  #   @users = User.all
+  # end
 
   def show
   end
@@ -46,10 +46,11 @@ class UsersController < ApplicationController
 
   def destroy
     if current_user.destroy
-      flash[:success] = "#{current.email} was removed!"
-      redirect_to user_path(current_user)
+      flash[:success] = "#{current_user.email} was removed!"
+      sign_out      
+      redirect_to new_user_path
     else    
-      flash[:alert] = "#{current.email} could not be removed!"
+      flash[:alert] = "#{current_user.email} could not be removed!"
       render :edit
     end
   end
@@ -79,6 +80,7 @@ class UsersController < ApplicationController
          :domicile,
          :birthdate,
          :about_me,
+         :gender,
          :my_words ] }
       )
     end

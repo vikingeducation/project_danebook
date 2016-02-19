@@ -7,7 +7,7 @@ class Post < ActiveRecord::Base
   has_many   :comments, -> { order('created_at ASC') }, as: :commentable, dependent:   :destroy
 
   validates_presence_of :body
-
+  validates :user, presence: true
 
   def liked_by_user(user)
     like = self.likes.where("user_id = ?",user.id)

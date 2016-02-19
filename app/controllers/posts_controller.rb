@@ -12,7 +12,6 @@ class PostsController < ApplicationController
   def new
     @posts   = @user.recent_posts
     @post    = @user.posts.build
-       puts "****** IN NEW POST"
   end  
 
   def create
@@ -46,7 +45,9 @@ class PostsController < ApplicationController
 
   def set_post_user_profile
     @user = User.find(params[:user_id])
+
     @profile = @user.profile 
+    puts "GOT HERE in for user_ID #{@user.id} AND PROFILE #{@profile}"
   end
     
   def set_post

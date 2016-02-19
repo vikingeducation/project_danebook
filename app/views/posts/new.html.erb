@@ -48,7 +48,13 @@
                 <tbody>
                   <tr>
                     <td class="col-md-6"> Born on </td>
-                    <td><%= @profile.birthdate.strftime("%B %d, %Y") %>  
+                    <td>
+                      <% if @profile.birthdate %>
+                        <%= @profile.birthdate.strftime("%B %d, %Y") %>
+                      <% else %>
+                        -
+                      <% end %>
+                    </td> 
                   </tr>
                   <tr>
                     <td class="col-md-6"> Went to school at </td>

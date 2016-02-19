@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_action :require_login
+  before_action :require_current_user, :only => [:destroy]
 
   def create
     

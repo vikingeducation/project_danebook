@@ -9,11 +9,12 @@ FactoryGirl.define do
 
 
   factory :profile do
-    user_id 1
     about_me "Things that make me seem cool"
     words_to_live_by "Seize the carp"
     current_city "San Francisco"
     hometown "Godricks Hollow"
+
+    user
   end
 
 

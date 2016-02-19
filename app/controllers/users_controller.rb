@@ -35,7 +35,7 @@ class UsersController < ApplicationController
     if @user.save(user_params)
       sign_in(@user)
       flash[:success] = "Created a new User!"
-      redirect_to profile_path(@user)
+      redirect_to profile_path(current_user.profile)
     else
       flash.now[:danger] = "Failed to create User!"
       @user.build_profile

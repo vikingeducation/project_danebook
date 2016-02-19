@@ -7,6 +7,11 @@
 
 
   <div class="col-sm-7 col-sm-offset-1 posts">
+
+    <% if current_user == @user %>
+      <%= render partial: "new", locals: { post: @new_post } %>
+    <% end %>
+  
     <% unless @posts.empty? %>
 
       <ul style="list-style-type:none">
@@ -17,13 +22,8 @@
         <% end %>
       </ul>
 
-    <% else %>
-
-      <% if current_user == @user %>
-        <%= render partial: "new", locals: { post: @new_post } %>
-      <% end %>
-
     <% end %>
+
   </div>
 
 

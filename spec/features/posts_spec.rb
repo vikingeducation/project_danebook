@@ -15,7 +15,7 @@ end
 
 
 
-feature 'existing posts' do
+feature 'order of existing posts' do
 
   let(:user) { build(:user) }
 
@@ -51,11 +51,59 @@ feature 'existing posts' do
 end
 
 
-feature 'logged in user and posts' do
+feature 'logged in user' do
 
-"logged in user can create a post"
-"logged in user can delete a post"
-"logged in user cannot delete a post they didn't write"
+  let(:user) { build(:user) }
+  let(:post ) { build(:post, user_id: user.id) }
+
+  before do
+    user.save
+    log_in(user)
+  end
+
+  scenario "can create a post" do
+    visit user_timeline_path(user)
+
+    post_body = "This is my post body"
+    find('#post_body').set(post_body)
+    click_on("Post")
+
+    expect(page).to have_content("Success! Post created")
+    expect(page).to have_content(post_body)
+  end
+
+
+  scenario "with a post can create another post" do
+    post.save
+    visit user_timeline_path(user)
+
+    post_body = "This is my second post"
+    find('#post_body').set(post_body)
+    click_on("Post")
+
+    expect(page).to have_content("Success! Post created")
+    expect(page).to have_content(post_body)
+  end
+
+
+  scenario "can delete their own post" do
+    post.save
+    visit user_timeline_path(user)    
+
+    click_on("Delete")
+    expect(page).to have_content("Success! Post deleted")
+    expect(page).to_not have_content(post.body)
+  end
+
+
+  scenario "logged in user cannot delete another user's post" do
+    user2 = create(:user)
+    create(:post, user_id: user2.id)
+    post.save
+    visit user_timeline_path(user2)
+
+    expect(page).to_not have_link("Delete", user_post_path(user2.id, post.id))
+  end
 
 
 

@@ -23,7 +23,6 @@ describe ProfilesController do
       too_long = "Hometown"*9
 
       patch :update, user_id: profile.user.id, id: profile.id, profile: attributes_for(:profile, hometown: too_long)
-      binding.pry
       expect(flash["error"]).to_not be nil
     end
 

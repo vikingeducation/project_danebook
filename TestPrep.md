@@ -71,12 +71,19 @@ posts:
 "logged in user can create a post"
 "logged in user can delete a post"
 "logged in user cannot delete a post they didn't write"
+ 
+
+comments:
+"logged in user can create a comment on their own post"
+"logged in user can create a comment on another user's post"
+"logged in user can delete a comment"
+"logged in user cannot delete a comment they didn't write"
 
 
 likes:
 "logged in user can like a post"
 "logged in user can like a comment"
-"logged in user cannot delete a comment they didn't write"
+
 
 
 friendings:

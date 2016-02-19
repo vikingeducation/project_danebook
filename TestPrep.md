@@ -73,7 +73,7 @@ posts:
 "logged in user cannot delete a post they didn't write"
  
 
-comments:
+comments: - WIP
 "logged in user can create a comment on their own post"
 "logged in user can create a comment on another user's post"
 "logged in user can delete a comment"
@@ -89,3 +89,25 @@ likes:
 friendings:
 "logged in user can add a new friend"
 "logged in user can unfriend an existing friend"
+
+
+==================
+Controller Specs
+==================
+friendings:
+"POST#create cannot friend someone more than once"
+"POST#create can add friend to friended_users"
+"DELETE#destroy removes friend but doesn't delete user"
+
+
+posts:
+"GET#index sets the correct instance variables"
+
+
+profiles:
+"PUT#update sets a flash message"
+
+
+sessions:
+"POST#create calls permanent_sign_in for remember me"
+"DELETE#destroy redirects to root path with flash message" 

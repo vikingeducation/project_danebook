@@ -28,7 +28,7 @@ describe Like do
     it "doesn't allow user to like the same thing twice" do
       user_1 = create(:user)
       post_1 = create(:post, user: user_1 )
-      new_post_like_1 = create(:post_like, likeable: post_1, user: user_1)
+      create(:post_like, likeable: post_1, user: user_1)
       new_post_like_2 = build(:post_like, likeable: post_1, user: user_1)
       expect(new_post_like_2).to_not be_valid
     end

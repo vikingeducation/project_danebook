@@ -44,7 +44,7 @@
     <% end %>
 
     <!-- new comment form -->
-    <% if current_user %>
+    <% if current_user && @new_comment %>
       <div class="panel-footer">
         <%= render partial: "comments/new_comment", locals: { post: post } %>
       </div>

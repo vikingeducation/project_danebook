@@ -111,3 +111,21 @@ profiles:
 sessions:
 "POST#create calls permanent_sign_in for remember me"
 "DELETE#destroy redirects to root path with flash message" 
+
+
+==================
+View Specs
+==================
+posts/index:
+context "user does not like post" => "like button is shown"
+context "user likes post" => "unlike button is shown"
+
+
+shared/_general_navbar:
+context "user is logged in" => "logout button is visible"
+context "user is logged out" => "login button is visible"
+
+
+shared/_middle_nav:
+context "user is friends with current profile's user" => "'Remove Friend' button is visible"
+context "user is not friends with current profile's user" => "'Add Friend' button is visible"

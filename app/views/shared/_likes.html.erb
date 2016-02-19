@@ -1,7 +1,7 @@
 
 <!-- one like -->
 <% if likes.count == 1 %>
-<%= link_to "#{likes.first.user.first_name} #{likes.first.user.last_name}",user_timeline_path(likes.first.user) %> likes this.
+<%= link_to "#{likes.first.user.first_name} #{likes.first.user.last_name}", user_timeline_path(likes.first.user) %> likes this.
 
 
 <!-- more than one like -->

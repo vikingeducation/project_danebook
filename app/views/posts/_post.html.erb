@@ -1,6 +1,6 @@
 
 <div class="panel panel-default">
-  <div class="panel-heading"> 
+  <div class="panel-heading" data="<%=post.id%>"> 
 
     <% if post.user == current_user %>
       You posted on <%= post.created_at.strftime("%A %D") %>:
@@ -52,5 +52,4 @@
 
   </div>
 </div>
-
 

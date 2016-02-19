@@ -40,13 +40,7 @@ feature 'existing users' do
 
   scenario "can log in with valid credentials" do
     user.save
-    visit root_path
-
-    within('div.navbar-form') do
-      fill_in("Email", with: user.email)
-      fill_in("Password", with: user.password)
-      click_on("Log In")
-    end
+    log_in(user)
 
     expect(page).to have_content("Success! You've successfully signed in")
     expect(page).to have_content(user.first_name)

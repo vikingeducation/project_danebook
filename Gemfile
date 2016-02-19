@@ -33,6 +33,7 @@ gem 'bcrypt', '~> 3.1.7'
 # gem 'capistrano-rails', group: :development
 
 gem 'faker'
+gem 'timecop'
 
 
 group :test do

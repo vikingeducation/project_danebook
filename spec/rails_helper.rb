@@ -60,4 +60,5 @@ RSpec.configure do |config|
 
   config.include FactoryGirl::Syntax::Methods
   config.include Macros::Login
+  config.include ControllerHelper
 end

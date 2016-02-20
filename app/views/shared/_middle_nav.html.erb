@@ -28,11 +28,11 @@
   <section>
     <ul class="nav nav-pills middle-nav">
       <li role="presentation" class="img-bucket"></li>
-      <li><%= link_to "Timeline", user_timeline_path(params[:user_id]), {class: "clickable"} %></li>
+      <li><%= link_to "Timeline", user_timeline_path(profile.user), {class: "clickable"} %></li>
 
       <li><%= link_to "About", user_profile_path(profile.user), {class: "clickable"} %></li>
 
-      <li><%= link_to "Photos", {}, {class: "clickable"} %></li>
+      <li><a class="clickable">Photos</a></li>
 
       <li><%= link_to "Friends", user_friendings_path(profile.user), {class: "clickable"} %></li>
 

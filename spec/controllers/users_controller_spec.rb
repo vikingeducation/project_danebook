@@ -51,7 +51,7 @@ describe UsersController do
     end
 
     it "PATCH #update with bad params" do
-      patch :update, { id: user.id, user: attributes_for(:user) }
+      patch :update, { id: user.id, user: attributes_for(:user, first_name: "") }
       expect(response).to redirect_to user_path(user)
     end
   end

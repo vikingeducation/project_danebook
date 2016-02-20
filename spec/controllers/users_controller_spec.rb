@@ -37,7 +37,7 @@ describe UsersController do
 
   end
 
-  context "Logged In User" do
+  describe "Logged In User" do
 
     let(:user) { create(:user) }
 

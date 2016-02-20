@@ -52,7 +52,8 @@ describe Post do
     context "on setting likes for post" do
 
       it "increases likes by 1" do
-        expect { post.likes.create }.to change(post.likes, :count).by(1)
+        like = Like.create(author_id: user.id)
+        expect { post.likes << like }.to change { post.likes.count }.by(1)
       end
 
       it "decrements likes by 1" do

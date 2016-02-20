@@ -54,6 +54,7 @@ class ApplicationController < ActionController::Base
     end
 
     def require_current_user
+      params[:id] ||= params[:user_id]
       unless params[:id] == current_user.id.to_s
         flash[:error] = "You're not authorized to view this"
         redirect_to current_user

@@ -5,7 +5,6 @@ class UsersController < ApplicationController
 
 
   def index
-
   end
 
   def new
@@ -18,13 +17,13 @@ class UsersController < ApplicationController
     if @user.save
       if sign_in(@user)
         flash[:success] = "You successfully signed in"
-        redirect_to user_path(@user.id)
+        redirect_to @user
       else
         flash[:error] = "The sign up was not working"
-        redirect_to user_path(@user.id)
+        redirect_to @user
       end
     else
-      flash.now[:error] = "The sign up was not successful"
+      flash[:error] = "The sign up was not successful"
       render :new
     end
   end
@@ -67,6 +66,11 @@ class UsersController < ApplicationController
     @user = User.find(params[:user_id])
   end
 
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    redirect_to root_path
+  end
   
   private
 

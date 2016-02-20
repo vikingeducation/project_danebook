@@ -34,7 +34,6 @@ FactoryGirl.define do
 
 
   factory :profile do
-    user
     birthday 2016-04-20
     hometown "los angeles"
     current_location "los angeles"
@@ -43,6 +42,7 @@ FactoryGirl.define do
     about "Swag dab"
     telephone "123-333-4445"
     gender "male"
+    user
   end
 
   factory :comment do

@@ -67,9 +67,11 @@
           <!-- Name input form -->
           <div class="row form-group">
             <div class="col-xs-6">
+              <%= form_field_error_message(@user, :first_name) %>
               <%= user_field.text_field :first_name, class: "form-control", placeholder: "First Name" %>
             </div>
             <div class="col-xs-6">
+              <%= form_field_error_message(@user, :last_name) %>
               <%= user_field.text_field :last_name, class: "form-control", placeholder: "Last Name" %>
             </div>
           </div>
@@ -77,6 +79,7 @@
           <!-- Email input form -->
           <div class="row form-group">
             <div class="col-xs-12">
+              <%= form_field_error_message(@user, :email) %>
               <%= user_field.text_field :email, class: "form-control", placeholder: "Your Email" %>
             </div>
           </div>
@@ -84,6 +87,7 @@
           <!-- New Password Input -->
           <div class="row form-group">
             <div class="col-xs-12">
+              <%= form_field_error_message(@user, :password) %>
               <%= user_field.password_field :password, class: "form-control", placeholder: "Your New Password" %>
             </div>
           </div>
@@ -91,6 +95,7 @@
           <!-- Confirm Password -->
           <div class="row form-group">
             <div class="col-xs-12">
+              <%= form_field_error_message(@user, :password_confirmation) %>
               <%= user_field.password_field :password_confirmation, class: "form-control", placeholder: "Your New Password" %>
             </div>
           </div>

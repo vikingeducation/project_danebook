@@ -16,7 +16,7 @@
           </div><!-- End Content Row -->
 
           <div class="comment-footer row">
-            <div class="clearfix col-xs-12">
+            <div class="clearfix col-xs-12 post-like-delete">
               <% if current_user.liked_resource?(post) %>
                 <%= link_to "Unlike", post_like_path(post, current_user.id_of_like(post)), method: :delete, class: "pull-left" %>
               <% else %>
@@ -66,7 +66,7 @@
           <div class="form-group row">
           <%= form_tag post_comments_path(post) do %>
             <div class="col-xs-12">
-              <%= text_area_tag :body, "", class: "form-control", placeholder: "Write a comment.." %>
+              <%= text_area_tag :comment_body, "", class: "form-control", placeholder: "Write a comment.." %>
             </div>
             <div class="col-xs-12">
               <%= submit_tag "Comment", class: "btn navbar-right btn-primary btn-sm" %>

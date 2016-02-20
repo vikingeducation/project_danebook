@@ -1,6 +1,13 @@
 require 'rails_helper'
 
 
+describe User do
+  it { should have_one(:profile) }
+  it { should have_db_column(:auth_token) }
+end
+
+
+
 
 describe User do
 
@@ -26,7 +33,6 @@ describe User do
       user.save
       expect(user.profile).to be_instance_of(Profile)
     end
-
 
 
     context 'password' do

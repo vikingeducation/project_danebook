@@ -1,5 +1,12 @@
 require 'rails_helper'
 
+
+describe UsersController do
+  it { should use_before_action(:require_login) }
+end
+
+
+
 describe PostsController do
 
   describe "GET#index" do
@@ -23,16 +30,6 @@ describe PostsController do
       expect(assigns(:new_post)).to be_instance_of(Post)
       expect(assigns(:new_comment)).to be_instance_of(Comment)
     end
-
-
-
-
-
-
-
-
-
-
 
   end
 

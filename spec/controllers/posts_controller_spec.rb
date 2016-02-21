@@ -1,6 +1,6 @@
 require 'rails_helper.rb'
 
-describe ProfilesController do
+describe PostsController do
 
   describe "Logged In User" do
 
@@ -22,12 +22,27 @@ describe ProfilesController do
     end
 
     it "POST #create for current user" do
-      # post :create, post: attributes_for(:post)
-      # expect(response).to redirect_to user_path(user)
+      post :create, post: attributes_for(:post, user: user)
+      expect(response).to redirect_to user_path(user)
+      expect(flash[:success]).to eq "You've created a post!"
     end
 
-    it "DELETE #destroy for current user's comment"
-    it "DELETE #destroy for another user's comment"
+    it "POST #create fails" do
+      post :create, post: attributes_for(:post, body: nil)
+      expect(response).to render_template "users/show"
+      expect(flash[:danger]).to eq "Failed to create a post!"
+    end
+
+    it "DELETE #destroy for current user's comment" do
+      delete :destroy, id: new_post.id
+      expect(response).to redirect_to user_path(user)
+      expect(flash[:success]).to eq "You've deleted a post!"
+    end
+
+    it "DELETE #destroy for another user's comment" do
+      delete :destroy, id: 0
+      expect(response).to redirect_to user_path(user)
+    end
   end
 
 end

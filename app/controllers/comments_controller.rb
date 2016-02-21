@@ -37,7 +37,8 @@ class CommentsController < ApplicationController
         flash[:success] = "Comment deleted!"
         redirect_to :back
       else
-        flash[:danger] = "Filaed to delete Comment!"
+        flash[:danger] = "Failed to delete Comment!"
+        redirect_to :back
       end
     else
       flash[:danger] = "That #{@type} Doesn't Exist!"
@@ -64,7 +65,8 @@ class CommentsController < ApplicationController
   end
 
   def require_comment_author
-    unless Comment.find(params[:id]).user_id == current_user.id
+    commenty = Comment.find_by_id(params[:id])
+    unless commenty && commenty.user_id == current_user.id
       flash[:danger] = "Not authorized! This isn't your Comment!"
       redirect_to user_path(current_user)
     end

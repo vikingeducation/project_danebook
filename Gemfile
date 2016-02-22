@@ -34,6 +34,9 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'faker'
 gem 'timecop'
+gem 'paperclip'
+gem 'aws-sdk', '< 2.0'
+gem 'figaro'
 
 
 group :test do

@@ -6,6 +6,7 @@ class User < ActiveRecord::Base
   has_one :profile, dependent: :destroy
   has_many :posts
   has_many :comments
+  has_many :photos
 
   # initiator side:
   has_many :initiated_friendings, foreign_key: :friender_id, class_name: "Friending"

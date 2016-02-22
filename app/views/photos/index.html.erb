@@ -2,7 +2,7 @@
   <%= render :partial => 'shared/profile_header', :locals => {:user => @user} %>
 <% end %>
 
-<% unless current_user.friend?(@user) %>
+<% unless current_user.friend?(@user) || current_user == @user %>
   <br>
   <div class="alert alert-info">
     You are not friends with <%= @user.name %>

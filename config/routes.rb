@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       resources :likes, only: [:create, :destroy], defaults: { likeable: 'Comment' }
     end
   end
+  resources :photos, only: [:index, :new, :create, :show, :destroy]
   root 'users#new', as: :signup
 
 end

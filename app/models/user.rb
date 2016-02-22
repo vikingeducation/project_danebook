@@ -1,7 +1,10 @@
 class User < ActiveRecord::Base
 
-  has_attached_file :avatar, :styles => { :medium => "300x300", :thumb => "100x100" }
+  has_attached_file :avatar, styles: { medium: "300x300", thumb: "100x100" }
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
+  validates_with AttachmentSizeValidator, attributes: :avatar, less_than: 5.megabytes
+
+  has_many :photos, dependent: :destroy
 # ======================================================
   has_secure_password
 # ======================================================
@@ -9,7 +12,7 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :profile
 
   has_many :posts, inverse_of: :user, dependent: :destroy
-  has_many :comments
+  has_many :comments, dependent: :destroy
 
   has_many :initiated_friendings, foreign_key: :friender_id, class_name: "Friending"
   has_many :friendeds, through: :initiated_friendings

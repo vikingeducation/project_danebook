@@ -11,7 +11,7 @@ class PhotosController < ApplicationController
   end
 
   def index
-    @photos = Photo.find_by_user_id(params[:user_id])
+    @photos = Photo.where(user_id: params[:user_id])
     @user = User.find_by_id(params[:user_id])
   end
 
@@ -28,17 +28,18 @@ class PhotosController < ApplicationController
 
 
   def create
-    if params[:photo].nil?
-      flash.now[:error] = "Please select a file."
-      render :new
-    end
-    @photo = Photo.new(whitelisted_params)
-    if @photo.save
-      flash[:success] = "Photo uploaded."
-      redirect_to user_photos_path(current_user)
+    if params[:photo][:image].nil?
+      flash[:error] = "Please select a file."
+      redirect_to :back
     else
-      flash.now[:error] = "Photo was not uploaded."
-      render :new
+      @photo = Photo.new(whitelisted_params)
+      if @photo.save
+        flash[:success] = "Photo uploaded."
+        redirect_to user_photos_path(current_user)
+      else
+        flash.now[:error] = "Photo was not uploaded."
+        redirect_to :back
+      end
     end
   end
 

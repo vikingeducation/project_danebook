@@ -20,7 +20,7 @@ feature "User paths" do
     scenario "unable to sign up without invalid password confirmation" do
       new_user = build(:user)
       bad_sign_up(new_user)
-      expect(page).to have_current_path root_path
+      expect(page).to have_current_path users_path
       expect(page).to have_content("The sign up was not successful")
     end
 

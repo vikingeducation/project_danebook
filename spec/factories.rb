@@ -32,7 +32,6 @@ FactoryGirl.define do
     author
   end
 
-
   factory :profile do
     birthday 2016-04-20
     hometown "los angeles"
@@ -54,6 +53,11 @@ FactoryGirl.define do
     author
   end
 
+  factory :comment_like, class: Like do
+    author
+    likeable factory: :comment
+  end
+
   factory :post_like, class: Like do
     association :likeable, factory: :post
     author
@@ -63,5 +67,7 @@ FactoryGirl.define do
     association :friend_initiator, factory: :friender
     association :friend_receiver, factory: :friended
   end
+
+
 
 end

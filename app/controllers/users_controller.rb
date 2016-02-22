@@ -62,6 +62,7 @@ class UsersController < ApplicationController
       :last_name,
       :email,
       :password,
+      :avatar,
       profile_attributes: [
         :gender,
         :birthday,

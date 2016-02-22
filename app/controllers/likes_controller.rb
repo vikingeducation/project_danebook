@@ -33,7 +33,7 @@ class LikesController < ApplicationController
       if already_liked?
         l = get_like
         if l.destroy
-          flash[:success] = "Post unliked!"
+          flash[:success] = "#{@type} unliked!"
           redirect_to :back
         else
           flash[:danger] = "Unlike failed!"
@@ -72,7 +72,8 @@ class LikesController < ApplicationController
   end
 
   def require_like_author
-    unless Like.find(params[:id]).user_id == current_user.id
+    likey = Like.find_by_id(params[:id])
+    unless likey && likey.user_id == current_user.id
       flash[:danger] = "Not authorized! This isn't your Like!"
       redirect_to user_path(current_user)
     end

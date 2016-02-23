@@ -9,7 +9,7 @@ class Photo < ActiveRecord::Base
 
   # TODO: make validation work 
   validates_attachment_content_type :image,
-                                    presence: { message: "Please select photo" },
+                                    presence: { message: "Please select a photo" },
                                     content_type: /\Aimage\/.*\Z/
 
 
@@ -25,7 +25,7 @@ class Photo < ActiveRecord::Base
 
 
 
-  def picture_from_url(url)
+  def image_from_url(url)
     self.image = open(url) unless url.nil?
   end
 

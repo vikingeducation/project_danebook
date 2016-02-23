@@ -13,8 +13,9 @@
 
 
     <%= form_for @photo do |photo_field| %>
+
       <div class="col-sm-8 col-sm-offset-2 form-group">
-        <%= photo_field.text_field :url, class: "form-control" %>
+        <%= text_field_tag :photo_url, "", class: "form-control", placeholder: "http://example.com/photo1.jpg" %>
       </div>
 
       <div class="col-sm-2 col-sm-offset-5">

@@ -7,7 +7,13 @@ class PhotosController < ApplicationController
   end
 
   def create
-    photo = current_user.photos.build(photo_params)
+
+    if params[:photo_url]
+      photo = current_user.photos.build
+      photo.photo_url(params[:photo_url])
+    else
+      photo = current_user.photos.build(photo_params)
+    end
 
     if photo.save
       flash[:success] = "You've successfuly uploaded a photo!"
@@ -16,6 +22,7 @@ class PhotosController < ApplicationController
       flash[:error] = "It failed to upload photo"
       render :new
     end
+
   end
 
   def show
@@ -24,6 +31,6 @@ class PhotosController < ApplicationController
 
   private
     def photo_params
-      params.require(:photo).permit(:url, :avatar)
+      params.require(:photo).permit(:avatar)
     end
 end

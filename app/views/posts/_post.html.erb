@@ -21,8 +21,6 @@
 
     <%= like_or_unlike(post) %>
 
-    <%= link_to "Comment" %>
-
     <% if current_user == post.user %>
     <%= link_to "Delete", user_post_path(post.user, post), method: :delete, class: "pull-right", data: {confirm: "Are you sure?"} %>
     <% end %>
@@ -46,7 +44,7 @@
     <!-- new comment form -->
     <% if current_user && @new_comment %>
       <div class="panel-footer">
-        <%= render partial: "comments/new_comment", locals: { post: post } %>
+        <%= render partial: "comments/new_comment", locals: { post: post, commentable_id: post.id, commentable_type: "Post" } %>
       </div>
     <% end %>
 

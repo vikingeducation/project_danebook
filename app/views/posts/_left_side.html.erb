@@ -28,20 +28,16 @@
   <table class="table table-bordered">
     <caption class="text-center">Photos</caption>
   <tbody>
+
+    <% unless @user.photos.empty? %>
+      <tr>
+        <td><%= image_tag @user.photos.sample.image.url(:thumb), class: 'img-responsive' %></td>
+        <td><%= image_tag @user.photos.sample.image.url(:thumb), class: 'img-responsive' %></td>
+      </tr>
+    <% end %>
+
     <tr>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <td colspan="2" class="text-center"><%= link_to "See more Photos" %></td>
+      <td colspan="2" class="text-center"><%= link_to "See more Photos", user_photos_path(@user) %></td>
     </tr>
   </tbody>
   </table>

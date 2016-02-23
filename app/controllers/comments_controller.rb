@@ -6,6 +6,7 @@ class CommentsController < ApplicationController
   def create
     @comment = current_user.comments.build(whitelisted_params)
     if @comment.save
+      Comment.delay.send_new_comment_email(@comment.id)
       flash[:success] = "Comment created."
     else
       flash[:error] = "Comment could not be saved"

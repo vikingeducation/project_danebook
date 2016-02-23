@@ -8,4 +8,10 @@ class Comment < ActiveRecord::Base
   validates :body, length: { in: 1..250 }, presence: true
 
 
+
+  def self.send_new_comment_email(id)
+    comment = Comment.find(id)
+    CommentMailer.new_comment(comment).deliver!
+  end
+
 end

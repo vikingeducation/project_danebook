@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   before_create :generate_token
   # after_create :create_profile
 
-  has_many :photos
+  has_many :photos, dependent: :destroy
 
   has_many :initiated_friendings, class_name: "Friending",
             foreign_key: :friender_id
@@ -20,6 +20,9 @@ class User < ActiveRecord::Base
 
   has_many :comments, foreign_key: :author_id, dependent: :destroy
   has_many :likes, foreign_key: :author_id, dependent: :destroy
+
+  belongs_to :avatar, class_name: "Photo"
+  belongs_to :cover_photo, class_name: "Photo"
 
   accepts_nested_attributes_for :profile
   
@@ -76,4 +79,9 @@ class User < ActiveRecord::Base
     return true if self == current_user
     friended_users.include?(current_user)
   end
+
+  def full_name
+    "#{self.first_name} #{self.last_name}"
+  end
+
 end

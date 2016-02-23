@@ -11,7 +11,41 @@
     </div>
 
     <div class="col-sm-4">
-    dsfddsfdsf
+
+      <div class="row">
+        <div class="col-sm-5">
+          <%= image_tag @photo.image.url, class: "thumbnail img-responsive" %>
+        </div>
+
+        <div class="col-sm-5">
+          <h4><%= @user.full_name %></h4>
+          <br>
+          <span><%= @user.profile.birthday.strftime("%B %d, %Y") %></span>
+        </div>
+      </div>
+
+      <div class="row panel panel-default">
+
+        <div class="panel-heading">
+
+
+
+        </div>
+
+        <%= form_tag photo_comments_path(@photo) do %>
+
+          <div class="panel-body form-group">
+            <%= text_area_tag :body, "", { class: "form-control", rows: "5"} %>
+          </div>
+
+          <div class="col-sm-12">
+            <%= submit_tag "Comment", class: "btn btn-small btn-primary pull-right" %>
+          </div>
+        <% end %>
+
+      </div>
+
+
     </div>
   </div>
 </div>

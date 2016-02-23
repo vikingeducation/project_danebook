@@ -8,11 +8,12 @@ Rails.application.routes.draw do
     get "searches" => "users#searches"
 
     resources :friendings, only: [:create, :destroy]
+    resources :photos, except: [:update, :edit]
+  end
 
-    resources :photos, except: [:update, :edit] do
-      resources :likes, only: [:create, :destroy], defaults: { likeable: 'Photo' }
-      resources :comments, only: [:create, :destroy], defaults: { commentable: 'Photo' }
-    end
+  resources :photos, except: [:update, :edit] do
+    resources :likes, only: [:create, :destroy], defaults: { likeable: 'Photo' }
+    resources :comments, only: [:create, :destroy], defaults: { commentable: 'Photo' }
   end
 
   resources :posts, only: [:create, :destroy] do

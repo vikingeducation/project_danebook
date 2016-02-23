@@ -1,0 +1,14 @@
+Welcome to Danebook, <%= @user.first_name %> <%= @user.last_name %>!
+
+Your username is: <%= @user.email %>
+To login to the site, please click here: <%= root_url %>
+
+Here are some people you might want to connect with:
+
+
+<% 6.times do %>
+  <% friend = User.all.sample %>
+  <%= friend.first_name %> <%= friend.last_name %>
+  <%= user_timeline_url(friend) %>
+<% end %>
+

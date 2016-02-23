@@ -48,6 +48,7 @@ end
 
 group :development do
   gem 'guard-rspec', require: false
+  gem "letter_opener"
 end
 
 group :development, :test do

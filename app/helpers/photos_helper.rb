@@ -1,6 +1,7 @@
 module PhotosHelper
 
 
+  # TODO: refactor this to be shared between photo, post, and comment
   def like_or_unlike(photo)
     # user already likes photo, show "Unlike" button
     if photo.likes.pluck(:user_id).include? current_user.id

@@ -1,13 +1,15 @@
+require 'open-uri'
+
 class Photo < ActiveRecord::Base
 
   has_attached_file :image,
-                    # source_file_options: { width: "200px"},
                     styles: { large: "700x700", 
                               medium: "300x300#", 
                               thumb: "100x100#" }
 
+  # TODO: make validation work 
   validates_attachment_content_type :image,
-                                    presence: {message: "Please select photo"},
+                                    presence: { message: "Please select photo" },
                                     content_type: /\Aimage\/.*\Z/
 
 
@@ -19,6 +21,13 @@ class Photo < ActiveRecord::Base
   belongs_to :user
   has_many :comments, as: :commentable, dependent: :destroy
   has_many :likes, as: :likeable, dependent: :destroy
+
+
+
+
+  def picture_from_url(url)
+    self.image = open(url) unless url.nil?
+  end
 
 
 end

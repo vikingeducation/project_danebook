@@ -20,9 +20,16 @@ user has ONE profile, created after a new user is created
 user has MANY posts, post belongs_to ONE user
 "timeline" is just the name for the 'posts#index' route
 
+user has_many photos
+a photo belongs_to a user (foreign key: user_id)
+photo has_many likes
+photo has_many comments
+
+TODO: add polymorphic type "Photo" to likes
+TODO: refactor comments to be polymorphic
 
 =======
-likes are polymorphic: can like a post, or a comment, etc.
+likes are polymorphic: can like a post, a comment, etc.
 post has MANY likes, like belongs_to ONE post
 comment has MANY likes, like belongs_to ONE post
 posts and comments are "likeable"

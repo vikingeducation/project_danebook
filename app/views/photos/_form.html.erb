@@ -1,0 +1,19 @@
+<div class="form-inline">
+  <div class="form-group">
+    <%= form_for [:user, @photo] do |f| %>
+
+      <div class="form-group text-center">
+        <%= field_with_errors(@photo, :image) %>
+        <%= f.file_field :image, class: "form-control" %>
+      </div>
+      
+      <%= f.hidden_field :user_id, value: current_user.id %>
+
+      <div class="form-group">
+        <%= f.submit "Upload Photo", class: "btn btn-success btn-sm" %>
+      </div>
+
+
+    <% end %>
+  </div>
+</div>

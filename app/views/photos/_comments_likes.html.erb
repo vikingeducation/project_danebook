@@ -1,0 +1,33 @@
+  <div class="panel-footer">
+
+    <%= like_or_unlike(@photo) %>
+
+    <% if current_user == @photo.user %>
+    <%= link_to "Delete", user_photo_path(@photo.user, @photo), method: :delete, class: "pull-right", data: {confirm: "Are you sure?"} %>
+    <% end %>
+
+    <!-- likes -->
+    <% unless @photo.likes.empty? %>
+      <div class="panel-footer">
+      <%= render partial: "shared/likes", locals: { likes: @photo.likes } %>
+      </div>
+    <% end %>
+
+    <!-- existing comments -->
+    <% if @photo.comments %>
+      <% @photo.comments.each do |comment| %>
+      <div class="panel-footer">
+      <%= render partial: "comments/show_comment", locals: { comment: comment } %>
+      </div>
+      <% end %>
+    <% end %>
+
+    <!-- new comment form -->
+    <% if current_user && @new_comment %>
+      <div class="panel-footer">
+        <%= render partial: "comments/new_comment", locals: { new_comment: @new_comment, commentable_id: @photo.id, commentable_type: "Photo" } %>
+      </div>
+    <% end %>
+
+  </div>
+</div>

@@ -72,8 +72,9 @@ puts "Creating comments..."
 
 
 50.times do
-  Comment.create(body: Faker::Hipster.paragraph, user_id: User.pluck(:id).sample, post_id: Post.pluck(:id).sample)
+  Comment.create(body: Faker::Hipster.paragraph, user_id: User.pluck(:id).sample, commentable_type: "Post", commentable_id: Post.pluck(:id).sample)
 end
+
 
 
 

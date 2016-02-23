@@ -35,6 +35,10 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'faker'
 gem 'timecop'
 gem 'delayed_job_active_record'
+gem 'paperclip'
+gem 'aws-sdk', '< 2.0'
+gem 'figaro'
+
 
 group :test do
   gem 'capybara'

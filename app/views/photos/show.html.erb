@@ -1,0 +1,33 @@
+<div class='container'>
+  <div class='row'>
+
+    <div class='col-sm-7'>
+    <%= image_tag @photo.image.url(:large), class: 'img-responsive' %>
+
+    <%= link_to "Set as Profile Picture"%><br/>
+    <%= link_to "Set as Cover Photo" %><br/>
+
+    <% if current_user == @photo.user %>  
+      <%= link_to "Delete Photo", user_photo_path(@photo.user, @photo), method: :delete, data: { confirm: "Are you sure?" } %>
+    <% end %>
+
+    </div> 
+
+
+    <div class='col-sm-5'>
+
+      <%= @photo.user.first_name %> <%= @photo.user.last_name %><br/>
+      <%= @photo.created_at.strftime("%B %d, %Y") %>
+
+
+      <div>
+        <%= render partial: 'comments_likes' %>
+      </div>
+
+
+
+    </div>
+
+
+  </div>
+</div>

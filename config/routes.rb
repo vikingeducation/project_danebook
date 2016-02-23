@@ -22,6 +22,10 @@ Rails.application.routes.draw do
       resources :likes, only: [:create, :destroy], defaults: { :likeable => 'Comment'}
     end
 
+    resources :photos, only: [:show, :new, :create, :index, :destroy] do
+      resources :likes, only: [:create, :destroy], defaults: { :likeable => 'Photo'}
+    end
+
     get 'timeline' => 'posts#index'
   end
 

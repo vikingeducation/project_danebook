@@ -1,0 +1,6 @@
+<div class="col-sm-3">
+
+  <%= image_tag photo.image.url(:medium), class: 'img-responsive' %>
+  <%= link_to "Uploaded #{photo.created_at.strftime("%B %d, %Y")}", user_photo_path(photo.user, photo) %>
+
+</div>

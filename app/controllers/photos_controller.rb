@@ -3,33 +3,7 @@ class PhotosController < ApplicationController
 
   before_action :require_login
   before_action :require_object_owner, only: [:new, :create, :destroy]
-  before_action :redirect_if_photo_url_invalid, :only => [:create]
-​
-  def redirect_if_photo_url_invalid
-    file = photo_params[:file]
-    if file.is_a?(String)
-      begin
-        raise_error_if_not_image(file)
-      rescue StandardError => e
-        flash[:error] = 'URL invalid: ' + e.to_s
-        redirect_to new_user_photo_path
-      end
-    end
-  end
-​
-​
-  def raise_error_if_not_image(url)
-    Timeout.timeout(10) do
-      url = URI.parse(url)
-      Net::HTTP.start(url.host, url.port) do |http|
-        content_type = http.head(url.request_uri)['Content-Type']
-        unless ['image/jpeg', 'image/gif', 'image/png'].include?(content_type)
-          raise 'URL must be an JPEG, GIF, or PNG image file'
-        end
-      end
-    end
-  end
-
+  # before_action :redirect_if_photo_url_invalid, :only => [:create]
 
   def serve
     @photo = Photo.find(params[:id])

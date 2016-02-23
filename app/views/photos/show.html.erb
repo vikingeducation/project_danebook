@@ -1,0 +1,32 @@
+<%= render partial: 'shared/menu' %>
+
+<div class="container">
+<!-- Photos Content -->
+<div class="row">
+  <!-- Friends Header -->
+  <div class="col-xs-12">
+    <nav class="navbar navbar-default about-nav">
+      <p class="box-header">Photos</p>
+      <% if current_user && current_user.id == @profile.user.id %>
+        <a class="btn btn-primary" style="margin-top: -43px;margin-right: 10px; float:right;" href="<%= new_photo_path %>">Add Photo!</a>
+      <% end %>
+    </nav>
+  </div>
+</div>
+<!-- End of Friends Header -->
+
+<!-- Photos form -->
+  <div clas="row">
+    <div class="col-xs-12 white-bg text-center">
+        <div class="col-xs-8" style="margin: 15px auto; display: inline-block;">
+          <%= image_tag @photo.photo.url(:large), style: "height: 500px; width: 500px;" %>
+        </div>
+
+        <div class="col-xs-4" style="margin: 15px auto;">
+          comment stuff here
+        </div>
+
+    </div>
+  </div>
+</div>
+<!-- End of Photos form -->

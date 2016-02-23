@@ -12,4 +12,18 @@ module ApplicationHelper
     # Combine our normal input tag with the error message
     error
   end
+
+  def all_errors(object)
+    error = ""
+    unless object.errors.any?
+      # Otherwise, create an error <div> around the message
+      object.errors.each do |e|
+        error += content_tag(:div, :class=>"alert alert-danger") do
+          object.e
+        end
+      end
+    end
+    # Combine our normal input tag with the error message
+    error
+  end
 end

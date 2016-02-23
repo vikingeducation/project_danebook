@@ -1,0 +1,34 @@
+<%= render partial: 'shared/menu' %>
+
+<div class="container">
+<!-- Photos Section -->
+<div class="row">
+  <!-- Friends Header -->
+  <div class="col-xs-12">
+    <nav class="navbar navbar-default about-nav">
+      <p class="box-header">Photos</p>
+      <% if current_user && current_user.id == @profile.user.id %>
+        <a class="btn btn-primary" style="margin-top: -43px;margin-right: 10px; float:right;" href="<%= new_photo_path %>">Add Photo!</a>
+      <% end %>
+    </nav>
+  </div>
+</div>
+<!-- End of Friends Header -->
+
+<!-- Photos Contents -->
+<div clas="row">
+  <div class="col-xs-12 white-bg">
+  <% @photos.each do |photo| %>
+    <div class="col-xs-3 photo-pic" style= "margin: 15px 0;">
+      <a href="<%= photo_path(photo, user_id: photo.user_id) %>" class="img-responsive photo-hover" style="height: 250px; width: 250px;">
+        <%= image_tag photo.photo.url(:medium), class: "img-thumbnail panel-pic", style:"height: 250px; width: 250px;"%>
+      </a>
+      <div class="photo-date">
+        Uploaded <%= photo.created_at.strftime("%m/%d/%Y %I:%M %p") %>
+      </div>
+    </div>
+  <% end %>
+</div>
+</div>
+</div>
+<!-- End of Photos Contents -->

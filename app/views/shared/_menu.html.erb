@@ -47,9 +47,9 @@
             <!--vertical divider-->
             <div class="v-line"></div>
             <li>
-              <a class="btn btn-default tl-menu-link" role="button" href="#">
+              <a class="btn btn-default tl-menu-link" role="button" href="<%= photos_path(id: @profile.user_id) %>">
                 Photos
-                <p class="count-disp">(9000)</p>
+                <%= content_tag :p, @profile.user.photos.size, class: "count-disp" %>
               </a>
             </li>
             <!--vertical divider-->

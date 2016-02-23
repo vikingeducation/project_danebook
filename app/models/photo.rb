@@ -9,4 +9,8 @@ class Photo < ActiveRecord::Base
   has_many :comments, as: :commentable, dependent: :destroy
 
   validates :user, presence: true
+
+  def photo_from_url(url)
+    self.photo = open(url)
+  end
 end

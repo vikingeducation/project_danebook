@@ -59,7 +59,7 @@ class UsersController < ApplicationController
   end
 
   def photos
-
+    @user = User.find(params[:user_id])
   end
 
   def friends

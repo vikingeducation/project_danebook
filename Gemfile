@@ -40,6 +40,10 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
   gem 'sqlite3'
+  gem 'figaro'
+  gem 'paperclip'
+  gem 'better_errors'
+  gem 'aws-sdk'
 end
 
 group :test do

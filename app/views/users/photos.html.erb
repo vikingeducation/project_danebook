@@ -1,0 +1,16 @@
+<%= render partial: 'header' %>
+<main>
+  <!-- Main Container -->
+  <div class="container main">
+
+    <!-- Photos Container -->
+    <div class="photos-header nav row text-center">
+      <div class="col-sm-2 col-sm-offset-5">
+        <h1>Photos</h1>
+      </div>
+      <div class="col-sm-2 pull-right">
+	      <%= link_to "Add Photos!", new_photo_path(user_id: current_user.id), class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+</main>

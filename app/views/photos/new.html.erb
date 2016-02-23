@@ -1,0 +1,41 @@
+<div class="container-fluid">
+
+  <div class="row text-center">
+    <h1>Photos</h1>
+  </div>
+
+  <div class="row text-center">
+    <div class="col-sm-12">
+      <span>
+        Paste the URL to a photo on the web...
+      </span>
+    </div>
+
+
+    <%= form_for @photo do |photo_field| %>
+      <div class="col-sm-8 col-sm-offset-2 form-group">
+        <%= photo_field.text_field :url, class: "form-control" %>
+      </div>
+
+      <div class="col-sm-2 col-sm-offset-5">
+        <%= photo_field.submit "Use Web Photo", class: " btn btn-primary btn-lg" %>
+      </div>
+
+      <div class="col-sm-12">
+        <h3><strong>or...</strong></h3>
+      </div>
+
+      <div class="col-sm-12">
+        <span>Select a photo from your hard drive...</span>
+      </div>
+
+      <div class="col-sm-2 col-sm-offset-5">
+        <%= photo_field.file_field :avatar %>
+      </div>
+      <div class="col-sm-12">
+        <%= photo_field.submit %>
+      </div>
+    <% end %>
+  </div>
+
+</div>

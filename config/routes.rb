@@ -15,6 +15,11 @@ Rails.application.routes.draw do
     resources :comments, only: [:create, :destroy], defaults: { commentable: 'Post' }
   end
 
+  resources :photos do
+    resources :likes, only: [:create, :destroy], defaults: { likeable: 'Photo' }
+    resources :comments, only: [:create, :destroy], defaults: { commentable: 'Photo' }
+  end
+
   resources :comments, only: [:create, :destroy] do
     resources :likes, only: [:create, :destroy], defaults: { likeable: 'Comment' }
   end

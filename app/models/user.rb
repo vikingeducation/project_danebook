@@ -71,4 +71,9 @@ class User < ActiveRecord::Base
     first_name, last_name = search_name.split(' ')
     self.select("*").where("users.first_name LIKE '%#{first_name}%' OR users.last_name LIKE '%#{last_name}%'")
   end
+
+  def friend?(current_user)
+    return true if self == current_user
+    friended_users.include?(current_user)
+  end
 end

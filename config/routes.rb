@@ -5,19 +5,19 @@ Rails.application.routes.draw do
   resources :users do
     get "timeline" => "users#timeline"
     get "friends" => "users#friends"
-    get "photos" => "users#photos"
     get "searches" => "users#searches"
+
     resources :friendings, only: [:create, :destroy]
+
+    resources :photos, except: [:update, :edit] do
+      resources :likes, only: [:create, :destroy], defaults: { likeable: 'Photo' }
+      resources :comments, only: [:create, :destroy], defaults: { commentable: 'Photo' }
+    end
   end
 
   resources :posts, only: [:create, :destroy] do
     resources :likes, only: [:create, :destroy], defaults: { likeable: 'Post' }
     resources :comments, only: [:create, :destroy], defaults: { commentable: 'Post' }
-  end
-
-  resources :photos do
-    resources :likes, only: [:create, :destroy], defaults: { likeable: 'Photo' }
-    resources :comments, only: [:create, :destroy], defaults: { commentable: 'Photo' }
   end
 
   resources :comments, only: [:create, :destroy] do

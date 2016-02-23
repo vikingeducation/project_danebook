@@ -1,12 +1,13 @@
-<div class="container-fluid">
+<%= render partial: 'shared/header' %>
+<div class="container main">
 
-  <div class="row text-center">
+  <div class="photos-header nav row text-center">
     <h1>Photos</h1>
   </div>
 
   <div class="row">
     <div class="col-sm-offset-1 col-sm-6">
-      <%= image_tag @photo.avatar.url %>
+      <%= image_tag @photo.image.url(:medium) %>
     </div>
 
     <div class="col-sm-4">

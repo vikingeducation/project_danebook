@@ -58,10 +58,6 @@ class UsersController < ApplicationController
     @matches = User.find_users(params[:search_name])
   end
 
-  def photos
-    @user = User.find(params[:user_id])
-  end
-
   def friends
     @user = User.find(params[:user_id])
   end

@@ -1,2 +1,18 @@
-<h4><%= @recipient.first_name %> <%= @recipient.last_name %>, you have a new comment!</h4>
+<h3>Hello, <%= @recipient.first_name %> <%= @recipient.last_name %>!</h3>
 
+<h4>You have a new comment. </h4>
+
+<h5><%= @comment.user.first_name %> <%= @comment.user.last_name %> just wrote:</h5>
+
+<p>"<%= @comment.body %>"</p>
+
+<%= @commented %>
+
+<% if @comment.commentable_type == "Post" %>
+  <p><%= link_to "View Comment", user_posts_url(@recipient, @commented) %></p>
+
+  <% else %>
+
+  <p><%= link_to "View Comment", user_photos_url(@recipient.id) %></p>
+
+<% end %>

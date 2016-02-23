@@ -34,7 +34,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'faker'
 gem 'timecop'
-
+gem 'delayed_job_active_record'
 
 group :test do
   gem 'capybara'
@@ -44,6 +44,7 @@ end
 
 group :production do
   gem 'rails_12factor'
+  gem 'daemons'
 end
 
 group :development do

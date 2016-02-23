@@ -1,0 +1,19 @@
+<div class='text-center'>
+  <div class='spacer'>
+
+    <h3>Paste the url to a photo on the web:</h3>
+    <h4>(This is where the url magic comes in)</h4>
+    <div>
+      <%= button_to "Use Web Photo", {}, class: "btn btn-primary btn-large" %>
+    </div>
+
+  </div>
+
+
+  <h2 class="spacer">or...</h2>
+  <h3>Select a photo from your file system:</h3>
+
+
+  <%= render partial: 'form' %>
+
+</div>

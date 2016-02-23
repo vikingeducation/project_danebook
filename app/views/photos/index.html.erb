@@ -1,0 +1,13 @@
+
+
+<% unless @photos.empty? %>
+
+  <div class='row'>
+    <% @photos.each do |photo| %>
+      <%= render partial: 'photo', locals: { photo: photo } %>
+    <% end %>
+  </div>
+
+<% else %>
+  <h3 class="text-center">No photos have been added yet.</h3>
+<% end %>

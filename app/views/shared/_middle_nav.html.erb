@@ -1,7 +1,7 @@
 <div class="row">
   <!-- Main photo -->
   <section>
-    <div class="jumbotron">
+    <div class="cover-photo">
 
     <% unless profile.cover_photo_id.nil? %>
       <%= image_tag profile.cover_photo.image.url(:large), class: 'img-responsive' %>

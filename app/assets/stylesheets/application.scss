@@ -80,11 +80,14 @@
 
 
   /* cover photo css */
-  .row > section > div.jumbotron > img {
-    width:100%;
-    height: 400px;
+  .row > section > div.cover-photo > img {
     z-index: -1;
     border-radius: 0px;
+    box-sizing: border-box;
+    display: block;
+    margin-bottom: 30px;
+    width: 100%;
+    height: 400px;
   }
 
 

@@ -1,10 +1,17 @@
 class User < ActiveRecord::Base
 
-  has_attached_file :avatar, styles: { medium: "300x300", thumb: "100x100" }
-  validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
-  validates_with AttachmentSizeValidator, attributes: :avatar, less_than: 5.megabytes
+
+  # has_attached_file :avatar, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/images/harry_potter_profile.png"
+  # validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
+  # validates_with AttachmentSizeValidator, attributes: :avatar, less_than: 5.megabytes
+  #
+  # has_attached_file :cover, styles: { large: "400x400>" }, default_url: "/images/hogwarts_small.jpg"
+  # validates_attachment_content_type :cover, :content_type => /\Aimage\/.*\Z/
+  # validates_with AttachmentSizeValidator, attributes: :cover, less_than: 5.megabytes
 
   has_many :photos, dependent: :destroy
+  belongs_to :avatar, class_name: "Photo"
+  belongs_to :cover, class_name: "Photo"
 # ======================================================
   has_secure_password
 # ======================================================

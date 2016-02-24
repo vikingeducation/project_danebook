@@ -4,6 +4,7 @@ module LikesHelper
   def display_like_stats(post)
     post_likes = post.likes
     size = post_likes.size
+    return "" if size == 0
     if signed_in_user?
       liked = post_likes.any? { |l| l.user_id == current_user.id } ? true : false
     else

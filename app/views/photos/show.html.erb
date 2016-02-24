@@ -18,12 +18,66 @@
 <!-- Photos form -->
   <div clas="row">
     <div class="col-xs-12 white-bg text-center">
-        <div class="col-xs-8" style="margin: 15px auto; display: inline-block;">
-          <%= image_tag @photo.photo.url(:large), style: "height: 500px; width: 500px;" %>
+        <div class="col-xs-7" style="margin: 15px auto; display: inline-block;">
+          <%= image_tag @photo.photo.url(:large), class: "img-thumbnail",   style: "height: 500px; width: 500px;" %>
+          <% if current_user && current_user.id == @photo.user_id %>
+            <div><%= link_to "Set as Profile Image", user_path(id: current_user.id, user: { avatar_id: @photo.id} ), method: "patch" %></div>
+            <div><%= link_to "Set as Cover Image", user_path(id: current_user.id, user: {cover_id: @photo.id} ), method: "patch" %></div>
+            <div><%= link_to "Delete Photo", photo_path(@photo.id), method: "delete", data: { confirm: "Are you sure?" } %></div>
+          <% end %>
         </div>
 
-        <div class="col-xs-4" style="margin: 15px auto;">
-          comment stuff here
+        <div class="col-xs-5" style="margin: 15px auto;">
+          <!-- Picture Uploader -->
+          <div class="col-xs-12">
+            <div class="media">
+              <div class="media-left">
+                <% if @photo.user.avatar %>
+                  <%= link_to image_tag(@photo.user.avatar.photo.url(:thumb), class: "img-thumbnail media-object"), user_path(@photo.user) %>
+                <% else %>
+                  <a href="<%= user_path(@photo.user) %>">
+                    <img src="/images/harry_potter_profile.png" class="img-thumbnail media-object" style="height: 100px; width: 100px;">
+                  </a>
+                <% end %>
+              </div>
+              <div class="media-body">
+                <h5 class="media-left"><%= link_to @photo.user.name, user_path(@photo.user) %></h5>
+                <p class="text-left">Uploaded <%= @photo.created_at.strftime("%m/%d/%Y %I:%M %p") %></p>
+              </div>
+            </div>
+          </div>
+          <!-- Like Statistics -->
+          <div class="col-xs-12">
+            <hr>
+            <div class="like-link">
+              <p>
+                <%= display_like_stats(@photo).html_safe %>
+              </p>
+            </div>
+          </div>
+          <!-- Like Options -->
+          <% if signed_in_user? %>
+            <div class="col-xs-12">
+                <% if liked_photo?(@photo) %>
+                <div class="like-link">
+                  <%= link_to "Unlike", photo_like_path(@photo.id, get_like(@photo)), method: :delete %>
+                </div>
+                <% else %>
+                  <div class="like-link">
+                    <%= link_to "Like", photo_likes_path(@photo.id), method: :post %>
+                  </div>
+                <% end %>
+                <div class="comment-link">
+                  <a class="comment-link" href="#">Comment</a>
+                </div>
+            </div>
+          <% end %>
+          <!-- Display all Comments -->
+          <% @photo.comments.each do |comment| %>
+            <%= render partial: 'comments/comment_show', locals: { comment: comment } %>
+          <% end %>
+          <!-- Comment Form -->
+          <%= render partial: 'comments/comment_form', locals: { post: @photo } if @photo.id && signed_in_user? %>
         </div>
 
     </div>

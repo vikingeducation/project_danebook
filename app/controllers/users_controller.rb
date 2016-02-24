@@ -2,7 +2,7 @@ class UsersController < ApplicationController
 
   before_action :require_login, except: [:new, :show, :create, :newsfeed]
   before_action :require_logout, only: [:new]
-  before_action :require_current_user, only: [:update, :newsfeed]
+  before_action :require_current_user, only: [:update]
 
   # Signup Page
   def new
@@ -35,7 +35,7 @@ class UsersController < ApplicationController
     if @user.save(user_params)
       sign_in(@user)
       flash[:success] = "Created a new User!"
-      redirect_to user_path(current_user)
+      redirect_to newsfeed_path
     else
       flash.now[:danger] = "Failed to create User!"
       @user.build_profile

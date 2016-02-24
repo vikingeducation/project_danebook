@@ -18,7 +18,7 @@ class FriendingsController < ApplicationController
     # friendship already exists
     unless @friender.friended_users.include? @friend
       if current_user.friended_users << @friending_recipient
-        flash[:success] = "Successfully friended #{@friending_recipient.first_name}"
+        flash[:success] = "You are now friends with #{@friending_recipient.first_name}"
       else
         flash[:error] = "Failed to friend! Forever alone :("
       end

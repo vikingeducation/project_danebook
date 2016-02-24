@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-xs-3">
     <% if post.author.avatar.nil? %>
-      <img src="/assets/icon_photo_small.png" class="img-responsive thumbnail">
+      <img src="/images/icon_photo_small.png" class="img-responsive thumbnail">
     <% else %>
       <%= image_tag post.author.image.url(:thumb), class: "img-responsive", alt: "missing photo" %>
     <% end %>

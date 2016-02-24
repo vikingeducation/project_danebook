@@ -2,7 +2,7 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
-  
+
   config.paperclip_defaults = {
 
     # Don't forget to make S3 your storage option!

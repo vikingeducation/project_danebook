@@ -9,7 +9,7 @@
         <!-- Full Width Cover Photo -->
         <div class="row">
           <% if current_user.cover_photo.nil? %>
-              <img id="cover-photo"  src="/assets/hogwarts_small.jpg" class="img-responsive col-md-12" alt="Responsive Cover">
+              <img id="cover-photo"  src="/images/hogwarts_small.jpg" class="img-responsive col-md-12" alt="Responsive Cover">
             <% else %>
               <%= image_tag current_user.cover_photo.image.url, class: "img-responsive col-md-12", alt: "Responsive Cover" %>
             <% end %>
@@ -21,7 +21,7 @@
           <!-- Profile Pic -->
           <div class="img-wrapper col-md-3">
             <% if current_user.avatar.nil? %>
-              <img src="/assets/harry_potter_small.jpg" class="img-responsive">
+              <img src="/images/harry_potter_small.jpg" class="img-responsive">
             <% else %>
               <%= image_tag current_user.avatar.image.url, class: "thumbnail img-responsive", alt: "missing photo" %>
             <% end %>

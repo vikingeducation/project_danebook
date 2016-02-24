@@ -3,7 +3,7 @@
   <div class="panel-body">
     <div class="col-sm-4">
       <% if post.author.avatar.nil? %>
-        <img src="/assets/icon_photo_small.png" class="img-responsive thumbnail">
+        <img src="/images/icon_photo_small.png" class="img-responsive thumbnail">
       <% else %>
         <%= image_tag post.author.image.url(:thumb), class: "img-responsive", alt: "missing photo" %>
       <% end %>
@@ -36,7 +36,7 @@
       <div class="row">
         <div class="col-xs-3">
           <% if comment.author.avatar.nil? %>
-            <img src="/assets/icon_photo_small.png" class="img-responsive thumbnail">
+            <img src="/images/icon_photo_small.png" class="img-responsive thumbnail">
           <% else %>
             <%= image_tag comment.author.avatar.image.url(:thumb), class: "img-responsive", alt: "missing photo" %>
           <% end %>

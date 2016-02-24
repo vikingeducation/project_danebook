@@ -8,7 +8,13 @@ class Post < ActiveRecord::Base
   validates :body, length: { in: 1..250 }
 
 
-
+  def self.newsfeed(user)
+    where('user_id IN (?) OR user_id IN (?) OR user_id = ?',
+      user.friended_users.pluck(:id),
+      user.users_friended_by.pluck(:id),
+      user.id
+      ).order(created_at: :desc)
+  end
 
 
 end

@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
-  root 'users#new'
+  root 'activities#index'
+
+  get 'newsfeed' => 'activities#index'
+
+  resources :activities, only: [:index]
 
 
   resource :session, only: [:new, :create, :destroy]

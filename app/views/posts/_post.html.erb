@@ -6,7 +6,7 @@
       You posted on <%= post.created_at.strftime("%A %D") %>:
 
     <% else %>
-      <%= link_to "#{post.user.first_name} #{post.user.last_name}", user_timeline_path %><br/>
+      <%= link_to "#{post.user.first_name} #{post.user.last_name}", user_timeline_path(post.user) %><br/>
       Posted on <%= post.created_at.strftime("%A %D") %>
     <% end %>
   </div>

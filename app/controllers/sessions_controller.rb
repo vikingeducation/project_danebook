@@ -12,11 +12,10 @@ class SessionsController < ApplicationController
         sign_in(@user)
       end
       flash[:success] = "Welcome to Danebook."
-      redirect_to user_timeline_path(@user)
     else
       flash[:error] = "Failed to sign in"
-      redirect_to root_path
     end
+    redirect_to root_path
   end
 
 

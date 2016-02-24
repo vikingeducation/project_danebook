@@ -4,7 +4,29 @@
       <%= render partial: "recently_active" %>
     </div>
     <div class="col-xs-8">
-      
+      <h1 class="page-header text-center">Newsfeed</h1>
+      <% if @activities.size == 0 %>
+      <p>Add some friends to see what people are up to!</p>
+      <% end %>
+      <% @activities.each do |activity| %>
+        <% if activity.activable_type == "Post" %>
+          <%= render partial: 'shared/post_show', locals: { post: activity.activable, user: activity.user } %>
+          <hr>
+        <% elsif activity.activable_type == "Photo" %>
+          <%= render partial: "photo_newsfeed", locals: { photo: activity.activable, user: activity.user}%>
+          <hr>
+        <% elsif activity.activable_type == "Friending" %>
+        <div class="row">
+          <div class="col-xs-12">
+            <ul class="list-group">
+              <li class="list-group-item">
+                <%= "#{activity.user.name} #{activity.event} #{activity.activable.friended.name}" %>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <% end %>
+      <% end %>
     </div>
   </div>
 </div>

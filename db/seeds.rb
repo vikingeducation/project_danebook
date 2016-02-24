@@ -85,8 +85,14 @@ end
 
 def generate_friendings
   friending = Friending.new
-  friending.friender_id = User.pluck(:id).sample
-  friending.friended_id = User.pluck(:id).sample
+  friender = User.pluck(:id).sample
+  friended = User.pluck(:id).sample
+  until friender != friended
+    friender = User.pluck(:id).sample
+    friended = User.pluck(:id).sample
+  end
+  friending.friender_id = friender
+  friending.friended_id = friended
   friending.created_at = Faker::Date.between(50.years.ago, Date.today - 30)
   friending.save
 end
@@ -122,7 +128,13 @@ def generate_test_account
   5.times do
     friending = Friending.new
     friending.friender_id = u.id
-    friending.friended_id = User.pluck(:id).sample
+
+    friended = User.pluck(:id).sample
+    until u.id != friended
+      friended = User.pluck(:id).sample
+    end
+
+    friending.friended_id = friended
     friending.created_at = Faker::Date.between(50.years.ago, Date.today - 30)
     friending.save
   end

@@ -2,19 +2,21 @@ class Friending < ActiveRecord::Base
   belongs_to :friender, class_name: "User"
   belongs_to :friended, class_name: "User"
 
+  has_many :activities, as: :activable, dependent: :destroy
+
   validates :friender, presence: true
   validates :friended, presence: true
   validates :friender_id, :uniqueness => { :scope => :friended_id, message: "can't friend the same user twice!"}
 
   after_create :create_activity
-  after_destroy :destroy_activity
+  # after_destroy :destroy_activity
 
   private
 
     def create_activity
       Activity.create(
         user_id: self.friender_id,
-        event: "Added a Friend",
+        event: "Friended",
         activable_id: self.id,
         activable_type: "#{self.class}",
         created_at: self.created_at,
@@ -22,10 +24,10 @@ class Friending < ActiveRecord::Base
       )
     end
 
-    def destroy_activity
-      activity = Activity.find_by_user_id_and_activable_id_and_activable_type( self.user_id, self.id, "#{self.class}")
-      activity.destroy
-    end
+    # def destroy_activity
+    #   activity = Activity.find_by_user_id_and_activable_id_and_activable_type( self.user_id, self.id, "#{self.class}")
+    #   activity.destroy
+    # end
 
     # def add_activities
     #   if friended.posts

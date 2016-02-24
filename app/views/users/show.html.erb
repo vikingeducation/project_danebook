@@ -15,7 +15,7 @@
     <% @posts.each do |post| %>
       <div class="row" style="margin-top: 10px">
         <div class="col-sm-12">
-          <%= render partial: 'shared/post_show', locals: { post: post } if post.id %>
+          <%= render partial: 'shared/post_show', locals: { post: post, user: @user } if post.id %>
         </div>
       </div>
     <% end %>

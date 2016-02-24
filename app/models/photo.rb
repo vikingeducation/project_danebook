@@ -1,6 +1,8 @@
 class Photo < ActiveRecord::Base
   belongs_to :user
 
+  has_many :activities, as: :activable, dependent: :destroy
+  
   has_attached_file :photo, styles: { thumb: "100x100", medium: "250x250", large: "500x500>" }
   validates_attachment_content_type :photo, :content_type => /\Aimage\/.*\Z/
   validates_attachment_presence :photo, presence: true
@@ -12,7 +14,7 @@ class Photo < ActiveRecord::Base
   validates :user, presence: true
 
   after_create :create_activity
-  after_destroy :destroy_activity
+  # after_destroy :destroy_activity
 
   def photo_from_url(url)
     self.photo = open(url)
@@ -31,10 +33,10 @@ class Photo < ActiveRecord::Base
       )
     end
 
-    def destroy_activity
-      activity = Activity.find_by_user_id_and_activable_id_and_activable_type( self.user_id, self.id, "#{self.class}")
-      activity.destroy
-    end
+    # def destroy_activity
+    #   activity = Activity.find( user_id: self.user_id, activable_id: self.id, activable_type: "#{self.class}")
+    #   activity.destroy
+    # end
 
   # def create_activities
   #   if photo.user.frienders

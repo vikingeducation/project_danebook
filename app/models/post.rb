@@ -2,12 +2,13 @@ class Post < ActiveRecord::Base
   belongs_to :user, inverse_of: :posts
   has_many :likes, as: :likeable, dependent: :destroy
   has_many :comments, as: :commentable, dependent: :destroy
+  has_many :activities, as: :activable, dependent: :destroy
 
   validates :body, presence: true, length: { maximum: 2000 }
   validates :user, presence: true
 
   after_create :create_activity
-  after_destroy :destroy_activity
+  # after_destroy :destroy_activity
 
   private
 
@@ -22,10 +23,10 @@ class Post < ActiveRecord::Base
       )
     end
 
-    def destroy_activity
-      activity = Activity.find_by_user_id_and_activable_id_and_activable_type( self.user_id, self.id, "#{self.class}")
-      activity.destroy
-    end
+    # def destroy_activity
+    #   activity = Activity.find( user_id: self.user_id, activable_id: self.id, activable_type: "#{self.class}")
+    #   activity.destroy
+    # end
 
     # def create_activities
     #   if post.user.frienders

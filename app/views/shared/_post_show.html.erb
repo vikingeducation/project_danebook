@@ -15,7 +15,7 @@
         <!-- Post info -->
         <div class="col-xs-8 col-sm-9">
           <div style="margin: 20px 0 0 0;font-size: 18px;">
-            <%= link_to @user.name, user_path(@user) %>
+            <%= link_to user.name, user_path(user) %>
           </div>
           <%= content_tag :p, "Posted on #{post.created_at.strftime("%A %m/%d/%Y %I:%M %p")}", class: "post-datetime" %>
         </div>
@@ -49,7 +49,7 @@
                 <a class="comment-link" href="#">Comment</a>
               </div>
               <div class="delete-link">
-                <% if current_user && current_user.id == @profile.user.id %>
+                <% if current_user && current_user.id == user.profile.id %>
                   <%= link_to "Delete", post_path(post), class: "delete-link", method: :delete, data: { confirm: "Are you sure?" } %>
                 <% end %>
               </div>

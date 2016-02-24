@@ -13,6 +13,17 @@ Profile.delete_all
 Photo.delete_all
 User.delete_all
 
+
+
+# hacky way to create first photo
+p = Photo.new
+p.image = open(Faker::Avatar.image)
+p.user_id = 1
+p.save
+
+
+
+
 puts "Creating users..."
 
 
@@ -123,3 +134,6 @@ puts "Creating friendships..."
 200.times do
   Friending.create(friender_id: User.pluck(:id).sample, friend_id: User.pluck(:id).sample)
 end
+
+
+puts "DONE!"

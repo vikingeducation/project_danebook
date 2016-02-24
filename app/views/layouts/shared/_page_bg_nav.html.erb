@@ -3,9 +3,9 @@
 
     <div class="image-container">
 
-    <% if !@user.profile.image_id.nil? %>
-
-      <%= image_tag @user.profile.image.picture.url, 
+    <% if !@user.profile.cover_id.nil? %>
+      <% cover_pic = @user.profile.cover_id %>
+      <%= image_tag Image.find(cover_pic).picture.url, 
          class: "img-responsive cover-image" %>
 
     <% else %>
@@ -16,13 +16,13 @@
 
     <% end %> 
 
-    <% if !@user.profile.cover_id.nil? %>
-      <% cover = @user.profile.cover_id %>
-      <%= image_tag Image.find(cover).picture.url, 
+    <% if !@user.profile.image_id.nil? %>
+      <% profile_pic = @user.profile.image_id %>
+      <%= image_tag Image.find(profile_pic).picture.url, 
          class: "img-thumbnail" ,
          id: "profile-image" %>
     <% else %> 
-      <img src="http://ndl.mgccw.com/mu3/000/488/259/sss/42409d600b984fc9934a52f28291ba27_small.png" 
+      <img src="http://ndl.mgccw.com/mu3/000/488/259/sss/42409d600b984fc9934a52f28291ba27_small.png"
            class="img-thumbnail" id ="profile-image" alt="profile">
     <% end %>
 

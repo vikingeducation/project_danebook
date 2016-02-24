@@ -51,17 +51,23 @@ class PostsController < ApplicationController
   private
 
   def set_post_user_profile
-    @user = User.find(params[:user_id])
-
-    @profile = @user.profile 
-    puts "GOT HERE in for user_ID #{@user.id} AND PROFILE #{@profile}"
+    if @user = User.find_by_id(params[:user_id])
+        @profile = @user.profile 
+    else
+      flash[:alert] = "No such person! Redirecting to you page!" 
+      redirect_to user_path(current_user)
+    end 
   end
     
   def set_post
-    @post = Post.find(params[:id])
-    @user = @post.user
-    @profile = @user.profile
-    @like = @post.likes.where("user_id = ?",current_user.id)
+    if @post = Post.find_by_id(params[:id])
+       @user = @post.user
+       @profile = @user.profile
+       @like = @post.likes.where("user_id = ?",current_user.id)
+    else
+      flash[:alert] = "No such post found! Redirecting to your Timeline!" 
+      redirect_to new_user_post_path(current_user)
+    end 
   end
 
   def post_params

@@ -34,7 +34,9 @@
       </div>
     
       <div class="col-md-2 tiny-font"> 
-        <%= link_to "Delete", user_post_path(post.user.id, post.id), method: :delete %>
+        <% if current_user.id == post.user_id %>
+           <%= link_to "Delete", user_post_path(post.user.id, post.id), method: :delete %>
+        <% end %>   
       </div>
 
     </div>

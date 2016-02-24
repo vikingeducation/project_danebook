@@ -24,15 +24,19 @@ class FriendshipsController < ApplicationController
 
   def destroy
 
-    @friendship = Friendship.find(params[:id])
+    if @friendship = Friendship.find_by_id(params[:id])
 
-    if @friendship.destroy
-      flash[:success] = "Unfriended"
+      if @friendship.destroy
+        flash[:success] = "Unfriended"
+      else
+        flash[:alert] = "Could not unfriend"
+      end
+
+      redirect_user_path(params[:user_id])
     else
-      flash[:alert] = "Could not unfriend"
-    end
-
-    redirect_user_path(params[:user_id])
+      flash[:alert] = "Invalid friendship removal! - Unauthorized?"
+      redirect_to root_url
+    end  
   end 
 
 

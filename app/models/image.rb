@@ -1,6 +1,7 @@
 require 'open-uri'
 
 class Image < ActiveRecord::Base
+
   belongs_to :user
 
   has_many   :comments, -> { order('created_at ASC') }, as: :commentable, dependent:   :destroy
@@ -18,6 +19,7 @@ class Image < ActiveRecord::Base
   attr_accessor :image_url
 
   def image_from_url(url)
+    #url =~ /\A#{URI::regexp}\z/
     self.picture = open(url)
   end
 

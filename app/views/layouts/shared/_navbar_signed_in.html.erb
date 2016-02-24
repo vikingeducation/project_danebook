@@ -16,7 +16,10 @@
 
     <img src="../assets/denmark-flag.gif" alt="flag"
          class="img-rounded img-thumbnail pull-left">
-    <a class="navbar-brand" id = "brand-link" href="#">Danebook</a>
+    <a class="navbar-brand" id = "brand-link" 
+       href="<%= newsfeed_path(current_user.id) %>">
+       Danebook
+    </a>
   </div>
     
   <!-- wraps rest of links to collapse in mobile-->
@@ -35,10 +38,14 @@
   <div class="nav navbar-nav col-md-2">
     <a href="<%= user_path(current_user) %>" 
        class="pull-right nav-personal-link">
-        <%= current_user.profile.first_name%> <%=current_user.profile.last_name %></a>
+        <%= current_user.profile.first_name%> <%=current_user.profile.last_name %>
+    </a>
+
   </div><!--navbar-collapse-->
   
   <div class="col-md-2"> 
+    <%= link_to "Log out", session_path(current_user), method: :delete,  
+       class: "pull-left nav-personal-link" %>
   </div>  
 
 </nav>

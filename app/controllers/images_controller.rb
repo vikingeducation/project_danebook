@@ -2,14 +2,16 @@ class ImagesController < ApplicationController
 
   before_action :require_login
   before_action :require_current_user, :only => [:new, :create, :destroy]
+  before_action :set_user, only: [:index, :show, :new]
+  before_action :set_image, only: [:show, :destroy]
+
+  #before_action :redirect_if_image_url_invalid, :only => [:create]
 
   def index
-    @user = User.find(params[:user_id])
     @images = @user.images
   end
   
   def new
-    @user = User.find(params[:user_id])
     @image = @user.images.build
   end 
 
@@ -35,13 +37,10 @@ class ImagesController < ApplicationController
   end 
 
   def show
-     @user = User.find(params[:user_id])
-     @image = Image.find(params[:id])
   end 
 
   def destroy
 
-    @image = Image.find(params[:id])
     @image.picture.destroy 
     @image.picture.clear
     
@@ -55,6 +54,20 @@ class ImagesController < ApplicationController
   end 
 
 
+  def set_user
+    if !@user = User.find_by_id(params[:user_id])
+      flash[:alert] = "No such user!"
+      redirect_to root_url
+    end   
+  end
+
+  def set_image
+    if !@image = Image.find_by_id(params[:id])
+      flash[:alert] = "No such image!"
+      redirect_to :back
+    end   
+  end
+
   private
   def image_params
     params.require(:image).permit(
@@ -62,5 +75,6 @@ class ImagesController < ApplicationController
           :picture,
           :image_url
     )
-  end   
+  end
+
 end

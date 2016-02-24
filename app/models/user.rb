@@ -1,7 +1,6 @@
 class User < ActiveRecord::Base
   has_secure_password
   before_create :generate_token
-  # after_create :create_profile
 
   has_many :photos, dependent: :destroy
 
@@ -84,4 +83,9 @@ class User < ActiveRecord::Base
     "#{self.first_name} #{self.last_name}"
   end
 
+  def self.send_welcome_email(id)
+    user = User.find(id)
+    UserMailer.welcome(user).deliver
+  end 
+  
 end

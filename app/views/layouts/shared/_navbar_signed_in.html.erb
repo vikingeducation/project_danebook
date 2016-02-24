@@ -23,19 +23,20 @@
   <!-- wraps rest of links to collapse in mobile-->
   <div class="nav navbar-nav navbar-left col-md-4">
     
-    <form class="navbar-form" role="search">
+    <%= form_tag search_path, method: :get, class: "navbar-form" do%>
       <div class="search-bar input-group input-group-sm col-md-4 col-sm-4
                   form-group">
-        <input type="text" class="form-control pull-left" 
+        <input type="text" name="email" class="form-control pull-left" 
                placeholder="Search">
-      </div>
-    </form>
+      </div> 
+    <% end %>
   
   </div>
        <!-- wraps rest of links to collapse in mobile-->
   <div class="nav navbar-nav col-md-2">
-    <a href="<%= user_path(current_user) %>" class="pull-right nav-personal-link">
-            <%= current_user.profile.first_name%> <%=current_user.profile.last_name %></a>
+    <a href="<%= user_path(current_user) %>" 
+       class="pull-right nav-personal-link">
+        <%= current_user.profile.first_name%> <%=current_user.profile.last_name %></a>
   </div><!--navbar-collapse-->
   
   <div class="col-md-2"> 

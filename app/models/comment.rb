@@ -1,5 +1,6 @@
 class Comment < ActiveRecord::Base
-  
+  after_create :send_notify_comment
+
   belongs_to    :user
   belongs_to    :commentable, polymorphic: true
 
@@ -17,5 +18,9 @@ class Comment < ActiveRecord::Base
 
   def liked_by_other_users(liked_by_user)
     likes = self.liked_by_users.where("user_id != ?", liked_by_user)
+  end
+
+  def send_notify_comment
+    UserMailer.comment_notification(self).deliver!
   end
 end

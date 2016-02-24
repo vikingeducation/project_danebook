@@ -1,0 +1,91 @@
+    <!--for the cover image -->
+    <div class="container-border row no-pad">
+
+    <div class="image-container">
+
+    <% if !@user.profile.image_id.nil? %>
+
+      <%= image_tag @user.profile.image.picture.url, 
+         class: "img-responsive cover-image" %>
+
+    <% else %>
+      
+      <img src="http://vignette3.wikia.nocookie.net/harrypotter/images/b/bd/Dhogwarts.jpg/revision/latest?cb=20120128145344"
+      class="img-responsive cover-image" 
+      alt="Responsive image">
+
+    <% end %> 
+
+    <% if !@user.profile.cover_id.nil? %>
+      <% cover = @user.profile.cover_id %>
+      <%= image_tag Image.find(cover).picture.url, 
+         class: "img-thumbnail" ,
+         id: "profile-image" %>
+    <% else %> 
+      <img src="http://ndl.mgccw.com/mu3/000/488/259/sss/42409d600b984fc9934a52f28291ba27_small.png" 
+           class="img-thumbnail" id ="profile-image" alt="profile">
+    <% end %>
+
+    </div>
+
+    <!--for the navigation bar to diffetent pages-->
+    <div class="row no-pad border-container"> 
+
+    <div  class="col-md-12 text-center">
+      <div class="list-group list-group-horizontal">
+
+        <% if !current_user_view? %>
+        
+          <% if not_yet_friends(@user) %>
+        
+          <%= not_yet_friends(@user) %>
+            <%= link_to "Friend Me", friendships_path(user_id: @user), method: :post, class: "list-group-item" %>
+        
+          <% end %>  
+        
+        <% end %>
+        
+        <% if page_is == 'about' && !current_user_view? %>
+          <% if not_yet_friends(@user) %>
+            <%= link_to "Friend Me", friendships_path(user_id: @user), method: :post, class: "list-group-item" %>
+          <% end %>  
+        <% end %>
+
+        <% if current_user_view? %>
+        
+          <a href="<%= new_user_post_path(user_id: @user) %>" 
+             class="list-group-item <%= 'active' if page_is == 'timeline' %>"> 
+              Timeline 
+          </a>
+
+        <% else %>
+          <a href="<%= user_posts_path(@user) %>" 
+             class="list-group-item <%= 'active' if page_is == 'timeline' %>">
+             Timeline
+          </a>
+        <% end %>
+
+        <a href="<%= user_path(@user) %>" 
+          class="list-group-item <%= 'active' if page_is == 'about' %>">
+            About
+        </a>
+        
+        <a href="<%= images_path(user_id: @user) %>" 
+           class="list-group-item <%= 'active' if page_is == 'photos' %>">
+             Photos
+         </a>
+        
+        <a href="<%= friendships_path(user_id: @user) %>" 
+           class="list-group-item <%= 'active' if page_is == 'friends' %>"> 
+            Friends
+        </a>
+        
+        <a href="<%= edit_user_path(@user) %>" 
+           class="list-group-item <%= 'active' if page_is == 'edit_profile' %>">
+           Edit Profile
+        </a>
+
+       </div>
+    </div>
+    </div> <!--end navigation bar to diffetent pages-->
+    </div> <!--end top container-->

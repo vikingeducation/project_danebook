@@ -75,4 +75,13 @@ class ApplicationController < ActionController::Base
     (!params[:user_id] && params[:id] == current_user.id.to_s)
   end  
   helper_method :current_user_view?
+
+  def not_yet_friends(user)
+    current_user.initiated_friend_requests.where("friend_receiver_id = ?",@user.id).empty?
+  end
+  helper_method :not_yet_friends
+
+  def find_user_by_email(email)
+     User.find_by_email(email)
+  end  
 end

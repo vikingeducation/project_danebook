@@ -1,0 +1,90 @@
+<%= render partial: "layouts/shared/navbar_signed_in" %>
+<div class="row"> <!--main row for rest of page-->
+
+  <div class="col-md-8 col-md-offset-2"><!--main middle for image and nav links--> 
+
+    <!--Timeline events info container-->
+    <div class="row no-pad container-border page-type">
+
+      <div class="col-md-4">
+
+        <!--About info container on left-->
+        <div class="panel panel-default panel-style">
+          <div class="panel-heading">
+            <h3 class="panel-title">About</h3>
+          </div>
+
+          <div class="text-left panel-body panel-body-style basic-margin">
+            <p style="font-size:0.9em;">
+              <table>
+                <tbody>
+                  <tr>
+                    <td class="col-md-6"> Born on </td>
+                    <td>
+                      <% if @profile.birthdate %>
+                        <%= @profile.birthdate.strftime("%B %d, %Y") %>
+                      <% else %>
+                        -
+                      <% end %>
+                    </td> 
+                  </tr>
+                  <tr>
+                    <td class="col-md-6"> Went to school at </td>
+                    <td> <%= @profile.college %> </td>
+                  </tr>
+                  <tr>
+                    <td class="col-md-6"> Hometown in </td>
+                    <td> <%= @profile.hometown %> </td>
+                  </tr> 
+                  <tr>
+                    <td class="col-md-6"> Currently lives in </td>
+                    <td> <%= @profile.domicile %> </td>
+                  </tr>
+                </tbody>    
+              </table>  
+            </p>
+          </div>
+
+        </div>
+
+        <!--Display Photos container on left-->
+        <div class="panel panel-default panel-style">
+          <div class="panel-heading">
+            <h3 class="panel-title">Photos (<%= @user.images.count %>)</h3>
+          </div>
+
+          <div class="panel-body panel-body-style basic-margin">
+            <p style="text-align:left;">
+            </p>
+          </div>
+
+        </div>
+
+        <!--Display friends photos container on left-->
+        <div class="panel panel-default panel-style">
+          <div class="panel-heading">
+            <h3 class="panel-title">Friends (<%= @user.friends.count %>)</h3>
+          </div>
+
+          <div class="panel-body panel-body-style" style="margin:4px;">
+            <p style="text-align:left;">
+            </p>
+          </div>
+
+        </div> 
+      
+      </div>
+      
+      <div class="col-md-8">
+        <%= render partial: 'post_form' %>
+        
+        <%= render partial: @newsfeeds %>
+       
+      </div> 
+
+    </div>  
+  </div><!--End of main middle for image and nav links--> 
+    
+  <div class="col-md-2">
+  </div>
+</div>   

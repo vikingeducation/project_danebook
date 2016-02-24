@@ -1,0 +1,8 @@
+<p>Dear <%= @to_user.profile.first_name %>, <%= @to_user.profile.last_name %>!</p>
+
+<p>
+  <%= @user.username %> commented on your <%= @comment.commentable_type %> :
+<p>
+<h3>
+  <%= @comment.body %>
+</h3>

@@ -1,0 +1,73 @@
+<%= render partial: "layouts/shared/navbar_signed_in" %>
+
+<div class="row"> <!--main row-->
+
+  <div class="col-md-4"><!--empty left column space-->
+  </div>
+    
+  <div class="col-md-4"><!--main middle for image and nav links--> 
+    
+    <div class="edit-profile-container">
+      <div class="col-md-12">
+        
+        <div class="text-left">
+          <h1>Photos</h1> 
+          <br><br>
+
+          <%= form_for(@image) do |f| %>
+         
+            <% if @image.errors.any? %>
+         
+              <div id="error_explanation">
+                <h2><%= pluralize(@image.errors.count, "error") %> prohibited this image from being saved:</h2>
+                <ul>
+                  <% @image.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                  <% end %>
+                </ul>
+              </div>
+         
+            <% end %>
+            
+            <table>
+              <tbody>
+                <tr>
+                  <td> <h3 class="text-left">Paste URL to a photo on the web <h3></td>
+                </tr>
+                <tr>
+                  <td> <%= f.text_field :image_url, size: "70"  %>
+                       <br>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <br>
+                    <%= f.submit "Web Photo", class: "btn btn-blk btn-info pull-left" %>
+                    <br> <br> <br> <br>
+                   </td>
+                </tr>
+                <tr>
+                  <td>
+                     <%= hidden_field_tag :user_id, @user.id %>
+                     <%= f.file_field :picture , class: "btn btn-blk pull-left" %>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <br>
+                    <%= f.submit "Upload Photo" , class: "btn btn-blk btn-info pull-left" %>
+                   </td>
+                </tr>
+              </tbody>  
+            </table>  
+          <% end %>
+        </div>
+      </div>
+    </div>             
+
+  </div>
+    
+  <div class="col-md-4">
+  </div>
+
+</div>

@@ -1,4 +1,7 @@
 FactoryGirl.define do
+  factory :image do
+    
+  end
 
   factory :user, :aliases => [:author] do
     sequence(:username){ |n| "foo_bar#{n}"}
@@ -30,6 +33,15 @@ FactoryGirl.define do
 
   end
 
+
+  factory :like do
+
+    #likeable_id 1
+    #likeable_type "Post"
+    association :likeable, factory: :post
+    association :liked_by, factory: :user
+
+  end
 end
 
   

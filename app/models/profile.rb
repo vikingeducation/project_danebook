@@ -1,7 +1,8 @@
 class Profile < ActiveRecord::Base
 
   belongs_to :user
-
+  belongs_to :image
+  
   validates :user_id, :uniqueness => true
   validates_presence_of :first_name
   validates_presence_of :last_name

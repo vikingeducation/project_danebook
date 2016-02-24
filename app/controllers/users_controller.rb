@@ -16,6 +16,15 @@ class UsersController < ApplicationController
     @user.build_profile
   end
 
+  def search
+    @user = User.find_by_email(params[:email])
+    if @user
+       redirect_to user_path(@user)
+    else
+      redirect_to :back
+    end 
+  end
+    
   def edit
   end
 

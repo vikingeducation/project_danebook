@@ -1,10 +1,5 @@
 module FriendshipsHelper
 
-  def not_yet_friends(user)
-    !current_user.friends.where("friend_receiver_id != ?",@user.id)
-  end  
-
-
   def friend_link(friend)
     
     friend = User.find(friend.id)
@@ -15,4 +10,9 @@ module FriendshipsHelper
     str.html_safe
 
   end
+
+  def get_friendship(requestor,receiver)
+    friendship = requestor.initiated_friend_requests.where("friend_receiver_id = #{receiver.id}")
+    friendship[0]
+  end  
 end

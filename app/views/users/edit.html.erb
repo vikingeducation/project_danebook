@@ -1,45 +1,12 @@
 
   <%= render partial: "layouts/shared/navbar_signed_in" %>
-  
-  <div class="row"> <!--main row-->
-  
-    <div class="col-md-2"><!--empty left column space-->
-    </div>
-      
-    <div class="col-md-8"><!--main middle for image and nav links--> 
 
-      <!--for the cover image -->
-      <div class="row no-pad container-border">
-       
-        <div class="image-container">
-          <img src="http://vignette3.wikia.nocookie.net/harrypotter/images/b/bd/Dhogwarts.jpg/revision/latest?cb=20120128145344"
-          class="img-responsive cover-image" alt="Responsive image">
+<div class="row"> <!--main row for rest of page-->
 
-          <img src="http://ndl.mgccw.com/mu3/000/488/259/sss/42409d600b984fc9934a52f28291ba27_small.png" 
-               class="img-thumbnail" id ="profile-image" alt="profile">      
-        </div>
-        
-        <div class="row no-pad container-border" >
-          <div  class="col-md-12 text-center">
-            <div class="list-group list-group-horizontal">
-             <% if current_user_view? %>
-                <a href="<%= new_user_post_path(@user) %>" class="list-group-item">Timeline</a>
-              <% else %>
-                <a href="<%= user_posts_path(@user) %>" class="list-group-item">Timeline</a>
-              <% end %>
-              <a href="<%= user_path(@user) %>" class="list-group-item">About</a>
-              <a href="photos.html" class="list-group-item">Photos</a>
-              <a href="<%= friendships_path(user_id: @user) %>" class="list-group-item">Friends</a>
+  <div class="col-md-8 col-md-offset-2"><!--main middle for image and nav links--> 
 
-              <%if current_user_view?%>
-                <a href=" <%= edit_user_path(@user) %>" class="list-group-item active">Edit Profile</a>
-              <% else %>
-                <a href="<%= edit_user_path(@user) %>" class="list-group-item">Edit Profile</a>
-              <% end %>  
-
-            </div>
-          </div>
-        </div>
+    <%= render partial: "layouts/shared/page_bg_nav", 
+               locals: {page_is: "edit_profile"} %>
     
        <div class="panel-container row no-pad">
         <div class="panel panel-default page-type-panel-body panel-style"> 

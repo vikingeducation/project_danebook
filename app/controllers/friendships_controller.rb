@@ -24,9 +24,9 @@ class FriendshipsController < ApplicationController
 
   def destroy
 
-    @friendship = Friendhsip.find(params[:id])
+    @friendship = Friendship.find(params[:id])
 
-    if @lfriendship.destroy
+    if @friendship.destroy
       flash[:success] = "Unfriended"
     else
       flash[:alert] = "Could not unfriend"

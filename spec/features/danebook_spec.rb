@@ -106,7 +106,9 @@ feature 'Visit_Root_Page' do
       fill_in('user[profile_attributes][domicile]', with: 'San Jose,CA')
       fill_in('user[profile_attributes][my_words]', with: 'My words go here')
       fill_in('user[profile_attributes][about_me]', with: 'I am a vampire zombie with a hint of werewolf')
+
       click_button "Save your change"
+
       expect(page).to have_css("td#email", text: "bobby@gmail.com")
       #bcheck birthdate
 

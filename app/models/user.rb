@@ -17,7 +17,7 @@ class User < ActiveRecord::Base
   has_many :posts, foreign_key: :author_id, dependent: :destroy
   has_one :profile, inverse_of: :user
 
-  has_many :comments, dependent: :destroy
+  has_many :comments, foreign_key: :author_id, dependent: :destroy
   has_many :likes, foreign_key: :author_id, dependent: :destroy
 
   belongs_to :avatar, class_name: "Photo"
@@ -50,7 +50,11 @@ class User < ActiveRecord::Base
     self.likes.each do |like|
       return true if like.likeable_type.constantize.find(like.likeable_id) == resource
     end
+
     false
+
+    # TODO
+    # self.likes.includes? resource
   end
 
   def id_of_like(resource)

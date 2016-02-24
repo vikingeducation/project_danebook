@@ -80,6 +80,10 @@ class UsersController < ApplicationController
     @user.destroy
     redirect_to root_path
   end
+
+  def newsfeed
+    @posts = current_user.friended_users.includes(:posts).all.order("created_at DESC").map{ |u| u.posts }.flatten
+  end
   
   private
 

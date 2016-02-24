@@ -11,7 +11,7 @@ class PhotosController < ApplicationController
   end
 
   def create
-    if params[:photo_url]
+    unless params[:photo_url].empty?
       photo = current_user.photos.build
 
       photo.photo_url(params[:photo_url])

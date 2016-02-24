@@ -1,18 +1,17 @@
-<div class="post-row row">
-  <div class="post-wrapper col-sm-12">
-    <div class="post-header row">
-      Post
-    </div>
+<% if current_user? %>
+  <%= form_tag posts_path do %>
+    <div class="panel panel-default">
+      <div class="panel-heading text-center">
+        Post
+      </div>
 
-    <% if current_user? %>
-      <%= form_tag posts_path do %>
-      <div class="text-area row">
+      <div class="panel-body form-group">
         <%= text_area_tag :post_body, "", class: "form-control", placeholder: "Tell the world something.." %>
       </div>
-      <footer class="post-footer panel-footer row">
-        <%= submit_tag "Post", class: "btn navbar-right btn-primary" %>
-      <% end %>
-    <% end %>
-    </footer><!-- End Post Footer -->
-  </div><!-- End Post Wrapper -->
-</div><!-- End Post Area Container -->
+
+      <div class="panel-footer clearfix">
+        <%= submit_tag "Post", class: "btn btn-small btn-primary pull-right" %>
+      </div>
+    </div>
+  <% end %>
+<% end %>

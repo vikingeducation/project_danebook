@@ -3,7 +3,7 @@ class CommentsController < ApplicationController
   def create
     params_id = "#{params[:commentable]}_id".downcase.to_sym
     parent = params[:commentable].constantize.find(params[params_id])
-    parent.comments.create(author_id: find_parent_id(parent), body: params[:comment_body])
+    parent.comments.create(author_id: current_user.id, body: params[:comment_body])
 
     User.send_notification(find_parent_id(parent), current_user.id, parent)
     redirect_to :back

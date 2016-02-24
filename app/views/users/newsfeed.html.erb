@@ -1,4 +1,39 @@
 <%= render partial: '/shared/nav' %>
 <div class="container-fluid">
-  
+
+  <div class="row">
+    <div class="col-sm-4">
+
+      <div class="row">
+        <br><br>
+        <div class="col-xs-5">
+          <% if current_user.avatar.nil? %>
+            <img src="/assets/harry_potter_small.jpg" class="img-responsive">
+          <% else %>
+            <%= image_tag current_user.avatar.image.url, class: "thumbnail img-responsive", alt: "missing photo" %>
+          <% end %>
+        </div>
+        <%= link_to current_user.full_name, current_user %><br>
+        <%= link_to "Edit Profile", edit_user_path(current_user) %>
+      </div>
+
+      <div class="row text-center">
+        <h3>Recent Activity</h3>
+      </div>
+
+      <% @posts.each do |post| %>
+        <%= render partial: 'recent_activity', locals: { post: post } %>
+      <% end %>
+    </div>
+
+    <div class="col-sm-offset-1 col-sm-6">
+      <%= render partial: 'post_form' %>
+
+      <% @posts.each do |post| %>
+        <%= render partial: 'postings', locals: { post: post } %>
+      <% end %>
+
+    </div>
+  </div>
+
 </div>

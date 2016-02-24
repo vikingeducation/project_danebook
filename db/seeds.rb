@@ -28,6 +28,13 @@ def generate_friendships
   friend_initiator.friended_users << friend_receiver unless friend_initiator.friended_users.include?(friend_receiver)
 end
 
-20.times {generate_users}
+def generate_posts(user)
+  post = user.posts.build(body: Faker::Hipster.sentence(rand(1..3)))
+  post.save!
+end
 
+20.times {generate_users}
+User.all.each do |user|
+  5.times {generate_posts(user)}
+end
 60.times {generate_friendships}

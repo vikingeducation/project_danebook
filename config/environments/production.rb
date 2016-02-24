@@ -79,23 +79,40 @@ Rails.application.configure do
 
     config.paperclip_defaults = {
 
-  # Don't forget to make S3 your storage option!
-  :storage => :s3,
+    # Don't forget to make S3 your storage option!
+    :storage => :s3,
 
-  :s3_credentials => {
+    :s3_credentials => {
 
-    # put your host name here if needed
-    #   see the reading below for more details
-    # NOTE: This must be the correct region for YOU
-    :s3_host_name => "s3-us-west-1.amazonaws.com",
-    # might need to try this if you get an error:
-    # :url => "s3-us-west-1.amazonaws.com"
+      # put your host name here if needed
+      #   see the reading below for more details
+      # NOTE: This must be the correct region for YOU
+      :s3_host_name => "s3-us-west-1.amazonaws.com",
+      # might need to try this if you get an error:
+      # :url => "s3-us-west-1.amazonaws.com"
 
-    # NOTE: these lines are changed to use secrets.yml
-    # from the examples (which use ENV vars instead)
-    :bucket => Rails.application.secrets.s3_bucket_name,
-    :access_key_id => Rails.application.secrets.aws_access_key_id,
-    :secret_access_key => Rails.application.secrets.aws_secret_access_key
+      # NOTE: these lines are changed to use secrets.yml
+      # from the examples (which use ENV vars instead)
+      :bucket => Rails.application.secrets.s3_bucket_name,
+      :access_key_id => Rails.application.secrets.aws_access_key_id,
+      :secret_access_key => Rails.application.secrets.aws_secret_access_key
+    }
   }
-}
+
+  config.action_mailer.smtp_settings = {
+    :address        => 'smtp.sendgrid.net',
+    :port           => '587',
+    :authentication => :plain,
+    :user_name      => Rails.application.secrets.sendgrid_username,
+    :password       => Rails.application.secrets.sendgrid_password,
+    :domain         => 'heroku.com',
+    :enable_starttls_auto => true
+  }
+  config.action_mailer.delivery_method ||= :smtp
+
+  # Rails also needs to know where your app is
+  #   located to properly configure sending of emails
+  config.action_mailer.default_url_options = {
+    :host => 'https://aqueous-savannah-67161.herokuapp.com/',
+  }
 end

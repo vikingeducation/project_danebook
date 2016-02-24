@@ -11,11 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
-ActiveRecord::Schema.define(version: 20160223190025) do
-=======
-ActiveRecord::Schema.define(version: 20160223003438) do
->>>>>>> morecomments
+ActiveRecord::Schema.define(version: 20160223234820) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -87,6 +83,8 @@ ActiveRecord::Schema.define(version: 20160223003438) do
     t.text     "words_to_live_by"
     t.text     "hometown"
     t.text     "current_city"
+    t.integer  "profile_photo_id"
+    t.integer  "cover_photo_id"
   end
 
   create_table "users", force: :cascade do |t|

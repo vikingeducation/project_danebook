@@ -10,6 +10,7 @@ Like.delete_all
 Post.delete_all
 Comment.delete_all
 Profile.delete_all
+Photo.delete_all
 User.delete_all
 
 puts "Creating users..."
@@ -68,8 +69,7 @@ end
 
 
 
-puts "Creating comments..."
-
+puts "Creating comments on posts..."
 
 50.times do
   Comment.create(body: Faker::Hipster.paragraph, user_id: User.pluck(:id).sample, commentable_type: "Post", commentable_id: Post.pluck(:id).sample)
@@ -78,8 +78,29 @@ end
 
 
 
+puts "Assigning photos..."
 
-puts "Creating likes..."
+User.all.each do |user|
+  p = Photo.new
+  p.image = open(Faker::Avatar.image)
+  p.user_id = user.id
+  p.save
+end
+
+
+
+
+puts "Creating comments on photos..."
+
+50.times do
+  Comment.create(body: Faker::Hipster.paragraph, user_id: User.pluck(:id).sample, commentable_type: "Photo", commentable_id: Photo.pluck(:id).sample)
+end
+
+
+
+
+
+puts "Creating likes on posts, comments, and photos..."
 
 50.times do
   Like.create(user_id: User.pluck(:id).sample, likeable_id: Post.pluck(:id).sample, likeable_type: "Post")
@@ -87,6 +108,10 @@ end
 
 50.times do
   Like.create(user_id: User.pluck(:id).sample, likeable_id: Comment.pluck(:id).sample, likeable_type: "Comment")
+end
+
+50.times do
+  Like.create(user_id: User.pluck(:id).sample, likeable_id: Photo.pluck(:id).sample, likeable_type: "Photo")
 end
 
 

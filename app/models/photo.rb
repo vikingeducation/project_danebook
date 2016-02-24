@@ -22,7 +22,7 @@ class Photo < ActiveRecord::Base
   has_many :comments, as: :commentable, dependent: :destroy
   has_many :likes, as: :likeable, dependent: :destroy
 
-
+  belongs_to :profile
 
 
   def image_from_url(url)

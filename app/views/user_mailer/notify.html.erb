@@ -1,3 +1,9 @@
 <h1>New Notification!</h1>
 
-<p><%= @commenter.full_name %> commented on your <%= @resource.to_s.downcase %></p>
+<p>
+  <%= @commenter.full_name %> commented on your <%= @resource.class.to_s.downcase, @link %>
+</p>
+
+<p>
+  Link to commenter: <%= link_to "#{user_url(@user.id)}", user_url(@user.id) %>
+</p>

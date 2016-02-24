@@ -9,6 +9,13 @@ class UserMailer < ApplicationMailer
     @user = receiver
     @commenter = commenter
     @resource = resource
+
+    if @resource.is_a?(Post)
+      @link = user_timeline_url(@user)
+    else
+      @link = photo_url(@photo)
+    end
+
     mail(to: @user.email, subject: 'New notification')
   end
 

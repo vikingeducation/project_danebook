@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_action :require_login, except: [:new, :show, :create, :newsfeed]
+  before_action :require_login, except: [:new, :show, :create]
   before_action :require_logout, only: [:new]
   before_action :require_current_user, only: [:update]
 

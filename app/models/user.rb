@@ -89,7 +89,7 @@ class User < ActiveRecord::Base
   end 
 
   def self.send_notification(receiver_id, commenter_id, resource)
-    unless receiver == commenter
+    unless receiver_id == commenter_id
       receiver = User.find(receiver_id)
       commenter = User.find(commenter_id)
       UserMailer.notify(receiver, commenter, resource)

@@ -5,18 +5,12 @@
   </section>
 </div>
 
+<% unless @friended_users.empty? %>
 
-<% if all_friends(@user).count.between?(1,6) %>
-
-  <% all_friends(@user).each do |friend| %>
+  <% @friended_users.each do |friend| %>
     <%= render partial: "friend", locals: { friend: friend } %>
   <% end %>
 
-<% elsif all_friends(@user).count >= 6 %>
-
-  <% 6.times do %>
-    <%= render partial: "friend", locals: { friend: all_friends(@user).sample } %>
-  <% end %>
 
 <% else %>
 

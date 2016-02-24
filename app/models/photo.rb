@@ -18,7 +18,7 @@ class Photo < ActiveRecord::Base
   before_validation { image.clear if delete_image == '1' }
 
 
-  belongs_to :user
+  belongs_to :user, counter_cache: true
   has_many :comments, as: :commentable, dependent: :destroy
   has_many :likes, as: :likeable, dependent: :destroy
 

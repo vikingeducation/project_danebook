@@ -1,17 +1,28 @@
-<article class="col-md-4 col-sm-6 col-xs-12">
+<article class="col-sm-4">
   <div class="panel panel-default">
 
     <div class="row ">
-      <div class="col-md-12">
-        <h4><%= link_to "#{friend.first_name} #{friend.last_name}", user_timeline_path(friend) %></h4>
-        <h4><%= all_friends_count(friend) %> Friend(s)</h4>
+      <div class="col-sm-12">
+        <div class="col-sm-4">
+          <%= image_tag friend.profile.profile_photo.image.url(:thumb) %>
+        </div>
+
+        <div class="col-sm-8">
+          <h4><%= link_to "#{friend.first_name} #{friend.last_name}", user_timeline_path(friend) %></h4>
+          <h4><%= all_friends_count(friend) %> Friend(s)</h4>
+        </div>
 
       <% if current_user && current_user.friended_users.include?(friend) %>
-        <div class="form-group pull-right">
+        <div class="form-group text-center">
           <%= button_to "Remove Friend", user_friending_path(current_user, friend), method: :delete, class: "btn btn-primary" %>
-        </div>  
+        </div> 
 
-        <% end %>
+      <% else %> 
+        <div class="form-group text-center">
+          <%= button_to "Add Friend", user_friending_path(current_user, friend), class: "btn btn-success" %>
+        </div>       
+
+      <% end %>
 
       </div>
     </div>

@@ -46,9 +46,9 @@
 
       <li><%= link_to "About", user_profile_path(profile.user), {class: "clickable"} %></li>
 
-      <li><%= link_to "Photos", user_photos_path(profile.user), {class: "clickable"} %></li>
+      <li><%= link_to "Photos (#{profile.user.photos_count})", user_photos_path(profile.user), {class: "clickable"} %></li>
 
-      <li><%= link_to "Friends", user_friendings_path(profile.user), {class: "clickable"} %></li>
+      <li><%= link_to "Friends (#{profile.user.friendings_count})", user_friendings_path(profile.user), {class: "clickable"} %></li>
 
 
       <% if profile.user == current_user %>

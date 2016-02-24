@@ -12,7 +12,7 @@ class PostsController < ApplicationController
   def newsfeed
     @post = @user.posts.build #--> Fix this
     #@newsfeeds = Post.newsfeed_for_user(params[:user_id])
-    @newsfeeds = @user.friend_posts
+    @posts = @user.friend_posts
     render :newsfeed
   end
 

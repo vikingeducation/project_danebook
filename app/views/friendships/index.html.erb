@@ -18,21 +18,27 @@
             </div>
           </div>
 
-          <% is_row = true %>
+          <% col = 0 %>
           <% @friends.each do |friend| %> 
             
-            <% if is_row %>
+            <% if col == 1 %>
                <div class="row no-pad basic-margin">
-            <% end %> 
+            <% end %>
 
               <div class="col-md-6 container-border">
 
                 <div class="row no-pad">
                   <div class="col-md-4">
-                    <img src="assets/noun_161469_cc.png" alt="friends"
-                         class="friend-photos img-rounded img-thumbnail
-                                pull-left">
-                  </div>
+                    <% if !friend.profile.image_id.nil? %>
+                         <% profile_pic = friend.profile.image_id %>  
+                         <%= image_tag Image.find(profile_pic).picture.url, 
+                            class: "img-thumbnail pull-left" %>
+                    <% else %> 
+                       <img src="assets/noun_161469_cc.png" alt="friends"
+                            class="friend-photos img-rounded img-thumbnail
+                                   pull-left">
+                    <% end %>
+                  </div>  
                   
                   <div class="col-md-4 text-capitalize small-font">
                        <p class="center-friend-info">
@@ -44,27 +50,33 @@
                     <p class="center-unfriend">
                      
                       <% if current_user_view? %>
+                     
                         <% fship = get_friendship(@user,friend) %>
+                     
                         <%= form_tag(friendship_path(fship), method: :delete) do |f| %>
                           <%= hidden_field_tag :user_id, @user.id %> 
                           <%= submit_tag "Unfriend me!" %>
                         <% end %>
+                     
                       <% end %>    
                    
                     </p>
                   </div>
                 
-                </div>  
+                </div>
 
               </div>
            
               <div class="col-md-6 container-border">
-                
               </div>
-             <% if is_row %>
-               </div>
-            <% end %>
-            <% !is_row %>
+
+              <% col += 1 %>
+
+              <% if col == 2 %>
+                <% col = 0 %> 
+                </div>
+              <% end %>
+
           <% end %>
           
         </div> 

@@ -2,6 +2,7 @@ require 'open-uri'
 
 class Image < ActiveRecord::Base
   belongs_to :user
+
   has_many   :comments, -> { order('created_at ASC') }, as: :commentable, dependent:   :destroy
   has_many   :likes,    as: :likeable,    dependent:   :destroy
   has_many   :liked_by_users, through: :likes, source: :liked_by

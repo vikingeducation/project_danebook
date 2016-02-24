@@ -1,5 +1,6 @@
 class UserMailer < ApplicationMailer
   default :from => "from@example.com"
+
   def welcome(user)
     @user = user
     mail(to: @user.email, subject: 'Welcome to Danebook!')
@@ -11,9 +12,9 @@ class UserMailer < ApplicationMailer
     @resource = resource
 
     if @resource.is_a?(Post)
-      @link = user_timeline_url(@user)
+      @link = user_timeline_url(@user.id)
     else
-      @link = photo_url(@photo)
+      @link = photo_url(@photo.id)
     end
 
     mail(to: @user.email, subject: 'New notification')

@@ -4,16 +4,17 @@
     <div class="image-container">
 
     <% if !@user.profile.cover_id.nil? %>
+    
       <% cover_pic = @user.profile.cover_id %>
       <%= image_tag Image.find(cover_pic).picture.url, 
          class: "img-responsive cover-image" %>
-
+    
     <% else %>
       
       <img src="http://vignette3.wikia.nocookie.net/harrypotter/images/b/bd/Dhogwarts.jpg/revision/latest?cb=20120128145344"
       class="img-responsive cover-image" 
       alt="Responsive image">
-
+   
     <% end %> 
 
     <% if !@user.profile.image_id.nil? %>
@@ -25,6 +26,9 @@
       <img src="http://ndl.mgccw.com/mu3/000/488/259/sss/42409d600b984fc9934a52f28291ba27_small.png"
            class="img-thumbnail" id ="profile-image" alt="profile">
     <% end %>
+      <h4 class="profile_name">
+        <%= @user.profile.first_name %> <%= @user.profile.last_name %>
+      </h4>
 
     </div>
 
@@ -43,12 +47,6 @@
         
           <% end %>  
         
-        <% end %>
-        
-        <% if page_is == 'about' && !current_user_view? %>
-          <% if not_yet_friends(@user) %>
-            <%= link_to "Friend Me", friendships_path(user_id: @user), method: :post, class: "list-group-item" %>
-          <% end %>  
         <% end %>
 
         <% if current_user_view? %>

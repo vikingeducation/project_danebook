@@ -124,6 +124,13 @@ body {
   padding: 0 !important;
   margin: 0; }
 
+.profile_name { 
+   position: absolute; 
+   top: 130px; 
+   left: 170px; 
+   color: white; 
+}
+
 .navbar-outer {
   width: 100%;
   margin: auto; }

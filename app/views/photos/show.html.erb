@@ -6,15 +6,29 @@
   </div>
 
   <div class="row">
-    <div class="col-sm-offset-1 col-sm-6">
-      <%= image_tag @photo.image.url(:medium) %>
+
+    <div class="col-sm-offset-1 col-sm-5">
+      <div class="">
+        <%= image_tag @photo.image.url(:large), class: "img-responsive", alt: "missing photo" %>
+      </div>
+
+      <% if current_user? %>
+        <div class="row pull-right">
+          <%= link_to "Set Avatar", user_avatar_path(photo_id: @photo.id) %><br>
+          <%= link_to "Set Cover Photo", user_cover_photo_path(photo_id: @photo.id) %><br>
+          <%= link_to "Delete", @photo, method: :delete %>
+        </div>
+      <% end %>
     </div>
 
-    <div class="col-sm-4">
-
+    <div class="col-sm-offset-1 col-sm-4">
       <div class="row">
         <div class="col-sm-5">
-          <%= image_tag @photo.image.url, class: "thumbnail img-responsive" %>
+          <% if @user.avatar.nil? %>
+            <img src="/assets/harry_potter_small.jpg" class="img-responsive">
+          <% else %>
+            <%= image_tag @user.avatar.image.url, class: "thumbnail img-responsive", alt: "missing photo" %>
+          <% end %>
         </div>
 
         <div class="col-sm-5">
@@ -27,20 +41,63 @@
       <div class="row panel panel-default">
 
         <div class="panel-heading">
-
-
-
+          <% if current_user.liked_resource?(@photo) %>
+            <%= link_to "Unlike", photo_like_path(@photo, current_user.id_of_like(@photo)), method: :delete %>
+          <% else %>
+            <%= link_to "Like", photo_likes_path(@photo), method: :post %>
+          <% end %>
+          <%= @photo.likes.size unless @photo.likes.empty? %>
         </div>
 
         <%= form_tag photo_comments_path(@photo) do %>
-
           <div class="panel-body form-group">
-            <%= text_area_tag :body, "", { class: "form-control", rows: "5"} %>
+            <%= text_area_tag :comment_body, "", { class: "form-control", rows: "5"} %>
           </div>
-
           <div class="col-sm-12">
             <%= submit_tag "Comment", class: "btn btn-small btn-primary pull-right" %>
           </div>
+        <% end %>
+
+      </div>
+
+      <div class="row well">
+
+        <% @photo.comments.each do |comment| %>
+
+          <div class="col-sm-12 panel panel-default">
+            <div class="panel-body">
+
+              <div class="row">
+                <div class="col-sm-4">
+                  <%= image_tag comment.author.avatar.image.url, class: "thumbnail img-responsive", alt: "missing photo" unless comment.author.avatar.nil? %>
+                </div>
+                <%= link_to comment.author.full_name, comment.author %><br>
+                <span>Said on <%= comment.created_at.strftime("%b %d, %y") %></span>
+              </div>
+
+              <div class="row">
+                <p>
+                  <%= comment.body %>
+                </p>
+              </div>
+
+            </div>
+
+            <div class="row panel-footer">
+              <% if current_user.liked_resource?(comment) %>
+                <%= link_to "Unlike", comment_like_path(comment, current_user.id_of_like(comment)), class: "pull-left", method: :delete %>
+              <% else %>
+                <%= link_to "Like", comment_likes_path(comment), class: "pull-left", method: :post %>
+              <% end %>
+              <%= comment.likes.size unless comment.likes.empty? %>
+
+              <% if current_user? %>
+                <%= link_to "Delete", comment, class: "pull-right", method: :delete %>
+              <% end %>
+            </div>
+
+          </div>
+
         <% end %>
 
       </div>

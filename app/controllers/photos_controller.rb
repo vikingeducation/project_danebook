@@ -1,7 +1,5 @@
 class PhotosController < ApplicationController
   before_action :require_login
-  before_action :require_current_user, only: [:new, :destroy]
-
 
   def index
     @user = User.find(params[:user_id])
@@ -15,6 +13,7 @@ class PhotosController < ApplicationController
   def create
     if params[:photo_url]
       photo = current_user.photos.build
+
       photo.photo_url(params[:photo_url])
     else
       photo = current_user.photos.build(photo_params)
@@ -32,7 +31,12 @@ class PhotosController < ApplicationController
   def show
     @user = User.find(params[:user_id])
     @photo = @user.photos.find(params[:id])
-    @comment = @photo.comments.build
+  end
+
+  def destroy
+    @photo = Photo.find(params[:id])
+    @photo.destroy
+    redirect_to user_photos_path(current_user)
   end
 
   private

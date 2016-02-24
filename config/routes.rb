@@ -6,7 +6,8 @@ Rails.application.routes.draw do
     get "timeline" => "users#timeline"
     get "friends" => "users#friends"
     get "searches" => "users#searches"
-
+    get "avatar" => "users#avatar"
+    get "cover_photo" => "users#cover_photo"
     resources :friendings, only: [:create, :destroy]
     resources :photos, except: [:update, :edit]
   end

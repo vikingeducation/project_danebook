@@ -43,7 +43,7 @@ group :development, :test do
   gem 'figaro'
   gem 'paperclip'
   gem 'better_errors'
-  gem 'aws-sdk'
+  gem 'aws-sdk', '< 2.0'
 end
 
 group :test do

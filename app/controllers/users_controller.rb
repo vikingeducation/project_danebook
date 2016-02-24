@@ -46,6 +46,18 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def avatar
+    current_user.avatar = Photo.find(params[:photo_id])
+    current_user.save
+    redirect_to current_user
+  end
+
+  def cover_photo
+    current_user.cover_photo = Photo.find(params[:photo_id])
+    current_user.save
+    redirect_to current_user
+  end
+
   def timeline
     if signed_in_user?
       @current_user.posts.build
@@ -77,6 +89,8 @@ class UsersController < ApplicationController
         :email, 
         :password, 
         :password_confirmation,
+        :photo_id,
+        :cover_photo_id,
         :profile_attributes => [
             :gender,
             :birthday,

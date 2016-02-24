@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   has_secure_password
   before_create :generate_token
 
-  has_many :photos, foreign_key: :author_id, dependent: :destroy
+  has_many :photos, dependent: :destroy
 
   has_many :initiated_friendings, class_name: "Friending",
             foreign_key: :friender_id
@@ -20,8 +20,8 @@ class User < ActiveRecord::Base
   has_many :comments, foreign_key: :author_id, dependent: :destroy
   has_many :likes, foreign_key: :author_id, dependent: :destroy
 
-  belongs_to :avatar, class_name: "Photo", foreign_key: :author_id
-  belongs_to :cover_photo, class_name: "Photo", foreign_key: :author_id
+  belongs_to :avatar, class_name: "Photo"
+  belongs_to :cover_photo, class_name: "Photo"
 
   accepts_nested_attributes_for :profile
   

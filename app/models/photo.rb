@@ -4,7 +4,7 @@ class Photo < ActiveRecord::Base
 
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
-  belongs_to :user, foreign_key: :author_id
+  belongs_to :user
 
   has_many :comments, as: :commentable, dependent: :destroy
   has_many :likes, as: :likeable, dependent: :destroy

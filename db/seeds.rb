@@ -123,7 +123,7 @@ def generate_test_account
     friending = Friending.new
     friending.friender_id = u.id
     friending.friended_id = User.pluck(:id).sample
-    post.created_at = Faker::Date.between(50.years.ago, Date.today - 30)
+    friending.created_at = Faker::Date.between(50.years.ago, Date.today - 30)
     friending.save
   end
 end

@@ -21,7 +21,7 @@ class PostsController < ApplicationController
     else
       flash[:error] = "Unable to save post"
     end
-    redirect_to user_timeline_path
+    redirect_to :back
   end
 
 
@@ -32,7 +32,7 @@ class PostsController < ApplicationController
     else
       flash[:error] = "Unable to delete post"
     end
-    redirect_to user_timeline_path
+    redirect_to :back
   end
 
 

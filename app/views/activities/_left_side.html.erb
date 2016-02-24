@@ -12,11 +12,13 @@
 
   <% @activities.each do |activity| %>
 
-    <%= image_tag activity.user.profile.profile_photo.image.url(:thumb) if activity.user.profile.profile_photo %><br/>
+    <% unless activity.user == current_user %>
+      <%= image_tag activity.user.profile.profile_photo.image.url(:thumb) if activity.user.profile.profile_photo %><br/>
 
-    <%= link_to "#{activity.user.first_name} #{activity.user.last_name}", user_timeline_path(activity.user) %><br/>
+      <%= link_to "#{activity.user.first_name} #{activity.user.last_name}", user_timeline_path(activity.user) %><br/>
 
-    Posted on <%= activity.created_at.strftime("%A %D") %><br/>
+      Posted on <%= activity.created_at.strftime("%A %D") %><br/>
+    <% end %>
 
   <% end %>
 

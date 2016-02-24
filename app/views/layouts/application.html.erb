@@ -8,6 +8,7 @@
 </head>
 <body data-no-turbolink>
 
+
   <% flash.each do |type, message| %>
     <div class="alert alert-<%=type%>">
       <div>
@@ -19,6 +20,8 @@
 
 
   <%= yield %>
+
+
 
 </body>
 </html>

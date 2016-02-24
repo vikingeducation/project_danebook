@@ -25,11 +25,15 @@
   <!-- wraps rest of links to collapse in mobile-->
   <div class="nav navbar-nav navbar-left col-md-4">
     
-    <%= form_tag search_path, method: :get, class: "navbar-form" do%>
+    <%= form_tag search_path, method: :get, class: "navbar-form" do %>
       <div class="search-bar input-group input-group-sm col-md-4 col-sm-4
                   form-group">
+<!--  collection_select :user, :email, User.all, :email, :email, 
+          class: "form-control pull-left"
+      submit_tag "Search"    -->
+
         <input type="text" name="email" class="form-control pull-left" 
-               placeholder="Search">
+               placeholder="full email to search (example@example.com)...">
       </div> 
     <% end %>
   

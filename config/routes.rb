@@ -20,5 +20,6 @@ Rails.application.routes.draw do
   get "newsfeed/:user_id" => "posts#newsfeed" , as: "newsfeed"
 
   root 'users#new'
-  
+
+  get '*path' => redirect('/')
 end

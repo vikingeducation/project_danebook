@@ -14,8 +14,8 @@ class LikesController < ApplicationController
       flash[:alert] = "Could not like the #{params[:likeable_type]}"
     end
 
-    redirect_user_path(params[:user_id])
-
+    #redirect_user_path(params[:user_id])
+    redirect_to :back
   end 
 
   def destroy
@@ -27,8 +27,8 @@ class LikesController < ApplicationController
     else
       flash[:alert] = "UnLike Failed!"
     end
-
-    redirect_user_path(params[:user_id])
+    
+    redirect_to :back
   end 
 
 

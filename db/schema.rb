@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160223002926) do
+ActiveRecord::Schema.define(version: 20160224222247) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "body"
@@ -81,7 +81,9 @@ ActiveRecord::Schema.define(version: 20160223002926) do
   end
 
   add_index "profiles", ["cover_id"], name: "index_profiles_on_cover_id"
+  add_index "profiles", ["first_name"], name: "index_profiles_on_first_name"
   add_index "profiles", ["image_id"], name: "index_profiles_on_image_id"
+  add_index "profiles", ["last_name"], name: "index_profiles_on_last_name"
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id"
 
   create_table "users", force: :cascade do |t|

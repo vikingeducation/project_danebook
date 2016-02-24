@@ -22,7 +22,19 @@ class UsersController < ApplicationController
        redirect_to user_path(@user)
     else
       redirect_to :back
-    end 
+    end
+
+    # if params[:query]
+     
+    #   first_name = params[:query].split(" ")[0]
+    #   last_name = params[:query].split(" ")[0]  
+    #   where("title LIKE ?", "%#{query}%")
+    # else
+    #   # If no search term provided, this returns
+    #   # a relation so we can chain this
+    #   where("")
+    # end
+
   end
     
   def edit

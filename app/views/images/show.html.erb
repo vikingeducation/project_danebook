@@ -7,7 +7,7 @@
 
   <div class="col-md-5"><!--empty left column space-->
   
-    <%= image_tag @image.picture.url(:medium) %>
+    <%= image_tag @image.picture.url %>
     <br>
     <br>
 
@@ -24,19 +24,36 @@
       <%= f.hidden_field :image_id, value: @image.id %>
       <%= f.submit "Set as profile photo" %>      
     <% end %> 
+
     <br> <br>
     <%= link_to "Delete Photo", image_path(@image, user_id: @user.id), method: :delete %> 
+  
   </div>
     
   <div class="col-md-5"><!--main middle for image and nav links--> 
     <div class="tiny-font text-left">
-      <%= image_tag @user.profile.image.picture.url(:thumb) if !@user.profile.image.nil? %>
+  
+      <%= image_tag @user.profile.image.picture.url(:thumb), 
+          class: "img-thumbnail pull-left" if !@user.profile.image.nil? %>
       <br>
+  
       <a href="<%= user_path(@user) %>"> 
         <%= @user.profile.first_name %> <%= @user.profile.last_name %>
       </a><br>
          Created On <%= @user.created_at %>
   
+
+      <div class="row">
+                      
+        <div class="col-md-4" style="font-size:1em;">
+          <%= likeable_like_unlike_link(@image) %>
+          <br>
+          <%= show_likeable_likes(@image) %>
+        </div>
+
+      </div>
+
+
       <div class="col-md-12 text-left" style="font-size:0.75em;">
         <%= render partial: "comments/form", locals: {commentable: @image} %>
         <%= render partial: @image.comments, locals: {user_id: @user.id}  %>

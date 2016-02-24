@@ -46,7 +46,7 @@
   <div class="row">
     <div class="col-xs-12">
       <nav class="navbar navbar-default about-nav">
-        <p class="box-header">Photos (123)</p>
+        <p class="box-header">Photos (<%= @profile.user.photos.size %>)</p>
       </nav>
     </div>
   </div>
@@ -54,24 +54,19 @@
   <div class="row">
     <div class="col-xs-12">
       <div class="white-bg section-spacing">
-        <% 3.times do %>
         <div class="row">
           <div class="col-xs-12">
-            <a href="#">
-              <img src="/images/icon_photo_small.png" class="img-thumbnail panel-pic col-xs-4">
-            </a>
-            <a href="#">
-              <img src="/images/icon_photo_small.png" class="img-thumbnail panel-pic col-xs-4">
-            </a>
-            <a href="#">
-              <img src="/images/icon_photo_small.png" class="img-thumbnail panel-pic col-xs-4">
-            </a>
+            <% @user.photos.each do |photo| %>
+              <a href="<%= photo_path(photo.id, user_id: photo.user_id) %>">
+                <!--<img src="/images/icon_photo_small.png" class="img-thumbnail panel-pic col-xs-4">-->
+                <%= image_tag photo.photo.url(:medium), class: "img-thumbnail panel-pic col-xs-4", style: "height:100px;width:100px;" %>
+              </a>
+            <% end %>
           </div>
         </div>
-        <% end %>
         <div class="row">
           <div class="photo-link">
-              <a href="#">See more photos</a>
+              <a href="<%= photos_path(id: @profile.user.id) %>">See more photos</a>
             </div>
         </div>
       </div>
@@ -89,7 +84,7 @@
   <div class="row">
     <div class="col-xs-12">
       <nav class="navbar navbar-default about-nav">
-        <%= content_tag :p, "Friends #{@user.friendeds.size}", class: "box-header" %>
+        <%= content_tag :p, "Friends (#{@user.friendeds.size})", class: "box-header" %>
       </nav>
     </div>
   </div>

@@ -6,7 +6,7 @@ class Comment < ActiveRecord::Base
 
 
   validates :body, length: { in: 1..250 }, presence: true
-  validates :user_id, uniqueness: { scope: [:commentable_id, :commentable_type]}, presence: true
+
 
 
 

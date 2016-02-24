@@ -3,6 +3,7 @@
   <%= f.text_area :body, placeholder: "Write a comment...", class: "form-control" %>
   <%= f.hidden_field :commentable_id, value: commentable_id %>
   <%= f.hidden_field :commentable_type, value: commentable_type %>
+  <%= f.hidden_field :user_id, value: current_user.id %>
 
   <%= f.submit "Comment", class: "form-control btn btn-primary btn-sm" %>
 

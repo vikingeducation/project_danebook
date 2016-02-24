@@ -17,7 +17,7 @@
           <%= button_to "Remove Friend", user_friending_path(current_user, friend), method: :delete, class: "btn btn-primary" %>
         </div> 
 
-      <% else %> 
+      <% elsif friend != current_user %> 
         <div class="form-group text-center">
           <%= button_to "Add Friend", user_friending_path(current_user, friend), class: "btn btn-success" %>
         </div>       

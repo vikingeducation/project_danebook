@@ -16,7 +16,9 @@ class Post < ActiveRecord::Base
         user_id: self.user_id,
         event: "Wrote a Post",
         activable_id: self.id,
-        activable_type: "#{self.class}"
+        activable_type: "#{self.class}",
+        created_at: self.created_at,
+        updated_at: self.updated_at
       )
     end
 
@@ -24,7 +26,7 @@ class Post < ActiveRecord::Base
       activity = Activity.find_by_user_id_and_activable_id_and_activable_type( self.user_id, self.id, "#{self.class}")
       activity.destroy
     end
-    
+
     # def create_activities
     #   if post.user.frienders
     #     post.user.frienders.each do |friender|

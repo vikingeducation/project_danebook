@@ -16,7 +16,9 @@ class Friending < ActiveRecord::Base
         user_id: self.friender_id,
         event: "Added a Friend",
         activable_id: self.id,
-        activable_type: "#{self.class}"
+        activable_type: "#{self.class}",
+        created_at: self.created_at,
+        updated_at: self.updated_at
       )
     end
 

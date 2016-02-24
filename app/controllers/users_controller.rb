@@ -1,8 +1,8 @@
 class UsersController < ApplicationController
 
-  before_action :require_login, except: [:new, :show, :create]
+  before_action :require_login, except: [:new, :show, :create, :newsfeed]
   before_action :require_logout, only: [:new]
-  before_action :require_current_user, only: [:update]
+  before_action :require_current_user, only: [:update, :newsfeed]
 
   # Signup Page
   def new
@@ -52,6 +52,11 @@ class UsersController < ApplicationController
       flash[:danger] = "Failed!"
       redirect_to user_path(current_user)
     end
+  end
+
+  # Displays newsfeed for currently logged in user
+  def newsfeed
+    @activities = current_user.get_activities
   end
 
   private

@@ -25,7 +25,9 @@ class Photo < ActiveRecord::Base
         user_id: self.user_id,
         event: "Uploaded a Photo",
         activable_id: self.id,
-        activable_type: "#{self.class}"
+        activable_type: "#{self.class}",
+        created_at: self.created_at,
+        updated_at: self.updated_at
       )
     end
 

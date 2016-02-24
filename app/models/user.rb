@@ -45,10 +45,9 @@ class User < ActiveRecord::Base
   end
 
   def get_activities
-    friends = friendeds.includes(activities: :activable)
-    activities = []
-    friends.each { |f| activities << f.activities }
-    activities[0]
+    Activity.where(
+      user_id: self.friendeds.pluck(:id)
+    ).order("created_at DESC").includes(:user, :activable)
   end
 
   def generate_token

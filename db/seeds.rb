@@ -79,10 +79,62 @@ def generate_comments_to_post
   comment.save
 end
 
+# ----------------------------------------
+# Unidirectional Friending
+# ----------------------------------------
+
+def generate_friendings
+  friending = Friending.new
+  friending.friender_id = User.pluck(:id).sample
+  friending.friended_id = User.pluck(:id).sample
+  friending.save
+end
+
+# ----------------------------------------
+# Generate Test Account
+# ----------------------------------------
+
+def generate_test_account
+  first_name = "harry"
+  last_name = "potter"
+
+  u = User.new
+  u.first_name  = first_name
+  u.last_name   = last_name
+  u.email       = "#{first_name}@#{last_name}.com"
+  u.password = "qwerqwer"
+  u.save
+
+
+  up = Profile.new
+  up.user_id = u.id
+  up.gender = rand(0..1) == 1 ? "Male" : "Female"
+  up.birthday = Faker::Date.between(50.years.ago, Date.today)
+  up.college = Faker::Company.name
+  up.from = "#{Faker::Address.city}, #{Faker::Address.state}"
+  up.lives = "#{Faker::Address.city}, #{Faker::Address.state}"
+  up.number = Faker::PhoneNumber.phone_number
+  up.words = Faker::Hipster.paragraph
+  up.about = Faker::Hipster.paragraph
+  up.save
+
+  5.times do
+    friending = Friending.new
+    friending.friender_id = u.id
+    friending.friended_id = User.pluck(:id).sample
+    friending.save
+  end
+end
+
 puts "Creating Users and Profiles"
 (MULTIPLIER * 2).times { |id| generate_user_and_profile }
 puts "Creating Posts"
 (MULTIPLIER * 10).times { generate_post }
 puts "Creating Comments"
 (MULTIPLIER * 20).times { generate_comments_to_post }
+puts "Creating Friendings"
+(MULTIPLIER * 10).times { generate_friendings }
+puts "Creating Test Account"
+generate_test_account
+
 puts "Done!"

@@ -27,6 +27,7 @@ class User < ActiveRecord::Base
   has_many :received_friendings, foreign_key: :friended_id, class_name: "Friending"
   has_many :frienders, through: :received_friendings
 
+  has_many :activities, dependent: :destroy
 # ======================================================
   accepts_nested_attributes_for :posts,
     reject_if: proc { |attributes| attributes['body'].blank? },
@@ -41,6 +42,13 @@ class User < ActiveRecord::Base
 
   def name
     "#{self.first_name} #{self.last_name}"
+  end
+
+  def get_activities
+    friends = friendeds.includes(activities: :activable)
+    activities = []
+    friends.each { |f| activities << f.activities }
+    activities[0]
   end
 
   def generate_token

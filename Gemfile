@@ -19,6 +19,7 @@ gem 'aws-sdk'
 gem 'figaro'
 
 group :development, :test do
+  gem 'hirb'
   gem 'byebug'
   gem 'rspec-rails'
   gem "factory_girl_rails", "~> 4.0"

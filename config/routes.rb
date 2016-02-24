@@ -18,5 +18,5 @@ Rails.application.routes.draw do
     end
   end
   root 'users#new', as: :signup
-
+  get '/newsfeed' => 'users#newsfeed'
 end

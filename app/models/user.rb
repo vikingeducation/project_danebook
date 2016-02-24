@@ -47,5 +47,13 @@ class User < ActiveRecord::Base
   end
 
 
+  def self.recently_active(user)
+    where('id IN (?) OR id IN (?)',
+      user.friended_users.pluck(:id),
+      user.users_friended_by.pluck(:id)
+      ).order(created_at: :desc)
+  end
+
+
 
 end

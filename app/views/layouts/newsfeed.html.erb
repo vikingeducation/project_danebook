@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Newsfeed</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body data-no-turbolink>
+
+  <div class="general-navbar">
+  <%= render partial: "shared/general_navbar", locals: { profile: current_user.profile } %>
+  </div>
+
+  <% flash.each do |type, message| %>
+    <div class="alert alert-<%=type%>">
+      <div>
+      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+      <strong><%= type.titleize %>! <%= message %></strong>
+      </div>
+      </div>
+  <% end %> 
+
+
+  <main class="container">
+
+    <div class="activities-controller">
+      <%= yield %>
+    </div>
+
+    
+    <div class="row bottom-spacer">
+    <br>
+    </div>
+
+  </main>
+
+</body>
+</html>

@@ -5,6 +5,7 @@ class Friending < ActiveRecord::Base
   
 
   validates :friend_id, uniqueness: {scope: :friender_id}
+  validates :friender_id, uniqueness: {scope: :friend_id}
 
 
 

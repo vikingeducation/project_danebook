@@ -9,11 +9,10 @@ class Post < ActiveRecord::Base
 
 
   def self.newsfeed(user)
-    where('user_id IN (?) OR user_id IN (?) OR user_id = ?',
+    where('user_id IN (?) OR user_id IN (?)',
       user.friended_users.pluck(:id),
-      user.users_friended_by.pluck(:id),
-      user.id
-      ).order(created_at: :desc)
+      user.users_friended_by.pluck(:id)
+      ).order(created_at: :desc).limit(50)
   end
 
 

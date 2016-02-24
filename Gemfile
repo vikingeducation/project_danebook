@@ -44,7 +44,6 @@ group :development, :test do
   gem 'paperclip'
   gem 'better_errors'
   gem 'aws-sdk', '< 2.0'
-  gem 'letter_opener'
 end
 
 group :test do
@@ -61,6 +60,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'guard-rspec', require: false
+  gem 'letter_opener'
 end
 
 group :production do

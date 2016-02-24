@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     get "searches" => "users#searches"
     get "avatar" => "users#avatar"
     get "cover_photo" => "users#cover_photo"
+    get "newsfeed" => "users#newsfeed"
     resources :friendings, only: [:create, :destroy]
     resources :photos, except: [:update, :edit]
   end

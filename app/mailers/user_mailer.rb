@@ -14,7 +14,7 @@ class UserMailer < ApplicationMailer
     if @resource.is_a?(Post)
       @link = user_timeline_url(@user.id)
     else
-      @link = photo_url(@resource.id)
+      @link = user_photo_url(@user, @resource.id)
     end
 
     mail(to: @user.email, subject: 'New notification')

@@ -44,6 +44,7 @@ group :development, :test do
   gem 'paperclip'
   gem 'better_errors'
   gem 'aws-sdk', '< 2.0'
+  gem 'letter_opener'
 end
 
 group :test do

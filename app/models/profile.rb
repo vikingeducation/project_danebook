@@ -1,8 +1,8 @@
 class Profile < ActiveRecord::Base
 
   belongs_to :user
-  has_one :profile_photo
-  has_one :cover_photo
+  belongs_to :profile_photo, class_name: "Photo"
+  belongs_to :cover_photo, class_name: "Photo"
 
 
   validates :about_me, :words_to_live_by, length: { maximum: 250 }

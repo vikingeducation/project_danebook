@@ -1,14 +1,28 @@
 <div class="row">
   <!-- Main photo -->
   <section>
-    <div class="jumbotron"></div>
+    <div class="jumbotron">
+
+    <% unless profile.cover_photo_id.nil? %>
+      <%= image_tag profile.cover_photo.image.url(:large), class: 'img-responsive' %>
+    <% else %>
+      <%= image_tag 'hogwarts_small.jpg' %>
+    <% end %>      
+
+    </div>
   </section>
 </div>
 
   <!-- Profile photo -->
 <div class="row">
   <section class="col-sm-4 img-responsive profile-pic">
-    <%= image_tag 'harry_potter_small.jpg' %>
+
+    <% unless profile.profile_photo_id.nil? %>
+      <%= image_tag profile.profile_photo.image.url(:medium) %>
+    <% else %>
+      <%= image_tag 'harry_potter_small.jpg' %>
+    <% end %>
+
   </section>
 </div>
 

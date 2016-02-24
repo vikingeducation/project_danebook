@@ -70,6 +70,14 @@
             </li>
             <!--vertical divider-->
             <div class="v-line"></div>
+            <% if current_user && current_user.id == @profile.id %>
+              <li>
+                <a class="btn btn-default tl-menu-link" role="button" href="<%= newsfeed_path %>">
+                  Newsfeed
+                </a>
+              </li>
+              <div class="v-line"></div>
+            <% end %>
 
             <% if signed_in_user? && @profile.id != current_user.id %>
               <% if current_user.friendeds.pluck(:id).include?(@profile.user.id) %>

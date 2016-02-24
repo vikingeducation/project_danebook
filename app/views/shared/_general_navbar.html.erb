@@ -18,12 +18,16 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <form class="navbar-form navbar-left" role="search">
+      <div class="navbar-form navbar-left" role="search">
         <div class="form-group">
-          <!-- No submit button, users just press enter -->
-          <input type="text" class="form-control" placeholder="Search for users" class="search-bar">
+          <div class="search-bar">
+            <%= form_tag users_path, :method => 'get' do %>
+              <%= text_field_tag :query, params[:query], placeholder: "Search for users", class: "form-control" %>
+              <%= submit_tag "Go", class: "form-control" %>
+            <% end %>
+          </div>
         </div>
-      </form>
+      </div>
       <!-- Link back to user's profile -->
       <ul class="nav navbar-nav navbar-right">
         <% if current_user %>

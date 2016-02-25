@@ -34,7 +34,5 @@ def generate_posts(user)
 end
 
 20.times {generate_users}
-User.all.each do |user|
-  5.times {generate_posts(user)}
-end
+100.times {generate_posts(User.all.sample)}
 60.times {generate_friendships}

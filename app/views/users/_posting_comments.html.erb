@@ -25,7 +25,7 @@
               <span class="pull-left">
                 <%= post.likes.count unless post.likes.empty? %>
               </span>
-              <% if current_user %>
+              <% if current_user == post.author %>
                 <%= link_to "Delete", post_path(post), method: :delete, class: "pull-right" %>
               <% end %>
 

@@ -2,6 +2,7 @@ class ProfilesController < ApplicationController
   layout "profile"
 
   before_action :require_login
+  before_action :require_object_owner, only: [:edit, :update]
 
 
   def show

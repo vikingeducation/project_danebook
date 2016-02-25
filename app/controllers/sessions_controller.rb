@@ -15,7 +15,7 @@ class SessionsController < ApplicationController
     else
       flash[:error] = "Failed to sign in"
     end
-    redirect_to root_path
+    redirect_to activities_path
   end
 
 

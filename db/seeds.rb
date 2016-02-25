@@ -38,7 +38,7 @@ def create_user
   )
 end
 
-10.times do
+20.times do
   create_user
 end
 
@@ -131,8 +131,15 @@ end
 
 puts "Creating friendships..."
 
+def create_friendship
+  friender = User.pluck(:id).sample
+  friend = User.pluck(:id).sample
+
+  Friending.create(friender_id: friender, friend_id: friend) unless friender == friend
+end
+
 200.times do
-  Friending.create(friender_id: User.pluck(:id).sample, friend_id: User.pluck(:id).sample)
+  create_friendship
 end
 
 

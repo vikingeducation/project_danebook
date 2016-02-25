@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  root 'activities#index'
+  root 'users#new'
 
   get 'newsfeed' => 'activities#index'
 

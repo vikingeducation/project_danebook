@@ -29,19 +29,25 @@ class PhotosController < ApplicationController
 
 
   def create
-    if params[:image_url]
-      @photo = Photo.new(user_id: params[:user_id])
-      @photo.image_from_url(params[:image_url])
+    # debug
+
+    if params[:image_url] && params[:image_url].empty?
+      flash.now[:error] = "Please select a file."
+
 
     elsif params[:photo][:image].nil?
       flash[:error] = "Please select a file."
-      redirect_to :back
+
+
+    elsif params[:image_url] && !params[:image_url].empty?
+      @photo = Photo.new(user_id: params[:user_id])
+      @photo.image_from_url(params[:image_url])
 
     else
       @photo = Photo.new(whitelisted_params)
     end
 
-    if @photo.save
+    if @photo && @photo.save
       flash[:success] = "Photo uploaded."
       redirect_to user_photos_path(current_user)
     else

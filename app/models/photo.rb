@@ -26,7 +26,7 @@ class Photo < ActiveRecord::Base
 
 
   def image_from_url(url)
-    self.image = open(url) unless url.nil?
+    self.image = open(url) unless url.empty?
   end
 
 

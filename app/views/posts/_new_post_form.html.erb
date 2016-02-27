@@ -1,0 +1,14 @@
+<div class="post-update-container">
+
+  <%= form_for [@user, @new_post], remote: true do |f| %>
+  
+  <div class="post-update-title"><strong>Post</strong></div>
+
+  <%= f.text_area :body, {class:"form-control", placeholder:"Tell the world something..."} %>
+ 
+
+  <div class="post-end-box">
+    <%= f.submit "Post", class:"btn btn-primary pull-right post-btn"%>
+  </div>
+  <% end %>
+</div>

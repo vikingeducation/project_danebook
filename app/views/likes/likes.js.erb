@@ -1,0 +1,30 @@
+(function(){
+
+    var link = ""
+    //Remove old link
+    $target=$('div[data-type=<%=@like.liking_type%>][data-id=<%=@like.liking_id%>] .link-container[data-type=<%=@like.liking_type%>][data-id=<%=@like.liking_id%>]')
+ 
+    
+    $target.first().children().first().remove()
+
+        
+    if(<%=@like.persisted?%>){
+
+
+      //Change to Unlike
+      var link = '<a data-remote="true" rel="nofollow" data-method="delete" href="/likes?liking_id=<%=@like.liking_id%>&liking_type=<%=@like.liking_type%>&user_id=<%=@like.user_id%>">Unlike</a>'
+
+    }
+
+    else{
+      //Change to Like
+      var link = '<a data-remote="true" rel="nofollow" data-method="post" href="/likes?liking_id=<%=@like.liking_id%>&liking_type=<%=@like.liking_type%>">Like</a>'
+    }
+
+  $target.first().prepend(link)
+
+  //Flashes
+  $(".flashes").html("<%= j(render partial: 'shared/flash') %>").slideDown();
+  <% flash.clear %>
+
+})();

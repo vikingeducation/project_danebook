@@ -1,0 +1,72 @@
+
+  <main>
+
+  <!-- Photos Header -->
+
+  <div class="container">
+    <div class="row test">
+      <div class="col-xs-4 col-xs-offset-2">
+        <h3>Photo posted by <%=@profile.full_name%></h3>
+      </div>
+      <div class="col-xs-5 edit-btn">
+        <%= link_to "Back", user_photos_path(@profile.user_id), class: "btn btn-primary pull-right" %>
+      </div>
+    </div>
+
+    <div class="row main-content">
+      <div class="col-sm-6 col-md-6">
+        <div class="photo-container">
+
+     
+            <%= image_tag @photo.photo%><br>
+              <div class="photo-overlay">
+                <strong><%= @photo.created_at %></strong>
+              </div>
+        </div>
+            <%= link_to "Set as Profile", user_photo_path(current_user, @photo, type: "avatar"), method: "patch"%><br>
+            <%= link_to "Set as Cover", user_photo_path(current_user, @photo, type: "cover"), method: "patch"%><br>
+
+            <% if current_user.id == @photo.user_id %>
+              <%= link_to "Delete photo", user_photo_path(current_user, @photo), method: "delete" %>
+                        
+            <%end%>
+      </div>
+      <div class="col-sm-5 col-md-5">
+        
+        <div class="col-xs-3">
+          <img src="http://s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif", height="50" width="50">
+        </div>
+
+        <div class="col-xs-5 col-md-5">
+            <h4><%=link_to current_user.full_name, user_posts_path(current_user.profile) %></h4>
+        </div>
+      </div>
+      <div class="row col-sm-5 col-md-5">
+        <%=@photo.added_on%>
+      </div>
+      <div class="row col-sm-5 col-md-5">
+        
+      <%if current_user.likes?(@photo)%>
+        <%=link_to "Unlike", likes_path(user_id: current_user.id, liking_id: @photo.id, liking_type: @photo.class), method: 'delete' , class: "col-sm-2"%>
+      <%else%>
+        <%=link_to "Like", likes_path(liking_id: @photo.id, liking_type: @photo.class), method: 'post' , class: "col-sm-2"%>
+      <%end%>
+      3 others like this
+      </div>
+      <div class=" col-sm-5 col-md-5">
+        
+        <%= render partial: "shared/comment_form", locals: {obj: @photo, user_id: current_user.id} %>
+        <br>
+
+        
+          
+        <%= render @photo.comments %>
+          
+      </div>
+  
+    </div>
+
+    
+
+
+  </main>

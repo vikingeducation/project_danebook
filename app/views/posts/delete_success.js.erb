@@ -1,0 +1,6 @@
+
+$('.post[data-type=<%=@post.class%>][data-id=<%=@post.id%>]').remove()
+
+
+$(".flashes").html("<%= j(render partial: 'shared/flash') %>").slideDown();
+<% flash.clear %>

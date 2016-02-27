@@ -1,0 +1,55 @@
+
+<main>
+
+  <!-- Profile Header -->
+
+  <%= render partial: "shared/menu", :locals => { :active => 'Timeline', :profile => @profile } %>
+
+  <!-- /profile header -->
+
+
+  <!-- Main Content -->
+
+  <div class="container">
+
+    <div class="row">
+
+      <!-- Aside Content -->
+
+      <aside class="col-sm-4">
+
+        <!-- About -->
+
+        <div class = "row aside-container">
+
+          <section class="col-sm-12">
+
+            <header class="aside-container-header">About</header>
+
+              <p><b>Born on:</b> <%=@user.birthday %></p>
+              <p><b>College:</b> <%= @user.profile.college %></p>
+              <p><b>Hometown:</b>  <%=@user.profile.hometown %></p>
+              <p><b>Currently Lives:</b>  <%= @user.profile.livesintown %></p>
+
+          </section>
+
+        </div>
+  <%= render partial: "photos_block" %>
+  <%= render partial: "friends_block" %>
+
+      <div class="col-sm-8">
+
+        <% if current_user == @user%>
+            <%= render partial: "new_post_form" %>
+        <% end %>
+
+        <%= render @posts %>
+
+
+      </div>
+
+    </div>
+
+  </div>
+
+</main>

@@ -1,0 +1,93 @@
+
+
+<main class = "container">
+
+  <section class = "row">
+
+    <article class = "col-sm-7 sign-up-main-left">
+
+      <h1> Connect with all your friends!</h1>
+
+      <ul>
+        <li><strong>See photos and updates</strong> in your news feed</li>
+        <li><strong>Post your status for the world to see</strong> from your profile</li>
+        <li><strong>Get in touch with your friends</strong by "friending" them</li>
+        <li><strong>Like things</strong> because you're a positive person!</li>
+      </ul>
+
+    </article>
+
+        <%= form_for user do |f| %>
+          <div id="error_explanation text-center">
+            <% if user.errors.count > 0  %>
+            <%= "Total #{user.errors.count} validation(s) failed"%>
+            <ul>
+              <%user.errors.full_messages.each do |m|%>
+                <li><%=m %></li>
+              <% end %>
+            </ul>
+          </div>
+            <% end %>
+    <article class = "col-sm-5 sign-up-main-right">
+
+      <h1>Sign Up</h1>
+
+        <div class = "row form-group">
+          <div class = "col-sm-6">
+            <%= f.text_field :first_name, class: 'form-control', placeholder: 'First Name' %>
+          </div>
+          <div class = "col-sm-6">
+            <%= f.text_field :last_name, class: 'form-control', placeholder: 'Last Name' %>
+          </div>
+        </div>
+
+        <div class="row form-group">
+          <div class = "col-sm-12">
+             <%= f.text_field :email, class: 'form-control', placeholder: 'Your Email' %>
+          </div>
+        </div>
+
+        <div class="row form-group">
+          <div class = "col-sm-12">
+            <%= f.password_field :password, class: 'form-control', placeholder: 'Your Password' %>
+          </div>
+        </div>
+
+        <div class="row form-group">
+          <div class = "col-sm-12">
+            <%= f.password_field :password_confirmation, class: 'form-control', placeholder: 'Confirm Your Password' %>
+            
+          </div>
+        </div>
+
+        <div class="row form-group">
+            <div class="col-md-4">
+              <%= f.date_select :birthday, {:promt => 
+              {:day => 'Day', :month => 'Month', :year => 'Year'}, :start_year => 1947, :end_year =>2010}, 
+              {:class => 'form-control date-select'} %>
+  
+            </div>
+          </div>
+
+          <div class="row form-group">
+            <div class = "col-sm-4 sign-up-radio">
+              <%= label :gender, "Female" %>
+              <%= f.radio_button :gender, "Female"%>
+            </div>
+            <div class = "col-sm-4 sign-up-radio">
+              <%= label :gender, "Male" %>
+              <%= f.radio_button :gender, "Male"%>
+            </div>
+          </div>
+
+          <div class = "row form-group">
+            <div class = "col-sm-12">
+              <%= f.submit "Sign Up!", class: 'btn btn-success btn-sign-up form-control' %>
+            </div>
+          </div>
+          <% end %>
+    </article>
+
+  </section>
+
+</main>

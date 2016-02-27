@@ -1,0 +1,53 @@
+<div class="post" data-type=<%=post.class%> data-id=<%=post.id%>>
+  <div class="post-container" >
+    <div class="post-header-row">
+
+      <div class="col-xs-2 post-pic">
+
+         <%=image_tag post.avatar.photo.url(:thumb)%>
+
+      </div>
+
+      <div class="col-xs-10 post-info">
+        <%= link_to post.author.full_name, user_profile_path(post.author) %>
+        
+        <br>
+        <%= post.posted_on %>
+      </div>
+    </div>
+
+    <div class="post-content">
+      <p><%= post.body %></p>
+    </div>
+
+
+  <div class="link-container" data-type=<%=post.class%> data-id=<%=post.id%> >
+    <div class="like-btn ">
+      <%if current_user.likes?(post) %>
+        <%=link_to "Unlike", likes_path(user_id: current_user.id, liking_id: post.id, liking_type: post.class), method: 'delete',  remote: true%>
+      <%else%>
+        <%=link_to "Like", likes_path(liking_id: post.id, liking_type: post.class), method: 'post', remote: true %>
+       <%end%>
+    </div>
+
+    <div class="like-btn pull-right">
+      <% if current_user.id == post.user_id %>
+        <%= link_to "Delete", user_post_path(@user, post), method: 'delete', remote: true %>
+      <% end %>
+    </div>
+  </div>
+
+
+  </div>
+
+  <div class="comment-end-box">
+    
+      <%= render post.comments %>
+      <% if current_user %>
+        <%= render partial: "posts/comment_form", locals: {post: post} %>
+      <% end %>
+    
+
+  </div>
+
+</div>

@@ -1,0 +1,24 @@
+(function(){
+  
+  if(<%=@comment.persisted?%>){
+
+    var $newComment = $("<%= j(render partial: 'comment', locals: { comment: @comment } )%>")
+
+
+    $('[data-type=<%=@comment.commenting_type%>][data-id=<%=@comment.commenting_id%>]  form').prepend($newComment)
+
+
+    $('[data-type=<%=@comment.commenting_type%>][data-id=<%=@comment.commenting_id%>]  form textarea').val(" ")
+  }
+  else{
+
+    $('.post[data-type=<%=@comment.commenting_type%>][data-id=<%=@comment.commenting_id%>] .comment-section[data-type=<%=@comment.class%>][data-id=<%=@comment.id%>]').remove()
+
+    
+
+  }
+
+    $(".flashes").html("<%= j(render partial: 'shared/flash') %>").slideDown();
+    <% flash.clear %>
+  
+})();

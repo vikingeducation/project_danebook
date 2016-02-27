@@ -1,0 +1,36 @@
+
+<main>
+
+  <!-- Profile Header -->
+
+  <%= render partial: "shared/menu", :locals => { :active => 'Photo' , :profile => @profile, :user => @user}  %>
+<div class="container">
+    <div class="row test">
+      <div class="col-xs-2 col-xs-offset-5">
+        <h3>Photos</h3>
+      </div>
+      <div class="col-xs-5 edit-btn">
+      <%= link_to "Add Photo", new_user_photo_path(@profile.user_id), class: "btn btn-default pull-right",  disabled: true %>
+      </div>
+    </div>
+
+
+
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2 col-xs-8 col-xs-offset-2">
+      
+        <div class="row">
+          <h4>Select a photo from your harddrive</h4>
+        </div>
+          <%= form_for [:user, @photo] do |f| %> 
+            <%= f.file_field :photo %>
+            <br>
+            <%= f.submit "Upload photo", class: 'btn btn-md btn-success' %>
+          <% end %>
+          <br><br><br>
+      </div>
+    </div>
+  </div>
+</div>
+</main>
+

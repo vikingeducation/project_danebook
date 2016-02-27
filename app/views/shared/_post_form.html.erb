@@ -1,0 +1,20 @@
+<section>
+  <%= form_for @post, remote: true do |post_fields| %>
+  <div id="post-box">
+    <header class="row">
+      <h4 class = "col-md-12">Post</h4>
+    </header>
+    <div class = "row" >
+      <div class="col-md-12 form-group comment-area">
+        <%= post_fields.text_area :body, class: "form-control", rows: "3", placeholder: "Tell the world something..." %>
+        <%= post_fields.hidden_field(:recipient_user_id, value: @user.id) %>
+      </div>
+    </div>
+    <div class = "row" >
+      <footer class="col-md-12">
+        <%= post_fields.submit "Post", class: "btn btn-primary" %>
+      </footer>
+    </div>
+  </div>
+  <% end -%>
+</section><!-- Ends status update -->

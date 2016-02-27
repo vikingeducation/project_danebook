@@ -1,0 +1,104 @@
+<main class = "container">
+
+  <%= render :partial => 'shared/middle_navbar' %>
+
+  <section id="about-section">
+    <header>
+      <div class="row">
+        <div class="col-xs-offset-2 col-xs-8">
+          <h2>About</h2>
+        </div>
+        <div class="col-xs-2">
+          <%= edit_profile_button(@user) %>
+        </div>
+      </div>
+    </header>
+
+
+    <div class="row about-info">
+      <div class="col-sm-5 col-sm-offset-1">
+        <h3>Basic Information</h3>
+
+        <div class="row">
+          <div class = "col-xs-4">
+            <b>Birthday:</b>
+          </div>
+          <div class = "col-xs-8">
+            <%= user_birthday(@user, prepend: "") %>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class = "col-xs-4">
+            <b>College:</b>
+          </div>
+          <div class = "col-xs-8">
+            <%= user_college(@user) %>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class = "col-xs-4">
+            <b>Hometown:</b>
+          </div>
+          <div class = "col-xs-8">
+            <%= user_hometown(@user, prepend: "", default: "No hometown information") %>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class = "col-xs-4">
+            <b>Currently Lives:</b>
+          </div>
+          <div class = "col-xs-8">
+            <%= user_currently_lives(@user, prepend: "", default: "No current home information") %>
+          </div>
+        </div>
+
+
+        <h3>Contact Information</h3>
+
+        <div class="row">
+          <div class = "col-xs-4">
+            <b>Email:</b>
+          </div>
+          <div class = "col-xs-8">
+            <%= @user.email %>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class = "col-xs-4">
+            <b>Telephone:</b>
+          </div>
+          <div class = "col-xs-8">
+            <%= user_mobile(@user) %>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-sm-5">
+
+        <h3>Words to live by</h3>
+        <p>
+          <%= words_to_live_by(@user) %>
+        </p>
+
+        <h3>About me</h3>
+        <p>
+          <%= about(@user) %>
+        </p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-2 col-xs-push-10">
+        <%= modify_account_button(@user) %>
+      </div>
+    </div>
+    <br>
+  </section>
+</main>
+
+<br>

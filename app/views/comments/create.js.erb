@@ -1,0 +1,9 @@
+var $comment = $("<%= j( render partial: 'shared/comments', locals: { comments: [@comment] } ) %>")
+
+var $target = DANE.Comments.getCommentable('<%= @comment.commentable_id %>','<%= @comment.commentable_type %>');
+
+$comment.appendTo( $target ).hide().slideDown(700);
+
+$(".new_comment").trigger("reset");
+
+$("<%= j(render partial: 'shared/flash', locals: { message: 'Your comment was posted!', flash_type: 'info' }) %>").appendTo($target).hide().fadeIn(500);

@@ -1,0 +1,45 @@
+<div class = "user-wrapper">
+
+  <div class = "row">
+
+    <div class = "col-md-3 col-xs-6 text-center">
+      <div class = "user-img">
+        <%= user_profile_pic(user) %>
+      </div>
+    </div>
+
+    <div class = "col-md-5 col-xs-6">
+      <div class = "user-name">
+        <%= link_to user_path(user) do %>
+          <h4>
+            <%= user.name %>
+          </h4>
+        <% end -%>
+
+        <%= link_to user_friends_path(user) do %>
+          <h6>
+            <%= user.friends.count %> Friends
+          </h6>
+        <% end -%>
+      </div>
+
+      <div class="user-details">
+        <p>
+          <%= user_currently_lives(user) %>
+        </p>
+        <p>
+          <%= user_hometown(user) %>
+        </p>
+        <p>
+          <%= user_birthday(user) %>
+        </p>
+      </div>
+    </div>
+
+    <div class = "col-md-4 col-xs-4 text-center">
+      <div class = "friend-options">
+        <%= friend_or_unfriend(user) %>
+      </div>
+    </div>
+  </div>
+</div>

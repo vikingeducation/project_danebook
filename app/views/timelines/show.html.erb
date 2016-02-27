@@ -1,0 +1,28 @@
+<main class = "container">
+
+  <%= render :partial => 'shared/middle_navbar' %>
+
+    <section class = "container" id="timeline-section">
+      <div class="row">
+
+        <aside class="col-md-4" id="basic-info">
+          <%= render partial: 'timeline_about' %>
+          <%= render partial: 'timeline_photos' %>
+          <%= render partial: 'timeline_friends' %>
+        </aside>
+
+
+        <!-- //////// news feed = right side of screen ////////-->
+        <div class="col-md-7 col-md-offset-1" id="news-feed">
+
+          <%= render partial: 'shared/post_form' %>
+
+          <%= render partial: 'shared/posts' %>
+
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<br>

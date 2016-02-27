@@ -1,0 +1,71 @@
+<%= form_for @user do |user_fields| %>
+
+  <div class = "row">
+    <div class = "col-sm-6">
+      <%= user_fields.text_field :first_name, class: "form-control", placeholder: "First Name" %>
+    </div>
+    <div class = "col-sm-6">
+      <%= user_fields.text_field :last_name, class: "form-control", placeholder: "Last Name" %>
+    </div>
+  </div>
+
+  <div class = "row">
+    <div class = "col-sm-12">
+      <%= user_fields.text_field :email, class: "form-control", placeholder: "Your Email" %>
+    </div>
+  </div>
+
+  <div class = "row">
+    <div class = "col-sm-12">
+      <%= user_fields.password_field :password, class: "form-control", placeholder: "Your New Password" %>
+    </div>
+  </div>
+
+  <div class = "row">
+    <div class = "col-sm-12">
+      <%= user_fields.password_field :password_confirmation, class: "form-control", placeholder: "Confirm Your Password" %>
+    </div>
+  </div>
+
+  <div class = "row">
+    <div class = "col-sm-6">
+      <h4>Birthday</h4>
+    </div>
+  </div>
+
+
+  <div class = "row">
+    <div class = "col-xs-4">
+      <%= user_fields.date_select(:birthday,
+        {order: [:month, :day, :year],
+        use_short_month: true,
+        #include_blank: true,
+        start_year: Date.today.year - 90,
+        end_year: Date.today.year,
+        date_separator: '</div><div class="col-xs-4">',
+        prompt: true },
+         {class: "form-control"}) %>
+    </div>
+  </div>
+
+  <div class = "row">
+
+    <div class = "col-xs-4 top-bottom-margin">
+      <%= user_fields.radio_button(:gender, "female") %>
+      <%= user_fields.label(:gender, "Female") %>
+    </div>
+
+    <div class = "col-xs-4 top-bottom-margin">
+      <%= user_fields.radio_button(:gender, "male") %>
+      <%= user_fields.label(:gender, "Male") %>
+    </div>
+
+  </div>
+
+  <div class = "row">
+    <div class = "col-sm-12">
+      <%= user_fields.submit user_fields.object.persisted? ? "Update Account" : "Sign Up!", class: "btn btn-success btn-lg btn-block" %>
+    </div>
+  </div>
+
+<% end -%>

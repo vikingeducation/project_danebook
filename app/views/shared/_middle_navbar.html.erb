@@ -1,0 +1,53 @@
+<header>
+
+  <div class = "photo-container">
+    <%= image_tag @user.cover_photo ? @user.cover_photo.data.url : "https://s3.amazonaws.com/davidmeza/itm_2013-01-23_18-24-28_6.jpg" , class: "img-responsive", id: "cover-photo" %>
+  </div>
+
+  <div id = "pages-nav">
+    <div class = "row">
+
+      <div class = "col-md-4">
+        <div class = "profile-pic-container">
+          <%= image_tag @user.profile_pic ? @user.profile_pic.data.url : "https://s3.amazonaws.com/davidmeza/profile_picture_by_veerayne-d57nuq0.jpg", class: "img-responsive" %>
+        </div>
+        <h1 class = "profile-name">
+          <%= @user.name %>
+          <%= friending_button(@user) unless @user == current_user %>
+        </h1>
+
+      </div>
+
+      <div class = "col-xs-6 navigation-container">
+        <ul class = "nav navbar-nav nav-pills">
+          <li class ="<%= controller.class == TimelinesController ? 'active' : '' %>" >
+            <%= link_to "Timeline", user_timeline_path(@user) %>
+          </li>
+
+          <li class ="<%= controller.class == UsersController ? 'active' : '' %>" >
+            <%= link_to "About", @user %>
+          </li>
+
+          <li class ="<%= controller.class == PhotosController ? 'active' : '' %>" >
+            <%= link_to "Photos <span>(#{@user.photos.count})</span>".html_safe, user_photos_path(@user) %>
+          </li>
+
+          <li class ="<%= controller.class == FriendsController ? 'active' : '' %>" >
+            <%= link_to "Friends <span>(#{@user.friends.count})</span>".html_safe, user_friends_path(@user) %>
+          </li>
+        </ul>
+      </div>
+
+      <div class = "col-sm-2 pull-right">
+        <ul class = "nav navbar-nav">
+          <% if current_user.id == @user.id && !(controller.class == UsersController && controller.action_name == "about_edit") %>
+          <li>
+            <%= link_to "Edit Profile", edit_profile_path %>
+          </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</header>

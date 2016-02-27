@@ -1,0 +1,28 @@
+<section class="row" id="timeline-photos">
+  <header class="col-md-12">
+      <h4>Photos</h4>
+  </header>
+
+  <% @user.photos.limit(9).each_with_index do |photo, index| %>
+    <div class="col-xs-4 photo">
+      <%= image_or_linked_image(photo, @user) %>
+      <div class="upload-date">
+        <p>
+          Uploaded <%= photo.data_updated_at.to_formatted_s(:short) %>
+        </p>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="col-xs-6 col-xs-push-3">
+      <h5 class = "text-center">
+        <%= no_pictures_message(@user) %>
+      </h5>
+    </div>
+  </div>
+
+    <div class="col-md-12 more-photos">
+      <%= link_to_all_photos(@user) %>
+    </div>
+</section>

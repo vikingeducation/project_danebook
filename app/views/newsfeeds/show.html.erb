@@ -1,0 +1,58 @@
+<main class = "container" id = "user-newsfeed">
+
+  <div class="row">
+
+    <aside class="col-md-3" id="friend-activity">
+
+      <div class="row" id = "box-self">
+        <div class="col-xs-5">
+          <%= user_profile_pic(@user) %>
+        </div>
+        <div class="col-xs-7">
+          <p>
+            <%= link_to @user.name, @user %>
+          </p>
+          <p>
+            <%= link_to "Edit Profile", edit_profile_path %>
+          </p>
+        </div>
+      </div>
+
+      <div class="row" id = "box-self">
+        <div class="col-xs-12">
+          <h2>Recently Active</h2>
+        </div>
+
+        <div class="col-xs-12">
+          <%= render partial: 'active_friends', locals: { posts: @posts } %>
+        </div>
+
+        <div class="col-xs-12 friends-link">
+          <%= link_to "See All Your Friends", user_friends_path(@user) %>
+        </div>
+      </div>
+
+    </aside>
+
+
+    <!-- news feed = right side of screen -->
+    <div class="col-md-9" id="news-feed">
+
+      <div class="row">
+        <div class="col-xs-10 col-xs-offset-1">
+          <%= render partial: 'shared/post_form' %>
+
+          <%= render partial: 'shared/posts' %>
+        </div>
+      </div>
+
+      <div class="text-center">
+       <%= will_paginate @posts %>
+      </div>
+
+    </div>
+  </div>
+
+</main>
+
+<br>

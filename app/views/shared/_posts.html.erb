@@ -1,0 +1,51 @@
+<% @posts.each do |post| %>
+  <article class = "feed-posts" data-post-id = "<%= post.id %>">
+    <div class="row">
+      <div class="col-xs-2">
+        <%= profile_pic_or_generic(post) %>
+      </div>
+      <div class="col-xs-10">
+        <p>
+          <%= link_to post.author.name, post.author %>
+        </p>
+        <p class="date-posted">
+          Posted on <%= post.created_at.to_formatted_s(:long) %>
+        </p>
+      </div>
+    </div>
+
+    <div class = "row">
+      <div class="col-md-12 post-body">
+        <p class = "word-wrap">
+          <%= post.body %>
+        </p>
+      </div>
+    </div>
+
+    <div class = "row">
+      <footer class="col-md-12 like-section">
+        <div class = "row">
+          <%= like_or_unlike_button(post) %>
+          <a class="col-xs-2 comment-box" href="#" data-commentable-id = '<%= post.id %>' data-commentable-type = '<%= post.class.to_s %>'>Comment</a>
+          <%= posts_delete_button(post) %>
+        </div>
+
+        <div class = "row">
+          <p class="col-xs-12">
+            <%= likes_count_message(post) %>
+          </p>
+        </div>
+
+        <!-- <div class = "divider-line"></div> -->
+
+          <div data-commentable-id = '<%= post.id %>' data-commentable-type = '<%= post.class.to_s %>'>
+            <%= render partial: 'shared/comments', locals: {comments: post.comments.includes(:author) } %>
+          </div>
+
+
+        <%= render partial: 'shared/comment_form', locals: {commentable: post} %>
+
+      </footer>
+    </div>
+  </article>
+<% end -%>

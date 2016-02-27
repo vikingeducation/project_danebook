@@ -1,0 +1,6 @@
+var $post = DANE.Posts.getPost('<%= @post.id %>');
+$("<%= j(render partial: 'shared/flash', locals: { message: 'Your post was deleted!', flash_type: 'warning' }) %>").insertBefore($post).hide().fadeIn(500);
+
+$post.slideUp(500, function() {
+        $(this).remove();
+    });;

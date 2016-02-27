@@ -1,0 +1,72 @@
+<main class = "container">
+
+  <section id="photo-show">
+    <header>
+      <div class="row">
+        <div class="col-xs-12">
+          <h2>Photos</h2>
+        </div>
+      </div>
+    </header>
+
+    <div class = "row">
+
+      <div class="col-md-6">
+        <div class="row">
+          <div class="col-md-12 text-center" id = "photo-container">
+            <%= image_tag @photo.data.url, class: "img-responsive" %>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-3 pull-right">
+            <%= photo_owner_options(@photo) %>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+
+        <div class="row" id = "uploader-panel">
+          <div class="col-xs-2">
+            <%= profile_pic_if_avail(@photo) %>
+          </div>
+          <div class="col-xs-10">
+            <p>
+              <%= link_to @photo.user.name, @photo.user %>
+            </p>
+            <p class="date-posted">
+              <%= @photo.created_at.to_formatted_s(:long) %>
+            </p>
+          </div>
+        </div>
+
+        <div class="row" id = "like-block">
+          <div class="col-xs-2">
+            <%= like_or_unlike_button(@photo) %>
+          </div>
+          <a class="col-xs-2 comment-box" href="#" data-commentable-id = '<%= @photo.id %>' data-commentable-type = '<%= @photo.class.to_s %>'>Comment</a>
+          <div class="col-xs-8">
+            <%= comment_likes_message(@photo) %>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12">
+            <%= render partial: 'shared/comment_form', locals: {commentable: @photo} %>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-12">
+            <%= render partial: 'shared/comments', locals: {comments: @photo.comments.includes(:author)} %>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+</main>
+
+<br>

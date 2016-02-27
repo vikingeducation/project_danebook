@@ -1,0 +1,41 @@
+<section class="row" id="timeline-about">
+  <header class="col-md-12">
+      <h4>About</h4>
+  </header>
+
+  <div class="row">
+    <div class = "col-xs-5">
+      <b>Born on:</b>
+    </div>
+    <div class = "col-xs-7">
+      <%= user_birthday(@user, prepend: "") %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class = "col-xs-5">
+      <b>Went to school at:</b>
+    </div>
+    <div class = "col-xs-7">
+      <%= user_college(@user) %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class = "col-xs-5">
+      <b>Hometown:</b>
+    </div>
+    <div class = "col-xs-7">
+      <%= user_hometown(@user, prepend: "", default: "None") %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class = "col-xs-5">
+      <b>Currently Lives:</b>
+    </div>
+    <div class = "col-xs-7">
+      <%= user_currently_lives(@user, prepend: "", default: "None") %>
+    </div>
+  </div>
+</section>

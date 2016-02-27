@@ -1,0 +1,32 @@
+<main class = "container">
+
+  <%= render :partial => 'shared/middle_navbar', locals: {:@user => @user}  %>
+
+
+  <section id="photos-section">
+    <header>
+      <div class="row">
+        <div class="col-xs-offset-2 col-xs-8">
+          <h2>Photos</h2>
+        </div>
+        <div class="col-xs-2">
+          <%= link_to "Add Photo!", new_photo_path, class: "btn btn-primary" if @user == current_user %>
+        </div>
+      </div>
+    </header>
+
+    <div class = "photo-row">
+
+      <%= render @photos, locals: {:@user => @user}  %>
+
+      <% if @photos.empty? %>
+      <div class="col-md-12 text-center">
+        <h3>This user doesn't have any pictures yet :(</h3>
+      </div>
+      <% end -%>
+
+    <div class = "clearfix"></div>
+  </section>
+</main>
+
+<br>

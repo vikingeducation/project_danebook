@@ -1,0 +1,9 @@
+var $post = $("<%= j( render partial: 'shared/posts', locals: { :@posts => [@post], :@comment => Comment.new, :@user => current_user } ) %>")
+
+var $target = DANE.Posts.getPostsContainer();
+
+$post.insertAfter( $target ).hide().slideDown(700);
+
+$(".new_post").trigger("reset");
+
+$("<%= j(render partial: 'shared/flash', locals: { message: 'Your post was created!', flash_type: 'info' }) %>").insertAfter($target).hide().fadeIn(500);

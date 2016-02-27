@@ -1,0 +1,46 @@
+<%= render :partial => 'shared/signed_in_navbar' %>
+
+<main class = "container">
+
+  <%# render :partial => 'shared/middle_navbar' %>
+
+  <section id="about-edit">
+    <header>
+      <div class="row">
+        <div class="col-xs-12">
+          <h2>Edit Profile</h2>
+        </div>
+      </div>
+    </header>
+
+    <div class="row">
+      <div class="col-sm-6 col-sm-push-3 col-xs-10 col-xs-push-1">
+        <%= render :partial => 'form' %>
+      </div>
+    </div>
+
+    <hr class="divider-line">
+
+    <div class="danger-zone">
+      <div class="row">
+        <div class="col-sm-6 col-sm-push-3 col-xs-10 col-xs-push-1 text-center">
+          <h3 class = "text-danger">Danger zone!!</h3>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-6 col-sm-push-3 col-xs-10 col-xs-push-1">
+          <%= link_to "Delete Account",
+                      user_path(@user),
+                      method: :delete,
+                      class: "btn btn-block btn-danger btn-lg" %>
+        </div>
+      </div>
+    </div>
+
+
+  </section>
+
+</main>
+
+<br>

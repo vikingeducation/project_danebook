@@ -1,0 +1,30 @@
+<section class="row" id="timeline-friends">
+  <header class="col-md-12">
+      <h4>Friends: <%= @friends.count %></h4>
+  </header>
+
+  <% @friends.limit(9).each_with_index do |friend, index| %>
+    <%= add_row_opening(index) %>
+      <div class="col-xs-4 friend">
+        <%= link_to user_path(friend) do %>
+          <%=image_tag friend.profile_pic ? friend.profile_pic.data.url : random_user_image %>
+        <% end -%>
+        <p>
+          <%= link_to friend.name, user_path(friend) %>
+        </p>
+      </div>
+    <%= add_row_closing(index, @friends.count) %>
+  <% end -%>
+
+  <div class="row">
+    <div class="col-xs-6 col-xs-push-3">
+      <h5 class = "text-center">
+        <%= no_friends_message(@friends) %>
+      </h5>
+    </div>
+  </div>
+
+  <div class="col-md-12 friend">
+    <h4><%= link_to_all_friends(@user) %></h4>
+  </div>
+</section>

@@ -1,0 +1,29 @@
+<main class = "container">
+
+  <%= render :partial => 'shared/middle_navbar', locals: {:@user => @user}  %>
+
+
+  <section id="friends-section">
+    <header>
+      <div class="row">
+        <div class="col-xs-12">
+          <h2>Friends</h2>
+        </div>
+      </div>
+    </header>
+
+    <div class = "row">
+
+      <%= render partial: "friends" %>
+
+      <% if @friends.empty? %>
+        <div class="col-md-12 text-center">
+          <h3>This user doesn't have any friends yet :(</h3>
+        </div>
+      <% end -%>
+
+    </div>
+  </section>
+</main>
+
+<br>

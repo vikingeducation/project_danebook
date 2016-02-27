@@ -1,0 +1,5 @@
+<h1>*Danebook*</h1>
+
+<p><%= @comment.author.name %> commented on your <%= @comment.commentable.class.to_s.downcase %>!</p>
+
+<p>Check out what they said <%= link_to "here", @link %></p>

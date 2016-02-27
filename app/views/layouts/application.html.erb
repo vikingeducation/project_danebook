@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Danebook</title>
+
+  <%= stylesheet_link_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css' %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+
+  <%= favicon_link_tag 'https://s3.amazonaws.com/davidmeza/danebook/danish_flag_icon.ico' %>
+
+  <%= javascript_include_tag 'https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js' %>
+  <%= javascript_include_tag 'https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+
+  <%= csrf_meta_tags %>
+  <!-- Latest compiled and minified CSS -->
+</head>
+
+<% if current_user %>
+  <%= render partial: "shared/signed_in_navbar" %>
+<% else %>
+  <div id="home">
+    <%= render partial: "shared/signed_out_navbar" %>
+  </div>
+<% end -%>
+
+<body data-no-turbolink>
+
+
+  <div class="container" id = "flash-messages">
+    <%= flash_messages %>
+  </div>
+
+    <%= yield %>
+
+</body>
+</html>

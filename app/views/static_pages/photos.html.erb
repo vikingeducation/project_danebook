@@ -1,0 +1,46 @@
+<%= render :partial => 'shared/signed_in_navbar' %>
+
+<main class = "container">
+
+  <%= render :partial => 'middle_navbar' %>
+
+  <section id="photos-section">
+    <header>
+      <div class="row">
+        <div class="col-xs-offset-2 col-xs-8">
+          <h2>Photos</h2>
+        </div>
+        <form class="col-xs-2" action="#">
+          <div class="form-group">
+            <button type="submit" class="btn btn-primary" id="edit-profile">Add Photo!</button>
+          </div>
+        </form>
+      </div>
+    </header>
+
+    <% 4.times do %>
+
+      <div class = "photo-row">
+
+        <% 4.times do %>
+
+          <div class="col-md-3 col-xs-6 photo">
+            <a href="#">
+              <%= image_tag "icon_photo_small.png" %>
+            </a>
+            <div class="upload-date">
+              <p>Uploaded June 15, 2015</p>
+            </div>
+          </div>
+
+        <% end %>
+
+      </div>
+
+    <% end %>
+
+    <div class = "clearfix"></div>
+  </section>
+</main>
+
+<br>

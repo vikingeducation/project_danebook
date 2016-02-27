@@ -1,0 +1,96 @@
+<main class = "container">
+
+  <%= render :partial => 'shared/middle_navbar' %>
+
+  <section>
+    <header>
+      <div class="row">
+        <div class="col-xs-offset-2 col-xs-8">
+          <h2>Photo View</h2>
+        </div>
+      </div>
+    </header>
+
+    <div class = "row">
+      <div class = "col-md-8 text-center">
+        <div class="row">
+          <%= image_tag @photo.picture.expiring_url(10),
+                class: "col-md-12 full-size-photo" %>
+        </div>
+
+        <div class="row">
+          <div class="col-md-4 pull-right">
+
+            <% if object_owner?(@photo) %>
+              <p>
+                <%= link_to "Set as Profile",
+                      user_path(current_user,
+                                user_id: @photo.user_id,
+                                user: {profile_photo_id: @photo.id}),
+                                method: :patch %>
+              </p>
+
+              <p>
+                <%= link_to "Set as Cover",
+                      user_path(current_user,
+                              user_id: @photo.user_id,
+                              user: {cover_photo_id: @photo.id}),
+                              method: :patch %>
+              </p>
+
+              <p>
+                <%= link_to "Delete Photo",
+                    user_photo_path(@photo.user_id, @photo.id),
+                              method: :delete %>
+              </p>
+            <% end %>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- comments column -->
+
+      <div class="col-md-4">
+        <div class="row">
+
+          <div class="col-sm-3">
+            <%= profile_pic_display(@photo.user) %>
+          </div>
+
+          <div class="col-sm-9">
+            <p><%= @photo.user.full_name %></p>
+            <p class="date-posted"><%= @photo.created_at %></p>
+          </div>
+
+          <div class = "col-sm-12">
+
+            <span data-id=<%="Like-Photo-"+
+                              @photo.id.to_s + "-text"%> >
+              <%= like_display(@photo).html_safe %>
+            </span>
+
+            <span data-id=<%="Like-Photo-"+
+                              @photo.id.to_s + "-link"%> >
+              <%= like_or_unlike_link(@photo) %>
+            </span>
+
+          </div>
+        </div>
+
+        <div class= "row">
+          <%= render partial: "shared/comment_form", locals: {parent: @photo} %>
+        </div>
+        <div data-type=<%="comments-Photo-"+@photo.id.to_s%>>
+          <%= render @comments= @photo.comments  %>
+        </div>
+      </div>
+
+    </div>
+
+    <div class = "clearfix"></div>
+  </section>
+</main>
+
+<br>

@@ -1,0 +1,36 @@
+<% if friends %>
+  <% friends.each do |friend| %>
+    <div class = "friend-wrapper">
+      <div class = "row">
+        <div class = "col-xs-3">
+          <div class = "friend-img">
+            <%= profile_pic_display(friend) %>
+            <%# image_tag friend.profile_photo %>
+          </div>
+        </div>
+
+        <div class = "col-xs-5">
+          <div class = "friend-name">
+            <a href=<%=user_posts_path(friend.id)%>>
+              <h4><%= friend.full_name %></h4>
+            </a>
+            <!-- <a href="#"> -->
+              <h6><%= friend.friends.size %> Friends</h6>
+            <!-- </a> -->
+            <%# display_about_details if search %>
+          </div>
+        </div>
+
+        <div class = "col-xs-4">
+          <div class = "friend-options">
+            <%# "You are already friends!" if search %>
+
+            <!-- button below is in reference to current_user -->
+            <%= friend_unfriend_button(friend.id) %>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>

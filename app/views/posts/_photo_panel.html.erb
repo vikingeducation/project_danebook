@@ -1,0 +1,11 @@
+<section class="row" id="timeline-photos">
+  <header class="col-md-12">
+    <h4>Photos</h4>
+  </header>
+
+  <%= render @photos %>
+
+  <div class="col-md-12 more-photos">
+    <%= link_to "See more photos!", user_photos_path(params[:user_id]) %>
+  </div>
+</section>

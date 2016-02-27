@@ -1,0 +1,47 @@
+<header>
+
+  <div class = "photo-container">
+    <%= cover_pic_display %>
+  </div>
+
+  <div id = "pages-nav">
+    <div class = "row">
+
+      <div class = "col-md-3">
+        <div class = "profile-pic-container">
+          <%= profile_pic_display(page_owner) %>
+        </div>
+        <h1 class = "profile-name"><%= page_owner.full_name %></h1>
+      </div>
+
+      <div class = "col-xs-7 navigation-container">
+        <ul class = "nav navbar-nav nav-pills">
+          <li class ="<%= controller.class == StaticPagesController && controller.action_name == "timeline" ? 'active' : '' %>" >
+            <%= link_to "Timeline", user_posts_path(params[:user_id]) %>
+          </li>
+
+          <li class ="<%= controller.class == StaticPagesController && controller.action_name == "about" ? 'active' : '' %>" >
+            <%= link_to "About", user_profile_path(params[:user_id]) %>
+          </li>
+
+          <li class ="<%= controller.class == StaticPagesController && controller.action_name == "photos" ? 'active' : '' %>" >
+            <%= link_to ("Photos <span>"+ photo_num+ "</span>").html_safe, user_photos_path(params[:user_id]) %>
+          </li>
+
+          <li class ="<%= controller.class == StaticPagesController && controller.action_name == "friends" ? 'active' : '' %>" >
+            <%= link_to ("Friends <span>"+ friend_num+ "</span>").html_safe, friendings_path(user_id: params[:user_id]) %>
+          </li>
+        </ul>
+      </div>
+
+      <div class = "col-sm-2 pull-right">
+        <ul class = "nav navbar-nav">
+          <li>
+            <%= edit_or_friend_link %>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+</header>

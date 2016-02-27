@@ -1,0 +1,5 @@
+<% flash.each do |type, msg| %>
+  <div class ="alert <%= bootstrap_class_for(type) %> fade in">
+    <%=  "#{type.upcase}: #{msg.upcase}" %>
+  </div>
+<% end %>

@@ -1,0 +1,33 @@
+<nav class = "navbar navbar-default navbar-fixed-top" id = "navbar-color">
+    <div class = "container-fluid" >
+      <div class = "navbar-header">
+
+        <button type="button" class="btn btn-navbar navbar-toggle collapsed" id = "toggle-colors" data-toggle="collapse" data-target="#navbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+
+        <%= link_to user_posts_path(current_user.id),
+                class: "navbar-brand" do %>
+          <%= image_tag 'danish_flag.gif',
+                :class => "img-circle img-responsive", id: "logo" %>
+        <% end %>
+        <%= link_to "Danebook", user_posts_path(current_user.id),
+                        id: "brand-color", class: "navbar-brand" %>
+      </div>
+
+      <div id = "navbar" class = "navbar-collapse collapse">
+
+        <%= render partial: "shared/search" %>
+
+        <p class="navbar-text navbar-right">
+          Signed in as
+          <%= link_to current_user.first_name, current_user %>
+          <%= link_to "Logout", logout_path, :method => :delete %>
+        </p>
+
+      </div>
+    </div>
+
+  </nav>

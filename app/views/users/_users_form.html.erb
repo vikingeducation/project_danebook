@@ -1,0 +1,77 @@
+<%= form_for user do |user_fields| %>
+
+  <div class = "row">
+    <div class = "col-sm-6">
+
+      <%= user_fields.text_field :first_name, class: "form-control", placeholder: "First Name" %>
+    </div>
+  </div>
+
+  <div class = "row">
+    <div class = "col-sm-6">
+
+      <%= user_fields.text_field :last_name, class: "form-control", placeholder: "Last Name" %>
+    </div>
+  </div>
+
+  <div class = "row">
+    <div class = "col-sm-12">
+
+      <%= user_fields.email_field :email, class: "form-control", placeholder: "Your Email" %>
+    </div>
+  </div>
+
+  <div class = "row">
+    <div class = "col-sm-12">
+
+      <%= user_fields.password_field :password, class: "form-control", placeholder: "Your New Password" %>
+    </div>
+  </div>
+
+  <div class = "row">
+    <div class = "col-sm-12">
+
+      <%= user_fields.password_field :password_confirmation, class: "form-control", placeholder: "Confirm Your Password" %>
+    </div>
+  </div>
+
+  <%= user_fields.fields_for :profile do |ff| %>
+
+  <div class = "row">
+    <div class = "col-sm-6">
+      <h4><%=user_fields.label :birthdate, "Birthday"%></h4>
+    </div>
+  </div>
+
+
+  <div class = "row">
+    <div class = "col-md-12">
+
+      <%= user_fields.date_select(:birthdate, :start_year => (Date.current.year - 13), :end_year => 1900, order: [:month, :day, :year],  :prompt => true)%>
+
+    </div>
+  </div>
+
+
+  <div class = "row">
+
+    <div class = "col-xs-4 top-bottom-margin">
+      <%= ff.label :gender %>
+      <%= ff.label :gender, "Female" %>
+      <%= ff.radio_button(:gender, "Female") %>
+    </div>
+
+    <div class = "col-xs-4 top-bottom-margin">
+      <%= ff.label :gender, "Male" %>
+      <%= ff.radio_button(:gender, "Male") %>
+    </div>
+
+  </div>
+  <% end %>
+
+  <div class = "row">
+    <div class = "col-sm-12">
+      <%= user_fields.submit "Sign Up", class: "btn btn-success large-width" %>
+    </div>
+  </div>
+<% end %>

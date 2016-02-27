@@ -1,0 +1,41 @@
+<article class = "feed-posts" data-id=<%="Comment-" + comment.id.to_s%>>
+  <div class="row">
+
+    <div class="col-xs-2">
+      <%= profile_pic_display(comment.user) %>
+    </div>
+
+    <div class="col-xs-10">
+      <p><%= link_to comment.user.full_name, user_path(comment.user.id) %></p>
+      <p class="date-posted">Posted on <%=comment.created_at %></p>
+    </div>
+
+  </div>
+
+  <div class = "row">
+    <div class="col-md-12 post-body">
+      <p><%=comment.body%></p>
+    </div>
+  </div>
+
+  <div class = "row">
+    <footer class="col-md-12 like-section">
+      <span data-id=<%="Like-Comment-"+ comment.id.to_s + "-text"%> >
+        <%= like_display(comment).html_safe %>
+      </span>
+      <div class = "row">
+        <span data-id=<%="Like-Comment-"+ comment.id.to_s + "-link"%> >
+          <%= like_or_unlike_link(comment) %>
+        </span>
+
+        <!-- #this link not needed at the moment -->
+        <!-- <a class="col-xs-3" data-link="comment-box" href="#">
+          Comment
+        </a>  -->
+
+        <%= comment_owner_link_option(comment) %>
+      </div>
+    </footer>
+  </div>
+
+</article><!--comment end-->

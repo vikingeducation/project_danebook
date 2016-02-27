@@ -1,0 +1,19 @@
+<section id ="post-box">
+  <%= form_for [current_user, @post], :remote => true do |f|%>
+
+    <header class="row">
+      <h4 class = "col-md-12">Post</h4>
+    </header>
+    <div class = "row" >
+      <div class="col-md-12 form-group post-text-area">
+        <%= f.text_area :body, placeholder: "Tell the world something...", class: "form-control" %>
+      </div>
+    </div>
+    <div class = "row" >
+      <footer class="col-md-12">
+        <%= f.submit "Post", class: "btn btn-primary" %>
+      </footer>
+    </div>
+
+  <% end %>
+</section><!-- Ends post form -->

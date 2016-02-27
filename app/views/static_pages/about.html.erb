@@ -1,0 +1,114 @@
+<%= render :partial => 'shared/signed_in_navbar' %>
+
+  <main class = "container">
+
+    <%= render :partial => 'middle_navbar' %>
+
+
+    <section id="about-section">
+        <header>
+          <div class="row">
+            <div class="col-xs-offset-2 col-xs-8">
+              <h2>About</h2>
+            </div>
+            <form class="col-xs-2" action="about_edit.html">
+              <div class="form-group">
+                <%= link_to about_edit_path  do %>
+                  <button class= "btn btn-active", id= "edit-profile">
+                    Edit Your Profile
+                  </button>
+                <% end %>
+               </div>
+            </form>
+          </div>
+        </header>
+
+
+        <div class="row about-info">
+          <div class="col-sm-5 col-sm-offset-1">
+            <h3>Basic Information</h3>
+
+            <div class="row">
+              <div class = "col-xs-4">
+                <b>Birthday:</b>
+              </div>
+              <div class = "col-xs-8">
+                July 31st, 1980
+              </div>
+            </div>
+
+            <div class="row">
+              <div class = "col-xs-4">
+                <b>College:</b>
+              </div>
+              <div class = "col-xs-8">
+                Hogwarts College
+              </div>
+            </div>
+
+            <div class="row">
+              <div class = "col-xs-4">
+                <b>Hometown:</b>
+              </div>
+              <div class = "col-xs-8">
+                Godrick's Hollow, England
+              </div>
+            </div>
+
+            <div class="row">
+              <div class = "col-xs-4">
+                <b>Currently Lives:</b>
+              </div>
+              <div class = "col-xs-8">
+                Godrick's Hollow, England
+              </div>
+            </div>
+
+
+            <h3>Contact Information</h3>
+
+            <div class="row">
+              <div class = "col-xs-4">
+                <b>Email:</b>
+              </div>
+              <div class = "col-xs-8">
+                harry_potter@hogwarts.edu
+              </div>
+            </div>
+
+            <div class="row">
+              <div class = "col-xs-4">
+                <b>Telephone:</b>
+              </div>
+              <div class = "col-xs-8">
+                555-123-4567
+              </div>
+            </div>
+
+          </div>
+
+          <div class="col-sm-5">
+
+            <h3>Words to live by</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+              quis nostrud exercitation ullamco laboris nisi ut aliquip.
+            </p>
+
+            <h3>About me</h3>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            </p>
+          </div>
+        </div>
+        <br>
+      </section>
+  </main>
+
+  <br>

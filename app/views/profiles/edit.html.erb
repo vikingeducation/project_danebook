@@ -1,0 +1,103 @@
+<main class = "container">
+
+  <%= render :partial => 'shared/middle_navbar' %>
+
+  <section id="about-edit">
+
+    <header>
+      <div class="row">
+        <div class="col-xs-12">
+          <h2>Edit Profile</h2>
+        </div>
+      </div>
+    </header>
+
+    <%= form_for [current_user, @profile] do |f| %>
+
+      <div class="row about-info">
+        <div class="col-sm-4 col-sm-offset-1">
+          <h3>Basic Information</h3>
+
+          <div class="row">
+            <div class = "col-xs-4">
+              <b>Birthday:</b>
+            </div>
+            <div class = "col-xs-8">
+              <%= current_user.birthdate %>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class = "col-xs-4">
+              <b>College:</b>
+            </div>
+            <div class = "col-xs-8">
+              <%= f.text_field :college, class: "form-control" %>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class = "col-xs-4">
+              <b>Hometown:</b>
+            </div>
+            <div class = "col-xs-8">
+              <%= f.text_field :hometown, class: "form-control" %>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class = "col-xs-4">
+              <b>Currently Lives:</b>
+            </div>
+            <div class = "col-xs-8">
+              <%= f.text_field :location, class: "form-control" %>
+            </div>
+          </div>
+
+
+          <h3>Contact Information</h3>
+
+          <div class="row">
+            <div class = "col-xs-4">
+              <b>Email:</b>
+            </div>
+            <div class = "col-xs-8">
+              <%= current_user.email %>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class = "col-xs-4">
+              <b>Telephone:</b>
+            </div>
+            <div class = "col-xs-8">
+              <%= f.telephone_field :phone, class: "form-control" %>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="col-sm-5 col-sm-offset-1" >
+
+          <h3>Words to live by</h3>
+          <%= f.text_area :motto, class: "form-control" %>
+
+          <h3>About me</h3>
+          <%= f.text_area :about, class: "form-control" %>
+        </div>
+      </div>
+
+
+
+      <div class = "row" id = "save-changes">
+        <div class = "col-sm-6 col-sm-offset-3">
+          <%= f.submit "Save Changes", class: "btn btn-success" %>
+
+        </div>
+      </div>
+
+    <% end %>
+  </section>
+</main>
+
+<br>

@@ -2,15 +2,19 @@ class User < ActiveRecord::Base
   has_secure_password
   before_create :generate_token
 
+  #=================== associations ==========================
+
   has_many :photos, dependent: :destroy
 
   has_many :initiated_friendings, class_name: "Friending",
             foreign_key: :friender_id
+
   has_many :friended_users, through: :initiated_friendings,
               source: :friend_receiver
 
   has_many :received_friendings, class_name: "Friending",
             foreign_key: :friend_id
+            
   has_many :users_friended_by, through: :received_friendings,
               source: :friend_initiator
 
@@ -25,10 +29,13 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :profile
   
+  #========================== validations ==============================
+
   validates :first_name, :last_name, :email,
                               presence: true
 
   validates :email, uniqueness: true
+
   validates :password,
             :length => {:in => 7..72 },
             :allow_nil => true
@@ -50,11 +57,7 @@ class User < ActiveRecord::Base
     self.likes.each do |like|
       return true if like.likeable_type.constantize.find(like.likeable_id) == resource
     end
-
     false
-
-    # TODO
-    # self.likes.includes? resource
   end
 
   def id_of_like(resource)

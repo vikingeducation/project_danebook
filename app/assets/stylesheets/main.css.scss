@@ -46,8 +46,25 @@
   .container #cover-photo {
     max-height: 400px; }
 
-.img-wrapper {
-  margin-top: -255px; }
+.avatar {
+  height: 200px;
+  width: 200px;
+  position: absolute;
+  top: -165px;
+  left: 35px;
+  img {
+    height: 100%;
+    width: 100%;
+  }
+}
+
+    .profile-name {
+        position: relative;
+        top: -80px;
+        left: 240px;
+        color: #fff;
+        display: inline;
+      }
 
 .nav #active {
   background-color: #eee; }

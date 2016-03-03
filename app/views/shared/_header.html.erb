@@ -1,53 +1,39 @@
-<header>
+<%= render partial: '/shared/nav' %>
+<div class="container">
+  <div class="cover-container">
+    <% if current_user.cover_photo.nil? %>
+      <img id="cover-photo"  src="/images/hogwarts_small.jpg" class="img-responsive col-md-12" alt="Responsive Cover">
+    <% else %>
+      <%= image_tag current_user.cover_photo.image.url, class: "img-responsive col-md-12", alt: "Responsive Cover" %>
+    <% end %>
+  </div>
+       
+<div class="row">
 
-<!-- Navbar Container -->
-  <%= render partial: '/shared/nav' %>
-
-  </header>
-
-    <div class="container">
-        <!-- Full Width Cover Photo -->
-        <div class="row">
-          <% if current_user.cover_photo.nil? %>
-              <img id="cover-photo"  src="/images/hogwarts_small.jpg" class="img-responsive col-md-12" alt="Responsive Cover">
-            <% else %>
-              <%= image_tag current_user.cover_photo.image.url, class: "img-responsive col-md-12", alt: "Responsive Cover" %>
-            <% end %>
-        </div>
-  
-        <footer>
-          <div class="row">
-
-          <!-- Profile Pic -->
-          <div class="img-wrapper col-md-3">
-            <% if current_user.avatar.nil? %>
-              <img src="/images/harry_potter_small.jpg" class="img-responsive">
-            <% else %>
-              <%= image_tag current_user.avatar.image.url, class: "thumbnail img-responsive", alt: "missing photo" %>
-            <% end %>
-          </div>
-
-          <!-- Navbar Links -->
-          <div class="col-md-offset-3">
-
-            <!-- Links listed -->
-            <ul class="nav navbar-nav">
-          <% if current_user? %>
-            <li class="btn btn-default btn-md"><%= link_to "Newsfeed", user_newsfeed_path(current_user) %></li>
-          <% end %>
-          <li class="btn btn-default btn-md"><%= link_to "Timeline", user_timeline_path(@user) %></li>
-
-          <!-- Id selector 'Active' for current location -->
-          <li class="btn btn-default btn-md" id="active"><%= link_to "About", @user %></li>
-          <li class="btn btn-default btn-md"><%= link_to "Photos", user_photos_path(@user) %></li>
-          <li class="btn btn-default btn-md"><%= link_to "Friends", user_friends_path(@user) %></li>
-          </ul>
-          <div class="pull-right">
-            <% if current_user? %>
-              <%= link_to "Edit Profile", edit_user_path(current_user) %>
-            <% end %>
-          </div>
-        </div>
-
-      </footer>
+  <div class="col-md-3">
+    <div class="avatar">
+      <% if current_user.avatar.nil? %>
+        <img src="/images/harry_potter_small.jpg" class="img-responsive thumbnail">
+      <% else %>
+        <%= image_tag current_user.avatar.image.url, class: "thumbnail img-responsive", alt: "missing photo" %>
+      <% end %>
     </div>
+    <h1 class="profile-name"><%= @user.full_name %></h1>
+  </div>
+
+  <div class="col-md-offset-3">
+
+    <ul class="nav navbar-nav">
+      <% if current_user? %>
+        <li class="btn btn-default btn-sm"><%= link_to "Newsfeed", user_newsfeed_path(current_user) %></li>
+      <% end %>
+
+      <li class="btn btn-default btn-sm"><%= link_to "Timeline", user_timeline_path(@user) %></li>
+      <li class="btn btn-default btn-sm" id="active"><%= link_to "About", @user %></li>
+      <li class="btn btn-default btn-sm"><%= link_to "Photos", user_photos_path(@user) %></li>
+      <li class="btn btn-default btn-sm"><%= link_to "Friends", user_friends_path(@user) %></li>
+    </ul>
+
+  </div>
+
+</div>

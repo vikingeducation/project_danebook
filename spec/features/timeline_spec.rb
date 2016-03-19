@@ -43,7 +43,7 @@ feature "Posting on timeline" do
 
   scenario "delete a comment from the post" do
     make_comment(user)
-    within("div.panel-footer") do
+    within("div.comment-links") do
       expect { click_link "Delete" }.to change { Comment.count }.by(-1)
     end
     expect(page).to_not have_content("Nice Comment!")
@@ -51,13 +51,10 @@ feature "Posting on timeline" do
 
   scenario "like a comment" do
     make_comment(user)
-    within("div.panel-footer") do
+    within("div.comment-links") do
       expect { click_link "Delete" }.to change { Comment.count }.by(-1)
     end
     expect(page).to_not have_content("Nice Comment!")
   end
 
-  scenario "edit profile page"
-  scenario "add a friend"
-  scenario "remove a friend"
 end

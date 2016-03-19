@@ -24,16 +24,15 @@ feature "Edit Users" do
 
     it "shows the edit link for the current user" do
       sign_in(user)
+      click_link("#{user.first_name}")
       expect(page).to have_content("Edit your profile")
-      expect(page).to have_content("Edit Profile")
     end
 
     it "does not show the edit link for a different user" do
       another_user = create(:user, profile: build(:profile))
       sign_in(another_user)
-      visit "1"
+      visit user_path(user)
       expect(page).to_not have_content("Edit your profile")
-      expect(page).to_not have_content("Edit Profile")
       expect(page).to have_content("Add Friend")
     end
 

@@ -18,7 +18,7 @@ describe SessionsController do
 
     it "redirects user to profile" do
       post :create, email: user.email, password: user.password
-      expect(response).to redirect_to user
+      expect(response).to redirect_to user_newsfeed_path(user)
     end
 
     it "doesn't sign in the user" do

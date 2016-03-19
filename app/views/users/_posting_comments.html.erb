@@ -48,7 +48,7 @@
                 <%= comment.body %>
               </div>
 
-              <div class="panel-footer clearfix">
+              <div class="panel-footer clearfix comment-links">
                 <% if current_user.liked_resource?(comment) %>
                 <%= link_to "Unlike", comment_like_path(comment, current_user.id_of_like(comment)), method: :delete %>
                 <% else %>

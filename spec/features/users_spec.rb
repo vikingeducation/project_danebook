@@ -30,7 +30,7 @@ feature "User paths" do
 
     scenario "sign in to account" do
       sign_in(user)
-      expect(page).to have_content("About: #{user.first_name}")
+      expect(page).to have_content("#{user.first_name} #{user.last_name}")
     end
 
     scenario "not sign in to account" do 

@@ -1,7 +1,7 @@
 module TimelineMacros
 
   def make_post(user)
-    click_link "Timeline"
+    # click_link "Timeline"
     fill_in "post_body", with: "Great Post!"
     click_button "Post"
   end

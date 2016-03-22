@@ -1,25 +1,12 @@
-<div class="panel-footer" data-pid="<%= "#{post.id}" %>">
+<%= form_for [:user, @new_comment], remote: true do |f| %>
 
-  <%= link_to "Comment", {}, class: "expand-comment", remote: true %>
+  <%= f.text_area :body, placeholder: "Write a comment...", class: "form-control" %>
+  <%= f.hidden_field :commentable_id, value: commentable_id %>
+  <%= f.hidden_field :commentable_type, value: commentable_type %>
+  <%= f.hidden_field :user_id, value: current_user.id %><br/>
 
-  <div class="new-comment">
-
-
-
-  <%= form_for [:user, @new_comment], remote: true do |f| %>
-
-    <%= f.text_area :body, placeholder: "Write a comment...", class: "form-control" %>
-    <%= f.hidden_field :commentable_id, value: commentable_id %>
-    <%= f.hidden_field :commentable_type, value: commentable_type %>
-    <%= f.hidden_field :user_id, value: current_user.id %><br/>
-
-    <%= f.submit "Comment", class: "btn btn-primary" %>
+  <%= f.submit "Comment", class: "btn btn-primary" %>
 
 
-  <% end %>
+<% end %>
 
-
-
-
-  </div>
-</div>

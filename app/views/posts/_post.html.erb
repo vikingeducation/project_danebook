@@ -43,7 +43,14 @@
 
       <!-- new comment form -->
       <% if current_user && @new_comment %>
-          <%= render partial: "comments/new_comment", locals: { post: post, commentable_id: post.id, commentable_type: "Post" } %>
+        <div class="panel-footer" data-pid="<%= "#{post.id}" %>">
+
+          <%= link_to "Comment", {}, class: "expand-comment", remote: true %>
+
+          <div class="new-comment">
+              <%= render partial: "comments/new_comment", locals: { post: post, commentable_id: post.id, commentable_type: "Post" } %>
+          </div>
+        </div>
       <% end %>
 
     </div>

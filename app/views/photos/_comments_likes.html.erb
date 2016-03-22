@@ -1,4 +1,4 @@
-  <div class="panel-footer">
+
 
     <%= like_or_unlike(@photo) %>
 
@@ -16,9 +16,7 @@
     <!-- existing comments -->
     <% if @photo.comments %>
       <% @photo.comments.each do |comment| %>
-      <div class="panel-footer">
       <%= render partial: "comments/show_comment", locals: { comment: comment } %>
-      </div>
       <% end %>
     <% end %>
 
@@ -28,6 +26,3 @@
         <%= render partial: "comments/new_comment", locals: { new_comment: @new_comment, commentable_id: @photo.id, commentable_type: "Photo" } %>
       </div>
     <% end %>
-
-  </div>
-</div>

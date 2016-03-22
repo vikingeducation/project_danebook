@@ -11,14 +11,22 @@ class PostsController < ApplicationController
           redirect_to user_path(current_user) }
         format.js {
           flash.now[:success] = "You've created a post!"
-
         }
       else
-        flash.now[:danger] = "Failed to create a post!"
-        @user = current_user
-        @profile = current_user.profile
-        @posts = current_user.posts.order("created_at DESC")
-        render 'users/show'
+        format.html {
+          flash.now[:danger] = "Failed to create a post!"
+          @user = current_user
+          @profile = current_user.profile
+          @posts = current_user.posts.order("created_at DESC")
+          render 'users/show'
+        }
+        format.js {
+          flash.now[:danger] = "Failed to create a post!"
+          @user = current_user
+          @profile = current_user.profile
+          @posts = current_user.posts.order("created_at DESC")
+          render 'users/show'
+        }
       end
     end
   end

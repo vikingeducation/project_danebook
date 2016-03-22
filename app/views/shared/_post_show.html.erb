@@ -60,12 +60,13 @@
         <!-- Display Like Statistics -->
         <%= render partial: "likes/like_statistics", locals: { post: post } %>
         <!-- End of Like Statistics -->
-        <div data-commentableid="<%= post.id %>"></div>
-        <!-- Display all Comments -->
-        <% post.comments.each do |comment| %>
-          <%= render partial: 'comments/comment_show', locals: { comment: comment } %>
-        <% end %>
-        <!-- End of Dispaly all Comments -->
+        <div data-commentableid="<%= post.id %>">
+          <!-- Display all Comments -->
+          <% post.comments.each do |comment| %>
+            <%= render partial: 'comments/comment_show', locals: { comment: comment } %>
+          <% end %>
+          <!-- End of Dispaly all Comments -->
+        </div>
 
         <!-- Comment Form -->
         <%= render partial: 'comments/comment_form', locals: { post: post } if post.id && signed_in_user? %>

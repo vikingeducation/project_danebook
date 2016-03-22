@@ -47,18 +47,31 @@ class CommentsController < ApplicationController
   def destroy
     @type = params[:commentable]
     @id = get_commentable_id
-    if @type.constantize.exists?(@id)
-      c = get_comment
-      if c.destroy
-        flash[:success] = "Comment deleted!"
-        redirect_to :back
+    respond_to do |format|
+      if @type.constantize.exists?(@id)
+        @c = Comment.find(params[:id])
+        if @c.destroy
+          format.html {
+            flash[:success] = "Comment deleted!"
+            redirect_to :back
+          }
+          format.js {
+            flash.now[:success] = "Comment deleted!"
+          }
+        else
+          format.html {
+            flash[:danger] = "Failed to delete Comment!"
+            redirect_to :back
+          }
+          format.js {
+            flash[:danger] = "Failed to delete Comment!"
+            redirect_to :back
+          }
+        end
       else
-        flash[:danger] = "Failed to delete Comment!"
+        flash[:danger] = "That #{@type} Doesn't Exist!"
         redirect_to :back
       end
-    else
-      flash[:danger] = "That #{@type} Doesn't Exist!"
-      redirect_to :back
     end
   end
 
@@ -68,11 +81,11 @@ class CommentsController < ApplicationController
     params.require(:comment).permit(:body)
   end
 
-  def get_comment
-    comments = @type.constantize.find(@id).comments
-    comment = comments.select { |l| l.user_id == current_user.id }
-    return comment[0]
-  end
+  # def get_comment
+  #   comments = @type.constantize.find(@id).comments
+  #   comment = comments.select { |l| l.user_id == current_user.id }
+  #   return comment[0]
+  # end
 
   def get_commentable_id
     class_name = params[:commentable]

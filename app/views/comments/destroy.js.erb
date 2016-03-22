@@ -1,0 +1,8 @@
+// find the comment being destroyed in the DOM
+var $commentHtml = $("[data-commentid='" + <%= @c.id %> + "']");
+
+
+// fade it out, then remove it from DOM
+$commentHtml.slideUp(1000, function() {
+  $(this).remove();
+});

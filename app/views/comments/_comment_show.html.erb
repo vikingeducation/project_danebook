@@ -31,7 +31,7 @@
                 <% end %>
                 <div class="delete-link">
                   <% if current_user && current_user.id == comment.user.id %>
-                    <%= link_to "Delete", post_comment_path(post_id: comment.commentable.id, id: comment), class: "delete-link", method: :delete, data: { confirm: "Are you sure?" } %>
+                    <%= link_to "Delete", post_comment_path(post_id: comment.commentable.id, id: comment), class: "delete-link", remote: true, method: :delete, data: { confirm: "Are you sure?" } %>
                   <% end %>
                 </div>
               </div>

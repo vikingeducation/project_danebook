@@ -46,7 +46,7 @@
                 </div>
               <% end %>
               <div class="comment-link">
-                <a class="comment-link" href="#">Comment</a>
+                <a class="comment-link" href="#" data-formid="<%=post.id %>">Comment</a>
               </div>
               <div class="delete-link">
                 <% if current_user && current_user.id == user.profile.id %>

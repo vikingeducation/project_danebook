@@ -1,9 +1,9 @@
 
   <%= form_for(Comment.new,
                 method: "post",
+                :remote => true,
                 class: "panel panel-default 
                         panel-style container-border") do |comment_fields| %>
-    THIS USER IS <%= @user.id %>
     <%= comment_fields.hidden_field :user_id, value: current_user.id %>
     <%= comment_fields.hidden_field :commentable_type, value: commentable.class %>
     <%= comment_fields.hidden_field :commentable_id, value: commentable.id %>
@@ -14,7 +14,7 @@
     </div>
     <div class="panel-footer">
       <button type="submit" class="btn btn-info btn-xs comment-button">
-              Comment
+        Comment
       </button>
     </div>
   <% end %>

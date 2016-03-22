@@ -1,5 +1,6 @@
 
-<div class="panel panel-default panel-style container-border">
+<div class="panel panel-default panel-style container-border"
+     id="post-panel-<%=post.id%>">
   <div class="panel-body panel-body-style basic-margin">
 
     <%= render partial: 'recent_post_activity', locals: {recent_post_activity: post} %>
@@ -24,7 +25,7 @@
     
       <div class="col-md-2 tiny-font"> 
         <% if current_user.id == post.user_id %>
-           <%= link_to "Delete", user_post_path(post.user.id, post.id), method: :delete %>
+           <%= link_to "Delete", user_post_path(post.user.id, post.id), method: :delete, remote: true %>
         <% end %>   
       </div>
 
@@ -36,9 +37,13 @@
         <%= show_likeable_likes(post) %>
       </div>
     
-      <div class="col-md-12 text-left" style="font-size:0.75em;">
-        <%= render partial: post.comments, locals: {user_id: post.user_id}  %>
-        <%= render partial: "comments/form", locals: {commentable: post} %>
+      <div class="col-md-12 text-left post-comments" style="font-size:0.75em;">
+        <div id="post-<%=post.id%>-comments-display">
+           <%= render partial: post.comments, locals: {user_id: post.user_id}  %>
+        </div>
+        <div class="new-comment-form">   
+          <%= render partial: "comments/form", locals: {commentable: post} %>
+        </div>
       </div>  
 
     </div>  

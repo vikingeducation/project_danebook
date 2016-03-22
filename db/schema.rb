@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160224222247) do
+ActiveRecord::Schema.define(version: 20160224235116) do
 
   create_table "comments", force: :cascade do |t|
     t.text     "body"
@@ -23,6 +23,22 @@ ActiveRecord::Schema.define(version: 20160224222247) do
   end
 
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
+
+  create_table "delayed_jobs", force: :cascade do |t|
+    t.integer  "priority",   default: 0, null: false
+    t.integer  "attempts",   default: 0, null: false
+    t.text     "handler",                null: false
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority"
 
   create_table "friendships", force: :cascade do |t|
     t.integer "friend_requestor_id", null: false

@@ -8,7 +8,18 @@ class CommentsController < ApplicationController
     
     if @comment.save
       flash[:success] = "Comment saved!"
-      redirect_user_path(params["comment"][:user_id])
+
+      puts "!!!!!! Param Post Id is #{params["comment"]["commentable_id"]}"
+
+      @post = Post.find((params["comment"]["commentable_id"]))
+
+      respond_to do |format|
+
+        format.html {redirect_user_path(params["comment"][:user_id])}
+        format.js {render :create_comment}
+
+      end  
+
     else
       flash[:alert] = "Comment not saved!"
       redirect_user_path(params["comment"][:user_id])
@@ -16,12 +27,17 @@ class CommentsController < ApplicationController
   end 
 
   def destroy
-    @comment = Comment.find(params[:id])
+    @comment_id = params[:id]
+    @comment = Comment.find(@comment_id)
     if @comment.destroy
       flash[:success] = "Comment deleted!"
-      redirect_to new_user_post_path(params[:user_id])
+
+      respond_to do |format|
+        format.html {redirect_to new_user_post_path(params[:user_id])}
+        format.js {render :delete_comment}
+      end  
     else
-      flash[:alert] = "Cmment not deleted!"
+      flash[:alert] = "Comment not deleted!"
       redirect_to new_user_post_path(params[:user_id])
     end
  end

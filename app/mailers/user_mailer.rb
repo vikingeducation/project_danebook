@@ -18,4 +18,30 @@ class UserMailer < ApplicationMailer
     mail(to: @to_user.email , subject: "Comment Notification by #{@user.username}")
     
   end
+
+
+  def friend_suggestion(user_id)
+    
+    @user = User.find(user_id)
+    
+    friends = @user.friends
+    users = User.all
+
+    @friends_array = []
+    
+    make_friends = users - friends_array - [@user]
+
+    if make_friends.size  < 3
+       @friends_array = make_friends
+    else      
+      3.times do |num|
+        new_friend = [make_friends - @friends_array].sample
+        @friends_array = new_friend
+      end  
+    end
+    
+    mail(to: @user.email , subject: "#{@user.username} - make new friends")
+    
+  end
+
 end

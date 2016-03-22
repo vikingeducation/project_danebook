@@ -1,5 +1,5 @@
 <% if current_user_view? %>
-  <%= form_for([@user, @post], class: "panel panel-default 
+  <%= form_for([@user, Post.new], :remote => true, class: "panel panel-default 
                       panel-style container-border") do |post_fields| %>
     <div class="panel-heading">
       <h3 class="panel-title">Post</h3>

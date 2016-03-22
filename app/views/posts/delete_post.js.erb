@@ -1,0 +1,5 @@
+console.log("Entering in delete posts");
+var post_id = "<%= @post.id %>";
+var pRow = '#post-panel-'+ post_id
+$(pRow).remove();
+console.log("Leaving Delete Posts here");

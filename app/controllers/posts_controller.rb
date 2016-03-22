@@ -11,7 +11,6 @@ class PostsController < ApplicationController
 
   def newsfeed
     @post = @user.posts.build #--> Fix this
-    #@newsfeeds = Post.newsfeed_for_user(params[:user_id])
     @posts = @user.friend_posts
     render :newsfeed
   end
@@ -24,14 +23,23 @@ class PostsController < ApplicationController
   def create
 
     @post = @user.posts.build(post_params)
-
+   
     if @post.save
+      
       flash[:success] = "Post saved!"
-      redirect_to new_user_post_path(params[:user_id])
+
+      respond_to do |format|
+
+        format.html {redirect_to new_user_post_path(params[:user_id])}
+
+        format.js {render :create_post}
+      end  
     else
-      flash[:alert] = "Post not saved!"
-      redirect_to new_user_post_path(params[:user_id])
-    end
+      respond_to do |format|
+        flash[:alert] = "Post not saved!"
+        redirect_to new_user_post_path(params[:user_id])
+      end
+    end  
   end  
 
   def show
@@ -41,7 +49,13 @@ class PostsController < ApplicationController
   def destroy
     if @post.destroy
       flash[:success] = "Post deleted!"
-      redirect_to new_user_post_path(params[:user_id])
+      
+      respond_to do |format|
+
+        format.html {redirect_to new_user_post_path(params[:user_id])}
+
+        format.js {render :delete_post}
+      end  
     else
       flash[:alert] = "Post not deleted!"
       redirect_to new_user_post_path(params[:user_id])

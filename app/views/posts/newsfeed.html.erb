@@ -44,10 +44,12 @@
       </div>
       
       <div class="col-md-8">
-        <%= render partial: 'post_form' %>
-        
-        <%= render partial: @posts %>
-       
+        <div class="new-post-form">
+          <%= render partial: 'post_form' %>
+        </div>
+        <div class="post-display">
+          <%= render partial: @posts %>
+        </div> 
       </div> 
 
     </div>  

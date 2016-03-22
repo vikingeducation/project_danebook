@@ -4,7 +4,8 @@
       <%= render partial: "recently_active" %>
     </div>
     <div class="col-xs-8">
-      <h1 class="page-header text-center">Newsfeed</h1>
+      <%= render partial: 'shared/post_form' %>
+      <%= render partial: 'shared/post_spacing' %>
       <% if @activities.size == 0 %>
       <p>Add some friends to see what people are up to!</p>
       <% end %>

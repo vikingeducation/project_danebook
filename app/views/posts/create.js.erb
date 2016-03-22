@@ -1,6 +1,12 @@
+// clear the text in the current form
+$("#post_body").val("");
+
+// use post_show partial template to generate html
 var PostHtml = "<%= j(render partial: 'shared/post_show', locals: { post: @post, user: current_user} ) %>";
 var $postList = $("#post-list");
 
+
+// append it, hide it, then slide it down
 $postList.prepend(PostHtml);
 var newPostHtml =$postList.children().first();
 newPostHtml.hide();

@@ -38,15 +38,19 @@ class PostsController < ApplicationController
     end
   end
 
-# TODO: ajax-ify delete!
+
   def destroy
     @post = Post.find(params[:id])
      if @post.destroy 
       flash[:success] = "Post deleted"
+
+      respond_to do |format|
+        format.html
+        format.js
+      end
     else
       flash[:error] = "Unable to delete post"
     end
-    redirect_to :back
   end
 
 

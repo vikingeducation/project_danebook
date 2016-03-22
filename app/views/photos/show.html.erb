@@ -22,7 +22,7 @@
       <%= @photo.created_at.strftime("%B %d, %Y") %>
 
 
-      <div>
+      <div data-id="<%= "#{@photo.id}" %>" data-type="<%= "#{@photo.class}" %>">
         <%= render partial: 'comments_likes' %>
       </div>
 

@@ -11,3 +11,10 @@ $postList.prepend(postHtml);
 var newPostHtml =$postList.children().first();
 newPostHtml.hide();
 newPostHtml.slideDown(1000);
+
+$("a.comment-link[data-formid='" + <%= @post.id %> + "']").on("click", function(e) {
+  e.preventDefault();
+  var $el = $(e.target);
+  var form = $("[data-commentform='" + $el.attr("data-formid") + "']");
+  form.slideDown(1000);
+});

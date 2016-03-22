@@ -46,7 +46,7 @@ class User < ActiveRecord::Base
 
   def get_activities
     Activity.where(
-      user_id: self.friendeds.pluck(:id)
+      user_id: self.friendeds.pluck(:id) + [self.id]
     ).order("created_at DESC").includes(:user, :activable)
   end
 

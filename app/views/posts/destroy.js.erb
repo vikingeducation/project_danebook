@@ -1,0 +1,9 @@
+// find the post being destroyed in the DOM
+var post_id = <%= @post.id %>;
+var $postHtml = $("[data-postid='" + post_id + "']");
+
+
+// fade it out, then remove it from DOM
+$postHtml.fadeOut(1000, function() {
+  $(this).remove();
+});

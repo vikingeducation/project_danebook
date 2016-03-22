@@ -33,15 +33,30 @@ class PostsController < ApplicationController
 
   def destroy
     @post = current_user.posts.find_by_id(params[:id])
-    if @post.destroy
-      flash[:success] = "You've deleted a post!"
-      redirect_to user_path(current_user)
-    else
-      flash.now[:danger] = "Failed to delete a post!"
-      @user = current_user
-      @profile = current_user.profile
-      @posts = current_user.posts.order("created_at DESC")
-      render "users/show"
+    respond_to do |format|
+      if @post.destroy
+        format.html {
+          flash[:success] = "You've deleted a post!"
+          redirect_to user_path(current_user)
+        }
+        format.js {
+          flash.now[:success] = "You've deleted a post!"
+        }
+      else
+        flash.now[:danger] = "Failed to delete a post!"
+        format.html {
+          @user = current_user
+          @profile = current_user.profile
+          @posts = current_user.posts.order("created_at DESC")
+          render "users/show"
+        }
+        format.js {
+          @user = current_user
+          @profile = current_user.profile
+          @posts = current_user.posts.order("created_at DESC")
+          render "users/show"
+        }
+      end
     end
   end
 

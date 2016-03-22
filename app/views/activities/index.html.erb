@@ -12,9 +12,7 @@
 
     <!-- newsfeed -->
     <% @activities.each do |activity| %>
-
-      <%= render partial: 'posts/post', locals: { post: activity } %>
-
+        <%= render partial: 'posts/post', locals: { post: activity } %>
     <% end %>
 
   </div>

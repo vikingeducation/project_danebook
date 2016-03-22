@@ -8,10 +8,19 @@ class CommentsController < ApplicationController
     if @comment.save
       Comment.delay.send_new_comment_email(@comment.id)
       flash[:success] = "Comment created."
+
+      respond_to do |format|
+        format.html
+        format.js { render :create_success }
+      end
     else
       flash[:error] = "Comment could not be saved"
+
+      respond_to do |format|
+        format.html
+        format.js
+      end
     end
-    redirect_to :back
   end
 
 
@@ -19,10 +28,14 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     if @comment.destroy
       flash[:success] = "Comment deleted"
+
+      respond_to do |format|
+        format.html
+        format.js
+      end
     else
       flash[:error] = "Comment could not be deleted"
     end
-    redirect_to :back
   end
 
 

@@ -38,7 +38,7 @@ class PostsController < ApplicationController
     end
   end
 
-
+# TODO: ajax-ify delete!
   def destroy
     @post = Post.find(params[:id])
      if @post.destroy 

@@ -98,8 +98,11 @@
     <!-- Right Side Content -->
     <section class="right-content col-sm-7 col-sm-offset-1">
 
-      <%= render partial: 'post_form' %>
-      <%= render partial: 'posting_comments' %>
+      <%= render partial: 'posts/post_form' %>
+
+      <div id="post-feed">
+        <%= render @user.posts %>
+      </div>
      
     </section>
 </main>

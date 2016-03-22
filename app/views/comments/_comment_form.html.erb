@@ -1,0 +1,10 @@
+<div class="comment-form row clear-fix">
+  <%= form_tag post_comments_path(post), remote: true do %>
+    <div class="col-xs-12 comment-field">
+      <%= text_area_tag :comment_body, "", class: "form-control", placeholder: "Write a comment..", rows: '2' %>
+    </div>
+    <div class="col-xs-12 button-row">
+      <%= submit_tag "Comment", class: "btn pull-right btn-primary btn-sm" %>
+    </div>
+  <% end %>
+</div>

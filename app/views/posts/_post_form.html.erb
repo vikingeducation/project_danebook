@@ -1,5 +1,5 @@
 <% if current_user? %>
-  <%= form_tag posts_path do %>
+  <%= form_tag posts_path, remote: true do %>
     <div class="panel panel-default">
       <div class="panel-heading text-center">
         Post

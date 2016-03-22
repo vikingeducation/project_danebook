@@ -58,13 +58,6 @@
   }
 }
 
-    .profile-name {
-        position: relative;
-        top: -80px;
-        left: 240px;
-        color: #fff;
-        display: inline;
-      }
 
 .nav #active {
   background-color: #eee; }
@@ -226,4 +219,34 @@
   .main .photos-thumb a:hover .hover-date {
     display: block; }
 
-/*# sourceMappingURL=main.css.map */
+///////////////////////////////////////////////
+
+// timeline csss
+
+.post {
+  border: 1px solid #aaa;
+  .footer {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #eee;
+  }
+}
+
+.comment-container {
+  .panel-body {
+    padding-top: 30px;
+  }
+}
+
+.comment-form {
+
+  .comment-field {
+    margin-top: 15px;
+  }
+
+  .button-row {
+    padding-top: 15px;
+    padding-bottom: 15px;
+  }
+
+}

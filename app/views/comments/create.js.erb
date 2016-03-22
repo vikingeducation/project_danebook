@@ -1,0 +1,6 @@
+var $post= $("div[data-id='post-<%= @parent.id %>']").find('.append-comment');
+var $newComment = $("<%= j(render @comment) %>");
+
+$newComment.hide().prependTo($post).slideDown(800);
+
+$('textarea').val('');

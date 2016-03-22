@@ -33,7 +33,7 @@
     <%= post.likes.size unless post.likes.empty? %>
 
     <% post.comments.each do |comment| %>
-      <div class="row">
+      <div class="row comment-container">
         <div class="col-xs-3">
           <% if comment.author.avatar.nil? %>
             <img src="/images/icon_photo_small.png" class="img-responsive thumbnail">

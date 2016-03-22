@@ -40,9 +40,9 @@
 
           <% post.comments.each do |comment| %>
             <div class="panel panel-default row">
-              <div class="panel-heading">
+              <div class="col-sm-12">
                 <%= link_to comment.author.first_name, user_path(comment.author) %>
-                <span>Commented on <%= comment.created_at %></span>
+                <span>Commented on <%= comment.created_at.strftime("%m/%d/%Y") %></span>
               </div>
               <div class="panel-body">
                 <%= comment.body %>

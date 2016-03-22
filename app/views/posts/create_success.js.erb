@@ -1,0 +1,9 @@
+
+// insert new post onto the page
+var post = "<%= j(render partial: 'post', locals: { post: @post } )%>";
+var $post = $(post);
+$('#new_post').append($post);
+
+
+// clear out post body text
+$('#post_body').val("")

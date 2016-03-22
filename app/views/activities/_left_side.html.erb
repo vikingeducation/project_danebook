@@ -1,5 +1,7 @@
 <div>
-  <%= image_tag current_user.profile.profile_photo.image.url(:thumb) if current_user.profile.profile_photo%><br/>
+  <% if current_user.profile.profile_photo %>
+    <%= image_tag current_user.profile.profile_photo.image.url(:thumb), class: "tiny-profile-pic" %><br/>
+  <% end %>
 
   <%= link_to "#{current_user.first_name} #{current_user.last_name}", user_timeline_path(current_user) %><br/>
   

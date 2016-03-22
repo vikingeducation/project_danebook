@@ -3,16 +3,23 @@ class PostsController < ApplicationController
   before_action :require_post_author, only: [:destroy]
 
   def create
-    @post = current_user.posts.create(post_params)
-    if @post.id
-      flash[:success] = "You've created a post!"
-      redirect_to user_path(current_user)
-    else
-      flash.now[:danger] = "Failed to create a post!"
-      @user = current_user
-      @profile = current_user.profile
-      @posts = current_user.posts.order("created_at DESC")
-      render 'users/show'
+    @post = current_user.posts.build(post_params)
+    respond_to do |format|
+      if @post.save
+        format.html {
+          flash[:success] = "You've created a post!"
+          redirect_to user_path(current_user) }
+        format.js {
+          flash.now[:success] = "You've created a post!"
+
+        }
+      else
+        flash.now[:danger] = "Failed to create a post!"
+        @user = current_user
+        @profile = current_user.profile
+        @posts = current_user.posts.order("created_at DESC")
+        render 'users/show'
+      end
     end
   end
 

@@ -10,15 +10,15 @@
        
 <div class="row">
 
-  <div class="col-md-3">
+  <div class="col-md-3 avatar-container">
     <div class="avatar">
       <% if current_user.avatar.nil? %>
-        <img src="/images/harry_potter_small.jpg" class="img-responsive thumbnail">
+        <img src="/images/icon_photo_small.png" class="img-responsive thumbnail">
       <% else %>
         <%= image_tag current_user.avatar.image.url, class: "thumbnail img-responsive", alt: "missing photo" %>
       <% end %>
     </div>
-    <h1 class="profile-name"><%= @user.full_name %></h1>
+    <h1 class="user-name"><%= @user.full_name %></h1>
   </div>
 
   <div class="col-md-offset-3">

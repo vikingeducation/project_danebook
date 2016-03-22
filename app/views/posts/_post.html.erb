@@ -4,7 +4,7 @@
       <!-- Avatar -->
       <div class="col-sm-3">
         <% if post.author.avatar.nil? %>
-          <img src="/images/harry_potter_small.jpg" class="img-responsive">
+          <img src="/images/icon_photo_small.png" class="thumbnail img-responsive">
         <% else %>
           <%= image_tag post.author.avatar.image.url, class: "thumbnail img-responsive", alt: "missing photo" %>
         <% end %>

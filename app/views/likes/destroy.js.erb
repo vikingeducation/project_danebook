@@ -7,7 +7,7 @@ var likeableType = "<%= j(@parent.class.to_s) %>".toLowerCase();
 
   key = @parent.class.to_s.downcase.to_sym
   locals[key] = @parent
-  locals[:current_user] = @parent.author
+  locals[:current_user] = @current_user
 
  %>
 

@@ -225,6 +225,7 @@
 
 .post {
   border: 1px solid #aaa;
+  border-radius: 2%;
   .footer {
     padding-top: 10px;
     padding-bottom: 10px;
@@ -249,4 +250,16 @@
     padding-bottom: 15px;
   }
 
+}
+
+// header
+
+.avatar-container {
+  .user-name {
+    position: relative;
+    top: -80px;
+    left: 240px;
+    color: #fff;
+    display: inline;
+  }
 }

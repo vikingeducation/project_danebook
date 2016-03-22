@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        User.send_notification(find_parent_id(@parent), current_user.id, @parent)
+        #User.send_notification(find_parent_id(@parent), current_user.id, @parent)
         format.html { redirect_to :back }
         format.js
       else

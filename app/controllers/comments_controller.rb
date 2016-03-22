@@ -5,26 +5,42 @@ class CommentsController < ApplicationController
   def create
     @type = params[:commentable]
     @id = get_commentable_id
-
-    if @type.constantize.exists?(@id)
-      @comment = Comment.new(comment_params)
-      @comment.user_id = current_user.id
-      @comment.commentable_type = @type
-      @comment.commentable_id = @id.to_i
-      if @comment.save
-        flash[:success] = "Comment created!"
-        redirect_to :back
+    respond_to do |format|
+      if @type.constantize.exists?(@id)
+        @comment = Comment.new(comment_params)
+        @comment.user_id = current_user.id
+        @comment.commentable_type = @type
+        @comment.commentable_id = @id.to_i
+        if @comment.save
+          format.html {
+            flash[:success] = "Comment created!"
+            redirect_to :back
+          }
+          format.js {
+            flash.now[:success] = "Comment created!"
+          }
+        else
+          format.html {
+            flash[:danger] = "Failed to create comment!"
+            @user = current_user
+            @current_post = Post.find(params[:post_id])
+            @profile = @current_post.user.profile
+            @posts = @current_post.user.posts.order("created_at DESC")
+            render "users/show"
+          }
+          format.js {
+            flash[:danger] = "Failed to create comment!"
+            @user = current_user
+            @current_post = Post.find(params[:post_id])
+            @profile = @current_post.user.profile
+            @posts = @current_post.user.posts.order("created_at DESC")
+            render "users/show"
+          }
+        end
       else
-        flash[:danger] = "Failed to create comment!"
-        @user = current_user
-        @current_post = Post.find(params[:post_id])
-        @profile = @current_post.user.profile
-        @posts = @current_post.user.posts.order("created_at DESC")
-        render "users/show"
+        flash[:danger] = "That #{@type} Doesn't Exist!"
+        redirect_to :back
       end
-    else
-      flash[:danger] = "That #{@type} Doesn't Exist!"
-      redirect_to :back
     end
   end
 

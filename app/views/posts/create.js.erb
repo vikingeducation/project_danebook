@@ -2,12 +2,12 @@
 $("#post_body").val("");
 
 // use post_show partial template to generate html
-var PostHtml = "<%= j(render partial: 'shared/post_show', locals: { post: @post, user: current_user} ) %>";
+var postHtml = "<%= j(render partial: 'shared/post_show', locals: { post: @post, user: current_user} ) %>";
 var $postList = $("#listy");
 
 
 // append it, hide it, then slide it down
-$postList.prepend(PostHtml);
+$postList.prepend(postHtml);
 var newPostHtml =$postList.children().first();
 newPostHtml.hide();
 newPostHtml.slideDown(1000);

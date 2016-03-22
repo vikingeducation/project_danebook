@@ -1,0 +1,7 @@
+// remove comment
+var cid = "<%= @comment.id %>"
+$('[data-cid="' + cid + '"]').remove().slideUp()
+
+// flash message
+$("#flash-messages").html("<%= j(render partial: 'shared/flash') %>").slideDown();
+<% flash.clear %>

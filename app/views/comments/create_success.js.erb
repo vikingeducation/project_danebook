@@ -1,16 +1,18 @@
-console.log("started create_success file")
 
-
-// render new comment
+// insert new comment
 var comment = "<%= j(render partial: 'show_comment', locals: { comment: @comment } ) %>";
 var $comment = $(comment);
-console.log("does it break here?")
+
 var parentId = "<%= @comment.commentable.id %>"
 var parentType = "<%= @comment.commentable_type %>"
 
-console.log(parentId + parentType)
 $("[data-id=" + parentId + "][data-type='" + parentType + "'] .new_comment").prepend($comment)
 
-console.log("ended create_success file")
 
-// $('[data-id=278][data-type="Post"] .new_comment').prepend("prepend?")
+// clear comment field
+$('#comment_body').val("")
+
+
+// render flash message
+$("#flash-messages").html("<%= j(render partial: 'shared/flash') %>").slideDown();
+<% flash.clear %>

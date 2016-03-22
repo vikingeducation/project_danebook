@@ -1,0 +1,68 @@
+<div class="row">
+  <!-- Main photo -->
+  <section>
+    <div class="cover-photo">
+
+    <% unless profile.cover_photo_id.nil? %>
+      <%= image_tag profile.cover_photo.image.url(:large), class: 'img-responsive' %>
+    <% else %>
+      <%= image_tag 'hogwarts_med.jpg' %>
+    <% end %>      
+
+    </div>
+  </section>
+</div>
+
+  <!-- Profile photo -->
+<div class="row">
+  <section class="col-sm-4 img-responsive profile-pic">
+
+    <% unless profile.profile_photo_id.nil? %>
+      <%= image_tag profile.profile_photo.image.url(:medium) %>
+    <% else %>
+      <%= image_tag 'harry_potter_small.jpg' %>
+    <% end %>
+
+  </section>
+</div>
+
+
+  <!-- Name -->
+<div class="row">
+  <section>
+    <div class="float-name">
+      <%= "#{profile.user.first_name} #{profile.user.last_name}" %>
+    </div>
+  </section>
+</div>
+
+
+<!-- Middle navigation links -->
+<div class="row">
+  <section>
+    <ul class="nav nav-pills middle-nav">
+      <li role="presentation" class="img-bucket"></li>
+      <li><%= link_to "Timeline", user_timeline_path(profile.user), {class: "clickable"} %></li>
+
+      <li><%= link_to "About", user_profile_path(profile.user), {class: "clickable"} %></li>
+
+      <li><%= link_to "Photos (#{profile.user.photos_count})", user_photos_path(profile.user), {class: "clickable"} %></li>
+
+      <li><%= link_to "Friends (#{profile.user.friendings_count})", user_friendings_path(profile.user), {class: "clickable"} %></li>
+
+
+      <% if profile.user == current_user %>
+        <li><%= link_to "Edit Profile", edit_user_profile_path(current_user), {class: "navbar-right"} %></li>
+
+      <% elsif current_user && !current_user.friended_users.include?(profile.user) %>
+        <li class="form-group pull-right"><%= button_to "Add Friend", user_friendings_path, method: :post, class: "btn btn-primary" %></li>
+
+      <% elsif current_user && current_user.friended_users.include?(profile.user) %>
+        <li class="form-group pull-right"><%= button_to "Remove Friend", user_friending_path(current_user, profile.user), method: :delete, class: "btn btn-primary" %></li>        
+
+      <% end %>
+
+    </ul>
+
+  </section>
+</div>

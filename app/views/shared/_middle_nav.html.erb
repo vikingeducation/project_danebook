@@ -1,12 +1,12 @@
 <div class="row">
-  <!-- Main photo -->
+  <!-- Cover photo -->
   <section>
     <div class="cover-photo">
 
-    <% unless profile.cover_photo_id.nil? %>
-      <%= image_tag profile.cover_photo.image.url(:large), class: 'img-responsive' %>
-    <% else %>
+    <% if profile.cover_photo_id.nil? %>
       <%= image_tag 'hogwarts_med.jpg' %>
+    <% else %>
+      <%= image_tag profile.cover_photo.image.url(:large), class: 'img-responsive' %>
     <% end %>      
 
     </div>
@@ -16,11 +16,10 @@
   <!-- Profile photo -->
 <div class="row">
   <section class="col-sm-4 img-responsive profile-pic">
-
-    <% unless profile.profile_photo_id.nil? %>
-      <%= image_tag profile.profile_photo.image.url(:medium) %>
-    <% else %>
+    <% if profile.profile_photo_id.nil? %>
       <%= image_tag 'harry_potter_small.jpg' %>
+    <% else %>
+      <%= image_tag profile.profile_photo.image.url(:medium) %>
     <% end %>
 
   </section>
@@ -36,33 +35,38 @@
   </section>
 </div>
 
-
 <!-- Middle navigation links -->
-<div class="row">
+
+<div class="row middle-nav-buttons">
   <section>
-    <ul class="nav nav-pills middle-nav">
-      <li role="presentation" class="img-bucket"></li>
-      <li><%= link_to "Timeline", user_timeline_path(profile.user), {class: "clickable"} %></li>
 
-      <li><%= link_to "About", user_profile_path(profile.user), {class: "clickable"} %></li>
+    <div class="btn-group btn-group-justified" role="group">
 
-      <li><%= link_to "Photos (#{profile.user.photos_count})", user_photos_path(profile.user), {class: "clickable"} %></li>
+      <%= link_to "Timeline", user_timeline_path(profile.user), {class: "btn btn-default", role: "button"} %>
 
-      <li><%= link_to "Friends (#{profile.user.friendings_count})", user_friendings_path(profile.user), {class: "clickable"} %></li>
+      <%= link_to "About", user_profile_path(profile.user), {class: "btn btn-default", role: "button"} %>
+
+      <%= link_to "Photos (#{profile.user.photos_count})", user_photos_path(profile.user), {class: "btn btn-default", role: "button"} %>
+
+      <%= link_to "Friends (#{profile.user.friendings_count})", user_friendings_path(profile.user), {class: "btn btn-default", role: "button"} %>
 
 
       <% if profile.user == current_user %>
-        <li><%= link_to "Edit Profile", edit_user_profile_path(current_user), {class: "navbar-right"} %></li>
+        <%= link_to "Edit Profile", edit_user_profile_path(current_user), {class: "btn btn-default navbar-right", role: "button"} %>
 
       <% elsif current_user && !current_user.friended_users.include?(profile.user) %>
-        <li class="form-group pull-right"><%= button_to "Add Friend", user_friendings_path, method: :post, class: "btn btn-primary" %></li>
+        <div class="btn-group" role="form-group pull-right">
+          <%= button_to "Add Friend", user_friendings_path, method: :post, class: "btn btn-primary" %>
+        </div>
 
       <% elsif current_user && current_user.friended_users.include?(profile.user) %>
-        <li class="form-group pull-right"><%= button_to "Remove Friend", user_friending_path(current_user, profile.user), method: :delete, class: "btn btn-primary" %></li>        
+        <div class="btn-group" role="form-group pull-right">
+          <%= button_to "Remove Friend", user_friending_path(current_user, profile.user), method: :delete, class: "btn btn-primary" %>
+        </div>        
 
       <% end %>
 
-    </ul>
+    </div> <!-- end button group -->
 
   </section>
 </div>

@@ -1,3 +1,7 @@
+/* line 7, /home/julia/vcs/unit12_authentication/danebook/app/assets/stylesheets/comments.scss */
+.new-comment {
+  display: none;
+}
 /* line 9, /home/julia/vcs/unit12/danebook/app/assets/stylesheets/friendings.scss */
 .friends-controller .friends-bar {
   background-color: #ccc;
@@ -9001,36 +9005,14 @@ button.close {
   /* middle navigation css */
   /* cover photo css */
   /* profile pic css */
-  /* name and add friend */
+  /* floating name and add friend */
 }
 /* line 52, /home/julia/vcs/unit12_authentication/danebook/app/assets/stylesheets/application.scss */
-.middle-navbar .middle-nav {
-  z-index: -1;
-  border: 1px solid black;
-}
-/* line 57, /home/julia/vcs/unit12_authentication/danebook/app/assets/stylesheets/application.scss */
 .middle-navbar .img-bucket {
   width: 250px;
   height: 42px;
 }
-/* line 62, /home/julia/vcs/unit12_authentication/danebook/app/assets/stylesheets/application.scss */
-.middle-navbar .clickable {
-  border-left: 1px solid black;
-  border-radius: 0px;
-}
-/* line 66, /home/julia/vcs/unit12_authentication/danebook/app/assets/stylesheets/application.scss */
-.middle-navbar .clickable a {
-  color: #333;
-}
-/* line 72, /home/julia/vcs/unit12_authentication/danebook/app/assets/stylesheets/application.scss */
-.middle-navbar .border-right {
-  border-right: 1px solid black;
-}
-/* line 77, /home/julia/vcs/unit12_authentication/danebook/app/assets/stylesheets/application.scss */
-.middle-navbar .navbar-right > a {
-  text-decoration: underline;
-}
-/* line 83, /home/julia/vcs/unit12_authentication/danebook/app/assets/stylesheets/application.scss */
+/* line 58, /home/julia/vcs/unit12_authentication/danebook/app/assets/stylesheets/application.scss */
 .middle-navbar .row > section > div.cover-photo > img {
   z-index: -1;
   border-radius: 0px;
@@ -9040,18 +9022,18 @@ button.close {
   width: 100%;
   height: 400px;
 }
-/* line 95, /home/julia/vcs/unit12_authentication/danebook/app/assets/stylesheets/application.scss */
+/* line 70, /home/julia/vcs/unit12_authentication/danebook/app/assets/stylesheets/application.scss */
 .middle-navbar .profile-pic {
   width: 250px;
   height: 250px;
   margin-top: -255px;
   overflow: hidden;
 }
-/* line 100, /home/julia/vcs/unit12_authentication/danebook/app/assets/stylesheets/application.scss */
+/* line 75, /home/julia/vcs/unit12_authentication/danebook/app/assets/stylesheets/application.scss */
 .middle-navbar .profile-pic img {
   width: 100%;
 }
-/* line 107, /home/julia/vcs/unit12_authentication/danebook/app/assets/stylesheets/application.scss */
+/* line 82, /home/julia/vcs/unit12_authentication/danebook/app/assets/stylesheets/application.scss */
 .middle-navbar section > div.float-name {
   position: absolute;
   margin-top: -90px;
@@ -9059,11 +9041,14 @@ button.close {
   color: #fff;
   font-size: 40px;
 }
-/* line 115, /home/julia/vcs/unit12_authentication/danebook/app/assets/stylesheets/application.scss */
-.middle-navbar section > div.float-name > form.button-to {
-  position: absolute;
-  margin-top: -75px;
-  margin-left: 600px;
+/* line 90, /home/julia/vcs/unit12_authentication/danebook/app/assets/stylesheets/application.scss */
+.middle-navbar .middle-nav-buttons {
+  margin: -20px 0 10px 0;
+}
+
+/* line 97, /home/julia/vcs/unit12_authentication/danebook/app/assets/stylesheets/application.scss */
+.tiny-profile-pic {
+  border: 2px solid gray;
 }
 
 /*!

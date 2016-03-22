@@ -1,0 +1,6 @@
+else {
+  var $parent1 = $("div[data-id='comment-<%= @parent.id %>']");
+  var $likeContainer1 = $parent1.find('.comment-like-container');
+  $likeContainer1.html('');
+  $likeContainer1.append("<%= j(render partial: 'unlikeComment', locals: {comment: @parent, current_user: @parent.author}) %>");
+}

@@ -1,0 +1,38 @@
+
+  <%= render partial: '/shared/header' %>
+
+	<!-- Main Content Friends -->
+	<main>
+	  <div class="main container">
+
+	  <!-- Header Row -->
+    <div class="nav row">
+      <h1><strong>Friends</strong></h1>
+    </div><!-- End header Row -->
+      <% @user.friended_users.each do |friend| %>
+        <div class="col-sm-6">
+          <div class="friends row">
+            <div class="col-sm-10 col-sm-offset-1">
+              <a href="#"><img class="frnd-img" src="/images/default_user.gif"></a>
+              <div class="profile">
+                <%= link_to "#{friend.first_name} #{friend.last_name}", friend %>
+                <span>(<%= friend.friended_users.count %>)</span>
+              </div>
+              <% unless current_user == friend %>
+                <% if current_user.friended_user?(friend) %>
+                  <%= link_to "Unfriend Me", user_friending_path(current_user, friend), method: :delete, class: "btn btn-default" %>
+                <% else %>
+                  <div class="navbar-right edit-button">
+                    <%= link_to "Add Friend",user_friendings_path(friend), method: :post, class: "btn btn-primary" %>
+                  </div>
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+
+
+	  </div><!-- End Main Container -->
+
+	</main>

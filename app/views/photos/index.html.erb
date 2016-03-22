@@ -1,0 +1,35 @@
+<%= render partial: '/shared/header' %>
+<main>
+  <!-- Main Container -->
+  <div class="container main">
+
+    <!-- Photos Container -->
+    <div class="photos-header nav row text-center">
+      <div class="col-sm-2 col-sm-offset-5">
+        <h1>Photos</h1>
+      </div>
+      <% if current_user? %>
+        <div class="col-sm-2 pull-right">
+          <%= link_to "Add Photos!", new_user_photo_path(current_user), class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="row">
+
+      <% @user.photos.each do |photo| %>
+
+        <div class="col-sm-3">
+          <% if @user.friend?(current_user) %>
+            <%= link_to image_tag(photo.image.url(:thumb)), user_photo_path(@user, photo), class: "thumbnail img-responsive" %>
+          <% else %>
+            <%= image_tag photo.image.url(:thumb), class: "thumbnail img-responsive" %>
+          <% end %>
+        </div>
+
+      <% end %>
+
+    </div>
+
+  </div>
+</main>

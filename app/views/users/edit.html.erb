@@ -1,0 +1,72 @@
+<!-- Your markup here! -->
+<%= render partial: '/shared/header' %>
+
+<div class="container">
+
+  <div class="row text-center">
+    <h1><strong>Edit Profile</strong></h1>
+  </div>
+
+  <%= form_for @user do |user_field| %>
+    <%= user_field.fields_for :profile do |pf| %>
+
+      <div class="row">
+
+        <div class="col-sm-5" %>
+
+          <div class="row text-center">
+            <h1>Basic Information</h1>
+          </div>
+          <br>
+
+          <p>
+            <%= pf.label :birthday %>
+            <%= pf.date_field(:birthday, class: "form-control") %>
+          </p>
+          <p>
+            <%= pf.label :school %>
+            <%= pf.text_field :school, class: "form-control" %>
+          </p>
+          <p>
+            <%= pf.label :hometown %>
+            <%= pf.text_field :hometown, class: "form-control" %>
+          </p>
+          <p>
+            <%= pf.label :current_location %>
+            <%= pf.text_field :current_location, class: "form-control" %>
+          </p>
+
+          <div class="row text-center">
+            <h1>Contact Information</h1>
+          </div>
+          <br>
+
+          <p>
+            <%= user_field.label :email %>
+            <%= form_field_error_message(@user, :email) %>
+            <%= user_field.text_field :email, class: "form-control" %>
+          </p>
+          <p>
+            <%= pf.label :telephone %>
+            <%= pf.text_field :telephone, class: "form-control" %>
+          </p>
+        </div>
+
+        <div class="col-sm-offset-1 col-sm-5">
+          <p>
+            <%= pf.label :motto, "Words to live by" %>
+            <br>
+            <%= pf.text_area :motto, class: "form-control" %>
+          </p>
+          <p>
+            <%= pf.label :about %>
+            <br>
+            <%= pf.text_area :about, class: "form-control" %>
+          </p>
+        </div>
+
+      </div>
+    <% end %>
+    <%= user_field.submit "Save Changes", class: "btn btn-primary btn-lg btn-block" %>
+  <% end %>
+</div>

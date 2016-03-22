@@ -1,0 +1,17 @@
+<% if current_user? %>
+  <%= form_tag posts_path, remote: true do %>
+    <div class="panel panel-default">
+      <div class="panel-heading text-center">
+        Post
+      </div>
+
+      <div class="panel-body form-group">
+        <%= text_area_tag :post_body, "", class: "form-control", placeholder: "Tell the world something.." %>
+      </div>
+
+      <div class="panel-footer clearfix">
+        <%= submit_tag "Post", class: "btn btn-small btn-primary pull-right" %>
+      </div>
+    </div>
+  <% end %>
+<% end %>

@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col-xs-3">
+    <% if post.author.avatar.nil? %>
+      <img src="/images/icon_photo_small.png" class="img-responsive thumbnail">
+    <% else %>
+      <%= image_tag post.author.image.url(:thumb), class: "img-responsive", alt: "missing photo" %>
+    <% end %>
+  </div>
+
+  <div class="col-xs-9">
+    <%= link_to post.author.full_name, post.author %>
+    <span>
+      Said on <%= post.created_at.strftime("%w %m/%d/%Y") %>
+    </span>
+  </div>
+</div>

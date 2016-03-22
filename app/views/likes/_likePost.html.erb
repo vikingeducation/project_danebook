@@ -1,0 +1,11 @@
+<%= link_to "Like", post_likes_path(post), method: :post, class: "pull-left", remote: true %>
+
+<span class="pull-left">
+  <% if post.likes.count > 0 %>
+    (<%= post.likes.count unless post.likes.empty? %>)
+  <% end %>
+</span>
+
+<% if current_user == post.author %>
+  <%= link_to "Delete", post_path(post), method: :delete, class: "pull-right", remote: true %>
+<% end %>

@@ -1,0 +1,124 @@
+<body>
+  <%= render partial: '/shared/header' %>
+	<main>
+	
+	<!-- Navbar for Main Content -->
+	  <div class="container main">
+		<div class="nav row">
+		  <div class="center col-md-2 col-md-offset-5"><h1>About: <%= @user.first_name %></h1></div>
+	  	  <div class="col-md-2 col-md-offset-3">
+
+	  	  <!-- Edit Profile Button -->
+        <% if current_user? %>
+	  	  	<div class="navbar-right edit-button">
+	  	  	  <%= link_to "Edit your profile", edit_user_path(@user), class: "btn btn-primary" %>
+	  	    </div>
+        <% else %>
+          <% if signed_in_user? %>
+            <% if current_user.friended_user?(@user) %>
+                <div class="navbar-right edit-button">
+                  <%= link_to "Unfriend",user_friending_path(current_user, @user), method: :delete, class: "btn btn-primary" %>
+                </div>
+              <% else %>
+                <div class="navbar-right edit-button">
+                  <%= link_to "Add Friend",user_friendings_path(@user), method: :post, class: "btn btn-primary" %>
+                </div>
+            <% end %>
+          <% end %>
+        <% end %>
+	  	  </div>
+	  	</div>
+
+	  	<div class="content row">
+
+	  	<!-- Content Left -->
+	  	  <div class="col-md-5">
+
+	  	  <!-- First row Header -->
+	  	    <div class="header row">
+ 			  <div class="col-md-10 col-md-offset-2">
+ 			    <h1>Basic Information</h1>
+ 			  </div>
+ 			</div>
+
+ 			<div class="content row">
+ 			  <div class="col-md-4 col-md-offset-2">
+ 			    <strong>Birthday:</strong>
+ 			  </div>
+ 			  <div class="col-md-6">
+ 			    <%= @user.profile.birthday %>
+ 			  </div>
+ 			</div>
+
+ 			<div class="content row">
+ 			  <div class="col-md-4 col-md-offset-2">
+ 			    <strong>College:</strong>
+ 			  </div>
+ 			  <div class="col-md-6">
+ 			    <%= @user.profile.school %>
+ 			  </div>
+ 			</div>
+
+ 			<div class="content row">
+ 			  <div class="col-md-4 col-md-offset-2">
+ 			  	<strong>Hometown:</strong>
+ 			  </div>
+ 			  <div class="col-md-6">
+ 			    <%= @user.profile.hometown %>
+ 			  </div>
+ 			</div>
+
+ 			<div class="content row">
+ 			  <div class="col-md-4 col-md-offset-2">
+ 			  	<strong>Current location:</strong>
+ 			  </div>
+ 			  <div class="col-md-6">
+ 			    <%= @user.profile.current_location %>
+ 			  </div>
+ 			</div>
+
+			<div class="header2 row">
+ 			  <div class="col-md-10 col-md-offset-2">
+ 			    <h1>Contact Information</h1>
+ 			  </div>
+ 			</div>
+
+ 			<div class="content row">
+ 			  <div class="col-md-4 col-md-offset-2">
+ 			  	<strong>Email:</strong>
+ 			  </div>
+ 			  <div class="col-md-6">
+ 			    <%= @user.email %>
+ 			  </div>
+ 			</div>
+
+ 			<div class="content row">
+ 			  <div class="col-md-4 col-md-offset-2">
+ 			  	<strong>Telephone:</strong>
+ 			  </div>
+ 			  <div class="col-md-6">
+ 			    <%= @user.profile.telephone %>
+ 			  </div>
+ 			</div>
+
+ 		  </div><!-- End Left Content Container -->
+
+ 		  <!-- Right Side Content -->
+ 		  <div class="col-md-5 col-md-offset-1">
+ 		   <div class="header row">
+ 		     <h1>Words to Live By</h1>
+ 		   </div>
+ 		   <div class="conent row">
+		   	 <%= @user.profile.motto %>
+ 		   </div>
+ 		   <div class="header row">
+ 		     <h1>About Me</h1>
+ 		   </div>
+ 		   <div class="conent row">
+ 		     <p><%= @user.profile.about %></p>
+		   </div>
+		  </div>
+		</div>
+
+  </div>
+</main>

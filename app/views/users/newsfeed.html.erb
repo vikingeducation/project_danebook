@@ -1,0 +1,51 @@
+<%= render partial: '/shared/nav' %>
+<div class="container-fluid">
+
+  <div class="row">
+    <div class="col-sm-4">
+
+      <div class="row">
+        <br><br>
+        <div class="col-xs-5">
+          <% if current_user.avatar.nil? %>
+            <img src="/images/icon_photo_small.png" class="img-responsive thumbnail">
+          <% else %>
+            <%= image_tag current_user.avatar.image.url, class: "thumbnail img-responsive", alt: "missing photo" %>
+          <% end %>
+        </div>
+        <%= link_to current_user.full_name, current_user %><br>
+        <%= link_to "Edit Profile", edit_user_path(current_user) %>
+      </div>
+
+      <div class="row text-center">
+        <h3>Recent Activity</h3>
+      </div>
+
+      <% @posts.each do |post| %>
+        <%= render partial: 'recent_activity', locals: { post: post } %>
+      <% end %>
+    </div>
+
+    <div class="col-sm-offset-1 col-sm-6">
+      <%= form_tag posts_path do %>
+        <div class="panel panel-default">
+          <div class="panel-heading text-center">
+            Post
+          </div>
+
+          <div class="panel-body form-group">
+            <%= text_area_tag :post_body, "", class: "form-control", placeholder: "Tell the world something.." %>
+          </div>
+
+          <div class="panel-footer clearfix">
+            <%= submit_tag "Post", class: "btn btn-small btn-primary pull-right" %>
+          </div>
+        </div>
+      <% end %>
+
+      <%= render @posts %>
+
+    </div>
+  </div>
+
+</div>

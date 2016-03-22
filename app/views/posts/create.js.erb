@@ -1,0 +1,6 @@
+var $postFeed = $('#post-feed');
+var $newPost = $("<%= j(render @post) %>");
+
+$newPost.hide().prependTo($postFeed).slideDown(800);
+
+$('textarea').val('');

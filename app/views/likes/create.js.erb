@@ -1,0 +1,16 @@
+var likeableType = "<%= j(@parent.class.to_s) %>".toLowerCase();
+
+<% 
+  partial = "unlike#{@parent.class}"
+
+  locals = {}
+
+  key = @parent.class.to_s.downcase.to_sym
+  locals[key] = @parent
+  locals[:current_user] = @current_user
+
+ %>
+
+var $parent = $("div[data-id='"+ likeableType + "-<%= @parent.id %>']");
+var $likeContainer = $parent.find('.' + likeableType + '-like-container');
+$likeContainer.html("<%= j(render partial: partial, locals: locals) %>");

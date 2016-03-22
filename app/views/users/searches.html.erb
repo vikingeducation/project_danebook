@@ -1,0 +1,44 @@
+<%= render partial: '/shared/nav' %>
+<div class="container">
+
+  <div class="row text-center">
+    <h3>Search Results</h3>
+  </div>
+  <% @matches.each do |match| %>
+    <div class="row">
+      <div class="col-xs-3">
+        <img class="frnd-img" src="/assets/default_user.gif">
+      </div>
+      <div class="col-xs-4">
+        <div>
+          <%= link_to "#{match.first_name} #{match.last_name}", match %>
+        </div>
+        <span>
+          <%= match.friended_users.count %> friends
+        </span>
+        <div>
+          <p>
+            Currently Lives in <%= match.profile.current_location %>
+          </p>
+          <p>
+            From <%= match.profile.hometown %>
+          </p>
+          <p>
+            Born on <%= match.profile.birthday %>
+          </p>
+        </div>
+
+      </div>
+
+      <div class="col-xs-offset-2 col-xs-3">
+        <% if current_user.friended_user?(match) %>
+          <%= link_to "Unfriend Me", user_friending_path(current_user, match), method: :delete, class: "btn btn-default" %>
+        <% else %>
+          <div class="navbar-right edit-button">
+            <%= link_to "Add Friend",user_friendings_path(match), method: :post, class: "btn btn-primary" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</div>

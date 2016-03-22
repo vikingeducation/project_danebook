@@ -1,0 +1,5 @@
+New Notification!
+
+<%= @commenter.full_name %> commented on your <%= link_to "#{@resource.class.to_s.downcase}", @link %>
+
+Link to commenter: <%= link_to "#{user_url(@commenter.id)}", user_url(@commenter.id) %>

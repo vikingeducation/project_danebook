@@ -1,0 +1,6 @@
+<%= link_to "Unlike", comment_like_path(comment, current_user.id_of_like(comment)), method: :delete, remote: true %>
+
+<%= comment.likes.count unless comment.likes.empty? %>
+<% if current_user == comment.author %>
+  <%= link_to "Delete", post_comment_path(comment.commentable, comment), method: :delete, class: "pull-right", remote: true %>
+<% end %>

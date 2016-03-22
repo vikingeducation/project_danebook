@@ -1,0 +1,108 @@
+<%= render partial: '/shared/header' %>
+
+<main>
+
+  <div class="container main">
+
+    <section class="left-content col-sm-4">
+      <div class="about-row row">
+        <div class="about-wrapper col-sm-12">
+
+          <div class="about-header row">
+            About (Text Area)
+          </div>
+          
+
+          <div class="content row">
+            <div class="col-md-3 col-md-offset-1">
+              <strong>Birthday:</strong>
+            </div>
+
+            <div class="col-md-8">
+              <%= @user.profile.birthday %>
+            </div>
+          </div>
+
+          <div class="content row">
+            <div class="col-md-3 col-md-offset-1">
+              <strong>College:</strong>
+            </div>
+
+            <div class="col-md-8">
+              <%= @user.profile.school %>
+            </div>
+          </div>
+
+          <div class="content row">
+            <div class="col-md-3 col-md-offset-1">
+              <strong>Hometown:</strong>
+            </div>
+            <div class="col-md-8">
+              <%= @user.profile.hometown %>
+            </div>
+           </div>
+
+         <div class="content row">
+          <div class="col-md-3 col-md-offset-1">
+            <strong>Current location:</strong>
+          </div>
+          <div class="col-md-8">
+            <%= @user.profile.current_location %>
+          </div>
+         </div>
+        </div><!-- End About wrapper -->
+      </div><!-- End About Row -->
+
+      <!-- Photos section row-->
+      <div class="photos-row row">
+        <!-- Photos Wrapper -->
+        <div class="photos-wrapper col-sm-12">
+          <!-- Header Row -->
+          <div class="photos-header row">
+            Photos (<%= @user.photos.size %>)
+          </div>
+
+
+        <footer class="photos-footer row">
+          <a href="#" class="more-photos">See More Photos</a>
+        </footer>
+
+        <!-- friends section row-->
+        <div class="friends-row row">
+          <!-- friends Wrapper -->
+          <div class="friends-wrapper col-sm-12">
+            <!-- Header Row -->
+            <div class="friends-header row">
+              Friends (<%= @user.friended_users.count %>)
+            </div>
+            <% @friends.each do |friend| %>
+              <!-- Thumbnail wrapper -->
+              <% unless friend.nil? %>
+                <div class="thumbnails col-md-4">
+                  <a href="#"><img src="/images/default_user.gif", class="timeline-img img-thumbnail img-responsive"></a>
+                  <%= link_to "#{friend.first_name} #{friend.last_name}", friend %>
+                </div>
+              <% end %>
+            <% end %>
+            <footer class="friends-footer row">
+              <a href="#" class="more-friends">See More friends</a>
+            </footer>
+          </div>
+        </div>  
+
+      </div><!-- End Photos Container -->
+
+
+    </section>
+
+    <!-- Right Side Content -->
+    <section class="right-content col-sm-7 col-sm-offset-1">
+
+      <%= render partial: 'posts/post_form' %>
+
+      <div id="post-feed">
+        <%= render @user.posts %>
+      </div>
+     
+    </section>
+</main>

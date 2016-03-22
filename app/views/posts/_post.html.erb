@@ -1,0 +1,52 @@
+<div class="row post" data-id="post-<%= post.id %>">
+  <div class="col-sm-12">
+    <div class='row'>
+      <!-- Avatar -->
+      <div class="col-sm-3">
+        <% if post.author.avatar.nil? %>
+          <img src="/images/icon_photo_small.png" class="thumbnail img-responsive">
+        <% else %>
+          <%= image_tag post.author.avatar.image.url, class: "thumbnail img-responsive", alt: "missing photo" %>
+        <% end %>
+      </div>
+
+      <div class="col-sm-7">
+        <%= link_to "#{post.author.full_name}", post.author %>
+        <span>Posted on <%= post.created_at.strftime("%m/%d/%Y") %></span>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <p><%= post.body %></p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="clearfix col-sm-12 footer post-like-container">
+        <% if current_user.liked_resource?(post) %>
+          <%= link_to "Unlike", post_like_path(post, current_user.id_of_like(post)), method: :delete, class: "pull-left", remote: true %>
+        <% else %>
+          <%= link_to "Like", post_likes_path(post), method: :post, class: "pull-left", remote: true %>
+        <% end %>
+
+        <span class="pull-left">
+          <% if post.likes.count > 0 %>
+            (<%= post.likes.count unless post.likes.empty? %>)
+          <% end %>
+        </span>
+
+        <% if current_user == post.author %>
+          <%= link_to "Delete", post_path(post), method: :delete, class: "pull-right", remote: true %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-12 append-comment">
+    <%= render post.comments %>
+
+    <%= render partial: 'comments/comment_form', locals: {post: post} %>
+  </div>
+</div>
+<br>

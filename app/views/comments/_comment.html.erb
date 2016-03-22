@@ -1,0 +1,23 @@
+<div data-id="comment-<%= comment.id %>" class="row panel panel-default comment-container">
+  <div class="col-sm-12">
+    <%= link_to comment.author.full_name, user_path(comment.author) %>
+    <span> Commented on <%= comment.created_at.strftime("%m/%d/%Y") %></span>
+  </div>
+
+  <div class="panel-body">
+    <p><%= comment.body %></p>
+  </div>
+
+  <div class="panel-footer clearfix comment-links comment-like-container">
+    <% if current_user.liked_resource?(comment) %>
+      <%= link_to "Unlike", comment_like_path(comment, current_user.id_of_like(comment)), method: :delete, remote: true %>
+    <% else %>
+      <%= link_to "Like", comment_likes_path(comment), method: :post, remote: true %>
+    <% end %>
+    <%= comment.likes.count unless comment.likes.empty? %>
+    <% if current_user == comment.author %>
+      <%= link_to "Delete", post_comment_path(comment.commentable, comment), method: :delete, class: "pull-right", remote: true %>
+    <% end %>
+  </div>
+</div>
+

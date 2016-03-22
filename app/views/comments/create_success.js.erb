@@ -6,11 +6,18 @@ var $comment = $(comment);
 var parentId = "<%= @comment.commentable.id %>"
 var parentType = "<%= @comment.commentable_type %>"
 
-$("[data-id=" + parentId + "][data-type='" + parentType + "'] .new_comment").prepend($comment)
 
+console.log('[data-id=' + parentId + '][data-type="' + parentType + '"] .existing')
+
+// $('[data-id=' + parentId + '][data-type="' + parentType + '"] .existing').last().append($comment)
+
+$($comment).insertAfter($('[data-id=' + parentId + '][data-type="' + parentType + '"] .existing').last())
 
 // clear comment field
 $('#comment_body').val("")
+
+// hide new comment field
+// $('.new-comment').toggle(800))
 
 
 // render flash message

@@ -33,7 +33,7 @@ class PostsController < ApplicationController
       flash[:error] = "Unable to save post"
       respond_to do |format|
         format.html
-        format.js { render :new }
+        format.js
       end
     end
   end

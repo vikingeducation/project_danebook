@@ -7,3 +7,8 @@ $('#new_post').append($post);
 
 // clear out post body text
 $('#post_body').val("")
+
+
+// render flash message
+$("#flash-messages").html("<%= j(render partial: 'shared/flash') %>").slideDown();
+<% flash.clear %>

@@ -12,14 +12,10 @@
     <%= render partial: "shared/general_navbar" %>
   </div>
 
-  <% flash.each do |type, message| %>
-    <div class="alert alert-<%=type%>">
-      <div>
-      <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-      <strong><%= type.titleize %>! <%= message %></strong>
-      </div>
-      </div>
-  <% end %> 
+
+  <div id="flash-messages">
+    <%= render partial: "shared/flash" %>
+  </div>
 
 
   <main class="container">

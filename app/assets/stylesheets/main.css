@@ -1,0 +1,57 @@
+
+td {
+    vertical-align: middle;
+}    
+
+#db_bar {
+    width:60%;
+    height:80px;
+    background-color:#336699;
+    float:left;
+    font-size:40px;
+    font-family:Arial;
+    color: white;
+    text-indent:100px;
+    margin:0;
+    padding:0;
+}
+
+#login_bar {
+    margin:0;
+    padding: 0;
+    width:40%;
+    height:80px; 
+    float:left;
+    background-color:#336699;
+}
+
+#left {
+    float:left;
+    background-color:#ecf2f9;
+}
+
+#right {
+    float:left;
+    background-color:#ecf2f9;
+}
+
+#login {
+    font-size:70%;
+    font-family:Arial;
+    color: black;
+}
+
+#hover_link:link {
+   text-decoration:none;
+   color:white;
+}
+
+.login_details {
+    border-radius:3px; 
+    font-size:18px;
+    font-family:Arial;
+    color: gray;
+    padding-top:12px;
+    margin-top:7px;
+    vertical-align:center;
+}

@@ -1,0 +1,5 @@
+console.log("Entering in delete comments");
+var comment_id = "<%= @comment_id %>";
+var cRow = '#comment-panel-'+ comment_id
+$(cRow).remove();
+console.log("Leaving Delete Comments here");

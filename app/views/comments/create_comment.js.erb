@@ -1,0 +1,17 @@
+
+console.log("Entering in comments here");
+var formRow = "<%= j( render partial: 'form',locals: { commentable: @post}) %>"
+var commentRow = "<%= j( render partial: 'comment', locals: { user_id: @post.user_id, comment: @comment } ) %>"
+
+var $formRow = $(formRow);
+var $commentRow = $( commentRow );
+
+
+var $form_display = $(".new-comment-form");
+var post_id = <%= @post.id %>;
+var $comment_display = $("#post-"+ post_id + "-comments-display");
+console.log($comment_display);
+$form_display.empty();
+$form_display.append( $formRow);
+$comment_display.append( $commentRow );
+console.log("Leaving Comments here");

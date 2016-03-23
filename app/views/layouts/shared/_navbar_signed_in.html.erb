@@ -1,0 +1,58 @@
+<!-- notice that this is a ROW as well as a navbar -->
+<nav id ="search-navbar" class="navbar navbar-default row">
+  
+  <div class="col-md-2"> 
+  </div>
+  <!-- responsive mobile stuff collapses down  -->
+  <div class="logo-container col-md-2">
+    <button type="button" class="navbar-toggle collapsed" 
+            data-toggle="collapse" 
+            data-target="#bs-example-navbar-collapse-1">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+
+    <img src="../assets/denmark-flag.gif" alt="flag"
+         class="img-rounded img-thumbnail pull-left">
+    <a class="navbar-brand" id = "brand-link" 
+       href="<%= newsfeed_path(current_user.id) %>">
+       Danebook
+    </a>
+  </div>
+    
+  <!-- wraps rest of links to collapse in mobile-->
+  <div class="nav navbar-nav navbar-left col-md-4">
+    
+    <%= form_tag search_path, method: :get, class: "navbar-form" do %>
+      <div class="search-bar input-group input-group-sm col-md-4 col-sm-4
+                  form-group">
+<!--  collection_select :user, :email, User.all, :email, :email, 
+          class: "form-control pull-left"
+      submit_tag "Search"    -->
+
+        <input type="text" name="email" class="form-control pull-left" 
+               placeholder="full email to search (example@example.com)...">
+      </div> 
+    <% end %>
+  
+  </div>
+       <!-- wraps rest of links to collapse in mobile-->
+  <div class="nav navbar-nav col-md-2">
+    <a href="<%= user_path(current_user) %>" 
+       class="pull-right nav-personal-link">
+        <%= current_user.profile.first_name%> <%=current_user.profile.last_name %>
+    </a>
+
+  </div><!--navbar-collapse-->
+  
+  <div class="col-md-2"> 
+    <%= link_to "Log out", session_path(current_user), method: :delete,  
+       class: "pull-left nav-personal-link" %>
+  </div>  
+
+</nav>
+<div class="main"> <!--main container for rest of page-->
+  <%= yield %>
+</div>

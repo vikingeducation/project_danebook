@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Danebook Homepage</title>
+
+    <!-- Meta Stuff -->
+    <meta charset="utf-8">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+    <!-- Our CSS --> 
+    <link href="styles.css" rel="stylesheet">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  
+ </head>
+
+  <title>Danebook</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+
+ <body class = "container-fluid" data-controller="<%= controller_name %>">
+
+<div class="row">
+  <div class="col col-xs-12">
+    <% flash.each do |type, message| %>
+      <h4 class='<%= type %> alert alert-info'><%= "#{message}" %>
+    <% end %>
+  </div>
+</div>
+
+<%= yield %>
+
+</body>
+</html>

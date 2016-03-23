@@ -1,0 +1,60 @@
+<%= render partial: "layouts/shared/navbar_signed_in" %>
+<div class="row"> <!--main row for rest of page-->
+
+  <div class="col-md-8 col-md-offset-2"><!--main middle for image and nav links--> 
+
+    <!--Timeline events info container-->
+    <div class="row container-border page-type">
+
+      <div class="col-md-4">
+
+        <div class="row user-profile">
+          <div class="col-md-12">
+            
+            <div class="panel-heading"></div>
+            
+            <% if !@user.profile.image_id.nil? %>
+         
+              <% profile_pic = @user.profile.image_id %>
+         
+              <%= image_tag Image.find(profile_pic).picture.url, 
+                  class: "img-thumbnail pull-left" %>
+            <% else %> 
+               <img src="../assets/frog-888798_640.jpg" 
+                    class="img-thumbnail pull-left">
+            <% end %>
+            
+            <br>
+        
+            <a href="<%= user_path(@user) %>"> 
+              <strong><%= @user.profile.first_name %> <%= @user.profile.last_name %></strong>
+            </a>
+
+            <br>
+
+            <a href="<%= edit_user_path(@user) %>"> 
+               Edit Profile 
+            </a>
+          </div>
+        </div>
+        <br>   
+        <h4 class="text-center"> Recently Active </h4>
+        <hr>
+        <%= render partial: 'recent_post_activity', collection: @posts %>
+      </div>
+      
+      <div class="col-md-8">
+        <div class="new-post-form">
+          <%= render partial: 'post_form' %>
+        </div>
+        <div class="post-display">
+          <%= render partial: @posts %>
+        </div> 
+      </div> 
+
+    </div>  
+  </div><!--End of main middle for image and nav links--> 
+    
+  <div class="col-md-2">
+  </div>
+</div>   

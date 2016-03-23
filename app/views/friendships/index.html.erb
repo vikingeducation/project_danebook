@@ -1,0 +1,88 @@
+<%= render partial: "layouts/shared/navbar_signed_in" %>
+
+<div class="row"> <!--main row for rest of page-->
+
+  <div class="col-md-8 col-md-offset-2"><!--main middle for image and nav links--> 
+
+    <%= render partial: "layouts/shared/page_bg_nav", 
+               locals: {page_is: "friends"} %>
+
+        <!--About information container-->
+        <div class="row no-pad container-border page-type">
+          
+          <div class="panel-container row no-pad">
+            <div class="panel panel-default page-type-panel-body panel-style"> 
+              <div class="panel-body panel-body-style">
+                <strong>Friends (<%= @user.friends.count %>) </strong>
+              </div>
+            </div>
+          </div>
+
+          <% col = 0 %>
+          <% @friends.each do |friend| %> 
+            
+            <% if col == 1 %>
+               <div class="row no-pad basic-margin">
+            <% end %>
+
+              <div class="col-md-6 container-border">
+
+                <div class="row no-pad">
+                  <div class="col-md-4">
+                    <% if !friend.profile.image_id.nil? %>
+                         <% profile_pic = friend.profile.image_id %>  
+                         <%= image_tag Image.find(profile_pic).picture.url, 
+                            class: "img-thumbnail pull-left" %>
+                    <% else %> 
+                       <img src="assets/noun_161469_cc.png" alt="friends"
+                            class="friend-photos img-rounded img-thumbnail
+                                   pull-left">
+                    <% end %>
+                  </div>  
+                  
+                  <div class="col-md-4 text-capitalize small-font">
+                       <p class="center-friend-info">
+                         <%= friend_link(friend) %>
+                       </p>   
+                  </div>
+                  
+                  <div class="col-md-4 text-capitalize">
+                    <p class="center-unfriend">
+                     
+                      <% if current_user_view? %>
+                     
+                        <% fship = get_friendship(@user,friend) %>
+                     
+                        <%= form_tag(friendship_path(fship), method: :delete) do |f| %>
+                          <%= hidden_field_tag :user_id, @user.id %> 
+                          <%= submit_tag "Unfriend me!" %>
+                        <% end %>
+                     
+                      <% end %>    
+                   
+                    </p>
+                  </div>
+                
+                </div>
+
+              </div>
+           
+              <div class="col-md-6 container-border">
+              </div>
+
+              <% col += 1 %>
+
+              <% if col == 2 %>
+                <% col = 0 %> 
+                </div>
+              <% end %>
+
+          <% end %>
+          
+        </div> 
+      </div><!--End of main middle for image and nav links--> 
+        
+      <div class="col-md-2">
+      </div>
+    </div>   
+  </div> 

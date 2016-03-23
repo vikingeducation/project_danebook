@@ -1,0 +1,22 @@
+<div class="tiny-font text-left">
+
+  <% if !recent_post_activity.user.profile.image_id.nil? %>
+     
+    <% profile_pic = post.user.profile.image_id %>
+     
+    <%= image_tag Image.find(profile_pic).picture.url, 
+        class: "img-thumbnail pull-left" %>
+  <% else %> 
+    <img src="http://ndl.mgccw.com/mu3/000/488/259/sss/42409d600b984fc9934a52f28291ba27_small.png" class="img-thumbnail pull-left" id ="profile-image" alt="profile">
+  <% end %>
+
+  <br>
+
+  <a href="<%= user_path(post.user) %>"> 
+    <%= post.user.profile.first_name %> 
+    <%= post.user.profile.last_name %>
+  </a> 
+  <br>
+  Posted On <%= post.created_at %>
+ <hr>
+</div>

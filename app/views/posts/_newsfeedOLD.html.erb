@@ -1,0 +1,53 @@
+
+div class="panel panel-default panel-style container-border">
+  <div class="panel-body panel-body-style basic-margin">
+    
+    <div class="tiny-font text-left">
+      <img src="assets/noun_121658_cc.png" class="smallest-photos pull-left">
+      <br>
+      <a href="<%= user_path(post.user) %>"> 
+        <%= post.user.profile.first_name %> 
+        <%= post.user.profile.last_name %>
+      </a><br>
+         Posted On <%= post.created_at %>
+    </div>
+
+    <div class="post-body" style="clear:both;text-align:left;font-size:0.75em;">  
+      <%= post.body %>
+    </div>
+  </div>
+
+  <div class="panel-footer">
+    <div class="row">
+                      
+      <div class="col-md-1" style="font-size:0.75em;">
+        <%= post_like_unlike_link(post) %>
+      </div>
+  
+      <div class="col-md-1 tiny-font">     
+      </div>
+
+      <div class="col-md-8 tiny-font">
+      </div>
+    
+      <div class="col-md-2 tiny-font"> 
+        <%= link_to "Delete", user_post_path(post.user.id, post.id), method: :delete %>
+      </div>
+
+    </div>
+
+    <div class="row">
+
+      <div class="col-md-12 text-left" style="font-size:0.75em;">
+        <%= show_post_likes(post) %>
+      </div>
+    
+
+      <div class="col-md-12 text-left" style="font-size:0.75em;">
+        <%= render partial: post.comments, locals: {user_id: post.user_id}  %>
+        <%= render partial: "comments/form", locals: {commentable: post} %>
+      </div>  
+
+    </div>  
+  </div>
+</div>

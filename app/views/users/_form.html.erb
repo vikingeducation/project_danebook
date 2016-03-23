@@ -1,0 +1,162 @@
+<div id="main">
+
+  <div id="db_bar">
+     <span style="position:absolute;margin-top:20px;">Danebook</span>
+  </div>
+  
+  <div id="login_bar">
+    <p>
+      <%= form_for(@user, url: session_path) do |user_fields| %>
+        <table id="login">
+   	      <tr>
+            <td><%= user_fields.label 'Email' %> </td>
+            <td><%= user_fields.label 'Password'%></td> 
+            <td></td>
+          </tr>
+          <tr>
+            <td> <%= user_fields.text_field :email, placeholder: "email",
+                 class: "form_control"  
+                 %> 
+            </td>
+            <td> <%= user_fields.password_field :password, placeholder: "password",
+                    class: "form_control"
+                  %>
+            </td>
+            <td> <%= user_fields.submit "Log In", class: "btn btn-info" %></td>
+          </tr>
+          <tr>
+            <td><input type="checkbox" name="remember_me">Keep me logged in</td>
+            <td><a href="dummy_url" id="hover_link">Forgot your password?</a></td>
+          </tr>
+        </table>
+      <% end %>
+    </p>
+  </div>
+
+  <div class="row">
+    
+    <div class="col-md-1">
+    </div>
+
+    <div class="col-md-5">
+      <br>
+      <br>
+      <br>
+    
+      <h1>Connect with all your friends</h1>
+    
+      <br>
+    
+      <h3 class="text-left">
+        <ul>
+          <li>See photos and updates in your news feed</li>
+          <br>
+          <li>Post your status for the world to see</li>
+          <br>
+          <li>Get in touch wit your friends by friending them</li>
+          <br>
+          <li>Like things because you are a positive person!</li>
+        <ul>
+      </h3>  
+    </div>
+    
+    <div class="col-md-1">
+    </div>  
+    
+    <div class="col-md-5">
+      
+      <%= form_for @user do |user_fields| %>
+
+        <ul>
+        
+          <% @user.errors.full_messages.each do |error| %>
+            <li><%= error %></li>
+          <% end %>
+        
+        </ul>
+  	   
+        <table id="login_details">
+		 
+          <tr>
+            <td><br><span style="font-size:30px;font-family:Tahoma,Verdana,Arial Narrow">Sign up<br><font size=3>It's free and always will be</font></span><br></td>
+          </tr>
+ 
+          <tr>
+            <td>
+              <%= user_fields.fields_for :profile do |profile_fields| %>
+             
+                <%= profile_fields.text_field :first_name, placeholder: "First Name",
+                    class: "login_details form-control" %>
+                <%= profile_fields.text_field :last_name, placeholder: "Last Name",
+                    class: "login_details form-control" %>
+             
+              <% end %>      
+            </td>
+          </tr>
+
+          <tr>
+            <td> <%= user_fields.text_field :username, placeholder: "Your User Name",
+                  class: "login_details form-control" %>
+            </td>
+          </tr>
+
+          <tr>
+            <td><%= user_fields.text_field :email, placeholder: "Your Email",
+               class: "login_details form-control" %> 
+            </td>
+          </tr>
+       
+          <tr>
+            <td> <%= user_fields.password_field :password, placeholder: "Your Password",
+                class: "login_details form-control" %>
+            </td>
+          </tr>
+
+          <tr>
+            <td> <%= user_fields.password_field :password_confirmation, 
+                 placeholder: "Confirm Password",
+                 class: "login_details form-control" %>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <br><font size=5>Birthday</font><br>
+             
+              <%= user_fields.fields_for :profile do |profile_fields| %>
+                <%= profile_fields.date_field :birthdate %>
+              <% end %>
+             
+              <span style="font-size:12px;color:navy;">
+               Why do I need to provide my birthday?
+              </span>
+       
+              <p>
+                <%= user_fields.fields_for :profile do |profile_fields| %>
+                  <%= profile_fields.radio_button :gender, 'male'%> 
+                  <%= label 'male-gender', 'Male' %>
+
+                  <%= profile_fields.radio_button :gender, 'female'%> 
+                  <%= label 'female-gender', 'Female' %>
+                <% end %>  
+              </p>
+       
+              <span style="font-size:12px;color:gray;">
+              	By clicking Sign Up, you agree to our <b>Terms</b> and that you have<br> read our <b>Data Policy</b>, including our Cookie Use
+          	  </span>
+            </td>
+          </tr>
+
+          <tr> 
+            <td>
+              <p><%= user_fields.submit "Sign Up!", class: "btn btn-block btn-info" %></p>
+            </td>
+          </tr>
+
+        </table>  
+   
+      <% end %>  
+   
+    </div>
+  </div>
+</div>

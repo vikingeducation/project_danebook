@@ -1,0 +1,23 @@
+<% col = 1 %>
+<% @images.each do |image| %> 
+  
+  <% if col == 1 %>
+     <div class="row no-pad basic-margin">
+  <% end %> 
+
+    <div class="col-md-2">
+      <% if true %>
+        <a href="<%= image_path(image,user_id: @user) %>">
+        <%= image_tag image.picture.url(:thumb) %> </a>
+      <% else %>
+         <%= image_tag image.picture.url(:thumb) %>
+      <% end %>   
+    </div>
+
+  <% if col == 6 %>
+     </div>
+     <% col = 1 %>
+  <% else %>   
+    <%  col += 1 %>   
+  <% end %>
+<% end %>

@@ -1,0 +1,93 @@
+<%= render partial: "layouts/shared/navbar_signed_in" %>
+
+<div class="row"> <!--main row for rest of page-->
+
+  <div class="col-md-8 col-md-offset-2"><!--main middle for image and nav links--> 
+
+    <%= render partial: "layouts/shared/page_bg_nav", 
+               locals: {page_is: "about"} %>
+    
+      <div class="panel-container row no-pad">
+        <div class="panel panel-default page-type-panel-body panel-style"> 
+          <div class="panel-body panel-body-style">
+            <strong>About</strong>
+            <%if current_user_view?%>
+              <a href="<%= edit_user_path(@user) %>">
+                <input type="button" class="btn btn-info pull-right btn-edit-profile" 
+                       value="Edit Your Profile">
+              </a>
+            <% else %>
+              <a href="<%= edit_user_path(@user) %>">
+                <input type="button" class="btn btn-info pull-right btn-edit-profile" 
+                       value="Edit Your Profile">
+            <% end %>  
+          </div>
+        </div>
+      </div>
+      
+      <div class="edit-profile-container">
+        <div class="col-md-6 text-left">
+
+          <h4>Basic Information</h4>
+          <table>
+            <tbody>
+              <tr>
+               <td class="col-md-6"> Birthday </td>
+               <td id="birthdate"> 
+                  <% if @profile.birthdate %>
+                    <%= @profile.birthdate.strftime("%B %d, %Y") %>
+                  <% else %>
+                     -
+                  <% end %>
+                </td>
+              </tr>
+              <tr>
+                <td class="col-md-6">College</td>
+                <td id="college"><%= @profile.college %></td>
+              </tr>
+              <tr>
+                <td class="col-md-6">Hometown</td>
+                <td id="hometown"><%= @profile.hometown %></td>
+              </tr>  
+              <tr>
+                <td class="col-md-6"> Currently Lives in</td>
+                <td id="domicile"><%= @profile.domicile %></td>
+              </tr>
+            </tbody>
+          </table> 
+          <br>
+          <h4>Contact Information</h4>
+          <table>
+            <tbody>
+              <tr>
+                 <td class="col-md-6">Email</td>
+                 <td id="email"> <%= @user.email %></td>
+              </tr>
+              <tr>
+                 <td class="col-md-6">Phone</td>
+                 <td id="phone"> <%= @profile.phone %></td>
+              </tr>
+            </tbody>
+          </table>
+          <br>
+        </div>
+      
+        <div class="col-md-6 reduced-font">
+          <div>
+            <h4 id="my-words">Words to live by</h4>
+            <div><%= @profile.my_words %></div>
+          </div>
+          
+          <div>
+            <h4 id="about_me">About me</h4>
+            <div><%= @profile.about_me %></div>
+          </div
+        </div>
+        
+      </div>
+    
+    </div>
+      
+    <div class="col-md-2">
+    </div>
+  </div>

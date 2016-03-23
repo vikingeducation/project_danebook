@@ -1,0 +1,45 @@
+<%= render partial: 'shared/menu' %>
+
+<div class="container">
+  <!-- Friends Section -->
+  <div class="row">
+    <!-- Friends Header -->
+    <div class="col-xs-12">
+      <nav class="navbar navbar-default about-nav">
+        <p class="box-header">Friends</p>
+      </nav>
+    </div>
+  </div>
+  <!-- End of Friends Header -->
+
+  <!-- Friends Contents -->
+  <div class="row">
+    <div class="col-xs-12">
+      <% @friendeds.each do |friend| %>
+        <div class="col-md-12 col-xs-6 about-info friend-display">
+          <div class="white-bg">
+            <div class="friend-prof-pic">
+              <a href="#">
+                <img src="/images/user_pic.png" class="img-thumbnail">
+              </a>
+            </div>
+            <div class="friend-info col-sm-6">
+              <%= link_to friend.name, user_path(friend) %>
+              <%= content_tag :p,"#{friend.friendeds.size} friends", class: "friend-info-fcount" %>
+            </div>
+            <div class="unfriend-wrapper">
+              <% if current_user && current_user.id == @profile.id %>
+                  <%= link_to "Unfriend #{friend.name}",
+                        friending_path(id: friend.id, current_user_id: current_user.id),
+                        method: "delete",
+                        class: "btn btn-danger"%>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+  <!-- Enf of Friends Content -->
+
+</div>

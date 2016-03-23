@@ -1,0 +1,10 @@
+<!-- Flash Message Rendering -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <% flash.each do |type, message| %>
+        <%= content_tag :div, message, class: "alert alert-#{type}" %>
+      <% end %>
+    </div>
+  </div>
+</div>

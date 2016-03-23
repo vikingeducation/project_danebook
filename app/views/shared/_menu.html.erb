@@ -1,0 +1,107 @@
+<div class="container">
+  <!-- Cover photo -->
+  <div class="row">
+    <div class="col-xs-12">
+      <% if @profile.user.cover %>
+        <%= image_tag @profile.user.cover.photo.url(:large), class: "cover-photo" %>
+      <% else %>
+        <img src="/images/hogwarts_small.jpg" class="cover-photo">
+      <% end %>
+    </div>
+  </div>
+
+  <!-- Profile pic -->
+  <div class="row">
+    <div class="col-xs-2 col-sm-2">
+      <% if @profile.user.avatar %>
+        <%= image_tag @profile.user.avatar.photo.url(:medium), class: "img-thumbnail profile-photo" %>
+      <% else %>
+        <img src="/images/harry_potter_profile.png" class="img-thumbnail profile-photo">
+      <% end %>
+    </div>
+    <div class="col-xs-offset-5 col-xs-5 col-sm-offset-2 col-sm-4 col-md-offset-1 col-md-4 profile-name">
+      <%= @profile.user.name %>
+    </div>
+  </div>
+
+  <!-- Timeline menu -->
+  <div class="row">
+    <div class="col-xs-12">
+      <nav class="navbar navbar-default timeline-nav">
+        <div class="navbar-header">
+          <!-- Navbar responsive collapse button -->
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#timeline-navbar" aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          </button>
+        </div>
+
+        <!-- Timeline Menu Links-->
+        <div id="timeline-navbar" class="navbar-collapse collapse">
+          <ul class="nav nav-pills tl-menu col-sm-offset-4 col-md-offset-3">
+            <!--vertical divider-->
+            <div class="v-line"></div>
+            <li>
+              <!-- add "active" class to give element the "pushed down" look -->
+              <%= link_to "Timeline", user_path(@profile.user.id), class: "btn btn-default tl-menu-link" %>
+            </li>
+            <!--vertical divider-->
+            <div class="v-line"></div>
+            <li>
+              <%= link_to "About", profile_path(@profile.user.id), class: "btn btn-default tl-menu-link" %>
+            </li>
+            <!--vertical divider-->
+            <div class="v-line"></div>
+            <li>
+              <a class="btn btn-default tl-menu-link" role="button" href="<%= photos_path(id: @profile.user_id) %>">
+                Photos
+                <%= content_tag :p, @profile.user.photos.size, class: "count-disp" %>
+              </a>
+            </li>
+            <!--vertical divider-->
+            <div class="v-line"></div>
+            <li>
+              <a class="btn btn-default tl-menu-link" role="button" href="<%= friending_path(@profile.user.id) %>">
+                Friends
+                <%= content_tag :p, @profile.user.friendeds.size, class: "count-disp" %>
+              </a>
+            </li>
+            <!--vertical divider-->
+            <div class="v-line"></div>
+            <% if current_user && current_user.id == @profile.id %>
+              <li>
+                <a class="btn btn-default tl-menu-link" role="button" href="<%= newsfeed_path %>">
+                  Newsfeed
+                </a>
+              </li>
+              <div class="v-line"></div>
+            <% end %>
+
+            <% if signed_in_user? && @profile.id != current_user.id %>
+              <% if current_user.friendeds.pluck(:id).include?(@profile.user.id) %>
+                <%= link_to "Unfriend #{@profile.user.name}",
+                      friending_path(id: @profile.user.id, current_user_id: current_user.id),
+                      method: "delete",
+                      class: "btn btn-danger",
+                      style: "margin: 6px"%>
+              <% else %>
+                <%= link_to "Friend #{@profile.user.name}",
+                      friendings_path(id: @profile.user.id, current_user_id: current_user.id),
+                      method: "post",
+                      class: "btn btn-primary",
+                      style: "margin: 6px" %>
+              <% end %>
+            <% end %>
+          </ul>
+          <% if current_user && current_user.id == @profile.user.id %>
+            <%= link_to "Edit Profile", edit_profile_path(current_user.id), class: "tl-edit-profile" %>
+          <% end %>
+        </div>
+        <!-- End of Timeline Menu links -->
+      </nav>
+    </div>
+  </div>
+  <!-- End of Timeline Menu -->
+</div>

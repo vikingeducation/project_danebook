@@ -1,0 +1,20 @@
+// clear the text in the current form
+$("#post_body").val("");
+
+// use post_show partial template to generate html
+var postHtml = "<%= j(render partial: 'shared/post_show', locals: { post: @post, user: current_user} ) %>";
+var $postList = $("#listy");
+
+
+// append it, hide it, then slide it down
+$postList.prepend(postHtml);
+var newPostHtml =$postList.children().first();
+newPostHtml.hide();
+newPostHtml.slideDown(1000);
+
+$("a.comment-link[data-formid='" + <%= @post.id %> + "']").on("click", function(e) {
+  e.preventDefault();
+  var $el = $(e.target);
+  var form = $("[data-commentform='" + $el.attr("data-formid") + "']");
+  form.slideDown(1000);
+});

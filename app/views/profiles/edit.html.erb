@@ -1,0 +1,92 @@
+<%= render partial: 'shared/menu' %>
+
+<div class="container">
+  <!-- About Section -->
+  <div class="row">
+    <!-- About Header -->
+    <div class="col-xs-12">
+      <nav class="navbar navbar-default about-nav">
+        <p class="box-header">About</p>
+          <!-- HAX for converting link to buttons -->
+          <div class="btn-group" style="float:right">
+            <%= link_to "Edit Your Profile", edit_profile_path(current_user.id), class: "btn btn-primary", style: "margin-top: -43px;margin-right: 10px;"%>
+          </div>
+      </nav>
+    </div>
+  </div>
+  <!-- End of About Header -->
+
+  <!-- About Contents -->
+  <div class="row">
+    <div class="col-xs-12">
+      <div clas="row">
+        <%= form_for @profile do |f| %>
+        <div class="col-xs-12 about-info">
+          <!-- Left Column -->
+          <div class="col-sm-6">
+            <div class="row">
+              <h3>Basic Information</h3>
+              <ul class="no-bullet">
+                <li class="col-xs-12">
+                  <strong class="col-xs-6">Birthday:</strong>
+                  <%= @profile.birthday.inspect %>
+                </li>
+                <li class="col-xs-12">
+                  <strong class="col-xs-6">College:</strong>
+                  <%= f.text_field :college %>
+                </li>
+                <li class="col-xs-12">
+                  <strong class="col-xs-6">Hometown:</strong>
+                  <%= f.text_field :from %>
+                </li>
+                <li class="col-xs-12">
+                  <strong class="col-xs-6">Currently Lives:</strong>
+                  <%= f.text_field :lives %>
+                </li>
+              </ul>
+            </div>
+            <div class="row">
+              <h3>Contact Information</h3>
+              <ul class="no-bullet">
+                <li class="col-xs-12">
+                  <strong class="col-xs-6">Email:</strong>
+                  <%= @profile.user.email %>
+                </li>
+                <li class="col-xs-12">
+                  <strong class="col-xs-6">Telephone:</strong>
+                  <%= f.text_field :number %>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!-- End of Left Column -->
+
+          <!-- Right Column -->
+          <div class="col-sm-6">
+            <div class="row">
+              <h3>Words to Live By</h3>
+              <p class="col-xs-12">
+                <%= f.text_area :words, class: "form-control", placeholder: "Write the principles you live by!"%>
+              </p>
+            </div>
+            <div class="row">
+              <h3>About Me</h3>
+              <p class="col-xs-12">
+                <%= f.text_area :about, class: "form-control", placeholder: "Write about yourself here!" %>
+              </p>
+            </div>
+          </div>
+          <!-- End of Right Column -->
+        </div>
+        <div class="col-xs-12 about-info" style="padding:40px">
+          <div class="col-xs-6 col-xs-offset-3">
+            <%= f.submit class: "btn btn-lg btn-block btn-primary"%>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <!-- End of About Contents -->
+  <!-- End of About Section -->
+</div>

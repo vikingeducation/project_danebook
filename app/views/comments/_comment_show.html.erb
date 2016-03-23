@@ -1,0 +1,58 @@
+<!--Comment by Harry-->
+<div class="col-xs-12" data-commentid="<%= comment.id %>">
+  <div class="post-response-bg" style="border-top: 1px solid #aaa; padding-top: 20px;">
+    <div class="row">
+      <div class="col-xs-3 col-sm-2">
+        <a href="<%= user_path(comment.user) %>">
+          <img src="/images/harry_potter_profile.png" class="img-thumbnail commentor-pic">
+        </a>
+      </div>
+      <div class="col-xs-8 col-sm-9 text-left">
+        <p class="comment-info">
+          <%= link_to comment.user.name, user_path(comment.user) %> said on <%=" #{comment.created_at.strftime("%A %m/%d/%Y %I:%M %p")}" %>
+        </p>
+        <p class="comment-content">
+          <%= comment.body %>
+        </p>
+
+        <!-- Comment options -->
+        <div class="row">
+          <% if signed_in_user? %>
+            <div class="col-xs-12">
+              <div class="post-cta-bg">
+                <% if liked_comment?(comment) %>
+                <div class="like-link">
+                  <%= link_to "Unlike", post_comment_like_path(post_id: comment.commentable.id, comment_id: comment.id, id: get_like(comment)[0].id), method: :delete %>
+                </div>
+                <% else %>
+                  <div class="like-link">
+                    <%= link_to "Like", post_comment_likes_path(comment.commentable, comment), method: :post %>
+                  </div>
+                <% end %>
+                <div class="delete-link">
+                  <% if current_user && current_user.id == comment.user.id %>
+                    <%= link_to "Delete", post_comment_path(post_id: comment.commentable.id, id: comment), class: "delete-link", remote: true, method: :delete, data: { confirm: "Are you sure?" } %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+
+          <!-- Display Like Statistics -->
+          <%= render partial: "likes/like_statistics_comments", locals: { comment: comment } %>
+          <!-- End of Like Statistics -->
+
+
+          <% if false %>
+            <!-- Comment Form -->
+            <%= render partial: 'comments/comment_form', locals: { post: comment.post } if post.id && signed_in_user? %>
+          <% end %>
+          <!-- End of Comment Form -->
+        </div>
+        <!-- End of Comment Options -->
+
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End of Harry comment -->

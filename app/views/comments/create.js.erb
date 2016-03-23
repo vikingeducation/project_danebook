@@ -1,0 +1,10 @@
+
+// use comment_show partial template to generate html
+var commentHtml = "<%= j(render partial: 'comment_show', locals: { comment: @comment } ) %>"
+var $commentList = $("[data-commentableid='" + <%= @comment.commentable_id %> + "']");
+
+// append it, hide it, then slide it down
+$commentList.append(commentHtml);
+var newCommentHtml = $commentList.children().last();
+newCommentHtml.hide();
+newCommentHtml.slideDown(1000);

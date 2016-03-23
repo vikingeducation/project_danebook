@@ -1,0 +1,56 @@
+<%= render partial: 'shared/menu' %>
+
+<div class="container">
+<!-- Photos Content -->
+<div class="row">
+  <!-- Friends Header -->
+  <div class="col-xs-12">
+    <nav class="navbar navbar-default about-nav">
+      <p class="box-header">Photos</p>
+      <% if current_user && current_user.id == @profile.user.id %>
+        <a class="btn btn-primary" style="margin-top: -43px;margin-right: 10px; float:right;" href="<%= new_photo_path %>">Add Photo!</a>
+      <% end %>
+    </nav>
+  </div>
+</div>
+<!-- End of Friends Header -->
+
+<!-- Photos form -->
+  <div clas="row">
+    <div class="col-xs-12 white-bg text-center">
+      <div class="row">
+        <div class="col-xs-3"></div>
+        <div class="col-xs-6">
+          <div class="form-group">
+          <%= form_for @photo do |f| %>
+            <h3>Select a photo from your hard drive...</h3>
+            <%= f.text_field :photo, { class: "form-control", value: nil,  placeholder: "URL here", style: "margin: 10px auto;" } %>
+            <%= f.submit "Use Web Photo", class: "btn btn-primary", style: "margin: 10px" %>
+          <% end %>
+        </div>
+        </div>
+        <div class="col-xs-3"></div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          <h3>Or</h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-3"></div>
+        <div class="col-xs-6">
+          <div class="form-group">
+          <%= form_for @photo do |f| %>
+            <h3>Select a photo from your hard drive...</h3>
+            <%= f.hidden_field :user_id %>
+            <%= f.file_field :photo, style: "margin: 10px auto;" %>
+            <%= f.submit "Upload Photo", class: "btn btn-primary", style: "margin: 10px" %>
+          <% end %>
+        </div>
+        </div>
+        <div class="col-xs-3"></div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End of Photos form -->

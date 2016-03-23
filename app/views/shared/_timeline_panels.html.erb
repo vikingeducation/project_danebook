@@ -1,0 +1,117 @@
+<!--Left Panel section-->
+<div class="col-sm-4">
+  <!-- About Panel -->
+  <div class="row">
+    <div class="col-xs-12">
+      <nav class="navbar navbar-default about-nav">
+        <p class="box-header">About</p>
+      </nav>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="white-bg">
+        <table class="table">
+          <tr>
+            <th style="border:none">Birthday:</td>
+            <td style="border:none"><%= @profile.birthday.inspect %></td>
+          </tr>
+          <tr>
+            <th style="border:none">College:</td>
+            <td style="border:none"><%= @profile.college %></td>
+          </tr>
+          <tr>
+            <th style="border:none">Hometown:</td>
+            <td style="border:none"><%= @profile.from %></td>
+          </tr>
+          <tr>
+            <th style="border:none">Currently Lives:</td>
+            <td style="border:none"><%= @profile.lives %></td>
+          </tr>
+
+        </table>
+      </div>
+    </div>
+  </div>
+  <!--End of About Panel-->
+
+  <!--Spacing between posts -->
+  <div clas="row">
+    <div class="col-xs-12 post-spacing">
+    </div>
+  </div>
+
+  <!-- Photos panel -->
+  <div class="row">
+    <div class="col-xs-12">
+      <nav class="navbar navbar-default about-nav">
+        <p class="box-header">Photos (<%= @profile.user.photos.size %>)</p>
+      </nav>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="white-bg section-spacing">
+        <div class="row">
+          <div class="col-xs-12">
+            <% @user.photos.each do |photo| %>
+              <a href="<%= photo_path(photo.id, user_id: photo.user_id) %>">
+                <!--<img src="/images/icon_photo_small.png" class="img-thumbnail panel-pic col-xs-4">-->
+                <%= image_tag photo.photo.url(:medium), class: "img-thumbnail panel-pic col-xs-4", style: "height:100px;width:100px;" %>
+              </a>
+            <% end %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="photo-link">
+              <a href="<%= photos_path(id: @profile.user.id) %>">See more photos</a>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- end of Photos panel -->
+
+  <!--Spacing between posts -->
+  <div clas="row">
+    <div class="col-xs-12 post-spacing">
+    </div>
+  </div>
+
+  <!-- Friends Panel -->
+  <div class="row">
+    <div class="col-xs-12">
+      <nav class="navbar navbar-default about-nav">
+        <%= content_tag :p, "Friends (#{@user.friendeds.size})", class: "box-header" %>
+      </nav>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="white-bg section-spacing">
+          <div class="row">
+            <div class="col-xs-12">
+              <% @user.friendeds.each do |friend| %>
+                <div class="col-xs-4">
+                  <a href="<%= user_path(friend) %>">
+                    <img src="/images/user_pic.png" class="img-thumbnail panel-pic">
+                  </a>
+                  <%= link_to friend.name, user_path(friend) %>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        <div class="row">
+          <div class="photo-link">
+              <%= link_to "See more Friends", friending_path(@user) %>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End of Friends Panel -->
+</div>
+<!--End of Left Panel section-->

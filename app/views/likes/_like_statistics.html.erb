@@ -1,0 +1,11 @@
+<% if post && post.likes.size > 0 %>
+    <div class="col-xs-12">
+      <div class="post-response-bg">
+        <div class="like-link">
+          <p>
+            <%= display_like_stats(post).html_safe %>
+          </p>
+        </div>
+      </div>
+    </div>
+<% end %>

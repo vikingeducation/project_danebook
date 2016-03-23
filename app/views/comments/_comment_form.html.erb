@@ -1,0 +1,17 @@
+<!-- Comment form -->
+<div clas="row" data-commentform="<%= post.id %>" style="display: none;">
+  <div class="col-xs-12">
+    <div class="col-xs-12 post-cta-bg">
+      <div class="form-group textarea-size txtbox-bg">
+      <%= errors(@comment,:body) if @comment && @current_post.id == post.id %>
+      <%= form_for [post, Comment.new], remote: true do |f| %>
+        <%= f.text_area :body, class: "form-control edit-textarea", rows: "3", placeholder: "Write a comment..." %>
+        <div class="text-right">
+          <%= f.submit "Comment", class: "btn btn-primary post-cta" %>
+        </div>
+      <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- end of comment form -->

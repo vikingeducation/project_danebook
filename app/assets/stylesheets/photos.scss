@@ -1,0 +1,19 @@
+// Place all the styles related to the photos controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.photo-pic {
+    .photo-date {
+      display: none;
+      position: absolute;
+      text-align: center;
+      height: 30px;
+      z-index: 50;
+      bottom: 0;
+      background-color: #ddd;
+    }
+  .photo-hover:hover + .photo-date {
+    display: block;
+    width: 90%;
+  }
+}

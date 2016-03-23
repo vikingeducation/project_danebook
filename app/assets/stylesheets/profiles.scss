@@ -1,0 +1,57 @@
+// Place all the styles related to the profiles controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+// About Page Stylings
+.about-nav {
+  background-color: #d8d8d8;
+  border-radius: 0;
+  border: 1px solid #aaa;
+  margin: 0;
+  padding: 0;
+}
+
+.box-header {
+  text-align: center;
+  width: 100%;
+  font-size: 26px;
+  font-weight: bold;
+  margin-top: 5px;
+  color: black;
+}
+
+.about-edit-profile {
+  float: right;
+  margin-top: -44px;
+  margin-right: 20px;
+  // background-color: #2B78E4;
+  // color: #fff;
+  // padding: 5px;
+  // border: 1px solid #2B78E4;
+  // box-shadow: 1px 3px 3px -2px gray;
+}
+
+.about-edit-profile:hover {
+  background-color: #0F3963;
+  color: white;
+  text-decoration: none;
+}
+
+.about-info {
+  background-color: #fff;
+  margin: 0;
+  padding: 0;
+  h3 {
+    margin: 20px 0 0 15px;
+  }
+  p {
+    margin: 20px 0 30px 0;
+  }
+}
+
+.no-bullet {
+  list-style-type: none;
+  li {
+    margin: 10px 0 10px 0;
+  }
+}

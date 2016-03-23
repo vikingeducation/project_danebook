@@ -1,0 +1,62 @@
+<div clas="row">
+  <div class="col-xs-12 white-bg" style="margin: 15px 0;">
+    <div class="media" style="margin-top: 20px;">
+      <div class="media-left">
+        <a href="<%= user_path(user) %>">
+          <% if user.avatar %>
+            <%= image_tag user.avatar.photo.url(:thumb) %>
+          <% else %>
+            <%= image_tag "/images/harry_potter_profile.png", style: "height: 100px; width: 100px;"%>
+          <% end %>
+        </a>
+      </div>
+      <div class="media-body">
+        <h4 class="media-heading"><%= link_to user.name, user_path(user) %></h4>
+        <p><%= "Uploaded on #{photo.created_at.strftime("%A %m/%d/%Y %I:%M %p")}" %></p>
+      </div>
+    </div>
+    <div class="row" style="margin: 15px;">
+      <div class="col-xs-12">
+        <a href="<%= photo_path(photo, user_id: photo.user_id) %>">
+          <%= image_tag photo.photo.url(:large), class: "img-thumbnail"%>
+        </a>
+      </div>
+
+      <!-- COPY PASTED FROM OTHER VIEW NEED TO REFACTOR -->
+        <!-- Like Statistics -->
+        <div class="col-xs-12">
+          <hr>
+          <div class="like-link">
+            <p>
+              <%= display_like_stats(photo).html_safe %>
+            </p>
+          </div>
+        </div>
+        <!-- Like Options -->
+        <% if signed_in_user? %>
+          <div class="col-xs-12">
+              <% if liked_photo?(photo) %>
+              <div class="like-link">
+                <%= link_to "Unlike", photo_like_path(photo.id, get_like(photo)), method: :delete %>
+              </div>
+              <% else %>
+                <div class="like-link">
+                  <%= link_to "Like", photo_likes_path(photo.id), method: :post %>
+                </div>
+              <% end %>
+              <div class="comment-link">
+                <a class="comment-link" href="#">Comment</a>
+              </div>
+          </div>
+        <% end %>
+        <!-- Display all Comments -->
+        <% photo.comments.each do |comment| %>
+          <%= render partial: 'comments/comment_show', locals: { comment: comment } %>
+        <% end %>
+        <!-- Comment Form -->
+        <%= render partial: 'comments/comment_form', locals: { post: photo } if photo.id && signed_in_user? %>
+      <!-- END OF COPY PASTE REFACTOR -->
+
+    </div>
+  </div>
+</div>

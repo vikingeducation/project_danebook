@@ -1,0 +1,24 @@
+<%= render partial: 'shared/menu' %>
+
+<div class="container">
+<div class="row">
+
+  <%= render partial: 'shared/timeline_panels' %>
+
+  <!-- Timeline Section -->
+  <div class="col-sm-8">
+    <% if current_user && current_user.id == @profile.id %>
+      <%= render partial: 'shared/post_form' %>
+      <%= render partial: 'shared/post_spacing' %>
+    <% end %>
+
+    <div class="row" >
+      <div class="col-sm-12" id="listy">
+        <% @posts.each do |post| %>
+            <%= render partial: 'shared/post_show', locals: { post: post, user: @user } if post.id %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End of Timeline Section -->

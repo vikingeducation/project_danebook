@@ -1,0 +1,81 @@
+<!-- Recent post -->
+<div class="row" style="margin-top: 15px; margin-bottom: 15px;" data-postid="<%= post.id %>">
+  <div class="col-xs-12">
+    <div class="white-bg">
+      <!-- Post Header -->
+      <div class="row">
+        <!-- Post author pic -->
+        <div class="col-xs-3 col-sm-2">
+          <a href="#">
+            <img src="/images/harry_potter_profile.png" class="img-thumbnail" style="margin: 5px">
+          </a>
+        </div>
+        <!-- End of Post author pic -->
+
+        <!-- Post info -->
+        <div class="col-xs-8 col-sm-9">
+          <div style="margin: 20px 0 0 0;font-size: 18px;">
+            <%= link_to user.name, user_path(user) %>
+          </div>
+          <%= content_tag :p, "Posted on #{post.created_at.strftime("%A %m/%d/%Y %I:%M %p")}", class: "post-datetime" %>
+        </div>
+        <!-- End of Post info -->
+      </div>
+      <!-- End of Post Header -->
+
+      <!-- Post Content -->
+      <div class="row">
+        <div class="col-xs-12">
+          <%= content_tag :p, post.body, class: "post-content" %>
+          </div>
+      </div>
+      <!-- End of Post Content -->
+
+      <!-- Post options -->
+      <div class="row">
+        <% if signed_in_user? %>
+          <div class="col-xs-12">
+            <div class="post-cta-bg">
+              <% if liked_post?(post) %>
+              <div class="like-link">
+                <%= link_to "Unlike", post_like_path(post.id, get_like(post)), method: :delete %>
+              </div>
+              <% else %>
+                <div class="like-link">
+                  <%= link_to "Like", post_likes_path(post.id), method: :post %>
+                </div>
+              <% end %>
+              <div class="comment-link">
+                <a class="comment-link" href="#" data-formid="<%=post.id %>">Comment</a>
+              </div>
+              <div class="delete-link">
+                <% if current_user && current_user.id == user.profile.id %>
+                  <%= link_to "Delete", post_path(post), class: "delete-link", method: :delete, remote: true, data: { confirm: "Are you sure?" } %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        <% end %>
+
+        <!-- Display Like Statistics -->
+        <%= render partial: "likes/like_statistics", locals: { post: post } %>
+        <!-- End of Like Statistics -->
+        <div data-commentableid="<%= post.id %>">
+          <!-- Display all Comments -->
+          <% post.comments.each do |comment| %>
+            <%= render partial: 'comments/comment_show', locals: { comment: comment } %>
+          <% end %>
+          <!-- End of Dispaly all Comments -->
+        </div>
+
+        <!-- Comment Form -->
+        <%= render partial: 'comments/comment_form', locals: { post: post } if post.id && signed_in_user? %>
+        <!-- End of Comment Form -->
+      </div>
+
+      <!-- End of Post options -->
+
+    </div>
+  </div>
+</div>
+<!-- End of Recent post -->

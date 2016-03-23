@@ -1,0 +1,87 @@
+<%= render partial: 'shared/menu' %>
+
+<div class="container">
+  <!-- About Section -->
+  <div class="row">
+    <!-- About Header -->
+    <div class="col-xs-12">
+      <nav class="navbar navbar-default about-nav">
+        <p class="box-header">About</p>
+          <!-- HAX for converting link to buttons -->
+          <% if @profile.user == current_user %>
+          <div class="btn-group" style="float:right">
+            <%= link_to "Edit Your Profile", edit_profile_path(current_user.id), class: "btn btn-primary", style: "margin-top: -43px;margin-right: 10px;"%>
+          </div>
+          <% end %>
+      </nav>
+    </div>
+  </div>
+  <!-- End of About Header -->
+
+  <!-- About Contents -->
+  <div class="row">
+    <div class="col-xs-12">
+      <div clas="row">
+        <div class="col-xs-12 about-info">
+          <!-- Left Column -->
+          <div class="col-sm-6">
+            <div class="row">
+              <h3>Basic Information</h3>
+              <ul class="no-bullet">
+                <li class="col-xs-12">
+                  <strong class="col-xs-6">Birthday:</strong>
+                  <%= @profile.birthday.inspect %>
+                </li>
+                <li class="col-xs-12">
+                  <strong class="col-xs-6">College:</strong>
+                  <%= @profile.college %>
+                </li>
+                <li class="col-xs-12">
+                  <strong class="col-xs-6">Hometown:</strong>
+                  <%= @profile.from %>
+                </li>
+                <li class="col-xs-12">
+                  <strong class="col-xs-6">Currently Lives:</strong>
+                  <%= @profile.lives %>
+                </li>
+              </ul>
+            </div>
+            <div class="row">
+              <h3>Contact Information</h3>
+              <ul class="no-bullet">
+                <li class="col-xs-12">
+                  <strong class="col-xs-6">Email:</strong>
+                  <%= @profile.user.email %>
+                </li>
+                <li class="col-xs-12">
+                  <strong class="col-xs-6">Telephone:</strong>
+                  <%= @profile.number %>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <!-- End of Left Column -->
+
+          <!-- Right Column -->
+          <div class="col-sm-6">
+            <div class="row">
+              <h3>Words to Live By</h3>
+              <p class="col-xs-12">
+                <%= @profile.words %>
+              </p>
+            </div>
+            <div class="row">
+              <h3>About Me</h3>
+              <p class="col-xs-12">
+                <%= @profile.about %>
+              </p>
+            </div>
+          </div>
+          <!-- End of Right Column -->
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- End of About Contents -->
+  <!-- End of About Section -->
+</div>

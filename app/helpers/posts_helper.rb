@@ -16,8 +16,8 @@ module PostsHelper
     unless user.photos.empty?
       @pic = user.photos.sample
       str = image_tag @pic.image.url(:thumb), class: 'img-responsive text-center'
+      str.html_safe
     end
-    str.html_safe
   end
 
   

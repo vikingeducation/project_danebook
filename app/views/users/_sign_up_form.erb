@@ -34,7 +34,7 @@
       <div class="row form-group">
         <div class="col-sm-12">
         <%= f.label :birthday %>
-        <%= f.date_select :birthday, {:prompt => { :day => 'Day', :month => 'Month', :year => 'Year' }, :start_year => 1900, :end_year => 2015}, {:class => 'form-control col-sm-2'}  %>
+        <%= f.date_select :birthday, {:prompt => { :day => 'Day', :month => 'Month', :year => 'Year' }, :end_year => 1910, :start_year => 2015}, {:class => 'form-control col-sm-2'}  %>
         </div>
       </div>
 

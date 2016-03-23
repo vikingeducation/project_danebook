@@ -29,8 +29,10 @@
     <caption class="text-center">Photos</caption>
   <tbody>
     <tr>
-      <td><%= display_photo(@user) %></td>
-      <td>Posted on: <br/><%= @pic.created_at.strftime("%A %D") %></td>
+      <% unless @pic.nil? %>
+        <td><%= display_photo(@user) %></td>
+        <td>Posted on: <br/><%= @pic.created_at.strftime("%A %D") %></td>
+      <% end %>
     </tr>
     <tr>
       <td colspan="2" class="text-center"><%= link_to "See more Photos", user_photos_path(@user) %></td>

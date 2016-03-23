@@ -20,7 +20,7 @@
   <div class="col-xs-12 white-bg">
   <% @photos.each do |photo| %>
     <div class="col-xs-3 photo-pic" style="margin: 15px 0;">
-      <a href="<%= photo_path(photo, user_id: photo.user_id) %>" class="img-responsive photo-hover">
+      <a href="<%= photo_path(photo, user_id: photo.user_id) %>" class="img-responsive photo-hover" data-remote="true">
         <%= image_tag photo.photo.url(:medium), class: "img-thumbnail panel-pic", style:"height: 250px; width: 250px;"%>
       </a>
       <div class="photo-date">

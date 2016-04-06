@@ -2,14 +2,12 @@
 danebook
 ========
 
-A Facebook clone for our Danish friends!
+What is this?
 =======
-
-
-Julia Herron
-
-
-Heroku url: https://floating-hollows-92101.herokuapp.com/
+Danebook is a Facebook clone for our Danish friends. Personalize your profile, upload photos, add friends, post your thoughts, and 'like' all the things.
 
 
 ========
+Deployed link: https://floating-hollows-92101.herokuapp.com/
+
+You can sign up using your own email, or log in as "admin@admin.com", password is "password"

@@ -8,6 +8,8 @@ Danebook is a Facebook clone for our Danish friends. Personalize your profile, u
 
 
 ========
+How can I use this?
+========
 Deployed link: https://floating-hollows-92101.herokuapp.com/
 
 You can sign up using your own email, or log in as "admin@admin.com", password is "password"

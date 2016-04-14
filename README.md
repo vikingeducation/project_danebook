@@ -10,6 +10,11 @@ Danebook is a Facebook clone for our Danish friends. Personalize your profile, u
 ========
 How can I use this?
 ========
-Deployed link: https://floating-hollows-92101.herokuapp.com/
-
-You can sign up using your own email, or log in as "admin@admin.com", password is "password"
+* Visit the deployed site: https://floating-hollows-92101.herokuapp.com/
+* You can sign up using your own email, or log in as "admin@admin.com", password is "password"
+* Post your thoughts
+* Update your profile
+* Upload photos from the web or your local file storage
+* Set your cover photo or profile photo
+* Search for users
+* Add friends

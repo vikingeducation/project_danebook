@@ -1,0 +1,23 @@
+
+<div class="panel-footer existing">
+
+  <div data-cid="<%= "#{comment.id}" %>">
+
+    <%= link_to author_name(comment), user_timeline_path(comment.user_id) %> said on <%= comment.created_at.strftime("%A %D") %>:<br/>
+
+    <%= comment.body %><br/>
+
+    <%= like_or_unlike(comment) %>
+
+
+    <% if current_user && current_user.id == comment.user_id %>
+      <%= link_to "Delete", user_comment_path(comment.user_id, comment), method: :delete, data: {confirm: "Are you sure?"}, class: "pull-right", remote: true %>
+    <% end %>
+
+
+  </div>
+
+</div>
+
+    
+

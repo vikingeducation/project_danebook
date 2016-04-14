@@ -1,0 +1,9 @@
+console.log("destroy.js?")
+
+// remove post
+var id = "<%= @post.id %>"
+$('[data-id="' + id + '"]').remove().slideUp()
+
+// flash message
+$("#flash-messages").html("<%= j(render partial: 'shared/flash') %>").slideDown();
+<% flash.clear %>

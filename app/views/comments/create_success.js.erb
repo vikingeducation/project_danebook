@@ -1,0 +1,20 @@
+
+// insert new comment
+var comment = "<%= j(render partial: 'show_comment', locals: { comment: @comment } ) %>";
+var $comment = $(comment);
+
+var parentId = "<%= @comment.commentable.id %>"
+var parentType = "<%= @comment.commentable_type %>"
+
+$($comment).insertAfter($('[data-id=' + parentId + '][data-type="' + parentType + '"] .existing').last())
+
+
+
+// clear comment field
+$('[data-pid='+ parentId + '] .new-comment [name="comment[body]"]').val("")
+
+
+
+// render flash message
+$("#flash-messages").html("<%= j(render partial: 'shared/flash') %>").slideDown();
+<% flash.clear %>

@@ -1,0 +1,59 @@
+<div data-id="<%= "#{post.id}" %>" data-type="<%="#{post.class}" %>">
+
+  <div class="panel panel-default">
+    <div class="panel-heading"> 
+
+      <% if post.user == current_user %>
+        You posted on <%= post.created_at.strftime("%A %D") %>:
+
+      <% else %>
+        <%= link_to "#{post.user.first_name} #{post.user.last_name}", user_timeline_path(post.user) %><br/>
+        Posted on <%= post.created_at.strftime("%A %D") %>
+      <% end %>
+    </div>
+
+    <div class="panel-body">
+      <%= post.body %>
+    </div>
+
+
+
+    <div class="panel-footer">
+
+      <%= like_or_unlike(post) %>
+
+      <% if current_user == post.user %>
+      <%= link_to "Delete", user_post_path(post.user, post), method: :delete, class: "pull-right", data: {confirm: "Are you sure?"}, remote: true %>
+      <% end %>
+
+      <!-- likes -->
+      <% unless post.likes.empty? %>
+        <div class="panel-footer">
+        <%= render partial: "shared/likes", locals: { likes: post.likes } %>
+        </div>
+      <% end %>
+
+      <!-- existing comments -->
+      <% if post.comments %>
+        <% post.comments.each do |comment| %>
+
+          <%= render partial: "comments/show_comment", locals: { comment: comment } %>
+        <% end %>
+      <% end %>
+
+      <!-- new comment form -->
+      <% if current_user && @new_comment %>
+        <div class="panel-footer" data-pid="<%= "#{post.id}" %>">
+
+          <%= link_to "Comment", {}, class: "expand-comment", remote: true %>
+
+          <div class="new-comment">
+              <%= render partial: "comments/new_comment", locals: { post: post, commentable_id: post.id, commentable_type: "Post" } %>
+          </div>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+
+</div>

@@ -1,0 +1,78 @@
+<div class="about">
+  <table class="table table-bordered">
+  <caption class="text-center">About</caption>
+  <tbody>
+    <tr>
+      <td>Born On:</td>
+      <td><%= user.birthday.strftime("%B %d, %Y") if user.birthday %></td>
+    </tr>
+    <tr>
+      <td>Went to school at:</td>
+      <td>Hogwarts</td>
+    </tr>
+    <tr>
+      <td>Hometown:</td>
+      <td><%= user.profile.hometown if user.profile.hometown %></td>
+    </tr>
+    <tr>
+      <td>Currently Lives:</td>
+      <td><%= user.profile.current_city if user.profile.current_city %></td>
+    </tr>
+  </tbody>
+  </table>
+</div>
+
+
+
+<div class="photos">
+  <table class="table table-bordered">
+    <caption class="text-center">Photos</caption>
+  <tbody>
+    <tr>
+      <% unless @pic.nil? %>
+        <td><%= display_photo(@user) %></td>
+        <td>Posted on: <br/><%= @pic.created_at.strftime("%A %D") %></td>
+      <% end %>
+    </tr>
+    <tr>
+      <td colspan="2" class="text-center"><%= link_to "See more Photos", user_photos_path(@user) %></td>
+    </tr>
+  </tbody>
+  </table>
+</div>
+
+
+
+
+
+<div class="friends">
+  <table class="table table-bordered">
+    <caption class="text-center">Friends</caption>
+  <tbody>
+  <% unless all_friends(user) == 0 %>
+
+    <% all_friends(user).each_slice(2) do |slice| %>
+      <tr>
+        <% slice.each do |friend| %>
+          <td>
+            <%= image_tag friend.profile.profile_photo.image.url(:thumb) %><br/>
+            <%= link_to "#{friend.first_name} #{friend.last_name}", user_timeline_path(friend) %>
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+
+  <% else %>
+    <td class="text-center">No friends yet.</td>
+
+  <% end %>
+
+
+
+    <tr>
+      <td colspan="2" class="text-center"><%= link_to "See more Friends", user_friendings_path(user) %></td>
+    </tr>
+
+  </tbody>
+  </table>
+</div>

@@ -1,0 +1,21 @@
+<!-- Friends bar -->
+<div class="navbar friends-bar">
+  <section>
+      <h3 class="navbar-header friends-text">Friends</h3>
+  </section>
+</div>
+
+<% unless @friended_users.empty? %>
+
+  <% @friended_users.each do |friend| %>
+    <%= render partial: "friend", locals: { friend: friend } %>
+  <% end %>
+
+
+<% else %>
+
+  <h3 class="text-center">No friends yet, use the search bar to find `em!</h3>
+
+<% end %>
+
+

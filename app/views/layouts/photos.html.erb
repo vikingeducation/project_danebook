@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Photos</title>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body data-no-turbolink>
+
+  <div class="general-navbar">
+  <%= render partial: "shared/general_navbar", locals: { profile: @profile } %>
+  </div>
+
+
+  <div id="flash-messages">
+    <%= render partial: "shared/flash" %>
+  </div>
+
+
+  <main class="container">
+
+    <div class="middle-navbar">
+      <%= render partial: "shared/middle_nav", locals: { profile: @user.profile } %>
+    </div>
+
+
+
+    <div class="photos-controller">
+      <!-- Photos bar -->
+      <div class="navbar photo-bar">
+        <section>
+            <h3 class="navbar-header photo-text">Photos</h3>
+
+            <% if @user == current_user %>
+            <%= button_to "Add Photo!", new_user_photo_path(@user), method: :get, class: "btn btn-primary navbar-right navbar-btn photo-btn" %>
+            <% end %>
+
+        </section>
+      </div>
+
+      <%= yield %>
+
+    </div>
+
+    
+    <div class="row bottom-spacer">
+    <br>
+    </div>
+
+  </main>
+
+</body>
+</html>

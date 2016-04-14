@@ -1,0 +1,11 @@
+
+<!-- TODO: make this float on the page where user is? -->
+
+<% flash.each do |type, message| %>
+  <div class="alert alert-<%=type%>">
+    <div>
+    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+    <strong><%= type.titleize %>! <%= message %></strong>
+    </div>
+    </div>
+<% end %> 

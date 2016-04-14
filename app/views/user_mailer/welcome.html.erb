@@ -1,0 +1,19 @@
+<h4>Welcome to Danebook, <%= @user.first_name %> <%= @user.last_name %>!</h4>
+
+<p>Your username is: <%= @user.email %></p>
+<p>To login to the site, <%= link_to "click here", root_url %>.</p>
+
+<h5>Here are some people you might want to connect with:</h5>
+
+<div>
+  <% 6.times do %>
+
+    <% friend = User.all.sample %>
+
+    <div>
+      <%= link_to "#{friend.first_name} #{friend.last_name}", user_timeline_url(friend) %>
+    </div>
+    
+  <% end %>
+
+</div>

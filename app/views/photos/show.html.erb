@@ -1,0 +1,35 @@
+<div class='container'>
+  <div class='row'>
+
+    <div class='col-sm-7'>
+    <%= image_tag @photo.image.url(:large), class: 'img-responsive' %>
+
+    <!-- TODO: refactor this and make it similar to 'like_or_unlike' method --> 
+    <%= link_to "Set as Profile Picture", user_profile_path(current_user, profile: { profile_photo_id: @photo }), method: :put %><br/>
+
+    <%= link_to "Set as Cover Photo", user_profile_path(current_user, profile: { cover_photo_id: @photo }), method: :put %><br/>
+
+    <% if current_user == @photo.user %>
+      <%= link_to "Delete Photo", user_photo_path(@photo.user, @photo), method: :delete, data: { confirm: "Are you sure?" } %>
+    <% end %>
+
+    </div> 
+
+
+    <div class='col-sm-5'>
+
+      <%= @photo.user.first_name %> <%= @photo.user.last_name %><br/>
+      <%= @photo.created_at.strftime("%B %d, %Y") %>
+
+
+      <div data-id="<%= "#{@photo.id}" %>" data-type="<%= "#{@photo.class}" %>">
+        <%= render partial: 'comments_likes' %>
+      </div>
+
+
+
+    </div>
+
+
+  </div>
+</div>

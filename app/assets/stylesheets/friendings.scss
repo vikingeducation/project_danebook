@@ -1,0 +1,21 @@
+// Place all the styles related to the Friendings controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+.friends-controller {
+
+  .friends-bar {
+    background-color: #ccc;
+    margin: 0 -15px 0 -15px;
+    border-radius: 0px;
+  }
+
+  .friends-text {
+    margin-left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 17px;
+  }
+
+}

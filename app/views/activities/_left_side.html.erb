@@ -1,0 +1,27 @@
+<div>
+  <% if current_user.profile.profile_photo %>
+    <%= image_tag current_user.profile.profile_photo.image.url(:thumb), class: "tiny-profile-pic" %><br/>
+  <% end %>
+
+  <%= link_to "#{current_user.first_name} #{current_user.last_name}", user_timeline_path(current_user) %><br/>
+  
+  <%= link_to "Edit Profile", edit_user_profile_path(current_user) %>
+</div><br/>
+
+
+<div>
+  <h4>Recently Active</h4>
+
+  <% @activities.each do |activity| %>
+
+    <% unless activity.user == current_user %>
+      <%= image_tag activity.user.profile.profile_photo.image.url(:thumb) if activity.user.profile.profile_photo %><br/>
+
+      <%= link_to "#{activity.user.first_name} #{activity.user.last_name}", user_timeline_path(activity.user) %><br/>
+
+      Posted on <%= activity.created_at.strftime("%A %D") %><br/>
+    <% end %>
+
+  <% end %>
+
+</div>

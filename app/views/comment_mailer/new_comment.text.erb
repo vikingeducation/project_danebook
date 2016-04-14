@@ -1,0 +1,17 @@
+Hello, <%= @recipient.first_name %> <%= @recipient.last_name %>!
+
+You have a new comment.
+
+<%= @comment.user.first_name %> <%= @comment.user.last_name %> just wrote:
+
+"<%= @comment.body %>"
+
+View Comment:
+<% if @comment.commentable_type == "Post" %>
+  <%= user_posts_url(@recipient, @commented) %>
+
+  <% else %>
+
+ <%= user_photos_url(@recipient.id) %>
+
+<% end %>

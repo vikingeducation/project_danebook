@@ -1,0 +1,43 @@
+<!-- Navigation bar -->
+<nav class="navbar nav-header">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapse" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">
+        <%= image_tag 'danish_flag.gif', {class: 'navbar-img'} %>
+      </a>
+      <%= link_to "Danebook", newsfeed_path, class: 'navbar-brand' %>
+
+    </div>
+
+    <!-- Search bar -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <div class="navbar-form navbar-left" role="search">
+        <div class="form-group">
+          <div class="search-bar">
+            <%= form_tag users_path, :method => 'get' do %>
+              <%= text_field_tag :query, params[:query], placeholder: "Search for users", class: "form-control" %>
+              <%= submit_tag "Go", class: "form-control" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <!-- Link back to user's profile -->
+      <ul class="nav navbar-nav navbar-right">
+        <% if current_user %>
+          <li><%= link_to current_user.first_name, user_timeline_path(current_user) %></li>
+          <li><%= link_to "Log Out", logout_path, method: :delete %></li>
+
+        <% else %>
+          <li><%= link_to "Log In", login_path %></li>
+        <% end %>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>

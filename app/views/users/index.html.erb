@@ -1,0 +1,39 @@
+<div class='col-sm-3'>
+  <div>
+  <%= image_tag current_user.profile.profile_photo.image.url(:thumb) if current_user.profile.profile_photo%><br/>
+
+  <%= link_to "#{current_user.first_name} #{current_user.last_name}", user_timeline_path(current_user) %><br/>
+  
+  <%= link_to "Edit Profile", edit_user_profile_path(current_user) %>
+  </div>
+</div><br/>
+
+
+<div class='col-sm-9'>
+  
+    <% @users.each do |user| %>
+
+    <div class='col-sm-4'>
+      <div class="panel panel-default text-center">
+        <div class="panel-body">
+          <%= image_tag user.profile.profile_photo.image.url(:thumb) if user.profile.profile_photo%><br/>
+          <%= link_to "#{user.first_name} #{user.last_name}", user_timeline_path(user) %>
+
+
+        <% if !current_user.friended_users.include?(user) && user != current_user %>
+          <div class="form-group"><%= button_to "Add Friend", user_friendings_path(user), method: :post, class: "btn btn-primary" %></div>
+
+        <% elsif current_user && current_user.friended_users.include?(user) %>
+          <div class="form-group"><%= button_to "Remove Friend", user_friending_path(current_user, user), method: :delete, class: "btn btn-primary" %></div> 
+
+        <% end %>
+
+
+        </div>
+      </div>
+    </div>
+
+    <% end %>
+
+
+</div>

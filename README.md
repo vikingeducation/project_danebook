@@ -7,4 +7,4 @@ This is your README!
 
 This is the Danebook project Training
 
-From [Viking Code School](www.vikingcodeschool.com)
+From [Viking Code School](https://www.vikingcodeschool.com)

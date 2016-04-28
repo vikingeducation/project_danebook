@@ -1,3 +1,65 @@
 // Place all the styles related to the static_pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+body {
+	font-family: Helvetica;
+
+	// Make The Navbar blue and larger
+	.navbar {
+		background: #428bca;
+		border: 1px solid #428bca;
+		border-radius: 0;
+
+		.navbar-brand {
+			color: white;
+			font-size: 30px;
+		}
+	}
+
+	// Make the Navbar Wider on big screen
+	@media (min-width: 762px) {
+		.navbar {
+			padding-top: 10px;
+			padding-bottom: 10px;
+		}
+	}
+}
+
+// Style the Left Section (Title and List)
+.marketing {
+	h1 {
+		padding-top: 50px;
+		padding-bottom: 30px;
+	}
+
+	li {
+		padding-top: 10px;
+		padding-bottom: 10px;
+		font-size: 18px;
+		color: #777;
+	}
+}
+
+// Style the Right Section Form
+.sign-up {
+	h2 {
+		font-size: 40px;
+	}
+
+	input, button, label[for="birthdate"] {
+		margin-top: 15px;
+	}
+
+	label {
+		padding-right: 35px;
+	}
+
+	button[type=submit] {
+		padding-top: 10px;
+		padding-bottom: 10px;
+		font-size: 18px;
+	}
+}

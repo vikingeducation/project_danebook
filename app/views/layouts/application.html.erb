@@ -18,8 +18,11 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-
-  <%= render "shared/navbar" %>
+  <% if request.env['PATH_INFO'] == "/home" || request.env['PATH_INFO'] == "/" %>
+    <%= render "shared/navbar" %>
+  <% else %>
+    <%= render "shared/navbar_login" %>
+  <% end %>
 
   <%= yield %>
 

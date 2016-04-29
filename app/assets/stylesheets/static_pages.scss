@@ -26,40 +26,217 @@ body {
 			padding-bottom: 10px;
 		}
 	}
-}
 
-// Style the Left Section (Title and List)
-.marketing {
-	h1 {
-		padding-top: 50px;
-		padding-bottom: 30px;
+	// Add Border to Every Box
+	.border-control {
+		border: 1px solid #ccc;
 	}
 
-	li {
+	// Navbar Logo
+	#logo {
+		background: url("danish_flag.gif");
+		background-size: contain;
+		width: 50px;
+		height: 50px;
+		border-radius: 50%;
+		margin-top:-15px;
+	}
+}
+
+#homepage {
+
+	// Style the Left Section (Title and List)
+	.marketing {
+		h1 {
+			padding-top: 50px;
+			padding-bottom: 30px;
+		}
+
+		li {
+			padding-top: 10px;
+			padding-bottom: 10px;
+			font-size: 18px;
+			color: #777;
+		}
+	}
+
+	// Style the Right Section Form
+	.sign-up {
+		h2 {
+			font-size: 40px;
+		}
+
+		input, button, label[for="birthdate"] {
+			margin-top: 15px;
+		}
+
+		label {
+			padding-right: 35px;
+		}
+
+		button[type=submit] {
+			padding-top: 10px;
+			padding-bottom: 10px;
+			font-size: 18px;
+		}
+	}
+}
+
+
+
+
+body {
+
+	//Big Title Section
+	.big-title-section {
+		margin-top: 50px;
+		background: #eee;
+		border: 1px solid #ccc;
+	}
+
+	//Small Title Section
+	.small-title-section {
+	margin-top: 0;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background: #eee;
+	border: 1px solid #ccc;
+	}
+
+	// Save change button
+	.save-change {
+		margin-bottom: 50px;
 		padding-top: 10px;
 		padding-bottom: 10px;
-		font-size: 18px;
-		color: #777;
+		font-size: 20px;
 	}
 }
 
-// Style the Right Section Form
-.sign-up {
-	h2 {
-		font-size: 40px;
+
+#about, #friends, #photos, #timeline, #about_edit {
+
+	// Cover Image
+	.cover {
+		background: url("hogwarts_small.jpg");
+		background-size: cover;
+		height: 550px;
+
+		#user-picture {
+			margin-top: 200px;
+		}
 	}
 
-	input, button, label[for="birthdate"] {
+
+	//Big Title Section
+	.big-title-section {
+		margin-top: 50px;
+		background: #eee;
+		border: 1px solid #ccc;
+	}
+
+	//Small Title Section
+	.small-title-section {
+	margin-top: 0;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	background: #eee;
+	border: 1px solid #ccc;
+	}
+
+	// Save change button
+	.save-change {
+		margin-bottom: 50px;
+		padding-top: 10px;
+		padding-bottom: 10px;
+		font-size: 20px;
+	}
+
+	// Form create Post
+	.post-creation {
+		height: 100px;
+	}
+
+	// Image User In post
+	.post-picture {
+		background: url("harry_potter_small.jpg");
+		background-size: cover;
+		border-radius: 50%;
+		margin-left: 10px;
+		margin-top: 5px;
+		width: 80px;
+		height: 80px;
+
+		.profile-link {
+			display:block;
+			width: 80px;
+			height: 80px;
+		}
+	}
+
+	// Image of friends
+	.post-picture-friend {
+		background: url("user_generic.png") 70% 25% no-repeat;
+		background-size: cover;
+		width: 80px;
+		height: 80px;
+
+		.profile-link {
+			display:block;
+			width: 80px;
+			height: 80px;
+		}
+	}
+
+	// Some margin for the post in timeline
+	.post-section {
+		margin-top: 30px;
+		padding-top: 15px;
+		padding-bottom: 15px;
+	}
+
+	// some margin for the "create post" in timeline
+	.create-post-section {
+		padding-top: 0;
+		margin-top: 20px;
+	}
+
+	// Space the Friends in friends section page
+	.friends-section > .col-sm-5  {
 		margin-top: 15px;
 	}
 
-	label {
-		padding-right: 35px;
+	// Give some top margin to section in about page
+	.about-section h2,
+	.photo-section {
+		margin-top: 50px;
 	}
 
-	button[type=submit] {
-		padding-top: 10px;
-		padding-bottom: 10px;
-		font-size: 18px;
+	footer hr + a {
+		margin-right: 20px;
+	}
+
+	@media (max-width:762px) {
+		#left-section {
+			display: none;
+		}
+
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -56,6 +56,7 @@ nav {
 #profile-pic {
   max-height: 150px;
   min-width: 130px;
+  border: 2px solid black;
   position: relative;
   bottom: 25px; }
 
@@ -80,7 +81,18 @@ nav {
 
 .nav-pills li {
   border-right: 2px solid black; }
+  .nav-pills li a {
+    color: black;
+    font-size: 16px;
+    font-weight: 600; }
+    .nav-pills li a span {
+      color: #d0d0d0; }
 .nav-pills li:first-child {
   border-left: 2px solid black; }
+.nav-pills .active-tab {
+  background-color: #eee; }
+
+#edit-profile-link {
+  text-decoration: underline; }
 
 /*# sourceMappingURL=styles.css.map */

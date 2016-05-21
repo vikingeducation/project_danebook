@@ -79,6 +79,7 @@ nav {
 #profile-pic {
 	max-height: 150px;
 	min-width: 130px;
+	border: 2px solid black;
 	position: relative;
 	bottom: 25px;
 }
@@ -110,16 +111,32 @@ nav {
 			line-height: 40px;
 		}
 	}
-
-
 }
 
 .nav-pills {
 	li {
 		border-right: 2px solid black;
+
+		a {
+			color: black;
+			font-size: 16px;
+			font-weight: 600;
+
+			span {
+				color: #d0d0d0;
+			}
+		}
 	}
 
 	li:first-child {
 		border-left: 2px solid black;
 	}
+
+	.active-tab {
+		background-color: #eee;
+	}
+}
+
+#edit-profile-link {
+	text-decoration: underline;
 }

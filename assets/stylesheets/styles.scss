@@ -1,0 +1,52 @@
+body {
+	font-family: Arial, sans-serif;
+}
+
+nav {
+	background-color: #2b78e4;
+
+	.navbar-brand {
+		padding-top: 7px;
+	}
+
+	input {
+		padding-left: 5px;
+		min-height: 34px;
+	}
+
+	a {
+		color: white;
+	}
+}
+
+#logo {
+	display: inline-block;
+	max-height: 34px;
+	padding: 0;
+	margin-right: 5px;
+	border-radius: 50%;
+	vertical-align: middle;
+}
+
+#brand-name {
+	line-height: 40px;
+	font-size: 28px;
+	vertical-align: middle;
+	color: white;
+	font-weight: 300;
+}
+
+#username {
+	font-size: 20px;
+	line-height: 34px;
+	padding: 0;
+}
+
+#search-wrapper {
+	min-height: 100%;
+	margin-left: 10px;
+}
+
+.full-width {
+	min-width: 100%;
+}

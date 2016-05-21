@@ -16,6 +16,9 @@ nav {
   max-height: 34px;
   padding: 0;
   margin-right: 5px;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
   border-radius: 50%;
   vertical-align: middle; }
 
@@ -37,5 +40,47 @@ nav {
 
 .full-width {
   min-width: 100%; }
+
+#cover-photo {
+  overflow: hidden;
+  min-height: 450px;
+  margin-top: 50px;
+  border: 2px solid black;
+  background: url(../images/hogwarts_small.jpg) no-repeat center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  -ms-background-size: cover;
+  background-size: cover; }
+
+#profile-pic {
+  max-height: 150px;
+  min-width: 130px;
+  position: relative;
+  bottom: 25px; }
+
+.username {
+  position: absolute;
+  top: 400px; }
+  .username h1, .username img, .username a {
+    display: inline-block; }
+  .username h1 {
+    color: black;
+    font-weight: bold;
+    text-shadow: 2px 2px #fff;
+    letter-spacing: 2.5px;
+    margin-left: 5px; }
+
+.link-bar {
+  border: 2px solid black; }
+  .link-bar h5 {
+    margin: 0; }
+    .link-bar h5 a {
+      line-height: 40px; }
+
+.nav-pills li {
+  border-right: 2px solid black; }
+.nav-pills li:first-child {
+  border-left: 2px solid black; }
 
 /*# sourceMappingURL=styles.css.map */

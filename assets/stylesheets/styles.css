@@ -36,7 +36,7 @@ nav {
 #username {
   font-size: 20px;
   line-height: 34px;
-  padding: 0; }
+  padding: 0 10px; }
 
 #search-wrapper {
   min-height: 100%;
@@ -108,7 +108,7 @@ nav {
     margin-top: 10px; }
   .about-header .edit-btn {
     margin: 10px 0; }
-  .about-header button {
+  .about-header a {
     background-image: none; }
 
 .content-id {

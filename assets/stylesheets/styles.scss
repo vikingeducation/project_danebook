@@ -16,7 +16,7 @@
 
 body {
 	font-family: Arial, sans-serif;
-	padding-top: 70px;
+	padding-top: 50px;
 	font-size: 16px;
 }
 
@@ -119,13 +119,11 @@ nav {
 		letter-spacing: 1.5px;
 		margin-left: 5px;
 
-		@media only screen and (max-device-width: 396px) {
+		@media only screen and (max-width: 396px) {
 			// font-size: 20px;
 			letter-spacing: 0;
 		}
 	}
-
-	// @media and scre
 }
 
 /*
@@ -146,9 +144,23 @@ nav {
 	}
 }
 
+div[role=navigation]{
+	@media only screen  
+	  	and (max-width: 767px){
+	  		padding-left: 0;
+	  		padding-right: 0;
+	}
+}
+
 .nav-pills {
 	li {
 		border-right: 2px solid black;
+
+		@media only screen  
+	  		and (max-width: 767px){
+	  			border-right: none;
+	  			border-bottom: 2px solid black;
+	  	}
 
 		a {
 			color: black;
@@ -163,6 +175,11 @@ nav {
 
 	li:first-child {
 		border-left: 2px solid black;
+
+		@media only screen  
+	  		and (max-width: 767px){
+	  			border-left: none;
+	  	}
 	}
 }
 
@@ -242,13 +259,13 @@ nav {
 */
 
 .content-left {
-	@media only screen and (min-device-width: 768px) {
+	@media only screen and (min-width: 768px) {
 		padding-right: 25px;
 	}
 }
 
 .content-right {
-	@media only screen and (min-device-width: 768px) {
+	@media only screen and (min-width: 768px) {
 		padding-left: 25px;
 	}
 }
@@ -315,7 +332,7 @@ nav {
 	font-size: 14px;
 	line-height: 30px;
 
-	@media only screen and (max-device-width: 767px) {
+	@media only screen and (max-width: 767px) {
 		font-size: 12px;
 	}
 	background-color: #828282;
@@ -375,10 +392,9 @@ nav {
 		margin-left: 15px;
 
 		@media only screen 
-		  and (min-device-width: 768px) 
-		  and (max-device-width: 1024px) 
-		  and (-webkit-min-device-pixel-ratio: 1) {
-		  	margin-left: 30px;
+		  and (min-width: 768px) 
+		  and (max-width: 1024px) {
+			margin-left: 30px;
 		}
 	}
 

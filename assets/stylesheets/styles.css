@@ -1,6 +1,6 @@
 body {
   font-family: Arial, sans-serif;
-  padding-top: 70px;
+  padding-top: 50px;
   font-size: 16px; }
 
 /*
@@ -85,7 +85,7 @@ nav {
     text-shadow: 2px 2px #fff;
     letter-spacing: 1.5px;
     margin-left: 5px; }
-    @media only screen and (max-device-width: 396px) {
+    @media only screen and (max-width: 396px) {
       .username h1 {
         letter-spacing: 0; } }
 
@@ -101,8 +101,17 @@ nav {
     .link-bar h5 a {
       line-height: 40px; }
 
+@media only screen and (max-width: 767px) {
+  div[role=navigation] {
+    padding-left: 0;
+    padding-right: 0; } }
+
 .nav-pills li {
   border-right: 2px solid black; }
+  @media only screen and (max-width: 767px) {
+    .nav-pills li {
+      border-right: none;
+      border-bottom: 2px solid black; } }
   .nav-pills li a {
     color: black;
     font-size: 16px;
@@ -111,6 +120,9 @@ nav {
       color: #d0d0d0; }
 .nav-pills li:first-child {
   border-left: 2px solid black; }
+  @media only screen and (max-width: 767px) {
+    .nav-pills li:first-child {
+      border-left: none; } }
 
 .active-tab {
   background-color: #eee; }
@@ -166,11 +178,11 @@ nav {
 	Friends Page Styling
 ----------------------------------------------
 */
-@media only screen and (min-device-width: 768px) {
+@media only screen and (min-width: 768px) {
   .content-left {
     padding-right: 25px; } }
 
-@media only screen and (min-device-width: 768px) {
+@media only screen and (min-width: 768px) {
   .content-right {
     padding-left: 25px; } }
 
@@ -225,7 +237,7 @@ nav {
   position: absolute;
   bottom: 0px;
   visibility: hidden; }
-  @media only screen and (max-device-width: 767px) {
+  @media only screen and (max-width: 767px) {
     .photo-date {
       font-size: 12px; } }
 
@@ -265,7 +277,7 @@ nav {
   .post-wrapper .friend-name-wrapper {
     padding-top: 5px;
     margin-left: 15px; }
-    @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
+    @media only screen and (min-width: 768px) and (max-width: 1024px) {
       .post-wrapper .friend-name-wrapper {
         margin-left: 30px; } }
   .post-wrapper .friend-name:first-child {

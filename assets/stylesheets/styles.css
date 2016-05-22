@@ -5,6 +5,10 @@ nav {
   background-color: #2b78e4; }
   nav .navbar-brand {
     padding-top: 7px; }
+  nav .navbar-toggle {
+    border: 1px solid white; }
+  nav .icon-bar {
+    background-color: white; }
   nav input {
     padding-left: 5px;
     min-height: 34px; }
@@ -37,9 +41,6 @@ nav {
 #search-wrapper {
   min-height: 100%;
   margin-left: 10px; }
-
-.full-width {
-  min-width: 100%; }
 
 #cover-photo {
   overflow: hidden;
@@ -89,10 +90,35 @@ nav {
       color: #d0d0d0; }
 .nav-pills li:first-child {
   border-left: 2px solid black; }
-.nav-pills .active-tab {
+
+.active-tab {
   background-color: #eee; }
 
 #edit-profile-link {
   text-decoration: underline; }
+
+.about-container {
+  margin-top: 10px;
+  border: 2px solid black; }
+
+.about-header {
+  border-bottom: 2px solid black;
+  background-color: #eee; }
+  .about-header h2 {
+    margin-top: 10px; }
+  .about-header .edit-btn {
+    margin: 10px 0; }
+  .about-header button {
+    background-image: none; }
+
+.content-id {
+  font-weight: bold; }
+
+.vertical-align {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%); }
 
 /*# sourceMappingURL=styles.css.map */

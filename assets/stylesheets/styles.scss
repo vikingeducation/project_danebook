@@ -25,6 +25,14 @@ nav {
 		padding-top: 7px;
 	}
 
+	.navbar-toggle {
+		border: 1px solid white;
+	}
+
+	.icon-bar {
+		background-color: white;
+	}
+
 	input {
 		padding-left: 5px;
 		min-height: 34px;
@@ -61,10 +69,6 @@ nav {
 #search-wrapper {
 	min-height: 100%;
 	margin-left: 10px;
-}
-
-.full-width {
-	min-width: 100%;
 }
 
 #cover-photo {
@@ -131,12 +135,46 @@ nav {
 	li:first-child {
 		border-left: 2px solid black;
 	}
+}
 
-	.active-tab {
-		background-color: #eee;
-	}
+.active-tab {
+	background-color: #eee;
 }
 
 #edit-profile-link {
 	text-decoration: underline;
+}
+
+.about-container {
+	margin-top: 10px;
+	border: 2px solid black;
+}
+
+.about-header {
+	border-bottom: 2px solid black;
+	background-color: #eee;
+
+	h2 {
+		margin-top: 10px;
+	}
+
+	.edit-btn {
+		margin: 10px 0;
+	}
+
+	button {
+		background-image: none;
+	}
+}
+
+.content-id {
+	font-weight: bold;
+}
+
+.vertical-align {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%); 
 }

@@ -99,6 +99,7 @@ nav {
 	border: 2px solid black;
 	position: relative;
 	bottom: 25px;
+	z-index: 1001;
 }
 
 .username {
@@ -171,6 +172,14 @@ nav {
 	text-decoration: underline;
 }
 
+#hide-word {
+	@media only screen 
+	  and (min-device-width: 768px) 
+	  and (max-device-width: 991px) 
+	  and (-webkit-min-device-pixel-ratio: 1) {
+	  		display: none;
+	}	
+}
 /*
 ----------------------------------------------
 	Common Section Header Styling
@@ -316,8 +325,4 @@ nav {
 .photo-container:hover .photo-date {
 	visibility: visible;
 	z-index: 1000;
-}
-
-.img-wrap {
-	margin: 0 auto;
 }

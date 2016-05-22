@@ -70,7 +70,8 @@ nav {
   min-width: 130px;
   border: 2px solid black;
   position: relative;
-  bottom: 25px; }
+  bottom: 25px;
+  z-index: 1001; }
 
 .username {
   position: absolute;
@@ -115,6 +116,10 @@ nav {
 
 #edit-profile-link {
   text-decoration: underline; }
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 991px) and (-webkit-min-device-pixel-ratio: 1) {
+  #hide-word {
+    display: none; } }
 
 /*
 ----------------------------------------------
@@ -225,8 +230,5 @@ nav {
 .photo-container:hover .photo-date {
   visibility: visible;
   z-index: 1000; }
-
-.img-wrap {
-  margin: 0 auto; }
 
 /*# sourceMappingURL=styles.css.map */

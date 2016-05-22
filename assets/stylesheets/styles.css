@@ -113,7 +113,15 @@ nav {
     background-image: none; }
 
 .content-id {
-  font-weight: bold; }
+  font-weight: bold;
+  margin-bottom: 20px; }
+
+#save-change-wrapper {
+  margin-top: 40px;
+  margin-bottom: 100px; }
+  #save-change-wrapper a {
+    background-image: none;
+    letter-spacing: 2.5px; }
 
 .vertical-align {
   position: absolute;

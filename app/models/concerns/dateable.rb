@@ -6,3 +6,4 @@ module Dateable
     datetime.strftime(format)
   end
 end
+

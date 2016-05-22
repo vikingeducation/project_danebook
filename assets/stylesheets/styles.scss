@@ -102,6 +102,10 @@ nav {
 	position: relative;
 	bottom: 25px;
 	z-index: 1001;
+
+	@media only screen and (max-width: 396px) {
+		bottom: 40px;
+	}
 }
 
 .username {
@@ -120,7 +124,7 @@ nav {
 		margin-left: 5px;
 
 		@media only screen and (max-width: 396px) {
-			// font-size: 20px;
+			font-size: 24px;
 			letter-spacing: 0;
 		}
 	}

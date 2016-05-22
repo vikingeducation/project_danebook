@@ -73,6 +73,9 @@ nav {
   position: relative;
   bottom: 25px;
   z-index: 1001; }
+  @media only screen and (max-width: 396px) {
+    #profile-pic {
+      bottom: 40px; } }
 
 .username {
   position: absolute;
@@ -87,6 +90,7 @@ nav {
     margin-left: 5px; }
     @media only screen and (max-width: 396px) {
       .username h1 {
+        font-size: 24px;
         letter-spacing: 0; } }
 
 /*

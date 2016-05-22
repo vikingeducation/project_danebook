@@ -16,6 +16,7 @@
 
 body {
 	font-family: Arial, sans-serif;
+	padding-top: 70px;
 }
 
 /*
@@ -87,7 +88,7 @@ nav {
 #cover-photo {
 	overflow:hidden;
 	min-height: 450px;
-	margin-top: 50px;
+	// margin-top: 50px;
 	border: 2px solid black;
 	background: url(../images/hogwarts_small.jpg) no-repeat  center center; 
 	@include background-size(cover);
@@ -329,7 +330,7 @@ nav {
 
 /*
 ----------------------------------------------
-	Photos Page Styling
+	Timeline Page Styling
 ----------------------------------------------
 */
 
@@ -342,10 +343,63 @@ nav {
 	}
 }
 
-#post-btn {
+.post-block {
 	margin-top: 10px;
 	margin-bottom: 5px;
 	padding-top: 5px;
 	border-bottom: none;
 	border-top: 2px solid black;
+}
+
+.post-pic {
+	height: 60px;
+	width: 60px;
+
+	position: relative;
+	// left: 10px;
+}
+
+.post-wrapper {
+	padding-top: 5px;
+	padding-bottom: 5px;
+
+	p {
+		margin-bottom: 0;
+		font-size: 16px;
+	}
+
+	.friend-name-wrapper {
+		padding-top: 5px;
+		margin-left: 15px;
+	}
+
+	.friend-name:first-child {
+		margin-right: 8px;
+	}
+}
+
+.friend-name {
+	line-height: 22px;
+	text-decoration: underline;
+}
+
+.post-content {
+	margin-top: 10px;
+}
+
+.section-footer{
+	border-top: 2px solid black;
+	background-color: #eee;
+
+	h2 {
+		margin-top: 10px;
+	}
+
+	.edit-btn {
+		margin: 10px 0;
+	}
+
+	a {
+		background-image: none;
+	}
 }

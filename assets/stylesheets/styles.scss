@@ -326,3 +326,26 @@ nav {
 	visibility: visible;
 	z-index: 1000;
 }
+
+/*
+----------------------------------------------
+	Photos Page Styling
+----------------------------------------------
+*/
+
+.whiteness {
+	background-color: white;
+	padding: 0 0;
+
+	textarea {
+		padding: 5px 5px;
+	}
+}
+
+#post-btn {
+	margin-top: 10px;
+	margin-bottom: 5px;
+	padding-top: 5px;
+	border-bottom: none;
+	border-top: 2px solid black;
+}

@@ -1,0 +1,19 @@
+<div id= "navigation">
+	<!-- Little navigation bar -->
+	<div class = "row">
+		<div class = "col-xs-12 col-sm-8 col-sm-offset-4">
+			<ul class = "nav nav-tabs nav-justified">
+				<li role="presentation" class = "active"><%= link_to "Timeline", timeline_path %></li>
+				<li role="presentation"><%= link_to "About", about_path %></li>
+				<li role="presentation"><%= link_to photos_path do %>
+					Photos<small> (136)</small>
+					<% end %></li>
+				<li role="presentation"><%= link_to friends_path do %>
+					Friends<small> (100)</small>
+					<% end %></li>
+				<li></li>
+				<li role="presentation"><%= link_to "Edit Profile", about_edit_path %></li>
+			</ul>
+		</div>
+	</div>
+</div>

@@ -9,7 +9,9 @@ Rails.application.routes.draw do
   get '/photos' => "static_pages#photos"
   get '/about_edit' => "static_pages#about_edit"
 
-  resources :users
+  resources :users do
+    resources :profiles
+  end
 
   resource :session, only: [:create, :destroy]
 

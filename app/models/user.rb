@@ -1,6 +1,10 @@
 class User < ActiveRecord::Base
   has_secure_password
 
+  has_one :profile
+
+  accepts_nested_attributes_for :profile
+
   validates :password,
             :length => { in: 8..24 },
             :allow_nil => true
@@ -19,5 +23,9 @@ class User < ActiveRecord::Base
     self.auth_token = nil
     generate_token
     save!
+  end
+
+  def full_name
+    self.profile.first_name + " " + self.profile.last_name
   end
 end

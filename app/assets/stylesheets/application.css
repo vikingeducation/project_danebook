@@ -13,3 +13,11 @@
  *= require_tree .
  *= require_self
  */
+
+.error {
+	color: hsl(15, 60%, 60%);
+}
+
+.field_with_errors input {
+	border: 1px solid hsl(15, 60%, 60%);
+}

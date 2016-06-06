@@ -18,11 +18,17 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-  <% if request.env['PATH_INFO'] == "/home" || request.env['PATH_INFO'] == "/" %>
-    <%= render "shared/navbar" %>
-  <% else %>
-    <%= render "shared/navbar_login" %>
-  <% end %>
+  
+  <%= render "shared/navbar" %>
+
+  <div class='row'>
+    <div class='col-sm-12'>
+      <% flash.each do |key, value| %>
+        <%= content_tag(:div, value, class: "alert alert-#{key} fade-in") %>
+      <% end %>
+    </div>
+  </div>
+
 
   <%= yield %>
 

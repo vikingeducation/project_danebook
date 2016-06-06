@@ -10,6 +10,11 @@ Rails.application.routes.draw do
   get '/about_edit' => "static_pages#about_edit"
 
   resources :users
+
+  resource :session, only: [:create, :destroy]
+
+  post 'login' => "sessions#create"
+  get 'logout' => "sessions#destroy"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

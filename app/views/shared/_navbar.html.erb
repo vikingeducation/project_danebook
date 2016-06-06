@@ -12,13 +12,28 @@
 			<a href="#" class = "navbar-brand">Danebook</a>
 		</header>
 		<div class = "collapse navbar-collapse" id="main-navbar">
-			<form class = "navbar-form navbar-right">
-				<div class = "form-group">
-					<input type = "email" class = "form-control" placeholder = "Email">
-					<input type = "password" class = "form-control" placeholder = "Password">
-				</div>
-				<%= link_to "Log in", timeline_path, class: "btn btn-primary" %>
-			</form>
+				<% if sign_in_user? %>
+					<div class= "navbar-right user-navbar">
+						<%= current_user.email %>
+						<%= link_to "Sign out", session_path, method: :delete, class: "btn btn-default" %>
+					</div>
+				<% else %>
+					<div class = "form-group">
+						<%= form_tag('/session', method: :post, class: "navbar-form navbar-right") do %>
+							
+							<%= label_tag :email %>
+							<%= email_field_tag :email, nil, placeholder: "Your Email" %>
+
+							<%= label_tag :password %>
+							<%= password_field_tag :password, nil, placeholder: "password" %>
+
+							<%= label_tag :remember_me, "Remember me?" %>
+							<%= check_box_tag :remember_me %>
+
+							<%= submit_tag "Come On!", class: "btn btn-primary" %>
+						<% end %>
+					</div>
+				<% end %>
 		</div>
 	</div>
 </nav>

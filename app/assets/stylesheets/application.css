@@ -14,10 +14,22 @@
  *= require_self
  */
 
+ .nav,
+ .navbar,
+ .navbar-default {
+ 	margin-bottom: 0px;
+ }
+
+ .user-navbar {
+ 	color: white;
+ 	font-size: 18px;
+ 	line-height: 50px;
+ }
+ 
 .error {
-	color: hsl(15, 60%, 60%);
+	color: hsl(5, 60%, 50%);
 }
 
 .field_with_errors input {
-	border: 1px solid hsl(15, 60%, 60%);
+	border: 1px solid hsl(5, 60%, 50%);
 }

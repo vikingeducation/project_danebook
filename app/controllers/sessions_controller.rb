@@ -9,7 +9,7 @@ class SessionsController < ApplicationController
         sign_in(@user)
       end
       flash[:success] = "Welcome !"
-      redirect_to root_path
+      redirect_to user_path(@user)
     else
       flash[:danger] = "Nope, it didn't work"
       redirect_to(:back)

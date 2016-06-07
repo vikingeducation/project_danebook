@@ -28,4 +28,9 @@ class User < ActiveRecord::Base
   def full_name
     self.profile.first_name + " " + self.profile.last_name
   end
+
+  def birthday
+    p = self.profile
+    p.birth_month + " " + p.birth_day  + ", " + p.birth_year
+  end
 end

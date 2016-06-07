@@ -14,21 +14,21 @@
 ActiveRecord::Schema.define(version: 20160606083108) do
 
   create_table "profiles", force: :cascade do |t|
-    t.string   "first_name",      null: false
-    t.string   "last_name",       null: false
-    t.string   "birth_month",     null: false
-    t.string   "birth_day",       null: false
-    t.string   "birth_year",      null: false
-    t.string   "gender",          null: false
-    t.string   "college"
-    t.string   "hometown"
-    t.string   "current_address"
-    t.string   "phone"
-    t.string   "my_words"
-    t.string   "about_me"
-    t.integer  "user_id",         null: false
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.string   "first_name",                        null: false
+    t.string   "last_name",                         null: false
+    t.string   "birth_month",                       null: false
+    t.string   "birth_day",                         null: false
+    t.string   "birth_year",                        null: false
+    t.string   "gender",                            null: false
+    t.string   "college",         default: "empty", null: false
+    t.string   "hometown",        default: "empty", null: false
+    t.string   "current_address", default: "empty", null: false
+    t.string   "phone",           default: "empty", null: false
+    t.string   "my_words",        default: "empty", null: false
+    t.string   "about_me",        default: "empty", null: false
+    t.integer  "user_id",                           null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
   end
 
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", unique: true

@@ -9,7 +9,7 @@ class UsersController < ApplicationController
     if @user.save
       sign_in(@user)
       flash[:success] = "User Created"
-      redirect_to root_path
+      redirect_to user_path(@user)
     else
       flash.now[:danger] = "Something went wrong"
       render :new

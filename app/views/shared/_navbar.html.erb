@@ -14,7 +14,7 @@
 		<div class = "collapse navbar-collapse" id="main-navbar">
 				<% if sign_in_user? %>
 					<div class= "navbar-right user-navbar">
-						<%= current_user.email %>
+						<%= current_user.full_name %>
 						<%= link_to "Sign out", session_path, method: :delete, class: "btn btn-default" %>
 					</div>
 				<% else %>

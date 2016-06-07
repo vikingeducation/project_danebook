@@ -1,0 +1,59 @@
+<div id= "about">	
+	<%= render "shared/cover" %>
+    <%= render "shared/navigation" %>
+
+	<!-- About me Section -->
+	<div class = "row big-title-section">
+		<div class = "col-xs-4 col-xs-offset-4 text-center">
+			<h2>About Me</h2>
+		</div>
+		<div class = "col-xs-2 col-xs-offset-2">
+			<% if @user == current_user %>
+				<%= link_to "Edit your Profile", edit_user_path(current_user), class: "btn btn-primary" %>
+			<% end %>
+		</div>
+	</div>
+	<div class = "row about-section">
+		<div class = "col-sm-4 col-sm-offset-1">
+			<h2>Basic Information</h2>
+			<table class = "table">
+				<tr>
+					<td><strong>Birthday:</strong></td>
+					<td><%= @user.birthday %></td>
+				</tr>
+				<tr>
+					<td><strong>College:</strong></td>
+					<td><%= @profile.college %></td>
+				</tr>
+				<tr>
+					<td><strong>Hometown:</strong></td>
+					<td><%= @profile.hometown %></td>
+				</tr>
+				<tr>
+					<td><strong>Currently Lives:</strong></td>
+					<td><%= @profile.current_address %></td>
+				</tr>
+			</table>
+			<h2>Contact Information</h2>
+			<table class="table">
+				<tr>
+					<td><strong>Email:</strong></td>
+					<td><%= @user.email %></td>
+				</tr>
+				<tr>
+					<td><strong>Telephone:</strong></td>
+					<td><%= @profile.phone %></td>
+				</tr>
+			</table>
+		</div>
+
+		<div class = "col-sm-5 col-sm-offset-1">
+			<h2>Words to Live By</h2>
+			<p><%= @profile.my_words %></p>
+			<h2>About Me</h2>
+			<p><%= @profile.about_me %></p>
+		</div>
+
+	</div>
+	<hr>
+</div>

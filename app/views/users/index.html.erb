@@ -1,0 +1,19 @@
+<h1>Users#index</h1>
+
+<table>
+<% @users.each do |u| %>
+  <tr>
+    <td>Name&nbsp;&nbsp;</td>
+    <td>Email address</td>
+  </tr>
+  <tr>
+    <td><%= "#{u.last_name}, #{u.first_name}" %></td>
+    <td><%= u.email %></td>
+    <td><%= link_to 'delete', u, method: :delete,
+                                 data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<div><%= link_to 'Home', root_path, method: :get %></div>
+<div><%= link_to 'Log out', logout_path, method: :delete %></div>

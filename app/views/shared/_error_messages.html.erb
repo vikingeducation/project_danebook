@@ -1,0 +1,5 @@
+<% if @user && @user.errors.any? %>
+  <% @user.errors.each do |f,m| %>
+    <%= content_tag :p, "#{f.to_s.gsub('_', ' ').capitalize} #{m}." %>
+  <% end %>
+<% end %>

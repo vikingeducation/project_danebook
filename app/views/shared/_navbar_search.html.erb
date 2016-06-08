@@ -1,0 +1,21 @@
+<nav class="nav navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="navbar-header">
+          <%= image_tag "danish_flag.gif", height: "12px", weight: "12px" %>      
+          <%= link_to "Danebook", root_url, class: "navbar-brand" %>
+        </div>
+      </div>
+      <div class="col-md-7">
+        <form class="navbar-form">
+          <input type="text" placeholder="Search for Users" class="form-control">
+        </form>
+      </div>
+      <div class="col-md-2">
+        <%= link_to "#{current_user.first_name}", current_user, class: "navbar-username" %>
+<!--         <p class="navbar-username">Harry</p> -->
+      </div>
+    </div>
+  </div>
+</nav>

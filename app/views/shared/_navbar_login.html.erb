@@ -1,0 +1,33 @@
+<nav class="nav navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button class="navbar-toggle" data-toggle="collapse" data-target="#sign-in-form">
+        SIGN-IN
+      </button>
+      <%= link_to "Danebook", root_url, class: "navbar-brand" %>
+    </div>
+
+    <%= form_for :session, url: login_path do |f| %>
+      <div id="sign-in-form" class="collapse navbar-collapse">
+        <div class="nav navbar-right">
+          <form role="form" class="form-inline">
+            <div class="row">
+              <div class="nav-login form-group col-md-3">
+                <%= f.email_field :email, class: 'form-control', placeholder: 'Email' %>
+              </div>
+              <div class="nav-login form-group col-md-3">
+                <%= f.password_field :password, class: 'form-control', placeholder: 'Password' %>
+              </div>
+              <div class="nav-login form-group col-md-3">
+                <%= f.password_field :password_confirmation, class: 'form-control', placeholder: 'Confirm password' %>
+              </div>                
+              <div class="nav-login form-group col-md-3">
+                <%= f.submit 'Submit', class: 'btn btn-info' %>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</nav>

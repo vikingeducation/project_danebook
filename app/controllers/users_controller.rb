@@ -1,4 +1,8 @@
 class UsersController < ApplicationController
+  #Method calls before actions
+  before_action :logged_in_user, only: [:edit, :update, :index]
+  before_action :correct_user, only: [:edit, :update]
+
 
   def index
     @users = User.all
@@ -52,4 +56,14 @@ class UsersController < ApplicationController
                                :password_confirmation]
       params.require(:user).permit(permissibleUserParams)
     end
+
+    def logged_in_user
+      redirect_to login_path if !logged_in?
+    end
+
+    def correct_user
+      user = User.find_by(params[:id])
+      redirect_to root_url unless current_user user
+    end
+
 end

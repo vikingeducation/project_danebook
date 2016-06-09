@@ -65,7 +65,9 @@
 							<hr>
 							<a class= "pull-left" href="#">Like</a>
 							<a class= "pull-left" href="#">Comment</a>
-							<a class= "pull-right" href="#">Delete</a>
+							<% if sign_in_user? && current_user == @user %>
+								<%= link_to "Delete me", user_post_path(current_user.id, post.id), method: :delete, data: {confirm: "Are you Sure?"} %>
+							<% end %>
 						</div>
 					</div>
 				</div>

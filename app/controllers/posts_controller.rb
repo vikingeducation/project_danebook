@@ -15,6 +15,17 @@ class PostsController < ApplicationController
     end
   end
 
+  def destroy
+    @post = current_user.posts.find(params[:id])
+    if @post.delete
+      flash[:success] = "Deleted!"
+      redirect_to (:back)
+    else
+      flash[:danger] = "Not Deleted ?"
+      redirect_to (:back)
+    end
+  end
+
   def whitelisted_params
     params.require(:post).permit(:body)
   end

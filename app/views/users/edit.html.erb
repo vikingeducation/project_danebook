@@ -1,2 +1,7 @@
 <h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+
+<!-- Hidden input telling rails to fake a PATCH request through a POST request -->
+
+<input name="_method" type="hidden" value="patch"/>
+
+<%= render partial: 'form', locals: { user: @user } %>

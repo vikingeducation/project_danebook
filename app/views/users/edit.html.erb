@@ -4,4 +4,4 @@
 
 <input name="_method" type="hidden" value="patch"/>
 
-<%= render partial: 'form', locals: { user: @user } %>
+<%= render template: 'static_pages/about', locals: { user: @user }, action: :edit %>

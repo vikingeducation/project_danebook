@@ -1,0 +1,30 @@
+<div class="col-md-12">
+  <div class="jumbotron">
+    <div class="masthead">
+
+      <%= image_tag "user_silhouette_generic.gif.png", class: "headshot", height: "128px", width: "128px"%>
+      <!-- <div class="headshot">
+        <img src="user_silhouette_generic.gif.png" height="128px" width="128px">
+      </div> -->
+
+
+      <div class="masthead-name">
+        <%= content_tag :h2, "#{user.first_name} #{user.last_name}" %>  
+<!--             <h2>Harry Potter</h2> -->
+      </div>
+      
+      <div class="masthead-nav">
+        <ul class="nav nav-tabs">
+          <li><a href="#">Timeline</a></li>
+          <li class="active"><a href="#">About</a></li>
+          <li><a href="#">Photos</a></li>
+          <li><a href="#">Friends</a></li>
+        </ul>
+      </div>
+
+      <button id="edit-profile" class="btn btn-primary">Edit Profile</button>
+
+    </div>
+
+  </div>
+</div>

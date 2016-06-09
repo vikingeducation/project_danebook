@@ -28,6 +28,12 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'bcrypt', '~> 3.1.7'
 # Use bootstrap-sass
 gem 'bootstrap-sass'
+# Pagination
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
+# Fake names for seeds
+gem 'faker'
+
 
 # Use Unicorn as the app server
 # gem 'unicorn'

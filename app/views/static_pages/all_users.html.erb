@@ -1,0 +1,30 @@
+<main class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-12 panel">
+          <div class="row">
+            <div class="col-md-12">
+              <h1 class="panel-header">&nbsp</h1>
+            </div>
+          </div>
+          <div class="row panel-content">
+            <div class="col-md-6">
+              <% users[0..4].each do |u| %>
+                <%= render partial: 'static_pages/user_panel', locals: { user: u } %>
+              <% end %>
+            </div>
+            <div class="col-md-6">
+              <% users[5..9].each do |u| %>
+                <%= render partial: 'static_pages/user_panel', locals: { user: u } %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <%= will_paginate %>
+  </div>
+</main>

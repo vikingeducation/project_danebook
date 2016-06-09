@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  def index
+    @users = User.all
+  end
 
   def new
     @user = User.new
@@ -34,6 +37,10 @@ class UsersController < ApplicationController
       flash.now[:danger] = "Something went wrong"
       render :edit
     end
+  end
+
+  def timeline
+    @user = User.find(params[:id])
   end
 
   private

@@ -27,9 +27,9 @@
 						<%= form_for(@user) do |f| %>
 							<div class='form-group'>
 								<%= f.fields_for(:profile, Profile.new) do |profile| %>
-									<%= profile.text_field :first_name, placeholder: "First Name" %>
+									<%= profile.text_field :first_name, placeholder: "First Name", class: "form-control" %>
 
-									<%= profile.text_field :last_name, placeholder: "Last Name" %>
+									<%= profile.text_field :last_name, placeholder: "Last Name", class: "form-control" %>
 
 								<%= f.label :email %>
 								<%= message_error(@user, :email) %>

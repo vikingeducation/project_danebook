@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   resources :users do
     resource :profile
+    resources :posts
   end
 
   resource :session, only: [:create, :destroy]

@@ -2,6 +2,7 @@ class User < ActiveRecord::Base
   has_secure_password
 
   has_one :profile
+  has_many :posts, foreign_key: :author_id
 
   accepts_nested_attributes_for :profile
 

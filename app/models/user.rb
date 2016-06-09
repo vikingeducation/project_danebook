@@ -10,6 +10,7 @@ class User < ActiveRecord::Base
 
   has_secure_password
 
+  #Token and digest creation for security.
   def User.new_token
     SecureRandom.urlsafe_base64
   end
@@ -20,6 +21,7 @@ class User < ActiveRecord::Base
     BCrypt::Password.create(string, cost: cost)
   end
 
+  #Remembering and forgetting.
   def remember
     self.remember_token = User.new_token
     update_attribute :remember_digest, User.digest(remember_token)
@@ -29,10 +31,26 @@ class User < ActiveRecord::Base
     update_attribute :remember_digest, nil
   end
 
+  #Generalized method for checking token against digest in DB.
   def authenticated?(attribute,token)
     digest = self.send "#{attribute}_digest"
     return false if digest.nil?
     BCrypt::Password.new(digest).is_password?(token)
   end
+
+  #Paginating search results, if any.
+  def User.search(search, page)
+    order('last_name').where('last_name LIKE ?', "%#{search}%").paginate(page: page, per_page: 10)
+  end
+
+  # def User.search(options = {})
+  #   search = options[:search] || ''
+  #   per_page = options[:per_page] || 10
+  #   page = options[:page] || 1
+  #   conditions = ['name like ?', "%#{search}%"]
+  #   paginate per_page: per_page, 
+  #            conditions: conditions,
+  #            page: page
+  # end
 
 end

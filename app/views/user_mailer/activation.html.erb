@@ -4,5 +4,5 @@
   Greetings, <%= @user.first_name %>! You're almost there. Click the link below to activate your account, now!
 </p>
 
-<%= link_to 'Activate your account', edits_activation(@user.activation_token,
+<%= link_to 'Activate your account', edit_activation_url(@user.activation_token,
                                                              email: @user.email) %>

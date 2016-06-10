@@ -15,8 +15,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(permitUserParams)
     if @user.save
-      flash[:success] = 'You have successfully signed up!'
-      redirect_to login_path
+      @user.send_activation_email
+      flash[:info] = 'You have been sent an email containing a link to activate your account.'
+      redirect_to root_url
     else
       flash[:danger] = 'Invalid information. Please try again to sign up.'
       render 'new'

@@ -44,6 +44,11 @@ class User < ActiveRecord::Base
     order('last_name').where('last_name LIKE ?', "%#{search.capitalize}%").paginate(page: page, per_page: 10)
   end
 
+  #Send activation email.
+  def send_activation_email
+    UserMailer.activation(self).deliver_now
+  end
+
   private
     def create_activation_digest
       self.activation_token = User.new_token

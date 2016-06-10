@@ -1,7 +1,4 @@
 module UsersHelper
-  def split_column(content)
-    content_tag :div, content, class: 'col-md-6'
-  end
 
   def render_user_panel(user)
     render partial: 'static_pages/user_panel', locals: { user: user }

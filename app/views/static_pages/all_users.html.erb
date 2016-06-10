@@ -9,16 +9,12 @@
             </div>
           </div>
           <div class="row panel-content">
-            <div class="col-md-6">
-              <% users[0..4].each do |u| %>
-                <%= render partial: 'static_pages/user_panel', locals: { user: u } %>
-              <% end %>
-            </div>
-            <div class="col-md-6">
-              <% users[5..9].each do |u| %>
-                <%= render partial: 'static_pages/user_panel', locals: { user: u } %>
-              <% end %>
-            </div>
+           <% users_matrix = users_count_check users %>
+           <% users_matrix.each do |row| %>
+             <% row.each do |col| %>
+               <%= user_column(render_user_panel col)%>
+             <% end %>
+           <% end %> 
           </div>
         </div>
       </div>

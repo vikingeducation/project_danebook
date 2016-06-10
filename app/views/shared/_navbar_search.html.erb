@@ -19,9 +19,6 @@
           <%= form_tag "/users", method: 'get' do %>
             <%= text_field_tag 'search', 'Search for users', class: 'form-control'%>
           <% end %>
-<!--           <form class="navbar-form navbar-search">
-            <input type="text" placeholder="Search for Users" class="form-control">
-          </form> -->
         </div>
         <div class="col-md-2">
           <%= link_to "#{current_user.first_name}", current_user, class: "navbar-username" %>

@@ -11,7 +11,9 @@
 <body>
 
   <%= render logged_in? ? 'shared/navbar_search' : 'shared/navbar_login' %>
-  
+
+  <%= render 'shared/flash' %>
+
   <%= yield %>
 
   <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->

@@ -1,5 +1,8 @@
 <% if @user && @user.errors.any? %>
   <% @user.errors.each do |f,m| %>
-    <%= content_tag :p, "#{f.to_s.gsub('_', ' ').capitalize} #{m}." %>
+    <div class="alert alert-danger" role="alert">
+      <span class="glyphicon glyphicon-exclamation-sign"></span>
+      <%= "#{f.to_s.gsub('_', ' ').capitalize} #{m}." %>
+    </div>
   <% end %>
 <% end %>

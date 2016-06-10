@@ -15,10 +15,10 @@ class UsersController < ApplicationController
   def create
     @user = User.new(permitUserParams)
     if @user.save
-      flash.now[:success] = 'You have successfully signed up!'
+      flash[:success] = 'You have successfully signed up!'
       redirect_to login_path
     else
-      flash.now[:danger] = 'Invalid information. Please try again to sign up.'
+      flash[:danger] = 'Invalid information. Please try again to sign up.'
       render 'new'
     end
   end
@@ -30,7 +30,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(permitUserParams)
-      flash.now[:success] = "Profile updated"
+      flash[:success] = "Profile updated"
       redirect_to @user
     else
       render 'edit'

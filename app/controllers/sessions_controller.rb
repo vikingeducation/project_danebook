@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
     if @user && @user.authenticate(params[:session][:password])
       log_in @user
       remember_check @user
-      flash.now[:success] = 'Login successful.'
+      flash[:success] = 'Login successful.'
       redirect_to @user
     else
       render 'new'
@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
 
   def destroy
     log_out if logged_in?
-    flash.now[:success] = 'You are now logged out.'
+    flash[:success] = 'You are now logged out.'
     redirect_to root_url
   end
 end

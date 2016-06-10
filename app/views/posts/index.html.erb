@@ -63,10 +63,24 @@
 						<!-- Footer Post -->
 						<div class= "col-xs-12">
 							<hr>
-							<a class= "pull-left" href="#">Like</a>
+							<% if show_like_options(post) %>
+								<%= link_to "Unlike", liking_path(post.id), method: :delete, 
+												 	  data: {confirm: "Are you Sure?"}, class: "pull-left" %>
+							<% else %>
+								<%= link_to "Like", likings_path(post_id: post.id), method: :post, 
+																					class: "pull-left" %>
+							<% end %>
 							<a class= "pull-left" href="#">Comment</a>
-							<% if sign_in_user? && current_user == @user %>
+							<% if proper_user(@user) %>
 								<%= link_to "Delete me", user_post_path(current_user.id, post.id), method: :delete, data: {confirm: "Are you Sure?"} %>
+							<% end %>
+						</div>
+
+						<div class="col-xs-12">
+							<% liked =  post.users_liked.count %>
+							<% if liked > 0 %>
+
+								<span><%= post.nb_user_like(liked) %>  Liked this ! </span>
 							<% end %>
 						</div>
 					</div>

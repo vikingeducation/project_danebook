@@ -4,6 +4,11 @@ class User < ActiveRecord::Base
   has_one :profile
   has_many :posts, foreign_key: :author_id
 
+  has_many :likings
+
+  has_many :liked_posts, through: :likings,
+                         source: :post
+
   accepts_nested_attributes_for :profile
 
   validates :password,

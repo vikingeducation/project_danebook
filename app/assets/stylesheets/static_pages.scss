@@ -48,7 +48,8 @@ nav.navbar-default {
   //--navbar when logged in--
 
   //search
-  .navbar-search > input {
+  input#user-search {
+    margin-top: 8px;
     width: 100%;
   }
 

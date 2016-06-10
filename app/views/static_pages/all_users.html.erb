@@ -12,7 +12,7 @@
            <% users_matrix = users_count_check users %>
            <% users_matrix.each do |row| %>
              <% row.each do |col| %>
-               <%= user_column(render_user_panel col)%>
+               <%= split_column(render_user_panel col)%>
              <% end %>
            <% end %> 
           </div>

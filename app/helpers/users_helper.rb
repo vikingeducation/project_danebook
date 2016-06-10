@@ -1,5 +1,5 @@
 module UsersHelper
-  def user_column(content)
+  def split_column(content)
     content_tag :div, content, class: 'col-md-6'
   end
 

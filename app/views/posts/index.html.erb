@@ -42,7 +42,7 @@
 				<div class= "row">
 					<div class= "col-xs-12 media">
 
-						<!-- Header Post -->
+						<!-- Content Post -->
 						<div class= "media-left media-middle"
 							<a href="">
 								<img class="post-picture media-object" src="<%= image_url("harry_potter_small.jpg") %>">
@@ -57,33 +57,62 @@
 								<p><%= post.body %></p>
 							</div>
 						</div>
+					</div>
 
-						<!-- Content Post -->
 
 						<!-- Footer Post -->
-						<div class= "col-xs-12">
-							<hr>
-							<% if show_like_options(post) %>
-								<%= link_to "Unlike", liking_path(post.id), method: :delete, 
-												 	  data: {confirm: "Are you Sure?"}, class: "pull-left" %>
-							<% else %>
-								<%= link_to "Like", likings_path(post_id: post.id), method: :post, 
-																					class: "pull-left" %>
-							<% end %>
-							<a class= "pull-left" href="#">Comment</a>
-							<% if proper_user(@user) %>
-								<%= link_to "Delete me", user_post_path(current_user.id, post.id), method: :delete, data: {confirm: "Are you Sure?"} %>
-							<% end %>
-						</div>
-
-						<div class="col-xs-12">
-							<% liked =  post.users_liked.count %>
-							<% if liked > 0 %>
-
-								<span><%= post.nb_user_like(liked) %>  Liked this ! </span>
-							<% end %>
-						</div>
+					<div class= "col-xs-12">
+						<hr>
+						<% if show_like_options(post) %>
+							<%= link_to "Unlike", liking_path(post.id), method: :delete, 
+											 	  data: {confirm: "Are you Sure?"}, class: "pull-left" %>
+						<% else %>
+							<%= link_to "Like", likings_path(post_id: post.id), method: :post, 
+																				class: "pull-left" %>
+						<% end %>
+						<a class= "pull-left" href="#">Comment</a>
+						<% if proper_user(@user) %>
+							<%= link_to "Delete me", user_post_path(current_user.id, post.id), method: :delete, data: {confirm: "Are you Sure?"} %>
+						<% end %>
 					</div>
+
+					<div class="col-xs-12">
+						<% liked =  post.users_liked.count %>
+						<% if liked > 0 %>
+
+							<span><%= post.nb_user_like(liked) %>  Liked this ! </span>
+						<% end %>
+					</div>
+
+
+					<!-- Comment Section -->
+					<% post.comments.each do |comment| %>
+						<div class= "col-xs-11 col-xs-offset-1 media">
+
+							<!-- Content Post -->
+							<div class= "media-left media-middle"
+								<a href="">
+									<img class="post-picture media-object" src="<%= image_url("harry_potter_small.jpg") %>">
+								</a>
+							</div>
+
+							<div class = "media-body">
+								<a class="media-heading" href="about.html"><%= comment.author.full_name %></a>
+								<span>Said on <%= comment.created_at %></span>
+
+								<div>
+									<p><%= comment.body %></p>
+								</div>
+							</div>
+						</div>
+					<% end %>
+
+					<% if sign_in_user? %>
+						<%= form_for([current_user, post, Comment.new]) do |f| %>
+							<%= f.text_area :body, placeholder: "Write a comment...", class: "form-control" %>
+							<%= f.submit "Comment!", class: "btn btn-primary pull-right" %>
+						<% end %>
+					<% end %> 
 				</div>
 			<% end %>
 			

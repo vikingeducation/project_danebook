@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
 
   has_one :profile
   has_many :posts, foreign_key: :author_id
+  has_many :comments, class_name: "Comment"
 
   has_many :likings
 

@@ -1,0 +1,8 @@
+<h1>Activate your account!</h1>
+
+<p>
+  Greetings, <%= @user.first_name %>! You're almost there. Click the link below to activate your account, now!
+</p>
+
+<%= link_to 'Activate your account', edits_activation(@user.activation_token,
+                                                             email: @user.email) %>

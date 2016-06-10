@@ -1,0 +1,5 @@
+Activate your account!
+
+Greetings, <%= @user.first_name %>! You're almost there. Follow the link below to activate your account, now!
+
+<%= edit__activation(@user.activation_token, email: @user.email) %>

@@ -43,14 +43,4 @@ class User < ActiveRecord::Base
     order('last_name').where('last_name LIKE ?', "%#{search.capitalize}%").paginate(page: page, per_page: 10)
   end
 
-  # def User.search(options = {})
-  #   search = options[:search] || ''
-  #   per_page = options[:per_page] || 10
-  #   page = options[:page] || 1
-  #   conditions = ['name like ?', "%#{search}%"]
-  #   paginate per_page: per_page, 
-  #            conditions: conditions,
-  #            page: page
-  # end
-
 end

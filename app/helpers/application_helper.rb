@@ -10,4 +10,8 @@ module ApplicationHelper
     end
   end
 
+  def show_like_options(resource)
+    current_user && current_user.posts_liked_ids.include?(resource.id)
+  end
+
 end

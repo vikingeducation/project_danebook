@@ -4,12 +4,17 @@ Rails.application.routes.draw do
 
   resources :users do
     resource :profile
+
     resources :posts do
-      resources :comments
+      resource :likings, only: [:create, :destroy], module: :posts
+
+      resources :comments do
+        resource :likings, only: [:create, :destroy], module: :comments
+      end
     end
   end
 
-  resources :likings, only: [:create, :destroy]
+
   resource :session, only: [:create, :destroy]
 
   post 'login' => "sessions#create"

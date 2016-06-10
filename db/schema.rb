@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160610032830) do
+ActiveRecord::Schema.define(version: 20160610084924) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "post_id"
@@ -23,12 +23,13 @@ ActiveRecord::Schema.define(version: 20160610032830) do
 
   create_table "likings", force: :cascade do |t|
     t.integer  "user_id"
-    t.integer  "post_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.string   "likeable_type"
+    t.integer  "likeable_id"
   end
 
-  add_index "likings", ["user_id", "post_id"], name: "index_likings_on_user_id_and_post_id", unique: true
+  add_index "likings", ["likeable_type", "likeable_id"], name: "index_likings_on_likeable_type_and_likeable_id", unique: true
 
   create_table "posts", force: :cascade do |t|
     t.text     "body",       null: false

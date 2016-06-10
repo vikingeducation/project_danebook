@@ -63,16 +63,18 @@
 						<!-- Footer Post -->
 					<div class= "col-xs-12">
 						<hr>
-						<% if show_like_options(post) %>
-							<%= link_to "Unlike", liking_path(post.id), method: :delete, 
-											 	  data: {confirm: "Are you Sure?"}, class: "pull-left" %>
-						<% else %>
-							<%= link_to "Like", likings_path(post_id: post.id), method: :post, 
-																				class: "pull-left" %>
-						<% end %>
-						<a class= "pull-left" href="#">Comment</a>
-						<% if proper_user(@user) %>
-							<%= link_to "Delete me", user_post_path(current_user.id, post.id), method: :delete, data: {confirm: "Are you Sure?"} %>
+						<% if sign_in_user? %>
+							<% if current_user.posts_liked_ids.include?(post.id) %>
+								<%= link_to "Unlike", user_post_likings_path(post_id: post.id, ), method: :delete, 
+												 	  data: {confirm: "Are you Sure?"}, class: "pull-left" %>
+							<% else %>
+								<%= link_to "Like", user_post_likings_path(post_id: post.id), method: :post, 
+																					class: "pull-left" %>
+							<% end %>
+							<a class= "pull-left" href="#">Comment</a>
+							<% if proper_user(@user) %>
+								<%= link_to "Delete me", user_post_path(current_user.id, post.id), method: :delete, data: {confirm: "Are you Sure?"} %>
+							<% end %>
 						<% end %>
 					</div>
 
@@ -104,6 +106,27 @@
 									<p><%= comment.body %></p>
 								</div>
 							</div>
+
+							<div class= "col-xs-12">
+								<hr>
+								<% if sign_in_user? %>
+									<% if current_user.comments_liked_ids.include?(comment.id) %>
+										<%= link_to "Unlike", user_post_comment_likings_path(post_id: post.id, comment_id: comment.id), method: :delete, 
+														 	  data: {confirm: "Are you Sure?"}, class: "pull-left" %>
+									<% else %>
+										<%= link_to "Like", user_post_comment_likings_path(post_id: post.id, comment_id: comment.id), method: :post, 
+																							class: "pull-left" %>
+									<% end %>
+								<% end %>
+							</div>
+							<div class="col-xs-12">
+								<% liked =  comment.users_liked.count %>
+								<% if liked > 0 %>
+
+									<span><%= comment.nb_user_like(liked) %>  Liked this ! </span>
+								<% end %>
+							</div>
+
 						</div>
 					<% end %>
 

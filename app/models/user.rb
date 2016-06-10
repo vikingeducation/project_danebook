@@ -7,8 +7,8 @@ class User < ActiveRecord::Base
 
   has_many :likings
 
-  has_many :liked_posts, through: :likings,
-                         source: :post
+  has_many :posts_liked, through: :likings, source: :likeable, source_type: "Post"
+  has_many :comments_liked, through: :likings, source: :likeable, source_type: "Comment"
 
   accepts_nested_attributes_for :profile
 

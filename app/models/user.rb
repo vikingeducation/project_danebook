@@ -40,7 +40,7 @@ class User < ActiveRecord::Base
 
   #Paginating search results, if any.
   def User.search(search, page)
-    order('last_name').where('last_name LIKE ?', "%#{search}%").paginate(page: page, per_page: 10)
+    order('last_name').where('last_name LIKE ?', "%#{search.capitalize}%").paginate(page: page, per_page: 10)
   end
 
   # def User.search(options = {})

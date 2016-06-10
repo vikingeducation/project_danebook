@@ -7,7 +7,6 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-
 99.times do |n|
   first_name = Faker::Name.first_name
   last_name = Faker::Name.last_name
@@ -17,5 +16,7 @@
               last_name: last_name,
               email: email,
               password: password,
-              password_confirmation: password)
+              password_confirmation: password,
+              activated: true,
+              activated_at: rand(365).days.ago)
 end

@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
-  attr_accessor :remember_token 
+  attr_accessor :remember_token, :activation_token 
+  before_create :create_activation_digest
 
   VALID_EMAIL_REGEX = /\A[\w\d\.\_]{4,254}@\w{,6}\.\w{3}\z/
 
@@ -42,5 +43,11 @@ class User < ActiveRecord::Base
   def User.search(search, page)
     order('last_name').where('last_name LIKE ?', "%#{search.capitalize}%").paginate(page: page, per_page: 10)
   end
+
+  private
+    def create_activation_digest
+      self.activation_token = User.new_token
+      self.activation_digest = User.digest(activation_token)
+    end
 
 end

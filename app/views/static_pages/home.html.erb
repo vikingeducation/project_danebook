@@ -17,7 +17,6 @@
 		<div class="col-md-4">
 			<h1>Sign Up</h1>
       <%= form_for :user, url: 'users#create' do |f| %>
-      <!-- <form role="form"> -->
         <div class="row">
           <div class="col-md-6">
             <div class="form-group">
@@ -39,38 +38,11 @@
         <div class="form-group">
           <%= f.password_field :password_confirmation, class: 'form-control', placeholder: 'Confirm your password.' %>
         </div>
-<!--           <div class="form-group">
-          <label>Birthday</label>
-          <div class="row">
-            <div class="col-xs-4">
-              <select class="form-control">
-                <option>Month</option>
-              </select>
-            </div>
-            <div class="col-xs-4">
-              <select class="form-control">
-                <option>Day</option>
-              </select>
-            </div>
-            <div class="col-xs-4">
-              <select class="form-control">
-                <option>Year</option>
-              </select>
-            </div>
-          </div>
-          <div class="form-group">
-            <div class="radio">
-              <label><input type="radio" name="gender">Male</label>
-              <label><input type="radio" name="gender">Female</label>
-            </div>
-          </div> -->
           <div class="form-group">
             <%= f.submit 'Sign up!', id: 'sign-up', class: 'btn btn-success' %>
-            <!-- <button id="sign-up" type="submit" class="btn btn-success">Sign up!</button> -->
           </div>
         </div>
       <% end %>
-<!--         </form> -->
 		</div>
 	</div>  	
 </main>

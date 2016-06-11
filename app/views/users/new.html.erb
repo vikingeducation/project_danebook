@@ -1,19 +1,7 @@
 <main class="container">
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
-      <h1>Sign Up</h1>
-      <%= form_for :user, url: 'users#create' do |f| %>
-        <div class="row">
-          <%= split_column make_pages_form f, :first_name %>
-          <%= split_column make_pages_form f, :last_name %>
-        </div>
-        <% [:email, :password, :password_confirmation].each do |q| %>
-          <%= make_pages_form f, q %>
-        <% end %>
-        <div class="form-group">
-          <%= f.submit 'Sign up!', id: 'sign-up', class: 'btn btn-success' %>
-        </div>
-      <% end %>
+      <%= render 'static_pages/new_user' %>
     </div>
   </div>
 </main>

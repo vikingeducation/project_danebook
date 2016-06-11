@@ -60,11 +60,16 @@ nav.navbar-default {
 }
 
 /* Hiding elements at specific breakpoints */
-@media only screen and (min-width: 768px) and (max-width: 1024px) {
-  .nav-login {
-    display: none;
-  }
+@media (max-width: 990px) {
+ 
 }
+
+
+// @media only screen and (min-width: 768px) and (max-width: 1024px) {
+//   .nav-login {
+//     display: none;
+//   }
+// }
 
 
 

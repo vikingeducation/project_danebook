@@ -1,24 +1,18 @@
 <main class="container">
   <div class="row">
     <div class="col-md-6 col-md-offset-3">
-      <%= form_for(@user) do |f| %>
-        <%= content_tag :h1, 'Sign up', style: 'text-align:center' %>
-        <div class="form-group">
-          <%= f.text_field :first_name, class: 'form-control', placeholder: 'First name' %>
+      <h1>Sign Up</h1>
+      <%= form_for :user, url: 'users#create' do |f| %>
+        <div class="row">
+          <%= split_column make_pages_form f, :first_name %>
+          <%= split_column make_pages_form f, :last_name %>
         </div>
+        <% [:email, :password, :password_confirmation].each do |q| %>
+          <%= make_pages_form f, q %>
+        <% end %>
         <div class="form-group">
-          <%= f.text_field :last_name, class: 'form-control', placeholder: 'Last name' %>
+          <%= f.submit 'Sign up!', id: 'sign-up', class: 'btn btn-success' %>
         </div>
-        <div class="form-group">
-          <%= f.email_field :email, class: 'form-control', placeholder: 'Email address' %>
-        </div>
-        <div class="form-group">
-         <%= f.password_field :password, class: 'form-control', placeholder: 'Password'%>
-        </div>
-        <div class="form-group">
-          <%= f.password_field :password_confirmation, class: 'form-control', placeholder: 'Confirm your password' %>
-        </div>
-        <%= f.submit 'Submit', class: 'btn btn-primary' %>
       <% end %>
     </div>
   </div>

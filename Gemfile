@@ -33,7 +33,8 @@ gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 # Fake names for seeds
 gem 'faker'
-
+# Use pg_search for named scopes using PG's full text search.s
+gem 'pg_search'
 
 # Use Unicorn as the app server
 # gem 'unicorn'

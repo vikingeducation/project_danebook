@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
   attr_accessor :remember_token, :activation_token 
   before_create :create_activation_digest
 
+  include PgSearch
+
   VALID_EMAIL_REGEX = /\A[\w\d\.\_]{4,254}@\w{,6}\.\w{3}\z/
 
   validates_presence_of :first_name, :last_name, :email
@@ -41,7 +43,11 @@ class User < ActiveRecord::Base
 
   #Paginating search results, if any.
   def User.search(search, page)
-    order('last_name').where('last_name LIKE ?', "%#{search.capitalize}%").paginate(page: page, per_page: 10)
+    if search
+      where('last_name LIKE ?', "%#{search.capitalize}%").paginate(page: page, per_page: 10)
+    else
+      scoped
+    end
   end
 
   #Send activation email.

@@ -46,10 +46,10 @@ class User < ActiveRecord::Base
 
   #Paginating search results, if any.
   def User.search(search, page)
-    if search
-      where('last_name LIKE ?', "%#{search.capitalize}%").paginate(page: page, per_page: 10)
+    if !search.empty?
+      search_by_full_name(search).paginate(page: page, per_page: 10)
     else
-      scoped
+      order("last_name ASC").paginate(page: page, per_page: 10)
     end
   end
 

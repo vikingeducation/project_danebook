@@ -47,6 +47,7 @@ class PasswordResetsTest < ActionDispatch::IntegrationTest
   end
 
   test 'should redirect to login page for correct password combination' do
+    old_password = @user.password
     @user.make_reset_digest
     patch password_reset_path(@user.reset_token,email: @user.email),
                               user: { password: 'foobar',

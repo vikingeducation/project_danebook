@@ -10,8 +10,7 @@
 User.create!(first_name: 'Foobar',
              last_name: 'Barbaz',
              email: 'foobar@barbaz.com',
-             password: 'foobar',
-             password_confirmation: 'foobar',
+             password_digest: User.digest('foobar'),
              activated: true,
              activated_at: rand(365).days.ago)
 
@@ -19,12 +18,11 @@ User.create!(first_name: 'Foobar',
   first_name = Faker::Name.first_name
   last_name = Faker::Name.last_name
   email = "fake_email_#{n+1}@fmail.com"
-  password = 'password'
+  password_digest = User.digest('password')
   User.create!(first_name: first_name,
               last_name: last_name,
               email: email,
-              password: password,
-              password_confirmation: password,
+              password_digest: password_digest,
               activated: true,
               activated_at: rand(365).days.ago)
 end

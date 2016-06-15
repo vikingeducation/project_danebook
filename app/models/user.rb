@@ -1,5 +1,5 @@
 class User < ActiveRecord::Base
-  attr_accessor :remember_token, :activation_token 
+  attr_accessor :remember_token, :activation_token, :reset_token
   before_create :create_activation_digest
 
   #pg_search
@@ -40,6 +40,13 @@ class User < ActiveRecord::Base
 
   def forget
     update_attribute :remember_digest, nil
+  end
+
+  #Password reset.
+  def make_reset_digest
+    self.reset_token = User.new_token
+    digest = User.digest(reset_token)
+    update_attribute :reset_digest, digest
   end
 
   #Generalized method for checking token against digest in DB.

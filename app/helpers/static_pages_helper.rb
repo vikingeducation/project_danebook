@@ -1,6 +1,6 @@
 module StaticPagesHelper
 
-  #Check that returns attribute without '_confirmation'.
+  #Test that returns attribute without '_confirmation'.
   def confirmation_check(attribute)
     if /confirmation/.match attribute.to_s
       attribute_parts = attribute.to_s.split('_').map(&:to_sym)
@@ -10,6 +10,7 @@ module StaticPagesHelper
     end
   end
 
+  #Converts attribute to a field.
   def to_field(attribute)
     attribute = confirmation_check attribute
     field = "#{attribute}_field"

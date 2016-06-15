@@ -18,4 +18,11 @@ class UserTest < ActiveSupport::TestCase
     end
   end
 
+  test 'should set reset_digest attribute of User instance' do
+    user = users :test_user
+    user.make_reset_digest
+    assert user.reset_token
+    assert user.reset_digest
+  end
+
 end

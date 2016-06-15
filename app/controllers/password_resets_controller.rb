@@ -17,9 +17,18 @@ class PasswordResetsController < ApplicationController
   end
 
   def edit
+    @user = User.find_by(email: params[:email])
   end
 
   def update
+    @user = User.find_by(email: params[:email])
+    if @user.update_attributes(permit_password_params)
+      flash[:success] = 'Your password has been updated!'
+      redirect_to login_path
+    else
+      flash[:danger] = 'Invalid password combination.'
+      render 'edit'
+    end
   end
 
   private
@@ -29,4 +38,10 @@ class PasswordResetsController < ApplicationController
         redirect_to root_url
       end
     end
+
+    def permit_password_params
+      permissible_params = [:password,:password_confirmation]
+      params.require(:user).permit(permissible_params)
+    end
+
 end

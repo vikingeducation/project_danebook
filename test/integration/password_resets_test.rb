@@ -32,9 +32,27 @@ class PasswordResetsTest < ActionDispatch::IntegrationTest
 
   test 'should show password reset page for correct token and email address' do
     @user.make_reset_digest
-    get edit_password_reset_url(@user.reset_token,
+    get edit_password_reset_path(@user.reset_token,
                                  email: @user.email)
     assert_template 'static_pages/_new_password'
+  end
+
+  test 'should render password reset page for incorrect password combination' do
+    @user.make_reset_digest
+    patch password_reset_path(@user.reset_token,email: @user.email),
+                              user: { password: 'foobar',
+                                      password_confirmation: 'flubber' }
+    assert flash? 'danger'
+    assert_template 'static_pages/_new_password'
+  end
+
+  test 'should redirect to login page for correct password combination' do
+    @user.make_reset_digest
+    patch password_reset_path(@user.reset_token,email: @user.email),
+                              user: { password: 'foobar',
+                                      password_confirmation: 'foobar' }
+    assert flash? 'success'
+    assert_redirected_to login_path
   end
 
 end

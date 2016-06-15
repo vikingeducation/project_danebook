@@ -2,7 +2,9 @@ class User < ActiveRecord::Base
   attr_accessor :remember_token, :activation_token 
   before_create :create_activation_digest
 
+  #pg_search
   include PgSearch
+  pg_search_scope :search_by_full_name, against: [:first_name,:last_name]
 
   VALID_EMAIL_REGEX = /\A[\w\d\.\_]{4,254}@\w{,6}\.\w{3}\z/
 
@@ -12,6 +14,7 @@ class User < ActiveRecord::Base
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
 
   has_secure_password
+
 
   #Token and digest creation for security.
   def User.new_token

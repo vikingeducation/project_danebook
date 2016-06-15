@@ -71,6 +71,11 @@ class User < ActiveRecord::Base
     UserMailer.activation(self).deliver_now
   end
 
+  #Send password reset email.
+  def send_reset_email
+    UserMailer.password_reset(self).deliver_now
+  end
+
   private
     def create_activation_digest
       self.activation_token = User.new_token

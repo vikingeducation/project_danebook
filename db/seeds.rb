@@ -7,6 +7,14 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
+User.create!(first_name: 'Foobar',
+             last_name: 'Barbaz',
+             email: 'foobar@barbaz.com',
+             password: 'foobar',
+             password_confirmation: 'foobar',
+             activated: true,
+             activated_at: rand(365).days.ago)
+
 99.times do |n|
   first_name = Faker::Name.first_name
   last_name = Faker::Name.last_name

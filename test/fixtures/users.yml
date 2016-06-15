@@ -5,6 +5,8 @@ test_user:
   last_name: Virtucio
   email: virtucio_test@test.com
   password_digest: <%= User.digest('password') %>
+  activated: true
+  activated_at: <%= rand(365).days.ago %>
 
 <% 7.times do |n| %>
 virtucio_<%= n %>:

@@ -4,7 +4,12 @@ class User < ActiveRecord::Base
 
   #pg_search
   include PgSearch
-  pg_search_scope :search_by_full_name, against: [:first_name,:last_name]
+  #Defining a pg search scope.
+  pg_search_scope :search_by_full_name, 
+                  against: [:first_name,:last_name],
+                  using: { 
+                    tsearch: { dictionary: :english } 
+                  }
 
   VALID_EMAIL_REGEX = /\A[\w\d\.\_]{4,254}@\w{,6}\.\w{3}\z/
 
@@ -47,6 +52,7 @@ class User < ActiveRecord::Base
   #Paginating search results, if any.
   def User.search(search, page)
     if !search.empty?
+      #Calling the pg search scope defined above.
       search_by_full_name(search).paginate(page: page, per_page: 10)
     else
       order("last_name ASC").paginate(page: page, per_page: 10)

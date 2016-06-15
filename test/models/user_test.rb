@@ -9,4 +9,13 @@ class UserTest < ActiveSupport::TestCase
     assert users.any? { |u| !!(/\ATester\z/.match u.first_name) }
   end
 
+  test 'should match similar names' do
+    VARIANTS = { plural: User.search_by_full_name('virtucios'),
+      possessive: User.search_by_full_name('virtucio\'s'),
+      past_tense: User.search_by_full_name('virtucioed') }
+    assert VARIANTS.all? do |v|
+      v.any? { |u| !!(/\AVirtucio\z/.match u.last_name) }
+    end
+  end
+
 end

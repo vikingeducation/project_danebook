@@ -1,3 +1,3 @@
-# assignment_danebook_pages
+# Danebook Pages
 
-[An HTML5, CSS3, Bootstrap, and SASS project of the Viking Code School](http://www.vikingcodeschool.com)
+An HTML5, CSS3, Bootstrap, and SASS project to build Facebook with a Danish twist.

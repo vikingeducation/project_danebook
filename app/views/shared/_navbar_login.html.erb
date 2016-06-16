@@ -20,7 +20,7 @@
               </div>
               <div class="nav-login form-group col-sm-5">
                 <%= f.password_field :password, class: 'form-control', placeholder: 'Password' %>
-                <%= link_to 'Forgot password?', new_password_reset_path %>
+                <%= link_to 'Forgot password?', new_password_reset_path, class: 'navbar-forgot-pw' %>
               </div>
               <div class="nav-login form-group col-sm-2">
                 <%= f.submit 'Submit', class: 'btn btn-info' %>

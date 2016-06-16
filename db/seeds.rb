@@ -10,7 +10,9 @@
 User.create!(first_name: 'Foobar',
              last_name: 'Barbaz',
              email: 'foobar@barbaz.com',
-             password_digest: User.digest('foobar'),
+             #Use pw + pwc for seeds. Use pw_digest for fixtures.
+             password: 'foobar',
+             password_confirmation: 'foobar',
              activated: true,
              activated_at: rand(365).days.ago)
 
@@ -22,7 +24,8 @@ User.create!(first_name: 'Foobar',
   User.create!(first_name: first_name,
               last_name: last_name,
               email: email,
-              password_digest: password_digest,
+              password: 'foobar',
+              password_confirmation: 'foobar',
               activated: true,
               activated_at: rand(365).days.ago)
 end

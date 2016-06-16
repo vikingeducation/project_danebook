@@ -3,14 +3,14 @@ class SessionsController < ApplicationController
   end
 
   def create
-    @user = User.find_by(email: params[:session][:email])
-    if @user && @user.authenticate(params[:session][:password])
-      log_in @user
-      remember_check @user
+    user = User.find_by(email: params[:session][:email])
+    if user && user.authenticate(params[:session][:password])
+      log_in user
+      remember_check user
       flash[:success] = 'Login successful.'
-      redirect_to @user
+      redirect_to user, locals: { user: user }
     else
-      render 'new'
+      render 'sessions/new', locals: { user: user }
     end
   end
 

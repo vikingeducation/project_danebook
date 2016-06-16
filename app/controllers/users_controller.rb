@@ -5,46 +5,59 @@ class UsersController < ApplicationController
 
 
   def index
+    #will_paginate requires an instance variable.
     @users = User.search(params[:search], params[:page])
+    render 'static_pages/all_users', 
+            locals: { users: @users }
   end
 
   def new
-    @user = User.new
+    user = User.new
+    render 'static_pages/signup', 
+           locals: { user: user }
   end
 
   def create
-    @user = User.new(permitUserParams)
-    if @user.save
-      @user.send_activation_email
+    user = User.new(permitUserParams)
+    if user.save
+      user.send_activation_email
       flash[:info] = 'You have been sent an email containing a link to activate your account.'
       redirect_to root_url
     else
       flash[:danger] = 'Invalid information. Please try again to sign up.'
-      render 'new'
+      render 'static_pages/signup'
     end
   end
 
   def edit
-    @user = User.find(params[:id])
+    user = User.find(params[:id])
+    render 'static_pages/about', 
+           locals: { user: user }, 
+           action: :edit
   end
 
   def update
-    @user = User.find(params[:id])
-    if @user.update_attributes(permitUserParams)
+    user = User.find(params[:id])
+    if user.update_attributes(permitUserParams)
       flash[:success] = "Profile updated"
-      redirect_to @user
+      redirect_to user
     else
-      render 'edit'
+    render 'static_pages/about', 
+           locals: { user: user }, 
+           action: :edit
     end
   end
 
   def show
-    @user = User.find(params[:id])
+    user = User.find(params[:id])
+    render 'static_pages/about', 
+            locals: { user: user },
+            action: :show
   end
 
   def destroy
-    @user = User.find(params[:id])
-    @user.destroy
+    user = User.find(params[:id])
+    user.destroy
     redirect_to users_path
   end
 

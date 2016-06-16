@@ -108,7 +108,9 @@ nav {
 @media only screen and (max-width: 767px) {
   div[role=navigation] {
     padding-left: 0;
-    padding-right: 0; } }
+    padding-right: 0; } 
+  .nav-pills>li+li {
+    margin-left: 0; } }
 
 .nav-pills li {
   border-right: 2px solid black; }

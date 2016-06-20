@@ -1,4 +1,6 @@
 class CommentsController < ApplicationController
+  before_action, :require_login
+
   def create
     @comment = current_user.comments.build(whitelisted_params)
     @comment.post_id = params[:post_id]

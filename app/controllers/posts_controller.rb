@@ -1,4 +1,7 @@
 class PostsController < ApplicationController
+  before_action :require_login, only: [:create, :destroy]
+  before_action :require_current_user, only: [:create, :destroy]
+
   def index
     @user = User.find(params[:user_id])
     @posts = @user.posts.includes(:users_liked)

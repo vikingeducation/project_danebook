@@ -38,6 +38,13 @@ end
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
+end
+
+group :test do
+  gem 'capybara'
+  gem 'launchy'
 end
 
 group :development do
@@ -53,6 +60,10 @@ group :development do
   gem "better_errors"
   gem "binding_of_caller"
   gem 'hirb'
+
+  gem "rails_best_practices"
+
+  gem 'guard-rspec', require: false
 
 end
 

@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  before_action :require_login, except: [:index, :new, :create, :show]
+  before_action :require_current_user, only: [:edit, :update, :destroy]
+
   def index
     @users = User.all
   end
@@ -9,7 +12,6 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @profile = @user.profile
   end
 
   def create
@@ -29,7 +31,7 @@ class UsersController < ApplicationController
   end
 
   def update
-    params[:user][:profile_attributes][:user_id] = params[:id]
+    params[:user][:profile_attributes][:user_id] = current_user.id
     if current_user.update(whitelisted_params)
       flash[:success] = "You succesfully updated your profile"
       redirect_to user_path(current_user)

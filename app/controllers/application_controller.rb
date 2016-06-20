@@ -30,4 +30,18 @@ class ApplicationController < ActionController::Base
   end
   helper_method :sign_in_user?
 
+  def require_login
+    unless sign_in_user?
+      flash[:danger] = "Not Authorized, Please Sign in!"
+      redirect_to root_path
+    end
+  end
+
+  def require_current_user
+    unless params[:id] == current_user.id.to_s
+      flash[:danger] = "Sorry, you cannot see this page"
+      redirect_to root_path
+    end
+  end
+
 end

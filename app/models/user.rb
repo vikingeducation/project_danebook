@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   has_secure_password
 
-  has_one :profile
+  has_one :profile, inverse_of: :user
   has_many :posts, foreign_key: :author_id
   has_many :comments, class_name: "Comment"
 
@@ -12,11 +12,13 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :profile
 
+  validates :email, presence: true
+  
   validates :password,
             :length => { in: 8..24 },
             :allow_nil => true
 
-  validates :email, format: { with: /@/, message: "Please enter a valid email" }
+  validates :email, format: { with: /.*@.*\..*/, message: "Please enter a valid email" }
 
   before_create :generate_token
 

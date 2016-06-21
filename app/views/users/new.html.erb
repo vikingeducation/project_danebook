@@ -1,0 +1,84 @@
+<div id= "homepage">
+	<!-- Main Container -->
+	<div class = "container">
+
+		<div class = "row">
+
+			<!-- Left Section -->
+			<section class = "col-md-7 marketing">
+				<h1>Connect with all your friends!</h1>
+				<ul>
+					<li><strong>See photos and updates</strong> in your feed.</li>
+					<li><strong>Post your status for the world to see</strong> from your profile.</li>
+					<li><strong>Get in touch with your friends</strong> by "friending them".</li>
+					<li><strong>Like things</strong> because you're a positive person!</li>
+				</ul>
+			</section>
+
+			<!-- Right Section -->
+			<section class = "col-md-5 sign-up">
+
+				<div class = "row col-lg-10 col-lg-offset-1">
+					<h2>Sign up</h2>
+
+					<!-- Email and Password -->
+
+					<div class = "row">
+						<%= form_for(@user) do |f| %>
+							<div class='form-group'>
+								<%= f.fields_for(:profile, Profile.new) do |profile| %>
+									<%= profile.text_field :first_name, placeholder: "First Name", class: "form-control" %>
+
+									<%= profile.text_field :last_name, placeholder: "Last Name", class: "form-control" %>
+
+								<%= f.label :email %>
+								<%= message_error(@user, :email) %>
+								<%= f.email_field :email, class: "form-control" %><br>
+							</div>
+
+							<div class='form-group'>
+								<%= f.label :password %>
+								<%= message_error(@user, :password) %>
+								<%= f.password_field :password, class: "form-control" %><br>
+							</div>
+						
+							<div class='form-group'>
+								<%= f.label :password_confirmation %>
+								<%= message_error(@user, :password_confirmation) %>
+								<%= f.password_field :password_confirmation, class: "form-control" %><br>
+							</div>
+
+							<div class='form-group'>
+								<label>
+									Birth Date: <br>
+									<%= select_month(1, {}, 
+													 name: "user[profile_attributes][birth_month]") %>
+									<%= select_day(1, {}, 
+												   name: "user[profile_attributes][birth_day]") %>
+									<%= select_year(Date.today, start_year: 1900, end_year: 2016, 
+													prefix: "user[profile_attributes][birth_year]", 
+													:discard_type => true) %>
+								</label>
+							</div>
+
+							<div class="form-group">
+								<label>
+									<%= profile.radio_button(:gender, "Female") %>
+									Female
+								</label>
+								<label>
+									<%= profile.radio_button(:gender, "Male") %>
+									Male
+								</label>
+							<% end %>
+							</div>
+
+							<%= f.submit "Sign Up !", class: "btn btn-lg btn-primary" %>
+															
+						<% end %>
+					</div>
+				</div>
+			</section>
+		</div>
+	</div>
+</div>

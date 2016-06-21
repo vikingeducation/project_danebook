@@ -1,0 +1,57 @@
+<div id= "about_edit">
+    <%= render "shared/cover" %>
+    <%= render "shared/navigation" %>
+	
+	<!-- About me Section -->
+	<div class = "row big-title-section">
+		<div class = "col-xs-12 text-center">
+			<h2>Edit Profile</h2>
+		</div>
+	</div>
+	<div class = "row">
+		<div class = "col-sm-4 col-sm-offset-1">
+			<h2>Basic Information</h2>
+			<table class = "table">
+				<tr>
+					<td><strong>Birthday:</strong></td>
+					<td>July 31st, 1980</td>
+				</tr>
+				<tr>
+					<td><strong>College:</strong></td>
+					<td><input type="text" value="Hogwarts College"></td>
+				</tr>
+				<tr>
+					<td><strong>Hometown:</strong></td>
+					<td><input type="text" value="Godrick's Hollow, England"></td>
+				</tr>
+				<tr>
+					<td><strong>Currently Lives:</strong></td>
+					<td><input type="text" value="Godrick's Hollow, England"></td>
+				</tr>
+			</table>
+			<h2>Contact Information</h2>
+			<table class="table">
+				<tr>
+					<td><strong>Email:</strong></td>
+					<td><input type="text" value="harry_potter@hogwarts.edu"></td>
+				</tr>
+				<tr>
+					<td><strong>Telephone:</strong></td>
+					<td><input type="text" value="555-123-4567"></td>
+				</tr>
+			</table>
+		</div>
+
+		<div class = "col-sm-5 col-sm-offset-1">
+			<h2>Words to Live By</h2>
+			<textarea rows="3" cols="70">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitat</textarea>
+			<h2>About Me</h2>
+			<textarea rows="6" cols="70"> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</textarea>
+		</div>
+		<div class = "row">
+			<div class = "col-xs-6 col-xs-offset-3">
+				<%= link_to "Save Change", about_path, class: "btn btn-primary btn-block save-change" %>
+			</div>
+		</div>
+	</div>
+</div>

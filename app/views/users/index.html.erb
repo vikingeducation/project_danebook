@@ -1,0 +1,4 @@
+<% @users.each do |user| %>
+	<%= user.email %>
+	<%= link_to "See me", user_path(user) %>
+<% end %>

@@ -1,0 +1,61 @@
+<div id= "about_edit">
+    <%= render "shared/cover" %>
+    <%= render "shared/navigation" %>
+	
+	<!-- About me Section -->
+	<div class = "row big-title-section">
+		<div class = "col-xs-12 text-center">
+			<h2>Edit Profile</h2>
+		</div>
+	</div>
+	<div class = "row">
+		<div class = "col-sm-4 col-sm-offset-1">
+			<h2>Basic Information</h2>
+			<%= form_for(@user) do |f| %>
+			<table class = "table">
+				<%= f.fields_for(:profile) do |profile| %>
+				<tr>
+					<td><strong>Birthday:</strong></td>
+					<td><%= @user.birthday %></td>
+				</tr>
+				<tr>
+					<td><strong>College:</strong></td>
+					<td><%= profile.text_field :college %></td>
+				</tr>
+				<tr>
+					<td><strong>Hometown:</strong></td>
+					<td><%= profile.text_field :hometown %></td>
+				</tr>
+				<tr>
+					<td><strong>Currently Lives:</strong></td>
+					<td><%= profile.text_field :current_address %></td>
+				</tr>
+			</table>
+			<h2>Contact Information</h2>
+			<table class="table">
+				<tr>
+					<td><strong>Email:</strong></td>
+					<td><%= f.text_field :email %></td>
+				</tr>
+				<tr>
+					<td><strong>Telephone:</strong></td>
+					<td><%= profile.text_field :phone %></td>
+				</tr>
+			</table>
+		</div>
+
+		<div class = "col-sm-5 col-sm-offset-1">
+			<h2>Words to Live By</h2>
+			<p><%= profile.text_field :my_words %></p>
+			<h2>About Me</h2>
+			<p><%= profile.text_field :about_me %></p>
+		</div>
+				<% end %>
+		<div class = "row">
+			<div class = "col-xs-6 col-xs-offset-3">
+				<%= f.submit "Save Change", class: "btn btn-primary btn-block save-change" %>
+			</div>
+			<% end %>
+		</div>
+	</div>
+</div>

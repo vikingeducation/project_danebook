@@ -18,7 +18,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.new(permitUserParams)
+    user = User.new(user_params)
     if user.save
       user.send_activation_email
       flash[:info] = 'You have been sent an email containing a link to activate your account.'
@@ -38,7 +38,7 @@ class UsersController < ApplicationController
 
   def update
     user = User.find(params[:id])
-    if user.update_attributes(permitUserParams)
+    if user.update_attributes(user_params)
       flash[:success] = "Profile updated"
       redirect_to user
     else
@@ -62,13 +62,13 @@ class UsersController < ApplicationController
   end
 
   private
-    def permitUserParams
-      permissibleUserParams = [:first_name,
+    def user_params
+      permissible_params = [:first_name,
                                :last_name,
                                :email,
                                :password, 
                                :password_confirmation]
-      params.require(:user).permit(permissibleUserParams)
+      params.require(:user).permit(permissible_params)
     end
 
     def logged_in_user

@@ -60,5 +60,7 @@
     </div>
   </div>
 
-  <%= render partial: 'static_pages/microposts', collection: user.microposts %>
+  <%= render partial: 'static_pages/microposts', collection: microposts %>
+
+  <%= will_paginate(microposts) %>
 </div>

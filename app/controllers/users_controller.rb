@@ -50,8 +50,9 @@ class UsersController < ApplicationController
 
   def show
     user = User.find(params[:id])
+    microposts = user.microposts.paginate(page: params[:page])
     render 'static_pages/about', 
-            locals: { user: user },
+            locals: { user: user, microposts: microposts },
             action: :show
   end
 

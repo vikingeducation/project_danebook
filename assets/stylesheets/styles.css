@@ -1,3 +1,22 @@
+.navbar {
+  background-color: #2B78E4; }
+  .navbar .navbar-brand {
+    color: white;
+    font-size: 200%; }
+    .navbar .navbar-brand img {
+      width: 35px;
+      height: 35px;
+      border-radius: 50%; }
 
+.navbar-default .navbar-nav > li > a {
+  color: white; }
+
+.asdf {
+  background-color: green;
+  height: 1500px;
+  width: 50px; }
+
+body {
+  padding-top: 70px; }
 
 /*# sourceMappingURL=styles.css.map */

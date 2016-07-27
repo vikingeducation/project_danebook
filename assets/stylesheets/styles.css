@@ -8,8 +8,7 @@
     font-size: 200%; }
     .navbar .navbar-brand img {
       width: 35px;
-      height: 35px;
-      border-radius: 50%; }
+      height: 35px; }
   .navbar .navbar-nav > li > a {
     color: white;
     font-size: 150%; }
@@ -26,11 +25,31 @@
   padding-top: 5px; }
 
 body {
-  padding-top: 100px; }
+  padding-top: 65px; }
 
-.asdf {
-  background-color: red;
-  height: 1500px;
-  width: 50px; }
+.cover-banner {
+  height: 450px;
+  background-image: url("../images/hogwarts_small.jpg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat; }
+
+header {
+  position: relative; }
+
+.avatar-lg {
+  bottom: 25px;
+  left: 25px;
+  position: absolute;
+  z-index: 3;
+  border: 4px solid black; }
+
+.yy {
+  height: 55px;
+  background-color: green; }
+
+.qq {
+  height: 55px;
+  background-color: orange;
+  border: 2px solid black; }
 
 /*# sourceMappingURL=styles.css.map */

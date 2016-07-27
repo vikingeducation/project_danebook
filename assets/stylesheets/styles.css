@@ -1,5 +1,8 @@
 .navbar {
-  background-color: #2B78E4; }
+  padding-left: 10%;
+  padding-right: 10%;
+  min-height: 65px;
+  background-color: #3C5A99; }
   .navbar .navbar-brand {
     color: white;
     font-size: 200%; }
@@ -7,16 +10,27 @@
       width: 35px;
       height: 35px;
       border-radius: 50%; }
+  .navbar .navbar-nav > li > a {
+    color: white;
+    font-size: 150%; }
 
-.navbar-default .navbar-nav > li > a {
-  color: white; }
+.form-group input {
+  width: 200%;
+  margin-left: 15%; }
+  @media (max-width: 864px) {
+    .form-group input {
+      width: 160%; } }
 
-.asdf {
-  background-color: green;
-  height: 1500px;
-  width: 50px; }
+.navbar-right,
+.navbar-left {
+  padding-top: 5px; }
 
 body {
-  padding-top: 70px; }
+  padding-top: 100px; }
+
+.asdf {
+  background-color: red;
+  height: 1500px;
+  width: 50px; }
 
 /*# sourceMappingURL=styles.css.map */

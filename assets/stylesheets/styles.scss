@@ -1,7 +1,8 @@
 .navbar {
-  
-  //min-height: 65px;  
-  background-color: #2B78E4;
+  padding-left: 10%;
+  padding-right: 10%;
+  min-height: 65px;  
+  background-color: #3C5A99;
 
   .navbar-brand {
     color: white;
@@ -13,19 +14,42 @@
       border-radius: 50%;
     }
   }
+
+  .navbar-nav > li > a {
+    color: white;
+    font-size: 150%;
+    }
 }
 
-.navbar-default .navbar-nav>li>a {
-    color: white;
+.form-group {  
+  input {
+    width: 200%;
+    margin-left: 15%;
+      @media(max-width:864px) {
+        width: 160%;
+    }
+  }
 }
+
+.navbar-right,
+.navbar-left {
+  padding-top: 5px;
+}
+
+
+
+
+
+body {
+  padding-top: 100px;
+}
+
+
+
 
    
 .asdf {
-  background-color: green;
+  background-color: red;
   height: 1500px;
   width: 50px;
-}
-
-body {
-  padding-top: 70px;
 }

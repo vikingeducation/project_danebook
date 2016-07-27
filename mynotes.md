@@ -4,3 +4,6 @@ navbar fixed to the top... viewport or webpage?
 
 
   Address images flashing large on start up
+
+
+  Revist mobile button

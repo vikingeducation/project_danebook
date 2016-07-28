@@ -10,3 +10,4 @@ navbar fixed to the top... viewport or webpage?
 
   Have only the lower page change, since all have the same header?
   
+--Add links to buttons

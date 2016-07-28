@@ -1,13 +1,11 @@
-.navbar-default {
-  padding: 0 15%; }
-  .navbar-default .img-small {
-    width: 35px;
-    height: 35px;
-    display: inline-block;
-    margin-top: -6px; }
-
 body {
-  padding-top: 65px; }
+  padding-top: 51px; }
+
+.navbar-default .img-small {
+  width: 35px;
+  height: 35px;
+  display: inline-block;
+  margin-top: -6px; }
 
 .cover-banner {
   height: 450px;
@@ -23,7 +21,24 @@ body {
 .avatar-lg {
   position: absolute;
   bottom: 15px;
-  left: 15px;
-  height: 40%; }
+  left: 15px; }
+  .avatar-lg img {
+    height: 225px; }
+  .avatar-lg h3 {
+    font-weight: 900;
+    text-shadow: 0px 0px 15px white;
+    font-size: 200%; }
+
+.mid-title {
+  border: 2px solid black;
+  height: 80px; }
+  .mid-title h2 {
+    font-weight: bold; }
+  .mid-title a {
+    margin-top: 14px; }
+
+.bottom-box {
+  border: 2px solid black;
+  margin-bottom: 55px; }
 
 /*# sourceMappingURL=styles.css.map */

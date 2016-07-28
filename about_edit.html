@@ -1,7 +1,7 @@
 <!-- Your markup here! --><!DOCTYPE html>
 <html>
   <head>
-    <title>Welcome to Danebook</title>
+    <title>Welcome to Danebook - About</title>
     
     <!-- Meta Stuff -->
     <meta charset="utf-8">
@@ -17,47 +17,209 @@
   
   <body>
     <nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-        <a class="navbar-brand"  href="timeline.html">
-          <img src="assets/images/danish_flag.gif" alt="Danish Flag">
-          <span>Danebook</span>
-        </a>
-    </div>
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand"  href="timeline.html">
+            <img src="assets/images/danish_flag.gif" alt="Danish Flag" class="img-circle img-responsive img-small">
+            <span>Danebook</span>
+          </a>
+        </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
-      <form class="navbar-form navbar-left">
-        <div class="form-group">
-          <input type="search" class="form-control" placeholder="Search for Users">
-        </div>        
-      </form>
-      <ul class="nav navbar-nav navbar-right">
-        <li id="aa"><a href="#">Harry</a></li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <form class="navbar-form navbar-left">
+            <div class="form-group">
+              <input type="search" class="form-control" placeholder="Search for Users">
+            </div>        
+          </form>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#">Harry</a></li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
 
 
-  </nav>
+<!--                   -->
+<!--END OF TOP NAVBAR  -->
+<!--                   -->
 
-<!--  -->
-<!--  -->
-<!--  -->
 
   <body>
-    <main>
-      <div class="asdf"></div>
-    </main>
+    <header class="container">
+      <section class="banner row">
+        <div class="col-sm-10 col-sm-offset-1   cover-banner">
+        
+        <div class="avatar-lg">
+          <img src="assets/images/harry_potter_small.jpg" alt="Large User Avatar" class="img-thumbnail img-responsive "> 
+          <h3 class="text-center">
+            Harry Potter
+          </h3>
+        </div>  
+          
+        </div>
+
+
+      </section>
+
+      <section class="row mid-nav" role="group" aria-label="...">  
+        <a class="btn btn-default col-sm-offset-1 col-sm-2" href="timeline.html" role="button">Timeline</a>
+        <a class="btn btn-default col-sm-2" href="about.html" role="button">About</a>
+        <a class="btn btn-default col-sm-2" href="photos.html" role="button">Photos<span class="badge">123</span></a>
+        <a class="btn btn-default col-sm-2" href="friends.html" role="button">Friends<span class="badge">542</span></a>
+        <a class="btn btn-default col-sm-2 active" href="about_edit.html" role="button">Edit Profile</a> 
+      </section>
+  </header>    
+
+  <!--                    -->
+  <!--END OF TOP SECTION  -->
+  <!--                    -->
+<br>
+    <main class="container">
+      <div class="row">
+        <header class="col-xs-offset-1 col-xs-10">
+          <div class="row mid-title">
+            <h2 class="col-xs-12 text-center">
+              Edit Profile
+            </h2>
+          </div>
+<!--  -->
+<!--END OF ABOUT/EDIT PROFILE  -->
+<!--  -->
+        <div class="row bottom-box">
+          <div class="col-md-6 col1">
+
+            <div class="row">
+              <div class="col-xs-12">
+                <h3>Basic Information</h3>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-xs-6">
+                <p><strong>Birthday:</strong></p>
+              </div>
+              <div class="col-xs-6">
+                <p>July 31st, 1980</p>
+              </div>                
+            </div>
+
+            <div class="row">
+              <div class="col-xs-6">
+                <p><strong>College:</strong></p>
+              </div>
+              <div class="col-xs-6">
+                <input type="text" value="Hogwarts College">
+              </div>                
+            </div>              
+
+            <div class="row">
+              <div class="col-xs-6">
+                <p><strong>Hometown:</strong></p> 
+              </div>
+              <div class="col-xs-6">
+                <input type="text" value="Godrick's Hollow, England">                             
+              </div>                
+            </div>
+
+            <div class="row">
+              <div class="col-xs-6">
+                <p><strong>Currently Lives:</strong></p> 
+              </div>
+              <div class="col-xs-6">
+                <input type="text" value="Godrick's Hollow, England">
+              </div>                
+            </div>              
+<!--  -->
+<!--END OF BASIC INFORMATION  -->
+<!--  -->
+              <div class="row">
+               <div class="col-xs-12">
+                  <h3>Contact Information</h3>                              
+                </div>      
+                </div>        
+
+              <div class="row">
+                <div class="col-xs-6">
+                  <p><strong>Email:</strong></p>
+                </div>
+                <div class="col-xs-6">
+                  <p>harry_potter@hogwarts.edu</p>
+                </div>                
+              </div>
+
+              <div class="row">
+                <div class="col-xs-6">
+                  <p><strong>Telephone:</strong></p>
+                </div>
+                <div class="col-xs-6">                  
+                  <input type="text" value="555-123-4567">
+                </div>                
+              </div>    
+            </div>  
+
+<!--  -->
+<!-- END OF LEFT HALF -->
+<!--  -->
+
+           <div class="col-md-6 col2">
+              <div class="row">
+                <div class="col-xs-12">
+                  <h3>Words to Live By</h3>
+                </div>                
+              </div>
+
+              <div class="row">
+                <div class="col-xs-12">
+                <textarea class="form-control" rows="2">
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                </textarea>
+                </div>                
+              </div>                  
+        
+
+<div class="row">
+                <div class="col-xs-12">
+                  <h3>About Me</h3>
+                </div>                
+              </div>
+
+              <div class="row">
+                <div class="col-xs-12">
+                  <textarea class="form-control" rows="10">
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                  </textarea>
+                </div>                
+              </div>                  
+            </div> 
+            <div class="col-sm-offset-3 col-sm-6">
+              <button class="btn btn-primary btn-block save-changes">
+                Save Changes
+              </button>
+            </div>
+          </div> <!-- bottom box (row) end -->
+         </div>
+       </div> 
+      </header>
+    </div>   
+  </main>
+
+
 
 
 <!--  -->
@@ -72,3 +234,6 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>  
   </body>
 </html>
+
+
+

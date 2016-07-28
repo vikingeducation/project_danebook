@@ -40,5 +40,17 @@ body {
 .bottom-box {
   border: 2px solid black;
   margin-bottom: 55px; }
+  .bottom-box input[type=text] {
+    width: 90%; }
+
+.save-changes {
+  border: 2px solid black;
+  margin: 45px 0 100px 0;
+  font-size: 200%;
+  height: 75px; }
+
+.asdf {
+  height: 500px;
+  background-color: green; }
 
 /*# sourceMappingURL=styles.css.map */

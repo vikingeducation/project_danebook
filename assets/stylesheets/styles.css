@@ -49,6 +49,17 @@ body {
   font-size: 200%;
   height: 75px; }
 
+.post {
+  border: 2px solid black; }
+  .post header {
+    border-bottom: 2px solid black; }
+  .post .form-control {
+    margin: 20px 0 20px 0; }
+  .post footer {
+    border-top: 2px solid black; }
+    .post footer a {
+      margin: 15px 0 15px 0; }
+
 .asdf {
   height: 500px;
   background-color: green; }

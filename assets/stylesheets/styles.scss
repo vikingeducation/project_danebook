@@ -79,6 +79,29 @@ body {
 
 
 
+
+.post {
+  border: 2px solid black;
+
+  header {
+    border-bottom: 2px solid black;
+  }
+
+  .form-control {
+    margin: 20px 0 20px 0;
+  }
+
+  footer {
+    border-top: 2px solid black;
+      a {
+        margin: 15px 0 15px 0;
+      }
+  }
+}
+
+
+
+
 .asdf {
   height: 500px;
   background-color: green;

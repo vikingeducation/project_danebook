@@ -76,7 +76,10 @@ body {
   height: 75px;
 }
 
-
+.col1 {
+  background-color: red;
+  height: 55px;
+}
 
 
 
@@ -98,6 +101,38 @@ body {
       }
   }
 }
+
+
+
+
+figure {
+  overflow: hidden;
+  height: 70px;
+  width: 70px;
+  display: inline-block;
+
+  margin: 15px 5px 25px auto;
+
+  img {
+  display: inline-block;
+  }
+}
+
+.img-xs {
+  display: inline-block;
+  //height: 115px;
+}
+
+
+figcaption {
+  display: inline-block;
+  
+}
+
+
+
+
+
 
 
 

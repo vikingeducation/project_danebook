@@ -11,3 +11,9 @@ navbar fixed to the top... viewport or webpage?
   Have only the lower page change, since all have the same header?
   
 --Add links to buttons
+
+--Fix your broken lorem ipsum snippet, fix div.col-xs-2 snipper, 
+
+
+
+bootstrap components >> "Media Heading"

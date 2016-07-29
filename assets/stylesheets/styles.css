@@ -49,6 +49,10 @@ body {
   font-size: 200%;
   height: 75px; }
 
+.col1 {
+  background-color: red;
+  height: 55px; }
+
 .post {
   border: 2px solid black; }
   .post header {
@@ -59,6 +63,21 @@ body {
     border-top: 2px solid black; }
     .post footer a {
       margin: 15px 0 15px 0; }
+
+figure {
+  overflow: hidden;
+  height: 70px;
+  width: 70px;
+  display: inline-block;
+  margin: 15px 5px 25px auto; }
+  figure img {
+    display: inline-block; }
+
+.img-xs {
+  display: inline-block; }
+
+figcaption {
+  display: inline-block; }
 
 .asdf {
   height: 500px;

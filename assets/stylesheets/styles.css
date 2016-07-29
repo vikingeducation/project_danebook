@@ -38,7 +38,6 @@ body {
     margin-top: 14px; }
 
 .bottom-box {
-  border: 2px solid black;
   margin-bottom: 55px; }
   .bottom-box input[type=text] {
     width: 90%; }

@@ -16,6 +16,8 @@ navbar fixed to the top... viewport or webpage?
 
 --Remove BRs
 
+--Check for duplicate >BODY< tags
+
 bootstrap components >> "Media Heading"
 
 

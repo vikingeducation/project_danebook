@@ -18,6 +18,8 @@ navbar fixed to the top... viewport or webpage?
 
 --Check for duplicate >BODY< tags
 
+--add underlines on a href links
+
 bootstrap components >> "Media Heading"
 
 

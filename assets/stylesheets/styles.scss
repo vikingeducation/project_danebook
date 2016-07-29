@@ -76,10 +76,7 @@ body {
   height: 75px;
 }
 
-.col1 {
-  background-color: red;
-  height: 55px;
-}
+
 
 
 
@@ -111,7 +108,7 @@ figure {
   width: 70px;
   display: inline-block;
 
-  margin: 15px 5px 25px auto;
+  //margin: 15px 5px 25px auto;
 
   img {
   display: inline-block;
@@ -141,6 +138,22 @@ figcaption {
   height: 500px;
   background-color: green;
 }
+
+
+
+.box {
+  width: 200px;
+  height: 100px;
+}
+  
+.b {
+  @extend .box;
+  background-color: red;
+}
+
+
+
+
 
 
 

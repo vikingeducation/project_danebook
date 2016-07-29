@@ -14,6 +14,9 @@ navbar fixed to the top... viewport or webpage?
 
 --Fix your broken lorem ipsum snippet, fix div.col-xs-2 snipper, 
 
-
+--Remove BRs
 
 bootstrap components >> "Media Heading"
+
+
+

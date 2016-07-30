@@ -1,6 +1,15 @@
 body {
   padding-top: 51px; }
 
+.rs15 {
+  margin-top: 15px; }
+
+.rs30 {
+  margin-top: 30px; }
+
+.rs45 {
+  margin-top: 45px; }
+
 .navbar-default .img-small {
   width: 35px;
   height: 35px;
@@ -42,18 +51,10 @@ body {
   .bottom-box input[type=text] {
     width: 90%; }
 
-.save-changes {
-  border: 2px solid black;
-  margin: 45px 0 100px 0;
-  font-size: 200%;
-  height: 75px; }
-
 .post {
   border: 2px solid black; }
   .post header {
     border-bottom: 2px solid black; }
-  .post .form-control {
-    margin: 20px 0 20px 0; }
   .post footer {
     border-top: 2px solid black; }
     .post footer a {
@@ -72,10 +73,6 @@ figure {
 
 figcaption {
   display: inline-block; }
-
-.asdf {
-  height: 500px;
-  background-color: green; }
 
 .box, .b {
   width: 200px;

@@ -3,6 +3,22 @@ body {
 }
 
 
+//For space between rows
+.rs15 {
+  margin-top: 15px;
+}
+
+.rs30 {
+  margin-top: 30px;
+}
+
+.rs45 {
+  margin-top: 45px;
+}
+
+
+
+
 .navbar-default {    
   .img-small {
     width: 35px;
@@ -69,13 +85,6 @@ body {
   }
 }
 
-.save-changes {
-  border: 2px solid black;
-  margin: 45px 0 100px 0;
-  font-size: 200%;
-  height: 75px;
-}
-
 
 
 
@@ -88,7 +97,7 @@ body {
   }
 
   .form-control {
-    margin: 20px 0 20px 0;
+    //margin: 20px 0 20px 0;
   }
 
   footer {
@@ -131,13 +140,6 @@ figcaption {
 
 
 
-
-
-
-.asdf {
-  height: 500px;
-  background-color: green;
-}
 
 
 

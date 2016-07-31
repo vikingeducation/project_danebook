@@ -138,25 +138,31 @@ figcaption {
 
 
 
-
-
-
-
-
-.box {
-  width: 200px;
-  height: 100px;
+.img-caption {
+ 
+  position: relative;
 }
-  
-.b {
-  @extend .box;
-  background-color: red;
+
+
+.img-caption:hover .pub-date {
+  visibility: visible;
 }
 
 
 
-
-
+.pub-date {
+  // visibility: hidden;
+  position: absolute;
+  width: 85%;
+  bottom: 15px;
+  left: 18px;
+  box-sizing: border-box;
+  padding: 0 30px;
+  // margin: 0 10px;
+  background-color: black;
+  color: white;
+  opacity: .5;
+}
 
 
 

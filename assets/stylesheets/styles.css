@@ -74,11 +74,21 @@ figure {
 figcaption {
   display: inline-block; }
 
-.box, .b {
-  width: 200px;
-  height: 100px; }
+.img-caption {
+  position: relative; }
 
-.b {
-  background-color: red; }
+.img-caption:hover .pub-date {
+  visibility: visible; }
+
+.pub-date {
+  position: absolute;
+  width: 85%;
+  bottom: 15px;
+  left: 18px;
+  box-sizing: border-box;
+  padding: 0 30px;
+  background-color: black;
+  color: white;
+  opacity: .5; }
 
 /*# sourceMappingURL=styles.css.map */

@@ -20,7 +20,15 @@ navbar fixed to the top... viewport or webpage?
 
 --add underlines on a href links
 
+--<div class="alert alert-alert-success">
+
+--minimum-height vs regular height?
+
+--use glyphicons
+
+--revisit image caption
+
 bootstrap components >> "Media Heading"
 
 
-
+<p class="text-muted">...</p>

@@ -1,3 +1,5 @@
+**Images flashing large on start up **
+
 1) Using forms properly
 2) Screen Reader stuff
 3) Use glyphcons (especially for mobile)

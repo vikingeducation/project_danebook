@@ -1,4 +1,6 @@
+**SUBLIME CODE CLEANUP**
 **Images flashing large on start up **
+**Clean up extraneous/unused**
 
 1) Using forms properly
 2) Screen Reader stuff
@@ -112,7 +114,6 @@ inline form stuff >> http://www.bootply.com/127826
 
 
 
-**Check SB's bootstrap
 
 
 

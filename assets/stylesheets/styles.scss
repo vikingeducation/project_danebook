@@ -15,11 +15,7 @@ $ptc: #337ab7;
 }
 
 
-
-
-
-
-//For space between rows
+//my "palette": space between rows
 .rs15 {
   margin-top: 15px;
 }
@@ -33,13 +29,7 @@ $ptc: #337ab7;
 }
 
 
-
-
-
-
-
-
-
+//CSS begins
 
 body {
   padding-top: 51px;
@@ -73,14 +63,6 @@ body {
     }
   }
 }
-
-
-
-
-
-
-
-
 
 
 .cover-banner {
@@ -133,7 +115,6 @@ text-decoration: none;
 
 
 .bottom-box {
-  // border: 2px solid black;
   margin-bottom: 55px;
 
   //EDIT PROFILE -- text input widths
@@ -141,9 +122,6 @@ text-decoration: none;
     width: 90%;
   }
 }
-
-
-
 
 
 .post {
@@ -164,8 +142,6 @@ text-decoration: none;
       }
   }
 }
-
-
 
 
 figure {
@@ -189,25 +165,30 @@ figure {
 
 figcaption {
   display: inline-block;
-  
-}
+  }
 
-
-
-
+.word {
+  position: relative;
+  }
 
 
 .img-caption:hover .pub-date {
-  display: block;
+  visibility: visible;
 }
 
 .pub-date {
-  display: none;
+  visibility: hidden;
+
+    background-color: black;
+    
+    color: white;
+    bottom: -7px;
+    left: 3%;
+    width: 94%;
+    display: inline;
+    position: absolute;
+    border-radius: 5px;
 }
-
-
-
-
 
 .vertical-align {
   position: absolute;
@@ -216,25 +197,6 @@ figcaption {
   -ms-transform: translateY(-50%);
   transform: translateY(-50%);
 }
-
-
-
-
-
-
-
-//
-//
-//
-//
-//
-//END OF ABOUT PAGE && UPPER PORTION TO BE RE-USED
-//
-//
-//
-//
-//
-
 
 
 

@@ -86,11 +86,22 @@ figure {
 figcaption {
   display: inline-block; }
 
+.word {
+  position: relative; }
+
 .img-caption:hover .pub-date {
-  display: block; }
+  visibility: visible; }
 
 .pub-date {
-  display: none; }
+  visibility: hidden;
+  background-color: black;
+  color: white;
+  bottom: -7px;
+  left: 3%;
+  width: 94%;
+  display: inline;
+  position: absolute;
+  border-radius: 5px; }
 
 .vertical-align {
   position: absolute;

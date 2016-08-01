@@ -1,3 +1,27 @@
+1) Using forms properly
+2) Screen Reader stuff
+3) Use glyphcons (especially for mobile)
+4) Really nuance different mobile techniques
+5) Navbar "next level" -- sb
+6) Have cover caption not increase size
+7) Add an "extra bottom margin" to the bottom of the page, to give the page some room to breath.
+8) Change user's MAIN AVATAR PICTURE to be SQUARE
+9) Pills or Tabs over buttons for mid menu
+10) Read up/Revisit forms
+
+
+<div class="panel panel-primary">...</div>
+
+For "user's name" form/inputs
+<p class="text-capitalize">Capitalized text.</p>
+
+
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 navbar fixed to the top... viewport or webpage?
 
     <meta name="viewport" content="width=device-width, user-scalable=no">

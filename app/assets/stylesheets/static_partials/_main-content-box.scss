@@ -1,0 +1,20 @@
+.main-content-header {
+	text-align: center;
+	border: 1px solid black;
+	margin-top: 20px;
+	background-color: #eee;
+	height: 56px;
+	h2 {
+		display: inline-block;
+		margin-top: 10px;
+	}
+}
+
+.btn-container {
+	text-align: right;
+	margin-top: 10px;
+	a {
+		background-color: #3B5998;
+		border-color: black;
+	}
+}

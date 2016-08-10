@@ -1,0 +1,21 @@
+.info-section {
+	border: 1px solid black;
+	boder-top: 0px;
+	margin-bottom: 100px;
+	li {
+		margin-bottom: 30px;
+	}
+	.topics {
+		li {
+			font-weight: bold;
+		}
+	}
+	.identifying-info {
+		margin-left: 20px;
+	}
+	.personal-info {
+		p:last-child {
+			margin-bottom: 50px;
+		}
+	}
+}

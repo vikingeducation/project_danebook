@@ -1,0 +1,107 @@
+@import '_components';
+
+
+
+/*********   
+NAVBAR
+*********/
+
+
+
+
+.sign_up_nav {
+	background: $facebook-blue;
+	label {
+		display: none;
+		color: #fff;
+		@include media($tablet) {
+			display: initial;
+		}
+	}
+	input {
+		margin-top: 5px;
+	}
+	br {
+		display: none;
+		@include media($tablet) {
+			display: initial;
+		}
+	}
+	@include media($tablet) {
+		height: 100px;
+	}
+}
+
+#logo {
+	color: #fff;
+	font-size: 35px;
+	line-height: 47px;
+	height: 77px;
+	@include media($tablet) {
+		line-height: 70px;
+		height: 100px;
+	}
+}
+
+.sign_in_button {
+	width: 90px;
+	@include media($tablet) {
+		margin-top: 20px;
+	}
+}
+
+.form-control {
+	margin-right: 20px;
+}
+
+.sign_up_nav_form {
+	@include media($tablet) {
+		height: 100px;
+		padding-top: 10px;
+	}
+}
+
+
+
+
+/*********   
+SIGNUP FORM
+*********/
+
+.collapsable_group {
+	input {
+		margin-bottom: 15px;
+		@include media($tablet) {
+			margin-bottom: 0;
+		}
+	}
+	select {
+		margin-bottom: 15px;
+		@include media($tablet) {
+			margin-bottom: 0;
+		}
+	}
+}
+
+
+.sign_up_button {
+	width: 100%;
+}
+
+.info_block {
+	li {
+		font-size: 18px;
+		margin: 15px 0;
+	}
+	@include media($tablet) {
+		margin-top: 50px;
+	}
+}
+
+
+
+
+
+
+
+

@@ -18,7 +18,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.new({ email: user_params[:email], password: user_params[:password] })
+    user = User.new({ email: user_params[:email],                password: user_params[:password] })
     raise
     if user.save
       build_user(user)
@@ -34,7 +34,12 @@ class UsersController < ApplicationController
   def edit
     user = User.find(params[:id])
     render 'static_pages/about', 
-           locals: { user: user, microposts: nil, profile: user.profile, cities: City.all, states: State.all, countries: Country.all }, 
+           locals: { user: user, 
+                     microposts: nil, 
+                     profile: user.profile, 
+                     cities: City.all, 
+                     states: State.all, 
+                     countries: Country.all }, 
            action: :edit
   end
 
@@ -45,17 +50,22 @@ class UsersController < ApplicationController
       redirect_to user
     else
     render 'static_pages/about', 
-           locals: { user: user, profile: user.profile }, 
+           locals: { user: user, 
+                     profile: user.profile }, 
            action: :edit
     end
   end
 
   def show
     user = User.find(params[:id])
-    microposts = user.microposts.paginate(page: params[:page],
-                                          per_page: 4)
+    microposts = user.microposts.paginate(page: params[:page], per_page: 4)
     render 'static_pages/about', 
-            locals: { user: user, microposts: microposts, cities: nil, states: nil, countries: nil, profile: user.profile },
+            locals: { user: user, 
+                      microposts: microposts, 
+                      cities: nil, 
+                      states: nil, 
+                      countries: nil, 
+                      profile: user.profile },
             action: :show
   end
 
@@ -68,10 +78,10 @@ class UsersController < ApplicationController
   private
     def user_params
       permissible_params = [:first_name,
-                               :last_name,
-                               :email,
-                               :password, 
-                               :password_confirmation]
+                            :last_name,
+                            :email,
+                            :password, 
+                            :password_confirmation]
       params.require(:user).permit(permissible_params)
     end
 

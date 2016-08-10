@@ -1,3 +1,305 @@
 // Place all the styles related to the StaticPages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$box-spacing: 20px;
+
+/////////////////////////
+//// Login Page
+////////////////////////
+
+.navbar-fixed-top {
+  background-color: #3B5998;
+  background: linear-gradient(#4e69a2, #3a5795);
+  color: white;
+  border-bottom: 1px solid #1a316d;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, .4);
+
+  #logo {
+    letter-spacing: -.04em;
+    font-size: 36px;
+    text-decoration: none;
+    color: #fff;
+  }
+
+  a {
+    text-decoration: none;
+    color: #fff;
+  }
+}
+
+#navbar-signin {
+  label {
+    display: block;
+    font-size: .8em;
+  }
+
+  button {
+    margin-top: 18px;
+    background-color: #5973a8;
+    border-color: #1a356e;
+  }
+}
+
+.navbar-fixed-top .navbar-toggle .icon-bar {
+    background-color: white;
+}
+
+body {
+  background-color: #edf0f5;
+}
+
+#login-main {
+  margin-top: 100px;
+}
+
+#benefits {
+  font-size: 1.3em;
+  line-height: 2em;
+  margin-top: 50px;
+}
+
+#signup-form {
+  .spacer {
+    margin-bottom: 15px;
+  }
+
+  button {
+    border-color: #3b6e22;
+  }
+}
+
+
+/************************
+      Navbar
+*************************/
+
+.navbar-header {
+      a {
+        font-size: 22px;
+      }
+
+      img {
+        height: 22px;
+        width: 22px;
+        display: inline;
+        margin-right: 5px;
+      }
+    }
+
+// Fixes color of mobile menu button
+.navbar-fixed-top .navbar-toggle .icon-bar {
+    background-color: white;
+}
+
+//responsive search bar
+.navbar-form {
+  display: inline-block;
+
+  @media (min-width: 768px) {
+    .input-group {
+      width: 400px;
+    }
+  }
+
+  @media (min-width: 992px) {
+    .input-group {
+      width: 700px;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .input-group {
+      width: 900px;
+    }
+  }
+}
+
+/************************
+      Header
+*************************/
+header {
+  margin-top: 50px;
+}
+
+/************************
+      Cover Photo
+*************************/
+#cover-photo {
+  background: url("/orm_cover.jpg") no-repeat;
+  background-size: cover;
+  height: 320px;
+  magin-top: 50px;
+
+  img {
+    margin-top: 170px;
+  }
+
+  @media (min-width: 768px) {
+    img {
+      margin-top: 190px;
+    }
+  }
+
+  @media (min-width: 992px) {
+    img {
+      margin-top: 130px;
+    }
+  }
+}
+
+#menu {
+  background-color: #fff;
+
+  .active a {
+    background-color: #edf0f5;
+  }
+
+  a {
+      font-size: 0.7em;
+  }
+
+  @media (min-width: 768px) {
+    a {
+      font-size: 1.0em;
+    }
+  }
+}
+
+/************************
+      Body
+*************************/
+body {
+  background-color: #edf0f5;
+
+  a {
+    text-decoration: none;
+    color: #3b5998;
+  }
+}
+
+main {
+  padding-bottom: $box-spacing;
+}
+
+.profile-box-title {
+  background-color: #eee;
+  border: #000 solid 1px;
+  margin-top: $box-spacing;
+
+  h2 {
+    margin-top: 10px;
+    text-align: center;
+  }
+}
+
+.profile-box {
+  background-color: #fff;
+  padding-top: $box-spacing - 10px;
+  padding-bottom: $box-spacing - 10px;
+  border-right: #000 solid 1px;
+  border-left: #000 solid 1px;
+
+  textarea {
+   resize: none;
+  }
+
+  img {
+    height: 6em;
+  }
+}
+
+.profile-box-bottom {
+  border-bottom: #000 solid 1px;
+}
+
+.comment-row {
+  background-color: #eee;
+}
+
+.center-text {
+  text-align: center;
+}
+
+/************************
+      Timeline Posts
+*************************/
+article > div:first-child {
+  border-top: #000 solid 1px;
+  margin-top: $box-spacing;
+}
+
+article {
+  img {
+    width: 50px;
+    max-height: 50px;
+  }
+
+  time {
+    color: #aaa;
+  }
+}
+
+/************************
+      Friend Boxes
+*************************/
+
+.friend-box {
+  border: #000 solid 1px;
+  padding: 15px 0;
+  margin: 20px;
+
+  span {
+    color: #aaa;
+  }
+
+  .friend-container {
+    margin-top: 25px;
+  }
+
+  img {
+    height: 73.25px;
+  }
+}
+
+/************************
+      Photo page
+*************************/
+
+#photo-page-box {
+  img {
+    width: 100%;
+    position: relative;
+    height: 12em;
+  }
+
+  button {
+    margin-top: 10px;
+  }
+
+  .photo-date {
+    position: absolute;
+    top: 0;
+    left: 15px;
+    right: 15px;
+    bottom: 0;
+    z-index: 100;
+    opacity: 0;
+
+    div {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,.5);
+      color: #fff;
+      text-decoration: none;
+      padding: 10px;
+      font-size: 1.2em;
+    }
+  }
+
+  .photo-date:hover {
+    opacity: 1.0;
+  }
+}

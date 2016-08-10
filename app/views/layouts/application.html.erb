@@ -9,7 +9,15 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<%= render 'shared/nav' %>
+
+  <% if @current_user %>
+    <%= render 'shared/login_nav' %>
+  <% else %>
+    <%= render 'shared/standard_nav' %>
+  <% end %>
+
+  <%= render 'shared/profile_nav', locals: {about: @about, friends: @friends, timeline: @timeline, photos: @photos} unless @home %>
+
   <%= yield %>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>

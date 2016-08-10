@@ -1,0 +1,41 @@
+<main class="container" id="main">
+  <div class="row">
+    <div class="col-xs-12" id="cover-photo">
+    </div>  
+  </div>
+
+  <!-- logic to grey out tab of current page -->
+  <% timeline_grey = about_grey = photos_grey = friends_grey = edit_grey = "" %>
+  <% if @timeline %>
+    <% timeline_grey = "grey-out" %>
+  <% elsif @about %>
+    <% about_grey = "grey-out" %>
+  <% elsif @photos %>
+    <% photos_grey = "grey-out" %>
+  <% elsif @friends %>
+    <% friends_grey = "grey-out" %>
+  <% end %>
+  <!--move conditional css classes to parent div tags-->
+  <div class="row" id="nav-options">
+    <div class="col-xs-2">
+      <div id="profile-photo">
+        <img src="images/harry_potter_small.jpg">
+      </div>
+    </div>
+    <div class="col-xs-2 content-center border-right border-left">
+      <h4><%= link_to "Timeline", timeline_path, class: ["main-nav", timeline_grey] %></h4>  
+    </div>
+    <div class="col-xs-2 content-center border-right grey-background">
+      <h4><%= link_to "About", about_path, class: ["main-nav", about_grey] %> </h4>
+    </div>
+    <div class="col-xs-2 content-center  border-right">
+      <h4><%= link_to "Photos (123)", photos_path, class: "main-nav #{photos_grey}" %> </h4> 
+    </div>
+    <div class="col-xs-2 content-center border-right">
+      <h4><%= link_to "Friends", friends_path, class: "main-nav" %> </h4>
+    </div>
+    <div class="col-xs-2">
+      <%= link_to "Edit Profile", about_edit_path, class: "float-right" %>
+    </div>
+  </div>  
+</main>

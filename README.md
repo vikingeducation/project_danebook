@@ -8,5 +8,3 @@ Danebook
 
 A project for [Viking Code School](http://vikingcodeschool.com)
 
-
-

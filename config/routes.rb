@@ -1,11 +1,12 @@
 Rails.application.routes.draw do
 
   get 'posts/index'
-  get 'users/photos'
-  get 'users/friends'
+
   root 'static_pages#home'
 
-  resources :users
+  resources :users do
+    resource :timeline, only: [:show]
+  end
   resource :session, only: [:new, :create, :destroy]
   get "login" => "sessions#new"
   delete "logout" => "sessions#destroy"

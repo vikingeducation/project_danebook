@@ -19,7 +19,7 @@ class UsersController < ApplicationController
   end
 
 
-  def about
+  def timeline
   end
 
   def friends

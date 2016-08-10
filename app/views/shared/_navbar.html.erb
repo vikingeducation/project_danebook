@@ -6,13 +6,13 @@
           <%= link_to image_tag("/imgs/danish_flag.gif"), timeline_path, class: "navbar-left brand-img" %>
           <%= link_to content_tag(:span, 'Danebook', class: "brand-text"), timeline_path, class: "navbar-brand" %>
         </div>
-          <div class="col-xs-8">
-            <form class="navbar-form" role="search">
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="Search for Users">
-              </div>
-            </form>
-          </div>
+        <div class="col-xs-8">
+          <form class="navbar-form" role="search">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Search for Users">
+            </div>
+          </form>
+        </div>
         <ul class="nav navbar-nav navbar-right">
           <li><%= link_to "Harry", about_path %></li>
         </ul>

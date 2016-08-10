@@ -1,26 +1,3 @@
-<div class="container cover-section">
-  <div class="cover-photo-container">
-    <img class="cover-photo" src="imgs/hogwarts_small.jpg">
-    <img class="profile-img" src="imgs/harry_potter_small.jpg">
-    <h2 class="profile-name">Harry Potter</h2>
-  </div>
-  <div class="row midde-nav-row">
-    <div class="col-xs-7 col-xs-offset-3">
-      <ul class="nav nav-pills middle-nav">
-        <li><a href="timeline.html">Timeline</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="photos.html">Photos <span class="middle-nav-count">(123)</span></a></li>
-        <li><a class="selected" href="friends.html">Friends <span class="middle-nav-count">(542)</span></a></li>
-      </ul>
-    </div>
-    <div class="col-xs-2">
-      <ul class="nav nav-pills">
-        <li class="pull-right edit-link" role="presentation"><a href="about_edit.html">Edit Profile</a></li>
-      </ul>
-    </div>
-  </div>
-</div>
-
 <main>
 	<div class="container about-info-container">
 		<header>
@@ -32,98 +9,9 @@
 		</header>
 
 		<div class="row big-friend-container">
-			<section class="clearfix friend-container-row">
-				<div class="col-xs-5 frd-box">
-					<div class="row">
-						<div class="col-xs-4">
-							<img class="img-responsive friend-prof-photo" src="imgs/user_silhouette_generic.gif">
-						</div>
-						<div class="col-xs-4 frd-links">
-							<a href="#">Hermione Granger</a>
-							<p>432 Friends</p>
-						</div>
-						<div class="col-xs-4 frd-btn-container">
-							<a class="btn btn-default frd-btn" href="#">Unfriend Me</a>
-						</div>
-					</div>
-				</div>
-				<div class="col-xs-5 frd-box">
-					<div class="row">
-						<div class="col-xs-4">
-							<img class="img-responsive friend-prof-photo" src="imgs/user_silhouette_generic.gif">
-						</div>
-						<div class="col-xs-4 frd-links">
-							<a href="#">Hermione Granger</a>
-							<p>432 Friends</p>
-						</div>
-						<div class="col-xs-4 frd-btn-container">
-							<a class="btn btn-default frd-btn" href="#">Unfriend Me</a>
-						</div>
-					</div>
-				</div>
-			</section>
-
-			<section class="clearfix friend-container-row">
-				<div class="col-xs-5 frd-box">
-					<div class="row">
-						<div class="col-xs-4">
-							<img class="img-responsive friend-prof-photo" src="imgs/user_silhouette_generic.gif">
-						</div>
-						<div class="col-xs-4 frd-links">
-							<a href="#">Hermione Granger</a>
-							<p>432 Friends</p>
-						</div>
-						<div class="col-xs-4 frd-btn-container">
-							<a class="btn btn-default frd-btn" href="#">Unfriend Me</a>
-						</div>
-					</div>
-				</div>
-				<div class="col-xs-5 frd-box">
-					<div class="row">
-						<div class="col-xs-4">
-							<img class="img-responsive friend-prof-photo" src="imgs/user_silhouette_generic.gif">
-						</div>
-						<div class="col-xs-4 frd-links">
-							<a href="#">Hermione Granger</a>
-							<p>432 Friends</p>
-						</div>
-						<div class="col-xs-4 frd-btn-container">
-							<a class="btn btn-default frd-btn" href="#">Unfriend Me</a>
-						</div>
-					</div>
-				</div>
-			</section>
-
-			<section class="clearfix friend-container-row">
-				<div class="col-xs-5 frd-box">
-					<div class="row">
-						<div class="col-xs-4">
-							<img class="img-responsive friend-prof-photo" src="imgs/user_silhouette_generic.gif">
-						</div>
-						<div class="col-xs-4 frd-links">
-							<a href="#">Hermione Granger</a>
-							<p>432 Friends</p>
-						</div>
-						<div class="col-xs-4 frd-btn-container">
-							<a class="btn btn-default frd-btn" href="#">Unfriend Me</a>
-						</div>
-					</div>
-				</div>
-				<div class="col-xs-5 frd-box">
-					<div class="row">
-						<div class="col-xs-4">
-							<img class="img-responsive friend-prof-photo" src="imgs/user_silhouette_generic.gif">
-						</div>
-						<div class="col-xs-4 frd-links">
-							<a href="#">Hermione Granger</a>
-							<p>432 Friends</p>
-						</div>
-						<div class="col-xs-4 frd-btn-container">
-							<a class="btn btn-default frd-btn" href="#">Unfriend Me</a>
-						</div>
-					</div>
-				</div>
-			</section>
+			<% 3.times do %>
+        <%= render "shared/friends-section-row" %>
+      <% end %>
 		</div>
 	</div>
 </main>

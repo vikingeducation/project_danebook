@@ -3,8 +3,8 @@
     <div class="container-fluid">
       <div class="container">
         <div class="navbar-header">
-          <a href="timeline.html" class="navbar-left brand-img"><img src="imgs/danish_flag.gif"></a>
-          <a class="navbar-brand" href="timeline.html"><span class="brand-text">Danebook</span></a>
+          <%= link_to image_tag("/imgs/danish_flag.gif"), timeline_path, class: "navbar-left brand-img" %>
+          <%= link_to content_tag(:span, 'Danebook', class: "brand-text"), timeline_path, class: "navbar-brand" %>
         </div>
           <div class="col-xs-8">
             <form class="navbar-form" role="search">
@@ -14,7 +14,7 @@
             </form>
           </div>
         <ul class="nav navbar-nav navbar-right">
-            <li><a href="about.html">Harry</a></li>
+          <li><%= link_to "Harry", about_path %></li>
         </ul>
       </div>
     </div>

@@ -13,17 +13,17 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="navbar-signin">
-      <form class="navbar-form navbar-right">
+      <%= form_tag(login_path, class: "navbar-form navbar-right") do |f| %>
         <div class="form-group">
           <label>Email</label>
-          <input type="email" class="form-control" placeholder="user@danebook.com">
+          <input type="email" name="email" class="form-control" placeholder="user@danebook.com">
         </div>
         <div class="form-group">
           <label>Password</label>
-          <input type="password" class="form-control" placeholder="password">
+          <input type="password" name="password" class="form-control" placeholder="password">
         </div>
         <button type="submit" class="btn btn-success">Sign in</button>
-      </form>
+      <% end %>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container -->
 </nav>

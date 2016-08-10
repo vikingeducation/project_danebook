@@ -1,6 +1,8 @@
 class StaticPagesController < ApplicationController
-  def home
+  skip_before_action :require_login, only: [:home]
 
+  def home
+    @user = User.new
   end
 
   def timeline

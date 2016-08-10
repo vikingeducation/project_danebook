@@ -6,4 +6,10 @@ Rails.application.routes.draw do
   get "friends" => "static_pages#friends"
   get "about" => "static_pages#about"
   get "photos" => "static_pages#photos"
+
+  post "login" => "sessions#create"
+  post "logout" => "sessions#destroy"
+
+  resources :users
+  resource :session, :only => [:new, :create, :destroy]
 end

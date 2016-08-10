@@ -19,32 +19,32 @@
       </div>
 
 
-      <form>
+      <%= form_tag(users_path) do |f| %>
         <div class="form-group">
           <div class="col-sm-6 spacer">
-            <input type="text" class="form-control" placeholder="First Name">
+            <input type="text" class="form-control" placeholder="First Name" name="user[first_name]">
           </div>
 
           <div class="col-sm-6 spacer">
-            <input type="text" class="form-control" placeholder="Last Name">
+            <input type="text" class="form-control" placeholder="Last Name" name="user[last_name]">
           </div>
         </div>
 
         <div class="form-group">
           <div class="col-sm-12 spacer">
-            <input type="email" class="form-control" placeholder="Your email">
+            <input type="email" class="form-control" placeholder="Your email" name="user[email]">
           </div>
         </div>
 
         <div class="form-group">
           <div class="col-sm-12 spacer">
-            <input type="password" class="form-control col-sm-12" placeholder="Your new password">
+            <input type="password" class="form-control col-sm-12" placeholder="Your new password" name="user[password]">
           </div>
         </div>
 
         <div class="form-group">
           <div class="col-sm-12">
-            <input type="password" class="form-control col-sm-12" placeholder="Confirm your password">
+            <input type="password" class="form-control col-sm-12" placeholder="Confirm your password" name="user[password_confirmation]">
           </div>
         </div>
 
@@ -53,7 +53,7 @@
         </div>
 
         <div class="col-sm-3 spacer">
-          <select class="form-control">
+          <select class="form-control" name="user[birthday_month]">
             <option>January</option>
             <option>Febrary</option>
             <option>March</option>
@@ -70,7 +70,7 @@
         </div>
 
         <div class="col-sm-2 spacer">
-          <select class="form-control">
+          <select class="form-control" name="user[birthday_day]">
             <option>1</option>
             <option>2</option>
             <option>3</option>
@@ -106,7 +106,7 @@
         </div>
 
         <div class="col-sm-3 spacer">
-          <select class="form-control">
+          <select class="form-control" name="user[birthday_year]">
             <option>1910</option>
             <option>1911</option>
             <option>1912</option>
@@ -220,19 +220,19 @@
         <div class="col-sm-12 spacer">
           <div class="radio-group">
             <label class="radio-inline col-sm-2">
-              <input type="radio" name="gender" id="inlineRadio2" value="female"> Female
+              <input type="radio" name="user[gender]" id="inlineRadio2" value="female"> Female
             </label>
             <label class="radio-inline col-sm-2">
-              <input type="radio" name="gender" id="inlineRadio1" value="male"> Male
+              <input type="radio" name="user[gender]" id="inlineRadio1" value="male"> Male
             </label>
           </div>
         </div>
 
 
         <div class="col-sm-10 col-sm-offset-1">
-          <button type="submit" class="btn btn-success btn-lg btn-block">Submit</button>
+          <input type="submit" class="btn btn-success btn-lg btn-block" value="Sign up!">
         </div>
-      </form>
+      <% end %>
     </div>
   </div>
 </main>

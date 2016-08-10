@@ -2763,3 +2763,2372 @@ Processing by StaticPagesController#timeline as HTML
 Completed 200 OK in 497ms (Views: 483.8ms | ActiveRecord: 0.0ms)
 
 
+  [1m[35m (41.1ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying PRIMARY KEY)[0m
+  [1m[35m (6.3ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8115692404137957555);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateUsers (20160810225657)
+  [1m[35m (1.0ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(8115692404137957555)[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8115692404137957555);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateUsers (20160810225657)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (17.9ms)[0m  [1m[35mCREATE TABLE "users" ("id" serial primary key, "first_name" character varying, "email" character varying, "password_digest" character varying, "auth_token" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_users_on_auth_token" ON "users"  ("auth_token")[0m
+  [1m[35mSQL (7.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20160810225657"]]
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (2.1ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.3ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", 2016-08-10 22:59:37 UTC], ["updated_at", 2016-08-10 22:59:37 UTC]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(8115692404137957555)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (12.4ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8115692404137957555);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddLastNameToUsers (20160810230143)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (5.8ms)[0m  [1m[35mALTER TABLE "users" ADD "last_name" character varying[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20160810230143"]]
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_advisory_unlock(8115692404137957555)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (7.7ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+Started GET "/" for ::1 at 2016-08-10 16:15:32 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by StaticPagesController#home as HTML
+Completed 500 Internal Server Error in 115ms (ActiveRecord: 0.0ms)
+
+
+
+NameError - undefined local variable or method `login_path' for #<StaticPagesController:0x007fd1938608c8>:
+  app/controllers/application_controller.rb:38:in `require_login'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:382:in `block in make_lambda'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:169:in `block (2 levels) in halting'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/abstract_controller/callbacks.rb:12:in `block (2 levels) in <module:Callbacks>'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:170:in `block in halting'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:454:in `block in call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:454:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:101:in `__run_callbacks__'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:750:in `_run_process_action_callbacks'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:90:in `run_callbacks'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/abstract_controller/callbacks.rb:19:in `process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/rescue.rb:20:in `process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/notifications.rb:164:in `block in instrument'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/notifications.rb:164:in `instrument'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/params_wrapper.rb:248:in `process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activerecord-5.0.0/lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/abstract_controller/base.rb:126:in `process'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/rendering.rb:30:in `process'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal.rb:190:in `dispatch'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal.rb:262:in `dispatch'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/routing/route_set.rb:32:in `serve'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/journey/router.rb:39:in `block in serve'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/journey/router.rb:26:in `serve'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/routing/route_set.rb:725:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/etag.rb:25:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/conditional_get.rb:25:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/head.rb:12:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/session/abstract/id.rb:222:in `context'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/session/abstract/id.rb:216:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/cookies.rb:613:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activerecord-5.0.0/lib/active_record/migration.rb:552:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:90:in `run_callbacks'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/executor.rb:12:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:57:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+  web-console (3.3.1) lib/web_console/middleware.rb:131:in `call_app'
+  web-console (3.3.1) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (3.3.1) lib/web_console/middleware.rb:18:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/railties-5.0.0/lib/rails/rack/logger.rb:36:in `call_app'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/railties-5.0.0/lib/rails/rack/logger.rb:24:in `block in call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/tagged_logging.rb:70:in `block in tagged'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/tagged_logging.rb:26:in `tagged'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/tagged_logging.rb:70:in `tagged'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/railties-5.0.0/lib/rails/rack/logger.rb:24:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/sprockets-rails-3.1.1/lib/sprockets/rails/quiet_assets.rb:13:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/request_id.rb:24:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/method_override.rb:22:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/runtime.rb:22:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/executor.rb:12:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/static.rb:136:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/sendfile.rb:111:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/railties-5.0.0/lib/rails/engine.rb:522:in `call'
+  puma (3.6.0) lib/puma/configuration.rb:225:in `call'
+  puma (3.6.0) lib/puma/server.rb:578:in `handle_request'
+  puma (3.6.0) lib/puma/server.rb:415:in `process_client'
+  puma (3.6.0) lib/puma/server.rb:275:in `block in run'
+  puma (3.6.0) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+
+Started POST "/__better_errors/2156f8a2a4805015/variables" for ::1 at 2016-08-10 16:15:33 -0700
+Started GET "/" for ::1 at 2016-08-10 16:16:16 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 10ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:16 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:16 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:16 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:16 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:16 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:16 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:16 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:16 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:16 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:16 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:16 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:16 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:16 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:16 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:16 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:16 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:16 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:16 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:16 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:16 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:16 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:16 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:16 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:16 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:16 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:16 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:16 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:16 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:16 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:16 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:16 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:16 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:16 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:16 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:16 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:16 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:16 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:16 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:16 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:16 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:16 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:21 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:21 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:22 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:22 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:22 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:22 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:22 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:22 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:22 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:22 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:22 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:22 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:22 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:22 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:22 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:22 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:22 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:22 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:22 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:22 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:22 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:52 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:52 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:52 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:52 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:52 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:52 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:52 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:52 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:52 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:52 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:52 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:52 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:52 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:52 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:52 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:52 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:52 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:52 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:52 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:52 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:16:52 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:17:52 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:17:52 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:17:52 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:17:52 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:17:52 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:17:52 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:17:52 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:17:52 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:17:52 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:17:52 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:17:52 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:17:52 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:17:52 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:17:52 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:17:52 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:17:52 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:17:52 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:17:52 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:17:52 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:17:52 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:17:52 -0700
+Processing by StaticPagesController#home as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:17:58 -0700
+
+ArgumentError - Before process_action callback :only has not been defined:
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:641:in `block (2 levels) in skip_callback'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:637:in `block in skip_callback'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:568:in `block in __update_callbacks'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:566:in `__update_callbacks'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:636:in `skip_callback'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/abstract_controller/callbacks.rb:210:in `block (3 levels) in <module:ClassMethods>'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/abstract_controller/callbacks.rb:93:in `block in _insert_callbacks'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/abstract_controller/callbacks.rb:92:in `_insert_callbacks'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/abstract_controller/callbacks.rb:209:in `block (2 levels) in <module:ClassMethods>'
+  app/controllers/static_pages_controller.rb:2:in `<class:StaticPagesController>'
+  app/controllers/static_pages_controller.rb:1:in `<top (required)>'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/dependencies.rb:477:in `block in load_file'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/dependencies.rb:662:in `new_constants_in'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/dependencies.rb:476:in `load_file'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/dependencies.rb:375:in `block in require_or_load'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/dependencies.rb:37:in `block in load_interlock'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/dependencies/interlock.rb:12:in `block in loading'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/concurrency/share_lock.rb:117:in `exclusive'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/dependencies/interlock.rb:11:in `loading'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/dependencies.rb:37:in `load_interlock'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/dependencies.rb:358:in `require_or_load'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/dependencies.rb:511:in `load_missing_constant'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/dependencies.rb:203:in `const_missing'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/inflector/methods.rb:268:in `block in constantize'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/inflector/methods.rb:266:in `constantize'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/dependencies.rb:583:in `get'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/dependencies.rb:614:in `constantize'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/http/request.rb:93:in `controller_class'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/routing/route_set.rb:44:in `controller'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/routing/route_set.rb:30:in `serve'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/journey/router.rb:39:in `block in serve'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/journey/router.rb:26:in `serve'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/routing/route_set.rb:725:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/etag.rb:25:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/conditional_get.rb:25:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/head.rb:12:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/session/abstract/id.rb:222:in `context'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/session/abstract/id.rb:216:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/cookies.rb:613:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activerecord-5.0.0/lib/active_record/migration.rb:552:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:90:in `run_callbacks'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/executor.rb:12:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:57:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+  web-console (3.3.1) lib/web_console/middleware.rb:131:in `call_app'
+  web-console (3.3.1) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (3.3.1) lib/web_console/middleware.rb:18:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/railties-5.0.0/lib/rails/rack/logger.rb:36:in `call_app'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/railties-5.0.0/lib/rails/rack/logger.rb:24:in `block in call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/tagged_logging.rb:70:in `block in tagged'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/tagged_logging.rb:26:in `tagged'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/tagged_logging.rb:70:in `tagged'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/railties-5.0.0/lib/rails/rack/logger.rb:24:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/sprockets-rails-3.1.1/lib/sprockets/rails/quiet_assets.rb:13:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/request_id.rb:24:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/method_override.rb:22:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/runtime.rb:22:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/executor.rb:12:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/static.rb:136:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/sendfile.rb:111:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/railties-5.0.0/lib/rails/engine.rb:522:in `call'
+  puma (3.6.0) lib/puma/configuration.rb:225:in `call'
+  puma (3.6.0) lib/puma/server.rb:578:in `handle_request'
+  puma (3.6.0) lib/puma/server.rb:415:in `process_client'
+  puma (3.6.0) lib/puma/server.rb:275:in `block in run'
+  puma (3.6.0) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+
+Started POST "/__better_errors/aed8ed21b30d6860/variables" for ::1 at 2016-08-10 16:17:58 -0700
+Started GET "/" for ::1 at 2016-08-10 16:18:56 -0700
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (3.3ms)
+  Rendered shared/_navbar_login.html.erb (0.9ms)
+Completed 200 OK in 725ms (Views: 720.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:24:51 -0700
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (4.0ms)
+  Rendered shared/_navbar_login.html.erb (0.8ms)
+Completed 200 OK in 180ms (Views: 177.0ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:25:09 -0700
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (2.5ms)
+  Rendered shared/_navbar_login.html.erb (1.2ms)
+Completed 200 OK in 125ms (Views: 121.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:26:01 -0700
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (109.9ms)
+Completed 500 Internal Server Error in 168ms (ActiveRecord: 13.3ms)
+
+
+DEPRECATION WARNING: #original_exception is deprecated. Use #cause instead. (called from initialize at /Users/philip/.rvm/gems/ruby-2.3.1/gems/better_errors-2.1.1/lib/better_errors/raised_exception.rb:7)
+DEPRECATION WARNING: #original_exception is deprecated. Use #cause instead. (called from initialize at /Users/philip/.rvm/gems/ruby-2.3.1/gems/better_errors-2.1.1/lib/better_errors/raised_exception.rb:8)
+
+NoMethodError - undefined method `users_path' for #<#<Class:0x007fd1933d9610>:0x007fd1949ee9a0>:
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/routing/polymorphic_routes.rb:262:in `handle_model_call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/routing_url_for.rb:116:in `url_for'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/helpers/form_tag_helper.rb:838:in `block in html_options_for_form'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/helpers/form_tag_helper.rb:834:in `html_options_for_form'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/helpers/form_tag_helper.rb:68:in `form_tag'
+  app/views/static_pages/home.html.erb:22:in `_app_views_static_pages_home_html_erb___2525669498108872355_70269047592060'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/template.rb:158:in `block in render'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/notifications.rb:166:in `instrument'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/template.rb:348:in `instrument'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/template.rb:156:in `render'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/renderer/template_renderer.rb:54:in `block (2 levels) in render_template'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/renderer/abstract_renderer.rb:42:in `block in instrument'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/notifications.rb:164:in `block in instrument'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/notifications.rb:164:in `instrument'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/renderer/abstract_renderer.rb:41:in `instrument'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/renderer/template_renderer.rb:53:in `block in render_template'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/renderer/template_renderer.rb:61:in `render_with_layout'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/renderer/template_renderer.rb:52:in `render_template'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/renderer/template_renderer.rb:14:in `render'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/renderer/renderer.rb:42:in `render_template'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/renderer/renderer.rb:23:in `render'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/rendering.rb:103:in `_render_template'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/streaming.rb:217:in `_render_template'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/rendering.rb:83:in `render_to_body'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/rendering.rb:52:in `render_to_body'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/renderers.rb:144:in `render_to_body'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/abstract_controller/rendering.rb:26:in `render'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/rendering.rb:36:in `render'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/instrumentation.rb:44:in `block (2 levels) in render'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /Users/philip/.rvm/rubies/ruby-2.3.1/lib/ruby/2.3.0/benchmark.rb:308:in `realtime'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/core_ext/benchmark.rb:12:in `ms'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/instrumentation.rb:44:in `block in render'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/instrumentation.rb:87:in `cleanup_view_runtime'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activerecord-5.0.0/lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/instrumentation.rb:43:in `render'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/implicit_render.rb:36:in `default_render'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/basic_implicit_render.rb:4:in `block in send_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/basic_implicit_render.rb:4:in `send_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/abstract_controller/base.rb:188:in `process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/rendering.rb:30:in `process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:126:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:506:in `block (2 levels) in compile'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:455:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:101:in `__run_callbacks__'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:750:in `_run_process_action_callbacks'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:90:in `run_callbacks'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/abstract_controller/callbacks.rb:19:in `process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/rescue.rb:20:in `process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/notifications.rb:164:in `block in instrument'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/notifications.rb:164:in `instrument'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/params_wrapper.rb:248:in `process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activerecord-5.0.0/lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/abstract_controller/base.rb:126:in `process'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/rendering.rb:30:in `process'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal.rb:190:in `dispatch'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal.rb:262:in `dispatch'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/routing/route_set.rb:32:in `serve'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/journey/router.rb:39:in `block in serve'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/journey/router.rb:26:in `serve'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/routing/route_set.rb:725:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/etag.rb:25:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/conditional_get.rb:25:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/head.rb:12:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/session/abstract/id.rb:222:in `context'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/session/abstract/id.rb:216:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/cookies.rb:613:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activerecord-5.0.0/lib/active_record/migration.rb:552:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:90:in `run_callbacks'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/executor.rb:12:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:57:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+  web-console (3.3.1) lib/web_console/middleware.rb:131:in `call_app'
+  web-console (3.3.1) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (3.3.1) lib/web_console/middleware.rb:18:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/railties-5.0.0/lib/rails/rack/logger.rb:36:in `call_app'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/railties-5.0.0/lib/rails/rack/logger.rb:24:in `block in call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/tagged_logging.rb:70:in `block in tagged'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/tagged_logging.rb:26:in `tagged'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/tagged_logging.rb:70:in `tagged'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/railties-5.0.0/lib/rails/rack/logger.rb:24:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/sprockets-rails-3.1.1/lib/sprockets/rails/quiet_assets.rb:13:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/request_id.rb:24:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/method_override.rb:22:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/runtime.rb:22:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/executor.rb:12:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/static.rb:136:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/sendfile.rb:111:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/railties-5.0.0/lib/rails/engine.rb:522:in `call'
+  puma (3.6.0) lib/puma/configuration.rb:225:in `call'
+  puma (3.6.0) lib/puma/server.rb:578:in `handle_request'
+  puma (3.6.0) lib/puma/server.rb:415:in `process_client'
+  puma (3.6.0) lib/puma/server.rb:275:in `block in run'
+  puma (3.6.0) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+
+Started POST "/__better_errors/e10fe20946b480b1/variables" for ::1 at 2016-08-10 16:26:02 -0700
+Started GET "/" for ::1 at 2016-08-10 16:27:21 -0700
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (2.3ms)
+Completed 500 Internal Server Error in 10ms (ActiveRecord: 0.0ms)
+
+
+
+SyntaxError - syntax error, unexpected tIVAR, expecting keyword_end
+...sers_path, method: :post) @user do |f| @output_buffer.safe_a...
+...                               ^
+/Users/philip/Dropbox/Viking/project_danebook/app/views/static_pages/home.html.erb:240: syntax error, unexpected keyword_ensure, expecting end-of-input:
+  app/views/static_pages/home.html.erb:22:in `'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/template.rb:309:in `compile'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/template.rb:258:in `block (2 levels) in compile!'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/notifications.rb:166:in `instrument'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/template.rb:350:in `instrument'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/template.rb:257:in `block in compile!'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/template.rb:245:in `compile!'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/template.rb:157:in `block in render'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/notifications.rb:166:in `instrument'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/template.rb:348:in `instrument'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/template.rb:156:in `render'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/renderer/template_renderer.rb:54:in `block (2 levels) in render_template'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/renderer/abstract_renderer.rb:42:in `block in instrument'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/notifications.rb:164:in `block in instrument'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/notifications.rb:164:in `instrument'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/renderer/abstract_renderer.rb:41:in `instrument'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/renderer/template_renderer.rb:53:in `block in render_template'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/renderer/template_renderer.rb:61:in `render_with_layout'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/renderer/template_renderer.rb:52:in `render_template'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/renderer/template_renderer.rb:14:in `render'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/renderer/renderer.rb:42:in `render_template'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/renderer/renderer.rb:23:in `render'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/rendering.rb:103:in `_render_template'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/streaming.rb:217:in `_render_template'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/rendering.rb:83:in `render_to_body'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/rendering.rb:52:in `render_to_body'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/renderers.rb:144:in `render_to_body'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/abstract_controller/rendering.rb:26:in `render'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/rendering.rb:36:in `render'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/instrumentation.rb:44:in `block (2 levels) in render'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /Users/philip/.rvm/rubies/ruby-2.3.1/lib/ruby/2.3.0/benchmark.rb:308:in `realtime'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/core_ext/benchmark.rb:12:in `ms'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/instrumentation.rb:44:in `block in render'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/instrumentation.rb:87:in `cleanup_view_runtime'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activerecord-5.0.0/lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/instrumentation.rb:43:in `render'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/implicit_render.rb:36:in `default_render'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/basic_implicit_render.rb:4:in `block in send_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/basic_implicit_render.rb:4:in `send_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/abstract_controller/base.rb:188:in `process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/rendering.rb:30:in `process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:126:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:506:in `block (2 levels) in compile'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:455:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:101:in `__run_callbacks__'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:750:in `_run_process_action_callbacks'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:90:in `run_callbacks'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/abstract_controller/callbacks.rb:19:in `process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/rescue.rb:20:in `process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/notifications.rb:164:in `block in instrument'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/notifications.rb:164:in `instrument'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/params_wrapper.rb:248:in `process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activerecord-5.0.0/lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/abstract_controller/base.rb:126:in `process'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/rendering.rb:30:in `process'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal.rb:190:in `dispatch'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal.rb:262:in `dispatch'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/routing/route_set.rb:32:in `serve'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/journey/router.rb:39:in `block in serve'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/journey/router.rb:26:in `serve'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/routing/route_set.rb:725:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/etag.rb:25:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/conditional_get.rb:25:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/head.rb:12:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/session/abstract/id.rb:222:in `context'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/session/abstract/id.rb:216:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/cookies.rb:613:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activerecord-5.0.0/lib/active_record/migration.rb:552:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:90:in `run_callbacks'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/executor.rb:12:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:57:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+  web-console (3.3.1) lib/web_console/middleware.rb:131:in `call_app'
+  web-console (3.3.1) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (3.3.1) lib/web_console/middleware.rb:18:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/railties-5.0.0/lib/rails/rack/logger.rb:36:in `call_app'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/railties-5.0.0/lib/rails/rack/logger.rb:24:in `block in call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/tagged_logging.rb:70:in `block in tagged'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/tagged_logging.rb:26:in `tagged'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/tagged_logging.rb:70:in `tagged'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/railties-5.0.0/lib/rails/rack/logger.rb:24:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/sprockets-rails-3.1.1/lib/sprockets/rails/quiet_assets.rb:13:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/request_id.rb:24:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/method_override.rb:22:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/runtime.rb:22:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/executor.rb:12:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/static.rb:136:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/sendfile.rb:111:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/railties-5.0.0/lib/rails/engine.rb:522:in `call'
+  puma (3.6.0) lib/puma/configuration.rb:225:in `call'
+  puma (3.6.0) lib/puma/server.rb:578:in `handle_request'
+  puma (3.6.0) lib/puma/server.rb:415:in `process_client'
+  puma (3.6.0) lib/puma/server.rb:275:in `block in run'
+  puma (3.6.0) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+
+Started POST "/__better_errors/3be07a9dcf32a335/variables" for ::1 at 2016-08-10 16:27:22 -0700
+Started GET "/" for ::1 at 2016-08-10 16:29:25 -0700
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (3.9ms)
+Completed 500 Internal Server Error in 31ms (ActiveRecord: 0.0ms)
+
+
+
+SyntaxError - syntax error, unexpected tIVAR, expecting keyword_end
+...sers_path, method: :post) @user do |f| @output_buffer.safe_a...
+...                               ^
+/Users/philip/Dropbox/Viking/project_danebook/app/views/static_pages/home.html.erb:240: syntax error, unexpected keyword_ensure, expecting end-of-input:
+  app/views/static_pages/home.html.erb:22:in `'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/template.rb:309:in `compile'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/template.rb:258:in `block (2 levels) in compile!'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/notifications.rb:166:in `instrument'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/template.rb:350:in `instrument'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/template.rb:257:in `block in compile!'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/template.rb:245:in `compile!'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/template.rb:157:in `block in render'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/notifications.rb:166:in `instrument'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/template.rb:348:in `instrument'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/template.rb:156:in `render'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/renderer/template_renderer.rb:54:in `block (2 levels) in render_template'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/renderer/abstract_renderer.rb:42:in `block in instrument'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/notifications.rb:164:in `block in instrument'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/notifications.rb:164:in `instrument'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/renderer/abstract_renderer.rb:41:in `instrument'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/renderer/template_renderer.rb:53:in `block in render_template'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/renderer/template_renderer.rb:61:in `render_with_layout'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/renderer/template_renderer.rb:52:in `render_template'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/renderer/template_renderer.rb:14:in `render'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/renderer/renderer.rb:42:in `render_template'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/renderer/renderer.rb:23:in `render'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/rendering.rb:103:in `_render_template'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/streaming.rb:217:in `_render_template'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/rendering.rb:83:in `render_to_body'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/rendering.rb:52:in `render_to_body'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/renderers.rb:144:in `render_to_body'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/abstract_controller/rendering.rb:26:in `render'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/rendering.rb:36:in `render'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/instrumentation.rb:44:in `block (2 levels) in render'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /Users/philip/.rvm/rubies/ruby-2.3.1/lib/ruby/2.3.0/benchmark.rb:308:in `realtime'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/core_ext/benchmark.rb:12:in `ms'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/instrumentation.rb:44:in `block in render'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/instrumentation.rb:87:in `cleanup_view_runtime'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activerecord-5.0.0/lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/instrumentation.rb:43:in `render'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/implicit_render.rb:36:in `default_render'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/basic_implicit_render.rb:4:in `block in send_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/basic_implicit_render.rb:4:in `send_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/abstract_controller/base.rb:188:in `process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/rendering.rb:30:in `process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:126:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:506:in `block (2 levels) in compile'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:455:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:101:in `__run_callbacks__'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:750:in `_run_process_action_callbacks'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:90:in `run_callbacks'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/abstract_controller/callbacks.rb:19:in `process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/rescue.rb:20:in `process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/notifications.rb:164:in `block in instrument'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/notifications.rb:164:in `instrument'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/params_wrapper.rb:248:in `process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activerecord-5.0.0/lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/abstract_controller/base.rb:126:in `process'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/rendering.rb:30:in `process'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal.rb:190:in `dispatch'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal.rb:262:in `dispatch'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/routing/route_set.rb:32:in `serve'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/journey/router.rb:39:in `block in serve'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/journey/router.rb:26:in `serve'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/routing/route_set.rb:725:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/etag.rb:25:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/conditional_get.rb:25:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/head.rb:12:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/session/abstract/id.rb:222:in `context'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/session/abstract/id.rb:216:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/cookies.rb:613:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activerecord-5.0.0/lib/active_record/migration.rb:552:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:90:in `run_callbacks'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/executor.rb:12:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:57:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+  web-console (3.3.1) lib/web_console/middleware.rb:131:in `call_app'
+  web-console (3.3.1) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (3.3.1) lib/web_console/middleware.rb:18:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/railties-5.0.0/lib/rails/rack/logger.rb:36:in `call_app'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/railties-5.0.0/lib/rails/rack/logger.rb:24:in `block in call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/tagged_logging.rb:70:in `block in tagged'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/tagged_logging.rb:26:in `tagged'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/tagged_logging.rb:70:in `tagged'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/railties-5.0.0/lib/rails/rack/logger.rb:24:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/sprockets-rails-3.1.1/lib/sprockets/rails/quiet_assets.rb:13:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/request_id.rb:24:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/method_override.rb:22:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/runtime.rb:22:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/executor.rb:12:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/static.rb:136:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/sendfile.rb:111:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/railties-5.0.0/lib/rails/engine.rb:522:in `call'
+  puma (3.6.0) lib/puma/configuration.rb:225:in `call'
+  puma (3.6.0) lib/puma/server.rb:578:in `handle_request'
+  puma (3.6.0) lib/puma/server.rb:415:in `process_client'
+  puma (3.6.0) lib/puma/server.rb:275:in `block in run'
+  puma (3.6.0) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+
+Started POST "/__better_errors/e68db6aa513ee559/variables" for ::1 at 2016-08-10 16:29:26 -0700
+Started GET "/" for ::1 at 2016-08-10 16:30:04 -0700
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (2.8ms)
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.0ms)
+
+
+
+SyntaxError - syntax error, unexpected tIVAR, expecting keyword_end
+...nd=  form_tag(users_path) @user do |f| @output_buffer.safe_a...
+...                               ^
+/Users/philip/Dropbox/Viking/project_danebook/app/views/static_pages/home.html.erb:240: syntax error, unexpected keyword_ensure, expecting end-of-input:
+  app/views/static_pages/home.html.erb:22:in `'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/template.rb:309:in `compile'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/template.rb:258:in `block (2 levels) in compile!'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/notifications.rb:166:in `instrument'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/template.rb:350:in `instrument'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/template.rb:257:in `block in compile!'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/template.rb:245:in `compile!'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/template.rb:157:in `block in render'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/notifications.rb:166:in `instrument'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/template.rb:348:in `instrument'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/template.rb:156:in `render'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/renderer/template_renderer.rb:54:in `block (2 levels) in render_template'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/renderer/abstract_renderer.rb:42:in `block in instrument'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/notifications.rb:164:in `block in instrument'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/notifications.rb:164:in `instrument'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/renderer/abstract_renderer.rb:41:in `instrument'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/renderer/template_renderer.rb:53:in `block in render_template'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/renderer/template_renderer.rb:61:in `render_with_layout'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/renderer/template_renderer.rb:52:in `render_template'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/renderer/template_renderer.rb:14:in `render'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/renderer/renderer.rb:42:in `render_template'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/renderer/renderer.rb:23:in `render'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/rendering.rb:103:in `_render_template'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/streaming.rb:217:in `_render_template'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/rendering.rb:83:in `render_to_body'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/rendering.rb:52:in `render_to_body'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/renderers.rb:144:in `render_to_body'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/abstract_controller/rendering.rb:26:in `render'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/rendering.rb:36:in `render'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/instrumentation.rb:44:in `block (2 levels) in render'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /Users/philip/.rvm/rubies/ruby-2.3.1/lib/ruby/2.3.0/benchmark.rb:308:in `realtime'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/core_ext/benchmark.rb:12:in `ms'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/instrumentation.rb:44:in `block in render'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/instrumentation.rb:87:in `cleanup_view_runtime'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activerecord-5.0.0/lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/instrumentation.rb:43:in `render'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/implicit_render.rb:36:in `default_render'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/basic_implicit_render.rb:4:in `block in send_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/basic_implicit_render.rb:4:in `send_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/abstract_controller/base.rb:188:in `process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/rendering.rb:30:in `process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:126:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:506:in `block (2 levels) in compile'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:455:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:101:in `__run_callbacks__'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:750:in `_run_process_action_callbacks'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:90:in `run_callbacks'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/abstract_controller/callbacks.rb:19:in `process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/rescue.rb:20:in `process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/notifications.rb:164:in `block in instrument'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/notifications.rb:164:in `instrument'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/params_wrapper.rb:248:in `process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activerecord-5.0.0/lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/abstract_controller/base.rb:126:in `process'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/rendering.rb:30:in `process'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal.rb:190:in `dispatch'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal.rb:262:in `dispatch'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/routing/route_set.rb:32:in `serve'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/journey/router.rb:39:in `block in serve'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/journey/router.rb:26:in `serve'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/routing/route_set.rb:725:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/etag.rb:25:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/conditional_get.rb:25:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/head.rb:12:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/session/abstract/id.rb:222:in `context'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/session/abstract/id.rb:216:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/cookies.rb:613:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activerecord-5.0.0/lib/active_record/migration.rb:552:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:90:in `run_callbacks'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/executor.rb:12:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:57:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+  web-console (3.3.1) lib/web_console/middleware.rb:131:in `call_app'
+  web-console (3.3.1) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (3.3.1) lib/web_console/middleware.rb:18:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/railties-5.0.0/lib/rails/rack/logger.rb:36:in `call_app'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/railties-5.0.0/lib/rails/rack/logger.rb:24:in `block in call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/tagged_logging.rb:70:in `block in tagged'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/tagged_logging.rb:26:in `tagged'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/tagged_logging.rb:70:in `tagged'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/railties-5.0.0/lib/rails/rack/logger.rb:24:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/sprockets-rails-3.1.1/lib/sprockets/rails/quiet_assets.rb:13:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/request_id.rb:24:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/method_override.rb:22:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/runtime.rb:22:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/executor.rb:12:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/static.rb:136:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/sendfile.rb:111:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/railties-5.0.0/lib/rails/engine.rb:522:in `call'
+  puma (3.6.0) lib/puma/configuration.rb:225:in `call'
+  puma (3.6.0) lib/puma/server.rb:578:in `handle_request'
+  puma (3.6.0) lib/puma/server.rb:415:in `process_client'
+  puma (3.6.0) lib/puma/server.rb:275:in `block in run'
+  puma (3.6.0) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+
+Started POST "/__better_errors/26615c47d56f3455/variables" for ::1 at 2016-08-10 16:30:04 -0700
+Started GET "/" for ::1 at 2016-08-10 16:32:28 -0700
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (2.7ms)
+  Rendered shared/_navbar_login.html.erb (1.0ms)
+Completed 200 OK in 88ms (Views: 84.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for ::1 at 2016-08-10 16:32:49 -0700
+
+ActionController::RoutingError - undefined method `before_create' for UsersController:Class
+Did you mean?  before_filter:
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/routing/route_set.rb:46:in `rescue in controller'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/routing/route_set.rb:44:in `controller'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/routing/route_set.rb:30:in `serve'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/journey/router.rb:39:in `block in serve'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/journey/router.rb:26:in `serve'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/routing/route_set.rb:725:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/etag.rb:25:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/conditional_get.rb:38:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/head.rb:12:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/session/abstract/id.rb:222:in `context'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/session/abstract/id.rb:216:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/cookies.rb:613:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activerecord-5.0.0/lib/active_record/migration.rb:552:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:90:in `run_callbacks'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/executor.rb:12:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:57:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+  web-console (3.3.1) lib/web_console/middleware.rb:131:in `call_app'
+  web-console (3.3.1) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (3.3.1) lib/web_console/middleware.rb:18:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/railties-5.0.0/lib/rails/rack/logger.rb:36:in `call_app'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/railties-5.0.0/lib/rails/rack/logger.rb:24:in `block in call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/tagged_logging.rb:70:in `block in tagged'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/tagged_logging.rb:26:in `tagged'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/tagged_logging.rb:70:in `tagged'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/railties-5.0.0/lib/rails/rack/logger.rb:24:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/sprockets-rails-3.1.1/lib/sprockets/rails/quiet_assets.rb:13:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/request_id.rb:24:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/method_override.rb:22:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/runtime.rb:22:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/executor.rb:12:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/static.rb:136:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/sendfile.rb:111:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/railties-5.0.0/lib/rails/engine.rb:522:in `call'
+  puma (3.6.0) lib/puma/configuration.rb:225:in `call'
+  puma (3.6.0) lib/puma/server.rb:578:in `handle_request'
+  puma (3.6.0) lib/puma/server.rb:415:in `process_client'
+  puma (3.6.0) lib/puma/server.rb:275:in `block in run'
+  puma (3.6.0) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+
+Started POST "/__better_errors/d9bf3d687930f18a/variables" for ::1 at 2016-08-10 16:32:49 -0700
+Started POST "/users" for ::1 at 2016-08-10 16:36:27 -0700
+
+ActionController::RoutingError - undefined method `before_create' for UsersController:Class
+Did you mean?  before_filter:
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/routing/route_set.rb:46:in `rescue in controller'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/routing/route_set.rb:44:in `controller'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/routing/route_set.rb:30:in `serve'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/journey/router.rb:39:in `block in serve'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/journey/router.rb:26:in `serve'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/routing/route_set.rb:725:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/etag.rb:25:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/conditional_get.rb:38:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/head.rb:12:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/session/abstract/id.rb:222:in `context'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/session/abstract/id.rb:216:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/cookies.rb:613:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activerecord-5.0.0/lib/active_record/migration.rb:552:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:90:in `run_callbacks'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/executor.rb:12:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:57:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+  web-console (3.3.1) lib/web_console/middleware.rb:131:in `call_app'
+  web-console (3.3.1) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (3.3.1) lib/web_console/middleware.rb:18:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/railties-5.0.0/lib/rails/rack/logger.rb:36:in `call_app'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/railties-5.0.0/lib/rails/rack/logger.rb:24:in `block in call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/tagged_logging.rb:70:in `block in tagged'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/tagged_logging.rb:26:in `tagged'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/tagged_logging.rb:70:in `tagged'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/railties-5.0.0/lib/rails/rack/logger.rb:24:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/sprockets-rails-3.1.1/lib/sprockets/rails/quiet_assets.rb:13:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/request_id.rb:24:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/method_override.rb:22:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/runtime.rb:22:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/executor.rb:12:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/static.rb:136:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/sendfile.rb:111:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/railties-5.0.0/lib/rails/engine.rb:522:in `call'
+  puma (3.6.0) lib/puma/configuration.rb:225:in `call'
+  puma (3.6.0) lib/puma/server.rb:578:in `handle_request'
+  puma (3.6.0) lib/puma/server.rb:415:in `process_client'
+  puma (3.6.0) lib/puma/server.rb:275:in `block in run'
+  puma (3.6.0) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+
+Started POST "/__better_errors/ead8ba55569ea518/variables" for ::1 at 2016-08-10 16:36:27 -0700
+Started POST "/users" for ::1 at 2016-08-10 16:37:33 -0700
+
+ActionController::RoutingError - undefined method `before_create' for UsersController:Class
+Did you mean?  before_filter:
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/routing/route_set.rb:46:in `rescue in controller'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/routing/route_set.rb:44:in `controller'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/routing/route_set.rb:30:in `serve'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/journey/router.rb:39:in `block in serve'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/journey/router.rb:26:in `serve'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/routing/route_set.rb:725:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/etag.rb:25:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/conditional_get.rb:38:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/head.rb:12:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/session/abstract/id.rb:222:in `context'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/session/abstract/id.rb:216:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/cookies.rb:613:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activerecord-5.0.0/lib/active_record/migration.rb:552:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:90:in `run_callbacks'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/executor.rb:12:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:57:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+  web-console (3.3.1) lib/web_console/middleware.rb:131:in `call_app'
+  web-console (3.3.1) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (3.3.1) lib/web_console/middleware.rb:18:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/railties-5.0.0/lib/rails/rack/logger.rb:36:in `call_app'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/railties-5.0.0/lib/rails/rack/logger.rb:24:in `block in call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/tagged_logging.rb:70:in `block in tagged'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/tagged_logging.rb:26:in `tagged'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/tagged_logging.rb:70:in `tagged'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/railties-5.0.0/lib/rails/rack/logger.rb:24:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/sprockets-rails-3.1.1/lib/sprockets/rails/quiet_assets.rb:13:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/request_id.rb:24:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/method_override.rb:22:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/runtime.rb:22:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/executor.rb:12:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/static.rb:136:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/sendfile.rb:111:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/railties-5.0.0/lib/rails/engine.rb:522:in `call'
+  puma (3.6.0) lib/puma/configuration.rb:225:in `call'
+  puma (3.6.0) lib/puma/server.rb:578:in `handle_request'
+  puma (3.6.0) lib/puma/server.rb:415:in `process_client'
+  puma (3.6.0) lib/puma/server.rb:275:in `block in run'
+  puma (3.6.0) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+
+Started POST "/__better_errors/f170a9a7b63505f3/variables" for ::1 at 2016-08-10 16:37:33 -0700
+Started POST "/users" for ::1 at 2016-08-10 16:40:13 -0700
+
+ActionController::RoutingError - undefined method `before_create' for UsersController:Class
+Did you mean?  before_filter:
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/routing/route_set.rb:46:in `rescue in controller'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/routing/route_set.rb:44:in `controller'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/routing/route_set.rb:30:in `serve'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/journey/router.rb:39:in `block in serve'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/journey/router.rb:26:in `serve'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/routing/route_set.rb:725:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/etag.rb:25:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/conditional_get.rb:38:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/head.rb:12:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/session/abstract/id.rb:222:in `context'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/session/abstract/id.rb:216:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/cookies.rb:613:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activerecord-5.0.0/lib/active_record/migration.rb:552:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:90:in `run_callbacks'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/executor.rb:12:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:57:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+  web-console (3.3.1) lib/web_console/middleware.rb:131:in `call_app'
+  web-console (3.3.1) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (3.3.1) lib/web_console/middleware.rb:18:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/railties-5.0.0/lib/rails/rack/logger.rb:36:in `call_app'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/railties-5.0.0/lib/rails/rack/logger.rb:24:in `block in call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/tagged_logging.rb:70:in `block in tagged'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/tagged_logging.rb:26:in `tagged'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/tagged_logging.rb:70:in `tagged'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/railties-5.0.0/lib/rails/rack/logger.rb:24:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/sprockets-rails-3.1.1/lib/sprockets/rails/quiet_assets.rb:13:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/request_id.rb:24:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/method_override.rb:22:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/runtime.rb:22:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/executor.rb:12:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/static.rb:136:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/sendfile.rb:111:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/railties-5.0.0/lib/rails/engine.rb:522:in `call'
+  puma (3.6.0) lib/puma/configuration.rb:225:in `call'
+  puma (3.6.0) lib/puma/server.rb:578:in `handle_request'
+  puma (3.6.0) lib/puma/server.rb:415:in `process_client'
+  puma (3.6.0) lib/puma/server.rb:275:in `block in run'
+  puma (3.6.0) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+
+Started POST "/__better_errors/8036cd52acf9960e/variables" for ::1 at 2016-08-10 16:40:13 -0700
+Started POST "/users" for ::1 at 2016-08-10 16:40:29 -0700
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"F/4m0XeN+Ty3nUCbReISIeHjFsWvGDBcer2TsVKNNJcGGfKn43W5Zrjq54Y/LxRxNd9FJ4mm8jVf6hyEILDaCA==", "user"=>{"first_name"=>"Philip", "last_name"=>"Johnson", "email"=>"phil@viking.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "birthday_month"=>"January", "birthday_day"=>"1", "birthday_year"=>"1910"}}
+Unpermitted parameters: birthday_month, birthday_day, birthday_year
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (3.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "wz8Gmvf3M9PF5PmtbmTD1w"], ["LIMIT", 1]]
+  [1m[35mSQL (3.1ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "email", "password_digest", "auth_token", "created_at", "updated_at", "last_name") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Philip"], ["email", "phil@viking.com"], ["password_digest", "$2a$10$3A55pSTHhh3LVJwD4.2QfeN.8EcuuTkt7LN7oXEYr4/PmMHxZ.iJW"], ["auth_token", "wz8Gmvf3M9PF5PmtbmTD1w"], ["created_at", 2016-08-10 23:40:29 UTC], ["updated_at", 2016-08-10 23:40:29 UTC], ["last_name", "Johnson"]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+Completed 500 Internal Server Error in 212ms (ActiveRecord: 7.6ms)
+
+
+
+NoMethodError - private method `regenerate_auth_token' called for #<User:0x007fd197f4c3b8>:
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activemodel-5.0.0/lib/active_model/attribute_methods.rb:430:in `method_missing'
+  app/controllers/application_controller.rb:9:in `sign_in'
+  app/controllers/users_controller.rb:10:in `create'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/basic_implicit_render.rb:4:in `send_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/abstract_controller/base.rb:188:in `process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/rendering.rb:30:in `process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:126:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:506:in `block (2 levels) in compile'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:455:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:101:in `__run_callbacks__'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:750:in `_run_process_action_callbacks'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:90:in `run_callbacks'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/abstract_controller/callbacks.rb:19:in `process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/rescue.rb:20:in `process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/notifications.rb:164:in `block in instrument'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/notifications.rb:164:in `instrument'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/params_wrapper.rb:248:in `process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activerecord-5.0.0/lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/abstract_controller/base.rb:126:in `process'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/rendering.rb:30:in `process'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal.rb:190:in `dispatch'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal.rb:262:in `dispatch'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/routing/route_set.rb:32:in `serve'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/journey/router.rb:39:in `block in serve'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/journey/router.rb:26:in `serve'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/routing/route_set.rb:725:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/etag.rb:25:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/conditional_get.rb:38:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/head.rb:12:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/session/abstract/id.rb:222:in `context'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/session/abstract/id.rb:216:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/cookies.rb:613:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activerecord-5.0.0/lib/active_record/migration.rb:552:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:90:in `run_callbacks'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/executor.rb:12:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:57:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+  web-console (3.3.1) lib/web_console/middleware.rb:131:in `call_app'
+  web-console (3.3.1) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (3.3.1) lib/web_console/middleware.rb:18:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/railties-5.0.0/lib/rails/rack/logger.rb:36:in `call_app'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/railties-5.0.0/lib/rails/rack/logger.rb:24:in `block in call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/tagged_logging.rb:70:in `block in tagged'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/tagged_logging.rb:26:in `tagged'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/tagged_logging.rb:70:in `tagged'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/railties-5.0.0/lib/rails/rack/logger.rb:24:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/sprockets-rails-3.1.1/lib/sprockets/rails/quiet_assets.rb:13:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/request_id.rb:24:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/method_override.rb:22:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/runtime.rb:22:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/executor.rb:12:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/static.rb:136:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/sendfile.rb:111:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/railties-5.0.0/lib/rails/engine.rb:522:in `call'
+  puma (3.6.0) lib/puma/configuration.rb:225:in `call'
+  puma (3.6.0) lib/puma/server.rb:578:in `handle_request'
+  puma (3.6.0) lib/puma/server.rb:415:in `process_client'
+  puma (3.6.0) lib/puma/server.rb:275:in `block in run'
+  puma (3.6.0) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+
+Started POST "/__better_errors/5266b03fec3b24e2/variables" for ::1 at 2016-08-10 16:40:29 -0700
+Started POST "/users" for ::1 at 2016-08-10 16:41:26 -0700
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"F/4m0XeN+Ty3nUCbReISIeHjFsWvGDBcer2TsVKNNJcGGfKn43W5Zrjq54Y/LxRxNd9FJ4mm8jVf6hyEILDaCA==", "user"=>{"first_name"=>"Philip", "last_name"=>"Johnson", "email"=>"phil@viking.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "birthday_month"=>"January", "birthday_day"=>"1", "birthday_year"=>"1910"}}
+Unpermitted parameters: birthday_month, birthday_day, birthday_year
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "XBnfPUaKNe9ROzcWwGWSNA"], ["LIMIT", 1]]
+  [1m[35mSQL (0.8ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "email", "password_digest", "auth_token", "created_at", "updated_at", "last_name") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Philip"], ["email", "phil@viking.com"], ["password_digest", "$2a$10$oaUewSG.FEP8ahfbvXK1Heh7e0SKyxOKAjwnu/0d7kVXomfTslGwi"], ["auth_token", "XBnfPUaKNe9ROzcWwGWSNA"], ["created_at", 2016-08-10 23:41:27 UTC], ["updated_at", 2016-08-10 23:41:27 UTC], ["last_name", "Johnson"]]
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Exists (0.7ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "aCE5rgaGU0rqPwboqBcG4A"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.6ms)[0m  [1m[33mUPDATE "users" SET "auth_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["auth_token", "aCE5rgaGU0rqPwboqBcG4A"], ["updated_at", 2016-08-10 23:41:27 UTC], ["id", 2]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/users/2
+Completed 302 Found in 150ms (ActiveRecord: 6.4ms)
+
+
+Started GET "/users/2" for ::1 at 2016-08-10 16:41:27 -0700
+
+AbstractController::ActionNotFound - The action 'show' could not be found for UsersController:
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/abstract_controller/base.rb:121:in `process'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/rendering.rb:30:in `process'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal.rb:190:in `dispatch'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal.rb:262:in `dispatch'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/routing/route_set.rb:32:in `serve'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/journey/router.rb:39:in `block in serve'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/journey/router.rb:26:in `serve'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/routing/route_set.rb:725:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/etag.rb:25:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/conditional_get.rb:25:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/head.rb:12:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/session/abstract/id.rb:222:in `context'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/session/abstract/id.rb:216:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/cookies.rb:613:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activerecord-5.0.0/lib/active_record/migration.rb:552:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:90:in `run_callbacks'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/executor.rb:12:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:57:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+  web-console (3.3.1) lib/web_console/middleware.rb:131:in `call_app'
+  web-console (3.3.1) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (3.3.1) lib/web_console/middleware.rb:18:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/railties-5.0.0/lib/rails/rack/logger.rb:36:in `call_app'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/railties-5.0.0/lib/rails/rack/logger.rb:24:in `block in call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/tagged_logging.rb:70:in `block in tagged'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/tagged_logging.rb:26:in `tagged'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/tagged_logging.rb:70:in `tagged'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/railties-5.0.0/lib/rails/rack/logger.rb:24:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/sprockets-rails-3.1.1/lib/sprockets/rails/quiet_assets.rb:13:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/request_id.rb:24:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/method_override.rb:22:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/runtime.rb:22:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/executor.rb:12:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/static.rb:136:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/sendfile.rb:111:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/railties-5.0.0/lib/rails/engine.rb:522:in `call'
+  puma (3.6.0) lib/puma/configuration.rb:225:in `call'
+  puma (3.6.0) lib/puma/server.rb:578:in `handle_request'
+  puma (3.6.0) lib/puma/server.rb:415:in `process_client'
+  puma (3.6.0) lib/puma/server.rb:275:in `block in run'
+  puma (3.6.0) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+
+Started POST "/__better_errors/cb145e0fc8365358/variables" for ::1 at 2016-08-10 16:41:27 -0700
+Started GET "/users/2" for ::1 at 2016-08-10 16:42:05 -0700
+
+AbstractController::ActionNotFound - The action 'show' could not be found for UsersController:
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/abstract_controller/base.rb:121:in `process'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/rendering.rb:30:in `process'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal.rb:190:in `dispatch'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal.rb:262:in `dispatch'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/routing/route_set.rb:32:in `serve'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/journey/router.rb:39:in `block in serve'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/journey/router.rb:26:in `serve'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/routing/route_set.rb:725:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/etag.rb:25:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/conditional_get.rb:25:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/head.rb:12:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/session/abstract/id.rb:222:in `context'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/session/abstract/id.rb:216:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/cookies.rb:613:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activerecord-5.0.0/lib/active_record/migration.rb:552:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:90:in `run_callbacks'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/executor.rb:12:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:57:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+  web-console (3.3.1) lib/web_console/middleware.rb:131:in `call_app'
+  web-console (3.3.1) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (3.3.1) lib/web_console/middleware.rb:18:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/railties-5.0.0/lib/rails/rack/logger.rb:36:in `call_app'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/railties-5.0.0/lib/rails/rack/logger.rb:24:in `block in call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/tagged_logging.rb:70:in `block in tagged'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/tagged_logging.rb:26:in `tagged'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/tagged_logging.rb:70:in `tagged'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/railties-5.0.0/lib/rails/rack/logger.rb:24:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/sprockets-rails-3.1.1/lib/sprockets/rails/quiet_assets.rb:13:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/request_id.rb:24:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/method_override.rb:22:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/runtime.rb:22:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/executor.rb:12:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/static.rb:136:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/sendfile.rb:111:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/railties-5.0.0/lib/rails/engine.rb:522:in `call'
+  puma (3.6.0) lib/puma/configuration.rb:225:in `call'
+  puma (3.6.0) lib/puma/server.rb:578:in `handle_request'
+  puma (3.6.0) lib/puma/server.rb:415:in `process_client'
+  puma (3.6.0) lib/puma/server.rb:275:in `block in run'
+  puma (3.6.0) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+
+Started POST "/__better_errors/2074175a394817cd/variables" for ::1 at 2016-08-10 16:42:05 -0700
+Started GET "/users/" for ::1 at 2016-08-10 16:42:10 -0700
+
+AbstractController::ActionNotFound - The action 'index' could not be found for UsersController:
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/abstract_controller/base.rb:121:in `process'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/rendering.rb:30:in `process'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal.rb:190:in `dispatch'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal.rb:262:in `dispatch'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/routing/route_set.rb:32:in `serve'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/journey/router.rb:39:in `block in serve'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/journey/router.rb:26:in `serve'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/routing/route_set.rb:725:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/etag.rb:25:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/conditional_get.rb:25:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/head.rb:12:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/session/abstract/id.rb:222:in `context'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/session/abstract/id.rb:216:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/cookies.rb:613:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activerecord-5.0.0/lib/active_record/migration.rb:552:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:90:in `run_callbacks'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/executor.rb:12:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:57:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+  web-console (3.3.1) lib/web_console/middleware.rb:131:in `call_app'
+  web-console (3.3.1) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (3.3.1) lib/web_console/middleware.rb:18:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/railties-5.0.0/lib/rails/rack/logger.rb:36:in `call_app'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/railties-5.0.0/lib/rails/rack/logger.rb:24:in `block in call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/tagged_logging.rb:70:in `block in tagged'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/tagged_logging.rb:26:in `tagged'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/tagged_logging.rb:70:in `tagged'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/railties-5.0.0/lib/rails/rack/logger.rb:24:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/sprockets-rails-3.1.1/lib/sprockets/rails/quiet_assets.rb:13:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/request_id.rb:24:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/method_override.rb:22:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/runtime.rb:22:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/executor.rb:12:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/static.rb:136:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/sendfile.rb:111:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/railties-5.0.0/lib/rails/engine.rb:522:in `call'
+  puma (3.6.0) lib/puma/configuration.rb:225:in `call'
+  puma (3.6.0) lib/puma/server.rb:578:in `handle_request'
+  puma (3.6.0) lib/puma/server.rb:415:in `process_client'
+  puma (3.6.0) lib/puma/server.rb:275:in `block in run'
+  puma (3.6.0) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+
+Started POST "/__better_errors/9c9902b3e10b7020/variables" for ::1 at 2016-08-10 16:42:10 -0700
+Started GET "/" for ::1 at 2016-08-10 16:42:14 -0700
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (3.8ms)
+  Rendered shared/_navbar_login.html.erb (24.9ms)
+Completed 200 OK in 232ms (Views: 176.5ms | ActiveRecord: 23.0ms)
+
+
+Started POST "/users" for ::1 at 2016-08-10 16:42:30 -0700
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"X+0DRnqIxObkmCa2SO2yIN6Qxiz0+WsDccxCpiCXf/Xubw64b7r8Gqu2G1DIUTv1uxeolvkGZCilSsZgflGdow==", "user"=>{"first_name"=>"Bob", "last_name"=>"Smith", "email"=>"bob@smith.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "birthday_month"=>"January", "birthday_day"=>"1", "birthday_year"=>"1910"}}
+Unpermitted parameters: birthday_month, birthday_day, birthday_year
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (3.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "fJnpbwVN0Hl__kjEFJo9Mw"], ["LIMIT", 1]]
+  [1m[35mSQL (1.5ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "email", "password_digest", "auth_token", "created_at", "updated_at", "last_name") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["first_name", "Bob"], ["email", "bob@smith.com"], ["password_digest", "$2a$10$Rh0gR2ESybEw.yyTX/D6Ue1NS7UwALGhn20XSivKeOMfxxAklz13e"], ["auth_token", "fJnpbwVN0Hl__kjEFJo9Mw"], ["created_at", 2016-08-10 23:42:30 UTC], ["updated_at", 2016-08-10 23:42:30 UTC], ["last_name", "Smith"]]
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Exists (1.2ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "tiN_4oxs3V7-ikppR7ucbw"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (1.0ms)[0m  [1m[33mUPDATE "users" SET "auth_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["auth_token", "tiN_4oxs3V7-ikppR7ucbw"], ["updated_at", 2016-08-10 23:42:30 UTC], ["id", 3]]
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/timeline
+Completed 302 Found in 111ms (ActiveRecord: 10.7ms)
+
+
+Started GET "/timeline" for ::1 at 2016-08-10 16:42:30 -0700
+Processing by StaticPagesController#timeline as HTML
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "tiN_4oxs3V7-ikppR7ucbw"], ["LIMIT", 1]]
+  Rendering static_pages/timeline.html.erb within layouts/application
+  Rendered shared/_cover.html.erb (0.6ms)
+  Rendered static_pages/_photo_box.html.erb (1.4ms)
+  Rendered static_pages/_friend_box.html.erb (1.2ms)
+  Rendered static_pages/_post_box.html.erb (0.4ms)
+  Rendered static_pages/timeline.html.erb within layouts/application (16.5ms)
+  Rendered shared/_navbar.html.erb (0.9ms)
+Completed 200 OK in 106ms (Views: 73.9ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:43:11 -0700
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (1.9ms)
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "aCE5rgaGU0rqPwboqBcG4A"], ["LIMIT", 1]]
+  Rendered shared/_navbar.html.erb (0.7ms)
+Completed 200 OK in 44ms (Views: 39.3ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:44:23 -0700
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (1.3ms)
+  Rendered shared/_navbar_login.html.erb (1.2ms)
+Completed 200 OK in 40ms (Views: 37.9ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:44:39 -0700
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (1.1ms)
+  Rendered shared/_navbar_login.html.erb (1.2ms)
+Completed 200 OK in 52ms (Views: 47.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:48:25 -0700
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (2.3ms)
+  Rendered shared/_navbar_login.html.erb (1.0ms)
+Completed 200 OK in 81ms (Views: 49.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:48:46 -0700
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (1.6ms)
+  Rendered shared/_navbar_login.html.erb (2.2ms)
+Completed 200 OK in 57ms (Views: 52.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for ::1 at 2016-08-10 16:49:05 -0700
+  
+ActionController::RoutingError (No route matches [POST] "/login"):
+  
+actionpack (5.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:53:in `call'
+web-console (3.3.1) lib/web_console/middleware.rb:131:in `call_app'
+web-console (3.3.1) lib/web_console/middleware.rb:28:in `block in call'
+web-console (3.3.1) lib/web_console/middleware.rb:18:in `catch'
+web-console (3.3.1) lib/web_console/middleware.rb:18:in `call'
+actionpack (5.0.0) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.0) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.0) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.0) lib/active_support/tagged_logging.rb:70:in `block in tagged'
+activesupport (5.0.0) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.0) lib/active_support/tagged_logging.rb:70:in `tagged'
+railties (5.0.0) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.1.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.0) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.0) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.0) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.0) lib/rails/engine.rb:522:in `call'
+puma (3.6.0) lib/puma/configuration.rb:225:in `call'
+puma (3.6.0) lib/puma/server.rb:578:in `handle_request'
+puma (3.6.0) lib/puma/server.rb:415:in `process_client'
+puma (3.6.0) lib/puma/server.rb:275:in `block in run'
+puma (3.6.0) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+  Rendering /Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout
+  Rendering /Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.6ms)
+  Rendered collection of /Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/routes/_route.html.erb [17 times] (6.6ms)
+  Rendered /Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/routes/_table.html.erb (38.4ms)
+  Rendering /Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.7ms)
+  Rendered /Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (193.4ms)
+Started POST "/login" for ::1 at 2016-08-10 16:49:21 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"DK99g0vc8NHYCqbDpeLKqGj2wRiUnYndbiavS3OAsVG27IStmM8J/tH8dqD1zs2McsMDqvbRvrZ0lAoI4BdjkQ==", "email"=>"phil@viking.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "phil@viking.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "byfEDd6LL8_s4sV4QiWZcg"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[33mUPDATE "users" SET "auth_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["auth_token", "byfEDd6LL8_s4sV4QiWZcg"], ["updated_at", 2016-08-10 23:49:21 UTC], ["id", 1]]
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 129ms (ActiveRecord: 3.8ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:49:22 -0700
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (1.8ms)
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "byfEDd6LL8_s4sV4QiWZcg"], ["LIMIT", 1]]
+  Rendered shared/_navbar.html.erb (1.0ms)
+Completed 200 OK in 82ms (Views: 77.3ms | ActiveRecord: 1.7ms)
+
+
+Started POST "/login" for ::1 at 2016-08-10 16:49:49 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"DK99g0vc8NHYCqbDpeLKqGj2wRiUnYndbiavS3OAsVG27IStmM8J/tH8dqD1zs2McsMDqvbRvrZ0lAoI4BdjkQ==", "email"=>"phil@viking.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "phil@viking.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "AIwPOmzPrFqxmfGAvlC_6g"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "users" SET "auth_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["auth_token", "AIwPOmzPrFqxmfGAvlC_6g"], ["updated_at", 2016-08-10 23:49:49 UTC], ["id", 2]]
+  [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/timeline
+Completed 302 Found in 115ms (ActiveRecord: 3.4ms)
+
+
+Started GET "/timeline" for ::1 at 2016-08-10 16:49:49 -0700
+Processing by StaticPagesController#timeline as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "AIwPOmzPrFqxmfGAvlC_6g"], ["LIMIT", 1]]
+  Rendering static_pages/timeline.html.erb within layouts/application
+  Rendered shared/_cover.html.erb (0.3ms)
+  Rendered static_pages/_photo_box.html.erb (0.9ms)
+  Rendered static_pages/_friend_box.html.erb (0.7ms)
+  Rendered static_pages/_post_box.html.erb (0.3ms)
+  Rendered static_pages/timeline.html.erb within layouts/application (11.8ms)
+  Rendered shared/_navbar.html.erb (0.8ms)
+Completed 200 OK in 51ms (Views: 46.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/timeline" for ::1 at 2016-08-10 16:51:28 -0700
+Processing by StaticPagesController#timeline as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "AIwPOmzPrFqxmfGAvlC_6g"], ["LIMIT", 1]]
+  Rendering static_pages/timeline.html.erb within layouts/application
+  Rendered shared/_cover.html.erb (0.6ms)
+  Rendered static_pages/_photo_box.html.erb (0.8ms)
+  Rendered static_pages/_friend_box.html.erb (0.5ms)
+  Rendered static_pages/_post_box.html.erb (0.3ms)
+  Rendered static_pages/timeline.html.erb within layouts/application (12.2ms)
+  Rendered shared/_navbar.html.erb (1.1ms)
+Completed 200 OK in 59ms (Views: 45.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/timeline" for ::1 at 2016-08-10 16:52:04 -0700
+Processing by StaticPagesController#timeline as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "AIwPOmzPrFqxmfGAvlC_6g"], ["LIMIT", 1]]
+  Rendering static_pages/timeline.html.erb within layouts/application
+  Rendered shared/_cover.html.erb (0.4ms)
+  Rendered static_pages/_photo_box.html.erb (1.2ms)
+  Rendered static_pages/_friend_box.html.erb (0.5ms)
+  Rendered static_pages/_post_box.html.erb (0.4ms)
+  Rendered static_pages/timeline.html.erb within layouts/application (13.8ms)
+  Rendered shared/_navbar.html.erb (2.6ms)
+Completed 200 OK in 99ms (Views: 93.8ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/timeline" for ::1 at 2016-08-10 16:52:07 -0700
+Processing by StaticPagesController#timeline as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "AIwPOmzPrFqxmfGAvlC_6g"], ["LIMIT", 1]]
+  Rendering static_pages/timeline.html.erb within layouts/application
+  Rendered shared/_cover.html.erb (0.3ms)
+  Rendered static_pages/_photo_box.html.erb (0.9ms)
+  Rendered static_pages/_friend_box.html.erb (0.5ms)
+  Rendered static_pages/_post_box.html.erb (0.3ms)
+  Rendered static_pages/timeline.html.erb within layouts/application (10.3ms)
+  Rendered shared/_navbar.html.erb (1.4ms)
+Completed 200 OK in 46ms (Views: 43.1ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/logout" for ::1 at 2016-08-10 16:52:10 -0700
+Processing by SessionsController#destroy as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"aArFagIDESuWloevQBa4ZktV77oPPXdtgKnuKKmJYBDSSTxE0RDoBJ9gV8wQOr9CUWAtCG1xQAaaG0trOh6y0A=="}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "AIwPOmzPrFqxmfGAvlC_6g"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 2ms (ActiveRecord: 0.5ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:52:10 -0700
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (1.1ms)
+  Rendered shared/_navbar_login.html.erb (1.0ms)
+Completed 200 OK in 36ms (Views: 33.9ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for ::1 at 2016-08-10 16:52:20 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"yEz1SDzxquiQZ3o2oX6qEZtdCHr3frK5gEnhZ7HvQ+hyDwxm7+JTx5mRqlXxUq01gWjKyJUyhdKa+0QkIniRKA==", "email"=>"phil@viking.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "phil@viking.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "dGI4C9xurWRPC2YTHxuCcQ"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[33mUPDATE "users" SET "auth_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["auth_token", "dGI4C9xurWRPC2YTHxuCcQ"], ["updated_at", 2016-08-10 23:52:20 UTC], ["id", 1]]
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/timeline
+Completed 302 Found in 86ms (ActiveRecord: 2.2ms)
+
+
+Started GET "/timeline" for ::1 at 2016-08-10 16:52:20 -0700
+Processing by StaticPagesController#timeline as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "dGI4C9xurWRPC2YTHxuCcQ"], ["LIMIT", 1]]
+  Rendering static_pages/timeline.html.erb within layouts/application
+  Rendered shared/_cover.html.erb (0.3ms)
+  Rendered static_pages/_photo_box.html.erb (1.0ms)
+  Rendered static_pages/_friend_box.html.erb (0.5ms)
+  Rendered static_pages/_post_box.html.erb (0.4ms)
+  Rendered static_pages/timeline.html.erb within layouts/application (10.0ms)
+  Rendered shared/_navbar.html.erb (1.3ms)
+Completed 200 OK in 45ms (Views: 41.0ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/timeline" for ::1 at 2016-08-10 16:52:59 -0700
+Processing by StaticPagesController#timeline as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "dGI4C9xurWRPC2YTHxuCcQ"], ["LIMIT", 1]]
+  Rendering static_pages/timeline.html.erb within layouts/application
+  Rendered shared/_cover.html.erb (0.6ms)
+  Rendered static_pages/_photo_box.html.erb (0.8ms)
+  Rendered static_pages/_friend_box.html.erb (0.9ms)
+  Rendered static_pages/_post_box.html.erb (0.3ms)
+  Rendered static_pages/timeline.html.erb within layouts/application (12.7ms)
+  Rendered shared/_navbar.html.erb (1.5ms)
+Completed 200 OK in 68ms (Views: 62.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/timeline" for ::1 at 2016-08-10 16:55:00 -0700
+Processing by StaticPagesController#timeline as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "dGI4C9xurWRPC2YTHxuCcQ"], ["LIMIT", 1]]
+  Rendering static_pages/timeline.html.erb within layouts/application
+  Rendered shared/_cover.html.erb (0.4ms)
+  Rendered static_pages/_photo_box.html.erb (0.9ms)
+  Rendered static_pages/_friend_box.html.erb (0.5ms)
+  Rendered static_pages/_post_box.html.erb (0.4ms)
+  Rendered static_pages/timeline.html.erb within layouts/application (12.2ms)
+  Rendered shared/_navbar.html.erb (1.2ms)
+Completed 200 OK in 55ms (Views: 51.9ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/timeline" for ::1 at 2016-08-10 16:55:32 -0700
+Processing by StaticPagesController#timeline as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "dGI4C9xurWRPC2YTHxuCcQ"], ["LIMIT", 1]]
+  Rendering static_pages/timeline.html.erb within layouts/application
+  Rendered shared/_cover.html.erb (0.8ms)
+  Rendered static_pages/_photo_box.html.erb (0.9ms)
+  Rendered static_pages/_friend_box.html.erb (2.3ms)
+  Rendered static_pages/_post_box.html.erb (0.4ms)
+  Rendered static_pages/timeline.html.erb within layouts/application (13.5ms)
+  Rendered shared/_navbar.html.erb (1.7ms)
+Completed 200 OK in 70ms (Views: 64.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/timeline" for ::1 at 2016-08-10 16:56:05 -0700
+Processing by StaticPagesController#timeline as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "dGI4C9xurWRPC2YTHxuCcQ"], ["LIMIT", 1]]
+  Rendering static_pages/timeline.html.erb within layouts/application
+  Rendered shared/_cover.html.erb (0.3ms)
+  Rendered static_pages/_photo_box.html.erb (1.3ms)
+  Rendered static_pages/_friend_box.html.erb (0.6ms)
+  Rendered static_pages/_post_box.html.erb (0.4ms)
+  Rendered static_pages/timeline.html.erb within layouts/application (13.2ms)
+  Rendered shared/_navbar.html.erb (1.5ms)
+Completed 200 OK in 62ms (Views: 58.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/timeline" for ::1 at 2016-08-10 16:56:15 -0700
+Processing by StaticPagesController#timeline as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "dGI4C9xurWRPC2YTHxuCcQ"], ["LIMIT", 1]]
+  Rendering static_pages/timeline.html.erb within layouts/application
+  Rendered shared/_cover.html.erb (0.5ms)
+  Rendered static_pages/_photo_box.html.erb (0.9ms)
+  Rendered static_pages/_friend_box.html.erb (0.6ms)
+  Rendered static_pages/_post_box.html.erb (0.5ms)
+  Rendered static_pages/timeline.html.erb within layouts/application (15.5ms)
+  Rendered shared/_navbar.html.erb (1.7ms)
+Completed 200 OK in 67ms (Views: 62.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/timeline" for ::1 at 2016-08-10 16:56:26 -0700
+Processing by StaticPagesController#timeline as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "dGI4C9xurWRPC2YTHxuCcQ"], ["LIMIT", 1]]
+  Rendering static_pages/timeline.html.erb within layouts/application
+  Rendered shared/_cover.html.erb (0.5ms)
+  Rendered static_pages/_photo_box.html.erb (1.9ms)
+  Rendered static_pages/_friend_box.html.erb (0.6ms)
+  Rendered static_pages/_post_box.html.erb (0.4ms)
+  Rendered static_pages/timeline.html.erb within layouts/application (15.6ms)
+  Rendered shared/_navbar.html.erb (2.6ms)
+Completed 200 OK in 85ms (Views: 77.7ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/logout" for ::1 at 2016-08-10 16:56:39 -0700
+Processing by SessionsController#destroy as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"kJex/6ldDX0B2EAyeSh7S9/KuTuO6YgC2TZJcwwUQXkq1EjRek70UggukFEpBHxvxf97ieylv2nDhOwwn4OTuQ=="}
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "dGI4C9xurWRPC2YTHxuCcQ"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 4ms (ActiveRecord: 1.5ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:56:39 -0700
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (1.1ms)
+  Rendered shared/_navbar_login.html.erb (1.3ms)
+Completed 200 OK in 36ms (Views: 33.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/timeline" for ::1 at 2016-08-10 16:56:46 -0700
+Processing by StaticPagesController#timeline as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :require_login rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 16:56:46 -0700
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (1.0ms)
+  Rendered shared/_navbar_login.html.erb (1.0ms)
+Completed 200 OK in 38ms (Views: 34.7ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/login" for ::1 at 2016-08-10 16:56:58 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"xOrRsJfJdSH/RqMAMfQmtX4fuW855bhqHOaZ1W7HS0F+qSieRNqMDvawc2Nh2CGRZCp73VupjwEGVDyW/VCZgQ==", "email"=>"phil@viking.com", "password"=>"[FILTERED]"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "phil@viking.com"], ["LIMIT", 1]]
+  [1m[36mUser Exists (0.9ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "GDRM7Wj1ueAawTtaYUv8AQ"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[33mUPDATE "users" SET "auth_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["auth_token", "GDRM7Wj1ueAawTtaYUv8AQ"], ["updated_at", 2016-08-10 23:56:58 UTC], ["id", 2]]
+  [1m[35m (1.8ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/timeline
+Completed 302 Found in 89ms (ActiveRecord: 4.3ms)
+
+
+Started GET "/timeline" for ::1 at 2016-08-10 16:56:58 -0700
+Processing by StaticPagesController#timeline as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "GDRM7Wj1ueAawTtaYUv8AQ"], ["LIMIT", 1]]
+  Rendering static_pages/timeline.html.erb within layouts/application
+  Rendered shared/_cover.html.erb (0.6ms)
+  Rendered static_pages/_photo_box.html.erb (0.9ms)
+  Rendered static_pages/_friend_box.html.erb (0.5ms)
+  Rendered static_pages/_post_box.html.erb (0.3ms)
+  Rendered static_pages/timeline.html.erb within layouts/application (19.6ms)
+  Rendered shared/_navbar.html.erb (1.6ms)
+Completed 200 OK in 66ms (Views: 62.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/timeline" for ::1 at 2016-08-10 16:57:16 -0700
+Processing by StaticPagesController#timeline as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "GDRM7Wj1ueAawTtaYUv8AQ"], ["LIMIT", 1]]
+  Rendering static_pages/timeline.html.erb within layouts/application
+  Rendered shared/_cover.html.erb (0.4ms)
+  Rendered static_pages/_photo_box.html.erb (1.3ms)
+  Rendered static_pages/_friend_box.html.erb (0.7ms)
+  Rendered static_pages/_post_box.html.erb (0.6ms)
+  Rendered static_pages/timeline.html.erb within layouts/application (18.6ms)
+  Rendered shared/_navbar.html.erb (0.8ms)
+Completed 200 OK in 82ms (Views: 76.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/timeline" for ::1 at 2016-08-10 16:57:27 -0700
+Processing by StaticPagesController#timeline as HTML
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "GDRM7Wj1ueAawTtaYUv8AQ"], ["LIMIT", 1]]
+  Rendering static_pages/timeline.html.erb within layouts/application
+  Rendered shared/_cover.html.erb (0.8ms)
+  Rendered static_pages/_photo_box.html.erb (1.1ms)
+  Rendered static_pages/_friend_box.html.erb (0.6ms)
+  Rendered static_pages/_post_box.html.erb (0.4ms)
+  Rendered static_pages/timeline.html.erb within layouts/application (18.9ms)
+  Rendered shared/_navbar.html.erb (2.8ms)
+Completed 200 OK in 107ms (Views: 99.3ms | ActiveRecord: 0.7ms)
+
+

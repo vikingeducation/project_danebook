@@ -240,4 +240,8 @@
     </section>
 
   </div>
+
+  <%= form_tag(logout_path, class: "navbar-form") do |f| %>
+    <button type="submit" class="btn btn-success btn-xs">Logout</button>
+  <% end %>
 </main>

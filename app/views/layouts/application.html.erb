@@ -15,7 +15,7 @@
   </head>
 
   <body>
-    <% if true %>
+    <% if signed_in_user? %>
       <%= render "/shared/navbar" %>
     <% else %>
       <%= render "/shared/navbar_login" %>

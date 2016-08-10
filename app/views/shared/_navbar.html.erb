@@ -54,6 +54,10 @@
               </div>
               <div class="col-sm-2" id="log-in-button">
                 <input type="submit" name="commit" value="Log In!" class="btn btn-primary">
+                <%= label_tag do %>
+                Remember me?
+                <%= check_box_tag :remember_me %>
+              <% end %>
               </div>
             </div>
           </div>

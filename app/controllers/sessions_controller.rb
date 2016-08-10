@@ -4,13 +4,16 @@ class SessionsController < ApplicationController
   def create
     @user = User.find_by_email(params[:email])
     if @user && @user.authenticate(params[:password])
-
-      sign_in(@user)
+      if params[:remember_me]
+        permanent_sign_in(@user)
+      else
+        sign_in(@user)
+      end
       flash[:success] = "You've successfuly signed in!"
       redirect_to timeline_path
     else
       flash.now[:error] = "We couldn't sign you in"
-      render root_home
+      render root_path
     end
   end
 

@@ -1,0 +1,24 @@
+<div class="col-md-12">
+  <div class="jumbotron">
+    <div class="masthead">
+
+      <%= image_tag "user_silhouette_generic.gif.png", class: "headshot", height: "128px", width: "128px"%>
+
+      <div class="masthead-name">
+        <%= content_tag :h2, "#{user.first_name} #{user.last_name}" %>  
+      </div>
+      
+      <div class="masthead-nav">
+        <ul class="nav nav-tabs">
+          <li><a href="#">Timeline</a></li>
+          <li><%= link_to 'About', current_user %></li>
+          <li><a href="#">Photos</a></li>
+          <li><a href="#">Friends</a></li>
+        </ul>
+      </div>
+
+      <%= link_to 'Edit Profile', edit_user_path(user), id: "masthead-edit-profile", class: "btn btn-primary btn-md" %>
+
+    </div>
+  </div>
+</div>

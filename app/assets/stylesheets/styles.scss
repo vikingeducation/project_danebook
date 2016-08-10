@@ -1,0 +1,48 @@
+.navbar-fixed-top {
+  background-color: #3B5998;
+  background: linear-gradient(#4e69a2, #3a5795);
+  color: white;
+  border-bottom: 1px solid #1a316d;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, .4);
+}
+
+#navbar-signin {
+  label {
+    display: block;
+    font-size: .8em;
+  }
+
+  button {
+    margin-top: 18px;
+    background-color: #5973a8;
+    border-color: #1a356e;
+  }
+}
+
+.navbar-fixed-top .navbar-toggle .icon-bar {
+    background-color: white;
+}
+
+body {
+  background-color: #edf0f5;
+}
+
+main {
+  margin-top: 100px;
+}
+
+#benefits {
+  font-size: 1.3em;
+  line-height: 2em;
+  margin-top: 50px;
+}
+
+#signup-form {
+  .spacer {
+    margin-bottom: 15px;
+  }
+
+  button {
+    border-color: #3b6e22;
+  }
+}

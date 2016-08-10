@@ -1,59 +1,8 @@
-<!-- Your markup here! -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
 
-	<link rel="stylesheet" type="text/css" href="assets/stylesheets/styles.css">
+<div id="static_pages">
+	<%= render 'navbar' %>
 
-</head>
-<body>
-	<nav class="navbar navbar-fixed-top">
-		<div class="container">
-			<div class="navbar-header">
-		      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="true">
-		        <span class="sr-only">Toggle navigation</span>
-		        <span class="icon-bar"></span>
-		        <span class="icon-bar"></span>
-		        <span class="icon-bar"></span>
-		      </button>
-		      <a class="navbar-brand" href="/"><img src="assets/images/danish_flag.gif" alt="Brand" id="logo"><span id="brand-name">Danebook</span></a>
-		    </div>
-
-		    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-		    	<form class="navbar-form" role="search">
-		    		<div class="col-sm-7 col-sm-offset-3" id="search-wrapper">
-		    			<input class="btn-block" type="search" placeholder="Search for Users"></input>
-		    		</div>
-		    	</form>
-
-		    	<ul class="nav navbar-nav navbar-right">
-		    		<li><a href="about.html" id="username">Harry</a></li>
-		    	</ul>
-		    </div><!-- Collapsing div -->
-		</div><!-- Navbar Container -->
-	</nav>
-
-	<div class="container">
-		<div class="row" id="cover-photo">
-			<div class="col-sm-10 username">
-				<a href="#"><img id="profile-pic" src="assets/images/harry_potter_small.jpg"></a>
-				<h1>Harry Potter</h1>
-			</div>
-		</div>
-		<div class="row link-bar">
-			<div class="col-sm-7 col-sm-offset-2" role="navigation">
-				<ul class="nav nav-pills nav-justified">
-				  <li role="presentation"><a href="timeline.html">Timeline</a></li>
-				  <li role="presentation"  class="active-tab"><a href="about.html">About</a></li>
-				  <li role="presentation"><a href="photos.html">Photos <span>(123)</span></a></li>
-				  <li role="presentation"><a href="friends.html">Friends <span>(542)</span></a></li>
-				</ul>
-			</div><!-- Nav Menu -->
-			<div class="col-sm-3">
-				<h5 class="text-right"><a href="about_edit.html" id="edit-profile-link">Edit Profile</a></h5>
-			</div><!-- Edit Profile Link -->
-		</div><!-- Link bar -->
-	</div> <!-- Banner Container -->
+	<%= render 'banner', edit: false, page_from: "about" %> 
 
 	<div class="container section-container">
 		<div class="row section-header">
@@ -155,5 +104,4 @@
 			</div>
 		</div>
 	</div>
-</body>
-</html>
+<div id="static_pages">

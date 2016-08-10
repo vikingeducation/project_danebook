@@ -1,0 +1,109 @@
+// Place all the styles related to the sessions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+	$header-color: #2b78e4;
+	$nav-height: 90px;
+	$buffer: 10px;
+
+#login {
+	nav {
+		height: $nav-height;
+
+		#btn-login {
+			// transform: translateX(50%);
+			color: black;
+			position: absolute;
+			background-image: none;
+			background-color: #95c5f8;
+			width: 100px;
+			height: 30px;
+			padding: 5px 12px;
+			border-radius: 0;
+		}
+
+		input {
+			border-radius: 0;
+			border: 1px solid black;
+			box-shadow: 1px 1px black;
+		}
+	}
+
+	.navbar {
+		background: none;
+		color: white;
+
+		background-color: $header-color;
+
+		.navbar-brand {
+			font-size: 40px;
+			color: #fff;
+		}
+	}
+
+	main {
+		input {
+			border: 2px solid #cacaca;
+		}
+
+		.top-buffer {
+			margin-top: 100px;
+		}
+
+		.catch-phrase {
+			margin-bottom: $buffer + 10;
+		}
+
+		li {
+			// margin-bottom: $buffer;
+			// margin-left: 10px;
+			margin: $buffer $buffer;
+			font-size: 16px;
+		}
+
+		h2 {
+			font-size: 50px;
+			margin-bottom: 25px;
+		}
+
+		h3 {
+			font-size: 32px;
+		}
+
+		section {
+			select.full-width-input {
+				color: #cacaca;
+			}
+
+			.full-width-input {
+				min-width: 100%;
+				max-width: 100%;
+				height: 2.5em;
+				padding: 2px 0 2px 5px;
+			}
+
+			.birthday-forms {
+				margin-bottom: $buffer;
+			}
+
+			.radio-inline:first-child {
+				margin-left: $buffer;
+			}
+
+			#sign-up-btn {
+				min-width: 100%;
+				font-weight: bold;
+				font-size: 16px;
+				letter-spacing: 3px;
+			}
+		}
+	}
+
+	.vertical-align {
+	  position: absolute;
+	  top: 50%;
+	  -webkit-transform: translateY(-50%);
+	  -ms-transform: translateY(-50%);
+	  transform: translateY(-50%);
+	}
+}

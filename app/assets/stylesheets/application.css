@@ -1,9 +1,4 @@
-@import "bootstrap-sprockets";
-@import "bootstrap";
-@import "font-awesome-sprockets";
-@import "font-awesome";
-@import "pages";
-@import "static_pages";
+/*@import "static_pages";*/
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
  * listed below.
@@ -19,3 +14,5 @@
  *= require_tree .
  *= require_self
  */
+@import "static_pages";
+@import "sessions";

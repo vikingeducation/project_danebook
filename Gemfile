@@ -28,7 +28,7 @@ gem 'font-awesome-sass'
 gem 'will_paginate',           '3.0.7'
 gem 'bootstrap-will_paginate', '0.0.10'
 # Use Redis adapter to run Action Cable in production
-gem 'faker'
+
 
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
@@ -43,6 +43,7 @@ group :development, :test do
   gem 'pry-byebug'
   gem "better_errors"
   gem 'binding_of_caller'
+  gem 'faker'
 
 end
 
@@ -56,7 +57,6 @@ group :development do
 end
 
 group :production do
-  gem 'pg'
   gem 'rails_12factor'
 end
 

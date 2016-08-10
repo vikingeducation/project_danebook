@@ -3,7 +3,8 @@ class User < ApplicationRecord
 
   has_secure_password
   validates :email, presence: true
-  
+  has_one :profile
+  accepts_nested_attributes_for :profile
 
   def generate_token
     begin

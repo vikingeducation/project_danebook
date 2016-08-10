@@ -20,7 +20,9 @@
     <!--About page header and edit profile button-->
     <div class="col-md-10 col-md-offset-1" id="header-bar">
       <h2>About</h2>
-      <a class="btn btn-primary" href="about_edit.html" role="button">Edit your Profile</a>
+      <% if params[:id] == current_user.id.to_s %>
+        <a class="btn btn-primary" href="about_edit.html" role="button">Edit your Profile</a>
+      <% end %>
     </div>
     <!--basic information and more about user-->
     <div class="col-md-10 col-md-offset-1" id="basic">

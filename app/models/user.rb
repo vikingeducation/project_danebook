@@ -3,6 +3,9 @@ class User < ActiveRecord::Base
   before_create :create_activation_digest
 
   has_many :microposts, dependent: :destroy
+  has_one :profile
+
+  accepts_nested_attributes_for :profile
 
   #pg_search
   include PgSearch
@@ -15,7 +18,7 @@ class User < ActiveRecord::Base
 
   VALID_EMAIL_REGEX = /\A[\w\d\.\_]{4,254}@\w{,6}\.\w{3}\z/
 
-  validates_presence_of :first_name, :last_name, :email
+  validates_presence_of :email
   validates_uniqueness_of :email
   validates :email, format: { with: VALID_EMAIL_REGEX }
   validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
@@ -76,6 +79,14 @@ class User < ActiveRecord::Base
   #Send password reset email.
   def send_reset_email
     UserMailer.password_reset(self).deliver_now
+  end
+
+  def first_name
+    self.profile.first_name
+  end
+
+  def last_name
+    self.profile.last_name
   end
 
   private

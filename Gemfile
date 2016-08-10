@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 4.2.2'
-gem 'sprockets_better_errors'
+
 # Use sqlite3 as the database for Active Record
 gem 'pg'
 # Use Puma as the app server
@@ -58,6 +58,7 @@ end
 
 group :production do
   gem 'rails_12factor'
+  gem 'sprockets_better_errors'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

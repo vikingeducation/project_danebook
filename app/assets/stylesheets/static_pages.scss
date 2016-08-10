@@ -1,0 +1,22 @@
+// Place all the styles related to the StaticPages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import 'static_partials/_components';
+@import 'static_partials/_sign_in';
+@import "static_partials/_header";
+@import "static_partials/_main-content-box";
+@import "static_partials/_about-content-box";
+@import "static_partials/_edit-about-content-box";
+@import "static_partials/_timeline";
+@import "static_partials/_friends";
+@import "static_partials/_photos";
+
+.logged-in-body {
+  min-width: 768px;
+  @media (min-width: 1200px) {
+    .container{
+      max-width: 970px;
+    }
+  }
+}

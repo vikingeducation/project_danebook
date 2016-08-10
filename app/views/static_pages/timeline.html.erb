@@ -1,0 +1,187 @@
+<div class="container">
+	<main class="timeline-content-area">
+		<div class="row">
+			<div class="col-xs-4">
+				<section class="tl-about-box tl-content-box">
+					<div class="row">
+						<header class="col-xs-12">
+							<h4>About</h4>
+						</header>
+					</div>
+					<div class="row">
+						<div class="col-xs-12 tl-about-info tl-content-template">
+							<ul class="list-unstyled">
+								<li><strong>Birthday:</strong> July 31st, 1980</li>
+								<li><strong>College:</strong> Hogwarts College</li>
+								<li><strong>Hometown:</strong> Godrick's Hollow, England</li>
+								<li><strong>Currently Lives:</strong> Godrick's Hollow, England</li>
+							</ul>
+						</div>
+					</div>
+				</section>
+				<section class="tl-content-box">
+					<div class="row">
+						<header class="col-xs-12 tl-photos-header">
+							<h4>Photos (123)</h4>
+						</header>
+					</div>
+					<div class="row">
+						<div class="col-xs-12 tl-content-template tl-photos-box">
+              <% 9.times do %>
+                <%= render "shared/tl-photos-box" %>
+              <% end %>
+							<div class="col-xs-12">
+                <%= link_to "See More Photos", photos_path, class: "tl-to-photos-link" %>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section class="tl-content-box">
+					<div class="row">
+						<header class="col-xs-12 tl-photos-header">
+							<h4>Friends (542)</h4>
+						</header>
+					</div>
+					<div class="row">
+						<div class="col-xs-12 tl-content-template tl-photos-box">
+              <% 6.times do %>
+							  <%= render partial: "shared/tl-friends-box",
+                    locals: { name: "Harry Potter"} %>
+              <% end %>
+							<div class="col-xs-12">
+                <%= link_to "See More Friends", friends_path, class: "tl-to-friend-link" %>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+			<div class="col-xs-8">
+				<section class="tl-content-box tl-post-box">
+					<div class="row">
+						<header class="col-xs-12">
+							<h4>Post</h4>
+						</header>
+					</div>
+					<div class="row">
+						<div class="col-xs-12 tl-content-template">
+							<form>
+								<div class="form-group tl-post-form">
+									<textarea class="form-control" rows="2" placeholder="Tell the world something..."></textarea>
+								</div>
+							</form>
+						</div>
+					</div>
+					<div class="row">
+						<footer class="col-xs-12">
+							<div class="col-xs-3 pull-right h2 btn-container">
+                <%= link_to "Post", "#", class: "btn btn-primary" %>
+							</div>
+						</footer>
+					</div>
+				</section>
+
+				<section class="tl-exist-post">
+					<%= render partial: "shared/ex-post-profile-container", locals: { date: "Thursday, 5/21/2014", name: "Harry Potter" } %>
+					<div class="row">
+						<footer class="col-xs-12 tl-post-footer">
+              <%= link_to "Like", "#", class: "ex-post-like-link" %>
+              <%= link_to "Comment", "#" %>
+              <%= link_to "Delete", "#", class: "pull-right" %>
+						</footer>
+					</div>
+				</section>
+
+				<section class="tl-exist-post">
+					<%= render partial: "shared/ex-post-profile-container", locals: { date: "Thursday, 5/21/2014", name: "Harry Potter" } %>
+					<div class="row">
+						<footer class="clearfix tl-post-footer">
+							<div class="col-xs-12">
+                <%= link_to "Like", "#", class: "ex-post-like-link" %>
+                <%= link_to "Comment", "#" %>
+                <%= link_to "Delete", "#", class: "pull-right" %>
+							</div>
+							<div class="col-xs-12 ex-poster-info">
+								<span class="ex-post-like"><%= link_to "Hermione Granger", "#"%> likes this</span>
+							</div>
+						</footer>
+					</div>
+				</section>
+
+				<section class="tl-exist-post">
+					<%= render partial: "shared/ex-post-profile-container", locals: { date: "Thursday, 5/21/2014", name: "Harry Potter" } %>
+					<div class="row">
+						<footer class="clearfix tl-post-footer">
+							<div class="col-xs-12">
+                <%= link_to "Unlike", "#", class: "ex-post-like-link" %>
+                <%= link_to "Comment", "#" %>
+                <%= link_to "Delete", "#", class: "pull-right" %>
+							</div>
+							<div class="col-xs-12 border-bottom">
+                <span class="ex-post-like">You and <%= link_to "Hermione Granger", "#"%> and 3 others like this.</span>
+							</div>
+
+							<div class="col-xs-12">
+								<div class="row">
+									<div class="clearfix tl-comment-container">
+										<div class="col-xs-2 ex-post-profile-container">
+                      <%= link_to image_tag("/imgs/user_silhouette_generic.gif", class: "ex-post-profile"), "#" %>
+										</div>
+										<div class="col-xs-10 ex-poster-info">
+                      <%= link_to "Ron Weasley", "#" %>
+											<p class="ex-post-timestamp">Said on Wednesday 5/10/2014</p>
+										</div>
+										<p class="ex-post-content tl-comment-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+										tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+										quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+										consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+										cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+										proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+										<div class="col-xs-12 tl-comment-footer">
+                      <%= link_to "Like", "#" %>
+											<span>3 other people like this</span>
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="col-xs-12">
+								<div class="row">
+									<div class="clearfix tl-comment-container">
+										<div class="col-xs-2 ex-post-profile-container">
+                      <%= link_to image_tag("/imgs/harry_potter
+											_small.jpg", class: "ex-post-profile"), about_path %>
+										</div>
+										<div class="col-xs-10 ex-poster-info">
+											<%= link_to "Harry Potter", about_path %>
+											<p class="ex-post-timestamp">Said on Wednesday 5/10/2014</p>
+										</div>
+										<p class="ex-post-content tl-comment-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+										tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+										quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+										consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+										cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+										proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+										<div class="col-xs-12 tl-comment-footer">
+											<%= link_to "Like", "#" %>
+											<span>3 other people like this</span>
+                      <%= link_to "Delete", "#", class: "pull-right" %>
+										</div>
+									</div>
+								</div>
+								<form>
+									<div class="form-group">
+										<textarea class="form-control tl-comment-post" rows="5" placeholder="Write a comment..."></textarea>
+									</div>
+								</form>
+                <%= link_to "Cancel", "#" %>
+								<div class="col-xs-3 pull-right btn-container">
+                  <%= link_to "Comments", "#", class: "btn btn-primary comment-btn" %>
+								</div>
+							</div>
+						</footer>
+					</div>
+				</section>
+			</div>
+		</div>
+	</main>
+</div>

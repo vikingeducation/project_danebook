@@ -1,0 +1,74 @@
+<div class="container about-info-container">
+	<main>
+		<header>
+			<div class="row main-content-header">
+				<div class="col-xs-2 col-xs-offset-5">
+					<h2>About</h2>
+				</div>
+			</div>
+		</header>
+		<div class="row info-section">
+			<section class="col-xs-5 identifying-info">
+				<h2>Basic Information</h2>
+				<div class="row">
+					<div class="col-xs-4">
+						<ul class="list-unstyled topics">
+							<li>Birthday:</li>
+							<li>College:</li>
+							<li>Hometown:</li>
+							<li>Currently Lives:</li>
+						</ul>
+					</div>
+					<form class="col-xs-7">
+						<div class="form-group">
+							<input type="text" class="form-control" value="July 31st, 1980">
+						</div>
+						<div class="form-group">
+							<input type="text" class="form-control" value="Hogwarts College">
+						</div>
+						<div class="form-group">
+							<input type="text" class="form-control" value="Godrick's Hollow, England">
+						</div>
+						<div class="form-group">
+							<input type="text" class="form-control" value="Godrick's Hollow, England">
+						</div>
+					</form>
+				</div>
+				<h2>Contact Information</h2>
+				<div class="row">
+					<div class="col-xs-4">
+						<ul class="list-unstyled topics">
+							<li>Email:</li>
+							<li>Telephone:</li>
+						</ul>
+					</div>
+					<form class="col-xs-7">
+						<div class="form-group">
+							<input type="email" class="form-control" value="harry_potter@hogwarts.edu">
+						</div>
+						<div class="form-group">
+							<input type="tel" class="form-control" value="555-123-4567">
+						</div>
+					</form>
+				</div>
+			</section>
+			<section class="col-xs-6 personal-info">
+				<h2>Words to Live By</h2>
+				<form>
+					<div class="form-group">
+						<textarea class="form-control" rows="4" >Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</textarea>
+					</div>
+				</form>
+				<h2>About Me</h2>
+				<div class="form-group">
+					<textarea class="form-control" rows="6">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</textarea>
+				</div>
+			</section>
+			<div class="row">
+				<div class="col-xs-6 col-xs-offset-3">
+          <%= link_to "Save Changes", about_path, class: "btn btn-primary save-button" %>
+			  </div>
+		  </div>
+		</div>
+	</main>
+</div>

@@ -1,0 +1,17 @@
+<main>
+	<div class="container about-info-container">
+		<header>
+			<div class="row main-content-header">
+				<div class="col-xs-2 col-xs-offset-5">
+					<h2>Friends</h2>
+				</div>
+			</div>
+		</header>
+
+		<div class="row big-friend-container">
+			<% 3.times do %>
+        <%= render "shared/friends-section-row" %>
+      <% end %>
+		</div>
+	</div>
+</main>

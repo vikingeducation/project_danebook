@@ -1,0 +1,39 @@
+.big-friend-container {
+	border: 1px solid black;
+	margin-bottom: 50px;
+}
+
+.friend-container-row {
+	margin-top: 20px;
+	.frd-box {
+		border: 1px solid black;
+		margin-left: 4%;
+		margin-right: 4%;
+		.friend-prof-photo {
+			height: 100px;
+			margin-top: 15px;
+			margin-bottom: 15px;
+			border: 1px solid black;
+		}
+		.frd-links {
+			margin-top: 40px;
+			a {
+				color: #3B5998;
+				text-decoration: underline;
+				&:hover {
+					color: #3B5998;
+				}
+			}
+			p {
+				color: #aaa;
+			}
+		}
+		.frd-btn-container {
+			margin-top: 48px;
+			.frd-btn {
+				background-color: #eee;
+				white-space: normal;
+			}
+		}
+	}
+}

@@ -1,0 +1,13 @@
+/********* VARIABLES  *********/
+/*Colors*/
+$facebook-blue: #3b5998;
+$tablet: 769px;
+
+
+/********* MIXINS  *********/
+
+@mixin media($width) {
+  @media (min-width: #{$width}) {
+    @content;
+  }
+}

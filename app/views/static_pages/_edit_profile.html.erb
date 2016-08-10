@@ -2,6 +2,7 @@
 <input name="_method" type="hidden" value="patch"/>
 
 <div class="col-md-12 panel">
+  <%= form_for profile do |profile_fields| %>
   <div class="row">
     <div class="col-md-12">
       <h1 class="panel-header">Edit Profile</h1>
@@ -13,19 +14,52 @@
       <table>
         <tr>
           <td>Birthday:</td>
-          <td>July 31st, 1980</td>
+          <td>
+            <%= profile_fields.fields_for :birthday do |birthday_fields| %>
+              <%= birthday_fields.fields_for :profile_date do |date_fields| %>
+                <%= date_fields.label :month %><br>
+                <%= date_fields.text_field :month %><br>
+                <%= date_fields.label :day %><br>
+                <%= date_fields.text_field :day %><br>
+                <%= date_fields.label :year %><br>
+                <%= date_fields.text_field :year %><br>
+              <% end %>
+            <% end %>
+          </td>
         </tr>
         <tr>
           <td>College:</td>
-          <td><input type="text" placeholder="Hogwarts College" class="form-control"></td>
+          <td><%= profile_fields.text_field :college, class: "form-control"%></td>
         </tr>
         <tr>
           <td>Hometown:</td>
-          <td><input type="text" placeholder="Godrick's Hollow, England" class="form-control"></td>
+          <td>
+            <%= profile_fields.fields_for :hometown do |home_fields| %>
+              <%= home_fields.fields_for :address do |address_fields| %>
+                <%= address_fields.label :city %><br>
+                <%= address_fields.collection_select(:city_id, cities, :id, :name) %><br>
+                <%= address_fields.label :state %><br>
+                <%= address_fields.collection_select(:state_id, states, :id, :name) %><br>
+                <%= address_fields.label :country %><br>
+                <%= address_fields.collection_select(:country_id, countries, :id, :name) %><br>              
+              <% end %>
+            <% end %>
+          </td>
         </tr>
         <tr>
           <td>Currently Lives:</td>
-          <td><input type="text" placeholder="Godrick's Hollow, England" class="form-control"></td>
+          <td>
+            <%= profile_fields.fields_for :residence do |home_fields| %>
+              <%= home_fields.fields_for :address do |address_fields| %>
+                <%= address_fields.label :city %><br>
+                <%= address_fields.collection_select(:city_id, cities, :id, :name) %><br>
+                <%= address_fields.label :state %><br>
+                <%= address_fields.collection_select(:state_id, states, :id, :name) %><br>
+                <%= address_fields.label :country %><br>
+                <%= address_fields.collection_select(:country_id, countries, :id, :name) %><br>              
+              <% end %>
+            <% end %>
+          </td>
         </tr>
       </table>
 
@@ -51,7 +85,8 @@
   </div>
   <div class="row panel-footer">
     <div class="col-md-4 col-md-offset-4">
-      <button class="btn btn-primary btn-block">Save Changes</button>
+      <%= profile_fields.submit "Save Changes", class: "btn btn-primary btn-block" %>
     </div>
   </div>
+  <% end %>
 </div>

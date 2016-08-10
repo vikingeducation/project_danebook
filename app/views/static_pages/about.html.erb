@@ -4,7 +4,7 @@
   </header>
 
   <div class="row">
-    <%= render partial: "static_pages/#{params[:action]}_profile", locals: { user: user, microposts: microposts } %>
+    <%= render partial: "static_pages/#{params[:action]}_profile", locals: { user: user, microposts: microposts, cities: cities, states: states, countries: countries, profile: profile } %>
   </div>
 
 <%= link_to 'Sign out', logout_path, method: :delete%>

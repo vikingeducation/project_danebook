@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   before_create :create_activation_digest
 
   has_many :microposts, dependent: :destroy
-  has_one :profile
+  has_one :profile, dependent: :destroy
 
   accepts_nested_attributes_for :profile
 

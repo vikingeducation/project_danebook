@@ -1,6 +1,6 @@
 class Address < ActiveRecord::Base
   belongs_to :addressable, polymorphic: true
-  has_one :city
-  has_one :state
-  has_one :country
+  belongs_to :city
+  belongs_to :state
+  belongs_to :country
 end

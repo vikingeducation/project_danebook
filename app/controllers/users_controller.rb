@@ -14,14 +14,14 @@ class UsersController < ApplicationController
   def new
     user = User.new
     render 'static_pages/signup', 
-           locals: { user: user }
+           locals: { user: user, profile: user.profile }
   end
 
   def create
     user = User.new({ email: user_params[:email], password: user_params[:password] })
     raise
     if user.save
-      user.build_profile({ first_name: user_params[:first_name], last_name: user_params[:last_name] })
+      build_user(user)
       user.send_activation_email
       flash[:info] = 'You have been sent an email containing a link to activate your account.'
       redirect_to root_url
@@ -34,7 +34,7 @@ class UsersController < ApplicationController
   def edit
     user = User.find(params[:id])
     render 'static_pages/about', 
-           locals: { user: user, microposts: nil }, 
+           locals: { user: user, microposts: nil, profile: user.profile, cities: City.all, states: State.all, countries: Country.all }, 
            action: :edit
   end
 
@@ -45,7 +45,7 @@ class UsersController < ApplicationController
       redirect_to user
     else
     render 'static_pages/about', 
-           locals: { user: user }, 
+           locals: { user: user, profile: user.profile }, 
            action: :edit
     end
   end
@@ -55,7 +55,7 @@ class UsersController < ApplicationController
     microposts = user.microposts.paginate(page: params[:page],
                                           per_page: 4)
     render 'static_pages/about', 
-            locals: { user: user, microposts: microposts },
+            locals: { user: user, microposts: microposts, cities: nil, states: nil, countries: nil, profile: user.profile },
             action: :show
   end
 
@@ -82,6 +82,17 @@ class UsersController < ApplicationController
     def correct_user
       user = User.find(params[:id])
       redirect_to root_url unless current_user == user
+    end
+
+    def build_user(user)
+      user.build_profile({ first_name: user_params[:first_name], last_name: user_params[:last_name] }).save
+      user.profile.build_contact_info.save
+      user.profile.build_birthday.save
+      user.profile.birthday.build_profile_date.save
+      user.profile.build_hometown.save
+      user.profile.hometown.build_address.save
+      user.profile.build_residence.save
+      user.profile.residence.build_address.save
     end
 
 end

@@ -32,7 +32,7 @@ class UsersController < ApplicationController
   def edit
     user = User.find(params[:id])
     render 'static_pages/about', 
-           locals: { user: user }, 
+           locals: { user: user, microposts: nil }, 
            action: :edit
   end
 

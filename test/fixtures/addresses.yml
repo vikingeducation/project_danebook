@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  addressable_id: 
+  address_1: MyString
+  address_2: MyString
+
+two:
+  addressable_id: 
+  address_1: MyString
+  address_2: MyString

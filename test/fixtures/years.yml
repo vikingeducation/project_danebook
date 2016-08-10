@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  profile_date_id: 
+  number: 1
+
+two:
+  profile_date_id: 
+  number: 1

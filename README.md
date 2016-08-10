@@ -1,4 +1,6 @@
-danebook
-========
+Project Danebook
+==================
 
-This is the Real Dane Deal.
+By: [Leo Ahnn](https://github.com/leosaysger/assignment_danebook_goes_live.git)
+
+Part of the [VCS](http://vikingcodeschool.com) curriculum

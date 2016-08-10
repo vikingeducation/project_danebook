@@ -1,0 +1,96 @@
+
+<main class="container">
+  <div class="row">
+    <!-- cover photo -->
+    <div class="col-md-10 col-md-offset-1 col-xs-12" id="cover-photo">
+      <img src="https://s3.amazonaws.com/viking_education/web_development/web_app_eng/hogwarts_small.jpg" class="img-responsive">
+      <div class="row">
+        <!--profile picture which is overlayed on cover photo-->
+        <div class="col-md-6 col-md-offset-1 col-xs-10" id="profile-picture">
+          <img src="https://s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif">
+          <h2>Harry Potter</h2>
+        </div>
+      </div>
+    </div>
+    <!--set of profile tabs linking to different parts of the page-->
+    <%= render "shared/nav_links" %>
+    
+  </div>
+  <div class="row">
+    <!--About page header and edit profile button-->
+    <div class="col-md-10 col-md-offset-1" id="header-bar">
+      <h2>About</h2>
+      <a class="btn btn-primary" href="about_edit.html" role="button">Edit your Profile</a>
+    </div>
+    <!--basic information and more about user-->
+    <div class="col-md-10 col-md-offset-1" id="basic">
+      <div class="row">
+        <div class="col-md-6">
+          <h3>Basic Information</h3>
+          <div class="row">
+            <div class="col-xs-5">
+              <p><b>Birthday:</b></p>
+            </div>
+            <div class="col-xs-7">
+              <p>July 31st, 1980</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-5">
+              <p><b>College:</b></p>
+            </div>
+            <div class="col-xs-7">
+              <p>Hogwarts College</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-5">
+              <p><b>Hometown:</b></p>
+            </div>
+            <div class="col-xs-7">
+              <p>Godrick's Hollow, England</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-5">
+              <p><b>Currently Lives:</b></p>
+            </div>
+            <div class="col-xs-7">
+              <p>Godrick's Hollow, England</p>
+            </div>
+          </div>
+          <h3 id="contact">Contact Information</h3>
+          <div class="row">
+            <div class="col-xs-5">
+              <p><b>Email:</b></p>
+            </div>
+            <div class="col-xs-7">
+              <p>harry_potter@hogwarts.edu</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-5">
+              <p><b>Telephone:</b></p>
+            </div>
+            <div class="col-xs-7">
+              <p>555-123-4567</p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6" id="about-me">
+          <h3>Words to Live By</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Ut</p>
+          <h3>About Me</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+          quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+          consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+          cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+          proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</main>

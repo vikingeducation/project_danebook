@@ -1,0 +1,33 @@
+#photo-holder{
+  height: 150px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  img{
+    height: 150px;
+    width: 150px;
+    margin: 0 auto;
+    
+  }
+  p{
+    position: relative;
+    visibility: hidden;
+    height: 25%;
+    bottom: 55px;
+    left: 2px;
+    width: 146px;
+    margin: 0 auto;
+    text-align: center;
+    background-color: #333;
+    opacity: 0.8; 
+    color: white;
+    line-height: 40px;
+    font-size: 12px;
+  }
+}
+
+#photo-holder:hover {
+  p{
+    visibility: visible;
+  }
+}
+

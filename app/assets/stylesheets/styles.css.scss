@@ -1,0 +1,181 @@
+.form-group{
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.form-control{
+  margin-bottom: 10px;
+}
+#cover-photo{
+  border: 2px solid black;
+  padding-right: 0;
+  padding-left: 0;
+  .img-responsive{
+    width: 100%;
+    height: 300px;
+  }
+  
+}
+
+#profile-picture{
+  img{
+     border: 2px solid black;
+     width: 150px;
+     height: 150px;
+     display: inline-block;
+  }
+  margin-top: -130px;
+  margin-left: 2.5%;
+  margin-bottom: -5%;
+  h2{
+    display: inline-block; 
+    border-bottom: -2px;
+    color: white;
+    margin-left: 2%;
+  }
+  
+}
+
+
+
+.navbar{
+  border: 2px solid black;
+  background-color: #2D77E2;
+  .navbar-brand{
+    color: white;
+    margin-right: -10px;
+  }
+  a{
+    color: white;
+
+  }
+  
+  
+}
+
+.btn-primary{
+  background-color: #2D77E2;
+}
+
+a{
+  color: #2D77E2;
+}
+
+
+
+#navbar-profile-link{
+  text-align: right;
+  padding-top: 8px;
+  padding-top: 8px;
+}
+
+#edit-profile-link{
+  text-align: right;
+}
+
+#profile-tabs{
+  border: 2px solid black;
+  border-top: 0px;
+}
+
+#single-profile-tab{
+  border-right: 2px solid black;
+  text-align: center;
+}
+
+#single-profile-tab-current{
+  background-color: #ccc;
+  border-right: 2px solid black;
+  text-align: center;
+}
+
+#single-profile-tab:first-of-type{
+  border-left: 2px solid black;
+}
+
+#edit-profile-tab{
+  border-right: 0px solid black;
+  h6{
+    text-align: center;
+  }
+}
+
+@media (max-width:768px){
+  #single-profile-tab{
+    border: 0px;
+    h6{
+      font-size: 16px;
+    }
+  }
+  #single-profile-tab:first-of-type{
+    border: 0px;
+    h6{
+      font-size: 16px;
+    }
+  }
+  #single-profile-tab-current{
+    border: 0px;
+    h6{
+      font-size: 16px;
+      line-height: 30px;
+    }
+
+  }
+  #edit-profile-tab{
+    h6{
+      font-size: 16px;
+    }
+  }
+  #profile-picture{
+    margin-top: -220px;
+    margin-left: 8%;
+    img{
+      display: block;
+      margin: auto;
+    }
+    h2{
+      display: block;
+      color: white;
+      text-align: center;
+    }
+  }
+
+}
+@media (min-width: 769px) and (max-width: 990px){
+  #profile-picture{
+    margin-top: -220px;
+    margin-left: 8%;
+    img{
+      display: block;
+      margin: auto;
+    }
+    h2{
+      display: block;
+      color: white;
+      text-align: center;
+    }
+  }
+}
+
+
+
+#header-bar{
+  text-align: center;  
+  margin-top: 10px;
+  border: 2px solid black;
+  background-color: #ccc;
+  a{
+    float: right;
+    display: inline-block;
+    margin-top: -42px;
+    margin-bottom: 5px;
+  }
+  h2{
+    margin-top: 5px;
+  }
+}
+
+#basic{
+  border: 2px solid black;
+  border-top: 0px;
+}

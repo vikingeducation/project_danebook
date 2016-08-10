@@ -7,15 +7,6 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :profile
 
-  #pg_search
-  include PgSearch
-  #Defining a pg search scope.
-  pg_search_scope :search_by_full_name, 
-                  against: [:first_name,:last_name],
-                  using: { 
-                    tsearch: { dictionary: :english } 
-                  }
-
   VALID_EMAIL_REGEX = /\A[\w\d\.\_]{4,254}@\w{,6}\.\w{3}\z/
 
   validates_presence_of :email
@@ -65,9 +56,9 @@ class User < ActiveRecord::Base
   def User.search(search, page)
     if !search.empty?
       #Calling the pg search scope defined above.
-      search_by_full_name(search).paginate(page: page, per_page: 10)
+      Profile.search_by_full_name(search).paginate(page: page, per_page: 10)
     else
-      order("last_name ASC").paginate(page: page, per_page: 10)
+      joins(:profile).where("profiles.user_id = users.id").order("profiles.last_name ASC").paginate(page: page, per_page: 10)
     end
   end
 
@@ -82,11 +73,11 @@ class User < ActiveRecord::Base
   end
 
   def first_name
-    self.profile.first_name
+    @first_name ||= self.profile.first_name
   end
 
   def last_name
-    self.profile.last_name
+    @last_name ||= self.profile.last_name
   end
 
   private

@@ -1,0 +1,428 @@
+// Place all the styles related to the StaticPages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+// home page
+
+#brand-title {
+  font-size: 3.9em;
+  margin: 25px 0 10px 0;
+  color: #FEFEFE; }
+
+.float-right {
+  float: right; }
+
+#nav-content {
+  background-color: #2B78E4;
+  height: 100px; }
+
+#landing-page {
+  margin-top: 100px; }
+
+#info {
+  height: 400px;
+  color: #666666; }
+
+#connect {
+  color: black; }
+
+#signup {
+  height: 400px; }
+
+#connect {
+  margin-top: 30px; }
+
+#invisible {
+  visibility: hidden; }
+
+#signup h4 input {
+  width: 100%; }
+
+#birthday-options {
+  margin-bottom: 20px; }
+
+#birthday-options select {
+  margin-right: 20px; }
+
+#gender-input-female {
+  margin-right: 10px;
+  transform: scale(1.4); }
+
+#female {
+  display: inline-block;
+  font-size: 15px;
+  position: relative;
+  top: 3px; }
+
+#gender-input-male {
+  margin: 0 10px 0 20px;
+  transform: scale(1.4); }
+
+#male {
+  display: inline-block;
+  font-size: 15px;
+  position: relative;
+  top: 3px; }
+
+#signup-button {
+  margin-top: 15px;
+  width: 100%;
+  height: 40px;
+  background-color: #009E0F;
+  color: white;
+  border-radius: 0;
+  box-shadow: 3px 3px 3px black;
+  border-color: black;
+  font-size: 20px; }
+
+/*# sourceMappingURL=styles.css.map */
+
+//other
+d1v {
+  border: 1px solid pink;
+}
+
+#navbar {
+  background-color: #2B78E4;
+  height: 80px;
+  padding-top: 15px;
+}
+
+#nav-image {
+  height: 40px;
+  width: 40px;
+  display: inline-block;
+  float: left;
+  border-radius: 100%;
+}
+
+#nav-brand {
+  display: inline-block;
+}
+
+#brand-title {
+  color: white;
+  margin-left: 4%;
+}
+
+#user-search {
+  width: 100%;
+}
+
+#current-user {
+  color: white;
+}
+
+#cover-photo {
+  height: 500px;
+  width: 100%; /*google for background image fill property*/
+  background-image: url("images/hogwarts_small.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+  border: 2px solid black;
+  border-bottom: 0;
+  background-size: 100%;
+}
+
+#profile-photo {
+  position: absolute;
+  top: -250px;
+  left: -17px;
+  transform: scale(0.8);
+  border: 2px solid black;
+}
+
+#nav-options {
+  border: 2px solid black;
+
+  a {
+    margin: 10px;
+    text-decoration: underline;
+    margin-top: 16px;
+  }
+  h4 {
+    margin: 15px;
+    margin-left: 0;
+  }
+
+  a.main-nav {
+    text-decoration: none;
+    color: black;
+  }
+
+}
+
+.float-right {
+  float: right;
+}
+.content-center {
+  text-align: center;
+}
+
+.border-left {
+  border-left: 2px solid black;
+}
+
+.border-right {
+  border-right: 2px solid black;
+}
+
+.grey-out {
+  color: grey;
+}
+
+#about {
+  margin-top: 10px;
+  border: 2px solid black;
+  padding-bottom: 60px;
+  margin-bottom: 80px;
+}
+
+#row-header {
+  background-color: #EEEEEE;
+  border-bottom: 2px solid black;
+}
+
+.not-bold {
+  font-weight: normal;
+}
+
+.padding-left {
+  padding-left: 4%;
+}
+
+.padding-left-super {
+  padding-left: 50px;
+}
+
+#about-header {
+  margin-top: 10px;
+}
+
+#edit-button {
+  margin-top: 13px;
+  background-color: #2B78E4;
+  color: white;
+  padding: 5px 15px;
+  box-shadow: 3px 3px 3px black;
+  border: 1px solid black;
+}
+
+#about-content {
+  padding-top: 20px;
+}
+
+#about-me-title {
+  margin: 16px 0 26px 0;
+}
+
+#contact-information {
+  margin-top: 20px;
+}
+
+.grey-background {
+  background-color: #EEEEEE;
+}
+
+.long-input {
+  line-height: 1.8em;
+  width: 100%;
+  padding: 10px 5px;
+}
+
+.tall-input {
+  height: 200px;
+}
+
+#save-button {
+  width: 100%;
+  margin-top: 60px;
+  margin-bottom: 80px;
+  padding: 20px;
+  font-size: 30px;
+  color: white;
+  background-color: #2B78E4;
+  border: 2px solid black;
+  box-shadow: 5px 5px 5px black;
+}
+
+#timeline-main {
+  margin-bottom: 10px;
+}
+
+#left-column p:first-child {
+  margin-top: 20px;
+}
+
+
+.left-column {
+  margin-left: -15px;
+  height: 100%;
+  background-color: #eee;
+  border: 2px solid black;
+  border-bottom: 0;
+}
+
+.border-3sides {
+  border: 2px solid black;
+  border-bottom: 0;
+}
+
+.border-2sides {
+  border-left: 2px solid black;
+  border-right: 2px solid black;
+}
+
+.border-bottom {
+  border-bottom: 2px solid black;
+}
+
+#timeline-photos {
+  margin-top: 20px;
+}
+
+#post-input-div textarea {
+  width: 100%;
+  margin: 14px 0 14px 0;
+  height: 70px;
+  padding-left: 6px;
+}
+
+#post-button {
+  margin: 10px;
+  margin-left: -10px;
+  font-size: 1.4em;
+  background-color: #2B78E4;
+  color: white;
+  border: 2px solid black;
+  box-shadow: 2px 4px 4px black;
+  padding: 0 20px;
+}
+
+#posts-section   {
+  margin-top: 10px;
+  padding-top: 10px;
+}
+
+
+.small-profile-photo {
+  width: 50px;
+  height: 50px;
+  margin-top: 5px;
+}
+
+.post-content {
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+
+.float-right {
+  float: right;
+}
+
+.footer-link {
+  margin: 3px 8px 3px 0;
+  text-decoration: underline;
+}
+
+.grey-border-bottom {
+  border-bottom: 1px solid grey;
+}
+
+.user-link {
+  text-decoration: underline;
+}
+
+.comment {
+  margin-top: 10px;
+}
+
+.write-comment {
+  margin-top: 40px;
+  margin-bottom: 8px;
+  width: 100%;
+  height: 80px;
+  padding: 5px;
+}
+
+#comment-button {
+  margin: 10px 10px 20px 28px;
+  background-color: #2B78E4;
+  color: white;
+  border: 2px solid black;
+  box-shadow: 2px 4px 4px black;
+  padding: 0 20px;
+}
+
+#page-end {
+  margin-bottom: 40px;
+}
+
+.small-photo {
+  width: 100%;
+}
+
+.padding-top {
+  padding-top: 10px;
+}
+
+.more-link {
+  margin-bottom: 20px;
+  display: inline-block;
+  padding-top: 12px;
+}
+
+.photos-main {
+  padding-top: 20px;
+  figcaption {
+    position: relative;
+    top: -40px;
+    background-color: rgba(150, 150, 150, 0.8);
+    height: 40px;
+    color: white;
+    padding-top: 8px;
+    visibility: hidden;
+  }
+  .col-xs-3:hover figcaption {
+    visibility: visible;
+  }
+}
+
+.friend-row {
+  margin-top: 20px;
+}
+
+.friend {
+  border: 3px solid black;
+  height: 124px;
+  margin: 0 20px 0 20px;
+  
+  img {
+    margin-top: 15px;
+    width: 90px;
+    height: 90px;
+  }
+    a {
+    font-size: 1.3em;
+  }
+  span {
+    font-size: 1.3em;
+    padding-left: 20px;
+  }
+  .friend-name {
+    padding-top: 40px;
+    padding-left: 20px;
+  }
+  input[type="button"] {
+    border: 2px solid black;
+    padding: 3px 20px;
+    box-shadow: 4px 4px 1px black;
+  }
+}
+
+
+
+

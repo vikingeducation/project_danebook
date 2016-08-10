@@ -1,11 +1,13 @@
 Rails.application.routes.draw do
 
+  get 'posts/index'
+  get 'users/photos'
+  get 'users/friends'
   root 'static_pages#home'
-  get 'static_pages/about'
-  get 'static_pages/friends'
-  get 'static_pages/photos'
 
   resources :users
-
+  resource :session, only: [:new, :create, :destroy]
+  get "login" => "sessions#new"
+  delete "logout" => "sessions#destroy"
 
 end

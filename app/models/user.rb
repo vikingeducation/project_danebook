@@ -1,12 +1,7 @@
 class User < ActiveRecord::Base
   before_create :generate_token
-
-
-private
-  def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
-  end
-
+  has_secure_password
+  
   def generate_token
     begin
       self[:auth_token] = SecureRandom.urlsafe_base64

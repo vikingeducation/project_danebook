@@ -11,14 +11,21 @@
                 <img class="logo" src="/assets/danish_flag.gif">
             </a>
             <a class="navbar-brand" href="#">Danebook</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <%= link_to current_user.name, "#" %>
-                    <%= link_to "Logout", logout_path, :method => :delete %>
-                </li>
-            </ul>
+            <%= form_tag session_path do %>
+            <%= label_tag do %>
+            Email
+            <%= text_field_tag :email %>
+            <% end %>
+            <%= label_tag do %>
+            Password
+            <%= password_field_tag :password %>
+            <% end %>
+            <%= submit_tag "Log in" %>
+            <%= label_tag do %>
+            Remember me?
+            <%= check_box_tag :remember_me %>
+            <% end %>
+            <% end %>
         </div>
     </div>
 </nav>

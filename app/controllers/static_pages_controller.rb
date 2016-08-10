@@ -1,15 +1,8 @@
 class StaticPagesController < ApplicationController
-
+  skip_before_action :require_login
+  
   def home
-  end
-
-  def about
-  end
-
-  def friends
-  end
-
-  def photos
+    redirect_to current_user if signed_in_user?
   end
 
 end

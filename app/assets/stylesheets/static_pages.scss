@@ -12,12 +12,11 @@
 @import "static_partials/_friends";
 @import "static_partials/_photos";
 
-html, body {
-  min-width: 768px
-}
-
-@media (min-width: 1200px) {
+.logged-in-body {
+  min-width: 768px;
+  @media (min-width: 1200px) {
     .container{
-        max-width: 970px;
+      max-width: 970px;
     }
+  }
 }

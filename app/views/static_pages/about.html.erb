@@ -1,0 +1,85 @@
+<div class="container-fluid about-page">
+  <%= render :partial => "main_nav" %>
+  <!--main photo-->
+   <div class="row">
+    <div class="col-md-12 cover-photo">
+      <img src="assets/hogwarts_small.jpg" alt="hogwarts">
+      <div id="profile-pic"><img class="img-responsive img-thumbnail" alt="profile picture" src="assets/harry_potter_small.jpg">
+
+    </div>
+      <div id="profile-name"><h3>Harry Potter</h3></div>
+  </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      
+      <!--middle navigation-->
+     <%= render :partial => "middle_nav", :locals => {:page=>"about"} %>
+    <!--about section-->
+    <section class="row about-container">
+    <div class="col-md-12">
+      <div class="row friend-header">
+        <div class="col-md-12">
+        About
+        <button type="button" class="btn btn-default btn-small edit-button">Edit Profile</button>
+      </div>
+
+    </div><!--about section end-->
+    <!--main text-->
+    <div class="row">
+      <!--left side-->
+      <div class="col-md-5" id="information">
+        <div class="basic-information">
+        <h2>Basic Information</h1>
+        <table class="information-table">
+          <tr>
+            <td>Birthday:</td>
+            <td>July 31, 1980</td>
+          </tr>
+          <tr>
+            <td>College:</td>
+            <td>Hogwarts College</td>
+          </tr>
+          <tr>
+            <td>Hometown:</td>
+            <td>Godrick's Hollow, England</td>
+          </tr>
+          <tr>
+            <td>Currently Lives:</td>
+            <td>Godrick's Hollow, England</td>
+          </tr>
+        </table>
+      </div>
+      <div class="contact-information">
+        <h2>Contact Information</h1>
+        <table class="information-table">
+          <tr>
+            <td>Email:</td>
+            <td>harry_potter@hogwarts.edu</td>
+          </tr>
+          <tr>
+            <td>Telephone:</td>
+            <td>555-123-4567</td>
+          </tr>
+        </table>
+      </div>
+      </div>
+      <!--right side-->
+      <div class="col-md-7" id="text-description">
+        <div class="words-to-live-by">
+      <h2>Words to Live By</h1>
+      <p>I'm Harry-Freaking Potter. I'm magical.</p>
+    </div>
+    <div class="about-me">
+      <h2>About Me</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum dui massa, dapibus in orci in, dictum venenatis nisl. Cras a finibus nunc. Duis et scelerisque odio, sed pharetra dui. Vivamus non nunc ante. Integer ut porta nisi, sed elementum diam. Suspendisse eget volutpat risus. Quisque egestas vulputate porttitor. Proin pellentesque enim eget viverra pharetra.<p>
+    </div>
+    </div><!--main text end-->
+  </section>
+  </div>
+</div>
+    
+
+
+</div>

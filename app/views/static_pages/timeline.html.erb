@@ -1,0 +1,212 @@
+<div class="container-fluid about-page">
+  <%= render :partial => "main_nav" %>
+  <!--main photo-->
+  <div class="row">
+    <div class="col-md-12 cover-photo">
+      <img src="assets/hogwarts_small.jpg" alt="hogwarts">
+      <div id="profile-pic"><img class="img-responsive img-thumbnail" alt="profile picture" src="assets/harry_potter_small.jpg">
+
+    </div>
+      <div id="profile-name"><h3>Harry Potter</h3></div>
+  </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      
+      <!--middle navigation-->
+      <%= render :partial => "middle_nav", :locals => {:page=>"timeline"} %>
+    <div class="row">
+      <!--Left column-->
+      <div class="col-md-5">
+        <!--About Box-->
+        <section class="row box-border">
+          <div class="col-md-12">
+        <div>
+          <h4 class="post-title centered-text">About (Text Area)</h4>
+           <table class="information-table">
+          <tr>
+            <td>Born on:</td>
+            <td>July 31, 1980</td>
+          </tr>
+          <tr>
+            <td>Went to school at:</td>
+            <td>Hogwarts College</td>
+          </tr>
+          <tr>
+            <td>Hometown:</td>
+            <td>Godrick's Hollow, England</td>
+          </tr>
+          <tr>
+            <td>Currently Lives:</td>
+            <td>Godrick's Hollow, England</td>
+          </tr>
+        </table>
+        </div><!--post box end-->
+      </div>
+      </section>
+        <!--Photos Box-->
+        <section class="row box-border">
+        <div class="col-md-12">
+          <div class="row box-header">
+            <div class="col-md-12">
+              <h4 class="box-title centered-text">Photos (123)</h4>
+            </div>
+          </div>
+          <!--Row 1-->
+          <div class="row">
+            <div class="col-md-4"><a href="#"><img class="img-responsive" src="assets/icon_photo_small.png" alt="photo"></a></div>
+            <div class="col-md-4"><a href="#"><img class="img-responsive" src="assets/icon_photo_small.png" alt="photo"></a></div>
+            <div class="col-md-4"><a href="#"><img class="img-responsive" src="assets/icon_photo_small.png" alt="photo"></a></div>
+          </div><!--Row 1 end-->
+          <!--Row 2-->
+          <div class="row">
+            <div class="col-md-4"><a href="#"><img class="img-responsive" src="assets/icon_photo_small.png" alt="photo"></a></div>
+            <div class="col-md-4"><a href="#"><img class="img-responsive" src="assets/icon_photo_small.png" alt="photo"></a></div>
+            <div class="col-md-4"><a href="#"><img class="img-responsive" src="assets/icon_photo_small.png" alt="photo"></a></div>
+          </div><!--Row 2 end-->
+          <!--Row 3-->
+          <div class="row">
+            <div class="col-md-4"><a href="#"><img class="img-responsive" src="assets/icon_photo_small.png" alt="photo"></a></div>
+            <div class="col-md-4"><a href="#"><img class="img-responsive" src="assets/icon_photo_small.png" alt="photo"></a></div>
+            <div class="col-md-4"><a href="#"><img class="img-responsive" src="assets/icon_photo_small.png" alt="photo"></a></div>
+          </div><!--Row 3 end-->
+        <!--Row 4-->
+        <div class="row centered-text">
+          <button type="button" class="btn btn-link"><a href="photos.html">See more photos</a></button>
+        </div><!--Row 4 end-->
+      </div>
+      </section>
+      <!--Friends Box-->
+      <section class="row box-border">
+        <div class="col-md-12">
+          <div class="row box-header">
+            <div class="col-md-12">
+              <h4 class="box-title centered-text">Friends (542)</h4>
+            </div>
+          </div>
+          <!--Row 1-->
+          <div class="row">
+            <div class="col-md-4"><a href="#"><img class="img-responsive" src="assets/wizard_hat.png" alt="photo"></a>
+            <button type="button" class="btn btn-link wrap-text"><a href="#">Ron Weasley</a></button>
+            </div>
+            <div class="col-md-4"><a href="#"><img class="img-responsive" src="assets/wizard_hat.png" alt="photo"></a>
+            <button type="button" class="btn btn-link wrap-text"><a href="#">Ginny Weasley</a></button>
+            </div>
+            <div class="col-md-4"><a href="#"><img class="img-responsive" src="assets/wizard_hat.png" alt="photo"></a>
+            <button type="button" class="btn btn-link wrap-text"><a href="#">Hermione Granger</a></button>
+            </div>
+          </div><!--Row 1 end-->
+          <!--Row 2-->
+          <div class="row">
+            <div class="col-md-4"><a href="#"><img class="img-responsive" src="assets/wizard_hat.png" alt="photo">
+            </a>
+            <button type="button" class="btn btn-link wrap-text"><a href="#">pararaph text</a></button>
+          </div>
+            <div class="col-md-4"><a href="#"><img class="img-responsive" src="assets/wizard_hat.png" alt="photo"></a>
+            <button type="button" class="btn btn-link wrap-text"><a href="#">pararaph text</a></button>
+            </div>
+            <div class="col-md-4"><a href="#"><img class="img-responsive" src="assets/wizard_hat.png" alt="photo"></a>
+             <button type="button" class="btn btn-link wrap-text"><a href="#">pararaph text</a></button>
+           </div>
+          </div><!--Row 2 end-->
+          <!--Row 3-->
+        <div class="row centered-text">
+          <button type="button" class="btn btn-link"><a href="friends.html">See More Friends</a></button>
+        </div><!--Row 3 end-->
+        </div>
+      </section>
+      </div><!--col-md-5 end-->
+      <!--Right column-->
+      <div class="col-md-7">
+        <!--Create Post-->
+        <div class="post-box centered-text">
+          <h4 class="post-title">Post (copied)</h4>
+          <form class="post-form" action="#" method="#">
+            <textarea class="post-textarea" name="post" rows="5" cols="60" placeholder="Tell the world something..."></textarea>
+          </form>
+          <div class="post-button-container">
+            <button type="button" class="btn btn-primary">Post</button>
+          </div>
+        </div>
+        <!--Existing Post-->
+        <div class="post-box">
+          <a href="about.html"><img class="side-image small-image" src="assets/harry_potter_small.jpg" alt="harry picture"></a>
+          <div class="side-text small-text">
+            <p><a href="about.html">Harry Potter</a></p>
+            <p class="post-date" href="#">Posted on Thursday 6/1/2014</p>
+          </div>
+        <p class="post-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nunc nunc, euismod in tristique a, viverra vitae sem. Donec ac condimentum mauris. Quisque molestie nisl urna, eu accumsan tortor lobortis id. Nullam vitae lacinia urna, at cursus metus. Phasellus non neque rhoncus, volutpat nibh sed, imperdiet magna. </p>
+      <div class="like-comment-container comment-border">
+        <a class="post-reaction" href="#">Like</a>
+        <a class="post-reaction" href="#">Comment</a>
+        <a class="post-reaction delete" href="#">Delete</a>
+      </div>
+    </div>
+    <!--Liked Post-->
+      <div class="post-box">
+          <a href="about.html"><img class="side-image small-image" src="assets/harry_potter_small.jpg" alt="harry picture"></a>
+          <div class="side-text small-text">
+            <p><a href="about.html">Harry Potter</a></p>
+            <p class="post-date" href="#">Posted on Thursday 5/21/2014</p>
+          </div>
+        <p class="post-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nunc nunc, euismod in tristique a, viverra vitae sem. Donec ac condimentum mauris. Quisque molestie nisl urna, eu accumsan tortor lobortis id. Nullam vitae lacinia urna, at cursus metus. Phasellus non neque rhoncus, volutpat nibh sed, imperdiet magna. </p>
+      <div class="like-comment-container comment-border">
+        <a class="post-reaction" href="#">Like</a>
+        <a class="post-reaction" href="#">Comment</a>
+        <a class="post-reaction delete" href="#">Delete</a>
+        <p class="reaction-text clear"><a href="#">Hermione Granger</a> likes this</p>
+      </div>
+    </div>
+    <!--Post with Comments and Comment Form-->
+    <div class="post-box">
+      <img class="side-image small-image" src="assets/harry_potter_small.jpg" alt="friend's picture">
+      <div class="side-text small-text">
+        <p><a href="#">Harry Potter</a></p>
+        <p class="post-date" href="#">Posted on Thursday 5/21/2014<p>
+      </div>
+      <p class="post-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nunc nunc, euismod in tristique a, viverra vitae sem. Donec ac condimentum mauris. Quisque molestie nisl urna, eu accumsan tortor lobortis id. Nullam vitae lacinia urna, at cursus metus. Phasellus non neque rhoncus, volutpat nibh sed, imperdiet magna. </p>
+      <div class="like-comment-container comment-border">
+        <a class="post-reaction left" href="#">Unlike</a>
+        <a class="post-reaction delete" href="#">Delete</a>
+        <p class="reaction-text clear">You and <a href="#">Hermione Granger</a> and 3 others like this</p>
+      </div>
+      <div class="like-comment-container comment-border-grey">
+      <img class="side-image small-image" src="assets/wizard_hat.png" alt="friend's picture">
+      <div class="side-text small-text">
+        <p class="comment-format"><a class href="#">Ron Weasley</a></p>
+        <p class="comment-format post-date" href="#">Said on Thursday, 5/21/2014:<p>
+      </div>
+      <p class="comment-text post-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nunc nunc, euismod in tristique a, viverra vitae sem. Donec ac condimentum mauris. Quisque molestie nisl urna, eu accumsan tortor lobortis id. Nullam vitae lacinia urna, at cursus metus. Phasellus non neque rhoncus, volutpat nibh sed, imperdiet magna. </p>
+      <div class="comment-text like-comment-container">
+        <a class="comment-format post-reaction" href="#">Like</a>
+        <p class="comment-format reaction-text">3 other people like this</p>
+      </div>
+    </div>
+    <div class="like-comment-container no-border">
+      <img class="side-image small-image" src="assets/harry_potter_small.jpg" alt="friend's picture">
+      <div class="side-text small-text">
+        <p class="comment-format"><a class href="#">Harry Potter</a></p>
+        <p class="comment-format post-date" href="#">Said on Friday, 5/22/2014:<p>
+      </div>
+      <p class="comment-text post-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus nunc nunc, euismod in tristique a, viverra vitae sem. Donec ac condimentum mauris. Quisque molestie nisl urna, eu accumsan tortor lobortis id. Nullam vitae lacinia urna, at cursus metus. Phasellus non neque rhoncus, volutpat nibh sed, imperdiet magna. </p>
+      <div class="comment-text like-comment-container">
+        <a class="comment-format post-reaction" href="#">Like</a>
+        <p class="comment-format reaction-text">3 other people like this</p>
+        <a class="post-reaction delete" href="#">Delete</a>
+      </div>
+    </div>
+    <div class="like-comment-container no-border">
+    <form class="comment-form" action="#" method="#">
+        <textarea class="comment-textarea" rows="5" cols="70" name="post">Write a comment...</textarea>
+      </form>
+      <div class="comment-button-container">
+        <a class="post-reaction left" href="#">Cancel</a>
+        <button type="button" id="comment-btn" class="btn btn-primary">Comment</button>
+      </div>
+    </div>
+      </div><!--col-md-7 end-->
+    </div><!--row end-->
+    </div>
+  </div>
+</div>

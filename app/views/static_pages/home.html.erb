@@ -1,5 +1,5 @@
   <!--Header-->
-  <%= render :partial => "homepage_navbar" %>
+  <%= render :partial => "static_pages/homepage_navbar" %>
 <!--main content-->
   <main class="container">
     <div class="row">
@@ -14,106 +14,7 @@
         </ul>
       </div>
       <!--sign up form-->
-      <div class="col-sm-4">
-        <h1>Sign Up</h1>
-        <form>
-          <!--First and Last Name-->
-          <div class="row">
-            <div class="col-sm-6">
-              <input class="sign-up-form" type="text" name="first-name" placeholder="First Name">
-            </div>
-            <div class="col-sm-6">
-              <input class="sign-up-form" type="text" name="last-name" placeholder="Last Name">
-            </div>
-          </div>
-          <!--email-->
-          <div class="row">
-            <div class="col-sm-12">
-              <input class="sign-up-form" type="text" name="email" placeholder="Your Email">
-            </div>
-          </div>
-          <!--Your New Password-->
-          <div class="row">
-            <div class="col-sm-12">
-              <input class="sign-up-form" type="text" name="password" placeholder="Your New Password">
-            </div>
-          </div>
-          <!--Confirm Password-->
-          <div class="row">
-            <div class="col-sm-12">
-              <input class="sign-up-form" type="text" name="confirm-password" placeholder="Confirm Your Password">
-            </div>
-          </div>
-          <h2>Birthday</h2>
-          <div class="row">
-            <div class="col-sm-3">
-              <select name="month">
-                <option value="01">January</option>
-                <option value="02">February</option>
-                <option value="03">March</option>
-                <option value="04">April</option>
-                <option value="05">May</option>
-                <option value="06">June</option>
-                <option value="07">July</option>
-                <option value="08">August</option>
-                <option value="09">September</option>
-                <option value="10">October</option>
-                <option value="11">November</option>
-                <option value="12">December</option>
-              </select>
-            </div>
-            <div class="col-sm-1 col-sm-offset-1">
-              <select name="day">
-                <option value="01">01</option>
-                <option value="02">02</option>
-                <option value="03">03</option>
-                <option value="04">04</option>
-                <option value="05">05</option>
-                <option value="06">06</option>
-                <option value="07">07</option>
-                <option value="08">08</option>
-                <option value="09">09</option>
-                <option value="10">10</option>
-                <option value="11">11</option>
-                <option value="12">12</option>
-                <option value="13">13</option>
-                <option value="14">14</option>
-                <option value="15">15</option>
-                <option value="16">16</option>
-                <option value="17">17</option>
-                <option value="18">18</option>
-                <option value="19">19</option>
-                <option value="20">20</option>
-                <option value="21">21</option>
-                <option value="22">22</option>
-                <option value="23">23</option>
-                <option value="24">24</option>
-                <option value="25">25</option>
-                <option value="26">26</option>
-                <option value="27">27</option>
-                <option value="28">28</option>
-                <option value="29">29</option>
-                <option value="30">30</option>
-                <option value="31">31</option>
-              </select>
-            </div>
-            <div class="col-sm-3 col-sm-offset-1">
-              <select name="year" id="year">
-              </select>
-            </div>
-          </div>
-          <!--gender buttons-->
-          <div class="row gender">
-            <div class="col-sm-4">
-              <input type="radio" name="gender" value="female"> Female
-            </div>
-            <div class="col-sm-4">
-              <input type="radio" name="gender" value="male"> Male
-            </div>
-          </div>
-          <button type="submit" class="btn btn-success sign-up-btn">Sign Up!</button>
-        </form>
-      </div>
+      <%= render :partial => "static_pages/sign_up_form", :locals=>{:user => @user} %>
     </div>
   </main>
   <!--filling in years-->

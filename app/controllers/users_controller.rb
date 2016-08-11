@@ -1,10 +1,11 @@
 class UsersController < ApplicationController
+  before_action :set_user, only: [:show, :edit, :update]
+
   def index
     @users = User.all
   end
 
   def show
-    @user = User.find(params[:id])
   end
 
   def new
@@ -14,7 +15,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(whitelisted_user_params)
     if @user.save
-      flash[:notice] = "User was saved in database"
+      flash[:success] = "User was saved in database"
       redirect_to @user
     else
       flash[:error] = "User was NOT! saved in database"
@@ -25,19 +26,23 @@ class UsersController < ApplicationController
   def edit
   end
 
-
-
   def update
+    #tobewritten
   end
 
   def destroy
+    #tobewritten
   end
 
   private
+    def set_user
+      @user = User.find(params[:id])
+    end
+
     def whitelisted_user_params
       params.
         require(:user).
-        permit( :name,
+        permit( :username,
                 :email,
                 :password,
                 :password_confirmation)

@@ -1,3 +1,4 @@
+
 <nav class="navbar navbar-inverse navbar-fixed-top">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -9,21 +10,10 @@
       </button>
       <a class="navbar-brand" href="#">
         <h1>Danebook </h1>
+
         </a>
     </div>
-    <div id="navbar" class="navbar-collapse collapse">
-      <form class="navbar-form navbar-right">
-        <div class="form-group">
-          <p> Email</p>
-          <input type="text" class="form-control">
-        </div>
-        <div class="form-group">
-          <p> Password </p>
-          <input type="password" class="form-control">
-          <button type="submit" class="btn btn-info">Log in</button>
-        </div>  
-        
-      </form>
-    </div>
+    <%= render partial: "shared/nav_login" %>
+
   </div>
 </nav>

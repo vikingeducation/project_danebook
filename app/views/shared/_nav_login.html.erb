@@ -1,0 +1,21 @@
+<% if !signed_in_user? %>
+  <%= form_tag session_path do %>
+    <%= label_tag do %>
+      Email
+      <%= text_field_tag :email %>
+    <% end %>
+
+    <%= label_tag do %>
+      Password
+      <%= password_field_tag :password %>
+    <% end %>
+
+    <%= submit_tag "Log in" %>
+  <% end %>
+<% else %>
+
+  <h1>Welcome</h1> <%= link_to current_user.username, current_user %>
+  <%= link_to "Logout", logout_path, method: :delete, data: {confirm: "Are you sure you want to log out?"} %>
+<% end %>
+
+

@@ -1,10 +1,14 @@
 class Address < ActiveRecord::Base
-  before_save :default_address
+  after_create :default_address
 
   belongs_to :addressable, polymorphic: true
   belongs_to :city
   belongs_to :state
   belongs_to :country
+
+  [:city, :state, :country].each do |e|
+    accepts_nested_attributes_for e
+  end
 
   private
     def default_address

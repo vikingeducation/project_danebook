@@ -12,6 +12,8 @@ class ProfilesController < ApplicationController
     def profile_params
       params.require(:profile).permit(
         :id,
+        :words,
+        :about,
         { birthday_attributes: [
           :id,
           { profile_date_attributes: [

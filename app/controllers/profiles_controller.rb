@@ -2,7 +2,8 @@ class ProfilesController < ApplicationController
   # before_action :to_integers
 
   def update
-    profile = Profile.find(params[:id]).update(profile_params)
+    profile = Profile.find(params[:id])
+    profile.update(profile_params)
     redirect_to profile.user
   end
 

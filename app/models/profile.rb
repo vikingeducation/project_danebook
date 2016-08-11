@@ -1,4 +1,5 @@
 class Profile < ActiveRecord::Base
+  belongs_to :user
   has_one :birthday, dependent: :destroy
   has_one :contact_info, dependent: :destroy
   has_one :hometown, dependent: :destroy

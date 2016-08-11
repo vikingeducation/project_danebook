@@ -42,8 +42,4 @@ class ProfilesController < ApplicationController
         ] },
         { contact_info_attributes: [:email, :phone] })
     end
-
-    # def to_integers
-    #   profile_params[:birthday_attributes][:profile_date_attributes].map(&:to_i)
-    # end
 end

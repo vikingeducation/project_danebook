@@ -1,15 +1,8 @@
 Rails.application.routes.draw do
 
-  get 'profile/edit'
-
-  get 'profile/update'
-
-  get 'profile/show'
-
-  get 'profile/destroy'
 
   resources :users do
-    resources :profiles 
+    resource :profiles 
   end
 
   root "users#new"

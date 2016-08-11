@@ -29,7 +29,7 @@ class UsersController < ApplicationController
     if @user.save
       sign_in(@user)
       flash[:success] = "Welcome to Danebook!"
-      redirect_to user_profile_path([@user.id, @user.profile.id])
+      redirect_to user_profiles_path(@user)
     else
       flash.now[:error] = "Something went wrong and your account was not saved."
       render :new

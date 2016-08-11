@@ -9,9 +9,10 @@ class SessionsController < ApplicationController
         sign_in(@user)
       end
         flash[:success] = "You've successfully signed into Danebook!"
-        redirect_to user_profile_path(@user)
+        redirect_to root_url
     else
       flash.now[:error] = "We did not sign you into Danebook"
+      #fix this
       render :new
     end
   end

@@ -1,0 +1,24 @@
+<nav class="navbar log-in-navbar">
+  <div class="form-group">
+    <h1 class="danebook-words">Danebook</h1>
+    <% if signed_in_user? %>
+      <div class="log-in-information">
+        Welcome, <%= link_to current_user.email, current_user %>!
+        <%= link_to "Logout", logout_path, :method => :delete, html: {class: "log-in-information"} %>
+      </div>
+  <% else %>
+  <div class="log-in-information">
+      <%= form_tag session_path do  %>
+        <%= label_tag :email%>
+        <%= text_field_tag :email, nil, placeholder: "Email", html: {class: "form-control"} %>
+        <%= label_tag :password%>
+        <%= password_field_tag :password, nil, placeholder: "Password", html: {class: "form-control"} %>
+        <%= label_tag "Remember me?" %>
+        <%= check_box_tag :remember_me %>
+        <%= submit_tag "Log in", html: {class: "log-in-button"} %>
+      </div>
+    </div>
+    <% end %>
+  <% end %>
+</nav>
+

@@ -1,0 +1,12 @@
+<%= render "new_navbar" %>
+
+<%= form_for @user, html: {class: "new-user-navbar"} do |f| %>
+  <%= f.label :email%>
+  <%= f.text_field :email, placeholder: "Email", html: {class: "form-control"} %>
+  <%= f.label :password%>
+  <%= f.password_field :password, placeholder: "Password", html: {class: "form-control"} %>
+  <%= f.label :password%>
+  <%= f.password_field :password_confirmation, placeholder: "Password Confirmation", html: {class: "form-control"} %>
+  <%= f.submit :Create %>
+<% end %>
+

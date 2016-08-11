@@ -1,0 +1,168 @@
+<!-- navbar containing logo and logins-->
+<!-- THESE ARE COPY-PASTED FROM BOOTSTRAP EXAMPLES -->
+<!-- Static so that it is permanently fixed to the top -->
+<!-- notice that this is a ROW as well as a navbar -->
+<!--contains everything below the navbar-->
+<main >
+  <div class = "row">
+    <div class="col-xs-10 col-xs-offset-1">
+      <%= render 'layouts/menu_options' %>
+      <br>
+      <div class="row"><!-- begin timeline-row -->
+        <div class="col-xs-5"><!-- begin-left-column-->
+          <div class="panel panel-default"><!-- begin-mini-about-panel -->
+            <div class="panel-heading">
+              <h3 class="panel-title center-text">About</h3>
+            </div>
+            <div class="panel-body">
+              <p><span class="bold">Born on:</span> July 31st, 1980</p>
+              <p><span class="bold">Went to school at:</span> Hogwarts</p>
+              <p><span class="bold">Hometown:</span> Godrick's Hollow, England</p>
+              <p><span class="bold">Currently Lives:</span> Godrick's Hollow</p>
+            </div>
+          </div><!-- end-mini-about-panel -->
+          <div class="panel panel-default"><!-- begin-mini-photos-panel -->
+            <div class="panel-heading">
+              <h3 class="panel-title center-text">Photos <span class="grey">(123)</span></h3>
+            </div>
+            <div class="panel-body">
+              <div class="row mini-photos-row">
+                <img class="col-xs-4" src="./assets/george.jpg">
+                <img class="col-xs-4" src="./assets/ginny.jpg">
+                <img class="col-xs-4" src="./assets/hermione.jpeg">
+              </div>
+              <div class="row mini-photos-row">
+                <img class="col-xs-4" src="./assets/dobby.jpg">
+                <img class="col-xs-4" src="./assets/hp.jpg">
+                <img class="col-xs-4" src="./assets/flag.png">
+              </div>
+              <div class="row mini-photos-row">
+                <img class="col-xs-4" src="./assets/ron.jpg">
+                <img class="col-xs-4" src="./assets/hagrid.jpeg">
+                <img class="col-xs-4" src="./assets/fred.png">
+              </div>
+              <%= link_to 'See More Photos', photos_path, class: 'col-xs-6 col-xs-offset-4 underline' %>
+            </div>
+          </div><!-- end-mini-photos-panel -->
+          <div class="panel panel-default"><!-- begin-mini-friends-panel -->
+            <div class="panel-heading">
+              <h3 class="panel-title center-text center-text">Friends<span class="grey">(542)</span></h3>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                <img class="col-xs-4" src="./assets/ron.jpg">
+                <img class="col-xs-4" src="./assets/ginny.jpg">
+                <img class="col-xs-4" src="./assets/hermione.jpeg">
+              </div>
+              <div class="row mini-friends-row">
+                <a class="col-xs-4 center-text" href="#">Ron Weasley</a>
+                <a class="col-xs-4 center-text" href="#">Ginny Weasley</a>
+                <a class="col-xs-4 center-text" href="#">Hermione Granger</a>
+              </div>
+              <div class="row">
+                <img class="col-xs-4" src="./assets/hagrid.jpeg">
+                <img class="col-xs-4" src="./assets/george.jpg">
+                <img class="col-xs-4" src="./assets/fred.png">
+              </div>
+              <div class="row mini-friends-row">
+                <a class="col-xs-4 center-text" href="#">Hagrid</a>
+                <a class="col-xs-4 center-text" href="#">George Weasley</a>
+                <a class="col-xs-4 center-text" href="#">Fred Weasley</a>
+              </div>
+              <%= link_to 'See More Friends', friends_path, id: 'see-more-friends', class: 'col-xs-6 col-xs-offset-4 underline' %>
+            </div>
+          </div><!-- end-mini-friends-panel -->
+        </div><!-- end-left-column-->
+        <div class="col-xs-7"><!-- begin-right-column-->
+          <div class="panel panel-default"><!-- begin-new-post-panel -->
+            <div class="panel-heading">
+              <h3 class="panel-title center-text center-text">Post</h3>
+            </div>
+            <div class="panel-body">
+              <textarea class="form-control" rows="3" placeholder="Tell the world something..."></textarea>
+            </div>
+            <div class="panel-footer">
+              <button type="button" class="btn btn-primary col-xs-offset-11">Post</button>
+            </div>
+          </div><!-- end-new-post-panel -->
+          <div class="panel panel-default"><!-- begin-post-panel -->
+            <div class="panel-body">
+              <div class="col-xs-8 post-header">
+                <img class="col-xs-3" src="./assets/hp.jpg">
+                <a class="col-xs-8" href="./about.html">Harry Potter</a>
+                <p class="col-xs-9 grey">Posted on Thursday 5/21/2014</p>
+              </div>
+              <p class="col-xs-12">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ultrices nisi quis leo congue, sed dictum purus auctor. Quisque lorem ipsum, lobortis et dapibus in, congue non ante. Quisque aliquam faucibus mauris et dignissim. Vivamus aliquet lectus nec neque pretium, sit amet auctor lectus rhoncus. Morbi congue accumsan mi. In tristique purus ex, sollicitudin ultricies metus consectetur eget.</p>
+            </div>
+            <div class="panel-footer">
+              <div class="row">
+                <a class="col-xs-1 underline" href="#">Like</a>
+                <a class="col-xs-1 underline" href="#">Comment</a>
+                <a class="col-xs-1 col-xs-offset-8 underline" href="#">Delete</a>
+              </div>
+            </div>
+          </div><!-- end-post-panel -->
+          <div class="panel panel-default"><!-- begin-post-panel -->
+            <div class="panel-body">
+              <div class="col-xs-8 post-header">
+                <img class="col-xs-3" src="./assets/hp.jpg">
+                <a class="col-xs-8" href="./about.html">Harry Potter</a>
+                <p class="col-xs-9 grey">Posted on Thursday 5/21/2014</p>
+              </div>
+              <p class="col-xs-12">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ultrices nisi quis leo congue, sed dictum purus auctor. Quisque lorem ipsum, lobortis et dapibus in, congue non ante. Quisque aliquam faucibus mauris et dignissim. Vivamus aliquet lectus nec neque pretium, sit amet auctor lectus rhoncus. Morbi congue accumsan mi. In tristique purus ex, sollicitudin ultricies metus consectetur eget.</p>
+            </div>
+            <div class="panel-footer">
+              <div class="row">
+                <a class="col-xs-1 underline" href="#">Like</a>
+                <a class="col-xs-1 underline" href="#">Comment</a>
+                <a class="col-xs-1 col-xs-offset-8 underline" href="#">Delete</a>
+                <p class="col-xs-7 top-margin-10"><a class="underline" href="#">Hermione Granger</a> likes this.</p>
+              </div>
+            </div>
+          </div><!-- end-post-panel -->
+          <div class="panel panel-default"><!-- begin-post-panel -->
+            <div class="panel-body">
+              <div class="col-xs-8 post-header">
+                <img class="col-xs-3" src="./assets/hp.jpg">
+                <a class="col-xs-8" href="./about.html">Harry Potter</a>
+                <p class="col-xs-9 grey">Posted on Thursday 5/21/2014</p>
+              </div>
+              <p class="col-xs-12">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ultrices nisi quis leo congue, sed dictum purus auctor. Quisque lorem ipsum, lobortis et dapibus in, congue non ante. Quisque aliquam faucibus mauris et dignissim. Vivamus aliquet lectus nec neque pretium, sit amet auctor lectus rhoncus. Morbi congue accumsan mi. In tristique purus ex, sollicitudin ultricies metus consectetur eget.</p>
+            </div>
+            <div class="panel-footer">
+              <div class="row">
+                <a class="col-xs-1 underline" href="#">Like</a>
+                <a class="col-xs-1 underline" href="#">Comment</a>
+                <a class="col-xs-1 col-xs-offset-8 underline" href="#">Delete</a>
+                <p class="col-xs-8 top-margin-10">You and <a class="underline" href="#">Hermione Granger</a> and 3 others like this.</p>
+              </div>
+              <hr>
+              <div class="row comment">
+                <img class="col-xs-2" src="./assets/ron.jpg">
+                <p class="col-xs-10 comment-heading"><a class="underline" href="#">Ron Weasley</a> Said on Thursday 5/21/2014:</p>
+                <p class="col-xs-10">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ultrices nisi quis leo congue, sed dictum purus auctor. Quisque lorem ipsum, lobortis et dapibus in, congue non ante. Quisque aliquam faucibus mauris et dignissim.
+                </p>
+                <a class="col-xs-1 col-xs-offset-2 underline" href="#">Like</a>
+                <p class="col-xs-8 grey"> 3 other people like this</p>
+              </div>
+              <div class="row comment">
+                <img class="col-xs-2" src="./assets/hp.jpg">
+                <p class="col-xs-10 comment-heading"><a class="underline" href="./about.html">Harry Potter</a> Said on Friday 5/22/2014:</p>
+                <p class="col-xs-10">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ultrices nisi quis leo congue, sed dictum purus auctor. Quisque lorem ipsum, lobortis et dapibus in, congue non ante. Quisque aliquam faucibus mauris et dignissim.
+                </p>
+                <a class="col-xs-1 col-xs-offset-2 underline" href="#">Like</a>
+                <p class="col-xs-7 grey"> 3 other people like this</p>
+                <a class="col-xs-1 underline">Delete</a>
+              </div>
+              <div class="row">
+                <textarea class="post-control col-xs-10 col-xs-offset-1" rows="5" placeholder="Write a comment..."></textarea>
+                <a class="col-xs-1 col-xs-offset-1 underline top-margin-10" href="#">Cancel</a>
+                <button type="button" class="btn btn-primary col-xs-2 col-xs-offset-7 top-margin-10">Comment</button>
+              </div>
+            </div>
+          </div><!-- end-post-panel -->
+        </div><!-- end right-column-->
+      </div><!-- end timeline-row-->
+    </div>
+  </div><!--row-->
+</main>

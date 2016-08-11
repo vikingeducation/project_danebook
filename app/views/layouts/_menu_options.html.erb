@@ -1,0 +1,28 @@
+<div class="row"><!-- begin background-image row -->
+  <div class="col-xs-12 cover-photo"><!-- cover photo spans entire column -->
+    <div class="row">
+      <p class="col-xs-3 col-xs-offset-2" id="main-name">
+        Harry Potter
+      </p>
+      <img class="col-xs-2 profile-pic" src="./assets/hp.jpg">
+    </div>
+  </div>
+</div><!-- end background-image row -->
+<div class="row"> <!-- begin menu-options row-->
+  <div class="col-xs-12" id="menu-options-tray">
+    <div class="btn-group col-xs-7 col-xs-offset-2">
+      <%= link_to timeline_path, method: :get, class: menu_options_class('timeline') do %>
+        <p class="vertical-align col-xs-offset-4">Timeline</p>
+      <% end %>
+      <%= link_to about_path, method: :get, class: menu_options_class('about')  do %>
+        <p class="vertical-align col-xs-offset-4">About</p>
+      <% end %>
+      <%= link_to photos_path, method: :get, class: menu_options_class('photos')  do %>
+        <p class="vertical-align col-xs-offset-4">Photos</p>
+      <% end %>
+      <%= link_to friends_path, method: :get, class: menu_options_class('friends')  do %>
+        <p class="vertical-align col-xs-offset-4">Friends</p>
+      <% end %>
+    </div>
+  </div>
+</div> <!-- end menu-options row-->

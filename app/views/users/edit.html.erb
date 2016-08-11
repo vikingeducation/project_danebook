@@ -1,0 +1,106 @@
+
+<main class="container">
+  <%= form_for @user do |user_fields| %>
+  <div class="row">
+    <!-- cover photo -->
+    <div class="col-md-10 col-md-offset-1 col-xs-12" id="cover-photo">
+      <img src="https://s3.amazonaws.com/viking_education/web_development/web_app_eng/hogwarts_small.jpg" class="img-responsive">
+      
+      <%= user_fields.fields_for :profile do |profile_fields| %>
+      <div class="row">
+        <!--profile picture which is overlayed on cover photo-->
+        <div class="col-md-6 col-md-offset-1 col-xs-10" id="profile-picture">
+          <img src="https://s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif">
+          <h2>
+            <%= profile_fields.text_field :first_name, class:"form-control" %>
+            <%= profile_fields.text_field :last_name, class:"form-control" %>
+          </h2>
+        </div>
+      </div>
+    </div>
+    <!--set of profile tabs linking to different parts of the page-->
+    <%= render "shared/nav_links" %>
+  </div>
+  <div class="row">
+    <!--About page header and edit profile button-->
+    <div class="col-md-10 col-md-offset-1" id="header-bar">
+      <h2>About</h2>
+    </div>
+    <!--basic information and more about user-->
+      
+      <div class="col-md-10 col-md-offset-1" id="basic">
+        <div class="row">
+          <div class="col-md-6">
+            <h3>Basic Information</h3>
+            <div class="row">
+              <div class="col-xs-5">
+                <p><b>Birthday:</b></p>
+              </div>
+              <div class="col-xs-7">
+                <%= profile_fields.date_field :birthday, class:"form-control" %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-5">
+                <p><b>College:</b></p>
+              </div>
+              <div class="col-xs-7">
+                <!-- change text to input type so user can edit.-->
+                <%= profile_fields.text_field :college, class:"form-control" %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-5">
+                <p><b>Hometown:</b></p>
+              </div>
+              <div class="col-xs-7">
+                <%= profile_fields.text_field :hometown, class:"form-control" %>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-5">
+                <p><b>Currently Lives:</b></p>
+              </div>
+              <div class="col-xs-7">
+                <%= profile_fields.text_field :currently_lives, class:"form-control" %>
+              </div>
+            </div>
+            <% end %>
+            <h3 id="contact">Contact Information</h3>
+            <div class="row">
+              <div class="col-xs-5">
+                <p><b>Email:</b></p>
+              </div>
+              <div class="col-xs-7">
+                <%= user_fields.email_field :email, class:"form-control" %>
+              </div>
+            </div>
+            <%= user_fields.fields_for :profile do |profile_fields| %>
+            <div class="row">
+              <div class="col-xs-5">
+                <p><b>Telephone:</b></p>
+              </div>
+              <div class="col-xs-7">
+                 <%= profile_fields.text_field :telephone, class:"form-control" %>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6" id="about-me">
+            <h3>Words to Live By</h3>
+            <%= profile_fields.text_area :words_to_live_by, class:"form-control", rows:"3" %>
+            <h3>About Me</h3>
+            <%= profile_fields.text_area :about_me, class:"form-control", rows:"6" %>
+          </div>
+        </div>
+        <% end %>
+        <!-- save changes button -->
+        <div class="row">
+          <div class="col-xs-6 col-xs-offset-3">
+            <%= user_fields.submit "Save Changes", class:"btn btn-primary btn-lg btn-block", id:"save-changes" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+  
+</main>

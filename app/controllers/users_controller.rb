@@ -13,11 +13,34 @@ class UsersController < ApplicationController
     if @user.save!
       sign_in(@user)
       flash[:success] = "Your account has been created"
-      redirect_to timeline_path
+      redirect_to user_timeline_path(@user)
     else
       flash[:error] = "Account could not be created"
       redirect_to root_path
     end
+  end
+
+  def show
+    
+  end
+
+  def edit
+    @user = current_user
+  end
+
+  def update
+    @user = current_user
+    if @user.update!(user_params)
+      flash[:success] = "Your profile has been updated"
+      redirect_to user_path(current_user)
+    else
+      flash.now[:danger] = "Your profile could not be updated"
+      render :edit
+    end
+  end
+
+  def destroy
+
   end
 
 
@@ -31,7 +54,13 @@ class UsersController < ApplicationController
                                   :first_name,
                                   :last_name,
                                   :birthday,
-                                  :gender
+                                  :gender,
+                                  :college,
+                                  :hometown,
+                                  :currently_lives,
+                                  :telephone,
+                                  :words_to_live_by,
+                                  :about_me
                                   ]})
   end
 

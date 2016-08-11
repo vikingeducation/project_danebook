@@ -5,18 +5,18 @@ class SessionsController < ApplicationController
     @user = User.find_by_email(params[:email])
     if @user && @user.authenticate(params[:password])
       sign_in(@user)
-      flash[:success] = "You've successfully signed in"
+      flash[:notice] = "You've successfully signed in"
       redirect_to timeline_path
     else
       @user = User.new
-      flash.now[:warning] = "Email and password do not match"
+      flash.now[:alert] = "Email and password do not match"
       render "static_pages/home"
     end
   end
 
   def destroy
     sign_out
-    flash[:success] = "You've successfully signed out"
+    flash[:notice] = "You've successfully signed out"
     redirect_to root_path
   end
 

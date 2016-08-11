@@ -20,3 +20,18 @@
     }
   }
 }
+
+.flash-alert {
+  position: fixed;
+  right: 0;
+  left: 0;
+  z-index: 1030;
+}
+
+.flash-alert-in {
+  top: 50px;
+}
+
+.flash-alert-out {
+  top: 100px;
+}

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160810225727) do
+ActiveRecord::Schema.define(version: 20160811183246) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -145,7 +145,11 @@ ActiveRecord::Schema.define(version: 20160810225727) do
     t.datetime "activated_at"
     t.string   "reset_digest"
     t.datetime "reset_sent_at"
+    t.integer  "friendable_id"
+    t.string   "friendable_type"
   end
+
+  add_index "users", ["friendable_type", "friendable_id"], name: "index_users_on_friendable_type_and_friendable_id", using: :btree
 
   create_table "users_practice", id: false, force: :cascade do |t|
     t.integer  "id"

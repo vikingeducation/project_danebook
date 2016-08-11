@@ -5,6 +5,10 @@ class User < ActiveRecord::Base
   has_many :microposts, dependent: :destroy
   has_one :profile, dependent: :destroy
 
+  # Friends.
+  belongs_to :friendable, polymorphic: true
+  has_many :friends, as: :friendable, class_name: 'User'
+
   accepts_nested_attributes_for :profile
 
   VALID_EMAIL_REGEX = /\A[\w\d\.\_]{4,254}@\w{,6}\.\w{3}\z/
@@ -79,6 +83,10 @@ class User < ActiveRecord::Base
 
   def last_name
     @last_name ||= self.profile.last_name
+  end
+
+  def friend?(user)
+    self.friendable_id == user.id
   end
 
   private

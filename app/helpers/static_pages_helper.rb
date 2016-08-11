@@ -29,4 +29,17 @@ module StaticPagesHelper
     content_tag :div, content, class: 'form-group'
   end
 
+  def friend_button(user)
+    if user.friend?(current_user)
+      friend_profile user
+    else
+      submit_tag "Add Friend"
+    end
+  end
+
+  def friend_profile(user)
+    # Needs styling fix.
+    link_to button_tag("Friend"), user_path(user)
+  end
+
 end

@@ -129,7 +129,6 @@ header {
   background: url("/orm_cover.jpg") no-repeat;
   background-size: cover;
   height: 320px;
-  magin-top: 50px;
 
   img {
     margin-top: 170px;
@@ -143,7 +142,7 @@ header {
 
   @media (min-width: 992px) {
     img {
-      margin-top: 130px;
+      margin-top: 90px;
     }
   }
 }

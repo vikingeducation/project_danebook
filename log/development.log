@@ -5132,3 +5132,131 @@ Processing by StaticPagesController#timeline as HTML
 Completed 200 OK in 107ms (Views: 99.3ms | ActiveRecord: 0.7ms)
 
 
+Started GET "/timeline" for ::1 at 2016-08-10 17:50:33 -0700
+
+PG::ConnectionBad - could not connect to server: No such file or directory
+	Is the server running locally and accepting
+	connections on Unix domain socket "/tmp/.s.PGSQL.5432"?
+:
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activerecord-5.0.0/lib/active_record/connection_adapters/postgresql_adapter.rb:671:in `connect'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activerecord-5.0.0/lib/active_record/connection_adapters/postgresql_adapter.rb:217:in `initialize'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activerecord-5.0.0/lib/active_record/connection_adapters/postgresql_adapter.rb:37:in `postgresql_connection'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activerecord-5.0.0/lib/active_record/connection_adapters/abstract/connection_pool.rb:721:in `new_connection'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activerecord-5.0.0/lib/active_record/connection_adapters/abstract/connection_pool.rb:765:in `checkout_new_connection'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activerecord-5.0.0/lib/active_record/connection_adapters/abstract/connection_pool.rb:744:in `try_to_checkout_new_connection'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activerecord-5.0.0/lib/active_record/connection_adapters/abstract/connection_pool.rb:705:in `acquire_connection'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activerecord-5.0.0/lib/active_record/connection_adapters/abstract/connection_pool.rb:501:in `checkout'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activerecord-5.0.0/lib/active_record/connection_adapters/abstract/connection_pool.rb:364:in `connection'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activerecord-5.0.0/lib/active_record/connection_adapters/abstract/connection_pool.rb:875:in `retrieve_connection'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activerecord-5.0.0/lib/active_record/connection_handling.rb:128:in `retrieve_connection'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activerecord-5.0.0/lib/active_record/connection_handling.rb:91:in `connection'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activerecord-5.0.0/lib/active_record/migration.rb:558:in `connection'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activerecord-5.0.0/lib/active_record/migration.rb:545:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:90:in `run_callbacks'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/executor.rb:12:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:57:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+  web-console (3.3.1) lib/web_console/middleware.rb:131:in `call_app'
+  web-console (3.3.1) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (3.3.1) lib/web_console/middleware.rb:18:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/railties-5.0.0/lib/rails/rack/logger.rb:36:in `call_app'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/railties-5.0.0/lib/rails/rack/logger.rb:24:in `block in call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/tagged_logging.rb:70:in `block in tagged'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/tagged_logging.rb:26:in `tagged'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/tagged_logging.rb:70:in `tagged'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/railties-5.0.0/lib/rails/rack/logger.rb:24:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/sprockets-rails-3.1.1/lib/sprockets/rails/quiet_assets.rb:13:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/request_id.rb:24:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/method_override.rb:22:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/runtime.rb:22:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/executor.rb:12:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/static.rb:136:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/sendfile.rb:111:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/railties-5.0.0/lib/rails/engine.rb:522:in `call'
+  puma (3.6.0) lib/puma/configuration.rb:225:in `call'
+  puma (3.6.0) lib/puma/server.rb:578:in `handle_request'
+  puma (3.6.0) lib/puma/server.rb:415:in `process_client'
+  puma (3.6.0) lib/puma/server.rb:275:in `block in run'
+  puma (3.6.0) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+
+Started GET "/timeline" for ::1 at 2016-08-10 17:50:56 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (2.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Started POST "/login" for ::1 at 2016-08-10 17:51:04 -0700
+Started GET "/" for ::1 at 2016-08-10 17:51:46 -0700
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by StaticPagesController#home as HTML
+  Rendering static_pages/home.html.erb within layouts/application
+  Rendered static_pages/home.html.erb within layouts/application (10.2ms)
+  [1m[36mUser Load (4.8ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "GDRM7Wj1ueAawTtaYUv8AQ"], ["LIMIT", 1]]
+  Rendered shared/_navbar.html.erb (0.9ms)
+Completed 200 OK in 655ms (Views: 586.6ms | ActiveRecord: 22.6ms)
+
+
+Started GET "/" for ::1 at 2016-08-10 17:52:49 -0700
+Processing by StaticPagesController#home as HTML
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "GDRM7Wj1ueAawTtaYUv8AQ"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/timeline
+Completed 302 Found in 25ms (ActiveRecord: 7.9ms)
+
+
+Started GET "/timeline" for ::1 at 2016-08-10 17:52:49 -0700
+Processing by StaticPagesController#timeline as HTML
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "GDRM7Wj1ueAawTtaYUv8AQ"], ["LIMIT", 1]]
+  Rendering static_pages/timeline.html.erb within layouts/application
+  Rendered shared/_cover.html.erb (0.5ms)
+  Rendered static_pages/_photo_box.html.erb (0.9ms)
+  Rendered static_pages/_friend_box.html.erb (0.5ms)
+  Rendered static_pages/_post_box.html.erb (0.5ms)
+  Rendered static_pages/timeline.html.erb within layouts/application (15.3ms)
+  Rendered shared/_navbar.html.erb (0.7ms)
+Completed 200 OK in 86ms (Views: 79.2ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/timeline" for ::1 at 2016-08-10 17:53:02 -0700
+Processing by StaticPagesController#timeline as HTML
+  [1m[36mUser Load (2.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "GDRM7Wj1ueAawTtaYUv8AQ"], ["LIMIT", 1]]
+  Rendering static_pages/timeline.html.erb within layouts/application
+  Rendered shared/_cover.html.erb (1.5ms)
+  Rendered static_pages/_photo_box.html.erb (2.2ms)
+  Rendered static_pages/_friend_box.html.erb (1.3ms)
+  Rendered static_pages/_post_box.html.erb (0.5ms)
+  Rendered static_pages/timeline.html.erb within layouts/application (23.4ms)
+  Rendered shared/_navbar.html.erb (1.3ms)
+Completed 200 OK in 310ms (Views: 297.1ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/timeline" for ::1 at 2016-08-10 17:53:15 -0700
+Processing by StaticPagesController#timeline as HTML
+  [1m[36mUser Load (3.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "GDRM7Wj1ueAawTtaYUv8AQ"], ["LIMIT", 1]]
+  Rendering static_pages/timeline.html.erb within layouts/application
+  Rendered shared/_cover.html.erb (1.2ms)
+  Rendered static_pages/_photo_box.html.erb (1.8ms)
+  Rendered static_pages/_friend_box.html.erb (0.9ms)
+  Rendered static_pages/_post_box.html.erb (0.5ms)
+  Rendered static_pages/timeline.html.erb within layouts/application (22.0ms)
+  Rendered shared/_navbar.html.erb (0.8ms)
+Completed 200 OK in 317ms (Views: 308.2ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/timeline" for ::1 at 2016-08-10 17:53:25 -0700
+Processing by StaticPagesController#timeline as HTML
+  [1m[36mUser Load (2.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "GDRM7Wj1ueAawTtaYUv8AQ"], ["LIMIT", 1]]
+  Rendering static_pages/timeline.html.erb within layouts/application
+  Rendered shared/_cover.html.erb (0.6ms)
+  Rendered static_pages/_photo_box.html.erb (3.6ms)
+  Rendered static_pages/_friend_box.html.erb (0.8ms)
+  Rendered static_pages/_post_box.html.erb (1.3ms)
+  Rendered static_pages/timeline.html.erb within layouts/application (26.9ms)
+  Rendered shared/_navbar.html.erb (0.9ms)
+Completed 200 OK in 269ms (Views: 262.3ms | ActiveRecord: 2.5ms)
+
+

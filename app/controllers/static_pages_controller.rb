@@ -3,6 +3,7 @@ class StaticPagesController < ApplicationController
 
   def home
     @user = User.new
+    redirect_to timeline_path if signed_in_user?
   end
 
   def timeline

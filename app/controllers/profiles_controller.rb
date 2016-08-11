@@ -16,12 +16,9 @@ class ProfilesController < ApplicationController
         :about,
         { birthday_attributes: [
           :id,
-          { profile_date_attributes: [
-            :id,
-            :month,
-            :day,
-            :year
-          ] }
+          'date_object(2i)',
+          'date_object(3i)',
+          'date_object(1i)'
         ] },
         :college,
         { hometown_attributes: [

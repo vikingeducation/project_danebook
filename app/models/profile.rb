@@ -24,7 +24,6 @@ class Profile < ActiveRecord::Base
     def defaults
       self.build_contact_info.save
       self.build_birthday.save
-      self.birthday.build_profile_date.save
       self.build_hometown.save
       self.hometown.build_address.save
       self.build_residence.save

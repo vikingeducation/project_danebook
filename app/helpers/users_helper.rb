@@ -14,8 +14,8 @@ module UsersHelper
     "#{address.address_1}\n#{address.address_2}\n#{address.city.name}, #{address.state.name}, #{address.country.name}"
   end
 
-  def show_date(dateable)
-    date = dateable.profile_date
+  def show_date(date)
+    date = date.date_object
     "#{date.month}/#{date.day}/#{date.year}"
   end
 

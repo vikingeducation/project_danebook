@@ -15,6 +15,7 @@ class Address < ActiveRecord::Base
       self.city = City.first
       self.state = State.first
       self.country = Country.first
+      save!
     end
 
 end

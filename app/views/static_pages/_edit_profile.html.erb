@@ -16,14 +16,7 @@
           <td>Birthday:</td>
           <td>
             <%= profile_fields.fields_for :birthday do |birthday_fields| %>
-              <%= birthday_fields.fields_for :profile_date do |date_fields| %>
-                <%= date_fields.label :month %><br>
-                <%= date_fields.text_field :month %><br>
-                <%= date_fields.label :day %><br>
-                <%= date_fields.text_field :day %><br>
-                <%= date_fields.label :year %><br>
-                <%= date_fields.text_field :year %><br>
-              <% end %>
+              <%= birthday_fields.date_select(:date_object, order: [:month, :day, :year]) %>
             <% end %>
           </td>
         </tr>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160811183246) do
+ActiveRecord::Schema.define(version: 20160811233152) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,8 +41,9 @@ ActiveRecord::Schema.define(version: 20160811183246) do
 
   create_table "birthdays", force: :cascade do |t|
     t.integer  "profile_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+    t.date     "date_object", default: '1986-08-11'
   end
 
   add_index "birthdays", ["profile_id"], name: "index_birthdays_on_profile_id", using: :btree
@@ -85,18 +86,6 @@ ActiveRecord::Schema.define(version: 20160811183246) do
   end
 
   add_index "microposts", ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at", using: :btree
-
-  create_table "profile_dates", force: :cascade do |t|
-    t.integer  "dateable_id"
-    t.string   "dateable_type"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.integer  "month"
-    t.integer  "day"
-    t.integer  "year"
-  end
-
-  add_index "profile_dates", ["dateable_type", "dateable_id"], name: "index_profile_dates_on_dateable_type_and_dateable_id", using: :btree
 
   create_table "profiles", force: :cascade do |t|
     t.string   "words"

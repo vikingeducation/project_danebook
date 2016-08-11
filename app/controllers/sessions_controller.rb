@@ -3,6 +3,7 @@ class SessionsController < ApplicationController
 
   def new
     if current_user
+      flash[:success] = "Welcome back #{current_user.first_name}"
       redirect_to user_timeline_path(current_user)
     else
       @user = User.new
@@ -29,6 +30,7 @@ class SessionsController < ApplicationController
 
   def destroy
     sign_out
+    flash[:success] = "You've successfully signed out"
     redirect_to login_path
   end
 end

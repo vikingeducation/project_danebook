@@ -34,7 +34,7 @@ def create
   respond_to do |format|
     if @user.save
       sign_in(@user)
-      format.html { redirect_to :timeline, notice: 'User was successfully created.' }
+      format.html { redirect_to user_timeline_path(@user), notice: 'User was successfully created.' }
       format.json { render :show, status: :created, location: @user }
     else
       format.html { render "/sessions/new" }
@@ -68,7 +68,7 @@ def destroy
 end
 
 
-  private    
+  private
 
     # Never trust parameters from the scary internet, only allow the white list through.
 

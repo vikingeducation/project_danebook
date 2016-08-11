@@ -25,6 +25,7 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'font-awesome-sass'
 gem "twitter-bootstrap-rails"
+gem 'bootstrap-datepicker-rails', '>= 0.6.21'
 gem 'will_paginate',           '3.0.7'
 gem 'bootstrap-will_paginate', '0.0.10'
 # Use Redis adapter to run Action Cable in production

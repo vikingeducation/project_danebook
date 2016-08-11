@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
 
     helper_method :signed_in_user?
     helper_method :current_user
+    helper_method :required_user?
 
     def sign_in(user)
       user.regenerate_auth_token
@@ -39,6 +40,10 @@ class ApplicationController < ActionController::Base
         flash[:alert] = "You're not authorized to view this"
         redirect_to root_path
       end
+    end
+
+    def required_user?
+      params[:id] == current_user.id.to_s
     end
 
 end

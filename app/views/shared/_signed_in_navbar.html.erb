@@ -14,7 +14,8 @@
           </form>
         </div>
         <ul class="nav navbar-nav navbar-right">
-          <li><%= link_to "Harry", about_path %></li>
+          <li><%= link_to @current_user.first_name, @current_user %></li>
+          <li><%= link_to "Signout", logout_path, method: :delete %></li>
         </ul>
       </div>
     </div>

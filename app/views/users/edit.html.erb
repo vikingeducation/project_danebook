@@ -1,0 +1,86 @@
+<div class="container about-info-container">
+	<main>
+		<header>
+			<div class="row main-content-header">
+				<div class="col-xs-2 col-xs-offset-5">
+					<h2>About</h2>
+				</div>
+			</div>
+		</header>
+		<div class="row info-section">
+      <%= form_for @current_user, html: { class: "form-horizontal" } do |f| %>
+        <section class="col-xs-5 identifying-info">
+          <h2>Basic Information</h2>
+          <div class="row">
+            <div class="form-group">
+              <div class="col-xs-2">
+                <%= f.label "Birthday: ", class: "label-control" %>
+              </div>
+              <div class="col-xs-9">
+                <%= f.text_field :birthday, class: "form-control"%>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-xs-2">
+                <%= f.label :college, "College: " %>
+              </div>
+              <div class="col-xs-9">
+                <%= f.text_field :college, class: "form-control" %>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-xs-2">
+                <%= f.label :hometown, "Hometown: " %>
+              </div>
+              <div class="col-xs-9">
+                <%= f.text_field :hometown, class: "form-control" %>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-xs-2">
+                <%= f.label :current_add, "Currently Lives: " %>
+              </div>
+              <div class="col-xs-9">
+                <%= f.text_field :current_add, class: "form-control" %>
+              </div>
+            </div>
+          </div>
+          <h2>Contact Information</h2>
+          <div class="row">
+            <div class="form-group">
+              <div class="col-xs-2">
+                <%= f.label :email, "Email: " %>
+              </div>
+              <div class="col-xs-9">
+                <%= f.email_field :email, class: "form-control" %>
+              </div>
+            </div>
+            <div class="form-group">
+              <div class="col-xs-2">
+                <%= f.label :tele, "Telephone: " %>
+              </div>
+              <div class="col-xs-9">
+                <%= f.text_field :tele, class: "form-control" %>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="col-xs-5 col-xs-offset-1 personal-info">
+          <h2>Words to Live By</h2>
+          <div class="form-group">
+            <%= f.text_area :words_to_live, class: "form-control", rows: "4" %>
+					</div>
+          <h2>About Me</h2>
+          <div class="form-group">
+            <%= f.text_area :about_me, class: "form-control", rows: "4" %>
+          </div>
+        </section>
+        <div class="row">
+  				<div class="col-xs-6 col-xs-offset-3">
+            <%= f.submit "Save Changes", class: "btn btn-primary save-button" %>
+  			  </div>
+  		  </div>
+      <% end %>
+		</div>
+	</main>
+</div>

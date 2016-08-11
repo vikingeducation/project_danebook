@@ -6,7 +6,7 @@
 					<h2>About</h2>
 				</div>
 				<div class="col-xs-3 pull-right h2 btn-container">
-          <%= link_to "Edit Your Profile", about_edit_path, class: "btn btn-primary" %>
+          <%= link_to "Edit Your Profile", edit_user_path(@user), class: "btn btn-primary" if required_user? %>
 				</div>
 			</div>
 		</header>
@@ -24,10 +24,10 @@
 					</div>
 					<div class="col-xs-7">
 						<ul class="list-unstyled answers">
-							<li>July 31st, 1980</li>
-							<li>Hogwarts College</li>
-							<li>Godrick's Hollow, England</li>
-							<li>Godrick's Hollow, England</li>
+							<li><%= user_birthday %></li>
+							<li><%= @user.college %></li>
+							<li><%= @user.hometown %></li>
+							<li><%= @user.current_add %></li>
 						</ul>
 					</div>
 				</div>
@@ -41,25 +41,17 @@
 					</div>
 					<div class="col-xs-7">
 						<ul class="list-unstyled answers">
-							<li>harry_potter@hogwarts.edu</li>
-							<li>555-123-4567</li>
+							<li><%= @user.email %></li>
+							<li><%= @user.tele %></li>
 						</ul>
 					</div>
 				</div>
 			</section>
 			<section class="col-xs-6 personal-info">
 				<h2>Words to Live By</h2>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-				consequat.</p>
+				<p><%= @user.words_to_live %></p>
 				<h2>About Me</h2>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				<p><%= @user.about_me %></p>
 			</section>
 		</div>
 	</div>

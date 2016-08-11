@@ -9,12 +9,10 @@ class StaticPagesController < ApplicationController
   end
 
   def timeline
+    current_user
   end
 
   def friends
-  end
-
-  def about
   end
 
   def photos

@@ -5,3 +5,24 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Day.destroy_all
+Month.destroy_all
+Year.destroy_all
+User.destroy_all
+
+puts "Creating days"
+1.upto(31) do |num|
+  Day.create(day: num)
+end
+
+puts "Creating months"
+1.upto(12) do |num|
+  month_n = Date::MONTHNAMES[num]
+  Month.create(month: num, month_name: month_n)
+end
+
+puts "Creating years"
+1900.upto(2010) do |num|
+  Year.create(year: num)
+end

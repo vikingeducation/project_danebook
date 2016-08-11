@@ -149,10 +149,10 @@
 									<div class="clearfix tl-comment-container">
 										<div class="col-xs-2 ex-post-profile-container">
                       <%= link_to image_tag("/imgs/harry_potter
-											_small.jpg", class: "ex-post-profile"), about_path %>
+											_small.jpg", class: "ex-post-profile"), @current_user %>
 										</div>
 										<div class="col-xs-10 ex-poster-info">
-											<%= link_to "Harry Potter", about_path %>
+											<%= link_to "Harry Potter", @current_user %>
 											<p class="ex-post-timestamp">Said on Wednesday 5/10/2014</p>
 										</div>
 										<p class="ex-post-content tl-comment-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod

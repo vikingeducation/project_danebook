@@ -1,10 +1,10 @@
 <div class="row">
   <header class="clearfix">
     <div class="col-xs-2 ex-post-profile-container">
-      <%= link_to image_tag("/imgs/harry_potter_small.jpg", class: "ex-post-profile"), about_path %>
+      <%= link_to image_tag("/imgs/harry_potter_small.jpg", class: "ex-post-profile"), @current_user %>
     </div>
     <div class="col-xs-10 ex-poster-info">
-      <%= link_to name, about_path %>
+      <%= link_to name, @current_user %>
       <p class="ex-post-timestamp">Posted on <%= date %></p>
     </div>
   </header>

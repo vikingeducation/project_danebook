@@ -10,10 +10,23 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160811040156) do
+ActiveRecord::Schema.define(version: 20160811220232) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "days", force: :cascade do |t|
+    t.integer  "day"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "months", force: :cascade do |t|
+    t.integer  "month"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string   "month_name"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email"
@@ -24,12 +37,22 @@ ActiveRecord::Schema.define(version: 20160811040156) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "gender"
-    t.integer  "birth_day"
-    t.integer  "birth_month"
-    t.integer  "birth_year"
+    t.text     "words_to_live"
+    t.text     "about_me"
+    t.datetime "birthday"
+    t.string   "college"
+    t.string   "hometown"
+    t.string   "current_add"
+    t.string   "tele"
     t.index ["auth_token"], name: "index_users_on_auth_token", unique: true, using: :btree
     t.index ["email"], name: "index_users_on_email", using: :btree
     t.index ["password_digest"], name: "index_users_on_password_digest", using: :btree
+  end
+
+  create_table "years", force: :cascade do |t|
+    t.integer  "year"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

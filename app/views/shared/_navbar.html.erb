@@ -1,22 +1,11 @@
-<header>
-  <nav class="navbar navbar-default navbar-fixed-top search_navbar">
-    <div class="container-fluid">
-      <div class="container">
-        <div class="navbar-header">
-          <%= link_to image_tag("/imgs/danish_flag.gif"), timeline_path, class: "navbar-left brand-img" %>
-          <%= link_to content_tag(:span, 'Danebook', class: "brand-text"), timeline_path, class: "navbar-brand" %>
-        </div>
-        <div class="col-xs-8">
-          <form class="navbar-form" role="search">
-            <div class="form-group">
-              <input type="text" class="form-control" placeholder="Search for Users">
-            </div>
-          </form>
-        </div>
-        <ul class="nav navbar-nav navbar-right">
-          <li><%= link_to "Harry", about_path %></li>
-        </ul>
-      </div>
+<% if signed_in_user? %>
+  <%= render "shared/signed_in_navbar" %>
+  <%= render "shared/profile-topper" %>
+<% else %>
+  <%= render "shared/signed_out_navbar" %>
+  <% flash.each do |key, value| %>
+    <div class="alert alert-<%= key %>">
+      <p><%= value %></p>
     </div>
-  </nav>
-</header>
+  <% end %>
+<% end %>

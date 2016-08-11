@@ -1,8 +1,11 @@
 class StaticPagesController < ApplicationController
-
+  skip_before_action :require_login, :only => [:home]
   def home
-    @user = User.new
-    render layout: "homepage"
+    if signed_in_user?
+      redirect_to :timeline
+    else
+      @user = User.new
+    end
   end
 
   def timeline

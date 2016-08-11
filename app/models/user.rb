@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   attr_accessor :first_name, :last_name
-  before_create :generate_token
 
+  before_create :generate_token
   has_secure_password
 
   validates :password,

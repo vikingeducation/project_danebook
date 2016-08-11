@@ -30,7 +30,8 @@ class UsersController < ApplicationController
   end
 
   def edit
-
+    @cities = City.includes(:name, :country)
+    @countries = @cities.map(&:country)
   end
 
   def update

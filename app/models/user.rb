@@ -1,6 +1,9 @@
 class User < ApplicationRecord
   has_secure_password
 
+  validates :username, length: { :minimum => 1}
+  validates :email, length: { :minimum => 1}
+
   validates :password, 
             :length => { :in => 8..24 }, 
             :allow_nil => true

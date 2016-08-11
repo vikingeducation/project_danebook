@@ -15,6 +15,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(whitelisted_user_params)
     if @user.save
+      sign_in(@user)
       flash[:success] = "User was saved in database"
       redirect_to @user
     else

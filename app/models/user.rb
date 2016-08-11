@@ -2,7 +2,13 @@ class User < ApplicationRecord
   before_create :generate_token
 
   has_secure_password
-  validates :email, presence: true
+  validates :email, 
+            :presence => {:message => "Please enter an email"},
+            :format => { :with => /@/, :message => "Please enter a valid email address" },
+            :uniqueness => true
+  validates :password,
+            :length => {:minimum => 6, :message => " must be at least 6 characters"},
+            :on => :create
   has_one :profile
   accepts_nested_attributes_for :profile
 

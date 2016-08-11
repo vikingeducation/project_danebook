@@ -1,3 +1,4 @@
+
 <main>
   <div class="container">
     <div class="row">
@@ -14,10 +15,7 @@
       </div>
       <div class="col-sm-5" id="sign-up">
         <h1>Sign Up</h1>
-        <form id="new_user" action='/users' accept-charset="UTF-8" method='post'>
-          <input name="utf8" type="hidden" value="✓">
-          <input type="hidden" name="authenticity_token"
-    value="<%= form_authenticity_token %>">
+        <%= simple_form_for @user do |user_fields| %>
           <div class="row">
             <div class="col-sm-6" id="first-name">
               <input name="user[profile_attributes][first_name]" type="text" class="form-control" placeholder="First Name">
@@ -28,17 +26,17 @@
           </div>
           <div class="row" id="sign-up-row">
             <div class="col-xs-12">
-              <input name="user[email]" type="text" class="form-control" placeholder="Your Email">
+            <%= user_fields.input :email, placeholder: "Your Email", class:"form-control", label: false %>
             </div>
           </div>
           <div class="row">
             <div class="col-xs-12">
-              <input name="user[password]" type="password" class="form-control" placeholder="Your New Password">
+              <%= user_fields.input :password, placeholder: "Your New Password", class:"form-control", label: false %>
             </div>
           </div>
           <div class="row">
             <div class="col-xs-12">
-              <input name="user[password_confirmation]" type="password" class="form-control" placeholder="Confirm Your Password">
+              <%= user_fields.input :password_confirmation, placeholder: "Confirm Your Password", class:"form-control", label: false %>
             </div>
           </div>
           <h4>Birthday</h4>
@@ -66,7 +64,7 @@
               <input type="submit" name="commit" value="Sign Up!" data-disable-with="Create User" class="btn btn-success btn-block">
             </div>
           </div>
-        </form>
+        <% end %>
           
 
     </div>

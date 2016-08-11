@@ -27,7 +27,7 @@
               <h5>About (Text Area)</h5>
             </div>
             <div class="col-xs-12 timeline-content">
-              <p><b>Born on:</b> <%= real_user.profile.birthday %></p>
+              <p><b>Born on:</b> <%= real_user.profile.birthday.strftime("%m/%d/%Y") if real_user.profile.birthday%></p>
               <p><b>Went to school at:</b> <%= real_user.profile.college %></p>
               <p><b>Hometown:</b> <%= real_user.profile.hometown %></p>
               <p><b>Currently Lives:</b> <%= real_user.profile.currently_lives %></p>

@@ -9,11 +9,11 @@ class SessionsController < ApplicationController
       else
         sign_in(@user)
       end
-      flash[:success] = "You've successfuly signed in!"
+      flash[:success] = "Welcome back, #{@user.profile.first_name}"
       redirect_to user_timeline_path(current_user)
     else
-      flash.now[:error] = "We couldn't sign you in"
-      render new_user_path
+      flash[:danger] = "Incorrect log-in information. Please try again"
+      redirect_to new_user_path
     end
   end
 

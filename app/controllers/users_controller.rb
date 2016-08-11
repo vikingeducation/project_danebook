@@ -2,8 +2,12 @@ class UsersController < ApplicationController
   skip_before_action :require_login, only: [:new, :create]
   before_action :require_current_user, only: [:edit, :update, :destroy]
 
+  def index
+    redirect_to new_user_path
+  end
 
   def new
+    @user = User.new
     if signed_in_user?
       redirect_to user_timeline_path(current_user)
     end
@@ -11,13 +15,13 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if @user.save!
+    if @user.save
       sign_in(@user)
       flash[:success] = "Your account has been created"
       redirect_to user_timeline_path(@user)
     else
-      flash[:error] = "Account could not be created"
-      redirect_to root_path
+      flash.now[:danger] = "Account could not be created"
+      render :new
     end
   end
 

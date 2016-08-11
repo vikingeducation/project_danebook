@@ -34,7 +34,7 @@
               <p><b>Birthday:</b></p>
             </div>
             <div class="col-xs-7">
-              <p><%= current_user.profile.birthday %></p>
+              <p><%= current_user.profile.birthday.strftime("%m/%d/%Y") if real_user.profile.birthday %></p>
             </div>
           </div>
           <div class="row">

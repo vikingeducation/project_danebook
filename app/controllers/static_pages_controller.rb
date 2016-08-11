@@ -5,7 +5,7 @@ class StaticPagesController < ApplicationController
 
   def home
     if signed_in_user?
-      redirect_to timeline_path
+      redirect_to user_timeline_path(current_user)
     end
   
   end

@@ -13,13 +13,13 @@ class SessionsController < ApplicationController
       redirect_to user_timeline_path(current_user)
     else
       flash.now[:error] = "We couldn't sign you in"
-      render root_path
+      render new_user_path
     end
   end
 
   def destroy
     sign_out
     flash[:success] = "You've successfully signed out"
-    redirect_to root_path
+    redirect_to new_user_path
   end
 end

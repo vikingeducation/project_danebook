@@ -4,8 +4,7 @@ class UsersController < ApplicationController
 
 
   def new
-    @user = User.new
-    @profile = @user.profile.build
+    
   end
 
   def create

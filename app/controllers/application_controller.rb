@@ -38,6 +38,21 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def real_user_id
+    params[:id] || params[:user_id]
+  end
+  helper_method :real_user_id
+
+  def real_user
+    User.find(real_user_id)
+  end
+  helper_method :real_user
+
+  def user_header_name
+    "#{User.find(real_user).profile.first_name} #{User.find(real_user).profile.last_name}"
+  end
+  helper_method :user_header_name
+
   def require_current_user
     unless params[:id] == current_user.id.to_s
       flash[:error] = "You're not authorized for that action!"

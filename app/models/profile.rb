@@ -1,5 +1,5 @@
 class Profile < ActiveRecord::Base
-  after_save :defaults
+  after_create :defaults
 
   belongs_to :user
   has_one :birthday, dependent: :destroy
@@ -20,13 +20,14 @@ class Profile < ActiveRecord::Base
                     tsearch: { dictionary: :english } 
                   }
 
-  def defaults
-    self.build_contact_info.save
-    self.build_birthday.save
-    self.birthday.build_profile_date.save
-    self.build_hometown.save
-    self.hometown.build_address.save
-    self.build_residence.save
-    self.residence.build_address.save
-  end
+  private
+    def defaults
+      self.build_contact_info.save
+      self.build_birthday.save
+      self.birthday.build_profile_date.save
+      self.build_hometown.save
+      self.hometown.build_address.save
+      self.build_residence.save
+      self.residence.build_address.save
+    end
 end

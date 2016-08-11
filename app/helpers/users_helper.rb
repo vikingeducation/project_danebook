@@ -16,7 +16,7 @@ module UsersHelper
 
   def show_date(dateable)
     date = dateable.profile_date
-    "#{date.month}, #{date.day}, #{date.year}"
+    "#{date.month}/#{date.day}/#{date.year}"
   end
 
 end

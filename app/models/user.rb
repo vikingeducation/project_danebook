@@ -1,7 +1,6 @@
 class User < ActiveRecord::Base
   attr_accessor :remember_token, :activation_token, :reset_token
   before_create :create_activation_digest
-  
 
   has_many :microposts, dependent: :destroy
   has_one :profile, dependent: :destroy
@@ -55,11 +54,12 @@ class User < ActiveRecord::Base
 
   #Paginating search results, if any.
   def User.search(search, page)
-    if !search.empty?
-      #Calling the pg search scope defined above.
-      Profile.search_by_full_name(search).paginate(page: page, per_page: 10)
-    else
+    case search
+    when '', 'Search for users' 
       joins(:profile).where("profiles.user_id = users.id").order("profiles.last_name ASC").paginate(page: page, per_page: 10)
+    else
+      #Calling the pg search scope defined in the Profile model.
+      Profile.search_by_full_name(search).paginate(page: page, per_page: 10)
     end
   end
 

@@ -19,16 +19,7 @@ class UsersController < ApplicationController
 
   def create
     user = User.new({ email: user_params[:email],                password: user_params[:password] })
-    raise
-    if user.save
-      build_user(user)
-      user.send_activation_email
-      flash[:info] = 'You have been sent an email containing a link to activate your account.'
-      redirect_to root_url
-    else
-      flash[:danger] = 'Invalid information. Please try again to sign up.'
-      render 'static_pages/signup'
-    end
+    check_save(user)
   end
 
   def edit
@@ -45,15 +36,7 @@ class UsersController < ApplicationController
 
   def update
     user = User.find(params[:id])
-    if user.update_attributes(user_params)
-      flash[:success] = "Profile updated"
-      redirect_to user
-    else
-    render 'static_pages/about', 
-           locals: { user: user, 
-                     profile: user.profile }, 
-           action: :edit
-    end
+    check_update(user)
   end
 
   def show
@@ -94,15 +77,30 @@ class UsersController < ApplicationController
       redirect_to root_url unless current_user == user
     end
 
-    def build_user(user)
-      user.build_profile({ first_name: user_params[:first_name], last_name: user_params[:last_name] }).save
-      user.profile.build_contact_info.save
-      user.profile.build_birthday.save
-      user.profile.birthday.build_profile_date.save
-      user.profile.build_hometown.save
-      user.profile.hometown.build_address.save
-      user.profile.build_residence.save
-      user.profile.residence.build_address.save
+    def check_save(user)
+      if user.save
+        user.build_profile(
+          { first_name: user_params[:first_name], last_name: user_params[:last_name] }
+          ).save
+        user.send_activation_email
+        flash[:info] = 'You have been sent an email containing a link to activate your account.'
+        redirect_to root_url
+      else
+        flash[:danger] = 'Invalid information. Please try again to sign up.'
+        render 'static_pages/signup'
+      end
     end
 
+    def check_update(user)
+      if user.update_attributes(user_params)
+        flash[:success] = "Profile updated"
+        redirect_to user
+      else
+        render 'static_pages/about', 
+               locals: { user: user, 
+                         profile: user.profile }, 
+               action: :edit
+      end
+    end
+    
 end

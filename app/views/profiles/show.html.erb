@@ -1,0 +1,84 @@
+<section class="container main-header">
+  <div class="row">
+    <%= image_tag 'hogwarts_small.jpg' %>
+    <%= image_tag 'user_silhouette_generic.gif', class:"profile" %>
+    <a class="title-name"><%= @profile.first_name %> <%= @profile.last_name %></a>
+  </div>
+
+  <!-- nav links -->
+  <div class="row nav-link-row">
+    <div class="col-xs-2 nav-links">
+      <a style="visibility: hidden"><p>test</p></a>
+    </div>
+    <div class="col-xs-2 nav-links">
+      <a href="timeline.html"><p>Timeline</p></a>
+    </div>
+    <div style="background-color: #ccc" class="col-xs-2 nav-links">
+      <a href="about.html"><p>About</p></a>
+    </div>
+    <div class="col-xs-2 nav-links">
+      <a href="photos.html"><p>Photos</p></a>
+    </div>
+    <div class="col-xs-2 nav-links">
+      <a href="friends.html"><p>Friends</p></a>
+    </div>
+    <div class="col-xs-2 nav-links">
+      <a href="about_edit.html"><p style="text-align: right; color: blue"><u>Edit Profile</u></p></a>
+    </div>
+  </div>
+</section>
+
+<!-- content -->
+<section class="container content">
+  <div class="row title-header">
+    <div class="col-xs-4 col-xs-offset-4">
+      <p class="title">About</p>
+    </div>
+    <div class="col-xs-4">
+      <button type="button" class="btn btn-primary btn-sm edit-button">Edit your Profile</button>
+    </div>
+  </div>
+  <div class="row content-space">
+
+    <div class="col-xs-5 data-points">
+      <h1>Basic Information</h1>
+      <div class="row">
+        <div class="col-xs-5">
+          <p>Gender:</p>
+          <p>Birthday:</p>
+          <p>Hometown:</p>
+          <p>Currently Lives:</p>
+        </div>
+
+        <div class="col-xs-7">
+          <p><%= @profile.gender.titleize %></p>
+          <p><%= @profile.birthdate %></p>
+          <p>Godrick's Hollow, England</p>
+          <p>Godrick's Hollow, England</p>
+        </div>
+      </div>
+
+      <h1>Contact Information</h1>
+      <div class="row">
+        <div class="col-xs-5">
+          <p>Email:</p>
+          <p>Telephone:</p>
+        </div>
+
+        <div class="col-xs-7">
+          <p><%= @user.email %></p>
+          <p>555-123-4567</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xs-6 data-strings">
+      <h1>Words to Live By</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+      <h1>About Me</h1>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+
+  </div>
+
+</section>

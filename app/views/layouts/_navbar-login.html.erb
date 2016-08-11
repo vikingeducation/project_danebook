@@ -1,0 +1,33 @@
+<nav id="topnav" class="navbar navbar-fixed-top navbar-dark bg-primary">
+
+  <div class="container">
+    <div class="row">
+
+      <div class="col-xs-3">
+        <div class="logo-container">
+          <%= image_tag 'flag.png' %>
+          <a class="navbar-brand" href="/">Danebook</a>
+        </div>
+      </div>
+
+      <div class="col-xs-6">
+        <div class="search-container">
+          <form class="form-inline">
+            <div class="form-group pull-left">
+              <input style="width: 550px" type="text" class="form-control" id="search" placeholder="Search for Users">
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="col-xs-3">
+        <div class="name-container">
+          <p class="pull-right"><%= current_user.email %> <%= link_to "Logout", logout_path, method: :delete %></p>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</nav>

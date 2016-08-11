@@ -4,7 +4,9 @@ class UsersController < ApplicationController
 
 
   def new
-    
+    if signed_in_user?
+      redirect_to user_timeline_path(current_user)
+    end
   end
 
   def create

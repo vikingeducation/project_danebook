@@ -1,7 +1,9 @@
 class User < ActiveRecord::Base
   before_create :generate_token
   has_secure_password
-  
+
+  has_one :profile
+
   def generate_token
     begin
       self[:auth_token] = SecureRandom.urlsafe_base64

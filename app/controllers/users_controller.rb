@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :require_login, only: [:create]
+  skip_before_action :require_login, only: [:create, :new]
   def create
     @user = User.new(user_params)
     if @user.save
@@ -12,7 +12,8 @@ class UsersController < ApplicationController
     end
   end
 
-  def show
+  def new
+    redirect_to user_timeline_path(current_user) if signed_in_user?
   end
 
   def destroy

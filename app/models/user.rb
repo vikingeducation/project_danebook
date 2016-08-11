@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   attr_accessor :remember_token, :activation_token, :reset_token
   before_create :create_activation_digest
+  
 
   has_many :microposts, dependent: :destroy
   has_one :profile, dependent: :destroy
@@ -85,5 +86,4 @@ class User < ActiveRecord::Base
       self.activation_token = User.new_token
       self.activation_digest = User.digest(activation_token)
     end
-
 end

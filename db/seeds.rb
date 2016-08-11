@@ -37,13 +37,6 @@ foobar = User.create!(email: 'foobar@barbaz.com',
                      activated_at: rand(365).days.ago)
 foobar.build_profile({ first_name: 'Foobar',
                        last_name: 'Barbaz' }).save
-foobar.profile.build_contact_info.save
-foobar.profile.build_birthday.save
-foobar.profile.birthday.build_profile_date.save
-foobar.profile.build_hometown.save
-foobar.profile.hometown.build_address.save
-foobar.profile.build_residence.save
-foobar.profile.residence.build_address.save
 
 #Seed more users.
 puts "Seeding more users.."
@@ -58,13 +51,6 @@ puts "Seeding more users.."
               activated: true,
               activated_at: rand(365).days.ago)
   user.build_profile({ first_name: first_name, last_name: last_name }).save
-  user.profile.build_contact_info.save
-  user.profile.build_birthday.save
-  user.profile.birthday.build_profile_date
-  user.profile.build_hometown.save
-  user.profile.hometown.build_address.save
-  user.profile.build_residence.save
-  user.profile.residence.build_address.save
 end
 
 #Seeding microposts.

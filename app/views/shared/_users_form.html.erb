@@ -10,6 +10,26 @@
       </ul>
     </div>
   <% end %>
+
+  <%= fields_for @profile do |fa| %>
+      <%=fa.label :first_name %>
+      <%=fa.text_field :first_name %>
+      <br>
+      <%=fa.label :last_name %>
+      <%=fa.text_field :last_name %>
+      <br>
+      <%=fa.label :month %>
+      <%=fa.text_field :month %>
+      <br>
+      <%=fa.label :day %>
+      <%=fa.number_field :day %>
+      <br>
+      <%=fa.label :year %>
+      <%=fa.number_field :year %>
+      <br>
+      <%=fa.label :gender %>
+      <%=fa.text_field :gender %>
+   <% end %>
   
   <%= user_fields.label :username %>
   <%= user_fields.text_field :username %>

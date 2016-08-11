@@ -1,14 +1,16 @@
 class User < ApplicationRecord
   has_secure_password
 
-  validates :username, length: { :minimum => 1}
-  validates :email, length: { :minimum => 1}
+  validates :username, length: { :minimum => 1}, uniqueness: true
+  validates_format_of :email, :with => /@/
 
   validates :password, 
             :length => { :in => 8..24 }, 
             :allow_nil => true
 
   before_create :generate_token
+
+  has_one :profile, class_name: "Profile"
 
   #generates and regenerates tokens and sets to self
   def generate_token

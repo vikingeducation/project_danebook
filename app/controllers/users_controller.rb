@@ -10,10 +10,12 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @profile = Profile.new
   end
 
   def create
     @user = User.new(whitelisted_user_params)
+    @profile = @user.build_profile(whitelisted_profile_params)
     if @user.save
       sign_in(@user)
       flash[:success] = "User was saved in database"
@@ -47,5 +49,17 @@ class UsersController < ApplicationController
                 :email,
                 :password,
                 :password_confirmation)
+
+    end
+
+    def whitelisted_profile_params
+      params.
+        require(:profile).
+        permit( :first_name,
+                :last_name,
+                :month,
+                :day,
+                :year,
+                :gender)
     end
 end

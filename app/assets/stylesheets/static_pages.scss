@@ -142,7 +142,7 @@ body{
     margin-top: 40px;
     width: 100%;
     height: 400px;
-    background-image: image-url("hogwarts.jpg");
+    /* background-image: asset_path('hogwarts.jpg'); */
     background-repeat: no-repeat;
     background-size: 100% 100%;
 }

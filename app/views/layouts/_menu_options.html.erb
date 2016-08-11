@@ -1,10 +1,10 @@
 <div class="row"><!-- begin background-image row -->
-  <div class="col-xs-12 cover-photo"><!-- cover photo spans entire column -->
+  <div style="background: url('<%= asset_path('hogwarts.jpg') %>') 100% 100%/100% 100% no-repeat" class="col-xs-12 cover-photo"><!-- cover photo spans entire column -->
     <div class="row">
       <p class="col-xs-3 col-xs-offset-2" id="main-name">
         Harry Potter
       </p>
-      <img class="col-xs-2 profile-pic" src="./assets/hp.jpg">
+      <img class="col-xs-2 profile-pic" src='<%= asset_path('hp.jpg') %>'>
     </div>
   </div>
 </div><!-- end background-image row -->

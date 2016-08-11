@@ -17,7 +17,7 @@
         </ul>
       </div>
 
-      <%= link_to 'Edit Profile', edit_user_path(user), id: "masthead-edit-profile", class: "btn btn-primary btn-md" %>
+      <%= link_to('Edit Profile', edit_user_path(user), id: "masthead-edit-profile", class: "btn btn-primary btn-md") if current_user == user %>
 
     </div>
   </div>

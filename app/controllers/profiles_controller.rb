@@ -40,7 +40,7 @@ class ProfilesController < ApplicationController
             :country_id
           ] }
         ] },
-        { contact_info: [:email, :phone] })
+        { contact_info_attributes: [:email, :phone] })
     end
 
     # def to_integers

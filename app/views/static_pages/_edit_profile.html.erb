@@ -64,23 +64,25 @@
       </table>
 
       <h2>Contact Information</h2>
+      <%= profile_fields.fields_for :contact_info do |contact_fields| %> 
       <table>
         <tr>
           <td>Email address:</td>
-          <td>harry_potter@hogwarts.edu</td>
+          <td><%= contact_fields.text_field :email %></td>
         </tr>
         <tr>
           <td>Telephone:</td>
-          <td><input type="text" placeholder="(408)772-HARRY" class="form-control"></td>
+          <td><%= contact_fields.text_field :phone %></td>
         </tr>
       </table>
+      <% end %>
     </div>
     <div class="col-md-7">
       <h2>Words to Live By</h2>
-      <textarea id="words-live-textarea" type="text" class="form-control"></textarea>
+      <%= profile_fields.text_field :words %>
 
       <h2>About Me</h2>
-      <textarea id="about-me-textarea" type="text" class="form-control" rows="5"></textarea>
+      <%= profile_fields.text_field :about %>
     </div>
   </div>
   <div class="row panel-footer">

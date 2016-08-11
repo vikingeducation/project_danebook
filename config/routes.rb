@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   resources :users do 
     resource :timeline, only: [:show]
+    resource :friend, only: [:show]
+    resource :photo, only: [:show]
   end
 
   resource :session, only: [ :new, :create, :destroy ]

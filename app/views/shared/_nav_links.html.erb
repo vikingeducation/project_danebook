@@ -9,10 +9,10 @@
           <%= link_to "About", user_path(real_user_id), class: "h6" %>
         </div>
         <div class="col-sm-2" id="single-profile-tab">
-          <%= link_to "Photos (123)", photos_path, class: "h6" %>
+          <%= link_to "Photos (123)", user_photo_path(real_user_id), class: "h6" %>
         </div>
         <div class="col-sm-2" id="single-profile-tab">
-          <%= link_to "Friends (542)", friends_path, class: "h6" %>
+          <%= link_to "Friends (542)", user_friend_path(real_user_id), class: "h6" %>
         </div>
         <% if real_user_id == current_user.id.to_s %>
         <div class="col-sm-3" id="edit-profile-tab">

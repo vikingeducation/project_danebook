@@ -11,6 +11,10 @@ main{
   .navbar-header {
 
   }
+
+  .form-group{
+    margin-bottom: -10px;
+  }
   .navbar-brand{
     color: white;
     font-size: 35px;
@@ -23,11 +27,11 @@ main{
   }
 
   #log-in-button{
-    padding-top: 24px;
+    padding-top: 28px;
+    display: inline-block;
   }
 
   p{
-    margin-top: 5px;
     color: white;
   }
 

@@ -1,10 +1,6 @@
-.form-group{
-  padding-top: 8px;
-  padding-bottom: 8px;
-}
+
 
 .form-control{
-  margin-bottom: 10px;
 }
 #cover-photo{
   border: 2px solid black;
@@ -15,6 +11,10 @@
     height: 300px;
   }
   
+}
+
+#remember-me{
+  display: inline-block
 }
 
 #profile-picture{

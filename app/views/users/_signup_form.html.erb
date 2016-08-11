@@ -1,0 +1,58 @@
+<%= form_tag(users_path) do |f| %>
+  <div class="form-group">
+    <div class="col-sm-6 spacer">
+      <input type="text" class="form-control" placeholder="First Name" name="user[first_name]">
+    </div>
+
+    <div class="col-sm-6 spacer">
+      <input type="text" class="form-control" placeholder="Last Name" name="user[last_name]">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-12 spacer">
+      <input type="email" class="form-control" placeholder="Your email" name="user[email]">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-12 spacer">
+      <input type="password" class="form-control col-sm-12" placeholder="Your new password" name="user[password]">
+    </div>
+  </div>
+
+  <div class="form-group">
+    <div class="col-sm-12">
+      <input type="password" class="form-control col-sm-12" placeholder="Confirm your password" name="user[password_confirmation]">
+    </div>
+  </div>
+
+  <div class="col-sm-12">
+    <h3>Birthday</h3>
+  </div>
+
+  <div class="spacer col-sm-3">
+    <%= date_select :user, :birth_date,
+                            { :order => [:month, :day, :year],
+                              start_year: 1910,
+                              end_year: Time.now.year,
+                              :date_separator => '</div><div class="spacer col-sm-3">' },
+                              { class: "form-control" } %>
+  </div>
+
+  <div class="col-sm-12 spacer">
+    <div class="radio-group">
+      <label class="radio-inline col-sm-2">
+        <input type="radio" name="user[gender]" id="inlineRadio2" value="female"> Female
+      </label>
+      <label class="radio-inline col-sm-2">
+        <input type="radio" name="user[gender]" id="inlineRadio1" value="male"> Male
+      </label>
+    </div>
+  </div>
+
+
+  <div class="col-sm-10 col-sm-offset-1">
+    <input type="submit" class="btn btn-success btn-lg btn-block" value="Sign up!">
+  </div>
+<% end %>

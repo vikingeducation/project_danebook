@@ -1,0 +1,27 @@
+<main class="container" id="login-main">
+  <div class="row">
+    <!-- Left column benefits to signing up -->
+    <div class="col-md-6 col-md-offset-1" id="benefits">
+      <h2>Connect with all your friends!</h2>
+      <ul>
+        <li><strong>See photos and updates</strong> in your newsfeed</li>
+        <li><strong>Post your status for the world to see</strong> from your profile</li>
+        <li><strong>Get in touch with your friends</strong> by "friending" them</li>
+        <li><strong>Like things</strong> because you're a positive person</li>
+      </ul>
+    </div>
+
+    <!-- Right column signup form -->
+    <div class="col-md-5" id="signup-form">
+      <div class="col-sm-12">
+        <%= render "/shared/flash" %>
+      </div>
+
+      <div class="col-sm-12">
+        <h2>Sign Up</h2>
+      </div>
+
+      <%= render "signup_form" %>
+    </div>
+  </div>
+</main>

@@ -1,0 +1,50 @@
+<%= render partial: "shared/header", locals: { active: :edit } %>
+
+<main class="container">
+  <div class="row profile-box-title">
+    <h2 class="col-sm-12">Åbout</h2>
+  </div>
+
+  <div class="row profile-box profile-box-bottom">
+    <div class="col-sm-4 col-sm-offset-1">
+      <h3>Basic Information</h3>
+      <%= render "about_box" %>
+
+      <h3>Contact Information</h3>
+      <div class="row">
+        <div class="col-sm-5">
+          <strong>Email</strong>
+        </div>
+        <div class="col-sm-7">
+          <div class="form-group">
+            <p><%= @user.email %></p>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-sm-5">
+          <strong>Telephone</strong>
+        </div>
+        <div class="col-sm-7">
+          <div class="form-group">
+            <p>(714) 555-1234</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-sm-6">
+      <h3>Wörds to Live By</h3>
+      <p>Lørem ipsum dolor sit amet, consectetur ådipisicing elit, sed do eiusmod
+      tempor incididunt ut labore et doløre magna aliqua.</p>
+
+      <h3>Åbout Me</h3>
+      <p>Lørem ipsum dolor sit amet, consectetur ådipisicing elit, sed do eiusmod
+      tempor incididunt ut labore et doløre magna aliqua. Ut enim ad minim veniam,
+      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodö
+      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+      cillum doløre eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+      proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+  </div>
+</main>

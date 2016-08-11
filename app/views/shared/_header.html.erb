@@ -1,0 +1,22 @@
+<header class="container">
+  <%= render "/shared/cover" %>
+<%# asdf %>
+  <div class="row">
+    <ul class="nav nav-tabs" id="menu">
+      <% if self_profile? %>
+        <li role="presentation" <%= "class='active' ".html_safe if active==:timeline %> ><a href="<%= user_path(@user) %>">Timeline</a></li>
+      <% end %>
+
+      <li role="presentation" <%= "class='active'".html_safe if active==:about %> ><a href="<%= about_user_path(@user) %>">Åbout</a></li>
+
+      <li role="presentation" <%= "class='active' ".html_safe if active==:photos %> ><a href="<%= user_photos_path(@user) %>">Photos (834)</a></li>
+
+      <li role="presentation" <%= "class='active' ".html_safe if active==:friends %> ><a href="<%= user_friends_path(@user) %>">Frænds (99)</a></li>
+
+      <% if self_profile? %>
+        <li role="presentation" class=
+        "pull-right <%= "active" if active==:edit %>" ><a href="<%= edit_user_path(current_user) %>">Edit Profile</a></li>
+      <% end %>
+    </ul>
+  </div>
+</header>

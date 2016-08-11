@@ -34,7 +34,7 @@ class ApplicationController < ActionController::Base
 
   def require_login
     unless signed_in_user?
-      flash[:error] = "Not authorized, please sign in!"
+      flash[:danger] = "Not authorized, please sign in!"
       redirect_to root_path
     end
   end
@@ -42,8 +42,13 @@ class ApplicationController < ActionController::Base
   def require_current_user
     # don't forget that params is a string!!!
     unless params[:id] == current_user.id.to_s
-      flash[:error] = "You're not authorized to view this"
-      redirect_to root_url
+      redirect_to about_user_path(params[:id].to_i)
     end
   end
+
+  def self_profile?
+    user = (params[:user_id]|| params[:id])
+    current_user.id == user.to_i
+  end
+  helper_method :self_profile?
 end

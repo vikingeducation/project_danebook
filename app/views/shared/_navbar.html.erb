@@ -10,7 +10,7 @@
               <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="<%= root_path %>">
-            <img class="img-responsive img-circle" src="https://s3.amazonaws.com/viking_education/web_development/web_app_eng/danish_flag.gif" alt="Danebook Logo">Dåneboök</a>
+            <img class="img-responsive img-circle" src="https://s3.amazonaws.com/viking_education/web_development/web_app_eng/danish_flag.gif" alt="Danebook Logo">Dåneboøk</a>
           </div>
 
           <!-- Collect the nav links, forms, and other content for toggling -->
@@ -21,7 +21,12 @@
                 <span class="input-group-btn"><button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span></button></span>
               </div>
             </form>
-            <a href="#" class="navbar-right navbar-text">Red Orm</a>
+            <div class="navbar-right">
+              <%= link_to current_user.first_name, user_path(current_user), class: "navbar-text" %>
+              <%= form_tag(logout_path, class: "navbar-form") do |f| %>
+                <button id="logout-btn" type="submit" class="btn btn-success btn-xs">Logout</button>
+              <% end %>
+            </div>
             <div class="collapse navbar-collapse" id="navbar-signin">
 
           </div><!-- /.navbar-collapse -->

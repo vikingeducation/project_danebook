@@ -6,6 +6,10 @@ class User < ApplicationRecord
             :length => { :in => 8..24 },
             :allow_nil => true
 
+  validates :birth_date, :first_name, :last_name, :email, :gender, :birth_date, presence: true
+
+  validates :first_name, :last_name, :email, length: { in: (1..50) }
+  validates_format_of :email, :with => /@/
 
   def generate_token
     begin

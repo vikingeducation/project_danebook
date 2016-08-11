@@ -12,6 +12,9 @@
 				<h2 class="text-center">Edit Profiles</h2>
 			</div>
 		</div>
+
+		<%= render 'profile_form', user: @user %>
+
 		<div class="row">
 			<div class="col-sm-5 col-sm-offset-1">
 				<div class="row">
@@ -50,7 +53,6 @@
 					</div>
 					<div class="col-xs-7">
 						<input class="form-control" type="text" value="Godrick's Hollow, England">
-						<!-- <p>Godrick's Hollow, England</p> -->
 					</div>
 				</div><!-- Basic information IDs -->
 
@@ -86,9 +88,6 @@
 				<div class="row">
 					<div class="col-sm-12">
 						<textarea class="form-control" rows="2">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut</textarea>
-
-						<!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-						tempor incididunt ut labore et dolore magna aliqua. Ut</p> -->
 					</div> <!-- Words to live by content -->
 				</div>
 				<div class="row">

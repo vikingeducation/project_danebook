@@ -1,6 +1,6 @@
 class StaticPagesController < ApplicationController
   before_action :set_user, :except => [:new, :create]
-  
+
   def home
 
   end
@@ -9,8 +9,10 @@ class StaticPagesController < ApplicationController
   end
 
   def about
-
-    # unless current_user = User.find(params[:id])
+    unless @user.profile
+      @user.create_profile   # question is it better to have this be a build instead of create here?????
+      redirect_to user_about_edit_path(@user)
+    end
   end
 
   def about_edit

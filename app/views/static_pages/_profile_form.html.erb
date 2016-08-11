@@ -1,0 +1,21 @@
+<%= form_for user do |form_field| %>
+  <%= form_field.fields_for do |prof_field| %>
+
+
+  <div class="row">
+    <div class="col-sm-5 col-sm-offset-1">
+      <div class="row">
+        <div class="col-sm-12">
+          <h3>Basic Information</h3>
+        </div> <!-- Basic info Header -->
+      </div>
+      <div class="row">
+        <div class="col-xs-5">
+          <!-- <p class="content-id">Birthday:</p> -->
+
+        </div>
+    </div>
+  </div>
+
+  <% end %>
+<% end %>

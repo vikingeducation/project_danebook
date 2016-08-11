@@ -12,5 +12,5 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require bootstrap-datepicker3
+//= require bootstrap-datepicker
 //= require_tree .

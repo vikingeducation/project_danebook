@@ -2,7 +2,7 @@
 <div id="static_pages">
 	<%= render 'navbar' %>
 
-	<%= render 'banner' %> 
+	<%= render 'banner' %>
 
 	<div class="container section-container">
 		<div class="row section-header">
@@ -25,7 +25,7 @@
 						<p class="content-id">Birthday:</p>
 					</div>
 					<div class="col-xs-7">
-						<p>July 31st, 1980</p>
+						<p><%= @user.birth_date.strftime('%B %e, %Y') %></p>
 					</div>
 				</div>
 				<div class="row">
@@ -33,7 +33,7 @@
 						<p class="content-id">College:</p>
 					</div>
 					<div class="col-xs-7">
-						<p>Hogwart's College</p>
+						<p><%= @user.profile.college %></p>
 					</div>
 				</div>
 				<div class="row">
@@ -41,7 +41,7 @@
 						<p class="content-id">Hometown:</p>
 					</div>
 					<div class="col-xs-7">
-						<p>Godrick's Hollow, England</p>
+						<p><%= @user.profile.hometown %></p>
 					</div>
 				</div>
 				<div class="row">
@@ -49,7 +49,7 @@
 						<p class="content-id">Currely Lives:</p>
 					</div>
 					<div class="col-xs-7">
-						<p>Godrick's Hollow, England</p>
+						<p><%= @user.profile.currently_lives %></p>
 					</div>
 				</div><!-- Basic information IDs -->
 				<div class="row">
@@ -62,7 +62,7 @@
 						<p class="content-id">Email:</p>
 					</div>
 					<div class="col-xs-7">
-						<p>harry_potter@hogwarts.edu</p>
+						<p><%= @user.email %></p>
 					</div>
 				</div>
 				<div class="row">
@@ -70,7 +70,7 @@
 						<p class="content-id">Telephone:</p>
 					</div>
 					<div class="col-xs-7">
-						<p>555-123-4567</p>
+						<p><%= @user.profile.telephone %></p>
 					</div>
 				</div><!-- Contact Info Content -->
 			</div>
@@ -82,8 +82,7 @@
 				</div>
 				<div class="row">
 					<div class="col-sm-12">
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-						tempor incididunt ut labore et dolore magna aliqua. Ut</p>
+						<p><%= @user.profile.words_to_live_by %></p>
 					</div> <!-- Words to live by content -->
 				</div>
 				<div class="row">
@@ -93,12 +92,7 @@
 				</div>
 				<div class="row">
 					<div class="col-sm-12">
-						<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-						quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-						consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-						cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-						proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+						<p><%= @user.profile.about_me %></p>
 					</div> <!-- About Me content -->
 				</div>
 			</div>

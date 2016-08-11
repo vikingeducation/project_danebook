@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20160811040156) do
     t.string   "last_name"
     t.string   "gender"
     t.integer  "birth_day"
-    t.string   "birth_month"
+    t.integer  "birth_month"
     t.integer  "birth_year"
     t.index ["auth_token"], name: "index_users_on_auth_token", unique: true, using: :btree
     t.index ["email"], name: "index_users_on_email", using: :btree

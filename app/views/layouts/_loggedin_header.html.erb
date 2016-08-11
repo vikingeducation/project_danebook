@@ -1,0 +1,32 @@
+<nav id = "login-navbar" class = "navbar navbar-default navbar-static-top navbar-fixed-top row">
+  <!-- responsive mobile stuff collapses down  -->
+  <div class="navbar-header col-xs-2 col-xs-offset-1">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="vertical-align col-xs-4" id="logo-link" href="#">
+      <img class="vertical-align" id="brand-pic" src='<%= asset_path('flag.png') %>'
+           alt="circular danish flag">
+    </a>
+    <!--company brand link -->
+    <a class="navbar-brand col-xs-12" id = "brand-link" href="#">
+      <p class="col-xs-4 vertical-align" id="brand-text">Danebook</p>
+    </a>
+  </div>
+  <!-- wraps rest of links to collapse in mobile-->
+  <div class="col-xs-10 collapse navbar-collapse">
+    <!-- rows and columns control button placement -->
+    <form class="navbar-form col-xs-8" role="user-search">
+      <!-- Yes, kids, even a form-group can be a column -->
+      <div class="form-group col-xs-12">
+        <input type="text" class="form-control col-xs-12" placeholder="Search for Users">
+      </div>
+    </form>
+    <div class="col-xs-1">
+      <p id="profile-name"><a href="./about.html">Harry</a></p>
+    </div>
+  </div><!--navbar-collapse-->
+</nav>

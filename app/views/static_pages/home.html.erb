@@ -1,0 +1,78 @@
+<main class="home">
+  <section class="main-content">
+    <div class="container">
+      <div class="row">
+        <div class="about-info col-xs-6 col-xs-offset-1">
+          <h1>Connect with all your friends!</h1>
+          <ul>
+            <li><span class="bold-text">See photos and updates</span> in your news feed.</li>
+            <li><span class="bold-text">Post your status for the world</span> to see from your profile</li>
+            <li><span class="bold-text">Get in touch with your friends</span> by "friending" them</li>
+            <li><span class="bold-text">Like things</span> because you're a positive person!</li>
+          </ul>
+        </div>
+        <div class="sign-up-container col-xs-4">
+          <header class="row">
+            <h1 class="sign-up-header">Sign Up</h1>
+          </header>
+
+          <div class="row">
+            <div class="col-xs-6 form-container">
+              <input type="text" class="form-control" placeholder="First Name">
+            </div>
+
+            <div class="col-xs-6 form-container">
+              <input type="text" class="form-control" placeholder="Last Name">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-12 form-container">
+              <input type="text" class="form-control" placeholder="Your Email">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-12 form-container">
+              <input type="text" class="form-control" placeholder="Your New Password">
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-xs-12 form-container">
+              <input type="text" class="form-control" placeholder="Confirm Your Password">
+            </div>
+          </div>
+
+          <div class="row">
+            <h2 id="birthday-header">Birthday</h2>
+          </div>
+
+          <div class="row">
+            <div class="datepicker">
+              <input type="text" id="date" data-format="DD-MM-YYYY" data-template="D MMM YYYY" name="date" value="09-01-2013">
+              <script>
+               $(function(){
+                   $('#date').combodate();
+               });
+              </script>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="radio-button col-xs-4">
+              <input type="radio" name="gender">  Female
+            </div>
+            <div class="radio-button col-xs-3">
+              <input type="radio" name="gender">  Male
+            </div>
+          </div>
+
+          <div class="row">
+            <button type="button" class="btn btn-success sign-up-btn">Sign Up!</button>
+          </div>
+        </div> <!--close sign-up-container -->
+      </div> <!-- close row -->
+    </div> <!-- close container -->
+  </section> <!-- close main-content section -->
+</main> <!-- close main -->

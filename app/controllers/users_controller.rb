@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  #ADD UNIQUE CONSTRAINT TO USER EMAIL
+  #ADD VALIDATIONS FOR USER ATTRIBUTES
+  #UPDATE FORM TO RAILS FIELDS
   skip_before_action :require_login, :only => [:new, :create]
   before_action :require_current_user, :only => [:edit, :update, :destroy]
 
@@ -21,7 +24,9 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:email, :password, :password_confirmation)
+      params.require(:user).permit(:email, :password, :password_confirmation,
+                                  :birth_day, :birth_month, :birth_year,
+                                  :gender, :first_name, :last_name)
     end
 
 end

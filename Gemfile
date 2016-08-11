@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'taps'
+gem 'pg'
 gem 'hirb'
 gem 'faker'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

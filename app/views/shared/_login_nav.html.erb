@@ -3,7 +3,7 @@
     <div class="container">
 
       <div class="row">
-        <div class="col-sm-7">  
+        <div class="col-sm-6">  
           <div class="navbar-header">
 
             <button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle">
@@ -21,34 +21,43 @@
             <a href="#" class="navbar-brand" id="brand-title">Danebook</a>
           </div>
         </div>
+        <div class="col-sm-1">
+          <%= form_tag session_path do %>
+            <%= label_tag :remember_me, "Remember Me" %>
+            <%= check_box_tag :remember_me, nil, id: "remember_me" %>
+        </div>
         <div class="col-sm-5">
 
           <div class="row">
             <div id="navbarCollapse" class="collapse navbar-collapse">
-              <form class="navbar-form navbar-right">
-                <div class="col-sm-5">
-                  <label for="email">Email</label>
-                </div>
-                <div class="col-sm-5">
-                  <label for="password" id="sign-in-password">Password</label><br>
-                </div>
 
-                
-                <div class="col-sm-5">
-                  <div class="form-group">
-
-                    <input class="form-control" type="text" id="email"></input>
-                  </div>
+            <!-- <form class="navbar-form navbar-right"> -->
+              <div class="col-sm-5">
+                <%= label_tag :email %>
+                <!-- <label for="email">Email</label> -->
+              </div>
+              <div class="col-sm-5">
+                <%= label_tag :password, nil, id:"sign-in-password" %><br>
+                <!--  <label for="password" id="sign-in-password">Password</label><br> -->
+              </div>
+              <div class="col-sm-5">
+                <div class="form-group">
+                  <%= text_field_tag :email, nil, class: "form-control", id: "email" %>
+                  <!-- <input class="form-control" type="text" id="email"></input> -->
                 </div>
-                <div class="col-sm-5">
-                  <div class="form-group">
-                    <input class="form-control" type="password"></input>
-                  </div>
+              </div>
+              <div class="col-sm-5">
+                <div class="form-group">
+                  <%= text_field_tag :password, nil, class: "form-control" %>
+                  <!-- <input class="form-control" type="password"></input> -->
                 </div>
-                <div class="col-sm-2">
-                  <button class="btn btn-success" type="submit">Sign in</button>
-                </div>
-              </form>
+              </div>
+              <div class="col-sm-2">
+                <%= submit_tag "Sign in", class: "btn btn-success" %>
+                <!-- <button class="btn btn-success" type="submit">Sign in</button> -->
+              </div>
+              <% end %>
+                <!-- </form> -->
             </div>
           </form>
         </div>

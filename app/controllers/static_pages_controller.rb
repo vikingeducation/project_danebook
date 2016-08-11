@@ -1,7 +1,9 @@
 class StaticPagesController < ApplicationController
   def home
-    @current_user = true
     @home = true
+    @current_user = true
+    @user = User.new
+    # redirect_to new_user_path
   end
 
   def timeline

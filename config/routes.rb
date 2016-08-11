@@ -11,6 +11,10 @@ Rails.application.routes.draw do
   get '/photos', to: "static_pages#photos"
 
   get '/about_edit', to: "static_pages#about_edit"  
+
+  resource :session, :only => [:create, :destroy, :new]
+
+  resources :users, :only => [:create, :new, :edit, :update, :destroy]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

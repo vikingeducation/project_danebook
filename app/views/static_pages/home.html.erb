@@ -13,21 +13,23 @@
           <h4><input type="text" placeholder="Last Name"></h4>
         </div>
       </div>
-      <div class="row">
-        <div class="col-xs-11">
-          <h4><input type="email" placeholder="Email"></h4>
-        </div>
-      </div>    
-      <div class="row">
-        <div class="col-xs-11">
-          <h4><input type="password" placeholder="Password"></h4>
-        </div>
-      </div>  
-      <div class="row">
-        <div class="col-xs-11">
-          <h4><input type="password" placeholder="Confirm Your Password"></h4>
-        </div>
-      </div>  
+
+      <%= form_for :user, url: users_path do |u| %>
+        <div class="row">
+          <div class="col-xs-11">
+            <h4><%= u.text_field :email, placeholder: "Email" %></h4>
+          </div>
+        </div>    
+        <div class="row">
+          <div class="col-xs-11">
+            <h4><%= u.text_field :password, placeholder: "Password" %> </h4>
+          </div>
+        </div>  
+        <div class="row">
+          <div class="col-xs-11">
+            <h4><%= u.text_field :password_confirmation, placeholder: "Confirm your password" %></h4>
+          </div>
+        </div>  
       <div class="row">
         <div class="col-xs-10">
           <h4>Birthday</h4>
@@ -54,7 +56,8 @@
       </div>
       <div class="row">
         <div class="col-xs-11">
-          <input type="button" value="Sign Up!" id="signup-button">
+          <%= u.submit "Sign Up!", id: "signup-button" %>
+      <% end %>
         </div>
       </div>      
     </div>  

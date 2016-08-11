@@ -14,129 +14,26 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <form class="navbar-form navbar-right">
-	        <div class="row">
-	        		<div class="col-sm-8 col-sm-offset-2">
-					<div class="col-sm-5">
-						<label class="signin-inputs" for="email-entry">Email</label>
-					</div>
-					<div class="col-sm-5">
-						<label class="signin-inputs" for="pw-entry">Password</label>
-					</div>
-				</div>
-				<div class="col-sm-8 col-sm-offset-2">
-					<div class="col-sm-5">
-						<input type="text" class="form-control input-sm" id="email-entry">
-					</div>
-					<div class="col-sm-5">
-						<input type="text" class="form-control input-sm" id="pw-entry">
-					</div>
-					<div class="col-sm-2">
-						<button type="submit" id="btn-login" class="btn btn-primary">Log In</button>
-					</div>
-				</div>
-			</div>
-	    </form>
-    </div><!-- /.navbar-collapse -->
-</nav>
 
-<main class="container">
-	<div class="row">
-		<div class="col-sm-7 top-buffer">
-			<h3 class="catch-phrase">Connect with all your friends!</h3>
-			<ul>
-				<li>See Photos and updates in your news feed</li>
-				<li>Post your status for the world to see from your profile</li>
-				<li>Get in touch with your friends by "friending" them</li>
-				<li>Like things because your're a positive person!</li>
-			</ul>
-		</div>
-		<section class="col-sm-5">
-			<h2>Sign Up</h2>
-			<form>
-				<div class="row">
-					<div class="form-group col-sm-6">
-						<input class="full-width-input" type="text" placeholder="First Name"></input>
-					</div>
-					<div class="form-group col-sm-6">
-						<input class="full-width-input" type="text" placeholder="Last Name"></input>
-					</div>
-				</div>
-				<div class="row">
-					<div class="form-group col-sm-12">
-						<input class="full-width-input" type="text" placeholder="Your Email"></input>
-					</div>
-				</div>
-				<div class="row">
-					<div class="form-group col-sm-12">
-						<input class="full-width-input" type="text" placeholder="Your New Password"></input>
-					</div>
-				</div>
-				<div class="row">
-					<div class="form-group col-sm-12">
-						<input class="full-width-input" type="text" placeholder="Confirm Your Passowrd"></input>
-					</div>
-				</div>
-				<div class="birthday-forms">
-					<h4>Birthday</h4>
-					<div class="row">
-						<div class="form-group col-sm-3">
-							<select class="form-control full-width-input">
-								<option value="" default selected>Month</option>
-								<option>January</option>
-								<option>February</option>
-								<option>March</option>
-								<option>April</option>
-								<option>May</option>
-								<option>June</option>
-								<option>July</option>
-								<option>August</option>
-								<option>September</option>
-								<option>October</option>
-								<option>November</option>
-								<option>December</option>
-							</select>
-						</div>
-						<div class="form-group col-sm-3">
-							<select class="form-control full-width-input">
-								<option value="" default selected>Day</option>
-								<option>1</option>
-								<option>2</option>
-								<option>3</option>
-							</select>
-							<!-- <input class="full-width-input" type="day"></input> -->
-							<!-- <input class="full-width-input" type="number" name="day" step="1" min="1" max="31"> -->
-						</div>
-						<div class="form-group col-sm-3">
-							<!-- <input class="full-width-input" type="year"></input> -->
-							<select class="form-control full-width-input">
-								<option value="" default selected>Year</option>
-								<option>1900</option>
-								<option>1901</option>
-								<option>1902</option>
-							</select>
-						</div>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col-sm-2">
-						<label class="radio-inline">
-						  <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="male"> Male
-						</label>
-					</div>
-					<div class="col-sm-2 col-sm-offset-1">
-						<label class="radio-inline">
-						  <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="female"> Female
-						</label>
-					</div>
-				</div>
-			</form>
-			<div class="row">
-				<div class="col-sm-12">
-					<button class="btn btn-success" id="sign-up-btn">Sign Up!</button>
-				</div>
+				<%= render partial: 'sessions/sign_in' %>
+    </div><!-- /.navbar-collapse -->
+	</nav>
+
+	<main class="container">
+		<div class="row">
+			<div class="col-sm-7 top-buffer">
+				<h3 class="catch-phrase">Connect with all your friends!</h3>
+				<ul>
+					<li>See Photos and updates in your news feed</li>
+					<li>Post your status for the world to see from your profile</li>
+					<li>Get in touch with your friends by "friending" them</li>
+					<li>Like things because your're a positive person!</li>
+				</ul>
 			</div>
-		</section>
-	</div>
-</main>
+			<section class="col-sm-5">
+				<h2>Sign Up</h2>
+				<%= render 'sessions/sign_up', user: @user %>
+			</section>
+		</div>
+	</main>
 </div>

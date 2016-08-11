@@ -8,17 +8,17 @@
   <div class="row link-bar">
     <div class="col-sm-7 col-sm-offset-2" role="navigation">
       <ul class="nav nav-pills nav-justified">
-        <li role="presentation" class="<%= "active-tab" if page_from.downcase == 'timeline' %>"><%= link_to "Timeline", timeline_path %></li>
-        <li role="presentation"  class="<%= "active-tab" if page_from.downcase == 'about' %>"><%= link_to "About", about_path %></li>
-        <li role="presentation" class="<%= "active-tab" if page_from.downcase == 'photos' %>"><%= link_to photos_path do %>
+        <li role="presentation" class="<%= "active-tab" if controller.action_name == 'timeline' %>"><%= link_to "Timeline", root_path %></li>
+        <li role="presentation"  class="<%= "active-tab" if controller.action_name.include?('about') %>"><%= link_to "About", user_about_path(params[:user_id]) %></li>
+        <li role="presentation" class="<%= "active-tab" if controller.action_name == 'photos' %>"><%= link_to user_photos_path(params[:user_id]) do %>
             Photos <span>(123)</span>
           <% end %></li>
-        <li role="presentation" class="<%= "active-tab" if page_from.downcase == 'friends' %>"><%= link_to friends_path do %>
+        <li role="presentation" class="<%= "active-tab" if controller.action_name == 'friends' %>"><%= link_to user_friends_path(params[:user_id]) do %>
           Friends <span>(542)</span>
         <% end %></li>
       </ul>
     </div><!-- Nav Menu -->
-    <% if edit %>
+    <% if current_user.id == params[:user_id]  %>
     <div class="col-sm-3">
       <h5 class="text-right"><a href="about_edit.html" id="edit-profile-link">Edit Profile</a></h5>
     </div><!-- Edit Profile Link -->

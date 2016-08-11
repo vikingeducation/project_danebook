@@ -1,4 +1,34 @@
 class SessionsController < ApplicationController
-  # skip_before_action :require_login, :only => [:new, :create]
-  
+  skip_before_action :require_login, :only => [:new, :create]
+
+  def new
+    if current_user
+      redirect_to user_timeline_path(current_user)
+    else
+      @user = User.new
+    end
+  end
+
+  def create
+    @user = User.find_by_email(params[:email])
+    # pafjl
+
+    if @user && @user.authenticate(params[:password])
+      if params[:remember_me]
+        permanent_sign_in(@user)
+      else
+        sign_in(@user)
+      end
+      flash[:success] = "You've successfully signed in"
+      redirect_to root_url
+    else
+      flash.now[:error] = "We couldn't sign you in"
+      render :new
+    end
+  end
+
+  def destroy
+    sign_out
+    redirect_to login_path
+  end
 end

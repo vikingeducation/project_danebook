@@ -46,25 +46,23 @@
 #birthday-options select {
   margin-right: 20px; }
 
-#gender-input-female {
-  margin-right: 10px;
-  transform: scale(1.4); }
-
-#female {
+.gender {
   display: inline-block;
   font-size: 15px;
   position: relative;
   top: 3px; }
+
+#gender-input-female {
+  margin-right: 10px;
+  transform: scale(1.4); }
 
 #gender-input-male {
   margin: 0 10px 0 20px;
   transform: scale(1.4); }
 
-#male {
-  display: inline-block;
-  font-size: 15px;
-  position: relative;
-  top: 3px; }
+#gender-input-nonbinary {
+  margin: 0 10px 0 20px;
+  transform: scale(1.4); }
 
 #signup-button {
   margin-top: 15px;

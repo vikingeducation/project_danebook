@@ -4,17 +4,18 @@
       <header class="row">
         <div class="col-xs-12"><h1>Sign Up</h1></div>
       </header>
+
+      <%= form_for :user, url: users_path do |u| %>
       <div class="row">
         <div class="col-xs-5" id="first-name">
-          <h4><input type="text" placeholder="First Name"></h4> 
+          <h4><%= u.text_field :first_name, placeholder: "First Name" %> </h4>
         </div>
         <div class="col-xs-1" id="gap-name"></div>
         <div class="col-xs-5" id="last-name">
-          <h4><input type="text" placeholder="Last Name"></h4>
+          <h4><%= u.text_field :last_name, placeholder: "Last Name" %> </h4>
         </div>
       </div>
 
-      <%= form_for :user, url: users_path do |u| %>
         <div class="row">
           <div class="col-xs-11">
             <h4><%= u.text_field :email, placeholder: "Email" %></h4>
@@ -22,12 +23,12 @@
         </div>    
         <div class="row">
           <div class="col-xs-11">
-            <h4><%= u.text_field :password, placeholder: "Password" %> </h4>
+            <h4><%= u.password_field :password, placeholder: "Password" %> </h4>
           </div>
         </div>  
         <div class="row">
           <div class="col-xs-11">
-            <h4><%= u.text_field :password_confirmation, placeholder: "Confirm your password" %></h4>
+            <h4><%= u.password_field :password_confirmation, placeholder: "Confirm your password" %></h4>
           </div>
         </div>  
       <div class="row">
@@ -36,22 +37,39 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-xs-10" id="birthday-options">
-          <select>
-            <option value="">Month</option>
-          </select> 
-          <select>
-            <option value="">Day</option>
-          </select> 
-          <select>
-            <option value="">Year</option>
-          </select> 
-        </div>
+
+          
+                    <%
+           date_wrap_open = '<div class="col-xs-4"><div class="form-group">'.html_safe
+           date_wrap_close = '</div></div>'.html_safe
+           date_separator = "#{date_wrap_close}#{date_wrap_open}"
+           %>
+
+           <%= date_wrap_open %>
+
+             <%= u.date_select(
+               :birth_date,
+               {
+                 :order => [:day, :month, :year],
+                 :date_separator => date_separator,
+                 :start_year => Date.today.year,
+                 :end_year => 120.years.ago.year
+               },
+               {:class => 'form-control'}
+             ) %>
+
+           <%= date_wrap_close %>
+
       </div>
       <div class="row">
-        <div class="col-xs-10" id="gender-input">
+        <div class="col-xs-12" id="gender-input">
+          <%= u.radio_button :gender, "male", id: "gender-input-female" %><p class="gender">Female</p>
+          <%= u.radio_button :gender, "female", id: "gender-input-male" %><p class="gender">Male</p>
+          <%= u.radio_button :gender, "non-binary", id: "gender-input-nonbinary" %> <p class="gender">Non-binary</p>
+<!-- 
           <input type="radio" name="gender" id="gender-input-female" value="Female"><p id="female">Female</p>
           <input type="radio" name="gender" id="gender-input-male" value="Male"><p id="male">Male</p>
+  -->         
         </div>
       </div>
       <div class="row">

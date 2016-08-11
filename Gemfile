@@ -38,7 +38,7 @@ group :development, :test do
   gem 'byebug'
   gem 'better_errors'
 end
-
+gem 'hirb'
 gem 'binding_of_caller'
 
 group :development do

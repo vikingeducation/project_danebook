@@ -5,6 +5,7 @@ class CreateProfiles < ActiveRecord::Migration
       t.string :last_name
       t.datetime :birthday
       t.string :about
+      t.references :user
 
       t.timestamps null: false
     end

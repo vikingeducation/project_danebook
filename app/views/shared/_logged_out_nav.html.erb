@@ -11,20 +11,13 @@
                 <img class="logo" src="/assets/danish_flag.gif">
             </a>
             <a class="navbar-brand" href="#">Danebook</a>
-            <%= form_tag session_path do %>
-            <%= label_tag do %>
-            Email
-            <%= text_field_tag :email %>
-            <% end %>
-            <%= label_tag do %>
-            Password
-            <%= password_field_tag :password %>
-            <% end %>
-            <%= submit_tag "Log in" %>
-            <%= label_tag do %>
-            Remember me?
-            <%= check_box_tag :remember_me %>
-            <% end %>
+        </div>
+        <div class="pull-right">
+            <%= simple_form_for :user, url: session_path, html: { class: "inline-form"} do |f| %>
+            <%= f.input_field :email, placeholder: 'Email', label: false %>
+            <%= f.input_field :password, placeholder: 'password', label: false %>
+            <%= check_box_tag :remember_me, inline_label: 'Remember' %>
+            <%= f.button :submit, "Login" %>
             <% end %>
         </div>
     </div>

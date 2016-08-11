@@ -1,8 +1,11 @@
 class User < ActiveRecord::Base
   before_create :generate_token
   has_secure_password
+  validates :email, presence: true
+  validates :password_digest, presence: true
 
   has_one :profile
+  accepts_nested_attributes_for :profile
 
   def generate_token
     begin

@@ -1,9 +1,9 @@
 class SessionsController < ApplicationController
   skip_before_action :require_login
-  
+
   def create
-    @user = User.find_by_email(params[:email])
-    if @user && @user.authenticate(params[:password])
+    @user = User.find_by_email(params[:user][:email])
+    if @user && @user.authenticate(params[:user][:password])
       sign_in(@user)
       flash[:success] = "Signed in!"
       redirect_to root_url

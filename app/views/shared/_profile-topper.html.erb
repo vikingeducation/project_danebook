@@ -10,13 +10,13 @@
         <li><%= link_to "Timeline", user_activities_path(@user) %></li>
         <li><%= link_to "About", @user %></li>
         <li>
-        <%= link_to photos_path do %>
+        <%= link_to "#" do %>
           Photos
           <%= content_tag(:span, "(123)", class: "middle-nav-count") %>
         <% end %>
         </li>
         <li>
-        <%= link_to friends_path do %>
+        <%= link_to "#" do %>
           Friends
           <%= content_tag(:span, "(542)", class: "middle-nav-count") %>
         <% end %>

@@ -1,9 +1,10 @@
 class ActivitiesController < ApplicationController
+  before_action :required_user_redirect, except: [:index]
+  before_action :set_user, :only => [:index]
 
   def index
     @post = Post.new
     @comment = Comment.new
-    @user = User.find(params[:user_id])
     @activities = @user.get_wall_activities
   end
 

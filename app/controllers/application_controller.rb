@@ -10,6 +10,8 @@ class ApplicationController < ActionController::Base
     helper_method :required_user?
     helper_method :created_by_user?
     helper_method :set_user
+    helper_method :set_user_id
+    helper_method :required_user_redirect
 
     def sign_in(user)
       user.regenerate_auth_token
@@ -39,7 +41,7 @@ class ApplicationController < ActionController::Base
 
     def require_current_user
       unless params[:id] == current_user.id.to_s
-        flash[:alert] = "You're not authorized to view this"
+        flash[:alert] = "You're not authorized to do this"
         redirect_to root_path
       end
     end
@@ -48,12 +50,31 @@ class ApplicationController < ActionController::Base
       params[:id] == current_user.id.to_s
     end
 
+    def required_user_redirect
+      unless params[:user_id] == current_user.id.to_s
+        flash[:alert] = "You're not authorized to do this"
+        redirect_to root_path
+      end
+    end
+
     def created_by_user?
       params[:user_id] == current_user.id.to_s
     end
 
     def set_user
-      @user = User.find(params[:user_id])
+      @user = User.find_by_id(params[:user_id])
+      unless @user
+        flash[:alert] = "Unable to find that user"
+        redirect_to user_activities_path(current_user)
+      end
+    end
+
+    def set_user_id
+      @user = User.find_by_id(params[:id])
+      unless @user
+        flash[:alert] = "Unable to find that user"
+        redirect_to user_activities_path(current_user)
+      end
     end
 
 end

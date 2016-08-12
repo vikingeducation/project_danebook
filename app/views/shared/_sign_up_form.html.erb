@@ -20,10 +20,10 @@
   <h2>Birthday</h2>
   <fieldset class="form-group row collapsable_group">
     <div class="col-sm-4">
-      <%= f.collection_select :day, Month.all, :month, :month_name, { prompt: 'Month', selected: nil, :disabled => 'Month' }, class: "form-control"  %>
+      <%= f.collection_select :month, Month.all, :month, :month_name, { prompt: 'Month', selected: nil, :disabled => 'Month' }, class: "form-control"  %>
     </div>
     <div class="col-sm-4">
-      <%= f.collection_select :month, Day.all, :day, :day, { prompt: 'Day', selected: nil }, class: "form-control"  %>
+      <%= f.collection_select :day, Day.all, :day, :day, { prompt: 'Day', selected: nil }, class: "form-control"  %>
     </div>
     <div class="col-sm-4">
       <%= f.collection_select :year, Year.all, :year, :year, { prompt: 'Year', selected: nil }, class: "form-control"  %>

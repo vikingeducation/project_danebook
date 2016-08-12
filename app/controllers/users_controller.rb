@@ -1,16 +1,13 @@
 class UsersController < ApplicationController
-  #ADD UNIQUE CONSTRAINT TO USER EMAIL
-  #ADD VALIDATIONS FOR USER ATTRIBUTES
-  #UPDATE FORM TO RAILS FIELDS
   skip_before_action :require_login, :only => [:create]
   before_action :require_current_user, :only => [:edit, :update, :destroy]
+  before_action :set_user_id, :only => [:show]
 
   def index
     redirect_to user_activities_path(current_user)
   end
 
   def show
-    @user = User.find(params[:id])
   end
 
   def create
@@ -32,7 +29,8 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
+    @user = current_user
+    params[:user][:birthday] = get_date
     if @user.update(user_params)
       flash[:success] = "User has been updated!"
       redirect_to @user
@@ -50,6 +48,12 @@ class UsersController < ApplicationController
     end
 
     def get_date
+      if (1900..2007).include?(params[:user][:year].to_i) && (1..12).include?(params[:user][:month].to_i) && (1..31).include?(params[:user][:day].to_i)
+        create_date
+      end
+    end
+
+    def create_date
       Date.new(params[:user][:year].to_i,
       params[:user][:month].to_i,
       params[:user][:day].to_i)

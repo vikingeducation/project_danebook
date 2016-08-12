@@ -16,8 +16,14 @@
               <div class="col-xs-2">
                 <%= f.label "Birthday: ", class: "label-control" %>
               </div>
-              <div class="col-xs-9">
-                <%= f.text_field :birthday, class: "form-control"%>
+              <div class="col-xs-3">
+                <%= f.collection_select :month, Month.all, :month, :month_name, { prompt: 'Month', selected: current_user.month, :disabled => 'Month' }, class: "form-control"  %>
+              </div>
+              <div class="col-xs-3">
+                <%= f.collection_select :day, Day.all, :day, :day, { prompt: 'Day', selected: current_user.day }, class: "form-control"  %>
+              </div>
+              <div class="col-xs-3">
+                <%= f.collection_select :year, Year.all, :year, :year, { prompt: 'Year', selected: current_user.year }, class: "form-control"  %>
               </div>
             </div>
             <div class="form-group">

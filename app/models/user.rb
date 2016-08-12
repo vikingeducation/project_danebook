@@ -10,6 +10,11 @@ class User < ApplicationRecord
   validates :password,
             :length => { :in => 8..24 },
             :allow_nil => true
+  validates :email, presence: true, uniqueness: { case_sensitive: false }
+  validates :first_name, presence: true, :length => { :in => 1..24 }
+  validates :last_name, presence: true, :length => { :in => 1..24 }
+  validates :gender, presence: true
+  validates :birthday, presence: true
 
   def generate_token
     begin
@@ -29,6 +34,21 @@ class User < ApplicationRecord
 
   def get_wall_activities
     activities.where.not(postable_type: "Comment").order(id: :desc)
+  end
+
+  def day
+    val = birthday.strftime("%D") || @current_user.birthday.strftime("%D")
+    val.to_s
+  end
+
+  def month
+    val = birthday.strftime("%-m") || @current_user.birthday.strftime("%-m")
+    val.to_s
+  end
+
+  def year
+    val = birthday.strftime("%Y") || @current_user.birthday.strftime("%Y")
+    val.to_s
   end
 
 end

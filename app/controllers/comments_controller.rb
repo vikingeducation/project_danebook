@@ -2,8 +2,17 @@ class CommentsController < ApplicationController
 
   def create
     @activity = Activity.find(params[:activity_id])
-    @activity.create_comment(comment_params, current_user)
-    redirect_to user_activities_path(@activity.author)
+    if @activity.author.id == current_user.id
+      if @activity.create_comment(comment_params, current_user)
+        redirect_to user_activities_path(@activity.author)
+      else
+        flash[:notice] = "Must have some content"
+        redirect_to user_activities_path(@activity.author)
+      end
+    else
+      flash[:alert] = "You're not authorized to do this"
+      redirect_to user_activities_path(@activity.author)
+    end
   end
 
   private

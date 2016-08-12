@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :required_user_redirect
 
   def create
     @user = current_user

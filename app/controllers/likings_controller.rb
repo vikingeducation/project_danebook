@@ -9,8 +9,14 @@ class LikingsController < ApplicationController
   def destroy
     @liking = Liking.find(params[:id])
     @activity = @liking.likeable
-    @liking.destroy
-    redirect_to user_activities_path(@activity.author)
+    @user = @liking.user
+    if @user.id == current_user.id
+      @liking.destroy
+      redirect_to user_activities_path(@activity.author)
+    else
+      flash[:alert] = "You're not authorized to do this"
+      redirect_to user_activities_path(@activity.author)
+    end
   end
 
 end

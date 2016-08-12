@@ -100,7 +100,7 @@
 	.ex-post-content {
 		margin: 15px 0px 10px;
 	}
-	
+
 	.tl-post-footer {
 		background-color: #eee;
 		border: 1px solid black;
@@ -135,8 +135,9 @@
 			padding-left: 0px;
 		}
 		.tl-comment-content {
-			display: inline-block;
-			max-width: 500px;
+			display: block;
+      margin-left: 50px;
+			max-width: 600px;
 			margin-top: 0px;
 		}
 		.tl-comment-footer {
@@ -162,5 +163,3 @@
 section:last-child {
 	margin-bottom: 40px;
 }
-
-

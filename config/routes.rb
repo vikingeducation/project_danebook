@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  root to: 'static_pages#home'
-  get '/home'     => 'static_pages#home'
+  root to: 'users#new'
+  get '/home'     => 'users#new'
   get '/timeline' => 'static_pages#timeline'
   get '/friends'  => 'static_pages#friends'
   get '/about'    => 'static_pages#about'

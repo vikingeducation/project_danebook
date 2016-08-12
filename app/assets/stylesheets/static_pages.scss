@@ -48,8 +48,9 @@ body{
     }
 
     .datepicker{
-        margin-top: 10px;
-        margin-left: 15px;
+        width: 100% !important;
+        padding: 0px 0px 0px 0px !important;
+        margin-left: 0px !important;
     }
 
     .radio-button{
@@ -94,8 +95,8 @@ body{
         .password-form{ margin-left: 0;}
     }
 }
-.log-in-btn{ margin-top: 23px;
-              margin-left: 10px;
+.log-in-btn{  margin-top: 0px;
+              margin-left: 40px;
               background-color: #57A;
               border: none;
               width: 50px;
@@ -119,7 +120,7 @@ body{
 .form-group{
     margin-left: 30px;
     .form-control{
-        width: 600px;
+        width: 550px;
     }
 }
 
@@ -135,9 +136,16 @@ body{
 #profile-name{
     margin-top: 15px;
     font-size: 18px;
-    margin-left: 150px;
     a{ color: white; }
 
+}
+.logout-link {
+    margin-top: 15px;
+    font-size: 18px;
+    color: white;
+    &:hover {
+        color: white;
+    }
 }
 
 

@@ -15,65 +15,7 @@
           <header class="row">
             <h1 class="sign-up-header">Sign Up</h1>
           </header>
-
-          <%= form_for @user do |user_fields| %>
-            <div class="row">
-              <div class="col-xs-6 form-container">
-                <!-- <input type="text" class="form-control" placeholder="First Name"> -->
-              </div>
-
-              <div class="col-xs-6 form-container">
-                <!-- <input type="text" class="form-control" placeholder="Last Name"> -->
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-xs-12 form-container">
-                <%= user_fields.text_field :email, placeholder:'Your Email', class: 'form-control' %>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-xs-12 form-container">
-                <%= user_fields.password_field :password, placeholder: 'Your New Password', class: 'form-control' %>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-xs-12 form-container">
-                <%= user_fields.password_field :password_confirmation, placeholder: 'Confirm Your Password', class: 'form-control' %>
-              </div>
-            </div>
-
-            <div class="row">
-              <h2 id="birthday-header">Birthday</h2>
-            </div>
-
-            <div class="row">
-              <!-- <div class="datepicker"> -->
-              <!-- <input type="text" id="date" data-format="DD-MM-YYYY" data-template="D MMM YYYY" name="date" value="09-01-2013"> -->
-              <!-- <script> -->
-              <!-- $(function(){ -->
-              <!-- $('#date').combodate(); -->
-              <!-- }); -->
-              <!-- </script> -->
-              <!-- </div> -->
-            </div>
-
-            <div class="row">
-              <div class="radio-button col-xs-4">
-                <!-- <input type="radio" name="gender">  Female -->
-              </div>
-              <div class="radio-button col-xs-3">
-                <!-- <input type="radio" name="gender">  Male -->
-              </div>
-            </div>
-
-            <div class="row">
-              <!-- <button type="button" class="btn btn-success sign-up-btn">Sign Up!</button> -->
-              <%= user_fields.submit 'Sign Up!', class: 'btn btn-success sign-up-btn' %>
-          <% end %>
-            </div>
+          <%= render 'users/form' %>
         </div> <!--close sign-up-container -->
       </div> <!-- close row -->
     </div> <!-- close container -->

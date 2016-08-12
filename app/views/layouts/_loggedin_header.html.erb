@@ -12,21 +12,24 @@
            alt="circular danish flag">
     </a>
     <!--company brand link -->
-    <a class="navbar-brand col-xs-12" id = "brand-link" href="#">
+    <%= link_to new_user_path, class: 'navbar-brand col-xs-12', id: 'brand-link' do %>
       <p class="col-xs-4 vertical-align" id="brand-text">Danebook</p>
-    </a>
+    <% end %>
   </div>
   <!-- wraps rest of links to collapse in mobile-->
-  <div class="col-xs-10 collapse navbar-collapse">
+  <div class="col-xs-12 collapse navbar-collapse">
     <!-- rows and columns control button placement -->
     <form class="navbar-form col-xs-8" role="user-search">
       <!-- Yes, kids, even a form-group can be a column -->
       <div class="form-group col-xs-12">
-        <input type="text" class="form-control col-xs-12" placeholder="Search for Users">
+        <input type="text" class="form-control col-xs-10" placeholder="Search for Users">
       </div>
     </form>
     <div class="col-xs-1">
-      <p id="profile-name"><a href="./about.html">Harry</a></p>
+      <div class="row">
+      <p id="profile-name"><a href="./about.html"><%= current_user.first_name %></a></p>
+      <%= link_to 'Logout', logout_path, method: :delete, class: 'logout-link' %>
+      </div>
     </div>
   </div><!--navbar-collapse-->
 </nav>

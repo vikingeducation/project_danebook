@@ -3,28 +3,38 @@
     <div class="navbar-header">
       <a class="navbar-brand" href="#">Danebook</a>
     </div>
-    <div class="sign-in-form col-xs-offset-7">
-      <div class="email col-xs-4">
-        <div class="row">
-          <p class="col-xs-12 form-text">Email</p>
+    <%= form_tag session_path do %>
+      <div class="sign-in-form col-xs-offset-5">
+        <div class="email col-xs-3">
+          <div class="row">
+            <p class="col-xs-12 form-text">Email</p>
+          </div>
+          <div class="row email-form">
+            <%= text_field_tag :email, '', class: 'form-control' %>
+          </div>
         </div>
 
-        <div class="row email-form">
-          <input type="text" class="form-control">
+        <div class="password col-xs-3">
+          <div class="row">
+            <p class="col-xs-12 form-text">Password</p>
+          </div>
+
+          <div class="row password-form">
+            <%= password_field_tag :password, '', class: 'form-control' %>
+          </div>
         </div>
+        <div class="col-xs-5">
+          <div class="row">
+          <%= label_tag do %>
+            Remember me?
+            <%= check_box_tag :remember_me %>
+          <% end %>
+          </div>
+          <div class="row">
+          <%= submit_tag "Log in", class: 'btn btn-primary navbar-btn log-in-btn' %>
+          </div>
+        </div>
+    <% end %>
       </div>
-
-      <div class="password col-xs-4">
-        <div class="row">
-          <p class="col-xs-12 form-text">Password</p>
-        </div>
-
-        <div class="row password-form">
-          <input type="text" class="form-control">
-        </div>
-      </div>
-
-    </div>
-    <button type="button" class="btn btn-primary navbar-btn log-in-btn">Log in</button>
   </div>
 </nav>

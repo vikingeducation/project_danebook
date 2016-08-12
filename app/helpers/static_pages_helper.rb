@@ -1,9 +1,10 @@
 module StaticPagesHelper
 
   def menu_options_class(action)
+    page = content_for(:page).strip
     if action_name == 'about_edit' && action == 'about'
       'btn btn-default menu-option grey-background'
-    elsif action.to_s == action_name
+    elsif action.to_s == page
       'btn btn-default menu-option grey-background'
     else
       'btn btn-default menu-option'
@@ -11,7 +12,6 @@ module StaticPagesHelper
   end
 
   def get_header_path
-    action_name == 'home' ? 'layouts/login_header' : 'layouts/loggedin_header'
+    signed_in_user? ? 'layouts/loggedin_header' : 'layouts/login_header'
   end
-
 end

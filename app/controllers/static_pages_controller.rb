@@ -1,6 +1,5 @@
 class StaticPagesController < ApplicationController
   skip_before_action :require_login, only: [:home]
-  before_action :require_current_user, only: [:edit, :update, :destroy]
 
   def home
     @user = User.new

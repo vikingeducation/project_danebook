@@ -1,8 +1,9 @@
 class UsersController < ApplicationController
   
   # Whitelist
-  skip_before_action :logged_in_user, except: [:edit, :update, :index]
-  skip_before_action :correct_user, except: [:edit, :update]
+  skip_before_action :logged_in_user, except: [:edit, :update, :index, :destroy]
+  skip_before_action :correct_user, except: [:edit, :update, :destroy]
+  before_action :set_user, except: [:index, :new, :create]
 
 
   def index
@@ -30,7 +31,6 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
     @profile = @user.profile
     @cities = City.all
     @states = State.all
@@ -38,7 +38,6 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:id])
     @profile = @user.profile
     if @user.update_attributes(user_params)
       flash[:success] = "Profile updated."
@@ -50,13 +49,11 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
     @profile = @user.profile
     @microposts = @user.microposts.paginate(page: params[:page], per_page: 4)
   end
 
   def destroy
-    user = User.find(params[:id])
     user.destroy
     flash[:success] = Account has been deleted.
     redirect_to root_path
@@ -70,6 +67,17 @@ class UsersController < ApplicationController
                             :password, 
                             :password_confirmation]
       params.require(:user).permit(permissible_params)
+    end
+
+    # Setting a user before specific actions.
+    def set_user
+      case action_name
+      when 'show'
+        @user = User.find_by_id(params[:id])
+      when 'edit', 'update', 'destroy'
+        @user = current_user
+      end
+      redirect_to_referer root_path, :flash => {:error => 'Unable to find that user'} unless @user
     end
     
 end

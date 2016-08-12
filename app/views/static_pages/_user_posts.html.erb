@@ -22,19 +22,31 @@
         <% else %>
           <%= button_to "Like", post_likes_path(post), method: :post, class: "friend-name" %>
         <% end %>
+        <div class="col-xs-7 col-sm-7 text-right">
+          <% if @user == current_user %>
+            <%= button_to "Delete", post_path(post), method: :delete %>
+          <% end %>
+  			</div>
         <a class="friend-name" href="#" disabled="true">Comment</a>
-        <div class="row">
-          <div class="col-sm-10 like-listing-expanded">
+      </div>
+      <div class="row">
+        <div class="col-xs-12 like-listing-expanded hr-block">
             <p><%= print_likers(post) %></p>
-          </div>
+            <hr>
         </div>
       </div>
-      <div class="col-xs-5 col-sm-8 text-right">
-        <% if @user == current_user %>
-          <%= button_to "Delete", post_path(post), method: :delete %>
-        <% end %>
+      <div class="col-xs-12">
+  			<div class="row post-wrapper">
+  				<div class="col-xs-2 col-sm-1">
+  					<img class="post-pic" src="http://placehold.it/70x70">
+  				</div>
+  				<div class="col-xs-10 col-sm-11 left-gutter">
+            <% post.comments[0..6].each do |comment| %>
+              <%= render 'comment', comment: comment, post: post %>
+            <% end %>
+  				</div><!-- Comment content wrapper -->
+  			</div><!-- Comment wrapper -->
       </div>
     </div>
-  </div>
-</section><!-- Old Post Section -->
+  </section><!-- Old Post Section -->
 <% end %>

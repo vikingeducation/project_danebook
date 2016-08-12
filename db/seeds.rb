@@ -23,3 +23,12 @@ puts "Building users ...... ..... ... .. ."
 
   u.profile.update(college: Faker::University.name, hometown: Faker::Address.city, currently_lives: Faker::Address.city, telephone: Faker::PhoneNumber.cell_phone, words_to_live_by: Faker::Hipster.paragraph(2), about_me: Faker::Hipster.paragraph(4))
 end
+
+puts "Building random user posts & comments ...... ..... ... .. ."
+1.upto(12) do |i|
+  u = User.all[i % 5]
+  puts "building posts"
+  u.posts.create!(description: Faker::Hipster.paragraph(4))
+  puts "building comments"
+  u.comments.create!(description: Faker::Hipster.paragraph(4), post_id: u.posts.last.id)
+end

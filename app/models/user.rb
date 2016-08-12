@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   has_one :profile, dependent: :destroy
   has_many :posts
+  has_many :comments
   has_many :likes, dependent: :destroy
   has_many :liked_posts, through: :likes, source: :post
   # has_many :feeds
@@ -25,7 +26,7 @@ class User < ActiveRecord::Base
            :allow_nil => true
 
   def full_name
-    first_name.capitalize + " " + last_name.capitalize
+    "#{self.first_name.capitalize} #{self.last_name.capitalize}"
   end
 
   def recent_user_posts

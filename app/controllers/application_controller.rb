@@ -37,8 +37,8 @@ class ApplicationController < ActionController::Base
     end
     helper_method :signed_in_user?
 
-    def user_liked?(post)
-      !!post.likers.include?(current_user)
+    def user_liked?(resource)      
+      !!resource.likers.include?(current_user)
     end
     helper_method :user_liked?
 

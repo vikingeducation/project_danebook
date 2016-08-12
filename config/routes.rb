@@ -18,8 +18,12 @@ Rails.application.routes.draw do
   end
   resources :posts, only: [:create, :update, :destroy] do
     resources :likes, only: [:create], :defaults => { :likeable => 'Post'}
+    resources :comments, only: [:new]
   end
 
+  resources :comments, only: [:create, :destroy] do
+    resources :likes, only: [:create], :defaults => { :likeable => 'Comment'}
+  end
   resources :likes, only: [:destroy], :defaults => { :likeable => 'Post'}
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

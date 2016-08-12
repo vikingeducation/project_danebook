@@ -1,8 +1,9 @@
 class LikesController < ApplicationController
   def create
     if signed_in_user?
-      post = Post.find(params[:post_id])
-      if post.likes.create(:user_id => current_user.id)
+      type = params[:likeable].classify
+      resource = type.constantize.find(params["#{type.downcase}_id"])
+      if resource.likes.create(:user_id => current_user.id)
         flash[:success] = "Like contributed to the post!"
       else
         flash[:error] = "Couldn't establish the like"

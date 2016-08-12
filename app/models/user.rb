@@ -37,7 +37,7 @@ class User < ApplicationRecord
   end
 
   def day
-    val = birthday.strftime("%D") || @current_user.birthday.strftime("%D")
+    val = birthday.strftime("%-d") || @current_user.birthday.strftime("%-d")
     val.to_s
   end
 

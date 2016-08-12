@@ -23,7 +23,7 @@
                 <%= f.collection_select :day, Day.all, :day, :day, { prompt: 'Day', selected: current_user.day }, class: "form-control"  %>
               </div>
               <div class="col-xs-3">
-                <%= f.collection_select :year, Year.all, :year, :year, { prompt: 'Year', selected: current_user.year }, class: "form-control"  %>
+                <%= f.collection_select :year, Year.all_years, :year, :year, { prompt: 'Year', selected: current_user.year }, class: "form-control"  %>
               </div>
             </div>
             <div class="form-group">

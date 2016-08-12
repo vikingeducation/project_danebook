@@ -35,7 +35,6 @@ class UsersController < ApplicationController
   end
 
   def update
-    asdf
     if current_user.update(user_params)
       # flash[:success] = "Successfully updated your profile"
       redirect_to about_user_path(current_user)

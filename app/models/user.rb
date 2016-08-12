@@ -3,9 +3,8 @@ class User < ApplicationRecord
 
   validates :username, length: { :minimum => 1}, uniqueness: true
   validates_format_of :email, :with => /@/
-
   validates :password, 
-            :length => { :in => 8..24 }, 
+            :length => { :in => 5..24 }, 
             :allow_nil => true
 
   before_create :generate_token

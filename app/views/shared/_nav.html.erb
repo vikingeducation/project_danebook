@@ -1,17 +1,22 @@
-<nav class="navbar navbar-inverse navbar-fixed-top" id="main-nav">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href=#>
-        <h1>Danebook </h1>
-      </a>
-    </div>
-    <%= render partial: "shared/nav_login" %>
 
+
+<nav class="navbar navbar-default navbar-fixed-top" id="main-nav">
+  <div class="container-fluid">
+    <div class="col-xs-3">
+      <div class="navbar-header">
+         <a href="timeline.html" class="navbar-left brand-img"><img src="./img/danish_flag.gif"</a>
+        <a class="navbar-brand" href="timeline.html">&nbspDanebook</a>
+        <h1>Danebook</h1>
+      </div>
+    </div>
+  
+  <div class="container col-xs-7">
+    <form class="navbar-form" role="search">
+       <input type="text" class="form-control" placeholder="Search for Users">
+    </form>
+  </div>
+
+  <div class="col-xs-1 col-xs-offset-1">
+    <%= render partial: "shared/nav_login" %>
   </div>
 </nav>

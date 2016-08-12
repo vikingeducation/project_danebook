@@ -9,6 +9,7 @@ class UsersController < ApplicationController
   end
 
   def new
+    redirect_to current_user if signed_in_user?
     @user = User.new
     @profile = Profile.new
   end

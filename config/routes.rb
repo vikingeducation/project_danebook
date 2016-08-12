@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
   root to: 'users#new'
-  resources :users
+  resources :users do 
+    resource :profiles do
+      get "/timeline" => "profiles#timeline"
+      get "/friends" => "profiles#friends"
+      get "/about" => "profiles#about"
+      get "/photos" => "profiles#photos"
+      get "/about_edit" => "profiles#about_edit"
+    end
+  end
 
   resource :session, :only => [:new, :create, :destroy]
   get "login" => "sessions#new"

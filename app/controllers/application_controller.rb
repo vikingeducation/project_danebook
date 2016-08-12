@@ -1,5 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+
+
   private
     # switched to cookies-based from session-based
     # regenerate the token as well
@@ -15,6 +17,13 @@ class ApplicationController < ActionController::Base
       user.regenerate_auth_token
       cookies.permanent[:auth_token] = user.auth_token
       @current_user = user
+    end
+
+    def require_login
+      unless signed_in_user?
+        flash[:alert] = "Not authorized, please sign in!"
+        redirect_to login_path
+      end
     end
 
     # cookies!

@@ -1,0 +1,72 @@
+<div class="jumbotron">
+  <div class="photo-container">
+    <a href="#"><img class="img" src="./img/harry_potter_small.jpg"/></a>
+  </div>
+  <div class="row nav-default container-fluid">
+    
+    <div class="col-xs-9 col-xs-offset-3">
+      <ul class="nav nav-pills">
+        <li><a href="timeline.html">Timeline</a></li>
+        <li class="active"><a  href="about.html">About</a></li>
+        <li><a href="photos.html">Photos <span>(123)</span></a></li>
+        <li><a href="friends.html">Friends <span>(542)</span></a></li>
+        <li class="pull-right edit-link" role="presentation"><a href="about_edit.html"><u>Edit Profile</u></a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="main">
+  <div class="container">
+    <div class ="row header-bar">
+      <div class="col-xs-5 col-xs-offset-3">
+          <h1>About</h1>
+      </div>
+      <div class="col-xs-3 col-xs-offset-1">
+          <a href="about_edit.html"><button class="edit-profile-btn btn btn-primary">Edit Your Profile</button></a>
+      </div>
+    </div>      
+
+    <div class="row">
+      <div class="col-xs-6">
+        <h2>Basic Information </h2>
+        <div class="col-xs-4">
+        <ul class="list-unstyled">
+              <li>Birthday:</li>
+              <li>College:</li>
+              <li>Hometown:</li>
+              <li>Currently Lives:</li>
+            </ul>
+        </div>
+        <div class="col-xs-8">  
+          <ul class="list-unstyled">
+            <li> <%= @profile.month %>, <%= @profile.day %>, <%= @profile.year %></li>
+            <li><%= @profile.college %></li>
+            <li><%= @profile.home_town %></li>
+            <li><%= @profile.currently_lives %></li>
+          </ul>
+        </div>
+
+        <h2>Contact Information</h2>
+        <div class="col-xs-4">  
+          <ul class="list-unstyled">
+            <li>Email: </li> <br>
+            <li>Telephone: </li>
+          </ul>
+        </div>
+        <div class="col-xs-4">  
+          <ul class="list-unstyled">
+            <li><%= current_user.email %></li>
+            <li><%= @profile.phone_number %></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-xs-6">
+        <h3>Words to Live By </h3>
+          <p> Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.</p>
+        <h3>About Me </h3>
+          <p> Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged.</p>
+      </div>
+    </div>
+  </div>
+</div>

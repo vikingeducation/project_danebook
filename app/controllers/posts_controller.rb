@@ -1,8 +1,5 @@
 class PostsController < ApplicationController
 
-  def index
-  end
-
   def create
     if current_user.posts.create(post_params)
       flash[:success] = "Created New Post"

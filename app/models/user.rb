@@ -6,11 +6,12 @@ class User < ActiveRecord::Base
 
   has_many :posts, dependent: :destroy
   has_many :likes, dependent: :destroy
+  has_many :comments, dependent: :destroy
   has_one :profile, dependent: :destroy
   accepts_nested_attributes_for :profile
 
   def to_s
-    first_name + " " + last_name
+    profile.first_name + " " + profile.last_name
   end
 
   def generate_token

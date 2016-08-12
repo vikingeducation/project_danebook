@@ -9,7 +9,17 @@ Rails.application.routes.draw do
     resource :profile, only: [:show]
     resources :posts,
               only: [:create, :destroy],
-              defaults: { likeable: 'Post', commentable: 'Post' },
+              defaults: {
+                likeable: 'Post',
+                commentable: 'Post' },
+              shallow: true do
+                resources :likes, only: [:create, :destroy], shallow: true
+              end
+    resources :comments,
+              only: [:create, :destroy],
+              defaults: {
+                likeable: 'Comment',
+                commentable: "Comment" },
               shallow: true do
                 resources :likes, only: [:create, :destroy], shallow: true
               end

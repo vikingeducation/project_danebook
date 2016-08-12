@@ -21,18 +21,9 @@ class UsersController < ApplicationController
   end
 
   def show
+    User.includes(:posts, :profiles)
     @user = User.find(params[:id])
     @posts = @user.posts.order("created_at DESC")
-  end
-
-  def update
-    user = current_user
-    if user.update(update_profile_params)
-      flash[:success] = "Updated!"
-    else
-      flash[:alert] = "Not Updated"
-    end
-    redirect_to current_user
   end
 
 

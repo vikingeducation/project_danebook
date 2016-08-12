@@ -1,7 +1,6 @@
 <main>
     <div class="container">
         <%= render partial: "/shared/profile_bar", locals: { user: @user }%>
-
         <div class="col-sm-5 timeline-col">
             <div class="row wrapper">
                 <div class="col-sm-12">
@@ -49,6 +48,7 @@
             </div>
 
             <div class="col-sm-7 timeline-col-2nd">
+                <% if @user == current_user %>
                 <div class="row wrapper">
                     <div class="col-sm-12">
                         <h2>Post</h2>
@@ -58,6 +58,7 @@
                     </div>
 
                 </div>
+                <% end %>
                 <% @posts.each do |p| %>
                 <%= render partial: "/posts/post", locals: {post: p} %>
                 <% end %>

@@ -2,8 +2,8 @@ class LikesController < ApplicationController
 
   def create
     session[:return_to] = request.referer
-    post = extract_likeable.find(params[:post_id])
-    unless post.likes.create(user_id: current_user.id)
+    likeable = extract_likeable.find(params[:likeable_id])
+    unless likeable.likes.create(user_id: current_user.id)
       flash[:alert] = "something went wrong"
     end
     redirect_to session.delete(:return_to)
@@ -16,9 +16,9 @@ class LikesController < ApplicationController
       redirect_to session.delete(:return_to)
     end
 
-    post = extract_likeable.find(params[:post_id])
-    like = post.likes.where(user_id: current_user.id)
-    if post.likes.destroy(like)
+    likeable = extract_likeable.find(params[:likeable_id])
+    like = likeable.likes.where(user_id: current_user.id)
+    if likeable.likes.destroy(like)
       redirect_to session.delete(:return_to)
     else
       flash[:alert] = "something went wrong"
@@ -29,6 +29,6 @@ class LikesController < ApplicationController
   private
 
   def extract_likeable
-    params[:likeable].singularize.classify.constantize
+    params[:likeable_type].singularize.classify.constantize
   end
 end

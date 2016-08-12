@@ -2,4 +2,5 @@
     <p>by:
         <%= comment.author %>
     </p>
+    <%= comment_likes_link(comment) %>
     <%= delete_comment_link(comment, commentable) %>

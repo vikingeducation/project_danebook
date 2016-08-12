@@ -21,8 +21,17 @@ class PostsController < ApplicationController
 
   def update
 
+  end
 
-
+  def destroy
+    @post = Post.find(params[:id])
+    if @post.destroy
+      flash[:success] = "Your post has been deleted"
+      redirect_to :back
+    else
+      flash.now[:danger] = "Your post could not be deleted"
+      render :back
+    end
   end
 
   private

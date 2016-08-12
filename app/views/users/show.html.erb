@@ -34,7 +34,7 @@
               <p><b>Birthday:</b></p>
             </div>
             <div class="col-xs-7">
-              <p><%= current_user.profile.birthday.strftime("%m/%d/%Y") if real_user.profile.birthday %></p>
+              <p><%= @user.profile.birthday.strftime("%m/%d/%Y") if real_user.profile.birthday %></p>
             </div>
           </div>
           <div class="row">
@@ -42,7 +42,7 @@
               <p><b>College:</b></p>
             </div>
             <div class="col-xs-7">
-              <p><%= current_user.profile.college %></p>
+              <p><%= @user.profile.college %></p>
             </div>
           </div>
           <div class="row">
@@ -50,7 +50,7 @@
               <p><b>Hometown:</b></p>
             </div>
             <div class="col-xs-7">
-              <p><%= current_user.profile.hometown %></p>
+              <p><%= @user.profile.hometown %></p>
             </div>
           </div>
           <div class="row">
@@ -58,7 +58,7 @@
               <p><b>Currently Lives:</b></p>
             </div>
             <div class="col-xs-7">
-              <p><%= current_user.profile.currently_lives %></p>
+              <p><%= @user.profile.currently_lives %></p>
             </div>
           </div>
           <h3 id="contact">Contact Information</h3>
@@ -67,7 +67,7 @@
               <p><b>Email:</b></p>
             </div>
             <div class="col-xs-7">
-              <p><%= current_user.email %></p>
+              <p><%= @user.email %></p>
             </div>
           </div>
           <div class="row">
@@ -75,15 +75,15 @@
               <p><b>Telephone:</b></p>
             </div>
             <div class="col-xs-7">
-              <p><%= current_user.profile.telephone %></p>
+              <p><%= @user.profile.telephone %></p>
             </div>
           </div>
         </div>
         <div class="col-md-6" id="about-me">
           <h3>Words to Live By</h3>
-          <p><%= current_user.profile.words_to_live_by %></p>
+          <p><%= @user.profile.words_to_live_by %></p>
           <h3>About Me</h3>
-          <p><%= current_user.profile.about_me %></p>
+          <p><%= @user.profile.about_me %></p>
         </div>
       </div>
     </div>

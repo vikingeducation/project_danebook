@@ -30,6 +30,7 @@ class UsersController < ApplicationController
       flash[:danger] = "Sorry, that user does not exist. But if you sign up your friends, someday we'll get there!"
       redirect_to user_timeline_path(current_user)
     end
+    @user = User.find(params[:id])
   end
 
   def edit

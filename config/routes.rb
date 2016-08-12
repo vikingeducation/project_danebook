@@ -6,8 +6,16 @@ Rails.application.routes.draw do
     resource :timeline, only: [:show]
     resource :friend, only: [:show]
     resource :photo, only: [:show]
+
   end
-  resources :posts
+  resources :posts do
+    resources :likes
+  end
+  
+  resources :comments do
+    resources :likes
+  end
+
   resource :session, only: [ :new, :create, :destroy ]
 
   get '/friends' => "static_pages#friends"

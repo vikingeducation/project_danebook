@@ -17,9 +17,9 @@
     </div>
     <div class="row post-wrapper section-footer">
       <div class="col-xs-7 col-sm-4">
-        <% if signed_in_user? && !user_liked?(post) %>
+        <% if signed_in_user? && user_liked?(post) %>
           <%= button_to "Like", post_likes_path(post), method: :post, class: "friend-name" %>
-        <% elsif signed_in_user? && user_liked?(post) %>
+        <% elsif signed_in_user? && !user_liked?(post) %>
           <%= button_to "Unlike", post_likes_path(post, user_liked_id(post)), method: :delete, class: "friend-name"%>
         <% else %>
           <%= button_to "Like", post_likes_path(post), method: :post, class: "friend-name" %>

@@ -1,4 +1,4 @@
 class Post < ApplicationRecord
   has_one :activity, :as =>:postable
-  has_one :user, through: :activity
+  has_one :owner, through: :activity, source: :author
 end

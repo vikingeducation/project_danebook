@@ -10,6 +10,7 @@ Day.destroy_all
 Month.destroy_all
 Year.destroy_all
 User.destroy_all
+Activity.destroy_all
 
 puts "Creating days"
 1.upto(31) do |num|

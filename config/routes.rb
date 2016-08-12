@@ -4,8 +4,15 @@ Rails.application.routes.draw do
   get "/photos" => "static_pages#photos"
 
   resources :users, :except => [:new] do
-    resources :activities
+    resources :activities, :only => [:index, :destroy]
+    resources :posts, :only => [:create]
   end
+
+  resources :activities, :only => [] do
+    resources :likings, :only => [:create]
+  end
+
+  resources :likings, :only => [:destroy]
 
   resource :session, :only => [:create, :destroy]
 

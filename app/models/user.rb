@@ -1,6 +1,7 @@
 class User < ApplicationRecord
-  has_many :activities
   has_many :posts, :through => :activities, :source => :postable, :source_type => 'Post'
+  has_many :activities, foreign_key: :author_id, dependent: :destroy
+  has_many :liked_things, class_name: "Liking"
 
   before_create :generate_token
   has_secure_password
@@ -19,6 +20,10 @@ class User < ApplicationRecord
     self.auth_token = nil
     generate_token
     save!
+  end
+
+  def fullname
+    "#{first_name} #{last_name}"
   end
 
 end

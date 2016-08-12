@@ -8,6 +8,7 @@ class ApplicationController < ActionController::Base
     helper_method :signed_in_user?
     helper_method :current_user
     helper_method :required_user?
+    helper_method :created_by_user?
     helper_method :set_user
 
     def sign_in(user)
@@ -45,6 +46,10 @@ class ApplicationController < ActionController::Base
 
     def required_user?
       params[:id] == current_user.id.to_s
+    end
+
+    def created_by_user?
+      params[:user_id] == current_user.id.to_s
     end
 
     def set_user

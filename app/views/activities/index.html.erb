@@ -64,10 +64,9 @@
 					</div>
 					<div class="row">
 						<div class="col-xs-12 tl-content-template">
-              <%= form_for [@current_user, @activity] do |f| %>
+              <%= form_for [@current_user, @post] do |f| %>
                 <div class="form-group tl-post-form">
                   <%= f.text_area :content, class: "form-control", rows: 2, placeholder: "Tell the world something..." %>
-                  <input type="hidden" name="type" value="post">
                 </div>
                 <div class="row">
       						<div class="col-xs-12">
@@ -81,43 +80,10 @@
 					</div>
 				</section>
         <% @activities.each do |activity| %>
-        <section class="tl-exist-post">
-          <%= render partial: "shared/post_profile_container", locals: { date: "Thursday, 5/21/2014", name: "Harry Potter", activity: activity } %>
-          <div class="row">
-            <footer class="col-xs-12 tl-post-footer">
-              <%= link_to "Like", "#", class: "ex-post-like-link" %>
-              <%= link_to "Comment", "#" %>
-              <%= link_to "Delete", "#", class: "pull-right" %>
-            </footer>
-          </div>
-        </section>
+          <section class="tl-exist-post">
+            <%= render partial: "shared/post_profile_container", locals: { activity: activity } %>
+          </section>
         <% end %>
-				<section class="tl-exist-post">
-					<%= render partial: "shared/ex-post-profile-container", locals: { date: "Thursday, 5/21/2014", name: "Harry Potter" } %>
-					<div class="row">
-						<footer class="col-xs-12 tl-post-footer">
-              <%= link_to "Like", "#", class: "ex-post-like-link" %>
-              <%= link_to "Comment", "#" %>
-              <%= link_to "Delete", "#", class: "pull-right" %>
-						</footer>
-					</div>
-				</section>
-
-				<section class="tl-exist-post">
-					<%= render partial: "shared/ex-post-profile-container", locals: { date: "Thursday, 5/21/2014", name: "Harry Potter" } %>
-					<div class="row">
-						<footer class="clearfix tl-post-footer">
-							<div class="col-xs-12">
-                <%= link_to "Like", "#", class: "ex-post-like-link" %>
-                <%= link_to "Comment", "#" %>
-                <%= link_to "Delete", "#", class: "pull-right" %>
-							</div>
-							<div class="col-xs-12 ex-poster-info">
-								<span class="ex-post-like"><%= link_to "Hermione Granger", "#"%> likes this</span>
-							</div>
-						</footer>
-					</div>
-				</section>
 
 				<section class="tl-exist-post">
 					<%= render partial: "shared/ex-post-profile-container", locals: { date: "Thursday, 5/21/2014", name: "Harry Potter" } %>

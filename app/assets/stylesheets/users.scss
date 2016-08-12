@@ -79,7 +79,7 @@ margin-bottom: 15px;
 }
 
 #icon-picture {
-  background-image: url(/assets/icon_photo_small.png);
+  background-image: image-url("icon_photo_small.png");
   height:150px;
   width: 150px;
   display: inline-block;
@@ -129,7 +129,7 @@ margin-bottom: 15px;
 .sub-post {
   width: 60px;
   height: 60px;
-  background-image: url(/assets/user_silhouette_generic.gif);
+  background-image: image-url("user_silhouette_generic.gif");
   background-size:cover;
   display: inline-block;
 }
@@ -152,7 +152,7 @@ margin-bottom: 15px;
 }
 #profile-pic {
   position: absolute;
-  background-image: url(/assets/harry_potter_small.jpg);
+  background-image: image-url("harry_potter_small.jpg");
   height:150px;
   width:120px;
   margin-top:160px;
@@ -162,14 +162,14 @@ margin-bottom: 15px;
   border: solid;
 }
 #post-img {
-  background-image: url(/assets/harry_potter_small.jpg);
+  background-image: image-url("harry_potter_small.jpg");
   margin-top: 10px;
   height:60px;
   width:60px;
   background-size: cover;
 }
 #friend-pic {
-  background-image: url(/assets/user_silhouette_generic.gif);
+  background-image: image-url("user_silhouette_generic.gif");
   // height: 100px;
   // width: 100px;
   background-size:cover;
@@ -177,7 +177,7 @@ margin-bottom: 15px;
   margin-top: 10px;
 }
 #banner {
-  background-image: url(/assets/hogwarts_small.jpg);
+  background-image: image-url("hogwarts_small.jpg");
   background-size: cover;
   background-repeat:none;
   height: 300px;

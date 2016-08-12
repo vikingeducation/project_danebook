@@ -11,7 +11,7 @@
 			</div>
 			<% if current_user.id.to_s == params[:user_id] %>
 				<div class="col-sm-2 edit-btn">
-					<%= link_to "Edit Profile", edit_user_profile_path(@user, params[:id]), class: "btn btn-primary btn-block" %>
+					<%= link_to "Edit Profile", edit_profile_path(params[:id]), class: "btn btn-primary btn-block" %>
 				</div>
 			<% end %>
 		</div>

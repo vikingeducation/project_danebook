@@ -9,7 +9,7 @@
       </div>
       <div class="row">
         <div class="col-xs-5">
-          <%= form_field.label :birth_date, "Birthday:" %>
+          Birthday:
         </div>
         <div class="col-xs-7">
           <p><%= user.birth_date.strftime('%B %e, %Y')  %></p>
@@ -17,26 +17,26 @@
     </div>
     <div class="row">
       <div class="col-xs-5">
-        <p class="content-id"><%= prof_field.label :college, "College" %>:</p>
+        <p class="content-id"><%= form_field.label :college, "College" %>:</p>
       </div>
       <div class="col-xs-7 ">
-        <%= prof_field.text_field :college, class: "form-control" %>
+        <%= form_field.text_field :college, class: "form-control" %>
       </div>
     </div>
     <div class="row">
       <div class="col-xs-5">
-        <p class="content-id"><%= prof_field.label :hometown, "Hometown" %>:</p>
+        <p class="content-id"><%= form_field.label :hometown, "Hometown" %>:</p>
       </div>
       <div class="col-xs-7 ">
-        <%= prof_field.text_field :hometown, class: "form-control" %>
+        <%= form_field.text_field :hometown, class: "form-control" %>
       </div>
     </div>
     <div class="row">
       <div class="col-xs-5">
-        <p class="content-id"><%= prof_field.label :currently_lives, "Currently Lives" %>:</p>
+        <p class="content-id"><%= form_field.label :currently_lives, "Currently Lives" %>:</p>
       </div>
       <div class="col-xs-7 ">
-        <%= prof_field.text_field :currently_lives, class: "form-control" %>
+        <%= form_field.text_field :currently_lives, class: "form-control" %>
       </div>
     </div>
     <div class="row">
@@ -54,10 +54,10 @@
     </div>
     <div class="row">
       <div class="col-xs-5">
-        <p class="content-id"><%= prof_field.label :telephone, "Telephone" %>:</p>
+        <p class="content-id"><%= form_field.label :telephone, "Telephone" %>:</p>
       </div>
       <div class="col-xs-7">
-        <%= prof_field.telephone_field :telephone, class: "form-control" %>
+        <%= form_field.telephone_field :telephone, class: "form-control" %>
       </div>
     </div><!-- Contact Info Content -->
   </div><!-- Left side content -->
@@ -69,7 +69,7 @@
     </div>
     <div class="row">
       <div class="col-sm-12">
-        <%= prof_field.text_area :words_to_live_by, class: "form-control" %>
+        <%= form_field.text_area :words_to_live_by, class: "form-control" %>
       </div> <!-- Words to live by content -->
     </div>
     <div class="row">
@@ -79,13 +79,12 @@
     </div>
     <div class="row">
       <div class="col-sm-12">
-        <%= prof_field.text_area :about_me, class: "form-control" %>
+        <%= form_field.text_area :about_me, class: "form-control" %>
       </div> <!-- About Me content -->
     </div>
   </div>
   <div class="row">
     <div class="col-sm-6 col-sm-offset-3" id="save-change-wrapper">
-      <% end %>
       <%= form_field.submit "Save Changes", class: "tn btn-primary btn-lg btn-block" %>
     </div>
   </div>

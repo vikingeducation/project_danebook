@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160811233152) do
+ActiveRecord::Schema.define(version: 20160812213444) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,18 @@ ActiveRecord::Schema.define(version: 20160811233152) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+    t.integer  "user_id"
+    t.text     "body"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+  end
+
+  add_index "comments", ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
+
   create_table "contact_infos", force: :cascade do |t|
     t.integer  "profile_id"
     t.string   "email"
@@ -78,14 +90,26 @@ ActiveRecord::Schema.define(version: 20160811233152) do
 
   add_index "hometowns", ["profile_id"], name: "index_hometowns_on_profile_id", using: :btree
 
-  create_table "microposts", force: :cascade do |t|
-    t.text     "content"
+  create_table "likes", force: :cascade do |t|
+    t.integer  "likeable_id"
+    t.string   "likeable_type"
     t.integer  "user_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "likes", ["likeable_type", "likeable_id"], name: "index_likes_on_likeable_type_and_likeable_id", using: :btree
+  add_index "likes", ["user_id"], name: "index_likes_on_user_id", using: :btree
+
+  create_table "posts", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.text     "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  add_index "microposts", ["user_id", "created_at"], name: "index_microposts_on_user_id_and_created_at", using: :btree
+  add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
 
   create_table "profiles", force: :cascade do |t|
     t.string   "words"
@@ -123,6 +147,14 @@ ActiveRecord::Schema.define(version: 20160811233152) do
 
   add_index "testings", ["forest"], name: "index_testings_on_forest", using: :btree
 
+  create_table "timelines", force: :cascade do |t|
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "timelines", ["user_id"], name: "index_timelines_on_user_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "email"
     t.string   "password_digest"
@@ -152,9 +184,12 @@ ActiveRecord::Schema.define(version: 20160811233152) do
   add_foreign_key "addresses", "countries"
   add_foreign_key "addresses", "states"
   add_foreign_key "birthdays", "profiles"
+  add_foreign_key "comments", "users"
   add_foreign_key "contact_infos", "profiles"
   add_foreign_key "hometowns", "profiles"
-  add_foreign_key "microposts", "users"
+  add_foreign_key "likes", "users"
+  add_foreign_key "posts", "users"
   add_foreign_key "profiles", "users"
   add_foreign_key "residences", "profiles"
+  add_foreign_key "timelines", "users"
 end

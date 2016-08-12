@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
   attr_accessor :remember_token, :activation_token, :reset_token
   before_create :create_activation_digest
+  after_create :defaults
 
   ## Scopes ##
   scope :everyone, -> (id) { where("users.id != #{id}") }
@@ -16,8 +17,10 @@ class User < ActiveRecord::Base
 
 
   ## Associations ##
-  has_many :microposts, dependent: :destroy
   has_one :profile, dependent: :destroy
+  has_one :timeline, dependent: :destroy
+  has_many :posts, inverse_of: :user, dependent: :destroy
+
 
   # Friends.
   belongs_to :friendable, polymorphic: true
@@ -114,5 +117,9 @@ class User < ActiveRecord::Base
     def create_activation_digest
       self.activation_token = User.new_token
       self.activation_digest = User.digest(activation_token)
+    end
+
+    def defaults
+      create_timeline!
     end
 end

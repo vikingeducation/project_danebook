@@ -52,10 +52,3 @@ puts "Seeding more users.."
               activated_at: rand(365).days.ago)
   user.build_profile({ first_name: first_name, last_name: last_name }).save
 end
-
-#Seeding microposts.
-users = User.order(:created_at).take(6)
-50.times do
-  content = Faker::Lorem.sentence(5)
-  users.each { |user| user.microposts.create!(content: content) }
-end

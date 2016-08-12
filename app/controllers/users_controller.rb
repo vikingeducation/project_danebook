@@ -50,7 +50,6 @@ class UsersController < ApplicationController
 
   def show
     @profile = @user.profile
-    @microposts = @user.microposts.paginate(page: params[:page], per_page: 4)
   end
 
   def destroy

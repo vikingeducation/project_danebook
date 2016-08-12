@@ -12,8 +12,7 @@ Rails.application.routes.draw do
 
     resources :photos
     resources :friends
+    resources :posts
   end
   resource :session, :only => [:new, :create, :destroy]
-
-  get '*unmatched_route', to: 'application#raise_not_found'
 end

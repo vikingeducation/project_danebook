@@ -3,6 +3,7 @@ class User < ApplicationRecord
   has_secure_password
   belongs_to :hometown, class_name: "City", optional: true
   belongs_to :residency, class_name: "City", optional: true
+  has_many :posts, foreign_key: :author_id
 
   accepts_nested_attributes_for :hometown,
                                 :reject_if => :all_blank

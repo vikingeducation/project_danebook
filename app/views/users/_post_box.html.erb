@@ -5,11 +5,18 @@
   <div class="panel-body">
     <div class="row">
       <div class="col-sm-12">
-        <textarea class="form-control" rows="3" placeholder="Tell the world something..."></textarea><br>
-        <div class="col-sm-3 col-sm-offset-9">
-          <button type="submit" class="btn btn-primary btn-block">Post</button>
-        </div>
+        <%= form_tag(user_posts_path) do |f| %>
+          <%= f.text_area_field :text, class:"form-control", rows: 3, placeholder: "Tell the world something..." %>
       </div>
     </div>
+
+    <div class="row">
+        <div class="col-sm-3 col-sm-offset-9">
+          <%= f.submit_tag "Post!" %>
+          <!-- <button type="submit" class="btn btn-primary btn-block">Post</button> -->
+        </div>
+        <% end %>
+    </div>
+
   </div>
 </div>

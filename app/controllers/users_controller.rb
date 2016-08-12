@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   before_action :require_current_user, except: [ :about, :create, :new ]
 
   def show
-    # redirect_to user_about_path(@user) unless self_profile?
+    @post = current_user.posts.build
   end
 
   def new

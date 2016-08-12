@@ -18,10 +18,8 @@ class UsersController < ApplicationController
   def create
     @user = User.new({ email: user_params[:email],                
                        password: user_params[:password] })
-    if @user.save
-      @user.build_profile(
-        { first_name: user_params[:first_name], last_name: user_params[:last_name] }
-        ).save
+    if @user.save && @user.create_profile!(first_name: user_params[:first_name], 
+                                           last_name: user_params[:last_name])
       @user.send_activation_email
       flash[:info] = 'You have been sent an email containing a link to activate your account.'
       redirect_to root_url

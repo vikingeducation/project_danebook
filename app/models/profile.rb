@@ -11,6 +11,10 @@ class Profile < ActiveRecord::Base
     accepts_nested_attributes_for child
   end
 
+  validates :first_name, :last_name, { presence: true, 
+                                       length: { in: 1..255 } }
+
+
   #pg_search
   include PgSearch
   #Defining a pg search scope
@@ -28,6 +32,5 @@ class Profile < ActiveRecord::Base
       hometown.create_address!
       create_residence!
       residence.create_address!
-      includes :contact_info, :birthday, :hometown, :residence
     end
 end

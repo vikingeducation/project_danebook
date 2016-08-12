@@ -34,8 +34,8 @@ class ApplicationController < ActionController::Base
   #Store remember_token in remember digest and store cookies.
   def remember(user)
     user.remember
-    cookies.permanent.signed[:user_id] = user.id
-    cookies.permanent[:remember_token] = user.remember_token
+    cookies.permanent.signed[:user_id] = { value: user.id, httponly: true }
+    cookies.permanent[:remember_token] = { value: user.remember_token, httponly: true }
   end
 
   #Set remember digest to nil and delete cookies.

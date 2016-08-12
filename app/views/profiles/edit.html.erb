@@ -19,10 +19,10 @@
       <p><%= link_to "About", user_profile_path(current_user) %></p>
     </div>
     <div class="col-xs-2 nav-links">
-      <a href="photos.html"><p>Photos</p></a>
+      <a href="/static_pages"><p>Photos</p></a>
     </div>
     <div class="col-xs-2 nav-links">
-      <a href="friends.html"><p>Friends</p></a>
+      <a href="/static_pages/new"><p>Friends</p></a>
     </div>
   </div>
 </section>
@@ -35,7 +35,7 @@
     </div>
   </div>
 
-  <form action="/users/<%= @user.id %>/profile" method="post">
+  <form action="/profile" method="post">
 
   <div class="row content-space">
 
@@ -53,8 +53,8 @@
           <input type="hidden" name="_method" value="put">
           <input name="utf8" type="hidden" value="✓">
           <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
-          <input type="text" name="profile[gender]" value="<%= @profile.gender.titleize %>">
-          <input type="text" name="profile[birthdate]" value="<%= @profile.birthdate %>">
+          <input type="text" name="profile[gender]" value="<%= @profile.gender.titleize if @profile.gender%>">
+          <input type="date" name="profile[birthdate]" value="<%= @profile.birthdate %>">
           <input type="text" name="profile[hometown]" value="<%= @profile.hometown %>">
           <input type="text" name="profile[current_residence]" value="<%= @profile.current_residence %>">
         </div>
@@ -63,11 +63,15 @@
       <h1>Contact Information</h1>
       <div class="row">
         <div class="col-xs-5">
+          <p>First Name:</p>
+          <p>Last Name:</p>
           <p>Email:</p>
           <p>Telephone:</p>
         </div>
 
         <div class="col-xs-7">
+          <input type="text" name="profile[first_name]" value="<%= @profile.first_name %>">
+          <input type="text" name="profile[last_name]" value="<%= @profile.last_name %>">
           <input type="text" name="user[email]" value="<%= @user.email %>">
           <input type="text" name="profile[telephone]" value="<%= @profile.telephone %>">
         </div>

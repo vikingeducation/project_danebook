@@ -8,6 +8,10 @@ class User < ApplicationRecord
             :length => { :in => 8..24 }, 
             :allow_nil => true
 
+  validates :email,
+            :presence => true,
+            :uniqueness => true
+
   has_one :profile
   has_many :posts
 

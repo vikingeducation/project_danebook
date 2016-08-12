@@ -3,7 +3,7 @@
     <div class="col-xs-12">
       <%= image_tag 'hogwarts_small.jpg' %>
       <%= image_tag 'user_silhouette_generic.gif', class:"profile" %>
-      <a class="title-name"><%= current_user.profile.first_name %> <%= current_user.profile.last_name %></a>
+      <a class="title-name"><%= @user.profile.first_name %> <%= @user.profile.last_name %></a>
     </div>
   </div>
 
@@ -13,20 +13,22 @@
       <a style="visibility: hidden"><p>test</p></a>
     </div>
     <div class="col-xs-2 nav-links">
-      <p><%= link_to "Timeline", user_timeline_path(current_user) %></p>
+      <p><%= link_to "Timeline", user_timeline_path(@user) %></p>
     </div>
     <div class="col-xs-2 nav-links">
-      <p><%= link_to "About", user_profile_path(current_user) %></p>
+      <p><%= link_to "About", user_profile_path(@user) %></p>
     </div>
     <div class="col-xs-2 nav-links">
-      <a href="photos.html"><p>Photos</p></a>
+      <a href="/static_pages"><p>Photos</p></a>
     </div>
     <div class="col-xs-2 nav-links">
-      <a href="friends.html"><p>Friends</p></a>
+      <a href="/static_pages/new"><p>Friends</p></a>
     </div>
+    <% if current_user == @user %>
     <div class="col-xs-2 nav-links">
-      <p><%= link_to "Update Profile", edit_user_profile_path(current_user) %></p>
+      <p><%= link_to "Update Profile", edit_profile_path(current_user) %></p>
     </div>
+    <% end %>
   </div>
 </section>
 
@@ -36,9 +38,9 @@
     <div class="col-xs-4 col-xs-offset-4">
       <p class="title">About</p>
     </div>
-    <div class="col-xs-4">
+<!--     <div class="col-xs-4">
       <button type="button" class="btn btn-primary btn-sm edit-button">Edit your Profile</button>
-    </div>
+    </div> -->
   </div>
   <div class="row content-space">
 
@@ -53,7 +55,7 @@
         </div>
 
         <div class="col-xs-7">
-          <p><%= @profile.gender.titleize %></p>
+          <p><%= @profile.gender.titleize if @profile.gender%></p>
           <p><%= @profile.birthdate %></p>
           <p><%= @profile.hometown %></p>
           <p><%= @profile.current_residence %></p>

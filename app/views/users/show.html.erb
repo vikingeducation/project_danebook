@@ -3,7 +3,7 @@
     <div class="col-xs-12">
       <%= image_tag 'hogwarts_small.jpg' %>
       <%= image_tag 'user_silhouette_generic.gif', class:"profile" %>
-      <a class="title-name"><%= current_user.profile.first_name %> <%= current_user.profile.last_name %></a>
+      <a class="title-name"><%= @user.profile.first_name %> <%= @user.profile.last_name %></a>
     </div>
   </div>
 
@@ -13,20 +13,22 @@
       <a style="visibility: hidden"><p>test</p></a>
     </div>
     <div class="col-xs-2 nav-links">
-      <p><%= link_to "Timeline", user_timeline_path(current_user) %></p>
+      <p><%= link_to "Timeline", user_timeline_path(@user) %></p>
     </div>
     <div class="col-xs-2 nav-links">
-      <p><%= link_to "About", user_profile_path(current_user) %></p>
+      <p><%= link_to "About", user_profile_path(@user) %></p>
     </div>
     <div class="col-xs-2 nav-links">
-      <a href="photos.html"><p>Photos</p></a>
+      <a href="/static_pages"><p>Photos</p></a>
     </div>
     <div class="col-xs-2 nav-links">
-      <a href="friends.html"><p>Friends</p></a>
+      <a href="/static_pages/new"><p>Friends</p></a>
     </div>
+    <% if current_user == @user %>
     <div class="col-xs-2 nav-links">
-      <p><%= link_to "Update Profile", edit_user_profile_path(current_user) %></p>
+      <p><%= link_to "Update Profile", edit_profile_path(current_user) %></p>
     </div>
+    <% end %>
   </div>
 </section>
 
@@ -65,32 +67,32 @@
           <%= image_tag 'user_silhouette_generic.gif', class:"ph-preview" %>
           <%= image_tag 'user_silhouette_generic.gif', class:"ph-preview" %>
         </div>
-        <a style="margin-left: 146px" href="photos.html">See More Photos</a>
+        <a style="margin-left: 146px" href="/static_pages">See More Photos</a>
       </div>
 
       <div style="margin-top: 10px" class="row tl-about">
-        <p>Friends (542)</p>
+        <p>Friends</p>
       </div>
       <div class="row section-about">
         <div class="col-xs-4">
           <%= image_tag 'user_silhouette_generic.gif', class:"ph-preview" %>
-          <a style="margin-left: 12px" href="friends.html">Ron Weasley</a>
+          <a style="margin-left: 12px" href="/static_pages/new">Ron Weasley</a>
           <%= image_tag 'user_silhouette_generic.gif', class:"ph-preview" %>
-          <a style="margin-left: 30px" href="friends.html">Hagrid</a>
+          <a style="margin-left: 30px" href="/static_pages/new">Hagrid</a>
         </div>
         <div class="col-xs-4">
           <%= image_tag 'user_silhouette_generic.gif', class:"ph-preview" %>
-          <a style="margin-left: 7px" href="friends.html">Ginny Weasley</a>
+          <a style="margin-left: 7px" href="/static_pages/new">Ginny Weasley</a>
           <%= image_tag 'user_silhouette_generic.gif', class:"ph-preview" %>
-          <a style="margin-left: 11px" href="friends.html">Draco Malfoy</a>
+          <a style="margin-left: 11px" href="/static_pages/new">Draco Malfoy</a>
         </div>
         <div class="col-xs-4">
           <%= image_tag 'user_silhouette_generic.gif', class:"ph-preview" %>
-          <a style="margin-left: 14px" href="friends.html">Dumbledore</a>
+          <a style="margin-left: 14px" href="/static_pages/new">Dumbledore</a>
           <%= image_tag 'user_silhouette_generic.gif', class:"ph-preview" %>
-          <a style="margin-left: 6px" href="friends.html">Severus Snape</a>
+          <a style="margin-left: 6px" href="/static_pages/new">Severus Snape</a>
         </div>
-        <a style="margin-left: 146px" href="friends.html">See More Friends</a>
+        <a style="margin-left: 146px" href="/static_pages/new">See More Friends</a>
       </div>
     </div>
 
@@ -98,22 +100,26 @@
 
       <div class="row tl-posts">
         <div class="col-xs-12">
-          <p>Post</p>
+          <p>Posts</p>
         </div>
       </div>
 
-      <%= form_for [@user, @post] do |f| %>
+      <% if current_user == @user %>
 
-      <div class="row section-posts">
-        <div class="col-xs-12">
-          <%= f.text_area :body, size: "72x3", placeholder: "Tell the world something" %>
+        <%= form_for [@user, @post] do |f| %>
+
+        <div class="row section-posts">
+          <div class="col-xs-12">
+            <%= f.text_area :body, size: "72x3", placeholder: "Tell the world something" %>
+          </div>
         </div>
-      </div>
-      <div class="row section-submit">
-        <div class="col-xs-12">
-          <%= f.submit "Submit", class: "btn btn-primary btn-sm submit-button" %>
+        <div class="row section-submit">
+          <div class="col-xs-12">
+            <%= f.submit "Submit", class: "btn btn-primary btn-sm submit-button" %>
+          </div>
         </div>
-      </div>
+
+        <% end %>
 
       <% end %>
 
@@ -125,7 +131,7 @@
         </div>
         <div class="col-xs-11 name">
           <%= link_to full_name(post.user), user_profile_path(post.user), class:"poster" %>
-          <p>Posted on <%= post.created_at %></p>
+          <p>Posted on <%= post.created_at.strftime("%m/%d/%Y") %></p>
         </div>
       </div>
       <div class="row post-content">

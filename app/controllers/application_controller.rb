@@ -39,8 +39,15 @@ class ApplicationController < ActionController::Base
 
   def require_login
     unless signed_in_user?
-      flash[:error] = "Not authorized, please sign in!"
+      flash.notice = "Not authorized, please sign in!"
       redirect_to login_path
+    end
+  end
+
+  def require_current_user
+    unless params[:id] == current_user.id.to_s
+      flash[:error] = "You're not authorized to perform that action."
+      redirect_to user_timeline_path(current_user)
     end
   end
 

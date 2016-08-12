@@ -6,23 +6,23 @@
       <div class="col-xs-3">
         <div class="logo-container">
           <%= image_tag 'flag.png' %>
-          <%= link_to "Danebook", user_profile_path(current_user), class: "navbar-brand" %>
+          <%= link_to "Danebook", user_timeline_path(current_user), class: "navbar-brand" %>
         </div>
       </div>
 
-      <div class="col-xs-6">
+      <div class="col-xs-5">
         <div class="search-container">
           <form class="form-inline">
             <div class="form-group pull-left">
-              <input style="width: 550px" type="text" class="form-control" id="search" placeholder="Search for Users">
+              <input style="width: 500px" type="text" class="form-control" id="search" placeholder="Search for Users">
             </div>
           </form>
         </div>
       </div>
 
-      <div class="col-xs-3">
+      <div class="col-xs-4">
         <div class="name-container">
-          <p class="pull-right"><%= current_user.email %> | <%= link_to "Logout", logout_path, method: :delete %></p>
+          <p class="pull-right"><%= link_to current_user.email, user_timeline_path(current_user) %> | <%= link_to "Logout", logout_path, method: :delete %></p>
 
         </div>
       </div>

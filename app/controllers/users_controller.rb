@@ -15,8 +15,7 @@ class UsersController < ApplicationController
       flash.notice = "User created."
       redirect_to user_profile_path(@user)
     else
-      flash.now[:error] = "Problems."
-      render :new
+      render :index
     end
   end
 

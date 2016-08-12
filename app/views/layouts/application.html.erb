@@ -24,7 +24,14 @@
       <%= render "layouts/navbar" %>
     <% end %>
     <br><br><br>
-    <%= flash.notice %><%= flash[:error] %>
+    <%= flash.notice %>
+    <% if @user %>
+    <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+    <% end %>
     <%= yield %>
   </body>
 </html>

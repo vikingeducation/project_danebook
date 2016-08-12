@@ -22,5 +22,22 @@
       <%= link_to "Delete", user_activity_path(@user, activity), class: "pull-right", method: :delete  if created_by_user? %>
     </div>
     <%= display_likes(activity) %>
+
+    <% activity.comments.each do |comment| %>
+
+      <%= render partial: "shared/comment_box", locals: { comment: comment }  %>
+
+    <% end %>
+
+    <%= form_for [activity, @comment] do |f| %>
+      <div class="col-xs-12">
+        <div class="form-group">
+          <%= f.text_area :content, class: "form-control tl-comment-post", rows: "5", placeholder: "Write a comment" %>
+        </div>
+        <div class="col-xs-3 pull-right btn-container">
+          <%= f.submit "Post Comment", class: "btn btn-primary comment-btn" %>
+        </div>
+      </div>
+    <% end %>
   </footer>
 </div>

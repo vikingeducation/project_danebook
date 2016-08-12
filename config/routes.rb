@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   resources :activities, :only => [] do
     resources :likings, :only => [:create]
+    resources :comments, :only => [:create]
   end
 
   resources :likings, :only => [:destroy]

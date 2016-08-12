@@ -2,8 +2,9 @@ class ActivitiesController < ApplicationController
 
   def index
     @post = Post.new
+    @comment = Comment.new
     @user = User.find(params[:user_id])
-    @activities = @user.activities.order(id: :desc)
+    @activities = @user.get_wall_activities
   end
 
   def destroy

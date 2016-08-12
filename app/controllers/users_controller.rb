@@ -70,7 +70,11 @@ class UsersController < ApplicationController
   end
 
   def set_user
-    @user = User.find(params[:id])
+    begin
+     @user = User.find(params[:id])
+   rescue
+      render :file => "public/404.html",  :status => 404
+    end
   end
 
 

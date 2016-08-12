@@ -3,7 +3,7 @@
     <div class="row">
       <p class="col-xs-3 col-xs-offset-2" id="main-name">
         <% if @user %>
-          <%= @user.name %>
+          <%= @user.profile.name %>
         <% else %>
           <%= 'Harry Potter' %>
         <% end %>

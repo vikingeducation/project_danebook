@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
   skip_before_action :require_login, only: [:new, :create]
-  before_action :require_current_user, only: [:edit, :update, :destroy]
 
   def new
     @user = User.new
@@ -20,10 +19,13 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = current_user
+    @profile = @user.profile
+    render 'static_pages/about_edit'
   end
 
   def update
-    if current_user.update(whitelisted_user_params)
+    if current_user.update_attributes(whitelisted_user_params)
       flash[:success] = 'Successfully updated your profile!'
       redirect_to current_user
     else
@@ -33,11 +35,9 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    @user = params[:id] ? User.find(params[:id]) : User.first
+    @profile = @user.profile
     render 'static_pages/about'
-  end
-
-  def index
   end
 
   def destroy
@@ -48,8 +48,11 @@ class UsersController < ApplicationController
   private
 
   def whitelisted_user_params
-    params.require(:user).permit(:email,
+    params.require(:user).permit(:id, :email,
       :password, :password_confirmation,
-      :first_name, :last_name, :birthday)
+      :profile_attributes => [ :id, :birthday,
+        :college,
+        :hometown, :currently_lives, :telephone,
+        :words_to_live_by, :about_me])
   end
 end

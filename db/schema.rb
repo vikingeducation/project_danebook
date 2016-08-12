@@ -10,17 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160812174815) do
+ActiveRecord::Schema.define(version: 20160812205014) do
+
+  create_table "profiles", force: :cascade do |t|
+    t.integer "user_id"
+    t.string  "first_name"
+    t.string  "last_name"
+    t.date    "birthday"
+    t.string  "college"
+    t.string  "hometown"
+    t.string  "currently_lives"
+    t.string  "telephone"
+    t.text    "words_to_live_by"
+    t.text    "about_me"
+    t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email"
     t.string   "password_digest"
+    t.string   "auth_token"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-    t.string   "auth_token"
-    t.string   "first_name"
-    t.string   "last_name"
-    t.date     "birthday"
     t.index ["auth_token"], name: "index_users_on_auth_token", unique: true
     t.index ["email"], name: "index_users_on_email"
   end

@@ -1,12 +1,16 @@
 class User < ApplicationRecord
   has_secure_password
   before_create :generate_token
+  has_one :profile, inverse_of: :user
+
+  accepts_nested_attributes_for :profile
 
   class EmailValidator < ActiveModel::EachValidator
     def validate_each(record, attribute, value)
       record.errors.add attribute, "must contain a '@' symbol" unless value.include?('@')
     end
   end
+
   validates :password,
     :length => { :in => 6..24 },
     :allow_nil => true
@@ -18,10 +22,6 @@ class User < ApplicationRecord
     begin
       self[:auth_token] = SecureRandom.urlsafe_base64
     end while User.exists?(:auth_token => self[:auth_token])
-  end
-
-  def name
-    first_name + ' ' + last_name
   end
 
   def errors?
@@ -37,5 +37,4 @@ class User < ApplicationRecord
     generate_token
     save!
   end
-
 end

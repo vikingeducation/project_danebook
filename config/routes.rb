@@ -3,9 +3,9 @@ Rails.application.routes.draw do
   get '/home'     => 'users#new'
   get '/timeline' => 'static_pages#timeline'
   get '/friends'  => 'static_pages#friends'
-  get '/about'    => 'static_pages#about'
+  get '/about'    => 'users#show'
   get '/photos'   => 'static_pages#photos'
-  get '/about_edit' => 'static_pages#about_edit'
+  get '/about_edit' => 'users#edit'
 
   resources :users
   resource :session, :only => [:new, :create, :destroy]

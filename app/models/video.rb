@@ -1,3 +1,3 @@
 class Video < ApplicationRecord
-  belongs_to :post, :as => :postable
+  has_one :post, :as => :postable
 end

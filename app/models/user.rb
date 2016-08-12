@@ -11,6 +11,8 @@ class User < ApplicationRecord
   has_one :profile, inverse_of: :user
   accepts_nested_attributes_for :profile
 
+  has_many :posts
+
   def generate_token
     begin
       self[:auth_token] = SecureRandom.urlsafe_base64

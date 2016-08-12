@@ -15,14 +15,12 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-
-          <% flash.each do |key, value| %>
+  <body>   
+     <% flash.each do |key, value| %>
             <div class="alert-info">
               <%= value %>
             </div>
-          <% end %>
-      
+          <% end %>   
     <%= yield %>
   </body>
 </html>

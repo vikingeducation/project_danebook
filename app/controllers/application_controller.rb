@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  before_action :require_login
 
   private
 
@@ -39,4 +40,12 @@ class ApplicationController < ActionController::Base
     params[:id]==current_user.id.to_s
   end
   helper_method :authorized_user?
+
+  def require_authorized_user
+    unless authorized_user?
+      flash[:error] = "You're not allowed to view that page"
+      redirect_to root_path
+    end
+  end
+
 end

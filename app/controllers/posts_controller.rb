@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :require_current_user
 
   def create
-    @post = Post.new(post_params)
+    @post = current_user.posts.build(post_params)
     if @post.save
       flash[:success] = 'Post created'
     else
@@ -13,7 +13,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find_by_id(params[:id])
+    @post = current_user.posts.find_by_id(params[:id])
     if @post && @post.destroy
       flash[:success] = 'Post destroyed'
     else

@@ -5,7 +5,7 @@
         <div class="col-xs-12"><h1>Sign Up</h1></div>
       </header>
 
-      <%= form_for :user, url: users_path do |u| %>
+    <%= form_for @user do |u| %>
         <div class="col-xs-6" id="first-name">
           <h4><%= u.text_field :first_name, placeholder: "First Name" %> </h4>
         </div>
@@ -36,27 +36,29 @@
         </div>
 
 
+        <%= u.fields_for :profile do |p| %>
 
+            <%
+            date_wrap_open = '<div class="col-xs-4"><div class="form-group">'.html_safe
+            date_wrap_close = '</div></div>'.html_safe
+            date_separator = "#{date_wrap_close}#{date_wrap_open}".html_safe
+            %>
 
-        <%
-        date_wrap_open = '<div class="col-xs-4"><div class="form-group">'.html_safe
-        date_wrap_close = '</div></div>'.html_safe
-        date_separator = "#{date_wrap_close}#{date_wrap_open}".html_safe
-        %>
+            <div class="col-xs-12">
+            <div class="form-group">
 
-        <div class="col-xs-12">
-        <div class="form-group">
+            <%= p.date_select(
+             :birth_date,
+             {
+               :order => [:day, :month, :year],
+               :date_separator => date_separator,
+               :start_year => Date.today.year,
+               :end_year => 120.years.ago.year
+             },
+             {:class => 'form-control'}
+             ) %>
 
-        <%= u.date_select(
-         :birth_date,
-         {
-           :order => [:day, :month, :year],
-           :date_separator => date_separator,
-           :start_year => Date.today.year,
-           :end_year => 120.years.ago.year
-         },
-         {:class => 'form-control'}
-         ) %>
+        <% end %>
   
         </div>
         </div>

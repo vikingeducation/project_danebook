@@ -16,94 +16,98 @@
         <div class="col-xs-1 col-xs-offset-1">
           <h4>Birthday:</h4>
         </div>
-        <div class="col-xs-4 col-xs-offset-3">
-          <h4 class="not-bold">
-            <input type="text" value="July 31st 1980">
-          </h4>
-        </div>  
-      </div>
-      <div class="row">
-        <div class="col-xs-1 col-xs-offset-1">
-          <h4>College:</h4>
+
+        <%= form_for @profile, url: profile_path do |p| %>
+          <div class="col-xs-4 col-xs-offset-3">
+            <h4 class="not-bold">
+            <%= p.text_field :birth_date %>
+            
+            </h4>
+          </div>  
         </div>
-        <div class="col-xs-5 col-xs-offset-3">
-          <h4 class="not-bold">
-            <input type="text" value="Hogwarts College">
-          </h4>
-        </div>  
-      </div>
-      <div class="row">
-        <div class="col-xs-1 col-xs-offset-1">
-          <h4>Hometown:</h4>
+        <div class="row">
+          <div class="col-xs-1 col-xs-offset-1">
+            <h4>College:</h4>
+          </div>
+          <div class="col-xs-5 col-xs-offset-3">
+            <h4 class="not-bold">
+              <%= p.text_field :college %>
+            </h4>
+          </div>  
         </div>
-        <div class="col-xs-7 col-xs-offset-3">
-          <h4 class="not-bold">
-            <input type="text" value="Godrick's Hollow, England">
-          </h4>
-        </div>  
-      </div>
-      <div class="row">
-        <div class="col-xs-5 padding-left-super">
-          <h4>Currently Lives:</h4>
+        <div class="row">
+          <div class="col-xs-1 col-xs-offset-1">
+            <h4>Hometown:</h4>
+          </div>
+          <div class="col-xs-7 col-xs-offset-3">
+            <h4 class="not-bold">
+              <%= p.text_field :hometown %>
+            </h4>
+          </div>  
         </div>
-        <div class="col-xs-7">
-          <h4 class="not-bold">
-            <input type="text" value="Godrick's Hollow, England">
-          </h4>
-        </div>  
-      </div>
-      <div class="row" id="contact-information">
-        <header class="col-xs-11 col-xs-offset-1">
-          <h2>Contact Information</h2>
-        </header>
-      </div>
-      <div class="row">
-        <div class="col-xs-5 padding-left-super">
-          <h4>Email:</h4>
+        <div class="row">
+          <div class="col-xs-5 padding-left-super">
+            <h4>Currently Lives:</h4>
+          </div>
+          <div class="col-xs-7">
+            <h4 class="not-bold">
+              <%= p.text_field :currently_lives %>
+            </h4>
+          </div>  
         </div>
-        <div class="col-xs-7 col-xs-offset-0">
-          <h4 class="not-bold">
-            <input type="text" value="harry_potter@hogwarts.edu">
-          </h4>
-        </div>  
-      </div>
-      <div class="row">
-        <div class="col-xs-5 padding-left-super">
-          <h4>Telephone:</h4>
+        <div class="row" id="contact-information">
+          <header class="col-xs-11 col-xs-offset-1">
+            <h2>Contact Information</h2>
+          </header>
         </div>
-        <div class="col-xs-7 col-xs-offset-0">
-          <h4 class="not-bold">
-            <input type="text" value="555-123-4567">
-          </h4>
-        </div>  
-      </div>
-    </div>
-    <div class="col-xs-7" id="words-and-about-me">
-      <div class="row padding-left">
-        <header class="col-xs-12">
-          <h2>Words to Live By</h2>
-        </header> 
-      </div>
-      <div class="row padding-left">
-        <div class="col-xs-11">
-          <textarea class="long-input">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus adipisci perspiciatis, beatae sapiente deserunt consectetur dolor in quas voluptatibus cum."</textarea>
-        </div>  
-      </div>
-      <div class="row padding-left">
-        <header class="col-xs-12">
-          <h2 id="about-me-title">About Me</h2>
-        </header> 
-      </div>
-      <div class="row padding-left">
-        <div class="col-xs-11">
-          <textarea class="long-input tall-input">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit eum nihil amet maxime. Libero quo reprehenderit commodi, laboriosam, ut ea sequi, dolores rem, distinctio error assumenda neque officiis odio odit? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio doloremque officia excepturi architecto obcaecati ratione illo fuga quidem cum aspernatur modi enim, corporis consequatur dolorum quo reprehenderit! Eum, officia nostrum!</textarea>
+        <div class="row">
+          <div class="col-xs-5 padding-left-super">
+            <h4>Email:</h4>
+          </div>
+          <div class="col-xs-7 col-xs-offset-0">
+            <h4 class="not-bold">
+              <%= @user.email %>
+            </h4>
+          </div>  
         </div>
+        <div class="row">
+          <div class="col-xs-5 padding-left-super">
+            <h4>Telephone:</h4>
+          </div>
+          <div class="col-xs-7 col-xs-offset-0">
+            <h4 class="not-bold">
+              <%= p.text_field :telephone %>
+            </h4>
+          </div>  
+        </div>
+      </div>
+      <div class="col-xs-7" id="words-and-about-me">
+        <div class="row padding-left">
+          <header class="col-xs-12">
+            <h2>Words to Live By</h2>
+          </header> 
+        </div>
+        <div class="row padding-left">
+          <div class="col-xs-11">
+            <%= p.text_area :life_words %>
+          </div>  
+        </div>
+        <div class="row padding-left">
+          <header class="col-xs-12">
+            <h2 id="about-me-title">About Me</h2>
+          </header> 
+        </div>
+        <div class="row padding-left">
+          <div class="col-xs-11">
+            <%= p.text_area :about_me %>
+          </div>
       </div>
     </div>
   </div>
   <div class="row">
     <div class="col-xs-6 col-xs-offset-3">
-      <input type="button" value="Save Changes" id="save-button">
+      <%= p.submit :id => "save-button" %>
+    <% end %>
     </div>
   </div>
 </div>

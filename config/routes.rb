@@ -12,7 +12,9 @@ Rails.application.routes.draw do
 
   get '/photos', to: "static_pages#photos"
 
-  get '/about_edit', to: "static_pages#about_edit"  
+  get '/about_edit', to: "static_pages#about_edit"
+
+  resource :profile, :only => [:update]  
 
   resource :session, :only => [:create, :destroy, :new]
 

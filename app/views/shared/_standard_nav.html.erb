@@ -10,6 +10,6 @@
     </div>
 
   </form>
-  <h4 id="current-user">Harry</h4>
+  <h4 id="current-user"><%= current_user.first_name %></h4>
   <h4><%= link_to "Log Out", session_path, method: "delete", id: "logout-link" %></h4>
   </nav>

@@ -4,11 +4,12 @@ class StaticPagesController < ApplicationController
 
   def home
     @home = true
+    @user = User.new
+    @user.build_profile
   end
 
   def timeline
-    @user = current_user
-    @profile = Profile.find_by_user_id(@user.id)
+    get_user_and_profile
   end
 
   def friends
@@ -16,11 +17,8 @@ class StaticPagesController < ApplicationController
   end
 
   def about
-    @user = current_user
-    @profile = Profile.find_by_user_id(@user.id) if @user
-    # pull a random one 
-    @user ||= User.all.sample
-    @profile ||= @user.profile
+    get_user_and_profile
+    get_random_backup_user_and_profile
   end
 
   def photos
@@ -28,6 +26,20 @@ class StaticPagesController < ApplicationController
   end
 
   def about_edit
-    
+    get_user_and_profile
+  end
+
+
+
+  private
+
+  def get_user_and_profile
+    @user = current_user
+    @profile = @user.profile if @user
+  end
+
+  def get_random_backup_user_and_profile
+    @user ||= User.all.sample
+    @profile ||= @user.profile
   end
 end

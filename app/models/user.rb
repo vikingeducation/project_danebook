@@ -1,8 +1,8 @@
 class User < ActiveRecord::Base
   has_secure_password
   
-  has_one :profile
-  after_create :create_profile
+  has_one :profile, inverse_of: :user
+  accepts_nested_attributes_for :profile
 
   validates :first_name, :presence => true
   validates :last_name, :presence => true
@@ -12,8 +12,8 @@ class User < ActiveRecord::Base
                        :length => {in: 8..24},
                        :allow_nil => true,
                        :format => {:without => /\s/ }
-  validates_date :birth_date, :before => lambda { 18.years.ago },
-                               :before_message => " invalid. You must be at least 18 years old."
+  #validates_date :birth_date, :before => lambda { 18.years.ago },
+  #                             :before_message => " invalid. You must be at least 18 years old."
   validates :gender, :presence => true
 
 

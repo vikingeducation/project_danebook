@@ -24,6 +24,7 @@ class ApplicationController < ActionController::Base
   def current_user
     @current_user ||= User.find_by_auth_token(cookies[:auth_token]) if cookies[:auth_token]
   end
+  helper_method :current_user
 
   def signed_in_user?
     !!current_user
@@ -37,7 +38,11 @@ class ApplicationController < ActionController::Base
   end
 
   def authorized_user?
-    params[:id]==current_user.id.to_s
+    if params[:user_id]
+      params[:user_id]==current_user.id.to_s
+    else
+      params[:id]==current_user.id.to_s
+    end
   end
   helper_method :authorized_user?
 

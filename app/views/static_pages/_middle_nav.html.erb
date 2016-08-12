@@ -2,8 +2,12 @@
       <div class="row menu-bar">
         <div class="col-md-8 col-md-offset-2 centered-text">
         <div class="btn-group" role="group" aria-label="menu-bar">
-          <button type="button" class="btn btn-default <%= 'active' if page == 'timeline' %>"><a href="/timeline">Timeline</a></button>
-          <button type="button" class="btn btn-default <%= 'active' if page == 'about' || page == 'about_edit' %>"><a href="/about">About</a></button>
+          <button type="button" class="btn btn-default <%= 'active' if page == 'timeline' %>">
+             <%= link_to "Timeline", user_posts_path(user) %>
+          </button>
+          <button type="button" class="btn btn-default <%= 'active' if page == 'about' || page == 'about_edit' %>">
+            <%= link_to "About", user %>
+          </button>
           <button type="button" class="btn btn-default <%= 'active' if page == 'photos' %>"><a href="/photos">Photos(123)</a></button>
           <button type="button" class="btn btn-default <%= 'active' if page == 'friends' %>"><a href="/friends">Friends(542)</a></button>
         </div>

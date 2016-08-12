@@ -1,0 +1,150 @@
+<div class="container-fluid about-page">
+  <%= render :partial => "static_pages/main_nav", :locals => {profile: profile} %>
+  <!--main photo-->
+ <%= render :partial => "static_pages/main_photo", :locals=>{:profile=> profile} %>
+  
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      
+      <!--middle navigation-->
+      <%= render :partial => "static_pages/middle_nav", :locals => {:page=>"timeline", :user => user} %>
+    <div class="row">
+      <!--Left column-->
+      <div class="col-md-5">
+        <!--About Box-->
+        <section class="row box-border">
+          <div class="col-md-12">
+        <div>
+          <h4 class="post-title centered-text">About</h4>
+           <table class="information-table">
+          <tr>
+            <td>Born on:</td>
+            <td>
+              <%= profile.birthday.strftime("%B %-d %Y") %>
+            </td>
+          </tr>
+          <tr>
+            <td>Went to school at:</td>
+             <% if profile.college %>
+              <td><%= profile.college %></td>
+            <% else %>
+              <td>Nothing here yet!</td>
+            <% end %>
+          </tr>
+          <tr>
+            <td>Hometown:</td>
+            <% if profile.hometown %>
+              <td><%= profile.hometown %></td>
+            <% else %>
+              <td>Nothing here yet!</td>
+            <% end %>          
+          </tr>
+          <tr>
+            <td>Currently Lives:</td>
+            <% if profile.currently_lives %>
+              <td><%= profile.currently_lives %></td>
+            <% else %>
+              <td>Nothing here yet!</td>
+            <% end %>
+          </tr>
+        </table>
+        </div><!--post box end-->
+      </div>
+      </section>
+        <!--Photos Box-->
+        <section class="row box-border">
+        <div class="col-md-12">
+          <div class="row box-header">
+            <div class="col-md-12">
+              <h4 class="box-title centered-text">Photos (123)</h4>
+            </div>
+          </div>
+          <!--Row 1-->
+          <div class="row">
+            <div class="col-md-4"><a href="#">
+              <%= image_tag "icon_photo_small.png", alt: "photo", class: "img-responsive" %>
+              </a></div>
+            <div class="col-md-4"><a href="#"> 
+              <%= image_tag "icon_photo_small.png", alt: "photo", class: "img-responsive" %>
+            </a></div>
+            <div class="col-md-4"><a href="#">
+               <%= image_tag "icon_photo_small.png", alt: "photo", class: "img-responsive" %>
+            </a></div>
+          </div><!--Row 1 end-->
+          <!--Row 2-->
+          <div class="row">
+            <div class="col-md-4"><a href="#">
+              <%= image_tag "icon_photo_small.png", alt: "photo", class: "img-responsive" %>
+            </a></div>
+           <div class="col-md-4"><a href="#">
+              <%= image_tag "icon_photo_small.png", alt: "photo", class: "img-responsive" %>
+            </a></div>
+           <div class="col-md-4"><a href="#">
+              <%= image_tag "icon_photo_small.png", alt: "photo", class: "img-responsive" %>
+            </a></div>
+          </div><!--Row 2 end-->
+          <!--Row 3-->
+          <div class="row">
+           <div class="col-md-4"><a href="#">
+              <%= image_tag "icon_photo_small.png", alt: "photo", class: "img-responsive" %>
+            </a></div>
+            <div class="col-md-4"><a href="#">
+              <%= image_tag "icon_photo_small.png", alt: "photo", class: "img-responsive" %>
+            </a></div>
+           <div class="col-md-4"><a href="#">
+              <%= image_tag "icon_photo_small.png", alt: "photo", class: "img-responsive" %>
+            </a></div>
+          </div><!--Row 3 end-->
+        <!--Row 4-->
+        <div class="row centered-text">
+          <button type="button" class="btn btn-link"><a href="photos.html">See more photos</a></button>
+        </div><!--Row 4 end-->
+      </div>
+      </section>
+      <!--Friends Box-->
+      <section class="row box-border">
+        <div class="col-md-12">
+          <div class="row box-header">
+            <div class="col-md-12">
+              <h4 class="box-title centered-text">Friends (542)</h4>
+            </div>
+          </div>
+          <!--Row 1-->
+          <div class="row">
+            <div class="col-md-4"><a href="#">
+              <%= image_tag "wizard_hat.png", alt:"photo", class: "img-responsive" %></a>
+            <button type="button" class="btn btn-link wrap-text"><a href="#">Ron Weasley</a></button>
+            </div>
+           <div class="col-md-4"><a href="#">
+              <%= image_tag "wizard_hat.png", alt:"photo", class: "img-responsive" %></a>
+            <button type="button" class="btn btn-link wrap-text"><a href="#">Ron Weasley</a></button>
+            </div>
+            <div class="col-md-4"><a href="#">
+              <%= image_tag "wizard_hat.png", alt:"photo", class: "img-responsive" %></a>
+            <button type="button" class="btn btn-link wrap-text"><a href="#">Ron Weasley</a></button>
+            </div>
+          </div><!--Row 1 end-->
+          <!--Row 2-->
+          <div class="row">
+            <div class="col-md-4"><a href="#">
+              <%= image_tag "wizard_hat.png", alt:"photo", class: "img-responsive" %></a>
+            <button type="button" class="btn btn-link wrap-text"><a href="#">Ron Weasley</a></button>
+            </div>
+            <div class="col-md-4"><a href="#">
+              <%= image_tag "wizard_hat.png", alt:"photo", class: "img-responsive" %></a>
+            <button type="button" class="btn btn-link wrap-text"><a href="#">Ron Weasley</a></button>
+            </div>
+            <div class="col-md-4"><a href="#">
+              <%= image_tag "wizard_hat.png", alt:"photo", class: "img-responsive" %></a>
+            <button type="button" class="btn btn-link wrap-text"><a href="#">Ron Weasley</a></button>
+            </div>
+          </div><!--Row 2 end-->
+          <!--Row 3-->
+        <div class="row centered-text">
+          <button type="button" class="btn btn-link"><a href="friends.html">See More Friends</a></button>
+        </div><!--Row 3 end-->
+        </div>
+      </section>
+      </div><!--col-md-5 end-->
+      <!--Right column-->
+      <div class="col-md-7">

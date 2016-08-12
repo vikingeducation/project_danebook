@@ -25,7 +25,9 @@
     <!--User Name-->
     <div class="col-md-2">
       <p class="navbar-text" id="user-name">
-        <%= profile.first_name if profile %>
+        <% if profile %>
+        <%= link_to current_user.profile.first_name, current_user, id: "profile-name" %>
+        <% end %>
       </p>
       <%= link_to "Logout", logout_path, :method => :delete, :class => "navbar-text", :id => "logout" %>
     </div>

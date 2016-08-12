@@ -1,0 +1,11 @@
+<%= render :partial => "timeline_top", :locals => {:profile => @profile, :user => @user} %>
+  <div class="post-box centered-text">
+          <h4 class="post-title">Post</h4>
+          <%= form_for [@user, @post] do |post_fields| %>
+            <%= post_fields.text_area :body, cols: 60, rows: 5, placeholder: "Tell the world something...", class: "post-textarea" %>
+            <div class="post-button-container">
+              <%= post_fields.submit "Post", class: "btn btn-primary" %>
+            </div>
+          <% end %>
+  </div>
+<%= render :partial => "timeline_bottom", :locals => {:user => @user, :posts => @posts} %>  

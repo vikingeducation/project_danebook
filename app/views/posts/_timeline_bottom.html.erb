@@ -1,0 +1,38 @@
+<!--Existing Post-->
+        <% if user.posts.empty? %>
+        <h4 class="centered-text">
+          <%= user.profile.first_name %> has no posts yet!
+        </h4>
+        <% end %>
+        <% posts.each do |post| %>
+        <% if post.id %>
+        <div class="post-box">
+          <a href="about.html">
+            <%= image_tag "harry_potter_small.jpg", alt: "harry picture", class: "side-image, small-image" %>
+          </a>
+          <div class="side-text small-text">
+            <p>
+              <%= link_to post.user.profile.full_name, user_path(post.user) %>
+            </p>
+            <p class="post-date" href="#">
+              Posted on <%= post.posted_date %>
+            </p>
+          </div>
+        <p class="post-text">
+          <%= post.body %>
+        </p>
+      <div class="like-comment-container comment-border">
+        <a class="post-reaction" href="#">Like</a>
+        <a class="post-reaction" href="#">Comment</a>
+        <% if authorized_user? %>
+        <%= link_to "Delete", user_post_path(user,post), method: :delete, class: "post-reaction delete" %>
+        <% end %>
+      </div>
+    </div> 
+    <% end %>
+      <% end %>
+      <!--col-md-7 end-->
+    </div><!--row end-->
+    </div>
+  </div>
+</div>

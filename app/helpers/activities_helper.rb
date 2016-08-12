@@ -12,7 +12,7 @@ module ActivitiesHelper
   def display_likes(activity)
     unless activity.likes.empty?
       "<div class='col-xs-12 ex-poster-info'>
-        <span class='ex-post-like'>#{display_num_or_people(activity)} like this</span>
+        <span class='ex-post-like'>#{display_num_or_people(activity)} this</span>
       </div>".html_safe
     end
   end
@@ -25,17 +25,17 @@ module ActivitiesHelper
     if count < 4
       format_names(names)
     else
-      "#{names.join(", ")} and #{count - 3} other people"
+      "#{names.join(", ")} and #{count - 3} other people like"
     end
   end
 
   def format_names(arr)
     if arr.length == 3
-      arr.insert(-2, "and").join(", ")
+      arr.insert(-2, "and").join(", ") << " likes"
     elsif arr.length == 2
-      arr.insert(-2, "and").join(" ")
+      arr.insert(-2, "and").join(" ") << " likes"
     else
-      arr.first
+      "#{arr.first} likes"
     end
   end
 

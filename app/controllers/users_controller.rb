@@ -48,7 +48,7 @@ class UsersController < ApplicationController
     end
 
     def get_date
-      if (1900..2007).include?(params[:user][:year].to_i) && (1..12).include?(params[:user][:month].to_i) && (1..31).include?(params[:user][:day].to_i)
+      if (1900..2010).include?(params[:user][:year].to_i) && (1..12).include?(params[:user][:month].to_i) && (1..31).include?(params[:user][:day].to_i)
         create_date
       end
     end

@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   skip_before_action :require_login, only: [:create, :new]
+  before_action :require_current_user, except: [:create, :new, :show]
 
   def create
     @user = User.new(user_params)
@@ -14,14 +15,26 @@ class UsersController < ApplicationController
   end
 
   def new
-    redirect_to user_timeline_path(current_user) if signed_in_user?
+    redirect_to current_user if signed_in_user?
     @user = User.new
     @user.build_profile
   end
 
   def show
     @user = User.find(params[:id])
+    @posts = @user.posts.order("created_at DESC")
   end
+
+  def update
+    user = current_user
+    if user.update(update_profile_params)
+      flash[:success] = "Updated!"
+    else
+      flash[:alert] = "Not Updated"
+    end
+    redirect_to current_user
+  end
+
 
   def destroy
   end
@@ -34,5 +47,17 @@ private
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation, profile_attributes: [:first_name, :last_name, :birthday, :about])
   end
+  def update_profile_params
+    params.require(:user).permit(profile_attributes: [:first_name, :last_name, :birthday, :about])
+  end
+
+
+  def require_current_user
+    unless params[:id] == current_user.id.to_s
+      flash[:error] = "You're not authorized to view this"
+      redirect_to root_url
+    end
+  end
+
 
 end

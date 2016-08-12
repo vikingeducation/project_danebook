@@ -3,8 +3,8 @@
     <div class="col-sm-12" id="banner"></div>
   <div id="cover-nav">
     <div class="col-sm-2"></div>
-    <%= link_to "Timeline", root_path, class: "col-sm-2"  %>
-    <%= link_to "About", current_user, class: "col-sm-2"  %>
-    <%= link_to "Edit Profile", "#"  %>
+    <%= link_to "Timeline", @user, class: "col-sm-2"  %>
+    <%= link_to "About", user_profile_path(@user), class: "col-sm-2"  %>
+    <%= profile_edit_link(@user) %>
   </div>
 </div>

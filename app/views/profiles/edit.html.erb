@@ -1,0 +1,10 @@
+<%= simple_form_for @user, html: { class: "form-inline"} do |user_fields| %>
+<div class="row form-group pull-right">
+    <%= user_fields.fields_for :profile_attributes do |profile_fields| %>
+        <%= profile_fields.input :first_name, class: "form-control" %>
+        <%= profile_fields.input :last_name, class: "form-control"%>
+        <%= profile_fields.input :about, class: "form-control"%>
+        <%= profile_fields.input :birthday, as: :date %>
+    <% end %>
+<%= user_fields.button :submit %>
+<% end %>

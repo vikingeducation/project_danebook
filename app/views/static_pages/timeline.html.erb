@@ -6,179 +6,14 @@
 	<main class="container">
 		<div class="row">
 			<div class="col-sm-5 right-gutter hidden-xs">
-				<section class="row section-container">
-					<div class="col-xs-12 section-header text-center">
-						<h4>About (Text Area)</h4>
-					</div>
-					<div class="col-xs-12 about-content">
-						<p><b>Born on:</b> <%= @user.birth_date.strftime('%B %e, %Y') %></p>
-						<p><b>Went to school at:</b> <%= @user.profile.college %></p>
-						<p><b>Hometown:</b> <%= @user.profile.hometown %></p>
-						<p><b>Currently Lives:</b> <%= @user.profile.currently_lives %></p>
-					</div>
-				</section><!-- About Section -->
-				<section class="row section-container">
-					<div class="col-xs-12 section-header text-center">
-						<h4>Photos (123) (Copied Text Area)</h4>
-					</div>
-					<div class="col-xs-12 img-container text-center">
-						<div class="col-xs-6 col-sm-4 col-md-3">
-							<a href="#"><img src="http://placehold.it/80x80"></a>
-						</div>
-						<div class="col-xs-6 col-sm-4 col-md-3">
-							<a href="#"><img src="http://placehold.it/80x80"></a>
-						</div>
-						<div class="col-xs-6 col-sm-4 col-md-3">
-							<a href="#"><img src="http://placehold.it/80x80"></a>
-						</div>
-						<div class="col-xs-6 col-sm-4 col-md-3">
-							<a href="#"><img src="http://placehold.it/80x80"></a>
-						</div>
-						<div class="col-xs-6 col-sm-4 col-md-3">
-							<a href="#"><img src="http://placehold.it/80x80"></a>
-						</div>
-						<div class="col-xs-6 col-sm-4 col-md-3">
-							<a href="#"><img src="http://placehold.it/80x80"></a>
-						</div>
-						<div class="col-xs-6 col-sm-4 col-md-3">
-							<a href="#"><img src="http://placehold.it/80x80"></a>
-						</div>
-						<div class="col-xs-6 col-sm-4 col-md-3">
-							<a href="#"><img src="http://placehold.it/80x80"></a>
-						</div>
-						<div class="col-xs-6 col-sm-4 col-md-3">
-							<a href="#"><img src="http://placehold.it/80x80"></a>
-						</div>
-						<div class="col-xs-12 text-center">
-							<%= link_to "See More Photos", user_photos_path(@user), class: "friend-name"%>
-						</div>
-					</div>
-				</section><!-- Photos Section -->
-				<section class="row section-container">
-					<div class="col-xs-12 section-header text-center">
-						<h4>Friends (542) (Copied Text Area)</h4>
-					</div>
-					<div class="col-xs-12 img-container text-center">
-						<div class="col-sm-4 col-md-3">
-							<img src="http://placehold.it/80x80">
-							<p><a class="friend-name" href="#">Ron Weasley</a></p>
-						</div>
-						<div class="col-sm-4 col-md-3 text-center">
-							<img src="http://placehold.it/80x80">
-							<p><a class="friend-name" href="#">Ginny Weasley</a></p>
-						</div>
-						<div class="col-sm-4 col-md-3 text-center">
-							<img src="http://placehold.it/80x80">
-							<p><a class="friend-name" href="#">Hermione Granger</a></p>
-						</div>
-						<div class="col-sm-4 col-md-3 text-center">
-							<img src="http://placehold.it/80x80">
-							<p><a class="friend-name" href="#">paragraph text</a></p>
-						</div>
-						<div class="col-sm-4 col-md-3 text-center">
-							<img src="http://placehold.it/80x80">
-							<p><a class="friend-name" href="#">paragraph text</a></p>
-						</div>
-						<div class="col-sm-4 col-md-3 text-center">
-							<img src="http://placehold.it/80x80">
-							<p><a class="friend-name" href="#">paragraph text</a></p>
-						</div>
-						<div class="col-xs-12 text-center">
-							<%= link_to "See More Friends", user_friends_path(@user), class: "friend-name"%>
-						</div>
-					</div>
-				</section><!-- Friends Section -->
+				<%= render 'about_content' %>
+				<%= render 'photo_preview' %>
+				<%= render 'friends_preview' %>
 			</div><!-- Left Content -->
 			<div class="col-sm-7">
-				<section class="row section-container">
-					<div class="col-sm-12 section-header">
-						<div class="row">
-							<div class="col-sm-6 col-sm-offset-3 text-center">
-								<h4>Post (copied)</h4>
-							</div>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-xs-10 col-xs-offset-1 section-container whiteness text-center">
-							<textarea class="btn-block" rows="3" placeholder="Tell the world something..."></textarea>
-						</div>
-					</div>
-					<div class="col-sm-12 section-header post-block">
-						<div class="row">
-							<div class="col-sm-3 col-sm-offset-8">
-								<a href="#" class="btn btn-primary btn-block">Post</a>
-							</div>
-						</div>
-					</div>
-				</section><!-- New Post section -->
-				<section class="row section-container">
-					<div class="col-sm-12">
-						<div class="row post-wrapper">
-							<div class="col-xs-2 col-sm-1">
-							<%= image_tag("harry_potter_small.jpg", class: "post-pic") %>
-							</div>
-							<div class="col-xs-9 col-sm-10 friend-name-wrapper">
-								<p><a class="friend-name" href="about.html">Harry Potter</a></p>
-								<p>Posted on Thursday 6/1/2014</p>
-							</div>
-						</div>
-						<div class="row post-wrapper">
-							<div class="col-xs-12">
-								<p class="post-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-								tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-								quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-								consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-								cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-								proident, sunt in culpa qui</p>
-							</div>
-						</div>
-						<div class="row post-wrapper section-footer">
-							<div class="col-xs-7 col-sm-4">
-								<a class="friend-name" href="#">Like</a>
-								<a class="friend-name" href="#">Comment</a>
-							</div>
-							<div class="col-xs-5 col-sm-8 text-right">
-								<a class="friend-name" href="#">Delete</a>
-							</div>
-						</div>
-					</div>
-				</section><!-- Old Post Section -->
-				<section class="row section-container">
-					<div class="col-sm-12">
-						<div class="row post-wrapper">
-							<div class="col-xs-2 col-sm-1">
-							<%= image_tag("harry_potter_small.jpg", class: "post-pic") %>
-							</div>
-							<div class="col-xs-9 col-sm-10 friend-name-wrapper">
-								<p><a class="friend-name" href="about.html">Harry Potter</a></p>
-								<p>Posted on Thursday 6/1/2014</p>
-							</div>
-						</div>
-						<div class="row post-wrapper">
-							<div class="col-xs-12">
-								<p class="post-content">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-								tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-								quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-								consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-								cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-								proident, sunt in culpa qui</p>
-							</div>
-						</div>
-						<div class="row post-wrapper section-footer">
-							<div class="col-xs-7 col-sm-4">
-								<a class="friend-name" href="#">Like</a>
-								<a class="friend-name" href="#">Comment</a>
-							</div>
-							<div class="col-xs-5 col-sm-8 text-right">
-								<a class="friend-name" href="#">Delete</a>
-							</div>
-							<div class="col-xs-12 like-listing">
-								<p><a class="liker-name" href="#">Hermione Granger</a> likes this.</p>
-							</div>
-						</div>
-					</div>
-				</section><!-- Old Post Section -->
-				<section class="row section-container">
+				<%= render 'new_post', post: @post %>
+				<%= render 'user_posts', posts: @posts %>
+				<!-- <section class="row section-container">
 					<div class="col-sm-12">
 						<div class="row post-wrapper">
 							<div class="col-xs-2 col-sm-1">
@@ -228,13 +63,15 @@
 													<div class="col-sm-10 like-listing-expanded">
 														<p><a class="like-link" href="#">Like</a> 3 other people like this</p>
 													</div>
-												</div><!-- Link wrapper -->
-											</div><!-- Commenter info and content -->
-										</div>
-									</div><!-- Comment content wrapper -->
-								</div><!-- Comment wrapper -->
-							</div>
-							<div class="col-xs-12">
+												</div>--><!-- Link wrapper -->
+											<!-- </div>--><!-- Commenter info and content -->
+										<!-- </div> -->
+									<!-- </div> -->
+									<!-- Comment content wrapper -->
+								<!-- </div> -->
+								<!-- Comment wrapper -->
+							<!-- </div> -->
+							<!-- <div class="col-xs-12">
 								<div class="row post-wrapper">
 									<div class="col-xs-2 col-sm-1">
 									<%= image_tag("harry_potter_small.jpg", class: "post-pic") %>
@@ -254,30 +91,40 @@
 													<div class="col-xs-3 text-right">
 														<p><a class="like-link" href="#">Delete</a></p>
 													</div>
-												</div>
-											</div><!-- Commenter info and content -->
-										</div><!-- Link wrapper -->
-									</div><!-- Comment content wrapper -->
-								</div><!-- Comment wrapper -->
-								<div class="row">
+												</div> -->
+											<!-- </div> -->
+											<!-- Commenter info and content -->
+										<!-- </div> -->
+										<!-- Link wrapper -->
+									<!-- </div> -->
+									<!-- Comment content wrapper -->
+								<!-- </div> -->
+								<!-- Comment wrapper -->
+								<!-- <div class="row">
 									<div class="col-xs-10 col-xs-offset-1 section-container whiteness">
 										<textarea class="btn-block" placeholder="Write a comment..." rows="4"></textarea>
-									</div>
-								</div><!-- New comment textarea box -->
-								<div class="row">
+									</div> -->
+								<!-- </div> -->
+								<!-- New comment textarea box -->
+								<!-- <div class="row">
 									<div class="col-xs-5 col-xs-offset-1">
-										<p><a class="friend-name" href="#">Cancel</a></p>
-									</div> <!-- Cancel link -->
-									<div class="col-xs-5 text-right">
-										<a href="#" class="btn btn-primary btn-xs comment-btn">Comment</a>
-									</div><!-- Comment btn -->
-								</div><!-- comment buttons -->
-							</div>
+										<p><a class="friend-name" href="#">Cancel</a></p> -->
+									<!-- </div>  -->
+									<!-- Cancel link -->
+									<!-- <div class="col-xs-5 text-right">
+										<a href="#" class="btn btn-primary btn-xs comment-btn">Comment</a> -->
+									<!-- </div> -->
+									<!-- Comment btn -->
+								<!-- </div> -->
+								<!-- comment buttons -->
+							<!-- </div>
 						</div>
-					</div>
-				</section><!-- Old Post Section -->
-			</div><!-- Right Content -->
-		</div>
+					</div> -->
+				<!-- </section> -->
+				<!-- Old Post Section -->
+			<!-- </div> -->
+			<!-- Right Content -->
+		<!-- </div> -->
 
 	</main>
 </div>

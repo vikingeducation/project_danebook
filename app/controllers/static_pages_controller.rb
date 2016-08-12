@@ -6,6 +6,9 @@ class StaticPagesController < ApplicationController
   end
 
   def timeline
+    @post = Post.new
+    @posts = @user.recent_user_posts
+    # fjdkfjd
   end
 
   def about

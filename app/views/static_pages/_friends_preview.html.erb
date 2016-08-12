@@ -1,0 +1,16 @@
+<section class="row section-container">
+  <div class="col-xs-12 section-header text-center">
+    <h4>Friends (542) (Copied Text Area)</h4>
+  </div>
+  <div class="col-xs-12 img-container text-center">
+    <% 8.times do %>
+      <div class="col-sm-4 col-md-3">
+        <img src="http://placehold.it/80x80">
+        <p><%= link_to "#{Faker::Name.name}", "#", class: "friend-name" %></p>
+      </div>
+    <% end %>
+    <div class="col-xs-12 text-center">
+      <%= link_to "See More Friends", user_friends_path(@user), class: "friend-name"%>
+    </div>
+  </div>
+</section><!-- Friends Section -->

@@ -1,0 +1,17 @@
+<section class="row section-container">
+  <div class="col-xs-12 section-header text-center">
+    <h4>Photos (123) (Copied Text Area)</h4>
+  </div>
+  <div class="col-xs-12 img-container text-center">
+    <% 8.times do %>
+      <div class="col-xs-6 col-sm-4 col-md-3">
+        <%= link_to "#" do %>
+          <img src="http://placehold.it/80x80">
+        <% end %>
+      </div>
+    <% end %>
+    <div class="col-xs-12 text-center">
+      <%= link_to "See More Photos", user_photos_path(@user), class: "friend-name"%>
+    </div>
+  </div>
+</section><!-- Photos Section -->

@@ -5,17 +5,17 @@ class ProfilesController < ApplicationController
     if current_user == @user
       set_profile
     else
-      flash[:error] = "Ahh ahhhh ahh, you don't have permission to do this"
+      # flash[:error] = "Ahh ahhhh ahh, you don't have permission to do this"
       redirect_to user_profile_path(@profile.id, @profile.id)
     end
   end
 
   def update
     if @profile.update(white_listed_profile_params)
-      flash[:success] = "Your profile has been updated!"
+      # flash[:success] = "Your profile has been updated!"
       redirect_to user_profile_path(@profile.user_id, @profile.id)
     else
-      flash.now[:error] = "Uhhh oh something went wrong trying to update your profile"
+      # flash.now[:error] = "Uhhh oh something went wrong trying to update your profile"
       render :edit
     end
   end

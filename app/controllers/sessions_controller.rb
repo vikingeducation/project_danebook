@@ -12,7 +12,6 @@ class SessionsController < ApplicationController
 
   def create
     @user = User.find_by_email(params[:email])
-    # pafjl
 
     if @user && @user.authenticate(params[:password])
       if params[:remember_me]
@@ -20,7 +19,7 @@ class SessionsController < ApplicationController
       else
         sign_in(@user)
       end
-      flash[:success] = "You've successfully signed in"
+      # flash[:success] = "You've successfully signed in"
       redirect_to root_url
     else
       flash.now[:error] = "We couldn't sign you in"

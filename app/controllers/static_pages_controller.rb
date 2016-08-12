@@ -31,6 +31,4 @@ class StaticPagesController < ApplicationController
                 :birth_date)
     end
 
-    # def white_listed
-
 end

@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_one :profile
+  has_one :profile, dependent: :nullify
 
   before_create :generate_token
   after_create :create_profile
@@ -8,6 +8,9 @@ class User < ApplicationRecord
   validates :password, 
           :length => { :in => 5..20 }, 
           :allow_nil => true 
+  validates :first_name, :last_name, :email, presence: true
+          
+  accepts_nested_attributes_for :profile
 
   def generate_token
     begin

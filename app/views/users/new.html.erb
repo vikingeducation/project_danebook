@@ -1,12 +1,41 @@
+
 <%= render "new_navbar" %>
 
-<%= form_for @user, html: {class: "new-user-navbar"} do |f| %>
-  <%= f.label :email%>
-  <%= f.text_field :email, placeholder: "Email", html: {class: "form-control"} %>
-  <%= f.label :password%>
-  <%= f.password_field :password, placeholder: "Password", html: {class: "form-control"} %>
-  <%= f.label :password%>
-  <%= f.password_field :password_confirmation, placeholder: "Password Confirmation", html: {class: "form-control"} %>
-  <%= f.submit :Create %>
-<% end %>
+
+<div class="container connect-information-container">
+  <div class="col-md-8 connect-information">
+    <h1> Connect with all of your friends!</h1>
+    <ul>
+      <li class="connect-information-point" >See photos and updates in your news feed</li>
+      <li class="connect-information-point" >Post your status for the world to see on your proile</li>
+      <li class="connect-information-point" >Get in your with your friends by "friending" them</li>
+      <li class="connect-information-point" >Like things beacause you are a postive person!</li>
+    </ul>
+  </div>
+  <div class="col-md-4">
+    <%= form_for @user do |f| %>
+      <div class="row sign-up-field">
+        <%= f.text_field :first_name, placeholder: "First Name", class: "form-control" %>
+        <%= f.text_field :last_name, placeholder: "Last Name", class: "form-control" %>
+      </div>
+      <div class="row sign-up-field">
+         <div class="form-group">
+            <%= f.text_field :email, placeholder: "Email", class: "form-control" %>
+        </div>
+      </div>
+      <div class="row sign-up-field">
+        <div class="form-group">
+          <%= f.password_field :password, placeholder: "Password", class: "form-control" %>
+        </div>
+      </div>
+      <div class="row sign-up-field">
+        <div class="form-group">
+          <%= f.password_field :password_confirmation, placeholder: "Password Confirmation", class: "form-control" %>
+        </div>
+      </div>
+      <%= f.submit :Create, class: "btn btn-success sign-up-field" %>
+    <% end %>
+  </div>
+</div>
+
 

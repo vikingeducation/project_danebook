@@ -7,15 +7,14 @@
             <h1 class="danebook-logo">D</h1>
           <% end %>
         </div>
-        <div class= "col-xs-2 col-md-2">
-          <%= link_to root_url do %>
-            <h1 class="danebook">Danebook</h1>
-          <% end %>
-        </div>
+        <%= form_tag("/search", method: "get") do %>
+          <%= text_field_tag(:q, nil, placeholder: "Search for User", class: "search-input") %>
+        <%= submit_tag("Search", class: "btn btn-primary") %>
+  <% end %>
       <% if signed_in_user? %>
         <div class="log-in-information">
           <div class= "col-xs-9 col-md-9 logged-in-text">
-            Welcome, <%= link_to current_user.email, user_profiles_path(current_user)  %>
+            Welcome, <%= link_to current_user.first_name.capitalize, current_user %>
             <%= link_to "Logout", logout_path, :method => :delete, html: {class: "danebook-text"} %>
           </div>
         </div>

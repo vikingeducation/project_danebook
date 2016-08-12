@@ -1,0 +1,191 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+body {
+  background-color: #dfe3ee;
+  font-family: "Helvetica";
+}
+
+/* USERS/NEW */
+
+ .log-in-navbar {
+  background-color: #3b5998;
+
+ }
+
+ .log-in-button {
+  background-color: #1E90FF;
+  margin-top:25px;
+  margin-left:-40px;
+
+ }
+
+.log-in-information {
+  float:right;
+  display:inline-block;
+  margin-top:10px;
+
+}
+
+.danebook-text {
+  color:white;
+}
+
+.remember-me {
+  margin-top:25px;
+}
+
+.danebook {
+  color:white;
+  text-decoration: none;
+}
+
+.logged-in-text {
+  display:inline-block;
+  color:white;
+  font-weight: bold;
+}
+
+.connect-information-container {
+
+}
+
+.connect-information {
+  margin-top:50px;
+}
+
+.connect-information-point {
+  margin-top:30px;
+  color:grey;
+  font-size:20px;
+}
+
+.sign-up-field {
+  margin-top: 40px;
+}
+
+.danebook-logo {
+  float:left;
+  margin-left:-70px;
+  color:white;
+  border: 4px solid white;
+  padding:0px 10px 0px 0px;
+}
+
+
+.search-input {
+  width:65%;
+  vertical-align: center;
+}
+
+
+/* USER/:id/PROFILES */
+
+.cover-photo {
+  width:90%;
+  height:300px;
+  display:block;
+  margin:auto;
+  margin-top:-20px;
+}
+
+.profile-photo {
+  position:absolute;
+  margin-top:61px;
+  height:35%;
+  width:15%;
+}
+
+.profile-navigation {
+  border: 2px solid black;
+
+}
+
+.timeline-link {
+  border: 1px solid black;
+  height:40px;
+  text-align: center;
+  font-size:20px;
+  transition: all 0.5s ease;
+  &:hover {
+    background-color:#d3d3d3;
+  }
+}
+
+.about-link {
+  border: 1px solid black;
+  height:40px;
+  text-align: center;
+  font-size:20px;
+  transition: all 0.5s ease;
+  &:hover {
+    background-color:#d3d3d3;
+  }
+}
+
+.photos-link {
+  border: 1px solid black;
+  height:40px;
+  text-align: center;
+  font-size:20px;
+  transition: all 0.5s ease;
+  &:hover {
+    background-color:#d3d3d3;
+  }
+}
+
+.friends-link {
+  border: 1px solid black;
+  height:40px;
+  text-align: center;
+  font-size:20px;
+  transition: all 0.5s ease;
+  &:hover {
+    background-color:#d3d3d3;
+  }
+}
+
+.edit-link {
+  border: 1px solid black;
+  height:40px;
+  text-align: center;
+  font-size:20px;
+  color:#3b5998;
+  transition: all 0.5s ease;
+  &:hover {
+    background-color:#d3d3d3;
+  }
+}
+
+.about-user-section {
+  background-color: #d3d3d3;
+  text-align: center;
+  border:2px solid black;
+  font-size:30px;
+  margin-top:2em;
+}
+
+.basic-and-words-to-live {
+  
+}
+
+.basic {
+  background-color: red;
+}
+
+.words-to-live {
+  background-color: black;
+}

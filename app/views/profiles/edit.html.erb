@@ -1,2 +1,7 @@
 <h1>Profile#edit</h1>
 <p>Find me in app/views/profile/edit.html.erb</p>
+      <%= form_for @profile do |p| %>
+        <%= p.text_field :college %>
+        <%= p.text_field :hometown %>
+        <%= p.text_field :current_location%>
+      <% end %>

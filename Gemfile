@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+gem 'carrierwave'
 
 gem 'better_errors'
 

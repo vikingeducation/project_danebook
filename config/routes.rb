@@ -2,7 +2,8 @@ Rails.application.routes.draw do
 
 
   resources :users do
-    resource :profiles 
+    resource :profiles
+    resources :photos
   end
 
   root "users#new"

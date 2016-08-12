@@ -8,7 +8,8 @@
         </button>
       <!--Flag and "Danebook" links to homepage -->
       <ul class="nav navbar-nav">
-        <li><a class="navbar-brand" id = "brand-link" href="/"><img class="img-circle img-responsive center-block" id="flag" alt="Danish flag" src="assets/danish_flag.gif">
+        <li><a class="navbar-brand" id = "brand-link" href="/">
+          <%= image_tag "danish_flag.gif", {alt:"Danish flag", class: "img-circle img-responsive center-block", id: "flag"} %>
         </a></li> 
         <li><a class="navbar-brand" id="title-text" href="/">Danebook</a></li>
       </ul>
@@ -23,7 +24,9 @@
     </div>
     <!--User Name-->
     <div class="col-md-2">
-      <p class="navbar-text" id="user-name">Harry</p>
+      <p class="navbar-text" id="user-name">
+        <%= profile.first_name if profile %>
+      </p>
       <%= link_to "Logout", logout_path, :method => :delete, :class => "navbar-text", :id => "logout" %>
     </div>
       

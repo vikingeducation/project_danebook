@@ -10,9 +10,11 @@
       </div>
       <% unless page == 'about_edit' %>
       <div class="col-md-2">
-      
-        <button type="button" class="btn btn-link"><a href="/about_edit">Edit Profile</a></button>
-    
+        <% if authorized_user? %>
+          <button type="button" class="btn btn-link">
+            <%= link_to "Edit Profile", edit_user_path(user) %>
+          </button>
+        <% end %>
       </div>
       <% end %>
     </div>

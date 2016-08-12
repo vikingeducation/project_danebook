@@ -1,0 +1,117 @@
+<div class="container-fluid about-page">
+  <%= render :partial => "static_pages/main_nav", :locals=>{:profile => @profile} %>
+  <!--main photo-->
+   <div class="row">
+    <div class="col-md-12 cover-photo">
+      <%= image_tag "hogwarts_small.jpg", alt:"hogwarts" %>
+      <div id="profile-pic">
+        <%= image_tag "harry_potter_small.jpg", alt: "profile picture", class: "img-responsive img-thumbnail" %>
+      </div>
+      <div id="profile-name">
+        <h3><%= @profile.full_name %></h3>
+      </div>
+  </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      
+      <!--middle navigation-->
+     <%= render :partial => "static_pages/middle_nav", :locals => {:page=>"about", :user => @user} %>
+    <!--about section-->
+    <section class="row about-container">
+    <div class="col-md-12">
+      <div class="row friend-header">
+        <div class="col-md-12">
+        About
+        <% if authorized_user? %>
+         <button type="button" class="btn btn-default btn-small edit-button">
+          <%= link_to "Edit Profile", edit_user_path(@user) %>
+        </button>
+        <% end %>
+      </div>
+
+    </div><!--about section end-->
+    <!--main text-->
+    <div class="row">
+      <!--left side-->
+      <div class="col-md-5" id="information">
+        <div class="basic-information">
+        <h2>Basic Information</h1>
+        <table class="information-table">
+          <tr>
+            <td>Birthday:</td>
+            <td>
+              <%= @profile.birthday.strftime("%B %-d %Y") %>
+            </td>
+          </tr>
+          <tr>
+            <td>College:</td>
+            <% if @profile.college %>
+              <td><%= @profile.college %></td>
+            <% else %>
+              <td>Nothing here yet!</td>
+            <% end %>
+          </tr>
+          <tr>
+            <td>Hometown:</td>
+            <% if @profile.hometown %>
+              <td><%= @profile.hometown %></td>
+            <% else %>
+              <td>Nothing here yet!</td>
+            <% end %>
+          </tr>
+          <tr>
+            <td>Currently Lives:</td>
+              <% if @profile.currently_lives %>
+                <td><%= @profile.currently_lives %></td>
+              <% else %>
+                <td>Nothing here yet!</td>
+              <% end %>
+          </tr>
+        </table>
+      </div>
+      <div class="contact-information">
+        <h2>Contact Information</h1>
+        <table class="information-table">
+          <tr>
+            <td>Email:</td>
+            <td><%= @user.email %></td>
+          </tr>
+          <tr>
+            <td>Telephone:</td>
+            <% if @profile.telephone %>
+              <td><%= @profile.telephone %></td>
+            <% else %>
+              <td>Call me maybe?</td>
+            <% end %>
+          </tr>
+        </table>
+      </div>
+      </div>
+      <!--right side-->
+      <div class="col-md-7" id="text-description">
+        <div class="words-to-live-by">
+      <h2>Words to Live By</h1>
+        <% if @profile.words_to_live_by %>
+          <p><%= @profile.words_to_live_by %></p>
+        <% else %>
+          <p>Fill me out!</p>
+        <% end %>
+    </div>
+    <div class="about-me">
+      <h2>About Me</h1>
+        <% if @profile.about_me %>
+          <p><%= @profile.about_me %><p>
+        <% else %>
+          <p>Tell us about yourself!</p>
+        <% end %>
+    </div>
+    </div><!--main text end-->
+  </section>
+  </div>
+</div>
+    
+
+
+</div>

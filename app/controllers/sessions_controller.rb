@@ -4,8 +4,7 @@ class SessionsController < ApplicationController
     @user = User.find_by_email(params[:email])
     if @user && @user.authenticate(params[:password])
       sign_in(@user)
-      flash[:success] = "Welcome to Danebook!"
-      redirect_to timeline_path
+      redirect_to user_path(@user)
     else
       flash[:error] = "We couldn't sign you in"
       redirect_to root_path

@@ -1,61 +1,67 @@
 class UsersController < ApplicationController
-  #Authorization.
-  before_action :logged_in_user, only: [:edit, :update, :index]
-  before_action :correct_user, only: [:edit, :update]
+  
+  # Whitelist
+  skip_before_action :logged_in_user, except: [:edit, :update, :index]
+  skip_before_action :correct_user, except: [:edit, :update]
 
 
   def index
     #will_paginate requires an instance variable.
     @users = User.search(params[:search], params[:page])
-    render 'static_pages/all_users', 
-            locals: { users: @users }
   end
 
   def new
-    user = User.new
-    render 'static_pages/signup', 
-           locals: { user: user, profile: user.profile }
+    @user = User.new
+    @profile = @user.profile
   end
 
   def create
-    user = User.new({ email: user_params[:email],                password: user_params[:password] })
-    check_save(user)
+    @user = User.new({ email: user_params[:email],                
+                       password: user_params[:password] })
+    if @user.save
+      @user.build_profile(
+        { first_name: user_params[:first_name], last_name: user_params[:last_name] }
+        ).save
+      @user.send_activation_email
+      flash[:info] = 'You have been sent an email containing a link to activate your account.'
+      redirect_to root_url
+    else
+      flash[:danger] = 'Invalid information. Please try again to sign up.'
+      redirect_to new_user_path
+    end
   end
 
   def edit
-    user = User.find(params[:id])
-    render 'static_pages/about', 
-           locals: { user: user, 
-                     microposts: nil, 
-                     profile: user.profile, 
-                     cities: City.all, 
-                     states: State.all, 
-                     countries: Country.all }, 
-           action: :edit
+    @user = User.find(params[:id])
+    @profile = @user.profile
+    @cities = City.all
+    @states = State.all
+    @countries = Country.all
   end
 
   def update
-    user = User.find(params[:id])
-    check_update(user)
+    @user = User.find(params[:id])
+    @profile = @user.profile
+    if @user.update_attributes(user_params)
+      flash[:success] = "Profile updated."
+      redirect_to @user
+    else
+      flash[:danger] = "Could not update profile!"
+      redirect_to edit_user_path(@user)
+    end
   end
 
   def show
-    user = User.find(params[:id])
-    microposts = user.microposts.paginate(page: params[:page], per_page: 4)
-    render 'static_pages/about', 
-            locals: { user: user, 
-                      microposts: microposts, 
-                      cities: nil, 
-                      states: nil, 
-                      countries: nil, 
-                      profile: user.profile },
-            action: :show
+    @user = User.find(params[:id])
+    @profile = @user.profile
+    @microposts = @user.microposts.paginate(page: params[:page], per_page: 4)
   end
 
   def destroy
     user = User.find(params[:id])
     user.destroy
-    redirect_to users_path
+    flash[:success] = Account has been deleted.
+    redirect_to root_path
   end
 
   private
@@ -66,41 +72,6 @@ class UsersController < ApplicationController
                             :password, 
                             :password_confirmation]
       params.require(:user).permit(permissible_params)
-    end
-
-    def logged_in_user
-      redirect_to login_path if !logged_in?
-    end
-
-    def correct_user
-      user = User.find(params[:id])
-      redirect_to root_url unless current_user == user
-    end
-
-    def check_save(user)
-      if user.save
-        user.build_profile(
-          { first_name: user_params[:first_name], last_name: user_params[:last_name] }
-          ).save
-        user.send_activation_email
-        flash[:info] = 'You have been sent an email containing a link to activate your account.'
-        redirect_to root_url
-      else
-        flash[:danger] = 'Invalid information. Please try again to sign up.'
-        render 'static_pages/signup'
-      end
-    end
-
-    def check_update(user)
-      if user.update_attributes(user_params)
-        flash[:success] = "Profile updated"
-        redirect_to user
-      else
-        render 'static_pages/about', 
-               locals: { user: user, 
-                         profile: user.profile }, 
-               action: :edit
-      end
     end
     
 end

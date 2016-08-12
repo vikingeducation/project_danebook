@@ -1,20 +1,18 @@
 class FriendsController < ApplicationController
+
+  skip_before_action :correct_user, only: [:index]
+
   def index
-    @friends = current_user.friends.paginate(page: params[:page])
-    render 'static_pages/about', 
-           locals: { user: current_user, 
-                     microposts: nil, 
-                     profile: current_user.profile, 
-                     cities: nil, 
-                     states: nil, 
-                     countries: nil }, 
-           action: :index
+    @user = User.find(params[:id])
+    @profile = @user.profile
+    @friends = @user.friends.paginate(page: params[:page])
   end
 
   def create
-    current_user.friends << User.find(friend_params[:user_id])
+    @user = User.find(params[:id])
+    @user.friends << User.find(friend_params[:user_id])
     flash[:success] = "You've added a friend!"
-    redirect_to current_user
+    redirect_to @user
   end
 
   private

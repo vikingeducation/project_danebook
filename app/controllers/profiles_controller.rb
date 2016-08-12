@@ -1,10 +1,11 @@
 class ProfilesController < ApplicationController
-  # before_action :to_integers
 
   def update
-    profile = Profile.find(params[:id])
-    profile.update(profile_params)
-    redirect_to profile.user
+    @profile = Profile.find(params[:id])
+    @user = @profile.user
+    @profile.update(profile_params)
+    flash[:success] = "Profile updated."
+    redirect_to @user
   end
 
   private

@@ -57,6 +57,7 @@ class User < ActiveRecord::Base
   end
 
   #Paginating search results, if any.
+  #We want an array for this, so we don't use a scope.
   def User.search(search, page)
     case search
     when '', 'Search for users' 

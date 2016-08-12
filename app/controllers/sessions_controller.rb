@@ -1,16 +1,23 @@
 class SessionsController < ApplicationController
+
+  # Whitelist.
+  skip_before_action :logged_in_user, except: [:destroy]
+  skip_before_action :correct_user
+
   def new
   end
   
   def create
-    user = User.find_by(email: params[:session][:email])
-    if user && user.authenticate(params[:session][:password])
-      log_in user
-      remember_check user
+    @user = User.find_by(email: params[:session][:email])
+    @profile = @user.profile
+    if @user && @user.authenticate(params[:session][:password])
+      log_in @user
+      remember_check @user
       flash[:success] = 'Login successful.'
-      redirect_to user, locals: { user: user }
+      redirect_to @user
     else
-      render 'sessions/new', locals: { user: user }
+      flash[:danger] = 'Invalid username/password.'
+      redirect_to new_session_path
     end
   end
 

@@ -11,13 +11,13 @@
       <div class="masthead-nav">
         <ul class="nav nav-tabs">
           <li><a href="#">Timeline</a></li>
-          <li><%= link_to 'About', current_user %></li>
+          <li><%= link_to 'About', user %></li>
           <li><a href="#">Photos</a></li>
-          <li><%= link_to 'Friends', friends_path%></li>
+          <li><%= link_to 'Friends', friends_path(id: user.id) %></li>
         </ul>
       </div>
 
-      <%= link_to('Edit Profile', edit_user_path(user), id: "masthead-edit-profile", class: "btn btn-primary btn-md") if current_user == user %>
+      <%= link_to('Edit Profile', edit_user_path(user), id: "masthead-edit-profile", class: "btn btn-primary btn-md") if user_check %>
 
     </div>
   </div>

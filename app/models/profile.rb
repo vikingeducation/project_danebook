@@ -22,11 +22,12 @@ class Profile < ActiveRecord::Base
 
   private
     def defaults
-      self.build_contact_info.save
-      self.build_birthday.save
-      self.build_hometown.save
-      self.hometown.build_address.save
-      self.build_residence.save
-      self.residence.build_address.save
+      create_contact_info!
+      create_birthday!
+      create_hometown!
+      hometown.create_address!
+      create_residence!
+      residence.create_address!
+      includes :contact_info, :birthday, :hometown, :residence
     end
 end

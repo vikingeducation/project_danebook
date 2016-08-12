@@ -1,6 +1,9 @@
 class PasswordResetsController < ApplicationController
   before_action :validate_reset_link, only: [:edit,:update]
 
+  skip_before_action :logged_in_user
+  skip_before_action :correct_user
+
   def new
   end
 
@@ -11,7 +14,7 @@ class PasswordResetsController < ApplicationController
       flash[:info] = 'An email has been sent containing a link for resetting your password. Please check your email now. Your password reset link will expire in 24 hours.'
       redirect_to root_url
     else
-      flash[:danger] = 'Invalid email address.'
+      flash.now[:danger] = 'Invalid email address.'
       render 'new'
     end
   end
@@ -26,7 +29,7 @@ class PasswordResetsController < ApplicationController
       flash[:success] = 'Your password has been updated!'
       redirect_to login_path
     else
-      flash[:danger] = 'Invalid password combination.'
+      flash.now[:danger] = 'Invalid password combination.'
       render 'edit'
     end
   end

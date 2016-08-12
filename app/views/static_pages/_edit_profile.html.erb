@@ -1,87 +1,89 @@
 <!-- Hidden input telling rails to fake a PATCH request through a POST request -->
 <input name="_method" type="hidden" value="patch"/>
 
-<div class="col-md-12 panel">
-  <%= form_for profile do |profile_fields| %>
-  <div class="row">
-    <div class="col-md-12">
-      <h1 class="panel-header">Edit Profile</h1>
+<% if user_check %>
+  <div class="col-md-12 panel">
+    <%= form_for profile do |profile_fields| %>
+    <div class="row">
+      <div class="col-md-12">
+        <h1 class="panel-header">Edit Profile</h1>
+      </div>
     </div>
-  </div>
-  <div class="row panel-content">
-    <div class="col-md-5">
-      <h2>Basic Information</h2>
-      <table>
-        <tr>
-          <td>Birthday:</td>
-          <td>
-            <%= profile_fields.fields_for :birthday do |birthday_fields| %>
-              <%= birthday_fields.date_select(:date_object, order: [:month, :day, :year]) %>
-            <% end %>
-          </td>
-        </tr>
-        <tr>
-          <td>College:</td>
-          <td><%= profile_fields.text_field :college, class: "form-control"%></td>
-        </tr>
-        <tr>
-          <td>Hometown:</td>
-          <td>
-            <%= profile_fields.fields_for :hometown do |home_fields| %>
-              <%= home_fields.fields_for :address do |address_fields| %>
-                <%= address_fields.label :city %><br>
-                <%= address_fields.collection_select(:city_id, cities, :id, :name) %><br>
-                <%= address_fields.label :state %><br>
-                <%= address_fields.collection_select(:state_id, states, :id, :name) %><br>
-                <%= address_fields.label :country %><br>
-                <%= address_fields.collection_select(:country_id, countries, :id, :name) %><br>              
+    <div class="row panel-content">
+      <div class="col-md-5">
+        <h2>Basic Information</h2>
+        <table>
+          <tr>
+            <td>Birthday:</td>
+            <td>
+              <%= profile_fields.fields_for :birthday do |birthday_fields| %>
+                <%= birthday_fields.date_select(:date_object, order: [:month, :day, :year]) %>
               <% end %>
-            <% end %>
-          </td>
-        </tr>
-        <tr>
-          <td>Currently Lives:</td>
-          <td>
-            <%= profile_fields.fields_for :residence do |home_fields| %>
-              <%= home_fields.fields_for :address do |address_fields| %>
-                <%= address_fields.label :city %><br>
-                <%= address_fields.collection_select(:city_id, cities, :id, :name) %><br>
-                <%= address_fields.label :state %><br>
-                <%= address_fields.collection_select(:state_id, states, :id, :name) %><br>
-                <%= address_fields.label :country %><br>
-                <%= address_fields.collection_select(:country_id, countries, :id, :name) %><br>              
+            </td>
+          </tr>
+          <tr>
+            <td>College:</td>
+            <td><%= profile_fields.text_field :college, class: "form-control"%></td>
+          </tr>
+          <tr>
+            <td>Hometown:</td>
+            <td>
+              <%= profile_fields.fields_for :hometown do |home_fields| %>
+                <%= home_fields.fields_for :address do |address_fields| %>
+                  <%= address_fields.label :city %><br>
+                  <%= address_fields.collection_select(:city_id, cities, :id, :name) %><br>
+                  <%= address_fields.label :state %><br>
+                  <%= address_fields.collection_select(:state_id, states, :id, :name) %><br>
+                  <%= address_fields.label :country %><br>
+                  <%= address_fields.collection_select(:country_id, countries, :id, :name) %><br>              
+                <% end %>
               <% end %>
-            <% end %>
-          </td>
-        </tr>
-      </table>
+            </td>
+          </tr>
+          <tr>
+            <td>Currently Lives:</td>
+            <td>
+              <%= profile_fields.fields_for :residence do |home_fields| %>
+                <%= home_fields.fields_for :address do |address_fields| %>
+                  <%= address_fields.label :city %><br>
+                  <%= address_fields.collection_select(:city_id, cities, :id, :name) %><br>
+                  <%= address_fields.label :state %><br>
+                  <%= address_fields.collection_select(:state_id, states, :id, :name) %><br>
+                  <%= address_fields.label :country %><br>
+                  <%= address_fields.collection_select(:country_id, countries, :id, :name) %><br>              
+                <% end %>
+              <% end %>
+            </td>
+          </tr>
+        </table>
 
-      <h2>Contact Information</h2>
-      <%= profile_fields.fields_for :contact_info do |contact_fields| %> 
-      <table>
-        <tr>
-          <td>Email address:</td>
-          <td><%= contact_fields.text_field :email %></td>
-        </tr>
-        <tr>
-          <td>Telephone:</td>
-          <td><%= contact_fields.text_field :phone %></td>
-        </tr>
-      </table>
-      <% end %>
-    </div>
-    <div class="col-md-7">
-      <h2>Words to Live By</h2>
-      <%= profile_fields.text_field :words %>
+        <h2>Contact Information</h2>
+        <%= profile_fields.fields_for :contact_info do |contact_fields| %> 
+        <table>
+          <tr>
+            <td>Email address:</td>
+            <td><%= contact_fields.text_field :email %></td>
+          </tr>
+          <tr>
+            <td>Telephone:</td>
+            <td><%= contact_fields.text_field :phone %></td>
+          </tr>
+        </table>
+        <% end %>
+      </div>
+      <div class="col-md-7">
+        <h2>Words to Live By</h2>
+        <%= profile_fields.text_field :words %>
 
-      <h2>About Me</h2>
-      <%= profile_fields.text_field :about %>
+        <h2>About Me</h2>
+        <%= profile_fields.text_field :about %>
+      </div>
     </div>
-  </div>
-  <div class="row panel-footer">
-    <div class="col-md-4 col-md-offset-4">
-      <%= profile_fields.submit "Save Changes", class: "btn btn-primary btn-block" %>
+    <div class="row panel-footer">
+      <div class="col-md-4 col-md-offset-4">
+        <%= profile_fields.submit "Save Changes", class: "btn btn-primary btn-block" %>
+      </div>
     </div>
+    <% end %>
   </div>
-  <% end %>
-</div>
+<% end %>

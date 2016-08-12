@@ -24,6 +24,9 @@ class UsersController < ApplicationController
   end
 
   def show
+    @user = User.find(params[:user_id])
+    @profile = @user.profile
+    @post = @user.posts.build
   end
 
   def edit
@@ -35,7 +38,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :first_name, :last_name, :birthdate, :gender)
+    params.require(:user).permit(:email, :password, :password_confirmation)
   end
 
   def profile_params

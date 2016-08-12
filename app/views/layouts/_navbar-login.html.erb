@@ -6,7 +6,7 @@
       <div class="col-xs-3">
         <div class="logo-container">
           <%= image_tag 'flag.png' %>
-          <a class="navbar-brand" href="/">Danebook</a>
+          <%= link_to "Danebook", user_profile_path(current_user), class: "navbar-brand" %>
         </div>
       </div>
 
@@ -22,7 +22,7 @@
 
       <div class="col-xs-3">
         <div class="name-container">
-          <p class="pull-right"><%= current_user.email %> <%= link_to "Logout", logout_path, method: :delete %></p>
+          <p class="pull-right"><%= current_user.email %> | <%= link_to "Logout", logout_path, method: :delete %></p>
 
         </div>
       </div>

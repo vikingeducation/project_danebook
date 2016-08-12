@@ -19,12 +19,12 @@
 
   <body>
     <% if signed_in_user? %>
-      <%= render "layouts/navbar-login" %>
+      <%= render partial: "layouts/navbar-login", locals: {current_user: current_user} %>
     <% else %>
       <%= render "layouts/navbar" %>
     <% end %>
     <br><br><br>
-    <%= flash.notice %>
+    <%= flash.notice %><%= flash[:error] %>
     <%= yield %>
   </body>
 </html>

@@ -1,0 +1,153 @@
+<section class="container main-header">
+  <div class="row">
+    <div class="col-xs-12">
+      <%= image_tag 'hogwarts_small.jpg' %>
+      <%= image_tag 'user_silhouette_generic.gif', class:"profile" %>
+      <a class="title-name"><%= current_user.profile.first_name %> <%= current_user.profile.last_name %></a>
+    </div>
+  </div>
+
+  <!-- nav links -->
+  <div class="row nav-link-row">
+    <div class="col-xs-2 nav-links">
+      <a style="visibility: hidden"><p>test</p></a>
+    </div>
+    <div class="col-xs-2 nav-links">
+      <p><%= link_to "Timeline", user_timeline_path(current_user) %></p>
+    </div>
+    <div class="col-xs-2 nav-links">
+      <p><%= link_to "About", user_profile_path(current_user) %></p>
+    </div>
+    <div class="col-xs-2 nav-links">
+      <a href="photos.html"><p>Photos</p></a>
+    </div>
+    <div class="col-xs-2 nav-links">
+      <a href="friends.html"><p>Friends</p></a>
+    </div>
+    <div class="col-xs-2 nav-links">
+      <p><%= link_to "Update Profile", edit_user_profile_path(current_user) %></p>
+    </div>
+  </div>
+</section>
+
+<!-- content -->
+<section class="container tl-content">
+  <div class="row content-space">
+    <div class="col-xs-5">
+      <div class="row tl-about">
+        <p>About</p>
+      </div>
+      <div class="row section-about">
+        <div class="col-xs-12">
+          <p><strong>Born on:</strong> <%= @profile.birthdate %></p>
+          <p><strong>Email:</strong> <%= @user.email %></p>
+          <p><strong>Hometown:</strong> <%= @profile.hometown %></p>
+          <p><strong>Currently Lives:</strong> <%= @profile.current_residence %></p>
+        </div>
+      </div>
+
+      <div style="margin-top: 10px" class="row tl-about">
+        <p>Photos</p>
+      </div>
+      <div class="row section-about">
+        <div class="col-xs-4">
+          <%= image_tag 'user_silhouette_generic.gif', class:"ph-preview" %>
+          <%= image_tag 'user_silhouette_generic.gif', class:"ph-preview" %>
+          <%= image_tag 'user_silhouette_generic.gif', class:"ph-preview" %>
+        </div>
+        <div class="col-xs-4">
+          <%= image_tag 'user_silhouette_generic.gif', class:"ph-preview" %>
+          <%= image_tag 'user_silhouette_generic.gif', class:"ph-preview" %>
+          <%= image_tag 'user_silhouette_generic.gif', class:"ph-preview" %>
+        </div>
+        <div class="col-xs-4">
+          <%= image_tag 'user_silhouette_generic.gif', class:"ph-preview" %>
+          <%= image_tag 'user_silhouette_generic.gif', class:"ph-preview" %>
+          <%= image_tag 'user_silhouette_generic.gif', class:"ph-preview" %>
+        </div>
+        <a style="margin-left: 146px" href="photos.html">See More Photos</a>
+      </div>
+
+      <div style="margin-top: 10px" class="row tl-about">
+        <p>Friends (542)</p>
+      </div>
+      <div class="row section-about">
+        <div class="col-xs-4">
+          <%= image_tag 'user_silhouette_generic.gif', class:"ph-preview" %>
+          <a style="margin-left: 12px" href="friends.html">Ron Weasley</a>
+          <%= image_tag 'user_silhouette_generic.gif', class:"ph-preview" %>
+          <a style="margin-left: 30px" href="friends.html">Hagrid</a>
+        </div>
+        <div class="col-xs-4">
+          <%= image_tag 'user_silhouette_generic.gif', class:"ph-preview" %>
+          <a style="margin-left: 7px" href="friends.html">Ginny Weasley</a>
+          <%= image_tag 'user_silhouette_generic.gif', class:"ph-preview" %>
+          <a style="margin-left: 11px" href="friends.html">Draco Malfoy</a>
+        </div>
+        <div class="col-xs-4">
+          <%= image_tag 'user_silhouette_generic.gif', class:"ph-preview" %>
+          <a style="margin-left: 14px" href="friends.html">Dumbledore</a>
+          <%= image_tag 'user_silhouette_generic.gif', class:"ph-preview" %>
+          <a style="margin-left: 6px" href="friends.html">Severus Snape</a>
+        </div>
+        <a style="margin-left: 146px" href="friends.html">See More Friends</a>
+      </div>
+    </div>
+
+    <div class="col-xs-7 post-title">
+
+      <div class="row tl-posts">
+        <div class="col-xs-12">
+          <p>Post</p>
+        </div>
+      </div>
+
+      <%= form_for [@user, @post] do |f| %>
+
+      <div class="row section-posts">
+        <div class="col-xs-12">
+          <%= f.text_area :body, size: "72x3", placeholder: "Tell the world something" %>
+        </div>
+      </div>
+      <div class="row section-submit">
+        <div class="col-xs-12">
+          <%= f.submit "Submit", class: "btn btn-primary btn-sm submit-button" %>
+        </div>
+      </div>
+
+      <% end %>
+
+      <% @user.posts[0..-2].each do |post| %>
+
+      <div class="row old-post">
+        <div class="col-xs-1 pic">
+          <%= image_tag 'user_silhouette_generic.gif', class:"poster-pic" %>
+        </div>
+        <div class="col-xs-11 name">
+          <%= link_to full_name(post.user), user_profile_path(post.user), class:"poster" %>
+          <p>Posted on <%= post.created_at %></p>
+        </div>
+      </div>
+      <div class="row post-content">
+        <div class="col-xs-12">
+          <p><%= post.body %></p>
+        </div>
+      </div>
+      <div class="row post-comment">
+        <div class="col-xs-1">
+          <a href="timeline.html">Like</a>
+        </div>
+        <div class="col-xs-1">
+          <a href="timeline.html">Comment</a>
+        </div>
+        <div class="col-xs-1 col-xs-offset-8">
+          <%= link_to "Delete", user_post_path(@user, post), method: :delete, style: "margin-left: 10px" %>
+        </div>
+      </div>
+
+      <% end %>
+
+    </div>
+
+  </div>
+</section>

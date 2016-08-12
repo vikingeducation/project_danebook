@@ -9,6 +9,7 @@ class User < ApplicationRecord
             :allow_nil => true
 
   has_one :profile
+  has_many :posts
 
   def generate_token
     begin

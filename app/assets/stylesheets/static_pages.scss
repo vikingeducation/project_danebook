@@ -55,6 +55,11 @@ li {
   .name-container{
     font-size: 16px;
     margin-top: 14px;
+    .pull-right{
+      a{
+      color: black;
+      }
+    }
   }
 
 }
@@ -67,8 +72,8 @@ li {
   }
   .profile{
     position: absolute;
-    top: 240px;
-    left: 124px;
+    top: 210px;
+    left: 0;
     width: 130px;
     height: 130px;
   }
@@ -76,8 +81,8 @@ li {
     position: absolute;
     font-size: 24px;
     color: white;
-    top: 308px;
-    left: 264px;
+    top: 290px;
+    left: 138px;
   }
 }
 
@@ -89,7 +94,6 @@ li {
     p{
       text-align: center;
       margin-top: 10px;
-      color: black;
     }
   }
 }
@@ -201,7 +205,7 @@ li {
       border-bottom: solid black 1px;
       border-left: solid black 1px;
       border-right: solid black 1px;
-      button{
+      .submit-button{
         margin: 6px 470px;
       }
     }

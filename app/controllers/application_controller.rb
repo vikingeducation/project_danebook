@@ -1,6 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
+  before_action :require_login, :except => [:index, :new, :create]
+
   private
 
   def sign_in(user)
@@ -29,5 +31,17 @@ class ApplicationController < ActionController::Base
     !!current_user
   end
   helper_method :signed_in_user?
+
+  def full_name(user)
+    "#{user.profile.first_name} #{user.profile.last_name}"
+  end
+  helper_method :full_name
+
+  def require_login
+    unless signed_in_user?
+      flash[:error] = "Not authorized, please sign in!"
+      redirect_to login_path
+    end
+  end
 
 end

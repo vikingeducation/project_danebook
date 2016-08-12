@@ -18,7 +18,7 @@
         <%= simple_form_for @user do |user_fields| %>
           <%= user_fields.simple_fields_for :profile_attributes do |profile_fields| %>
           <div class="row">
-            <div class="col-sm-6" id="first-name">
+            <div class="col-sm-6">
               <%= profile_fields.input :first_name, class:"form-control", label: false, placeholder: "First Name" %>
             </div>
             <div class="col-sm-6">
@@ -50,7 +50,8 @@
                                     end_year: Date.today.year - 12, 
                                     order: [ :month, :day, :year],
                                     class:"form-control",
-                                    label: false %>
+                                    label: false,
+                                    include_blank: true %>
               </div>
             </div>
             <div class="row">

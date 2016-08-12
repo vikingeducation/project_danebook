@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     resource :profile, only: [:show]
     resources :posts, only: [:create, :destroy]
     get "timeline" => "users#show"
+    resources :likes, only: [:create, :destroy]
+    resources :comments, only: [:create, :destroy]
   end
 
   resource :profile, only: [:edit, :update]

@@ -14,6 +14,8 @@ class User < ApplicationRecord
 
   has_one :profile
   has_many :posts
+  has_many :likes
+  has_many :comments
 
   def generate_token
     begin
@@ -25,6 +27,14 @@ class User < ApplicationRecord
     self.auth_token = nil
     generate_token
     save!
+  end
+
+  def find_like(post)
+    likes.where("post_id = ?", post.id)
+  end
+
+  def like_exist?(post)
+    !find_like(post).empty?
   end
 
 end

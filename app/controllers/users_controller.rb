@@ -15,12 +15,12 @@ class UsersController < ApplicationController
   end
 
   def update
-    if current_user.update(whitelisted_user_params) 
+    if current_user.update(user_params) 
       flash[:success] = "Your Danebook profile has been updated"
-      redirect_to current_user
+      redirect_to user_profiles_path(current_user) 
     else
       flash.now[:failure] = "Failed to update your Danebook profile"
-      render :edit
+      redirect_to user_profiles_path(current_user) 
     end
   end
 
@@ -29,7 +29,7 @@ class UsersController < ApplicationController
     if @user.save
       sign_in(@user)
       flash[:success] = "Welcome to Danebook!"
-      redirect_to user_profiles_path(@user)
+      redirect_to user_profiles_path(current_user)
     else
       flash.now[:error] = "Something went wrong and your account was not saved."
       render :new
@@ -45,10 +45,11 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:username, :email, :first_name, :last_name, :password, :password_confirmation)
+      params.require(:user).permit(:email, :first_name, :last_name, :password, :password_confirmation, 
+        profile_attributes: [:about_me, :words_to_live_by, :telephone, :current_location, :hometown, :college, :id])
     end
 
     def set_user
-      @user = User.find(params[:id])
+      @user = current_user
     end
 end

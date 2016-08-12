@@ -1,12 +1,15 @@
 class ProfilesController < ApplicationController
+    before_action :require_current_user, only: [:edit, :update, :destroy]
   def edit
+    @user = current_user
+    @profile = @user.profile
   end
 
   def update
   end
 
   def show
-    @user = User.find(params[:user_id])
+    @user = current_user
     @profile = @user.profile
   end
 
@@ -14,6 +17,6 @@ class ProfilesController < ApplicationController
   end
 
   def index
-    render :show
+
   end
 end

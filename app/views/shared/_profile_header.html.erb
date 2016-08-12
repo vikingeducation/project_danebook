@@ -10,7 +10,7 @@
       Timeline
     </div>
     <div class="col-md-2 about-link">
-      About
+      <%= link_to "About", user_profiles_path(current_user) %>
     </div>
     <div class="col-md-2 photos-link">
       Photos
@@ -19,7 +19,7 @@
       Friends
     </div>
     <div class="col-md-4 edit-link">
-      Edit
+      <%= link_to "Edit", edit_user_profiles_path(@user) %>
     </div>
   </div>
 </div>

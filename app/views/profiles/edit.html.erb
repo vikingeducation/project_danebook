@@ -1,7 +1,50 @@
-<h1>Profile#edit</h1>
-<p>Find me in app/views/profile/edit.html.erb</p>
-      <%= form_for @profile do |p| %>
-        <%= p.text_field :college %>
-        <%= p.text_field :hometown %>
-        <%= p.text_field :current_location%>
+<%= render "shared/search_navbar" %>
+<%= render "shared/profile_header" %>
+
+<div class="container">
+  <div class="row about-user-section">
+    <div class="col-md-12">
+      ABOUT
+      <%= link_to "Edit", edit_user_profiles_path(@user), class: "about-edit-link" %>
+    </div>
+  </div>
+  <div class="row basic-and-words-to-live">
+    <div class="col-md-5 basic">
+      <h3 class="text-center">Basic Information<h3>
+      <%= form_for @user do |p| %>
+        <div class= "col-md-12">
+          Email: <%= p.text_field :email, placeholder: @user.email, class: "form-control" %>
+        </div>
+        <div class= "col-md-12">
+          First Name: <%= p.text_field :first_name, placeholder: @user.first_name, class: "form-control" %>
+        </div>
+        <div class= "col-md-12">
+          Last Name: <%= p.text_field :last_name, placeholder: @user.last_name, class: "form-control" %>
+        </div>
+        <%= p.fields_for :profile do |user_profile| %>
+          <div class= "col-md-12">
+            College: <%= user_profile.text_field :college, placeholder: @profile.college, class: "form-control" %>
+          </div>
+          <div class= "col-md-12">
+            Hometown: <%= user_profile.text_field :hometown, placeholder: @profile.college, class: "form-control" %>
+          </div>
+          <div class= "col-md-12">
+            Current Location: <%= user_profile.text_field :current_location, placeholder: @profile.college, class: "form-control" %>
+          </div>
+          <div class= "col-md-12">
+            Telephone: <%= user_profile.text_field :telephone, placeholder: @profile.college, class: "form-control" %></br>
+          </div>
+        </div>
+        <div class="col-md-7 words-to-live">
+          <h3 class="text-center">Words to Live by</h3>
+          <p><%= user_profile.text_area :about_me, placeholder: @profile.about_me, class: "form-control", cols: 8, rows: 8 %></p>
+          <h3 class="text-center"> About me </h3>
+          <p><%= user_profile.text_area :words_to_live_by, placeholder: @profile.words_to_live_by, class: "form-control", cols: 9, rows: 9 %></p>
+        </div>
       <% end %>
+    </div>
+    <div class="col-md-12">
+      <%= p.submit :Submit, class: "form-control btn btn-primary submit-edit-button" %>
+    </div>
+  <% end %>
+</div>

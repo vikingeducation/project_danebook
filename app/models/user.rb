@@ -1,13 +1,14 @@
 class User < ApplicationRecord
   has_one :profile, dependent: :nullify
+  has_many :photos
 
   before_create :generate_token
   after_create :create_profile
   has_secure_password
 
   validates :password, 
-          :length => { :in => 5..20 }, 
-          :allow_nil => true 
+            :length => { :in => 5..20 }, 
+            :allow_nil => true 
   validates :first_name, :last_name, :email, presence: true
           
   accepts_nested_attributes_for :profile

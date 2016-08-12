@@ -5,20 +5,23 @@
   <div class="row about-user-section">
     <div class="col-md-12">
       ABOUT
+      <%= link_to "Edit", edit_user_profiles_path(@user), class: "about-edit-link" %>
     </div>
   </div>
   <div class="row basic-and-words-to-live">
-    <div class="col-md-4 basic">
-      <%= @profile.id%>
-      <%= @profile.current_location %>
-      <%= @profile.telephone %>
-      <%= @profile.user.first_name %>
-      <%= @profile.user.last_name %>
-      Basic
+    <div class="col-md-5 basic">
+      <h3 class="text-center">Basic Information<h3>
+      Name: <%= @profile.user.first_name.capitalize %> <%= @profile.user.last_name.capitalize %><br>
+      College: <%= @profile.college %></br>
+      Current Location: <%= @profile.current_location %></br>
+      Hometown: <%= @profile.hometown %></br>
+      Telephone: <%= @profile.telephone %>
     </div>
 
-    <div class="col-md-8 words-to-love">
-      Words to Live by
-    </div>
+    <div class="col-md-7 words-to-live">
+      <h3 class="text-center">Words to Live by</h3>
+      <p><%= @profile.about_me%></p>
+    <h3 class="text-center"> About me </h3>
+    <p><%= @profile.words_to_live_by%></p>
   </div>
 </div>

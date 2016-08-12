@@ -41,9 +41,9 @@ class ApplicationController < ActionController::Base
   end
 
   def require_current_user
-    unless params[:id] == current_user.id.to_s
+    unless params[:id] && params[:id] == current_user.id.to_s
       flash[:error] = "You're not allowed there. Nice try."
-      redirect_to root_url
+      redirect_to "http://nouveller.com/404/"
     end
   end 
 

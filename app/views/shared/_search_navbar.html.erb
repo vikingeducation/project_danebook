@@ -14,7 +14,7 @@
       <% if signed_in_user? %>
         <div class="log-in-information">
           <div class= "col-xs-9 col-md-9 logged-in-text">
-            Welcome, <%= link_to current_user.first_name.capitalize, current_user %>
+            Welcome, <%= link_to current_user.first_name.capitalize, user_profiles_path(current_user) %>
             <%= link_to "Logout", logout_path, :method => :delete, html: {class: "danebook-text"} %>
           </div>
         </div>

@@ -19,7 +19,7 @@
             <%= link_to "Logout", logout_path, :method => :delete, html: {class: "danebook-text"} %>
           </div>
         </div>
-      <% else %>
+        <% else %>
           <%= form_tag session_path do  %>
             <div class="log-in-information">
               <div class="col-xs-3 col-md-3">
@@ -39,7 +39,6 @@
               </div>
             </div>
           <% end %>
-          </div>
         </div>
       </div>
     <% end %>

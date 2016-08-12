@@ -179,13 +179,22 @@ body {
 }
 
 .basic-and-words-to-live {
-  
+  margin-bottom: 10px;
 }
 
 .basic {
-  background-color: red;
+  border: 2px solid black
 }
 
 .words-to-live {
-  background-color: black;
+  border: 2px solid black
+}
+
+.about-edit-link {
+  float:right;
+  text-decoration:none;
+}
+
+.submit-edit-button {
+  margin-bottom:50px
 }

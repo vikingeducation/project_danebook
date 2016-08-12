@@ -415,8 +415,13 @@
   		  and (max-width: 1024px) {
   			margin-left: 30px;
   		}
+
+
   	}
 
+    form.button_to {
+      display: inline-block !important;
+    }
 
   	.friend-name:first-child {
   		margin-right: 10px;

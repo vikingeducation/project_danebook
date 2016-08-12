@@ -14,7 +14,7 @@ end
 # GET /users/1
 # GET /users/1.json
 def show
-
+  redirect_to user_profile_path(@user.id, @user.profile.id)
 end
 
 # GET /users/new

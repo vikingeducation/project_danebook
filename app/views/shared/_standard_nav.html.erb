@@ -1,21 +1,15 @@
 <nav role="navigation" class="navbar navbar-default navbar-fixed-top" id="navbar">
-  <div class="container">
-    <div class="row">
-      <div class="col-xs-2" id="logo">
-        <a href="index.html"><img src="images/danish_flag.gif" id="nav-image"></a>
-        <a href="#" class="navbar-brand" id="brand-title">Danebook</a>
-      </div>
-      <form class="navbar-form navbar-middle">
 
-        <div class="col-xs-8 form-group">
-          <input class="form-control" type="text" width="100%" id="user-search" placeholder="Search for Users">
-        </div>
+  <a href="/"><img src="images/danish_flag.gif" id="nav-image"></a>
 
-      </form>
-      <div class="col-xs-1 col-xs-offset-1">
-        <h4 id="current-user">Harry</h>
-        </div>  
-      </div>
+  <a href="#" class="navbar-brand" id="white-brand" class="white down">Danebook</a>
+  <form class="navbar-form navbar-middle">
+
+    <div class="col-xs-6 col-xs-offset-2 form-group">
+      <input class="form-control" type="text" width="100%" id="user-search" placeholder="Search for Users">
     </div>
-  </div>
-</nav>
+
+  </form>
+  <h4 id="current-user">Harry</h4>
+  <h4><%= link_to "Log Out", session_path, method: "delete", id: "logout-link" %></h4>
+  </nav>

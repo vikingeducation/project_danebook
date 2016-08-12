@@ -6,62 +6,61 @@
       </header>
 
       <%= form_for :user, url: users_path do |u| %>
-      <div class="row">
-        <div class="col-xs-5" id="first-name">
+        <div class="col-xs-6" id="first-name">
           <h4><%= u.text_field :first_name, placeholder: "First Name" %> </h4>
         </div>
-        <div class="col-xs-1" id="gap-name"></div>
-        <div class="col-xs-5" id="last-name">
+        <div class="col-xs-6" id="last-name">
           <h4><%= u.text_field :last_name, placeholder: "Last Name" %> </h4>
         </div>
-      </div>
 
-        <div class="row">
-          <div class="col-xs-11">
-            <h4><%= u.text_field :email, placeholder: "Email" %></h4>
-          </div>
-        </div>    
-        <div class="row">
-          <div class="col-xs-11">
-            <h4><%= u.password_field :password, placeholder: "Password" %> </h4>
-          </div>
-        </div>  
-        <div class="row">
-          <div class="col-xs-11">
-            <h4><%= u.password_field :password_confirmation, placeholder: "Confirm your password" %></h4>
-          </div>
-        </div>  
-      <div class="row">
-        <div class="col-xs-10">
+ 
+        <div class="col-xs-12">
+          <h4><%= u.text_field :email, placeholder: "Email" %></h4>
+        </div>
+
+
+
+        <div class="col-xs-12">
+          <h4><%= u.password_field :password, placeholder: "Password" %> </h4>
+        </div>
+
+
+ 
+        <div class="col-xs-12">
+          <h4><%= u.password_field :password_confirmation, placeholder: "Confirm your password" %></h4>
+        </div>
+
+
+        <div class="col-xs-12">
           <h4>Birthday</h4>
         </div>
-      </div>
-      <div class="row">
 
-          
-                    <%
-           date_wrap_open = '<div class="col-xs-4"><div class="form-group">'.html_safe
-           date_wrap_close = '</div></div>'.html_safe
-           date_separator = "#{date_wrap_close}#{date_wrap_open}"
-           %>
 
-           <%= date_wrap_open %>
 
-             <%= u.date_select(
-               :birth_date,
-               {
-                 :order => [:day, :month, :year],
-                 :date_separator => date_separator,
-                 :start_year => Date.today.year,
-                 :end_year => 120.years.ago.year
-               },
-               {:class => 'form-control'}
-             ) %>
 
-           <%= date_wrap_close %>
+        <%
+        date_wrap_open = '<div class="col-xs-4"><div class="form-group">'.html_safe
+        date_wrap_close = '</div></div>'.html_safe
+        date_separator = "#{date_wrap_close}#{date_wrap_open}".html_safe
+        %>
 
-      </div>
-      <div class="row">
+        <div class="col-xs-12">
+        <div class="form-group">
+
+        <%= u.date_select(
+         :birth_date,
+         {
+           :order => [:day, :month, :year],
+           :date_separator => date_separator,
+           :start_year => Date.today.year,
+           :end_year => 120.years.ago.year
+         },
+         {:class => 'form-control'}
+         ) %>
+  
+        </div>
+        </div>
+
         <div class="col-xs-12" id="gender-input">
           <%= u.radio_button :gender, "male", id: "gender-input-female" %><p class="gender">Female</p>
           <%= u.radio_button :gender, "female", id: "gender-input-male" %><p class="gender">Male</p>
@@ -69,51 +68,48 @@
 <!-- 
           <input type="radio" name="gender" id="gender-input-female" value="Female"><p id="female">Female</p>
           <input type="radio" name="gender" id="gender-input-male" value="Male"><p id="male">Male</p>
-  -->         
-        </div>
+        -->         
+    </div>
+      <div class="col-xs-11">
+        <%= u.submit "Sign Up!", id: "signup-button" %>
+        <% end %>
       </div>
-      <div class="row">
-        <div class="col-xs-11">
-          <%= u.submit "Sign Up!", id: "signup-button" %>
-      <% end %>
-        </div>
-      </div>      
-    </div>  
+    </div>      
 
-    <div class="col-sm-7 col-sm-pull-5" id="info">
-      <div class="row">
-        <div class="col-xs-11 col-xs-offset-1" id="invisible">
-          <h5>This row is invisible for formatting purposes (because I'm lazy).</h5>
-        </div>
-      </div>
-      <header class="row">
-        <div class="col-xs-12">
-          <h2 id="connect">Connect with all your friends!</h2>
-        </div>
-      </header>
-      <div class="row">
-        <div class="col-xs-11 col-xs-offset-1">
-          <h4 class="h4-enlarge"><li>See photos and updates in your news feed.</li></h4>
-        </div>
-
-      </div>
-      <div class="row">
-        <div class="col-xs-11 col-xs-offset-1">
-          <h4><li>Post your status for the world to see from your profile.</li></h4>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-11 col-xs-offset-1">
-          <h4><li>Get in touch with your friends by "friending" them.</li></h4>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-11 col-xs-offset-1">
-          <h4><li>Like things because you're a positive person!</li></h4>
-        </div>
+  <div class="col-sm-7 col-sm-pull-5" id="info">
+    <div class="row">
+      <div class="col-xs-11 col-xs-offset-1" id="invisible">
+        <h5>This row is invisible for formatting purposes (because I'm lazy).</h5>
       </div>
     </div>
+    <header class="row">
+      <div class="col-xs-12">
+        <h2 id="connect">Connect with all your friends!</h2>
+      </div>
+    </header>
+    <div class="row">
+      <div class="col-xs-11 col-xs-offset-1">
+        <h4 class="h4-enlarge"><li>See photos and updates in your news feed.</li></h4>
+      </div>
 
+    </div>
+    <div class="row">
+      <div class="col-xs-11 col-xs-offset-1">
+        <h4><li>Post your status for the world to see from your profile.</li></h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-11 col-xs-offset-1">
+        <h4><li>Get in touch with your friends by "friending" them.</li></h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-11 col-xs-offset-1">
+        <h4><li>Like things because you're a positive person!</li></h4>
+      </div>
+    </div>
   </div>
+
+</div>
 
 </main>

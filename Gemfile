@@ -27,7 +27,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 # Use Unicorn as the app server
 # gem 'unicorn'
-
+gem 'validates_timeliness', '~> 4.0'
 gem 'rails_12factor', group: :production
 gem 'pg'
 # Use Capistrano for deployment

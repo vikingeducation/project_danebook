@@ -1,4 +1,5 @@
 
+<!-- replace static content with content from @user's profile, except birth_date -->
 <div id="about" class="container">
   <header class="row" id="row-header">
     <div class="col-xs-2 col-xs-offset-5 content-center">
@@ -19,8 +20,9 @@
         <div class="col-xs-1 col-xs-offset-1">
           <h4>Birthday:</h4>
         </div>
+
         <div class="col-xs-4 col-xs-offset-3">
-          <h4 class="not-bold">July 31st 1980</h4>
+          <h4 class="not-bold"><%= @user.birth_date.to_formatted_s(:rfc822)  %></h4>
         </div>  
       </div>
       <div class="row">
@@ -28,7 +30,7 @@
           <h4>College:</h4>
         </div>
         <div class="col-xs-5 col-xs-offset-3">
-          <h4 class="not-bold">Hogwarts College</h4>
+          <h4 class="not-bold"><%= @profile.college %></h4>
         </div>  
       </div>
       <div class="row">
@@ -36,7 +38,7 @@
           <h4>Hometown:</h4>
         </div>
         <div class="col-xs-7 col-xs-offset-3">
-          <h4 class="not-bold">Godrick's Hollow, England</h4>
+          <h4 class="not-bold"><%= @profile.hometown %></h4>
         </div>  
       </div>
       <div class="row">
@@ -44,7 +46,7 @@
           <h4>Currently Lives:</h4>
         </div>
         <div class="col-xs-7">
-          <h4 class="not-bold">Godrick's Hollow, England</h4>
+          <h4 class="not-bold"><%= @profile.currently_lives %></h4>
         </div>  
       </div>
       <div class="row" id="contact-information">
@@ -57,7 +59,7 @@
           <h4>Email:</h4>
         </div>
         <div class="col-xs-7">
-          <h4 class="not-bold">harry_potter@hogwarts.edu</h4>
+          <h4 class="not-bold"><%= @user.email %></h4>
         </div>  
       </div>
       <div class="row">
@@ -65,7 +67,7 @@
           <h4>Telephone:</h4>
         </div>
         <div class="col-xs-7">
-          <h4 class="not-bold">555-123-4567</h4>
+          <h4 class="not-bold"><%= @profile.telephone %></h4>
         </div>  
       </div>
     </div>
@@ -77,7 +79,7 @@
       </div>
       <div class="row padding-left">
         <div class="col-xs-11">
-          <p id="live-words">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus adipisci perspiciatis, beatae sapiente deserunt consectetur dolor in quas voluptatibus cum.</p>
+          <p id="live-words"><%= @profile.life_words %></p>
         </div>  
       </div>
       <div class="row padding-left">
@@ -87,7 +89,7 @@
       </div>
       <div class="row padding-left">
         <div class="col-xs-11">
-          <p id="live-words">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus adipisci perspiciatis, beatae sapiente deserunt consectetur dolor in quas voluptatibus cum. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur doloremque eligendi mollitia cum labore temporibus voluptate nobis odit excepturi fugit maiores ipsum ex repellendus deleniti consequatur, provident ut rem error!</p>
+          <p id="live-words"><%= @profile.about_me %></p>
         </div>  
       </div>
     </div>

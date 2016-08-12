@@ -10,10 +10,10 @@
         </header>
         <div class="row border-3sides border-bottom">
           <div class="col-sm-10 col-sm-offset-1">
-            <p><strong>Born on:</strong> July 31st, 1980</p>
-            <p><strong>Went to school at:</strong> Howarts</p>
-            <p><strong>Hometown:</strong> Godrick's Hollow, England</p>
-            <p><strong>Currently Lives:</strong> Godrick's Hollow</p>
+            <p><strong>Born on: </strong><%= @user.birth_date.to_formatted_s(:rfc822) %></p>
+            <p><strong>Went to school at:</strong><%= @profile.college %></p>
+            <p><strong>Hometown:</strong> <%= @profile.hometown%> </p>
+            <p><strong>Currently Lives:</strong> <%= @profile.currently_lives %></p>
           </div>
         </div>
 

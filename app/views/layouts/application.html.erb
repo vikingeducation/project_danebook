@@ -10,21 +10,29 @@
 </head>
 <body>
 
-  <% if @current_user %>
-    <%= render 'shared/login_nav' %>
-  <% else %>
+  <% if signed_in_user? %>
     <%= render 'shared/standard_nav' %>
+  <% else %>
+    <%= render 'shared/login_nav' %>
   <% end %>
 
   <%= render 'shared/profile_nav', locals: {about: @about, friends: @friends, timeline: @timeline, photos: @photos} unless @home %>
 
   <%= yield %>
 
-    <h1><%= flash[:success] %></h1>
-    <h1><%= flash[:error] %></h1>
+    <div id="flash-success-div">
+      <h3><%= flash[:success] %></h3>
+    </div>
+
+    <div id="flash-errors-div">
+      <h3><%= flash[:error] %></h3>
+    </div>
+
+
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/js/bootstrap.min.js" integrity="sha384-vZ2WRJMwsjRMW/8U7i6PWi6AlO1L79snBrmgiDpgIWJ82z8eA5lenwvxbMV1PAh7" crossorigin="anonymous"></script>
   <script src="bootstrap.min.js"></script>
+  
 </body>
 </html>

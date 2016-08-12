@@ -3,12 +3,13 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      sign_in(@user)  # <<<<<<<
       flash[:success] = "Created new user!"
+      sign_in(@user) 
       redirect_to about_path
     else
-      flash[:error] = "Failed to Create User!"
-      redirect_to root_path
+      flash[:error] = @user.errors.full_messages.first
+      @home = true
+      render 'static_pages/home'
     end
   end
 

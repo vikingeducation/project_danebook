@@ -19,8 +19,8 @@ class StaticPagesController < ApplicationController
     @user = current_user
     @profile = Profile.find_by_user_id(@user.id) if @user
     # pull a random one 
-    @profile ||= Profile.all.sample
-    @user ||= @profile.user
+    @user ||= User.all.sample
+    @profile ||= @user.profile
   end
 
   def photos

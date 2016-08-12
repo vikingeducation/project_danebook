@@ -80,7 +80,7 @@ class User < ActiveRecord::Base
       everyone(user.id).joins(:profile).where("profiles.user_id = users.id").order("profiles.last_name ASC").paginate(page: page, per_page: 10)
     else
       # Calling the pg search scope defined in the Profile model.
-      User.search_by_full_name(search).paginate(page: page, per_page: 10)
+      everyone(user.id).search_by_full_name(search).paginate(page: page, per_page: 10)
     end
   end
 

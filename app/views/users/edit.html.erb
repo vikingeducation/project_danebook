@@ -1,19 +1,19 @@
 
 <main class="container">
-  <%= form_for @user do |user_fields| %>
+  <%= simple_form_for @user do |user_fields| %>
   <div class="row">
     <!-- cover photo -->
     <div class="col-md-10 col-md-offset-1 col-xs-12" id="cover-photo">
       <img src="https://s3.amazonaws.com/viking_education/web_development/web_app_eng/hogwarts_small.jpg" class="img-responsive">
       
-      <%= user_fields.fields_for :profile do |profile_fields| %>
+      <%= user_fields.simple_fields_for :profile do |profile_fields| %>
       <div class="row">
         <!--profile picture which is overlayed on cover photo-->
         <div class="col-md-6 col-md-offset-1 col-xs-10" id="profile-picture">
           <img src="https://s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif">
           <h2>
-            <%= profile_fields.text_field :first_name, class:"form-control" %>
-            <%= profile_fields.text_field :last_name, class:"form-control" %>
+            <%= profile_fields.input :first_name, class:"form-control", label: false %>
+            <%= profile_fields.input :last_name, class:"form-control", label: false %>
           </h2>
         </div>
       </div>
@@ -37,7 +37,13 @@
                 <p><b>Birthday:</b></p>
               </div>
               <div class="col-xs-7">
-                <%= profile_fields.date_field :birthday, class:"form-control" %>
+                <%= profile_fields.input :birthday, as: :date,                  start_year: Date.today.year - 90,
+                                    end_year: Date.today.year - 12, 
+                                    order: [:day, :month, :year],
+                                    class:"form-control",
+                                    label: false,
+                                    include_blank: true
+                                     %>
               </div>
             </div>
             <div class="row">
@@ -46,7 +52,7 @@
               </div>
               <div class="col-xs-7">
                 <!-- change text to input type so user can edit.-->
-                <%= profile_fields.text_field :college, class:"form-control" %>
+                <%= profile_fields.input :college, class:"form-control", label: false %>
               </div>
             </div>
             <div class="row">
@@ -54,7 +60,7 @@
                 <p><b>Hometown:</b></p>
               </div>
               <div class="col-xs-7">
-                <%= profile_fields.text_field :hometown, class:"form-control" %>
+                <%= profile_fields.input :hometown, class:"form-control", label: false %>
               </div>
             </div>
             <div class="row">
@@ -72,24 +78,24 @@
                 <p><b>Email:</b></p>
               </div>
               <div class="col-xs-7">
-                <%= user_fields.email_field :email, class:"form-control" %>
+                <%= user_fields.input :email, class:"form-control", label: false %>
               </div>
             </div>
-            <%= user_fields.fields_for :profile do |profile_fields| %>
+            <%= user_fields.simple_fields_for :profile do |profile_fields| %>
             <div class="row">
               <div class="col-xs-5">
                 <p><b>Telephone:</b></p>
               </div>
               <div class="col-xs-7">
-                 <%= profile_fields.text_field :telephone, class:"form-control" %>
+                 <%= profile_fields.input :telephone, class:"form-control", label: false %>
               </div>
             </div>
           </div>
           <div class="col-md-6" id="about-me">
             <h3>Words to Live By</h3>
-            <%= profile_fields.text_area :words_to_live_by, class:"form-control", rows:"3" %>
+            <%= profile_fields.input :words_to_live_by, class:"form-control", label: false, input_html: {rows: "3"}  %>
             <h3>About Me</h3>
-            <%= profile_fields.text_area :about_me, class:"form-control", rows:"6" %>
+            <%= profile_fields.input :about_me, class:"form-control", label: false, input_html: {rows: "6"}  %>
           </div>
         </div>
         <% end %>

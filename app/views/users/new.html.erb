@@ -16,14 +16,16 @@
       <div class="col-sm-5" id="sign-up">
         <h1>Sign Up</h1>
         <%= simple_form_for @user do |user_fields| %>
+          <%= user_fields.simple_fields_for :profile_attributes do |profile_fields| %>
           <div class="row">
             <div class="col-sm-6" id="first-name">
-              <input name="user[profile_attributes][first_name]" type="text" class="form-control" placeholder="First Name">
+              <%= profile_fields.input :first_name, class:"form-control", label: false, placeholder: "First Name" %>
             </div>
             <div class="col-sm-6">
-              <input name="user[profile_attributes][last_name]" type="text" class="form-control" placeholder="Last Name">
+              <%= profile_fields.input :last_name, class:"form-control", label: false, placeholder: "Last Name" %>
             </div>
           </div>
+          <% end %>
           <div class="row" id="sign-up-row">
             <div class="col-xs-12">
             <%= user_fields.input :email, placeholder: "Your Email", class:"form-control", label: false %>
@@ -39,26 +41,33 @@
               <%= user_fields.input :password_confirmation, placeholder: "Confirm Your Password", class:"form-control", label: false %>
             </div>
           </div>
-          <h4>Birthday</h4>
-          <div class="row">
-            <div class="col-xs-12">
-              <input type="date" name="user[profile_attributes][birthday]">
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-xs-12">
-              <div class="radio">
-                <input type="radio" name="user[profile_attributes][gender]" id="Female" value="female">
-                <label>
-                  Female
-                </label>
-                <input type="radio" name="user[profile_attributes][gender]" id="Male" value="male">
-                <label>
-                  Male
-                </label> 
+          <%= user_fields.simple_fields_for :profile_attributes do |profile_fields| %>
+
+            <h4>Birthday</h4>
+            <div class="row">
+              <div class="col-xs-12">
+                <%= profile_fields.input :birthday, as: :date,                  start_year: Date.today.year - 90,
+                                    end_year: Date.today.year - 12, 
+                                    order: [ :month, :day, :year],
+                                    class:"form-control",
+                                    label: false %>
               </div>
             </div>
-          </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="radio">
+                  <input type="radio" name="user[profile_attributes][gender]" id="Female" value="female">
+                  <label>
+                    Female
+                  </label>
+                  <input type="radio" name="user[profile_attributes][gender]" id="Male" value="male">
+                  <label>
+                    Male
+                  </label> 
+                </div>
+              </div>
+            </div>
+          <% end %>
           <div class="row">
             <div class="col-xs-12">
               <input type="submit" name="commit" value="Sign Up!" data-disable-with="Create User" class="btn btn-success btn-block">

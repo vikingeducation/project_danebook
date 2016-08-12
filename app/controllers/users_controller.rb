@@ -15,7 +15,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if @user.save
+    if @user.save!
       sign_in(@user)
       flash[:success] = "Your account has been created"
       redirect_to user_timeline_path(@user)
@@ -31,11 +31,12 @@ class UsersController < ApplicationController
 
   def edit
     @user = current_user
+    @profile = @user.profile || @user.build_profile
   end
 
   def update
     @user = current_user
-    if @user.update!(user_params)
+    if @user.update(user_params)
       flash[:success] = "Your profile has been updated"
       redirect_to user_path(current_user)
     else

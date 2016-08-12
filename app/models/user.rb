@@ -10,7 +10,7 @@ class User < ApplicationRecord
             :length => {:minimum => 6, :message => " must be at least 6 characters"},
             :on => :create
   has_one :profile
-  accepts_nested_attributes_for :profile
+  accepts_nested_attributes_for :profile, :update_only => true
 
   def generate_token
     begin

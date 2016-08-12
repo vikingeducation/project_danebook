@@ -6,4 +6,9 @@ module UsersHelper
     end
   end
 
+  def friending_link(user)
+    unless current_user == user
+      button_to "Friend #{user}", friendings_path(friend_id: user.id), method: :post
+    end
+  end
 end

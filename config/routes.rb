@@ -19,6 +19,8 @@ Rails.application.routes.draw do
               end
   end
 
+  resources :friendings, only: [:create, :destroy]
+
   resource :profile, only: [:edit, :update]
 
   resource :session, only: [:new, :create, :destroy]

@@ -1,6 +1,7 @@
 class ProfilesController < ApplicationController
 
   skip_before_action :correct_user
+  before_action :correct_profile
 
   def update
     @profile = current_user.profile

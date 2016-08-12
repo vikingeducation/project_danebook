@@ -84,7 +84,7 @@ class ApplicationController < ActionController::Base
   end
 
   def correct_profile
-    case current_user.profile_id
+    case current_user.profile.id
     when params[:id].to_i
       return true
     else

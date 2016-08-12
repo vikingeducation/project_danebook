@@ -11,10 +11,10 @@
 						<h4>About (Text Area)</h4>
 					</div>
 					<div class="col-xs-12 about-content">
-						<p><b>Born on:</b> Julyl 31st, 1980</p>
-						<p><b>Went to school at:</b> Hogwarts</p>
-						<p><b>Hometown:</b> Godrick's Hollow, England</p>
-						<p><b>Currently Lives:</b> Godrick's Hollow</p>
+						<p><b>Born on:</b> <%= @user.birth_date.strftime('%B %e, %Y') %></p>
+						<p><b>Went to school at:</b> <%= @user.profile.college %></p>
+						<p><b>Hometown:</b> <%= @user.profile.hometown %></p>
+						<p><b>Currently Lives:</b> <%= @user.profile.currently_lives %></p>
 					</div>
 				</section><!-- About Section -->
 				<section class="row section-container">
@@ -50,7 +50,7 @@
 							<a href="#"><img src="http://placehold.it/80x80"></a>
 						</div>
 						<div class="col-xs-12 text-center">
-							<a class="friend-name" href="photos.html">See More Photos</a>
+							<%= link_to "See More Photos", user_photos_path(@user), class: "friend-name"%>
 						</div>
 					</div>
 				</section><!-- Photos Section -->
@@ -84,7 +84,7 @@
 							<p><a class="friend-name" href="#">paragraph text</a></p>
 						</div>
 						<div class="col-xs-12 text-center">
-							<a class="friend-name" href="friends.html">See More Friends</a>
+							<%= link_to "See More Friends", user_friends_path(@user), class: "friend-name"%>
 						</div>
 					</div>
 				</section><!-- Friends Section -->

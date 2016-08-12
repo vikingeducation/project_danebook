@@ -104,7 +104,7 @@
   	min-width: 130px;
   	border: 2px solid black;
   	position: relative;
-  	bottom: 20px;
+  	bottom: 25px;
   	z-index: 1001;
 
   	@media only screen and (max-width: 396px) {
@@ -163,6 +163,7 @@
   .nav-pills {
   	li {
   		border-right: 2px solid black;
+      min-width: 125px;
 
   		@media only screen
   	  		and (max-width: 767px){
@@ -177,6 +178,7 @@
 
   			span {
   				color: #d0d0d0;
+          font-size: 0.8em;
   			}
   		}
   	}

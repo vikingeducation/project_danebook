@@ -11,10 +11,10 @@
         <li role="presentation"><%= link_to "Timeline", root_path %></li>
         <li role="presentation"  class= "active-tab"><%= link_to "About", user_profile_path(user, user.profile) %></li>
         <li role="presentation"><%= link_to user_photos_path(@user.id) do %>
-            Photos <span>(123)</span>
+            Photos <span class="small-grey">(123)</span>
           <% end %></li>
         <li role="presentation"><%= link_to user_friends_path(@user.id) do %>
-          Friends <span>(542)</span>
+          Friends <span class="small-grey">(542)</span>
         <% end %></li>
       </ul>
     </div><!-- Nav Menu -->

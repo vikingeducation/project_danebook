@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resource :friend, only: [:show]
     resource :photo, only: [:show]
   end
-
+  resources :posts
   resource :session, only: [ :new, :create, :destroy ]
 
   get '/friends' => "static_pages#friends"

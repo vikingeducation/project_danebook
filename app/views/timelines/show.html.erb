@@ -9,7 +9,7 @@
         <!--profile picture which is overlayed on cover photo-->
         <div class="col-md-6 col-md-offset-1 col-xs-10" id="profile-picture">
           <img src="https://s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif">
-          <h2><%= user_header_name %></h2>
+          <h2><%= user_header_name(real_user_id) %></h2>
         </div>
       </div>
     </div>
@@ -113,165 +113,20 @@
               <div class="row">
               <!--Form to enter a new post-->
                 <div class="col-xs-12 timeline-title">
-                  <h5>Post (copied)</h5>
+                  <h5>New Posts</h5>
                 </div>
+                <%= simple_form_for @post do |post_fields| %>
                 <div class ="col-xs-12" id="post-container">
-                  <textarea rows="4" placeholder="Tell the world something..."></textarea>
+                  <%= post_fields.input :body, input_html: {rows: "4"}, label: false, placeholder: "Tell the world something..." %>
                 </div>
                 <div class="col-xs-12" id="post-button-container">
-                  <a class="btn btn-primary pull-right" href=#post role="button">Post!</a>
+                  <%= post_fields.submit "Post!", class:"btn btn-primary pull-right"%>
                 </div>
+                <% end %>
                 <!-- Previous posts -->
-                <div class="col-xs-12" id="previous-post-container">
-                  <div class="row">
-                    <div class="col-xs-12" id="author-info">
-                      <a href=#authorprofile><img src=https://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png class="img-responsive"></a>
-                      <h6><a href="about.html">Harry Potter</a>
-                      <br>Posted on Thursday 6/1/2014</h6>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-xs-12" id="post-content">
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                      proident, sunt in culpa qui.</p>
-                    </div>
-                  </div>
-                  <div class="row" id="post-feedback">
-                    <div class="col-xs-1">
-                      <a href=#likepost><h6>Like</h6></a>
-                    </div>
-                    <div class="col-xs-1">
-                      <a href=#comment><h6>Comment</h6></a>
-                    </div>
-                    <div class="col-xs-2 col-xs-offset-8">
-                      <a href=#deletepost><h6>Delete</h6></a>
-                    </div>
-                  </div>
-                </div>
-                <!-- Previous posts with likes -->
-                <div class="col-xs-12" id="previous-post-container">
-                  <div class="row">
-                    <div class="col-xs-12" id="author-info">
-                      <a href=#authorprofile><img src=https://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png class="img-responsive"></a>
-                      <h6><a href="about.html">Harry Potter</a>
-                      <br>Posted on Thursday 5/21/2014</h6>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-xs-12" id="post-content">
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                      proident, sunt in culpa qui.</p>
-                    </div>
-                  </div>
-                  <!-- Post feedback area -->
-                  <div class="row" id="post-feedback">
-                    <div class="col-xs-1">
-                      <a href=#likepost><h6>Like</h6></a>
-                    </div>
-                    <div class="col-xs-1">
-                      <a href=#comment><h6>Comment</h6></a>
-                    </div>
-                    <div class="col-xs-2 col-xs-offset-8">
-                      <a href=#deletepost><h6>Delete</h6></a>
-                    </div>
-                    <div class="col-xs-6">
-                      <h6><a href=#likerprofile>Hermoine Granger</a> likes this.</h6>
-                    </div>
-                  </div>
-                </div>
-                <!-- Previous post with comments -->
-                <div class="col-xs-12" id="previous-post-container">
-                  <div class="row">
-                    <div class="col-xs-12" id="author-info">
-                      <a href=#authorprofile><img src=https://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png class="img-responsive"></a>
-                      <h6><a href="about.html">Harry Potter</a>
-                      <br>Posted on Thursday 5/21/2014</h6>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-xs-12" id="post-content">
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                      proident, sunt in culpa qui.</p>
-                    </div>
-                  </div>
-                  <div class="row" id="post-feedback">
-                    <div class="col-xs-1">
-                      <a href=#unlikepost><h6>Unlike</h6></a>
-                    </div>
-                    <div class="col-xs-2 pull-right">
-                      <a href=#deletepost><h6>Delete</h6></a>
-                    </div>
-                    <div class="col-xs-12">
-                      <h6>You and <a href=#likerprofile>Hermoine Granger</a> and 3 others like this.</h6>
-                    </div>
-                  </div>
-                  <!-- comments section -->
-                  <div class="row" id="comments-section">
-                    <div class="col-xs-2">
-                      <a href=#authorprofile><img src=https://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png class="img-responsive"></a>
-                    </div>
-                    <!-- commenter info and comment-->
-                    <div class="col-xs-10">
-                      <h6><a href=#commentauthorprofile>Ron Weasley</a> said on Thursday 5/21/2014:</h6>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                      consequat. Duis aute irure dolor in reprehenderit in</p>
-                      <div class="row">
-                        <div class="col-xs-1">
-                          <h6><a href=#likecomment>Like</a></h6>
-                        </div>
-                        <div class="col-xs-6">
-                          <h6> 3 other people like this</h6>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-xs-2">
-                      <a href=#authorprofile><img src=https://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png class="img-responsive"></a>
-                    </div>
-                    <!-- User's own comment -->
-                    <div class="col-xs-10">
-                      <h6><a href="about.html">Harry Potter</a> said on Friday 5/22/2014:</h6>
-                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                      consequat. Duis aute irure dolor in reprehenderit in</p>
-                      <div class="row">
-                        <div class="col-xs-1">
-                          <h6><a href=#likecomment>Like</a></h6>
-                        </div>
-                        <div class="col-xs-6">
-                          <h6> 3 other people like this</h6>
-                        </div>
-                        <div class="col-xs-2 pull-right">
-                          <a href=#deletecomment><h6>Delete</h6></a>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- space to write comment -->
-                    <div class="col-xs-12" id="write-comment">
-                      <textarea rows="4" placeholder="Write a comment..." id="post-comment-textarea"></textarea>
-                    </div>
-                    <div class="col-xs-2 col-xs-offset-1">
-                      <h6><a href=#cancelcomment>Cancel</a></h6>
-                    </div>
-                    <div class="col-xs-2 col-xs-offset-6">
-                      <a href=#postcomment class="btn btn-primary btn-sm" role="button">Comment</a>
-                    </div>
-                  </div>
-                </div>
+                <% @timeline_user.posts_received.each do |post| %>
+                  <%= render partial: "shared/post_box", locals: {post: post} %>
+                <% end %>
               </div>
             </div>
           </div>

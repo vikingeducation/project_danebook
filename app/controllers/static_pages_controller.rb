@@ -1,26 +1,23 @@
 class StaticPagesController < ApplicationController
+  skip_before_action :require_login, only: [:home]
+  before_action :require_current_user, only: [:edit, :update, :destroy]
 
   def home
-    @header_path = 'layouts/login_header'
+    @user = User.new
   end
 
   def timeline
-    @header_path = 'layouts/loggedin_header'
   end
 
   def friends
-    @header_path = 'layouts/loggedin_header'
   end
 
   def about
-    @header_path = 'layouts/loggedin_header'
   end
 
   def photos
-    @header_path = 'layouts/loggedin_header'
   end
 
   def about_edit
-    @header_path = 'layouts/loggedin_header'
   end
 end

@@ -6,8 +6,12 @@
 
 /********** All **************/
 
+.container-fluid{
+    padding: 0px 0px 0px 0px;
+}
+
 body{
-    background-color: #EFF;
+    background-color: #EDF0F5;
 }
 
 /********** Home Page **************/
@@ -64,6 +68,7 @@ body{
 .navbar{
     background: linear-gradient(#46A, #359);
     height: 80px;
+    padding-left: 0;
     .navbar-brand{
         color: white;
         font-size: 3em;

@@ -10,4 +10,8 @@ module StaticPagesHelper
     end
   end
 
+  def get_header_path
+    action_name == 'home' ? 'layouts/login_header' : 'layouts/loggedin_header'
+  end
+
 end

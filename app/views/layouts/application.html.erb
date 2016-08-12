@@ -7,8 +7,12 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  <%= render @header_path %>
+  <%= render get_header_path %>
   <body class="container-fluid">
     <%= yield %>
+    <div class="row">
+      <p class="success"><%= flash[:success] if flash[:success] %></p>
+      <p class="error"><%= flash[:error] if flash[:error] %></p>
+    </div>
   </body>
 </html>

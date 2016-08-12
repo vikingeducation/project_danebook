@@ -22,13 +22,13 @@
     <%= render partial: "/comments/form", locals: { commentable: post } %>
 </div>
 <div class="container">
-
+  <div class="col-sm-10">
     <% post.comments.each do |comment| %>
     <%= render partial: "/comments/comment", locals: { comment: comment, commentable: post } %>
     <br>
     <span>------------</span>
     <br>
     <% end %>
-
+  </div>
 </div>
 </div>

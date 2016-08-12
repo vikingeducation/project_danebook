@@ -9,6 +9,8 @@ module LikesHelper
       link_to "You and #{ pluralize(like_count-1, 'other') } like this", like_path(likeable_id: post.id, likeable_type: "Post"), title: "#{post.recent_likes} Like this",  method: :delete
     end
   end
+
+  
 # REFACTOR!!!
   def comment_likes_link(comment)
     current_like = current_user.likes.where(likeable_id: comment.id, likeable_type: "Comment")

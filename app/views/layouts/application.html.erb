@@ -10,7 +10,11 @@
 
     </head>
     <body>
-
+      <% if @user.errors.any? %>
+      <%= @users.errors.full_messages.each do |message| %>
+      <div><%= message %></div>
+      <% end %>
+      <% end %>
     <% if signed_in_user? %>
         <%= render partial: "/shared/navbar" %>
     <% else %>

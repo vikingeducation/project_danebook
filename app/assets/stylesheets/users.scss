@@ -18,8 +18,11 @@ body {
   }
 }
 
+#username {
+  font-weight: bold;
+}
+
 #upper {
-border: solid;
 margin-bottom: 15px;
 }
 
@@ -68,7 +71,6 @@ margin-bottom: 15px;
 }
 
 #cover-nav {
-  border: 1px solid;
   z-index:-1;
   div {
     font-size: 15px;

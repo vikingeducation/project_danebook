@@ -1,6 +1,6 @@
     <%= comment.body %>
     <p>by:
-        <%= comment.author %>
+        <%=link_to comment.author, comment.author %>
     </p>
     <%= comment_likes_link(comment) %>
     <%= delete_comment_link(comment, commentable) %>

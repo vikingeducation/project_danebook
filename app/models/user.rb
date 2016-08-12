@@ -13,6 +13,8 @@ class User < ApplicationRecord
 
   has_many :posts
 
+  has_many :likes
+
   def generate_token
     begin
       self[:auth_token] = SecureRandom.urlsafe_base64

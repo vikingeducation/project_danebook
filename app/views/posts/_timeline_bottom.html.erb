@@ -22,10 +22,19 @@
           <%= post.body %>
         </p>
       <div class="like-comment-container comment-border">
-        <a class="post-reaction" href="#">Like</a>
+        <% if current_user_liked(post) %>
+          <%= link_to "Unlike", post_like_path(post, find_like(post)), method: :delete %>
+        <% else %>
+          <%= link_to "Like", post_likes_path(post), method: :post, class: "post-reaction" %>
+        <% end %>
         <a class="post-reaction" href="#">Comment</a>
         <% if authorized_user? %>
         <%= link_to "Delete", user_post_path(user,post), method: :delete, class: "post-reaction delete" %>
+        <% end %>
+        <% unless post.likes.empty? %>
+          <p class="reaction-text clear">
+            <%= likes_display(post) %>
+          </p>
         <% end %>
       </div>
     </div> 

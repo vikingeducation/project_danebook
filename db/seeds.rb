@@ -7,7 +7,11 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 
-User.destroy_all
+puts "Destroying Users"
+if Rails.env == 'development'
+  User.destroy_all
+end
 
-User.create(email: 'harry_potter@hogwarts.edu', password: 'password',
-first_name: 'Harry', last_name: 'Potter', birthday: Date.new(1980, 7, 31))
+puts "Creating Users"
+User.create!(email: 'harry_potter@hogwarts.edu', password: 'password',
+  first_name: 'Harry', last_name: 'Potter', birthday: Date.new(1980, 7, 31))

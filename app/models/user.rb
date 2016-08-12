@@ -11,7 +11,6 @@ class User < ApplicationRecord
     :length => { :in => 6..24 },
     :allow_nil => true
   validates :email,
-    :length => { :in => 5..24 },
     email: true
 
 

@@ -9,7 +9,8 @@
     </div>
     <div class="col-md-3 col-vcentered">
       <%= form_tag('/friends', method: :post) do %>
-        <input type='hidden' name='friend[user_id]' value="<%= user.id %>">
+        <input type='hidden' name='friend[friended_id]' value="<%= user.id %>">
+        <input type='hidden' name='friend[friender_id]' value="<%= current_user.id %>">
         <%= friend_button user %>
       <% end %>
     </div>

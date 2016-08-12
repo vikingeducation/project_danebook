@@ -1,6 +1,6 @@
 class FriendsController < ApplicationController
 
-  skip_before_action :correct_user, only: [:index]
+  skip_before_action :correct_user, only: [:index, :create]
 
   def index
     @user = User.find(params[:id])
@@ -9,8 +9,8 @@ class FriendsController < ApplicationController
   end
 
   def create
-    @user = User.find(params[:id])
-    @user.friends << User.find(friend_params[:user_id])
+    @user = User.find(friend_params[:friender_id])
+    @user.friends << User.find(friend_params[:friended_id])
     flash[:success] = "You've added a friend!"
     redirect_to @user
   end
@@ -18,6 +18,7 @@ class FriendsController < ApplicationController
   private
 
     def friend_params
-      params.require(:friend).permit(:user_id)
+      params.require(:friend).permit(:friender_id,
+                                     :friended_id)
     end
 end

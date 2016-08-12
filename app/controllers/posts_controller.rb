@@ -11,7 +11,7 @@ class PostsController < ApplicationController
       redirect_to :back
     else
       flash.now[:danger] = "Your message could not be posted :("
-      render user_timeline_path(params[:id])
+      render :back
     end
   end
 
@@ -20,6 +20,15 @@ class PostsController < ApplicationController
   end
 
   def update
+    @post = Post.find(params[:id])
+    @comment = Comment.new(user_id: current_user.id, body: params[:post][:comment][:body], commentable_id: @post.id, commentable_type: "Post")
+    if @comment.save!
+      flash[:success] = "Your comment has been posted"
+      redirect_to user_timeline_path(@post.post_receiver_id)
+    else
+      flash[:danger] = "Your comment couldn't be posted"
+      render ser_timeline_path(@post.post_receiver_id)
+    end
 
   end
 

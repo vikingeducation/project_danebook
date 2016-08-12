@@ -83,6 +83,16 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def correct_profile
+    case current_user.profile_id
+    when params[:id].to_i
+      return true
+    else
+      flash[:notice] = "You cannot edit this profile."
+      redirect_to root_url
+    end
+  end
+
   # Same as logged_inuser and correct_user, but only returns a boolean.
   def user_check
     case current_user.id

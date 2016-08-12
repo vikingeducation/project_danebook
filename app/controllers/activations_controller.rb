@@ -1,5 +1,6 @@
 class ActivationsController < ApplicationController
 
+  # NOTE: Why can't this a post(patch) request instead?
   def edit
     @user = User.find_by(email: params[:email])
     token = params[:id]

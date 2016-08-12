@@ -1,8 +1,10 @@
 class ProfilesController < ApplicationController
 
+  skip_before_action :correct_user
+
   def update
-    @profile = Profile.find(params[:id])
-    @user = @profile.user
+    @profile = current_user.profile
+    @user = current_user
     @profile.update(profile_params)
     flash[:success] = "Profile updated."
     redirect_to @user
@@ -12,7 +14,6 @@ class ProfilesController < ApplicationController
 
     def profile_params
       params.require(:profile).permit(
-        :id,
         :words,
         :about,
         { birthday_attributes: [

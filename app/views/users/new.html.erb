@@ -1,7 +1,7 @@
 <%= render :partial => 'shared/errors', :locals => {:object => @user} %>
 
 <section id="signup" class="row">
-  
+
   <!-- Info -->
   <section class="col-xs-12 col-md-6 col-md-offset-1">
 
@@ -60,7 +60,7 @@
         </div>
         <div class="col-xs-6">
           <div class="form-group">
-            
+
             <%= f.text_field(:last_name, :class => 'form-control', :placeholder => 'Last Name') %>
 
           </div>
@@ -96,7 +96,7 @@
           <h2>Birthday</h2>
 
           <div class="row">
-            
+
             <%
             date_wrap_open = '<div class="col-xs-4"><div class="form-group">'.html_safe
             date_wrap_close = '</div></div>'.html_safe
@@ -135,7 +135,7 @@
               %Q[#{radio}].html_safe
           end %>
         </div>
-        
+
       </div>
 
       <div class="submit-btn-container">

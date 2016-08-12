@@ -24,7 +24,7 @@
   </div>
   <div class="col-sm-7">
     <div class="form-group">
-      <p><%= @user.hometown.location %></p>
+      <p><%= @user.hometown.location if @user.hometown %></p>
     </div>
   </div>
 </div>
@@ -34,7 +34,7 @@
   </div>
   <div class="col-sm-7">
     <div class="form-group">
-      <p><%= @user.residency.location %></p>
+      <p><%= @user.residency.location if @user.residency %></p>
     </div>
   </div>
 </div>

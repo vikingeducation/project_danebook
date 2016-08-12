@@ -4,24 +4,24 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = current_user.posts.build
+    @post = current_user.posts.build(post_params)
     if @post.save
-      flash.now[:success] = "Post Created!"
-      render current_user
+      flash[:success] = "Post Created!"
+      redirect_to current_user
     else
-      flash.now[:danger] = "Please enter something!"
-      render current_user
+      flash[:danger] = "Please enter something!"
+      redirect_to current_user
     end
   end
 
   def destroy
     @post = current_user.posts.find(params[:id])
     if @post.destroy
-      flash.now[:success] = "Post deleted!"
-      render current_user
+      flash[:success] = "Post deleted!"
+      redirect_to current_user
     else
-      flash.now[:danger] = "Post could not be deleted!"
-      render current_user
+      flash[:danger] = "Post could not be deleted!"
+      redirect_to current_user
     end
   end
 

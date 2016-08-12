@@ -5,14 +5,15 @@
   <div class="panel-body">
     <div class="row">
       <div class="col-sm-12">
-        <%= form_tag(user_posts_path) do |f| %>
-          <%= f.text_area_field :text, class:"form-control", rows: 3, placeholder: "Tell the world something..." %>
+        <%= form_for [current_user, @post] do |f| %>
+          <%= f.text_area :text, class:"form-control", rows: 3, placeholder: "Tell the world something...", style:"resize: none" %>
       </div>
     </div>
 
     <div class="row">
+        <br>
         <div class="col-sm-3 col-sm-offset-9">
-          <%= f.submit_tag "Post!" %>
+          <%= f.submit "Post!", class: "btn btn-primary btn-block" %>
           <!-- <button type="submit" class="btn btn-primary btn-block">Post</button> -->
         </div>
         <% end %>

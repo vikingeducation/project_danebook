@@ -1,58 +1,62 @@
-<div class="row profile-box-title">
-  <h2>Friends (99)</h2>
-</div>
-<div class="row profile-box">
-  <div class="col-sm-4  center-text">
-    <a href="#"><img src="/beowulf.jpg" class="img-responsive"><br>
-    Beowulf
-    </a>
-  </div><div class="col-sm-4  center-text">
-    <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Head_Odysseus_MAR_Sperlonga.jpg" class="img-responsive"><br>
-    Odysseus
-    </a>
+<div class = "panel panel-default" id="timeline-friend-box">
+  <div class="panel-heading">
+    <h2 class="panel-title">Friends (99)</h2>
   </div>
-  <div class="col-sm-4  center-text">
-    <a href="#"><img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTJX2sJIqOX9_WWbHMo86kbqx23R-S7c1oI78BzJ6Ua4T3TFIay4gGAaA" class="img-responsive"><br>
-    Wilson
-    </a>
+  <div class="panel-body">
+    <div class="row">
+      <div class="col-sm-4  center-text">
+        <a href="#"><img src="/beowulf.jpg" class="img-responsive"><br>
+        Beowulf
+        </a>
+      </div><div class="col-sm-4  center-text">
+        <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Head_Odysseus_MAR_Sperlonga.jpg" class="img-responsive"><br>
+        Odysseus
+        </a>
+      </div>
+      <div class="col-sm-4  center-text">
+        <a href="#"><img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTJX2sJIqOX9_WWbHMo86kbqx23R-S7c1oI78BzJ6Ua4T3TFIay4gGAaA" class="img-responsive"><br>
+        Wilson
+        </a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4  center-text">
+        <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Humpback_whale_fluke_(2).jpg" class="img-responsive"><br>
+        Moby Dick
+        </a>
+      </div>
+      <div class="col-sm-4  center-text">
+        <a href="#"><img src="http://img01.deviantart.net/ecfb/i/2013/354/9/c/dsc_2013_12_20_hagar_the_horrible_by_theeyzmaster-d6ynkkd.png" class="img-responsive"><br>
+        Hägar the Horrible
+        </a>
+      </div>
+      <div class="col-sm-4  center-text">
+        <a href="#"><img src="/viking-chief.jpg" class="img-responsive"><br>
+        Æsbiorn the Violent
+        </a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-4  center-text">
+        <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/0/09/Paul_Bettany_SDCC_2014.jpg" class="img-responsive"><br>
+        Dr. Stephen Maturin
+        </a>
+      </div>
+      <div class="col-sm-4  center-text">
+        <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/9/9e/Jacques-Yves_Cousteau.jpg" class="img-responsive"><br>
+        Jacques-Yves Cousteau
+        </a>
+      </div>
+      <div class="col-sm-4  center-text">
+        <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/9/9d/Colossal_octopus_by_Pierre_Denys_de_Montfort.jpg" class="img-responsive"><br>
+        The Kraken
+        </a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-4">
+        <a href="<%= user_friends_path(@user) %>">See more friends</a>
+      </div>
+    </div>
   </div>
-</div>
-<div class="row profile-box">
-  <div class="col-sm-4  center-text">
-    <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/5/5c/Humpback_whale_fluke_(2).jpg" class="img-responsive"><br>
-    Moby Dick
-    </a>
-  </div>
-  <div class="col-sm-4  center-text">
-    <a href="#"><img src="http://img01.deviantart.net/ecfb/i/2013/354/9/c/dsc_2013_12_20_hagar_the_horrible_by_theeyzmaster-d6ynkkd.png" class="img-responsive"><br>
-    Hägar the Horrible
-    </a>
-  </div>
-  <div class="col-sm-4  center-text">
-    <a href="#"><img src="/viking-chief.jpg" class="img-responsive"><br>
-    Æsbiorn the Violent
-    </a>
-  </div>
-</div>
-<div class="row profile-box">
-  <div class="col-sm-4  center-text">
-    <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/0/09/Paul_Bettany_SDCC_2014.jpg" class="img-responsive"><br>
-    Dr. Stephen Maturin
-    </a>
-  </div>
-  <div class="col-sm-4  center-text">
-    <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/9/9e/Jacques-Yves_Cousteau.jpg" class="img-responsive"><br>
-    Jacques-Yves Cousteau
-    </a>
-  </div>
-  <div class="col-sm-4  center-text">
-    <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/9/9d/Colossal_octopus_by_Pierre_Denys_de_Montfort.jpg" class="img-responsive"><br>
-    The Kraken
-    </a>
-  </div>
-</div>
-<div class="row profile-box profile-box-bottom">
-  <div class="col-sm-6 col-sm-offset-4">
-    <a href="<%= user_friends_path(@user) %>">See more friends</a>
-  </div>
-</div>
+<div>

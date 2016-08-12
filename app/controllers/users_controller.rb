@@ -30,14 +30,14 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @cities = City.all
-    @countries = @cities.map(&:country)
+    current_user.build_hometown unless current_user.hometown
+    current_user.build_residency unless current_user.residency
   end
 
   def update
     if current_user.update(user_params)
       # flash[:success] = "Successfully updated your profile"
-      redirect_to current_user
+      redirect_to about_user_path(current_user)
     else
       flash.now[:danger] = "Failed to update your profile"
       render :edit
@@ -59,7 +59,14 @@ class UsersController < ApplicationController
               :password,
               :password_confirmation,
               :birth_date,
-              :gender)
+              :gender,
+              :telephone,
+              :quote,
+              :about,
+              :college,
+              hometown_attributes: [ :name, :country ],
+              residency_attributes: [ :name, :country ]
+              )
   end
 
   def set_user

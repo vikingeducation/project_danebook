@@ -8,5 +8,6 @@ class CreateCities < ActiveRecord::Migration[5.0]
     end
 
     add_index :cities, :name
+    add_index :cities, :country
   end
 end

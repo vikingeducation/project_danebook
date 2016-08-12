@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
       else
         sign_in(@user)
       end
-      flash[:success] = "You've successfully signed in"
+      # flash[:success] = "You've successfully signed in"
       redirect_to user_path(current_user)
     else
       flash.now[:error] = "We couldn't sign you in"

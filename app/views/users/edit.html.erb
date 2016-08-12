@@ -1,99 +1,115 @@
 <%= render partial: "shared/header", locals: { active: :edit } %>
 
 <main class="container">
-  <div class="row profile-box-title">
-    <h2 class="col-sm-12">Åbout</h2>
-  </div>
+  <div class="row timeline-left-column timeline-right-column">
+    <div class = "panel panel-default">
+      <div class="panel-heading">
+        <h2 class="panel-title">Åbout</h2>
+      </div>
 
-  <div class="row profile-box profile-box-bottom">
-    <div class="col-sm-4 col-sm-offset-1">
-      <h3>Basic Information</h3>
-      <%= form_for current_user do |f| %>
+      <div class="panel-body">
         <div class="row">
-          <div class="col-sm-3">
-            <strong>Birthday</strong>
+          <div class="col-sm-4 col-sm-offset-1">
+            <h3>Basic Information</h3>
+            <%= form_for current_user do |f| %>
+              <div class="row">
+                <div class="col-sm-3">
+                  <strong>Birthday</strong>
+                </div>
+                <div class="col-sm-7">
+                  <div class="form-group">
+                    <p><%= f.date_field :birth_date, class: "form-control" %></p>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-3">
+                  <strong>College</strong>
+                </div>
+                <div class="col-sm-7">
+                  <div class="form-group">
+                    <p><%= f.text_field :college, class: "form-control" %></p>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-3">
+                  <strong>Hometown</strong>
+                </div>
+                <div class="col-sm-7">
+                  <div class="form-group">
+                    <%= f.fields_for :hometown do |place_fields| %>
+                      <%= place_fields.text_field :name, class: "form-control", placeholder: "City" %>
+                      <br>
+                      <%= place_fields.text_field :country, class: "form-control", placeholder: "Country" %>
+                    <% end %>
+
+                    <%# f.collection_select( :author_id,
+                                        @cities,
+                                        :id,
+                                        :name ) %>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-3">
+                  <strong>Currently Lives</strong>
+                </div>
+                <div class="col-sm-7">
+                  <div class="form-group">
+                    <%= f.fields_for :residency do |place_fields| %>
+                      <%= place_fields.text_field :name, class: "form-control", placeholder: "City" %>
+                      <br>
+                      <%= place_fields.text_field :country, class: "form-control", placeholder: "Country" %>
+                    <% end %>
+                    <%# f.collection_select( :curr_addr_id,
+                                        @cities,
+                                        :id,
+                                        :name ) %>
+                  </div>
+                </div>
+              </div>
+
+
+              <h3>Contact Information</h3>
+              <div class="row">
+                <div class="col-sm-3">
+                  <strong>Email</strong>
+                </div>
+                <div class="col-sm-7">
+                  <div class="form-group">
+                    <p><%= f.email_field :email, class: "form-control" %></p>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-3">
+                  <strong>Telephone</strong>
+                </div>
+                <div class="col-sm-7">
+                  <div class="form-group">
+                    <p><%= f.telephone_field :telephone, class: "form-control" %></p>
+                  </div>
+                </div>
+              </div>
           </div>
-          <div class="col-sm-7">
-            <div class="form-group">
-              <p><%= f.date_field :birth_date, class: "form-control" %></p>
+
+          <div class="col-sm-6">
+            <h3>Wörds to Live By</h3>
+            <p><%= f.text_area :quote, class: "form-control", rows: 4 %></p>
+
+            <h3>Åbout Me</h3>
+            <p><%= f.text_area :about, class: "form-control", rows: 10 %></p>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-2 col-sm-offset-9">
+              <%= f.submit "Update Profile", class: "btn btn-success" %>
             </div>
           </div>
+          <% end %>
         </div>
-        <div class="row">
-          <div class="col-sm-3">
-            <strong>College</strong>
-          </div>
-          <div class="col-sm-7">
-            <div class="form-group">
-              <p><%= f.text_field :college, class: "form-control" %></p>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-3">
-            <strong>Hometown</strong>
-          </div>
-          <div class="col-sm-7">
-            <div class="form-group">
-              <%# f.collection_select( :author_id,
-                                  @cities,
-                                  :id,
-                                  :name ) %>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-3">
-            <strong>Currently Lives</strong>
-          </div>
-          <div class="col-sm-7">
-            <div class="form-group">
-              <%# f.collection_select( :curr_addr_id,
-                                  @cities,
-                                  :id,
-                                  :name ) %>
-            </div>
-          </div>
-        </div>
-
-
-        <h3>Contact Information</h3>
-        <div class="row">
-          <div class="col-sm-3">
-            <strong>Email</strong>
-          </div>
-          <div class="col-sm-7">
-            <div class="form-group">
-              <p><%= f.email_field :email, class: "form-control" %></p>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-3">
-            <strong>Telephone</strong>
-          </div>
-          <div class="col-sm-7">
-            <div class="form-group">
-              <p><%= f.telephone_field :telephone, class: "form-control" %></p>
-            </div>
-          </div>
-        </div>
-    </div>
-
-    <div class="col-sm-6">
-      <h3>Wörds to Live By</h3>
-      <p><%= f.text_area :quote, class: "form-control", rows: 2 %></p>
-
-      <h3>Åbout Me</h3>
-      <p><%= f.text_area :about, class: "form-control", rows: 5 %></p>
-    </div>
-
-    <div class="row">
-      <div class="col-sm-2 col-sm-offset-9">
-        <%= f.submit "Update Profile", class: "btn btn-success" %>
       </div>
     </div>
-
   </div>
-  <% end %>
 </main>

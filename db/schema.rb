@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160811232116) do
+ActiveRecord::Schema.define(version: 20160812185939) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,7 +20,15 @@ ActiveRecord::Schema.define(version: 20160811232116) do
     t.string   "country"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["country"], name: "index_cities_on_country", using: :btree
     t.index ["name"], name: "index_cities_on_name", using: :btree
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.integer  "author_id"
+    t.text     "text"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -38,7 +46,7 @@ ActiveRecord::Schema.define(version: 20160811232116) do
     t.text     "about",           default: ""
     t.string   "college",         default: ""
     t.integer  "hometown_id"
-    t.integer  "curr_addr_id"
+    t.integer  "residency_id"
     t.index ["auth_token"], name: "index_users_on_auth_token", unique: true, using: :btree
   end
 

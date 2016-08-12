@@ -28,12 +28,25 @@ class ApplicationController < ActionController::Base
   end
 
   def current_user
-    @current_user ||= User.find_by(id: session[:user_id])
+    # Conditional for whether the user is in session.
+    if id = session[:user_id]
+      @current_user ||= User.find_by(id: id)
+    # Log user in if he's not in session, but has a remember_token in cookie.
+    elsif id = cookies.signed[:user_id]
+      user = User.find_by(id: id)
+      token = cookies[:remember_token]
+      if user && user.authenticated?(:remember,token)
+        log_in user
+        @current_user = user
+      end
+    end
   end
 
-  #Store remember_token in remember digest and store cookies.
+  # Persist remember_token to remember digest column in the web server.
+  # Store user id and remember token in cookies.
   def remember(user)
     user.remember
+    # :httponly to prevent access to the cookie via scripting (XSS?).
     cookies.permanent.signed[:user_id] = { value: user.id, httponly: true }
     cookies.permanent[:remember_token] = { value: user.remember_token, httponly: true }
   end

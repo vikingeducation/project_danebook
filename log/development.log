@@ -29025,3 +29025,436 @@ Processing by UsersController#edit as HTML
 Completed 200 OK in 119ms (Views: 96.5ms | ActiveRecord: 7.5ms)
 
 
+  [1m[36mUser Load (3.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (3.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mCity Load (1.4ms)[0m  [1m[34mSELECT  "cities".* FROM "cities" WHERE "cities"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+Started POST "/logout" for ::1 at 2016-08-12 15:58:31 -0700
+Processing by SessionsController#destroy as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"him2tT4TpzRArJcNhlVtwpiXXjbvpmg8csPNwwIPU3Q8ak+b7QBeG0laR27WeWrmgqKchI3qX1docWiAkZiBtA=="}
+  [1m[36mUser Load (3.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "pl7AofvoZ3LL2tLP2_ajeg"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 6ms (ActiveRecord: 3.1ms)
+
+
+Started GET "/" for ::1 at 2016-08-12 15:58:31 -0700
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered shared/_flash.html.erb (1.1ms)
+  Rendered users/_signup_form.html.erb (801.7ms)
+  Rendered users/new.html.erb within layouts/application (809.1ms)
+  Rendered shared/_navbar_login.html.erb (1.4ms)
+Completed 200 OK in 884ms (Views: 880.8ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for ::1 at 2016-08-12 15:58:47 -0700
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"rkBW8Qhi/nzzG2wOei49O9sMxX6lr1bX3Zqz79Zda10UA6/f23EHU/rtvG0qAjofwTkHzMfjYbzHKBasRcq5nQ==", "user"=>{"first_name"=>"Chris", "last_name"=>"asdf", "email"=>"chris@viking.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "birth_date(2i)"=>"8", "birth_date(3i)"=>"12", "birth_date(1i)"=>"2016", "gender"=>"male"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "j9TgDgzN9PMDhB28lA-q6w"], ["LIMIT", 1]]
+  [1m[35mSQL (3.0ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "email", "password_digest", "auth_token", "created_at", "updated_at", "last_name", "birth_date", "gender") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["first_name", "Chris"], ["email", "chris@viking.com"], ["password_digest", "$2a$10$CFJnGhuIKvhHTshbt3Z2HusjpiKPG35Hc/mWcJOwZT2ckjE9ho0va"], ["auth_token", "j9TgDgzN9PMDhB28lA-q6w"], ["created_at", 2016-08-12 22:58:47 UTC], ["updated_at", 2016-08-12 22:58:47 UTC], ["last_name", "asdf"], ["birth_date", Fri, 12 Aug 2016], ["gender", "male"]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "pRNQni2BIRSMqJ7FbAg5uQ"], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[33mUPDATE "users" SET "auth_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["auth_token", "pRNQni2BIRSMqJ7FbAg5uQ"], ["updated_at", 2016-08-12 22:58:47 UTC], ["id", 11]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/users/11
+Completed 302 Found in 113ms (ActiveRecord: 5.7ms)
+
+
+Started GET "/users/11" for ::1 at 2016-08-12 15:58:47 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "pRNQni2BIRSMqJ7FbAg5uQ"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered shared/_cover.html.erb (0.4ms)
+  Rendered shared/_header.html.erb (5.5ms)
+  Rendered users/_about_box.html.erb (1.2ms)
+  Rendered users/_photo_box_row.html.erb (0.7ms)
+  Rendered users/_photo_box_row.html.erb (0.2ms)
+  Rendered users/_photo_box_row.html.erb (1.4ms)
+  Rendered users/_photo_box.html.erb (14.0ms)
+  Rendered users/_friend_box.html.erb (0.6ms)
+  Rendered shared/_flash.html.erb (0.8ms)
+  Rendered users/_post_box.html.erb (1.8ms)
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 11]]
+  Rendered users/show.html.erb within layouts/application (50.2ms)
+  Rendered shared/_navbar.html.erb (33.8ms)
+Completed 200 OK in 154ms (Views: 144.0ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/users/11/edit" for ::1 at 2016-08-12 15:58:52 -0700
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "pRNQni2BIRSMqJ7FbAg5uQ"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 11], ["LIMIT", 1]]
+  Rendering users/edit.html.erb within layouts/application
+  Rendered shared/_cover.html.erb (0.7ms)
+  Rendered shared/_header.html.erb (4.3ms)
+  Rendered users/edit.html.erb within layouts/application (9.5ms)
+  Rendered shared/_navbar.html.erb (1.2ms)
+Completed 200 OK in 78ms (Views: 69.5ms | ActiveRecord: 1.4ms)
+
+
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8115692404137957555);[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::InternalMetadata Load (1.0ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", :environment], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(8115692404137957555)[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (6.4ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'cities'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (6.6ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'posts'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (5.0ms)[0m  [1m[34mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[36mCity Load (0.6ms)[0m  [1m[34mSELECT "cities".* FROM "cities"[0m
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[31mDELETE FROM "cities" WHERE "cities"."id" = $1[0m  [["id", 1]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  [1m[31mDELETE FROM "cities" WHERE "cities"."id" = $1[0m  [["id", 2]]
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[31mDELETE FROM "cities" WHERE "cities"."id" = $1[0m  [["id", 3]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[31mDELETE FROM "cities" WHERE "cities"."id" = $1[0m  [["id", 4]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "cities" WHERE "cities"."id" = $1[0m  [["id", 5]]
+  [1m[35m (0.3ms)[0m  [1m[35mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  [1m[31mDELETE FROM "cities" WHERE "cities"."id" = $1[0m  [["id", 6]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mCity Load (2.4ms)[0m  [1m[34mSELECT "cities".* FROM "cities"[0m
+Started POST "/logout" for ::1 at 2016-08-12 16:02:22 -0700
+Processing by SessionsController#destroy as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"l3P02k3RNH/VAZVMPjItm6OVndYNQbz4uvSrKBf9MQEtMA30nsLNUNz3RS9uHiq/uaBfZG8Ni5OgRg5rhGrjwQ=="}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "pRNQni2BIRSMqJ7FbAg5uQ"], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Completed 302 Found in 31ms (ActiveRecord: 0.7ms)
+
+
+Started GET "/" for ::1 at 2016-08-12 16:02:22 -0700
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered shared/_flash.html.erb (0.9ms)
+  Rendered users/_signup_form.html.erb (6.6ms)
+  Rendered users/new.html.erb within layouts/application (13.2ms)
+  Rendered shared/_navbar_login.html.erb (3.1ms)
+Completed 200 OK in 145ms (Views: 140.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/users" for ::1 at 2016-08-12 16:02:37 -0700
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"TphW0TFI5zB37RYBGRR5DNgD3Y8cDWQggogncv0wO9X026//4lseH34bxmJJOH4owjYfPX5BU0uYOoIxbqfpFQ==", "user"=>{"first_name"=>"l;kasjdfl", "last_name"=>"asdlfkj", "email"=>"asdflkj@lkjasdf.com", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "birth_date(2i)"=>"8", "birth_date(3i)"=>"12", "birth_date(1i)"=>"2016", "gender"=>"male"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  Rendering users/new.html.erb within layouts/application
+  Rendered shared/_flash.html.erb (0.6ms)
+  Rendered users/_signup_form.html.erb (5.6ms)
+  Rendered users/new.html.erb within layouts/application (11.3ms)
+  Rendered shared/_navbar_login.html.erb (7.9ms)
+Completed 200 OK in 221ms (Views: 133.8ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/users" for ::1 at 2016-08-12 16:02:57 -0700
+Processing by UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"UcpefvRn2CEZy/8a4A/QpHKKufcDZ0WLhLDUB45X6Y/riadQJ3QhDhA9L3mwI9eAaL97RWErcuCeAnFEHcA7Tw==", "user"=>{"first_name"=>"asdf", "last_name"=>"asdf", "email"=>"phil@viking", "password"=>"[FILTERED]", "password_confirmation"=>"[FILTERED]", "birth_date(2i)"=>"8", "birth_date(3i)"=>"12", "birth_date(1i)"=>"2016", "gender"=>"male"}}
+  [1m[35m (4.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "yaNrtiNsNnJMj2bKHorT0w"], ["LIMIT", 1]]
+  [1m[35mSQL (1.2ms)[0m  [1m[32mINSERT INTO "users" ("first_name", "email", "password_digest", "auth_token", "created_at", "updated_at", "last_name", "birth_date", "gender") VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING "id"[0m  [["first_name", "asdf"], ["email", "phil@viking"], ["password_digest", "$2a$10$6M9J9IldZBISJJtt4u0qtefgfhI/LIrAoLVsvaR0Ms7NwwWSs.oOe"], ["auth_token", "yaNrtiNsNnJMj2bKHorT0w"], ["created_at", 2016-08-12 23:02:57 UTC], ["updated_at", 2016-08-12 23:02:57 UTC], ["last_name", "asdf"], ["birth_date", Fri, 12 Aug 2016], ["gender", "male"]]
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mUser Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "6qtmhHZ3ZMzk-0MWICE2hQ"], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.7ms)[0m  [1m[33mUPDATE "users" SET "auth_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["auth_token", "6qtmhHZ3ZMzk-0MWICE2hQ"], ["updated_at", 2016-08-12 23:02:57 UTC], ["id", 12]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/users/12
+Completed 302 Found in 139ms (ActiveRecord: 9.4ms)
+
+
+Started GET "/users/12" for ::1 at 2016-08-12 16:02:57 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"12"}
+  [1m[36mUser Load (3.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "6qtmhHZ3ZMzk-0MWICE2hQ"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered shared/_cover.html.erb (0.4ms)
+  Rendered shared/_header.html.erb (4.1ms)
+  Rendered users/_about_box.html.erb (0.9ms)
+  Rendered users/_photo_box_row.html.erb (0.9ms)
+  Rendered users/_photo_box_row.html.erb (0.2ms)
+  Rendered users/_photo_box_row.html.erb (0.2ms)
+  Rendered users/_photo_box.html.erb (10.5ms)
+  Rendered users/_friend_box.html.erb (0.6ms)
+  Rendered shared/_flash.html.erb (0.8ms)
+  Rendered users/_post_box.html.erb (4.1ms)
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1[0m  [["author_id", 12]]
+  Rendered users/show.html.erb within layouts/application (40.5ms)
+  Rendered shared/_navbar.html.erb (2.4ms)
+Completed 200 OK in 202ms (Views: 162.3ms | ActiveRecord: 17.0ms)
+
+
+Started GET "/users/12/edit" for ::1 at 2016-08-12 16:03:01 -0700
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"12"}
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "6qtmhHZ3ZMzk-0MWICE2hQ"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  Rendering users/edit.html.erb within layouts/application
+  Rendered shared/_cover.html.erb (0.4ms)
+  Rendered shared/_header.html.erb (4.2ms)
+  Rendered users/edit.html.erb within layouts/application (11.7ms)
+  Rendered shared/_navbar.html.erb (2.6ms)
+Completed 200 OK in 106ms (Views: 78.0ms | ActiveRecord: 1.5ms)
+
+
+  [1m[36mUser Load (1.9ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mUser Load (1.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT $1[0m  [["LIMIT", 1]]
+Started PATCH "/users/12" for ::1 at 2016-08-12 16:13:09 -0700
+Processing by UsersController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"D9scCiQUYG8OfBrai/FwX71ZYHpwC1JxoiDhs1ey7xi1mOUk9weZQAeKyrnb3Xd7p2yiyBJHZRq4kkTwxCU92A==", "user"=>{"birth_date"=>"2016-08-12", "college"=>"MSU", "hometown_attributes"=>{"name"=>"San Jose", "country"=>"CA"}, "residency_attributes"=>{"name"=>"Santa Ana", "country"=>"USA"}, "email"=>"phil@viking", "telephone"=>"", "quote"=>"", "about"=>""}, "commit"=>"Update Profile", "id"=>"12"}
+  [1m[36mUser Load (14.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "6qtmhHZ3ZMzk-0MWICE2hQ"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (2.0ms)[0m  [1m[32mINSERT INTO "cities" ("name", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "San Jose"], ["country", "CA"], ["created_at", 2016-08-12 23:13:09 UTC], ["updated_at", 2016-08-12 23:13:09 UTC]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "cities" ("name", "country", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Santa Ana"], ["country", "USA"], ["created_at", 2016-08-12 23:13:09 UTC], ["updated_at", 2016-08-12 23:13:09 UTC]]
+  [1m[35mSQL (0.6ms)[0m  [1m[33mUPDATE "users" SET "college" = $1, "hometown_id" = $2, "residency_id" = $3, "updated_at" = $4 WHERE "users"."id" = $5[0m  [["college", "MSU"], ["hometown_id", 7], ["residency_id", 8], ["updated_at", 2016-08-12 23:13:09 UTC], ["id", 12]]
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/users/12/about
+Completed 302 Found in 81ms (ActiveRecord: 18.5ms)
+
+
+Started GET "/users/12/about" for ::1 at 2016-08-12 16:13:09 -0700
+Processing by UsersController#about as HTML
+  Parameters: {"id"=>"12"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "6qtmhHZ3ZMzk-0MWICE2hQ"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  Rendering users/about.html.erb within layouts/application
+  Rendered shared/_cover.html.erb (0.5ms)
+  Rendered shared/_header.html.erb (4.4ms)
+  [1m[36mCity Load (0.5ms)[0m  [1m[34mSELECT  "cities".* FROM "cities" WHERE "cities"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mCity Load (0.4ms)[0m  [1m[34mSELECT  "cities".* FROM "cities" WHERE "cities"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  Rendered users/_about_box.html.erb (5.9ms)
+  Rendered users/about.html.erb within layouts/application (18.2ms)
+  Rendered shared/_navbar.html.erb (3.4ms)
+Completed 200 OK in 147ms (Views: 140.4ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/users/12/edit" for ::1 at 2016-08-12 16:14:20 -0700
+Processing by UsersController#edit as HTML
+  Parameters: {"id"=>"12"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "6qtmhHZ3ZMzk-0MWICE2hQ"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[36mCity Load (0.4ms)[0m  [1m[34mSELECT  "cities".* FROM "cities" WHERE "cities"."id" = $1 LIMIT $2[0m  [["id", 7], ["LIMIT", 1]]
+  [1m[36mCity Load (0.3ms)[0m  [1m[34mSELECT  "cities".* FROM "cities" WHERE "cities"."id" = $1 LIMIT $2[0m  [["id", 8], ["LIMIT", 1]]
+  Rendering users/edit.html.erb within layouts/application
+  Rendered shared/_cover.html.erb (0.4ms)
+  Rendered shared/_header.html.erb (3.9ms)
+  Rendered users/edit.html.erb within layouts/application (11.1ms)
+  Rendered shared/_navbar.html.erb (3.1ms)
+Completed 200 OK in 159ms (Views: 109.6ms | ActiveRecord: 1.5ms)
+
+
+Started PATCH "/users/12" for ::1 at 2016-08-12 16:14:25 -0700
+Processing by UsersController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"jXdcXcd3D+MOcMgd7rkiZKmWzW8tDitVGabmH3zYyP43NKVzFGT2zAeGGH6+lSVAs6MP3U9CHD4DFENc708aPg==", "user"=>{"birth_date"=>"2016-08-12", "college"=>"MSU", "hometown_attributes"=>{"name"=>"San Jose", "country"=>"CA", "id"=>"7"}, "residency_attributes"=>{"name"=>"Santa Ana", "country"=>"USA", "id"=>"8"}, "email"=>"phil@viking", "telephone"=>"", "quote"=>"", "about"=>""}, "commit"=>"Update Profile", "id"=>"12"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "6qtmhHZ3ZMzk-0MWICE2hQ"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 199ms (ActiveRecord: 1.1ms)
+
+
+
+NameError - undefined local variable or method `asdf' for #<UsersController:0x007f826a814108>:
+  app/controllers/users_controller.rb:38:in `update'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/basic_implicit_render.rb:4:in `send_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/abstract_controller/base.rb:188:in `process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/rendering.rb:30:in `process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:126:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:506:in `block (2 levels) in compile'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:455:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:101:in `__run_callbacks__'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:750:in `_run_process_action_callbacks'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:90:in `run_callbacks'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/abstract_controller/callbacks.rb:19:in `process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/rescue.rb:20:in `process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/notifications.rb:164:in `block in instrument'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/notifications.rb:164:in `instrument'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/params_wrapper.rb:248:in `process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activerecord-5.0.0/lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/abstract_controller/base.rb:126:in `process'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/rendering.rb:30:in `process'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal.rb:190:in `dispatch'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal.rb:262:in `dispatch'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/routing/route_set.rb:32:in `serve'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/journey/router.rb:39:in `block in serve'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/journey/router.rb:26:in `serve'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/routing/route_set.rb:725:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/etag.rb:25:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/conditional_get.rb:38:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/head.rb:12:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/session/abstract/id.rb:222:in `context'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/session/abstract/id.rb:216:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/cookies.rb:613:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activerecord-5.0.0/lib/active_record/migration.rb:552:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:90:in `run_callbacks'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/executor.rb:12:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:57:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+  web-console (3.3.1) lib/web_console/middleware.rb:131:in `call_app'
+  web-console (3.3.1) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (3.3.1) lib/web_console/middleware.rb:18:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/railties-5.0.0/lib/rails/rack/logger.rb:36:in `call_app'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/railties-5.0.0/lib/rails/rack/logger.rb:24:in `block in call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/tagged_logging.rb:70:in `block in tagged'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/tagged_logging.rb:26:in `tagged'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/tagged_logging.rb:70:in `tagged'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/railties-5.0.0/lib/rails/rack/logger.rb:24:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/sprockets-rails-3.1.1/lib/sprockets/rails/quiet_assets.rb:13:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/request_id.rb:24:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/method_override.rb:22:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/runtime.rb:22:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/executor.rb:12:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/static.rb:136:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/sendfile.rb:111:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/railties-5.0.0/lib/rails/engine.rb:522:in `call'
+  puma (3.6.0) lib/puma/configuration.rb:225:in `call'
+  puma (3.6.0) lib/puma/server.rb:578:in `handle_request'
+  puma (3.6.0) lib/puma/server.rb:415:in `process_client'
+  puma (3.6.0) lib/puma/server.rb:275:in `block in run'
+  puma (3.6.0) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+
+Started POST "/__better_errors/4e8205d979ef43bc/variables" for ::1 at 2016-08-12 16:14:25 -0700
+Started POST "/__better_errors/4e8205d979ef43bc/eval" for ::1 at 2016-08-12 16:15:09 -0700
+Started POST "/__better_errors/4e8205d979ef43bc/eval" for ::1 at 2016-08-12 16:15:43 -0700
+Unpermitted parameter: id
+Unpermitted parameter: id
+Started PATCH "/users/12" for ::1 at 2016-08-12 16:16:45 -0700
+Processing by UsersController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"jXdcXcd3D+MOcMgd7rkiZKmWzW8tDitVGabmH3zYyP43NKVzFGT2zAeGGH6+lSVAs6MP3U9CHD4DFENc708aPg==", "user"=>{"birth_date"=>"2016-08-12", "college"=>"MSU", "hometown_attributes"=>{"name"=>"San Jose", "country"=>"CA", "id"=>"7"}, "residency_attributes"=>{"name"=>"Santa Ana", "country"=>"USA", "id"=>"8"}, "email"=>"phil@viking", "telephone"=>"", "quote"=>"", "about"=>""}, "commit"=>"Update Profile", "id"=>"12"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "6qtmhHZ3ZMzk-0MWICE2hQ"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+Completed 500 Internal Server Error in 240ms (ActiveRecord: 6.9ms)
+
+
+
+NameError - undefined local variable or method `asdf' for #<UsersController:0x007f826ae27068>:
+  app/controllers/users_controller.rb:38:in `update'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/basic_implicit_render.rb:4:in `send_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/abstract_controller/base.rb:188:in `process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/rendering.rb:30:in `process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:126:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:506:in `block (2 levels) in compile'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:455:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:101:in `__run_callbacks__'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:750:in `_run_process_action_callbacks'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:90:in `run_callbacks'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/abstract_controller/callbacks.rb:19:in `process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/rescue.rb:20:in `process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/notifications.rb:164:in `block in instrument'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/notifications.rb:164:in `instrument'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/params_wrapper.rb:248:in `process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activerecord-5.0.0/lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/abstract_controller/base.rb:126:in `process'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/rendering.rb:30:in `process'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal.rb:190:in `dispatch'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal.rb:262:in `dispatch'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/routing/route_set.rb:32:in `serve'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/journey/router.rb:39:in `block in serve'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/journey/router.rb:26:in `serve'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/routing/route_set.rb:725:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/etag.rb:25:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/conditional_get.rb:38:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/head.rb:12:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/session/abstract/id.rb:222:in `context'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/session/abstract/id.rb:216:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/cookies.rb:613:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activerecord-5.0.0/lib/active_record/migration.rb:552:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:90:in `run_callbacks'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/executor.rb:12:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:57:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+  web-console (3.3.1) lib/web_console/middleware.rb:131:in `call_app'
+  web-console (3.3.1) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (3.3.1) lib/web_console/middleware.rb:18:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/railties-5.0.0/lib/rails/rack/logger.rb:36:in `call_app'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/railties-5.0.0/lib/rails/rack/logger.rb:24:in `block in call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/tagged_logging.rb:70:in `block in tagged'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/tagged_logging.rb:26:in `tagged'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/tagged_logging.rb:70:in `tagged'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/railties-5.0.0/lib/rails/rack/logger.rb:24:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/sprockets-rails-3.1.1/lib/sprockets/rails/quiet_assets.rb:13:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/request_id.rb:24:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/method_override.rb:22:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/runtime.rb:22:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/executor.rb:12:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/static.rb:136:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/sendfile.rb:111:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/railties-5.0.0/lib/rails/engine.rb:522:in `call'
+  puma (3.6.0) lib/puma/configuration.rb:225:in `call'
+  puma (3.6.0) lib/puma/server.rb:578:in `handle_request'
+  puma (3.6.0) lib/puma/server.rb:415:in `process_client'
+  puma (3.6.0) lib/puma/server.rb:275:in `block in run'
+  puma (3.6.0) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+
+Started POST "/__better_errors/c9b16b5ad9aab40d/variables" for ::1 at 2016-08-12 16:16:46 -0700
+Started POST "/__better_errors/c9b16b5ad9aab40d/eval" for ::1 at 2016-08-12 16:16:55 -0700

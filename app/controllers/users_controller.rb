@@ -35,6 +35,7 @@ class UsersController < ApplicationController
   end
 
   def update
+    asdf
     if current_user.update(user_params)
       # flash[:success] = "Successfully updated your profile"
       redirect_to about_user_path(current_user)
@@ -64,8 +65,8 @@ class UsersController < ApplicationController
               :quote,
               :about,
               :college,
-              hometown_attributes: [ :name, :country ],
-              residency_attributes: [ :name, :country ]
+              hometown_attributes: [ :id, :name, :country ],
+              residency_attributes: [ :id, :name, :country ]
               )
   end
 

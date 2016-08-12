@@ -5,5 +5,14 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+puts "Killing users off ...... ..... ... .. ."
 User.destroy_all
-User.create(:email => "chuck@norris.com", :password => "chuckskick")
+
+puts "Now their profiles .......... . . . . ."
+Profile.destroy_all
+
+puts "Building users ...... ..... ... .. ."
+5.times do |i|
+  u = User.create!(:email => "chuck#{i}@norris.com", :password => "chuckskick", :first_name => Faker::Name.first_name, :last_name => "Norris", birth_date: Faker::Date.between(2000.days.ago, Date.today))
+  u.profile.update(college: Faker::University.name, hometown: Faker::Address.city, currently_lives: Faker::Address.city, telephone: Faker::PhoneNumber.cell_phone, words_to_live_by: Faker::Hipster.paragraph(2), about_me: Faker::Hipster.paragraph(4))
+end

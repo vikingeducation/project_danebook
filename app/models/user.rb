@@ -1,8 +1,9 @@
 class User < ActiveRecord::Base
-  has_one :profile
+  has_one :profile, dependent: :destroy
   accepts_nested_attributes_for :profile
 
   before_create :generate_token
+  after_create :create_profile
 
   has_secure_password
 

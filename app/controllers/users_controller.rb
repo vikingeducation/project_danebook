@@ -70,7 +70,9 @@ end
 
   private
 
-    # Never trust parameters from the scary internet, only allow the white list through.
+    def set_user
+      @user = User.find(params[:id])
+    end
 
     def user_params
       params.
@@ -81,5 +83,12 @@ end
                 :password,
                 :password_confirmation,
                 :birth_date)
+    end
+
+    def require_current_user
+      unless current_user == User.find(params[:id])
+        flash[:error] = "Access denied!!!"
+        redirect_to root_path
+      end
     end
 end

@@ -216,6 +216,10 @@
   	margin-top: 10px;
   	margin-bottom: 20px;
   	border: 2px solid black;
+
+    textarea {
+      min-height: 120px;
+    }
   }
 
   .section-header {
@@ -252,7 +256,7 @@
 
   #save-change-wrapper {
   	margin-top: 40px;
-  	margin-bottom: 100px;
+  	margin-bottom: 50px;
 
   	a {
   		background-image: none;

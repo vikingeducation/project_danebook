@@ -1,20 +1,20 @@
-<!-- Your markup here! -->
-<!-- Your markup here! -->
 
 <div id="static_pages">
-	<%= render 'navbar' %>
+	<%= render 'navbar', user: @user %>
 
-	<%= render 'banner' %>
+	<%= render 'banner', user: @user %>
 
 	<div class="container section-container">
 		<div class="row section-header">
 			<div class="col-sm-8 col-sm-offset-2">
-				<h2 class="text-center">Edit Profiles</h2>
+				<h2 class="text-center">About</h2>
 			</div>
+			<% if current_user.id.to_s == params[:user_id] %>
+				<div class="col-sm-2 edit-btn">
+					<%= link_to "Edit Profile", edit_user_profile_path(@user, params[:id]), class: "btn btn-primary btn-block" %>
+				</div>
+			<% end %>
 		</div>
-
-		<%= render 'profile_form', user: @user %>
-
 		<div class="row">
 			<div class="col-sm-5 col-sm-offset-1">
 				<div class="row">
@@ -34,8 +34,8 @@
 					<div class="col-xs-5">
 						<p class="content-id">College:</p>
 					</div>
-					<div class="col-xs-7 ">
-						<input class="form-control" type="text" value="Hogwart's College">
+					<div class="col-xs-7">
+						<p><%= @user.profile.college %></p>
 					</div>
 				</div>
 				<div class="row">
@@ -43,8 +43,7 @@
 						<p class="content-id">Hometown:</p>
 					</div>
 					<div class="col-xs-7">
-						<input class="form-control" type="text" value="Godrick's Hollow, England">
-						<!-- <p>Godrick's Hollow, England</p> -->
+						<p><%= @user.profile.hometown %></p>
 					</div>
 				</div>
 				<div class="row">
@@ -52,10 +51,9 @@
 						<p class="content-id">Currely Lives:</p>
 					</div>
 					<div class="col-xs-7">
-						<input class="form-control" type="text" value="Godrick's Hollow, England">
+						<p><%= @user.profile.currently_lives %></p>
 					</div>
 				</div><!-- Basic information IDs -->
-
 				<div class="row">
 					<div class="col-sm-12">
 						<h3>Contact Information</h3>
@@ -74,8 +72,7 @@
 						<p class="content-id">Telephone:</p>
 					</div>
 					<div class="col-xs-7">
-						<input class="form-control" type="text" value="555-123-4567">
-						<!-- <p>555-123-4567</p> -->
+						<p><%= @user.profile.telephone %></p>
 					</div>
 				</div><!-- Contact Info Content -->
 			</div>
@@ -87,7 +84,7 @@
 				</div>
 				<div class="row">
 					<div class="col-sm-12">
-						<textarea class="form-control" rows="2">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut</textarea>
+						<p><%= @user.profile.words_to_live_by %></p>
 					</div> <!-- Words to live by content -->
 				</div>
 				<div class="row">
@@ -97,15 +94,10 @@
 				</div>
 				<div class="row">
 					<div class="col-sm-12">
-						<textarea class="form-control" rows="6">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla ariatur. Excepteur sint caecat cupidatat non oident, sunt in culpa qui officia deserunt mollit anim id est laborum.</textarea>
+						<p><%= @user.profile.about_me %></p>
 					</div> <!-- About Me content -->
 				</div>
-			</div><!-- Right half content -->
-		</div><!-- Content wrapper -->
-		<div class="row">
-			<div class="col-sm-6 col-sm-offset-3" id="save-change-wrapper">
-				<a href="about.html" class="btn btn-primary btn-lg btn-block">Save Changes</a>
 			</div>
 		</div>
-	</div><!-- About container -->
-</div>
+	</div>
+<div id="static_pages">

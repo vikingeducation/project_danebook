@@ -9,16 +9,17 @@ class StaticPagesController < ApplicationController
   end
 
   def about
-    unless @user.profile
-      @user.create_profile   # question is it better to have this be a build instead of create here?????
-      redirect_to user_about_edit_path(@user)
-    end
   end
 
   def about_edit
   end
 
   private
+
+    def set_user
+      @user = User.find(params[:user_id])
+    end
+
     def whitelisted_user_params
       params.
         require(:user).
@@ -29,5 +30,7 @@ class StaticPagesController < ApplicationController
                 :password_confirmation,
                 :birth_date)
     end
+
+    # def white_listed
 
 end

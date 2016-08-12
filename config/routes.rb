@@ -9,8 +9,10 @@ Rails.application.routes.draw do
   delete "/logout" => "sessions#destroy"
   resources :users, only: [:show, :create, :destroy, :edit, :update] do
     get "timeline" => "static_pages#timeline"
-    get "about"    => "static_pages#about"
-    get "about_edit" => "static_pages#about_edit"
+    # get "about"    => "static_pages#about"
+    resources :profiles, only: [:show]
+    resources :profiles, only: [:edit, :update], shallow: true
+    # get "about_edit" => "static_pages#about_edit"
     get "friends"    => "static_pages#friends"
     get "photos"    => "static_pages#photos"
   end

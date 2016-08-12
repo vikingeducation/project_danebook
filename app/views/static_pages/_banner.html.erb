@@ -9,7 +9,7 @@
     <div class="col-sm-7 col-sm-offset-2" role="navigation">
       <ul class="nav nav-pills nav-justified">
         <li role="presentation" class="<%= "active-tab" if controller.action_name == 'timeline' %>"><%= link_to "Timeline", root_path %></li>
-        <li role="presentation"  class="<%= "active-tab" if controller.action_name.include?('about') %>"><%= link_to "About", user_about_path(params[:user_id]) %></li>
+        <li role="presentation"><%= link_to "About", user_profile_path(user, user.profile) %></li>
         <li role="presentation" class="<%= "active-tab" if controller.action_name == 'photos' %>"><%= link_to user_photos_path(params[:user_id]) do %>
             Photos <span>(123)</span>
           <% end %></li>
@@ -19,9 +19,9 @@
       </ul>
     </div><!-- Nav Menu -->
     <% if current_user.id == params[:user_id]  %>
-    <div class="col-sm-3">
-      <h5 class="text-right"><a href="about_edit.html" id="edit-profile-link">Edit Profile</a></h5>
-    </div><!-- Edit Profile Link -->
+      <div class="col-sm-3">
+        <h5 class="text-right"><%= link_to "Edit Profile", edit_user_profile(params[:user_id]), id: "edit-profile-link" %></h5>
+      </div><!-- Edit Profile Link -->
     <% end %>
   </div><!-- Link bar -->
 </div> <!-- Banner Container -->

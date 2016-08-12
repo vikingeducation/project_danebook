@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
       sign_in(@user)
 
       flash[:success] = "You've successfully signed in"
-      redirect_to timeline_user_profiles_path(@user)
+      redirect_to user_profiles_path(@user)
     else
       flash[:error] = "We couldn't sign you in"
       redirect_to new_user_path

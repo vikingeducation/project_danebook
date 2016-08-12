@@ -14,7 +14,7 @@
   <% end %>
 <% else %>
 
-  <h1>Welcome</h1> <%= link_to current_user.username, user_path(current_user) %>
+  <p> <%= link_to current_user.username, user_path(current_user) %> </p>
   <%= link_to "Logout", logout_path, method: :delete, data: {confirm: "Are you sure you want to log out?"} %>
 <% end %>
 

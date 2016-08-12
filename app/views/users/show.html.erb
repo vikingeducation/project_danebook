@@ -19,6 +19,12 @@
 
 <div class="main">
   <div class="container">
+  <div class="row">
+    <%= render "shared/wall_post_form"%>
+    <br>
+    <%= render partial: "shared/wall_post", locals: { posts: @posts} %>
+  </div>
+
     <div class="row">
     <!--(First Panel)-->
     <div class="col-xs-6" id="panels">

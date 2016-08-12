@@ -10,6 +10,7 @@ class User < ApplicationRecord
   before_create :generate_token
 
   has_one :profile, class_name: "Profile"
+  has_many :posts, class_name: "Post"
 
   #generates and regenerates tokens and sets to self
   def generate_token

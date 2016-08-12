@@ -6,12 +6,15 @@ class UsersController < ApplicationController
   end
 
   def show
+    @post = Post.new
+    @posts = current_user.posts
   end
 
   def new
     redirect_to current_user if signed_in_user?
     @user = User.new
     @profile = Profile.new
+
   end
 
   def create
@@ -40,7 +43,7 @@ class UsersController < ApplicationController
 
   private
     def set_user
-      @user = User.find(params[:id])
+      @user = User.find(current_user.id)
     end
 
     def whitelisted_user_params

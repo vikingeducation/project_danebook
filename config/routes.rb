@@ -16,7 +16,10 @@ Rails.application.routes.draw do
     get "friends"    => "static_pages#friends"
     get "photos"    => "static_pages#photos"
   end
-  resources :posts, only: [:create, :update, :destroy]
+  resources :posts, only: [:create, :update, :destroy] do
+    resources :likes, only: [:create, :destroy], :defaults => { :likeable => 'Post'}
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

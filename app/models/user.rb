@@ -1,7 +1,8 @@
 class User < ActiveRecord::Base
   has_one :profile, dependent: :destroy
   has_many :posts
-  belongs_to :like
+  has_many :likes
+  has_many :liked_posts, through: :likes, source: :post
   # has_many :feeds
   # has_many :posts, through: :feeds
   accepts_nested_attributes_for :profile

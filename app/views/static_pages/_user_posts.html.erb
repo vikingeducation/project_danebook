@@ -17,13 +17,18 @@
     </div>
     <div class="row post-wrapper section-footer">
       <div class="col-xs-7 col-sm-4">
-        <a class="friend-name" href="#">Like</a>
-        <a class="friend-name" href="#">Comment</a>
+        <% if signed_in_user? #&& !user_liked? %>
+          <%= button_to "Like", post_likes_path(post), method: :post, class: "friend-name" %>
+          <a class="friend-name" href="#">Comment</a>
+        <% else %>
+          <%= link_to "Like", post_likes, class: "friend-name", disabled: true %>
+          <a class="friend-name" href="#" disabled="true">Comment</a>
+        <% end %>
       </div>
       <div class="col-xs-5 col-sm-8 text-right">
-        <!-- <%= link_to "Delete", post_path(post), method: :delete %> -->
-        <%= button_to "Delete", post_path(post), method: :delete %>
-        <!-- <a class="friend-name" href="#">Delete</a> -->
+        <% if @user == current_user %>
+          <%= button_to "Delete", post_path(post), method: :delete %>
+        <% end %>
       </div>
     </div>
   </div>

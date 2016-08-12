@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_many :activities
+  has_many :posts, :through => :activities, :source => :postable, :source_type => 'Post'
 
   before_create :generate_token
   has_secure_password

@@ -11,10 +11,10 @@
 					<div class="row">
 						<div class="col-xs-12 tl-about-info tl-content-template">
 							<ul class="list-unstyled">
-								<li><strong>Birthday:</strong> July 31st, 1980</li>
-								<li><strong>College:</strong> Hogwarts College</li>
-								<li><strong>Hometown:</strong> Godrick's Hollow, England</li>
-								<li><strong>Currently Lives:</strong> Godrick's Hollow, England</li>
+								<li><strong>Birthday:</strong> <%= user_birthday %></li>
+								<li><strong>College:</strong> <%= @user.college %></li>
+								<li><strong>Hometown:</strong> <%= @user.hometown %></li>
+								<li><strong>Currently Lives:</strong> <%= @user.current_add %></li>
 							</ul>
 						</div>
 					</div>
@@ -59,27 +59,39 @@
 				<section class="tl-content-box tl-post-box">
 					<div class="row">
 						<header class="col-xs-12">
-							<h4>Post</h4>
+							<h4>Posts</h4>
 						</header>
 					</div>
 					<div class="row">
 						<div class="col-xs-12 tl-content-template">
-							<form>
-								<div class="form-group tl-post-form">
-									<textarea class="form-control" rows="2" placeholder="Tell the world something..."></textarea>
-								</div>
-							</form>
+              <%= form_for [@current_user, @activity] do |f| %>
+                <div class="form-group tl-post-form">
+                  <%= f.text_area :content, class: "form-control", rows: 2, placeholder: "Tell the world something..." %>
+                  <input type="hidden" name="type" value="post">
+                </div>
+                <div class="row">
+      						<div class="col-xs-12">
+      							<div class="col-xs-3 pull-right h2 btn-container">
+                      <%= f.submit "Post", class: "btn btn-primary" %>
+      							</div>
+      						</div>
+      					</div>
+              <% end unless required_user? %>
 						</div>
 					</div>
-					<div class="row">
-						<footer class="col-xs-12">
-							<div class="col-xs-3 pull-right h2 btn-container">
-                <%= link_to "Post", "#", class: "btn btn-primary" %>
-							</div>
-						</footer>
-					</div>
 				</section>
-
+        <% @activities.each do |activity| %>
+        <section class="tl-exist-post">
+          <%= render partial: "shared/post_profile_container", locals: { date: "Thursday, 5/21/2014", name: "Harry Potter", activity: activity } %>
+          <div class="row">
+            <footer class="col-xs-12 tl-post-footer">
+              <%= link_to "Like", "#", class: "ex-post-like-link" %>
+              <%= link_to "Comment", "#" %>
+              <%= link_to "Delete", "#", class: "pull-right" %>
+            </footer>
+          </div>
+        </section>
+        <% end %>
 				<section class="tl-exist-post">
 					<%= render partial: "shared/ex-post-profile-container", locals: { date: "Thursday, 5/21/2014", name: "Harry Potter" } %>
 					<div class="row">

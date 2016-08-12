@@ -2,13 +2,13 @@
   <div class="cover-photo-container">
     <img class="cover-photo" src="/imgs/hogwarts_small.jpg">
     <img class="profile-img" src="/imgs/harry_potter_small.jpg">
-    <h2 class="profile-name"><%= @current_user.first_name %> <%= @current_user.last_name %></h2>
+    <h2 class="profile-name"><%= @user.first_name %> <%= @user.last_name %></h2>
   </div>
   <div class="row midde-nav-row">
     <div class="col-xs-7 col-xs-offset-3">
       <ul class="nav nav-pills middle-nav">
-        <li><%= link_to "Timeline", timeline_path %></li>
-        <li><%= link_to "About", @current_user %></li>
+        <li><%= link_to "Timeline", user_activities_path(@user) %></li>
+        <li><%= link_to "About", @user %></li>
         <li>
         <%= link_to photos_path do %>
           Photos

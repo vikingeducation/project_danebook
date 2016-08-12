@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     if @user && @user.authenticate(params[:password])
       sign_in(@user)
       flash[:notice] = "You've successfully signed in"
-      redirect_to timeline_path
+      redirect_to user_activities_path(@user)
     else
       @user = User.new
       flash.now[:alert] = "Email and password do not match"

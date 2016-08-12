@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   before_action :require_current_user, :only => [:edit, :update, :destroy]
 
   def index
-    redirect_to :timeline
+    redirect_to user_activities_path(current_user)
   end
 
   def show
@@ -19,7 +19,7 @@ class UsersController < ApplicationController
     if @user.save
       sign_in(@user)
       flash[:success] = "User has been created!"
-      redirect_to :timeline
+      redirect_to user_activities_path(@user)
     else
       flash.now[:warning] = @user.errors.full_messages
       render "static_pages/home"
@@ -27,6 +27,7 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = current_user
     current_user
   end
 

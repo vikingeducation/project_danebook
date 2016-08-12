@@ -9,10 +9,12 @@
         <p class="ex-post-timestamp">Said on <%= comment.created_at %></p>
       </div>
       <p class="ex-post-content tl-comment-content"><%= comment.content %></p>
-      <div class="col-xs-12 tl-comment-footer">
-        <%= link_to "Like", "#" %>
-        <span>3 other people like this</span>
+      <div class="col-xs-12">
+        <%= like_or_unlike(comment.activity) %>
+        <%= link_to "Comment", "#" %>
+        <%= link_to "Delete", user_activity_path(@user, comment.activity), class: "pull-right", method: :delete  if created_by_user? %>
       </div>
+      <%= display_likes(comment.activity) %>
     </div>
   </div>
 </div>

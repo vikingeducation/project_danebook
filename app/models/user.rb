@@ -86,6 +86,10 @@ class User < ActiveRecord::Base
     @last_name ||= self.profile.last_name
   end
 
+  def full_name
+    "#{first_name} #{last_name}"
+  end
+
   def friend?(user)
     self.friendable_id == user.id
   end

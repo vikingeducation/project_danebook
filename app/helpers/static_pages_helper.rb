@@ -33,7 +33,7 @@ module StaticPagesHelper
     if user.friend?(current_user)
       friend_profile user
     else
-      submit_tag "Add Friend"
+      submit_tag "Add Friend", data: { confirm: "Add #{user.full_name} to your friends list?"}
     end
   end
 

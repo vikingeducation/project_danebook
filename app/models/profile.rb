@@ -15,14 +15,6 @@ class Profile < ActiveRecord::Base
                                        length: { in: 1..255 } }
 
 
-  #pg_search
-  include PgSearch
-  #Defining a pg search scope
-  pg_search_scope :search_by_full_name, 
-                  against: ["first_name","last_name"],
-                  using: { 
-                    tsearch: { dictionary: :english } 
-                  }
 
   private
     def defaults

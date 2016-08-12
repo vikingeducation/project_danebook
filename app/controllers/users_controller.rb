@@ -7,7 +7,7 @@ class UsersController < ApplicationController
 
   def index
     #will_paginate requires an instance variable.
-    @users = User.search(params[:search], params[:page])
+    @users = User.search(params[:search], params[:page], current_user)
   end
 
   def new

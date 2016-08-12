@@ -1,8 +1,8 @@
 class User < ApplicationRecord
   before_create :generate_token
   has_secure_password
-  belongs_to :hometown, class_name: "City"
-  belongs_to :curr_addr, class_name: "City"
+  #belongs_to :hometown, class_name: "City"
+  #belongs_to :curr_addr, class_name: "City"
 
   validates :password,
             :length => { :in => 8..24 },

@@ -11,6 +11,10 @@ class User < ApplicationRecord
             :on => :create
   has_one :profile
   accepts_nested_attributes_for :profile, :update_only => true
+  has_many :posts_written, :foreign_key => :post_author_id, :class_name => "Post"
+  has_many :posts_received, :foreign_key => :post_receiver_id, :class_name => "Post"
+  has_many :comments_written, :foreign_key => :user_id, :class_name => "Comment"
+  has_many :likes_given, :foreign_key => :user_id, :class_name => "Like"
 
   def generate_token
     begin

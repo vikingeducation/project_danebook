@@ -79,11 +79,11 @@ class User < ActiveRecord::Base
   end
 
   def first_name
-    @first_name ||= self.profile.first_name
+    @first_name ||= self.profile.first_name if self.profile
   end
 
   def last_name
-    @last_name ||= self.profile.last_name
+    @last_name ||= self.profile.last_name if self.profile
   end
 
   def full_name

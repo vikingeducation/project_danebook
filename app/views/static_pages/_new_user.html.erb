@@ -1,5 +1,5 @@
 <h1>Sign Up</h1>
-<%= form_for :user, url: 'users#create' do |f| %>
+<%= form_for @user do |f| %>
   <div class="row">
     <%= split_column make_pages_form f, :first_name %>
     <%= split_column make_pages_form f, :last_name %>

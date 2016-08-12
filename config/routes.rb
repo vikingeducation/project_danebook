@@ -12,7 +12,8 @@ Rails.application.routes.draw do
 
     resources :photos
     resources :friends
-    resources :posts
+    resources :posts, except: [:destroy]
   end
+  resources :posts, only: [:destroy]
   resource :session, :only => [:new, :create, :destroy]
 end

@@ -41,14 +41,17 @@ class ApplicationController < ActionController::Base
 
   def require_current_user
     # don't forget that params is a string!!!
-    unless params[:id] == current_user.id.to_s
-      redirect_to about_user_path(params[:id].to_i)
+    unless page_user_id == current_user.id
+      redirect_to about_user_path(page_user_id)
     end
   end
 
   def self_profile?
-    user = (params[:user_id]|| params[:id])
-    current_user.id == user.to_i
+    current_user.id == page_user_id
   end
   helper_method :self_profile?
+
+  def page_user_id
+    controller_name == "users" ? params[:id].to_i : params[:user_id].to_i
+  end
 end

@@ -30,7 +30,7 @@
               </div>
               <div class="col-sm-7">
                 <div class="form-group">
-                  <p>(714) 555-1234</p>
+                  <p><%= @user.telephone if @user.telephone %></p>
                 </div>
               </div>
             </div>
@@ -38,16 +38,10 @@
 
           <div class="col-sm-6">
             <h3>Wörds to Live By</h3>
-            <p>Lørem ipsum dolor sit amet, consectetur ådipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et doløre magna aliqua.</p>
+            <p><%= @user.quote if @user.quote %></p>
 
             <h3>Åbout Me</h3>
-            <p>Lørem ipsum dolor sit amet, consectetur ådipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et doløre magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodö
-            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-            cillum doløre eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-            proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p><%= @user.about if @user.about %></p>
           </div>
         </div>
       </div>

@@ -27,6 +27,10 @@
 
       <%= render "post_box" %>
 
+      <% @posts.each do |post| %>
+        <%= render partial: "posts/post", locals: { post: post } if post.persisted? %>
+      <% end %>
+
       <article>
         <div class = "panel panel-default">
 

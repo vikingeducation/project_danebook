@@ -17,9 +17,10 @@ Rails.application.routes.draw do
     get "photos"    => "static_pages#photos"
   end
   resources :posts, only: [:create, :update, :destroy] do
-    resources :likes, only: [:create, :destroy], :defaults => { :likeable => 'Post'}
+    resources :likes, only: [:create], :defaults => { :likeable => 'Post'}
   end
 
+  resources :likes, only: [:destroy], :defaults => { :likeable => 'Post'}
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

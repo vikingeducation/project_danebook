@@ -14,10 +14,8 @@ class LikesController < ApplicationController
   end
 
   def destroy
-    ldfj;j
     if signed_in_user?
-      @like = Like.where("likeable_type = 'Post' AND likeable_id = ? AND user_id = ?", post_id, current_user.id)
-      # post = Post.find(params[:post_id])
+      @like = Like.find(params[:id])
       if @like.destroy
         flash[:success] = "Unliked the post"
       else

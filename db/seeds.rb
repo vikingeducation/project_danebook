@@ -14,6 +14,9 @@ Profile.destroy_all
 puts "Now the likes .......... . . . . ."
 Like.destroy_all
 
+puts "Now dem comments .......... . . . . ."
+Comment.destroy_all
+
 puts "Building users ...... ..... ... .. ."
 1.upto(6) do |i|
   u = User.create!(:email => "chuck#{i}@norris.com", :password => "chuckskick", :first_name => Faker::Name.first_name, :last_name => "Norris", birth_date: Faker::Date.between(2000.days.ago, Date.today))

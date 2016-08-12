@@ -11,8 +11,6 @@ class LikesController < ApplicationController
     end
   end
 
-  def destroy
-
 
 
  

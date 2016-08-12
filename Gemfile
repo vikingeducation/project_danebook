@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'simple_form'
 gem 'taps'
 gem 'pg'
 gem 'hirb'

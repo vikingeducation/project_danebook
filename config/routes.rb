@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
   root to: 'users#new'
-  resources :users do 
-    resource :profiles do
+  resources :users, :except => [:update, :destroy] do
+    resource :profiles, :except => [:create, :destroy] do
+      get "/edit" =>  "profiles#show"
+      get "/" =>  "profiles#index"
       get "/timeline" => "profiles#timeline"
       get "/friends" => "profiles#friends"
-      get "/about" => "profiles#about"
+      
       get "/photos" => "profiles#photos"
       get "/about_edit" => "profiles#about_edit"
     end

@@ -10,7 +10,8 @@
         <li class="active"><a  href="about.html">About</a></li>
         <li><a href="photos.html">Photos <span>(123)</span></a></li>
         <li><a href="friends.html">Friends <span>(542)</span></a></li>
-        <li class="pull-right edit-link" role="presentation"><a href="about_edit.html"><u>Edit Profile</u></a></li>
+        <li class="pull-right edit-link" role="presentation">
+        <u>Edit Profile</u></a></li>
       </ul>
     </div>
   </div>
@@ -23,7 +24,7 @@
           <h1>About</h1>
       </div>
       <div class="col-xs-3 col-xs-offset-1">
-          <a href="about_edit.html"><button class="edit-profile-btn btn btn-primary">Edit Your Profile</button></a>
+          <a href="about_edit.html"><button class="edit-profile-btn btn btn-primary"><%= link_to "Edit Profile", user_profiles_path(current_user) + '/edit' %></button></a>
       </div>
     </div>      
 
@@ -50,7 +51,7 @@
         <h2>Contact Information</h2>
         <div class="col-xs-4">  
           <ul class="list-unstyled">
-            <li>Email: </li> <br>
+            <li>Email: </li>
             <li>Telephone: </li>
           </ul>
         </div>

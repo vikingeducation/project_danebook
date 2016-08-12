@@ -1,4 +1,3 @@
-
 <%= render "new_navbar" %>
 
 <div class="container connect-information-container">
@@ -17,23 +16,22 @@
       <div class= "col-md-2 sign-up-field">
         <%= f.text_field :first_name, placeholder: "First Name", class: "form-control" %>
       </div>
-      <div class= "col-md-2">
+      <div class=" col-md-2 sign-up-field">
         <%= f.text_field :last_name, placeholder: "Last Name", class: "form-control" %>
       </div>
-      <div class= "col-md-4">
+      <div class= "col-md-4 sign-up-field">
           <%= f.text_field :email, placeholder: "Email", class: "form-control" %>
       </div>
-      <div class= "col-md-4">
+      <div class= "col-md-4 sign-up-field">
         <%= f.password_field :password, placeholder: "Password", class: "form-control" %>
       </div>
-      <div class= "col-md-4">
+      <div class= "col-md-4 sign-up-field">
         <%= f.password_field :password_confirmation, placeholder: "Password Confirmation", class: "form-control" %>
       </div>
-        <%= f.submit :Create, class: "btn btn-success sign-up-field" %>
+      <div class="col-md-4">
+        <%= f.submit "Sign Up!", class: "btn btn-success sign-up-field" %>
+      </div>
       <% end %>
     </div>
   </div>
 </div>
-
-
-

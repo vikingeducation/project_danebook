@@ -34,12 +34,34 @@
           <div class= "col-md-12">
             Telephone: <%= user_profile.text_field :telephone, placeholder: @profile.college, class: "form-control" %></br>
           </div>
+          <div class="text-center">Birthday:</div>
+          <div class= "col-md-12">
+
+            <%
+            date_wrap_open = '<div class="col-xs-4"><div class="form-group">'.html_safe
+            date_wrap_close = '</div></div>'.html_safe
+            date_separator = "#{date_wrap_close}#{date_wrap_open}"
+            %>
+            <%= date_wrap_open %>
+
+              <%= user_profile.date_select(
+                :birthday,
+                {
+                  :order => [:month, :day, :year],
+                  :date_separator => date_separator,
+                  :start_year => Date.today.year,
+                  :end_year => 150.years.ago.year
+                },
+                {:class => 'form-control'}
+              ) %>
+            <%= date_wrap_close %>
+          </div>
         </div>
         <div class="col-md-7 words-to-live">
           <h3 class="text-center">Words to Live by</h3>
-          <p><%= user_profile.text_area :about_me, placeholder: @profile.about_me, class: "form-control", cols: 8, rows: 8 %></p>
+          <p><%= user_profile.text_area :about_me, placeholder: @profile.about_me, class: "form-control text-area-about", cols: 11, rows: 11 %></p>
           <h3 class="text-center"> About me </h3>
-          <p><%= user_profile.text_area :words_to_live_by, placeholder: @profile.words_to_live_by, class: "form-control", cols: 9, rows: 9 %></p>
+          <p><%= user_profile.text_area :words_to_live_by, placeholder: @profile.words_to_live_by, class: "form-control text-area-about", cols: 11, rows: 11%></p>
         </div>
       <% end %>
     </div>

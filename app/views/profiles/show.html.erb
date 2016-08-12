@@ -5,7 +5,7 @@
   <div class="row about-user-section">
     <div class="col-md-12">
       ABOUT
-      <%= link_to "Edit", edit_user_profiles_path(@user), class: "about-edit-link" %>
+      <%= link_to "Edit", edit_user_profiles_path(@user), class: "about-edit-link" if current_user == @user%>
     </div>
   </div>
   <div class="row basic-and-words-to-live">

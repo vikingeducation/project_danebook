@@ -7,10 +7,10 @@
   </div>
   <div class="row profile-navigation">
     <div class="col-md-2 timeline-link">
-      Timeline
+      <%= link_to "Timeline", user_path(@user) %>
     </div>
     <div class="col-md-2 about-link">
-      <%= link_to "About", user_profiles_path(current_user) %>
+      <%= link_to "About", user_profiles_path(@user) %>
     </div>
     <div class="col-md-2 photos-link">
       Photos
@@ -19,7 +19,7 @@
       Friends
     </div>
     <div class="col-md-4 edit-link">
-      <%= link_to "Edit", edit_user_profiles_path(@user) %>
+      <%= link_to "Edit", edit_user_profiles_path(@user) if current_user == @user %>
     </div>
   </div>
 </div>

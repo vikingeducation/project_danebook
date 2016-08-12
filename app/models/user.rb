@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  has_many :posts
   has_one :profile, dependent: :nullify
   has_many :photos
 
@@ -23,6 +24,10 @@ class User < ApplicationRecord
     self.auth_token = nil
     generate_token
     save!
+  end
+
+  def all_posts
+    self.posts.all.order('created_at DESC')
   end
 
 end

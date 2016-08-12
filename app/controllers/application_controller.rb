@@ -4,6 +4,16 @@ class ApplicationController < ActionController::Base
    
   private
 
+  def set_user
+    @user = User.find_by_id(params[:user_id])
+    redirect_to root_path, :flash=> {:error => "Unable to find that user"} unless @user
+  end
+
+  def set_user_user_controller
+    @user = User.find_by_id(params[:id])
+    redirect_to root_path, :flash=> {:error => "Unable to find that user"} unless @user
+  end
+
   def sign_in(user)
     user.regenerate_auth_token
     cookies[:auth_token] = user.auth_token
@@ -41,7 +51,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_current_user
-    unless params[:id] && params[:id] == current_user.id.to_s
+    unless current_user
       flash[:error] = "You're not allowed there. Nice try."
       redirect_to "http://nouveller.com/404/"
     end

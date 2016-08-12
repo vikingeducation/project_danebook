@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
 
 
+  get 'comments/new'
+
   resources :users do
     resource :profiles
+    resources :posts
     resources :photos
   end
 

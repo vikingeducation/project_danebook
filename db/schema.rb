@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160812160556) do
+ActiveRecord::Schema.define(version: 20160812221758) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "comments", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "type"
+    t.text     "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
+  end
 
   create_table "photos", force: :cascade do |t|
     t.integer  "profile_id"
@@ -21,6 +30,14 @@ ActiveRecord::Schema.define(version: 20160812160556) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["profile_id"], name: "index_photos_on_profile_id", using: :btree
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.integer  "user_id"
+    t.text     "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_posts_on_user_id", using: :btree
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -36,6 +53,7 @@ ActiveRecord::Schema.define(version: 20160812160556) do
     t.datetime "updated_at",       null: false
     t.text     "about_me"
     t.text     "words_to_live_by"
+    t.date     "birthday"
     t.index ["user_id"], name: "index_profiles_on_user_id", using: :btree
   end
 
@@ -51,5 +69,6 @@ ActiveRecord::Schema.define(version: 20160812160556) do
   end
 
   add_foreign_key "photos", "profiles"
+  add_foreign_key "posts", "users"
   add_foreign_key "profiles", "users"
 end

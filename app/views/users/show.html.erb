@@ -1,2 +1,45 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<%= render "shared/search_navbar" %>
+<%= render "shared/profile_header" %>
+
+<div class="container">
+  <div class="col-md-4">
+    <div class="row">
+      <div class="col-md-12">
+        <h3 class="text-center">About<h3>
+        <p class="about-details">Name: <%= @profile.user.first_name.capitalize %> <%= @profile.user.last_name.capitalize %><br></p>
+        <p class= "about-details">College: <%= @profile.college %></br></p>
+        <p class= "about-details">Current Location: <%= @profile.current_location %></br></p>
+        <p class= "about-details">Hometown: <%= @profile.hometown %></br></p>
+      </div>
+    </div>
+    <div class="col-md-12">
+      <h3 class="text-center">Photos<h3>
+    </div>
+  </div>
+  <div class="col-md-8">
+    <div class="row">
+      <%= render "new_post" %>
+
+    <% @posts.each do |post|%>
+      <div class="col-md-12">
+        <div class="displayed-post">
+          <div class="media">
+            <div class="media-left">
+              <%= image_tag("default_image.jpg", class: "post-photo") %>
+            </div>
+            <div class="media-body">
+            <h4 class="media-heading">Posted at:<%= post.created_at%>
+              <div class="panel-body">
+                <p><%= post.content %><%= post.id%> </p>
+              </div>
+              <%= link_to "Like", root_url, class: "btn btn-primary"%>
+              <%= link_to "Comment on Post", root_url, class: "btn btn-success"%>
+              <%= link_to "Delete Post", user_post_path(current_user, post), method: :delete, class: "btn btn-danger" if current_user == @user%>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

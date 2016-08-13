@@ -1,20 +1,10 @@
 class StaticPagesController < ApplicationController
   before_action :set_user, :except => [:new, :create]
 
-  def home
-
-  end
-
   def timeline
     @post = Post.new
     @posts = @user.recent_user_posts
     # fjdkfjd
-  end
-
-  def about
-  end
-
-  def about_edit
   end
 
   private

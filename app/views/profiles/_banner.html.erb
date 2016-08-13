@@ -18,5 +18,15 @@
         <% end %></li>
       </ul>
     </div><!-- Nav Menu -->
+    <div class="float-right">
+      <% if current_user.friended_users.pluck(:id).include?(@user.id)%>
+        <%= button_to "Unfriend", friending_path(user.id, :current_user_id => current_user.id), :method => :delete %>
+      <% elsif @user.id == current_user.id %>
+      <% else %>
+        <%= button_to "Friend",
+              friendings_path(:id => user.id, :current_user_id => current_user.id),
+              :method => "POST" %>
+      <% end %>
+    </div>
   </div><!-- Link bar -->
 </div> <!-- Banner Container -->

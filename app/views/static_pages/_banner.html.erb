@@ -14,14 +14,20 @@
             Photos <span>(123)</span>
           <% end %></li>
         <li role="presentation" class="<%= "active-tab" if controller.action_name == 'friends' %>"><%= link_to user_friends_path(params[:user_id]) do %>
-          Friends <span>(542)</span>
+          Friends <span>(<%= user.friended_users.count %>)</span>
         <% end %></li>
       </ul>
     </div><!-- Nav Menu -->
-    <% if current_user.id == params[:user_id]  %>
+    <% if current_user.id == user.id  %>
       <div class="col-sm-3">
-        <h5 class="text-right"><%= link_to "Edit Profile", edit_user_profile(params[:user_id]), id: "edit-profile-link" %></h5>
+        <h5 class="text-right"><%= link_to "Edit Profile", edit_profile_path(current_user.profile.id), id: "edit-profile-link" %></h5>
       </div><!-- Edit Profile Link -->
+    <% elsif current_user.friended_users.pluck(:id).include?(user.id)%>
+      <%= button_to "Unfriend", friending_path(user.id, :current_user_id => current_user.id), :method => :delete %>
+    <% else %>
+      <%= button_to "Friend",
+            friendings_path(:id => user.id, :current_user_id => current_user.id),
+            :method => "POST" %>
     <% end %>
   </div><!-- Link bar -->
 </div> <!-- Banner Container -->

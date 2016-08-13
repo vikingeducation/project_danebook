@@ -24,11 +24,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   </head>
   <body>
-    <% flash.each do |type, message| %>
-      <div id="alert-wrapper" class="alert-<%= type == "error" ? "danger" : type %>" role="alert">
-        <strong><%= type %>! <%= message %></strong>
-      </div>
-    <% end %>
     <%= yield %>
   </body>
 </html>

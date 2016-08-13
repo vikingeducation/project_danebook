@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @user.profile = Profile.new
     render 'static_pages/home'
   end
 
@@ -50,7 +51,10 @@ class UsersController < ApplicationController
   def whitelisted_user_params
     params.require(:user).permit(:id, :email,
       :password, :password_confirmation,
-      :profile_attributes => [ :id, :birthday,
+      :profile_attributes => [ :id,
+        :first_name,
+        :last_name,
+        :birthday,
         :college,
         :hometown, :currently_lives, :telephone,
         :words_to_live_by, :about_me])

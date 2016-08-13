@@ -1,9 +1,9 @@
 class User < ApplicationRecord
   has_secure_password
   before_create :generate_token
-  has_one :profile, inverse_of: :user
+  has_one :profile, inverse_of: :user, dependent: :destroy
 
-  accepts_nested_attributes_for :profile
+  accepts_nested_attributes_for :profile, update_only: true
 
   class EmailValidator < ActiveModel::EachValidator
     def validate_each(record, attribute, value)

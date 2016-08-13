@@ -14,8 +14,8 @@ Rails.application.routes.draw do
     resources :photos
     resources :posts, shallow: true do
       resources :likes, defaults: { likable: 'Post' }
+      resources :comments, defaults:  { likable: 'Post' }
     end
-    resources :likes, except: [:destroy]
   end
 
   resource :session, :only => [:new, :create, :destroy]

@@ -18,8 +18,6 @@ $box-spacing: 20px;
   #logo {
     letter-spacing: -.04em;
     font-size: 36px;
-    text-decoration: none;
-    color: #fff;
   }
 
   a {
@@ -39,14 +37,6 @@ $box-spacing: 20px;
     background-color: #5973a8;
     border-color: #1a356e;
   }
-}
-
-.navbar-fixed-top .navbar-toggle .icon-bar {
-    background-color: white;
-}
-
-body {
-  background-color: #edf0f5;
 }
 
 #login-main {
@@ -74,18 +64,19 @@ body {
       Navbar
 *************************/
 
+// logo
 .navbar-header {
-      a {
-        font-size: 22px;
-      }
+  a {
+    font-size: 22px;
+  }
 
-      img {
-        height: 22px;
-        width: 22px;
-        display: inline;
-        margin-right: 5px;
-      }
-    }
+  img {
+    height: 22px;
+    width: 22px;
+    display: inline;
+    margin-right: 5px;
+  }
+}
 
 // Fixes color of mobile menu button
 .navbar-fixed-top .navbar-toggle .icon-bar {

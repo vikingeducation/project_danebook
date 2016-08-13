@@ -31,7 +31,7 @@ module LikesHelper
     end
 
     if remaining > 0
-      extras = " and #{remaining} others like this."
+      extras = " and #{remaining} #{ remaining > 1 ? 'others' : 'other' } like this."
     end
 
     current + user + extras

@@ -32627,3 +32627,692 @@ Processing by UsersController#show as HTML
 Completed 200 OK in 103ms (Views: 93.3ms | ActiveRecord: 5.4ms)
 
 
+Started GET "/users/6" for ::1 at 2016-08-13 12:04:38 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "h7zuig8ioY6WDeu72Ycgzw"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered shared/_cover.html.erb (0.4ms)
+  Rendered shared/_header.html.erb (3.7ms)
+  [1m[36mCity Load (0.3ms)[0m  [1m[34mSELECT  "cities".* FROM "cities" WHERE "cities"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mCity Load (0.3ms)[0m  [1m[34mSELECT  "cities".* FROM "cities" WHERE "cities"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  Rendered users/_about_box.html.erb (17.0ms)
+  Rendered users/_photo_box_row.html.erb (0.6ms)
+  Rendered users/_photo_box_row.html.erb (0.1ms)
+  Rendered users/_photo_box_row.html.erb (0.1ms)
+  Rendered users/_photo_box.html.erb (6.9ms)
+  Rendered users/_friend_box.html.erb (0.6ms)
+  Rendered shared/_flash.html.erb (0.6ms)
+  Rendered users/_post_box.html.erb (2.1ms)
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1 ORDER BY "posts"."created_at" DESC[0m  [["author_id", 6]]
+  [1m[36mLike Load (0.8ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."likable_type" = $1 AND "likes"."likable_id" IN (12, 11, 10, 9)[0m  [["likable_type", "Post"]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 12], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2[0m  [["likable_id", 12], ["likable_type", "Post"]]
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 12], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  Rendered posts/_post.html.erb (15.2ms)
+  Rendered users/show.html.erb within layouts/application (77.5ms)
+Completed 500 Internal Server Error in 125ms (ActiveRecord: 4.0ms)
+
+
+DEPRECATION WARNING: #original_exception is deprecated. Use #cause instead. (called from initialize at /Users/philip/.rvm/gems/ruby-2.3.1/gems/better_errors-2.1.1/lib/better_errors/raised_exception.rb:7)
+DEPRECATION WARNING: #original_exception is deprecated. Use #cause instead. (called from initialize at /Users/philip/.rvm/gems/ruby-2.3.1/gems/better_errors-2.1.1/lib/better_errors/raised_exception.rb:8)
+
+TypeError - no implicit conversion of nil into String:
+  app/helpers/likes_helper.rb:30:in `post_like_text'
+  app/views/posts/_post.html.erb:40:in `_app_views_posts__post_html_erb___3098839161562794212_70152544548860'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/template.rb:158:in `block in render'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/notifications.rb:166:in `instrument'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/template.rb:348:in `instrument'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/template.rb:156:in `render'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/renderer/partial_renderer.rb:343:in `render_partial'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/renderer/partial_renderer.rb:311:in `block in render'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/renderer/abstract_renderer.rb:42:in `block in instrument'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/notifications.rb:164:in `block in instrument'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/notifications.rb:164:in `instrument'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/renderer/abstract_renderer.rb:41:in `instrument'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/renderer/partial_renderer.rb:310:in `render'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/renderer/renderer.rb:47:in `render_partial'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/renderer/renderer.rb:21:in `render'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/helpers/rendering_helper.rb:32:in `render'
+  app/views/users/show.html.erb:31:in `block in _app_views_users_show_html_erb__1878550891869350429_70152552176980'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activerecord-5.0.0/lib/active_record/relation/delegation.rb:38:in `each'
+  app/views/users/show.html.erb:30:in `_app_views_users_show_html_erb__1878550891869350429_70152552176980'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/template.rb:158:in `block in render'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/notifications.rb:166:in `instrument'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/template.rb:348:in `instrument'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/template.rb:156:in `render'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/renderer/template_renderer.rb:54:in `block (2 levels) in render_template'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/renderer/abstract_renderer.rb:42:in `block in instrument'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/notifications.rb:164:in `block in instrument'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/notifications.rb:164:in `instrument'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/renderer/abstract_renderer.rb:41:in `instrument'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/renderer/template_renderer.rb:53:in `block in render_template'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/renderer/template_renderer.rb:61:in `render_with_layout'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/renderer/template_renderer.rb:52:in `render_template'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/renderer/template_renderer.rb:14:in `render'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/renderer/renderer.rb:42:in `render_template'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/renderer/renderer.rb:23:in `render'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/rendering.rb:103:in `_render_template'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/streaming.rb:217:in `_render_template'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/rendering.rb:83:in `render_to_body'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/rendering.rb:52:in `render_to_body'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/renderers.rb:144:in `render_to_body'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/abstract_controller/rendering.rb:26:in `render'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/rendering.rb:36:in `render'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/instrumentation.rb:44:in `block (2 levels) in render'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+  /Users/philip/.rvm/rubies/ruby-2.3.1/lib/ruby/2.3.0/benchmark.rb:308:in `realtime'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/core_ext/benchmark.rb:12:in `ms'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/instrumentation.rb:44:in `block in render'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/instrumentation.rb:87:in `cleanup_view_runtime'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activerecord-5.0.0/lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/instrumentation.rb:43:in `render'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/implicit_render.rb:36:in `default_render'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/basic_implicit_render.rb:4:in `block in send_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/basic_implicit_render.rb:4:in `send_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/abstract_controller/base.rb:188:in `process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/rendering.rb:30:in `process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/abstract_controller/callbacks.rb:20:in `block in process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:126:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:506:in `block (2 levels) in compile'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:455:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:101:in `__run_callbacks__'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:750:in `_run_process_action_callbacks'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:90:in `run_callbacks'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/abstract_controller/callbacks.rb:19:in `process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/rescue.rb:20:in `process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/notifications.rb:164:in `block in instrument'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/notifications.rb:164:in `instrument'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal/params_wrapper.rb:248:in `process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activerecord-5.0.0/lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/abstract_controller/base.rb:126:in `process'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionview-5.0.0/lib/action_view/rendering.rb:30:in `process'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal.rb:190:in `dispatch'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_controller/metal.rb:262:in `dispatch'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/routing/route_set.rb:32:in `serve'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/journey/router.rb:39:in `block in serve'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/journey/router.rb:26:in `serve'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/routing/route_set.rb:725:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/etag.rb:25:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/conditional_get.rb:25:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/head.rb:12:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/session/abstract/id.rb:222:in `context'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/session/abstract/id.rb:216:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/cookies.rb:613:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activerecord-5.0.0/lib/active_record/migration.rb:552:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/callbacks.rb:90:in `run_callbacks'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/executor.rb:12:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:84:in `protected_app_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:79:in `better_errors_call'
+  better_errors (2.1.1) lib/better_errors/middleware.rb:57:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+  web-console (3.3.1) lib/web_console/middleware.rb:131:in `call_app'
+  web-console (3.3.1) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (3.3.1) lib/web_console/middleware.rb:18:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/railties-5.0.0/lib/rails/rack/logger.rb:36:in `call_app'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/railties-5.0.0/lib/rails/rack/logger.rb:24:in `block in call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/tagged_logging.rb:70:in `block in tagged'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/tagged_logging.rb:26:in `tagged'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/tagged_logging.rb:70:in `tagged'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/railties-5.0.0/lib/rails/rack/logger.rb:24:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/sprockets-rails-3.1.1/lib/sprockets/rails/quiet_assets.rb:13:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/request_id.rb:24:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/method_override.rb:22:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/runtime.rb:22:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/activesupport-5.0.0/lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/executor.rb:12:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/actionpack-5.0.0/lib/action_dispatch/middleware/static.rb:136:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/rack-2.0.1/lib/rack/sendfile.rb:111:in `call'
+   () Users/philip/.rvm/gems/ruby-2.3.1@global/gems/railties-5.0.0/lib/rails/engine.rb:522:in `call'
+  puma (3.6.0) lib/puma/configuration.rb:225:in `call'
+  puma (3.6.0) lib/puma/server.rb:578:in `handle_request'
+  puma (3.6.0) lib/puma/server.rb:415:in `process_client'
+  puma (3.6.0) lib/puma/server.rb:275:in `block in run'
+  puma (3.6.0) lib/puma/thread_pool.rb:116:in `block in spawn_thread'
+
+Started POST "/__better_errors/0f6e810f058faec5/variables" for ::1 at 2016-08-13 12:04:38 -0700
+Started GET "/users/6" for ::1 at 2016-08-13 12:05:14 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "h7zuig8ioY6WDeu72Ycgzw"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered shared/_cover.html.erb (0.4ms)
+  Rendered shared/_header.html.erb (3.7ms)
+  [1m[36mCity Load (0.3ms)[0m  [1m[34mSELECT  "cities".* FROM "cities" WHERE "cities"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mCity Load (0.3ms)[0m  [1m[34mSELECT  "cities".* FROM "cities" WHERE "cities"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  Rendered users/_about_box.html.erb (14.6ms)
+  Rendered users/_photo_box_row.html.erb (0.8ms)
+  Rendered users/_photo_box_row.html.erb (0.2ms)
+  Rendered users/_photo_box_row.html.erb (0.2ms)
+  Rendered users/_photo_box.html.erb (7.1ms)
+  Rendered users/_friend_box.html.erb (0.6ms)
+  Rendered shared/_flash.html.erb (0.5ms)
+  Rendered users/_post_box.html.erb (2.4ms)
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1 ORDER BY "posts"."created_at" DESC[0m  [["author_id", 6]]
+  [1m[36mLike Load (0.6ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."likable_type" = $1 AND "likes"."likable_id" IN (12, 11, 10, 9)[0m  [["likable_type", "Post"]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 12], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2[0m  [["likable_id", 12], ["likable_type", "Post"]]
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 12], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  Rendered posts/_post.html.erb (8.6ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 11], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 11], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2[0m  [["likable_id", 11], ["likable_type", "Post"]]
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 11], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  Rendered posts/_post.html.erb (7.7ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 10], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 10], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2[0m  [["likable_id", 10], ["likable_type", "Post"]]
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 10], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  Rendered posts/_post.html.erb (10.3ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 9], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 9], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2[0m  [["likable_id", 9], ["likable_type", "Post"]]
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 9], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  Rendered posts/_post.html.erb (7.5ms)
+  Rendered users/show.html.erb within layouts/application (98.8ms)
+  Rendered shared/_navbar.html.erb (1.7ms)
+Completed 200 OK in 187ms (Views: 142.6ms | ActiveRecord: 8.3ms)
+
+
+Started GET "/users/6" for ::1 at 2016-08-13 12:09:58 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "h7zuig8ioY6WDeu72Ycgzw"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered shared/_cover.html.erb (0.3ms)
+  Rendered shared/_header.html.erb (4.4ms)
+  [1m[36mCity Load (0.4ms)[0m  [1m[34mSELECT  "cities".* FROM "cities" WHERE "cities"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mCity Load (0.3ms)[0m  [1m[34mSELECT  "cities".* FROM "cities" WHERE "cities"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  Rendered users/_about_box.html.erb (20.7ms)
+  Rendered users/_photo_box_row.html.erb (0.8ms)
+  Rendered users/_photo_box_row.html.erb (0.1ms)
+  Rendered users/_photo_box_row.html.erb (0.2ms)
+  Rendered users/_photo_box.html.erb (7.3ms)
+  Rendered users/_friend_box.html.erb (0.5ms)
+  Rendered shared/_flash.html.erb (0.6ms)
+  Rendered users/_post_box.html.erb (2.1ms)
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1 ORDER BY "posts"."created_at" DESC[0m  [["author_id", 6]]
+  [1m[36mLike Load (0.6ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."likable_type" = $1 AND "likes"."likable_id" IN (12, 11, 10, 9)[0m  [["likable_type", "Post"]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mLike Load (0.6ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 12], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2[0m  [["likable_id", 12], ["likable_type", "Post"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 12], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  Rendered posts/_post.html.erb (14.5ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mLike Load (0.6ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 11], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 11], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2[0m  [["likable_id", 11], ["likable_type", "Post"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 11], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  Rendered posts/_post.html.erb (7.5ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mLike Load (0.6ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 10], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 10], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2[0m  [["likable_id", 10], ["likable_type", "Post"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 10], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  Rendered posts/_post.html.erb (11.1ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mLike Load (0.6ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 9], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 9], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2[0m  [["likable_id", 9], ["likable_type", "Post"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 9], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  Rendered posts/_post.html.erb (7.9ms)
+  Rendered users/show.html.erb within layouts/application (116.3ms)
+  Rendered shared/_navbar.html.erb (2.5ms)
+Completed 200 OK in 234ms (Views: 174.0ms | ActiveRecord: 23.6ms)
+
+
+Started GET "/users/6" for ::1 at 2016-08-13 12:12:49 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "h7zuig8ioY6WDeu72Ycgzw"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered shared/_cover.html.erb (0.4ms)
+  Rendered shared/_header.html.erb (4.5ms)
+  [1m[36mCity Load (0.3ms)[0m  [1m[34mSELECT  "cities".* FROM "cities" WHERE "cities"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mCity Load (0.2ms)[0m  [1m[34mSELECT  "cities".* FROM "cities" WHERE "cities"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  Rendered users/_about_box.html.erb (3.2ms)
+  Rendered users/_photo_box_row.html.erb (0.5ms)
+  Rendered users/_photo_box_row.html.erb (0.2ms)
+  Rendered users/_photo_box_row.html.erb (0.2ms)
+  Rendered users/_photo_box.html.erb (8.0ms)
+  Rendered users/_friend_box.html.erb (0.6ms)
+  Rendered shared/_flash.html.erb (0.6ms)
+  Rendered users/_post_box.html.erb (1.4ms)
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1 ORDER BY "posts"."created_at" DESC[0m  [["author_id", 6]]
+  [1m[36mLike Load (0.7ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."likable_type" = $1 AND "likes"."likable_id" IN (12, 11, 10, 9)[0m  [["likable_type", "Post"]]
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mLike Load (0.5ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 12], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  Rendered posts/_post.html.erb (7.7ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mLike Load (0.6ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 11], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 11], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2[0m  [["likable_id", 11], ["likable_type", "Post"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 11], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  Rendered posts/_post.html.erb (9.0ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mLike Load (0.6ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 10], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 10], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2[0m  [["likable_id", 10], ["likable_type", "Post"]]
+  [1m[36mCACHE (0.1ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 10], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  Rendered posts/_post.html.erb (10.0ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mLike Load (0.6ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 9], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 9], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2[0m  [["likable_id", 9], ["likable_type", "Post"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 9], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  Rendered posts/_post.html.erb (7.6ms)
+  Rendered users/show.html.erb within layouts/application (79.3ms)
+  Rendered shared/_navbar.html.erb (1.6ms)
+Completed 200 OK in 150ms (Views: 135.9ms | ActiveRecord: 7.8ms)
+
+
+Started GET "/users/6" for ::1 at 2016-08-13 12:13:07 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "h7zuig8ioY6WDeu72Ycgzw"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered shared/_cover.html.erb (0.3ms)
+  Rendered shared/_header.html.erb (3.5ms)
+  [1m[36mCity Load (0.3ms)[0m  [1m[34mSELECT  "cities".* FROM "cities" WHERE "cities"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mCity Load (0.4ms)[0m  [1m[34mSELECT  "cities".* FROM "cities" WHERE "cities"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  Rendered users/_about_box.html.erb (4.5ms)
+  Rendered users/_photo_box_row.html.erb (0.7ms)
+  Rendered users/_photo_box_row.html.erb (0.3ms)
+  Rendered users/_photo_box_row.html.erb (0.2ms)
+  Rendered users/_photo_box.html.erb (8.5ms)
+  Rendered users/_friend_box.html.erb (1.1ms)
+  Rendered shared/_flash.html.erb (1.0ms)
+  Rendered users/_post_box.html.erb (1.6ms)
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1 ORDER BY "posts"."created_at" DESC[0m  [["author_id", 6]]
+  [1m[36mLike Load (0.5ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."likable_type" = $1 AND "likes"."likable_id" IN (12, 11, 10, 9)[0m  [["likable_type", "Post"]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mLike Load (0.8ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 12], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  Rendered posts/_post.html.erb (6.5ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mLike Load (0.6ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 11], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 11], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2[0m  [["likable_id", 11], ["likable_type", "Post"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 11], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  Rendered posts/_post.html.erb (8.1ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mLike Load (0.6ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 10], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 10], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2[0m  [["likable_id", 10], ["likable_type", "Post"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 10], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  Rendered posts/_post.html.erb (8.5ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mLike Load (0.5ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 9], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 9], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2[0m  [["likable_id", 9], ["likable_type", "Post"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 9], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  Rendered posts/_post.html.erb (7.5ms)
+  Rendered users/show.html.erb within layouts/application (79.9ms)
+  Rendered shared/_navbar.html.erb (1.2ms)
+Completed 200 OK in 134ms (Views: 119.7ms | ActiveRecord: 7.7ms)
+
+
+Started POST "/posts/12/likes" for ::1 at 2016-08-13 12:13:26 -0700
+Processing by LikesController#create as HTML
+  Parameters: {"authenticity_token"=>"XhDMvAsSo95RjluSV2St6TvEdlCE4aWmZr7bUqf7qFnkUzWS2AFa8Vh4i/EHSKrNIfG04uatks18DH4RNGx6mQ==", "likable"=>"Post", "post_id"=>"12"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "h7zuig8ioY6WDeu72Ycgzw"], ["LIMIT", 1]]
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35mSQL (0.5ms)[0m  [1m[32mINSERT INTO "likes" ("likable_id", "likable_type", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["likable_id", 12], ["likable_type", "Post"], ["user_id", 6], ["created_at", 2016-08-13 19:13:26 UTC], ["updated_at", 2016-08-13 19:13:26 UTC]]
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/users/6
+Completed 302 Found in 14ms (ActiveRecord: 3.8ms)
+
+
+Started GET "/users/6" for ::1 at 2016-08-13 12:13:26 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "h7zuig8ioY6WDeu72Ycgzw"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered shared/_cover.html.erb (0.2ms)
+  Rendered shared/_header.html.erb (3.1ms)
+  [1m[36mCity Load (0.3ms)[0m  [1m[34mSELECT  "cities".* FROM "cities" WHERE "cities"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mCity Load (0.3ms)[0m  [1m[34mSELECT  "cities".* FROM "cities" WHERE "cities"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  Rendered users/_about_box.html.erb (3.6ms)
+  Rendered users/_photo_box_row.html.erb (0.6ms)
+  Rendered users/_photo_box_row.html.erb (0.1ms)
+  Rendered users/_photo_box_row.html.erb (0.1ms)
+  Rendered users/_photo_box.html.erb (6.7ms)
+  Rendered users/_friend_box.html.erb (0.6ms)
+  Rendered shared/_flash.html.erb (0.6ms)
+  Rendered users/_post_box.html.erb (1.6ms)
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1 ORDER BY "posts"."created_at" DESC[0m  [["author_id", 6]]
+  [1m[36mLike Load (0.7ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."likable_type" = $1 AND "likes"."likable_id" IN (12, 11, 10, 9)[0m  [["likable_type", "Post"]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mLike Load (0.6ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 12], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 12], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2[0m  [["likable_id", 12], ["likable_type", "Post"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 12], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  Rendered posts/_post.html.erb (10.7ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mLike Load (0.7ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 11], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 11], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2[0m  [["likable_id", 11], ["likable_type", "Post"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 11], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  Rendered posts/_post.html.erb (8.8ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mLike Load (0.7ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 10], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 10], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2[0m  [["likable_id", 10], ["likable_type", "Post"]]
+  [1m[36mCACHE (0.1ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 10], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  Rendered posts/_post.html.erb (9.8ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mLike Load (0.7ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 9], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 9], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2[0m  [["likable_id", 9], ["likable_type", "Post"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 9], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  Rendered posts/_post.html.erb (7.1ms)
+  Rendered users/show.html.erb within layouts/application (77.0ms)
+  Rendered shared/_navbar.html.erb (1.9ms)
+Completed 200 OK in 136ms (Views: 121.4ms | ActiveRecord: 8.8ms)
+
+
+Started DELETE "/likes/9" for ::1 at 2016-08-13 12:13:32 -0700
+Processing by LikesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"vWS8RhyBDgYHmq4WX0NDN5ec3sX0197ls4jxCKhnyNoHJ0Voz5L3KQ5sfnUPb0QTjakcd5ab6Y6pOlRLO/AaGg==", "likable"=>"Post", "id"=>"9"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "h7zuig8ioY6WDeu72Ycgzw"], ["LIMIT", 1]]
+  [1m[36mLike Load (0.6ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."id" = $2 LIMIT $3[0m  [["user_id", 6], ["id", 9], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "likes" WHERE "likes"."id" = $1[0m  [["id", 9]]
+  [1m[35m (1.9ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/users/6
+Completed 302 Found in 10ms (ActiveRecord: 3.2ms)
+
+
+Started GET "/users/6" for ::1 at 2016-08-13 12:13:32 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "h7zuig8ioY6WDeu72Ycgzw"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered shared/_cover.html.erb (0.5ms)
+  Rendered shared/_header.html.erb (3.8ms)
+  [1m[36mCity Load (0.4ms)[0m  [1m[34mSELECT  "cities".* FROM "cities" WHERE "cities"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mCity Load (0.2ms)[0m  [1m[34mSELECT  "cities".* FROM "cities" WHERE "cities"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  Rendered users/_about_box.html.erb (3.1ms)
+  Rendered users/_photo_box_row.html.erb (0.5ms)
+  Rendered users/_photo_box_row.html.erb (0.2ms)
+  Rendered users/_photo_box_row.html.erb (0.1ms)
+  Rendered users/_photo_box.html.erb (6.2ms)
+  Rendered users/_friend_box.html.erb (0.6ms)
+  Rendered shared/_flash.html.erb (0.5ms)
+  Rendered users/_post_box.html.erb (1.4ms)
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1 ORDER BY "posts"."created_at" DESC[0m  [["author_id", 6]]
+  [1m[36mLike Load (0.6ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."likable_type" = $1 AND "likes"."likable_id" IN (12, 11, 10, 9)[0m  [["likable_type", "Post"]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mLike Load (0.6ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 12], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  Rendered posts/_post.html.erb (5.7ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mLike Load (0.7ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 11], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 11], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2[0m  [["likable_id", 11], ["likable_type", "Post"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 11], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  Rendered posts/_post.html.erb (7.7ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mLike Load (0.7ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 10], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 10], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2[0m  [["likable_id", 10], ["likable_type", "Post"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 10], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  Rendered posts/_post.html.erb (8.8ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mLike Load (0.6ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 9], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 9], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2[0m  [["likable_id", 9], ["likable_type", "Post"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 9], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  Rendered posts/_post.html.erb (6.3ms)
+  Rendered users/show.html.erb within layouts/application (65.0ms)
+  Rendered shared/_navbar.html.erb (1.1ms)
+Completed 200 OK in 113ms (Views: 99.8ms | ActiveRecord: 7.2ms)
+
+
+Started DELETE "/likes/3" for ::1 at 2016-08-13 12:13:39 -0700
+Processing by LikesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"RdRfiUDqbKGmXRtyHIMKB04y6DIiUtuFZWOUIilMoSP/l6ank/mVjq+ryxFMrw0jVAcqgEAe7O5/0TFhuttz4w==", "likable"=>"Post", "id"=>"3"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "h7zuig8ioY6WDeu72Ycgzw"], ["LIMIT", 1]]
+  [1m[36mLike Load (0.6ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."id" = $2 LIMIT $3[0m  [["user_id", 6], ["id", 3], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  [1m[31mDELETE FROM "likes" WHERE "likes"."id" = $1[0m  [["id", 3]]
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/users/6
+Completed 302 Found in 10ms (ActiveRecord: 3.7ms)
+
+
+Started GET "/users/6" for ::1 at 2016-08-13 12:13:39 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "h7zuig8ioY6WDeu72Ycgzw"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered shared/_cover.html.erb (0.2ms)
+  Rendered shared/_header.html.erb (3.1ms)
+  [1m[36mCity Load (0.3ms)[0m  [1m[34mSELECT  "cities".* FROM "cities" WHERE "cities"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mCity Load (0.3ms)[0m  [1m[34mSELECT  "cities".* FROM "cities" WHERE "cities"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  Rendered users/_about_box.html.erb (3.9ms)
+  Rendered users/_photo_box_row.html.erb (0.6ms)
+  Rendered users/_photo_box_row.html.erb (0.2ms)
+  Rendered users/_photo_box_row.html.erb (0.1ms)
+  Rendered users/_photo_box.html.erb (6.4ms)
+  Rendered users/_friend_box.html.erb (0.6ms)
+  Rendered shared/_flash.html.erb (0.5ms)
+  Rendered users/_post_box.html.erb (2.1ms)
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1 ORDER BY "posts"."created_at" DESC[0m  [["author_id", 6]]
+  [1m[36mLike Load (0.5ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."likable_type" = $1 AND "likes"."likable_id" IN (12, 11, 10, 9)[0m  [["likable_type", "Post"]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mLike Load (0.7ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 12], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  Rendered posts/_post.html.erb (6.0ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mLike Load (0.8ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 11], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 11], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2[0m  [["likable_id", 11], ["likable_type", "Post"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 11], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  Rendered posts/_post.html.erb (8.1ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mLike Load (0.6ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 10], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 10], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2[0m  [["likable_id", 10], ["likable_type", "Post"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 10], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  Rendered posts/_post.html.erb (7.2ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mLike Load (0.6ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 9], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 9], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2[0m  [["likable_id", 9], ["likable_type", "Post"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 9], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  Rendered posts/_post.html.erb (7.9ms)
+  Rendered users/show.html.erb within layouts/application (68.3ms)
+  Rendered shared/_navbar.html.erb (1.3ms)
+Completed 200 OK in 124ms (Views: 110.9ms | ActiveRecord: 7.5ms)
+
+
+Started DELETE "/likes/4" for ::1 at 2016-08-13 12:13:55 -0700
+Processing by LikesController#destroy as HTML
+  Parameters: {"authenticity_token"=>"PnJImjrgs9WuS5xdPhNU/vuUeUYQx0W44XCVb3qw6deEMbG06fNK+qe9TD5uP1Pa4aG79HKLctP7wjAs6Sc7Fw==", "likable"=>"Post", "id"=>"4"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "h7zuig8ioY6WDeu72Ycgzw"], ["LIMIT", 1]]
+  [1m[36mLike Load (0.5ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."user_id" = $1 AND "likes"."id" = $2 LIMIT $3[0m  [["user_id", 6], ["id", 4], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  [1m[31mDELETE FROM "likes" WHERE "likes"."id" = $1[0m  [["id", 4]]
+  [1m[35m (2.0ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/users/6
+Completed 302 Found in 22ms (ActiveRecord: 3.4ms)
+
+
+Started GET "/users/6" for ::1 at 2016-08-13 12:13:55 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "h7zuig8ioY6WDeu72Ycgzw"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered shared/_cover.html.erb (0.2ms)
+  Rendered shared/_header.html.erb (2.9ms)
+  [1m[36mCity Load (0.3ms)[0m  [1m[34mSELECT  "cities".* FROM "cities" WHERE "cities"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mCity Load (0.2ms)[0m  [1m[34mSELECT  "cities".* FROM "cities" WHERE "cities"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  Rendered users/_about_box.html.erb (3.1ms)
+  Rendered users/_photo_box_row.html.erb (0.4ms)
+  Rendered users/_photo_box_row.html.erb (0.1ms)
+  Rendered users/_photo_box_row.html.erb (0.1ms)
+  Rendered users/_photo_box.html.erb (5.5ms)
+  Rendered users/_friend_box.html.erb (0.4ms)
+  Rendered shared/_flash.html.erb (0.4ms)
+  Rendered users/_post_box.html.erb (1.6ms)
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1 ORDER BY "posts"."created_at" DESC[0m  [["author_id", 6]]
+  [1m[36mLike Load (0.5ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."likable_type" = $1 AND "likes"."likable_id" IN (12, 11, 10, 9)[0m  [["likable_type", "Post"]]
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mLike Load (0.5ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 12], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  Rendered posts/_post.html.erb (4.9ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mLike Load (0.7ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 11], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  [1m[36mCACHE (0.1ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 11], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2[0m  [["likable_id", 11], ["likable_type", "Post"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 11], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  Rendered posts/_post.html.erb (6.8ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mLike Load (0.5ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 10], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 10], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2[0m  [["likable_id", 10], ["likable_type", "Post"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 10], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  Rendered posts/_post.html.erb (6.0ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mLike Load (0.6ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 9], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  Rendered posts/_post.html.erb (3.8ms)
+  Rendered users/show.html.erb within layouts/application (55.6ms)
+  Rendered shared/_navbar.html.erb (1.7ms)
+Completed 200 OK in 109ms (Views: 98.0ms | ActiveRecord: 6.0ms)
+
+
+Started GET "/users/6" for ::1 at 2016-08-13 12:16:34 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "h7zuig8ioY6WDeu72Ycgzw"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered shared/_cover.html.erb (0.4ms)
+  Rendered shared/_header.html.erb (3.9ms)
+  [1m[36mCity Load (0.4ms)[0m  [1m[34mSELECT  "cities".* FROM "cities" WHERE "cities"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mCity Load (0.3ms)[0m  [1m[34mSELECT  "cities".* FROM "cities" WHERE "cities"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  Rendered users/_about_box.html.erb (21.2ms)
+  Rendered users/_photo_box_row.html.erb (0.9ms)
+  Rendered users/_photo_box_row.html.erb (0.3ms)
+  Rendered users/_photo_box_row.html.erb (0.2ms)
+  Rendered users/_photo_box.html.erb (7.7ms)
+  Rendered users/_friend_box.html.erb (0.7ms)
+  Rendered shared/_flash.html.erb (0.5ms)
+  Rendered users/_post_box.html.erb (2.3ms)
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1 ORDER BY "posts"."created_at" DESC[0m  [["author_id", 6]]
+  [1m[36mLike Load (0.7ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."likable_type" = $1 AND "likes"."likable_id" IN (12, 11, 10, 9)[0m  [["likable_type", "Post"]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 12], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  Rendered posts/_post.html.erb (10.3ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 11], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 11], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2[0m  [["likable_id", 11], ["likable_type", "Post"]]
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 11], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  Rendered posts/_post.html.erb (9.3ms)
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 10], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  [1m[36mLike Load (0.2ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 10], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2[0m  [["likable_id", 10], ["likable_type", "Post"]]
+  [1m[36mLike Load (0.3ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 10], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  Rendered posts/_post.html.erb (8.7ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mLike Load (0.4ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 9], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  Rendered posts/_post.html.erb (4.6ms)
+  Rendered users/show.html.erb within layouts/application (111.6ms)
+  Rendered shared/_navbar.html.erb (2.0ms)
+Completed 200 OK in 210ms (Views: 165.9ms | ActiveRecord: 7.2ms)
+
+
+Started POST "/posts/12/likes" for ::1 at 2016-08-13 12:16:40 -0700
+Processing by LikesController#create as HTML
+  Parameters: {"authenticity_token"=>"ezzXWDsBqTMqz8YnzqTBDgyuktxHDTMQu6XRQpAWYbDBfy526BJQHCM5FkSeiMYqFptQbiVBBHuhF3QBA4GzcA==", "likable"=>"Post", "post_id"=>"12"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "h7zuig8ioY6WDeu72Ycgzw"], ["LIMIT", 1]]
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT  "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 12], ["LIMIT", 1]]
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[35mSQL (0.7ms)[0m  [1m[32mINSERT INTO "likes" ("likable_id", "likable_type", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["likable_id", 12], ["likable_type", "Post"], ["user_id", 6], ["created_at", 2016-08-13 19:16:40 UTC], ["updated_at", 2016-08-13 19:16:40 UTC]]
+  [1m[35m (2.5ms)[0m  [1m[35mCOMMIT[0m
+Redirected to http://localhost:3000/users/6
+Completed 302 Found in 17ms (ActiveRecord: 4.8ms)
+
+
+Started GET "/users/6" for ::1 at 2016-08-13 12:16:40 -0700
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."auth_token" = $1 LIMIT $2[0m  [["auth_token", "h7zuig8ioY6WDeu72Ycgzw"], ["LIMIT", 1]]
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  Rendering users/show.html.erb within layouts/application
+  Rendered shared/_cover.html.erb (0.2ms)
+  Rendered shared/_header.html.erb (2.7ms)
+  [1m[36mCity Load (0.3ms)[0m  [1m[34mSELECT  "cities".* FROM "cities" WHERE "cities"."id" = $1 LIMIT $2[0m  [["id", 9], ["LIMIT", 1]]
+  [1m[36mCity Load (0.2ms)[0m  [1m[34mSELECT  "cities".* FROM "cities" WHERE "cities"."id" = $1 LIMIT $2[0m  [["id", 10], ["LIMIT", 1]]
+  Rendered users/_about_box.html.erb (2.9ms)
+  Rendered users/_photo_box_row.html.erb (0.5ms)
+  Rendered users/_photo_box_row.html.erb (0.1ms)
+  Rendered users/_photo_box_row.html.erb (0.2ms)
+  Rendered users/_photo_box.html.erb (6.1ms)
+  Rendered users/_friend_box.html.erb (0.6ms)
+  Rendered shared/_flash.html.erb (0.5ms)
+  Rendered users/_post_box.html.erb (1.8ms)
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."author_id" = $1 ORDER BY "posts"."created_at" DESC[0m  [["author_id", 6]]
+  [1m[36mLike Load (0.6ms)[0m  [1m[34mSELECT "likes".* FROM "likes" WHERE "likes"."likable_type" = $1 AND "likes"."likable_id" IN (12, 11, 10, 9)[0m  [["likable_type", "Post"]]
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mLike Load (0.5ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 12], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 12], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2[0m  [["likable_id", 12], ["likable_type", "Post"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 12], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  Rendered posts/_post.html.erb (8.2ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mLike Load (0.7ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 11], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 11], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2[0m  [["likable_id", 11], ["likable_type", "Post"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 11], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  Rendered posts/_post.html.erb (7.9ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mLike Load (0.6ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 10], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 10], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  [1m[35m (0.5ms)[0m  [1m[34mSELECT COUNT(*) FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2[0m  [["likable_id", 10], ["likable_type", "Post"]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 10], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  Rendered posts/_post.html.erb (9.4ms)
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 6], ["LIMIT", 1]]
+  [1m[36mLike Load (0.5ms)[0m  [1m[34mSELECT  "likes".* FROM "likes" WHERE "likes"."likable_id" = $1 AND "likes"."likable_type" = $2 AND "likes"."user_id" = $3 LIMIT $4[0m  [["likable_id", 9], ["likable_type", "Post"], ["user_id", 6], ["LIMIT", 1]]
+  Rendered posts/_post.html.erb (3.8ms)
+  Rendered users/show.html.erb within layouts/application (66.3ms)
+  Rendered shared/_navbar.html.erb (1.1ms)
+Completed 200 OK in 113ms (Views: 101.9ms | ActiveRecord: 6.8ms)
+
+

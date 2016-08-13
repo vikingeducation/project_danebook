@@ -35,11 +35,13 @@
           <%= link_to "Delete", post, method: :delete, data: { confirm: 'Are you sure?' } %>
         </div>
       </div>
-      <div class="row">
-        <div class="col-sm-11">
-          <p><a href="#">Captain Ahab</a> and 8 others like this.</p>
+      <% unless post.likes.empty? %>
+        <div class="row">
+          <div class="col-sm-11">
+            <p><%= post_like_text(post) %></p>
+          </div>
         </div>
-      </div>
+      <% end %>
 
       <div class="row">
         <div class="col-sm-1">

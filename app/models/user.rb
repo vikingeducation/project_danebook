@@ -32,10 +32,10 @@ class User < ApplicationRecord
   end
 
   def self.search(name)
-    @users = [User.where('first_name ILIKE ?', "#{name}%")]
-    @users << User.where('last_name ILIKE ?', "#{name}%")
-    @users.flatten.uniq
-
+    name.split(" ").map do |n|
+      @users = [User.where('first_name ILIKE ?', "#{n}%")]
+      @users << User.where('last_name ILIKE ?', "#{n}%")
+    end.flatten.uniq
   end
 
 end

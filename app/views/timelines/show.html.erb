@@ -16,10 +16,16 @@
   <%= post.user.full_name %>
   <%= post.created_at %>
   <%= post.body %>
-  <% post.likes.build %>
+  <%= "#{post.likes_count} people have liked this post." %>
   <%= form_for post do |post_fields| %>
     <%= post_fields.fields_for :likes, @like do |like_fields| %>
-      <%= like_fields.submit 'Like' %>
+      <% if !(like_fields.object.persisted?) %>
+        <%= like_fields.hidden_field :likeable %>
+        <%= like_fields.submit 'Like' %>
+      <% else %>
+        <%= like_fields.hidden_field :_destroy %>
+        <%= like_fields.submit 'Unlike' %>
+      <% end %>
     <% end %>
   <% end %>
   <% post.comments.each do |comment| %>
@@ -32,7 +38,6 @@
       <% end %>
     <% end %>
   <% end %>
-  <% post.comments.build %>
   <%= form_for post do |post_fields| %>
     <%= post_fields.fields_for :comments, @comment do |comment_fields| %>
       <%= comment_fields.text_field :body %>

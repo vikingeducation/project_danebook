@@ -12,6 +12,6 @@ class CommentsController < ApplicationController
 
     def comment_params
       params.require(:comment).permit(:body,
-                                      { :likes_attributes })
+                                      { likes_attributes: [] })
     end
 end

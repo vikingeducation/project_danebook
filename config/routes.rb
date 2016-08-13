@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get "/login" => "sessions#new"
   get "/logout" => "sessions#destroy"
   delete "/logout" => "sessions#destroy"
-  resources :users, only: [:show, :create, :destroy, :edit, :update] do
+  resources :users do
     get "timeline" => "static_pages#timeline"
     # get "about"    => "static_pages#about"
     resources :profiles, only: [:show]

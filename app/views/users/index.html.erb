@@ -1,0 +1,13 @@
+<div id="users">
+  <%= render 'navbar' %>
+
+  <div class="container nav-margin padding-tainer">
+
+    <% @users.each_with_index do |user, i| %>
+      <div class="col-xs-4 col-xs-offset-<%= i.even? ? 2 : 1%>">
+          <img class="post-pic" src="http://placehold.it/70x70">
+          <%= link_to "#{user.full_name}", user_timeline_path(user), class: "commenter-name" %>
+      </div>
+    <% end %>
+  </div>
+</div>

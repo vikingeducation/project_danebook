@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, :except => [:new, :create]
+  before_action :set_user, :except => [:new, :create, :index]
   before_action :require_login, :except => [:index, :new, :create, :show]
   before_action :require_current_user, :only => [:edit, :update, :destroy]
 

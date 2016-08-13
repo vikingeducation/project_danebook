@@ -40,7 +40,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @profile = current_user.profile
+    @profile = @user.profile
     @post = current_user.posts.build if current_user
     @posts = @user.all_posts
   end

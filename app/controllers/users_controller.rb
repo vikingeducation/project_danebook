@@ -1,11 +1,11 @@
 class UsersController < ApplicationController
   skip_before_action :require_login, only: [:create, :new]
   before_action :set_user, except: [ :create, :new ]
-  before_action :require_current_user, except: [ :about, :create, :new ]
+  before_action :require_current_user, except: [ :show, :about, :create, :new ]
 
   def show
-    @posts = current_user.posts.order(created_at: :desc).includes(:likes, :comments)
-    @post = current_user.posts.build
+    @posts = @user.posts.order(created_at: :desc).includes(:likes, :comments)
+    @post = current_user.posts.build if @user == current_user
     @comment = current_user.comments.build
   end
 

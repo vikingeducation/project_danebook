@@ -3,9 +3,7 @@
 <%# asdf %>
   <div class="row">
     <ul class="nav nav-tabs" id="menu">
-      <% if self_profile? %>
-        <li role="presentation" <%= "class='active' ".html_safe if active==:timeline %> ><a href="<%= user_path(@user) %>">Timeline</a></li>
-      <% end %>
+      <li role="presentation" <%= "class='active' ".html_safe if active==:timeline %> ><a href="<%= user_path(@user) %>">Timeline</a></li>
 
       <li role="presentation" <%= "class='active'".html_safe if active==:about %> ><a href="<%= about_user_path(@user) %>">Åbout</a></li>
 

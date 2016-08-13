@@ -25,7 +25,7 @@
 
       <%= render "shared/flash" %>
 
-      <%= render "post_box" %>
+      <%= render "post_box" if self_profile? %>
 
       <% @posts.each do |post| %>
         <%= render partial: "posts/post", locals: { post: post } if post.persisted? %>

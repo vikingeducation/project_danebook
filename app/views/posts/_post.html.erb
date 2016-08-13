@@ -5,10 +5,10 @@
     <div class="panel-body">
       <div class="row">
         <div class="col-sm-1">
-          <a href="timeline.html"><img src="/orm_profile.jpg"></a>
+          <a href="<%= user_path(post.author) %>"><img src="/orm_profile.jpg"></a>
         </div>
         <div class="col-sm-10">
-          <a href="timeline.html"><%= post.author.name %></a><br>
+          <a href="<%= user_path(post.author) %>"><%= post.author.name %></a><br>
           <time datetime="<%= post.created_at.strftime("%Y/%m/%d") %>">Posted on <%= post.created_at.strftime("%A %m/%d/%Y") %></time>
         </div>
       </div>

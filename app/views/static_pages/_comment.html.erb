@@ -1,22 +1,28 @@
-<div class="row">
-  <div class="col-xs-12">
-    <p class="commenter-info">
-      <%= link_to "#{comment.user.full_name}", user_path(comment.user.id), class: "commenter-name" %> Said on <%= comment.updated_at.strftime("%A %-m/%-d/%Y") %></p>
-    <p><%= comment.description %></p>
-    <div class="row">
-      <div class="col-sm-10 like-listing-expanded">
-        <% if comment.likers.include?(current_user) %>
-          <%= button_to "Unlike", like_path( user_liked_id(comment)), method: :delete, class: "like-link"%>
-        <% else %>
-          <%= button_to "Like", comment_likes_path(comment), method: :post, class: "like-link" %>
-        <% end %>
-        <div class="col-xs-7 col-sm-7 text-right">
-          <% if @user == current_user %>
-            <%= button_to "Delete", comment_path(comment), method: :delete %>
+<div class="col-xs-2 col-sm-1">
+  <img class="post-pic" src="http://placehold.it/70x70">
+</div>
+<div class="col-xs-10 col-sm-11 left-gutter">
+  <div class="row">
+    <div class="col-xs-12">
+      <p class="commenter-info">
+        <%= link_to "#{comment.user.full_name}", user_path(comment.user.id), class: "commenter-name" %> Said on <%= comment.updated_at.strftime("%A %-m/%-d/%Y") %></p>
+      <p><%= comment.description %></p>
+      <div class="row">
+        <div class="col-sm-10 like-listing-expanded">
+          <div class="col-xs-5 col-sm-5">
+          <% if comment.likers.include?(current_user) %>
+            <%= button_to "Unlike", like_path( user_liked_id(comment)), method: :delete, class: "like-link"%>
+          <% else %>
+            <%= button_to "Like", comment_likes_path(comment), method: :post, class: "like-link" %>
           <% end %>
-  			</div>
-        <!-- <p><a class="like-link" href="#">Like</a> 3 other people like this</p> -->
-      </div>
-    </div><!-- Link wrapper -->
-  </div><!-- Commenter info and content -->
+          </div>
+          <div class="col-xs-7 col-sm-7 text-right">
+            <% if @user == current_user %>
+              <%= button_to "Delete", comment_path(comment), method: :delete, class: "like-link float-right" %>
+            <% end %>
+    			</div>
+        </div>
+      </div><!-- Link wrapper -->
+    </div><!-- Commenter info and content -->
+  </div>
 </div>

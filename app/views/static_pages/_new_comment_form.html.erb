@@ -1,0 +1,8 @@
+<%= form_for post.comments.build, url: post_comments_path(post) do |f|  %>
+  <div class="col-xs-9 col-xs-offset-3">
+    <%= text_area_tag("comment[description]", "", class: "btn-block", placeholder: "Penny for your thoughts...") %>
+  </div>
+  <div class="col-sm-12 text-right">
+    <%= submit_tag("Post", class: "btn btn-primary") %>
+  </div>
+<% end %>

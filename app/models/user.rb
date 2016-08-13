@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   has_one :profile, dependent: :destroy
-  has_many :posts
-  has_many :comments
+  has_many :posts, dependent: :destroy
+  has_many :comments, dependent: :nullify
   has_many :likes, dependent: :destroy
   has_many :liked_posts, through: :likes, source: :post
   # has_many :feeds

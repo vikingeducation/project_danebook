@@ -1,5 +1,6 @@
 class LikesController < ApplicationController
   def create
+    session[:return_to] = request.referer
     if signed_in_user?
       type = params[:likeable].classify
       resource = type.constantize.find(params["#{type.downcase}_id"])
@@ -8,13 +9,14 @@ class LikesController < ApplicationController
       else
         flash[:error] = "Couldn't establish the like"
       end
-      redirect_to root_path
+      redirect_to session.delete(:return_to)
     else
       redirect_to login_path
     end
   end
 
   def destroy
+    session[:return_to] = request.referer
     if signed_in_user?
       @like = Like.find(params[:id])
       if @like.destroy
@@ -22,7 +24,7 @@ class LikesController < ApplicationController
       else
         flash[:error] = "Couldn't make the unlike"
       end
-      redirect_to root_path
+      redirect_to session.delete(:return_to)
     else
       redirect_to login_path
     end

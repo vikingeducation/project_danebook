@@ -8,7 +8,7 @@ class LikesController < ApplicationController
     # TODO: check to see if it's already liked
     # unless Like.find_by(user_id: current_user.id, likable_id: 11)
       like = likable.likes.build
-      like.user_id = current_user.id
+      current_user.likes << like
 
       unless like.save
         flash[:danger] = "Could not be liked."

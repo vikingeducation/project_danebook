@@ -4,9 +4,9 @@ class User < ApplicationRecord
 
   belongs_to :hometown, class_name: "City", optional: true
   belongs_to :residency, class_name: "City", optional: true
-  has_many :posts, foreign_key: :author_id
-  has_many :likes
-  has_many :comments, foreign_key: :commenter_id
+  has_many :posts, foreign_key: :author_id, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :comments, foreign_key: :commenter_id, dependent: :destroy
 
   accepts_nested_attributes_for :hometown,
                                 :reject_if => :all_blank

@@ -9,10 +9,13 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = current_user.posts.find(params[:id])
-    if @post.destroy
-      flash[:success] = "Post deleted!"
-    else
+    begin
+      if @post = current_user.posts.find(params[:id]) && @post.destroy
+        flash[:success] = "Post deleted!"
+      else
+        flash[:danger] = "Post could not be deleted!"
+      end
+    rescue ActiveRecord::RecordNotFound
       flash[:danger] = "Post could not be deleted!"
     end
     redirect_to current_user

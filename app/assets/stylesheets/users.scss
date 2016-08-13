@@ -118,10 +118,11 @@ header {
 }
 
 /************************
-      Cover Photo
+   Profile Top
 *************************/
 #cover-photo {
-  background: url("/orm_cover.jpg") no-repeat;
+  // two backgrounds: a shadow over the cover
+  background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) 70%, rgba(0, 0, 0, .4)), url("/orm_cover.jpg") no-repeat;
   background-size: cover;
   height: 320px;
 
@@ -141,6 +142,13 @@ header {
       margin-top: 90px;
     }
   }
+}
+
+.profile-name {
+  color: #fff;
+  text-shadow: 2px 2px 1px rgba(0, 0, 0, .6);
+  margin-top: 250px;
+  font-size: 48px;
 }
 
 #menu {

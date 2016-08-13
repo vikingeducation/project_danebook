@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
 
       if commentable
         comment = commentable.comments.build(comment_params)
-        comment.commenter_id = current_user.id
+        current_user.comments << comment
 
         unless comment.save
           flash[:danger] = "Could not create comment."
@@ -18,9 +18,11 @@ class CommentsController < ApplicationController
     end
 
     def destroy
-      comment = current_user.comments.find(params[:id])
-
-      unless comment.destroy
+      begin
+        unless comment = current_user.comments.find(params[:id])  && comment.destroy
+          flash[:danger] = "Could not delete comment!"
+        end
+      rescue ActiveRecord::RecordNotFound
         flash[:danger] = "Could not delete comment!"
       end
 

@@ -46,6 +46,11 @@ class ApplicationController < ActionController::Base
   end
   helper_method :authorized_user?
 
+  def can_delete_comment?(comment)
+    current_user == comment.user
+  end
+  helper_method :can_delete_comment?
+
   def require_authorized_user
     unless authorized_user?
       flash[:error] = "You're not allowed to view that page"

@@ -1,17 +1,31 @@
 class LikesController < ApplicationController
 
   def create
-    @post = Post.find(params[:post_id])
-    @user = @post.user
-    @like = Like.create(:post_id => params[:post_id],
-                :user_id => current_user.id)
+    #if its for a post
+    if params[:post_id]
+      @post = Post.find(params[:post_id])
+      @user = @post.user
+      @like = @post.likes.build(:user_id => current_user.id)
+    #if its for a comment
+    else
+      @comment = Comment.find(params[:comment_id])
+      @user = @comment.post.user
+      @like = @comment.likes.build(:user_id => current_user.id)
+    end
     @like.save
     redirect_to user_posts_path(@user)
   end
 
   def destroy
-    @post = Post.find(params[:post_id])
-    @user = @post.user
+    #if its for a post
+    if params[:post_id]
+      @post = Post.find(params[:post_id])
+      @user = @post.user
+    #if its for a comment
+    else
+      @comment = Comment.find(params[:comment_id])
+      @user = @comment.post.user
+    end
     @like = Like.find(params[:id])
     @like.destroy
     redirect_to user_posts_path(@user)

@@ -12,6 +12,9 @@ Rails.application.routes.draw do
     resources :likes, :only=>[:create,:destroy]
     resources :comments, :only=>[:create, :destroy]
   end
+  resources :comments, :only=>[] do
+    resources :likes, :only=>[:create,:destroy]
+  end
   resource :session, :only => [:new, :create, :destroy]
   get "login" => "sessions#new"
   delete "logout" => "sessions#destroy"

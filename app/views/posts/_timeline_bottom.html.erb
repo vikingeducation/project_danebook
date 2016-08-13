@@ -52,8 +52,19 @@
         <%= comment.body %>
       </p>
       <div class="comment-text like-comment-container">
-        <a class="comment-format post-reaction" href="#">Like</a>
-        <p class="comment-format reaction-text">3 other people like this</p>
+        <% if current_user_liked(comment) %>
+          <%= link_to "Unlike", comment_like_path(comment, find_like(comment)), method: :delete, class: "comment-format post-reaction" %>
+        <% else %>
+          <%= link_to "Like", comment_likes_path(comment), method: :post, class: "comment-format post-reaction" %>
+        <% end %>
+        <% unless comment.likes.empty? %>
+          <p class="comment-format reaction-text">
+            <%= likes_display(comment) %>
+          </p>
+        <% end %>
+        <% if can_delete_comment?(comment) %>
+          <%= link_to "Delete", post_comment_path(post,comment), method: :delete, class: "post-reaction delete" %>
+        <% end %>
       </div>
     </div>
       <% end %>

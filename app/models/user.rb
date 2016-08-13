@@ -31,4 +31,11 @@ class User < ApplicationRecord
     self.posts.all.order('created_at DESC')
   end
 
+  def self.search(name)
+    @users = [User.where('first_name ILIKE ?', "#{name}%")]
+    @users << User.where('last_name ILIKE ?', "#{name}%")
+    @users.flatten.uniq
+
+  end
+
 end

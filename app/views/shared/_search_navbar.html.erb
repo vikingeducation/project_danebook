@@ -7,9 +7,9 @@
             <h1 class="danebook-logo">D</h1>
           <% end %>
         </div>
-        <%= form_tag("/search", method: "get") do %>
-          <%= text_field_tag(:q, nil, placeholder: "Search for User", class: "search-input") %>
-        <%= submit_tag("Search", class: "btn btn-primary") %>
+        <%= form_tag("/users", method: "get") do %>
+          <%= text_field_tag(:search, params[:search], placeholder: "Search for User", class: "search-input") %>
+        <%= submit_tag("Search", name: nil, class: "btn btn-primary") %>
   <% end %>
       <% if signed_in_user? %>
         <div class="log-in-information">

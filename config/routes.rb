@@ -5,15 +5,18 @@ Rails.application.routes.draw do
   post "login" => "sessions#create"
   post "logout" => "sessions#destroy"
 
-  resources :users do
+  resources :users, shallow: true do
     member do
       get :about
     end
 
-    resources :photos
     resources :friends
-    resources :posts, except: [:destroy]
+    resources :photos
+    resources :posts, shallow: true do
+      resources :likes
+    end
+    resources :likes, except: [:destroy]
   end
-  resources :posts, only: [:destroy]
+
   resource :session, :only => [:new, :create, :destroy]
 end

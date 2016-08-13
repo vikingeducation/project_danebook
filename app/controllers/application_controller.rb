@@ -40,7 +40,6 @@ class ApplicationController < ActionController::Base
   end
 
   def require_current_user
-    # don't forget that params is a string!!!
     unless page_user_id == current_user.id
       redirect_to about_user_path(page_user_id)
     end

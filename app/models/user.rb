@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   before_create :generate_token
   has_secure_password
+
   belongs_to :hometown, class_name: "City", optional: true
   belongs_to :residency, class_name: "City", optional: true
   has_many :posts, foreign_key: :author_id

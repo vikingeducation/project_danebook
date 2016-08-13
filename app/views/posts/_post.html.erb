@@ -8,7 +8,7 @@
         </div>
         <div class="col-sm-10">
           <a href="timeline.html"><%= post.author.first_name %></a><br>
-          <time datetime="2014/05/22">Posted on Saturday 5/22/2014</time>
+          <time datetime="<%= post.created_at.strftime("%Y/%m/%d") %>">Posted on <%= post.created_at.strftime("%A %m/%d/%Y") %></time>
         </div>
       </div>
 

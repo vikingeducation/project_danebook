@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   end
   resources :posts, :only=>[] do
     resources :likes, :only=>[:create,:destroy]
+    resources :comments, :only=>[:create, :destroy]
   end
   resource :session, :only => [:new, :create, :destroy]
   get "login" => "sessions#new"

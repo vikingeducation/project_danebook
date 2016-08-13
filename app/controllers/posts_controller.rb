@@ -6,6 +6,7 @@ before_action :require_authorized_user, :except => [:index]
     @user = User.find(params[:user_id])
     @posts = @user.posts.order(updated_at: :desc)
     @profile = @user.profile 
+    @comment = current_user.comments.build
     if params[:user_id] == current_user.id.to_s
       redirect_to new_user_post_path(current_user)
     end
@@ -17,6 +18,7 @@ before_action :require_authorized_user, :except => [:index]
     @profile = @user.profile
     @posts = @user.posts.order(updated_at: :desc)
     @post = @user.posts.build
+    @comment = current_user.comments.build
   end
 
   def create
@@ -45,4 +47,5 @@ before_action :require_authorized_user, :except => [:index]
   def post_params
     params.require(:post).permit(:body)
   end
+
 end

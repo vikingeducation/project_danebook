@@ -37,9 +37,37 @@
           </p>
         <% end %>
       </div>
-    </div> 
-    <% end %>
+      <% post.comments.each do |comment| %>
+        <div class="like-comment-container comment-border-grey">
+        <%= image_tag "wizard_hat.png", alt:"friend's picture", class: "side-image small-image" %>
+        <div class="side-text small-text">
+        <p class="comment-format">
+          <%= link_to comment.user.profile.full_name, comment.user %>
+        </p>
+        <p class="comment-format post-date">
+          Said on <%= comment.posted_date %>:
+        </p>
+      </div>
+      <p class="comment-text post-text">
+        <%= comment.body %>
+      </p>
+      <div class="comment-text like-comment-container">
+        <a class="comment-format post-reaction" href="#">Like</a>
+        <p class="comment-format reaction-text">3 other people like this</p>
+      </div>
       <% end %>
+       <div class="like-comment-container no-border">
+        <%= form_for [post, @comment], :html => {:class => "comment-form"} do |comment_fields| %>
+          <%= comment_fields.text_area :body, cols: 70, rows: 5, placeholder: "Write a comment...", class: "comment-textarea" %>
+      <div class="comment-button-container">
+        <%= comment_fields.submit "Comment", class: "btn btn-primary", id: "comment-btn" %>
+      </div>
+      <% end %>
+    </div>
+    </div>
+    
+    <% end %>
+    <% end %></div> 
       <!--col-md-7 end-->
     </div><!--row end-->
     </div>

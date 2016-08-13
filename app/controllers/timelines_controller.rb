@@ -7,6 +7,8 @@ class TimelinesController < ApplicationController
     @profile = @user.profile
     @posts = @user.posts
     @post = @posts.build
+    @like = Like.new
+    @comment = Comment.new
     @friends = @user.friends
   end
 

@@ -5,6 +5,7 @@ class User < ApplicationRecord
   belongs_to :hometown, class_name: "City", optional: true
   belongs_to :residency, class_name: "City", optional: true
   has_many :posts, foreign_key: :author_id
+  has_many :likes
 
   accepts_nested_attributes_for :hometown,
                                 :reject_if => :all_blank

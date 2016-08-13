@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     resources :friends
     resources :photos
     resources :posts, shallow: true do
-      resources :likes
+      resources :likes, defaults: { likable: 'Post' }
     end
     resources :likes, except: [:destroy]
   end

@@ -22,7 +22,11 @@
     <div class="panel-heading">
       <div class="row">
         <div class="col-sm-1">
-          <a href="#">Like</a>
+          <% if liked?(post) %>
+            <%= link_to "Unlike", like_path(find_like(post)), method: :delete %>
+          <% else %>
+            <%= link_to "Like", post_likes_path(post), method: :post %>
+          <% end %>
         </div>
         <div class="col-sm-1">
           <a href="#">Comment</a>

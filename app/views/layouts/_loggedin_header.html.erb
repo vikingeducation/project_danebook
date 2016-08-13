@@ -27,8 +27,10 @@
     </form>
     <div class="col-xs-1">
       <div class="row">
-      <p id="profile-name"><a href="./about.html"><%= current_user.profile.first_name %></a></p>
-      <%= link_to 'Logout', logout_path, method: :delete, class: 'logout-link' %>
+        <p id="profile-name">
+          <%= link_to current_user.profile.first_name, user_timeline_path(current_user) %>
+        </p>
+        <%= link_to 'Logout', logout_path, method: :delete, class: 'logout-link' %>
       </div>
     </div>
   </div><!--navbar-collapse-->

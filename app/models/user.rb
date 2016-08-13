@@ -2,6 +2,7 @@ class User < ApplicationRecord
   has_secure_password
   before_create :generate_token
   has_one :profile, inverse_of: :user, dependent: :destroy
+  has_many :posts
 
   accepts_nested_attributes_for :profile, update_only: true
 

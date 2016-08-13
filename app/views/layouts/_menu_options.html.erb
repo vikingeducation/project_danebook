@@ -2,8 +2,8 @@
   <div style="background: url('<%= asset_path('hogwarts.jpg') %>') 100% 100%/100% 100% no-repeat" class="col-xs-12 cover-photo"><!-- cover photo spans entire column -->
     <div class="row">
       <p class="col-xs-3 col-xs-offset-2" id="main-name">
-        <% if @user %>
-          <%= @user.profile.name %>
+        <% if user %>
+          <%= user.profile.name %>
         <% else %>
           <%= 'Harry Potter' %>
         <% end %>
@@ -15,10 +15,10 @@
 <div class="row"> <!-- begin menu-options row-->
   <div class="col-xs-12" id="menu-options-tray">
     <div class="btn-group col-xs-7 col-xs-offset-2">
-      <%= link_to timeline_path, method: :get, class: menu_options_class('timeline') do %>
+      <%= link_to user_timeline_path(user), method: :get, class: menu_options_class('timeline') do %>
         <p class="vertical-align col-xs-offset-4">Timeline</p>
       <% end %>
-      <%= link_to about_path, method: :get, class: menu_options_class('about')  do %>
+      <%= link_to user_about_path(user), method: :get, class: menu_options_class('about')  do %>
         <p class="vertical-align col-xs-offset-4">About</p>
       <% end %>
       <%= link_to photos_path, method: :get, class: menu_options_class('photos')  do %>

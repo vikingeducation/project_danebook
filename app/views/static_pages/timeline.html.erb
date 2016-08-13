@@ -9,7 +9,7 @@
 <main >
   <div class = "row">
     <div class="col-xs-10 col-xs-offset-1">
-      <%= render 'layouts/menu_options' %>
+      <%= render partial: 'layouts/menu_options', :locals => { user: @user } %>
       <br>
       <div class="row"><!-- begin timeline-row -->
         <div class="col-xs-5"><!-- begin-left-column-->
@@ -81,89 +81,21 @@
             <div class="panel-heading">
               <h3 class="panel-title center-text center-text">Post</h3>
             </div>
-            <div class="panel-body">
-              <textarea class="form-control" rows="3" placeholder="Tell the world something..."></textarea>
-            </div>
-            <div class="panel-footer">
-              <button type="button" class="btn btn-primary col-xs-offset-11">Post</button>
-            </div>
+            <% if current_user == @user %>
+              <%= form_for @post do |post_builder| %>
+                <div class="panel-body">
+                  <!-- <textarea class="form-control" rows="3" placeholder="Tell the world something..."></textarea> -->
+                  <%= post_builder.text_area :post_text, placeholder: 'Tell the world something...', rows: 3, class: 'form-control' %>
+                </div>
+                <div class="panel-footer">
+                  <%= post_builder.submit 'Post', class: 'btn btn-primary col-xs-offset-11' %>
+                  <!-- <button type="button" class="btn btn-primary col-xs-offset-11">Post</button> -->
+                </div>
           </div><!-- end-new-post-panel -->
-          <div class="panel panel-default"><!-- begin-post-panel -->
-            <div class="panel-body">
-              <div class="col-xs-8 post-header">
-                <img class="col-xs-3" src='<%= asset_path('hp.jpg') %>'>
-                <a class="col-xs-8" href="./about.html">Harry Potter</a>
-                <p class="col-xs-9 grey">Posted on Thursday 5/21/2014</p>
-              </div>
-              <p class="col-xs-12">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ultrices nisi quis leo congue, sed dictum purus auctor. Quisque lorem ipsum, lobortis et dapibus in, congue non ante. Quisque aliquam faucibus mauris et dignissim. Vivamus aliquet lectus nec neque pretium, sit amet auctor lectus rhoncus. Morbi congue accumsan mi. In tristique purus ex, sollicitudin ultricies metus consectetur eget.</p>
-            </div>
-            <div class="panel-footer">
-              <div class="row">
-                <a class="col-xs-1 underline" href="#">Like</a>
-                <a class="col-xs-1 underline" href="#">Comment</a>
-                <a class="col-xs-1 col-xs-offset-8 underline" href="#">Delete</a>
-              </div>
-            </div>
-          </div><!-- end-post-panel -->
-          <div class="panel panel-default"><!-- begin-post-panel -->
-            <div class="panel-body">
-              <div class="col-xs-8 post-header">
-                <img class="col-xs-3" src="./assets/hp.jpg">
-                <a class="col-xs-8" href="./about.html">Harry Potter</a>
-                <p class="col-xs-9 grey">Posted on Thursday 5/21/2014</p>
-              </div>
-              <p class="col-xs-12">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ultrices nisi quis leo congue, sed dictum purus auctor. Quisque lorem ipsum, lobortis et dapibus in, congue non ante. Quisque aliquam faucibus mauris et dignissim. Vivamus aliquet lectus nec neque pretium, sit amet auctor lectus rhoncus. Morbi congue accumsan mi. In tristique purus ex, sollicitudin ultricies metus consectetur eget.</p>
-            </div>
-            <div class="panel-footer">
-              <div class="row">
-                <a class="col-xs-1 underline" href="#">Like</a>
-                <a class="col-xs-1 underline" href="#">Comment</a>
-                <a class="col-xs-1 col-xs-offset-8 underline" href="#">Delete</a>
-                <p class="col-xs-7 top-margin-10"><a class="underline" href="#">Hermione Granger</a> likes this.</p>
-              </div>
-            </div>
-          </div><!-- end-post-panel -->
-          <div class="panel panel-default"><!-- begin-post-panel -->
-            <div class="panel-body">
-              <div class="col-xs-8 post-header">
-                <img class="col-xs-3" src='<%= asset_path('hp.jpg') %>'>
-                <a class="col-xs-8" href="./about.html">Harry Potter</a>
-                <p class="col-xs-9 grey">Posted on Thursday 5/21/2014</p>
-              </div>
-              <p class="col-xs-12">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ultrices nisi quis leo congue, sed dictum purus auctor. Quisque lorem ipsum, lobortis et dapibus in, congue non ante. Quisque aliquam faucibus mauris et dignissim. Vivamus aliquet lectus nec neque pretium, sit amet auctor lectus rhoncus. Morbi congue accumsan mi. In tristique purus ex, sollicitudin ultricies metus consectetur eget.</p>
-            </div>
-            <div class="panel-footer">
-              <div class="row">
-                <a class="col-xs-1 underline" href="#">Like</a>
-                <a class="col-xs-1 underline" href="#">Comment</a>
-                <a class="col-xs-1 col-xs-offset-8 underline" href="#">Delete</a>
-                <p class="col-xs-8 top-margin-10">You and <a class="underline" href="#">Hermione Granger</a> and 3 others like this.</p>
-              </div>
-              <hr>
-              <div class="row comment">
-                <img class="col-xs-2" src='<%= asset_path('ron.jpg') %>'>
-                <p class="col-xs-10 comment-heading"><a class="underline" href="#">Ron Weasley</a> Said on Thursday 5/21/2014:</p>
-                <p class="col-xs-10">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ultrices nisi quis leo congue, sed dictum purus auctor. Quisque lorem ipsum, lobortis et dapibus in, congue non ante. Quisque aliquam faucibus mauris et dignissim.
-                </p>
-                <a class="col-xs-1 col-xs-offset-2 underline" href="#">Like</a>
-                <p class="col-xs-8 grey"> 3 other people like this</p>
-              </div>
-              <div class="row comment">
-                <img class="col-xs-2" src='<%= asset_path('hp.jpg') %>'>
-                <p class="col-xs-10 comment-heading"><a class="underline" href="./about.html">Harry Potter</a> Said on Friday 5/22/2014:</p>
-                <p class="col-xs-10">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ultrices nisi quis leo congue, sed dictum purus auctor. Quisque lorem ipsum, lobortis et dapibus in, congue non ante. Quisque aliquam faucibus mauris et dignissim.
-                </p>
-                <a class="col-xs-1 col-xs-offset-2 underline" href="#">Like</a>
-                <p class="col-xs-7 grey"> 3 other people like this</p>
-                <a class="col-xs-1 underline">Delete</a>
-              </div>
-              <div class="row">
-                <textarea class="post-control col-xs-10 col-xs-offset-1" rows="5" placeholder="Write a comment..."></textarea>
-                <a class="col-xs-1 col-xs-offset-1 underline top-margin-10" href="#">Cancel</a>
-                <button type="button" class="btn btn-primary col-xs-2 col-xs-offset-7 top-margin-10">Comment</button>
-              </div>
-            </div>
-          </div><!-- end-post-panel -->
+              <% end %>
+            <% end %>
+            <%= render partial: 'post', collection: @posts, :locals => { user: @user } %>
+            <%= render partial: 'static_pages/timeline_filler' %>
         </div><!-- end right-column-->
       </div><!-- end timeline-row-->
     </div>

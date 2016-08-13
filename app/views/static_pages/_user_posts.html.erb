@@ -27,7 +27,6 @@
             <%= button_to "Delete", post_path(post), method: :delete, class: "like-link" %>
           <% end %>
   			</div>
-        <%= link_to "Comment", new_post_comment_path(post), class: "like-link" %>
       </div>
       <div class="row">
         <div class="col-xs-12 like-listing-expanded hr-block">
@@ -44,7 +43,6 @@
             <% end %>
             <%= render 'new_comment_form', post: post %>
   				</div><!-- Comment content wrapper -->
-          <%= link_to "Comment", new_post_comment_path(post), class: "like-link" %>
         </div><!-- Comment wrapper -->
       </div>
     </div>

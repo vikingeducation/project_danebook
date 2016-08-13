@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     resources :photos
     resources :posts, shallow: true do
       resources :likes, defaults: { likable: 'Post' }
-      resources :comments, defaults:  { likable: 'Post' }
+      resources :comments, defaults:  { commentable: 'Post' }
     end
   end
 

@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="col-sm-1">
+    <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/3/39/George_Miller_Bligh.jpg"></a>
+  </div>
+  <div class="col-sm-10">
+    <a href="#"><%= comment.commenter.name %></a><time datetime="<%= comment.created_at.strftime("%Y/%m/%d") %>"> posted on <%= comment.created_at.strftime("%A %m/%d/%Y") %></time>
+    <p><%= comment.text %></p>
+    <div class="row">
+      <div class="col-sm-1">
+        <a href="#">Like</a>
+      </div>
+      <div class="col-sm-10">
+        <p><a href="#">5 people</a> like this.</p>
+      </div>
+    </div>
+  </div>
+</div>

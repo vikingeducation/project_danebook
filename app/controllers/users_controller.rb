@@ -4,8 +4,9 @@ class UsersController < ApplicationController
   before_action :require_current_user, except: [ :about, :create, :new ]
 
   def show
-    @posts = current_user.posts.order(created_at: :desc).includes(:likes)
+    @posts = current_user.posts.order(created_at: :desc).includes(:likes, :comments)
     @post = current_user.posts.build
+    @comment = current_user.comments.build
   end
 
   def new

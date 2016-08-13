@@ -36,7 +36,7 @@ class LikesController < ApplicationController
     if params[:likable] == 'Post'
       return Post.find(params[:post_id])
     elsif params[:likable] == 'Comment'
-      # return Comment.find(params[:comment_id])
+      return Comment.find(params[:comment_id])
     end
   end
 

@@ -37,4 +37,8 @@ class User < ApplicationRecord
     generate_token
     save!
   end
+
+  def name
+    first_name + " " + last_name
+  end
 end

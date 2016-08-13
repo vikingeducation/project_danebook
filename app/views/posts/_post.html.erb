@@ -1,17 +1,17 @@
 <article>
   <div class = "panel panel-default">
 
+    <!-- post -->
     <div class="panel-body">
       <div class="row">
         <div class="col-sm-1">
           <a href="timeline.html"><img src="/orm_profile.jpg"></a>
         </div>
         <div class="col-sm-10">
-          <a href="timeline.html"><%= post.author.first_name %></a><br>
+          <a href="timeline.html"><%= post.author.name %></a><br>
           <time datetime="<%= post.created_at.strftime("%Y/%m/%d") %>">Posted on <%= post.created_at.strftime("%A %m/%d/%Y") %></time>
         </div>
       </div>
-
       <div class="row">
         <div class="col-sm-12">
           <p><%= post.text %></p>
@@ -19,6 +19,7 @@
       </div>
     </div>
 
+    <!-- menu -->
     <div class="panel-heading">
       <div class="row">
         <div class="col-sm-1">
@@ -31,10 +32,12 @@
         <div class="col-sm-1">
           <a href="#">Comment</a>
         </div>
-        <div class="col-sm-1 col-sm-offset-8">
-          <%= link_to "Delete", post, method: :delete, data: { confirm: 'Are you sure?' } %>
+        <div class="col-sm-2 pull-right">
+          <%= link_to "Delete Post", post, method: :delete, data: { confirm: 'Are you sure?' } %>
         </div>
       </div>
+
+      <!-- likes -->
       <% unless post.likes.empty? %>
         <div class="row">
           <div class="col-sm-11">
@@ -43,60 +46,28 @@
         </div>
       <% end %>
 
-      <div class="row">
-        <div class="col-sm-1">
-          <a href="#"><img src="https://upload.wikimedia.org/wikipedia/commons/3/39/George_Miller_Bligh.jpg"></a>
-        </div>
-        <div class="col-sm-10">
-          <a href="#">Horatio Hornblower</a><time datetime="2014/05/22"> posted on Saturday 5/22/2014</time>
-          <p>Lørem ipsum dolor sit amet, consectetur ådipisicing elit, sed do eiusmod
-          tempor incididunt ut labore et doløre magna aliqua.</p>
-          <div class="row">
-            <div class="col-sm-1">
-              <a href="#">Like</a>
-            </div>
-            <div class="col-sm-10">
-              <p><a href="#">5 people</a> like this.</p>
-            </div>
+      <!-- comments -->
+      <% post.comments.order(created_at: :asc).each do |comment| %>
+        <%= render partial: "comments/comment", locals: { comment: comment } if comment.persisted? %>
+      <% end %>
+
+      <!-- new comment -->
+      <%= form_for [post, @comment] do |f| %>
+        <div class="row">
+          <div class="col-sm-12">
+            <%= f.text_area :text, class: "form-control", rows: 2, placeholder: "Write a comment...", style:"resize: none" %>
           </div>
         </div>
-      </div>
-
-      <div class="row">
-        <div class="col-sm-1">
-          <a href="timeline.html"><img src="/orm_profile.jpg"></a>
-        </div>
-        <div class="col-sm-11">
-          <a href="timeline.html">Red Orm</a><time datetime="2014/05/22"> posted on Saturday 5/22/2014</time>
-          <p>Lørem ipsum dolor sit amet, consectetur ådipisicing elit, sed do eiusmod
-          tempor incididunt ut labore et doløre magna aliqua.</p>
-          <div class="row">
-            <div class="col-sm-1">
-              <a href="#">Like</a>
-            </div>
-            <div class="col-sm-9">
-              <p><a href="#">2 people</a> like this.</p>
-            </div>
-            <div class="col-sm-1">
-              <a href="#">Delete</a>
-            </div>
+        <div class="row">
+          <div class="col-sm-1">
+            <a href="#">Cancel</a>
+          </div>
+          <div class="col-sm-3 col-sm-offset-8">
+            <%= f.submit "Comment", class: "btn btn-primary btn-block" %>
           </div>
         </div>
-      </div>
+      <% end %>
 
-      <div class="row">
-        <div class="col-sm-12">
-          <textarea class="form-control" rows="2" placeholder="Write a comment..."></textarea>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-1">
-          <a href="#">Cancel</a>
-        </div>
-        <div class="col-sm-3 col-sm-offset-8">
-          <button type="submit" class="btn btn-primary btn-block">Comment</button>
-        </div>
-      </div>
     </div>
   </div>
 </article>

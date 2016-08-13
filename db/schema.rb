@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160812213444) do
+ActiveRecord::Schema.define(version: 20160813192206) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -148,12 +148,9 @@ ActiveRecord::Schema.define(version: 20160812213444) do
   add_index "testings", ["forest"], name: "index_testings_on_forest", using: :btree
 
   create_table "timelines", force: :cascade do |t|
-    t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
-
-  add_index "timelines", ["user_id"], name: "index_timelines_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email"
@@ -168,9 +165,11 @@ ActiveRecord::Schema.define(version: 20160812213444) do
     t.datetime "reset_sent_at"
     t.integer  "friendable_id"
     t.string   "friendable_type"
+    t.integer  "timeline_id"
   end
 
   add_index "users", ["friendable_type", "friendable_id"], name: "index_users_on_friendable_type_and_friendable_id", using: :btree
+  add_index "users", ["timeline_id"], name: "index_users_on_timeline_id", using: :btree
 
   create_table "users_practice", id: false, force: :cascade do |t|
     t.integer  "id"
@@ -191,5 +190,5 @@ ActiveRecord::Schema.define(version: 20160812213444) do
   add_foreign_key "posts", "users"
   add_foreign_key "profiles", "users"
   add_foreign_key "residences", "profiles"
-  add_foreign_key "timelines", "users"
+  add_foreign_key "users", "timelines"
 end

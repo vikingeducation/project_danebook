@@ -1,8 +1,13 @@
 class TimelinesController < ApplicationController
+  skip_before_action :correct_user
+
   def show
-    @user = current_user
+    @timeline = Timeline.find(params[:id])
+    @user = @timeline.user
     @profile = @user.profile
     @posts = @user.posts
-    @post = Post.new(user_id: @user.id)
+    @post = @posts.build
+    @friends = @user.friends
   end
+
 end

@@ -18,8 +18,12 @@ class User < ActiveRecord::Base
 
   ## Associations ##
   has_one :profile, dependent: :destroy
-  has_one :timeline, dependent: :destroy
-  has_many :posts, inverse_of: :user, dependent: :destroy
+  belongs_to :timeline
+
+  # Posts, Comments, and Likes.
+  has_many :posts, dependent: :destroy
+  has_many :comments, dependent: :nullify
+  has_many :likes, dependent: :nullify
 
 
   # Friends.

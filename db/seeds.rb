@@ -7,6 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 puts "Destroying users.."
+Timeline.destroy_all
 User.destroy_all
 City.destroy_all
 State.destroy_all

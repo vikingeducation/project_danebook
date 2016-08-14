@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :require_login, :except => [:show]
   def create
     current_user
     if @current_user.posts.create(white_listed_posts_params)

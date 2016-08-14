@@ -1,18 +1,22 @@
 module StaticPagesHelper
   def print_likers(post)
-    users = post.likers
-    return if users.empty?
-    user = post.likers[0]
-    user_name = user.first_name + " " + user.last_name
+    liker_count = post.likers.count
+    users = post.likers.where("user_id != ?", current_user.id)
     liked = user_liked?(post)
-    if users.count > 1 && liked
-      output = "You, #{user_name} and #{users.count} others like this"
-    elsif users.count == 1 && liked
-      output = "You and #{user_name} others like this"
-    elsif users.count > 1
-      output = "#{user_name} and #{users.count} others like this"
-    elsif users.count == 1
-      output = output = "#{user_name} likes this"
+    if liked
+      liker_count > 1 ? "You, and " + other_liker_draft(users) : "You like this"
+    else
+      other_liker_draft(users)
     end
   end
+
+  def other_liker_draft(likers)
+    liker = likers[0].full_name
+    if likers.count > 1
+      return "#{liker.capitalize} and #{likers.count - 1} others like this"
+    else
+      return "#{liker.capitalize} likes this"
+    end
+  end
+
 end

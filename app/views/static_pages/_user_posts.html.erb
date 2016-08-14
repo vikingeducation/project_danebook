@@ -6,7 +6,7 @@
       <%= image_tag("harry_potter_small.jpg", class: "post-pic") %>
       </div>
       <div class="col-xs-9 col-sm-10 friend-name-wrapper">
-        <p><%= link_to @user.full_name, user_profile_path(@user, @user.profile), class: "like-link" %></p>
+        <p><%= link_to user.full_name, user_profile_path(user, user.profile), class: "like-link" %></p>
         <p>Posted on <%= post.updated_at.strftime("%A %-m/%-d/%Y") %></p>
       </div>
     </div>
@@ -16,24 +16,27 @@
       </div>
     </div>
     <div class="row post-wrapper section-footer">
-      <div class="col-xs-7 col-sm-4">
         <% if post.likers.include?(current_user) %>
-          <%= button_to "Unlike", like_path( user_liked_id(post)), method: :delete, class: "friend-name like-link"%>
+        <div class="col-xs-7 col-sm-4">
+          <%= button_to "Unlike", like_path( user_liked_id(post)), method: :delete, class: "goofy-btn"%>
+        </div>
         <% else %>
-          <%= button_to "Like", post_likes_path(post), method: :post, class: "friend-name like-link" %>
+          <div class="col-xs-7 col-sm-7">
+            <%= button_to "Like", post_likes_path(post), method: :post, class: "goofy-btn" %>
+          </div>
         <% end %>
-        <div class="col-xs-7 col-sm-7 text-right">
-          <% if @user == current_user %>
-            <%= button_to "Delete", post_path(post), method: :delete, class: "like-link" %>
-          <% end %>
-  			</div>
-      </div>
-      <div class="row">
+        <% if user == current_user %>
+          <div class="col-xs-4 col-sm-4">
+            <%= button_to "Delete", post_path(post), method: :delete, class: "goofy-btn float-right" %>
+          </div>
+        <% end %>
+
+      <% unless post.likers.empty? %>
         <div class="col-xs-12 like-listing-expanded hr-block">
             <p><%= print_likers(post) %></p>
-            <hr>
         </div>
-      </div>
+      <% end %>
+      <hr>
       <div class="col-xs-12">
   			<div class="row post-wrapper">
             <% post.comments[0..6].each_with_index do |comment, index| %>

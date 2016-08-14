@@ -14,7 +14,7 @@
 				<% if current_user == @user %>
 					<%= render 'new_post', post: @post %>
 				<% end %>
-				<%= render 'user_posts', posts: @posts %>
+				<%= render 'user_posts', posts: @posts, user: @user %>
 			</div>
 		</div>
 	</main>

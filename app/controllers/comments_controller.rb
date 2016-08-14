@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :require_login
 
   def create
     if signed_in_user?

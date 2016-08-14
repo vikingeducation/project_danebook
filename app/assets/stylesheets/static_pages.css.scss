@@ -33,6 +33,16 @@
 
   nav {
   	background-color: #2b78e4;
+    .dropdown * {
+      background-color: #2b78e4;
+      background-image: none;
+      border: none;
+    }
+
+    .open>a, .nav .open>a:focus, .nav .open>a:hover,
+    .nav>li>a:focus, .nav>li>a:hover {
+      background-color: #2b78e4;
+    }
 
   	.navbar-brand {
   		padding-top: 7px;
@@ -122,23 +132,34 @@
   	position: absolute;
   	top: 350px;
 
-  	h1, img, a {
+  	img, a {
   		display: inline-block;
   	}
+    #user-name-and-link{
+      display: inline-block;
+    	h1 {
+        word-wrap: break-word;;
+        display: inline-block;
+    		color: black;
+    		font-weight: bold;
+    		text-shadow: 2px 2px #fff;
+    		letter-spacing: 1.5px;
+        margin: 0 0 5px 5px;
+        word-wrap: break-word;
+        overflow-x: auto;
+        }
 
-  	h1 {
-  		color: black;
-  		font-weight: bold;
-  		text-shadow: 2px 2px #fff;
-  		letter-spacing: 1.5px;
-  		margin-left: 5px;
+        .button_to {
+            // display: inline-block;
+            margin-left: 5px !important;
+          }
 
-  		@media only screen and (max-width: 396px) {
-  			font-size: 24px;
-  			letter-spacing: 0;
-  		}
-  	}
-  }
+    		@media only screen and (max-width: 396px) {
+    			font-size: 24px;
+    			letter-spacing: 0;
+    		}
+    	}
+    }
 
   /*
   ----------------------------------------------
@@ -384,7 +405,7 @@
 
   .post-block {
   	margin-top: 10px;
-  	margin-bottom: 5px;
+  	padding-bottom: 5px;
   	padding-top: 5px;
   	border-bottom: none;
   	border-top: 2px solid black;
@@ -422,6 +443,10 @@
 
     form.button_to {
       display: inline-block !important;
+      line-height: 28px;
+    	text-decoration: underline;
+      color: #337ab7;
+      margin-bottom: -15px;
     }
 
   	.friend-name:first-child {
@@ -437,8 +462,12 @@
   	}
   }
 
+  .new-comment-input {
+    margin: 10px auto;
+  }
+
   .liker-name,
-  .friend-name {
+  .friend-name, .button_to {
   	line-height: 28px;
   	text-decoration: underline;
   }
@@ -491,7 +520,7 @@
   }
 
   .hr-block {
-  	margin-bottom: 0;
+  	margin-bottom: 5px;
   }
 
 
@@ -507,10 +536,16 @@
   	padding-right: 25px;
   }
 
+  .goofy-btn {
+    border: none;
+    background: none;
+    text-decoration: underline;
+  }
   hr {
   	border: 1px solid #bbb;
   	z-index: 10000;
-  	width: 98%;
+  	width: 93%;
+    margin: 5px auto;
   }
 
   .comment-btn {

@@ -1,5 +1,6 @@
 class ProfilesController < ApplicationController
   before_action :set_profile, only: [:edit, :update]
+  before_action :require_login, :except => [:show]
 
   def edit
     if signed_in_user?

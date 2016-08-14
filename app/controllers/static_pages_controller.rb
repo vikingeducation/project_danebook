@@ -1,4 +1,5 @@
 class StaticPagesController < ApplicationController
+  before_action :require_login, :only => [:timeline]
   before_action :set_user, :except => [:new, :create]
 
   def timeline

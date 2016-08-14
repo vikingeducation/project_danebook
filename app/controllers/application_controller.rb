@@ -37,7 +37,7 @@ class ApplicationController < ActionController::Base
     end
     helper_method :signed_in_user?
 
-    def user_liked?(resource)      
+    def user_liked?(resource)
       !!resource.likers.include?(current_user)
     end
     helper_method :user_liked?
@@ -46,10 +46,4 @@ class ApplicationController < ActionController::Base
       post.likes.first.id
     end
     helper_method :user_liked_id
-
-    def post_likers(post)
-      Like.joins("JOIN users ON user_id = users.id").
-        where("likeable_type = 'Post' AND likeable_id = ? AND user_id != ?", post.id, current_user.id).count
-    end
-    helper_method :post_likers
 end

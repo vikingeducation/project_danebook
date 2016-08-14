@@ -103,6 +103,30 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  # Only for editing a post.
+  def correct_post
+    case current_user
+    when Post.find(params[:id].to_i).user
+      return true
+    else
+      flash[:notice] = "You cannot edit someone else's post."
+      redirect_to root_url
+    end
+  end
+
+  def correct_timeline
+    if referer = request.referer
+      # Grab the id from the timeline path.
+      timeline_id = referer.slice(/\d+\z/)
+      return true if timeline_id.to_i == current_user.timeline_id
+      flash[:danger] = "You cannot create a new post on someone else's timeline."
+      redirect_to current_user
+    else
+      flash[:danger] = "You can only create a post on a timeline."
+      redirect_to current_user
+    end
+  end
+
   # Same as logged_inuser and correct_user, but only returns a boolean.
   def user_check
     case current_user.id

@@ -1,5 +1,7 @@
 class PostsController < ApplicationController
   skip_before_action :correct_user
+  before_action :correct_post, only: [:update]
+  before_action :correct_timeline, only: [:create]
 
   def create
     @user = current_user
@@ -17,8 +19,7 @@ class PostsController < ApplicationController
 
   private
     def post_params
-      params.require(:post).permit(:body, 
-                                   :user_id,
+      params.require(:post).permit(:body,
                                    { comments_attributes: [:user_id,:body] },
                                    { likes_attributes: [:user_id,:_destroy] })
     end

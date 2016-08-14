@@ -3,10 +3,13 @@ Rails.application.routes.draw do
   get "/friends" => "static_pages#friends"
   get "/photos" => "static_pages#photos"
 
-  resources :users, :except => [:new] do
+  resources :users, :except => [:new, :delete] do
     resources :activities, :only => [:index, :destroy]
     resources :posts, :only => [:create]
+    resources :friendings, :only => [:create]
   end
+
+  resources :friendings, :only => [:destroy]
 
   resources :activities, :only => [] do
     resources :likings, :only => [:create]

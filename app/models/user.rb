@@ -4,6 +4,12 @@ class User < ApplicationRecord
   has_many :activities, foreign_key: :author_id, dependent: :destroy
   has_many :liked_things, class_name: "Liking"
 
+  has_many :initiated_friendings, foreign_key: :initiator_id, class_name: "Friending"
+  has_many :followees, through: :initiated_friendings, source: :reciever
+
+  has_many :recieved_friendings, foreign_key: :reciever_id, class_name: "Friending"
+  has_many :followers, through: :recieved_friendings, source: :initiator
+
   before_create :generate_token
   has_secure_password
 
@@ -37,18 +43,25 @@ class User < ApplicationRecord
   end
 
   def day
-    val = birthday.strftime("%-d") || @current_user.birthday.strftime("%-d")
+    val = self.birthday.strftime("%-d") if self.birthday
     val.to_s
   end
 
   def month
-    val = birthday.strftime("%-m") || @current_user.birthday.strftime("%-m")
+    val = self.birthday.strftime("%-m") if self.birthday
     val.to_s
   end
 
   def year
-    val = birthday.strftime("%Y") || @current_user.birthday.strftime("%Y")
+    val = self.birthday.strftime("%Y") if self.birthday
     val.to_s
   end
 
+  def current_friend?(user_id)
+    followee_ids.include? user_id.to_i
+  end
+
+  def this_friend(user_id)
+    initiated_friendings.find_by_reciever_id(user_id)
+  end
 end

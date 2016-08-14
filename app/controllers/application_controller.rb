@@ -47,7 +47,7 @@ class ApplicationController < ActionController::Base
     end
 
     def required_user?
-      params[:id] == current_user.id.to_s
+      params[:id] == current_user.id.to_s || params[:user_id] == current_user.id.to_s
     end
 
     def required_user_redirect

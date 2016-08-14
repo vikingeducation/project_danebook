@@ -26,7 +26,7 @@
     <div class="col-xs-2">
       <ul class="nav nav-pills">
         <li class="pull-right edit-link" role="presentation">
-        <%= link_to "Edit Profile", edit_user_path(@current_user), class: "pull-right edit-link" if !editing_profile? && required_user? %>
+          <%= edit_or_friend %>
         </li>
       </ul>
     </div>

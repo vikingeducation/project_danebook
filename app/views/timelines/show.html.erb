@@ -16,8 +16,6 @@
   <%= post.user.full_name %>
   <%= post.created_at %>
   <%= post.body %>
-  <%= "#{post.likes_count} people have liked this post." %>
-  <%= post.liked? current_user %>
   <% if !post.liked?(current_user) %>
     <%= form_for post do |post_fields| %>
       <%= post_fields.fields_for :likes, @like do |like_fields| %>     
@@ -26,17 +24,23 @@
       <% end %>
     <% end %>
   <% else %>
+    <%= "#{post.likes_count} people have liked this post." %>
     <%= link_to "Unlike", like_path(post.like(current_user)), method: :delete %>
   <% end %>
   <% post.comments.each do |comment| %>
     <%= comment.user %>
     <%= comment.created_at %>
     <%= comment.body %>
-    <%= form_for comment do |comment_fields| %>
-      <%= comment_fields.fields_for :likes, @like do |like_fields| %>
-         <%= like_fields.hidden_field :user_id %>
-        <%= like_fields.submit 'Like' %>
+    <% if !comment.liked?(current_user) %>
+      <%= form_for comment do |comment_fields| %>
+        <%= comment_fields.fields_for :likes, @like do |like_fields| %>     
+            <%= like_fields.hidden_field :user_id %>
+            <%= like_fields.submit 'Like' %>
+        <% end %>
       <% end %>
+    <% else %>
+      <%= "#{comment.likes_count} people have liked this post." %>
+      <%= link_to "Unlike", like_path(post.like(current_user)), method: :delete %>
     <% end %>
   <% end %>
   <%= form_for post do |post_fields| %>

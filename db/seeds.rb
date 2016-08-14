@@ -9,6 +9,8 @@
 puts "Destroying users.."
 Timeline.destroy_all
 User.destroy_all
+Post.destroy_all
+Comment.destroy_all
 City.destroy_all
 State.destroy_all
 Country.destroy_all

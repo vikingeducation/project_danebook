@@ -8,14 +8,13 @@ Rails.application.routes.draw do
   get '/about_edit' => 'users#edit'
 
   get '/users/:user_id/timeline' => 'posts#index', as: '/user_timeline'
-  get '/users/:user_id/about'    => 'users#show', as: '/user_about'
-  # get '/users/:user_id/photos'    => 'users#show', as: '/user_about'
-  # get '/users/:user_id/friends'    => 'users#show', as: '/user_about'
-  get '/users/:user_id/about_edit'    => 'users#edit', as: '/user_about_edit'
+  get '/users/:user_id/about' => 'users#show', as: '/user_about'
+  get '/users/:user_id/about_edit' => 'users#edit', as: '/user_about_edit'
 
   resources :users
-  resources :posts, only: [:index, :create, :destroy]
-  resource :session, only: [:new, :create, :destroy]
+  resources :posts, only: [ :create, :destroy ] do
+    resources :likes, only: [:create]
+  end
   get "login" => "sessions#new"
   delete "logout" => "sessions#destroy"
 end

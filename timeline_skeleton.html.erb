@@ -28,7 +28,7 @@
     <%= link_to "Unlike", like_path(post.like(current_user)), method: :delete %>
   <% end %>
   <% post.comments.each do |comment| %>
-    <%= comment.user %>
+    <%= comment.user.full_name %>
     <%= comment.created_at %>
     <%= comment.body %>
     <% if !comment.liked?(current_user) %>
@@ -40,11 +40,12 @@
       <% end %>
     <% else %>
       <%= "#{comment.likes_count} people have liked this post." %>
-      <%= link_to "Unlike", like_path(post.like(current_user)), method: :delete %>
+      <%= link_to "Unlike", like_path(comment.like(current_user)), method: :delete %>
     <% end %>
   <% end %>
   <%= form_for post do |post_fields| %>
     <%= post_fields.fields_for :comments, @comment do |comment_fields| %>
+      <%= comment_fields.hidden_field :user_id %>
       <%= comment_fields.text_field :body %>
       <%= comment_fields.submit 'Comment' %>
     <% end%>
@@ -230,7 +231,6 @@
                       <% end %>
                     <% end %>
                   <% else %>
-                    <%= "#{post.likes_count} people have liked this post." %>
                     <%= link_to "Unlike", like_path(post.like(current_user)), method: :delete %>
                   <% end %>
                 </div>
@@ -240,7 +240,11 @@
               </div>
               <div class="row">
                 <div class="col-md-12">
-                  <p class="liked">You and <a href="#">Hermione Granger</a> and 3 others like this.</p>
+                  <p class="liked">
+                    <% if post.liked? %>
+                      <%= "#{post.likes_count} people have liked this post." %>
+                    <% end%>
+                  </p>
                 </div>
               </div>
               <div class="row">
@@ -253,7 +257,7 @@
                     </div>
                     <div class="col-md-10">
                       <p><%= comment.body %></p>
-                      <p>
+                      <p class="liked">
                       <% if !comment.liked?(current_user) %>
                         <%= form_for comment do |comment_fields| %>
                           <%= comment_fields.fields_for :likes, @like do |like_fields| %>     
@@ -262,9 +266,11 @@
                           <% end %>
                         <% end %>
                       <% else %>
-                        <%= "#{comment.likes_count} people have liked this post." %>
-                        <%= link_to "Unlike", like_path(post.like(current_user)), method: :delete %>
+                        <%= link_to "Unlike", like_path(comment.like(current_user)), method: :delete %>
                       <% end %>
+                      <% if comment.liked? %>
+                        <%= "#{comment.likes_count} people have liked this post." %>
+                      <% end%>
                       </p>
                     </div>
                   </div>
@@ -274,6 +280,7 @@
                   <div class="row">
                     <%= post_fields.fields_for :comments, @comment do |comment_fields| %>
                     <div class="col-md-12">
+                      <%= comment_fields.hidden_field :user_id %>
                       <%= comment_fields.text_area :body, class: 'form-control', rows: '5' %>
                     </div>
                   </div>

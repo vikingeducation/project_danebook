@@ -19,7 +19,7 @@ class PostsController < ApplicationController
     def post_params
       params.require(:post).permit(:body, 
                                    :user_id,
-                                   { comments_attributes: [:body] },
+                                   { comments_attributes: [:user_id,:body] },
                                    { likes_attributes: [:user_id,:_destroy] })
     end
 end

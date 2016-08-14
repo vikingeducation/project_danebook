@@ -8,7 +8,7 @@ class TimelinesController < ApplicationController
     @posts = @user.posts
     @post = @posts.build
     @like = Like.new(user_id: current_user.id)
-    @comment = Comment.new
+    @comment = Comment.new(user_id: current_user.id)
     @friends = @user.friends
   end
 

@@ -39,7 +39,11 @@ class User < ActiveRecord::Base
   validates_presence_of :email
   validates_uniqueness_of :email
   validates :email, format: { with: VALID_EMAIL_REGEX }
-  validates :password, presence: true, length: { minimum: 6 }, allow_nil: true
+
+  # Password validations (create and update)
+  validates :password, presence: true, length: { in: 6..40 }, on: :create
+  validates :password, confirmation: true, length: { in: 6..40 }, allow_blank: true, on: :update
+
 
   has_secure_password
 

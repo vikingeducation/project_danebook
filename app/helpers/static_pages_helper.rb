@@ -14,4 +14,12 @@ module StaticPagesHelper
   def get_header_path
     signed_in_user? ? 'layouts/loggedin_header' : 'layouts/login_header'
   end
+
+  def construct_like_sentence(num)
+    if num == 1
+      '1 person likes this'
+    else
+      "#{num} people like this"
+    end
+  end
 end

@@ -15,6 +15,8 @@
       <%= link_to 'Like', post_likes_path(post), method: :post, class: 'col-xs-1 underline' %>
       <a class="col-xs-1 underline" href="#">Comment</a>
       <%= link_to 'Delete', post_path(post), method: :delete, class: 'col-xs-1 col-xs-offset-8 underline' if post.user == current_user %>
+      <!-- <p class="col-xs-8 top-margin-10">You and <a class="underline" href="#">Hermione Granger</a> and 3 others like this.</p> -->
+      <%= content_tag(:p, construct_like_sentence(post.likes.count), class: 'col-xs-8 top-margin-10') if post.likes.any? %>
     </div>
   </div>
 </div><!-- end-post-panel -->

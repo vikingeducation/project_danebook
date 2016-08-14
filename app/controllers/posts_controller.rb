@@ -20,7 +20,7 @@ class PostsController < ApplicationController
   def destroy
     @post = Post.find(params[:id])
     if current_user = @post.user
-      current_user.posts.delete(@post)
+      current_user.posts.destroy(@post)
       flash[:success] = 'Post deleted'
       redirect_to :back
     else

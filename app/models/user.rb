@@ -4,6 +4,7 @@ class User < ApplicationRecord
   has_one :profile, inverse_of: :user, dependent: :destroy
   has_many :posts
   has_many :likes
+  has_many :comments
 
   accepts_nested_attributes_for :profile, update_only: true
 

@@ -50,9 +50,6 @@ class UsersController < ApplicationController
     render 'static_pages/about'
   end
 
-  def destroy
-  end
-
 
 
 

@@ -13,7 +13,11 @@
   </div>
   <div class="row" id="post-feedback">
     <div class="col-xs-1">
-      <h6><%= link_to "Like", post_likes_path(post.id), method: 'post' %></h6>
+      <% if current_user.likes_post?(post.id, "Post").empty? %>
+        <h6><%= link_to "Like", post_likes_path(post.id), method: 'post' %></h6>
+      <% else %>
+        <h6><%= link_to "Unlike", post_like_path(post.id, current_user.likes_post?(post.id, "Post").first.id), method: 'delete' %></h6>
+      <% end %>
     </div>
     <div class="col-xs-2 col-xs-offset-8">
       <% if post.post_author_id == current_user.id %>

@@ -28,4 +28,10 @@ class User < ApplicationRecord
     self.save!
   end
 
+  def likes_post?(id, type)
+    self.likes_given.where("likeable_id = ? AND likeable_type = ?", id, type)
+  end
+
+
+
 end

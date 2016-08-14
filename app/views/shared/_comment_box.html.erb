@@ -9,8 +9,15 @@
     <p><%= comment.body %></p>
     <div class="row">
       <div class="col-xs-1">
-        <h6><a href=#likecomment>Like</a></h6>
+        <h6>
+          <% if current_user.likes_post?(comment.id, "Comment").empty? %>
+            <h6><%= link_to "Like", comment_likes_path(comment.id), method: 'post' %></h6>
+          <% else %>
+            <h6><%= link_to "Unlike", comment_like_path(comment.id, current_user.likes_post?(comment.id, "Comment").first.id), method: 'delete' %></h6>
+          <% end %>
+        </h6>
       </div>
+
       <div class="col-xs-6">
         <h6> 3 other people like this</h6>
       </div>

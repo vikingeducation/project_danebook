@@ -10,11 +10,13 @@ class User < ActiveRecord::Base
   has_many :initiated_friendings, class_name: "Friending",
                                   foreign_key: :friender_id
   has_many :friended_users, through: :initiated_friendings,
-                            source: :friend_recipient
+                            source: :friend_recipient,
+                            dependent: :destroy
   has_many :received_friendings, foreign_key: :friend_id,
                                  class_name: "Friending"
   has_many :users_friended_by, through: :received_friendings,
-                               source: :friend_initiator
+                               source: :friend_initiator,
+                               dependent: :destroy
 
   has_one :profile, dependent: :destroy
   accepts_nested_attributes_for :profile

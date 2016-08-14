@@ -1,0 +1,8 @@
+<div class="row comment">
+  <img class="col-xs-2" src='<%= asset_path('ron.jpg') %>'>
+  <p class="col-xs-10 comment-heading"><%= link_to comment.user.profile.name, '#', class: 'underline' %></p>
+  <%= content_tag(:p, comment.comment_text, class: 'col-xs-10') %>
+  </p>
+  <a class="col-xs-1 col-xs-offset-2 underline" href="#">Like</a>
+  <p class="col-xs-8 grey"> 3 other people like this</p>
+</div>

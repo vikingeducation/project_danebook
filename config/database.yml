@@ -9,9 +9,12 @@ default: &default
   encoding: unicode
   pool: 5
   timeout: 5000
-
+  
 development:
   <<: *default
+  # You still need to specify database names per environment so
+  # that Rails can make them for you.
+  database: danebook_development
   # database: db/development.sqlite3
 
 # Warning: The database defined as "test" will be erased and
@@ -19,8 +22,10 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
+  database: danebook_test
   # database: db/test.sqlite3
 
 production:
   <<: *default
+  database: danebook_production
   # database: db/production.sqlite3

@@ -44,4 +44,5 @@ class ProfilesController < ApplicationController
         ] },
         { contact_info_attributes: [:email, :phone] })
     end
+
 end

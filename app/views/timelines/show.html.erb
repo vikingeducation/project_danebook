@@ -108,6 +108,7 @@
       </div>
     </div>
     <div class="col-md-7 col-md-offset-1">
+    <% if @timeline.id == current_user.timeline_id %>
       <%= form_for @post do |post_fields| %>
       <div class="row">
         <div class="col-md-12 panel">
@@ -118,8 +119,7 @@
           </div>
           <div class="row panel-content">
             <div class="col-md-12">
-
-                <%= post_fields.text_area :body, class: 'form-control', rows: '5' %>
+              <%= post_fields.text_area :body, class: 'form-control', rows: '5' %>
             </div>
           </div>
           <div class="row panel-footer">
@@ -129,11 +129,12 @@
                   <%= post_fields.submit "Post", class: "btn btn-primary btn-lg" %>
                 </div>
               </div>
-            <% end %>
             </div>
           </div>
         </div>
       </div>
+      <% end %>
+    <% end %>
       <% @posts.each do |post| %>
         <% if post.created_at %>
         <div class="row">

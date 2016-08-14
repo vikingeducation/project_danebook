@@ -12,6 +12,16 @@ class CommentsController < ApplicationController
     end
   end
 
+  def destroy
+    if Comment.find(params[:id]).destroy
+      flash[:success] = 'Comment deleted'
+      redirect_to :back
+    else
+      flash[:error] = 'Unable to delete comment'
+      redirect_to :back
+    end
+  end
+
 
   private
 

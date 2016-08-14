@@ -16,6 +16,9 @@ Rails.application.routes.draw do
     resources :likes, shallow: true
     resources :comments
   end
+  resources :comments, only: [ :destroy ] do
+    resources :likes, shallow: true
+  end
   get "login" => "sessions#new"
   post 'login' => 'sessions#create'
   delete "logout" => "sessions#destroy"

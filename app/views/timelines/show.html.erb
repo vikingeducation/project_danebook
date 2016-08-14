@@ -194,7 +194,7 @@
                       </div>
                       <div class="col-md-10">
                         <p> 
-                          <%= link_to user.full_name, user_path(comment.user) %>said on <%= comment.created_at %>.
+                          <%= link_to comment.user.full_name, user_path(comment.user) %> said on <%= comment.created_at %>.
                         </p>
                         <p><%= comment.body %></p>
                         <p class="liked">

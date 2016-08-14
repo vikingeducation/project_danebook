@@ -18,7 +18,8 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new({ email: user_params[:email],                
-                       password: user_params[:password] })
+                       password: user_params[:password],
+                       password_confirmation: user_params[:password_confirmation] })
     if @user.save && @user.create_profile!(first_name: user_params[:first_name], 
                                            last_name: user_params[:last_name])
       @user.send_activation_email

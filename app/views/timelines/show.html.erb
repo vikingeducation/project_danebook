@@ -17,17 +17,16 @@
   <%= post.created_at %>
   <%= post.body %>
   <%= "#{post.likes_count} people have liked this post." %>
-  <%= form_for post do |post_fields| %>
-    <%= post_fields.fields_for :likes, @like do |like_fields| %>
-      <%= post.liked? current_user %>
-      <% if !post.liked?(current_user) %>
-        <%= like_fields.hidden_field :user_id %>
-        <%= like_fields.submit 'Like' %>
-      <% else %>
-        <%= like_fields.hidden_field :_destroy %>
-        <%= like_fields.submit 'Unlike' %>
+  <%= post.liked? current_user %>
+  <% if !post.liked?(current_user) %>
+    <%= form_for post do |post_fields| %>
+      <%= post_fields.fields_for :likes, @like do |like_fields| %>     
+          <%= like_fields.hidden_field :user_id %>
+          <%= like_fields.submit 'Like' %>
       <% end %>
     <% end %>
+  <% else %>
+    <%= link_to "Unlike", like_path(post.like(current_user)), method: :delete %>
   <% end %>
   <% post.comments.each do |comment| %>
     <%= comment.user %>

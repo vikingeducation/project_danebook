@@ -93,6 +93,16 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def correct_like
+    case current_user
+    when Like.find(params[:id].to_i).user
+      return true
+    else
+      flash[:notice] = "You cannot unlike someone else's like."
+      redirect_to root_url
+    end
+  end
+
   # Same as logged_inuser and correct_user, but only returns a boolean.
   def user_check
     case current_user.id

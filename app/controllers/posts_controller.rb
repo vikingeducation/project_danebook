@@ -5,11 +5,12 @@ class PostsController < ApplicationController
 
   def create
     @post = @user.posts.build(post_params)
+    @post.from = current_user.id
     if @post.save
-      flash[:sucess] = "Your post as been successfully posted for all to see!"
-      redirect_to current_user
+      flash[:success] = "Your post as been successfully posted for all to see!"
+      redirect_to @user
     else
-      flash[:error] = "You post was not posted"
+      flash[:danger] = "You post was not posted"
       redirect_to current_user
     end
   end
@@ -24,7 +25,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:content)
+    params.require(:post).permit(:content, :from)
   end
 
 end

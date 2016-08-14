@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
         flash[:success] = "You've successfully signed into Danebook!"
         redirect_to current_user
     else
-      flash[:error] = "We did not sign you into Danebook. Please provide a valid email and password"
+      flash[:danger] = "We did not sign you into Danebook. Please provide a valid email and password"
       redirect_to root_url
     end
   end

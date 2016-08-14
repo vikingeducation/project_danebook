@@ -18,7 +18,7 @@
   </div>
   <div class="col-md-8">
     <div class="row">
-      <%= render "new_post" %>
+      <%= render "posts/new_post" %>
 
     <% @posts.each do |post|%>
       <div class="col-md-12">
@@ -28,7 +28,8 @@
               <%= image_tag("default_image.jpg", class: "post-photo") %>
             </div>
             <div class="media-body">
-            <h4 class="media-heading">Posted at:<%= post.created_at%>
+            <h6 class="media-heading"><%=link_to from_user(post), user_path(post.user)%></h6>
+            <h6 class="media-heading">Posted:<%= post.created_at.strftime(' %b %d at %r')%></h6>
               <div class="panel-body">
                 <p><%= post.content %><%= post.id%> </p>
               </div>
@@ -43,3 +44,4 @@
     </div>
   </div>
 </div>
+<span class="glyphicon glyphicon-play"></span>

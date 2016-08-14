@@ -20,7 +20,7 @@ class UsersController < ApplicationController
       flash[:success] = "Your Danebook profile has been updated"
       redirect_to user_profiles_path(current_user) 
     else
-      flash.now[:failure] = "Failed to update your Danebook profile"
+      flash.now[:danger] = "Failed to update your Danebook profile"
       redirect_to user_profiles_path(current_user) 
     end
   end
@@ -32,7 +32,7 @@ class UsersController < ApplicationController
       flash[:success] = "Welcome to Danebook!"
       redirect_to user_profiles_path(current_user)
     else
-      flash.now[:error] = "Please fill out all fields and make sure your password and password confirmation match"
+      flash.now[:danger] = "Please fill out all fields and make sure your password and password confirmation match"
       render :new
     end
   end

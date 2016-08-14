@@ -11,19 +11,13 @@ class LikesController < ApplicationController
 
   def destroy
     session[:return_to] = request.referer
-    unless params[:id] == current_user.id.to_s
-      flash[:error] = "You're not authorized to delete this"
-      redirect_to session.delete(:return_to)
-    end
-
     likeable = extract_likeable.find(params[:likeable_id])
-    like = likeable.likes.where(user_id: current_user.id)
-    if likeable.likes.destroy(like)
-      redirect_to session.delete(:return_to)
+    if like = likeable.likes.where(user_id: current_user.id)
+      flash[:alert] = "something went wrong" unless likeable.likes.destroy(like)
     else
-      flash[:alert] = "something went wrong"
-      redirect_to session.delete(:return_to)
+      flash[:error] = "You're not authorized to delete this"
     end
+    redirect_to session.delete(:return_to)
   end
 
   private

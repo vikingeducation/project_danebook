@@ -19,8 +19,9 @@
   <%= "#{post.likes_count} people have liked this post." %>
   <%= form_for post do |post_fields| %>
     <%= post_fields.fields_for :likes, @like do |like_fields| %>
-      <% if !(like_fields.object.persisted?) %>
-        <%= like_fields.hidden_field :likeable %>
+      <%= post.liked? current_user %>
+      <% if !post.liked?(current_user) %>
+        <%= like_fields.hidden_field :user_id %>
         <%= like_fields.submit 'Like' %>
       <% else %>
         <%= like_fields.hidden_field :_destroy %>
@@ -34,6 +35,7 @@
     <%= comment.body %>
     <%= form_for comment do |comment_fields| %>
       <%= comment_fields.fields_for :likes, @like do |like_fields| %>
+         <%= like_fields.hidden_field :user_id %>
         <%= like_fields.submit 'Like' %>
       <% end %>
     <% end %>

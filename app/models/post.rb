@@ -5,4 +5,10 @@ class Post < ActiveRecord::Base
   has_many :likes, as: :likeable, dependent: :destroy
 
   accepts_nested_attributes_for :comments, :likes, allow_destroy: true
+
+  def liked?(user)
+    target = user.id
+    likes.where(user_id: target).any?
+  end
+
 end

@@ -135,104 +135,109 @@
         </div>
       </div>
       <% @posts.each do |post| %>
-      <div class="row">
-        <div class="col-md-12 panel">
-          <div class="row panel-content">
-            <div class="col-md-12">
-              <div class="row">
-                <div class="col-md-2">
-                <%= image_tag "icon_photo_small", height: "92px", width: "92px" %>
+        <% if post.created_at %>
+        <div class="row">
+          <div class="col-md-12 panel">
+            <div class="row panel-content">
+              <div class="col-md-12">
+                <div class="row">
+                  <div class="col-md-2">
+                  <%= image_tag "icon_photo_small", height: "92px", width: "92px" %>
+                  </div>
+                  <div class="col-md-4 col-vcentered">
+                    <%= post.user.full_name %>
+                    <p><%= "Posted on #{post.created_at}" %></p>
+                  </div>
                 </div>
-                <div class="col-md-4 col-vcentered">
-                  <%= post.user.full_name %>
-                  <p>Posted on <%= post.created_at %></p>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-12">
-                  <p><%= post.body %></p>
+                <div class="row">
+                  <div class="col-md-12">
+                    <p><%= post.body %></p>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div class="row panel-footer">
-            <div class="col-md-12">
-              <div class="row">
-                <div class="col-md-1">
-                  <% if !post.liked?(current_user) %>
-                    <%= form_for post do |post_fields| %>
-                      <%= post_fields.fields_for :likes, @like do |like_fields| %>     
-                          <%= like_fields.hidden_field :user_id %>
-                          <%= like_fields.submit 'Like' %>
-                      <% end %>
-                    <% end %>
-                  <% else %>
-                    <%= link_to "Unlike", like_path(post.like(current_user)), method: :delete %>
-                  <% end %>
-                </div>
-                <div class="col-md-1 col-md-offset-9">
-                  <a href="#">Delete</a>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-md-12">
-                  <p class="liked">
-                    <% if post.liked?(current_user) %>
-                      <%= "#{post.likes_count} people have liked this post." %>
-                    <% end%>
-                  </p>
-                </div>
-              </div>
-              <div class="row">
-                <hr>
-                <% post.comments.each do |comment| %>
-                <div class="col-md-12">
-                  <div class="row comment">
-                    <div class="col-md-2">
-                      <img src="icon_photo_small.png" height="74px" width="74px">
-                    </div>
-                    <div class="col-md-10">
-                      <p><%= comment.body %></p>
-                      <p class="liked">
-                      <% if !comment.liked?(current_user) %>
-                        <%= form_for comment do |comment_fields| %>
-                          <%= comment_fields.fields_for :likes, @like do |like_fields| %>     
-                              <%= like_fields.hidden_field :user_id %>
-                              <%= like_fields.submit 'Like' %>
-                          <% end %>
+            <div class="row panel-footer">
+              <div class="col-md-12">
+                <div class="row">
+                  <div class="col-md-1">
+                    <% if !post.liked?(current_user) %>
+                      <%= form_for post do |post_fields| %>
+                        <%= post_fields.fields_for :likes, @like do |like_fields| %>     
+                            <%= like_fields.hidden_field :user_id %>
+                            <%= like_fields.submit 'Like' %>
                         <% end %>
-                      <% else %>
-                        <%= link_to "Unlike", like_path(comment.like(current_user)), method: :delete %>
                       <% end %>
-                      <% if comment.liked?(current_user) %>
-                        <%= "#{comment.likes_count} people have liked this post." %>
+                    <% else %>
+                      <%= link_to "Unlike", like_path(post.like(current_user)), method: :delete %>
+                    <% end %>
+                  </div>
+                  <div class="col-md-1 col-md-offset-9">
+                    <a href="#">Delete</a>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <p class="liked">
+                      <% if post.liked?(current_user) %>
+                        <%= "#{post.likes_count} people have liked this post." %>
                       <% end%>
-                      </p>
+                    </p>
+                  </div>
+                </div>
+                <div class="row">
+                  <hr>
+                  <% post.comments.each do |comment| %>
+                  <div class="col-md-12">
+                    <div class="row comment">
+                      <div class="col-md-2">
+                        <img src="icon_photo_small.png" height="74px" width="74px">
+                      </div>
+                      <div class="col-md-10">
+                        <p> 
+                          <%= link_to user.full_name, user_path(comment.user) %>said on <%= comment.created_at %>.
+                        </p>
+                        <p><%= comment.body %></p>
+                        <p class="liked">
+                        <% if !comment.liked?(current_user) %>
+                          <%= form_for comment do |comment_fields| %>
+                            <%= comment_fields.fields_for :likes, @like do |like_fields| %>     
+                                <%= like_fields.hidden_field :user_id %>
+                                <%= like_fields.submit 'Like' %>
+                            <% end %>
+                          <% end %>
+                        <% else %>
+                          <%= link_to "Unlike", like_path(comment.like(current_user)), method: :delete %>
+                        <% end %>
+                        <% if comment.liked?(current_user) %>
+                          <%= "#{comment.likes_count} people have liked this post." %>
+                        <% end%>
+                        </p>
+                      </div>
                     </div>
+                  </div>
+                  <% end %>
+                  <%= form_for post do |post_fields| %>
+                    <div class="row">
+                      <%= post_fields.fields_for :comments, @comment do |comment_fields| %>
+                      <div class="col-md-12">
+                        <%= comment_fields.hidden_field :user_id %>
+                        <%= comment_fields.text_area :body, class: 'form-control', rows: '5' %>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-2 col-vcentered">
+                        <a href="#">Cancel</a>
+                      </div>
+                      <div class="col-md-2 col-md-offset-10">
+                        <%= comment_fields.submit 'Comment', class: "btn btn-primary btn-md" %>
+                      </div>
+                    </div>
+                  <% end%>
                   </div>
                 </div>
                 <% end %>
-                <%= form_for post do |post_fields| %>
-                  <div class="row">
-                    <%= post_fields.fields_for :comments, @comment do |comment_fields| %>
-                    <div class="col-md-12">
-                      <%= comment_fields.hidden_field :user_id %>
-                      <%= comment_fields.text_area :body, class: 'form-control', rows: '5' %>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-md-2 col-vcentered">
-                      <a href="#">Cancel</a>
-                    </div>
-                    <div class="col-md-2 col-md-offset-10">
-                      <%= comment_fields.submit 'Comment', class: "btn btn-primary btn-md" %>
-                    </div>
-                  </div>
-                <% end%>
-                </div>
               </div>
-              <% end %>
-            </div>
+            <% end %>
           <% end %>
           </div>
         </div>

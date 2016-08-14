@@ -15,11 +15,18 @@ module StaticPagesHelper
     signed_in_user? ? 'layouts/loggedin_header' : 'layouts/login_header'
   end
 
-  def construct_like_sentence(num)
-    if num == 1
+  def construct_like_sentence(likes)
+    num = likes.count
+    users = likes.map(&:user)
+    if num == 1 && likes.first.user == current_user
+      'You like this'
+    elsif num == 1
       '1 person likes this'
+    elsif users.include?(current_user)
+      "You and #{num - 1} others like this"
     else
-      "#{num} people like this"
+      "#{users.first.profile.name} and #{num} other people like this"
     end
   end
+
 end

@@ -6,4 +6,9 @@ class LikesController < ApplicationController
     redirect_to :back
   end
 
+  def destroy
+    Like.find(params[:id]).destroy
+    redirect_to :back
+  end
+
 end

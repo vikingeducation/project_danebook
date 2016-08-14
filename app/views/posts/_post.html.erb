@@ -4,19 +4,19 @@
       <img class="col-xs-3" src='<%= asset_path('hp.jpg') %>'>
       <%= link_to user.profile.name, user_path(user), class: 'col-xs-8' %>
       <%= content_tag(:p, post.created_at, class: 'col-xs-9 grey') %>
-      <!-- <p class="col-xs-9 grey">Posted on Thursday 5/21/2014</p> -->
     </div>
     <%= content_tag(:p, post.post_text, class: 'col-xs-12') %>
-    <!-- <p class="col-xs-12">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam ultrices nisi quis leo congue, sed dictum purus auctor. Quisque lorem ipsum, lobortis et dapibus in, congue non ante. Quisque aliquam faucibus mauris et dignissim. Vivamus aliquet lectus nec neque pretium, sit amet auctor lectus rhoncus. Morbi congue accumsan mi. In tristique purus ex, sollicitudin ultricies metus consectetur eget.</p> -->
   </div>
   <div class="panel-footer">
     <div class="row">
-      <!-- <a class="col-xs-1 underline" href="#">Like</a> -->
-      <%= link_to 'Like', post_likes_path(post), method: :post, class: 'col-xs-1 underline' %>
+      <% unless post.likes.map(&:user).include?(current_user) %>
+        <%= link_to 'Like', post_likes_path(post), method: :post, class: 'col-xs-1 underline' %>
+      <% else %>
+        <%= link_to 'Unlike', like_path(post.likes.where("user_id=#{current_user.id}").first), method: :delete, class: 'col-xs-1 underline' %>
+      <% end %>
       <a class="col-xs-1 underline" href="#">Comment</a>
       <%= link_to 'Delete', post_path(post), method: :delete, class: 'col-xs-1 col-xs-offset-8 underline' if post.user == current_user %>
-      <!-- <p class="col-xs-8 top-margin-10">You and <a class="underline" href="#">Hermione Granger</a> and 3 others like this.</p> -->
-      <%= content_tag(:p, construct_like_sentence(post.likes.count), class: 'col-xs-8 top-margin-10') if post.likes.any? %>
+      <%= content_tag(:p, construct_like_sentence(post.likes), class: 'col-xs-8 top-margin-10') if post.likes.any? %>
     </div>
   </div>
 </div><!-- end-post-panel -->

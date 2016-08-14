@@ -13,7 +13,7 @@ Rails.application.routes.draw do
 
   resources :users
   resources :posts, only: [ :create, :destroy ] do
-    resources :likes, only: [:create]
+    resources :likes, shallow: true
   end
   get "login" => "sessions#new"
   delete "logout" => "sessions#destroy"

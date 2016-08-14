@@ -18,5 +18,10 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :comments, except: [:index, :create, :new] do
+    resources :likes, defaults: { likable: 'Comment' }
+    resources :comments, defaults:  { commentable: 'Comment' }
+  end
+
   resource :session, :only => [:new, :create, :destroy]
 end

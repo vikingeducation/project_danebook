@@ -10,7 +10,7 @@ class PostsController < ApplicationController
 
   def destroy
     begin
-      if @post = current_user.posts.find(params[:id]) && @post.destroy
+      if (@post = current_user.posts.find(params[:id])) && @post.destroy
         flash[:success] = "Post deleted!"
       else
         flash[:danger] = "Post could not be deleted!"

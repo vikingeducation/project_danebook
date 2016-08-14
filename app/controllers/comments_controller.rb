@@ -19,7 +19,8 @@ class CommentsController < ApplicationController
 
     def destroy
       begin
-        unless comment = current_user.comments.find(params[:id])  && comment.destroy
+        comment = current_user.comments.find(params[:id])
+        unless comment.destroy
           flash[:danger] = "Could not delete comment!"
         end
       rescue ActiveRecord::RecordNotFound

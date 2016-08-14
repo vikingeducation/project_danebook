@@ -126,20 +126,23 @@ header {
   background-size: cover;
   height: 320px;
 
+  // profile photo
   img {
-    margin-top: 170px;
-    height: 250px;
+    margin-top: 100px;
+    height: 90px;
   }
 
   @media (min-width: 768px) {
     img {
-      margin-top: 190px;
+      margin-top: 170px;
+      height: 180px;
     }
   }
 
   @media (min-width: 992px) {
     img {
       margin-top: 90px;
+      height: 250px;
     }
   }
 }

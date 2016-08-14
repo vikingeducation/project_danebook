@@ -6,11 +6,16 @@
     <a href="<%= user_path(comment.commenter) %>"><%= comment.commenter.name %></a><time datetime="<%= comment.created_at.strftime("%Y/%m/%d") %>"> posted on <%= comment.created_at.strftime("%A %m/%d/%Y") %></time>
     <p><%= comment.text %></p>
     <div class="row">
-      <div class="col-sm-1">
-        <a href="#">Like</a>
-      </div>
-      <div class="col-sm-10">
-        <p><a href="#">5 people</a> like this.</p>
+      <div class="col-sm-12">
+        <p>
+          <% if liked?(comment) %>
+            <%= link_to "Unlike", like_path(find_like(comment)), method: :delete %>
+          <% else %>
+            <%= link_to "Like", comment_likes_path(comment), method: :post %>
+          <% end %>
+          <a href="#"><%= "· " + pluralize(comment.likes.count, 'like') if comment.likes.count > 0 %></a>
+          <%= link_to "· Delete", comment, method: :delete if comment.commenter == current_user %>
+        </p>
       </div>
     </div>
   </div>

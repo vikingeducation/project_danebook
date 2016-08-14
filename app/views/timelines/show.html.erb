@@ -1,52 +1,229 @@
-<h1>Timelines#show</h1>
+<div class="row">
+  <div class="col-md-4">
+    <div class="row">
+      <div class="col-md-12 panel">
+        <div class="row">
+          <div class="col-md-12">
+            <h3 class="panel-header">About</h3>
+          </div>
+        </div>
+        <div class="row panel-content">
+          <div class="col-md-12">
+            <table>
+              <tr>
+                <td>Birthday:  </td>
+                <td><%= show_date @profile.birthday %></td>
+              </tr>
+              <tr>
+                <td>College:  </td>
+                <td><%= @profile.college %></td>
+              </tr>
+              <tr>
+                <td>Hometown:  </td>
+                <td><%= show_address @profile.hometown %></td>
+              </tr>
+              <tr>
+                <td>Current Residence:  </td>
+                <td><%= show_address @profile.residence %></td>
+              </tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 panel">
+        <div class="row">
+          <div class="col-md-12">
+            <h3 class="panel-header">Photos</h3>
+          </div>
+        </div>
+        <div class="row panel-content">
+          <div class="col-md-4">
+            <img src="icon_photo_small.png" height="92px" width="92px">
+            <img src="icon_photo_small.png" height="92px" width="92px">
+            <img src="icon_photo_small.png" height="92px" width="92px">
+          </div>
+          <div class="col-md-4">
+            <img src="icon_photo_small.png" height="92px" width="92px">
+            <img src="icon_photo_small.png" height="92px" width="92px">
+            <img src="icon_photo_small.png" height="92px" width="92px">
+            <a href="#" class="panel-link">See More Photos</a>
+          </div>
+          <div class="col-md-4">
+            <img src="icon_photo_small.png" height="92px" width="92px">
+            <img src="icon_photo_small.png" height="92px" width="92px">
+            <img src="icon_photo_small.png" height="92px" width="92px">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12 panel">
+        <div class="row">
+          <div class="col-md-12">
+            <h3 class="panel-header">Friends</h3>
+          </div>
+        </div>
+        <div class="row panel-content">
+          <div class="col-md-4">
+            <div class="friend-box">
+              <img src="icon_photo_small.png" height="92px" width="92px">
+              <a href="#">Ron Weasley</a>
+            </div>
+            <div class="friend-box">
+              <img src="icon_photo_small.png" height="92px" width="92px">
+              <a href="#">paragraph text</a>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="friend-box">
+              <img src="icon_photo_small.png" height="92px" width="92px">
+              <a href="#">Ginny Weasley</a>
+            </div>
+            <div class="friend-box">
+              <img src="icon_photo_small.png" height="92px" width="92px">
+              <a href="#">paragraph text</a>
+              <a href="#" class="panel-link">See More Friends</a>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="friend-box">
+              <img src="icon_photo_small.png" height="92px" width="92px">
+              <a href="#">Hermione G.</a>
+            </div>
+            <div class="friend-box">
+              <img src="icon_photo_small.png" height="92px" width="92px">
+              <a href="#">paragraph text</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-7 col-md-offset-1">
+    <%= form_for @post do |post_fields| %>
+    <div class="row">
+      <div class="col-md-12 panel">
+        <div class="row">
+          <div class="col-md-12">
+            <h3 class="panel-header">Post</h3>
+          </div>
+        </div>
+        <div class="row panel-content">
+          <div class="col-md-12">
 
-<h3>About</h3>
-<%= show_date @profile.birthday %>
-<%= @profile.college %>
-<%= show_address @profile.hometown %>
-<%= show_address @profile.residence %>
-
-<%= form_for @post do |post_fields| %>
-  <%= post_fields.label :body %>
-  <%= post_fields.text_field :body %>
-  <%= post_fields.submit "Submit" %>
-<% end %>
-
-<% @posts.each do |post| %>
-  <%= post.user.full_name %>
-  <%= post.created_at %>
-  <%= post.body %>
-  <% if !post.liked?(current_user) %>
-    <%= form_for post do |post_fields| %>
-      <%= post_fields.fields_for :likes, @like do |like_fields| %>     
-          <%= like_fields.hidden_field :user_id %>
-          <%= like_fields.submit 'Like' %>
-      <% end %>
-    <% end %>
-  <% else %>
-    <%= "#{post.likes_count} people have liked this post." %>
-    <%= link_to "Unlike", like_path(post.like(current_user)), method: :delete %>
-  <% end %>
-  <% post.comments.each do |comment| %>
-    <%= comment.user %>
-    <%= comment.created_at %>
-    <%= comment.body %>
-    <% if !comment.liked?(current_user) %>
-      <%= form_for comment do |comment_fields| %>
-        <%= comment_fields.fields_for :likes, @like do |like_fields| %>     
-            <%= like_fields.hidden_field :user_id %>
-            <%= like_fields.submit 'Like' %>
+              <%= post_fields.text_area :body, class: 'form-control', rows: '5' %>
+          </div>
+        </div>
+        <div class="row panel-footer">
+          <div class="col-md-12">
+            <div class="row">
+              <div class="col-md-2 col-md-offset-10">
+                <%= post_fields.submit "Post", class: "btn btn-primary btn-lg" %>
+              </div>
+            </div>
+          <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% @posts.each do |post| %>
+    <div class="row">
+      <div class="col-md-12 panel">
+        <div class="row panel-content">
+          <div class="col-md-12">
+            <div class="row">
+              <div class="col-md-2">
+                <img src="icon_photo_small.png" height="92px" width="92px">
+              </div>
+              <div class="col-md-4 col-vcentered">
+                <%= post.user.full_name %>
+                <p>Posted on <%= post.created_at %></p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <p><%= post.body %></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row panel-footer">
+          <div class="col-md-12">
+            <div class="row">
+              <div class="col-md-1">
+                <% if !post.liked?(current_user) %>
+                  <%= form_for post do |post_fields| %>
+                    <%= post_fields.fields_for :likes, @like do |like_fields| %>     
+                        <%= like_fields.hidden_field :user_id %>
+                        <%= like_fields.submit 'Like' %>
+                    <% end %>
+                  <% end %>
+                <% else %>
+                  <%= "#{post.likes_count} people have liked this post." %>
+                  <%= link_to "Unlike", like_path(post.like(current_user)), method: :delete %>
+                <% end %>
+              </div>
+              <div class="col-md-1 col-md-offset-9">
+                <a href="#">Delete</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <p class="liked">You and <a href="#">Hermione Granger</a> and 3 others like this.</p>
+              </div>
+            </div>
+            <div class="row">
+              <hr>
+              <% post.comments.each do |comment| %>
+              <div class="col-md-12">
+                <div class="row comment">
+                  <div class="col-md-2">
+                    <img src="icon_photo_small.png" height="74px" width="74px">
+                  </div>
+                  <div class="col-md-10">
+                    <p><%= comment.body %></p>
+                    <p>
+                    <% if !comment.liked?(current_user) %>
+                      <%= form_for comment do |comment_fields| %>
+                        <%= comment_fields.fields_for :likes, @like do |like_fields| %>     
+                            <%= like_fields.hidden_field :user_id %>
+                            <%= like_fields.submit 'Like' %>
+                        <% end %>
+                      <% end %>
+                    <% else %>
+                      <%= "#{comment.likes_count} people have liked this post." %>
+                      <%= link_to "Unlike", like_path(post.like(current_user)), method: :delete %>
+                    <% end %>
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <% end %>
+              <%= form_for post do |post_fields| %>
+                <div class="row">
+                  <%= post_fields.fields_for :comments, @comment do |comment_fields| %>
+                  <div class="col-md-12">
+                    <%= comment_fields.text_area :body, class: 'form-control', rows: '5' %>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-2 col-vcentered">
+                    <a href="#">Cancel</a>
+                  </div>
+                  <div class="col-md-2 col-md-offset-10">
+                    <%= comment_fields.submit 'Comment', class: "btn btn-primary btn-md" %>
+                  </div>
+                </div>
+              <% end%>
+              </div>
+            </div>
+            <% end %>
+          </div>
         <% end %>
-      <% end %>
-    <% else %>
-      <%= "#{comment.likes_count} people have liked this post." %>
-      <%= link_to "Unlike", like_path(post.like(current_user)), method: :delete %>
-    <% end %>
-  <% end %>
-  <%= form_for post do |post_fields| %>
-    <%= post_fields.fields_for :comments, @comment do |comment_fields| %>
-      <%= comment_fields.text_field :body %>
-      <%= comment_fields.submit 'Comment' %>
-    <% end%>
-  <% end %>
-<% end %>
+        </div>
+      </div>
+    </div>         
+  </div>
+</div>

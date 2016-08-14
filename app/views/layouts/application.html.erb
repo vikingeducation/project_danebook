@@ -10,7 +10,7 @@
 
 <body>
 
-  <%= render logged_in? ? 'shared/navbar_search' : 'shared/navbar_login' %>
+  <%= render (logged_in? && current_user) ? 'shared/navbar_search' : 'shared/navbar_login' %>
 
   <%= render 'shared/flash' %>
 

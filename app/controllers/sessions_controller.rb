@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
   skip_before_action :logged_in_user, except: [:destroy]
   skip_before_action :correct_user
   before_action :set_user, only: [:create]
-  before_action :activated_user
+  before_action :activated_user, only: [:create]
 
   def new
   end

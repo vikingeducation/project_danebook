@@ -11,8 +11,9 @@ class Post < ActiveRecord::Base
     likes.where(user_id: target).any?
   end
 
-  def like(user)
-    likes.where(user_id: user.id).last
+  def like(user=nil)
+    output = user ? likes.where(user_id: user.id) : likes
+    output.last
   end
 
 end

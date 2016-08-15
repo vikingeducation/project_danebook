@@ -47,6 +47,41 @@ describe User, type: :model do
       should validate_length_of(:password).
         is_at_least(8).is_at_most(24)
     end
+
+    it 'validates and rejects email without @' do
+      new_user = build(:user, email: "foobarr.com")
+      expect(new_user).not_to be_valid
+    end
+
+    it 'validates email with @' do
+      new_user = build(:user, email: "foo@barr.com")
+      expect(new_user).to be_valid
+    end
+
+    it 'validates email length of between 4 & 50' do
+      should validate_length_of(:email).
+        is_at_least(4).is_at_most(50)
+    end
+
+    it 'validates birth_date over 125 years ago is not valid' do
+      new_user = build(:user, birth_date: 126.years.ago)
+      expect(new_user).not_to be_valid
+    end
+
+    it 'validates birth_date 125 years ago is valid' do
+      new_user = build(:user, birth_date: 125.years.ago)
+      expect(new_user).to be_valid
+    end
+
+    it 'validates birth_date in future is not valid' do
+      new_user = build(:user, birth_date: 126.years.from_now)
+      expect(new_user).not_to be_valid
+    end
+
+    it 'validates birth_date of current day is valid' do
+      new_user = build(:user, birth_date: Date.today)
+      expect(new_user).to be_valid
+    end
   end
 
 end

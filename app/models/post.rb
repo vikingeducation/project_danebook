@@ -4,5 +4,6 @@ class Post < ActiveRecord::Base
   has_many :likers, through: :likes, source: :user
   has_many :comments
 
-  validates :description, :length => {in: 1..400}
+  validates :description,
+            :length => {in: 1..800}
 end

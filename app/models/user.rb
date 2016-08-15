@@ -22,16 +22,21 @@ class User < ActiveRecord::Base
   validates :password,
             :length => { :in => 8..24 },
             :allow_nil => true
+
   validates :first_name, :last_name,
             :presence => true,
-            :length => { :minimum => 1 }#,
-            # :allow_nil => true
+            :length => { :minimum => 1 }
+
   validates :birth_date,
-           :presence => true#,
-          #  :allow_nil => true
+           :presence => true
+
+  validates_date :birth_date, on_or_after: lambda { 125.years.ago }
+
+  validates_date :birth_date, :on_or_before => lambda { Date.current }
+
 
   validates :email, presence: true,
-            length: { in: 4..40}
+            length: { in: 4..50}
 
   validates_format_of :email, :with => /@/
 

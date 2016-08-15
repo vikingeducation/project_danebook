@@ -40,25 +40,28 @@ describe Post do
 
   describe "#liked?" do
 
-    it "returns true when it has been liked by a specified user" do
-      user.save
-      post.save
-      post.likes.create(user: user)
-      # create user, create post, post.user = user
-      expect(post.liked?(user)).to be(true)
+    context "when passed a user as an argument" do
+      it "returns true when it has been liked by a specified user" do
+        user.save
+        post.save
+        post.likes.create(user: user)
+        expect(post.liked?(user)).to be(true)
+      end
+
+      it "returns false when it has not been liked by a specified user" do
+        user.save
+        post.save
+        post.likes.create(user: user)
+        other_user = create(:user)
+        expect(post.liked?(other_user)).to be(false)
+      end
     end
 
-    it "returns false when it has not been liked by a specified user" do
-      user.save
-      post.save
-      post.likes.create(user: user)
-      other_user = create(:user)
-      # create user, create post, post.user = user
-      expect(post.liked?(other_user)).to be(false)
+    it "returns true when the post has been liked at all" do
+      liked_post = build(:post,:with_likes)
+      expect(liked_post.liked?).to be(true)
     end
 
   end
-
-  # like -> likeable -> post,comment
 
 end

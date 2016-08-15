@@ -6,9 +6,13 @@ class Post < ActiveRecord::Base
 
   accepts_nested_attributes_for :comments, :likes, allow_destroy: true
 
-  def liked?(user)
-    target = user.id
-    likes.where(user_id: target).any?
+  def liked?(user=nil)
+    if user
+      target = user.id
+      likes.where(user_id: target).any?
+    else
+      likes.any?
+    end
   end
 
   def like(user=nil)

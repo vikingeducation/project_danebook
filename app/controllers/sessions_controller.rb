@@ -29,10 +29,12 @@ class SessionsController < ApplicationController
     end
 
     def validate_credentials
-      if @user.nil? || !@user.authenticate(params[:session][:password])
-        flash[:danger] = 'Invalid username/password.'
-        redirect_to login_path
-      elsif !@user.activated?
+      if @user.activated?
+        unless @user && @user.authenticate(params[:session][:password])
+          flash[:danger] = 'Invalid username/password.'
+          redirect_to login_path
+        end
+      else
         flash[:danger] = "Your account has not yet been activated. Please check your email before continuing."
         redirect_to root_url
       end

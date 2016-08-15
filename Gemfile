@@ -50,6 +50,8 @@ group :development do
   gem 'binding_of_caller'
   gem 'rspec-rails'
   gem 'guard-rspec', require: false
+  gem 'factory_girl_rails', '~> 4.0'
+  
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

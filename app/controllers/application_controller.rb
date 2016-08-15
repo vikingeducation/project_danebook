@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-
   private
     # switched to cookies-based from session-based
     # regenerate the token as well

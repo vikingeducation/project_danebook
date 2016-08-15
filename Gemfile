@@ -44,7 +44,14 @@ group :development, :test do
   gem 'pry-byebug'
   gem "better_errors"
   gem 'binding_of_caller'
+  gem 'factory_girl_rails'
+  gem 'shoulda-matchers', '~> 3.1'
+end
 
+group :test do
+  gem 'rspec-rails'
+  gem 'guard'
+  gem 'guard-rspec'
 end
 
 group :development do
@@ -54,6 +61,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'guard-rspec', require: false
 end
 
 group :production do

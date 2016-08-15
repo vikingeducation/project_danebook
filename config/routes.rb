@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     resources :likes, defaults: {likeable: "Post"}
   end
 
-  resource :comments do
+  resources :comments do
     resources :comments, defaults: {commentable: "Comment"}
     resources :likes, defaults: {likeable: "Comment"}
   end

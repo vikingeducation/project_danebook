@@ -1,12 +1,14 @@
 <div class="row" id="upper">
-  <h3 id="username"><%= @user %></h3>
-  <span><%= friending_link(@user) %></span>
-  <div id="profile-pic"></div>
+    <h3 id="username">
+        <%= @user %>
+    </h3>
+    <div id="profile-pic"></div>
     <div class="col-sm-12" id="banner"></div>
-  <div id="cover-nav">
-    <div class="col-sm-2 pull-down"></div>
-    <%= link_to "Timeline", @user, class: "col-sm-2"  %>
-    <%= link_to "About", user_profile_path(@user), class: "col-sm-2" %>
-    <%= profile_edit_link(@user) %>
-  </div>
+    <div id="cover-nav">
+        <div class="col-sm-2 pull-down"></div>
+        <%= link_to "Timeline", @user, class: "col-sm-2"  %>
+        <%= link_to "About", user_profile_path(@user), class: "col-sm-2" %>
+        <%= profile_edit_link(@user) %>
+        <span class="btn-group"><%= friending_link(@user) %></span>
+    </div>
 </div>

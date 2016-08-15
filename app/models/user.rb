@@ -7,7 +7,7 @@ class User < ApplicationRecord
             :format => { :with => /@/, :message => "Please enter a valid email address" },
             :uniqueness => true
   validates :password,
-            :length => {:minimum => 6, :message => " must be at least 6 characters"},
+            :length => {:minimum => 6},
             :on => :create
   has_one :profile
   accepts_nested_attributes_for :profile, :update_only => true

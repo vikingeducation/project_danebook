@@ -1,19 +1,19 @@
 class Profile < ApplicationRecord
   belongs_to :user, optional: true
   validates :first_name, 
-            :length => {:maximum => 40, :message => "has a maximum of 40 characters"}
+            :length => {:maximum => 40}
   validates :last_name, 
-            :length => {:maximum => 40, :message => "has a maximum of 40 characters"}
+            :length => {:maximum => 40}
   validates :college, 
-            :length => {:maximum => 40, :message => "has a maximum of 40 characters"}
+            :length => {:maximum => 40}
   validates :hometown, 
-            :length => {:maximum => 40, :message => "has a maximum of 40 characters"}
+            :length => {:maximum => 40}
   validates :currently_lives, 
-            :length => {:maximum => 40, :message => "has a maximum of 40 characters"}
+            :length => {:maximum => 40}
   validates :words_to_live_by, 
-            :length => {:maximum => 300, :message => "has a maximum of 300 characters"}
+            :length => {:maximum => 300}
   validates :about_me, 
-            :length => {:maximum => 300, :message => "has a maximum of 300 characters"}
+            :length => {:maximum => 300}
   validates_date :birthday,
                  :message => "Please enter a real date",
                  :before => lambda {Date.current},

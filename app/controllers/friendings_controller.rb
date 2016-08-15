@@ -2,13 +2,12 @@ class FriendingsController < ApplicationController
 
   def create
     session[:return_to] = request.referer
-    if current_user.friended_users.where(id: params[:friend_id]).empty?
-      friend = User.find(params[:friend_id])
-      current_user.friended_users << friend
-      current_user.users_friended_by << friend
-      flash[:notice] = "Friended #{friend}"
-    else
+    friend = User.find(params[:friend_id])
+    if current_user.friends?(friend)
       flash[:alert] = "already friends!"
+    else
+      current_user.make_friend(friend)
+      flash[:notice] = "Friended #{friend}"
     end
     redirect_to session.delete(:return_to)
   end
@@ -16,8 +15,7 @@ class FriendingsController < ApplicationController
   def destroy
     session[:return_to] = request.referer
     friend = User.find(params[:friend_id])
-    if current_user.friended_users.delete(friend)
-      current_user.users_friended_by.delete(friend)
+    if current_user.unfriend(friend)
       flash[:notice] = "Unfriended"
     else
       flash[:alert] = "Couldn't Unfriend"

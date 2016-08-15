@@ -6,8 +6,11 @@ class Post < ActiveRecord::Base
   validates :body, length: { minimum: 1 }
 
   def recent_likes
-    likes.order('created_at DESC').limit(3).map {|like| like.user.to_s}.join(", ")
+    get_recent_likes.map {|like| like.user.to_s}.join(", ")
   end
 
+  def get_recent_likes
+    likes.order('id DESC').limit(3)
+  end
 
 end

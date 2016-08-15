@@ -1,8 +1,12 @@
 class User < ActiveRecord::Base
   before_create :generate_token
   has_secure_password
-  validates :email, presence: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
+  validates :email,
+              uniqueness: true,
+              presence: true,
+              format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
   validates :password_digest, presence: true
+  validates :password, length: { minimum: 6 }
 
   has_many :posts, dependent: :destroy
   has_many :likes, dependent: :destroy
@@ -35,6 +39,20 @@ class User < ActiveRecord::Base
     self.auth_token = nil
     generate_token
     save!
+  end
+
+  def make_friend(friend)
+    friended_users << friend
+    users_friended_by << friend
+  end
+
+  def friends?(friend)
+    friends.include?(friend)
+  end
+
+  def unfriend(friend)
+    friended_users.delete(friend)
+    users_friended_by.delete(friend)
   end
 
   def friends

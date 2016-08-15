@@ -5,18 +5,30 @@ describe Comment do
   let(:post) { build(:post) }
   let(:user) { build(:user) }
 
-  it "accepts a body with at least 4 characters"
+  it "accepts a body with at least 4 characters" do
+    should validate_length_of(:body).is_at_least(4)
+  end
 
-  it "accepts a body with no more than 3000 characters"
+  it "accepts a body with no more than 3000 characters" do
+    should validate_length_of(:body).is_at_most(3000)
+  end
 
   describe "associations" do
-    it "belongs to a user"
+    it "belongs to a user" do
+      expect(comment).to belong_to(:user)
+    end
 
-    it "belongs to a commentable parent"
+    it "belongs to a commentable parent" do
+      expect(comment).to belong_to(:commentable)
+    end
 
-    it "has many comments, as a commentable parent"
+    it "has many comments, as a commentable parent" do
+      expect(comment).to have_many(:comments)
+    end
 
-    it "has many likes, as a likeable parent"
+    it "has many likes, as a likeable parent" do
+      expect(comment).to have_many(:likes)
+    end
   end
 
   describe "#liked?" do

@@ -6,6 +6,7 @@ class User < ApplicationRecord
             :length => {:in => 8..24}, 
             :allow_nil => true
 
+  validates :email, :uniqueness => true
   validates_format_of :email, :with => /@/
 
   has_one :profile, inverse_of: :user

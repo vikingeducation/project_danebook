@@ -24,11 +24,17 @@ class User < ActiveRecord::Base
             :allow_nil => true
   validates :first_name, :last_name,
             :presence => true,
-            :length => { :minimum => 2 },
-            :allow_nil => true
+            :length => { :minimum => 1 }#,
+            # :allow_nil => true
   validates :birth_date,
-           :presence => true,
-           :allow_nil => true
+           :presence => true#,
+          #  :allow_nil => true
+
+  validates :email, presence: true,
+            length: { in: 4..40}
+
+  validates_format_of :email, :with => /@/
+
 
   def full_name
     "#{self.first_name.capitalize} #{self.last_name.capitalize}"
@@ -49,4 +55,5 @@ class User < ActiveRecord::Base
     generate_token
     save!
   end
+
 end

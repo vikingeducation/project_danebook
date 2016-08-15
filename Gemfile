@@ -50,8 +50,8 @@ end
 
 group :test do
   gem 'rspec-rails'
-  gem 'guard'
-  gem 'guard-rspec'
+  # gem 'guard'
+  # gem 'guard-rspec'
 end
 
 group :development do

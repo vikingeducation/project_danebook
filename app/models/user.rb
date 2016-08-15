@@ -118,7 +118,10 @@ class User < ActiveRecord::Base
   end
 
   def friend?(user)
-    self.friendable_id == user.id
+    if friendable_id && user.id
+      return (friendable_id == user.id)
+    end
+    false
   end
 
   private

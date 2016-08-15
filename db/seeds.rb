@@ -11,6 +11,7 @@ Timeline.destroy_all
 User.destroy_all
 Post.destroy_all
 Comment.destroy_all
+Like.destroy_all
 City.destroy_all
 State.destroy_all
 Country.destroy_all
@@ -54,4 +55,11 @@ puts "Seeding more users.."
               activated: true,
               activated_at: rand(365).days.ago)
   user.build_profile({ first_name: first_name, last_name: last_name }).save
+  3.times do
+    user.posts.create!(body: Faker::Lorem.paragraph(5))
+  end
+  3.times do
+    random = [:first, :second, :third].sample
+    (user.posts.send(random)).comments.create!(user: user, body: Faker::Lorem.paragraph(2))
+  end
 end

@@ -88,4 +88,11 @@ describe Post do
 
   end
 
+  describe "nested attributes" do
+
+    it "accepts nested attributes for comments, with an allow_destroy option" do
+      should accept_nested_attributes_for(:comments).allow_destroy(true)
+    end
+  end
+
 end

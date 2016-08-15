@@ -14,7 +14,6 @@ class FriendsController < ApplicationController
     @user = User.find(friend_params[:friended_id])
     current_user.friends << @user
     flash[:success] = "You've added a friend!"
-    raise
     redirect_to @user
   end
 

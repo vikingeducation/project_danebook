@@ -9,12 +9,17 @@
             </div>
           </div>
           <div class="row panel-content">
-           <% users_matrix = users_count_check users %>
-           <% users_matrix.each do |row| %>
-             <% row.each do |col| %>
-               <%= split_column(render_user_panel col)%>
-             <% end %>
-           <% end %> 
+            <% if users.empty? %>
+              <%= content_tag :h3, "We're sorry but your query returned no results." %>
+              <%= content_tag :h3, "You might wanna try adjusting your search query." %>
+            <% else %>
+              <% users_matrix = users_count_check users %>
+              <% users_matrix.each do |row| %>
+                <% row.each do |col| %>
+                 <%= split_column(render_user_panel col)%>
+                <% end %>
+              <% end %>
+            <% end %> 
           </div>
         </div>
       </div>

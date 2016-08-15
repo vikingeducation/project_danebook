@@ -5,10 +5,10 @@ class LikesController < ApplicationController
 
   def destroy
     like = Like.find(params[:id])
-    parent = like.likeable.class
+    parent = like.likeable
     like.destroy
-    flash[:success] = "#{parent} unliked."
-    redirect_to timeline_path(current_user.timeline.id)
+    flash[:success] = "#{parent.class} unliked."
+    redirect_to timeline_path(parent.user.timeline.id)
   end
 
 end

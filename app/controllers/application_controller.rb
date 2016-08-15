@@ -103,17 +103,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  # Only for editing a post.
-  def correct_post
-    case current_user
-    when Post.find(params[:id].to_i).user
-      return true
-    else
-      flash[:notice] = "You cannot edit someone else's post."
-      redirect_to root_url
-    end
-  end
-
   def correct_timeline
     if referer = request.referer
       # Grab the id from the timeline path.

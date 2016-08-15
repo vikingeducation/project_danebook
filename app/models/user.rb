@@ -2,7 +2,7 @@ class User < ApplicationRecord
   has_secure_password
 
   validates :username, length: { :minimum => 1}, uniqueness: true
-  validates_format_of :email, :with => /@/
+  validates_format_of :email, :with => /@.*[.]com\z/
   validates :password, 
             :length => { :in => 5..24 }, 
             :allow_nil => true
@@ -11,6 +11,7 @@ class User < ApplicationRecord
 
   has_one :profile, class_name: "Profile"
   has_many :posts, class_name: "Post"
+  has_many :comments, class_name: "Comment"
 
   #generates and regenerates tokens and sets to self
   def generate_token

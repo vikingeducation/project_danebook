@@ -48,6 +48,15 @@ describe Post do
       expect(post.liked?(user)).to be(true)
     end
 
+    it "returns false when it has not been liked by a specified user" do
+      user.save
+      post.save
+      post.likes.create(user: user)
+      other_user = create(:user)
+      # create user, create post, post.user = user
+      expect(post.liked?(other_user)).to be(false)
+    end
+
   end
 
   # like -> likeable -> post,comment

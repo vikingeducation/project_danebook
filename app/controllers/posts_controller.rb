@@ -20,26 +20,17 @@ class PostsController < ApplicationController
   end
 
   def update
-    @post = Post.find(params[:id])
-    @comment = Comment.new(user_id: current_user.id, body: params[:post][:comment][:body], commentable_id: @post.id, commentable_type: "Post")
-    if @comment.save!
-      flash[:success] = "Your comment has been posted"
-      redirect_to user_timeline_path(@post.post_receiver_id)
-    else
-      flash[:danger] = "Your comment couldn't be posted"
-      render ser_timeline_path(@post.post_receiver_id)
-    end
-
+  
   end
 
   def destroy
     @post = Post.find(params[:id])
-    if @post.destroy
+    if current_user.id == @post.post_author_id && @post.destroy
       flash[:success] = "Your post has been deleted"
       redirect_to :back
     else
-      flash.now[:danger] = "Your post could not be deleted"
-      render :back
+      flash[:danger] = "Your post could not be deleted"
+      redirect_to :back
     end
   end
 

@@ -6,6 +6,7 @@ class TimelinesController < ApplicationController
       redirect_to user_timeline_path(current_user)
     end
     @post = current_user.posts_written.new
+    @comment = current_user.comments_written.new
     @timeline_user = User.find(params[:user_id])
     session[:receiver_id] = @timeline_user.id
   end

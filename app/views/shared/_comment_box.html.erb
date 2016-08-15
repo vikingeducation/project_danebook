@@ -11,15 +11,20 @@
       <div class="col-xs-1">
         <h6>
           <% if current_user.likes_post?(comment.id, "Comment").empty? %>
-            <h6><%= link_to "Like", comment_likes_path(comment.id), method: 'post' %></h6>
+            <%= link_to "Like", comment_likes_path(comment.id), method: 'post' %>
           <% else %>
-            <h6><%= link_to "Unlike", comment_like_path(comment.id, current_user.likes_post?(comment.id, "Comment").first.id), method: 'delete' %></h6>
+            <%= link_to "Unlike", comment_like_path(comment.id, current_user.likes_post?(comment.id, "Comment").first.id), method: 'delete' %>
           <% end %>
         </h6>
       </div>
 
-      <div class="col-xs-6">
-        <h6> 3 other people like this</h6>
+      <div class="col-xs-4">
+        <h6> <%= render partial: "shared/like_count", locals: {content: comment} %></h6>
       </div>
+      <div class="col-xs-2 col-xs-offset-4">
+      <% if comment.user_id == current_user.id %>
+      <h6><%= link_to "Delete Comment", comment_path(comment), method: :delete %></h6>
+      <% end %>
+    </div>
     </div>
   </div>

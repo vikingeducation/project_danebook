@@ -19,7 +19,10 @@
         <h6><%= link_to "Unlike", post_like_path(post.id, current_user.likes_post?(post.id, "Post").first.id), method: 'delete' %></h6>
       <% end %>
     </div>
-    <div class="col-xs-2 col-xs-offset-8">
+    <div class="col-xs-4">
+      <h6> <%= render partial: "shared/like_count", locals: {content: post} %></h6>
+    </div>
+    <div class="col-xs-2 col-xs-offset-4">
       <% if post.post_author_id == current_user.id %>
       <h6><%= link_to "Delete Post", post_path(post), method: :delete %></h6>
       <% end %>
@@ -30,13 +33,11 @@
       <%= render partial: "shared/comment_box", locals: {comment: comment} %>
     <% end %>
     <div class="col-xs-12" id="write-comment">
-      <%= form_for [post] do |post_field| %>
-        <%= post_field.simple_fields_for Comment.new do |comment_field| %>
-          <%= comment_field.input :body, class:"form-control", label: false, input_html: {rows: "1"}, placeholder: "Write a comment..." %>
-        <% end %>
-        <div class="col-xs-2 col-xs-offset-8">
-        <%= post_field.submit "Post comment", class:"btn btn-primary btn-sm" %>
-        </div>
+          <%= simple_form_for [post, @comment] do |comment_field| %>
+            <%= comment_field.input :body, class:"form-control", label: false, input_html: {rows: "1"}, placeholder: "Write a comment..." %>
+          <div class="col-xs-2 col-xs-offset-8">
+          <%= comment_field.submit "Post comment", class:"btn btn-primary btn-sm" %>
+          </div>
       <% end %>
     </div>
   </div>

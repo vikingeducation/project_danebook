@@ -124,7 +124,7 @@
                 </div>
                 <% end %>
                 <!-- Previous posts -->
-                <% @timeline_user.posts_received.each do |post| %>
+                <% @timeline_user.posts_received.reverse.each do |post| %>
                   <%= render partial: "shared/post_box", locals: {post: post} %>
                 <% end %>
               </div>

@@ -1,0 +1,6 @@
+<% unless content.real_likes.count == 0 %>
+  <% content.display_likes[0].each do |user_id| %>
+    <%= link_to user_header_name(user_id), user_path(user_id) %>, 
+  <% end %>
+  <%= content.display_likes[1] %>
+<% end %>

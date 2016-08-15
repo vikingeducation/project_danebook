@@ -1,5 +1,8 @@
 class LikesController < ApplicationController
 
+  
+
+
   def create
     @like = Like.new(user_id: current_user.id, likeable_type: Like.find_likable_type(request.original_fullpath), likeable_id: params[:post_id] || params[:comment_id])
     if @like.save!
@@ -13,7 +16,7 @@ class LikesController < ApplicationController
 
   def destroy
     @like = Like.find(params[:id])
-    if @like.destroy
+    if current_user.id == @like.user_id && @like.destroy
       flash[:success] = "You've unliked the post!"
       redirect_to :back
     else

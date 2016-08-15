@@ -64,4 +64,28 @@ describe Post do
 
   end
 
+  describe "#like" do
+
+    context "when passed a user as an argument" do
+      it "returns the last like that the user made on the post" do
+        user.save
+        post.save
+        post.likes.create(user: user)
+        user_like = post.likes.last
+        2.times do
+          other_user = create(:user)
+          post.likes.create(user: other_user)
+        end
+        expect(post.like(user)).to eq(user_like)
+      end
+    end
+
+    it "returns the last like made on the post" do
+      liked_post = build(:post,:with_likes)
+      last_like = liked_post.likes.last
+      expect(liked_post.like).to eq(last_like)
+    end
+
+  end
+
 end

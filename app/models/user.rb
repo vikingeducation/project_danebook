@@ -5,7 +5,7 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
   validates_format_of :email, :with => /@.*[.]com\z/
 
-  validates :password, length: { minimum: 5, maximum: 23}, :allow_nil => false
+  # validates :password, length: { in: (5..26) }, :allow_nil => false
   
 
   before_create :generate_token

@@ -2,10 +2,11 @@ class User < ApplicationRecord
   has_secure_password
 
   validates :username, length: { :minimum => 1}, uniqueness: true
+  validates :email, uniqueness: true
   validates_format_of :email, :with => /@.*[.]com\z/
-  validates :password, 
-            :length => { :in => 5..24 }, 
-            :allow_nil => true
+
+  validates :password, length: { minimum: 5, maximum: 23}, :allow_nil => false
+  
 
   before_create :generate_token
 

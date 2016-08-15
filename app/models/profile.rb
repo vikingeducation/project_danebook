@@ -3,6 +3,15 @@ class Profile < ApplicationRecord
 
   validates :first_name, length: { :minimum => 1}
   validates :last_name, length: { :minimum => 1}
-  validates_confirmation_of :day, in: 1..30, message: 'This site is only for under 30 and over 60'
-  validates_confirmation_of :year, in: 1920..2016, message: 'This site is only for under 30 and over 60'
+
+  validates :month, presence: true
+  validates_format_of :month, with: /[A-Z][a-z]*/
+
+  validates :day, numericality: true
+  validates_inclusion_of :day, in: (1..30)
+
+  validates :year, numericality: true
+  validates_inclusion_of :year, in: (1900..2016)
+
+  validates_inclusion_of :gender, in: %w(male female)
 end

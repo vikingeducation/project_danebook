@@ -35,6 +35,24 @@ FactoryGirl.define do
 
   end
 
+  factory :comment do
+    user
+    
+    body "#{Faker::Lorem.paragraph(3)}"
+
+    trait :with_likes do
+
+      transient do
+        likes_count 5
+      end
+
+      after(:build) do |comment,evaluator|
+        create_list(:like, evaluator.likes_count, likeable: comment)
+      end
+    end
+
+  end
+
   factory :like do
     user
   end

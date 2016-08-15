@@ -8,13 +8,19 @@ class Comment < ActiveRecord::Base
 
   accepts_nested_attributes_for :comments, :likes
 
-  def liked?(user)
-    target = user.id
-    likes.where(user_id: target).any?
+  def liked?(user=nil)
+    if user
+      target = user.id
+      likes.where(user_id: target).any?
+    else
+      likes.any?
+    end
   end
 
-  def like(user)
-    likes.where(user_id: user.id).last
+  def like(user=nil)
+    output = user ? likes.where(user_id: user.id) : likes
+    output.last
   end
+
   
 end

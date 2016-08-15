@@ -43,6 +43,8 @@ class UsersController < ApplicationController
   def show
     @profile = @user.profile
     @post = current_user.posts.build if current_user
+    @comment = @post.comments.build if current_user
+    @like = @post.likes.build if current_user
     @posts = @user.all_posts
   end
 

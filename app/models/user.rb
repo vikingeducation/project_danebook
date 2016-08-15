@@ -2,6 +2,7 @@ class User < ApplicationRecord
   has_many :posts
   has_one :profile, dependent: :nullify
   has_many :photos
+  has_many :likes
 
   before_create :generate_token
   after_create :create_profile

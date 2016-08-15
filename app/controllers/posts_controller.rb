@@ -25,7 +25,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:content, :from)
+    params.require(:post).permit(:content, :from, comments_attributes: [:content], :commentable, :post_id)
   end
 
 end

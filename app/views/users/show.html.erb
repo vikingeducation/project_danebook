@@ -31,10 +31,37 @@
             <h6 class="media-heading"><%=link_to from_user(post), user_path(post.user)%></h6>
             <h6 class="media-heading">Posted:<%= post.created_at.strftime(' %b %d at %r')%></h6>
               <div class="panel-body">
-                <p><%= post.content %><%= post.id%> </p>
+                <p><%= post.content %> </p>
+                <p><%= post.likes.count %> likes</p>
+                <% if !post.comments.empty? %>
+                  <% post.all_comments.each do |comment| %>
+                    <ul class="media-list">
+                      <li class="media">
+                        <div class="media-left"> 
+                          <%= image_tag("default_image.jpg", class: "comment-picture") %>
+                        </div>
+                        <div class="media-body">
+                          <h4 class="media-heading"><%= link_to comment.commentable.user.first_name, user_profiles_path(comment.commentable.user) %></h4>
+                          <p><%= comment.content %></p>
+
+                          <%= render "comments/new_comment", comment: comment %>
+                        </div>
+                      </li>
+                    </ul>
+                  <% end %>
+                <% else %>
+                <% end %>
               </div>
-              <%= link_to "Like", root_url, class: "btn btn-primary"%>
-              <%= link_to "Comment on Post", root_url, class: "btn btn-success"%>
+                <%= form_for [post, @post.comments.build] do |comment| %>
+                  <%= image_tag("default_image.jpg", class: "comment-picture") %>
+                  <%= comment.text_field :content, placeholder: "Write your coffmment here", class: "comment-text form-control", 'aria-label'=> "basic-addon1" %>
+                  <%= comment.submit "Comment on Post", class: "btn btn-success" %>
+                <% end %>
+                <%= form_for [post, @post.likes.build] do |like| %>
+                  <%= like.hidden_field :user_id, value: current_user.id %>
+                  <%= like.submit "Like", class: "btn btn-primary"%>               
+                <% end %>
+
               <%= link_to "Delete Post", user_post_path(current_user, post), method: :delete, class: "btn btn-danger" if current_user == @user%>
             </div>
           </div>

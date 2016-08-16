@@ -1,0 +1,39 @@
+<section class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <div class="cover-top">
+      <div class="row" id="banner-row">
+        <div class="col-md-12">
+          <div class="bg-container"></div>
+          <!-- <img class="img-rounded img-responsive" id="hogwarts" src="img/hogwarts_small.jpg" alt="hogwarts" /> -->
+        </div>
+        <div id="avatar">
+          <!-- <img class="img-responsive" src="img/harry_potter_small.jpg" alt="" /> -->
+          <%= image_tag('harry_potter_small', class: "img-responsive") %>
+        </div>
+      </div>
+      <!-- banner part finish -->
+      <!-- nav part begin -->
+      <div class="row" id="add-margin-top">
+        <div id="edit-profile" class="col-sm-2 col-md-push-10">
+          <a href="about_edit.html">Edit Profile</a>
+        </div>
+        <div class="col-sm-8 col-sm-offset-2 col-md-pull-2 center-child-block">
+          <ul class="nav nav-pills" id="main-navigation">
+            <% if current_page?(timeline_path) %>
+              <li role="navigation" class="active"><a href="#">Timeline</a></li>
+              <li role="navigation"><a href="about.html">About</a></li>
+              <li role="navigation"><a href="photos.html">Photos<span class="badge">144</span></a></li>
+              <li role="navigation"><a href="friends.html">Friends<span class="badge">251</span></a></li>
+            <% elsif current_page?(friends_path) %>
+              <li role="navigation"><a href="timeline.html">Timeline</a></li>
+              <li role="navigation"><a href="about.html">About</a></li>
+              <li role="navigation"><a href="photos.html">Photos<span class="badge">144</span></a></li>
+              <li role="navigation" class="active"><a href="#">Friends<span class="badge">251</span></a></li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

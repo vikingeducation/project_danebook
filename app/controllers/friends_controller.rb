@@ -12,9 +12,13 @@ class FriendsController < ApplicationController
 
   def create
     @user = User.find(friend_params[:friended_id])
-    current_user.friends << @user
-    flash[:success] = "You've added a friend!"
-    redirect_to @user
+    if current_user.friends << @user
+      flash[:success] = "You've added a friend!"
+      redirect_to @user
+    else
+      flash[:danger] = "Couldn't add this user as a friend."
+      redirect_to @user
+    end
   end
 
   private
@@ -30,9 +34,9 @@ class FriendsController < ApplicationController
     end
 
     def friend_self
-      if friend_params[:friended_id] == current_user.id
+      if friend_params[:friended_id].to_i == current_user.id
         flash[:danger] = "Can't add yourself as a friend."
-        redirect_to request.referer
+        redirect_to current_user.timeline
       end
     end
 end

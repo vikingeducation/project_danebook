@@ -35,7 +35,25 @@ feature 'Users' do
     
   end
 
-  context 'when the user inputs invalid login credentials'
+  context 'when the user inputs invalid login credentials' do
+
+    before do
+      visit login_path
+      form = find("div#login-form")
+      form.fill_in 'session_email', with: "random@email.com"
+      form.fill_in 'session_password', with: "z"
+      form.click_button 'Submit'
+    end
+
+    it 'greets them with a failure message' do
+      expect(page).to have_content('Invalid username/password.')
+    end
+
+    it 're-enders the login page' do
+      expect(page).to have_content('Log in')
+    end
+
+  end
 
   context 'when an unauthorized user attempts to visit a page'
 

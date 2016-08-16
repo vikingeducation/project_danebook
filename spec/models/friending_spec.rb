@@ -1,8 +1,9 @@
 require 'rails_helper'
 
 describe Friending, type: :model do
-
-  # it { should validate_uniqueness_of(:friend_id) }
+  subject{ create(:friending) }
+  
+  it { is_expected.to validate_uniqueness_of(:friend_id).scoped_to(:friender_id)}
   ##### Not working here?????
 
   it { is_expected.to belong_to(:friend_initiator) }

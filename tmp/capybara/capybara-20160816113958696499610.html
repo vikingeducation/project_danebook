@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>DanebookApp</title>
+  <link rel="stylesheet" media="all" href="/assets/application-4bf1fb6a59913669dae2986487ca5171d55b4af7a6bc43cd2888072b80cb245d.css" data-turbolinks-track="true" />
+  <script src="/assets/application-c0d39c9d424a0e388303ccf835c952fd1b8aa198c5208fc819ed15bbfef1c79e.js" data-turbolinks-track="true"></script>
+  
+
+</head>
+
+<body>
+
+  <nav class="nav navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sign-in-form">
+            SIGN-IN
+          </button>
+          <a class="navbar-brand" href="http://www.example.com/">Danebook</a>
+        </div>
+      </div>
+      <form action="/login" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" />
+        <div id="sign-in-form" class="navbar-collapse collapse">
+          <div class="nav navbar-nav navbar-right">
+            <form role="form" class="form-inline">
+              <div class="nav-login form-group col-sm-5">
+                <input class="form-control" placeholder="Email" type="email" name="session[email]" id="session_email" />
+                <label for="session_remember_me">Remember me</label>
+                <input name="session[remember_me]" type="hidden" value="0" /><input type="checkbox" value="1" name="session[remember_me]" id="session_remember_me" />
+              </div>
+              <div class="nav-login form-group col-sm-5">
+                <input class="form-control" placeholder="Password" type="password" name="session[password]" id="session_password" />
+                <a class="navbar-forgot-pw" href="/password_resets/new">Forgot password?</a>
+              </div>
+              <div id="nav-submit" class="nav-login form-group col-sm-2">
+                <input type="submit" name="commit" value="Submit" class="btn btn-info" />
+              </div>
+            </form>
+          </div>
+        </div>
+</form>      </div>
+  </div>
+</nav>
+
+  
+
+  <main class="container">
+	<div class="row">
+		<aside class="col-md-7">
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 col-middle">
+  				<h3>Connect with all your friends!</h3>
+  				<ul>
+  					<li>See photos and updates in your newsfeed.</li>
+  					<li>Post your status for the world to see from your profile.</li>
+  					<li>Get in touch with your friends by "friending" them.</li>
+  					<li>Like things because you're a positive person!</li>
+  				</ul>
+  			</div>
+  		</div>
+		</aside>
+
+		<div class="col-md-4">
+      <h1>Sign Up</h1>
+<form class="new_user" id="new_user" action="/users" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" />
+  <div class="row">
+    <div class="col-md-6"><div class="form-group"><input class="form-control" placeholder="First name" type="text" name="user[first_name]" id="user_first_name" /></div></div>
+    <div class="col-md-6"><div class="form-group"><input class="form-control" placeholder="Last name" type="text" name="user[last_name]" id="user_last_name" /></div></div>
+  </div>
+    <div class="form-group"><input class="form-control" placeholder="Email" type="email" name="user[email]" id="user_email" /></div>
+    <div class="form-group"><input class="form-control" placeholder="Password" type="password" name="user[password]" id="user_password" /></div>
+    <div class="form-group"><input class="form-control" placeholder="Password confirmation" type="password" name="user[password_confirmation]" id="user_password_confirmation" /></div>
+  <div class="form-group">
+    <input type="submit" name="commit" value="Sign up!" id="sign-up" class="btn btn-success" />
+  </div>
+</form>
+		</div>
+	</div>  	
+</main>
+
+
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+
+  <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+  <script src="bootstrap/js/bootstrap.min.js"></script>
+
+  
+
+</body>
+
+</html>

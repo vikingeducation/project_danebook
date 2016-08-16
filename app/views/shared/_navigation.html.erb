@@ -34,6 +34,11 @@
               <li role="navigation" class="active"><a href="#">About</a></li>
               <li role="navigation"><a href="photos.html">Photos<span class="badge">144</span></a></li>
               <li role="navigation"><a href="friends.html">Friends<span class="badge">251</span></a></li>
+            <% elsif current_page?(photos_path) %>
+              <li role="navigation"><a href="timeline.html">Timeline</a></li>
+              <li role="navigation"><a href="about.html">About</a></li>
+              <li role="navigation" class="active"><a href="#">Photos<span class="badge">144</span></a></li>
+              <li role="navigation"><a href="friends.html">Friends<span class="badge">251</span></a></li>
             <% end %>
           </ul>
         </div>

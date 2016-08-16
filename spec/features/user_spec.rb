@@ -11,17 +11,18 @@ feature 'Users' do
 
     # before do
     #   within("div#sign-in-form") do
-        # fill_in 'session_email', with: user.email
-        # fill_in 'session_password', with: user.password
-        # click_button 'Submit'
+    #     fill_in 'session_email', with: user.email
+    #     fill_in 'session_password', with: user.password
+    #     click_button 'Submit'
     #   end
     # end
 
     before do
       visit login_path
-      find("div#login-form").fill_in 'session_email', with: user.email
-      find("div#login-form").fill_in 'session_password', with: user.password
-      find("div#login-form").click_button 'Submit'
+      form = find("div#login-form")
+      form.fill_in 'session_email', with: user.email
+      form.fill_in 'session_password', with: user.password
+      form.click_button 'Submit'
     end
 
     it 'greets them with a success message'

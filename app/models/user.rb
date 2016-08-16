@@ -11,6 +11,7 @@ class User < ApplicationRecord
   has_many :followers, through: :recieved_friendings, source: :initiator
 
   before_create :generate_token
+  
   has_secure_password
 
   validates :password,

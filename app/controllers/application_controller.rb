@@ -12,6 +12,7 @@ class ApplicationController < ActionController::Base
     helper_method :set_user
     helper_method :set_user_id
     helper_method :required_user_redirect
+    helper_method :users_comment?
 
     def sign_in(user)
       user.regenerate_auth_token
@@ -59,6 +60,10 @@ class ApplicationController < ActionController::Base
 
     def created_by_user?
       params[:user_id] == current_user.id.to_s
+    end
+
+    def users_comment?(comment)
+      comment.owner == current_user
     end
 
     def set_user

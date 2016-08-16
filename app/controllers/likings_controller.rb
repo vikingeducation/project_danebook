@@ -3,7 +3,7 @@ class LikingsController < ApplicationController
   def create
     @activity = Activity.find(params[:activity_id])
     @activity.likes.create(user_id: current_user.id)
-    redirect_to user_activities_path(@activity.author)
+    redirect_to request.referer
   end
 
   def destroy
@@ -12,11 +12,10 @@ class LikingsController < ApplicationController
     @user = @liking.user
     if @user.id == current_user.id
       @liking.destroy
-      redirect_to user_activities_path(@activity.author)
     else
       flash[:alert] = "You're not authorized to do this"
-      redirect_to user_activities_path(@activity.author)
     end
+    redirect_to request.referer
   end
 
 end

@@ -13,7 +13,7 @@ describe Post do
       should validate_length_of(:body).is_at_least(10)
     end
 
-    it "accepts a body with at most 10 characters" do
+    it "accepts a body with at most 20000 characters" do
       should validate_length_of(:body).is_at_most(20000)
     end
 

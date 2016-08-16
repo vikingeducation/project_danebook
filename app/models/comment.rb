@@ -8,6 +8,9 @@ class Comment < ActiveRecord::Base
 
   accepts_nested_attributes_for :comments, :likes
 
+  validates :body, length: { in: 4..3000 }
+  
+
   def liked?(user=nil)
     if user
       target = user.id

@@ -5,10 +5,10 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     @user = @comment.user
     if @comment.update(comment_params)
-      flash[:success] = "Comment updated."
+      flash[:success] = "You've liked this comment!"
       redirect_to @user.timeline
     else
-      flash[:danger] = "Comment could not be updated."
+      flash[:danger] = "Comment could not be liked.."
       redirect_to @user.timeline
     end
   end

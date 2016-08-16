@@ -21,7 +21,13 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @user = @post.user
     if @post.update(post_params)
-      flash[:success] = "Post updated."
+      if post_params[:comments_attributes]
+        flash[:success] = "Added a comment."
+      elsif post_params[:likes_attributes]
+        flash[:success] = "You've liked this post!"
+      else
+        flash[:success] = "Post updated."
+      end
       redirect_to @user.timeline
     else
       flash[:danger] = "Couldn't update this post."

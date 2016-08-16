@@ -4,8 +4,13 @@ class CommentsController < ApplicationController
   def update
     @comment = Comment.find(params[:id])
     @user = @comment.user
-    @comment.update(comment_params)
-    redirect_to @user.timeline
+    if @comment.update(comment_params)
+      flash[:success] = "Comment updated."
+      redirect_to @user.timeline
+    else
+      flash[:danger] = "Comment could not be updated."
+      redirect_to @user.timeline
+    end
   end
 
   def destroy

@@ -20,8 +20,13 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     @user = @post.user
-    @post.update(post_params)
-    redirect_to @user.timeline
+    if @post.update(post_params)
+      flash[:success] = "Post updated."
+      redirect_to @user.timeline
+    else
+      flash[:danger] = "Couldn't update this post."
+      redirect_to @user.timeline
+    end
   end
 
   private

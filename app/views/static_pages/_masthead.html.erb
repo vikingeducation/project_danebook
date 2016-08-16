@@ -10,7 +10,7 @@
       
       <div class="masthead-nav">
         <ul class="nav nav-tabs">
-          <li><%= link_to 'Timeline', timeline_path(id: user.timeline_id) %></li>
+          <li><%= link_to 'Timeline', timeline_path(id: @user.timeline_id) %></li>
           <li><%= link_to 'About', user %></li>
           <li><a href="#">Photos</a></li>
           <li><%= link_to 'Friends', friends_path(id: user.id) %></li>

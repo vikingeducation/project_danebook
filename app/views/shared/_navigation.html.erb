@@ -15,31 +15,22 @@
       <!-- nav part begin -->
       <div class="row" id="add-margin-top">
         <div id="edit-profile" class="col-sm-2 col-md-push-10">
-          <a href="about_edit.html">Edit Profile</a>
+          <%= link_to 'Edit Profile', about_edit_path %>
         </div>
         <div class="col-sm-8 col-sm-offset-2 col-md-pull-2 center-child-block">
           <ul class="nav nav-pills" id="main-navigation">
-            <% if current_page?(timeline_path) %>
-              <li role="navigation" class="active"><a href="#">Timeline</a></li>
-              <li role="navigation"><a href="about.html">About</a></li>
-              <li role="navigation"><a href="photos.html">Photos<span class="badge">144</span></a></li>
-              <li role="navigation"><a href="friends.html">Friends<span class="badge">251</span></a></li>
-            <% elsif current_page?(friends_path) %>
-              <li role="navigation"><a href="timeline.html">Timeline</a></li>
-              <li role="navigation"><a href="about.html">About</a></li>
-              <li role="navigation"><a href="photos.html">Photos<span class="badge">144</span></a></li>
-              <li role="navigation" class="active"><a href="#">Friends<span class="badge">251</span></a></li>
-            <% elsif current_page?(about_path) %>
-              <li role="navigation"><a href="timeline.html">Timeline</a></li>
-              <li role="navigation" class="active"><a href="#">About</a></li>
-              <li role="navigation"><a href="photos.html">Photos<span class="badge">144</span></a></li>
-              <li role="navigation"><a href="friends.html">Friends<span class="badge">251</span></a></li>
-            <% elsif current_page?(photos_path) %>
-              <li role="navigation"><a href="timeline.html">Timeline</a></li>
-              <li role="navigation"><a href="about.html">About</a></li>
-              <li role="navigation" class="active"><a href="#">Photos<span class="badge">144</span></a></li>
-              <li role="navigation"><a href="friends.html">Friends<span class="badge">251</span></a></li>
-            <% end %>
+              <li role="navigation" class="<%= active_class(timeline_path) %>"><%= link_to 'Timeline', timeline_path %></li>
+              <li role="navigation" class="<%= active_class(about_path) %>"><%= link_to 'About', about_path %></li>
+              <li role="navigation" class="<%= active_class(photos_path) %>">
+                <%= link_to photos_path do %>
+                  Photos<span class="badge">144</span>
+                <% end %>
+              </li>
+              <li role="navigation" class="<%= active_class(friends_path) %>">
+                <%= link_to friends_path do %>
+                  Friends<span class="badge">251</span>
+                <% end %>
+              </li>
           </ul>
         </div>
       </div>

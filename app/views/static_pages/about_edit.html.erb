@@ -1,0 +1,97 @@
+<%= render 'shared/nav' %>
+
+<main class="container">
+
+  <%= render 'shared/navigation' %>
+  <!-- sample part across all pages finshe here -->
+
+  <!-- about information places -->
+  <section class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h3 class="panel-title">Edit Profile</h3>
+          <!-- <a class="btn btn-default" href="#">Edit your profile</a> -->
+        </div>
+        <div class="panel-body row">
+          <div class="col-md-5">
+                <h3>Basic Information</h3>
+                <div class="row">
+                  <div class="col-md-4">
+                    <p>Birthday:</p>
+                  </div>
+                  <div class="col-md-8">
+                    <input type="text" class="form-control input-sm" value="July 31st, 1980">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-4">
+                    <p>College:</p>
+                  </div>
+                  <div class="col-md-8">
+                    <input type="text" class="form-control input-sm" value="Hogwarts College">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-4">
+                    <p>Hometown:</p>
+                  </div>
+                  <div class="col-md-8">
+                    <input type="text" class="form-control input-sm" value="Godrick's Hollow, England">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-4">
+                    <p>Currently Lives:</p>
+                  </div>
+                  <div class="col-md-8">
+                    <input type="text" class="form-control input-sm" value="Godrick's Hollow, England">
+                  </div>
+                </div>
+                <!-- basic information -->
+                <h3>Contact Information</h3>
+                <div class="row">
+                  <div class="col-md-4">
+                    <p>Email:</p>
+                  </div>
+                  <div class="col-md-8">
+                    <input type="text" class="form-control input-sm" value="harry_potter@hogwarts.edu">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-4">
+                    <p>Telephone:</p>
+                  </div>
+                  <div class="col-md-8">
+                    <input type="text" class="form-control input-sm" value="555-567-456">
+                  </div>
+                </div>
+
+          </div>
+          <div class="col-md-7">
+            <h2>Words to Live By</h2>
+            <p>
+              <textarea id="textarea1" class="form-control input-sm">
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+              </textarea>
+            </p>
+            <h2>About me</h2>
+            <p>
+              <textarea id="textarea2" class="form-control input-sm">
+Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+              </textarea>
+            </p>
+          </div>
+        </div> <!-- panel content finish -->
+        <div class="row">
+          <div class="col-xs-6 col-xs-offset-3">
+            <button id="edit-save-btn" class="btn btn-success btn-lg col-xs-12" type="submit">Save Changes</button>
+          </div>
+        </div>
+      </div> <!-- panel finish -->
+    </div>
+  </section>
+
+
+
+</main>

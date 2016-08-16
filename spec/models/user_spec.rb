@@ -84,4 +84,28 @@ describe User, type: :model do
     end
   end
 
+  context "should have_secure_password" do
+      subject{user}
+      it { is_expected.to have_secure_password }
+  end
+
+  context "associations with children and parents are valid" do
+    subject{user}
+
+    it { is_expected.to have_many(:posts) }
+
+    it { is_expected.to have_many(:comments) }
+
+    it { is_expected.to have_many(:likes) }
+
+    it { is_expected.to have_many(:liked_posts).through(:likes) }
+
+    it { is_expected.to have_many(:initiated_friendings) }
+
+    it { is_expected.to have_many(:friended_users) }
+
+    it { is_expected.to have_many(:received_friendings) }
+
+    it { is_expected.to have_many(:users_friended_by) }
+  end
 end

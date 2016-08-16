@@ -27,5 +27,5 @@ test:
 
 production:
   <<: *default
-  # database: danebook_production
+  database: danebook_production
   # database: db/production.sqlite3

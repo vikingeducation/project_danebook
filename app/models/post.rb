@@ -9,7 +9,7 @@ class Post < ActiveRecord::Base
   accepts_nested_attributes_for :comments, :likes, allow_destroy: true
 
   validates :body, presence: true, length: { in: 10..20000 }
-  validates :title, length: { in: 4..60 }
+  # validates :title, length: { in: 4..60 }
 
   def liked?(user=nil)
     if user

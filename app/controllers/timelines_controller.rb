@@ -6,7 +6,7 @@ class TimelinesController < ApplicationController
     @timeline = Timeline.find(params[:id])
     @user = @timeline.user
     @profile = @user.profile
-    @posts = @user.posts
+    @posts = @user.posts.desc
     @post = @posts.build
     @like = Like.new(user_id: current_user.id)
     @comment = Comment.new(user_id: current_user.id)

@@ -6,8 +6,15 @@ class PostsController < ApplicationController
   def create
     @user = current_user
     @posts = @user.posts
-    @post = @posts.create!(post_params)
-    redirect_to @user.timeline
+    begin
+      if @post = @posts.create!(post_params)
+        flash[:success] = "You've created a new post!"
+        redirect_to @user.timeline
+      end
+    rescue
+      flash[:danger] = "Couldn't create a new post."
+      redirect_to @user.timeline
+    end
   end
 
   def update

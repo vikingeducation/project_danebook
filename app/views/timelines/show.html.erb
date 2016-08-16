@@ -179,8 +179,14 @@
                 <div class="row">
                   <div class="col-md-12">
                     <p class="liked">
-                      <% if post.liked?(current_user) %>
-                        <%= "#{post.likes_count} people have liked this post." %>
+                      <% if post.liked? %>
+                        <% n = post.likes_count %>
+                        <% if post.liked?(current_user) %>
+                          <%= "You and #{n-1} others have liked this post." if n > 1 %>
+                          <%= "You have liked this post." if n == 1 %>
+                        <% else %>
+                          <%= "#{n} #{n > 1 ? 'people' : 'person'} #{n > 1 ? 'have liked' : 'has liked'} this post." %>
+                        <% end %>
                       <% end%>
                     </p>
                   </div>
@@ -209,8 +215,14 @@
                         <% else %>
                           <%= link_to "Unlike", like_path(comment.like(current_user)), method: :delete %>
                         <% end %>
-                        <% if comment.liked?(current_user) %>
-                          <%= "#{comment.likes_count} people have liked this post." %>
+                        <% if comment.liked? %>
+                          <% n = comment.likes_count %>
+                          <% if comment.liked?(current_user) %>
+                            <%= "You and #{n-1} others have liked this comment." if n > 1 %>
+                            <%= "You have liked this comment." if n == 1 %>
+                          <% else %>
+                            <%= "#{n} #{n > 1 ? 'people' : 'person'} #{n > 1 ? 'have liked' : 'has liked'} this comment." %>
+                          <% end %>
                         <% end%>
                         </p>
                       </div>

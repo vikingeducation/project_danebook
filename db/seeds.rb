@@ -42,6 +42,16 @@ foobar = User.create!(email: 'foobar@barbaz.com',
 foobar.build_profile({ first_name: 'Foobar',
                        last_name: 'Barbaz' }).save
 
+puts "Seeding another user.."
+foobar = User.create!(email: 'cjvirtucio@mail.com',
+                     #Use pw + pwc for seeds. Use pw_digest for fixtures.
+                     password: 'example',
+                     password_confirmation: 'example',
+                     activated: true,
+                     activated_at: rand(365).days.ago)
+foobar.build_profile({ first_name: 'CJ',
+                       last_name: 'Example' }).save
+
 #Seed more users.
 puts "Seeding more users.."
 99.times do |n|
@@ -56,7 +66,7 @@ puts "Seeding more users.."
               activated_at: rand(365).days.ago)
   user.build_profile({ first_name: first_name, last_name: last_name }).save
   3.times do
-    user.posts.create!(body: Faker::Lorem.paragraph(5))
+    user.posts.create!(title: Faker::Lorem.words(2), body: Faker::Lorem.paragraph(5))
   end
   3.times do
     random = [:first, :second, :third].sample

@@ -93,6 +93,17 @@ FactoryGirl.define do
   end
 
   factory :address do
+    after(:build) do |address|
+      address.country = build(:country)
+      address.state = build(:state)
+      address.city = build(:city)
+    end
+
+    after(:create) do |address|
+      address.country = create(:country)
+      address.state = create(:state)
+      address.city = create(:city)
+    end
   end
 
   factory :country do

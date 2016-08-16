@@ -9,14 +9,6 @@ feature 'Users' do
 
   context 'when the user inputs valid login credentials' do
 
-    # before do
-    #   within("div#sign-in-form") do
-    #     fill_in 'session_email', with: user.email
-    #     fill_in 'session_password', with: user.password
-    #     click_button 'Submit'
-    #   end
-    # end
-
     before do
       visit login_path
       form = find("div#login-form")
@@ -65,10 +57,20 @@ feature 'Users' do
       form.click_button 'Submit'
     end
 
-    it 'greets them with a failure message' do
-      other_user = create(:user)
-      visit edit_user_path(other_user)
-      expect(page).to have_content('You are not authorized to access that page.')
+    describe "trying to edit another user's profile" do
+      it 'greets them with a failure message' do
+        other_user = create(:user)
+        visit edit_user_path(other_user)
+        expect(page).to have_content('You are not authorized to access that page.')
+      end
+    end
+
+    describe "trying to delete another user's profile" do
+      it 'greets them with a failure message' do
+        other_user = create(:user)
+        page.driver.submit :delete, user_path(other_user), {}
+        expect(page).to have_content('You are not authorized to access that page.')
+      end
     end
 
   end

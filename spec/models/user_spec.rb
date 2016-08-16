@@ -47,10 +47,20 @@ describe User do
         expect(user).to belong_to(:friendable)
       end
 
+      it "starts with having nil friends" do
+        expect(user.friends.any?).to be(false)
+      end
+
       it "will not allow friending yourself" do
         user.save
         user.friends << user
         expect(user.friends.where(friendable_id: user.id).any?).to eq(false)
+      end
+
+      it "will allow friending someone else" do
+        user.save
+        user.friends << create(:user)
+        expect(user.friends.where(friendable_id: user.id).any?).to eq(true)
       end
 
     end

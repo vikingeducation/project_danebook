@@ -46,6 +46,8 @@ class User < ActiveRecord::Base
 
   # Friend validations
   validates :friendable_id, numericality: { other_than: :id }, on: :update
+  # User should be initialized with zero friends.
+  validates :friendable_id, absence: true, on: :create
 
 
   has_secure_password

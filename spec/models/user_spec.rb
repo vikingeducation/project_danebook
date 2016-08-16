@@ -49,10 +49,15 @@ describe User do
   end
 
   describe "#all_posts" do
-    let(:user1) {build(:user)}
+    let(:user) {build(:user)}
+    
     it "should list all posts in ascending order of a user" do
-      5.times { |n| user1.posts << build(:post, created_at: Time.now, id: n) }
-      expect(user1.posts.count).to eq(5)
+      5.times do |n| 
+        user.posts.build(created_at: Time.now, id: n)
+      end
+      user.posts.each_with_index do |post, index|
+        expect(post.created_at).to be < user.posts[index + 1].created_at if user.posts[index + 1]
+      end
     end
   end
 

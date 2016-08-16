@@ -8,6 +8,6 @@ class Post < ApplicationRecord
   accepts_nested_attributes_for :comments
 
   def all_comments
-    self.comments.order("created_at ASC")
+    self.comments.order("created_at DESC")
   end
 end

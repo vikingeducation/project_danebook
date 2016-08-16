@@ -14,6 +14,10 @@ describe Post do
       is_expected.to validate_length_of(:content).is_at_least(1)
     end
 
+    it "has a database column for user ids" do 
+      is_expected.to have_db_column(:user_id)
+    end
+
   end
 
   describe "Associations" do 
@@ -32,7 +36,27 @@ describe Post do
     it "has many likes" do 
       is_expected.to have_many(:likes)
     end
+  end
 
+  describe "#all_comments" do 
+    let(:post) {build(:post)}
+    
+    it "should list all comments in ascending order of a comment" do
+      5.times do |n| 
+        post.comments.build(created_at: Time.now, id: n)
+      end
+      post.comments.each_with_index do |comment, index|
+        expect(comment.created_at).to be < post.comments[index + 1].created_at if post.comments[index + 1]
+      end
+    end
+
+    it "returns a list of all comments by the person" do 
+      10.times do |n|
+        post.comments.build(content: n)
+      end
+      all_comments = post.comments.length
+      expect(all_comments).to eq(10)
+    end
   end
 
 end

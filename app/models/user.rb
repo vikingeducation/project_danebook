@@ -44,6 +44,9 @@ class User < ActiveRecord::Base
   validates :password, presence: true, length: { in: 6..40 }, on: :create
   validates :password, confirmation: true, length: { in: 6..40 }, allow_blank: true, on: :update
 
+  # Friend validations
+  validates :friendable_id, numericality: { other_than: :id }, on: :update
+
 
   has_secure_password
 

@@ -1,4 +1,6 @@
 class Post < ActiveRecord::Base
+
+  scope :desc, -> { order(created_at: :desc) }
   
   belongs_to :user
   has_many :comments, as: :commentable, dependent: :destroy

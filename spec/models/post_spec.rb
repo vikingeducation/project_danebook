@@ -88,6 +88,20 @@ describe Post do
 
   end
 
+  describe "scope :desc" do
+
+    it "returns a relation containing the posts in descending order" do
+      5.times do
+        create(:post)
+      end
+
+      newest = Post.last
+
+      expect(Post.desc.first).to eq(newest)
+    end
+
+  end
+
   describe "nested attributes" do
 
     it "accepts nested attributes for comments, with an allow_destroy option" do

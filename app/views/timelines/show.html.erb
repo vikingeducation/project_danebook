@@ -107,7 +107,7 @@
         </div>
       </div>
     </div>
-    <div class="col-md-7 col-md-offset-1">
+    <div id="post-form" class="col-md-7 col-md-offset-1">
     <% if @timeline.id == current_user.timeline_id %>
       <%= form_for @post do |post_fields| %>
       <div class="row">

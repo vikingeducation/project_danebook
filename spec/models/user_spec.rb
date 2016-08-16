@@ -37,12 +37,22 @@ describe User do
       expect(user).to have_one(:profile)
     end
 
-    it "has friends" do
-      expect(user).to have_many(:friends)
-    end
+    describe "friends" do
 
-    it "belongs to a friendable" do
-      expect(user).to belong_to(:friendable)
+      it "has friends" do
+        expect(user).to have_many(:friends)
+      end
+
+      it "belongs to a friendable" do
+        expect(user).to belong_to(:friendable)
+      end
+
+      it "will not allow friending yourself" do
+        user.save
+        user.friends << user
+        expect(user.friends.where(friendable_id: user.id).any?).to eq(false)
+      end
+
     end
 
     it "belongs to a timeline" do

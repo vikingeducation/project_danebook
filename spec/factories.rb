@@ -23,15 +23,15 @@ FactoryGirl.define do
     last_name "#{Faker::Name.last_name}"
     college "#{Faker::University.name}"
     
-    # after(:build) do |profile|
-    #   profile.hometown = build(:hometown)
-    #   profile.residence = build(:residence)
-    # end
+    after(:build) do |profile|
+      profile.hometown = build(:hometown)
+      profile.residence = build(:residence)
+    end
 
-    # after(:create) do |profile|
-    #   profile.hometown = create(:hometown)
-    #   profile.residence = create(:residence)
-    # end
+    after(:create) do |profile|
+      profile.hometown = create(:hometown)
+      profile.residence = create(:residence)
+    end
 
   end
 
@@ -78,38 +78,33 @@ FactoryGirl.define do
 
   # Polymorphic: addressable
   factory :hometown do
-    profile
-    association :address
+    after(:create) do |hometown|
+      hometown.address = create(:address)
+    end
   end
 
   factory :residence do
-    profile
-    association :address
+    after(:create) do |hometown|
+      hometown.address = create(:address)
+    end
   end
 
   factory :address do
+    country
+    state
+    city
   end
 
   factory :country do
-    # Each element of the address shall point to the :address factory.
-    address
-    sequence :name do |n|
-      "#{Faker::Address.country}#{n}"
-    end
+    "#{Faker::Address.country}"
   end
 
   factory :state do
-    address
-    sequence :name do |n| 
-      "#{Faker::Address.state}#{n}"
-    end
+    "#{Faker::Address.state}"
   end
 
   factory :city do
-    address
-    sequence :name do |n|
-      "#{Faker::Address.city}#{n}"
-    end
+    "#{Faker::Address.city}"
   end
 
 end

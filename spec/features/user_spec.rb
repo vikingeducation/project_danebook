@@ -4,7 +4,6 @@ feature 'Users' do
   let!(:user) { create(:user) }
 
   before do
-    user.profile = create(:profile)
     visit root_path
   end
 

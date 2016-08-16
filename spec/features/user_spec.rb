@@ -55,6 +55,22 @@ feature 'Users' do
 
   end
 
-  context 'when an unauthorized user attempts to visit a page'
+  context 'when an unauthorized user attempts to visit a page' do
+
+    before do
+      visit login_path
+      form = find("div#login-form")
+      form.fill_in 'session_email', with: user.email
+      form.fill_in 'session_password', with: user.password
+      form.click_button 'Submit'
+    end
+
+    it 'greets them with a failure message' do
+      other_user = create(:user)
+      visit edit_user_path(other_user)
+      expect(page).to have_content('You are not authorized to access that page.')
+    end
+
+  end
 
 end

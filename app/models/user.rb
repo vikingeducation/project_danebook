@@ -17,6 +17,14 @@ class User < ApplicationRecord
   has_many :likes
   has_many :comments
 
+  #when friending someone
+  has_many :initiated_friendings, :foreign_key => :friender_id, :class_name => "Friending"
+  has_many :friended_users, :through => :initiated_friendings, :source => :friend_recipient
+
+  #when receiving a friending
+  has_many :received_friendings, :foreign_key => :friend_id, :class_name => "Friending"
+  has_many :users_friended_by, :through => :received_friendings, :source => :friend_initiator 
+
   def generate_token
     begin
       self[:auth_token] = SecureRandom.urlsafe_base64
@@ -27,6 +35,10 @@ class User < ApplicationRecord
     self.auth_token = nil
     generate_token
     save!
+  end
+
+  def name
+    profile.first_name
   end
 
 end

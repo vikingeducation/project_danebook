@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160813220529) do
+ActiveRecord::Schema.define(version: 20160815223000) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "user_id"
@@ -18,6 +18,14 @@ ActiveRecord::Schema.define(version: 20160813220529) do
     t.text     "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "friendings", force: :cascade do |t|
+    t.integer  "friender_id", null: false
+    t.integer  "friend_id",   null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["friend_id", "friender_id"], name: "index_friendings_on_friend_id_and_friender_id", unique: true
   end
 
   create_table "likes", force: :cascade do |t|

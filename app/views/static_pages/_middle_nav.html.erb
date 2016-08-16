@@ -9,15 +9,24 @@
             <%= link_to "About", user %>
           </button>
           <button type="button" class="btn btn-default <%= 'active' if page == 'photos' %>"><a href="/photos">Photos(123)</a></button>
-          <button type="button" class="btn btn-default <%= 'active' if page == 'friends' %>"><a href="/friends">Friends(542)</a></button>
+          <button type="button" class="btn btn-default <%= 'active' if page == 'friends' %>">
+            <%= link_to "Friends(#{user.friended_users.count})", friends_path(:id => user.id) %>
+            </button>
         </div>
       </div>
+    
       <% unless page == 'about_edit' %>
       <div class="col-md-2">
         <% if authorized_user? %>
           <button type="button" class="btn btn-link">
             <%= link_to "Edit Profile", edit_user_path(user) %>
           </button>
+        <% else %>
+          <% if current_user.friended_users.pluck(:id).include?(user.id) %>
+            <%= link_to "Unfriend #{user.name}", friendings_path(:id => user.id), :method => "Delete", :class => "btn btn-link" %>
+          <% else %>
+            <%= link_to "Friend #{user.name}", friendings_path(:id => user.id), :method => "Post", :class => "btn btn-link" %>
+          <% end %>
         <% end %>
       </div>
       <% end %>

@@ -106,43 +106,45 @@
         <div class="col-md-12">
           <div class="row box-header">
             <div class="col-md-12">
-              <h4 class="box-title centered-text">Friends (542)</h4>
+              <h4 class="box-title centered-text">Friends (<%= user.friended_users.count %>)</h4>
             </div>
           </div>
+          
           <!--Row 1-->
-          <div class="row">
-            <div class="col-md-4"><a href="#">
-              <%= image_tag "wizard_hat.png", alt:"photo", class: "img-responsive" %></a>
-            <button type="button" class="btn btn-link wrap-text"><a href="#">Ron Weasley</a></button>
+          <% user.friended_users.each_with_index do |friend, idx| %>
+          <!-- begin the row -->
+            <% if idx == 0 || idx == 3 %>
+            <div class="row">  
+              <div class="col-md-4">
+                <%= image_tag "wizard_hat.png", alt:"photo", class: "img-responsive" %></a>
+                <%= link_to friend.profile.full_name, friend, class: "btn btn-link wrap-text" %>
+              </div>
+            <!-- close the row -->
+            <% elsif idx == 2 || idx == 5 %>
+             <div class="col-md-4">
+                <%= image_tag "wizard_hat.png", alt:"photo", class: "img-responsive" %></a>
+                <%= link_to friend.profile.full_name, friend, class: "btn btn-link wrap-text" %>
+              </div>
             </div>
-           <div class="col-md-4"><a href="#">
+            <% elsif idx > 6 %>
+            <% else %>
+            <div class="col-md-4">
               <%= image_tag "wizard_hat.png", alt:"photo", class: "img-responsive" %></a>
-            <button type="button" class="btn btn-link wrap-text"><a href="#">Ron Weasley</a></button>
+              <%= link_to friend.profile.full_name, friend, class: "btn btn-link wrap-text" %>
             </div>
-            <div class="col-md-4"><a href="#">
-              <%= image_tag "wizard_hat.png", alt:"photo", class: "img-responsive" %></a>
-            <button type="button" class="btn btn-link wrap-text"><a href="#">Ron Weasley</a></button>
-            </div>
-          </div><!--Row 1 end-->
-          <!--Row 2-->
-          <div class="row">
-            <div class="col-md-4"><a href="#">
-              <%= image_tag "wizard_hat.png", alt:"photo", class: "img-responsive" %></a>
-            <button type="button" class="btn btn-link wrap-text"><a href="#">Ron Weasley</a></button>
-            </div>
-            <div class="col-md-4"><a href="#">
-              <%= image_tag "wizard_hat.png", alt:"photo", class: "img-responsive" %></a>
-            <button type="button" class="btn btn-link wrap-text"><a href="#">Ron Weasley</a></button>
-            </div>
-            <div class="col-md-4"><a href="#">
-              <%= image_tag "wizard_hat.png", alt:"photo", class: "img-responsive" %></a>
-            <button type="button" class="btn btn-link wrap-text"><a href="#">Ron Weasley</a></button>
-            </div>
-          </div><!--Row 2 end-->
+            <% end %>
+            <% if friend == user.friended_users.last && idx != 2 && idx != 5 %>
+              </div>
+            <% end %>
+          <% end %>
           <!--Row 3-->
+        <% if user.friended_users.count > 6 %>
         <div class="row centered-text">
-          <button type="button" class="btn btn-link"><a href="friends.html">See More Friends</a></button>
+          <button type="button" class="btn btn-link">
+            <%= link_to "See More Friends", friends_path(:id => user.id) %>
+          </button>
         </div><!--Row 3 end-->
+        <% end %>
         </div>
       </section>
       </div><!--col-md-5 end-->

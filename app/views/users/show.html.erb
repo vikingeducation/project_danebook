@@ -44,7 +44,7 @@
                           <h4 class="media-heading"><%= link_to comment.commentable.user.first_name, user_profiles_path(comment.commentable.user) %></h4>
                           <p><%= comment.content %></p>
 
-                          <%= render "comments/new_comment", comment: comment %>
+                          <%= render "comments/new_comment", comment: @comment, like: @like %>
                         </div>
                       </li>
                     </ul>
@@ -54,7 +54,7 @@
               </div>
                 <%= form_for [post, @post.comments.build] do |comment| %>
                   <%= image_tag("default_image.jpg", class: "comment-picture") %>
-                  <%= comment.text_field :content, placeholder: "Write your coffmment here", class: "comment-text form-control", 'aria-label'=> "basic-addon1" %>
+                  <%= comment.text_field :content, placeholder: "Write your comment here", class: "comment-text form-control", 'aria-label'=> "basic-addon1" %>
                   <%= comment.submit "Comment on Post", class: "btn btn-success" %>
                 <% end %>
                 <%= form_for [post, @post.likes.build] do |like| %>

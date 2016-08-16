@@ -42,6 +42,10 @@ describe User do
       is_expected.to have_many(:posts)
     end
 
+    it "should have many likes" do 
+      is_expected.to have_many(:likes)
+    end
+
     it "should have one profile" do 
       is_expected.to have_one(:profile)
     end
@@ -50,7 +54,7 @@ describe User do
 
   describe "#all_posts" do
     let(:user) {build(:user)}
-    
+
     it "should list all posts in ascending order of a user" do
       5.times do |n| 
         user.posts.build(created_at: Time.now, id: n)
@@ -62,7 +66,7 @@ describe User do
   end
 
   describe "#search" do 
-    it "should return an array of all matching user objects with a given search input" do
+    it "returns an array of all matching user objects with a given search input" do
       bobs = Array.new(5) { |n| create(:user, first_name: ("Bob#{n}"), email: n )}
       search_results = User.search("Bob")
       bobs.each do |bob|
@@ -73,9 +77,7 @@ describe User do
     it "should return an empty array of if nothing matches" do
       bobs = Array.new(5) { |n| create(:user, first_name: ("Bob#{n}"), email: n )}
       search_results = User.search("Joe")
-      bobs.each do |bob|
-        expect(search_results).to_not include(bob)
-      end 
+      expect(search_results).to be_empty
     end
 
     it "should return unique users" do 

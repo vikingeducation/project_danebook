@@ -20,7 +20,8 @@ class UsersController < ApplicationController
       flash[:success] = "Your Danebook profile has been updated"
       redirect_to user_profiles_path(current_user) 
     else
-      flash.now[:danger] = "Failed to update your Danebook profile"
+      flash[:danger] = "Failed to update your Danebook profile" + 
+        current_user.errors.full_messages.join(", ")
       redirect_to user_profiles_path(current_user) 
     end
   end

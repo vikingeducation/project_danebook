@@ -69,6 +69,11 @@ describe User do
       expect(user).to belong_to(:timeline)
     end
 
+    it "creates a corresponding timeline when created, itself" do
+      user.save
+      expect(user.timeline).to_not eq(nil)
+    end
+
     it "has many posts" do
       expect(user).to have_many(:posts)
     end

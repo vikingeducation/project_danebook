@@ -45,8 +45,8 @@ class User < ActiveRecord::Base
   validates :password, confirmation: true, length: { in: 6..40 }, allow_blank: true, on: :update
 
   # Friend validations
-  validates :friendable_id, numericality: { other_than: :id }, on: :update
-  # User should be initialized with zero friends.
+  validate :cannot_friend_self
+  # # User should be initialized with zero friends.
   validates :friendable_id, absence: true, on: :create
 
 
@@ -137,5 +137,11 @@ class User < ActiveRecord::Base
 
     def defaults
       create_timeline!
+    end
+
+    def cannot_friend_self
+      if friendable_id.present? && (friendable_id == id)
+        errors.add :friendable_id, "Cannot befriend yourself."
+      end
     end
 end

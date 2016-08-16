@@ -43,14 +43,14 @@ foobar.build_profile({ first_name: 'Foobar',
                        last_name: 'Barbaz' }).save
 
 puts "Seeding another user.."
-foobar = User.create!(email: 'cjvirtucio@mail.com',
+cj = User.create!(email: 'cjvirtucio@mail.com',
                      #Use pw + pwc for seeds. Use pw_digest for fixtures.
                      password: 'example',
                      password_confirmation: 'example',
                      activated: true,
                      activated_at: rand(365).days.ago)
-foobar.build_profile({ first_name: 'CJ',
-                       last_name: 'Example' }).save
+cj.build_profile({ first_name: 'CJ',
+                   last_name: 'Example' }).save
 
 #Seed more users.
 puts "Seeding more users.."

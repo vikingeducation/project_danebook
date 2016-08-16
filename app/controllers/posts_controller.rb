@@ -6,7 +6,7 @@ class PostsController < ApplicationController
       flash[:success] = "Post was created in User"
     else
       flash[:error] = "Post was NOT! saved in User"
-      render timeline_user_profiles
+      redirect_to current_user
     end
   end
 
@@ -17,7 +17,7 @@ class PostsController < ApplicationController
       redirect_to current_user
     else
       flash[:error] = "Post was NOT! deleted in User"
-      render timeline_user_profiles
+      redirect_to current_user
     end
   end
 

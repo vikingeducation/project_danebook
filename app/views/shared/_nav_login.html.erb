@@ -1,21 +1,22 @@
 <% if !signed_in_user? %>
+
+  <div>
   <%= form_tag session_path do %>
-    <%= label_tag do %>
-      Email
-      <%= text_field_tag :email %>
-    <% end %>
-
-    <%= label_tag do %>
-      Password
-      <%= password_field_tag :password %>
-    <% end %>
-
+    <div class="row">
+    <%= label_tag(:email, "Email: ")%> <%= text_field_tag :email %>
+    </row>
+    <div>
+    <%= label_tag(:password, "Password: ")%> <%= password_field_tag :password %>
+    </div>
     <%= submit_tag "Log in" %>
   <% end %>
+  </div>
+
 <% else %>
 
   <p> <%= link_to current_user.username, user_path(current_user) %> </p>
-  <%= link_to "Logout", logout_path, method: :delete, data: {confirm: "Are you sure you want to log out?"} %>
+  <p>
+  <%= link_to "Logout", logout_path, method: :delete, data: {confirm: "Are you sure you want to log out?"} %> </p>
 <% end %>
 
 

@@ -5,8 +5,7 @@
     <div class="col-xs-3">
       <div class="navbar-header">
          <aclass="navbar-left brand-img">
-         <h1> Danebook </h1> </a>
-        <h1><%= link_to "Danebook", root_path %> </h1>
+         <h1> Danebook<%= link_to "Danebook", root_path %>  </h1> </a>
       </div>
     </div>
   
@@ -16,7 +15,7 @@
     </form>
   </div>
 
-  <div class="col-xs-1 col-xs-offset-1">
+  <div class="col-xs-1 col-xs-offset-1" id="nav-bar">
     <%= render partial: "shared/nav_login" %>
   </div>
 </nav>

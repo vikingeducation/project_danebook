@@ -2,11 +2,13 @@ class ProfilesController < ApplicationController
   before_action :require_login, :only => [:timeline, :show]
 
   def index
+    @user = User.find(params[:user_id])
     @profile = Profile.find(current_user.profile.id)
   end
 
   def show
-    @profile = Profile.find(current_user.profile.id)
+    @user = User.find(params[:user_id])
+    @profile = @user.profile
   end
 
   def update

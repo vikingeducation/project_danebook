@@ -6,6 +6,24 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require 'spec_helper'
 require 'rspec/rails'
 require 'factory_girl_rails'
+require 'capybara/rails'
+
+Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
+
+RSpec.configure do |config|
+  config.include LoginMacros
+  config.include PostMacros
+end
+
+
+Shoulda::Matchers.configure do |config|
+  config.integrate do |with|
+  # Choose a test framework:
+  with.test_framework :rspec
+
+  with.library :rails
+  end
+end
 
 RSpec.configure do |config|
   config.include FactoryGirl::Syntax::Methods

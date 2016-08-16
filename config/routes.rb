@@ -1,13 +1,20 @@
 Rails.application.routes.draw do
   root to: 'users#new'
   resources :users, :except => [:update, :destroy] do
-    resources :posts
+    resources :posts do
+      resources :likings, :only => [:create]
+    end
     resource :profiles, :except => [:create, :destroy] do
       get "/edit" =>  "profiles#show"
       get "/" =>  "profiles#index"
       get "/timeline" => "profiles#timeline"
+
     end
   end
+
+
+
+  resources :likings, :only => [:destroy]
 
   resource :session, :only => [:new, :create, :destroy]
   get "login" => "sessions#new"

@@ -13,6 +13,7 @@ class User < ApplicationRecord
   has_one :profile, class_name: "Profile"
   has_many :posts, class_name: "Post"
   has_many :comments, class_name: "Comment"
+  has_many :likes, :as => :likeable, class_name: "Liking"
 
   #generates and regenerates tokens and sets to self
   def generate_token
@@ -25,5 +26,9 @@ class User < ApplicationRecord
     self.auth_token = nil
     generate_token
     save!
+  end
+
+  def already_likes?
+    self.likes.empty? ? false : true
   end
 end

@@ -1,19 +1,5 @@
 <div class="jumbotron">
-  <div class="photo-container">
-    <a href="#"><img class="img" src="./img/harry_potter_small.jpg"/></a>
-  </div>
-  <div class="row nav-default container-fluid">
-    
-    <div class="col-xs-9 col-xs-offset-3">
-      <ul class="nav nav-pills">
-        <li><a href="timeline.html">Timeline</a></li>
-        <li class="active"><a  href="about.html">About</a></li>
-        <li><a href="photos.html">Photos <span>(123)</span></a></li>
-        <li><a href="friends.html">Friends <span>(542)</span></a></li>
-        <li class="pull-right edit-link" role="presentation"><a href="about_edit.html"><u>Edit Profile</u></a></li>
-      </ul>
-    </div>
-  </div>
+  <%= render "shared/user_nav_bar" %>
 </div>
 
 <div class="main">

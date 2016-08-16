@@ -6,5 +6,8 @@ class Post < ApplicationRecord
 
   has_many :likes, :as => :likeable, class_name: "Liking"
 
+  def already_likes?
+    self.likes.empty? ? false : true
+  end
 
 end

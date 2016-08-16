@@ -20,9 +20,23 @@
     <p> <%= post.description %> </p>
 
     <div class ="row footer-bar">  
-      <ul class="list-unstyled" id="footers">
+      <ul class="list-unstyled" id="post-footers">
+
         <li><%= link_to 'Destroy', user_post_path(current_user, post), :method => :delete, :confirm => "Are you sure?" %></li>
-        <li><a href="#"><u>Like</u></a></li>
+
+
+        <% if post.already_likes? %>
+          <%= current_user.username %> likes this..
+
+
+          
+        <% else %>
+          <li> <%=link_to "Like", user_post_likings_path(current_user, post), :method => :post, :confirm => "like this?" %> </li>
+        <% end %>
+
+
+
+
         <li><a href="#"><u>Comment</u></a></li>
         <li class="pull-right edit-link" role="presentation"><a href="about_edit.html"><u>Post</u></a></li></ul>
     </div>

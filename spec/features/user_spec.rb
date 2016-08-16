@@ -25,7 +25,9 @@ feature 'Users' do
       form.click_button 'Submit'
     end
 
-    it 'greets them with a success message'
+    it 'greets them with a success message' do
+      expect(page).to have_content('Login successful.')
+    end
 
     it 'shows the user\'s about page' do
       expect(page).to have_content('About')

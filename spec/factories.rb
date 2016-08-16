@@ -6,10 +6,17 @@ FactoryGirl.define do
     end
     password "foobar1234"
     activated true
+    
+    after(:build) do |user|
+      user.profile = build(:profile)
+    end
+
+    after(:create) do |user|
+      user.profile = create(:profile)
+    end
   end
 
   factory :profile do
-    user
     words "#{Faker::Lorem.paragraph(2)}"
     about "#{Faker::Lorem.paragraph(3)}"
     first_name "#{Faker::Name.first_name}"
@@ -17,13 +24,13 @@ FactoryGirl.define do
     college "#{Faker::University.name}"
     
     # after(:build) do |profile|
-    #   profile.hometown = build(:hometown, addressable: profile)
-    #   profile.residence = build(:residence, addressable: profile)
+    #   profile.hometown = build(:hometown)
+    #   profile.residence = build(:residence)
     # end
 
     # after(:create) do |profile|
-    #   profile.hometown = create(:hometown, addressable: profile)
-    #   profile.residence = create(:residence, addressable: profile)
+    #   profile.hometown = create(:hometown)
+    #   profile.residence = create(:residence)
     # end
 
   end
@@ -71,39 +78,16 @@ FactoryGirl.define do
 
   # Polymorphic: addressable
   factory :hometown do
-    # After building a hometown, set its address to a new instance of the :address factory. :address's addressable association shall point to the said hometown.
-    after(:build) do |hometown|
-      hometown.address = build(:address, addressable: hometown)
-    end
-
-    # Same, but for creating.
-    after(:create) do |hometown|
-      hometown.address = create(:address, addressable: hometown)
-    end
+    profile
+    association :address
   end
 
   factory :residence do
-    after(:build) do |residence|
-      residence.address = build(:address, addressable: residence)
-    end
-
-    after(:create) do |residence|
-      residence.address = create(:address, addressable: residence)
-    end
+    profile
+    association :address
   end
 
   factory :address do
-    after(:build) do |address|
-      address.country = build(:country)
-      address.state = build(:state)
-      address.city = build(:city)
-    end
-
-    after(:create) do |address|
-      address.country = create(:country)
-      address.state = create(:state)
-      address.city = create(:city)
-    end
   end
 
   factory :country do

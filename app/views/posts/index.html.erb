@@ -178,9 +178,10 @@
 
             </div>
           </div>
+          <%# fail %>
           <footer class="row border-3sides border-bottom grey-background">
             <div class="col-sm-12">
-              <a href="#" class="footer-link">Like</a>
+              <%= link_to "Like", post_likes_path(post), method: "POST", class: "footer-link" %>
               <%= link_to "Comment", post_path(post), class: "footer-link" %> 
 
               <% if @user.id == params[:user_id].to_i %>

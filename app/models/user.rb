@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
   has_secure_password
+
+  has_many :likes
   
   has_one :profile, inverse_of: :user
   accepts_nested_attributes_for :profile

@@ -17,11 +17,11 @@ FactoryGirl.define do
   end
 
   factory :profile do
-    words "#{Faker::Lorem.paragraph(2)}"
-    about "#{Faker::Lorem.paragraph(3)}"
+    words "a few words"
+    about "about myself"
     first_name "#{Faker::Name.first_name}"
     last_name "#{Faker::Name.last_name}"
-    college "#{Faker::University.name}"
+    college "A College"
     
     after(:build) do |profile|
       profile.hometown = build(:hometown)

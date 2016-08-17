@@ -2,6 +2,49 @@ require 'rails_helper'
 
 describe UsersController do
   let!(:user) { build(:user) }
+  let(:assigned_vars) {
+
+    expect(assigns(:user)).to be_a(User)
+    expect(assigns(:profile)).to be_a(Profile)
+    expect(assigns(:cities)).to_not be_nil
+    expect(assigns(:states)).to_not be_nil
+    expect(assigns(:countries)).to_not be_nil
+
+  }
+  let(:unassigned_vars) {
+
+    expect(assigns(:user)).to be_nil
+    expect(assigns(:profile)).to be_nil
+    expect(assigns(:cities)).to be_nil
+    expect(assigns(:states)).to be_nil
+    expect(assigns(:countries)).to be_nil
+
+  }
+  let(:creating_user) {
+
+    post :create, user: { 
+      first_name: user.profile.first_name, 
+      last_name: user.profile.last_name, 
+      email: user.email, 
+      password: user.password,
+      password_confirmation: user.password }
+
+  }
+  let(:invalid_creating_user) {
+
+    post :create, user: { 
+      first_name: "", 
+      last_name: "", 
+      email: "", 
+      password: "",
+      password_confirmation: "" }
+
+  }
+  let(:logging_in_user) {
+
+    session[:user_id] = user.id
+
+  }
 
   describe '#new' do
 
@@ -37,12 +80,7 @@ describe UsersController do
 
       before do
 
-        post :create, user: { 
-          first_name: user.profile.first_name, 
-          last_name: user.profile.last_name, 
-          email: user.email, 
-          password: user.password,
-          password_confirmation: user.password }
+        creating_user
 
       end
 
@@ -70,12 +108,7 @@ describe UsersController do
 
       before do
 
-        post :create, user: { 
-          first_name: "", 
-          last_name: "", 
-          email: "", 
-          password: "",
-          password_confirmation: "" }
+        invalid_creating_user
 
       end
 
@@ -108,18 +141,14 @@ describe UsersController do
       before do
 
         user.save
-        session[:user_id] = user.id
+        logging_in_user
         get :edit, id: user.id
 
       end
 
       it 'sets the user, profile, city, state, and country instance variables' do
 
-        expect(assigns(:user)).to be_a(User)
-        expect(assigns(:profile)).to be_a(Profile)
-        expect(assigns(:cities)).to_not be_nil
-        expect(assigns(:states)).to_not be_nil
-        expect(assigns(:countries)).to_not be_nil
+        assigned_vars
 
       end
 
@@ -142,11 +171,7 @@ describe UsersController do
 
       it 'does not set the user, profile, city, state, and country instance variables' do
 
-        expect(assigns(:user)).to be_nil
-        expect(assigns(:profile)).to be_nil
-        expect(assigns(:cities)).to be_nil
-        expect(assigns(:states)).to be_nil
-        expect(assigns(:countries)).to be_nil
+        unassigned_vars
 
       end
 
@@ -178,11 +203,7 @@ describe UsersController do
 
       it 'does not set the user, profile, city, state, and country instance variables' do
 
-        expect(assigns(:user)).to be_nil
-        expect(assigns(:profile)).to be_nil
-        expect(assigns(:cities)).to be_nil
-        expect(assigns(:states)).to be_nil
-        expect(assigns(:countries)).to be_nil
+        unassigned_vars
 
       end
 
@@ -197,58 +218,6 @@ describe UsersController do
         expect(response).to redirect_to(root_path)
 
       end
-
-    end
-
-  end
-
-  describe '#update' do
-
-    context 'when the user is logged in and is the correct user' do
-
-      context 'when the information is valid' do
-
-        it 'sets the user and profile instance variables'
-
-        it 'updates the user\'s attributes'
-
-        it 'tells the user that the update was successful'
-
-        it 'redirects the user to the show page'
-
-      end
-
-      context 'when the information is not valid' do
-
-        it 'does not set the user and profile instance variables'
-
-        it 'does not update the user\'s attributes'
-
-        it 'tells the user that the update was unsuccessful'
-
-        it 'redirects the user to the show page'
-
-      end
-
-    end
-
-    context 'when the user is not logged in' do
-
-      it 'does not set the user, profile, city, state, and country instance variables'
-
-      it 'tells the user to log in'
-
-      it 'redirects the user to the login page'
-
-    end
-
-    context 'when the user is not the correct user' do
-
-      it 'does not set the user, profile, city, state, and country instance variables'
-
-      it 'tells the user that he is not authorized to access this page'
-
-      it 'redirects the user to the root path'
 
     end
 

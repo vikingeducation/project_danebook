@@ -2,11 +2,11 @@ class User < ActiveRecord::Base
   before_create :generate_token
   has_secure_password
   validates :email,
-              uniqueness: true,
+              uniqueness: {case_sensitive: false},
               presence: true,
               format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
   validates :password_digest, presence: true
-  validates :password, length: { minimum: 6 }
+  validates :password, length: { minimum: 6 }, allow_blank: true
 
   has_many :posts, dependent: :destroy
   has_many :likes, dependent: :destroy

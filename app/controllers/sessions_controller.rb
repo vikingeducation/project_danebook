@@ -8,7 +8,7 @@ class SessionsController < ApplicationController
       flash[:success] = "Signed in!"
       redirect_to root_url
     else
-      flash[:error] = "Couldn't sign in "
+      flash[:error] = "Couldn't sign in"
       redirect_to root_url
     end
   end

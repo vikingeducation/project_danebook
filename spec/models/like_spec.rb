@@ -10,10 +10,10 @@ describe Like do
   end
 
   describe 'polymorphic associations' do
-    it "parent comment responds to likes" do
+    it "should have the parent comment respond to likes" do
       expect(comment_like.likeable).to respond_to(:likes)
     end
-    it "parent post responds to likes" do
+    it "should have the parent post respond to likes" do
       expect(post_like.likeable).to respond_to(:likes)
     end
   end

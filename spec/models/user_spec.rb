@@ -4,25 +4,25 @@ describe User do
   let(:friendly_user) { build(:friendly_user) }
 
   describe 'attributes' do
-    it "is valid with default attributes" do
+    it "should be valid with default attributes" do
       expect(user).to be_valid
     end
-    it "saves with default attributes" do
+    it "should save with default attributes" do
       expect{ user.save! }.not_to raise_error
     end
-    it "generates a token upon creation" do
+    it "should generate a token upon creation" do
       user.save!
       expect(user.auth_token).to be_a(String)
     end
     it { should validate_presence_of(:email)}
-    it { should validate_uniqueness_of(:email)}
+    it { should validate_uniqueness_of(:email).case_insensitive }
     it { should validate_presence_of(:password)}
     it { should validate_length_of(:password).is_at_least(6)}
     it { should have_secure_password }
   end
   context "when saving multiple users" do
     before { user.save! }
-    it "doesn't allow identical emails" do
+    it "shouldn't allow identical emails" do
       new_user = build(:user, email: user.email)
       expect(new_user).not_to be_valid
     end
@@ -42,7 +42,7 @@ describe User do
     let!(:friend) { create(:user, profile: profile) }
 
     describe '#friends' do
-      it "returns an array of all friends" do
+      it "should return an array of all friends" do
         friends.each { |friend| user.users_friended_by << friend }
         user.save!
         expect(user.friends).to match_array(friends)
@@ -57,20 +57,24 @@ describe User do
       end
     end
 
-    describe '#unfriend' do
-      it 'should unfriend a friend' do
+    context "where user currently has friends" do
+      before do
         user.make_friend(friend)
-        user.unfriend(friend)
         user.save!
-        expect(user.friends).to be_empty
       end
-    end
 
-    describe '#friends?' do
-      it 'should check if friends' do
-        user.make_friend(friend)
-        user.save!
-        expect(user.friends?(friend)).to be true
+      describe '#unfriend' do
+        it 'should unfriend a friend' do
+          user.unfriend(friend)
+          user.save!
+          expect(user.friends).to be_empty
+        end
+      end
+
+      describe '#friends?' do
+        it 'should check if friends' do
+          expect(user.friends?(friend)).to be true
+        end
       end
     end
   end

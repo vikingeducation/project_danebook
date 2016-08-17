@@ -1,8 +1,9 @@
+<div class="comment">
 <%= comment.body %>
 <p>by:
     <%=link_to comment.author, comment.author %>
 </p>
-<span><%= comment_likes_link(comment) %></span>
+<span><%= likeable_likes_link(comment) %></span>
 <br>
 <span><%= delete_comment_link(comment, commentable) %></span>
 <% comment.comments.each do |nested_comment|%>
@@ -11,3 +12,4 @@
     <%= render partial: "/comments/comment", locals: {comment: nested_comment, commentable: comment } %>
 </div>
 <% end %>
+</div>

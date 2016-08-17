@@ -13,7 +13,7 @@
             <a class="navbar-brand" href="#">Danebook</a>
         </div>
         <div class="pull-right">
-            <%= simple_form_for :user, url: session_path, html: { class: "inline-form"} do |f| %>
+            <%= simple_form_for :user, url: session_path, html: { class: "inline-form", id: "login-form"} do |f| %>
             <%= f.input_field :email, placeholder: 'Email', label: false %>
             <%= f.input_field :password, placeholder: 'password', label: false %>
             <%= check_box_tag :remember_me, inline_label: 'Remember' %>

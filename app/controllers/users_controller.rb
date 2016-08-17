@@ -38,10 +38,10 @@ private
   def user_params
     params.require(:user).permit(:name, :email, :password, :password_confirmation, profile_attributes: [:first_name, :last_name, :birthday, :about])
   end
+
   def update_profile_params
     params.require(:user).permit(profile_attributes: [:first_name, :last_name, :birthday, :about])
   end
-
 
   def require_current_user
     unless params[:id] == current_user.id.to_s

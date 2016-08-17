@@ -52,6 +52,11 @@ describe TimelinesController do
         expect(assigns(:comment)).to be_a(Comment)
         expect(assigns(:friends).first.friendable_id).to eq(user.id)
 
+      end
+
+      it 'responds with a 200 status code' do
+
+        expect(response.code).to eq('200')
 
       end
 

@@ -17,7 +17,7 @@
           <h4>Birthday:</h4>
         </div>
 
-        <%= form_for @profile, url: profile_path do |p| %>
+        <%= form_for @profile, url: user_profile_path do |p| %>
           <div class="col-xs-4 col-xs-offset-3">
             <h4 class="not-bold">
             <%= p.text_field :birth_date %>

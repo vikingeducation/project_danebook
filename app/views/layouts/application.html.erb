@@ -4,8 +4,8 @@
   <title>ProjectDanebook</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <link rel="stylesheet" href="bootstrap.min.css">
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application'%>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -20,13 +20,13 @@
 
   <%= yield %>
 
-    <div id="flash-success-div">
-      <h3><%= flash[:success] %></h3>
-    </div>
+  <div id="flash-success-div">
+    <h3><%= flash[:success] %></h3>
+  </div>
 
-    <div id="flash-errors-div">
-      <h3><%= flash[:error] %></h3>
-    </div>
+  <div id="flash-errors-div">
+    <h3><%= flash[:error] %></h3>
+  </div>
 
 
 

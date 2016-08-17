@@ -2,23 +2,28 @@ Rails.application.routes.draw do
 
   root "static_pages#home"
 
-  get '/users', to: "static_pages#home"
-
-  get '/timeline', to: "static_pages#timeline"
-
-  get '/friends', to: "static_pages#friends"
-
-  get '/about', to: "static_pages#about"
-
-  get '/photos', to: "static_pages#photos"
-
-  get '/about_edit', to: "static_pages#about_edit"
-
-  resource :profile, :only => [:update]  
-
   resource :session, :only => [:create, :destroy, :new]
 
-  resources :users, :only => [:create, :new, :edit, :update, :destroy]
+
+  resources :users, :only => [:create, :new, :edit, :update, :destroy] do 
+
+    resource :profile, :only => [:update]  
+
+    get '/friends', to: "static_pages#friends"
+    get '/about', to: "static_pages#about"
+    get '/photos', to: "static_pages#photos"
+    get '/about_edit', to: "static_pages#about_edit"
+
+    resources :posts, :only => [:create, :update, :destroy, :index]
+    get '/timeline', to: "posts#index"
+
+  end
+
+
+
+
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

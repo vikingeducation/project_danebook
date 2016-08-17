@@ -23,19 +23,19 @@
       </div>
     </div>
     <div class="col-xs-2 content-center border-right border-left">
-      <h4><%= link_to "Timeline", timeline_path, class: ["main-nav", timeline_grey] %></h4>  
+      <h4><%= link_to "Timeline", user_timeline_path(@page_owner), class: ["main-nav", timeline_grey] %></h4>  
     </div>
     <div class="col-xs-2 content-center border-right grey-background">
-      <h4><%= link_to "About", about_path, class: ["main-nav", about_grey] %> </h4>
+      <h4><%= link_to "About", user_about_path(@page_owner), class: ["main-nav", about_grey] %> </h4>
     </div>
     <div class="col-xs-2 content-center  border-right">
-      <h4><%= link_to "Photos (123)", photos_path, class: "main-nav #{photos_grey}" %> </h4> 
+      <h4><%= link_to "Photos (123)", user_photos_path(@page_owner), class: "main-nav #{photos_grey}" %> </h4> 
     </div>
     <div class="col-xs-2 content-center border-right">
-      <h4><%= link_to "Friends", friends_path, class: "main-nav" %> </h4>
+      <h4><%= link_to "Friends", user_friends_path(@page_owner), class: "main-nav" %> </h4>
     </div>
     <div class="col-xs-2">
-      <%= link_to "Edit Profile", about_edit_path, class: "float-right" %>
+      <%= link_to "Edit Profile", user_about_edit_path(@page_owner), class: "float-right" %>
     </div>
   </div>  
 </main>

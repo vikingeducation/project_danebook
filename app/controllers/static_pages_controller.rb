@@ -9,37 +9,28 @@ class StaticPagesController < ApplicationController
   end
 
   def timeline
+    page_owner
     get_user_and_profile
   end
 
   def friends
-    
+    page_owner    
   end
 
   def about
     get_user_and_profile
+    @profile = page_owner.profile
     get_random_backup_user_and_profile
   end
 
   def photos
-    
+    page_owner
   end
 
   def about_edit
+    page_owner
     get_user_and_profile
   end
 
 
-
-  private
-
-  def get_user_and_profile
-    @user = current_user
-    @profile = @user.profile if @user
-  end
-
-  def get_random_backup_user_and_profile
-    @user ||= User.all.sample
-    @profile ||= @user.profile
-  end
 end

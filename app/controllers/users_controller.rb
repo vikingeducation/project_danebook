@@ -5,7 +5,7 @@ class UsersController < ApplicationController
     if @user.save
       flash[:success] = "Created new user!"
       sign_in(@user) 
-      redirect_to about_path
+      redirect_to user_about_path(@user)
     else
       flash[:error] = @user.errors.full_messages.first
       @home = true
@@ -14,6 +14,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation, :first_name, :last_name, :gender, :profile_attributes => [:birth_date])
+    params.require(:user).permit(:id, :email, :password, :password_confirmation, :first_name, :last_name, :gender, :profile_attributes => [:birth_date])
   end
 end

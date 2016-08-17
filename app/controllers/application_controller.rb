@@ -43,16 +43,30 @@ class ApplicationController < ActionController::Base
     end
   end
 
-
   def require_account_owner
     unless signed_in_user? && cookies[:auth_token] == current_user.auth_token
       flash[:error] = "You aren't authorized to perform this action."
       if signed_in_user?
-        redirect_to timeline_path
+        redirect_to user_timeline_path(curent_user)
       else
         redirect_to root_path
       end
     end
   end
+
+  def page_owner
+    @page_owner = User.find(params[:user_id])
+  end
+
+  def get_user_and_profile
+    @user = current_user
+    @profile = @user.profile if @user
+  end
+
+  def get_random_backup_user_and_profile
+    @user ||= User.all.sample
+    @profile ||= @user.profile
+  end
+
   
 end

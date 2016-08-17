@@ -23,19 +23,14 @@ describe Profile, type: :model do
     expect(new_profile).to be_valid
   end
 
-  it 'with blank telephone is invalid' do
+  it 'with blank telephone is valid' do
     new_profile = build(:profile, telephone: nil)
-    expect(new_profile).not_to be_valid
+    expect(new_profile).to be_valid
   end
 
   context 'check validations are accurate' do
     it 'with invalid telephone entry is invalid' do
       new_profile = build(:profile, telephone: "10010010010000101"*10)
-      expect(new_profile).not_to be_valid
-    end
-
-    it 'with invalid telephone entry is invalid' do
-      new_profile = build(:profile, telephone: "500")
       expect(new_profile).not_to be_valid
     end
 

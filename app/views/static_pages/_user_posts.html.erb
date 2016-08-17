@@ -3,7 +3,7 @@
   <div class="col-sm-12">
     <div class="row post-wrapper">
       <div class="col-xs-2 col-sm-1">
-      <%= image_tag("harry_potter_small.jpg", class: "post-pic") %>
+        <%= image_tag("harry_potter_small.jpg", class: "post-pic") %>
       </div>
       <div class="col-xs-9 col-sm-10 friend-name-wrapper">
         <p><%= link_to user.full_name, user_profile_path(user, user.profile), class: "like-link" %></p>
@@ -17,17 +17,18 @@
     </div>
     <div class="row post-wrapper section-footer">
         <% if post.likers.include?(current_user) %>
-        <div class="col-xs-7 col-sm-4">
-          <%= button_to "Unlike", like_path( user_liked_id(post)), method: :delete, class: "goofy-btn"%>
-        </div>
+          <div class="col-xs-7 col-sm-4">
+            <%= button_to "Unlike", like_path( user_liked_id(post)), method: :delete, class: "goofy-btn unlike-class", id: "unlike-id"%>
+          </div>
         <% else %>
           <div class="col-xs-7 col-sm-7">
-            <%= button_to "Like", post_likes_path(post), method: :post, class: "goofy-btn" %>
+            <%= button_to "Like", post_likes_path(post), method: :post, class: "goofy-btn like-class" %>
           </div>
         <% end %>
+
         <% if user == current_user %>
-          <div class="col-xs-4 col-sm-4">
-            <%= button_to "Delete", post_path(post), method: :delete, class: "goofy-btn float-right" %>
+          <div class="col-xs-4 col-sm-4 text-right">
+            <%= button_to("Delete", post, method: :delete, class: "goofy-btn delete-class") %>
           </div>
         <% end %>
 

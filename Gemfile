@@ -45,18 +45,19 @@ gem 'bcrypt', '~> 3.1.7'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
-  gem 'pry-byebug'
-  gem "better_errors"
-  gem 'binding_of_caller'
+  # gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
+  # gem 'pry-byebug'
+  # gem "better_errors"
+  # gem 'binding_of_caller'
   gem 'factory_girl_rails'
   gem 'shoulda-matchers', '~> 3.1'
 end
 
 group :test do
   gem 'rspec-rails'
-  # gem 'guard'
-  # gem 'guard-rspec'
+  gem 'capybara'
+  gem 'launchy'
+  gem 'pry-byebug'
 end
 
 group :development do
@@ -67,6 +68,9 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'guard-rspec', require: false
+  gem 'jazz_hands', github: 'nixme/jazz_hands', branch: 'bring-your-own-debugger'
+  gem "better_errors"
+  gem 'binding_of_caller'
 end
 
 group :production do

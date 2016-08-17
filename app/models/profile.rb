@@ -4,7 +4,7 @@ class Profile < ActiveRecord::Base
   validates_length_of :college, maximum: 64
   validates_length_of :hometown, maximum: 64
   validates_length_of :currently_lives, maximum: 64
-  validates :telephone, presence: true, phone: true
+  validates :telephone, phone: { possible: true, allow_blank: true }
 
   validates_length_of :words_to_live_by, maximum: 255
 

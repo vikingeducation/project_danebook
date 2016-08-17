@@ -19,10 +19,11 @@ class SessionsController < ApplicationController
       else
         sign_in(@user)
       end
-      # flash[:success] = "You've successfully signed in"
+      flash[:success] = "You've successfully signed in"
       redirect_to root_url
     else
       flash.now[:error] = "We couldn't sign you in"
+      @user = User.new
       render :new
     end
   end

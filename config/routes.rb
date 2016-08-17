@@ -9,10 +9,9 @@ Rails.application.routes.draw do
   delete "/logout" => "sessions#destroy"
   resources :users do
     get "timeline" => "static_pages#timeline"
-    # get "about"    => "static_pages#about"
+    # TODO: better to elim static_pages and put timeline as the user show page??  Don't like the extra static_pages controller that isn't being used much except for timeline
     resources :profiles, only: [:show]
     resources :profiles, only: [:edit, :update], shallow: true
-    # get "about_edit" => "static_pages#about_edit"
     get "friends"    => "static_pages#friends"
     get "photos"    => "static_pages#photos"
   end

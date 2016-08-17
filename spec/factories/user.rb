@@ -6,5 +6,6 @@ FactoryGirl.define do
     birth_date (Date.today - 10000)
     password "password"
     password_confirmation "password"
+    auth_token SecureRandom.urlsafe_base64
   end
 end

@@ -35,7 +35,7 @@ class User < ActiveRecord::Base
   validates_date :birth_date, :on_or_before => lambda { Date.current }
 
 
-  validates :email, presence: true,
+  validates :email, presence: true, uniqueness: {case_sensitive: false},
             length: { in: 4..50}
 
   validates_format_of :email, :with => /@/

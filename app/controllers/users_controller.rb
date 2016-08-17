@@ -19,7 +19,7 @@ end
 
 # GET /users/new
 def new
-  @user = User.new
+  redirect_to login_path
 end
 
 # GET /users/1/edit

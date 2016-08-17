@@ -10,6 +10,7 @@ feature 'Timeline' do
   context 'when the user is logged in' do
 
     before do
+      # macro!!
       visit login_path
       form = find("div#login-form")
       form.fill_in 'session_email', with: user.email

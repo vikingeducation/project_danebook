@@ -13,7 +13,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-    @profile = @user.profile
+    # @profile = @user.profile
   end
 
   def create

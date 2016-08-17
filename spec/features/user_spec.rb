@@ -51,6 +51,7 @@ feature 'Users' do
 
     before do
       visit login_path
+      # make macro helper
       form = find("div#login-form")
       form.fill_in 'session_email', with: user.email
       form.fill_in 'session_password', with: user.password
@@ -67,6 +68,8 @@ feature 'Users' do
 
     describe "trying to delete another user's profile" do
       it 'greets them with a failure message' do
+        # this is more likely a controller test(security)
+        # think more about UX/UI
         other_user = create(:user)
         page.driver.submit :delete, user_path(other_user), {}
         expect(page).to have_content('You are not authorized to access that page.')

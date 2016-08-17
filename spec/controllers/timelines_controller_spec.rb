@@ -64,8 +64,61 @@ describe TimelinesController do
 
   end
 
-  context 'when the user is not logged in'
+  context 'when the user is not logged in' do
 
-  context 'when the timeline does not exist'
+    before do
+
+      get :show, id: user.timeline_id
+
+    end
+
+    it 'does not assign the related instance variables' do
+
+        expect(assigns(:timeline)).to be_nil
+        expect(assigns(:user)).to be_nil
+        expect(assigns(:profile)).to be_nil
+        expect(assigns(:post)).to be_nil
+        expect(assigns(:like)).to be_nil
+        expect(assigns(:comment)).to be_nil
+        expect(assigns(:friends)).to be_nil
+
+    end
+
+    it "warns the user with a notice" do
+
+      expect(flash[:notice]).to eq("You must first log in.")
+
+    end
+
+    it "redirects the user to the login page" do
+
+      expect(response).to redirect_to(login_path)
+
+    end
+
+  end
+
+  context 'when the timeline does not exist' do
+
+    before do
+
+      logging_in_user
+      get :show, id: 123456
+
+    end
+
+    it 'warns the user with an error flash' do
+
+      expect(flash[:danger]).to eq("Error! Timeline doesn't exist!")
+
+    end
+
+    it "redirects the user to the root path" do
+
+      expect(response).to redirect_to(root_path)
+
+    end
+
+  end
 
 end

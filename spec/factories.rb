@@ -1,5 +1,18 @@
 FactoryGirl.define do
 
+  factory :timeline do
+
+    # building/creating a timeline
+    after(:build) do |timeline|
+      timeline.user = build(:user)
+    end
+
+    after(:create) do |timeline|
+      timeline.user = create(:user)
+    end
+
+  end
+
   factory :user do
     sequence :email do |n|
       "foob#{n}@barbaz.com"
@@ -7,6 +20,7 @@ FactoryGirl.define do
     password "foobar1234"
     activated true
     
+    # building/creating a profile
     after(:build) do |user|
       user.profile = build(:profile)
     end
@@ -14,6 +28,7 @@ FactoryGirl.define do
     after(:create) do |user|
       user.profile = create(:profile)
     end
+
   end
 
   factory :profile do

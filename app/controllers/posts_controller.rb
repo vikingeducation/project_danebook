@@ -5,6 +5,7 @@ class PostsController < ApplicationController
     unless @post.save
       flash[:danger] = "Please enter something!"
     end
+  
     redirect_to current_user
   end
 

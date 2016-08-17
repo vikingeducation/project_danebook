@@ -14,13 +14,14 @@ class User < ApplicationRecord
                                 :reject_if => :all_blank
 
   validates :password,
-            :length => { :in => 8..24 },
+            :length => { :in => 6..24 },
             :allow_nil => true
 
   validates :birth_date, :first_name, :last_name, :email, :gender, :birth_date, presence: true
 
   validates :first_name, :last_name, :email, length: { in: (1..50) }
   validates_format_of :email, :with => /@/
+  validates :email, uniqueness: true
   validates :college, length: { maximum: 50 }
   validates :telephone, length: { maximum: 20 }
   validates :quote, length: { maximum: 255 }

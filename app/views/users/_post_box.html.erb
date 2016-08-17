@@ -2,22 +2,18 @@
   <div class="panel-heading">
     <h2 class="panel-title">Pöst</h2>
   </div>
-  <div class="panel-body">
-    <div class="row">
-      <div class="col-sm-12">
-        <%= form_for [current_user, @post] do |f| %>
-          <%= f.text_area :text, class:"form-control", rows: 3, placeholder: "Tell the world something...", style:"resize: none" %>
-      </div>
-    </div>
+  <div class="row post-box">
+    <%= form_for [current_user, @post], class: "panel-body" do |f| %>
 
-    <div class="row">
+    <div class = "col-sm-12">
+        <%= f.text_area :text, class:"form-control", rows: 3, placeholder: "Tell the world something...", style:"resize: none" %>
         <br>
         <div class="col-sm-3 col-sm-offset-9">
           <%= f.submit "Post!", class: "btn btn-primary btn-block" %>
-          <!-- <button type="submit" class="btn btn-primary btn-block">Post</button> -->
         </div>
-        <% end %>
+
     </div>
 
+    <% end %>
   </div>
 </div>

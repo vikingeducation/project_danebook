@@ -9,7 +9,7 @@
 
       <li role="presentation" <%= "class='active' ".html_safe if active==:photos %> ><a href="<%= user_photos_path(@user) %>">Photos (834)</a></li>
 
-      <li role="presentation" <%= "class='active' ".html_safe if active==:friends %> ><a href="<%= user_friends_path(@user) %>">Frænds (99)</a></li>
+      <li role="presentation" <%= "class='active' ".html_safe if active==:friends %> ><a href="<%= user_friendships_path(@user) %>">Frænds (99)</a></li>
 
       <% if self_profile? %>
         <li role="presentation" class=

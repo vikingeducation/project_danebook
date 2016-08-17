@@ -33,7 +33,7 @@
           <a href="#">Comment</a>
         </div>
         <div class="col-sm-2 pull-right">
-          <%= link_to "Delete Post", post, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <%= link_to "Delete Post", post, method: :delete, data: { confirm: 'Are you sure?' } if post.author == current_user %>
         </div>
       </div>
 

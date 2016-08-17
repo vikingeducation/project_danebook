@@ -7,12 +7,18 @@ class PostsController < ApplicationController
     @posts = User.find(params[:user_id]).posts.order("created_at DESC")
     @profile = @user.profile
     @post = @user.posts.build
-# =>     @comment = @post.comments.build
 
   end
 
+  def show
+    @user = current_user
+    @post = Post.find(params[:id])
+    @page_owner = @post.author
+    @comment = @post.comments.build
+  end
+
   def create
-    @user = User.find(params[:user_id])
+    @user = current_user
     @profile = @user.profile
     @posts = @user.posts
     @post = current_user.posts.build(whitelisted_params)

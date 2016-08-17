@@ -19,7 +19,9 @@ Rails.application.routes.draw do
 
   end
 
-
+  resources :posts, :only => [:show] do 
+    resources :comments, :only => [:create, :destroy]
+  end
 
 
 

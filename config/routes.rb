@@ -10,11 +10,13 @@ Rails.application.routes.draw do
   resources :users do
     get "timeline" => "static_pages#timeline"
     # TODO: better to elim static_pages and put timeline as the user show page??  Don't like the extra static_pages controller that isn't being used much except for timeline
-    resources :profiles, only: [:show]
-    resources :profiles, only: [:edit, :update], shallow: true
+    resource :profile, only: [:show]
+    # resources :profiles, only: [:show]
+    # resources :profiles, only: [:edit, :update], shallow: true
     get "friends"    => "static_pages#friends"
     get "photos"    => "static_pages#photos"
   end
+  resource :profile, only: [:edit, :update]
   resources :posts, only: [:create, :update, :destroy] do
     resources :likes, only: [:create], :defaults => { :likeable => 'Post'}
     resources :comments, only: [:new, :create]

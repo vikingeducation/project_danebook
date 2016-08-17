@@ -2,10 +2,14 @@ class ProfilesController < ApplicationController
   before_action :set_profile, only: [:edit, :update]
   before_action :require_login, :except => [:show]
 
+  def show
+    @user = User.find(params[:user_id])
+  end
+
   def edit
     if signed_in_user?
       session[:return_to] = request.referer
-      @user = User.find(@profile.user_id)
+      @user = current_user
     else
       redirect_to login_path
     end
@@ -25,14 +29,10 @@ class ProfilesController < ApplicationController
     end
   end
 
-  def show
-    @user = User.find(params[:user_id])
-  end
-
   private
 
     def set_profile
-      @profile = Profile.find(params[:id])
+      @profile = current_user.profile
     end
 
     def white_listed_profile_params

@@ -36,6 +36,19 @@ feature 'Timeline' do
         expect(page).to have_content('You\'ve created a new post!')
       end
 
+      it 'allows the user to make a new comment' do
+        # Write a new post.
+        post_form = find("div#post-form")
+        post_form.fill_in 'post_body', with: 'this is a new post!!!'
+        post_form.click_button 'Post'
+
+        # Comment that post.
+        comment_form = find("div#comment-form")
+        comment_form.fill_in 'post_comments_attributes_0_body', with: 'this is a new comment!!!'
+        comment_form.click_button 'Comment'
+        expect(page).to have_content('Added a comment.')
+      end
+
     end
 
     context 'when the user is not the correct user'

@@ -229,6 +229,7 @@
                     </div>
                   </div>
                   <% end %>
+                  <div id="comment-form">
                   <%= form_for post do |post_fields| %>
                     <div class="row">
                       <%= post_fields.fields_for :comments, @comment do |comment_fields| %>

@@ -20,13 +20,16 @@ def edit
 end
 
 def create
-  @user = User.new(user_params)
-
-  if @user.save
-    sign_in(@user)
-    redirect_to user_path @user
+  if signed_in_user?
+    redirect_to user_path current_user
   else
-    redirect_to login_path
+    @user = User.new(user_params)
+    if @user.save
+      sign_in(@user)
+      redirect_to user_path @user
+    else
+      redirect_to login_path
+    end
   end
 end
 

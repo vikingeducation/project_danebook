@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   get "/login" => "sessions#new"
   get "/logout" => "sessions#destroy"
   delete "/logout" => "sessions#destroy"
-  resources :users do
+  get "/login" => "users#new"
+  resources :users, only: [:index, :show, :create] do
     resource :profile, only: [:show]
     get "friends"    => "static_pages#friends"
     get "photos"    => "static_pages#photos"

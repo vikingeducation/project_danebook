@@ -22,3 +22,6 @@
 
 # IGNOR I'MDONE STUFF
 *.imdone
+
+# Ignore application configuration
+/config/application.yml

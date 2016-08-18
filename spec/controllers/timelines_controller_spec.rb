@@ -11,6 +11,15 @@ describe TimelinesController do
     end
     user
   }
+  let(:new_user) { 
+    user = timeline.user
+
+    # making friends
+    5.times do
+      user.friends << create(:user)
+    end
+    user
+  }
   let(:logging_in_user) {
 
     session[:user_id] = user.id
@@ -51,6 +60,37 @@ describe TimelinesController do
         expect(assigns(:like)).to be_a(Like)
         expect(assigns(:comment)).to be_a(Comment)
         expect(assigns(:friends).first.friendable_id).to eq(user.id)
+
+      end
+
+      it 'responds with a 200 status code' do
+
+        expect(response.code).to eq('200')
+
+      end
+
+    end
+
+    context 'when viewing someone else\'s timeline' do
+
+      before do
+        # making friends
+        5.times do
+          new_user.friends << create(:user)
+        end
+        get :show, id: new_user.timeline_id
+
+      end
+
+      it 'assigns variables multiple related instance variables' do
+
+        expect(assigns(:timeline)).to be_a(Timeline)
+        expect(assigns(:user)).to be_a(User)
+        expect(assigns(:profile)).to be_a(Profile)
+        expect(assigns(:post)).to be_a(Post)
+        expect(assigns(:like)).to be_a(Like)
+        expect(assigns(:comment)).to be_a(Comment)
+        expect(assigns(:friends).first.friendable_id).to eq(new_user.id)
 
       end
 

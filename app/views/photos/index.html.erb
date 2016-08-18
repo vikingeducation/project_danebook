@@ -1,2 +1,16 @@
-<h1>Photos#index</h1>
-<p>Find me in app/views/photos/index.html.erb</p>
+<div class="container">
+    <%= render partial: "/shared/profile_bar", locals: { user: @user }%>
+    <h1>Photos</h1>
+    <div class="col-sm-8 col-sm-offset-2">
+      <% if @user == current_user %>
+        <div class="row">
+            <%= button_to "Add Photo", new_user_photo_path(current_user), method: :get, class: "btn btn-secondary btn-sm pull-right" %>
+        </div>
+      <% end %>
+        <% @photos.each do |photo| %>
+        <div class="image">
+            <%= link_to image_tag(photo.image.url(:thumb)), photo_path(photo, user_id: @user.id) %>
+        </div>
+        <% end %>
+    </div>
+</div>

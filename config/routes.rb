@@ -1,17 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'photos/index'
-
-  get 'photos/show'
-
-  get 'photos/new'
-
-  get 'photos/create'
-
-  get 'photos/destroy'
-
-  get 'posts/index'
-
   root 'users#new'
 
   resources :users do
@@ -24,6 +12,11 @@ Rails.application.routes.draw do
               end
     resources :comments,
               only: [:create, :destroy],
+              shallow: true do
+                resources :likes, only: [:create, :destroy], shallow: true
+              end
+    resources :photos,
+              only: [:index, :new, :create, :destroy, :show],
               shallow: true do
                 resources :likes, only: [:create, :destroy], shallow: true
               end

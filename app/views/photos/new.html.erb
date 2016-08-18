@@ -1,2 +1,6 @@
-<h1>Photos#new</h1>
-<p>Find me in app/views/photos/new.html.erb</p>
+<h1>New Photo</h1>
+
+<%= form_for @photo, url: user_photos_path(@user) do |photo_fields| %>
+  <%= photo_fields.file_field :image %>
+  <%= photo_fields.submit %>
+<% end %>

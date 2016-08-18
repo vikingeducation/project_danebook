@@ -11,7 +11,6 @@ class Activity < ApplicationRecord
     a = Activity.new(author_id: user.id,
     postable_type: "Comment", postable_id: c.id)
     a.save
-    c
   end
 
 end

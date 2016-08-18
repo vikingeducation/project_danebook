@@ -8,7 +8,6 @@ class LikingsController < ApplicationController
 
   def destroy
     @liking = Liking.find(params[:id])
-    @activity = @liking.likeable
     @user = @liking.user
     if @user.id == current_user.id
       @liking.destroy

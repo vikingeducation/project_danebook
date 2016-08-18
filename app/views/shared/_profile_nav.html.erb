@@ -35,7 +35,15 @@
       <h4><%= link_to "Friends", user_friends_path(@page_owner), class: "main-nav" %> </h4>
     </div>
     <div class="col-xs-2">
-      <%= link_to "Edit Profile", user_about_edit_path(@page_owner), class: "float-right" %>
+      <% if current_user == @page_owner %> 
+        <%= link_to "Edit Profile", user_about_edit_path(@page_owner), class: "float-right" %>
+      <% elsif signed_in_user? && @friendship %>
+        <%= link_to "Unfriend", user_friendship_path(@page_owner, @friendship), method: "DELETE" %>
+      <% elsif signed_in_user? %>
+        <%= link_to "Add Friend", user_friendships_path, method: "POST" %>
+      <% else %>
+        <p class="float-right">Sign up to start adding friends!</p>
+      <% end %>
     </div>
   </div>  
 </main>

@@ -16,6 +16,8 @@ Rails.application.routes.draw do
 
     resources :posts, :only => [:create, :update, :destroy, :index]
     get '/timeline', to: "posts#index"
+    
+    resources :friendships, :only => [:create, :destroy]
 
   end
 
@@ -24,7 +26,6 @@ Rails.application.routes.draw do
     resources :likes, :only => [:create, :destroy]
   end
 
-  resources :friendships, :only => [:create, :destroy]
 
 
 

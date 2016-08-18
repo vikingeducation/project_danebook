@@ -9,27 +9,25 @@ class StaticPagesController < ApplicationController
   end
 
   def timeline
-    page_owner
-    get_user_and_profile
+    set_instance_variables
   end
 
   def friends
-    page_owner    
+    set_instance_variables
+        
   end
 
   def about
-    get_user_and_profile
-    @profile = page_owner.profile
-    get_random_backup_user_and_profile
+    set_instance_variables
+    @profile = @page_owner.profile
   end
 
   def photos
-    page_owner
+    set_instance_variables
   end
 
   def about_edit
-    page_owner
-    get_user_and_profile
+    set_instance_variables
   end
 
 

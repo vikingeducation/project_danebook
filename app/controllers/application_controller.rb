@@ -58,15 +58,15 @@ class ApplicationController < ActionController::Base
     @page_owner = User.find(params[:user_id])
   end
 
-  def get_user_and_profile
+  def friendship
+    @friendship = Friendship.where("(friender_id = #{current_user.id} AND friended_id = #{@page_owner.id}) OR (friended_id = #{current_user.id} AND friender_id = #{@page_owner.id})").first
+  end
+
+  def set_instance_variables
     @user = current_user
     @profile = @user.profile if @user
+    page_owner
+    friendship
   end
-
-  def get_random_backup_user_and_profile
-    @user ||= User.all.sample
-    @profile ||= @user.profile
-  end
-
   
 end

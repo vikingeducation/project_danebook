@@ -7,8 +7,8 @@ class PostsController < ApplicationController
     @posts = User.find(params[:user_id]).posts.order("created_at DESC")
     @profile = @user.profile
     @post = @user.posts.build
-
-  end
+    set_instance_variables
+  end 
 
   def show
     @user = current_user

@@ -8,13 +8,14 @@ class FriendshipsController < ApplicationController
     else
       flash[:error] = "You failed to befriended #{friendship_recipient.name}. We're working to solve this problem as soon as we can."
     end
-    redirect_to friendship_recipient
+    redirect_to user_timeline_path(friendship_recipient)
   end
 
   def destroy
     unfriended_user = User.find(params[:user_id])
-    current_user.friended_users.dlete(unfriended_user)
-    redirect_to unfriended_user
+    current_user.friended_users.delete(unfriended_user)
+    flash[:success] = "You are no longer friends with #{unfriended_user.name}."
+    redirect_to user_timeline_path(unfriended_user)
   end
 
 end

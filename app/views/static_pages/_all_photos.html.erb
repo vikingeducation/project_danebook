@@ -1,0 +1,104 @@
+<main class="container">
+  <header class="row">
+    <%= render partial: 'static_pages/masthead', locals: { user: user } %>
+  </header>
+
+      <div class="row">
+        <div class="col-md-12 panel">
+            <h1 class="panel-header">
+              <div class="row">
+                <div class="col-md-2 col-md-offset-5" style="text-align:center">
+                  Photos
+                </div>
+                <div class="col-md-2 col-md-offset-3">
+                  <% if @photos.empty? && @user == current_user %>
+                    <h1>Looks like you don't have any photos yet. Upload one!</h1>
+                    <%= link_to "Upload a photo", new_photo_path, class: "btn btn-primary btn-md" %>
+                  <% end %>
+                </div>
+              </div>
+            </h1>
+            <div class="row panel-content">
+              <div class="col-md-3">
+              <% @photos.each do |photo| %>
+                <%= render partial: "shared/photo_container", locals: { photo: photo } %>
+                <div class="photo-container">
+                  <a href="#"><img src="icon_photo_small.png" height="256px" width="256px"></a>
+                  <p class="photo-text">Uploaded January 1, 2016</p>
+                </div>
+                <div class="photo-container">
+                  <a href="#"><img src="icon_photo_small.png" height="256px" width="256px"></a>
+                  <p class="photo-text">Uploaded January 1, 2016</p>
+                </div>
+                <div class="photo-container">
+                  <a href="#"><img src="icon_photo_small.png" height="256px" width="256px"></a>
+                  <p class="photo-text">Uploaded January 1, 2016</p>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="photo-container">
+                  <a href="#"><img src="icon_photo_small.png" height="256px" width="256px"></a>
+                  <p class="photo-text">Uploaded January 1, 2016</p>
+                </div>
+                <div class="photo-container">
+                  <a href="#"><img src="icon_photo_small.png" height="256px" width="256px"></a>
+                  <p class="photo-text">Uploaded January 1, 2016</p>
+                </div>
+                <div class="photo-container">
+                  <a href="#"><img src="icon_photo_small.png" height="256px" width="256px"></a>
+                  <p class="photo-text">Uploaded January 1, 2016</p>
+                </div>
+                <div class="photo-container">
+                  <a href="#"><img src="icon_photo_small.png" height="256px" width="256px"></a>
+                  <p class="photo-text">Uploaded January 1, 2016</p>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="photo-container">
+                  <a href="#"><img src="icon_photo_small.png" height="256px" width="256px"></a>
+                  <p class="photo-text">Uploaded January 1, 2016</p>
+                </div>
+                <div class="photo-container">
+                  <a href="#"><img src="icon_photo_small.png" height="256px" width="256px"></a>
+                  <p class="photo-text">Uploaded January 1, 2016</p>
+                </div>
+                <div class="photo-container">
+                  <a href="#"><img src="icon_photo_small.png" height="256px" width="256px"></a>
+                  <p class="photo-text">Uploaded January 1, 2016</p>
+                </div>
+                <div class="photo-container">
+                  <a href="#"><img src="icon_photo_small.png" height="256px" width="256px"></a>
+                  <p class="photo-text">Uploaded January 1, 2016</p>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="photo-container">
+                  <a href="#"><img src="icon_photo_small.png" height="256px" width="256px"></a>
+                  <p class="photo-text">Uploaded January 1, 2016</p>
+                </div>
+                <div class="photo-container">
+                  <a href="#"><img src="icon_photo_small.png" height="256px" width="256px"></a>
+                  <p class="photo-text">Uploaded January 1, 2016</p>
+                </div>
+                <div class="photo-container">
+                  <a href="#"><img src="icon_photo_small.png" height="256px" width="256px"></a>
+                  <p class="photo-text">Uploaded January 1, 2016</p>
+                </div>
+                <div class="photo-container">
+                  <a href="#"><img src="icon_photo_small.png" height="256px" width="256px"></a>
+                  <p class="photo-text">Uploaded January 1, 2016</p>
+                </div>
+              </div>
+                <%= link_to "Upload another photo", new_photo_path %>
+              <% end %>
+            </div>
+        </div>
+      </div>
+    </main>
+
+<%= link_to 'Sign out', logout_path, method: :delete%>
+</main>
+
+
+
+

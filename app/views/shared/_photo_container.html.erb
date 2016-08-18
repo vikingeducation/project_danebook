@@ -1,0 +1,7 @@
+<div class="photo-container">
+<%=
+  image = image_tag "#{photo_serve_path(photo)}"
+  link_to image, photo_path(photo), style: { height: "256px", width: "256px" }
+%><br>
+<%= content_tag :p, "Uploaded #{photo.created_at}", class: "photo-text" %>
+</div>

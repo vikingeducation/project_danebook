@@ -1,10 +1,1 @@
-<% if @photos.empty? && @user == current_user %>
-  <h1>Looks like you don't have any photos yet. Upload one!</h1>
-  <%= link_to "Upload a photo", new_photo_path %>
-<% else %>
-  <% @photos.each do |photo| %>
-    <h3>See this photo</h3>
-    <%= link_to "View photo", photo_path(photo) %><br>
-    <%= link_to "Upload another photo", new_photo_path %>
-  <% end %>
-<% end %>
+<%= render partial: 'static_pages/all_photos', locals: { user: @user, photos: @photos } %>

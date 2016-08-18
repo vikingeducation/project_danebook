@@ -7,6 +7,9 @@ FactoryGirl.define do
     password    "foobazbar"
     gender      "male"
     
+    trait :with_auth_token do 
+      auth_token SecureRandom.urlsafe_base64
+    end    
   end
 
 end

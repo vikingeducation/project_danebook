@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   before_create :generate_token
+  after_create :profile
 
   has_secure_password
   validates :email, 

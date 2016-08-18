@@ -27,10 +27,10 @@
               <h5>About (Text Area)</h5>
             </div>
             <div class="col-xs-12 timeline-content">
-              <p><b>Born on:</b> <%= real_user.profile.birthday.strftime("%m/%d/%Y") if real_user.profile.birthday%></p>
-              <p><b>Went to school at:</b> <%= real_user.profile.college %></p>
-              <p><b>Hometown:</b> <%= real_user.profile.hometown %></p>
-              <p><b>Currently Lives:</b> <%= real_user.profile.currently_lives %></p>
+              <p><b>Born on:</b> <%= @timeline_user.profile.birthday.strftime("%m/%d/%Y") if @timeline_user.profile.birthday != nil %></p>
+              <p><b>Went to school at:</b> <%= @timeline_user.profile.college %></p>
+              <p><b>Hometown:</b> <%= @timeline_user.profile.hometown %></p>
+              <p><b>Currently Lives:</b> <%= @timeline_user.profile.currently_lives %></p>
             </div>
             <!-- User's Photos -->
             <div class="col-xs-12 timeline-title" id="timeline-friends-photos">

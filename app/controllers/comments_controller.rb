@@ -5,10 +5,10 @@ class CommentsController < ApplicationController
     @comment = current_user.comments_written.new(body: comment_params[:body], commentable_id: params[:post_id], commentable_type: "Post")
     if @comment.save!
       flash[:success] = "Your comment has been posted"
-      redirect_to :back
+      redirect_back(fallback_location: root_path)
     else
       flash[:danger] = "Your comment could not be posted"
-      redirect_to :back
+      redirect_back(fallback_location: root_path)
     end
   end
 
@@ -17,10 +17,10 @@ class CommentsController < ApplicationController
     @comment = Comment.find(params[:id])
     if current_user.id == @comment.user_id && @comment.destroy!
       flash[:success] = "Your comment has been deleted"
-      redirect_to :back
+      redirect_back(fallback_location: root_path)
     else
       flash[:danger] = "Your comment could not be deleted"
-      redirect_to :back
+      redirect_back(fallback_location: root_path)
     end
 
   end

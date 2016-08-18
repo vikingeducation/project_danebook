@@ -22,9 +22,6 @@ describe Profile do
 
   it { should validate_length_of(:about_me).is_at_most(300).on(:update)}
 
-  it "has a date that is not in the future" do
-    expect(profile.birthday < Time.now).to be true
-  end
 
   it { should validate_length_of(:telephone).is_at_most(15).on(:update)}
 

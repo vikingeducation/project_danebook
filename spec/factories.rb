@@ -3,6 +3,7 @@ FactoryGirl.define do
   factory :user do
     email "foobar@foo.com"
     password "foobar"
+    password_confirmation "foobar"
   end
 
   factory :post do
@@ -28,7 +29,6 @@ FactoryGirl.define do
     currently_lives "Boston"
     words_to_live_by "hello hello hello"
     about_me "goodbye goodbye goodbye"
-    birthday "Sun, 14 Aug 2016"
     telephone "1234567890"
   end
 

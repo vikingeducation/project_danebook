@@ -6,12 +6,12 @@ class PostsController < ApplicationController
     @post = current_user.posts_written.new(post_params)
     @post.post_receiver_id = session[:receiver_id]
     session[:receiver_id] = nil
-    if @post.save!
+    if @post.save
       flash[:success] = "Your message has been posted!"
-      redirect_to :back
+      redirect_back(fallback_location: root_path)
     else
-      flash.now[:danger] = "Your message could not be posted :("
-      render :back
+      flash[:danger] = "Your message could not be posted :("
+      redirect_back(fallback_location: root_path)
     end
   end
 
@@ -27,10 +27,10 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     if current_user.id == @post.post_author_id && @post.destroy
       flash[:success] = "Your post has been deleted"
-      redirect_to :back
+      redirect_back(fallback_location: root_path)
     else
       flash[:danger] = "Your post could not be deleted"
-      redirect_to :back
+      redirect_back(fallback_location: root_path)
     end
   end
 

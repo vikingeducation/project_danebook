@@ -34,6 +34,10 @@ gem 'bcrypt', '~> 3.1.7'
 
 group :test do
   gem 'shoulda-matchers', '~> 3.1'
+  gem 'capybara'
+  gem 'launchy'
+  gem 'rails-controller-testing'
+  gem 'pry'
 end
 
 group :development, :test do

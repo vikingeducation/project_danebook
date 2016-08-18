@@ -51,7 +51,7 @@ class ApplicationController < ActionController::Base
   helper_method :real_user
 
   def user_header_name(user_id)
-    "#{User.find(user_id).profile.first_name} #{User.find(user_id).profile.last_name}"
+    "#{User.find(user_id).profile.first_name} #{User.find(user_id).profile.last_name}" if User.find(user_id).profile
   end
   helper_method :user_header_name
 

@@ -3,6 +3,8 @@
   <%= link_to "Upload a photo", new_photo_path %>
 <% else %>
   <% @photos.each do |photo| %>
-    <%= @photo %><br>
+    <h3>See this photo</h3>
+    <%= link_to "View photo", photo_path(photo) %><br>
+    <%= link_to "Upload another photo", new_photo_path %>
   <% end %>
 <% end %>

@@ -1,6 +1,6 @@
 class PhotosController < ApplicationController
   skip_before_action :correct_user
-  
+
   def new
     @photo = current_user.photos.build
   end
@@ -35,14 +35,15 @@ class PhotosController < ApplicationController
     end
   end
 
+  def serve
+    @photo = Photo.find(params[:photo_id])
+    send_data @photo.data, type: @photo.mime_type, filename: "#{@photo.filename}.jpg}", disposition: "inline"
+  end
+
   private
 
     def photo_params
       params.require(:photo).permit(:photo_data)
     end
 
-    def serve
-      @photo = Photo.find(params[:id])
-      send_data @photo.data, type: @photo.mime_type, filename: "#{@photo.filename}.jpg}", disposition: "inline"
-    end
 end

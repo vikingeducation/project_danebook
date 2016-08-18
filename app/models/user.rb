@@ -10,6 +10,19 @@ class User < ActiveRecord::Base
   has_many :comments
   accepts_nested_attributes_for :comments
 
+
+
+  # for sending friend requests
+
+  has_many :initiated_friendships, class_name: "Friendship", foreign_key: :friender_id
+  has_many :friended_users, through: :initiated_friendships, source: :friend_recipient
+
+  # for being sent a friend request
+
+  has_many :received_friendships, class_name: "Friendship", foreign_key: :friended_id
+  has_many :users_friended_by, through: :received_friendships, source: :friend_initiator
+
+
   validates :first_name, :presence => true
   validates :last_name, :presence => true
   validates :email, :presence => true, :uniqueness => true

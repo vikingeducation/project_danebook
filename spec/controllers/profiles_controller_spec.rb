@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'pry'
 
 describe ProfilesController do 
 
@@ -19,7 +20,7 @@ describe ProfilesController do
         profile.reload
         expect(profile.college).to eq("zoo school")
       end
-
+      binding.pry
       it "produces a flash upon update" do
         patch :update, user_id: user.id, profile: { college: "zoo school" }
         assert_equal flash[:success], "Your \"About\" page was updated."

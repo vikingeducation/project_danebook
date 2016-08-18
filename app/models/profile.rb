@@ -13,5 +13,7 @@ class Profile < ApplicationRecord
   validates :year, numericality: true
   validates_inclusion_of :year, in: (1900..2016)
 
+  
+
   validates_inclusion_of :gender, in: %w(male female)
 end

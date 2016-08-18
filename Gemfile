@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+gem 'rails-controller-testing'
 gem 'simple_form'
 gem 'taps'
 gem 'pg'

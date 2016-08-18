@@ -38,10 +38,10 @@ class ApplicationController < ActionController::Base
     helper_method :current_user
 
     def signed_in_user?
-    !!current_user
-  end
-
-  helper_method :signed_in_user?
+      !!current_user
+    end
+    
+    helper_method :signed_in_user?
 
 
 end

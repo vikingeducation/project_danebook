@@ -1,13 +1,11 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update]
-
-  def index
-    @users = User.all
-  end
+  before_action :set_user, only: [:edit, :update]
+  # before_action :require_login, only: [:show]
 
   def show
+    @user = User.find(params[:id])
     @post = Post.new
-    @posts = current_user.posts
+    @posts = @user.posts
   end
 
   def new
@@ -19,7 +17,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(whitelisted_user_params)
-    @profile = @user.build_profile(whitelisted_profile_params)
+    # @profile = @user.build_profile(whitelisted_profile_params)
     if @user.save
       sign_in(@user)
       flash[:success] = "User was saved in database"

@@ -1,0 +1,8 @@
+<% if @photos.empty? && @user == current_user %>
+  <h1>Looks like you don't have any photos yet. Upload one!</h1>
+  <%= link_to "Upload a photo", new_photo_path %>
+<% else %>
+  <% @photos.each do |photo| %>
+    <%= @photo %><br>
+  <% end %>
+<% end %>

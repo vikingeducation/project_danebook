@@ -20,10 +20,11 @@ class User < ActiveRecord::Base
   has_one :profile, dependent: :destroy
   belongs_to :timeline
 
-  # Posts, Comments, and Likes.
+  # Posts, Comments, Likes, and Photos.
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :nullify
   has_many :likes, dependent: :nullify
+  has_many :photos, dependent: :nullify
 
 
   # Friends.

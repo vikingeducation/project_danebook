@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
 
+  get 'photos/new'
+
+  get 'photos/create'
+
+  get 'photos/destroy'
+
   get 'static_pages/home'
 
   get 'profiles/update'
@@ -16,6 +22,10 @@ Rails.application.routes.draw do
   resources :users
 
   resources :posts
+
+  resources :photos do
+    get 'serve'
+  end
 
   resources :comments
   

@@ -22,14 +22,13 @@ describe 'friends/index.html.erb' do
       create(:profile, user: to_friend)
       user.friended_users << to_friend
     end
+    user.save
     user.reload
-    visit(user_friends_path(user))
-    #render
-    page.assert_selector('.friend-box', :count => 7)
-    #expect(page.all(:css, '.friend-box').size).to eq(7)
+    render
+    expect(rendered).to have_selector('.friend-box', count: 7)
   end
 
-  it "shows the number of friends" do
+  xit "shows the number of friends" do
 
   end
 

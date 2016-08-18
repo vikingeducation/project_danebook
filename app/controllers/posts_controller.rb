@@ -10,7 +10,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    post = current_user.posts.find(params[:post_id])
+    post = current_user.posts.find(params[:id])
     post.delete ? flash[:success] = "Deleted Post" : flash[:alert] = "Did Not Delete Post"
     redirect_to current_user
   end

@@ -31,8 +31,6 @@ class UsersController < ApplicationController
   end
 
 
-  def timeline
-  end
 
 private
   def user_params

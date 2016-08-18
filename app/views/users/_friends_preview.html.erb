@@ -6,7 +6,7 @@
     <% user.friended_users.each do |friend| %>
       <div class="col-sm-4 col-md-3">
         <img src="http://placehold.it/80x80">
-        <p><%= link_to "#{friend.full_name}", user_timeline_path(friend), class: "friend-name" %></p>
+        <p><%= link_to "#{friend.full_name}", user_path(friend), class: "friend-name" %></p>
       </div>
     <% end %>
     <div class="col-xs-12 text-center">

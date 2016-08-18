@@ -4,11 +4,13 @@
       <a href="#"><%= image_tag("harry_potter_small.jpg", id: "profile-pic") %></a>
       <div id="user-name-and-link">
         <h1><%= user.full_name %></h1>
-        <% if current_user.id == user.id %>
-        <% elsif current_user.friended_users.pluck(:id).include?(user.id)%>
-          <%= button_to "Unfriend", friending_path(user.id, :current_user_id => current_user.id), :method => :delete, class: "btn btn-primary" %>
-        <% else %>
-          <%= button_to "Friend", friendings_path(:id => user.id, :current_user_id  => current_user.id),:method => "POST", class: "btn btn-primary" %>
+        <% if signed_in_user? %>
+          <% if user.id == current_user.id %>
+          <% elsif current_user.friended_users.pluck(:id).include?(user.id)%>
+            <%= button_to "Unfriend", friending_path(user.id, :current_user_id => current_user.id), :method => :delete, class: "btn btn-primary" %>
+          <% else %>
+            <%= button_to "Friend", friendings_path(:id => user.id, :current_user_id  => current_user.id),:method => "POST", class: "btn btn-primary" %>
+          <% end %>
         <% end %>
       </div>
     </div>
@@ -18,16 +20,18 @@
       <ul class="nav nav-pills nav-justified">
         <li role="presentation" class="<%= "active-tab" if controller.action_name == 'show' %>"><%= link_to "Timeline", user_path(user) %></li>
         <li role="presentation"><%= link_to "About", user_profile_path(user) %></li>
-        <li role="presentation" class="<%= "active-tab" if controller.action_name == 'photos' %>"><%= link_to user_photos_path(user.id) do %>
+        <li role="presentation" class="<%= "active-tab" if controller.action_name == 'photos' %>">
+          <%= link_to user_photos_path(user.id) do %>
             Photos <span>(123)</span>
-          <% end %></li>
+          <% end %>
+        </li>
         <li role="presentation" class="<%= "active-tab" if controller.action_name == 'friends' %>"><%= link_to user_friends_path(user.id) do %>
           Friends <span>(<%= user.friended_users.count %>)</span>
         <% end %></li>
       </ul>
     </div>
     <!-- Nav Menu -->
-    <% if current_user.id == user.id  %>
+    <% if signed_in_user? && current_user.id == user.id  %>
       <div class="col-sm-3">
         <h5 class="text-right"><%= link_to "Edit Profile", edit_profile_path(@user.profile.id), id: "edit-profile-link" %></h5>
       </div><!-- Edit Profile Link -->

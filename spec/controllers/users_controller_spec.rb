@@ -28,7 +28,7 @@ describe UsersController do
     context "POST #create" do
       it 'redirects to the new users show page' do
         post :create, user: attributes_for(:user)
-        expect(response).to redirect_to user_timeline_path(assigns(:user))
+        expect(response).to redirect_to user_path(assigns(:user))
       end
     end
   end

@@ -23,7 +23,7 @@ feature 'Post' do
 
     scenario "cannot make post when not logged in" do
       sign_out
-      visit user_timeline_path(user)
+      visit user_path(user)
       expect(page).not_to have_css("form.new_comment")
     end
 
@@ -49,9 +49,9 @@ feature 'Post' do
 
     scenario "user not signed in cannot delete a post from a timeline" do
       sign_out
-      visit user_timeline_path(user)
+      visit user_path(user)
 
-      expect(page).not_to have_css("form.button_to")
+      expect(page).not_to have_text("Delete")
     end
   end
 
@@ -62,14 +62,14 @@ feature 'Post' do
 
     scenario "signed in user can like a post on her timeline" do
       make_post_on_own_timeline
-      visit user_timeline_path(user)
+      visit user_path(user)
       click_button "Like"
       expect(page).to have_css ".unlike-class"
     end
 
     scenario "user can like then unlike a post" do
       make_post_on_own_timeline
-      visit user_timeline_path(user)
+      visit user_path(user)
       click_button "Like"
       expect(page).to have_css ".unlike-class"
       click_button "Unlike"

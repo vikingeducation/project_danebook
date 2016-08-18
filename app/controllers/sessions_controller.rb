@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
   def new
     if current_user
       flash[:success] = "Welcome back #{current_user.first_name}"
-      redirect_to user_timeline_path(current_user)
+      redirect_to user_path(current_user)
     else
       @user = User.new
     end

@@ -3,53 +3,36 @@ class UsersController < ApplicationController
   before_action :require_login, :except => [:index, :new, :create, :show]
   before_action :require_current_user, :only => [:edit, :update, :destroy]
 
-
-
-# GET /users
-# GET /users.json
 def index
   @users = User.all
 end
 
-# GET /users/1
-# GET /users/1.json
 def show
-  redirect_to user_profile_path(@user.id, @user.profile.id)
+  @posts = @user.recent_user_posts
+  @post = @user.posts.build
 end
 
-# GET /users/new
 def new
   redirect_to login_path
 end
 
-# GET /users/1/edit
 def edit
 end
 
-# POST /users
-# POST /users.json
 def create
   @user = User.new(user_params)
 
-  respond_to do |format|
-    if @user.save
-      sign_in(@user)
-      format.html { redirect_to user_timeline_path(@user), notice: 'User was successfully created.' }
-      format.json { render :show, status: :created, location: @user }
-    else
-      format.html { render "/sessions/new" }
-      format.json { render json: @user.errors, status: :unprocessable_entity }
-    end
+  if @user.save
+    sign_in(@user)
+    redirect_to user_path @user
+  else
+    redirect_to login_path
   end
 end
 
-# PATCH/PUT /users/1
-# PATCH/PUT /users/1.json
 def update
 end
 
-# DELETE /users/1
-# DELETE /users/1.json
 def destroy
 end
 

@@ -1,18 +1,12 @@
 Rails.application.routes.draw do
-  # root 'static_pages#timeline'
   root 'sessions#new'
-  resources :static_pages
 
   resource :session, :only => [:new, :create, :destroy]
   get "/login" => "sessions#new"
   get "/logout" => "sessions#destroy"
   delete "/logout" => "sessions#destroy"
   resources :users do
-    get "timeline" => "static_pages#timeline"
-    # TODO: better to elim static_pages and put timeline as the user show page??  Don't like the extra static_pages controller that isn't being used much except for timeline
     resource :profile, only: [:show]
-    # resources :profiles, only: [:show]
-    # resources :profiles, only: [:edit, :update], shallow: true
     get "friends"    => "static_pages#friends"
     get "photos"    => "static_pages#photos"
   end
@@ -25,7 +19,7 @@ Rails.application.routes.draw do
   resources :comments, only: [:create, :destroy] do
     resources :likes, only: [:create], :defaults => { :likeable => 'Comment'}
   end
-  resources :likes, only: [:destroy], :defaults => { :likeable => 'Post'}
+  resources :likes, only: [:destroy]
   resources :friendings, :only => [:create, :destroy]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

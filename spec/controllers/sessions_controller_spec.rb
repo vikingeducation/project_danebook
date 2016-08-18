@@ -32,7 +32,7 @@ describe SessionsController do
 
     it 'GET #new redirects to root url' do
       get :new
-      expect(response).to redirect_to user_timeline_path(user)
+      expect(response).to redirect_to user_path(user)
     end
 
     it 'DELETE #destroy logouts user' do

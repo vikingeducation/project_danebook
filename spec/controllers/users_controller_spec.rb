@@ -2,24 +2,6 @@ require 'rails_helper'
 
 describe UsersController do
   let!(:user) { build(:user) }
-  let(:assigned_vars) {
-
-    expect(assigns(:user)).to be_a(User)
-    expect(assigns(:profile)).to be_a(Profile)
-    expect(assigns(:cities)).to_not be_nil
-    expect(assigns(:states)).to_not be_nil
-    expect(assigns(:countries)).to_not be_nil
-
-  }
-  let(:unassigned_vars) {
-
-    expect(assigns(:user)).to be_nil
-    expect(assigns(:profile)).to be_nil
-    expect(assigns(:cities)).to be_nil
-    expect(assigns(:states)).to be_nil
-    expect(assigns(:countries)).to be_nil
-
-  }
   let(:creating_user) {
 
     post :create, user: { 
@@ -148,7 +130,11 @@ describe UsersController do
 
       it 'sets the user, profile, city, state, and country instance variables' do
 
-        assigned_vars
+        expect(assigns(:user)).to be_a(User)
+        expect(assigns(:profile)).to be_a(Profile)
+        expect(assigns(:cities)).to_not be_nil
+        expect(assigns(:states)).to_not be_nil
+        expect(assigns(:countries)).to_not be_nil
 
       end
 
@@ -171,7 +157,11 @@ describe UsersController do
 
       it 'does not set the user, profile, city, state, and country instance variables' do
 
-        unassigned_vars
+        expect(assigns(:user)).to be_nil
+        expect(assigns(:profile)).to be_nil
+        expect(assigns(:cities)).to be_nil
+        expect(assigns(:states)).to be_nil
+        expect(assigns(:countries)).to be_nil
 
       end
 
@@ -203,7 +193,11 @@ describe UsersController do
 
       it 'does not set the user, profile, city, state, and country instance variables' do
 
-        unassigned_vars
+        expect(assigns(:user)).to be_nil
+        expect(assigns(:profile)).to be_nil
+        expect(assigns(:cities)).to be_nil
+        expect(assigns(:states)).to be_nil
+        expect(assigns(:countries)).to be_nil
 
       end
 

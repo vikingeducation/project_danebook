@@ -1,0 +1,23 @@
+<section class="row section-container">
+  <div class="col-sm-12 section-header">
+    <div class="row">
+      <div class="col-sm-6 col-sm-offset-3 text-center">
+        <h4>Photos</h4>
+      </div>
+    </div>
+  </div>
+  <%= form_for @user.photo_posts.last do |f| %>
+    <div class="row">
+      <div class="col-xs-8 col-xs-offset-2 section-container whiteness text-center form-group">
+        <%= f.file_field(:file, class: "form-control btn-block") %>
+      </div>
+    </div>
+    <div class="col-sm-12 section-header post-block">
+      <div class="row">
+        <div class="col-sm-3 col-sm-offset-8">
+          <%= f.submit(class: "btn btn-primary btn-block") %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</section>

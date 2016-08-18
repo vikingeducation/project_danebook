@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160813211951) do
+ActiveRecord::Schema.define(version: 20160818232446) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20160813211951) do
     t.integer  "user_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.integer  "photo_id"
   end
 
   create_table "feeds", force: :cascade do |t|
@@ -48,9 +49,29 @@ ActiveRecord::Schema.define(version: 20160813211951) do
     t.string   "likeable_type"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
+    t.integer  "photo_id"
   end
 
   add_index "likes", ["likeable_type", "likeable_id"], name: "index_likes_on_likeable_type_and_likeable_id", using: :btree
+
+  create_table "photos", force: :cascade do |t|
+    t.text     "description"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
+    t.integer  "user_id"
+  end
+
+  create_table "postings", force: :cascade do |t|
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "user_id"
+    t.string   "postable_type"
+    t.integer  "postable_id"
+  end
 
   create_table "posts", force: :cascade do |t|
     t.string   "description", null: false
@@ -82,6 +103,8 @@ ActiveRecord::Schema.define(version: 20160813211951) do
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.string   "auth_token"
+    t.integer  "profile_pic_id"
+    t.integer  "cover_pic_id"
   end
 
   add_index "users", ["auth_token"], name: "index_users_on_auth_token", unique: true, using: :btree

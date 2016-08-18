@@ -6,12 +6,17 @@ Rails.application.routes.draw do
   get "/logout" => "sessions#destroy"
   delete "/logout" => "sessions#destroy"
   get "/login" => "users#new"
-  resources :users, only: [:index, :show, :create] do
+
+  resources :users, only: [:index, :show, :create, :update] do
     resource :profile, only: [:show]
-    get "friends"    => "static_pages#friends"
-    get "photos"    => "static_pages#photos"
+    resources :photos, only: [:new, :index, :edit, :show]
+    resources :friendings, only: [:index]
   end
+
+  resources :photos, only: [:create, :update, :destroy]
+
   resource :profile, only: [:edit, :update]
+
   resources :posts, only: [:create, :update, :destroy] do
     resources :likes, only: [:create], :defaults => { :likeable => 'Post'}
     resources :comments, only: [:new, :create]
@@ -20,7 +25,9 @@ Rails.application.routes.draw do
   resources :comments, only: [:create, :destroy] do
     resources :likes, only: [:create], :defaults => { :likeable => 'Comment'}
   end
+
   resources :likes, only: [:destroy]
+
   resources :friendings, :only => [:create, :destroy]
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

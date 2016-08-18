@@ -34,6 +34,19 @@ def create
 end
 
 def update
+  if signed_in_user?
+    session[:return_to] = request.referer
+    @user = User.find(params[:id])
+    if @user.update(user_params)
+      flash[:success] = "Sucessfully updated your picture"
+      redirect_to session[:return_to]
+    else
+      flash[:error] = "Failed to update picture"
+      render
+    end
+  else
+    redirect_to login_path
+  end
 end
 
 def destroy
@@ -54,7 +67,9 @@ end
                 :email,
                 :password,
                 :password_confirmation,
-                :birth_date)
+                :birth_date,
+                :profile_pic_id,
+                :cover_pic_id)
     end
 
     def require_current_user

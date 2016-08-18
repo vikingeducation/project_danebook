@@ -1,0 +1,23 @@
+<div id="static_pages">
+	<%= render 'navbar' %>
+
+	<%= render 'banner', user: @user %>
+
+	<div class="container section-container">
+		<div class="row section-header">
+			<div class="col-sm-8 col-sm-offset-2">
+				<h2 class="text-center">Photos</h2>
+			</div>
+			<div class="col-sm-2 edit-btn">
+				<% if current_user == @user %>
+					<%= link_to "Add Photo", new_user_photo_path, class: "btn btn-primary btn-block" %>
+				<% end %>
+			</div>
+		</div>
+		<div class="row">
+			<% @photos.each do |photo| %>
+				<%= render 'photo', photo: photo, user: @user %>
+			<% end %>
+		</div><!-- Photo Wrapper -->
+	</div><!-- Contentt Section -->
+</div>

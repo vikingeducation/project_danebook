@@ -8,10 +8,15 @@ class PhotosController < ApplicationController
   def index
     @user = User.find(params[:id])
     @photos = @user.photos
+    @like = Like.new(user_id: current_user.id)
+    @comment = Comment.new(user_id: current_user.id)
   end
 
   def show
     @photo = Photo.find(params[:id])
+    @user = @photo.user
+    @comment = Comment.new(user_id: current_user.id)
+    @like = Like.new(user_id: current_user.id)
   end
 
   def create
@@ -21,6 +26,24 @@ class PhotosController < ApplicationController
     else
       flash[:danger] = "Photo couldn't be saved."
       redirect_to new_photo_path
+    end
+  end
+
+  def update
+    @photo = Photo.find(params[:id])
+    @user = @photo.user
+    if @photo.update(photo_params)
+      if photo_params[:comments_attributes]
+        flash[:success] = "Added a comment."
+      elsif photo_params[:likes_attributes]
+        flash[:success] = "You've liked this post!"
+      else
+        flash[:success] = "Photo updated."
+      end
+      redirect_to @user.timeline
+    else
+      flash[:danger] = "Couldn't update this post."
+      redirect_to @user.timeline
     end
   end
 
@@ -43,7 +66,9 @@ class PhotosController < ApplicationController
   private
 
     def photo_params
-      params.require(:photo).permit(:photo_data)
+      params.require(:photo).permit(:photo_data,
+                                   { comments_attributes: [:user_id,:body] },
+                                   { likes_attributes: [:user_id,:_destroy] })
     end
 
 end

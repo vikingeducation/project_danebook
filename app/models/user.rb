@@ -1,6 +1,5 @@
 class User < ApplicationRecord
   before_create :generate_token
-  after_create :profile
 
   has_secure_password
   validates :email, 
@@ -16,6 +15,11 @@ class User < ApplicationRecord
   has_many :posts_received, :foreign_key => :post_receiver_id, :class_name => "Post"
   has_many :comments_written, :foreign_key => :user_id, :class_name => "Comment"
   has_many :likes_given, :foreign_key => :user_id, :class_name => "Like"
+  has_many :initiated_friendings, :foreign_key => :friender_id, :class_name => "Friending"
+  has_many :friended_users, :through => :initiated_friendings, :source => :friend_recipient
+
+  has_many :received_friendings, :foreign_key => :friended_id, :class_name => "Friending"
+  has_many :users_friended_by, :through => :received_friendings, :source => :friend_initiator
 
   def generate_token
     begin

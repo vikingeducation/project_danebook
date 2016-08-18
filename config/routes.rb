@@ -19,6 +19,7 @@ Rails.application.routes.draw do
   end
 
   resource :session, only: [ :new, :create, :destroy ]
+  resources :friendings, only: [:create, :destroy]
 
   get '/friends' => "static_pages#friends"
   get '/photos' => "static_pages#photos"

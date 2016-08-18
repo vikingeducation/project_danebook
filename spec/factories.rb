@@ -1,4 +1,7 @@
 FactoryGirl.define do
+  factory :friending do
+    
+  end
 
   factory :user do
     email "foobar@foo.com"

@@ -14,9 +14,13 @@
         <div class="col-sm-2" id="single-profile-tab">
           <%= link_to "Friends (542)", user_friend_path(real_user_id), class: "h6" %>
         </div>
-        <% if real_user_id == current_user.id.to_s %>
         <div class="col-sm-3" id="edit-profile-tab">
-          <%= link_to "Edit Profile", edit_user_path(real_user_id), class: "h6" %>
+        <% if real_user_id == current_user.id.to_s %>
+            <%= link_to "Edit Profile", edit_user_path(real_user_id), class: "h6" %>
+        <% elsif current_user.friended_users.include?(real_user) %>
+            <%= link_to "Unfriend #{real_user.profile.first_name}", friending_path(real_user_id), method: 'delete', class: "btn btn-primary btn-xs friend-button", role: "button" %>
+        <% else %>
+            <%= link_to "Friend #{real_user.profile.first_name}", friendings_path(friended_id: real_user_id), method: :post, class: "btn btn-primary btn-xs unfriend-button", role: "button" %>
         <% end %>
         </div>
       </div>

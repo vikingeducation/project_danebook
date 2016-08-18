@@ -6,7 +6,7 @@ class User < ApplicationRecord
             :length => {:in => 8..24}, 
             :allow_nil => true
 
-  validates :email, :uniqueness => true
+  validates :email, uniqueness: {case_sensitive: false}
   validates_format_of :email, :with => /@/
 
   has_one :profile, inverse_of: :user
@@ -39,6 +39,17 @@ class User < ApplicationRecord
 
   def name
     profile.first_name
+  end
+
+  def display_errors(attribute)
+    message = ""
+    if self.errors[attribute].any?
+      message += "#{attribute.capitalize}"
+      self.errors[attribute].each do |e|
+        message += " #{e}"
+      end
+    end
+    message
   end
 
 end

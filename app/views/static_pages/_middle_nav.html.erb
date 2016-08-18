@@ -10,7 +10,7 @@
           </button>
           <button type="button" class="btn btn-default <%= 'active' if page == 'photos' %>"><a href="/photos">Photos(123)</a></button>
           <button type="button" class="btn btn-default <%= 'active' if page == 'friends' %>">
-            <%= link_to "Friends(#{user.friended_users.count})", friends_path(:id => user.id) %>
+            <%= link_to "Friends(#{user.friended_users.count})", user_friends_path(user) %>
             </button>
         </div>
       </div>

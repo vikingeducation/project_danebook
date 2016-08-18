@@ -1,152 +1,153 @@
 <div class="container-fluid about-page">
   <%= render :partial => "static_pages/main_nav", :locals => {profile: profile} %>
   <!--main photo-->
- <%= render :partial => "static_pages/main_photo", :locals=>{:profile=> profile} %>
+<%= render :partial => "static_pages/main_photo", :locals=>{:profile=> profile} %>
   
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <!--middle navigation-->
+    <%= render :partial => "static_pages/middle_nav", :locals => {:page=>"timeline", :user => user} %>
   <div class="row">
-    <div class="col-md-10 col-md-offset-1">
-      
-      <!--middle navigation-->
-      <%= render :partial => "static_pages/middle_nav", :locals => {:page=>"timeline", :user => user} %>
-    <div class="row">
-      <!--Left column-->
-      <div class="col-md-5">
-        <!--About Box-->
-        <section class="row box-border">
-          <div class="col-md-12">
-        <div>
-          <h4 class="post-title centered-text">About</h4>
-           <table class="information-table">
-          <tr>
-            <td>Born on:</td>
-            <td>
-              <%= profile.birthday.strftime("%B %-d %Y") %>
-            </td>
-          </tr>
-          <tr>
-            <td>Went to school at:</td>
-             <% if profile.college %>
-              <td><%= profile.college %></td>
-            <% else %>
-              <td>Nothing here yet!</td>
-            <% end %>
-          </tr>
-          <tr>
-            <td>Hometown:</td>
-            <% if profile.hometown %>
-              <td><%= profile.hometown %></td>
-            <% else %>
-              <td>Nothing here yet!</td>
-            <% end %>          
-          </tr>
-          <tr>
-            <td>Currently Lives:</td>
-            <% if profile.currently_lives %>
-              <td><%= profile.currently_lives %></td>
-            <% else %>
-              <td>Nothing here yet!</td>
-            <% end %>
-          </tr>
-        </table>
-        </div><!--post box end-->
-      </div>
-      </section>
-        <!--Photos Box-->
-        <section class="row box-border">
-        <div class="col-md-12">
-          <div class="row box-header">
-            <div class="col-md-12">
-              <h4 class="box-title centered-text">Photos (123)</h4>
-            </div>
-          </div>
-          <!--Row 1-->
-          <div class="row">
-            <div class="col-md-4"><a href="#">
-              <%= image_tag "icon_photo_small.png", alt: "photo", class: "img-responsive" %>
-              </a></div>
-            <div class="col-md-4"><a href="#"> 
-              <%= image_tag "icon_photo_small.png", alt: "photo", class: "img-responsive" %>
-            </a></div>
-            <div class="col-md-4"><a href="#">
-               <%= image_tag "icon_photo_small.png", alt: "photo", class: "img-responsive" %>
-            </a></div>
-          </div><!--Row 1 end-->
-          <!--Row 2-->
-          <div class="row">
-            <div class="col-md-4"><a href="#">
-              <%= image_tag "icon_photo_small.png", alt: "photo", class: "img-responsive" %>
-            </a></div>
-           <div class="col-md-4"><a href="#">
-              <%= image_tag "icon_photo_small.png", alt: "photo", class: "img-responsive" %>
-            </a></div>
-           <div class="col-md-4"><a href="#">
-              <%= image_tag "icon_photo_small.png", alt: "photo", class: "img-responsive" %>
-            </a></div>
-          </div><!--Row 2 end-->
-          <!--Row 3-->
-          <div class="row">
-           <div class="col-md-4"><a href="#">
-              <%= image_tag "icon_photo_small.png", alt: "photo", class: "img-responsive" %>
-            </a></div>
-            <div class="col-md-4"><a href="#">
-              <%= image_tag "icon_photo_small.png", alt: "photo", class: "img-responsive" %>
-            </a></div>
-           <div class="col-md-4"><a href="#">
-              <%= image_tag "icon_photo_small.png", alt: "photo", class: "img-responsive" %>
-            </a></div>
-          </div><!--Row 3 end-->
-        <!--Row 4-->
-        <div class="row centered-text">
-          <button type="button" class="btn btn-link"><a href="photos.html">See more photos</a></button>
-        </div><!--Row 4 end-->
-      </div>
-      </section>
-      <!--Friends Box-->
+    <!--Left column-->
+    <div class="col-md-5">
+      <!--About Box-->
       <section class="row box-border">
         <div class="col-md-12">
-          <div class="row box-header">
-            <div class="col-md-12">
-              <h4 class="box-title centered-text">Friends (<%= user.friended_users.count %>)</h4>
-            </div>
+      <div>
+        <h4 class="post-title centered-text">About</h4>
+         <table class="information-table">
+        <tr>
+          <td>Born on:</td>
+          <td>
+            <%= profile.birthday.strftime("%B %-d %Y") %>
+          </td>
+        </tr>
+        <tr>
+          <td>Went to school at:</td>
+           <% if profile.college %>
+            <td><%= profile.college %></td>
+          <% else %>
+            <td>Nothing here yet!</td>
+          <% end %>
+        </tr>
+        <tr>
+          <td>Hometown:</td>
+          <% if profile.hometown %>
+            <td><%= profile.hometown %></td>
+          <% else %>
+            <td>Nothing here yet!</td>
+          <% end %>          
+        </tr>
+        <tr>
+          <td>Currently Lives:</td>
+          <% if profile.currently_lives %>
+            <td><%= profile.currently_lives %></td>
+          <% else %>
+            <td>Nothing here yet!</td>
+          <% end %>
+        </tr>
+      </table>
+      </div><!--post box end-->
+    </div>
+    </section>
+      <!--Photos Box-->
+      <section class="row box-border">
+      <div class="col-md-12">
+        <div class="row box-header">
+          <div class="col-md-12">
+            <h4 class="box-title centered-text">Photos (123)</h4>
           </div>
-          
-          <!--Row 1-->
-          <% user.friended_users.each_with_index do |friend, idx| %>
+        </div>
+        <!--Row 1-->
+        <div class="row">
+          <div class="col-md-4"><a href="#">
+            <%= image_tag "icon_photo_small.png", alt: "photo", class: "img-responsive" %>
+            </a></div>
+          <div class="col-md-4"><a href="#"> 
+            <%= image_tag "icon_photo_small.png", alt: "photo", class: "img-responsive" %>
+          </a></div>
+          <div class="col-md-4"><a href="#">
+             <%= image_tag "icon_photo_small.png", alt: "photo", class: "img-responsive" %>
+          </a></div>
+        </div><!--Row 1 end-->
+        <!--Row 2-->
+        <div class="row">
+          <div class="col-md-4"><a href="#">
+            <%= image_tag "icon_photo_small.png", alt: "photo", class: "img-responsive" %>
+          </a></div>
+         <div class="col-md-4"><a href="#">
+            <%= image_tag "icon_photo_small.png", alt: "photo", class: "img-responsive" %>
+          </a></div>
+         <div class="col-md-4"><a href="#">
+            <%= image_tag "icon_photo_small.png", alt: "photo", class: "img-responsive" %>
+          </a></div>
+        </div><!--Row 2 end-->
+        <!--Row 3-->
+        <div class="row">
+         <div class="col-md-4"><a href="#">
+            <%= image_tag "icon_photo_small.png", alt: "photo", class: "img-responsive" %>
+          </a></div>
+          <div class="col-md-4"><a href="#">
+            <%= image_tag "icon_photo_small.png", alt: "photo", class: "img-responsive" %>
+          </a></div>
+         <div class="col-md-4"><a href="#">
+            <%= image_tag "icon_photo_small.png", alt: "photo", class: "img-responsive" %>
+          </a></div>
+        </div><!--Row 3 end-->
+      <!--Row 4-->
+      <div class="row centered-text">
+        <button type="button" class="btn btn-link"><a href="photos.html">See more photos</a></button>
+      </div><!--Row 4 end-->
+    </div>
+    </section>
+    <!--Friends Box-->
+    <section class="row box-border">
+      <div class="col-md-12">
+        <div class="row box-header">
+          <div class="col-md-12">
+            <h4 class="box-title centered-text">Friends (<%= user.friended_users.count %>)</h4>
+          </div>
+        </div>
+        
+        <!--Row 1-->
+        <% user.friended_users.each_with_index do |friend, idx| %>
+          <% if idx == 0 || idx == 3 %>
           <!-- begin the row -->
-            <% if idx == 0 || idx == 3 %>
-            <div class="row">  
-              <div class="col-md-4">
-                <%= image_tag "wizard_hat.png", alt:"photo", class: "img-responsive" %></a>
-                <%= link_to friend.profile.full_name, friend, class: "btn btn-link wrap-text" %>
-              </div>
-            <!-- close the row -->
-            <% elsif idx == 2 || idx == 5 %>
-             <div class="col-md-4">
-                <%= image_tag "wizard_hat.png", alt:"photo", class: "img-responsive" %></a>
-                <%= link_to friend.profile.full_name, friend, class: "btn btn-link wrap-text" %>
-              </div>
-            </div>
-            <% elsif idx > 6 %>
-            <% else %>
+          <div class="row">  
             <div class="col-md-4">
               <%= image_tag "wizard_hat.png", alt:"photo", class: "img-responsive" %></a>
               <%= link_to friend.profile.full_name, friend, class: "btn btn-link wrap-text" %>
             </div>
-            <% end %>
-            <% if friend == user.friended_users.last && idx != 2 && idx != 5 %>
-              </div>
-            <% end %>
+          
+          <% elsif idx == 2 || idx == 5 %>
+           <!-- close the row -->
+           <div class="col-md-4">
+              <%= image_tag "wizard_hat.png", alt:"photo", class: "img-responsive" %></a>
+              <%= link_to friend.profile.full_name, friend, class: "btn btn-link wrap-text" %>
+            </div>
+          </div>
+          <% elsif idx >= 6 %>
+          <% else %>
+          <div class="col-md-4">
+            <%= image_tag "wizard_hat.png", alt:"photo", class: "img-responsive" %></a>
+            <%= link_to friend.profile.full_name, friend, class: "btn btn-link wrap-text" %>
+          </div>
           <% end %>
-          <!--Row 3-->
-        <% if user.friended_users.count > 6 %>
-        <div class="row centered-text">
-          <button type="button" class="btn btn-link">
-            <%= link_to "See More Friends", friends_path(:id => user.id) %>
-          </button>
-        </div><!--Row 3 end-->
+          <% if idx<6 && friend == user.friended_users.last && idx != 2 && idx != 5 %>
+          <!-- close the row -->
+            </div>
+          <% end %>
         <% end %>
-        </div>
-      </section>
-      </div><!--col-md-5 end-->
-      <!--Right column-->
-      <div class="col-md-7">
+        <!--Row 3--> 
+      <% if user.friended_users.count > 6 %>
+      <div class="row centered-text">
+        <button type="button" class="btn btn-link">
+          <%= link_to "See More Friends", user_friends_path(user) %>
+        </button>
+      </div><!--Row 3 end-->
+      <% end %>
+      </div>
+    </section>
+    </div><!--col-md-5 end-->
+    <!--Right column-->
+    <div class="col-md-7">

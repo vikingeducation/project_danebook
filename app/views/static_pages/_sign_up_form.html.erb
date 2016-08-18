@@ -20,14 +20,14 @@
           <div class="row">
             <div class="col-sm-12">
               <%= user_fields.text_field :email, placeholder: "Your Email", class: "sign-up-form" %>
-              <%= user.errors["email"] if user.errors["email"].any? %>
+              <%= user.display_errors("email")%>
             </div>
           </div>
           <!--Your New Password-->
           <div class="row">
             <div class="col-sm-12">
               <%= user_fields.password_field :password, placeholder: "Your New Password", class: "sign-up-form" %>
-              <%= user.errors["password"] if user.errors["password"].any? %>
+              <%= user.display_errors("password") %>
             </div>
           </div>
           <!--Confirm Password-->

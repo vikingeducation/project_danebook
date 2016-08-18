@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
   skip_before_action :require_login, :only => [:new, :create]
   before_action :require_authorized_user, :only => [:edit, :update, :destroy]
+  def index
+    redirect_to "static_pages/home"
+  end
 
   def new
     @user = User.new
@@ -38,11 +41,6 @@ class UsersController < ApplicationController
     else
       render :edit
     end
-  end
-
-  def friends
-    @user = User.find(params[:id])
-    @profile = @user.profile
   end
 
   private

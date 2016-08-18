@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get "about_edit" => "static_pages#about_edit"
   resources :users do
     resources :posts
+    resources :friends, :only => [:index]
   end
   resources :posts, :only=>[] do
     resources :likes, :only=>[:create,:destroy]
@@ -21,6 +22,6 @@ Rails.application.routes.draw do
 
   resource :friendings, :only => [:create, :destroy]
 
-  get "friends" => "users#friends"
+  #get "friends" => "users#friends"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

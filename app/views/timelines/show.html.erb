@@ -44,22 +44,20 @@
             </div>
           </div>
           <div class="row panel-content">
-            <div class="col-md-4">
-            <%= image_tag "icon_photo_small",  height: "92px", width: "92px" %>
-            <%= image_tag "icon_photo_small", height: "92px", width: "92px" %>
-            <%= image_tag "icon_photo_small", height: "92px", width: "92px" %>
-            <%= image_tag "icon_photo_small", height: "92px", width: "92px" %>
-            </div>
-            <div class="col-md-4">
-            <%= image_tag "icon_photo_small", height: "92px", width: "92px" %>
-            <%= image_tag "icon_photo_small", height: "92px", width: "92px" %>
-            <%= image_tag "icon_photo_small", height: "92px", width: "92px" %>
-              <a href="#" class="panel-link">See More Photos</a>
-            </div>
-            <div class="col-md-4">
-            <%= image_tag "icon_photo_small", height: "92px", width: "92px" %>
-            <%= image_tag "icon_photo_small", height: "92px", width: "92px" %>
-            <%= image_tag "icon_photo_small", height: "92px", width: "92px" %>
+            <div class="col-md-12">
+              <div class="row">
+                <% photos_matrix = photos_count_check @photos,4 %>
+                <% photos_matrix.each do |row| %>
+                  <% row.each do |col| %>
+                   <%= split_column render_timeline_photo(col),4 %>
+                  <% end %>
+                <% end %>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <%= link_to "See more photos!", photos_path(id: @user.id) %>
+                </div>
+              </div>
             </div>
           </div>
         </div>

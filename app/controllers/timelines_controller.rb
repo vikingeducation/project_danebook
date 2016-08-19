@@ -11,6 +11,7 @@ class TimelinesController < ApplicationController
     @like = Like.new(user_id: current_user.id)
     @comment = Comment.new(user_id: current_user.id)
     @friends = @user.friends
+    @photos = @user.photos
   end
 
   private

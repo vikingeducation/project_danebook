@@ -8,6 +8,8 @@ class UsersController < ApplicationController
     @post = current_user.posts.build if @user == current_user
     @comment = current_user.comments.build
     @friendship = Friendship.new
+
+    build_friend_box
   end
 
   def new
@@ -79,5 +81,22 @@ class UsersController < ApplicationController
     end
   end
 
+  def build_friend_box
+    friends = @user.sample_friends(9)
+
+    @left_col, @center_col, @right_col = [], [], []
+    friends.each_index do |index|
+      case index % 3
+      when 0
+        @left_col << friends[index]
+      when 1
+        @center_col << friends[index]
+      else
+        @right_col << friends[index]
+      end
+    end
+
+    friends
+  end
 
 end

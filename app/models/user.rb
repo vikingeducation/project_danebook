@@ -58,4 +58,19 @@ class User < ApplicationRecord
   def name
     first_name + " " + last_name
   end
+
+  def sample_friends(size)
+    count = self.friended_users.count < size ?
+                            self.friended_users.count :
+                            size
+
+    id_list = self.friended_user_ids.sample(count)
+
+    friends = []
+    id_list.each do |id|
+      friends << User.find(id)
+    end
+
+    friends
+  end
 end

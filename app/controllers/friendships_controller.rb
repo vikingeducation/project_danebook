@@ -3,6 +3,10 @@ class FriendshipsController < ApplicationController
 
   def index
     @friends = @user.friended_users
+    middle = @friends.count / 2
+    @left_col = @friends[0..(middle - 1)]
+    @right_col = middle > 0 ? @friends[middle..-1] :
+                              []
   end
 
   def create

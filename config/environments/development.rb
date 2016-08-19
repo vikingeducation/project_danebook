@@ -41,14 +41,16 @@ Rails.application.configure do
 
   config.paperclip_defaults = {
 
-    :storage => :s3,
-    :s3_region => ENV['AWS_REGION'],
-    :s3_credentials => {
-      :bucket => Rails.application.secrets.s3_bucket_name,
-      :access_key_id => Rails.application.secrets.aws_access_key_id,
-      :secret_access_key => Rails.application.secrets.aws_secret_access_key
+    storage: :s3,
+    s3_region: ENV['AWS_REGION'],
+    s3_credentials: {
+      bucket: Rails.application.secrets.s3_bucket_name,
+      access_key_id: Rails.application.secrets.aws_access_key_id,
+      secret_access_key: Rails.application.secrets.aws_secret_access_key
     }
   }
 
-
+  config.action_mailer.default_url_options = {
+    host: 'localhost:3000'
+  }
 end

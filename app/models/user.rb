@@ -15,6 +15,18 @@ class User < ApplicationRecord
   has_many :likes, :as => :likeable, class_name: "Liking"
   has_many :photos, :as => :photoable, class_name: "Photo"
 
+  # When acting as the initiator of the friending
+  has_many :initiated_friendings, :foreign_key => :friender_id,
+                                  :class_name => "Friending"
+  has_many :friended_users,       :through => :initiated_friendings,
+                                  :source => :friend_recipient
+
+  # When acting as the recipient of the friending
+  has_many :received_friendings,  :foreign_key => :friend_id,
+                                  :class_name => "Friending"
+  has_many :users_friended_by,    :through => :received_friendings,
+                                  :source => :friend_initiator
+
   #generates and regenerates tokens and sets to self
   def generate_token
     begin

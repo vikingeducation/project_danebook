@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :require_current_user, only: [:edit, :update, :destroy]
 
   def index
-    redirect_to new_user_path
+    @users = User.search(params[:search])
   end
 
   def new

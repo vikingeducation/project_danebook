@@ -42,6 +42,22 @@ class User < ApplicationRecord
     self.likes_given.where("likeable_id = ? AND likeable_type = ?", id, type)
   end
 
+  def friend_count
+    self.friends.size
+  end
+
+  def friends
+    (self.friended_users + self.users_friended_by).uniq
+  end
+
+  def self.search(search)
+    if search
+      users = User.joins(:profile).where('first_name ILIKE ? OR last_name ILIKE ?', "%#{search}%", "%#{search}%")
+    else
+      User.all
+    end
+  end
+
   private
   class << self
     def welcome_email(id)

@@ -1,0 +1,11 @@
+<main class="container">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1 col-xs-12" id="basic">
+      <div class="row"
+        <% @users.each do |user| %>
+          <%= render partial: "shared/user_index", locals: {user: user} %>
+       <% end %>
+      </div>
+    </div>
+  </div>
+</main>

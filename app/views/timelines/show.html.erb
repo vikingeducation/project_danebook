@@ -29,7 +29,7 @@
             </div>
             <div class="col-xs-12 timeline-content">
               <div class="row">
-                <% real_user.photos.each do |photo| %>
+                <% real_user.photos[0..6].each do |photo| %>
                   <%= render partial: "shared/timeline_photos", locals: {photo: photo} %>
                 <% end %>
                 <div class="col-xs-12">
@@ -39,11 +39,11 @@
             </div>
             <!-- User's Friends -->
             <div class="col-xs-12 timeline-title" id="timeline-friends-photos">
-              <h5><%= "Friends (#{@timeline_user.friended_users.count})" %></h5>
+              <h5><%= "Friends (#{@timeline_user.friend_count})" %></h5>
             </div>
             <div class="col-xs-12 timeline-content">
               <div class="row">
-                <% @timeline_user.friended_users[0..6].each do |friend| %>
+                <% @timeline_user.friends[0..6].each do |friend| %>
                   <%= render partial: "shared/timeline_friends", locals: {user: friend} %>
                 <% end %>
               </div>

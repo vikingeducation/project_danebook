@@ -42,6 +42,17 @@ class User < ApplicationRecord
     self.likes_given.where("likeable_id = ? AND likeable_type = ?", id, type)
   end
 
+  private
+  class << self
+    def welcome_email(id)
+      user = User.find(id)
+      UserMailer.welcome(user).deliver
+    end
+
+    handle_asynchronously :welcome_email, run_at: Proc.new { 5.seconds.from_now }
+
+  end
+
 
 
 end

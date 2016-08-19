@@ -21,6 +21,9 @@ gem 'validates_timeliness', '~> 4.0'
 gem 'aws-sdk'
 gem 'paperclip'
 gem 'figaro'
+gem 'letter_opener'
+gem 'delayed_job_active_record'
+
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

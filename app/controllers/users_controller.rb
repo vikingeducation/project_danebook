@@ -16,6 +16,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      User.welcome_email(@user.id)
       sign_in(@user)
       flash[:success] = "Your account has been created"
       redirect_to user_timeline_path(@user)

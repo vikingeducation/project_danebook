@@ -51,8 +51,16 @@ class User < ApplicationRecord
   end
 
   def self.search(search, id)
+    users = []
     if search
-      users = User.joins(:profile).where('first_name ILIKE ? OR last_name ILIKE ?', "%#{search}%", "%#{search}%")
+      all_terms = search.split
+      all_terms.each do |term|
+        term_users = User.joins(:profile).where('first_name ILIKE ? OR last_name ILIKE ?', "%#{term}%", "%#{term}%")
+        term_users.each do |term_user|
+          users << term_user
+        end
+      end
+      users.uniq
     else
       User.all
     end

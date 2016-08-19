@@ -42,10 +42,10 @@
   			<div class="row post-wrapper">
             <% post.comments[0..6].each_with_index do |comment, index| %>
 
-                  <%= render 'comment', comment: comment, post: post, index: index %>
+                  <%= render 'comments/comment', comment: comment, post: post, index: index %>
 
             <% end %>
-            <%= render 'new_comment_form', post: post %>
+            <%= render 'comments/new_comment_form', post: post %>
   				</div><!-- Comment content wrapper -->
         </div><!-- Comment wrapper -->
       </div>

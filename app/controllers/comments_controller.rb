@@ -3,16 +3,15 @@ class CommentsController < ApplicationController
 
   def create
     if signed_in_user?
-      session[:return_to] = request.referer
-      post = Post.find(params[:post_id])
-      comment = post.comments.build(white_listed_comment_params)
-      comment.user_id = current_user.id
-      if comment.save
+      # dkfjd
+      type = params[:comment][:commentable_type].classify
+      resource = type.constantize.find(params[:comment][:commentable_id])
+      if resource.comments.create(description: params[:comment][:description],user_id: current_user.id)
         flash[:success] = "Comment has been added!"
       else
         flash[:error] = "Comment not added, returning to the nerdery to diagnose the problem. . . ."
       end
-      redirect_to session.delete(:return_to)
+      redirect_to :back
     else
       redirect_to login_path
     end

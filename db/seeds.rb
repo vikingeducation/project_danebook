@@ -31,7 +31,18 @@ puts "Building random user posts & comments ...... ..... ... .. ."
 1.upto(12) do |i|
   u = User.all[i % 5]
   puts "building posts"
-  u.posts.create!(description: Faker::Hipster.paragraph(4))
+  post = Post.create!(description: Faker::Hipster.paragraph(4))
+  posting = u.postings.create!(:postable_type => "Post", postable_id: post.id)
   puts "building comments"
-  u.comments.create!(description: Faker::Hipster.paragraph(4), post_id: u.posts.last.id)
+  post.comments.create!(description: Faker::Hipster.paragraph(4), user_id: u.id)
+end
+
+puts "Building random user photos & comments ...... ..... ... .. ."
+1.upto(12) do |i|
+  u = User.all[i % 5]
+  puts "building photos"
+  photo = Photo.create!(description: Faker::Hipster.paragraph(4))
+  posting = u.postings.create!(:postable_type => "Post", postable_id: photo.id)
+  puts "building comments"
+  photo.comments.create!(description: Faker::Hipster.paragraph(4), user_id: u.id)
 end

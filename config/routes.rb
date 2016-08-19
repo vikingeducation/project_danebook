@@ -13,9 +13,12 @@ Rails.application.routes.draw do
     resources :friendings, only: [:index]
   end
 
-  resources :photos, only: [:create, :update, :destroy]
-
   resource :profile, only: [:edit, :update]
+
+  resources :photos, only: [:create, :update, :destroy] do
+    resources :likes, only: [:create], :defaults => { :likeable => 'Photo'}
+    resources :comments, only: [:new, :create]
+  end
 
   resources :posts, only: [:create, :update, :destroy] do
     resources :likes, only: [:create], :defaults => { :likeable => 'Post'}

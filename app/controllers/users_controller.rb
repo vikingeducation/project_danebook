@@ -61,7 +61,6 @@ class UsersController < ApplicationController
 
   # temporary..
   def change_avatar
-    @user = current_user
     render 'static_pages/change_avatar'
   end
 
@@ -81,10 +80,10 @@ class UsersController < ApplicationController
       case action_name
       when 'show'
         @user = User.find_by_id(params[:id])
-      when 'edit', 'update', 'destroy'
+      when 'edit', 'update', 'destroy', 'change_avatar'
         @user = current_user
       end
-      redirect_to_back, :flash => {:error => 'Unable to find that user'} unless @user
+      redirect_to :back, :flash => {:error => 'Unable to find that user'} unless @user
     end
     
 end

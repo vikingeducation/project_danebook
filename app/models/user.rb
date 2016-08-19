@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   before_create :generate_token
   after_create :create_profile
+  after_create :welcome_email
   has_secure_password
 
   validates :password, 
@@ -37,6 +38,10 @@ class User < ApplicationRecord
       @users = [User.where('first_name ILIKE ?', "#{n}%")]
       @users << User.where('last_name ILIKE ?', "#{n}%")
     end.flatten.uniq
+  end
+
+  def welcome_email
+    UserMailer.welcome(self).deliver!
   end
 
 end

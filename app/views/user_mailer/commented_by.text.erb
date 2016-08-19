@@ -1,0 +1,5 @@
+Hi <%= @user.first_name %>!
+
+<%= @commenter.first_name %> just commented on a <%= @object.class.to_s.downcase%> of yours!
+
+You can see it here: <%= link_to @user.first_name, "http://localhost:3000/users/#{@user.id}" %>

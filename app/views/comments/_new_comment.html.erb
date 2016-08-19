@@ -1,14 +1,13 @@
-<%= form_for [comment.commentable, comment] do |comment| %>
-  <div class="media-left">
+<div class="media-left">
     <%= image_tag("default_image.jpg", class: "comment-picture") %>
-  </div>
-  <div class="media-body">
-    <%= comment.text_field :content, placeholder: "Write your comment here", class: "comment-text form-control", 'aria-label'=> "basic-addon1" %>
-    <%= comment.submit "Comment on Post", class: "btn btn-success" %>
-    <%= comment.fields_for :like do |like| %>
-      <%= like.hidden_field :user_id, value: current_user.id %>
-      <%= like.submit "Like", class: "btn btn-primary"%>               
-    <% end %>
-
-  </div>
-<% end %>
+</div>
+<div class="media-body">
+  <%= form_for [comment, new_comment] do |c| %>
+    <%= c.text_field :content, placeholder: "Write your comment here", class: "comment-text form-control", 'aria-label'=> "basic-addon1" %>
+    <%= c.submit "Comment on Post", class: "btn btn-success" %>
+  <% end %>
+  <%= form_for [comment, comment.likes.build] do |like| %>
+    <%= like.hidden_field :user_id, value: current_user.id %>
+    <%= like.submit "Like", class: "btn btn-primary like-section"%>               
+  <% end %>
+</div>

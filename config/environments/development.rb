@@ -6,19 +6,20 @@ Rails.application.configure do
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
 
+  config.action_mailer.delivery_method = :letter_opener
+  
+  config.action_mailer.default_url_options = {:host => 'localhost:3000'}
+
   config.paperclip_defaults = {
 
   :storage => :s3,
 
   :s3_credentials => {
 
-    # put your host name here if needed
-    #   see the reading below for more details
-    # NOTE: This must be the correct region for YOU
+
     :host_name => "dylanlynch.s3-website-us-east-1.amazonaws.com",
 
-    # NOTE: these lines are changed to use secrets.yml
-    # from the examples (which use ENV vars instead)
+
     :bucket => Rails.application.secrets.s3_bucket_name,
     :access_key_id => Rails.application.secrets.s3_api_id,
     :secret_access_key => Rails.application.secrets.s3_api_key,

@@ -244,14 +244,31 @@ body {
   display:inline-block;
 }
 
-.input-group-addon {
+.index-photo {
+  margin-top:20px;
+}
+
+.no-photos {
+  color: #3b5998;
+}
+
+.resize-index-photo {
+  height:100px;
+  width:100px;
+}
+.comment-section {
   display:inline-block;
 }
 
-.index-photo {
-  margin-top:20px
+.like-section {
+  display:inline-block;
 }
 
-.comment-show {
-  margin-top:30px
+.delete-section {
+  display:inline-block;
+}
+
+.show-photo {
+  display:block;
+  margin: 0 auto;
 }

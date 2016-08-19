@@ -1,30 +1,33 @@
 <%= render "shared/search_navbar" %>
 <%= render "shared/profile_header" %>
+<%= render "shared/flash" %>
 
 <div class="container">
   <div class="col-md-4">
     <div class="row">
       <div class="col-md-12">
         <h3 class="text-center">About<h3>
-        <p class="about-details">Name: <%= @profile.user.first_name.capitalize %> <%= @profile.user.last_name.capitalize %><br></p>
+        <p class="about-details">Name: <%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %><br></p>
         <p class= "about-details">College: <%= @profile.college %></br></p>
         <p class= "about-details">Current Location: <%= @profile.current_location %></br></p>
         <p class= "about-details">Hometown: <%= @profile.hometown %></br></p>
       </div>
     </div>
     <div class="col-md-12">
-      <h3 class="text-center"> Photos</h3>
+      <h3 class="text-center"> Photos<p>(<%= @user.photos.count %>)</p></h3>
       <% @photos.each do |photo| %>
         <div class="col-md-4 index-photo">
-          <%= link_to image_tag(photo.picture.url(:thumbnail)), profile_photo_path(photo.profile, photo) %>   
+          <%= link_to image_tag(photo.picture.url, class: "resize-index-photo"), user_photo_path(photo.user, photo) %>   
         </div>
       <% end %>
+    </div>
+    <div class="col-md-12">
+      <h3 class="text-center">Friends</h1>
     </div>
   </div>
   <div class="col-md-8">
     <div class="row">
       <%= render "posts/new_post" if @post && @user%>
-
     <% @posts.each do |post|%>
       <div class="col-md-12">
         <div class="displayed-post">
@@ -33,8 +36,8 @@
               <%= image_tag("default_image.jpg", class: "post-photo") %>
             </div>
             <div class="media-body">
-            <h6 class="media-heading"><%=link_to from_user(post), user_path(post.user)%></h6>
-            <h6 class="media-heading">Posted:<%= post.created_at.strftime(' %b %d at %r')%></h6>
+            <h4 class="media-heading">Posted by: <%=link_to from_user(post), user_path(post.user)%>
+            on<%= post.created_at.strftime(' %b %d at %r')%></h4>
               <div class="panel-body">
                 <p><%= post.content %> </p>
                 <p><%= post.likes.count %> likes</p>
@@ -47,10 +50,11 @@
                           <%= image_tag("default_image.jpg", class: "comment-picture") %>
                         </div>
                         <div class="media-body">
-                          <h4 class="media-heading"><%= link_to comment.commentable.user.first_name + " " + comment.commentable.user.last_name, user_profiles_path(comment.commentable.user) %></h4>
+                          <h4 class="media-heading">Commented by: <%= link_to comment.commentable.user.first_name + " " + comment.commentable.user.last_name, user_profiles_path(comment.commentable.user) %> on <%= comment.created_at.strftime(' %b %d at %r')%></h4>
+                          <p><%=comment.likes.count %> likes</p>
                           <p><%= comment.content %></p>
                           <div class= "comment-show">
-                          <%= render "comments/new_comment", comment: @comment, like: @like if @comment%>
+                          <%= render "comments/new_comment",comment: comment, new_comment: comment.comments.build, like: comment.likes.build%>
                         </div>
                         </div>
                       </li>
@@ -61,17 +65,17 @@
                 <% end %>
               </div>
                 <% if @post %>
-                  <%= form_for [post, @comment], class: "comment-show" do |comment| %>
+                  <%= form_for [post, @comment] do |comment| %>
                     <%= image_tag("default_image.jpg", class: "comment-picture") %>
                     <%= comment.text_field :content, placeholder: "Write your comment here", class: "comment-text form-control", 'aria-label'=> "basic-addon1" %>
-                    <%= comment.submit "Comment on Post", class: "btn btn-success" %>
+                    <%= comment.submit "Comment on Post", class: "btn btn-success comment-section" %>
                   <% end %>
                   <%= form_for [post, @post.likes.build] do |like| %>
                     <%= like.hidden_field :user_id, value: current_user.id %>
-                    <%= like.submit "Like", class: "btn btn-primary"%>               
+                    <%= like.submit "Like", class: "btn btn-primary like-section"%>               
                   <% end %>
 
-                <%= link_to "Delete Post", user_post_path(current_user, post), method: :delete, class: "btn btn-danger" if current_user == @user%>
+                <%= link_to "Delete Post", user_post_path(current_user, post), method: :delete, class: "btn btn-danger delete-section" if current_user == @user%>
               <% end %>
             </div>
           </div>

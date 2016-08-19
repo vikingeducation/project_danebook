@@ -47,7 +47,7 @@ class UsersController < ApplicationController
     @comment = @post.comments.build if current_user
     @like = @post.likes.build if current_user
     @posts = @user.all_posts
-    @photos = Photo.newest_six(@profile)
+    @photos = Photo.newest_six(@user)
   end
 
   private

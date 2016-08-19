@@ -7,7 +7,7 @@ class ProfilesController < ApplicationController
       redirect_to "http://nouveller.com/404/" 
     else
       @profile = current_user.profile
-      @photo = current_user.profile.photos.build
+      @photo = current_user.photos.build
     end
   end
 

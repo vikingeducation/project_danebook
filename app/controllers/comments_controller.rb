@@ -4,18 +4,18 @@ class CommentsController < ApplicationController
   end
 
   def create
-    # parent = params[:commentable]
-    # parent_id = (parent.downcase << "_id").to_sym
-    # @commentable = parent.classify.constantize.find(params[parent_id])
-    # @comment = @commentable.comments.new(comment_params)
-    @post = Post.find(params[:post_id])
-    @comment = @post.comments.build(comment_params)
+    parent = params[:commentable]
+    parent_id = (parent.downcase << "_id").to_sym
+    @commentable = parent.classify.constantize.find(params[parent_id])
+    @comment = @commentable.comments.build(comment_params)
+    @comment.user = User.find_by_id(@comment.commentable.user_id)
+    @comment.from = current_user.id
     if @comment.save!
       flash[:success] = "Your comment has been saved!"
-      redirect_to current_user
+      redirect_back(fallback_location: root_path)
     else
       flash[:danger] = "Your comment was not posted"
-      redirect_to current_user
+      redirect_to current_user(@comment.commentable.user_id)
     end
   end
 
@@ -30,7 +30,7 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:content)
+    params.require(:comment).permit(:content, :from)
   end
 
   # def underscore

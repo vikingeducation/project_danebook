@@ -10,10 +10,11 @@
       <div class="row">
         <!--profile picture which is overlayed on cover photo-->
         <div class="col-md-6 col-md-offset-1 col-xs-10" id="profile-picture">
-          <%= image_tag real_user.profile.profile_picture.url(:profile), id:"profile-picture-image" %>
-          <div id="profile-picture-form">
-            <%= profile_fields.input :profile_picture %>
-          </div>
+          <% if real_user.profile.prof_photo %>
+            <%= image_tag real_user.profile.prof_photo.url(:profile)  %>
+          <% else %>
+            <img src="https://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png">
+          <% end %>
           <div id="profile-names">
             <%= profile_fields.input :first_name, class:"form-control", label: false %>
             <%= profile_fields.input :last_name, class:"form-control", label: false %>

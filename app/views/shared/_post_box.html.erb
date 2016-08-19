@@ -2,7 +2,11 @@
   <div class="row">
     <div class="col-xs-12" id="author-info">
       <%= link_to user_path(post.post_author_id) do %>
-        <%= image_tag post.author.profile.profile_picture.url(:post), class:"img-responsive" %>
+        <% if real_user.profile.prof_photo %>
+          <%= image_tag real_user.profile.prof_photo.url(:post)  %>
+        <% else %>
+          <img src="https://s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif">
+        <% end %>
       <% end %>
       <h6><%= link_to user_header_name(post.post_author_id), user_path(post.post_author_id) %>
       <br>Posted on <%= post.created_at.strftime("%m/%d/%Y") %></h6>

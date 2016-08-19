@@ -77,18 +77,16 @@ ActiveRecord::Schema.define(version: 20160818235957) do
     t.date     "birthday"
     t.string   "gender"
     t.integer  "user_id"
-    t.datetime "created_at",                   null: false
-    t.datetime "updated_at",                   null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.string   "college"
     t.string   "hometown"
     t.string   "currently_lives"
     t.string   "telephone"
     t.text     "words_to_live_by"
     t.text     "about_me"
-    t.string   "profile_picture_file_name"
-    t.string   "profile_picture_content_type"
-    t.integer  "profile_picture_file_size"
-    t.datetime "profile_picture_updated_at"
+    t.integer  "prof_photo_id"
+    t.integer  "cover_photo_id"
     t.index ["user_id"], name: "index_profiles_on_user_id", using: :btree
   end
 

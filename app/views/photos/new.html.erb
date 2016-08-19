@@ -1,4 +1,3 @@
-
 <main class="container">
   <div class="row">
     <!-- cover photo -->
@@ -9,9 +8,13 @@
   <div class="row">
     <!--About page header and edit profile button-->
     <div class="col-md-10 col-md-offset-1" id="header-bar">
-      <h2>Photo</h2>
-      <div class="col-md-4 col-md-offset-4">
-      <%= image_tag @photo.image.url %>
+      <h2>Photos</h2>
     </div>
-  
+    <div class="col-md-4 col-md-offset-4">
+      <%= simple_form_for [current_user, current_user.photos.build] do |photo_field| %>
+        <%= photo_field.input :image %>
+        <%= photo_field.submit %>
+      <% end %>
+    </div>
+  </div>
 </main>

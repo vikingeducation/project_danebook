@@ -9,7 +9,7 @@
           <%= link_to "About", user_path(real_user_id), class: "h6" %>
         </div>
         <div class="col-sm-2" id="single-profile-tab">
-          <%= link_to "Photos (123)", user_photos_path(real_user_id), class: "h6" %>
+          <%= link_to "Photos (#{real_user.photos.count})", user_photos_path(real_user_id), class: "h6" %>
         </div>
         <div class="col-sm-2" id="single-profile-tab">
           <%= link_to "Friends (#{real_user.friended_users.count})", user_friends_path(real_user_id), class: "h6" %>

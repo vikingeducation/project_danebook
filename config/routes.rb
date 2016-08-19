@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :users do 
     resource :timeline, only: [:show]
     resource :friends, only: [:show]
-    resource :photos, only: [:show]
+    resources :photos
 
   end
   resources :posts do
@@ -21,7 +21,6 @@ Rails.application.routes.draw do
   resource :session, only: [ :new, :create, :destroy ]
   resources :friendings, only: [:create, :destroy]
 
-  get '/friends' => "static_pages#friends"
-  get '/photos' => "static_pages#photos"
+  
   
 end

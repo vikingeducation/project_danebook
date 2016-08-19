@@ -41,7 +41,7 @@ class ApplicationController < ActionController::Base
   end
 
   def real_user_id
-    params[:id] || params[:user_id]
+    params[:user_id] || params[:id]
   end
   helper_method :real_user_id
 

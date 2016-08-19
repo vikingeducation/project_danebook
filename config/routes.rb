@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   root to: 'users#new'
   resources :users, :except => [:index, :update, :destroy] do
     resources :photos, :defaults => { :photoable => 'User'}, :only => [:create]
+    resources :friendings, :only => [:index, :create, :index]
+
     resources :posts, :only => [:create, :destroy] do
       resources :photos, :defaults => { :photoable => 'Post'}, :only => [:create]
       resources :likings, :only => [:create]
@@ -13,11 +15,9 @@ Rails.application.routes.draw do
     end
   end
 
-  
-
   resources :likings, :only => [:destroy]
-
   resource :session, :only => [:new, :create, :destroy]
+
   get "login" => "sessions#new"
   delete "logout" => "sessions#destroy"
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

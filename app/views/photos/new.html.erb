@@ -1,0 +1,30 @@
+<%= render partial: "shared/header", locals: { active: :photos } %>
+
+<main class="container" id="photo-page-box">
+
+  <%= render "shared/flash" %>
+
+  <div class="row timeline-left-column timeline-right-column">
+    <div class = "panel panel-default">
+      <div class="panel-heading">
+        <div class="row">
+          <div class="col-sm-10">
+            <h2 class="panel-title">Photos</h2>
+          </div>
+          <div class="col-sm-2 pull-right">
+            <%= link_to "<< Photos Page", user_photos_path(@user), class: "btn btn-primary btn-xs" %>
+          </div>
+        </div>
+      </div>
+
+      <div class="panel-body">
+        <div class="col-sm-4 col-sm-offset-4">
+        <%= form_for [current_user, @photo] do |f| %>
+          <%= f.file_field :image, class: "btn btn-default"%><br>
+          <%= f.submit "Upload", class: "btn btn-primary" %>
+        <% end %>
+      </div>
+      </div>
+    </div>
+  </div>
+</main>

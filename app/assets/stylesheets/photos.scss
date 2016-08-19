@@ -1,3 +1,56 @@
 // Place all the styles related to the photos controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$box-spacing: 20px;
+
+/************************
+      Photo page
+*************************/
+
+#photo-page-box {
+  img {
+    width: 100%;
+    position: relative;
+    margin: $box-spacing auto;
+  }
+
+  button {
+    margin-top: 10px;
+  }
+
+  .photo-date {
+    position: absolute;
+    top: 0;
+    left: 15px;
+    right: 15px;
+    bottom: 0;
+    z-index: 100;
+    opacity: 0;
+
+    div {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0,0,0,.5);
+      color: #fff;
+      text-decoration: none;
+      padding: 10px;
+      font-size: 1.2em;
+    }
+  }
+
+  .photo-date:hover {
+    opacity: 1.0;
+  }
+}
+
+#single-photo {
+  margin: auto;
+  max-width: 75%;
+  img {
+    width: 100%;
+    margin: auto;
+  }
+}

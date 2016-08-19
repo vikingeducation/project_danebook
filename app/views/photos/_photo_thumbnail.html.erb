@@ -1,0 +1,17 @@
+<div class="col-sm-3">
+  <% if current_user.is_friend?(@user) || @user == current_user %>
+    <a href="<%= photo_path(photo) %>">
+      <%= image_tag photo.image.url(:medium) %>
+
+      <div class="photo-date center-text">
+        <div><%= photo.created_at.strftime("%B %d, %Y") %></div>
+      </div>
+    </a>
+  <% else %>
+    <%= image_tag photo.image.url(:medium) %>
+
+    <div class="photo-date center-text">
+      <div><%= photo.created_at.strftime("%B %d, %Y") %></div>
+    </div>
+  <% end %>
+</div>

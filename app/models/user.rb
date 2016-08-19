@@ -4,6 +4,8 @@ class User < ApplicationRecord
 
   belongs_to :hometown, class_name: "City", optional: true
   belongs_to :residency, class_name: "City", optional: true
+  belongs_to :cover_photo, class_name: "Photo", optional: true
+  belongs_to :profile_photo, class_name: "Photo", optional: true
   has_many :posts, foreign_key: :author_id, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :comments, foreign_key: :commenter_id, dependent: :destroy
@@ -57,6 +59,10 @@ class User < ApplicationRecord
 
   def name
     first_name + " " + last_name
+  end
+
+  def is_friend?(user)
+    self.friended_user_ids.include?(user.id)
   end
 
   def sample_friends(size)

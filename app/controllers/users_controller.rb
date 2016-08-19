@@ -14,6 +14,7 @@ class UsersController < ApplicationController
     params[:user][:birthday] = get_date
     @user = User.new(user_params)
     if @user.save
+      User.send_welcome_email(@user.id)
       sign_in(@user)
       flash[:success] = "User has been created!"
       redirect_to user_activities_path(@user)
@@ -30,7 +31,7 @@ class UsersController < ApplicationController
 
   def update
     @user = current_user
-    params[:user][:birthday] = get_date
+    params[:user][:birthday] = get_date if params[:user][:birthday]
     if @user.update(user_params)
       flash[:success] = "User has been updated!"
       redirect_to @user
@@ -44,7 +45,7 @@ class UsersController < ApplicationController
 
     def user_params
       params.require(:user).permit(:email, :password, :password_confirmation,
-                                  :gender, :first_name, :last_name, :words_to_live, :about_me, :birthday, :college, :hometown, :tele, :current_add)
+                                  :gender, :first_name, :last_name, :words_to_live, :about_me, :birthday, :college, :hometown, :tele, :current_add, :profile_photo_id, :cover_photo_id)
     end
 
     def get_date

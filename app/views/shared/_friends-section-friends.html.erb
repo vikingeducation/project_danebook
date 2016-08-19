@@ -1,14 +1,14 @@
 <div class="col-xs-5 frd-box">
   <div class="row">
     <div class="col-xs-4">
-      <img class="img-responsive friend-prof-photo" src="imgs/user_silhouette_generic.gif">
+      <img class="img-responsive friend-prof-photo" src="/imgs/user_silhouette_generic.gif">
     </div>
     <div class="col-xs-4 frd-links">
-      <%= link_to "Hermione Granger", "#" %>
-      <p>432 Friends</p>
+      <%= link_to friend.fullname, user_activities_path(friend) %>
+      <p><%= friend.followees.count %> friends</p>
     </div>
     <div class="col-xs-4 frd-btn-container">
-      <%= link_to "Unfriend Me", "#", class: "btn btn-default frd-btn" %>
+      <%= link_to "Unfriend Me", friending_path(friend.recieved_friendings.where(initiator_id: @user.id)[0]), class: "btn btn-default frd-btn", method: :delete if required_user? %>
     </div>
   </div>
 </div>

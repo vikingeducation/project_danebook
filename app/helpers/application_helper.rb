@@ -7,7 +7,7 @@ module ApplicationHelper
     if required_user?
       link_to "Edit Profile", edit_user_path(@current_user), class: "pull-right edit-link" if !editing_profile?
     elsif !@current_user.current_friend?(params[:user_id])
-      link_to "Add Friend", user_friendings_path(params[:user_id]), method: :post, class: "pull-right edit-link"
+      link_to "Add Friend", get_path, method: :post, class: "pull-right edit-link"
     else
       link_to "Remove Friend", friending_path(@current_user.this_friend(params[:user_id])), method: :delete, class: "pull-right edit-link"
     end
@@ -15,5 +15,13 @@ module ApplicationHelper
 
   def editing_profile?
     action_name == "edit"
+  end
+
+  def get_path
+    if params[:user_id]
+      user_friendings_path(params[:user_id])
+    else
+      user_friendings_path(params[:id])
+    end
   end
 end

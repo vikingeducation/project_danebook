@@ -1,0 +1,18 @@
+<main>
+	<div class="container about-info-container">
+		<header>
+			<div class="row main-content-header">
+				<div class="col-xs-4 col-xs-offset-4">
+					<h2>Add Photos!</h2>
+				</div>
+        <div class="col-xs-4 col-xs-offset-4">
+          <%= form_for [@user, @photo] do |f| %>
+            <%= f.label :image, "Upload a picture!" %>
+            <%= f.file_field :image %>
+            <%= f.submit class: "btn btn-primary" %>
+          <% end %>
+          </div>
+			</div>
+		</header>
+  </div>
+</main>

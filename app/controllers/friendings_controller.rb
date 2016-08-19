@@ -1,4 +1,9 @@
 class FriendingsController < ApplicationController
+  before_action :required_user_redirect, except: [:index]
+
+  def index
+    @user = User.find_by_id(params[:user_id])
+  end
 
   def create
     current_user.followees << User.find(params[:user_id])

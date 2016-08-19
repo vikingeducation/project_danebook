@@ -16,6 +16,7 @@ class StaticPagesController < ApplicationController
   end
 
   def photos
+    @user = User.last
   end
 
 end

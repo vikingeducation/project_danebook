@@ -1,12 +1,11 @@
 Rails.application.routes.draw do
   root to: "static_pages#home"
-  get "/friends" => "static_pages#friends"
-  get "/photos" => "static_pages#photos"
 
   resources :users, :except => [:new, :delete] do
     resources :activities, :only => [:index, :destroy]
     resources :posts, :only => [:create]
-    resources :friendings, :only => [:create]
+    resources :friendings, :only => [:create, :index]
+    resources :photos, :only => [:new, :create, :index, :show]
   end
 
   resources :friendings, :only => [:destroy]

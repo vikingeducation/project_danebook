@@ -22,35 +22,49 @@
 				<section class="tl-content-box">
 					<div class="row">
 						<header class="col-xs-12 tl-photos-header">
-							<h4>Photos (123)</h4>
+							<h4>Photos <%= "(#{@user.photos.count})" %></h4>
 						</header>
 					</div>
 					<div class="row">
 						<div class="col-xs-12 tl-content-template tl-photos-box">
-              <% 9.times do %>
-                <%= render "shared/tl-photos-box" %>
+              <% if @user.photos.any? %>
+                <% @user.photos.limit(9).each do |photo| %>
+                  <%= render "shared/tl-photos-box", photo: photo %>
+                <% end %>
+  							<div class="col-xs-12">
+                  <% if @user.photos.count > 9 %>
+                    <%= link_to "See More Photos", user_friends_path(@user), class: "tl-to-photos-link" %>
+                  <% end %>
+  							</div>
+              <% else %>
+                <div class="col-xs-12">
+                  <h4 class="text-center">This user needs some photos!</h4>
+                </div>
               <% end %>
-							<div class="col-xs-12">
-                <%= link_to "See More Photos", "#", class: "tl-to-photos-link" %>
-							</div>
 						</div>
 					</div>
 				</section>
 				<section class="tl-content-box">
 					<div class="row">
 						<header class="col-xs-12 tl-photos-header">
-							<h4>Friends (542)</h4>
+							<h4>Friends <%= "(#{@user.followees.count})" %></h4>
 						</header>
 					</div>
 					<div class="row">
 						<div class="col-xs-12 tl-content-template tl-photos-box">
-              <% 6.times do %>
-							  <%= render partial: "shared/tl-friends-box",
-                    locals: { name: "Harry Potter"} %>
+              <% if @friends.any? %>
+                <% @friends.each do |friend| %>
+  							  <%= render partial: "shared/tl-friends-box",
+                      locals: { friend: friend } %>
+                <% end %>
+  							<div class="col-xs-12">
+                  <% if @user.followees.count > 6 %>
+                    <%= link_to "See More Friends", user_photos_path(@user), class: "tl-to-friend-link" %>
+                  <% end %>
+  							</div>
+              <% else %>
+                <h4 class="text-center">This user needs some friends!</h4>
               <% end %>
-							<div class="col-xs-12">
-                <%= link_to "See More Friends", "#", class: "tl-to-friend-link" %>
-							</div>
 						</div>
 					</div>
 				</section>
@@ -79,9 +93,15 @@
 						</div>
 					</div>
 				</section>
-        <% @activities.each do |activity| %>
+        <% if @activities.any? %>
+          <% @activities.each do |activity| %>
+            <section class="tl-exist-post">
+              <%= render partial: "shared/post_profile_container", locals: { activity: activity } %>
+            </section>
+          <% end %>
+        <% else %>
           <section class="tl-exist-post">
-            <%= render partial: "shared/post_profile_container", locals: { activity: activity } %>
+            <h4 class="text-center">This user hasn't said anything yet!</h4>
           </section>
         <% end %>
 

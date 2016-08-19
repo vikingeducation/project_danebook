@@ -6,6 +6,7 @@ class ActivitiesController < ApplicationController
     @post = Post.new
     @comment = Comment.new
     @activities = @user.get_wall_activities
+    @friends = @user.followees.limit(6)
   end
 
   def destroy

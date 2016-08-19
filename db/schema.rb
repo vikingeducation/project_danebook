@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160812222933) do
+ActiveRecord::Schema.define(version: 20160819162253) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,15 @@ ActiveRecord::Schema.define(version: 20160812222933) do
     t.string   "month_name"
   end
 
+  create_table "photos", force: :cascade do |t|
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
   create_table "posts", force: :cascade do |t|
     t.text     "content"
     t.datetime "created_at", null: false
@@ -68,8 +77,8 @@ ActiveRecord::Schema.define(version: 20160812222933) do
   create_table "users", force: :cascade do |t|
     t.string   "email"
     t.string   "password_digest"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.string   "auth_token"
     t.string   "first_name"
     t.string   "last_name"
@@ -81,6 +90,8 @@ ActiveRecord::Schema.define(version: 20160812222933) do
     t.string   "hometown"
     t.string   "current_add"
     t.string   "tele"
+    t.integer  "profile_photo_id"
+    t.integer  "cover_photo_id"
     t.index ["auth_token"], name: "index_users_on_auth_token", unique: true, using: :btree
     t.index ["email"], name: "index_users_on_email", using: :btree
     t.index ["password_digest"], name: "index_users_on_password_digest", using: :btree

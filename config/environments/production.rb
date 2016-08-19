@@ -56,6 +56,7 @@ Rails.application.configure do
   # config.active_job.queue_adapter     = :resque
   # config.active_job.queue_name_prefix = "danebook_#{Rails.env}"
   config.action_mailer.perform_caching = false
+  config.action_mailer.default_url_options = { :host => 'danebook.com' }
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
@@ -83,4 +84,27 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
+  Paperclip.options[:command_path] = "/usr/local/bin"
+
+  config.paperclip_defaults = {
+
+    # Don't forget to make S3 your storage option!
+    :storage => :s3,
+
+    :s3_credentials => {
+
+      # put your host name here if needed
+      #   see the reading below for more details
+      # NOTE: This must be the correct region for YOU
+      :s3_host_name => "s3.amazonaws.com",
+
+      # NOTE: these lines are changed to use secrets.yml
+      # from the examples (which use ENV vars instead)
+      :s3_region => "us-east-1",
+      :bucket => Rails.application.secrets.aws_bucket,
+      :access_key_id => Rails.application.secrets.aws_id,
+      :secret_access_key => Rails.application.secrets.aws_secret_key
+    }
+  }
+
 end

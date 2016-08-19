@@ -1,0 +1,9 @@
+<h1>Alert!</h1>
+
+<p>
+  Hi <%= @user.fullname %>, you have a comment!
+</p>
+
+<p>
+  View your account at <%= link_to "#{user_url(@user.id)}", user_url(@user.id) %>
+</p>

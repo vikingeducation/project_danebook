@@ -1,0 +1,25 @@
+<main>
+	<div class="container about-info-container">
+		<header>
+			<div class="row main-content-header">
+				<div class="col-xs-2 col-xs-offset-5">
+					<h2>Photos</h2>
+				</div>
+				<div class="col-xs-3 pull-right h2 btn-container">
+          <%= link_to "Add Photo!", new_user_photo_path(@user), class: "btn btn-primary" if required_user? %>
+				</div>
+			</div>
+		</header>
+
+	<div class="row photos-section-container">
+    <div class="clearfix">
+      <% if @user.photos.any? %>
+  			<% @user.photos.each do |photo| %>
+          <%= render "shared/photos-section-photos", photo: photo %>
+        <% end %>
+      <% else %>
+        <h1 class="text-center">Upload some photos!</h1>
+      <% end %>
+    </div>
+	</div>
+</main>

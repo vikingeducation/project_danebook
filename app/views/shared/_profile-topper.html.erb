@@ -1,7 +1,15 @@
 <div class="container cover-section">
   <div class="cover-photo-container">
-    <img class="cover-photo" src="/imgs/hogwarts_small.jpg">
-    <img class="profile-img" src="/imgs/harry_potter_small.jpg">
+    <% if @user.cover_photo %>
+      <%= image_tag(@user.cover_photo.image.url, class: "cover-photo") %>
+    <% else %>
+      <img class="cover-photo" src="/imgs/hogwarts_small.jpg">
+    <% end %>
+    <% if @user.profile_photo %>
+      <%= image_tag(@user.profile_photo.image.url, class: "profile-img") %>
+    <% else %>
+      <img class="profile-img" src="/imgs/harry_potter_small.jpg">
+    <% end %>
     <h2 class="profile-name"><%= @user.first_name %> <%= @user.last_name %></h2>
   </div>
   <div class="row midde-nav-row">
@@ -10,15 +18,15 @@
         <li><%= link_to "Timeline", user_activities_path(@user) %></li>
         <li><%= link_to "About", @user %></li>
         <li>
-        <%= link_to "#" do %>
+        <%= link_to user_photos_path(@user) do %>
           Photos
-          <%= content_tag(:span, "(123)", class: "middle-nav-count") %>
+          <%= content_tag(:span, "(#{@user.photos.count})", class: "middle-nav-count") %>
         <% end %>
         </li>
         <li>
-        <%= link_to "#" do %>
+        <%= link_to user_friendings_path(@user) do %>
           Friends
-          <%= content_tag(:span, "(542)", class: "middle-nav-count") %>
+          <%= content_tag(:span, "(#{@user.followees.count})", class: "middle-nav-count") %>
         <% end %>
         </li>
       </ul>

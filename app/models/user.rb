@@ -1,5 +1,9 @@
 class User < ApplicationRecord
+  belongs_to :profile_photo, class_name: "Photo", optional: true
+  belongs_to :cover_photo, class_name: "Photo", optional: true
+
   has_many :posts, :through => :activities, :source => :postable, :source_type => 'Post'
+  has_many :photos, :through => :activities, :source => :postable, :source_type => 'Photo'
   has_many :comments_made, :through => :activities, :source => :postable, :source_type => 'Comment'
   has_many :activities, foreign_key: :author_id, dependent: :destroy
   has_many :liked_things, class_name: "Liking"
@@ -11,17 +15,22 @@ class User < ApplicationRecord
   has_many :followers, through: :recieved_friendings, source: :initiator
 
   before_create :generate_token
-  
+
   has_secure_password
 
   validates :password,
             :length => { :in => 8..24 },
             :allow_nil => true
-  validates :email, presence: true, uniqueness: { case_sensitive: false }
-  validates :first_name, presence: true, :length => { :in => 1..24 }
-  validates :last_name, presence: true, :length => { :in => 1..24 }
-  validates :gender, presence: true
-  validates :birthday, presence: true
+  validates :email, presence: true,
+            uniqueness: { case_sensitive: false }, if: :email
+  validates :first_name, presence: true, :length => { :in => 1..24 },
+            if: :first_name
+  validates :last_name, presence: true, :length => { :in => 1..24 },
+            if: :last_name
+  validates :gender, presence: true,
+            if: :gender
+  validates :birthday, presence: true,
+            if: :birthday
 
   def generate_token
     begin
@@ -40,7 +49,7 @@ class User < ApplicationRecord
   end
 
   def get_wall_activities
-    activities.where.not(postable_type: "Comment").order(id: :desc)
+    activities.where.not("postable_type = ? OR postable_type = ?", "Comment", "Photo").order(id: :desc)
   end
 
   def day
@@ -65,4 +74,15 @@ class User < ApplicationRecord
   def this_friend(user_id)
     initiated_friendings.find_by_reciever_id(user_id)
   end
+
+  def self.send_welcome_email(id)
+    user = User.find(id)
+    UserMailer.welcome(user).deliver!
+  end
+
+  def self.send_alert_email(id)
+    user = User.find(id)
+    UserMailer.comment_alert(user).deliver!
+  end
+
 end

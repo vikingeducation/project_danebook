@@ -11,7 +11,7 @@
     <div class="col-md-10 col-md-offset-1" id="header-bar">
       <h2>Photos</h2>
       <% if current_user.id == @user.id %>
-        <%= link_to "Add Photo!", new_user_photo_path(real_user_id), class:"btn btn-primary", role:"button" %>
+        <%= link_to "Add Photo!", new_photo_path(id: real_user_id), class:"btn btn-primary", role:"button" %>
       <% end %>
     </div>
     <!--user's photos-->

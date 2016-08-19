@@ -5,9 +5,10 @@ Rails.application.routes.draw do
   resources :users do 
     resource :timeline, only: [:show]
     resources :friends, only: [:index]
-    resources :photos
-
   end
+
+  resources :photos, only: [:new, :index, :show]
+  
   resources :posts do
     resources :likes, only: [:create, :destroy]
     resources :comments 

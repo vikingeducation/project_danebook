@@ -51,6 +51,16 @@ class User < ApplicationRecord
 
     handle_asynchronously :welcome_email, run_at: Proc.new { 5.seconds.from_now }
 
+    def comment_email(owner_id, commenter_id, comment_id, post_id)
+      owner_user = User.find(owner_id)
+      comment_user = User.find(commenter_id)
+      comment = Comment.find(comment_id)
+      post = Post.find(post_id)
+      UserMailer.comment(owner_user, comment_user, comment, post).deliver!
+    end
+
+    handle_asynchronously :comment_email, run_at: Proc.new {5.seconds.from_now}
+
   end
 
 

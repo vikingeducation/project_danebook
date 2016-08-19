@@ -1,11 +1,5 @@
 Rails.application.routes.draw do
 
-  get 'photos/new'
-
-  get 'photos/create'
-
-  get 'photos/destroy'
-
   get 'static_pages/home'
 
   get 'profiles/update'
@@ -21,6 +15,7 @@ Rails.application.routes.draw do
   
   resources :users do
     get 'change_avatar'
+    get 'change_cover'
   end
 
   resources :posts

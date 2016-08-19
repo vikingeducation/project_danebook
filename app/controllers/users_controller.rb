@@ -82,6 +82,10 @@ class UsersController < ApplicationController
     render 'static_pages/change_avatar'
   end
 
+  def change_cover
+    render 'static_pages/change_cover'
+  end
+
   private
     def user_params
       permissible_params = [:first_name,

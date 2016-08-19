@@ -56,7 +56,7 @@ class ApplicationController < ActionController::Base
   helper_method :user_header_name
 
   def require_current_user
-    unless params[:id] == current_user.id.to_s
+    unless params[:id] == current_user.id.to_s || params[:user_id] == current_user.id.to_s
       flash[:danger] = "You're not authorized for that action!"
       redirect_to root_path
     end

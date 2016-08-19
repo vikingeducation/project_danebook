@@ -10,8 +10,21 @@
     <!--About page header and edit profile button-->
     <div class="col-md-10 col-md-offset-1" id="header-bar">
       <h2>Photo</h2>
+      <% if current_user.id == @user_id %>
+        <%= form_for current_user do |user_fields| %>
+          <%= user_fields.fields_for :profile do |profile_fields| %>
+            <%= profile_fields.label :prof_photo_id, "Make this your profile picture" %>
+            <%= profile_fields.check_box :prof_photo_id, {}, "#{@photo_id}", nil %>
+
+            <%= profile_fields.label :cover_photo_id, "Make this your cover picture" %>
+            <%= profile_fields.check_box :cover_photo_id, {}, "#{@photo_id}", nil %>
+            <%= profile_fields.submit %>
+          <% end %>
+        <% end %>
+      <% end %>
       <div class="col-md-4 col-md-offset-4">
       <%= image_tag @photo.image.url %>
     </div>
+  </div>
   
 </main>

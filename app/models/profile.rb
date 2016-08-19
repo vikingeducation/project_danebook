@@ -2,6 +2,8 @@ class Profile < ApplicationRecord
   belongs_to :user, optional: true
   belongs_to :prof_photo, optional: true
   belongs_to :cover_photo, optional: true
+  accepts_nested_attributes_for :cover_photo
+  accepts_nested_attributes_for :prof_photo
   validates :first_name, 
             :length => {:maximum => 40}, allow_blank: true,             allow_nil: true
 

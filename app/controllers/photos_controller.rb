@@ -1,5 +1,7 @@
 class PhotosController < ApplicationController
 
+  before_action :require_current_user, except: [:show, :index]
+
   def index
     @user = User.find(params[:user_id])
     @photos = @user.photos
@@ -11,6 +13,8 @@ class PhotosController < ApplicationController
 
   def show
     @photo = Photo.find(params[:id])
+    @photo_id = @photo.id.to_s
+    @user_id = params[:user_id].to_i
   end
 
   def create

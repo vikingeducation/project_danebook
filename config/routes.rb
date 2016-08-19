@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   resources :users do 
     resource :timeline, only: [:show]
-    resource :friends, only: [:show]
+    resources :friends, only: [:index]
     resources :photos
 
   end

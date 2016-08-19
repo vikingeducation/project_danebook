@@ -5,7 +5,11 @@
       <img src="https://s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif" class="img-responsive" id="friend-profile-picture">
       <!--friend's name and number of friends-->
       <h5><%= link_to user_header_name(user.id), user_path(user) %><br><%= user.friend_count %> Friends </h5>
-      <%= link_to "Unfriend me", friending_path(user.id), method: 'delete', class: "btn btn-info", id:"unfriend-button", role:"button" %>
+      <% if current_user.friends.include?(user) %>
+        <%= link_to "Unfriend me", friending_path(user.id), method: 'delete', class: "btn btn-info", id:"unfriend-button", role:"button" %>
+      <% elsif current_user.friends.exclude?(user) %>
+        <%= link_to "Friend me!", friendings_path(friended_id: user.id), method: 'post', class: "btn btn-info", id:"unfriend-button", role:"button" %>
+      <% end %>
     </div>
   </div>
 </div>

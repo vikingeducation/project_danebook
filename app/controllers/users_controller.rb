@@ -3,7 +3,8 @@ class UsersController < ApplicationController
   before_action :require_current_user, only: [:edit, :update, :destroy]
 
   def index
-    @users = User.search(params[:search])
+    @users = User.search(params[:search], current_user.id)
+    @search_terms = params[:search]
   end
 
   def new
@@ -71,7 +72,9 @@ class UsersController < ApplicationController
                                   :telephone,
                                   :words_to_live_by,
                                   :about_me,
-                                  :profile_picture
+                                  :profile_picture,
+                                  :cover_photo_id,
+                                  :prof_photo_id
                                   ]})
   end
 

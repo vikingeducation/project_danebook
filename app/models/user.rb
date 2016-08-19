@@ -50,7 +50,7 @@ class User < ApplicationRecord
     (self.friended_users + self.users_friended_by).uniq
   end
 
-  def self.search(search)
+  def self.search(search, id)
     if search
       users = User.joins(:profile).where('first_name ILIKE ? OR last_name ILIKE ?', "%#{search}%", "%#{search}%")
     else
@@ -58,6 +58,15 @@ class User < ApplicationRecord
     end
   end
 
+  def profile_picture
+    photo = Photo.find(self.profile.prof_photo_id)
+    photo.image
+  end
+
+  def cover_photo
+    photo = Photo.find(self.profile.cover_photo_id)
+    photo.image
+  end
   private
   class << self
     def welcome_email(id)

@@ -13,7 +13,7 @@
           <% if real_user.profile.prof_photo %>
             <%= image_tag real_user.profile.prof_photo.url(:profile)  %>
           <% else %>
-            <img src="https://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png">
+            <img src="https://s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif">
           <% end %>
           <div id="profile-names">
             <%= profile_fields.input :first_name, class:"form-control", label: false %>

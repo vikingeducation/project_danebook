@@ -5,7 +5,6 @@
     <%= render partial: "shared/cover_and_prof", locals: {user: @user} %>
     <!--set of profile tabs linking to different parts of the page-->
     <%= render "shared/nav_links" %>
-    </div>
   </div>
 
   <div class="row">
@@ -16,7 +15,7 @@
     <!--list of friends-->
     <div class="col-md-10 col-md-offset-1 col-xs-12" id="basic">
       <div class="row">
-        <% @friends[0..5].each do |friend| %>
+        <% @friends.each do |friend| %>
           <%= render partial: "shared/friend_page", locals: {user: friend} %>
         <% end %>
       </div>

@@ -29,4 +29,33 @@ module StaticPagesHelper
     end
   end
 
+  def friend_or_unfriend_button
+    if current_user && current_user != @user
+      if current_user.friends_with?(@user)
+        unfriend_button
+      else
+        friend_button
+      end
+    end
+  end
+
+  def friend_button
+    content_tag(:div, link_to("Friend", friendings_path(friending: {friendee: @user.id}), method: :post, type: 'button', class: 'btn btn-primary col-xs-offset-1', id: 'friend-button'), id: 'friend-button-container')
+  end
+
+
+  def unfriend_button
+    content_tag(:div, link_to("Unfriend", friending_path(@user.id), method: :delete, type: 'button', class: 'btn btn-danger col-xs-offset-1', id: 'unfriend-button'), id: 'friend-button-container')
+  end
+
+  def first_half_of(arr)
+    mid = arr.length / 2
+    arr[0..mid]
+  end
+
+  def second_half_of(arr)
+    mid = arr.length / 2
+    arr[(mid + 1)..-1]
+  end
+
 end

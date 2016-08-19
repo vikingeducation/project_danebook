@@ -6,22 +6,64 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+FACTOR = 10
+
 
 puts "Destroying Users"
 if Rails.env == 'development'
   User.destroy_all
+  Friending.destroy_all
+  Post.destroy_all
+  Comment.destroy_all
+  Like.destroy_all
+end
+
+def create_harry
+  User.create!(email: 'harry_potter@hogwarts.edu', password: 'password',
+    profile_attributes: {
+      first_name: 'Harry',
+      last_name: 'Potter',
+      birthday: Date.new(1980, 7, 31),
+      college: 'Hogwarts School',
+      hometown: "Godrick's Hollow",
+      currently_lives: "Godrick's Hollow",
+      telephone: '867-5309',
+      words_to_live_by: 'Lorem ipsum sapientem ne neque dolor erat,eros solet invidunt duo Quisque aliquid leo. Pretium patrioque',
+      about_me: 'Lorem ipsum sapientem ne neque dolor erat,eros solet invidunt duo Quisque aliquid leo. Pretium patrioque sociis eu nihil Cum enim ad, ipsum alii vidisse justo id. Option porttitor diam voluptua. Cu Eam augue dolor dolores quis, Nam aliquando elitr Etiam consetetur. Fringilla lucilius mel adipiscing rebum. Sit nulla Integer ad volumus, dicta scriptorem viderer lobortis est Utinam, enim commune corrumpit Aenean erat tellus. Metus sed amet dolore justo, gubergren sed.'
+    } )
+end
+
+def create_friending(user)
+  FACTOR.times do
+    otheruser = User.where.not(id: user.id).sample
+    user.friendees << otheruser unless user.friends_with?(otheruser)
+  end
+end
+
+def create_user
+User.create(email: Faker::Internet.email, password: 'password',
+  profile_attributes: {
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    birthday: Date.new(1980, 7, 31),
+    college: Faker::University.name,
+    hometown: Faker::Address.city,
+    currently_lives: Faker::Address.city,
+    telephone: Faker::PhoneNumber.cell_phone,
+    words_to_live_by: Faker::Lorem.sentence,
+    about_me: Faker::Lorem.paragraph
+  })
 end
 
 puts "Creating Users"
-User.create!(email: 'harry_potter@hogwarts.edu', password: 'password',
-  profile_attributes: {
-    first_name: 'Harry',
-    last_name: 'Potter',
-    birthday: Date.new(1980, 7, 31),
-    college: 'Hogwarts School',
-    hometown: "Godrick's Hollow",
-    currently_lives: "Godrick's Hollow",
-    telephone: '867-5309',
-    words_to_live_by: 'Lorem ipsum sapientem ne neque dolor erat,eros solet invidunt duo Quisque aliquid leo. Pretium patrioque',
-    about_me: 'Lorem ipsum sapientem ne neque dolor erat,eros solet invidunt duo Quisque aliquid leo. Pretium patrioque sociis eu nihil Cum enim ad, ipsum alii vidisse justo id. Option porttitor diam voluptua. Cu Eam augue dolor dolores quis, Nam aliquando elitr Etiam consetetur. Fringilla lucilius mel adipiscing rebum. Sit nulla Integer ad volumus, dicta scriptorem viderer lobortis est Utinam, enim commune corrumpit Aenean erat tellus. Metus sed amet dolore justo, gubergren sed.'
-  } )
+
+create_harry
+
+(FACTOR * 10).times do
+  create_user
+end
+
+
+User.all.each do |user|
+  create_friending(user)
+end

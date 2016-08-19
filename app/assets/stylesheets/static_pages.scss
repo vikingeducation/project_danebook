@@ -242,9 +242,17 @@ body{
 
 }
 
-#edit-profile-button{
+#edit-profile-button, #friend-button,
+#unfriend-button{
     border-right: 3px solid black;
     border-bottom: 2px solid black;
+}
+
+#friend-button,
+#unfriend-button{
+    padding: 5px 20px 5px 20px;
+    margin-left: 60px;
+    margin-top: 10px;
 }
 
 #right-column-container{
@@ -265,6 +273,10 @@ body{
 
 
 /********** Friend Panel **************/
+
+.friends-page-container {
+    min-height: 400px;
+}
 
 .friend-card{
     height: 150px;
@@ -381,10 +393,18 @@ body{
     text-align: center;
 }
 
+.mini-text{
+    font-size: 12px;
+}
+
 .underline{
     text-decoration: underline;
 }
 
 .top-margin-10{
     margin-top: 10px;
+}
+
+.mini-friends-body{
+    min-height: 300px;
 }

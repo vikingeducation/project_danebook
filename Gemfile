@@ -30,12 +30,17 @@ gem 'bcrypt', '~> 3.1.7'
 
 group :development, :test do
   # Use sqlite3 as the database for Active Record
+  gem 'faker'
   gem 'sqlite3'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'pry-byebug'
   gem 'byebug', platform: :mri
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'hirb'
+  gem 'factory_girl_rails'
+  gem 'shoulda-matchers', '~> 3.1'
+  gem 'rails-controller-testing'
 end
 
 group :development do
@@ -50,6 +55,15 @@ end
 group :production do
   gem 'rails_12factor'
   gem 'pg'
+end
+
+group :test do
+  gem 'rspec'
+  gem 'rspec-rails'
+  gem 'guard'
+  gem 'guard-rspec'
+  gem 'capybara'
+  gem 'launchy'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

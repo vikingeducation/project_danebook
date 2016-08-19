@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :require_login, only: [:new, :create]
+  skip_before_action :require_login, only: [:new, :create, :show]
 
   def new
     @user = User.new
@@ -38,12 +38,12 @@ class UsersController < ApplicationController
       redirect_to current_user
     else
       flash.now[:error] = 'Failed to update your profile'
-      redirect_to root_url
+      @user = current_user
+      render 'static_pages/about_edit'
     end
   end
 
   def show
-    # raise
     id = params[:user_id] ? params[:user_id] : params[:id]
     @user = id ? User.find(id) : User.first
     @profile = @user.profile

@@ -1,5 +1,5 @@
-<div class="panel panel-default"><!-- begin-post-panel -->
-  <div class="panel-body">
+<div class="post-panel panel panel-default"><!-- begin-post-panel -->
+  <div class="post-panel-body panel-body">
     <div class="col-xs-8 post-header">
       <img class="col-xs-3" src='<%= asset_path('hp.jpg') %>'>
       <%= link_to user.profile.name, user_path(user), class: 'col-xs-8' %>
@@ -7,10 +7,10 @@
     </div>
     <%= content_tag(:p, post.post_text, class: 'col-xs-12') %>
   </div>
-  <div class="panel-footer">
+  <div class="post-panel-footer panel-footer">
     <div class="row">
       <% unless post.likes.map(&:user).include?(current_user) %>
-        <%= link_to 'Like', post_likes_path(post), method: :post, class: 'col-xs-1 underline' %>
+        <%= link_to 'Like', post_likes_path(post), method: :post, class: 'like-link col-xs-1 underline' %>
       <% else %>
         <%= link_to 'Unlike', like_path(post.likes.where("user_id=#{current_user.id}").first), method: :delete, class: 'col-xs-1 underline' %>
       <% end %>

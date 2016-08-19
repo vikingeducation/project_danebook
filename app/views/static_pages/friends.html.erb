@@ -4,7 +4,7 @@
 <main >
   <div class = "row">
     <div class="col-xs-10 col-xs-offset-1">
-      <%#= render partial: 'layouts/menu_options', :locals => { user: @user } %>
+      <%= render partial: 'layouts/menu_options', :locals => { user: @user } %>
       <br>
       <div class="row"><!-- begin about-panel-row -->
         <div class="panel panel-default">
@@ -13,87 +13,17 @@
             <div class="spacer"> </div>
           </div>
           <div class="panel-body">
-            <div class="col-xs-12 panel-content">
+            <div class="col-xs-12 panel-content friends-page-container">
               <div class="col-xs-6" id="left-friend-column">
-                <div class="col-xs-12 friend-card">
-                  <div class="col-xs-3 card-pic-container">
-                    <a href="#"><img class="card-pic" src="<%= asset_path('ron.jpg') %>"></a>
-                  </div>
-                  <div class="col-xs-5 card-info-container">
-                    <a href="#" class="col-xs-12 card-link">Ron Weasley</a>
-                    <p class="col-xs-12 card-info">432 Friends</p>
-                  </div>
-                  <div class="col-xs-4 card-button-container">
-                    <button type="button" class="btn btn-danger card-button">Unfriend Me</button>
-                  </div>
-                </div>
-                <div class="col-xs-12 friend-card">
-                  <div class="col-xs-3 card-pic-container">
-                    <a href="#"><img class="card-pic" src='<%= asset_path('ginny.jpg') %>'></a>
-                  </div>
-                  <div class="col-xs-5 card-info-container">
-                    <a href="#" class="col-xs-12 card-link">Ginny Weasley</a>
-                    <p class="col-xs-12 card-info">432 Friends</p>
-                  </div>
-                  <div class="col-xs-4 card-button-container">
-                    <button type="button" class="btn btn-danger card-button">Unfriend Me</button>
-                  </div>
-                </div>
-                <div class="col-xs-12 friend-card">
-                  <div class="col-xs-3 card-pic-container">
-                    <a href="#"><img class="card-pic" src='<%= asset_path('fred.png') %>'></a>
-                  </div>
-                  <div class="col-xs-5 card-info-container">
-                    <a href="#" class="col-xs-12 card-link">Fred Weasley</a>
-                    <p class="col-xs-12 card-info">432 Friends</p>
-                  </div>
-                  <div class="col-xs-4 card-button-container">
-                    <button type="button" class="btn btn-danger card-button">Unfriend Me</button>
-                  </div>
-                </div>
+                <%= render partial: 'friend', collection: first_half_of(@friends), locals: { user: @user } %>
               </div><!-- end left-friend-column -->
               <div class="col-xs-6" id="right-friend-column">
-                <div class="col-xs-12 friend-card">
-                  <div class="col-xs-3 card-pic-container">
-                    <a href="#"><img class="card-pic" src='<%= asset_path('hermione.jpg') %>'></a>
-                  </div>
-                  <div class="col-xs-5 card-info-container">
-                    <a href="#" class="col-xs-12 card-link">Hermione Granger</a>
-                    <p class="col-xs-12 card-info">432 Friends</p>
-                  </div>
-                  <div class="col-xs-4 card-button-container">
-                    <button type="button" class="btn btn-danger card-button">Unfriend Me</button>
-                  </div>
-                </div>
-                <div class="col-xs-12 friend-card">
-                  <div class="col-xs-3 card-pic-container">
-                    <a href="#"><img class="card-pic" src='<%= asset_path('hagrid.jpg') %>'></a>
-                  </div>
-                  <div class="col-xs-5 card-info-container">
-                    <a href="#" class="col-xs-12 card-link">Hagrid</a>
-                    <p class="col-xs-12 card-info">432 Friends</p>
-                  </div>
-                  <div class="col-xs-4 card-button-container">
-                    <button type="button" class="btn btn-danger card-button">Unfriend Me</button>
-                  </div>
-                </div>
-                <div class="col-xs-12 friend-card">
-                  <div class="col-xs-3 card-pic-container">
-                    <a href="#"><img class="card-pic" src='<%= asset_path('george.jpg') %>'></a>
-                  </div>
-                  <div class="col-xs-5 card-info-container">
-                    <a href="#" class="col-xs-12 card-link">George Weasley</a>
-                    <p class="col-xs-12 card-info">432 Friends</p>
-                  </div>
-                  <div class="col-xs-4 card-button-container">
-                    <button type="button" class="btn btn-danger card-button">Unfriend Me</button>
-                  </div>
-                </div>
+                <%= render partial: 'friend', collection: second_half_of(@friends), locals: { user: @user } %>
               </div>
             </div>
           </div>
         </div>
       </div><!-- end about-panel-row>
-                 </div>
-                 </div><!--row-->
+    </div>
+  </div><!--row-->
 </main>

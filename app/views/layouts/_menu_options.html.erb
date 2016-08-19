@@ -14,7 +14,7 @@
 </div><!-- end background-image row -->
 <div class="row"> <!-- begin menu-options row-->
   <div class="col-xs-12" id="menu-options-tray">
-    <div class="btn-group col-xs-7 col-xs-offset-2">
+    <div class="btn-group col-xs-9 col-xs-offset-2">
       <%= link_to user_timeline_path(user), method: :get, class: menu_options_class('timeline') do %>
         <p class="vertical-align col-xs-offset-4">Timeline</p>
       <% end %>
@@ -24,9 +24,10 @@
       <%= link_to photos_path, method: :get, class: menu_options_class('photos')  do %>
         <p class="vertical-align col-xs-offset-4">Photos</p>
       <% end %>
-      <%= link_to friends_path, method: :get, class: menu_options_class('friends')  do %>
+      <%= link_to user_friends_path(user), method: :get, class: menu_options_class('friends')  do %>
         <p class="vertical-align col-xs-offset-4">Friends</p>
       <% end %>
+      <%= friend_or_unfriend_button %>
     </div>
   </div>
 </div> <!-- end menu-options row-->

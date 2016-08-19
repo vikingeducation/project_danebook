@@ -6,26 +6,30 @@ class PostsController < ApplicationController
   end
 
   def create
-    current_user.posts.create(whitelisted_post_params)
+    @post = current_user.posts.build(whitelisted_post_params)
+    if @post.save
+      flash[:success] = 'Post created'
+    end
     redirect_to timeline_path
   end
 
   def index
     @user = params[:user_id] ? User.find(params[:user_id]) : current_user
     @posts = @user.posts.order('created_at desc')
+    @friends = @user.friends.sample(9)
     @post = Post.new
     render 'static_pages/timeline'
   end
 
   def destroy
     @post = Post.find(params[:id])
-    if current_user = @post.user
+    if current_user == @post.user  # got a bug! was assigning current_user instead of comparing
       current_user.posts.destroy(@post)
       flash[:success] = 'Post deleted'
-      redirect_to :back
+      redirect_back(fallback_location: root_url)
     else
       flash[:error] = 'We were unable to do that.'
-      redirect_to :back
+      redirect_back(fallback_location: root_url)
     end
   end
 

@@ -49,30 +49,13 @@
           </div><!-- end-mini-photos-panel -->
           <div class="panel panel-default"><!-- begin-mini-friends-panel -->
             <div class="panel-heading">
-              <h3 class="panel-title center-text center-text">Friends<span class="grey">(542)</span></h3>
+              <h3 class="panel-title center-text center-text">Friends<span class="grey">(<%= @friends.count %>)</span></h3>
             </div>
-            <div class="panel-body">
+            <div class="panel-body mini-friends-body">
               <div class="row">
-                <img class="col-xs-4" src='<%= asset_path('ron.jpg') %>'>
-                <img class="col-xs-4" src='<%= asset_path('ginny.jpg') %>'>
-                <img class="col-xs-4" src='<%= asset_path('hermione.jpg') %>'>
+                <%= render partial: 'friendings/mini_friend', collection: @friends %>
               </div>
-              <div class="row mini-friends-row">
-                <a class="col-xs-4 center-text" href="#">Ron Weasley</a>
-                <a class="col-xs-4 center-text" href="#">Ginny Weasley</a>
-                <a class="col-xs-4 center-text" href="#">Hermione Granger</a>
-              </div>
-              <div class="row">
-                <img class="col-xs-4" src='<%= asset_path('hagrid.jpg') %>'>
-                <img class="col-xs-4" src='<%= asset_path('george.jpg') %>'>
-                <img class="col-xs-4" src='<%= asset_path('fred.png') %>'>
-              </div>
-              <div class="row mini-friends-row">
-                <a class="col-xs-4 center-text" href="#">Hagrid</a>
-                <a class="col-xs-4 center-text" href="#">George Weasley</a>
-                <a class="col-xs-4 center-text" href="#">Fred Weasley</a>
-              </div>
-              <%= link_to 'See More Friends', friends_path, id: 'see-more-friends', class: 'col-xs-6 col-xs-offset-4 underline' %>
+              <%= link_to 'See More Friends', user_friends_path, id: 'see-more-friends', class: 'col-xs-6 col-xs-offset-4 underline' %>
             </div>
           </div><!-- end-mini-friends-panel -->
         </div><!-- end-left-column-->
@@ -81,21 +64,19 @@
             <div class="panel-heading">
               <h3 class="panel-title center-text center-text">Post</h3>
             </div>
-            <% if current_user == @user %>
+            <% if current_user == @user || current_user.friends_with?(@user) %>
               <%= form_for @post do |post_builder| %>
                 <div class="panel-body">
-                  <!-- <textarea class="form-control" rows="3" placeholder="Tell the world something..."></textarea> -->
                   <%= post_builder.text_area :post_text, placeholder: 'Tell the world something...', rows: 3, class: 'form-control' %>
                 </div>
                 <div class="panel-footer">
                   <%= post_builder.submit 'Post', class: 'btn btn-primary col-xs-offset-11' %>
-                  <!-- <button type="button" class="btn btn-primary col-xs-offset-11">Post</button> -->
                 </div>
           </div><!-- end-new-post-panel -->
               <% end %>
             <% end %>
             <%= render partial: 'post', collection: @posts, :locals => { user: @user } %>
-            <%= render partial: 'static_pages/timeline_filler' %>
+            <%#= render partial: 'static_pages/timeline_filler' %>
         </div><!-- end right-column-->
       </div><!-- end timeline-row-->
     </div>

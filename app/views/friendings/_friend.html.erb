@@ -1,0 +1,12 @@
+<div class="col-xs-12 friend-card">
+  <div class="col-xs-3 card-pic-container">
+    <a href="#"><img class="card-pic" src="<%= asset_path('ron.jpg') %>"></a>
+  </div>
+  <div class="col-xs-5 card-info-container">
+    <%= link_to friend.name, user_timeline_path(friend), class: 'col-xs-12 card-link ' %>
+    <%= content_tag(:p, "#{friend.friends.count} Friends", class: 'col-xs-12 card-info') %>
+  </div>
+  <div class="col-xs-4 card-button-container">
+    <%= button_to 'Unfriend Me', friending_path(friend), method: :delete, class: 'btn btn-danger card-button' if user == current_user %>
+  </div>
+</div>

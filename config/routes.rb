@@ -1,15 +1,16 @@
 Rails.application.routes.draw do
-  root to: 'users#new'
+  root to: 'posts#index'
   get '/home'     => 'users#new'
   get '/timeline' => 'posts#index'
-  get '/friends'  => 'static_pages#friends'
   get '/about'    => 'users#show'
   get '/photos'   => 'static_pages#photos'
+  get '/friends' => 'friendings#index'
   get '/about_edit' => 'users#edit'
 
   get '/users/:user_id/timeline' => 'posts#index', as: '/user_timeline'
   get '/users/:user_id/about' => 'users#show', as: '/user_about'
   get '/users/:user_id/about_edit' => 'users#edit', as: '/user_about_edit'
+  get '/users/:user_id/friends' => 'friendings#index', as: '/user_friends'
 
   resources :users
   resources :posts, only: [ :create, :destroy ] do
@@ -19,6 +20,7 @@ Rails.application.routes.draw do
   resources :comments, only: [ :destroy ] do
     resources :likes, shallow: true
   end
+  resources :friendings, only: [ :create, :destroy ]
   get "login" => "sessions#new"
   post 'login' => 'sessions#create'
   delete "logout" => "sessions#destroy"

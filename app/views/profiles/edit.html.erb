@@ -1,7 +1,27 @@
-<%= form_for @user.profile, html: { class: "form-inline"} do |profile_fields| %>
-<%= profile_fields.text_field :first_name, class: "form-control" %>
-<%= profile_fields.text_field :last_name, class: "form-control"%>
-<%= profile_fields.text_area :about, class: "form-control"%>
-<%= profile_fields.date_select(:birthday, { :order => [:day, :month, :year], :start_year => Date.today.year, :end_year => 150.years.ago.year }, {:class => 'form-control'}) %>
-<%= profile_fields.submit "Update" %>
-<% end %>
+<main>
+    <div class="container">
+        <%= render "/shared/profile_bar" %>
+        <div class="row wrapper">
+            <div class="col-sm-12">
+                <h2>About</h2>
+                <div class="form-group col-sm-6">
+
+                    <%= form_for @user.profile do |profile_fields| %>
+                    <%= profile_fields.label :first_name %>
+                    <%= profile_fields.text_field :first_name, class: "form-control" %>
+                    <%= profile_fields.label :last_name %>
+                    <%= profile_fields.text_field :last_name, class: "form-control"%>
+                    <%= profile_fields.label :about %>
+                    <%= profile_fields.text_area :about, class: "form-control" %>
+                    <%= profile_fields.label :birthday %>
+                    <div class="form-group form-inline">
+                    <%= profile_fields.date_select(:birthday, { :order => [:day, :month, :year], :start_year => Date.today.year, :end_year => 150.years.ago.year }, {:class => 'inline-block form-control'}) %>
+                    <%= profile_fields.submit "Update", type: "button", class: "btn btn-sm btn-primary pull-right" %>
+                    </div>
+                    <% end %>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

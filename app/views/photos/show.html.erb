@@ -1,33 +1,35 @@
 <div class="container">
-    <div class="row">
-        <h3>
-            <%= link_to @user, @user %>
-        </h3>
-        <% if @user == current_user %>
-        <%= button_to "Delete Photo", photo_path(@photo), method: :delete, class: "btn btn-danger btn-sm" %>
-        <% end %>
+    <div class="col-sm-10 col-sm-offset-1">
 
-        <!-- button to make profile pic -->
-        <%= button_to "Make Profile Pic", set_picture_profile_path(picture_id: @photo.id), method: :patch %>
+        <div class="row">
+            <h3>
+                <%= link_to "#{@user}'s Picture", @user %>
+            </h3>
 
-    </div>
-    <div class="row">
-        <div class="col-sm-8">
-            <%= image_tag @photo.image.url(:medium) %>
+            <!-- button to make profile pic -->
+            <%= link_to "Make Profile Pic", set_picture_profile_path(picture_id: @photo.id), method: :patch, class: "btn btn-sm btn-primary" %>
+            <%= link_to "Make Cover Pic", set_cover_profile_path(picture_id: @photo.id), method: :patch, class: "btn btn-sm btn-primary" %>
+            <% if @user == current_user %>
+            <%= link_to "Delete Photo", photo_path(@photo), method: :delete, class: "btn btn-danger btn-sm" %>
+            <% end %>
+
         </div>
-        <div class="col-sm-4">
-            <%= likeable_likes_link(@photo) %>
-        </div>
-        <div class="col-sm-4">
-            <div class="col-sm-12">
-                <%= render partial: "/comments/form", locals: { commentable: @photo } %>
+        <div class="row">
+            <div class="col-sm-8">
+                <%= image_tag @photo.image.url(:medium) %>
             </div>
-            <div class="col-sm-10">
-                <% @photo.comments.each do |comment| %>
-                <%= render partial: "/comments/comment", locals: { comment: comment, commentable: @photo } %>
-                <br>
-                <br>
-                <% end %>
+            <div class="col-sm-4">
+                <div class="col-sm-12">
+                  <%= likeable_likes_link(@photo) %>
+                    <%= render partial: "/comments/form", locals: { commentable: @photo } %>
+                </div>
+                <div class="col-sm-10">
+                    <% @photo.comments.each do |comment| %>
+                    <%= render partial: "/comments/comment", locals: { comment: comment, commentable: @photo } %>
+                    <br>
+                    <br>
+                    <% end %>
+                </div>
             </div>
         </div>
     </div>

@@ -11,7 +11,16 @@ module UsersHelper
     if photo.empty?
       image_tag('user_silhouette_generic.gif', size: '100x100')
     else
-      image_tag(photo[0].image.url(:thumb))
+      image_tag(photo[0].image.url(:thumb), class: 'fit-div')
+    end
+  end
+
+  def cover_pic_url(user)
+    photo = Photo.where(id: user.profile.cover_id)
+    if photo.empty?
+      '/images/manhattan.jpg'
+    else
+      photo[0].image.url
     end
   end
 end

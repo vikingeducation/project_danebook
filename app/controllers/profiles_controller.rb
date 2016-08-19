@@ -31,9 +31,9 @@ class ProfilesController < ApplicationController
 
   def set_cover
     session[:return_to] = request.referer
-    if @current_profile.update_attribute(:profile_id,
-                                         profile_params[:profile_id]) &&
-       Photo.exists?(params[:profile_id])
+    if @current_profile.update_attribute(:cover_id,
+                                         params[:picture_id]) &&
+       Photo.exists?(params[:picture_id])
       flash[:success] = 'Updated Cover Photo'
     else
       flash[:error] = 'Could Not Set Cover Photo'

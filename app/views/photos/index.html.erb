@@ -1,7 +1,7 @@
 <div class="container">
     <%= render partial: "/shared/profile_bar", locals: { user: @user }%>
-    <h1>Photos</h1>
     <div class="col-sm-8 col-sm-offset-2">
+      <h1>Photos</h1>
       <% if @user == current_user %>
         <div class="row">
           <div class="col-sm-8 col-sm-offset-2">

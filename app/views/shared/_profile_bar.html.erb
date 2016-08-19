@@ -1,3 +1,7 @@
+<style media="screen">
+  #banner { background-image: url("<%= cover_pic_url(@user)%>"); }
+</style>
+
 <div class="row" id="upper">
     <div class="container">
         <div class="row">
@@ -11,8 +15,9 @@
     <%= profile_pic(@user) %>
     </div>
 
-    <div class="col-sm-12" id="banner"></div>
-    <div id="cover-nav">
+    <div class="col-sm-12" id="banner">
+    </div>
+    <div class="cover-nav">
         <div class="col-sm-2 pull-down"></div>
         <%= link_to "Timeline", @user, class: "col-sm-2"  %>
         <%= link_to "About", user_profile_path(@user), class: "col-sm-2" %>

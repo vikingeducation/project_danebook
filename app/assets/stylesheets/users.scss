@@ -2,185 +2,169 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 body {
-  padding-top: 50px;
-  padding-bottom: 20px;
+    padding-top: 50px;
+    padding-bottom: 20px;
 }
 .navbar-custom {
-  background-color: #2B78E4;
-  .navbar-brand, span{
-    color: white;
-  }
-  .navbar-toggle > .icon-bar {
-    background-color:white;
-  }
-  .navbar-nav > li > a {
-    color:white;
-  }
-}
-
-#username {
-  font-weight: bold;
-}
-
-#upper {
-margin-bottom: 15px;
-}
-
-.wrapper {
-  border: 1px solid;
-  border-radius: 5px;
-  padding-bottom:20px;
-  #long-form{
-    height:100px;
-
-  }
-}
-
-.navbar-brand .logo {
-  border-radius: 50%;
-  height:25px;
-  width:auto;
-}
-.navbar-form {
-  width:60%;
-}
-.form-group {
-  width:100%;
-  .form-control {
-    width:100%;
-  }
-}
-
-.friend-row {
-  border: 1px solid;
-  margin-right:15px;
-  margin-bottom: 15px;
-  div {
-  vertical-align: middle;
-  display:inline-block;
-  }
-  ul {
-    margin-bottom: 0px;
-  }
-  li {
-    list-style-type: none;
-  }
-}
-
-.delete {
-  float: right;
-}
-
-
-
-#cover-nav {
-  z-index:-1;
-  div {
-    font-size: 15px;
-    height:40px;
-    text-align:center;
-    z-index:-1;
-  }
-}
-
-#icon-picture {
-  background-image: image-url("icon_photo_small.png");
-  height:150px;
-  width: 150px;
-  display: inline-block;
-  background-size:100% 100%;
-  p {
-    opacity:0;
-    transition:0.5s;
-    margin-top:135px;
-    background:lightgrey;
-    border:1px solid;
-  }
-  &:hover p{
-    opacity:1;
-  }
-}
-.timeline-col {
-  margin-left: -15px;
-  .wrapper {
-    margin-bottom: 15px;
-  }
-}
-.timeline-col-2nd {
-  margin-right: -15px;
-  margin-left: 30px;
-  .wrapper {
-    margin-bottom: 15px;
-  }
-  textarea {
-    margin-left: 15px;
-  }
-}
-
-.post-rows {
-  div, ul{
-    display: inline-block;
-    vertical-align: middle;
-  }
-  ul {
-    list-style-type: none;
-    margin-left: -15px;
-  }
-}
-
-.post-body {
-  margin-top: 15px;
-}
-.sub-post {
-  width: 60px;
-  height: 60px;
-  background-image: image-url("user_silhouette_generic.gif");
-  background-size:cover;
-  display: inline-block;
-}
-.friends-col {
-  height:75px;
-  width:75px;
-  margin:0px 10px 10px;
-  text-align: center;
-    p {
-      margin-top: 75px;
+    background-color: #2B78E4;
+    .navbar-brand,
+    span {
+        color: white;
+    }
+    .navbar-toggle > .icon-bar {
+        background-color: white;
+    }
+    .navbar-nav > li > a {
+        color: white;
     }
 }
-
-.more {
-  text-align: center;
+#username {
+    font-weight: bold;
 }
-
+#upper {
+    margin-bottom: 15px;
+}
+.wrapper {
+    border: 1px solid;
+    border-radius: 5px;
+    padding-bottom: 20px;
+    #long-form {
+        height: 100px;
+    }
+}
+.navbar-brand .logo {
+    border-radius: 50%;
+    height: 25px;
+    width: auto;
+}
+.navbar-form {
+    width: 60%;
+}
+.form-group {
+    width: 100%;
+    .form-control {
+        width: 100%;
+    }
+}
+.friend-row {
+    border: 1px solid;
+    margin-right: 15px;
+    margin-bottom: 15px;
+    div {
+        vertical-align: middle;
+        display: inline-block;
+    }
+    ul {
+        margin-bottom: 0;
+    }
+    li {
+        list-style-type: none;
+    }
+}
+.delete {
+    float: right;
+}
+#icon-picture {
+    background-image: image-url("icon_photo_small.png");
+    height: 150px;
+    width: 150px;
+    display: inline-block;
+    background-size: 100% 100%;
+    p {
+        opacity: 0;
+        transition: 0.5s;
+        margin-top: 135px;
+        background: lightgrey;
+        border: 1px solid;
+    }
+    &:hover p {
+        opacity: 1;
+    }
+}
+.timeline-col {
+    margin-left: -15px;
+    .wrapper {
+        margin-bottom: 15px;
+    }
+}
+.timeline-col-2nd {
+    margin-right: -15px;
+    margin-left: 30px;
+    .wrapper {
+        margin-bottom: 15px;
+    }
+    textarea {
+        margin-left: 15px;
+    }
+}
+.post-rows {
+    div,
+    ul {
+        display: inline-block;
+        vertical-align: middle;
+    }
+    ul {
+        list-style-type: none;
+        margin-left: -15px;
+    }
+}
+.post-body {
+    margin-top: 15px;
+}
+.sub-post {
+    width: 60px;
+    height: 60px;
+    background-image: image-url("user_silhouette_generic.gif");
+    background-size: cover;
+    display: inline-block;
+}
+.friends-col {
+    height: 75px;
+    width: 75px;
+    margin: 0 10px 10px;
+    text-align: center;
+    p {
+        margin-top: 75px;
+    }
+}
+.more {
+    text-align: center;
+}
 #current-link {
-  background-color: lightgrey;
+    background-color: lightgrey;
 }
 #profile-pic {
-  position: absolute;
-  ;
-  height:100px;
-  width:100px;
-  margin-top:180px;
-  margin-left:10px;
+    position: absolute;
+    height: 100px;
+    width: 100px;
+    margin-top: 220px;
+    margin-left: 10px;
+    @media only screen and (max-width: 766px) {
+        margin-top: 150px;
+    }
 }
 #post-img {
-  background-image: image-url("harry_potter_small.jpg");
-  margin-top: 10px;
-  height:60px;
-  width:60px;
-  background-size: cover;
+    margin-top: 10px;
+    height: 60px;
+    width: 60px;
 }
 #friend-pic {
-  height: 150px;
-  width: 100px;
-  display: inline-block;
-  overflow: hidden;
-  margin-top: 10px;
+    height: 150px;
+    width: 100px;
+    display: inline-block;
+    overflow: hidden;
+    margin-top: 10px;
 }
 #banner {
-  background-size: cover;
-  background-repeat:none;
-  border: 1px solid;
-  height: 250px;
-  z-index:-1;
+    background-size: cover;
+    background-repeat: none;
+    height: 300px;
+    z-index: -1;
+}
+#cover-nav {
+  div {
+    font-size: 15px;
+    text-align: center;
+    z-index: -1;
+  }
 }

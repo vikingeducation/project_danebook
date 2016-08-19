@@ -168,3 +168,13 @@ body {
     z-index: -1;
   }
 }
+
+.user-result {
+  margin: 15px;
+  background-color: ghostwhite;
+  span {
+    margin-left: 15px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+}

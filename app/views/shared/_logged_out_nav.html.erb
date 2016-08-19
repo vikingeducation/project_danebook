@@ -1,24 +1,17 @@
 <nav class="nav navbar-default navbar-fixed-top navbar-custom">
     <div class="container">
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">
-
-            </a>
             <a class="navbar-brand" href="#">Danebook</a>
         </div>
-        <div class="pull-right">
-            <%= form_tag session_path, class: "inline-form", id: "login-form" do %>
-            <%= text_field_tag :email %>
-            <%= password_field_tag :password %>
-            <%= check_box_tag :remember_me, inline_label: 'Remember' %>
-            <%= submit_tag 'Login' %>
-            <% end %>
-        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <%= form_tag session_path, class: "form-inline", id: "login-form" do %>
+                <%= text_field_tag :email, nil, placeholder: "Email", class: 'form-control' %>
+                <%= password_field_tag :password, nil, placeholder: "Password", class: 'form-control' %>
+                <%= check_box_tag :remember_me, inline_label: 'Remember' %>
+                <%= submit_tag 'Login' %>
+                <% end %>
+            </li>
+        </ul>
     </div>
 </nav>

@@ -2,9 +2,9 @@ class User < ActiveRecord::Base
   before_create :generate_token
   has_secure_password
   validates :email,
-              uniqueness: {case_sensitive: false},
-              presence: true,
-              format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
+            uniqueness: { case_sensitive: false },
+            presence: true,
+            format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i, on: :create }
   validates :password_digest, presence: true
   validates :password, length: { minimum: 6 }, allow_blank: true
 
@@ -12,13 +12,13 @@ class User < ActiveRecord::Base
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :photos, dependent: :destroy
-  has_many :initiated_friendings, class_name: "Friending",
+  has_many :initiated_friendings, class_name: 'Friending',
                                   foreign_key: :friender_id
   has_many :friended_users, through: :initiated_friendings,
                             source: :friend_recipient,
                             dependent: :destroy
   has_many :received_friendings, foreign_key: :friend_id,
-                                 class_name: "Friending"
+                                 class_name: 'Friending'
   has_many :users_friended_by, through: :received_friendings,
                                source: :friend_initiator,
                                dependent: :destroy
@@ -27,7 +27,7 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :profile
 
   def to_s
-    profile.first_name + " " + profile.last_name
+    profile.first_name + ' ' + profile.last_name
   end
 
   def generate_token
@@ -67,5 +67,16 @@ class User < ActiveRecord::Base
   def self.send_welcome_email(id)
     user = User.find(id)
     UserMailer.welcome(user).deliver
+  end
+
+  def self.search(query)
+    if query
+      joins(:profile).where(
+              'first_name LIKE ? OR last_name LIKE ?',
+              "%#{query}%", "%#{query}%"
+      )
+    else
+      where('')
+    end
   end
 end

@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="col-sm-10 col-sm-offset-1">
+        <% if @results %>
+        <% @results.each do |user| %>
+        <div class="user-result">
+            <%= profile_pic(user) %>
+            <span>
+                <%= link_to user, user %>
+            </span>
+        </div>
+        <% end %>
+    <% else %>
+        <p>
+            No Results Found
+        </p>
+        <% end %>
+    </div>
+</div>

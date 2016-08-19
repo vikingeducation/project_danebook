@@ -1,7 +1,7 @@
 # Users Controller
 class UsersController < ApplicationController
   skip_before_action :require_login, only: [:create, :new]
-  before_action :require_current_user, except: [:create, :new, :show, :friends]
+  before_action :require_current_user, except: [:create, :new, :show, :friends, :index]
 
   def create
     @user = User.new(user_params)
@@ -30,6 +30,11 @@ class UsersController < ApplicationController
 
   def friends
     @user = User.find(params[:user_id])
+  end
+
+  def index
+    @user = current_user
+    @results = User.search(params[:query])
   end
 
   def destroy

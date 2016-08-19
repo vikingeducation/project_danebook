@@ -125,4 +125,13 @@ class ApplicationController < ActionController::Base
     false
   end
 
+  # Email notice on activity on user's timeline.
+  def queue_like_email(user,resource)
+    UserLikeJob.set(wait: 5.seconds).perform_later(user,resource)
+  end
+
+  def queue_comment_email(user,resource)
+    UserCommentPostJob.set(wait: 5.seconds).perform_later(user,resource)
+  end
+
 end

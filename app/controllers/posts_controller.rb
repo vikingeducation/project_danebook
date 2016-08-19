@@ -23,8 +23,10 @@ class PostsController < ApplicationController
     if @post.update(post_params)
       if post_params[:comments_attributes]
         flash[:success] = "Added a comment."
+        queue_comment_email(@user,@post)
       elsif post_params[:likes_attributes]
         flash[:success] = "You've liked this post!"
+        queue_like_email(@user,@post)
       else
         flash[:success] = "Post updated."
       end

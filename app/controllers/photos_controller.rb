@@ -35,14 +35,16 @@ class PhotosController < ApplicationController
     if @photo.update(photo_params)
       if photo_params[:comments_attributes]
         flash[:success] = "Added a comment."
+        queue_comment_email(@user,@photo)
       elsif photo_params[:likes_attributes]
         flash[:success] = "You've liked this post!"
+        queue_like_email(@user,@photo)
       else
         flash[:success] = "Photo updated."
       end
       redirect_to @user.timeline
     else
-      flash[:danger] = "Couldn't update this post."
+      flash[:danger] = "Couldn't update this photo."
       redirect_to @user.timeline
     end
   end

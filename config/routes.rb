@@ -22,7 +22,10 @@ Rails.application.routes.draw do
 
     resources :photos, :only => [:create, :new, :index, :show, :destroy]
 
+
+
   end
+
 
   resources :posts, :only => [:show] do 
     resources :comments, :only => [:create, :destroy]

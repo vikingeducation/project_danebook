@@ -19,7 +19,9 @@
   <div class="row" id="nav-options">
     <div class="col-xs-2">
       <div id="profile-photo">
-        <img src="images/harry_potter_small.jpg">
+        <% if @page_owner.profile_picture %>
+          <%= link_to image_tag(@page_owner.profile_picture.file.url(:medium)), user_photo_path(@page_owner, @page_owner.profile_picture) %>
+        <% end %>
       </div>
     </div>
     <div class="col-xs-2 content-center border-right border-left">

@@ -10,8 +10,8 @@
   <div class="row photos-main">
       <% @photos.each do |photo| %>
     <div class="col-xs-3 content-center">
-        <%= link_to image_tag(photo.file.url(:medium), class: "small-photo hover"), user_photo_path(@user, photo) %>
-        <figcaption>Uploaded on <%= photo.created_at %> </figcaption>
+      <%= link_to image_tag(photo.file.url(:medium), class: "small-photo hover"), user_photo_path(@user, photo) %>
+      <figcaption>Uploaded on <%= photo.created_at %> </figcaption>
     </div>
       <% end %>
   </div>

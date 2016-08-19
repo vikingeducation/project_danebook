@@ -4,6 +4,7 @@
       <%= image_tag @photo.file.url(:large) %>
       <div class="col-xs-12">
         <%= link_to "Delete this photo.", user_photo_path(@user, @photo), method: "DELETE", class: "btn btn-success big-font", id: "delete_photo_button" %>
+        <%= link_to user_profile_picture_index_path(@user) %> 
       </div>
     </div>
   </div>

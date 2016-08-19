@@ -30,6 +30,10 @@ class User < ActiveRecord::Base
 
   has_many :photos
 
+  # cover and profile picture associations
+  belongs_to :cover_photo, class_name: "Photo", foreign_key: :cover_photo_id
+  belongs_to :profile_picture, class_name: "Photo", foreign_key: :profile_picture_id
+
   validates :first_name, :presence => true
   validates :last_name, :presence => true
   validates :email, :presence => true, :uniqueness => true

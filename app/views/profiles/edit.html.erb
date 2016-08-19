@@ -1,0 +1,10 @@
+<%=  
+render partial: 'static_pages/about', 
+                 locals: { user: @user, 
+                           microposts: nil, 
+                           profile: @profile, 
+                           cities: @cities, 
+                           states: @states, 
+                           countries: @countries }, 
+                 action: :edit
+%>

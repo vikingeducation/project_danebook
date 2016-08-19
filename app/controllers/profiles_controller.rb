@@ -3,6 +3,14 @@ class ProfilesController < ApplicationController
   skip_before_action :correct_user
   before_action :correct_profile
 
+  def edit
+    @profile = current_user.profile
+    @user = current_user
+    @cities = City.all
+    @states = State.all
+    @countries = Country.all
+  end
+
   def update
     @profile = current_user.profile
     @user = current_user

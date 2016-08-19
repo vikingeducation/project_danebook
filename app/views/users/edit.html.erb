@@ -1,10 +1,45 @@
-<%=  
-render partial: 'static_pages/about', 
-                 locals: { user: @user, 
-                           microposts: nil, 
-                           profile: @profile, 
-                           cities: @cities, 
-                           states: @states, 
-                           countries: @countries }, 
-                 action: :edit
-%>
+<main class="container">
+  <header class="row">
+    <%= render partial: 'static_pages/masthead', locals: { user: @user } %>
+  </header>
+
+  <div class="row">
+    <% if user_check %>
+      <div class="col-md-12 panel">
+        <%= form_for @user do |user_fields| %>
+        <div class="row">
+          <div class="col-md-12">
+            <h1 class="panel-header">Account Management</h1>
+          </div>
+        </div>
+        <div class="row panel-content">
+          <div class="col-md-5">
+            <h2>Edit your account information</h2>
+            <table>
+              <tr>
+                <td>Private Email</td>
+                <td>
+                  <%= user_fields.email_field :email, class: "form-control" %>
+                </td>
+              </tr>
+              <tr>
+                <td>Password:</td>
+                <td>
+                  <%= user_fields.password_field :password, class: "form-control" %>
+                  <%= user_fields.password_field :password_confirmation, class: "form-control" %>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="row panel-footer">
+          <div class="col-md-4 col-md-offset-4">
+            <%= user_fields.submit "Save Changes", class: "btn btn-primary btn-block" %>
+          </div>
+        </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+<%= link_to 'Sign out', logout_path, method: :delete%>
+</main>

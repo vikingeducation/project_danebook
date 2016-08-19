@@ -160,7 +160,7 @@ margin-bottom: 15px;
   ;
   height:100px;
   width:100px;
-  margin-top:225px;
+  margin-top:180px;
   margin-left:10px;
 }
 #post-img {
@@ -171,17 +171,16 @@ margin-bottom: 15px;
   background-size: cover;
 }
 #friend-pic {
-  background-image: image-url("user_silhouette_generic.gif");
-  // height: 100px;
-  // width: 100px;
-  background-size:cover;
+  height: 150px;
+  width: 100px;
   display: inline-block;
+  overflow: hidden;
   margin-top: 10px;
 }
 #banner {
-  background-image: image-url("hogwarts_small.jpg");
   background-size: cover;
   background-repeat:none;
-  height: 300px;
+  border: 1px solid;
+  height: 250px;
   z-index:-1;
 }

@@ -1,15 +1,16 @@
+# Users Controller
 class UsersController < ApplicationController
   skip_before_action :require_login, only: [:create, :new]
-  before_action :require_current_user, except: [:create, :new, :show]
+  before_action :require_current_user, except: [:create, :new, :show, :friends]
 
   def create
     @user = User.new(user_params)
     if @user.save
       sign_in(@user)
-      flash[:success] = "Created new user!"
+      flash[:success] = 'Created new user!'
       redirect_to @user
     else
-      flash[:error] = "Failed to Create User!"
+      flash[:error] = 'Failed to Create User!'
       redirect_to root_url
     end
   end
@@ -23,22 +24,40 @@ class UsersController < ApplicationController
   def show
     User.includes(:posts, :profiles)
     @user = User.find(params[:id])
-    @posts = @user.posts.order("created_at DESC")
+    @posts = @user.posts.order('created_at DESC')
   end
 
+  def friends
+    @user = User.find(params[:user_id])
+  end
 
   def destroy
+    if current_user.destroy
+      flash[:success] = 'Goodbye!'
+    else
+      flash[:error] = 'Failed to Delete User!'
+    end
+    redirect_to root_url
   end
 
+  private
 
-
-private
   def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation, profile_attributes: [:first_name, :last_name, :birthday, :about])
+    params.require(:user).permit(:name,
+                                 :email,
+                                 :password,
+                                 :password_confirmation,
+                                 profile_attributes: [:first_name,
+                                                      :last_name,
+                                                      :birthday,
+                                                      :about])
   end
 
   def update_profile_params
-    params.require(:user).permit(profile_attributes: [:first_name, :last_name, :birthday, :about])
+    params.require(:user).permit(profile_attributes: [:first_name,
+                                                      :last_name,
+                                                      :birthday,
+                                                      :about])
   end
 
   def require_current_user
@@ -47,6 +66,4 @@ private
       redirect_to root_url
     end
   end
-
-
 end

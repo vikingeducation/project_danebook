@@ -1,13 +1,11 @@
+# Comments Controller
 class CommentsController < ApplicationController
-
   def create
     session[:return_to] = request.referer
     commentable = extract_commentable.find(params[:commentable_id])
     comment = commentable.comments.build(comment_params)
     comment.user_id = current_user.id
-    unless comment.save
-      flash[:alert] = "Could Not Create Comment"
-    end
+    flash[:alert] = 'Could Not Create Comment' unless comment.save
     redirect_to session.delete(:return_to)
   end
 
@@ -20,23 +18,21 @@ class CommentsController < ApplicationController
       redirect_to root_url
     end
     if commentable.comments.destroy(params[:id])
-      flash[:success] = "deleted comment"
+      flash[:success] = 'deleted comment'
       redirect_to session.delete(:return_to)
     else
-      flash[:alert] = "something went wrong"
+      flash[:alert] = 'something went wrong'
       redirect_to session.delete(:return_to)
     end
   end
 
-
-private
+  private
 
   def comment_params
     params.require(:comment).permit(:body)
   end
+
   def extract_commentable
     params[:commentable_type].singularize.classify.constantize
   end
-
-
 end

@@ -34,20 +34,20 @@
                     <h2>Friends</h2>
                 </div>
                 <div class="col-sm-12">
-                    <% @user.friends.each do |friend| %>
+                    <% @user.recent_friends.each do |friend| %>
                     <div id="friend-pic" class="friends-col">
-                        <p>
+                        <%= profile_pic(friend) %>
+                        <span>
                             <%= link_to friend, friend %>
-                        </p>
+                          </span>
                     </div>
                     <% end %>
                     <div class="more">
-                        <a href="#">See More Friends</a>
+                        <%= link_to "More Friends", user_friends_path(@user) %>
                     </div>
                 </div>
             </div>
         </div>
-<%= console %>
         <div class="col-sm-6 col-sm-offset-1">
             <% if @user == current_user %>
             <div class="row wrapper">

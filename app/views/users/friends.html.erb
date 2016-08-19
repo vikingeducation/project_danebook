@@ -1,0 +1,17 @@
+<div class="container">
+
+<%= render partial: "/shared/profile_bar", locals: { user: @user }%>
+<div class="col-sm-10 col-sm-offset-1">
+
+<% @user.friends.each do |friend| %>
+<div id="friend-pic" class="friends-col">
+  <%= profile_pic(friend) %>
+  <span>
+    <%= link_to friend, friend %>
+  </span>
+</div>
+<% end %>
+<%= console %>
+</div>
+
+</div>

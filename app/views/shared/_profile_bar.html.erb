@@ -8,12 +8,7 @@
         </div>
     </div>
     <div id="profile-pic">
-
-    <% if @user.profile_pic.empty? %>
-        <%= image_tag "lion.png"%>
-    <% else %>
-        <%= image_tag @user.profile_pic %>
-    <% end %>
+    <%= profile_pic(@user) %>
     </div>
 
     <div class="col-sm-12" id="banner"></div>

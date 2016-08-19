@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
-
   root 'users#new'
 
   resources :users do
+    get 'friends'
     resource :timeline, only: [:show]
     resource :profile, only: [:show]
     resources :posts,
@@ -24,10 +24,12 @@ Rails.application.routes.draw do
 
   resources :friendings, only: [:create, :destroy]
 
-  resource :profile, only: [:edit, :update]
+  resource :profile, only: [:edit, :update] do
+    patch 'set_picture'
+    patch 'set_cover'
+  end
 
   resource :session, only: [:new, :create, :destroy]
-  get "login" => "sessions#new"
-  delete "logout" => "sessions#destroy"
-
+  get 'login' => 'sessions#new'
+  delete 'logout' => 'sessions#destroy'
 end

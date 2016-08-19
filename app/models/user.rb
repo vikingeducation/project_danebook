@@ -57,21 +57,10 @@ class User < ActiveRecord::Base
   end
 
   def friends
-    sql = "
-      SELECT DISTINCT users.*
-      FROM users
-      JOIN friendings
-        ON users.id = friendings.friender_id
-      JOIN friendings AS reflected_friendings
-        ON reflected_friendings.friender_id = friendings.friend_id
-      WHERE reflected_friendings.friender_id = ?
-      "
-    User.find_by_sql([sql,self.id])
+    friended_users
   end
 
-  def profile_pic
-    Photo.where(id: self.profile.picture_id)
+  def recent_friends
+    friended_users.limit(4)
   end
-
-
 end

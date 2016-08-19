@@ -14,7 +14,11 @@ class CommentsController < ApplicationController
         flash[:danger] = "Could not create comment."
       end
 
-      redirect_to URI(request.referer).path
+      if request.referer
+        redirect_to URI(request.referer).path
+      else
+        redirect_to root_path
+      end
     end
 
     def destroy

@@ -53,4 +53,12 @@ class ApplicationController < ActionController::Base
   def page_user_id
     controller_name == "users" ? params[:id].to_i : params[:user_id].to_i
   end
+
+  def go_back
+    if request.referer
+      redirect_to URI(request.referer).path
+    else
+      redirect_to root_path
+    end
+  end
 end

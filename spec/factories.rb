@@ -1,4 +1,7 @@
 FactoryGirl.define do
+  factory :photo do
+    user_id nil
+  end
   factory :friendship do
     
   end

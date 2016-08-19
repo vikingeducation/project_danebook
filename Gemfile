@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 ruby '2.3.1'
+gem 'paperclip'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0'
 # Use sqlite3 as the database for Active Record
@@ -43,6 +44,7 @@ group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rspec-rails'
   gem 'factory_girl_rails', '~> 4.0'
+  gem 'pry'
 end
 
 group :development do

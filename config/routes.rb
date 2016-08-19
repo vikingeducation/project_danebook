@@ -10,7 +10,7 @@ Rails.application.routes.draw do
       get :about
     end
 
-    resources :friendships
+    resources :friendships, shallow: true
     resources :photos
     resources :posts, shallow: true do
       resources :likes, defaults: { likable: 'Post' }

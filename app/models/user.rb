@@ -7,6 +7,22 @@ class User < ApplicationRecord
   has_many :posts, foreign_key: :author_id, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :comments, foreign_key: :commenter_id, dependent: :destroy
+  has_many :photos, dependent: :destroy
+
+  has_many :initiated_friendships,
+                              foreign_key: :friender_id,
+                              class_name: "Friendship"
+  has_many :friended_users,
+                              through: :initiated_friendships,
+                              source: :friended
+
+
+  has_many :received_friendships,
+                              foreign_key: :friended_id,
+                              class_name: "Friendship"
+  has_many :users_friended_by,
+                              through: :received_friendships,
+                              source: :friender
 
   accepts_nested_attributes_for :hometown,
                                 :reject_if => :all_blank

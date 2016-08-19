@@ -13,25 +13,6 @@ feature "Visitors" do
     expect(page).to have_css("div.alert-danger")
   end
 
-  scenario "cannot visit any user pages" do
-    user = create(:user)
-
-    visit(user_path(user))
-    expect(current_path).to eql(root_path)
-
-    visit(about_user_path(user))
-    expect(current_path).to eql(root_path)
-
-    visit(edit_user_path(user))
-    expect(current_path).to eql(root_path)
-
-    visit(user_photos_path(user))
-    expect(current_path).to eql(root_path)
-
-    visit(user_friends_path(user))
-    expect(current_path).to eql(root_path)
-  end
-
   scenario "can login to account" do
     user = create(:user)
 
@@ -58,8 +39,6 @@ feature "Users" do
     login(user)
   end
 
-  scenario "returning signed-in users are taken from the root path to their timeline page"
-
   scenario "can visit another user's profile" do
     new_user = create(:user)
     visit(user_path(new_user))
@@ -69,8 +48,6 @@ feature "Users" do
 
   scenario "no post form is available on another user's page" do
     user2 = create(:user)
-    post2 = create_user_post(user2)
-    post2_text = post2.text
 
     visit user_path(user2)
     expect(page).to_not have_content("Post!")
@@ -127,8 +104,7 @@ feature "Users" do
 
     scenario "can like another user's post" do
       user2 = create(:user)
-      post2 = create_user_post(user2)
-      post2_text = post2.text
+      create_user_post(user2)
 
       visit user_path(user2)
       expect { click_on("Like") }.to change(Like, :count).by(1)
@@ -139,14 +115,14 @@ feature "Users" do
 
   context "Comments" do
     let(:post) { create_user_post(user) }
-    let(:comment) { create_post_comment(post) }
+    let(:comment) { create(:comment, commenter_id: user.id, commentable_type: "Post", commentable_id: post.id) }
+
     before do
+      comment
       visit user_path(user)
     end
 
     scenario "can like a comment" do
-      #TODO
-      comment
       within ".comment" do
         expect { click_on("Like") }.to change(Like, :count).by(1)
       end
@@ -160,6 +136,26 @@ feature "Users" do
 
   end
 
-  scenario "can sign out of account"
+  scenario "can sign out of account" do
+    click_on "Logout"
+    expect(page).to have_content("Sign Up")
+  end
+
+  context "Friends" do
+    let(:user2) { create(:user) }
+
+    before do
+      user2
+      visit user_path(user2)
+    end
+
+    it "can friend another user" do
+      expect {
+        click_on "Add Friend"
+      }.to change(Friendship, :count).by(1)
+    end
+
+
+  end
 
 end

@@ -1,6 +1,6 @@
 <div class = "panel panel-default" id="timeline-friend-box">
   <div class="panel-heading">
-    <h2 class="panel-title">Friends (99)</h2>
+    <h2 class="panel-title">Friends (<%= friend_count %>)</h2>
   </div>
   <div class="panel-body">
     <div class="row">
@@ -55,7 +55,7 @@
     </div>
     <div class="row">
       <div class="col-sm-6 col-sm-offset-4">
-        <a href="<%= user_friends_path(@user) %>">See more friends</a>
+        <a href="<%= user_friendships_path(@user) %>">See more friends</a>
       </div>
     </div>
   </div>

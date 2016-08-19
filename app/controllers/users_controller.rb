@@ -7,6 +7,7 @@ class UsersController < ApplicationController
     @posts = @user.posts.order(created_at: :desc).includes(:likes, :comments)
     @post = current_user.posts.build if @user == current_user
     @comment = current_user.comments.build
+    @friendship = Friendship.new
   end
 
   def new

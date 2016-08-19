@@ -19,7 +19,9 @@ Rails.application.routes.draw do
 
   delete 'logout' => 'sessions#destroy'  
   
-  resources :users
+  resources :users do
+    get 'change_avatar'
+  end
 
   resources :posts
 

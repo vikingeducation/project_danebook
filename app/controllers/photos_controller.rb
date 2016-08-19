@@ -58,6 +58,7 @@ class PhotosController < ApplicationController
     end
   end
 
+  # non RESTful
   def serve
     @photo = Photo.find(params[:photo_id])
     send_data @photo.data, type: @photo.mime_type, filename: "#{@photo.filename}.jpg}", disposition: "inline"

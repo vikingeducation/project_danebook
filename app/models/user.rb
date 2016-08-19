@@ -50,6 +50,12 @@ class User < ActiveRecord::Base
   # # User should be initialized with zero friends.
   validates :friendable_id, absence: true, on: :create
 
+  # Paperclip(avatar)
+  has_attached_file :avatar, :styles => { :medium => "230x230", :thumb => "128x128" },default_url: "user_silhouette_generic.gif.png"
+  validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
+  before_validation { avatar.clear if delete_avatar == '1' }
+  attr_accessor :delete_avatar
+
 
   has_secure_password
 

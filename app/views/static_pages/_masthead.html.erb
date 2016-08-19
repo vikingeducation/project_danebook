@@ -2,7 +2,10 @@
   <div class="jumbotron">
     <div class="masthead">
 
-      <%= image_tag "user_silhouette_generic.gif.png", class: "headshot", height: "128px", width: "128px"%>
+      <%= 
+        image = image_tag user.avatar.url(:thumb), class: "headshot", height: "128px", width: "128px"
+        link_to image, user_change_avatar_path(user)
+        %>
 
       <div class="masthead-name">
         <%= content_tag :h2, "#{user.first_name} #{user.last_name}" %>  

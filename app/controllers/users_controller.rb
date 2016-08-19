@@ -59,13 +59,20 @@ class UsersController < ApplicationController
     redirect_to root_path
   end
 
+  # temporary..
+  def change_avatar
+    @user = current_user
+    render 'static_pages/change_avatar'
+  end
+
   private
     def user_params
       permissible_params = [:first_name,
                             :last_name,
                             :email,
                             :password, 
-                            :password_confirmation]
+                            :password_confirmation,
+                            :avatar]
       params.require(:user).permit(permissible_params)
     end
 
@@ -77,7 +84,7 @@ class UsersController < ApplicationController
       when 'edit', 'update', 'destroy'
         @user = current_user
       end
-      redirect_to_referer root_path, :flash => {:error => 'Unable to find that user'} unless @user
+      redirect_to_back, :flash => {:error => 'Unable to find that user'} unless @user
     end
     
 end

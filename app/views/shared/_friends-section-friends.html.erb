@@ -8,7 +8,7 @@
       <p><%= friend.followees.count %> friends</p>
     </div>
     <div class="col-xs-4 frd-btn-container">
-      <%= link_to "Unfriend Me", friending_path(friend.recieved_friendings.where(initiator_id: @user.id)[0]), class: "btn btn-default frd-btn", method: :delete if required_user? %>
+      <%= friend_or_unfriend(friend) if required_user? || (controller_name = "UsersController" && action_name = "index") %>
     </div>
   </div>
 </div>

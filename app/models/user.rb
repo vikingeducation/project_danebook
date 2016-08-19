@@ -85,4 +85,9 @@ class User < ApplicationRecord
     UserMailer.comment_alert(user).deliver!
   end
 
+  def self.get_search(user, search)
+    search = search.split(" ").map { |word| "%#{word}%" }
+    where("first_name ILIKE ANY (array[?]) OR last_name ILIKE ANY (array[?])", search, search).where.not(id: user.id)
+  end
+
 end

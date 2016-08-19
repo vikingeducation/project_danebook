@@ -4,7 +4,8 @@ class UsersController < ApplicationController
   before_action :set_user_id, :only => [:show]
 
   def index
-    redirect_to user_activities_path(current_user)
+   @user = current_user
+   @users = User.get_search(@user, params[:user_search])
   end
 
   def show

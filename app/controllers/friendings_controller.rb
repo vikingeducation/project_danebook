@@ -1,5 +1,5 @@
 class FriendingsController < ApplicationController
-  before_action :required_user_redirect, except: [:index]
+  before_action :required_user_redirect, only: [:index]
 
   def index
     @user = User.find_by_id(params[:user_id])

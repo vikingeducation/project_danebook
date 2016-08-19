@@ -6,17 +6,28 @@
           <%= link_to image_tag("/imgs/danish_flag.gif"), user_activities_path(@current_user), class: "navbar-left brand-img" %>
           <%= link_to content_tag(:span, 'Danebook', class: "brand-text"), user_activities_path(@current_user), class: "navbar-brand" %>
         </div>
-        <div class="col-xs-8">
+        <div class="row">
+          <div class="col-xs-8">
+            <form class="navbar-form" action="<%= users_path %>" method="GET">
+              <div class="input-group">
+                <span class="input-group-btn" id="nav-search-btn">
+                  <input type="submit" class="btn btn-default" value="Search">Go!</button>
+                </span>
+                <input type="text" name="user_search" class="form-control" placeholder="Search for...">
+              </div><!-- /input-group -->
+            </form>
+          </div><!-- /.col-lg-6 -->
+        <!-- <div class="col-xs-8">
           <form class="navbar-form" role="search">
             <div class="form-group">
               <input type="text" class="form-control" placeholder="Search for Users">
             </div>
           </form>
-        </div>
-        <ul class="nav navbar-nav navbar-right">
-          <li><%= link_to @current_user.first_name, @current_user %></li>
-          <li><%= link_to "Signout", logout_path, method: :delete %></li>
-        </ul>
+        </div> -->
+          <ul class="nav navbar-nav navbar-right">
+            <li><%= link_to @current_user.first_name, @current_user %></li>
+            <li><%= link_to "Signout", logout_path, method: :delete %></li>
+          </ul>
       </div>
     </div>
   </nav>

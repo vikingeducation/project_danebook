@@ -29,6 +29,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem "paperclip", "~> 5.0.0"
 gem 'aws-sdk'
 gem "figaro"
+gem 'delayed_job_active_record'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -54,6 +55,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'rspec-rails'
   gem "letter_opener"
+  gem 'hirb'
 end
 
 group :test do

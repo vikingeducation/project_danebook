@@ -13,4 +13,10 @@ class Activity < ApplicationRecord
     a.save
   end
 
+  def self.user_newsfeed(user)
+    joins(:author)
+      .where(users: { id: (user.followees.pluck(:id) << user.id) }, activities: { postable_type: ["Post", "Photo"] })
+      .order(created_at: :desc)
+  end
+
 end

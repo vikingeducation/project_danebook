@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :posts, :only => [:create]
     resources :friendings, :only => [:create, :index]
     resources :photos, :only => [:new, :create, :index, :show]
+    resources :timelines, :only => [:index]
   end
 
   resources :friendings, :only => [:destroy]

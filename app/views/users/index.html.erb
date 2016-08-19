@@ -1,0 +1,23 @@
+<main>
+	<div class="container about-info-container">
+		<header>
+			<div class="row main-content-header">
+				<div class="col-xs-2 col-xs-offset-5">
+					<h2>Results</h2>
+				</div>
+			</div>
+		</header>
+
+		<div class="row big-friend-container">
+      <div class="friend-container-row clearfix">
+        <% if @users.any? %>
+          <% @users.each do |user| %>
+            <%= render "shared/friends-section-friends", friend: user %>
+          <% end %>
+        <% else %>
+          <h1 class="text-center">Sorry, no matches</h1>
+        <% end %>
+      </div>
+		</div>
+	</div>
+</main>

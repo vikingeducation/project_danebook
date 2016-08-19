@@ -20,8 +20,18 @@ module ApplicationHelper
   def get_path
     if params[:user_id]
       user_friendings_path(params[:user_id])
-    else
+    elsif params[:id]
       user_friendings_path(params[:id])
+    else
+      user_friendings_path(current_user.id)
+    end
+  end
+
+  def friend_or_unfriend(friend)
+    if !@current_user.current_friend?(friend.id)
+      link_to "Friend Me", user_friendings_path(friend.id), class: "btn btn-default frd-btn", method: :post
+    else
+      link_to "Unfriend Me", friending_path(friend.recieved_friendings.where(initiator_id: @user.id)[0]), class: "btn btn-default frd-btn", method: :delete
     end
   end
 end

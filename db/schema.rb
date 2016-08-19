@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160812184326) do
+ActiveRecord::Schema.define(version: 20160818223638) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,11 +23,28 @@ ActiveRecord::Schema.define(version: 20160812184326) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "friendings", force: :cascade do |t|
+    t.integer  "friender_id"
+    t.integer  "friended_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "likes", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "post_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "photos", force: :cascade do |t|
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.string   "user_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
   end
 
   create_table "posts", force: :cascade do |t|

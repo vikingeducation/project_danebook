@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     get "timeline" => "users#show"
     resources :likes, only: [:create, :destroy]
     resources :comments, only: [:create, :destroy]
+    resources :photos, only: [:create, :destroy, :index, :new, :show]
   end
 
   resource :profile, only: [:edit, :update]
@@ -16,6 +17,8 @@ Rails.application.routes.draw do
   get "login" => "sessions#new"
   delete "logout" => "sessions#destroy"
 
-  resource :static_pages
+  resource :static_pages, only: [:index, :show, :new]
+
+  resources :friendings, :only => [:create, :destroy, :show]
 
 end

@@ -16,6 +16,13 @@ class User < ApplicationRecord
   has_many :posts
   has_many :likes
   has_many :comments
+  has_many :photos
+
+  has_many :initiated_friends, foreign_key: :friender_id, class_name: "Friending"
+  has_many :friendeds, through: :initiated_friends, source: :friend_recipient
+
+  has_many :received_friends, foreign_key: :friended_id, class_name: "Friending"
+  has_many :frienders, through: :received_friends, source: :friend_initiator
 
   def generate_token
     begin

@@ -25,13 +25,8 @@
     <% end %>
     <br><br><br>
     <%= flash.notice %>
-    <% if @user %>
-    <ul>
-      <% @user.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-    </ul>
-    <% end %>
+    <% errors(@user) %>
+    <% errors(@profile) %>
     <%= yield %>
   </body>
 </html>

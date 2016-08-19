@@ -1,0 +1,17 @@
+<%= render partial: "layouts/navlinks", locals: {user: @user} %>
+
+<section class="container content">
+  <div class="row title-header">
+    <div class="col-xs-4 col-xs-offset-4">
+      <p class="title">Photos <%= link_to "Add Photo", new_user_photo_path(current_user), class: "btn btn-primary btn-sm submit-button" %></p>
+    </div>
+  </div>
+
+  <div class="row content-space">
+    <br>
+    <div class="col-xs-9 col-xs-offset-3">
+      <%= image_tag @photo.image.url %>
+    </div>
+    <br>
+  </div>
+</div>

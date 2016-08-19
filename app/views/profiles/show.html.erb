@@ -1,36 +1,4 @@
-<section class="container main-header">
-  <div class="row">
-    <div class="col-xs-12">
-      <%= image_tag 'hogwarts_small.jpg' %>
-      <%= image_tag 'user_silhouette_generic.gif', class:"profile" %>
-      <a class="title-name"><%= @user.profile.first_name %> <%= @user.profile.last_name %></a>
-    </div>
-  </div>
-
-  <!-- nav links -->
-  <div class="row nav-link-row">
-    <div class="col-xs-2 nav-links">
-      <a style="visibility: hidden"><p>test</p></a>
-    </div>
-    <div class="col-xs-2 nav-links">
-      <p><%= link_to "Timeline", user_timeline_path(@user) %></p>
-    </div>
-    <div class="col-xs-2 nav-links">
-      <p><%= link_to "About", user_profile_path(@user) %></p>
-    </div>
-    <div class="col-xs-2 nav-links">
-      <a href="/static_pages"><p>Photos</p></a>
-    </div>
-    <div class="col-xs-2 nav-links">
-      <a href="/static_pages/new"><p>Friends</p></a>
-    </div>
-    <% if current_user == @user %>
-    <div class="col-xs-2 nav-links">
-      <p><%= link_to "Update Profile", edit_profile_path(current_user) %></p>
-    </div>
-    <% end %>
-  </div>
-</section>
+<%= render partial: "layouts/navlinks", locals: {user: @user} %>
 
 <!-- content -->
 <section class="container content">

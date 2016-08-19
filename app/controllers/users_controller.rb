@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  skip_before_action :require_login, :only => [:index, :new, :create]
+
   def index
   end
 
@@ -9,8 +11,8 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    @user.build_profile(profile_params)
-    if @user.save
+    @profile = @user.build_profile(profile_params)
+    if @user.save && @profile.save
       sign_in(@user)
       flash.notice = "User created."
       redirect_to user_profile_path(@user)
@@ -26,6 +28,7 @@ class UsersController < ApplicationController
     @user = User.find(params[:user_id])
     @profile = @user.profile
     @post = @user.posts.build
+    @comment = Comment.new
   end
 
   def edit

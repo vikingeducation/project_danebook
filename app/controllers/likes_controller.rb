@@ -5,10 +5,10 @@ class LikesController < ApplicationController
     @like = @user.likes.build(post_id: params[:format])
     if @like.save
       flash.notice = "Like added."
-      redirect_to :back
+      redirect_back(fallback_location: current_user)
     else
       flash.notice = "Error. You've already liked this post."
-      redirect_to :back
+      redirect_back(fallback_location: current_user)
     end
   end
 
@@ -17,10 +17,10 @@ class LikesController < ApplicationController
     @like = Like.find(params[:id])
     if @like.destroy
       flash.notice = "Unliked."
-      redirect_to :back
+      redirect_back(fallback_location: current_user)
     else
       flash.notice = "Error. Still liking post."
-      redirect_to :back
+      redirect_back(fallback_location: current_user)
     end
   end
 

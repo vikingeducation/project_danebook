@@ -1,36 +1,4 @@
-<section class="container main-header">
-  <div class="row">
-    <div class="col-xs-12">
-      <%= image_tag 'hogwarts_small.jpg' %>
-      <%= image_tag 'user_silhouette_generic.gif', class:"profile" %>
-      <a class="title-name"><%= @user.profile.first_name %> <%= @user.profile.last_name %></a>
-    </div>
-  </div>
-
-  <!-- nav links -->
-  <div class="row nav-link-row">
-    <div class="col-xs-2 nav-links">
-      <a style="visibility: hidden"><p>test</p></a>
-    </div>
-    <div class="col-xs-2 nav-links">
-      <p><%= link_to "Timeline", user_timeline_path(@user) %></p>
-    </div>
-    <div class="col-xs-2 nav-links">
-      <p><%= link_to "About", user_profile_path(@user) %></p>
-    </div>
-    <div class="col-xs-2 nav-links">
-      <a href="/static_pages"><p>Photos</p></a>
-    </div>
-    <div class="col-xs-2 nav-links">
-      <a href="/static_pages/new"><p>Friends</p></a>
-    </div>
-    <% if current_user == @user %>
-    <div class="col-xs-2 nav-links">
-      <p><%= link_to "Update Profile", edit_profile_path(current_user) %></p>
-    </div>
-    <% end %>
-  </div>
-</section>
+<%= render partial: "layouts/navlinks", locals: {user: @user} %>
 
 <!-- content -->
 <section class="container tl-content">
@@ -71,28 +39,17 @@
       </div>
 
       <div style="margin-top: 10px" class="row tl-about">
-        <p>Friends</p>
+        <p>Friends (<%= @user.friendeds.count %>)</p>
       </div>
       <div class="row section-about">
+        <% @user.friendeds.each do |friend| %>
+
         <div class="col-xs-4">
           <%= image_tag 'user_silhouette_generic.gif', class:"ph-preview" %>
-          <a style="margin-left: 12px" href="/static_pages/new">Ron Weasley</a>
-          <%= image_tag 'user_silhouette_generic.gif', class:"ph-preview" %>
-          <a style="margin-left: 30px" href="/static_pages/new">Hagrid</a>
+          <%= link_to friend.profile.name, user_timeline_path(friend), style: "margin-left: 12px" %>
         </div>
-        <div class="col-xs-4">
-          <%= image_tag 'user_silhouette_generic.gif', class:"ph-preview" %>
-          <a style="margin-left: 7px" href="/static_pages/new">Ginny Weasley</a>
-          <%= image_tag 'user_silhouette_generic.gif', class:"ph-preview" %>
-          <a style="margin-left: 11px" href="/static_pages/new">Draco Malfoy</a>
-        </div>
-        <div class="col-xs-4">
-          <%= image_tag 'user_silhouette_generic.gif', class:"ph-preview" %>
-          <a style="margin-left: 14px" href="/static_pages/new">Dumbledore</a>
-          <%= image_tag 'user_silhouette_generic.gif', class:"ph-preview" %>
-          <a style="margin-left: 6px" href="/static_pages/new">Severus Snape</a>
-        </div>
-        <a style="margin-left: 146px" href="/static_pages/new">See More Friends</a>
+
+        <% end %>
       </div>
     </div>
 
@@ -110,7 +67,7 @@
 
         <div class="row section-posts">
           <div class="col-xs-12">
-            <%= f.text_area :body, size: "72x3", placeholder: "Tell the world something" %>
+            <%= f.text_area :body, size: "72x6", placeholder: "Tell the world something" %>
           </div>
         </div>
         <div class="row section-submit">
@@ -165,6 +122,40 @@
           </div>
         </div>
       <% end %>
+
+      <% post.comments.each do |comment| %>
+
+      <div class="row comment-post">
+        <div class="col-xs-1 pic">
+          <%= image_tag 'user_silhouette_generic.gif', class:"poster-pic2" %>
+        </div>
+        <div class="col-xs-11 name">
+          <p class="poster2"><%= comment.user.profile.name %> said on <%= comment.created_at.strftime("%m/%d/%Y") %></p>
+          <p class="poster2"><%= comment.body %></p>
+          <% if current_user == comment.user %>
+            <%= link_to "Remove Comment", user_comment_path(current_user, comment), method: :delete, class: "poster2" %>
+          <% end %>
+        </div>
+      </div>
+
+      <% end %>
+
+        <%= form_for [current_user, @comment] do |f| %>
+        <%= f.hidden_field :post_id, :value => post.id %>
+
+        <div class="row comment-next">
+          <div class="col-xs-12">
+            <%= f.text_area :body, size: "72x4", placeholder: "Write a comment.", style: "margin-top: 5px" %>
+          </div>
+        </div>
+
+        <div class="row next-submit">
+          <div class="col-xs-2 col-xs-offset-9">
+            <%= f.submit "Comment", class: "btn btn-primary btn-sm submit-button" %>
+          </div>
+        </div>
+
+        <% end %>
 
       <% end %>
 

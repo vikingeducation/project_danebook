@@ -5,10 +5,10 @@ class PostsController < ApplicationController
     @user.posts.build(post_params)
     if @user.save
       flash.notice = "Post created."
-      redirect_to user_timeline_path(@user)
+      redirect_back(fallback_location: current_user)
     else
       flash.notice = "Error. Post not created."
-      redirect_to user_timeline_path(@user)
+      redirect_back(fallback_location: current_user)
     end
   end
 

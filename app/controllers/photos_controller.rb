@@ -1,6 +1,5 @@
 class PhotosController < ApplicationController
 
-  before_action :require_current_user, except: [:show, :index]
 
   def index
     @user = User.find(params[:id])
@@ -21,10 +20,10 @@ class PhotosController < ApplicationController
     @photo = current_user.photos.build(photo_params)
     if @photo.save
       flash[:success] = "Your photo has been uploaded!"
-      redirect_to user_photos_path(current_user)
+      redirect_to photos_path(id: current_user)
     else
       flash[:danger] = "Your photo could not be uploaded"
-      redirect_to user_photos_path(current_user)
+      redirect_to photos_path(id: current_user)
     end
   end
 

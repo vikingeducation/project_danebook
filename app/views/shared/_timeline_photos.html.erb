@@ -1,5 +1,5 @@
 <div class="col-xs-4">
-  <%= link_to user_photo_path(user_id: @timeline_user.id, id: photo.id) do %>
+  <%= link_to photo_path(user_id: @timeline_user.id, id: photo.id) do %>
     <%= image_tag photo.image.url(:profile), class:"img-responsive" %>
   <% end %>
 </div>

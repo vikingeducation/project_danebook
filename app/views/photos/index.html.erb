@@ -1,7 +1,7 @@
 <div id="static_pages">
-	<%= render 'navbar' %>
-
-	<%= render 'banner', user: @user %>
+	<%= render 'shared/navbar' %>
+<%# FIXME: fix up active status of tabs so correct one, use params[:controller] %>
+	<%= render 'shared/banner', user: @user %>
 
 	<div class="container section-container">
 		<div class="row section-header">

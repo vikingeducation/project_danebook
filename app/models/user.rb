@@ -1,7 +1,9 @@
 class User < ActiveRecord::Base
   has_one :profile, dependent: :destroy
   has_many :posts, dependent: :destroy
-  has_many :photos, dependent: :destroy
+  has_many :photos
+  belongs_to :profile_pic, class_name: "Photo"
+  belongs_to :cover_pic, class_name: "Photo"
   has_many :comments, dependent: :nullify
 
   has_many :postings, dependent: :destroy
@@ -67,6 +69,10 @@ class User < ActiveRecord::Base
     self.auth_token = nil
     generate_token
     save!
+  end
+
+  def photo_count
+    self.photo_posts.count
   end
 
 end

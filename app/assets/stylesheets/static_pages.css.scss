@@ -111,7 +111,8 @@
   	min-height: 450px;
   	// margin-top: 50px;
   	border: 2px solid black;
-  	background: image-url("hogwarts_small.jpg") no-repeat  center center;
+  	// background-repeat: no-repeat;  center center;
+    background-position: center center;
   	@include background-size(cover);
   }
 

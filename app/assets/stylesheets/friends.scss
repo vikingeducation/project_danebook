@@ -1,3 +1,26 @@
 // Place all the styles related to the friends controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/************************
+      Friend Page Boxes
+*************************/
+
+.friend-box {
+  border: #000 solid 1px;
+  padding: 15px 0;
+  margin: 20px;
+
+  span {
+    color: #aaa;
+  }
+
+  .friend-container {
+    margin-top: 25px;
+  }
+
+  img {
+    height: 73.25px;
+    width: 73.25px;
+  }
+}

@@ -61,6 +61,24 @@ class User < ApplicationRecord
     first_name + " " + last_name
   end
 
+  def profile_photo_id=(id)
+    id = id.to_i
+    self.profile_photo = Photo.find(id) if self.photo_ids.include?(id)
+  end
+
+  def cover_photo_id=(id)
+    id = id.to_i
+    self.cover_photo = Photo.find(id) if self.photo_ids.include?(id)
+  end
+
+  def cover_url
+    self.cover_photo.nil? ? "https://c2.staticflickr.com/2/1219/1281974700_b90fe6d7e9_b.jpg" : self.cover_photo.image.url
+  end
+
+  def profile_url
+    self.profile_photo.nil? ? "/orm_profile.jpg" : self.profile_photo.image.url
+  end
+
   def is_friend?(user)
     self.friended_user_ids.include?(user.id)
   end

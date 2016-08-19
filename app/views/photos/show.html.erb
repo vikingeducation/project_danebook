@@ -21,6 +21,23 @@
         <div class="col-sm-12">
             <%= image_tag @photo.image.url %>
         </div>
+        <% if self_profile? %>
+          <div class="col-sm-2 col-sm-offset-2">
+              <%= form_tag user_path(current_user), method: :patch do %>
+                <%= hidden_field_tag "user[profile_photo_id]", "#{@photo.id}" %>
+                <%= submit_tag "Make this my profile photo!", class: "btn btn-primary" %>
+              <% end %>
+          </div>
+          <div class="col-sm-2 col-sm-offset-1">
+              <%= form_tag user_path(current_user), method: :patch do %>
+                <%= hidden_field_tag "user[cover_photo_id]", "#{@photo.id}" %>
+                <%= submit_tag "Make this my cover photo!", class: "btn btn-primary" %>
+              <% end %>
+          </div>
+          <div class="col-sm-1 col-sm-offset-1">
+            <%= link_to "Delete", user_photo_path, method: :delete, class: "btn btn-danger" %>
+          </div>
+        <% end %>
       </div>
 
     </div>

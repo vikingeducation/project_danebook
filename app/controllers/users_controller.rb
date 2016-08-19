@@ -41,7 +41,7 @@ class UsersController < ApplicationController
   def update
     if current_user.update(user_params)
       # flash[:success] = "Successfully updated your profile"
-      redirect_to about_user_path(current_user)
+      redirect_to user_path(current_user)
     else
       flash.now[:danger] = "Failed to update your profile"
       render :edit
@@ -68,6 +68,8 @@ class UsersController < ApplicationController
               :quote,
               :about,
               :college,
+              :cover_photo_id,
+              :profile_photo_id,
               hometown_attributes: [ :id, :name, :country ],
               residency_attributes: [ :id, :name, :country ]
               )

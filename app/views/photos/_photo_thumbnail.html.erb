@@ -1,6 +1,6 @@
-<div class="col-sm-3">
+<div class="col-sm-3" id="photo-thumbnail">
   <% if current_user.is_friend?(@user) || @user == current_user %>
-    <a href="<%= photo_path(photo) %>">
+    <a href="<%= user_photo_path(@user, photo) %>">
       <%= image_tag photo.image.url(:medium) %>
 
       <div class="photo-date center-text">

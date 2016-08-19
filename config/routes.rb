@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   post "login" => "sessions#create"
   post "logout" => "sessions#destroy"
 
-  resources :users, shallow: true do
+  resources :users do
     member do
       get :about
     end

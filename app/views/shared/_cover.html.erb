@@ -1,6 +1,14 @@
+<style>
+#cover-photo {
+  background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) 70%, rgba(0, 0, 0, .4)), url("<%= @user.cover_url %>") no-repeat;
+  background-size: cover;
+  height: 320px;
+}
+</style>
+
 <div class="row" id="cover-photo">
   <div class="col-sm-3">
-    <img src="/orm_profile.jpg" class="img-responsive img-thumbnail" alt="Cover image">
+    <img src="<%= @user.profile_url %>" class="img-responsive img-thumbnail" alt="Cover image">
   </div>
   <div class="col-sm-9">
     <h1 class="profile-name"><%= @user.name %></h1>

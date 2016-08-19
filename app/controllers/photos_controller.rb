@@ -10,12 +10,23 @@ class PhotosController < ApplicationController
     @user = @photo.user
   end
 
-  def update
-    
-  end
-
   def new
     @photo = current_user.photos.build
+  end
+
+  def destroy
+    begin
+      if (@photo = current_user.photos.find(params[:id])) && @photo.destroy
+        flash[:success] = "Photo deleted!"
+        redirect_to user_photos_path(@user)
+      else
+        flash[:danger] = "Photo could not be deleted!"
+        go_back
+      end
+    rescue ActiveRecord::RecordNotFound
+      flash[:danger] = "Photo could not be deleted!"
+      go_back
+    end
   end
 
   def create

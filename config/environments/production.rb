@@ -57,6 +57,27 @@ Rails.application.configure do
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
 
+  config.paperclip_defaults = {
+
+    # Don't forget to make S3 your storage option!
+    :storage => :s3,
+
+    :s3_credentials => {
+
+      # put your host name here if needed
+      #   see the reading below for more details
+      # NOTE: This must be the correct region for YOU
+      :s3_host_name => "s3-us-west-2.amazonaws.com",
+
+      # NOTE: these lines are changed to use secrets.yml
+      # from the examples (which use ENV vars instead)
+      :s3_region => "us-west-2",
+      :bucket => Rails.application.secrets.aws_bucket,
+      :access_key_id => Rails.application.secrets.aws_id,
+      :secret_access_key => Rails.application.secrets.aws_secret_key
+    }
+  }
+
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.action_controller.asset_host = 'http://assets.example.com'
 

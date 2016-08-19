@@ -47,7 +47,7 @@ class ApplicationController < ActionController::Base
     unless signed_in_user? && cookies[:auth_token] == current_user.auth_token
       flash[:error] = "You aren't authorized to perform this action."
       if signed_in_user?
-        redirect_to user_timeline_path(curent_user)
+        redirect_to user_timeline_path(page_owner)
       else
         redirect_to root_path
       end

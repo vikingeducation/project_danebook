@@ -1,0 +1,10 @@
+<h1> Hey <%= @user.name %> ! </h1>
+
+<p> You just signed up for our stupide email list. Good job, you big dummy. </p>
+
+<p>View your timeline at <%= link_to user_timeline_url(@user.id), user_timeline_url(@user.id) %>.</p>
+
+<footer> 
+  Forever sores,
+  The Project Danebook Team
+</footer>

@@ -32,6 +32,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'validates_timeliness', '~> 4.0'
 gem 'rails_12factor', group: :production
 gem 'pg'
+gem 'letter_opener' 
+gem 'delayed_job_active_record'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

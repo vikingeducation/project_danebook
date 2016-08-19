@@ -1,0 +1,22 @@
+<div id="about" class="container">
+  <header class="row" id="row-header">
+    <div class="col-xs-2 col-xs-offset-5 content-center">
+      <h1 id="about-header">Photos</h1> 
+    </div>
+  </header>
+  <div class="row">
+    <%= form_for [@user, @photo] do |f| %>
+    <br>
+    <div class="col-lg-8 col-sm-8 col-xs-offset-5">
+      <label class="btn btn-primary">
+        Browse&hellip; <%= f.file_field :file, style: "display: none" %>
+      </label>
+    </div>
+    <div class="col-lg-8 col-sm-8 col-xs-offset-5">
+      <br>
+      <%= f.submit "Submit", class: "btn btn-primary" %>
+    </div>
+    <% end %>
+
+  </div>
+</div>

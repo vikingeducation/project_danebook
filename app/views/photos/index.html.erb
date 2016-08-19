@@ -1,0 +1,19 @@
+<div id="about" class="container">
+  <header class="row" id="row-header">
+    <div class="col-xs-2 col-xs-offset-5 content-center">
+      <h1 id="about-header">Photos</h1> 
+    </div>
+    <div class="col-xs-2 col-xs-offset-3 content-center">
+      <%= link_to "Add Photo!", new_user_photo_path(current_user), id: "edit-button" %>
+    </div>
+  </header>
+  <div class="row photos-main">
+      <% @photos.each do |photo| %>
+    <div class="col-xs-3 content-center">
+        <%= link_to image_tag(photo.file.url(:medium), class: "small-photo hover"), user_photo_path(@user, photo) %>
+        <figcaption>Uploaded on <%= photo.created_at %> </figcaption>
+    </div>
+      <% end %>
+  </div>
+</div>
+

@@ -6,6 +6,10 @@
 
 // home page
 
+.big-font {
+  font-size: 2.5em;
+}
+
 #brand-title {
   font-size: 3.2em;
   margin: 25px 0 10px 0;
@@ -204,7 +208,8 @@ d1v {
 }
 
 #edit-button {
-  margin-top: 13px;
+  margin-top: 12px;
+  display: inline-block;
   background-color: #2B78E4;
   color: white;
   padding: 5px 15px;
@@ -452,4 +457,12 @@ d1v {
 
 .field_with_errors {
   display: inline;
+}
+
+#image-show {
+  margin-top: 20px;
+}
+
+#delete_photo_button {
+  margin-top: 20px;
 }

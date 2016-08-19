@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
 
+
+
   root "static_pages#home"
 
   resource :session, :only => [:create, :destroy, :new]
-
 
   resources :users, :only => [:create, :new, :edit, :update, :destroy] do 
 
@@ -11,13 +12,15 @@ Rails.application.routes.draw do
 
     get '/friends', to: "static_pages#friends"
     get '/about', to: "static_pages#about"
-    get '/photos', to: "static_pages#photos"
+
     get '/about_edit', to: "static_pages#about_edit"
 
     resources :posts, :only => [:create, :update, :destroy, :index]
     get '/timeline', to: "posts#index"
     
     resources :friendships, :only => [:create, :destroy]
+
+    resources :photos, :only => [:create, :new, :index, :show, :destroy]
 
   end
 

@@ -1,0 +1,10 @@
+<div class="container">
+  <div clas="row">
+    <div class="col-xs-10 col-xs-offset-1 content-center" id="image-show">
+      <%= image_tag @photo.file.url(:large) %>
+      <div class="col-xs-12">
+        <%= link_to "Delete this photo.", user_photo_path(@user, @photo), method: "DELETE", class: "btn btn-success big-font", id: "delete_photo_button" %>
+      </div>
+    </div>
+  </div>
+</div>

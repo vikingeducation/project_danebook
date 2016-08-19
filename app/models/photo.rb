@@ -5,7 +5,7 @@ class Photo < ActiveRecord::Base
   has_many :likes, as: :likeable, dependent: :destroy
   has_many :comments, as: :commentable, dependent: :destroy
   has_attached_file :image,
-                    styles: { medium: '300x300', thumb: '100x100' },
+                    styles: { medium: '300x300', thumb: '150x150' },
                     default_url: '/images/missing.png'
   validates_attachment_content_type :image,
                                     content_type: /\Aimage\/.*\Z/

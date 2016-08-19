@@ -6,17 +6,17 @@
                 <%= link_to "#{@user}'s Picture", @user %>
             </h3>
 
-            <!-- button to make profile pic -->
+
             <%= link_to "Make Profile Pic", set_picture_profile_path(picture_id: @photo.id), method: :patch, class: "btn btn-sm btn-primary" %>
             <%= link_to "Make Cover Pic", set_cover_profile_path(picture_id: @photo.id), method: :patch, class: "btn btn-sm btn-primary" %>
             <% if @user == current_user %>
             <%= link_to "Delete Photo", photo_path(@photo), method: :delete, class: "btn btn-danger btn-sm" %>
             <% end %>
-
+            <br>
         </div>
         <div class="row">
             <div class="col-sm-8">
-                <%= image_tag @photo.image.url(:medium) %>
+                <%= image_tag @photo.image.url, class: "fit-div show-photo" %>
             </div>
             <div class="col-sm-4">
                 <div class="col-sm-12">

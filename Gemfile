@@ -29,6 +29,7 @@ gem 'paperclip'
 gem 'aws-sdk'
 gem 'faker'
 gem 'figaro'
+gem 'delayed_job_active_record'
 # Use Unicorn as the app server
 # gem 'unicorn'
 
@@ -53,9 +54,9 @@ group :development do
   gem 'binding_of_caller'
   gem 'hirb'
   gem 'sqlite3'
-  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'guard-rspec', require: false
+  gem 'letter_opener'
 end
 
 group :production do

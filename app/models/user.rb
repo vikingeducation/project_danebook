@@ -25,6 +25,7 @@ class User < ActiveRecord::Base
 
   has_one :profile, dependent: :destroy
   accepts_nested_attributes_for :profile
+  after_create :send_welcome_email
 
   def to_s
     profile.first_name + " " + profile.last_name
@@ -62,5 +63,10 @@ class User < ActiveRecord::Base
 
   def recent_friends
     friended_users.limit(4)
+  end
+
+  def self.send_welcome(id)
+    user = User.find(id)
+    UserMailer.welcome(user).deliver
   end
 end

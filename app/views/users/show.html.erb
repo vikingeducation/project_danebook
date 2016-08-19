@@ -19,7 +19,7 @@
                 <div class="col-sm-12">
                     <% @user.photos.each do |photo| %>
                     <div class="image">
-                        <%= image_tag photo.image.url(:thumb) %>
+                        <%= image_tag photo.image.url(:thumb), class: "fit-div" %>
                     </div>
                     <% end %>
                 </div>

@@ -1,7 +1,8 @@
 class PhotosController < ApplicationController
   def create
+    raise
     @profile = current_user.profile
-    @photo = @profile.build_photo(label: params[:photo][:label], avatar: params[:photo][:avatar] )
+    @photo = @profile.build_photo(white_listed_photo_params)
     
     if @photo.save
       flash[:sucess] = "Photo was uploaded"
@@ -9,7 +10,7 @@ class PhotosController < ApplicationController
       redirect_to current_user
     else
       flash[:error] = "Photo failed to upload"
-      render "users/new"
+      render "users/show"
     end
   end
 

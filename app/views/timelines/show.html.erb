@@ -58,7 +58,7 @@
                   <%= link_to "See more photos!", photos_path(id: @user.id) %>
                 </div>
               </div>
-            </div>
+             </div>
           </div>
         </div>
       </div>
@@ -70,35 +70,14 @@
             </div>
           </div>
           <div class="row panel-content">
-            <div class="col-md-4">
-              <div class="friend-box">
-              <%= image_tag "icon_photo_small", height: "92px", width: "92px" %>
-                <a href="#">Ron Weasley</a>
-              </div>
-              <div class="friend-box">
-              <%= image_tag "icon_photo_small", height: "92px", width: "92px" %>
-                <a href="#">paragraph text</a>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="friend-box">
-              <%= image_tag "icon_photo_small", height: "92px", width: "92px" %>
-                <a href="#">Ginny Weasley</a>
-              </div>
-              <div class="friend-box">
-              <%= image_tag "icon_photo_small", height: "92px", width: "92px" %>
-                <a href="#">paragraph text</a>
-                <a href="#" class="panel-link">See More Friends</a>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="friend-box">
-              <%= image_tag "icon_photo_small", height: "92px", width: "92px" %>
-                <a href="#">Hermione G.</a>
-              </div>
-              <div class="friend-box">
-              <%= image_tag "icon_photo_small", height: "92px", width: "92px" %>
-                <a href="#">paragraph text</a>
+            <div class="col-md-12">
+              <div class="row">
+                <% friends_matrix = photos_count_check @friends,4 %>
+                <% friends_matrix.each do |row| %>
+                  <% row.each do |col| %>
+                   <%= split_column render_friend_box(col),4 %>
+                  <% end %>
+                <% end %>
               </div>
             </div>
           </div>

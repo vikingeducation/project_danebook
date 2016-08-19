@@ -3,13 +3,14 @@ class ProfilesController < ApplicationController
   before_action :current_user, :only => [:show, :update]
 
   def index
-    @user = User.find(current_user.id)
+    @user = User.find(params[:user_id])
     @profile = @user.profile
   end
 
   def show
     @user = User.find(params[:user_id])
     @profile = @user.profile
+
   end
 
   def update
@@ -39,6 +40,8 @@ class ProfilesController < ApplicationController
                 :home_town,
                 :currently_lives,
                 :phone_number,
-                :year)
+                :year,
+                :photo_attributes => [:label, :avatar]
+                )
     end
 end

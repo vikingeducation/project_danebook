@@ -17,7 +17,15 @@
       </div>
     </div>
 
+    <div>
+
     <p> <%= post.description %> </p>
+
+    <% if post.has_photo? %> 
+      <%= image_tag post.photo.avatar.url(:medium) %>
+    <% end %>
+
+    <div>
 
     <div class ="row footer-bar">  
       <ul class="list-unstyled" id="post-footers">
@@ -27,8 +35,6 @@
 
         <% if post.already_likes? %>
           <%= current_user.username %> likes this..
-
-
           
         <% else %>
           <li> <%=link_to "Like", user_post_likings_path(current_user, post), :method => :post, :confirm => "like this?" %> </li>

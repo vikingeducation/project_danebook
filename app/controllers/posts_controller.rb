@@ -1,7 +1,8 @@
 class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(whitelisted_post_params)
-    if current_user.save
+
+    if @post.save 
       redirect_to current_user
       flash[:success] = "Post was created in User"
     else
@@ -25,6 +26,7 @@ class PostsController < ApplicationController
     def whitelisted_post_params
       params.
         require(:post).
-        permit( :description)
+        permit( :description, 
+                :photo_attributes => [:label, :avatar])
     end
 end

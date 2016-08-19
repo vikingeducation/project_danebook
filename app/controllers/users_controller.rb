@@ -1,11 +1,13 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :update]
-  # before_action :require_login, only: [:show]
+  before_action :require_login, only: [:show]
 
   def show
     @user = User.find(params[:id])
+    @profile = @user.profile
     @post = Post.new
     @posts = @user.posts
+    @photo = @profile.photo
   end
 
   def new
@@ -17,8 +19,8 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(whitelisted_user_params)
-    # @profile = @user.build_profile(whitelisted_profile_params)
-    if @user.save
+    @profile = @user.build_profile(whitelisted_profile_params)
+    if @user.save && @profile.save
       sign_in(@user)
       flash[:success] = "User was saved in database"
       redirect_to @user
@@ -42,6 +44,7 @@ class UsersController < ApplicationController
   private
     def set_user
       @user = User.find(current_user.id)
+      @profile = @user.profile
     end
 
     def whitelisted_user_params

@@ -1,6 +1,28 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <div class="photo-container">
-    <a href="#"><img class="img" src="./img/harry_potter_small.jpg"/></a>
+  
+    <% if profile.has_photo? %>
+      <%= image_tag profile.photo.avatar.url(:thumb) %>
+      <h4> <%= current_user.username %> </h4>
+    <% else %>
+      <%= form_for :photo, :url => user_profiles_photos_path(current_user, profile) do |photo_fields| %>
+        <%= photo_fields.label :label %>
+        <%= photo_fields.text_field :label %>
+        <%= photo_fields.file_field :avatar %>
+        <%= photo_fields.submit %>
+      <% end %>
+    <% end %>
+
+ 
+
   </div>
+
+
   <div class="row nav-default container-fluid">
     
     <div class="col-xs-9 col-xs-offset-3">

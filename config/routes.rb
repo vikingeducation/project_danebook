@@ -1,18 +1,19 @@
 Rails.application.routes.draw do
   root to: 'users#new'
   resources :users, :except => [:index, :update, :destroy] do
-    resources :posts do
+    resources :photos, :defaults => { :photoable => 'User'}, :only => [:create]
+    resources :posts, :only => [:create, :destroy] do
+      resources :photos, :defaults => { :photoable => 'Post'}, :only => [:create]
       resources :likings, :only => [:create]
     end
     resource :profiles, :except => [:create, :destroy] do
+      resources :photos, :defaults => { :photoable => 'Profile'}, :only => [:create]
       get "/edit" =>  "profiles#show"
       get "/" =>  "profiles#index"
-      get "/timeline" => "profiles#timeline"
-
     end
   end
 
-
+  
 
   resources :likings, :only => [:destroy]
 

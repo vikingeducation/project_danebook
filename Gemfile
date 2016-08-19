@@ -1,5 +1,9 @@
 source 'https://rubygems.org'
-
+#photos
+gem 'paperclip'
+gem 'figaro'
+gem 'aws-sdk'
+#rails app
 gem 'rails-controller-testing'
 gem 'simple_form'
 gem 'taps'

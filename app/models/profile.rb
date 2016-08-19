@@ -34,5 +34,8 @@ class Profile < ApplicationRecord
             allow_nil: true,
             allow_blank: true
 
+  has_attached_file :profile_picture, :styles => { :profile => "150x150", :post => "75x75" }, default_url: "https://s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif"
+  validates_attachment_content_type :profile_picture, :content_type => /\Aimage\/.*\Z/
+
 
 end

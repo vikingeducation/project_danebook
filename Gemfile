@@ -18,6 +18,9 @@ gem 'coffee-rails', '~> 4.2'
 gem 'rails_12factor'
 gem 'simple_form'
 gem 'validates_timeliness', '~> 4.0'
+gem 'paperclip'
+gem 'figaro'
+gem 'aws-sdk'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

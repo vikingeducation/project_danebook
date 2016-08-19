@@ -5,14 +5,14 @@
         <div class="col-sm-2 col-sm-offset-1" id="single-profile-tab">
           <%= link_to "Timeline", user_timeline_path(real_user_id), class: "h6" %>
         </div>
-        <div class="col-sm-2" id="single-profile-tab-current">
+        <div class="col-sm-2" id="single-profile-tab">
           <%= link_to "About", user_path(real_user_id), class: "h6" %>
         </div>
         <div class="col-sm-2" id="single-profile-tab">
-          <%= link_to "Photos (123)", user_photo_path(real_user_id), class: "h6" %>
+          <%= link_to "Photos (123)", user_photos_path(real_user_id), class: "h6" %>
         </div>
         <div class="col-sm-2" id="single-profile-tab">
-          <%= link_to "Friends (542)", user_friend_path(real_user_id), class: "h6" %>
+          <%= link_to "Friends (#{real_user.friended_users.count})", user_friends_path(real_user_id), class: "h6" %>
         </div>
         <div class="col-sm-3" id="edit-profile-tab">
         <% if real_user_id == current_user.id.to_s %>

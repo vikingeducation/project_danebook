@@ -69,7 +69,8 @@ class UsersController < ApplicationController
                                   :currently_lives,
                                   :telephone,
                                   :words_to_live_by,
-                                  :about_me
+                                  :about_me,
+                                  :profile_picture
                                   ]})
   end
 

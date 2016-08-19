@@ -7,8 +7,8 @@
       <div class="row">
         <!--profile picture which is overlayed on cover photo-->
         <div class="col-md-6 col-md-offset-1 col-xs-10" id="profile-picture">
-          <img src="https://s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif">
-          <h2><%= user_header_name %></h2>
+           <%= image_tag real_user.profile.profile_picture.url(:profile)  %>
+          <h2><%= user_header_name(real_user) %></h2>
         </div>
       </div>
     </div>
@@ -19,6 +19,7 @@
     <!--About page header and edit profile button-->
     <div class="col-md-10 col-md-offset-1" id="header-bar">
       <h2>Photos</h2>
+      <%= simple_form_for 
       <a class="btn btn-primary" href=#uploadphoto role="button">Add Photo!</a>
     </div>
     <!--user's photos-->

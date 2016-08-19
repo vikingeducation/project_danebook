@@ -8,7 +8,7 @@
       <div class="row">
         <!--profile picture which is overlayed on cover photo-->
         <div class="col-md-6 col-md-offset-1 col-xs-10" id="profile-picture">
-          <img src="https://s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif">
+           <%= image_tag real_user.profile.profile_picture.url(:profile)  %>
           <h2><%= user_header_name(real_user_id) %></h2>
         </div>
       </div>
@@ -24,7 +24,7 @@
           <div class="row">
             <!--About panel -->
             <div class="col-xs-12 timeline-title">
-              <h5>About (Text Area)</h5>
+              <h5>About</h5>
             </div>
             <div class="col-xs-12 timeline-content">
               <p><b>Born on:</b> <%= @timeline_user.profile.birthday.strftime("%m/%d/%Y") if @timeline_user.profile.birthday != nil %></p>
@@ -34,7 +34,7 @@
             </div>
             <!-- User's Photos -->
             <div class="col-xs-12 timeline-title" id="timeline-friends-photos">
-              <h5>Photos (123) (Copied Text Area)</h5>
+              <h5>Photos (123)</h5>
             </div>
             <div class="col-xs-12 timeline-content">
               <div class="row">
@@ -71,37 +71,13 @@
             </div>
             <!-- User's Friends -->
             <div class="col-xs-12 timeline-title" id="timeline-friends-photos">
-              <h5>Friends (542) (Copied Text Area)</h5>
+              <h5><%= "Friends (#{@timeline_user.friended_users.count})" %></h5>
             </div>
             <div class="col-xs-12 timeline-content">
               <div class="row">
-                <div class="col-xs-4">
-                  <a href=#><img src=https://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png class="img-responsive"></a>
-                  <a href=#><h6>Friend name</h6></a>
-                </div>
-                <div class="col-xs-4">
-                  <a href=#><img src=https://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png class="img-responsive"></a>
-                  <a href=#><h6>Friend name</h6></a>
-                </div>
-                <div class="col-xs-4">
-                  <a href=#><img src=https://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png class="img-responsive"></a>
-                  <a href=#><h6>Friend name</h6></a>
-                </div>
-                <div class="col-xs-4">
-                  <a href=#><img src=https://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png class="img-responsive"></a>
-                  <a href=#><h6>Friend name</h6></a>
-                </div>
-                <div class="col-xs-4">
-                  <a href=#><img src=https://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png class="img-responsive"></a>
-                  <a href=#><h6>Friend name</h6></a>
-                </div>
-                <div class="col-xs-4">
-                  <a href=#><img src=https://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png class="img-responsive"></a>
-                  <a href=#><h6>Friend name</h6></a>
-                </div>
-                <div class="col-xs-12">
-                  <a href="friends.html"><h6>See more friends</h6></a>
-                </div>
+                <% @timeline_user.friended_users[0..6].each do |friend| %>
+                  <%= render partial: "shared/timeline_friends", locals: {user: friend} %>
+                <% end %>
               </div>
             </div>
           </div>

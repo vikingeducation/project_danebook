@@ -16,7 +16,7 @@
           <input type="text" class="form-control" placeholder="Search for Users">
         </div>
         <div class="col-xs-2 logout" id="navbar-profile-link">
-         
+          <%= link_to current_user.profile.first_name, user_path(current_user) %> | 
           <%= link_to "Logout", session_path, :method => :delete %>
 
         </div>

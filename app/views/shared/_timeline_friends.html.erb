@@ -1,0 +1,8 @@
+<div class="col-xs-4">
+  <%= link_to user_path(user) do %>
+    <%= link_to user_path(user.id) do %>
+        <%= image_tag user.profile.profile_picture.url(:post), class:"img-responsive" %>
+      <% end %>
+  <% end %>
+  <h6><%= link_to user_header_name(user.id), user_path(user) %></h6>
+</div>

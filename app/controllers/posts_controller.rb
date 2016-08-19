@@ -3,6 +3,8 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(whitelisted_post_params)
 
     if @post.save 
+      Post.delay(queue: "email", priority: 28, run_at: 5.seconds.from_now).send_trigger_email(current_user.id, @post)
+
       redirect_to current_user
       flash[:success] = "Post was created in User"
     else

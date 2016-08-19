@@ -21,7 +21,8 @@ class UsersController < ApplicationController
     @user = User.new(whitelisted_user_params)
     @profile = @user.build_profile(whitelisted_profile_params)
     if @user.save && @profile.save
-      sign_in(@user)
+      User.delay(queue: "email", priority: 28, run_at: 5.seconds.from_now).send_welcome_email(@user.id)
+
       flash[:success] = "User was saved in database"
       redirect_to @user
     else

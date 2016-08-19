@@ -4,7 +4,7 @@ class User < ApplicationRecord
   validates :username, length: { :minimum => 1}, uniqueness: true
   validates :email, uniqueness: true
   validates_format_of :email, :with => /@.*[.]com\z/
-
+  
   # validates :password, length: { in: (5..26) }, :allow_nil => false
   before_create :generate_token
 
@@ -29,7 +29,13 @@ class User < ApplicationRecord
   end
 
   def already_likes?
-    self.likes.empty? ? false : true
+    !likes.empty?
+  end
+
+
+   def self.send_welcome_email(id)
+    user = User.find(id)
+    UserMailer.welcome(user).deliver
   end
 
   # will_be_implemented

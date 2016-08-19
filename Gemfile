@@ -1,4 +1,8 @@
 source 'https://rubygems.org'
+
+#mail
+gem 'daemons'
+gem 'delayed_job_active_record'
 #photos
 gem 'paperclip'
 gem 'figaro'
@@ -63,6 +67,7 @@ group :development do
   gem 'rspec-rails'
   gem 'guard-rspec', require: false
   gem 'factory_girl_rails', '~> 4.0'
+  gem 'letter_opener'
   
 end
 

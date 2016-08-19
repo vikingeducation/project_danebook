@@ -10,11 +10,16 @@ class Post < ApplicationRecord
   accepts_nested_attributes_for :photo
 
   def already_likes?
-    self.likes.empty? ? false : true
+    !likes.empty?
   end
 
   def has_photo?
-    self.photo.nil? ? false : true
+    !photo.nil? 
+  end
+
+  def self.send_trigger_email(id, post)
+    user = User.find(id)
+    UserMailer.trigger(user, post).deliver
   end
 
 end

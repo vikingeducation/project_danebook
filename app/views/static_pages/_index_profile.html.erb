@@ -7,12 +7,18 @@
         </div>
       </div>
       <div class="row panel-content">
-       <% users_matrix = users_count_check user.friends %>
-       <% users_matrix.each do |row| %>
-         <% row.each do |col| %>
-           <%= split_column(render_user_panel col)%>
-         <% end %>
-       <% end %> 
+        <div class="col-md-12">
+        <% if user.friends.empty? && user == current_user %>
+          <h3>Need friends? Use the search bar above!</h3>
+        <% end %>
+        <% users_matrix = users_count_check user.friends %>
+        <% users_matrix.each do |row| %>
+          <% row.each do |col| %>
+            <%= split_column(render_user_panel col)%>
+          <% end %>
+        <% end %> 
+        </div>
+       </div>
       </div>
     </div>
   </div>

@@ -4,33 +4,36 @@
 
 <div class="main">
   <div class="container">
-    <div class="row">
-      <% if current_user && current_user.id == @user.id %>
-        <%= render "shared/wall_post_form"%>
-        <br>
-        <%= render partial: "shared/wall_post", locals: { posts: @posts} %>
-      <% end %>
+
+    <div class ="row">
+      <div class="col-xs-6" id="panels">
+      <%= render "shared/wall_post_form"%>
+      </div>
     </div>
 
-    <div class="row">
-    <!--(First Panel)-->
-    <div class="col-xs-6" id="panels">
+      <div class="col-xs-6" id="panels">
       <div class ="row header-bar">  
         <div class="col-xs-6">
           <h4>About(Text Area)</h4>
         </div>
       </div>
+        <p><b>Born on: </b> <%= @profile.month %>, <%= @profile.day %>, <%= @profile.year %> </p>
+        <p><b>Went to school at: </b> <%= @profile.college %> </p>
+        <p><b>Hometown: </b><%= @profile.home_town %></p>
+        <p><b>Favorite Singer/Band: </b> <%= @profile.currently_lives %></p>
+      </div>
+    
 
-      <p><b>Born on: </b> <%= @profile.month %>, <%= @profile.day %>, <%= @profile.year %> </p>
-      <p><b>Went to school at: </b> <%= @profile.college %> </p>
-      <p><b>Hometown: </b><%= @profile.home_town %></p>
-      <p><b>Favorite Singer/Band: </b> <%= @profile.currently_lives %></p>
+    <div class="row">
+  <!--(First Panel)-->
+    
+  </div>
+
+    <div class="row">
+      <% if current_user && current_user.id == @user.id %>
+        <%= render partial: "shared/wall_post", locals: { posts: @posts} %>
+      <% end %>
     </div>
-    
-    
-    
-
-
 
   </div>
 </div>

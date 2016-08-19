@@ -5,10 +5,10 @@
         <div class="container" id="friends">
           <div class="row row-eq-height">
             <div class="col-xs-3">
-              <img alt="friend_picture" src="#">
+              <%= image_tag current_user.profile.photo.avatar.url(:thumb) %>
             </div>
             <div class="col-xs-9">
-              <u> <%= current_user.profile.first_name %> <%= current_user.profile.last_name %> </u>
+              <u><%= link_to "#{current_user.profile.first_name} #{current_user.profile.last_name}", user_path(current_user) %> </u>
               <span id="helpBlock" class="help-block">Posted on <%= post.created_at %> </span>
               <span>&nbsp</span>
             </div>      
@@ -18,20 +18,17 @@
     </div>
 
     <div>
+      <p> <%= post.description %> </p>
 
-    <p> <%= post.description %> </p>
-
-    <% if post.has_photo? %> 
-      <%= image_tag post.photo.avatar.url(:medium) %>
-    <% end %>
-
-    <div>
+      <% if post.has_photo? %> 
+        <%= image_tag post.photo.avatar.url(:medium) %>
+      <% end %>
+    </div>
 
     <div class ="row footer-bar">  
       <ul class="list-unstyled" id="post-footers">
 
         <li><%= link_to 'Destroy', user_post_path(current_user, post), :method => :delete, :confirm => "Are you sure?" %></li>
-
 
         <% if post.already_likes? %>
           <%= current_user.username %> likes this..
@@ -39,9 +36,6 @@
         <% else %>
           <li> <%=link_to "Like", user_post_likings_path(current_user, post), :method => :post, :confirm => "like this?" %> </li>
         <% end %>
-
-
-
 
         <li><a href="#"><u>Comment</u></a></li>
         <li class="pull-right edit-link" role="presentation"><a href="about_edit.html"><u>Post</u></a></li></ul>

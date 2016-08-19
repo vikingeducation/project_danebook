@@ -1,6 +1,9 @@
 source 'https://rubygems.org'
 
 gem 'paperclip'
+gem 'delayed_job_active_record'
+gem 'letter_opener', group: :development
+gem 'figaro'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.6'

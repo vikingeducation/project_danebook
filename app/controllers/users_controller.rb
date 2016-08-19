@@ -16,20 +16,38 @@ class UsersController < ApplicationController
     # @profile = @user.profile
   end
 
+  # def create
+  #   @user = User.new({ email: user_params[:email],                
+  #                      password: user_params[:password],
+  #                      password_confirmation: user_params[:password_confirmation] })
+  #   if @user.save && @user.create_profile!(first_name: user_params[:first_name], 
+  #                                          last_name: user_params[:last_name])
+  #     @user.send_activation_email
+  #     flash[:info] = 'You have been sent an email containing a link to activate your account.'
+  #     redirect_to root_url
+  #   else
+  #     flash[:danger] = 'Invalid information. Please try again to sign up.'
+  #     redirect_to new_user_path
+  #   end
+  # end
+
   def create
     @user = User.new({ email: user_params[:email],                
                        password: user_params[:password],
                        password_confirmation: user_params[:password_confirmation] })
     if @user.save && @user.create_profile!(first_name: user_params[:first_name], 
                                            last_name: user_params[:last_name])
-      @user.send_activation_email
-      flash[:info] = 'You have been sent an email containing a link to activate your account.'
+      @user.update(activated: true)
+      @user.reload
+      queue_welcome_email(@user)
+      flash[:info] = 'You have been sent an email.'
       redirect_to root_url
     else
       flash[:danger] = 'Invalid information. Please try again to sign up.'
       redirect_to new_user_path
     end
   end
+
 
   def edit
     @profile = @user.profile
@@ -73,6 +91,10 @@ class UsersController < ApplicationController
                             :password_confirmation,
                             :avatar]
       params.require(:user).permit(permissible_params)
+    end
+
+    def queue_welcome_email(user)
+      UserWelcomeJob.set(wait: 5.seconds).perform_later(user)
     end
 
     # Setting a user before specific actions.

@@ -107,15 +107,15 @@ class User < ActiveRecord::Base
     end
   end
 
-  # Send activation email.
-  def send_activation_email
-    UserMailer.activation(self).deliver_now
-  end
+  # # Send activation email.
+  # def send_activation_email
+  #   UserMailer.activation(self).deliver_now
+  # end
 
-  # Send password reset email.
-  def send_reset_email
-    UserMailer.password_reset(self).deliver_now
-  end
+  # # Send password reset email.
+  # def send_reset_email
+  #   UserMailer.password_reset(self).deliver_now
+  # end
 
   def first_name
     @first_name ||= self.profile.first_name if self.profile

@@ -4,7 +4,7 @@ describe Post do
 
   describe "Validations" do 
 
-    let(:post) { build(:post) }
+    let(:post) { create(:post) }
 
     it "validates the presence of content" do 
       is_expected.to validate_presence_of(:content)
@@ -21,6 +21,9 @@ describe Post do
   end
 
   describe "Associations" do 
+
+    let(:post) {create(:post)}
+
     it "accepts nested attributes for a comment" do 
       is_expected.to accept_nested_attributes_for(:comments)
     end
@@ -36,14 +39,17 @@ describe Post do
     it "has many likes" do 
       is_expected.to have_many(:likes)
     end
+    it "should return the comments" do 
+      expect(post).to respond_to(:comments)
+    end
   end
 
   describe "#all_comments" do 
-    let(:post) {build(:post)}
+    let(:post) {create(:post)}
     
     it "should list all comments in ascending order of a comment" do
       5.times do |n| 
-        post.comments.build(created_at: Time.now, id: n)
+        post.comments.build(created_at: Time.now)
       end
       post.comments.each_with_index do |comment, index|
         expect(comment.created_at).to be < post.comments[index + 1].created_at if post.comments[index + 1]

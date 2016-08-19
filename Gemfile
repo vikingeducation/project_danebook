@@ -1,5 +1,13 @@
 source 'https://rubygems.org'
 
+gem 'figaro'
+
+gem 'aws-sdk'
+
+gem 'paperclip'
+
+gem 'rails-controller-testing'
+
 gem 'factory_girl_rails'
 
 gem 'rspec-rails'

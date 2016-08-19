@@ -62,11 +62,16 @@
           <p><%= user_profile.text_area :about_me, placeholder: @profile.about_me, class: "form-control text-area-about", cols: 11, rows: 11 %></p>
           <h3 class="text-center"> About me </h3>
           <p><%= user_profile.text_area :words_to_live_by, placeholder: @profile.words_to_live_by, class: "form-control text-area-about", cols: 11, rows: 11%></p>
+           <div class="col-md-12">
+          <%= p.submit :Submit, class: "form-control btn btn-primary submit-edit-button" %>
         </div>
-      <% end %>
+        <% end %>
+        </div>
+    <% end %>
     </div>
-    <div class="col-md-12">
-      <%= p.submit :Submit, class: "form-control btn btn-primary submit-edit-button" %>
-    </div>
+  </div>
+  <%=  form_for [@profile, @photo] do |f| %>
+    <%= f.file_field :picture %>
+    <%= f.submit :submit %>
   <% end %>
 </div>

@@ -13,12 +13,17 @@
       </div>
     </div>
     <div class="col-md-12">
-      <h3 class="text-center">Photos<h3>
+      <h3 class="text-center"> Photos</h3>
+      <% @photos.each do |photo| %>
+        <div class="col-md-4 index-photo">
+          <%= link_to image_tag(photo.picture.url(:thumbnail)), profile_photo_path(photo.profile, photo) %>   
+        </div>
+      <% end %>
     </div>
   </div>
   <div class="col-md-8">
     <div class="row">
-      <%= render "posts/new_post" %>
+      <%= render "posts/new_post" if @post && @user%>
 
     <% @posts.each do |post|%>
       <div class="col-md-12">
@@ -35,34 +40,39 @@
                 <p><%= post.likes.count %> likes</p>
                 <% if !post.comments.empty? %>
                   <% post.all_comments.each do |comment| %>
+                  <div class="comment-show">
                     <ul class="media-list">
                       <li class="media">
                         <div class="media-left"> 
                           <%= image_tag("default_image.jpg", class: "comment-picture") %>
                         </div>
                         <div class="media-body">
-                          <h4 class="media-heading"><%= link_to comment.commentable.user.first_name, user_profiles_path(comment.commentable.user) %></h4>
+                          <h4 class="media-heading"><%= link_to comment.commentable.user.first_name + " " + comment.commentable.user.last_name, user_profiles_path(comment.commentable.user) %></h4>
                           <p><%= comment.content %></p>
-
-                          <%= render "comments/new_comment", comment: @comment, like: @like %>
+                          <div class= "comment-show">
+                          <%= render "comments/new_comment", comment: @comment, like: @like if @comment%>
+                        </div>
                         </div>
                       </li>
                     </ul>
+                  </div>
                   <% end %>
                 <% else %>
                 <% end %>
               </div>
-                <%= form_for [post, @post.comments.build] do |comment| %>
-                  <%= image_tag("default_image.jpg", class: "comment-picture") %>
-                  <%= comment.text_field :content, placeholder: "Write your comment here", class: "comment-text form-control", 'aria-label'=> "basic-addon1" %>
-                  <%= comment.submit "Comment on Post", class: "btn btn-success" %>
-                <% end %>
-                <%= form_for [post, @post.likes.build] do |like| %>
-                  <%= like.hidden_field :user_id, value: current_user.id %>
-                  <%= like.submit "Like", class: "btn btn-primary"%>               
-                <% end %>
+                <% if @post %>
+                  <%= form_for [post, @comment], class: "comment-show" do |comment| %>
+                    <%= image_tag("default_image.jpg", class: "comment-picture") %>
+                    <%= comment.text_field :content, placeholder: "Write your comment here", class: "comment-text form-control", 'aria-label'=> "basic-addon1" %>
+                    <%= comment.submit "Comment on Post", class: "btn btn-success" %>
+                  <% end %>
+                  <%= form_for [post, @post.likes.build] do |like| %>
+                    <%= like.hidden_field :user_id, value: current_user.id %>
+                    <%= like.submit "Like", class: "btn btn-primary"%>               
+                  <% end %>
 
-              <%= link_to "Delete Post", user_post_path(current_user, post), method: :delete, class: "btn btn-danger" if current_user == @user%>
+                <%= link_to "Delete Post", user_post_path(current_user, post), method: :delete, class: "btn btn-danger" if current_user == @user%>
+              <% end %>
             </div>
           </div>
         </div>

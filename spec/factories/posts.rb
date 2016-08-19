@@ -2,6 +2,6 @@ FactoryGirl.define do
   factory :post do
       content "BLAH!!"
       from 1
-      user 
+      association :user 
   end
 end

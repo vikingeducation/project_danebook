@@ -3,9 +3,12 @@ class ProfilesController < ApplicationController
   before_action :set_user, only: [:show, :edit]
     
   def edit
-    #HAD TO HARD CODE THIS IN, OTHER WISE PEOPLE CAN EDIT ANYONE
-    redirect_to "http://nouveller.com/404/" if @user != current_user
-    @profile = current_user.profile
+    if @user != current_user
+      redirect_to "http://nouveller.com/404/" 
+    else
+      @profile = current_user.profile
+      @photo = current_user.profile.photos.build
+    end
   end
 
   def update

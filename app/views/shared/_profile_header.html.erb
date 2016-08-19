@@ -13,7 +13,7 @@
       <%= link_to "About", user_profiles_path(@user) %>
     </div>
     <div class="col-md-2 photos-link">
-      Photos
+      <%= link_to "Photos", profile_photos_path(@user.profile) %>
     </div>
     <div class="col-md-2 friends-link">
       Friends

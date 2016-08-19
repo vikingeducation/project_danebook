@@ -16,9 +16,9 @@ feature "Deleting a post" do
 
   scenario "from a user not that current user should not change the post count" do 
     login(user2)
-    visit "/users/#{user.id}/profiles"
+    visit "/users/#{user.id}"
     expect(Post.count).to eq(1)
-    click_on("Delete Post")
+    expect(page).to_not have_content("Delete Post")
   end
 
 end

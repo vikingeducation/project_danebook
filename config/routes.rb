@@ -6,8 +6,11 @@ Rails.application.routes.draw do
   resources :users do
     resource :profiles, only: [:edit, :show, :update]
     resources :posts, only: [:create, :destroy]
-    resources :photos
   end 
+
+  resources :profile do 
+    resources :photos
+  end
 
   resources :posts do
     resources :comments, defaults: {commentable: "Post"}

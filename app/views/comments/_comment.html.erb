@@ -1,15 +1,18 @@
 <div class="comment">
-<%= comment.body %>
-<p>by:
-    <%=link_to comment.author, comment.author %>
-</p>
-<span><%= likeable_likes_link(comment) %></span>
-<br>
-<span><%= delete_comment_link(comment, commentable) %></span>
-<% comment.comments.each do |nested_comment|%>
-<div class="nested-comment">
+    <p>
+        <%= comment.body %>
+    </p>
+    <p>by:
+        <%=link_to comment.author, comment.author %>
+    </p>
+    <span><%= likeable_likes_link(comment) %></span>
     <br>
-    <%= render partial: "/comments/comment", locals: {comment: nested_comment, commentable: comment } %>
+    <span><%= delete_comment_link(comment, commentable) %></span>
 </div>
-<% end %>
+
+<!-- <% comment.comments.each do |nested_comment|%>
+<div class="nested-comment">
+<br>
+<%= render partial: "/comments/comment", locals: {comment: nested_comment, commentable: comment } %>
 </div>
+<% end %> -->

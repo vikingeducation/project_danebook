@@ -4,3 +4,10 @@
 .nested-comment {
   margin-left: 20px;
 }
+
+.comment {
+  border-left: 2px solid darkslategray;
+  p, span {
+    padding-left: 5px;
+  }
+}

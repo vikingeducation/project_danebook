@@ -25,10 +25,10 @@ class PhotosController < ApplicationController
   end
 
   def destroy
-    photo = Photo.find(params[:id])
+    photo = current_user.photos.find(params[:id])
     if photo.destroy
       flash[:success] = "Photo deleted"
-      redirect_to user_photos_path
+      redirect_to user_photos_path(current_user)
     else
       flash.now[:error] = "Unable to delete photo"
       render :show

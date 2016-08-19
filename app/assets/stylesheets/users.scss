@@ -27,7 +27,8 @@ margin-bottom: 15px;
 }
 
 .wrapper {
-  border: solid;
+  border: 1px solid;
+  border-radius: 5px;
   padding-bottom:20px;
   #long-form{
     height:100px;
@@ -156,14 +157,11 @@ margin-bottom: 15px;
 }
 #profile-pic {
   position: absolute;
-  background-image: image-url("harry_potter_small.jpg");
-  height:150px;
-  width:120px;
-  margin-top:160px;
+  ;
+  height:100px;
+  width:100px;
+  margin-top:225px;
   margin-left:10px;
-  background-size:cover;
-  background-repeat:none;
-  border: solid;
 }
 #post-img {
   background-image: image-url("harry_potter_small.jpg");

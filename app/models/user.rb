@@ -69,6 +69,9 @@ class User < ActiveRecord::Base
     User.find_by_sql([sql,self.id])
   end
 
+  def profile_pic
+    Photo.where(id: self.profile.picture_id)
+  end
 
 
 end

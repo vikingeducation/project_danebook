@@ -1,4 +1,4 @@
 <%= simple_form_for current_user.comments.build, url: user_comments_path(current_user, commentable_id: commentable.id, commentable_type: commentable.class) do |c| %>
 <%= c.input :body, as: :text, label: false %>
-<%= c.submit "Add Comment" %>
+<%= c.submit "Add Comment", class: " btn-info"%>
 <% end %>

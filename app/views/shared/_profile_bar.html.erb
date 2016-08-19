@@ -7,7 +7,15 @@
             <span class="btn-group pull-right"><%= friending_link(@user) %></span>
         </div>
     </div>
-    <div id="profile-pic"></div>
+    <div id="profile-pic">
+
+    <% if @user.profile_pic.empty? %>
+        <%= image_tag "lion.png"%>
+    <% else %>
+        <%= image_tag @user.profile_pic %>
+    <% end %>
+    </div>
+
     <div class="col-sm-12" id="banner"></div>
     <div id="cover-nav">
         <div class="col-sm-2 pull-down"></div>

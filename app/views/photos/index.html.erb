@@ -4,8 +4,11 @@
     <div class="col-sm-8 col-sm-offset-2">
       <% if @user == current_user %>
         <div class="row">
+          <div class="col-sm-8 col-sm-offset-2">
             <%= button_to "Add Photo", new_user_photo_path(current_user), method: :get, class: "btn btn-secondary btn-sm pull-right" %>
         </div>
+      </div>
+      <br>
       <% end %>
         <% @photos.each do |photo| %>
         <div class="image">

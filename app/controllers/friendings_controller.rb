@@ -5,10 +5,10 @@ class FriendingsController < ApplicationController
   end
 
   def create
-    current_user = User.find(params[:current_user_id])
-    friending_recipient = User.find(params[:id])
-    if current_user.friended_users << friending_recipient
-      flash[:success] = "Successfully friended #{friending_recipient.name}"
+    curr_user = User.find(current_user.id)
+    friending_recipient = User.find(params[:user_id])
+    if curr_user.friended_users << friending_recipient
+      flash[:success] = "Successfully friended #{friending_recipient.username}"
       redirect_to friending_recipient
     else
       flash[:error] = "Failed to friend!  Sad :("
@@ -17,13 +17,14 @@ class FriendingsController < ApplicationController
   end
 
   def destroy
-
-    current_user = User.find(params[:current_user_id])
-    unfriended_user = User.find(params[:id])
-
-    current_user.friended_users.delete(unfriended_user)
-    flash[:success] = "Successfully unfriended"
-    redirect_to current_user
+    @friending = Friending.find_by_friend_id(params[:id])
+    if @friending
+      @friending.destroy
+      flash[:success] = "HSe's your bitch now"
+      redirect_to user_friendings_path(current_user)
+    else
+      flash[:alert] = "Couldn't unfriend him, try blocking him eh."
+      render :index
+    end
   end
-
 end

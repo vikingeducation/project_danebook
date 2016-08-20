@@ -1,0 +1,48 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<div class="jumbotron" id="big-body">
+  <div class="main">
+    <div class="container">
+      <div class= "row">
+        <div class ="row header-bar">  
+          <h1>Friends</h1>
+        </div>
+      </div> 
+    <div class="row row-eq-height">
+      <div class="row">
+        <% @users.each do |user| %>  
+          <div class="col-xs-6"> 
+            <div class="container" id="friends">
+              <div class="row row-eq-height">
+                <div class="col-xs-3">
+                  <img alt="friend_picture" src="./img/emmawastonhermione.jpg">
+                </div>
+                <div class="col-xs-5">
+                  <u><a href="#"> <%= user.username %> </a></u>
+                  <span id="helpBlock" class="help-block"> <%= user.friended_users.count %> </span>
+                  <span>&nbsp</span>
+                </div>  
+                <div class="col-xs-4">
+                  <% if current_user.friended_users.include?(user) %>
+                    <button type="button" class="btn btn-primary btn-sm"><%= link_to "UN-Friend", friending_path(current_user.friended_users.find(user.id)), method: :delete %></button>
+                  <% else %>
+                    <button type="button" class="btn btn-primary btn-sm"><%= link_to "Friend", user_friendings_path(user), method: :create %></button>
+                  <% end %>
+                </div>     
+              </div>
+            </div>
+          </div>
+        <% end %>
+    </div>
+  </div>
+</div>

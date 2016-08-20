@@ -40,6 +40,7 @@ class UsersController < ApplicationController
       @user.update(activated: true)
       @user.reload
       queue_welcome_email(@user)
+      queue_recommended_friends_email(@user)
       flash[:info] = 'You have been sent an email.'
       redirect_to root_url
     else
@@ -98,7 +99,13 @@ class UsersController < ApplicationController
     end
 
     def queue_welcome_email(user)
-      UserWelcomeJob.set(wait: 5.seconds).perform_later(user)
+      # UserWelcomeJob.set(wait: 5.seconds).perform_later(user)
+      UserWelcomeJob.perform_later(user)
+    end
+
+    def queue_recommended_friends_email(user)
+      # UserWelcomeJob.set(wait: 5.seconds).perform_later(user)
+      RecommendedFriendsJob.set(wait: 2.seconds).perform_later(user)
     end
 
     # Setting a user before specific actions.

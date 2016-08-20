@@ -55,3 +55,9 @@ The User is what one would normally expect it be: a container for account inform
 
 
 Common social network activities such as posts, comments, and likes each point to the author thereof. A User can make a Post, make a Comment to a Post, and like either of the two. This was made possible by utilizing ActiveRecord's polymorphic relationships. For example, the polymorphic identifier 'commentable' allows the Comment to point to any other resource without having to know what that resource is. The same is true with the Like and the 'likeable' identifier. So a Comment can belong to a Post that is designated as a 'commentable' resource: it is something that can be commented on. Likewise, a comment can also belong to another comment marked as a 'commentable': the target comment is something that can be commented on, as well. A like can belong to a Post or a Comment; it really doesn't matter which it is referring to since they're both designated with the 'likeable' identifier.
+
+
+### ACTIVE JOBS ###
+
+
+Originally, the project solely utilized ActiveMailer for sending email for account activation and password resets. These features have been put on the backburner, for now. This is because I am currently in the process of experimenting with ActiveJobs: a Rails feature that allows a developer to queue up tasks to be performed at some point in the future. My goal is to queue and schedule emails recommending friends and new things to try out in the web app every now and then. So for now, the user's account is activated immediately upon signing up.

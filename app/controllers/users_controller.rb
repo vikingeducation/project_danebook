@@ -14,6 +14,7 @@ class UsersController < ApplicationController
     @profile = @user.build_profile(profile_params)
     if @user.save && @profile.save
       sign_in(@user)
+      UserMailer.welcome(@user).deliver!
       flash.notice = "User created."
       redirect_to user_profile_path(@user)
     else
@@ -25,7 +26,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:user_id])
+    @user = User.find(params[:id])
     @profile = @user.profile
     @post = @user.posts.build
     @comment = Comment.new

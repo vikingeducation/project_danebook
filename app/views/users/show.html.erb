@@ -46,7 +46,7 @@
 
         <div class="col-xs-4">
           <%= image_tag 'user_silhouette_generic.gif', class:"ph-preview" %>
-          <%= link_to friend.profile.name, user_timeline_path(friend), style: "margin-left: 12px" %>
+          <%= link_to friend.profile.name, user_path(friend), style: "margin-left: 12px" %>
         </div>
 
         <% end %>
@@ -98,17 +98,15 @@
       </div>
       <div class="row post-comment">
         <div class="col-xs-2">
-          <% unless current_user.like_exist?(post) %>
-            <%= link_to "#{post.likes.count} Like(s)", user_likes_path(current_user, post), method: :post %>
+          <% unless current_user.like_exist?(post, "Post") %>
+            <%= link_to "#{post.likes.count} Like(s)", post_likes_path(post), method: :post %>
           <% else %>
-            <%= link_to "Unlike", user_like_path(current_user, current_user.find_like(post).first), method: :delete %>
+            <%= link_to "Unlike", post_like_path(current_user.find_like(post, "Post").first), method: :delete %>
           <% end %>
         </div>
-        <div class="col-xs-1">
-          <a href="timeline.html">Comment</a>
-        </div>
+        
         <% if current_user == @user %>
-        <div class="col-xs-1 col-xs-offset-7">
+        <div class="col-xs-1 col-xs-offset-8">
           <%= link_to "Delete", user_post_path(@user, post), method: :delete, style: "margin-left: 10px" %>
         </div>
         <% end %>
@@ -140,8 +138,9 @@
 
       <% end %>
 
-        <%= form_for [current_user, @comment] do |f| %>
-        <%= f.hidden_field :post_id, :value => post.id %>
+      <%= form_for [current_user, @comment] do |f| %>
+        <%= f.hidden_field :commentable_id, :value => post.id %>
+        <%= f.hidden_field :commentable_type, :value => "Post" %>
 
         <div class="row comment-next">
           <div class="col-xs-12">

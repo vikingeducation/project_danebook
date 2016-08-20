@@ -10,8 +10,61 @@
   <div class="row content-space">
     <br>
     <div class="col-xs-9 col-xs-offset-3">
-      <%= image_tag @photo.image.url %>
+      <% if current_user == @user %>
+      <p><%= link_to "Set as Profile Photo", profile_photo_profile_path(@photo) %> |
+         <%= link_to "Set as Cover Photo", cover_photo_profile_path(@photo)%> | 
+         <%= link_to "Remove Photo", user_photo_path(@photo), method: :delete %></p> 
+      <% end %>
+      <%= image_tag @photo.image.url %><br>
+      <% unless current_user.like_exist?(@photo, "Photo") %>
+        <%= link_to "#{@photo.likes.count} Like(s)", photo_likes_path(@photo), method: :post %>
+      <% else %>
+        <%= link_to "Unlike", photo_like_path(current_user.find_like(@photo, "Photo").first), method: :delete %>
+      <% end %>
+
+      <% unless @photo.likes.empty? %>
+      <div class="row post-like">
+        <div class="col-xs-12">
+          <p><%= @photo.like_list %> likes this</p>
+        </div>
+      </div>
+    <% end %>
+
+    <% @photo.comments.each do |comment| %>
+
+      <div class="row comment-post">
+        <div class="col-xs-1 pic">
+          <%= image_tag 'user_silhouette_generic.gif', class: "poster-pic2" %>
+        </div>
+        <div class="col-xs-11 name">
+          <p class="poster2"><%= comment.user.profile.name %> said on <%= comment.created_at.strftime("%m/%d/%Y") %></p>
+          <p class="poster2"><%= comment.body %></p>
+          <% if current_user == comment.user %>
+            <%= link_to "Remove Comment", user_comment_path(current_user, comment), method: :delete, class: "poster2" %>
+          <% end %>
+        </div>
+      </div>
+
+      <% end %>
+
+      <%= form_for [current_user, @comment] do |f| %>
+        <%= f.hidden_field :commentable_id, :value => @photo.id %>
+        <%= f.hidden_field :commentable_type, :value => "Photo" %>
+
+        <div class="row comment-next">
+          <div class="col-xs-12">
+            <%= f.text_area :body, size: "72x4", placeholder: "Write a comment.", style: "margin-top: 5px" %>
+          </div>
+        </div>
+
+        <div class="row next-submit">
+          <div class="col-xs-2 col-xs-offset-5">
+            <%= f.submit "Comment", class: "btn btn-primary btn-sm submit-button" %>
+          </div>
+        </div>
+
+      <% end %>
+
     </div>
-    <br>
   </div>
 </div>

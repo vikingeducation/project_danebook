@@ -1,0 +1,7 @@
+<h1>A comment has been added.</h1>
+
+<p>A new comment has been posted by <%= @writer.profile.name %> on your <%= @comment.commentable_type %>.</p>
+
+<p>Comment: <%= @comment.body %></p>
+
+<p>View your account at <%= link_to "#{user_url(@user.id)}", user_url(@user.id) %></p>

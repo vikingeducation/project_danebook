@@ -1,0 +1,8 @@
+class AddCoverAndPhotoToProfile < ActiveRecord::Migration[5.0]
+  def change
+
+    add_column :profiles, :profile_photo_id, :integer
+    add_column :profiles, :cover_id, :integer
+
+  end
+end

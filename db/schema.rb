@@ -10,17 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160818223638) do
+ActiveRecord::Schema.define(version: 20160819232659) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "comments", force: :cascade do |t|
     t.integer  "user_id"
-    t.integer  "post_id"
     t.text     "body"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+  end
+
+  create_table "delayed_jobs", force: :cascade do |t|
+    t.integer  "priority",   default: 0, null: false
+    t.integer  "attempts",   default: 0, null: false
+    t.text     "handler",                null: false
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
   end
 
   create_table "friendings", force: :cascade do |t|
@@ -32,9 +48,10 @@ ActiveRecord::Schema.define(version: 20160818223638) do
 
   create_table "likes", force: :cascade do |t|
     t.integer  "user_id"
-    t.integer  "post_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.integer  "likeable_id"
+    t.string   "likeable_type"
   end
 
   create_table "photos", force: :cascade do |t|
@@ -67,6 +84,8 @@ ActiveRecord::Schema.define(version: 20160818223638) do
     t.string   "telephone",         default: ""
     t.text     "words_to_live_by",  default: ""
     t.text     "about_me",          default: ""
+    t.integer  "profile_photo_id"
+    t.integer  "cover_id"
   end
 
   create_table "users", force: :cascade do |t|

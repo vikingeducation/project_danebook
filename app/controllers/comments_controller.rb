@@ -1,9 +1,10 @@
 class CommentsController < ApplicationController
 
   def create
-    @user = User.find(params[:user_id])
-    @user.comments.build(comment_params)
-    if @user.save
+    @comment = current_user.comments.build(comment_params)
+    if @comment.save
+      @user = @comment.commentable.user
+      Comment.delay(run_at: 5.seconds.from_now).send_notification(@user.id, @comment.id)
       flash.notice = "Comment created."
       redirect_back(fallback_location: current_user)
     else
@@ -13,8 +14,7 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @user = User.find(params[:user_id])
-    @comment = @user.comments.find(params[:id])
+    @comment = current_user.comments.find(params[:id])
     if @comment.destroy
       flash.notice = "Comment deleted."
       redirect_back(fallback_location: current_user)
@@ -27,7 +27,7 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:body, :post_id)
+    params.require(:comment).permit(:body, :commentable_id, :commentable_type)
   end
 
 end

@@ -17,10 +17,10 @@ class PostsController < ApplicationController
     @post = @user.posts.find(params[:id])
     if @post.destroy
       flash.notice = "Post deleted."
-      redirect_to user_timeline_path(@user)
+      redirect_to user_path(@user)
     else
       flash.notice = "Error. Post not deleted."
-      redirect_to user_timeline_path(@user)
+      redirect_to user_path(@user)
     end
   end
 

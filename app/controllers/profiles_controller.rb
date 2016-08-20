@@ -20,6 +20,18 @@ class ProfilesController < ApplicationController
     redirect_to user_profile_path(@user)
   end
 
+  def photo
+    current_user.profile.profile_photo_id = params[:format].to_i
+    current_user.profile.save
+    redirect_to user_path(current_user)
+  end
+
+  def cover
+    current_user.profile.cover_id = params[:format].to_i
+    current_user.profile.save
+    redirect_to user_path(current_user)
+  end
+
   private
 
   def profile_params

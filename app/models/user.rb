@@ -36,12 +36,20 @@ class User < ApplicationRecord
     save!
   end
 
-  def find_like(post)
-    likes.where("post_id = ?", post.id)
+  def find_like(obj, type)
+    likes.where("likeable_id = ? AND likeable_type = ?", obj.id, type)
   end
 
-  def like_exist?(post)
-    !find_like(post).empty?
+  def like_exist?(obj, type)
+    !find_like(obj, type).empty?
+  end
+
+  def self.get_profile_photo(user)
+    Photo.find(user.profile.profile_photo_id)
+  end
+
+  def self.get_cover_photo(user)
+    Photo.find(user.profile.cover_id)
   end
 
 end

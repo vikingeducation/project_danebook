@@ -1,8 +1,8 @@
 class LikesController < ApplicationController
 
   def create
-    @user = User.find(params[:user_id])
-    @like = @user.likes.build(post_id: params[:format])
+    @user = current_user
+    @like = @user.likes.build(likeable_id: param_type_id, likeable_type: params[:likeable])
     if @like.save
       flash.notice = "Like added."
       redirect_back(fallback_location: current_user)
@@ -13,8 +13,7 @@ class LikesController < ApplicationController
   end
 
   def destroy
-    @user = User.find(params[:user_id])
-    @like = Like.find(params[:id])
+    @like = Like.find(param_type_id)
     if @like.destroy
       flash.notice = "Unliked."
       redirect_back(fallback_location: current_user)
@@ -22,6 +21,12 @@ class LikesController < ApplicationController
       flash.notice = "Error. Still liking post."
       redirect_back(fallback_location: current_user)
     end
+  end
+
+  private
+
+  def param_type_id
+    params[:post_id] || params[:photo_id]
   end
 
 end

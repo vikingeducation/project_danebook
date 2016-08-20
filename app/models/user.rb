@@ -13,7 +13,7 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :profile
 
   has_many :posts
-
+  has_many :photos
   has_many :likes
   has_many :comments
 
@@ -51,5 +51,19 @@ class User < ApplicationRecord
     end
     message
   end
+
+  def profile_pic
+    photos.find_by profile: true
+  end
+
+  def cover_pic
+    photos.find_by cover: true
+  end
+
+  def self.send_welcome_email(id)
+    user = User.find(id)
+    UserMailer.welcome(user).deliver
+  end
+
 
 end

@@ -1,0 +1,39 @@
+<div class="container-fluid about-page">
+  <%= render :partial => "static_pages/main_nav", :locals => {profile: @profile} %>
+  <!--main photo-->
+   <%= render :partial => "static_pages/main_photo", :locals=>{:profile=> @profile, :user => @user} %>
+  
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      
+      <!--middle navigation-->
+     <%= render :partial => "static_pages/middle_nav", :locals => {:page=>"photos", :user => @user} %>
+<!--Main box-->
+    <div class="row friend-container">
+      <div class="col-md-12">
+        <div class="row friend-header">
+          <div class="col-md-12">
+        Photos
+        </div>
+      </div>
+    </div>
+    <!--Row 1-->
+  <% if authorized_user? %>
+    <div class="row">
+      <div class="col-md-6">
+         <%= render :partial => "photo_form", :locals => {photo: @photo, user: @user} %>
+      </div>
+    </div>
+  <% end %>
+  <% @photos.each_with_index do |photo, idx| %>
+    <% unless photo.id == nil %>
+    <%= before_photo(idx) %>
+      <div class="col-md-3">
+        <%= link_to image_tag(photo.avatar.url(:thumb), class: "img-responsive"), user_photo_path(@user,photo),{title: "Updated #{photo.date}", class: "thumbnail"} %>
+      </div>
+    <%= after_photo(idx, @photos) %>
+    <% end %>
+  <% end %>
+  </div><!--end main box-->
+</div>
+</div>

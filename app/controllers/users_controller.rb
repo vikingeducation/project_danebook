@@ -16,6 +16,7 @@ class UsersController < ApplicationController
     
     if @user.save
       sign_in(@user)
+      User.delay(run_at: 10.seconds.from_now).send_welcome_email(@user.id)
       flash[:success] = "Created new user!"
       redirect_to user_path(@user)
     else

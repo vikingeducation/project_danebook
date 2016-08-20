@@ -16,5 +16,6 @@ class Profile < ApplicationRecord
     end
     message
   end
+
   
 end

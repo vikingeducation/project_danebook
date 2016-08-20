@@ -8,6 +8,12 @@ Rails.application.routes.draw do
   resources :users do
     resources :posts
     resources :friends, :only => [:index]
+    resources :photos, :only => [:index,:create, :show, :destroy]
+  end
+  resources :photos, :only => [:update]
+  resources :photos, :only => [] do
+    resources :likes, :only=>[:create,:destroy]
+    resources :comments, :only=>[:create, :destroy]
   end
   resources :posts, :only=>[] do
     resources :likes, :only=>[:create,:destroy]

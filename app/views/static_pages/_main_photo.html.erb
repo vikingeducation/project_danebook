@@ -1,11 +1,19 @@
-   <div class="row">
-    <div class="col-md-12 cover-photo">
-      <%= image_tag "hogwarts_small.jpg", alt:"hogwarts" %>
-      <div id="profile-pic">
+<div class="row">
+ <div class="col-md-12 cover-photo">
+  <% if user.cover_pic %>
+    <%= image_tag user.cover_pic.avatar.url(:cover), alt: "cover" %>
+  <% else %>
+    <%= image_tag "hogwarts_small.jpg", alt:"hogwarts" %>
+  <% end %>
+    <div id="profile-pic">
+      <% if user.profile_pic %>
+        <%= image_tag user.profile_pic.avatar.url(:profile), alt: "profile", class: "img-responsive img-thumbnail" %>
+      <% else %>
         <%= image_tag "harry_potter_small.jpg", alt: "profile picture", class: "img-responsive img-thumbnail" %>
-      </div>
-      <div id="big-profile-name">
-        <h3><%= @profile.full_name %></h3>
-      </div>
+      <% end %>
+    </div>
+    <div id="big-profile-name">
+      <h3><%= profile.full_name %></h3>
+    </div>
   </div>
-  </div>
+</div>

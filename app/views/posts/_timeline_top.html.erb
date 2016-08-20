@@ -1,7 +1,7 @@
 <div class="container-fluid about-page">
   <%= render :partial => "static_pages/main_nav", :locals => {profile: profile} %>
   <!--main photo-->
-<%= render :partial => "static_pages/main_photo", :locals=>{:profile=> profile} %>
+<%= render :partial => "static_pages/main_photo", :locals=>{:profile=> profile, :user => user} %>
   
 <div class="row">
   <div class="col-md-10 col-md-offset-1">
@@ -55,50 +55,27 @@
       <div class="col-md-12">
         <div class="row box-header">
           <div class="col-md-12">
-            <h4 class="box-title centered-text">Photos (123)</h4>
+            <h4 class="box-title centered-text">Photos (<%= user.photos.count %>)</h4>
           </div>
         </div>
         <!--Row 1-->
         <div class="row">
-          <div class="col-md-4"><a href="#">
-            <%= image_tag "icon_photo_small.png", alt: "photo", class: "img-responsive" %>
-            </a></div>
-          <div class="col-md-4"><a href="#"> 
-            <%= image_tag "icon_photo_small.png", alt: "photo", class: "img-responsive" %>
-          </a></div>
-          <div class="col-md-4"><a href="#">
-             <%= image_tag "icon_photo_small.png", alt: "photo", class: "img-responsive" %>
-          </a></div>
-        </div><!--Row 1 end-->
-        <!--Row 2-->
-        <div class="row">
-          <div class="col-md-4"><a href="#">
-            <%= image_tag "icon_photo_small.png", alt: "photo", class: "img-responsive" %>
-          </a></div>
-         <div class="col-md-4"><a href="#">
-            <%= image_tag "icon_photo_small.png", alt: "photo", class: "img-responsive" %>
-          </a></div>
-         <div class="col-md-4"><a href="#">
-            <%= image_tag "icon_photo_small.png", alt: "photo", class: "img-responsive" %>
-          </a></div>
-        </div><!--Row 2 end-->
-        <!--Row 3-->
-        <div class="row">
-         <div class="col-md-4"><a href="#">
-            <%= image_tag "icon_photo_small.png", alt: "photo", class: "img-responsive" %>
-          </a></div>
-          <div class="col-md-4"><a href="#">
-            <%= image_tag "icon_photo_small.png", alt: "photo", class: "img-responsive" %>
-          </a></div>
-         <div class="col-md-4"><a href="#">
-            <%= image_tag "icon_photo_small.png", alt: "photo", class: "img-responsive" %>
-          </a></div>
-        </div><!--Row 3 end-->
-      <!--Row 4-->
-      <div class="row centered-text">
-        <button type="button" class="btn btn-link"><a href="photos.html">See more photos</a></button>
-      </div><!--Row 4 end-->
-    </div>
+          <% pics = [6, user.photos.count].min %>
+          <% (0..pics-1).each do |idx| %>
+          <div class="col-md-4">
+            <% photo = user.photos[idx] %>
+            <%= link_to image_tag(photo.avatar.url(:thumb), class: "img-responsive"), user_photo_path(user,photo),{title: "Updated #{photo.date}", class: "thumbnail"} %>
+          </div>
+          <% end %>
+        </div>
+        <% if user.photos.count > 6 %>
+        <div class="row centered-text">
+          <button type="button" class="btn btn-link">
+            <%= link_to "See more photos", user_photos_path(user) %>
+           </button>
+      </div>
+      <% end %>
+       </div>
     </section>
     <!--Friends Box-->
     <section class="row box-border">
@@ -115,21 +92,33 @@
           <!-- begin the row -->
           <div class="row">  
             <div class="col-md-4">
+              <% if friend.profile_pic %>
+              <%= image_tag friend.profile_pic.avatar.url(:comment), alt: "photo", class: "img-responsive" %>
+              <% else %>
               <%= image_tag "wizard_hat.png", alt:"photo", class: "img-responsive" %></a>
+              <% end %>
               <%= link_to friend.profile.full_name, friend, class: "btn btn-link wrap-text" %>
             </div>
           
           <% elsif idx == 2 || idx == 5 %>
            <!-- close the row -->
            <div class="col-md-4">
+             <% if friend.profile_pic %>
+              <%= image_tag friend.profile_pic.avatar.url(:comment), alt: "photo", class: "img-responsive" %>
+              <% else %>
               <%= image_tag "wizard_hat.png", alt:"photo", class: "img-responsive" %></a>
+              <% end %>
               <%= link_to friend.profile.full_name, friend, class: "btn btn-link wrap-text" %>
             </div>
           </div>
           <% elsif idx >= 6 %>
           <% else %>
           <div class="col-md-4">
-            <%= image_tag "wizard_hat.png", alt:"photo", class: "img-responsive" %></a>
+            <% if friend.profile_pic %>
+              <%= image_tag friend.profile_pic.avatar.url(:comment), alt: "photo", class: "img-responsive" %>
+              <% else %>
+              <%= image_tag "wizard_hat.png", alt:"photo", class: "img-responsive" %></a>
+              <% end %>
             <%= link_to friend.profile.full_name, friend, class: "btn btn-link wrap-text" %>
           </div>
           <% end %>

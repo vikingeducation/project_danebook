@@ -1,7 +1,7 @@
 <div class="container-fluid about-page">
   <%= render :partial => "static_pages/main_nav", :locals => {profile: @profile} %>
   <!--main photo-->
- <%= render :partial => "static_pages/main_photo", :locals=>{:profile=> @profile} %>
+ <%= render :partial => "static_pages/main_photo", :locals=>{:profile=> @profile, :user => @user} %>
   
   <div class="row">
     <div class="col-md-10 col-md-offset-1">

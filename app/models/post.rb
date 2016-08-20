@@ -2,7 +2,7 @@ class Post < ApplicationRecord
   belongs_to :user
   validates :body, presence: true
   has_many :likes, as: :likeable
-  has_many :comments
+  has_many :comments, :as => :commentable
 
   accepts_nested_attributes_for :comments
 

@@ -7,9 +7,11 @@
         <% posts.each do |post| %>
         <% if post.id %>
         <div class="post-box">
-          <a href="about.html">
-            <%= image_tag "harry_potter_small.jpg", alt: "harry picture", class: "side-image, small-image" %>
-          </a>
+        <% if post.user.profile_pic %>
+        <%= image_tag post.user.profile_pic.avatar.url(:comment), alt: "friend's picture", class:  "side-image small-image" %>
+        <% else %>
+        <%= image_tag "wizard_hat.png", alt:"friend's picture", class: "side-image small-image" %>
+        <% end %>
           <div class="side-text small-text">
             <p>
               <%= link_to post.user.profile.full_name, user_path(post.user) %>
@@ -39,7 +41,11 @@
       </div>
       <% post.comments.each do |comment| %>
         <div class="like-comment-container comment-border-grey">
+        <% if comment.user.profile_pic %>
+        <%= image_tag comment.user.profile_pic.avatar.url(:comment), alt: "friend's picture", class:  "side-image small-image" %>
+        <% else %>
         <%= image_tag "wizard_hat.png", alt:"friend's picture", class: "side-image small-image" %>
+        <% end %>
         <div class="side-text small-text">
         <p class="comment-format">
           <%= link_to comment.user.profile.full_name, comment.user %>

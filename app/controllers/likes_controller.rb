@@ -7,13 +7,27 @@ class LikesController < ApplicationController
       @user = @post.user
       @like = @post.likes.build(:user_id => current_user.id)
     #if its for a comment
-    else
+    elsif params[:comment_id]
       @comment = Comment.find(params[:comment_id])
-      @user = @comment.post.user
       @like = @comment.likes.build(:user_id => current_user.id)
+      #if its for a photo
+    else
+      @photo = Photo.find(params[:photo_id])
+      @user = @photo.user
+      @like = @photo.likes.build(:user_id => current_user.id)
     end
     @like.save
-    redirect_to user_posts_path(@user)
+    if params[:post_id]
+      redirect_to user_posts_path(@user)
+    elsif params[:comment_id] && @comment.commentable_type == "Post"
+      @user = @comment.commentable.user
+      redirect_to user_posts_path(@user)
+    elsif params[:comment_id] && @comment.commentable_type == "Photo"
+      @photo = @comment.commentable
+      redirect_to photo_path(@photo)
+    else
+      redirect_to photo_path(@photo)
+    end
   end
 
   def destroy
@@ -22,13 +36,26 @@ class LikesController < ApplicationController
       @post = Post.find(params[:post_id])
       @user = @post.user
     #if its for a comment
-    else
+    elsif params[:comment_id]
       @comment = Comment.find(params[:comment_id])
-      @user = @comment.post.user
+    #if its for a photo
+    else
+      @photo = Photo.find(params[:photo_id])
+      @user = @photo.user
     end
     @like = Like.find(params[:id])
     @like.destroy
-    redirect_to user_posts_path(@user)
+    if params[:post_id] 
+      redirect_to user_posts_path(@user)
+    elsif params[:comment_id] && @comment.commentable_type == "Post"
+       @user = @comment.post.user
+       redirect_to user_posts_path(@user)
+    elsif params[:comment_id] && @comment.commentable_type == "Photo"
+      @photo = @comment.commentable
+      redirect_to photo_path(@photo)
+    else
+      redirect_to photo_path(@photo)
+    end
   end
 
 end

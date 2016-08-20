@@ -37,8 +37,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def authorized_user?
-    if params[:user_id]
+  def authorized_user?(user = nil)
+    if user
+      user.id == current_user.id
+    elsif params[:user_id]
       params[:user_id]==current_user.id.to_s
     else
       params[:id]==current_user.id.to_s

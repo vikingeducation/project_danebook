@@ -2,6 +2,10 @@ Rails.application.routes.draw do
 
 
 
+  get 'profile_picture/create'
+
+  get 'profile_picture/destroy'
+
   root "static_pages#home"
 
   resource :session, :only => [:create, :destroy, :new]
@@ -20,11 +24,14 @@ Rails.application.routes.draw do
     
     resources :friendships, :only => [:create, :destroy]
 
-    resources :photos, :only => [:create, :new, :index, :show, :destroy]
-
+    resources :photos, :only => [:create, :new, :index, :show, :destroy] do 
+      resources :cover_photo, :only => [:create, :destroy]
+      resources :profile_picture, :only => [:create, :destroy]
+    end
 
 
   end
+
 
 
   resources :posts, :only => [:show] do 

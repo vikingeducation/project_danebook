@@ -4,7 +4,9 @@
       <h1 id="about-header">Photos</h1> 
     </div>
     <div class="col-xs-2 col-xs-offset-3 content-center">
-      <%= link_to "Add Photo!", new_user_photo_path(current_user), id: "edit-button" %>
+      <% if current_user == @page_owner %>
+        <%= link_to "Add Photo!", new_user_photo_path(current_user), id: "edit-button" %>
+      <% end %> 
     </div>
   </header>
   <div class="row photos-main">

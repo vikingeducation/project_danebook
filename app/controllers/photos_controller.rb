@@ -19,7 +19,7 @@ class PhotosController < ApplicationController
   end
 
   def index
-    @photos = current_user.photos
+    @photos = @page_owner.photos
   end
 
   def show

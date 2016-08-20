@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   # before_action :require_login
 
   helper_method :current_user
+  helper_method :page_owner
   helper_method :signed_in_user?
 
 

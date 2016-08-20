@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'sessions#new'
+  root 'users#newsfeed'
 
   resource :session, :only => [:new, :create, :destroy]
   get "/login" => "sessions#new"
@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     resource :profile, only: [:show]
     resources :photos, only: [:new, :index, :edit, :show]
     resources :friendings, only: [:index]
+    get 'newsfeed' => "users#newsfeed"
   end
 
   resource :profile, only: [:edit, :update]

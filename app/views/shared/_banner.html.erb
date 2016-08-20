@@ -26,7 +26,7 @@
         <li role="presentation" class="<%= params[:controller] == 'profiles' ? "active-tab" : "" %>"><%= link_to "About", user_profile_path(user) %></li>
         <li role="presentation" class="<%= params[:controller] == 'photos' ? "active-tab" : "" %>">
           <%= link_to user_photos_path(user.id) do %>
-            Photos <span>(<%= user.photo_count %>)</span>
+            Photos <span>(<%# user.photo_count %>)</span>
           <% end %>
         </li>
         <li role="presentation" class="<%= params[:controller] == 'friendings' ? "active-tab" : "" %>"><%= link_to user_friendings_path(user.id) do %>

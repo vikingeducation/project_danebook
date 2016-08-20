@@ -1,4 +1,5 @@
 <%= form_for post.comments.build, url: {action: "create", controller: "comments"} do |f|  %>
+<%# TODO: Add the polymorphic_url for the links %>
   <div class="col-xs-10 col-xs-offset-1">
     <%= f.hidden_field(:commentable_type, value: "#{post.class.to_s}" ) %>
     <%= f.hidden_field(:commentable_id, value: post.id) %>

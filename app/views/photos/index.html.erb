@@ -16,7 +16,9 @@
 		</div>
 		<div class="row">
 			<% @photos.each do |photo| %>
-				<%= render 'photo', photo: photo, user: @user %>
+				<div class="col-sm-4 col-md-3 photo-container">
+					<%= render 'photo', photo: photo, user: @user %>
+				</div>
 			<% end %>
 		</div><!-- Photo Wrapper -->
 	</div><!-- Contentt Section -->

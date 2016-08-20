@@ -11,6 +11,14 @@ class Post < ActiveRecord::Base
             :length => {in: 1..800}
 
   def self.to_s
-    "Post"
+    "post"
+  end
+
+  def to_s
+    "posts"
+  end
+
+  def self.activity(users_friends)
+    joins("JOIN postings ON postings.postable_id = posts.id").where(postings: {postable_type: "Post", user_id: [users_friends]})
   end
 end

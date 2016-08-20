@@ -3,6 +3,13 @@ class ApplicationController < ActionController::Base
 
   private
 
+    def require_current_user
+      unless current_user == User.find(params[:id])
+        flash[:error] = "Access denied!!!"
+        redirect_to root_path
+      end
+    end
+
     def require_login
       unless signed_in_user?
         flash[:error] = "You need to sign in to view this"

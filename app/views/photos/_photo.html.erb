@@ -1,9 +1,7 @@
-<div class="col-sm-4 col-md-3 photo-container">
-  <figure>
-    <%= link_to user_photo_path(user, photo) do %>
-      <%= image_tag( photo.file.url :medium, class: "friend-img") %></a>
-    <% end %>
-    <figcaption class="photo-date">Uploaded <%= photo.created_at.strftime('%b %d, %Y') %></figcaption>
-    <%# FIXME: fix styling for photos %>
-  </figure>
-</div>
+<figure>
+  <%= link_to user_photo_path(user, photo) do %>
+    <%= image_tag( photo.file.url :medium, class: "friend-img") %></a>
+  <% end %>
+  <figcaption class="photo-date">Uploaded <%= photo.created_at.strftime('%b %d, %Y') %></figcaption>
+  <%# FIXME: fix styling for photos %>
+</figure>

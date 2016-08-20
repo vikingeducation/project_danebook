@@ -26,6 +26,7 @@ class User < ActiveRecord::Base
 
   before_create :generate_token
   after_create :create_profile
+  after_create { send_welcome_email(self.id) }
 
   has_secure_password
 
@@ -74,5 +75,13 @@ class User < ActiveRecord::Base
   def photo_count
     self.photo_posts.count
   end
+
+  private
+
+    def send_welcome_email(id)
+      user = User.find_by_id(id)
+      UserMailer.welcome(user).deliver!
+    end
+    handle_asynchronously :send_welcome_email
 
 end

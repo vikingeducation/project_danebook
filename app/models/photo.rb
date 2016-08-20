@@ -1,5 +1,6 @@
 class Photo < ActiveRecord::Base
   belongs_to :user
+  has_many :user, dependent: :nullify
   has_many :postings, as: :postable
   has_many :likes, :as => :likeable
   has_many :likers, through: :likes, source: :user
@@ -12,6 +13,14 @@ class Photo < ActiveRecord::Base
   validates_attachment_content_type :file, :content_type => /\Aimage\/.*\Z/
 
   def self.to_s
-    "Photo"
+    "photo"
+  end
+
+  def to_s
+    "photos"
+  end
+
+  def self.activity(users_friends)
+    joins("JOIN postings ON postings.postable_id = photos.id").where(postings: {postable_type: "Photo", user_id: [users_friends]})
   end
 end

@@ -1,6 +1,6 @@
 <div class="col-md-12">
   <% image = image_url(user.profile.cover.url) %>
-  <%= content_tag :div, class: 'jumbotron', style: "background: url(#{image})" do %>
+  <%= content_tag :div, class: 'jumbotron', style: "  height: 300px; background: url(#{image}); background-size: cover; margin: 15px -15px -15px;" do %>
     <div class="masthead">
       <%= 
         image = image_tag user.avatar.url, class: "headshot", height: "128px", width: "128px"
@@ -21,7 +21,6 @@
       </div>
 
       <%= link_to('Account Management', edit_user_path(user), id: "masthead-edit-profile", class: "btn btn-primary btn-md") if user_check %>
-
     </div>
   <% end %>
 </div>

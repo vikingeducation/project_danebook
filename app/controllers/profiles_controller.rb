@@ -23,11 +23,6 @@ class ProfilesController < ApplicationController
     end
   end
 
-  def friends
-    flash[:notice] = "have yet to implement"
-    redirect_to user_profiles_path(current_user)
-  end
-
   def photos
     flash[:notice] = "have yet to implement"
     redirect_to user_profiles_path(current_user)

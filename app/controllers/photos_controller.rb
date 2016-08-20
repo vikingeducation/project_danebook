@@ -1,13 +1,7 @@
 class PhotosController < ApplicationController
 
-  # photo model have.
-  #  user model belongs_to cover_photo, profile_photo
-  # cover photo id in users table
-  # profile photo id in users table
-
-
+  # create a belongs_to  cover, profile photo for profile. and add migration
   def create
-
     @profile = current_user.profile
     @photo = @profile.build_photo(white_listed_photo_params)
     

@@ -1,7 +1,7 @@
 Danebook
 
 
-[DEMO](danebook-app.herokuapp.com "Danebook Demo")
+[DEMO](danebook-app.herokuapp.com)
 
 
 =====

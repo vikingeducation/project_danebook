@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160819181616) do
+ActiveRecord::Schema.define(version: 20160820210758) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,17 +33,11 @@ ActiveRecord::Schema.define(version: 20160819181616) do
   add_index "addresses", ["country_id"], name: "index_addresses_on_country_id", using: :btree
   add_index "addresses", ["state_id"], name: "index_addresses_on_state_id", using: :btree
 
-  create_table "ar_internal_metadata", primary_key: "key", force: :cascade do |t|
-    t.string   "value"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "birthdays", force: :cascade do |t|
     t.integer  "profile_id"
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
-    t.date     "date_object", default: '1986-08-11'
+    t.date     "date_object", default: '1986-08-20'
   end
 
   add_index "birthdays", ["profile_id"], name: "index_birthdays_on_profile_id", using: :btree
@@ -111,9 +105,8 @@ ActiveRecord::Schema.define(version: 20160819181616) do
     t.integer  "likeable_id"
     t.string   "likeable_type"
     t.integer  "user_id"
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
-    t.integer  "likes_count",   default: 0
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   add_index "likes", ["likeable_type", "likeable_id"], name: "index_likes_on_likeable_type_and_likeable_id", using: :btree
@@ -145,12 +138,16 @@ ActiveRecord::Schema.define(version: 20160819181616) do
   create_table "profiles", force: :cascade do |t|
     t.string   "words"
     t.string   "about"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
     t.string   "first_name"
     t.string   "last_name"
     t.integer  "user_id"
     t.string   "college"
+    t.string   "cover_file_name"
+    t.string   "cover_content_type"
+    t.integer  "cover_file_size"
+    t.datetime "cover_updated_at"
   end
 
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
@@ -205,14 +202,6 @@ ActiveRecord::Schema.define(version: 20160819181616) do
 
   add_index "users", ["friendable_type", "friendable_id"], name: "index_users_on_friendable_type_and_friendable_id", using: :btree
   add_index "users", ["timeline_id"], name: "index_users_on_timeline_id", using: :btree
-
-  create_table "users_practice", id: false, force: :cascade do |t|
-    t.integer  "id"
-    t.string   "name",       limit: 255
-    t.string   "email",      limit: 255
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   add_foreign_key "addresses", "cities"
   add_foreign_key "addresses", "countries"

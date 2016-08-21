@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get '/home'     => 'users#new'
   get '/timeline' => 'posts#index'
   get '/about'    => 'users#show'
-  get '/photos'   => 'static_pages#photos'
+  # get '/photos'   => 'static_pages#photos'
   get '/friends' => 'friendings#index'
   get '/about_edit' => 'users#edit'
 
@@ -11,8 +11,11 @@ Rails.application.routes.draw do
   get '/users/:user_id/about' => 'users#show', as: '/user_about'
   get '/users/:user_id/about_edit' => 'users#edit', as: '/user_about_edit'
   get '/users/:user_id/friends' => 'friendings#index', as: '/user_friends'
+  get '/users/:user_id/photos' => 'photos#index', as: '/user_photos'
 
+  resources :search_results, only: [ :index ]
   resources :users
+  resources :photos
   resources :posts, only: [ :create, :destroy ] do
     resources :likes, shallow: true
     resources :comments

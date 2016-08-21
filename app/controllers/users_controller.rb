@@ -20,7 +20,6 @@ class UsersController < ApplicationController
   end
 
   def edit
-    # raise
     id = params[:user_id] ? params[:user_id] : params[:id]
     if id == current_user.id.to_s
       @user = current_user
@@ -65,6 +64,7 @@ class UsersController < ApplicationController
         :birthday,
         :college,
         :hometown, :currently_lives, :telephone,
-        :words_to_live_by, :about_me])
+        :words_to_live_by, :about_me],
+    )
   end
 end

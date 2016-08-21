@@ -6,6 +6,8 @@ Rails.application.configure do
   # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
 
+  Paperclip.options[:command_path] = '/usr/local/bin'
+
   # Do not eager load code on boot.
   config.eager_load = false
 
@@ -51,4 +53,20 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+
+  config.paperclip_defaults = {
+
+  # Don't forget to make S3 your storage option!
+  :storage => :s3,
+
+
+  :s3_credentials => {
+
+
+    :s3_region => ENV['AWS_REGION'],
+    :bucket => Rails.application.secrets.s3_bucket_name,
+    :access_key_id => Rails.application.secrets.aws_access_key_id,
+    :secret_access_key => Rails.application.secrets.aws_secret_access_key
+  }
+}
 end

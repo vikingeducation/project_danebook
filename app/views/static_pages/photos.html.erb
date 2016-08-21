@@ -4,17 +4,19 @@
 <main >
   <div class = "row">
     <div class="col-xs-10 col-xs-offset-1">
-      <%#= render partial: 'layouts/menu_options', :locals => { user: @user } %>
+      <%= render partial: 'layouts/menu_options', :locals => { user: @user } %>
       <br>
       <div class="row"><!-- begin photos-panel-row -->
         <div class="panel panel-default">
           <div class="panel-heading">
             <h3 class="panel-title col-xs-1 col-xs-offset-5" id="about-panel-title">Photos</h3>
+            <%= link_to "Add Photo", new_photo_path, type: 'button', class: 'btn btn-primary col-xs-offset-3', id: 'add-photo-button' if current_user == @user %>
             <div class="spacer"> </div>
           </div>
           <div class="panel-body">
             <div class="col-xs-12 panel-content">
               <div class="row photos-row"><!-- 1st row -->
+                <%= render partial: 'photos/mini_photo', collection: @photos%>
                 <div class="col-xs-3 photos-pic-container" id="thing">
                   <a href="#" class="photos-pic"><img class="col-xs-12" src='<%= asset_path('hermione.jpg') %>'></a>
                   <div class="pic-date-container col-xs-10 col-xs-offset-1">

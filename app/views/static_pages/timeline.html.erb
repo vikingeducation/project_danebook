@@ -44,7 +44,7 @@
                 <img class="col-xs-4" src='<%= asset_path('hagrid.jpg') %>'>
                 <img class="col-xs-4" src='<%= asset_path('fred.png') %>'>
               </div>
-              <%= link_to 'See More Photos', photos_path, class: 'col-xs-6 col-xs-offset-4 underline' %>
+              <%= link_to 'See More Photos', user_photos_path(@user), class: 'col-xs-6 col-xs-offset-4 underline' %>
             </div>
           </div><!-- end-mini-photos-panel -->
           <div class="panel panel-default"><!-- begin-mini-friends-panel -->
@@ -55,7 +55,7 @@
               <div class="row">
                 <%= render partial: 'friendings/mini_friend', collection: @friends %>
               </div>
-              <%= link_to 'See More Friends', user_friends_path, id: 'see-more-friends', class: 'col-xs-6 col-xs-offset-4 underline' %>
+              <%= link_to 'See More Friends', user_friends_path(@user), id: 'see-more-friends', class: 'col-xs-6 col-xs-offset-4 underline' %>
             </div>
           </div><!-- end-mini-friends-panel -->
         </div><!-- end-left-column-->

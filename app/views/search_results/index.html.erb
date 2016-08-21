@@ -1,0 +1,23 @@
+<main >
+  <div class = "row">
+    <div class="col-xs-10 col-xs-offset-1">
+      <br>
+      <div class="row">
+        <div class="sr-results-statement col-xs-offset-3">
+          <%= content_tag(:p, num_sr_results(@results.count, @search_params), class: 'grey') %>
+        </div>
+        <div class="panel panel-default search-results-panel">
+          <div class="panel-heading">
+            <h3 class="panel-title col-xs-5 col-xs-offset-4 sr-header" >Search Results</h3>
+            <div class="spacer"> </div>
+          </div>
+          <div class="panel-body">
+            <div class="col-xs-12 panel-content">
+              <%= render partial: 'sr_friend', collection: @results %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

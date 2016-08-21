@@ -15,6 +15,14 @@ module StaticPagesHelper
     signed_in_user? ? 'layouts/loggedin_header' : 'layouts/login_header'
   end
 
+  def needs_header?
+    if controller.class == PhotosController
+      return false if action_name == 'new'
+      return false if action_name == 'show'
+    end
+    true
+  end
+
   def construct_like_sentence(likes)
     num = likes.count
     users = likes.map(&:user)
@@ -58,4 +66,15 @@ module StaticPagesHelper
     arr[(mid + 1)..-1]
   end
 
+  def home_button_path
+    current_user ? link_to_timeline : link_to_sign_up
+  end
+
+  def link_to_sign_up
+    new_user_path
+  end
+
+  def link_to_timeline
+    user_timeline_path(current_user)
+  end
 end

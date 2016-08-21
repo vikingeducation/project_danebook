@@ -5,6 +5,7 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :photos, dependent: :destroy
   has_many :recieved_friendings, foreign_key: :friendee, class_name: 'Friending'
   has_many :frienders, through: :recieved_friendings, source: :friending_initiator
 
@@ -58,5 +59,30 @@ class User < ApplicationRecord
     self.auth_token = nil
     generate_token
     save!
+  end
+
+  def self.with_first_names_like(search)
+    search = sanitize_sql_like(search.downcase)
+    search = '%' + search
+    search += '%'
+    User.joins('JOIN profiles ON users.id=user_id').where("first_name ILIKE ?", search)
+  end
+
+  def self.with_last_names_like(search)
+    search = sanitize_sql_like(search.downcase)
+    search = '%' + search
+    search += '%'
+    User.joins('JOIN profiles ON users.id=user_id').where("last_name ILIKE ?", search)
+  end
+
+  def self.with_full_names_like(search)
+    search = sanitize_sql_like(search.downcase)
+    search += '.*'
+    search = '.*' + search
+    User.joins('JOIN profiles ON users.id=user_id').where("CONCAT(first_name, ' ', last_name) ~* ?", search)
+  end
+
+  def self.with_names_like(search)
+    with_first_names_like(search).or(with_last_names_like(search)).or(with_full_names_like(search))
   end
 end

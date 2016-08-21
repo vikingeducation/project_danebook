@@ -12,19 +12,16 @@
            alt="circular danish flag">
     </a>
     <!--company brand link -->
-    <%= link_to new_user_path, class: 'navbar-brand col-xs-12', id: 'brand-link' do %>
-      <p class="col-xs-4 vertical-align" id="brand-text">Danebook</p>
+    <%= link_to home_button_path, class: 'navbar-brand col-xs-12', id: 'brand-link' do %>
+      <p class="col-xs-4 vertical-align" id="brand-text">Spacebook</p>
     <% end %>
   </div>
-  <!-- wraps rest of links to collapse in mobile-->
   <div class="col-xs-12 collapse navbar-collapse">
-    <!-- rows and columns control button placement -->
-    <form class="navbar-form col-xs-8" role="user-search">
-      <!-- Yes, kids, even a form-group can be a column -->
+    <%= form_tag '/search_results', method: :get, class: 'navbar-form col-xs-8', role: 'user-search' do %>
       <div class="form-group col-xs-12">
-        <input type="text" class="form-control col-xs-10" placeholder="Search for Users">
+        <%= search_field_tag :search, '', placeholder: 'Search for Users', class: 'form-control col-xs-10' %>
       </div>
-    </form>
+    <% end %>
     <div class="col-xs-1">
       <div class="row">
         <p id="profile-name">

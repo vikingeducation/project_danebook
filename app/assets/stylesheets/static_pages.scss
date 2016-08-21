@@ -243,10 +243,14 @@ body{
 }
 
 #edit-profile-button, #friend-button,
-#unfriend-button{
+#unfriend-button, #add-photo-button{
     border-right: 3px solid black;
     border-bottom: 2px solid black;
 }
+
+/* #add-photo-button{ */
+/*     margin */
+/* } */
 
 #friend-button,
 #unfriend-button{
@@ -321,6 +325,7 @@ body{
 
 .photos-row{
     margin-bottom: 40px;
+    height: 10%;
 }
 
 .pic-date-container{
@@ -343,6 +348,7 @@ body{
 .pic-date-container:hover{
     display: block;
 }
+
 
 .mini-photos-row,
 .mini-friends-row{

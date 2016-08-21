@@ -63,4 +63,8 @@ describe Profile, type: :model do
       expect(profile.user_id).to be(user.id)
     end
   end
+
+  context "associations" do
+    it { is_expected.to belong_to(:user)}
+  end
 end

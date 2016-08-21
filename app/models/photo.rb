@@ -2,6 +2,7 @@ class Photo < ApplicationRecord
   has_many :users
 
   has_many :postings, as: :postable, dependent: :destroy
+  has_many :authors, through: :postings, source: :user
 
   has_many :comments, :as => :commentable, dependent: :destroy
   has_many :commenters, through: :comments, source: :user

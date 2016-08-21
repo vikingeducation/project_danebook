@@ -1,13 +1,17 @@
 FactoryGirl.define do
   factory :like do
+    user
 
-    trait :post_like do
+    factory :post_like do
       association :likes, factory: :post
     end
-    trait :comment_like do
+
+    factory :photo_like do
+      association :likes, factory: :photo
+    end
+
+    factory :comment_like do
       association :likes, factory: :comment
     end
-    post
-    comment
   end
 end

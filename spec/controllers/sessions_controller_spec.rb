@@ -2,7 +2,16 @@ require 'rails_helper'
 
 describe SessionsController do
 
-  let(:user){ create(:user) }
+  let(:user) { create(:user) }
+  let(:post_create_session) do
+    post :create,
+        :email => user.email,
+        :password => user.password
+  end
+
+  before do
+    user
+  end
 
   context "when user is not signed in" do
     it 'GET #new is login page' do

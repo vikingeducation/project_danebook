@@ -1,19 +1,16 @@
 require 'rails_helper'
 
 describe Post, type: :model do
-  let(:post) { build(:post) }
+  let(:user) { create(:user) }
 
   it 'with a valid description is validd' do
+    post = user.text_posts.create(description: "blah")
     expect(post).to be_valid
   end
 
-  it 'without a first name is invalid' do
-    new_post = build(:post, description: nil)
-    expect(new_post).not_to be_valid
-  end
-
   context "post attribute validations reject unwanted entries" do
-    subject{post}
+    let(:post_two){ user.text_posts.create }
+    subject{post_two}
 
     it 'validates post description is between 1 and 800 characters' do
       should validate_length_of(:description).
@@ -22,16 +19,22 @@ describe Post, type: :model do
   end
 
   context "test assocations with user" do
-    subject{post}
-    let(:user) { build(:user) }
 
-    it { is_expected.to belong_to(:user) }
+    it { is_expected.to have_many(:postings) }
+    it { is_expected.to have_many(:authors) }
 
     it { is_expected.to have_many(:comments) }
+    it { is_expected.to have_many(:commenters) }
 
     it { is_expected.to have_many(:likes) }
+    it { is_expected.to have_many(:likers) }
+  end
 
-    it { is_expected.to have_many(:likers).through(:likes) }
+  context "helper methods" do
+    it 'returns pluralized name of Post class when to_s called on instance' do
+      post = user.text_posts.create(description: "blah")
+      expect(post.to_s).to eq("posts")
+    end
   end
 
 end

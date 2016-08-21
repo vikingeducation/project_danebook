@@ -3,6 +3,10 @@ class Photo < ActiveRecord::Base
   has_many :comments, as: :commentable
   has_many :likes, as: :likeable
 
+  # Cover photo relation
+  has_one :profile_photo
+  has_one :profile, through: :profile_photo
+
   accepts_nested_attributes_for :comments, :likes, allow_destroy: true
 
   def photo_data=(photo_data)

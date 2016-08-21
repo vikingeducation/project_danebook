@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160820210758) do
+ActiveRecord::Schema.define(version: 20160821042212) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -135,6 +135,16 @@ ActiveRecord::Schema.define(version: 20160820210758) do
 
   add_index "posts", ["user_id"], name: "index_posts_on_user_id", using: :btree
 
+  create_table "profile_photos", force: :cascade do |t|
+    t.integer  "profile_id", null: false
+    t.integer  "photo_id",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "profile_photos", ["photo_id"], name: "index_profile_photos_on_photo_id", using: :btree
+  add_index "profile_photos", ["profile_id"], name: "index_profile_photos_on_profile_id", using: :btree
+
   create_table "profiles", force: :cascade do |t|
     t.string   "words"
     t.string   "about"
@@ -213,6 +223,8 @@ ActiveRecord::Schema.define(version: 20160820210758) do
   add_foreign_key "likes", "users"
   add_foreign_key "photos", "users"
   add_foreign_key "posts", "users"
+  add_foreign_key "profile_photos", "photos"
+  add_foreign_key "profile_photos", "profiles"
   add_foreign_key "profiles", "users"
   add_foreign_key "residences", "profiles"
   add_foreign_key "users", "timelines"

@@ -2,8 +2,6 @@ Rails.application.routes.draw do
 
   get 'static_pages/home'
 
-  get 'profiles/update'
-
   root 'static_pages#home'
 
   # Use # instead of / when mapping url to a custom path.
@@ -15,6 +13,9 @@ Rails.application.routes.draw do
   
   resources :users do
     get 'change_avatar'
+  end
+
+  resources :profiles do
     get 'change_cover'
   end
 
@@ -35,7 +36,5 @@ Rails.application.routes.draw do
   resources :activations, only: [:edit]
 
   resources :password_resets
-
-  resources :profiles
 
 end

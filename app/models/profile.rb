@@ -2,7 +2,7 @@ class Profile < ActiveRecord::Base
   after_create :defaults
 
 
-  ## Associations ##
+  ### Associations ###
   # Pointer to owner.
   belongs_to :user
 
@@ -17,6 +17,11 @@ class Profile < ActiveRecord::Base
   validates_attachment_content_type :cover, :content_type => /\Aimage\/.*\Z/
   before_validation { cover.clear if delete_cover == '1' }
   attr_accessor :delete_cover
+
+  # Cover photo from among user's Photo
+  has_one :profile_photo
+  has_one :cover_photo, through: :profile_photo, source: :photo
+
 
   [:birthday, :contact_info, :hometown, :residence].each do |child|
     accepts_nested_attributes_for child

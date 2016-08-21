@@ -77,14 +77,9 @@ class UsersController < ApplicationController
     flash[:success] = Account has been deleted.
     redirect_to root_path
   end
-
-  # temporary..
+  
   def change_avatar
     render 'static_pages/change_avatar'
-  end
-
-  def change_cover
-    render 'static_pages/change_cover'
   end
 
   private

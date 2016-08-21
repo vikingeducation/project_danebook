@@ -202,10 +202,14 @@ nav.navbar-default {
   max-width: 92px;
 }
 
-.photo-container:hover {
+.photo-container {
   height: 221px;
   width: 256px;
   margin-bottom: 35px;
+  border-bottom-width: 35px;  
+}
+
+.photo-container:hover {
   border-bottom-width: 35px;
   border-color: black;
   border-bottom-style: solid;

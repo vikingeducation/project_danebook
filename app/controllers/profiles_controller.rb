@@ -14,9 +14,19 @@ class ProfilesController < ApplicationController
   def update
     @profile = current_user.profile
     @user = current_user
-    @profile.update(profile_params)
+    if photo_id = profile_params[:cover_photo]
+      @profile.update(profile_params.except(:cover_photo))
+      photo = Photo.find(photo_id)
+      @profile.update(cover_photo: photo)
+    else
+      @profile.update(profile_params)
+    end
     flash[:success] = "Profile updated."
     redirect_to @user
+  end
+
+  def change_cover
+    render 'static_pages/change_cover'
   end
 
   private
@@ -25,6 +35,8 @@ class ProfilesController < ApplicationController
       params.require(:profile).permit(
         :words,
         :about,
+        :cover,
+        :cover_photo,
         { birthday_attributes: [
           :id,
           'date_object(2i)',

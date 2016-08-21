@@ -37,7 +37,7 @@ class PhotosController < ApplicationController
         flash[:success] = "Added a comment."
         queue_comment_email(@user,@photo)
       elsif photo_params[:likes_attributes]
-        flash[:success] = "You've liked this post!"
+        flash[:success] = "You've liked this photo!"
         queue_like_email(@user,@photo)
       else
         flash[:success] = "Photo updated."

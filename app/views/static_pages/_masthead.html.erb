@@ -1,5 +1,12 @@
 <div class="col-md-12">
-  <% image = image_url(user.profile.cover.url) %>
+  <% image_src = nil
+    if
+      image_src = "#{photo_serve_path(user.profile.cover_photo)}"
+    else user.profile.cover
+      image_src = user.profile.cover.url
+    end
+    image = image_url(image_src)
+  %>
   <%= content_tag :div, class: 'jumbotron', style: "  height: 300px; background: url(#{image}); background-size: cover; margin: 15px -15px -15px;" do %>
     <div class="masthead">
       <%= 

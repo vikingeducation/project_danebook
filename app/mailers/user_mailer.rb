@@ -7,10 +7,11 @@ class UserMailer < ApplicationMailer
   end
 
   def comment_alert(comment)
+    # commentable = comment.commentable
+    # type = commentable.class.to_s.downcase
+    # @commentable_url = send("#{type}_url".to_sym, commentable.id)
     @user = comment.commentable.user
-    commentable = comment.commentable
-    type = commentable.class.to_s.downcase
-    @commentable_url = send("#{type}_url".to_sym, commentable.id)
+    @comment = comment
     mail(to: @user.email, subject: 'Someone commented on your post')
   end
 end

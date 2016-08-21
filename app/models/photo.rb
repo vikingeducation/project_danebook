@@ -13,4 +13,8 @@ class Photo < ApplicationRecord
 
   validates_length_of :description, maximum: 500
   validates_attachment_content_type :file, :content_type => /\Aimage\/.*\Z/
+
+  def to_s
+    "photos"
+  end
 end

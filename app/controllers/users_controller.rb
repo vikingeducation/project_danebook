@@ -8,8 +8,8 @@ def index
 end
 
 def show
-  @posts = @user.recent_user_posts
-  @post = @user.posts.build
+  @post = @user.text_posts.build
+  @feeds = user_posts(@user)
 end
 
 def edit
@@ -50,7 +50,7 @@ end
 def newsfeed
   if signed_in_user?
     @user = current_user
-    @post = Post.new
+    @post = @user.text_posts.build
     @feeds = feed_posts(@user)
   else
     flash[:error] = "Please login to complete this operation"
@@ -85,7 +85,14 @@ end
     end
 
     def feed_posts(user)
-      feed = Posting.activities(user).map do |posting|
+      Posting.friend_activities(user).map do |posting|
+        resource = find_instance(posting)
+        [User.find(posting.user_id), resource]
+      end
+    end
+
+    def user_posts(user)
+      Posting.current_user_activities(user).map do |posting|
         resource = find_instance(posting)
         [User.find(posting.user_id), resource]
       end

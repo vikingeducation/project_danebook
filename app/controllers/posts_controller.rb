@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   def create
     if signed_in_user?
       current_user
-      if @current_user.posts.create(white_listed_posts_params)
+      if @current_user.text_posts.create(white_listed_posts_params)
         flash[:success] = "Ehhh way to go fonz"
       else
         flash[:error] = "Uh ohhh something went wrong"

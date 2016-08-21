@@ -11,10 +11,10 @@
 				<%= render 'friendings/friends_preview', user: @user %>
 			</div><!-- Left Content -->
 			<div class="col-sm-7">
-				<% if current_user == @user %>
-					<%= render 'posts/new_post', post: @post %>
-				<% end %>
-				<%= render 'posts/user_posts', posts: @posts, user: @user %>
+				<%= render "posts/new_post", post: @post %>
+        <% @feeds.each do |feed| %>
+            <%= render "#{feed[1].to_s}/user_#{feed[1].to_s}", resource: feed[1], user: feed[0] %>
+        <% end %>
 			</div>
 		</div>
 	</main>

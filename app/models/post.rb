@@ -8,4 +8,8 @@ class Post < ApplicationRecord
 
   validates :description,
             :length => {in: 1..800}
+
+  def to_s
+    "posts"
+  end
 end

@@ -1,12 +1,12 @@
 <section class="row section-container">
   <div class="col-xs-12 section-header text-center">
-    <h4>Photos (123) (Copied Text Area)</h4>
+    <h4>Photos (<%= user.photo_posts.count %>)</h4>
   </div>
   <div class="col-xs-12 img-container text-center">
-    <% 8.times do %>
+    <% user.photo_posts[0..7].each do |photo| %>
       <div class="col-xs-6 col-sm-4 col-md-3">
-        <%= link_to "#" do %>
-          <img src="http://placehold.it/80x80">
+        <%= link_to user_photo_path(user, photo) do %>
+          <%= image_tag(photo.file.url, class: "post-pic img-responsive") %>
         <% end %>
       </div>
     <% end %>

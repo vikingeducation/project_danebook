@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row" id="cover-photo">
     <div class="col-xs-10 username">
-        <%= image_tag(profile_pic_url, id: "profile-pic") %>
+        <%= image_tag(profile_pic_url(user), id: "profile-pic") %>
       <div id="user-name-and-link">
         <h1><%= user.full_name %></h1>
         <% if signed_in_user? %>

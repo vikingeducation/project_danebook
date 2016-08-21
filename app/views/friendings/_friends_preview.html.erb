@@ -1,12 +1,15 @@
 <section class="row section-container">
   <div class="col-xs-12 section-header text-center">
-    <h4>Friends (542) (Copied Text Area)</h4>
+    <h4>Friends (<%= user.friended_users.count %>)</h4>
   </div>
   <div class="col-xs-12 img-container text-center">
-    <% user.friended_users.each do |friend| %>
+    <% user.friended_users[0..6].each do |friend| %>
       <div class="col-sm-4 col-md-3">
-        <img src="http://placehold.it/80x80">
-        <p><%= link_to "#{friend.full_name}", user_path(friend), class: "friend-name" %></p>
+
+        <p><%= link_to user_path(friend), class: "friend-name" do %>
+            <%= image_tag(profile_pic_url(user), class: "post-pic img-responsive") %>
+            <%= "#{friend.full_name}" %>
+          <% end %></p>
       </div>
     <% end %>
     <div class="col-xs-12 text-center">

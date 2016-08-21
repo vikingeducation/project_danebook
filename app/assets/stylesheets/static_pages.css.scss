@@ -1,10 +1,8 @@
-// Place all the styles related to the users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
 // Place all the styles related to the static_pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-#users{
+#static_pages{
+
   @mixin border-radius($radius) {
     -webkit-border-radius: $radius;
        -moz-border-radius: $radius;
@@ -35,6 +33,16 @@
 
   nav {
   	background-color: #2b78e4;
+    .dropdown * {
+      background-color: #2b78e4;
+      background-image: none;
+      border: none;
+    }
+
+    .open>a, .nav .open>a:focus, .nav .open>a:hover,
+    .nav>li>a:focus, .nav>li>a:hover {
+      background-color: #2b78e4;
+    }
 
   	.navbar-brand {
   		padding-top: 7px;
@@ -94,6 +102,143 @@
 
   /*
   ----------------------------------------------
+  	Banner Photos and name
+  ----------------------------------------------
+  */
+
+  #cover-photo {
+  	overflow:hidden;
+  	min-height: 450px;
+  	// margin-top: 50px;
+  	border: 2px solid black;
+  	// background-repeat: no-repeat;  center center;
+    background-position: center center;
+  	@include background-size(cover);
+  }
+
+  #profile-pic {
+  	max-height: 150px;
+  	min-width: 130px;
+  	border: 2px solid black;
+  	position: relative;
+  	bottom: 25px;
+  	z-index: 1001;
+
+  	@media only screen and (max-width: 396px) {
+  		bottom: 40px;
+  	}
+  }
+
+  .username {
+  	position: absolute;
+  	top: 350px;
+
+  	img, a {
+  		display: inline-block;
+  	}
+    #user-name-and-link{
+      display: inline-block;
+    	h1 {
+        word-wrap: break-word;;
+        display: inline-block;
+    		color: black;
+    		font-weight: bold;
+    		text-shadow: 2px 2px #fff;
+    		letter-spacing: 1.5px;
+        margin: 0 0 5px 5px;
+        word-wrap: break-word;
+        overflow-x: auto;
+        }
+
+        .button_to {
+            // display: inline-block;
+            margin-left: 5px !important;
+          }
+
+    		@media only screen and (max-width: 396px) {
+    			font-size: 24px;
+    			letter-spacing: 0;
+    		}
+    	}
+    }
+
+  /*
+  ----------------------------------------------
+  	Navigation Tiles
+  ----------------------------------------------
+  */
+
+  .link-bar {
+  	border: 2px solid black;
+
+  	h5 {
+  		margin: 0;
+
+  		a {
+  			line-height: 40px;
+  		}
+  	}
+  }
+
+  div[role=navigation]{
+  	@media only screen
+  	  	and (max-width: 767px){
+  	  		padding-left: 0;
+  	  		padding-right: 0;
+  	}
+  }
+
+  .nav-pills {
+  	li {
+  		border-right: 2px solid black;
+      min-width: 125px;
+
+  		@media only screen
+  	  		and (max-width: 767px){
+  	  			border-right: none;
+  	  			border-bottom: 2px solid black;
+  	  	}
+
+  		a {
+  			color: black;
+  			font-size: 16px;
+  			font-weight: 600;
+
+  			span {
+  				color: #d0d0d0;
+          font-size: 0.8em;
+  			}
+  		}
+  	}
+
+  	li:first-child {
+  		border-left: 2px solid black;
+
+  		@media only screen
+  	  		and (max-width: 767px){
+  	  			border-left: none;
+  	  	}
+  	}
+  }
+
+  .active-tab {
+  	background-color: #eee;
+  }
+
+  #edit-profile-link {
+  	text-decoration: underline;
+  }
+
+  #hide-word {
+  	@media only screen
+  	  and (min-device-width: 768px)
+  	  and (max-device-width: 991px)
+  	  and (-webkit-min-device-pixel-ratio: 1) {
+  	  		display: none;
+  	}
+  }
+  /*
+  ----------------------------------------------
   	Common Section Header Styling
   ----------------------------------------------
   */
@@ -133,6 +278,21 @@
   	padding: 20px 20px;
   }
 
+  /*
+  ----------------------------------------------
+  	About Edit Page Styling
+  ----------------------------------------------
+  */
+
+  #save-change-wrapper {
+  	margin-top: 40px;
+  	margin-bottom: 50px;
+
+  	a {
+  		background-image: none;
+  		letter-spacing: 2.5px;
+  	}
+  }
 
   /*
   ----------------------------------------------
@@ -246,7 +406,7 @@
 
   .post-block {
   	margin-top: 10px;
-  	margin-bottom: 5px;
+  	padding-bottom: 5px;
   	padding-top: 5px;
   	border-bottom: none;
   	border-top: 2px solid black;
@@ -284,6 +444,10 @@
 
     form.button_to {
       display: inline-block !important;
+      line-height: 28px;
+    	text-decoration: underline;
+      color: #337ab7;
+      margin-bottom: -15px;
     }
 
   	.friend-name:first-child {
@@ -299,8 +463,12 @@
   	}
   }
 
+  .new-comment-input {
+    margin: 10px auto;
+  }
+
   .liker-name,
-  .friend-name {
+  .friend-name, .button_to {
   	line-height: 28px;
   	text-decoration: underline;
   }
@@ -353,20 +521,12 @@
   }
 
   .hr-block {
-  	margin-bottom: 0;
+  	margin-bottom: 5px;
   }
 
 
   .commenter-name {
   	margin: 0 0;
-  }
-
-  .nav-margin{
-    margin-top: 50px;
-  }
-
-  .padding-tainer {
-    padding: 20px 20px;
   }
 
   .left-gutter {
@@ -377,10 +537,16 @@
   	padding-right: 25px;
   }
 
+  .goofy-btn {
+    border: none;
+    background: none;
+    text-decoration: underline;
+  }
   hr {
   	border: 1px solid #bbb;
   	z-index: 10000;
-  	width: 98%;
+  	width: 93%;
+    margin: 5px auto;
   }
 
   .comment-btn {

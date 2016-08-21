@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20160821074748) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
     t.string   "last_name"
@@ -23,7 +26,7 @@ ActiveRecord::Schema.define(version: 20160821074748) do
     t.integer  "cover_pic_id"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
-    t.index ["auth_token"], name: "index_users_on_auth_token", unique: true
+    t.index ["auth_token"], name: "index_users_on_auth_token", unique: true, using: :btree
   end
 
 end

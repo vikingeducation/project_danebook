@@ -15,7 +15,10 @@ Rails.application.routes.draw do
 
   resources :search_results, only: [ :index ]
   resources :users
-  resources :photos
+  resources :photos do
+    resources :likes, shallow: true
+    resources :comments, shallow: true
+  end
   resources :posts, only: [ :create, :destroy ] do
     resources :likes, shallow: true
     resources :comments

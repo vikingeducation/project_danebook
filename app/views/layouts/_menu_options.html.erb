@@ -1,5 +1,5 @@
 <div class="row"><!-- begin background-image row -->
-  <div style="background: url('<%= asset_path('hogwarts.jpg') %>') 100% 100%/100% 100% no-repeat" class="col-xs-12 cover-photo"><!-- cover photo spans entire column -->
+  <div style="background: url('<%= user.cover_photo.image.url if user.cover_photo %>') 100% 100%/100% 100% no-repeat" class="col-xs-12 cover-photo"><!-- cover photo spans entire column -->
     <div class="row">
       <p class="col-xs-3 col-xs-offset-2" id="main-name">
         <% if user %>
@@ -8,7 +8,9 @@
           <%= 'Harry Potter' %>
         <% end %>
       </p>
-      <img class="col-xs-2 profile-pic" src='<%= asset_path('hp.jpg') %>'>
+      <% if user.profile_photo %>
+        <%= image_tag(user.profile_photo.image.url, class: 'col-xs-2 profile-pic') %>
+      <% end %>
     </div>
   </div>
 </div><!-- end background-image row -->

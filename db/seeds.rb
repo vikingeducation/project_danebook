@@ -9,7 +9,7 @@
 FACTOR = 10
 
 
-puts "Destroying Users"
+puts "Destroying Resources"
 if Rails.env == 'development'
   User.destroy_all
   Friending.destroy_all
@@ -41,6 +41,7 @@ def create_friending(user)
 end
 
 def create_user
+  puts 'creating user...'
 User.create(email: Faker::Internet.email, password: 'password',
   profile_attributes: {
     first_name: Faker::Name.first_name,
@@ -55,9 +56,21 @@ User.create(email: Faker::Internet.email, password: 'password',
   })
 end
 
-puts "Creating Users"
 
+puts 'creating harry...'
 create_harry
+
+puts "Creating Photos"
+photo = Photo.new
+photo.user = User.first
+photo.picture_from_url('http://weknowyourdreams.com/images/space/space-03.jpg')
+photo.save!
+photo = Photo.new
+photo.user = User.first
+photo.picture_from_url('http://a1.img.talkingpointsmemo.com/image/upload/c_fill,fl_keep_iptc,g_faces,h_365,w_652/teu84tpl2ujnvxm1ijlg.jpg')
+photo.save!
+
+puts "Creating Users"
 
 (FACTOR * 10).times do
   create_user

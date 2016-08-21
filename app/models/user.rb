@@ -1,7 +1,9 @@
 class User < ApplicationRecord
   has_secure_password
-  before_create :generate_token
+  after_create :generate_token, :set_default_photos
   has_one :profile, inverse_of: :user, dependent: :destroy
+  belongs_to :cover_photo, class_name: 'Photo', foreign_key: :cover_photo_id, optional: true
+  belongs_to :profile_photo, class_name: 'Photo', foreign_key: :profile_photo_id, optional: true
   has_many :posts, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
@@ -58,6 +60,12 @@ class User < ApplicationRecord
   def regenerate_auth_token
     self.auth_token = nil
     generate_token
+    save!
+  end
+
+  def set_default_photos
+    self.cover_photo = Photo.first
+    self.profile_photo = Photo.second
     save!
   end
 

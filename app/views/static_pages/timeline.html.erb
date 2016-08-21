@@ -26,26 +26,17 @@
           </div><!-- end-mini-about-panel -->
           <div class="panel panel-default"><!-- begin-mini-photos-panel -->
             <div class="panel-heading">
-              <h3 class="panel-title center-text">Photos <span class="grey">(123)</span></h3>
+              <h3 class="panel-title center-text">Photos <span class="grey">(<%= @user.photos.count %>)</span></h3>
             </div>
             <div class="panel-body">
               <div class="row mini-photos-row">
                 <%= render partial: 'photos/mini_photo', collection: @photos[0..2] %>
-                <!-- <img class="col-xs-4" src='<%= asset_path('george.jpg') %>'> -->
-                <!-- <img class="col-xs-4" src='<%= asset_path('ginny.jpg') %>'> -->
-                <!-- <img class="col-xs-4" src='<%= asset_path('hermione.jpg') %>'> -->
               </div>
               <div class="row mini-photos-row">
                 <%= render partial: 'photos/mini_photo', collection: @photos[3..5] %>
-                <!-- <img class="col-xs-4" src='<%= asset_path('dobby.jpg') %>'> -->
-                <!-- <img class="col-xs-4" src='<%= asset_path('hp.jpg') %>'> -->
-                <!-- <img class="col-xs-4" src='<%= asset_path('flag.png') %>'> -->
               </div>
               <div class="row mini-photos-row">
                 <%= render partial: 'photos/mini_photo', collection: @photos[6..8] %>
-                <!-- <img class="col-xs-4" src='<%= asset_path('ron.jpg') %>'> -->
-                <!-- <img class="col-xs-4" src='<%= asset_path('hagrid.jpg') %>'> -->
-                <!-- <img class="col-xs-4" src='<%= asset_path('fred.png') %>'> -->
               </div>
               <%= link_to 'See More Photos', user_photos_path(@user), class: 'col-xs-6 col-xs-offset-4 underline' %>
             </div>

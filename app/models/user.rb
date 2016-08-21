@@ -93,4 +93,8 @@ class User < ApplicationRecord
   def self.with_names_like(search)
     with_first_names_like(search).or(with_last_names_like(search)).or(with_full_names_like(search))
   end
+
+  def send_welcome_email
+    UserMailer.welcome(self).deliver!
+  end
 end

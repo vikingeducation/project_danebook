@@ -93,7 +93,8 @@ Rails.application.configure do
   :s3_credentials => {
 
 
-    :s3_region => ENV['AWS_REGION'],
+    :s3_region => Rails.application.secrets.aws_region,
+    :region => Rails.application.secrets.aws_region,
     :bucket => Rails.application.secrets.s3_bucket_name,
     :access_key_id => Rails.application.secrets.aws_access_key_id,
     :secret_access_key => Rails.application.secrets.aws_secret_access_key

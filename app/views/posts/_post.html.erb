@@ -1,7 +1,7 @@
 <div class="post-panel panel panel-default"><!-- begin-post-panel -->
   <div class="post-panel-body panel-body">
     <div class="col-xs-8 post-header">
-      <img class="col-xs-3" src='<%= asset_path('hp.jpg') %>'>
+      <%= image_tag(@user.profile_photo.image.url(:thumb), class: 'col-xs-3') %>
       <%= link_to user.profile.name, user_path(user), class: 'col-xs-8' %>
       <%= content_tag(:p, post.created_at, class: 'col-xs-9 grey') %>
     </div>

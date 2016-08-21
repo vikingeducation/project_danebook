@@ -82,6 +82,6 @@ class User < ActiveRecord::Base
       user = User.find_by_id(id)
       UserMailer.welcome(user).deliver!
     end
-    handle_asynchronously :send_welcome_email
+    # handle_asynchronously :send_welcome_email
 
 end

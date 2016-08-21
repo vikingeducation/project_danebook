@@ -46,4 +46,7 @@ class ApplicationController < ActionController::Base
       post.likes.first.id
     end
     helper_method :user_liked_id
+
+    # def 
+    # Photo.find(@user.profile_pic_id)
 end

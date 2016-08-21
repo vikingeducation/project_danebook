@@ -1,11 +1,7 @@
 <div class="container">
   <div class="row" id="cover-photo">
     <div class="col-xs-10 username">
-      <% if @user.profile_pic_id %>
-        <%= image_tag( Photo.find(@user.profile_pic_id).file.url :thumb, id: "profile-pic") %>
-      <% else %>
-        <%= image_tag("http://placehold.it/150x150", id: "profile-pic") %>
-      <% end %>
+        <%= image_tag(profile_pic_url, id: "profile-pic") %>
       <div id="user-name-and-link">
         <h1><%= user.full_name %></h1>
         <% if signed_in_user? %>

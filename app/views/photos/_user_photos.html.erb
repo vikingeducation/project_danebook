@@ -2,7 +2,7 @@
     <div class="col-sm-12">
         <div class="row post-wrapper">
             <div class="col-xs-2 col-sm-1">
-                <%= image_tag("harry_potter_small.jpg", class: "post-pic") %>
+                <%= image_tag(profile_pic_url, class: "post-pic img-responsive") %>
             </div>
             <div class="col-xs-9 col-sm-10 friend-name-wrapper">
                 <p><%= link_to user.full_name, user_profile_path(user, user.profile), class: "like-link" %></p>

@@ -72,14 +72,12 @@
       <hr>
       <div class="col-xs-12">
         <div class="row post-wrapper">
-          <%# unless @photo.comments.length == 1 %>
             <% @photo.comments[0..6].each_with_index do |comment, index| %>
 
-                  <%= render 'comment', comment: comment, post: @photo, index: index %>
+                  <%= render 'comments/comment', comment: comment, post: @photo, index: index %>
 
             <% end %>
-          <%# end %>
-            <%= render 'new_comment_form', post: @photo %>
+            <%= render 'comments/new_comment_form', post: @photo %>
           </div><!-- Comment content wrapper -->
         </div><!-- Comment wrapper -->
       </div>

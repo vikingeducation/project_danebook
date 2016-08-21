@@ -19,4 +19,14 @@ module ApplicationHelper
       return "#{liker.capitalize} likes this"
     end
   end
+
+  def cover_pic_url(user)
+    user.cover_pic ? user.cover_pic.file.url :
+                      "http://placehold.it/900x600"
+  end
+
+  def profile_pic_url(user)
+    user.profile_pic ? user.profile_pic.file.url :
+                        "http://placehold.it/150x150"
+  end
 end

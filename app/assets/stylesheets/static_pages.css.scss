@@ -413,8 +413,8 @@
   }
 
   .post-pic {
-  	height: 60px;
-  	width: 60px;
+  	max-height: 60px;
+  	max-width: 60px;
 
   	position: relative;
   	// left: 10px;

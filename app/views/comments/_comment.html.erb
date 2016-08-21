@@ -11,14 +11,14 @@
         <div class="col-sm-10 like-listing-expanded">
           <div class="col-xs-5 col-sm-5">
           <% if comment.likers.include?(current_user) %>
-            <%= button_to "Unlike", like_path( user_liked_id(comment)), method: :delete, class: "unlike-class"%>
+            <%= button_to "Unlike", like_path( user_liked_id(comment)), method: :delete, class: "goofy-btn unlike-class"%>
           <% else %>
-            <%= button_to "Like", comment_likes_path(comment), method: :post, class: "like-class" %>
+            <%= button_to "Like", comment_likes_path(comment), method: :post, class: "goofy-btn like-class" %>
           <% end %>
           </div>
           <div class="col-xs-7 col-sm-7 text-right">
             <% if @user == current_user %>
-              <%= button_to "Delete", comment_path(comment), method: :delete, class: "float-right" %>
+              <%= button_to "Delete", comment_path(comment), method: :delete, class: "goofy-btn float-right" %>
             <% end %>
     			</div>
         </div>

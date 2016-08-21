@@ -8,7 +8,11 @@
       <p><%= pluralize(user.friended_users.count, "friend") %></p>
     </div>
     <div class="col-md-5">
-      <%= button_to "Unfriend", friending_path(user.id, :current_user_id => current_user.id), :method => :delete %>
+      <% if user == current_user || current_user.friended_user_ids.include?(user.id) %>
+        <%= button_to "Unfriend", friending_path(user.id, :current_user_id => current_user.id), :method => :delete %>
+      <% elsif signed_in_user? %>
+        <%= button_to "Friend", {controller: 'friendings', action: 'create', id: user.id } %>
+      <% end %>
     </div>
   </div><!-- Friend Wrapper -->
 </div>

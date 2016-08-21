@@ -1,0 +1,38 @@
+
+<div id="login">
+	<nav class="navbar navbar-default navbar-static-top">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="true">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand vertical-align" href="#">Danebook</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+				<%= render partial: 'sessions/sign_in' %>
+    </div><!-- /.navbar-collapse -->
+	</nav>
+
+	<main class="container">
+		<div class="row">
+			<div class="col-sm-7 top-buffer">
+				<h3 class="catch-phrase">Connect with all your friends!</h3>
+				<ul>
+					<li>See Photos and updates in your news feed</li>
+					<li>Post your status for the world to see from your profile</li>
+					<li>Get in touch with your friends by "friending" them</li>
+					<li>Like things because your're a positive person!</li>
+				</ul>
+			</div>
+			<section class="col-sm-5">
+				<h2>Sign Up</h2>
+				<%= render 'sessions/sign_up', user: @user %>
+			</section>
+		</div>
+	</main>
+</div>

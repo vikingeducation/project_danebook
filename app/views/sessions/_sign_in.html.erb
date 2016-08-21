@@ -1,0 +1,34 @@
+<%= form_tag session_path, class: "navbar-form navbar-right" do %>
+<div class="row">
+    <div class="col-sm-8 col-sm-offset-2">
+        <div class="col-sm-5">
+            <%= label_tag :email, "Email", {class: "signin-inputs"} %>
+        </div>
+    </div>
+    <div class="col-sm-8 col-sm-offset-2">
+        <div class="col-sm-5">
+            <%= label_tag :password, "Password", {class: "signin-inputs"} %>
+        </div>
+    </div>
+</div>
+<!-- <div class="row"> -->
+<div class="col-sm-8 col-sm-offset-2">
+    <div class="col-sm-5">
+        <%= text_field_tag :email, "", {class: "form-control input-sm", id: "email-entry"} %>
+    </div>
+    <div class="col-sm-5">
+        <%= password_field_tag :password,"", {class: "form-control input-sm", id: "pw-entry"} %>
+    </div>
+    <!-- </div> -->
+    <div class="col-sm-2">
+        <%= submit_tag "Log in" %>
+    </div>
+</div>
+<!-- <div class="row"> -->
+<div class="col-sm-2 col-sm-offset-2 checkbox-inline">
+    <%= label_tag do %>
+    Remember me?
+    <%= check_box_tag :remember_me %>
+    <% end %>
+</div>
+<% end %>

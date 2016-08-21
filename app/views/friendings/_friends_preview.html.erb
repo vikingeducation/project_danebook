@@ -1,0 +1,16 @@
+<section class="row section-container">
+  <div class="col-xs-12 section-header text-center">
+    <h4>Friends (542) (Copied Text Area)</h4>
+  </div>
+  <div class="col-xs-12 img-container text-center">
+    <% user.friended_users.each do |friend| %>
+      <div class="col-sm-4 col-md-3">
+        <img src="http://placehold.it/80x80">
+        <p><%= link_to "#{friend.full_name}", user_path(friend), class: "friend-name" %></p>
+      </div>
+    <% end %>
+    <div class="col-xs-12 text-center">
+      <%= link_to "See More Friends", user_friendings_path(user), class: "friend-name"%>
+    </div>
+  </div>
+</section><!-- Friends Section -->

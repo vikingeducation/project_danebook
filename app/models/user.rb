@@ -2,6 +2,8 @@ class User < ApplicationRecord
   belongs_to :profile_pic, class_name: "Photo"
   belongs_to :cover_pic, class_name: "Photo"
 
+  has_one :profile, dependent: :destroy
+
   has_many :comments, dependent: :nullify
 
   has_many :postings, dependent: :destroy
@@ -11,4 +13,6 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :liked_posts, through: :likes, source: :likeable, source_type: "Post"
   has_many :liked_comments, through: :likes, source: :likeable, source_type: "Comments"
+
+  after_create :create_profile
 end

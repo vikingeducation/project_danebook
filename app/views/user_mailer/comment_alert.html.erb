@@ -1,0 +1,8 @@
+<h1>Hey <%= @user.name %>!</h1>
+
+<p>
+  Someone commented on your post!
+</p>
+
+<p>
+  Check out what they said at <%= link_to "#{@commentable_url}", @commentable_url %>

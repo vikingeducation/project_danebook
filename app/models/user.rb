@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   has_secure_password
-  after_create :generate_token, :set_default_photos
+  after_create :generate_token, :set_default_photos, :send_welcome_email
   has_one :profile, inverse_of: :user, dependent: :destroy
   belongs_to :cover_photo, class_name: 'Photo', foreign_key: :cover_photo_id, optional: true
   belongs_to :profile_photo, class_name: 'Photo', foreign_key: :profile_photo_id, optional: true

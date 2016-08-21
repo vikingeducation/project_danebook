@@ -5,5 +5,5 @@
 </p>
 
 <p>
-  Check out what they said at <%= link_to "#{user_timeline_url(@comment.user)}", user_timeline_url(@comment.user) %>
+  Check out what they said at <%= link_to "#{user_timeline_url(@comment.commentable.user)}", user_timeline_url(@comment.commentable.user) %>
 </p>

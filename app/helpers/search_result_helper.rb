@@ -3,7 +3,7 @@ module SearchResultHelper
     num_friends = user.friends.count
     if num_friends > 2
       "#{num_friends} Friends"
-    elsif
+    elsif num_friends == 1
       "#{num_friends} Friend"
     else
       nil

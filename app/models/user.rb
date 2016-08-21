@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-  belongs_to :profile_pic, class_name: "Photo"
-  belongs_to :cover_pic, class_name: "Photo"
+  belongs_to :profile_pic, class_name: "Photo", optional: true
+  belongs_to :cover_pic, class_name: "Photo", optional: true
 
   has_one :profile, dependent: :destroy
 
@@ -21,4 +21,6 @@ class User < ApplicationRecord
   has_many :users_friended_by, through: :received_friendings, source: :friend_initiator
 
   after_create :create_profile
+
+  has_secure_password
 end

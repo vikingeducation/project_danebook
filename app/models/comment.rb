@@ -9,6 +9,8 @@ class Comment < ApplicationRecord
   private
 
   def send_comment_email
-    UserMailer.comment_alert(self).deliver!
+    unless current_user == self.user
+      UserMailer.comment_alert(self).deliver!
+    end
   end
 end

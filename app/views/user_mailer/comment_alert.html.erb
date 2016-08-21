@@ -5,4 +5,5 @@
 </p>
 
 <p>
-  Check out what they said at <%= link_to "#{@commentable_url}", @commentable_url %>
+  Check out what they said at <%= link_to "#{user_timeline_url(comment.user)}", user_timeline_url(comment.user) %>
+</p>

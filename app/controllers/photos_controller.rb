@@ -29,6 +29,27 @@ class PhotosController < ApplicationController
     @photo = Photo.find(params[:id])
   end
 
+  def destroy
+    from = request.referer
+    if signed_in_user?
+      if @photo = Photo.find_by_id(params[:id])
+        if @photo.destroy
+          flash[:success] = "Your photo was destroyed"
+          redirect_to from =~ /\/photos\// ? user_photos_path : :back
+        else
+          flash[:error] = "Failed to destroy photo"
+          redirect_to :back
+        end
+      else
+        flash[:error] = "Wrong coordinates"
+        redirect_to user_photos_path(current_user)
+      end
+    else
+      flash[:error] = "Log in to complete that action"
+      redirect_to login_path
+    end
+  end
+
   private
 
     def white_listed_photo_params

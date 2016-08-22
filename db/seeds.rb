@@ -70,6 +70,10 @@ photo.user = User.first
 photo.picture_from_url('http://a1.img.talkingpointsmemo.com/image/upload/c_fill,fl_keep_iptc,g_faces,h_365,w_652/teu84tpl2ujnvxm1ijlg.jpg')
 photo.save!
 
+puts 'assign harrys photos'
+User.first.profile_photo = Photo.first
+User.first.cover_photo = Photo.second
+
 puts "Creating Users"
 
 (FACTOR * 10).times do
@@ -79,4 +83,12 @@ end
 
 User.all.each do |user|
   create_friending(user)
+end
+
+def create_random_post
+  User.sample(1).posts.create(post_text: Faker::Lorem.sentences(2))
+end
+
+(FACTOR * 10).times do
+  create_random_post
 end

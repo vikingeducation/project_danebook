@@ -1,5 +1,5 @@
 class FriendingsController < ApplicationController
-  before_action :required_user_redirect, except: [:index]
+  before_action :required_user_redirect, except: [:index, :create]
 
   def index
     @user = User.find_by_id(params[:user_id])
@@ -8,19 +8,18 @@ class FriendingsController < ApplicationController
   def create
     current_user.followees << User.find(params[:user_id])
     flash[:notice] = "Friend Added"
-    redirect_to user_activities_path(params[:user_id])
+    redirect_back(fallback_location: root_path)
   end
 
   def destroy
     @friending = Friending.find_by_id(params[:id])
     if @friending
-      user = User.find(@friending.reciever_id)
       @friending.destroy
       flash[:alert] = "Friendship terminated"
-      redirect_to user_activities_path(user)
+      redirect_back(fallback_location: root_path)
     else
       flash[:alert] = "We could not find that user"
-      redirect_to user_activities_path(current_user)
+      redirect_back(fallback_location: root_path)
     end
   end
 

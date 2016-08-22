@@ -12,15 +12,13 @@ class ActivitiesController < ApplicationController
   def destroy
     @activity = Activity.find(params[:id])
     if @activity.postable_type == "Comment"
-      redirect_to user_activities_path(@activity.postable.commentable.author)
+      redirect_back(fallback_location: root_path)
     else
-      redirect_to user_activities_path(@activity.author)
+      redirect_back(fallback_location: root_path)
     end
     @activity.destroy
     flash[:notice] = "Post Destroyed"
   end
-
-  private
 
 
 end

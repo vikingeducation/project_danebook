@@ -1,7 +1,11 @@
 <div class="row">
   <header class="clearfix">
     <div class="col-xs-2 ex-post-profile-container">
-      <%= link_to image_tag("/imgs/harry_potter_small.jpg", class: "ex-post-profile"), activity.author %>
+      <% if activity.author.profile_photo %>
+        <%= link_to image_tag(activity.author.profile_photo.image.url, class: "ex-post-profile"), activity.author %>
+      <% else %>
+        <%= link_to image_tag("/imgs/user_silhouette_generic.gif", class: "ex-post-profile"), activity.author %>
+      <% end %>
     </div>
     <div class="col-xs-10 ex-poster-info">
       <%= link_to activity.author.fullname, activity.author %>

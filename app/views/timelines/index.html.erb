@@ -8,7 +8,7 @@
               <% if @user.profile_photo %>
 							  <%= image_tag(@user.profile_photo.image.url, class: "profile-img") %>
               <% else %>
-                <img class="profile-img" src="/imgs/harry_potter_small.jpg">
+                <img class="profile-img" src="/imgs/user_silhouette_generic.gif">
               <% end %>
               <%= link_to @user.fullname, @user, class: "newsfeed-name" %>
               <% if @user.active_friends.any? %>

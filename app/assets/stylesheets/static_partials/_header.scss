@@ -40,6 +40,9 @@
 	.cover-photo-container {
 		margin-left: -15px;
 		margin-right: -15px;
+    width: 1170px;
+    height: 370px;
+    overflow: hidden;
 	}
 	.midde-nav-row {
 		border: 1px solid black;
@@ -47,7 +50,6 @@
 	.cover-photo {
 		margin-top: 50px;
 		width: 100%;
-		height: 315px;
 		border: 1px solid black;
 	}
 	.profile-img {

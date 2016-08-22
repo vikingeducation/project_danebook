@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
       redirect_back(fallback_location: user_activities_path(@activity.author))
     else
       flash[:notice] = "Must have some content"
-      redirect_to user_activities_path(@activity.author)
+      redirect_back(fallback_location: root_path)
     end
   end
 

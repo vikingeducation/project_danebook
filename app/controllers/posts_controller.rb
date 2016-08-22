@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   def create
     @user = current_user
     @user.posts.create(post_params)
-    redirect_to user_activities_path(@user)
+    redirect_back(fallback_location: root_path)
   end
 
   private

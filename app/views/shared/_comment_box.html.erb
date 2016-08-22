@@ -2,7 +2,11 @@
   <div class="row">
     <div class="clearfix tl-comment-container">
       <div class="col-xs-2 ex-post-profile-container">
-        <%= link_to image_tag("/imgs/user_silhouette_generic.gif", class: "ex-post-profile"), "#" %>
+        <% if comment.owner.profile_photo %>
+          <%= link_to image_tag(comment.owner.profile_photo.image.url, class: "ex-post-profile"), "#" %>
+        <% else %>
+          <%= link_to image_tag("/imgs/user_silhouette_generic.gif", class: "ex-post-profile"), "#" %>
+        <% end %>
       </div>
       <div class="col-xs-10 ex-poster-info">
         <%= link_to comment.owner.fullname, user_activities_path(comment.owner) %>

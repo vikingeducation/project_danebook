@@ -6,6 +6,8 @@ class Post < ApplicationRecord
 
   has_many :likes, :as => :likeable, class_name: "Liking"
 
+  has_many :comments, :as => :commentable, class_name: "Comment"
+
   has_one :photo, :as => :photoable, class_name: "Photo", inverse_of: :photoable
   accepts_nested_attributes_for :photo
 

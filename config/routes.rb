@@ -15,7 +15,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :timelines
+  # resources :posts, :except => [:create, :destroy] do
+  #   resources :comments
+  # end
+
+  resources :timelines, :only => [:index]
 
   resources :friendings, :only =>  [:destroy]
   resources :likings, :only => [:destroy]

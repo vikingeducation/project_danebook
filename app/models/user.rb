@@ -61,9 +61,16 @@ class User < ApplicationRecord
     first_name + " " + last_name
   end
 
+  ######## EMAILS ###############
   def self.send_welcome_email(user_id)
     @user = User.find(user_id)
     UserMailer.welcome(@user).deliver!
+  end
+
+  def self.send_activity_email(user_id, comment_id)
+    @user = User.find(user_id)
+    @comment = Comment.find(comment_id)
+    UserMailer.activity(@user, @comment).deliver!
   end
 
   def profile_photo_id=(id)

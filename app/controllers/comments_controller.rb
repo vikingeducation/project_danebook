@@ -7,7 +7,9 @@ class CommentsController < ApplicationController
         comment = commentable.comments.build(comment_params)
         current_user.comments << comment
 
-        unless comment.save
+        if comment.save
+          User.send_activity_email(comment.parent_user.id, comment.id) unless comment.parent_user == current_user
+        else
           flash[:danger] = "Could not create comment."
         end
       else

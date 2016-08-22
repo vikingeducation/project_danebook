@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160819192645) do
+ActiveRecord::Schema.define(version: 20160822173552) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -48,6 +48,7 @@ ActiveRecord::Schema.define(version: 20160819192645) do
     t.integer  "picture_file_size"
     t.datetime "picture_updated_at"
     t.integer  "user_id"
+    t.string   "description"
     t.index ["user_id"], name: "index_photos_on_user_id", using: :btree
   end
 
@@ -77,6 +78,16 @@ ActiveRecord::Schema.define(version: 20160819192645) do
     t.integer  "cover_photo_id"
     t.integer  "profile_photo_id"
     t.index ["user_id"], name: "index_profiles_on_user_id", using: :btree
+  end
+
+  create_table "relationships", force: :cascade do |t|
+    t.integer  "friender_id"
+    t.integer  "friended_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["friended_id"], name: "index_relationships_on_friended_id", using: :btree
+    t.index ["friender_id", "friended_id"], name: "index_relationships_on_friender_id_and_friended_id", unique: true, using: :btree
+    t.index ["friender_id"], name: "index_relationships_on_friender_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|

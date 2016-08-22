@@ -4,6 +4,10 @@ class ApplicationController < ActionController::Base
    
   private
 
+  def both_friends?(user)
+    current_user ? current_user.friends.include?(user) && user.friends.include?(current_user) : false
+  end
+
   def set_user
     @user = User.find_by_id(params[:user_id])
     redirect_to root_path, :flash=> {:danger => "Unable to find that user"} unless @user

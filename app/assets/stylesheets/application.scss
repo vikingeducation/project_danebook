@@ -245,7 +245,7 @@ body {
 }
 
 .index-photo {
-  margin-top:20px;
+  padding:20px;
 }
 
 .no-photos {
@@ -271,4 +271,20 @@ body {
 .show-photo {
   display:block;
   margin: 0 auto;
+}
+
+.upload-photo-form {
+  margin: 0 auto;
+  display: block; 
+}
+
+.photo-in-index {
+  transition: all 0.5s ease;
+  padding:20px;
+  &:hover {
+    background-color: #3b5998;
+  }
+}
+.same-line {
+  display:inline-block;
 }

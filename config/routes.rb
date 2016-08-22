@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-
   get 'comments/new'
 
   resources :users do
@@ -24,6 +23,7 @@ Rails.application.routes.draw do
     resources :likes, defaults: {likeable: "Photo"}
   end
 
+  resources :relationships, only: [:create, :destroy]
 
 
 
@@ -32,6 +32,8 @@ Rails.application.routes.draw do
   resource :session, :only => [:new, :create, :destroy]
   get "login" => "sessions#new"
   delete "logout" => "sessions#destroy"
+
+  get '*path' => redirect("http://nouveller.com/404/")
   
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

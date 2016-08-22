@@ -1,8 +1,7 @@
 <div class="container">
   <div class="row">
     <div clas="col-md-8">
-      <%= image_tag("default_image.jpg", class: "profile-photo") %>
-      <%= image_tag("default_cover.jpg", class: "cover-photo") %>
+      <%= render "shared/profile_cover_photos" %>
     </div>
   </div>
   <div class="row profile-navigation">
@@ -19,7 +18,7 @@
       Friends
     </div>
     <div class="col-md-4 edit-link">
-      <%= link_to "Edit", edit_user_profiles_path(@user) if current_user == @user %>
+      <%= render "shared/friend_button" %>
     </div>
   </div>
 </div>

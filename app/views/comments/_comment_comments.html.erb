@@ -1,0 +1,15 @@
+<% comment.comments.each do |c| %>
+    <div class="media-list">
+      <div class="media">
+        <div class="media-left"> 
+          <%= image_tag("default_image.jpg", class: "comment-picture") %>
+        </div>
+        <div class="media-body">
+          <h4 class="media-heading">Commented by: <%= link_to comment.commentable.user.first_name + " " + comment.commentable.user.last_name, user_profiles_path(comment.commentable.user) %> </h4>
+          <p><%=comment.likes.count %> likes</p>
+          <p><%= comment.content %></p>
+        </div>
+        </div>
+      </div>
+    </div>
+<% end %>

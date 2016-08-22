@@ -8,6 +8,6 @@
   <% end %>
   <%= form_for [comment, comment.likes.build] do |like| %>
     <%= like.hidden_field :user_id, value: current_user.id %>
-    <%= like.submit "Like", class: "btn btn-primary like-section"%>               
+    <%= like.submit "Like", class: "btn btn-primary like-section"%>    
   <% end %>
 </div>

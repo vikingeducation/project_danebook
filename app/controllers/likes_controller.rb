@@ -7,10 +7,10 @@ class LikesController < ApplicationController
     @like.from = current_user.id
     if !Like.already_liked?(@likeable, current_user) && @like.save!  
       flash[:success] = "Liked!"
-      redirect_to user_path(@likeable.user)
+      redirect_back(fallback_location: root_path)
     else
       flash[:danger] = "You already liked that"
-      redirect_to user_path(@likeable.user)
+      redirect_back(fallback_location: root_path)
     end
   end
 

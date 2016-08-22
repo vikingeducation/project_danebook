@@ -3,6 +3,14 @@ class User < ApplicationRecord
   has_one :profile, dependent: :nullify
   has_many :photos
   has_many :likes
+  has_many :friended_relationships,  class_name:  "Relationship",
+                                   foreign_key: "friender_id",
+                                   dependent:   :destroy
+  has_many :been_friended_relationships, class_name:  "Relationship",
+                                   foreign_key: "friended_id",
+                                   dependent:   :destroy
+  has_many :friends, through: :friended_relationships,  source: :friended
+  has_many :been_friended, through: :been_friended_relationships, source: :friender
 
   before_create :generate_token
   after_create :create_profile
@@ -42,6 +50,10 @@ class User < ApplicationRecord
 
   def welcome_email
     UserMailer.welcome(self).deliver!
+  end
+
+  def name
+    self.first_name + " " + self.last_name
   end
 
 end

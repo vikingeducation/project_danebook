@@ -1,6 +1,7 @@
 <%= render "shared/search_navbar" %>
 <%= render "shared/profile_header" %>
 <%= render "shared/flash" %>
+<%= render "relationships/pending_friend_request" %>
 
 <div class="container">
   <div class="col-md-4">
@@ -25,6 +26,7 @@
       <h3 class="text-center">Friends</h1>
     </div>
   </div>
+  <% if current_user && current_user.friends.include?(@user) %>
   <div class="col-md-8">
     <div class="row">
       <%= render "posts/new_post" if @post && @user%>
@@ -84,5 +86,5 @@
       <% end %>
     </div>
   </div>
+  <% end %>
 </div>
-<span class="glyphicon glyphicon-play"></span>

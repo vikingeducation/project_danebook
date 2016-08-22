@@ -4,6 +4,8 @@ class Comment < ApplicationRecord
   has_many :likes, as: :likeable
   has_many :comments, as: :commentable, dependent: :nullify
 
+  validates :content, presence: true
+
   after_create :commented_by_email
 
   accepts_nested_attributes_for :comments

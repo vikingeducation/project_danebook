@@ -10,12 +10,12 @@ class CommentsController < ApplicationController
     @comment = @commentable.comments.build(comment_params)
     @comment.user = User.find_by_id(@comment.commentable.user_id)
     @comment.from = current_user.id
-    if @comment.save!
+    if @comment.save
       flash[:success] = "Your comment has been saved!"
       redirect_back(fallback_location: root_path)
     else
-      flash[:danger] = "Your comment was not posted"
-      redirect_to current_user(@comment.commentable.user_id)
+      flash[:danger] = "Your comment needs to have content in it"
+      redirect_back(fallback_location: root_path)
     end
   end
 

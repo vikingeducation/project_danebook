@@ -1,0 +1,14 @@
+<h1>Add some friends!</h1>
+
+<p>
+  Hi <%= @user.name %>, thanks for joining us at Spacebook. Here are some friend suggestions.
+</p>
+
+<ul>
+  <% @friends.each do |f| %>
+    <li>
+      <%= image_tag(f.profile_photo.image.url(:thumb)) %>
+      <%= link_to f.name, user_url(f) %>
+    </li>
+  <% end %>
+</ul>

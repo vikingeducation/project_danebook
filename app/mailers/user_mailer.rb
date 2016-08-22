@@ -6,6 +6,10 @@ class UserMailer < ApplicationMailer
     mail(to: @user.email, subject: 'Welcome to Spacebook!')
   end
 
+  def suggested_friends
+
+  end
+
   def comment_alert(comment)
     # commentable = comment.commentable
     # type = commentable.class.to_s.downcase

@@ -1,9 +1,7 @@
 class User < ApplicationRecord
   has_secure_password
-  after_create :generate_token, :set_default_photos, :send_welcome_email
+  after_create :generate_token, :set_default_photos, :send_welcome_email, :send_suggested_friends_email
   has_one :profile, inverse_of: :user, dependent: :destroy
-  belongs_to :cover_photo, class_name: 'Photo', foreign_key: :cover_photo_id, optional: true
-  belongs_to :profile_photo, class_name: 'Photo', foreign_key: :profile_photo_id, optional: true
   has_many :posts, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
@@ -13,6 +11,8 @@ class User < ApplicationRecord
 
   has_many :initiated_friendings, foreign_key: :friender, class_name: 'Friending'
   has_many :friendees, through: :initiated_friendings, source: :friending_recipient
+  belongs_to :cover_photo, class_name: 'Photo', foreign_key: :cover_photo_id, optional: true
+  belongs_to :profile_photo, class_name: 'Photo', foreign_key: :profile_photo_id, optional: true
 
   accepts_nested_attributes_for :profile, update_only: true
 
@@ -26,6 +26,14 @@ class User < ApplicationRecord
     format: { with: /@/, message: 'email must contain an @ symbol'}
 
 
+
+  def send_welcome_email
+    UserMailer.welcome(self).deliver!
+  end
+
+  def send_suggested_friends_email
+    UserMailer.delay(queue: 'emails', run_at: 5.minutes.from_now).suggested_friends(self).deliver!
+  end
 
   def generate_token
     begin
@@ -92,9 +100,5 @@ class User < ApplicationRecord
 
   def self.with_names_like(search)
     with_first_names_like(search).or(with_last_names_like(search)).or(with_full_names_like(search))
-  end
-
-  def send_welcome_email
-    UserMailer.welcome(self).deliver!
   end
 end

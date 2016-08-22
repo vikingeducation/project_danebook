@@ -1,5 +1,6 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
+  config.serve_static_assets = true
 
   config.action_mailer.smtp_settings = {
   :address => 'smtp.sendgrid.net',
@@ -14,7 +15,7 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { :host => 'daneb00k.herokuapp.com'}
 
-  :storage => :s3
+  :storage => :s3,
   :s3_credentials => {
 
     # put your host name here if needed

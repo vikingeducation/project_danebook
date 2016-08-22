@@ -21,7 +21,7 @@ gem 'validates_timeliness', '~> 4.0'
 gem 'aws-sdk'
 gem 'paperclip'
 gem 'figaro'
-gem 'letter_opener'
+
 gem 'delayed_job_active_record'
 
 
@@ -52,6 +52,7 @@ group :development, :test do
   gem 'better_errors'
   gem 'rspec-rails'
   gem 'factory_girl_rails', '~> 4.0'
+  gem 'letter_opener'
 end
 
 gem 'faker'

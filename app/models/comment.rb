@@ -6,7 +6,7 @@ class Comment < ApplicationRecord
 
   validates :content, presence: true
 
-  #after_create :commented_by_email
+  after_create :commented_by_email
 
   accepts_nested_attributes_for :comments
 

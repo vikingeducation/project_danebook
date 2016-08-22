@@ -48,7 +48,7 @@ class UsersController < ApplicationController
         # flash[:success] = "Created new user!"
         redirect_to user_path(@user)
       else
-        flash[:danger] = "Please fill out all fields!"
+        flash[:danger] = "Unable to sign in!"
         redirect_to root_path
       end
     end

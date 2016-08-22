@@ -64,7 +64,7 @@ class User < ApplicationRecord
   def feed_posts
     friend_ids = "SELECT friended_id FROM friendships
                   WHERE  friender_id = :user_id"
-    Post.where("author_id IN (#{friend_ids}) OR author_id = :user_id", user_id: id)
+    Post.where("author_id IN (#{friend_ids}) OR author_id = :user_id", user_id: id).order(created_at: :desc)
   end
 
   ######## EMAILS ###############

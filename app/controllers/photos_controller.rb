@@ -5,7 +5,7 @@ class PhotosController < ApplicationController
   def index
     @user = User.find_by_id(params[:user_id])
     @photos = @user.photos
-    unless both_friends?(@user)
+    unless current_user || both_friends?(@user)
       flash[:danger] = "You have to be friends with them to view their photos"
       redirect_back(fallback_location: root_path)
     end

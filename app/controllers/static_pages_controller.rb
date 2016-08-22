@@ -2,7 +2,7 @@ class StaticPagesController < ApplicationController
   skip_before_action :require_login, :only => [:home]
   def home
     if signed_in_user?
-      redirect_to user_activities_path(current_user)
+      redirect_to user_timelines_path(current_user)
     else
       @user = User.new
     end

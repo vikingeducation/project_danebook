@@ -1,6 +1,6 @@
 <div class="col-xs-3">
   <%= link_to user_photo_path(photo.owner, photo) do %>
-    <div data-content="Uploaded January 1, 2015" class="img-overlay img-center">
+    <div data-content="<%= photo.created_at %>" class="img-overlay img-center">
       <%= image_tag photo.image.url(:small), class: "img-responsive" %>
       <div class="project-overlay"></div>
     </div>

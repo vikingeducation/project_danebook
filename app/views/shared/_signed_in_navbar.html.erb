@@ -4,7 +4,7 @@
       <div class="container">
         <div class="navbar-header">
           <%= link_to image_tag("/imgs/danish_flag.gif"), user_activities_path(@current_user), class: "navbar-left brand-img" %>
-          <%= link_to content_tag(:span, 'Danebook', class: "brand-text"), user_activities_path(@current_user), class: "navbar-brand" %>
+          <%= link_to content_tag(:span, 'Danebook', class: "brand-text"), user_timelines_path(@current_user), class: "navbar-brand" %>
         </div>
         <div class="row">
           <div class="col-xs-8">

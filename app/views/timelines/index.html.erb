@@ -10,17 +10,21 @@
               <% else %>
                 <img class="profile-img" src="/imgs/harry_potter_small.jpg">
               <% end %>
-              <%= link_to @user.fullname, @user %>
-              <h4>Recently Active</h4>
-						  <% @user.active_friends.each do |friend| %>
-                <% if friend.profile_photo %>
-                  <%= image_tag(friend.profile_photo.image.url, class: "profile-img") %>
-                <% else %>
-                  <img class="profile-img" src="/imgs/harry_potter_small.jpg">
+              <%= link_to @user.fullname, @user, class: "newsfeed-name" %>
+              <% if @user.active_friends.any? %>
+                <h4>Recently Active</h4>
+  						  <% @user.active_friends.each do |friend| %>
+                  <% if friend.profile_photo %>
+                    <%= image_tag(friend.profile_photo.image.url, class: "profile-img") %>
+                  <% else %>
+                    <img class="profile-img" src="/imgs/harry_potter_small.jpg">
+                  <% end %>
+                  <%= link_to friend.fullname, friend, class: "newsfeed-name" %>
                 <% end %>
-                <%= link_to friend.fullname, friend %>
+              <% else %>
+                <p class="text-center">No recently active friends</p>
               <% end %>
-              <h4><%= link_to "See All Friends", user_friendings_path %></h4>
+              <h4 class="text-center"><%= link_to "See All Friends", user_friendings_path %></h4>
 						</div>
 					</div>
 				</section>
@@ -29,7 +33,7 @@
 				<section class="tl-content-box tl-post-box">
 					<div class="row">
 						<header class="col-xs-12">
-							<h4>Posts</h4>
+							<h4>Newsfeed</h4>
 						</header>
 					</div>
 					<div class="row">

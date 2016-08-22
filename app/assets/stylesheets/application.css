@@ -48,3 +48,6 @@ color: white;
 .delete_link {
   color: darkred;
 }
+.bar-link {
+  margin-top: 5px;
+}

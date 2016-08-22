@@ -29,6 +29,7 @@ gem 'jbuilder', '~> 2.5'
  gem 'aws-sdk'
  gem 'figaro'
  gem 'faker'
+ gem 'delayed_job_active_record'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 group :production do
@@ -64,7 +65,6 @@ group :development do
   gem 'binding_of_caller'
   gem 'guard-rspec', require: false
   gem 'letter_opener'
-  gem 'delayed_job_active_record'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

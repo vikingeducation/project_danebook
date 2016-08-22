@@ -43,8 +43,6 @@ end
 def create_user
   puts 'creating user...'
   User.create(email: Faker::Internet.email, password: 'password',
-    profile_photo: Photo.first,
-    cover_photo: Photo.second,
   profile_attributes: {
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
@@ -85,6 +83,8 @@ end
 
 User.all.each do |user|
   create_friending(user)
+  user.profile_photo = Photo.first
+  user.cover_photo = Photo.second
 end
 
 def create_random_post

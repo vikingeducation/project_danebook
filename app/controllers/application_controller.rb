@@ -133,7 +133,7 @@ class ApplicationController < ActionController::Base
   end
 
   def queue_comment_email(user,resource)
-    UserCommentPostJob.set(wait: 5.seconds).perform_later(user,resource)
+    UserCommentJob.set(wait: 5.seconds).perform_later(user,resource)
   end
 
 end

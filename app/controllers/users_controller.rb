@@ -80,13 +80,6 @@ end
                 :cover_pic_id)
     end
 
-    def require_current_user
-      unless current_user == User.find(params[:id])
-        flash[:danger] = "Access denied!!!"
-        redirect_to root_path
-      end
-    end
-
     def feed_posts(user)
       Posting.friend_activities(user).map do |posting|
         resource = find_instance(posting)

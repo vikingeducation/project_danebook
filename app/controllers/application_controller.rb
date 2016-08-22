@@ -10,6 +10,13 @@ class ApplicationController < ActionController::Base
       end
     end
 
+    def require_current_user
+      unless current_user == User.find(params[:id])
+        flash[:danger] = "Access denied!!!"
+        redirect_to root_path
+      end
+    end
+
     def sign_in(user)
       user.regenerate_auth_token
       cookies[:auth_token] = user.auth_token

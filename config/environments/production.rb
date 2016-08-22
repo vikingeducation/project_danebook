@@ -18,6 +18,28 @@ Rails.application.configure do
   # Apache or NGINX already handles this.
   config.public_file_server.enabled = ENV['RAILS_SERVE_STATIC_FILES'].present?
 
+  config.action_mailer.default_url_options = {
+    :host => 'https://stormy-forest-22873.herokuapp.com/',
+  }
+
+  config.action_mailer.delivery_method = :letter_opener
+
+  config.paperclip_defaults = {
+
+  :storage => :s3,
+
+  :s3_credentials => {
+
+
+    :host_name => "dylanlynch.s3-website-us-east-1.amazonaws.com",
+
+
+    :bucket => Rails.application.secrets.s3_bucket_name,
+    :access_key_id => Rails.application.secrets.s3_api_id,
+    :secret_access_key => Rails.application.secrets.s3_api_key,
+    :s3_region=> Rails.application.secrets.s3_region
+  }
+}
   # Compress JavaScripts and CSS.
   config.assets.js_compressor = :uglifier
   # config.assets.css_compressor = :sass

@@ -7,7 +7,7 @@ Rails.application.configure do
   #S3 
   config.paperclip_defaults = {
     :storage => :s3,
-    :s3_region => Rails.application.secrets.s3_region
+    :s3_region => Rails.application.secrets.s3_region,
     :s3_credentials => {
     :s3_host_name => "s3-us-west-2.amazonaws.com",
     :bucket => Rails.application.secrets.s3_bucket_name,

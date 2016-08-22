@@ -6,4 +6,3 @@ log/test.log
 /config/application.yml
 
 .env
-Procfile

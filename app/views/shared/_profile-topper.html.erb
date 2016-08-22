@@ -1,12 +1,12 @@
 <div class="container cover-section">
   <div class="cover-photo-container">
     <% if @user.cover_photo %>
-      <%= image_tag(@user.cover_photo.image.url, class: "cover-photo") %>
+      <%= image_tag(@user.cover_photo.image.url(:cover), class: "cover-photo") %>
     <% else %>
       <img class="cover-photo" src="/imgs/hogwarts_small.jpg">
     <% end %>
     <% if @user.profile_photo %>
-      <%= image_tag(@user.profile_photo.image.url, class: "profile-img") %>
+      <%= image_tag(@user.profile_photo.image.url(:profile), class: "profile-img") %>
     <% else %>
       <img class="profile-img" src="/imgs/harry_potter_small.jpg">
     <% end %>

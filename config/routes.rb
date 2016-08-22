@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: "static_pages#home"
+  root to: "sessions#new"
 
   resources :users, :except => [:new, :delete] do
     resources :activities, :only => [:index, :destroy]
@@ -18,8 +18,8 @@ Rails.application.routes.draw do
 
   resources :likings, :only => [:destroy]
 
-  resource :session, :only => [:create, :destroy]
+  resource :session, :only => [:create, :destroy, :new]
 
-  get "login" => "static_pages#home"
+  get "login" => "sessions#new"
   delete "logout" => "sessions#destroy"
 end

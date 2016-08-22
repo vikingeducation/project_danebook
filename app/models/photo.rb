@@ -1,5 +1,5 @@
 class Photo < ApplicationRecord
-  has_attached_file :image, styles: { medium: "300x300>", small: "150x150>", thumb: "67x67>" }
+  has_attached_file :image, styles: { medium: "300x300>", small: "15ox150>", thumb: "67x67>", profile: "168x168>", cover: "1170x370>" }
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\z/
 
   has_one :activity, :as =>:postable

@@ -2,9 +2,8 @@ require 'rails_helper'
 
 feature 'Post' do
   let(:user){ create(:user) }
-  let(:post){ create(:post, user_id: user.id) }
-  let(:posts){ create_list(:post, 5) }
-  let(:user_many_posts){ create(:user){ user.posts= posts } }
+  let(:post){ user.text_posts.create(description: "test post") }
+  let(:posts){ [post, user.text_posts.create(description: "test opst 2")] }
 
   before do
     sign_in(user)
@@ -18,7 +17,7 @@ feature 'Post' do
     end
 
     scenario "will be able to post to own timeline" do
-      expect { make_post_on_own_timeline }.to change(user.posts, :count).by(1)
+      expect { make_post_on_own_timeline }.to change(user.text_posts, :count).by(1)
     end
 
     scenario "cannot make post when not logged in" do
@@ -29,8 +28,8 @@ feature 'Post' do
 
     scenario "user can see all posts created on own timeline" do
       sign_out
-      sign_in(user_many_posts)
-      user_many_posts.posts.each do |post|
+      sign_in(user)
+      user.text_posts.each do |post|
         expect(page).to have_content "#{post.description}"
       end
     end

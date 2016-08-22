@@ -9,7 +9,7 @@ class ProfilesController < ApplicationController
   def edit
     if signed_in_user?
       @user = current_user
-      @profile = user.profile
+      @profile = @user.profile
     else
       redirect_to login_path
     end

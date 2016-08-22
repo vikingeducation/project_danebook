@@ -16,7 +16,6 @@ feature 'Comment' do
     end
 
     scenario "will have new comment on existing posts" do
-      save_and_open_page
       expect(page).to have_css("form.new_comment")
     end
 
@@ -39,7 +38,12 @@ feature 'Comment' do
       expect(page).to have_css ".unlike-class"
     end
 
-    scenario ""
+    scenario "unlike a liked post" do
+      within(".like-listing-expanded") { click_button "Like" }
+      within(".like-listing-expanded") { click_button "Unlike" }
+
+      expect(page).to have_css ".like-class"
+    end
 
   end
 end

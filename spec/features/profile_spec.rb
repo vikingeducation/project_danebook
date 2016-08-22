@@ -21,7 +21,7 @@ feature 'Profile' do
 
     scenario "allows signed in users to view the edit page of their own profile" do
       click_link "About"
-      click_link "Edit Profile"
+      within(".edit-btn") { click_link "Edit Profile" }
       expect(page).to have_css("#static_pages")
       expect(page).to have_css(".edit_profile")
     end
@@ -32,7 +32,7 @@ feature 'Profile' do
     before do
       sign_in(user)
       click_link "About"
-      click_link "Edit Profile"
+      within(".edit-btn") { click_link "Edit Profile" }
     end
 
     scenario "allows signed in users to update profile" do

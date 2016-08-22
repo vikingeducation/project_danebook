@@ -3,12 +3,14 @@ class PostsController < ApplicationController
 
   def create
     if signed_in_user?
+
       @user = current_user
-      post =@user.text_posts.new(white_listed_posts_params)
-      if post.save
-        flash[:success] = "Ehhh way to go fonz"
-      else
+      @post =@user.text_posts.create(white_listed_posts_params)
+      # sdlkfj;
+      if @post.id.nil?
         flash[:error] = "Uh ohhh something went wrong"
+      else
+        flash[:success] = "Ehhh way to go fonz"
       end
       redirect_to :back
     else

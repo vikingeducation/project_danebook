@@ -7,7 +7,7 @@
       <div class="col-sm-4 col-md-3">
 
         <p><%= link_to user_path(friend), class: "friend-name" do %>
-            <%= image_tag(profile_pic_url(user), class: "post-pic img-responsive") %>
+            <%= image_tag(profile_pic_url(friend), class: "post-pic img-responsive") %>
             <%= "#{friend.full_name}" %>
           <% end %></p>
       </div>

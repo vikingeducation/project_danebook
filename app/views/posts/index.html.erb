@@ -5,7 +5,7 @@
       <div class="col-sm-4" id="left-column">
         <header class="row content-center grey-background" id="timeline-about">
           <div class="col-sm-12 border-3sides">
-            <h4>About (Text Area)</h4>
+            <h4>About</h4>
           </div>
         </header>
         <div class="row border-3sides border-bottom">
@@ -20,42 +20,18 @@
         <!-- photos section -->
         <header class="row content-center grey-background" id="timeline-photos">
           <div class="col-sm-12 border-3sides">
-            <h4>Photos (123) (Copied Text Area)</h4>
+            <h4>Photos (<%= @page_owner.photos.count %>) </h4>
           </div>
         </header>
+
         <div class="row padding-top border-3sides">
-          <div class="col-sm-4 small-photo-div">
-            <a href="#"><img src="images/icon_photo_small.png" class="small-photo"></a>
-          </div>
-          <div class="col-sm-4 small-photo-div">
-            <a href="#"><img src="images/icon_photo_small.png" class="small-photo"></a>
-          </div>
-          <div class="col-sm-4 small-photo-div">
-            <a href="#"><img src="images/icon_photo_small.png" class="small-photo"></a>
-          </div>
+          <% @page_owner.photos.each do |photo| %>
+            <div class="col-sm-4 small-photo-div">
+              <%= link_to image_tag(photo.file.url(:thumb), class: "small-photo"), user_photo_path(@page_owner, photo) %>
+            </div>
+          <% end %>
         </div>
-        <div class="row padding-top border-2sides">
-          <div class="col-sm-4 small-photo-div">
-            <a href="#"><img src="images/icon_photo_small.png" class="small-photo"></a>
-          </div>
-          <div class="col-sm-4 small-photo-div">
-            <a href="#"><img src="images/icon_photo_small.png" class="small-photo"></a>
-          </div>
-          <div class="col-sm-4 small-photo-div">
-            <a href="#"><img src="images/icon_photo_small.png" class="small-photo"></a>
-          </div>
-        </div>
-        <div class="row padding-top border-2sides">
-          <div class="col-sm-4 small-photo-div">
-            <a href="#"><img src="images/icon_photo_small.png" class="small-photo"></a>
-          </div>
-          <div class="col-sm-4 small-photo-div">
-            <a href="#"><img src="images/icon_photo_small.png" class="small-photo"></a>
-          </div>
-          <div class="col-sm-4 small-photo-div">
-            <a href="#"><img src="images/icon_photo_small.png" class="small-photo"></a>
-          </div>
-        </div>
+      
         <div class="row border-2sides border-bottom content-center">
           <div class="col-xs-12">
             <a href="photos.html" class="footer-link more-link">See More Photos</a>
@@ -65,52 +41,20 @@
         <!--friends section  -->
         <header class="row content-center grey-background" id="timeline-photos">
           <div class="col-sm-12 border-3sides">
-            <h4>Friends (542)</h4>
+            <h4>Friends (<%= @page_owner.friended_users.count + @page_owner.users_friended_by.count %>) </h4>
           </div>
         </header>
         <div class="row padding-top border-3sides">
-          <div class="col-sm-4 small-photo-div">
-            <a href="#"><img src="images/user_silhouette_generic.gif" class="small-photo"></a>
-          </div>
-          <div class="col-sm-4 small-photo-div">
-            <a href="#"><img src="images/user_silhouette_generic.gif" class="small-photo"></a>
-          </div>
-          <div class="col-sm-4 small-photo-div">
-            <a href="#"><img src="images/user_silhouette_generic.gif" class="small-photo"></a>
-          </div>
-        </div>
-        <div class="row border-2sides content-center">
-          <div class="col-sm-4 small-photo-div">
-            <a href="#" class="user-link">Ron Weasley</a>
-          </div>
-          <div class="col-sm-4 small-photo-div">
-            <a href="#" class="user-link">Ginny Weasley</a>
-          </div>
-          <div class="col-sm-4 small-photo-div">
-            <a href="#" class="user-link">Hermione Granger</a>
-          </div>
-        </div>
-        <div class="row padding-top border-2sides">
-          <div class="col-sm-4 small-photo-div">
-            <a href="#"><img src="images/user_silhouette_generic.gif" class="small-photo"></a>
-          </div>
-          <div class="col-sm-4 small-photo-div">
-            <a href="#"><img src="images/user_silhouette_generic.gif" class="small-photo"></a>
-          </div>
-          <div class="col-sm-4 small-photo-div">
-            <a href="#"><img src="images/user_silhouette_generic.gif" class="small-photo"></a>
-          </div>
-        </div>
-        <div class="row border-2sides content-center">
-          <div class="col-sm-4 small-photo-div">
-            <a href="#" class="user-link">Ron Weasley</a>
-          </div>
-          <div class="col-sm-4 small-photo-div">
-            <a href="#" class="user-link">Ginny Weasley</a>
-          </div>
-          <div class="col-sm-4 small-photo-div">
-            <a href="#" class="user-link">Hermione Granger</a>
-          </div>
+          <% (@page_owner.friended_users + @page_owner.users_friended_by).each do |friend| %>
+            <div class="col-sm-4 small-photo-div">
+            <% if friend.profile_picture %>
+              <%= link_to image_tag(friend.profile_picture.file.url(:thumb), class: "small-photo"), user_timeline_path(friend) %>
+            <% else %>
+              <%= link_to image_tag("http://buira.org/assets/images/shared/default-profile.png", class: "small-photo"), user_timeline_path(friend) %> 
+            <% end %>
+            </div>
+          <% end %>
+
         </div>
         <div class="row border-2sides border-bottom content-center">
           <div class="col-xs-12">
@@ -151,7 +95,12 @@
           <div class="row border-3sides" id="posts-section" >
             <header>
               <div class="col-sm-1 small-profile-photo-div">
-                <a href="#"><img class="small-profile-photo" src="images/user_silhouette_generic.gif"></a>
+                <!--  <a href="#"><img class="small-profile-photo" src="images/user_silhouette_generic.gif"></a>-->
+                <% if post.author.profile_picture %>
+                  <%= image_tag(post.author.profile_picture.file.url, class: "small-profile-photo")  %>
+                <% else %>
+                  <%= image_tag("http://buira.org/assets/images/shared/default-profile.png", class: "small-profile-photo") %>
+                <% end %>
               </div>
               <div class="col-sm-4">
                 <div class="row">
@@ -164,7 +113,7 @@
                 <div class="row">
                   <div class="col-sm-12">
 
-                    Posted on <%= post.created_at %>
+                    <%= post.created_at.to_formatted_s(:rfc822).split(' ')[0..-3].join(' ') %>
 
                   </div>
                 </div>
@@ -178,23 +127,24 @@
 
             </div>
           </div>
-          <%# fail %>
+
           <footer class="row border-3sides border-bottom grey-background">
             <div class="col-sm-12">
-              <%= link_to "Like", post_likes_path(post), method: "POST", class: "footer-link" %>
-              <%= link_to "Comment", post_path(post), class: "footer-link" %> 
 
-              <% if @user.id == params[:user_id].to_i %>
-                <%= link_to "Delete", user_post_path(@user, post), method: "delete", class: ["footer-link", "float-right"] %>
-              <% end %>
+            <% if liked?("Post", post.id, current_user.id) %>
+              <%= link_to "Unlike", post_like_path(post.id, find_polymorphic_like("Post", post.id, current_user.id).first.id), method: "DELETE", class: "footer-link"  %>
+            <% else %>
+              <%= link_to "Like", post_likes_path(post), method: "POST", class: "footer-link" %>
+            <% end %>
+
+            <%= link_to "Comment", post_path(post), class: "footer-link" %> 
+
+            <% if @user.id == params[:user_id].to_i %>
+              <%= link_to "Delete", user_post_path(@user, post), method: "delete", class: ["footer-link", "float-right"] %>
+            <% end %>
 
             </div>
           </footer>
-
-
-          <!-- markup for likes: YTBI -->
-
-
 
 
           <!-- all comments  -->
@@ -204,12 +154,16 @@
           <div class="comment-field row border-2sides border-bottom grey-background">
             <div class="comment">
               <div class="col-sm-1">
-                <img src="images/user_silhouette_generic.gif" class="small-profile-photo">
+                <% if comment.author.profile_picture %>
+                  <%= image_tag(comment.author.profile_picture.file.url, class: "small-profile-photo")  %>
+                <% else %>
+                  <%= image_tag("http://buira.org/assets/images/shared/default-profile.png", class: "small-profile-photo") %>
+                <% end %>              
               </div>
               <div class="col-sm-11">
                 <div class="row">
                   <div class="col-sm-12">
-                    <p class="grey-out"><%#= link_to comment.author.name, user_timeline_path(comment.author) %> Said on <%= comment.created_at %></p>
+                    <p class="grey-out"><%= link_to comment.author.name, user_timeline_path(comment.author) %> <%= comment.created_at.to_formatted_s(:rfc822).split(' ')[0..-3].join(' ')  %></p>
                   </div>
                 </div>
                 <div class="row">
@@ -219,7 +173,7 @@
                 </div>
                 <div class="row">
                   <div class="col-sm-12">
-                    <p class="grey-out"><a href="#" class="footer-link">Like</a></p>
+                    <p class="grey-out"><%= link_to "Like", comment_likes_path(comment, params: {likable_type: "Comment"}), method: "POST", class: "footer-link" %> </p>
                   </div>
                 </div>
               </div>

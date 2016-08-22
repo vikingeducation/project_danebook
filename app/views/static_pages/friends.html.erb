@@ -1,112 +1,43 @@
 
 <div id="about" class="container">
   <header class="row" id="row-header">
-    <div class="col-xs-2 col-xs-offset-5 content-center grey-background">
-      <h1 id="about-header">Friends</h1>  
+    <div class="col-xs-4 col-xs-offset-4 content-center grey-background">
+      <h1 id="about-header">Friends </h1>  
     </div>
   </header>
   <!-- first row -->
   <div class="row friend-row">
-    <div class="col-sm-6"> <!-- first column -->
-      <div class="row">
-        <div class="friend">
-          <div class="col-xs-2">
-            <img src="images/user_silhouette_generic.gif">
-          </div>
-          <div class="col-xs-6 friend-name">
-            <a href="#" class="footer-link friend-name">Hermione Granger</a><br>
-            <span class="grey-out">432 Friends</span>
-          </div>
-          <div class="col-xs-3 friend-name">
-            <input type="button" value="Unfriend Me" class="unfriend-button">
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-6"> <!-- second column -->
-      <div class="row">
-        <div class="friend">
-          <div class="col-xs-2">
-            <img src="images/user_silhouette_generic.gif">
-          </div>
-          <div class="col-xs-6 friend-name">
-            <a href="#" class="footer-link friend-name">Hermione Granger</a><br>
-            <span class="grey-out">432 Friends</span>
-          </div>
-          <div class="col-xs-3 friend-name">
-            <input type="button" value="Unfriend Me" class="unfriend-button">
+
+    <% @page_owner.friends.each do |friend| %>
+
+      <div class="col-sm-6"> <!-- first column -->
+        <div class="row">
+          <div class="friend">
+            <div class="col-xs-2">
+
+              <% if friend.profile_picture %>
+                <%= image_tag(friend.profile_picture.file.url) %>
+              <% else %>
+                <%= image_tag("http://buira.org/assets/images/shared/default-profile.png") %>
+              <% end %>
+
+            </div>
+            <div class="col-xs-6 friend-name">
+
+              <%= link_to friend.name, friend, class: "footer-link friend-name" %> <br>
+
+              <span class="grey-out"><%= friend.friends.count %> friends</span>
+            </div>
+            <div class="col-xs-3 friend-name">
+              <!--  <input type="button" value="Unfriend Me" class="unfriend-button">-->
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-  <!-- second row -->
-  <div class="row friend-row">
-    <div class="col-sm-6"> <!-- first column -->
-      <div class="row">
-        <div class="friend">
-          <div class="col-xs-2">
-            <img src="images/user_silhouette_generic.gif">
-          </div>
-          <div class="col-xs-6 friend-name">
-            <a href="#" class="footer-link friend-name">Hermione Granger</a><br>
-            <span class="grey-out">432 Friends</span>
-          </div>
-          <div class="col-xs-3 friend-name">
-            <input type="button" value="Unfriend Me" class="unfriend-button">
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-6"> <!-- second column -->
-      <div class="row">
-        <div class="friend">
-          <div class="col-xs-2">
-            <img src="images/user_silhouette_generic.gif">
-          </div>
-          <div class="col-xs-6 friend-name">
-            <a href="#" class="footer-link friend-name">Hermione Granger</a><br>
-            <span class="grey-out">432 Friends</span>
-          </div>
-          <div class="col-xs-3 friend-name">
-            <input type="button" value="Unfriend Me" class="unfriend-button">
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="row friend-row">
-    <div class="col-sm-6"> <!-- first column -->
-      <div class="row">
-        <div class="friend">
-          <div class="col-xs-2">
-            <img src="images/user_silhouette_generic.gif">
-          </div>
-          <div class="col-xs-6 friend-name">
-            <a href="#" class="footer-link friend-name">Hermione Granger</a><br>
-            <span class="grey-out">432 Friends</span>
-          </div>
-          <div class="col-xs-3 friend-name">
-            <input type="button" value="Unfriend Me" class="unfriend-button">
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-sm-6"> <!-- second column -->
-      <div class="row">
-        <div class="friend">
-          <div class="col-xs-2">
-            <img src="images/user_silhouette_generic.gif">
-          </div>
-          <div class="col-xs-6 friend-name">
-            <a href="#" class="footer-link friend-name">Hermione Granger</a><br>
-            <span class="grey-out">432 Friends</span>
-          </div>
-          <div class="col-xs-3 friend-name">
-            <input type="button" value="Unfriend Me" class="unfriend-button">
-          </div>
-        </div>
-      </div>
+
+    <% end %>
+
+    
     </div>
   </div>
 </div>

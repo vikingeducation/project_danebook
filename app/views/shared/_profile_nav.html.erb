@@ -1,3 +1,10 @@
+<style>
+#cover-photo {
+  background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0) 70%, rgba(0, 0, 0, .4)), url("<%=@page_owner.cover_photo.file.url if @page_owner.cover_photo %>") no-repeat;
+  background-size: cover;
+}
+</style>
+
 <main class="container" id="main">
   <div class="row">
     <div class="col-xs-12" id="cover-photo">
@@ -23,6 +30,9 @@
           <%= link_to image_tag(@page_owner.profile_picture.file.url(:medium)), user_photo_path(@page_owner, @page_owner.profile_picture) %>
         <% end %>
       </div>
+      <div id="page_owner_name">
+        <h2> <%= @page_owner.name %> </h2>
+      </div>
     </div>
     <div class="col-xs-2 content-center border-right border-left">
       <h4><%= link_to "Timeline", user_timeline_path(@page_owner), class: ["main-nav", timeline_grey] %></h4>  
@@ -31,10 +41,10 @@
       <h4><%= link_to "About", user_about_path(@page_owner), class: ["main-nav", about_grey] %> </h4>
     </div>
     <div class="col-xs-2 content-center  border-right">
-      <h4><%= link_to "Photos (123)", user_photos_path(@page_owner), class: "main-nav #{photos_grey}" %> </h4> 
+      <h4><%= link_to "Photos (#{@page_owner.photos.count})", user_photos_path(@page_owner), class: "main-nav #{photos_grey}" %> </h4> 
     </div>
     <div class="col-xs-2 content-center border-right">
-      <h4><%= link_to "Friends", user_friends_path(@page_owner), class: "main-nav" %> </h4>
+      <h4><%= link_to "Friends (#{@page_owner.friends.count})", user_friends_path(@page_owner), class: "main-nav" %> </h4>
     </div>
     <div class="col-xs-2">
       <% if current_user == @page_owner %> 

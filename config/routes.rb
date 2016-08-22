@@ -2,6 +2,10 @@ Rails.application.routes.draw do
 
 
 
+  get 'cover_photos/create'
+
+  get 'cover_photos/destroy'
+
   get 'profile_picture/create'
 
   get 'profile_picture/destroy'
@@ -25,7 +29,7 @@ Rails.application.routes.draw do
     resources :friendships, :only => [:create, :destroy]
 
     resources :photos, :only => [:create, :new, :index, :show, :destroy] do 
-      resources :cover_photo, :only => [:create, :destroy]
+      resources :cover_photos, :only => [:create, :destroy]
       resources :profile_picture, :only => [:create, :destroy]
     end
 
@@ -37,6 +41,10 @@ Rails.application.routes.draw do
   resources :posts, :only => [:show] do 
     resources :comments, :only => [:create, :destroy]
     resources :likes, :only => [:create, :destroy]
+  end
+
+  resources :comments, :only => [:show] do 
+    resources :likes, :only => [:create, :destroy] 
   end
 
 

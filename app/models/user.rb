@@ -67,6 +67,10 @@ class User < ActiveRecord::Base
     UserMailer.welcome(user).deliver
   end
 
+  def friends
+    self.friended_users + self.users_friended_by
+  end
+
   # distinguish post author from timeline
   # post author is currently signed-in user
   # post recipient is whoever is currently 

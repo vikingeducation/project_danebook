@@ -8,6 +8,8 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
   helper_method :page_owner
   helper_method :signed_in_user?
+  helper_method :liked?
+  helper_method :find_polymorphic_like
 
 
   private
@@ -68,6 +70,15 @@ class ApplicationController < ActionController::Base
     @profile = @user.profile if @user
     page_owner
     friendship
+  end
+
+  def liked?(likable_type, likable_id, user_id)
+    return false if find_polymorphic_like(likable_type, likable_id, user_id).empty?
+    true
+  end
+
+  def find_polymorphic_like(likable_type, likable_id, user_id)
+    Like.where("likable_type = ? AND likable_id = ? AND user_id = ?", likable_type, likable_id, user_id)
   end
   
 end

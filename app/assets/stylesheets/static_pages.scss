@@ -6,6 +6,10 @@
 
 // home page
 
+html {
+  background-color: black;
+}
+
 .big-font {
   font-size: 2.5em;
 }
@@ -465,4 +469,12 @@ d1v {
 
 #delete_photo_button {
   margin-top: 20px;
+}
+
+#page_owner_name {
+  position: relative;
+  top: -70px;
+  right: -200px;
+  color: white;
+  display: inline;
 }

@@ -61,7 +61,7 @@ class User < ActiveRecord::Base
   end
 
   def recent_friends
-    friended_users.limit(4)
+    friended_users.limit(6)
   end
 
   def self.send_welcome_email(id)

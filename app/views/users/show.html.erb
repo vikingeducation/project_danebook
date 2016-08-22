@@ -16,7 +16,7 @@
                 <div class="col-sm-12">
                     <h3>Photos</h3>
                 </div>
-                <div class="col-sm-12">
+                <div class="col-sm-12 text-center">
                     <% @user.photos.each do |photo| %>
                     <div class="image">
                         <%= image_tag photo.image.url(:thumb), class: "fit-div" %>
@@ -33,14 +33,14 @@
                 <div class="col-sm-5">
                     <h2>Friends</h2>
                 </div>
-                <div class="col-sm-12">
+                <div class="col-sm-12 text-center">
                     <% @user.recent_friends.each do |friend| %>
-                    <div id="friend-pic" class="friends-col">
+                    <div class="friends-col">
+                    <div id="friend-pic">
                         <%= profile_pic(friend) %>
-                        <span>
-                            <%= link_to friend, friend %>
-                          </span>
                     </div>
+                    <span><%= link_to friend, friend %></span>
+                  </div>
                     <% end %>
                     <div class="more">
                         <%= link_to "More Friends", user_friends_path(@user) %>

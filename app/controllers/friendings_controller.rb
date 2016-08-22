@@ -7,8 +7,8 @@ class FriendingsController < ApplicationController
     if current_user.friends?(@friend)
       flash[:alert] = 'already friends!'
     else
-      current_user.make_friend(friend)
-      flash[:notice] = "Friended #{friend}"
+      current_user.make_friend(@friend)
+      flash[:notice] = "Friended #{@friend}"
     end
     redirect_to session.delete(:return_to)
   end

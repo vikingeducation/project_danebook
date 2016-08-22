@@ -9,7 +9,7 @@ module UsersHelper
   def profile_pic(user)
     photo = Photo.where(id: user.profile.picture_id)
     if photo.empty?
-      image_tag('user_silhouette_generic.gif', size: '100x100', class: 'fit-div')
+      image_tag('user_silhouette_generic.gif', size: '150x150', class: 'fit-div')
     else
       image_tag(photo[0].image.url(:thumb), class: 'fit-div')
     end

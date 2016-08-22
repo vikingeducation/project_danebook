@@ -73,6 +73,16 @@ class User < ApplicationRecord
     UserMailer.activity(@user, @comment).deliver!
   end
 
+  ######## SEARCH ###############
+  def self.search(query)
+    if query
+      where("first_name ILIKE ? OR last_name ILIKE ?", "%#{query}%", "%#{query}%")
+    else
+      where("")
+    end
+  end
+
+
   def profile_photo_id=(id)
     id = id.to_i
     self.profile_photo = Photo.find(id) if self.photo_ids.include?(id)

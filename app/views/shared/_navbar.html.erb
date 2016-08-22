@@ -15,13 +15,13 @@
 
           <!-- Collect the nav links, forms, and other content for toggling -->
           <div class="navbar-collapse collapse" id="header-nav">
-            <form class="navbar-form">
+            <%= form_tag users_path, method: :get, class: "navbar-form"  do %>
               <div class="input-group">
-                <input class="form-control" type="text" placeholder="Search">
+                <%= text_field_tag :query, "", class: "form-control", placeholder: "Search users" %>
                 <div class="input-group-btn"><button class="btn btn-default" type="submit"><span class="glyphicon glyphicon-search"></span></button>
                 </div>
               </div>
-            </form>
+            <% end %>
             <div class="navbar-right">
               <%= link_to current_user.first_name, user_path(current_user), class: "navbar-text" %>
               <%= form_tag(logout_path, class: "navbar-form") do |f| %>

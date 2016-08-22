@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   skip_before_action :require_login, only: [:create, :new]
-  before_action :set_user, except: [ :create, :new ]
-  before_action :require_current_user, except: [ :show, :about, :create, :new ]
+  before_action :set_user, except: [ :create, :new, :index ]
+  before_action :require_current_user, except: [ :show, :about, :create, :new, :index ]
 
   def show
     @posts = @user.posts.order(created_at: :desc).includes(:likes, :comments)
@@ -11,6 +11,10 @@ class UsersController < ApplicationController
     @photos = @user.photos
 
     build_friend_box
+  end
+
+  def index
+    @results = User.search(query_params[:query])
   end
 
   def new
@@ -25,7 +29,7 @@ class UsersController < ApplicationController
       @user = User.new(user_params)
       if @user.save
         sign_in(@user)
-        User.send_welcome_email(@user.id)
+        User.delay.send_welcome_email(@user.id)
         # flash[:success] = "Created new user!"
         redirect_to user_path(@user)
       else
@@ -75,6 +79,10 @@ class UsersController < ApplicationController
               hometown_attributes: [ :id, :name, :country ],
               residency_attributes: [ :id, :name, :country ]
               )
+  end
+
+  def query_params
+    params.permit(:query)
   end
 
   def set_user

@@ -1,0 +1,25 @@
+<main class="container">
+
+  <%= render "shared/flash" %>
+
+  <div class="row timeline-left-column timeline-right-column">
+    <div class = "panel panel-default">
+      <div class="panel-heading">
+        <h2 class="panel-title">Search Results</h2>
+      </div>
+
+      <div class="panel-body">
+
+        <div class="row">
+
+          <div class="col-sm-6">
+            <% @results.each do |user| %>
+              <%= render partial: "friendships/friend_box", locals: { friend: user } %>
+            <% end %>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</main>

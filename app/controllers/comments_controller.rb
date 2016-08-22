@@ -8,7 +8,7 @@ class CommentsController < ApplicationController
         current_user.comments << comment
 
         if comment.save
-          User.send_activity_email(comment.parent_user.id, comment.id) unless comment.parent_user == current_user
+          User.delay.send_activity_email(comment.parent_user.id, comment.id) unless comment.parent_user == current_user
         else
           flash[:danger] = "Could not create comment."
         end

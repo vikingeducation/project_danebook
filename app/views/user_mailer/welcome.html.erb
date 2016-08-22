@@ -1,4 +1,4 @@
-
+<div class="email">
 <h1>Welcome!</h1>
 
 <p>
@@ -6,5 +6,8 @@
 </p>
 
 <p>
-  View your account <%= link_to "here", user_url(@user.id) %>
+  View your account <%= link_to "here", user_url(@user.id) %>.
 </p>
+
+<p>This is email was sent using Rail's ActionMailer gem and Heroku's SendGrid. The process was managed using the Delayed Job gem and through the use of a worker dyno.</p>
+</div>

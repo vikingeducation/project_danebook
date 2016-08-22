@@ -30,6 +30,7 @@ gem 'aws-sdk'
 gem 'faker'
 gem 'figaro'
 gem 'delayed_job_active_record'
+gem 'premailer-rails'
 # Use Unicorn as the app server
 # gem 'unicorn'
 

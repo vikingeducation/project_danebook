@@ -3,8 +3,12 @@ class CommentsController < ApplicationController
 
   def create
     @comment = current_user.comments_written.new(comment_params)
-    @object_maker = @comment.user
     if @comment.save!
+      if comment_params[:commentable_type] == "Post"
+        @object_maker = Post.find(comment_params[:commentable_id]).author
+      else
+        @object_maker = Photo.find(comment_params[:commentable_id]).user
+      end
       if @object_maker != current_user
         User.comment_email(@object_maker.id, current_user.id, @comment.id, params[:commentable_id])
       end

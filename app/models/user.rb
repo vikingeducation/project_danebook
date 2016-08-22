@@ -88,8 +88,7 @@ class User < ApplicationRecord
       owner_user = User.find(owner_id)
       comment_user = User.find(commenter_id)
       comment = Comment.find(comment_id)
-      post = Post.find(post_id)
-      UserMailer.comment(owner_user, comment_user, comment, post).deliver!
+      UserMailer.comment(owner_user, comment_user, comment).deliver!
     end
 
     handle_asynchronously :comment_email, run_at: Proc.new {5.seconds.from_now}

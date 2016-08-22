@@ -22,25 +22,45 @@
           <% end %>
         <% end %>
       <% end %>
-      <div class="col-xs-10 col-xs-offset-1" id="photo-show">
-      <%= image_tag @photo.image.url %>
-    </div>
-  </div>
-  <div class="col-md-10 col-md-offset-1" id="header-bar">
-    <h2>Comments</h2>
-    <div class="row" id="comments-section">
-      <% @photo.comments.each do |comment| %>
-        <%= render partial: "shared/comment_box", locals: {comment: comment} %>
-      <% end %>
-      <div class="col-xs-8 col-xs-offset-2" id="write-comment">
-            <%= simple_form_for [@comment] do |comment_field| %>
-              <%= comment_field.input :body, class:"form-control", label: false, input_html: {rows: "1"}, placeholder: "Write a comment..." %>
-            <div class="col-xs-2 col-xs-offset-8">
-            <%= comment_field.submit "Post comment", class:"btn btn-primary btn-sm" %>
-            </div>
+      <div class="row">
+        <div class="col-xs-10 col-xs-offset-1" id="photo-show">
+          <%= image_tag @photo.image.url %>
+        </div>
+      </div>
+      <div class="row" id="post-feedback">
+        <div class="col-xs-1">
+          <% if current_user.likes_post?(@photo.id, "Photo").empty? %>
+            <h6><%= link_to "Like", likes_path(likeable_id: @photo.id, likeable_type: "Photo"), method: 'post' %></h6>
+          <% else %>
+            <h6><%= link_to "Unlike", like_path(find_like_id(current_user.id, @photo.id, "Photo")), method: 'delete' %></h6>
+          <% end %>
+        </div>
+        <div class="col-xs-4">
+          <h6> <%= render partial: "shared/like_count", locals: {content: @photo} %></h6>
+        </div>
+        <div class="col-xs-2 col-xs-offset-4">
+          <% if @photo.user_id == current_user.id %>
+          <h6><%= link_to "Delete Photo", photo_path(@photo), method: :delete %></h6>
+          <% end %>
+        </div>
+      </div>
+      <div class="row" id="comments-section">
+        <% @photo.comments.each do |comment| %>
+          <%= render partial: "shared/comment_box", locals: {comment: comment} %>
         <% end %>
+        <div class="col-xs-10 col-xs-offset-1" id="write-comment">
+              <%= simple_form_for [@comment] do |comment_field| %>
+                <%= comment_field.hidden_field :commentable_type, :value => "Photo" %>
+                <%= comment_field.hidden_field :commentable_id, :value => "#{@photo.id}" %>
+                <%= comment_field.input :body, class:"form-control", label: false, input_html: {rows: "1"}, placeholder: "Write a comment..." %>
+              <div class="col-xs-2 col-xs-offset-8">
+              <%= comment_field.submit "Post comment", class:"btn btn-primary btn-sm" %>
+              </div>
+          <% end %>
+        </div>
       </div>
     </div>
   </div>
+  
   
 </main>

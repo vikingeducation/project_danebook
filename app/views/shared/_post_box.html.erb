@@ -40,6 +40,7 @@
     <% end %>
     <div class="col-xs-12" id="write-comment">
           <%= simple_form_for [@comment] do |comment_field| %>
+            <%= comment_field.hidden_field :commentable_type, :value => "Post" %>
             <%= comment_field.input :body, class:"form-control", label: false, input_html: {rows: "1"}, placeholder: "Write a comment..." %>
           <div class="col-xs-2 col-xs-offset-8">
           <%= comment_field.submit "Post comment", class:"btn btn-primary btn-sm" %>

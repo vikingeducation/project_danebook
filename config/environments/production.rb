@@ -15,9 +15,9 @@ Rails.application.configure do
 
   config.action_mailer.default_url_options = { :host => 'daneb00k.herokuapp.com'}
 
-  :storage => :s3,
+  
   :s3_credentials => {
-
+    :storage => :s3,
     # put your host name here if needed
     #   see the reading below for more details
     # NOTE: This must be the correct region for YOU

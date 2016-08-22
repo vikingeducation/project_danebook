@@ -61,6 +61,12 @@ class User < ApplicationRecord
     first_name + " " + last_name
   end
 
+  def feed_posts
+    friend_ids = "SELECT friended_id FROM friendships
+                  WHERE  friender_id = :user_id"
+    Post.where("author_id IN (#{friend_ids}) OR author_id = :user_id", user_id: id)
+  end
+
   ######## EMAILS ###############
   def self.send_welcome_email(user_id)
     @user = User.find(user_id)

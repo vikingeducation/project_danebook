@@ -1,0 +1,23 @@
+<main class="container" style="margin-top: 50px">
+  <div class="row">
+
+    <aside class="col-sm-4 timeline-left-column">
+
+      <%= render "friend_box" %>
+
+    </aside>
+
+    <section class="col-sm-8 timeline-right-column">
+
+      <%= render "shared/flash" %>
+
+      <%# render "add_friend_box" %>
+
+      <%= render "post_box" %>
+
+      <%= render @posts %>
+      <%= will_paginate @posts %>
+
+          </section>
+        </div>
+      </main>

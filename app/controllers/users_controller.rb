@@ -6,22 +6,34 @@ class UsersController < ApplicationController
   def show
     @posts = @user.posts.order(created_at: :desc).includes(:likes, :comments)
     @photos = @user.photos
+    build_friend_box
 
     # new comments, posts, etc.
     @post = current_user.posts.build if @user == current_user
     @comment = current_user.comments.build
     @friendship = Friendship.new
-
-    build_friend_box
   end
 
   def index
     @results = User.search(query_params[:query])
   end
 
+  def feed
+    @posts = @user.posts.order(created_at: :desc).includes(:likes, :comments)
+    @photos = @user.photos
+    build_friend_box
+
+    @posts = current_user.feed_posts.paginate(page: params[:page], per_page: 5)
+
+    # new comments, posts, etc.
+    @post = current_user.posts.build if @user == current_user
+    @comment = current_user.comments.build
+    @friendship = Friendship.new
+  end
+
   def new
     @user = User.new
-    redirect_to user_path(current_user) if signed_in_user?
+    redirect_to feed_user_path(current_user) if signed_in_user?
   end
 
   def create
@@ -31,7 +43,8 @@ class UsersController < ApplicationController
       @user = User.new(user_params)
       if @user.save
         sign_in(@user)
-        User.delay.send_welcome_email(@user.id)
+        # User.delay.send_welcome_email(@user.id)
+        User.send_welcome_email(@user.id)
         # flash[:success] = "Created new user!"
         redirect_to user_path(@user)
       else

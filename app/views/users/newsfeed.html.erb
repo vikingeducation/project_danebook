@@ -11,6 +11,7 @@
 				<%= render 'friendings/friends_preview', user: @user %>
 			</div><!-- Left Content -->
 			<div class="col-sm-7">
+				<%= render 'shared/flash' %>
 				<%= render "posts/new_post", post: @post %>
         <% @feeds.each do |feed| %>
             <%= render "#{feed[1].to_s}/user_#{feed[1].to_s}", resource: feed[1], user: feed[0] %>

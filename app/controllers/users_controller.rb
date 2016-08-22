@@ -17,7 +17,7 @@ end
 
 def create
   if signed_in_user?
-    flash[:error] = "Already signed in"
+    flash[:danger] = "Already signed in"
     redirect_to root_path
   else
     @user = User.new(user_params)
@@ -26,7 +26,7 @@ def create
       sign_in(@user)
       redirect_to root_path
     else
-      flash[:error] = "couldn't sign you in"
+      flash[:danger] = "couldn't sign you in"
       render "sessions/new"
     end
   end
@@ -38,11 +38,11 @@ def update
     if @user.update(user_params)
       flash[:success] = "Sucessfully updated your picture"
     else
-      flash[:error] = "Failed to update picture"
+      flash[:danger] = "Failed to update picture"
     end
     redirect_to :back
   else
-    flash[:error] = "Failed to update picture"
+    flash[:danger] = "Failed to update picture"
     redirect_to login_path
   end
 end
@@ -56,7 +56,7 @@ def newsfeed
     @post = @user.text_posts.build
     @feeds = feed_posts(@user)
   else
-    flash[:error] = "Please login to complete this operation"
+    flash[:danger] = "Please login to complete this operation"
     redirect_to login_path
   end
 end
@@ -82,7 +82,7 @@ end
 
     def require_current_user
       unless current_user == User.find(params[:id])
-        flash[:error] = "Access denied!!!"
+        flash[:danger] = "Access denied!!!"
         redirect_to root_path
       end
     end

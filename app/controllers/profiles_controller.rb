@@ -22,7 +22,7 @@ class ProfilesController < ApplicationController
         flash[:success] = "Your profile has been updated!"
         redirect_to user_profile_path(@current_user)
       else
-        flash.now[:error] = "Uhhh oh something went wrong trying to update your profile"
+        flash.now[:danger] = "Uhhh oh something went wrong trying to update your profile"
         render :edit
       end
     else

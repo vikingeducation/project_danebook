@@ -11,6 +11,7 @@
 				<%= render 'friendings/friends_preview', user: @user %>
 			</div><!-- Left Content -->
 			<div class="col-sm-7">
+				<%= render 'shared/flash' %>
 				<% if @user == current_user %>
 					<%= render "posts/new_post", post: @post %>
 				<% end %>

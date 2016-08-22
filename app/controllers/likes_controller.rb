@@ -1,6 +1,6 @@
 class LikesController < ApplicationController
   before_action :require_login
-  
+
   def create
     if signed_in_user?
       type = params[:likeable].classify
@@ -8,7 +8,7 @@ class LikesController < ApplicationController
       if resource.likes.create(:user_id => current_user.id)
         flash[:success] = "Like contributed to the post!"
       else
-        flash[:error] = "Couldn't establish the like"
+        flash[:danger] = "Couldn't establish the like"
       end
       redirect_to :back
     else
@@ -22,7 +22,7 @@ class LikesController < ApplicationController
       if @like.destroy
         flash[:success] = "Unliked the post"
       else
-        flash[:error] = "Couldn't make the unlike"
+        flash[:danger] = "Couldn't make the unlike"
       end
       redirect_to :back
     else

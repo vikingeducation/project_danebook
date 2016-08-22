@@ -8,13 +8,13 @@ class PostsController < ApplicationController
       @post =@user.text_posts.create(white_listed_posts_params)
       # sdlkfj;
       if @post.id.nil?
-        flash[:error] = "Uh ohhh something went wrong"
+        flash[:danger] = "Uh ohhh something went wrong"
       else
         flash[:success] = "Ehhh way to go fonz"
       end
       redirect_to :back
     else
-      flash[:error] = "Please sign in"
+      flash[:danger] = "Please sign in"
       redirect_to login_path
     end
   end
@@ -30,14 +30,14 @@ class PostsController < ApplicationController
         if @post.destroy
           flash[:success] = "You successfully destroyed that post..."
         else
-          flash[:error] = "We were unable to destroy the comment, perhaps its gone sentinel...."
+          flash[:danger] = "We were unable to destroy the comment, perhaps its gone sentinel...."
         end
       else
-        flash[:error] = "record not found"
+        flash[:danger] = "record not found"
       end
       redirect_to :back
     else
-      flash[:error] = "You are unauthorized to do this! And I won't stand for it.  You have been temporarily banned....."
+      flash[:danger] = "You are unauthorized to do this! And I won't stand for it.  You have been temporarily banned....."
       redirect_to login_path
     end
   end

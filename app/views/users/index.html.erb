@@ -2,7 +2,7 @@
   <%= render 'shared/navbar' %>
 
   <div class="container nav-margin padding-tainer">
-
+    <%= render 'shared/flash' %>
     <% @users.each_with_index do |user, i| %>
       <div class="col-xs-4 col-xs-offset-<%= i.even? ? 2 : 1%>">
           <img class="post-pic" src="http://placehold.it/70x70">

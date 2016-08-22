@@ -8,7 +8,7 @@
 <% @other_users.each do |user| %>
 
   <%=
-    image = image_tag(attachments.inline[user.avatar_file_name].url)
+    image = image_tag(attachments[user.full_name].url)
     link_to image, user_url(user)
   %><br>
 

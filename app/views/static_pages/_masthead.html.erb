@@ -1,8 +1,8 @@
 <div class="col-md-12">
   <% image_src = nil
-    if
+    if user.profile.cover_photo
       image_src = "#{photo_serve_path(user.profile.cover_photo)}"
-    else user.profile.cover
+    elsif user.profile.cover
       image_src = user.profile.cover.url
     end
     image = image_url(image_src)

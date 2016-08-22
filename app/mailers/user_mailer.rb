@@ -18,7 +18,7 @@ class UserMailer < ApplicationMailer
   end
 
   def recommend_friends(user,other_users)
-    @other_users = [User.find(1)]
+    @other_users = other_users
     @user = user
 
     # @user = user
@@ -26,7 +26,12 @@ class UserMailer < ApplicationMailer
 
     # building other users' thumbnail photos
     @other_users.each do |user|
-      attachments.inline[user.avatar_file_name] = File.read(user.avatar.path(:thumb))
+      if user.avatar.path
+        attachments.inline[user.full_name] = File.read(user.avatar.path(:thumb))
+      else
+        image = user.avatar.options[:default_url]
+        attachments.inline[user.full_name] = File.read(Rails.root.join "app/assets/images/#{image}")
+      end
     end
 
     mail to: user.email, subject: 'Add some friends!'

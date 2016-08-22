@@ -100,7 +100,10 @@ class UsersController < ApplicationController
 
     def queue_recommended_friends_email(user)
       # UserWelcomeJob.set(wait: 5.seconds).perform_later(user)
-      RecommendedFriendsJob.set(wait: 2.seconds).perform_later(user)
+      other_users = User.search('',1,user).ids
+      other_users = User.find(other_users)
+      UserMailer.recommend_friends(User.find(user),other_users).deliver!
+      # RecommendedFriendsJob.set(wait: 2.seconds).perform_later(user.id,other_users)
     end
 
     # Setting a user before specific actions.

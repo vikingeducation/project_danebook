@@ -45,3 +45,39 @@
   width: 100%;
   height: 400px;
 }
+
+#photo-feedback{
+  margin-left: 20px;
+}
+
+#photo-header-bar{
+  text-align: center;  
+  margin-top: 10px;
+  border: 2px solid black;
+  background-color: #ccc;
+}
+
+#photo-comments-section{
+    background: #ccc;
+    border-top: 2px solid #999;
+    padding-top: 10px;
+    p, h6{
+      text-align: left;
+      margin-left: 10px;
+    }
+    a{
+      img{
+        height: 75px; 
+        width: 75px;   
+      }
+    }
+    textarea{
+      width: 100%;
+      border: 2px solid black;
+      margin-top: 25px;
+      margin-bottom: 5px;
+      padding-left: 10px;
+    }
+    padding-bottom: 10px;
+  }
+

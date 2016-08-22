@@ -17,15 +17,17 @@ end
 
 def create
   if signed_in_user?
+    flash[:error] = "Already signed in"
     redirect_to root_path
   else
     @user = User.new(user_params)
     if @user.save
+      flash[:success] = "Your account has been created!"
       sign_in(@user)
       redirect_to root_path
     else
       flash[:error] = "couldn't sign you in"
-      redirect_to login_path
+      render "sessions/new"
     end
   end
 end
@@ -40,6 +42,7 @@ def update
     end
     redirect_to :back
   else
+    flash[:error] = "Failed to update picture"
     redirect_to login_path
   end
 end

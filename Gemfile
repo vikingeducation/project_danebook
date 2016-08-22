@@ -50,6 +50,7 @@ group :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'launchy'
+  gem 'rails-controller-testing' 
 end
 
 group :development do

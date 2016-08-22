@@ -47,6 +47,10 @@ class ApplicationController < ActionController::Base
     end
     helper_method :user_liked_id
 
-    # def 
-    # Photo.find(@user.profile_pic_id)
+    def get_instance(id, klass)
+      unless instance = klass.find_by_id(id)
+        return nil
+      end
+      instance
+    end
 end

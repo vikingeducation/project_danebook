@@ -3,14 +3,16 @@ class PostsController < ApplicationController
 
   def create
     if signed_in_user?
-      current_user
-      if @current_user.text_posts.create(white_listed_posts_params)
+      @user = current_user
+      post =@user.text_posts.new(white_listed_posts_params)
+      if post.save
         flash[:success] = "Ehhh way to go fonz"
       else
         flash[:error] = "Uh ohhh something went wrong"
       end
       redirect_to :back
     else
+      flash[:error] = "Please sign in"
       redirect_to login_path
     end
   end
@@ -22,11 +24,14 @@ class PostsController < ApplicationController
   def destroy
     if signed_in_user?
       current_user
-      @post = Post.find(params[:id])
-      if @post.destroy
-        flash[:success] = "You successfully destroyed that post..."
+      if @post = get_instance(params[:id], Post)
+        if @post.destroy
+          flash[:success] = "You successfully destroyed that post..."
+        else
+          flash[:error] = "We were unable to destroy the comment, perhaps its gone sentinel...."
+        end
       else
-        flash[:error] = "We were unable to destroy the comment, perhaps its gone sentinel...."
+        flash[:error] = "record not found"
       end
       redirect_to :back
     else

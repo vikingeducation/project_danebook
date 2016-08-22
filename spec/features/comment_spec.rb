@@ -2,8 +2,8 @@ require 'rails_helper'
 
 feature 'Comment' do
   let(:user){ create(:user) }
-  let(:post){ create(:post, user_id: user.id) }
-  let(:comment){ create(:comment, user_id: user.id) }
+  let(:post){ user.text_posts.create(description: "test post") }
+  let(:comment){ post.comments.create(description: "test comment", user_id: user.id) }
 
   before do
     sign_in(user)
@@ -12,9 +12,11 @@ feature 'Comment' do
   context "signed in user" do
     before do
       make_post_on_own_timeline
+      visit user_path(user)
     end
 
     scenario "will have new comment on existing posts" do
+      save_and_open_page
       expect(page).to have_css("form.new_comment")
     end
 

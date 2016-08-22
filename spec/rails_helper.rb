@@ -28,6 +28,7 @@ RSpec.configure do |config|
   config.include LoginMacros
   config.include ProfileMacros
   config.include PostMacros
+  config.include ControllerHelper
 end
 
 # Checks for pending migration and applies them before tests are run.

@@ -2,7 +2,7 @@ class FriendshipsController < ApplicationController
   before_action :set_user
 
   def index
-    @friends = @user.friended_users
+    @friends = @user.friended_users.includes(:friended_users)
     middle = @friends.count / 2
     @left_col = @friends[0..(middle - 1)]
     @right_col = middle > 0 ? @friends[middle..-1] :

@@ -5,10 +5,12 @@ class UsersController < ApplicationController
 
   def show
     @posts = @user.posts.order(created_at: :desc).includes(:likes, :comments)
+    @photos = @user.photos
+
+    # new comments, posts, etc.
     @post = current_user.posts.build if @user == current_user
     @comment = current_user.comments.build
     @friendship = Friendship.new
-    @photos = @user.photos
 
     build_friend_box
   end

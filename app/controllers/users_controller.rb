@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     @user = User.new(whitelisted_user_params)
     if @user.save
       sign_in(@user)
-       User.delay(queue: 'emails', priority: 0, run_at: 5.seconds.from_now).suggested_friends_email
+       User.delay(queue: 'emails', run_at: 5.seconds.from_now).suggested_friends_email
       flash[:success] = 'User created!'
       redirect_to user_timeline_path(@user)
     else

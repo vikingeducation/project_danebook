@@ -1,24 +1,26 @@
-<%= simple_form_for User.new, html: { class: "form-inline"} do |user_fields| %>
-<div class="row form-group">
+<%= simple_form_for User.new, html: { class: "form-inline signup-form"} do |user_fields| %>
+<div class="form-group">
     <%= user_fields.fields_for :profile_attributes do |profile_fields| %>
-        <%= profile_fields.text_field :first_name, class: "form-control", placeholder: "First Name" %>
-        <%= profile_fields.text_field :last_name, class: "form-control", placeholder: "Last Name" %>
+    <%= profile_fields.text_field :first_name, class: "form-control", placeholder: "First Name" %>
+    <%= profile_fields.text_field :last_name, class: "form-control", placeholder: "Last Name" %>
     <% end %>
 </div>
-<div class="row">
+<div class="form-group">
     <%= user_fields.input :email, placeholder: 'Email', label: false %>
 </div>
-<div class="row">
+<div class="form-group">
     <%= user_fields.input :password, placeholder: 'Password', label: false, required: true %>
-</div>
-<div class="row">
     <%= user_fields.input :password_confirmation, placeholder: 'Password Confirm', label: false, required: true %>
 </div>
-<div class="row form-group">
+<div class="form-group">
+    <p>
+        <%= user_fields.label :birthday, "Birthday:" %>
+    </p>
     <%= user_fields.fields_for :profile_attributes do |profile_fields| %>
     <%= profile_fields.date_select(:birthday, {:order => [:day, :month, :year], :start_year => Date.today.year, :end_year => 150.years.ago.year }, class: "form-control inline-block" ) %>
     <% end %>
 </div>
-
-<%= user_fields.button :submit %>
+<div class="form-group">
+    <%= user_fields.button :submit, class: "btn-primary" %>
+</div>
 <% end %>

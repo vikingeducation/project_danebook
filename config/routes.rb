@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :users do
     get 'friends'
-    resource :timeline, only: [:show]
+    resource :newsfeed, only: [:show]
     resource :profile, only: [:show]
     resources :posts,
               only: [:create, :destroy],

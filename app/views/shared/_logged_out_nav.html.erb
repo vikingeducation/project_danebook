@@ -5,9 +5,10 @@
         </div>
         <ul class="nav navbar-nav navbar-right">
             <li>
-                <%= form_tag session_path, class: "form-inline", id: "login-form" do %>
+                <%= form_tag session_path, class: "form-inline navbar-form", id: "login-form" do %>
                 <%= text_field_tag :email, nil, placeholder: "Email", class: 'form-control' %>
                 <%= password_field_tag :password, nil, placeholder: "Password", class: 'form-control' %>
+                <%= label_tag :remember_me, "Remember" %>
                 <%= check_box_tag :remember_me, inline_label: 'Remember' %>
                 <%= submit_tag 'Login' %>
                 <% end %>

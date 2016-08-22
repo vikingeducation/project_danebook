@@ -9,7 +9,7 @@ class User < ApplicationRecord
   validates :email, uniqueness: {case_sensitive: false}
   validates_format_of :email, :with => /@/
 
-  has_one :profile, inverse_of: :user
+  has_one :profile, inverse_of: :user, dependent: :destroy
   accepts_nested_attributes_for :profile
 
   has_many :posts

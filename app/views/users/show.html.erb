@@ -32,7 +32,7 @@
           </tr>
           <tr>
             <td>College:</td>
-            <% if @profile.college.length > 0 %>
+            <% if @profile.college %>
               <td><%= @profile.college %></td>
             <% else %>
               <td>Nothing here yet!</td>
@@ -40,7 +40,7 @@
           </tr>
           <tr>
             <td>Hometown:</td>
-            <% if @profile.hometown.length >0 %>
+            <% if @profile.hometown %>
               <td><%= @profile.hometown %></td>
             <% else %>
               <td>Nothing here yet!</td>
@@ -48,7 +48,7 @@
           </tr>
           <tr>
             <td>Currently Lives:</td>
-              <% if @profile.currently_lives.length > 0 %>
+              <% if @profile.currently_lives %>
                 <td><%= @profile.currently_lives %></td>
               <% else %>
                 <td>Nothing here yet!</td>
@@ -65,7 +65,7 @@
           </tr>
           <tr>
             <td>Telephone:</td>
-            <% if @profile.telephone.length > 0 %>
+            <% if @profile.telephone %>
               <td><%= @profile.telephone %></td>
             <% else %>
               <td>Call me maybe?</td>
@@ -78,7 +78,7 @@
       <div class="col-md-7" id="text-description">
         <div class="words-to-live-by">
       <h2>Words to Live By</h1>
-        <% if @profile.words_to_live_by.length > 0 %>
+        <% if @profile.words_to_live_by %>
           <p><%= @profile.words_to_live_by %></p>
         <% else %>
           <p>Fill me out!</p>
@@ -86,7 +86,7 @@
     </div>
     <div class="about-me">
       <h2>About Me</h1>
-        <% if @profile.about_me.length > 0 %>
+        <% if @profile.about_me %>
           <p><%= @profile.about_me %><p>
         <% else %>
           <p>Tell us about yourself!</p>

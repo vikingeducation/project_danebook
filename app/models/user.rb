@@ -90,4 +90,9 @@ class User < ApplicationRecord
     where("first_name ILIKE ANY (array[?]) OR last_name ILIKE ANY (array[?])", search, search).where.not(id: user.id)
   end
 
+  def active_friends
+    followees.joins(:activities)
+      .where(activities: { created_at: 1.days.ago..Time.now }).uniq
+  end
+
 end

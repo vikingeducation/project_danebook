@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   def index
    @user = current_user
    @users = User.get_search(@user, params[:user_search])
+   render layout: "newsfeed_topper"
   end
 
   def show

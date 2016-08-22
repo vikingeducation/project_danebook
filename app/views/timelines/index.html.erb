@@ -1,7 +1,31 @@
-<div class="container">
+<div class="container newsfeed-container">
 	<main class="timeline-content-area">
 		<div class="row">
-			<div class="col-xs-12">
+      <div class="col-xs-4">
+				<section class="tl-about-box tl-content-box">
+					<div class="row">
+						<div class="col-xs-12 tl-about-info tl-content-template">
+              <% if @user.profile_photo %>
+							  <%= image_tag(@user.profile_photo.image.url, class: "profile-img") %>
+              <% else %>
+                <img class="profile-img" src="/imgs/harry_potter_small.jpg">
+              <% end %>
+              <%= link_to @user.fullname, @user %>
+              <h4>Recently Active</h4>
+						  <% @user.active_friends.each do |friend| %>
+                <% if friend.profile_photo %>
+                  <%= image_tag(friend.profile_photo.image.url, class: "profile-img") %>
+                <% else %>
+                  <img class="profile-img" src="/imgs/harry_potter_small.jpg">
+                <% end %>
+                <%= link_to friend.fullname, friend %>
+              <% end %>
+              <h4><%= link_to "See All Friends", user_friendings_path %></h4>
+						</div>
+					</div>
+				</section>
+			</div>
+			<div class="col-xs-8">
 				<section class="tl-content-box tl-post-box">
 					<div class="row">
 						<header class="col-xs-12">
@@ -33,7 +57,7 @@
           <% end %>
         <% else %>
           <section class="tl-exist-post">
-            <h4 class="text-center">This user hasn't said anything yet!</h4>
+            <h4 class="text-center">You don't have any activity</h4>
           </section>
         <% end %>
 

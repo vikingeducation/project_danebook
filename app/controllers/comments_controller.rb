@@ -45,6 +45,8 @@ class CommentsController < ApplicationController
         return Post.find(params[:post_id])
       elsif params[:commentable] == 'Comment'
         return Comment.find(params[:comment_id])
+      elsif params[:commentable] == 'Photo'
+        return Photo.find(params[:photo_id])
       end
     end
 end

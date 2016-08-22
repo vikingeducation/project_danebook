@@ -44,13 +44,24 @@ $box-spacing: 20px;
   .photo-date:hover {
     opacity: 1.0;
   }
+
+  .photo-comments {
+    .row {
+        margin-bottom: 10px;
+    }
+  }
 }
 
 #single-photo {
   margin: auto;
-  max-width: 75%;
+  max-width: 90%;
+
   img {
     width: 100%;
     margin: $box-spacing auto;
+  }
+
+  #menu-buttons {
+    margin-top: $box-spacing;
   }
 }

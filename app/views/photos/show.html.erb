@@ -17,27 +17,75 @@
         </div>
       </div>
 
+      <!-- side menu buttons -->
+
       <div class="panel-body row" id="single-photo">
-        <div class="col-sm-12">
+        <div class="col-sm-10">
             <%= image_tag @photo.image.url %>
         </div>
         <% if self_profile? %>
-          <div class="col-sm-2 col-sm-offset-2">
+          <div class="col-sm-2" id="menu-buttons">
               <%= form_tag user_path(current_user), method: :patch do %>
                 <%= hidden_field_tag "user[profile_photo_id]", "#{@photo.id}" %>
                 <%= submit_tag "Make this my profile photo!", class: "btn btn-primary" %>
               <% end %>
-          </div>
-          <div class="col-sm-2 col-sm-offset-1">
+              <br>
               <%= form_tag user_path(current_user), method: :patch do %>
                 <%= hidden_field_tag "user[cover_photo_id]", "#{@photo.id}" %>
                 <%= submit_tag "Make this my cover photo!", class: "btn btn-primary" %>
               <% end %>
-          </div>
-          <div class="col-sm-1 col-sm-offset-1">
-            <%= link_to "Delete", user_photo_path, method: :delete, class: "btn btn-danger" %>
+              <br>
+              <%= link_to "Delete", user_photo_path, method: :delete, class: "btn btn-danger" %>
           </div>
         <% end %>
+      </div>
+
+      <!-- menu -->
+      <div class="panel-heading photo-comments">
+        <div class="row">
+          <div class="col-sm-1">
+            <% if liked?(@photo) %>
+              <%= link_to "Unlike", like_path(find_like(@photo)), method: :delete %>
+            <% else %>
+              <%= link_to "Like", user_photo_likes_path(@user, @photo), method: :post %>
+            <% end %>
+          </div>
+          <div class="col-sm-1">
+            <a href="#">Comment</a>
+          </div>
+        </div>
+
+        <!-- likes -->
+        <% unless @photo.likes.empty? %>
+          <div class="row">
+            <div class="col-sm-11">
+              <p><%= post_like_text(@photo) %></p>
+            </div>
+          </div>
+        <% end %>
+
+        <!-- comments -->
+        <% @photo.comments.order(created_at: :asc).each do |comment| %>
+          <%= render partial: "comments/comment", locals: { comment: comment } if comment.persisted? %>
+        <% end %>
+
+        <!-- new comment -->
+        <%= form_for [current_user, @photo, @comment] do |f| %>
+          <div class="row">
+            <div class="col-sm-12">
+              <%= f.text_area :text, class: "form-control", rows: 2, placeholder: "Write a comment...", style:"resize: none" %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-1">
+              <a href="#">Cancel</a>
+            </div>
+            <div class="col-sm-2 col-sm-offset-9">
+              <%= f.submit "Comment", class: "btn btn-primary btn-block" %>
+            </div>
+          </div>
+        <% end %>
+
       </div>
 
     </div>

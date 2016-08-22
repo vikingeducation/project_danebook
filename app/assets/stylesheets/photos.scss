@@ -4,6 +4,14 @@
 
 .image {
   display: inline-block;
+  height: 150px;
+  width: 150px;
+  margin: 10px;
+  overflow: hidden;
+}
+
+.small-image {
+  display: inline-block;
   height: 125px;
   width: 125px;
   margin: 10px;
@@ -17,4 +25,22 @@
 
 .show-photo {
   margin: 25px;
+}
+
+#icon-picture {
+    background-image: image-url("icon_photo_small.png");
+    height: 150px;
+    width: 150px;
+    display: inline-block;
+    background-size: 100% 100%;
+    p {
+        opacity: 0;
+        transition: 0.5s;
+        margin-top: 135px;
+        background: lightgrey;
+        border: 1px solid;
+    }
+    &:hover p {
+        opacity: 1;
+    }
 }

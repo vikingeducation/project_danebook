@@ -61,7 +61,7 @@ class User < ActiveRecord::Base
   end
 
   def recent_friends
-    friended_users.limit(6)
+    friended_users.order(updated_at: :desc).limit(6)
   end
 
   def self.send_welcome_email(id)
@@ -78,5 +78,13 @@ class User < ActiveRecord::Base
     else
       where('')
     end
+  end
+
+  def self_and_friends
+    User.where(
+      'id IN (?) OR id IN (?)',
+      friends.pluck(:id),
+      [id]
+      )
   end
 end

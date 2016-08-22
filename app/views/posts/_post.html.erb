@@ -1,4 +1,4 @@
-<div class="col-sm-12">
+<div class="col-sm-12 post">
     <div id="post-img"><%= profile_pic(post.author) %></div>
     <ul>
         <li><%= link_to post.author.profile.first_name, current_user %>
@@ -12,7 +12,7 @@
 <div class="col-sm-12">
     <p>
         <%= likeable_likes_link(post) %>
-        <span>||</span>
+        <br>
         <%= delete_post_link(post) %>
     </p>
 </div>

@@ -1,5 +1,7 @@
 <style media="screen">
-  #banner { background-image: url("<%= cover_pic_url(@user)%>"); }
+    #banner {
+        background-image: url("<%= cover_pic_url(@user)%>");
+    }
 </style>
 
 <div id="upper">
@@ -12,16 +14,14 @@
         </div>
     </div>
     <div id="profile-pic">
-    <%= profile_pic(@user) %>
+        <%= profile_pic(@user) %>
     </div>
 
-    <div class="col-sm-12" id="banner">
-    </div>
+    <div class="col-sm-12" id="banner"></div>
     <div class="cover-nav">
         <div class="col-sm-4 pull-down"></div>
-        <%= link_to "User Timeline", @user, class: "col-sm-2"  %>
-        <%= link_to "About", user_profile_path(@user), class: "col-sm-2" %>
-        <%= link_to "Photos", user_photos_path(@user), class: "col-sm-2" %>
-        <%= profile_edit_link(@user) %>
+        <h5><%= link_to "Posts", @user, class: "col-sm-2"  %></h5>
+        <h5><%= link_to "About", user_profile_path(@user), class: "col-sm-2" %></h5>
+        <h5><%= link_to "Photos", user_photos_path(@user), class: "col-sm-2" %></h5>
     </div>
 </div>

@@ -1,41 +1,45 @@
 <main>
     <div class="container">
         <%= render "/shared/profile_bar" %>
-        <div class="row wrapper">
-            <div class="col-sm-12">
-                <h2>About</h2>
-            </div>
-            <div class="col-sm-12">
-                <div class="col-sm-5">
-                    <div class="row">
-                        <h3>Basic Information</h3>
+
+        <div class="col-sm-12">
+            <h2 class="inline">About</h2>
+        </div>
+
+        <div class="col-sm-12">
+            <div class="col-sm-5">
+                <div class="row">
+                    <h3>Basic Information</h3>
+                </div>
+                <% if @user.profile.birthday %>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <p>Birthday:</p>
                     </div>
-                    <% if @user.profile.birthday %>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <p>Birthday:</p>
-                        </div>
-                        <div class="col-sm-6">
-                            <p><%= @user.profile.birthday.strftime("%x") %></p>
-                        </div>
-                    </div>
-                    <% end %>
-                    <div class="row">
-                        <div class="col-sm-6">
-                            <p>Email:</p>
-                        </div>
-                        <div class="col-sm-6">
-                            <p><%= @user.email %></p>
-                        </div>
+                    <div class="col-sm-6">
+                        <p><%= @user.profile.birthday.strftime("%x") %></p>
                     </div>
                 </div>
-                <div class="col-sm-7">
-                    <div class="row">
-                        <h3>About Me</h3>
-                        <p><%= @user.profile.about %><p>
+                <% end %>
+                <div class="row">
+                    <div class="col-sm-6">
+                        <p>Email:</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <p><%= @user.email %></p>
                     </div>
                 </div>
             </div>
+            <div class="col-sm-7">
+                <div class="row">
+                    <h3>About Me</h3>
+                    <p><%= @user.profile.about %>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-2 pull-right">
+          <%= profile_edit_button(@user) %>
         </div>
     </div>
 </main>

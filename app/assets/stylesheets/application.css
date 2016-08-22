@@ -21,3 +21,30 @@ h1, h2, h3, h4, h5, h6 {
 .field_with_errors {
   border: 1px solid red;
 }
+#navbar-custom {
+    background-color: #4ed34e;
+    .navbar-brand,
+    span, a {
+        font-family: 'Oswald', sans-serif;
+
+    }
+    .navbar-toggle > .icon-bar {
+        background-color: white;
+    }
+    .navbar-nav > li > a {
+        color: white;
+    }
+
+}
+
+#navbar-brand {
+  font-family: 'Oswald', sans-serif;
+  color: white;
+}
+.text-white {
+color: white;
+}
+
+.delete_link {
+  color: darkred;
+}

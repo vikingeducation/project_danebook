@@ -1,8 +1,8 @@
 # Users Helper
 module UsersHelper
-  def profile_edit_link(user)
+  def profile_edit_button(user)
     if current_user == user
-      link_to 'Edit Profile', edit_profile_path(current_user)
+      button_to 'Edit Profile', edit_profile_path, method: :get, class: "btn btn-info btn-sm"
     end
   end
 

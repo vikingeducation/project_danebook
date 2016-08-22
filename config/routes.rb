@@ -3,7 +3,6 @@ Rails.application.routes.draw do
 
   resources :users do
     get 'friends'
-    resource :newsfeed, only: [:show]
     resource :profile, only: [:show]
     resources :posts,
               only: [:create, :destroy],
@@ -29,6 +28,7 @@ Rails.application.routes.draw do
     patch 'set_cover'
   end
 
+  resource :newsfeed, only: [:show]
   resource :session, only: [:new, :create, :destroy]
   get 'login' => 'sessions#new'
   delete 'logout' => 'sessions#destroy'

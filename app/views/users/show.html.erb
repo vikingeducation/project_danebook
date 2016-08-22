@@ -1,6 +1,9 @@
 <main>
     <div class="container">
         <%= render partial: "/shared/profile_bar", locals: { user: @user }%>
+        <div class="col-sm-12 user-show">
+
+
         <div class="col-sm-5 timeline-col">
             <div class="row wrapper">
                 <div class="col-sm-12">
@@ -18,13 +21,13 @@
                 </div>
                 <div class="col-sm-12 text-center">
                     <% @user.photos.each do |photo| %>
-                    <div class="image">
+                    <div class="small-image">
                         <%= image_tag photo.image.url(:thumb), class: "fit-div" %>
                     </div>
                     <% end %>
                 </div>
                 <div class="more">
-                  <%= link_to "More Photos", user_photos_path(@user) %>
+                    <%= link_to "More Photos", user_photos_path(@user) %>
                 </div>
             </div>
             <% end %>
@@ -36,11 +39,11 @@
                 <div class="col-sm-12 text-center">
                     <% @user.recent_friends.each do |friend| %>
                     <div class="friends-col">
-                    <div id="friend-pic">
-                        <%= profile_pic(friend) %>
+                        <div id="friend-pic">
+                            <%= profile_pic(friend) %>
+                        </div>
+                        <span><%= link_to friend, friend %></span>
                     </div>
-                    <span><%= link_to friend, friend %></span>
-                  </div>
                     <% end %>
                     <div class="more">
                         <%= link_to "More Friends", user_friends_path(@user) %>
@@ -59,11 +62,14 @@
                 </div>
             </div>
             <% end %>
-            <div class="row wrapper post-rows">
-            <% @posts.each do |p| %>
-            <%= render partial: "/posts/post", locals: {post: p} %>
+            <% unless @posts.empty? %>
+            <div class="post-rows">
+                <% @posts.each do |p| %>
+                <%= render partial: "/posts/post", locals: {post: p} %>
+                <% end %>
+            </div>
             <% end %>
-          </div>
+        </div>
         </div>
     </div>
 </main>

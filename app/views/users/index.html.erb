@@ -11,12 +11,13 @@
 
 <ul>
   <% unless @users.blank? %>
-    <% @users.each do |user| %>
+    <% @users.each_with_index do |user, index| %>
 
       <li>
         <h5>
-        user_name :: <%= link_to user.username, user_path(user) %>
+        <%=index %> user_name :: <%= link_to user.username, user_path(user) %>
         </h5>
+        profile_name :: <%= user.profile.first_name %>, <%= user.profile.last_name %>
       </li>
     <% end %>
   <% end %> 

@@ -22,4 +22,11 @@ class Post < ApplicationRecord
     UserMailer.trigger(user, post).deliver
   end
 
+  def self.recent_posts(dayz_ago)
+    if dayz_ago
+      where("created_at > ?", (dayz_ago).days.ago)
+    else
+      raise
+    end
+  end
 end

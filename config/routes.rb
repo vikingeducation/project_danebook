@@ -15,6 +15,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :timelines
+
   resources :friendings, :only =>  [:destroy]
   resources :likings, :only => [:destroy]
   resource :session, :only => [:new, :create, :destroy]

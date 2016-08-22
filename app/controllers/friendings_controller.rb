@@ -2,6 +2,8 @@ class FriendingsController < ApplicationController
 
   def index
     @users = User.all
+    @user = User.find(params[:user_id])
+    @profile = Profile.find_by_user_id(params[:user_id])
   end
 
   def create

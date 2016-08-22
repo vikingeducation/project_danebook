@@ -24,7 +24,7 @@
   #photo-img-container{
 
     width: 33.3333333%;
-    height: 105px;
+    height: 75px;
     overflow: hidden;
     margin-bottom: 10px;
   }
@@ -32,7 +32,7 @@
   #photo-img{
     
     object-fit: cover;
-    height: 105px;
+    height: 75px;
 
     
   }
@@ -80,6 +80,7 @@
   margin-top: 20px;
   #author-info{
     img{
+      margin-top: 10px;
       display: inline-block;
       width: 75px;
       height: 75px;
@@ -122,7 +123,20 @@
 
 
 
+#timeline-friend-img-container{
 
+    height: 75px;
+    overflow: hidden;
+    margin-bottom: 5px;
+  }
+
+  #timeline-friend-img{
+    
+    object-fit: cover;
+    height: 75px;
+
+    
+  }
 
 
 

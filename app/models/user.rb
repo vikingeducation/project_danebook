@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   has_secure_password
-  after_create :generate_token, :set_default_photos, :send_welcome_email, :delayed_suggested_friends_email
+  after_create :generate_token, :set_default_photos, :send_welcome_email
   has_one :profile, inverse_of: :user, dependent: :destroy
   has_many :posts, dependent: :destroy
   has_many :likes, dependent: :destroy
@@ -31,19 +31,9 @@ class User < ApplicationRecord
     UserMailer.welcome(self).deliver!
   end
 
-  def delayed_suggested_friends_email
-    user = User.find(self.id)
-    if Rails.application.secrets.delay == 1
-      user.delay(queue: 'emails', run_at: 5.seconds.from_now).suggested_friends_email
-    else
-      suggested_friends_email(user)
-    end
-  end
-
   def suggested_friends_email(user)
     UserMailer.suggested_friends(user).deliver!
   end
-
 
   def generate_token
     begin

@@ -32,11 +32,16 @@ class User < ApplicationRecord
   end
 
   def delayed_suggested_friends_email
-    self.delay(queue: 'emails', run_at: 5.minutes.from_now).suggested_friends_email
+    user = User.find(self.id)
+    if Rails.application.secrets.delay == 1
+      user.delay(queue: 'emails', run_at: 5.seconds.from_now).suggested_friends_email
+    else
+      suggested_friends_email(user)
+    end
   end
 
-  def suggested_friends_email
-    UserMailer.suggested_friends(self).deliver!
+  def suggested_friends_email(user)
+    UserMailer.suggested_friends(user).deliver!
   end
 
 

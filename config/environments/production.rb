@@ -10,6 +10,23 @@ Rails.application.configure do
     s3_host_name: Rails.application.secrets.S3_HOST_NAME
     }
   }
+
+  config.action_mailer.smtp_settings = {
+    :address        => 'smtp.sendgrid.net',
+    :port           => '587',
+    :authentication => :plain,
+    :user_name      => Rails.application.secrets.sendgrid_username,
+    :password       => Rails.application.secrets.sendgrid_password,
+    :domain         => 'heroku.com',
+    :enable_starttls_auto => true
+  }
+  config.action_mailer.delivery_method ||= :smtp
+
+  # Rails also needs to know where your app is
+  #   located to properly configure sending of emails
+  config.action_mailer.default_url_options = {
+    :host => 'nameless-falls-74566.herokuapp.com',
+  }
   # Code is not reloaded between requests.
   config.cache_classes = true
 

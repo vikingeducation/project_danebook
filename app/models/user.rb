@@ -61,6 +61,11 @@ class User < ApplicationRecord
     first_name + " " + last_name
   end
 
+  def self.send_welcome_email(user_id)
+    @user = User.find(user_id)
+    UserMailer.welcome(@user).deliver!
+  end
+
   def profile_photo_id=(id)
     id = id.to_i
     self.profile_photo = Photo.find(id) if self.photo_ids.include?(id)

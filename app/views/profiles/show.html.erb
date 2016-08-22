@@ -1,10 +1,11 @@
 
 <div id="static_pages">
-	<%= render 'shared/navbar', user: @user %>
-
+	<%= render 'shared/navbar' %>
 	<%= render 'shared/banner', user: @user %>
-	<div class="container section-container">
+	<div class="container">
 		<%= render 'shared/flash' %>
+	</div>
+	<div class="container section-container">
 		<div class="row section-header">
 			<div class="col-sm-8 col-sm-offset-2">
 				<h2 class="text-center">About</h2>

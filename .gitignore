@@ -4,3 +4,6 @@ log/development.log
 log/test.log
 # Ignore application configuration
 /config/application.yml
+
+.env
+Procfile

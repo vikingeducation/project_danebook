@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   has_secure_password
-  after_create :generate_token, :set_default_photos, :send_welcome_email, :send_suggested_friends_email
+  after_create :generate_token, :set_default_photos, :send_welcome_email, :delayed_suggested_friends_email
   has_one :profile, inverse_of: :user, dependent: :destroy
   has_many :posts, dependent: :destroy
   has_many :likes, dependent: :destroy
@@ -31,9 +31,14 @@ class User < ApplicationRecord
     UserMailer.welcome(self).deliver!
   end
 
-  def send_suggested_friends_email
-    UserMailer.delay(queue: 'emails', run_at: 5.minutes.from_now).suggested_friends(self).deliver!
+  def delayed_suggested_friends_email
+    self.delay(queue: 'emails', run_at: 5.minutes.from_now).suggested_friends_email
   end
+
+  def suggested_friends_email
+    UserMailer.suggested_friends(self).deliver!
+  end
+
 
   def generate_token
     begin

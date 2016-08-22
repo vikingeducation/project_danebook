@@ -22,7 +22,7 @@ class UsersController < ApplicationController
       redirect_to user_timelines_path(@user)
     else
       flash.now[:warning] = @user.errors.full_messages
-      render "static_pages/home"
+      render "sessions/new"
     end
   end
 

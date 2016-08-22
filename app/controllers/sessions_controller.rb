@@ -18,7 +18,7 @@ class SessionsController < ApplicationController
     else
       @user = User.new
       flash.now[:alert] = "Email and password do not match"
-      render "static_pages/home"
+      render "sessions/new"
     end
   end
 

@@ -12,9 +12,9 @@ Rails.application.configure do
   }
   config.action_mailer.delivery_method ||= :smtp
 
-  config.action_mailer.default_url_options = { :host => 'warm-wildwood-39856.herokuapp.com'}
+  config.action_mailer.default_url_options = { :host => 'daneb00k.herokuapp.com'}
 
-  :storage => :s3,
+  :storage => :s3
   :s3_credentials => {
 
     # put your host name here if needed
@@ -28,7 +28,6 @@ Rails.application.configure do
     :bucket => Rails.application.secrets.s3_bucket_name,
     :access_key_id => Rails.application.secrets.aws_access_key_id,
     :secret_access_key => Rails.application.secrets.aws_secret_access_key
-    }
   }
 
   # Code is not reloaded between requests.

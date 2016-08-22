@@ -24,10 +24,17 @@ class UserMailer < ApplicationMailer
     # building other users' thumbnail photos
     @other_users.each do |user|
       if user.avatar.path
-        attachments.inline[user.full_name] = File.read(user.avatar.path(:thumb))
+        attachments.inline[user.full_name] = {
+          data: File.read(user.avatar.path(:thumb)),
+          mime_type: 'image/png',
+          encoding: 'base64'
       else
         image = user.avatar.options[:default_url]
-        attachments.inline[user.full_name] = File.read(Rails.root.join "app/assets/images/#{image}")
+        attachments.inline[user.full_name] = {
+          data: File.read(Rails.root.join "app/assets/images/#{image}"),
+          mime_type: 'image/png',
+          encoding: 'base64'
+        }
       end
     end
 

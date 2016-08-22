@@ -1,0 +1,11 @@
+<article class="photos">
+ 	<h2>Photos (<%= User.find(current_page_user_id).photos.count %>)</h2>
+	<% @user.photos.limit(9).each do |photo| %>
+    
+    <%= image_tag photo.file.url(:thumb), class: "photo" %>
+
+  <% end %>
+
+
+  <div class="row"><a href="photos.html">See more photos</a></div>
+</article>

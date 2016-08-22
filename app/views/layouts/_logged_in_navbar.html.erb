@@ -1,0 +1,38 @@
+<!-- nav bar -->
+<nav class="nav navbar navbar-fixed-top">
+
+    <div class="row">
+
+      <div class="navbar-header col-xs-offset-2 col-xs-9 col-sm-3 col-md-2">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="glyphicon glyphicon-search"></span>
+        </button>
+        <%= image_tag "h_white.png", class: "logo" %>
+
+        <%= link_to 'HBook', root_path, class: "navbar-brand" %>
+      </div>
+
+
+      <section class="form-group collapse navbar-collapse col-xs-10 col-sm-6 col-md-3 search-bar-container" id="myNavbar">
+          <%= form_tag users_path, method: 'get' do %>
+            <%= text_field_tag :query, nil, class: "form-control search-bar", placehodler: "Search for Users" %>
+            <%= submit_tag "Search" %>
+          <% end %>
+        <!-- <input type="text" class="form-control search-bar" placeholder="Search for users"> -->
+      </section>
+
+
+    <div class="name-container pull-right">
+      <a href="user_posts_path(current_user.id)" class="name ">
+        
+      </a>
+
+      <%= link_to "<span class='glyphicon glyphicon-user'></span>".html_safe ,  user_posts_path(current_user.id), class: "name"%>
+       <%= link_to current_user.full_name ,  user_posts_path(current_user.id), class: "name"%>
+       <span style="color: white;">-</span>
+      <%= link_to "Sign Out", session_path, method: :delete, class: "name" %>
+    </div>
+
+
+  </div>
+</nav>

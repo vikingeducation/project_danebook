@@ -1,0 +1,50 @@
+<nav class="nav navbar navbar-fixed-top">
+  <div class="container-fluid">
+
+    <div class="row">
+      <section class="navbar-header col-xs-offset-2 col-xs-9 col-sm-3 col-md-2">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="glyphicon glyphicon-align-justify"></span>
+
+        </button>
+
+        <%= image_tag "h_white.png", class: "logo" %>
+        <a class="navbar-brand" href="#">HBook</a>
+
+
+      </section>
+
+        <!-- Collapsable navbar -->
+      <div class="collapse navbar-collapse test" id="navbar-collapse" style="height">
+
+      <!-- Login Info -->
+      <!-- <form class="navbar-form navbar-right" role="form"> -->
+     <%= form_tag session_path, class: "navbar-form navbar-right" do %>
+        <!-- Email -->
+        <div class="form-group">
+          <%= email_field_tag :email, nil, class: 'form-control', placeholder:"Email", id: "login-email" %>
+        </div>
+
+
+        <div class="form-group">
+          <%= password_field_tag :password, nil, class: 'form-control', placeholder: 'Password', id: "login-pass" %>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="form-group">
+
+          <%= submit_tag "Login", class: "form-control btn btn-default" %>
+        </div>
+
+
+          <%= label_tag do %>
+            Remember me?
+            <%= check_box_tag :remember_me, class: 'form-control' %>
+          <% end %>
+
+        <% end %>
+      </form>
+    </div>
+  </div>
+</nav>

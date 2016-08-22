@@ -1,0 +1,62 @@
+
+<section class="col-md-5 col-md-offset-2 col-xs-6" id="sign-up-form" >
+    <h2>Sign Up</h2>
+
+    <%= form_for @user do |f| %>
+
+        <div class="row">
+            <div class="form-group col-xs-6">
+                <%= f.label :first_name, "First Name" %>
+                <%= f.text_field :first_name, id: "FirstName", class: "form-control", placeholder: "First Name" %>
+            </div>
+
+            <div class="form-group col-xs-6">
+                <%= f.label :last_name, "Last Name" %>
+                <%= f.text_field :last_name, id: "LastName", class: "form-control", placeholder: "Last Name" %>
+
+            </div>
+        </div>
+
+
+        <div class="form-group">
+            <%= f.label :email, "Email" %>
+            <%= f.text_field :email, id: "InputEmail", class: "form-control", placeholder: "Email" %>
+
+        </div>
+
+        <div class="form-group">
+
+            <%= f.label :password, "Password" %>
+            <%= f.password_field :password, id: "InputPassword", class: "form-control", placeholder: "Password" %>
+        </div>
+
+        <div class="form-group">
+            <%= f.password_field :password_confirmation, id: "ConfirmPassword", class: "form-control", placeholder: "Confirm Password" %>
+        </div>
+
+        <div class="form-group">
+
+            <%= f.label :birthday, "Birthday" %>
+            <%= f.date_field :birthday, id: "dob", class: "form-control" %>
+
+        </div>
+
+
+        <div class="form-group">
+            <%= f.label :gender, "Male", class: "radio-inline", id: "male" %>
+
+            <%= f.radio_button :gender, "male" %>
+            <%= f.label :gender, "Female", class: "radio-inline", id: "female" %>
+
+            <%= f.radio_button :gender, "female"  %>
+
+            <%= f.label :gender, "Other", class: "radio-inline", id: "other" %>
+            <%= f.radio_button :gender, "other"  %>
+
+        </div>
+        <%= f.submit "Create Account", class: "btn btn-success" %>
+
+
+ <% end  %>
+
+</section>

@@ -1,0 +1,16 @@
+<article class="comment">
+  <%= form_for [post, @comment] do |f| %>
+    <%= f.text_area :body, rows: 1, placeholder: "Leave a comment...", class: "form-control", id: "new-comment" %>
+
+      <h2>
+        <div class="row">
+
+          <div class="pull-right col-xs-3">
+            <%= f.submit  'Comment', class: " btn btn-primary" %>
+          </div>
+
+        </div>
+      </h2>
+  <% end %>
+</article>
+

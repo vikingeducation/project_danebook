@@ -1,0 +1,39 @@
+<main class="container">
+  <header class="row">
+    <%= render partial: 'static_pages/masthead', locals: { user: user } %>
+  </header>
+
+  <div class="row">
+    <div class="col-md-12 panel">
+        <h1 class="panel-header">
+          <div class="row">
+            <div class="col-md-2 col-md-offset-5" style="text-align:center">
+              Photos
+            </div>
+          </div>
+        </h1>
+        <div class="row panel-content">
+        <% if @photos.empty? && @user == current_user %>
+          <h1>Looks like you don't have any photos yet. Upload one!</h1>
+          <%= link_to "Upload a photo", new_photo_path, class: "btn btn-primary btn-md" %>
+        <% else %>
+          <% photos_matrix = photos_count_check @photos %>
+          <% photos_matrix.each do |row| %>
+            <% row.each do |col| %>
+             <%= split_column render_photo_container(col),3 %>
+            <% end %>
+          <% end %>
+        </div>
+        <% end %>
+        <div class="row">
+          <%= link_to "Upload another photo", new_photo_path unless @photos.empty?%>
+        </div>
+    </div>
+  </div>
+
+<%= link_to 'Sign out', logout_path, method: :delete%>
+</main>
+
+
+
+

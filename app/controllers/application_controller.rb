@@ -116,13 +116,24 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  # Same as logged_inuser and correct_user, but only returns a boolean.
+  # Same as logged_in_user and correct_user, but only returns a boolean.
   def user_check
-    case current_user.id
-    when params[:id].to_i, params[:user_id].to_i
-      return true if logged_in?
+    if current_user
+      case current_user.id
+      when params[:id].to_i, params[:user_id].to_i
+        return true if logged_in?
+      end
     end
     false
+  end
+
+  # Email notice on activity on user's timeline.
+  def queue_like_email(user,resource)
+    UserLikeJob.set(wait: 5.seconds).perform_later(user,resource)
+  end
+
+  def queue_comment_email(user,resource)
+    UserCommentPostJob.set(wait: 5.seconds).perform_later(user,resource)
   end
 
 end

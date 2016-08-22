@@ -1,0 +1,82 @@
+<main class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="row">
+        <div class="col-md-12 panel">
+          <div class="row">
+            <div class="col-md-12">
+              <h1 class="panel-header">&nbsp</h1>
+            </div>
+          </div>
+          <div class="row panel-content">
+            <div class="col-md-12">
+              <%= image_tag "#{photo_serve_path(@photo)}" %>
+            </div> 
+          </div>
+          <div class="row panel-content">
+            <div class="col-md-12">
+              <div class="row">
+                <% @photo.comments.each do |comment| %>
+                <div class="col-md-12">
+                  <div class="row comment">
+                    <div class="col-md-2">
+                      <img src="icon_photo_small.png" height="74px" width="74px">
+                    </div>
+                    <div class="col-md-10">
+                      <p> 
+                        <%= link_to comment.user.full_name, user_path(comment.user) %> said on <%= comment.created_at %>.
+                      </p>
+                      <p><%= comment.body %></p>
+                      <p class="liked">
+                      <% if !comment.liked?(current_user) %>
+                        <%= form_for comment do |comment_fields| %>
+                          <%= comment_fields.fields_for :likes, @like do |like_fields| %>     
+                              <%= like_fields.hidden_field :user_id %>
+                              <%= like_fields.submit 'Like' %>
+                          <% end %>
+                        <% end %>
+                      <% else %>
+                        <%= link_to "Unlike", like_path(comment.like(current_user)), method: :delete %>
+                      <% end %>
+                      <% if comment.liked? %>
+                        <% n = comment.likes_count %>
+                        <% if comment.liked?(current_user) %>
+                          <%= "You and #{n-1} others have liked this comment." if n > 1 %>
+                          <%= "You have liked this comment." if n == 1 %>
+                        <% else %>
+                          <%= "#{n} #{n > 1 ? 'people' : 'person'} #{n > 1 ? 'have liked' : 'has liked'} this comment." %>
+                        <% end %>
+                      <% end%>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <% end %>
+                <div id="comment-form">
+                <%= form_for @photo do |photo_fields| %>
+                  <div class="row">
+                    <%= photo_fields.fields_for :comments, @comment do |comment_fields| %>
+                    <div class="col-md-12">
+                      <%= comment_fields.hidden_field :user_id %>
+                      <%= comment_fields.text_area :body, class: 'form-control', rows: '5' %>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-2 col-vcentered">
+                      <a href="#">Cancel</a>
+                    </div>
+                    <div class="col-md-2 col-md-offset-10">
+                      <%= comment_fields.submit 'Comment', class: "btn btn-primary btn-md" %>
+                    </div>
+                    <% end %>
+                  </div>
+                <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>

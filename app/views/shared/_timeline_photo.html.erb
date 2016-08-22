@@ -1,0 +1,4 @@
+<%=
+  image = image_tag "#{photo_serve_path(photo)}", class: 'photo-timeline'
+  link_to(image,photo_path(photo),style: { height: "92px", width: "92px" })
+%>

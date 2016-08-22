@@ -1,0 +1,16 @@
+<h1>Hey there!</h1>
+
+<p>
+  <%= @user.first_name %>, users like these are just waiting to build connections
+  with people like you! Click on the links below to see if you might know any of them!
+</p>
+
+<% @other_users.each do |user| %>
+
+  <%=
+    image_tag(attachments[user.full_name].url)
+  %><br>
+
+  <p><%= user.full_name %></p>
+
+<% end %>

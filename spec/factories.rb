@@ -1,4 +1,13 @@
 FactoryGirl.define do
+  factory :profile_photo do
+    profile nil
+    photo nil
+  end
+  factory :photo do
+    data ""
+    filename "TheFile"
+    mime_type "jpg"
+  end
 
   factory :timeline do
 

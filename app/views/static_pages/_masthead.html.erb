@@ -1,8 +1,18 @@
 <div class="col-md-12">
-  <div class="jumbotron">
+  <% image_src = nil
+    if user.profile.cover_photo
+      image_src = "#{photo_serve_path(user.profile.cover_photo)}"
+    elsif user.profile.cover
+      image_src = user.profile.cover.url
+    end
+    image = image_url(image_src)
+  %>
+  <%= content_tag :div, class: 'jumbotron', style: "  height: 300px; background: url(#{image}); background-size: cover; margin: 15px -15px -15px;" do %>
     <div class="masthead">
-
-      <%= image_tag "user_silhouette_generic.gif.png", class: "headshot", height: "128px", width: "128px"%>
+      <%= 
+        image = image_tag user.avatar.url, class: "headshot", height: "128px", width: "128px"
+        link_to image, user_change_avatar_path(user)
+        %>
 
       <div class="masthead-name">
         <%= content_tag :h2, "#{user.first_name} #{user.last_name}" %>  
@@ -12,13 +22,12 @@
         <ul class="nav nav-tabs">
           <li><%= link_to 'Timeline', timeline_path(id: user.timeline_id) %></li>
           <li><%= link_to 'About', user %></li>
-          <li><a href="#">Photos</a></li>
+          <li><%= link_to 'Photos', photos_path(id: user.id) %></li>
           <li><%= link_to 'Friends', friends_path(id: user.id) %></li>
         </ul>
       </div>
 
-      <%= link_to('Edit Profile', edit_user_path(user), id: "masthead-edit-profile", class: "btn btn-primary btn-md") if user_check %>
-
+      <%= link_to('Account Management', edit_user_path(user), id: "masthead-edit-profile", class: "btn btn-primary btn-md") if user_check %>
     </div>
-  </div>
+  <% end %>
 </div>

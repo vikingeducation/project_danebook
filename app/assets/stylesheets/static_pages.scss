@@ -79,10 +79,6 @@ nav.navbar-default {
 
 
 .jumbotron {
-  height: 300px;
-  background: image-url("hogwarts_small.jpg");
-  background-size: cover;
-  margin: 15px -15px -15px;
 
   .masthead {
     height: 300px;
@@ -196,11 +192,24 @@ nav.navbar-default {
   margin: -15px;
 }
 
+.photo {
+  max-height: 221px;
+  max-width: 256px;
+}
 
-.photo-container:hover {
+.photo-timeline {
+  max-height: 92px;
+  max-width: 92px;
+}
+
+.photo-container {
   height: 221px;
   width: 256px;
   margin-bottom: 35px;
+  border-bottom-width: 35px;  
+}
+
+.photo-container:hover {
   border-bottom-width: 35px;
   border-color: black;
   border-bottom-style: solid;

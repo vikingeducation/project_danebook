@@ -20,15 +20,22 @@ class User < ActiveRecord::Base
   has_one :profile, dependent: :destroy
   belongs_to :timeline
 
-  # Posts, Comments, and Likes.
+  # Posts, Comments, Likes, and Photos.
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :nullify
   has_many :likes, dependent: :nullify
+  has_many :photos, dependent: :nullify
 
 
   # Friends.
   belongs_to :friendable, polymorphic: true
   has_many :friends, as: :friendable, class_name: 'User'
+
+  # Paperclip(avatar) 
+  has_attached_file :avatar, :styles => { :medium => "230x230", :thumb => "128x128" },default_url: "user_silhouette_generic.gif.png"
+  validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
+  before_validation { avatar.clear if delete_avatar == '1' }
+  attr_accessor :delete_avatar
 
   accepts_nested_attributes_for :profile
   
@@ -46,8 +53,9 @@ class User < ActiveRecord::Base
 
   # Friend validations
   validate :cannot_friend_self
-  # # User should be initialized with zero friends.
+  # User should be initialized with zero friends.
   validates :friendable_id, absence: true, on: :create
+
 
 
   has_secure_password
@@ -100,15 +108,15 @@ class User < ActiveRecord::Base
     end
   end
 
-  # Send activation email.
-  def send_activation_email
-    UserMailer.activation(self).deliver_now
-  end
+  # # Send activation email.
+  # def send_activation_email
+  #   UserMailer.activation(self).deliver_now
+  # end
 
-  # Send password reset email.
-  def send_reset_email
-    UserMailer.password_reset(self).deliver_now
-  end
+  # # Send password reset email.
+  # def send_reset_email
+  #   UserMailer.password_reset(self).deliver_now
+  # end
 
   def first_name
     @first_name ||= self.profile.first_name if self.profile

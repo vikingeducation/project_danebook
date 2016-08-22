@@ -16,20 +16,39 @@ class UsersController < ApplicationController
     # @profile = @user.profile
   end
 
+  # def create
+  #   @user = User.new({ email: user_params[:email],                
+  #                      password: user_params[:password],
+  #                      password_confirmation: user_params[:password_confirmation] })
+  #   if @user.save && @user.create_profile!(first_name: user_params[:first_name], 
+  #                                          last_name: user_params[:last_name])
+  #     @user.send_activation_email
+  #     flash[:info] = 'You have been sent an email containing a link to activate your account.'
+  #     redirect_to root_url
+  #   else
+  #     flash[:danger] = 'Invalid information. Please try again to sign up.'
+  #     redirect_to new_user_path
+  #   end
+  # end
+
   def create
     @user = User.new({ email: user_params[:email],                
                        password: user_params[:password],
                        password_confirmation: user_params[:password_confirmation] })
     if @user.save && @user.create_profile!(first_name: user_params[:first_name], 
                                            last_name: user_params[:last_name])
-      @user.send_activation_email
-      flash[:info] = 'You have been sent an email containing a link to activate your account.'
+      @user.update(activated: true)
+      @user.reload
+      queue_welcome_email(@user)
+      queue_recommended_friends_email(@user)
+      flash[:info] = 'You have been sent an email.'
       redirect_to root_url
     else
       flash[:danger] = 'Invalid information. Please try again to sign up.'
       redirect_to new_user_path
     end
   end
+
 
   def edit
     @profile = @user.profile
@@ -58,6 +77,10 @@ class UsersController < ApplicationController
     flash[:success] = Account has been deleted.
     redirect_to root_path
   end
+  
+  def change_avatar
+    render 'static_pages/change_avatar'
+  end
 
   private
     def user_params
@@ -65,8 +88,21 @@ class UsersController < ApplicationController
                             :last_name,
                             :email,
                             :password, 
-                            :password_confirmation]
+                            :password_confirmation,
+                            :avatar]
       params.require(:user).permit(permissible_params)
+    end
+
+    def queue_welcome_email(user)
+      UserWelcomeJob.set(wait: 5.seconds).perform_later(user)
+      # UserWelcomeJob.perform_later(user)
+    end
+
+    def queue_recommended_friends_email(user)
+      # UserWelcomeJob.set(wait: 5.seconds).perform_later(user)
+      other_users_ids = User.search('',1,user).ids
+      # UserMailer.recommend_friends(User.find(user),other_users).deliver!
+      RecommendedFriendsJob.set(wait: 2.seconds).perform_later(user.id,other_users_ids)
     end
 
     # Setting a user before specific actions.
@@ -74,10 +110,10 @@ class UsersController < ApplicationController
       case action_name
       when 'show'
         @user = User.find_by_id(params[:id])
-      when 'edit', 'update', 'destroy'
+      when 'edit', 'update', 'destroy', 'change_avatar'
         @user = current_user
       end
-      redirect_to_referer root_path, :flash => {:error => 'Unable to find that user'} unless @user
+      redirect_to :back, :flash => {:error => 'Unable to find that user'} unless @user
     end
     
 end

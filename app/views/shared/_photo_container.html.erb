@@ -1,0 +1,28 @@
+<div class="photo-container">
+  <div class="row">
+    <div class="col-md-12">
+      <%=
+        image = image_tag "#{photo_serve_path(photo)}", class: 'photo'
+        link_to image, photo_path(photo), style: { height: "256px", width: "256px" }
+      %>
+      <%= content_tag :p, "Uploaded #{photo.created_at}", class: "photo-text" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+    <% if !photo.liked?(current_user) %>
+      <%= form_for photo do |photo_fields| %>
+        <%= photo_fields.fields_for :likes, @like do |like_fields| %>     
+            <%= like_fields.hidden_field :user_id %>
+            <%= like_fields.submit 'Like' %>
+        <% end %>
+      <% end %>
+    <% else %>
+      <%= link_to "Unlike", like_path(photo.like(current_user)), method: :delete %>
+    <% end %>
+    </div>
+    <div class="col-md-6">
+      <%= link_to "Set as cover photo", profile_path(id: photo.user.profile.id, profile: { cover_photo: photo.id }), method: :patch %>
+    </div>
+  </div>
+</div>

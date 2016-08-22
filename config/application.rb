@@ -25,5 +25,8 @@ module DanebookApp
 
     # Let Rails serve assets.
     config.serve_static_files = true
+
+    # set ActiveJob adapter to delayed_jobs
+    config.active_job.queue_adapter = :delayed_job
   end
 end

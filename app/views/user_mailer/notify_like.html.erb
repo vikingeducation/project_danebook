@@ -1,0 +1,7 @@
+<h1>Hey there!</h1>
+
+<p>
+  Looks like someone's liked your <%= @resource.class %>, <%= @user.first_name %>. Click on the link below to check it out!
+</p>
+
+<%= link_to 'See who liked your post', timeline_url(@user.timeline) %>

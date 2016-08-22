@@ -2,6 +2,14 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :update]
   before_action :require_login, only: [:show]
 
+  def index
+    if params[:query]
+      @users = User.search(params[:query])
+    else 
+      @users = User.all.order("created_at DESC")
+    end
+  end
+
   def show
     @user = User.find(params[:id])
     @profile = @user.profile

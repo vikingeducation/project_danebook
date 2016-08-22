@@ -7,6 +7,8 @@
     <div class ="row header-bar">
       <div class="col-xs-5 col-xs-offset-3">
       <h1>About</h1>
+
+  
       <div>
         <%= simple_form_for current_user.profile, :url => user_profiles_path(current_user) do |f| %>
           <%= f.input :college, label: 'Where did you go for college?' %>

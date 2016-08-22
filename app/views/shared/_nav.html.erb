@@ -10,9 +10,13 @@
     </div>
   
   <div class="container col-xs-7">
-    <form class="navbar-form" role="search">
-       <input type="text" class="form-control" placeholder="Search for Users">
-    </form>
+  <%= form_tag(users_path, :method => "get", id: "search-form") do %>
+    <p>
+      <%= text_field_tag :query, nil, placeholder: "SEARCH_USERS" %>
+      <%= submit_tag "search" %>
+    </p>
+  <% end %>
+      
   </div>
 
   <div class="col-xs-1 col-xs-offset-1" id="nav-bar">

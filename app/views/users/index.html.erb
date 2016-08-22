@@ -1,0 +1,23 @@
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+<h3> 
+    These users popped up in your query search :: 
+  </h3>
+
+<ul>
+  <% unless @users.blank? %>
+    <% @users.each do |user| %>
+
+      <li>
+        <h5>
+        user_name :: <%= link_to user.username, user_path(user) %>
+        </h5>
+      </li>
+    <% end %>
+  <% end %> 
+</ul>

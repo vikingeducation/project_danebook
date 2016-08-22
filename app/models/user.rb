@@ -4,8 +4,7 @@ class User < ApplicationRecord
   validates :username, length: { :minimum => 1}, uniqueness: true
   validates :email, uniqueness: true
   validates_format_of :email, :with => /@.*[.]com\z/
-  
-  # validates :password, length: { in: (5..26) }, :allow_nil => false
+  #validates :password, :allow_nil => false#, length: { in: (5..26) }
   before_create :generate_token
 
   has_one :profile, class_name: "Profile"
@@ -44,14 +43,16 @@ class User < ApplicationRecord
     !likes.empty?
   end
 
-
    def self.send_welcome_email(id)
     user = User.find(id)
     UserMailer.welcome(user).deliver
   end
 
-  # will_be_implemented
-  # def has_photo?  
-  #   self.photo.nil? ? false : true
-  # end
+  def self.search(query)
+    if query
+      where("username LIKE ?", "%#{query}%")
+    else
+      where("")
+    end
+  end
 end

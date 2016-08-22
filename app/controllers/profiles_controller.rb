@@ -1,6 +1,7 @@
 class ProfilesController < ApplicationController
 
-  # before_action :require_current_user, :only => [:edit, :update]
+
+  # before_action :require_current_user, :only => [:update]
 
   def show
     @user = User.find(params[:user_id])
@@ -32,6 +33,11 @@ class ProfilesController < ApplicationController
     redirect_to user_path(current_user)
   end
 
+  def search
+    @user = current_user
+    @profiles = Profile.search(query_params[:query])
+  end
+
   private
 
   def profile_params
@@ -40,6 +46,10 @@ class ProfilesController < ApplicationController
 
   def user_params
     params.require(:user).permit(:email)
+  end
+
+  def query_params
+    params.permit(query: [:first_name, :last_name])
   end
 
 end

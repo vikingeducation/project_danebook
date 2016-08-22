@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
     if @user && @user.authenticate(params[:password])
       sign_in(@user)
       flash.notice = "You've signed in."
-      redirect_to user_path(@user)
+      redirect_to user_newsfeed_path(@user)
     else
       flash.notice = "The email and password you entered don't match. Please try again."
       redirect_to new_session_path

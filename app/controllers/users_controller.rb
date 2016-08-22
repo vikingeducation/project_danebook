@@ -2,6 +2,8 @@ class UsersController < ApplicationController
 
   skip_before_action :require_login, :only => [:index, :new, :create]
 
+  before_action :require_current_user, :only => [:newsfeed]
+
   def index
   end
 
@@ -36,6 +38,13 @@ class UsersController < ApplicationController
   end
 
   def update
+  end
+
+  def newsfeed
+    @user = current_user
+    @profile = @user.profile
+    @post = @user.posts.build
+    @comment = Comment.new
   end
 
   private

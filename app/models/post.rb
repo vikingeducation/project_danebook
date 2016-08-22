@@ -10,4 +10,10 @@ class Post < ApplicationRecord
     likes.map {|like| like.user.profile.name}.join(", ")
   end
 
+  def self.friend_posts(user)
+    nil
+    friend_ids = "(#{user.friended_ids.join(",")})"
+    self.where("user_id IN #{friend_ids}").order("created_at DESC")
+  end
+
 end

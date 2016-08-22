@@ -16,7 +16,7 @@ gem 'coffee-rails', '~> 4.2'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
 gem 'pry-byebug'
-gem 'letter_opener'
+
 gem 'delayed_job_active_record'
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -29,6 +29,8 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 gem 'paperclip'
+gem 'aws-sdk'
+gem 'figaro'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -47,6 +49,7 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'hirb'
+  gem 'letter_opener'
 end
 
 group :development, :test do

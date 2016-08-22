@@ -45,9 +45,9 @@ class ApplicationController < ActionController::Base
   end
 
   def require_current_user
-    unless params[:id] == current_user.id.to_s
+    unless params[:user_id].to_i == current_user.id
       flash[:error] = "You're not authorized to perform that action."
-      redirect_to user_timeline_path(current_user)
+      redirect_to user_path(current_user)
     end
   end
 

@@ -25,6 +25,41 @@ Rails.application.configure do
   # Do not fallback to assets pipeline if a precompiled asset is missed.
   config.assets.compile = false
 
+  config.action_mailer.smtp_settings = {
+    :address        => 'smtp.sendgrid.net',
+    :port           => '587',
+    :authentication => :plain,
+    :user_name      => ENV['SENDGRID_USERNAME'],
+    :password       => ENV['SENDGRID_PASSWORD'],
+    :domain         => 'heroku.com',
+    :enable_starttls_auto => true
+  }
+  config.action_mailer.delivery_method ||= :smtp
+
+  config.action_mailer.default_url_options = {
+    :host => 'morning-journey-10393.herokuapp.com',
+  }
+
+  config.paperclip_defaults = {
+
+  # Don't forget to make S3 your storage option!
+  :storage => :s3,
+
+  :s3_credentials => {
+
+    # put your host name here if needed
+    #   see the reading below for more details
+    # NOTE: This must be the correct region for YOU
+    :s3_region => "us-east-1",
+
+    # NOTE: these lines are changed to use secrets.yml
+    # from the examples (which use ENV vars instead)
+    :bucket => Rails.application.secrets.s3_bucket_name,
+    :access_key_id => Rails.application.secrets.aws_access_key_id,
+    :secret_access_key => Rails.application.secrets.aws_secret_access_key
+    }
+  }
+
   # `config.assets.precompile` and `config.assets.version` have moved to config/initializers/assets.rb
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.

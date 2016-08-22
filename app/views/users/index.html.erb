@@ -1,3 +1,15 @@
+<ul>
+  <% if @user %>
+    <% @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  <% elsif @profile %>
+    <% @profile.errors.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  <% end %>
+</ul>
+
 <main class="container">
   <div class="row">
 

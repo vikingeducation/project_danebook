@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resource :profile, only: [:show]
     resources :posts, only: [:create, :destroy]
     get "timeline" => "users#show"
+    get "newsfeed" => "users#newsfeed"
     resources :comments, only: [:create, :destroy]
     resources :photos, only: [:create, :destroy, :index, :new, :show]
   end
@@ -30,5 +31,7 @@ Rails.application.routes.draw do
   resources :photos, only: [] do
     resources :likes, only: [:create, :destroy], :defaults => { :likeable => 'Photo' }
   end
+
+  get "search" => "profiles#search"
 
 end

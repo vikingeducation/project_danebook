@@ -20,4 +20,14 @@ class Profile < ApplicationRecord
     end
   end
 
+  def self.search(query)
+    results = self.where("")
+    if query
+      query.each do |col, name|
+        results = results.where("#{col} ILIKE ?", "%#{name}%") if name.present?
+      end
+    end
+    results
+  end
+
 end

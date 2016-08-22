@@ -1,10 +1,11 @@
 class PostsController < ApplicationController
 
   def create
-    if current_user.posts.create(post_params)
+    current_user.posts.build(post_params)
+    if current_user.save
       flash[:success] = "Created New Post"
     else
-      flash[:alert] = "Could Not Create Post"
+      flash[:error] = "Could Not Create Post"
     end
     redirect_to current_user
   end

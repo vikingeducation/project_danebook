@@ -27,7 +27,6 @@ Rails.application.routes.draw do
   delete "logout" => "sessions#destroy"
 
   resource :friendings, :only => [:create, :destroy]
-
-  #get "friends" => "users#friends"
+  resources :newsfeeds, :only => [:index]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

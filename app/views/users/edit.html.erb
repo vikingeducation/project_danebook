@@ -80,11 +80,11 @@
       <h2>About Me</h1>
        <p><%= profile_fields.text_area :about_me, {rows: 5, cols: 50} %></p>
     </div>
-    </div><!--main text end-->
     <%= profile_fields.hidden_field :first_name, :value => @profile.first_name %>
     <%= profile_fields.hidden_field :last_name, :value => @profile.last_name %>
     <%= profile_fields.hidden_field :gender, :value => @profile.gender %>
     <%= profile_fields.hidden_field :birthday, :value => @profile.birthday %>
+    </div><!--main text end-->
     <% end %>
     <!-- end of fields for -->
     <!-- Save Changes button -->

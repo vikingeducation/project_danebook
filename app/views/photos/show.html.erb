@@ -31,7 +31,6 @@
     <% else %>
       <%= link_to "Like", photo_likes_path(@photo), method: :post, class: "post-reaction" %>
   <% end %>
-  <a class="post-reaction" href="#">Comment</a>
     <% if authorized_user?(@owner) %>
       <%= link_to "Delete", user_photo_path(@owner,@photo), method: :delete, class: "post-reaction delete" %>
       <%= form_for @photo, class: "post-reaction delete" do |f| %>
@@ -90,7 +89,7 @@
 <% end %>
 <div class="like-comment-container no-border">
   <%= form_for [@photo, @comment], :html => {:class => "comment-form"} do |comment_fields| %>
-  <%= comment_fields.text_area :body, cols: 70, rows: 5, placeholder: "Write a comment...", class: "comment-textarea" %>
+  <%= comment_fields.text_area :body, cols: 70, rows: 3, placeholder: "Write a comment...", class: "comment-textarea" %>
   <div class="comment-button-container">
     <%= comment_fields.submit "Comment", class: "btn btn-primary", id: "comment-btn" %>
   </div>

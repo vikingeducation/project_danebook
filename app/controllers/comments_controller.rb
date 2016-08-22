@@ -19,6 +19,7 @@ class CommentsController < ApplicationController
                           :user_id => current_user.id,
                           :body => params[:comment][:body])
     if @comment.save
+      User.delay(run_at: 5.seconds.from_now).send_comment_email(@user.id, current_user.id, type)
       if type == "Photo"
         redirect_to user_photo_path(@user, @photo)
       elsif type == "Post"

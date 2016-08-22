@@ -15,21 +15,23 @@
       </ul>
     </div>
     <!--Search bar-->
-      <div class="col-md-6" id="search-field">
-        <form class="navbar-form search-bar" role="search">
+      <div class="col-md-5" id="search-field">
+        <%= form_tag users_path, :method => 'get', class: "navbar-form search-bar", role: "search" do %>
+        <%= text_field_tag :query, "", class: "form-control search-bar", role: "search", placeholder: "Search for users" %>
+        <% end %>
+        <!--<form class="navbar-form search-bar" role="search">
           
           <input type="text" class="form-control search-bar" placeholder="Search for users">
      
-      </form>
+      </form>-->
     </div>
     <!--User Name-->
-    <div class="col-md-2">
-      <p class="navbar-text" id="user-name">
-        <% if profile %>
-        <%= link_to current_user.profile.first_name, current_user, id: "profile-name" %>
-        <% end %>
-      </p>
-      <%= link_to "Logout", logout_path, :method => :delete, :class => "navbar-text", :id => "logout" %>
+    <div class="col-md-3">
+      <% if profile %>
+      <%= link_to current_user.profile.first_name, current_user, id: "profile-name", class: "navbar-text"%>
+      <% end %>
+      <%= link_to "Home", newsfeeds_path, id: "profile-name", class: "navbar-text" %>
+      <%= link_to "Logout", logout_path, :method => :delete, :id => "logout", class: "navbar-text" %>
     </div>
       
   </nav>

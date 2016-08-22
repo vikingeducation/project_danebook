@@ -1,10 +1,4 @@
-<!--Existing Post-->
-        <% if user.posts.empty? %>
-        <h4 class="centered-text">
-          <%= user.profile.first_name %> has no posts yet!
-        </h4>
-        <% end %>
-        <% posts.each do |post| %>
+<% posts.each do |post| %>
         <% if post.id %>
         <div class="post-box">
         <% if post.user.profile_pic %>
@@ -84,9 +78,4 @@
     </div>
     
     <% end %>
-    <% end %></div> 
-      <!--col-md-7 end-->
-    </div><!--row end-->
-    </div>
-  </div>
-</div>
+    <% end %>

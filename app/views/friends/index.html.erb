@@ -26,7 +26,11 @@
 <div class="row">
   <div class="col-md-6">
     <div class="friend-box">
-    <%= image_tag "wizard_hat.png", alt: "friend's picture", class: "friend-image" %>
+      <% if friend.profile_pic %>
+        <%= image_tag friend.profile_pic.avatar.url(:thumb), alt: "photo", class: "friend-image" %>
+        <% else %>
+        <%= image_tag "wizard_hat.png", alt:"photo", class: "friend-image" %></a>
+        <% end %>
         <div class="friend-name">
           <p><%= link_to friend.profile.full_name, friend %></p>
           <p class="stats"><%= friend.friended_users.count %> Friends</p>
@@ -41,11 +45,14 @@
   <% end %>
 <!-- close the row -->
   <% else %>
-  <div class="col-md-6">
     <div class="col-md-6">
     <div class="friend-box">
-    <%= image_tag "wizard_hat.png", alt: "friend's picture", class: "friend-image" %>
-        <div class="friend-name">
+    <% if friend.profile_pic %>
+      <%= image_tag friend.profile_pic.avatar.url(:thumb), alt: "photo", class: "friend-image" %>
+    <% else %>
+      <%= image_tag "wizard_hat.png", alt:"photo", class: "friend-image" %></a>
+    <% end %>
+      <div class="friend-name">
           <p><%= link_to friend.profile.full_name, friend %></p>
           <p class="stats"><%= friend.friended_users.count %> Friends</p>
         </div>

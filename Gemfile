@@ -28,6 +28,7 @@ gem 'jbuilder', '~> 2.5'
  gem 'paperclip'
  gem 'aws-sdk'
  gem 'figaro'
+ gem 'faker'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 group :production do

@@ -1,0 +1,29 @@
+<div class="container-fluid about-page">
+  <%= render :partial => "static_pages/main_nav", :locals => {profile: @profile} %>
+  <div class = "row">
+    <div class="col-md-3 left-sidebar">
+      <% if @user.profile_pic %>
+        <%= image_tag @user.profile_pic.avatar.url(:profile), alt: "profile", class: "img-responsive img-thumbnail" %>
+      <% else %>
+        <%= image_tag "harry_potter_small.jpg", alt: "profile picture", class: "img-responsive img-thumbnail" %>
+      <% end %>
+      <h3><%= link_to @profile.full_name, current_user %></h3>
+      <p><%= link_to "Edit Profile", edit_user_path(current_user) %></p>
+      <% if @recently_active.size > 0 %>
+      <%= render :partial => "recently_active", :locals => {users: @recently_active} %>
+      <% end %>
+    </div>
+    <div class="col-md-6 col-md-offset-1">
+      <div class="post-box centered-text">
+        <h4 class="post-title">Post</h4>
+        <%= form_for [@user, @post] do |post_fields| %>
+          <%= post_fields.text_area :body, cols: 60, rows: 5, placeholder: "Tell the world something...", class: "post-textarea" %>
+          <div class="post-button-container">
+            <%= post_fields.submit "Post", class: "btn btn-primary" %>
+          </div>
+          <% end %>
+      </div><!-- post-box-->
+    <%= render :partial => "post_box", :locals => {posts: @posts} %>
+    </div><!-- col-md-9-->
+  </div><!-- row -->
+</div><!-- container -->

@@ -10,4 +10,8 @@ class Post < ApplicationRecord
     updated_at.strftime("%A %m/%d/%Y")
   end
   
+  def self.newsfeed_posts(friends)
+    where("user_id IN (?)", friends).order(updated_at: :desc)
+  end
+
 end

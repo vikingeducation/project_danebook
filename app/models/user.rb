@@ -60,10 +60,23 @@ class User < ApplicationRecord
     photos.find_by cover: true
   end
 
+  def last_posted
+    posts.order(updated_at: :desc).first.updated_at.strftime("%A %m/%d/%Y")
+  end
+
+  def self.post_authors(p_ids)
+    where("id IN (?)", p_ids).distinct
+  end
+
   def self.send_welcome_email(id)
     user = User.find(id)
     UserMailer.welcome(user).deliver
   end
 
+  def self.send_comment_email(user, commenting_user, type)
+    recipient = User.find(user)
+    commentor = User.find(commenting_user)
+    UserMailer.comment(recipient, commentor, type).deliver
+  end
 
 end

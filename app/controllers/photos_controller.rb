@@ -27,10 +27,13 @@ class PhotosController < ApplicationController
   def update
     @photo = Photo.find(params[:id])
     @user = @photo.user
-    if photo_params[:profile] && current_user.profile_pic
-       current_user.profile_pic.profile = false
-    elsif photo_params[:cover] && current_user.profile_pic
-       current_user.cover_pic.cover =false
+    if photo_params[:profile] == "true" && current_user.profile_pic
+       current_profile = current_user.profile_pic
+       current_profile.update(:cover => false)
+    end
+    if photo_params[:cover] == "true" && current_user.cover_pic
+       cover = current_user.cover_pic
+       cover.update(:cover => false)
     end
     @photo.update(photo_params)
     redirect_to user_photo_path(@user, @photo)

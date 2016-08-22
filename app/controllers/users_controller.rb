@@ -2,7 +2,8 @@ class UsersController < ApplicationController
   skip_before_action :require_login, :only => [:new, :create]
   before_action :require_authorized_user, :only => [:edit, :update, :destroy]
   def index
-    redirect_to "static_pages/home"
+    @profiles = Profile.search(params[:query])
+    @profile = current_user.profile
   end
 
   def new

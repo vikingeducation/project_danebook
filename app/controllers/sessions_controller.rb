@@ -5,7 +5,7 @@ skip_before_action :require_login, :only => [:create]
     @user = User.find_by_email(params[:email])
     if @user && @user.authenticate(params[:password])
       sign_in(@user)
-      redirect_to user_path(@user)
+      redirect_to newsfeeds_path
     else
       flash[:error] = "We couldn't sign you in"
       redirect_to root_path

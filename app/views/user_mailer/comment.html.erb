@@ -1,0 +1,8 @@
+<p>
+  Hi <%= @user.name %>, you have a new comment!
+</p>
+
+<p>
+  <%= @commentor.name %> posted on one of your recent <%= @type %>.
+  <%= link_to "Login", root_url %> to see what they said and respond.
+</p>

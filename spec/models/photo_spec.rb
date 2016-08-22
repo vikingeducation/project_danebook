@@ -2,14 +2,17 @@ require 'rails_helper'
 
 describe Photo do
 
-#create a photo with a factory
+let(:photo){ create(:photo) }
 
-xit "is valid with default attributes" do
+it "is valid with default attributes" do
+  expect(photo).to be_valid
 end
 
-xit{ should belong_to(:user) }
+it{ should belong_to(:user) }
 
-xit "doesn't allow invalid formats" do
+it "doesn't allow invalid formats" do
+  not_a_photo = build(:photo, avatar_content_type: "pdf")
+  expect(not_a_photo).not_to be_valid
 end
 
 

@@ -20,7 +20,6 @@ class UserMailer < ApplicationMailer
   def recommend_friends(user,other_users)
     @other_users = other_users
     @user = user
-    raise
 
     # building other users' thumbnail photos
     @other_users.each do |user|

@@ -14,7 +14,6 @@ class Posting < ApplicationRecord
   end
 
   def self.friend_activities(user)
-    # user_friend_ids = user.friended_users.pluck(:id)
     ids = user.friended_user_ids + [user.id]
     self.joins("LEFT OUTER JOIN posts ON postings.postable_id = posts.id").
     joins("LEFT OUTER JOIN photos ON postings.postable_id = photos.id").

@@ -29,11 +29,11 @@
             </div>
             <div class="col-xs-12 timeline-content">
               <div class="row">
-                <% real_user.photos[0..6].each do |photo| %>
+                <% real_user.photos[0..8].each do |photo| %>
                   <%= render partial: "shared/timeline_photos", locals: {photo: photo} %>
                 <% end %>
                 <div class="col-xs-12">
-                  <a href="photos.html"><h6>See more photos</h6></a>
+                  <h6><%= link_to "See more photos", photos_path(id: real_user_id)%></h6>
                 </div>
               </div>
             </div>

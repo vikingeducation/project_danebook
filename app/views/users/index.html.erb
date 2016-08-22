@@ -4,7 +4,7 @@
       <h2>Search Results for "<%= @search_terms %>"</h2>
     </div>
     <div class="col-md-10 col-md-offset-1 col-xs-12" id="basic">
-      <div class="row"
+      <div class="row">
         <% @users.each do |user| %>
           <% next if user == current_user %>
           <%= render partial: "shared/friend_page", locals: {user: user} %>

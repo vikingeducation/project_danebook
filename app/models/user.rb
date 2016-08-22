@@ -67,12 +67,12 @@ class User < ApplicationRecord
   end
 
   def profile_picture
-    photo = Photo.find(self.profile.prof_photo_id)
+    photo = self.profile.prof_photo
     photo.image
   end
 
   def cover_photo
-    photo = Photo.find(self.profile.cover_photo_id)
+    photo = self.profile.cover_photo
     photo.image
   end
   private

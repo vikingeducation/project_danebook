@@ -20,6 +20,22 @@
     width: 100%;
     margin-bottom: 10px;
   }
+
+  #photo-img-container{
+
+    width: 33.3333333%;
+    height: 105px;
+    overflow: hidden;
+    margin-bottom: 10px;
+  }
+
+  #photo-img{
+    
+    object-fit: cover;
+    height: 105px;
+
+    
+  }
   p{
     text-align: center;
   }

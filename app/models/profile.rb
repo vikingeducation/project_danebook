@@ -1,7 +1,7 @@
 class Profile < ApplicationRecord
   belongs_to :user, optional: true
-  belongs_to :prof_photo, optional: true
-  belongs_to :cover_photo, optional: true
+  belongs_to :prof_photo, optional: true, class_name: "Photo"
+  belongs_to :cover_photo, optional: true, class_name: "Photo"
   accepts_nested_attributes_for :cover_photo
   accepts_nested_attributes_for :prof_photo
   validates :first_name, 

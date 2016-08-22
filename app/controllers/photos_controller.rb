@@ -14,6 +14,7 @@ class PhotosController < ApplicationController
     @photo = Photo.find(params[:id])
     @photo_id = @photo.id.to_s
     @user_id = @photo.user_id
+    @comment = Comment.new
   end
 
   def create

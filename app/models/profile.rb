@@ -1,10 +1,10 @@
 class Profile < ApplicationRecord
 
-  validates :first_name, 
-            :length => { :in => 1..40 }
+  # validates :first_name,
+  #           :length => { :in => 1..40 }
 
-  validates :last_name, 
-            :length => { :in => 1..40 }
+  # validates :last_name, 
+  #           :length => { :in => 1..40 }
 
   belongs_to :user
 

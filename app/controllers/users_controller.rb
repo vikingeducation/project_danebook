@@ -8,6 +8,7 @@ class UsersController < ApplicationController
     @post = current_user.posts.build if @user == current_user
     @comment = current_user.comments.build
     @friendship = Friendship.new
+    @photos = @user.photos
 
     build_friend_box
   end

@@ -1,8 +1,8 @@
 class Photo < ApplicationRecord
   belongs_to :user
+  has_many :likes, as: :likable, dependent: :destroy
+  has_many :comments, as: :commentable, dependent: :destroy
 
-  accepts_nested_attributes_for :user,
-                                :reject_if => :all_blank
 
   has_attached_file :image, :styles => { :medium => "300x300", :thumb => "100x100" }
 

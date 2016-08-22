@@ -2,9 +2,9 @@
   <div class="panel-heading">
     <h2 class="panel-title">Photos (<%= @user.photos.count %>)</h2>
   </div>
-  <div class = "panel-body">
-    <% 3.times do %>
-      <%= render "photo_box_row" %>
+  <div class = "panel-body" id="timeline-photo-box">
+    <% @photos.each do |photo| %>
+      <%= render partial: "photo_box_photo", locals: { photo: photo } %>
     <% end %>
 
     <div class="row">

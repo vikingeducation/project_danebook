@@ -37,8 +37,17 @@
           <li> <%=link_to "Like", user_post_likings_path(current_user, post), :method => :post, :confirm => "like this?" %> </li>
         <% end %>
 
-        <li><a href="#"><u>Comment</u></a></li>
-        <li class="pull-right edit-link" role="presentation"><a href="about_edit.html"><u>Post</u></a></li></ul>
+        <li>
+          <%= render partial: "shared/post_comment_form", locals: { post: post } %>
+        </li>
+
+        <li>
+        <% unless post.comments.empty? %>
+          <%= render partial: "shared/post_comment", locals: { comments: post.comments } %>
+        <% end %>
+        </li>
+
+
     </div>
   </div>
 <% end %>

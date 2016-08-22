@@ -1,0 +1,11 @@
+<% comments.each do |comment| %>
+<ul>
+  <li>
+  <% if comment.persisted? %>
+    <%= User.find(comment.user_id).username %> says:
+    <%= comment.description %>
+  <% end %>
+  </li>
+</ul>
+
+<% end %>

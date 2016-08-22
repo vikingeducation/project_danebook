@@ -15,9 +15,9 @@ Rails.application.routes.draw do
     end
   end
 
-  # resources :posts, :except => [:create, :destroy] do
-  #   resources :comments
-  # end
+  resources :posts, :except => [:create, :destroy] do
+    resources :comments, :defaults => { :commentable => 'Post'}
+  end
 
   resources :timelines, :only => [:index]
 

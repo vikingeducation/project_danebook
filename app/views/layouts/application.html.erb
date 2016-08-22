@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>AssignmentDanebookGoesLive</title>
+        <title>Bookish</title>
         <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
         <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
         <%= csrf_meta_tags %>
@@ -9,31 +9,29 @@
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 
-
         <!-- Latest compiled and minified JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
+        <link href="https://fonts.googleapis.com/css?family=Oswald" rel="stylesheet">
     </head>
     <body>
-      <% if @user.errors.any? %>
-      <%= @users.errors.full_messages.each do |message| %>
-      <div><%= message %></div>
-      <% end %>
-      <% end %>
-    <% if signed_in_user? %>
+        <% if @user.errors.any? %>
+        <%= @users.errors.full_messages.each do |message| %>
+        <div><%= message %></div>
+        <% end %>
+        <% end %>
+        <% if signed_in_user? %>
         <%= render partial: "/shared/navbar" %>
     <% else %>
         <%= render partial: "/shared/logged_out_nav" %>
-    <% end %>
+        <% end %>
 
-    <% flash.each do |key, value| %>
-          <div class="<%= flash_class(key) %>">
-                <%= value %>
-          </div>
-    <% end %>
+        <% flash.each do |key, value| %>
+        <div class="<%= flash_class(key) %>">
+            <%= value %>
+        </div>
+        <% end %>
 
-
-    <%= yield %>
+        <%= yield %>
 
     </body>
 </html>

@@ -4,9 +4,10 @@
 
 .image {
   display: inline-block;
-  height: 150px;
-  width: 150px;
+  height: 125px;
+  width: 125px;
   margin: 10px;
+  overflow: hidden;
 }
 
 .fit-div {

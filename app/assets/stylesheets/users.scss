@@ -9,6 +9,7 @@ body {
     background-color: #2B78E4;
     .navbar-brand,
     span {
+        font-family: 'Oswald', sans-serif;
         color: white;
     }
     .navbar-toggle > .icon-bar {
@@ -36,6 +37,7 @@ body {
     border-radius: 50%;
     height: 25px;
     width: auto;
+    font-family: 'Oswald', sans-serif;
 }
 .navbar-form {
     width: 60%;
@@ -82,7 +84,6 @@ body {
     }
 }
 .timeline-col {
-    margin-left: -15px;
     .wrapper {
         margin-bottom: 15px;
     }
@@ -111,13 +112,7 @@ body {
 .post-body {
     margin-top: 15px;
 }
-.sub-post {
-    width: 60px;
-    height: 60px;
-    background-image: image-url("user_silhouette_generic.gif");
-    background-size: cover;
-    display: inline-block;
-}
+
 .friends-col {
     height: 150px;
     width: 100px;
@@ -164,8 +159,8 @@ body {
     background-repeat: none;
     height: 300px;
     z-index: -1;
-    border: 10px solid rgba(255, 255, 255, 0.8);
-    border-radius: 5px;
+    border: 5px solid rgba(20, 20, 20, 0.8);
+    border-radius: 2px;
 }
 #cover-nav {
   div {

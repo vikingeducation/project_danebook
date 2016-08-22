@@ -1,14 +1,14 @@
 <nav class="nav navbar-default navbar-fixed-top navbar-custom">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand" href="#">Danebook</a>
+            <a class="navbar-brand" href="#">Bookish</a>
         </div>
         <ul class="nav navbar-nav navbar-right">
             <li>
                 <%= form_tag session_path, class: "form-inline navbar-form", id: "login-form" do %>
                 <%= text_field_tag :email, nil, placeholder: "Email", class: 'form-control' %>
                 <%= password_field_tag :password, nil, placeholder: "Password", class: 'form-control' %>
-                <%= label_tag :remember_me, "Remember" %>
+                <%= label_tag :remember_me, "Remember", class: 'text-muted' %>
                 <%= check_box_tag :remember_me, inline_label: 'Remember' %>
                 <%= submit_tag 'Login' %>
                 <% end %>

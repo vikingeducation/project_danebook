@@ -1,17 +1,7 @@
 <div class="container-fluid about-page">
   <%= render :partial => "static_pages/main_nav", :locals=>{:profile => @profile} %>
   <!--main photo-->
-   <div class="row">
-    <div class="col-md-12 cover-photo">
-      <%= image_tag "hogwarts_small.jpg", alt:"hogwarts" %>
-      <div id="profile-pic">
-        <%= image_tag "harry_potter_small.jpg", alt: "profile picture", class: "img-responsive img-thumbnail" %>
-      </div>
-      <div id="profile-name">
-        <h3><%= @profile.full_name %></h3>
-      </div>
-  </div>
-  </div>
+    <%= render :partial => "static_pages/main_photo", :locals=>{:profile=>@profile, :user=> @user} %>
   
   <div class="row">
     <div class="col-md-10 col-md-offset-1">

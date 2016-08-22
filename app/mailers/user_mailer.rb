@@ -21,9 +21,6 @@ class UserMailer < ApplicationMailer
     @other_users = other_users
     @user = user
 
-    # @user = user
-    # @other_users = other_users
-
     # building other users' thumbnail photos
     @other_users.each do |user|
       if user.avatar.path

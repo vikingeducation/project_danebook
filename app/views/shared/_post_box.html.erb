@@ -20,9 +20,9 @@
   <div class="row" id="post-feedback">
     <div class="col-xs-1">
       <% if current_user.likes_post?(post.id, "Post").empty? %>
-        <h6><%= link_to "Like", post_likes_path(post.id), method: 'post' %></h6>
+        <h6><%= link_to "Like", likes_path(likeable_id: post.id, likeable_type: "Post"), method: 'post' %></h6>
       <% else %>
-        <h6><%= link_to "Unlike", post_like_path(post.id, current_user.likes_post?(post.id, "Post").first.id), method: 'delete' %></h6>
+        <h6><%= link_to "Unlike", like_path(find_like_id(current_user.id, post.id, "Post")), method: 'delete' %></h6>
       <% end %>
     </div>
     <div class="col-xs-4">
@@ -39,7 +39,7 @@
       <%= render partial: "shared/comment_box", locals: {comment: comment} %>
     <% end %>
     <div class="col-xs-12" id="write-comment">
-          <%= simple_form_for [post, @comment] do |comment_field| %>
+          <%= simple_form_for [@comment] do |comment_field| %>
             <%= comment_field.input :body, class:"form-control", label: false, input_html: {rows: "1"}, placeholder: "Write a comment..." %>
           <div class="col-xs-2 col-xs-offset-8">
           <%= comment_field.submit "Post comment", class:"btn btn-primary btn-sm" %>

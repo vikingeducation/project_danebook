@@ -15,4 +15,5 @@ class Like < ApplicationRecord
     end
   end
 
+  
 end

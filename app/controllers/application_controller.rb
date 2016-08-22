@@ -62,6 +62,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def find_like_id(user_id, likeable_id, likeable_type)
+    like = Like.where("user_id = ? AND likeable_id = ? AND likeable_type = ?", user_id, likeable_id, likeable_type)
+    like.ids[0]
+  end
+  helper_method :find_like_id
+
 
   
 

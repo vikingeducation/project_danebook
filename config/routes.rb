@@ -9,15 +9,10 @@ Rails.application.routes.draw do
 
   resources :photos
 
-  resources :posts do
-    resources :likes, only: [:create, :destroy]
-    resources :comments 
-  end
+  resources :likes, only: [:create, :destroy]
+  resources :posts, only: [:create, :destroy]
 
-  resources :comments do
-    resources :likes, only: [:create, :destroy]
-    resources :comments
-  end
+  resources :comments, only: [:create, :destroy]
 
   resource :session, only: [ :new, :create, :destroy ]
   resources :friendings, only: [:create, :destroy]

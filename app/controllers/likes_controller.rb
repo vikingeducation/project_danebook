@@ -4,7 +4,8 @@ class LikesController < ApplicationController
 
 
   def create
-    @like = Like.new(user_id: current_user.id, likeable_type: Like.find_likable_type(request.original_fullpath), likeable_id: params[:post_id] || params[:comment_id])
+    @like = Like.new(like_params)
+    @like.user_id = current_user.id
     if @like.save!
       flash[:success] = "You've liked the post!"
       redirect_back(fallback_location: root_path)
@@ -24,6 +25,15 @@ class LikesController < ApplicationController
       render :back
     end
   end
+
+  private
+
+  def like_params
+    params.permit(:likeable_type, :likeable_id)
+  end
+
+  
+
 
 
 

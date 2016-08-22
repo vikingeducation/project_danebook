@@ -1,0 +1,7 @@
+<div class="row mini-friend">
+  <%= image_tag(mini_friend.profile_photo.image.url(:thumb), class: 'col-xs-4') %>
+  <div class="col-xs-8">
+    <%= link_to mini_friend.name, mini_friend %>
+    <%= content_tag(:p, mini_friend.last_post_date, class: 'grey no-padding') %>
+  </div>
+</div>

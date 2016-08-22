@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   # get '/photos'   => 'static_pages#photos'
   get '/friends' => 'friendings#index'
   get '/about_edit' => 'users#edit'
+  get '/newsfeed' => 'newsfeed#show'
 
   get '/users/:user_id/timeline' => 'posts#index', as: '/user_timeline'
   get '/users/:user_id/about' => 'users#show', as: '/user_about'

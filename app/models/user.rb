@@ -25,7 +25,18 @@ class User < ApplicationRecord
     uniqueness: true,
     format: { with: /@/, message: 'email must contain an @ symbol'}
 
+  def last_post_date
+    posts.order(created_at: :desc).first.created_at.to_date if posts.any?
+  end
 
+  def newsfeed_posts(num)
+    Post.where('user_id IN (?)', newsfeed_friends.pluck(:id)).order(created_at: :desc)
+    # newsfeed_friends.select(:posts).joins('JOIN posts ON users.id=posts.user_id').order(:created_at).limit(num)
+  end
+
+  def newsfeed_friends
+      User.joins('JOIN friendings ON users.id=friender').where('friender=?', self.id).or(User.joins('JOIN friendings ON users.id=friender').where('friendee=?', self.id)).uniq
+  end
 
   def send_welcome_email
     UserMailer.welcome(self).deliver!

@@ -28,6 +28,8 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
+  config.action_mailer.default_url_options = { :host => 'https://peaceful-fjord-47199.herokuapp.com/'}
+
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
 
@@ -69,4 +71,15 @@ Rails.application.configure do
     :secret_access_key => Rails.application.secrets.aws_secret_access_key
   }
 }
+
+  config.action_mailer.smtp_settings = {
+    :address => 'smtp.sendgrid.net',
+    :port    => '587',
+    :authentication => :plain,
+    :user_name => Rails.application.secrets.sendgrid_username,
+    :password  => Rails.application.secrets.sendgrid_password,
+    :domain    => 'heroku.com',
+    :enable_starttls_auto => true
+  }
+  config.action_mailer.delivery_method ||= :smtp
 end

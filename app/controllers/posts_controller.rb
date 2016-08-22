@@ -10,7 +10,7 @@ class PostsController < ApplicationController
     if @post.save
       flash[:success] = 'Post created'
     end
-    redirect_to timeline_path
+    redirect_back(fallback_location: root_url)
   end
 
   def index

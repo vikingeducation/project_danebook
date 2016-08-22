@@ -1,0 +1,24 @@
+// Place all the styles related to the Newsfeed controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+.newsfeed{
+    margin-left: 1%;
+    margin-right: 1%;
+    .left-col{
+        padding-top: 10%;
+        border-right: 3px solid black;
+        .ra-head{
+            margin-top: 30%;
+        }
+    }
+    .right-col{
+        padding-top: 10%;
+    }
+}
+
+.mini-friend{
+    margin-top: 20px;
+}

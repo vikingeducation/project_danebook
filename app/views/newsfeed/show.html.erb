@@ -1,0 +1,39 @@
+show
+
+
+
+<div class="row newsfeed">
+  <div class="col-xs-3 left-col"><!-- left column -->
+    <div class="col-xs-12">
+      <%= image_tag(@user.profile_photo.image.url(:thumb), class: 'col-xs-8') %>
+      <div class="row">
+        <%= link_to @user.name, @user %>
+        <br>
+        <%= link_to 'Edit Profile', edit_user_path(@user) %>
+      </div>
+    </div>
+    <div class="col-xs-12 ra-head">
+      <h3>Recently Active</h3>
+    </div>
+    <%= render partial: 'users/mini_friend', collection: @recent_friends %>
+  </div>
+
+  <div class="col-xs-7 col-xs-offset-1 right-col"><!-- right column -->
+    <div class="panel panel-default"><!-- begin-new-post-panel -->
+      <div class="panel-heading">
+        <h3 class="panel-title center-text center-text">Post</h3>
+      </div>
+      <% if current_user == @user || current_user.friends_with?(@user) %>
+        <%= form_for @post do |post_builder| %>
+          <div class="panel-body">
+            <%= post_builder.text_area :post_text, placeholder: 'Tell the world something...', rows: 3, class: 'form-control' %>
+          </div>
+          <div class="panel-footer">
+            <%= post_builder.submit 'Post', class: 'btn btn-primary col-xs-offset-11' %>
+          </div>
+        <% end %>
+      <% end %>
+    </div><!-- end-new-post-panel -->
+    <%= render partial: 'posts/post', collection: @all_posts, :locals => { user: @user } %>
+</div>
+</div>

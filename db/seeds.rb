@@ -86,7 +86,7 @@ User.all.each do |user|
 end
 
 def create_random_post
-  User.all.sample(1).posts.create(post_text: Faker::Lorem.sentences(2))
+  User.all.sample(1).first.posts.create(post_text: Faker::Lorem.sentences(2))
 end
 
 (FACTOR * 10).times do

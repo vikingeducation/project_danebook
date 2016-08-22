@@ -100,7 +100,8 @@ class UsersController < ApplicationController
 
     def queue_recommended_friends_email(user)
       # UserWelcomeJob.set(wait: 5.seconds).perform_later(user)
-      other_users_ids = User.search('',1,user).ids
+      other_users = User.search('',1,user)
+      other_users_ids = other_users.ids
       # UserMailer.recommend_friends(User.find(user),other_users).deliver!
       RecommendedFriendsJob.set(wait: 2.seconds).perform_later(user.id,other_users_ids)
     end

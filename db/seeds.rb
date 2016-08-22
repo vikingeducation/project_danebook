@@ -42,7 +42,9 @@ end
 
 def create_user
   puts 'creating user...'
-User.create(email: Faker::Internet.email, password: 'password',
+  User.create(email: Faker::Internet.email, password: 'password',
+    profile_photo: Photo.first,
+    cover_photo: Photo.second,
   profile_attributes: {
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,

@@ -31,8 +31,8 @@ class User < ApplicationRecord
     UserMailer.welcome(self).deliver!
   end
 
-  def self.suggested_friends_email
-    user = User.find(self.id)
+  def self.suggested_friends_email(id)
+    user = User.find(id)
     UserMailer.suggested_friends(user).deliver!
   end
 

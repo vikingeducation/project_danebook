@@ -1,0 +1,301 @@
+<!-- Main -->
+<main>
+  <!-- Header -->
+  <header class="container" id="bg">
+    <section class="jumbotron">
+        <%= image_tag("harry_potter_small.jpg", :class => "profile-image") %>
+        <h3>Harry Potter</h3>
+    </section>
+  </header>
+
+  <!-- Navigation -->
+  <div class="container" id="nav-links">
+   <ul class="nav nav-pills">
+    <li role="nav" class="active"><%= link_to "Timeline", timeline_path %></li><!--
+    --><li role="nav"><%= link_to "About", about_path %></li><!--
+    --><li role="nav"><%= link_to "Photos(123)", photos_path %></a></li><!--
+    --><li role="nav"><%= link_to "Friends(567)", friends_path %></li>
+  </ul>
+  </div>
+
+  <!-- Bootstrap Grid system -->
+  <section class="content">
+    <div class="container">
+      <div class="row">
+        <!-- Left Column -->
+        <div class="col-sm-4">
+
+          <!-- Article About -->
+          <article>
+            <div class="row timeline-heading">
+              <div class="col-xs-12 ">
+                <h4 class="text-center">About</h4>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <span class="timeline-field">Born on: </span>July 31st, 1980
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <span class="timeline-field">Went to School at: </span>Hogwarts
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <span class="timeline-field">Hometown: </span>Godrick's Hollow, England
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <span class="timeline-field">Currently Lives: </span>Godrick's Hollow, England
+              </div>
+            </div>
+          </article>
+
+          <!-- Article Photo -->
+          <article class="text-center">
+            <div class="row timeline-heading">
+              <div class="col-xs-12 ">
+                <h4 class="text-center">Photos (123)</h4>
+              </div>
+            </div>
+            <div class="row">
+              <a href="#" class="col-md-4">
+                <div class="photo-container"><%= image_tag("icon_photo_small.png") %></div>
+              </a>
+              <a href="#" class="col-md-4">
+                <div class="photo-container"><%= image_tag("icon_photo_small.png") %></div>
+              </a>
+              <a href="#" class="col-md-4">
+                <div class="photo-container"><%= image_tag("icon_photo_small.png") %></div>
+              </a>
+            </div>
+            <div class="row">
+              <a href="#" class="col-md-4">
+                <div class="photo-container"><%= image_tag("icon_photo_small.png") %></div>
+              </a>
+              <a href="#" class="col-md-4">
+                <div class="photo-container"><%= image_tag("icon_photo_small.png") %></div>
+              </a>
+              <a href="#" class="col-md-4">
+                <div class="photo-container"><%= image_tag("icon_photo_small.png") %></div>
+              </a>
+            </div>
+            <div class="row">
+              <a href="#" class="col-md-4">
+                <div class="photo-container"><%= image_tag("icon_photo_small.png") %></div>
+              </a>
+              <a href="#" class="col-md-4">
+                <div class="photo-container"><%= image_tag("icon_photo_small.png") %></div>
+              </a>
+              <a href="#" class="col-md-4">
+                <div class="photo-container"><%= image_tag("icon_photo_small.png") %></div>
+              </a>
+            </div>
+            <a href="#" class="see-more">See More Photos</a>
+          </article>
+
+          <!-- Article Friends -->
+          <article class="text-center">
+            <div class="row timeline-heading">
+              <div class="col-xs-12 ">
+                <h4 class="text-center">Friends (567)</h4>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4 user-image">
+                <%= image_tag("user_silhouette_generic.gif") %>
+                <a href="#" class="friend-name">Ron Weasley</a>
+              </div>
+              <div class="col-md-4 user-image">
+                <%= image_tag("user_silhouette_generic.gif") %>
+                <a href="#" class="friend-name">Hermione Granger</a>
+              </div>
+              <div class="col-md-4 user-image">
+                <%= image_tag("user_silhouette_generic.gif") %>
+                <a href="#" class="friend-name">Lord Voldemort</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4 user-image">
+                <%= image_tag("user_silhouette_generic.gif") %>
+                <a href="#" class="friend-name">Albus Dumbledore</a>
+              </div>
+              <div class="col-md-4 user-image">
+                <%= image_tag("user_silhouette_generic.gif") %>
+                <a href="#" class="friend-name">Severus Snape</a>
+              </div>
+              <div class="col-md-4 user-image">
+                <%= image_tag("user_silhouette_generic.gif") %>
+                <a href="#" class="friend-name">Rubeus Hagrid</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4 user-image">
+                <%= image_tag("user_silhouette_generic.gif") %>
+                <a href="#" class="friend-name">Ron Weasley</a>
+              </div>
+              <div class="col-md-4 user-image">
+                <%= image_tag("user_silhouette_generic.gif") %>
+                <a href="#" class="friend-name">Ron Weasley</a>
+              </div>
+              <div class="col-md-4 user-image">
+                <%= image_tag("user_silhouette_generic.gif") %>
+                <a href="#" class="friend-name">Ron Weasley</a>
+              </div>
+            </div>
+            <a href="#" class="see-more">See More Friends</a>
+          </article>
+        </div>
+
+        <!-- Right Column -->
+        <div class="col-sm-8">
+          <!-- Article Post-form -->
+          <article class="post-form">
+            <div class="row timeline-heading">
+              <div class="col-xs-12 ">
+                <h4 class="text-center">Post</h4>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+              <textarea name="message" rows="3" placeholder="Tell the world something!"></textarea>
+              </div>
+            </div>
+            <div class="row timeline-heading">
+              <div class="col-xs-12 ">
+                <button class="btn btn-primary pull-right">Post</button>
+              </div>
+            </div>
+          </article>
+
+          <!-- Article Post 1 -->
+          <article class="post">
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="media">
+                  <a class="media-left" href="#">
+                    <%= image_tag("harry_potter_small.jpg") %>
+                  </a>
+                  <div class="media-body">
+                    <a href="#" class="media-heading">Harry Potter</a>
+                    <p class="text-muted">posted on Thursday 6/1/2014</p>
+                  </div>
+                </div>
+                <p class="post-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                proident, sunt in culpa qui.</p>
+              </div>
+            </div>
+            <div class="row timeline-heading">
+              <div class="col-xs-12 ">
+                <a href="#">Like</a>
+                <a href="#">Comment</a>
+                <a href="#" class="pull-right">Delete</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Article Post 2 -->
+          <article class="post">
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="media">
+                  <a class="media-left" href="#">
+                    <%= image_tag("harry_potter_small.jpg") %>
+                  </a>
+                  <div class="media-body">
+                    <a href="#" class="media-heading">Harry Potter</a>
+                    <p class="text-muted">posted on Thursday 6/1/2014</p>
+                  </div>
+                </div>
+                <p class="post-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                proident, sunt in culpa qui.</p>
+              </div>
+            </div>
+            <div class="row timeline-heading">
+              <div class="col-xs-12 ">
+                <a href="#">Like</a>
+                <a href="#">Comment</a>
+                <a href="#" class="pull-right">Delete</a>
+                <div class="like-annotation">
+                  <a href="#" >Hermoine Gronger</a>likes this
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Article Post 3 -->
+          <article class="post">
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="media">
+                  <a class="media-left" href="#">
+                    <%= image_tag("harry_potter_small.jpg") %>
+                  </a>
+                  <div class="media-body">
+                    <a href="#" class="media-heading">Harry Potter</a>
+                    <p class="text-muted">posted on Thursday 6/1/2014</p>
+                  </div>
+                </div>
+                <p class="post-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                proident, sunt in culpa qui.</p>
+              </div>
+            </div>
+            <div class="row timeline-heading">
+              <div class="col-xs-12 ">
+                <a href="#">Unike</a>
+                <a href="#" class="pull-right">Delete</a>
+                <div class="like-annotation">
+                  <p class="inline text-muted">You and &nbsp;</p><a href="#">Hermoine Gronger</a><p class="inline text-muted">and 3 others like this</p>
+                </div>
+                <hr>
+                <div class="media">
+                  <a class="media-left" href="#">
+                    <%= image_tag("user_silhouette_generic.gif") %>
+                  </a>
+                  <div class="media-body">
+                    <a href="#" class="media-heading">Ron Weasley</a> <span class="text-muted">said on Thursday 5/21/2014</span>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat. Duis aute irure dolor in reprehenderit in </p>
+                    <a href="#">like</a><p class="inline text-muted">3 other people like this</p>
+                  </div>
+                </div>
+                <div class="media">
+                  <a class="media-left" href="#">
+                    <%= image_tag("harry_potter_small.jpg") %>
+                  </a>
+                  <div class="media-body">
+                    <a href="#" class="media-heading">Harry Potter</a> <span class="text-muted">said on Thursday 5/21/2014</span>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat. Duis aute irure dolor in reprehenderit in </p>
+                    <a href="#">like</a> <p class="inline text-muted">3 other people like this</p>
+                    <a href="#" class="pull-right">Delete</a>
+                  </div>
+                  <textarea class="comment-form" name="comment" rows="3" placeholder="Write a comment..."></textarea>
+                <a href="#" class="cancel-link">Cancel</a>
+                <button class="btn btn-primary pull-right">Comment</button>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div> <!-- end of container -->
+  </section>
+</main>

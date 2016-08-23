@@ -1,0 +1,37 @@
+$primary-font: helvetica, Arial, sans-serif;
+
+
+
+body {
+  padding-top: 72px;
+  padding-bottom: 20px;
+  font-family: $primary-font;
+}
+
+main {
+  .info-container {
+    margin-top: 100px;
+    li {
+      color: #666;
+    }
+  }
+  .signup-container {
+    .birthday-label {
+      margin-left: -15px;
+    }
+    .birthday-select {
+      margin-left: -15px;
+    }
+    select {
+      border-radius: 0;
+      color: #aaa;
+    }
+    .radio-button {
+      margin-left: -15px;
+      margin-bottom: 10px;
+    }
+    .btn {
+      font-weight: 800;
+    }
+  }
+}

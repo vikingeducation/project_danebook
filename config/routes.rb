@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root to: 'posts#index'
+  root to: 'newsfeed#show'
   get '/home'     => 'users#new'
   get '/timeline' => 'posts#index'
   get '/about'    => 'users#show'

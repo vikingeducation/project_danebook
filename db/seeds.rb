@@ -6,7 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-FACTOR = 10
+FACTOR = 3
 
 
 puts "Destroying Resources"
@@ -90,7 +90,7 @@ User.all.each do |user|
 end
 
 def create_random_post
-  User.all.sample(1).first.posts.create(post_text: Faker::Lorem.sentences(2))
+  User.all.sample(1).first.posts.create(post_text: Faker::Lorem.sentences.join(' '))
 end
 
 (FACTOR * 10).times do

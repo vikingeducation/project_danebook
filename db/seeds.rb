@@ -71,8 +71,10 @@ photo.picture_from_url('http://a1.img.talkingpointsmemo.com/image/upload/c_fill,
 photo.save!
 
 puts 'assign harrys photos'
-User.first.profile_photo = Photo.first
-User.first.cover_photo = Photo.second
+harry = User.first
+harry.profile_photo = Photo.second
+harry.cover_photo = Photo.first
+harry.save!
 
 puts "Creating Users"
 

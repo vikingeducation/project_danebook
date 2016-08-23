@@ -8,7 +8,7 @@ project_danebook
 
 [Morgan Martin](https://github.com/morgancmartin)
 
-This is the [project danebook](https://peaceful-fjord-47199.herokuapp.com), a social network for Danes.
+This is the [project ~~danebook~~ spacebook](https://peaceful-fjord-47199.herokuapp.com), a social network for ~~Danes~~ intergalactic citizens.
 
 Brought to you by the [Viking Code School](https://www.vikingcodeschool.com)
 

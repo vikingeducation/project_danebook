@@ -23,7 +23,8 @@
              <h5><a href="friends.html"><strong>Friends</strong><small>(542)</small></a></h5>
          </div>
          <div id="edit-link" class="col-xs-2">
-             <h5><% link_to "Edit Profile", edit_user_path(@user) if current_user && current_user = User.find(params[:id])%></h5>
+
+             <h5><%= link_to "Edit Profile", edit_user_path(@user) if current_user && current_user == @user%></h5>
          </div>
        </div>
      </div>
@@ -35,7 +36,7 @@
            <h2 id="about-col"><strong>About</strong></h2>
          </div>
          <div  class="col-xs-4">
-           <% if current_user && params[:id] == current_user.id.to_s %>
+           <% if current_user && @user == current_user %>
            <%= link_to "Edit your Profile", edit_user_path(@user), type: "button", id: "edit_btn", class: "btn btn-primary" %>
             <%end%>
          </div>

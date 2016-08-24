@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     if @user.save
       sign_in(@user)
       flash[:notice] = "User successfully created"
-      render :about
+      redirect_to user_path(@user)
     else
       flash[:notice] = "User not created, fix your errors"
       render :new
@@ -23,7 +23,7 @@ class UsersController < ApplicationController
     if current_user.update(user_params)
       flash[:notice] = "User succesfully updated"
       @user = User.find(params[:id])
-      render "about"
+      redirect_to user_path(@user)
     else
       flash[:notice] = "user not created, fix your errors"
       render :edit

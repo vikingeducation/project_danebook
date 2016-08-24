@@ -1,0 +1,309 @@
+// Place all the styles related to the StaticPages1 controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+/*   */
+
+body {
+padding-top: 70px;
+
+/*        NAV           */
+}
+
+#navcolor {
+  background-color: #418EFF;
+  height: 60px;
+}
+
+h1{
+  display: inline;
+}
+
+#logoimg {
+  float: left;
+  margin-top: 10px;
+  padding-left: 0px;
+}
+
+#logotxt {
+  padding-left: 20px;
+  line-height: 20px;
+  padding-top: 8px;
+  padding-right: 0px;
+  color: white;
+}
+
+#search {
+  width: 100%;
+  margin-top: 5px;
+}
+
+#harry {
+  color: white;
+  float: right;
+}
+
+/*                  ABOUT             */
+
+#cover-col {
+  background-image: url('cover.jpg');
+  height: 300px;
+  background-size: 100%;
+  background-position: center;
+
+}
+
+#user-img {
+  margin-top: 170px;
+  margin-right: 30px;
+  float: left;
+}
+
+#about-name {
+  color: white;
+  margin-top: 255px;
+}
+
+h3 {
+  margin: 20px 0;
+}
+#about-content {
+h5 {
+  margin: 20px 0;
+  margin-left: 15px;
+}
+}
+
+
+#about-links {
+  border: solid black 1px;
+  height: 40px;
+}
+
+#link-box1 {
+  border-left: solid black 1px;
+  text-align: center;
+  width: 12%;
+  a {
+    color: black;
+  }
+  height: 100%;
+  line-height: 20px;
+}
+
+#link-box2 {
+  border-left: solid black 1px;
+  text-align: center;
+  width: 12%;
+  a {
+    color: black;
+  }
+  height: 100%;
+  line-height: 20px;
+}
+
+#link-box3{
+  height: 100%;
+  border-left: solid black 1px;
+  border-right: solid black 1px;
+  margin-right: 0px;
+  text-align: center;
+  box-sizing: border-box;
+  padding-left: 0px;
+  padding-right: 0px;
+  width: 14%;
+  a {
+    color: black;
+  }
+}
+#link-box4 {
+  height: 100%;
+  padding-left: 10px;
+  border-right: solid black 1px;
+  text-align: center;
+  width: 14%;
+  a {
+    color: black;
+  }
+}
+
+#edit-link {
+  float: right;
+  text-align: right;
+}
+
+#about-row {
+  background-color: #ddd;
+  margin-top: 20px;
+  height: 45px;
+  padding: 0px;
+  border: solid black 1px;
+}
+
+#about-col {
+    text-align: center;
+    padding: 0px;
+    margin-top: 7px;
+}
+
+#edit-btn {
+  float: right;
+  margin-top: 10px;
+}
+
+#about-content {
+  border: solid black 1px;
+  border-top: 0;
+  margin-bottom: 40px;
+}
+
+/*       EDIT        */
+
+#save-btn {
+  margin-top: 50px;
+  margin-bottom: 100px;
+  line-height: 40px;
+}
+
+#link-box2-current {
+  border-left: solid black 1px;
+  text-align: center;
+  width: 12%;
+  a {
+    color: black;
+  }
+  height: 100%;
+  line-height: 20px;
+  background-color: #ddd;
+}
+
+/*      TIMELINE      */
+
+#link-box1-current {
+  border-left: solid black 1px;
+  text-align: center;
+  width: 12%;
+  a {
+    color: black;
+  }
+  height: 100%;
+  line-height: 20px;
+  background-color: #ddd;
+}
+
+div .box-header {
+  background-color: #ddd;
+  text-align: center;
+  margin-top: 15px;
+  border: solid black 1px;
+  border-bottom: 0;
+}
+
+div .box-content {
+  border: solid black 1px;
+  padding-top: 15px;
+  padding-bottom: 8px;
+}
+
+div .box-foot {
+  background-color: #ddd;
+  border: solid black 1px;
+  border-top: 0;
+  margin-bottom: 30px;
+}
+
+div .center-link {
+  text-align: center;
+  text-decoration: underline;
+  margin-bottom: 10px;
+}
+
+div .user-img {
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+  display: inline-block;
+  float: left;
+  margin-right: 10px;
+}
+
+div .com-img {
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+  float: right;
+
+}
+div .delete-link {
+  display: inline-block;
+  float: right;
+}
+
+#post-btn {
+  float: right;
+  margin: 8px 0;
+}
+
+#comment-area {
+  margin-top: 20px;
+}
+
+/*          FRIENDS            */
+
+#link-box4-current {
+  background-color: #ddd;
+  height: 100%;
+  padding-left: 10px;
+  border-right: solid black 1px;
+  text-align: center;
+  width: 14%;
+  a {
+    color: black;
+  }
+}
+
+div .friends-content {
+  padding-top: 20px;
+  padding-bottom: 10px;
+}
+
+div .friend-box {
+  margin-bottom: 15px;
+  padding-bottom: 0;
+}
+
+#unfriend-btn {
+  background-color: #ddd;
+  display: inline-block;
+  float: right;
+  margin-top: 15px;
+
+}
+#friend-name {
+  width: 50%;
+  display: inline-block;
+
+}
+
+/*           PHOTOS               */
+#link-box3-current{
+  background-color: #ddd;
+  height: 100%;
+  border-left: solid black 1px;
+  border-right: solid black 1px;
+  margin-right: 0px;
+  text-align: center;
+  box-sizing: border-box;
+  padding-left: 0px;
+  padding-right: 0px;
+  width: 14%;
+  a {
+    color: black;
+  }
+}
+
+div .photo-thumb {
+  justify-content: center;
+  img {
+    margin-left: 15%;
+  }
+}

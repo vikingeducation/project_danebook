@@ -23,7 +23,7 @@
              <h5><a href="friends.html"><strong>Friends</strong><small>(542)</small></a></h5>
          </div>
          <div id="edit-link" class="col-xs-2">
-             <h5><u><a href="about_edit.html">Edit Profile</a></u></h5>
+             <h5><% link_to "Edit Profile", edit_user_path(@user) if current_user && current_user = User.find(params[:id])%></h5>
          </div>
        </div>
      </div>
@@ -35,8 +35,10 @@
            <h2 id="about-col"><strong>About</strong></h2>
          </div>
          <div  class="col-xs-4">
-             <button id="edit-btn" type="button" class="btn-primary">Edit your Profile</button>
-           </div>
+           <% if current_user && params[:id] == current_user.id.to_s %>
+           <%= link_to "Edit your Profile", edit_user_path(@user), type: "button", id: "edit_btn", class: "btn btn-primary" %>
+            <%end%>
+         </div>
        </div>
 
        <div id="about-content" class="row">
@@ -49,7 +51,7 @@
                <strong>  Birthday:</strong>
                </div>
                <div class="col-xs-7">
-                 July 31st, 1980
+                 <%="#{@user.b_month}/#{@user.b_day}/#{@user.b_year}"%>
                </div>
            </h5>  </div>
              <div class="row"><h5>
@@ -57,7 +59,7 @@
                <strong>  College:</strong>
                </div>
                <div class="col-xs-7">
-                 Hogwarts College
+                 <%= @user.college %>
                </div>
              </h5></div>
              <div class="row"><h5>
@@ -65,7 +67,7 @@
                <strong>  Hometown:</strong>
                </div>
                <div class="col-xs-7">
-                 Godrick's Hollow, England
+                 <%= @user.home %>
                </div>
              </h5></div>
              <div class="row"><h5>
@@ -73,7 +75,7 @@
                <strong>  Currently Lives:</strong>
                </div>
                <div class="col-xs-7">
-                 Godrick's Hollow, England
+                 <%= @user.lives %>
                </div>
            </h5>  </div>
 
@@ -85,7 +87,7 @@
                <strong>  Email:</strong>
                </div>
                <div class="col-xs-7">
-                 harry_potter@hotwarts.edu
+                 <%= @user.email %>
                </div>
              </h5></div>
              <div class="row"><h5>
@@ -93,7 +95,7 @@
                <strong>  Telephone:</strong>
                </div>
                <div class="col-xs-7">
-                 555-123-4567
+                 <%= @user.phone %>
                </div>
            </h5>  </div>
            </div>
@@ -102,13 +104,13 @@
              <h3><strong>Words to Live By</strong></h3>
              </div>
                <div class="col-xs-11 col-xs-offset-1">
-                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut</p>
+                 <p><%=@user.words%></p>
                </div>
                <div class="col-xs-11 col-xs-offset-1">
                 <h3><strong>About Me</strong></h3>
                </div>
                <div class="col-xs-11 col-xs-offset-1">
-                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                 <p><%= @user.bio %></p>
                </div>
            </div>
        </div>

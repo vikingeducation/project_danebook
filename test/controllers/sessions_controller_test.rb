@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class StaticPages1ControllerTest < ActionDispatch::IntegrationTest
+class SessionsControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end

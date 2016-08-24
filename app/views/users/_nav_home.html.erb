@@ -1,0 +1,54 @@
+<nav class="navbar navbar-fixed-top">
+
+
+           <div class="navbar-header">
+             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+               <span class="sr-only">Toggle navigation</span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+             </button>
+             <a id="brand" class="navbar-brand" href="#">Danebook</a>
+           </div>
+
+
+           <div id="navbar" class="navbar-collapse collapse">
+
+             <div class="form navbar-form navbar-right" id="login">
+
+               <% if signed_in_user? %>
+                <%= "Hi #{current_user.email}" %>
+                <%=link_to "Logout", logout_path, :method => :delete %>
+               <%else%>
+             <%= form_tag session_path do %>
+
+              <!-- <div class="form-group form-group-sm" id="email"> -->
+               <%= label_tag do %>
+                 Email
+                 <%= text_field_tag :email %>
+               <% end %>
+             <!-- </div> -->
+
+               <!-- <div class="form-group form-group-sm" id="password"> -->
+               <%= label_tag do %>
+                 Password
+                 <%= password_field_tag :password %>
+               <% end %>
+
+               <%= label_tag do %>
+                 Remember me?
+                 <%= check_box_tag :remember_me %>
+                 <% end %>
+             <!-- </div> -->
+
+               <%= submit_tag "Log in" %>
+             <% end %>
+
+           </div>
+           <%end%>
+
+
+     </div><!--/.navbar-collapse -->
+
+
+       </nav>

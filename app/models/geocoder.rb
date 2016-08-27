@@ -1,6 +1,6 @@
 class Geocoder
 
-  attr_reader :options, :results
+  attr_reader :options
 
   include HTTParty
   base_uri "https://maps.googleapis.com/"
@@ -16,10 +16,6 @@ class Geocoder
   def search
     @results = self.class.get("/maps/api/geocode/json", @options)
     !(@results['status'] == 'ZERO_RESULTS')
-  end
-
-  def parsed_results
-    # @parsed_results ||= @results.parsed_response['regionchildren']['response']['list']['region']
   end
 
   private
@@ -56,22 +52,5 @@ class Geocoder
       address = "#{@street}, #{@city}, #{@state} #{@zip}"
       @options[:query]['address'] = address
     end
-
-  # # Creates a hash of the name and zestimate
-  # def zestimates
-  #   parsed_results
-  #   @parsed_results.map do |result|
-  #     zestimate = result['zindex']['__content__'].to_i unless result['zindex'].nil?
-  #     {name: result['name'],zestimate: zestimate}
-  #   end
-  # end
-  #
-  # def coordinates
-  #   parsed_results
-  #   @parsed_results.map do |result|
-  #     coords = { lat: result['latitude'], lon: result['longitude'] }
-  #     {name: result['name'],coords: coords}
-  #   end
-  # end
 
 end

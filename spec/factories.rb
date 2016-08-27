@@ -28,7 +28,7 @@ FactoryGirl.define do
     end
     password "foobar1234"
     activated true
-    
+
     # building/creating a profile
     after(:build) do |user|
       user.profile = build(:profile)
@@ -46,7 +46,7 @@ FactoryGirl.define do
     first_name "#{Faker::Name.first_name}"
     last_name "#{Faker::Name.last_name}"
     college "A College"
-    
+
     after(:build) do |profile|
       profile.hometown = build(:hometown)
       profile.residence = build(:residence)
@@ -80,7 +80,7 @@ FactoryGirl.define do
 
   factory :comment do
     user
-    
+
     body "#{Faker::Lorem.paragraph(3)}"
 
     trait :with_likes do
@@ -114,22 +114,9 @@ FactoryGirl.define do
   end
 
   factory :address do
-    country
-    state
-    city
-  end
-
-  factory :country do
-    "#{Faker::Address.country}"
-  end
-
-  factory :state do
-    "#{Faker::Address.state}"
-  end
-
-  factory :city do
-    "#{Faker::Address.city}"
+    country "#{Faker::Address.country}"
+    state "#{Faker::Address.state}"
+    city "#{Faker::Address.city}"
   end
 
 end
-

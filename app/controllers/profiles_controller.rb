@@ -6,9 +6,6 @@ class ProfilesController < ApplicationController
   def edit
     @profile = current_user.profile
     @user = current_user
-    @cities = City.all
-    @states = State.all
-    @countries = Country.all
   end
 
   def update
@@ -19,6 +16,7 @@ class ProfilesController < ApplicationController
       photo = Photo.find(photo_id)
       @profile.update(cover_photo: photo)
     else
+      
       @profile.update(profile_params)
     end
     flash[:success] = "Profile updated."
@@ -48,18 +46,22 @@ class ProfilesController < ApplicationController
           :id,
           { address_attributes: [
             :id,
-            :city_id,
-            :state_id,
-            :country_id
+            :street_address,
+            :city,
+            :state,
+            :zip_code,
+            :country
           ] }
         ] },
         { residence_attributes: [
           :id,
           { address_attributes: [
             :id,
-            :city_id,
-            :state_id,
-            :country_id
+            :street_address,
+            :city,
+            :state,
+            :zip_code,
+            :country
           ] }
         ] },
         { contact_info_attributes: [:email, :phone] })

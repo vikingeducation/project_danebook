@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  
+
   # Whitelist
   skip_before_action :logged_in_user, except: [:edit, :update, :index, :destroy]
   skip_before_action :correct_user, except: [:edit, :update, :destroy]
@@ -17,10 +17,10 @@ class UsersController < ApplicationController
   end
 
   # def create
-  #   @user = User.new({ email: user_params[:email],                
+  #   @user = User.new({ email: user_params[:email],
   #                      password: user_params[:password],
   #                      password_confirmation: user_params[:password_confirmation] })
-  #   if @user.save && @user.create_profile!(first_name: user_params[:first_name], 
+  #   if @user.save && @user.create_profile!(first_name: user_params[:first_name],
   #                                          last_name: user_params[:last_name])
   #     @user.send_activation_email
   #     flash[:info] = 'You have been sent an email containing a link to activate your account.'
@@ -32,10 +32,10 @@ class UsersController < ApplicationController
   # end
 
   def create
-    @user = User.new({ email: user_params[:email],                
+    @user = User.new({ email: user_params[:email],
                        password: user_params[:password],
                        password_confirmation: user_params[:password_confirmation] })
-    if @user.save && @user.create_profile!(first_name: user_params[:first_name], 
+    if @user.save && @user.create_profile!(first_name: user_params[:first_name],
                                            last_name: user_params[:last_name])
       @user.update(activated: true)
       @user.reload
@@ -52,9 +52,6 @@ class UsersController < ApplicationController
 
   def edit
     @profile = @user.profile
-    @cities = City.all
-    @states = State.all
-    @countries = Country.all
   end
 
   def update
@@ -77,7 +74,7 @@ class UsersController < ApplicationController
     flash[:success] = Account has been deleted.
     redirect_to root_path
   end
-  
+
   def change_avatar
     render 'static_pages/change_avatar'
   end
@@ -87,7 +84,7 @@ class UsersController < ApplicationController
       permissible_params = [:first_name,
                             :last_name,
                             :email,
-                            :password, 
+                            :password,
                             :password_confirmation,
                             :avatar]
       params.require(:user).permit(permissible_params)
@@ -116,5 +113,5 @@ class UsersController < ApplicationController
       end
       redirect_to :back, :flash => {:error => 'Unable to find that user'} unless @user
     end
-    
+
 end

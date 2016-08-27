@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160821042212) do
+ActiveRecord::Schema.define(version: 20160827170909) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,15 +23,14 @@ ActiveRecord::Schema.define(version: 20160821042212) do
     t.string   "address_2"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
-    t.integer  "city_id"
-    t.integer  "state_id"
-    t.integer  "country_id"
+    t.string   "street_address"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip_code"
+    t.string   "country"
   end
 
   add_index "addresses", ["addressable_type", "addressable_id"], name: "index_addresses_on_addressable_type_and_addressable_id", using: :btree
-  add_index "addresses", ["city_id"], name: "index_addresses_on_city_id", using: :btree
-  add_index "addresses", ["country_id"], name: "index_addresses_on_country_id", using: :btree
-  add_index "addresses", ["state_id"], name: "index_addresses_on_state_id", using: :btree
 
   create_table "birthdays", force: :cascade do |t|
     t.integer  "profile_id"
@@ -41,12 +40,6 @@ ActiveRecord::Schema.define(version: 20160821042212) do
   end
 
   add_index "birthdays", ["profile_id"], name: "index_birthdays_on_profile_id", using: :btree
-
-  create_table "cities", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "comments", force: :cascade do |t|
     t.integer  "commentable_id"
@@ -70,12 +63,6 @@ ActiveRecord::Schema.define(version: 20160821042212) do
   end
 
   add_index "contact_infos", ["profile_id"], name: "index_contact_infos_on_profile_id", using: :btree
-
-  create_table "countries", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "delayed_jobs", force: :cascade do |t|
     t.integer  "priority",   default: 0, null: false
@@ -170,12 +157,6 @@ ActiveRecord::Schema.define(version: 20160821042212) do
 
   add_index "residences", ["profile_id"], name: "index_residences_on_profile_id", using: :btree
 
-  create_table "states", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "testings", force: :cascade do |t|
     t.string   "name"
     t.string   "forest"
@@ -213,9 +194,6 @@ ActiveRecord::Schema.define(version: 20160821042212) do
   add_index "users", ["friendable_type", "friendable_id"], name: "index_users_on_friendable_type_and_friendable_id", using: :btree
   add_index "users", ["timeline_id"], name: "index_users_on_timeline_id", using: :btree
 
-  add_foreign_key "addresses", "cities"
-  add_foreign_key "addresses", "countries"
-  add_foreign_key "addresses", "states"
   add_foreign_key "birthdays", "profiles"
   add_foreign_key "comments", "users"
   add_foreign_key "contact_infos", "profiles"

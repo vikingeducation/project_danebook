@@ -31,11 +31,11 @@
               <%= profile_fields.fields_for :hometown do |home_fields| %>
                 <%= home_fields.fields_for :address do |address_fields| %>
                   <%= address_fields.label :city %><br>
-                  <%= address_fields.collection_select(:city_id, cities, :id, :name) %><br>
+                  <%= address_fields.text_field :city %><br>
                   <%= address_fields.label :state %><br>
-                  <%= address_fields.collection_select(:state_id, states, :id, :name) %><br>
+                  <%= address_fields.text_field :state %><br>
                   <%= address_fields.label :country %><br>
-                  <%= address_fields.collection_select(:country_id, countries, :id, :name) %><br>              
+                  <%= address_fields.text_field :country %><br>
                 <% end %>
               <% end %>
             </td>
@@ -46,11 +46,11 @@
               <%= profile_fields.fields_for :residence do |home_fields| %>
                 <%= home_fields.fields_for :address do |address_fields| %>
                   <%= address_fields.label :city %><br>
-                  <%= address_fields.collection_select(:city_id, cities, :id, :name) %><br>
+                  <%= address_fields.text_field :city%><br>
                   <%= address_fields.label :state %><br>
-                  <%= address_fields.collection_select(:state_id, states, :id, :name) %><br>
+                  <%= address_fields.text_field :state %><br>
                   <%= address_fields.label :country %><br>
-                  <%= address_fields.collection_select(:country_id, countries, :id, :name) %><br>              
+                  <%= address_fields.text_field :country %><br>
                 <% end %>
               <% end %>
             </td>
@@ -58,7 +58,7 @@
         </table>
 
         <h2>Contact Information</h2>
-        <%= profile_fields.fields_for :contact_info do |contact_fields| %> 
+        <%= profile_fields.fields_for :contact_info do |contact_fields| %>
         <table>
           <tr>
             <td>Email address:</td>

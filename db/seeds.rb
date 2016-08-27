@@ -12,24 +12,6 @@ User.destroy_all
 Post.destroy_all
 Comment.destroy_all
 Like.destroy_all
-City.destroy_all
-State.destroy_all
-Country.destroy_all
-
-puts "Building Cities.."
-50.times do
-  City.create!(name: Faker::Address.city)
-end
-
-puts "Building States.."
-50.times do
-  State.create!(name: Faker::Address.state)
-end
-
-puts "Building Countries.."
-50.times do
-  Country.create!(name: Faker::Address.country)
-end
 
 #Seed a user.
 puts "Seeding a user.."

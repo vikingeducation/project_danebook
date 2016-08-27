@@ -89,7 +89,7 @@ describe User do
   end
 
   describe "name" do
-    
+
     it "has a first name" do
       expect(user).to respond_to(:first_name)
     end
@@ -118,7 +118,15 @@ describe User do
       other_user = user.friends.build
       expect(other_user.friend?(user)).to eq(true)
     end
+  end
 
+  describe "#unfriend" do
+    it "removes the target user from the befriending user's friends list" do
+      user.save
+      other_user = user.friends.create
+      user.unfriend(other_user)
+      expect(user.friend?(other_user)).to eq(false)
+    end
   end
 
 end

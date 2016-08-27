@@ -29,7 +29,7 @@ class User < ActiveRecord::Base
 
   # Friends.
   belongs_to :friendable, polymorphic: true
-  has_many :friends, as: :friendable, class_name: 'User'
+  has_many :friends, as: :friendable, class_name: 'User', dependent: :nullify
 
   # Paperclip(avatar)
   has_attached_file :avatar, :styles => { :medium => "230x230", :thumb => "128x128" },default_url: "user_silhouette_generic.gif.png"
@@ -107,7 +107,7 @@ class User < ActiveRecord::Base
       everyone(user.id).search_by_full_name(search).paginate(page: page, per_page: 10)
     end
   end
-  
+
   def first_name
     @first_name ||= self.profile.first_name if self.profile
   end
@@ -123,6 +123,16 @@ class User < ActiveRecord::Base
   def friend?(user)
     if friendable_id && user.id
       return (friendable_id == user.id)
+    end
+    false
+  end
+
+  def unfriend(user)
+    friend = friends.where(friendable_id: self.id, id: user.id)
+    if friend.any?
+      friend = friend.first
+      friend.friendable_id,friend.friendable_type = nil
+      return true
     end
     false
   end

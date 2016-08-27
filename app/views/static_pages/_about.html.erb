@@ -4,15 +4,12 @@
   </header>
 
   <div class="row">
-    <%= 
-      render partial: "static_pages/#{params[:action]}_profile", 
-             locals: { 
+    <%=
+      render partial: "static_pages/#{params[:action]}_profile",
+             locals: {
                 user: user,
-                cities: cities, 
-                states: states, 
-                countries: countries, 
-                profile: profile 
-              } 
+                profile: profile
+              }
       %>
   </div>
 

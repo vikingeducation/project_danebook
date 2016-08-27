@@ -3,8 +3,8 @@
 <h3>About</h3>
 <%= show_date @profile.birthday %>
 <%= @profile.college %>
-<%= show_address @profile.hometown %>
-<%= show_address @profile.residence %>
+.hometown %>
+.residence %>
 
 <%= form_for @post do |post_fields| %>
   <%= post_fields.label :body %>
@@ -90,11 +90,11 @@
                 </tr>
                 <tr>
                   <td>Hometown:  </td>
-                  <td><%= show_address @profile.hometown %></td>
+                  <td>.hometown %></td>
                 </tr>
                 <tr>
                   <td>Current Residence:  </td>
-                  <td><%= show_address @profile.residence %></td>
+                  <td>.residence %></td>
                 </tr>
               </table>
             </div>

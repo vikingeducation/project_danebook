@@ -30,10 +30,14 @@
             <td>
               <%= profile_fields.fields_for :hometown do |home_fields| %>
                 <%= home_fields.fields_for :address do |address_fields| %>
+                  <%= address_fields.label :street_address %><br>
+                  <%= address_fields.text_field :street_address %><br>
                   <%= address_fields.label :city %><br>
                   <%= address_fields.text_field :city %><br>
                   <%= address_fields.label :state %><br>
                   <%= address_fields.text_field :state %><br>
+                  <%= address_fields.label :zip_code %><br>
+                  <%= address_fields.text_field :zip_code %><br>
                   <%= address_fields.label :country %><br>
                   <%= address_fields.text_field :country %><br>
                 <% end %>
@@ -45,10 +49,14 @@
             <td>
               <%= profile_fields.fields_for :residence do |home_fields| %>
                 <%= home_fields.fields_for :address do |address_fields| %>
+                  <%= address_fields.label :street_address %><br>
+                  <%= address_fields.text_field :street_address %><br>
                   <%= address_fields.label :city %><br>
-                  <%= address_fields.text_field :city%><br>
+                  <%= address_fields.text_field :city %><br>
                   <%= address_fields.label :state %><br>
                   <%= address_fields.text_field :state %><br>
+                  <%= address_fields.label :zip_code %><br>
+                  <%= address_fields.text_field :zip_code %><br>
                   <%= address_fields.label :country %><br>
                   <%= address_fields.text_field :country %><br>
                 <% end %>

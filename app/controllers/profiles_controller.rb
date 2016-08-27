@@ -16,11 +16,11 @@ class ProfilesController < ApplicationController
       photo = Photo.find(photo_id)
       @profile.update(cover_photo: photo)
     else
-      
-      @profile.update(profile_params)
+      if check_address
+        flash[:success] = "Profile updated."
+        redirect_to @user
+      end
     end
-    flash[:success] = "Profile updated."
-    redirect_to @user
   end
 
   def change_cover
@@ -65,6 +65,24 @@ class ProfilesController < ApplicationController
           ] }
         ] },
         { contact_info_attributes: [:email, :phone] })
+    end
+
+    def check_address
+      hometown_attributes = profile_params[:hometown_attributes][:address_attributes].except(:id)
+      residence_attributes = profile_params[:residence_attributes][:address_attributes].except(:id)
+
+      if !Geocoder.new(hometown_attributes).search
+        flash[:danger] = "Invalid hometown address."
+        redirect_to edit_profile_path(@user.profile)
+      elsif !Geocoder.new(residence_attributes).search
+        flash[:danger] = "Invalid residence address."
+        redirect_to edit_profile_path(@user.profile)
+      else
+        @profile.update(profile_params)
+        return true
+      end
+
+      false
     end
 
 end

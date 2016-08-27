@@ -11,7 +11,7 @@ module UsersHelper
 
   def show_address(addressable)
     address = addressable.address
-    "#{address.address_1}\n#{address.address_2}\n#{address.city.name}, #{address.state.name}, #{address.country.name}"
+    "#{address.street_address}<br>#{address.city}<br>#{address.state} #{address.zip_code}, #{address.country}<br>".html_safe
   end
 
   def show_date(date)

@@ -11,9 +11,9 @@ class User < ActiveRecord::Base
   pg_search_scope :search_by_full_name,
                   associated_against:
                     { profile: ["first_name","last_name"] },
-                  using: 
+                  using:
                     { tsearch: { dictionary: :english } }
-                  
+
 
 
   ## Associations ##
@@ -31,14 +31,14 @@ class User < ActiveRecord::Base
   belongs_to :friendable, polymorphic: true
   has_many :friends, as: :friendable, class_name: 'User'
 
-  # Paperclip(avatar) 
+  # Paperclip(avatar)
   has_attached_file :avatar, :styles => { :medium => "230x230", :thumb => "128x128" },default_url: "user_silhouette_generic.gif.png"
   validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
   before_validation { avatar.clear if delete_avatar == '1' }
   attr_accessor :delete_avatar
 
   accepts_nested_attributes_for :profile
-  
+
 
   ## Validations ##
   VALID_EMAIL_REGEX = /\A[\w\d\.\_]{4,254}@\w{,6}\.\w{3}\z/
@@ -100,24 +100,14 @@ class User < ActiveRecord::Base
   # We want an array for this, so we don't use a scope.
   def User.search(search, page, user)
     case search
-    when '', 'Search for users' 
+    when '', 'Search for users'
       everyone(user.id).joins(:profile).where("profiles.user_id = users.id").order("profiles.last_name ASC").paginate(page: page, per_page: 10)
     else
       # Calling the pg search scope defined in the Profile model.
       everyone(user.id).search_by_full_name(search).paginate(page: page, per_page: 10)
     end
   end
-
-  # # Send activation email.
-  # def send_activation_email
-  #   UserMailer.activation(self).deliver_now
-  # end
-
-  # # Send password reset email.
-  # def send_reset_email
-  #   UserMailer.password_reset(self).deliver_now
-  # end
-
+  
   def first_name
     @first_name ||= self.profile.first_name if self.profile
   end

@@ -10,7 +10,7 @@
   <%=
     content_type = user.avatar.content_type || "gif.png"
     image = image_tag(attachments["#{user.id}.#{content_type}"].url)
-    link_to image, profile_url(user.profile)
+    link_to image, timeline_url(user.timeline)
   %><br>
 
   <p><%= user.full_name %></p>

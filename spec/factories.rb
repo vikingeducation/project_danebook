@@ -119,4 +119,14 @@ FactoryGirl.define do
     city "#{Faker::Address.city}"
   end
 
+  factory :birthday do
+    trait :with_valid_date do
+      date_object { 30.years.ago }
+    end
+
+    trait :with_invalid_date do
+      date_object { 5.years.ago }
+    end
+  end
+
 end

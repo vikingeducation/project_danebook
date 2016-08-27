@@ -6,6 +6,8 @@ class Birthday < ActiveRecord::Base
   private
 
     def reasonable_date
-      date_object < 18.years.ago
+      if date_object > 18.years.ago
+        errors.add :date_object, "Must be at least 18 years old to register."
+      end
     end
 end

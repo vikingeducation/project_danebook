@@ -16,7 +16,10 @@ class ProfilesController < ApplicationController
       photo = Photo.find(photo_id)
       @profile.update(cover_photo: photo)
     else
-      if check_address
+      if invalid_address
+        flash[:danger] = "Invalid address."
+        redirect_to edit_profile_path(@user.profile)
+      else
         flash[:success] = "Profile updated."
         redirect_to @user
       end
@@ -67,22 +70,32 @@ class ProfilesController < ApplicationController
         { contact_info_attributes: [:email, :phone] })
     end
 
-    def check_address
-      hometown_attributes = profile_params[:hometown_attributes][:address_attributes].except(:id)
-      residence_attributes = profile_params[:residence_attributes][:address_attributes].except(:id)
-
-      if !Geocoder.new(hometown_attributes).search
-        flash[:danger] = "Invalid hometown address."
-        redirect_to edit_profile_path(@user.profile)
-      elsif !Geocoder.new(residence_attributes).search
-        flash[:danger] = "Invalid residence address."
-        redirect_to edit_profile_path(@user.profile)
-      else
-        @profile.update(profile_params)
-        return true
+    def invalid_address
+      if hometown_attrs = profile_params[:hometown_attributes]
+        hometown_attrs = hometown_attrs[:address_attributes].except(:id)
+      end
+      if residence_attrs = profile_params[:residence_attributes]
+        residence_attrs = residence_attrs[:address_attributes].except(:id)
       end
 
-      false
+      unless incomplete_address(hometown_attrs,residence_attrs)
+        case
+        when blank_address(hometown_attrs,residence_attrs),Geocoder.new(hometown_attrs).search,Geocoder.new(residence_attrs).search
+          @profile.update(profile_params)
+          return false
+        end
+      end
+
+      true
+    end
+
+    def blank_address(hometown_attrs,residence_attrs)
+      !residence_attrs && !hometown_attrs
+    end
+
+    def incomplete_address(home,residence)
+      return true if home && home.values.any? { |v| v == '' }
+      return true if residence && residence.values.any? { |v| v == '' }
     end
 
 end

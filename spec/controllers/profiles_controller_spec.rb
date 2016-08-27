@@ -9,7 +9,7 @@ describe ProfilesController do
     controller.stub(:current_user) { user }
 
   }
-  let(:profile) { 
+  let(:profile) {
 
     controller.current_user.profile
 

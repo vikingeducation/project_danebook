@@ -4,20 +4,20 @@ describe UsersController do
   let!(:user) { build(:user) }
   let(:creating_user) {
 
-    post :create, user: { 
-      first_name: user.profile.first_name, 
-      last_name: user.profile.last_name, 
-      email: user.email, 
+    post :create, user: {
+      first_name: user.profile.first_name,
+      last_name: user.profile.last_name,
+      email: user.email,
       password: user.password,
       password_confirmation: user.password }
 
   }
   let(:invalid_creating_user) {
 
-    post :create, user: { 
-      first_name: "", 
-      last_name: "", 
-      email: "", 
+    post :create, user: {
+      first_name: "",
+      last_name: "",
+      email: "",
       password: "",
       password_confirmation: "" }
 
@@ -31,7 +31,7 @@ describe UsersController do
   describe '#new' do
 
     it 'assigns the user instance variable' do
-      
+
       get :new
 
       expect(assigns(:user)).to be_a(User)
@@ -67,7 +67,7 @@ describe UsersController do
       end
 
       it 'persists the user to the database' do
-        
+
         expect(assigns(:user).persisted?).to eq(true)
 
       end
@@ -101,7 +101,7 @@ describe UsersController do
       end
 
       it 'does not persist the profile to the database' do
-      
+
         expect(assigns(:user).profile).to be_nil
 
       end
@@ -128,13 +128,10 @@ describe UsersController do
 
       end
 
-      it 'sets the user, profile, city, state, and country instance variables' do
+      it 'sets the user and profile instance variables' do
 
         expect(assigns(:user)).to be_a(User)
         expect(assigns(:profile)).to be_a(Profile)
-        expect(assigns(:cities)).to_not be_nil
-        expect(assigns(:states)).to_not be_nil
-        expect(assigns(:countries)).to_not be_nil
 
       end
 

@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   skip_before_action :logged_in_user, except: [:edit, :update, :index, :destroy]
   skip_before_action :correct_user, except: [:edit, :update, :destroy]
   before_action :set_user, except: [:index, :new, :create]
+  before_action :not_logged_in, only: [:new,:create]
 
 
   def index
@@ -92,6 +93,13 @@ class UsersController < ApplicationController
         @user = current_user
       end
       redirect_to :back, :flash => {:error => 'Unable to find that user'} unless @user
+    end
+
+    def not_logged_in
+      if logged_in?
+        flash[:info] = "You are already logged in."
+        redirect_to current_user.timeline
+      end
     end
 
 end

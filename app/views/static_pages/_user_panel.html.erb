@@ -8,9 +8,16 @@
       <%= content_tag :h4, "#{user.first_name} #{user.last_name}" %>
     </div>
     <div class="col-md-3 col-vcentered">
-      <%= form_tag('/friends', method: :post) do %>
-        <input type='hidden' name='friend[friended_id]' value="<%= user.id %>">
-        <%= friend_button user %>
+      <% if user.friend?(current_user) %>
+        <%= form_tag('/unfriend', method: :post) do %>
+          <input type='hidden' name='friend[friended_id]' value="<%= user.id %>">
+          <%= submit_tag "Unfriend" %>
+        <% end %>
+      <% else %>
+        <%= form_tag('/friends', method: :post) do %>
+          <input type='hidden' name='friend[friended_id]' value="<%= user.id %>">
+          <%= friend_button user %>
+        <% end %>
       <% end %>
     </div>
   </div>

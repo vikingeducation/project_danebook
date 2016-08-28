@@ -9,8 +9,8 @@ Rails.application.routes.draw do
 
   post 'login' => 'sessions#create'
 
-  delete 'logout' => 'sessions#destroy'  
-  
+  delete 'logout' => 'sessions#destroy'
+
   resources :users do
     get 'change_avatar'
   end
@@ -26,12 +26,14 @@ Rails.application.routes.draw do
   end
 
   resources :comments
-  
+
   resources :likes
 
   resources :timelines
 
-  resources :friends, only: [:index,:create]
+  post 'unfriend' => 'friends#destroy'
+
+  resources :friends, only: [:index,:create,:destroy]
 
   resources :activations, only: [:edit]
 

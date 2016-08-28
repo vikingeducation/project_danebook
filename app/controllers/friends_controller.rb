@@ -21,6 +21,15 @@ class FriendsController < ApplicationController
     end
   end
 
+  def destroy
+    @user = User.find(friend_params[:friended_id])
+    if @user.friend?(current_user)
+      current_user.unfriend(@user)
+      flash[:success] = "You've unfriended #{@user.full_name}."
+      redirect_to @user.timeline
+    end
+  end
+
   private
 
     def friend_params

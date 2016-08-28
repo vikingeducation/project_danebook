@@ -132,6 +132,7 @@ class User < ActiveRecord::Base
     if friend.any?
       friend = friend.first
       friend.friendable_id,friend.friendable_type = nil
+      friend.save
       return true
     end
     false

@@ -22,19 +22,15 @@ module StaticPagesHelper
   end
 
   def make_pages_form(obj,attribute)
-    content = obj.send to_field(attribute), 
+    content = obj.send to_field(attribute),
                        attribute,
-                       { class: 'form-control', 
+                       { class: 'form-control',
                          placeholder: attribute }
     content_tag :div, content, class: 'form-group'
   end
 
   def friend_button(user)
-    if user.friend?(current_user)
-      friend_profile user
-    else
-      submit_tag "Add Friend", data: { confirm: "Add #{user.full_name} to your friends list?"}
-    end
+    submit_tag "Add Friend", data: { confirm: "Add #{user.full_name} to your friends list?"}
   end
 
   def friend_profile(user)

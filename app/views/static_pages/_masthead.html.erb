@@ -9,15 +9,15 @@
   %>
   <%= content_tag :div, class: 'jumbotron', style: "  height: 300px; background: url(#{image}); background-size: cover; margin: 15px -15px -15px;" do %>
     <div class="masthead">
-      <%= 
+      <%=
         image = image_tag user.avatar.url, class: "headshot", height: "128px", width: "128px"
         link_to image, user_change_avatar_path(user)
         %>
 
       <div class="masthead-name">
-        <%= content_tag :h2, "#{user.first_name} #{user.last_name}" %>  
+        <%= content_tag :h2, "#{user.first_name} #{user.last_name}" %>
       </div>
-      
+
       <div class="masthead-nav">
         <ul class="nav nav-tabs">
           <li><%= link_to 'Timeline', timeline_path(id: user.timeline_id) %></li>
@@ -27,7 +27,10 @@
         </ul>
       </div>
 
-      <%= link_to('Account Management', edit_user_path(user), id: "masthead-edit-profile", class: "btn btn-primary btn-md") if user_check %>
+      <% if user_check %>
+      <!-- HTML structure dependent on Account Management and Edit Profile buttons. -->
+        <%= link_to('Account Management', edit_user_path(user), id: "masthead-edit-profile", class: "btn btn-primary btn-md") %>
+      <% end %>
     </div>
   <% end %>
 </div>

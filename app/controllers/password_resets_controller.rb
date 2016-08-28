@@ -10,7 +10,7 @@ class PasswordResetsController < ApplicationController
   def create
     if @user = User.find_by(email: params[:password_reset][:email])
       @user.make_reset_digest
-      @user.send_reset_email
+      queue_password_reset_email
       flash[:info] = 'An email has been sent containing a link for resetting your password. Please check your email now. Your password reset link will expire in 24 hours.'
       redirect_to root_url
     else
@@ -45,6 +45,10 @@ class PasswordResetsController < ApplicationController
     def permit_password_params
       permissible_params = [:password,:password_confirmation]
       params.require(:user).permit(permissible_params)
+    end
+
+    def queue_password_reset_email
+      UserMailer.password_reset(@user).deliver!
     end
 
 end

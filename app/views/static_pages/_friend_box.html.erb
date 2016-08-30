@@ -1,0 +1,7 @@
+<div class="friend-box">
+  <%= 
+    image = image_tag friend.avatar.url(:thumb), class: "photo-timeline", height: "92px", width: "92px"
+    link_to image, user_path(friend)
+  %>
+  <%= link_to friend.full_name, user_path(friend) %>
+</div>

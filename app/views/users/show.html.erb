@@ -1,0 +1,9 @@
+<%= 
+render partial: 'static_pages/about', 
+                locals: { user: @user, 
+                          cities: nil, 
+                          states: nil, 
+                          countries: nil, 
+                          profile: @profile },
+                action: :show
+%>

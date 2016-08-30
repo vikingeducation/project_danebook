@@ -1,0 +1,53 @@
+<div class="col-md-12 panel">
+  <h1 class="panel-header">
+    <div class="row">
+      <div class="col-md-2 col-md-offset-5" style="text-align:center">
+        About
+      </div>
+      <div class="col-md-2 col-md-offset-3">
+        <%= link_to('Edit Profile', edit_profile_path(user.profile), class: "btn btn-primary btn-md") if user_check %>
+      </div>
+    </div>
+  </h1>
+  <div class="row panel-content">
+    <div class="col-md-4">
+      <h2>Basic Information</h2>
+      <table>
+        <tr>
+          <td>Birthday:  </td>
+          <td><%= show_date(profile.birthday) %></td>
+        </tr>
+        <tr>
+          <td>College:  </td>
+          <td><%= profile.college %></td>
+        </tr>
+        <tr>
+          <td>Hometown:  </td>
+          <td><%= show_address(profile.hometown) %></td>
+        </tr>
+        <tr>
+          <td>Current Residence:  </td>
+          <td><%= show_address(profile.residence) %></td>
+        </tr>
+      </table>
+      <h2>Contact Information</h2>
+      <table>
+        <tr>
+          <td>Email:  </td>
+          <td><%= profile.contact_info.email %></td>
+        </tr>
+        <tr>
+          <td>Telephone:  </td>
+          <td><%= profile.contact_info.phone %></td>
+        </tr>
+      </table>
+    </div>
+    <div class="col-md-8">
+      <h2>Words to Live By</h2>
+      <p><%= profile.words %></p>
+      <h2>About Me</h2>
+      <p><%= profile.about %></p>
+    </div>
+  </div>
+
+</div>

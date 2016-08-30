@@ -1,0 +1,24 @@
+<div class="user-tile">
+  <div class="row">
+    <div class="col-md-3">
+      <%= link_to(image_tag("user_silhouette_generic.gif.png", { height: "78px", width: "78px" }), controller: :users, action: :show, id: user.id) %>
+
+    </div>
+    <div class="col-md-5">
+      <%= content_tag :h4, "#{user.first_name} #{user.last_name}" %>
+    </div>
+    <div class="col-md-3 col-vcentered">
+      <% if user.friend?(current_user) %>
+        <%= form_tag('/unfriend', method: :post) do %>
+          <input type='hidden' name='friend[friended_id]' value="<%= user.id %>">
+          <%= submit_tag "Unfriend" %>
+        <% end %>
+      <% else %>
+        <%= form_tag('/friends', method: :post) do %>
+          <input type='hidden' name='friend[friended_id]' value="<%= user.id %>">
+          <%= friend_button user %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

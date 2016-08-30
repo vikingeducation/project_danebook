@@ -1,0 +1,7 @@
+<h1>Hey there!</h1>
+
+<p>
+  Your <%= @resource.class %> is all the rage these days! Might wanna check it out, <%= @user.first_name %>. Click on the link below!
+</p>
+
+<%= link_to 'See who commented on your post', timeline_url(@user.timeline) %>

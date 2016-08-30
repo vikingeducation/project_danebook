@@ -1,0 +1,28 @@
+<div class="col-md-12">
+  <div class="row">
+    <div class="col-md-12 panel">
+      <div class="row">
+        <div class="col-md-12">
+          <h1 class="panel-header">Friends</h1>
+        </div>
+      </div>
+      <div class="row panel-content">
+        <div class="col-md-12">
+        <% if user.friends.empty? && user == current_user %>
+          <h3>Need friends? Use the search bar above!</h3>
+        <% end %>
+        <% users_matrix = users_count_check user.friends %>
+        <% users_matrix.each do |row| %>
+          <% row.each do |col| %>
+            <%= split_column(render_user_panel col)%>
+          <% end %>
+        <% end %> 
+        </div>
+       </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <%= will_paginate %>
+  </div>
+</div>

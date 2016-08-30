@@ -1,0 +1,18 @@
+<h1>Hey there!</h1>
+
+<p>
+  <%= @user.first_name %>, users like these are just waiting to build connections
+  with people like you! Click on the links below to see if you might know any of them!
+</p>
+
+<% @other_users.each do |user| %>
+
+  <%=
+    content_type = user.avatar.content_type || "gif.png"
+    image = image_tag(attachments["#{user.id}.#{content_type}"].url)
+    link_to image, timeline_url(user.timeline)
+  %><br>
+
+  <p><%= user.full_name %></p>
+
+<% end %>

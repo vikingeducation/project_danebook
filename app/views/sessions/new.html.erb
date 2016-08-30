@@ -1,0 +1,37 @@
+<main class="container">
+  <div class="row">
+    <div id="login-form" class="col-md-12">
+      <h1>Log in to access your account</h1>
+      <%= form_for :session, url: login_url do |f| %>
+        <div class="row">
+          <div class="col-md-12">
+            <%= f.label :email %>
+            <%= f.email_field :email %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <%= f.label :password %>
+            <%= f.password_field :password %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <%= f.submit 'Submit' %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <%= f.label :remember_me %>
+            <%= f.check_box :remember_me %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <%= link_to 'Forgot password?', new_password_reset_path, class: 'navbar-forgot-pw' %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</main>

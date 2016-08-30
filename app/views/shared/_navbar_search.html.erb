@@ -1,0 +1,29 @@
+<nav class="nav navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#search-content">
+          SEARCH
+        </button>
+      </div>
+    </div>
+    <div class="row">
+      <div id="search-content" class="navbar-collapse collapse">
+        <div class="col-sm-3">
+          <div class="navbar-header">
+            <%= image_tag "danish_flag.gif", height: "12px", weight: "12px" %>      
+            <%= link_to "Danebook", root_url, class: "navbar-brand" %>
+          </div>
+        </div>
+        <div class="col-sm-7">
+          <%= form_tag "/users", method: 'get' do %>
+            <%= text_field_tag 'search', 'Search for users', class: 'form-control'%>
+          <% end %>
+        </div>
+        <div class="col-sm-2">
+          <%= link_to "#{current_user.first_name}", current_user, class: "navbar-username" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

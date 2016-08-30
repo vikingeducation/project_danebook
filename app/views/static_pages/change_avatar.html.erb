@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="row">
+    <div class="col md-12">
+      <%= image_tag @user.avatar.url(:thumb), class: "headshot", height: "128px", width: "128px" %>
+      <% if user_check %>
+        <%= form_for @user do |user_fields| %>
+          <%= user_fields.label :avatar, "Upload a photo for your avatar" %>
+          <%= user_fields.file_field :avatar %>
+          <%= user_fields.label :delete_avatar, "Remove Avatar" %>
+          <%= user_fields.check_box :delete_avatar %><br>
+          <%= user_fields.submit "Update avatar" %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

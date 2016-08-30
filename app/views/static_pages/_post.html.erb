@@ -1,0 +1,40 @@
+<% posts.each do |post| %>
+<div class="row panel-content">
+  <div class="col-md-12">
+    <div class="row">
+      <div class="col-md-2">
+        <img src="icon_photo_small.png" height="92px" width="92px">
+      </div>
+      <div class="col-md-4 col-vcentered">
+        <a href="#"><%= post.user.full_name %></a>
+        <p><%= post.created_at %></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <p>
+          <%= post.body %>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row panel-footer">
+  <div class="col-md-12">
+    <div class="row">
+      <div class="col-md-1">
+        <%= form_tag("#{user_post_path(@user,post)}", method: :post) do %>
+          <input type="hidden" name="_method" value="patch">
+          <%= submit_tag "#{like_label}", name: "post[like]" %>
+        <% end %>
+      </div>
+      <div class="col-md-1">
+        <a href="#">Comment</a>
+      </div>
+      <div class="col-md-1 col-md-offset-9">
+        <a href="#">Delete</a>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>

@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
-  skip_before_action :correct_user
+  skip_before_action :correct_user, only: [:create,:update]
   before_action :validate_update_request, only: [:update]
-  before_action :correct_timeline, only: [:create]
+  before_action :correct_timeline, only: [:create,:destroy]
 
   def create
     @user = current_user
@@ -33,6 +33,18 @@ class PostsController < ApplicationController
       redirect_to @user.timeline
     else
       flash[:danger] = "Couldn't update this post."
+      redirect_to @user.timeline
+    end
+  end
+
+  def destroy
+    @post = Post.find(params[:id])
+    @user = @post.user
+    if @post.destroy
+      flash[:success] = "Post deleted."
+      redirect_to @user.timeline
+    else
+      flash[:danger] = "Post could not be deleted."
       redirect_to @user.timeline
     end
   end

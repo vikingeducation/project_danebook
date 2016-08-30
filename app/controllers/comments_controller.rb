@@ -14,14 +14,11 @@ class CommentsController < ApplicationController
     end
   end
 
-  def destroy
-  end
-
   private
 
   private
     def comment_params
-      params.require(:comment).permit(:body, 
+      params.require(:comment).permit(:body,
                                    :user_id,
                                    { likes_attributes: [:user_id,:_destroy] })
     end

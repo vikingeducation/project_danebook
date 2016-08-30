@@ -10,8 +10,8 @@
           </div>
           <div class="row panel-content">
             <div class="col-md-12">
-              <%= image_tag "#{photo_serve_path(@photo)}" %>
-            </div> 
+              <%= image_tag "#{photo_serve_path(@photo)}", height: "80%", width: "100%" %>
+            </div>
           </div>
           <div class="row panel-content">
             <div class="col-md-12">
@@ -20,17 +20,17 @@
                 <div class="col-md-12">
                   <div class="row comment">
                     <div class="col-md-2">
-                      <img src="icon_photo_small.png" height="74px" width="74px">
+                      <%= image_tag comment.user.avatar, height: "74px", width: "74px" %>
                     </div>
                     <div class="col-md-10">
-                      <p> 
+                      <p>
                         <%= link_to comment.user.full_name, user_path(comment.user) %> said on <%= comment.created_at %>.
                       </p>
                       <p><%= comment.body %></p>
                       <p class="liked">
                       <% if !comment.liked?(current_user) %>
                         <%= form_for comment do |comment_fields| %>
-                          <%= comment_fields.fields_for :likes, @like do |like_fields| %>     
+                          <%= comment_fields.fields_for :likes, @like do |like_fields| %>
                               <%= like_fields.hidden_field :user_id %>
                               <%= like_fields.submit 'Like' %>
                           <% end %>

@@ -150,7 +150,7 @@
                     <% end %>
                   </div>
                   <div class="col-md-1 col-md-offset-9">
-                    <%= button_to "Delete", post_path(id: post.id, user_id: current_user.id), action: :destroy, method: :delete, data: {confirm: "Are you sure you want to delete this post?"} %>
+                    <%= button_to("Delete", post_path(id: post.id, user_id: current_user.id), action: :destroy, method: :delete, data: {confirm: "Are you sure you want to delete this post?"}) if user_check %>
                   </div>
                 </div>
                 <div class="row">

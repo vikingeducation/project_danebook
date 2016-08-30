@@ -2,14 +2,14 @@ class Comment < ActiveRecord::Base
   belongs_to :user
 
   belongs_to :commentable, polymorphic: true
-  has_many :comments, as: :commentable
+  has_many :comments, as: :commentable, dependent: :destroy
 
   has_many :likes, as: :likeable
 
   accepts_nested_attributes_for :comments, :likes
 
   validates :body, length: { in: 4..3000 }
-  
+
 
   def liked?(user=nil)
     if user
@@ -25,5 +25,5 @@ class Comment < ActiveRecord::Base
     output.last
   end
 
-  
+
 end

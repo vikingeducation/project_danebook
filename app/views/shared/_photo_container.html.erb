@@ -12,7 +12,7 @@
     <div class="col-md-6">
     <% if !photo.liked?(current_user) %>
       <%= form_for photo do |photo_fields| %>
-        <%= photo_fields.fields_for :likes, @like do |like_fields| %>     
+        <%= photo_fields.fields_for :likes, @like do |like_fields| %>
             <%= like_fields.hidden_field :user_id %>
             <%= like_fields.submit 'Like' %>
         <% end %>
@@ -22,7 +22,12 @@
     <% end %>
     </div>
     <div class="col-md-6">
-      <%= link_to "Set as cover photo", profile_path(id: photo.user.profile.id, profile: { cover_photo: photo.id }), method: :patch %>
+      <span>
+        <%= button_to("Delete", photo_path(photo), method: :delete, data: { confirmation: "Are you sure you want to delete this photo?" }) if user_check %>
+      </span>
+      <span>
+        <%= link_to("Set as cover photo", profile_path(id: photo.user.profile.id, profile: { cover_photo: photo.id }), method: :patch) if user_check %>
+      </span>
     </div>
   </div>
 </div>

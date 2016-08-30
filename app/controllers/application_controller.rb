@@ -12,6 +12,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def correct_user?
+    params[:id].nil? || params[:id] == current_user.id.to_s
+  end
+  helper_method :correct_user?
+
   def require_login
     unless signed_in_user?
       flash[:error] = "Not authorized, please sign in!"
@@ -46,5 +51,12 @@ class ApplicationController < ActionController::Base
     @current_user = nil
     cookies.delete(:auth_token)
   end
+
+  def login_redirect
+    redirect_to timeline_path if signed_in_user?
+  end
+  helper_method :login_redirect
+
+
 
 end

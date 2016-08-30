@@ -3,7 +3,13 @@ class UsersController < ApplicationController
   before_action :require_current_user, :only => [:edit, :update, :destroy]
 
   def new
+    login_redirect
     @user = User.new
+  end
+
+  def timeline
+    params[:id].nil? ? @user = current_user : @user = User.find(params[:id])
+
   end
 
   def create
@@ -11,7 +17,7 @@ class UsersController < ApplicationController
     if @user.save
       sign_in(@user)
       flash[:notice] = "User successfully created"
-      redirect_to user_path(@user)
+      redirect_to :back
     else
       flash[:notice] = "User not created, fix your errors"
       render :new
@@ -20,10 +26,11 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
+
     if current_user.update(user_params)
       flash[:notice] = "User succesfully updated"
       @user = User.find(params[:id])
-      redirect_to user_path(@user)
+      redirect_to :back
     else
       flash[:notice] = "user not created, fix your errors"
       render :edit
@@ -49,7 +56,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :b_day, :b_month, :b_year, :gender, :email, :password, :password_confirmation, :college, :home, :lives, :phone, :words, :bio)
+    params.require(:user).permit(:first_name, :last_name, :b_day, :b_month, :b_year, :gender, :email, :password, :password_confirmation, :college, :home, :lives, :phone, :words, :bio,  :posts_attributes => [:id, :body, :author_id, :user_id ] )
   end
 
 end

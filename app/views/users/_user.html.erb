@@ -1,0 +1,12 @@
+<%= content_tag :div, class: "panel panel-default col-xs-4" do %>
+    <%= image_tag(user.profile_pic.file.url, class: "post-pic img-responsive") %>
+    <%= link_to "#{user.first_name}", user_path(user), class: "commenter-name" %>
+    <% if current_user.friended_users.include?(user) %>
+      <%= button_to "Unfriend", friending_path(user.id, :current_user_id => current_user.id), :method => :delete %>
+    <% else %>
+      <%= button_to "Friend",
+            friendings_path(:id => user.id, :current_user_id => current_user.id),
+            :method => "POST" %>
+    <% end %>
+  </div>
+<% end %>

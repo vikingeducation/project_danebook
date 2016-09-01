@@ -1,4 +1,4 @@
-<figure class="text-center <%= css_class %>">
+<figure class="text-center">
   <%= link_to user_photo_path(user, photo) do %>
     <%= image_tag( photo.file.url(size.to_sym), class: "friend-img") %>
   <% end %>

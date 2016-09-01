@@ -29,4 +29,8 @@ module ApplicationHelper
     user.profile_pic ? user.profile_pic.file.url :
                         "http://placehold.it/150x150"
   end
+
+  def active_link(user)
+    
+  end
 end

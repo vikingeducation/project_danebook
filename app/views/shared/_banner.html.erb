@@ -15,26 +15,6 @@
       </div>
     </div>
   </div>
-  <div class="row link-bar">
-    <div class="col-sm-7 col-sm-offset-2" role="navigation">
-      <ul class="nav nav-pills nav-justified">
-        <li role="presentation" class="<%= params[:controller] == 'users' ? "active-tab" : "" %>"><%= link_to "Timeline", user_path(user) %></li>
-        <li role="presentation" class="<%= params[:controller] == 'profiles' ? "active-tab" : "" %>"><%= link_to "About", user_profile_path(user) %></li>
-        <li role="presentation" class="<%= params[:controller] == 'photos' ? "active-tab" : "" %>">
-          <%= link_to user_photos_path(user.id) do %>
-            Photos <span>(<%= user.photo_count %>)</span>
-          <% end %>
-        </li>
-        <li role="presentation" class="<%= params[:controller] == 'friendings' ? "active-tab" : "" %>"><%= link_to user_friendings_path(user.id) do %>
-          Friends <span>(<%= user.friended_users.count %>)</span>
-        <% end %></li>
-      </ul>
-    </div>
-    <!-- Nav Menu -->
-    <% if signed_in_user? && current_user.id == user.id  %>
-      <div class="col-sm-3">
-        <h5 class="text-right"><%= link_to "Edit Profile", edit_profile_path(@user.profile.id), id: "edit-profile-link" %></h5>
-      </div><!-- Edit Profile Link -->
-    <% end %>
+  <%= render 'shared/link_bar', user: user %>
   </div><!-- Link bar -->
 </div> <!-- Banner Container -->

@@ -1,7 +1,8 @@
 // Place all the styles related to the static_pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-#static_pages{
+  $header-color: #2b78e4;
+  $body-color: #e9ebee;
 
   @mixin border-radius($radius) {
     -webkit-border-radius: $radius;
@@ -19,6 +20,7 @@
 
   }
 
+#static_pages{
   body {
   	font-family: Arial, sans-serif;
   	padding-top: 50px;
@@ -69,6 +71,10 @@
       padding-top: 10px;
       padding-bottom: 5px;
     }
+
+    span{
+      font-size: 0.8em;
+    }
   }
 
   #logo {
@@ -90,6 +96,7 @@
 
   #username {
   	font-size: 20px;
+    color: white;
   	letter-spacing: 2.5px;
   	line-height: 34px;
   	padding: 0 10px;
@@ -168,75 +175,121 @@
   ----------------------------------------------
   */
 
-  .link-bar {
-  	border: 2px solid black;
+  #link-bar{
+    background-color: white;
+    padding-left: 190px;
+    height: 43px;
+    min-height: 43px;
+    * {
+      border: none;
+    }
 
-  	h5 {
-  		margin: 0;
+    a {
+      color: #365899;
+      font-weight: bold;
+      padding-top: 0;
+      padding-botttom: 0;
+      height: 43px;
+      min-height: 43px;
+      line-height: 43px;
+    }
 
-  		a {
-  			line-height: 40px;
-  		}
-  	}
+    li{
+      border-right: 1px solid $body-color;
+
+      height: 43px;
+      min-height: 43px;
+
+      .sm-gray{
+        margin-left: 4px;
+        font-size: 0.7em;
+        color: #89919c;
+      }
+    }
+    li:first-child{
+      border-left: 1px solid $body-color;
+    }
+    li.active{
+      *{
+        color: #4b4f56;
+      }
+    }
+
+    #edit-profile-link {
+      padding-right: 15px;
+    }
   }
 
-  div[role=navigation]{
-  	@media only screen
-  	  	and (max-width: 767px){
-  	  		padding-left: 0;
-  	  		padding-right: 0;
-  	}
-  }
-
-  .nav-pills {
-  	li {
-  		border-right: 2px solid black;
-      min-width: 125px;
-
-  		@media only screen
-  	  		and (max-width: 767px){
-  	  			border-right: none;
-  	  			border-bottom: 2px solid black;
-  	  	}
-
-  		a {
-  			color: black;
-  			font-size: 16px;
-  			font-weight: 600;
-
-  			span {
-  				color: #d0d0d0;
-          font-size: 0.8em;
-  			}
-  		}
-  	}
-
-  	li:first-child {
-  		border-left: 2px solid black;
-
-  		@media only screen
-  	  		and (max-width: 767px){
-  	  			border-left: none;
-  	  	}
-  	}
-  }
-
-  .active-tab {
-  	background-color: #eee;
-  }
-
-  #edit-profile-link {
-  	text-decoration: underline;
-  }
-
-  #hide-word {
-  	@media only screen
-  	  and (min-device-width: 768px)
-  	  and (max-device-width: 991px)
-  	  and (-webkit-min-device-pixel-ratio: 1) {
-  	  		display: none;
-  	}
-  }
+  //
+  // .link-bar {
+  // 	border: 2px solid black;
+  //
+  // 	h5 {
+  // 		margin: 0;
+  //
+  // 		a {
+  // 			line-height: 40px;
+  // 		}
+  // 	}
+  // }
+  //
+  // div[role=navigation]{
+  // 	@media only screen
+  // 	  	and (max-width: 767px){
+  // 	  		padding-left: 0;
+  // 	  		padding-right: 0;
+  // 	}
+  // }
+  //
+  // .nav-pills {
+  // 	li {
+  // 		border-right: 2px solid black;
+  //     min-width: 125px;
+  //
+  // 		@media only screen
+  // 	  		and (max-width: 767px){
+  // 	  			border-right: none;
+  // 	  			border-bottom: 2px solid black;
+  // 	  	}
+  //
+  // 		a {
+  // 			color: black;
+  // 			font-size: 16px;
+  // 			font-weight: 600;
+  //
+  // 			span {
+  // 				color: #d0d0d0;
+  //         font-size: 0.8em;
+  // 			}
+  // 		}
+  // 	}
+  //
+  // 	li:first-child {
+  // 		border-left: 2px solid black;
+  //
+  // 		@media only screen
+  // 	  		and (max-width: 767px){
+  // 	  			border-left: none;
+  // 	  	}
+  // 	}
+  // }
+  //
+  // .active-tab {
+  // 	background-color: #eee;
+  // }
+  //
+  // #edit-profile-link {
+  // 	text-decoration: underline;
+  // }
+  //
+  // #hide-word {
+  // 	@media only screen
+  // 	  and (min-device-width: 768px)
+  // 	  and (max-device-width: 991px)
+  // 	  and (-webkit-min-device-pixel-ratio: 1) {
+  // 	  		display: none;
+  // 	}
+  // }
   /*
   ----------------------------------------------
   	Common Section Header Styling

@@ -422,9 +422,12 @@ $body-color: #e9ebee;
     }
 
     .post-pic {
+        min-width: 60px;
+        min-height: 60px;
         max-height: 60px;
         max-width: 60px;
         display: inline-block;
+        @include border-radius(2px);
     }
 
     .post-wrapper {
@@ -568,6 +571,12 @@ $body-color: #e9ebee;
         margin-top: 10px;
         margin-bottom: 0;
         width: 100%;
+    }
+
+    .no-wrap {
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
     }
 }
 .glyphicon {

@@ -29,7 +29,7 @@ module ApplicationHelper
   end
 
   def cover_pic_url(user)
-    user.cover_pic ? user.cover_pic.file.url :
+    user.cover_pic ? user.cover_pic.file.url("large") :
                       "http://placehold.it/900x600"
   end
 
@@ -38,7 +38,8 @@ module ApplicationHelper
                         "http://placehold.it/150x150"
   end
 
-  def active_link(user)
-
+  def post_pic_url(user)
+    user.profile_pic ? user.profile_pic.file.url("thumb") :
+                        "http://placehold.it/90x90"
   end
 end

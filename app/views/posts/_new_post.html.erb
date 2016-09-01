@@ -9,9 +9,9 @@
   <%= form_tag posts_path, method: "post" do |f| %>
     <div class="col-xs-12">
       <div class="new-post pull-left">
-        <%= image_tag(profile_pic_url(user), class: "post-pic") %>
+        <%= image_tag(profile_pic_url(user), class: "post-pic", style: "margin-top: 10px;") %>
       </div>
-      <div class="col-xs-10 section-container text-center">
+      <div class="col-xs-10 section-container text-center" style="margin-bottom: 10px;">
         <%= text_area_tag("post[description]", post.description, class: "btn-block", placeholder: "Tell the world something...", rows: "2") %>
       </div>
     </div>

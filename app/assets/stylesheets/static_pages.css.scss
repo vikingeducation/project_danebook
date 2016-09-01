@@ -214,6 +214,13 @@ $body-color: #e9ebee;
                 font-size: 14px;
             }
         }
+        ul li[role='presentation']:hover{
+          background-color: $body-color;
+        }
+
+        .nav-tabs>li.active>a:hover {
+          background-color: $body-color;
+        }
     }
     /*----------------------------------------------
   	Common Section Header Styling
@@ -578,6 +585,7 @@ $body-color: #e9ebee;
       white-space: nowrap;
       text-overflow: ellipsis;
     }
+
 }
 .glyphicon {
     font-size: 1.1em;

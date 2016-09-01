@@ -2,7 +2,7 @@
   <% if real_user.profile.cover_photo_id %>
     <%= image_tag real_user.cover_photo.url, class:"img-responsive"  %>
   <% else %>
-    <img src="https://s3.amazonaws.com/viking_education/web_development/web_app_eng/hogwarts_small.jpg" class="img-responsive">
+    <%= image_tag "cover_photo.jpg", class:"img-responsive" %>
   <% end %>
   <div class="row">
     <!--profile picture which is overlayed on cover photo-->

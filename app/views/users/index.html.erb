@@ -1,7 +1,11 @@
 <main class="container">
   <div class="row">
     <div class="col-md-10 col-md-offset-1 col-xs-12" id="header-bar">
-      <h2>Search Results for "<%= @search_terms %>"</h2>
+      <% if @search_terms == nil %>
+        <h2>Nearby Friends</h2>
+      <% else %>
+        <h2>Search Results for "<%= @search_terms %>"</h2>
+      <% end %>
     </div>
     <div class="col-md-10 col-md-offset-1 col-xs-12" id="basic">
       <div class="row">

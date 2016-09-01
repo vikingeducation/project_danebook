@@ -3,8 +3,12 @@ class UsersController < ApplicationController
   before_action :require_current_user, only: [:edit, :update, :destroy]
 
   def index
-    @users = User.search(params[:search], current_user.id)
-    @search_terms = params[:search]
+    if params[:search]
+      @users = User.search(params[:search], current_user.id)
+      @search_terms = params[:search]
+    else
+      @users = User.all
+    end
   end
 
   def new

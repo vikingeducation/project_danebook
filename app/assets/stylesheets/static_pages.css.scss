@@ -318,6 +318,14 @@ $body-color: #e9ebee;
         overflow:hidden;
     }
 
+    .friend-preview-img {
+      min-height: 150px;
+    }
+    .friend-prev-name {
+      margin-top: 5px;
+      margin-bottom: 5px !important;
+    }
+
     figure, figure a {
       padding: 0;
       height: 185px;

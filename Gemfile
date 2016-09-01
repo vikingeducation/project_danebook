@@ -31,13 +31,20 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'hirb'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+gem 'pry-byebug'
 
 group :development, :test do
+  gem 'shoulda-matchers', '~> 3.1'
+  gem 'capybara'
+  gem 'launchy'
+  gem 'factory_girl_rails', '~> 4.0'
+  gem 'rspec-rails'
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
 end
 
 group :development do
+  gem 'guard-rspec', require: false
   gem 'sqlite3'
   gem 'better_errors'
   gem 'binding_of_caller'

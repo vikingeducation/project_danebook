@@ -203,7 +203,7 @@
                            </div>
                         </div>
 
-
+                        <%end%>
                      <%= form_for post do |p| %>
                       <%= p.fields_for :comments, Comment.new do |c| %>
                          <%= c.text_area :body, rows: 3, placeholder: "Tell the world something...", id: "comment-area", class: "form_control" %>
@@ -215,7 +215,7 @@
                      <%= p.submit "Comment", class: "btn-primary", id: "post-btn"%>
                      <%end%>
 
-                     <%end%>
+
                      </div>
                    </div>
                    <%end%>

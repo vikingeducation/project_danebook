@@ -1,6 +1,5 @@
 <div id="static_pages">
 	<%= render 'shared/navbar' %>
-<%# FIXME: fix up active status of tabs so correct one, use params[:controller] %>
 	<%= render 'shared/banner', user: @user %>
 	<div class="container">
 		<%= render 'shared/flash' %>
@@ -19,7 +18,7 @@
 		<div class="row">
 			<% @photos.each do |photo| %>
 				<div class="col-sm-4 col-md-3 photo-container">
-					<%= render 'photo', photo: photo, user: @user %>
+					<%= render 'photo', photo: photo, user: @user, size: "medium" %>
 				</div>
 			<% end %>
 		</div><!-- Photo Wrapper -->

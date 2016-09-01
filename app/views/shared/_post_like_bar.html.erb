@@ -1,0 +1,27 @@
+<% if resource.likers.include?(current_user) %>
+  <div class="col-xs-7">
+    <%= button_to like_path( user_liked_id(resource)), method: :delete, class: "goofy-btn unlike-class", id: "unlike-id" do %>
+      <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span> Unlike
+    <% end %>
+  </div>
+<% elsif signed_in_user? %>
+  <div class="col-xs-7">
+    <%= button_to url_for([resource, :likes]), method: :post, class: "goofy-btn like-class" do %>
+      <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Like
+    <% end %>
+  </div>
+<% end %>
+
+<% if user == current_user %>
+  <div class="col-xs-4 push-right text-right">
+    <%= button_to resource, method: :delete, class: "goofy-btn delete-class" do %>
+      <span class="glyphicon glyphicon-remove" aria-hidden="true" style="color: red"></span>
+    <% end %>
+  </div>
+<% end %>
+
+<% unless resource.likers.empty? %>
+  <div class="col-xs-12 like-listing-expanded hr-block">
+      <p><%= print_likers(resource) %></p>
+  </div>
+<% end %>

@@ -1,13 +1,13 @@
 <div class="row" id="link-bar">
   <ul class="nav nav-tabs">
-    <li role="presentation" class="<%= params[:controller] == 'users' ? "active" : "" %>"><%= link_to "Timeline", user_path(user) %></li>
-    <li role="presentation" class="<%= params[:controller] == 'profiles' ? "active" : "" %>"><%= link_to "About", user_profile_path(user) %></li>
-    <li role="presentation" class="<%= params[:controller] == 'photos' ? "active" : "" %>">
+    <li role="presentation" class="<%= "active" if active_link?("show") %>"> <%= link_to "Timeline", user_path(user) %></li>
+    <li role="presentation" class="<%= "active" if active_link?("profiles") %>"><%= link_to "About", user_profile_path(user) %></li>
+    <li role="presentation" class="<%= "active" if active_link?("photos") %>">
       <%= link_to user_photos_path(user.id) do %>
         Photos<span class="sm-gray"><%= user.photo_count %></span>
       <% end %>
     </li>
-    <li role="presentation" class="<%= params[:controller] == 'friendings' ? "active-tab" : "" %>">
+    <li role="presentation" class="<%= "active" if active_link?("friendings") %>">
       <%= link_to user_friendings_path(user.id) do %>
         Friends<span class="sm-gray"><%= user.friended_users.count %></span>
       <% end %>

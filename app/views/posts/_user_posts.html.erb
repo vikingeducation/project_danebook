@@ -1,11 +1,10 @@
-<%# posts.each do |post| %>
 <section class="row section-container">
   <div class="col-sm-12">
     <div class="row post-wrapper">
-      <div class="col-xs-2 col-sm-1">
+      <div class="col-xs-1 col-sm-1">
         <%= image_tag(profile_pic_url(user), class: "post-pic img-responsive") %>
       </div>
-      <div class="col-xs-9 col-sm-10 friend-name-wrapper">
+      <div class="col-xs-10 left-gutter">
         <p><%= link_to user.full_name, user_profile_path(user, user.profile), class: "like-link" %></p>
         <p>Posted on <%= resource.updated_at.strftime("%A %-m/%-d/%Y") %></p>
       </div>
@@ -14,30 +13,10 @@
       <div class="col-xs-12">
         <p class="post-content"><%= resource.description %></p>
       </div>
+      <hr />
+      <%= render 'shared/post_like_bar', resource: resource, user: user %>
     </div>
     <div class="row post-wrapper section-footer">
-        <% if resource.likers.include?(current_user) %>
-          <div class="col-xs-7 col-sm-4">
-            <%= button_to "Unlike", like_path( user_liked_id(resource)), method: :delete, class: "goofy-btn unlike-class", id: "unlike-id"%>
-          </div>
-        <% else %>
-          <div class="col-xs-7 col-sm-7">
-            <%= button_to "Like", post_likes_path(resource), method: :post, class: "goofy-btn like-class" %>
-          </div>
-        <% end %>
-
-        <% if user == current_user %>
-          <div class="col-xs-4 col-sm-4 text-right">
-            <%= button_to("Delete", resource, method: :delete, class: "goofy-btn delete-class") %>
-          </div>
-        <% end %>
-
-      <% unless resource.likers.empty? %>
-        <div class="col-xs-12 like-listing-expanded hr-block">
-            <p><%= print_likers(resource) %></p>
-        </div>
-      <% end %>
-      <hr>
       <div class="col-xs-12">
   			<div class="row post-wrapper">
             <% resource.comments[0..6].each_with_index do |comment, index| %>
@@ -51,4 +30,3 @@
       </div>
     </div>
   </section><!-- Old Post Section -->
-<%# end %>

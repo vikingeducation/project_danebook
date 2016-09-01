@@ -12,7 +12,7 @@
 			</div><!-- Left Content -->
 			<div class="col-sm-7">
 				<%= render 'shared/flash' %>
-				<%= render "posts/new_post", post: @post %>
+				<%= render "posts/new_post", post: @post, user: current_user %>
         <% @feeds.each do |feed| %>
             <%= render "#{feed[1].to_s}/user_#{feed[1].to_s}", resource: feed[1], user: feed[0] %>
         <% end %>

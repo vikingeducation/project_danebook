@@ -1,5 +1,13 @@
 module ApplicationHelper
 
+  def active_link?(link_name)
+    if params[:controller] == "users"
+      return action_name == link_name
+    else
+      params[:controller] == link_name
+    end
+  end
+
   def print_likers(post)
     liker_count = post.likers.count
     users = post.likers.where("user_id != ?", current_user.id)
@@ -31,6 +39,6 @@ module ApplicationHelper
   end
 
   def active_link(user)
-    
+
   end
 end

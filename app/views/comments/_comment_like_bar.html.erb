@@ -1,0 +1,15 @@
+<p class="comment-likes">
+  <% if resource.likers.include?(current_user) %>
+    <%= button_to "Unlike", like_path( user_liked_id(resource)), method: :delete, class: "goofy-btn unlike-class no-right-padding", id: "unlike-id" %>
+  <% else %>
+    <%= button_to "Like", comment_likes_path(resource), method: :post, class: "goofy-btn like-class no-right-padding" %>
+  <% end %>
+
+  <% if user == current_user %>
+    <%= button_to "Delete", resource, method: :delete, class: "goofy-btn delete-class" %>
+  <% end %>
+
+  <% unless resource.likers.empty? %>
+    <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> <%= resource.likers.count %>
+  <% end %>
+</p>

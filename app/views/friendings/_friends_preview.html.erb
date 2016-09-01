@@ -1,6 +1,6 @@
 <section class="row section-container">
-  <div class="col-xs-12 section-header text-center">
-    <h4>Friends (<%= user.friended_users.count %>)</h4>
+  <div class="col-xs-12 section-header">
+    <h4><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> Friends</h4>
   </div>
   <div class="col-xs-12 img-container text-center">
     <% user.friended_users[0..6].each do |friend| %>

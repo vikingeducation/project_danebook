@@ -43,15 +43,15 @@ puts "Building random user posts & comments ...... ..... ... .. ."
   post.comments.create!(description: Faker::Hipster.paragraph(4), user_id: u.id)
 end
 
-puts "Building random user photos & comments ...... ..... ... .. ."
-0.upto(100) do |i|
-  u = User.all.sample
-  puts "building photos"
-  photo = Photo.create!(description: Faker::Hipster.paragraph(4))
-  posting = u.postings.create!(:postable_type => "Photo", postable_id: photo.id)
-  puts "building comments"
-  photo.comments.create!(description: Faker::Hipster.paragraph(4), user_id: u.id)
-end
+# puts "Building random user photos & comments ...... ..... ... .. ."
+# 0.upto(100) do |i|
+#   u = User.all.sample
+#   puts "building photos"
+#   photo = Photo.create!(description: Faker::Hipster.paragraph(4))
+#   posting = u.postings.create!(:postable_type => "Photo", postable_id: photo.id)
+#   puts "building comments"
+#   photo.comments.create!(description: Faker::Hipster.paragraph(4), user_id: u.id)
+# end
 
 puts "Making friends...... wish it was this easy in real life. . ."
 User.all[0..15].each_with_index do |user, idx|

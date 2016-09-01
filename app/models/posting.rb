@@ -6,7 +6,7 @@ class Posting < ApplicationRecord
   validates :postable, presence: true
 
   def self.current_user_activities(user)
-    ids = user.friended_user_ids + [user.id]
+    ids = [user.id]
     self.joins("LEFT OUTER JOIN posts ON postings.postable_id = posts.id").
     joins("LEFT OUTER JOIN photos ON postings.postable_id = photos.id").
     where(user_id: [ids]).

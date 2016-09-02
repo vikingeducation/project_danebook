@@ -1,0 +1,153 @@
+<div class="home_page">
+  <header>
+   <%= render 'shared/navhome' %>
+  </header>
+
+  <main>
+   <section class="container">
+     <div class="row">
+       <div class="col-md-8 jumbotron" id="slogan">
+         <h1>Connect with all your friends!</h1>
+         <ul>
+           <li>See photos and update in your news feed.</li>
+           <li>Post your status for the world to see from your profile.</li>
+           <li>Get in touch with your friedns by "friending" them.</li>
+           <li>Like things because you're a positive person!</li>
+         </ul>
+       </div>
+       <div class="col-md-4">
+         <h1 id="signup">Sign up</h1>
+
+         <form action="index.html" method="post">
+           <div class="row">
+             <div class="col-md-6">
+               <input type="text" class="form-control input-lg input-line" name="firstname" placeholder="First Name">
+             </div>
+             <div class="col-md-6">
+               <input type="text" class="form-control input-lg input-line" name="lastname" placeholder="Last Name">
+             </div>
+           </div>
+         <!-- first input row end -->
+           <div class="row">
+             <div class="col-md-12">
+               <input type="email" class="form-control input-lg input-line" name="email" placeholder="Your Email">
+             </div>
+           </div>
+         <!-- second input row end -->
+           <div class="row">
+             <div class="col-md-12">
+               <input type="password" class="form-control input-lg input-line" name="password" placeholder="Your password">
+             </div>
+           </div>
+         <!-- third input row end -->
+           <div class="row">
+             <div class="col-md-12">
+               <input type="pssword" class="form-control input-lg input-line" name="name" placeholder="Confirm your password">
+             </div>
+           </div>
+         <!-- fourth input row end -->
+         <h2>Birthday</h2>
+
+         <!-- add birthday selection  -->
+         <div class="row">
+           <div class="col-md-4">
+             <select class="form-control" >
+               <option selected disabled>Month</option>
+               <option>1</option>
+               <option>2</option>
+               <option>3</option>
+               <option>4</option>
+               <option>5</option>
+               <option>6</option>
+               <option>7</option>
+               <option>8</option>
+               <option>9</option>
+               <option>10</option>
+               <option>11</option>
+               <option>12</option>
+             </select>
+           </div>
+           <div class="col-md-4">
+             <select class="form-control" >
+               <option selected disabled>Day</option>
+               <option>1</option>
+               <option>2</option>
+               <option>3</option>
+               <option>4</option>
+               <option>5</option>
+               <option>6</option>
+               <option>7</option>
+               <option>8</option>
+               <option>9</option>
+               <option>10</option>
+               <option>11</option>
+               <option>12</option>
+               <option>13</option>
+               <option>14</option>
+               <option>15</option>
+               <option>16</option>
+               <option>17</option>
+               <option>18</option>
+               <option>19</option>
+               <option>20</option>
+               <option>21</option>
+               <option>22</option>
+               <option>23</option>
+               <option>24</option>
+               <option>25</option>
+               <option>26</option>
+               <option>27</option>
+               <option>28</option>
+               <option>29</option>
+               <option>30</option>
+               <option>31</option>
+             </select>
+           </div>
+           <div class="col-md-4">
+             <select class="form-control" >
+               <option selected disabled>Year</option>
+               <option>1990</option>
+               <option>1991</option>
+               <option>1992</option>
+               <option>1993</option>
+               <option>1994</option>
+               <option>1995</option>
+               <option>1996</option>
+               <option>1997</option>
+               <option>1998</option>
+               <option>1999</option>
+               <option>2000</option>
+               <option>2001</option>
+             </select>
+           </div>
+         </div>
+         <!-- birthday selection end -->
+
+         <!-- raido button start -->
+         <div class="row" id="sex-pick">
+           <div class="col-md-2">
+             <div class="radio">
+               <label><input type="radio" name="sex">Male</label>
+             </div>
+           </div>
+           <div class="col-md-2">
+             <div class="radio">
+               <label><input type="radio" name="sex">Female</label>
+             </div>
+           </div>
+         </div>
+
+         <div class="row">
+           <div class="col-md-12">
+             <button class="btn btn-default btn-lg btn-success" id="signup-btn" type="submit">Sign Up</button>
+           </div>
+         </div>
+
+         </form>
+
+
+       </div> <!-- sign up end -->
+     </div> <!-- main row end -->
+   </section>
+  </main>
+</div>

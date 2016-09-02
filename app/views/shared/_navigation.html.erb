@@ -1,0 +1,40 @@
+<section class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <div class="cover-top">
+      <div class="row" id="banner-row">
+        <div class="col-md-12">
+          <div class="bg-container"></div>
+          <!-- <img class="img-rounded img-responsive" id="hogwarts" src="img/hogwarts_small.jpg" alt="hogwarts" /> -->
+        </div>
+        <div id="avatar">
+          <!-- <img class="img-responsive" src="img/harry_potter_small.jpg" alt="" /> -->
+          <%= image_tag('harry_potter_small', class: "img-responsive") %>
+        </div>
+      </div>
+      <!-- banner part finish -->
+      <!-- nav part begin -->
+      <div class="row" id="add-margin-top">
+        <div id="edit-profile" class="col-sm-2 col-md-push-10">
+          <%= link_to 'Edit Profile', about_edit_path %>
+        </div>
+        <div class="col-sm-8 col-sm-offset-2 col-md-pull-2 center-child-block">
+          <ul class="nav nav-pills" id="main-navigation">
+              <li role="navigation" class="<%= active_class(timeline_path) %>"><%= link_to 'Timeline', timeline_path %></li>
+              <li role="navigation" class="<%= active_class(about_path) %>"><%= link_to 'About', about_path %></li>
+              <li role="navigation" class="<%= active_class(photos_path) %>">
+                <%= link_to photos_path do %>
+                  Photos<span class="badge">144</span>
+                <% end %>
+              </li>
+              <li role="navigation" class="<%= active_class(friends_path) %>">
+                <%= link_to friends_path do %>
+                  Friends<span class="badge">251</span>
+                <% end %>
+              </li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

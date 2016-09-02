@@ -1,0 +1,230 @@
+// Place all the styles related to the StaticPages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.home_page {
+  margin-top: 70px;
+  margin-bottom: 20px;
+
+  #brand {
+    font-family: serif;
+    font-size: 30px;
+    font-weight: bold;
+  }
+
+  #slogan {
+    h1 {
+      font-size: 44px;
+      font-weight: bold;
+      font-family: fantasy;
+      margin-bottom: 22px;
+      color: #333;
+    }
+    li {
+      line-height: 3;
+      font-size: 20px;
+    }
+  }
+
+  #signup {
+    font-size: 35px;
+    font-weight: bold;
+    font-family: monospace;
+    margin-bottom: 30px;
+  }
+}
+
+
+// body {
+//   margin-top: -100px;
+// }
+
+#logo {
+  height: 22px;
+  width: auto;
+}
+
+#banner-row {
+  position: relative;
+  // div:first-child {
+  //   margin-top: -70px;
+  //   overflow: hidden;
+  // }
+}
+
+.bg-container {
+  width: 100%;
+  height: 350px;
+  background: image-url("hogwarts_small.jpg") no-repeat center center;
+  background-size: cover;
+}
+
+// #hogwarts {
+//   width: 100%;
+// }
+
+#main-navigation {
+  display: flex;
+}
+
+#avatar {
+  width: 150px;
+  height: 150px;
+  // height: 48%;
+  overflow: hidden;
+  position: absolute;
+  bottom: -20px;
+  left: 50px;
+  border-radius: 10px;
+  border: 2px solid #666;
+
+}
+
+@media only screen and (max-width: 625px) {
+  #avatar {
+    right: 0;
+    left: 0;
+    margin: 0 auto; } }
+
+#edit-profile {
+  // margin-top: 20px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  a {
+    font-size: 15px;
+    color: #666;
+    text-decoration: none;
+    &:hover {
+      color: #4ceb61;
+    }
+  }
+}
+
+.panel-heading {
+  text-align: center;
+  // a {
+  //   float: right;
+  // }
+}
+
+.panel-title {
+  font-size: 30px;
+  font-weight: bold;
+}
+
+#textarea1 {
+  resize: none;
+  height: 110px;
+}
+#textarea2 {
+  resize: none;
+  height: 160px;
+}
+#textarea3 {
+  resize: none;
+  height: 150px;
+  margin-bottom: 10px;
+}
+
+#edit-save-btn {
+  margin-bottom: 30px;
+}
+
+
+.friends-profile {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  img {
+    width: 15%;
+    height: auto;
+    display: inline-block;
+  }
+  div {
+    display: inline-block;
+  }
+  button {
+    display: inline-block;
+  }
+}
+
+.imgWrap {
+  position: relative;
+}
+
+.imgDescription {
+  text-align: center;
+  margin-bottom: 0;
+  position: absolute;
+  top: 80%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(29, 106, 154, 0.72);
+  color: #fff;
+
+
+  visibility: hidden;
+  opacity: 0;
+
+  /*remove comment if you want a gradual transition between states
+  -webkit-transition: visibility opacity 0.2s;
+  */
+}
+
+
+.imgWrap:hover .imgDescription {
+  visibility: visible;
+  opacity: 1;
+}
+
+#post-btn {
+  margin-top: 10px;
+}
+
+.postImgWrap {
+  width: 50px;
+  height: 50px;
+  overflow: hidden;
+  display: inline-flex;
+}
+
+.nameWrap {
+  margin-left: 10px;
+  display: inline-block;
+}
+
+.postHeaderWrap {
+  display: flex;
+  align-items: center;
+}
+
+.comment-style {
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.center-child-block {
+  display: flex;
+  justify-content: center;
+}
+
+.nav-row {
+  margin-top: 15px;
+}
+
+.cover-top {
+  border: 1px solid #ddd;
+  margin-bottom: 15px;
+  border-radius: 0 0 3px 3px;
+}
+
+#add-margin-top {
+  margin-top: 20px;
+}

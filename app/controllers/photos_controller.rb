@@ -1,5 +1,4 @@
 class PhotosController < ApplicationController
-  ## HOW ARE YOU HANDELING PHOTOS THAT GET DELETED AND ARE PROFILE/COVER PHOTOS
   before_action :required_user_redirect, except: [:index, :show]
   def index
     @user = User.find_by_id(params[:user_id])

@@ -11,9 +11,16 @@ class ActivitiesController < ApplicationController
 
   def destroy
     @activity = Activity.find(params[:id])
-    @activity.destroy
-    flash[:notice] = "Post Destroyed"
-    redirect_back(fallback_location: root_path)
+    if @activity.postable_type == "Photo"
+      flash[:notice] = "Photo Destroyed"
+      @activity.postable.clear_user(current_user)
+      @activity.destroy
+      redirect_to user_photos_path(current_user)
+    else
+      @activity.destroy
+      flash[:notice] = "Post Destroyed"
+      redirect_back(fallback_location: root_path)
+    end
   end
 
 

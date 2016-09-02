@@ -9,4 +9,13 @@ class Photo < ApplicationRecord
     ActionController::Base.helpers.image_tag(image.url(:medium), class: "img-responsive")
   end
 
+  def clear_user(user)
+    if user.profile_photo_id == self.id
+      user.profile_photo = nil
+    end
+    if user.cover_photo_id == self.id
+      user.cover_photo = nil
+    end
+  end
+
 end

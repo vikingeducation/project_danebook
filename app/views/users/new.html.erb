@@ -1,3 +1,33 @@
 <div class="signup">
-  Hello world
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      <div class="row">
+        <div class="col-md-7"> <!-- slogan area -->
+          <div class="jumbotron">
+            <h1>Hello, world!</h1>
+          </div>
+        </div>
+
+        <div class="col-md-5"> <!-- sign up form area -->
+          <%= form_for @user do |f| %>
+            <div class="form-group">
+              <%= f.label :email, "Email" %>
+              <%= f.email_field :email, class: "form-control input-lg" %>
+            </div>
+            <div class="form-group">
+              <%= f.label :password, "Password" %>
+              <%= f.password_field :password, class: "form-control input-lg" %>
+            </div>
+            <div class="form-group">
+              <%= f.label :password_confirmation %>
+              <%= f.password_field :password_confirmation, class: "form-control input-lg" %>
+            </div>
+            <div class="form-group">
+              <%= f.submit "Sign Up", class: "btn btn-primary btn-lg btn-block" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div> <!-- outer border -->
+  </div>
 </div>

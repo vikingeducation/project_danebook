@@ -1,37 +1,11 @@
-danebook
-========
+"Danebook" is a Facebook-like social network site built during Viking Code School. The live application is available [here](https://floating-scrubland-17624.herokuapp.com/)!
 
-Alex Lach's Danebook
+The app allows users to friend other users, write posts, upload photos, and comment and like on their own and others' content. The app was a chance to learn a number of different Rails functionalities, including:
 
-This is the Real Dane Deal.
+  - polymorphic relationships
+  - email notifications with Sendgrid
+  - nested forms
+  - Paperclip
+  - AWS
 
-User
-- has many posts_written
-- has many posts_received
-- has many comments_written
-- has many likes_given
-
-Post
-- belongs_to :postable, :polymorphic =>
-- belongs_to user
-- has_one receiving_user
-- has_many comments
-- has_many likes
-
-Comment
--has_one parent (polymorphic for comment or post)
--has_many comments
--has_many likes
-
-Likes
-- belongs_to user
-- belongs_to likeable (polymorphic for posts and comments)
-
-PostText
-- has_one :post, :as => :postable
-
-Photo
-- has_one :post, :as => :postable
-
-Video
-- has_one :post, :as => :postable
+To get started, you can make your own account or you can log in with email: alex@alex.com and password: password. 

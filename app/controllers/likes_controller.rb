@@ -11,7 +11,7 @@ class LikesController < ApplicationController
       redirect_back(fallback_location: root_path)
     else
       flash.now[:danger] = "Could not like that post"
-      render :back
+      redirect_back(fallback_location: root_path)
     end
   end
 
@@ -22,7 +22,7 @@ class LikesController < ApplicationController
       redirect_back(fallback_location: root_path)
     else
       flash.now[:danger] = "Coult not unlike that post"
-      render :back
+      redirect_back(fallback_location: root_path)
     end
   end
 

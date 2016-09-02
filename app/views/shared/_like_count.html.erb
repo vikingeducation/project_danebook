@@ -1,6 +1,9 @@
 <% unless content.real_likes.count == 0 %>
-  <% content.display_likes[0].each do |user_id| %>
-    <%= link_to user_header_name(user_id), user_path(user_id) %>, 
+  <% content.display_likes[0].each_with_index do |user_id, index| %>
+    <%= link_to user_header_name(user_id), user_path(user_id) %>
+    <% unless index == content.display_likes[0].length - 1 %>
+      <%= "," %>
+    <% end %>
   <% end %>
   <%= content.display_likes[1] %>
 <% end %>

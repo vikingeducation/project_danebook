@@ -53,7 +53,8 @@ ActiveRecord::Schema.define(version: 20160901212605) do
     t.string   "likeable_type"
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
-    t.index ["likeable_id", "likeable_type"], name: "index_likes_on_likeable_id_and_likeable_type", unique: true, using: :btree
+    t.index ["likeable_id", "likeable_type", "user_id"], name: "index_likes_on_likeable_id_and_likeable_type_and_user_id", unique: true, using: :btree
+    t.index ["likeable_id", "likeable_type"], name: "index_likes_on_likeable_id_and_likeable_type", using: :btree
   end
 
   create_table "photos", force: :cascade do |t|

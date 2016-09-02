@@ -4,7 +4,7 @@ class FriendingsController < ApplicationController
   def create
     friending_recipient = User.find(params[:friended_id])
 
-    if current_user.friended_users << friending_recipient
+    if current_user.friended_users << friending_recipient && current_user != friending_recipient
       flash[:success] = "You've friended #{friending_recipient.profile.first_name}"
       redirect_back(fallback_location: root_path)
     else

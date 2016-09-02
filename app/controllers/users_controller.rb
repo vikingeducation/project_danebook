@@ -18,7 +18,6 @@ class UsersController < ApplicationController
     if @user.save
       User.send_welcome_email(@user.id)
       sign_in(@user)
-      flash[:success] = "User has been created!"
       redirect_to user_timelines_path(@user)
     else
       flash.now[:warning] = @user.errors.full_messages

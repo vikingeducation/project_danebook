@@ -7,6 +7,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(white_list_params)
     if @user.save
+      permanent_sign_in(@user)
       flash[:success] = ["Sign Up success!"]
       redirect_to signup_path
     else

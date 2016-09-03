@@ -12,10 +12,17 @@
 
   <body>
     <%= render 'shared/nav_top' %>
+
     <div class="main-part">
       <div class="container">
-        <%= yield %>
+        <div class="row">
+          <div class="col-md-10 col-md-offset-1">
+            <%= render 'shared/flash' %>
+            <%= yield %>
+          </div>
+        </div>
       </div>
     </div>
+
   </body>
 </html>

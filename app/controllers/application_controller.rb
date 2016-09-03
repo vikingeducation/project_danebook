@@ -36,4 +36,9 @@ class ApplicationController < ActionController::Base
     def referer
       session.delete(:referer)
     end
+
+    def active_class(link_path)
+      "active" if request.fullpath == link_path
+    end
+    helper_method :active_class
 end

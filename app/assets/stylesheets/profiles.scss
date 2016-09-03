@@ -1,16 +1,28 @@
 // Place all the styles related to the profiles controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$break-small:320px;
+$break-middle:760px;
+$break-larger:1200px;
+
 .about-page {
   .cover-photo {
     width: 100%;
     height: auto;
+    @media screen and (max-width: $break-middle) {
+      height: 100%;
+      width: auto;
+    }
   }
+
 
   .cover-wraper {
     height: 350px;
     overflow: hidden;
     margin-top: -20px;
     border-radius: 5px;
+    @media screen and (max-width: $break-middle) {
+      height: 300px;
+    }
   }
 }

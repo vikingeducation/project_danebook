@@ -1,0 +1,85 @@
+<div class="edit-profile">
+  <div class="row">
+    <div class="col-md-12">
+      <%= render "shared/cover_header" %>
+
+      <main>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title text-center"><strong>Edit Profile</strong></h3>
+          </div>
+          <div class="panel-body">
+            <%= form_for current_user, :html => {class: "form-horizontal"} do |f| %>
+            <div class="col-md-5">
+              <h4 class="text-primary"><strong>Basic Information</strong></h4>
+
+              <div class="form-group">
+                <%= f.label :birthday, "Birthday:", class: "col-xs-3 control-label" %>
+                <div class="col-xs-9">
+                  <%= f.date_field :birthday, class: "form-control" %>
+                </div>
+              </div>
+              <div class="form-group">
+                <%= f.label :college, "College:", class: "col-xs-3 control-label" %>
+                <div class="col-xs-9">
+                  <%= f.text_field :college, class: "form-control" %>
+                </div>
+              </div>
+              <div class="form-group">
+                <%= f.label :home_town, "Hometown:", class: "col-xs-3 control-label" %>
+                <div class="col-xs-9">
+                  <%= f.text_field :home_town, class: "form-control" %>
+                </div>
+              </div>
+              <div class="form-group">
+                <%= f.label :current_lives, "Currently Lives:", class: "col-xs-3 control-label" %>
+                <div class="col-xs-9">
+                  <%= f.text_field :current_lives, class: "form-control" %>
+                </div>
+              </div>
+
+              <h4 class="text-primary"><strong>Contact Information</strong></h4>
+              <div class="form-group">
+                <%= f.label :email, "Email", class: "col-xs-3 control-label" %>
+                <div class="col-xs-9">
+                  <%= f.email_field :email, class: "form-control", disabled: true %>
+                </div>
+              </div>
+              <div class="form-group">
+                <%= f.label :telephone, "Telephone", class: "col-xs-3 control-label" %>
+                <div class="col-xs-9">
+                  <%= f.text_field :telephone, class: "form-control" %>
+                </div>
+              </div>
+            </div> <!-- end of the left column -->
+
+            <div class="col-md-7">
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h3 class="panel-title text-center"><strong>Words to Live By</strong></h3>
+                </div>
+                <div class="panel-body">
+                  <%= f.text_area :words_to_live_by, class: "form-control", rows: "3" %>
+                </div>
+              </div>
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h3 class="panel-title text-center"><strong>About Me</strong></h3>
+                </div>
+                <div class="panel-body">
+                  <%= f.text_area :about, class: "form-control", rows: "8" %>
+                </div>
+              </div>
+              <div class="col-md-12">
+                <div class="form-group">
+                  <%= f.submit "Save Changes", class: "btn btn-primary btn-block btn-lg" %>
+                </div>
+              </div>
+            </div>
+            <% end %>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+</div>

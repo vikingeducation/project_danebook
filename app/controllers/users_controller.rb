@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :require_current_user, :only => [:edit, :update, :destroy]
 
   def new
     @user = User.new
@@ -16,10 +17,30 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+  end
+
+  def update
+    if current_user.update(white_list_params)
+      flash[:success] = ["Profile has been successfully updated"]
+      redirect_to user_profiles_path(current_user)
+    else
+      flash.now[:danger] = current_user.errors.full_messages
+      render :edit
+    end
+  end
+
 
   private
     def white_list_params
       params.require(:user).permit(:email,
+                                   :birthday,
+                                   :college,
+                                   :home_town,
+                                   :current_lives,
+                                   :telephone,
+                                   :words_to_live_by,
+                                   :about,
                                    :password,
                                    :password_confirmation)
     end

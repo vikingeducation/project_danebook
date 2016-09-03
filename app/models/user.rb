@@ -6,4 +6,5 @@ class User < ApplicationRecord
                        :allow_nil => true
 
   validates :words_to_live_by, :about, :length => { minimum: 10 }, allow_nil: true
+  validates :email, uniqueness: true
 end

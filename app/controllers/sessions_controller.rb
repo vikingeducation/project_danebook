@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  skip_before_action :require_login, :only => [:new, :create]
 
   def create
     store_referer
@@ -14,9 +15,8 @@ class SessionsController < ApplicationController
   end
 
   def destroy
-    store_referer
     sign_out
     flash[:success] = ["You've successfully signed out"]
-    redirect_to referer
+    redirect_to signup_path
   end
 end

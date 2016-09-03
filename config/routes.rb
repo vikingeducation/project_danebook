@@ -4,6 +4,7 @@ Rails.application.routes.draw do
     resource :profiles, only: [:show]
   end
   get "signup" => "users#new"
+  root 'users#new'
 
   resource :sessions, only: [:create, :destroy]
   delete "logout" => "sessions#destroy"

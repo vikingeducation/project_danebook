@@ -22,9 +22,7 @@ describe Post do
   it "has many commenters" do
     expect(postc).to respond_to(:commenters)
   end
-  it "has poly ass commentable" do
-    expect(postc).to respond_to(:commentable)
-  end
+
 
 
 

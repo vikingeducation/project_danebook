@@ -1,0 +1,16 @@
+// Place all the styles related to the profiles controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.about-page {
+  .cover-photo {
+    width: 100%;
+    height: auto;
+  }
+
+  .cover-wraper {
+    height: 350px;
+    overflow: hidden;
+    margin-top: -20px;
+    border-radius: 5px;
+  }
+}

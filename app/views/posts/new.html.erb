@@ -25,7 +25,7 @@
                 <div class="panel panel-default">
                   <div class="panel-body">
                     <h4> <small><%= post.created_at.to_date %></small></h4>
-                    <p><%= @post.body %></p>
+                    <p><%= post.body %></p>
                     <%= link_to "Delete", post_path(post), method: "delete", data: { confirm: "Are you sure you want to delete this post?" } %>
                   </div>
                   <div class="panel-footer">
@@ -37,7 +37,9 @@
                             <%= pluralize(post.likes.size, "like") %>
                           <% end %>
                         </span>
-
+                      </div>
+                      <div class="col-md-12">
+                        <%= post.sample_liker %>
                       </div>
                     </div>
                   </div>

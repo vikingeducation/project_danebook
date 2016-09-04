@@ -37,6 +37,7 @@ class UsersController < ApplicationController
   private
     def white_list_params
       params.require(:user).permit(:email,
+                                   :name,
                                    :birthday,
                                    :college,
                                    :home_town,

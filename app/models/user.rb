@@ -1,8 +1,8 @@
 class User < ApplicationRecord
   before_create :generate_token
   has_secure_password
-  has_many :posts
-  has_many :likes
+  has_many :posts, dependent: :destroy
+  has_many :likes, dependent: :destroy
 
   validates :password, :length => { :in => 8..24 },
                        :allow_nil => true

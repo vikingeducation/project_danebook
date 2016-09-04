@@ -30,8 +30,12 @@ class PostsController < ApplicationController
 
   def like
     post = Post.find_by_id(params[:id])
-    Like.create(likeable: post, user: current_user, like: params[:like])
-    flash[:success] = ["Like Counted!"]
+    like = current_user.likes.build(likeable: post, like: params[:like])
+    if like.save
+      flash[:success] = ["Like Counted!"]
+    else
+      flash[:danger] = ["You already liked this post"]
+    end
     redirect_to :back
   end
 

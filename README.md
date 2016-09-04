@@ -1,28 +1,19 @@
-danebook
+# README
+
+Danebook
 ========
 
-This is the Real Dane Deal.
-=======
-project_danebook
-==================
+On the home page, create an account. This will take you to your timeline. You can search for users, post on your wall, and upload photos on your account. 
 
-[Morgan Martin](https://github.com/morgancmartin)
+###Technological Highlights
+*Ruby on Rails back-end framework
+*Paperclip and AWS for photo uploading and storage
+*Delayed Job and SendGrid for sending emails
 
-This is the [project ~~danebook~~ spacebook](https://peaceful-fjord-47199.herokuapp.com), a social network for ~~Danes~~ intergalactic citizens.
+Created by [Morgan Martin](https://github.com/morgancmartin)
 
-Brought to you by the [Viking Code School](https://www.vikingcodeschool.com)
+A project for [Viking Code School](http://vikingcodeschool.com)
 
-tests:
-    DONE test that users cookies are updates on session creation
-    DONE test users controller
-    posts_controller
-    comments_controller
-    likes_controller
-    
-    friending is a self associative action between
-    two users...
-    
-    need a join table of friender and friendee
-    
-    need a has_many and belongs_to in the users model.
-    also references to the join table from both sides
+Click here for [deployed version](https://peaceful-fjord-47199.herokuapp.com/login)
+Username: harry_potter@hogwarts.edu
+Password: password

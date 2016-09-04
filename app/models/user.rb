@@ -2,6 +2,7 @@ class User < ApplicationRecord
   before_create :generate_token
   has_secure_password
   has_many :posts
+  has_many :likes
 
   validates :password, :length => { :in => 8..24 },
                        :allow_nil => true

@@ -28,6 +28,13 @@ class PostsController < ApplicationController
     redirect_to new_post_path
   end
 
+  def like
+    post = Post.find_by_id(params[:id])
+    Like.create(likeable: post, user: current_user, like: params[:like])
+    flash[:success] = ["Like Counted!"]
+    redirect_to :back
+  end
+
 
   private
     def white_list_params

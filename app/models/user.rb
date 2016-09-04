@@ -13,4 +13,8 @@ class User < ApplicationRecord
   def has_post?
     !self.posts.empty?
   end
+
+  def liked_post?(post)
+    self.likes.find_by(likeable: post) ? true : false
+  end
 end

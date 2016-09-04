@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   end
 
   def new
-    user = User.includes(:posts).find(current_user)
+    user = User.includes(:posts, :posts => :likes).find(current_user)
     @post = user.posts.build
   end
 
@@ -37,6 +37,15 @@ class PostsController < ApplicationController
       flash[:danger] = ["You already liked this post"]
     end
     redirect_to :back
+  end
+
+  def unlike
+    post = Post.find_by_id(params[:id])
+    like = current_user.likes.find_by(likeable: post)
+    if like && like.destroy
+      flash[:success] = ["Unliked Mother fucker!"]
+      redirect_to :back
+    end
   end
 
 

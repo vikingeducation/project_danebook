@@ -1,6 +1,7 @@
 class Post < ApplicationRecord
+  include Likeable
   belongs_to :user
-  has_many :likes, :as => :likeable, dependent: :destroy
+
 
   validates :body, presence: true
 
@@ -10,6 +11,10 @@ class Post < ApplicationRecord
 
   def no_likes?
     self.likes.empty?
+  end
+
+  def has_likes?
+    !no_likes?
   end
 
 end

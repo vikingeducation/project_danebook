@@ -36,6 +36,9 @@
                             <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
                             <%= pluralize(post.likes.size, "like") %>
                           <% end %>
+                          <% if current_user.liked_post?(post) %>
+                            <%= link_to "Unlike", unlike_post_path(post), method: "delete" %>
+                          <% end %>
                         </span>
                       </div>
                       <div class="col-md-12">

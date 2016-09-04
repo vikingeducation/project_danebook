@@ -1,6 +1,6 @@
 # README
 
-Danebook
+Spacebook
 ========
 
 On the home page, create an account. This will take you to your timeline. You can search for users, post on your wall, and upload photos on your account. 

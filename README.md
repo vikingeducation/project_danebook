@@ -3,12 +3,13 @@ Project Danebook
 
 This is the Real Dane deal people. Danebook is a social networking web application built utilizing RESTful architecture and Ruby on Rails.  The complete site is mobile friendly.
 
-#[DEMO](https://www.youtube.com/watch?v=6BuZpCvuC5o) 
+#[DEMO](https://www.youtube.com/watch?v=6BuZpCvuC5o)
+#[LIVE APP](https://glacial-temple-38122.herokuapp.com/)
 
 ##Getting Started
 - - -
 
-###Prerequisites 
+###Prerequisites
 Your local machine will need access to the following:
 
 * Ruby version 2.2.1 or newer
@@ -30,15 +31,15 @@ Run ```bundle install``` in the CLI.
 
 Proceed after a successful bundle install.
 
-Run ```rails db:migrate db:seed``` in the CLI to create the PostgreSQL database and seed it with sample users. 
+Run ```rails db:migrate db:seed``` in the CLI to create the PostgreSQL database and seed it with sample users.
 
 Run ```rails s``` in the CLI, open a browser and direct it to localhost:3000.
 
 You can either create a new user or logon with any of the following email/password combos:
-	
+
 	# Replace # with any integer between 1 and 30 to access any of the pre-populated users
 	email: chuck#@norris.com
-	password: chuckskick	
+	password: chuckskick
 
 ##Technical Notes
 - - -
@@ -51,4 +52,4 @@ A self association was used to connect a user with another user. A separate tabl
 
 ###Paperclip and S3 photo storage
 
-Paperclip in conjunction with S3 is utilized to manage the photo upload.  Each photo is saved in 4 different forms, thumb size, medium size, large size, and the original. 
+Paperclip in conjunction with S3 is utilized to manage the photo upload.  Each photo is saved in 4 different forms, thumb size, medium size, large size, and the original.

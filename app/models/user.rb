@@ -3,6 +3,7 @@ class User < ApplicationRecord
   has_secure_password
   has_many :posts, dependent: :destroy
   has_many :likes, dependent: :destroy
+  has_many :comments, dependent: :destroy
 
   validates :password, :length => { :in => 8..24 },
                        :allow_nil => true
@@ -14,7 +15,7 @@ class User < ApplicationRecord
     !self.posts.empty?
   end
 
-  def liked_post?(post)
-    self.likes.find_by(likeable: post) ? true : false
+  def liked_staff?(staff)
+    self.likes.find_by(likeable: staff) ? true : false
   end
 end

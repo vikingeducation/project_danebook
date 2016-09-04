@@ -13,4 +13,13 @@ Rails.application.routes.draw do
       delete 'unlike'
     end
   end
+
+  get 'timeline', to: 'posts#new'
+
+  resources :comments do
+    member do
+      post 'like'
+      delete 'unlike'
+    end
+  end
 end

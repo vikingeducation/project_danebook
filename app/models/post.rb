@@ -1,5 +1,6 @@
 class Post < ApplicationRecord
   include Likeable
+  include Commentable
   belongs_to :user
 
 
@@ -15,6 +16,10 @@ class Post < ApplicationRecord
 
   def has_likes?
     !no_likes?
+  end
+
+  def has_comments?
+    !self.comments.empty?
   end
 
 end

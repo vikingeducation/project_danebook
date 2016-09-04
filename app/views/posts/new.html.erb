@@ -32,11 +32,11 @@
                     <div class="row">
                       <div class="col-xs-12">
                         <span class="pull-left">
-                          <%= link_to like_post_path(post, like: true), method: 'post' do %>
+                          <%= link_to like_post_path(post), method: 'post' do %>
                             <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
                             <%= pluralize(post.likes.size, "like") %>
                           <% end %>
-                          <% if current_user.liked_post?(post) %>
+                          <% if current_user.liked_staff?(post) %>
                             <%= link_to "Unlike", unlike_post_path(post), method: "delete" %>
                           <% end %>
                         </span>
@@ -45,8 +45,45 @@
                         <%= post.sample_liker %>
                       </div>
                     </div>
+                    <div class="row">
+                      <div class="col-xs-12">
+                        <% if post.has_comments? %>
+                          <% post.comments.each do |comment| %>
+                            <div class="panel panel-default">
+                              <div class="panel-body">
+                                <p><strong><%= "#{comment.user.name}   " %></strong><span class="text-muted"><%= comment.created_at.to_date %></span></p>
+                                <p><%= comment.body %></p>
+                                <span class="pull-left">
+                                  <%= link_to like_comment_path(comment), method: 'post' do %>
+                                    <i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+                                    <%= pluralize(comment.likes.size, "like") %>
+                                  <% end %>
+                                  <% if current_user.liked_staff?(comment) %>
+                                    <%= link_to "Unlike", unlike_comment_path(comment), method: "delete" %>
+                                  <% end %>
+                                </span>
+                                <span class="pull-right">
+                                  <% if comment.user == current_user %>
+                                    <%= link_to "Delete", comment_path(comment), method: "delete", data: {confirm: "Are you sure?"} %>
+                                  <% end %>
+                                </span>
+
+                              </div>
+                            </div>
+                          <% end %>
+                        <% end %>
+                      </div>
+                    </div>
                   </div>
                 </div>
+
+                <%= simple_form_for @comment do |f| %>
+                  <div class="form-group">
+                    <%= hidden_field_tag(:id, post.id) %>
+                    <%= f.input :body, class: "form-control", label: false, placeholder: "Leave your comment here" %>
+                    <%= f.button :submit, class: "btn btn-success" %>
+                  </div>
+                <% end %>
               <% end %>
             <% end %>
 

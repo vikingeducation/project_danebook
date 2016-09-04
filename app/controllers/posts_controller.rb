@@ -3,8 +3,9 @@ class PostsController < ApplicationController
   end
 
   def new
-    user = User.includes(:posts, :posts => :likes).find(current_user)
+    user = User.includes(:posts, :posts => [:likes, :comments => :user]).find(current_user)
     @post = user.posts.build
+    @comment = user.comments.build
   end
 
   def create
@@ -30,7 +31,7 @@ class PostsController < ApplicationController
 
   def like
     post = Post.find_by_id(params[:id])
-    like = current_user.likes.build(likeable: post, like: params[:like])
+    like = current_user.likes.build(likeable: post, like: true)
     if like.save
       flash[:success] = ["Like Counted!"]
     else

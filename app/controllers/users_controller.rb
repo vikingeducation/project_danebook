@@ -17,13 +17,16 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+  end
+
   def edit
   end
 
   def update
     if current_user.update(white_list_params)
       flash[:success] = ["Profile has been successfully updated"]
-      redirect_to user_profiles_path(current_user)
+      redirect_to user_path(current_user)
     else
       flash.now[:danger] = current_user.errors.full_messages
       render :edit

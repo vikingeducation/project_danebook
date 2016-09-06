@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resource :profiles, only: [:edit, :show, :update]
     resources :posts, only: [:create, :destroy]
     resources :photos
+    resources :relationships, only: [:index]
   end 
 
   resources :posts do
@@ -24,8 +25,6 @@ Rails.application.routes.draw do
   end
 
   resources :relationships, only: [:create, :destroy]
-
-
 
   root "users#new"
 

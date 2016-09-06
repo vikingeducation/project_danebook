@@ -15,7 +15,7 @@
       <%= link_to "Photos (#{@user.photos.count})", user_photos_path(@user) %>
     </div>
     <div class="col-md-2 friends-link">
-      Friends
+      <%= link_to "Friends", user_relationships_path(@user) %>
     </div>
     <div class="col-md-4 edit-link">
       <%= render "shared/friend_button" %>

@@ -15,7 +15,7 @@
       </div>
     </div>
     <div class="col-md-12">
-      <h3 class="text-center"> Photos<p>(<%= @user.photos.count %>)</p></h3>
+      <h3 class="text-center"> Photos<p> <%= @user.photos.count %> </p></h3>
       <% @photos.each do |photo| %>
         <div class="col-md-4 index-photo">
           <%= link_to image_tag(photo.picture.url, class: "resize-index-photo"), user_photo_path(photo.user, photo) %>   

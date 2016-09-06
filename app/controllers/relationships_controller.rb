@@ -2,6 +2,11 @@ class RelationshipsController < ApplicationController
   before_action :signed_in_user?, only: [:create, :destroy]
   before_action :current_user, only: [:create, :destroy]
 
+  def index
+    @user = current_user
+    @friends = current_user.friends
+  end
+
   def create
     @user = User.find(params[:friended_id])
     if current_user.friended_relationships.create(friended_id: @user.id)

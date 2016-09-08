@@ -4,7 +4,10 @@
            <div class="row">
              <div id="cover-col" class="col-xs-12">
                <img id="user-img" height="150px" src="<%=image_path('user.jpg')%>"  />
-               <h2 id="about-name">Harry Potter</h2>
+               <h2 id="about-name"><%= @user.first_name + " " + @user.last_name%></h2><br>
+              
+               <%= friend_button%>
+
              </div>
              </div>
 
@@ -21,6 +24,8 @@
                <div id="link-box4" class="col-xs-2">
                    <h5><a href="<%= friends_path %>"><strong>Friends</strong><small>(542)</small></a></h5>
                </div>
+
+
                <div id="edit-link" class="col-xs-2">
                    <h5><u><%= link_to "Edit Profile", edit_user_path(@user) %></u></h5>
                </div>

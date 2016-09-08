@@ -1,4 +1,7 @@
-FactoryGirl.define do
+FactoryGirl.define do  factory :friending do
+    
+  end
+
 
   factory :user, :aliases => [:author, :commenter, :liker] do
     sequence(:last_name) {|n| "Bar#{n}"}

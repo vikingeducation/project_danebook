@@ -24,7 +24,7 @@ RSpec.describe PostsController, type: :controller do
   #   end
   #   it "can be destroyed" do
   #     expect{
-  #       delete :destroy, :id => post.id
+  #       process :destroy, :params => {:id => post.id}
   #     }.to change(Post, :count).by(-1)
   #   end
   # end

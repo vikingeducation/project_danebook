@@ -4,7 +4,7 @@
   <div class="row">
     <div class="col-xs-6">
       <h3><%= link_to "#{user.username}", timeline_path(user) %></h3>
-      <p><span class="text-muted"><%= link_to "#{pluralize(user.friended_users.size, 'friend')}", users_path(id: user) %></span></p>
+      <p><span class="text-muted"><%= link_to "#{pluralize(user.friended_users.size, 'friend')}", friends_path(user) %></span></p>
       <p><%= user.about_me[0..25] %></p>
     </div>
     <div class="col-xs-6">

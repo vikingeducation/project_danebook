@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   root 'pages#home'
   get 'timeline/:id', to: 'pages#timeline', as: 'timeline'
   get 'search',       to: 'pages#search',   as: 'search'
-  resources :users, only: [:show, :edit, :update, :index]
+  get '/friends/:id', to: 'users#index',    as: 'friends'
+  resources :users, only: [:show, :edit, :update]
   resources :posts, except: [:new, :index]
   resources :likes, only: [:create, :destroy]
   resources :comments, only: [:create, :destroy]

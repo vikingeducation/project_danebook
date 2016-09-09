@@ -13,6 +13,8 @@
             <%= link_to 'Danebook', root_path , class: "navbar-brand", id: "brand" %>
           </div>
 
+
+
           <div class="collapse navbar-collapse" id="navbar">
             <% if user_signed_in? %>
             <ul class="nav navbar-nav navbar-right">
@@ -26,6 +28,9 @@
                 </ul>
               </li>
             </ul>
+
+            <%= render 'shared/search' %>
+
             <% else %>
               <!-- render the sign in form -->
             <%= render 'devise/sessions/new' %>

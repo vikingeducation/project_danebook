@@ -19,4 +19,8 @@ class User < ApplicationRecord
   def already_liked?(staff)
     self.likes.find_by(likeable: staff) ? true : false
   end
+
+  def self.search_user(username)
+    self.where("lower(username) LIKE '%#{username}%'")
+  end
 end

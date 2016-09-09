@@ -18,14 +18,16 @@ RSpec.describe PostsController, type: :controller do
     end
   end
 
-  # describe "DELETE #destroy" do
-  #   before :each do
-  #     post = create(:post, author: user)
-  #   end
-  #   it "can be destroyed" do
-  #     expect{
-  #       process :destroy, :params => {:id => post.id}
-  #     }.to change(Post, :count).by(-1)
-  #   end
-  # end
+  describe "DELETE #destroy" do
+    # before :each do
+    #   my_post = create(:post, author: user)
+    # end
+    let(:my_post){ create(:post, author: user) }
+    it "can be destroyed" do
+      my_post
+      expect{
+        process :destroy, :params => {:id => my_post.id}
+      }.to change(Post, :count).by(-1)
+    end
+  end
 end

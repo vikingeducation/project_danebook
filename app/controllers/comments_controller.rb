@@ -4,6 +4,7 @@ class CommentsController < ApplicationController
     if comment.save
       flash[:success] = "Comment is created"
     else
+      binding.pry
       flash[:danger] = "Your comment is not successfull"
     end
     redirect_back(fallback_location: fallback_location)

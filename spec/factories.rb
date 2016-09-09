@@ -1,11 +1,12 @@
 FactoryGirl.define do
   factory :comment do
     body "this is a comment"
-    likes_count '0'
-    post
+    # likes_count '0'
     user
+    association :commentable, factory: :post
   end
   factory :like do
+    likeable
     user
   end
   factory :post do

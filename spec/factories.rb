@@ -1,4 +1,7 @@
 FactoryGirl.define do
+  factory :friending do
+    
+  end
   factory :comment do
     body "this is a comment"
     # likes_count '0'

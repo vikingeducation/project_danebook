@@ -2,7 +2,8 @@ class UsersController < ApplicationController
   before_action :require_current_user!, only: [:update, :edit]
 
   def index
-    @users = User.all
+    user = User.includes(:friended_users, :initiated_friendings).find_by_id(params[:id])
+    @users = user.friended_users
   end
 
   def show

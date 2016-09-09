@@ -12,15 +12,14 @@
   }
 }
 
-.search-page {
-  .user-card {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    height: 110px;
-    margin-top: 10px;
-    .friend-button {
-      text-align: center;
-      margin-top: 30px;
-    }
+
+.user-card {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  height: 110px;
+  margin-top: 10px;
+  .friend-button {
+    text-align: center;
+    margin-top: 30px;
   }
 }

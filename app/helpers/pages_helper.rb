@@ -24,4 +24,13 @@ module PagesHelper
       link.html_safe
     end
   end
+
+  def friending_link(user)
+    if current_user.already_friended?(user)
+      link = link_to("Unfriend", friendings_path(user: user), class: "btn btn-danger btn-lg")
+      link.html_safe
+    else
+      link = link_to("Friend Me!", friending_path(user), class: "btn btn-danger btn-lg", method: "delete")
+    end
+  end
 end

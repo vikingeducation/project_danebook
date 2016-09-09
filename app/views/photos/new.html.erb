@@ -1,0 +1,12 @@
+<%= render '/users/nav' %>
+
+<h1> create a photo!</h1>
+<p>
+<%= form_for [@user, @photo] do |f| %>
+<%= f.hidden_field :user_id, value: @user.id %>
+<%= f.label :data %>
+<%= f.file_field :data %>
+<%= f.submit "Upload Photo", class: "btn btn-primary" %>
+
+<%end%>
+<p>

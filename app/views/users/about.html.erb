@@ -1,0 +1,92 @@
+<%= render 'nav' %>
+<%= render 'header' %>
+
+
+
+       <!--       ABOUT INFO     -->
+     <div id="info-wrapper" class="container">
+       <div id="about-row" class="row">
+         <div class="col-xs-4 col-xs-offset-4">
+           <h2 id="about-col"><strong>About</strong></h2>
+         </div>
+         <div  class="col-xs-4">
+           <% if current_user && @user == current_user %>
+           <%= link_to "Edit your Profile", edit_user_path(@user), type: "button", id: "edit_btn", class: "btn btn-primary" %>
+            <%end%>
+         </div>
+       </div>
+
+       <div id="about-content" class="row">
+           <div class="col-xs-5">
+             <div class="col-xs-12">
+             <h3><strong>Basic Information</strong></h3>
+             </div>
+             <div class="row"><h5>
+             <div class="col-xs-5">
+               <strong>  Birthday:</strong>
+               </div>
+               <div class="col-xs-7">
+                 <%="#{@user.b_month}/#{@user.b_day}/#{@user.b_year}"%>
+               </div>
+           </h5>  </div>
+             <div class="row"><h5>
+               <div class="col-xs-5">
+               <strong>  College:</strong>
+               </div>
+               <div class="col-xs-7">
+                 <%= @user.college %>
+               </div>
+             </h5></div>
+             <div class="row"><h5>
+               <div class="col-xs-5">
+               <strong>  Hometown:</strong>
+               </div>
+               <div class="col-xs-7">
+                 <%= @user.home %>
+               </div>
+             </h5></div>
+             <div class="row"><h5>
+               <div class="col-xs-5">
+               <strong>  Currently Lives:</strong>
+               </div>
+               <div class="col-xs-7">
+                 <%= @user.lives %>
+               </div>
+           </h5>  </div>
+
+             <div class="col-xs-12">
+             <h3><strong>Contact Information</strong></h3>
+             </div>
+             <div class="row"><h5>
+               <div class="col-xs-5">
+               <strong>  Email:</strong>
+               </div>
+               <div class="col-xs-7">
+                 <%= @user.email %>
+               </div>
+             </h5></div>
+             <div class="row"><h5>
+               <div class="col-xs-5">
+               <strong>  Telephone:</strong>
+               </div>
+               <div class="col-xs-7">
+                 <%= @user.phone %>
+               </div>
+           </h5>  </div>
+           </div>
+           <div class="col-xs-7">
+             <div class="col-xs-11 col-xs-offset-1">
+             <h3><strong>Words to Live By</strong></h3>
+             </div>
+               <div class="col-xs-11 col-xs-offset-1">
+                 <p><%=@user.words%></p>
+               </div>
+               <div class="col-xs-11 col-xs-offset-1">
+                <h3><strong>About Me</strong></h3>
+               </div>
+               <div class="col-xs-11 col-xs-offset-1">
+                 <p><%= @user.bio %></p>
+               </div>
+           </div>
+       </div>
+     </div>

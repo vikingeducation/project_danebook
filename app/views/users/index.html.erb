@@ -1,0 +1,31 @@
+<%= render 'nav' %>
+
+
+
+          <div id="info-wrapper" class="container">
+            <div id="about-row" class="row">
+              <div class="col-xs-4 col-xs-offset-4">
+                <h2 id="about-col"><strong>Search Results</strong></h2>
+              </div>
+
+            </div>
+
+            <div id="about-content" class="friends-content row">
+              <div class="col-xs-12">
+                <% @users.each do |user| %>
+                <div class="friend-box box-content col-xs-12">
+
+                  <div class="user-img"><a href="user_path(user)"><img width="50px" src="<%=image_path('def-user.gif')%>"></a></div>
+
+                  <div id="friend-name"><h5><u><%= link_to user.full_name, user_path(user)%></u><br><small><%=user.friends.count%></small>
+                  <br><%= "Currently lives in #{user.lives}"%><br><%= "From #{user.home}"%><br><%= "Born on #{user.bday_string}"%></div>
+                  <!-- <button id="unfriend-btn" type="button" class="btn-default">Unfriend Me</button> -->
+                  <%= friend_button(user) %>
+                  </h5>
+                </div>
+              <%end%>
+
+              </div>
+
+            </div>
+          </div>

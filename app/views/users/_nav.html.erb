@@ -1,0 +1,38 @@
+<nav id="navcolor" class="navbar navbar-default navbar-fixed-top">
+     <div class="container">
+       <div class="row">
+
+         <div class="col-xs-4" id="logo">
+               <a href="<%=root_path%>">
+                 <img id="logoimg" src="<%=image_path('logo.gif')%>" height="40px" width="40px" class="img-circle">
+               </a>
+               <a id="logotxt" href="<%=root_path%>" class="navbar-brand"><h1>Danebook</h1></a>
+             </div>
+             <form class="navbar-form" action="/users" method="get">
+
+               <div class="col-xs-6 form-group">
+
+                 <input id="search" name="query"  type="text" action="submit" class="form-control" width="100%" placeholder="Search for Users">
+
+               </div>
+
+             </form>
+             <div class="col-xs-1 col-xs-offset-1">
+               <% if signed_in_user? %>
+               <h4 id="harry">
+                 <%=current_user.email%>
+                 <%=link_to "Logout", logout_path, :method => :delete%>
+               </h4>
+               <% else %>
+               <h4>
+                <%= link_to "Create an Account", root_path %>
+               </h4>
+
+               <%end%>
+               </div>
+             </div>
+       </div>
+       </div>
+
+     </div>
+   </nav>

@@ -1,0 +1,101 @@
+<%= render "nav_home" %>
+
+<div class="container">
+     <main id="main-wrapper">
+     <div class="row">
+        <div class="col-sm-7" id="content">
+          <header>
+            <h2>Connect with all your friends!</h2>
+
+          <p><small>
+            <ul>
+              <li><strong>See updates and photos</strong> in your newsfeed</li>
+              <li><strong>Post your status for the world to see</strong> with your news feed</li>
+              <li><strong>Get in touch with your friends</strong> by "friending" them</li>
+              <li><strong>Like things</strong> because you're a positive person!</li>
+            </ul></small>
+          </p>
+          </header>
+        </div>
+        <div class="col-sm-5" id="signup">
+
+          <header>
+            <h1>Sign Up</h1>
+          </header>
+
+
+          <%=form_for @user do |f| %>
+            <% if @user.errors.any? %>
+              <div id="error_explanation">
+                <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+                <ul>
+                  <% @user.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+
+            <div class="form-group col-sm-6">
+              <%=f.text_field :first_name, placeholder: "First Name", class: "form-control" %>
+            </div>
+            <div class="form-group col-sm-6">
+              <%=f.text_field :last_name, placeholder: "Last Name", class: "form-control" %>
+           </div>
+           <div class="form-group col-sm-12">
+          <%=f.text_field :email, placeholder: "email", class: "form-control" %>
+           </div>
+          <div class="form-group col-sm-12">
+          <%=f.password_field :password, placeholder: "password", class: "form-control" %>
+              </div>
+            <div class="form-group col-sm-12">
+            <%=f.password_field :password_confirmation, placeholder: "password confirmation", class: "form-control" %>
+            </div>
+            <div class="form-group col-sm-12">
+            <h4>Birthday</h4>
+
+            <div class="col-sm-4">
+            <select  class="form-control input-sm" id="user_b_month" name="user[b_month]" >
+              <option selected disabled>Month</option>
+            <option value="1">Jan</option>
+             <option value="2">Feb</option>
+             <option value="3">Mar</option>
+              </select>
+        </div>
+        <div class="col-sm-4">
+          <select class="form-control input-sm" id="user_b_day" name="user[b_day]">
+            <option selected disabled>Day</option>
+          <option value="1">1</option>
+           <option value="2">2</option>
+           <option value="3">3</option>
+        </select>
+      </div>
+      <div class="col-sm-4">
+        <select class="form-control input-sm" id="user_b_year" name="user[b_year]">
+          <option selected disabled>Year</option>
+        <option value="1985">1985</option>
+         <option value="1986">1986</option>
+         <option value="1987">1987</option>
+
+      </select>
+    </div>
+    </div>
+    <div id="gender" class="form-group col-sm-12">
+    <label class="radio-inline">
+ <input type="radio" name="user[gender]" id="inlineRadio1" value="Female"> Female
+</label>
+<label class="radio-inline">
+ <input type="radio" name="user[gender]" id="inlineRadio2" value="Male"> Male
+</label>
+</div>
+ <div class="form-group col-sm-12">
+ <%=f.submit "Sign Up!", :class => "btn-block btn-success", :id => "sign-btn" %>
+</div>
+<%end%>
+
+
+
+        </div>
+     </div>
+   </main>
+ </div>

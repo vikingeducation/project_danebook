@@ -1,0 +1,229 @@
+<%= render 'nav' %>
+
+<div class="container">
+           <div class="row">
+             <div id="cover-col" class="col-xs-12">
+               <img id="user-img" height="150px" src="<%=image_path('user.jpg')%>"  />
+               <h2 id="about-name">Harry Potter</h2>
+             </div>
+             </div>
+
+             <div id="about-links" class="row">
+               <div id="link-box1-current" class="col-xs-1 col-xs-offset-3">
+                 <h5><strong>Timeline</strong></h5>
+               </div>
+               <div id="link-box2"  class="col-xs-1">
+                 <h5><a href="<%= about_path %>"><strong>About</strong></a></h5>
+               </div>
+               <div id="link-box3" class="col-xs-2">
+                   <h5><a href="<%= photos_path %>"><strong>Photos</strong><small>(123)</small></a></h5>
+               </div>
+               <div id="link-box4" class="col-xs-2">
+                   <h5><a href="<%= friends_path %>"><strong>Friends</strong><small>(542)</small></a></h5>
+               </div>
+               <div id="edit-link" class="col-xs-2">
+                   <h5><u><a href="<%= about_edit_path %>">Edit Profile</a></u></h5>
+               </div>
+             </div>
+           </div>
+
+           <!--      POSTS         -->
+
+           <div id="posts-container" class="container">
+
+
+             <div id="posts-row" class="row">
+                 <div class="col-xs-4">
+                   <div class="row">
+                     <div class="box-header col-xs-11">
+                       <h5><strong>About (Text Area)</strong></h5>
+                     </div>
+                   </div>
+                   <div class="row">
+                     <div class="box-content col-xs-11">
+                     <p><strong>Born on:</strong> July 31st, 1980</p>
+                     <p><strong>Went to school at:</strong> Hogwarts</p>
+                     <p><strong>Hometown:</strong> Goodrick's Hollow, England</p>
+                     <p><strong>Currently Lives:</strong> Goodrick's Hollow</p>
+                     </div>
+                   </div>
+                   <div class="row">
+                     <div class="box-header col-xs-11">
+                       <h5><strong>Photos (123) (Copied Text Area)</strong></h5>
+                     </div>
+
+                   </div>
+                   <div class="row">
+                     <div class="box-content col-xs-11">
+                       <div class="row">
+                         <div class="col-xs-4">
+                           <a href="#"><img class="img-responsive" src="<%=image_path('photo.png')%>"></a>
+                         </div>
+                         <div class="col-xs-4">
+                           <a href="#"><img class="img-responsive" src="<%=image_path('photo.png')%>"></a>
+                         </div>
+                         <div class="col-xs-4">
+                           <a href="#"><img class="img-responsive" src="<%=image_path('photo.png')%>"></a>
+                         </div>
+                         <div class="col-xs-4">
+                           <a href="#"><img class="img-responsive" src="<%=image_path('photo.png')%>"></a>
+                         </div>
+                         <div class="col-xs-4">
+                           <a href="#"><img class="img-responsive" src="<%=image_path('photo.png')%>"></a>
+                         </div>
+                         <div class="col-xs-4">
+                           <a href="#"><img class="img-responsive" src="<%=image_path('photo.png')%>"></a>
+                         </div>
+                         <div class="col-xs-4">
+                           <a href="#"><img class="img-responsive" src="<%=image_path('photo.png')%>"></a>
+                         </div>
+                         <div class="col-xs-4">
+                           <a href="#"><img class="img-responsive" src="<%=image_path('photo.png')%>"></a>
+                         </div>
+                         <div class="col-xs-4">
+                           <a href="#"><img class="img-responsive" src="<%=image_path('photo.png')%>"></a>
+                         </div>
+                     </div>
+                     <div class="center-link row">
+                       <a href="<%= photos_path %>">See More Photos</a>
+                     </div>
+                   </div>
+                 </div>
+                   <div class="row">
+                     <div class="box-header col-xs-11">
+                       <h5><strong>Friends (542) (Copied Text Area)</strong></h5>
+                     </div>
+                   </div>
+                   <div class="row">
+                     <div class="box-content col-xs-11">
+                       <div class="row">
+                         <div class="center-link col-xs-4">
+                           <img class="img-responsive" src="<%=image_path('def-user.gif')%>">
+                           <a href="#">Ron<br>Weasley</a>
+                         </div>
+                         <div class="center-link col-xs-4">
+                           <img class="img-responsive" src="<%=image_path('def-user.gif')%>">
+                           <a href="#">Ginny<br>Weasley</a>
+                         </div>
+                         <div class="center-link col-xs-4">
+                           <img class="img-responsive" src="<%=image_path('def-user.gif')%>">
+                           <a href="#">Hermione<br>Granger</a>
+                         </div>
+                         <div class="center-link col-xs-4">
+                           <img class="img-responsive" src="<%=image_path('def-user.gif')%>">
+                           <a href="#">paragraph<br>text</a>
+                         </div>
+                         <div class="center-link col-xs-4">
+                           <img class="img-responsive" src="<%=image_path('def-user.gif')%>">
+                           <a href="#">paragraph<br>text</a>
+                         </div>
+                         <div class="center-link col-xs-4">
+                           <img class="img-responsive" src="<%=image_path('def-user.gif')%>">
+                           <a href="#">paragraph<br>text</a>
+                         </div>
+                       </div>
+                       <div class="center-link row">
+                         <a href="<%= friends_path %>">See More Friends</a>
+                       </div>
+                     </div>
+                   </div>
+                 </div>
+
+                 <div class="col-xs-8">
+                   <div class="row">
+                     <div class="box-header col-xs-11 col-xs-offset-1">
+                       <h5><strong>Post (Copied)</strong></h5>
+                     </div>
+                   </div>
+                   <div class="row">
+                     <div class="box-content col-xs-11 col-xs-offset-1">
+                       <form>
+                         <textarea class="form-control" rows="3">Tell the world something...</textarea>
+                       </form>
+                     </div>
+                   </div>
+                   <div class="row">
+                     <div class="box-foot col-xs-11 col-xs-offset-1">
+                     <button id="post-btn" type="button" class="btn-primary">Post</button>
+                     </div>
+                   </div>
+                   <div class="row">
+                     <div class="post-img box-content col-xs-11 col-xs-offset-1">
+                       <div class="user-img"><a href="<%= about_path %>"><img width="50px" src="<%=image_path('user.jpg')%>"></a></div>
+                       <h5><u><a href="<%= about_path %>">Harry Potter</a></u><br><small>Posted on Thursday 6/1/2014</small></h5>
+                       <div class="col-xs-12">
+                         <p><br>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui</p>
+                       </div>
+                     </div>
+                   </div>
+                   <div class="row">
+                     <div class="box-foot col-xs-11 col-xs-offset-1">
+                       <a href="#"><u>Like</u></a>&nbsp;&nbsp;&nbsp;<a href="#"><u>Comment</u></a>
+                       <div class="delete-link"><a href="#"><u>Delete</u></a></div>
+                     </div>
+                   </div>
+                   <div class="row">
+                     <div class="post-img box-content col-xs-11 col-xs-offset-1">
+                       <div class="user-img"><a href="<%= about_path %>"><img width="50px" src="<%=image_path('user.jpg')%>"></a></div>
+                       <h5><u><a href="<%= about_path %>">Harry Potter</a></u><br><small>Posted on Thursday 5/21/2014</small></h5>
+                       <div class="col-xs-12">
+                         <p><br>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui</p>
+                       </div>
+                     </div>
+                   </div>
+                   <div class="row">
+                     <div class="box-foot col-xs-11 col-xs-offset-1">
+                       <a href="#"><u>Like</u></a>&nbsp;&nbsp;&nbsp;<a href="#"><u>Comment</u></a>
+                       <div class="delete-link"><a href="#"><u>Delete</u></a></div>
+                       <p><br><a href="#"><u>Hermione Granger</u></a> likes this.</p>
+                     </div>
+                   </div>
+
+                   <div class="row">
+                     <div class="post-img box-content col-xs-11 col-xs-offset-1">
+                       <div class="user-img"><a href="<%= about_path %>"><img width="50px" src="<%=image_path('user.jpg')%>"></a></div>
+                       <h5><u><a href="<%= about_path %>">Harry Potter</a></u><br>Posted on Thursday 5/21/2014</h5>
+                       <div class="col-xs-12">
+                         <p><br>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui</p>
+                       </div>
+                     </div>
+                   </div>
+                   <div class="row">
+                     <div class="box-foot col-xs-11 col-xs-offset-1">
+                       <a href="#"><u>Unlike</u></a>
+                       <div class="delete-link"><a href="#"><u>Delete</u></a></div>
+                       <p><br>You and <a href="#"><u>Hermione Granger</u></a> and 3 others like this.</p>
+                       <hr>
+                         <div class="row">
+                       <div class="col-xs-2">
+                         <div class="com-img"><a href="<%= about_path %>"><img width="50px" src="<%=image_path('def-user.gif')%>"></a></div>
+                       </div>
+                       <div class="col-xs-10">
+                         <h5><u><a href="#">Ron Weasley</a></u><small> Said on Thursday 5/21/2014</small></h5>
+                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in</p>
+                         <a href="#"><u>Like</u></a>&nbsp;&nbsp;&nbsp;<small>3 other people like this</small>
+                       </div>
+                     </div>
+                     <div class="row">
+                       <div class="col-xs-2">
+                         <div class="com-img"><a href="<%= about_path %>"><img width="50px" src="<%=image_path('user.jpg')%>"></a></div>
+                       </div>
+                       <div class="col-xs-10">
+                          <h5><u><a href="<%= about_path %>">Harry Potter</a></u><small> Said on Friday 5/22/2014</small></h5>
+                          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in</p>
+                          <a href="#"><u>Like</u></a>&nbsp;&nbsp;&nbsp;<small>3 other people like this</small>
+                          <div class="delete-link"><a href="#"><u>Delete</u></a></div>
+                       </div>
+                     </div>
+                     <form>
+                       <textarea id="comment-area" class="form-control" rows="3">Tell the world something...</textarea>
+                     </form>
+                     <a href="#"><u>Cancel</u></a>
+                     <button id="post-btn" type="button" class="btn-primary">Comment</button>
+                     </div>
+                   </div>
+
+
+                 </div>
+             </div>
+           </div>

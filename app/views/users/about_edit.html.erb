@@ -1,0 +1,92 @@
+<%= render 'nav' %>
+<%= render 'header' %>
+
+
+          <!--       ABOUT INFO     -->
+        <div id="info-wrapper" class="container">
+          <div id="about-row" class="row">
+            <div class="col-xs-4 col-xs-offset-4">
+              <h2 id="about-col"><strong>Edit Profile</strong></h2>
+            </div>
+
+          </div>
+            <%= form_for @current_user do |u| %>
+          <div id="about-content" class="row">
+              <div class="col-xs-5">
+                <div class="col-xs-12">
+                <h3><strong>Basic Information</strong></h3>
+                </div>
+                <div class="row"><h5>
+                <div class="col-xs-5">
+                  <strong>  Birthday:</strong>
+                  </div>
+                  <div class="col-xs-7">
+                  <%= "#{@current_user.b_month}/#{@current_user.b_day}/#{@current_user.b_year}"%>
+                  </div>
+              </h5>  </div>
+                <div class="row"><h5>
+                  <div class="col-xs-5">
+                  <strong><%=u.label :college, value: "College: " %></strong>
+                  </div>
+                  <div class="col-xs-7">
+                    <%= u.text_field :college %>
+                  </div>
+                </h5></div>
+                <div class="row"><h5>
+                  <div class="col-xs-5">
+                  <strong><%=u.label :home, value: "Hometown: " %></strong>
+                  </div>
+                  <div class="col-xs-7">
+                    <%= u.text_field :home %>
+                  </div>
+                </h5></div>
+                <div class="row"><h5>
+                  <div class="col-xs-5">
+                  <strong><%=u.label :lives, value: "Currently Lives: " %></strong>
+                  </div>
+                  <div class="col-xs-7">
+                    <%= u.text_field :lives %>
+                  </div>
+              </h5>  </div>
+
+                <div class="col-xs-12">
+                <h3><strong>Contact Information</strong></h3>
+                </div>
+                <div class="row"><h5>
+                  <div class="col-xs-5">
+                  <strong>  Email:</strong>
+                  </div>
+                  <div class="col-xs-7">
+                    <%= @current_user.email %>
+                  </div>
+                </h5></div>
+                <div class="row"><h5>
+                  <div class="col-xs-5">
+                  <strong><%= u.label :phone, value: "Telephone: " %></strong>
+                  </div>
+                  <div class="col-xs-7">
+                    <%= u.text_field :phone %>
+                  </div>
+              </h5>  </div>
+              </div>
+              <div class="col-xs-7">
+                <div class="col-xs-11 col-xs-offset-1">
+                <h3><strong><%= u.label :words, value: "Words to Live By: " %></strong></h3>
+                </div>
+                  <div class="col-xs-11 col-xs-offset-1">
+                    <%= u.text_area :words, class: "form-control", width: "100%" %>
+                    </div>
+                  <div class="col-xs-11 col-xs-offset-1">
+                   <h3><strong><%= u.label :bio, value: "About Me: " %></strong></h3>
+                  </div>
+                  <div class="col-xs-11 col-xs-offset-1">
+                    <%= u.text_area :bio, class: "form-control", width: "100%" %>
+
+                  </div>
+              </div>
+              <div id="save-btn" class="col-xs-6 col-xs-offset-3">
+                <strong><%= u.submit "Save Changes", class: "btn-primary btn-block btn-large"%></strong>
+              </div>
+              <%end%>
+          </div>
+        </div>

@@ -1,10 +1,32 @@
 class User < ApplicationRecord
+
   before_create :generate_token
 
   has_secure_password
 
+  has_many :photos
+  has_one :cover
+  has_one :cover_photo, :through => :cover, :source => :photo
+  has_one :profile
+  has_one :profile_photo, :through => :profile, :source => :photo
+  def self.search(query)
+    if query.nil? || query == ""
+      where("")
+    else
+      where("first_name LIKE ? OR last_name LIKE ?", "%#{query}%", "%#{query}%")
+    end
+  end
+
+  def current_cover
+    self.cover_photo ? self.cover_photo.data.url(:thumb) : image_path('user.jpg')
+  end
+
   def full_name
     "#{self.first_name} #{self.last_name}"
+  end
+
+  def bday_string
+    "#{self.b_month}/#{self.b_day}/#{self.b_year}"
   end
 
   validates :password,
@@ -41,5 +63,11 @@ class User < ApplicationRecord
   has_many :users_friended_by,    :through => :received_friendings,
                                  :source => :friend_initiator
 
+  def friends
+    (self.friended_users + self.users_friended_by).uniq
+  end
 
+  def photo_count
+    self.photos.count
+  end
 end

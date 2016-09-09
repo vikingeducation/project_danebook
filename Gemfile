@@ -32,7 +32,9 @@ gem 'hirb'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'pry-byebug'
-
+gem 'figaro'
+gem 'paperclip'
+gem 'aws-sdk'
 group :development, :test do
   gem 'shoulda-matchers', '~> 3.1'
   gem 'capybara'

@@ -1,0 +1,30 @@
+<%= render 'nav' %>
+
+<%= render 'header' %>
+
+
+          <div id="info-wrapper" class="container">
+            <div id="about-row" class="row">
+              <div class="col-xs-4 col-xs-offset-4">
+                <h2 id="about-col"><strong>Friends</strong></h2>
+              </div>
+
+            </div>
+
+            <div id="about-content" class="friends-content row">
+              <div class="col-xs-12">
+                <%@friends.each do |friend| %>
+                <div class="friend-box box-content col-xs-6">
+
+                  <div class="user-img"><a href="<%=user_path(friend)%>"><img width="50px" src="<%=current_cover(friend)%>"></a></div>
+
+                  <div id="friend-name"><h5><u><a href="<%=user_path(friend)%>"><%=friend.full_name%></a></u><br><small>Has <%=friend.friends.count%> friends</small></div>
+                  <%= friend_button(friend)%></h5>
+                </div>
+                <%end%>
+
+
+              </div>
+
+            </div>
+          </div>

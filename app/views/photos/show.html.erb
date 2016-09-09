@@ -1,0 +1,98 @@
+<%= render '/users/nav' %>
+
+
+<div id="info-wrapper" class="container">
+  <div id="about-row" class="row">
+    <div class="col-xs-4 col-xs-offset-4">
+      <h2 id="about-col"><strong>Your Photo</strong></h2>
+    </div>
+
+  </div>
+
+  <div id="about-content" class="friends-content row">
+    <div class="col-xs-7">
+
+      <div class="friend-box box-content col-xs-12">
+
+        <%= image_tag @photo.data.url %><br>
+        <% if @user.cover_photo.nil? %>
+           <u><%=link_to "Set as Cover", covers_path(:user_id => @user.id, :photo_id => @photo.id), :method => :post%></u>
+        <%elsif @user.cover_photo != @photo %>
+           <u><%=link_to "Set as Cover", cover_path(@user.cover, :photo_id => @photo.id), :method => :patch%></u>
+           <% else %>
+           This is your cover photo
+        <%end%>
+        <br>
+        <% if @user.profile_photo.nil? %>
+           <u><%=link_to "Set as Profile", profiles_path(:user_id => @user.id, :photo_id => @photo.id), :method => :post%></u>
+        <%elsif @user.profile_photo != @photo %>
+           <u><%=link_to "Set as Profile", profile_path(@user.profile, :photo_id => @photo.id), :method => :patch%></u>
+           <% else %>
+           This is your profile photo
+        <%end%>
+        <br>
+        <% if @user == @current_user %>
+        <%=link_to "Delete Photo", user_photo_path(@user, @photo), :method => :delete, data: {:confirm => "Are you sure?"}  %>
+        <%end%>
+        </div>
+
+
+    </div>
+    <div class="col-xs-5">
+      <div class="row">
+        <div class="post-img box-content col-xs-11 col-xs-offset-1">
+          <div class="user-img"><a href="<%= user_path(@user) %>"><img width="50px" src="<%=@user.current_cover%>"></a></div>
+          <h5><u><%= link_to @user.full_name, user_path(@user) %></u><br><small>Posted on <%= @photo.created_at.strftime("%d %b. %Y")%></small></h5>
+
+          <% unless @photo.likers.include?(current_user) %>
+             <u><%=link_to "Like", likes_path(:likable_id => @photo.id, :likable_type => @photo.class), :method => :post%></u>
+          <%else%>
+             <u><%=link_to "Unlike", like_path(@photo.likes.where("liker_id = ?", current_user.id).first), :method => :delete%></u>
+          <%end%>
+          <%= @photo.likes.count %> people have liked this photo.
+
+          <%= form_for [@user, @photo] do |f| %>
+           <%= f.fields_for :comments, Comment.new do |c| %>
+              <%= c.text_area :body, rows: 3, placeholder: "Tell the world something...", id: "comment-area", class: "form_control" %>
+              <%= c.hidden_field :commentable_type, value: @photo.class %>
+              <%= c.hidden_field :commentable_id, value: @photo.id %>
+              <%= c.hidden_field :commenter_id, value: current_user.id %>
+              <a href="#"><u>Cancel</u></a>
+           <%end%>
+          <%= f.submit "Comment", class: "btn-primary", id: "post-btn"%>
+          <%end%>
+
+        </div>
+
+      </div>
+      <div class="row">
+        <div class="box-foot col-xs-11 col-xs-offset-1">
+          <% @photo.comments.each do |c| %>
+           <div class="row">
+              <div class="col-xs-2">
+                <div class="com-img"><a href="<%= user_path(c.commenter) %>"><img width="50px" src="<%=current_cover(c.commenter)%>"></a></div>
+              </div>
+              <div class="col-xs-10">
+                <h5><u><%=link_to c.commenter.full_name, user_path(c.commenter) %></u><small> Said on <%= c.created_at.strftime("%d %b. %Y")%></small></h5>
+                <p><%=c.body%></p>
+                <% unless c.likers.include?(current_user) %>
+                   <u><%=link_to "Like", likes_path(:likable_id => c.id, :likable_type => c.class), :method => :post%></u>
+                <%else%>
+                   <u><%=link_to "Unlike", like_path(c.likes.where("liker_id = ?", current_user.id).first), :method => :delete%></u>
+                <%end%>
+                <% if c.commenter == current_user %>
+                <div class="delete-link"><u><%=link_to "Delete", comment_path(c), data: {:confirm => "Are you sure?"}, :method => :delete%></u></div>
+                <%end%>
+                  <small><%= c.likes.count %> people like this</small>
+              </div>
+           </div>
+
+
+           <%end%>
+
+          </div>
+        </div>
+    </div>
+
+  </div>
+</div>

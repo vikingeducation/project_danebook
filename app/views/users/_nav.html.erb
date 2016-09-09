@@ -3,16 +3,16 @@
        <div class="row">
 
          <div class="col-xs-4" id="logo">
-               <a href="index.html">
+               <a href="<%=root_path%>">
                  <img id="logoimg" src="<%=image_path('logo.gif')%>" height="40px" width="40px" class="img-circle">
                </a>
-               <a id="logotxt" href="#" class="navbar-brand"><h1>Danebook</h1></a>
+               <a id="logotxt" href="<%=root_path%>" class="navbar-brand"><h1>Danebook</h1></a>
              </div>
-             <form class="navbar-form">
+             <form class="navbar-form" action="/users" method="get">
 
                <div class="col-xs-6 form-group">
 
-                 <input id="search" type="text" class="form-control" width="100%" placeholder="Search for Users">
+                 <input id="search" name="query"  type="text" action="submit" class="form-control" width="100%" placeholder="Search for Users">
 
                </div>
 

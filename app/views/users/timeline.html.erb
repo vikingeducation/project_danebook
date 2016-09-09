@@ -1,36 +1,8 @@
 <%= render 'nav' %>
 
-<div class="container">
-           <div class="row">
-             <div id="cover-col" class="col-xs-12">
-               <img id="user-img" height="150px" src="<%=image_path('user.jpg')%>"  />
-               <h2 id="about-name"><%= @user.first_name + " " + @user.last_name%></h2><br>
-              
-               <%= friend_button%>
-
-             </div>
-             </div>
-
-             <div id="about-links" class="row">
-               <div id="link-box1-current" class="col-xs-1 col-xs-offset-3">
-                 <h5><strong>Timeline</strong></h5>
-               </div>
-               <div id="link-box2"  class="col-xs-1">
-                 <h5><strong><%= link_to "About", user_path(@user)%></strong></h5>
-               </div>
-               <div id="link-box3" class="col-xs-2">
-                   <h5><a href="<%= photos_path %>"><strong>Photos</strong><small>(123)</small></a></h5>
-               </div>
-               <div id="link-box4" class="col-xs-2">
-                   <h5><a href="<%= friends_path %>"><strong>Friends</strong><small>(542)</small></a></h5>
-               </div>
+<%= render 'header' %>
 
 
-               <div id="edit-link" class="col-xs-2">
-                   <h5><u><%= link_to "Edit Profile", edit_user_path(@user) %></u></h5>
-               </div>
-             </div>
-           </div>
 
            <!--      POSTS         -->
 
@@ -61,74 +33,38 @@
                    <div class="row">
                      <div class="box-content col-xs-11">
                        <div class="row">
+                         <% @photos.each do |photo| %>
                          <div class="col-xs-4">
-                           <a href="#"><img class="img-responsive" src="<%=image_path('photo.png')%>"></a>
+                           <a href="<%=user_photo_path(@user,photo)%>"><img class="img-responsive" src="<%=photo.data.url(:thumb)%>"></a>
                          </div>
-                         <div class="col-xs-4">
-                           <a href="#"><img class="img-responsive" src="<%=image_path('photo.png')%>"></a>
-                         </div>
-                         <div class="col-xs-4">
-                           <a href="#"><img class="img-responsive" src="<%=image_path('photo.png')%>"></a>
-                         </div>
-                         <div class="col-xs-4">
-                           <a href="#"><img class="img-responsive" src="<%=image_path('photo.png')%>"></a>
-                         </div>
-                         <div class="col-xs-4">
-                           <a href="#"><img class="img-responsive" src="<%=image_path('photo.png')%>"></a>
-                         </div>
-                         <div class="col-xs-4">
-                           <a href="#"><img class="img-responsive" src="<%=image_path('photo.png')%>"></a>
-                         </div>
-                         <div class="col-xs-4">
-                           <a href="#"><img class="img-responsive" src="<%=image_path('photo.png')%>"></a>
-                         </div>
-                         <div class="col-xs-4">
-                           <a href="#"><img class="img-responsive" src="<%=image_path('photo.png')%>"></a>
-                         </div>
-                         <div class="col-xs-4">
-                           <a href="#"><img class="img-responsive" src="<%=image_path('photo.png')%>"></a>
-                         </div>
+                         <%end%>
+
                      </div>
                      <div class="center-link row">
-                       <a href="<%= photos_path %>">See More Photos</a>
+                       <%=link_to "See More Photos", user_photos_path(@user) %>
                      </div>
                    </div>
                  </div>
                    <div class="row">
                      <div class="box-header col-xs-11">
-                       <h5><strong>Friends (542) (Copied Text Area)</strong></h5>
+                       <h5><strong>Friends (<%=@user.friends.count%>)</strong></h5>
                      </div>
                    </div>
                    <div class="row">
                      <div class="box-content col-xs-11">
                        <div class="row">
+                         <% @friends.each do |friend| %>
                          <div class="center-link col-xs-4">
-                           <img class="img-responsive" src="<%=image_path('def-user.gif')%>">
-                           <a href="#">Ron<br>Weasley</a>
+                           <a href="<%=user_path(friend)%>"><img class="img-responsive" src="<%=current_cover(friend)%>"></a>
+                           <%=link_to friend.full_name, user_path(friend)%>
+
                          </div>
-                         <div class="center-link col-xs-4">
-                           <img class="img-responsive" src="<%=image_path('def-user.gif')%>">
-                           <a href="#">Ginny<br>Weasley</a>
-                         </div>
-                         <div class="center-link col-xs-4">
-                           <img class="img-responsive" src="<%=image_path('def-user.gif')%>">
-                           <a href="#">Hermione<br>Granger</a>
-                         </div>
-                         <div class="center-link col-xs-4">
-                           <img class="img-responsive" src="<%=image_path('def-user.gif')%>">
-                           <a href="#">paragraph<br>text</a>
-                         </div>
-                         <div class="center-link col-xs-4">
-                           <img class="img-responsive" src="<%=image_path('def-user.gif')%>">
-                           <a href="#">paragraph<br>text</a>
-                         </div>
-                         <div class="center-link col-xs-4">
-                           <img class="img-responsive" src="<%=image_path('def-user.gif')%>">
-                           <a href="#">paragraph<br>text</a>
-                         </div>
+                         <%end%>
+
+
                        </div>
                        <div class="center-link row">
-                         <a href="<%= friends_path %>">See More Friends</a>
+                         <%= link_to "See More Friends", friends_path(user_id: @user.id) %>
                        </div>
                      </div>
                    </div>
@@ -193,7 +129,7 @@
                        <% post.comments.each do |c| %>
                         <div class="row">
                            <div class="col-xs-2">
-                             <div class="com-img"><a href="<%= user_path(@user) %>"><img width="50px" src="<%=image_path('def-user.gif')%>"></a></div>
+                             <div class="com-img"><a href="<%= user_path(c.commenter) %>"><img width="50px" src="<%=current_cover(c.commenter)%>"></a></div>
                            </div>
                            <div class="col-xs-10">
                              <h5><u><%=link_to c.commenter.full_name, user_path(c.commenter) %></u><small> Said on <%= c.created_at.strftime("%d %b. %Y")%></small></h5>

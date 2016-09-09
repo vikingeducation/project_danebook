@@ -9,6 +9,19 @@ class UsersController < ApplicationController
 
   def timeline
     params[:id].nil? ? @user = current_user : @user = User.find(params[:id])
+    @friends = @user.friends.sample(6)
+    @photos = @user.photos.sample(6)
+
+  end
+
+  def index
+    @users = User.search(params[:query])
+
+  end
+
+  def friends
+    params[:user_id].nil? ? @user = current_user : @user = User.find(params[:user_id])
+    @friends = @user.friends
 
   end
 
@@ -39,6 +52,7 @@ class UsersController < ApplicationController
 
   def edit
     @current_user
+    @user = @current_user
     render "about_edit"
   end
 

@@ -1,0 +1,26 @@
+<div class="container">
+          <div class="row">
+            <div id="cover-col" class="col-xs-12">
+              <img id="user-img" height="150px" src="<%=current_cover(@user)%>"  />
+              <h2 id="about-name"><%= @user.full_name%></h2>
+            </div>
+            </div>
+
+            <div id="about-links" class="row">
+              <div id="link-box1" class="col-xs-1 col-xs-offset-3">
+                <h5><strong><%= link_to "Timeline", timeline_path(@user)%></strong></a></h5>
+              </div>
+              <div id="link-box2" class="col-xs-1">
+                <h5><strong><%= link_to "About", user_path(@user)%></strong></h5>
+              </div>
+              <div id="link-box3" class="col-xs-2">
+                  <h5><strong><%= link_to "Photos", user_photos_path(@user)%></strong><small>(<%= @user.photo_count%>)</small></h5>
+              </div>
+              <div id="link-box4-current" class="col-xs-2">
+                  <h5><strong><%= link_to "Friends", friends_path(user_id: @user.id)%></strong><small>(<%= @user.friends.count%>)</small></h5>
+              </div>
+              <div id="edit-link" class="col-xs-2">
+                  <h5><u><%= link_to "Edit Profile", edit_user_path(@user)%></u></h5>
+              </div>
+            </div>
+          </div>

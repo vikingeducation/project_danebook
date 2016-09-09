@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160907232647) do
+ActiveRecord::Schema.define(version: 20160909000250) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "commentable_id",   null: false
@@ -20,6 +20,13 @@ ActiveRecord::Schema.define(version: 20160907232647) do
     t.datetime "updated_at",       null: false
     t.text     "body",             null: false
     t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id"
+  end
+
+  create_table "covers", force: :cascade do |t|
+    t.integer  "photo_id",   null: false
+    t.integer  "user_id",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "friendings", force: :cascade do |t|
@@ -39,9 +46,26 @@ ActiveRecord::Schema.define(version: 20160907232647) do
     t.index ["likable_type", "likable_id"], name: "index_likes_on_likable_type_and_likable_id"
   end
 
+  create_table "photos", force: :cascade do |t|
+    t.integer  "user_id",           null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.string   "data_file_name"
+    t.string   "data_content_type"
+    t.integer  "data_file_size"
+    t.datetime "data_updated_at"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.text     "body",       null: false
     t.integer  "author_id",  null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "profiles", force: :cascade do |t|
+    t.integer  "photo_id",   null: false
+    t.integer  "user_id",    null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

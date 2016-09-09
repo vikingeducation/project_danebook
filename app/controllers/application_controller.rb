@@ -29,6 +29,11 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_user
 
+  def current_cover(user)
+    user.cover_photo ? user.cover_photo.data.url(:thumb) : ActionController::Base.helpers.asset_path("user.jpg")
+  end
+  helper_method :current_cover
+
   def signed_in_user?
     !!current_user
   end

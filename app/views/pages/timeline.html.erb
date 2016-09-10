@@ -12,7 +12,32 @@
           </div>
 
           <div class="col-md-5 col-md-pull-7">
-            <h1>test</h1>
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title"><strong>Basic Information</strong></h3>
+              </div>
+              <div class="panel-body">
+
+                <table class="table table-bordered table-striped table-hover">
+                  <tbody>
+                    <tr>
+                      <td><strong>Username</strong></td>
+                      <td><%= @user.username %></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Email</strong></td>
+                      <td><%= @user.email %></td>
+                    </tr>
+                    <tr>
+                      <td><strong>About</strong></td>
+                      <td><%= @user.about_me %></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+
           </div>
         </div>
       </main>

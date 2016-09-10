@@ -6,6 +6,11 @@ $break-larger:1200px;
   margin-top: 65px;
 }
 
+.media {
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
 #avatar {
   width: 100px;
   height: 100px;
@@ -35,8 +40,8 @@ $break-larger:1200px;
 
 .cover-header {
   .cover-photo {
-    width: auto;
-    height: 100%;
+    width: 100%;
+    height: auto;
     @media screen and (max-width: $break-middle) {
       height: 100%;
       width: auto;
@@ -52,6 +57,10 @@ $break-larger:1200px;
     border-radius: 5px;
     @media screen and (max-width: $break-middle) {
       height: 300px;
+    }
+    img {
+      height: 100%;
+      width: auto;
     }
   }
 

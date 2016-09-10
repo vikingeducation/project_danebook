@@ -10,11 +10,7 @@
     <div class="col-xs-6">
       <div class="friend-button">
         <% unless current_user == user %>
-        <% if current_user.already_friended?(user) %>
-          <%= link_to("Unfriend", friending_path(user), class: "btn btn-danger btn-lg", method: "delete") %>
-        <% else %>
-          <%= link_to("Friend Me!", friendings_path(user_id: user), method: "post", class: "btn btn-primary btn-lg") %>
-        <% end %>
+          <%= friending_link(user)  %>
         <% end %>
       </div>
     </div>

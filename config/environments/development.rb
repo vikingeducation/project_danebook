@@ -70,4 +70,7 @@ Rails.application.configure do
     Bullet.add_footer = true
     # Bullet.stacktrace_includes = [ 'your_gem', 'your_middleware' ]
   end
+
 end
+
+Paperclip.options[:command_path] = "/usr/bin/"

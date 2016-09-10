@@ -1,0 +1,7 @@
+<%= link_to "new photo", new_photo_path(user_id: @user) %>
+
+<% unless @photos.empty? %>
+  <% @photos.each do |photo| %>
+    <%= image_tag photo.picture.url(:medium) %>
+  <% end %>
+<% end %>

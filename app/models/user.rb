@@ -2,6 +2,7 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
+  has_many :photos, dependent: :destroy
   # When acting as the initiator of the friending
   has_many :initiated_friendings, :foreign_key => :friender_id,
                                   :class_name => "Friending"

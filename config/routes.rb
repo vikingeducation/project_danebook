@@ -5,9 +5,11 @@ Rails.application.routes.draw do
   get 'timeline/:id', to: 'pages#timeline', as: 'timeline'
   get 'search',       to: 'pages#search',   as: 'search'
   get '/friends/:id', to: 'users#index',    as: 'friends'
+  post 'new/linkphoto',   to: 'photos#new_link_photo', as: 'new_link_photo'
   resources :users, only: [:show, :edit, :update]
   resources :posts, except: [:new, :index]
   resources :likes, only: [:create, :destroy]
   resources :comments, only: [:create, :destroy]
   resources :friendings, only: [:create, :destroy]
+  resources :photos
 end

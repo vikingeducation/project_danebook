@@ -6,6 +6,21 @@
     width: 100%;
     height: auto;
   }
+  .avatar {
+    margin: 10px 0;
+    margin-right: 10px;
+    img {
+      width: 50px;
+      height: auto;
+    }
+  }
+}
+
+.post-avatar {
+  img {
+    width: 50px;
+    height: auto;
+  }
 }
 
 .photos-page {

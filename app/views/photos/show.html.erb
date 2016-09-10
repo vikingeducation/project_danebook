@@ -9,15 +9,32 @@
         <div class="col-md-8">
           <%= image_tag @photo.picture.url(:medium), class: "img-rounded img-responsive show-picture" %>
           <hr>
-          <% if current_user == @photo.user %>
+          <% if current_user == @user %>
             <div class="btn-group btn-group-justified">
               <%= link_to "Set as avatar", avatars_path(:img => @photo), method: "post", class: "btn btn-primary btn-lg" %>
               <%= link_to "Set as cover img", cover_images_path(:img => @photo), method: "post", class: "btn btn-primary btn-lg" %>
             </div>
           <% end %>
+          <hr>
         </div>
         <div class="col-md-4">
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="avatar pull-left">
+                <%= image_tag(@user.avatar.url(:medium)) %>
+              </div>
+              <h4><%= link_to "#{@user.username}", timeline_path(@user) %></h4>
+              <p>Created at: <%= @photo.picture_updated_at.to_date %></p>
+            </div>
+          </div>
 
+          <p>
+            <%= likes_link(@photo) %><%= "  #{pluralize(@photo.likes_count, 'like')} " %>
+          </p>
+
+          <%= render 'comments/index', object: @photo %>
+
+          <%= render 'comments/new', object: @photo %>
         </div>
       </div>
     </div>

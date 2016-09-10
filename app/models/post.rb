@@ -5,7 +5,5 @@ class Post < ApplicationRecord
 
   validates :body, presence: true
 
-  def has_comments?
-    self.comments.empty? ? false : true
-  end
+
 end

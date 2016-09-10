@@ -3,7 +3,9 @@
     <div class="media media-wrap">
       <div class="media-left">
         <a href="#">
-          <img class="media-object" src="..." alt="...">
+          <div class="post-avatar">
+            <%= image_tag(@user.avatar.url(:medium)) %>
+          </div>
         </a>
       </div>
       <div class="media-body">
@@ -19,8 +21,8 @@
         </div>
         <hr>
         <p><strong>Comments:</strong></p>
-        <%= render 'comments/index', post: post %>
-        <%= render 'comments/new', post: post %>
+        <%= render 'comments/index', object: post %>
+        <%= render 'comments/new', object: post %>
       </div>
     </div>
   <% end %>

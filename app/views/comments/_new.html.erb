@@ -1,6 +1,6 @@
 <%= form_for @comment do |f| %>
-  <%= f.hidden_field :commentable_id, value: post.id %>
-  <%= f.hidden_field :commentable_type, value: "Post" %>
+  <%= f.hidden_field :commentable_id, value: object.id %>
+  <%= f.hidden_field :commentable_type, value: object.class %>
   <div class="form-group">
     <%= f.text_area :body, class: "form-control" %>
   </div>

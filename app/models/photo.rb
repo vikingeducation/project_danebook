@@ -4,6 +4,9 @@ class Photo < ApplicationRecord
   validates :picture, attachment_presence: true
   validates_with AttachmentSizeValidator, attributes: :picture, less_than: 0.5.megabytes
 
+  has_many :likes, :as => :likeable, dependent: :destroy
+  has_many :comments, :as => :commentable, dependent: :destroy
+
   belongs_to :user
 
   def from_url(url)

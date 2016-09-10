@@ -4,4 +4,8 @@ class ApplicationRecord < ActiveRecord::Base
   def has_comments?
     self.comments.empty? ? false : true
   end
+
+  def sequenced_comments
+    self.comments.order("created_at")
+  end
 end

@@ -1,5 +1,5 @@
 <% if object.has_comments? %>
-  <% object.comments.each do |comment| %>
+  <% object.sequenced_comments.each do |comment| %>
     <div class="media">
       <div class="media-left">
         <a href="#">
@@ -10,7 +10,10 @@
       </div>
       <div class="media-body">
         <h4 class="media-heading"><strong><%= comment.user.username %></strong></h4>
-        <%= comment.body %>
+        <p class="text-muted"><small><%= comment.created_at %></small></p>
+        <div>
+          <%= comment.body %>
+        </div>
         <p><span class="pull-left"><%= likes_link(comment) %></span><span class="pull-right"><%= comment_delete_link(comment) %></span></p>
         <div class="clearfix"></div>
         <div class="likes_count">

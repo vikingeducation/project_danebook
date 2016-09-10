@@ -45,4 +45,13 @@ class User < ApplicationRecord
   def already_friended?(user)
     self.friended_users.find_by_id(user) ? true : false
   end
+
+  def has_friends?
+    self.friended_users.empty? ? false : true
+  end
+
+  def user_and_friends_posts
+    Post.where(user_id: (self.friended_users.pluck(:id) << self.id)).order("created_at").reverse_order
+    # self.posts.order(:created_at).reverse_order
+  end
 end

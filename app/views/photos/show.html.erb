@@ -1,1 +1,23 @@
-<h1>It is photo show page</h1>
+<div class="photo-show-page">
+
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title text-center"><strong>Photos</strong></h3>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-md-8">
+          <%= image_tag @photo.picture.url(:medium), class: "img-rounded img-responsive show-picture" %>
+          <% if current_user == @photo.user %>
+            <div class="btn-group-vertical pull-right" role="group">
+              <%= link_to "Set it as my avatar", new_avatars_path(:img => @photo), class: "btn btn-lg btn-primary" %>
+            </div>
+          <% end %>
+        </div>
+        <div class="col-md-4">
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

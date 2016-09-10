@@ -2,6 +2,12 @@
   <div class="header-wraper">
     <div class="cover-wraper">
       <%= image_tag "cover/cover.jpg", :alt => "cover photo", class: "cover-photo" %>
+      <div class="avatar-wraper">
+        <div id="avatar">
+          <%= image_tag(user.avatar.url(:medium), class: "img-responsive") %>
+        </div>
+        <h2 class="bg-success"><%= user.username %></h2>
+      </div>
     </div>
     <div class="navigation">
       <ul class="nav nav-pills">

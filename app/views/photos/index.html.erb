@@ -18,7 +18,7 @@
                 <div class="row">
                   <% @photos.each do |photo| %>
                   <div class="col-xs-6 col-md-3 thumb">
-                    <%= link_to image_tag(photo.picture.url(:thumb), class: "img-responsive"), photo_path(photo), class: "thumbnail" %>
+                    <%= link_to image_tag(photo.picture.url(:thumb), class: "img-responsive show-image-thumb"), photo_path(photo), class: "thumbnail" %>
                   </div>
                   <% end %>
                 </div>

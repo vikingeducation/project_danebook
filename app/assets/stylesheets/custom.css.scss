@@ -6,6 +6,26 @@ $break-larger:1200px;
   margin-top: 65px;
 }
 
+#avatar {
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+  position: absolute;
+  bottom: 30px;
+  left: 50px;
+  border-radius: 10px;
+  border: 2px solid #666;
+}
+
+.avatar-wraper {
+  position: relative;
+  h2 {
+    position: absolute;
+    left: 160px;
+    bottom: 20px;
+  }
+}
+
 .cover-header {
   .cover-photo {
     width: 100%;

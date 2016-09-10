@@ -30,6 +30,8 @@ gem 'devise'
 gem "font-awesome-rails"
 gem "paperclip", "~> 5.0.0"
 gem 'simple_form'
+gem 'aws-sdk'
+gem "figaro"
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

@@ -1,7 +1,7 @@
 class PhotosController < ApplicationController
 
   def index
-    @user = User.find_by_id(params[:user_id])
+    @user = User.includes(:photos).find_by_id(params[:user_id])
     @photos = @user.photos
   end
 

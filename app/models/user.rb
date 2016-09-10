@@ -2,6 +2,9 @@ class User < ApplicationRecord
   has_attached_file :avatar, styles: { medium: "100x100>"}, default_url: "/images/style/missing.jpeg"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
 
+  has_attached_file :cover_image, styles: { medium: "820x300>"}, default_url: "/images/cover/cover.jpg"
+  validates_attachment_content_type :cover_image, content_type: /\Aimage\/.*\z/
+
   has_many :posts, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy

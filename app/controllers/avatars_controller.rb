@@ -1,5 +1,5 @@
 class AvatarsController < ApplicationController
-  def new
+  def create
     @photo = Photo.find_by_id(params[:img])
     current_user.avatar = nil
     current_user.avatar = @photo.picture

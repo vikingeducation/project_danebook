@@ -12,5 +12,6 @@ Rails.application.routes.draw do
   resources :comments, only: [:create, :destroy]
   resources :friendings, only: [:create, :destroy]
   resources :photos
-  resource  :avatars, only: [:new]
+  resource  :avatars, only: [:create]
+  resource  :cover_images, only: [:create]
 end

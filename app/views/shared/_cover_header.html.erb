@@ -1,7 +1,7 @@
 <header class="cover-header">
   <div class="header-wraper">
     <div class="cover-wraper">
-      <%= image_tag "cover/cover.jpg", :alt => "cover photo", class: "cover-photo" %>
+      <%= cover_image(user) %>
       <div class="avatar-wraper">
         <div id="avatar">
           <%= image_tag(user.avatar.url(:medium), class: "img-responsive") %>

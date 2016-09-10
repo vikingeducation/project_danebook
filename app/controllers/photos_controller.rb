@@ -38,6 +38,19 @@ class PhotosController < ApplicationController
     @comment = Comment.new
   end
 
+  def destroy
+    photo = Photo.find_by_id(params[:id])
+    if photo
+      user = photo.user
+      photo.picture = nil
+      photo.destroy
+      flash[:success] = "Photo has"
+      redirect_to timeline_path(user)
+    else
+      redirect_back(fallback_location: fallback_location)
+    end
+  end
+
 
   private
     def white_list_params

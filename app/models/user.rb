@@ -1,8 +1,10 @@
 class User < ApplicationRecord
-  has_attached_file :avatar, styles: { medium: ["100x100#"] }, default_url: "/images/style/missing.jpeg"
+  after_create :send_delayed_welcome_email
+
+  has_attached_file :avatar, styles: { medium: ["100x100#"] }, default_url: Rails.root.join("app/assets/images/style/missing.jpeg")
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
 
-  has_attached_file :cover_image, styles: { medium: ["1000x300#"] }, default_url: "/images/cover/cover.jpg"
+  has_attached_file :cover_image, styles: { medium: ["1000x300#"] }, default_url: Rails.root.join("app/assets/images/cover/cover.jpg")
   validates_attachment_content_type :cover_image, content_type: /\Aimage\/.*\z/
 
   has_many :posts, dependent: :destroy
@@ -53,5 +55,17 @@ class User < ApplicationRecord
   def user_and_friends_posts
     Post.where(user_id: (self.friended_users.pluck(:id) << self.id)).order("created_at").reverse_order
     # self.posts.order(:created_at).reverse_order
+  end
+
+
+  private
+
+  def send_delayed_welcome_email
+    User.delay.send_welcome_email(self)
+  end
+
+  def self.send_welcome_email(id)
+    user = User.find(id)
+    UserMailer.welcome(user).deliver
   end
 end

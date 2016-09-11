@@ -32,6 +32,7 @@ gem "paperclip", "~> 5.0.0"
 gem 'simple_form'
 gem 'aws-sdk'
 gem "figaro"
+gem 'delayed_job_active_record'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

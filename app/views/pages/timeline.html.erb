@@ -15,7 +15,7 @@
           <div class="col-md-5 col-md-pull-7">
             <div class="panel panel-default">
               <div class="panel-heading">
-                <h3 class="panel-title"><strong>Basic Information</strong></h3>
+                <h3 class="panel-title text-center"><strong>Basic Information</strong></h3>
               </div>
               <div class="panel-body">
 
@@ -53,7 +53,7 @@
                     <% unless @user.photos.empty? %>
                       <div class="row">
                         <% @user.photos.each do |photo| %>
-                        <div class="col-lg-6 thumb">
+                        <div class="col-xs-4 thumb">
                           <%= link_to image_tag(photo.picture.url(:thumb), class: "img-responsive show-image-thumb"), photo_path(photo), class: "thumbnail" %>
                         </div>
                         <% end %>
@@ -65,14 +65,14 @@
               <!-- user friends -->
               <div class="panel panel-default">
                 <div class="panel-heading">
-                  <h3 class="panel-title"><strong>Friends</strong></h3>
+                  <h3 class="panel-title text-center"><strong>Friends</strong></h3>
                 </div>
                 <div class="panel-body">
                   <div class="row">
                     <% if @user.has_friends? %>
                       <% @user.friended_users.each do |friend| %>
                         <div class="col-xs-3">
-                          <%= link_to image_tag(friend.avatar.url(:medium)), timeline_path(friend) %>
+                          <%= link_to image_tag(friend.avatar.url(:medium), class: "img-responsive" ), timeline_path(friend) %>
                         </div>
                       <% end %>
                     <% end %>

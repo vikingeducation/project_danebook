@@ -52,9 +52,18 @@ class User < ApplicationRecord
     self.friended_users.empty? ? false : true
   end
 
+  def reversed_posts
+    self.posts.order("created_at").reverse_order
+  end
+
   def user_and_friends_posts
-    Post.where(user_id: (self.friended_users.pluck(:id) << self.id)).order("created_at").reverse_order
+    Post.includes(:author, :likes => :user, :comments => [:user, :likes => :user]).where(user_id: (self.friended_users.pluck(:id) << self.id)).order("created_at").reverse_order
     # self.posts.order(:created_at).reverse_order
+  end
+
+  def recent_friend_posts
+    Post.where(author: self.friended_users).where("created_at >= ?", DateTime.now - 7)
+    # fail
   end
 
 

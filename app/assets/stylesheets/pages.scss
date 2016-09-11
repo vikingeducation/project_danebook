@@ -3,7 +3,8 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .timeline,
 .friends-page,
-.photos-page {
+.photos-page,
+.newsfeed {
   main {
     margin-top: 15px;
   }
@@ -14,6 +15,13 @@
   }
 }
 
+.active-card {
+  img {
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+  }
+}
 
 .user-card {
   border: 1px solid #ccc;

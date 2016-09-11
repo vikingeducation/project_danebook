@@ -1,5 +1,5 @@
-<% if @user.has_posts? %>
-  <% @user.user_and_friends_posts.each do |post| %>
+<% unless @desired_posts.empty? %>
+  <% @desired_posts.each do |post| %>
     <div class="media media-wrap">
       <div class="media-left">
         <a href="#">

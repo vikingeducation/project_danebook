@@ -32,9 +32,12 @@ $break-larger:1200px;
 }
 
 .user-cards {
-  .avatar {
+  .media {
     padding: 5px;
-    margin-right: 20px;
+  }
+  .btn {
+    margin-top: -150px;
+    // margin-right: 10px;
   }
 }
 

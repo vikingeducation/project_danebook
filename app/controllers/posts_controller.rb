@@ -7,7 +7,7 @@ class PostsController < ApplicationController
     else
       flash[:danger] = "Sorry, post is not created"
     end
-    redirect_to timeline_path(current_user)
+    redirect_back(fallback_location: fallback_location)
   end
 
   def destroy
@@ -17,7 +17,7 @@ class PostsController < ApplicationController
     else
       flash[:danger] = "Post can not be deleted"
     end
-    redirect_to timeline_path(current_user)
+    redirect_back(fallback_location: fallback_location)
   end
 
   private

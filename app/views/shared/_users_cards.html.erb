@@ -2,27 +2,23 @@
 
 <% unless users.empty? %>
 <% users.each do |user| %>
-<div class="user-card">
-  <div class="row">
-    <div class="col-xs-8">
-      <div class="row">
-        <div class="col-xs-3">
-          <div class="avatar">
-            <%= image_tag(user.avatar.url(:medium)) %>
-          </div>
+  <div class="col-md-6">
+    <div class="row">
+    <div class="user-card">
+      <div class="media">
+        <div class="media-left avatar">
+          <%= image_tag(user.avatar.url(:medium)) %>
         </div>
-        <div class="col-xs-9">
-          <h3><%= link_to "#{user.username}", timeline_path(user) %></h3>
+        <div class="media-body">
+          <h4 class="media-heading"><%= link_to "#{user.username}", timeline_path(user) %></h4>
           <p><span class="text-muted"><%= link_to "#{pluralize(user.friended_users.size, 'friend')}", friends_path(user) %></span></p>
           <p><%= user.about_me[0..25] %></p>
+          <div class="friend-button pull-right">
+            <% unless current_user == user %>
+            <%= friending_link(user)  %>
+            <% end %>
+          </div>
         </div>
-      </div>
-    </div>
-    <div class="col-xs-4">
-      <div class="friend-button">
-        <% unless current_user == user %>
-          <%= friending_link(user)  %>
-        <% end %>
       </div>
     </div>
   </div>

@@ -7,7 +7,8 @@ class PagesController < ApplicationController
   def timeline
     @comment = Comment.new
     @post = Post.new
-    @user = User.includes(:posts => [{:likes => :user}, {:comments => [:user, {:likes => :user}]}]).find_by_id(params[:id])
+    @user = User.includes(:posts => [:author, {:likes => :user}, {:comments => [:user, {:likes => :user}]}]).find_by_id(params[:id])
+    @desired_posts = @user.reversed_posts
   end
 
   def search
@@ -17,6 +18,13 @@ class PagesController < ApplicationController
     else
       @users = User.search_user(search_name)
     end
+  end
+
+  def newsfeed
+    @comment = Comment.new
+    @post = Post.new
+    @user = User.find_by_id(params[:id])
+    @desired_posts = current_user.user_and_friends_posts
   end
 
 

@@ -1,9 +1,10 @@
 FactoryGirl.define do
   factory :photo do
-    
+
   end
   factory :friending do
-    
+    friend_initiator
+    friend_recipient
   end
   factory :comment do
     body "this is a comment"
@@ -21,7 +22,7 @@ FactoryGirl.define do
     author
   end
 
-  factory :user, aliases: [:author] do
+  factory :user, aliases: [:author, :friend_initiator, :friend_recipient] do
     sequence(:username){ |n| "Foo#{n}"}
     email  { "#{username}@email.com" }
     password "foobar"

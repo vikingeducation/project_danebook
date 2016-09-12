@@ -1,4 +1,7 @@
-<h2 class="text-center">Sign up</h2>
+<div class="sign-up-form">
+
+
+<h2 class="text-center"><strong>Sign up</strong></h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
@@ -6,29 +9,31 @@
   <%= f.hidden_field :avatar, value: URI.parse("https://pbs.twimg.com/profile_images/378800000822867536/3f5a00acf72df93528b6bb7cd0a4fd0c.jpeg") %>
 
   <div class="form-group">
-    <%= f.label :username %>
-    <%= f.text_field :username, class: "form-control input-lg", autofocus: true %>
+    <i class="fa fa-pencil-square-o" aria-hidden="true"></i> <%= f.label :username %>
+    <%= f.text_field :username, class: "form-control input-lg", autofocus: true, placeholder: "Username" %>
   </div>
 
   <div class="form-group">
-    <%= f.label :email %>
-    <%= f.email_field :email, class: "form-control input-lg" %>
+    <i class="fa fa-pencil-square-o" aria-hidden="true"></i> <%= f.label :email %>
+    <%= f.email_field :email, class: "form-control input-lg", placeholder: "Email Address" %>
   </div>
 
   <div class="form-group">
-    <%= f.label :password %>
+    <i class="fa fa-key" aria-hidden="true"></i> <%= f.label :password %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %>
-    <%= f.password_field :password, class: "form-control input-lg", autocomplete: "off" %>
+    <%= f.password_field :password, class: "form-control input-lg", autocomplete: "off", placeholder: "At least 6 digits please" %>
   </div>
 
   <div class="form-group">
-    <%= f.label :password_confirmation %>
-    <%= f.password_field :password_confirmation, class: "form-control input-lg", autocomplete: "off" %>
+    <i class="fa fa-key" aria-hidden="true"></i> <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, class: "form-control input-lg", autocomplete: "off", placeholder: "Confirm your password" %>
   </div>
 
   <div class="form-group">
     <%= f.submit "Sign up", class: "btn btn-primary btn-lg btn-block" %>
   </div>
 <% end %>
+
+</div>

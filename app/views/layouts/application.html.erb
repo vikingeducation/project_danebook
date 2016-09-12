@@ -16,17 +16,22 @@
     <%= render 'shared/login_nav' %>
   <% end %>
 
+  <% if flash[:success] %>
+    <div class="alert alert-success alert-dismissable float-clear">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <%= flash[:success] %>
+    </div>
+  <% elsif flash[:error] %>
+    <div class="alert alert-danger alert-dismissable float-clear">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <%= flash[:error] %>
+    </div>
+  <% end %>
+  
   <%= render 'shared/profile_nav', locals: {about: @about, friends: @friends, timeline: @timeline, photos: @photos} unless @home %>
 
   <%= yield %>
 
-  <div id="flash-success-div">
-    <h3><%= flash[:success] %></h3>
-  </div>
-
-  <div id="flash-errors-div">
-    <h3><%= flash[:error] %></h3>
-  </div>
 
 
 

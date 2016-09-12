@@ -5,13 +5,12 @@
 
 
 // home page
-
-html {
-  background-color: black;
-}
-
 .big-font {
   font-size: 2.5em;
+}
+
+body {
+  margin-top: 100px;
 }
 
 #brand-title {
@@ -24,10 +23,12 @@ html {
 
 #nav-content {
   background-color: #2B78E4;
-  height: 100px; }
-
-#landing-page {
-  margin-top: 100px; }
+  height: 100px; 
+  label {
+    color: white;
+    margin-top: 5px;
+  }
+}
 
 #info {
   height: 400px;
@@ -81,13 +82,12 @@ html {
   border-radius: 0;
   box-shadow: 3px 3px 3px black;
   border-color: black;
-  font-size: 20px; }
+  font-size: 20px; 
+}
 
-/*# sourceMappingURL=styles.css.map */
-
-//other
-d1v {
-  border: 1px solid pink;
+#signup-button:active {
+  position: relative;
+  top: 2px;
 }
 
 #white-brand {
@@ -439,17 +439,11 @@ d1v {
 
 
 #flash-success-div {
-  background-color: green;
-  color: white;
-  text-align: center; 
   position: absolute;
   top: 100px;
 }
 
 #flash-errors-div {
-  background-color: red;
-  color: white; 
-  text-align: center;
   position: absolute;
   top: 100px;
 }
@@ -477,4 +471,16 @@ d1v {
   right: -200px;
   color: white;
   display: inline;
+  margin: 0;
+  font-size: 2em;
 }
+
+.float-clear {
+  clear: both;
+}
+
+.alert {
+  margin: 10px 20px 10px 20px;
+}
+
+

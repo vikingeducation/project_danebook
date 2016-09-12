@@ -1,10 +1,15 @@
 class LikesController < ApplicationController
   def create
-    if params[:likable_type]
+    if params[:likable_type] == "Comment"
       @comment = Comment.find(params[:comment_id])
       @like = @comment.likes.build
       @like.user = current_user
       redirect_to user_timeline_path(@comment.author)
+    elsif params[:likable_type] == "Photo"
+      @photo = Photo.find(params[:photo_id])
+      @like = @photo.likes.build
+      @like.user = current_user
+      redirect_to user_photo_path(@photo.owner, @photo)
     else
       @post = Post.find(params[:post_id])
       @like = @post.likes.build

@@ -65,9 +65,9 @@
 
       <!--right column-->
 
+      <!--post creation section-->
       <div class="col-sm-7 col-sm-offset-1" id="right-column">
         <% if @user.id == params[:user_id].to_i %>
-          <!--post creation section-->
           <%= form_for [@user, @post] do |post_fields| %>
           <header class="row content-center grey-background border-3sides">
             <div class="col-sm-12">
@@ -81,7 +81,7 @@
               </div>
             </div>
           </div>
-          <div class="row grey-background border-3sides border-bottom">
+          <div class="row border-3sides border-bottom">
             <div class="col-sm-2 col-sm-offset-10">
               <%= post_fields.submit :post, id: "post-button" %>
             </div>
@@ -137,6 +137,11 @@
               <%= link_to "Like", post_likes_path(post), method: "POST", class: "footer-link" %>
             <% end %>
 
+            <!-- code for counting likes -->
+            <% if post.likes.count > 0 %>
+              <span class="grey-out"><%= pluralize(post.likes.count, "like") %></span> &nbsp;
+            <% end %>
+
             <%= link_to "Comment", post_path(post), class: "footer-link" %> 
 
             <% if @user.id == params[:user_id].to_i %>
@@ -151,7 +156,7 @@
           
           <% post.comments.each do |comment| %> <!-- currently in order of first->last (seems fine) -->
 
-          <div class="comment-field row border-2sides border-bottom grey-background">
+          <div class="comment-field row border-2sides border-bottom">
             <div class="comment">
               <div class="col-sm-1">
                 <% if comment.author.profile_picture %>
@@ -173,7 +178,17 @@
                 </div>
                 <div class="row">
                   <div class="col-sm-12">
-                    <p class="grey-out"><%= link_to "Like", comment_likes_path(comment, params: {likable_type: "Comment"}), method: "POST", class: "footer-link" %> </p>
+                    <p>
+                      <% if liked?("Comment", comment.id, current_user.id) %>
+                        <%= link_to "Unlike", comment_like_path(comment.id, find_polymorphic_like("Comment", comment.id, current_user.id).first.id), method: "DELETE" %>
+                        <% else %>
+                         <%= link_to "Like", comment_likes_path(comment, params: {likable_type: "Comment"}), method: "POST", class: "footer-link" %> 
+                        <% end %>
+                        <% if comment.likes.count > 0 %>
+                          <span class="grey-out"><%= pluralize(comment.likes.count, "like") %>
+                          </span>
+                        <% end %>
+                      </p>
                   </div>
                 </div>
               </div>
@@ -181,149 +196,7 @@
           </div>
           <% end %>
         <% end %>
-        <!-- another post 
-        <div class="row border-3sides" id="posts-section" >
-          <header>
-            <div class="col-sm-1 small-profile-photo-div">
-              <a href="#"><img class="small-profile-photo" src="images/user_silhouette_generic.gif"></a>
-            </div>
-            <div class="col-sm-4">
-              <div class="row">
-                <div class="col-sm-12">
-                  <a href="#">Harry Potter</a>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-sm-12">
-                  Posted on Thursday 5/21/2014
-                </div>
-              </div>
-            </div>
-          </header>
-        </div>
-        <div class="row post-content border-2sides">
-          <div class="col-sm-12">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad provident facilis sint, fuga veritatis qui fugit similique quaerat possimus ea cupiditate dicta dolores, voluptates sed odio quam suscipit pariatur recusandae. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis deleniti labore voluptatibus doloribus dolorem doloremque, reiciendis laudantium minus molestiae libero nobis architecto molestias aliquam dolores veritatis neque. Fuga, possimus, neque?</p>
-          </div>
-        </div>
-        <footer class="row border-3sides grey-background">
-          <div class="col-sm-12">
-            <a href="#" class="footer-link">Like</a>
-            <a href="#" class="footer-link">Comment</a>
-            <a href="#" class="footer-link float-right">Delete</a>
-          </div>
-        </footer>
-        <div class="row border-2sides border-bottom grey-background">
-          <div class="col-sm-12">
-            <p><a class="user-link" href="#">Hermione Granger</a> likes this.</p>
-          </div>
-        </div>
 
-        <!-- a third post 
-        <div class="row border-3sides" id="posts-section" >
-          <header>
-            <div class="col-sm-1 small-profile-photo-div">
-              <a href="#"><img class="small-profile-photo" src="images/user_silhouette_generic.gif"></a>
-            </div>
-            <div class="col-sm-4">
-              <div class="row">
-                <div class="col-sm-12">
-                  <a href="#">Harry Potter</a>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-sm-12">
-                  Posted on Thursday 5/21/2014
-                </div>
-              </div>
-            </div>
-          </header>
-        </div>
-        <div class="row post-content border-2sides">
-          <div class="col-sm-12">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad provident facilis sint, fuga veritatis qui fugit similique quaerat possimus ea cupiditate dicta dolores, voluptates sed odio quam suscipit pariatur recusandae. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Omnis deleniti labore voluptatibus doloribus dolorem doloremque, reiciendis laudantium minus molestiae libero nobis architecto molestias aliquam dolores veritatis neque. Fuga, possimus, neque?</p>
-          </div>
-        </div>
-        <footer class="row border-3sides grey-background">
-          <div class="col-sm-12">
-            <a href="#" class="footer-link">Unike</a>
-            <a href="#" class="footer-link float-right">Delete</a>
-          </div>
-        </footer>
-        <div class="row border-2sides grey-border-bottom grey-background">
-          <div class="col-sm-12">
-            <p class="grey-out">You and <a class="user-link" href="#">Hermione Granger</a> and 3 others this.</p>
-          </div>
-        </div>
-        <!-- insert comment markup 
-        <div class="row border-2sides grey-background">
-          <div class="comment">
-            <div class="col-sm-1">
-              <img src="images/user_silhouette_generic.gif" class="small-profile-photo">
-            </div>
-            <div class="col-sm-11">
-              <div class="row">
-                <div class="col-sm-12">
-                  <p class="grey-out"><a href="#" class="user-link">Ron Weasley</a> Said on Thursday 5/21/2014:</p>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-sm-12">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat ex, saepe, quam doloremque debitis velit. Fugit quos quo nesciunt dignissimos id veritatis incidunt, adipisci expedita impedit vitae? Quibusdam, sint, possimus.</p>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-sm-12">
-                  <p class="grey-out"><a href="#" class="footer-link">Like</a> 3 other people like this</p>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!-- end comment markup -->
-        <!-- insert comment markup 
-        <div class="row border-2sides grey-background">
-          <div class="comment">
-            <div class="col-sm-1">
-              <img src="images/user_silhouette_generic.gif" class="small-profile-photo">
-            </div>
-            <div class="col-sm-11">
-              <div class="row">
-                <div class="col-sm-12">
-                  <p class="grey-out"><a href="#" class="user-link">Harry Potter</a> Said on Friday 5/22/2014:</p>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-sm-12">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugiat ex, saepe, quam doloremque debitis velit. Fugit quos quo nesciunt dignissimos id veritatis incidunt, adipisci expedita impedit vitae? Quibusdam, sint, possimus.</p>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-sm-10">
-                  <p class="grey-out"><a href="#" class="footer-link">Like</a> 3 other people like this</p>
-                </div>
-                <div class="col-sm-2">
-                  <a href="#" class="footer-link">Delete</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-xs-12 grey-background border-2sides">
-            <textarea class="write-comment border-3sides border-bottom" placeholder="Write a comment..."></textarea>
-          </div>
-        </div>
-        <div class="row grey-background border-2sides border-bottom" id="page-end">
-          <div class="col-xs-1">
-            <a href="#" class="footer-link">Cancel</a>
-          </div>
-          <div class="col-xs-3 col-xs-offset-8">
-            <input type="button" value="Comment" id="comment-button">
-          </div>  
-        </div>
-      </div> 
-      <!-- end of right column -->
     </div>  
   </div>
 

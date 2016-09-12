@@ -3,6 +3,21 @@
     <div class="col-xs-10 col-xs-offset-1 content-center" id="image-show">
       <%= image_tag @photo.file.url(:large) %>
       <div class="col-xs-12">
+
+        <% if @photo.likes.count > 0 %>
+          <p class="grey-out">
+            <%= pluralize(@photo.likes.count, "like") %>
+          </p>
+        <% end %>
+
+        <% if liked?("Photo", @photo.id, current_user.id) %>
+          <%= link_to "Unlike", user_photo_like_path(@page_owner, @photo.id, find_polymorphic_like("Photo", @photo.id, current_user.id).first.id), method: "DELETE", class: "btn btn-primary" %>
+        <% else %>
+          <%= link_to "Like", user_photo_likes_path(@page_owner, @photo, params: {likable_type: "Photo"}), method: "POST", class: "btn btn-primary" %> 
+        <% end %>
+      </div>
+      <div class="col-xs-12">
+
         <% if current_user == page_owner %>
           <%= link_to "Delete this photo.", user_photo_path(@user, @photo), method: "DELETE", class: "btn btn-success big-font", id: "delete_photo_button" %><br><br>
           <%= link_to "Use as profile picture", user_photo_profile_picture_index_path(@user, @photo), method: "POST", class: "btn btn-success big-font" %> 

@@ -2,7 +2,14 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+a:active {
+  position: relative;
+  top: 1px;
+}
 
+body {
+  background-color: grey;
+}
 
 // home page
 .big-font {
@@ -99,6 +106,7 @@ body {
   background-color: #2B78E4;
   height: 80px;
   padding-top: 15px;
+  border-color: #777;
 }
 
 #nav-image {
@@ -141,7 +149,9 @@ body {
   top: -250px;
   left: -17px;
   transform: scale(0.8);
-  border: 2px solid black;
+  img {
+    box-shadow: 4px 10px 6px #555;
+  }
 }
 
 #nav-options {

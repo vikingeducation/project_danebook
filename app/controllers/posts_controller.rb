@@ -26,8 +26,8 @@ class PostsController < ApplicationController
       flash[:success] = "Your post has been created."
       redirect_to user_timeline_path(current_user)
     else
-      flash.now[:error] = @post.errors.full_messages.join(' ')
-      render :index
+      flash[:error] = @post.errors.full_messages.join(' ')
+      redirect_to user_timeline_path(current_user)
     end
   end
 

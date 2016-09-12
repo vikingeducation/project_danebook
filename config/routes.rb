@@ -31,12 +31,10 @@ Rails.application.routes.draw do
     resources :photos, :only => [:create, :new, :index, :show, :destroy] do 
       resources :cover_photos, :only => [:create, :destroy]
       resources :profile_picture, :only => [:create, :destroy]
+      resources :likes, :only => [:create, :destroy] 
     end
 
-
   end
-
-
 
   resources :posts, :only => [:show] do 
     resources :comments, :only => [:create, :destroy]

@@ -92,9 +92,9 @@
         <!-- posts  -->
         <% @posts.each do |post| %>
 
-          <div class="row border-3sides" id="posts-section" >
+          <div class="row border-3sides grey-background" id="posts-section" >
             <header>
-              <div class="col-sm-1 small-profile-photo-div">
+              <div class="col-sm-1 small-profile-photo-div grey-background">
                 <!--  <a href="#"><img class="small-profile-photo" src="images/user_silhouette_generic.gif"></a>-->
                 <% if post.author.profile_picture %>
                   <%= image_tag(post.author.profile_picture.file.url, class: "small-profile-photo")  %>
@@ -120,7 +120,7 @@
               </div>
             </header>
           </div>
-          <div class="row post-content border-2sides">
+          <div class="row post-content border-2sides grey-background">
             <div class="col-sm-12">
 
               <p><%= post.body %></p>

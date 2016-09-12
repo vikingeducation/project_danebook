@@ -31,6 +31,7 @@ body {
 #nav-content {
   background-color: #2B78E4;
   height: 100px; 
+  border-color: #777;
   label {
     color: white;
     margin-top: 5px;
@@ -39,13 +40,15 @@ body {
 
 #info {
   height: 400px;
-  color: #666666; }
+  color: #333; }
 
 #connect {
   color: black; }
 
 #signup {
-  height: 400px; }
+  height: 400px; 
+  color: black;
+}
 
 #connect {
   margin-top: 30px; }
@@ -88,7 +91,7 @@ body {
   color: white;
   border-radius: 0;
   box-shadow: 3px 3px 3px black;
-  border-color: black;
+  border-color: grey;
   font-size: 20px; 
 }
 
@@ -149,8 +152,11 @@ body {
   top: -250px;
   left: -17px;
   transform: scale(0.8);
+  z-index: 100;
   img {
     box-shadow: 4px 10px 6px #555;
+    z-index: 100;
+    position: relative;
   }
 }
 
@@ -177,12 +183,15 @@ body {
 .float-right {
   float: right;
 }
+
 .content-center {
   text-align: center;
 }
 
 .border-left {
   border-left: 2px solid black;
+  z-index: 0;
+  position: relative;
 }
 
 .border-right {
@@ -244,7 +253,7 @@ body {
 }
 
 .grey-background {
-  background-color: #EEEEEE;
+  background-color: #CCC;
 }
 
 .long-input {
@@ -483,6 +492,7 @@ body {
   display: inline;
   margin: 0;
   font-size: 2em;
+  z-index: 200;
 }
 
 .float-clear {

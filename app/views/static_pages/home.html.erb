@@ -7,27 +7,27 @@
 
     <%= form_for @user do |u| %>
         <div class="col-xs-6" id="first-name">
-          <h4><%= u.text_field :first_name, placeholder: "First Name" %> </h4>
+          <h4><%= u.text_field :first_name, placeholder: "First Name", class: "form-control" %> </h4>
         </div>
         <div class="col-xs-6" id="last-name">
-          <h4><%= u.text_field :last_name, placeholder: "Last Name" %> </h4>
+          <h4><%= u.text_field :last_name, placeholder: "Last Name", class: "form-control" %> </h4>
         </div>
 
  
         <div class="col-xs-12">
-          <h4><%= u.text_field :email, placeholder: "Email" %></h4>
+          <h4><%= u.text_field :email, placeholder: "Email", class: "form-control" %></h4>
         </div>
 
 
 
         <div class="col-xs-12">
-          <h4><%= u.password_field :password, placeholder: "Password" %> </h4>
+          <h4><%= u.password_field :password, placeholder: "Password", class: "form-control" %> </h4>
         </div>
 
 
  
         <div class="col-xs-12">
-          <h4><%= u.password_field :password_confirmation, placeholder: "Confirm your password" %></h4>
+          <h4><%= u.password_field :password_confirmation, placeholder: "Confirm your password", class: "form-control" %></h4>
         </div>
 
 

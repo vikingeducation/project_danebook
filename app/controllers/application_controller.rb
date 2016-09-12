@@ -22,4 +22,8 @@ class ApplicationController < ActionController::Base
                                                        :avatar,
                                                        :about_me])
   end
+
+  def after_sign_in_path_for(resource)
+    newsfeed_path(current_user)
+  end
 end

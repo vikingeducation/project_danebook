@@ -36,6 +36,9 @@ $break-larger:1200px;
     position: absolute;
     left: 160px;
     bottom: 20px;
+    font-family: monospace;
+    color: white;
+    text-shadow: 2px 2px #333;
   }
 }
 
@@ -93,6 +96,8 @@ $break-larger:1200px;
       }
     }
     li {
+      font-family: 'keep-calm';
+      font-weight: bold;
       width: 100px;
       text-align: center;
       @media screen and (max-width: $break-middle) {

@@ -20,4 +20,11 @@
 #searchlong {
   width: 500px; }
 
+.cover img {
+  width: 100%; }
+
+.restrain {
+  height: 400px;
+  overflow: hidden; }
+
 /*# sourceMappingURL=main.css.map */

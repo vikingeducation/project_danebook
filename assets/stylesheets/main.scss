@@ -1,3 +1,7 @@
+// ===========
+// topbar
+// ===========
+
 .nav-styles{
   background-color: #3b5998;
   padding-right: 30px;
@@ -30,4 +34,18 @@
 
 #searchlong{
   width: 500px;
+}
+
+
+// ==============
+// cover pic
+// ==============
+
+.cover img{
+  width: 100%;
+
+}
+.restrain{
+  height: 400px;
+  overflow: hidden;
 }

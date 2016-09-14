@@ -71,4 +71,16 @@
   visibility: hidden;
   opacity: 0; }
 
+.boxsm {
+  border: 1px solid black; }
+
+.center {
+  text-align: center;
+  margin-top: 8px;
+  margin-bottom: 6px; }
+
+.boxpadded {
+  border: 1px solid black;
+  padding: 5px 5px 5px 5px; }
+
 /*# sourceMappingURL=main.css.map */

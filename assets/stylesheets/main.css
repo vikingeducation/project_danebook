@@ -100,4 +100,26 @@
     width: 100px;
     margin-top: -40px; }
 
+.thumbnail {
+  position: relative;
+  overflow: hidden; }
+
+.caption {
+  position: absolute;
+  top: 5px;
+  right: -10px;
+  width: 80%;
+  height: 80%;
+  padding: 2%;
+  display: none;
+  text-align: center;
+  color: black !important;
+  z-index: 2; }
+
+.thumbnail:hover .caption {
+  display: flex; }
+
+.picdisplay img {
+  width: 200px; }
+
 /*# sourceMappingURL=main.css.map */

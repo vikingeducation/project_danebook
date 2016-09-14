@@ -69,3 +69,28 @@
 .fadetxt{
   color:#BBBBBB;
 }
+
+// ==============
+// About Page
+// ==============
+
+.headgroup{
+  border:1px black solid;
+  height: 40px;
+
+  h1{
+    margin-top: 0;
+  }
+
+  a{
+    margin-top: 5px;
+  }
+}
+
+.box{
+  border: 1px solid black;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+}

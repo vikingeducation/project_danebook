@@ -55,4 +55,20 @@
   margin-bottom: 10px;
   padding-bottom: 10px; }
 
+.btnwrap:hover .btnDescription {
+  visibility: visible;
+  opacity: 1; }
+  .btnwrap:hover .btnDescription p {
+    color: black;
+    background: grey; }
+
+.btnDescription {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  visibility: hidden;
+  opacity: 0; }
+
 /*# sourceMappingURL=main.css.map */

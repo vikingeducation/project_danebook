@@ -91,7 +91,13 @@
 
 .picholder img {
   width: 95px; }
-.picholder a {
-  text-align: center; }
+
+.friendholder {
+  margin-left: 10px;
+  margin-right: 10px;
+  padding-top: 50px; }
+  .friendholder img {
+    width: 100px;
+    margin-top: -40px; }
 
 /*# sourceMappingURL=main.css.map */

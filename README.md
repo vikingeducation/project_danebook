@@ -9,12 +9,12 @@ Philip Johnson
 
 This site shows the faces of Danes and puts them in a book-like format.
 
--a Ruby on Rails RESTful web app
+* Ruby on Rails RESTful web app
 
--MVC architecture
+* MVC architecture
 
--PostgreSQL backend
+* PostgreSQL backend
 
--Photo storage on Amazon S3
+* Photo storage on Amazon S3
 
 It is a project for [Viking Code School](http://vikingcodeschool.com)

@@ -2,16 +2,19 @@
 
 
 Philip Johnson
+
 [Github Repo](https://github.com/philipcolejohnson/project_danebook)
 
-[Live Demo](https://nameless-falls-74566.herokuapp.com/)
+[Live Demo on Heroku](https://nameless-falls-74566.herokuapp.com/)
 
 This site shows the faces of Danes and puts them in a book-like format.
 
-It is a project for [Viking Code School](http://vikingcodeschool.com)
+-a Ruby on Rails RESTful web app
 
-user/ - timeline
-user/edit - about edit
-user/about - about page
-user/photos
-user/friends
+-MVC architecture
+
+-PostgreSQL backend
+
+-Photo storage on Amazon S3
+
+It is a project for [Viking Code School](http://vikingcodeschool.com)

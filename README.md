@@ -5,7 +5,18 @@ Philip Johnson
 
 [Github Repo](https://github.com/philipcolejohnson/project_danebook)
 
+
+## Live Demo
+
 [Live Demo on Heroku](https://nameless-falls-74566.herokuapp.com/)
+
+Sign up yourself, or try signing in with:
+
+email: moby@viking.com
+password: password
+
+
+## Features
 
 This site shows the faces of Danes and puts them in a book-like format.
 

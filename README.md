@@ -28,4 +28,6 @@ This site shows the faces of Danes and puts them in a book-like format.
 
 * Photo storage on Amazon S3
 
+* Mailers for new users, comments, etc.
+
 It is a project for [Viking Code School](http://vikingcodeschool.com)

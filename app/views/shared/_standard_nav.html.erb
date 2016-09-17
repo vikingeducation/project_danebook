@@ -2,14 +2,15 @@
 
   <!-- <a href="/"><img src="/assets/images/danish_flag.gif" id="nav-image"></a> -->
   <%= image_tag("danish_flag.gif", id: "nav-image") %>
-  <a href="#" class="navbar-brand" id="white-brand" class="white down">Darkbook</a>
-  <form class="navbar-form navbar-middle">
+  <a href="#" class="navbar-brand" id="white-brand" class="white down">Gothbook</a>
 
     <div class="col-xs-6 col-xs-offset-2 form-group">
-      <input class="form-control" type="text" width="100%" id="user-search" placeholder="Search for Users">
+      <%= form_tag '/users', :method => 'get', class: "navbar-form navbar-middle" do %>
+        <%= text_field_tag :query, "", placeholder: "Search by name, or leave blank to see all users ", style: "width: 80%", class: "form-control" %>
+        <%= submit_tag "Search", class: "btn btn-success" %>
+      <% end %>
     </div>
 
-  </form>
   <h4 id="current-user"><%= link_to current_user.first_name, user_timeline_path(current_user) %></h4>
   <h4><%= link_to "Log Out", session_path, method: "delete", id: "logout-link" %></h4>
   </nav>

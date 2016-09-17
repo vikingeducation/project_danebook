@@ -11,17 +11,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160819225241) do
+ActiveRecord::Schema.define(version: 20160917161155) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "beat_data", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "precinct_id"
+    t.integer  "homicides"
+    t.integer  "rapes"
+    t.integer  "robberies"
+    t.integer  "assaults"
+    t.integer  "larceny_thefts"
+    t.integer  "motor_vehicle_thefts"
+    t.integer  "burglaries"
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+  end
+
   create_table "comments", force: :cascade do |t|
     t.text     "body"
     t.integer  "author_id"
-    t.integer  "post_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "commentable_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.string   "commentable_type"
   end
 
   add_index "comments", ["author_id"], name: "index_comments_on_author_id", using: :btree
@@ -80,6 +95,12 @@ ActiveRecord::Schema.define(version: 20160819225241) do
   end
 
   add_index "posts", ["author_id"], name: "index_posts_on_author_id", using: :btree
+
+  create_table "precinct_data", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "profiles", force: :cascade do |t|
     t.string   "college"

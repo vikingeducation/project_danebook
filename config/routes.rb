@@ -14,7 +14,7 @@ Rails.application.routes.draw do
 
   resource :session, :only => [:create, :destroy, :new]
 
-  resources :users, :only => [:create, :new, :edit, :update, :destroy] do 
+  resources :users, :only => [:create, :new, :edit, :update, :destroy, :index] do 
 
     resource :profile, :only => [:update]  
 
@@ -32,6 +32,7 @@ Rails.application.routes.draw do
       resources :cover_photos, :only => [:create, :destroy]
       resources :profile_picture, :only => [:create, :destroy]
       resources :likes, :only => [:create, :destroy] 
+      resources :comments, :only => [:create, :destroy]
     end
 
   end

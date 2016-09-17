@@ -1,5 +1,7 @@
 class Photo < ActiveRecord::Base
-  has_many :likes, as: :likable
+  has_many :likes, :as => :likable
+  has_many :comments, :as => :commentable
+  
   has_attached_file :file, :styles => { :medium => "300x300", :thumb => "100x100", large: "800x750" }
   validates_attachment_content_type :file, :content_type => /\Aimage\/.*\Z/
   belongs_to :owner, class_name: "User", foreign_key: :user_id

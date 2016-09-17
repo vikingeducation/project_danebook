@@ -65,6 +65,11 @@ class ApplicationController < ActionController::Base
     @friendship = Friendship.where("(friender_id = #{current_user.id} AND friended_id = #{@page_owner.id}) OR (friended_id = #{current_user.id} AND friender_id = #{@page_owner.id})").first
   end
 
+  def find_friendship(user)
+    Friendship.where("(friender_id = #{current_user.id} AND friended_id = #{user.id}) OR (friended_id = #{current_user.id} AND friender_id = #{user.id})").first
+  end
+  helper_method :find_friendship
+
   def set_instance_variables
     @user = current_user
     @profile = @user.profile if @user

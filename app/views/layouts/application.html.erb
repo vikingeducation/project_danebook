@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Darkbook</title>
+  <title>Gothbook</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <link rel="stylesheet" href="bootstrap.min.css">
   <%= stylesheet_link_tag    'application', media: 'all' %>
@@ -28,7 +28,7 @@
     </div>
   <% end %>
   
-  <%= render 'shared/profile_nav', locals: {about: @about, friends: @friends, timeline: @timeline, photos: @photos} unless @home %>
+  <%= render 'shared/profile_nav', locals: {about: @about, friends: @friends, timeline: @timeline, photos: @photos} unless @home || @users %>
 
   <%= yield %>
 

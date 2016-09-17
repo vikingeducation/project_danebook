@@ -71,6 +71,20 @@ class User < ActiveRecord::Base
     self.friended_users + self.users_friended_by
   end
 
+  def self.search(query)
+    if query && query.strip.match(/\s/)
+      query = query.strip.split(/\s/)
+      where("first_name ILIKE ? AND last_name ILIKE ?", "%#{query[0]}%", "%#{query[1]}%")
+    elsif query 
+      # Parameterize that user input!!!
+      where("first_name ILIKE ? OR last_name ILIKE ?", "%#{query.strip}%", "%#{query.strip}%")
+    else
+      # If no search term provided, this returns
+      # a relation so we can chain this
+      where("")
+    end
+  end
+
   # distinguish post author from timeline
   # post author is currently signed-in user
   # post recipient is whoever is currently 

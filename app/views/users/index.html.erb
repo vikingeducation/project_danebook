@@ -1,0 +1,29 @@
+<div class="container">
+<div class="row">
+
+
+<% @users.each do |user| %>
+
+  <div class="col-xs-12 col-sm-8 col-sm-offset-2 user-search-user-div">
+    <!-- add: profile picture, first + last name (as link to timeline), whether or not they're your friend -->
+    <div class="row">
+      <div class="col-xs-3">
+        <%= image_tag(user.profile_picture.file.url(:thumb)) if user.profile_picture  %>
+      </div>
+      <div class="col-xs-4">
+        <%= link_to "#{user.first_name} #{user.last_name}", user_timeline_path(user) %>
+      </div>
+      <div class="col-xs-3">
+        <% if current_user.friends.include?(user) %>
+          <%= link_to "Unfriend", user_friendship_path(user, find_friendship(user)), method: "DELETE" %>
+        <% else %>
+          <%= link_to "Add Friend", user_friendships_path(user), method: "POST" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  
+<% end %>
+</div>
+</div>
+</div>

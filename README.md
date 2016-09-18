@@ -1,24 +1,7 @@
-# README
+A Facebook clone in progress. 80% functionality.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+https://daneb00k.herokuapp.com/
 
-Things you may want to cover:
+![](http://i.imgur.com/nCoukOk.png)
 
-* Ruby version
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...

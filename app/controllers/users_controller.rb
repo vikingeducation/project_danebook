@@ -15,7 +15,11 @@ class UsersController < ApplicationController
     @profile = @user.profile
     @post = Post.new
     @posts = @user.posts
-    @photo = @profile.photo
+    if @profile
+      @photo = @profile.photo
+    else
+      @photo = nil
+    end
   end
 
   def new
@@ -26,8 +30,10 @@ class UsersController < ApplicationController
   end
 
   def create
+
     @user = User.new(whitelisted_user_params)
     @profile = @user.build_profile(whitelisted_profile_params)
+
     if @user.save && @profile.save
       User.delay(queue: "email", priority: 28, run_at: 5.seconds.from_now).send_welcome_email(@user.id)
 

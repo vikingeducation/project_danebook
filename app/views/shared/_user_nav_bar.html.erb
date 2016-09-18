@@ -5,7 +5,7 @@
 <br>
 <br>
 <div class="photo-container">
-  
+  <% unless profile.nil? %>
     <% if profile.has_photo? %>
       <%= image_tag profile.photo.avatar.url(:thumb) %>
       <h4> <%= current_user.username %> </h4>
@@ -17,6 +17,7 @@
         <%= photo_fields.submit %>
       <% end %>
     <% end %>
+  <% end %>
 
  
 

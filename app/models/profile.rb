@@ -5,7 +5,7 @@ class Profile < ApplicationRecord
   validates :last_name, length: { :minimum => 1}
 
   validates :month, presence: true
-  validates_format_of :month, with: /[A-Z][a-z]*/
+  # validates_format_of :month, with: /[A-Z][a-z]*/
   validates :day, numericality: true
   validates_inclusion_of :day, in: (1..30)
   validates :year, numericality: true

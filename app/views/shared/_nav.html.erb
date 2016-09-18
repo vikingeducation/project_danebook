@@ -1,25 +1,33 @@
 
-
 <nav class="navbar navbar-default navbar-fixed-top" id="main-nav">
+  
   <div class="container-fluid">
     <div class="col-xs-3">
       <div class="navbar-header">
-         <aclass="navbar-left brand-img">
-         <h1> Danebook<%= link_to "Danebook", timelines_path %>  </h1> </a>
+        <a class="navbar-brand" href="#"> <%= link_to "Danebook", timelines_path %>
+          <img alt="Brand" src="http://branddna.co.za/wp-content/uploads/2014/08/Facebook-Icon.jpg" style="height: 30px; width: 30px; border-radius: 25px; border: 1px dotted white">
+        </a>
       </div>
     </div>
+    
   
-  <div class="container col-xs-7">
-  <%= form_tag(users_path, :method => "get", id: "search-form") do %>
-    <p>
-      <%= text_field_tag :query, nil, placeholder: "SEARCH_USERS" %>
-      <%= submit_tag "search" %>
-    </p>
-  <% end %>
-      
-  </div>
 
-  <div class="col-xs-1 col-xs-offset-1" id="nav-bar">
-    <%= render partial: "shared/nav_login" %>
+    <div class="col-xs-3" id="search-bar">
+      <%= form_tag(users_path, :method => "get", id: "search-form") do %>
+        
+
+        <div class="input-group">
+          <%= text_field_tag :query, nil, placeholder: "Search for..", class: "form-control" %>
+
+          <span class="input-group-btn">
+            <%= submit_tag "search", class: "btn btn-success" %>
+          </span>
+        </div><!-- /input-group -->
+      <% end %>
+    </div>
+
+    <div class="col-xs-6" id="nav-bar">
+      <%= render partial: "shared/nav_login" %>
+    </div>
   </div>
 </nav>

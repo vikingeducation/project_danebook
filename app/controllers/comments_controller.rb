@@ -26,4 +26,12 @@ class CommentsController < ApplicationController
     end
     redirect_to current_user
   end
+
+  #implemented
+  # def get_commentable_resource
+  #  resource = Post.find(params[:post_id]) if params[:post_id]
+  #  resource = Comment.find(params[:comment_id]) if params[:comment_id]
+  #  resource = Photo.find(params[:photo_id]) if params[:photo_id]
+  #  resource
+  # end
 end

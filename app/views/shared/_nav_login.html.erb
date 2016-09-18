@@ -1,22 +1,51 @@
-<% if !signed_in_user? %>
 
-  <div>
+
+
+<% if !signed_in_user? %>  
   <%= form_tag session_path do %>
-    <div class="row">
-    <%= label_tag(:email, "Email: ")%> <%= text_field_tag :email %>
-    </row>
-    <div>
-    <%= label_tag(:password, "Password: ")%> <%= password_field_tag :password %>
+
+    <div class="col-sm-12">
+      <div class="form-horizontal">
+        <div class="col-sm-1">
+          <%= label_tag :email, "Email:", class: "control-label"%> 
+        </div>
+        <div class="col-sm-4">
+          
+          <%= text_field_tag :email, nil, class: "form-control", style: "width: 150px" %>
+        </div>
+
+        <div class="col-sm-2">
+          <%= label_tag :password, "Password:", class: "control-label"%> 
+        </div>
+          
+        <div class="col-sm-4">
+          
+          <%= password_field_tag :password, nil, class: "form-control"%>
+        </div>
+        
+        <div class="col-sm-1">
+          <%= submit_tag "Log in", class: "btn btn-success" %>
+        </div>
+      </div>
     </div>
-    <%= submit_tag "Log in" %>
+    
   <% end %>
-  </div>
-
+ 
 <% else %>
-
-  <p> <%= link_to current_user.username, user_path(current_user) %> </p>
-  <p>
-  <%= link_to "Logout", logout_path, method: :delete, data: {confirm: "Are you sure you want to log out?"} %> </p>
+  <div class="col-sm-12">
+    <div class="form-horizontal">
+      <div class="col-sm-6">
+      </div>
+      <div class="col-sm-3">
+        <%= link_to current_user.username, user_path(current_user), class: "btn btn-primary" %>
+      </div>
+      <div class="col-sm-3">
+        <%= link_to "Logout", logout_path, method: :delete, data: {confirm: "Are you sure you want to log out?"}, class: "btn btn-primary"%> 
+      </div>
+    </div>
+    
+  </div>
 <% end %>
 
+ 
 

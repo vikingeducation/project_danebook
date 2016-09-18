@@ -21,4 +21,6 @@ class PhotosController < ApplicationController
       params.require(:photo).
         permit(:label, :avatar)
     end
+
+    
 end

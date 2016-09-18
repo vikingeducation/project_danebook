@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
   def new
     if current_user
       flash[:success] = "Welcome back #{current_user.first_name}"
-      redirect_to root_path
+      redirect_to user_newsfeed_path(@current_user)
     else
       @user = User.new
     end

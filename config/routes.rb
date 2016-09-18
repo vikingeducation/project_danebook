@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'users#newsfeed'
+  root 'sessions#new'
 
   resource :session, :only => [:new, :create, :destroy]
   get "/login" => "sessions#new"

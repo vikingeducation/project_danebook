@@ -612,3 +612,9 @@ $body-color: #e9ebee;
   font-size: 1em;
   color: #fcbe11;
 }
+
+textarea[name="post[description]"]{
+  border-color: rgb(233, 235, 238);
+  padding-left: 6px;
+  padding-top: 4px;
+}

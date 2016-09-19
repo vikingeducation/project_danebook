@@ -1,4 +1,3 @@
-require 'pry'
 class PhotosController < ApplicationController
 
   # create a belongs_to  cover, profile photo for profile. and add migration

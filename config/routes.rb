@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root to: 'users#new'
   resources :users, :except => [:update, :destroy] do
-    resources :photos, :defaults => { :photoable => 'User'}, :only => [:create]
+    resources :photos, :defaults => { :photoable => 'User'}
     resources :friendings, :only => [:index, :create, :index]
 
     resources :posts, :only => [:create, :destroy] do

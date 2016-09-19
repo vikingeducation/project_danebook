@@ -37,10 +37,10 @@
       <div class="col-sm-6">
       </div>
       <div class="col-sm-3">
-        <%= link_to current_user.username, user_path(current_user), class: "btn btn-primary" %>
+        <%= link_to current_user.username, user_path(current_user), class: "btn btn-primary active" %>
       </div>
       <div class="col-sm-3">
-        <%= link_to "Logout", logout_path, method: :delete, data: {confirm: "Are you sure you want to log out?"}, class: "btn btn-primary"%> 
+        <%= link_to "Logout", logout_path, method: :delete, data: {confirm: "Are you sure you want to log out?"}, class: "btn btn-primary active"%> 
       </div>
     </div>
     

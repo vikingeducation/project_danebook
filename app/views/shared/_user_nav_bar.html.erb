@@ -4,35 +4,52 @@
 <br>
 <br>
 <br>
+
+
 <div class="photo-container">
-  <% unless profile.nil? %>
+  <% unless profile.nil?%>
     <% if profile.has_photo? %>
       <%= image_tag profile.photo.avatar.url(:thumb) %>
       <h4> <%= current_user.username %> </h4>
-    <% else %>
-      <%= form_for :photo, :url => user_profiles_photos_path(current_user, profile) do |photo_fields| %>
-        <%= photo_fields.label :label %>
-        <%= photo_fields.text_field :label %>
-        <%= photo_fields.file_field :avatar %>
-        <%= photo_fields.submit %>
-      <% end %>
+  <% else %>
+    <%= image_tag "http://learngroup.org/assets/images/logos/default_male.jpg" %>
+    
     <% end %>
   <% end %>
+<!--<%= form_for :photo, :url => user_profiles_photos_path(current_user, profile) do |photo_fields| %>
+      <%= photo_fields.label :label %>
+      <%= photo_fields.text_field :label %>
+      <%= photo_fields.file_field :avatar %>
+      <%= photo_fields.submit %>
+    <% end %> --> 
 
- 
-
-  </div>
+</div>
 
 
   <div class="row nav-default container-fluid">
     
     <div class="col-xs-9 col-xs-offset-3">
       <ul class="nav nav-pills">
-        <li class="active"><%= link_to "Timeline", user_path(@user) %></li>
-        <li><%= link_to "About", user_profiles_path(@user) %></li>
-        <li><a href="photos.html">Photos <span>(123)</span></a></li>
-        <li><%= link_to "Friends(#{@user.friended_users.length})", user_friendings_path(@user) %></li>
-        <li class="pull-right edit-link" role="presentation"><a href="about_edit.html"><u>Edit Profile</u></a></li>
+        <li class="active">
+          <%= link_to "Timeline", user_path(@user) %>
+        </li>
+
+        <li>
+          <%= link_to "About", user_profiles_path(@user) %>
+        </li>
+
+        <li>
+          <%= link_to "Photos", user_photos_path(@user) %>
+        </li>
+
+        <li>
+          <%= link_to "Friends(#{@user.friended_users.length})", user_friendings_path(@user) %>
+            
+        </li>
+
+        <li class="pull-right edit-link" role="presentation">
+          <%= link_to "Edit Profile", user_profiles_path(current_user) + '/edit' %>
+        </li>
       </ul>
     </div>
   </div>

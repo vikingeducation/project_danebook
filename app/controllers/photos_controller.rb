@@ -1,4 +1,5 @@
 class PhotosController < ApplicationController
+  before_action :require_authorized_user, :only => [:destroy]
   def index
     @user = User.find(params[:user_id])
     @profile = @user.profile

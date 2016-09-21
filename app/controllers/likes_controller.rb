@@ -48,7 +48,7 @@ class LikesController < ApplicationController
     if params[:post_id] 
       redirect_to user_posts_path(@user)
     elsif params[:comment_id] && @comment.commentable_type == "Post"
-       @user = @comment.post.user
+       @user = @comment.commentable.user
        redirect_to user_posts_path(@user)
     elsif params[:comment_id] && @comment.commentable_type == "Photo"
       @photo = @comment.commentable

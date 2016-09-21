@@ -1,0 +1,5 @@
+var $newPost = $("<%= j(render :partial => 'post', :locals => {:post => @post, :user => @user, :comment => @comment}) %>");
+$("#posts-container").prepend($newPost);
+$newPost.hide();
+$newPost.fadeIn(2000);
+$(".post-textarea").val("");

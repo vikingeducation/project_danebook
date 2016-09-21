@@ -23,10 +23,16 @@ before_action :require_authorized_user, :except => [:index]
 
   def create
     @post = current_user.posts.build(post_params)
-    if @post.save
-      redirect_to new_user_post_path(current_user)
-    else
-      render :new
+    @user = current_user
+    @comment = current_user.comments.build
+    respond_to do |format|
+      if @post.save
+        format.html{redirect_to new_user_post_path(current_user)}
+        format.js{}
+      else
+        format.html{render :new}
+        format.js{head:none}
+      end
     end
   end
 

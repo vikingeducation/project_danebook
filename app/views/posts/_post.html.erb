@@ -19,23 +19,8 @@
       </div>
     </div>
 
-    <!-- menu -->
+    
     <div class="panel-heading">
-      <div class="row">
-        <div class="col-sm-1">
-          <% if liked?(post) %>
-            <%= link_to "Unlike", like_path(find_like(post)), method: :delete %>
-          <% else %>
-            <%= link_to "Like", post_likes_path(post), method: :post %>
-          <% end %>
-        </div>
-        <div class="col-sm-1">
-          <a href="#">Comment</a>
-        </div>
-        <div class="col-sm-2 pull-right">
-          <%= link_to "Delete Post", post, remote: true, method: :delete, data: { confirm: 'Are you sure?' } if post.author == current_user %>
-        </div>
-      </div>
 
       <!-- likes -->
       <% unless post.likes.empty? %>
@@ -46,29 +31,49 @@
         </div>
       <% end %>
 
+      <!-- menu -->
+      <div class="row">
+        <div class="col-sm-1">
+          <% if liked?(post) %>
+            <%= link_to "Unlike", like_path(find_like(post)), method: :delete %>
+          <% else %>
+            <%= link_to "Like", post_likes_path(post), method: :post %>
+          <% end %>
+        </div>
+        <div class="col-sm-1">
+          <a href="#" class="comment-show">Comment</a>
+        </div>
+        <div class="col-sm-2 pull-right">
+          <%= link_to "Delete Post", post, remote: true, method: :delete, data: { confirm: 'Are you sure?' } if post.author == current_user %>
+        </div>
+      </div>
+
+
+      <!-- new comment -->
+      <div class="new-comment">
+        <%= form_for [post, @comment], remote: true do |f| %>
+          <div class="row">
+            <div class="col-sm-12">
+              <%= f.text_area :text, class: "form-control comment-text", rows: 2, placeholder: "Write a comment...", style:"resize: none" %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-1">
+              <a href="#" class="comment-hide">Cancel</a>
+            </div>
+            <div class="col-sm-3 col-sm-offset-8">
+              <%= f.submit "Comment", class: "btn btn-primary btn-block" %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+
       <div class="comment-list">
         <!-- comments -->
         <% post.comments.order(created_at: :asc).each do |comment| %>
           <%= render partial: "comments/comment", locals: { comment: comment } if comment.persisted? %>
         <% end %>
       </div>
-
-      <!-- new comment -->
-      <%= form_for [post, @comment], remote: true do |f| %>
-        <div class="row">
-          <div class="col-sm-12">
-            <%= f.text_area :text, class: "form-control comment-text", rows: 2, placeholder: "Write a comment...", style:"resize: none" %>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-1">
-            <a href="#">Cancel</a>
-          </div>
-          <div class="col-sm-3 col-sm-offset-8">
-            <%= f.submit "Comment", class: "btn btn-primary btn-block" %>
-          </div>
-        </div>
-      <% end %>
 
     </div>
   </div>

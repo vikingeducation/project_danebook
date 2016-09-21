@@ -33,12 +33,15 @@
       <h6><%= link_to "Delete Post", post_path(post), method: :delete %></h6>
       <% end %>
     </div>
+    <div class="col-xs-3">
+      <a class="comment-link"><h6>Comment</h6></a>
+    </div>
   </div>
   <div class="row" id="comments-section">
     <% post.comments.each do |comment| %>
       <%= render partial: "shared/comment_box", locals: {comment: comment} %>
     <% end %>
-    <div class="col-xs-12" id="write-comment">
+    <div class="col-xs-12 write-comment">
           <%= simple_form_for [@comment] do |comment_field| %>
             <%= comment_field.hidden_field :commentable_type, :value => "Post" %>
             <%= comment_field.hidden_field :commentable_id, :value => post.id %>

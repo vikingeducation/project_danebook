@@ -9,7 +9,7 @@ class User < ApplicationRecord
   validates :password,
             :length => {:minimum => 6},
             :on => :create
-  has_one :profile
+  has_one :profile, dependent: :destroy
 
   has_many :photos, foreign_key: :user_id
 

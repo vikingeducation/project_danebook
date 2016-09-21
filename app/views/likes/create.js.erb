@@ -1,0 +1,8 @@
+console.log("Starting likes create");
+//<%= puts likes_display(@likeable) %>
+var message = '<%= likes_display(@likeable) %>';
+<%= puts @likeable.id %>
+<%= puts @like.likeable_type %>
+$(".like-container[data-id='<%= @likeable.id %>'][data-type='<%= @like.likeable_type %>']").text(message);
+$(".like-text[data-id='<%= @likeable.id %>'][data-type='<%= @like.likeable_type %>']").html("<%= j(render :partial => 'unlikeLink', :locals => {:resource => @likeable, :like => @like}) %>");
+console.log("Done with likes create");

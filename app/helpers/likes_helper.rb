@@ -15,8 +15,12 @@ module LikesHelper
   end
 
   def likes_display(likeable)
+  #check if there are any likes
+  if likeable.likes.empty?
+    return ""
+  end
   #check if current user liked the post
-  if likeable.likes.any?{|l| l.user == current_user}
+  if current_user_liked(likeable)
     first_like = find_like(likeable)
     first_user = "You"
   else

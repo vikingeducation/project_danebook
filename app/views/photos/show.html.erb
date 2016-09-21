@@ -26,11 +26,14 @@
 
 
 <div class="like-comment-container comment-border">
-  <% if current_user_liked(@photo) %>
-    <%= link_to "Unlike", photo_like_path(@photo, find_like(@photo)), method: :delete %>
-    <% else %>
-      <%= link_to "Like", photo_likes_path(@photo), method: :post, class: "post-reaction" %>
-  <% end %>
+  <div class="like-text" data-id="<%= @photo.id %>" data-type="Photo">
+    <% if current_user_liked(@photo) %>
+      <%= link_to "Unlike", photo_like_path(@photo, find_like(@photo)), remote: true, method: :delete %>
+      <% else %>
+        <%= link_to "Like", photo_likes_path(@photo), method: :post, remote: true, class: "post-reaction" %>
+    <% end %>
+  </div>
+  <a class="comment-button post-reaction" data-id="<%= @photo.id %>" href="#">Comment<a>
     <% if authorized_user?(@owner) %>
       <%= link_to "Delete", user_photo_path(@owner,@photo), method: :delete, class: "post-reaction delete" %>
       <%= form_for @photo, class: "post-reaction delete" do |f| %>
@@ -44,15 +47,14 @@
         <%= f.submit %>
       <% end %>
     <% end %>
-    <% unless @photo.likes.empty? %>
-      <p class="reaction-text clear">
+      <p class="reaction-text clear like-container" data-id="<%= @photo.id %>" data-type="Photo">
          <%= likes_display(@photo) %>
       </p>
-    <% end %>
 </div>
+<div class="comments-container" data-id="<%= @photo.id %>" data-type="Photo">
 <% @photo.comments.each do |comment| %>
 <% unless comment.id == nil %>
-   <div class="like-comment-container comment-border-grey">
+   <div class="like-comment-container comment-border-grey" data-id="<%= comment.id %>">
    <% if comment.user.profile_pic %>
     <%= image_tag comment.user.profile_pic.avatar.url(:comment), alt: "friend's picture", class:  "side-image small-image" %>
     <% else %>
@@ -70,25 +72,26 @@
     <%= comment.body %>
   </p>
   <div class="comment-text like-comment-container">
-    <% if current_user_liked(comment) %>
-      <%= link_to "Unlike", comment_like_path(comment, find_like(comment)), method: :delete, class: "comment-format post-reaction" %>
-    <% else %>
-      <%= link_to "Like", comment_likes_path(comment), method: :post, class: "comment-format post-reaction" %>
-    <% end %>
-    <% unless comment.likes.empty? %>
-      <p class="comment-format reaction-text">
+    <div class="like-text" data-id="<%= comment.id %>" data-type="Comment">
+      <% if current_user_liked(comment) %>
+        <%= link_to "Unlike", comment_like_path(comment, find_like(comment)), method: :delete, remote: true, class: "comment-format post-reaction" %>
+      <% else %>
+        <%= link_to "Like", comment_likes_path(comment), method: :post, remote: true, class: "comment-format post-reaction" %>
+      <% end %>
+    </div>
+      <p class="comment-format reaction-text like-container" data-id="<%= comment.id %>" data-type="Comment">
         <%= likes_display(comment) %>
       </p>
-    <% end %>
     <% if can_delete_comment?(comment) %>
-      <%= link_to "Delete", photo_comment_path(@photo,comment), method: :delete, class: "post-reaction delete" %>
+      <%= link_to "Delete", photo_comment_path(@photo,comment), method: :delete, remote: true, class: "post-reaction delete" %>
     <% end %>
   </div>
  </div>
  <% end %>
 <% end %>
-<div class="like-comment-container no-border">
-  <%= form_for [@photo, @comment], :html => {:class => "comment-form"} do |comment_fields| %>
+</div>
+<div class="com-form like-comment-container no-border" data-id="<%= @photo.id %>">
+  <%= form_for [@photo, @comment], remote: true, :html => {:class => "comment-form"} do |comment_fields| %>
   <%= comment_fields.text_area :body, cols: 70, rows: 3, placeholder: "Write a comment...", class: "comment-textarea" %>
   <div class="comment-button-container">
     <%= comment_fields.submit "Comment", class: "btn btn-primary", id: "comment-btn" %>

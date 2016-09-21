@@ -3,14 +3,14 @@ class CommentsController < ApplicationController
   def create
     #if its on a post
     if params[:post_id]
-      @post = Post.find(params[:post_id])
+      @commentable = Post.find(params[:post_id])
       parent_id = params[:post_id]
-      @user = @post.user
+      @user = @commentable.user
       type = "Post"
     #if its on a photo
     else
-      @photo = Photo.find(params[:photo_id])
-      @user = @photo.user
+      @commentable = Photo.find(params[:photo_id])
+      @user = @commentable.user
       parent_id = params[:photo_id]
       type = "Photo"
     end
@@ -23,7 +23,7 @@ class CommentsController < ApplicationController
         User.delay(run_at: 5.seconds.from_now).send_comment_email(@user.id, current_user.id, type)
         format.html{
           if type == "Photo"
-            redirect_to user_photo_path(@user, @photo)
+            redirect_to user_photo_path(@user, @commentable)
           elsif type == "Post"
             redirect_to user_posts_path(@user)
           end

@@ -15,8 +15,8 @@ APP.PostModule = (function(){
 
   var showCommentBox = function(e){
     e.preventDefault();
-    var postId = $(e.target).attr('data-id');
-    $(".com-form[data-id="+postId+"]").slideToggle();
+    var parentId = $(e.target).attr('data-id');
+    $(".com-form[data-id="+parentId+"]").slideToggle();
   };
 
   return{

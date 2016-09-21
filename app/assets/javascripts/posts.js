@@ -45,6 +45,3 @@ return {
 }
 
 })();
-$(document).ready(function() {
-  Posts.listToDelete()
-})

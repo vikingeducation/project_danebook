@@ -1,4 +1,4 @@
-<div class="comment-show" data-comment-id=<%=comment.id %> >
+<div class="comment-show" data-comment-id=<%=comment.id %> data-post-id=<%=comment.commentable.id %> >
   <ul class="media-list">
     <li class="media">
       <div class="media-left"> 
@@ -13,7 +13,7 @@
             <%= like.hidden_field :user_id, value: current_user.id %>
             <%= like.submit "Like", class: "btn btn-primary like-section"%>    
           <% end %>
-          <%= link_to "Delete Comment", comment_path(comment), method: :delete, class: "btn btn-danger delete-section", remote: true, data: {comment_id: comment.id} if current_user == user%>
+          <%= link_to "Delete Comment", comment_path(comment), method: :delete, class: "btn btn-danger delete-section delete-comment", remote: true, data: {comment_id: comment.id} if current_user == user%>
           <%= render "comments/new_comment", comment: comment, new_comment: comment.comments.build, like: comment.likes.build%>
         </div>
       </div>

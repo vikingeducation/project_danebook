@@ -19,7 +19,7 @@
             <% end %>
           </div>
             <% if post %>
-              <%= form_for [post, post.comments.build] do |c| %>
+              <%= form_for [post, post.comments.build], remote: true do |c| %>
                 <%= image_tag("default_image.jpg", class: "comment-picture") %>
                 <%= c.text_field :content, placeholder: "Write your comment here", class: "comment-text form-control", 'aria-label'=> "basic-addon1" %>
                 <%= c.submit "Comment on Post", class: "btn btn-success comment-section" %>

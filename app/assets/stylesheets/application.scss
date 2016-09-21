@@ -18,6 +18,17 @@ h1, h2, h3, h4, h5, h6 {
     font-family: 'Oswald', sans-serif !important;
 }
 
+h4 {
+  display: inline;
+}
+
+#smush {
+  @media only screen and (max-width: 768px) {
+    display: none;
+  }
+}
+
+
 a:hover {
   text-decoration: none !important;
 }

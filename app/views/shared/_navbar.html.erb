@@ -13,13 +13,12 @@
                 <li>
                     <%= form_tag users_path, :method => 'get', class: "form-inline navbar-form" do %>
                     <div class="form-group">
-                        <%= text_field_tag :query, nil, placeholder: "Find Users", class: 'form-control input-sm'%>
+                        <%= text_field_tag :query, nil, placeholder: "Find Users", class: 'form-control input-sm', id: "user-search"%>
                         <%= submit_tag "Search", class: "btn btn-primary btn-sm" %>
                     </div>
                     <% end %>
                 </li>
             </ul>
-
             <ul class="nav navbar-nav navbar-right line-inline">
                 <li class="dropdown">
                     <%= link_to current_user.profile.first_name, current_user, class: "dropdown-toggle user-name", "data-toggle": "dropdown" %>

@@ -30,7 +30,21 @@ body {
 .nav>li {
     @media only screen and (max-width: 768px) {
       margin-left: 20px;
+      margin-right: 20px;
     }
+}
+
+#user-search {
+  @media only screen and (max-width: 768px) {
+    width: 80%;
+    display: inline-block;
+  }
+}
+
+.dropdown-menu>li>a {
+  @media only screen and (max-width: 768px) {
+    color: white !important;
+  }
 }
 
 .navbar-form {
@@ -153,6 +167,7 @@ body {
         font-size: 15px;
         text-align: center;
         z-index: -1;
+        display: inline-block;
     }
 }
 .user-result {

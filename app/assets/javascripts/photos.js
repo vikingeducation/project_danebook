@@ -8,15 +8,5 @@ APP.photo = (function(){
     photoClickListener();
   };
 
-  var removeRemote = function(){
-    $('.like-wrap .push-right form').removeAttr('data-remote');
-  };
-
-  var photoClickListener = function(){
-    $('[data-target="#myModal"]').on('click', function(e){
-      e.preventDefault();
-    });
-  };
-
   return stub;
 })();

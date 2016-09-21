@@ -25,7 +25,7 @@
 
   <% if user == current_user %>
     <div class="col-xs-4 push-right text-right">
-      <%= button_to resource, method: :delete, remote: true, class: "goofy-btn delete-class" do %>
+      <%= button_to resource, remote: true, method: :delete, class: "goofy-btn delete-class" do %>
         <span class="glyphicon glyphicon-remove" aria-hidden="true" style="color: red"></span>
       <% end %>
     </div>

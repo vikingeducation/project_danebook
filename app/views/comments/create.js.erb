@@ -1,3 +1,8 @@
-$('[data-type="<%= @commentable.class.to_s.downcase %>"][data-id="<%= @commentable.id %>"] .new_comment').before("<%= escape_javascript(render @comment, user: current_user) %>");
+
+var $comBox = $('[data-type="<%= @commentable.class.to_s.downcase %>"][data-id="<%= @commentable.id %>"] .new_comment');
+console.log($comBox);
+var $newCom = $("<%= escape_javascript(render @comment, user: current_user) %>");
+
+$newCom.insertBefore($comBox).hide().slideDown("normal");
 
 $('[data-type="<%= @commentable.class.to_s.downcase %>"][data-id="<%= @commentable.id %>"] textarea').val("");

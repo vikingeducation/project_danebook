@@ -18,7 +18,6 @@ APP.comment = (function(){
 
   var commentListener = function(){
     $('body').on('click', '.com-box [data-com-btn="true"]', function(e){
-      console.log(e.target);
       $(e.target).closest('.post-wrapper').next().slideToggle(500);
     });
   };

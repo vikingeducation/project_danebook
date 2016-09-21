@@ -1,14 +1,12 @@
 class PostsController < ApplicationController
 
   def create
-    params[:post_receiver_id] = session[:receiver_id]
-    params[:post_author_id] = current_user.id 
-    @post = current_user.posts_written.new(post_params)
-    @post.post_receiver_id = session[:receiver_id]
-    session[:receiver_id] = nil
-    if @post.save
-      flash[:success] = "Your message has been posted!"
-      redirect_back(fallback_location: root_path)
+    @new_post = current_user.posts_written.new(post_params)
+    @new_post.post_receiver_id = session[:receiver_id]
+    if @new_post.save
+      @post = current_user.posts_written.new
+      @comment = current_user.comments_written.new
+      respond_to :js
     else
       flash[:danger] = "Your message could not be posted :("
       redirect_back(fallback_location: root_path)

@@ -62,18 +62,20 @@
                 <div class="col-xs-12 timeline-title">
                   <h5>New Posts</h5>
                 </div>
-                <%= simple_form_for @post do |post_fields| %>
+                <%= simple_form_for @post, remote: true do |post_fields| %>
                 <div class ="col-xs-12" id="post-container">
                   <%= post_fields.input :body, input_html: {rows: "4"}, label: false, placeholder: "Tell the world something..." %>
                 </div>
                 <div class="col-xs-12" id="post-button-container">
-                  <%= post_fields.submit "Post!", class:"btn btn-primary pull-right"%>
+                  <%= post_fields.submit "Post!", class:"btn btn-primary pull-right", id:"post-submit-button"%>
                 </div>
                 <% end %>
                 <!-- Previous posts -->
-                <% @timeline_user.posts_received.reverse.each do |post| %>
-                  <%= render partial: "shared/post_box", locals: {post: post} %>
-                <% end %>
+                <div id="all-previous-posts">
+                  <% @timeline_user.posts_received.reverse.each do |post| %>
+                    <%= render partial: "shared/post_box", locals: {post: post} %>
+                  <% end %>
+                </div>
               </div>
             </div>
           </div>

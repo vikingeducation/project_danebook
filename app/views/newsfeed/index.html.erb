@@ -1,0 +1,31 @@
+<main class="container">
+  <div class="row">
+    <!-- cover photo -->
+    <%= render partial: "shared/cover_and_prof", locals: {user: current_user.id} %>
+    <!--set of profile tabs linking to different parts of the page-->
+    <%= render "shared/nav_links" %>
+  </div>
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1" id="header-bar">
+      <h2>Newsfeed</h2>
+    </div>
+    <div class="col-md-10 col-md-offset-1" id="timeline-divider">
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2 col-sm-12 " id="timeline">
+          <div class="row">
+            <div class="col-md-11 col-md-offset-1">
+              <div class="row">
+                <div id="all-previous-posts">
+                  <% @posts.each do |post| %>
+                    <%= render partial: "shared/post_box", locals: {post: post} %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</main>
+

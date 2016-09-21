@@ -1,2 +1,2 @@
-$("#all-previous-posts").prepend("<%= escape_javascript(render partial: 'shared/post_box', locals: {post: @new_post}) %>").hide().show(500);
+$("#all-previous-posts").prepend("<%= escape_javascript(render partial: 'shared/post_box', locals: {post: @new_post}) %>");
 $("#post_body").val("");

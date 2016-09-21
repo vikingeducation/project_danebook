@@ -66,6 +66,11 @@ class User < ApplicationRecord
     end
   end
 
+  def friends_posts
+    friends = self.friends
+    Post.where(:post_author_id => friends).order(created_at: :desc)
+  end
+
   def profile_picture
     photo = self.profile.prof_photo
     photo.image

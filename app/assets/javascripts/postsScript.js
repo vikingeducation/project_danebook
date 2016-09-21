@@ -3,17 +3,11 @@ var DANEBOOK = DANEBOOK || {}
 DANEBOOK.posts = {
 
   init: function(){
-    DANEBOOK.posts.hideCommentBoxes();
     DANEBOOK.posts.setCommentBoxListener();
-    // DANEBOOK.posts.setPostListener();
-  },
-
-  hideCommentBoxes: function() {
-    $('.write-comment').hide();
   },
 
   setCommentBoxListener: function(){
-    $(".comment-link").click(function(event) {
+    $("#all-previous-posts").on("click",".comment-link", function(event) {
      $(event.target).parents('#post-feedback').next().children(".write-comment").toggle(500);
     });
   },

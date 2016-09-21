@@ -9,7 +9,7 @@
     <% end %>
   </div>
   <!-- commenter info and comment-->
-  <div class="col-xs-10">
+  <div class="col-xs-10" comment-id="<%= comment.id %>">
     <h6><%= link_to user_header_name(comment.user_id), user_path(comment.user_id) %>
       Posted on <%= comment.created_at.strftime("%m/%d/%Y") %></h6>
     <p><%= comment.body %></p>

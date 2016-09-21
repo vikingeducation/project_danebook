@@ -6,9 +6,11 @@ class LikesController < ApplicationController
   def create
     @like = Like.new(like_params)
     @like.user_id = current_user.id
+    @content_id = like_params[:likeable_id]
+    @content_type = like_params[:likeable_type]
     if @like.save!
-      flash[:success] = "You've liked the post!"
-      redirect_back(fallback_location: root_path)
+      @id = @like.id
+      respond_to :js
     else
       flash.now[:danger] = "Could not like that post"
       redirect_back(fallback_location: root_path)

@@ -25,11 +25,7 @@
         <%= render partial: "/shared/logged_out_nav" %>
         <% end %>
 
-        <% flash.each do |key, value| %>
-        <div class="<%= flash_class(key) %>">
-            <%= value %>
-        </div>
-        <% end %>
+        <%= render partial: "/shared/flash", locals: { flash: flash }%>
 
         <%= yield %>
 

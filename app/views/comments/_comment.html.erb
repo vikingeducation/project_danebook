@@ -1,12 +1,12 @@
 <div class="comment" data-id="<%= comment.id %>">
     <p>
+        <%=link_to comment.author, comment.author %>
+        says: 
+    </p>
+    <p>
         <%= comment.body %>
     </p>
-    <p>by:
-        <%=link_to comment.author, comment.author %>
-    </p>
     <span class="like-comment" data-id="<%= comment.id %>"><%= likeable_likes_link(comment) %></span>
-    <br>
     <span><%= delete_comment_link(comment, commentable) %></span>
 </div>
 

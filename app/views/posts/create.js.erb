@@ -1,1 +1,8 @@
-$(".post-rows").prepend("<%= j(render partial: '/posts/post', locals: {post: @post}) %>");
+var $post = $("<%= j(render partial: '/posts/post', locals: {post: @post}) %>")
+$(".post-rows").prepend($post)
+$post.hide().slideDown("slow");
+
+$(".flash").slideUp();
+var $flash = $("<%= j(render partial: '/shared/flash', locals: { flash: flash }) %>")
+$('body').prepend($flash)
+$flash.hide().slideDown();

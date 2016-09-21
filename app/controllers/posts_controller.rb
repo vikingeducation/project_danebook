@@ -5,12 +5,17 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
     respond_to do |format|
       if current_user.save
-        # flash[:success] = "Created New Post"
-        format.html { redirect_to session.delete(:return_to) }
-        format.js { render :create }
+
+        format.html { redirect_to session.delete(:return_to)
+                      flash[:success] = "Created New Post"
+                    }
+        format.js { flash.now[:success] = "Created New Post"
+                    render :create
+                     }
       else
-        # flash[:error] = "Could Not Create Post"
-        format.html { redirect_to session.delete(:return_to) }
+        format.html { redirect_to session.delete(:return_to)
+                      flash[:error] = "Could Not Create Post"
+                    }
         format.js { head :none }
       end
     end
@@ -21,12 +26,13 @@ class PostsController < ApplicationController
     @post = current_user.posts.find(params[:id])
     respond_to do |format|
       if @post.destroy
-        # flash[:success] = "Deleted Post"
-        format.html { redirect_to session.delete(:return_to) }
-        format.js { render :destroy }
+        format.html { flash[:success] = "Deleted Post"
+                      redirect_to session.delete(:return_to) }
+        format.js { flash.now[:success] = "Deleted Post"
+                    render :destroy }
       else
-        # flash[:error] = "Could Not Delete Post"
-        format.html { redirect_to session.delete(:return_to) }
+        format.html { flash[:error] = "Could Not Delete Post"
+                      redirect_to session.delete(:return_to) }
         format.js { head :none }
       end
     end

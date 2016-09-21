@@ -22,7 +22,7 @@
                 <div class="col-sm-12 text-center">
                     <% @user.photos.each do |photo| %>
                     <div class="small-image">
-                        <%= image_tag photo.image.url(:thumb), class: "fit-div" %>
+                        <%= link_to image_tag(photo.image.url(:thumb)), photo_path(photo, user_id: @user.id), class: 'fit-div' %>
                     </div>
                     <% end %>
                 </div>

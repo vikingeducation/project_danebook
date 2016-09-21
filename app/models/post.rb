@@ -16,7 +16,7 @@ class Post < ApplicationRecord
   end
 
   def has_photo?
-    !photo.nil? 
+    !!(self.photo.nil?)
   end
 
   def self.send_trigger_email(id, post)

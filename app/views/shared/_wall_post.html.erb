@@ -1,23 +1,26 @@
 <% posts.each do |post| %>
-  <div class="col-xs-6" id="panels">
+  <div class="col-xs-12" id="comment-panels">
     <div class ="row header-bar">  
-      <div class="col-xs-12"> 
+      <div class="col-xs-6"> 
         <div class="container" id="friends">
           <div class="row row-eq-height">
-            <div class="col-xs-3">
+            <div class="col-xs-6">
               <% if current_user.profile.has_photo? %>
 
-                <%= image_tag current_user.profile.photo.avatar.url(:thumb) %>
+                <%= image_tag current_user.profile.photo.avatar.url(:small) %>
               <% else %>
                 <%= image_tag "http://learngroup.org/assets/images/logos/default_male.jpg", style: "width: 300px, height: 300px" %>
               <% end %>
             </div>
-            <div class="col-xs-9">
+            <div class="col-xs-6">
               <u><%= link_to "#{current_user.profile.first_name} #{current_user.profile.last_name}", user_path(current_user) %> </u>
-              <span id="helpBlock" class="help-block">Posted on <%= post.created_at %> </span>
-              <span>&nbsp</span>
+              
             </div>      
           </div>
+        </div>
+      </div>
+      <div class="col-xs-6">
+        <div id="helpBlock" class="help-block">Posted on <%= post.created_at %> 
         </div>
       </div>
     </div>
@@ -27,23 +30,28 @@
 
       <% if post.has_photo? %> 
         <%= image_tag post.photo.avatar.url(:medium) %>
-      <% else %>
-        <%= image_tag "http://learngroup.org/assets/images/logos/default_male.jpg", style: "width: 300px, height: 300px" %>
-
       <% end %>
     </div>
 
     <div class ="row footer-bar">  
       <ul class="list-unstyled" id="post-footers">
+        <div class="col-xs-2" id="comment-options">
+          <li>
+          <%= link_to 'Destroy', user_post_path(current_user, post), :method => :delete, :confirm => "Are you sure?" %>  
+          </li>
+        </div>
+        <div class="col-xs-2" id="comment-options">
+          <% if post.already_likes? %>
+            <li>
+              <%= current_user.username %> likes this..
+            </li>
+          <% else %>
+            <li> 
+              <%=link_to "Like", user_post_likings_path(current_user, post), :method => :post, :confirm => "like this?" %> 
+            </li>
+          <% end %>
+        </div>
 
-        <li><%= link_to 'Destroy', user_post_path(current_user, post), :method => :delete, :confirm => "Are you sure?" %></li>
-
-        <% if post.already_likes? %>
-          <%= current_user.username %> likes this..
-          
-        <% else %>
-          <li> <%=link_to "Like", user_post_likings_path(current_user, post), :method => :post, :confirm => "like this?" %> </li>
-        <% end %>
 
         <li>
           <%= render partial: "shared/post_comment_form", locals: { post: post } %>
@@ -54,6 +62,7 @@
           <%= render partial: "shared/post_comment", locals: { comments: post.comments } %>
         <% end %>
         </li>
+      </ul>
 
 
     </div>

@@ -25,7 +25,3 @@ APP.comment = (function(){
 
   return stub;
 })();
-
-$(document).ready(function(){
-  APP.comment.init();
-});

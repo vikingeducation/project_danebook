@@ -1,2 +1,6 @@
-$('section[data-type="new-post"]').after("<%= escape_javascript(render :partial => 'posts/user_posts', :locals => { resource: @post, user: @user }) %>");
-$('section[data-type="new-post"]').val("");
+var $newPostSection = $('section[data-type="new-post"]')
+var $newPost = $("<%= escape_javascript(render :partial => 'posts/user_posts', :locals => { resource: @post, user: @user }) %>");
+
+$newPost.insertAfter($newPostSection).hide().slideDown('normal');
+
+$('section[data-type="new-post"] textarea').val("");

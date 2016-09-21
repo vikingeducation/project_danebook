@@ -27,21 +27,24 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    if signed_in_user?
-      current_user
-      if @post = get_instance(params[:id], Post)
+    current_user
+
+    if @post = get_instance(params[:id], Post)
+      @id = @post.id
+      respond_to do |format|
         if @post.destroy
           flash[:success] = "You successfully destroyed that post..."
+          format.html { redirect_to :back }
+          format.js { }
         else
           flash[:danger] = "We were unable to destroy the comment, perhaps its gone sentinel...."
+          format.html { redirect_to :back }
+          format.js { head :none }
         end
-      else
-        flash[:danger] = "record not found"
       end
-      redirect_to :back
     else
-      flash[:danger] = "You are unauthorized to do this! And I won't stand for it.  You have been temporarily banned....."
-      redirect_to login_path
+      flash[:danger] = "record not found"
+      redirect_to :back
     end
   end
 

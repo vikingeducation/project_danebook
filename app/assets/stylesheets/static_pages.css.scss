@@ -230,11 +230,13 @@ $body-color: #e9ebee;
         margin-bottom: 20px;
         background-color: white;
         @include border-radius(2px);
-        z-index: 10;
+        // z-index: 10;
+        // box-shadow: 2px 4px 6px #555;
         textarea {
             min-width: 100%;
             min-height: 60px;
             resize: none;
+
         }
 
         .about-content {

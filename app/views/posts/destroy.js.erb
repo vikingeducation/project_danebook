@@ -1,0 +1,4 @@
+$('[data-type="post"][data-id="<%= @id %>"]')
+    .slideUp("normal", function() {
+      $(this).remove();
+    });

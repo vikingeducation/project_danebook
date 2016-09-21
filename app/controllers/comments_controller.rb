@@ -14,15 +14,26 @@ class CommentsController < ApplicationController
       flash[:success] = "Your comment has been saved!"
       respond_to do |format| 
         format.js{}
-        #format.html{redirect_back(fallback_location: root_path)}
+        format.html {redirect_back(fallback_location: root_path)}
       end
     else
       flash[:danger] = "Your comment needs to have content in it"
       respond_to do |format| 
         format.js{}
-        #format.html{redirect_back(fallback_location: root_path)}
+        format.html {redirect_back(fallback_location: root_path)}
       end
     end
+  end
+
+  def destroy
+    @comment = Comment.find_by_id(params[:id])
+    if @comment.destroy
+      respond_to do |format|
+        format.html{redirect_to current_user}
+        format.js{}
+      end
+    end
+    
   end
 
 

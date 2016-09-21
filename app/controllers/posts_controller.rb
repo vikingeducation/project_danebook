@@ -9,14 +9,14 @@ class PostsController < ApplicationController
     if @post.save
       flash[:success] = "Your post as been successfully posted for all to see!"
       respond_to do |format|
-        #format.html {redirect_to @user}
+        format.html {redirect_to @user}
         format.js {}
       end
       
     else
       flash[:danger] = "You post was not posted"
       respond_to do |format|
-        #format.html {redirect_to current_user}
+        format.html {redirect_to current_user}
         format.js {}
       end
       

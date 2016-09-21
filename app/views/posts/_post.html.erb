@@ -22,7 +22,7 @@
               <%= form_for [post, post.comments.build], remote: true do |c| %>
                 <%= image_tag("default_image.jpg", class: "comment-picture") %>
                 <%= c.text_field :content, placeholder: "Write your comment here", class: "comment-text form-control", 'aria-label'=> "basic-addon1" %>
-                <%= c.submit "Comment on Post", class: "btn btn-success comment-section" %>
+                <%= c.submit "Comment on Post", data: {post_id: post.id}, class: "btn btn-success comment-section" %>
               <% end %>
               <%= form_for [post, post.likes.build] do |like| %>
                 <%= like.hidden_field :user_id, value: current_user.id %>

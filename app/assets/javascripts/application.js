@@ -15,6 +15,7 @@
 //= require_tree .
 
 $(document).ready(function() {
-  Comments.findComment()
-  Posts.listToDelete()
+  Comments.findLastComment();
+  Comments.findComment();
+  Posts.listToDelete();
 })

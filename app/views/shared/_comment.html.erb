@@ -1,4 +1,4 @@
-<div class="like-comment-container comment-border-grey">
+<div class="like-comment-container comment-border-grey" data-id='<%= comment.id %>'>
   <% if comment.user.profile_pic %>
     <%= image_tag comment.user.profile_pic.avatar.url(:comment), alt: "friend's picture", class:  "side-image small-image" %>
   <% else %>
@@ -27,7 +27,7 @@
       </p>
     <% end %>
     <% if can_delete_comment?(comment) %>
-      <%= link_to "Delete", post_comment_path(post,comment), method: :delete, class: "post-reaction delete" %>
+      <%= link_to "Delete", post_comment_path(post,comment), method: :delete, remote: true, class: "post-reaction delete" %>
     <% end %>
   </div>
 </div>

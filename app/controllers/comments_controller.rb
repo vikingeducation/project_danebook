@@ -18,15 +18,23 @@ class CommentsController < ApplicationController
                           :commentable_type => type,
                           :user_id => current_user.id,
                           :body => params[:comment][:body])
-    if @comment.save
-      User.delay(run_at: 5.seconds.from_now).send_comment_email(@user.id, current_user.id, type)
-      if type == "Photo"
-        redirect_to user_photo_path(@user, @photo)
-      elsif type == "Post"
-        redirect_to user_posts_path(@user)
+    respond_to do |format|
+      if @comment.save
+        User.delay(run_at: 5.seconds.from_now).send_comment_email(@user.id, current_user.id, type)
+        format.html{
+          if type == "Photo"
+            redirect_to user_photo_path(@user, @photo)
+          elsif type == "Post"
+            redirect_to user_posts_path(@user)
+          end
+        }
+        format.js{}
+      else
+        format.html{
+          redirect_to user_posts_path(@user) 
+        }
+        format.js{head:none}
       end
-    else
-      redirect_to user_posts_path(@user)
     end
   end
 
@@ -40,10 +48,15 @@ class CommentsController < ApplicationController
       @user = @photo.user
     end
     @comment.destroy
-    if params[:post_id]
-      redirect_to user_posts_path(@user)
-    elsif params[:photo_id]
-      redirect_to user_photo_path(@user, @photo)
+    respond_to do |format|
+      format.js{}
+      format.html{
+        if params[:post_id]
+          redirect_to user_posts_path(@user)
+        elsif params[:photo_id]
+          redirect_to user_photo_path(@user, @photo)
+        end  
+      }
     end
   end
 

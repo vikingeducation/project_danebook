@@ -1,0 +1,432 @@
+/* line 5, /Users/davidjiang/Desktop/Viking/Unit_12/danebook/app/assets/stylesheets/newsfeeds.scss */
+.left-sidebar {
+  border-right: 2px solid black;
+}
+/* line 4, /Users/davidjiang/Desktop/Viking/Unit_12/danebook/app/assets/stylesheets/static_pages.scss */
+body {
+  font-family: 'Nunito',sans-serif;
+}
+
+/* line 8, /Users/davidjiang/Desktop/Viking/Unit_12/danebook/app/assets/stylesheets/static_pages.scss */
+.about-page {
+  padding-top: 50px;
+}
+
+/* line 12, /Users/davidjiang/Desktop/Viking/Unit_12/danebook/app/assets/stylesheets/static_pages.scss */
+.header-bar {
+  background-color: #3b5998;
+}
+
+/* line 16, /Users/davidjiang/Desktop/Viking/Unit_12/danebook/app/assets/stylesheets/static_pages.scss */
+.navbar-default .big-logo {
+  color: white;
+  font-size: 48px;
+  margin: 10px;
+}
+
+/* line 22, /Users/davidjiang/Desktop/Viking/Unit_12/danebook/app/assets/stylesheets/static_pages.scss */
+.header-label {
+  color: white;
+}
+
+/* line 26, /Users/davidjiang/Desktop/Viking/Unit_12/danebook/app/assets/stylesheets/static_pages.scss */
+.header-input {
+  border: 2px solid black;
+  border-radius: 0;
+}
+
+/* line 31, /Users/davidjiang/Desktop/Viking/Unit_12/danebook/app/assets/stylesheets/static_pages.scss */
+.header-submit {
+  background-color: #39f;
+  border-radius: 0;
+  border-color: black;
+  margin-top: 17px;
+}
+
+/* line 38, /Users/davidjiang/Desktop/Viking/Unit_12/danebook/app/assets/stylesheets/static_pages.scss */
+.teaser {
+  margin-top: 50px;
+  line-height: 3;
+}
+
+/* line 43, /Users/davidjiang/Desktop/Viking/Unit_12/danebook/app/assets/stylesheets/static_pages.scss */
+.teaser li {
+  color: #666;
+  font-size: 18px;
+}
+
+/* line 48, /Users/davidjiang/Desktop/Viking/Unit_12/danebook/app/assets/stylesheets/static_pages.scss */
+.teaser span {
+  font-weight: bold;
+}
+
+/* line 52, /Users/davidjiang/Desktop/Viking/Unit_12/danebook/app/assets/stylesheets/static_pages.scss */
+.sign-up-form {
+  margin-top: 10px;
+  width: 100%;
+}
+
+/* line 57, /Users/davidjiang/Desktop/Viking/Unit_12/danebook/app/assets/stylesheets/static_pages.scss */
+.gender {
+  margin-top: 10px;
+}
+
+/* line 61, /Users/davidjiang/Desktop/Viking/Unit_12/danebook/app/assets/stylesheets/static_pages.scss */
+.sign-up-btn {
+  margin-top: 10px;
+  font-size: 20px;
+  width: 100%;
+}
+
+/* line 67, /Users/davidjiang/Desktop/Viking/Unit_12/danebook/app/assets/stylesheets/static_pages.scss */
+.search-bar {
+  width: 100%;
+}
+
+/* line 70, /Users/davidjiang/Desktop/Viking/Unit_12/danebook/app/assets/stylesheets/static_pages.scss */
+.search-bar .search-bar {
+  width: 100%;
+}
+
+/* line 74, /Users/davidjiang/Desktop/Viking/Unit_12/danebook/app/assets/stylesheets/static_pages.scss */
+#flag {
+  height: 100%;
+}
+
+/* line 78, /Users/davidjiang/Desktop/Viking/Unit_12/danebook/app/assets/stylesheets/static_pages.scss */
+#brand-link {
+  padding: 0;
+}
+
+/* line 82, /Users/davidjiang/Desktop/Viking/Unit_12/danebook/app/assets/stylesheets/static_pages.scss */
+#user-name, #title-text, #logout, #profile-name {
+  color: white;
+}
+
+/* line 86, /Users/davidjiang/Desktop/Viking/Unit_12/danebook/app/assets/stylesheets/static_pages.scss */
+#search-field {
+  margin-left: -50px;
+  margin-right: 50px;
+}
+
+/* line 91, /Users/davidjiang/Desktop/Viking/Unit_12/danebook/app/assets/stylesheets/static_pages.scss */
+.cover-photo {
+  text-align: center;
+  position: relative;
+}
+
+/* line 96, /Users/davidjiang/Desktop/Viking/Unit_12/danebook/app/assets/stylesheets/static_pages.scss */
+#profile-pic {
+  position: absolute;
+  bottom: -5%;
+  left: 12%;
+}
+
+/* line 102, /Users/davidjiang/Desktop/Viking/Unit_12/danebook/app/assets/stylesheets/static_pages.scss */
+#big-profile-name {
+  position: absolute;
+  bottom: 0;
+  left: 33%;
+  color: white;
+}
+
+/* line 109, /Users/davidjiang/Desktop/Viking/Unit_12/danebook/app/assets/stylesheets/static_pages.scss */
+#about-user-name {
+  color: white;
+  font-size: 25px;
+}
+
+/* line 114, /Users/davidjiang/Desktop/Viking/Unit_12/danebook/app/assets/stylesheets/static_pages.scss */
+.menu-bar {
+  border: 1px solid black;
+}
+
+/* line 118, /Users/davidjiang/Desktop/Viking/Unit_12/danebook/app/assets/stylesheets/static_pages.scss */
+.about-header div {
+  text-align: center;
+  font-size: 24px;
+  background-color: #ddd;
+}
+
+/* line 124, /Users/davidjiang/Desktop/Viking/Unit_12/danebook/app/assets/stylesheets/static_pages.scss */
+.edit-button {
+  background-color: #39f;
+  border-radius: 0;
+  border-color: black;
+  color: white;
+  float: right;
+}
+
+/* line 132, /Users/davidjiang/Desktop/Viking/Unit_12/danebook/app/assets/stylesheets/static_pages.scss */
+.about-container {
+  border: 2px solid black;
+  margin-top: 10px;
+}
+
+/* line 137, /Users/davidjiang/Desktop/Viking/Unit_12/danebook/app/assets/stylesheets/static_pages.scss */
+#text-description {
+  padding-right: 5%;
+}
+
+/* line 141, /Users/davidjiang/Desktop/Viking/Unit_12/danebook/app/assets/stylesheets/static_pages.scss */
+#information {
+  padding-left: 5%;
+}
+
+/* line 145, /Users/davidjiang/Desktop/Viking/Unit_12/danebook/app/assets/stylesheets/static_pages.scss */
+#save_changes {
+  width: 50%;
+}
+
+/* line 149, /Users/davidjiang/Desktop/Viking/Unit_12/danebook/app/assets/stylesheets/static_pages.scss */
+.post-box {
+  border: 2px solid black;
+  margin-top: 40px;
+}
+
+/* line 154, /Users/davidjiang/Desktop/Viking/Unit_12/danebook/app/assets/stylesheets/static_pages.scss */
+.centered-text {
+  text-align: center;
+}
+
+/* line 158, /Users/davidjiang/Desktop/Viking/Unit_12/danebook/app/assets/stylesheets/static_pages.scss */
+.post-title {
+  border-bottom: 2px solid black;
+  background-color: #e6e6e6;
+  margin-top: 0;
+}
+
+/* line 164, /Users/davidjiang/Desktop/Viking/Unit_12/danebook/app/assets/stylesheets/static_pages.scss */
+.post-button-container {
+  border-top: 2px solid black;
+  background-color: #e6e6e6;
+  padding: 3px;
+  text-align: right;
+}
+
+/* these are from the old file. may need media queries*/
+/* line 172, /Users/davidjiang/Desktop/Viking/Unit_12/danebook/app/assets/stylesheets/static_pages.scss */
+.small-image {
+  width: 58px;
+  height: 54px;
+}
+
+/* line 177, /Users/davidjiang/Desktop/Viking/Unit_12/danebook/app/assets/stylesheets/static_pages.scss */
+.side-image {
+  display: inline-block;
+  margin: 2px 0px 0px 2px;
+  border: 1px solid black;
+}
+
+/* line 183, /Users/davidjiang/Desktop/Viking/Unit_12/danebook/app/assets/stylesheets/static_pages.scss */
+.small-text {
+  margin: 18px 15px;
+}
+
+/* line 187, /Users/davidjiang/Desktop/Viking/Unit_12/danebook/app/assets/stylesheets/static_pages.scss */
+.side-text {
+  display: inline-block;
+}
+
+/* line 190, /Users/davidjiang/Desktop/Viking/Unit_12/danebook/app/assets/stylesheets/static_pages.scss */
+.side-text p {
+  font-size: 12px;
+}
+
+/* line 194, /Users/davidjiang/Desktop/Viking/Unit_12/danebook/app/assets/stylesheets/static_pages.scss */
+.post-date {
+  color: gray;
+}
+
+/* line 198, /Users/davidjiang/Desktop/Viking/Unit_12/danebook/app/assets/stylesheets/static_pages.scss */
+.post-text {
+  padding: 10px;
+  font-size: 12px;
+}
+
+/* line 203, /Users/davidjiang/Desktop/Viking/Unit_12/danebook/app/assets/stylesheets/static_pages.scss */
+.like-comment-container {
+  font-size: 12px;
+  line-height: 20px;
+  background-color: #e6e6e6;
+  padding: 3px;
+}
+
+/* line 210, /Users/davidjiang/Desktop/Viking/Unit_12/danebook/app/assets/stylesheets/static_pages.scss */
+.comment-border {
+  border-top: 2px solid black;
+}
+
+/* line 214, /Users/davidjiang/Desktop/Viking/Unit_12/danebook/app/assets/stylesheets/static_pages.scss */
+.post-reaction {
+  margin-left: 10px;
+}
+
+/* line 218, /Users/davidjiang/Desktop/Viking/Unit_12/danebook/app/assets/stylesheets/static_pages.scss */
+.delete {
+  float: right;
+  margin-right: 10px;
+}
+
+/* line 223, /Users/davidjiang/Desktop/Viking/Unit_12/danebook/app/assets/stylesheets/static_pages.scss */
+.clear {
+  clear: both;
+}
+
+/* line 227, /Users/davidjiang/Desktop/Viking/Unit_12/danebook/app/assets/stylesheets/static_pages.scss */
+.reaction-text {
+  margin-left: 10px;
+  color: gray;
+}
+
+/* line 232, /Users/davidjiang/Desktop/Viking/Unit_12/danebook/app/assets/stylesheets/static_pages.scss */
+.comment-border-grey {
+  border-top: 2px solid gray;
+}
+
+/* line 236, /Users/davidjiang/Desktop/Viking/Unit_12/danebook/app/assets/stylesheets/static_pages.scss */
+.comment-format {
+  display: inline-block;
+}
+
+/* line 240, /Users/davidjiang/Desktop/Viking/Unit_12/danebook/app/assets/stylesheets/static_pages.scss */
+.comment-text {
+  margin-left: 65px;
+  border: none;
+}
+
+/* line 245, /Users/davidjiang/Desktop/Viking/Unit_12/danebook/app/assets/stylesheets/static_pages.scss */
+.comment-form {
+  text-align: center;
+}
+
+/* line 249, /Users/davidjiang/Desktop/Viking/Unit_12/danebook/app/assets/stylesheets/static_pages.scss */
+.comment-button-container {
+  text-align: right;
+}
+
+/* line 253, /Users/davidjiang/Desktop/Viking/Unit_12/danebook/app/assets/stylesheets/static_pages.scss */
+.left {
+  float: left;
+}
+
+/* line 257, /Users/davidjiang/Desktop/Viking/Unit_12/danebook/app/assets/stylesheets/static_pages.scss */
+.box-border {
+  border: 2px solid black;
+  margin-top: 10px;
+}
+
+/* line 262, /Users/davidjiang/Desktop/Viking/Unit_12/danebook/app/assets/stylesheets/static_pages.scss */
+.box-header {
+  background-color: #e6e6e6;
+  border-bottom: 2px solid black;
+}
+
+/* line 267, /Users/davidjiang/Desktop/Viking/Unit_12/danebook/app/assets/stylesheets/static_pages.scss */
+.box-title {
+  margin-top: 10px;
+}
+
+/* line 271, /Users/davidjiang/Desktop/Viking/Unit_12/danebook/app/assets/stylesheets/static_pages.scss */
+.wrap-text {
+  white-space: normal;
+}
+
+/* line 275, /Users/davidjiang/Desktop/Viking/Unit_12/danebook/app/assets/stylesheets/static_pages.scss */
+.friend-image {
+  display: inline-block;
+  margin: 4px;
+  width: 90px;
+  height: 90px;
+  background: white;
+  border: 1px solid black;
+}
+
+/* line 284, /Users/davidjiang/Desktop/Viking/Unit_12/danebook/app/assets/stylesheets/static_pages.scss */
+.friend-name {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+/* line 289, /Users/davidjiang/Desktop/Viking/Unit_12/danebook/app/assets/stylesheets/static_pages.scss */
+.stats {
+  color: gray;
+}
+
+/* line 293, /Users/davidjiang/Desktop/Viking/Unit_12/danebook/app/assets/stylesheets/static_pages.scss */
+.unfriend {
+  background-color: #e6e6e6;
+  margin: 0px 20px;
+}
+
+/* line 298, /Users/davidjiang/Desktop/Viking/Unit_12/danebook/app/assets/stylesheets/static_pages.scss */
+.friend-box {
+  border: 2px solid black;
+  margin-top: 10px;
+}
+
+/* line 303, /Users/davidjiang/Desktop/Viking/Unit_12/danebook/app/assets/stylesheets/static_pages.scss */
+.friends-main {
+  border: 2px solid black;
+  margin-top: 10px;
+  padding: 0 15px 10px;
+}
+
+/* line 309, /Users/davidjiang/Desktop/Viking/Unit_12/danebook/app/assets/stylesheets/static_pages.scss */
+.friend-container {
+  border: 2px solid black;
+  margin-top: 10px;
+}
+
+/* line 314, /Users/davidjiang/Desktop/Viking/Unit_12/danebook/app/assets/stylesheets/static_pages.scss */
+.friend-header {
+  text-align: center;
+  font-size: 24px;
+  background-color: #ddd;
+  margin-bottom: 10px;
+  border-bottom: 2px solid black;
+}
+
+/* line 322, /Users/davidjiang/Desktop/Viking/Unit_12/danebook/app/assets/stylesheets/static_pages.scss */
+.thumbnail {
+  position: relative;
+}
+
+/* line 326, /Users/davidjiang/Desktop/Viking/Unit_12/danebook/app/assets/stylesheets/static_pages.scss */
+.hover-text {
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  opacity: 0;
+  -webkit-transition: opacity 500ms;
+  -moz-transition: opacity 500ms;
+  -o-transition: opacity 500ms;
+  transition: opacity 500ms;
+}
+
+/* line 341, /Users/davidjiang/Desktop/Viking/Unit_12/danebook/app/assets/stylesheets/static_pages.scss */
+.thumbnail:hover .hover-text {
+  opacity: 1;
+}
+
+/*# sourceMappingURL=styles.css.map */
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+
+
+ */
+

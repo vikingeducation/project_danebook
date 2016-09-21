@@ -1,0 +1,6 @@
+console.log("begin create comment");
+var $newComment = $("<%= j(render :partial => 'shared/comment', :locals => {:post => @post, :comment => @comment}) %>");
+$(".comments-container[data-id='<%= @post.id %>']").append($newComment);
+$newComment.hide();
+$newComment.fadeIn(2000);
+$(".comment-textarea").val("");

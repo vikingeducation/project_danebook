@@ -1,81 +1,10 @@
-<% posts.each do |post| %>
-        <% if post.id %>
-        <div class="post-box">
-        <% if post.user.profile_pic %>
-        <%= image_tag post.user.profile_pic.avatar.url(:comment), alt: "friend's picture", class:  "side-image small-image" %>
-        <% else %>
-        <%= image_tag "wizard_hat.png", alt:"friend's picture", class: "side-image small-image" %>
-        <% end %>
-          <div class="side-text small-text">
-            <p>
-              <%= link_to post.user.profile.full_name, user_path(post.user) %>
-            </p>
-            <p class="post-date" href="#">
-              Posted on <%= post.posted_date %>
-            </p>
-          </div>
-        <p class="post-text">
-          <%= post.body %>
-        </p>
-      <div class="like-comment-container comment-border">
-        <% if current_user_liked(post) %>
-          <%= link_to "Unlike", post_like_path(post, find_like(post)), method: :delete %>
-        <% else %>
-          <%= link_to "Like", post_likes_path(post), method: :post, class: "post-reaction" %>
-        <% end %>
-        <% if authorized_user? %>
-        <%= link_to "Delete", user_post_path(user,post), method: :delete, class: "post-reaction delete" %>
-        <% end %>
-        <% unless post.likes.empty? %>
-          <p class="reaction-text clear">
-            <%= likes_display(post) %>
-          </p>
-        <% end %>
-      </div>
-      <% post.comments.each do |comment| %>
-        <div class="like-comment-container comment-border-grey">
-        <% if comment.user.profile_pic %>
-        <%= image_tag comment.user.profile_pic.avatar.url(:comment), alt: "friend's picture", class:  "side-image small-image" %>
-        <% else %>
-        <%= image_tag "wizard_hat.png", alt:"friend's picture", class: "side-image small-image" %>
-        <% end %>
-        <div class="side-text small-text">
-        <p class="comment-format">
-          <%= link_to comment.user.profile.full_name, comment.user %>
-        </p>
-        <p class="comment-format post-date">
-          Said on <%= comment.posted_date %>:
-        </p>
-      </div>
-      <p class="comment-text post-text">
-        <%= comment.body %>
-      </p>
-      <div class="comment-text like-comment-container">
-        <% if current_user_liked(comment) %>
-          <%= link_to "Unlike", comment_like_path(comment, find_like(comment)), method: :delete, class: "comment-format post-reaction" %>
-        <% else %>
-          <%= link_to "Like", comment_likes_path(comment), method: :post, class: "comment-format post-reaction" %>
-        <% end %>
-        <% unless comment.likes.empty? %>
-          <p class="comment-format reaction-text">
-            <%= likes_display(comment) %>
-          </p>
-        <% end %>
-        <% if can_delete_comment?(comment) %>
-          <%= link_to "Delete", post_comment_path(post,comment), method: :delete, class: "post-reaction delete" %>
-        <% end %>
-      </div>
-    </div>
-      <% end %>
-       <div class="like-comment-container no-border">
-        <%= form_for [post, @comment], :html => {:class => "comment-form"} do |comment_fields| %>
-          <%= comment_fields.text_area :body, cols: 70, rows: 3, placeholder: "Write a comment...", class: "comment-textarea" %>
-      <div class="comment-button-container">
-        <%= comment_fields.submit "Comment", class: "btn btn-primary", id: "comment-btn" %>
-      </div>
-      <% end %>
-    </div>
-    </div>
-    
-    <% end %>
-    <% end %>
+<div class="posts-container">
+  <% if posts.length == 0 %>
+    <h4 class="centered-text">
+      No recent activity. Make a post to get started!
+    </h4>
+  <% end %>
+  <% posts.each do |post| %>
+    <%= render :partial => "shared/post", :locals => {:post => post, :user => user, :comment => comment} %>
+  <% end %>
+</div> 

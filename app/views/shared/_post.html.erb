@@ -1,5 +1,5 @@
 <% if post.id %>
-  <div class="post-box">
+  <div class="post-box" data-id="<%= post.id %>">
   <% if post.user.profile_pic %>
     <%= image_tag post.user.profile_pic.avatar.url(:comment), alt: "friend's picture", class:  "side-image small-image" %>
   <% else %>
@@ -22,8 +22,9 @@
   <% else %>
     <%= link_to "Like", post_likes_path(post), method: :post, class: "post-reaction" %>
   <% end %>
-  <% if authorized_user? %>
-  <%= link_to "Delete", user_post_path(user,post), method: :delete, class: "post-reaction delete" %>
+  <a class="comment-button post-reaction" data-id="<%= post.id %>"href="#">Comment<a>
+  <% if authorized_user?(post.user) %>
+  <%= link_to "Delete", user_post_path(user,post), method: :delete, remote: true, class: "post-reaction delete" %>
   <% end %>
   <% unless post.likes.empty? %>
     <p class="reaction-text clear">
@@ -31,11 +32,13 @@
     </p>
   <% end %>
 </div>
-<% post.comments.each do |comment| %>
-  <%= render :partial => "comment", :locals => {:comment => comment, :post => post} %>
-<% end %>
-<div class="like-comment-container no-border">
-  <%= form_for [post, comment], :html => {:class => "comment-form"} do |comment_fields| %>
+<div class="comments-container" data-id="<%= post.id %>" data-type="post">
+  <% post.comments.each do |comment| %>
+    <%= render :partial => "shared/comment", :locals => {:comment => comment, :post => post} %>
+  <% end %>
+</div>
+<div class="com-form like-comment-container no-border" data-id="<%= post.id %>">
+  <%= form_for [post, comment], remote: true, :html => {:class => "comment-form"} do |comment_fields| %>
     <%= comment_fields.text_area :body, cols: 70, rows: 3, placeholder: "Write a comment...", class: "comment-textarea" %>
 <div class="comment-button-container">
   <%= comment_fields.submit "Comment", class: "btn btn-primary", id: "comment-btn" %>

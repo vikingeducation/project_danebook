@@ -16,14 +16,14 @@
     <div class="col-md-6 col-md-offset-1">
       <div class="post-box centered-text">
         <h4 class="post-title">Post</h4>
-        <%= form_for [@user, @post] do |post_fields| %>
+        <%= form_for [@user, @post], remote: true do |post_fields| %>
           <%= post_fields.text_area :body, cols: 60, rows: 5, placeholder: "Tell the world something...", class: "post-textarea" %>
           <div class="post-button-container">
-            <%= post_fields.submit "Post", class: "btn btn-primary" %>
+            <%= post_fields.submit "Post", class: "btn btn-primary submit" %>
           </div>
           <% end %>
       </div><!-- post-box-->
-    <%= render :partial => "post_box", :locals => {posts: @posts} %>
+    <%= render :partial => "post_box", :locals => {posts: @posts, user: @user, comment: @comment} %>
     </div><!-- col-md-9-->
   </div><!-- row -->
 </div><!-- container -->

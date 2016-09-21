@@ -45,7 +45,10 @@ before_action :require_authorized_user, :except => [:index]
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
-    redirect_to new_user_post_path(current_user)
+    respond_to do |format|
+      format.html{redirect_to new_user_post_path(current_user)}
+      format.js{}
+    end
   end
 
   private

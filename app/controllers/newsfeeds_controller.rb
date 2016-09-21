@@ -6,6 +6,7 @@ class NewsfeedsController < ApplicationController
     @post = @user.posts.build
     @comment = @user.comments.build
     @friend_ids = current_user.friended_users.pluck(:id)
+    @friend_ids << current_user.id
     @posts = Post.newsfeed_posts(@friend_ids)
     @post_ids = @posts.pluck(:user_id)
     @recently_active = User.post_authors(@post_ids)

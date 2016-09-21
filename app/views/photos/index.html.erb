@@ -11,12 +11,16 @@
 
     <div class="col-sm-12">
       <% @photos.each do |photo| %>
-        <div class="col-sm-4">
+        <div class="col-sm-4" id="photo-container">
           <p>Title: <%= photo.label %></p>
           <p>Date: <%= photo.created_at %></p>
-          <span>
-            <%= image_tag photo.avatar.url(:medium) %>
-          </span>
+          
+          
+          
+          <%= image_tag photo.avatar.url, style: "width: 100%", id: "photo" %>
+          
+          
+          
           <p>
             <%= link_to "View", user_photo_path(current_user, photo), class: "btn btn-danger active" %> 
           </p>

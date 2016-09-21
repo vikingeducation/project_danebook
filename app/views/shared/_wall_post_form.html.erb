@@ -1,5 +1,4 @@
 <%= simple_form_for @post, :url => user_posts_path(current_user) do |f| %>
-
   <div class="col-xs-6" id="panels" style="border: solid; border-radius: 1px;">
     <div class ="row header-bar">  
       <div class="col-xs-6">
@@ -18,13 +17,11 @@
       <%= photo_fields.file_field :avatar %>
     <% end %>
 
-      <div class ="row footer-bar">  
-        <ul class="list-unstyled" id="footers">
-          <%= f.submit "Post the Post" %>
-          </ul>
-          
-      </div>
+    <div class ="row footer-bar">  
+      <ul class="list-unstyled" id="footers">
+        <%= f.submit "Post the Post" %>
+      </ul>
+        
     </div>
   </div>
-
 <% end %>

@@ -5,10 +5,18 @@ APP.photo = (function(){
 
   stub.init = function(){
     removeRemote();
+    photoClickListener();
   };
 
   var removeRemote = function(){
     $('.like-wrap .push-right form').removeAttr('data-remote');
+  };
+
+  var photoClickListener = function(){
+    $('[data-target="#myModal"]').on('click', function(e){
+      console.log(e.target);
+      e.preventDefault();
+    });
   };
 
   return stub;

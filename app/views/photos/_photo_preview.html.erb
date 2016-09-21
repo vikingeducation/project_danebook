@@ -5,10 +5,8 @@
   <div class="col-xs-12 img-container text-center">
     <% user.photo_posts[0..7].each do |photo| %>
       <div class="col-xs-6 col-sm-3 col-md-3" >
-        <%= link_to user_photo_path(user, photo) do %>
-          <div data-toggle="modal" data-target="#myModal">
+        <%= link_to user_photo_path(user, photo), remote: true, data: {toggle: "modal", target: "#myModal" } do %>
             <%= image_tag(photo.file.url(:thumb), class: "post-pic img-responsive") %>
-          </div>
         <% end %>
       </div>
     <% end %>

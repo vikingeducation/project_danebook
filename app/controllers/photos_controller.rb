@@ -30,6 +30,10 @@ class PhotosController < ApplicationController
   def show
     @user = User.find(params[:user_id])
     @photo = Photo.find(params[:id])
+    respond_to do |format|
+      format.html { }
+      format.js { }
+    end
   end
 
   def destroy

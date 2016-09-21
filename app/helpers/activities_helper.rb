@@ -3,9 +3,9 @@ module ActivitiesHelper
   def like_or_unlike(activity)
     liking = activity.likes.where(:user_id => current_user.id).limit(1).first
     if liking
-      link_to "Unlike", liking_path(liking), method: :delete, class: "ex-post-like-link"
+      link_to "Unlike", liking_path(liking), method: :delete, class: "ex-post-like-link", remote: true
     else
-      link_to "Like", activity_likings_path(activity), method: :post, class: "ex-post-like-link"
+      link_to "Like", activity_likings_path(activity), method: :post, class: "ex-post-like-link", remote: true
     end
   end
 

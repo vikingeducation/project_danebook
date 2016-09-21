@@ -1,0 +1,6 @@
+(function(){
+    var linkHTML = "<%= j(render partial: 'shared/like_link', locals: { activity: @activity }) %>";
+    var textHTML = "<%= j(render partial: 'shared/like_text', locals: { activity: @activity }) %>";
+    $('#like_link_<%= @activity.id %>').html(linkHTML);
+    $('#like_text_<%= @activity.id %>').html(textHTML);
+})();

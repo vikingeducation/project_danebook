@@ -1,9 +1,5 @@
 var DANEBOOK = DANEBOOK || {};
 
-DANEBOOK.showCommentLink = function() {
-  $('.make_comment').show();
-};
-
 DANEBOOK.commentListener = function() {
   $('body').on('click', '.make_comment', function(e) {
     e.preventDefault();
@@ -14,7 +10,6 @@ DANEBOOK.commentListener = function() {
 
 $(document).ready(function() {
   DANEBOOK.commentListener();
-  DANEBOOK.showCommentLink();
 });
 
 // $(window).load(function() {

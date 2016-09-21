@@ -30,6 +30,7 @@ gem "paperclip", "~> 5.0.0"
 gem 'aws-sdk'
 gem "figaro"
 gem 'delayed_job_active_record'
+gem 'omniauth'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

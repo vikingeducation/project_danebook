@@ -11,6 +11,7 @@ class CommentsController < ApplicationController
         format.js { }
       else
         flash[:danger] = "Comment not added, returning to the nerdery to diagnose the problem. . . ."
+        format.html { redirect_to :back }
         format.js { head :none }
       end
     end

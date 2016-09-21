@@ -2,31 +2,34 @@ class LikesController < ApplicationController
   before_action :require_login
 
   def create
-    if signed_in_user?
-      type = params[:likeable].classify
-      resource = type.constantize.find(params["#{type.downcase}_id"])
-      if resource.likes.create(:user_id => current_user.id)
+    type = params[:likeable].classify
+    @resource = type.constantize.find(params["#{type.downcase}_id"])
+    respond_to do |format|
+      if @resource.likes.create(:user_id => current_user.id)
         flash[:success] = "Like contributed to the post!"
+        format.html { redirect_to :back }
+        format.js { }
       else
         flash[:danger] = "Couldn't establish the like"
+        format.html { redirect_to :back }
+        format.js { head :none }
       end
-      redirect_to :back
-    else
-      redirect_to login_path
     end
   end
 
   def destroy
-    if signed_in_user?
-      @like = Like.find(params[:id])
+    @like = Like.find(params[:id])#.include(:user, :commentable)
+    # @user = current_user
+    respond_to do |format|
       if @like.destroy
         flash[:success] = "Unliked the post"
+        format.html { redirect_to :back }
+        format.js { render 'create' }
       else
         flash[:danger] = "Couldn't make the unlike"
+        format.html { redirect_to :back }
+        format.js { head :none }
       end
-      redirect_to :back
-    else
-      redirect_to login_path
     end
   end
 end

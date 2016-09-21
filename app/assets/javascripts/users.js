@@ -4,7 +4,6 @@ APP.comment = (function(){
   var stub = {};
 
   stub.init = function(){
-    addCommentLink();
     $('.section-footer').hide();
     commentListener();
   };

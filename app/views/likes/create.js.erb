@@ -1,0 +1,1 @@
+$("[data-type='<%= @resource.class.to_s.downcase %>'][data-id='<%= @resource.id %>'] .like-wrap").html("<%= escape_javascript(render 'shared/post_like_bar', user: current_user, resource: @resource) %>");

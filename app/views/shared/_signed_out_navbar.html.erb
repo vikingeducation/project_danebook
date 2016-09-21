@@ -25,7 +25,8 @@
           </fieldset>
 
           <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" >
-        <button type="submit" class="btn btn-primary sign_in_button">Log In</button>
+          <button type="submit" class="btn btn-primary sign_in_button">Log In</button>
+          <%= link_to "Log In with Github", '/auth/github', class: "btn btn-success sign_in_button_github" %>
         </form>
       </div>
     </div>

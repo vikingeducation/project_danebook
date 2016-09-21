@@ -2,7 +2,7 @@
 
 
 
-/*********   
+/*********
 NAVBAR
 *********/
 
@@ -64,7 +64,7 @@ NAVBAR
 
 
 
-/*********   
+/*********
 SIGNUP FORM
 *********/
 
@@ -88,6 +88,29 @@ SIGNUP FORM
 	width: 100%;
 }
 
+.sign_in_button_github {
+	width: 150px;
+	@include media($tablet) {
+		margin-top: 20px;
+	}
+  background: darkgrey;
+  border-color: darkgrey;
+  &:hover {
+    background: grey;
+    border-color: grey;
+  }
+}
+
+.sign_up_button_github {
+	width: 100%;
+  background: darkgrey;
+  border-color: darkgrey;
+  &:hover {
+    background: grey;
+    border-color: grey;
+  }
+}
+
 .info_block {
 	li {
 		font-size: 18px;
@@ -97,11 +120,3 @@ SIGNUP FORM
 		margin-top: 50px;
 	}
 }
-
-
-
-
-
-
-
-

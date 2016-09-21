@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     resources :timelines, :only => [:index]
   end
 
+  get '/auth/github/callback' => "sessions#create"
   resources :friendings, :only => [:destroy]
 
   resources :activities, :only => [] do

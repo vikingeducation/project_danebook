@@ -95,4 +95,14 @@ class User < ApplicationRecord
       .where(activities: { created_at: 1.days.ago..Time.now }).uniq
   end
 
+  def self.create_with_omniauth(auth)
+    create! do |user|
+      user.email = auth["email"]
+      user.uid = auth["uid"]
+      user.password = SecureRandom.base64
+      user.first_name = auth["info"]["name"].split(" ")[0]
+      user.last_name = auth["info"]["name"].split(" ")[-1]
+    end
+  end
+
 end

@@ -14,5 +14,9 @@
       </div>
     </div>
     <%= render partial: "shared/sign_up_form", locals: { user: @user } %>
+    <div class="col-sm-6 pull-right">
+      <%= link_to "Sign Up with Github!", '/auth/github', class: "btn btn-success btn-lg sign_up_button_github" %>
+    </div>
   </div>
+
 </main>

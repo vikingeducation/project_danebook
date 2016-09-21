@@ -31,6 +31,7 @@ gem 'aws-sdk'
 gem "figaro"
 gem 'delayed_job_active_record'
 gem 'omniauth'
+gem 'omniauth-github', github: 'intridea/omniauth-github'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

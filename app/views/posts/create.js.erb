@@ -1,0 +1,12 @@
+var $newPost = $("<%= j(render partial: 'js_post_template', locals: { post: @post }) %>");
+$newPost.hide();
+$(".posts-section").first().before($newPost);
+$newPost.slideDown();
+
+$("#new_post")[0].reset();
+
+
+var $flash = $("<%= j(render partial: 'shared/flash_messages_for_ajax', locals: { flash: flash } ) %>");
+$flash.hide()
+$('nav').after($flash)
+$flash.slideDown();

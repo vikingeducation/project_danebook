@@ -1,0 +1,23 @@
+<!--friends section  -->
+<header class="row content-center grey-background" id="timeline-photos">
+  <div class="col-sm-12 border-3sides">
+    <h4>Friends (<%= page_owner.friended_users.count + page_owner.users_friended_by.count %>) </h4>
+  </div>
+</header>
+<div class="row padding-top border-3sides">
+  <% (page_owner.friended_users + page_owner.users_friended_by).each do |friend| %>
+    <div class="col-sm-4 small-photo-div">
+    <% if friend.profile_picture %>
+      <%= link_to image_tag(friend.profile_picture.file.url(:thumb), class: "small-photo"), user_timeline_path(friend) %>
+    <% else %>
+      <%= link_to image_tag("http://buira.org/assets/images/shared/default-profile.png", class: "small-photo"), user_timeline_path(friend) %> 
+    <% end %>
+    </div>
+  <% end %>
+
+</div>
+<div class="row border-2sides border-bottom content-center">
+  <div class="col-xs-12">
+    <a href="friends.html" class="footer-link more-link">See More Friends</a>
+  </div>
+</div>          

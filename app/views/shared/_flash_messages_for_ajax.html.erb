@@ -1,0 +1,11 @@
+  <% if flash[:success] %>
+    <div class="alert alert-success alert-dismissable float-clear">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <%= flash[:success] %>
+    </div>
+  <% elsif flash[:error] %>
+    <div class="alert alert-danger alert-dismissable float-clear">
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+      <%= flash[:error] %>
+    </div>
+  <% end %>

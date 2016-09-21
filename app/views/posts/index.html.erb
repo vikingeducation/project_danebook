@@ -1,201 +1,20 @@
   <div class="container" id="timeline-page">
     <div class="row">
 
-      <!-- left column -->
       <div class="col-sm-4" id="left-column">
-        <header class="row content-center grey-background" id="timeline-about">
-          <div class="col-sm-12 border-3sides">
-            <h4>About</h4>
-          </div>
-        </header>
-        <div class="row border-3sides border-bottom">
-          <div class="col-sm-10 col-sm-offset-1">
-            <p><strong>Born on: </strong><%= @user.profile.birth_date.to_formatted_s(:rfc822) %></p>
-            <p><strong>Went to school at: </strong><%= @profile.college %></p>
-            <p><strong>Hometown: </strong> <%= @profile.hometown%> </p>
-            <p><strong>Currently Lives: </strong> <%= @profile.currently_lives %></p>
-          </div>
-        </div>
 
-        <!-- photos section -->
-        <header class="row content-center grey-background" id="timeline-photos">
-          <div class="col-sm-12 border-3sides">
-            <h4>Photos (<%= @page_owner.photos.count %>) </h4>
-          </div>
-        </header>
+        <%= render partial: 'timeline_info', locals: { page_owner: @page_owner } %>
 
-        <div class="row padding-top border-3sides">
-          <% @page_owner.photos.each do |photo| %>
-            <div class="col-sm-4 small-photo-div">
-              <%= link_to image_tag(photo.file.url(:thumb), class: "small-photo"), user_photo_path(@page_owner, photo) %>
-            </div>
-          <% end %>
-        </div>
-      
-        <div class="row border-2sides border-bottom content-center">
-          <div class="col-xs-12">
-            <a href="photos.html" class="footer-link more-link">See More Photos</a>
-          </div>
-        </div>
-
-        <!--friends section  -->
-        <header class="row content-center grey-background" id="timeline-photos">
-          <div class="col-sm-12 border-3sides">
-            <h4>Friends (<%= @page_owner.friended_users.count + @page_owner.users_friended_by.count %>) </h4>
-          </div>
-        </header>
-        <div class="row padding-top border-3sides">
-          <% (@page_owner.friended_users + @page_owner.users_friended_by).each do |friend| %>
-            <div class="col-sm-4 small-photo-div">
-            <% if friend.profile_picture %>
-              <%= link_to image_tag(friend.profile_picture.file.url(:thumb), class: "small-photo"), user_timeline_path(friend) %>
-            <% else %>
-              <%= link_to image_tag("http://buira.org/assets/images/shared/default-profile.png", class: "small-photo"), user_timeline_path(friend) %> 
-            <% end %>
-            </div>
-          <% end %>
-
-        </div>
-        <div class="row border-2sides border-bottom content-center">
-          <div class="col-xs-12">
-            <a href="friends.html" class="footer-link more-link">See More Friends</a>
-          </div>
-        </div>          
       </div>
-
       <!--right column-->
 
       <!--post creation section-->
       <div class="col-sm-7 col-sm-offset-1" id="right-column">
-        <% if @user.id == params[:user_id].to_i %>
-          <%= form_for [@user, @post] do |post_fields| %>
-          <header class="row content-center grey-background border-3sides">
-            <div class="col-sm-12">
-              <h4>Post</h4>
-            </div>
-          </header>
-          <div class="row">
-            <div class="col-sm-12 border-3sides">
-              <div id="post-input-div">
-                <%= post_fields.text_area :body, placeholder: "Tell the world something" %>
-              </div>
-            </div>
-          </div>
-          <div class="row border-3sides border-bottom">
-            <div class="col-sm-2 col-sm-offset-10">
-              <%= post_fields.submit :post, id: "post-button" %>
-            </div>
-          </div> 
-          <% end %>
-        <% end %>
+
+        <%= render partial: "new_post_form", locals: { page_owner: @page_owner, post: @post } %>
 
         <!-- posts  -->
-        <% @posts.each do |post| %>
-
-          <div class="row border-3sides grey-background" id="posts-section" >
-            <header>
-              <div class="col-sm-1 small-profile-photo-div grey-background">
-                <!--  <a href="#"><img class="small-profile-photo" src="images/user_silhouette_generic.gif"></a>-->
-                <% if post.author.profile_picture %>
-                  <%= image_tag(post.author.profile_picture.file.url, class: "small-profile-photo")  %>
-                <% else %>
-                  <%= image_tag("http://buira.org/assets/images/shared/default-profile.png", class: "small-profile-photo") %>
-                <% end %>
-              </div>
-              <div class="col-sm-4">
-                <div class="row">
-                  <div class="col-sm-12">
-
-                    <a href="#"> <%= post.author.name %> </a>
-
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-sm-12">
-
-                    <%= post.created_at.to_formatted_s(:rfc822).split(' ')[0..-3].join(' ') %>
-
-                  </div>
-                </div>
-              </div>
-            </header>
-          </div>
-          <div class="row post-content border-2sides grey-background">
-            <div class="col-sm-12">
-
-              <p><%= post.body %></p>
-
-            </div>
-          </div>
-
-          <footer class="row border-3sides border-bottom grey-background">
-            <div class="col-sm-12">
-
-            <% if liked?("Post", post.id, current_user.id) %>
-              <%= link_to "Unlike", post_like_path(post.id, find_polymorphic_like("Post", post.id, current_user.id).first.id), method: "DELETE", class: "footer-link"  %>
-            <% else %>
-              <%= link_to "Like", post_likes_path(post), method: "POST", class: "footer-link" %>
-            <% end %>
-
-            <!-- code for counting likes -->
-            <% if post.likes.count > 0 %>
-              <span class="grey-out"><%= pluralize(post.likes.count, "like") %></span> &nbsp;
-            <% end %>
-
-            <%= link_to "Comment", post_path(post), class: "footer-link" %> 
-
-            <% if @user.id == params[:user_id].to_i %>
-              <%= link_to "Delete", user_post_path(@user, post), method: "delete", class: ["footer-link", "float-right"] %>
-            <% end %>
-
-            </div>
-          </footer>
-
-
-          <!-- all comments  -->
-          
-          <% post.comments.each do |comment| %> <!-- currently in order of first->last (seems fine) -->
-
-          <div class="comment-field row grey-background border-2sides border-bottom">
-            <div class="comment">
-              <div class="col-sm-1">
-                <% if comment.author.profile_picture %>
-                  <%= image_tag(comment.author.profile_picture.file.url, class: "small-profile-photo")  %>
-                <% else %>
-                  <%= image_tag("http://buira.org/assets/images/shared/default-profile.png", class: "small-profile-photo") %>
-                <% end %>              
-              </div>
-              <div class="col-sm-11">
-                <div class="row">
-                  <div class="col-sm-12">
-                    <p class="grey-out"><%= link_to comment.author.name, user_timeline_path(comment.author) %> <%= comment.created_at.to_formatted_s(:rfc822).split(' ')[0..-3].join(' ')  %></p>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-sm-12">
-                    <p><%= comment.body %></p>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-sm-12">
-                    <p>
-                      <% if liked?("Comment", comment.id, current_user.id) %>
-                        <%= link_to "Unlike", comment_like_path(comment.id, find_polymorphic_like("Comment", comment.id, current_user.id).first.id), method: "DELETE" %>
-                        <% else %>
-                         <%= link_to "Like", comment_likes_path(comment, params: {likable_type: "Comment"}), method: "POST", class: "footer-link" %> 
-                        <% end %>
-                        <% if comment.likes.count > 0 %>
-                          <span class="grey-out"><%= pluralize(comment.likes.count, "like") %>
-                          </span>
-                        <% end %>
-                      </p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <% end %>
-        <% end %>
+        <%= render partial: "all_posts", locals: { posts: @posts } %>
 
     </div>  
   </div>

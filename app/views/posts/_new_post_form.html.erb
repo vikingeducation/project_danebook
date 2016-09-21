@@ -1,0 +1,26 @@
+<% if page_owner.id == params[:user_id].to_i %>
+  <header class="row content-center grey-background border-3sides">
+    <div class="col-sm-12">
+      <h4>Post</h4>
+    </div>
+  </header>
+
+  <%= form_for [page_owner, post], html: { data: { form: "AJAX" }}, remote: true do |post_fields| %>
+
+    <input type="hidden" name="user_id" value="<%= current_user.id %>">
+
+    <div class="row">
+      <div class="col-sm-12 border-3sides">
+        <div id="post-input-div">
+          <%= post_fields.text_area :body, placeholder: "Tell the world something" %>
+        </div>
+      </div>
+    </div>
+    <div class="row border-3sides border-bottom">
+      <div class="col-sm-2 col-sm-offset-10">
+        <%= post_fields.submit :post, id: "post-button" %>
+      </div>
+    </div> 
+
+  <% end %>
+<% end %>

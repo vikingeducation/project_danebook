@@ -1,0 +1,13 @@
+<header class="row content-center grey-background" id="timeline-about">
+    <div class="col-sm-12 border-3sides">
+      <h4>About</h4>
+    </div>
+  </header>
+  <div class="row border-3sides border-bottom">
+    <div class="col-sm-10 col-sm-offset-1">
+      <p><strong>Born on: </strong><%= page_owner.profile.birth_date.to_formatted_s(:rfc822) %></p>
+      <p><strong>Went to school at: </strong><%= page_owner.profile.college %></p>
+      <p><strong>Hometown: </strong> <%= page_owner.profile.hometown%> </p>
+      <p><strong>Currently Lives: </strong> <%= page_owner.profile.currently_lives %></p>
+    </div>
+  </div>

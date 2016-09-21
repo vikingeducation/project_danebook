@@ -1,0 +1,19 @@
+<header class="row content-center grey-background" id="timeline-photos">
+  <div class="col-sm-12 border-3sides">
+    <h4>Photos (<%= page_owner.photos.count %>) </h4>
+  </div>
+</header>
+
+<div class="row padding-top border-3sides">
+  <% page_owner.photos.each do |photo| %>
+    <div class="col-sm-4 small-photo-div">
+      <%= link_to image_tag(photo.file.url(:thumb), class: "small-photo"), user_photo_path(page_owner, photo) %>
+    </div>
+  <% end %>
+</div>
+
+<div class="row border-2sides border-bottom content-center">
+  <div class="col-xs-12">
+    <a href="photos.html" class="footer-link more-link">See More Photos</a>
+  </div>
+</div>

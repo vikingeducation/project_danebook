@@ -1,0 +1,103 @@
+<% posts.each do |post| %>
+  <div class="row border-3sides grey-background posts-section" >
+    <header>
+      <div class="col-sm-1 small-profile-photo-div grey-background">
+        <% if post.author.profile_picture %>
+          <%= image_tag(post.author.profile_picture.file.url, class: "small-profile-photo")  %>
+        <% else %>
+          <%= image_tag("http://buira.org/assets/images/shared/default-profile.png", class: "small-profile-photo") %>
+        <% end %>
+      </div>
+      <div class="col-sm-4">
+        <div class="row">
+          <div class="col-sm-12">
+
+            <a href="#"> <%= post.author.name %> </a>
+
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+
+            <%= post.created_at.to_formatted_s(:rfc822).split(' ')[0..-3].join(' ') %>
+
+          </div>
+        </div>
+      </div>
+    </header>
+  </div>
+  <div class="row post-content border-2sides grey-background">
+    <div class="col-sm-12">
+
+      <p><%= post.body %></p>
+
+    </div>
+  </div>
+
+  <footer class="row border-3sides border-bottom grey-background">
+    <div class="col-sm-12">
+
+    <% if liked?("Post", post.id, current_user.id) %>
+      <%= link_to "Unlike", post_like_path(post.id, find_polymorphic_like("Post", post.id, current_user.id).first.id), method: "DELETE", class: "footer-link"  %>
+    <% else %>
+      <%= link_to "Like", post_likes_path(post), method: "POST", class: "footer-link" %>
+    <% end %>
+
+    <!-- code for counting likes -->
+    <% if post.likes.count > 0 %>
+      <span class="grey-out"><%= pluralize(post.likes.count, "like") %></span> &nbsp;
+    <% end %>
+
+    <%= link_to "Comment", post_path(post), class: "footer-link" %> 
+
+    <% if @user.id == params[:user_id].to_i %>
+      <%= link_to "Delete", user_post_path(@user, post), method: "delete", class: ["footer-link", "float-right"] %>
+    <% end %>
+
+    </div>
+  </footer>
+
+
+  <!-- all comments  -->
+
+  <% post.comments.each do |comment| %> <!-- currently in order of first->last (seems fine) -->
+  <div class="comment-field row grey-background border-2sides border-bottom">
+    <div class="comment">
+      <div class="col-sm-1">
+        <% if comment.author.profile_picture %>
+          <%= image_tag(comment.author.profile_picture.file.url, class: "small-profile-photo")  %>
+        <% else %>
+          <%= image_tag("http://buira.org/assets/images/shared/default-profile.png", class: "small-profile-photo") %>
+        <% end %>              
+      </div>
+      <div class="col-sm-11">
+        <div class="row">
+          <div class="col-sm-12">
+            <p class="grey-out"><%= link_to comment.author.name, user_timeline_path(comment.author) %> <%= comment.created_at.to_formatted_s(:rfc822).split(' ')[0..-3].join(' ')  %></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <p><%= comment.body %></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-12">
+            <p>
+              <% if liked?("Comment", comment.id, current_user.id) %>
+                <%= link_to "Unlike", comment_like_path(comment.id, find_polymorphic_like("Comment", comment.id, current_user.id).first.id), method: "DELETE" %>
+                <% else %>
+                 <%= link_to "Like", comment_likes_path(comment, params: {likable_type: "Comment"}), method: "POST", class: "footer-link" %> 
+                <% end %>
+                <% if comment.likes.count > 0 %>
+                  <span class="grey-out"><%= pluralize(comment.likes.count, "like") %>
+                  </span>
+                <% end %>
+              </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% end %>
+<% end %>

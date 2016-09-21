@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :require_account_owner, :except => [:index]
+  # after_action :discard_xhr_flash, only: :show
 
   def index
     page_owner
@@ -24,10 +25,17 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(whitelisted_params)
     if @post.save
       flash[:success] = "Your post has been created."
-      redirect_to user_timeline_path(current_user)
+      respond_to do |format|
+        format.html { redirect_to user_timeline_path(current_user) }
+        format.json { render json: @post, status: 200 }
+        format.js { flash.now[:success] = "Your post has been created." }
+      end 
     else
       flash[:error] = @post.errors.full_messages.join(' ')
-      redirect_to user_timeline_path(current_user)
+      respond_to do |format|
+        format.html { redirect_to user_timeline_path(current_user) }
+        format.json { render json: @post.errors, status: 200 }
+      end 
     end
   end
 
@@ -47,4 +55,9 @@ class PostsController < ApplicationController
   def whitelisted_params
     params.require(:post).permit(:id, :author_id, :body) # , :comments_attributes => [:id, :body, :author_id])
   end
+
+  def discard_xml_flash
+    flash.discard if request.xhr?
+  end
+
 end

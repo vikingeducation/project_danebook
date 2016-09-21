@@ -1,0 +1,5 @@
+(function(){
+    var commentHTML = "<%= j(render partial: "shared/comment_box", locals: { comment: @activity.comments.last })  %>";
+    $('#comments_box_<%= @activity.id %>').append(commentHTML);
+    $('#comment_form_<%= @activity.id %> textarea').val('');
+})();

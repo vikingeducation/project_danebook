@@ -22,18 +22,11 @@
   <footer class="tl-post-footer clearfix">
     <div class="col-xs-12">
       <%= like_or_unlike(activity) %>
-      <%= link_to "Comment", "#" %>
+      <%= link_to "Comment", "#", class: 'make_comment', data: {form_id: activity.id} %>
       <%= link_to "Delete", user_activity_path(@user, activity), class: "pull-right", method: :delete  if created_by_user? %>
     </div>
     <%= display_likes(activity) %>
-
-    <% activity.comments.each do |comment| %>
-
-      <%= render partial: "shared/comment_box", locals: { comment: comment }  %>
-
-    <% end %>
-
-    <%= form_for [activity, Comment.new] do |f| %>
+    <%= form_for [activity, Comment.new], remote: true, html: {id: "comment_form_#{activity.id}"} do |f| %>
       <div class="col-xs-12">
         <div class="form-group">
           <%= f.text_area :content, class: "form-control tl-comment-post", rows: "5", placeholder: "Write a comment" %>
@@ -43,5 +36,14 @@
         </div>
       </div>
     <% end %>
+    <div id="comments_box_<%= activity.id %>">
+    <% activity.comments.each do |comment| %>
+
+      <%= render partial: "shared/comment_box", locals: { comment: comment }  %>
+
+    <% end %>
+    </div>
+
+
   </footer>
 </div>

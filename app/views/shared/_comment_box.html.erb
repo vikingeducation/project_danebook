@@ -15,7 +15,6 @@
       <p class="ex-post-content tl-comment-content"><%= comment.content %></p>
       <div class="col-xs-12">
         <%= like_or_unlike(comment.activity) %>
-        <%= link_to "Comment", "#" %>
         <%= link_to "Delete", user_activity_path(comment.owner, comment.activity), class: "pull-right", method: :delete  if users_comment?(comment) %>
       </div>
       <%= display_likes(comment.activity) %>

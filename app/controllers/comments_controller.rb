@@ -12,10 +12,16 @@ class CommentsController < ApplicationController
     @comment.from = current_user.id
     if @comment.save
       flash[:success] = "Your comment has been saved!"
-      redirect_back(fallback_location: root_path)
+      respond_to do |format| 
+        format.html{redirect_back(fallback_location: root_path)}
+        format.js{}
+      end
     else
       flash[:danger] = "Your comment needs to have content in it"
-      redirect_back(fallback_location: root_path)
+      respond_to do |format| 
+        format.html{redirect_back(fallback_location: root_path)}
+        format.js{}
+      end
     end
   end
 

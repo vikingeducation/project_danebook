@@ -6,8 +6,5 @@
     <%= c.text_field :content, placeholder: "Write your comment here", class: "comment-text form-control", 'aria-label'=> "basic-addon1" %>
     <%= c.submit "Comment on Post", class: "btn btn-success" %>
   <% end %>
-  <%= form_for [comment, comment.likes.build] do |like| %>
-    <%= like.hidden_field :user_id, value: current_user.id %>
-    <%= like.submit "Like", class: "btn btn-primary like-section"%>    
-  <% end %>
 </div>
+

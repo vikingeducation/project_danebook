@@ -5,7 +5,7 @@
     <p>by:
         <%=link_to comment.author, comment.author %>
     </p>
-    <span><%= likeable_likes_link(comment) %></span>
+    <span class="like-comment" data-id="<%= comment.id %>"><%= likeable_likes_link(comment) %></span>
     <br>
     <span><%= delete_comment_link(comment, commentable) %></span>
 </div>

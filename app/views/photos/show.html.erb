@@ -23,11 +23,9 @@
                   <%= likeable_likes_link(@photo) %>
                     <%= render partial: "/comments/form", locals: { commentable: @photo } %>
                 </div>
-                <div class="col-sm-10">
+                <div class="col-sm-10 photo-comments" data-id='<%= @photo.id %>'>
                     <% @photo.comments.each do |comment| %>
                     <%= render partial: "/comments/comment", locals: { comment: comment, commentable: @photo } %>
-                    <br>
-                    <br>
                     <% end %>
                 </div>
             </div>

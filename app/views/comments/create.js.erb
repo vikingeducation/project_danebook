@@ -1,0 +1,3 @@
+console.log("creating ajax comment")
+console.log(".'<%= @commentable.class.to_s.downcase %>'-comments[data-id='<%= @commentable.id %>']")
+$(".<%= @commentable.class.to_s.downcase %>-comments[data-id='<%= @commentable.id %>']").append("<%= j(render partial: '/comments/comment', locals: {comment: @comment, commentable: @commentable}) %>");

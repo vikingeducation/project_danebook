@@ -73,6 +73,9 @@ body {
     ul {
         display: inline-block;
         vertical-align: middle;
+        .comment {
+          display: block;
+        }
     }
     ul {
         list-style-type: none;

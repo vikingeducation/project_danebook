@@ -1,28 +1,38 @@
-# Comments Controller
 class CommentsController < ApplicationController
   def create
     session[:return_to] = request.referer
-    commentable = extract_commentable.find(params[:commentable_id])
-    comment = commentable.comments.build(comment_params)
-    comment.user_id = current_user.id
-    flash[:alert] = 'Could Not Create Comment' unless comment.save
-    redirect_to session.delete(:return_to)
+    @commentable = extract_commentable.find(params[:commentable_id])
+    @comment = @commentable.comments.build(comment_params)
+    @comment.user_id = current_user.id
+    respond_to do |format|
+      if @comment.save
+        format.html { redirect_to session.delete(:return_to) }
+        format.js { render :create }
+      else
+        format.html { redirect_to session.delete(:return_to) }
+        format.js { head :none }
+      end
+    end
   end
 
   def destroy
     session[:return_to] = request.referer
-    commentable = extract_commentable.find(params[:commentable_id])
+    @commentable = extract_commentable.find(params[:commentable_id])
+    @comment = @commentable.comments.find(params[:id])
 
     if params[:user_id] != current_user.id.to_s
       flash[:error] = "You're not authorized to delete this"
       redirect_to root_url
-    end
-    if commentable.comments.destroy(params[:id])
-      flash[:success] = 'deleted comment'
-      redirect_to session.delete(:return_to)
     else
-      flash[:alert] = 'something went wrong'
-      redirect_to session.delete(:return_to)
+      respond_to do |format|
+        if @comment.destroy
+          format.html { redirect_to session.delete(:return_to) }
+          format.js { render :destroy }
+        else
+          format.html { redirect_to session.delete(:return_to) }
+          format.js { head :none }
+        end
+      end
     end
   end
 

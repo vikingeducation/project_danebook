@@ -6,22 +6,22 @@
         <li>Posted on:
             <%= post.created_at.strftime("%x || %n %r") %></li>
     </ul>
-<div class="col-sm-12 post-body">
-    <p><%= post.body %></p>
-</div>
-<div class="col-sm-12">
-    <p>
-        <%= likeable_likes_link(post) %>
-        <br>
-        <%= delete_post_link(post) %>
-    </p>
-</div>
-<div class="col-sm-8">
-    <%= render partial: "/comments/form", locals: { commentable: post } %>
-    <% post.comments.each do |comment| %>
-    <%= render partial: "/comments/comment", locals: { comment: comment, commentable: post } %>
-    <br>
-    <br>
-    <% end %>
-</div>
+    <div class="col-sm-12 post-body">
+        <p><%= post.body %></p>
+    </div>
+    <div class="col-sm-12">
+        <p>
+            <span class="like-post" data-id="<%= post.id %>">
+                <%= likeable_likes_link(post) %>
+            </span>
+            <br>
+            <%= delete_post_link(post) %>
+        </p>
+    </div>
+    <div class="col-sm-8 post-comments" data-id="<%= post.id %>">
+        <%= render partial: "/comments/form", locals: { commentable: post } %>
+        <% post.comments.each do |comment| %>
+        <%= render partial: "/comments/comment", locals: { comment: comment, commentable: post } %>
+        <% end %>
+    </div>
 </div>

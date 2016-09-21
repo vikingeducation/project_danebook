@@ -14,7 +14,6 @@ APP.photo = (function(){
 
   var photoClickListener = function(){
     $('[data-target="#myModal"]').on('click', function(e){
-      console.log(e.target);
       e.preventDefault();
     });
   };

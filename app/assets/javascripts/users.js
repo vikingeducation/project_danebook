@@ -17,8 +17,8 @@ APP.comment = (function(){
   };
 
   var commentListener = function(){
-    $('.com-box').on('click', '[data-com-btn="true"]', function(e){
-      console.log($(e.target).closest('.post-wrapper'));
+    $('body').on('click', '.com-box [data-com-btn="true"]', function(e){
+      console.log(e.target);
       $(e.target).closest('.post-wrapper').next().slideToggle(500);
     });
   };

@@ -1,0 +1,5 @@
+$(".post-section").children().first().before("<%= j(render :partial => 'post', :locals => { post: @post, user: @user } ) %>")
+
+// Jquery for post container
+// call prepend on the container and pass in the string with rendering the partial of a post
+// Create a post partial

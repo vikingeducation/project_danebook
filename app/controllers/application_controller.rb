@@ -13,8 +13,9 @@ class ApplicationController < ActionController::Base
     redirect_to root_path, :flash=> {:danger => "Unable to find that user"} unless @user
   end
 
+  #Put this in user controller
   def set_user_user_controller
-    @user = User.find_by_id(params[:id])
+    @user = User.find(params[:id])
     redirect_to root_path, :flash=> {:danger => "Unable to find that user"} unless @user
   end
 

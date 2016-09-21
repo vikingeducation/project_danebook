@@ -8,17 +8,30 @@ class PostsController < ApplicationController
     @post.from = current_user.id
     if @post.save
       flash[:success] = "Your post as been successfully posted for all to see!"
-      redirect_to @user
+      respond_to do |format|
+        #format.html {redirect_to @user}
+        format.js {}
+      end
+      
     else
       flash[:danger] = "You post was not posted"
-      redirect_to current_user
+      respond_to do |format|
+        #format.html {redirect_to current_user}
+        format.js {}
+      end
+      
     end
   end
 
   def destroy
     @post = Post.find_by_id(params[:id])
-    @post.destroy
-    redirect_to current_user
+    if @post.destroy
+      respond_to do |format|
+        format.html{redirect_to current_user}
+        format.js{}
+      end
+    end
+    
   end
 
 

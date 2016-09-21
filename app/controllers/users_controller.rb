@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
-  before_action :set_user_user_controller, only: [:edit, :update, :destroy, :show]
-  before_action :require_login, except: [:new, :create, :show]
-  before_action :require_current_user, only: [:edit, :update, :destroy]
+  # before_action :set_user_user_controller, only: [:edit, :update, :destroy]
+  # before_action :require_login, except: [:new, :create, :show]
+  # before_action :require_current_user, only: [:edit, :update, :destroy]
 
   def new
     @user = User.new
@@ -42,7 +42,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @blah = params.inspect
+    @user = User.find(params[:id])
     @profile = @user.profile
     @post = current_user.posts.build if current_user
     @comment = @post.comments.build if current_user

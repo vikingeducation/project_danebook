@@ -1,14 +1,14 @@
 <div class="same-line">
     <% current_user.been_friended.each do |friend_request| %>
-    <% @user = User.find(friend_request.id) %>
-    <% if !current_user.friends.include?(@user) %>
-      <%= @user.name %> wants to be you friend!
+    <% user = User.find(friend_request.id) %>
+    <% if !current_user.friends.include?(user) %>
+      <%= user.name %> wants to be you friend!
        <%= form_for(current_user.friended_relationships.build) do |f| %>
-          <div><%= hidden_field_tag :friended_id, @user.id %></div>
+          <div><%= hidden_field_tag :friended_id, user.id %></div>
           <%= f.submit "Friend", class: "btn btn-primary same-line" %>
         <% end %>
-        <%= link_to "Delete request", relationship_path(Relationship.where(friender_id: @user.id ).where(friended_id: current_user.id).first),
-              method: :delete, data: {confirm: "Are you sure you want to delete #{@user.name}'s friend request?"}, class: "btn btn-danger same-line" %>
+        <%= link_to "Delete request", relationship_path(Relationship.where(friender_id: user.id ).where(friended_id: current_user.id).first),
+              method: :delete, data: {confirm: "Are you sure you want to delete #{user.name}'s friend request?"}, class: "btn btn-danger same-line" %>
       <% end %>
   <% end %>
 </div>

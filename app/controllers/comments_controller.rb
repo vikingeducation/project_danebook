@@ -1,37 +1,27 @@
 class CommentsController < ApplicationController
 
+
   def create
-    #if its on a post
-    if params[:post_id]
-      @commentable = Post.find(params[:post_id])
-      parent_id = params[:post_id]
-      @user = @commentable.user
-      type = "Post"
-    #if its on a photo
-    else
-      @commentable = Photo.find(params[:photo_id])
-      @user = @commentable.user
-      parent_id = params[:photo_id]
-      type = "Photo"
-    end
-    @comment = Comment.new(:commentable_id => parent_id.to_i,
-                          :commentable_type => type,
+  id_sym = (params[:commentable].downcase+"_id").to_sym
+  @commentable = params[:commentable].constantize.find(params[id_sym])
+  @comment = Comment.new(:commentable_id => @commentable.id,
+                          :commentable_type => params[:commentable],
                           :user_id => current_user.id,
                           :body => params[:comment][:body])
     respond_to do |format|
       if @comment.save
-        User.delay(run_at: 5.seconds.from_now).send_comment_email(@user.id, current_user.id, type)
+        User.delay(run_at: 5.seconds.from_now).send_comment_email(@commentable.user, current_user, params[:commentable])
         format.html{
-          if type == "Photo"
-            redirect_to user_photo_path(@user, @commentable)
-          elsif type == "Post"
-            redirect_to user_posts_path(@user)
+          if params[:commentable] == "Photo"
+            redirect_to user_photo_path(@commentable.user, @commentable)
+          elsif params[:commentable] == "Post"
+            redirect_to user_posts_path(@commentable.user)
           end
         }
         format.js{}
       else
         format.html{
-          redirect_to user_posts_path(@user) 
+          redirect_to user_posts_path(@commentable.user) 
         }
         format.js{head:none}
       end
@@ -39,22 +29,17 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    id_sym = (params[:commentable].downcase+"_id").to_sym
+    @commentable = params[:commentable].constantize.find(params[id_sym])
     @comment = Comment.find(params[:id])
-    if params[:post_id]
-      @post = Post.find(params[:post_id])
-      @user = @post.user
-    else
-      @photo = Photo.find(params[:photo_id])
-      @user = @photo.user
-    end
     @comment.destroy
     respond_to do |format|
       format.js{}
       format.html{
         if params[:post_id]
-          redirect_to user_posts_path(@user)
+          redirect_to user_posts_path(@commentable.user)
         elsif params[:photo_id]
-          redirect_to user_photo_path(@user, @photo)
+          redirect_to user_photo_path(@commentable.user, @commentable)
         end  
       }
     end

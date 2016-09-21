@@ -12,15 +12,15 @@ Rails.application.routes.draw do
   end
   resources :photos, :only => [:update]
   resources :photos, :only => [] do
-    resources :likes, :only=>[:create,:destroy]
-    resources :comments, :only=>[:create, :destroy]
+    resources :likes, :only=>[:create,:destroy], :defaults => {:likeable=>"Photo"}
+    resources :comments, :only=>[:create, :destroy], :defaults => {:commentable=>'Photo'}
   end
   resources :posts, :only=>[] do
-    resources :likes, :only=>[:create,:destroy]
-    resources :comments, :only=>[:create, :destroy]
+    resources :likes, :only=>[:create,:destroy], :defaults => {:likeable=>"Post"}
+    resources :comments, :only=>[:create, :destroy], :defaults => {:commentable=>"Post"}
   end
   resources :comments, :only=>[] do
-    resources :likes, :only=>[:create,:destroy]
+    resources :likes, :only=>[:create,:destroy], :defaults => {:likeable=>"Comment"}
   end
   resource :session, :only => [:new, :create, :destroy]
   get "login" => "sessions#new"

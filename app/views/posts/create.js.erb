@@ -1,0 +1,7 @@
+(function(){
+    var postHTML = "<%= j(render partial: 'shared/post_profile_container', locals: { activity: @activity }) %>";
+    var $existPost = $('<section class="tl-exist-post">')
+    $existPost.append(postHTML);
+    $('.posts-box').prepend($existPost);
+    $('#post_content').val('');
+})();

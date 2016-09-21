@@ -33,7 +33,7 @@
 
     <% end %>
 
-    <%= form_for [activity, @comment] do |f| %>
+    <%= form_for [activity, Comment.new] do |f| %>
       <div class="col-xs-12">
         <div class="form-group">
           <%= f.text_area :content, class: "form-control tl-comment-post", rows: "5", placeholder: "Write a comment" %>

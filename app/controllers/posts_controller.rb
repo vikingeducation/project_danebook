@@ -3,8 +3,12 @@ class PostsController < ApplicationController
 
   def create
     @user = current_user
-    @user.posts.create(post_params)
-    redirect_back(fallback_location: root_path)
+    @post = @user.posts.create(post_params)
+    @activity = @post.activity
+    respond_to do |format|
+      format.html { redirect_back(fallback_location: root_path) }
+      format.js {}
+    end
   end
 
   private

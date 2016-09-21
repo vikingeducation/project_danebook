@@ -1,0 +1,8 @@
+(function(){
+    var $postHtml = $("<%= j(render 'post', post: @post, user: @post.user) %>")
+    var $lastPost = $('.post-panel').first();
+    var $textArea = $('textarea').val('');
+    $postHtml.insertBefore($lastPost);
+    $postHtml.hide();
+    $postHtml.slideDown(1000);
+})();

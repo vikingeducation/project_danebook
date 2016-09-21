@@ -20,7 +20,7 @@
         <h3 class="panel-title center-text center-text">Post</h3>
       </div>
       <% if current_user == @user || current_user.friends_with?(@user) %>
-        <%= form_for @post do |post_builder| %>
+        <%= form_for @post, remote: true do |post_builder| %>
           <div class="panel-body">
             <%= post_builder.text_area :post_text, placeholder: 'Tell the world something...', rows: 3, class: 'form-control' %>
           </div>

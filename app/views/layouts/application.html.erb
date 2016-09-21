@@ -8,7 +8,7 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <%= render get_header_path if needs_header? %>
-  <body class="container-fluid">
+  <body class="container-fluid" data-controller-id="<%= controller.controller_name + '#' + controller.action_name %>">
     <%= yield %>
     <div class="row">
       <p class="success"><%= flash[:success] if flash[:success] %></p>

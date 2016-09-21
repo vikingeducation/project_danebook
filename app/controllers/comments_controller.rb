@@ -6,10 +6,15 @@ class CommentsController < ApplicationController
     @comment = @commentable.comments.build(creation_params)
     if @comment.save
       flash[:success] = 'Comment created!'
-      redirect_to :back
+      respond_to do |format|
+        format.html { redirect_back(fallback_location: root_url) }
+        format.js { render :new }
+      end
     else
       flash[:error] = 'Unable to post comment :('
-      redirect_to :back
+      respond_to do |format|
+        format.html { redirect_back(fallback_location: root_url) }
+      end
     end
   end
 

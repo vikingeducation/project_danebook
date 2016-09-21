@@ -9,8 +9,15 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(whitelisted_post_params)
     if @post.save
       flash[:success] = 'Post created'
+      respond_to do |format|
+        format.html { redirect_back(fallback_location: root_url) }
+        format.js { render :new }
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_back(fallback_location: root_url) }
+      end
     end
-    redirect_back(fallback_location: root_url)
   end
 
   def index
@@ -24,7 +31,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
-    if current_user == @post.user  # got a bug! was assigning current_user instead of comparing
+    if current_user == @post.user
       current_user.posts.destroy(@post)
       flash[:success] = 'Post deleted'
       redirect_back(fallback_location: root_url)

@@ -8,6 +8,8 @@ var unlike = $('<a/>').addClass('unlike-button')
          .attr('rel', 'nofollow')
          .attr('data-method', 'delete')
          .attr('href', likeID)
+         .attr('data-remote', "true")
          .html('Unlike');
 console.log(unlike)
 post.find('#post-feedback .col-xs-1 h6').append(unlike);
+post.find('#comment-feedback .col-xs-1 h6').append(unlike);

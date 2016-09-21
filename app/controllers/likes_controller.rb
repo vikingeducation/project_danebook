@@ -19,9 +19,10 @@ class LikesController < ApplicationController
 
   def destroy
     @like = Like.find(params[:id])
+    @content_id = @like.likeable_id
+    @content_type = @like.likeable_type
     if current_user.id == @like.user_id && @like.destroy
-      flash[:success] = "You've unliked the post!"
-      redirect_back(fallback_location: root_path)
+      respond_to :js
     else
       flash.now[:danger] = "Coult not unlike that post"
       redirect_back(fallback_location: root_path)

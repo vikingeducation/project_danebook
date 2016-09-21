@@ -13,13 +13,16 @@
     <h6><%= link_to user_header_name(comment.user_id), user_path(comment.user_id) %>
       Posted on <%= comment.created_at.strftime("%m/%d/%Y") %></h6>
     <p><%= comment.body %></p>
-    <div class="row">
+    <div class="row" id="comment-feedback">
       <div class="col-xs-1">
-        <h6>
+        
           <% if current_user.likes_post?(comment.id, "Comment").empty? %>
-            <%= link_to "Like", likes_path(likeable_id: comment.id, likeable_type: "Comment"), method: 'post' %></h6>
+          <h6>
+            <%= link_to "Like", likes_path(likeable_id: comment.id, likeable_type: "Comment"), remote: true, method: 'post', class: 'like-button' %></h6>
           <% else %>
-            <%= link_to "Unlike", like_path(find_like_id(current_user.id, comment.id, "Comment")), method: 'delete' %>
+            <h6>
+            <%= link_to "Unlike", like_path(find_like_id(current_user.id, comment.id, "Comment")), remote: true, method: 'delete', class: 'unlike-button' %>
+            <h6>
           <% end %>
         </h6>
       </div>

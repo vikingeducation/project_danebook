@@ -30,9 +30,9 @@
       <div class="row" id="post-feedback">
         <div class="col-xs-1">
           <% if current_user.likes_post?(@photo.id, "Photo").empty? %>
-            <%= link_to "Like", likes_path(likeable_id: @photo.id, likeable_type: "Photo"), method: 'post' %>
+            <h6><%= link_to "Like", likes_path(likeable_id: @photo.id, likeable_type: "Photo"), remote: true, method: 'post', class: 'like-button' %></h6>
           <% else %>
-            <%= link_to "Unlike", like_path(find_like_id(current_user.id, @photo.id, "Photo")), method: 'delete' %>
+            <h6><%= link_to "Unlike", like_path(find_like_id(current_user.id, @photo.id, "Photo")), remote: true, method: 'delete', class: 'unlike-button' %></h6>
           <% end %>
         </div>
         <div class="col-xs-4">

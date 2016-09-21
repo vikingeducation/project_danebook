@@ -22,7 +22,7 @@
       <% if current_user.likes_post?(post.id, "Post").empty? %>
         <h6><%= link_to "Like", likes_path(likeable_id: post.id, likeable_type: "Post"), method: 'post', remote: true, class:"like-button" %></h6>
       <% else %>
-        <h6><%= link_to "Unlike", like_path(find_like_id(current_user.id, post.id, "Post")), method: 'delete', class:"unlike-button" %></h6>
+        <h6><%= link_to "Unlike", like_path(find_like_id(current_user.id, post.id, "Post")), method: 'delete', remote: true, class:"unlike-button" %></h6>
       <% end %>
     </div>
     <div class="col-xs-4">

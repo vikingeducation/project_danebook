@@ -4,37 +4,70 @@ class CommentsController < ApplicationController
       commentable = get_commentable
 
       if commentable
-        comment = commentable.comments.build(comment_params)
-        current_user.comments << comment
+        @comment = commentable.comments.build(comment_params)
+        current_user.comments << @comment
 
-        if comment.save
-          User.send_activity_email(comment.parent_user.id, comment.id) unless comment.parent_user == current_user
+        if @comment.save
+          User.send_activity_email(@comment.parent_user.id, @comment.id) unless @comment.parent_user == current_user
           # User.delay.send_activity_email(comment.parent_user.id, comment.id) unless comment.parent_user == current_user
+          respond_to do |format|
+            format.js {} 
+            format.html { 
+              if request.referer
+                redirect_to URI(request.referer).path
+              else
+                redirect_to root_path
+              end
+            }
+          end
         else
           flash[:danger] = "Could not create comment."
+          respond_to do |format|
+            format.js { head :none }
+            format.html { 
+              if request.referer
+                redirect_to URI(request.referer).path
+              else
+                redirect_to root_path
+              end
+            }
+          end
         end
       else
         flash[:danger] = "Could not create comment."
-      end
-
-      if request.referer
-        redirect_to URI(request.referer).path
-      else
-        redirect_to root_path
+        respond_to do |format|
+          format.js { head :none }
+          format.html { 
+            if request.referer
+              redirect_to URI(request.referer).path
+            else
+              redirect_to root_path
+            end
+          }
+        end
       end
     end
 
     def destroy
       begin
-        comment = current_user.comments.find(params[:id])
-        unless comment.destroy
+        @comment = current_user.comments.find(params[:id])
+        if @comment.destroy
+          respond_to do |format|
+            format.js {} 
+            format.html { redirect_to URI(request.referer).path }
+          end
+        else
           flash[:danger] = "Could not delete comment!"
+          respond_to do |format|
+            format.js { head :none } 
+            format.html { redirect_to URI(request.referer).path }
+          end
         end
       rescue ActiveRecord::RecordNotFound
         flash[:danger] = "Could not delete comment!"
+        redirect_to URI(request.referer).path
       end
 
-      redirect_to URI(request.referer).path
     end
 
     private

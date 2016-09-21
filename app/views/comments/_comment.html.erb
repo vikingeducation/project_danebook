@@ -1,4 +1,4 @@
-<div class="row comment">
+<div class="row comment" data-comment-id="<%= comment.id %>">
   <div class="col-sm-1">
     <a href="<%= user_path(comment.commenter) %>"><img src="<%= comment.commenter.profile_url %>"></a>
   </div>
@@ -14,7 +14,7 @@
             <%= link_to "Like", comment_likes_path(comment), method: :post %>
           <% end %>
           <a href="#"><%= "· " + pluralize(comment.likes.count, 'like') if comment.likes.count > 0 %></a>
-          <%= link_to "· Delete", comment, method: :delete if comment.commenter == current_user %>
+          <%= link_to "· Delete", comment, remote: true, method: :delete if comment.commenter == current_user %>
         </p>
       </div>
     </div>

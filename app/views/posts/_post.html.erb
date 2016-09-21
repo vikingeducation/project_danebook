@@ -1,4 +1,4 @@
-<article>
+<article data-id="<%= post.id %>">
   <div class = "panel panel-default">
 
     <!-- post -->
@@ -33,7 +33,7 @@
           <a href="#">Comment</a>
         </div>
         <div class="col-sm-2 pull-right">
-          <%= link_to "Delete Post", post, method: :delete, data: { confirm: 'Are you sure?' } if post.author == current_user %>
+          <%= link_to "Delete Post", post, remote: true, method: :delete, data: { confirm: 'Are you sure?' } if post.author == current_user %>
         </div>
       </div>
 
@@ -46,16 +46,18 @@
         </div>
       <% end %>
 
-      <!-- comments -->
-      <% post.comments.order(created_at: :asc).each do |comment| %>
-        <%= render partial: "comments/comment", locals: { comment: comment } if comment.persisted? %>
-      <% end %>
+      <div class="comment-list">
+        <!-- comments -->
+        <% post.comments.order(created_at: :asc).each do |comment| %>
+          <%= render partial: "comments/comment", locals: { comment: comment } if comment.persisted? %>
+        <% end %>
+      </div>
 
       <!-- new comment -->
-      <%= form_for [post, @comment] do |f| %>
+      <%= form_for [post, @comment], remote: true do |f| %>
         <div class="row">
           <div class="col-sm-12">
-            <%= f.text_area :text, class: "form-control", rows: 2, placeholder: "Write a comment...", style:"resize: none" %>
+            <%= f.text_area :text, class: "form-control comment-text", rows: 2, placeholder: "Write a comment...", style:"resize: none" %>
           </div>
         </div>
         <div class="row">

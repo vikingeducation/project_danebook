@@ -1,15 +1,15 @@
-<div class = "panel panel-default">
+<div class = "panel panel-default" id="post-box">
   <div class="panel-heading">
     <h2 class="panel-title">Pöst</h2>
   </div>
   <div class="row post-box">
-    <%= form_for [current_user, @post], class: "panel-body" do |f| %>
+    <%= form_for [current_user, @post], remote: true, class: "panel-body" do |f| %>
 
     <div class = "col-sm-12">
         <%= f.text_area :text, class:"form-control", rows: 3, placeholder: "Tell the world something...", style:"resize: none" %>
         <br>
         <div class="col-sm-3 col-sm-offset-9">
-          <%= f.submit "Post!", class: "btn btn-primary btn-block" %>
+          <%= f.submit "Post!", class: "btn btn-primary btn-block", id: "post-btn" %>
         </div>
 
     </div>

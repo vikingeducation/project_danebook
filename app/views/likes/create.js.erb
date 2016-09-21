@@ -1,0 +1,7 @@
+var $post = $(".post").filter("[data-id=<%= j(@like.likable.id.to_s) %>]");
+var $likeBtn = $post.find(".like-btn")
+// $likeBtn[0].innerHTML = "";
+
+$likeBtn.html("<%= j(render partial: 'js_unlike_btn', locals: { post: @post, like: @like }) %>");
+
+

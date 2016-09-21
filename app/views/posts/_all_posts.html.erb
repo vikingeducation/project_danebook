@@ -1,5 +1,6 @@
 <% posts.each do |post| %>
-  <div class="row border-3sides grey-background posts-section" >
+  <div class="post" data-id=<%= post.id %>>
+  <div class="row border-3sides grey-background posts-section">
     <header>
       <div class="col-sm-1 small-profile-photo-div grey-background">
         <% if post.author.profile_picture %>
@@ -30,18 +31,21 @@
     <div class="col-sm-12">
 
       <p><%= post.body %></p>
-
     </div>
   </div>
 
   <footer class="row border-3sides border-bottom grey-background">
     <div class="col-sm-12">
 
-    <% if liked?("Post", post.id, current_user.id) %>
-      <%= link_to "Unlike", post_like_path(post.id, find_polymorphic_like("Post", post.id, current_user.id).first.id), method: "DELETE", class: "footer-link"  %>
-    <% else %>
-      <%= link_to "Like", post_likes_path(post), method: "POST", class: "footer-link" %>
-    <% end %>
+    <div class="like-btn">
+      <% if liked?("Post", post.id, current_user.id) %>
+        <%= link_to "Unlike", post_like_path(post.id, find_polymorphic_like("Post", post.id, current_user.id).first.id), method: "DELETE", class: "footer-link", remote: true %>
+      <% else %>
+        <%= link_to post_likes_path(post), method: "POST", class: "footer-link", remote: true do %> 
+          Like 
+        <% end %>
+      <% end %>
+    </div>
 
     <!-- code for counting likes -->
     <% if post.likes.count > 0 %>
@@ -100,4 +104,5 @@
     </div>
   </div>
   <% end %>
+  </div>
 <% end %>

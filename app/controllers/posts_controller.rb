@@ -1,6 +1,5 @@
 class PostsController < ApplicationController
   before_action :require_account_owner, :except => [:index]
-  # after_action :discard_xhr_flash, only: :show
 
   def index
     page_owner
@@ -56,8 +55,5 @@ class PostsController < ApplicationController
     params.require(:post).permit(:id, :author_id, :body) # , :comments_attributes => [:id, :body, :author_id])
   end
 
-  def discard_xml_flash
-    flash.discard if request.xhr?
-  end
 
 end

@@ -1,4 +1,5 @@
 class LikesController < ApplicationController
+
   def create
     if params[:likable_type] == "Comment"
       @comment = Comment.find(params[:comment_id])
@@ -14,26 +15,32 @@ class LikesController < ApplicationController
       @post = Post.find(params[:post_id])
       @like = @post.likes.build
       @like.user = current_user
-      redirect_to user_timeline_path(@post.author)
-    end
-
-    if @like.save
-      flash[:success] = "Cool, you liked it."
-    else
-      flash[:error] = @like.errors.full_messages.join(", ")
+      if @like.save 
+        respond_to do |format|
+          format.html { redirect_to user_timeline_path(@post.author) }
+          format.js {}
+        end
+      else 
+        format.html { flash.now[:error] = "There was an error" }
+      end
+      
     end
 
   end
 
   def destroy
     @like = Like.find(params[:id])
-    if @like && @like.destroy
-      flash[:success] = "You unliker, you..."
-      redirect_to :back
-    else
-      flash[:error] = "Let us do the liking, mister. (Your unlike wasn't recorded.)"
-      redirect_to :back
-    end    
+    respond_to do |format|
+      format.html { redirect_to :back }
+      format.js do 
+        if @like.destroy
+          flash.now[:success] = "You unliker, you..."
+        else
+          flash.now[:error] = "Let us do the liking, mister. (Your unlike wasn't recorded.)"
+        end    
+      end
+    end
+      
   end
 
 

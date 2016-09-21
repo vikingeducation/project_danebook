@@ -14,7 +14,7 @@ class UsersController < ApplicationController
   def new
     @user = User.new
     if signed_in_user?
-      redirect_to user_timeline_path(current_user)
+      redirect_to newsfeed_index_path
     end
   end
 

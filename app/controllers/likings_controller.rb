@@ -7,7 +7,10 @@ class LikingsController < ApplicationController
   def create
     @post = Post.find(params[:post_id])
     @post.likes.create(user_id: current_user.id)
-    redirect_to user_path(current_user)
+    
+    respond_to do |format|
+      format.js { }
+    end
   end
 
   def destroy
@@ -15,7 +18,10 @@ class LikingsController < ApplicationController
     @post = @liking.likeable
     @user = @liking.user
     if @liking.destroy
-      redirect_to user_path(current_user)
+      respond_to do |format|
+        # format.html { render(:text => "not implemented") }
+        format.js { }
+      end    
     else
       redirect_to user_path(current_user)
     end

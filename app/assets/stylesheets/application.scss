@@ -140,10 +140,11 @@ span.nav-default {
   display: -ms-flexbox;
   display: flex; }
 
-.main {
-  margin: 0% 10% 0% 10%;
-  border: solid;
-  border-width: 0.5px; }
+#body-container {
+  margin: 0% 0% 0% 0%;
+  padding: 0px;
+  border: 1px solid black;
+  }
 
 .container {
   margin-top: 0px;
@@ -236,18 +237,23 @@ h1 {
   max-height: 70%;
 }
 
-#comment-panels {
+#post-panels {
   border: 1px solid grey;
 }
-#comment-panels-box {
+#post-panels-box {
   padding: 0px;
 }
 
-#post-footers li {
+#post-options li {
   display: inline;
   margin: 0px;
 }
 
-#comment-options {
-  padding: 5px;
+#post-options {
+  padding: 0px;
 }
+
+.main {
+  border: 1px solid black;
+}
+

@@ -2,37 +2,39 @@
 <div class="jumbotron" id="big-body">
 
   <%= render partial: "shared/user_nav_bar", locals: { profile: @profile} %>
-
-  <div class="main">
-    <div class= "row">
-      <div class ="row header-bar">  
-        <h1>Friends</h1>
-      </div>
-    </div> 
-    <div class="row row-eq-height">
-      <% @users.each do |user| %>  
-        <div class="col-xs-6"> 
-          <div class="container" id="friends">
-            <div class="row row-eq-height">
-              <div class="col-xs-3">
-                <img id="friend-picture" src="<%= user.profile.photo.avatar.url %>">
-              </div>
-              <div class="col-xs-5">
-                <u><a href="#"> <%= user.username %> </a></u>
-                <span id="helpBlock" class="help-block"> <%= user.friended_users.count %> </span>
-                <span>&nbsp</span>
-              </div>  
-              <div class="col-xs-4">
-                <% if current_user.friended_users.include?(user) %>
-                  <button type="button" class="btn btn-primary btn-sm"><%= link_to "UN-Friend", friending_path(current_user.friended_users.find(user.id)), method: :delete %></button>
-                <% else %>
-                  <button type="button" class="btn btn-primary btn-sm"><%= link_to "Friend", user_friendings_path(user), method: :create %></button>
-                <% end %>
-              </div>     
+</div>
+<div class="col-xs-12" id="body-container">
+  <div class ="row header-bar">  
+    <h1>Friends</h1>
+  </div> 
+  <div class="row row-eq-height">
+    <% @users.each do |user| %>  
+      <div class="col-xs-6" style="width: 100%"> 
+        <div class="container" id="friends">
+          <div class="row row-eq-height">
+            <div class="col-xs-3">
+              <img id="friend-picture" src="<%= user.profile.photo.avatar.url %>" style="width: 100%">
             </div>
+            <div class="col-xs-5">
+              <u>
+                <a href="#"> 
+                  <%= user.username %> 
+                </a>
+              </u>
+              <span id="helpBlock" class="help-block"> 
+                <%= user.friended_users.count %> 
+              </span>
+            </div>  
+            <div class="col-xs-4">
+              <% if current_user.friended_users.include?(user) %>
+                <button type="button" class="btn btn-primary btn-sm"><%= link_to "UN-Friend", friending_path(current_user.friended_users.find(user.id)), method: :delete %></button>
+              <% else %>
+                <button type="button" class="btn btn-primary btn-sm"><%= link_to "Friend", user_friendings_path(user), method: :create %></button>
+              <% end %>
+            </div>     
           </div>
         </div>
-      <% end %>
-    </div>
+      </div>
+    <% end %>
   </div>
 </div>

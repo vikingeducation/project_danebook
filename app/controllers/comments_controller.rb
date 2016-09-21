@@ -1,18 +1,22 @@
 class CommentsController < ApplicationController
   def create
     @post = Post.find(params[:post_id])
-    @comment = Comment.new(
+    @comment = Comment.new( 
           description: params[:comment][:description],
           commentable_type: params[:commentable],
           commentable_id: params[:post_id], 
           user_id: current_user.id)
     if @comment.save
       flash[:success] = "Comment Successfully created!"
+
+      respond_to do |format|
+        # format.html { render(:text => "not implemented") }
+        format.js { }
+      end
     else
+
       flash[:notice] = "Comment NOT! Sucessfully created!"
     end
-
-    redirect_to current_user
   end
 
   def update
@@ -20,9 +24,14 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    raise
     @comment = Comment.find(params[:id])
     if @comment.destroy
       flash[:success] = "Comment Successfully Deleted!"
+      respond_to do |format|
+        # format.html { render(:text => "not implemented") }
+        format.js { }
+      end
     end
     redirect_to current_user
   end

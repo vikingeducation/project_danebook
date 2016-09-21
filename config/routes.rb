@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       resources :photos, :defaults => { :photoable => 'Post'}, :only => [:create]
       resources :likings, :only => [:create]
     end
+
     resource :profiles, :except => [:create, :destroy] do
       resources :photos, :defaults => { :photoable => 'Profile'}, :only => [:create]
       get "/edit" =>  "profiles#show"
@@ -20,7 +21,6 @@ Rails.application.routes.draw do
   end
 
   resources :timelines, :only => [:index]
-
   resources :friendings, :only =>  [:destroy]
   resources :likings, :only => [:destroy]
   resource :session, :only => [:new, :create, :destroy]

@@ -16,9 +16,4 @@ class Profile < ApplicationRecord
   has_one :photo, :as => :photoable, class_name: "Photo", inverse_of: :photoable
   accepts_nested_attributes_for :photo
 
-  def has_photo?
-    self.photo.nil? ? false : true
-  end
-
-
 end

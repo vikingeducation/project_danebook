@@ -22,7 +22,7 @@ class FriendingsController < ApplicationController
     @friending = Friending.find_by_friend_id(params[:id])
     if @friending
       @friending.destroy
-      flash[:success] = "HSe's your bitch now"
+      flash[:success] = "He's unfriended now"
       redirect_to user_friendings_path(current_user)
     else
       flash[:alert] = "Couldn't unfriend him, try blocking him eh."

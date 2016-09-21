@@ -8,9 +8,9 @@
 
 <div class="photo-container">
   <% unless profile.nil?%>
-    <% if profile.has_photo? %>
+    <% if !(profile.photo.nil?) %>
       <%= image_tag profile.photo.avatar.url(:thumb) %>
-      <h4> <%= current_user.username %> </h4>
+      <h4 user-id="<%=current_user.id%>"> <%= current_user.username %> </h4>
   <% else %>
     <%= image_tag "http://learngroup.org/assets/images/logos/default_male.jpg" %>
     

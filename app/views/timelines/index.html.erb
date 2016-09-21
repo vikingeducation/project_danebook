@@ -5,7 +5,9 @@
   <h2> :: Recently Active News Feed :: </h2>
   <% @friends.each do |friend| %>
     <div class="row">  
-      <%= render partial: "shared/wall_post", locals: { posts: friend.posts.recent_posts(1)} %>
+      <% if friend.posts.length != 0 %>
+        <%= render partial: "shared/wall_post", locals: { post: friend.posts.recent_posts(1).first} %>
+      <% end %>
     </div>
   <% end %>
 
@@ -13,7 +15,9 @@
 
   <% @friends.each do |friend| %>
     <div class="row">
-      <%= render partial: "shared/wall_post", locals: { posts: friend.posts} %>
+      <% friend.posts.each do |post| %>
+        <%= render partial: "shared/wall_post", locals: { post: post} %>
+      <% end %>
     </div>
   <% end %>
 </ul>

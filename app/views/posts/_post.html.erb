@@ -1,4 +1,4 @@
-<div class="col-sm-12 post">
+<div class="col-sm-12 post" data-id="<%= post.id %>">
     <div id="post-img"><%= profile_pic(post.author) %></div>
     <ul>
         <li><%= link_to post.author.profile.first_name, current_user %>

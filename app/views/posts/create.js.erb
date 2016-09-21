@@ -1,0 +1,3 @@
+console.log("making new ajax post ");
+
+$(".post-rows").prepend("<%= j(render partial: '/posts/post', locals: {post: @post}) %>");

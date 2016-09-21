@@ -1,4 +1,4 @@
-<%= simple_form_for @posts.build, url: user_posts_path(user) do |p| %>
+<%= simple_form_for @posts.build, url: user_posts_path(user), remote: true do |p| %>
 <%= p.input :body, as: :text, label: false %>
 <%= p.submit "New Post" %>
 <% end %>

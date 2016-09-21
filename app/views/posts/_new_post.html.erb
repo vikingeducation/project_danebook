@@ -1,4 +1,4 @@
-<section class="row section-container">
+<section class="row section-container" data-type="new-post">
   <div class="col-sm-12 section-header">
     <div class="row">
       <div class="col-sm-6">
@@ -6,19 +6,20 @@
       </div>
     </div>
   </div>
-  <%= form_tag posts_path, method: "post" do |f| %>
+  <%# form_tag posts_path, method: "post", remote: true do |f| %>
+  <%= form_for post, remote: true, method: :post do |f| %>
     <div class="col-xs-12">
       <div class="new-post pull-left">
         <%= image_tag(profile_pic_url(user), class: "post-pic", style: "margin-top: 10px;") %>
       </div>
       <div class="col-xs-9 col-sm-10 section-container text-center" style="margin-bottom: 10px;">
-        <%= text_area_tag("post[description]", post.description, class: "btn-block", placeholder: "Tell the world something...", rows: "2") %>
+        <%= f.text_area :description, class: "btn-block", placeholder: "Tell the world something...", rows: "2" %>
       </div>
     </div>
     <div class="col-sm-12 section-header post-block">
       <div class="row">
         <div class="col-sm-3 col-sm-offset-8">
-          <%= submit_tag("Post", class: "btn btn-primary btn-block") %>
+          <%= f.submit "Post", class: "btn btn-primary btn-block" %>
         </div>
       </div>
     </div>

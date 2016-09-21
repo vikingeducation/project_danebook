@@ -1,0 +1,3 @@
+$('[data-type="<%= @commentable.class.to_s.downcase %>"][data-id="<%= @commentable.id %>"] .new_comment').before("<%= escape_javascript(render @comment, user: current_user) %>");
+
+$('[data-type="<%= @commentable.class.to_s.downcase %>"][data-id="<%= @commentable.id %>"] textarea').val("");

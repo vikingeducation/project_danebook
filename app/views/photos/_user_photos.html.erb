@@ -1,4 +1,4 @@
-<section class="row section-container">
+<section class="row section-container" data-type="photo" data-id="<%= resource.id %>">
     <div class="col-sm-12">
         <div class="row post-wrapper">
           <div class="col-xs-1">
@@ -19,7 +19,7 @@
         </div>
         <div class="row post-wrapper section-footer">
             <div class="col-xs-12">
-                <div class="row post-wrapper">
+                <div class="row post-wrapper" >
                     <% resource.comments[0..6].each_with_index do |comment, index| %>
 
                       <%= render 'comments/comment', comment: comment, post: resource, index: index, user: user %>

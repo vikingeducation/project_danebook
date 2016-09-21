@@ -6,13 +6,16 @@ class PostsController < ApplicationController
 
       @user = current_user
       @post =@user.text_posts.create(white_listed_posts_params)
-      # sdlkfj;
-      if @post.id.nil?
-        flash[:danger] = "Uh ohhh something went wrong"
-      else
-        flash[:success] = "Ehhh way to go fonz"
+      respond_to do |format|
+        if @post.id.nil?
+          flash[:danger] = "Uh ohhh something went wrong"
+          format.js { head :none }
+        else
+          flash[:success] = "Ehhh way to go fonz"
+          format.html { redirect_to :back }
+          format.js { }
+        end
       end
-      redirect_to :back
     else
       flash[:danger] = "Please sign in"
       redirect_to login_path

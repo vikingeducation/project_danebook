@@ -2,19 +2,17 @@ class CommentsController < ApplicationController
   before_action :require_login
 
   def create
-    if signed_in_user?
-      if instance = comment_parent
-        if instance.save!
-          flash[:success] = "Comment has been added!"
-        else
-          flash[:danger] = "Comment not added, returning to the nerdery to diagnose the problem. . . ."
-        end
+    @commentable = comment_parent
+    @comment = @commentable.comments.new(description: params[:comment][:description], user_id: current_user.id)
+    respond_to do |format|
+      if @comment.save!
+        flash[:success] = "Comment has been added!"
+        format.html { redirect_to :back }
+        format.js { }
       else
-        flash[:danger] = "Could not find #{params[:comment][:commentable_type].downcase}"
+        flash[:danger] = "Comment not added, returning to the nerdery to diagnose the problem. . . ."
+        format.js { head :none }
       end
-      redirect_to :back
-    else
-      redirect_to login_path
     end
   end
 
@@ -48,7 +46,7 @@ class CommentsController < ApplicationController
       resource = type.constantize.
                  find_by_id(params[:comment][:commentable_id])
       return nil unless resource
-      resource.comments.new(description: params[:comment][:description], user_id: current_user.id)
+      resource
     end
 
 end

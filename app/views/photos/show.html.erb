@@ -6,7 +6,7 @@
 	<div class="container">
 		<%= render 'shared/flash' %>
 	</div>
-  <div class="container section-container">
+  <div class="container section-container data-type='photo' data-id='<%= @photo.id %>'">
     <div class="row section-header">
       <div class="col-sm-8 col-sm-offset-2">
         <h2 class="text-center">Photo</h2>
@@ -51,9 +51,6 @@
 				<hr>
 				<%= render 'shared/post_like_bar', resource: @photo, user: @user %>
 			</div>
-    </div><!-- Photo Wrapper -->
-
-		<div class="row">
 	    <div class="row post-wrapper section-footer">
 	      <div class="col-xs-12">
 	        <div class="row post-wrapper">
@@ -66,7 +63,7 @@
 	          </div><!-- Comment content wrapper -->
 	        </div><!-- Comment wrapper -->
       	</div>
-			</div>				
+			</div>
     </div>
   </div><!-- Contentt Section -->
 </div>

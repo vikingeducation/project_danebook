@@ -10,8 +10,9 @@ class PhotosController < ApplicationController
   end
 
   def create
-    user = User.find(params[:user_id])
-    if user.photos.create(photo_params)
+    photo = Photo.new(photo_params)
+    photo.user_id = (current_user.id)
+    if photo.save
       flash[:success] = "Saved photo!"
       redirect_to user_photos_path
     else

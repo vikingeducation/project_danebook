@@ -1,0 +1,29 @@
+<div class="col-md-10 col-md-offset-1 col-sm-12" id="profile-tabs">
+  <div class="row">
+    <div class="col-md-10 col-md-offset-2 col-xs-12" >
+      <div class="row">
+        <div class="col-sm-2 col-sm-offset-1" id="single-profile-tab">
+          <%= link_to "Timeline", user_timeline_path(real_user_id), class: "h6" %>
+        </div>
+        <div class="col-sm-2" id="single-profile-tab">
+          <%= link_to "About", user_path(real_user_id), class: "h6" %>
+        </div>
+        <div class="col-sm-2" id="single-profile-tab">
+          <%= link_to "Photos (#{real_user.photos.count})", photos_path(id: real_user_id), class: "h6" %>
+        </div>
+        <div class="col-sm-2" id="single-profile-tab">
+          <%= link_to "Friends (#{real_user.friend_count})", user_friends_path(real_user_id), class: "h6" %>
+        </div>
+        <div class="col-sm-3" id="edit-profile-tab">
+        <% if real_user_id == current_user.id.to_s %>
+            <%= link_to "Edit Profile", edit_user_path(real_user_id), class: "h6" %>
+        <% elsif current_user.friends.include?(real_user) %>
+            <%= link_to "Unfriend #{real_user.profile.first_name}", friending_path(real_user_id), method: 'delete', class: "btn btn-primary btn-xs friend-button", role: "button" %>
+        <% else %>
+            <%= link_to "Friend #{real_user.profile.first_name}", friendings_path(friended_id: real_user_id), method: :post, class: "btn btn-primary btn-xs unfriend-button", role: "button" %>
+        <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>  

@@ -1,0 +1,25 @@
+
+<main class="container">
+  <div class="row">
+    <!-- cover photo -->
+    <%= render partial: "shared/cover_and_prof", locals: {user: @user} %>
+    <!--set of profile tabs linking to different parts of the page-->
+    <%= render "shared/nav_links" %>
+  </div>
+
+  <div class="row">
+    <!--Friend page header -->
+    <div class="col-md-10 col-md-offset-1 col-xs-12" id="header-bar">
+      <h2>Friends</h2>
+    </div>
+    <!--list of friends-->
+    <div class="col-md-10 col-md-offset-1 col-xs-12" id="basic">
+      <div class="row">
+        <% @friends.each do |friend| %>
+          <%= render partial: "shared/friend_page", locals: {user: friend} %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  
+</main>

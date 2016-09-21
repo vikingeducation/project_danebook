@@ -1,0 +1,11 @@
+<div class="col-sm-4">
+  <div class="row">
+    <div class="col-xs-10 col-xs-offset-1" id="photo-holder">
+      <%= link_to photo_path(user_id: photo.user.id, id: photo.id), id:"photo-holder" do %>
+        <%= image_tag photo.image.url, class:"img-responsive" %>
+        <!-- caption to be displayed upon hover -->
+        <p>Uploaded on <%= photo.created_at.to_date %></p>
+      <% end %>
+    </div>
+  </div>
+</div>

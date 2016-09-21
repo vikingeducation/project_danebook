@@ -1,0 +1,284 @@
+
+<!--begin profile page-->
+<main class="container">
+  <div class="row">
+    <!-- cover photo -->
+    <div class="col-md-10 col-md-offset-1 col-xs-12" id="cover-photo">
+      <img src="https://s3.amazonaws.com/viking_education/web_development/web_app_eng/hogwarts_small.jpg" class="img-responsive">
+      <div class="row">
+        <!--profile picture which is overlayed on cover photo-->
+        <div class="col-md-6 col-md-offset-1 col-xs-10" id="profile-picture">
+          <img src="https://s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif">
+          <h2>Harry Potter</h2>
+        </div>
+      </div>
+    </div>
+    <!--set of profile tabs linking to different parts of the page-->
+    <%= render "shared/nav_links" %>
+  </div>
+
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1" id="timeline-divider">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="row">
+            <!--About panel -->
+            <div class="col-xs-12 timeline-title">
+              <h5>About (Text Area)</h5>
+            </div>
+            <div class="col-xs-12 timeline-content">
+              <p><b>Born on:</b> July 31st, 1980</p>
+              <p><b>Went to school at:</b> Hogwarts</p>
+              <p><b>Hometown:</b> Godrick's Hollow, England</p>
+              <p><b>Currently Lives:</b> Godrick's Hollow</p>
+            </div>
+            <!-- User's Photos -->
+            <div class="col-xs-12 timeline-title" id="timeline-friends-photos">
+              <h5>Photos (123) (Copied Text Area)</h5>
+            </div>
+            <div class="col-xs-12 timeline-content">
+              <div class="row">
+                <div class="col-xs-4">
+                  <a href=#><img src=https://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png class="img-responsive"></a>
+                </div>
+                <div class="col-xs-4">
+                  <a href=#><img src=https://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png class="img-responsive"></a>
+                </div>
+                <div class="col-xs-4">
+                  <a href=#><img src=https://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png class="img-responsive"></a>
+                </div>
+                <div class="col-xs-4">
+                  <a href=#><img src=https://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png class="img-responsive"></a>
+                </div>
+                <div class="col-xs-4">
+                  <a href=#><img src=https://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png class="img-responsive"></a>
+                </div>
+                <div class="col-xs-4">
+                  <a href=#><img src=https://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png class="img-responsive"></a>
+                </div>
+                <div class="col-xs-4">
+                  <a href=#><img src=https://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png class="img-responsive"></a>                    </div>
+                <div class="col-xs-4">
+                  <a href=#><img src=https://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png class="img-responsive"></a>
+                </div>
+                <div class="col-xs-4">
+                  <a href=#><img src=https://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png class="img-responsive"></a>
+                </div>
+                <div class="col-xs-12">
+                  <a href="photos.html"><h6>See more photos</h6></a>
+                </div>
+              </div>
+            </div>
+            <!-- User's Friends -->
+            <div class="col-xs-12 timeline-title" id="timeline-friends-photos">
+              <h5>Friends (542) (Copied Text Area)</h5>
+            </div>
+            <div class="col-xs-12 timeline-content">
+              <div class="row">
+                <div class="col-xs-4">
+                  <a href=#><img src=https://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png class="img-responsive"></a>
+                  <a href=#><h6>Friend name</h6></a>
+                </div>
+                <div class="col-xs-4">
+                  <a href=#><img src=https://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png class="img-responsive"></a>
+                  <a href=#><h6>Friend name</h6></a>
+                </div>
+                <div class="col-xs-4">
+                  <a href=#><img src=https://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png class="img-responsive"></a>
+                  <a href=#><h6>Friend name</h6></a>
+                </div>
+                <div class="col-xs-4">
+                  <a href=#><img src=https://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png class="img-responsive"></a>
+                  <a href=#><h6>Friend name</h6></a>
+                </div>
+                <div class="col-xs-4">
+                  <a href=#><img src=https://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png class="img-responsive"></a>
+                  <a href=#><h6>Friend name</h6></a>
+                </div>
+                <div class="col-xs-4">
+                  <a href=#><img src=https://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png class="img-responsive"></a>
+                  <a href=#><h6>Friend name</h6></a>
+                </div>
+                <div class="col-xs-12">
+                  <a href="friends.html"><h6>See more friends</h6></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--Post area and timeline -->
+        <div class="col-md-8 col-sm-12 " id="timeline">
+          <div class="row">
+            <div class="col-md-11 col-md-offset-1">
+              <div class="row">
+              <!--Form to enter a new post-->
+                <div class="col-xs-12 timeline-title">
+                  <h5>Post (copied)</h5>
+                </div>
+                <div class ="col-xs-12" id="post-container">
+                  <textarea rows="4" placeholder="Tell the world something..."></textarea>
+                </div>
+                <div class="col-xs-12" id="post-button-container">
+                  <a class="btn btn-primary pull-right" href=#post role="button">Post!</a>
+                </div>
+                <!-- Previous posts -->
+                <div class="col-xs-12" id="previous-post-container">
+                  <div class="row">
+                    <div class="col-xs-12" id="author-info">
+                      <a href=#authorprofile><img src=https://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png class="img-responsive"></a>
+                      <h6><a href="about.html">Harry Potter</a>
+                      <br>Posted on Thursday 6/1/2014</h6>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-xs-12" id="post-content">
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                      proident, sunt in culpa qui.</p>
+                    </div>
+                  </div>
+                  <div class="row" id="post-feedback">
+                    <div class="col-xs-1">
+                      <a href=#likepost><h6>Like</h6></a>
+                    </div>
+                    <div class="col-xs-1">
+                      <a href=#comment><h6>Comment</h6></a>
+                    </div>
+                    <div class="col-xs-2 col-xs-offset-8">
+                      <a href=#deletepost><h6>Delete</h6></a>
+                    </div>
+                  </div>
+                </div>
+                <!-- Previous posts with likes -->
+                <div class="col-xs-12" id="previous-post-container">
+                  <div class="row">
+                    <div class="col-xs-12" id="author-info">
+                      <a href=#authorprofile><img src=https://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png class="img-responsive"></a>
+                      <h6><a href="about.html">Harry Potter</a>
+                      <br>Posted on Thursday 5/21/2014</h6>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-xs-12" id="post-content">
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                      proident, sunt in culpa qui.</p>
+                    </div>
+                  </div>
+                  <!-- Post feedback area -->
+                  <div class="row" id="post-feedback">
+                    <div class="col-xs-1">
+                      <a href=#likepost><h6>Like</h6></a>
+                    </div>
+                    <div class="col-xs-1">
+                      <a href=#comment><h6>Comment</h6></a>
+                    </div>
+                    <div class="col-xs-2 col-xs-offset-8">
+                      <a href=#deletepost><h6>Delete</h6></a>
+                    </div>
+                    <div class="col-xs-6">
+                      <h6><a href=#likerprofile>Hermoine Granger</a> likes this.</h6>
+                    </div>
+                  </div>
+                </div>
+                <!-- Previous post with comments -->
+                <div class="col-xs-12" id="previous-post-container">
+                  <div class="row">
+                    <div class="col-xs-12" id="author-info">
+                      <a href=#authorprofile><img src=https://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png class="img-responsive"></a>
+                      <h6><a href="about.html">Harry Potter</a>
+                      <br>Posted on Thursday 5/21/2014</h6>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-xs-12" id="post-content">
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                      cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                      proident, sunt in culpa qui.</p>
+                    </div>
+                  </div>
+                  <div class="row" id="post-feedback">
+                    <div class="col-xs-1">
+                      <a href=#unlikepost><h6>Unlike</h6></a>
+                    </div>
+                    <div class="col-xs-2 pull-right">
+                      <a href=#deletepost><h6>Delete</h6></a>
+                    </div>
+                    <div class="col-xs-12">
+                      <h6>You and <a href=#likerprofile>Hermoine Granger</a> and 3 others like this.</h6>
+                    </div>
+                  </div>
+                  <!-- comments section -->
+                  <div class="row" id="comments-section">
+                    <div class="col-xs-2">
+                      <a href=#authorprofile><img src=https://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png class="img-responsive"></a>
+                    </div>
+                    <!-- commenter info and comment-->
+                    <div class="col-xs-10">
+                      <h6><a href=#commentauthorprofile>Ron Weasley</a> said on Thursday 5/21/2014:</h6>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                      consequat. Duis aute irure dolor in reprehenderit in</p>
+                      <div class="row">
+                        <div class="col-xs-1">
+                          <h6><a href=#likecomment>Like</a></h6>
+                        </div>
+                        <div class="col-xs-6">
+                          <h6> 3 other people like this</h6>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-xs-2">
+                      <a href=#authorprofile><img src=https://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png class="img-responsive"></a>
+                    </div>
+                    <!-- User's own comment -->
+                    <div class="col-xs-10">
+                      <h6><a href="about.html">Harry Potter</a> said on Friday 5/22/2014:</h6>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                      quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                      consequat. Duis aute irure dolor in reprehenderit in</p>
+                      <div class="row">
+                        <div class="col-xs-1">
+                          <h6><a href=#likecomment>Like</a></h6>
+                        </div>
+                        <div class="col-xs-6">
+                          <h6> 3 other people like this</h6>
+                        </div>
+                        <div class="col-xs-2 pull-right">
+                          <a href=#deletecomment><h6>Delete</h6></a>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- space to write comment -->
+                    <div class="col-xs-12" id="write-comment">
+                      <textarea rows="4" placeholder="Write a comment..." id="post-comment-textarea"></textarea>
+                    </div>
+                    <div class="col-xs-2 col-xs-offset-1">
+                      <h6><a href=#cancelcomment>Cancel</a></h6>
+                    </div>
+                    <div class="col-xs-2 col-xs-offset-6">
+                      <a href=#postcomment class="btn btn-primary btn-sm" role="button">Comment</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+       
+      </div>
+    </div>
+  </div>
+  
+</main>

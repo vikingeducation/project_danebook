@@ -1,0 +1,6 @@
+<h1>Good news!</h1>
+
+<p>A user with the mail <%= @comment_user.email %> commented on one of your posts or photos. They said: "<%= @comment %>". </p>
+
+<p> <%= link_to "Click here", user_timeline_url(@owner_user) %> to see more action on your timeline </p>
+

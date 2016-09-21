@@ -1,0 +1,15 @@
+console.log("hello!!");
+var type = "<%= @content_type %>";
+var id = "<%= @content_id %>";
+var post = $("[" + type +"-id = " + id + "]");
+post.find('a.like-button').remove();
+var likeID = "/likes/" + "<%= @id %>"
+var unlike = $('<a/>').addClass('unlike-button')
+         .attr('rel', 'nofollow')
+         .attr('data-method', 'delete')
+         .attr('href', likeID)
+         .attr('data-remote', "true")
+         .html('Unlike');
+console.log(unlike)
+post.find('#post-feedback .col-xs-1 h6').append(unlike);
+post.find('#comment-feedback .col-xs-1 h6').append(unlike);

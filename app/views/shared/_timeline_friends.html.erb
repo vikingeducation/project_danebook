@@ -1,0 +1,16 @@
+<div class="col-xs-4" >
+  <div class="row">
+    <div class="col-xs-12" id="timeline-friend-img-container">
+      <%= link_to user_path(user.id) do %>
+        <% if user.profile.prof_photo_id %>
+          <%= image_tag user.profile_picture.url, id:"timeline-friend-img"  %>
+        <% else %>
+          <img src="https://s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif">
+        <% end %>
+      <% end %>
+    </div>
+    <div class="col-xs-12">
+      <h6><%= link_to user_header_name(user.id), user_path(user) %></h6>
+    </div>
+  </div>
+</div>

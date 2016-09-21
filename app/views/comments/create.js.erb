@@ -1,0 +1,8 @@
+console.log("Hello!");
+var type = "<%= @content_type %>";
+var id = "<%= @content_id %>";
+var post = ($("[" + type +"-id = " + id + "]"));
+var newComment = "<%= escape_javascript(render partial: 'shared/comment_box', locals: {comment: @new_comment}) %>";
+post.children('#comments-section, #photo-comments-section').prepend(newComment);
+$('#comment_body').val("");
+console.log("Goodbye!");

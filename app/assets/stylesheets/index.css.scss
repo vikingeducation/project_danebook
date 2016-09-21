@@ -1,0 +1,81 @@
+body{
+  padding-bottom: 20px;
+}
+
+main{
+  transition: padding 500;
+}
+.navbar-default{
+  background-color: #2679E8;
+  border: 2px solid black;
+  .navbar-header {
+    background-color: #2679E8;
+  }
+
+  .form-group{
+    margin-bottom: -10px;
+  }
+  .navbar-brand{
+    color: white;
+    font-size: 35px;
+    line-height: 40px;
+  }
+  button {
+    background-color: #9FC5F8;
+    border: 2px solid black;
+  
+  }
+
+  #log-in-button{
+    padding-top: 28px;
+    display: inline-block;
+  }
+
+  p{
+    color: white;
+  }
+
+  input{
+    margin-top: -10px;
+    border: 2px solid black;
+
+  }
+  .collapse {
+    background-color: #2679E8;
+  }
+}
+main {
+  #connect{
+    margin-top: 50px;
+    h5 {
+      color: #555;
+      line-height: 30px;
+    }
+  }
+  #sign-up{
+    input{
+      margin: 10px 0px;
+    }
+
+    .dropdown{
+      display: inline-block;
+      margin-right: 10px
+    }
+    label {
+      margin-top: 7px;
+      margin-right: 10px;
+    }
+    #sign-up-button{
+      background-color: #009E0F;
+      width: 100%;
+      border: 2px solid black; 
+    }
+  }
+  
+}
+@media only screen and (min-width: 768px) {
+  main {
+    margin-top: 64px; } }
+
+
+

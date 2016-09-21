@@ -1,0 +1,83 @@
+// Place all the styles related to the photos controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#photo-holder{
+  height: 150px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  img{
+    height: 150px;
+    width: 150px;
+    margin: 0 auto;
+    
+  }
+  p{
+    position: relative;
+    visibility: hidden;
+    height: 25%;
+    bottom: 55px;
+    left: 2px;
+    width: 146px;
+    margin: 0 auto;
+    text-align: center;
+    background-color: #333;
+    opacity: 0.8; 
+    color: white;
+    line-height: 40px;
+    font-size: 12px;
+  }
+}
+
+#photo-holder:hover {
+  p{
+    visibility: visible;
+  }
+}
+
+#photo-show{
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+#photo-show img{
+  object-fit: contain;
+  width: 100%;
+  height: 400px;
+}
+
+#photo-feedback{
+  margin-left: 20px;
+}
+
+#photo-header-bar{
+  text-align: center;  
+  margin-top: 10px;
+  border: 2px solid black;
+  background-color: #ccc;
+}
+
+#photo-comments-section{
+    background: #ccc;
+    border-top: 2px solid #999;
+    padding-top: 10px;
+    p, h6{
+      text-align: left;
+      margin-left: 10px;
+    }
+    a{
+      img{
+        height: 75px; 
+        width: 75px;   
+      }
+    }
+    textarea{
+      width: 100%;
+      border: 2px solid black;
+      margin-top: 25px;
+      margin-bottom: 5px;
+      padding-left: 10px;
+    }
+    padding-bottom: 10px;
+  }
+

@@ -1,0 +1,88 @@
+
+<!--begin profile page-->
+<main class="container">
+  <div class="row">
+    <!-- cover photo -->
+    <%= render partial: "shared/cover_and_prof", locals: {user: @user} %>
+    <!--set of profile tabs linking to different parts of the page-->
+    <%= render "shared/nav_links" %>
+  </div>
+
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1" id="timeline-divider">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="row">
+            <!--About panel -->
+            <div class="col-xs-12 timeline-title">
+              <h5>About</h5>
+            </div>
+            <div class="col-xs-12 timeline-content">
+              <p><b>Born on:</b> <%= @timeline_user.profile.birthday.strftime("%m/%d/%Y") if @timeline_user.profile.birthday != nil %></p>
+              <p><b>Went to school at:</b> <%= @timeline_user.profile.college %></p>
+              <p><b>Hometown:</b> <%= @timeline_user.profile.hometown %></p>
+              <p><b>Currently Lives:</b> <%= @timeline_user.profile.currently_lives %></p>
+            </div>
+            <!-- User's Photos -->
+            <div class="col-xs-12 timeline-title" id="timeline-friends-photos">
+              <h5><%= "Photos (#{real_user.photos.count})" %></h5>
+            </div>
+            <div class="col-xs-12 timeline-content">
+              <div class="row">
+                <% real_user.photos[0..5].each do |photo| %>
+                  <%= render partial: "shared/timeline_photos", locals: {photo: photo} %>
+                <% end %>
+                <div class="col-xs-12">
+                  <h6><%= link_to "See more photos", photos_path(id: real_user_id)%></h6>
+                </div>
+              </div>
+            </div>
+            <!-- User's Friends -->
+            <div class="col-xs-12 timeline-title" id="timeline-friends-photos">
+              <h5><%= "Friends (#{@timeline_user.friend_count})" %></h5>
+            </div>
+            <div class="col-xs-12 timeline-content">
+              <div class="row">
+                <% @timeline_user.friends[0..5].each do |friend| %>
+                  <%= render partial: "shared/timeline_friends", locals: {user: friend} %>
+                <% end %>
+                <div class="col-xs-12">
+                  <h6><%= link_to "See more friends", user_friends_path(id: real_user_id)%></h6>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--Post area and timeline -->
+        <div class="col-md-8 col-sm-12 " id="timeline">
+          <div class="row">
+            <div class="col-md-11 col-md-offset-1">
+              <div class="row">
+              <!--Form to enter a new post-->
+                <div class="col-xs-12 timeline-title">
+                  <h5>New Posts</h5>
+                </div>
+                <%= simple_form_for @post, remote: true do |post_fields| %>
+                <div class ="col-xs-12" id="post-container">
+                  <%= post_fields.input :body, input_html: {rows: "4"}, label: false, placeholder: "Tell the world something..." %>
+                </div>
+                <div class="col-xs-12" id="post-button-container">
+                  <%= post_fields.submit "Post!", class:"btn btn-primary pull-right", id:"post-submit-button"%>
+                </div>
+                <% end %>
+                <!-- Previous posts -->
+                <div id="all-previous-posts">
+                  <% @timeline_user.posts_received.reverse.each do |post| %>
+                    <%= render partial: "shared/post_box", locals: {post: post} %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+       
+      </div>
+    </div>
+  </div>
+  
+</main>

@@ -1,0 +1,69 @@
+
+<main class="container">
+  <div class="row">
+    <!-- cover photo -->
+    <%= render partial: "shared/cover_and_prof", locals: {user: @user} %>
+    <!--set of profile tabs linking to different parts of the page-->
+    <%= render "shared/nav_links" %>
+  </div>
+  <div class="row">
+    <!--About page header and edit profile button-->
+    <div class="col-md-10 col-md-offset-1" id="photo-header-bar" photo-id="<%=@photo.id %>">
+      <h2>Photo</h2>
+      <% if current_user.id == @user_id %>
+        <%= form_for current_user do |user_fields| %>
+          <%= user_fields.fields_for :profile do |profile_fields| %>
+            <%= profile_fields.label :prof_photo_id, "Make this your profile picture" %>
+            <%= profile_fields.check_box :prof_photo_id, {}, "#{@photo_id}", nil %>
+
+            <%= profile_fields.label :cover_photo_id, "Make this your cover picture" %>
+            <%= profile_fields.check_box :cover_photo_id, {}, "#{@photo_id}", nil %>
+            <%= profile_fields.submit %>
+          <% end %>
+        <% end %>
+      <% end %>
+      <div class="row">
+        <div class="col-xs-10 col-xs-offset-1" id="photo-show">
+          <%= image_tag @photo.image.url %>
+        </div>
+      </div>
+      <div class="row" id="post-feedback">
+        <div class="col-xs-1">
+          <% if current_user.likes_post?(@photo.id, "Photo").empty? %>
+            <h6><%= link_to "Like", likes_path(likeable_id: @photo.id, likeable_type: "Photo"), remote: true, method: 'post', class: 'like-button' %></h6>
+          <% else %>
+            <h6><%= link_to "Unlike", like_path(find_like_id(current_user.id, @photo.id, "Photo")), remote: true, method: 'delete', class: 'unlike-button' %></h6>
+          <% end %>
+        </div>
+        <div class="col-xs-4">
+          <%= render partial: "shared/like_count", locals: {content: @photo} %>
+        </div>
+        <div class="col-xs-2 col-xs-offset-4">
+          <% if @photo.user_id == current_user.id %>
+          <%= link_to "Delete Photo", photo_path(@photo), method: :delete %>
+          <% end %>
+        </div>
+        <div class="col-xs-2">
+          <a class="comment-link">Comment</a>
+        </div>
+      </div>
+      <div class="row" id="photo-comments-section">
+        <% @photo.comments.reverse.each do |comment| %>
+          <%= render partial: "shared/photo_comment_box", locals: {comment: comment} %>
+        <% end %>
+        <div class="col-xs-10 col-xs-offset-1 write-comment">
+              <%= simple_form_for @comment, remote: true do |comment_field| %>
+                <%= comment_field.hidden_field :commentable_type, :value => "Photo" %>
+                <%= comment_field.hidden_field :commentable_id, :value => "#{@photo.id}" %>
+                <%= comment_field.input :body, class:"form-control", label: false, input_html: {rows: "1"}, placeholder: "Write a comment..." %>
+              <div class="col-xs-2 col-xs-offset-8">
+              <%= comment_field.submit "Post comment", class:"btn btn-primary btn-sm" %>
+              </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+</main>

@@ -1,0 +1,69 @@
+ <% if signed_in_user? %>
+
+  <nav class="navbar navbar-default navbar-static-top">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to "Danebook", newsfeed_index_path, class: "navbar-brand" %>
+    </div>
+    <div id="main-navbar-collapse" class="navbar-collapse collapse">
+      <div class="form-group">
+        <div class="col-sm-6 col-sm-offset-1 col-xs-12 search-bar">
+          <%= form_tag users_path, :method => 'get' do %>
+            <%= text_field_tag :search, params[:search], class:'form-control', placeholder: 'Search for users' %>
+            <%= submit_tag "", style:"display:none" %>
+          <% end %>
+        </div>
+        <div class="col-sm-2 col-xs-8 logout" id="navbar-profile-link">
+          <%= link_to current_user.profile.first_name, user_path(current_user) %> | 
+          <%= link_to "Logout", session_path, :method => :delete %>
+
+        </div>
+      </div>
+    </div>
+  </nav>
+
+<% else %>
+  <nav class="navbar navbar-default navbar-static-top">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-controls="navbar-1">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <%= link_to "Danebook", new_user_path, class: "navbar-brand" %>
+      </div>
+      <div class="collapse navbar-collapse" id="navbar">
+        <form action="/session" accept-charset="UTF-8" method="post">
+          <input name="utf8" type="hidden" value="✓">
+          <input type="hidden" name="authenticity_token"
+      value="<%= form_authenticity_token %>">
+          <div class="col-sm-6 col-sm-offset-3 col-md-6 col-md-offset-3">
+            <div class="row">
+              <div class="col-sm-4 form-group">
+                <p>Email</p>
+                <input type="text" name="email" id="email" class="form-control">
+              </div>
+              <div class="col-sm-4">
+                <p>Password</p>
+                <input type="password" name="password" id="password" class="form-control">
+              </div>
+              <div class="col-sm-3" id="log-in-button">
+                <input type="submit" name="commit" value="Log In!" class="btn btn-primary">
+                <%= label_tag do %>
+                Remember me?
+                <%= check_box_tag :remember_me %>
+              <% end %>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+  </nav>
+<% end %>
+

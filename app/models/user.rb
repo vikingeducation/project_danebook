@@ -29,13 +29,32 @@ class User < ApplicationRecord
     posts.order(created_at: :desc).first.created_at.to_date if posts.any?
   end
 
+  def updates
+    posts.order('created_at desc') + photos.order('created_at desc')
+  end
+
+  def newsfeed_updates(num)
+    newsfeed_posts(num/2) + newsfeed_photos(num/2)
+  end
+
   def newsfeed_posts(num)
-    Post.where('user_id IN (?)', newsfeed_friends.pluck(:id)).order(created_at: :desc)
-    # newsfeed_friends.select(:posts).joins('JOIN posts ON users.id=posts.user_id').order(:created_at).limit(num)
+    Post
+    .where('user_id IN (?)', newsfeed_friends.pluck(:id))
+    .order(created_at: :desc)
+      .limit(num)
+  end
+
+  def newsfeed_photos(num)
+    Photo
+    .where('user_id IN (?)', newsfeed_friends.pluck(:id))
+    .order(created_at: :desc)
+      .limit(num)
   end
 
   def newsfeed_friends
-      User.joins('JOIN friendings ON users.id=friender').where('friender=?', self.id).or(User.joins('JOIN friendings ON users.id=friender').where('friendee=?', self.id)).uniq
+    User
+    .from("(#{friendees.to_sql} UNION #{frienders.to_sql}) AS users") +
+      [self]
   end
 
   def send_welcome_email

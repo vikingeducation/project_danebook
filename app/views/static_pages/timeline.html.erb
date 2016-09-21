@@ -1,11 +1,6 @@
 <% content_for :page do %>
   timeline
 <% end %>
-<!-- navbar containing logo and logins-->
-<!-- THESE ARE COPY-PASTED FROM BOOTSTRAP EXAMPLES -->
-<!-- Static so that it is permanently fixed to the top -->
-<!-- notice that this is a ROW as well as a navbar -->
-<!--contains everything below the navbar-->
 <main >
   <div class = "row">
     <div class="col-xs-10 col-xs-offset-1">
@@ -69,8 +64,13 @@
           </div><!-- end-new-post-panel -->
               <% end %>
             <% end %>
-            <%= render partial: 'post', collection: @posts, :locals => { user: @user } %>
-            <%#= render partial: 'static_pages/timeline_filler' %>
+            <% @posts.each do |post| %>
+              <% if post.class.to_s == 'Post' %>
+                <%= render partial: 'posts/post', locals: { post: post, user: @user } %>
+              <% else %>
+                <%= render partial: 'posts/photo', locals: { post: post, user: @user } %>
+              <% end %>
+            <% end %>
         </div><!-- end right-column-->
       </div><!-- end timeline-row-->
     </div>

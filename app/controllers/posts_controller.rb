@@ -15,7 +15,7 @@ class PostsController < ApplicationController
 
   def index
     @user = params[:user_id] ? User.find(params[:user_id]) : current_user
-    @posts = @user.posts.order('created_at desc')
+    @posts = @user.updates
     @friends = @user.friends.sample(9)
     @photos = @user.photos.sample(9)
     @post = Post.new

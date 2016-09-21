@@ -14,7 +14,9 @@
     <!-- Right column signup form -->
     <div class="col-md-5" id="signup-form">
       <div class="col-sm-12">
-        <%= render "/shared/flash" %>
+        <div id="flash-messages">
+          <%= render partial: "shared/flash" %>
+        </div>
       </div>
 
       <div class="col-sm-12">

@@ -1,1 +1,2 @@
 DB.comments.clearDeletedComment(<%= @comment.id %>);
+DB.flash.showFlashes("<%= escape_javascript(render 'shared/flash') %>");

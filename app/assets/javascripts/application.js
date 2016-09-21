@@ -16,4 +16,5 @@
 
 $(document).ready(function() {
   DB.comments.init();
+  DB.flash.init();
 });

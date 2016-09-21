@@ -23,7 +23,9 @@
 
     <section class="col-sm-8 timeline-right-column post-list">
 
-      <%= render "shared/flash" %>
+      <div id="flash-messages">
+        <%= render partial: "shared/flash" %>
+      </div>
 
       <%# render "add_friend_box" %>
 

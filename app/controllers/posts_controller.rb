@@ -4,6 +4,7 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
     if @post.save
       @comment = @post.comments.build
+      flash[:success] = "Posted!"
       respond_to do |format|
         format.js {} 
         format.html { redirect_to current_user }

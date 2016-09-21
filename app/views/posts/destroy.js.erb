@@ -1,1 +1,2 @@
 DB.posts.clearDeletedPost(<%= @post.id %>);
+DB.flash.showFlashes("<%= escape_javascript(render 'shared/flash') %>");

@@ -2,27 +2,27 @@
 <%= render "shared/profile_header" %>
 <%= render "shared/flash" %>
 <%= render "relationships/pending_friend_request" %>
-
+<%= @blah %>
 <div class="container">
   <div class="col-md-4">
     <div class="row">
-      <div class="col-md-12">
+      <div class="col-md-12 about-section">
         <h3 class="text-center">About<h3>
-        <p class="about-details">Name: <%= @user.first_name.capitalize %> <%= @user.last_name.capitalize %><br></p>
+        <p class="about-details">Name: <%= current_user.first_name.capitalize %> <%= current_user.last_name.capitalize %><br></p>
         <p class= "about-details">College: <%= @profile.college %></br></p>
         <p class= "about-details">Current Location: <%= @profile.current_location %></br></p>
         <p class= "about-details">Hometown: <%= @profile.hometown %></br></p>
       </div>
     </div>
-    <div class="col-md-12">
-      <h3 class="text-center"> Photos<p> <%= @user.photos.count %> </p></h3>
+    <div class="col-md-12 photo-section">
+      <h3 class="text-center"> Photos<p> <%= current_user.photos.count %> </p></h3>
       <% @photos.each do |photo| %>
         <div class="col-md-4 index-photo">
           <%= link_to image_tag(photo.picture.url, class: "resize-index-photo"), user_photo_path(photo.user, photo) %>   
         </div>
       <% end %>
     </div>
-    <div class="col-md-12">
+    <div class="col-md-12 friend-section">
       <h3 class="text-center">Friends</h1>
     </div>
   </div>
@@ -31,7 +31,7 @@
     <div class="row">
       <%= render "posts/new_post" if @post && @user%>
     <% @posts.each do |post|%>
-      <div class="col-md-12">
+      <div class="col-md-12 post-section">
         <div class="displayed-post">
           <div class="media">
             <div class="media-left">

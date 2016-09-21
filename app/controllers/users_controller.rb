@@ -42,6 +42,7 @@ class UsersController < ApplicationController
   end
 
   def show
+    @blah = params.inspect
     @profile = @user.profile
     @post = current_user.posts.build if current_user
     @comment = @post.comments.build if current_user

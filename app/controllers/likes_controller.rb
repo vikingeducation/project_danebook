@@ -18,8 +18,9 @@ class LikesController < ApplicationController
   end
 
   def destroy
-    @like = Like.find(params[:id])#.include(:user, :commentable)
-    # @user = current_user
+    @like = Like.find(params[:id])
+    type = params[:likeable_type].capitalize
+    @resource = type.constantize.find(params[:likeable_id])
     respond_to do |format|
       if @like.destroy
         flash[:success] = "Unliked the post"

@@ -17,7 +17,8 @@ var Posts = (function() {
   };
 
   var _commentFormListener = function() {
-    $('.comment-button').click(function(e) {
+    console.log('yo');
+    $('.post-panel').on('click', '.comment-button', function(e) {
       var $target = $(e.target);
       var $parentPost = $target.closest('.post-panel');
       var $commentForm = $parentPost.find('.new_comment');
@@ -35,6 +36,6 @@ var Posts = (function() {
 
 })();
 
-$(function(){
+$(document).ready(function(){
   Posts.init();
 });

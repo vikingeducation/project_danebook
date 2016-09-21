@@ -4,15 +4,11 @@ class CommentsController < ApplicationController
     @commentable = get_commentable_resource
     creation_params = whitelisted_comment_params.to_h.merge({user_id: current_user.id})
     @comment = @commentable.comments.build(creation_params)
-    if @comment.save
-      flash[:success] = 'Comment created!'
-      respond_to do |format|
+    respond_to do |format|
+      if @comment.save
         format.html { redirect_back(fallback_location: root_url) }
-        format.js { render :new }
-      end
-    else
-      flash[:error] = 'Unable to post comment :('
-      respond_to do |format|
+        format.js
+      else
         format.html { redirect_back(fallback_location: root_url) }
       end
     end

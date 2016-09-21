@@ -1,4 +1,4 @@
-<div data-post-id="<%= post.id  %>"class="post-panel panel panel-default"><!-- begin-post-panel -->
+<div data-post-id="<%= post.id  %>" class="post-panel panel panel-default"><!-- begin-post-panel -->
   <div class="post-panel-body panel-body">
     <div class="col-xs-8 post-header">
       <%= image_tag(user.profile_photo.image.url(:thumb), class: 'col-xs-3') %>
@@ -11,7 +11,7 @@
     <div class="row">
       <%= like_button_for(post) %>
       <a class="col-xs-1 underline comment-button">Comment</a>
-      <%= link_to 'Delete', post_path(post), method: :delete, class: 'col-xs-1 col-xs-offset-8 underline' if post.user == current_user %>
+      <%= link_to 'Delete', post_path(post), remote: true, method: :delete, class: 'col-xs-1 col-xs-offset-8 underline post-delete-link' if post.user == current_user %>
       <%= content_tag(:p, construct_like_sentence(post.likes), class: 'col-xs-8 top-margin-10') if post.likes.any? %>
     </div>
     <div class="row">

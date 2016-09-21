@@ -1,0 +1,10 @@
+(function(){
+    var likeableClass = "<%= j(@likeable.class.to_s) %>";
+    var likeableId = "<%= j(@likeable.id.to_s) %>";
+    var $parent = $("div[data-" + likeableClass + "-id=" + likeableId + ']');
+    var $unlike = $("<%= j(like_button_for(@like.likeable)) %>");
+    var $like = $parent.find("a[data-like-id='like']");
+    console.log($like);
+    $unlike.insertAfter($like);
+    $like.remove();
+})();

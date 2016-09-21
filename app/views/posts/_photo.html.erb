@@ -1,7 +1,7 @@
-<div class="post-panel panel panel-default"><!-- begin-post-panel -->
+<div data-photo-id="<%= post.id  %>" class="post-panel panel panel-default"><!-- begin-post-panel -->
   <div class="post-panel-body panel-body">
     <div class="col-xs-8 post-header">
-      <%= image_tag(@user.profile_photo.image.url(:thumb), class: 'col-xs-3') %>
+      <%= image_tag(user.profile_photo.image.url(:thumb), class: 'col-xs-3') %>
       <%= link_to user.profile.name, user_path(user), class: 'col-xs-8' %>
       <%= content_tag(:p, post.created_at.to_date, class: 'col-xs-9 grey') %>
     </div>
@@ -10,12 +10,12 @@
   <div class="post-panel-footer panel-footer">
     <div class="row">
       <%= like_button_for(post) %>
-      <a class="col-xs-1 underline" href="#">Comment</a>
+      <a class="col-xs-1 underline comment-button">Comment</a>
       <%= link_to 'Delete', post_path(post), method: :delete, class: 'col-xs-1 col-xs-offset-8 underline' if post.user == current_user %>
       <%= content_tag(:p, construct_like_sentence(post.likes), class: 'col-xs-8 top-margin-10') if post.likes.any? %>
     </div>
-    <div class="row">
-      <%= form_for Comment.new, url: post_comments_path(post) do |comment_fields| %>
+    <div class="row comments">
+      <%= form_for Comment.new, url: photo_comments_path(post), remote: true, class: 'new_comment' do |comment_fields| %>
         <%= comment_fields.text_area :comment_text,  placeholder: 'Write a comment...', rows: 5, class: 'post-control col-xs-10 col-xs-offset-1' %>
         <%= comment_fields.submit 'Comment', class: 'btn btn-primary col-xs-2 col-xs-offset-9 top-margin-10' %>
       <% end %>

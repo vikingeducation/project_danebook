@@ -2,13 +2,23 @@ class LikesController < ApplicationController
 
   def create
     @likeable = get_likeable_resource
-    @likeable.likes.create(user_id: current_user.id)
-    redirect_back(fallback_location: root_url)
+    @like = @likeable.likes.build(user_id: current_user.id)
+    respond_to do |format|
+      if @like.save
+        format.js
+        format.html { redirect_back(fallback_location: root_url) }
+      else
+        format.html { redirect_back(fallback_location: root_url) }
+      end
+    end
   end
 
   def destroy
-    Like.find(params[:id]).destroy
-    redirect_back(fallback_location: root_url)
+    @like = Like.find(params[:id]).destroy
+    respond_to do |format|
+      format.js
+      format.html { redirect_back(fallback_location: root_url) }
+    end
   end
 
 

@@ -7,14 +7,11 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.build(whitelisted_post_params)
-    if @post.save
-      flash[:success] = 'Post created'
-      respond_to do |format|
+    respond_to do |format|
+      if @post.save
         format.html { redirect_back(fallback_location: root_url) }
-        format.js { render :new }
-      end
-    else
-      respond_to do |format|
+        format.js
+      else
         format.html { redirect_back(fallback_location: root_url) }
       end
     end
@@ -31,13 +28,14 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
-    if current_user == @post.user
-      current_user.posts.destroy(@post)
-      flash[:success] = 'Post deleted'
-      redirect_back(fallback_location: root_url)
-    else
-      flash[:error] = 'We were unable to do that.'
-      redirect_back(fallback_location: root_url)
+    respond_to do |format|
+      if current_user == @post.user
+        current_user.posts.destroy(@post)
+        format.js
+        format.html { redirect_back(fallback_location: root_url) }
+      else
+        format.html { redirect_back(fallback_location: root_url) }
+      end
     end
   end
 

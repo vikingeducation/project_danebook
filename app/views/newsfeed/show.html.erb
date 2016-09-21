@@ -32,9 +32,9 @@
     </div><!-- end-new-post-panel -->
     <% @all_posts.each do |post| %>
       <% if post.class.to_s == 'Post' %>
-        <%= render partial: 'posts/post', locals: { post: post, user: @user } %>
+        <%= render partial: 'posts/post', locals: { post: post, user: post.user } %>
       <% else %>
-        <%= render partial: 'posts/photo', locals: { post: post, user: @user } %>
+        <%= render partial: 'posts/photo', locals: { post: post, user: post.user } %>
       <% end %>
     <% end %>
 </div>

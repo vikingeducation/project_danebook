@@ -26,7 +26,9 @@ class User < ApplicationRecord
     format: { with: /@/, message: 'email must contain an @ symbol'}
 
   def last_post_date
-    posts.order(created_at: :desc).first.created_at.to_date if posts.any?
+    if posts.count > 0
+      posts.order(created_at: :desc).first.created_at.to_date if posts.any?
+    end
   end
 
   def updates

@@ -32,21 +32,17 @@ class PhotosController < ApplicationController
   end
 
 
-
-
-
-
   private
-  def photo_params
-    params.require(:photo).permit(:image, :url)
-  end
-
-  def require_friends_with
-    @photo = Photo.find(params[:id])
-    @user = @photo.user
-    unless current_user.friends_with?(@user) || current_user == @user
-      flash[:error] = 'Must be friends with this person to see their photo'
-      redirect_back(fallback_location: root_url)
+    def photo_params
+      params.require(:photo).permit(:image, :url)
     end
-  end
+
+    def require_friends_with
+      @photo = Photo.find(params[:id])
+      @user = @photo.user
+      unless current_user.friends_with?(@user) || current_user == @user
+        flash[:error] = 'Must be friends with this person to see their photo'
+        redirect_back(fallback_location: root_url)
+      end
+    end
 end

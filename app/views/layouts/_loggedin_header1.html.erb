@@ -1,0 +1,34 @@
+<nav id = "login-navbar" class = "navbar navbar-default navbar-static-top navbar-fixed-top row">
+  <!-- responsive mobile stuff collapses down  -->
+  <div class="navbar-header col-xs-2 col-xs-offset-1">
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <a class="vertical-align col-xs-4" id="logo-link" href="#">
+      <img class="vertical-align" id="brand-pic" src='<%= asset_path('flag.png') %>'
+           alt="circular danish flag">
+    </a>
+    <!--company brand link -->
+    <%= link_to home_button_path, class: 'navbar-brand col-xs-12', id: 'brand-link' do %>
+      <p class="col-xs-4 vertical-align" id="brand-text">Spacebook</p>
+    <% end %>
+  </div>
+  <div class="col-xs-12 collapse navbar-collapse">
+    <%= form_tag '/search_results', method: :get, class: 'navbar-form col-xs-8', role: 'user-search' do %>
+      <div class="form-group col-xs-12">
+        <%= search_field_tag :search, '', placeholder: 'Search for Users', class: 'form-control col-xs-10' %>
+      </div>
+    <% end %>
+    <div class="col-xs-1">
+      <div class="row">
+        <p id="profile-name">
+          <%= link_to current_user.profile.first_name, user_timeline_path(current_user) %>
+        </p>
+        <%= link_to 'Logout', logout_path, method: :delete, class: 'logout-link' %>
+      </div>
+    </div>
+  </div><!--navbar-collapse-->
+</nav>

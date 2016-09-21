@@ -80,9 +80,9 @@ module StaticPagesHelper
 
   def like_button_for(resource)
     unless resource.likes.map(&:user).include?(current_user)
-      link_to 'Like', send("#{resource.class.to_s.downcase}_likes_path".to_sym, resource), method: :post, class: 'like-link col-xs-1 underline'
+      link_to 'Like', send("#{resource.class.to_s.downcase}_likes_path".to_sym, resource), method: :post, remote: true, data: {'like-id' => 'like'}, class: 'like-link col-xs-1 underline'
     else
-      link_to 'Unlike', like_path(resource.likes.where("user_id=#{current_user.id}").first), method: :delete, class: 'col-xs-1 underline'
+      link_to 'Unlike', like_path(resource.likes.where("user_id=#{current_user.id}").first), method: :delete, remote: true, data: {'unlike-id' => resource.id}, class: 'col-xs-1 underline'
     end
   end
 
@@ -90,7 +90,6 @@ module StaticPagesHelper
     if resource.likes.any?
       count = resource.likes.count
       if count == 1
-        '1 person likes this'
         content_tag(:p, '1 person likes this', class: options[:html_class])
       else
         content_tag(:p, "#{count} people like this", class: options[:html_class])

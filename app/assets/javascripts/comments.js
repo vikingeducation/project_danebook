@@ -11,7 +11,7 @@ var Comments = (function() {
     $("body").on("click", ".comment-section", function(e) {
       var postId = ($(this).data("post-id"));
       var lastComment = $(".comment-show[data-post-id=" + postId + "]").last()
-      console.log(lastComment);
+      //console.log(lastComment);
     })
   }
 

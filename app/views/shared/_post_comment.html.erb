@@ -1,13 +1,13 @@
-
-<li style="list-style: none">
-  <div class="col-xs-9">
-    <% if comment.persisted? %>
-      <%= User.find(comment.user_id).username %> says:
-      <%= comment.description %>
-    <% end %>
-  </div>
-  <div class="col-xs-3">
-    X
-  </div>
-</li>
-
+<% if comment.persisted? %>
+  <li style="list-style: none">
+    <div class="col-xs-9">
+      
+        <%= User.find(comment.user_id).username %> says:
+        <%= comment.description %>
+      
+    </div>
+    <div class="col-xs-3">
+      X
+    </div>
+  </li>
+<% end %>

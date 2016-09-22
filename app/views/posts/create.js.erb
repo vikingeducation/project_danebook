@@ -1,0 +1,5 @@
+var haha = (function(){
+  $("#post-panels-box").prepend("<%= escape_javascript(render partial: 'shared/wall_post', locals: { post: @post}) %>");
+  $("#post-panels-box").children().first().hide().show(3000);
+  $("#new_post").find("input[type='text']").val("");
+})();

@@ -1,0 +1,47 @@
+<nav class="navbar log-in-navbar">
+  <div class="container">
+    <div class="form-group">
+      <div class="row">
+        <div class= "col-xs-1 col-md-1">
+          <%= link_to root_url do %>
+            <h1 class="danebook-logo">D</h1>
+          <% end %>
+        </div>
+        <div class= "col-xs-2 col-md-2">
+          <%= link_to root_url do %>
+            <h1 class="danebook">Danebook</h1>
+          <% end %>
+        </div>
+      <% if signed_in_user? %>
+        <div class="log-in-information">
+          <div class= "col-xs-9 col-md-9 logged-in-text">
+            Welcome, <%= link_to current_user.email, user_profiles_path(current_user)  %>
+            <%= link_to "Logout", logout_path, :method => :delete, html: {class: "danebook-text"} %>
+          </div>
+        </div>
+        <% else %>
+          <%= form_tag session_path do  %>
+            <div class="log-in-information">
+              <div class="col-xs-3 col-md-3">
+                <%= label_tag :email, nil, {class: "danebook-text"}%>
+                <%= text_field_tag :email, nil, placeholder: "Email", html: {class: "form-control"} %>
+              </div>
+              <div class="col-xs-3 col-md-3">
+                <%= label_tag :password, nil, {class: "danebook-text"}%>
+                <%= password_field_tag :password, nil, placeholder: "Password", html: {class: "form-control"} %>
+              </div>
+              <div class="col-xs-3 col-md-3">
+                <%= label_tag "Remember me?", nil, {class: "danebook-text remember-me"} %>
+                <%= check_box_tag :remember_me %>
+              </div>
+              <div class="col-xs-3 col-md-3">
+                <%= submit_tag "Log in", class: "btn btn-primary log-in-button" %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</nav>
+

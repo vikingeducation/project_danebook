@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    <div clas="col-md-8">
+      <%= render "shared/profile_cover_photos" %>
+    </div>
+  </div>
+  <div class="row profile-navigation">
+    <div class="col-md-2 timeline-link">
+      <%= link_to "Timeline", user_path(@user) %>
+    </div>
+    <div class="col-md-2 about-link">
+      <%= link_to "About", user_profiles_path(@user) %>
+    </div>
+    <div class="col-md-2 photos-link">
+      <%= link_to "Photos (#{@user.photos.count})", user_photos_path(@user) %>
+    </div>
+    <div class="col-md-2 friends-link">
+      <%= link_to "Friends", user_relationships_path(@user) %>
+    </div>
+    <div class="col-md-4 edit-link">
+      <%= render "shared/friend_button" %>
+    </div>
+  </div>
+</div>

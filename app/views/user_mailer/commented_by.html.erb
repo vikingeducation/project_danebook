@@ -1,0 +1,5 @@
+<p>Hi <%= link_to @user.first_name, @user %>!</p>
+
+<p><%= link_to @commenter.first_name, @commenter %> just commented on a <%= @object.class.to_s.downcase%>  of yours!</p>
+
+<p>You can see it <%= link_to "here", "http://localhost:3000/users/#{@user.id}" %></p>

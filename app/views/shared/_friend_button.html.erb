@@ -1,0 +1,21 @@
+<% if current_user %>
+  <% if current_user == @user %>
+    <%= link_to "Edit", edit_user_profiles_path(@user) %>
+  <% elsif !current_user.friends.include?(@user) %>
+    <%= form_for(current_user.friended_relationships.build) do |f| %>
+      <div><%= hidden_field_tag :friended_id, @user.id %></div>
+      <%= f.submit "Friend", class: "btn btn-primary" %>
+    <% end %>
+  <% elsif current_user.friends.include?(@user) && !@user.friends.include?(current_user) %>
+      <%= form_for(current_user.friended_relationships.find_by(friended_id: @user.id),
+         html: { method: :delete },
+        data: {confirm: "Are you sure you want to delete that friend request?"}) do |f| %>
+        <%= f.submit "Pending Friend Request", class: "btn btn-danger" %>
+      <% end %>
+  <% else %>
+    <%= form_for(current_user.friended_relationships.find_by(friended_id: @user.id),
+         html: { method: :delete }) do |f| %>
+      <%= f.submit "Unfriend", class: "btn btn-danger" %>
+    <% end %>
+  <% end %>
+<% end %>

@@ -1,0 +1,38 @@
+<%= render "shared/search_navbar" %>
+<%= render "shared/profile_header" %>
+<%= render "shared/flash" %>
+<%= render "relationships/pending_friend_request" %>
+<div class="container">
+  <div class="col-md-4">
+    <div class="row">
+      <div class="col-md-12 about-section">
+        <h3 class="text-center">About<h3>
+        <p class= "about-details">Name: <%= @user.first_name.capitalize + " " + @user.last_name.capitalize %></p></br>
+        <p class= "about-details">College: <%= @profile.college %></br></p>
+        <p class= "about-details">Current Location: <%= @profile.current_location %></br></p>
+        <p class= "about-details">Hometown: <%= @profile.hometown %></br></p>
+      </div>
+    </div>
+    <div class="col-md-12 photo-section">
+      <h3 class="text-center"> Photos<p> <%= @user.photos.count %> </p></h3>
+      <% @photos.each do |photo| %>
+        <div class="col-md-4 index-photo">
+          <%= link_to image_tag(photo.picture.url, class: "resize-index-photo"), user_photo_path(photo.user, photo) %>   
+        </div>
+      <% end %>
+    </div>
+    <div class="col-md-12 friend-section">
+      <h3 class="text-center">Friends</h1>
+    </div>
+  </div>
+  <% if current_user #&& current_user.friends.include?(@user) %>
+  <div class="col-md-8">
+    <div class="row append">
+      <%= render partial: "posts/new_post", locals: {post: @post, user: @user} if @post && current_user%>
+      <% @posts.each do |post|%>
+        <%= render partial: "posts/post", locals: {post: post, user: @user} %>
+      <% end %>
+    </div>
+  </div>
+  <% end %>
+</div>

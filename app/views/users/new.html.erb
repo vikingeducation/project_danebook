@@ -1,0 +1,38 @@
+<%= render "new_navbar" %>
+<%= render "shared/flash" %>
+
+<div class="container connect-information-container">
+  <div class="row sign-up-field connect-information">
+    <div class="col-md-8">
+    <h1> Connect with all of your friends!</h1>
+    <ul>
+      <li class="connect-information-point" >See photos and updates in your news feed</li>
+      <li class="connect-information-point" >Post your status for the world to see on your proile</li>
+      <li class="connect-information-point" >Get in your with your friends by "friending" them</li>
+      <li class="connect-information-point" >Like things beacause you are a postive person!</li>
+    </ul>
+  </div>
+    <div class="row">
+    <%= form_for @user do |f| %>
+      <div class= "col-md-2 sign-up-field">
+        <%= f.text_field :first_name, placeholder: "First Name", class: "form-control" %>
+      </div>
+      <div class=" col-md-2 sign-up-field">
+        <%= f.text_field :last_name, placeholder: "Last Name", class: "form-control" %>
+      </div>
+      <div class= "col-md-4 sign-up-field">
+          <%= f.text_field :email, placeholder: "Email", class: "form-control" %>
+      </div>
+      <div class= "col-md-4 sign-up-field">
+        <%= f.password_field :password, placeholder: "Password", class: "form-control" %>
+      </div>
+      <div class= "col-md-4 sign-up-field">
+        <%= f.password_field :password_confirmation, placeholder: "Password Confirmation", class: "form-control" %>
+      </div>
+      <div class="col-md-4">
+        <%= f.submit "Sign Up!", class: "btn btn-success sign-up-field" %>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</div>

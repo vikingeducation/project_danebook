@@ -1,0 +1,289 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+body {
+  background-color: #dfe3ee;
+  font-family: "Helvetica";
+}
+
+/* USERS/NEW */
+
+ .log-in-navbar {
+  background-color: #3b5998;
+
+ }
+
+ .log-in-button {
+  background-color: #1E90FF;
+  margin-top:25px;
+  margin-left:-40px;
+
+ }
+
+.log-in-information {
+  float:right;
+  display:inline-block;
+  margin-top:10px;
+
+}
+
+.danebook-text {
+  color:white;
+}
+
+.remember-me {
+  margin-top:25px;
+}
+
+.danebook {
+  color:white;
+  text-decoration: none;
+}
+
+.logged-in-text {
+  display:inline-block;
+  color:white;
+  font-weight: bold;
+}
+
+.connect-information-container {
+
+}
+
+.connect-information {
+  margin-top:50px;
+}
+
+.connect-information-point {
+  margin-top:30px;
+  color:grey;
+  font-size:20px;
+}
+
+.sign-up-field {
+  margin-top: 40px;
+}
+
+.danebook-logo {
+  float:left;
+  margin-left:-70px;
+  color:white;
+  border: 4px solid white;
+  padding:0px 10px 0px 0px;
+}
+
+
+.search-input {
+  width:65%;
+  vertical-align: center;
+}
+
+
+/* USER/:id/PROFILES */
+
+.cover-photo {
+  width:90%;
+  height:300px;
+  display:block;
+  margin:auto;
+  margin-top:-20px;
+}
+
+.profile-photo {
+  position:absolute;
+  margin-top:61px;
+  height:35%;
+  width:15%;
+}
+
+.profile-navigation {
+  border: 2px solid black;
+
+}
+
+.timeline-link {
+  border: 1px solid black;
+  height:40px;
+  text-align: center;
+  font-size:20px;
+  transition: all 0.5s ease;
+  &:hover {
+    background-color:#A8A8A8;
+  }
+}
+
+.about-link {
+  border: 1px solid black;
+  height:40px;
+  text-align: center;
+  font-size:20px;
+  transition: all 0.5s ease;
+  &:hover {
+    background-color:#A8A8A8;
+  }
+}
+
+.photos-link {
+  border: 1px solid black;
+  height:40px;
+  text-align: center;
+  font-size:20px;
+  transition: all 0.5s ease;
+  &:hover {
+    background-color:#A8A8A8;
+  }
+}
+
+.friends-link {
+  border: 1px solid black;
+  height:40px;
+  text-align: center;
+  font-size:20px;
+  transition: all 0.5s ease;
+  &:hover {
+    background-color:#A8A8A8;
+  }
+}
+
+.edit-link {
+  border: 1px solid black;
+  height:40px;
+  text-align: center;
+  font-size:20px;
+  color:#3b5998;
+  transition: all 0.5s ease;
+  &:hover {
+    background-color:#A8A8A8 ;
+  }
+}
+
+.about-user-section {
+  background-color: #A8A8A8 ;
+  text-align: center;
+  border:2px solid black;
+  font-size:30px;
+  margin-top:2em;
+}
+
+.basic-and-words-to-live {
+  margin-bottom: 10px;
+}
+
+.basic {
+  border: 2px solid black
+}
+
+.words-to-live {
+  border: 2px solid black
+}
+
+.about-edit-link {
+  float:right;
+  text-decoration:none;
+}
+
+.submit-edit-button {
+  margin-bottom:50px
+}
+
+.text-area-about {
+  resize:none;
+}
+
+.new-post-text-area {
+  resize:none;
+}
+
+.post-container {
+
+}
+
+.post-button {
+  margin:0;
+  display:inline;
+}
+
+.about-details {
+  float:left;
+}
+
+.panel-body {
+  word-wrap: break-word;
+}
+
+.post-photo {
+  height:100px;
+  width:100px;
+}
+
+.displayed-post {
+  margin-bottom:20px;
+  margin-top:20px;
+}
+
+.comment-picture {
+  height:50px;
+  width:50px;
+}
+
+.comment-text {
+  display:inline-block;
+}
+
+.index-photo {
+  padding:20px;
+}
+
+.no-photos {
+  color: #3b5998;
+}
+
+.resize-index-photo {
+  height:100px;
+  width:100px;
+}
+.comment-section {
+  display:inline-block;
+}
+
+.like-section {
+  display:inline-block;
+}
+
+.delete-section {
+  display:inline-block;
+}
+
+.show-photo {
+  display:block;
+  margin: 0 auto;
+}
+
+.upload-photo-form {
+  margin: 0 auto;
+  display: block; 
+}
+
+.photo-in-index {
+  transition: all 0.5s ease;
+  padding:20px;
+  &:hover {
+    background-color: #3b5998;
+  }
+}
+.same-line {
+  display:inline-block;
+}

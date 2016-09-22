@@ -1,0 +1,7 @@
+var findLastComment = function () {
+  var postId = '<%= j(@comment.commentable.id.inspect) %>'    
+  var $lastComment = $(".comment-show[data-post-id=" + postId + "]").last()
+  $lastComment.after("<%= j(render @comment, user: @user) %>")
+}
+
+findLastComment();

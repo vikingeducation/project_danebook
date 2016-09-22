@@ -1,0 +1,22 @@
+<div class="comment-show" data-comment-id=<%=comment.id %> data-post-id=<%=comment.commentable.id %> >
+  <ul class="media-list">
+    <li class="media">
+      <div class="media-left"> 
+        <%= image_tag("default_image.jpg", class: "comment-picture") %>
+      </div>
+      <div class="media-body">
+        <h4 class="media-heading">Commented by: <%= link_to comment.commentable.user.first_name + " " + comment.commentable.user.last_name, user_profiles_path(comment.commentable.user) %> on <%= comment.created_at.strftime(' %b %d at %r')%></h4>
+        <p><%=comment.likes.count %> likes</p>
+        <p><%= comment.content %></p>
+        <div class= "comment-show">
+          <%= form_for [comment, comment.likes.build], remote: true do |like| %>
+            <%= like.hidden_field :user_id, value: current_user.id %>
+            <%= like.submit "Like", class: "btn btn-primary like-section"%>    
+          <% end %>
+          <%= link_to "Delete Comment", comment_path(comment), method: :delete, class: "btn btn-danger delete-section delete-comment", remote: true, data: {comment_id: comment.id} if current_user == user%>
+          <%= render "comments/new_comment", comment: comment, new_comment: comment.comments.build, like: comment.likes.build%>
+        </div>
+      </div>
+    </li>
+  </ul>
+</div>

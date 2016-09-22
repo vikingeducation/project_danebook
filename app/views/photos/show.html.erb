@@ -1,0 +1,42 @@
+<%= render "shared/search_navbar" %>
+<%= render "shared/profile_header" %>
+<%= render "shared/flash" %>
+</br></br></br>
+<div class="container">
+  <div class="col-md-6">
+    <%= link_to image_tag(@photo.picture.url), user_photo_path(@photo.user, @photo) %>
+    <h3>Likes: <%= @photo.likes.count %></h3>   
+    <%= form_for [@photo, Comment.new] do |c| %>
+      <%= c.text_field :content, placeholder: "Write your comment here", class: "comment-text form-control", 'aria-label'=> "basic-addon1" %>
+      <%= c.submit "Comment on Post", class: "btn btn-success comment-section" %>
+    <% end %>
+    <%= form_for [@photo, Like.new] do |like| %>
+      <%= like.hidden_field :user_id, value: current_user.id %>
+      <%= like.submit "Like", class: "btn btn-primary like-section"%>               
+    <% end %>
+  </div>
+
+  <div class="col-md-6">
+    <% if @photo.comments.count != 0 %>
+      <% @photo.comments.each do |comment| %>
+        <div class="comment-show">
+          <ul class="media-list">
+            <li class="media">
+              <div class="media-left"> 
+                <%= image_tag("default_image.jpg", class: "comment-picture") %>
+              </div>
+              <div class="media-body">
+                <h4 class="media-heading">Commented by: <%= link_to comment.commentable.user.first_name + " " + comment.commentable.user.last_name, user_profiles_path(comment.commentable.user) %> </h4>
+                <p><%=comment.likes.count %> likes</p>
+                <p><%= comment.content %></p>
+                <div class= "comment-show">
+                <%= render "comments/comment_comments", comment: comment %>
+                  <%= render "comments/new_comment",comment: comment, new_comment: Comment.new, like: Like.new %>
+              </div>
+              </div>
+            </li>
+          </ul>
+        </div>
+      <% end %>
+    <% end %>
+</div>

@@ -38,20 +38,16 @@ class PhotosController < ApplicationController
 
   def destroy
     if @photo = Photo.find_by_id(params[:id])
-      respond_to do |format|
         if @photo.destroy
           flash[:success] = "Your photo was destroyed"
-          format.html { redirect_to user_photos_path(current_user) }
-
+          redirect_to user_photos_path(current_user)
         else
           flash[:danger] = "Failed to destroy photo"
-          format.html { redirect_to :back }
+          redirect_to :back
         end
-
-      end
     else
       flash[:danger] = "Wrong coordinates"
-      format.html { redirect_to user_photos_path(current_user) }
+      redirect_to user_photos_path(current_user)
     end
   end
 

@@ -2,8 +2,9 @@ class LikesController < ApplicationController
   before_action :require_login
 
   def create
-    type = params[:likeable].classify
-    @resource = type.constantize.find(params["#{type.downcase}_id"])
+    type = params[:likeable_type].capitalize
+    @resource = type.constantize.find(params[:likeable_id])
+
     respond_to do |format|
       if @resource.likes.create(:user_id => current_user.id)
         flash[:success] = "Like contributed to the post!"

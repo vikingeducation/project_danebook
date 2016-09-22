@@ -16,4 +16,5 @@
 
 $(document).ready(function(){
   APP.comment.init();
+  if ($('[data-controller="photos"]').length) APP.photo.init();
 });

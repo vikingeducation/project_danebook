@@ -3,31 +3,49 @@ class LikesController < ApplicationController
   def create
 
     likable = get_likable
+    @parent_type = params[:likable]
 
     if likable
     # TODO: check to see if it's already liked
     # unless Like.find_by(user_id: current_user.id, likable_id: 11)
-      like = likable.likes.build
-      current_user.likes << like
+      @like = likable.likes.build
+      current_user.likes << @like
 
-      unless like.save
+      if @like.save
+        respond_to do |format|
+          format.js {} 
+          format.html { go_back }
+        end
+      else
         flash[:danger] = "Could not be liked."
+        respond_to do |format|
+          format.js { head :none } 
+          format.html { go_back }
+        end
       end
     else
       flash[:danger] = "Could not be liked."
     end
 
-    redirect_to URI(request.referer).path
   end
 
   def destroy
-    like = current_user.likes.find(params[:id])
+    @like = current_user.likes.find(params[:id])
+    
+    #get likable type
+    @parent_type = @like.likable_type
 
-    unless like.destroy
+    if @like.destroy
+      @comment = current_user.comments.build
+      respond_to do |format|
+        format.js {} 
+        format.html { redirect_to URI(request.referer).path }
+      end
+    else
       flash[:danger] = "Could not be unliked!"
     end
 
-    redirect_to URI(request.referer).path
+    # redirect_to URI(request.referer).path
   end
 
   private

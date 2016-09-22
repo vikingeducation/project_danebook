@@ -1,0 +1,14 @@
+<% if @parent_type == 'Post' %>
+  $post = $('[data-id=' + <%= @like.likable.id %> + ']');
+  DB.likes.updatePostLikes($post, 
+    "<%= j(render partial: "likes/post_like", locals: { post: @like.likable }) %>", 
+    "<%= j(render partial: "likes/post_like_count", locals: { post: @like.likable }) %>");
+<% elsif @parent_type == 'Comment' %>
+  $comment = $('[data-comment-id=' + <%= @like.likable.id %> + ']');
+  DB.likes.updateCommentLikes($comment, 
+    "<%= j(render partial: "likes/comment_like", locals: { comment: @like.likable }) %>");
+<% elsif @parent_type == 'Photo' %>
+  
+<% end %>
+
+DB.flash.showFlashes("<%= escape_javascript(render 'shared/flash') %>");

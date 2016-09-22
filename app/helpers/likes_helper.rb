@@ -38,4 +38,5 @@ module LikesHelper
 
     (current + user_text + extras).html_safe
   end
+
 end

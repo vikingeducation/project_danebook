@@ -17,7 +17,7 @@ DB.posts = (function($) {
 
   var clearDeletedPost = function(postId) {
     $post = $('[data-id=' + postId + ']');
-    $post.fadeOut(800);
+    $post.slideUp(800);
   };
 
 

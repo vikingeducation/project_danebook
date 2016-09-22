@@ -23,22 +23,14 @@
     <div class="panel-heading">
 
       <!-- likes -->
-      <% unless post.likes.empty? %>
-        <div class="row">
-          <div class="col-sm-11">
-            <p><%= post_like_text(post) %></p>
-          </div>
-        </div>
-      <% end %>
+      <div class="post-like-count">
+        <%= render partial: "likes/post_like_count", locals: { post: post } %>
+      </div>
 
       <!-- menu -->
       <div class="row">
-        <div class="col-sm-1">
-          <% if liked?(post) %>
-            <%= link_to "Unlike", like_path(find_like(post)), method: :delete %>
-          <% else %>
-            <%= link_to "Like", post_likes_path(post), method: :post %>
-          <% end %>
+        <div class="col-sm-1 post-like">
+          <%= render partial: "likes/post_like", locals: { post: post } %>
         </div>
         <div class="col-sm-1">
           <a href="#" class="comment-show">Comment</a>

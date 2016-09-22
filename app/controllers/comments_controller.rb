@@ -12,38 +12,20 @@ class CommentsController < ApplicationController
           # User.delay.send_activity_email(comment.parent_user.id, comment.id) unless comment.parent_user == current_user
           respond_to do |format|
             format.js {} 
-            format.html { 
-              if request.referer
-                redirect_to URI(request.referer).path
-              else
-                redirect_to root_path
-              end
-            }
+            format.html { go_back }
           end
         else
           flash[:danger] = "Could not create comment."
           respond_to do |format|
             format.js { head :none }
-            format.html { 
-              if request.referer
-                redirect_to URI(request.referer).path
-              else
-                redirect_to root_path
-              end
-            }
+            format.html { go_back }
           end
         end
       else
         flash[:danger] = "Could not create comment."
         respond_to do |format|
           format.js { head :none }
-          format.html { 
-            if request.referer
-              redirect_to URI(request.referer).path
-            else
-              redirect_to root_path
-            end
-          }
+          format.html { go_back }
         end
       end
     end

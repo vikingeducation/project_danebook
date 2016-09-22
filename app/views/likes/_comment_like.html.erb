@@ -1,0 +1,9 @@
+<p>
+  <% if liked?(comment) %>
+    <%= link_to "Unlike", like_path(find_like(comment)), remote: true, method: :delete %>
+  <% else %>
+    <%= link_to "Like", comment_likes_path(comment), remote: true, method: :post %>
+  <% end %>
+  <%= "· " + pluralize(comment.likes.count, 'like') if comment.likes.count > 0 %>
+  <%= link_to "· Delete", comment, remote: true, method: :delete if comment.commenter == current_user %>
+</p>

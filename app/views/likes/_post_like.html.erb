@@ -1,0 +1,5 @@
+<% if liked?(post) %>
+  <%= link_to "Unlike", like_path(find_like(post)), class: "like-text", remote: true, method: :delete %>
+<% else %>
+  <%= link_to "Like", post_likes_path(post), class: "like-text", remote: true, method: :post %>
+<% end %>

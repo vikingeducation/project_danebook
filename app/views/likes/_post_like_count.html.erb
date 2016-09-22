@@ -1,0 +1,7 @@
+<% unless post.likes.empty? %>
+  <div class="row">
+    <div class="col-sm-11">
+      <p class="like-count"><%= post_like_text(post) %></p>
+    </div>
+  </div>
+<% end %>

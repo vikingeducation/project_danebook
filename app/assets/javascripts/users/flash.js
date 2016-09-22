@@ -14,15 +14,15 @@ DB.flash = (function($) {
     setTimeout(function() {
       $('#flash-messages').slideUp(1000, function() {
         $('#flash-messages').html("");
+        $('#flash-messages').show();
       });
     }, 3000);
   };
 
   var showFlashes = function(flashes) {
-    console.log("Flash appears!")
     var $flashes = $(flashes);
     $flashes.hide();
-    $("#flash-messages").html($flashes);
+    $("#flash-messages").append($flashes);
     $flashes.slideDown(400);
   };
 

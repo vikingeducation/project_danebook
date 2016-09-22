@@ -12,14 +12,19 @@ DB.likes = (function($) {
   };
 
   var updateCommentLikes = function($comment, likeHTML) {
-    console.log(likeHTML)
     $comment.find('.comment-like').html(likeHTML);
+  };
+
+  var updatePhotoLikes = function(likeHTML, countHTML) {
+    $('.photo-like').html(likeHTML);
+    $('.photo-like-count').html(countHTML);
   };
 
 
   return {
     updatePostLikes:updatePostLikes,
-    updateCommentLikes:updateCommentLikes
+    updateCommentLikes:updateCommentLikes,
+    updatePhotoLikes:updatePhotoLikes
   };
 
 })($);

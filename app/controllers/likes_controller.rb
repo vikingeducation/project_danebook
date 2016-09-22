@@ -25,27 +25,33 @@ class LikesController < ApplicationController
       end
     else
       flash[:danger] = "Could not be liked."
+      respond_to do |format|
+        format.js { head :none } 
+        format.html { go_back }
+      end
     end
 
   end
 
   def destroy
     @like = current_user.likes.find(params[:id])
-    
-    #get likable type
     @parent_type = @like.likable_type
+    puts "*****" + @parent_type
 
     if @like.destroy
       @comment = current_user.comments.build
       respond_to do |format|
         format.js {} 
-        format.html { redirect_to URI(request.referer).path }
+        format.html { go_back }
       end
     else
       flash[:danger] = "Could not be unliked!"
+      respond_to do |format|
+        format.js {} 
+        format.html { go_back }
+      end
     end
 
-    # redirect_to URI(request.referer).path
   end
 
   private

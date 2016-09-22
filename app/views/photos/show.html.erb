@@ -2,10 +2,12 @@
 
 <main class="container" id="photo-page-box">
 
-  <%= render "shared/flash" %>
+  <div id="flash-messages">
+    <%= render partial: "shared/flash" %>
+  </div>
 
   <div class="row timeline-left-column timeline-right-column">
-    <div class = "panel panel-default">
+    <div class = "panel panel-default" data-photo-id="<%= @photo.id %>">
       <div class="panel-heading">
         <div class="row">
           <div class="col-sm-8">
@@ -40,54 +42,52 @@
         <% end %>
       </div>
 
-      <!-- menu -->
+
       <div class="panel-heading photo-comments">
+        
+        <!-- likes -->
+        <div class="photo-like-count">
+          <%= render partial: "likes/photo_like_count", locals: { photo: @photo } %>
+        </div>
+
+        <!-- menu -->
         <div class="row">
-          <div class="col-sm-1">
-            <% if liked?(@photo) %>
-              <%= link_to "Unlike", like_path(find_like(@photo)), method: :delete %>
-            <% else %>
-              <%= link_to "Like", user_photo_likes_path(@user, @photo), method: :post %>
-            <% end %>
+          <div class="col-sm-1 photo-like">
+            <%= render partial: "likes/photo_like", locals: { photo: @photo } %>
           </div>
           <div class="col-sm-1">
-            <a href="#">Comment</a>
+            <a href="#" class="comment-show">Comment</a>
           </div>
         </div>
 
-        <!-- likes -->
-        <% unless @photo.likes.empty? %>
-          <div class="row">
-            <div class="col-sm-11">
-              <p><%= post_like_text(@photo) %></p>
-            </div>
-          </div>
-        <% end %>
-
-        <!-- comments -->
-        <% @photo.comments.order(created_at: :asc).each do |comment| %>
-          <%= render partial: "comments/comment", locals: { comment: comment } if comment.persisted? %>
-        <% end %>
 
         <!-- new comment -->
-        <%= form_for [current_user, @photo, @comment] do |f| %>
-          <div class="row">
-            <div class="col-sm-12">
-              <%= f.text_area :text, class: "form-control", rows: 2, placeholder: "Write a comment...", style:"resize: none" %>
+        <div class="new-comment">
+          <%= form_for [current_user, @photo, @comment], remote: true do |f| %>
+            <div class="row">
+              <div class="col-sm-12">
+                <%= f.text_area :text, class: "form-control comment-text", rows: 2, placeholder: "Write a comment...", style:"resize: none" %>
+              </div>
             </div>
-          </div>
-          <div class="row">
-            <div class="col-sm-1">
-              <a href="#">Cancel</a>
+            <div class="row">
+              <div class="col-sm-1">
+                <a href="#" class="comment-hide">Cancel</a>
+              </div>
+              <div class="col-sm-3 col-sm-offset-8">
+                <%= f.submit "Comment", class: "btn btn-primary btn-block" %>
+              </div>
             </div>
-            <div class="col-sm-2 col-sm-offset-9">
-              <%= f.submit "Comment", class: "btn btn-primary btn-block" %>
-            </div>
-          </div>
-        <% end %>
+          <% end %>
+        </div>
 
+        <div class="comment-list">
+          <!-- comments -->
+          <% @photo.comments.order(created_at: :asc).each do |comment| %>
+            <%= render partial: "comments/comment", locals: { comment: comment } if comment.persisted? %>
+          <% end %>
+        </div>
+        
       </div>
-
     </div>
   </div>
 </main>

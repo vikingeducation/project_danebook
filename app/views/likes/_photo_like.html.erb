@@ -1,0 +1,5 @@
+<% if liked?(photo) %>
+  <%= link_to "Unlike", like_path(find_like(photo)), remote: true,method: :delete %>
+<% else %>
+  <%= link_to "Like", user_photo_likes_path(photo.user, photo), remote: true, method: :post %>
+<% end %>

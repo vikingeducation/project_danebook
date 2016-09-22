@@ -7,8 +7,8 @@ DB.comments = (function($) {
   };
 
   var _setupListeners = function(){
-    $('.post-list').on("click", ".comment-show", _showCommentBox);
-    $('.post-list').on("click", ".comment-hide", function(e) {
+    $('.timeline-right-column').on("click", ".comment-show", _showCommentBox);
+    $('.timeline-right-column').on("click", ".comment-hide", function(e) {
       e.preventDefault();
       _hideCommentBox(e.target);
     });
@@ -36,7 +36,7 @@ DB.comments = (function($) {
 
   var _showCommentBox = function(e) {
     e.preventDefault();
-    var $newComment = $(e.target).closest('article').find('.new-comment');
+    var $newComment = $(e.target).closest('.commentable').find('.new-comment');
 
     if ( $newComment.css('display') === 'none' ) {
       $newComment.slideDown(200);
@@ -48,7 +48,7 @@ DB.comments = (function($) {
   };
 
   var _hideCommentBox = function(target) {
-    var $newComment = $(target).closest('article').find('.new-comment');
+    var $newComment = $(target).closest('.commentable').find('.new-comment');
     $newComment.slideUp(200);
   };
 

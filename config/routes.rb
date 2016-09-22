@@ -17,8 +17,10 @@ Rails.application.routes.draw do
   end
 
   resources :posts, :except => [:create, :destroy] do
-    resources :comments, :defaults => { :commentable => 'Post'}
+    resources :comments, :defaults => { :commentable => 'Post'}, :except => [:destroy]
   end
+
+  resources :comments, :only => [:destroy]
 
   resources :timelines, :only => [:index]
   resources :friendings, :only =>  [:destroy]

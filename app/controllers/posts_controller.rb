@@ -9,8 +9,6 @@ class PostsController < ApplicationController
 
   def create
     @post = current_user.posts.build(whitelisted_post_params)
-
-
     
     if @post.save 
       # Post.delay(queue: "email", priority: 28, run_at: 5.seconds.from_now).send_trigger_email(current_user.id, @post)

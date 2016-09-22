@@ -59,8 +59,8 @@
 
       <div class="row" >
         <ul id="comments-box">
-        <% unless post.comments.empty? %>
-          <% post.comments.reverse.each do |comment| %>
+        <% unless post.comments.length == 0 %>
+          <% post.comments.each do |comment| %>
             <%= render partial: "shared/post_comment", locals: { comment: comment } %>
           <% end %>
         <% end %>

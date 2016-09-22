@@ -16,5 +16,4 @@
 
 $(document).ready(function(){
   APP.comment.init();
-  APP.photo.init();
 });

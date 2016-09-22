@@ -10,6 +10,7 @@ On the home page, create an account. This will take you to your timeline. You ca
 *Ruby on Rails back-end framework
 *Paperclip and AWS for photo uploading and storage
 *Delayed Job and SendGrid for sending emails
+*AJAX-enabled front-end for posts, comments and likes
 
 Created by [David Jiang](https://github.com/davidmjiang)
 

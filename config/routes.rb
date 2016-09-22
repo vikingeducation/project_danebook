@@ -25,6 +25,7 @@ Rails.application.routes.draw do
   resources :friendings, :only => [:create, :destroy, :show]
 
   resources :posts, only: [] do
+    get "cfield" => "posts#cfield"
     resources :likes, only: [:create, :destroy], :defaults => { :likeable => 'Post' }
   end
 

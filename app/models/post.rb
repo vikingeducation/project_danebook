@@ -7,7 +7,7 @@ class Post < ApplicationRecord
   has_many :comments, as: :commentable, dependent: :destroy
 
   def like_list
-    likes.map {|like| like.user.profile.name}.join(", ")
+    likes.map {|like| like.user.name}.join(", ")
   end
 
   def self.friend_posts(user)

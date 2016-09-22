@@ -13,8 +13,8 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    @profile = @user.build_profile(profile_params)
-    if @user.save && @profile.save
+    @user.build_profile
+    if @user.save
       sign_in(@user)
       UserMailer.welcome(@user).deliver!
       flash.notice = "User created."
@@ -50,11 +50,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation)
+    params.require(:user).permit(:email, :password, :password_confirmation, :first_name, :last_name, :birthdate, :gender)
   end
-
-  def profile_params
-    params.require(:profile).permit(:first_name, :last_name, :birthdate, :gender)
-  end
-
 end

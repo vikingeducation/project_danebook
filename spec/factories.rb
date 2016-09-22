@@ -1,4 +1,13 @@
 FactoryGirl.define do
+  factory :feature do
+    
+  end
+  factory :user_park do
+    
+  end
+  factory :park do
+    
+  end
   factory :photo do
     
   end

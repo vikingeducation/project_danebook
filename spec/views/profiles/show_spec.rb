@@ -24,7 +24,7 @@ describe "profiles/show.html.erb" do
 
     it "shows the first name of profile" do
       render
-      expect(rendered).to have_content(@profile.first_name)
+      expect(rendered).to have_content(@first_name)
     end
 
   end

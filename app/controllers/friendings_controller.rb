@@ -3,7 +3,7 @@ class FriendingsController < ApplicationController
   def create
     new_friend = User.find(params[:format])
     if current_user.friendeds << new_friend
-      flash.notice = "Successfully friended #{new_friend.profile.name}"
+      flash.notice = "Successfully friended #{new_friend.name}"
       redirect_back(fallback_location: current_user)
     else
       flash.notice = "Failed to friend!  Sad :("

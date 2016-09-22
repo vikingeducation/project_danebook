@@ -1,0 +1,7 @@
+var commentRow = "<%= j( render partial: "shared/comment", locals: { comment: @comment } ) %>"
+var $commentRow = $(commentRow);
+var id = <%= @comment.commentable.id %>;
+var $container = $('#' + id);
+$container.find('.info-box').after($commentRow);
+$commentRow.hide().slideDown(1000);
+$container.find('#comment-form')[0].reset();

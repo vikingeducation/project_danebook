@@ -35,17 +35,17 @@ class ProfilesController < ApplicationController
 
   def search
     @user = current_user
-    @profiles = Profile.search(query_params[:query])
+    @users = User.search(query_params[:query])
   end
 
   private
 
   def profile_params
-    params.require(:profile).permit(:gender, :birthdate, :hometown, :current_residence, :telephone, :words_to_live_by, :about_me, :first_name, :last_name)
+    params.require(:profile).permit(:birthdate, :hometown, :current_residence, :telephone, :words_to_live_by, :about_me)
   end
 
   def user_params
-    params.require(:user).permit(:email)
+    params.require(:user).permit(:email, :gender, :first_name, :last_name)
   end
 
   def query_params

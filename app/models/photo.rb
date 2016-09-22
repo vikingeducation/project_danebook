@@ -8,7 +8,7 @@ class Photo < ApplicationRecord
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
 
   def like_list
-    likes.map {|like| like.user.profile.name}.join(", ")
+    likes.map {|like| like.user.name}.join(", ")
   end
 
 end

@@ -16,7 +16,7 @@
           <%= image_tag 'user_silhouette_generic.gif', class:"friend-profile" %>
         </div>
         <div style="margin-top: 32px" class="col-xs-5">
-          <%= link_to friend.profile.name, user_path(friend), class: "friend-name" %>
+          <%= link_to friend.name, user_path(friend), class: "friend-name" %>
         </div>
         <div class="col-xs-4">
           <%= link_to "Unfriend Me", friending_path(friend), method: :delete, class: "btn btn-secondary unfriend-button" %>

@@ -1,26 +1,46 @@
 class PostsController < ApplicationController
 
   def create
-    @user = User.find(params[:user_id])
-    @user.posts.build(post_params)
+    @user = current_user
+    @post = @user.posts.build(post_params)
     if @user.save
       flash.notice = "Post created."
-      redirect_back(fallback_location: current_user)
+      respond_to do |format|
+        format.html { redirect_back(fallback_location: current_user) }
+        format.js
+      end
     else
       flash.notice = "Error. Post not created."
-      redirect_back(fallback_location: current_user)
+      respond_to do |format|
+        format.html { redirect_back(fallback_location: current_user) }
+        format.js
+      end 
     end
   end
 
   def destroy
-    @user = User.find(params[:user_id])
+    @user = current_user
     @post = @user.posts.find(params[:id])
     if @post.destroy
       flash.notice = "Post deleted."
-      redirect_to user_path(@user)
+      respond_to do |format|
+        format.html {redirect_to user_path(@user)}
+        format.js
+      end
     else
       flash.notice = "Error. Post not deleted."
-      redirect_to user_path(@user)
+      respond_to do |format|
+        format.html {redirect_to user_path(@user)}
+        format.js
+      end
+    end
+  end
+
+  def cfield
+    @post = Post.find(params[:post_id])
+    respond_to do |format|
+      format.html {}
+      format.js
     end
   end
 

@@ -1,0 +1,77 @@
+<div id="<%= post.id %>">
+  <div class="row old-post">
+    <div class="col-xs-1 pic">
+      <%= image_tag 'user_silhouette_generic.gif', class:"poster-pic2" %>
+    </div>
+    <div class="col-xs-11 name">
+      <%= link_to full_name(post.user), user_profile_path(post.user), class:"poster" %>
+      <p>Posted on <%= post.created_at.strftime("%m/%d/%Y") %></p>
+    </div>
+  </div>
+  <div class="row post-content">
+    <div class="col-xs-12">
+      <p><%= post.body %></p>
+    </div>
+  </div>
+
+  <div class="info-box">
+    <div class="row post-comment">
+      <div class="col-xs-2">
+        <% unless current_user.like_exist?(post, "Post") %>
+          <%= link_to "#{post.likes.count} Like(s)", post_likes_path(post), method: :post %>
+        <% else %>
+          <%= link_to "Unlike", post_like_path(current_user.find_like(post, "Post").first), method: :delete %>
+        <% end %>
+      </div>
+      
+      <% if current_user == @user %>
+      <div class="col-xs-1 col-xs-offset-8">
+        <%= link_to "Delete", user_post_path(@user, post), method: :delete, style: "margin-left: 10px", remote: true %>
+      </div>
+      <% end %>
+
+    </div>
+
+    <% unless post.likes.empty? %>
+      <div class="row post-like">
+        <div class="col-xs-12">
+          <p><%= post.like_list %> likes this</p>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <% post.comments.order(created_at: :desc).each do |comment| %>
+  <% next if comment.new_record? %>
+
+  <%= render partial: "shared/comment", locals: {comment: comment} %>
+
+  <% end %>
+
+  <div class="row post-comment">
+    <div class="col-xs-3 col-xs-offset-9">
+      <%= link_to "Add Comment", post_cfield_path(post), style: "margin: 4px", remote: true %>
+    </div>
+  </div>
+
+  <div class="comment-form" style="display: none">
+
+    <%= form_for [current_user, comment], remote: true, html: { id: 'comment-form' } do |f| %>
+      <%= f.hidden_field :commentable_id, :value => post.id %>
+      <%= f.hidden_field :commentable_type, :value => "Post" %>
+
+      <div class="row comment-next">
+        <div class="col-xs-12">
+          <%= f.text_area :body, size: "72x4", placeholder: "Write a comment.", style: "margin-top: 5px" %>
+        </div>
+      </div>
+
+      <div class="row next-submit">
+        <div class="col-xs-2 col-xs-offset-10">
+          <%= f.submit "Comment", class: "btn btn-primary btn-sm submit-button" %>
+        </div>
+      </div>
+    <% end %>
+
+  </div>
+</div>

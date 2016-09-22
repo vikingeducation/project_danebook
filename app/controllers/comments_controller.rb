@@ -6,10 +6,16 @@ class CommentsController < ApplicationController
       @user = @comment.commentable.user
       Comment.delay(run_at: 5.seconds.from_now).send_notification(@user.id, @comment.id)
       flash.notice = "Comment created."
-      redirect_back(fallback_location: current_user)
+      respond_to do |format|
+        format.html {redirect_back(fallback_location: current_user)}
+        format.js
+      end
     else
       flash.notice = "Error. Comment not created."
-      redirect_back(fallback_location: current_user)
+      respond_to do |format|
+        format.html {redirect_back(fallback_location: current_user)}
+        format.js {redirect_back(fallback_location: current_user)}
+      end
     end
   end
 
@@ -17,10 +23,16 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.find(params[:id])
     if @comment.destroy
       flash.notice = "Comment deleted."
-      redirect_back(fallback_location: current_user)
+      respond_to do |format|
+        format.html {redirect_back(fallback_location: current_user)}
+        format.js
+      end
     else
       flash.notice = "Error. Comment not deleted."
-      redirect_back(fallback_location: current_user)
+      respond_to do |format|
+        format.html {redirect_back(fallback_location: current_user)}
+        format.js
+      end
     end
   end
 

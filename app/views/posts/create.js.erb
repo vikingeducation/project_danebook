@@ -1,0 +1,6 @@
+var postRow = "<%= j( render partial: "shared/post", locals: { post: @post, comment: @post.comments.build } ) %>"
+var $postRow = $(postRow);
+var $userPosts = $('.recent-posts');
+$userPosts.prepend($postRow);
+$postRow.hide().slideDown(1000);
+$('#post-form')[0].reset();

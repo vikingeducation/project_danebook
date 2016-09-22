@@ -33,7 +33,7 @@ class ApplicationController < ActionController::Base
   helper_method :signed_in_user?
 
   def full_name(user)
-    "#{user.profile.first_name} #{user.profile.last_name}"
+    "#{user.first_name} #{user.last_name}"
   end
   helper_method :full_name
 

@@ -52,4 +52,18 @@ class User < ApplicationRecord
     Photo.find(user.profile.cover_id)
   end
 
+  def self.search(query)
+    results = self.where("")
+    if query
+      query.each do |col, name|
+        results = results.where("#{col} ILIKE ?", "%#{name}%") if name.present?
+      end
+    end
+    results
+  end
+
+  def name
+    first_name + " " + last_name
+  end
+
 end

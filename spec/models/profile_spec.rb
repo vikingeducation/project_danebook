@@ -26,7 +26,7 @@ describe Profile do
   end
 
   it "checks the method name to create the profile full name" do
-    expect(profile.name).to eq("foo bar")
+    expect(name).to eq("foo bar")
   end
 
 end

@@ -1,5 +1,5 @@
 <h1>Welcome to Danebook!</h1>
 
-<p>Thank you for signing up, <%= @user.profile.first_name %>.</p>
+<p>Thank you for signing up, <%= @user.first_name %>.</p>
 
 <p>View your account at <%= link_to "#{user_url(@user.id)}", user_url(@user.id) %></p>

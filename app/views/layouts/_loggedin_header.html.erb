@@ -10,7 +10,9 @@
         <span class="icon-bar"></span>
       </button>
       <a class="navbar-brand" href="<%= home_button_path %>">
-        <img class="img-responsive img-circle" src="<%= asset_path('moon.gif') %>" alt="">Spacebook</a>
+        <!-- <img class="img-responsive img-circle" src="<%= asset_path('moon.gif') %>" alt="">Spacebook</a> -->
+        <%= image_tag(User.first.photos[2].image.url, class: 'img-responsive img-circle') %>
+        Spacebook</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->

@@ -7,7 +7,7 @@
             <h3 class="panel-title col-xs-1 col-xs-offset-5" id="about-panel-title">Photos</h3>
             <div class="spacer"> </div>
           </div>
-          <div class="panel-body post-panel" data-post-id="<%= @photo.id %>" data-post-type="photo">
+          <div class="panel-body post-panel" data-photo-id="<%= @photo.id %>" data-post-type="photo">
             <div class="col-xs-7 panel-content ">
               <div class="col-xs-12">
                 <%= image_tag(@photo.image.url, class: 'col-xs-12') %>
@@ -48,7 +48,7 @@
               </div>
               <div class="row">
                 <div class="photo-comments-section comments">
-                  <%= render @photo.comments.reverse %>
+                  <%= render @photo.comments %>
                 </div>
               </div>
               </div>

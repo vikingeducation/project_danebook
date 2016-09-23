@@ -65,9 +65,15 @@ photo = Photo.new
 photo.user = User.first
 photo.picture_from_url('http://weknowyourdreams.com/images/space/space-03.jpg')
 photo.save!
+
 photo = Photo.new
 photo.user = User.first
 photo.picture_from_url('http://a1.img.talkingpointsmemo.com/image/upload/c_fill,fl_keep_iptc,g_faces,h_365,w_652/teu84tpl2ujnvxm1ijlg.jpg')
+photo.save!
+
+photo = Photo.new
+photo.user = User.first
+photo.picture_from_url('http://i1136.photobucket.com/albums/n491/bucketscanner/bg17.gif')
 photo.save!
 
 puts 'assign harrys photos'

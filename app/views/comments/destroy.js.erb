@@ -1,0 +1,4 @@
+(function(){
+    console.log("<%= j(@comment.id.to_s) %>");
+    $(".comment[data-comment-id=" + "<%= j(@comment.id.to_s) %>" + "]").fadeOut(500);
+})();

@@ -15,12 +15,14 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    if Comment.find(params[:id]).destroy
-      flash[:success] = 'Comment deleted'
-      redirect_to :back
-    else
-      flash[:error] = 'Unable to delete comment'
-      redirect_to :back
+    @comment = Comment.find(params[:id]).destroy
+    respond_to do |format|
+      if @comment
+        format.js
+        format.html { redirect_to :back }
+      else
+        format.html { redirect_to :back }
+      end
     end
   end
 

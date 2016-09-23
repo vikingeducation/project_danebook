@@ -1,10 +1,9 @@
 (function(){
     var $commentHtml = $("<%= j(render 'comment', comment: @comment, user: @comment.user) %>")
-    /* var $parentPost = $(".post-panel[data-post-id='" + "<%= j(@comment.commentable.id.to_s) %>" + "']").first();*/
     var commentableClass = "<%= j(@commentable.class.to_s) %>";
     var commentableId = "<%= j(@commentable.id.to_s) %>";
     var $parentPost = $("div[data-" + commentableClass + "-id=" + commentableId + ']').first();
-    console.log('parent: ', $parentPost);
+    console.log('parent: ', $parentPost.first());
     var $commentsContainer = $parentPost.find('.comments');
     var $textArea = $parentPost.find('textarea');
     $textArea.val('');

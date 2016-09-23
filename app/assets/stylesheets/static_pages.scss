@@ -68,8 +68,9 @@ body{
 /********** Login Navbar **************/
 .navbar{
   background: linear-gradient(#46A, #359);
-  height: 60px;
+  height: 55px;
   padding-left: 0;
+  border: 1px solid #1a316d;
   .navbar-brand{
     color: white;
     font-size: 2em;

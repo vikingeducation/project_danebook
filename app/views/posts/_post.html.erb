@@ -22,6 +22,9 @@
     <div class="postid-<%= post.id %>">
       <%= render 'comments/index', object: post %>
     </div>
+    <a href="#" class="new-comment">Make a Comment</a>
+    <div class="new-comment-form">
       <%= render 'comments/new', object: post, comment: Comment.new %>
+    </div>
   </div>
 </div>

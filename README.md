@@ -18,3 +18,7 @@ Bonus: if you sign up using your real email, you will receive a special awesome 
 * News feed windows is provided, which makes user can see all their posts as well as their friend's posts.  
 * Bullet gem is used to get rid of all the N+1 bug
 * test is covered, although the portion is still very limited.
+
+### Update (2016-09-24)  
+* Add ajax to the post and comments, now make a new comment or post will not refresh the page, and the the new comment or post will show on the page immediately.  
+* Remove the new photo page, instead A light box is added when user click the new photo page.  

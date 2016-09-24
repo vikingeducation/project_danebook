@@ -2,6 +2,13 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .new-photo {
+  position: relative;
+  width: 30%;
+  margin: auto;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.new-photo-wrap {
   position: fixed;
   top: 0;
   left: 0;

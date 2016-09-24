@@ -14,14 +14,14 @@ MY_APP.photoCtr = (function () {
 	var newPhotoLinkListener = function () {
 		$('.new-photo-link').click(function (event) {
 			event.preventDefault();
-			$('.new-photo').show();
+			$('.new-photo-wrap').show();
 		});
 	};
 
 	var closeLightBoxListener = function () {
 		$('.closeLightBox').click(function (event) {
 			event.preventDefault();
-			$('.new-photo').hide();
+			$('.new-photo-wrap').hide();
 		});
 	};
 

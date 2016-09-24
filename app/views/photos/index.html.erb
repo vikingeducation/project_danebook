@@ -10,7 +10,7 @@
           </div>
           <div class="panel-body">
             <div>
-              <%= link_to "Create New Photo", new_photo_path(user_id: @user), class: "btn btn-danger btn-lg btn-block" %>
+              <%= link_to "Create New Photo", new_photo_path(user_id: @user), class: "btn btn-danger btn-lg btn-block new-photo-link" %>
               <hr>
             </div>
 
@@ -32,3 +32,5 @@
     </div>
   </div>
 </div>
+
+<%= render 'new', photo: Photo.new %>

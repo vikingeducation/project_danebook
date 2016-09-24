@@ -33,9 +33,13 @@
             <%= likes_link(@photo) %><%= "  #{pluralize(@photo.likes_count, 'like')} " %>
           </p>
 
-          <%= render 'comments/index', object: @photo %>
-
-          <%= render 'comments/new', object: @photo %>
+          <div class="postid-<%= @photo.id %>">
+            <%= render 'comments/index', object: @photo %>
+          </div>
+          <a href="#" class="new-comment">Make a Comment</a>
+          <div class="new-comment-form">
+            <%= render 'comments/new', object: @photo, comment: Comment.new %>
+          </div>
         </div>
       </div>
     </div>

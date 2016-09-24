@@ -8,7 +8,7 @@
 
     <section>
       <h3 class="text-center"><strong>Uploading local file</strong></h3>
-      <%= form_for @photo do |f| %>
+      <%= form_for photo do |f| %>
       <div class="form-group">
         <%= f.file_field :picture, class: "form-control input-lg" %>
       </div>
@@ -33,6 +33,7 @@
       </div>
       <% end %>
     </section>
+    <a href="#" class="closeLightBox">Click to close</a>
 
   </div>
 </div>

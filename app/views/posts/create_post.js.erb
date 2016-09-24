@@ -1,0 +1,10 @@
+// Newsfeed page
+
+var newPost = "<%= j(render 'post', post: @post) %>";
+
+var $newPost = $(newPost);
+
+$('.posts-list').prepend($newPost);
+
+$('.flash').html("<%= j(render 'shared/flash') %>").slideDown;
+<%= flash.clear %>

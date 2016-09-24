@@ -1,14 +1,17 @@
 class CommentsController < ApplicationController
 
   def create
-    comment = current_user.comments.build(white_list_params)
-    if comment.save
+    @comment = current_user.comments.build(white_list_params)
+    if @comment.save
       flash[:success] = "Comment is created"
+      respond_to do |format|
+        format.html { redirect_back(fallback_location: fallback_location) }
+        format.js { render :create_comment }
+      end
     else
-      binding.pry
       flash[:danger] = "Your comment is not successfull"
+      redirect_back(fallback_location: fallback_location)
     end
-    redirect_back(fallback_location: fallback_location)
   end
 
   def destroy

@@ -1,0 +1,12 @@
+var newComment = "<%= j(render 'comment', comment: @comment) %>";
+
+var $newComment = $(newComment);
+
+var postid = <%= @comment.commentable_id %>;
+
+console.log('.postid:' + postid);
+
+$('.postid-' + postid).append($newComment);
+
+$('.flash').html("<%= j(render 'shared/flash') %>").slideDown;
+<%= flash.clear %>

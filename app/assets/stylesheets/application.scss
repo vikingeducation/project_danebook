@@ -92,8 +92,6 @@ textarea.form-control {
 span.nav-default {
   border: none; }
 
-
-
 .nav-default {
   border: solid;
   border-width: 0.5px; }
@@ -180,7 +178,6 @@ li {
 #friends {
   margin: 0px;
   padding: 5px;
-  border: 1px solid;
   width: 100%; }
 
 #photos {
@@ -206,7 +203,7 @@ h1 {
 
 
 #big-body {
-  
+  border-radius: 10px;
   margin-bottom: 0px;
   padding: 0px;
   border: 1px solid grey;

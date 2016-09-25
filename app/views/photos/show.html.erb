@@ -1,39 +1,48 @@
-<br>
-<br>
-<br>
-<br>
-<br>
+<div class="container" id="phototron-container">
+  <div class="jumbotron" id="big-body">
+    <%= render partial: "shared/user_phototron", locals: { profile: current_user.profile} %>
+  </div>
+</div>
+
 <br>
 
-<div class="main" style="border:1px solid black">
+<div class="container" id="nav-container">
+  <%= render partial: "shared/user_nav_bar", locals: { profile: current_user.profile} %>
+</div>
+
+<div class="container bg-inverse" id="big-body">
 
   <div class="row">
-    <h1> Photo </h1>
+    <h1 style="margin: 10px"> Photo </h1>
   </div>
 
-  <div class="row">
-    <div class="col-sm-3">
-    </div>
-    <div class="col-sm-6">
-      <p>Title: <%= @photo.label %></p>
-      <p>Date: <%= @photo.created_at %></p>
-      <span>
-        <%= image_tag @photo.avatar.url(:medium) %>
-      </span>
+  <div class="card col-sm-8 col-sm-offset-2 row-eq-height" id="photo-container">
+    <div class="card bg-default" style="margin: 0px">
+      <div class="card-header">
+        <h4 class="card-text bg-default text-xs-center"><b style="color: black"><%= @photo.label %></b></h4>
+      </div>
+      <div class="card-block">
+        <div class="col-sm-6 col-sm-offset-3" >
+          <%= image_tag @photo.avatar.url, style: "width: 100%", id: "photo" %>
+        </div>
+      </div>
+      <div class="card-block text-xs-center">
+        <div class="col-xs-6"> 
+          <%= link_to "Set as Background Image", user_photo_path(current_user, @photo), class: "btn btn-outline-info btn-lg"%>
+        </div>
+        <div class="col-xs-6"> 
+          <%= link_to "Set as Profile Picture", 
+            user_profiles_photos_path(current_user, photo_id: @photo.id),
+            :method => "post", 
+            class: "btn btn-outline-warning btn-lg" %>
+        </div>
+      </div>
 
+      <div class="card-footer text-muted">
+        <p class="card-text text-xs-center"><%= @photo.created_at.to_s.slice(0,10) %></p>
+      </div>
+    </div>
 
-      <p> 
-        <%= link_to "Set as Background Image", user_photo_path(current_user, @photo), class: "btn btn-danger active"%>
-      </p>
-      <p>
-        <%= link_to "Set as Profile Picture", 
-          user_profiles_photos_path(current_user, photo_id: @photo.id),
-          :method => "post", 
-          class: "btn btn-danger active" %>
-      </p>  
-    </div>
-    <div class="col-sm-3">
-    </div>
 
   </div>
 </div>

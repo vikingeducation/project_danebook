@@ -10,13 +10,13 @@
   <%= render partial: "shared/user_nav_bar", locals: { profile: current_user.profile} %>
 </div>
 
-<div class="col-xs-12" id="body-container">
+<div class="container bg-inverse" id="big-body">
   <div class ="row header-bar">  
     <h1>Friends</h1>
   </div> 
-  <div class="row row-eq-height">
-    <% @users.each do |user| %>  
-      <div class="col-xs-6" style="width: 100%"> 
+  <div class="row-eq-height">
+    <% current_user.friended_users.each do |user| %>  
+      <div class="card col-xs-6" style="width: 100%"> 
         <div class="container" id="friends">
           <div class="row row-eq-height">
             <div class="col-xs-3">
@@ -34,9 +34,9 @@
             </div>  
             <div class="col-xs-4">
               <% if current_user.friended_users.include?(user) %>
-                <button type="button" class="btn btn-primary btn-sm"><%= link_to "UN-Friend", friending_path(current_user.friended_users.find(user.id)), method: :delete %></button>
+                <%= link_to "Remove", friending_path(current_user.friended_users.find(user.id)), method: :delete , class: "btn btn-outline-primary btn-md" %>
               <% else %>
-                <button type="button" class="btn btn-primary btn-sm"><%= link_to "Friend", user_friendings_path(user), method: :create %></button>
+                <%= link_to "Friend", user_friendings_path(user), method: :create , class: "btn btn-outline-primary btn-md" %>
               <% end %>
             </div>     
           </div>

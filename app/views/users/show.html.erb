@@ -11,8 +11,8 @@
   <%= render partial: "shared/user_nav_bar", locals: { profile: @profile} %>
 </div>
 
-<div class="container" id="main-body-container" style="height: 1000px; border: 1px solid black">
-  <div class="col-md-4" style="height: 1000px; border: 1px solid black; padding: 0px">
+<div class="container" id="main-body-container" >
+  <div class="col-md-4" style="height: 1000px;">
 
     <div class="card card-default" style="width: 100%; padding: 0px;">
       <h4 class="card-title text-xs-center" style="margin-top: 10px"> About Me</h4>
@@ -63,64 +63,12 @@
     </div>
   </div>
 
-  <div class="col-md-8" style="height: 500px; border: 1px solid black; padding: 0px">
-    <div class="col-xs-12" id="post-panels-box" style="border: 1px solid grey">
-    <% if current_user && current_user.id == @user.id %>
-      <% @posts.reverse.each do |post| %>
-        <%= render partial: "shared/wall_post", locals: { post: post} %>
-      <% end %>      
-    <% end %>
-  </div>
-
-  </div>
-
-</div>
-
-<div class="col-xs-12" id="body-container">
-<div class="something">
-  <div class="col-xs-4" id="panels">  
+  <div class="col-md-7" style="height: 500px; float: right">
     <div class="row">
       <%= render "shared/wall_post_form"%>
     </div>
-    <div class="row">
-      <div class="col-xs-12">
-        <h4>About(Text Area)</h4>
-        <div class="row">
-          <div class="col-xs-4">
-            <b>Born on: </b>
-          </div>
-          <div class="col-xs-8">
-            <%= @profile.month %>, <%= @profile.day %>, <%= @profile.year %>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-xs-4">
-            <b>Went to school at: </b>
-          </div>
-          <div class="col-xs-8">
-            <%= @profile.college %>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-xs-4">
-            <b>Hometown: </b>
-          </div>
-          <div class="col-xs-8">
-            <%= @profile.home_town %>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-xs-4">
-            <b>Favorite Singer/Band: </b>
-          </div>
-          <div class="col-xs-8">
-            <%= @profile.currently_lives %>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="col-xs-8" id="post-panels-box" style="border: 1px solid grey">
+
+    <div class="col-xs-12" id="post-panels-box">
     <% if current_user && current_user.id == @user.id %>
       <% @posts.reverse.each do |post| %>
         <%= render partial: "shared/wall_post", locals: { post: post} %>
@@ -128,6 +76,6 @@
     <% end %>
   </div>
 
-</div>
-</div>
+  </div>
+
 </div>

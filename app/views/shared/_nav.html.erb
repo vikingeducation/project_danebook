@@ -1,29 +1,27 @@
-
-<nav class="navbar navbar-default navbar-fixed-top" id="main-nav">
-  
+<nav class="navbar navbar-fixed-top bg-inverse" id="main-nav">
   <div class="container-fluid">
-    <div class="col-xs-3">
+    <div class="col-xs-2">
       <div class="navbar-header">
-        <a class="navbar-brand" href="#"> <%= link_to "Danebook", timelines_path %>
-          <img alt="Brand" src="http://branddna.co.za/wp-content/uploads/2014/08/Facebook-Icon.jpg" style="height: 30px; width: 30px; border-radius: 25px; border: 1px dotted white">
-        </a>
+        <!--<%= link_to "Good", timelines_path %> -->
+          <img alt="Brand" src="http://branddna.co.za/wp-content/uploads/2014/08/Facebook-Icon.jpg" style="height: 50px; width: 50px; border-radius: 25px; border: 1px solid white">
+        
       </div>
     </div>
     
   
 
-    <div class="col-xs-3" id="search-bar">
-      <%= form_tag(users_path, :method => "get", id: "search-form") do %>
+    <div class="col-xs-4" id="search-bar">
+      
         
-
-        <div class="input-group">
-          <%= text_field_tag :query, nil, placeholder: "Search for..", class: "form-control" %>
-
-          <span class="input-group-btn">
-            <%= submit_tag "search", class: "btn btn-success" %>
-          </span>
-        </div><!-- /input-group -->
-      <% end %>
+        <div class="form-inline">
+          <div class="form-group">
+          <%= form_tag(users_path, :method => "get", id: "search-form") do %>
+            <%= text_field_tag :query, nil, placeholder: "Search for..", class: "form-control" %>
+            <%= submit_tag "search", class: "btn btn-outline-info" %>
+          
+          <% end %>
+          </div>
+        </div>
     </div>
 
     <div class="col-xs-6" id="nav-bar">

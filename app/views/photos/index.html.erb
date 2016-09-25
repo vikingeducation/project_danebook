@@ -1,9 +1,14 @@
+<div class="container" id="phototron-container">
+  <div class="jumbotron" id="big-body">
+    <%= render partial: "shared/user_phototron", locals: { profile: current_user.profile} %>
+  </div>
+</div>
+
 <br>
-<br>
-<br>
-<br>
-<br>
-<br>
+
+<div class="container" id="nav-container">
+  <%= render partial: "shared/user_nav_bar", locals: { profile: current_user.profile} %>
+</div>
 
 <div class="main" style="border: 1px solid black">
   <div class="row">

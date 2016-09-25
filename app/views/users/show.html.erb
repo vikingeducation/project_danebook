@@ -1,8 +1,81 @@
 <!-- Your markup here! -->
+<div class="container" id="phototron-container">
+  <div class="jumbotron" id="big-body">
+    <%= render partial: "shared/user_phototron", locals: { profile: @profile} %>
+  </div>
+</div>
 
-<div class="jumbotron" id="big-body">
+<br>
+
+<div class="container" id="nav-container">
   <%= render partial: "shared/user_nav_bar", locals: { profile: @profile} %>
 </div>
+
+<div class="container" id="main-body-container" style="height: 1000px; border: 1px solid black">
+  <div class="col-md-4" style="height: 1000px; border: 1px solid black; padding: 0px">
+
+    <div class="card card-default" style="width: 100%; padding: 0px;">
+      <h4 class="card-title text-xs-center" style="margin-top: 10px"> About Me</h4>
+      <table class="table table-inverse" style="margin-bottom: 0px">
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Born On</td>
+            <td><%= @profile.month %>, <%= @profile.day %>, <%= @profile.year %></td>
+          </tr>
+          <tr>
+            <td>Education</td>
+            <td><%= @profile.college %></td>
+          </tr>
+          <tr>
+            <td>Currently</td>
+            <td><%= @profile.currently_lives %></td>
+          </tr>
+          <tr>
+            <td>Telephone</td>
+            <td>1-800-NONEYA</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card card-inverse card-warning text-xs-center">
+      <div class="card-block">
+        <blockquote class="card-blockquote">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+          <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
+        </blockquote>
+      </div>
+    </div>
+
+    <div class="card card-inverse card-warning text-xs-center">
+      <div class="card-block">
+        <blockquote class="card-blockquote">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+          <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
+        </blockquote>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-8" style="height: 500px; border: 1px solid black; padding: 0px">
+    <div class="col-xs-12" id="post-panels-box" style="border: 1px solid grey">
+    <% if current_user && current_user.id == @user.id %>
+      <% @posts.reverse.each do |post| %>
+        <%= render partial: "shared/wall_post", locals: { post: post} %>
+      <% end %>      
+    <% end %>
+  </div>
+
+  </div>
+
+</div>
+
 <div class="col-xs-12" id="body-container">
 <div class="something">
   <div class="col-xs-4" id="panels">  

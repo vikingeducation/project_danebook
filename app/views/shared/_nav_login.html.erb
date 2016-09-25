@@ -1,6 +1,3 @@
-
-
-
 <% if !signed_in_user? %>  
   <%= form_tag session_path do %>
 
@@ -24,7 +21,7 @@
         </div>
         
         <div class="col-sm-1">
-          <%= submit_tag "Log in", class: "btn btn-success" %>
+          <%= submit_tag "Log in", class: "btn btn-outline-success" %>
         </div>
       </div>
     </div>
@@ -33,14 +30,14 @@
  
 <% else %>
   <div class="col-sm-12">
-    <div class="form-horizontal">
+    <div class="form-inline">
       <div class="col-sm-6">
       </div>
       <div class="col-sm-3">
-        <%= link_to current_user.username, user_path(current_user), class: "btn btn-primary active" %>
+        <%= link_to current_user.username, user_path(current_user), class: "btn btn-outline-success" %>
       </div>
       <div class="col-sm-3">
-        <%= link_to "Logout", logout_path, method: :delete, data: {confirm: "Are you sure you want to log out?"}, class: "btn btn-primary active"%> 
+        <%= link_to "Logout", logout_path, method: :delete, data: {confirm: "Are you sure you want to log out?"}, class: "btn btn-outline-success"%> 
       </div>
     </div>
     

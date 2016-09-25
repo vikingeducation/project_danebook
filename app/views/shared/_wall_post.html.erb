@@ -59,7 +59,7 @@
 
       <div class="row" >
         <ul id="comments-box">
-        <%= post.comments.first %>
+        <!--<%= post.comments.first %><%= post.comments %> -->
         <% unless post.comments.length == 0 %>
           <% post.comments.each do |comment| %>
             <%= render partial: "shared/post_comment", locals: { comment: comment } %>

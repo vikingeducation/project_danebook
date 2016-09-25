@@ -24,103 +24,107 @@
       </div>
     <% end %>
 
-    <div class="row">
-      <div class="col-sm-3">
-        <%=fa.label :first_name , class: "btn btn-primary"%>
-      </div>
-      <div class="col-sm-6">
-        <%=fa.text_field :first_name %>
-      </div>
+    <div class="container-fluid row-eq-height">
+
+      <div class="col-xs-4">
+        <div class="row">
+          <div class="col-sm-6">
+            <%=fa.label :first_name , class: "btn btn-primary"%>
+          </div>
+          <div class="col-sm-6">
+            <%=fa.text_field :first_name , class: "form-control"%>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-6">
+            <%=fa.label :last_name, class: "btn btn-primary" %>
+          </div>
+          <div class="col-sm-6">
+            <%=fa.text_field :last_name, class: "form-control" %>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-6">
+            <%=fa.label :month , class: "btn btn-primary"%>
+          </div>
+          <div class="col-sm-6">
+            <%=fa.text_field :month, class: "form-control" %>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-sm-6">
+            <%=fa.label :day , class: "btn btn-primary"%>
+          </div>
+          <div class="col-sm-6">
+            <%=fa.number_field :day, class: "form-control" %>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-sm-6">
+            <%=fa.label :year , class: "btn btn-primary"%>
+          </div>
+          <div class="col-sm-6">
+            <%=fa.number_field :year, class: "form-control" %>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-sm-6">
+            <%=fa.label :gender, class: "btn btn-primary" %>
+          </div>
+          <div class="col-sm-6">
+            <%= fa.select(:gender, [['Female',"female"], ['Male',"male"]], {}, { required: 'true', class: 'form-control'}) %>
+          </div>
+        </div>   
+      <% end %>
     </div>
 
-    <div class="row">
-      <div class="col-sm-3">
-        <%=fa.label :last_name, class: "btn btn-primary" %>
-      </div>
-      <div class="col-sm-6">
-        <%=fa.text_field :last_name %>
-      </div>
-    </div>
+    <div class="col-xs-8">
+      <div class="row">
+        <div class="col-sm-4">
+          <%= user_fields.label :username , class: "btn btn-primary"%>
+        </div>
+        <div class="col-sm-8">
+          <%= user_fields.text_field :username, class: "form-control" %>
+        </div>
+       </div>
+       
+      <div class="row">
+        <div class="col-sm-4">
+          <%= user_fields.label :email, class: "btn btn-primary" %>
+        </div>
+        <div class="col-sm-8">
+          <%= user_fields.text_field :email, class: "form-control" %>
+        </div>
+       </div>
+       
+      <div class="row">
+        <div class="col-sm-5">
+          <%= user_fields.label :password , class: "btn btn-primary"%>
+        </div>
+        <div class="col-sm-7">
+          <%= user_fields.password_field :password, class: "form-control" %>
+        </div>
+       </div>
 
-    <div class="row">
-      <div class="col-sm-3">
-        <%=fa.label :month , class: "btn btn-primary"%>
+      <div class="row">
+        <div class="col-sm-5">
+          <%= user_fields.label :password_confirmation, class: "btn btn-primary" %>
+        </div>
+        <div class="col-sm-7">
+          <%= user_fields.password_field :password_confirmation, class: "form-control" %>
+        </div>  
       </div>
-      <div class="col-sm-6">
-        <%=fa.text_field :month %>
-      </div>
-    </div>
-    
-    <div class="row">
-      <div class="col-sm-3">
-        <%=fa.label :day , class: "btn btn-primary"%>
-      </div>
-      <div class="col-sm-6">
-        <%=fa.number_field :day %>
-      </div>
-    </div>
-    
-    <div class="row">
-      <div class="col-sm-3">
-        <%=fa.label :year , class: "btn btn-primary"%>
-      </div>
-      <div class="col-sm-6">
-        <%=fa.number_field :year %>
-      </div>
-    </div>
-    
-    <div class="row">
-      <div class="col-sm-3">
-        <%=fa.label :gender, class: "btn btn-primary" %>
-      </div>
-      <div class="col-sm-6">
-        <%= fa.select(:gender, [[' ', ' '], ['Female',"female"], ['Male',"male"]]) %>
-      </div>
-    </div>   
-  <% end %>
 
-  <div class="row">
-    <div class="col-sm-4">
-      <%= user_fields.label :username , class: "btn btn-primary"%>
-    </div>
-    <div class="col-sm-6">
-      <%= user_fields.text_field :username %>
-    </div>
-   </div>
-   
-  <div class="row">
-    <div class="col-sm-4">
-      <%= user_fields.label :email, class: "btn btn-primary" %>
-    </div>
-    <div class="col-sm-6">
-      <%= user_fields.text_field :email %>
-    </div>
-   </div>
-   
-  <div class="row">
-    <div class="col-sm-4">
-      <%= user_fields.label :password , class: "btn btn-primary"%>
-    </div>
-    <div class="col-sm-6">
-      <%= user_fields.password_field :password %>
-    </div>
-   </div>
+      <div class="col-sm-12" style="bottom: 0; left: 0; position: absolute; margin-bottom: 10px">
+          <%= user_fields.submit "Sign Up", class: "btn btn-success", style: "width: 400px"%>
+        </div>
 
-  <div class="row">
-    <div class="col-sm-4">
-      <%= user_fields.label :password_confirmation, class: "btn btn-primary" %>
+      <br>
     </div>
-    <div class="col-sm-6">
-      <%= user_fields.password_field :password_confirmation %>
-    </div>  
   </div>
-
-  <br>
-
-  <div class="row">
-    <div class="col-sm-8">
-    <%= user_fields.submit "Sign Up", class: "btn btn-success", style: "width: 400px"%>
-    </div>
-  </div>
-  
 <% end %>

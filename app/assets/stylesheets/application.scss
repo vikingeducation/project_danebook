@@ -1,0 +1,279 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+ * {
+  font-family: Comic;
+   }
+
+#well {
+  margin-bottom: 0px;
+  background-color: rgba(245, 245, 245, 0.4);
+   
+}
+
+.row-eq-height {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display:         flex;
+}
+
+p {
+  display: block;
+  color: black;
+  margin: 0px;
+  padding: 0px; }
+
+li {
+  margin-left: 20%;
+  text-align: left; }
+
+h1 {
+  color: black;
+  margin: 0px 0px 0px 0px; }
+
+#main-nav {
+  background-color: #3b5998; 
+  }
+
+.col-md-4 {
+  display: inline; }
+
+
+.col-md-6 {
+  margin: 0px; }
+
+  * {
+  font-family: Comic; }
+
+.container-fluid {
+  padding: 0px; }
+
+.container {
+  padding-bottom: 25px; }
+
+.navbar-fixed-top {
+  border: none;
+  background-color: #3b5998;
+  height: 8%; }
+
+.navbar-fixed-top img {
+  margin-top: 10px;
+ }
+
+.input-group {
+  width: 100%;
+ }
+
+.form-control {
+  height: 100%;
+}
+
+.form-inline .form-control {
+  height: 100%;
+}
+
+textarea.form-control {
+  height: 100%; }
+
+span.nav-default {
+  border: none; }
+
+.nav-default {
+  border: solid;
+  border-width: 0.5px; }
+
+.row {
+  margin-right: 1px;
+  margin-bottom: 5px; }
+
+.row .nav-default .container-fluid {
+  width: 100%; }
+
+.row.header-bar {
+  margin: 0px;
+  border-bottom-style: solid;
+  border-width: 0.5px;
+  padding-bottom: 5px; }
+
+.row.footer-bar {
+  background-color: #f3f6fb;
+  margin: 0px 0px 0px 0px;
+  border-top-style: solid;
+  border-width: 0.5px;
+  padding-top: 5px; }
+
+.row-eq-height {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex; }
+
+#body-container {
+  margin: 0% 0% 0% 0%;
+  padding: 0px;
+  border: 1px solid black;
+  }
+
+#title-tag {
+  margin-top: 10px;  
+}
+
+.container {
+  margin-top: 0px;
+  margin-bottom: 10px; }
+
+
+
+
+
+.col-xs-9.col-xs-offset-3 {
+  padding: 0px; }
+
+.col-xs-8.col-xs-offset-4 {
+  padding: 0px; }
+
+.col-xs-5 {
+  padding: 0px; }
+
+.main .col-xs-3 img {
+  height: 100%;
+  width: 100%;
+  border: 1px solid gold; }
+
+.main .col-xs-4 img {
+  height: 100%;
+  width: 100%;
+  border: 1px solid gold; }
+
+p, li {
+  text-align: left; }
+
+.btn-sm {
+  text-align: center;
+  width: 100%; }
+
+.btn-primary {
+  text-align: center;
+  width: 100%; }
+
+button {
+  width: 50%; }
+
+li {
+  verticle-align: middle; }
+
+#helpBlock {
+  margin: 0px; }
+
+#friends {
+  margin: 0px;
+  padding: 5px;
+  width: 100%; }
+
+#photos {
+  height: 25%;
+  width: 25%; }
+
+#footers li {
+  display: inline;
+}
+#footers {
+  padding: 15px;
+  margin-bottom: 5px;
+}
+
+#panels {
+  display: block; 
+  }
+
+h1 {
+  font-size: 30px;
+  text-align: center;
+  border: 0px;
+  padding: 0px;
+  margin: 0px; }
+
+.nav-link {
+  font-size: 15px;
+}
+
+
+#big-body {
+  border-radius: 10px;
+  margin-bottom: 0px;
+  padding: 0px;
+  border: 1px solid grey;
+}
+
+#main-body-container {
+  padding: 0px;
+}
+
+#photo-container {
+  background-color: #F3F3F3;
+  padding: 0px;
+  display: block;
+}
+
+#background-container {
+  padding: 0px;
+}
+
+#phototron-container {
+  padding: 0px; margin-bottom: 0px;
+}
+
+#photo {
+  min-height: 70%;
+  max-height: 70%;
+}
+
+#nav-container {
+  padding: 0px;
+}
+
+#post-panels {
+  padding: 0px;
+  margin-bottom: 5px;
+  border: 1px solid grey;
+}
+
+#extra-padding {
+  padding: 15px;
+}
+
+#post-panels-box {
+  padding: 0px;
+}
+
+#post-options li {
+  display: inline;
+  margin: 0px;
+}
+
+#post-options {
+  padding: 0px;
+}
+
+#sign-up-form {
+  
+}
+
+.main {
+  border: 1px solid black;
+}
+

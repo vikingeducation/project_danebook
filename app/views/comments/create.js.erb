@@ -1,0 +1,6 @@
+(function() {
+  var $new_comment = $("<%= escape_javascript (render partial: 'shared/post_comment', locals: { comment: @comment }) %>").addClass('temp-new');
+  $("#post-panels[post-id='<%= @post.id %>']").find('#comments-box').prepend($new_comment);
+  $('.temp-new').hide().show(3000).removeClass('temp-new');
+  $("#new_comment").find("input[type='text']").val("");
+})();

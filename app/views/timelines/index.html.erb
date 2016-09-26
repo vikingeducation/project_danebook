@@ -1,0 +1,23 @@
+<br>
+<br><br><br><br>
+
+<ul>
+  <h2> :: Recently Active News Feed :: </h2>
+  <% @friends.each do |friend| %>
+    <div class="row">  
+      <% if friend.posts.length != 0 %>
+        <%= render partial: "shared/wall_post", locals: { post: friend.posts.recent_posts(1).first} %>
+      <% end %>
+    </div>
+  <% end %>
+
+  <h2> :: Normal News Feed :: </h2>
+
+  <% @friends.each do |friend| %>
+    <div class="row">
+      <% friend.posts.each do |post| %>
+        <%= render partial: "shared/wall_post", locals: { post: post} %>
+      <% end %>
+    </div>
+  <% end %>
+</ul>

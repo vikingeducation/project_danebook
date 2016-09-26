@@ -1,0 +1,42 @@
+<div class="jumbotron" id="big-body">
+  <br>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+        <table class="table">
+          <thead>
+            <tr>
+              <th><h2>Connect with all your friends!</h2></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>See photos and updates in your news feed</td>
+            </tr>
+            <tr>
+              <td>Post your status for the world to see from your profile</td>
+            </tr>
+            <tr>
+              <td>Get in touch with your friends by "friending" them</td>
+            </tr>
+            <tr>
+              <td>Like things because you're a positive person!</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="col-md-9" id="sign-up-form">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-xs-12"><h2> Sign Up </h2> </div>
+          </div>
+          <div class="row">
+            <%= render partial: "shared/users_form", locals: {user: @user, profile: @profile} %> 
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+  

@@ -1,0 +1,29 @@
+<%= simple_form_for @post, :url => user_posts_path(current_user), remote: true do |f| %>
+  <div class="col-xs-12" id="panels" style="border: groove; border-radius: 0px; padding: 0px">
+    <div class="post-container" style="padding: 15px">
+      <div class ="row header-bar">  
+        <div class="col-xs-6">
+          <h4>Post</h4>
+        </div>
+      </div>
+      <br>
+      <%= f.text_area :description , style: "width: 80%"%>
+      <br>
+
+      <!--
+      <%= f.fields_for :photo, Photo.new do |photo_fields| %>
+        <%= photo_fields.label :label %>
+        <%= photo_fields.text_field :label %>
+        <%= photo_fields.file_field :avatar %>
+      <% end %>
+      -->
+    </div>
+
+    <div class ="row footer-bar">  
+      <ul class="list-unstyled" id="footers">
+        <%= f.submit "Post the Post", id: "post-submit", class: "btn btn-success" %>
+      </ul>
+        
+    </div>
+  </div>
+<% end %>

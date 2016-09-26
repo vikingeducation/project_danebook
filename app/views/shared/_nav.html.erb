@@ -1,0 +1,31 @@
+<nav class="navbar navbar-fixed-top bg-inverse" id="main-nav">
+  <div class="container-fluid">
+    <div class="col-xs-2">
+      <div class="navbar-header">
+        <!--<%= link_to "Good", timelines_path %> -->
+          <img alt="Brand" src="http://branddna.co.za/wp-content/uploads/2014/08/Facebook-Icon.jpg" style="height: 50px; width: 50px; border-radius: 25px; border: 1px solid white">
+        
+      </div>
+    </div>
+    
+  
+
+    <div class="col-xs-4" id="search-bar">
+      
+        
+        <div class="form-inline">
+          <div class="form-group">
+          <%= form_tag(users_path, :method => "get", id: "search-form") do %>
+            <%= text_field_tag :query, nil, placeholder: "Search for..", class: "form-control" %>
+            <%= submit_tag "search", class: "btn btn-outline-info" %>
+          
+          <% end %>
+          </div>
+        </div>
+    </div>
+
+    <div class="col-xs-6" id="nav-bar">
+      <%= render partial: "shared/nav_login" %>
+    </div>
+  </div>
+</nav>

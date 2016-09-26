@@ -1,0 +1,49 @@
+<div class="container" id="phototron-container">
+  <div class="jumbotron" id="big-body">
+    <%= render partial: "shared/user_phototron", locals: { profile: current_user.profile} %>
+  </div>
+</div>
+<br>
+
+<div class="container" id="nav-container">
+  <%= render partial: "shared/user_nav_bar", locals: { profile: current_user.profile} %>
+</div>
+
+<div class="container bg-inverse" id="big-body">
+  <div class="row">
+    <h1 style="margin: 10px"> Photo Gallery </h1>
+
+    <div class="col-sm-12">
+
+      <% @photos.each do |photo| %>
+        <div class="card col-sm-4 row-eq-height" id="photo-container">
+          <div class="card bg-default" style="margin: 0px">
+            <div class="col-sm-4" >
+              <%= image_tag photo.avatar.url, style: "width: 100%", id: "photo" %>
+            </div>
+            <div class="card-block text-xs-center">
+              <p class="card-text"><b><%= photo.label %></b></p>
+              <p class="card-text"><%= photo.created_at.to_s.slice(0,10) %></p>
+              <%= link_to "View", user_photo_path(current_user, photo), class: "btn btn-outline-danger btn-lg" %> 
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <div class="card col-sm-3 col-sm-offset-1">
+      <div class="card-block">
+       <h3 class="card-title" style="color: black"> Add A Photo </h3>
+        <%= form_for :photo, :url => user_photos_path(current_user), :method => "post" do |photo_fields| %>
+          <%= photo_fields.label :label , style: "color: black"%>
+          <br>
+          <%= photo_fields.text_field :label, class: "form-control" %>
+          <br>
+          <%= photo_fields.file_field :avatar, class: "btn btn-small btn-file"  %>
+          <br>
+          <%= photo_fields.submit class: "btn btn-primary active"%>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

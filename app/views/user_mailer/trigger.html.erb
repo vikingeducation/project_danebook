@@ -1,0 +1,16 @@
+<h1>Triggered! No, not the meme. I mean that you have posted or commented somewhere.</h1>
+
+<p>
+  Hi <%= @user.username %>
+
+  You posted at: 
+  <i> <%= @post.created_at %></i> on <%= @user.username %>'s wall with the following _::_
+
+  <br>
+
+  <b> <%= @post.description %> </b>
+</p>
+
+<p>
+  View your account at <%= link_to "#{user_url(@user.id)}", user_url(@user.id) %>
+</p>

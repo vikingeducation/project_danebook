@@ -1,0 +1,16 @@
+(function(){
+
+  ($($("#post-panels[post-id='<%= @post.id %>']").find($(".footer-bar")).find($('.row')).children()[1])).fadeIn(2000).empty();
+
+  $likes = $("<div class='col-xs-2' id='post-options'><li></li></div>");
+
+
+  $likes.text('<%= @post.likes.count %> likes..').attr("id", "likes-count");
+
+  $likes.insertAfter($($("#post-panels[post-id='<%= @post.id %>']").find($(".footer-bar")).find($('.row')).children()[0]));
+
+  $likes.hide.show(2000);
+
+
+
+})();

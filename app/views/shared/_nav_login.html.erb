@@ -1,0 +1,48 @@
+<% if !signed_in_user? %>  
+  <%= form_tag session_path do %>
+
+    <div class="col-sm-12">
+      <div class="form-horizontal">
+        <div class="col-sm-1">
+          <%= label_tag :email, "Email:", class: "control-label"%> 
+        </div>
+        <div class="col-sm-4">
+          
+          <%= text_field_tag :email, nil, class: "form-control", style: "width: 150px" %>
+        </div>
+
+        <div class="col-sm-2">
+          <%= label_tag :password, "Password:", class: "control-label"%> 
+        </div>
+          
+        <div class="col-sm-4">
+          
+          <%= password_field_tag :password, nil, class: "form-control"%>
+        </div>
+        
+        <div class="col-sm-1">
+          <%= submit_tag "Log in", class: "btn btn-outline-success" %>
+        </div>
+      </div>
+    </div>
+    
+  <% end %>
+ 
+<% else %>
+  <div class="col-sm-12">
+    <div class="form-inline">
+      <div class="col-sm-6">
+      </div>
+      <div class="col-sm-3">
+        <%= link_to current_user.username, user_path(current_user), class: "btn btn-outline-success" %>
+      </div>
+      <div class="col-sm-3">
+        <%= link_to "Logout", logout_path, method: :delete, data: {confirm: "Are you sure you want to log out?"}, class: "btn btn-outline-success"%> 
+      </div>
+    </div>
+    
+  </div>
+<% end %>
+
+ 
+

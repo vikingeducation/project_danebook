@@ -1,0 +1,110 @@
+<!-- Your markup here! -->
+<div class="container" id="phototron-container">
+  <div class="jumbotron" id="big-body">
+    <%= render partial: "shared/user_phototron", locals: { profile: @profile} %>
+  </div>
+</div>
+
+<br>
+
+<div class="container" id="nav-container">
+  <%= render partial: "shared/user_nav_bar", locals: { profile: @profile} %>
+</div>
+
+<div class="container" id="main-body-container" >
+  <div class="col-md-4" style="height: 1000px;">
+
+    <div class="card card-default" style="width: 100%; padding: 0px;">
+      <h4 class="card-title text-xs-center" id="title-tag"> About Me</h4>
+      <table class="table table-inverse" style="margin-bottom: 0px">
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Born On</td>
+            <td><%= @profile.month %>, <%= @profile.day %>, <%= @profile.year %></td>
+          </tr>
+          <tr>
+            <td>Education</td>
+            <td><%= @profile.college %></td>
+          </tr>
+          <tr>
+            <td>Currently</td>
+            <td><%= @profile.currently_lives %></td>
+          </tr>
+          <tr>
+            <td>Telephone</td>
+            <td>1-800-NONEYA</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="card card-default" style="width: 100%; padding: 0px;">
+      <h4 class="card-header text-xs-center" id="header-tag"> Photos</h4>
+      <div class="card-block" style="padding: 0px">
+        <div class="col-xs-12">
+          <% @user.photos.each do |photo| %>
+            <div class="col-xs-4 row-eq-height" style="padding: 0px">
+              <div class="card bg-faded" style="margin: 0px ">
+                <%= image_tag photo.avatar.url, styles: :small, style: "width: 100%", id: "photo" %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="card card-default" style="width: 100%; padding: 0px;">
+      <h4 class="card-header text-xs-center" id="header-tag"> Friends</h4>
+      <div class="card-block">
+        <div class="col-xs-12 row-eq-height">
+          <% @user.friended_users.each do |user| %>  
+            <div class="card card-inverse col-xs-6" style="width: 100%"> 
+              <img id="friend-picture" src="<%= user.profile.photo.avatar.url %>" style="width: 100%">
+            </div>
+         <% end %>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="card card-inverse card-info text-xs-center">
+      <div class="card-block">
+        <blockquote class="card-blockquote">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+          <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
+        </blockquote>
+      </div>
+    </div>
+
+    <div class="card card-inverse card-warning text-xs-center">
+      <div class="card-block">
+        <blockquote class="card-blockquote">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+          <footer>Someone famous in <cite title="Source Title">Source Title</cite></footer>
+        </blockquote>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-7" style="height: 500px; float: right">
+    <div class="row">
+      <%= render "shared/wall_post_form"%>
+    </div>
+
+    <div class="col-xs-12" id="post-panels-box">
+    <% if current_user && current_user.id == @user.id %>
+      <% @posts.reverse.each do |post| %>
+        <%= render partial: "shared/wall_post", locals: { post: post} %>
+      <% end %>      
+    <% end %>
+  </div>
+
+  </div>
+
+</div>

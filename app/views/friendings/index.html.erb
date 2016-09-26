@@ -1,0 +1,47 @@
+<div class="container" id="phototron-container">
+  <div class="jumbotron" id="big-body">
+    <%= render partial: "shared/user_phototron", locals: { profile: current_user.profile} %>
+  </div>
+</div>
+<br>
+
+<div class="container" id="nav-container">
+  <%= render partial: "shared/user_nav_bar", locals: { profile: current_user.profile} %>
+</div>
+
+<div class="container bg-inverse" id="big-body">
+  <div class ="row header-bar">  
+    <h1 id="title-tag">Friends</h1>
+  </div> 
+  <div class="row-eq-height">
+
+    <% current_user.friended_users.each do |user| %>  
+      <div class="card card-inverse col-xs-6" style="width: 100%"> 
+        <div class="container" id="friends">
+          <div class="row row-eq-height">
+            <div class="col-xs-3">
+              <img id="friend-picture" src="<%= user.profile.photo.avatar.url %>" style="width: 100%">
+            </div>
+            <div class="col-xs-5">
+              <u>
+                <a href="#"> 
+                  <%= user.username %> 
+                </a>
+              </u>
+              <span id="helpBlock" class="help-block"> 
+                <%= user.friended_users.count %> 
+              </span>
+            </div>  
+            <div class="col-xs-4">
+              <% if current_user.friended_users.include?(user) %>
+                <%= link_to "Remove", friending_path(current_user.friended_users.find(user.id)), method: :delete , class: "btn btn-outline-primary btn-md" %>
+              <% else %>
+                <%= link_to "Friend", user_friendings_path(user), method: :create , class: "btn btn-outline-primary btn-md" %>
+              <% end %>
+            </div>     
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,76 @@
+
+<div class="card col-xs-12" id="post-panels" post-id="<%= post.id %>">
+  <div class ="row header-bar">  
+    <div class="col-xs-6"> 
+      <div class="container" id="friends">
+        <div class="row row-eq-height">
+          <div class="col-xs-6">
+            <% if User.find(post.user_id).profile.photo %>
+
+              <%= image_tag User.find(post.user_id).profile.photo.avatar.url(:small) %>
+            <% else %>
+              <%= image_tag "http://learngroup.org/assets/images/logos/default_male.jpg", style: "width: 300px, height: 300px" %>
+            <% end %>
+          </div>
+          <div class="col-xs-6">
+            <u><%= link_to "#{User.find(post.user_id).profile.first_name} #{User.find(post.user_id).profile.last_name}", user_path(User.find(post.user_id)) %> </u>
+            
+          </div>      
+        </div>
+      </div>
+    </div>
+    <div class="col-xs-6">
+      <div id="helpBlock" class="help-block">Posted on <%= post.created_at %> 
+      </div>
+    </div>
+  </div>
+
+  <div class="card-block" style="background-color: white; margin: 0">
+    <div id="extra-padding">
+      <p> <%= post.description %> </p>
+
+      <% if post.photo %> 
+        <%= image_tag post.photo.avatar.url(:medium) %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class ="row footer-bar" id="extra-padding">  
+    <ul class="list-unstyled" id="post-footers">
+      <div>
+        <div class="col-xs-2" id="post-options">
+          <li>
+          <%= link_to 'Destroy', user_post_path(current_user, post), :method => :delete, :remote => true %>  
+          </li>
+        </div>
+        <div class="col-xs-2" id="post-options">
+          <% if post.already_likes? %>
+            <li>
+              <%= post.likes.count %> likes..
+            </li>
+          <% else %>
+            <li> 
+              <%=link_to "Like", user_post_likings_path(current_user, post), id: "like-button", :method => :post, remote: true %> 
+            </li>
+          <% end %>
+        </div>
+        <li>
+          <%= render partial: "shared/post_comment_form", locals: { post: post } %>
+        </li>
+      </div>
+
+      <div class="row" >
+        <ul id="comments-box">
+        <!--<%= post.comments.first %><%= post.comments %> -->
+        <% unless post.comments.length == 0 %>
+          <% post.comments.each do |comment| %>
+            <%= render partial: "shared/post_comment", locals: { comment: comment } %>
+          <% end %>
+        <% end %>
+        </ul>
+      </div>
+    </ul>
+
+
+  </div>
+</div>

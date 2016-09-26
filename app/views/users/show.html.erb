@@ -15,7 +15,7 @@
   <div class="col-md-4" style="height: 1000px;">
 
     <div class="card card-default" style="width: 100%; padding: 0px;">
-      <h4 class="card-title text-xs-center" style="margin-top: 10px"> About Me</h4>
+      <h4 class="card-title text-xs-center" id="title-tag"> About Me</h4>
       <table class="table table-inverse" style="margin-bottom: 0px">
         <thead>
           <tr>
@@ -44,7 +44,36 @@
       </table>
     </div>
 
-    <div class="card card-inverse card-warning text-xs-center">
+    <div class="card card-default" style="width: 100%; padding: 0px;">
+      <h4 class="card-header text-xs-center" id="header-tag"> Photos</h4>
+      <div class="card-block" style="padding: 0px">
+        <div class="col-xs-12">
+          <% @user.photos.each do |photo| %>
+            <div class="col-xs-4 row-eq-height" style="padding: 0px">
+              <div class="card bg-faded" style="margin: 0px ">
+                <%= image_tag photo.avatar.url, styles: :small, style: "width: 100%", id: "photo" %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="card card-default" style="width: 100%; padding: 0px;">
+      <h4 class="card-header text-xs-center" id="header-tag"> Friends</h4>
+      <div class="card-block">
+        <div class="col-xs-12 row-eq-height">
+          <% @user.friended_users.each do |user| %>  
+            <div class="card card-inverse col-xs-6" style="width: 100%"> 
+              <img id="friend-picture" src="<%= user.profile.photo.avatar.url %>" style="width: 100%">
+            </div>
+         <% end %>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="card card-inverse card-info text-xs-center">
       <div class="card-block">
         <blockquote class="card-blockquote">
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>

@@ -7,6 +7,6 @@ var postid = <%= @comment.commentable_id %>;
 console.log('.postid:' + postid);
 
 $('.postid-' + postid).append($newComment);
-
+$('.comment-form textarea').val("");
 $('.flash').html("<%= j(render 'shared/flash') %>").slideDown;
 <%= flash.clear %>

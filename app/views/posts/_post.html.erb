@@ -1,0 +1,30 @@
+<div class="media media-wrap">
+  <div class="media-left">
+    <a href="#">
+      <div class="post-avatar">
+        <%= image_tag(post.author.avatar.url(:medium)) %>
+      </div>
+    </a>
+  </div>
+  <div class="media-body">
+    <h4 class="media-heading"><%= post.author.username %><span class="text-muted pull-right"><small><%= post.created_at %></small></span></h4>
+    <%= post.body %>
+    <p><span class="pull-left"><%= likes_link(post) %></span><span class="pull-right"><%= post_delete_link(post) %></span></p>
+    <div class="clearfix"></div>
+    <div class="likes_count">
+      <%= "#{post.likes_count}  " %><i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+      <% likers_name(post).each do |name| %>
+        <%= "  #{name}. " %>
+      <% end %>
+    </div>
+    <hr>
+    <p><strong>Comments:</strong></p>
+    <div class="postid-<%= post.id %>">
+      <%= render 'comments/index', object: post %>
+    </div>
+    <a href="#" class="new-comment">Make a Comment</a>
+    <div class="new-comment-form">
+      <%= render 'comments/new', object: post, comment: Comment.new %>
+    </div>
+  </div>
+</div>

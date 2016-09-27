@@ -1,0 +1,21 @@
+<header class="cover-header">
+  <div class="header-wraper">
+    <div class="cover-wraper">
+      <%= cover_image(user) %>
+      <div class="avatar-wraper">
+        <div id="avatar">
+          <%= image_tag(user.avatar.url(:medium), class: "img-responsive") %>
+        </div>
+        <h2><%= user.username %></h2>
+      </div>
+    </div>
+    <div class="navigation">
+      <ul class="nav nav-pills">
+        <li class="<%= active_class(timeline_path(user)) %>"><%= link_to "Timeline", timeline_path(user) %></li>
+        <li class="<%= active_class(user_path(user)) %>"><%= link_to "About", user_path(user) %></li>
+        <li class="<%= active_class(photos_path(user_id: user)) %>"><%= link_to "Photos", photos_path(user_id: user) %></li>
+        <li class="<%= active_class(friends_path(user)) %>"><%= link_to "Friends", friends_path(user) %></li>
+      </ul>
+    </div>
+  </div>
+</header>

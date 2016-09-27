@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Danebook</title>
+    <%= csrf_meta_tags %>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <%= favicon_link_tag 'favicon.png' %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body data-controller="<%= controller_name %>">
+    <%= render 'shared/navbar' %>
+
+    <div class="main-part">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-10 col-md-offset-1">
+            <%= render 'shared/flash' %>
+            <%= yield %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <%= render 'shared/footer' %>
+
+  </body>
+</html>

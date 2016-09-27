@@ -1,0 +1,8 @@
+<% if object.has_comments? %>
+  <% object.sequenced_comments.each do |comment| %>
+    <div class="comments-list">
+      <%= render 'comments/comment', comment: comment %>
+    </div>
+  <% end %>
+  <hr>
+<% end %>

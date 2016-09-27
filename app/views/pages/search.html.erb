@@ -1,0 +1,12 @@
+
+<div class="search-page">
+  <div class="panel panel-default">
+    <!-- Default panel contents -->
+    <div class="panel-heading text-center"><strong>Search Result</strong></div>
+    <div class="panel-body">
+      <h4><%= "#{pluralize(@users.size, "Result")} found" %></h4>
+      <hr>
+      <%= render 'shared/users_cards', users: @users %>
+    </div>
+  </div>
+</div>

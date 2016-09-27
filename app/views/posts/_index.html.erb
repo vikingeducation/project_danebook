@@ -1,0 +1,11 @@
+<% unless @desired_posts.empty? %>
+<div class="posts-list">
+  <% @desired_posts.each do |post| %>
+    <%= render 'posts/post', post: post %>
+  <% end %>
+</div>
+<% else %>
+  <div class="media-wrap text-center">
+    <h4><strong>No more new posts</strong></h4>
+  </div>
+<% end %>

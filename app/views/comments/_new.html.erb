@@ -1,0 +1,10 @@
+<%= form_for comment, remote: true, :html => { class: "comment-form" } do |f| %>
+  <%= f.hidden_field :commentable_id, value: object.id %>
+  <%= f.hidden_field :commentable_type, value: object.class %>
+  <div class="form-group">
+    <%= f.text_area :body, class: "form-control" %>
+  </div>
+  <div class="form-group">
+    <%= f.submit "Make a comment", class: "btn btn-primary" %>
+  </div>
+<% end %>

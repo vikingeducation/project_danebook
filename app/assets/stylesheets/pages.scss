@@ -1,0 +1,42 @@
+// Place all the styles related to the Pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.timeline,
+.friends-page,
+.photos-page,
+.newsfeed {
+  main {
+    margin-top: 15px;
+  }
+  .media-wrap {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+  }
+}
+
+
+.home-page {
+  .jumbotron {
+    font-family: 'keep-calm';
+  }
+}
+
+.active-card {
+  img {
+    width: 50px;
+    height: 50px;
+    overflow: hidden;
+  }
+}
+
+.user-card {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  height: 110px;
+  margin-top: 10px;
+  .friend-button {
+    text-align: center;
+    margin-top: 30px;
+  }
+}

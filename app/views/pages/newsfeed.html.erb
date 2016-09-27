@@ -1,0 +1,57 @@
+<div class="newsfeed">
+  <div class="row">
+    <div class="col-md-8 col-md-push-4">
+      <%= render 'posts/new' %>
+      <%= render 'posts/index' %>
+    </div>
+
+    <div class="col-md-4 col-md-pull-8">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="profile">
+            <div class="media">
+              <div class="media-left">
+                <a href="#">
+                  <%= image_tag(current_user.avatar.url(:medium)) %>
+                </a>
+              </div>
+              <div class="media-body">
+                <h4 class="media-heading"><%= link_to current_user.username, timeline_path(current_user) %></h4>
+                <%= link_to "Edit profile", edit_user_path(current_user) %>
+              </div>
+            </div>
+          </div>
+
+          <hr>
+
+          <h4><strong>Recently Active</strong></h4>
+
+          <% unless current_user.recent_friend_posts.empty? %>
+            <% current_user.recent_friend_posts.each do |post| %>
+              <div class="active-card">
+                <div class="media">
+                  <div class="media-left">
+
+                      <%= image_tag(post.author.avatar.url(:medium)) %>
+
+                  </div>
+                  <div class="media-body">
+                    <h4 class="media-heading"><%= link_to post.author.username, timeline_path(post.author) %></h4>
+                    <p class="text-muted"><%= "Posted on #{post.created_at.to_date}" %></p>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          <% else %>
+            <p>
+              No recent friend activity!
+            </p>
+          <% end %>
+          <h4 class="text-center"><%= link_to "See All Your Friends", friends_path(current_user) %></h4>
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

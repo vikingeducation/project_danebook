@@ -1,0 +1,89 @@
+<div class="timeline">
+  <div class="row">
+    <div class="col-md-12">
+
+      <%= render 'shared/cover_header', user: @user %>
+
+      <main>
+        <div class="row">
+          <div class="col-md-7 col-md-push-5">
+            <%= render 'posts/new' %>
+            <%= render 'posts/index' %>
+          </div>
+
+          <!-- user basic information -->
+          <div class="col-md-5 col-md-pull-7">
+            <div class="panel panel-default">
+              <div class="panel-heading">
+                <h3 class="panel-title text-center"><strong>Basic Information</strong></h3>
+              </div>
+              <div class="panel-body">
+
+                <table class="table table-bordered table-striped table-hover">
+                  <tbody>
+                    <tr>
+                      <td><strong>Username</strong></td>
+                      <td><%= @user.username %></td>
+                    </tr>
+                    <tr>
+                      <td><strong>Email</strong></td>
+                      <td><%= @user.email %></td>
+                    </tr>
+                    <tr>
+                      <td><strong>About</strong></td>
+                      <td><%= @user.about_me %></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+
+            <!-- photo gallery -->
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h3 class="panel-title text-center"><strong>Photo Gallery</strong></h3>
+                </div>
+                <div class="panel-body">
+                  <div class="text-center">
+                    <%= link_to "Create New Photo", new_photo_path(user_id: @user) %>
+                    <hr>
+                  </div>
+
+                    <% unless @user.photos.empty? %>
+                      <div class="row">
+                        <% @user.photos.each do |photo| %>
+                        <div class="col-xs-4 thumb">
+                          <%= link_to image_tag(photo.picture.url(:thumb), class: "img-responsive show-image-thumb"), photo_path(photo), class: "thumbnail" %>
+                        </div>
+                        <% end %>
+                      </div>
+                    <% end %>
+                </div>
+              </div>
+
+              <!-- user friends -->
+              <div class="panel panel-default">
+                <div class="panel-heading">
+                  <h3 class="panel-title text-center"><strong>Friends</strong></h3>
+                </div>
+                <div class="panel-body">
+                  <div class="row">
+                    <% if @user.has_friends? %>
+                      <% @user.friended_users.each do |friend| %>
+                        <div class="col-xs-3">
+                          <%= link_to image_tag(friend.avatar.url(:medium), class: "img-responsive" ), timeline_path(friend) %>
+                        </div>
+                      <% end %>
+                    <% end %>
+                  </div>
+                </div>
+              </div>
+
+
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+</div>

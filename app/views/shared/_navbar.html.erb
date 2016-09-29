@@ -13,5 +13,8 @@
         </div>
       </form>
     </div>
-    <p class="navbar-right"><%= current_user.first_name if !!current_user %></p>
+    <% if signed_in_user? %>
+      <p class="navbar-right"><%= current_user.first_name %></p>
+      <p class="navbar-right logout"><%= link_to "Log Out", logout_path, method: 'DELETE' %></p>
+    <% end %>
 </nav>

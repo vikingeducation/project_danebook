@@ -6,18 +6,26 @@ class ApplicationController < ActionController::Base
   # Simply store our ID in the session
   # and set the current user instance var
   def sign_in(user)
-    session[:user_id] = user.id
+    user.regenerate_auth_token
+    cookies[:auth_token] = user.auth_token
+    @current_user = user
+  end
+
+  def permanent_sign_in(user)
+    user.regenerate_auth_token
+    cookies.permanent[:auth_token] = user.auth_token
     @current_user = user
   end
 
   # reverse the sign in...
   def sign_out
     @current_user = nil
-    session.delete(:user_id)
+    cookies.delete(:auth_token)
   end
 
+  # cookies!
   def current_user
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    @current_user ||= User.find_by_auth_token(cookies[:auth_token]) if cookies[:auth_token]
   end
   helper_method :current_user
 

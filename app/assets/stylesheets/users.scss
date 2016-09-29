@@ -1,0 +1,45 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+$primary-font: helvetica, Arial, sans-serif;
+
+
+
+body {
+  padding-top: 72px;
+  padding-bottom: 20px;
+  font-family: $primary-font;
+}
+
+main {
+  .info-container {
+    margin-top: 100px;
+    li {
+      color: #666;
+    }
+  }
+  .signup-container {
+    .birthday-label {
+      margin-left: -15px;
+    }
+    .birthday-select {
+      margin-left: -15px;
+    }
+    select {
+      border-radius: 0;
+      color: #aaa;
+    }
+    .radio-button {
+      margin-left: -15px;
+      margin-bottom: 10px;
+    }
+    .btn {
+      font-weight: 800;
+    }
+  }
+}
+
+.field_with_errors {
+  border: 1px solid red;
+}

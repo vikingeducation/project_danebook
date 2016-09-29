@@ -3,10 +3,9 @@ source 'https://rubygems.org'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
-group :development do
-  # Use sqlite3 as the database for Active Record
-  gem 'sqlite3'
-end
+
+# Use pg as tbe database for Active Record
+gem 'pg'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
@@ -27,19 +26,23 @@ gem 'jbuilder', '~> 2.5'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'simple_enum'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'hirb'
   gem 'byebug', platform: :mri
+  gem "better_errors"
+  gem "binding_of_caller"
+  gem 'pry-byebug'
 end
 
 group :production do
   gem 'rails_12factor'
-  gem 'pg'
 end
 
 group :development do

@@ -12,11 +12,12 @@
   </head>
 
   <body>
-    <% if current_page?(action: 'home') %>
+    <% if current_page?(root_url) || current_page?('/users/new') %>
       <%= render 'shared/navbar_homepage' %>
     <% else %>
       <%= render 'shared/navbar' %>
     <% end %>
+    <%= render 'shared/flash' %>
     <%= yield %>
   </body>
 </html>

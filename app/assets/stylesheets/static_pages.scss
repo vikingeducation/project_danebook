@@ -1,0 +1,245 @@
+// Place all the styles related to the StaticPages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+$primary-font: helvetica, Arial, sans-serif;
+
+
+body {
+  padding-top: 50px;
+  padding-bottom: 20px;
+  font-family: $primary-font;
+}
+
+nav {
+  background-color: #2B78E4;
+  .navbar-brand {
+    color: #fff;
+  }
+  .container {
+    padding-left: 0;
+  }
+  img {
+    height: 40px;
+    margin: 5px 5px 5px 0;
+  }
+ .navbar-form .search {
+    width: 100%;
+    .form-group {
+      width: 100%;
+    }
+    .form-control {
+      width: 100%;
+    }
+  }
+  p {
+    color: #fff;
+    font-size: 18px;
+    line-height: 50px;
+    padding-right: 5px;
+    margin-bottom: 0;
+  }
+}
+#bg{
+    background:url('hogwarts_small.jpg') no-repeat;
+    background-size: 100% 300px;
+}
+main {
+  #bg {
+    height: 300px;
+    .jumbotron {
+      background-color: transparent;
+      color: #eee;
+      position: relative;
+      padding: 0;
+      img.profile-image {
+        position: absolute;
+        top: 155px;
+        left: 0;
+        width: 140px;
+        height: 160px;
+      }
+      h3 {
+        position: absolute;
+        top: 250px;
+        left: 160px;
+      }
+    }
+  }
+  #nav-links {
+    padding-left: 176px;
+    border: 1px solid #666;
+    .nav-pills>li>a {
+      border-radius: 0;
+    }
+    .nav-pills>li {
+      width: 150px;
+      margin: -1px;
+      border-radius: 0;
+      border: 1px solid #666;
+    }
+    li.edit-profile {
+      border: none;
+      float: right;
+      text-decoration: underline;
+      text-align: right;
+      background: transparent;
+    }
+  }
+
+  .content>.container {
+    margin-top: 10px;
+    border: 1px solid #666;
+    .heading {
+      background-color: #eee;
+      position: relative;
+      text-align: center;
+      border-bottom: 1px solid #666;
+      h1 {
+        display: inline-block;
+      }
+      .edit-profile-btn {
+        position: absolute;
+        display: inline-block;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+      }
+    }
+    .fixed-form-row {
+      height: 30px;
+      line-height: 30px;
+    }
+    textarea {
+      width: 95%;
+    }
+    .save-changes-btn {
+      margin-top: 20px;
+      margin-bottom: 50px;
+    }
+  }
+}
+
+main {
+  article {
+    border: 1px solid;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    .timeline-heading {
+      background-color: #eee;
+      margin: 0;
+      margin-bottom: 10px;
+    }
+    .timeline-field {
+      padding-left: 10px;
+      font-weight: bold;
+    }
+    .photo-container {
+      margin: 0 auto;
+      text-align: center;
+      img {
+        width: 64px;
+        height: 64px;
+      }
+    }
+    .see-more {
+      text-decoration: underline;
+      display: block;
+      margin-top: 10px;
+    }
+    .user-image {
+      padding: 20px;
+      img {
+        width: 64px;
+        height: 64px
+      }
+      a {
+        text-decoration: underline;
+      }
+    }
+  }
+  article.post-form {
+    textarea {
+      width: 100%;
+      display: block;
+      margin: 0 auto;
+      margin-bottom: 10px;
+    }
+    .row:last-child {
+      margin-bottom: -10px;
+      button {
+        margin: 5px;
+      }
+    }
+  }
+
+  article.post {
+    padding-top: 5px;
+    .media {
+      img {
+        width: 64px;
+        height: 64px;
+      }
+      padding-left: 10px;
+      p {
+        padding: 0;
+      }
+    }
+    .post-text {
+      padding: 10px;
+    }
+    a {
+      text-decoration: underline;
+      padding-right: 5px;
+    }
+    .row:last-child {
+      margin-bottom: -10px;
+      padding: 5px;
+    }
+    .like-annotation {
+      display: block;
+      padding-top: 5px;
+    }
+    hr {
+      border-top: 1px solid #666;
+    }
+    .comment-form {
+      margin-top: 30px;
+    }
+    .cancel-link {
+      display: inline-block;
+      margin-top: 6px;
+    }
+    .inline {
+      display: inline-block;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

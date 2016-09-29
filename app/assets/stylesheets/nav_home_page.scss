@@ -1,0 +1,27 @@
+nav.homepage {
+  .navbar-brand {
+    color: #fff;
+    font-size: 32px;
+    padding-top: 25px;
+  }
+  .navbar-header {
+    button {
+      border: 1px solid #fff;
+      span {
+        background-color: #fff;
+      }
+    }
+  }
+  .btn {
+    width: 80px;
+    margin-top: 19px;
+    background-color: #9FC5F8;
+    font-weight: 800;
+  }
+  p {
+    margin-bottom: 2px;
+    color: #fff;
+    font-size: 12px;
+    line-height: 20px;
+  }
+}

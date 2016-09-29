@@ -1,0 +1,89 @@
+<main>
+  <!-- Header -->
+  <header class="container" id="bg">
+    <section class="jumbotron">
+        <%= image_tag("harry_potter_small.jpg", :class => "profile-image") %>
+        <h3>Harry Potter</h3>
+    </section>
+  </header>
+
+  <!-- Navigation -->
+  <div class="container" id="nav-links">
+   <ul class="nav nav-pills">
+    <li role="nav"><%= link_to "Timeline", timeline_path %></li><!--
+    --><li role="nav" class="active"><%= link_to "About", about_path %></li><!--
+    --><li role="nav"><%= link_to "Photos(123)", photos_path %></a></li><!--
+    --><li role="nav"><%= link_to "Friends(567)", friends_path %></li>
+  </ul>
+  </div>
+
+  <!-- Bootstrap grid system -->
+  <section class="content">
+    <div class="container">
+      <div class ="row">
+        <!-- Page Heading -->
+        <div class="col-md-12 heading">
+          <h1>Edit Profile</h1>
+        </div>
+      </div>
+
+      <div class="row">
+        <!-- Left column -->
+        <div class="col-md-5 col-md-offset-1">
+          <div class="row">
+            <h2 class="col-xs-12">Basic Information</h2>
+          </div>
+          <div class="row fixed-form-row">
+            <p class="col-xs-4">Birthday</p>
+            <p class="col-xs-8">July 31st, 1980</p>
+          </div>
+          <div class="row">
+            <p class="col-xs-4 fixed-form-row">College</p>
+            <div class="input-group col-xs-6">
+              <input type="text" class="form-control input-sm" value="Hogwarts College" aria-describedby="basic-addon2">
+            </div>
+          </div>
+          <div class="row">
+            <p class="col-xs-4 fixed-form-row">Hometown</p>
+            <div class="input-group col-xs-6">
+              <input type="text" class="form-control input-sm" value="Godrick's Hollow England" aria-describedby="basic-addon2">
+            </div>
+          </div>
+          <div class="row">
+            <p class="col-xs-4 fixed-form-row">Currently Lives</p>
+            <div class="input-group col-xs-6">
+              <input type="text" class="form-control input-sm" value="Godrick's Hollow England" aria-describedby="basic-addon2">
+            </div>
+          </div>
+          <div class="row">
+            <h2 class="col-xs-12">Contact Information</h2>
+          </div>
+          <div class="row fixed-form-row">
+            <p class="col-xs-4">Email</p>
+            <p class="col-xs-8">harry_potter@hogwarts.edu</p>
+          </div>
+          <div class="row">
+            <p class="col-xs-4 fixed-form-row">Telephone</p>
+            <div class="input-group col-xs-6">
+              <input type="text" class="form-control input-sm" value="555-123-4567" aria-describedby="basic-addon2">
+            </div>
+          </div>
+        </div>
+        <!-- Right Column -->
+        <div class="words group col-md-5">
+          <h2>Words to Live By</h2>
+          <textarea name="message" rows="4">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut</textarea>
+          <h2>About Me</h2>
+          <textarea name="message" rows="8">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</textarea>
+        </div>
+       </div>
+
+      <!-- Save Changes Button  -->
+       <div class="row save-changes-btn">
+        <div class="col-xs-12 text-center">
+          <button class="btn btn-lg btn-primary">Save Changes</button>
+        </div>
+       </div>
+     </div>
+  </section>
+</main>

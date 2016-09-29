@@ -13,5 +13,5 @@
         </div>
       </form>
     </div>
-    <p class="navbar-right">Harry</p>
+    <p class="navbar-right"><%= current_user.first_name if !!current_user %></p>
 </nav>

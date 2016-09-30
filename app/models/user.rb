@@ -7,4 +7,7 @@ class User < ApplicationRecord
   validates :password,
           :length => { :in => 8..24 },
           :allow_nil => false
+
+  has_one :profile
+
 end

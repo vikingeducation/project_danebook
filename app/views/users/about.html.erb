@@ -1,0 +1,76 @@
+<main>
+  <!-- Header -->
+  <header class="container" id="bg">
+    <section class="jumbotron">
+        <%= image_tag("harry_potter_small.jpg", :class => "profile-image") %>
+        <h3><%= "#{@user.first_name} #{@user.last_name}"%></h3>
+    </section>
+  </header>
+
+  <!-- Navigation -->
+  <div class="container" id="nav-links">
+   <ul class="nav nav-pills">
+    <li role="nav"><%= link_to "Timeline", timeline_path %></li><!--
+    --><li role="nav" class="active"><%= link_to "About", about_user_path(@user) %></li><!--
+    --><li role="nav"><%= link_to "Photos(123)", photos_path %></a></li><!--
+    --><li role="nav"><%= link_to "Friends(567)", friends_path %></li>
+  </ul>
+  </div>
+
+  <!-- Bootstrap grid system -->
+  <section class="content">
+    <div class="container">
+      <div class ="row">
+        <!-- Page Heading -->
+        <div class="col-md-12 heading">
+          <h1>About</h1>
+          <%= link_to "Edit your profile", edit_profile_path(@profile), class: "btn btn-primary pull-right edit-profile-btn" %>
+        </div>
+      </div>
+
+      <div class="row">
+        <!-- Left column -->
+        <div class="col-md-5 col-md-offset-1">
+          <div class="row">
+            <h2 class="col-xs-12">Basic Information</h2>
+          </div>
+          <div class="row fixed-form-row">
+            <p class="col-xs-4">Birthday</p>
+            <p class="col-xs-8"><%= @user.birthday.to_formatted_s(:long_ordinal) %></p>
+          </div>
+          <div class="row">
+            <p class="col-xs-4 fixed-form-row">College</p>
+            <p class="col-xs-8"><%= @profile.college %></p>
+          </div>
+          <div class="row">
+            <p class="col-xs-4 fixed-form-row">Hometown</p>
+            <p class="col-xs-8"><%= @profile.hometown %></p>
+          </div>
+          <div class="row">
+            <p class="col-xs-4 fixed-form-row">Currently Lives</p>
+            <p class="col-xs-8"><%= @profile.address %></p>
+          </div>
+          <div class="row">
+            <h2 class="col-xs-12">Contact Information</h2>
+          </div>
+          <div class="row fixed-form-row">
+            <p class="col-xs-4">Email</p>
+            <p class="col-xs-8"><%= @user.email %></p>
+          </div>
+          <div class="row">
+            <p class="col-xs-4 fixed-form-row">Telephone</p>
+            <p class="col-xs-8"><%= @profile.phone %></p>
+          </div>
+        </div>
+        <!-- Right Column -->
+        <div class="words group col-md-5">
+          <h2>Words to Live By</h2>
+          <p><%= @profile.status %></p><br>
+
+          <h2>About Me</h2>
+          <p><%= @profile.about %></p>
+        </div>
+       </div>
+     </div>
+  </section>
+</main>

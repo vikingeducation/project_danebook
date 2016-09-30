@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   def new
     if signed_in_user?
-      redirect_to user_path(current_user)
+      redirect_to about_user_path(current_user)
     else
       @user = User.new
     end
@@ -18,13 +18,17 @@ class UsersController < ApplicationController
     if @user.save
       permanent_sign_in(@user)
       flash[:success] = "You've successfully signed up"
-      redirect_to user_path(@user)
+      redirect_to about_user_path(@user)
     else
       flash.now[:danger] = "Please correct errors and resubmit the form"
       render :new
     end
   end
 
+  def about
+    @user =  User.find(params[:id])
+    @profile = @user.profile
+  end
 
 
   private

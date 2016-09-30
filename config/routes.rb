@@ -5,7 +5,11 @@ Rails.application.routes.draw do
   get 'photos', to: 'static_pages#photos', as: 'photos'
 
   root :to => 'users#new'
-  resources :users, only: [:new, :create, :show]
+  resources :users, only: [:new, :create, :show] do
+    get 'about', on: :member
+  end
+  resources :profiles, only: [:edit, :update]
+
   resource :session, only: [:create, :destroy]
   delete "logout" => "sessions#destroy"
 end

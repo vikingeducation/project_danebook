@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     get 'timeline', on: :member
   end
   resources :profiles, only: [:edit, :update]
+  resources :posts, only: [:create, :update, :destroy]
 
   resource :session, only: [:create, :destroy]
   delete "logout" => "sessions#destroy"

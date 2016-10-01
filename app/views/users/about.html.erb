@@ -1,11 +1,6 @@
 <main>
   <!-- Header -->
-  <header class="container" id="bg">
-    <section class="jumbotron">
-        <%= image_tag("harry_potter_small.jpg", :class => "profile-image") %>
-        <h3><%= "#{@user.first_name} #{@user.last_name}"%></h3>
-    </section>
-  </header>
+  <%= render partial: 'shared/header', locals: {user: @user}%>
 
   <!-- Navigation -->
   <%= render partial: 'shared/nav_loggedin', locals: {user: @user, active: 'about'} %>

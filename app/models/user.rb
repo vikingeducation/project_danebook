@@ -9,5 +9,6 @@ class User < ApplicationRecord
             :allow_nil => true
 
   has_one :profile
+  has_many :posts
 
 end

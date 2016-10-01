@@ -31,7 +31,7 @@ class UsersController < ApplicationController
   end
 
   def timeline
-
+    @post = Post.new
   end
 
 

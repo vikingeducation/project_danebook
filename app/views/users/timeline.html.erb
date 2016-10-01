@@ -1,12 +1,7 @@
 <!-- Main -->
 <main>
   <!-- Header -->
-  <header class="container" id="bg">
-    <section class="jumbotron">
-        <%= image_tag("harry_potter_small.jpg", :class => "profile-image") %>
-        <h3>Harry Potter</h3>
-    </section>
-  </header>
+  <%= render partial: 'shared/header', locals: {user: @user } %>
 
   <!-- Navigation -->
   <%= render partial: 'shared/nav_loggedin', locals: {user: @user, active: 'timeline'} %>
@@ -27,22 +22,22 @@
             </div>
             <div class="row">
               <div class="col-xs-12">
-                <span class="timeline-field">Born on: </span>July 31st, 1980
+                <span class="timeline-field">Born on: </span><%=@user.birthday.to_formatted_s(:long_ordinal)%>
               </div>
             </div>
             <div class="row">
               <div class="col-xs-12">
-                <span class="timeline-field">Went to School at: </span>Hogwarts
+                <span class="timeline-field">Went to School at: </span><%= @profile.college %>
               </div>
             </div>
             <div class="row">
               <div class="col-xs-12">
-                <span class="timeline-field">Hometown: </span>Godrick's Hollow, England
+                <span class="timeline-field">Hometown: </span><%= @profile.hometown %>
               </div>
             </div>
             <div class="row">
               <div class="col-xs-12">
-                <span class="timeline-field">Currently Lives: </span>Godrick's Hollow, England
+                <span class="timeline-field">Currently Lives: </span><%= @profile.address %>
               </div>
             </div>
           </article>
@@ -146,6 +141,7 @@
         <!-- Right Column -->
         <div class="col-sm-8">
           <!-- Article Post-form -->
+          <%= simple_form_for @post do |f| %>
           <article class="post-form">
             <div class="row timeline-heading">
               <div class="col-xs-12 ">
@@ -154,15 +150,19 @@
             </div>
             <div class="row">
               <div class="col-xs-12">
-              <textarea name="message" rows="3" placeholder="Tell the world something!"></textarea>
+                <%= f.input :text, label: false, :input_html => { :rows => 4 } %>
+              <!-- <textarea name="message" rows="3" placeholder="Tell the world something!"></textarea> -->
               </div>
             </div>
             <div class="row timeline-heading">
               <div class="col-xs-12 ">
-                <button class="btn btn-primary pull-right">Post</button>
+                <%= f.input :user_id, :as => :hidden, :input_html => { :value => @user.id } %>
+                <%= f.button :submit, 'Post', class: "btn btn-primary pull-right" %>
+                <!-- <button class="btn btn-primary pull-right">Post</button> -->
               </div>
             </div>
           </article>
+          <% end %>
 
           <!-- Article Post 1 -->
           <article class="post">

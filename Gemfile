@@ -8,6 +8,8 @@ gem 'rails', '~> 5.0.0', '>= 5.0.0.1'
 gem 'pg'
 #faker
 gem 'faker'
+#simple_form
+gem 'simple_form'
 
 # Use Puma as the app server
 gem 'puma', '~> 3.0'

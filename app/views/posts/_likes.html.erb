@@ -1,0 +1,10 @@
+<% if p.likes.count == 1 %>
+  <div class="col-xs-12">
+    <p class="text-muted"> <%= link_to first_few_names(p.likes), timeline_user_path(p.likes.first.initiated_user) %> likes this</p>
+  </div>
+<% elsif  p.likes.count > 1 %>
+  <div class="col-xs-12">
+    <p class="text-muted"> <%= link_to first_few_names(p.likes), timeline_user_path(p.likes.first.initiated_user) %> and
+    <%= p.likes.count - 1 %> others like this</p>
+  </div>
+<% end %>

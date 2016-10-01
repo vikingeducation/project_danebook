@@ -192,11 +192,7 @@
                   <%= link_to "Delete", post_path(p), method: "DELETE", class: "pull-right" %>
                 <% end %>
               </div>
-              <% if !p.likes.empty? %>
-              <div class="col-xs-12">
-                <p class="text-muted"><%= p.likes.count %> people like this</p>
-              </div>
-              <% end %>
+              <%= render partial: 'posts/likes', locals: {p: p} %>
             </div>
           </article>
           <% end %>

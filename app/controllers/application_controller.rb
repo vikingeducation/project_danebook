@@ -43,4 +43,9 @@ class ApplicationController < ActionController::Base
     end
   end
   helper_method :require_login
+
+  def current_user_page
+    signed_in_user? && params[:id] && params[:id].to_i == current_user.id
+  end
+  helper_method :current_user_page
 end

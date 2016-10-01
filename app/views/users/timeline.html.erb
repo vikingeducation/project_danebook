@@ -186,7 +186,11 @@
             </div>
             <div class="row timeline-heading">
               <div class="col-xs-12 ">
-                <a href="#">Like</a>
+                <% unless liked_by_current_user(p) %>
+                  <%= link_to "Like", like_post_path(p) %></a>
+                <% else %>
+                  <%= link_to "Unlike", unlike_post_path(p) %></a>
+                <% end %>
                 <a href="#">Comment</a>
                 <% if p.user == current_user %>
                   <%= link_to "Delete", post_path(p), method: "DELETE", class: "pull-right" %>

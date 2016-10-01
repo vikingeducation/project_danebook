@@ -10,7 +10,10 @@ Rails.application.routes.draw do
     get 'timeline', on: :member
   end
   resources :profiles, only: [:edit, :update]
-  resources :posts, only: [:create, :update, :destroy]
+  resources :posts, only: [:create, :update, :destroy] do
+    get 'like', on: :member
+    get 'unlike', on: :member
+  end
 
   resource :session, only: [:create, :destroy]
   delete "logout" => "sessions#destroy"

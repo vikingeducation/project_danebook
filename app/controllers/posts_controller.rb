@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :current_user_post
+  before_action :current_user_post, except: [:like, :unlike]
 
   def create
     new_post = Post.new(whitelisted_post_params)
@@ -12,6 +12,24 @@ class PostsController < ApplicationController
       @post = new_post
       render 'users/timeline'
     end
+  end
+
+  def like
+    @post = Post.find(params[:id])
+    unless @post.likes.pluck(:user_id, :post_id).include?([current_user.id, @post.id])
+      @post.likes << Like.new(user_id: current_user.id)
+    end
+    @profile = current_user.profile
+    redirect_to timeline_user_path(current_user)
+  end
+
+  def unlike
+    @post = Post.find(params[:id])
+    if @post.likes.pluck(:user_id, :post_id).include?([current_user.id, @post.id])
+      @post.likes.destroy(@post.likes.where("user_id = #{current_user.id}"))
+    end
+    @profile = current_user.profile
+    redirect_to timeline_user_path(current_user)
   end
 
   def update

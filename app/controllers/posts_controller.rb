@@ -25,7 +25,6 @@ class PostsController < ApplicationController
       flash[:danger] = "Unable to delete this zombie post!"
     end
     redirect_to timeline_user_path(@post.user)
-
   end
 
   private

@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :current_user_post
 
   def create
     new_post = Post.new(whitelisted_post_params)
@@ -31,5 +32,12 @@ class PostsController < ApplicationController
 
   def whitelisted_post_params
     params.require(:post).permit(:text, :user_id)
+  end
+
+  def current_user_post
+    unless signed_in_user? && params[:id] && current_user.post_ids.include?(params[:id].to_i)
+      flash[:danger] = "Not authorized!"
+      redirect_to timeline_user_path(current_user)
+    end
   end
 end

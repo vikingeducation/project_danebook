@@ -1,4 +1,5 @@
 class ProfilesController < ApplicationController
+  before_action :current_user_profile
 
   def edit
     @profile = Profile.find(params[:id])
@@ -22,6 +23,13 @@ class ProfilesController < ApplicationController
   def profile_params
       params.require(:profile).permit(:college, :hometown, :address, :phone,
                                       :status, :about, :user_id)
+  end
+
+  def current_user_profile
+    unless signed_in_user? && params[:id] && params[:id].to_i == current_user.profile.id
+      flash[:danger] = "Not authorized!"
+      redirect_to timeline_user_path(current_user)
+    end
   end
 
 end

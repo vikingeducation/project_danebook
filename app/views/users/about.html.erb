@@ -8,14 +8,7 @@
   </header>
 
   <!-- Navigation -->
-  <div class="container" id="nav-links">
-   <ul class="nav nav-pills">
-    <li role="nav"><%= link_to "Timeline", timeline_path %></li><!--
-    --><li role="nav" class="active"><%= link_to "About", about_user_path(@user) %></li><!--
-    --><li role="nav"><%= link_to "Photos(123)", photos_path %></a></li><!--
-    --><li role="nav"><%= link_to "Friends(567)", friends_path %></li>
-  </ul>
-  </div>
+  <%= render partial: 'shared/nav_loggedin', locals: {user: @user, active: 'about'} %>
 
   <!-- Bootstrap grid system -->
   <section class="content">

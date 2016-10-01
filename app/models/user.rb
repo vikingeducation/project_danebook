@@ -5,8 +5,8 @@ class User < ApplicationRecord
   validates :birthday, presence: true
   validates :gender_cd, presence: true
   validates :password,
-          :length => { :in => 8..24 },
-          :allow_nil => false
+            :length => { :in => 8..24 },
+            :allow_nil => true
 
   has_one :profile
 

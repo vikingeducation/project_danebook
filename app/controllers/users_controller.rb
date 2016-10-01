@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  skip_before_action :require_login, :only => [:new, :create, :show]
+  before_action :set_user_and_profile, only: [:about, :timeline]
+  skip_before_action :require_login, only: [:new, :create, :show]
 
   def new
     if signed_in_user?
@@ -26,12 +27,20 @@ class UsersController < ApplicationController
   end
 
   def about
-    @user =  User.find(params[:id])
-    @profile = @user.profile
+
+  end
+
+  def timeline
+
   end
 
 
   private
+
+  def set_user_and_profile
+    @user =  User.find(params[:id])
+    @profile = @user.profile
+  end
 
   def user_params
       params.require(:user).permit(:first_name, :last_name, :email,

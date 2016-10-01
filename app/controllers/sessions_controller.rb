@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     if @user && @user.authenticate(params[:password])
       permanent_sign_in(@user)
       flash[:success] = "You've successfully signed in"
-      redirect_to user_path(@user)
+      redirect_to about_user_path(@user)
     else
       flash.now[:danger] = "We couldn't sign you in"
       render 'users/new'

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   root :to => 'users#new'
   resources :users, only: [:new, :create, :show] do
     get 'about', on: :member
+    get 'timeline', on: :member
   end
   resources :profiles, only: [:edit, :update]
 

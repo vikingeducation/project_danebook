@@ -28,9 +28,8 @@ User.all.each do |u|
 end
 
 puts "creating 4 posts per post"
-post_ids = Post.pluck(:id)
 User.all.each do |u|
-  binding.pry
-  4.times { Like.create(user_id: u.id, post_id: post_ids.sample) }
+  post_ids = Post.pluck(:id).shuffle
+  4.times { Like.create(user_id: u.id, post_id: post_ids.pop) }
 end
 

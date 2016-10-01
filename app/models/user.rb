@@ -11,4 +11,13 @@ class User < ApplicationRecord
   has_one :profile
   has_many :posts
 
+  def name
+    "#{first_name} #{last_name}"
+  end
+
+  def name=(new_name)
+    self.first_name = new_name.split.first
+    self.last_name = new_name.split.last
+  end
+
 end

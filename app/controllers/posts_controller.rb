@@ -18,6 +18,13 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    @post = Post.find(params[:id])
+    if @post.destroy!
+      flash[:success] = "Post deleted!"
+    else
+      flash[:danger] = "Unable to delete this zombie post!"
+    end
+    redirect_to timeline_user_path(@post.user)
 
   end
 

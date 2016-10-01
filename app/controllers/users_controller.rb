@@ -32,7 +32,8 @@ class UsersController < ApplicationController
 
   def timeline
     @post = Post.new
-    @posts = @user.posts.order(created_at: :desc)
+    @posts = Post.all.order(created_at: :desc)
+    # @posts = @user.posts.order(created_at: :desc)
   end
 
 

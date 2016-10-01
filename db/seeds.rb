@@ -1,6 +1,7 @@
 User.destroy_all
 Profile.destroy_all
 Post.destroy_all
+Like.destroy_all
 
 puts "creating 10 users.."
 10.times do
@@ -22,7 +23,14 @@ User.all.each do |u|
                  phone: Faker::PhoneNumber.cell_phone,
                  status: Faker::Hipster.sentence,
                  about: Faker::Hipster.paragraph
-                )
+               )
   2.times { u.posts << Post.new(text: Faker::Hipster.paragraph) }
+end
+
+puts "creating 4 posts per post"
+post_ids = Post.pluck(:id)
+User.all.each do |u|
+  binding.pry
+  4.times { Like.create(user_id: u.id, post_id: post_ids.sample) }
 end
 

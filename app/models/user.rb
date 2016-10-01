@@ -10,6 +10,8 @@ class User < ApplicationRecord
 
   has_one :profile
   has_many :posts
+  has_many :authored_comments, class_name: "Comment", foreign_key: :user_id, dependent: :destroy
+  has_many :initiated_likes, class_name: "Like", foreign_key: :user_id, dependent: :destroy
 
   def name
     "#{first_name} #{last_name}"

@@ -8,8 +8,8 @@ class SessionsController < ApplicationController
       flash[:success] = "You've successfully signed in"
       redirect_to about_user_path(@user)
     else
-      flash.now[:danger] = "We couldn't sign you in"
-      render 'users/new'
+      flash[:danger] = "We couldn't sign you in"
+      redirect_to root_url
     end
   end
 

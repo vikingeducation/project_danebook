@@ -2,6 +2,8 @@ class Post < ApplicationRecord
   validates :text, length: { maximum: 500 }
 
   belongs_to :user
+  has_many :comments
+  has_many :likes
 
   def posted_on
     self.created_at.strftime("Posted on %A, %b %d %Y")

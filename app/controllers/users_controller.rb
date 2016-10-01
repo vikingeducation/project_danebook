@@ -32,7 +32,7 @@ class UsersController < ApplicationController
 
   def timeline
     @post = Post.new
-    @posts = Post.includes(:user).order(created_at: :desc)
+    @posts = Post.includes(:user, :likes).order(created_at: :desc)
   end
 
 

@@ -1,5 +1,6 @@
 User.destroy_all
 Profile.destroy_all
+Post.destroy_all
 
 puts "creating 10 users.."
 10.times do
@@ -13,6 +14,7 @@ puts "creating 10 users.."
 end
 
 puts "creating #{User.all.count} profiles.."
+puts "creating 2 posts per user"
 User.all.each do |u|
   Profile.create(user_id: u.id, college: Faker::University.name,
                  hometown: "#{Faker::Address.city}, #{Faker::Address.state}",
@@ -21,4 +23,6 @@ User.all.each do |u|
                  status: Faker::Hipster.sentence,
                  about: Faker::Hipster.paragraph
                 )
+  2.times { u.posts << Post.new(text: Faker::Hipster.paragraph) }
 end
+

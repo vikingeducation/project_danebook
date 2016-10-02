@@ -153,14 +153,12 @@
               <div class="row">
                 <div class="col-xs-12">
                   <%= f.input :text, label: false, :input_html => { :rows => 4 } %>
-                <!-- <textarea name="message" rows="3" placeholder="Tell the world something!"></textarea> -->
                 </div>
               </div>
               <div class="row timeline-heading">
                 <div class="col-xs-12 ">
                   <%= f.input :user_id, :as => :hidden, :input_html => { :value => @user.id } %>
                   <%= f.button :submit, 'Post', class: "btn btn-primary pull-right" %>
-                  <!-- <button class="btn btn-primary pull-right">Post</button> -->
                 </div>
               </div>
             </article>
@@ -185,18 +183,13 @@
               </div>
             </div>
             <div class="row timeline-heading">
-              <div class="col-xs-12 ">
-                <% unless liked_by_current_user(p) %>
-                  <%= link_to "Like", like_post_path(p) %></a>
-                <% else %>
-                  <%= link_to "Unlike", unlike_post_path(p) %></a>
-                <% end %>
-                <a href="#">Comment</a>
-                <% if p.user == current_user %>
-                  <%= link_to "Delete", post_path(p), method: "DELETE", class: "pull-right" %>
-                <% end %>
-              </div>
+
               <%= render partial: 'posts/likes', locals: {p: p} %>
+              <hr>
+              <%= render partial: 'posts/comments', locals: {p: p, comments: p.comments} %>
+
+              <%= render partial: 'comments/comment_form', locals: {post: p, comment: @comment} %>
+
             </div>
           </article>
           <% end %>

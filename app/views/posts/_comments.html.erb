@@ -1,0 +1,13 @@
+<% p.comments.each do |comment| %>
+  <div class="media">
+      <a class="media-left" href="#">
+        <%= image_tag("user_silhouette_generic.gif") %>
+      </a>
+    <div class="media-body">
+      <a href="#" class="media-heading"><%= comment.author.name %></a> <span class="text-muted"><%= comment.commented_on %></span>
+      <p><%= comment.text %></p>
+      <%= link_to "like" , "#" %> <p class="inline text-muted">3 other people like this</p>
+      <%= link_to "Delete", post_comment_path(p, comment), method: "DELETE" ,class: "pull-right"%></a>
+    </div>
+  </div>
+<% end %>

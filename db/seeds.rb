@@ -30,6 +30,6 @@ end
 puts "creating 4 posts per post"
 User.all.each do |u|
   post_ids = Post.pluck(:id).shuffle
-  4.times { Like.create(user_id: u.id, post_id: post_ids.pop) }
+  4.times { Like.create(user_id: u.id, likable_id: post_ids.pop, likable_type: "Post") }
 end
 

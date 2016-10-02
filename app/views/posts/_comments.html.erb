@@ -6,7 +6,11 @@
     <div class="media-body">
       <a href="#" class="media-heading"><%= comment.author.name %></a> <span class="text-muted"><%= comment.commented_on %></span>
       <p><%= comment.text %></p>
-      <%= link_to "like" , "#" %> <p class="inline text-muted">3 other people like this</p>
+        <% unless comment_liked_by_current_user(comment) %>
+          <%= link_to "Like", like_post_comment_path(p,comment) %></a>
+        <% else %>
+          <%= link_to "Unlike", unlike_post_comment_path(p,comment) %></a>
+        <% end %>
       <%= link_to "Delete", post_comment_path(p, comment), method: "DELETE" ,class: "pull-right"%></a>
     </div>
   </div>

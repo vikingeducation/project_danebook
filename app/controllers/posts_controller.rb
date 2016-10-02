@@ -16,8 +16,8 @@ class PostsController < ApplicationController
 
   def like
     @post = Post.find(params[:id])
-    unless @post.likes.pluck(:user_id, :post_id).include?([current_user.id, @post.id])
-      @post.likes << Like.new(user_id: current_user.id)
+    unless @post.likes.pluck(:user_id, :likable_id).include?([current_user.id, @post.id])
+      @post.likes << Like.new(user_id: current_user.id, likable_type: "Post")
     end
     @profile = current_user.profile
     redirect_to timeline_user_path(current_user)
@@ -25,8 +25,8 @@ class PostsController < ApplicationController
 
   def unlike
     @post = Post.find(params[:id])
-    if @post.likes.pluck(:user_id, :post_id).include?([current_user.id, @post.id])
-      @post.likes.destroy(@post.likes.where("user_id = #{current_user.id}"))
+    if @post.likes.pluck(:user_id, :likable_id).include?([current_user.id, @post.id])
+      @post.likes.destroy(@post.likes.where("user_id = #{current_user.id} AND likable_type = 'Post'"))
     end
     @profile = current_user.profile
     redirect_to timeline_user_path(current_user)

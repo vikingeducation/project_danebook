@@ -3,7 +3,10 @@ class Post < ApplicationRecord
 
   belongs_to :user
   has_many :comments
-  has_many :likes, dependent: :destroy
+  # has_many :likes, dependent: :destroy
+
+  has_many :likes, :as => :likable
+
 
   def posted_on
     self.created_at.strftime("Posted on %A, %b %d %Y")

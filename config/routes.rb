@@ -13,7 +13,10 @@ Rails.application.routes.draw do
   resources :posts, only: [:create, :update, :destroy] do
     get 'like', on: :member
     get 'unlike', on: :member
-    resources :comments, only: [:create, :destroy]
+    resources :comments, only: [:create, :destroy] do
+      get 'like', on: :member
+      get 'unlike', on: :member
+    end
   end
 
   resource :session, only: [:create, :destroy]

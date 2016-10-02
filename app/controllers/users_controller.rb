@@ -40,7 +40,7 @@ class UsersController < ApplicationController
   private
 
   def set_user_and_profile
-    @user =  User.find(params[:id])
+    @user =  current_user
     @profile = @user.profile
   end
 

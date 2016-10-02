@@ -11,7 +11,9 @@
         <% else %>
           <%= link_to "Unlike", unlike_post_comment_path(p,comment) %></a>
         <% end %>
-      <%= link_to "Delete", post_comment_path(p, comment), method: "DELETE" ,class: "pull-right"%></a>
+      <% if comment.author == current_user %>
+        <%= link_to "Delete", post_comment_path(p, comment), method: "DELETE" ,class: "pull-right"%></a>
+      <% end %>
     </div>
   </div>
 <% end %>

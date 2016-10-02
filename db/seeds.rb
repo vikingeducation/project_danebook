@@ -1,6 +1,7 @@
 User.destroy_all
 Profile.destroy_all
 Post.destroy_all
+Comment.destroy_all
 Like.destroy_all
 
 puts "creating 10 users.."
@@ -27,9 +28,23 @@ User.all.each do |u|
   2.times { u.posts << Post.new(text: Faker::Hipster.paragraph) }
 end
 
-puts "creating 4 posts per post"
+puts "creating 4 like per user"
 User.all.each do |u|
   post_ids = Post.pluck(:id).shuffle
   4.times { Like.create(user_id: u.id, likable_id: post_ids.pop, likable_type: "Post") }
 end
+
+puts "creating 2 comments per user"
+User.all.each do |u|
+  post_ids = Post.pluck(:id).shuffle
+  4.times { Comment.create(user_id: u.id, post_id: post_ids.pop, text: Faker::Hipster.sentence) }
+end
+
+puts "creating likes on comments by random users"
+Comment.all.each do |u|
+  post_ids = Post.pluck(:id).shuffle
+  user_ids = User.pluck(:id).shuffle
+  4.times { Like.create(user_id: user_ids.pop, likable_id: post_ids.pop, likable_type: "Comment") }
+end
+
 

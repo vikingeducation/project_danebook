@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :current_user_comment, except: [:like, :unlike]
 
   def create
     @comment = Comment.new(whitelisted_comments_params)
@@ -40,6 +41,13 @@ class CommentsController < ApplicationController
   private
   def whitelisted_comments_params
     params.require(:comment).permit(:text, :user_id, :post_id)
+  end
+
+  def current_user_comment
+    unless signed_in_user? && params[:id] && current_user.authored_comment_ids.include?(params[:id].to_i)
+      flash[:danger] = "Not authorized!"
+      redirect_to timeline_user_path(current_user)
+    end
   end
 
 end

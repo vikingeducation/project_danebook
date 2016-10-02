@@ -33,14 +33,14 @@ class UsersController < ApplicationController
   def timeline
     @post = Post.new
     @comment = Comment.new
-    @posts = Post.includes(:user, :likes, :comments).order(created_at: :desc)
+    @posts = Post.includes(:user, :likes).order(created_at: :desc)
   end
 
 
   private
 
   def set_user_and_profile
-    @user =  User.find(params[:id])
+    @user =  User.includes(:profile).find(params[:id])
     @profile = @user.profile
   end
 

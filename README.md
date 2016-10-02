@@ -1,12 +1,12 @@
 SPACEBOOK
 ========
-Welcome to Spacebook! This is a full stack facebook clone application with a space theme.
+Welcome to Spacebook! This is a full stack facebook clone application... in space!
 
-Click here for [deployed version](https://peaceful-fjord-47199.herokuapp.com)
+Click here for to see it on [heroku](https://peaceful-fjord-47199.herokuapp.com).
 
-Create a new account or login with these credentials:
-###Username: harry_potter@hogwarts.edu
-###Password: password
+You can create a new account or login with these credentials:
+####Username: harry_potter@hogwarts.edu
+####Password: password
 
 Once you've logged in, you will be taken to your timeline.
 

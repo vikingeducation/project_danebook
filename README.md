@@ -2,7 +2,7 @@ SPACEBOOK
 ========
 Welcome to Spacebook! This is a full stack facebook clone application... in space!
 
-Click here to see it on [heroku](https://peaceful-fjord-47199.herokuapp.com).
+Click here to see it on [heroku](https://peaceful-fjord-47199.herokuapp.com)
 
 You can create a new account or login with these credentials:
 ####Username: harry_potter@hogwarts.edu
@@ -14,7 +14,7 @@ Once you've logged in, you will be taken to your timeline, from which you can...
 * Search for users using the search bar at the top
 * Post on either your own or your friends walls
 * Upload photos to your account and update your profile or cover photos
-* Like and comment on your friend's posts.
+* Like and comment on your friend's posts
 * Update your profile
 * View your friends and photos
 

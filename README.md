@@ -25,9 +25,6 @@ Once you've logged in, you will be taken to your timeline.
 * SQL Queries for search
 * jQuery AJAX calls for seamless commenting and liking
 
-
-
-
 ========
-Created by [Morgan Martin](https://github.com/morgancmartin)
-A project for [Viking Code School](http://vikingcodeschool.com)
+* Created by [Morgan Martin](https://github.com/morgancmartin)
+* A project for [Viking Code School](http://vikingcodeschool.com)

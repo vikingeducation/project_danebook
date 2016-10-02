@@ -2,13 +2,13 @@ SPACEBOOK
 ========
 Welcome to Spacebook! This is a full stack facebook clone application... in space!
 
-Click here for to see it on [heroku](https://peaceful-fjord-47199.herokuapp.com).
+Click here to see it on [heroku](https://peaceful-fjord-47199.herokuapp.com).
 
 You can create a new account or login with these credentials:
 ####Username: harry_potter@hogwarts.edu
 ####Password: password
 
-Once you've logged in, you will be taken to your timeline.
+Once you've logged in, you will be taken to your timeline, from which you can
 
 #Do things like...
 * Search for users using the search bar at the top
@@ -27,5 +27,5 @@ Once you've logged in, you will be taken to your timeline.
 
 ========
 Created by [Morgan Martin](https://github.com/morgancmartin)  
-A project for [Viking Code School](http://vikingcodeschool.com)  
+A project for the [Viking Code School](http://vikingcodeschool.com)  
 [www.morganmart.in](http://www.morganmart.in)

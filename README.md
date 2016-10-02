@@ -8,7 +8,7 @@ You can create a new account or login with these credentials:
 ####Username: harry_potter@hogwarts.edu
 ####Password: password
 
-Once you've logged in, you will be taken to your timeline, from which you can
+Once you've logged in, you will be taken to your timeline, from which you can...
 
 #Do things like...
 * Search for users using the search bar at the top

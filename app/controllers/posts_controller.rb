@@ -1,9 +1,9 @@
 class PostsController < ApplicationController
 
-  def new
-    @post = Post.new
-    render 'static_pages/timeline'
-  end
+  # def new
+  #   @post = Post.new
+  #   render 'static_pages/timeline'
+  # end
 
   def create
     @post = current_user.posts.build(whitelisted_post_params)

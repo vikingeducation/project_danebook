@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
+  get 'profiles/:id/show' => 'profiles#show'
+
   root to: 'newsfeed#show'
   get '/home'     => 'users#new'
   get '/timeline' => 'posts#index'
   get '/about'    => 'users#show'
-  # get '/photos'   => 'static_pages#photos'
   get '/friends' => 'friendings#index'
   get '/about_edit' => 'users#edit'
   get '/newsfeed' => 'newsfeed#show'

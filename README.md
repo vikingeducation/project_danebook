@@ -1,5 +1,5 @@
 # SPACEBOOK
-========
+
 Welcome to Spacebook! This is a full stack facebook clone application... in space!
 
 Click here to see it on [heroku](https://thespacebook.herokuapp.com/login)

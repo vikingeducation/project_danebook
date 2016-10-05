@@ -186,7 +186,7 @@
 
               <%= render partial: 'posts/likes', locals: {p: p} %>
               <hr>
-              <%= render partial: 'posts/comments', locals: {p: p, comments: p.comments.includes(:author,:likes)} %>
+              <%= render partial: 'posts/comments', locals: {p: p, comments: p.comments } %>
 
               <%= render partial: 'comments/comment_form', locals: {post: p, comment: @comment} %>
 

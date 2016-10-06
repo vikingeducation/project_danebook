@@ -1,14 +1,34 @@
-<header class="navbar" id="navbar" role="navigation">
-  <a class="navbar-brand" id="navbar-brand" href="#"><strong>Danebook</strong></a>
-  <form class="navbar-form navbar-right">
-    <fieldset class="form-group">
-      <label for="exampleInputEmail1" id="email">Email</label>
-      <input type="email" class="form-control sign-in">
-    </fieldset>
-    <fieldset class="form-group">
-      <label for="exampleInputPassword1" id="password">Password</label>
-      <input type="password" class="form-control sign-in">
-    </fieldset>
-    <button type="submit" class="btn btn-primary btn-info">Log in</button>
-  </form>
-</header>
+<!-- Navbar -->
+<nav id="navbar" class="navbar navbar-default">
+
+  <div class="container">
+
+    <!-- Navbar Header and Toggle -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Danebook</a>
+    </div>
+
+    <!-- Sign In Form -->
+    <div id="navbar-collapse" class="collapse navbar-collapse">
+
+      <form id="navbar-signin" class="navbar-form form-inline navbar-right">
+        <div class="form-group">
+          <input type="email" name="email" class="form-control" placeholder="Email"/>
+        </div>
+        <div class="form-group">
+          <input type="password" name="password" class="form-control" placeholder="Password">
+        </div>
+        <button type="submit" class="btn btn-default">Sign In</button>
+      </form>
+
+    </div>
+
+  </div>
+
+</nav>

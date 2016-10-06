@@ -1,34 +1,34 @@
-<!-- Navbar -->
-<nav id="navbar" class="navbar navbar-default">
-
-  <div class="container">
-
-    <!-- Navbar Header and Toggle -->
+<!-- navbar -->
+<nav id="top-navbar" class="navbar navbar-default navbar-static" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
         <span class="sr-only">Toggle navigation</span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="#">Danebook</a>
+
+      <a class="navbar-brand" href="/">
+      <%= image_tag("danish_flag.gif",  class: "img-responsive img-circle", alt: 'Denmark 4eva', height: '28px', width: '36px') %>
+      </a>
+      <a class="navbar-brand" href="/">
+        Danebook
+      </a>
     </div>
 
-    <!-- Sign In Form -->
-    <div id="navbar-collapse" class="collapse navbar-collapse">
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <form class="navbar-form navbar-left" role="search">
+            <div class="form-group">
+              <input type="text" id="nav-search-bar" class="form-control" placeholder="Search">
+            </div>
+          </form>
 
-      <form id="navbar-signin" class="navbar-form form-inline navbar-right">
-        <div class="form-group">
-          <input type="email" name="email" class="form-control" placeholder="Email"/>
-        </div>
-        <div class="form-group">
-          <input type="password" name="password" class="form-control" placeholder="Password">
-        </div>
-        <button type="submit" class="btn btn-default">Sign In</button>
-      </form>
-
-    </div>
-
-  </div>
-
+      <ul class="nav navbar-nav navbar-right">
+        <li  class="hidden-sm pull-right"><a href="about.html" id = "navbar-username">Harry</a></li>
+      </ul>
+    </div><!-- /.navbar-collapse-->
+  </div><!-- /.container-fluid -->
 </nav>

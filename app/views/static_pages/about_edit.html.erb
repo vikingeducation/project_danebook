@@ -13,10 +13,10 @@
     <div id = "profile-nav" class = "row">
       <div class = "col-md-7 col-md-offset-3">
         <ul class = "nav nav-tabs " role = "profile-nav">
-          <li><a href = "timeline.html">Timeline</a></li>
-          <li class = "active"><a href = "about.html">About</a></li>
-          <li ><a href = "photos.html">Photos <span class="link-count hidden-xs">(123)</span></a></li>
-          <li><a href = "friends.html">Friends <span class="link-count hidden-xs">(542)</span></a></li>
+          <li><%= link_to "Timeline", timeline_path %></li>
+          <li class='active'><%= link_to "About", about_path %></li>
+          <li><%= link_to "Photos (123)", photos_path  %></li>
+          <li><%= link_to "Friends (542)", friends_path %></li>
       </div>
     </div>
   </header>

@@ -1,1 +1,63 @@
-<h1>Hello, World!</h1>
+<header class="navbar" id="navbar" role="navigation">
+  <a class="navbar-brand" id="navbar-brand" href="#"><strong>Danebook</strong></a>
+  <form class="navbar-form navbar-right">
+    <fieldset class="form-group">
+      <label for="exampleInputEmail1" id="email">Email</label>
+      <input type="email" class="form-control sign-in">
+    </fieldset>
+    <fieldset class="form-group">
+      <label for="exampleInputPassword1" id="password">Password</label>
+      <input type="password" class="form-control sign-in">
+    </fieldset>
+    <button type="submit" class="btn btn-primary btn-info">Log in</button>
+  </form>
+</header>
+
+<main class="container">
+  <section class="row">
+    <nav class="col-md-6">
+      <h1 id="cta"><strong>Connect with all your friends!</strong></h1>
+      <ul>
+        <li class="padding"><strong>See photos and updates</strong> in your newsfeed.</li>
+        <li class="padding"><strong>Post your status for the world to see</strong> from your profile.</li>
+        <li class="padding"><strong>Get in touch with your friends</strong> by "friending" them.</li>
+        <li class="padding"><strong>Like things</strong> because you're a positive person!</li>
+      </ul>
+    </nav>
+    <form class="form-signin col-md-5 col-md-offset-1">
+      <h2 class="form-signin-heading margin"><strong>Sign Up</strong></h2>
+      <div class="form-inline">
+        <div class="form-group">
+          <input type="text" class="form-control margin" id="inputFirstName" placeholder="First Name" required>
+        </div>
+        <div class="form-group pull-right">
+          <input type="text" class="form-control margin" id="inputLastName" placeholder="Last Name" required>
+        </div>
+      </div>
+      <input type="email" id="inputEmail" class="form-control margin" placeholder="Your Email" required>
+      <input type="password" id="newPassword" class="form-control margin" placeholder="Your New Password" required>
+      <input type="password" id="confirmPassword" class="form-control margin" placeholder="Confirm Your Password" required>
+      <h4 class="margin"><strong>Birthday</strong></h4>
+      <div class="form-inline margin">
+        <select class="form-control birthday-border">
+          <option>Month</option>
+        </select>
+        <select class="form-control birthday-border">
+          <option>Day</option>
+        </select>
+        <select class="form-control birthday-border">
+          <option>Year</option>
+        </select>
+      </div>
+      <div class="checkbox margin">
+        <label class="radio-inline">
+          <input type="radio" value="Female"> Female
+        </label>
+        <label class="radio-inline">
+          <input type="radio" value="Male"> Male
+        </label>
+      </div>
+      <button class="btn btn-lg btn-success btn-block margin" type="submit" id="sign-up">Sign Up!</button>
+    </form>
+  </section>
+</main>

@@ -1,7 +1,8 @@
 Project Danebook
 ========
 
-This is the Real Dane deal people. Danebook is a social networking web application built utilizing RESTful architecture and Ruby on Rails.  The complete site is mobile friendly.
+##Introduction
+This is the Real Dane deal people. Danebook is a social networking web application built utilizing RESTful architecture and Ruby on Rails.  The is mobile friendly and best viewed on any browser > IE7.
 
 #[DEMO](https://www.youtube.com/watch?v=6BuZpCvuC5o)
 #[LIVE APP](https://glacial-temple-38122.herokuapp.com/)
@@ -41,7 +42,10 @@ You can either create a new user or logon with any of the following email/passwo
 	email: chuck#@norris.com
 	password: chuckskick
 
-##Technical Notes
+##
+
+
+##Notes
 - - -
 
 ###Setting up the comment and like tables
@@ -53,3 +57,6 @@ A self association was used to connect a user with another user. A separate tabl
 ###Paperclip and S3 photo storage
 
 Paperclip in conjunction with S3 is utilized to manage the photo upload.  Each photo is saved in 4 different forms, thumb size, medium size, large size, and the original.
+
+###AJAX
+JS erb and jQuery handle most of the AJAX updates. PostgreSQL is the single source of truth for all data. The front-end calls for updates and manages page updates using promises.

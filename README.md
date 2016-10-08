@@ -4,7 +4,7 @@ Project Danebook
 ##Introduction
 This is the Real Dane deal people. Danebook is a social networking web application built utilizing RESTful architecture and Ruby on Rails.  The is mobile friendly and best viewed on any browser > IE7.
 
-#[DEMO](https://www.youtube.com/watch?v=6BuZpCvuC5o)
+#[DEMO (non AJAX enabled)](https://www.youtube.com/watch?v=6BuZpCvuC5o)
 #[LIVE APP](https://glacial-temple-38122.herokuapp.com/)
 
 ##Getting Started

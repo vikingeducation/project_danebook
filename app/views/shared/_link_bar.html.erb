@@ -1,0 +1,37 @@
+<div class="row" id="link-bar">
+  <ul class="nav nav-tabs">
+    <li role="presentation" class="<%= "active" if active_link?("show") %>"> <%= link_to "Timeline", user_path(user) %></li>
+    <li role="presentation" class="<%= "active" if active_link?("profiles") %>"><%= link_to "About", user_profile_path(user) %></li>
+    <li role="presentation" class="<%= "active" if active_link?("photos") %>">
+      <%= link_to user_photos_path(user.id) do %>
+        Photos<span class="sm-gray"><%= user.photo_count %></span>
+      <% end %>
+    </li>
+    <li role="presentation" class="<%= "active" if active_link?("friendings") %>">
+      <%= link_to user_friendings_path(user.id) do %>
+        Friends<span class="sm-gray"><%= user.friended_users.count %></span>
+      <% end %>
+    </li>
+    <% if signed_in_user? && current_user.id == user.id  %>
+      <div class="float-right text-right" id="edit-profile-link">
+        <%= link_to "Edit Profile", edit_profile_path(@user.profile.id) %>
+      </div><!-- Edit Profile Link -->
+    <% end %>
+  </ul>
+</div>
+
+<!-- <div class="row link-bar">
+  <div class="col-sm-7 col-sm-offset-2" role="navigation">
+    <ul class="nav nav-pills nav-justified">
+      <li role="presentation" class="<%# params[:controller] == 'users' ? "active-tab" : "" %>"><%= link_to "Timeline", user_path(user) %></li>
+      <li role="presentation" class="<%# params[:controller] == 'profiles' ? "active-tab" : "" %>"><%= link_to "About", user_profile_path(user) %></li>
+      <li role="presentation" class="<%# params[:controller] == 'photos' ? "active-tab" : "" %>">
+        <%# link_to user_photos_path(user.id) do %>
+          Photos <span>(<%# user.photo_count %>)</span>
+        <%# end %>
+      </li>
+      <li role="presentation" class="<%# params[:controller] == 'friendings' ? "active-tab" : "" %>"><%# link_to user_friendings_path(user.id) do %>
+        Friends <span>(<%# user.friended_users.count %>)</span>
+      <%# end %></li>
+    </ul>
+  </div> -->

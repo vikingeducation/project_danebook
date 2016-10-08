@@ -1,0 +1,105 @@
+
+<div id="static_pages">
+	<%= render 'shared/navbar' %>
+	<%= render 'shared/banner', user: @user %>
+	<div class="container">
+		<%= render 'shared/flash' %>
+	</div>
+	<div class="container section-container">
+		<div class="row section-header">
+			<div class="col-sm-8 col-sm-offset-2">
+				<h2 class="text-center">About</h2>
+			</div>
+			<% if current_user.id.to_s == params[:user_id] %>
+				<div class="col-sm-2 edit-btn">
+					<%= link_to "Edit Profile", edit_profile_path(current_user.id), class: "btn btn-primary btn-block" %>
+				</div>
+			<% end %>
+			<hr />
+		</div>
+		<div class="row">
+			<div class="col-sm-5 col-sm-offset-1">
+				<div class="row">
+					<div class="col-sm-12">
+						<h3>Basic Information</h3>
+					</div> <!-- Basic info Header -->
+				</div>
+				<div class="row">
+					<div class="col-xs-5">
+						<p class="content-id">Birthday:</p>
+					</div>
+					<div class="col-xs-7">
+						<p><%= @user.birth_date.strftime('%B %e, %Y') %></p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-5">
+						<p class="content-id">College:</p>
+					</div>
+					<div class="col-xs-7">
+						<p><%= @user.profile.college %></p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-5">
+						<p class="content-id">Hometown:</p>
+					</div>
+					<div class="col-xs-7">
+						<p><%= @user.profile.hometown %></p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-5">
+						<p class="content-id">Currely Lives:</p>
+					</div>
+					<div class="col-xs-7">
+						<p><%= @user.profile.currently_lives %></p>
+					</div>
+				</div><!-- Basic information IDs -->
+				<div class="row">
+					<div class="col-sm-12">
+						<h3>Contact Information</h3>
+					</div> <!-- Contact info Header -->
+				</div>
+				<div class="row">
+					<div class="col-xs-5">
+						<p class="content-id">Email:</p>
+					</div>
+					<div class="col-xs-7">
+						<p><%= @user.email %></p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-xs-5">
+						<p class="content-id">Telephone:</p>
+					</div>
+					<div class="col-xs-7">
+						<p><%= @user.profile.telephone %></p>
+					</div>
+				</div><!-- Contact Info Content -->
+			</div>
+			<div class="col-sm-5">
+				<div class="row">
+					<div class="col-sm-12">
+						<h3>Words to Live By</h3>
+					</div> <!-- Words to live by header -->
+				</div>
+				<div class="row">
+					<div class="col-sm-12">
+						<p><%= @user.profile.words_to_live_by %></p>
+					</div> <!-- Words to live by content -->
+				</div>
+				<div class="row">
+					<div class="col-sm-12">
+						<h3>About Me</h3>
+					</div> <!-- About Me header -->
+				</div>
+				<div class="row">
+					<div class="col-sm-12">
+						<p><%= @user.profile.about_me %></p>
+					</div> <!-- About Me content -->
+				</div>
+			</div>
+		</div>
+	</div>
+<div id="static_pages">

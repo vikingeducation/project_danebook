@@ -1,0 +1,146 @@
+// Place all the styles related to the sessions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+	$header-color: #2b78e4;
+	$body-color: #e9ebee;
+	$nav-height: 90px;
+	$buffer: 10px;
+
+#body-bag{
+	background-color: $body-color;
+}
+
+#login {
+
+	nav {
+		.container {
+			padding-top: 20px;
+		}
+		button{
+			border-color: white;
+		}
+		span{
+			background-color: white;
+		}
+
+		form,
+		.horizontal-form {
+			background-color: $header-color;
+		}
+
+		height: $nav-height;
+
+		#btn-login {
+			// transform: translateX(50%);
+			color: black;
+			position: absolute;
+			background-image: none;
+			background-color: #95c5f8;
+			width: 100px;
+			height: 30px;
+			padding: 5px 12px;
+			border-radius: 0;
+		}
+	}
+
+	.navbar {
+		background: none;
+		color: white;
+
+		background-color: $header-color;
+
+		.navbar-brand {
+			font-size: 40px;
+			color: #fff;
+		}
+	}
+
+	main {
+		.alert{
+			margin-top: 10px;
+			margin-bottom: 0;
+			margin-left: 10px;
+			margin-right: 10px;
+			width: 100%;
+		}
+
+		padding-top: 20px;
+
+		.catch-phrase {
+			margin-bottom: $buffer + 10;
+		}
+
+		ul{
+			padding-top: 10px;
+			padding-left: 20px;
+		}
+
+		li {
+			line-height: 30px;
+			span {
+				font-size: 20px;
+				margin-right: 14px;
+			}
+			list-style-type: none;
+			margin: $buffer $buffer;
+			font-size: 16px;
+		}
+
+		h2 {
+			margin-top: 0;
+			font-size: 50px;
+			margin-bottom: 25px;
+		}
+
+		h3 {
+			font-size: 32px;
+		}
+
+		section {
+			select.full-width-input {
+				color: #cacaca;
+			}
+
+			.full-width-input {
+				min-width: 100%;
+				max-width: 100%;
+				height: 2.5em;
+				padding: 2px 0 2px 5px;
+			}
+
+			.birthday-forms {
+				margin-bottom: $buffer;
+			}
+
+			.radio-inline:first-child {
+				margin-left: $buffer;
+			}
+
+			.sign-up-btn {
+				min-width: 100%;
+				// font-weight: bold;
+				font-size: 16px;
+				letter-spacing: 3px;
+			}
+		}
+	}
+
+	.vertical-align {
+	  position: absolute;
+	  top: 50%;
+	  -webkit-transform: translateY(-50%);
+	  -ms-transform: translateY(-50%);
+	  transform: translateY(-50%);
+	}
+
+	#date-picker{
+		padding-left: 15px;
+	}
+}
+
+#alert-wrapper{
+	padding: 10px 100px;
+	// padding-left: 100px;
+	margin: inherit 10px;
+}

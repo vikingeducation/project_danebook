@@ -1,0 +1,22 @@
+<div id="static_pages">
+	<%= render 'shared/navbar' %>
+
+	<%= render 'shared/banner', user: @user %>
+
+	<main class="container">
+		<div class="row">
+			<div class="col-sm-5 right-gutter hidden-xs">
+				<%= render 'about_content' %>
+				<%= render 'photos/photo_preview', user: @user %>
+				<%= render 'friendings/friends_preview', user: @user %>
+			</div><!-- Left Content -->
+			<div class="col-sm-7">
+				<%= render 'shared/flash' %>
+				<%= render "posts/new_post", post: @post, user: current_user %>
+        <% @feeds.each do |feed| %>
+            <%= render "#{feed[1].to_s}/user_#{feed[1].to_s}", resource: feed[1], user: feed[0] %>
+        <% end %>
+			</div>
+		</div>
+	</main>
+</div>

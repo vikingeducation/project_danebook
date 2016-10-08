@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="row" id="cover-photo">
+    <div class="col-xs-12 username">
+        <%= image_tag(profile_pic_url(user), id: "profile-pic") %>
+      <div id="user-name-and-link">
+        <h1><%= user.full_name %></h1>
+        <% if signed_in_user? %>
+          <% if user.id == current_user.id %>
+          <% elsif current_user.friended_user_ids.include?(user.id)%>
+            <%= button_to "Unfriend", friending_path(user.id, :current_user_id => current_user.id), :method => :delete, class: "btn btn-primary" %>
+          <% else %>
+            <%= button_to "Friend", friendings_path(:id => user.id, :current_user_id  => current_user.id),:method => "POST", class: "btn btn-primary" %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <%= render 'shared/link_bar', user: user %>
+  </div><!-- Link bar -->

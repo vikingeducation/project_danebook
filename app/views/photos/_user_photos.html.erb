@@ -1,0 +1,36 @@
+<section class="row section-container" data-type="photo" data-id="<%= resource.id %>">
+    <div class="col-sm-12">
+        <div class="row post-wrapper">
+          <div class="col-xs-1">
+            <%= image_tag(post_pic_url(user), class: "post-pic img-responsive pull-left") %>
+          </div>
+          <div class="col-xs-9 col-xs-offset-1">
+            <p><%= link_to user.full_name, user_path(user), class: "like-link" %></p>
+            <p>Posted on <%= resource.updated_at.strftime("%A %-m/%-d/%Y") %></p>
+          </div>
+        </div>
+        <div class="row post-wrapper post-body">
+            <div class="col-xs-12">
+                <%= render 'photos/photo', photo: resource, user: user, size: "medium" %>
+                <p class="post-content"><%= resource.description %></p>
+            </div>
+            <hr />
+            <%= render 'shared/post_like_bar', resource: resource, user: user %>
+        </div>
+        <div class="row post-wrapper section-footer">
+            <div class="col-xs-12">
+                <div class="row post-wrapper" >
+                    <% resource.comments[0..6].each_with_index do |comment, index| %>
+
+                      <%= render 'comments/comment', comment: comment, post: resource, index: index, user: user %>
+
+                    <% end %>
+                    <%= render 'comments/new_comment_form', post: resource %>
+                </div>
+                <!-- Comment content wrapper -->
+            </div>
+            <!-- Comment wrapper -->
+        </div>
+    </div>
+</section>
+<!-- Old Post Section -->

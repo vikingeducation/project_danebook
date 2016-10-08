@@ -1,0 +1,93 @@
+<%= form_for @profile do |form_field| %>
+
+  <div class="row">
+    <div class="col-sm-5 col-sm-offset-1">
+      <div class="row">
+        <div class="col-sm-12">
+          <h3>Basic Information</h3>
+        </div> <!-- Basic info Header -->
+      </div>
+      <div class="row">
+        <div class="col-xs-5">
+          Birthday:
+        </div>
+        <div class="col-xs-7">
+          <p><%= user.birth_date.strftime('%B %e, %Y')  %></p>
+        </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-5">
+        <p class="content-id"><%= form_field.label :college, "College:" %></p>
+      </div>
+      <div class="col-xs-7 ">
+        <%= form_field.text_field :college, class: "form-control" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-5">
+        <p class="content-id"><%= form_field.label :hometown, "Hometown:" %></p>
+      </div>
+      <div class="col-xs-7 ">
+        <%= form_field.text_field :hometown, class: "form-control" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-5">
+        <p class="content-id"><%= form_field.label :currently_lives, "Currently Lives:" %></p>
+      </div>
+      <div class="col-xs-7 ">
+        <%= form_field.text_field :currently_lives, class: "form-control" %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <h3>Contact Information</h3>
+      </div> <!-- Contact info Header -->
+    </div>
+    <div class="row">
+      <div class="col-xs-5">
+        <p class="content-id">Email:</p>
+      </div>
+      <div class="col-xs-7">
+        <p><%= @user.email %></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-5">
+        <p class="content-id"><%= form_field.label :telephone, "Telephone:" %></p>
+      </div>
+      <div class="col-xs-7">
+        <%= form_field.telephone_field :telephone, class: "form-control" %>
+      </div>
+    </div><!-- Contact Info Content -->
+  </div><!-- Left side content -->
+  <div class="col-sm-5">
+    <div class="row">
+      <div class="col-sm-12">
+        <h3>Words to Live By</h3> <!-- NEED TO ADD LABEL HERE LATER -->
+      </div> <!-- Words to live by header -->
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <%= form_field.text_area :words_to_live_by, class: "form-control" %>
+      </div> <!-- Words to live by content -->
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <h3>About Me</h3>
+      </div> <!-- About Me header -->
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <%= form_field.text_area :about_me, class: "form-control" %>
+      </div> <!-- About Me content -->
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6 col-sm-offset-3" id="save-change-wrapper">
+      <%= form_field.submit "Save Changes", class: "tn btn-primary btn-lg btn-block" %>
+    </div>
+  </div>
+
+
+<% end %>

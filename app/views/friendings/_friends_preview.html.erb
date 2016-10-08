@@ -1,0 +1,21 @@
+<section class="row section-container">
+  <div class="col-xs-12 section-header">
+    <h4><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> Friends</h4>
+  </div>
+  <div class="col-xs-12 img-container text-center">
+    <% user.friended_users[0..6].each do |friend| %>
+      <div class="col-sm-4 col-md-3">
+
+        <p><%= link_to user_path(friend), class: "friend-name" do %>
+            <%= image_tag(post_pic_url(friend), class: "post-pic img-responsive") %>
+            <p class="no-wrap">
+              <%= "#{friend.full_name}" %>
+            </p>
+          <% end %></p>
+      </div>
+    <% end %>
+    <div class="col-xs-12 text-center">
+      <%= link_to "See More Friends", user_friendings_path(user), class: "friend-name"%>
+    </div>
+  </div>
+</section><!-- Friends Section -->

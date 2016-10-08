@@ -1,0 +1,39 @@
+<div class="like-wrap">
+  <% if resource.likers.include?(current_user) %>
+    <div class="col-xs-7 com-box">
+      <%= button_to like_path( user_liked_id(resource)), method: :delete, remote: true, class: "goofy-btn unlike-class", id: "unlike-id" do %>
+        <%= hidden_field_tag(:likeable_type, "#{resource.class.to_s.downcase}") %>
+        <%= hidden_field_tag(:likeable_id, "#{resource.id}") %>
+        <span class="glyphicon glyphicon-thumbs-down" aria-hidden="true"></span> Unlike
+      <% end %>
+      <a class="goofy-btn like-class" data-com-btn="true">
+        Comments
+      </a>
+    </div>
+    <% elsif signed_in_user? %>
+    <div class="col-xs-7 com-box">
+      <%= button_to url_for([resource, :likes]), method: :post, remote: true, class: "goofy-btn like-class" do %>
+        <%= hidden_field_tag(:likeable_type, "#{resource.class.to_s.downcase}") %>
+        <%= hidden_field_tag(:likeable_id, "#{resource.id}") %>
+        <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Like
+      <% end %>
+      <a class="goofy-btn like-class" data-com-btn="true">
+        Comments
+      </a>
+    </div>
+  <% end %>
+
+  <% if user == current_user %>
+    <div class="col-xs-4 push-right text-right">
+      <%= button_to resource, remote: true, method: :delete, class: "goofy-btn delete-class" do %>
+        <span class="glyphicon glyphicon-remove" aria-hidden="true" style="color: red"></span>
+      <% end %>
+    </div>
+  <% end %>
+
+  <% unless resource.likers.empty? %>
+    <div class="col-xs-12 like-listing-expanded hr-block">
+        <p><%= print_likers(resource) %></p>
+    </div>
+<% end %>
+</div>

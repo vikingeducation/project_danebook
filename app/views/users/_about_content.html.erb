@@ -1,0 +1,11 @@
+<section class="row section-container">
+  <div class="col-xs-12 section-header">
+    <h4><span class="glyphicon glyphicon-globe" aria-hidden="true"></span> About</h4>
+  </div>
+  <div class="col-xs-12 about-content">
+    <p><b>Born on:</b> <%= @user.birth_date.strftime('%B %e, %Y') %></p>
+    <p><b>Went to school at:</b> <%= @user.profile.college %></p>
+    <p><b>Hometown:</b> <%= @user.profile.hometown %></p>
+    <p><b>Currently Lives:</b> <%= @user.profile.currently_lives %></p>
+  </div>
+</section><!-- About Section -->

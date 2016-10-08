@@ -1,0 +1,18 @@
+<%= form_tag session_path, class: "navbar-form navbar-right form-inline" do %>
+      <div class="form-group">
+        <%= label_tag :email, "Email", {class: "sr-only"} %>
+        <%= text_field_tag :email, "", {class: "form-control", placeholder: "Email"} %>
+      </div>
+      <div class="form-group">
+        <%= label_tag :password, "Password", {class: "sr-only"} %>
+        <%= password_field_tag :password, "", {class: "form-control", placeholder: "Password"} %>
+      </div>
+      <%= submit_tag "Log in", class: "btn btn-success" %>
+    <div class="horizontal-form">
+      <div class="checkbox">
+        <%= label_tag do %>
+        <%= check_box_tag :remember_me %> Remember me
+        <% end %>
+      </div>
+  </div>
+<% end %>

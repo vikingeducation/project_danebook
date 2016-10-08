@@ -1,0 +1,6 @@
+<figure class="text-center">
+  <%= link_to user_photo_path(user, photo) do %>
+    <%= image_tag( photo.file.url(size.to_sym), class: "friend-img") %>
+  <% end %>
+  <figcaption class="photo-date">Uploaded <%= photo.created_at.strftime('%b %d, %Y') %></figcaption>
+</figure>

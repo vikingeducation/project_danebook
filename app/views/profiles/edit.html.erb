@@ -1,0 +1,16 @@
+<div id="static_pages">
+	<%= render 'shared/navbar' %>
+
+	<%= render 'shared/banner', user: @user %>
+	<%= render 'shared/flash' %>
+	<div class="container section-container">
+		<div class="row section-header">
+			<div class="col-sm-8 col-sm-offset-2">
+				<h2 class="text-center">Edit Profiles</h2>
+			</div>
+			<hr />
+		</div>
+
+		<%= render 'profile_form', user: @user %>
+	</div><!-- About container -->
+</div>

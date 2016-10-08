@@ -1,0 +1,69 @@
+<div id="static_pages" data-type="photo" data-id="<%= @photo.id %>">
+	<%= render 'shared/navbar' %>
+
+	<%= render 'shared/banner', user: @user %>
+
+	<div class="container">
+		<%= render 'shared/flash' %>
+	</div>
+  <div class="container section-container data-type='photo' data-id='<%= @photo.id %>'">
+    <div class="row section-header">
+      <div class="col-sm-8 col-sm-offset-2">
+        <h2 class="text-center">Photo</h2>
+      </div>
+    </div>
+    <div class="col-sm-12">
+	    <div class="row post-wrapper">
+				<%= image_tag(profile_pic_url(@user), class: "post-pic img-responsive pull-left") %>
+	      <div class="col-xs-10 left-gutter">
+	        <p><%= link_to @user.full_name, user_profile_path(@user), class: "like-link" %></p>
+	        <p>Posted on <%= @photo.updated_at.strftime("%A %-m/%-d/%Y") %></p>
+	      </div>
+
+	    </div>
+    <div class="row">
+      <div class="col-sm-10 col-sm-offset-1 show-pic-tainer">
+        <figure class="photo-show">
+            <%= image_tag( @photo.file.url(:large), class: "show-img") %>
+        </figure>
+        <p class="text-left">
+          Uploaded <%= @photo.created_at.strftime('%b %d, %Y') %>
+        </p>
+        <p>
+          <% if signed_in_user? && current_user == @user %>
+            <%= form_for @user, html: { class: "pic-select" } do |f| %>
+              <%= f.hidden_field :profile_pic_id, value: @photo.id %>
+              <%= f.submit "Make Profile Pic", class: "btn btn-primary" %>
+            <% end %>
+            <%= form_for @user, html: { class: "pic-select" } do |f| %>
+              <%= f.hidden_field :cover_pic_id, value: @photo.id %>
+              <%= f.submit "Make Cover Picture", class: "btn btn-primary" %>
+            <% end %>
+          <% end %>
+        </p>
+      </div>
+			<div class="row post-wrapper">
+				<% unless @photo.description.blank? %>
+					<div class="col-xs-12">
+						<p class="post-content"><%= @photo.description %></p>
+					</div>
+				<% end %>
+				<hr>
+				<%= render 'shared/post_like_bar', resource: @photo, user: @user %>
+			</div>
+	    <div class="row post-wrapper section-footer">
+	      <div class="col-xs-12">
+	        <div class="row post-wrapper">
+	            <% @photo.comments[0..6].each_with_index do |comment, index| %>
+
+	                  <%= render 'comments/comment', comment: comment, post: @photo, user: @user %>
+
+	            <% end %>
+	            <%= render 'comments/new_comment_form', post: @photo, user: @user %>
+	          </div><!-- Comment content wrapper -->
+	        </div><!-- Comment wrapper -->
+      	</div>
+			</div>
+    </div>
+  </div><!-- Contentt Section -->
+</div>

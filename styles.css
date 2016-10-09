@@ -1,0 +1,12 @@
+#Navigation bar styling
+.navbar {
+  background-color: blue;
+  padding: 15px; }
+  #Navigation bar styling
+  .navbar a {
+    color: white; }
+
+.img-logo {
+  border-radius: 50%; }
+
+/*# sourceMappingURL=styles.css.map */

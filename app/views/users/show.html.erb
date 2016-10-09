@@ -1,0 +1,92 @@
+<%= render partial: "layouts/navlinks", locals: {user: @user} %>
+
+<!-- content -->
+<section class="container tl-content">
+  <div class="row content-space">
+    <div class="col-xs-5">
+      <div class="row tl-about">
+        <p>About</p>
+      </div>
+      <div class="row section-about">
+        <div class="col-xs-12">
+          <p><strong>Born on:</strong> <%= @user.birthdate %></p>
+          <p><strong>Email:</strong> <%= @user.email %></p>
+          <p><strong>Hometown:</strong> <%= @profile.hometown %></p>
+          <p><strong>Currently Lives:</strong> <%= @profile.current_residence %></p>
+        </div>
+      </div>
+
+      <div style="margin-top: 10px" class="row tl-about">
+        <p>Photos</p>
+      </div>
+      <div class="row section-about">
+        <div class="col-xs-4">
+          <%= image_tag 'user_silhouette_generic.gif', class:"ph-preview" %>
+          <%= image_tag 'user_silhouette_generic.gif', class:"ph-preview" %>
+          <%= image_tag 'user_silhouette_generic.gif', class:"ph-preview" %>
+        </div>
+        <div class="col-xs-4">
+          <%= image_tag 'user_silhouette_generic.gif', class:"ph-preview" %>
+          <%= image_tag 'user_silhouette_generic.gif', class:"ph-preview" %>
+          <%= image_tag 'user_silhouette_generic.gif', class:"ph-preview" %>
+        </div>
+        <div class="col-xs-4">
+          <%= image_tag 'user_silhouette_generic.gif', class:"ph-preview" %>
+          <%= image_tag 'user_silhouette_generic.gif', class:"ph-preview" %>
+          <%= image_tag 'user_silhouette_generic.gif', class:"ph-preview" %>
+        </div>
+        <a style="margin-left: 146px" href="/static_pages">See More Photos</a>
+      </div>
+
+      <div style="margin-top: 10px" class="row tl-about">
+        <p>Friends (<%= @user.friendeds.count %>)</p>
+      </div>
+      <div class="row section-about">
+        <% @user.friendeds.each do |friend| %>
+
+        <div class="col-xs-4">
+          <%= image_tag 'user_silhouette_generic.gif', class:"ph-preview" %>
+          <%= link_to friend.name, user_path(friend), style: "margin-left: 12px" %>
+        </div>
+
+        <% end %>
+      </div>
+    </div>
+
+    <div class="col-xs-7 post-title">
+
+      <div class="row tl-posts">
+        <div class="col-xs-12">
+          <p>Posts</p>
+        </div>
+      </div>
+
+      <% if current_user == @user %>
+
+        <%= form_for [@user, @post], remote: true, html: { id: 'post-form' } do |f| %>
+
+        <div class="row section-posts">
+          <div class="col-xs-12">
+            <%= f.text_area :body, size: "72x6", placeholder: "Tell the world something" %>
+          </div>
+        </div>
+        <div class="row section-submit">
+          <div class="col-xs-12">
+            <%= f.submit "Submit", class: "btn btn-primary btn-sm submit-button" %>
+          </div>
+        </div>
+
+        <% end %>
+
+      <% end %>
+
+      <div class="recent-posts">
+        <% @user.posts.order(created_at: :desc)[0..-2].each do |post| %>
+        <%= render partial: "shared/post", locals: {post: post, comment: post.comments.build} %>
+        <% end %>
+      </div>
+
+    </div>
+
+  </div>
+</section>

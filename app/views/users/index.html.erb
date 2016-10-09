@@ -1,0 +1,89 @@
+<ul>
+  <% if @user %>
+    <% @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  <% elsif @profile %>
+    <% @profile.errors.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+  <% end %>
+</ul>
+
+<main class="container">
+  <div class="row">
+
+    <div class="col-sm-7 welcome">
+      <h2>Connect with all your friends!</h2>
+      <ul>
+        <li><strong>See photos and updates</strong> in your news feed.</li>
+        <li><strong>Post your status for the world to see</strong> from your profile</li>
+        <li><strong>Get in touch with your friends</strong> by "friending" them</li>
+        <li><strong>Like things</strong> because you're a positive person!</li>
+      </ul>
+    </div>
+
+    <div class="col-sm-5 new-account">
+      <h1>Sign Up</h1>
+
+      <form action="/users" method="post" class="form-horizontal">
+
+        <input name="utf8" type="hidden" value="✓">
+        <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+        <div class="form-group">
+          <div class="col-xs-6">
+            <input type="text" name="user[first_name]" class="form-control" placeholder="First Name">
+          </div>
+          <div class="col-xs-6">
+            <input type="text" name="user[last_name]" class="form-control" placeholder="Last Name">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-xs-12">
+            <input type="email" name="user[email]" class="form-control" placeholder="Email">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-xs-12">
+            <input type="password" name="user[password]" class="form-control" placeholder="Your New Password">
+          </div>
+        </div>
+
+        <div class="form-group">
+          <div class="col-xs-12">
+            <input type="password" name="user[password_confirmation]" class="form-control" placeholder="Confirm Your Password">
+          </div>
+        </div>
+
+        <p><strong>Birthday</strong>
+
+        <div class="form-group">
+          <div class="col-xs-12">
+            <input type="date" name="user[birthdate]" class="form-control">
+          </div>
+        </div>
+
+        <div class="radio-inline">
+          <label>
+            <input type="radio" name="user[gender]" id="female" value="female">
+            Female
+          </label>
+        </div>
+        <div class="radio-inline">
+          <label>
+            <input type="radio" name="user[gender]" id="male" value="male">
+            Male
+          </label>
+        </div>
+
+        <input type="submit" value="Sign Up!" class="btn btn-success btn-lg btn-block sign-up">
+
+      </form>
+
+    </div>
+
+  </div>
+</main>

@@ -1,0 +1,12 @@
+<div class="row comment-post" id="<%= comment.id %>">
+  <div class="col-xs-1 pic">
+    <%= image_tag 'user_silhouette_generic.gif', class:"poster-pic2" %>
+  </div>
+  <div class="col-xs-11 name">
+    <p class="poster2"><%= comment.user.name %> said on <%= comment.created_at.strftime("%m/%d/%Y") %></p>
+    <p class="poster2"><%= comment.body %></p>
+    <% if current_user == comment.user %>
+      <%= link_to "Remove Comment", user_comment_path(current_user, comment), method: :delete, class: "poster2", remote: true %>
+    <% end %>
+  </div>
+</div>

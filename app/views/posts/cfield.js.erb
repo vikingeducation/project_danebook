@@ -1,0 +1,5 @@
+var id = <%= @post.id %>;
+var $commentButton = $('#' + id + ' > .post-comment')
+var $commentField = $('#' + id + ' > .comment-form')
+$commentButton.hide();
+$commentField.show();

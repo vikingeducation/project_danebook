@@ -1,0 +1,35 @@
+<nav id="topnav" class="navbar navbar-fixed-top navbar-dark bg-primary">
+
+  <div class="container">
+    <div class="row">
+
+      <div class="col-xs-3">
+        <div class="logo-container">
+          <%= image_tag 'flag.png' %>
+          <%= link_to "Danebook", user_newsfeed_path(current_user), class: "navbar-brand" %>
+        </div>
+      </div>
+
+      <div class="col-xs-6">
+        <div class="search-container">
+          <div class="form-group pull-left form-inline">
+            <%= form_tag search_path, :method => 'get' do %>
+              <%= text_field_tag "query[first_name]", nil, placeholder: "First Name", class: "form-control" %>
+              <%= text_field_tag "query[last_name]", nil, placeholder: "Last Name", class: "form-control" %>
+              <%= submit_tag "Search", class: "form-control" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-xs-3">
+        <div class="name-container">
+          <p class="pull-right"><%= link_to current_user.email, user_path(current_user) %> | <%= link_to "Logout", logout_path, method: :delete %></p>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</nav>

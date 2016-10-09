@@ -1,0 +1,98 @@
+<section class="container main-header">
+  <div class="row">
+    <div class="col-xs-12">
+      <%= image_tag 'hogwarts_small.jpg' %>
+      <%= image_tag 'user_silhouette_generic.gif', class:"profile" %>
+      <a class="title-name"><%= current_user.first_name %> <%= current_user.last_name %></a>
+    </div>
+  </div>
+
+  <!-- nav links -->
+  <div class="row nav-link-row">
+    <div class="col-xs-2 nav-links">
+      <a style="visibility: hidden"><p>test</p></a>
+    </div>
+    <div class="col-xs-2 nav-links">
+      <p><%= link_to "Timeline", user_timeline_path(current_user) %></p>
+    </div>
+    <div class="col-xs-2 nav-links">
+      <p><%= link_to "About", user_profile_path(current_user) %></p>
+    </div>
+    <div class="col-xs-2 nav-links">
+      <a href="/static_pages"><p>Photos</p></a>
+    </div>
+    <div class="col-xs-2 nav-links">
+      <a href="/static_pages/new"><p>Friends</p></a>
+    </div>
+  </div>
+</section>
+
+<!-- content -->
+<section class="container content">
+  <div class="row title-header">
+    <div class="col-xs-4 col-xs-offset-4">
+      <p class="title">Edit Profile</p>
+    </div>
+  </div>
+
+  <form action="/profile" method="post">
+
+  <div class="row content-space">
+
+    <div class="col-xs-5 data-points">
+      <h1>Basic Information</h1>
+      <div class="row">
+        <div class="col-xs-5">
+          <p>Gender:</p>
+          <p>Birthday:</p>
+          <p>Hometown:</p>
+          <p>Currently Lives:</p>
+        </div>
+
+        <div class="col-xs-7">
+          <input type="hidden" name="_method" value="put">
+          <input name="utf8" type="hidden" value="✓">
+          <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+          <input type="text" name="user[gender]" value="<%= @user.gender.titleize if @user.gender%>">
+          <input type="date" name="user[birthdate]" value="<%= @user.birthdate %>">
+          <input type="text" name="profile[hometown]" value="<%= @profile.hometown %>">
+          <input type="text" name="profile[current_residence]" value="<%= @profile.current_residence %>">
+        </div>
+      </div>
+
+      <h1>Contact Information</h1>
+      <div class="row">
+        <div class="col-xs-5">
+          <p>First Name:</p>
+          <p>Last Name:</p>
+          <p>Email:</p>
+          <p>Telephone:</p>
+        </div>
+
+        <div class="col-xs-7">
+          <input type="text" name="user[first_name]" value="<%= @user.first_name %>">
+          <input type="text" name="user[last_name]" value="<%= @user.last_name %>">
+          <input type="text" name="user[email]" value="<%= @user.email %>">
+          <input type="text" name="profile[telephone]" value="<%= @profile.telephone %>">
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xs-6 data-strings">
+      <h1>Words to Live By</h1>
+      <textarea rows="2" cols="60" name="profile[words_to_live_by]"><%= @profile.words_to_live_by %></textarea>
+      <h1>About Me</h1>
+      <textarea rows="7" cols="60" name="profile[about_me]"><%= @profile.about_me %></textarea>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12">
+
+        <input type="submit" value="Save Changes" class="btn btn-primary btn-lg save-button">
+        
+      </div>
+    </div>
+
+  </div>
+  </form>
+</section>

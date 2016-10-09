@@ -1,0 +1,22 @@
+<%= render partial: "layouts/navlinks", locals: {user: current_user} %>
+
+<section class="container content">
+  <div class="row title-header">
+    <div class="col-xs-4 col-xs-offset-4">
+      <p class="title">Add Photo</p>
+    </div>
+  </div>
+
+  <div class="row content-space">
+
+    <div class="col-xs-10 col-xs-offset-2">
+      <br>
+      <h4>Choose a file to upload.</h4><br>
+      <%=  form_for [current_user, @photo] do |f| %>
+        <%= f.file_field :image %><br>
+        <%= f.submit %>
+      <% end %><br><br>
+    </div>
+
+  </div>
+</div>

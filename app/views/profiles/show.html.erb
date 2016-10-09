@@ -1,0 +1,56 @@
+<%= render partial: "layouts/navlinks", locals: {user: @user} %>
+
+<!-- content -->
+<section class="container content">
+  <div class="row title-header">
+    <div class="col-xs-4 col-xs-offset-4">
+      <p class="title">About</p>
+    </div>
+<!--     <div class="col-xs-4">
+      <button type="button" class="btn btn-primary btn-sm edit-button">Edit your Profile</button>
+    </div> -->
+  </div>
+  <div class="row content-space">
+
+    <div class="col-xs-5 data-points">
+      <h1>Basic Information</h1>
+      <div class="row">
+        <div class="col-xs-5">
+          <p>Gender:</p>
+          <p>Birthday:</p>
+          <p>Hometown:</p>
+          <p>Currently Lives:</p>
+        </div>
+
+        <div class="col-xs-7">
+          <p><%= @user.gender.titleize if @user.gender%></p>
+          <p><%= @user.birthdate %></p>
+          <p><%= @profile.hometown %></p>
+          <p><%= @profile.current_residence %></p>
+        </div>
+      </div>
+
+      <h1>Contact Information</h1>
+      <div class="row">
+        <div class="col-xs-5">
+          <p>Email:</p>
+          <p>Telephone:</p>
+        </div>
+
+        <div class="col-xs-7">
+          <p><%= @user.email %></p>
+          <p><%= @profile.telephone %></p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-xs-6 data-strings">
+      <h1>Words to Live By</h1>
+      <p><%= @profile.words_to_live_by %></p>
+      <h1>About Me</h1>
+      <p><%= @profile.about_me %></p>
+    </div>
+
+  </div>
+
+</section>

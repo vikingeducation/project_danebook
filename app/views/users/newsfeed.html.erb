@@ -1,0 +1,41 @@
+<%= render partial: "layouts/navlinks", locals: {user: @user} %>
+
+<section class="container content">
+  <div class="row title-header">
+    <div class="col-xs-4 col-xs-offset-4">
+      <p class="title">Newsfeed</p>
+    </div>
+  </div>
+
+  <%= form_for [@user, @post], remote: true, html: { id: 'post-form' } do |f| %>
+
+    <div class="row section-posts" style="margin-top: 5px">
+      <div class="col-xs-6 col-xs-offset-2">
+        <%= f.text_area :body, size: "72x6", placeholder: "Tell the world something" %>
+      </div>
+    </div>
+    <div class="row section-submit">
+      <div class="col-xs-6 col-xs-offset-2" style="text-align: right">
+        <%= f.submit "Submit", class: "btn btn-primary btn-sm submit-button" %>
+      </div>
+    </div>
+
+  <% end %>
+</section>
+
+<section class="container tl-content">
+  <div class="row content-space">
+    <div class="col-xs-7 col-xs-offset-2 post-title">
+      <h3>Recent Friend Posts</h3>
+      <div class="recent-posts">
+        <% unless current_user.friendeds.empty? %>
+          <% Post.friend_posts(current_user).each do |post| %>
+
+          <%= render partial: "shared/post", locals: {post: post, comment: post.comments.build} %>
+
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</section>

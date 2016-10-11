@@ -1,12 +1,25 @@
-#Navigation bar styling
 .navbar {
-  background-color: blue;
-  padding: 15px; }
-  #Navigation bar styling
-  .navbar a {
+  background-color: #6699ff;
+  padding: 10px;
+  margin: 0;
+  border: 0; }
+  .navbar .username {
+    color: white; }
+  .navbar .navbar-text {
     color: white; }
 
 .img-logo {
   border-radius: 50%; }
+
+.nav-links {
+  border: 1px solid black; }
+
+.img-handler {
+  position: relative; }
+
+.profile-image {
+  position: absolute;
+  bottom: -17px;
+  left: 30px; }
 
 /*# sourceMappingURL=styles.css.map */

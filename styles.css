@@ -8,18 +8,38 @@
   .navbar .navbar-text {
     color: white; }
 
-.img-logo {
-  border-radius: 50%; }
-
 .nav-links {
   border: 1px solid black; }
 
 .img-handler {
   position: relative; }
 
+.main-image {
+  max-height: 100%;
+  max-width: 100%; }
+
 .profile-image {
   position: absolute;
   bottom: -17px;
   left: 30px; }
+
+.about-title {
+  background-color: #d9d9d9;
+  margin-top: 10px;
+  text-align: center;
+  border: 1px solid black; }
+  .about-title .btn {
+    margin-top: 15px; }
+
+.about-container {
+  padding: 60px;
+  border: 1px solid black; }
+  .about-container .row {
+    padding: 10px; }
+
+.username {
+  position: absolute;
+  bottom: 5px;
+  right: 11px; }
 
 /*# sourceMappingURL=styles.css.map */

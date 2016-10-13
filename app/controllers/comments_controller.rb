@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :current_user_comment, except: [:like, :unlike]
+  before_action :current_user_comment, except: [:like, :unlike, :create]
 
   def create
     @comment = Comment.new(whitelisted_comments_params)

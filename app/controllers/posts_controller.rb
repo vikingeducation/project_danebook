@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :current_user_post, except: [:like, :unlike]
+  before_action :current_user_post, except: [:like, :unlike, :create]
 
   def create
     new_post = Post.new(whitelisted_post_params)

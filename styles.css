@@ -12,7 +12,8 @@
   border: 1px solid black; }
 
 .img-handler {
-  position: relative; }
+  position: relative;
+  border: 1px solid black; }
 
 .main-image {
   max-height: 100%;
@@ -37,9 +38,9 @@
   .about-container .row {
     padding: 10px; }
 
-.username {
+.username-tag {
   position: absolute;
-  bottom: 5px;
-  right: 11px; }
+  bottom: 130px;
+  right: 170px; }
 
 /*# sourceMappingURL=styles.css.map */

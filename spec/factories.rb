@@ -23,4 +23,15 @@ FactoryGirl.define do
     about    "hahahahaha"
     user
   end
+
+  factory :post do
+    text "Hola Amigo"
+    likes_count 0
+    user
+  end
+
+  # factory :like do
+  #   likeable
+  #   user
+  # end
 end

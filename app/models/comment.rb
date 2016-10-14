@@ -3,7 +3,7 @@ class Comment < ApplicationRecord
   belongs_to :post
 
   has_many :likes, as: :likable, dependent: :destroy
-
+  validates :text, presence: true
   def commented_on
     self.created_at.strftime("Said on %A, %b %d %Y")
   end

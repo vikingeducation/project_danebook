@@ -1,5 +1,17 @@
 require 'rails_helper'
 
+RSpec.describe User, type: :model do
+  it "is valid with default attributes" do
+    user = build(:user)
+    expect{user.save!}.not_to raise_error
+  end
+  it { should have_many(:posts)}
+  it { should have_many(:initiated_likes) }
+  it { should have_many(:authored_comments) }
+  it { should validate_presence_of(:first_name) }
+
+end
+
 describe User do
   describe "general" do
     let(:user){ build(:user) }
@@ -85,8 +97,8 @@ describe User do
     it "responds_to posts" do
       expect(user).to respond_to(:posts)
     end
-    it "responds_to authored_posts" do
-      expect(user).to respond_to(:authored_posts)
+    it "responds_to authored_comment" do
+      expect(user).to respond_to(:authored_comments)
     end
     it "responds_to initiated_likes" do
       expect(user).to respond_to(:initiated_likes)

@@ -5,10 +5,10 @@ FactoryGirl.define do
   # Factory Girl assumes that your class name
   # is the same as the symbol you passed
   # (so here, it assumes this is a User)
-  factory :user do
-    first_name  "Foo"
-    last_name   "Bar"
-    email       "foo@bar.com"
+  factory :user, aliases: [:author] do
+    sequence(:first_name){|n| "Foo#{n}" }
+    sequence(:last_name){|n| "Bar#{n}" }
+    email       { "#{first_name}@bar.com" }
     password    "foobar123"
     birthday    "#{DateTime.now}"
     gender_cd   1
@@ -30,8 +30,10 @@ FactoryGirl.define do
     user
   end
 
-  # factory :like do
-  #   likeable
-  #   user
-  # end
+  factory :comment do
+    text "New Comment"
+    likes_count 0
+    author
+    post
+  end
 end

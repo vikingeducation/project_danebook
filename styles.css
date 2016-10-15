@@ -10,6 +10,8 @@
 
 .nav-links {
   border: 1px solid black; }
+  .nav-links a {
+    color: black; }
 
 .img-handler {
   position: relative;
@@ -23,6 +25,9 @@
   position: absolute;
   bottom: -17px;
   left: 30px; }
+
+.current-page {
+  background-color: #d9d9d9; }
 
 .about-title {
   background-color: #d9d9d9;
@@ -40,7 +45,29 @@
 
 .username-tag {
   position: absolute;
-  bottom: 130px;
+  bottom: 450px;
   right: 170px; }
+
+.edit-input {
+  width: 100%; }
+
+.live-by-input {
+  width: 100%;
+  height: 100px; }
+
+.about-me-input {
+  width: 100%;
+  height: 200px; }
+
+.save-about-content {
+  width: 100%;
+  padding: 15px; }
+
+.unfriend-btn {
+  background-color: #d9d9d9; }
+
+.friend {
+  border: 1px solid black;
+  padding: 10px; }
 
 /*# sourceMappingURL=styles.css.map */

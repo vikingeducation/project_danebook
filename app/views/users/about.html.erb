@@ -8,12 +8,16 @@
   <!-- Bootstrap grid system -->
   <section class="content">
     <div class="container">
-      <div class ="row">
+      <div class ="row heading">
         <!-- Page Heading -->
-        <div class="col-md-12 heading">
+        <div class="col-md-10">
           <h1>About</h1>
+        </div>
+        <div class="col-md-2">
           <% if current_user_page %>
             <%= link_to "Edit your profile", edit_profile_path(@profile), class: "btn btn-primary pull-right edit-profile-btn" %>
+          <% else %>
+            <%= render partial: 'friendships/friend_unfriend', locals: { profile: @profile, friendship_id: @friendship_id, friendship: @friendship} %>
           <% end %>
         </div>
       </div>

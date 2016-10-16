@@ -1,0 +1,95 @@
+<main>
+  <!-- Header -->
+  <%= render partial: 'shared/header', locals: {user: @user}%>
+
+  <!-- Navigation -->
+  <%= render partial: 'shared/nav_loggedin', locals: {user: @user, active: 'friends'} %>
+
+   <!-- Bootstrap grid system -->
+  <section class="content">
+    <div class="container">
+      <div class ="row">
+        <!-- Page Heading -->
+        <div class="col-md-12 heading">
+          <h1>Friends</h1>
+        </div>
+      </div>
+      <div class="row">
+        <!-- Left Column -->
+        <div class="col-md-6">
+          <article class="media friend-container">
+            <div class="media-left media-middle">
+              <img class="media-object" src="user_silhouette_generic.gif">
+            </div>
+            <div class="media-body media-middle"> <a href="#" class="media-heading">Hermoine Granger</a> <P>432 Friends</P></div>
+            <div class="media-right ">
+              <button class="btn btn-default unfriend-btn">Unfriend Me</button>
+            </div>
+          </article>
+        </div>
+        <!-- Right Column -->
+        <div class="col-md-6">
+          <article class="media friend-container">
+            <div class="media-left media-middle">
+              <img class="media-object" src="user_silhouette_generic.gif">
+            </div>
+            <div class="media-body media-middle"> <a href="#" class="media-heading">Hermoine Granger</a><P>432 Friends</P></div>
+            <div class="media-right">
+              <button class="btn btn-default unfriend-btn">Unfriend Me</button>
+            </div>
+          </article>
+        </div>
+     </div>
+      <div class="row">
+        <!-- Left Column -->
+        <div class="col-md-6">
+          <article class="media friend-container">
+            <div class="media-left media-middle">
+              <img class="media-object" src="user_silhouette_generic.gif">
+            </div>
+            <div class="media-body media-middle"> <a href="#" class="media-heading">Hermoine Granger</a><p>432 Friends</p></div>
+            <div class="media-right ">
+              <button class="btn btn-default unfriend-btn">Unfriend Me</button>
+            </div>
+          </article>
+        </div>
+        <!-- Right Column -->
+        <div class="col-md-6">
+          <article class="media friend-container">
+            <div class="media-left media-middle">
+              <img class="media-object" src="user_silhouette_generic.gif">
+            </div>
+            <div class="media-body media-middle"> <a href="#" class="media-heading">Hermoine Granger</a><p>432 Friends</p></div>
+            <div class="media-right">
+              <button class="btn btn-default unfriend-btn">Unfriend Me</button>
+            </div>
+          </article>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <article class="media friend-container">
+            <div class="media-left media-middle">
+              <img class="media-object" src="user_silhouette_generic.gif">
+            </div>
+            <div class="media-body media-middle"> <a href="#" class="media-heading">Hermoine Granger</a><p>432 Friends</p></div>
+            <div class="media-right ">
+              <button class="btn btn-default unfriend-btn">Unfriend Me</button>
+            </div>
+          </article>
+        </div>
+        <div class="col-md-6">
+          <article class="media friend-container">
+            <div class="media-left media-middle">
+              <img class="media-object" src="user_silhouette_generic.gif">
+            </div>
+            <div class="media-body media-middle"> <a href="#" class="media-heading">Hermoine Granger</a><P>432 Friends</P></div>
+            <div class="media-right">
+              <button class="btn btn-default unfriend-btn">Unfriend Me</button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div> <!-- end of container -->
+  </section>
+</main>

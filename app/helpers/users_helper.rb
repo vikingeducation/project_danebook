@@ -12,4 +12,8 @@ module UsersHelper
     # Combine our normal input tag with the error message
     error
   end
+
+  def not_a_friend
+    true
+  end
 end

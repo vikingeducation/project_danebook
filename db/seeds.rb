@@ -46,4 +46,10 @@ User.all.each do |u|
   4.times { Like.create(user_id: u.id, likable_id: comment_ids.pop, likable_type: "Comment") }
 end
 
+puts "creating friends"
+User.all.each do |u|
+  other_users = User.pluck(:id).shuffle - [u.id]
+  4.times { Friendship.create(initiator: u.id, recipient: other_users.pop) }
+end
+
 

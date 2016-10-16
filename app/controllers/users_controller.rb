@@ -27,15 +27,27 @@ class UsersController < ApplicationController
   end
 
   def about
-
+    @user = User.find(params[:id])
+    if @user == current_user
+      @friendship_id = nil
+    else
+      @friendship_id = Friendship.find_by(initiator: current_user.id, recipient:  @user.id)
+    end
+    @friendship = Friendship.new
   end
 
   def timeline
     @post = Post.new
     @comment = Comment.new
     @posts = Post.includes(:user, :likes, :comments => [:author, :likes]).order(created_at: :desc)
+    @user = User.find(params[:id])
+    @friends = @user.initiated_friends
   end
 
+  def friends
+    @user = User.find(params[:id])
+    @friends = @user.initiated_friends
+  end
 
   private
 

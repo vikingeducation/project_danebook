@@ -8,7 +8,9 @@ Rails.application.routes.draw do
   resources :users, only: [:new, :create, :show] do
     get 'about', on: :member
     get 'timeline', on: :member
+    get 'friends', on: :member
   end
+  resources :friendships, only: [:create, :destroy]
   resources :profiles, only: [:edit, :update]
   resources :posts, only: [:create, :update, :destroy] do
     get 'like', on: :member

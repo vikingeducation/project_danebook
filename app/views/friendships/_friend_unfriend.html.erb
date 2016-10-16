@@ -1,0 +1,11 @@
+<div class="friend_button">
+  <% if friendship_id %>
+  <%= link_to "Unfriend", friendship_path(friendship_id), method: "DELETE", class: "btn btn-primary pull-right" %>
+  <% else %>
+    <%= simple_form_for @friendship, class: "friend_form" do |f| %>
+      <%= f.input :initiator, :as => :hidden, :input_html => { :value => current_user.id } %>
+      <%= f.input :recipient, :as => :hidden, :input_html => { :value => profile.user.id } %>
+      <%= f.button :submit, 'Friend', class: "btn btn-primary pull-right" %>
+    <% end %>
+  <% end %>
+</div>

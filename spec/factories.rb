@@ -1,5 +1,9 @@
 # spec/factories.rb
 FactoryGirl.define do
+  factory :friendship do
+    initiator 1
+    recipient 1
+  end
   # A block defining the attributes of a model
   # The symbol is how you will later call it
   # Factory Girl assumes that your class name

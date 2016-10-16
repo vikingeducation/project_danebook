@@ -1,7 +1,8 @@
 class Friendship < ApplicationRecord
 # The Initiator side
   belongs_to :friend_initiator, :foreign_key => :initiator,
-                                :class_name => "User"
+                                :class_name => "User",
+                                :counter_cache => true
 
   # The Recipient side
   belongs_to :friend_recipient, :foreign_key => :recipient,

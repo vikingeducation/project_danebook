@@ -11,7 +11,7 @@ class FriendshipsController < ApplicationController
   end
 
   def destroy
-    @friendship = Friendship.find(params[:id])
+    @friendship = Friendship.find_by(initiator: current_user.id, recipient: params[:id])
     if @friendship.destroy!
       flash[:success] = "Unfriended"
     else

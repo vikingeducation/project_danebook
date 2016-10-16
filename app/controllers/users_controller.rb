@@ -45,7 +45,7 @@ class UsersController < ApplicationController
   end
 
   def friends
-    @user = User.find(params[:id])
+    @user = User.includes(:initiated_friends).find(params[:id])
     @friends = @user.initiated_friends
   end
 

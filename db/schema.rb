@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161016063147) do
+ActiveRecord::Schema.define(version: 20161016212717) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,7 +39,7 @@ ActiveRecord::Schema.define(version: 20161016063147) do
     t.datetime "updated_at",   null: false
     t.string   "likable_type"
     t.index ["likable_type", "likable_id"], name: "index_likes_on_likable_type_and_likable_id", using: :btree
-    t.index ["user_id", "likable_id"], name: "index_likes_on_user_id_and_likable_id", unique: true, using: :btree
+    t.index ["user_id", "likable_type", "likable_id"], name: "index_likes_on_user_id_and_likable_type_and_likable_id", unique: true, using: :btree
   end
 
   create_table "posts", force: :cascade do |t|
@@ -64,15 +64,16 @@ ActiveRecord::Schema.define(version: 20161016063147) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "first_name",      null: false
-    t.string   "last_name",       null: false
-    t.string   "email",           null: false
-    t.string   "password_digest", null: false
+    t.string   "first_name",                    null: false
+    t.string   "last_name",                     null: false
+    t.string   "email",                         null: false
+    t.string   "password_digest",               null: false
     t.string   "auth_token"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.date     "birthday",        null: false
-    t.integer  "gender_cd",       null: false
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+    t.date     "birthday",                      null: false
+    t.integer  "gender_cd",                     null: false
+    t.integer  "friendships_count", default: 0, null: false
     t.index ["auth_token"], name: "index_users_on_auth_token", unique: true, using: :btree
   end
 

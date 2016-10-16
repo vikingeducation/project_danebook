@@ -17,7 +17,7 @@
           <% if current_user_page %>
             <%= link_to "Edit your profile", edit_profile_path(@profile), class: "btn btn-primary pull-right edit-profile-btn" %>
           <% else %>
-            <%= render partial: 'friendships/friend_unfriend', locals: { profile: @profile, friendship_id: @friendship_id, friendship: @friendship} %>
+            <%= render partial: 'friendships/friend_unfriend', locals: { profile: @profile, user: @user, friendship_id: @friendship_id, friendship: @friendship} %>
           <% end %>
         </div>
       </div>

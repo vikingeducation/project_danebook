@@ -16,79 +16,21 @@
       </div>
       <div class="row">
         <!-- Left Column -->
-        <div class="col-md-6">
-          <article class="media friend-container">
-            <div class="media-left media-middle">
-              <img class="media-object" src="user_silhouette_generic.gif">
-            </div>
-            <div class="media-body media-middle"> <a href="#" class="media-heading">Hermoine Granger</a> <P>432 Friends</P></div>
-            <div class="media-right ">
-              <button class="btn btn-default unfriend-btn">Unfriend Me</button>
-            </div>
-          </article>
-        </div>
-        <!-- Right Column -->
-        <div class="col-md-6">
-          <article class="media friend-container">
-            <div class="media-left media-middle">
-              <img class="media-object" src="user_silhouette_generic.gif">
-            </div>
-            <div class="media-body media-middle"> <a href="#" class="media-heading">Hermoine Granger</a><P>432 Friends</P></div>
-            <div class="media-right">
-              <button class="btn btn-default unfriend-btn">Unfriend Me</button>
-            </div>
-          </article>
-        </div>
-     </div>
-      <div class="row">
-        <!-- Left Column -->
-        <div class="col-md-6">
-          <article class="media friend-container">
-            <div class="media-left media-middle">
-              <img class="media-object" src="user_silhouette_generic.gif">
-            </div>
-            <div class="media-body media-middle"> <a href="#" class="media-heading">Hermoine Granger</a><p>432 Friends</p></div>
-            <div class="media-right ">
-              <button class="btn btn-default unfriend-btn">Unfriend Me</button>
-            </div>
-          </article>
-        </div>
-        <!-- Right Column -->
-        <div class="col-md-6">
-          <article class="media friend-container">
-            <div class="media-left media-middle">
-              <img class="media-object" src="user_silhouette_generic.gif">
-            </div>
-            <div class="media-body media-middle"> <a href="#" class="media-heading">Hermoine Granger</a><p>432 Friends</p></div>
-            <div class="media-right">
-              <button class="btn btn-default unfriend-btn">Unfriend Me</button>
-            </div>
-          </article>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <article class="media friend-container">
-            <div class="media-left media-middle">
-              <img class="media-object" src="user_silhouette_generic.gif">
-            </div>
-            <div class="media-body media-middle"> <a href="#" class="media-heading">Hermoine Granger</a><p>432 Friends</p></div>
-            <div class="media-right ">
-              <button class="btn btn-default unfriend-btn">Unfriend Me</button>
-            </div>
-          </article>
-        </div>
-        <div class="col-md-6">
-          <article class="media friend-container">
-            <div class="media-left media-middle">
-              <img class="media-object" src="user_silhouette_generic.gif">
-            </div>
-            <div class="media-body media-middle"> <a href="#" class="media-heading">Hermoine Granger</a><P>432 Friends</P></div>
-            <div class="media-right">
-              <button class="btn btn-default unfriend-btn">Unfriend Me</button>
-            </div>
-          </article>
-        </div>
+        <% @friends.each do |friend| %>
+          <div class="col-md-6">
+            <article class="media friend-container">
+              <div class="media-left media-middle">
+                <img class="media-object" src="user_silhouette_generic.gif">
+              </div>
+              <div class="media-body media-middle">
+                <%= link_to friend.name, about_user_path(friend), class: "media-heading" %>
+                <P><%= friend.friendships_count%> Friends</P></div>
+              <div class="media-right ">
+                <%= link_to "Unfriend Me", friendship_path(friend.id), method: "DELETE", class: "btn btn-default unfriend-btn" %>
+              </div>
+            </article>
+          </div>
+        <% end %>
       </div>
     </div> <!-- end of container -->
   </section>

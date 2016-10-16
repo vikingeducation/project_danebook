@@ -3,6 +3,7 @@ Profile.destroy_all
 Post.destroy_all
 Comment.destroy_all
 Like.destroy_all
+Friendship.destroy_all
 
 puts "creating 10 users.."
 10.times do

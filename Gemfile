@@ -57,6 +57,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'factory_girl_rails', '~> 4.0'
   gem 'guard-rspec', require: false
+  gem 'rails-controller-testing'
 end
 
 group :test do

@@ -41,7 +41,7 @@ describe User do
     end
     it "create a user in db and verify email" do
       user = create(:user, :name => "foobar", :password => "123foobar")
-      expect(user.email).to eq("foo@bar.com")
+      expect(user.email).to match(/Foo(\d)+@bar.com/)
     end
   end
 
@@ -56,7 +56,7 @@ describe User do
     end
     it "email should be unique" do
       user = create(:user)
-      new_user = build(:user, :name => "Zoo boo")
+      new_user = build(:user, :name => "Zoo boo", :email => user.email )
       expect(new_user).to be_invalid
     end
     it "with password length 7 is invalid" do

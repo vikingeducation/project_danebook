@@ -1,1 +1,267 @@
-<!-- Your markup here! -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Timeline</title>
+
+     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+    <!-- Bootstrap CSS-->
+    <link rel="stylesheet"href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+     <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+
+
+    <!-- Custom css -->
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="navbar navbar-default">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-2">
+            <a href="index.html"><img class="img-logo img-circle" src="danish_flag.gif" width="20" height="20"/></a>
+            <h3 class="navbar-text">Danebook</h3>
+          </div>
+          <div class="col-md-7">
+            <div class="search-container navbar-block">
+              <input type="text" class="form-control" id="input1" placeholder="Search for Users">
+            </div>
+          </div>
+          <div class="col-md-3">
+            <a class="navbar-brand navbar-right username" href="#">Harry</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+          <img src="hogwarts_small.jpg" width="1170" height="300"/>
+           <h2 class="username-tag">Harry Potter</h2>
+      </div>
+      <div class="row">
+        <div class="col-md-3 img-handler">
+          <img class ="profile-image" src="harry_potter_small.jpg" width="200" height="225"/>
+        </div>
+        <div class="col-md-1 nav-links current-page"><a href="">Timeline</a></div>
+        <div class="col-md-1 nav-links"><a href="">About</a></div>
+        <div class="col-md-1 nav-links"><a href="">Photos(123)</a></div>
+        <div class="col-md-1 nav-links"><a href="">Friends(542)</a></div>
+        <div class="col-md-5 nav-links"><a href="">Edit Profile</a></div>  
+      </div>
+      <div class="row timeline-container">
+        <div class="col-md-5">
+          <div class="row section-title"><h4>About (Text Area)</h4></div>
+          <div class="row about-summary">
+            <p><span>Born on:</span>July 31st, 1980</p>
+            <p><span>Went to school at:</span>Hogwarts</p>
+            <p><span>Hometown:</span>Godrick's Hollow, England</p>
+            <p><span>Currently Lives:</span>Godrick's Hollow/p>
+          </div>
+
+          <div class="row section-title"><h4>Photos(123) (Copied Text Area)</h4></div>
+          <div class="row">
+            <div class="row">
+              <div class="col-md-3 img-thumb">
+                <img src="https://unsplash.it/50/50"/>
+              </div>
+              <div class="col-md-3 img-thumb">
+                <img src="https://unsplash.it/50/50"/>
+              </div>
+              <div class="col-md-3 img-thumb">
+                <img src="https://unsplash.it/50/50">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3 img-thumb">
+                <img src="https://unsplash.it/50/50"/>
+              </div>
+              <div class="col-md-3 img-thumb">
+                <img src="https://unsplash.it/50/50"/>
+              </div>
+              <div class="col-md-3 img-thumb">
+                <img src="https://unsplash.it/50/50">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-3 img-thumb">
+                <img src="https://unsplash.it/50/50"/>
+              </div>
+              <div class="col-md-3 img-thumb">
+                <img src="https://unsplash.it/50/50"/>
+              </div>
+              <div class="col-md-3 img-thumb">
+                <img src="https://unsplash.it/50/50">
+              </div>
+            </div>
+            <div class="row"><a href="">See More Photos</a></div>
+          </div>
+
+          <div class="row section-title"><h4>Friends(5+2) (Copied Text Area)</h4></div>
+          <div class="row">
+             <div class="row">
+              <div class="col-md-4 img-thumb">
+                <img src="https://unsplash.it/50/50"/>
+                <a href="">Ron Weasley</a>
+              </div>
+              <div class="col-md-4 img-thumb">
+                <img src="https://unsplash.it/50/50"/>
+                <a href="">Ginny Weasley</a>
+              </div>
+              <div class="col-md-4 img-thumb">
+                <img src="https://unsplash.it/50/50">
+                <a href="">Hermione Granger</a>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4 img-thumb">
+                <img src="https://unsplash.it/50/50"/>
+                <a href="">Slytherine</a>
+              </div>
+              <div class="col-md-4 img-thumb">
+                <img src="https://unsplash.it/50/50"/>
+                <a href="">Lord Voldemort</a>
+              </div>
+              <div class="col-md-4 img-thumb">
+                <img src="https://unsplash.it/50/50">
+                <a href="">Severus Snape</a>
+              </div>
+            </div>
+            <div class="row"><a href="">See More Friends</a></div>
+          </div>
+        </div>
+        <div class="col-md-7">
+          <div class="row"><h4>About (Text Area)</h4></div>
+          <div class="row"><textarea class="post-input" placeholder="Tell the worl something.."></textarea>   
+          </div>
+          <div class="row">
+            <div class="col-md-10"></div>
+            <div class="col-md-2"><button class="btn btn-primary">Post</button>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-2"><img src="harry_potter_small.jpg" width="30px" height="30px"/></div>
+            <div class="col-md-10">
+              <a href="">Harry Potter</a>
+              <p>Posted on Thursday 6/1/2004</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+          </div>
+          <div class="row comment-links">
+            <div class="col-md-10">
+              <a href="">Like</a><a href="">Comments</a>
+            </div>
+            <div class="col-md-2">
+              <a href="">Delete</a>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-2"><img src="harry_potter_small.jpg" width="30px" height="30px"/></div>
+            <div class="col-md-10">
+              <a href="">Harry Potter</a>
+              <p>Posted on Thursday 6/1/2004</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+          </div>
+          <div class="row comment-links">
+            <div class="col-md-10">
+              <a href="">Harry Potter</a>
+              <p>Posted on Thursday 6/1/2004</p>
+            </div>
+            <div class="col-md-2">
+              <a href="">Delete</a>
+            </div>
+            <p><a href="">Hermione Granger likes this</a></p>
+          </div>
+
+          <div class="row">
+            <div class="col-md-2"><img src="harry_potter_small.jpg" width="30px" height="30px"/></div>
+            <div class="col-md-10">
+              <p><a href="">Harry Potter</a>Said on Thursday 5/1/2014</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+          </div>
+          <div class="row comment-links">
+            <div class="col-md-10">
+              <a href="">Unlike</a>
+            </div>
+            <div class="col-md-2">
+              <a href="">Delete</a>
+            </div>
+            <p><a href="">Harry Potter</a>Said on Thursday 5/1/2014</p>
+            <hr></hr>
+            <div class="row">
+              <div class="col-md-12">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <div class="row">
+                  <div class="col-md-10">
+                    <p><a href="">Like</a> 3 others people like this</p>
+                  </div>
+                  <div class="col-md-2">
+                    <p><a href="">Delete</a></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p><a href="">Harry Potter</a>Said on Thursday 5/1/2014</p>
+            <div class="row">
+              <div class="col-md-12">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <p><a href="">Like</a> 3 others people like this</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+       
+
+
+    </div>
+            
+            
+  </body>
+</html>

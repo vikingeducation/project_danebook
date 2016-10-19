@@ -8,6 +8,9 @@
   .navbar .navbar-text {
     color: white; }
 
+.toolbar {
+  border: 1px solid black; }
+
 .nav-links {
   border: 1px solid black; }
   .nav-links a {

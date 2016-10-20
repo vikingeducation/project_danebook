@@ -19,7 +19,7 @@
 }
 
 .nav-links{
-  border: 1px solid black;
+  border-left: 1px solid black;
   a{
     color: black
   }
@@ -27,18 +27,24 @@
 
  .img-handler{
   position: relative;
-  border: 1px solid black;
  }
 
- .main-image{
-  max-height: 100%;
-  max-width: 100%;
- }
+  .banner-img{
+    padding: 0;
+  }
 
  .profile-image{
   position: absolute;
   bottom: -17px;
   left: 30px;
+ }
+
+ .img-thumb{
+  padding: 20px 20px;
+ }
+
+ .img-thumb-small{
+  padding: 7px 7px;
  }
 
 .current-page{
@@ -99,4 +105,26 @@
 .friend{
   border: 1px solid black;
   padding: 10px;
+  margin-bottom: 20px;
 }
+
+.about-summary , .section-outline, article{
+  border: 1px solid black;
+  padding: 10px;
+  margin-bottom: 20px;
+}
+
+.section-title{
+  background-color: #d9d9d9;
+  margin-top: 10px;
+  text-align: center;
+  border: 1px solid black;
+}
+
+.last-post{
+  background-color: #d9d9d9;
+  border: 1px solid black;
+  margin: 10px;
+}
+
+

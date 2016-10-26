@@ -49,6 +49,13 @@ group :development, :test do
   gem 'pry-byebug'
 end
 
+# Seach database
+gem 'sunspot_rails'
+group :development do
+    gem 'sunspot_solr'
+end
+gem 'progress_bar'
+
 group :production do
   gem 'rails_12factor'
 end

@@ -49,6 +49,16 @@ class UsersController < ApplicationController
     @friends = @user.initiated_friends
   end
 
+  def index
+    @query = User.search do
+        fulltext params[:query]
+    end
+    @users = @query.results
+    @friends = current_user.initiated_friends
+    @friendship = Friendship.new
+    render :search_result
+  end
+
   private
 
   def set_user_and_profile

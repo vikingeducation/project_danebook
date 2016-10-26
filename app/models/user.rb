@@ -25,6 +25,10 @@ class User < ApplicationRecord
   has_many :recieved_friends, :through => :received_friendships,
                               :source => :friend_initiator
 
+  searchable do
+      text :first_name
+  end
+
   def name
     "#{first_name} #{last_name}"
   end
@@ -32,6 +36,10 @@ class User < ApplicationRecord
   def name=(new_name)
     self.first_name = new_name.split.first
     self.last_name = new_name.split.last
+  end
+
+  def friends_with?(other_user)
+    self.initiated_friends.include?(other_user)
   end
 
 end

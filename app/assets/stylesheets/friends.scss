@@ -21,6 +21,12 @@ main {
     p {
       color: #aaa;
     }
+    .friend-btn {
+      position: absolute;
+      right:10px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
     .unfriend-btn {
       position: absolute;
       right:10px;

@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get 'photos', to: 'static_pages#photos', as: 'photos'
 
   root :to => 'users#new'
-  resources :users, only: [:new, :create, :show] do
+  resources :users, only: [:new, :create, :show, :index] do
     get 'about', on: :member
     get 'timeline', on: :member
     get 'friends', on: :member

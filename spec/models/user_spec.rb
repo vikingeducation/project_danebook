@@ -104,4 +104,27 @@ describe User do
       expect(user).to respond_to(:initiated_likes)
     end
   end
+
+  describe "friends" do
+    let(:userA) { create(:user) }
+    let(:userB) { create(:user) }
+    it 'does not include user with no relationship' do
+      expect(userA.friends).not_to include(userB)
+    end
+    it 'includes users that have friended each other' do
+      userA.initiated_friends << userB
+      userB.initiated_friends << userA
+      expect(userA.friends).to include(userB)
+    end
+    it 'does not include unidirectional friending' do
+      userA.initiated_friends << userB
+      expect(userA.friends).not_to include(userB)
+    end
+    it 'does not include unidirectional friending by others' do
+      userB.initiated_friends << userA
+      expect(userA.friends).not_to include(userB)
+    end
+  end
+
+
 end

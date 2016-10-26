@@ -41,20 +41,17 @@ class UsersController < ApplicationController
     @comment = Comment.new
     @posts = Post.includes(:user, :likes, :comments => [:author, :likes]).order(created_at: :desc)
     @user = User.find(params[:id])
-    @friends = @user.initiated_friends
+    @friends = @user.friends
   end
 
   def friends
-    @user = User.includes(:initiated_friends).find(params[:id])
-    @friends = @user.initiated_friends
+    @user = User.find(params[:id])
+    @friends = @user.friends
   end
 
   def index
-    @query = User.search do
-        fulltext params[:query]
-    end
-    @users = @query.results
-    @friends = current_user.initiated_friends
+    @users = User.search(params[:query])
+    @friends = current_user.friends
     @friendship = Friendship.new
     render :search_result
   end

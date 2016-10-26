@@ -25,9 +25,15 @@ class User < ApplicationRecord
   has_many :recieved_friends, :through => :received_friendships,
                               :source => :friend_initiator
 
-  searchable do
-      text :first_name
-  end
+  # searchable do
+  #     text :first_name, :last_name
+  # end
+  include PgSearch
+  pg_search_scope :search,
+                  :against => [:first_name, :last_name],
+                  :using => {
+                    :tsearch => {:prefix => true}
+                  }
 
   def name
     "#{first_name} #{last_name}"
@@ -42,4 +48,8 @@ class User < ApplicationRecord
     self.initiated_friends.include?(other_user)
   end
 
+  def friends
+    initiated_friends.where(id: recieved_friends.pluck(:id))
+    # self.initiated_friends & self.recieved_friends
+  end
 end

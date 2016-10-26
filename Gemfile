@@ -9,6 +9,7 @@ gem 'bullet', group: :development
 
 # Use pg as tbe database for Active Record
 gem 'pg'
+gem 'pg_search'
 #faker
 gem 'faker'
 #simple_form
@@ -42,19 +43,12 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'simple_enum'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'hirb'
+  # gem 'hirb'
   gem 'byebug', platform: :mri
   gem "better_errors"
   gem "binding_of_caller"
   gem 'pry-byebug'
 end
-
-# Seach database
-gem 'sunspot_rails'
-group :development do
-    gem 'sunspot_solr'
-end
-gem 'progress_bar'
 
 group :production do
   gem 'rails_12factor'

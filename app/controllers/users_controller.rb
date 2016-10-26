@@ -28,11 +28,13 @@ class UsersController < ApplicationController
 
   def about
     @user = User.find(params[:id])
-    if @user == current_user
-      @friendship_id = nil
-    else
-      @friendship_id = Friendship.find_by(initiator: current_user.id, recipient:  @user.id)
-    end
+    @friends = current_user.initiated_friends
+    @pending_friends = @friends - current_user.friends
+    # if @user == current_user
+    #   @friendship_id = nil
+    # else
+    #   @friendship_id = Friendship.find_by(initiator: current_user.id, recipient:  @user.id)
+    # end
     @friendship = Friendship.new
   end
 
@@ -45,13 +47,15 @@ class UsersController < ApplicationController
   end
 
   def friends
-    @user = User.find(params[:id])
+    @user = User.includes(:initiated_friends).find(params[:id])
     @friends = @user.friends
+    @pending_friends = @user.initiated_friends - @friends
   end
 
   def index
     @users = User.search(params[:query])
-    @friends = current_user.friends
+    @friends = current_user.initiated_friends
+    @pending_friends = @friends - current_user.friends
     @friendship = Friendship.new
     render :search_result
   end

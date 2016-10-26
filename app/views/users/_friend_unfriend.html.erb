@@ -1,3 +1,6 @@
+<% if pending_friends.include?(user) %>
+  <i class="text-danger pull-right req-pending">(Request Pending)</i>
+<% end %>
 <% if friends.include?(user) %>
   <%= link_to "Unfriend Me!", friendship_path(user.id), method: "DELETE", class: "btn btn-default unfriend-btn" %>
 <% else %>

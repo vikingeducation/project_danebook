@@ -34,5 +34,11 @@ main {
       transform: translateY(-50%);
       background-color: #ccc;
     }
+    .req-pending {
+      position: absolute;
+      right: 10px;
+      top: 20%;
+      transform: translateY(-50%);
+    }
   }
 }

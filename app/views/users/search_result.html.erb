@@ -23,7 +23,7 @@
                 <p>From <%= user.profile.hometown %></p>
                 <p>Born on <%= user.birthday.to_formatted_s(:long_ordinal) %></p></div>
               <div class="media-right ">
-                <%= render partial: 'users/friend_unfriend', locals: {user: user, friends: @friends} %>
+                <%= render partial: 'users/friend_unfriend', locals: {user: user, friends: @friends, pending_friends: @pending_friends} %>
               </div>
             </article>
           </div>

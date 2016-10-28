@@ -30,11 +30,6 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
     @friends = current_user.initiated_friends
     @pending_friends = @friends - current_user.friends
-    # if @user == current_user
-    #   @friendship_id = nil
-    # else
-    #   @friendship_id = Friendship.find_by(initiator: current_user.id, recipient:  @user.id)
-    # end
     @friendship = Friendship.new
   end
 
@@ -50,6 +45,11 @@ class UsersController < ApplicationController
     @user = User.includes(:initiated_friends).find(params[:id])
     @friends = @user.friends
     @pending_friends = @user.initiated_friends - @friends
+  end
+
+  def photos
+    @user = User.includes(:photos).find(params[:id])
+    @photos = @user.photos
   end
 
   def index

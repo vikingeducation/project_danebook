@@ -1,0 +1,38 @@
+<main>
+   <!-- Bootstrap grid system -->
+  <section class="content">
+    <div class="container">
+      <div class ="row">
+        <!-- Page Heading -->
+        <div class="col-md-12 heading">
+          <h1>Photos</h1>
+        </div>
+      </div>
+      <div class="row">
+        <p class="text-center">Paste the the URL to a photo on the web...</p>
+        <%= form_tag create_with_url_photos_path do %>
+        <%= text_field_tag :url, params[:url], size: 75, placeholder: "http://sample.jpg" %>
+        <br><br>
+        <%= submit_tag 'Use the Web Photo', class: "btn btn-primary text-center" %>
+        <% end %>
+        <p class="text-center">or</p>
+        <br>
+        <p class="text-center">Select a photo from your hard drive...</p>
+        <div class="col-md-2 col-md-offset-5">
+          <div class="text-center">
+          <%= simple_form_for(@photo) do |f| %>
+            <div class="field">
+              <%= f.file_field :image , class: 'text-center' %>
+              <%= f.input :user_id, as: :hidden %>
+            </div>
+            <br>
+            <div class="actions">
+              <%= f.submit %>
+            </div>
+          <% end %>
+          </div>
+        </div>
+      </div>
+    </div> <!-- end of container -->
+  </section>
+</main>

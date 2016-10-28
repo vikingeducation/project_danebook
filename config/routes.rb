@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     get 'about', on: :member
     get 'timeline', on: :member
     get 'friends', on: :member
+    get 'photos', on: :member
   end
   resources :friendships, only: [:create, :destroy]
   resources :profiles, only: [:edit, :update]
@@ -19,6 +20,9 @@ Rails.application.routes.draw do
       get 'like', on: :member
       get 'unlike', on: :member
     end
+  end
+  resources :photos, only: [:new, :create, :show] do
+    post 'create_with_url', on: :collection
   end
 
   resource :session, only: [:create, :destroy]

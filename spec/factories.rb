@@ -1,5 +1,8 @@
 # spec/factories.rb
 FactoryGirl.define do
+  factory :photo do
+    
+  end
   factory :friendship do
     initiator 1
     recipient 1

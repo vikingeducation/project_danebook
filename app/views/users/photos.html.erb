@@ -1,0 +1,119 @@
+<main class="photos">
+  <!-- Header -->
+  <%= render partial: 'shared/header', locals: {user: @user}%>
+
+  <!-- Navigation -->
+  <%= render partial: 'shared/nav_loggedin', locals: {user: @user, active: 'photos'} %>
+
+
+  <!-- Bootstrap Grid System -->
+  <section class="content">
+    <div class="container">
+      <div class ="row heading">
+        <!-- Page Heading -->
+        <div class="col-md-10">
+          <h1>Photos</h1>
+        </div>
+        <div class="col-md-2">
+          <% if current_user_page %>
+            <%= link_to "Upload Photo!", new_photo_path, class: "btn btn-primary pull-right edit-profile-btn" %>
+          <% end %>
+        </div>
+      </div>
+      <div class="row photo-row">
+        <% if !@photos.empty? %>
+          <% @photos.each do |photo| %>
+            <a href="#" class="col-md-3">
+              <div class="photo-container">
+                <%= image_tag photo.image.url(:small) %>
+                <div class="annotation"><p>Uploaded January 1, 2015</p></div>
+              </div>
+            </a>
+          <% end %>
+        <% end %>
+        <a href="#" class="col-md-3">
+        <div class="photo-container">
+            <div class="annotation"><p>Uploaded January 1, 2015</p></div>
+        </div>
+        </a>
+        <a href="#" class="col-md-3">
+        <div class="photo-container">
+            <div class="annotation"><p>Uploaded January 1, 2015</p></div>
+        </div>
+        </a>
+        <a href="#" class="col-md-3">
+        <div class="photo-container">
+            <div class="annotation"><p>Uploaded January 1, 2015</p></div>
+        </div>
+        </a>
+      </div>
+      <div class="row">
+        <a href="#" class="col-md-3">
+          <div class="photo-container">
+            <div class="annotation"><p>Uploaded January 1, 2015</p></div>
+          </div>
+        </a>
+        <a href="#" class="col-md-3">
+          <div class="photo-container">
+            <div class="annotation"><p>Uploaded January 1, 2015</p></div>
+          </div>
+        </a>
+        <a href="#" class="col-md-3">
+          <div class="photo-container">
+            <div class="annotation"><p>Uploaded January 1, 2015</p></div>
+          </div>
+        </a>
+        <a href="#" class="col-md-3">
+          <div class="photo-container">
+            <div class="annotation"><p>Uploaded January 1, 2015</p></div>
+          </div>
+        </a>
+      </div>
+      <div class="row">
+        <a href="#" class="col-md-3">
+          <div class="photo-container">
+            <div class="annotation"><p>Uploaded January 1, 2015</p></div>
+          </div>
+        </a>
+        <a href="#" class="col-md-3">
+          <div class="photo-container">
+            <div class="annotation"><p>Uploaded January 1, 2015</p></div>
+          </div>
+        </a>
+        <a href="#" class="col-md-3">
+          <div class="photo-container">
+            <div class="annotation"><p>Uploaded January 1, 2015</p></div>
+          </div>
+        </a>
+        <a href="#" class="col-md-3">
+          <div class="photo-container">
+            <div class="annotation"><p>Uploaded January 1, 2015</p></div>
+          </div>
+        </a>
+      </div>
+      <div class="row">
+        <a href="#" class="col-md-3">
+          <div class="photo-container">
+            <div class="annotation"><p>Uploaded January 1, 2015</p></div>
+          </div>
+        </a>
+        <a href="#" class="col-md-3">
+          <div class="photo-container">
+            <div class="annotation"><p>Uploaded January 1, 2015</p></div>
+          </div>
+        </a>
+        <a href="#" class="col-md-3">
+          <div class="photo-container">
+            <div class="annotation"><p>Uploaded January 1, 2015</p></div>
+          </div>
+        </a>
+        <a href="#" class="col-md-3">
+          <div class="photo-container">
+            <div class="annotation"><p>Uploaded January 1, 2015</p></div>
+          </div>
+        </a>
+      </div>
+
+    </div> <!-- end of container -->
+  </section>
+</main>

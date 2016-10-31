@@ -13,7 +13,8 @@
 <!-NAV BAR->
 <nav class="navbar navbar-default navbar-stacked-top">
 <div class="container">
-    <a class="navbar-brand" href="#">Danebook</a>
+
+      <a class="navbar-brand" href="#">Danebook</a>
 
 
     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -22,6 +23,20 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
+
+  
+<form class="navbar-form navbar-right">
+  <div class="form-group">
+    <label>Email</label><br>
+    <input type="text" name="email" class="form-control">
+  </div>
+  <div class="form-group">
+    <label>Password</label><br>
+    <input type="Password" name="password" class="form-control">
+    <button class="btn btn-default">Log In</button>
+  </div>
+</form>
+
 </div>
 </nav>
 
@@ -54,8 +69,8 @@
 
 
   <section class="col-sm-4 col-sm-offset-1 two">
-  <h1>Sign up!</h1>
-    <form>
+  <h1>Sign Up</h1>
+    <form class="form-group">
       <input type="text" name="fname" placeholder="First Name">
       <input type="text" name="lname" placeholder="Last Name">
       <input type="text" name="email" placeholder="Your email">
@@ -67,7 +82,7 @@
       <select class="form-control">Year</select>
       <input type="radio" name="Female">Female
       <input type="radio" name="Male">Male
-      <button type="button" class="btn btn-primary btn-lg btn-block">Sign Up!
+      <button type="button" class="btn btn-success btn-lg btn-block">Sign Up!
       </button>
     </form>
   </section>

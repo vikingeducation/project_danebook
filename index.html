@@ -11,7 +11,7 @@
 <body>
 
 <!-NAV BAR->
-<nav class="navbar navbar-default navbar-stacked-top">
+<nav class="navbar navbar-stacked-top">
 <div class="container">
 
       <a class="navbar-brand" href="#">Danebook</a>
@@ -45,52 +45,79 @@
 <div class="container-fluid">
   <div class="row">
   
-  <section class="col-sm-5 col-sm-offset-1 one">
-    <h1>
+  <section class="col-sm-5 col-sm-offset-1 connectheading">
+    <h1 class="">
       Connect with all your friends!
     </h1>    
     <ul>
-      <ol>
+      <li>
         <b>See photos and updates</b> in your news feed.
-      </ol>
-      <ol>
+      </li>
+      <li>
         <b>Post your status</b> for the world to see from your profile.
-      </ol>
-      <ol>
+      </li>
+      <li>
         <b>Get in touch</b> with your friends by "friending" them
-      </ol>
-      <ol>
+      </li>
+      <li>
         <b>Like things</b> because you're a positive person!
-      </ol>
+      </li>
     </ul>
   </section>
 
   <!-SIGN UP->
 
 
-  <section class="col-sm-4 col-sm-offset-1 two">
-  <h1>Sign Up</h1>
-    <form class="form-group">
-      <input type="text" name="fname" placeholder="First Name">
-      <input type="text" name="lname" placeholder="Last Name">
-      <input type="text" name="email" placeholder="Your email">
-      <input type="password" name="password" placeholder="Your New Password">
-      <input type="password" name="confirm-pass" placeholder="Confirm Your Password">
-      <h5>Birthday</h5>
-      <select class="form-control">Month</select>
-      <select class="form-control">Day</select>
-      <select class="form-control">Year</select>
-      <input type="radio" name="Female">Female
-      <input type="radio" name="Male">Male
-      <button type="button" class="btn btn-success btn-lg btn-block">Sign Up!
-      </button>
+  <section class="col-sm-4 col-sm-offset-1">
+  <h1 class="signheading">Sign Up</h1>
+
+    <form class="signup">
+    <div class="form-inline form-group">
+      <input class="form-control" type="text" name="fname" placeholder="First Name">
+      <input class="form-control" type="text" name="lname" placeholder="Last Name">
+    </div>
+
+    <input class="form-group form-control" type="text" name="email" placeholder="Your Email">
+    <input class="form-group form-control" type="password" name="password" placeholder="Your New Password">
+    <input class="form-group form-control" type="password" name="confirm-pass" placeholder="Confirm Your Password">
+
+
+    <div class="form-group">
+      <label>Birthday</label><br>
+      <select name="Month" class="form-control birthday">
+        <option value="--" selected="true" disabled="disabled">Month</option>
+        <option value="January">January</option>
+        <option value="February">February</option>
+      </select>
+
+      <select name="Day" class="form-control birthday">
+        <option value="--" selected="true" disabled="disabled">Day</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+      </select>
+
+      <select name="Year" class="form-control birthday">
+        <option value="--" selected="true" disabled="disabled">Year</option>
+        <option value="1980">1980</option>
+        <option value="1990">1990</option>
+      </select>
+    </div>
+
+    <div class="form-group gender">
+       <label class="radio-inline"><input type="radio" name="female">Female</label>
+        <label class="radio-inline"><input type="radio" name="male">Male</label><br><br>
+        <button type="button" class="btn btn-success btn-lg btn-block">Sign Up!
+        </button>
+    </div>
+
+
+   
+
+
+
+
     </form>
   </section>
-  </div>
-</div>
-
-
-
 
 
 

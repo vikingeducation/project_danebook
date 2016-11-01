@@ -1,0 +1,67 @@
+nav {
+  background-color: #3b5998; }
+  nav .navbar-brand {
+    margin-top: -5px; }
+    nav .navbar-brand img {
+      width: 30px;
+      height: 30px; }
+    nav .navbar-brand a {
+      color: white;
+      font-size: 20px;
+      font-weight: 100;
+      padding-left: 5px; }
+  nav .navbar-form input {
+    width: 800px !important; }
+
+header {
+  height: 350px;
+  width: 100%;
+  background-color: blue;
+  background-image: url(images/hogwarts_small.jpg);
+  background-size: 100%;
+  border: 2px solid black;
+  margin-top: -20px;
+  position: relative; }
+  header img {
+    position: absolute;
+    top: 135px;
+    left: 20px;
+    border: 2px solid black; }
+  header h3 {
+    position: absolute;
+    top: 270px;
+    font-size: 40px; }
+  header a {
+    position: absolute;
+    bottom: -33px;
+    right: 10px; }
+
+.toolbar {
+  height: 42px;
+  width: 100%;
+  border: 2px solid black;
+  border-top: none;
+  padding-left: 260px;
+  position: relative; }
+  .toolbar .btn,
+  .toolbar .btn-secondary {
+    background-color: white; }
+    .toolbar .btn a,
+    .toolbar .btn-secondary a {
+      color: #ccc; }
+
+.about-title {
+  margin-top: 30px;
+  border: 2px solid black;
+  position: relative; }
+  .about-title button {
+    position: absolute;
+    top: 20px;
+    right: 20px; }
+
+.about-content {
+  border: 2px solid black;
+  border-top: none;
+  margin-bottom: 40px; }
+
+/*# sourceMappingURL=styles.css.map */

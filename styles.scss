@@ -1,3 +1,5 @@
+
+
 nav {
   background-color: #3b5998;
   .navbar-brand {
@@ -5,6 +7,7 @@ nav {
     img {
       width: 30px;
       height: 30px;
+      border-radius: 100%;
     }
     a {
       color: white;
@@ -18,8 +21,24 @@ nav {
       width: 800px !important;
     }
   }
-
+  .navbar-right {
+    a {
+    color: white;
+    font-size: 15px;
+    font-weight: 300;
+    }
+  }
 }
+
+main {
+  margin-top: 70px;
+}
+
+/*
+============================
+HEADER
+============================
+*/
 
 
 header {
@@ -55,17 +74,12 @@ header {
   border: 2px solid black;
   border-top: none;
   padding-left: 260px;
-  position: relative;
-  .btn,
-  .btn-secondary {
-    background-color: white;
-    a {
-    color: #ccc;
-    }
+  .active {
+    background-color: #ddd;
   }
 }
 
-.about-title {
+.section-title {
   margin-top: 30px;
   border: 2px solid black;
   position: relative;
@@ -76,12 +90,40 @@ header {
   }
 }
 
-.about-content {
+.table-borderless {
+    td {
+    border: 0 !important;
+    }
+}
+/*
+
+============================
+ABOUT PAGE
+============================
+*/
+.content {
   border: 2px solid black;
   border-top: none;
   margin-bottom: 40px;
 }
 
-.table {
 
+/*
+============================
+EDIT ABOUT
+============================
+*/
+
+.save-changes {
+  margin: 50px 0 100px 0;
+  button {
+    padding: 20px 150px;
+  }
 }
+
+.edit {
+  .form-group {
+    background-color: red;
+  }
+}
+

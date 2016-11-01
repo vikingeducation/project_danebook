@@ -4,7 +4,8 @@ nav {
     margin-top: -5px; }
     nav .navbar-brand img {
       width: 30px;
-      height: 30px; }
+      height: 30px;
+      border-radius: 100%; }
     nav .navbar-brand a {
       color: white;
       font-size: 20px;
@@ -12,7 +13,19 @@ nav {
       padding-left: 5px; }
   nav .navbar-form input {
     width: 800px !important; }
+  nav .navbar-right a {
+    color: white;
+    font-size: 15px;
+    font-weight: 300; }
 
+main {
+  margin-top: 70px; }
+
+/*
+============================
+HEADER
+============================
+*/
 header {
   height: 350px;
   width: 100%;
@@ -41,27 +54,44 @@ header {
   width: 100%;
   border: 2px solid black;
   border-top: none;
-  padding-left: 260px;
-  position: relative; }
-  .toolbar .btn,
-  .toolbar .btn-secondary {
-    background-color: white; }
-    .toolbar .btn a,
-    .toolbar .btn-secondary a {
-      color: #ccc; }
+  padding-left: 260px; }
+  .toolbar .active {
+    background-color: #ddd; }
 
-.about-title {
+.section-title {
   margin-top: 30px;
   border: 2px solid black;
   position: relative; }
-  .about-title button {
+  .section-title button {
     position: absolute;
     top: 20px;
     right: 20px; }
 
-.about-content {
+.table-borderless td {
+  border: 0 !important; }
+
+/*
+
+============================
+ABOUT PAGE
+============================
+*/
+.content {
   border: 2px solid black;
   border-top: none;
   margin-bottom: 40px; }
+
+/*
+============================
+EDIT ABOUT
+============================
+*/
+.save-changes {
+  margin: 50px 0 100px 0; }
+  .save-changes button {
+    padding: 20px 150px; }
+
+.edit .form-group {
+  background-color: red; }
 
 /*# sourceMappingURL=styles.css.map */

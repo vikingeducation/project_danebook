@@ -82,6 +82,7 @@ header {
 .section-title {
   margin-top: 30px;
   border: 2px solid black;
+  background-color: #eee;
   position: relative;
   button {
     position: absolute;
@@ -149,3 +150,47 @@ FRIENDS
     right: 20px;
   }
 }
+
+/*
+============================
+PHOTOS
+============================
+*/
+
+.photos-content {
+  padding: 20px;
+}
+
+.photo {
+  border: 2px solid black;
+  height: 235px;
+  width: 235px;
+  display: inline-block;
+  margin: 21px;
+  img {
+    width: 100%;
+  }
+  .publish-wrap {
+    position: relative;
+    height: 243px;
+  }
+  .publish-date {
+    position: absolute;
+    top: 200px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.72);
+    color: #fff;
+    visibility: hidden;
+    opacity: 0;
+  }
+  .publish-wrap:hover .publish-date {
+    padding-left: 40px;
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+
+

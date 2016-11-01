@@ -192,5 +192,105 @@ PHOTOS
   }
 }
 
+/*
+============================
+TIMELINE
+============================
+*/
 
+
+.left {
+  background-color: red;
+  height: 500px;
+}
+
+.right {
+  background-color: blue;
+  height: 500px;
+}
+
+.timeline-title {
+  background-color: #ddd;
+  border: 2px solid black;
+  border-bottom: none;
+  margin-top: 25px;
+  padding: 10px;
+  text-align: center;
+  h5 {
+    font-size: 20px;
+    padding: 5px;
+  }
+}
+
+.timeline-content {
+  border: 2px solid black;
+  margin-top: -10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  img,
+  .friend-photo {
+    display: inline-block;
+    width:100px;
+    margin: 5px;
+    a {
+    text-align: center;
+    }
+  }
+  img {
+    height: 100px;
+  }
+  a {
+    display: block;
+    text-decoration: underline;
+  }
+  .poster {
+  position: relative;
+  img {
+    display: inline-block;
+    height: 70px;
+    width: 70px;
+  }
+    .poster-name {
+      position: absolute;
+      top: 15px;
+      left: 90px;
+      a {
+      font-size: 18px;
+      }
+      span {
+        color: #ddd;
+      }
+    }
+  }
+}
+
+.post-bar {
+  background-color: #ddd;
+  border: 2px solid black;
+  margin-top: -10px;
+  padding: 10px;
+  margin-bottom: 30px;
+  a {
+  padding-right: 10px;
+  text-decoration: underline;
+  }
+}
+
+.comment {
+  position: relative;
+  height: 150px;
+  img {
+    display: inline-block;
+    background-color: #333;
+    height: 70px;
+    width: 70px;
+    margin-left: 10px;
+  }
+  .comment-text {
+    position: absolute;
+    left: 100px;
+    width: 600px;
+    top: 0;
+  }
+}
 

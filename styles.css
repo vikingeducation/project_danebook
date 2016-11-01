@@ -70,16 +70,11 @@ header {
 .table-borderless td {
   border: 0 !important; }
 
-/*
-
-============================
-ABOUT PAGE
-============================
-*/
 .content {
   border: 2px solid black;
   border-top: none;
-  margin-bottom: 40px; }
+  margin-bottom: 40px;
+  padding-bottom: 30px; }
 
 /*
 ============================
@@ -91,7 +86,29 @@ EDIT ABOUT
   .save-changes button {
     padding: 20px 150px; }
 
-.edit .form-group {
-  background-color: red; }
+/*
+============================
+FRIENDS
+============================
+*/
+.friend {
+  border: 2px solid #000;
+  padding: 10px;
+  margin-top: 30px;
+  position: relative; }
+  .friend img {
+    width: 90px;
+    height: 90px;
+    margin-right: 10px; }
+  .friend .friend-name {
+    position: absolute;
+    top: 25px;
+    left: 110px; }
+    .friend .friend-name a {
+      font-size: 25px; }
+  .friend button {
+    position: absolute;
+    top: 50px;
+    right: 20px; }
 
 /*# sourceMappingURL=styles.css.map */

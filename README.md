@@ -13,7 +13,7 @@ Once you've logged in, you will be taken to your timeline, from which you can...
 ## Do things like...
 * Sign up or login as a returning user
 [](app/assets/images/space_login.png?raw=true)
-[](https://raw.github.com/morgancmartin/project_spacebook/master/app/assets/images/space_login.png)
+[image](https://raw.github.com/morgancmartin/project_spacebook/master/app/assets/images/space_login.png)
 
 * Search for users using the search bar at the top
 * Post on either your own or your friends walls

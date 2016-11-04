@@ -12,15 +12,23 @@ Once you've logged in, you will be taken to your timeline, from which you can...
 
 ## Do things like...
 * Sign up or login as a returning user
-[](app/assets/images/space_login.png?raw=true)
-[image](https://raw.github.com/morgancmartin/project_spacebook/master/app/assets/images/space_login.png)
+![](app/assets/images/space_login.png?raw=true)
 
 * Search for users using the search bar at the top
-* Post on either your own or your friends walls
+![](app/assets/images/space_search.png?raw=true)
+
+* Post on your or your friends walls and like and comment on them
+![](app/assets/images/space_timeline.png?raw=true)
+
 * Upload photos to your account and update your profile or cover photos
-* Like and comment on your friend's posts
+![](app/assets/images/space_photo.png?raw=true)
+
 * Update your profile
+![](app/assets/images/space_edit.png?raw=true)
+
 * View your friends and photos
+![](app/assets/images/space_friends.png?raw=true)
+
 
 ## Technological Highlights
 * Ruby on Rails back-end framework

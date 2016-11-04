@@ -1,0 +1,38 @@
+// Place all the styles related to the SearchResult controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.search-results-panel{
+}
+
+.sr-results-statement{
+    margin-top: 80px;
+}
+
+.sr-header{
+    font-size: 40px;
+}
+
+.sr-photo{
+    margin-top: 2%;
+}
+
+.sr-friend-panel{
+    background-color: #EDF0F5;
+}
+
+#sr-friend-button,
+#sr-unfriend-button{
+    padding: 5px 20px 5px 20px;
+}
+
+#sr-friend-button{
+    margin-top: 30%;
+    margin-left: 10%;
+}
+
+.sr-already-friends{
+    margin-top: 20%;
+    margin-left: 5%;
+    font-size: 10px !important;
+}

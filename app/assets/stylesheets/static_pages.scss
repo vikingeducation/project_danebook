@@ -1,0 +1,442 @@
+// Place all the styles related to the static_pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+/********** All **************/
+
+.container-fluid{
+  padding: 0px 0px 0px 0px;
+}
+
+body{
+  background-color: #EDF0F5;
+}
+
+/********** Home Page **************/
+
+.home{
+
+  .about-info{
+    margin-top: 70px;
+
+    h1{
+      margin-bottom: 40px;
+      font-weight: bold;
+      font-size: 26px;
+    }
+    li{
+      margin-top: 30px;
+      font-size: 16px;
+      .bold-text{ font-weight: bold; }
+    }
+  }
+
+  .sign-up-header{
+    margin-left: 15px;
+    font-size: 50px;
+  }
+
+  .form-container{
+    margin-top: 15px;
+  }
+
+  #birthday-header{
+    font-size: 20px;
+    margin: 25px 0 0 15px;
+  }
+
+  .datepicker{
+    width: 100% !important;
+    padding: 0px 0px 0px 0px !important;
+    margin-left: 0px !important;
+  }
+
+  .radio-button{
+    margin-top: 15px;
+  }
+
+  .sign-up-btn{
+    background-color: #090;
+    margin-top: 15px;
+    width: 100%;
+    font-size: 20px;
+  }
+}
+
+/********** Login Navbar **************/
+.navbar{
+  background: linear-gradient(#46A, #359);
+  height: 55px;
+  padding-left: 0;
+  border: 1px solid #1a316d;
+  .navbar-brand{
+    color: white;
+    font-size: 2em;
+    font-weight: bold;
+    img{
+      width: 30px;
+      height: 30px;
+    }
+    &:hover{
+      color: white;
+    }
+  }
+  .navbar-profile-link{
+    color: white;
+  }
+  .sign-in-form{
+    margin-top: 10px;
+    .email{
+      width: 178px;
+    }
+    .password{
+      margin-left: 20px;
+      width: 178px;
+    }
+    .form-text{ margin-bottom: 0;
+      font-weight: bold;
+      color: white;}
+    .email-form{ margin-left: 0;}
+    .password-form{ margin-left: 0;}
+  }
+}
+.log-in-btn{  margin-top: 0px;
+  margin-left: 40px;
+  background-color: #57A;
+  border: none;
+  width: 50px;
+  font-size: 10px;
+  &:hover{ background-color: #57A;
+    border: 1px solid black;}}
+
+
+
+.login-nav {
+  height: 80px;
+}
+
+
+
+/********** Logged-In Navbar **************/
+
+// logo
+.navbar-header {
+  a {
+    font-size: 22px;
+  }
+
+  img {
+    height: 22px;
+    width: 22px;
+    display: inline;
+    margin-right: 5px;
+  }
+}
+
+// Fixes color of mobile menu button
+.navbar-fixed-top .navbar-toggle .icon-bar {
+  background-color: white;
+}
+
+//responsive search bar
+.navbar-form {
+  display: inline-block;
+
+  @media (min-width: 768px) {
+    .input-group {
+      width: 300px;
+    }
+  }
+
+  @media (min-width: 992px) {
+    .input-group {
+      width: 500px;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .input-group {
+      width: 700px;
+    }
+  }
+}
+
+.navbar-profile-links{
+  margin-top: .7em;
+}
+
+/********** Top Section **************/
+
+.cover-photo{
+  margin-top: 40px;
+  width: 100%;
+  height: 400px;
+  /* background-image: asset_path('hogwarts.jpg'); */
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+.btn-group{
+  a{
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+  }
+}
+
+.menu-option{
+  width: 150px;
+  height: 50px;
+  border: 1px solid black;
+}
+
+.profile-pic{
+  position: absolute;
+  top: 85%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  border: 1px solid black;
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: 10px;
+}
+
+#main-name{
+  position: absolute;
+  top: 90%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  font-size: 30px;
+  color: white;
+}
+
+#menu-options-tray{
+  border: 1px solid black;
+  border-top: none;
+}
+
+#menu-options-edit-profile{
+  float: right;
+  margin-top: 13px;
+  text-decoration: underline;
+}
+
+
+/********** About Panel **************/
+
+/* Used for weird spacing issue in panel header */
+.spacer{
+  height: 35px;
+}
+
+.panel-content{
+  margin-top: 40px;
+  p{
+    font-size: 13px;
+  }
+
+}
+
+.info-header{
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.bold-info{
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.info-row{
+  margin-top: 25px;
+}
+
+#about-panel-title{
+  font-size: 30px;
+  text-align: center;
+
+}
+
+#edit-profile-button, #friend-button,
+#unfriend-button, #add-photo-button{
+  border-right: 3px solid black;
+  border-bottom: 2px solid black;
+}
+
+/* #add-photo-button{ */
+/*     margin */
+/* } */
+
+#friend-button,
+#unfriend-button{
+  padding: 5px 20px 5px 20px;
+  margin-left: 60px;
+  margin-top: 10px;
+}
+
+#right-column-container{
+  margin-left: 19px;
+}
+
+#about-me-header{
+  margin-top: 40px;
+}
+
+#save-changes-button{
+  width: 100%;
+  margin-top: 80px;
+  margin-bottom: 200px;
+  height: 80px;
+  font-size: 25px;
+}
+
+
+/********** Friend Panel **************/
+
+.friends-page-container {
+  min-height: 400px;
+}
+
+.friend-card{
+  height: 150px;
+  border: 1px solid black;
+  margin-bottom: 30px;
+  background-color: #EEE;
+}
+
+.card-pic-container{
+  height: 80%;
+  top: 10%;
+}
+
+.card-pic{
+  width: 100%;
+  height: 100%;
+  height: 80%;
+  margin-top: 10%;
+  border: 1px solid black;
+}
+
+.card-info-container{
+  height: 20%;
+  top: 35%;
+}
+
+.card-link{
+  text-decoration: underline;
+}
+
+.card-info{
+  color: grey;
+}
+
+.card-button-container{
+  height: 30%;
+  top: 35%;
+}
+
+
+/********** Photos Panel **************/
+
+.photos-row{
+  margin-bottom: 40px;
+  height: 10%;
+}
+
+.pic-date-container{
+  z-index: 2;
+  display: none;
+  background-color: rgba(0, 0, 0, .8);
+  margin-top: -14%;
+  height: 15%;
+  color: white;
+  border: 1px solid black;
+  .pic-date{ margin-top: 7px;
+    font-weight: bold;
+    font-size: 11px;}
+}
+
+.photos-pic:hover + .pic-date-container{
+  display: block;
+}
+
+.pic-date-container:hover{
+  display: block;
+}
+
+
+.mini-photos-row,
+.mini-friends-row{
+  margin-bottom: 10px;
+}
+
+.post-header{
+  margin-bottom: 20px;
+  img,
+  a, p{
+    padding-left: 0;
+  }
+}
+
+.comment{
+  margin-left: 15px;
+  margin-bottom: 30px;
+}
+
+.comment-heading{
+  margin-bottom: 20px;
+}
+
+
+/********** General Purpose **************/
+
+.vertical-align {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+.grey{
+  color: grey;
+}
+
+.grey-background{
+  background-color: #E6E6E6;
+}
+
+.bold{
+  font-weight: bold;
+}
+
+.center-text{
+  text-align: center;
+}
+
+.mini-text{
+  font-size: 12px;
+}
+
+.underline{
+  text-decoration: underline;
+}
+
+.top-margin-10{
+  margin-top: 10px;
+}
+
+.mini-friends-body{
+  min-height: 300px;
+}
+
+.no-padding {
+  padding: 0 0 0 0;
+}
+
+.no-margin{
+  margin: 0 0 0 0;
+}

@@ -1,0 +1,21 @@
+<div class="sr-friend col-xs-8 col-xs-offset-2">
+  <div class="panel panel-default">
+    <div class="panel-body sr-friend-panel">
+      <div class="sr-photo col-xs-3">
+        <img class="col-xs-12 sr-photo" src='<%= asset_path('ron.jpg') %>'>
+      </div>
+      <div class="sr-info col-xs-5">
+        <%= link_to sr_friend.name, user_path(sr_friend) %>
+        <%= content_tag(:p, num_friends(sr_friend), class: 'grey') %>
+        <br>
+        <%= content_tag(:p, currently_lives(sr_friend)) %>
+        <%= content_tag(:p, user_hometown(sr_friend)) %>
+        <%= content_tag(:p, user_birthday(sr_friend)) %>
+      </div>
+      <div class="sr-friend-btn col-xs-4">
+        <%= content_tag(:p, 'You are already friends!', class: 'sr-already-friends grey') if current_user.friends_with?(sr_friend) %>
+        <%= sr_friend_or_unfriend_button(sr_friend) %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,5 @@
+<h1><%= "#{@profile.first_name}" %> Profile</h1>
+<%= @posts.each do |post| %>
+  <p><%= post.post_text %></p>
+  <p><%= User.find(post.user_id).profile.first_name %></p>
+<% end %>

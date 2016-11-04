@@ -1,0 +1,6 @@
+(function(){
+    var $unlike = $("a[data-unlike-id=" + "<%= j(@like.likeable.id.to_s) %>" + "]");
+    var $like = $("<%= j(like_button_for(@like.likeable)) %>")
+    $like.insertAfter($unlike);
+    $unlike.remove();
+})();

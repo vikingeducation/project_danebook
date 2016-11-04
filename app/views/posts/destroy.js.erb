@@ -1,0 +1,4 @@
+(function(){
+    console.log("<%= j(@post.id.to_s) %>");
+    $(".post-panel[data-post-id=" + "<%= j(@post.id.to_s) %>" + "]").fadeOut(500);
+})();

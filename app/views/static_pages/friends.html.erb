@@ -1,0 +1,29 @@
+<% content_for :page do %>
+  friends
+<% end %>
+<main >
+  <div class = "row">
+    <div class="col-xs-10 col-xs-offset-1">
+      <%= render partial: 'layouts/menu_options', :locals => { user: @user } %>
+      <br>
+      <div class="row"><!-- begin about-panel-row -->
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h3 class="panel-title col-xs-1 col-xs-offset-5" id="about-panel-title">Friends</h3>
+            <div class="spacer"> </div>
+          </div>
+          <div class="panel-body">
+            <div class="col-xs-12 panel-content friends-page-container">
+              <div class="col-xs-6" id="left-friend-column">
+                <%= render partial: 'friend', collection: first_half_of(@friends), locals: { user: @user } %>
+              </div><!-- end left-friend-column -->
+              <div class="col-xs-6" id="right-friend-column">
+                <%= render partial: 'friend', collection: second_half_of(@friends), locals: { user: @user } %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div><!-- end about-panel-row>
+    </div>
+  </div><!--row-->
+</main>

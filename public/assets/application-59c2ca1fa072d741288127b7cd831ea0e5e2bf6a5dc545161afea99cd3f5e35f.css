@@ -1,0 +1,472 @@
+/********** All **************/
+/* line 10, /home/morgan/workspace/projects/project_danebook/app/assets/stylesheets/static_pages.scss */
+.container-fluid {
+  padding: 0px 0px 0px 0px;
+}
+
+/* line 14, /home/morgan/workspace/projects/project_danebook/app/assets/stylesheets/static_pages.scss */
+body {
+  background-color: #EDF0F5;
+}
+
+/********** Home Page **************/
+/* line 22, /home/morgan/workspace/projects/project_danebook/app/assets/stylesheets/static_pages.scss */
+.home .about-info {
+  margin-top: 70px;
+}
+/* line 25, /home/morgan/workspace/projects/project_danebook/app/assets/stylesheets/static_pages.scss */
+.home .about-info h1 {
+  margin-bottom: 40px;
+  font-weight: bold;
+  font-size: 26px;
+}
+/* line 30, /home/morgan/workspace/projects/project_danebook/app/assets/stylesheets/static_pages.scss */
+.home .about-info li {
+  margin-top: 30px;
+  font-size: 16px;
+}
+/* line 33, /home/morgan/workspace/projects/project_danebook/app/assets/stylesheets/static_pages.scss */
+.home .about-info li .bold-text {
+  font-weight: bold;
+}
+/* line 37, /home/morgan/workspace/projects/project_danebook/app/assets/stylesheets/static_pages.scss */
+.home .sign-up-header {
+  margin-left: 15px;
+  font-size: 50px;
+}
+/* line 42, /home/morgan/workspace/projects/project_danebook/app/assets/stylesheets/static_pages.scss */
+.home .form-container {
+  margin-top: 15px;
+}
+/* line 46, /home/morgan/workspace/projects/project_danebook/app/assets/stylesheets/static_pages.scss */
+.home #birthday-header {
+  font-size: 20px;
+  margin: 25px 0 0 15px;
+}
+/* line 51, /home/morgan/workspace/projects/project_danebook/app/assets/stylesheets/static_pages.scss */
+.home .datepicker {
+  width: 100% !important;
+  padding: 0px 0px 0px 0px !important;
+  margin-left: 0px !important;
+}
+/* line 57, /home/morgan/workspace/projects/project_danebook/app/assets/stylesheets/static_pages.scss */
+.home .radio-button {
+  margin-top: 15px;
+}
+/* line 61, /home/morgan/workspace/projects/project_danebook/app/assets/stylesheets/static_pages.scss */
+.home .sign-up-btn {
+  background-color: #090;
+  margin-top: 15px;
+  width: 100%;
+  font-size: 20px;
+}
+
+/********** Login Navbar **************/
+/* line 70, /home/morgan/workspace/projects/project_danebook/app/assets/stylesheets/static_pages.scss */
+.navbar {
+  background: linear-gradient(#46A, #359);
+  height: 80px;
+  padding-left: 0;
+}
+/* line 74, /home/morgan/workspace/projects/project_danebook/app/assets/stylesheets/static_pages.scss */
+.navbar .navbar-brand {
+  color: white;
+  font-size: 3em;
+  margin-top: 20px;
+  font-weight: bold;
+}
+/* line 79, /home/morgan/workspace/projects/project_danebook/app/assets/stylesheets/static_pages.scss */
+.navbar .navbar-brand:hover {
+  color: white;
+}
+/* line 83, /home/morgan/workspace/projects/project_danebook/app/assets/stylesheets/static_pages.scss */
+.navbar .sign-in-form {
+  margin-top: 10px;
+}
+/* line 85, /home/morgan/workspace/projects/project_danebook/app/assets/stylesheets/static_pages.scss */
+.navbar .sign-in-form .email {
+  width: 178px;
+}
+/* line 88, /home/morgan/workspace/projects/project_danebook/app/assets/stylesheets/static_pages.scss */
+.navbar .sign-in-form .password {
+  margin-left: 20px;
+  width: 178px;
+}
+/* line 92, /home/morgan/workspace/projects/project_danebook/app/assets/stylesheets/static_pages.scss */
+.navbar .sign-in-form .form-text {
+  margin-bottom: 0;
+  font-weight: bold;
+  color: white;
+}
+/* line 95, /home/morgan/workspace/projects/project_danebook/app/assets/stylesheets/static_pages.scss */
+.navbar .sign-in-form .email-form {
+  margin-left: 0;
+}
+/* line 96, /home/morgan/workspace/projects/project_danebook/app/assets/stylesheets/static_pages.scss */
+.navbar .sign-in-form .password-form {
+  margin-left: 0;
+}
+
+/* line 99, /home/morgan/workspace/projects/project_danebook/app/assets/stylesheets/static_pages.scss */
+.log-in-btn {
+  margin-top: 0px;
+  margin-left: 40px;
+  background-color: #57A;
+  border: none;
+  width: 50px;
+  font-size: 10px;
+}
+/* line 105, /home/morgan/workspace/projects/project_danebook/app/assets/stylesheets/static_pages.scss */
+.log-in-btn:hover {
+  background-color: #57A;
+  border: 1px solid black;
+}
+
+/********** Logged-In Navbar **************/
+/* line 111, /home/morgan/workspace/projects/project_danebook/app/assets/stylesheets/static_pages.scss */
+.navbar-default {
+  background-color: #27E;
+  color: white;
+  border-bottom: none;
+}
+
+/* line 117, /home/morgan/workspace/projects/project_danebook/app/assets/stylesheets/static_pages.scss */
+.navbar-brand {
+  margin-left: 40px;
+}
+
+/* line 121, /home/morgan/workspace/projects/project_danebook/app/assets/stylesheets/static_pages.scss */
+.form-group {
+  margin-left: 30px;
+}
+/* line 123, /home/morgan/workspace/projects/project_danebook/app/assets/stylesheets/static_pages.scss */
+.form-group .form-control {
+  width: 550px;
+}
+
+/* line 128, /home/morgan/workspace/projects/project_danebook/app/assets/stylesheets/static_pages.scss */
+#brand-pic {
+  height: 40px;
+}
+
+/* line 132, /home/morgan/workspace/projects/project_danebook/app/assets/stylesheets/static_pages.scss */
+#brand-text {
+  font-size: 30px;
+  color: white;
+}
+
+/* line 137, /home/morgan/workspace/projects/project_danebook/app/assets/stylesheets/static_pages.scss */
+#profile-name {
+  margin-top: 15px;
+  font-size: 18px;
+}
+/* line 140, /home/morgan/workspace/projects/project_danebook/app/assets/stylesheets/static_pages.scss */
+#profile-name a {
+  color: white;
+}
+
+/* line 143, /home/morgan/workspace/projects/project_danebook/app/assets/stylesheets/static_pages.scss */
+.logout-link {
+  margin-top: 15px;
+  font-size: 18px;
+  color: white;
+}
+/* line 147, /home/morgan/workspace/projects/project_danebook/app/assets/stylesheets/static_pages.scss */
+.logout-link:hover {
+  color: white;
+}
+
+/********** Top Section **************/
+/* line 155, /home/morgan/workspace/projects/project_danebook/app/assets/stylesheets/static_pages.scss */
+.cover-photo {
+  margin-top: 40px;
+  width: 100%;
+  height: 400px;
+  /* background-image: asset_path('hogwarts.jpg'); */
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+}
+
+/* line 165, /home/morgan/workspace/projects/project_danebook/app/assets/stylesheets/static_pages.scss */
+.btn-group a {
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+}
+
+/* line 171, /home/morgan/workspace/projects/project_danebook/app/assets/stylesheets/static_pages.scss */
+.menu-option {
+  width: 150px;
+  height: 50px;
+  border: 1px solid black;
+}
+
+/* line 177, /home/morgan/workspace/projects/project_danebook/app/assets/stylesheets/static_pages.scss */
+.profile-pic {
+  position: absolute;
+  top: 85%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  border: 1px solid black;
+  padding-left: 0;
+  padding-right: 0;
+  margin-left: 10px;
+}
+
+/* line 189, /home/morgan/workspace/projects/project_danebook/app/assets/stylesheets/static_pages.scss */
+#main-name {
+  position: absolute;
+  top: 90%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  font-size: 30px;
+  color: white;
+}
+
+/* line 199, /home/morgan/workspace/projects/project_danebook/app/assets/stylesheets/static_pages.scss */
+#menu-options-tray {
+  border: 1px solid black;
+  border-top: none;
+}
+
+/* line 204, /home/morgan/workspace/projects/project_danebook/app/assets/stylesheets/static_pages.scss */
+#menu-options-edit-profile {
+  float: right;
+  margin-top: 13px;
+  text-decoration: underline;
+}
+
+/********** About Panel **************/
+/* Used for weird spacing issue in panel header */
+/* line 214, /home/morgan/workspace/projects/project_danebook/app/assets/stylesheets/static_pages.scss */
+.spacer {
+  height: 35px;
+}
+
+/* line 218, /home/morgan/workspace/projects/project_danebook/app/assets/stylesheets/static_pages.scss */
+.panel-content {
+  margin-top: 40px;
+}
+/* line 220, /home/morgan/workspace/projects/project_danebook/app/assets/stylesheets/static_pages.scss */
+.panel-content p {
+  font-size: 13px;
+}
+
+/* line 226, /home/morgan/workspace/projects/project_danebook/app/assets/stylesheets/static_pages.scss */
+.info-header {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+/* line 231, /home/morgan/workspace/projects/project_danebook/app/assets/stylesheets/static_pages.scss */
+.bold-info {
+  font-weight: bold;
+  font-size: 12px;
+}
+
+/* line 236, /home/morgan/workspace/projects/project_danebook/app/assets/stylesheets/static_pages.scss */
+.info-row {
+  margin-top: 25px;
+}
+
+/* line 240, /home/morgan/workspace/projects/project_danebook/app/assets/stylesheets/static_pages.scss */
+#about-panel-title {
+  font-size: 30px;
+  text-align: center;
+}
+
+/* line 246, /home/morgan/workspace/projects/project_danebook/app/assets/stylesheets/static_pages.scss */
+#edit-profile-button {
+  border-right: 3px solid black;
+  border-bottom: 2px solid black;
+}
+
+/* line 251, /home/morgan/workspace/projects/project_danebook/app/assets/stylesheets/static_pages.scss */
+#right-column-container {
+  margin-left: 19px;
+}
+
+/* line 255, /home/morgan/workspace/projects/project_danebook/app/assets/stylesheets/static_pages.scss */
+#about-me-header {
+  margin-top: 40px;
+}
+
+/* line 259, /home/morgan/workspace/projects/project_danebook/app/assets/stylesheets/static_pages.scss */
+#save-changes-button {
+  width: 100%;
+  margin-top: 80px;
+  margin-bottom: 200px;
+  height: 80px;
+  font-size: 25px;
+}
+
+/********** Friend Panel **************/
+/* line 270, /home/morgan/workspace/projects/project_danebook/app/assets/stylesheets/static_pages.scss */
+.friend-card {
+  height: 150px;
+  border: 1px solid black;
+  margin-bottom: 30px;
+  background-color: #EEE;
+}
+
+/* line 277, /home/morgan/workspace/projects/project_danebook/app/assets/stylesheets/static_pages.scss */
+.card-pic-container {
+  height: 80%;
+  top: 10%;
+}
+
+/* line 282, /home/morgan/workspace/projects/project_danebook/app/assets/stylesheets/static_pages.scss */
+.card-pic {
+  width: 100%;
+  height: 100%;
+  height: 80%;
+  margin-top: 10%;
+  border: 1px solid black;
+}
+
+/* line 290, /home/morgan/workspace/projects/project_danebook/app/assets/stylesheets/static_pages.scss */
+.card-info-container {
+  height: 20%;
+  top: 35%;
+}
+
+/* line 295, /home/morgan/workspace/projects/project_danebook/app/assets/stylesheets/static_pages.scss */
+.card-link {
+  text-decoration: underline;
+}
+
+/* line 299, /home/morgan/workspace/projects/project_danebook/app/assets/stylesheets/static_pages.scss */
+.card-info {
+  color: grey;
+}
+
+/* line 303, /home/morgan/workspace/projects/project_danebook/app/assets/stylesheets/static_pages.scss */
+.card-button-container {
+  height: 30%;
+  top: 35%;
+}
+
+/********** Photos Panel **************/
+/* line 311, /home/morgan/workspace/projects/project_danebook/app/assets/stylesheets/static_pages.scss */
+.photos-row {
+  margin-bottom: 40px;
+}
+
+/* line 315, /home/morgan/workspace/projects/project_danebook/app/assets/stylesheets/static_pages.scss */
+.pic-date-container {
+  z-index: 2;
+  display: none;
+  background-color: rgba(0, 0, 0, 0.8);
+  margin-top: -14%;
+  height: 15%;
+  color: white;
+  border: 1px solid black;
+}
+/* line 323, /home/morgan/workspace/projects/project_danebook/app/assets/stylesheets/static_pages.scss */
+.pic-date-container .pic-date {
+  margin-top: 7px;
+  font-weight: bold;
+  font-size: 11px;
+}
+
+/* line 328, /home/morgan/workspace/projects/project_danebook/app/assets/stylesheets/static_pages.scss */
+.photos-pic:hover + .pic-date-container {
+  display: block;
+}
+
+/* line 332, /home/morgan/workspace/projects/project_danebook/app/assets/stylesheets/static_pages.scss */
+.pic-date-container:hover {
+  display: block;
+}
+
+/* line 336, /home/morgan/workspace/projects/project_danebook/app/assets/stylesheets/static_pages.scss */
+.mini-photos-row,
+.mini-friends-row {
+  margin-bottom: 10px;
+}
+
+/* line 341, /home/morgan/workspace/projects/project_danebook/app/assets/stylesheets/static_pages.scss */
+.post-header {
+  margin-bottom: 20px;
+}
+/* line 343, /home/morgan/workspace/projects/project_danebook/app/assets/stylesheets/static_pages.scss */
+.post-header img,
+.post-header a, .post-header p {
+  padding-left: 0;
+}
+
+/* line 349, /home/morgan/workspace/projects/project_danebook/app/assets/stylesheets/static_pages.scss */
+.comment {
+  margin-left: 15px;
+  margin-bottom: 30px;
+}
+
+/* line 354, /home/morgan/workspace/projects/project_danebook/app/assets/stylesheets/static_pages.scss */
+.comment-heading {
+  margin-bottom: 20px;
+}
+
+/********** General Purpose **************/
+/* line 361, /home/morgan/workspace/projects/project_danebook/app/assets/stylesheets/static_pages.scss */
+.vertical-align {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+/* line 369, /home/morgan/workspace/projects/project_danebook/app/assets/stylesheets/static_pages.scss */
+.grey {
+  color: grey;
+}
+
+/* line 373, /home/morgan/workspace/projects/project_danebook/app/assets/stylesheets/static_pages.scss */
+.grey-background {
+  background-color: #E6E6E6;
+}
+
+/* line 377, /home/morgan/workspace/projects/project_danebook/app/assets/stylesheets/static_pages.scss */
+.bold {
+  font-weight: bold;
+}
+
+/* line 381, /home/morgan/workspace/projects/project_danebook/app/assets/stylesheets/static_pages.scss */
+.center-text {
+  text-align: center;
+}
+
+/* line 385, /home/morgan/workspace/projects/project_danebook/app/assets/stylesheets/static_pages.scss */
+.underline {
+  text-decoration: underline;
+}
+
+/* line 389, /home/morgan/workspace/projects/project_danebook/app/assets/stylesheets/static_pages.scss */
+.top-margin-10 {
+  margin-top: 10px;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+
+
+ */
+
+
+.success {
+    color: green;
+}
+
+.error {
+    color: red;
+}

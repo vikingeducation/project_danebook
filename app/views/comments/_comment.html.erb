@@ -1,0 +1,9 @@
+<div class="row comment" data-comment-id="<%= comment.id %>">
+  <%= image_tag(comment.user.profile_photo.image.url, class: 'col-xs-2') %>
+  <p class="col-xs-10 comment-heading"><%= link_to comment.user.profile.name, comment.user, class: 'underline' %></p>
+  <%= content_tag(:p, comment.comment_text, class: 'col-xs-10') %>
+  </p>
+  <%= like_button_for(comment) %>
+  <%= link_to 'Delete', comment_path(comment), method: :delete, remote: true, class: 'col-xs-1 col-xs-offset-8 underline' if comment.user == current_user %>
+  <%= content_tag(:p, construct_like_sentence(comment.likes), class: 'col-xs-8 top-margin-10') if comment.likes.any? %>
+</div>

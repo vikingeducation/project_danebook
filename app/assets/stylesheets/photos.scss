@@ -1,0 +1,41 @@
+// Place all the styles related to the photos controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+#photo_attachment_container{
+    position: relative;
+    .wrapper{
+        opacity: 0;
+        cursor: pointer;
+        position: absolute;
+        top: 0;
+        z-index: 2;
+    }
+}
+
+.button {
+    z-index: 1;
+}
+
+.photos-upload *{
+    margin-top: 30px;
+    margin-botom: 30px;
+    text-align: center;
+    .btn-primary{
+        margin-bottom: 30px;
+    }
+    .form-control{
+        text-align: left;
+    }
+    .select-photo-label{
+        margin-top: 0;
+    }
+}
+
+.photo-show-num-people{
+    margin-left: 15px;
+}
+
+.photo-comments-section{
+    background-color: #EDF0F5;
+}

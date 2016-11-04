@@ -1,0 +1,78 @@
+<% if @user.errors? %>
+  <% @user.errors.full_messages.each do |error| %>
+    <p class="error"><%= error %></p>
+  <% end %>
+<% end %>
+
+<%= form_for @user do |user_fields| %>
+  <div class="row">
+    <%= user_fields.fields_for :profile_attributes do |profile_fields| %>
+      <div class="col-xs-6 form-container">
+        <%= profile_fields.text_field :first_name, placeholder: 'First name', class: 'form-control' %>
+      </div>
+
+      <div class="col-xs-6 form-container">
+        <%= profile_fields.text_field :last_name, placeholder: 'Last name', class: 'form-control' %>
+      </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 form-container">
+      <%= user_fields.email_field :email, placeholder: 'Your Email', class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 form-container">
+      <%= user_fields.password_field :password, placeholder: 'Your New Password', class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-xs-12 form-container">
+      <%= user_fields.password_field :password_confirmation, placeholder: 'Confirm Your Password', class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="row">
+    <h2 id="birthday-header">Birthday</h2>
+  </div>
+
+  <div class="row">
+    <%
+    date_wrap_open = '<div class="col-xs-4"><div class="">'.html_safe
+        date_wrap_close = '</div></div>'.html_safe
+        date_separator = "#{date_wrap_close}#{date_wrap_open}".html_safe
+    %>
+
+    <%= date_wrap_open %>
+
+    <%= profile_fields.date_select(
+        :birthday,
+        {
+            :order => [:day, :month, :year],
+            :date_separator => date_separator,
+            :start_year => Date.today.year,
+            :end_year => 150.years.ago.year
+        },
+        {:class => 'form-control datepicker '}
+    ) %>
+
+    <%= date_wrap_close %>
+  </div>
+    <% end %>
+
+  <div class="row">
+    <div class="radio-button col-xs-4">
+      <!-- <input type="radio" name="gender">  Female -->
+    </div>
+    <div class="radio-button col-xs-3">
+      <!-- <input type="radio" name="gender">  Male -->
+    </div>
+  </div>
+
+  <div class="row">
+    <!-- <button type="button" class="btn btn-success sign-up-btn">Sign Up!</button> -->
+    <%= user_fields.submit 'Sign Up!', class: 'btn btn-success sign-up-btn' %>
+  </div>
+<% end %>

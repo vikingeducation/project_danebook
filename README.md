@@ -11,6 +11,9 @@ You can create a new account or login with these credentials:
 Once you've logged in, you will be taken to your timeline, from which you can...
 
 ## Do things like...
+* Sign up or login as a returning user
+[](app/assets/images/space_login.png?raw=true)
+
 * Search for users using the search bar at the top
 * Post on either your own or your friends walls
 * Upload photos to your account and update your profile or cover photos

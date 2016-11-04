@@ -8,8 +8,6 @@ You can create a new account or login with these credentials:
 #### Username: harry_potter@hogwarts.edu
 #### Password: password
 
-Once you've logged in, you will be taken to your timeline, from which you can...
-
 ## Do things like...
 * **Sign up or login as a returning user**
 ![](app/assets/images/space_login.png?raw=true)

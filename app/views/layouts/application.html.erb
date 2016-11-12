@@ -14,11 +14,7 @@
   </head>
 
   <body>
-    <% if current_page?(action: 'home') %>
-      <%= render partial: 'navbar_home' %>
-    <% else %>
-      <%= render partial: 'navbar' %>
-    <% end %>
+
     <%= yield %>
   </body>
 </html>

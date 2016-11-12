@@ -3,6 +3,8 @@ class User < ApplicationRecord
 
   before_create :generate_token
 
+  validates :password, :length => { :in => 3..24 }, :allow_nil => true
+
   def generate_token
     begin
       self[:auth_token] = SecureRandom.urlsafe_base64

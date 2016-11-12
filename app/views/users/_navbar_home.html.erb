@@ -19,13 +19,31 @@
     <div id="navbar-collapse" class="collapse navbar-collapse">
 
       <form id="navbar-signin" class="navbar-form form-inline navbar-right">
-        <div class="form-group">
-          <input type="email" name="email" class="form-control" placeholder="Email"/>
-        </div>
-        <div class="form-group">
-          <input type="password" name="password" class="form-control" placeholder="Password">
-        </div>
-        <button type="submit" class="btn btn-default">Sign In</button>
+        <% if signed_in_user? %>
+          <%= "Hello, #{current_user.email}" %>
+          <%= link_to "Logout", logout_path, :method => :delete %>
+        <% else %>
+          <%= form_tag users_path, :method => :get do %>
+
+            <div class="form-group">
+              <%= label_tag :email %>
+              <%= text_field_tag :email, nil, class: 'form-control' %>
+            </div>
+
+            <div class="form-group">
+              <%= label_tag :password %>
+              <%= text_field_tag :password, nil, class: 'form-control' %>
+            </div>
+
+            <div class='form-group'>
+              <%= label_tag :remember_me, 'Remember me?' %>
+              <%= check_box_tag :remember_me,  nil, class: 'form-control' %>
+            </div>
+
+            <%= submit_tag "Log in", class: 'btn btn-default' %>
+          <% end %>
+        <% end %>
+
       </form>
 
     </div>

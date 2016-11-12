@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  #before_action :require_current_user, :only => [:edit, :update, :destroy]
-  #skip_before_action :require_login, :only => [:new, :create, :show]
+  before_action :require_current_user, :only => [:edit, :update, :destroy]
+  skip_before_action :require_login, :only => [:new, :create, :show, :sign_up]
 
   # GET /users
   # GET /users.json
@@ -15,10 +15,12 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
+    @user = User.find(params[:id])
   end
 
   # GET /users/new
   def new
+    redirect_to current_user if signed_in_user?
     @user = User.new
   end
 

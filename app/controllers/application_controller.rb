@@ -14,7 +14,7 @@ class ApplicationController < ActionController::Base
   def permanent_sign_in(user)
     user.regenerate_auth_token
     cookies.permanent[:auth_token] = user.auth_token
-    @current = user
+    @current_user = user
   end
 
   def sign_out
@@ -38,7 +38,7 @@ class ApplicationController < ActionController::Base
   def require_current_user
     unless params[:id] == current_user.id.to_s
       flash[:error] = "You're not authorized to view this."
-      redirect_to users_path # <------- Change this
+      redirect_to :back # <------- Change this
     end
   end
 

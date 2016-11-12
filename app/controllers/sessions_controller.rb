@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  skip_before_action :require_login, :only => [:new, :create]
+  skip_before_action :require_login, :only => [:new, :create, :sign_up]
 
 
   def create
@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
         sign_in(@user)
       end
       flash[:success] = "You've successfully signed in."
-      redirect_to user_path # <------- Change this
+      redirect_to user_path(current_user)
     else
       flash.now[:error] = "We couldn't sign you in."
       render :new

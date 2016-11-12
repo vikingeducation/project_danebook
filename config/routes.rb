@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'users#sign_up'
+  root 'users#new'
   get 'timeline', to: 'static_pages#timeline', as: 'timeline'
   get 'friends', to: 'static_pages#friends', as: 'friends'
   get 'about', to: 'static_pages#about', as: 'about'
@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :users
 
   resource :session, :only => [:new, :create, :destroy]
-  get 'login' => "sessions#new"
+  get 'login' => "users#new"
   delete 'logout' => "sessions#destroy"
 
 end

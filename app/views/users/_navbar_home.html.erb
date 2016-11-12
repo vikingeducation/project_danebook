@@ -23,27 +23,18 @@
           <%= "Hello, #{current_user.email}" %>
           <%= link_to "Logout", logout_path, :method => :delete %>
         <% else %>
-          <%= form_tag users_path, :method => :get do %>
+          <%= form_tag session_path do %>
 
-            <div class="form-group">
-              <%= label_tag :email %>
-              <%= text_field_tag :email, nil, class: 'form-control' %>
-            </div>
+            <%= label_tag :email %>
+            <%= text_field_tag :email, nil, class: 'form-control' %>
 
-            <div class="form-group">
-              <%= label_tag :password %>
-              <%= text_field_tag :password, nil, class: 'form-control' %>
-            </div>
+            <%= label_tag :password %>
+            <%= text_field_tag :password, nil, class: 'form-control' %>
 
-            <div class='form-group'>
-              <%= label_tag :remember_me, 'Remember me?' %>
-              <%= check_box_tag :remember_me,  nil, class: 'form-control' %>
-            </div>
+            <%= submit_tag "Login", class: 'btn btn-default' %>
 
-            <%= submit_tag "Log in", class: 'btn btn-default' %>
           <% end %>
         <% end %>
-
       </form>
 
     </div>

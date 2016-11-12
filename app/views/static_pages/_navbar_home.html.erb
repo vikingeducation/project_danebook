@@ -1,0 +1,35 @@
+<!-- Navbar -->
+<nav id="navbar" class="navbar navbar-default">
+
+  <div class="container">
+
+    <!-- Navbar Header and Toggle -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to "Danebook", timeline_path, {class: 'navbar-brand'} %>
+
+    </div>
+
+    <!-- Sign In Form -->
+    <div id="navbar-collapse" class="collapse navbar-collapse">
+
+      <form id="navbar-signin" class="navbar-form form-inline navbar-right">
+        <div class="form-group">
+          <input type="email" name="email" class="form-control" placeholder="Email"/>
+        </div>
+        <div class="form-group">
+          <input type="password" name="password" class="form-control" placeholder="Password">
+        </div>
+        <button type="submit" class="btn btn-default">Sign In</button>
+      </form>
+
+    </div>
+
+  </div>
+
+</nav>

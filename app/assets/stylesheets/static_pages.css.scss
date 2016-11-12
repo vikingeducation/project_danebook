@@ -1,0 +1,462 @@
+// main
+// nav
+
+#navbar {
+  vertical-align: middle;
+  background: #2B78E4;
+
+  .navbar-brand {
+    display: block;
+    height: 100%;
+    font-size: 48px;
+  }
+
+  .navbar-brand,
+  #navbar-signin label {
+    color: #fff;
+  }
+
+  #navbar-signin {
+    .btn-default {
+      color: #eee;
+      background: #9FC5F8;
+
+      &:hover {
+        background: darken(#9FC5F8, 10%);
+      }
+    }
+  }
+
+  .navbar-toggle {
+    background: #9FC5F8;
+
+    .icon-bar {
+      background: #eee;
+    }
+
+    &:hover,
+    &:focus {
+      background: darken(#9FC5F8, 10%);
+    }
+  }
+
+  .navbar-collapse,
+  .navbar-form {
+    border-color: darken(#2B78E4, 10%);
+  }
+}
+
+#navbar,
+#navbar .navbar-brand {
+  line-height: 96px;
+}
+
+#main-content {
+  margin-bottom: 128px;
+
+  .info {
+
+    .info-list-container {
+      margin-top: 32px;
+    }
+
+    .info-list {
+      li {
+        font-size: 18px;
+        margin-top: 32px;
+        color: #666;
+      }
+    }
+  }
+
+  #signup {
+    .btn-default {
+      background: #009E0F;
+      border: none;
+      color: #eee;
+      line-height: 32px;
+      font-size: 24px;
+      width: 100%;
+
+      &:hover,
+      &:focus {
+        background: darken(#009E0F, 10%);
+      }
+    }
+  }
+
+  @media only screen and (min-width: 768px) {
+    .info {
+      margin-top: 64px;
+    }
+  }
+}
+
+/* cover images */
+
+
+#cover {
+  position: relative;
+  margin-top: -20px;
+
+  .cover-photo {
+    background-color: #999;
+    min-width: 960px;
+    opacity: 0.5;
+    border: 1px solid black;
+  }
+
+  .profile-image {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    img {
+      border: 1px solid black;
+    }
+  }
+
+}
+
+/* The nav links right under the profile*/
+
+#profile-nav{
+  border: 1px solid black;
+
+  .link-count {
+    color: #777;
+  }
+
+  li.active {
+    a {
+      background-color: #ccc;
+      margin-right: 0;
+    }
+  }
+
+  .edit-profile-link {
+    text-decoration: underline;
+  }
+}
+
+/* ID to namespace the bottom pane */
+/* for specificity's sake, a few About Page things are jammed in here */
+
+#information-pane {
+  border: 1px solid black;
+  margin: 20px auto 50px auto;
+  padding-bottom: 50px;
+
+  header {
+    text-align: center;
+    border-bottom: 1px solid black;
+    background-color: #ccc;
+
+    h2 {
+      margin-top: 0;
+    }
+
+    /* header slightly changes if you're on the about page*/
+    .about-header {
+      padding-top: 15px;
+    }
+  }
+
+  .about-table {
+    td {
+      border: 0;
+
+      /* covers first <td> in any row */
+      &:first-child {
+        font-weight: bold;
+        padding-left: 0;
+      }
+    }
+  }
+}
+
+/* Timeline page stuff */
+
+#timeline {
+  margin-top: 15px;
+
+  h5 {
+    font-weight: bold;
+    margin-top: 0;
+  }
+}
+
+
+/* sits on top of timeline page */
+
+#post-form {
+  text-align: center;
+  border: 1px solid black;
+
+    /* ANYTHING directly a child of the form. */
+    > * {
+      padding-top: 15px;
+      border-top: 1px solid black;
+      background-color: #ccc;
+    }
+
+    button {
+      background: linear-gradient(#4C67A1, #3B5998);
+      color: white;
+      font-weight: bold;
+      box-shadow: 3px 3px 3px black;
+      border: 1px solid black;
+      border-radius: 0;
+      width: 100px;
+    }
+}
+
+#post-textarea-col {
+  background-color: white;
+}
+
+
+
+/* the field that holds your photos page materials*/
+
+#photo-field {
+  margin-top: 15px;
+
+
+  /* setting up a magic trick here. This starts invisible,
+  thanks to display: none. Rest of styles position it 
+  absolutely exactly over a sibling photo */
+
+  .photo-upload-date {
+    display: none;
+    position: absolute;
+    text-align: center;
+    z-index: 1000000;
+    bottom: 0;
+    width: 232px;
+    height: 30px;
+    color: white;
+    background-color: #444;
+    opacity: .5;
+    border-top: 1px solid black;
+    font-weight: bold;
+  }
+
+
+  .photo {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    img {
+      border: 1px solid black;
+    }
+
+
+
+    /*AND THE TRICK COMPLETES: the ":hover + " pattern applies a style to the next sibling of the hovered element, making the date visible
+    see this Stack Overflow, answer 2: 
+    http://stackoverflow.com/questions/12574668/change-color-of-sibling-elements-on-hover-using-css
+    */
+
+    .photo-link:hover + .photo-upload-date {
+      display: block;
+    }
+
+  }
+
+}
+
+
+
+#friends-list {
+  .friend-list-entry {
+    height: 150px;
+    padding-top: 25px;
+    .row {
+      margin: 15px;
+      padding: 15px;
+      border: 1px solid black;
+    }
+    .col-md-5 {
+      padding-top: 20px;
+    }
+    .col-md-4 {
+      padding-top: 30px;
+    }
+  }
+}
+
+
+#details {
+  & > * {
+    border: 1px solid black;
+  }
+
+  .about-table {
+    td {
+      border: 0;
+
+      &:first-child {
+        font-weight: bold;
+      }
+    }
+  }
+
+  header {
+    text-align: center;
+    border-bottom: 1px solid black;
+    background-color: #ccc;
+  }
+}
+
+
+/* photos thumbnail section on timeline page */
+#timeline-photos {
+  text-align: center;
+  padding-bottom: 15px;
+  margin-top: 15px;
+  .photo {
+    padding-top: 15px;
+    padding-bottom: 5px;
+    img {
+      width: 100px;
+      height: 100px;
+    }
+  }
+}
+
+/* friends thumbnail section on timeline page */
+#timeline-friends {
+  text-align: center;
+  margin-top: 15px;
+  padding-bottom: 15px;
+
+  .friend {
+    padding-top: 15px;
+    padding-bottom: 5px;
+    img {
+      width: 100px;
+      height: 100px;
+    }
+  }
+}
+
+
+
+#post-feed {
+  margin-bottom: 30px;
+
+
+/* covers any article directly under #post-feed */
+
+  & > article {
+    border: 1px solid black;
+    margin-top: 15px;
+    padding-top: 15px;
+
+    .post-body {
+      padding-top: 15px;
+    }
+
+    img {
+      height:100%;
+      width: 100%;
+      border: 1px solid black;
+    }
+
+    .date-posted {
+      color: #aaa;
+    }
+  }
+
+  .like-section {
+    border-top: 1px solid black;
+    background-color: #ccc;
+    padding-bottom: 15px;
+
+    & > * {
+      padding-top: 15px;
+    }
+
+    span {
+      color: #999;
+    }
+  }
+
+  .comment-section {
+    padding-bottom: 15px;
+    border-top: 1px solid #999;
+    background-color: #ccc;
+
+    article {
+      padding-top: 15px;
+
+      span {
+        color: #999;
+      }
+    }
+
+    button {
+      background: linear-gradient(#4C67A1, #3B5998);
+      color: white;
+      font-weight: bold;
+      box-shadow: 3px 3px 3px black;
+      border: 1px solid black;
+      border-radius: 0;
+    }
+
+    form {
+      .form-group {
+        margin-top: 15px;
+        margin-bottom: 15px;
+      }
+
+      textarea {
+        border: 1px solid #777;
+      }
+    }
+
+
+
+  }
+}
+
+
+
+/* Some extra fun overrides for styling. */
+/* Let's make better buttons */
+
+
+#save-profile {
+  background: linear-gradient(#4C67A1, #3B5998);
+  color: white;
+  font-weight: bold;
+  box-shadow: 3px 3px 3px black;
+  border: 1px solid black;
+  border-radius: 0;
+}
+
+#edit-profile-button {
+    background: linear-gradient(#4C67A1, #3B5998);
+    color: white;
+    box-shadow: 3px 3px 3px black;
+    border: 1px solid black;
+    border-radius: 0;
+}
+
+button.btn-unfriend {
+  background: #bbb;
+  color: black;
+  font-weight: bold;
+  box-shadow: 3px 3px 3px black;
+  border: 1px solid black;
+  border-radius: 0;
+  width: 120px;
+}
+
+
+/* and one media query to make friend list items look slightly nicer on smaller screens */
+
+@media (max-width: 993px) {
+  .friend-list-entry {
+    margin-bottom: 70px;
+  }
+}

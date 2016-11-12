@@ -11,7 +11,7 @@ danebook_goes_live
 
 Static Facebook clone for school
 
-[Here](http://vikingcodeschool.com) is the school!
+[Viking Code School](http://vikingcodeschool.com) is the school!
 
 [Here](https://obscure-reef-18577.herokuapp.com/) is the Heroku App!
 >>>>>>> ae0dd3f36fb3097a8398bd616768d7bc250a04c4

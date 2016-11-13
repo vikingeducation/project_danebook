@@ -20,6 +20,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @profile = Profile.new(user_id: @user.id)
     if @user.save
       flash[:success] = "User has been created"
       sign_in(@user)

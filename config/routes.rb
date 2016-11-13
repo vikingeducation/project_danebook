@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   get 'about_edit', to: 'static_pages#about_edit', as: 'about_edit'
 
   resources :users do
-    resource :profile
+    resource :profile, only: [:edit, :update, :show]
   end
 
   resource :session, :only => [:new, :create, :destroy]

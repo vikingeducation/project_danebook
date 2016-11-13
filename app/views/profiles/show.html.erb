@@ -51,15 +51,15 @@
           </tr>
           <tr>
             <td>College:</td>
-            <td><%= current_user.profile.college %></td>
+            <td><%= current_user.profile.college if current_user.profile.college %></td>
           </tr>
           <tr>
             <td>Hometown:</td>
-            <td><%= current_user.profile.hometown %></td>
+            <td><%= current_user.profile.hometown if current_user.profile.hometown %></td>
           </tr>
           <tr>
             <td>Currently Lives:</td>
-            <td><%= current_user.profile.current_city %></td>
+            <td><%= current_user.profile.current_city if current_user.profile.current_city %></td>
           </tr>
         </table>
 
@@ -71,7 +71,7 @@
           </tr>
           <tr>
             <td>Telephone:</td>
-            <td><%= current_user.profile.telephone %></td>
+            <td><%= current_user.profile.telephone if current_user.profile.telephone %></td>
           </tr>
         </table>
 

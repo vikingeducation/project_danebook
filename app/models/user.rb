@@ -2,6 +2,8 @@ class User < ApplicationRecord
 
   before_create :generate_token
 
+  has_one :profile, dependent: :destroy
+
   has_secure_password
 
   validates :password, :length => { :in => 3..24 }, :allow_nil => true

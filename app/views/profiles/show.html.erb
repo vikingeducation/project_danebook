@@ -1,24 +1,25 @@
-<%= render partial: 'navbar' %>
+<%= render partial: 'shared/navbar' %>
 <main>
   <header class = "container" id="cover">
 
-    <%= render partial: 'cover_images' %>
+    <%= render partial: 'shared/cover_images' %>
 
     <!--secondary navbar-->
     <div id = "profile-nav" class = "row">
       <div class = "col-md-7 col-md-offset-3">
         <ul class = "nav nav-tabs " role = "profile-nav">
           <li><%= link_to "Timeline", timeline_path %></li>
-          <li class='active'><%= link_to "About", user_path %></li>
+          <li class='active'><%= link_to "About", user_path(current_user) %></li>
           <li><%= link_to "Photos (123)", photos_path  %></li>
           <li><%= link_to "Friends (542)", friends_path %></li>
       </div>
-
-      <div class = "col-md-2">
-        <ul class = "nav">
-        <li><a class = "edit-profile-link" href = "about_edit.html">Edit Profile</a></li>
-        </ul>
-      </div>
+      <% if current_user %>
+        <div class = "col-md-2">
+          <ul class = "nav">
+          <li><%= link_to "Edit Profile", edit_user_profile_path(current_user), class: 'edit-profile-link' %></li>
+          </ul>
+        </div>
+      <% end %>
     </div>
   </header>
 
@@ -30,11 +31,13 @@
       <div class="col-md-offset-2 col-md-8 about-header">
         <h2>About</h2>
       </div>
-      <form class="col-md-2 about-header" action="about_edit.html">
-        <div class="form-group">
-          <button type="submit" class="btn btn-default" id="edit-profile-button">Edit your Profile</button>
-        </div>
-      </form>
+      <% if current_user %>
+        <form class="col-md-2 about-header" action="about_edit.html">
+          <div class="form-group">
+            <%= link_to "Edit your Profile", edit_user_profile_path(current_user), class: 'btn btn-default', id: 'edit-profile-button' %>
+          </div>
+        </form>
+      <% end %>
     </header>
 
 
@@ -48,15 +51,15 @@
           </tr>
           <tr>
             <td>College:</td>
-            <td>Hogwarts College</td>
+            <td><%= current_user.profile.college %></td>
           </tr>
           <tr>
             <td>Hometown:</td>
-            <td>Godrick's Hollow, England</td>
+            <td><%= current_user.profile.hometown %></td>
           </tr>
           <tr>
             <td>Currently Lives:</td>
-            <td>Godrick's Hollow, England</td>
+            <td><%= current_user.profile.current_city %></td>
           </tr>
         </table>
 
@@ -68,7 +71,7 @@
           </tr>
           <tr>
             <td>Telephone:</td>
-            <td>555-123-4567</td>
+            <td><%= current_user.profile.telephone %></td>
           </tr>
         </table>
 
@@ -76,16 +79,9 @@
 
       <div class = "col-md-5">
         <h3>Words to live by</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-        quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
+        <p><%= current_user.profile.words_to_live_by %></p>
         <h3>About me</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        <p><%= current_user.profile.about_me %></p>
       </div>
     </div>
   </section>

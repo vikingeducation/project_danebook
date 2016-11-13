@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = current_user
+    @user = User.find(params[:id])
   end
 
   def new
@@ -23,7 +23,7 @@ class UsersController < ApplicationController
     if @user.save
       flash[:success] = "User has been created"
       sign_in(@user)
-      redirect_to user_path(current_user)
+      redirect_to edit_user_profile_path(@user)
     else
       flash.now[:error] = "Unable to create user"
       render :new

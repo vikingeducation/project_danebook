@@ -15,10 +15,14 @@ ActiveRecord::Schema.define(version: 20161112064014) do
   create_table "users", force: :cascade do |t|
     t.string   "username"
     t.string   "email"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.string   "auth_token"
     t.string   "password_digest"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "gender"
+    t.datetime "birthday"
     t.index ["auth_token"], name: "index_users_on_auth_token", unique: true
   end
 

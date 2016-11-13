@@ -44,7 +44,7 @@
         <table class = "table about-table">
           <tr>
             <td>Birthday:</td>
-            <td>July 31st, 1980</td>
+            <td><%= current_user.birthday.strftime("%b %d, %Y") %></td>
           </tr>
           <tr>
             <td>College:</td>

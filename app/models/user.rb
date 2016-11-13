@@ -4,6 +4,9 @@ class User < ApplicationRecord
   before_create :generate_token
 
   validates :password, :length => { :in => 3..24 }, :allow_nil => true
+  validates :first_name,
+            :last_name, length: { :in => 1..12 }, presence: true
+  validates :email, length: { :in => 1..24 }, presence: true, uniqueness: true
 
   def generate_token
     begin

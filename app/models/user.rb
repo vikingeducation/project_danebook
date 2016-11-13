@@ -1,7 +1,8 @@
 class User < ApplicationRecord
-  has_secure_password
 
   before_create :generate_token
+
+  has_secure_password
 
   validates :password, :length => { :in => 3..24 }, :allow_nil => true
   validates :first_name,

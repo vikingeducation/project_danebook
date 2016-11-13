@@ -28,6 +28,7 @@
 
       <ul class="nav navbar-nav navbar-right">
         <li  class="hidden-sm pull-right"><a href="about.html" id="navbar-username"><%= current_user.first_name %></a></li>
+        <li><%= link_to "Log Out", logout_path, method: :delete %></li>
       </ul>
     </div><!-- /.navbar-collapse-->
   </div><!-- /.container-fluid -->

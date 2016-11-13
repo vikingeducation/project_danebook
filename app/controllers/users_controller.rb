@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :require_current_user, :only => [:edit, :update, :destroy]
-  before_action :require_login, :except => [:new, :create, :index]
+  skip_before_action :require_login, :only => [:new, :create]
 
 
   def index
@@ -13,6 +13,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @profile = @user.build_profile
   end
 
   def edit
@@ -20,7 +21,6 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    @profile = Profile.new(user_id: @user.id)
     if @user.save
       flash[:success] = "User has been created"
       sign_in(@user)
@@ -59,6 +59,7 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:username, :email, :password, :password_confirmation, :first_name, :last_name, :gender, :birthday)
+      params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation,
+                                   :profile_attributes => [:month, :day, :year, :gender, :user_id])
     end
 end

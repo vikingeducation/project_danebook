@@ -13,15 +13,20 @@
 ActiveRecord::Schema.define(version: 20161113024646) do
 
   create_table "profiles", force: :cascade do |t|
-    t.integer  "user_id"
+    t.integer  "user_id"          null: false
     t.text     "about_me"
     t.text     "words_to_live_by"
-    t.text     "hometown"
-    t.text     "current_city"
-    t.text     "college"
-    t.text     "telephone"
+    t.string   "hometown"
+    t.string   "current_city"
+    t.string   "college"
+    t.string   "telephone"
+    t.string   "gender"
+    t.integer  "day"
+    t.integer  "month"
+    t.integer  "year"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.index ["user_id"], name: "index_profiles_on_user_id", unique: true
   end
 
   create_table "users", force: :cascade do |t|

@@ -31,11 +31,10 @@
     <section class="col-xs-12 col-md-4">
 
       <h1>Sign Up</h1>
-      <%= form_for(@user) do |f| %>
+      <%= form_for @user do |user_fields| %>
         <% if @user.errors.any? %>
           <div id="error_explanation">
             <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
-
             <ul>
             <% @user.errors.full_messages.each do |message| %>
               <li><%= message %></li>
@@ -50,69 +49,69 @@
           <!-- Name -->
           <div class="col-xs-6">
             <div class="form-group">
-              <%= f.label :first_name %>
-              <%= f.text_field :first_name, class: 'form-control', placeholder: 'First Name' %>
+              <%= user_fields.label :first_name %>
+              <%= user_fields.text_field :first_name, class: 'form-control', placeholder: 'First Name' %>
             </div>
           </div>
           <div class="col-xs-6">
             <div class="form-group">
-              <%= f.label :last_name %>
-              <%= f.text_field :last_name, class: 'form-control', placeholder: 'Last Name' %>
+              <%= user_fields.label :last_name %>
+              <%= user_fields.text_field :last_name, class: 'form-control', placeholder: 'Last Name' %>
             </div>
           </div>
 
           <!-- Email -->
           <div class="col-xs-12">
             <div class="form-group">
-              <%= f.label :email %>
-              <%= f.text_field :email, class: 'form-control', placeholder: 'Your Email Address' %>
+              <%= user_fields.label :email %>
+              <%= user_fields.text_field :email, class: 'form-control', placeholder: 'Your Email Address' %>
             </div>
           </div>
-
           <!-- Password -->
           <div class="col-xs-12">
             <div class="form-group">
-              <%= f.label :password %>
-              <%= f.text_field :password, class: 'form-control', placeholder: 'Your New Password' %>
+              <%= user_fields.label :password %>
+              <%= user_fields.text_field :password, class: 'form-control', placeholder: 'Your New Password' %>
             </div>
           </div>
           <div class="col-xs-12">
             <div class="form-group">
-              <%= f.label :password_confirmation %>
-              <%= f.text_field :password_confirmation, class: 'form-control', placeholder: 'Confirm Your Password' %>
+              <%= user_fields.label :password_confirmation %>
+              <%= user_fields.text_field :password_confirmation, class: 'form-control', placeholder: 'Confirm Your Password' %>
             </div>
           </div>
-
           <!-- Birthday -->
           <div class="col-xs-12">
-
-            <div class="row">
-
-              <div class="col-xs-12">
-              <%= f.label :birthday %>
-              <%= f.date_select :birthday, { :prompt => {:day => 'Day', :month => 'Month', :year => 'Year' }, :end_year => 1910, :start_year => 2015}, {class: 'form-control'} %>
+            <%= user_fields.fields_for :profile do |profile_fields| %>
+              <label for='birthday'>Birthday</label><br/>
+                <div class="row">
+                  <div class='col-xs-12'>
+                    <%= profile_fields.select :month, (1..12), {prompt: 'Month'}, {class: 'form-control col-xs-4'} %>
+                    <%= profile_fields.select :day, (1..31), {prompt: 'Day'}, {class: 'form-control col-xs-4'} %>
+                    <%= profile_fields.select :year, (1905..Date.today.year), {prompt: 'Year', selected: Date.today.year}, {class: 'form-control col-xs-4'} %>
+                  </div>
+                </div>
               </div>
-
-            </div>
-
-          </div>
-
-          <!-- Gender -->
-          <div class="col-xs-4">
-            <div class="form-group">
-              <%= f.radio_button(:gender, "Male") %> Male
-            </div>
-          </div>
-          <div class="col-xs-4">
-            <div class="form-group">
-              <%= f.radio_button(:gender, "Female") %> Female
-            </div>
-          </div>
-
+              <!-- Gender -->
+              <div class='col-xs-12'>
+                <label for='Gender'>Gender</label><br/>
+              </div>
+              <div class="col-xs-4">
+                <div class="form-group">
+                  <%= profile_fields.radio_button(:gender, "Female") %>
+                  <%= profile_fields.label :gender, 'Female' %>
+                </div>
+              </div>
+              <div class="col-xs-4">
+                <div class="form-group">
+                  <%= profile_fields.radio_button(:gender, "Male") %>
+                  <%= profile_fields.label :gender, 'Male' %>
+                </div>
+              </div>
+            <% end %>
         </div>
-
         <!-- Submit Sign Up -->
-        <%= f.submit "Sign Up!", class: 'btn btn-success btn-lg btn-block' %>
+        <%= user_fields.submit "Sign Up!", class: 'btn btn-success btn-lg btn-block' %>
       <% end %>
       </form>
 

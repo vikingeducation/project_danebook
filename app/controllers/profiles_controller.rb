@@ -1,20 +1,21 @@
 class ProfilesController < ApplicationController
 
-  before_action :require_login
-
   def show
-    @profile = Profile.find_by_user_id(params[:user_id])
+    @user = User.find(params[:user_id])
+    @profile = @user.profile
   end
 
   def edit
-    @profile = Profile.find_by_user_id(params[:user_id])
+    @user = current_user
+    @profile = current_user.profile
   end
 
   def update
-    @profile = Profile.find_by_user_id(params[:user_id])
+    @user = current_user
+    @profile = current_user.profile
     if @profile.update(profile_params)
       flash[:success] = "Updated successfully"
-      redirect_to user_profile_path
+      redirect_to user_profile_path(current_user)
     else
       flash[:error] = "Unable to save profile"
       render :edit
@@ -24,7 +25,7 @@ class ProfilesController < ApplicationController
   private
 
     def profile_params
-      params.require(:profile).permit(:user_id, :hometown, :college, :current_city, :words_to_live_by, :about_me, :telephone)
+      params.require(:profile).permit(:user_id, :hometown, :college, :current_city, :words_to_live_by, :about_me, :telephone, :day, :month, :year, :gender)
     end
 
 end

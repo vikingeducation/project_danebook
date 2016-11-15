@@ -1,0 +1,70 @@
+<!-- Search Results -->
+<div class="col-xs-12 search-results-container">
+
+  <div class="row">
+    
+    <% if @results.present? %>
+
+      <% @results.each do |user| %>
+        
+        <!-- Friend -->
+        <div class="col-sm-12 col-md-6">
+          
+          <div class="well media">
+            <div class="media-left">
+
+              <%= link_to(user_path(user)) {image_tag(user.profile_photo_url(:thumb))} %>
+
+            </div>
+            <div class="media-body clearfix">
+              <h4 class="media-heading">
+                
+                <%= link_to(user.name, user_path(user)) %>
+
+                <small>
+
+                  <%= user.friends.length %> Friends
+
+                </small>
+              </h4>
+              <p>
+                Currently lives: <%= user.profile.currently_lives ? user.profile.currently_lives : '-' %>
+              </p>
+              <p>
+                Hometown: <%= user.profile.hometown ? user.profile.hometown : '-' %>
+              </p>
+              <p>
+                Birthday: <%= user.birthday.strftime('%a, %B %d %Y') %>
+              </p>
+
+              <% unless user == current_user %>
+                
+                <div class="pull-right">
+
+                  <%= friend_form_for(user, :type => :button) %>
+
+                </div>
+
+              <% end %>
+
+            </div>
+          </div>
+
+        </div>
+
+      <% end %>
+
+    <% else %>
+
+      <div class="col-xs-12 no-results">
+        No results
+      </div>
+
+    <% end %>
+
+  </div><!-- row -->
+
+</div><!-- .search-results-container -->
+
+
+

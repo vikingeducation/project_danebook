@@ -1,0 +1,150 @@
+<%= render :partial => 'shared/errors', :locals => {:object => @user} %>
+
+<section id="signup" class="row">
+
+  <!-- Info -->
+  <section class="col-xs-12 col-md-6 col-md-offset-1">
+
+    <div class="info">
+
+      <div class="alert alert-info">
+        <h4 class="text-center">
+          Guest User Login
+        </h4>
+        <table class="table">
+        <tbody>
+            <tr>
+              <td>Email:</td><td>guest@user.com</td>
+            </tr>
+            <tr>
+              <td>Password:</td><td>password</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="info-title-container">
+        <h1>Connect with all your friends!</h1>
+      </div>
+
+      <div class="info-list-container">
+
+        <ul class="info-list">
+          <li>See photos and updates in your news feed.</li>
+          <li>Post your status for the world to see form your profile.</li>
+          <li>Get in touch with your friends by "friending" them. Hooray!</li>
+          <li>Like things because you're a positive person.</li>
+        </ul>
+
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Sign Up Form -->
+  <section class="col-xs-12 col-md-4">
+
+    <h1>Sign Up</h1>
+
+    <%= form_for(@user, :html => {:id => 'signup-form'}) do |f| %>
+
+      <div class="row">
+
+        <!-- Name -->
+        <div class="col-xs-6">
+          <div class="form-group">
+
+            <%= f.text_field(:first_name, :class => 'form-control', :placeholder => 'First Name') %>
+
+          </div>
+        </div>
+        <div class="col-xs-6">
+          <div class="form-group">
+
+            <%= f.text_field(:last_name, :class => 'form-control', :placeholder => 'Last Name') %>
+
+          </div>
+        </div>
+
+        <!-- Email -->
+        <div class="col-xs-12">
+          <div class="form-group">
+
+            <%= f.email_field(:email, :class => 'form-control', :placeholder => 'Email') %>
+
+          </div>
+        </div>
+
+        <!-- Password -->
+        <div class="col-xs-12">
+          <div class="form-group">
+
+            <%= f.password_field(:password, :class => 'form-control', :placeholder => 'Your New Password') %>
+
+          </div>
+        </div>
+        <div class="col-xs-12">
+          <div class="form-group">
+
+            <%= f.password_field(:password_confirm, :class => 'form-control', :placeholder => 'Confirm Your Password') %>
+
+          </div>
+        </div>
+
+        <!-- Birthday -->
+        <div class="col-xs-12">
+          <h2>Birthday</h2>
+
+          <div class="row">
+
+            <%
+            date_wrap_open = '<div class="col-xs-4"><div class="form-group">'.html_safe
+            date_wrap_close = '</div></div>'.html_safe
+            date_separator = "#{date_wrap_close}#{date_wrap_open}"
+            %>
+
+            <%= date_wrap_open %>
+
+              <%= f.date_select(
+                :birthday,
+                {
+                  :order => [:day, :month, :year],
+                  :date_separator => date_separator,
+                  :start_year => Date.today.year,
+                  :end_year => 150.years.ago.year
+                },
+                {:class => 'form-control'}
+              ) %>
+
+            <%= date_wrap_close %>
+
+          </div>
+
+        </div>
+
+        <!-- Gender -->
+        <div class="col-xs-12">
+          <h2>Gender</h2>
+          <%= f.collection_radio_buttons(
+              :gender_id,
+              Gender.all,
+              :id,
+              :name
+            ) do |r|
+              radio = r.label(:class => 'radio-inline') {r.radio_button + r.text}
+              %Q[#{radio}].html_safe
+          end %>
+        </div>
+
+      </div>
+
+      <div class="submit-btn-container">
+        <!-- Submit Sign Up -->
+        <%= f.submit('Sign Up!', :class => 'btn btn-default') %>
+      </div>
+
+    <% end %>
+
+  </section>
+
+</section>

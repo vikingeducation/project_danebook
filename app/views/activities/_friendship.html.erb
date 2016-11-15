@@ -1,0 +1,40 @@
+<!-- Friendship -->
+<div class="post col-xs-12">
+  <header>
+    <div class="row">
+      <div class="col-xs-2">
+        <div class="post-profile-image-container">
+
+          <%= link_to(user_path(friendship.initiator)) {image_tag(friendship.initiator.profile_photo_url)} %>
+
+        </div>
+      </div>
+
+      <div class="col-xs-4 post-info-container">
+        <%= link_to(friendship.initiator.name, user_path(friendship.initiator)) %>
+
+        became friends with
+      </div>
+
+      <div class="col-xs-2">
+        <div class="post-profile-image-container">
+          
+          <%= link_to(user_path(friendship.approver)) {image_tag(friendship.approver.profile_photo_url)} %>
+
+        </div>
+      </div>
+
+      <div class="col-xs-4 post-info-container">
+        <%= link_to(friendship.approver.name, user_path(friendship.approver)) %>
+
+        on
+
+        <time>
+          <%= friendship.date %>
+        </time>
+      </div>
+
+    </div><!-- row -->
+  </header>
+</div><!-- col -->
+

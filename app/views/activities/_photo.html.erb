@@ -1,0 +1,62 @@
+<!-- Photo -->
+<div class="post col-xs-12">
+  <header>
+    <div class="row">
+      <div class="col-xs-2">
+        <div class="post-profile-image-container">
+
+            <%= link_to(user_path(photo.user)) {image_tag(photo.user.profile_photo_url)} %>
+
+        </div>
+      </div>
+      <div class="col-xs-8 post-info-container">
+
+        <%= link_to(photo.user.name, user_path(photo.user)) %>
+
+        uploaded a new photo on
+
+        <time>
+          <%= photo.date %>
+        </time>
+      </div>
+    </div>
+  </header>
+
+  <div class="photo-container">
+
+    <%= link_to(user_photo_path(photo.user, photo)) {image_tag(photo.file.url, :class => 'img-responsive')} %>
+
+  </div>
+
+  <br>
+  <!-- Likes -->
+  <div class="like-container">
+    <div class="photo-likes">
+      
+      <%= render :partial => 'likes/form', :locals => {:likeable => photo} %>
+      |
+      <%= render :partial => 'likes/likes', :locals => {:likeable => photo} %>
+
+    </div>
+  </div>
+
+  <hr>
+  <!-- Comment Form -->
+  <div class="well comment-form-container clearfix">
+
+    <%= render :partial => 'comments/form', :locals => {:comment => photo.comments.build, :commentable => photo} %>
+
+  </div>
+
+  <!-- Photo Comments -->
+  <div class="photo-comments">
+
+    <% if photo.comments.present? %>
+
+      <%= render photo.comments.order(:created_at => 'ASC') %>
+
+    <% end %>
+
+  </div>
+</div><!-- col -->
+

@@ -1,0 +1,123 @@
+// timeline
+
+#timeline {
+	border: none;
+
+  .no-activity,
+  .feed-end {
+    text-align: center;
+    padding-top: 128px;
+    padding-bottom: 128px;
+  }
+
+	.details-header,
+	.timeline-header,
+	.timeline-footer {
+		border-bottom: 1px solid $border;
+		background: #ddd;
+
+		h1 {
+			text-align: center;
+		}
+	}
+
+	#about {
+		.about-container,
+		dl {
+			@include clearfix;
+		}
+		dt {
+			width: 45%;
+			clear: both;
+		}
+		dt,
+		dd {
+			margin-top: 16px;
+			float: left;
+		}
+	}
+
+	#photos,
+	#friends {
+		img {
+			width: 100%;
+		}
+
+		footer {
+			text-align: center;
+		}
+	}
+
+	#about,
+	#photos,
+	#friends {
+		border: 1px solid $border;
+		border-radius: 4px;
+		margin-bottom: 32px;
+		padding: 0 0 16px 0;
+	}
+
+	.details-header {
+		h1 {
+			margin-top: 0;
+			margin-bottom: 0;
+		}
+	}
+
+  .photos-container {
+    .photo-thumb {
+      width: 96px;
+      height: 96px;
+    }
+  }
+	
+	.about-container,
+	.photos-container,
+	.friends-container {
+		padding: 16px;
+	}
+
+	.photos-container,
+	.friends-container {
+		.row {
+			div {
+				padding: 16px;
+			}
+		}
+	}
+
+  .friends-container .profile-image-container {
+    margin-bottom: 16px;
+  }
+
+  .friends-container .no-friends {
+    text-align: center;
+  }
+
+	.photos-container {
+		a {
+			display: block;
+		}
+	}
+
+	.no-posts {
+		padding: 16px;
+		text-align: center;
+	}
+
+	@media only screen and (max-width: 767px) {
+		.details-container {
+			margin-left: 15px;
+			margin-right: 15px;
+		}
+	}
+}
+
+@media only screen and (max-width: 767px) {
+	#about {
+		margin-top: 50px;
+	}
+}
+
+
+

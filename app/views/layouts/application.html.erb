@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Danebook</title>
+
+    <%= render :partial => 'shared/meta' %>
+
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <%= csrf_meta_tags %>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css"/>
+
+    <%= yield(:styles) %>
+  </head>
+  <body>
+    <%= render :partial => 'shared/nav' %>
+
+    <!-- Main Content -->
+    <main id="main-content" class="container">
+      <%= yield(:profile_header) %>
+      <%= render :partial => 'shared/flash' %>
+      <%= yield %>
+    </main>
+
+    <!-- Bootstrap JS -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <%= yield(:scripts) %>
+  </body>
+</html>

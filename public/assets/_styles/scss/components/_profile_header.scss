@@ -1,0 +1,131 @@
+// profile header
+
+@import '../config/colors';
+@import '../config/images';
+
+#profile-header {
+	position: relative;
+	border-bottom-left-radius: 4px;
+	border-bottom-right-radius: 4px;
+
+	.profile-image-container,
+	.cover-image-container {
+		border-radius: 4px;
+	}	
+
+	// --------------------
+	// cover image
+	// --------------------
+
+	.cover-image-container {
+		background: url($cover-image) no-repeat;
+		background-position: center;
+		background-size: cover;
+		border-top-left-radius: 0;
+		border-top-right-radius: 0;
+		height: 384px;
+	}
+
+	// --------------------
+	// profile image
+	// --------------------
+	
+	.profile-image-container {
+		position: absolute;
+		width: 192px;
+		height: 192px;
+		overflow: hidden;
+		left: 56px;
+		bottom: 16px;
+
+		img {
+			display: block;
+			width: 192px;
+		}
+	}
+
+	// --------------------
+	// profile nav
+	// --------------------
+
+	.profile-nav-container {
+		line-height: 64px;
+		text-align: center;
+
+		.current {
+			color: $dark;
+		}
+	}
+
+	// --------------------
+	// media queries
+	// --------------------
+
+	@media only screen and (min-width: 768px) {
+		.profile-nav-container {
+			.edit {
+				text-align: right;
+			}
+		}
+	}
+
+	@media only screen and (min-width: 992px) and (max-width: 1199px) {
+		.profile-image-container {
+			left: 32px;
+		}
+	}
+
+	@media only screen and (min-width: 768px) and (max-width: 991px) {
+		.profile-image-container {
+			width: 128px;
+			height: 128px;
+			left: 36px;
+
+			img {
+				width: 128px;
+			}
+		}
+
+		.profile-nav-container {
+			div {
+				padding-left: 4px;
+				padding-right: 4px;
+			}
+		}
+	}
+
+	@media only screen and (max-width: 767px) {
+		.profile-image-container {
+			left: 32px;
+			top: -75%;
+		}
+	}
+
+}
+
+// --------------------
+// borders
+// --------------------
+
+#profile-header,
+#profile-header .cover-image-container,
+#profile-header .profile-image-container,
+#profile-header .profile-nav-container div {
+	border: 1px solid $border;
+}
+#profile-header,
+#profile-header .cover-image-container,
+#profile-header .profile-nav-container div {
+	border-top: none;
+}
+#profile-header .profile-nav-container div {
+	border-right: none;
+	border-bottom: none;
+}
+@media only screen and (max-width: 767px) {
+	#profile-header,
+	#profile-header .cover-image-container,
+	#profile-header .profile-nav-container div {
+		border: none;
+	}
+}

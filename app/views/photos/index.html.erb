@@ -1,0 +1,65 @@
+<% content_for(:profile_header) do %>
+  <%= render :partial => 'shared/profile_header', :locals => {:user => @user} %>
+<% end %>
+
+<% unless current_user.friend?(@user) || current_user == @user %>
+  <br>
+  <div class="alert alert-info">
+    You are not friends with <%= @user.name %>
+    and will not be able to view or comment on their
+    photos.
+  </div>
+<% end %>
+
+<!-- Profile Page / Photos -->
+<section id="photos" class="row profile-page-container">
+  
+  <header class="col-xs-12 profile-page-header">
+    <h1>
+
+      <%= @user.name %>'s Photos
+
+    </h1>
+    <div class="add-photo-link-container">
+      
+      <%= link_to('+ Add Photo', new_user_photo_path(@user), :class => 'btn btn-primary') %>
+
+    </div>
+  </header>
+
+  <!-- Photos -->
+  <div class="row">
+    <div class="col-xs-12">
+
+      <!-- Photo -->
+      <div class="row photos-container">
+        
+        <% if @photos.present? %>
+          <% @photos.each do |photo| %>
+
+            <% image_markup = capture do %>
+
+              <div class="col-xs-6 col-sm-4 col-md-3 photo-container" style="background: url('<%= photo.file.url(:medium) %>')">
+                  <div class="pub-date-container">
+                    Uploaded on <%= photo.date %>
+                  </div>
+              </div>
+            
+            <% end %>
+            <%= current_user.friend?(@user) || current_user == @user ? link_to(user_photo_path(@user, photo)) {image_markup} : image_markup %>
+
+          <% end %>
+        <% else %>
+
+          <div class="no-photos">
+            No Photos
+          </div>
+
+        <% end %>
+
+      </div><!-- .photos-container -->
+
+    </div><!-- col -->
+  </div><!-- row -->
+
+</section><!-- #photos -->

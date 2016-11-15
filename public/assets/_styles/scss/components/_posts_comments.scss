@@ -1,0 +1,96 @@
+// posts comments
+
+@import '../config/colors';
+
+.post {
+	margin-top: 32px;
+	padding-top: 16px;
+	border: 1px solid $border;
+	border-radius: 4px;
+
+	.post-profile-image-container {
+		margin: 0 auto;
+		overflow-y: hidden;
+		width: 64px;
+		height: 64px;
+
+		a {
+			display: block;
+		}
+
+		img {
+			width: 100%;
+		}
+	}
+
+	@media only screen and (max-width: 767px) {
+		.post-profile-image-container {
+			width: 48px;
+			height: 48px;
+		}
+	}
+
+	.post-info-container {
+		a,
+		time {
+			display: block;
+		}
+	}
+
+	.post-likes {
+		clear: both;
+	}
+
+	article {
+		padding: 8px;
+	}
+
+	footer {
+		@include clearfix;
+		border-top: 1px solid $border;
+		padding: 8px;
+
+		.post-footer-links a {
+			//
+		}
+		
+		.post-footer-links,
+		.post-likes {
+			padding-top: 8px;
+			padding-bottom: 8px;
+		}
+
+		.delete-link-container {
+			text-align: right;
+		}
+	}
+
+	footer,
+	.post-comments,
+	.comment,
+	.comment-form-container {
+		background: #ddd;
+	}
+}
+
+.comment,
+.comment-form-container,
+.post footer {
+	margin-left: -15px;
+	margin-right: -15px;
+}
+
+.comment {
+	padding-top: 16px;
+	clear: both;
+}
+
+.comment footer,
+.comment-form-container footer {
+	margin-left: 0;
+	margin-right: 0;
+}
+
+.comment-form-container .form-group {
+	padding: 8px;
+}

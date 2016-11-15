@@ -1,0 +1,38 @@
+<!-- Search Form -->
+<div id="navbar-collapse" class="collapse navbar-collapse">
+  <!-- Search -->
+  <form id="navbar-search" class="navbar-form navbar-left" action="<%= search_path %>">
+    <div class="form-group">
+      <input type="q" name="q" class="form-control" placeholder="Search..."/>
+    </div>
+  </form>
+  
+  <!-- Username -->
+  <ul class="nav navbar-nav navbar-right user-actions">
+
+    <!-- Friend Requests -->
+    <%= render :partial => 'friend_requests/dropdown' %>
+
+    <li class="dropdown user-dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+
+        <%= current_user.name %>
+
+        <span class="caret"></span>
+      </a>
+      <ul class="dropdown-menu">
+        <li>
+
+          <%= link_to('Profile', user_activity_path(current_user)) %>
+
+        </li>
+        <li>
+
+          <%= link_to('Sign Out', session_path, :method => :delete) %>
+
+        </li>
+      </ul>
+    </li>
+
+  </ul>
+</div>

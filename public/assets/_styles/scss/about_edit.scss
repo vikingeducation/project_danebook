@@ -1,0 +1,19 @@
+// about edit
+
+@import 'components/base';
+
+#about-edit {
+	textarea.form-control {
+		height: 196px;
+	}
+
+	.submit-container {
+		margin-top: 32px;
+		margin-bottom: 64px;
+		text-align: center;
+
+		.submit {
+			padding: 16px 32px;
+		}
+	}
+}

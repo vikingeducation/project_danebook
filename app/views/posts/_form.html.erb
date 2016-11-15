@@ -1,0 +1,24 @@
+<%= render :partial => 'shared/errors', :locals => {:object => post} %>
+
+<!-- Post Form -->
+<div id="post-form-wrapper" class="col-xs-12">
+  <header class="post-form-header">
+    <h1>
+      Post
+    </h1>
+  </header>
+  <div class="post-form-container">
+
+    <%= form_for([post.user, post]) do |f| %>
+      <div class="form-group">
+        <%= f.text_area(:body, :class => 'form-control', :placeholder => 'Tell the world something...') %>
+      </div>
+      <%= f.hidden_field(:user_id) %>
+      <footer class="post-form-footer">
+        <%= f.submit('Post', :class => 'btn btn-primary') %>
+      </footer>
+    <% end %>
+
+  </div>
+</div><!-- col -->
+

@@ -1,0 +1,48 @@
+<% 
+# If the type is button render buttons
+if defined?(type) && type == :button
+%>
+
+  <% if friend_request.persisted? &&
+        friend_request.approver == current_user %>
+
+    <%= accept_friend_request_button(friend_request) %>
+
+    <%= reject_friend_request_button(friend_request) %>
+
+  <% elsif  friend_request.persisted? &&
+            friend_request.initiator == current_user %>
+
+    <%= cancel_friend_request_button(friend_request) %>
+
+  <% else %>
+
+    <%= send_friend_request_button(friend_request) %>
+
+  <% end %>
+
+<%
+# Else render links
+else
+%>
+  
+  <% if friend_request.persisted? &&
+        friend_request.approver == current_user %>
+
+    <%= accept_friend_request_link(friend_request) %>
+
+    <%= reject_friend_request_link(friend_request) %>
+
+  <% elsif  friend_request.persisted? &&
+            friend_request.initiator == current_user %>
+
+    <%= cancel_friend_request_link(friend_request) %>
+
+  <% else %>
+
+    <%= send_friend_request_link(friend_request) %>
+
+  <% end %>
+
+<% end %>
+

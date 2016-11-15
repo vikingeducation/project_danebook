@@ -1,0 +1,69 @@
+<!-- Comment -->
+<span id="<%= comment_anchor_id_for(comment) %>"></span>
+<div class="comment">
+  <header>
+    <div class="row">
+      <div class="col-xs-2 col-xs-offset-1">
+        <div class="post-profile-image-container">
+          <a href="#">
+
+            <%= image_tag(comment.user.profile_photo_url, :class => 'img-responsive') %>
+
+          </a>
+        </div>
+      </div>
+      <div class="col-xs-8 comment-info-container">
+
+        <%= link_to(comment.user.name, user_path(comment.user)) %>
+
+        <time>
+
+          Commented on: <%= comment.date %>
+
+        </time>
+      </div>
+    </div>
+  </header>
+  <article>
+    <div class="row">
+      <div class="col-xs-8 col-xs-offset-3">
+        <p>
+
+          <%= comment.body %>
+
+        </p>
+      </div>
+    </div>
+  </article>
+  <footer class="comment-footer">
+    <div class="row post-footer-links">
+      <div class="col-xs-8 like-link-container">
+        
+        <%= render :partial => 'likes/form', :locals => {:likeable => comment} %>
+
+        |
+
+        <%= render :partial => 'likes/likes', :locals => {:likeable => comment} %>
+
+      </div>
+      <div class="col-xs-4 delete-link-container">
+
+        <% if is_current_user?(comment.user) %>
+        
+          <%= link_to(
+            'Delete Comment',
+            comment_path(comment, :user_id => current_user.id),
+            :method => :delete,
+            :data => {:confirm => 'Are you sure you want to delete this comment?'},
+            :class => 'text-danger'
+          ) %>
+
+        <% end %>
+
+      </div>
+    </div>
+  </footer>
+</div><!-- comment -->
+
+
+

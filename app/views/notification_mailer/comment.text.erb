@@ -1,0 +1,3 @@
+Hello <%= @comment.commentable.user.name %>!
+You've just received a new comment on your <%= @comment.commentable.class.name.downcase %> from <%= @comment.user.name %>.
+View the comment <%= user_posts_url(@comment.commentable.user) %>.

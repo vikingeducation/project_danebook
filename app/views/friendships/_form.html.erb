@@ -1,0 +1,15 @@
+<% 
+# If the type is button
+if defined?(type) && type == :button
+%>
+
+  <%= unfriend_button(friendship) %>
+
+<%
+# Else render links
+else
+%>
+  
+  <%= unfriend_link(friendship) %>
+
+<% end %>

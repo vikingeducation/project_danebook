@@ -1,0 +1,146 @@
+<% content_for(:profile_header) do %>
+  <%= render :partial => 'shared/profile_header', :locals => {:user => @user} %>
+<% end %>
+
+<!-- Profile Page / Photos -->
+<section id="photos" class="row profile-page-container">
+  
+  <header class="col-xs-12 profile-page-header">
+    <h1>
+
+      <%= @user.name %>: Photo
+
+    </h1>
+  </header>
+
+  <!-- Photos -->
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="well">
+
+         <div class="row">
+          <div class="col-xs-12 col-md-7">
+
+            <!-- Photo -->
+            <div class="photo-show-container">
+              <a href="#photo-modal-<%= @photo.id %>" data-toggle="modal" data-target="#photo-modal-<%= @photo.id %>">
+
+                <%= image_tag(@photo.file.url, :class => 'img-responsive center-block') %>
+
+              </a>
+            </div>
+
+            <% if @user == current_user %>
+
+              <!-- Photo Actions -->
+              <div class="action-links text-right">
+                <%= link_to(
+                  'Set as Profile Photo',
+                  user_path(current_user,
+                    :user => {
+                      :profile_photo_id => @photo.id
+                    }
+                  ),
+                  :method => :put
+                ) %>
+                <br>
+                <%= link_to(
+                  'Set as Cover Photo',
+                  user_path(current_user,
+                    :user => {
+                      :cover_photo_id => @photo.id
+                    }
+                  ),
+                  :method => :put
+                ) %>
+                <br>
+                <%= link_to('Delete Photo', user_photo_path(@user, @photo), :method => :delete, :class => 'text-danger') %>
+              </div>
+
+            <% end %>
+
+          </div><!-- col -->
+
+          <div class="col-xs-12 col-md-5">
+
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="photo-details-container">
+
+                  <!-- User Details -->
+                  <div class="media">
+                    <div class="media-left">
+                      <a href="#">
+
+                        <%= image_tag(@user.profile_photo_url(:thumb), :class => 'media-object') %>
+
+                      </a>
+                    </div>
+                    <div class="media-body">
+                      <h4 class="media-heading">
+
+                        <%= @user.name %>
+
+                      </h4>
+                    </div>
+                  </div>
+                  
+                  <br>
+                  <!-- Likes -->
+                  <div class="like-container">
+                    <div class="photo-likes">
+                      
+                      <%= render :partial => 'likes/form', :locals => {:likeable => @photo} %>
+                      |
+                      <%= render :partial => 'likes/likes', :locals => {:likeable => @photo} %>
+
+                    </div>
+                  </div>
+
+                  <!-- Comment Form -->
+                  <div class="well comment-form-container clearfix">
+                    <h2>
+                      Post a Comment
+                    </h2>
+
+                    <%= render :partial => 'comments/form', :locals => {:comment => @photo.comments.build, :commentable => @photo} %>
+
+                  </div>
+
+                  <!-- Photo Comments -->
+                  <div class="photo-comments">
+
+                    <% if @photo.comments.present? %>
+
+                      <%= render @photo.comments.order(:created_at => 'ASC') %>
+
+                    <% end %>
+
+                  </div>
+
+                </div><!-- well -->
+              </div><!-- col -->
+            </div><!-- row -->
+            
+          </div><!-- col -->
+        </div><!-- row -->
+
+      </div><!-- well -->
+    </div><!-- col -->
+  </div><!-- row -->
+
+</section><!-- #photos -->
+
+<div id="photo-modal-<%= @photo.id %>" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+
+      <%= image_tag(@photo.file.url, :class => 'img-responsive center-block') %>
+      
+    </div>
+  </div>
+</div>
+
+
+
+

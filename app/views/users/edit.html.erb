@@ -1,0 +1,179 @@
+<% content_for(:profile_header) do %>
+  <%= render :partial => 'shared/profile_header', :locals => {:user => @user} %>
+<% end %>
+
+<br>
+<%= render :partial => 'shared/errors', :locals => {:object => @user} %>
+
+<!-- Profile Page / About Edit -->
+<section id="about-edit" class="row profile-page-container">
+  
+  <header class="col-xs-12 profile-page-header">
+    <h1>
+      About: <%= @user.name %> (Edit)
+    </h1>
+  </header>
+
+  <!-- About Info -->
+  <div class="col-xs-12 about-container">
+
+    <!-- Edit Form -->
+
+    <%= form_for(@user, :html => {:class => 'form-horizontal'}) do |user_fields| %>
+
+      <div class="row">
+
+        <!-- Info Left -->
+        <div class="col-sm-5 col-sm-offset-1">
+
+          <!-- Basic Info -->
+          <section>
+            <header>
+              <h2>
+                Basic Information
+              </h2>
+            </header>
+            <div class="row">
+              <div class="col-xs-12 about-info-container">
+
+                <div class="form-group">
+                  <label class="col-md-3" for="birthday">Birthday:</label>
+
+                  <div class="col-md-9">
+                    <div class="row">
+                      
+                      <%
+                      date_wrap_open = '<div class="col-xs-4">'.html_safe
+                      date_wrap_close = '</div>'.html_safe
+                      date_separator = "#{date_wrap_close}#{date_wrap_open}"
+                      %>
+
+                      <%= date_wrap_open %>
+
+                        <%= user_fields.date_select(
+                          :birthday,
+                          {
+                            :order => [:day, :month, :year],
+                            :date_separator => date_separator
+                          },
+                          {:class => 'form-control'}
+                        ) %>
+
+                      <%= date_wrap_close %>
+
+                    </div>
+                  </div>
+
+                </div>
+
+                <%= user_fields.fields_for(:profile) do |profile_fields| %>
+
+                  <div class="form-group">
+                    <label class="col-md-3" for="college">College:</label>
+                    <div class="col-md-9">
+
+                      <%= profile_fields.text_field(:college, :class => 'form-control', :placeholder => 'What college did you go to?') %>
+
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-md-3" for="hometown">Hometown:</label>
+                    <div class="col-md-9">
+                      
+                      <%= profile_fields.text_field(:hometown, :class => 'form-control', :placeholder => 'What town are you originally from?') %>
+
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-md-3" for="currently_lives">Currently Lives:</label>
+                    <div class="col-md-9">
+
+                      <%= profile_fields.text_field(:currently_lives, :class => 'form-control', :placeholder => 'Where do you currently live?') %>
+
+                    </div>
+                  </div>
+
+                <% end %>
+
+              </div>
+            </div>
+          </section>
+
+          <!-- Contact Info -->
+          <section>
+            <header>
+              <h2>
+                Contact Information
+              </h2>
+            </header>
+            <div class="row">
+              <div class="col-xs-12 about-info-container">
+                <div class="form-group">
+                  <label class="col-md-3" for="email">Email:</label>
+                  <div class="col-md-9">
+
+                    <%= user_fields.email_field(:email, :class => 'form-control', :placeholder => 'What is your email?') %>
+
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label class="col-md-3" for="telephone">Telephone:</label>
+                  <div class="col-md-9">
+
+                    <%= user_fields.fields_for(:profile) do |profile_fields| %>
+                      <%= profile_fields.telephone_field(:telephone, :class => 'form-control', :placeholder => 'What is your phone number?') %>
+                    <% end %>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <!-- Info Right -->
+        <div class="col-sm-5">
+
+          <!-- Words to Live By -->
+          <article>
+            <header>
+              <h2>
+                Words to Live By
+              </h2>
+            </header>
+            <div class="form-group">
+
+              <%= user_fields.fields_for(:profile) do |profile_fields| %>
+                <%= profile_fields.text_area(:words_to_live_by, :class => 'form-control', :placeholder => 'Some words you live by are...') %>
+              <% end %>
+
+          </article>
+
+          <!-- About Me -->
+          <article>
+            <header>
+              <h2>
+                About Me
+              </h2>
+            </header>
+            <div class="form-group">
+
+              <%= user_fields.fields_for(:profile) do |profile_fields| %>
+                <%= profile_fields.text_area(:about_me, :class => 'form-control', :placeholder => 'Interesting, tell the world more about yourself!') %>
+              <% end %>
+
+            </div>
+          </article>
+        </div>
+
+      </div>
+
+      <div class="submit-container">
+        <%= user_fields.submit('Save Changes', :class => 'btn btn-primary submit') %>
+      </div>
+
+    <% end %>
+
+  </div>
+
+</section>

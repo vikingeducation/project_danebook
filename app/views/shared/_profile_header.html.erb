@@ -1,0 +1,74 @@
+<!-- Profile Header -->
+<header id="profile-header" class="row">
+  
+  <!-- Cover Image -->
+  <div class="col-xs-12">
+
+    <% cover_image_markup = capture do %>
+      <div class="cover-image-container" style="background-image: url('<%= user.cover_photo_url %>')"></div>
+    <% end %>
+    <%= user.cover_photo ? link_to(user_photo_path(user, user.cover_photo)) {cover_image_markup} : cover_image_markup %>
+
+  </div>
+  
+  <div class="col-xs-12">
+    
+    <!-- Profile Image -->
+    <div class="profile-image-container">
+
+      <% profile_image_markup = capture do %>
+        <%= image_tag(user.profile_photo_url) %>
+      <% end %>
+      <%= user.profile_photo ? link_to(user_photo_path(user, user.profile_photo)) {profile_image_markup} : profile_image_markup %>
+
+    </div>
+
+    <!-- Profile Nav -->
+    <div class="row profile-nav-container">
+      
+      <div class="col-sm-1 col-sm-offset-3">
+        
+        <%= link_to('Timeline', user_activity_path(user)) %>
+
+      </div>
+      <div class="col-sm-1">
+
+        <%= link_to('About', user_path(user)) %>
+
+      </div>
+      <div class="col-sm-2">
+        
+        <%= link_to("Photos (#{user.photos.length})", user_photos_path(user)) %>
+
+      </div>
+      <div class="col-sm-2">
+        
+        <%= link_to("Friends (#{user.friends.length})", user_friendships_path(user)) %>
+
+      </div>
+
+      <div class="col-sm-3 edit">
+
+        <% if current_user == user %>
+
+          <%= link_to('Edit Profile', edit_user_path(user)) %>
+
+        <% else %>
+
+          <%= friend_form_for(user) %>
+
+        <% end %>
+
+      </div>
+
+    </div><!-- row -->
+
+  </div><!-- col -->
+
+</header><!-- row -->
+
+
+
+
+
+

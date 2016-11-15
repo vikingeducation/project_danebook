@@ -1,0 +1,9 @@
+<p>
+  Hello <%= @like.likeable.user.name %>!
+</p>
+<p>
+  Your <%= @like.likeable.class.name.downcase %> was just liked by <%= @like.user.name %>.
+</p>
+<p>  
+  Check it out <%= link_to('here', user_url(@like.likeable.user)) %>.
+</p>

@@ -1,0 +1,9 @@
+<p>
+  Hello <%= @friendship.initiator.name %>!
+</p>
+<p>  
+  Your friend request to <%= @friendship.approver.name %> has been accepted.
+</p>
+<p>  
+  Visit their profile <%= link_to('here', user_url(@friendship.approver)) %>.
+</p>

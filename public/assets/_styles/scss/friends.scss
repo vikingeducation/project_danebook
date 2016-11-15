@@ -1,0 +1,39 @@
+// friends
+
+@import 'components/base';
+
+#friends {
+	.friend-container {
+		padding-top: 16px;
+		padding-bottom: 16px;
+	}
+
+	.friend-info-container {
+		line-height: (96px / 2);
+	}
+
+	.unfriend-link-container {
+		line-height: 96px;
+	}
+
+	.profile-image-container {
+		margin: 0 auto;
+		width: 96px;
+		height: 96px;
+
+		a {
+			display: block;
+		}
+	
+		img {
+			border-radius: 4px;
+			width: 96px;
+		}
+	}
+
+	@media only screen and (max-width: 767px) {
+		.friend-container {
+			text-align: center;
+		}
+	}
+}

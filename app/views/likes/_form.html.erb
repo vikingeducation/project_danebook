@@ -1,0 +1,15 @@
+<% like = current_user_like_for(likeable) %>
+<% if like %>
+
+  <%= link_to('Unlike', like_path(like, :user_id => current_user.id), :method => :delete) %>
+
+<% else %>
+
+  <%= link_to('Like', likes_path(
+    :user_id => current_user.id,
+    :likeable_id => likeable.id,
+    :likeable_type => likeable.class.name
+  ), :method => :post) %>
+
+<% end %>
+

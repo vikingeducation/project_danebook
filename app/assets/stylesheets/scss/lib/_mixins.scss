@@ -1,0 +1,28 @@
+// mixins
+
+@mixin clearfix {
+	&:after,
+	&:before {
+		display: table;
+		content: "";
+	}
+	&:after {
+		clear: both;
+	}
+}
+.clearfix {
+	@include clearfix;
+}
+
+@mixin transition($value) {
+	-webkit-transition: $value;
+	-moz-transition: $value;
+	-o-transitiion: $value;
+	transition: $value;
+}
+
+@mixin cover-image {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover !important;
+}

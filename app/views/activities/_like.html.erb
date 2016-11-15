@@ -1,0 +1,30 @@
+<!-- Like -->
+<div class="post col-xs-12">
+  <header>
+    <div class="row">
+      <div class="col-xs-2">
+        <div class="post-profile-image-container">
+
+            <%= link_to(user_path(like.user)) {image_tag(like.user.profile_photo_url)} %>
+
+        </div>
+      </div>
+      <div class="col-xs-8 post-info-container">
+
+        <%= link_to(like.user.name, user_path(like.user)) %>
+
+        liked
+
+        <%= link_to(like.likeable.user.name, user_path(like.likeable.user)) %>'s
+
+        <%= link_to(like.likeable_type.downcase, feedable_path_for(like.likeable)) %>
+
+        on
+
+        <time>
+          <%= like.date %>
+        </time>
+      </div>
+    </div>
+  </header>
+</div><!-- col -->

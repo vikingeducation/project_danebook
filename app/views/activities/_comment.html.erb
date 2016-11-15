@@ -1,0 +1,30 @@
+<!-- Comment -->
+<div class="post col-xs-12">
+  <header>
+    <div class="row">
+      <div class="col-xs-2">
+        <div class="post-profile-image-container">
+
+            <%= link_to(user_path(comment.user)) {image_tag(comment.user.profile_photo_url)} %>
+
+        </div>
+      </div>
+      <div class="col-xs-8 post-info-container">
+
+        <%= link_to(comment.user.name, user_path(comment.user)) %>
+
+        commented on
+
+        <%= link_to(comment.commentable.user.name, user_path(comment.commentable.user)) %>'s
+
+        <%= link_to(comment.commentable_type.downcase, feedable_path_for(comment.commentable)) %>
+
+        on
+
+        <time>
+          <%= comment.date %>
+        </time>
+      </div>
+    </div>
+  </header>
+</div><!-- col -->

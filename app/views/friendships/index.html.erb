@@ -1,0 +1,76 @@
+<% content_for(:profile_header) do %>
+  <%= render :partial => 'shared/profile_header', :locals => {:user => @user} %>
+<% end %>
+
+<!-- Profile Page / Friends -->
+<section id="friends" class="row profile-page-container">
+  
+  <header class="col-xs-12 profile-page-header">
+    <h1>
+      <%= @user.name %>'s Friends
+    </h1>
+  </header>
+
+  <!-- Friends -->
+  <div class="col-xs-12 friends-container">
+
+    <div class="row">
+      
+      <% if @user.friendships.present? %>
+
+        <% @user.friendships.each do |friendship| %>
+
+          <%
+          friend = friendship.initiator == @user ? friendship.approver : friendship.initiator
+          %>
+          
+          <!-- Friend -->
+          <div class="col-sm-12 col-md-6 friend-container">
+            <div class="row">
+              <div class="col-xs-4">
+                <div class="profile-image-container">
+                  
+                  <%= link_to(user_path(friend)) {image_tag(friend.profile_photo_url)} %>
+
+                </div>
+              </div>
+              <div class="col-xs-3 friend-info-container">
+                
+                <%= link_to(friend.name, user_path(friend)) %>
+
+                <br>
+                <span class="friend-friends-count">
+                  <%= friend.friends.length %> Friends
+                </span>
+              </div>
+
+              <% unless friend == current_user %>
+              
+                <div class="col-xs-3 unfriend-link-container">
+
+                  <%= friend_form_for(friend, :type => :button) %>
+
+                </div>
+
+              <% end %>
+
+            </div>
+          </div>
+
+        <% end %>
+
+      <% else %>
+
+        <div class="col-xs-12 friend-container no-friends">
+          No friends
+        </div>
+
+      <% end %>
+
+    </div><!-- row -->
+
+  </div><!-- .friends-container -->
+
+</section><!-- #friends -->
+
+

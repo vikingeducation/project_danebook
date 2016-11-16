@@ -19,7 +19,17 @@ class Profile < ApplicationRecord
 
   def self.search(query)
     if query
-      where("first_name LIKE ? OR last_name LIKE?","%#{query}%","%#{query}%")
+      names = query.split(" ")
+      #if first and last name
+      if names.length > 1
+        first = names[0]
+        last = names[1]
+        where("first_name LIKE ? AND last_name LIKE?", "%#{first}", "%#{last}")
+      #if just one name
+      else
+        where("first_name LIKE ? OR last_name LIKE?","%#{query}%","%#{query}%")
+      end
+    #if no search term
     else
       where("")
     end

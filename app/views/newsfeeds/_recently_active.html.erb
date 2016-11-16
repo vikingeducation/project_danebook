@@ -1,0 +1,16 @@
+<h3> Recently Active </h3>
+<% users.each do |user| %>
+  <% if user.profile_pic %>
+  <%= image_tag user.profile_pic.avatar.url(:comment), alt: "friend's picture", class:  "side-image small-image" %>
+  <% else %>
+  <%= image_tag "wizard_hat.png", alt:"friend's picture", class: "side-image small-image" %>
+  <% end %>
+    <div class="side-text small-text">
+      <p>
+        <%= link_to user.profile.full_name, user_path(user) %>
+      </p>
+      <p class="post-date" href="#">
+        Posted on <%= user.last_posted %>
+      </p>
+    </div><br>
+<% end %>

@@ -1,0 +1,142 @@
+<div class="container-fluid about-page">
+  <%= render :partial => "static_pages/main_nav", :locals => {profile: profile} %>
+  <!--main photo-->
+<%= render :partial => "static_pages/main_photo", :locals=>{:profile=> profile, :user => user} %>
+  
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <!--middle navigation-->
+    <%= render :partial => "static_pages/middle_nav", :locals => {:page=>"timeline", :user => user} %>
+  <div class="row">
+    <!--Left column-->
+    <div class="col-md-5">
+      <!--About Box-->
+      <section class="row box-border">
+        <div class="col-md-12">
+      <div>
+        <h4 class="post-title centered-text">About</h4>
+         <table class="information-table">
+        <tr>
+          <td>Born on:</td>
+          <td>
+            <%= profile.birthday.strftime("%B %-d %Y") %>
+          </td>
+        </tr>
+        <tr>
+          <td>Went to school at:</td>
+           <% if profile.college %>
+            <td><%= profile.college %></td>
+          <% else %>
+            <td>Nothing here yet!</td>
+          <% end %>
+        </tr>
+        <tr>
+          <td>Hometown:</td>
+          <% if profile.hometown %>
+            <td><%= profile.hometown %></td>
+          <% else %>
+            <td>Nothing here yet!</td>
+          <% end %>          
+        </tr>
+        <tr>
+          <td>Currently Lives:</td>
+          <% if profile.currently_lives %>
+            <td><%= profile.currently_lives %></td>
+          <% else %>
+            <td>Nothing here yet!</td>
+          <% end %>
+        </tr>
+      </table>
+      </div><!--post box end-->
+    </div>
+    </section>
+      <!--Photos Box-->
+      <section class="row box-border">
+      <div class="col-md-12">
+        <div class="row box-header">
+          <div class="col-md-12">
+            <h4 class="box-title centered-text">Photos (<%= user.photos.count %>)</h4>
+          </div>
+        </div>
+        <!--Row 1-->
+        <div class="row">
+          <% pics = [6, user.photos.count].min %>
+          <% (0..pics-1).each do |idx| %>
+          <div class="col-md-4">
+            <% photo = user.photos[idx] %>
+            <%= link_to image_tag(photo.avatar.url(:thumb), class: "img-responsive"), user_photo_path(user,photo),{title: "Updated #{photo.date}", class: "thumbnail"} %>
+          </div>
+          <% end %>
+        </div>
+        <% if user.photos.count > 6 %>
+        <div class="row centered-text">
+          <button type="button" class="btn btn-link">
+            <%= link_to "See more photos", user_photos_path(user) %>
+           </button>
+      </div>
+      <% end %>
+       </div>
+    </section>
+    <!--Friends Box-->
+    <section class="row box-border">
+      <div class="col-md-12">
+        <div class="row box-header">
+          <div class="col-md-12">
+            <h4 class="box-title centered-text">Friends (<%= user.friended_users.count %>)</h4>
+          </div>
+        </div>
+        
+        <!--Row 1-->
+        <% user.friended_users.each_with_index do |friend, idx| %>
+          <% if idx == 0 || idx == 3 %>
+          <!-- begin the row -->
+          <div class="row">  
+            <div class="col-md-4">
+              <% if friend.profile_pic %>
+              <%= image_tag friend.profile_pic.avatar.url(:comment), alt: "photo", class: "img-responsive" %>
+              <% else %>
+              <%= image_tag "wizard_hat.png", alt:"photo", class: "img-responsive" %></a>
+              <% end %>
+              <%= link_to friend.profile.full_name, friend, class: "btn btn-link wrap-text" %>
+            </div>
+          
+          <% elsif idx == 2 || idx == 5 %>
+           <!-- close the row -->
+           <div class="col-md-4">
+             <% if friend.profile_pic %>
+              <%= image_tag friend.profile_pic.avatar.url(:comment), alt: "photo", class: "img-responsive" %>
+              <% else %>
+              <%= image_tag "wizard_hat.png", alt:"photo", class: "img-responsive" %></a>
+              <% end %>
+              <%= link_to friend.profile.full_name, friend, class: "btn btn-link wrap-text" %>
+            </div>
+          </div>
+          <% elsif idx >= 6 %>
+          <% else %>
+          <div class="col-md-4">
+            <% if friend.profile_pic %>
+              <%= image_tag friend.profile_pic.avatar.url(:comment), alt: "photo", class: "img-responsive" %>
+              <% else %>
+              <%= image_tag "wizard_hat.png", alt:"photo", class: "img-responsive" %></a>
+              <% end %>
+            <%= link_to friend.profile.full_name, friend, class: "btn btn-link wrap-text" %>
+          </div>
+          <% end %>
+          <% if idx<6 && friend == user.friended_users.last && idx != 2 && idx != 5 %>
+          <!-- close the row -->
+            </div>
+          <% end %>
+        <% end %>
+        <!--Row 3--> 
+      <% if user.friended_users.count > 6 %>
+      <div class="row centered-text">
+        <button type="button" class="btn btn-link">
+          <%= link_to "See More Friends", user_friends_path(user) %>
+        </button>
+      </div><!--Row 3 end-->
+      <% end %>
+      </div>
+    </section>
+    </div><!--col-md-5 end-->
+    <!--Right column-->
+    <div class="col-md-7">

@@ -1,0 +1,15 @@
+    <%= form_tag session_path, :class => "navbar-form navbar-right" do %>
+        <div class="form-group">
+          <%= label_tag :email, nil, :class => "control-label header-label" %>
+          <br>
+          <%= text_field_tag :email, nil, :class => "form-control header-input" %>
+        </div>
+        <div class="form-group">
+          <%= label_tag :password, nil, :class =>"control-label  header-label" %>
+          <br>
+          <%= password_field_tag :password, nil, :class => "form-control header-input" %>
+        </div>
+        <%= submit_tag "Log in", :class => "btn btn-default header-submit" %>
+      <% end %>
+     
+  

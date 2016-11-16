@@ -1,0 +1,70 @@
+<div class="container-fluid about-page">
+  <%= render :partial => "static_pages/main_nav", :locals => {profile: @profile} %>
+  <!--main photo-->
+ <%= render :partial => "static_pages/main_photo", :locals=>{:profile=> @profile, :user => @user} %>
+  
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      
+      <!--middle navigation-->
+<%= render :partial => "static_pages/middle_nav", :locals => {:page=>"friends", :user => @user} %>
+  
+  <div class="row friend-container">
+      <div class="col-md-12">
+        <div class="row friend-header">
+          <div class="col-md-12">
+        Friends
+      </div>
+    </div>
+ 
+<!--Friends box-->
+
+<% @user.friended_users.each_with_index do |friend, idx| %>
+<!-- begin the row -->
+  <% if idx%2 == 0 %>
+<!--Row 1-->
+<div class="row">
+  <div class="col-md-6">
+    <div class="friend-box">
+      <% if friend.profile_pic %>
+        <%= image_tag friend.profile_pic.avatar.url(:thumb), alt: "photo", class: "friend-image" %>
+        <% else %>
+        <%= image_tag "wizard_hat.png", alt:"photo", class: "friend-image" %></a>
+        <% end %>
+        <div class="friend-name">
+          <p><%= link_to friend.profile.full_name, friend %></p>
+          <p class="stats"><%= friend.friended_users.count %> Friends</p>
+        </div>
+        <% if authorized_user? %>
+        <%= link_to "Unfriend me", friendings_path(:id => friend.id), :method => "Delete", :class => "btn btn-default unfriend" %>
+        <% end %>
+    </div>
+  </div>
+  <% if friend == @user.friended_users.last %>
+    </div>
+  <% end %>
+<!-- close the row -->
+  <% else %>
+    <div class="col-md-6">
+    <div class="friend-box">
+    <% if friend.profile_pic %>
+      <%= image_tag friend.profile_pic.avatar.url(:thumb), alt: "photo", class: "friend-image" %>
+    <% else %>
+      <%= image_tag "wizard_hat.png", alt:"photo", class: "friend-image" %></a>
+    <% end %>
+      <div class="friend-name">
+          <p><%= link_to friend.profile.full_name, friend %></p>
+          <p class="stats"><%= friend.friended_users.count %> Friends</p>
+        </div>
+        <% if authorized_user? %>
+        <%= link_to "Unfriend me", friendings_path(:id => friend.id), :method => "Delete", :class => "btn btn-default unfriend" %>
+        <% end %>
+    </div>
+  </div>
+</div>
+  <% end %>
+<% end %>
+
+</div>
+</div>
+</div>

@@ -1,0 +1,35 @@
+   <!--middle navigation-->
+      <div class="row menu-bar">
+        <div class="col-md-8 col-md-offset-2 centered-text">
+        <div class="btn-group" role="group" aria-label="menu-bar">
+          <button type="button" class="btn btn-default <%= 'active' if page == 'timeline' %>">
+             <%= link_to "Timeline", user_posts_path(user) %>
+          </button>
+          <button type="button" class="btn btn-default <%= 'active' if page == 'about' || page == 'about_edit' %>">
+            <%= link_to "About", user %>
+          </button>
+          <button type="button" class="btn btn-default <%= 'active' if page == 'photos' %>">
+            <%= link_to "Photos(#{user.photos.count})", user_photos_path(user) %>
+          </button>
+          <button type="button" class="btn btn-default <%= 'active' if page == 'friends' %>">
+            <%= link_to "Friends(#{user.friended_users.count})", user_friends_path(user) %>
+            </button>
+        </div>
+      </div>
+    
+      <% unless page == 'about_edit' %>
+      <div class="col-md-2">
+        <% if authorized_user? %>
+          <button type="button" class="btn btn-link">
+            <%= link_to "Edit Profile", edit_user_path(user) %>
+          </button>
+        <% else %>
+          <% if current_user.friended_users.pluck(:id).include?(user.id) %>
+            <%= link_to "Unfriend #{user.name}", friendings_path(:id => user.id), :method => "Delete", :class => "btn btn-link" %>
+          <% else %>
+            <%= link_to "Friend #{user.name}", friendings_path(:id => user.id), :method => "Post", :class => "btn btn-link" %>
+          <% end %>
+        <% end %>
+      </div>
+      <% end %>
+    </div>

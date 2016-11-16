@@ -1,0 +1,5 @@
+<div class="posts-container">
+  <% posts.each do |post| %>
+    <%= render :partial => "shared/post", :locals => {:post => post, :user => user, :comment => comment} %>
+  <% end %>
+</div> 

@@ -1,0 +1,4 @@
+<%= form_for [user,photo] do |photo_fields| %>
+  <%= photo_fields.file_field :avatar %>
+  <%= photo_fields.submit "Add a photo!" %>
+<% end %>

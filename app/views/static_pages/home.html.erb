@@ -1,0 +1,21 @@
+  <!--Header-->
+  <%= render :partial => "static_pages/homepage_navbar" %>
+<!--main content-->
+  <main class="container">
+    <div class="row">
+      <!--left side, text-->
+      <div class="col-sm-6 col-sm-offset-1 teaser">
+        <h2><span>Connect with all your friends!</span></h2>
+        <ul>
+          <li><span>See photos and updates</span> in your news feed</li>
+          <li><span>Post your status for the world to see</span> from your profile</li>
+          <li><span>Get in touch with your friends</span> by "friending" them</li>
+          <li><span>Like things</span> because you're a positive person!</li>
+        </ul>
+      </div>
+      <!--sign up form-->
+      <%= render :partial => "static_pages/sign_up_form", :locals=>{:user => @user} %>
+    </div>
+  </main>
+  <!--filling in years-->
+  

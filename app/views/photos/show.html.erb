@@ -1,0 +1,106 @@
+<div class="container-fluid about-page">
+  <%= render :partial => "static_pages/main_nav", :locals => {profile: @profile} %>
+  <!--main photo-->
+   <%= render :partial => "static_pages/main_photo", :locals=>{:profile=> @profile, :user => @owner} %>
+  
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      
+      <!--middle navigation-->
+     <%= render :partial => "static_pages/middle_nav", :locals => {:page=>"photos", :user => @owner} %>
+<!--Main box-->
+    <div class="row friend-container">
+      <div class="col-md-12">
+        <div class="row friend-header">
+          <div class="col-md-12">
+        Photos
+        </div>
+      </div>
+    </div>
+<div class="row">
+  <div class = "col-md-4 col-md-offset-4">
+  <%= image_tag(@photo.avatar.url(:medium)) %>  
+  </div>
+</div>
+
+
+
+<div class="like-comment-container comment-border">
+  <div class="like-text" data-id="<%= @photo.id %>" data-type="Photo">
+    <% if current_user_liked(@photo) %>
+      <%= link_to "Unlike", photo_like_path(@photo, find_like(@photo)), remote: true, method: :delete %>
+      <% else %>
+        <%= link_to "Like", photo_likes_path(@photo), method: :post, remote: true, class: "post-reaction" %>
+    <% end %>
+  </div>
+  <a class="comment-button post-reaction" data-id="<%= @photo.id %>" href="#">Comment<a>
+    <% if authorized_user?(@owner) %>
+      <%= link_to "Delete", user_photo_path(@owner,@photo), method: :delete, class: "post-reaction delete" %>
+      <%= form_for @photo, class: "post-reaction delete" do |f| %>
+        <%= f.hidden_field :profile, :value=>false %>
+        <%= f.hidden_field :cover, :value => false %>
+        <%= f.label :profile, "Make profile picture" %>
+        <%= f.check_box :profile, {}, true, false %>
+        <%= f.label :cover, "Make cover photo" %>
+        <%= f.check_box :cover, {}, true, false%>
+        
+        <%= f.submit %>
+      <% end %>
+    <% end %>
+      <p class="reaction-text clear like-container" data-id="<%= @photo.id %>" data-type="Photo">
+         <%= likes_display(@photo) %>
+      </p>
+</div>
+<div class="comments-container" data-id="<%= @photo.id %>" data-type="Photo">
+<% @photo.comments.each do |comment| %>
+<% unless comment.id == nil %>
+   <div class="like-comment-container comment-border-grey" data-id="<%= comment.id %>">
+   <% if comment.user.profile_pic %>
+    <%= image_tag comment.user.profile_pic.avatar.url(:comment), alt: "friend's picture", class:  "side-image small-image" %>
+    <% else %>
+    <%= image_tag "wizard_hat.png", alt:"friend's picture", class: "side-image small-image" %>
+    <% end %>
+  <div class="side-text small-text">
+    <p class="comment-format">
+      <%= link_to comment.user.profile.full_name, comment.user %>
+    </p>
+    <p class="comment-format post-date">
+      Said on <%= comment.posted_date %>:
+    </p>
+  </div>
+  <p class="comment-text post-text">
+    <%= comment.body %>
+  </p>
+  <div class="comment-text like-comment-container">
+    <div class="like-text" data-id="<%= comment.id %>" data-type="Comment">
+      <% if current_user_liked(comment) %>
+        <%= link_to "Unlike", comment_like_path(comment, find_like(comment)), method: :delete, remote: true, class: "comment-format post-reaction" %>
+      <% else %>
+        <%= link_to "Like", comment_likes_path(comment), method: :post, remote: true, class: "comment-format post-reaction" %>
+      <% end %>
+    </div>
+      <p class="comment-format reaction-text like-container" data-id="<%= comment.id %>" data-type="Comment">
+        <%= likes_display(comment) %>
+      </p>
+    <% if can_delete_comment?(comment) %>
+      <%= link_to "Delete", photo_comment_path(@photo,comment), method: :delete, remote: true, class: "post-reaction delete" %>
+    <% end %>
+  </div>
+ </div>
+ <% end %>
+<% end %>
+</div>
+<div class="com-form like-comment-container no-border" data-id="<%= @photo.id %>">
+  <%= form_for [@photo, @comment], remote: true, :html => {:class => "comment-form"} do |comment_fields| %>
+  <%= comment_fields.text_area :body, cols: 70, rows: 3, placeholder: "Write a comment...", class: "comment-textarea" %>
+  <div class="comment-button-container">
+    <%= comment_fields.submit "Comment", class: "btn btn-primary", id: "comment-btn" %>
+  </div>
+  <% end %>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+    

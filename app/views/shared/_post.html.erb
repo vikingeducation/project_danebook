@@ -1,0 +1,49 @@
+<% if post.id %>
+  <div class="post-box" data-id="<%= post.id %>">
+  <% if post.user.profile_pic %>
+    <%= image_tag post.user.profile_pic.avatar.url(:comment), alt: "friend's picture", class:  "side-image small-image" %>
+  <% else %>
+    <%= image_tag "wizard_hat.png", alt:"friend's picture", class: "side-image small-image" %>
+  <% end %>
+    <div class="side-text small-text">
+      <p>
+        <%= link_to post.user.profile.full_name, user_path(post.user) %>
+      </p>
+      <p class="post-date" href="#">
+        Posted on <%= post.posted_date %>
+      </p>
+    </div>
+  <p class="post-text">
+    <%= post.body %>
+  </p>
+<div class="like-comment-container comment-border">
+  <div class="like-text" data-id="<%= post.id %>" data-type="Post">
+    <% if current_user_liked(post) %>
+      <%= link_to "Unlike", post_like_path(post, find_like(post)), method: :delete, remote: true %>
+    <% else %>
+      <%= link_to "Like", post_likes_path(post), method: :post, remote: true, class: "post-reaction" %>
+    <% end %>
+  </div>
+  <a class="comment-button post-reaction" data-id="<%= post.id %>"href="#">Comment<a>
+  <% if authorized_user?(post.user) %>
+  <%= link_to "Delete", user_post_path(user,post), method: :delete, remote: true, class: "post-reaction delete" %>
+  <% end %>
+    <p class="reaction-text clear like-container" data-id="<%= post.id %>" data-type="Post">
+      <%= likes_display(post) %>
+    </p>
+</div>
+<div class="comments-container" data-id="<%= post.id %>" data-type="Post">
+  <% post.comments.each do |comment| %>
+    <%= render :partial => "shared/comment", :locals => {:comment => comment, :post => post} %>
+  <% end %>
+</div>
+<div class="com-form like-comment-container no-border" data-id="<%= post.id %>">
+  <%= form_for [post, comment], remote: true, :html => {:class => "comment-form"} do |comment_fields| %>
+    <%= comment_fields.text_area :body, cols: 70, rows: 3, placeholder: "Write a comment...", class: "comment-textarea" %>
+<div class="comment-button-container">
+  <%= comment_fields.submit "Comment", class: "btn btn-primary", id: "comment-btn" %>
+</div>
+  <% end %>
+</div>
+</div>
+<% end %>

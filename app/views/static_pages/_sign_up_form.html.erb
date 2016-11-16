@@ -1,0 +1,63 @@
+<div class="col-sm-4">
+  <h1>Sign Up</h1>
+    <%= form_for user do |user_fields| %>
+          <!--First and Last Name-->
+          <%= user_fields.fields_for :profile_attributes do |profile_fields| %>
+          <div class="row">
+            <div class="col-sm-6">
+
+              <%= profile_fields.text_field :first_name, placeholder: "First Name", class: "sign-up-form" %>
+              <%= user.errors["profile.first_name"] if user.errors["profile.first_name"].any? %>
+            </div>
+            <div class="col-sm-6">
+              <%= profile_fields.text_field :last_name, placeholder: "Last Name", class: "sign-up-form" %>
+              <%= user.errors["profile.last_name"] if user.errors["profile.first_name"].any? %>
+            </div>
+          </div>
+          <%# end %>
+          <!--email-->
+          
+          <div class="row">
+            <div class="col-sm-12">
+              <%= user_fields.text_field :email, placeholder: "Your Email", class: "sign-up-form" %>
+              <%= user.display_errors("email")%>
+            </div>
+          </div>
+          <!--Your New Password-->
+          <div class="row">
+            <div class="col-sm-12">
+              <%= user_fields.password_field :password, placeholder: "Your New Password", class: "sign-up-form" %>
+              <%= user.display_errors("password") %>
+            </div>
+          </div>
+          <!--Confirm Password-->
+          <div class="row">
+            <div class="col-sm-12">
+              <%= user_fields.password_field :password_confirmation, placeholder: "Confirm Your Password", class: "sign-up-form" %>
+            </div>
+          </div>
+          <h2>Birthday</h2>
+          <%# fields_for :profile do |profile_fields| %>
+          <div class="row">
+            <%= date_wrap_open %>
+              <%= profile_fields.date_select(:birthday, {:start_year => 1916, :end_year => 2000, :order => [:month, :day, :year], :default =>{year: 2000}, :date_separator => date_separator }, {:class => 'form-control'}) %>
+            <%= date_wrap_close %>
+          </div>
+          <%# end %>
+          <!--gender buttons-->
+          <%# fields_for :profile do |profile_fields| %>
+          <div class="row gender">
+            <div class="col-sm-4">
+              <%= profile_fields.label :gender, "Female"%>
+              <%= profile_fields.radio_button :gender, "female" %>
+            </div>
+            <div class="col-sm-4">
+              <%= profile_fields.label :gender, "Male" %>
+              <%= profile_fields.radio_button :gender, "male" %>
+              <%= user.errors["profile.gender"] if user.errors["profile.gender"].any? %>
+            </div>
+          </div>
+          <% end %>
+          <%= user_fields.submit "Sign Up!", class: "btn btn-success sign-up-btn" %>
+        <% end %>
+      </div>

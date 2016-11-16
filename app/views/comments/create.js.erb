@@ -1,0 +1,9 @@
+console.log("begin create comment");
+var $newComment = $("<%= j(render :partial => 'shared/comment', :locals => {:resource => @commentable, :comment => @comment}) %>");
+console.log("rendered the comment partial");
+$(".comments-container[data-id='<%= @commentable.id %>'][data-type='<%= @comment.commentable_type%>']").append($newComment);
+console.log("added to DOM");
+$newComment.hide();
+$newComment.fadeIn(2000);
+$(".comment-textarea").val("");
+console.log("Done with create comment");

@@ -1,0 +1,20 @@
+<h1>Welcome!</h1>
+
+<p>
+  Hi <%= @user.name %>, welcome to Danebook!
+</p>
+
+<p>
+  Here are some things you can do to get started:
+  <ul>
+    <li>
+    Fill out your <%= link_to "profile", user_url(@user.id) %> so that others can learn more about you!
+    </li>
+    <li>
+      Go to your <%= link_to "timeline", user_posts_url(@user.id) %> and write your first post!
+    </li>
+    <li>
+      Go to you <%= link_to "photos", user_photos_url(@user.id) %> and upload some pictures. You can also choose your profile and cover photos here.
+    </li>
+  </ul>
+</p>

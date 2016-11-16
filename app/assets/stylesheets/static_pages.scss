@@ -1,0 +1,344 @@
+// Place all the styles related to the static_pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+body {
+  font-family: 'Nunito',sans-serif;
+}
+
+.about-page {
+  padding-top: 50px;
+}
+
+.header-bar {
+  background-color: #3b5998;
+}
+
+.navbar-default .big-logo {
+  color: white;
+  font-size: 48px;
+  margin: 10px;
+}
+
+.header-label {
+  color: white;
+}
+
+.header-input {
+  border: 2px solid black;
+  border-radius: 0;
+}
+
+.header-submit {
+  background-color: #39f;
+  border-radius: 0;
+  border-color: black;
+  margin-top: 17px;
+}
+
+.teaser {
+  margin-top: 50px;
+  line-height: 3;
+}
+
+.teaser li {
+  color: #666;
+  font-size: 18px;
+}
+
+.teaser span {
+  font-weight: bold;
+}
+
+.sign-up-form {
+  margin-top: 10px;
+  width: 100%;
+}
+
+.gender {
+  margin-top: 10px;
+}
+
+.sign-up-btn {
+  margin-top: 10px;
+  font-size: 20px;
+  width: 100%;
+}
+
+.search-bar {
+  width: 100%;
+}
+.search-bar .search-bar {
+  width: 100%;
+}
+
+#flag {
+  height: 100%;
+}
+
+#brand-link {
+  padding: 0;
+}
+
+#user-name, #title-text, #logout, #profile-name{
+  color: white;
+}
+
+#search-field {
+  margin-left: -50px;
+  margin-right: 50px;
+}
+
+.cover-photo {
+  text-align: center;
+  position: relative;
+}
+
+#profile-pic {
+  position: absolute;
+  bottom: -5%;
+  left: 12%;
+}
+
+#big-profile-name {
+  position: absolute;
+  bottom: 0;
+  left: 33%;
+  color: white;
+}
+
+#about-user-name {
+  color: white;
+  font-size: 25px;
+}
+
+.menu-bar {
+  border: 1px solid black;
+}
+
+.about-header div {
+  text-align: center;
+  font-size: 24px;
+  background-color: #ddd;
+}
+
+.edit-button {
+  background-color: #39f;
+  border-radius: 0;
+  border-color: black;
+  color: white;
+  float: right;
+}
+
+.about-container {
+  border: 2px solid black;
+  margin-top: 10px;
+}
+
+#text-description {
+  padding-right: 5%;
+}
+
+#information {
+  padding-left: 5%;
+}
+
+#save_changes {
+  width: 50%;
+}
+
+.post-box {
+  border: 2px solid black;
+  margin-top: 40px;
+}
+
+.centered-text {
+  text-align: center;
+}
+
+.post-title {
+  border-bottom: 2px solid black;
+  background-color: #e6e6e6;
+  margin-top: 0;
+}
+
+.post-button-container {
+  border-top: 2px solid black;
+  background-color: #e6e6e6;
+  padding: 3px;
+  text-align: right;
+}
+
+/* these are from the old file. may need media queries*/
+.small-image {
+  width: 58px;
+  height: 54px;
+}
+
+.side-image {
+  display: inline-block;
+  margin: 2px 0px 0px 2px;
+  border: 1px solid black;
+}
+
+.small-text {
+  margin: 18px 15px;
+}
+
+.side-text {
+  display: inline-block;
+}
+.side-text p {
+  font-size: 12px;
+}
+
+.post-date {
+  color: gray;
+}
+
+.post-text {
+  padding: 10px;
+  font-size: 12px;
+}
+
+.like-comment-container {
+  font-size: 12px;
+  line-height: 20px;
+  background-color: #e6e6e6;
+  padding: 3px;
+}
+
+.comment-border {
+  border-top: 2px solid black;
+}
+
+.post-reaction {
+  margin-left: 10px;
+}
+
+.delete {
+  float: right;
+  margin-right: 10px;
+}
+
+.clear {
+  clear: both;
+}
+
+.reaction-text {
+  margin-left: 10px;
+  color: gray;
+}
+
+.comment-border-grey {
+  border-top: 2px solid gray;
+}
+
+.comment-format {
+  display: inline-block;
+}
+
+.comment-text {
+  margin-left: 65px;
+  border: none;
+}
+
+.comment-form {
+  text-align: center;
+}
+
+.comment-button-container {
+  text-align: right;
+}
+
+.left {
+  float: left;
+}
+
+.box-border {
+  border: 2px solid black;
+  margin-top: 10px;
+}
+
+.box-header {
+  background-color: #e6e6e6;
+  border-bottom: 2px solid black;
+}
+
+.box-title {
+  margin-top: 10px;
+}
+
+.wrap-text {
+  white-space: normal;
+}
+
+.friend-image {
+  display: inline-block;
+  margin: 4px;
+  width: 90px;
+  height: 90px;
+  background: white;
+  border: 1px solid black;
+}
+
+.friend-name {
+  display: inline-block;
+  margin-left: 10px;
+}
+
+.stats {
+  color: gray;
+}
+
+.unfriend {
+  background-color: #e6e6e6;
+  margin: 0px 20px;
+}
+
+.friend-box {
+  border: 2px solid black;
+  margin-top: 10px;
+}
+
+.friends-main {
+  border: 2px solid black;
+  margin-top: 10px;
+  padding: 0 15px 10px;
+}
+
+.friend-container {
+  border: 2px solid black;
+  margin-top: 10px;
+}
+
+.friend-header {
+  text-align: center;
+  font-size: 24px;
+  background-color: #ddd;
+  margin-bottom: 10px;
+  border-bottom: 2px solid black;
+}
+
+.thumbnail {
+  position: relative;
+}
+
+.hover-text {
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  opacity: 0;
+  -webkit-transition: opacity 500ms;
+  -moz-transition: opacity 500ms;
+  -o-transition: opacity 500ms;
+  transition: opacity 500ms;
+}
+
+.thumbnail:hover .hover-text {
+  opacity: 1;
+}
+

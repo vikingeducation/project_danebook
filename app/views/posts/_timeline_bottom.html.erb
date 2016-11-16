@@ -1,0 +1,16 @@
+<div class="posts-container">
+  <% if user.posts.empty? %>
+  <h4 class="centered-text">
+    <%= user.profile.first_name %> has no posts yet!
+  </h4>
+  <% end %>
+  <% posts.each do |post| %>
+    <%= render :partial => "shared/post", :locals => {:post => post, :user => user, :comment => comment} %>
+  <% end %>
+</div>
+</div> 
+      <!--col-md-7 end-->
+    </div><!--row end-->
+    </div>
+  </div>
+</div>

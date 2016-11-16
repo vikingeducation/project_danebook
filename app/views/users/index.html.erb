@@ -1,0 +1,37 @@
+<div class="container-fluid about-page">
+  <%= render :partial => "static_pages/main_nav", :locals => {profile: @profile} %>
+<div class="row">
+<div class="col-md-10 col-md-offset-1">
+  <div class="row friend-container">
+      <div class="col-md-12">
+        <div class="row friend-header">
+          <div class="col-md-12">
+            Search Results
+          </div>
+        </div>
+    <% @profiles.each do |profile| %>
+    <% unless profile.user.nil? || profile.user == current_user %>
+    <div class="col-md-12">
+      <div class="friend-box">
+      <% if profile.user.profile_pic %>
+        <%= image_tag profile.user.profile_pic.avatar.url(:thumb), alt: "photo", class: "friend-image" %>
+        <% else %>
+        <%= image_tag "wizard_hat.png", alt:"photo", class: "friend-image" %></a>
+        <% end %>
+        <div class="friend-name">
+          <p><%= link_to profile.full_name, profile.user %></p>
+          <p class="stats"><%= profile.user.friended_users.count %> Friends</p>
+        </div>
+        <% if current_user.friended_users.pluck(:id).include?(profile.user.id) %>
+         <%= link_to "Unfriend me", friendings_path(:id => profile.user.id), :method => "Delete", :class => "btn btn-default unfriend" %>
+        <% else %>
+          <%= link_to "Friend me", friendings_path(:id => profile.user.id), :method => "Post", :class => "btn btn-link" %>
+        <% end %>
+      </div>
+    </div>
+    <% end %>
+    <% end %>
+  </div>
+</div>
+</div>
+</div>

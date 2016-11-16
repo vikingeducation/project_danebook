@@ -1,0 +1,94 @@
+<div class="container-fluid about-page">
+  <%= render :partial => "static_pages/main_nav", :locals=>{:profile => @profile} %>
+  <!--main photo-->
+    <%= render :partial => "static_pages/main_photo", :locals=>{:profile=>@profile, :user=> @user} %>
+  
+  <div class="row">
+    <div class="col-md-10 col-md-offset-1">
+      
+      <!--middle navigation-->
+     <%= render :partial => "static_pages/middle_nav", :locals => {:page=>"about_edit", :user => @user} %>
+    <!--about section-->
+    <section class="row about-container">
+      <div class="about-header">
+        <div class="col-md-12">
+          <h2>Edit Profile</h2>
+        </div>
+      </div>
+  <!--about section end-->
+    <!--main text-->
+  <!-- form starts -->
+  <%= form_for @user do |user_fields| %>
+    <%= user_fields.fields_for :profile_attributes, @profile do |profile_fields| %> 
+    <div class="row">
+      <!--left side-->
+      <div class="col-md-5" id="information">
+        <div class="basic-information">
+        <h2>Basic Information</h1>
+        <table class="information-table">
+          <tr>
+            <td>Birthday:</td>
+            <td>
+              <%= @profile.birthday.strftime("%B %-d %Y") %>
+            </td>
+          </tr>
+          <tr>
+            <td>College:</td>
+            <td><%= profile_fields.text_field :college %></td>
+          </tr>
+          <tr>
+            <td>Hometown:</td>
+            <td><%= profile_fields.text_field :hometown %></td>
+          </tr>
+          <tr>
+            <td>Currently Lives:</td>
+            <td><%= profile_fields.text_field :currently_lives %></td>
+          </tr>
+        </table>
+      </div>
+      <div class="contact-information">
+        <h2>Contact Information</h1>
+        <table class="information-table">
+          <tr>
+            <td>Email:</td>
+            <td><%= user_fields.text_field :email %></td>
+          </tr>
+          <tr>
+            <td>Telephone:</td>
+            <td><%= profile_fields.text_field :telephone %></td>
+          </tr>
+        </table>
+      </div>
+      </div>
+      <!--right side-->
+      <div class="col-md-7" id="text-description">
+        <div class="words-to-live-by">
+      <h2>Words to Live By</h1>
+      <p><%= profile_fields.text_area :words_to_live_by, {rows: 2, cols: 50} %></p>
+    </div>
+    <div class="about-me">
+      <h2>About Me</h1>
+       <p><%= profile_fields.text_area :about_me, {rows: 5, cols: 50} %></p>
+    </div>
+    <%= profile_fields.hidden_field :first_name, :value => @profile.first_name %>
+    <%= profile_fields.hidden_field :last_name, :value => @profile.last_name %>
+    <%= profile_fields.hidden_field :gender, :value => @profile.gender %>
+    <%= profile_fields.hidden_field :birthday, :value => @profile.birthday %>
+    </div><!--main text end-->
+    <% end %>
+    <!-- end of fields for -->
+    <!-- Save Changes button -->
+    <div class="row">
+      <div class="col-md-8 col-md-offset-3">
+        <%= user_fields.submit "Save Changes", {class: "btn btn-primary btn-lg", id: "save_changes"} %>
+      </div>
+    </div>
+    <% end %>
+    <!-- form ends -->
+  </section>
+  </div>
+</div>
+    
+
+
+</div>

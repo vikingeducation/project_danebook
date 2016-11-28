@@ -1,0 +1,17 @@
+<div id = "profile-nav" class = "row">
+  <div class = "col-md-7 col-md-offset-3">
+    <ul class = "nav nav-tabs " role = "profile-nav">
+      <li><%= link_to "Timeline", user_timeline_path(@user) %></li>
+      <li><%= link_to "About", user_path(@user) %></li>
+      <li><%= link_to "Photos (123)", photos_path  %></li>
+      <li><%= link_to "Friends (542)", friends_path %></li>
+  </div>
+
+  <% if current_user %>
+    <div class = "col-md-2">
+      <ul class = "nav">
+      <li><%= link_to "Edit Profile", edit_user_profile_path(@user), class: 'edit-profile-link' %></li>
+      </ul>
+    </div>
+  <% end %>
+</div>

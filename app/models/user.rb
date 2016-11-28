@@ -6,6 +6,9 @@ class User < ApplicationRecord
   has_one :profile, dependent: :destroy
   accepts_nested_attributes_for :profile, :reject_if => :all_blank, :allow_destroy => true
 
+  has_many :posts, :foreign_key => :user_id
+  accepts_nested_attributes_for :posts, :reject_if => :all_blank, :allow_destroy => true
+
   has_secure_password
 
   validates :password, :length => { :in => 3..24 }, :allow_nil => true
@@ -23,6 +26,14 @@ class User < ApplicationRecord
     self.auth_token = nil
     generate_token
     save!
+  end
+
+  def name
+    "#{first_name} #{last_name}"
+  end
+
+  def posts_chronologically
+    posts.order("created_at DESC")
   end
 
 end

@@ -28,8 +28,8 @@
 
       <ul class="nav navbar-nav navbar-right">
         <% if current_user %>
-          <li  class="hidden-sm pull-right"><a href="about.html" id="navbar-username"><%= current_user.first_name %></a></li>
-          <li><%= link_to "Log Out", logout_path, method: :delete %></li>
+          <li  class="hidden-sm"><%= link_to "#{current_user.name}", user_profile_path(current_user), id: "navbar-username" %></li>
+          <li class='hidden-sm pull-right'><%= link_to "Log Out", logout_path, method: :delete %></li>
         <% else %>
           <li class="hidden-sm pull-right"><%= link_to "Log In", login_path %></li>
         <% end %>

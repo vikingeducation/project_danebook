@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get 'friends', to: 'static_pages#friends', as: 'friends'
   get 'photos', to: 'static_pages#photos', as: 'photos'
 
-  resources :likes, only: [:create, :destroy]
+  resources :likes, :comments, only: [:create, :destroy]
 
   resources :posts, only: [:show, :create, :destroy]
 

@@ -9,8 +9,10 @@ class User < ApplicationRecord
   has_many :posts, :foreign_key => :user_id
 
   has_many :likes
+  has_many :comments
 
   has_many :liked_posts, through: :likes, source: :likable, source_type: "Post"
+  has_many :liked_comments, through: :likes, source: :likable, source_type: "Comment"
 
   has_secure_password
 

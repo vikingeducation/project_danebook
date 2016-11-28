@@ -7,7 +7,7 @@ class Like < ApplicationRecord
 
   validates :user, uniqueness: { scope: [:likable_id, :likable_type] }
   validates :user, :likable, presence: true
-  validates :likable_type, inclusion: ["Post"]
+  validates :likable_type, inclusion: ["Post", "Comment", "Photo"]
 
   LIKABLES = [:posts, :comments, :photos]
 end

@@ -21,7 +21,7 @@
       <section class='col-sm-12 like-section'>
         <div class='row'>
           <div class='col-sm-1'>
-            <a class='col-sm-2 comment-link' href='#'>Like</a>
+            <%= like_link(post) %>
           </div>
 
           <a class='col-sm-2 comment-link' href='#'>Comment</a>
@@ -31,7 +31,7 @@
           <% end %>
 
           <div class='col-sm-12'>
-            Like sentence
+            <%= like_sentence(post) %>
           </div>
         </div>
       </section>

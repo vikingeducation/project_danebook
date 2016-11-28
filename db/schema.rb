@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161126040811) do
+ActiveRecord::Schema.define(version: 20161128085305) do
+
+  create_table "likes", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "likable_id"
+    t.string   "likable_type"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["likable_id", "likable_type", "user_id"], name: "index_likes_on_likable_id_and_likable_type_and_user_id", unique: true
+  end
 
   create_table "posts", force: :cascade do |t|
     t.text     "body",       null: false

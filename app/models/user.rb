@@ -7,7 +7,10 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :profile, :reject_if => :all_blank, :allow_destroy => true
 
   has_many :posts, :foreign_key => :user_id
-  accepts_nested_attributes_for :posts, :reject_if => :all_blank, :allow_destroy => true
+
+  has_many :likes
+
+  has_many :liked_posts, through: :likes, source: :likable, source_type: "Post"
 
   has_secure_password
 
@@ -34,6 +37,16 @@ class User < ApplicationRecord
 
   def posts_chronologically
     posts.order("created_at DESC")
+  end
+
+  def likes?(likable_obect)
+    Like::LIKABLES.any? do |likable_type|
+      self.send("liked_#{likable_type}").include?(likable_object)
+    end
+  end
+
+  def like_of(likable)
+    likes?(likable) ? likes.find_by(:likable_id => likable.id, :likable_type => likable.class.name) : nil
   end
 
 end

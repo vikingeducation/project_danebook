@@ -6,16 +6,17 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
 
   <body>
     <%= render partial: 'shared/navbar' %>
     <main class="container">
-      <%= render partial: 'shared/user_navbar' %>
+      <% if content_for?(:usernav) %>
+        <%= render partial: 'shared/user_navbar' %>
+      <% end %>
       <div class="row">
-        <section class="col-xs-12 post">
-          <%= yield %>
-        </section>
+        <%= yield %>
       </div>
     </main>
   </body>

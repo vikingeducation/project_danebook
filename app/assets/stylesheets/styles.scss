@@ -7,6 +7,7 @@ $nav-border: 1px solid rgba(0, 0, 0, .8);
 $content-border: 2px solid rgba(0, 0, 0, .8);
 $primary: #2b78e4;
 $font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+
 body {
   font-family: $font-family;
   padding: 50px 0 20px 0;
@@ -25,11 +26,11 @@ body {
   color: #000;
 }
 
-@import 'navbar';
-@import 'header';
-@import 'post';
-@import 'profile';
-@import 'gallery';
+@import 'partials/navbar';
+@import 'partials/header';
+@import 'partials/post';
+@import 'partials/profile';
+@import 'partials/gallery';
 
 
 #about {

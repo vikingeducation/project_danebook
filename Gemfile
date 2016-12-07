@@ -27,14 +27,14 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 gem 'bootstrap-sass'
 gem 'bcrypt', '~> 3.1.7'
-gem 'conversation_forms'
+gem 'conversation_forms', '~> 2.0.1'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
-  gem 'faker' '~> 1.6.6'
+  gem 'faker', '~> 1.6.6'
   gem 'jazz_fingers'
   gem 'pry-rails'
   gem 'bullet'

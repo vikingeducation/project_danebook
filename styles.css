@@ -1,0 +1,30 @@
+nav h1,
+nav h6 {
+  font-weight: bold;
+  color: white; }
+nav h1 {
+  font-size: 400%; }
+
+.navbar-default {
+  background-color: #3C5A99; }
+
+.right-side h1,
+.right-side h4 {
+  font-weight: bold; }
+
+.navbar-toggle {
+  margin-top: 25px; }
+
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #f3f0f0; }
+
+.short {
+  width: 200px; }
+
+.big-three {
+  width: 400px; }
+
+#email-login {
+  margin: 10px 0; }
+
+/*# sourceMappingURL=styles.css.map */

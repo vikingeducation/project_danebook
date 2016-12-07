@@ -1,8 +1,8 @@
 <% if flash.any? %>
   <div id="flash">
-    <% flash.keys each do |k| %>
+    <% flash.keys.each do |k| %>
       <div class="<%= k %>">
-        <%= flash[key] %>
+        <%= flash[k] %>
       </div>
     <% end %>
   </div>

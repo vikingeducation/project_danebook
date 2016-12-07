@@ -1,0 +1,87 @@
+/* global */
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+
+body {
+  font-family: "Comic Sans MS", sans-serif;
+}
+
+/* navbar */
+
+#top-nav {
+  background-color: #0054dd;
+  height: 75px;
+  .navbar-header {
+    margin-top: 12px;
+    .navbar-brand {
+      color: white;
+      font-size: 36px;
+    }
+  }
+  #navbar-form {
+    label {
+      color: white;
+      font-size: 12px;
+    }
+    input {
+      width: 100%;
+      border-radius: 0;
+      height: 30px;
+    }
+    .btn {
+      margin-top: 25px;
+      background-color: #ADD8E6;
+      text-align: center;
+      padding: 4px 12px;
+    }
+  }
+}
+
+/* content */
+
+.content {
+  padding-top: 78px;
+  h1 {
+    font-size: 30px;
+    font-weight: 600;
+  }
+  ul {
+    margin-left: 25px;
+    li {
+      line-height: 35px;
+      font-size: 16px;
+    }
+  }
+}
+
+/* sign up */
+
+.sign-up {
+  h1{
+    font-size: 48px;
+  }
+  h2 {
+    font-size: 17px;
+    font-weight: 600;
+  }
+  input {
+    border-radius: 0;
+    border:1px solid #cccccc;
+    margin-top: 20px;
+  }
+  .first-name {
+    margin-right: 30px;
+  }
+  .name-field {
+    width: 163px;
+  }
+  .wide-input, button {
+    width: 100%;
+  }
+  button {
+    height: 30px;
+    border-radius: 0;
+    border: 1px solid black;
+    margin-top: 15px;
+  }
+}

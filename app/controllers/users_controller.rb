@@ -10,7 +10,7 @@ class UsersController < ApplicationController
       flash[:success] = "Welcome to Danebook!"
       redirect_to @user
     else
-      flash.now[:error] = "You dun goofed."
+      flash.now[:danger] = "You dun goofed."
       render :new
     end
   end

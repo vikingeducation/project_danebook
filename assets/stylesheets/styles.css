@@ -1,0 +1,113 @@
+.pts, .panel-heading .panel-title, .navbar-header span, .navbar-right li a {
+  color: white !important; }
+
+.panel-heading {
+  background-color: #337ab7 !important; }
+
+.rs15 {
+  margin-top: 15px; }
+
+.rs30 {
+  margin-top: 30px; }
+
+.rs45 {
+  margin-top: 45px; }
+
+body {
+  padding-top: 51px;
+  background-color: #eee; }
+
+.navbar-default {
+  background-color: #337ab7; }
+  .navbar-default .img-small {
+    width: 35px;
+    height: 35px;
+    display: inline-block;
+    margin-top: -6px; }
+
+.cover-banner {
+  height: 450px;
+  background-image: url("../images/hogwarts_small.jpg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  position: relative; }
+
+.mid-nav button {
+  height: 55px;
+  width: 55px; }
+
+.avatar-lg {
+  position: absolute;
+  bottom: 15px;
+  left: 15px; }
+  .avatar-lg img {
+    height: 225px; }
+  .avatar-lg a {
+    text-decoration: none; }
+  .avatar-lg h3 {
+    font-weight: 900;
+    text-shadow: 0px 0px 15px black;
+    font-size: 200%;
+    color: white; }
+
+.mid-title {
+  border: 2px solid black;
+  height: 80px; }
+  .mid-title h2 {
+    font-weight: bold; }
+  .mid-title a {
+    margin-top: 14px; }
+
+.bottom-box {
+  margin-bottom: 55px; }
+  .bottom-box input[type=text] {
+    width: 90%; }
+
+.post {
+  border: 2px solid black; }
+  .post header {
+    border-bottom: 2px solid black; }
+  .post footer {
+    border-top: 2px solid black; }
+    .post footer a {
+      margin: 15px 0 15px 0; }
+
+figure {
+  overflow: hidden;
+  height: 70px;
+  width: 70px;
+  display: inline-block; }
+  figure img {
+    display: inline-block; }
+
+.img-xs {
+  display: inline-block; }
+
+figcaption {
+  display: inline-block; }
+
+.word {
+  position: relative; }
+
+.img-caption:hover .pub-date {
+  visibility: visible; }
+
+.pub-date {
+  visibility: hidden;
+  background-color: black;
+  color: white;
+  bottom: -7px;
+  left: 3%;
+  width: 94%;
+  display: inline;
+  position: absolute;
+  border-radius: 5px; }
+
+.vertical-align {
+  position: absolute;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%); }
+
+/*# sourceMappingURL=styles.css.map */

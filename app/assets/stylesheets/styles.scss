@@ -1,0 +1,48 @@
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+
+$nav-font-color: #eee;
+$nav-font-hover-color: #fff;
+$nav-border: 1px solid rgba(0, 0, 0, .8);
+$content-border: 2px solid rgba(0, 0, 0, .8);
+$primary: #2b78e4;
+$font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+body {
+  font-family: $font-family;
+  padding: 50px 0 20px 0;
+}
+.btn-primary {
+  background-color: $primary;
+}
+.muted {
+  color: #999;
+}
+.right-gutter {
+  padding-right:2em
+}
+.btn.unfriend {
+  background: #ccc;
+  color: #000;
+}
+
+@import 'navbar';
+@import 'header';
+@import 'post';
+@import 'profile';
+@import 'gallery';
+
+
+#about {
+
+  .information, .personality, .submit-button {
+    margin-bottom:20px;
+  }
+  .submit-button {
+
+    .btn{
+    padding: 20px 0;
+      font-size:24px;
+    }
+
+  }
+}

@@ -1,0 +1,128 @@
+.post {
+  margin-top:20px;
+  border:$content-border;
+  border-radius:2px;
+  font-size: 14px;
+  color: #555;
+  h1,h2,h3 {
+      font-weight: bold;
+  }
+
+  .post-header {
+    border-bottom: $content-border;
+    background: #eee;
+    text-align:center;
+    font-size:24px;
+    padding:15px;
+    position:relative;
+
+
+    .edit-button {
+      position: absolute;
+      right: 15px;
+      top:15px;
+    }
+    
+    h1, h2, h3, h4, h5, h6, p {
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+  }
+  .post-content {
+    h3 {
+      margin: 30px 0 20px 0;
+    }
+  }
+
+  .post-footer {
+    padding:15px;
+    background: #eee;
+
+    a.public {
+      padding-right:15px;
+    }
+
+    .likes {
+      margin-top:15px;
+    }
+
+    .comments {
+
+      padding-top:15px;
+      background: #eee;
+      background-image: -webkit-linear-gradient(top, rgba(238,238,238,0) 0px, #999 2px, rgba(238,238,238,0) 0px);
+      background-image: -moz-linear-gradient(top, rgba(238,238,238,0) 0px, #999 2px, rgba(238,238,238,0) 0px);
+      background-image: -o-linear-gradient(top, rgba(238,238,238,0) 0px, #999 2px, rgba(238,238,238,0) 0px);
+      background-image: -ms-linear-gradient(top, rgba(238,238,238,0) 0px, #999 2px, rgba(238,238,238,0) 0px);
+      background-image: linear-gradient(top, rgba(238,238,238,0) 0px, #999 2px, rgba(238,238,238,0) 0px);
+
+      textarea {
+        margin-bottom:1em;
+      }
+    }
+  }
+
+  &.post-small {
+
+    .post-header, .post-footer {
+      padding:4px 15px;
+      font-size:14px;
+    }
+    .post-header {
+      h1, h2, h3, h4, h5, h6, p {
+        font-weight: bold;
+      }
+    }
+
+    .post-content {
+      padding:15px;
+      h3 {
+        margin: 30px 0 20px 0;
+      }
+    }
+
+  }
+
+  &.post-gutters {
+    .post-content {
+      padding:15px;
+    }
+  }
+
+  .comment {
+    width: calc(100% - 60px);
+    padding-left: 15px;
+
+    .muted {
+      padding-left:5px;
+    }
+    p {
+      margin:0;
+      padding-bottom: 1em;
+    }
+  }
+
+  dl{
+      dt, dd{
+        float:left;
+        width: 30%;
+      }
+      dd {
+        width: 70%;
+        margin-bottom:20px;
+      }
+      &:before, &:after{
+        display: table;
+        content: " ";
+      }
+      &:after {
+        visibility: hidden;
+        display: block;
+        font-size: 0;
+        content: " ";
+        clear: both;
+        height: 0;
+      }
+    }
+
+}

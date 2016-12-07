@@ -59,17 +59,44 @@
       <section class="sign-up col-md-4">
         <h1>Sign Up</h1>
         <aside class="sign-up-form">
-          <form action="#">
+<!--           <form action="#">
             <input type="text" placeholder='First Name' class='name-field first-name'>
             <input type="text" placeholder='Last Name' class='name-field'>
             <input type="text" placeholder="Your Email" class="wide-input">
             <input type="text" placeholder="Your New Password" class="wide-input">
-            <input type="text" placeholder="Confirm Your Password" class="wide-input">
+            <input type="text" placeholder="Confirm Your Password" class="wide-input"> -->
+          <%= form_for(@user) do |f| %>
+              <%= f.text_field :first_name,
+                class: "name-field first-name",
+                placeholder: "First Name" 
+              %>
+              <%= f.text_field :last_name,
+                class: "name-field",
+                placeholder: "Last Name" 
+              %>
+              <%= f.text_field :email,
+                class: "wide-input",
+                placeholder: "Email" 
+              %>
+              <%= f.text_field :password,
+                class: "wide-input",
+                placeholder: "Password" 
+              %>
+              <%= f.text_field :password_confirmation,
+                class: "wide-input",
+                placeholder: "Confirm Your Password" 
+              %>
 
-            <h2>Birthday</h2>
+              <h2>Birthday</h2>
+              <%= f.date_select :birthday, start_year: 1900 %>
+
+          <% end %>
+            
+
+            <!-- <h2>Birthday</h2>
             <select name="dob-month" id="dob-month">
               <option value="">Month</option>
-              <option value="">-----</option>
+              <option value="">-</option>
               <option value="01">January</option>
               <option value="02">February</option>
               <option value="03">March</option>
@@ -233,7 +260,7 @@
               <option value="1903">1903</option>
               <option value="1901">1901</option>
               <option value="1900">1900</option>
-            </select>
+            </select> -->
             <br>
             <input type="radio" name="gender" value="female"> Female
             <input type="radio" name="gender" value="male"> Male

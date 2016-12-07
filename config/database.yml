@@ -1,0 +1,5 @@
+development:
+  adapter: postgresql
+  database: danebook  
+  pool: 5                             
+  timeout: 5000                       

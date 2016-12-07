@@ -1,0 +1,480 @@
+/*
+=============================
+Global
+=============================
+*/
+
+.border-3d, .sub-navigation, .nav-about, .main-about {
+  border-bottom: 1px solid #333;
+  border-left: 1px solid #333;
+  border-right: 1px solid #333; }
+
+body {
+  padding-top: 50px;
+  padding-bottom: 20px; }
+  @media screen and (max-width: 600px) {
+    body {
+      width: 620px; } }
+
+.btn {
+  background-color: #2b78e4;
+  color: white;
+}
+
+.budge {
+  margin-left: 10px;
+}
+
+/*
+=============================
+Navigation
+=============================
+*/
+
+nav.navbar-custom {
+  background-color: #2b78e4;
+  border-bottom: 1px solid black; }
+nav.navbar-custom .logo-container img {
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  display: inline-block;
+  margin-top: -8px; }
+nav.navbar-custom .logo-container h3 {
+  display: inline-block;
+  margin-top: -8px; }
+nav.navbar-custom .navbar-header .navbar-brand {
+  color: white; }
+nav.navbar-custom .navbar-header button .icon-bar {
+  background-color: white; }
+nav.navbar-custom .navbar-header a.navbar-brand:hover {
+  color: black; }
+nav.navbar-custom form .form-group input {
+  width: 450px; }
+nav.navbar-custom ul li a {
+  color: white;
+  font-size: 18px; }
+nav.navbar-custom ul li a:hover {
+  color: black;
+  background-color: white; }
+#login-btn {
+  background-color: #5cb85c;
+}
+
+/*
+=============================
+Hero
+=============================
+*/
+
+.hero {
+  background: white url("hogwarts_small.jpg") no-repeat;
+  background-size: cover;
+  background-position: 0 60%;
+  height: 400px;
+  margin-bottom: 0; }
+.hero .avatar {
+  width: 250px;
+  height: 250px;
+  border: 8px double #222;
+  position: relative;
+  top: 45%;
+  left: 3%;
+  background: url("harry_potter_small.jpg"); }
+
+/*
+=============================
+Sub-Navigation
+=============================
+*/
+
+.sub-navigation {
+  background-color: white;
+  margin-left: 0px;
+  margin-right: 0px;
+  line-height: 40px; }
+.sub-navigation ul.nav.nav-pills {
+  margin-left: 280px;
+  font-size: 16px;
+  color: black; }
+.sub-navigation ul.nav.nav-pills li.active a {
+  background-color: #aaa;
+  border-radius: 0; }
+.sub-navigation ul li .badge {
+  color: #337ab7;
+  background-color: inherit; }
+.sub-navigation .edit-profile {
+  text-decoration: underline; }
+.sub-navigation .edit-profile a:hover {
+  background-color: inherit; }
+@media (max-width: 990px) {
+  .sub-navigation button.navbar-toggle {
+    display: block;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 18px;
+    text-align: center; } }
+@media (max-width: 990px) and (max-width: 420px) {
+  .sub-navigation button.navbar-toggle {
+    width: 155px; } }
+@media (max-width: 990px) {
+  .sub-navigation .navbar-collapse {
+    border-top: 1px solid transparent;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1); }
+  .sub-navigation .navbar-collapse.collapse {
+    display: none !important; }
+  .sub-navigation .collapse.in {
+    display: block !important; }
+  .sub-navigation ul li {
+    clear: both;
+    content: "";
+    margin: 0 auto;
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+    border-top: 1px solid black; }
+  .sub-navigation ul {
+    border: 1px solid black; } }
+
+/*
+=============================
+About
+=============================
+*/
+
+.nav-about {
+  background: #ccc;
+  text-align: center;
+  position: relative; }
+.nav-about h2 {
+  display: inline-block; }
+.nav-about a.btn {
+  display: inline-block;
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%); }
+
+table.tab-about {
+  font-size: 14px;
+  margin: -10px auto 0 auto;
+  width: 350px; }
+table.tab-about table caption {
+  text-align: left; }
+table.tab-about table.tab-about th {
+  font-weight: bold;
+  text-align: left;
+  padding-top: 10px;
+  width: 130px; }
+table.tab-about tr td {
+  padding-top: 10px;
+  padding-left: 5px;
+  width: 250px; }
+
+/*
+=============================
+About Edit
+=============================
+*/
+
+.main-about .input-group .form-control {
+  height: 28px;
+  width: 200px;
+  font-size: 13px; }
+.main-about textarea {
+  width: 90%;
+  min-height: 80px;
+  font-size: 12px;
+  color: gray;
+  text-align: left;
+  padding: 5px;
+  overflow: auto; }
+.main-about button.btn-save {
+  display: block;
+  margin: 180px auto;
+  width: 350px;
+  height: 80px;
+  font-size: 30px; }
+
+/*
+=============================
+Timeline
+=============================
+*/
+
+article section.post {
+  margin-top: 20px;
+  border: 2px solid black; }
+article section.post header.nav-post {
+  background-color: #ddd;
+  text-align: center;
+  border-bottom: 2px solid black; }
+article section.post header.nav-post h4 {
+  display: inline-block; }
+article section.post textarea {
+  width: 95%;
+  margin: 8px auto; }
+article section.post .container-fluid .row {
+  padding-top: 1em; }
+article section.post .nav-footer {
+  border-top: 2px solid black;
+  text-align: right;
+  background-color: #ddd;
+  padding: 5px;
+  min-height: 60px; }
+article section.post .nav-footer a {
+  display: inline-block;
+  margin-left: 5px;
+  margin-right: 5px; }
+article section.post .nav-footer .clearfix:after,
+article section.post .nav-footer .clearfix:before {
+  content: "";
+  clear: both; }
+article section.post .nav-footer .liked-box {
+  display: block;
+  text-align: left;
+  margin-top: 8px; }
+  article section.post .nav-footer .liked-box p {
+    display: inline-block; }
+article section.post .nav-bottom-link {
+  text-align: center;
+  margin: 6px 0; }
+article section.post .container-fluid .row div {
+  padding-left: 3px;
+  padding-right: 3px; }
+article section.post .post-body img {
+  width: 60px;
+  height: 60px;
+  margin: 8px;
+  display: inline-block; }
+article section.post .author-box {
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 5px;
+  width: 80%; }
+article section.post .author-box time {
+  display: block;
+  color: #666;
+  font-size: 12px; }
+article section.post .comment-area {
+  padding: 8px; }
+article section.post .unfolded {
+  background-color: #ddd; }
+article section.post .unfolded time {
+  display: inline-block; }
+article section.post .unfolded p,
+article section.post .unfolded .like-area {
+  display: inline-block;
+  padding-left: 75px;
+  width: 100%; }
+@media (min-width: 800px) {
+  article section.post .unfolded p,
+  article section.post .unfolded .like-area {
+    margin-top: -40px; } }
+article section.post .unfolded p a,
+article section.post .unfolded .like-area a {
+  margin-right: 10px; }
+article section.post .unfolded .liked-box {
+  margin-left: 30px; }
+article section.post .unfolded .form-group .nav-footer {
+  border-top: 0; }
+
+table.tab-timeline {
+  font-size: 12px;
+  margin: 5px 0 5px 10px; }
+table.tab-timeline tr th {
+  padding-top: 8px; }
+table.tab-timeline tr td {
+  padding-left: 8px;
+  padding-top: 8px; }
+
+/*
+=============================
+Photos
+=============================
+*/
+
+a time.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 50px;
+  width: 100%;
+  background-color: #999;
+  color: #FFF;
+  font-size: 1.5em;
+  text-align: center;
+  padding-top: 5px;
+  -moz-transition: all 0.4s;
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  transition: all 0.4s;
+  opacity: 0;
+  filter: Alpha(opacity=0);
+  border-radius: 4px; }
+
+a time.overlay:hover {
+  overflow: visible;
+  cursor: pointer; }
+
+.hovereffect:hover .overlay {
+  opacity: 0.9;
+  filter: Alpha(opacity=100);
+  z-index: 20;
+  left: 0;
+  top: auto;
+  bottom: 0;
+  padding: 1em;
+  height: 4.75em; }
+
+.hovereffect {
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  width: 100%;
+  cursor: default; }
+
+.hovereffect img {
+  width: 98%;
+  -webkit-transition: -webkit-transform 0.35s;
+  transition: transform 0.35s; }
+
+.hovereffect:hover img {
+  -webkit-transform: translate3d(0, -10%, 0);
+  transform: translate3d(0, -10%, 0); }
+
+/*
+=============================
+Friends
+=============================
+*/
+
+.main-about .row {
+  padding: 15px; }
+
+.main-about .row .friend-box {
+  border: 1px solid black;
+  width: 430px;
+  height: 150px;
+  padding: 15px;
+  margin: 5px auto; }
+.main-about .row .friend-box img {
+  height: 120px;
+  width: 120px;
+  float: left; }
+.main-about .row .friend-box .friend-name {
+  float: left;
+  margin-top: 30px;
+  margin-left: 20px; }
+.main-about .row .friend-box .friend-name a {
+  display: block; }
+.main-about .row .friend-box button.unfriend {
+  float: right;
+  width: 27%;
+  background-color: #aaa;
+  font-weight: bold;
+  margin-top: 30px; }
+.main-about .row .friend-box button.unfriend:hover {
+  background-color: #ddd;
+  font-weight: bold; }
+
+  .row {
+  padding-top: 50px;
+}
+
+.navbar-brand {
+  font-size: 30px;
+  color: white!important;
+}
+
+h2 {
+  font-size: 44px;
+}
+
+h3 {
+  font-size: 36px;
+}
+
+.name {
+  display: inline-block;
+  width: 46%;
+}
+
+#lastName {
+  float: right;
+  clear: both;
+  margin-right: 1px;
+}
+
+.form-signin-heading {
+  margin-bottom: 20px;
+}
+
+.form-signin input {
+  margin-bottom: 20px;
+  margin-right: 10px;
+}
+
+input[type=radio] {
+  margin-top: -1px;
+}
+
+.inputno2 {
+  display: inline-block;
+  padding-left: 40px;
+}
+
+label {
+  margin-bottom: 20px;
+}
+
+.btn-group {
+  display: inline-block;
+  clear: both;
+  margin-right: 20px;
+}
+
+.radio-inline {
+  display: block;
+  clear: both;
+  padding-top: 20px;
+}
+
+.dropdown-menu {
+    height: auto;
+    max-height: 200px;
+    overflow-x: hidden;
+}
+
+.navbar, #navbar {
+  background-color: #2b78e4;
+}
+
+.final {
+  background-color: #5cb85c;
+}
+
+.final:hover {
+  background-color: #449d44;
+}
+
+.hi-there {
+  padding-top: 100px;
+  letter-spacing: .1em;
+}
+
+.hi-there li {
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+
+.hi-there h3 {
+  margin-bottom: 25px;
+}
+
+@media (max-width: 990px) {
+  .hi-there {
+    display: none!important;
+  }
+}

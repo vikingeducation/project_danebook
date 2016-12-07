@@ -80,20 +80,22 @@
               class: "wide-input",
               placeholder: "Confirm Your Password"
             %>
+            
+            <%= f.fields_for :profile, Profile.new do |profile_builder| %>
+              <h2>Birthday</h2>
+              <%= profile_builder.date_select :birthday, start_year: 1900 %>
 
-            <h2>Birthday</h2>
-            <%= f.date_select :birthday, start_year: 1900 %>
-
-            <div>
-              <%= f.label :sex do %>
-                <%= f.radio_button :sex, "female" %>
-                Female
-              <% end %>
-              <%= f.label :sex do %>
-                <%= f.radio_button :sex, "male" %>
-                Male
-              <% end %>
-            </div>
+              <div>
+                <%= profile_builder.label :sex do %>
+                  <%= profile_builder.radio_button :sex, "female" %>
+                  Female
+                <% end %>
+                <%= profile_builder.label :sex do %>
+                  <%= profile_builder.radio_button :sex, "male" %>
+                  Male
+                <% end %>
+              </div>
+            <% end %>
 
             <%= f.submit "Sign Up", class: 'btn btn-block btn-success' %>
           <% end %>

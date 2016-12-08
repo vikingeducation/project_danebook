@@ -5,7 +5,7 @@ class SessionController < ApplicationController
     if @user && @user.authenticate(params[:password])
       sign_in(@user)
       flash[:success] = "You've successfully signed in"
-      redirect_to root_url
+      redirect_to @user
     else
       flash[:danger] = "We couldn't sign you in"
       redirect_to new_user_path

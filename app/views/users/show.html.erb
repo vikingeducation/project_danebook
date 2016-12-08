@@ -1,8 +1,14 @@
-<h1>Welcome <%= @user.email %></h1>
+<section id="interior-page">
 
-<%= link_to "Sign Out", logout_path, method: :delete%>
+<div class="container">
 
-<hr>
+  <h1>Welcome <%= @user.email %></h1>
+
+  <%= link_to "Sign Out", logout_path, method: :delete%>
+
+  <hr>
+
+</div>
 
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container">
@@ -12,9 +18,7 @@
       type="button"><span class="sr-only">Toggle navigation</span>
       <span class="icon-bar"></span> <span class="icon-bar"></span>
       <span class="icon-bar"></span></button> <a class="navbar-brand" href=
-      "timeline.html"><img alt="Danish Flag" class=
-      "img-circle img-responsive img-small" src=
-      "assets/images/danish_flag.gif"> <span>Danebook</span></a>
+      "timeline.html"><%= image_tag "danish_flag.gif", { class: 'img-circle img-responsive img-small' } %><span>Danebook</span></a>
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <form class="navbar-form navbar-left">
@@ -37,9 +41,10 @@
   <section class="banner row">
     <div class="col-sm-10 col-sm-offset-1 cover-banner">
       <div class="avatar-lg">
-        <img alt="Large User Avatar" class="img-thumbnail img-responsive"
-        src="assets/images/harry_potter_small.jpg"> <a href="#">
-        <h3 class="text-center">Harry Potter</h3></a>
+        <%= image_tag "harry_potter_small.jpg", { class: 'img-thumbnail img-responsive' } %>
+        <a href="#">
+          <h3 class="text-center">Harry Potter</h3>
+        </a>
       </div>
     </div>
   </section>
@@ -106,28 +111,19 @@
                 </div><!-- icon_photo_small.png -->
                 <table class="table col-xs-12 table-bordered">
                   <tr>
-                    <td><img alt="User's Medium Photo" class="img-responsive"
-                    src="assets/images/icon_photo_small.png"></td>
-                    <td><img alt="User's Medium Photo" class="img-responsive"
-                    src="assets/images/icon_photo_small.png"></td>
-                    <td><img alt="User's Medium Photo" class="img-responsive"
-                    src="assets/images/icon_photo_small.png"></td>
+                    <td><%= image_tag "icon_photo_small.png", { class: 'img-responsive' } %></td>
+                    <td><%= image_tag "icon_photo_small.png", { class: 'img-responsive' } %></td>
+                    <td><%= image_tag "icon_photo_small.png", { class: 'img-responsive' } %></td>
                   </tr>
                   <tr>
-                    <td><img alt="User's Medium Photo" class="img-responsive"
-                    src="assets/images/icon_photo_small.png"></td>
-                    <td><img alt="User's Medium Photo" class="img-responsive"
-                    src="assets/images/icon_photo_small.png"></td>
-                    <td><img alt="User's Medium Photo" class="img-responsive"
-                    src="assets/images/icon_photo_small.png"></td>
+                    <td><%= image_tag "icon_photo_small.png", { class: 'img-responsive' } %></td>
+                    <td><%= image_tag "icon_photo_small.png", { class: 'img-responsive' } %></td>
+                    <td><%= image_tag "icon_photo_small.png", { class: 'img-responsive' } %></td>
                   </tr>
                   <tr>
-                    <td><img alt="User's Medium Photo" class="img-responsive"
-                    src="assets/images/icon_photo_small.png"></td>
-                    <td><img alt="User's Medium Photo" class="img-responsive"
-                    src="assets/images/icon_photo_small.png"></td>
-                    <td><img alt="User's Medium Photo" class="img-responsive"
-                    src="assets/images/icon_photo_small.png"></td>
+                    <td><%= image_tag "icon_photo_small.png", { class: 'img-responsive' } %></td>
+                    <td><%= image_tag "icon_photo_small.png", { class: 'img-responsive' } %></td>
+                    <td><%= image_tag "icon_photo_small.png", { class: 'img-responsive' } %></td>
                   </tr>
                 </table>
                 <div class="panel-body row">
@@ -148,41 +144,29 @@
                 <table class="table table-bordered col-xs-12">
                   <tr>
                     <td class="text-center">
-                      <a class="thumbnail" href="#"><img alt=
-                      "User's Medium Photo" class="img-responsive" src=
-                      "assets/images/user_silhouette_generic.gif"></a>
+                      <a class="thumbnail" href="#"><%= image_tag "user_silhouette_generic.gif", { class: 'img-responsive' } %></a>
                       <a href="#">Ron Weasley</a>
                     </td>
                     <td class="text-center">
-                      <a class="thumbnail" href="#"><img alt=
-                      "User's Medium Photo" class="img-responsive" src=
-                      "assets/images/user_silhouette_generic.gif"></a>
+                      <a class="thumbnail" href="#"><%= image_tag "user_silhouette_generic.gif", { class: 'img-responsive' } %></a>
                       <a href="#">Ginny Weasley</a>
                     </td>
                     <td class="text-center">
-                      <a class="thumbnail" href="#"><img alt=
-                      "User's Medium Photo" class="img-responsive" src=
-                      "assets/images/user_silhouette_generic.gif"></a>
+                      <a class="thumbnail" href="#"><%= image_tag "user_silhouette_generic.gif", { class: 'img-responsive' } %></a>
                       <a href="#">Hermoine Granger</a>
                     </td>
                   </tr>
                   <tr>
                     <td class="text-center">
-                      <a class="thumbnail" href="#"><img alt=
-                      "User's Medium Photo" class="img-responsive" src=
-                      "assets/images/user_silhouette_generic.gif"></a>
+                      <a class="thumbnail" href="#"><%= image_tag "user_silhouette_generic.gif", { class: 'img-responsive' } %></a>
                       <a href="#">Warren Buffet</a>
                     </td>
                     <td class="text-center">
-                      <a class="thumbnail" href="#"><img alt=
-                      "User's Medium Photo" class="img-responsive" src=
-                      "assets/images/user_silhouette_generic.gif"></a>
+                      <a class="thumbnail" href="#"><%= image_tag "user_silhouette_generic.gif", { class: 'img-responsive' } %></a>
                       <a href="#">Uncle Bob</a>
                     </td>
                     <td class="text-center">
-                      <a class="thumbnail" href="#"><img alt=
-                      "User's Medium Photo" class="img-responsive" src=
-                      "assets/images/user_silhouette_generic.gif"></a>
+                      <a class="thumbnail" href="#"><%= image_tag "user_silhouette_generic.gif", { class: 'img-responsive' } %></a>
                       <a href="#">Aunt Sue</a>
                     </td>
                   </tr>
@@ -220,9 +204,7 @@
                 <div class="media-left media-middle col-xs-2">
                   <a href="#">
                   <figure>
-                    <img alt="User's Extra-Small Avatar" class=
-                    "img-responsive" src=
-                    "assets/images/harry_potter_small.jpg">
+                    <%= image_tag "harry_potter_small.jpg", { class: 'img-responsive' } %>
                   </figure></a>
                 </div>
                 <div class="media-body col-xs-8">
@@ -266,9 +248,7 @@
                 <div class="media-left media-middle col-xs-2">
                   <a href="#">
                   <figure>
-                    <img alt="User's Extra-Small Avatar" class=
-                    "img-responsive" src=
-                    "assets/images/harry_potter_small.jpg">
+                    <%= image_tag "harry_potter_small.jpg", { class: 'img-responsive' } %>
                   </figure></a>
                 </div>
                 <div class="media-body col-xs-8">
@@ -318,9 +298,7 @@
                 <div class="media-left media-middle col-xs-2">
                   <a href="#">
                   <figure>
-                    <img alt="User's Extra-Small Avatar" class=
-                    "img-responsive" src=
-                    "assets/images/harry_potter_small.jpg">
+                    <%= image_tag "harry_potter_small.jpg", { class: 'img-responsive' } %>
                   </figure></a>
                 </div>
                 <div class="media-body col-xs-8">
@@ -362,9 +340,7 @@
                 <div class="media-left media-middle col-xs-2">
                   <a href="#">
                   <figure>
-                    <img alt="User's Extra-Small Avatar" class=
-                    "img-responsive" src=
-                    "assets/images/user_silhouette_generic.gif">
+                    <%= image_tag "user_silhouette_generic.gif", { class: 'img-responsive' } %>
                   </figure></a>
                 </div>
                 <div class="media-body col-xs-8">
@@ -398,9 +374,7 @@
                 <div class="media-left media-middle col-xs-2">
                   <a href="#">
                   <figure>
-                    <img alt="User's Extra-Small Avatar" class=
-                    "img-responsive" src=
-                    "assets/images/harry_potter_small.jpg">
+                    <%= image_tag "harry_potter_small.jpg", { class: 'img-responsive' } %>
                   </figure></a>
                 </div>
                 <div class="media-body col-xs-8">
@@ -449,3 +423,5 @@
     </div>
   </div>
 </main>
+
+</section>

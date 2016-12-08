@@ -12,8 +12,8 @@
         <div class="col-md-6 text-center large-photo-container">
           <%= image_tag @photo.image.url(:medium) %><br>
           <div class="pull-right">
-            <%= link_to "Set as Profile","#" %><br>
-            <%= link_to "Set as Cover", "#" %><br>
+            <%= link_to "Set as Profile", photo_path(@photo, :profile_user_id => current_user.id), :method => :put %><br>
+            <%= link_to "Set as Cover", photo_path(@photo, :cover_user_id => current_user.id), :method => :put %><br>
             <%= link_to "Delete Photo", photo_path(@photo), method: "DELETE" %><br>
           </div>
         </div>

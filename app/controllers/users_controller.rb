@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user_and_profile, only: [:about, :timeline]
+  before_action :set_profile_cover_photo
   skip_before_action :require_login, only: [:new, :create, :show]
 
   def new
@@ -24,9 +25,6 @@ class UsersController < ApplicationController
       flash.now[:danger] = "Please correct errors and resubmit the form"
       render :new
     end
-  end
-
-  def update
   end
 
   def about
@@ -68,6 +66,12 @@ class UsersController < ApplicationController
   def set_user_and_profile
     @user =  User.includes(:profile).find(params[:id])
     @profile = @user.profile
+  end
+
+  def set_profile_cover_photo
+    @user =  User.includes(:profile_photo, :cover_photo).find(params[:id])
+    @profile_photo = @user.profile_photo
+    @cover_photo = @user.cover_photo
   end
 
   def user_params

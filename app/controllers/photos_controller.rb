@@ -30,11 +30,32 @@ class PhotosController < ApplicationController
     else
       render :new
     end
-
   end
 
   def show
     @photo = Photo.find(params[:id])
+  end
+
+  def update
+    photo = Photo.find(params[:id])
+    if photo && params[:profile_user_id]
+      current_user.photos.update_all(:profile_user_id => nil)
+      if photo.update_attribute(:profile_user_id, params[:profile_user_id])
+        flash.now[:success] = "Successfully updated profile photo"
+      else
+        flash.now[:danger] = "Something went wrong during updating photo"
+      end
+    elsif photo && params[:cover_user_id]
+      current_user.photos.update_all(:cover_user_id => nil)
+      if photo.update_attribute(:cover_user_id, params[:cover_user_id])
+        flash.now[:success] = "Successfully updated cover photo"
+      else
+        flash.now[:danger] = "Something went wrong during updating photo"
+      end
+    else
+      flash.now[:danger] = "Something went wrong during updating photo"
+    end
+    redirect_to photos_user_path(current_user);
   end
 
   def destroy

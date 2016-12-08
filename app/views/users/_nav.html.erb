@@ -17,6 +17,28 @@
       <!--</div>-->
     </div>
     <div id="navbar" class="navbar-collapse collapse">
+
+      <%= form_tag session_path do %>
+
+        <%= label_tag do %>
+          Email
+          <%= email_field_tag :email %>
+        <% end %>
+
+        <%= label_tag do %>
+          Password
+          <%= password_field_tag :password %>
+        <% end %>
+
+        <%= label_tag do %>
+          Remember me?
+          <%= check_box_tag :remember_me %>
+        <% end %>
+
+        <%= submit_tag "Enter the Danebook" %>
+
+      <% end %>
+
       <form class="navbar-form navbar-right">
         <div class="form-group">
           <h6>
@@ -35,6 +57,8 @@
 
         <!--</div>-->
       </form>
+
+
     </div><!--/.navbar-collapse -->
   </div>
 </nav>

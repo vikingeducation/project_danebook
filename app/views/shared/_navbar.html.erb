@@ -23,7 +23,13 @@
             </form>
           </div>
           <ul class="nav navbar-nav pull-right">
-            <li><a href="">Harry</a></li>
+            <li class="dropdown open">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Dropdown <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Harry</a></li>
+                <li><%= link_to "logout", logout_path %></li>
+              </ul>
+            </li>
           </ul>
         </div>
 

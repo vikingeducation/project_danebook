@@ -1,0 +1,15 @@
+<div class="row">
+  <% flash.each do |type, msg| %>
+    <% if msg.is_a?(Array) %>
+      <% msg.each do |m| %>
+        <div class="alert alert-block alert-<%= type %>">
+          <%= m %>
+        </div>
+      <% end %>
+    <% else %>
+      <div class="alert alert-block alert-<%= type %>">
+        <%= msg %>
+      </div>
+    <% end %>
+  <% end %>
+</div>

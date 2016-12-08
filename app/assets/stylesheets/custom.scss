@@ -36,7 +36,6 @@ $ptc: #337ab7;
 //CSS begins
 
 body {
-  padding-top: 51px;
   background-color: #eee;
 
 }
@@ -216,13 +215,19 @@ nav {
     }
 
     h1 {
-        font-size: 400%;
+        font-size: 40px;
     }
 
     .icon-bar {
         // background-color: white;
     }
 
+}
+
+#login-nav {
+  .navbar-form {
+    label { color: #fff; -webkit-font-smoothing: antialiased; font-size: 14px; }
+  }
 }
 
 

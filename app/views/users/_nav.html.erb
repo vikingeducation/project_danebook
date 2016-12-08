@@ -1,64 +1,35 @@
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default" id="login-nav">
   <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <h1>
-        Danebook
-      </h1>
-      <!--<div class="row">-->
-      <!--  <div class="col-lg-2">-->
-      <!--    <h1>Danebook</h1>-->
-      <!--  </div>-->
-      <!--</div>-->
-    </div>
-    <div id="navbar" class="navbar-collapse collapse">
 
-      <%= form_tag session_path do %>
+    <h1>Danebook</h1>
 
-        <%= label_tag do %>
+    <%= form_tag session_path, class: 'navbar-form form-inline' do %>
+
+      <div class="form-group">
+        <%= label_tag nil, class: 'sr-only' do %>
           Email
-          <%= email_field_tag :email %>
         <% end %>
+        <%= email_field_tag :email, '', class: 'form-control', placeholder: 'Email' %>
 
-        <%= label_tag do %>
+      </div>
+
+      <div class='form-group'>
+        <%= label_tag nil, class: 'sr-only' do %>
           Password
-          <%= password_field_tag :password %>
         <% end %>
+        <%= password_field_tag :password, '', class: 'form-control', placeholder: 'Password' %>
+      </div>
 
+      <div class="form-group">
         <%= label_tag do %>
           Remember me?
           <%= check_box_tag :remember_me %>
         <% end %>
+      </div>
 
-        <%= submit_tag "Enter the Danebook" %>
+      <%= submit_tag "Enter the Danebook", class: 'btn btn-primary' %>
 
-      <% end %>
+    <% end %>
 
-      <form class="navbar-form navbar-right">
-        <div class="form-group">
-          <h6>
-            Email
-          </h6>
-          <input type="text" placeholder="Email" class="form-control">
-        </div>
-        <div class="form-group">
-          <h6>
-            Password
-          </h6>
-          <input type="password" placeholder="Password" class="form-control">
-          <button type="submit" class="btn btn-primary">Sign in</button>
-        </div>
-        <!--<div class="form-group">-->
-
-        <!--</div>-->
-      </form>
-
-
-    </div><!--/.navbar-collapse -->
   </div>
 </nav>

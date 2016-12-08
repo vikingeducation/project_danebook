@@ -1,7 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-  private
+  before_action :require_login
+
 
   def sign_in(user)
     user.regenerate_auth_token
@@ -23,7 +24,21 @@ class ApplicationController < ActionController::Base
   def current_user
     @current_user ||= User.find_by_auth_token(cookies[:auth_token]) if cookies[:auth_token]
   end
+
+  def signed_in_user?
+    !!current_user
+  end
+
+  helper_method :sign_in_user?
+
   helper_method :current_user
+
+  def require_login
+    unless signed_in_user?
+      flash[:error] = "Please sign in!"
+      redirect_to login_path
+    end
+  end
 
 
 end

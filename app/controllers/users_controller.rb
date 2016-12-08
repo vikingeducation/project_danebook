@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
 
+  before_action :require_login, :except => [:new, :create]
+  skip_before_action :require_login, :only => [:new, :create]
+
   def index
 
   end
@@ -15,6 +18,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(whitelisted_params)
     if @user.save
+      sign_in(@user)
       flash[:success] = "Welcome"
       redirect_to @user
     else
@@ -42,5 +46,7 @@ class UsersController < ApplicationController
                                  :password,
                                  :password_confirmation)
   end
+
+
 
 end

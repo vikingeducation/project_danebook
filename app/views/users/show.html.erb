@@ -1,4 +1,7 @@
 <h1>Welcome <%= @user.email %></h1>
+
+<%= link_to "Sign Out", logout_path, method: :delete%>
+
 <hr>
 
 <nav class="navbar navbar-default navbar-fixed-top">

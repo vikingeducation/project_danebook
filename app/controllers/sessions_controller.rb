@@ -11,17 +11,17 @@ class SessionsController < ApplicationController
       @user = User.find_by_email(params[:email])
       if @user && @user.authenticate(params[:password])
         sign_in(@user)
-        flash[:success] = "Successfully signed in"
+        flash[:success] = ["Successfully signed in"]
         redirect_to users_path
       else
-        flash[:danger] = "Sorry, you couldn't be signed in"
+        flash[:danger] = ["Sorry, you couldn't be signed in"]
         render :new
       end
     end
 
     def destroy
       sign_out
-      flash[:success] = "You have successfully signed out"
+      flash[:success] = ["You have successfully signed out"]
       redirect_to signup_path
     end
 

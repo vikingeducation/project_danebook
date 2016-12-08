@@ -14,27 +14,9 @@
       </section>
       <section id="navbar-collapse" class="collapse col-sm-8 col-md-9">
         <div class="row">
-          <div class="col-xs-10 col-sm-9 col-md-8">
-            <form action="" class="navbar-form">
-            <div class="form-group">
-            <label for="site-search" class="sr-only">Search for Users</label>
-            <input type="search" id="site-search" name="search" class="form-control" placeholder="Search for Users">
-            </div>
-            </form>
-          </div>
-          <ul class="nav navbar-nav pull-right">
-            <li class="dropdown open">
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">Dropdown <span class="caret"></span></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Harry</a></li>
-                <li><%= link_to "logout", logout_path %></li>
-              </ul>
-            </li>
-          </ul>
+          <%= render_nav_content %>
         </div>
-
       </section>
     </div>
-
   </div>
 </nav>

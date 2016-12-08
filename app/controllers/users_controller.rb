@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :correct_user, except: [:index, :new, :create]
+  before_action :correct_user, except: [:index, :show, :new, :create]
 
   skip_before_action :authenticate, only: [:new, :create]
 
@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     @user = User.new(whitelisted)
     if @user.save
       sign_in(@user)
-      flash[:success] = "Successfully signed in"
+      flash[:success] = ["Successfully signed in"]
       redirect_to users_path
     else
       flash.now[:danger] = ["Something went wrong signing up"]
@@ -26,6 +26,10 @@ class UsersController < ApplicationController
       end
       render :new
     end
+  end
+
+  def show
+    redirect_to user_profile_path(@user)
   end
 
   private
@@ -40,8 +44,8 @@ class UsersController < ApplicationController
                                     :password_confirmation,
                                     {
                                       profile_attributes:[
-                                                          :first,
-                                                          :last,
+                                                          :first_name,
+                                                          :last_name,
                                                           :birthday,
                                                           :gender
                                                         ]
@@ -55,7 +59,7 @@ class UsersController < ApplicationController
 
     def correct_user
       unless params[:id] == current_user.id.to_s
-        flash[:danger] = "You're not authorized to view this"
+        flash[:danger] = ["You cannot mess with other users! Jerk.."]
         redirect_to user_path(current_user)
       end
     end

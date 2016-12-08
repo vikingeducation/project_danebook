@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
   private
     def authenticate
       unless signed_in_user?
-        flash[:danger] = "Please sign in"
+        flash[:danger] = ["Please sign in"]
         redirect_to login_path
       end
     end

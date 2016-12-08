@@ -41,25 +41,35 @@
           <%= user_fields.label :email, class: 'big-three' %>
           <%= user_fields.email_field :email, class: 'big-three', placeholder: "Your Email" %>
 
+
           <%= user_fields.label :password, class: 'big-three' %>
           <%= user_fields.password_field :password, class: 'big-three', placeholder: "Password" %>
 
           <%= user_fields.label :password_confirmation, class: 'big-three' %>
           <%= user_fields.password_field :password_confirmation, class: 'big-three', placeholder: "Confirm Password" %>
+<br><br>
+            <%= user_fields.fields_for :profile do |profile_builder| %>
 
-            <%= user_fields.fields_for :profile do |pf| %>
-              <%= pf.label :birthday %>
-              <%= pf.date_select :birthday, {start_year: Date.current.year, end_year: 100.years.ago.year } %>
+              <%= profile_builder.label :first_name, class: 'big-three' %>
+              <%= profile_builder.text_field :first_name, class: 'big-three', placeholder: "First Name" %>
 
-              <%= pf.radio_button :gender, "male" %>
-              <%= pf.label "male" %>
+              <%= profile_builder.label :last_name, class: 'big-three' %>
+              <%= profile_builder.text_field :last_name, class: 'big-three', placeholder: "Last Name" %>
 
-              <%= pf.radio_button :gender, "female" %>
-              <%= pf.label "female" %>
 
+
+              <%= profile_builder.label :birthday %>
+              <%= profile_builder.date_select :birthday, {start_year: Date.current.year, end_year: 100.years.ago.year } %>
+<br>
+              <%= profile_builder.radio_button :gender, "male" %>
+              <%= profile_builder.label "male" %>
+
+              <%= profile_builder.radio_button :gender, "female" %>
+              <%= profile_builder.label "female" %>
+<br>
             <% end %>
 
-          <%= user_fields.submit "Create Account" %>
+          <%= user_fields.submit "Create Account", class: 'btn btn-lg btn-success' %>
 
 
 

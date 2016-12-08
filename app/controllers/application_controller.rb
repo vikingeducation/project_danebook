@@ -29,7 +29,7 @@ class ApplicationController < ActionController::Base
     !!current_user
   end
 
-  helper_method :sign_in_user?
+  helper_method :signed_in_user?
 
   helper_method :current_user
 
@@ -39,6 +39,5 @@ class ApplicationController < ActionController::Base
       redirect_to login_path
     end
   end
-
 
 end

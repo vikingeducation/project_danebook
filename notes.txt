@@ -1,0 +1,5 @@
+SIGN UP - user#new
+    --->EDIT PAGE - profile#edit (with :birthday, :email) and the rest to fill out
+
+        --->ABOUT PAGE - profile#edit(with :birthday, :email) and the rest to fill out
+        --->ABOUT PAGE - profile#show

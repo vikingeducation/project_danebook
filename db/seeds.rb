@@ -8,10 +8,11 @@
 
 puts 'destroying users'
 User.destroy_all
+Profile.destroy_all
 
-puts 'creating users'
-NUM_USERS = 10
-
-NUM_USERS.times do |i|
-  User.create(email: Faker::Internet.email, password: 'password' )
-end
+# puts 'creating users'
+# NUM_USERS = 10
+#
+# NUM_USERS.times do |i|
+#   User.create(email: Faker::Internet.email, password: 'password' )
+# end

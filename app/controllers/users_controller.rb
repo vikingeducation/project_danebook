@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
-  
+  skip_before_action :require_login, :only => [:new, :create]
+  before_action :require_logged_out, :only => [:new, :create]
   def new
     @user = User.new
+    @profile = Profile.new
   end
 
   def create
@@ -10,7 +12,7 @@ class UsersController < ApplicationController
       flash[:success] = "Welcome to Danebook!"
       redirect_to @user
     else
-      flash.now[:danger] = "You dun goofed."
+      flash.now[:danger] = "Critical Failure! This error message is useless!"
       render :new
     end
   end
@@ -34,7 +36,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :remember_me, profile_attributes: [:date, :gender])
   end
 
 end

@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
+  before_action :require_login
 
   private
 
@@ -29,5 +30,19 @@ class ApplicationController < ActionController::Base
     !!current_user
   end
   helper_method :signed_in_user?
+
+   def require_login
+    unless signed_in_user?
+      flash[:warning] = "Please sign in or sign up to see this page!"
+      redirect_to new_user_path
+    end
+  end
+
+  def require_logged_out
+    if signed_in_user?
+      flash[:warning] = "You already have an account!"
+      redirect_to new_user_path
+    end
+  end
 
 end

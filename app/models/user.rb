@@ -1,7 +1,9 @@
 class User < ApplicationRecord
   before_create :generate_token
   has_secure_password
+  has_one :profile
 
+  accepts_nested_attributes_for :profile
   validates :password, 
             :length => { :in => 8..24 }, 
             :allow_nil => true

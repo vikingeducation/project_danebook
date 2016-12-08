@@ -20,6 +20,8 @@
               <%= password_field_tag :password, nil, class: "form-control", placeholder: "Password" %>
             </div>
             <%= submit_tag "Log In", class: "btn btn-success", id: "login-btn" %>
+
+            <%= check_box_tag :remember_me %>
           <% end %>
 
         </div><!--/.navbar-collapse -->
@@ -57,13 +59,25 @@
 
           <%= f.password_field :password_confirmation, class: "form-control", id: "inputPassword", placeholder: "Confirm Password"  %>
 
+           <%= f.fields_for [@user, @profile] do |profile_helper| %>
+              <%= profile_helper.collection_radio_buttons :gender, ["male", "female"], :itself, :itself, {}, class: "radio-group" %>
+              <br>
+              <div class="btn-group">
+              <%= profile_helper.date_select :birthday,{start_year: 1900, end_year: 2012 },class: "btn btn-default dropdown-toggle" %>
+              </div>
+
+            <% end %>
+            <br>
+            <br>
           <%= f.submit "Sign Up!", class: "btn btn-lg btn-primary btn-block final" %>
+
+
 
           <% end %>
           <form class="form-signin">
 
           <!-- <h4>Birthday</h4>
-            <div class="btn-group">
+            
             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               Month <span class="caret"></span>
             </button>
@@ -253,3 +267,6 @@
     </main>
 
    
+
+
+         

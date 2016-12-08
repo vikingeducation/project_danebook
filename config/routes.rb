@@ -4,4 +4,8 @@ Rails.application.routes.draw do
   resources :users do
     resource :profile, on: :member, except: [:new, :create, :destroy]
   end
+
+  resource :session, only: [:new, :create, :destroy]
+  get "login" => "sessions#new"
+  delete "logout" => "sessions#destroy"
 end

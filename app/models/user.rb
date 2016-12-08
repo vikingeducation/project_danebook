@@ -4,6 +4,8 @@ class User < ApplicationRecord
 
   accepts_nested_attributes_for :profile, reject_if: :all_blank
 
+  validates :password, length: { minimum: 8, maximum: 256 }
+
   def generate_token
     begin
       self[:auth_token] = SecureRandom.urlsafe_base64

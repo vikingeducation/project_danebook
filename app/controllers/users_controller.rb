@@ -26,6 +26,9 @@ class UsersController < ApplicationController
     end
   end
 
+  def update
+  end
+
   def about
     @user = User.find(params[:id])
     @friends = current_user.initiated_friends
@@ -70,7 +73,8 @@ class UsersController < ApplicationController
   def user_params
       params.require(:user).permit(:first_name, :last_name, :email,
                                    :password, :password_confirmation,
-                                   :birthday, :gender_cd)
+                                   :birthday, :gender_cd, :profile_photo_id,
+                                   :cover_photo_id)
   end
 
 

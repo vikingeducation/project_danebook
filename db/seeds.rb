@@ -53,4 +53,14 @@ User.all.each do |u|
   4.times { Friendship.create(initiator: u.id, recipient: other_users.pop) }
 end
 
+# Photo.destroy_all
+# User.all.each do |u|
+#   puts "creating 16 photos for #{u.id} user"
+#   16.times do
+#     @photo = Photo.new
+#     @photo.user_id = u.id
+#     @photo.image_from_url("http://www.eonline.com/resize/300/300/www.eonline.com/eol_images/Entire_Site/201552/rs_300x300-150602123114-600.Harry-Potter-Theme-Park.jl.060215.jpg")
+#     @photo.save!
+#   end
+# end
 

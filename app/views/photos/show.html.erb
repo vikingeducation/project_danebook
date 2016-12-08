@@ -1,0 +1,26 @@
+<main class="photo-show">
+   <!-- Bootstrap grid system -->
+  <section class="content">
+    <div class="container">
+      <div class ="row">
+        <!-- Page Heading -->
+        <div class="col-md-12 heading">
+          <h1>Photo</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 text-center large-photo-container">
+          <%= image_tag @photo.image.url(:medium) %><br>
+          <div class="pull-right">
+            <%= link_to "Set as Profile","#" %><br>
+            <%= link_to "Set as Cover", "#" %><br>
+            <%= link_to "Delete Photo", photo_path(@photo), method: "DELETE" %><br>
+          </div>
+        </div>
+        <div class="col-md-6">
+
+        </div>
+      </div>
+    </div> <!-- end of container -->
+  </section>
+</main>

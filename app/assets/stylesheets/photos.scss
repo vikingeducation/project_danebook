@@ -1,6 +1,6 @@
 main.photos {
   .photo-container {
-    margin: 0 auto;
+    margin: 10px auto;
     width: 150px;
     height: 150px;
     background:url('icon_photo_small.png') no-repeat;
@@ -27,5 +27,11 @@ main.photos {
   }
   .photo-row {
     margin-top: 20px;
+  }
+}
+
+main.photo-show {
+  .large-photo-container {
+    margin: 10px auto;
   }
 }

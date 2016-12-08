@@ -1,6 +1,6 @@
 <main class="photos">
   <!-- Header -->
-  <%= render partial: 'shared/header', locals: {user: @user}%>
+  <%= render partial: 'shared/header', locals: {user: @user, profile_photo: @profile_photo}%>
 
   <!-- Navigation -->
   <%= render partial: 'shared/nav_loggedin', locals: {user: @user, active: 'photos'} %>
@@ -23,95 +23,15 @@
       <div class="row photo-row">
         <% if !@photos.empty? %>
           <% @photos.each do |photo| %>
-            <a href="#" class="col-md-3">
+            <%= puts "self_or_friend : #{self_or_friend(@user)} : TODO"  %>
+            <%= link_to photo_path(photo), {class: "col-md-3"} do %>
               <div class="photo-container">
                 <%= image_tag photo.image.url(:small) %>
                 <div class="annotation"><p>Uploaded January 1, 2015</p></div>
               </div>
-            </a>
+            <% end %>
           <% end %>
         <% end %>
-        <a href="#" class="col-md-3">
-        <div class="photo-container">
-            <div class="annotation"><p>Uploaded January 1, 2015</p></div>
-        </div>
-        </a>
-        <a href="#" class="col-md-3">
-        <div class="photo-container">
-            <div class="annotation"><p>Uploaded January 1, 2015</p></div>
-        </div>
-        </a>
-        <a href="#" class="col-md-3">
-        <div class="photo-container">
-            <div class="annotation"><p>Uploaded January 1, 2015</p></div>
-        </div>
-        </a>
-      </div>
-      <div class="row">
-        <a href="#" class="col-md-3">
-          <div class="photo-container">
-            <div class="annotation"><p>Uploaded January 1, 2015</p></div>
-          </div>
-        </a>
-        <a href="#" class="col-md-3">
-          <div class="photo-container">
-            <div class="annotation"><p>Uploaded January 1, 2015</p></div>
-          </div>
-        </a>
-        <a href="#" class="col-md-3">
-          <div class="photo-container">
-            <div class="annotation"><p>Uploaded January 1, 2015</p></div>
-          </div>
-        </a>
-        <a href="#" class="col-md-3">
-          <div class="photo-container">
-            <div class="annotation"><p>Uploaded January 1, 2015</p></div>
-          </div>
-        </a>
-      </div>
-      <div class="row">
-        <a href="#" class="col-md-3">
-          <div class="photo-container">
-            <div class="annotation"><p>Uploaded January 1, 2015</p></div>
-          </div>
-        </a>
-        <a href="#" class="col-md-3">
-          <div class="photo-container">
-            <div class="annotation"><p>Uploaded January 1, 2015</p></div>
-          </div>
-        </a>
-        <a href="#" class="col-md-3">
-          <div class="photo-container">
-            <div class="annotation"><p>Uploaded January 1, 2015</p></div>
-          </div>
-        </a>
-        <a href="#" class="col-md-3">
-          <div class="photo-container">
-            <div class="annotation"><p>Uploaded January 1, 2015</p></div>
-          </div>
-        </a>
-      </div>
-      <div class="row">
-        <a href="#" class="col-md-3">
-          <div class="photo-container">
-            <div class="annotation"><p>Uploaded January 1, 2015</p></div>
-          </div>
-        </a>
-        <a href="#" class="col-md-3">
-          <div class="photo-container">
-            <div class="annotation"><p>Uploaded January 1, 2015</p></div>
-          </div>
-        </a>
-        <a href="#" class="col-md-3">
-          <div class="photo-container">
-            <div class="annotation"><p>Uploaded January 1, 2015</p></div>
-          </div>
-        </a>
-        <a href="#" class="col-md-3">
-          <div class="photo-container">
-            <div class="annotation"><p>Uploaded January 1, 2015</p></div>
-          </div>
-        </a>
       </div>
 
     </div> <!-- end of container -->

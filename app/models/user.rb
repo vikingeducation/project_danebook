@@ -26,9 +26,6 @@ class User < ApplicationRecord
   has_many :recieved_friends, :through => :received_friendships,
                               :source => :friend_initiator
 
-  # searchable do
-  #     text :first_name, :last_name
-  # end
   include PgSearch
   pg_search_scope :search,
                   :against => [:first_name, :last_name],

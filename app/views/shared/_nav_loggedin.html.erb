@@ -3,7 +3,7 @@
  <ul class="nav nav-pills">
   <li role="nav" class=<%= "active" if active == "timeline" %>><%= link_to "Timeline", timeline_user_path(user) %></li><!--
   --><li role="nav" class=<%= "active" if active == "about" %>><%= link_to "About", about_user_path(user) %></li><!--
-  --><li role="nav" class=<%= "active" if active == "photos" %>><%= link_to "Photos(123)", photos_user_path(user) %></li><!--
+  --><li role="nav" class=<%= "active" if active == "photos" %>><%= link_to "Photos (#{user.photos.count})", photos_user_path(user) %></li><!--
   --><li role="nav" class=<%= "active" if active == "friends" %>><%= link_to "Friendship (#{user.friendships_count})", friends_user_path(user) %></li>
 </ul>
 </div>

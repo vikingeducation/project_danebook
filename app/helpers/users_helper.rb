@@ -13,7 +13,7 @@ module UsersHelper
     error
   end
 
-  def not_a_friend
-    true
+  def self_or_friend(user)
+    current_user == user || current_user.friends.pluck(:id).include?(@user.id)
   end
 end

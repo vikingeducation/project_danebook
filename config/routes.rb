@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get 'photos', to: 'static_pages#photos', as: 'photos'
 
   root :to => 'users#new'
-  resources :users, only: [:new, :create, :show, :index] do
+  resources :users, only: [:new, :create, :show, :index, :update] do
     get 'about', on: :member
     get 'timeline', on: :member
     get 'friends', on: :member
@@ -21,7 +21,7 @@ Rails.application.routes.draw do
       get 'unlike', on: :member
     end
   end
-  resources :photos, only: [:new, :create, :show] do
+  resources :photos, only: [:new, :create, :show, :destroy] do
     post 'create_with_url', on: :collection
   end
 

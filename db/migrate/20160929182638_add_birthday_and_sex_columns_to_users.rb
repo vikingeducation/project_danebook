@@ -4,3 +4,4 @@ class AddBirthdayAndSexColumnsToUsers < ActiveRecord::Migration[5.0]
     add_column :users, :gender_cd, :integer
   end
 end
+

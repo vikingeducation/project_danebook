@@ -1,1 +1,69 @@
-<h1>Editing a user profile</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="hero-image">
+        <!-- <img class="profile-photo" src="img/harry_potter_small.jpg"> -->
+        <%= image_tag("harry_potter_small.jpg") %>
+        <div class="username">Harry Potter</div>
+      </div>
+      <nav class="profile-navigation-bar">
+        <div class="profile-photo-spacer"></div>
+        <div class="profile-navigation-item"><a href="#!">Timeline</a></div>
+        <div class="profile-navigation-item"><a href="#!">About</a></div>
+        <div class="profile-navigation-item"><a href="#!">Photos</a> <span class="badge">(123)</span></div>
+        <div class="profile-navigation-item"><a href="#!">Friends</a> <span class="badge">(542)</span></div>
+      </nav>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="panel panel-info">
+        <div class="panel-heading">Edit Profile</div>
+        <div class="row">
+            <div class="col-sm-5">
+              <h3>Basic Information</h3>
+
+              <table class="table">
+                <tr>
+                  <td>Birthday:</td>
+                  <td>July 31st, 1980</td>
+                </tr>
+                <tr>
+                  <td>College:</td>
+                  <td><input value="Hogwarts College"></td>
+                </tr>
+                <tr>
+                  <td>Hometown:</td>
+                  <td><input value="Godnick's Hollow, England"></td>
+                </tr>
+                <tr>
+                  <td>Currently Lives:</td>
+                  <td><input value="Godnick's Hollow, England"></td>
+                </tr>
+              </table>
+              <h3>Contact Information</h3>
+              <table class="table">
+                <tr>
+                  <td>Email:</td>
+                  <td>harry_potter@hogwarts.edu</td>
+                </tr>
+                <tr>
+                  <td>Telephone:</td>
+                  <td><input value="555-123-4567"></td>
+                </tr>
+              </table>
+            </div>
+            <div class="col-md-7">
+              <h3>Words to Live By</h3>
+              <textarea rows="5" cols="75">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Necessitatibus dicta ab illo, voluptate impedit, laudantium libero maxime eveniet beatae nemo, aspernatur fugit in nesciunt sint ratione, sunt sed aliquam vitae.</textarea>
+              <h3>About Me</h3>
+              <textarea rows="10" cols="75">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere dolorem modi delectus, itaque reprehenderit explicabo excepturi similique veritatis dicta necessitatibus dignissimos voluptate cum sit tenetur mollitia consectetur deserunt accusantium minus! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores quam, voluptate, saepe cum perspiciatis minima, corporis nemo accusantium maxime labore placeat veniam ea aliquam illum molestiae, facere maiores! Possimus, voluptatem.</textarea>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

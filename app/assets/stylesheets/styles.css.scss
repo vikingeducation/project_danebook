@@ -85,3 +85,445 @@ body {
     margin-top: 15px;
   }
 }
+
+/* application layout */
+
+// Top Nav
+
+.main-nav {
+  background-color: #50a1b9;
+  border-radius: 0;
+  height: 40px;
+  min-height: 0px;
+  .navbar-brand {
+    height: 25px;
+    width: auto;
+    padding: 10px 15px;
+    img {
+      height: 25px;
+      width: 25px;
+      border-radius: 100%;
+      display: inline-block;
+      margin-top: -4px;
+    }
+  }
+  .navbar-text {
+    margin: 10px 15px;
+  }
+  .search-bar {
+    display: inline-block;
+    input {
+      -webkit-appearance: textfield;
+      box-sizing: border-box;
+      height: 24px;
+      width: 350px;
+      border-radius: 0;
+    }
+  }
+  .white-nav-text {
+    color: #fff;
+  }
+}
+
+heading {
+  display: inline-block;
+  width: 100%;
+  height: 385px;
+  position: relative;
+  border: 2px solid #000;
+
+  // Jumbotron
+
+  .cover-image {
+    margin-top: 25px;
+    background-image: image_url("cover_image.jpg");
+    background-size: cover;
+    color: #fff;
+    height: 320px;
+    border-radius: 0;
+    .image-mask {
+      width: 180px;
+      height: 180px;
+      overflow: hidden;
+      display: inline-block;
+      position: absolute;
+      top: 190px;
+      left: 20px;
+      z-index: 1;
+      .profile-pic {
+        width: 100%;
+      }
+    }
+    .profile-name {
+      position: absolute;
+      top: 270px;
+      left: 260px;
+      font-weight: 600;
+    }
+  }
+
+  // Middle Nav
+  .mid-nav {
+    box-sizing: border-box;
+    height: 40px;
+    width: 100%;
+    position: absolute;
+    top: 343px;
+    left: 0;
+    border-top: 2px solid #000;
+    ul {
+      margin-left: 220px;
+      list-style-type: none;
+      height: 40px;
+      display: inline-block;
+      padding: 0;
+      li {
+        float: left;
+        border-right: 2px solid #444;
+        &.current {
+          background: #ddd;
+        }
+        &:first-child {
+          border-left: 2px solid #444;
+        }
+        a {
+          display: block;
+          color: #444;
+          text-align: center;
+          padding: 8px 16px;
+          text-decoration: none;
+        }
+        a:hover {
+          background-color: #50a1b9;
+        }
+        .count-text {
+          color: #aaa;
+        }
+      }
+    }
+    .mid-nav-edit {
+      display: inline-block;
+      float: right;
+      line-height: 40px;
+      margin-right: 20px;
+    }
+  }
+
+}
+
+// Misc
+
+.page-title {
+  border: 2px solid #444;
+  text-align: center;
+  height: 40px;
+  h1 {
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0;
+    line-height: 40px;
+
+  }
+}
+
+/* Pages */
+
+/////// Profile -- About & About Edit pages
+
+.profile {
+  margin-top: 15px;
+  .page-title {
+    background: #ddd;
+  }
+  h3 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 15px;
+  }
+  td {
+    padding: 10px;
+    box-sizing: border-box;
+    &.table-info {
+      width: 100%;
+      input {
+        width: 75%;
+      }
+    }
+  }
+  textarea {
+    width: 90%;
+  }
+  .table-label {
+    font-weight: 600;
+  }
+  .btn-lg {
+    width: 50%;
+    background-color: #50a1b9;
+    margin-left: 25%;
+    margin-top: 75px;
+    height: 75px;
+    color: #fff;
+    font-size: 32px;
+    font-weight: 700px;
+    border-radius: 0;
+    border:2px solid #000;
+  }
+  main {
+    border: 2px solid #000;
+    border-top: 0;
+    padding: 25px;
+    padding-bottom: 75px;
+    display: inline-block;
+  }
+}
+
+
+/////// Timeline
+
+.timeline {
+  section {
+    border: 2px solid #000;
+  }
+  section h2 {
+    background-color: #ddd;
+    border-bottom: 2px solid #000;
+    text-align: center;
+    margin-top: 0;
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 700;
+  }
+  section footer {
+    background-color: #ddd;
+    border-top: 2px solid #000;
+  }
+  a {
+    text-decoration: underline;
+  }
+
+  // left column
+  .left-column section {
+    margin-top: 15px;
+    img {
+      max-width: 100%;
+    }
+    a {
+      display: block;
+      text-align: center;
+      font-size: 14px;
+      line-height: 18px;
+    }
+  }
+  .about-info {
+    .about-list {
+      padding: 10px;
+    }
+  }
+  .timeline-photos {
+    padding-bottom: 10px;
+  }
+
+  // right column
+  .right-column section {
+    margin-top: 25px;
+    margin-left: 15px; // not reasonable
+  }
+  .submit-post {
+    textarea {
+      width: 95%;
+      margin-left: 2.5%;
+      margin-right: 2.5%;
+    }
+    footer {
+      background-color: #ddd;
+      height: 40px;
+      .new-post-submit {
+        margin-top: 1%;
+        float: right;
+        color: #fff;
+        background-color: #50a1b9;
+        margin-right: 5%;
+      }
+    }
+  }
+
+  // Post
+  .post {
+    .poster {
+      padding: 10px;
+      img {
+        max-width: 50px;
+      }
+      .post-details {
+        padding: 10px;
+        display: inline-block;
+        vertical-align: middle;
+        line-height: 1.1em;
+        p {
+          color: #ccc;
+        }
+      }
+    }
+    .post-text {
+      padding: 10px;
+    }
+    footer {
+      padding: 10px;
+      .post-options {
+        a{
+          margin-right: 10px;
+        }
+        .delete-post {
+          display: block;
+          float: right;
+        }
+      }
+      p {
+        margin-bottom: 0;
+      }
+    }
+
+    // Comments section
+    .comments {
+      background-color: #ddd;
+      display: inline-block;
+      .commenter-image {
+        padding: 10px;
+        line-height: 1em;
+        img {
+          max-width: 50px;
+        }
+      }
+      .comment{
+        width: 100%;
+        background-color: #ddd;
+        padding-top: 10px;
+        display: inline-block;
+        &:first-child {
+          border-top: 1px solid #ccc;
+        }
+        .comment-text {
+          padding-bottom: 5px;
+        }
+        .comment-options {
+          line-height: 1;
+          .delete-comment {
+            float: right;
+          }
+        }
+        .comment-meta {
+          color: #666;
+          display: inline-block;
+          padding-bottom: 5px;
+        }
+      }
+      .comment-form {
+        form {
+          width: 90%;
+          margin: 5%;
+          textarea {
+            width: 100%;
+          }
+        }
+        .submit-comment {
+          float: right;
+          background-color: #50a1b9;
+          color: #fff;
+        }
+      }
+    }
+  }
+}
+
+
+/////// Photos
+
+.photos {
+  margin-top: 25px;
+  .page-title {
+    background-color: #ddd;
+    .add-photo-btn {
+      color: #fff;
+      background-color: #50a1b9;
+      border-radius: 0;
+      position: absolute;
+      top: 4px;
+      right: 15px;
+    }
+  }
+  .photo-grid {
+    display: inline-block;
+    border: 2px solid #000;
+    border-top: 0;
+  }
+  .photo {
+    .image-wrapper {
+      position: relative;
+      .photo-info {
+        display: none;
+        background-color: rgba(50, 50, 50, 0.5);
+        position: absolute;
+        bottom: 0px;
+        width: 90%;
+        margin: 5%;
+        max-width: 200px;
+        height: 32px;
+        color: #fff;
+        text-align: center;
+        p {
+          line-height: 32px;
+        }
+      }
+      img {
+        width: 90%;
+        max-width: 200px;
+        max-height: 200px;
+        border: 1px solid #000;
+        margin: 5%;
+        &:hover~.photo-info {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+/////// friends
+
+.friends {
+  margin-top: 25px;
+  .page-title {
+    background-color: #ddd;
+  }
+  .friend-grid {
+    display: inline-block;
+    border: 2px solid #000;
+    border-top: 0;
+    padding: 10px;
+    padding-bottom: 20px;
+  }
+  .friend {
+    .friend-wrapper {
+      padding: 10px;
+      margin-top: 15px;
+      border: 2px solid #000;
+      img {
+        width: 25%;
+        margin: 2.5%;
+      }
+      .friend-info {
+        width: 40%;
+        margin: 2.5%;
+        display: inline-block;
+        font-size: 16px;
+        vertical-align: middle;
+        a {
+          text-decoration: underline;
+        }
+        p {
+          color: #bbb;
+        }
+      }
+    }
+  }
+}

@@ -1,16 +1,13 @@
-<header>
-  <div class="grow-column">
-    <h1>Facelook</h1>
-  </div>
-  <div class="login-column">
-    <div class="login-field">
-      <label>Email</label>
-      <input>
+<nav class="navbar navbar-fixed-top main-nav">
+  <a href="home.html" class="navbar-brand white-nav-text">
+    <!-- <img src="danish_flag.gif" alt="site logo danish flag"> -->
+    <%= image_tag("danish_flag.gif", options={}) %>
+    Danebook
+  </a>
+  <form action="#" role='search' class='navbar-form search-bar'>
+    <div class="form-group">
+      <input type="text" class='form-control' placeholder='Search for users' disabled>
     </div>
-    <div class="login-field">
-      <label>Password</label>
-      <input>
-    </div>
-    <button>Log In</button>
-  </div>
-</header>
+  </form>
+  <p class="navbar-text navbar-right white-nav-text">Harry Potter</p>
+</nav>

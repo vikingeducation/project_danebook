@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
 
   def sign_out
     @current_user = nil
-    cookies.delete(:user_id)
+    cookies.delete(:auth_token)
   end
 
   def current_user
@@ -41,7 +41,7 @@ class ApplicationController < ActionController::Base
   def require_logged_out
     if signed_in_user?
       flash[:warning] = "You already have an account!"
-      redirect_to new_user_path
+      redirect_to current_user
     end
   end
 

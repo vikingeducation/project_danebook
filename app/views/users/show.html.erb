@@ -1,37 +1,5 @@
 <!--Nav -->
-<nav class="navbar navbar-custom navbar-fixed-top">
-    <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#login-navbar-collapse" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand logo-container" href="home.html">
-                <%= image_tag "danish_flag.gif" %>
-                <h3>Danebook</h3>
-            </a>
-        </div>
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="login-navbar-collapse">
-            <form class="navbar-form navbar-left search-form">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search for User">
-                </div>
-            </form>
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a href="#">Harry</a>
-                </li>
-                <li>
-                  <%= link_to "Logout", logout_path, method: :delete %>
-                </li>
-            </ul>
-        </div><!-- /.navbar-collapse -->
-    </div><!-- /.container -->
-</nav>
+
 
 <!-- Hero -->
 <div class="container">
@@ -84,16 +52,18 @@
         <h2>
             About
         </h2>
-        <a class="btn btn-primary" href="about_edit.html">
+        <% if current_user == @user %>
+        <a class="btn btn-primary" href="<%= edit_user_profile_path(@user) %>">
             Edit Your Profile
         </a>
+        <% end %>
     </section>
 
     <!-- Main -->
     <main class="main-about">
         <div class="row">
             <article class="col-xs-12 col-sm-6 interior">
-                <table class="tab-about">
+                <table class="tab-about table">
                     <caption>
                         <h3>
                             Basic Information
@@ -104,7 +74,7 @@
                             Birthday:
                         </th>
                         <td>
-                            July 31st, 1980
+                           <%= @profile.birthday %>
                         </td>
                     </tr>
                     <tr>
@@ -112,7 +82,8 @@
                             College:
                         </th>
                         <td>
-                            Hogwarts College
+                           <%= "Not Available" if @profile.college == " " %>
+                           <%= @profile.college unless @profile.college == " " %>
                         </td>
                     </tr>
                     <tr>
@@ -120,7 +91,8 @@
                             Hometown:
                         </th>
                         <td>
-                            Godrick's Hollow, England
+                            <%= "Not Available" if @profile.hometown == " " %>
+                            <%= @profile.hometown unless @profile.hometown == " " %>
                         </td>
                     </tr>
                     <tr>
@@ -128,19 +100,20 @@
                             Currently Lives:
                         </th>
                         <td>
-                            Godrick's Hollow, England
+                            <%= "Not Available" if @profile.residence == " " %>
+                            <%= @profile.residence unless @profile.residence == " " %>
                         </td>
                     </tr>
                 </table>
                 <!-- Contact information -->
-                <table class="tab-about">
+                <table class="tab-about table">
                     <caption><h3>Current Information</h3></caption>
                     <tr>
                         <th>
                             Email:
                         </th>
                         <td>
-                            harry_potter@hogwarts.edu
+                           <%= @user.email %>
                         </td>
                     </tr>
                     <tr>
@@ -148,7 +121,7 @@
                             Telephone:
                         </th>
                         <td>
-                            555-123-4567
+                            <%= @profile.telephone %>
                         </td>
                     </tr>
                 </table>
@@ -156,9 +129,13 @@
             <!-- Righthand coloumn -->
             <article class="col-xs-12 col-sm-6 interior">
                 <h3>Words to Live By</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis sequi magni, voluptatibus dolore illo. Non quae mollitia dolores in tempora. Maiores natus odit quia et, officia iure molestiae ullam repellendus.</p>
+                <p><%= @profile.summary %>
+                   <%= "The user has not fileld this out yet" if @profile.summary == " " %>
+                </p>
                 <h3>About Me</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere magnam, velit, nam pariatur aut amet excepturi modi aperiam atque placeat expedita quaerat voluptatem cum fuga nisi vitae temporibus quas possimus necessitatibus. Ipsum fuga recusandae odit molestiae ab excepturi, voluptates rerum ullam tempore repellat commodi similique autem deleniti illum enim error reprehenderit ut iste, dicta et veniam quasi, amet nihil perspiciatis. Officia, perspiciatis amet. Fugiat tenetur, minima facere et repellat. </p>
+                <p><%= @profile.about_me %>
+                    <%= "The user has not fileld this out yet" if @profile.about_me == " " %>
+                </p>
             </article>
         </div>
     </main>

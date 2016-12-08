@@ -1,0 +1,145 @@
+<%= form_for @profile, url: user_profile_path do |f| %>
+      <!-- Nav -->
+    
+      <!-- Hero -->
+      <div class="container">
+          <header class="hero">
+              <div class="avatar">
+              </div>
+          </header>
+          <!-- Sub-nav -->
+          <nav class="sub-navigation" role="navigation">
+              <div class="container-fluid">
+                  <!-- Brand and toggle get grouped for better mobile display -->
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sub-nav-collapse" aria-expanded="false"><span class="caret"></span>Menu
+                  </button>
+                  <!-- Collect the nav links, forms, and other content for toggling -->
+                  <div class="collapse navbar-collapse" id="sub-nav-collapse">
+                      <ul class="nav nav-pills">
+                          <li role="presentation">
+                              <a href="timeline.html">
+                                  Timeline
+                              </a>
+                          </li>
+                          <li role="presentation" class="active">
+                              <a href="about.html">
+                                  About
+                              </a>
+                          </li>
+                          <li role="presentation">
+                              <a href="photos.html">
+                                  Photos<span class="badge">(123)</span>
+                              </a>
+                          </li>
+                          <li role="presentation">
+                              <a href="friends.html">
+                                  Friends<span class="badge">(542)</span>
+                              </a>
+                          </li>
+                      </ul>
+                  </div><!-- /.navbar-collapse -->
+              </div><!-- /.container-fluid -->
+          </nav>
+          <!-- Current location header -->
+          <section class="nav-about">
+              <h2>
+              Edit Profile
+              </h2>
+          </section>
+          <!-- Main -->
+          
+          <main class="main-about">
+          <div class="row">
+              
+              <article class="col-sm-12 col-md-6  interior">
+                  <table class="tab-about table">
+                      <caption>
+                      
+                      <h3>
+                      Basic Information
+                      </h3>
+                      </caption>
+                      <tr>
+                          <th>
+                              Birthday:
+                          </th>
+                          <td>
+                              <%= @profile.birthday %>
+                          </td>
+                      </tr>
+                      <tr>
+                          <th>
+                              College:
+                          </th>
+                          <td>
+                                <div class="input-group">
+                                    <%= f.text_field :college, class: "form-control" %>
+                                </div>
+                          </td>
+                      </tr>
+                      <tr>
+                          <th>
+                              Hometown:
+                          </th>
+                          <td>
+                              <div class="input-group">
+                                  <%= f.text_field :hometown, class: "form-control" %>
+                              </div>
+                          </td>
+                      </tr>
+                      <tr>
+                          <th>
+                              Currently Lives:
+                          </th>
+                          <td>
+                              <div class="input-group">
+                                  <%= f.text_field :residence, class: "form-control" %>
+                              </div>
+                          </td>
+                      </tr>
+                  </table>
+
+                      <table class="tab-about table">
+                      <caption><h3>Current Information</h3></caption>
+                      <tr>
+                          <th>
+                              Email:
+                          </th>
+                          <td>
+                              <%= @profile.user.email %>
+                          </td>
+                      </tr>
+                      <tr>
+                          <th>
+                              Telephone:
+                          </th>
+                          <td>
+                              <div class="input-group">
+                                  <%= f.phone_field :telephone, class: "form-control" %>
+                              </div>
+                          </td>
+                      </tr>
+                  </table>
+                  
+              </article>
+              <!-- Righhand column -->
+              <article class="col-sm-12 col-md-6  interior">
+                  <h3>Words to Live By</h3>
+                  <%= f.text_area :summary, wrap: "hard", rows: "4" %>
+                  <h3>About Me</h3>
+                  <%= f.text_area :about_me, wrap: "hard", rows: "8" %>
+              </article>
+              
+          </div>
+          <div class="row">
+              <div class="col-xs-5">
+              </div>
+              <div class="col-xs-6">
+
+                  <%= f.submit "Save", class: "modbtn btn-lg btn btn-success"%>
+
+              </div>
+          </div>
+          </main>
+      </div>
+<% end %>

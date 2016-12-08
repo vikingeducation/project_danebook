@@ -1,0 +1,28 @@
+                    <section class="post">
+                      <div class="post-body">
+                          <img src="assets/user_silhouette_generic.gif">
+                          <div class="author-box">
+                              <a href="<%= user_path(post.user_id) %>">
+                                  <%= post.user.first_name %>
+                                  <%= post.user.last_name %>
+                              </a>
+                              <time>
+                                <%= post.created_at %>
+                              </time>
+                          </div>
+                          <p class="comment-area">
+                               <%= post.body %>
+                          </p>
+                      </div>
+                      <div class="nav-footer">
+                          <a href="#" class="link pull-left">
+                              Like
+                          </a>
+                          <a href="#" class="comment pull-left">
+                              Comment
+                          </a>
+                          <% if post.user_id == current_user.id %>
+                            <%= link_to "Delete", user_post_path(post.user_id, post.id), method: "delete" %>
+                          <% end %>
+                      </div>
+                  </section>

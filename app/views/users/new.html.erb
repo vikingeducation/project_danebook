@@ -38,26 +38,32 @@
 
 
         <%= form_for @user do |user_fields| %>
-          <%= user_fields.label :email %>
-          <%= user_fields.email_field :email %>
+          <%= user_fields.label :email, class: 'big-three' %>
+          <%= user_fields.email_field :email, class: 'big-three', placeholder: "Your Email" %>
 
-          <%= user_fields.label :password %>
-          <%= user_fields.password_field :password %>
+          <%= user_fields.label :password, class: 'big-three' %>
+          <%= user_fields.password_field :password, class: 'big-three', placeholder: "Password" %>
 
-          <%= user_fields.label :password_confirmation %>
-          <%= user_fields.password_field :password_confirmation %>
+          <%= user_fields.label :password_confirmation, class: 'big-three' %>
+          <%= user_fields.password_field :password_confirmation, class: 'big-three', placeholder: "Confirm Password" %>
+
+            <%= user_fields.fields_for :profile do |pf| %>
+              <%= pf.label :birthday %>
+              <%= pf.date_select :birthday, {start_year: Date.current.year, end_year: 100.years.ago.year } %>
+
+              <%= pf.radio_button :gender, "male" %>
+              <%= pf.label "male" %>
+
+              <%= pf.radio_button :gender, "female" %>
+              <%= pf.label "female" %>
+
+            <% end %>
 
           <%= user_fields.submit "Create Account" %>
+
+
+
         <% end %>
-
-
-
-            <!-- <br>
-            <input type="text" id="email-login" class="big-three" placeholder="Your Email" />
-            <br>
-            <input type="text" id="email-login" class="big-three" placeholder="Your New Password" />
-            <br>
-            <input type="text" id="email-login" class="big-three" placeholder="Confirm New Password" /> -->
 
             <!-- <h4>Birthday</h4>
 

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  before_action :require_login, :except => [:new, :create]
+  #before_action :require_login, :except => [:new, :create]
   skip_before_action :require_login, :only => [:new, :create]
 
   def index
@@ -13,6 +13,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @user.build_profile
   end
 
   def create
@@ -44,7 +45,12 @@ class UsersController < ApplicationController
   def whitelisted_params
     params.require(:user).permit(:email,
                                  :password,
-                                 :password_confirmation)
+                                 :password_confirmation,
+                                 { profile_attributes: [:birthday,
+                                   :gender,
+                                   :first_name,
+                                   :last_name]}
+                                 )
   end
 
 

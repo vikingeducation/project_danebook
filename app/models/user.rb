@@ -1,5 +1,7 @@
 class User < ApplicationRecord
 
+  has_one :profile, inverse_of: :user
+
   before_create :generate_token
 
   has_secure_password
@@ -20,5 +22,5 @@ class User < ApplicationRecord
     generate_token
     save!
   end
-            
+
 end

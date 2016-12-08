@@ -1,7 +1,7 @@
-<%= simple_form_for [post, comment], class: "comment_form" do |c| %>
+<%= simple_form_for [photo, comment], class: "comment_form" do |c| %>
   <%= c.input :text, label: false, placeholder: "Write a comment", :input_html => { :rows => 3 } %>
   <%= c.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
-  <%= c.input :commentable_id, :as => :hidden, :input_html => { :value => post.id } %>
-  <%= c.input :commentable_type, :as => :hidden, :input_html => { :value => "Post" } %>
+  <%= c.input :commentable_id, :as => :hidden, :input_html => { :value => photo.id } %>
+  <%= c.input :commentable_type, :as => :hidden, :input_html => { :value => "Photo" } %>
   <%= c.button :submit, 'Comment', class: "btn btn-primary pull-right" %>
 <% end %>

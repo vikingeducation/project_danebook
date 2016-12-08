@@ -27,7 +27,7 @@
             <%= link_to photo_path(photo), {class: "col-md-3"} do %>
               <div class="photo-container">
                 <%= image_tag photo.image.url(:small) %>
-                <div class="annotation"><p>Uploaded January 1, 2015</p></div>
+                <div class="annotation"><p><%= photo.created_at.strftime("%B %d, %Y") %></p></div>
               </div>
             <% end %>
           <% end %>

@@ -40,7 +40,7 @@ class CommentsController < ApplicationController
 
   private
   def whitelisted_comments_params
-    params.require(:comment).permit(:text, :user_id, :post_id)
+    params.require(:comment).permit(:text, :user_id, :commentable_id, :commentable_type)
   end
 
   def current_user_comment

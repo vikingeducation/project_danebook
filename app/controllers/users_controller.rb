@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user_and_profile, only: [:about, :timeline]
-  before_action :set_profile_cover_photo
+  before_action :set_profile_cover_photo, only: [:about, :timeline, :friends, :photos]
   skip_before_action :require_login, only: [:new, :create, :show]
 
   def new
@@ -75,10 +75,10 @@ class UsersController < ApplicationController
   end
 
   def user_params
-      params.require(:user).permit(:first_name, :last_name, :email,
-                                   :password, :password_confirmation,
-                                   :birthday, :gender_cd, :profile_photo_id,
-                                   :cover_photo_id)
+    params.require(:user).permit(:first_name, :last_name, :email,
+                                 :password, :password_confirmation,
+                                 :birthday, :gender_cd, :profile_photo_id,
+                                 :cover_photo_id)
   end
 
 

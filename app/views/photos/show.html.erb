@@ -17,8 +17,29 @@
             <%= link_to "Delete Photo", photo_path(@photo), method: "DELETE" %><br>
           </div>
         </div>
-        <div class="col-md-6">
+        <div class="col-md-6 photo-comments-container">
+          <div class="row">
+            <div class="col-md-3">
+              <% if @profile_photo %>
+                <%= image_tag(@profile_photo.image.url(:thumb), :class => "profile-image") %>
+              <% else %>
+                <%= image_tag("harry_potter_small.jpg", :class => "profile-image") %>
+              <% end %>
+            </div>
+            <div class="col-md-9">
+              <h3><%= "#{@user.first_name} #{@user.last_name}"%></h3>
+              <% if @profile_photo %>
+              <div class="annotation text-muted"><p><%= @profile_photo.created_at.strftime("%B %d, %Y") %></p></div>
+              <% end %>
+            </div>
+          </div>
+          <div class="row photo-comments-container">
+            <%= link_to "Like", "#" %> 3 others like this.
+            <%= render partial: 'comments/comment_photo_form', locals: {photo: @photo, comment: @comment} %>
+            <%= render partial: 'photos/comments', locals: {p: @photo, comments: @photo.comments } %>
 
+          </div>
+        </div>
         </div>
       </div>
     </div> <!-- end of container -->

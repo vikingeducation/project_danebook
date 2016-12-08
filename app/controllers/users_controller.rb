@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @profile = @user.build_profile
     render :new, layout: "new_user"
   end
 
@@ -10,9 +11,9 @@ class UsersController < ApplicationController
     if @user.save
       flash[:success] = "Welcome to Danebook!"
       sign_in(@user)
-      redirect_to @user
+      redirect_to edit_user_profile_path(@user)
     else
-      flash[:warning] = "Unable to create you."
+      flash[:warning] = "#{@user.errors.full_messages}"
       render :new
     end
   end

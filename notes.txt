@@ -15,5 +15,15 @@ TO DOS:
 
   -change birthday defaults!
 
+  -titilize user's names
+
+
+
+  -#whitelist valid letters (ie no numbers/symbols)
+  -Include this on edit?
+
+
+
+
   -Refactor html/css
   -Put things into partials

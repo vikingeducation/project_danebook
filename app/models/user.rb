@@ -1,17 +1,17 @@
 class User < ApplicationRecord
-
-  has_one :profile, inverse_of: :user
-
-  accepts_nested_attributes_for :profile
-
   before_create :generate_token
 
+  after_save { email.downcase.strip }
+
+  has_one :profile, inverse_of: :user
+  accepts_nested_attributes_for :profile
   has_secure_password
 
   validates :password,
-            length: { minimum: 6 },
-            allow_nil: true
+  length: { minimum: 6 },
+  allow_nil: true
 
+  validates :email, :format => /@/
 
   def generate_token
     begin

@@ -16,10 +16,16 @@ ActiveRecord::Schema.define(version: 20161208184007) do
   enable_extension "plpgsql"
 
   create_table "profiles", force: :cascade do |t|
-    t.string   "first_name"
-    t.string   "last_name"
-    t.date     "birthday"
-    t.string   "gender"
+    t.string   "first_name", null: false
+    t.string   "last_name",  null: false
+    t.date     "birthday",   null: false
+    t.string   "gender",     null: false
+    t.text     "motto"
+    t.text     "about"
+    t.string   "college"
+    t.string   "hometown"
+    t.string   "residing"
+    t.string   "phone"
     t.integer  "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -27,8 +33,8 @@ ActiveRecord::Schema.define(version: 20161208184007) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email"
-    t.string   "password_digest"
+    t.string   "email",           null: false
+    t.string   "password_digest", null: false
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
     t.string   "auth_token"

@@ -5,7 +5,8 @@ class UsersController < ApplicationController
   skip_before_action :authenticate, only: [:new, :create]
 
   def index
-    @users = User.all
+    @post = current_user.posts.build
+    @posts = Post.includes(:comments).where(post_type: "Post").order(created_at: :desc)
   end
 
   def new
@@ -33,7 +34,9 @@ class UsersController < ApplicationController
   end
 
   def show
-    redirect_to user_profile_path(@user)
+    @post = current_user.posts.build
+    @posts = Post.includes(:comments).where(post_type: "Post", user_id: @user.id).order(created_at: :desc)
+    render :index
   end
 
   private

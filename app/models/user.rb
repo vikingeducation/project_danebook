@@ -1,6 +1,10 @@
 class User < ApplicationRecord
-  has_one :profile, inverse_of: :user
+  has_one :profile, inverse_of: :user, dependent: :destroy
   accepts_nested_attributes_for :profile, reject_if: :all_blank
+
+  has_many :posts, dependent: :destroy
+  has_many :likes, dependent: :destroy
+  has_many :liked_posts, through: :likes, source: :post
 
   before_save :format_input
 

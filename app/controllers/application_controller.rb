@@ -41,7 +41,7 @@ class ApplicationController < ActionController::Base
       end
     end
 
-    def sign_in(user, remember)
+    def sign_in(user, remember = false)
       reset_session
       if remember
         set_token(user)

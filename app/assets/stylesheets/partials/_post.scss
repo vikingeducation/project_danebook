@@ -22,7 +22,7 @@
       right: 15px;
       top:15px;
     }
-    
+
     h1, h2, h3, h4, h5, h6, p {
       margin-top: 0;
       margin-bottom: 0;
@@ -63,6 +63,29 @@
   }
 
   &.post-small {
+
+    .post-header, .post-footer {
+      padding:4px 15px;
+      font-size:14px;
+    }
+    .post-header {
+      h1, h2, h3, h4, h5, h6, p {
+        font-weight: bold;
+      }
+    }
+
+    .post-content {
+      padding:15px;
+      h3 {
+        margin: 30px 0 20px 0;
+      }
+    }
+
+  }
+
+  &.post-large {
+
+    font-size: 16px;
 
     .post-header, .post-footer {
       padding:4px 15px;

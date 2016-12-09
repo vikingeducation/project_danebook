@@ -1,5 +1,9 @@
 class Profile < ApplicationRecord
   belongs_to :user, inverse_of: :profile
+
+  has_one :bio, dependent: :destroy
+  accepts_nested_attributes_for :bio, reject_if: :all_blank
+
   before_save :format_input
 
   enum gender_type: [:Male, :Female]

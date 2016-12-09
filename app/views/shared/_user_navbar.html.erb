@@ -3,7 +3,7 @@
     <div class="cover-img">
       <img src="https://s3.amazonaws.com/viking_education/web_development/web_app_eng/hogwarts_small.jpg" alt="Cover Image" class="sr-only">
     </div>
-    <h1 class="profile-username"><%= "#{user.profile.first_name} #{user.profile.last_name}" %></h1>
+    <h1 class="profile-username"><%= format_user_name(user) %></h1>
     <section class="profile-img">
       <img src="https://s3.amazonaws.com/viking_education/web_development/web_app_eng/harry_potter_small.jpg" alt="profile">
     </section>
@@ -17,7 +17,7 @@
         <li><%= link_to "About", user_profile_path(current_user) %></li>
         <li><%= link_to "Photos", user_galleries_path(current_user) %></li>
         <li><%= link_to "Friends", user_friends_path(current_user) %></li>
-        <li class="edit"><%= link_to "Edit Profile", edit_user_path(current_user) %></li>
+        <li class="edit"><%= link_to "Edit Profile", edit_user_profile_path(current_user) %></li>
       </ul>
     </section>
   </header>

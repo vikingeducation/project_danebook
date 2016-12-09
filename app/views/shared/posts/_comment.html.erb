@@ -1,0 +1,21 @@
+<div class="profile col-xs-12">
+  <div class="profile-img pull-left">
+    <a href="about.html"><img src="https://s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif" alt=""></a>
+  </div>
+  <div class="comment pull-left">
+    <p>
+      <%= link_to format_user_name(comment.user), user_path(comment.user) %>
+      <small class="muted">
+        <%= comment.created_at.strftime("Said on %A, %d/%m/%Y") %>
+      </small>
+    </p>
+    <p><%= comment.body %></p>
+    <p>
+      <a href="#">Like</a>
+      <span class="muted">3 other people like this</span>
+      <% if comment.user == current_user %>
+        <a href="#" class="private pull-right">Delete</a>
+      <% end %>
+    </p>
+  </div>
+</div>

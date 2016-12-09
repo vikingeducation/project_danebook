@@ -17,12 +17,11 @@
             </header>
           </div>
 
+          <%= form_for [current_user, @post], html: {class: "form-horizontal"} do |f| %>
           <div class="row">
             <section class="post-content col-xs-12">
-              <form id="user-post" class="form-horizontal">
-                <label for="user-post-thoughts" class="sr-only">Tell the world something</label>
-                <textarea type="text" id="user-post-thoughts" name="thoughts" class="form-control" rows="3" placeholder="Tell the world something..."></textarea>
-              </form>
+              <%= f.label :body, "Tell the world something", class: "sr-only" %>
+              <%= f.text_area :body, class: "form-control", rows: 3, placeholder: "Tell the world something..." %>
             </section>
           </div>
 
@@ -32,207 +31,17 @@
               <div class="clearfix"></div>
             </section>
           </div>
+          <% end %>
 
         </section>
 
       </div>
-
-      <div class="row">
-
-        <section class="post post-small col-xs-12">
-
-          <div class="row">
-            <section class="post-content col-xs-12">
-
-              <div class="row">
-                <div class="profile col-xs-12">
-                  <div class="profile-img pull-left">
-                    <a href="about.html"><img src="https://s3.amazonaws.com/viking_education/web_development/web_app_eng/harry_potter_small.jpg" alt=""></a>
-                  </div>
-                  <div class="profile-info pull-left">
-                    <a href="about.html">Harry Potter</a>
-                    <p><small>Posted on Thursday 6/1/2014</small></p>
-                  </div>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-xs-12">
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores harum quisquam nostrum veritatis, provident maiores deleniti vero earum sunt ex quam modi magni, sed hic atque rerum eveniet? Nam, voluptatum.</p>
-                  </div>
-                </div>
-
-              </section>
-            </div>
-
-            <div class="row">
-              <section class="post-footer col-xs-12">
-                <div class="row">
-                  <section class="links col-xs-12">
-                    <a class="public" href="#">Like</a>
-                    <a class="public" href="#">Comment</a>
-                    <a href="#" class="private pull-right">Delete</a>
-                  </section>
-                </div>
-                <div class="clearfix"></div>
-              </section>
-            </div>
-
-          </section>
-
-          <section class="post post-small col-xs-12">
-
-            <div class="row">
-              <section class="post-content col-xs-12">
-
-                <div class="row">
-                  <div class="profile col-xs-12">
-                    <div class="profile-img pull-left">
-                      <a href="about.html"><img src="https://s3.amazonaws.com/viking_education/web_development/web_app_eng/harry_potter_small.jpg" alt=""></a>
-                    </div>
-                    <div class="profile-info pull-left">
-                      <a href="about.html">Harry Potter</a>
-                      <p><small>Posted on Thursday 5/31/2014</small></p>
-                    </div>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col-xs-12">
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores harum quisquam nostrum veritatis, provident maiores deleniti vero earum sunt ex quam modi magni, sed hic atque rerum eveniet? Nam, voluptatum.</p>
-                    </div>
-                  </div>
-
-                </section>
-              </div>
-
-              <div class="row">
-                <section class="post-footer col-xs-12">
-                  <div class="row">
-                    <section class="links col-xs-12">
-                      <a class="public" href="#">Like</a>
-                      <a class="public" href="#">Comment</a>
-                      <a href="#" class="private pull-right">Delete</a>
-                    </section>
-                    <section class="likes col-xs-12">
-                      <p>
-                        <a href="about.html">Hermione Granger</a> likes this
-                      </p>
-                    </section>
-                  </div>
-                  <div class="clearfix"></div>
-                </section>
-              </div>
-
-            </section>
-
-          </div>
-
-          <div class="row">
-
-            <section class="post post-small col-xs-12">
-
-              <div class="row">
-                <section class="post-content col-xs-12">
-
-                  <div class="row">
-                    <div class="profile col-xs-12">
-                      <div class="profile-img pull-left">
-                        <a href="about.html"><img src="https://s3.amazonaws.com/viking_education/web_development/web_app_eng/harry_potter_small.jpg" alt=""></a>
-                      </div>
-                      <div class="profile-info pull-left">
-                        <a href="about.html">Harry Potter</a>
-                        <p><small>Posted on Thursday 5/31/2014</small></p>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-xs-12">
-                      <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores harum quisquam nostrum veritatis, provident maiores deleniti vero earum sunt ex quam modi magni, sed hic atque rerum eveniet? Nam, voluptatum.</p>
-                      </div>
-                    </div>
-
-                  </section>
-                </div>
-
-                <div class="row">
-                  <section class="post-footer col-xs-12">
-                    <div class="row">
-                      <section class="links col-xs-12">
-                        <a class="public" href="#">Like</a>
-                        <a class="public" href="#">Comment</a>
-                        <a href="#" class="private pull-right">Delete</a>
-                      </section>
-                      <section class="likes col-xs-12">
-                        <p>
-                          You, <a href="about.html">Hermione Granger</a> and 3 others like this
-                        </p>
-                      </section>
-                      <section class="comments col-xs-12">
-                        <div class="row">
-                          <div class="profile col-xs-12">
-                            <div class="profile-img pull-left">
-                              <a href="about.html"><img src="https://s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif" alt=""></a>
-                            </div>
-                            <div class="comment pull-left">
-                              <p>
-                                <a href="about.html">Ron Weasley</a>
-                                <small class="muted">
-                                  Said on Thrsday 5/21/2014
-                                </small>
-                              </p>
-                              <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut at, necessitatibus accusamus quo impedit, laboriosam nemo aut facere iure eos ex omnis nihil nesciunt! Placeat unde animi vitae dolore mollitia. ipsum dolor sit amet, consectetur adipisicing elit. Iusto dicta tenetur, est nemo in tempore obcaecati commodi architecto provident necessitatibus reiciendis delectus veritatis rerum ipsum ipsam corrupti, doloribus possimus a. ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur, veritatis, accusamus! Laboriosam ducimus error dolor natus neque quis consectetur deleniti magni sapiente expedita, iure animi in corporis inventore architecto. A.
-                              </p>
-                              <p>
-                                <a href="#">Like</a>
-                                <span class="muted">3 other people like this</span>
-                              </p>
-                            </div>
-                          </div>
-
-                          <div class="profile col-xs-12">
-                            <div class="profile-img pull-left">
-                              <a href="about.html"><img src="https://s3.amazonaws.com/viking_education/web_development/web_app_eng/harry_potter_small.jpg" alt=""></a>
-                            </div>
-                            <div class="comment pull-left">
-                              <p>
-                                <a href="about.html">Harry Potter</a>
-                                <small class="muted">
-                                  Said on Thrsday 5/21/2014
-                                </small>
-                              </p>
-                              <p>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut at, necessitatibus accusamus quo impedit, laboriosam nemo aut facere iure eos ex omnis nihil nesciunt! Placeat unde animi vitae dolore mollitia. ipsum dolor sit amet, consectetur adipisicing elit. Iusto dicta tenetur, est nemo in tempore obcaecati commodi architecto provident necessitatibus reiciendis delectus veritatis rerum ipsum ipsam corrupti, doloribus possimus a. ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur, veritatis, accusamus! Laboriosam ducimus error dolor natus neque quis consectetur deleniti magni sapiente expedita, iure animi in corporis inventore architecto. A.
-                              </p>
-                              <p>
-                                <a href="#">Like</a>
-                                <span class="muted">3 other people like this</span>
-                                <a href="#" class="pull-right">Delete</a>
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                        <form class="form-horizontal">
-
-                          <label for="comment-thoughts-2" class="sr-only">Write a Comment..</label>
-                          <textarea type="text" id="comment-thoughts-2" name="thoughts" class="form-control" rows="3" placeholder="Write a Comment.."></textarea>
-
-                          <a href="#">Cancel</a>
-                          <button type="submit" class="btn btn-primary pull-right">Comment</button>
-
-                        </form>
-                      </section>
-                    </div>
-                    <div class="clearfix"></div>
-                  </section>
-                </div>
-
-              </section>
-
-            </div>
-          </div>
-
+      <% @posts.each do |post| %>
+        <div class="row">
+          <%= render partial: 'shared/posts/post', locals: { user: post.user, post: post, size: "small"} %>
         </div>
-      </div>
+      <% end %>
+    </div>
+
+  </div>
+</div>

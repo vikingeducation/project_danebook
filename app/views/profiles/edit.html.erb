@@ -15,51 +15,52 @@
           <h3>Basic Information</h3>
           <dl>
             <dt><%= f.label :birthday, "Birthday:" %></dt>
-            <dd><%= f.date_select :birthday,
-                              { start_year: Date.current.year,
-                                end_year: 100.years.ago.year,
-                                prompt: { day: 'Birth Day', month: 'Birth Month', year: 'Birth Year' },
-                              },
-                              {class: 'form-control', required: "true"} %></dd>
+            <dd>
+              <div class="row">
+                <%= f.date_select :birthday,
+                { start_year: Date.current.year,
+                  end_year: 100.years.ago.year,
+                  prompt: { day: 'Birth Day', month: 'Birth Month', year: 'Birth Year' },
+                },
+                {class: 'form-control', required: "true"} %>
+              </div>
+            </dd>
 
-          <dt><label for="edit-college">College:</label</dt>
-          <dd><input type="text" id="edit-college" name="college" class="form-control" value="Hogwarts College"></dd>
+            <dt><%= f.label :college, "College:" %></dt>
+            <dd><%= f.text_field :college, class: 'form-control' %></dd>
 
-          <dt><label for="edit-hometown">Hometown:</label</dt>
-          <dd><input type="text" id="edit-hometown" name="hometown" class="form-control" value="Godrick's Hollow, England"></dd>
+            <dt><%= f.label :hometown, "Hometown:" %></dt>
+            <dd><%= f.text_field :hometown, class: 'form-control' %></dd>
 
-          <dt><label for="edit-lives">Currently Lives:</label</dt>
-          <dd><input type="text" id="edit-lives" name="lives" class="form-control" value="Godrick's Hollow, England"></dd>
+            <dt><%= f.label :current_home, "Currently Lives:" %></dt>
+            <dd><%= f.text_field :current_home, class: 'form-control' %></dd>
+
           </dl>
 
           <h3>Contact Information</h3>
           <dl>
-            <dt><label for="edit-email"><p>Email:</p></label</dt>
-              <dd><p><input type="text" id="edit-email" name="email" class="form-control" value="harry_potter@hogwarts.edu"></p></dd>
+            <dt>Email:</dt>
+            <dd><%= current_user.email %> <%= link_to "edit", edit_user_path(current_user) %></dd>
 
-              <dt><label for="edit-telephone"><p>Telephone:</p></label</dt>
+            <dt><%= f.label :phone, "Telephone:" %></dt>
+            <dd><%= f.text_field :phone, class: 'form-control' %></dd>
+          </dl>
 
-                <dd><p><input type="tel" id="edit-telephone" name="telephone" class="form-control" value="555-123-4567"></p></dd>
-              </dl>
-            </form>
+        </div>
 
-          </div>
-
-          <div class="personality col-md-7">
-            <h3><label for="edit-slogan">Words To Live By</label></h3>
-            <textarea id="edit-slogan" name="slogan" class="form-control" rows="5">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis minima natus assumenda, iste nesciunt odio dolorum. Eveniet accusamus, quis, esse dignissimos ex fuga est, excepturi ab non itaque nostrum quae.
-            </textarea>
-            <h3><label for="edit-about">About Me</label></h3>
-            <textarea id="edit-about" name="about" class="form-control" rows="9">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas viverra tellus nisi, id condimentum dui tristique sed. Donec luctus eros quis ante consequat sagittis. Phasellus consectetur lectus ac lectus mattis vulputate. Maecenas non risus tellus. Proin ullamcorper, ex id iaculis scelerisque, odio dui posuere purus, sit amet viverra mi nibh sit amet risus. Duis tempor pretium arcu, ut dictum justo interdum pharetra. Suspendisse vulputate pellentesque massa, eu gravida diam semper ut. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pharetra erat eget vulputate lacinia. Aenean in porta elit. Aenean egestas in urna id bibendum. Integer nec placerat metus.
-            </textarea>
-          </div>
-          <div class="submit-button col-xs-12 col-md-6 col-md-offset-3">
-            <button type="submit" class="btn btn-block btn-primary">Save Changes</button>
-          </div>
+        <div class="personality col-md-7">
+          <%= f.fields_for :bio do |bf| %>
+            <h3><%= bf.label :slogan, "Words To Live By" %></h3>
+            <%= bf.text_area :slogan, class: 'form-control', rows: 5, value: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis minima natus assumenda, iste nesciunt odio dolorum. Eveniet accusamus, quis, esse dignissimos ex fuga est, excepturi ab non itaque nostrum quae." %>
+            <h3><%= bf.label :about, "Words To Live By" %></h3>
+            <%= bf.text_area :about, class: 'form-control', rows: 9, value: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas viverra tellus nisi, id condimentum dui tristique sed. Donec luctus eros quis ante consequat sagittis. Phasellus consectetur lectus ac lectus mattis vulputate. Maecenas non risus tellus. Proin ullamcorper, ex id iaculis scelerisque, odio dui posuere purus, sit amet viverra mi nibh sit amet risus. Duis tempor pretium arcu, ut dictum justo interdum pharetra. Suspendisse vulputate pellentesque massa, eu gravida diam semper ut. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pharetra erat eget vulputate lacinia. Aenean in porta elit. Aenean egestas in urna id bibendum. Integer nec placerat metus." %>
           <% end %>
         </div>
-      </section>
-    </div>
-  </section>
+        <div class="submit-button col-xs-12 col-md-6 col-md-offset-3">
+          <%= f.submit "Save Changes", class: "btn btn-block btn-primary" %>
+        </div>
+        <% end %>
+      </div>
+    </section>
+  </div>
+</section>

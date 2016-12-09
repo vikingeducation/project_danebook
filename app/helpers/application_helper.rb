@@ -15,4 +15,15 @@ module ApplicationHelper
   def render_login_nav
     render partial: 'shared/navbar/anon'
   end
+
+  def render_post_comments(post)
+    comments = post.comments.select{|com| com.user }
+    if comments.length > 0
+      render partial: 'shared/posts/comments', locals: { comments: comments}
+    end
+  end
+
+  def format_user_name(user)
+     "#{user.profile.first_name} #{user.profile.last_name}"
+  end
 end

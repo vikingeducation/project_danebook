@@ -1,0 +1,7 @@
+<section class="comments col-xs-12">
+  <div class="row">
+    <% comments.each do |comment| %>
+      <%= render partial: 'shared/posts/comment', locals: { comment: comment} %>
+    <% end %>
+  </div>
+</section>

@@ -1,8 +1,6 @@
 Rails.application.routes.draw do
   get 'posts/index'
 
-  # get 'posts/create'
-
   root "users#new"
   resources :users do
     resources :profiles , only: [:create, :destroy, :edit, :update]
@@ -12,6 +10,7 @@ Rails.application.routes.draw do
   get "user/:id/timeline" => "users#index"
 
   resources :likes, only: [:create,:destroy]
+  resources :comments, only: [:create,:destroy]
   
 
  

@@ -4,7 +4,7 @@ class User < ApplicationRecord
 
   accepts_nested_attributes_for :profile, reject_if: :all_blank
 
-  validates :password, length: { minimum: 8, maximum: 256 }
+  validates :password, length: { minimum: 8, maximum: 256 }, allow_nil: true
 
   def generate_token
     begin

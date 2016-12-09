@@ -7,13 +7,14 @@ class UsersController < ApplicationController
   end
 
   def create
+    p params
     @user = User.new(strong_user_params)
     if @user.save
       flash[:success] = "Welcome to Danebook!"
       sign_in(@user)
       redirect_to edit_user_profile_path(@user)
     else
-      flash[:warning] = "#{@user.errors.full_messages}"
+      flash[:warning] = @user.errors.full_messages
       render :new
     end
   end

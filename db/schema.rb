@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161208224910) do
+ActiveRecord::Schema.define(version: 20161209000402) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,15 +18,21 @@ ActiveRecord::Schema.define(version: 20161208224910) do
   create_table "users", force: :cascade do |t|
     t.string   "email"
     t.string   "password_digest"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.string   "auth_token"
-    t.string   "first_name",      null: false
-    t.string   "last_name",       null: false
-    t.integer  "birth_month",     null: false
-    t.integer  "birth_day",       null: false
-    t.integer  "birth_year",      null: false
-    t.string   "gender",          null: false
+    t.string   "first_name",       null: false
+    t.string   "last_name",        null: false
+    t.integer  "birth_month",      null: false
+    t.integer  "birth_day",        null: false
+    t.integer  "birth_year",       null: false
+    t.string   "gender",           null: false
+    t.string   "college"
+    t.string   "hometown"
+    t.string   "current_town"
+    t.string   "phone"
+    t.text     "words_to_live_by"
+    t.text     "about_me"
     t.index ["auth_token"], name: "index_users_on_auth_token", unique: true, using: :btree
   end
 

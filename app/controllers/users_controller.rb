@@ -37,7 +37,14 @@ class UsersController < ApplicationController
   end
 
   def update
-
+    @user = User.find(params[:id])
+    if @user.update(whitelisted_params)
+      flash[:success] = "Profile successfully updated"
+      redirect_to @user
+    else
+      flash[:error] = "Oops! Something didn't save correctly. Please try again."
+      render :edit
+    end
   end
 
   def destroy
@@ -55,7 +62,13 @@ class UsersController < ApplicationController
                                  :birth_month,
                                  :birth_day,
                                  :birth_year,
-                                 :gender)
+                                 :gender,
+                                 :college,
+                                 :hometown,
+                                 :current_town,
+                                 :phone,
+                                 :words_to_live_by,
+                                 :about_me)
   end
 
 

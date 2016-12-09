@@ -37,7 +37,7 @@
                   <p><strong>College:</strong></p>
                 </div>
                 <div class="col-xs-6">
-                  <p>Hogwarts College</p>
+                  <p><%= @user.college %></p>
                 </div>
               </div>
               <div class="row">
@@ -45,7 +45,7 @@
                   <p><strong>Hometown:</strong></p>
                 </div>
                 <div class="col-xs-6">
-                  <p>Godrick's Hollow, England</p>
+                  <p><%= @user.hometown %></p>
                 </div>
               </div>
               <div class="row">
@@ -53,7 +53,7 @@
                   <p><strong>Currently Lives:</strong></p>
                 </div>
                 <div class="col-xs-6">
-                  <p>Godrick's Hollow, England</p>
+                  <p><%= @user.current_town %></p>
                 </div>
               </div><!--  -->
               <!--END OF BASIC INFORMATION  -->
@@ -76,7 +76,7 @@
                   <p><strong>Telephone:</strong></p>
                 </div>
                 <div class="col-xs-6">
-                  <p>555-123-4567</p>
+                  <p><%= @user.phone %></p>
                 </div>
               </div>
             </div><!--  -->
@@ -90,14 +90,7 @@
               </div>
               <div class="row">
                 <div class="col-xs-12">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                  sed do eiusmod tempor incididunt ut labore et dolore magna
-                  aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                  ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
-                  aute irure dolor in reprehenderit in voluptate velit esse
-                  cillum dolore eu fugiat nulla pariatur. Excepteur sint
-                  occaecat cupidatat non proident, sunt in culpa qui officia
-                  deserunt mollit anim id est laborum.</p>
+                  <p><%= @user.words_to_live_by %></p>
                 </div>
               </div>
               <div class="row">
@@ -107,14 +100,7 @@
               </div>
               <div class="row">
                 <div class="col-xs-12">
-                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-                  sed do eiusmod tempor incididunt ut labore et dolore magna
-                  aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                  ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
-                  aute irure dolor in reprehenderit in voluptate velit esse
-                  cillum dolore eu fugiat nulla pariatur. Excepteur sint
-                  occaecat cupidatat non proident, sunt in culpa qui officia
-                  deserunt mollit anim id est laborum.</p>
+                  <p><%= @user.about_me %></p>
                 </div>
               </div>
             </div>

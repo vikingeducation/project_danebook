@@ -19,110 +19,66 @@
         <div class="panel-body">
           <div class="row bottom-box">
             <div class="col-md-6 col1">
-              <div class="row">
-                <div class="col-xs-12">
-                  <h3>Basic Information</h3>
+
+              <%= form_for @user do |f| %>
+
+                <div class="row">
+                  <div class="col-sm-6">
+
+                    <h3>Basic Information</h3>
+
+                    <%= f.label :birth_month %>
+                    <%= f.text_field :birth_month %>
+
+                    <%= f.label :birth_day %>
+                    <%= f.text_field :birth_day %>
+
+                    <%= f.label :birth_year %>
+                    <%= f.text_field :birth_year %>
+
+                    <%= f.label :college %>
+                    <%= f.text_field :college %>
+
+                    <%= f.label :hometown %>
+                    <%= f.text_field :hometown %>
+
+                    <%= f.label :current_town %>
+                    <%= f.text_field :current_town %>
+
+                    <h3>Contact Information</h3>
+
+                    <%= f.label :email %>
+                    <%= f.text_field :email %>
+
+                    <%= f.label :phone %>
+                    <%= f.text_field :phone %>                    
+
+                  </div>
+                  <div class="col-sm-6">
+
+                    <h3>Words to Live By</h3>
+
+                    <%= f.label :words_to_live_by %>
+                    <%= f.text_area :words_to_live_by %>
+
+                    <h3>About Me</h3>
+
+                    <%= f.label :about_me %>
+                    <%= f.text_area :about_me %>
+
+                  </div>
                 </div>
-              </div>
-              <div class="row">
-                <div class="col-xs-6">
-                  <p><strong>Birthday:</strong></p>
+
+                <div class="row">
+                  <div class="col-xs-12 text-center rs30">
+                    <%= f.submit 'Save Changes', class: 'btn btn-success btn-lg' %>
+                  </div>
                 </div>
-                <div class="col-xs-6">
-                  <p>July 31st, 1980</p>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-xs-6">
-                  <p><strong>College:</strong></p>
-                </div>
-                <div class="col-xs-6">
-                  <input type="text" value="Hogwarts College">
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-xs-6">
-                  <p><strong>Hometown:</strong></p>
-                </div>
-                <div class="col-xs-6">
-                  <input type="text" value="Godrick's Hollow, England">
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-xs-6">
-                  <p><strong>Currently Lives:</strong></p>
-                </div>
-                <div class="col-xs-6">
-                  <input type="text" value="Godrick's Hollow, England">
-                </div>
-              </div><!--  -->
-              <!--END OF BASIC INFORMATION  -->
-              <!--  -->
-              <div class="row">
-                <div class="col-xs-12">
-                  <h3>Contact Information</h3>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-xs-6">
-                  <p><strong>Email:</strong></p>
-                </div>
-                <div class="col-xs-6">
-                  <p>harry_potter@hogwarts.edu</p>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-xs-6">
-                  <p><strong>Telephone:</strong></p>
-                </div>
-                <div class="col-xs-6">
-                  <input type="text" value="555-123-4567">
-                </div>
-              </div>
-            </div><!--  -->
-            <!-- END OF LEFT HALF -->
-            <!--  -->
-            <div class="col-md-6 col2">
-              <div class="row">
-                <div class="col-xs-12">
-                  <h3>Words to Live By</h3>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-xs-12">
-                  <textarea class="form-control" rows=
-                  "2">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</textarea>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-xs-12">
-                  <h3>About Me</h3>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-xs-12">
-                  <textarea class="form-control" rows=
-                  "10">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</textarea>
-                </div>
-              </div>
+
+              <% end %>
+
             </div>
-            <div class="row">
-              <div class="col-xs-12 text-center rs30">
-                <a class="btn btn-success btn-lg" href="#">Save Changes</a>
-              </div>
-            </div>
-          </div><!--Panel content-->
-        
+          </div>
         </div>
       </div>
     </div>

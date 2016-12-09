@@ -2,10 +2,6 @@
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
 
-body {
-  font-family: "Comic Sans MS", sans-serif;
-}
-
 /* navbar */
 
 #top-nav {
@@ -19,6 +15,10 @@ body {
     }
   }
   #navbar-form {
+    padding: 0;
+    .navbar-form {
+      padding: 0;
+    }
     label {
       color: white;
       font-size: 12px;

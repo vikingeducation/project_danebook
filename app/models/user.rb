@@ -1,12 +1,13 @@
 class User < ApplicationRecord
   has_secure_password
   has_one :profile, dependent: :destroy, inverse_of: :user
+  has_many :posts
 
   accepts_nested_attributes_for :profile, reject_if: :all_blank
 
   validates :first_name, :presence, length: { maximum: 25 }
   validates :last_name, :presence, length: { maximum: 25 }
-  validates :email, :presence, length: { maximum: 50 }
+  validates :email, presence:true, length: { maximum: 50 }, uniqueness: true
   validates :password, length: { minimum: 8, maximum: 256 }, allow_nil: true
 
   def generate_token

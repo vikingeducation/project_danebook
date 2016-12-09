@@ -17,7 +17,7 @@ class UsersController < ApplicationController
       redirect_to edit_user_profile_path(@user)
     else
       flash[:warning] = @user.errors.full_messages
-      render :new
+      render :new, layout: "new_user"
     end
   end
 

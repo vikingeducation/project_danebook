@@ -79,7 +79,7 @@
 
           <%= f.fields_for :profile, @profile do |profile_builder| %>
             <h2>Birthday</h2>
-            <%= profile_builder.date_select :birthday, default: Date.today, start_year: Date.today.year, end_year: 100.years.ago.year %>
+            <%= profile_builder.date_select :birthday, default: Date.yesterday, start_year: Date.today.year, end_year: 100.years.ago.year %>
 
             <div>
               <%= profile_builder.label :sex do %>

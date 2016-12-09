@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+  before_action :require_login, except: [:new, :create]
+  skip_before_action :require_login, only: [:new, :create]
+  before_action :require_current_user, only: [:edit, :update]
 
   def new
     @user = User.new
@@ -15,6 +18,16 @@ class UsersController < ApplicationController
     else
       flash[:warning] = @user.errors.full_messages
       render :new
+    end
+  end
+
+  def update
+    if current_user.update(strong_user_params)
+      flash[:success] = "Profile updated!"
+      redirect_to current_user
+    else
+      flash.now[:warning] = "Could not update profile."
+      render :edit
     end
   end
 

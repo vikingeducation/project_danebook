@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     if @user.save
       sign_in(@user)
       flash[:success] = "Welcome"
-      redirect_to @user
+      redirect_to edit_user_profile_url(@user)
     else
       flash[:error] = "Try again"
       render :new

@@ -6,7 +6,7 @@ class CreateProfiles < ActiveRecord::Migration[5.0]
       t.date :birthday
       t.string :gender
 
-      t.references :user
+    
 
       t.timestamps
     end

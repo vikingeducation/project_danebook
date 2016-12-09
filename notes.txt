@@ -3,3 +3,17 @@ SIGN UP - user#new
 
         --->ABOUT PAGE - profile#edit(with :birthday, :email) and the rest to fill out
         --->ABOUT PAGE - profile#show
+
+
+
+TO DOS:
+
+  -Implement validations on database level
+
+  -let non-signed in users view other's pages
+      optional(allow user to hide their profile)
+
+  -change birthday defaults!
+
+  -Refactor html/css
+  -Put things into partials

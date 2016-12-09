@@ -1,38 +1,8 @@
-main.photos {
-  .photo-container {
-    margin: 10px auto;
-    width: 150px;
-    height: 150px;
-    background:url('icon_photo_small.png') no-repeat;
-    position: relative;
-    .annotation {
-      width: 150px;
-      height: 0;
-      background-color: #666;
-      font-size: 12px;
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      color: #fff;
-      text-align: center;
-      -webkit-transition: height 0.5s;
-      transition: height 0.5s;
-    }
-
-  }
-  .photo-container:hover {
-    .annotation {
-      height: 24px;
-    }
-  }
-  .photo-row {
-    margin-top: 20px;
-  }
-}
-
-main.photo-show {
+main.photos-show {
   .large-photo-container {
     margin: 10px auto;
+    border: 1px solid;
+    padding: 10px;
   }
   .photo-comments-container {
     margin: 10px auto;
@@ -40,5 +10,17 @@ main.photo-show {
   .profile-image {
     width: 100px;
     height: 100px;
+  }
+}
+main.photos-new {
+  .heading {
+    background-color: #eee;
+    position: relative;
+    text-align: center;
+    border: 1px solid #666;
+    margin-bottom: 10px;
+    h1 {
+      display: inline-block;
+    }
   }
 }

@@ -1,4 +1,4 @@
-<main class="photo-show">
+<main class="photos-show">
    <!-- Bootstrap grid system -->
   <section class="content">
     <div class="container">
@@ -9,7 +9,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="col-md-6 text-center large-photo-container">
+        <div class="col-md-8 text-center large-photo-container">
           <%= image_tag @photo.image.url(:medium) %><br>
           <div class="pull-right">
             <%= link_to "Set as Profile", photo_path(@photo, :profile_user_id => current_user.id), :method => :put %><br>
@@ -17,7 +17,7 @@
             <%= link_to "Delete Photo", photo_path(@photo), method: "DELETE" %><br>
           </div>
         </div>
-        <div class="col-md-6 photo-comments-container">
+        <div class="col-md-4 photo-comments-container">
           <div class="row">
             <div class="col-md-3">
               <% if @profile_photo %>

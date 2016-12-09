@@ -1,20 +1,22 @@
-<nav class="navbar navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
-      <a href= "timeline.html">
-        <%= image_tag("danish_flag.gif",  :class => "brand-image pull-left img-circle") %>
-      </a>
-      <%= link_to "Danebook", timeline_user_path(current_user) , class: "navbar-brand" %>
-    </div>
-    <div class="container col-sm-6">
-      <%= form_tag users_path, :method => :get , class: "navbar-form navbar-left", role: "search" do %>
-        <%= hidden_field_tag(:id, value = current_user.id) %>
-        <%= text_field_tag :query, "", placeholder: "Search Users", class: "form-control" %>
-        <%= submit_tag "Search", name: nil %>
+<div class="shared">
+  <nav class="navbar navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <a href= "timeline.html">
+          <%= image_tag("danish_flag.gif",  :class => "brand-image pull-left img-circle") %>
+        </a>
+        <%= link_to "Danebook", timeline_user_path(current_user) , class: "navbar-brand" %>
+      </div>
+      <div class="container col-sm-6">
+        <%= form_tag users_path, :method => :get , class: "navbar-form navbar-left", role: "search" do %>
+          <%= hidden_field_tag(:id, value = current_user.id) %>
+          <%= text_field_tag :query, "", placeholder: "Search Users", class: "form-control" %>
+          <%= submit_tag "Search", name: nil %>
+        <% end %>
+      </div>
+      <% if signed_in_user? %>
+        <p class="navbar-right"><%= current_user.first_name %></p>
+        <p class="navbar-right logout"><%= link_to "Log Out", logout_path, method: 'DELETE' %></p>
       <% end %>
-    </div>
-    <% if signed_in_user? %>
-      <p class="navbar-right"><%= current_user.first_name %></p>
-      <p class="navbar-right logout"><%= link_to "Log Out", logout_path, method: 'DELETE' %></p>
-    <% end %>
-</nav>
+  </nav>
+</div>

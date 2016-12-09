@@ -1,6 +1,8 @@
 <!-- Header -->
+<div class="shared">
 <header class="container" id="bg">
   <section class="jumbotron">
+    <%= image_tag("hogwarts_small.jpg", :class => "cover-image") %>
     <% if @profile_photo %>
       <%= image_tag(@profile_photo.image.url(:small), :class => "profile-image") %>
     <% else %>
@@ -9,3 +11,4 @@
     <h3><%= "#{user.first_name} #{user.last_name}"%></h3>
   </section>
 </header>
+</div>

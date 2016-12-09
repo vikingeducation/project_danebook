@@ -109,7 +109,6 @@ GEM
     nio4r (1.2.1)
     nokogiri (1.6.8.1)
       mini_portile2 (~> 2.1.0)
-    openssl (2.0.0)
     pg (0.19.0)
     pry (0.10.4)
       coderay (~> 1.1.0)
@@ -216,7 +215,6 @@ DEPENDENCIES
   jquery-rails
   jwt
   listen (~> 3.0.5)
-  openssl
   pg (~> 0.18)
   pry-rails
   puma (~> 3.0)

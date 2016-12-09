@@ -3,43 +3,7 @@
     
       <!-- Hero -->
       <div class="container">
-          <header class="hero">
-              <div class="avatar">
-              </div>
-          </header>
-          <!-- Sub-nav -->
-          <nav class="sub-navigation" role="navigation">
-              <div class="container-fluid">
-                  <!-- Brand and toggle get grouped for better mobile display -->
-                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sub-nav-collapse" aria-expanded="false"><span class="caret"></span>Menu
-                  </button>
-                  <!-- Collect the nav links, forms, and other content for toggling -->
-                  <div class="collapse navbar-collapse" id="sub-nav-collapse">
-                      <ul class="nav nav-pills">
-                          <li role="presentation">
-                              <a href="timeline.html">
-                                  Timeline
-                              </a>
-                          </li>
-                          <li role="presentation" class="active">
-                              <a href="about.html">
-                                  About
-                              </a>
-                          </li>
-                          <li role="presentation">
-                              <a href="photos.html">
-                                  Photos<span class="badge">(123)</span>
-                              </a>
-                          </li>
-                          <li role="presentation">
-                              <a href="friends.html">
-                                  Friends<span class="badge">(542)</span>
-                              </a>
-                          </li>
-                      </ul>
-                  </div><!-- /.navbar-collapse -->
-              </div><!-- /.container-fluid -->
-          </nav>
+          <%= render "/shared/second_nav" %>
           <!-- Current location header -->
           <section class="nav-about">
               <h2>

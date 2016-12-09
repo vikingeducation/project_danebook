@@ -1,0 +1,45 @@
+<header class="hero">
+              <div class="avatar">
+              </div>
+          </header>
+          <!-- Sub-nav -->
+          <nav class="sub-navigation" role="navigation">
+              <div class="container-fluid">
+                  <!-- Brand and toggle get grouped for better mobile display -->
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sub-nav-collapse" aria-expanded="false"><span class="caret"></span>Menu
+                  </button>
+                  <!-- Collect the nav links, forms, and other content for toggling -->
+                  <div class="collapse navbar-collapse" id="sub-nav-collapse">
+                      <ul class="nav nav-pills">
+                          <li role="presentation">
+                              <a href="/user/<%= current_user.id %>/timeline" class= <%= "active" if params[:action] == "index" %>>
+                                  Timeline
+                              </a>
+                          </li>
+                          
+                          <li role="presentation" class= <%= "active" if params[:action] == "show" %>>
+                              <a href="<%= user_path(current_user.id) %>">
+                                  About
+                              </a>
+                          </li>
+                          <li role="presentation">
+                              <a href="#">
+                                  Photos<span class="badge">(123)</span>
+                              </a>
+                          </li>
+                          <li role="presentation">
+                              <a href="#">
+                                  Friends<span class="badge">(542)</span>
+                              </a>
+                          </li>
+                          <li class="edit-profile pull-right">
+                              <% unless params[:action] == "edit" %>
+                              <a href="<%= edit_user_profile_path(current_user.id, current_user.profile.id) %>" >
+                                  Edit Profile
+                              </a>
+                              <% end %>
+                          </li>
+                      </ul>
+                  </div><!-- /.navbar-collapse -->
+              </div><!-- /.container-fluid -->
+          </nav>

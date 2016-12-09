@@ -28,6 +28,9 @@ class UsersController < ApplicationController
   end
 
   def index
+    @user = User.find( params[:id])
+    @post = Post.new
+    @posts = Post.where(user_id: params[:id]).reverse
   end
 
   def show

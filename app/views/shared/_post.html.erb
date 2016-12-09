@@ -14,12 +14,14 @@
                                <%= post.body %>
                           </p>
                       </div>
+                     
                       <div class="nav-footer">
+
                           <% if post.likes.where(user_id: current_user.id).empty? %>
                           <%= link_to "Like", likes_path(:post_id => post.id, :type => "Post"), class: "link pull-left", method: post  %>
 
                           <% else %>
-                          
+
                           <%= link_to "Unlike", like_path(post.id, :type => "Post"), class: "link pull-left", method: "delete" %>
 
                           <% end %>
@@ -29,5 +31,7 @@
                           <% if post.user_id == current_user.id %>
                             <%= link_to "Delete", user_post_path(post.user_id, post.id), method: "delete" %>
                           <% end %>
+                          <br>
+                          <%= show_likes(post) %>
                       </div>
                   </section>

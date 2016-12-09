@@ -1,6 +1,7 @@
 module PostsHelper
 
-  def show_likes(item)
+  def show_post_likes(item)
+
     likes = item.likes 
     user = likes.last.user unless likes.last == nil
     if likes.where(user_id: current_user.id).any? && likes.count == 1

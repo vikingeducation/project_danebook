@@ -30,9 +30,10 @@
                             <%= link_to "Delete", user_post_path(post.user_id, post.id), method: "delete" %>
                           <% end %>
                           <br>
-                          <%= show_likes(post) %>
+                          <%= show_post_likes(post) %>
 
                       </div>
-                       <%= render "/shared/comment_writer", post: post %>
+                      
+                      <%= render "/shared/comment_writer", post: post %>
                   </section>
 

@@ -1,4 +1,5 @@
 class SessionController < ApplicationController
+  skip_before_action :require_login, :only => [:create]
 
   def create
     @user = User.find_by_email(params[:email])
@@ -8,18 +9,18 @@ class SessionController < ApplicationController
       else
         sign_in(@user)
       end
-      flash[:success] = "You've successfully signed in"
+      flash[:success] = "You've successfully signed in! Our apes are shrieking with joy to witness once again your beautiful visage."
       redirect_to @user
     else
-      flash[:danger] = "We couldn't sign you in"
+      flash[:error] = "We couldn't sign you in. A team of highly trained apes is working on this issue as we speak."
       redirect_to new_user_path
     end
   end
 
   def destroy
     sign_out
-    flash[:success] = "You've successfully signed out"
-    redirect_to root_url
+    flash[:success] = "Goodbye! Farewell! Until we meet again!"
+    redirect_to new_user_path
   end
 
 end

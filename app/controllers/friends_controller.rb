@@ -17,6 +17,10 @@ class FriendsController < ApplicationController
       flash[:success] = "Request revoked"
       redirect_to :back
     end
+  end
 
+  def index
+    @user = User.find(params[:user_id])
+    @friends = @user.friended_users
   end
 end

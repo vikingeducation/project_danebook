@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :users do
     resources :profiles , only: [:create, :destroy, :edit, :update]
     resources :posts, except: [:new, :show]
+    resources :friends, only: [:index]
   end
 
   get "user/:id/timeline" => "users#index"

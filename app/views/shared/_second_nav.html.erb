@@ -24,12 +24,12 @@
                           </li>
                           <li role="presentation">
                               <a href="#">
-                                  Photos<span class="badge">(123)</span>
+                                  Photos<span class="badge">(100)</span>
                               </a>
                           </li>
                           <li role="presentation">
-                              <a href="#">
-                                  Friends<span class="badge">(542)</span>
+                              <a href="/users/<%= current_user.id %>/friends">
+                                  Friends<span class="badge"><%= current_user.friended_users.count %></span>
                               </a>
                           </li>
                           <li class="edit-profile pull-right">

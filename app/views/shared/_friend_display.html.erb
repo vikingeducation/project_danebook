@@ -1,0 +1,14 @@
+<div class="col-xs-12 col-md-6">
+        <div class="friend-box">
+            <img src="assets/user_silhouette_generic.gif" class="img-thumbnail">
+        <div class="friend-name">
+            <a href="/users/<%= friend.id %>">
+                <%= friend.first_name %> <%= friend.last_name %>
+            </a>
+            Friends<span class="badge budge"><%= friend.friended_users.count %></span>
+        </div>
+        <form id="adjust">
+            <%= link_to "Revoke Friendship", friend_url(id: friend.id), method: "delete", class: "btn btn-default btn-sm unfriend", id: "adjust" %>
+        </form>
+    </div>
+</div>

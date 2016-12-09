@@ -1,0 +1,18 @@
+   <%= render "/shared/second_nav" %>
+   <div class="container">
+   <!-- Current location header -->
+          <section class="nav-about">
+              <h2>
+              Friends
+              </h2>
+          </section>
+
+          <!-- Main -->
+          <main class="main-about">
+              <div class="row"> 
+               <% @friends.each do |friend| %>
+                    <%= render "/shared/friend_display", friend: friend%>
+                <% end %>
+              </div>
+          </main>
+      </div>

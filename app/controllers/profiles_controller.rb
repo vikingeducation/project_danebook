@@ -1,7 +1,7 @@
 class ProfilesController < ApplicationController
 
 
-    #before_action :require_login, :except => [:new, :create]
+    before_action :require_login, :except => [:show ]
     # skip_before_action :require_login, :only => [:new, :create]
 
     def new
@@ -14,7 +14,8 @@ class ProfilesController < ApplicationController
     end
 
     def show
-      # @user = User.find(params[:id])
+      @user = User.find(params[:user_id])
+      @profile = current_user.profile
     end
 
     def new
@@ -40,30 +41,27 @@ class ProfilesController < ApplicationController
     end
 
     def update
-
+      @user = User.find(params[:user_id])
+      @profile = @user.profile
+      if @profile.update_attributes(whitelisted_params)
+        flash[:success] = "Profile Updated"
+        redirect_to user_profile_url @user
+      else
+        flash[:error] = "Try again"
+        render :edit
+      end
     end
 
-    def destroy
 
-    end
 
     private
 
-      # def whitelisted_params
-      #   params.require(:user).permit(:email,
-      #                                :password,
-      #                                :password_confirmation,
-      #                                { profile_attributes: [:birthday,
-      #                                  :gender,
-      #                                  :first_name,
-      #                                  :last_name]}
-      #                                )
-      # end
 
-
-
-
-
-
+      def whitelisted_params
+        params.require(:profile).permit( :motto, :college, :residing, :phone, :home_town, :about,
+                                       :gender,
+                                       :first_name,
+                                       :last_name)
+      end
 
 end

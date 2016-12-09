@@ -1,21 +1,17 @@
 <nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
-            <button aria-expanded="false" class="navbar-toggle collapsed"
-                    data-target="#bs-example-navbar-collapse-1"
-                    data-toggle="collapse"
-                    type="button">
+            <button aria-expanded="false" class="navbar-toggle collapsed" data-target="#bs-example-navbar-collapse-1" data-toggle="collapse" type="button">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
 
-            <a class="navbar-brand" href="timeline.html">
-              <img alt="Danish Flag" class="img-circle img-responsive img-small" src="assets/images/danish_flag.gif">
-                <span>Danebook</span>
-            </a>
-         <!-- link_to image_tag("danish_flag.gif"), user_profile_url, class: "navbar-brand img-circle img-responsive img-small" %> -->
+            <%= link_to "#", class: "navbar-brand" do %>
+            <%= image_tag "danish_flag.gif", class: "img-circle img-responsive img-small"  %>
+            <span>Danebook</span>
+            <% end %>
 
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -26,7 +22,7 @@
             </form>
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="#">Harry</a>
+                    <%= link_to "Sign Out", logout_path  %>
                 </li>
             </ul>
         </div>

@@ -9,9 +9,6 @@
           <h2 class="text-center">About</h2>
         </div>
       </div>
-
-
-      <%= form_for [@user, @profile] do |profile_builder| %>
       <div class="panel-body">
         <div class="row bottom-box">
           <div class="col-md-6 col1">
@@ -22,38 +19,34 @@
             </div>
             <div class="row">
               <div class="col-xs-6">
-                <p><strong>Birthday:</strong></p>
+                <h3><strong>Birthday:</strong></h3>
               </div>
               <div class="col-xs-6">
-                <p><%= @profile.birthday.strftime("%B %d, %Y") %>
-                                              </p>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-xs-6">
-                <p><strong>College:</strong></p>
-              </div>
-              <div class="col-xs-6">
-                <%= profile_builder.label :college %>
-                <%= profile_builder.text_field :college %>
+                <h4><%= @profile.birthday.strftime("%B %d, %Y") %></h4>
               </div>
             </div>
             <div class="row">
               <div class="col-xs-6">
-                <p><strong>Hometown:</strong></p>
+                <h3><strong>College:</strong></h3>
               </div>
               <div class="col-xs-6">
-                <%= profile_builder.label :hometown %>
-                <%= profile_builder.text_field :hometown %>
+                <h4><%= @profile.college || "" %></h4>
               </div>
             </div>
             <div class="row">
               <div class="col-xs-6">
-                <p><strong>Currently Lives:</strong></p>
+                <h3><strong>Hometown:</strong></h3>
               </div>
               <div class="col-xs-6">
-                <%= profile_builder.label :residing %>
-                <%= profile_builder.text_field :residing %>
+                <h4><%= @profile.hometown || "" %></h4>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6">
+                <h3><strong>Currently Lives:</strong></h3>
+              </div>
+              <div class="col-xs-6">
+                <h4><%= @profile.residing || "" %></h4>
               </div>
             </div><!--  -->
             <!--END OF BASIC INFORMATION  -->
@@ -65,19 +58,18 @@
             </div>
             <div class="row">
               <div class="col-xs-6">
-                <p><strong>Email:</strong></p>
+                <h4><strong>Email:</strong></h4>
               </div>
               <div class="col-xs-6">
-                <p><%= @user.email %></p>
+                <h4><%= @user.email || "" %></h4>
               </div>
             </div>
             <div class="row">
               <div class="col-xs-6">
-                <p><strong>Telephone:</strong></p>
+                <h4><strong>Telephone:</strong></h4>
               </div>
               <div class="col-xs-6">
-                <%= profile_builder.label :phone %>
-                <%= profile_builder.text_field :phone %>
+                <h4><%= @profile.college || "" %></h4>
               </div>
             </div>
           </div><!--  -->
@@ -86,36 +78,28 @@
           <div class="col-md-6 col2">
             <div class="row">
               <div class="col-xs-12">
-                <!-- <h3>Words to Live By</h3> -->
+                <h3>Words to Live By</h3>
               </div>
             </div>
             <div class="row">
               <div class="col-xs-12">
-                <h3><%= profile_builder.label :motto, "Words to Live By" %></h3>
-                <%= profile_builder.text_area :motto, cols: "30", rows: "10" %>
+                <p class="form-control" rows=
+                "2"><%= @profile.motto || "" %></p>
               </div>
             </div>
             <div class="row">
               <div class="col-xs-12">
-                <!-- <h3>About Me</h3> -->
+                <h3>About Me</h3>
               </div>
             </div>
             <div class="row">
               <div class="col-xs-12">
-                <h3><%= profile_builder.label :about, "About Me" %></h3>
-                <%= profile_builder.text_area :about, cols: "30", rows: "10" %>
+                <p class="form-control" rows=
+                "10"><%= @profile.about || "" %></p>
               </div>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-xs-12 text-center rs30">
-              <%= profile_builder.submit "Save Changes", class: 'btn btn-lg btn-success' %>
-
-<% end %>
             </div>
           </div>
         </div><!--Panel content-->
-
       </div>
     </div>
   </div>

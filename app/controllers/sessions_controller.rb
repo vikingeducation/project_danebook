@@ -12,10 +12,10 @@ class SessionsController < ApplicationController
         sign_in(@user)
       end
       flash[:success] = "Welcome!"
-      redirect_to @user
+      redirect_to edit_user_profile_url(current_user)
     else
       flash.now[:error] = "Couldn't log in"
-      render :new
+      render root_url
     end
   end
 

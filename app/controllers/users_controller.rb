@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
   #before_action :require_login, :except => [:new, :create]
-  skip_before_action :require_login, :only => [:new, :create]
+  skip_before_action :require_login, :only => [:new, :create, :index, :show]
 
   def index
     @users = User.all
@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     if @user.save
       sign_in(@user)
       flash[:success] = "Welcome"
-      redirect_to edit_user_profile_url(@user)
+      redirect_to edit_user_profile_path(current_user)
     else
       flash[:error] = "Try again"
       render :new

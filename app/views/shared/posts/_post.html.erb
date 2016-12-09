@@ -29,12 +29,19 @@
       <section class="post-footer col-xs-12">
         <div class="row">
           <section class="links col-xs-12">
-            <%= link_to "Like", like_path(post), method: :put %></a>
+            <%= render_like(post) %>
             <%= link_to "Comment", new_user_post_comment_path(post.user, post), class: "public"%>
             <% if post.user == current_user %>
               <a href="#" class="private pull-right">Delete</a>
             <% end %>
           </section>
+          <% unless post.likes.size == 0 %>
+          <section class="likes col-xs-12">
+            <p>
+              <span class="muted"><%= post.likes.size %> <%= post.likes.size == 1 ? "person likes" : "people like" %> this</span>
+            </p>
+          </section>
+          <% end %>
         </div>
         <%= render_post_comments(post) %>
 

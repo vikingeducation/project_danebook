@@ -4,13 +4,10 @@ class LikesController < ApplicationController
 
   def update
     if @post
-      @post.liked_user_ids << current_user.id
-      if @post.save
-        redirect_back(fallback_location: root_path)
-      else
-        flash[:danger] = @post.errors.full_messages
-        redirect_back(fallback_location: root_path)
+      unless @post.liked_user_ids.include?(current_user.id)
+        @post.liked_users << current_user
       end
+      redirect_back(fallback_location: root_path)
     else
       flash[:danger] = ["Post Does Not Exist"]
       redirect_back(fallback_location: root_path)
@@ -18,6 +15,8 @@ class LikesController < ApplicationController
   end
 
   def destroy
+    Like.where(post_id: params[:id], user_id: current_user.id).destroy_all
+    redirect_back(fallback_location: root_path)
   end
 
   private

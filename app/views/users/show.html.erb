@@ -14,6 +14,13 @@
         <a class="btn btn-primary" href="<%= edit_user_profile_path(@user) %>">
             Edit Your Profile
         </a>
+        <% else %>
+            <% if current_user.friended_users.where(id: @user.id).empty? %>
+            <%= @user.id %>
+                <%= link_to "Send Friend Request", friends_url(id: @user.id), method: "post", class: "btn btn-primary" %>
+            <% else %>
+                <%= link_to "Revoke Friend Request", friend_url(id: @user.id), method: "delete", class: "btn btn-primary" %>
+            <% end %>
         <% end %>
     </section>
 
@@ -21,7 +28,9 @@
     <main class="main-about">
         <div class="row">
             <article class="col-xs-12 col-sm-6 interior">
+
                 <table class="tab-about table">
+
                     <caption>
                         <h3>
                             Basic Information
@@ -102,7 +111,7 @@
                 <p><%= @profile.about_me %>
                     <%= "The user has not fileld this out yet" if @profile.about_me == " " %>
                 </p>
-                <a href="/user/<%= @user.id %>/timeline">User Timeline</a>
+                 <a href="/user/<%= @user.id %>/timeline">User Timeline</a>
             </article>
 
         </div>

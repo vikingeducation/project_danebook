@@ -45,7 +45,7 @@ User.all.each do |user|
                    residence: Faker::Address.city,
                    telephone: Faker::PhoneNumber.phone_number,
                    summary: Faker::Hipster.paragraph(3, true, 4),
-                   about_me: Faker::Hipster.paragraphs(5, true, 1)
+                   about_me: Faker::Hipster.paragraphs(5, true)
                    )
 
 end
@@ -70,18 +70,26 @@ end
 
 puts "Creating likes for posts"
 NUM_POST_LIKES.times do 
-  Like.create!( user_id: Faker::Number.between(User.first.id, User.last.id),
-                likeable_id: Faker::Number.between(Post.first.id, Post.last.id),
+  user_id = Faker::Number.between(User.first.id, User.last.id) 
+  likeable_id =  Faker::Number.between(Comment.first.id, Comment.last.id)
+  if Like.where(user_id: user_id, likeable_id: likeable_id, likeable_type: "Post").empty?
+     Like.create( user_id: user_id,
+                likeable_id: likeable_id,
                 likeable_type: "Post"
                 )
+  end
 end
 
 puts "Creating likes for comments"
 NUM_COMMENT_LIKES.times do 
-  Like.create!( user_id: Faker::Number.between(User.first.id, User.last.id),
-                likeable_id: Faker::Number.between(Comment.first.id, Comment.last.id),
-                likeable_type: "Comment"
-                )
+  user_id = Faker::Number.between(User.first.id, User.last.id) 
+  likeable_id =  Faker::Number.between(Comment.first.id, Comment.last.id)
+  if Like.where(user_id: user_id, likeable_id: likeable_id, likeable_type: "Comment").empty?
+                Like.create(user_id: user_id,
+                            likeable_id: likeable_id,
+                            likeable_type: "Comment"
+                            )
+  end 
 end
 
 puts "Done"

@@ -1,10 +1,26 @@
 class User < ApplicationRecord
   before_create :generate_token
   has_secure_password
-  has_one :profile
-  has_many :posts
+  has_one :profile, dependent: :destroy
+  has_many :posts, dependent: :destroy
   has_many :likes, foreign_key: :user_id
   has_many :comments, foreign_key: :user_id
+  #selfjoin woo!
+  has_many :initiated_friendships,  :foreign_key => :friendee_id, :class_name => "Friend"
+  has_many :users_friended_by, :through => :initiated_friendships,
+                                :source => :friender
+
+ has_many :recived_friendships,  :foreign_key => :friender_id, :class_name => "Friend"
+ has_many :friended_users, :through => :recived_friendships,
+                                :source => :friendee
+
+
+  def friends
+    self.friended_users
+  end
+                              
+
+
 
   accepts_nested_attributes_for :profile
 

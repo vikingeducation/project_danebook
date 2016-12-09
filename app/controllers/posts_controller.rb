@@ -3,11 +3,9 @@ class PostsController < ApplicationController
     @post = Post.new
     @posts = Post.last(30).reverse
   end
-
-  #TODO remove user id from params, do current_user.build
-  # basically don't trust users inputing id, build from the current user. 
+ 
   def create
-    @post = Post.new(post_params)
+    @post =  current_user.posts.build(post_params)
     if @post.save
       flash[:success] = "Posted!"
       redirect_to(:back)
@@ -24,6 +22,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:body, :user_id)
+    params.require(:post).permit(:body)
   end
 end

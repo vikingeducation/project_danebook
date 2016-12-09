@@ -3,7 +3,7 @@ class User < ApplicationRecord
   has_secure_password
   has_one :profile
   has_many :posts
-  has_many :likes
+  has_many :likes, foreign_key: :user_id
 
   accepts_nested_attributes_for :profile
 

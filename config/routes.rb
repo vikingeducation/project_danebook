@@ -3,7 +3,9 @@ Rails.application.routes.draw do
   root "users#new"
   resources :users do
     resource :profile, on: :member, except: [:new, :create, :destroy, :index]
-    resources :posts
+    resources :posts do
+      get "delete" => "posts#destroy"
+    end
   end
 
   resource :session, only: [:new, :create, :destroy]

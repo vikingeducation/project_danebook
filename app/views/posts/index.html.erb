@@ -7,8 +7,11 @@
       <%= render 'shared/friends_box' %>
     </div>
     <div class="col-sm-8">
-      <%= render 'posts/authoring_box' %>
+      <%= render 'posts/authoring_box' if @user == current_user %>
       <%= render partial: 'posts/show', collection: @posts, as: :post %>
+      <% if @posts.length == 0 %>
+        <p class="text-center" style="margin-top: 2em">This user has no posts.</p>
+      <% end %>
     </div>
   </div>
 </div>

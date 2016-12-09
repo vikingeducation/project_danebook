@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :require_login
+  before_action :require_current_user, only: [:create, :update, :destroy]
 
   def index
     @user = User.find(params[:user_id])
@@ -20,6 +22,17 @@ class PostsController < ApplicationController
       flash[:warning] = @post.errors.full_messages
       @profile = User.find(params[:user_id]).profile
       render :index
+    end
+  end
+
+  def destroy
+    @post = current_user.posts.find(params[:post_id])
+    if @post.destroy
+      flash[:success] = "Post deleted!"
+      redirect_to user_posts_path(current_user)
+    else
+      flash[:warning] = @post.errors.full_messages
+      redirect_to user_posts_path(current_user)
     end
   end
 

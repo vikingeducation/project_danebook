@@ -14,8 +14,8 @@
     <p><%= post.body %></p>
   </div>
   <div class="panel-footer">
-    <a href="#" class="like">Like</a>
-    <a href="#">Comment</a>
-    <a href="#" class="pull-right">Delete</a>
+    <a class="like">Like</a>
+    <a>Comment</a>
+    <%= link_to "Delete", user_post_delete_path(@user.id, post.id), class: "pull-right" %>
   </div>
 </div>

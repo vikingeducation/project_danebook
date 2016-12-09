@@ -40,11 +40,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def require_logged_out
-    if signed_in_user?
-      flash[:error] = "Our apes tell us that you are already signed in to an account!"
-      redirect_to @current_user
-    end
+  def require_logged_out  
+    redirect_to @current_user if signed_in_user?
   end
 
 end

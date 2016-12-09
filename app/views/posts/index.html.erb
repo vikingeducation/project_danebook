@@ -8,6 +8,7 @@
     </div>
     <div class="col-sm-8">
       <%= render 'posts/authoring_box' %>
+      <%= render partial: 'posts/show', collection: @posts, as: :post %>
     </div>
   </div>
 </div>

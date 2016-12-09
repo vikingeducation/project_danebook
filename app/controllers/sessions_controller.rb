@@ -13,15 +13,15 @@ class SessionsController < ApplicationController
       flash[:success] = "Welcome!"
       redirect_to @user
     else
-      flash.now[:error] = "Couldn't log in"
-      render :new
+      flash[:error] = "Couldn't log in"
+      redirect_to new_user_path
     end
   end
 
   def destroy
     sign_out
     flash[:success] = "Signed Out"
-    redirect_to login_path
+    redirect_to new_user_path
   end
 
 

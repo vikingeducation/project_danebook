@@ -12,7 +12,12 @@ class UsersController < ApplicationController
   end
 
   def new
-    @user = User.new
+    if signed_in_user?
+      @user = current_user
+      redirect_to @user
+    else
+      @user = User.new
+    end
   end
 
   def create
@@ -28,7 +33,7 @@ class UsersController < ApplicationController
   end
 
   def edit
-
+    @user = User.find(params[:id])
   end
 
   def update
@@ -42,9 +47,15 @@ class UsersController < ApplicationController
   private
 
   def whitelisted_params
-    params.require(:user).permit(:email,
+    params.require(:user).permit(:first_name,
+                                 :last_name,
+                                 :email,
                                  :password,
-                                 :password_confirmation)
+                                 :password_confirmation,
+                                 :birth_month,
+                                 :birth_day,
+                                 :birth_year,
+                                 :gender)
   end
 
 

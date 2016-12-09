@@ -7,7 +7,6 @@ class UsersController < ApplicationController
   end
 
   def create
-    p params
     @user = User.new(strong_user_params)
     if @user.save
       flash[:success] = "Welcome to Danebook, #{@user.first_name}!"

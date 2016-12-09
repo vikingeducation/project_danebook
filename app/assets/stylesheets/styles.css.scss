@@ -2,10 +2,12 @@
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
 
+$danish-flag: #c60c30;
+
 /* navbar */
 
 #top-nav {
-  background-color: #0054dd;
+  background-color: $danish-flag;
   height: 75px;
   .navbar-header {
     margin-top: 12px;
@@ -28,11 +30,11 @@
       border-radius: 0;
       height: 30px;
     }
-    .btn {
+    button {
       margin-top: 25px;
-      background-color: #ADD8E6;
+      background-color: white;
       text-align: center;
-      padding: 4px 12px;
+      padding: 2.5px 12px;
     }
   }
 }
@@ -78,11 +80,12 @@
   .wide-input, button {
     width: 100%;
   }
-  button {
-    height: 30px;
+  .btn {
+    height: 35px;
     border-radius: 0;
-    border: 1px solid black;
     margin-top: 15px;
+    background-color: $danish-flag;
+    color: white;
   }
 }
 

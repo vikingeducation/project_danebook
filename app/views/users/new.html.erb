@@ -16,10 +16,10 @@
           <!-- <form action="<%= session_path %>" method="post" class='navbar-form navbar-right'> -->
             <div class='form-group'>
               <label for="email">Email</label>
-              <input type="text" placeholder='Email' class='form-control' id='email' name='email' style="width: 7em">
+              <input type="text" class='form-control' id='email' name='email' style="width: 7em">
               <label for="password">Password</label>
-              <input type="password" placeholder='Password' class='form-control' id='password' name='password' style="width:7em">
-              <button type="submit" class='btn' value='Sign in' style="width:5em; margin: 15px 0">Submit</button>
+              <input type="password" class='form-control' id='password' name='password' style="width:7em">
+              <button type="submit" value='Sign in' style="width:5em; margin: 15px 0">Log in</button>
             </div>
           <% end %>
         </div>
@@ -35,7 +35,7 @@
     <!-- Connect with friends -->
     <section class="connect col-md-7">
       <article class="content">
-        <h1>Connect with all your friends</h1>
+        <h1>Connect with all your Danish friends</h1>
         <ul>
           <li>See photos and updates in your news feed</li>
           <li>Post your status for the world to see from your profile</li>
@@ -79,7 +79,7 @@
 
           <%= f.fields_for :profile, @profile do |profile_builder| %>
             <h2>Birthday</h2>
-            <%= profile_builder.date_select :birthday, start_year: 1900, end_year: Time.now.year %>
+            <%= profile_builder.date_select :birthday, default: Date.today, start_year: Date.today.year, end_year: 100.years.ago.year %>
 
             <div>
               <%= profile_builder.label :sex do %>
@@ -97,7 +97,7 @@
             </div>
           <% end %>
 
-          <%= f.submit "Sign Up", class: 'btn btn-block btn-success' %>
+          <%= f.submit "Sign Up", class: 'btn btn-block' %>
         <% end %>
 
         </form>

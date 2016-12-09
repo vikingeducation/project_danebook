@@ -60,11 +60,6 @@ GEM
       execjs
     coffee-script-source (1.11.1)
     concurrent-ruby (1.0.2)
-    conversation_forms (2.0.2)
-      autoprefixer-rails (>= 5.2.1)
-      rails (~> 5.0.0, >= 5.0.0.1)
-      railties
-      sass (>= 3.3.4)
     coolline (0.5.0)
       unicode_utils (~> 1.4)
     debug_inspector (0.0.2)
@@ -208,7 +203,6 @@ DEPENDENCIES
   bullet
   byebug
   coffee-rails (~> 4.2)
-  conversation_forms (~> 2.0.1)
   faker (~> 1.6.6)
   jazz_fingers
   jbuilder (~> 2.5)

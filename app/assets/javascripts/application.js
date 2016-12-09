@@ -33,22 +33,22 @@
 //
 // })
 
-$(document).on('turbolinks:load', function(){
-  if ($(".cf-main-form")[0]){
-    $(".cf-main-form").conversationalForm({formEl: '.cf-main-form'});
-    $('.remove-cf').show();
-    $('.remove-cf').on('click', function(){
-      $('#conversational-form').hide();
-      $(this).hide("slide", function() {
-        $('.show-cf').show();
-      })
-    });
-    $('.show-cf').on('click', function(){
-      $('#conversational-form').show();
-      $(this).hide("slide", function() {
-        $('.remove-cf').show();
-      })
-    });
-  }
-
-})
+// $(document).on('turbolinks:load', function(){
+//   if ($(".cf-main-form")[0]){
+//     $(".cf-main-form").conversationalForm({formEl: '.cf-main-form'});
+//     $('.remove-cf').show();
+//     $('.remove-cf').on('click', function(){
+//       $('#conversational-form').hide();
+//       $(this).hide("slide", function() {
+//         $('.show-cf').show();
+//       })
+//     });
+//     $('.show-cf').on('click', function(){
+//       $('#conversational-form').show();
+//       $(this).hide("slide", function() {
+//         $('.remove-cf').show();
+//       })
+//     });
+//   }
+//
+// })

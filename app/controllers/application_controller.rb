@@ -24,14 +24,14 @@ class ApplicationController < ActionController::Base
   def current_user
     @current_user ||= User.find_by_auth_token(cookies[:auth_token]) if cookies[:auth_token]
   end
+  helper_method :current_user
 
   def signed_in_user?
     !!current_user
   end
+  helper_method :signed_in_user?
 
-  helper_method :sign_in_user?
 
-  helper_method :current_user
 
   def require_login
     unless signed_in_user?

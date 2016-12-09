@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   skip_before_action :require_login, :only => [:new, :create]
 
   def index
-
+    redirect_to root_url
   end
 
   def new
@@ -25,7 +25,7 @@ class UsersController < ApplicationController
       flash[:success] = "Welcome"
       redirect_to @user
     else
-      flash[:error] = @user.errors.full_messages
+      flash.now[:error] = @user.errors.full_messages
       render :new
     end
   end

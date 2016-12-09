@@ -1,0 +1,51 @@
+<% if posts.any? %>
+
+  <% if posts[0].persisted? %>
+
+    <% posts.each do |p| %>
+
+      <% if p.persisted? %>
+
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <div class="row">
+              <div class="media-left media-middle col-xs-2">
+                <a href="#">
+                <figure>
+                  <%= image_tag "harry_potter_small.jpg", { class: 'img-responsive' } %>
+                </figure></a>
+              </div>
+              <div class="media-body col-xs-8">
+                <a href="#">
+                <h4 class="media-heading"><%= user_full_name(user) %></h4></a>
+                <h6>Posted on <%= p.created_at.strftime('%A') %> <time datetime=
+                "<% p.created_at.strftime('%m/%d/%Y') %>"><%= p.created_at.strftime('%m/%d/%Y') %></time></h6>
+              </div>
+            </div>
+            <div class="row">
+              <br>
+              <p class="col-xs-12"><%= p.content %></p>
+            </div>
+          </div>
+          <div class="panel-footer">
+            <div class="row">
+              <div class="col-xs-1">
+                <a href="#">Like</a>
+              </div>
+              <div class="col-xs-2">
+                <a href="#">Comment</a>
+              </div>
+              <div class="col-xs-1 col-xs-offset-7">
+                <%= link_to "Delete", user_post_path(user, p), method: :delete %>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      <% end %>
+
+    <% end %>
+
+  <% end %>
+
+<% end %>

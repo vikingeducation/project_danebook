@@ -2,9 +2,11 @@
   <div id="flash">
     <div class='container'>
       <% flash.each do |key, value| %>
-        <div class="<%= key %>">
+        <% if value.is_a?(Array) %>
+          <%= value.join(', ') %>
+        <% else %>
           <%= value %>
-        </div>
+        <% end %>
       <% end %>
     </div>
   </div>

@@ -1,0 +1,30 @@
+<div class="row">
+  <div class="col-xs-12">
+    <div class="panel panel-default">
+
+      <div class="panel-heading">
+        <h4 class="panel-title text-center">About</h4>
+      </div>
+
+      <table class="table table-bordered">
+        <tr>
+          <th>Born on:</th>
+          <td><%= user_birthday(user) %></td>
+        </tr>
+        <tr>
+          <th>Went to school at:</th>
+          <td><%= user.profile.college %></td>
+        </tr>
+        <tr>
+          <th>Hometown:</th>
+          <td><%= user.profile.hometown %></td>
+        </tr>
+        <tr>
+          <th>Currently Lives:</th>
+          <td><%= user.profile.current_town %></td>
+        </tr>
+      </table>
+
+    </div>
+  </div>
+</div>

@@ -241,6 +241,7 @@
 
               <!-- Post Entry -->
               <article class="col-xs-8">
+                  <% if @posts.first.user_id == current_user.id %>
                   <%= form_for @post, url: user_posts_path(current_user.id) do |f| %>
                   <section class="post">
                       <header class="nav-post">
@@ -258,9 +259,12 @@
                       </div>
                   </section>
                   <% end %>
+                  <% else %>
+                  <%= render "/shared/are_friends" %>
+                  <% end %>
                   
-                  <!-- Top comments -->
+                 
+
                   <% @posts.each do |post| %>
                     <%= render "/shared/post", post: post%>
                   <% end %>
-                 <!--  <section cl

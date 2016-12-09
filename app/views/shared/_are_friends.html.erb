@@ -1,0 +1,6 @@
+
+ <% if current_user.friended_users.where(id: @user.id).empty? %>
+    <%= link_to "Send Friend Request", friends_url(id: @user.id), method: "post", class: "btn btn-primary" %>
+<% else %>
+    <%= link_to "Revoke Friend Request", friend_url(id: @user.id), method: "delete", class: "btn btn-primary" %>
+<% end %>

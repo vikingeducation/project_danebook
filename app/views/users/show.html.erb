@@ -68,6 +68,14 @@
                     <caption><h3>Current Information</h3></caption>
                     <tr>
                         <th>
+                            Name:
+                        </th>
+                        <td>
+                           <%= @user.first_name %> <%= @user.last_name %>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             Email:
                         </th>
                         <td>
@@ -94,7 +102,9 @@
                 <p><%= @profile.about_me %>
                     <%= "The user has not fileld this out yet" if @profile.about_me == " " %>
                 </p>
+                <a href="/user/<%= @user.id %>/timeline">User Timeline</a>
             </article>
+
         </div>
     </main>
 </div>

@@ -1,6 +1,6 @@
 
 <div class="post-body unfolded"> 
-    <% post.comments.limit(4).order(:created_at).each do |comment| %>
+    <% post.comments.limit(40).order(:created_at).each do |comment| %>
       <%= render "/shared/comment_display", post: post, comment: comment %>
     <% end %> 
  <br>

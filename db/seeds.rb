@@ -7,9 +7,16 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 NUM_USERS = 20
 NUM_POSTS = 50
+NUM_COMMENTS = 75
+NUM_POST_LIKES = 100
+NUM_COMMENT_LIKES = 100
 
 puts "Destroying everything"
-Rake::Task["db:reset"]
+User.destroy_all
+Profile.destroy_all
+Like.destroy_all
+Comment.destroy_all
+Post.destroy_all
 
 
 puts "Creating New Users"
@@ -21,6 +28,13 @@ NUM_USERS.times do
                 )
 end
 
+puts "Creating your account. Email: test@email.com, Password: password"
+User.create!( first_name: Faker::Name.first_name, 
+                last_name: Faker::Name.last_name, 
+                password: "password", 
+                email: "test@email.com"
+                )
+
 puts "Creating Profiles for Users"
 User.all.each do |user|
   Profile.create!( user_id: user.id, 
@@ -31,7 +45,7 @@ User.all.each do |user|
                    residence: Faker::Address.city,
                    telephone: Faker::PhoneNumber.phone_number,
                    summary: Faker::Hipster.paragraph(3, true, 4),
-                   about_me: Faker::Hipster.paragraphs(5, true)
+                   about_me: Faker::Hipster.paragraphs(5, true, 1)
                    )
 
 end
@@ -43,4 +57,32 @@ NUM_POSTS.times do
               )
 
 end
+
+puts "Creating comments for posts"
+NUM_COMMENTS.times do 
+  Comment.create!( user_id: Faker::Number.between(User.first.id, User.last.id),
+                commentable_id: Faker::Number.between(Post.first.id, Post.last.id),
+                commentable_type: "Post",
+                body: Faker::Hipster.paragraph(3, true, 4)
+              )
+
+end
+
+puts "Creating likes for posts"
+NUM_POST_LIKES.times do 
+  Like.create!( user_id: Faker::Number.between(User.first.id, User.last.id),
+                likeable_id: Faker::Number.between(Post.first.id, Post.last.id),
+                likeable_type: "Post"
+                )
+end
+
+puts "Creating likes for comments"
+NUM_COMMENT_LIKES.times do 
+  Like.create!( user_id: Faker::Number.between(User.first.id, User.last.id),
+                likeable_id: Faker::Number.between(Comment.first.id, Comment.last.id),
+                likeable_type: "Comment"
+                )
+end
+
 puts "Done"
+puts "Your account: Email: test@email.com, Password: password"

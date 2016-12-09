@@ -18,7 +18,7 @@ module CommentsHelper
     elsif likes.count == 0
       str = ""
     else
-      str = "<div id='adjust'><a href= '#{user_path(user)}'> #{user.first_name}, #{user.last_name}</a>and #{likes.count} others like this</div>"
+      str = "<div id='adjust'><a href= '#{user_path(user)}'> #{user.first_name} #{user.last_name}</a>and #{likes.count} others like this</div>"
     end 
     str.html_safe
   end

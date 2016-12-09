@@ -7,7 +7,6 @@ class Profile < ApplicationRecord
   validates :telephone, length: { maximum: 20 }
   validates :words_to_live_by, length: { maximum: 5000 }
   validates :about_me, length: { maximum: 5000 }
-  validates :user_id, presence: true
   validates :sex, length: { maximum: 10 }
 
   def name

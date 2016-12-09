@@ -1,6 +1,5 @@
 <nav class="navbar navbar-fixed-top main-nav">
   <a href="home.html" class="navbar-brand white-nav-text">
-    <!-- <img src="danish_flag.gif" alt="site logo danish flag"> -->
     <%= image_tag("danish_flag.gif", options={}) %>
     Danebook
   </a>
@@ -9,6 +8,8 @@
       <input type="text" class='form-control' placeholder='Search for users' disabled>
     </div>
   </form>
-  <p class="navbar-text navbar-right white-nav-text">Harry Potter</p>
+  <p class="navbar-text navbar-right white-nav-text">
+    <%= current_user.name %> | <%= link_to "Log out", logout_path, style: "color: white;" %>
+  </p>
 </nav>
 <div style="height: 40px;"></div>

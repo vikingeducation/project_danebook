@@ -13,7 +13,7 @@
     <%= render partial: 'shared/navbar' %>
     <main class="container">
       <% if content_for?(:usernav) %>
-        <%= render partial: 'shared/user_navbar' %>
+        <%= render partial: 'shared/user_navbar', locals: {user: @user || current_user} %>
       <% end %>
       <%= render partial: 'shared/flashes' %>
       <div class="row">

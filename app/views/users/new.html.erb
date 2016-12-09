@@ -9,69 +9,118 @@
 </section>
 <section id="signup" class="col-md-5">
   <h1>Sign Up</h1>
-  <%= form_for @user, html: { "cf-form-element" => true } do |f| %>
-    <%= f.fields_for :profile do |pf| %>
-    <div class="row">
-      <div class="col-xs-12">
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <%= pf.label :first_name, "First Name:", class:'sr-only' %>
-              <%= pf.text_field :first_name, class: "form-control", placeholder: "First Name" %>
+  <div class="row">
+    <div class="col-xs-12">
+      <button class="show-cf btn btn-success btn-block" style="display: none;">Use Conversation Form</button>
+      <button class="remove-cf btn btn-success btn-block" style="display: none;">Switch to Normal Form</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <%= form_for @user, html: { class: 'cf-main-form' } do |f| %>
+      <%= f.fields_for :profile do |pf| %>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <%= pf.label :first_name, "First Name:", class:'sr-only' %>
+                <%= pf.text_field :first_name, class: "form-control", placeholder: "First Name", required: "true",
+                                               "cf-questions" => "Please tell me your First Name." %>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <%= pf.label :last_name, "Last Name:", class:'sr-only' %>
+                <%= pf.text_field :last_name, class: "form-control", placeholder: "Last Name", required: "true",
+                                              "cf-questions" => "Thanks {previous-answer}! Now please tell me your Last Name." %>
+              </div>
             </div>
           </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <%= pf.label :last_name, "Last Name:", class:'sr-only' %>
-              <%= pf.text_field :last_name, class: "form-control", placeholder: "Last Name" %>
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="form-group">
+                <%= f.label :email, "Your Email:", class:'sr-only' %>
+                <%= f.email_field :email, class: "form-control", placeholder: "Your Email", required: "true", "cf-validation-email" => "",
+                                          "cf-questions" => "Thanks! What is the best email to reach you at?" %>
+                              </div>
+              <div class="form-group">
+                <%= f.label :password, "Your New Password:", class:'sr-only' %>
+                <%= f.password_field :password, class: "form-control",
+                                                placeholder: "Your New Password",
+                                                required: "true",
+                                                pattern: '(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{12,}',
+                                                :"cf-error" => "Min strength: 12 characters, 1 Uppercase, 1 Lowercase, 1 Digit",
+                                                "cf-questions" => "Now enter the password you would like to use for your new account. Don't worry, it won't be displayed and I can't see it." %>
+              </div>
+              <div class="form-group">
+                <%= f.label :password_confirmation, "Confirm Your Password:", class:'sr-only' %>
+                <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Confirm Your Password", required: "true",
+                                                            "cf-questions" => "Please enter your password again to make sure you typed it correctly. If you need to change what you entered, click the \"Normal Form\" Button" %>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12">
-            <div class="form-group">
-              <%= f.label :email, "Your Email:", class:'sr-only' %>
-              <%= f.email_field :email, class: "form-control", placeholder: "Your Email" %>
-            </div>
-            <div class="form-group">
-              <%= f.label :password, "Your New Password:", class:'sr-only' %>
-              <%= f.password_field :password, class: "form-control", placeholder: "Your New Password" %>
-            </div>
-            <div class="form-group">
-              <%= f.label :password_confirmation, "Confirm Your Password:", class:'sr-only' %>
-              <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Confirm Your Password" %>
-            </div>
+          <div class="row">
+              <%= pf.label :birthday, "Your Birthday:", class:'sr-only' %>
+              <%= pf.date_select :birthday,
+                                { start_year: Date.current.year,
+                                  end_year: 100.years.ago.year,
+                                  prompt: { day: 'Birth Day', month: 'Birth Month', year: 'Birth Year' },
+                                },
+                                {class: 'form-control', required: "true", "cf-questions": "Please Select your Birthday:"} %>
           </div>
-        </div>
-        <div class="row">
-          <div class="form-group">
-            <%= pf.label :birthday, "Your Birthday:", class:'sr-only' %>
-            <%= pf.date_select :birthday, {:start_year => Date.current.year, :end_year => 1920},{class: 'form-control'} %>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-xs-4">
-            <div class="form-group">
-              <%= pf.radio_button :gender, 'm' %>
-              <%= pf.label :gender, "Male", class: "radio-inline"%>
+          <div class="row">
+            <% Profile.genders.each do |g| %>
+            <div class="col-xs-4">
+              <div class="form-group">
+                <label class="radio-inline" "cf-label": "Finally, please select your gender:">
+                  <%= pf.radio_button :gender, g[0], required: "true", "cf-questions": "Please Select your Gender:" %><%= g[1] %>
+                </label>
+              </div>
             </div>
+            <% end %>
           </div>
-          <div class="col-xs-4">
-            <div class="form-group">
-              <%= pf.radio_button :gender, 'f' %>
-              <%= pf.label :gender, "Female", class: "radio-inline"%>
-            </div>
-          </div>
-        </div>
-        <% end %>
-        <div class="row">
-          <div class="col-sm-4 col-sm-offset-4">
-            <div class="form-group">
-              <%= f.submit "Sign Up!", class: "btn btn-success btn-block btn-large" %>
+          <% end %>
+          <div class="row">
+            <div class="col-sm-4 col-sm-offset-4">
+              <div class="form-group">
+                <%= f.submit "Sign Up!", class: "btn btn-success btn-block btn-large" %>
+              </div>
             </div>
           </div>
         </div>
       </div>
+      <% end %>
     </div>
-  <% end %>
+  </div>
 </section>
+<script>
+function validate(elem_id, msg) {
+  var input = document.getElementById(elem_id);
+  var form  = document.getElementById('flash-box');
+  var elem               = document.createElement('div');
+      elem.id            = 'form-errors';
+      elem.className     = 'hidden';
+      form.appendChild(elem);
+  input.addEventListener('invalid', function(event){
+    event.preventDefault();
+    if ( ! event.target.validity.valid ) {
+        elem.textContent   = msg;
+        elem.className     = 'alert alert-block alert-danger';
+
+        input.className    = 'form-control invalid animated shake';
+        input.addEventListener('input', function(event){
+          if ( 'block' === elem.style.display ) {
+            input.className = 'form-control';
+            elem.className     = 'hidden';
+          }
+        });
+    }
+  });
+}
+validate('user_profile_attributes_first_name', 'First Name is required');
+validate('user_profile_attributes_last_name', 'Last Name is required');
+validate('user_email', 'A valid email is required');
+validate('user_password', 'Passwords Must Be at least 12 characters, contain 1 number, 1 Uppercase and 1 Lowercase letter');
+
+</script>

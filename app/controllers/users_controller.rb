@@ -9,6 +9,10 @@ class UsersController < ApplicationController
   end
 
   def new
+    create_session unless session[:user_id]
+    if signed_in_user?
+      redirect_to users_path
+    end
     @user = User.new
     @user.build_profile
   end
@@ -35,9 +39,9 @@ class UsersController < ApplicationController
   private
 
     def whitelisted
-      if params[:user][:profile_attributes]["birthday(1i)"]
-        params[:user][:profile_attributes][:birthday] = parse_date_select
-      end
+      # if params[:user][:profile_attributes]["birthday(1i)"]
+      #   params[:user][:profile_attributes][:birthday] = parse_date_select
+      # end
       params.require(:user).permit(
                                     :email,
                                     :password,
@@ -53,9 +57,6 @@ class UsersController < ApplicationController
                                   )
     end
 
-    def parse_date_select
-      Date.new params[:user][:profile_attributes]["birthday(1i)"].to_i, params[:user][:profile_attributes]["birthday(2i)"].to_i, params[:user][:profile_attributes]["birthday(3i)"].to_i
-    end
 
     def correct_user
       unless params[:id] == current_user.id.to_s
@@ -63,6 +64,7 @@ class UsersController < ApplicationController
         redirect_to user_path(current_user)
       end
     end
+
 
     def set_user
       @user = User.find(params[:id])

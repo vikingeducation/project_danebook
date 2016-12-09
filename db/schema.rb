@@ -21,17 +21,25 @@ ActiveRecord::Schema.define(version: 20161207193850) do
     t.string   "last_name"
     t.date     "birthday"
     t.string   "gender"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "college"
+    t.string   "hometown"
+    t.string   "current_home"
+    t.string   "phone"
+    t.boolean  "edited",       default: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.index ["user_id"], name: "index_profiles_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
-    t.string   "email"
-    t.string   "password_digest"
+    t.string   "email",           null: false
+    t.string   "password_digest", null: false
     t.string   "token"
+    t.integer  "failed"
+    t.datetime "last_attempt"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 
 end

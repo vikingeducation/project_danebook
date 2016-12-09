@@ -6,6 +6,11 @@ class CreateProfiles < ActiveRecord::Migration[5.0]
       t.string :last_name
       t.date :birthday
       t.string :gender
+      t.string :college
+      t.string :hometown
+      t.string :current_home
+      t.string :phone
+      t.boolean :edited, default: false
 
       t.timestamps
     end

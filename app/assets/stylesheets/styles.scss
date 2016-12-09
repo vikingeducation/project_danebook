@@ -6,7 +6,39 @@ $nav-font-hover-color: #fff;
 $nav-border: 1px solid rgba(0, 0, 0, .8);
 $content-border: 2px solid rgba(0, 0, 0, .8);
 $primary: #2b78e4;
+$primary-hover: #9fc5f8;
 $font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+
+.remove-cf, .show-cf {
+  margin-bottom:20px;
+}
+cf-chat{
+  min-height: 300px;
+  padding-bottom:30px !important;
+}
+cf-input{
+  position: relative !important;
+}
+#navbar, ul.nav, .navbar-default {
+
+  .navbar-nav > .open > a,
+  li.dropdown:hover,
+  ul.dropdown-menu a:hover{
+
+    &, &:active, &:hover{
+      background-color: $primary-hover;
+      color: #333;
+    }
+
+  }
+
+}
+
+ul.nav li.dropdown:hover > ul.dropdown-menu {
+    display: block;
+    background-color: $primary;
+
+}
 
 body {
   font-family: $font-family;
@@ -31,7 +63,12 @@ body {
 @import 'partials/post';
 @import 'partials/profile';
 @import 'partials/gallery';
+@import 'partials/animations';
 
+
+input.invalid {
+  border-color: #DD2C00 !important;
+}
 
 #about {
 

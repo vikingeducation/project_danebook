@@ -9,10 +9,10 @@ module ApplicationHelper
 
   def render_user_nav
     render partial: 'shared/search_bar'
-    render partial: 'shared/user_dropdown'
+    render partial: 'shared/navbar/user'
   end
 
   def render_login_nav
-    render partial: 'shared/login_nav'
+    render partial: 'shared/navbar/anon'
   end
 end

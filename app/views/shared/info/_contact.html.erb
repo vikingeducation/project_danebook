@@ -1,0 +1,8 @@
+<dl>
+  <dt>Email:</dt>
+  <dd><%= user.email %></dd>
+  <% if user.profile.phone %>
+    <dt>Telephone:</dt>
+    <dd><%= user.profile.phone %></dd>
+  <% end %>
+</dl>

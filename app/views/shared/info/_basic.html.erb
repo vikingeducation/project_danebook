@@ -1,0 +1,16 @@
+<dl>
+  <dt>Birthday:</dt>
+  <dd><%= user.profile.birthday.to_s(:long) %></dd>
+  <% if user.profile.college %>
+    <dt>College:</dt>
+    <dd><%= user.profile.college %></dd>
+  <% end %>
+  <% if user.profile.hometown %>
+    <dt>Hometown:</dt>
+    <dd><%= user.profile.hometown %></dd>
+  <% end %>
+  <% if user.profile.current_home %>
+    <dt>Currently Lives:</dt>
+    <dd><%= user.profile.current_home %></dd>
+  <% end %>
+</dl>

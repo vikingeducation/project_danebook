@@ -11,6 +11,12 @@
       background-color: #000;
     }
   }
+  .navbar-nav > li > p {
+    padding: 15px;
+    margin:0;
+    line-height: 20px;
+    color: $nav-font-color;
+  }
   li:hover > a, .navbar-brand:hover {
     color:$nav-font-hover-color;
   }
@@ -19,7 +25,7 @@
     color:$nav-font-color;
     font-weight:bold;
   }
-  .navbar-brand{
+  .navbar-brand {
     padding:10px;
     font-size: 30px;
     line-height:1;
@@ -32,9 +38,34 @@
       float:left;
       margin-right:15px;
     }
+
   }
-  .navbar-form * {
-    width:100%
+  #login-dp{
+    min-width: 250px;
+    padding: 14px;
+    overflow:hidden;
+    background-color:rgba(240,248,255,.8);
+    &, a {
+      color: #333;
+    }
+  }
+  #login-dp .help-block{
+      font-size:12px
+  }
+  #login-dp .bottom{
+      background-color:rgba(240,248,255,.8);
+      border-top:1px solid #ddd;
+      clear:both;
+      padding:14px;
+  }
+  #login-dp .social-buttons{
+      margin:12px 0
+  }
+  #login-dp .social-buttons a{
+      width: 49%;
+  }
+  #login-dp .form-group {
+      margin-bottom: 10px;
   }
   .navbar-form {
     border:0;

@@ -1,15 +1,26 @@
 <%= form_tag session_path do %>
-
-  <%= label_tag do %>
-    Email
-    <%= text_field_tag :email %>
-  <% end %>
-
-  <%= label_tag do %>
-    Password
-    <%= password_field_tag :password %>
-  <% end %>
-
-  <%= submit_tag "Log in" %>
+<div class="row">
+  <div class="col-xs-12">
+    <div class="form-group">
+      <%= label_tag :email %>
+      <%= text_field_tag :email, nil, class: 'form-control' %>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <div class="form-group">
+      <%= label_tag :password %>
+      <%= password_field_tag :password, nil, class: 'form-control' %>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-sm-4">
+    <div class="form-group">
+      <%= submit_tag "Log in", class: "btn btn-success btn-block btn-large" %>
+    </div>
+  </div>
+</div>
 
 <% end %>

@@ -1,0 +1,48 @@
+
+  <div class="row">
+    <section class="post post-small col-xs-12">
+      <div class="row">
+        <header class="post-header col-xs-12">
+          <p>About</p>
+        </header>
+      </div>
+
+      <div class="row">
+        <section class="post-content col-xs-12">
+          <%= render partial: 'shared/info/basic', locals: {user: current_user} %>
+        </section>
+      </div>
+
+    </section>
+  </div>
+
+  <div class="row">
+    <section class="post post-small col-xs-12">
+      <div class="row">
+        <header class="post-header col-xs-12">
+          <p>Photos</p>
+        </header>
+      </div>
+
+      <div class="row">
+        <%= render partial: 'shared/sidebar/photos' %>
+      </div>
+
+    </section>
+  </div>
+
+
+  <div class="row">
+    <section class="post post-small col-xs-12">
+      <div class="row">
+        <header class="post-header col-xs-12">
+          <p>Friends</p>
+        </header>
+      </div>
+
+      <div class="row">
+        <%= render partial: 'shared/sidebar/friends' %>
+      </div>
+
+    </section>
+  </div>

@@ -13,7 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
-//= require conversation_forms
 //= require turbolinks
 //= require_tree .
 // $(function(){

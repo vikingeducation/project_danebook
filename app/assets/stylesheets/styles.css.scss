@@ -94,10 +94,14 @@ $danish-flag: #c60c30;
 // Top Nav
 
 .main-nav {
-  background-color: #50a1b9;
+  background-color: $danish-flag;
+  color: white;
   border-radius: 0;
   height: 40px;
   min-height: 0px;
+  a {
+    color: white;
+  }
   .navbar-brand {
     height: 25px;
     width: auto;
@@ -122,9 +126,6 @@ $danish-flag: #c60c30;
       width: 350px;
       border-radius: 0;
     }
-  }
-  .white-nav-text {
-    color: #fff;
   }
 }
 

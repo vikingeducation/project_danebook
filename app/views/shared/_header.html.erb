@@ -10,7 +10,7 @@
   </form>
   <% if current_user %>
     <p class="navbar-text navbar-right white-nav-text">
-      <%= current_user.name %> | <%= link_to "Log out", logout_path, style: "color: white;" %>
+      <%= link_to current_user.name, current_user %> | <%= link_to "Log out", logout_path %>
     </p>
   <% end %>
 </nav>

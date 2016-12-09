@@ -1,10 +1,10 @@
+
 <div class="container">
   <div class="row">
     <div class="col-sm-12">
       <div class="hero-image">
-        <!-- <img class="profile-photo" src="img/harry_potter_small.jpg"> -->
-        <%= image_tag("harry_potter_small.jpg") %>
-        <div class="username">Harry Potter</div>
+        <img class="profile-photo" src="/assets/harry_potter_small.jpg">
+        <div class="username"><%= @profile.name %></div>
       </div>
       <nav class="profile-navigation-bar">
         <div class="profile-photo-spacer"></div>
@@ -18,28 +18,29 @@
   <div class="row">
     <div class="col-sm-12">
       <div class="panel panel-info">
-        <div class="panel-heading">Edit Profile</div>
+        <div class="panel-heading">About</div>
+        <% if @profile == current_user.profile %>
+          <a class="edit-profile-button btn btn-default" href="<%= edit_user_profile_path(current_user) %>">Edit your Profile</a>
+        <% end %>
         <div class="row">
-          <%= form_for @profile, url: user_profile_path(current_user) do |form| %>
             <div class="col-sm-5">
               <h3>Basic Information</h3>
-
               <table class="table">
                 <tr>
                   <td>Birthday:</td>
-                  <td><%= form.date_field :birthday %></td>
+                  <td><%= @profile.birthday %></td>
                 </tr>
                 <tr>
                   <td>College:</td>
-                  <td><%= form.text_field :college %></td>
+                  <td><%= @profile.college %></td>
                 </tr>
                 <tr>
                   <td>Hometown:</td>
-                  <td><%= form.text_field :hometown %></td>
+                  <td><%= @profile.hometown %></td>
                 </tr>
                 <tr>
                   <td>Currently Lives:</td>
-                  <td><%= form.text_field :currently_lives %></td>
+                  <td><%= @profile.currently_lives %></td>
                 </tr>
               </table>
               <h3>Contact Information</h3>
@@ -50,19 +51,17 @@
                 </tr>
                 <tr>
                   <td>Telephone:</td>
-                  <td><%= form.text_field :telephone %></td>
+                  <td><%= @profile.telephone %></td>
                 </tr>
               </table>
-              <%= form.submit class: "btn btn-block btn-success" %>
             </div>
             <div class="col-md-7">
               <h3>Words to Live By</h3>
-              <%= form.text_area :words_to_live_by, rows: 5, cols: 75 %>
+              <p><%= @profile.words_to_live_by %></p>
               <h3>About Me</h3>
-              <%= form.text_area :about_me, rows: 10, cols: 75 %>
+              <p><%= @profile.about_me %></p>
             </div>
-          <% end %>
-        </div>
+          </div>
       </div>
     </div>
   </div>

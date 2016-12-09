@@ -1,4 +1,3 @@
 <% flash.each do |type, msg| %>
-  <% msg = msg.join('; ') if msg.is_a? Array %>
-  <%= content_tag(:div, msg, class: "alert alert-#{type}") %>
+  <%= content_tag(:div, join_messages(msg), class: "alert alert-#{type}") %>
 <% end %>

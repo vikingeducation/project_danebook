@@ -21,14 +21,24 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+    @profile = current_user.profile
+    redirect_to edit_user_profile_path(current_user)
+  end
+
   def update
-    if current_user.update(strong_user_params)
+    puts "update in users_controller"
+    if current_user.profile.update(strong_profile_params)
       flash[:success] = "Profile updated!"
-      redirect_to current_user
+      redirect_to current_user.profile
     else
       flash.now[:warning] = "Could not update profile."
       render :edit
     end
+  end
+
+  def show
+    redirect_to user_profile_path(params[:id])
   end
 
   def index

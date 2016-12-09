@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
+ruby '2.3.0'
 
 gem 'bootstrap-sass'
+
 gem 'binding_of_caller'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -46,6 +48,12 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'faker'
+end
+
+group :production do 
+
+  gem 'rails_12factor'
+
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

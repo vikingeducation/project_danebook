@@ -22,52 +22,56 @@
 
               <%= form_for @user do |f| %>
 
-                <div class="row">
-                  <div class="col-sm-6">
+                  <h3>Basic Information</h3>
 
-                    <h3>Basic Information</h3>
+                  <%= f.fields_for :profile do |p| %>
 
-                    <%= f.label :birth_month %>
-                    <%= f.text_field :birth_month %>
+                  <div class="row">
+                    <div class="col-sm-6">
 
-                    <%= f.label :birth_day %>
-                    <%= f.text_field :birth_day %>
+                    <%= p.label :birth_month %>
+                    <%= p.text_field :birth_month %>
 
-                    <%= f.label :birth_year %>
-                    <%= f.text_field :birth_year %>
+                    <%= p.label :birth_day %>
+                    <%= p.text_field :birth_day %>
 
-                    <%= f.label :college %>
-                    <%= f.text_field :college %>
+                    <%= p.label :birth_year %>
+                    <%= p.text_field :birth_year %>
 
-                    <%= f.label :hometown %>
-                    <%= f.text_field :hometown %>
+                    <%= p.label :college %>
+                    <%= p.text_field :college %>
 
-                    <%= f.label :current_town %>
-                    <%= f.text_field :current_town %>
+                    <%= p.label :hometown %>
+                    <%= p.text_field :hometown %>
+
+                    <%= p.label :current_town %>
+                    <%= p.text_field :current_town %>
 
                     <h3>Contact Information</h3>
 
                     <%= f.label :email %>
                     <%= f.text_field :email %>
 
-                    <%= f.label :phone %>
-                    <%= f.text_field :phone %>                    
+                    <%= p.label :phone %>
+                    <%= p.text_field :phone %>                  
 
-                  </div>
-                  <div class="col-sm-6">
+                    </div>
+                    <div class="col-sm-6">
 
                     <h3>Words to Live By</h3>
 
-                    <%= f.label :words_to_live_by %>
-                    <%= f.text_area :words_to_live_by %>
+                    <%= p.label :words_to_live_by %>
+                    <%= p.text_area :words_to_live_by %>
 
                     <h3>About Me</h3>
 
-                    <%= f.label :about_me %>
-                    <%= f.text_area :about_me %>
+                    <%= p.label :about_me %>
+                    <%= p.text_area :about_me %>
 
+                    </div>
                   </div>
-                </div>
+
+                <% end %>
 
                 <div class="row">
                   <div class="col-xs-12 text-center rs30">

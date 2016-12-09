@@ -1,9 +1,11 @@
 <% if flash.any? %>
   <div id="flash">
-    <% flash.keys.each do |k| %>
-      <div class="<%= k %>">
-        <%= flash[k] %>
-      </div>
-    <% end %>
+    <div class='container'>
+      <% flash.each do |key, value| %>
+        <div class="<%= key %>">
+          <%= value %>
+        </div>
+      <% end %>
+    </div>
   </div>
 <% end %>

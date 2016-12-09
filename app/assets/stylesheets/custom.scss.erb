@@ -1,7 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-
 //panel theme color - light blue
 $ptc: #337ab7;
 
@@ -52,6 +51,11 @@ body {
 
 }
 
+#flash {
+  background: #fbff00;
+  color: #000;
+  padding: 10px 0;
+}
 
 .navbar-header {
   span {
@@ -219,6 +223,9 @@ nav {
 
     h1 {
         font-size: 40px;
+        display: inline-block;
+        vertical-align: middle;
+        margin: 10px 0;
     }
 
     .icon-bar {
@@ -229,6 +236,10 @@ nav {
 
 #login-nav {
   .navbar-form {
+
+    display: inline-block;
+    vertical-align: middle;
+
     label { color: #fff; -webkit-font-smoothing: antialiased; font-size: 14px; }
   }
 }

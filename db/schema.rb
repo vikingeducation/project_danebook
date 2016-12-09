@@ -10,19 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161209000402) do
+ActiveRecord::Schema.define(version: 20161209172158) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "users", force: :cascade do |t|
-    t.string   "email"
-    t.string   "password_digest"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
-    t.string   "auth_token"
-    t.string   "first_name",       null: false
-    t.string   "last_name",        null: false
+  create_table "posts", force: :cascade do |t|
+    t.text     "content"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "user_id"
+    t.index ["user_id"], name: "index_posts_on_user_id", using: :btree
+  end
+
+  create_table "profiles", force: :cascade do |t|
     t.integer  "birth_month",      null: false
     t.integer  "birth_day",        null: false
     t.integer  "birth_year",       null: false
@@ -33,6 +34,20 @@ ActiveRecord::Schema.define(version: 20161209000402) do
     t.string   "phone"
     t.text     "words_to_live_by"
     t.text     "about_me"
+    t.integer  "user_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["user_id"], name: "index_profiles_on_user_id", using: :btree
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "email"
+    t.string   "password_digest"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+    t.string   "auth_token"
+    t.string   "first_name",      null: false
+    t.string   "last_name",       null: false
     t.index ["auth_token"], name: "index_users_on_auth_token", unique: true, using: :btree
   end
 

@@ -4,10 +4,15 @@ class User < ApplicationRecord
 
   has_secure_password
 
-  validates :password,
-            length: { minimum: 6 },
-            allow_nil: true
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :password, confirmation: true
+  validates :password, length: { minimum: 6 }, allow_nil: true
 
+  has_one :profile, inverse_of: :user
+  has_many :posts
+
+  accepts_nested_attributes_for :profile
 
   def generate_token
     begin

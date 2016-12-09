@@ -2,7 +2,7 @@
 
   <div class="container">
     <h1>Welcome <%= @user.email %></h1>
-    <%= link_to "Sign Out", logout_path, method: :delete %>
+    <%= link_to "Sign Out", logout_path %>
     <hr>
   </div>
 
@@ -29,7 +29,7 @@
                   <p><strong>Birthday:</strong></p>
                 </div>
                 <div class="col-xs-6">
-                  <p><%= user_birthday %></p>
+                  <p><%= user_birthday(@user) %></p>
                 </div>
               </div>
               <div class="row">
@@ -37,7 +37,7 @@
                   <p><strong>College:</strong></p>
                 </div>
                 <div class="col-xs-6">
-                  <p><%= @user.college %></p>
+                  <p><%= @user.profile.college %></p>
                 </div>
               </div>
               <div class="row">
@@ -45,7 +45,7 @@
                   <p><strong>Hometown:</strong></p>
                 </div>
                 <div class="col-xs-6">
-                  <p><%= @user.hometown %></p>
+                  <p><%= @user.profile.hometown %></p>
                 </div>
               </div>
               <div class="row">
@@ -53,7 +53,7 @@
                   <p><strong>Currently Lives:</strong></p>
                 </div>
                 <div class="col-xs-6">
-                  <p><%= @user.current_town %></p>
+                  <p><%= @user.profile.current_town %></p>
                 </div>
               </div><!--  -->
               <!--END OF BASIC INFORMATION  -->
@@ -76,33 +76,19 @@
                   <p><strong>Telephone:</strong></p>
                 </div>
                 <div class="col-xs-6">
-                  <p><%= @user.phone %></p>
+                  <p><%= @user.profile.phone %></p>
                 </div>
               </div>
-            </div><!--  -->
-            <!-- END OF LEFT HALF -->
-            <!--  -->
+            </div>
+            
             <div class="col-md-6 col2">
-              <div class="row">
-                <div class="col-xs-12">
-                  <h3>Words to Live By</h3>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-xs-12">
-                  <p><%= @user.words_to_live_by %></p>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-xs-12">
-                  <h3>About Me</h3>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-xs-12">
-                  <p><%= @user.about_me %></p>
-                </div>
-              </div>
+
+              <h3>Words to Live By</h3>
+              <p><%= @user.profile.words_to_live_by %></p>
+
+              <h3>About Me</h3>
+              <p><%= @user.profile.about_me %></p>
+
             </div>
           </div>
         </div>

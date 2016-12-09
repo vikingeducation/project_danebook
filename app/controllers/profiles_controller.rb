@@ -1,11 +1,12 @@
 class ProfilesController < ApplicationController
 
   def edit
-    @profile = Profile.find(params[:id])
+    @profile = Profile.where(user_id: current_user.id).first
   end
 
   def update
-    @profile = Profile.find(params[:id])
+    @profile = Profile.where(user_id: current_user.id).first
+    
     if @profile.update(profile_params)
       flash[:success] = "Profile Updated!"
       redirect_to @profile.user

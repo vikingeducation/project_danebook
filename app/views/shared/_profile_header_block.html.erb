@@ -6,8 +6,8 @@
     </div>
     <nav class="profile-navigation-bar">
       <div class="profile-photo-spacer"></div>
-      <div class="profile-navigation-item"><a href="#!">Timeline</a></div>
-      <div class="profile-navigation-item"><a href="#!">About</a></div>
+      <div class="profile-navigation-item"><%= link_to "Timeline", user_posts_path(@profile.user) %></div>
+      <div class="profile-navigation-item"><%= link_to "About", user_profile_path(@profile) %></div>
       <div class="profile-navigation-item"><a href="#!">Photos</a> <span class="badge">(123)</span></div>
       <div class="profile-navigation-item"><a href="#!">Friends</a> <span class="badge">(542)</span></div>
     </nav>

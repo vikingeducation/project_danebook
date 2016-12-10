@@ -12,6 +12,8 @@ class User < ApplicationRecord
 
   has_one :profile, inverse_of: :user
   has_many :posts
+  has_many :likes
+  has_many :liked_posts, through: :likes, source: :posts
 
   accepts_nested_attributes_for :profile
 

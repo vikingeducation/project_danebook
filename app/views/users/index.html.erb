@@ -4,49 +4,7 @@
           <!-- Current location header -->
           <main class="row">
               <article class="col-xs-4">
-                  <section class="post">
-                      <header class="nav-post">
-                          <h4>
-                          About
-                          </h4>
-                      </header>
-                      <div class="post-body">
-                          <table class="tab-timeline">
-                              <tr>
-                                  <th>
-                                      Born on:
-                                  </th>
-                                  <td>
-                                      July 31st, 1980
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <th>
-                                      Went to school:
-                                  </th>
-                                  <td>
-                                      Hogwarts
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <th>
-                                      Hometown:
-                                  </th>
-                                  <td>
-                                      Godrick's Hollow, England
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <th>
-                                      Currently live:
-                                  </th>
-                                  <td>
-                                      Godrick's Hollow
-                                  </td>
-                              </tr>
-                          </table>
-                      </div>
-                  </section>
+                  <%= render "/shared/about", user: @posts.first.user %>
                   
                   <!-- Photos aside -->
                   <section class="post">
@@ -143,94 +101,29 @@
                 <section class="post">
                     <header class="nav-post">
                         <h4>
-                        Friends (542)
+                        Friends (<%= @user.friended_users.count %>)
                         </h4>
                     </header>
 
                     <div class="container-fluid">
                       <!-- 1st row -->
                       <div class="row"> 
-
-                          <div class="col-md-4 col-sm-6 col-xs-12">
-                              <div class="hovereffect">
-                                  <a href="#">
-                                      <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
-                                      Ron Weasley
-                                  </a>
-                              </div>
-                          </div>
-
-                          <div class="col-md-4 col-sm-6 col-xs-12">
-                              <div class="hovereffect">
-                                  <a href="#">
-                                      <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
-                                      Ricky Jervais
-                                  </a>
-                              </div>
-                          </div>
-                          <div class="col-md-4 col-sm-6 col-xs-12">
-                              <div class="hovereffect">
-                                  <a href="#">
-                                      <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
-                                      Bob Drake
-                                  </a>
-                              </div>
-                          </div>
+                      <%= render "/shared/friends_side", friend: @user.friended_users.first%>
+                      <%= render "/shared/friends_side", friend: @user.friended_users.second%>
+                      <%= render "/shared/friends_side", friend: @user.friended_users.third%>
                       </div>
-                      <!-- 2nd row -->
                       <div class="row">
-                          <div class="col-md-4 col-sm-6 col-xs-12">
-                              <div class="hovereffect">
-                                  <a href="#">
-                                      <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
-                                      Bugs Bunny
-                                  </a>
-                              </div>
-                          </div>
-                          <div class="col-md-4 col-sm-6 col-xs-12">
-                              <div class="hovereffect">
-                                  <a href="#">
-                                      <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
-                                      Frank Zappa
-                                  </a>
-                              </div>
-                          </div>
-                          <div class="col-md-4 col-sm-6 col-xs-12">
-                              <div class="hovereffect">
-                                  <a href="#">
-                                      <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
-                                      Don Van Vliet
-                                  </a>
-                              </div>
-                          </div>
+                      <%= render "/shared/friends_side", friend: @user.friended_users.fourth%>
+                      <%= render "/shared/friends_side", friend: @user.friended_users.fifth%>
+                      <%= render "/shared/friends_side", friend: @user.friended_users[6]%>
+                      </div>
+                      <div class="row">
+                      <%= render "/shared/friends_side", friend: @user.friended_users[8]%>
+                      <%= render "/shared/friends_side", friend: @user.friended_users[7]%>
+                      <%= render "/shared/friends_side", friend: @user.friended_users[9]%>
                       </div>
                       <!-- 3rd row -->
-                      <div class="row">
-                          <div class="col-md-4 col-sm-6 col-xs-12">
-                              <div class="hovereffect">
-                                  <a href="#">
-                                      <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
-                                      James Joyce
-                                  </a>
-                              </div>
-                          </div>
-                          <div class="col-md-4 col-sm-6 col-xs-12">
-                              <div class="hovereffect">
-                                  <a href="#">
-                                      <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
-                                      Lauren Faust
-                                  </a>
-                              </div>
-                          </div>
-                          <div class="col-md-4 col-sm-6 col-xs-12">
-                              <div class="hovereffect">
-                                  <a href="#">
-                                      <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
-                                      Herman Melville
-                                  </a>
-                              </div>
-                          </div>
-                      </div>
+                 
                     <div class="nav-bottom-link">
                         <a class="edit-profile" href="friends.html">
                             See More Friends

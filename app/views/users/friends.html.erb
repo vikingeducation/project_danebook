@@ -20,7 +20,7 @@
           <div class="col-md-6">
             <article class="media friend-container">
               <div class="media-left media-middle">
-                <img class="media-object" src="user_silhouette_generic.gif">
+                <%= image_tag(friend.profile_photo.image.url(:thumb) ) %>
               </div>
               <div class="media-body media-middle">
                 <%= link_to friend.name, about_user_path(friend), class: "media-heading" %>
@@ -35,13 +35,15 @@
           <div class="col-md-6">
             <article class="media friend-container">
               <div class="media-left media-middle">
-                <img class="media-object" src="user_silhouette_generic.gif">
+                <%= image_tag(friend.profile_photo.image.url(:thumb) ) %>
               </div>
               <div class="media-body media-middle">
                 <%= link_to friend.name, about_user_path(friend), class: "media-heading" %>
-                <P><%= friend.friendships_count%> Friends</P></div>
-              <div class="media-right ">
                 <i class="text-danger">(Request Pending)</i>
+                <P><%= friend.friendships_count%> Friends</P>
+
+              </div>
+              <div class="media-right ">
                 <%= link_to "Unfriend Me", friendship_path(friend.id), method: "DELETE", class: "btn btn-default unfriend-btn" %>
               </div>
             </article>

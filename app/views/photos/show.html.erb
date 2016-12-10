@@ -10,7 +10,7 @@
       </div>
       <div class="row">
         <div class="col-md-8 text-center large-photo-container">
-          <%= image_tag @photo.image.url(:medium) %><br>
+          <%= image_tag @photo.image, :class => "photo-show" %><br>
           <div class="pull-right">
             <%= link_to "Set as Profile", photo_path(@photo, :profile_user_id => current_user.id), :method => :put %><br>
             <%= link_to "Set as Cover", photo_path(@photo, :cover_user_id => current_user.id), :method => :put %><br>

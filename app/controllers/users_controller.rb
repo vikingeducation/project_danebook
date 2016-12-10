@@ -41,6 +41,7 @@ class UsersController < ApplicationController
     @posts = Post.includes(:user, :likes, :comments => [:author, :likes]).order(created_at: :desc)
     @user = User.find(params[:id])
     @friends = @user.friends
+    @photos = @user.photos
   end
 
   def friends

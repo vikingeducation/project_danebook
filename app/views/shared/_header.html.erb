@@ -3,7 +3,7 @@
 <header class="container" id="bg">
   <section class="jumbotron">
     <% if @cover_photo %>
-      <%= image_tag(@cover_photo.image) %>
+      <%= image_tag(@cover_photo.image.url(:cover), :class => "cover-image") %>
     <% else %>
       <%= image_tag("hogwarts_small.jpg", :class => "cover-image") %>
     <% end %>

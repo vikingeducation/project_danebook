@@ -8,7 +8,6 @@ module ApplicationHelper
   end
 
   def render_user_nav
-    render partial: 'shared/search_bar'
     render partial: 'shared/navbar/user'
   end
 

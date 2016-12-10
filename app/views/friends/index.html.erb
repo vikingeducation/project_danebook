@@ -1,0 +1,14 @@
+<%= content_for :usernav, true %>
+<section class="post post-small col-xs-12">
+
+  <div class="row">
+    <section class="post-content col-xs-12">
+      <div class="row">
+        <% @user.friends.each do |friend| %>
+         <%= render partial: 'shared/friends/friend', locals: {user: friend} %>
+        <% end %>
+      </div>
+    </section>
+  </div>
+
+</section>

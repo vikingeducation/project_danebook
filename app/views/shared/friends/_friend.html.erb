@@ -1,0 +1,27 @@
+<div class="col-md-6">
+  <div class="profile profile-bordered">
+    <div class="profile-center">
+
+      <div class="profile-img pull-left">
+        <a href="#">
+          <img src="https://s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif" alt="">
+          </a></div>
+
+
+      <div class="profile-info pull-left">
+
+        <%= link_to format_user_name(user), user_profile_path(user, user.profile) %>
+
+        <p class="muted">432 Friends</p>
+      </div>
+      <% if current_user.friend_ids.include?(user.id) %>
+        <a href="#" class="btn btn-default pull-right unfriend">Unfriend Me</a>
+      <% elsif current_user.id != user.id %>
+        <a href="#" class="btn btn-default pull-right unfriend">Friend Me</a>
+      <% end %>
+      <div class="clearfix"></div>
+    </div>
+
+
+  </div>
+</div>

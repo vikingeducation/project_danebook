@@ -4,14 +4,15 @@ Rails.application.routes.draw do
   resource :session
   resources :users do
     resource :profile
-    resource :galleries
-    resource :friends
+    # resources :galleries
+    resources :friends
     resources :posts do
       resource :comment, only: [:create, :new]
     end
   end
   resources :likes, only: [:update, :destroy]
 
+  get '/search' => 'search#show'
   get '/signup' => 'users#new'
   get '/logout' => 'sessions#destroy'
   get '/login' => 'sessions#new'

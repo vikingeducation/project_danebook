@@ -10,6 +10,7 @@ NUM_POSTS = 50
 NUM_COMMENTS = 75
 NUM_POST_LIKES = 100
 NUM_COMMENT_LIKES = 100
+NUM_EXISTING_FRIENDS = 200
 
 puts "Destroying everything"
 User.destroy_all
@@ -90,6 +91,16 @@ NUM_COMMENT_LIKES.times do
                             likeable_type: "Comment"
                             )
   end 
+end
+
+
+NUM_EXISTING_FRIENDS.times do 
+  users = User.all
+  user1 = users.sample
+  user2 = users.sample
+  if user1.friended_users.where(friendee_id: user2.id).empty
+    user1.friended_users << user2 
+  end
 end
 
 puts "Done"

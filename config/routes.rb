@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   get 'posts/index'
 
-  # TODO Put a link to an user's timeline in their about page. Figure out what's up with the render. 
+  # TODO work on second nav bar highlighting
 
   root "users#new"
   resources :users do

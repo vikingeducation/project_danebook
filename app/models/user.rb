@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_secure_password
+
   validates :first_name, :last_name, presence: true
   validates :email, presence: true, uniqueness: true
   validates :birthday, presence: true
@@ -51,5 +52,15 @@ class User < ApplicationRecord
   def friends
     initiated_friends.where(id: recieved_friends.pluck(:id))
     # self.initiated_friends & self.recieved_friends
+  end
+  private
+  def self.send_welcome_email(id)
+    user = User.find(id)
+    UserMailer.welcome(user).deliver
+  end
+
+  def self.send_comment_email(id)
+    user = User.find(id)
+    UserMailer.comment(user).deliver
   end
 end

@@ -5,6 +5,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new(whitelisted_comments_params)
     if @comment.save
       flash[:success] = "Successfully commented on the post"
+      User.delay.send_comment_email(@comment.commentable.user_id)
     else
       flash[:danger] = "Unable to comment on the post"
     end

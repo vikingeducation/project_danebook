@@ -52,6 +52,9 @@ group :development, :test do
   gem 'pry-byebug'
 end
 
+gem "letter_opener", :group => :development
+gem 'delayed_job_active_record'
+
 group :production do
   gem 'rails_12factor'
 end

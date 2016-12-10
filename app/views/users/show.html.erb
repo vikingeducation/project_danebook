@@ -1,531 +1,276 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Timeline</title>
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="assets/main.css">
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
-  <body>
-      <!--Nav -->
-      <nav class="navbar navbar-custom navbar-fixed-top">
-          <div class="container">
-              <!-- Brand and toggle get grouped for better mobile display -->
-              <div class="navbar-header">
-                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#login-navbar-collapse" aria-expanded="false">
-                  <span class="sr-only">Toggle navigation</span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  </button>
-                  <a class="navbar-brand logo-container" href="home.html">
-                      <img src="assets/danish_flag.gif" alt="Brand">
-                      <h3>Danebook</h3>
-                  </a>
-              </div>
-              <!-- Collect the nav links, forms, and other content for toggling -->
-              <div class="collapse navbar-collapse" id="login-navbar-collapse">
-                  <form class="navbar-form navbar-left search-form">
-                      <div class="form-group">
-                          <input type="text" class="form-control" placeholder="Search for User">
-                      </div>
-                  </form>
-                  <ul class="nav navbar-nav navbar-right">
-                      <li>
-                          <a href="#">Harry</a>
-                      </li>
-                  </ul>
-              </div><!-- /.navbar-collapse -->
-          </div><!-- /.container -->
-      </nav>
+<%= render partial: "shared/navbar", locals: { :user => @user } %>
 
-      <!-- Hero -->
-      <div class="container">
-          <header class="hero">
-              <div class="avatar">
+<!-- Hero -->
+<div class="container">
+  <header class="hero">
+    <div class="avatar">
+    </div>
+  </header>
+
+  <%= render partial: "shared/subnav", locals: { :user => @user } %>
+
+  <!-- Current location header -->
+  <main class="row">
+    <article class="col-xs-4">
+      <section class="post">
+        <header class="nav-post">
+          <h4>
+            About
+          </h4>
+        </header>
+        <div class="post-body">
+          <table class="tab-timeline">
+            <tr>
+              <th>
+                  Born on:
+              </th>
+              <td>
+                  <%= @user.profile.birthday %>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                  Went to school:
+              </th>
+              <td>
+              <%= @user.profile.college %>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                  Hometown:
+              </th>
+              <td>
+                  <%= @user.profile.hometown %>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                  Currently Lives:
+              </th>
+              <td>
+                  <%= @user.profile.city %>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </section>
+        
+      <!-- Photos aside -->
+      <section class="post">
+        <header class="nav-post">
+          <h4>
+            Photos (123)
+          </h4>
+        </header>
+          <div class="container-fluid">
+            <!-- 1st row -->
+            <!-- <div class="row"> 
+
+                <div class="col-md-4 col-xs-12">
+                    <div class="hovereffect">
+                        <a href="#">
+                            <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
+                        </a>
+                    </div>
+                </div>
+                 <div class="col-md-4 col-xs-12">
+                    <div class="hovereffect">
+                        <a href="#">
+                            <img class="img-thumbnail" src="icon_photo_small.png" alt="">
+                        </a>
+                    </div>
+                </div>
+                 <div class="col-md-4 col-xs-12">
+                    <div class="hovereffect">
+                        <a href="#">
+                            <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
+                        </a>
+                    </div>
+                </div>
+            </div> -->
+            <!-- 2nd row -->
+            <!-- <div class="row"> 
+
+              <div class="col-md-4 col-xs-12">
+                  <div class="hovereffect">
+                      <a href="#">
+                          <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
+                      </a>
+                  </div>
               </div>
+               <div class="col-md-4 col-xs-12">
+                  <div class="hovereffect">
+                      <a href="#">
+                          <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
+                      </a>
+                  </div>
+              </div>
+               <div class="col-md-4 col-xs-12">
+                  <div class="hovereffect">
+                      <a href="#">
+                          <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
+                      </a>
+                  </div>
+              </div>
+            </div> -->
+            <!-- 3rd row -->
+            <!-- <div class="row"> 
+
+                <div class="col-md-4 col-xs-12">
+                    <div class="hovereffect">
+                        <a href="#">
+                            <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
+                        </a>
+                    </div>
+                </div>
+                 <div class="col-md-4 col-xs-12">
+                    <div class="hovereffect">
+                        <a href="#">
+                            <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
+                        </a>
+                    </div>
+                </div>
+                 <div class="col-md-4 col-xs-12">
+                    <div class="hovereffect">
+                        <a href="#">
+                            <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
+                        </a>
+                    </div>
+                </div>
+            </div> -->
+        </div>
+        <div class="nav-bottom-link">
+            <a class="edit-profile" href="photos.html">
+                See More Photos
+            </a>
+        </div>
+    </section>
+
+    <!-- Current location header -->
+    <section class="post">
+        <header class="nav-post">
+            <h4>
+            Friends (542)
+            </h4>
+        </header>
+
+        <div class="container-fluid">
+          <!-- 1st row -->
+          <div class="row"> 
+
+              <!-- <div class="col-md-4 col-sm-6 col-xs-12">
+                  <div class="hovereffect">
+                      <a href="#">
+                          <img class="img-thumbnail" src="icon_photo_small.png" alt="">
+                          Ron Weasley
+                      </a>
+                  </div>
+              </div>
+
+              <div class="col-md-4 col-sm-6 col-xs-12">
+                  <div class="hovereffect">
+                      <a href="#">
+                          <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
+                          Ricky Jervais
+                      </a>
+                  </div>
+              </div>
+              <div class="col-md-4 col-sm-6 col-xs-12">
+                  <div class="hovereffect">
+                      <a href="#">
+                          <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
+                          Bob Drake
+                      </a>
+                  </div>
+              </div>
+          </div> -->
+          <!-- 2nd row --> <!--
+          <div class="row">
+              <div class="col-md-4 col-sm-6 col-xs-12">
+                  <div class="hovereffect">
+                      <a href="#">
+                          <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
+                          Bugs Bunny
+                      </a>
+                  </div>
+              </div>
+              <div class="col-md-4 col-sm-6 col-xs-12">
+                  <div class="hovereffect">
+                      <a href="#">
+                          <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
+                          Frank Zappa
+                      </a>
+                  </div>
+              </div>
+              <div class="col-md-4 col-sm-6 col-xs-12">
+                  <div class="hovereffect">
+                      <a href="#">
+                          <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
+                          Don Van Vliet
+                      </a>
+                  </div>
+              </div>
+          </div> -->
+          <!-- 3rd row --> <!--
+          <div class="row">
+              <div class="col-md-4 col-sm-6 col-xs-12">
+                  <div class="hovereffect">
+                      <a href="#">
+                          <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
+                          James Joyce
+                      </a>
+                  </div>
+              </div>
+              <div class="col-md-4 col-sm-6 col-xs-12">
+                  <div class="hovereffect">
+                      <a href="#">
+                          <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
+                          Lauren Faust
+                      </a>
+                  </div>
+              </div>
+              <div class="col-md-4 col-sm-6 col-xs-12">
+                  <div class="hovereffect">
+                      <a href="#">
+                          <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
+                          Herman Melville
+                      </a>
+                  </div>
+              </div>
+          </div> -->
+        <div class="nav-bottom-link">
+            <a class="edit-profile" href="friends.html">
+                See More Friends
+            </a>
+        </div>
+    </section>
+  </article>
+
+  <!-- Post Entry -->
+  <article class="col-xs-8">
+      <section class="post">
+          <header class="nav-post">
+              <h4>
+                Post
+              </h4>
           </header>
-          <!-- Sub-nav -->
-          <nav class="sub-navigation" role="navigation">
-              <div class="container-fluid">
-                  <!-- Brand and toggle get grouped for better mobile display -->
-                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sub-nav-collapse" aria-expanded="false"><span class="caret"></span>Menu
-                  </button>
-                  <!-- Collect the nav links, forms, and other content for toggling -->
-                  <div class="collapse navbar-collapse" id="sub-nav-collapse">
-                      <ul class="nav nav-pills">
-                          <li role="presentation">
-                              <a href="timeline.html">
-                                  Timeline
-                              </a>
-                          </li>
-                          <li role="presentation" class="active">
-                              <a href="about.html">
-                                  About
-                              </a>
-                          </li>
-                          <li role="presentation">
-                              <a href="photos.html">
-                                  Photos<span class="badge">(123)</span>
-                              </a>
-                          </li>
-                          <li role="presentation">
-                              <a href="friends.html">
-                                  Friends<span class="badge">(542)</span>
-                              </a>
-                          </li>
-                          <li class="edit-profile pull-right">
-                              <a href="about_edit.html">
-                                  Edit Profile
-                              </a>
-                          </li>
-                      </ul>
-                  </div><!-- /.navbar-collapse -->
-              </div><!-- /.container-fluid -->
-          </nav>
-
-
-          <!-- Current location header -->
-          <main class="row">
-              <article class="col-xs-4">
-                  <section class="post">
-                      <header class="nav-post">
-                          <h4>
-                          About
-                          </h4>
-                      </header>
-                      <div class="post-body">
-                          <table class="tab-timeline">
-                              <tr>
-                                  <th>
-                                      Born on:
-                                  </th>
-                                  <td>
-                                      July 31st, 1980
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <th>
-                                      Went to school:
-                                  </th>
-                                  <td>
-                                      Hogwarts
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <th>
-                                      Hometown:
-                                  </th>
-                                  <td>
-                                      Godrick's Hollow, England
-                                  </td>
-                              </tr>
-                              <tr>
-                                  <th>
-                                      Currently live:
-                                  </th>
-                                  <td>
-                                      Godrick's Hollow
-                                  </td>
-                              </tr>
-                          </table>
-                      </div>
-                  </section>
-                  
-                  <!-- Photos aside -->
-                  <section class="post">
-                      <header class="nav-post">
-                          <h4>
-                          Photos (123)
-                          </h4>
-                      </header>
-                      <div class="container-fluid">
-                        <!-- 1st row -->
-                        <div class="row"> 
-
-                            <div class="col-md-4 col-xs-12">
-                                <div class="hovereffect">
-                                    <a href="#">
-                                        <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                             <div class="col-md-4 col-xs-12">
-                                <div class="hovereffect">
-                                    <a href="#">
-                                        <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                             <div class="col-md-4 col-xs-12">
-                                <div class="hovereffect">
-                                    <a href="#">
-                                        <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- 2nd row -->
-                        <div class="row"> 
-
-                          <div class="col-md-4 col-xs-12">
-                              <div class="hovereffect">
-                                  <a href="#">
-                                      <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
-                                  </a>
-                              </div>
-                          </div>
-                           <div class="col-md-4 col-xs-12">
-                              <div class="hovereffect">
-                                  <a href="#">
-                                      <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
-                                  </a>
-                              </div>
-                          </div>
-                           <div class="col-md-4 col-xs-12">
-                              <div class="hovereffect">
-                                  <a href="#">
-                                      <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
-                                  </a>
-                              </div>
-                          </div>
-                        </div>
-                        <!-- 3rd row -->
-                        <div class="row"> 
-
-                            <div class="col-md-4 col-xs-12">
-                                <div class="hovereffect">
-                                    <a href="#">
-                                        <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                             <div class="col-md-4 col-xs-12">
-                                <div class="hovereffect">
-                                    <a href="#">
-                                        <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                             <div class="col-md-4 col-xs-12">
-                                <div class="hovereffect">
-                                    <a href="#">
-                                        <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="nav-bottom-link">
-                        <a class="edit-profile" href="photos.html">
-                            See More Photos
-                        </a>
-                    </div>
-                </section>
-
-                <!-- Current location header -->
-                <section class="post">
-                    <header class="nav-post">
-                        <h4>
-                        Friends (542)
-                        </h4>
-                    </header>
-
-                    <div class="container-fluid">
-                      <!-- 1st row -->
-                      <div class="row"> 
-
-                          <div class="col-md-4 col-sm-6 col-xs-12">
-                              <div class="hovereffect">
-                                  <a href="#">
-                                      <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
-                                      Ron Weasley
-                                  </a>
-                              </div>
-                          </div>
-
-                          <div class="col-md-4 col-sm-6 col-xs-12">
-                              <div class="hovereffect">
-                                  <a href="#">
-                                      <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
-                                      Ricky Jervais
-                                  </a>
-                              </div>
-                          </div>
-                          <div class="col-md-4 col-sm-6 col-xs-12">
-                              <div class="hovereffect">
-                                  <a href="#">
-                                      <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
-                                      Bob Drake
-                                  </a>
-                              </div>
-                          </div>
-                      </div>
-                      <!-- 2nd row -->
-                      <div class="row">
-                          <div class="col-md-4 col-sm-6 col-xs-12">
-                              <div class="hovereffect">
-                                  <a href="#">
-                                      <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
-                                      Bugs Bunny
-                                  </a>
-                              </div>
-                          </div>
-                          <div class="col-md-4 col-sm-6 col-xs-12">
-                              <div class="hovereffect">
-                                  <a href="#">
-                                      <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
-                                      Frank Zappa
-                                  </a>
-                              </div>
-                          </div>
-                          <div class="col-md-4 col-sm-6 col-xs-12">
-                              <div class="hovereffect">
-                                  <a href="#">
-                                      <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
-                                      Don Van Vliet
-                                  </a>
-                              </div>
-                          </div>
-                      </div>
-                      <!-- 3rd row -->
-                      <div class="row">
-                          <div class="col-md-4 col-sm-6 col-xs-12">
-                              <div class="hovereffect">
-                                  <a href="#">
-                                      <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
-                                      James Joyce
-                                  </a>
-                              </div>
-                          </div>
-                          <div class="col-md-4 col-sm-6 col-xs-12">
-                              <div class="hovereffect">
-                                  <a href="#">
-                                      <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
-                                      Lauren Faust
-                                  </a>
-                              </div>
-                          </div>
-                          <div class="col-md-4 col-sm-6 col-xs-12">
-                              <div class="hovereffect">
-                                  <a href="#">
-                                      <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
-                                      Herman Melville
-                                  </a>
-                              </div>
-                          </div>
-                      </div>
-                    <div class="nav-bottom-link">
-                        <a class="edit-profile" href="friends.html">
-                            See More Friends
-                        </a>
-                    </div>
-                </section>
-              </article>
-
-              <!-- Post Entry -->
-              <article class="col-xs-8">
-                  <section class="post">
-                      <header class="nav-post">
-                          <h4>
-                          Post
-                          </h4>
-                      </header>
-                      <div class="post-body">
-                          <div class="form-group">
-                              <textarea class="form-control" placeholder="Tell the world what's on yer mind..."></textarea>
-                          </div>
-                      </div>
-                      <div class="nav-footer">
-                          <button class="btn btn-primary" type="button">
-                          Post
-                          </button>
-                      </div>
-                  </section>
-                  
-                  <!-- Top comments -->
-                  <section class="post">
-                      <div class="post-body">
-                          <img src="assets/user_silhouette_generic.gif">
-                          <div class="author-box">
-                              <a href="#">
-                                  Harry Potter
-                              </a>
-                              <time datetime="6/1/2013" pubdate>
-                              Posted on Thursday 6/1/2013
-                              </time>
-                          </div>
-                          <p class="comment-area">
-                              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum tempora inventore praesentium, distinctio saepe facere, dolores laboriosam magnam id cum eius repellendus harum, excepturi, dolorem vero quisquam. Fugiat, quod ad.
-                          </p>
-                      </div>
-                      <div class="nav-footer">
-                          <a href="#" class="link pull-left">
-                              Like
-                          </a>
-                          <a href="#" class="comment pull-left">
-                              Comment
-                          </a>
-                          <a href="#" class="delete pull-right">
-                              Delete
-                          </a>
-                      </div>
-                  </section>
-
-                  <section class="post">
-                      <div class="post-body">
-                          <img src="assets/user_silhouette_generic.gif">
-                          <div class="author-box">
-                              <a href="#">
-                                  Harry Potter
-                              </a>
-                              <time datetime="5/21/2014" pubdate>
-                              Posted on Thursday 5/21/2014
-                              </time>
-                          </div>
-                          <p class="comment-area">
-                              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum tempora inventore praesentium, distinctio saepe facere, dolores laboriosam magnam id cum eius repellendus harum, excepturi, dolorem vero quisquam. Fugiat, quod ad.
-                          </p>
-                      </div>
-                      <div class="nav-footer">
-                          <div class="clearfix">
-                              <a href="#" class="like pull-left">
-                                  Link
-                              </a>
-                              <a href="#" class="comment pull-left">
-                                  Comment
-                              </a>
-                              <a href="#" class="delete pull-right">
-                                  Delete
-                              </a>
-                          </div>
-                          <div class="liked-box">
-                              <a href="#" class="liking">
-                                  Hermione Granger
-                              </a>
-                              <p>
-                                  likes this
-                              </p>
-                          </div>
-                      </div>
-                  </section>
-
-                  <!-- Comment with conversation -->
-                  <section class="post">
-                      <div class="post-body">
-                          <img src="assets/user_silhouette_generic.gif">
-                          <div class="author-box">
-                              <a href="#">
-                                  Harry Potter
-                              </a>
-                              <time datetime="5/21/2014" pubdate>
-                              Posted on Thursday 5/21/2014
-                              </time>
-                          </div>
-                          <p class="comment-area">
-                              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum tempora inventore praesentium, distinctio saepe facere, dolores laboriosam magnam id cum eius repellendus harum, excepturi, dolorem vero quisquam. Fugiat, quod ad.
-                          </p>
-                      </div>
-                      <div class="nav-footer">
-                          <div class="clearfix">
-                              <a href="#" class="like pull-left">
-                                  Unike
-                              </a>
-                              <a href="#" class="delete pull-right">
-                                  Delete
-                              </a>
-                          </div>
-                          <div class="liked-box">
-                              <p>
-                                  You and
-                              </p>
-                              <a href="#" class="liking">
-                                  Hermione Granger
-                              </a>
-                              <p>
-                                  and 3 other like this
-                              </p>
-                          </div>
-                      </div>
-
-                      <!-- Drop-down cnverstaion -->
-                      <div class="post-body unfolded">
-                          <img src="assets/user_silhouette_generic.gif">
-                          <div class="author-box">
-                              <a href="#">
-                                  Ron Weasley
-                              </a>
-                              <time datetime="5/21/2014" pubdate>
-                              Posted on Thursday 5/21/2014
-                              </time>
-                          </div>
-                          <div class="comment-area">
-                              <p>
-                                  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum tempora inventore praesentium, distinctio saepe facere, dolores laboriosam magnam id cum eius repellendus harum, excepturi, dolorem vero quisquam. Fugiat, quod ad.
-                              </p>
-                              <div class="like-area">
-                                  <div class="clearfix">
-                                      <a href="#" class="like pull-left">
-                                          Like
-                                      </a>
-                                      3 other people like this
-                                  </div>
-                              </div>
-                          </div>
-                          <div class="post-body unfolded">
-                              <img src="assets/user_silhouette_generic.gif">
-                              <div class="author-box">
-                                  <a href="#">
-                                      Ron Weasley
-                                  </a>
-                                  <time datetime="5/22/2014" pubdate>
-                                  Posted on Thursday 5/21/2014
-                                  </time>
-                              </div>
-                              <div class="comment-area">
-                                  <p>
-                                      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum tempora inventore praesentium, distinctio saepe facere, dolores laboriosam magnam id cum eius repellendus harum, excepturi, dolorem vero quisquam. Fugiat, quod ad.
-                                  </p>
-                                  <div class="like-area">
-                                      <a href="#" class="like pull-left">
-                                          Like
-                                      </a>
-                                      3 other people like this
-                                      <a href="#" class="delete pull-right">
-                                          Delete
-                                      </a>
-                                  </div>
-                              <div class="form-group">
-                                  <textarea class="form-control" placeholder="Tell the world what's on yer mind..." rows="6"></textarea>
-                                  <div class="nav-footer">
-                                      <div class="clearfix">
-                                          <a href="#" class="like pull-left">
-                                              Cancel
-                                          </a>
-                                          <button type="button" class="btn btn-primary btn-sm">Comment</button>
-                                      </div>
-                                  </div>
-                              </div>
-                          </div>
-                      </div>
-                  </section>
-              </article>
-          </main>
-      </div>
-      <!-- jQuery -->
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-      <!-- Bootstrap JS -->
-      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-  </body>
-</html>
+          <%= form_for @post do |f| %>
+            <div class="post-body">
+              <div class="form-group">
+                <%= f.text_area :body, class: "form-control", placeholder: "Tell the world what's on yer mind..." %>
+              </div>
+            </div>
+            <div class="nav-footer">
+              <%= f.submit "Post", class: "btn btn-primary" %>
+            </div>
+          <% end %>
+      </section>
+      
+      <!-- Top comments -->
+      <% @user.authored_posts.each do |post| %>
+        <%= render partial: "posts/post", locals: { post: post } if  post.persisted? %>
+      <% end %>
+    </article>
+  </main>
+</div>

@@ -1,0 +1,27 @@
+<section class="post">
+  <div class="post-body">
+    <img src="assets/user_silhouette_generic.gif">
+    <div class="author-box">
+      <a href="#">
+          <%= link_to post.author.full_name, @user %>
+      </a>
+      <time datetime="6/1/2013" pubdate>
+        Posted on <%= post.updated_at %>
+      </time>
+    </div>
+    <p class="comment-area">
+      <%= post.body %>
+    </p>
+  </div>
+  <div class="nav-footer">
+    <a href="#" class="link pull-left">
+      Like
+    </a>
+    <a href="#" class="comment pull-left">
+      Comment
+    </a>
+    <a href="#" class="delete pull-right">
+      Delete
+    </a>
+  </div>
+</section>

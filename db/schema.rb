@@ -10,17 +10,40 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161208003053) do
+ActiveRecord::Schema.define(version: 20161209215142) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "likes", force: :cascade do |t|
+    t.integer  "liker_id"
+    t.integer  "liked_post_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["liked_post_id"], name: "index_likes_on_liked_post_id", using: :btree
+    t.index ["liker_id"], name: "index_likes_on_liker_id", using: :btree
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.text     "body"
+    t.integer  "author_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["author_id"], name: "index_posts_on_author_id", using: :btree
+  end
 
   create_table "profiles", force: :cascade do |t|
     t.integer  "user_id"
     t.date     "birthday"
     t.string   "gender"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.string   "college"
+    t.string   "hometown"
+    t.string   "city"
+    t.string   "telephone"
+    t.text     "words_to_live_by"
+    t.text     "about_me"
   end
 
   create_table "users", force: :cascade do |t|
@@ -34,4 +57,7 @@ ActiveRecord::Schema.define(version: 20161208003053) do
     t.index ["auth_token"], name: "index_users_on_auth_token", unique: true, using: :btree
   end
 
+  add_foreign_key "likes", "posts", column: "liked_post_id"
+  add_foreign_key "likes", "users", column: "liker_id"
+  add_foreign_key "posts", "users", column: "author_id"
 end

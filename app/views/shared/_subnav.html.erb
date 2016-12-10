@@ -1,0 +1,32 @@
+<!-- Sub-nav -->
+<nav class="sub-navigation" role="navigation">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sub-nav-collapse" aria-expanded="false"><span class="caret"></span>Menu
+    </button>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="sub-nav-collapse">
+      <ul class="nav nav-pills">
+        <li role="presentation">
+            <%= link_to "Timeline", user %>
+        </li>
+        <li role="presentation">
+            <%= link_to "About", user_profile_path(user.id) %>
+        </li>
+        <li role="presentation">
+            <a href="#">
+                Photos<span class="badge">(123)</span>
+            </a>
+        </li>
+        <li role="presentation">
+            <%= link_to "Friends", users_path %>
+        </li>
+        <% if user = current_user %>
+            <li class="edit-profile pull-right">
+                <%= link_to "Edit Profile", edit_user_profile_path(user.id) %>
+            </li>
+        <% end %>
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>

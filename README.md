@@ -7,8 +7,11 @@ This is the Real Dane Deal.
 
 [An HTML5, CSS3, Bootstrap, and SASS project of the Viking Code School](http://www.vikingcodeschool.com)
 
-Felipe Suero
 Dexter Ford
+
+A user can visit another user's page
+- but cannot edit it (post, edit profile)
+- they can like & comment &/or friend
 
 Views:
   user index = all yr friends
@@ -24,26 +27,4 @@ Views:
   post new = create post
   post edit = edit post
 
-Models:
-User
-  first_name
-  last_name
-  email
-  password_digest
-  has one profile_id
-  has many likes
-
-Profile
-  has one user_id
-  birthday
-  home city
-  etc etc etc, migrate more as needed
-
-Posts
-  belongs to one user
-  has many likes
-  has a body
-
-Likes
-  has one user 
-  has one post
+  

@@ -19,6 +19,12 @@ class UsersController < ApplicationController
   end
 
   def update
+    @user = current_user
+    if @user.update(user_params)
+      redirect_to user_profile_path(@user.id)
+    else
+      flash[:error] = "Your changes were not saved. Our apes are currently weeping openly in a mad dash to rectify this egregious blunder."
+    end
   end
 
   def edit
@@ -28,11 +34,13 @@ class UsersController < ApplicationController
   end
 
   def index
+    @user = current_user
   end
 
   def show
     @user = User.find_by_id(params[:id])
-    @profile = @user.profile
+    @posts = @user.authored_posts
+    @post = current_user.authored_posts.build
   end
 
   private
@@ -44,7 +52,17 @@ class UsersController < ApplicationController
             :password,
             :password_confirmation,
             :remember_me,
-            profile_attributes: [:user_id, :birthday, :gender])
+            authored_posts_attributes: [:body, :id, :author_id],
+            profile_attributes: [
+              :user_id,
+              :birthday, 
+              :gender,
+              :college,
+              :hometown,
+              :city,
+              :about_me,
+              :words_to_live_by,
+              :telephone])
   end
 
 end

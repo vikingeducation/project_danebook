@@ -10,15 +10,20 @@ class PostsController < ApplicationController
       flash[:success] = "Posted!"
       redirect_to(:back)
     else
-      flash.now[:danger] = "Post failed! Did you remeber to include text?"
-      render :index
+      flash[:danger] = "Post failed! Did you remeber to include text?"
+      redirect_to :back
     end
   end
 
   def destroy
     @post = Post.find(params[:id])
-    @post.destroy
-    redirect_to(:back)
+    if @post.user_id = current_user.id
+      @post.destroy
+      redirect_to(:back)
+    else
+      flash[:danger] = "Bad bad bad!"
+      redirect_to(:back)
+    end
   end
 
   def post_params

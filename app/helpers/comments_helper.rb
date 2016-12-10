@@ -7,9 +7,6 @@ module CommentsHelper
     user = likes.last.user unless likes.last == nil
     if likes.where(user_id: current_user.id).any? && likes.count == 1
       str = "<div id='adjust'><a href= '#{user_path(user)}'>You</a>like this</div>"
-    elsif likes.where(user_id: current_user.id).any? && likes.count == 2
-      str = "<div id='adjust'>You and <a href= '#{user_path(user)}'>#{user.first_name} #{user.last_name}</a>like this</div>"
-
     elsif likes.where(user_id: current_user.id).any? && likes.count > 2
       str = "<div id='adjust'>You and <a href= '#{user_path(user)}'>#{user.first_name} #{user.last_name}</a>and #{likes.count} others like this</div>"
 

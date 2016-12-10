@@ -98,7 +98,7 @@ NUM_EXISTING_FRIENDS.times do
   users = User.all
   user1 = users.sample
   user2 = users.sample
-  if user1.friended_users.where(friendee_id: user2.id).empty
+  if user1.friended_users.where(id: user2.id).empty?
     user1.friended_users << user2 
   end
 end

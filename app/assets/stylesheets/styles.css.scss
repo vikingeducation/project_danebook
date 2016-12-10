@@ -20,21 +20,27 @@ $danish-flag: #c60c30;
     padding: 0;
     .navbar-form {
       padding: 0;
+      .form-group {
+        height: 50px;
+      }
     }
     label {
+      display: block;
       color: white;
       font-size: 12px;
+      margin: 0;
+      width: 10em;
     }
     input {
-      width: 100%;
+      width: 10em;
       border-radius: 0;
       height: 30px;
     }
     button {
-      margin-top: 25px;
       background-color: white;
       text-align: center;
       padding: 2.5px 12px;
+      width: 5em;
     }
   }
 }

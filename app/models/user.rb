@@ -3,7 +3,10 @@ class User < ApplicationRecord
 
   after_save { email.downcase.strip }
 
+  has_many :posts, dependent: :nullify
   has_one :profile, inverse_of: :user
+
+
   accepts_nested_attributes_for :profile
   has_secure_password
 
@@ -11,7 +14,11 @@ class User < ApplicationRecord
   length: { minimum: 6 },
   allow_nil: true
 
-  validates :email, :format => /@/
+  validates :email, presence: true,
+                    length: { maximum: 255 },
+                    :format => /@/,
+                    uniqueness: { case_sensitive: false }
+
 
   def generate_token
     begin

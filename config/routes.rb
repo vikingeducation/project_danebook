@@ -4,9 +4,12 @@ Rails.application.routes.draw do
 
   resources :users do
     resource :profile
+    resource :timeline, only: [:show]
+    resource :posts, only: [:new, :create, :destroy]
   end
 
   resource :session, only: [:new, :create, :destroy]
+
 
   get 'login' => 'sessions#new'
   get 'logout' => 'sessions#destroy'
@@ -14,8 +17,10 @@ Rails.application.routes.draw do
 end
 
 
-# 
+#
 # Rails.application.routes.draw do
+
+
 #   root   'static_pages#home'
 #   get    '/help',    to: 'static_pages#help'
 #   get    '/about',   to: 'static_pages#about'

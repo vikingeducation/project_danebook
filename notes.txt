@@ -1,3 +1,37 @@
+- restrict edit path on the route level
+
+
+TIMELINE
+
+
+
+  POST(deletable, should destroy all it's comments & likes)
+    body:text
+
+
+
+  COMMENT(deletable, should destroy all it's likes)
+    -linked to user
+    -linked to post
+
+  LIKE(deletable)
+    -linked to user
+    -linked to post/comment
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 SIGN UP - user#new
     --->EDIT PAGE - profile#edit (with :birthday, :email) and the rest to fill out
 

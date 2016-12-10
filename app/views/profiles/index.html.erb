@@ -21,19 +21,19 @@
                 <table class="table table-bordered">
                   <tr>
                     <th>Born on:</th>
-                    <td>July 31st, 1980</td>
+                    <td><%= @profile.birthday.strftime("%B %d, %Y") %></td>
                   </tr>
                   <tr>
                     <th>Went to school at:</th>
-                    <td>Hogwards</td>
+                    <td><%= @profile.college || "" %></td>
                   </tr>
                   <tr>
                     <th>Hometown:</th>
-                    <td>Godrick's Hollow, England</td>
+                    <td><%= @profile.hometown || "" %></td>
                   </tr>
                   <tr>
                     <th>Currently Lives:</th>
-                    <td>Godrick's Hollow, England</td>
+                    <td>%= @profile.residing || "" %></td>
                   </tr>
                 </table><!--table past-->
               </div>

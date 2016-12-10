@@ -1,26 +1,26 @@
 class TimelinesController < ApplicationController
-  def new
-  end
 
-  def index
-    #
-  end
 
   def show
-    @user = User.find(params[:id])
-  end
+    @user = User.find(params[:user_id])
 
-  def create
-  end
+    @post = Post.new
+    @post.user_id = current_user.id
 
-  def edit
-    @user = User.find(params[:id])
-  end
+    @user = current_user
 
-  def update
   end
+  #
+  # def whitelisted_params
+  #   params.require(:user).permit(:email,
+  #                                :password,
+  #                                :password_confirmation,
+  #                                { profile_attributes: [:birthday,
+  #                                  :gender,
+  #                                  :first_name,
+  #                                  :last_name]}
+  #                                )
+  # end
 
-  def destroy
-  end
 
 end

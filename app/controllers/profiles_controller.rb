@@ -1,13 +1,11 @@
 class ProfilesController < ApplicationController
 
-
     before_action :require_login, :except => [:show ]
     # skip_before_action :require_login, :only => [:new, :create]
 
     def new
       #
     end
-
 
     def index
 
@@ -24,15 +22,7 @@ class ProfilesController < ApplicationController
     end
 
     def create
-      # @user = User.new(whitelisted_params)
-      # if @user.save
-      #   sign_in(@user)
-      #   flash[:success] = "Welcome"
-      #   redirect_to @user
-      # else
-      #   flash[:error] = "Try again"
-      #   render :new
-      # end
+
     end
 
     def edit

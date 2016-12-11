@@ -6,7 +6,8 @@ class UsersController < ApplicationController
 
   def index
     @post = current_user.posts.build
-    @posts = Post.includes(:comments).where(post_type: "Post").order(created_at: :desc)
+    allowed_ids = [current_user.id, *current_user.friend_ids]
+    @posts = Post.includes(:comments).where(post_type: "Post", user_id: allowed_ids).order(created_at: :desc)
   end
 
   def new

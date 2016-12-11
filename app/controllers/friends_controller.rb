@@ -1,32 +1,44 @@
 class FriendsController < ApplicationController
 
   include UserCheck
-
-  before_action :set_user, except: [:show]
-  before_action :correct_user, except: [:index, :show]
-
-  def index
-  end
+  before_action :set_user_basic_profile
 
   def show
-    set_user_full_profile
+    @friends = @user.friends
   end
 
-  def edit
-    p current_user.profile.build_bio unless current_user.profile.bio
-  end
-
-  def update
-    if @user.profile.update(whitelisted)
-      @user.profile.update_attribute(:edited, true)
-      flash[:success] = ["Profile Successfully Edited"]
-      redirect_to user_profile_path(@user)
+  def create
+    check_friendship
+    if @user.requested_friend_ids.include?(current_user.id)
+      FriendRequest.where(user_id: @user.id, request_id: current_user.id).destroy_all
+      FriendRequest.where(user_id: current_user.id, request_id: @user.id).destroy_all
+      @user.friends << current_user
+      current_user.friends << @user
+      flash[:success] = ["Friend Request Accepted!"]
     else
-      flash.now[:danger] = ["Something went wrong.."]
-      @user.profile.errors.full_messages.each do |error|
-        flash.now[:danger] << error
+      @user.friend_request_ids << current_user.id
+      @request = FriendRequest.new(user_id: @user.id, request_id: current_user.id)
+      if @request.save
+        flash[:success] = ["Friend Request Sent!"]
+      else
+        flash[:danger] = ["Friend Request Already Sent. Stop buggin them!"]
       end
-      render :edit
     end
+    redirect_to user_profile_path(@user.profile)
   end
+
+  def destroy
+    FriendsUser.where(user_id: @user.id, friend_id: current_user.id).destroy_all
+    FriendsUser.where(user_id: current_user.id, friend_id: @user.id).destroy_all
+    redirect_to root_path
+  end
+
+  private
+    def check_friendship
+      if current_user.friend_ids.include?(@user.id)
+        flash[:danger] = ["You're Already Friends!"]
+        redirect_to user_profile_path(@user.profile)
+      end
+    end
+
 end

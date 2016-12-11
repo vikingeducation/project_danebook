@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :users do
     resource :profile
     # resources :galleries
-    resources :friends
+    resource :friends, only: [:show, :create, :destroy]
     resources :posts do
       resource :comment, only: [:create, :new]
     end

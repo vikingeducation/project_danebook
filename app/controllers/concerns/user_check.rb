@@ -16,6 +16,14 @@ module UserCheck
     end
   end
 
+  def set_user_basic_profile
+    @user = User.includes(:profile).find_by_id(params[:user_id])
+    unless @user
+      flash[:danger] = ["User does not exist"]
+      redirect_to root_path
+    end
+  end
+
   def set_user_full_profile
     @user = User.includes(profile: [:bio]).find_by_id(params[:user_id])
     unless @user

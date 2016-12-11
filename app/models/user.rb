@@ -4,6 +4,12 @@ class User < ApplicationRecord
   has_one :profile, inverse_of: :user, dependent: :destroy
   accepts_nested_attributes_for :profile, reject_if: :all_blank
 
+  has_many :f_requests, class_name: "FriendRequest", dependent: :destroy
+  has_many :friend_requests, through: :f_requests, source: :request
+
+  has_many :r_friends, class_name: "FriendRequest", foreign_key: :request_id
+  has_many :requested_friends, through: :r_friends, source: :user
+
   has_many :friends_users, dependent: :destroy
   has_many :friends, through: :friends_users
 

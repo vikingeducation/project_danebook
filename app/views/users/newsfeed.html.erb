@@ -1,0 +1,66 @@
+<!-- Main -->
+<main class="users-newsfeed">
+  <!-- Bootstrap Grid system -->
+  <section class="content">
+    <div class="container">
+      <div class="row">
+        <!-- Left Column -->
+        <div class="col-sm-4">
+
+          <!-- Article About -->
+          <article>
+            <div class="media">
+              <div class="media-left">
+                <% if @profile_photo %>
+                  <%= image_tag(@profile_photo.image.url(:thumb) ) %>
+                <% else %>
+                  <%= image_tag("user_silhouette_generic.gif") %>
+                <% end %>
+              </div>
+              <div class="media-body">
+                <a href="#" class="media-heading"><%= link_to current_user.name, about_user_path(current_user) %></a>
+                <%= link_to "Edit Profile", edit_profile_path(current_user.profile)  %>
+              </div>
+            </div>
+          </article>
+          <%= render partial: 'users/recent_activities', locals: {activities: @activities} %>
+        </div>
+
+        <!-- Right Column -->
+        <div class="col-sm-8">
+
+          <% if current_user_page %>
+            <!-- Article Post-form -->
+            <%= simple_form_for @post do |f| %>
+            <article class="post-form">
+              <div class="row timeline-heading">
+                <div class="col-xs-12 ">
+                  <h4 class="text-center">Post</h4>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12">
+                  <%= f.input :text, label: false, :input_html => { :rows => 4 } %>
+                </div>
+              </div>
+              <div class="row timeline-heading">
+                <div class="col-xs-12 ">
+                  <%= f.input :user_id, :as => :hidden, :input_html => { :value => @user.id } %>
+                  <%= f.button :submit, 'Post', class: "btn btn-primary pull-right" %>
+                </div>
+              </div>
+            </article>
+            <% end %>
+          <% end %>
+          <% @articles.each do |p| %>
+            <% if p.class == Post %>
+              <%= render partial: 'posts/post', locals: {p: p} %>
+            <% else p.class == Photo %>
+              <%= render partial: 'photos/photo', locals: {p: p} %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div> <!-- end of container -->
+  </section>
+</main>

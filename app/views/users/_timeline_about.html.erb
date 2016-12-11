@@ -1,0 +1,27 @@
+<article>
+  <div class="row timeline-heading">
+    <div class="col-xs-12 ">
+      <h4 class="text-center">About</h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <span class="timeline-field">Born on: </span><%=user.birthday.to_formatted_s(:long_ordinal)%>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <span class="timeline-field">Went to School at: </span><%= profile.college %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <span class="timeline-field">Hometown: </span><%= profile.hometown %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <span class="timeline-field">Currently Lives: </span><%= profile.address %>
+    </div>
+  </div>
+</article>

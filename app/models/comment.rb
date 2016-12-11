@@ -8,4 +8,8 @@ class Comment < ApplicationRecord
   def commented_on
     self.created_at.strftime("Said on %A, %b %d %Y")
   end
+
+  def user
+    self.author
+  end
 end

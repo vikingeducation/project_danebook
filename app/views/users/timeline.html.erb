@@ -14,33 +14,7 @@
         <div class="col-sm-4">
 
           <!-- Article About -->
-          <article>
-            <div class="row timeline-heading">
-              <div class="col-xs-12 ">
-                <h4 class="text-center">About</h4>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-xs-12">
-                <span class="timeline-field">Born on: </span><%=@user.birthday.to_formatted_s(:long_ordinal)%>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-xs-12">
-                <span class="timeline-field">Went to School at: </span><%= @profile.college %>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-xs-12">
-                <span class="timeline-field">Hometown: </span><%= @profile.hometown %>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-xs-12">
-                <span class="timeline-field">Currently Lives: </span><%= @profile.address %>
-              </div>
-            </div>
-          </article>
+          <%= render partial: 'users/timeline_about', locals: {user: @user, profile: @profile } %>
 
           <!-- Article Photo -->
           <article class="text-center">
@@ -109,33 +83,12 @@
             <% end %>
           <% end %>
 
-          <!-- Article Post 1 -->
           <% @posts.each do |p| %>
-          <article class="post">
-            <div class="row">
-              <div class="col-xs-12">
-                <div class="media">
-                  <a class="media-left" href="#">
-                    <%= image_tag("harry_potter_small.jpg") %>
-                  </a>
-                  <div class="media-body">
-                    <a href="#" class="media-heading"><%= link_to p.user.name, about_user_path(p.user) %></a>
-                    <p class="text-muted"><%= p.posted_on %></p>
-                  </div>
-                </div>
-                <p class="post-text"><%= p.text %></p>
-              </div>
-            </div>
-            <div class="row timeline-heading">
+            <%= render partial: 'posts/post', locals: {p: p} %>
+          <% end %>
 
-              <%= render partial: 'posts/likes', locals: {p: p} %>
-              <hr>
-              <%= render partial: 'posts/comments', locals: {p: p, comments: p.comments } %>
-
-              <%= render partial: 'comments/comment_form', locals: {post: p, comment: @comment} %>
-
-            </div>
-          </article>
+          <% @photos.each do |p| %>
+            <%= render partial: 'photos/photo', locals: {p: p} %>
           <% end %>
         </div>
       </div>

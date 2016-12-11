@@ -5,7 +5,7 @@
         <a href= "timeline.html">
           <%= image_tag("danish_flag.gif",  :class => "brand-image pull-left img-circle") %>
         </a>
-        <%= link_to "Danebook", timeline_user_path(current_user) , class: "navbar-brand" %>
+        <%= link_to "Danebook", newsfeed_user_path(current_user) , class: "navbar-brand" %>
       </div>
       <div class="container col-sm-6">
         <%= form_tag users_path, :method => :get , class: "navbar-form navbar-left", role: "search" do %>

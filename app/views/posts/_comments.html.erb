@@ -1,7 +1,7 @@
 <% comments.each do |comment| %>
   <div class="media comment">
       <a class="media-left" href="#">
-        <%= image_tag("user_silhouette_generic.gif") %>
+        <%= image_tag(comment.author.profile_photo.image.url(:thumb) ) %>
       </a>
     <div class="media-body">
       <%= link_to comment.author.name, about_user_path(comment.author), class: "media-heading"%></a> <span class="text-muted"><%= comment.commented_on %></span>

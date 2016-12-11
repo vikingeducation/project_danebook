@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     get 'timeline', on: :member
     get 'friends', on: :member
     get 'photos', on: :member
+    get 'newsfeed', on: :member
   end
 
   resources :friendships, only: [:create, :destroy]

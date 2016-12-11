@@ -8,4 +8,11 @@ class Like < ApplicationRecord
     self.initiated_user.name
   end
 
+  def user
+    self.initiated_user
+  end
+
+  def liked_on
+    self.created_at.strftime("Liked a post on %A, %b %d %Y")
+  end
 end

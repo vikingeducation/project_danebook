@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user_and_profile, only: [:about, :timeline]
-  before_action :set_profile_cover_photo, only: [:about, :timeline, :friends, :photos]
+  before_action :set_user_and_profile, only: [:about, :timeline, :newsfeed]
+  before_action :set_profile_cover_photo, only: [:about, :timeline, :friends, :photos, :newsfeed]
   skip_before_action :require_login, only: [:new, :create, :show]
 
   def new
@@ -21,7 +21,7 @@ class UsersController < ApplicationController
       permanent_sign_in(@user)
       User.delay.send_welcome_email(@user.id)
       flash[:success] = "You've successfully signed up"
-      redirect_to about_user_path(@user)
+      redirect_to newsfeed_user_path(@user)
     else
       flash.now[:danger] = "Please correct errors and resubmit the form"
       render :new
@@ -38,10 +38,27 @@ class UsersController < ApplicationController
   def timeline
     @post = Post.new
     @comment = Comment.new
-    @posts = Post.includes(:user, :likes, :comments => [:author, :likes]).order(created_at: :desc)
+    @posts = Post.includes(:user, :likes, :comments => [:author, :likes])
+                 .where(user_id: @user.id).order(created_at: :desc)
     @user = User.find(params[:id])
     @friends = @user.friends
     @photos = @user.photos
+  end
+
+  def newsfeed
+    @post = Post.new
+    @comment = Comment.new
+    @posts = Post.includes(:likes, :user => [:profile_photo], :comments => [:author, :likes])
+                 .where(user_id: current_user.friends.pluck(:id))
+                 .order(created_at: :desc)
+    @photos = Photo.includes(:user => [:profile_photo], :comments => [:author])
+                   .where(user_id: current_user.friends.pluck(:id))
+                   .order(created_at: :desc)
+    @comments = Comment.includes(:author).where(user_id: current_user.friends.pluck(:id))
+    @likes = Like.includes(:initiated_user).where(user_id: current_user.friends.pluck(:id))
+    @articles = @posts + @photos
+    @articles = @articles.sort_by(&:created_at).reverse
+    @activities = (@articles + @comments + @likes).sort_by(&:created_at).reverse
   end
 
   def friends

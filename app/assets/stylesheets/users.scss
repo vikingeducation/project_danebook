@@ -90,6 +90,11 @@ main.users-timeline {
         height: 64px;
       }
     }
+    .timeline-image {
+      display: block;
+      margin: 10px auto 10px auto;
+      width: 80%;
+    }
     .see-more {
       text-decoration: underline;
       display: block;
@@ -161,6 +166,126 @@ main.users-timeline {
     .inline {
       display: inline-block;
     }
+  }
+  .media-body {
+    width: 100%;
+  }
+  #comment_text {
+    width: 100%;
+  }
+}
+
+main.users-newsfeed {
+  article {
+    border: 1px solid;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    .timeline-heading {
+      background-color: #eee;
+      margin: 0;
+      margin-bottom: 10px;
+    }
+    .timeline-field {
+      padding-left: 10px;
+      font-weight: bold;
+    }
+    .photo-container {
+      margin: 0 auto;
+      text-align: center;
+      img {
+        width: 64px;
+        height: 64px;
+      }
+    }
+    .timeline-image {
+      display: block;
+      margin: 10px auto 10px auto;
+      width: 80%;
+    }
+    .see-more {
+      text-decoration: underline;
+      display: block;
+      margin-top: 10px;
+    }
+    .user-image {
+      padding: 20px;
+      img {
+        width: 64px;
+        height: 64px
+      }
+      a {
+        text-decoration: underline;
+      }
+    }
+    .media {
+      padding: 10px;
+    }
+  }
+  article.post-form {
+    textarea {
+      width: 100%;
+      display: block;
+      margin: 0 auto;
+      margin-bottom: 10px;
+    }
+    .row:last-child {
+      margin-bottom: -10px;
+      button {
+        margin: 5px;
+      }
+    }
+  }
+
+  article.post {
+    padding-top: 5px;
+    .media {
+      img {
+        width: 64px;
+        height: 64px;
+      }
+      padding-left: 10px;
+      p {
+        padding: 0;
+      }
+    }
+    .post-text {
+      padding: 10px;
+    }
+    a {
+      text-decoration: underline;
+      padding-right: 5px;
+    }
+    .row:last-child {
+      margin-bottom: -10px;
+      padding: 5px;
+    }
+    .like-annotation {
+      display: block;
+      padding-top: 5px;
+    }
+    hr {
+      border-top: 1px solid #666;
+    }
+    .comment-form {
+      margin-top: 30px;
+    }
+    .cancel-link {
+      display: inline-block;
+      margin-top: 6px;
+    }
+    .inline {
+      display: inline-block;
+    }
+  }
+  .media-body {
+    width: 100%;
+    a {
+      display: block;
+    }
+  }
+  #comment_text {
+    width: 100%;
   }
 }
 

@@ -72,6 +72,24 @@ class PhotosController < ApplicationController
     end
   end
 
+  def like
+    @photo = Photo.find(params[:id])
+    unless @photo.likes.pluck(:user_id, :likable_id).include?([current_user.id, @photo.id])
+      @photo.likes << Like.new(user_id: current_user.id, likable_type: "Photo")
+    end
+    @profile = current_user.profile
+    redirect_to timeline_user_path(current_user)
+  end
+
+  def unlike
+    @photo = Photo.find(params[:id])
+    if @photo.likes.pluck(:user_id, :likable_id).include?([current_user.id, @photo.id])
+      @photo.likes.destroy(@photo.likes.where("user_id = #{current_user.id} AND likable_type = 'Photo'"))
+    end
+    @profile = current_user.profile
+    redirect_to timeline_user_path(current_user)
+  end
+
   private
   def whitelisted_photo_params
     params.require(:photo).permit(:image, :user_id)

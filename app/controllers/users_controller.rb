@@ -48,17 +48,19 @@ class UsersController < ApplicationController
   def newsfeed
     @post = Post.new
     @comment = Comment.new
-    @posts = Post.includes(:likes, :user => [:profile_photo], :comments => [:author, :likes])
-                 .where(user_id: current_user.friends.pluck(:id))
+    @posts = Post.where(user_id: current_user.friends.pluck(:id))
                  .order(created_at: :desc)
     @photos = Photo.includes(:user => [:profile_photo], :comments => [:author])
                    .where(user_id: current_user.friends.pluck(:id))
                    .order(created_at: :desc)
-    @comments = Comment.includes(:author).where(user_id: current_user.friends.pluck(:id))
-    @likes = Like.includes(:initiated_user).where(user_id: current_user.friends.pluck(:id))
     @articles = @posts + @photos
     @articles = @articles.sort_by(&:created_at).reverse
-    @activities = (@articles + @comments + @likes).sort_by(&:created_at).reverse
+    @articles = @articles.paginate(:page => params[:page], :per_page => 3)
+
+
+    @comments = Comment.includes(:author).where(user_id: current_user.friends.pluck(:id))
+    @likes = Like.includes(:initiated_user).where(user_id: current_user.friends.pluck(:id))
+    @activities = (@articles + @comments + @likes).sort_by(&:created_at).reverse.first(10)
   end
 
   def friends

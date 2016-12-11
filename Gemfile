@@ -14,6 +14,9 @@ gem 'pg_search'
 gem 'faker'
 #simple_form
 gem 'simple_form'
+#pagination
+gem 'will_paginate', '~> 3.1.0'
+gem 'will_paginate-bootstrap'
 
 # Use Puma as the app server
 gem 'puma', '~> 3.0'

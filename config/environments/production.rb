@@ -1,4 +1,4 @@
-Rails.configuration.aws_images = ENV["ENABLE_AWS"] == "TRUE"
+Rails.configuration.aws_images = ENV["AWS_ENABLE"] == "enable"
 Rails.application.configure do
   config.force_ssl = true
   # Settings specified here will take precedence over those in config/application.rb.

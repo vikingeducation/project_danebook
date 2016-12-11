@@ -41,8 +41,8 @@ class UsersController < ApplicationController
     @posts = Post.includes(:user, :likes, :comments => [:author, :likes])
                  .where(user_id: @user.id).order(created_at: :desc)
     @user = User.find(params[:id])
-    @friends = @user.friends
-    @photos = @user.photos
+    @friends = @user.friends.includes(:profile_photo)
+    @photos = Photo.includes(:comments, :user).where(user_id: @user.id)
   end
 
   def newsfeed

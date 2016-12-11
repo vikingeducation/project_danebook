@@ -6,6 +6,10 @@ body {
   font-family: $primary-font;
 }
 
+.alert {
+  margin-top: 20px;
+}
+
 .shared {
   #bg {
     background-size: 100% 300px;
@@ -57,10 +61,15 @@ body {
 }
 /* _navbar.html.erb and _navbar_homepage.html.erb */
 nav.homepage {
-  .navbar-brand {
-    color: #fff;
-    font-size: 32px;
-    padding-top: 25px;
+  .container {
+    position: relative;
+  }
+
+  .brand {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 10px;
   }
   .navbar-header {
     button {
@@ -92,6 +101,23 @@ nav {
   background-color: #2B78E4;
   .navbar-brand {
     color: #fff;
+  }
+  #query-navbar-form {
+    width: 100%;
+  }
+  #query {
+    width: 80%;
+  }
+
+  #logout {
+    margin: 10px;
+    a {
+      color: #fff;
+      text-decoration: none;
+    }
+  }
+  #search-btn {
+    margin-left: 10px;
   }
   .container {
     padding-left: 0;

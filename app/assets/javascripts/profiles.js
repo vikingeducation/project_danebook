@@ -1,14 +1,18 @@
 $(document).on('turbolinks:load', function(){
+  var validFile = true;
   $('.directUpload').find("input:file").each(function(i, elem) {
+    console.log($(this));
     var fileInput    = $(elem);
     var form         = $(fileInput.parents('form:first'));
     var submitButton = $(document).find('input[type="submit"]');
+    var imgPreview   = $("<img src='#' alt='your image' />")
+    var fileList     = $("<div class='file-list'></div>");
     var progressBar  = $("<div class='bar'></div>");
     var barContainer = $("<div class='progress'></div>").append(progressBar);
     var errorDiv     = $('#upload-errors');
     var max_size     = 2 * 1024 * 1024;
 
-    fileInput.after(barContainer);
+    fileInput.after(fileList).after(barContainer);
     fileInput.fileupload({
       fileInput:       fileInput,
       url:             form.data('url'),
@@ -18,11 +22,11 @@ $(document).on('turbolinks:load', function(){
       paramName:        'file', // S3 does not like nested name fields i.e. name="user[avatar_url]"
       dataType:         'XML',  // S3 returns XML if success_action_status is set to 201
       add: function (e, data) {
-        var validFile = true;
+        validFile = true;
         var uploadFile = data.files[0];
-        if (!(/\.(png)|(jpe?g)|(gif)|(svg)$/i).test(uploadFile.name)) {
+        if (!(/\.(png)|(jpe?g)|(gif)$/i).test(uploadFile.name)) {
           errorDiv.removeClass("hidden");
-          errorDiv.append("<p>Only web safe images allowed.</p><p>Valid formats are png, jpg/jpeg, gif, and svg</p>");
+          errorDiv.append("<p>Only web safe images allowed.</p><p>Valid formats are png, jpg/jpeg, and gif</p>");
           validFile = false;
         }
         if (uploadFile.size > (1024 * 1024)) { // 2mb
@@ -30,9 +34,31 @@ $(document).on('turbolinks:load', function(){
           errorDiv.append("<p>File too large.</p><p>Max Image size is 1MB</p>");
           validFile = false;
         }
-        if (validFile == true) {
-          data.submit();
+
+        if(validFile){
+          fileName = "<p>"+uploadFile.name+"</p>"
+          fileList.append(fileName);
+          var reader = new FileReader();
+          reader.onload = function (e) {
+            $(imgPreview).attr('src', e.target.result);
+          }
+          reader.readAsDataURL(uploadFile);
+          fileList.append(imgPreview);
         }
+
+        $(form).off().on('submit', function(e){
+          // validation code here
+          if(validFile) {
+            e.preventDefault();
+            data.submit();
+          }else{
+            fileInput.replaceWith( fileInput = fileInput.clone( true ) );
+            $('.image-upload-description').each(function(){
+              $(this).replaceWith( $(this) = $(this).clone( true ) );
+            })
+            form.off().submit();
+          }
+        });
       },
       progressall: function (e, data) {
         var progress = parseInt(data.loaded / data.total * 100, 10);
@@ -58,6 +84,7 @@ $(document).on('turbolinks:load', function(){
         // create hidden field
         var input = $("<input />", { type:'hidden', name: fileInput.attr('name'), value: url })
         form.append(input);
+        form.off().submit();
       },
       fail: function(e, data) {
         submitButton.prop('disabled', false);

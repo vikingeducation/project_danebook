@@ -1,7 +1,11 @@
 <div id="upload-errors" class="alert alert-danger hidden" role="alert">
 </div>
-<label class="btn btn-default btn-file btn-block">
-  Select Image <%= form.file_field :url, accept: "image/*" %>
-</label>
-<%= form.label :description %><br>
-<%= form.text_field :description %>
+<div class="form-group">
+  <label class="btn btn-default btn-file btn-block">
+    <strong>Click Here or Drag-and-Drop to Upload Image</strong> <%= form.file_field :url, accept: "image/*" %>
+  </label>
+</div>
+<div class="form-group">
+  <%= form.label :description, class: 'sr-only image-upload-description' %><br>
+  <%= form.text_field :description, class: "form-control", placeholder: "Enter a description (optional)"%>
+</div>

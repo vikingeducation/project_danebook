@@ -8,8 +8,8 @@
   </div>
   <div class="row">
     <section class="post-content col-xs-12">
+      <%= form_for([current_user, current_user.profile], html: { class: 'directUpload', data: { 'form-data' => (@s3_direct_post.fields), 'url' => @s3_direct_post.url, 'host' => URI.parse(@s3_direct_post.url).host } }) do |f| %>
       <div class="row">
-        <%= form_for([current_user, current_user.profile], html: { class: 'directUpload', data: { 'form-data' => (@s3_direct_post.fields), 'url' => @s3_direct_post.url, 'host' => URI.parse(@s3_direct_post.url).host } }) do |f| %>
 
         <div class="information col-md-5">
 
@@ -57,7 +57,9 @@
             <%= bf.text_area :about, class: 'form-control', rows: 9, value: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas viverra tellus nisi, id condimentum dui tristique sed. Donec luctus eros quis ante consequat sagittis. Phasellus consectetur lectus ac lectus mattis vulputate. Maecenas non risus tellus. Proin ullamcorper, ex id iaculis scelerisque, odio dui posuere purus, sit amet viverra mi nibh sit amet risus. Duis tempor pretium arcu, ut dictum justo interdum pharetra. Suspendisse vulputate pellentesque massa, eu gravida diam semper ut. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pharetra erat eget vulputate lacinia. Aenean in porta elit. Aenean egestas in urna id bibendum. Integer nec placerat metus." %>
           <% end %>
         </div>
-        <div class="col-xs-12">
+      </div>
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 image-upload-section">
           <h3>Upload New Profile Image</h3>
           <%= render partial: 'shared/forms/img_upload_form',
                      locals: {
@@ -66,11 +68,13 @@
                                build: current_user.profile.profile_gallery.images.build
                               } %>
         </div>
+      </div>
+      <div class="row">
         <div class="submit-button col-xs-12 col-md-6 col-md-offset-3">
           <%= f.submit "Save Changes", class: "btn btn-block btn-primary" %>
         </div>
-        <% end %>
       </div>
+      <% end %>
     </section>
   </div>
 </section>

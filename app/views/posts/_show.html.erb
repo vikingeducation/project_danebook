@@ -15,7 +15,16 @@
   </div>
   <div class="panel-footer">
     <a class="like">Like</a>
-    <a>Comment</a>
-    <%= link_to "Delete", user_post_delete_path(@user.id, post.id), class: "pull-right" %>
+    <%= link_to "Delete", post_delete_path(@user.id, post.id), class: "pull-right" %>
+    <%= render partial: 'comments/show', collection: post.comments, as: :comment %>
+
+    <%= form_for [post, post.comments.build] do |f| %>
+      <%= f.text_field :body,
+        placeholder: "Write a comment...",
+        class: "form-control"
+      %>
+      <%= f.submit class: "hidden" %>
+
+    <% end %>
   </div>
 </div>

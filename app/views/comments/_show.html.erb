@@ -1,0 +1,5 @@
+<div>
+  <%= link_to '', comment_delete_path(comment), class: "glyphicon glyphicon-remove-circle" if comment.user == current_user %>
+  <%= link_to comment.user.name + ":", comment.user, class: "commenter-name" %>
+  <%= comment.body %>
+</div>

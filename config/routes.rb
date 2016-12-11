@@ -1,10 +1,13 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root "users#new"
-  resources :users do
+  resources :users, shallow: true do
     resource :profile, on: :member, except: [:new, :create, :destroy, :index]
     resources :posts do
       get "delete" => "posts#destroy"
+      resources :comments do
+        get "delete" => "comments#destroy"
+      end
     end
   end
 

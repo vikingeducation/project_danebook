@@ -1,5 +1,11 @@
-<div>
-  <%= link_to '', comment_delete_path(comment), class: "glyphicon glyphicon-remove-circle" if comment.user == current_user %>
-  <%= link_to comment.user.name + ":", comment.user, class: "commenter-name" %>
-  <%= comment.body %>
+<div class="comment">
+  <div><%= link_to comment.user.name + ":", comment.user, class: "commenter-name" %></div>
+  <div class="comment-body"><%= comment.body %></div>
+  <%= link_to 'Delete', comment_delete_path(comment) if comment.user == current_user %>
+  <% if current_user_likes?(comment) %>
+    <%= link_to "Unlike", comment_unlike_path(comment), class: "like" %>
+  <% else %>
+    <%= link_to "Like", comment_like_path(comment), class: "like" %>
+  <% end %>
+  <%= render partial: 'likes/index', locals: { likes: comment.likes } %>
 </div>

@@ -14,8 +14,14 @@
     <p><%= post.body %></p>
   </div>
   <div class="panel-footer">
-    <a class="like">Like</a>
+    <% if current_user_likes?(post) %>
+      <%= link_to "Unlike", post_unlike_path(post), class: "like" %>
+    <% else %>
+      <%= link_to "Like", post_like_path(post), class: "like" %>
+    <% end %>
     <%= link_to "Delete", post_delete_path(@user.id, post.id), class: "pull-right" %>
+
+    <%= render partial: 'likes/index', locals: { likes: post.likes } %>
     <%= render partial: 'comments/show', collection: post.comments, as: :comment %>
 
     <%= form_for [post, post.comments.build] do |f| %>

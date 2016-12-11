@@ -12,10 +12,10 @@ class CommentsController < ApplicationController
     @comment.user = current_user
     if @comment.save
       flash[:success] = "Comment published!"
-      redirect_to :back
+      redirect_back(fallback_location: user_posts_path(@comment.user))
     else
       flash[:warning] = "Comment could not be published."
-      redirect_to :back
+      redirect_back(fallback_location: user_posts_path(@comment.user))
     end
   end
 

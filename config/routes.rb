@@ -5,8 +5,14 @@ Rails.application.routes.draw do
     resource :profile, on: :member, except: [:new, :create, :destroy, :index]
     resources :posts do
       get "delete" => "posts#destroy"
+      get "likes" => "likes#index"
+      get "like" => "likes#create"
+      get "unlike" => "likes#destroy"
       resources :comments do
         get "delete" => "comments#destroy"
+        get "likes" => "likes#index"
+        get "like" => "likes#create"
+        get "unlike" => "likes#destroy"
       end
     end
   end

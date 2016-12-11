@@ -12,26 +12,12 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-fileupload/basic
 //= require bootstrap
 //= require conversation_forms
 //= require turbolinks
 //= require_tree .
-// $(function(){
-//   $('.show-cf').hide();
-//   $('.remove-cf').on('click', function(){
-//     $('#conversational-form').hide();
-//     $(this).hide("slide", function() {
-//       $('.show-cf').show();
-//     })
-//   });
-//   $('.show-cf').on('click', function(){
-//     $('#conversational-form').show();
-//     $(this).hide("slide", function() {
-//       $('.remove-cf').show();
-//     })
-//   });
-//
-// })
+
 
 $(document).on('turbolinks:load', function(){
   if ($(".cf-main-form")[0]){

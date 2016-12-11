@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  after_create :set_up_profile_gallery
+
   has_one :profile, inverse_of: :user, dependent: :destroy
   accepts_nested_attributes_for :profile, reject_if: :all_blank
 
@@ -8,6 +10,8 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :liked_posts, through: :likes, source: :post
+
+  has_many :galleries
 
   before_save :format_input
 
@@ -37,6 +41,10 @@ private
       begin
         self[:token] = SecureRandom.urlsafe_base64
       end while User.exists?(token: self[:token])
+    end
+
+    def set_up_profile_gallery
+      self.galleries.create(title: "Profile Images")
     end
 
 end

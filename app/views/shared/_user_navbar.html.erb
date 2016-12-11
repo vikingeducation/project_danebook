@@ -5,7 +5,7 @@
     </div>
     <h1 class="profile-username"><%= format_user_name(user) %></h1>
     <section class="profile-img">
-      <img src="https://s3.amazonaws.com/viking_education/web_development/web_app_eng/harry_potter_small.jpg" alt="profile">
+      <img src="<%= render_profile_img(user.profile) %>" alt="profile">
     </section>
     <section class="col-xs-12 profile-nav">
       <button type="button" aria-expanded="false" class="navbar-toggle">

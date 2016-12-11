@@ -1,0 +1,7 @@
+<div id="upload-errors" class="alert alert-danger hidden" role="alert">
+</div>
+<label class="btn btn-default btn-file btn-block">
+  Select Image <%= form.file_field :url, accept: "image/*" %>
+</label>
+<%= form.label :description %><br>
+<%= form.text_field :description %>

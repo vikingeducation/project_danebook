@@ -9,7 +9,8 @@
   <div class="row">
     <section class="post-content col-xs-12">
       <div class="row">
-        <%= form_for [current_user, current_user.profile] do |f| %>
+        <%= form_for([current_user, current_user.profile], html: { class: 'directUpload', data: { 'form-data' => (@s3_direct_post.fields), 'url' => @s3_direct_post.url, 'host' => URI.parse(@s3_direct_post.url).host } }) do |f| %>
+
         <div class="information col-md-5">
 
           <h3>Basic Information</h3>
@@ -55,6 +56,15 @@
             <h3><%= bf.label :about, "Words To Live By" %></h3>
             <%= bf.text_area :about, class: 'form-control', rows: 9, value: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas viverra tellus nisi, id condimentum dui tristique sed. Donec luctus eros quis ante consequat sagittis. Phasellus consectetur lectus ac lectus mattis vulputate. Maecenas non risus tellus. Proin ullamcorper, ex id iaculis scelerisque, odio dui posuere purus, sit amet viverra mi nibh sit amet risus. Duis tempor pretium arcu, ut dictum justo interdum pharetra. Suspendisse vulputate pellentesque massa, eu gravida diam semper ut. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pharetra erat eget vulputate lacinia. Aenean in porta elit. Aenean egestas in urna id bibendum. Integer nec placerat metus." %>
           <% end %>
+        </div>
+        <div class="col-xs-12">
+          <h3>Upload New Profile Image</h3>
+          <%= render partial: 'shared/forms/img_upload_form',
+                     locals: {
+                               form: f,
+                               gallery: :profile_gallery,
+                               build: current_user.profile.profile_gallery.images.build
+                              } %>
         </div>
         <div class="submit-button col-xs-12 col-md-6 col-md-offset-3">
           <%= f.submit "Save Changes", class: "btn btn-block btn-primary" %>

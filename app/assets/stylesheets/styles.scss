@@ -64,6 +64,7 @@ body {
 @import 'partials/profile';
 @import 'partials/gallery';
 @import 'partials/animations';
+@import 'partials/form_components';
 
 
 input.invalid {
@@ -78,7 +79,6 @@ input.invalid {
   .submit-button {
 
     .btn{
-    padding: 20px 0;
       font-size:24px;
     }
 

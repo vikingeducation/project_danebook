@@ -56,7 +56,7 @@ module ApplicationHelper
         end
       end
     else
-      "<h4>Image Uploading disabled by admin</h4>"
+      "<h4>Image Uploading disabled by admin</h4>".html_safe
     end
   end
 end

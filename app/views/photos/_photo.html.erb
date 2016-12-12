@@ -1,4 +1,4 @@
-<article class="post">
+<article class="photo" data-id="<%= p.id %>">
   <div class="row">
     <div class="col-xs-12">
       <div class="media">
@@ -25,7 +25,7 @@
     <hr>
     <%= render partial: 'posts/comments', locals: {p: p, comments: p.comments } %>
 
-    <%= render partial: 'comments/comment_form', locals: {post: p, comment: @comment} %>
+    <%= render partial: 'comments/comment_photo_form', locals: {photo: p, comment: @comment} %>
 
   </div>
 </article>

@@ -2,7 +2,7 @@ class User < ApplicationRecord
   before_create :generate_token
   has_secure_password
   has_one :profile, inverse_of: :user, dependent: :destroy
-  has_many :authored_posts, foreign_key: :author_id, class_name: "Post"
+  has_many :authored_posts, class_name: "Post",foreign_key: :author_id
   has_many :liked_posts, foreign_key: :liker_id, class_name: "Post"
 
   accepts_nested_attributes_for :profile

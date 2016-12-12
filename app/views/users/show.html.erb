@@ -255,10 +255,12 @@
                 Post
               </h4>
           </header>
-          <%= form_for @post do |f| %>
+          <%= form_for @user do |f| %>
+          <%= f.fields_for @post do |ph| %>
             <div class="post-body">
               <div class="form-group">
-                <%= f.text_area :body, class: "form-control", placeholder: "Tell the world what's on yer mind..." %>
+                <%= ph.text_area :body, class: "form-control", placeholder: "Tell the world what's on yer mind..." %>
+                <% end %>
               </div>
             </div>
             <div class="nav-footer">

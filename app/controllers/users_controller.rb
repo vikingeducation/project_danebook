@@ -3,6 +3,7 @@ class UsersController < ApplicationController
   before_action :require_logged_out, :only => [:new, :create]
 
   def new
+    reset_session
     @user = User.new
   end
 
@@ -52,7 +53,6 @@ class UsersController < ApplicationController
             :password,
             :password_confirmation,
             :remember_me,
-            authored_posts_attributes: [:body, :id, :author_id],
             profile_attributes: [
               :user_id,
               :birthday, 
@@ -62,7 +62,9 @@ class UsersController < ApplicationController
               :city,
               :about_me,
               :words_to_live_by,
-              :telephone])
+              :telephone],
+            post_attributes: [
+              :body])
   end
 
 end

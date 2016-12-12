@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   root "users#new"
   resources :users, shallow: true do
     resource :profile, on: :member, except: [:new, :create, :destroy, :index]
+    get "friend" => "friends#create"
+    get "unfriend" => "friends#destroy"
     resources :posts do
       get "delete" => "posts#destroy"
       get "likes" => "likes#index"

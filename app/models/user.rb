@@ -31,6 +31,9 @@ class User < ApplicationRecord
   validates :email,
             uniqueness: true
 
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+
   def generate_token
     begin
       self[:auth_token] = SecureRandom.urlsafe_base64

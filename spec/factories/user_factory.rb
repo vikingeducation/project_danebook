@@ -1,6 +1,6 @@
 FactoryGirl.define do
 
-  factory :user, aliases: [:friend] do
+  factory :user do
     sequence(:first_name) do |n|
       "foo#{n}"
     end
@@ -11,6 +11,12 @@ FactoryGirl.define do
  
     email {"#{first_name}@bar.com"}
     password "password"
+
+  end
+
+  factory :profile do 
+
+
   end
 
 end

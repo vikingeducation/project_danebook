@@ -37,6 +37,17 @@ group :development, :test do
   gem 'byebug', platform: :mri
   gem "better_errors"
   gem "binding_of_caller"
+  gem 'guard-rspec', require: false
+
+end
+
+group :development, :test do
+  gem 'rspec-rails'
+  gem 'factory_girl_rails', '~> 4.0'
+end
+
+group :test do
+  gem 'shoulda-matchers', '~> 3.1'
 end
 
 group :development do

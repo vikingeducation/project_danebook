@@ -40,4 +40,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def require_current_user
+    redirect_to login_path unless params[:user_id] == current_user.id.to_s
+  end
 end

@@ -1,0 +1,47 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="row">
+      <div class="media-left media-middle col-xs-2">
+        <a href="#">
+        <figure>
+          <img alt="User's Extra-Small Avatar" class=
+          "img-responsive" src=
+          "assets/images/harry_potter_small.jpg">
+        </figure></a>
+      </div>
+      <div class="media-body col-xs-8">
+        <a href="#">
+        <h4 class="media-heading"><%= user.profile.first_name %></h4></a>
+        <h6>Posted on Thursday <time datetime=
+        "2014-05-21"><%= post.created_at %></time></h6>
+      </div>
+    </div>
+    <div class="row">
+      <br>
+      <p class="col-xs-12"><%= post.body %></p>
+
+    </div>
+  </div>
+  <div class="panel-footer">
+    <div class="row">
+      <div class="col-xs-1">
+
+
+        <%= link_to "Like", user_post_likes_path(user, post), method: :post %>
+
+
+
+
+
+      </div>
+      <div class="col-xs-2">
+        <a href="#">Comment</a>
+      </div>
+      <div class="col-xs-1 col-xs-offset-7">
+        <% if current_user.id == @user.id %>
+        <%= link_to "Delete", { :controller => 'posts', :action => 'destroy', :id => post.id }, method: :delete, data: { confirm: 'Delete Post?' } %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  </div>

@@ -5,8 +5,18 @@ Rails.application.routes.draw do
   resources :users do
     resource :profile
     resource :timeline, only: [:show]
-    resource :posts, only: [:new, :create, :destroy]
+    resources :posts, only: [:new, :create, :destroy] do
+      resources :likes, only: [:create, :destroy], :defaults => { :likeable => 'Post' } #only temporary!
+    end
+
   end
+
+  #
+  # resources :comments do
+  #   resources :likes, only: [:create, :destroy], :defaults => { :likeable => 'Comment' }
+  # end
+
+  # resources :likes, :defaults => { :likeable => 'Like' }
 
   resource :session, only: [:new, :create, :destroy]
 
@@ -15,19 +25,3 @@ Rails.application.routes.draw do
   get 'logout' => 'sessions#destroy'
 
 end
-
-
-#
-# Rails.application.routes.draw do
-
-
-#   root   'static_pages#home'
-#   get    '/help',    to: 'static_pages#help'
-#   get    '/about',   to: 'static_pages#about'
-#   get    '/contact', to: 'static_pages#contact'
-#   get    '/signup',  to: 'users#new'
-#   get    '/login',   to: 'sessions#new'
-#   post   '/login',   to: 'sessions#create'
-#   delete '/logout',  to: 'sessions#destroy'
-#   resources :users
-# end

@@ -1,28 +1,10 @@
 class ProfilesController < ApplicationController
-
     before_action :require_login, :except => [:show ]
-    # skip_before_action :require_login, :only => [:new, :create]
-
-    def new
-      #
-    end
-
-    def index
-
-    end
+    before_action :require_current_user, :only => [:edit, :update, :destroy]
 
     def show
       @user = User.find(params[:user_id])
-      @profile = current_user.profile
-    end
-
-    def new
-      # @user = User.new
-      # @user.build_profile
-    end
-
-    def create
-
+      @profile = @user.profile
     end
 
     def edit
@@ -31,27 +13,25 @@ class ProfilesController < ApplicationController
     end
 
     def update
-      @user = User.find(params[:user_id])
-      @profile = @user.profile
+      @profile = current_user.profile
       if @profile.update_attributes(whitelisted_params)
         flash[:success] = "Profile Updated"
-        redirect_to user_profile_url @user
+        redirect_to user_profile_url current_user
       else
         flash[:error] = "Try again"
         render :edit
       end
     end
 
+    def destroy
 
+    end
 
     private
-
-
       def whitelisted_params
-        params.require(:profile).permit( :motto, :college, :residing, :phone, :home_town, :about,
+        params.require(:profile).permit( :motto, :college, :residing, :phone, :hometown, :about,
                                        :gender,
                                        :first_name,
                                        :last_name)
       end
-
 end

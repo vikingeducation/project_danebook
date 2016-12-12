@@ -1,6 +1,4 @@
 class UsersController < ApplicationController
-
-  #before_action :require_login, :except => [:new, :create]
   skip_before_action :require_login, :only => [:new, :create, :index, :show]
 
   def index
@@ -12,8 +10,12 @@ class UsersController < ApplicationController
   end
 
   def new
-    @user = User.new
-    @user.build_profile
+    if signed_in_user?
+      redirect_to user_timeline_path current_user
+    else
+      @user = User.new
+      @user.build_profile
+    end
   end
 
   def create

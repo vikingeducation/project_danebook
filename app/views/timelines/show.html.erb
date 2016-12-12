@@ -144,8 +144,13 @@
           <!--  -->
           <!--  -->
 
+          <% if current_user.id == @user.id %>
+            <%= render 'posts/post_form' %>
+          <% end %>
 
-          <%= render 'posts/post_form' %>
+        <% @posts.each do |post| %>
+          <%= render partial: 'display_post', locals: { user: @user, post: post } %>
+        <% end %>
 
 
 
@@ -198,6 +203,11 @@
           </div><!--  -->
           <!-- END OF "FIRST COMMENT BOX" (BOX 2)-->
           <!--  -->
+
+
+
+
+          <!--
           <div class="panel panel-default">
             <div class="panel-body">
               <div class="row">
@@ -227,8 +237,8 @@
                 Excepteur sint occaecat cupidatat non proident, sunt in culpa
                 qui officia deserunt mollit anim id est laborum.</p>
               </div>
-            </div>
-            <div class="panel-footer">
+            </div> -->
+            <!-- <div class="panel-footer">
               <div class="row">
                 <div class="col-xs-1">
                   <a href="#">Like</a>
@@ -246,10 +256,11 @@
                 </div>
               </div>
             </div>
-          </div><!--  -->
+          </div> -->
           <!-- END OF "SECOND COMMENT BOX" (BOX 3)-->
           <!--  -->
-          <!-- heynow -->
+
+          <hr>
           <div class="panel panel-default">
             <div class="panel-body">
               <div class="row">

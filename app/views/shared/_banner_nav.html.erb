@@ -6,16 +6,16 @@
 
                 <!-- <img alt="Large User Avatar" class="img-thumbnail img-responsive" src="assets/images/harry_potter_small.jpg"> -->
                 <a href="<%= logout_path %>">
-                    <h3 class="text-center"><%= current_user.profile.first_name || "" %></h3>
+                    <h3 class="text-center"><%= @user.profile.first_name || "" %></h3>
                 </a>
             </div>
         </div>
     </section>
     <section aria-label="..." class="row mid-nav" role="group">
 
-        <a class="btn btn-default col-sm-offset-1 col-sm-2" href="<%= user_timeline_path  %>" role="button">Timeline</a>
+        <a class="btn btn-default col-sm-offset-1 col-sm-2<%= ' active' if current_page?(user_timeline_path) %>" href="<%= user_timeline_path  %>" role="button">Timeline</a>
 
-        <a class="btn btn-default col-sm-2" href="<%= user_profile_path  %>" role="button">About</a>
+        <a class="btn btn-default col-sm-2<%= ' active' if current_page?(user_profile_path) %>" href="<%= user_profile_path  %>" role="button">About</a>
 
         <a class="btn btn-default col-sm-2" href="#" role="button">Photos<span class="badge">123</span>
         </a>
@@ -23,8 +23,10 @@
         <a class="btn btn-default col-sm-2" href="#" role="button">Friends<span class="badge">542</span>
         </a>
 
+
+
         <% if current_user.id == @user.id %>
-          <a class="btn btn-default col-sm-2 active" href="<%= edit_user_profile_path %>" role="button">Edit Profile</a>
+          <a class="btn btn-default col-sm-2<%= ' active' if current_page?(edit_user_profile_path) %>" href="<%= edit_user_profile_path %>" role="button">Edit Profile</a>
         <% end %>
     </section>
 </header>

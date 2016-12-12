@@ -3,7 +3,7 @@
     <h4 class="panel-title text-center">Post</h4>
   </div>
   <div class="panel-body">
-    <%= form_for [@user, @post ] do |post_builder|  %>
+    <%= form_for [@user, @post] do |post_builder|  %>
   <h3><%= post_builder.label :body, label: false %></h3>
       <%= post_builder.text_area :body, cols: "30", rows: "10" %>
 

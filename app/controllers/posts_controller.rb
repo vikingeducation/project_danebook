@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
 
   skip_before_action :require_login, only: [:show, :index]
+  # before_action :require_current_user, :only => [:create]
 
   def new
     @post = Post.new
@@ -9,20 +10,24 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(whitelisted_params)
     if @post.save
-      redirect_to user_timeline_path
+      flash[:success] = "Post created!"
     else
-      # render :
+      flash[:error] = "Try again"
     end
-
+    redirect_to user_timeline_path
   end
 
   def edit
   end
 
   def show
+
   end
 
   def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect_to user_timeline_path
   end
 
   def update

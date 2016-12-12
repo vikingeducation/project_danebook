@@ -1,63 +1,51 @@
-- restrict edit path on the route level
-
-
-TIMELINE
-
-
-
   POST(deletable, should destroy all it's comments & likes)
-    body:text
-
-
+    -body:text
+    -like_count: integer
 
   COMMENT(deletable, should destroy all it's likes)
-    -linked to user
-    -linked to post
+    -body:text
+    -like_count: integer
+
+
+
 
   LIKE(deletable)
-    -linked to user
-    -linked to post/comment
+    t.integer: user_id  AKA liker
+    t.integer: comment / post
+
+  -likeable_id:integer
+  -likeable_type:string
+
+  add_index :likes, [:likeable_type, :likeable_id]
+
+
+
+model:
+belongs_to :commentable, :polymorphic => true
+
+##
+class Comment < ActiveRecord::Base
+  has_many :likes, :as => :likeable
+end
+
+class Post < ActiveRecord::Base
+  has_many :likes, :as => :likeable
+end
 
 
 
 
+TODO:
+    http://localhost:3000/users/ path is broken
+    You must be logged into your own account to post on your timeline
+
+    Timelines render all Posts for that User
+
+    Users can "like" posts by clicking the "like" link
+
+Posts display the total number of Likes
+
+Posts display the first few names of who liked them
 
 
-
-
-
-
-
-
-
-
-
-SIGN UP - user#new
-    --->EDIT PAGE - profile#edit (with :birthday, :email) and the rest to fill out
-
-        --->ABOUT PAGE - profile#edit(with :birthday, :email) and the rest to fill out
-        --->ABOUT PAGE - profile#show
-
-
-
-TO DOS:
-
-  -Implement validations on database level
-
-  -let non-signed in users view other's pages
-      optional(allow user to hide their profile)
-
-  -change birthday defaults!
-
-  -titilize user's names
-
-
-
-  -#whitelist valid letters (ie no numbers/symbols)
-  -Include this on edit?
-
-
-
-
-  -Refactor html/css
-  -Put things into partials
+-add indexes

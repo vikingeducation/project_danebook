@@ -1,38 +1,10 @@
 <div class="panel panel-default">
   <div class="panel-heading">
     <h3 class="panel-title">
-      Friends <span class="badge">542</span>
+      Friends <span class="badge"><%= user.friended_users.count %></span>
     </h3>
   </div>
   <div class="panel-body">
-    <div class="flex-flow">
-      <div class="text-center">
-        <div class="hundred-px salmon"></div>
-        <a href="#">Ron Weasley</a>
-      </div>
-      <div class="text-center">
-        <div class="hundred-px salmon"></div>
-        <a href="#">Ginny Weasley</a>
-      </div>
-      <div class="text-center">
-        <div class="hundred-px salmon"></div>
-        <a href="#">Hermione G.</a>
-      </div>
-      <div class="text-center">
-        <div class="hundred-px salmon"></div>
-        <a href="#">paragraph text</a>
-      </div>
-      <div class="text-center">
-        <div class="hundred-px salmon"></div>
-        <a href="#">paragraph text</a>
-      </div>
-      <div class="text-center">
-        <div class="hundred-px salmon"></div>
-        <a href="#">paragraph text</a>
-      </div>
-    </div>
-    <p class="text-center">
-      <a href="friends.html">See More Friends</a>
-    </p>
+    <%= list_friends_of(user) %>
   </div>
 </div>

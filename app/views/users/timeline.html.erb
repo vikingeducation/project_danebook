@@ -61,7 +61,7 @@
 
           <% if current_user_page %>
             <!-- Article Post-form -->
-            <%= simple_form_for @post do |f| %>
+            <%= simple_form_for @post, :remote => true do |f| %>
             <article class="post-form">
               <div class="row timeline-heading">
                 <div class="col-xs-12 ">

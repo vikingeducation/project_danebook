@@ -5,11 +5,16 @@ class CommentsController < ApplicationController
     @comment = Comment.new(whitelisted_comments_params)
     if @comment.save
       flash[:success] = "Successfully commented on the post"
-      User.delay.send_comment_email(@comment.commentable.user_id)
+      # User.delay.send_comment_email(@comment.commentable.user_id)
+      respond_to do |format|
+        format.html { redirect_to timeline_user_path(current_user) }
+        format.js { render :comment_create }
+      end
     else
       flash[:danger] = "Unable to comment on the post"
+      redirect_to timeline_user_path(current_user)
     end
-    redirect_to timeline_user_path(current_user)
+
   end
 
   def destroy

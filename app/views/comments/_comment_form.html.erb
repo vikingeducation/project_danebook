@@ -1,4 +1,4 @@
-<%= simple_form_for [post, comment], class: "comment_form" do |c| %>
+<%= simple_form_for [post, comment], class: "comment_form", remote: true do |c| %>
   <%= c.input :text, label: false, placeholder: "Write a comment", :input_html => { :rows => 3 } %>
   <%= c.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
   <%= c.input :commentable_id, :as => :hidden, :input_html => { :value => post.id } %>

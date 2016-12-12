@@ -48,10 +48,10 @@ class UsersController < ApplicationController
   def newsfeed
     @post = Post.new
     @comment = Comment.new
-    @posts = Post.where(user_id: current_user.friends.pluck(:id))
+    @posts = Post.where(user_id: (current_user.friends.pluck(:id) << current_user.id))
                  .order(created_at: :desc)
     @photos = Photo.includes(:user => [:profile_photo], :comments => [:author])
-                   .where(user_id: current_user.friends.pluck(:id))
+                   .where(user_id: (current_user.friends.pluck(:id) << current_user.id))
                    .order(created_at: :desc)
     @articles = @posts + @photos
     @articles = @articles.sort_by(&:created_at).reverse

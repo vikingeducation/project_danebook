@@ -1,0 +1,4 @@
+var commentRow = "<%= j( render partial: 'comments/comment', locals: {comment: @comment, p:  @comment.commentable_id} ) %>"
+var commentForm = $('[data-id=<%=@comment.commentable_id%>].post').find('.simple_form.new_comment');
+$(commentRow).hide().insertBefore(commentForm).slideDown(1000);
+$('[data-id=<%=@comment.commentable_id%>].post').find('#comment_text').val("");

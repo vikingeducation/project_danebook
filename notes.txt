@@ -1,3 +1,9 @@
+#check out shallow nesting --> http://guides.rubyonrails.org/routing.html
+~~
+# the explicit way
+ get 'users/sample' => 'users#sample', :as => 'sample_users'
+~~
+
   POST(deletable, should destroy all it's comments & likes)
     -body:text
     -like_count: integer

@@ -6,9 +6,10 @@ class TimelinesController < ApplicationController
     @user = User.find(params[:user_id])
     @posts = @user.posts
     @post = Post.new
-    @like = Like.new
     @post.user_id = current_user.id
   end
+
+
   #
   # def whitelisted_params
   #   params.require(:user).permit(:email,

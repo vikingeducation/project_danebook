@@ -5,10 +5,12 @@ Rails.application.routes.draw do
   resources :users do
     resource :profile
     resource :timeline, only: [:show]
-    resources :posts, only: [:new, :create, :destroy] do
-      resources :likes, only: [:create, :destroy], :defaults => { :likeable => 'Post' } #only temporary!
-    end
+    resources :posts, only: [:new, :create, :destroy]
+  end
 
+
+  resources :posts, only: [:new, :create, :destroy] do
+      resource :like, only: [:create, :destroy], :defaults => { :likeable => 'Post' } #only temporary!
   end
 
   #

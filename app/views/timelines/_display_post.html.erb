@@ -26,8 +26,15 @@
     <div class="row">
       <div class="col-xs-1">
 
+  <% if post.likes.find_by_user_id(current_user) %>
+  <%= link_to "Unlike", post_like_path(post), method: :delete %>
+  <% else %>
+  <%= link_to "Like", post_like_path(post), method: :post %>
+  <% end %>
 
-        <%= link_to "Like", user_post_likes_path(user, post), method: :post %>
+  <%= "#{pluralize(post.like_count, "like")}" if post.like_count > 0 %>
+
+
 
 
 

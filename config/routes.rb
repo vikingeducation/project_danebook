@@ -10,14 +10,16 @@ Rails.application.routes.draw do
   end
 
   resources :posts, only: [:new, :create, :destroy] do
-      resource :like, only: [:create, :destroy], :defaults => { :likeable => 'Post' }
-      resource :comment, :defaults => { :commentable => 'Post' }
+      resource :like, only: [:create, :destroy], defaults: { likeable: 'Post' }
+      resource :comment, defaults: { commentable: 'Post' }
   end
 
   resources :comments do
-    resource :like, only: [:create, :destroy], :defaults => { :likeable => 'Comment' }
+    resource :like, only: [:create, :destroy], defaults: { likeable: 'Comment' }
     # resource :comment, :defaults => { :commentable => 'Comment' }
   end
+
+  resources :friendings, only: [:create, :destroy]
 
   get 'login' => 'sessions#new'
   get 'logout' => 'sessions#destroy'

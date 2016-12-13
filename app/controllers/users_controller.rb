@@ -38,7 +38,7 @@ class UsersController < ApplicationController
   def timeline
     @post = Post.new
     @comment = Comment.new
-    @posts = Post.includes(:user, :likes, :comments => [:author, :likes])
+    @posts = Post.includes(:likes, :user, :comments => [{:author => :profile_photo}, :likes])
                  .where(user_id: @user.id).order(created_at: :desc)
     @user = User.find(params[:id])
     @friends = @user.friends.includes(:profile_photo)
@@ -50,7 +50,7 @@ class UsersController < ApplicationController
     @comment = Comment.new
     @posts = Post.where(user_id: (current_user.friends.pluck(:id) << current_user.id))
                  .order(created_at: :desc)
-    @photos = Photo.includes(:user => [:profile_photo], :comments => [:author])
+    @photos = Photo.includes(:comments, :likes, :user => [:profile_photo])
                    .where(user_id: (current_user.friends.pluck(:id) << current_user.id))
                    .order(created_at: :desc)
     @articles = @posts + @photos
@@ -58,14 +58,14 @@ class UsersController < ApplicationController
     @articles = @articles.paginate(:page => params[:page], :per_page => 3)
 
 
-    @comments = Comment.includes(:author).where(user_id: current_user.friends.pluck(:id))
+    @comments = Comment.includes(:author => [:profile_photo]).where(user_id: current_user.friends.pluck(:id))
     @likes = Like.includes(:initiated_user).where(user_id: current_user.friends.pluck(:id))
     @activities = (@articles + @comments + @likes).sort_by(&:created_at).reverse.first(10)
   end
 
   def friends
-    @user = User.includes(:initiated_friends).find(params[:id])
-    @friends = @user.friends
+    @user = User.includes(:initiated_friends => [:profile_photo]).find(params[:id])
+    @friends = @user.friends.includes(:profile_photo)
     @pending_friends = @user.initiated_friends - @friends
   end
 

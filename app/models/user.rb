@@ -11,11 +11,17 @@ class User < ApplicationRecord
   validates :password, length: { minimum: 6 }, allow_nil: true
 
   has_one :profile, inverse_of: :user
+
   has_many :posts
-  has_many :likes
+  has_many :comments, foreign_key: :author_id
+  has_many :likes, foreign_key: :liker_id
   has_many :liked_posts, through: :likes, source: :posts
 
   accepts_nested_attributes_for :profile
+
+  def full_name
+    self.first_name + ' ' + self.last_name
+  end
 
   def generate_token
     begin

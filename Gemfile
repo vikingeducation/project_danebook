@@ -38,6 +38,9 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
   gem 'jazz_fingers'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails', '~> 4.0'
+  gem 'shoulda-matchers'
 end
 
 group :development do
@@ -49,6 +52,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'faker'
   gem 'better_errors'
+  gem 'guard-rspec'
 end
 
 group :production do 

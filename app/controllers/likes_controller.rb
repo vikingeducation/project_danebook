@@ -8,4 +8,10 @@ class LikesController < ApplicationController
   def destroy
   end
 
+  private
+
+  def whitelisted_params
+    params.require(:post_id)
+  end
+
 end

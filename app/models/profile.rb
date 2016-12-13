@@ -6,6 +6,6 @@ class Profile < ApplicationRecord
   validates :birth_day, inclusion: { in: 1..31 }
   validates :birth_year, inclusion: { in: 1916..2016 }
   validates :gender, inclusion: %w(Male Female)
-  
+  validates :user, presence: true  
 
 end

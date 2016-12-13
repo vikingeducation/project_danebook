@@ -18,9 +18,10 @@ class PostsController < ApplicationController
   end
 
   def index
-    @user = current_user
+    @user = User.find(params[:user_id])
     @posts = @user.posts.reversed
     @post = @user.posts.build
+    @comment = @post.comments.build
   end
 
   def show

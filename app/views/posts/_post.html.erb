@@ -11,9 +11,10 @@
             <div class="row">
               <div class="media-left media-middle col-xs-2">
                 <a href="#">
-                <figure>
-                  <%= image_tag "harry_potter_small.jpg", { class: 'img-responsive' } %>
-                </figure></a>
+                  <figure>
+                    <%= image_tag "harry_potter_small.jpg", { class: 'img-responsive' } %>
+                  </figure>
+                </a>
               </div>
               <div class="media-body col-xs-8">
                 <a href="#">
@@ -30,16 +31,26 @@
           <div class="panel-footer">
             <div class="row">
               <div class="col-xs-1">
-                <a href="#">Like</a>
-                <%#= link_to "Like", user_post_likes_path %>
-              </div>
-              <div class="col-xs-2">
-                <a href="#">Comment</a>
+                <!-- <a href="#">Like</a> -->
+                <%#= display_likes %>
+                <%= link_to 'Like', user_post_likes_path(user, p), method: :post %>
               </div>
               <div class="col-xs-1 col-xs-offset-7">
-                <%= link_to "Delete", user_post_likes_path(user, p), method: :delete %>
+                <%= display_delete(user,p) %>
               </div>
             </div>
+          </div>
+          <div class="panel-body">
+            <% if p.comments.any? %>
+              <% p.comments.each do |comment| %>
+                <h4><%= comment.author.full_name %></h4>
+                <p><%= comment.body %></p>
+              <% end %>
+            <% end %>
+            <%= form_for [user, p, @comment] do |c| %>
+              <%= c.text_area :body %>
+              <%= c.submit %>
+            <% end %>
           </div>
         </div>
 

@@ -3,7 +3,10 @@ Rails.application.routes.draw do
   root 'users#new'
 
   resources :users do
-    resources :posts
+    resources :posts do
+      resources :comments
+      resources :likes, only: [:create, :destroy]
+    end
   end
   
   resource :session, only: [:new, :create, :destroy]

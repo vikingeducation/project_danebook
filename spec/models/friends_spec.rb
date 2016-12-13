@@ -4,10 +4,19 @@ describe User do
   let ( :user ) { build(:user) }
 
   describe "validations" do 
-    it 'Only Unique friends' do
-      f = Friend.new << user
-      f2 = Friend.new << user
-      expect(f2).to be_valid
+    it 'Can create friends' do
+      friendship = build(:friend)
+      expect(friendship).to be_valid  
     end
+
+    it 'Only Unique friends' do
+      f1 = create(:user)
+      f2 = create(:user)
+      create(:friend, friender: f1, friendee: f2 )
+      friendship = build(:friend, friender: f1, friendee: f2 )
+      expect(friendship).to_not be_valid  
+    end
+
+
   end
 end

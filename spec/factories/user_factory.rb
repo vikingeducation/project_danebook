@@ -1,6 +1,6 @@
 FactoryGirl.define do
 
-  factory :user do
+  factory :user, aliases: [:friender, :friendee] do
     sequence(:first_name) do |n|
       "foo#{n}"
     end

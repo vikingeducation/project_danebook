@@ -22,6 +22,9 @@ group :development, :test do
   gem 'jazz_fingers'
   gem 'pry-rails'
   gem 'better_errors'
+  gem 'rspec-rails'
+  gem 'guard-rspec', require: false
+  gem 'factory_girl_rails'
 end
 
 group :development do

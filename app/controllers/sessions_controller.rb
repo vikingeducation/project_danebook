@@ -37,13 +37,20 @@ class SessionsController < ApplicationController
       def validate_credentials
         case sessionizer.validate_credentials
         when "locked"
+          flash[:danger] =  [
+                              "Your account has been locked for due to too many incorrect login attempts.",
+                              "You may try again in #{(Time.now - @user.last_attempt).strftime("%M")} minutes"
+                            ]
           redirect_to root_path
         when "valid"
           sign_in(@user, params[:remember] == "true")
           redirect_to users_path
         else
+          flash.now[:danger] = [
+                                  "Incorrect Credentials",
+                                  "Warning: #{5 - @user.failed} attempts remaining before your account will be put into lockdown mode"
+                                ]
           render :new
         end
       end
-
-end
+    end

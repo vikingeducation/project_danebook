@@ -1,8 +1,6 @@
 class Sessionizer
   attr_reader :params
 
-  CHAR_MAP = 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789!@#$%^&*'
-
   def initialize(user, params)
     @user = user
     @params = params
@@ -10,11 +8,6 @@ class Sessionizer
 
   def validate_credentials
     if locked
-
-      flash[:danger] =  [
-                          "Your account has been locked for due to too many incorrect login attempts.",
-                          "You may try again in #{(Time.now - @user.last_attempt).strftime("%M")} minutes"
-                        ]
 
       return "locked"
 
@@ -26,13 +19,15 @@ class Sessionizer
 
     else
 
-      flash.now[:danger] = ["Incorrect Credentials"]
       failed_attempt
+
       "invalid"
+
     end
   end
 
   private
+    CHAR_MAP = 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789!@#$%^&*'
 
     def create_jwt
       data = {auth: 0, id: @user.id, browser: ""}
@@ -55,13 +50,12 @@ class Sessionizer
     end
 
     def failed_attempt
-      set_failed
-      @user.last_attempt = Time.now
-      if locked
-        flash[:danger] = ["Too many failed attempts.","Your account has been locked for 1 hour for security purposes"]
-      elsif @user.failed >= 2
-        flash[:danger] = ["Warning: #{5 - @user.failed} attempts remaining before your account will be put into lockdown mode"]
+      if time_limit
+        @user.failed += 1
+      else
+        @user.failed = 1
       end
+      @user.last_attempt = Time.now
     end
 
     def locked
@@ -71,14 +65,6 @@ class Sessionizer
     def reset_failed
       @user.failed = 0
       @user.last_attempt = nil
-    end
-
-    def set_failed
-      if time_limit
-        @user.failed += 1
-      else
-        @user.failed = 1
-      end
     end
 
     def time_limit

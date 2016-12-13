@@ -4,8 +4,7 @@
           <!-- Current location header -->
           <main class="row">
               <article class="col-xs-4">
-                  <%= render "/shared/about", user: @posts.first.user %>
-                  
+                  <%= render "/shared/about", user: @user %>             
                   <!-- Photos aside -->
                   <section class="post">
                       <header class="nav-post">
@@ -134,6 +133,7 @@
 
               <!-- Post Entry -->
               <article class="col-xs-8">
+              <% unless @posts.empty? %>
                   <% if @posts.first.user_id == current_user.id %>
                   <%= form_for @post, url: user_posts_path(current_user.id) do |f| %>
                   <section class="post">
@@ -155,7 +155,9 @@
                   <% else %>
                   <%= render "/shared/are_friends" %>
                   <% end %>
-                  
+                <% else %>
+                  There are no posts yet!
+                <% end %>
                  
 
                   <% @posts.each do |post| %>

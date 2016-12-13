@@ -39,7 +39,7 @@ User.create!( first_name: Faker::Name.first_name,
 puts "Creating Profiles for Users"
 User.all.each do |user|
   Profile.create!( user_id: user.id, 
-                   birthday: Faker::Date.between(40.years.ago, 10.years.ago), 
+                   birthday: Faker::Date.between(40.years.ago, 20.years.ago), 
                    gender: ["male", "female"].sample, 
                    college: Faker::Pokemon.location,
                    hometown: Faker::GameOfThrones.city,

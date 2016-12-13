@@ -6,13 +6,13 @@ class User < ApplicationRecord
   has_many :likes, foreign_key: :user_id
   has_many :comments, foreign_key: :user_id
   #selfjoin woo!
-  has_many :initiated_friendships,  :foreign_key => :friendee_id, :class_name => "Friend"
-  has_many :users_friended_by, :through => :initiated_friendships,
-                                :source => :friender
+  has_many :initiated_friendships,  foreign_key: :friendee_id, class_name: "Friend"
+  has_many :users_friended_by, through: :initiated_friendships,
+                                source: :friender
 
- has_many :recived_friendships,  :foreign_key => :friender_id, :class_name => "Friend"
- has_many :friended_users, :through => :recived_friendships,
-                                :source => :friendee
+ has_many :recived_friendships,  foreign_key: :friender_id, class_name: "Friend"
+ has_many :friended_users, through: :recived_friendships,
+                                source: :friendee
 
 
   def friends
@@ -25,8 +25,8 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :profile
 
   validates :password, 
-            :length => { :in => 8..256 }, 
-            :allow_nil => true
+            length: { in: 8..256 }, 
+            allow_nil: true
 
   validates :email,
             uniqueness: true
@@ -37,7 +37,7 @@ class User < ApplicationRecord
   def generate_token
     begin
       self[:auth_token] = SecureRandom.urlsafe_base64
-    end while User.exists?(:auth_token => self[:auth_token])
+    end while User.exists?(auth_token: self[:auth_token])
   end
 
   def regenerate_auth_token

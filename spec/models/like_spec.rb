@@ -11,8 +11,8 @@ describe Like do
     it "Can't be created on the same object twice" do 
       object = create(:post)
       user = create(:user)
-      like = create(:like, :user => user, :likeable => object)
-      like2 = build(:like, :user => user, :likeable => object)
+      like = create(:like, user: user, likeable: object)
+      like2 = build(:like, user: user, likeable: object)
       expect(like2).to_not be_valid
     end 
   end

@@ -13,8 +13,8 @@ class UsersController < ApplicationController
       flash[:success] = "Welcome to Danebook!"
       redirect_to @user
     else
-      flash.now[:danger] = "Critical Failure! This error message is useless!"
-      render :new
+      flash[:danger] = "Something went wrong!" 
+      redirect_back(fallback_location: root)
     end
   end
 

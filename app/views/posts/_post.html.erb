@@ -36,7 +36,7 @@
                 <%= link_to 'Like', user_post_likes_path(user, p), method: :post %>
               </div>
               <div class="col-xs-1 col-xs-offset-7">
-                <%= display_delete(user,p) %>
+                <%= display_post_delete(user, p) %>
               </div>
             </div>
           </div>
@@ -45,6 +45,7 @@
               <% p.comments.each do |comment| %>
                 <h4><%= comment.author.full_name %></h4>
                 <p><%= comment.body %></p>
+                <%= display_comment_delete(user, p, comment) %>
               <% end %>
             <% end %>
             <%= form_for [user, p, @comment] do |c| %>

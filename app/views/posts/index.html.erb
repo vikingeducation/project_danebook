@@ -1,8 +1,8 @@
 <section id="interior-page">
 
   <div class="container">
-    <h1>Welcome <%= @user.email %></h1>
-    <%= link_to "Sign Out", logout_path, method: :delete %>
+    <h1>Welcome <%= current_user.full_name %></h1>
+    <%= link_to "Sign Out", logout_path %>
     <hr>
   </div>
 

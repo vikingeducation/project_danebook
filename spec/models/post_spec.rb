@@ -49,4 +49,16 @@ RSpec.describe Post, type: :model do
     expect(Post.find_by_id(my_post_id).likes.map { |like| like.user_id }).not_to eq([my_user_id, my_user_id])
   end
 
+  it "can list the ids of people who like it" do
+    bob = build(:user)
+    bob.save
+    larry = build(:user)
+    larry.save
+    my_post = build(:post)
+    my_post.save
+    my_post.likes.create(user_id: bob.id)
+    my_post.likes.create(user_id: larry.id)
+    expect(my_post.likes.map { |like| like.user_id }).to eq([bob.id, larry.id])
+  end
+
 end

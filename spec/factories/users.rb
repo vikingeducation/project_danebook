@@ -9,6 +9,5 @@ FactoryGirl.define do
     last_name { "McTestFace" }
     email
     password { "testtesttest" }
-    # association :friends, factory: :friending, optional: true
   end
 end

@@ -14,15 +14,15 @@
         <div id='navbar-form' class="navbar-collapse collapse">
           <%= form_tag session_path, class: "navbar-form navbar-left" do %>
           <!-- <form action="<%= session_path %>" method="post" class='navbar-form navbar-right'> -->
-            <div class='form-group'>
-              <label for="email">Email</label>
-              <input type="text" class='form-control' id='email' name='email'>
-            </div>
-            <div class='form-group'>
-              <label for="password">Password</label>
-              <input type="password" class='form-control' id='password' name='password'>
-              <button type="submit" value='Sign in'>Log in</button>
-            </div>
+          <div class='form-group'>
+            <label for="email">Email</label>
+            <input type="text" class='form-control' id='email' name='email'>
+          </div>
+          <div class='form-group'>
+            <label for="password">Password</label>
+            <input type="password" class='form-control' id='password' name='password'>
+            <button type="submit" value='Sign in'>Log in</button>
+          </div>
           <% end %>
         </div>
       </div> <!-- col-md-5 -->
@@ -102,7 +102,6 @@
           <%= f.submit "Sign Up", class: 'btn btn-block' %>
         <% end %>
 
-        </form>
       </aside>
     </section>
 

@@ -19,7 +19,7 @@ RSpec.describe User, type: :model do
     a = build(:user, email: "special@snowflake.com")
     a.save
     b = build(:user, email: "special@snowflake.com")
-    expect(b.save).to be false
+    expect(b).not_to be_valid
   end
 
   it "is capable of friendship" do

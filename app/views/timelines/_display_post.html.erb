@@ -1,54 +1,72 @@
 <div class="panel panel-default">
-  <div class="panel-body">
-    <div class="row">
-      <div class="media-left media-middle col-xs-2">
-        <a href="#">
-        <figure>
-          <img alt="User's Extra-Small Avatar" class=
-          "img-responsive" src=
-          "assets/images/harry_potter_small.jpg">
-        </figure></a>
-      </div>
-      <div class="media-body col-xs-8">
-        <a href="#">
-        <h4 class="media-heading"><%= user.profile.first_name %></h4></a>
-        <h6>Posted on Thursday <time datetime=
-        "2014-05-21"><%= post.created_at %></time></h6>
-      </div>
-    </div>
-    <div class="row">
-      <br>
-      <p class="col-xs-12"><%= post.body %></p>
+    <div class="panel-body">
+        <div class="row">
+            <div class="media-left media-middle col-xs-2">
+                <a href="#">
+                    <figure>
+                        <img alt="User's Extra-Small Avatar" class="img-responsive" src="assets/images/harry_potter_small.jpg">
+                    </figure>
+                </a>
+            </div>
+            <div class="media-body col-xs-8">
+                <a href="#">
+                    <h4 class="media-heading"><%= user.profile.first_name %></h4>
+                </a>
+                <h6>Posted on Thursday
+                    <time datetime="2014-05-21"><%= post.created_at %></time>
+                </h6>
+            </div>
+        </div>
+        <div class="row">
+            <br>
+            <p class="col-xs-12"><%= post.body %></p>
 
+        </div>
     </div>
-  </div>
-  <div class="panel-footer">
-    <div class="row">
-      <div class="col-xs-1">
+    <div class="panel-footer">
+        <div class="row">
+            <div class="col-xs-1">
 
-  <% if post.likes.find_by_user_id(current_user) %>
-  <%= link_to "Unlike", post_like_path(post), method: :delete %>
-  <% else %>
-  <%= link_to "Like", post_like_path(post), method: :post %>
+                <% if post.likes.find_by_user_id(current_user.id) %>
+                <%= link_to "Unlike", post_like_path(post), method: :delete %>
+            <% else %>
+                <%= link_to "Like", post_like_path(post), method: :post %>
+                <% end %>
+
+                <%= "#{pluralize(post.like_count, "like")}" if post.like_count > 0 %>
+
+            </div>
+            <div class="col-xs-2">
+                <!-- comment html  -->
+            </div>
+            <div class="col-xs-1 col-xs-offset-7">
+                <% if current_user.id == user.id %>
+                <%= link_to "Delete", { :controller => 'posts', :action => 'destroy', :id => post.id }, method: :delete, data: { confirm: 'Delete Post?' } %>
+                <% end %>
+            </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <%= form_for post_comment_url(post) do |comment_builder| %>
+
+
+                    <!-- <textarea class="col-xs-1 form-control" placeholder="Write a comment..." rows="5"></textarea> -->
+                    <%= comment_builder.label :body, "Write a comment..." %>
+                    <%= comment_builder.text_area :body, cols: "50", rows: "10" %>
+                </div>
+            </div>
+            <div class="row rs30">
+                <div class="col-xs-12">
+                    <a href="#">Cancel</a>
+                    <%= comment_builder.submit "Save Comment", class: 'btn btn-success pull-right' %>
+                    <% end %>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
+
+<% post.comments.each do |comment| %>
+  <%= comment.body %>
   <% end %>
-
-  <%= "#{pluralize(post.like_count, "like")}" if post.like_count > 0 %>
-
-
-
-
-
-
-
-      </div>
-      <div class="col-xs-2">
-        <a href="#">Comment</a>
-      </div>
-      <div class="col-xs-1 col-xs-offset-7">
-        <% if current_user.id == @user.id %>
-        <%= link_to "Delete", { :controller => 'posts', :action => 'destroy', :id => post.id }, method: :delete, data: { confirm: 'Delete Post?' } %>
-        <% end %>
-      </div>
-    </div>
-  </div>
-  </div>

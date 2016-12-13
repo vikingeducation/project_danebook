@@ -4,11 +4,15 @@ class User < ApplicationRecord
   after_save { email.downcase.strip }
 
   has_many :posts, dependent: :nullify
+  has_many :comments
+
   has_one :profile, inverse_of: :user
 
 
   accepts_nested_attributes_for :profile
   has_secure_password
+
+
 
   validates :password,
   length: { minimum: 6 },

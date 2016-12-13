@@ -37,6 +37,10 @@ group :development, :test do
   gem 'byebug', platform: :mri
   gem 'better_errors'
   gem 'jazz_fingers'
+  gem 'factory_girl_rails'
+  gem 'rspec-rails'
+  gem 'guard-rspec'
+  gem 'rails-controller-testing'
 end
 
 group :development do

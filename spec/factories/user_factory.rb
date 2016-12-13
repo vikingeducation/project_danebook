@@ -14,9 +14,5 @@ FactoryGirl.define do
 
   end
 
-  factory :profile do 
-
-
-  end
 
 end

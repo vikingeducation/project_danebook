@@ -55,6 +55,11 @@ group :development do
   gem 'guard-rspec'
 end
 
+group 'test' do
+  gem 'capybara'
+  gem 'launchy'
+end
+
 group :production do 
 
   gem 'rails_12factor'

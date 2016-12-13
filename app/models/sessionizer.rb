@@ -37,6 +37,7 @@ class Sessionizer
 
       cookies[:token_key] = cookie_key
       @user.token = sql_key
+      @user.save
 
       exp = Time.now.to_i + 4 * 3600
       iss = 'Project Danbook'
@@ -56,6 +57,7 @@ class Sessionizer
         @user.failed = 1
       end
       @user.last_attempt = Time.now
+      @user.save
     end
 
     def locked
@@ -65,6 +67,7 @@ class Sessionizer
     def reset_failed
       @user.failed = 0
       @user.last_attempt = nil
+      @user.save
     end
 
     def time_limit

@@ -26,8 +26,8 @@ class User < ApplicationRecord
                                   :class_name => "Friendship"
   has_many :recieved_friends, :through => :received_friendships,
                               :source => :friend_initiator
-  has_one :profile_photo, class_name: "Photo", foreign_key: :profile_user_id
-  has_one :cover_photo, class_name: "Photo", foreign_key: :cover_user_id
+  belongs_to :profile_photo, class_name: "Photo", foreign_key: :profile_photo_id
+  belongs_to :cover_photo, class_name: "Photo", foreign_key: :cover_photo_id
 
   include PgSearch
   pg_search_scope :search,

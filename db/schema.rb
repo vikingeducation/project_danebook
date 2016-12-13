@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161210065303) do
+ActiveRecord::Schema.define(version: 20161213064431) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,8 +67,6 @@ ActiveRecord::Schema.define(version: 20161210065303) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.integer  "user_id",                        null: false
-    t.integer  "profile_user_id"
-    t.integer  "cover_user_id"
     t.integer  "likes_count",        default: 0, null: false
   end
 
@@ -88,8 +86,10 @@ ActiveRecord::Schema.define(version: 20161210065303) do
     t.text     "status"
     t.text     "about"
     t.integer  "user_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.integer  "profile_photo_id"
+    t.integer  "cover_photo_id"
     t.index ["user_id"], name: "index_profiles_on_user_id", unique: true, using: :btree
   end
 
@@ -104,6 +104,8 @@ ActiveRecord::Schema.define(version: 20161210065303) do
     t.date     "birthday",                      null: false
     t.integer  "gender_cd",                     null: false
     t.integer  "friendships_count", default: 0, null: false
+    t.integer  "profile_photo_id"
+    t.integer  "cover_photo_id"
     t.index ["auth_token"], name: "index_users_on_auth_token", unique: true, using: :btree
   end
 

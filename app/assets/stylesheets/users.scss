@@ -220,6 +220,10 @@ main.users-timeline {
 }
 
 main.users-newsfeed {
+  .profile_photo {
+    width: 64px;
+    height: 64px;
+  }
   article {
     border: 1px solid;
     margin-top: 5px;

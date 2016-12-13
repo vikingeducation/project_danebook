@@ -14,7 +14,7 @@
                 <% if @profile_photo %>
                   <%= image_tag(@profile_photo.image.url(:thumb) ) %>
                 <% else %>
-                  <%= image_tag("user_silhouette_generic.gif") %>
+                  <%= image_tag("user_silhouette_generic.gif", class: :profile_photo) %>
                 <% end %>
               </div>
               <div class="media-body">

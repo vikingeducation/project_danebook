@@ -21,9 +21,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :photos, only: [:new, :create, :show, :destroy, :update] do
+  resources :photos, only: [:new, :create, :show, :destroy] do
     get 'like', on: :member
     get 'unlike', on: :member
+    get 'profile', on: :member
+    get 'cover', on: :member
     resources :comments, only: [:create, :destroy] do
       get 'like', on: :member
       get 'unlike', on: :member

@@ -149,7 +149,7 @@
           <% end %>
 
         <% @posts.reverse.each do |post| %>
-          <%= render partial: 'display_post', locals: { user: @user, post: post } %>
+          <%= render partial: 'display_post', locals: { user: @user, post: post } if post.persisted? %>
         <% end %>
 
 

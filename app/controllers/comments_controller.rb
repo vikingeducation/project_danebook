@@ -14,14 +14,15 @@ class CommentsController < ApplicationController
   def create
     @post = Post.find(params[:post_id])
     @user = current_user
-    @comment.build(whitelisted_params)
+
+    @comment = @post.comments.build(whitelisted_params)
     @type = params[:commentable]
 
     @comment.update_attributes(user_id: @user.id,
                            commentable_id: @post.id,
                          commentable_type: @type)
-
     @comment.save
+
     redirect_to user_timeline_url(current_user)
 
 
@@ -41,6 +42,7 @@ class CommentsController < ApplicationController
   end
 
   private
+
   def whitelisted_params
     params.require(:comment).permit(:body)
   end

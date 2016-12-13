@@ -46,11 +46,11 @@
             </div>
             <div class="row">
                 <div class="col-xs-12">
-                    <%= form_for post_comment_path  do |comment_builder| %>
+                    <%= form_for [post, post.comments.build]  do |comment_builder| %>
 
                     <!-- <textarea class="col-xs-1 form-control" placeholder="Write a comment..." rows="5"></textarea> -->
                     <%= comment_builder.label :body, "Write a comment..." %>
-                    <%= comment_builder.text_area :body, cols: "50", rows: "10" %>
+                    <%= comment_builder.text_field :body, cols: "50", rows: "10" %>
                 </div>
             </div>
             <div class="row rs30">

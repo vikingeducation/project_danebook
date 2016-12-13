@@ -46,8 +46,7 @@
             </div>
             <div class="row">
                 <div class="col-xs-12">
-                    <%= form_for post_comment_url(post) do |comment_builder| %>
-
+                    <%= form_for post_comment_path  do |comment_builder| %>
 
                     <!-- <textarea class="col-xs-1 form-control" placeholder="Write a comment..." rows="5"></textarea> -->
                     <%= comment_builder.label :body, "Write a comment..." %>

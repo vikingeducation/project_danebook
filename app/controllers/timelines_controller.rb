@@ -2,6 +2,12 @@ class TimelinesController < ApplicationController
 
   before_action :require_login, :except => [:show ]
 
+  def new
+  end
+
+  def create
+  end
+
   def show
     @user = User.find(params[:user_id])
     @posts = @user.posts
@@ -10,17 +16,6 @@ class TimelinesController < ApplicationController
   end
 
 
-  #
-  # def whitelisted_params
-  #   params.require(:user).permit(:email,
-  #                                :password,
-  #                                :password_confirmation,
-  #                                { profile_attributes: [:birthday,
-  #                                  :gender,
-  #                                  :first_name,
-  #                                  :last_name]}
-  #                                )
-  # end
 
 
 end

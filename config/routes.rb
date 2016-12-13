@@ -6,21 +6,18 @@ Rails.application.routes.draw do
     resource :profile
     resource :timeline, only: [:show]
     resources :posts, only: [:new, :create, :destroy]
-    resources :comments
-  end
 
+  end
 
   resources :posts, only: [:new, :create, :destroy] do
       resource :like, only: [:create, :destroy], :defaults => { :likeable => 'Post' }
-      resource :comment, only: [:create, :destroy], :defaults => { :commentable => 'Post' }
+      resource :comment, :defaults => { :commentable => 'Post' }
   end
 
   resources :comments do
     resource :like, only: [:create, :destroy], :defaults => { :likeable => 'Comment' }
-    resource :comment, only: [:create, :destroy], :defaults => { :commentable => 'Comment' }
+    # resource :comment, :defaults => { :commentable => 'Comment' }
   end
-
-
 
   get 'login' => 'sessions#new'
   get 'logout' => 'sessions#destroy'

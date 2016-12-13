@@ -91,7 +91,7 @@ ActiveRecord::Schema.define(version: 20161211173051) do
     t.string   "hometown"
     t.string   "current_home"
     t.string   "phone"
-    t.integer  "img"
+    t.integer  "image_id"
     t.integer  "cover"
     t.boolean  "edited",       default: false
     t.datetime "created_at",                   null: false

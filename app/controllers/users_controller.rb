@@ -56,7 +56,7 @@ class UsersController < ApplicationController
                                                           :last_name,
                                                           :birthday,
                                                           :gender
-                                                        ]
+                                                         ]
                                     }
                                   )
     end

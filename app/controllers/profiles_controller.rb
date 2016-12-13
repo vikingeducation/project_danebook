@@ -62,7 +62,7 @@ class ProfilesController < ApplicationController
 
     def set_profile_img
       img = Image.where(url: params[:profile][:profile_gallery_attributes][:images_attributes]["0"][:url])[0]
-      @user.profile.update_attribute(:img, img.id) if img && img.id
+      @user.profile.update_attribute(:image_id, img.id) if img && img.id
     end
 
     def set_s3_direct_post

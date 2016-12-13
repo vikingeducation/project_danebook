@@ -10,7 +10,7 @@ class CreateProfiles < ActiveRecord::Migration[5.0]
       t.string :hometown
       t.string :current_home
       t.string :phone
-      t.integer :img
+      t.integer :image_id
       t.integer :cover
       t.boolean :edited, default: false
 

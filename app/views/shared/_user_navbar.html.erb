@@ -17,9 +17,11 @@
         <li><%= link_to "About", user_profile_path(user) %></li>
         <li><a href="#">Photos</a></li>
         <li><%= link_to "Friends", user_friends_path(user) %></li>
-        <% if user == current_user %>
-          <li class="edit"><%= link_to "Edit Profile", edit_user_profile_path(current_user) %></li>
-        <% end %>
+          <li class="edit">
+            <% if user == current_user %>
+              <%= link_to "Edit Profile", edit_user_profile_path(current_user) %>
+            <% end %>
+          </li>
       </ul>
     </section>
   </header>

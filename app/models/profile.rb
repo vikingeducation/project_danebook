@@ -1,4 +1,8 @@
 class Profile < ApplicationRecord
+  before_save :format_input
+
+  enum gender_type: [:Male, :Female, :Other]
+
   belongs_to :user, inverse_of: :profile
 
   has_one :bio, dependent: :destroy
@@ -10,11 +14,7 @@ class Profile < ApplicationRecord
   has_many :images, through: :profile_gallery
   accepts_nested_attributes_for :images, reject_if: :all_blank
 
-  belongs_to :profile_img, class_name: "Image", foreign_key: :img, optional: :true
-
-  before_save :format_input
-
-  enum gender_type: [:Male, :Female]
+  belongs_to :profile_img, class_name: "Image", foreign_key: :image_id, optional: :true
 
   validates_presence_of :first_name, :last_name, :birthday, :gender
   validates_format_of :phone, with: /\A(?=.*\d)[0-9\- +]+\Z/, allow_nil: true, allow_blank: true

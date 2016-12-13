@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   after_create :set_up_profile_gallery
 
+  before_save :format_input
+
   has_one :profile, inverse_of: :user, dependent: :destroy
   accepts_nested_attributes_for :profile, reject_if: :all_blank
 
@@ -14,12 +16,12 @@ class User < ApplicationRecord
   has_many :friends, through: :friends_users
 
   has_many :posts, dependent: :destroy
+  
   has_many :likes, dependent: :destroy
   has_many :liked_posts, through: :likes, source: :post
 
   has_many :galleries
 
-  before_save :format_input
 
   has_secure_password
 

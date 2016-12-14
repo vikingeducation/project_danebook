@@ -1,0 +1,33 @@
+<section class="post">
+        <header class="nav-post">
+            <h4>
+            Friends (<%= user.friended_users.count %>)
+            </h4>
+        </header>
+
+        <div class="container-fluid">
+          <!-- 1st row -->
+          <div class="row"> 
+          <!-- This deliberately shows the current user's friends -->
+          <%= render "/shared/friends_side", friend: user.friended_users.first%>
+          <%= render "/shared/friends_side", friend: user.friended_users.second%>
+          <%= render "/shared/friends_side", friend: user.friended_users.third%>
+          </div>
+          <div class="row">
+          <%= render "/shared/friends_side", friend: user.friended_users.fourth%>
+          <%= render "/shared/friends_side", friend: user.friended_users.fifth%>
+          <%= render "/shared/friends_side", friend: user.friended_users[5]%>
+          </div>
+          <div class="row">
+          <%= render "/shared/friends_side", friend: user.friended_users[6]%>
+          <%= render "/shared/friends_side", friend: user.friended_users[7]%>
+          <%= render "/shared/friends_side", friend: user.friended_users[8]%>
+          </div>
+          <!-- 3rd row -->
+     
+        <div class="nav-bottom-link">
+            <a class="edit-profile" href= "<%= user_friends_path(user) %>">
+                See More Friends
+            </a>
+        </div>
+    </section>

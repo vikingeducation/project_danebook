@@ -14,8 +14,9 @@ feature "Posting" do
   end
 
   context "Navigating from profile" do
-
+ 
     scenario "Posting from own timeline, valid content" do 
+      visit user_path(user.id)
       click_link "Timeline"
       fill_in 'post_body', with: "This is a valid post"
       click_button "Post"
@@ -51,6 +52,7 @@ feature "Posting" do
       user2
       post
       post2
+      visit user_path(user.id)
       click_link "Timeline"
       expect(page).to have_content(user.last_name)
       expect(page).to_not have_content(user2.last_name)

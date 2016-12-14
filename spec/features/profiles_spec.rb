@@ -62,6 +62,7 @@ feature "Editing Profile" do
 
     scenario "Can look at own profiles" do
       user
+      click_link user.first_name
       click_link "About"
       expect(page).to have_content("Words to Live By")
     end

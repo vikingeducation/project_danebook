@@ -1,6 +1,8 @@
 <header class="hero">
+              <% if user == current_user %>
               <div class="avatar">
               </div>
+              <% end %>
           </header>
           <!-- Sub-nav -->
           <nav class="sub-navigation" role="navigation">
@@ -12,13 +14,13 @@
                   <div class="collapse navbar-collapse" id="sub-nav-collapse">
                       <ul class="nav nav-pills">
                           <li role="presentation">
-                              <a href="/user/<%= current_user.id %>/timeline" class= <%= "active" if params[:action] == "index" %>>
+                              <a href="/user/<%= user.id %>/timeline" class= <%= "active" if params[:action] == "index" %>>
                                   Timeline
                               </a>
                           </li>
                           
                           <li role="presentation" class= <%= "active" if params[:action] == "show" %>>
-                              <a href="<%= user_path(current_user.id) %>">
+                              <a href="<%= user_path(user.id) %>">
                                   About
                               </a>
                           </li>
@@ -28,12 +30,12 @@
                               </a>
                           </li>
                           <li role="presentation">
-                              <a href="/users/<%= current_user.id %>/friends">
-                                  Friends<span class="badge"><%= current_user.friended_users.count %></span>
+                              <a href="/users/<%= user.id %>/friends">
+                                  Friends<span class="badge"><%= user.friended_users.count %></span>
                               </a>
                           </li>
                           <li class="edit-profile pull-right">
-                              <% unless params[:action] == "edit" %>
+                              <% if user == current_user %>
                               <a href="<%= edit_user_profile_path(current_user.id, current_user.profile.id) %>" >
                                   Edit Profile
                               </a>

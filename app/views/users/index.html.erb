@@ -1,135 +1,15 @@
 <div class="container">
-          <%= render "/shared/second_nav" %>
+          <%= render "/shared/second_nav", user: @user %>
 
           <!-- Current location header -->
           <main class="row">
               <article class="col-xs-4">
                   <%= render "/shared/about", user: @user %>             
                   <!-- Photos aside -->
-                  <section class="post">
-                      <header class="nav-post">
-                          <h4>
-                          Photos (123)
-                          </h4>
-                      </header>
-                      <div class="container-fluid">
-                        <!-- 1st row -->
-                        <div class="row"> 
-
-                            <div class="col-md-4 col-xs-12">
-                                <div class="hovereffect">
-                                    <a href="#">
-                                        <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                             <div class="col-md-4 col-xs-12">
-                                <div class="hovereffect">
-                                    <a href="#">
-                                        <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                             <div class="col-md-4 col-xs-12">
-                                <div class="hovereffect">
-                                    <a href="#">
-                                        <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- 2nd row -->
-                        <div class="row"> 
-
-                          <div class="col-md-4 col-xs-12">
-                              <div class="hovereffect">
-                                  <a href="#">
-                                      <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
-                                  </a>
-                              </div>
-                          </div>
-                           <div class="col-md-4 col-xs-12">
-                              <div class="hovereffect">
-                                  <a href="#">
-                                      <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
-                                  </a>
-                              </div>
-                          </div>
-                           <div class="col-md-4 col-xs-12">
-                              <div class="hovereffect">
-                                  <a href="#">
-                                      <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
-                                  </a>
-                              </div>
-                          </div>
-                        </div>
-                        <!-- 3rd row -->
-                        <div class="row"> 
-
-                            <div class="col-md-4 col-xs-12">
-                                <div class="hovereffect">
-                                    <a href="#">
-                                        <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                             <div class="col-md-4 col-xs-12">
-                                <div class="hovereffect">
-                                    <a href="#">
-                                        <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                             <div class="col-md-4 col-xs-12">
-                                <div class="hovereffect">
-                                    <a href="#">
-                                        <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="nav-bottom-link">
-                        <a class="edit-profile" href="photos.html">
-                            See More Photos
-                        </a>
-                    </div>
-                </section>
+                  <%= render "/shared/pictures" %>
 
                 <!-- Current location header -->
-                <section class="post">
-                    <header class="nav-post">
-                        <h4>
-                        Friends (<%= @user.friended_users.count %>)
-                        </h4>
-                    </header>
-
-                    <div class="container-fluid">
-                      <!-- 1st row -->
-                      <div class="row"> 
-                      <!-- This deliberately shows the current user's friends -->
-                      <%= render "/shared/friends_side", friend: @user.friended_users.first%>
-                      <%= render "/shared/friends_side", friend: @user.friended_users.second%>
-                      <%= render "/shared/friends_side", friend: @user.friended_users.third%>
-                      </div>
-                      <div class="row">
-                      <%= render "/shared/friends_side", friend: @user.friended_users.fourth%>
-                      <%= render "/shared/friends_side", friend: @user.friended_users.fifth%>
-                      <%= render "/shared/friends_side", friend: @user.friended_users[6]%>
-                      </div>
-                      <div class="row">
-                      <%= render "/shared/friends_side", friend: @user.friended_users[8]%>
-                      <%= render "/shared/friends_side", friend: @user.friended_users[7]%>
-                      <%= render "/shared/friends_side", friend: @user.friended_users[9]%>
-                      </div>
-                      <!-- 3rd row -->
-                 
-                    <div class="nav-bottom-link">
-                        <a class="edit-profile" href= "<%= user_friends_path(current_user) %>">
-                            See More Friends
-                        </a>
-                    </div>
-                </section>
+                <%= render "/shared/friends_side_main", user: @user %>
               </article>
 
               <!-- Post Entry -->

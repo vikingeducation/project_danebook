@@ -43,6 +43,7 @@ feature "Friendships" do
       user2 
       post2 
       friendship
+      visit user_path(user.id)
       click_link "About"
       click_link "Friends"
       expect(page).to have_content(user2.first_name)
@@ -53,7 +54,7 @@ feature "Friendships" do
       user2 
       post2 
       friendship
-      click_link "About"
+      visit user_path(user.id)
       click_link "Friends"
       click_link "Timeline"
 

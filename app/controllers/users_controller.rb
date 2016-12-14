@@ -18,15 +18,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def update
-  end
-
-  def edit
-  end
-
-  def destroy
-  end
-
   def index
     @user = User.find( params[:id])
     @post = Post.new

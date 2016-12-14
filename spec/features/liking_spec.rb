@@ -16,7 +16,7 @@ feature "Liking" do
 
     scenario "Liking a post"  do 
       user_post
-      click_link "Timeline"
+      click_link "Danebook"
       click_on "Like"
       expect(page).to have_content("Liked!") 
     end
@@ -24,7 +24,7 @@ feature "Liking" do
     scenario "Unliking a post" do 
       user_post
       like
-      click_link "Timeline"
+      click_link "Danebook"
       click_on "Unlike"
       expect(page).to_not have_content("Unlike") 
     end
@@ -37,7 +37,7 @@ feature "Liking" do
     scenario "Liking a comment" do 
       user_post
       comment
-      click_link "Timeline"
+      click_link "Danebook"
       first('.like-area').click_link('Like')
       expect(page).to have_content("Liked!") 
     end
@@ -46,7 +46,7 @@ feature "Liking" do
       user_post
       comment
       comment_like
-      click_link "Timeline"
+      click_link "Danebook"
       first('.like-area').click_link('Unlike')
       expect(page).to_not have_content("Unlike")
     end

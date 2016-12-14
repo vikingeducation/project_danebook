@@ -8,7 +8,11 @@
             Friends<span class="badge budge"><%= friend.friended_users.count %></span>
         </div>
         <form id="adjust">
+            <% if @user == current_user %>
             <%= link_to "Revoke Friendship", friend_url(id: friend.id), method: "delete", class: "btn btn-default btn-sm unfriend", id: "adjust" %>
+            <% else %>
+            <%= link_to "Show User", user_url(id: friend.id), class: "btn btn-default btn-sm unfriend", id: "adjust" %>
+            <% end %>
         </form>
     </div>
 </div>

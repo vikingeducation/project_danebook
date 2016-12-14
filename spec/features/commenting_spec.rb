@@ -15,6 +15,7 @@ feature "Commenting" do
 
     scenario "Can comment from own timeline, with valid content" do 
       post
+      visit user_path(user.id)
       click_link "Timeline"
       fill_in 'Type a comment in here', with: "This is a valid comment"
       click_button "Comment"

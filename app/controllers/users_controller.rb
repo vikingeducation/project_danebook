@@ -42,7 +42,11 @@ class UsersController < ApplicationController
                  .where(user_id: @user.id).order(created_at: :desc)
     @user = User.find(params[:id])
     @friends = @user.friends.includes(:profile_photo)
-    @photos = Photo.includes(:comments, :user).where(user_id: @user.id)
+    @photos = Photo.includes(:likes, :user, :comments => [{:author => :profile_photo}, :likes])
+                   .where(user_id: @user.id)
+    @comment_likes = current_user.initiated_likes.where(likable_type: "Comment")
+    @post_likes = current_user.initiated_likes.where(likable_type: "Post")
+    @photo_likes = current_user.initiated_likes.where(likable_type: "Photo")
   end
 
   def newsfeed
@@ -50,17 +54,20 @@ class UsersController < ApplicationController
     @comment = Comment.new
     @posts = Post.where(user_id: (current_user.friends.pluck(:id) << current_user.id))
                  .order(created_at: :desc)
-    @photos = Photo.includes(:comments, :likes, :user => [:profile_photo])
+    @photos = Photo.includes(:comments, :user => [:profile_photo])
                    .where(user_id: (current_user.friends.pluck(:id) << current_user.id))
                    .order(created_at: :desc)
     @articles = @posts + @photos
     @articles = @articles.sort_by(&:created_at).reverse
     @articles = @articles.paginate(:page => params[:page], :per_page => 3)
 
-
     @comments = Comment.includes(:author => [:profile_photo]).where(user_id: current_user.friends.pluck(:id))
     @likes = Like.includes(:initiated_user).where(user_id: current_user.friends.pluck(:id))
     @activities = (@articles + @comments + @likes).sort_by(&:created_at).reverse.first(10)
+
+    @comment_likes = current_user.initiated_likes.where(likable_type: "Comment")
+    @post_likes = current_user.initiated_likes.where(likable_type: "Post")
+    @photo_likes = current_user.initiated_likes.where(likable_type: "Photo")
   end
 
   def friends

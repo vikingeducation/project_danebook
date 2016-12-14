@@ -32,7 +32,10 @@ class CommentsController < ApplicationController
       @comment.likes << Like.new(user_id: current_user.id, likable_type: "Comment")
     end
     @profile = current_user.profile
-    redirect_to timeline_user_path(current_user)
+    respond_to do |format|
+      format.html { redirect_to timeline_user_path(current_user) }
+      format.js { render :comment_like }
+    end
   end
 
   def unlike
@@ -41,7 +44,10 @@ class CommentsController < ApplicationController
       @comment.likes.destroy(@comment.likes.where("user_id = #{current_user.id} AND likable_type = 'Comment'"))
     end
     @profile = current_user.profile
-    redirect_to timeline_user_path(current_user)
+    respond_to do |format|
+      format.html { redirect_to timeline_user_path(current_user) }
+      format.js { render :comment_unlike }
+    end
   end
 
   private

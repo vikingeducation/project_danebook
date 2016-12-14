@@ -1,5 +1,5 @@
 <div class="col-xs-12 ">
-  <% unless post_liked_by_current_user(p) %>
+  <% unless photo_liked_by_current_user(p, @photo_likes) %>
     <%= link_to "Like", like_photo_path(p) %></a>
   <% else %>
     <%= link_to "Unlike", unlike_photo_path(p) %></a>
@@ -12,16 +12,3 @@
 <div class="col-xs-12">
   <p class="text-muted"><%= p.likes.size %> people like this</p>
 </div>
-
-<% if false %>
-<% if p.likes.size == 1 %>
-  <div class="col-xs-12">
-    <p class="text-muted"> <%= link_to first_few_names(p.likes), timeline_user_path(p.likes.first.initiated_user) %> likes this</p>
-  </div>
-<% elsif  p.likes.size > 1 %>
-  <div class="col-xs-12">
-    <p class="text-muted"> <%= link_to first_few_names(p.likes), timeline_user_path(p.likes.first.initiated_user) %> and
-    <p class="text-muted"><%= p.likes.size - 1 %> others like this</p>
-  </div>
-<% end %>
-<% end %>

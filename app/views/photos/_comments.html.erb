@@ -7,7 +7,7 @@
       <%= link_to comment.author.name, about_user_path(comment.author), class: "media-heading"%></a>
       <p class="text-muted"><%= comment.commented_on %></p>
       <p><%= comment.text %></p>
-        <% unless comment_liked_by_current_user(comment) %>
+        <% unless comment_liked_by_current_user(comment, @comment_likes) %>
           <%= link_to "Like", like_photo_comment_path(p,comment) %></a>
         <% else %>
           <%= link_to "Unlike", unlike_photo_comment_path(p,comment) %></a>

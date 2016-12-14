@@ -24,7 +24,10 @@ class PostsController < ApplicationController
       @post.likes << Like.new(user_id: current_user.id, likable_type: "Post")
     end
     @profile = current_user.profile
-    redirect_to timeline_user_path(current_user)
+    respond_to do |format|
+      format.html { redirect_to timeline_user_path(current_user) }
+      format.js { render :post_like }
+    end
   end
 
   def unlike
@@ -33,7 +36,10 @@ class PostsController < ApplicationController
       @post.likes.destroy(@post.likes.where("user_id = #{current_user.id} AND likable_type = 'Post'"))
     end
     @profile = current_user.profile
-    redirect_to timeline_user_path(current_user)
+    respond_to do |format|
+      format.html { redirect_to timeline_user_path(current_user) }
+      format.js { render :post_unlike }
+    end
   end
 
   def update

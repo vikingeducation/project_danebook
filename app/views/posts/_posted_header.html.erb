@@ -1,0 +1,28 @@
+<div class="panel-body">
+    <div class="row">
+        <div class="media-left media-middle col-xs-2">
+            <a href="#">
+                <figure>
+                    <img alt="User's Extra-Small Avatar" class="img-responsive" src="assets/images/harry_potter_small.jpg">
+                </figure>
+            </a>
+        </div>
+        <div class="media-body col-xs-8">
+            <a href="#">
+                <h4 class="media-heading"><%= "#{user.profile.first_name} #{user.profile.last_name}" %></h4>
+            </a>
+            <h6>
+
+              <%= "Posted on #{post.created_at.strftime('%B, %d, %Y')}" %>
+
+            </h6>
+        </div>
+    </div>
+    <div class="row">
+        <br>
+        <p class="col-xs-12">
+          <%= post.body %>
+        </p>
+
+    </div>
+</div>

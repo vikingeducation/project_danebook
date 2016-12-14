@@ -143,15 +143,17 @@
         <div class="col-md-7">
           <!--  -->
           <!--  -->
-
+<!-- post creation form -->
           <% if current_user.id == @user.id %>
             <%= render 'posts/post_form' %>
           <% end %>
 
+<!-- old posts, old comments, comment form -->
         <% @posts.reverse.each do |post| %>
-          <%= render partial: 'display_post', locals: { user: @user, post: post } if post.persisted? %>
+          <% if post.persisted? %>
+            <%= render partial: 'display_post', locals: { user: @user, post: post } %>
+          <% end %>
         <% end %>
-
 
 
 
@@ -379,7 +381,7 @@
                   </div>
                 </div>
               </div>
-              <!-- <div class="row">
+              <div class="row">
                 <div class="col-xs-12">
                   <textarea class="col-xs-1 form-control" placeholder=
                   "Write a comment..." rows="5"></textarea>
@@ -390,7 +392,7 @@
                   <a href="#">Cancel</a> <a class=
                   "btn btn-success pull-right" href="#">Comment</a>
                 </div>
-              </div> -->
+              </div>
             </div>
           </div>
         </div>

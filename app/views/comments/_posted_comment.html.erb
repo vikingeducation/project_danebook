@@ -1,0 +1,28 @@
+    <div class="row">
+        <div class="media-left media-middle col-xs-2">
+            <a href="#">
+                <figure>
+                    <img alt="User's Extra-Small Avatar" class="img-responsive" src="assets/images/harry_potter_small.jpg">
+                </figure>
+            </a>
+        </div>
+        <div class="media-body col-xs-8">
+            <a href="#">
+                <h4 class="media-heading"><%= user.profile.first_name %></h4>
+            </a>
+            <h6>
+                <%= "Posted on #{comment.created_at.strftime('%B, %d, %Y')}" %>
+            </h6>
+        </div>
+    </div>
+    <div class="row">
+        <br>
+        <p class="col-xs-12">
+          <%= comment.body %>
+        </p>
+
+    </div>
+
+<!--
+ [#<Comment id: 4, body: "131", user_id: 1, like_count: 0, created_at: "2016-12-14 04:30:07",
+                updated_at: "2016-12-14 04:30:07", commentable_type: "Post", commentable_id: 20>]> -->

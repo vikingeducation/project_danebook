@@ -38,7 +38,7 @@ class CommentsController < ApplicationController
 
   private
     def strong_comment_params
-      p params
+      # p params
       params.require(:comment).permit(:body, :user_id, :post_id)
     end
 end

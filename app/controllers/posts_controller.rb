@@ -38,7 +38,7 @@ class PostsController < ApplicationController
 
   private
     def strong_post_params
-      p params
+      # p params
       params.require(:post).permit(:body, :user_id)
     end
 

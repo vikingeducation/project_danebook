@@ -15,7 +15,4 @@ class TimelinesController < ApplicationController
     @post.user_id = current_user.id
   end
 
-
-
-
 end

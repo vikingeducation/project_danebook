@@ -1,17 +1,17 @@
 FactoryGirl.define do
-  factory :friending do
-    
-  end
 
   factory :user do
-    sequence(:email){ |n| "#{n}@example.com" }
-    password "asdfasdf"
+    email "asdf@asdf.com"
+    # sequence(:email){ |n| "#{n}@example.com" }
+    password "123456"
   end
 
   factory :profile do
-    first_name
-    last_name
-    
+    first_name "Bob"
+    last_name "Bob"
+    birthday Date.today
+    gender "Male"
+
     association :user, factory: :user
   end
 

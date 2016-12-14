@@ -2,12 +2,6 @@ class SessionsController < ApplicationController
 
   skip_before_action :require_login, :only => [:new, :create]
 
-
-  def new
-
-  end
-
-
   def create
     @user = User.find_by_email(params[:email])
     if @user && @user.authenticate(params[:password])
@@ -17,10 +11,11 @@ class SessionsController < ApplicationController
         sign_in(@user)
       end
       flash[:success] = "Welcome!"
-      redirect_to edit_user_profile_url(current_user)
+      redirect_to user_timeline_path(current_user)
+      # redirect_to edit_user_profile_url(current_user)
     else
       flash.now[:error] = "Couldn't log in"
-      render root_url
+      redirect_to root_url
     end
   end
 

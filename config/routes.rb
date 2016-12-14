@@ -18,12 +18,10 @@ Rails.application.routes.draw do
     # resource :comment, :defaults => { :commentable => 'Comment' }
   # end
 
-  resources :friendings, only: [:create, :destroy]
+  # resources :friendings, only: [:create, :destroy]
 
+  resource :session, only: [:new, :create, :destroy]
   get 'login' => 'sessions#new'
   get 'logout' => 'sessions#destroy'
-  #
-  # get 'comment_create' => 'comments#new'
-  # post 'comment/:post_id' => 'comments#create'
 
 end

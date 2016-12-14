@@ -31,14 +31,13 @@
           <div class="panel-footer">
             <div class="row">
               <div class="col-xs-1">
-                <!-- <a href="#">Like</a> -->
-                <%#= display_likes %>
-                <%= link_to 'Like', user_post_likes_path(user, p), method: :post %>
+                <%= display_like_button(user, p) %>
               </div>
               <div class="col-xs-1 col-xs-offset-7">
                 <%= display_post_delete(user, p) %>
               </div>
             </div>
+            <%= display_likers(user, p) %>
           </div>
           <div class="panel-body">
             <% if p.comments.any? %>
@@ -46,6 +45,8 @@
                 <h4><%= comment.author.full_name %></h4>
                 <p><%= comment.body %></p>
                 <%= display_comment_delete(user, p, comment) %>
+                <%= display_like_button(user, comment) %>
+                <%= display_likers(user, comment) %>
               <% end %>
             <% end %>
             <%= form_for [user, p, @comment] do |c| %>

@@ -1,7 +1,7 @@
 class Post < ApplicationRecord
 
   belongs_to :user
-  has_many :comments
+  has_many :comments, dependent: :destroy
   has_many :likes, as: :likeable
   has_many :likers, through: :likes, source: :user
 
@@ -15,11 +15,8 @@ class Post < ApplicationRecord
     likes.count
   end
 
-  def first_likers
-  end
-
-  def current_user_has_liked?
-    true
+  def random_liker
+    likers.sample.full_name
   end
 
 end

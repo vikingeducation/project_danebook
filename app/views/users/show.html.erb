@@ -1,11 +1,5 @@
 <section id="interior-page">
 
-  <div class="container">
-    <h1>Welcome <%= @user.email %></h1>
-    <%= link_to "Sign Out", logout_path %>
-    <hr>
-  </div>
-
   <%= render partial: "shared/header", locals: { user: @user } %>
 
   <main class="container">

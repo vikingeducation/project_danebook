@@ -69,10 +69,10 @@
           </div>
 
           <div class="form-group form-check">
-            <%= profile_fields.label :gender, "Male" %>
+            <%= profile_fields.label :gender, "Male", value: 'male' %>
             <%= profile_fields.radio_button :gender, "Male", class: 'form-check-input' %>
 
-            <%= profile_fields.label :gender, "Female" %>        
+            <%= profile_fields.label :gender, "Female", value: 'female' %>        
             <%= profile_fields.radio_button :gender, "Female", class: 'form-check-input' %>
           </div>
 

@@ -1,11 +1,5 @@
 <section id="interior-page">
 
-  <div class="container">
-    <h1>Welcome <%= current_user.full_name %></h1>
-    <%= link_to "Sign Out", logout_path %>
-    <hr>
-  </div>
-
   <%= render partial: "shared/header", locals: { user: @user } %>
 
   <main class="container">
@@ -23,7 +17,6 @@
           <div class="col-sm-7">
             <%= render partial: "form", locals: { user: @user, post: @post } %>
             <%= render partial: "post", locals: { user: @user, post: @post, posts: @posts } %>
-            <%#= render partial: "shared/post_cruft" %>
           </div>
         </div>
 

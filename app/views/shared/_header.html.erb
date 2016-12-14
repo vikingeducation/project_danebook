@@ -14,7 +14,10 @@
       </form>
       <ul class="nav navbar-nav navbar-right">
         <li>
-          <a href="#"><%= user.first_name %></a>
+          <a>Welcome <%= current_user.first_name %></a>
+        </li>
+        <li>
+          <%= link_to "Sign Out", logout_path %>          
         </li>
       </ul>
     </div>

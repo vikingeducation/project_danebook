@@ -1,7 +1,5 @@
-console.log("start");
 var post = $('[data-id='+<%= @post.id %>+'].post')
 post.find('.like_link').html('Unlike');
 post.find('.like_link').attr('href', '/posts/'+<%= @post.id %>+'/unlike');
 var num = Number(post.find('.x-people-like-this').html().split(" ")[0]) + 1;
 post.find('.x-people-like-this').html(''+num+' people like this')
-console.log("done")

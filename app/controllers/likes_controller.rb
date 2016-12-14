@@ -10,7 +10,11 @@ class LikesController < ApplicationController
 
   def destroy
     @like = current_user.likes.where(likeable_id: params[:id], likeable_type: params[:type])
-    @like.first.destroy
+    unless @like.empty?
+      @like.first.destroy
+    else
+      flash[:danger] = "Unathorized Action!"
+    end
     redirect_back(fallback_location: root_path)
   end
 end

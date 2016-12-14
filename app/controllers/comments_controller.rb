@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
       redirect_back(fallback_location: root_path)
 
     else
-      flash[:danger] = "Comment was too short"
+      flash[:danger] = "Comment was too short" 
 
       redirect_back(fallback_location: root_path)
     end
@@ -15,8 +15,10 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    p params
     @comment = current_user.comments.where(commentable_id: params[:id], commentable_type: params[:type])
     unless @comment.empty?
+
       @comment.first.destroy
       flash[:success] = "Comment destroyed"
       redirect_back(fallback_location: root_path)

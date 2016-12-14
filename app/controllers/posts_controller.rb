@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   def index
     @post = Post.new
-    @posts = Post.last(30).reverse
+    @posts = Post.includes(:comments).last(30).reverse
   end
  
   def create

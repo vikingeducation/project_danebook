@@ -33,6 +33,7 @@ RSpec.configure do |config|
 
   config.include LoginMacros
   config.include PostMacros
+  config.include UserMacros
 
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"

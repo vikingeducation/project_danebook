@@ -30,12 +30,8 @@ class SessionsController < ApplicationController
 
     private
 
-      def sessionizer
-        @sessionizer ||= Sessionizer.new(@user, params)
-      end
-
       def validate_credentials
-        case sessionizer.validate_credentials
+        case Sessionizer.validate_credentials(@user, params[:password])
         when "locked"
           flash[:danger] =  [
                               "Your account has been locked for due to too many incorrect login attempts.",

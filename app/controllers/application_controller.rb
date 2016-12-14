@@ -3,16 +3,13 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   private
-    def crypt
-      @crypt ||= ActiveSupport::MessageEncryptor.new(Rails.application.secrets.secret_key_base)
-    end
 
     def decrypt(msg)
-      crypt.decrypt_and_verify(msg)
+      Crypt.decrypt(msg)
     end
 
     def encrypt(msg)
-      crypt.encrypt_and_sign(msg)
+      Crypt.encrypt(msg)
     end
 
     def authenticate

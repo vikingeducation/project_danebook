@@ -19,7 +19,7 @@
         <%= show_comment_likes(comment) %>
 
         <% if comment.likes.where(user_id: current_user.id).empty? %>
-          <%= link_to "Like", likes_path(:id => comment.id, :type => "Comment"), class: "link pull-left", method: post  %>
+          <%= link_to "Like", likes_path(:id => comment.id, :type => "Comment"), class: "link pull-left", method: "post"  %>
 
           <% else %>
 

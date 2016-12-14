@@ -8,10 +8,10 @@ class PostsController < ApplicationController
     @post =  current_user.posts.build(post_params)
     if @post.save
       flash[:success] = "Posted!"
-      redirect_to(:back)
+      redirect_back(fallback_location: root_path)
     else
       flash[:danger] = "Post failed! Did you remeber to include text?"
-      redirect_to :back
+      redirect_back(fallback_location: root_path)
     end
   end
 
@@ -19,10 +19,10 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     if @post.user_id = current_user.id
       @post.destroy
-      redirect_to(:back)
+      redirect_back(fallback_location: root_path)
     else
       flash[:danger] = "Bad bad bad!"
-      redirect_to(:back)
+      redirect_back(fallback_location: root_path)
     end
   end
 

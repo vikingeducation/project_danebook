@@ -18,7 +18,7 @@ feature "Login" do
       fill_in 'email', with: user.email
       fill_in 'password', with: user.password
       click_button 'Log In'
-      expect(page).to have_content("You've successfully signed in")
+      expect(page).to have_content("You've successfully signed in") 
     end
    
     scenario "make a valid account works" do 
@@ -34,7 +34,6 @@ feature "Login" do
     end
 
     scenario "make an invalid account fails" do 
-      #this is working when it shouldn't fix! 
       fill_in 'firstName', with: "Blah"
       fill_in 'lastName', with: "Good"
       fill_in 'inputEmail', with: "example@example.com"
@@ -52,11 +51,26 @@ feature "Login" do
       click_button 'Log In'
       expect(page).to have_content("We couldn't sign you in")
     end
+
+    scenario "tries to visit a page that is not allowed, and gets rejected" do 
+      visit user_path(id: 1, method: :delete)
+      expect(page).to have_content("Please sign in or sign up to see this page!")
+    end
  
   end
 
-  context "logged in user" do
-    
+  context "logged in user" do 
+    scenario "attempt to go to the account new page and fail" do
+      sign_in(user)
+      visit new_user_path
+      expect(page).to have_content("You already have an account!")
+    end
+
+    scenario "Can log out" do
+      sign_in(user) 
+      click_link "Logout"
+      expect(page).to have_content("You've successfully signed out")
+    end
   end
 
 

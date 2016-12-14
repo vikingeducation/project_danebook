@@ -124,7 +124,7 @@
                       <!-- 3rd row -->
                  
                     <div class="nav-bottom-link">
-                        <a class="edit-profile" href="friends.html">
+                        <a class="edit-profile" href= "<%= user_friends_path(current_user) %>">
                             See More Friends
                         </a>
                     </div>
@@ -133,31 +133,28 @@
 
               <!-- Post Entry -->
               <article class="col-xs-8">
-              <% unless @posts.empty? %>
-                  <% if @posts.first.user_id == current_user.id %>
-                  <%= form_for @post, url: user_posts_path(current_user.id) do |f| %>
-                  <section class="post">
-                      <header class="nav-post">
-                          <h4>
-                          Post
-                          </h4>
-                      </header>
-                      <div class="post-body">
-                          <div class="form-group">
-                              <%= f.text_area :body, wrap: "hard", rows: "4", class: "form-control" %>
+                  <% if @user == current_user %>
+                    <%= form_for @post, url: user_posts_path(current_user.id) do |f| %>
+                      <section class="post">
+                          <header class="nav-post">
+                              <h4>
+                              Post
+                              </h4>
+                          </header>
+                          <div class="post-body">
+                              <div class="form-group">
+                                  <%= f.text_area :body, wrap: "hard", rows: "4", class: "form-control" %>
+                              </div>
                           </div>
-                      </div>
-                      <div class="nav-footer">
-                          <%= f.submit "Post", class: "btn btn-primary" %>
-                      </div>
-                  </section>
-                  <% end %>
+                          <div class="nav-footer">
+                              <%= f.submit "Post", class: "btn btn-primary" %>
+                          </div>
+                      </section>
+                    <% end %>
                   <% else %>
-                  <%= render "/shared/are_friends" %>
+                    <%= render "/shared/are_friends" %>
                   <% end %>
-                <% else %>
-                  There are no posts yet!
-                <% end %>
+
                  
 
                   <% @posts.each do |post| %>

@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # TODO work on second nav bar highlighting
 
   root "users#new"
-  resources :users do
+  resources :users, except: [:destroy] do
     resources :profiles , only: [:create, :destroy, :edit, :update]
     resources :posts, except: [:new, :show]
     resources :friends, only: [:index]

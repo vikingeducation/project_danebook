@@ -4,20 +4,26 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.build(commentable_id: params[:id], commentable_type: params[:type], body:comment_params[:body])
     if @comment.save
       flash[:success] = "Comment Posted!"
-      redirect_to(:back)
+      redirect_back(fallback_location: root_path)
 
     else
-      flash[:success] = "Critical Error!"
-      raise "error"
-      redirect_to(:back)
+      flash[:danger] = "Comment was too short"
+
+      redirect_back(fallback_location: root_path)
     end
     
   end
 
   def destroy
     @comment = current_user.comments.where(commentable_id: params[:id], commentable_type: params[:type])
-    @comment.first.destroy
-    redirect_to(:back)
+    unless @comment.empty?
+      @comment.first.destroy
+      flash[:success] = "Comment destroyed"
+      redirect_back(fallback_location: root_path)
+    else
+      flash[:danger] = "Unauthorized action"
+      redirect_back(fallback_location: root_path)
+    end
   end
 
   private

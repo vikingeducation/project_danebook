@@ -18,7 +18,7 @@
                       <div class="nav-footer">
 
                           <% if post.likes.where(user_id: current_user.id).empty? %>
-                          <%= link_to "Like", likes_path(:id => post.id, :type => "Post"), class: "link pull-left", method: post  %>
+                          <%= link_to "Like", likes_path(:id => post.id, :type => "Post"), method: :post , class: "link pull-left" %>
 
                           <% else %>
 

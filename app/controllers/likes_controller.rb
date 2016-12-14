@@ -1,8 +1,7 @@
 class LikesController < ApplicationController
 
-  before_action :require_login, :except => [:show ]
+  before_action :require_login, :except => [:show]
 
-#likeable_type
 #Like.create(user_id: b.user_id, likeable_id: b.id, likeable_type: "Post")
 
   def create
@@ -35,6 +34,14 @@ class LikesController < ApplicationController
   end
 
   private
+
+    def context
+      if params[:likeable_type] == 'Post'
+        #
+      elsif params[:likeable_type] == 'Comment'
+        #
+      end
+    end
 
 
 end

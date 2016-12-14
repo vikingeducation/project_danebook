@@ -2,8 +2,10 @@ require 'rails_helper'
 
 feature 'User accounts' do
 
-  let(:profile) { create(:profile) }
-  let(:user) { profile.user }
+  let(:profile1) { create(:profile) }
+  let(:user1) { profile1.user }
+  let(:profile2) { create(:profile) }
+  let(:user2) { profile2.user }
 
   before do
     # go to the home page
@@ -27,24 +29,19 @@ feature 'User accounts' do
     expect(User.find_by_email('testy@testface.com').profile.birthday).to eq(Date.parse("Sat, 07 Jun 1986"))
   end
 
-  scenario "Create post" do
-    log_in(user)
-    click_link "Timeline"
-    fill_in "post_body", with: "Test post"
-    expect{ click_button('Post') }.to change( Post, :count).by 1
+  scenario "Add a friend" do
+    log_in(user1)
+    visit user_profile_path(user2)
+    click_button "Add user as friend"
+    expect(page).to have_content "#{user2.name} is now your friend"
   end
 
-  scenario "Comment on post" do
-    create_post_by(user)
-    fill_in "comment_body", with: "First comment"
-    expect{ find_button("Comment").click }.to change(Comment, :count).by 1
-  end
-
-  scenario "Delete a comment on a post" do
-    comment_from(user)
-    within(".comment") do
-      expect { click_link "Delete" }.to change(Comment, :count).by(-1)
-    end
+  scenario "Remove a friend" do
+    log_in(user1)
+    visit user_profile_path(user2)
+    click_button "Add user as friend"
+    click_button "Remove friend"
+    expect(page).to have_content "No longer friends with #{user2.name}"
   end
 
 end

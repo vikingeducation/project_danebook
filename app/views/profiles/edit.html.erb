@@ -1,20 +1,5 @@
 <div class="container">
-  <div class="row">
-    <div class="col-sm-12">
-      <div class="hero-image">
-        <!-- <img class="profile-photo" src="img/harry_potter_small.jpg"> -->
-        <%= image_tag("harry_potter_small.jpg") %>
-        <div class="username">Harry Potter</div>
-      </div>
-      <nav class="profile-navigation-bar">
-        <div class="profile-photo-spacer"></div>
-        <div class="profile-navigation-item"><a href="#!">Timeline</a></div>
-        <div class="profile-navigation-item"><a href="#!">About</a></div>
-        <div class="profile-navigation-item"><a href="#!">Photos</a> <span class="badge">(123)</span></div>
-        <div class="profile-navigation-item"><a href="#!">Friends</a> <span class="badge">(542)</span></div>
-      </nav>
-    </div>
-  </div>
+  <%= render 'shared/profile_header_block' %>
   <div class="row">
     <div class="col-sm-12">
       <div class="panel panel-info">

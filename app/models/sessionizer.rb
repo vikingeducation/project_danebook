@@ -29,26 +29,27 @@ class Sessionizer
   private
     CHAR_MAP = 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz0123456789!@#$%^&*'
 
-    def create_jwt
-      data = {auth: 0, id: @user.id, browser: ""}
-      sql_key = Digest::SHA256.base64digest((0..32).map{ CHAR_MAP.chars.sample }.join)
-      cookie_key = Digest::SHA256.base64digest((0..32).map{ CHAR_MAP.chars.sample }.join)
-      sec = Digest::SHA256.base64digest("#{sql_key}#{cookie_key}#{Rails.application.secrets.secret_key_base}")
-
-      cookies[:token_key] = cookie_key
-      @user.token = sql_key
-      @user.save
-
-      exp = Time.now.to_i + 4 * 3600
-      iss = 'Project Danbook'
-      iat = Time.now.to_i
-      jti_raw = [sec, iat].join(':').to_s
-      jti = Digest::MD5.hexdigest(jti_raw)
-      nbf = Time.now.to_i + 10
-      payload = { data: data, exp: exp, iat: iat, jti: jti, nbf: nbf }
-
-      cookies[:token] = JWT.encode payload, sec, 'HS256'
-    end
+    # TODO: Implement JWT tokens for multi browser login
+    # def create_jwt
+    #   data = {auth: 0, id: @user.id, browser: ""}
+    #   sql_key = Digest::SHA256.base64digest((0..32).map{ CHAR_MAP.chars.sample }.join)
+    #   cookie_key = Digest::SHA256.base64digest((0..32).map{ CHAR_MAP.chars.sample }.join)
+    #   sec = Digest::SHA256.base64digest("#{sql_key}#{cookie_key}#{Rails.application.secrets.secret_key_base}")
+    #
+    #   cookies[:token_key] = cookie_key
+    #   @user.token = sql_key
+    #   @user.save
+    #
+    #   exp = Time.now.to_i + 4 * 3600
+    #   iss = 'Project Danbook'
+    #   iat = Time.now.to_i
+    #   jti_raw = [sec, iat].join(':').to_s
+    #   jti = Digest::MD5.hexdigest(jti_raw)
+    #   nbf = Time.now.to_i + 10
+    #   payload = { data: data, exp: exp, iat: iat, jti: jti, nbf: nbf }
+    #
+    #   cookies[:token] = JWT.encode payload, sec, 'HS256'
+    # end
 
     def failed_attempt
       if time_limit

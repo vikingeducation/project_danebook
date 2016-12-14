@@ -4,20 +4,18 @@ class ProfilesController < ApplicationController
 
   before_action :set_user, except: [:show]
   before_action :correct_user, except: [:index, :show]
-  before_action :set_s3_direct_post, only: [:edit, :update]
 
   def show
     set_user_full_profile
   end
 
   def edit
-    p "building new bio" unless current_user.profile.bio
     current_user.profile.build_bio unless current_user.profile.bio
   end
 
   def update
     if @user.profile.update(whitelisted)
-      set_profile_img if params[:profile][:profile_gallery_attributes][:images_attributes]["0"][:url]
+      set_profile_img if params[:profile][:profile_gallery_attributes]
       @user.profile.update_attribute(:edited, true)
       flash[:success] = ["Profile Successfully Edited"]
       redirect_to user_profile_path(@user)
@@ -61,11 +59,9 @@ class ProfilesController < ApplicationController
     end
 
     def set_profile_img
-      img = Image.where(url: params[:profile][:profile_gallery_attributes][:images_attributes]["0"][:url])[0]
-      @user.profile.update_attribute(:image_id, img.id) if img && img.id
-    end
-
-    def set_s3_direct_post
-      @s3_direct_post = S3_BUCKET.presigned_post(key: "uploads/#{current_user.id}/images/#{SecureRandom.uuid}-${filename}", success_action_status: '201', acl: 'public-read')
+      if params[:profile][:profile_gallery_attributes][:images_attributes]["0"][:url]
+        img = Image.where(url: params[:profile][:profile_gallery_attributes][:images_attributes]["0"][:url])[0]
+        @user.profile.update_attribute(:image_id, img.id) if img && img.id
+      end
     end
 end

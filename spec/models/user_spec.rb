@@ -14,6 +14,11 @@ describe User do
   let(:no_u_email){build(:user, email: "@a.com")}
   let(:no_tld_email){build(:user, email: "22@a.")}
 
+  it "does not allow nil passwords on create" do
+    user.update_attributes(password: nil)
+    expect(user).to_not be_valid
+  end
+
   it "requires a strong password" do
     expect(full_pass).to be_valid
     expect(short_pass).to_not be_valid
@@ -76,7 +81,7 @@ describe User do
       expect(user.token).to be_nil
     end
   end
-  
+
   it { is_expected.to have_secure_password }
   it { is_expected.to have_one(:profile) }
   it { is_expected.to have_many(:f_requests) }

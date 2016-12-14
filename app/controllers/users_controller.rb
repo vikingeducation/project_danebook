@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  include UserCheck
+  
   before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :correct_user, except: [:index, :show, :new, :create]
 
@@ -23,7 +25,7 @@ class UsersController < ApplicationController
     @user = User.new(whitelisted)
     if @user.save
       sign_in(@user)
-      flash[:success] = ["Successfully signed in"]
+      flash[:success] = ["Successfully signed up!"]
       redirect_to users_path
     else
       flash.now[:danger] = ["Something went wrong signing up"]
@@ -59,19 +61,6 @@ class UsersController < ApplicationController
                                                          ]
                                     }
                                   )
-    end
-
-
-    def correct_user
-      unless params[:id] == current_user.id.to_s
-        flash[:danger] = ["You cannot mess with other users! Jerk.."]
-        redirect_to user_path(current_user)
-      end
-    end
-
-
-    def set_user
-      @user = User.find(params[:id])
     end
 
 end

@@ -1,6 +1,6 @@
 <%= content_for :usernav, true %>
 
-<section id="about" class="post col-xs-12">
+<section id="about-edit" class="post col-xs-12">
   <div class="row">
     <header class="post-header col-xs-12">
       <h2>About</h2>
@@ -8,7 +8,7 @@
   </div>
   <div class="row">
     <section class="post-content col-xs-12">
-      <%= form_for([current_user, current_user.profile], html: { class: 'directUpload', data: { 'form-data' => (@s3_direct_post.fields), 'url' => @s3_direct_post.url, 'host' => URI.parse(@s3_direct_post.url).host } }) do |f| %>
+      <%= form_for([current_user, current_user.profile], html: { class: 'directUpload', data: set_aws_options }) do |f| %>
       <div class="row">
 
         <div class="information col-md-5">
@@ -52,21 +52,16 @@
         <div class="personality col-md-7">
           <%= f.fields_for :bio do |bf| %>
             <h3><%= bf.label :slogan, "Words To Live By" %></h3>
-            <%= bf.text_area :slogan, class: 'form-control', rows: 5, value: "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis minima natus assumenda, iste nesciunt odio dolorum. Eveniet accusamus, quis, esse dignissimos ex fuga est, excepturi ab non itaque nostrum quae." %>
+            <%= bf.text_area :slogan, class: 'form-control', rows: 5 %>
             <h3><%= bf.label :about, "Words To Live By" %></h3>
-            <%= bf.text_area :about, class: 'form-control', rows: 9, value: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas viverra tellus nisi, id condimentum dui tristique sed. Donec luctus eros quis ante consequat sagittis. Phasellus consectetur lectus ac lectus mattis vulputate. Maecenas non risus tellus. Proin ullamcorper, ex id iaculis scelerisque, odio dui posuere purus, sit amet viverra mi nibh sit amet risus. Duis tempor pretium arcu, ut dictum justo interdum pharetra. Suspendisse vulputate pellentesque massa, eu gravida diam semper ut. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam pharetra erat eget vulputate lacinia. Aenean in porta elit. Aenean egestas in urna id bibendum. Integer nec placerat metus." %>
+            <%= bf.text_area :about, class: 'form-control', rows: 9 %>
           <% end %>
         </div>
       </div>
       <div class="row">
         <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2 image-upload-section">
           <h3>Upload New Profile Image</h3>
-          <%= render partial: 'shared/forms/img_upload_form',
-                     locals: {
-                               form: f,
-                               gallery: :profile_gallery,
-                               build: current_user.profile.profile_gallery.images.build
-                              } %>
+          <%= profile_upload_form(f) %>
         </div>
       </div>
       <div class="row">

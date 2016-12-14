@@ -1,0 +1,28 @@
+<div class="row">
+
+  <section class="post post-small col-xs-12">
+    <div class="row">
+      <header class="post-header col-xs-12">
+        <p>Post</p>
+      </header>
+    </div>
+
+    <%= form_for [user, post], html: {class: "form-horizontal"} do |f| %>
+    <div class="row">
+      <section class="post-content col-xs-12">
+        <%= f.label :body, "Tell the world something", class: "sr-only" %>
+        <%= f.text_area :body, class: "form-control", rows: 3, placeholder: "Tell the world something..." %>
+      </section>
+    </div>
+
+    <div class="row">
+      <section class="post-footer col-xs-12">
+        <button type="submit" class="btn btn-primary pull-right">Post</button>
+        <div class="clearfix"></div>
+      </section>
+    </div>
+    <% end %>
+
+  </section>
+
+</div>

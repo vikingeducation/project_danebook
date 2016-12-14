@@ -42,21 +42,25 @@ module ApplicationHelper
      "#{user.profile.first_name} #{user.profile.last_name}"
   end
 
-  def render_image_upload(form, gallery, build = nil)
+  def image_upload_form(form, gallery, build = nil)
     if Rails.configuration.aws_images
-      form.fields_for gallery do |gf|
-        if defined?(build)
-          gf.fields_for :images, build do |gif|
-            render partial: 'shared/forms/img_form_fields' , locals: { form: gif }
-          end
-        else
-          gf.fields_for :images do |gif|
-            render partial: 'shared/forms/img_form_fields' , locals: { form: gif }
-          end
-        end
-      end
+      render_image_upload(form, gallery, build)
     else
       "<h4>Image Uploading disabled by admin</h4>".html_safe
     end
+  end
+
+  def render_image_upload(form, gallery, build)
+      form.fields_for gallery do |gf|
+        if defined?(build)
+          gf.fields_for :images, build do |gif|
+            render partial: 'shared/forms/img_upload_form' , locals: { form: gif }
+          end
+        else
+          gf.fields_for :images do |gif|
+            render partial: 'shared/forms/img_upload_form' , locals: { form: gif }
+          end
+        end
+      end
   end
 end

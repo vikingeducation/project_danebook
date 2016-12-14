@@ -2,7 +2,9 @@
 <section id="about" class="post col-xs-12">
   <div class="row">
     <header class="post-header col-xs-12">
-      <%= link_to "Edit Profile", edit_user_profile_path(current_user), class: "edit-button btn btn-primary" %>
+      <% if @user == current_user %>
+        <%= link_to "Edit Profile", edit_user_profile_path(current_user), class: "edit-button btn btn-primary" %>
+      <% end %>
       <h2>About</h2>
     </header>
   </div>

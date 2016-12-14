@@ -1,24 +1,25 @@
-<section class="post post-<%= size %> col-xs-12">
+<div class="row">
+  <section class="post post-<%= size %> col-xs-12">
 
-  <div class="row">
+    <div class="row">
 
 
-    <section class="post-content col-xs-12" onclick="location.href = '<%= user_post_path(post.user, post) %>'">
+      <section class="post-content col-xs-12" onclick="location.href = '<%= user_post_path(post.user, post) %>'">
 
-      <div class="row">
-        <div class="profile col-xs-12">
-          <div class="profile-img pull-left">
-            <a href="about.html"><img src="<%= render_profile_img(post.user.profile) %>" alt=""></a>
-          </div>
-          <div class="profile-info pull-left">
-            <%= link_to format_user_name(post.user), user_path(post.user) %>
-            <p><small><%= post.created_at.strftime("Posted on %A, %d/%m/%Y") %></small></p>
+        <div class="row">
+          <div class="profile col-xs-12">
+            <div class="profile-img pull-left">
+              <a href="about.html"><img src="<%= render_profile_img(post.user.profile) %>" alt=""></a>
+            </div>
+            <div class="profile-info pull-left">
+              <%= link_to format_user_name(post.user), user_path(post.user) %>
+              <p><small><%= post.created_at.strftime("Posted on %A, %d/%m/%Y") %></small></p>
+            </div>
           </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12">
-          <p><%= post.body %></p>
+        <div class="row">
+          <div class="col-xs-12">
+            <p><%= post.body %></p>
           </div>
         </div>
 
@@ -32,7 +33,7 @@
             <%= render_like(post) %>
             <%= link_to "Comment", new_user_post_comment_path(post.user, post), class: "public"%>
             <% if post.user == current_user %>
-              <a href="#" class="private pull-right">Delete</a>
+            <a href="#" class="private pull-right">Delete</a>
             <% end %>
           </section>
           <% unless post.likes.size == 0 %>
@@ -46,10 +47,11 @@
         <%= render_post_comments(post) %>
 
         <% if content_for?(:post_footer) %>
-          <%= yield :post_footer %>
+        <%= yield :post_footer %>
         <% end %>
         <div class="clearfix"></div>
       </section>
     </div>
 
   </section>
+</end>

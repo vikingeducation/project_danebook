@@ -13,9 +13,9 @@ Rails.application.routes.draw do
       resources :comments, defaults: { commentable: 'Post' }
   end
 
-  # resources :comments do
-  #   resource :like, only: [:create, :destroy], defaults: { likeable: 'Comment' }
-  # end
+  resources :comments do
+    resource :like, only: [:create, :destroy], defaults: { likeable: 'Comment' }
+  end
 
   # resources :friendings, only: [:create, :destroy]
 

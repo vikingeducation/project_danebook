@@ -11,7 +11,9 @@ class User < ApplicationRecord
   has_many :received_friendings, foreign_key: :friend_id, class_name: "Friending"
   has_many :users_friended_by, through: :received_friendings, source: :friend_initiato
 
-  # has_many :comments
+  has_many :likes
+
+  has_many :comments
 
   accepts_nested_attributes_for :profile
 

@@ -1,47 +1,36 @@
 class LikesController < ApplicationController
 
-  before_action :require_login, :except => [:show]
-
-#Like.create(user_id: b.user_id, likeable_id: b.id, likeable_type: "Post")
-
   def create
-    @post = Post.find(params[:post_id])
-    @user = current_user
-    @type = params[:likeable]
-
+    type = params[:likeable]
+    create_context
     @like = Like.new
+    @like.update_attributes(user_id: current_user.id,
+                        likeable_id: @likeable.id,
+                      likeable_type: type)
+    @likeable.like_count += 1
+    @likeable.save
 
-    @like.update_attributes(user_id: @user.id,
-    likeable_id: @post.id,
-    likeable_type: @type)
-
-    @post.like_count += 1
-    @post.save
     redirect_to user_timeline_url(current_user)
   end
 
   def destroy
-    @post = Post.find(params[:post_id])
-    @like = @post.likes.find_by_user_id(current_user.id)
-    # @post.likes.find_by_user_id(current_user)
-
-    @like.destroy
-
-    @post.like_count -= 1
-    @post.save
-
+    create_context
+    context = @likeable.class.name.constantize
+    like = @likeable.likes.find_by_user_id(current_user.id)
+    like.destroy
+    @likeable.like_count -= 1
+    @likeable.save #go back to
     redirect_to user_timeline_url(current_user)
   end
 
   private
 
-    def context
-      if params[:likeable_type] == 'Post'
-        #
-      elsif params[:likeable_type] == 'Comment'
-        #
+    def create_context
+      if params[:likeable] == 'Post'
+        @likeable = Post.find(params[:post_id])
+      elsif params[:likeable] == 'Comment'
+        @likeable = Comment.find(params[:comment_id])
       end
     end
-
 
 end

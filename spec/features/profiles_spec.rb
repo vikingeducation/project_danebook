@@ -3,6 +3,9 @@ require 'rails_helper'
 feature "Editing Profile" do
   let(:profile) {create(:profile)}
   let(:user){ create(:user, profile: profile) }
+  let(:profile2) {create(:profile)}
+  let(:user2){ create(:user, profile: profile2) }
+  let(:post){ create(:post,user: user2 )}
 
   before do
     visit root_url
@@ -47,5 +50,20 @@ feature "Editing Profile" do
  
   end
 
+  context "Browsing Profies" do
+    scenario "Can look at other users profiles" do
+      user
+      user2
+      post
+      click_link "Danebook"
+      click_link user2.first_name
+      expect(page).to have_content("Words to Live By")
+    end
 
+    scenario "Can look at own profiles" do
+      user
+      click_link "About"
+      expect(page).to have_content("Words to Live By")
+    end
+  end
 end

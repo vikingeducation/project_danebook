@@ -107,6 +107,7 @@
                     <div class="container-fluid">
                       <!-- 1st row -->
                       <div class="row"> 
+                      <!-- This deliberately shows the current user's friends -->
                       <%= render "/shared/friends_side", friend: @user.friended_users.first%>
                       <%= render "/shared/friends_side", friend: @user.friended_users.second%>
                       <%= render "/shared/friends_side", friend: @user.friended_users.third%>

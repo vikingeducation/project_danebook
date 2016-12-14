@@ -37,7 +37,33 @@ feature "Friendships" do
       click_link "See More Friends"
       expect(page).to have_content(user2.first_name)
     end
+
+    scenario "Friends page can be reached from nav 2" do
+      user 
+      user2 
+      post2 
+      friendship
+      click_link "About"
+      click_link "Friends"
+      expect(page).to have_content(user2.first_name)
+    end
+
+    scenario "Clicking a friend from the sidebar takes you to their show page" do
+      user 
+      user2 
+      post2 
+      friendship
+      click_link "About"
+      click_link "Friends"
+      click_link "Timeline"
+
+      click_link user2.first_name
+
+      expect(page).to have_content("Basic Information")
+    end
   end
+
+
 
   context "Unmaking Friends" do
     scenario "Removing a friend from their view page" do
@@ -50,6 +76,19 @@ feature "Friendships" do
       click_link "Revoke Friend Request"
       expect(page).to have_content("Request revoked")
     end
+
+    scenario "Removing a friend from their post index" do
+      user 
+      user2 
+      post2 
+      friendship
+      click_link "Danebook"
+      first('.author-box').click_link(user2.first_name)
+      click_link "User Timeline"
+      click_link "Revoke Friend Request"
+      expect(page).to have_content("Request revoked")
+    end
+
 
     scenario "Removing a friend from the friend view page" do
       user 

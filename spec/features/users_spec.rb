@@ -6,27 +6,16 @@ feature "sign in" do
 
   context "unauthenticated user" do
 
-
     scenario "can create a profile" do
       expect{create_account}.to change(User, :count).by(1)
     end
   end
 
-
-
-    context "returning user" do
-      scenario "signing in brings a user to their timeline page" do
-        sign_in(user)
-        expect(current_path).to eq(user_timeline_path(user))
-      end
+  context "returning user" do
+    scenario "signing in brings a user to their timeline page" do
+      sign_in(user)
+      expect(current_path).to eq(user_timeline_path(user))
     end
-
-      # click_on "Enter the Danebook"
-
-
-
-
-
-
+  end
 
 end

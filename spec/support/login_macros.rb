@@ -20,10 +20,10 @@ module LoginMacros
       fill_in "Password confirmation", with: "asdfasdf"
       fill_in "First name", with: "Elon"
       fill_in "Last name", with: "Musk"
-      select('January', from: 'Select month')
-      select('1', from: 'Select day')
-      select('1980', from: 'Select year')
-      choose('Male')
+      find("#user_profile_attributes_birthday_2i").select("January")
+      find("#user_profile_attributes_birthday_3i").select("1")
+      find("#user_profile_attributes_birthday_1i").select("1980")
+      choose('user_profile_attributes_gender_male')
       click_on "Create Account"
     end
   end

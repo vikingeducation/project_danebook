@@ -1,4 +1,4 @@
-<div class="media comment">
+<div class="media comment" data-id="<%= comment.id %>">
     <a class="media-left" href="#">
       <% if comment.author.profile_photo %>
         <%= image_tag(comment.author.profile_photo.image.url(:thumb) ) %>
@@ -10,11 +10,11 @@
     <%= link_to comment.author.name, about_user_path(comment.author), class: "media-heading"%></a> <span class="text-muted"><%= comment.commented_on %></span>
     <p><%= comment.text %></p>
       <% unless comment_liked_by_current_user(comment, @comment_likes) %>
-        <%= link_to "Like", like_post_comment_path(p,comment) %></a>
+        <%= link_to "Like", like_post_comment_path(p,comment), class: :like_link, remote: true %></a>
       <% else %>
-        <%= link_to "Unlike", unlike_post_comment_path(p,comment) %></a>
+        <%= link_to "Unlike", unlike_post_comment_path(p,comment), class: :like_link, remote: true %></a>
       <% end %>
-      <span class="text-muted"><%= comment.likes.size %> people like this</span>
+      <span class="text-muted x-people-like-this"><%= comment.likes.size %> people like this</span>
     <% if comment.author == current_user %>
       <%= link_to "Delete", post_comment_path(p, comment), method: "DELETE" ,class: "pull-right"%></a>
     <% end %>

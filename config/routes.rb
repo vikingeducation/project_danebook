@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     resource :like, only: [:create, :destroy], defaults: { likeable: 'Comment' }
   end
 
-  # resources :friendings, only: [:create, :destroy]
+  resources :friendings, only: [:create, :destroy]
 
   resource :session, only: [:new, :create, :destroy]
   get 'login' => 'sessions#new'

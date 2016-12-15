@@ -30,6 +30,14 @@
         <% end %>
 
 
+        <% if current_user.id != @user.id %>
+          <% if current_user.friended_users.pluck(:id).include?(@user.id) %>
+              <%= link_to "Unfriend", friending_path(@user), method: :delete, class: "btn btn-danger col-sm-2" %>
+            <% else %>
+              <%= link_to "Friend", friendings_path(id: @user.id), method: :post, class: "btn btn-success col-sm-2" %>
+            <% end %>
+        <% end %>
+
 
 
     </section>

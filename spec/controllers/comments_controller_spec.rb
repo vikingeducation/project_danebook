@@ -5,6 +5,7 @@ describe CommentsController do
 
   let(:user){ create(:user) }
   let(:post){create(:post, user: user)}
+  let(:post2){create(:post, user: user)}
   let(:user_comment){ create(:comment, user: user, commentable: post) }
  
     describe 'deleting a comment' do
@@ -28,6 +29,30 @@ describe CommentsController do
         process(:destroy, params: {id: post.id, type: "Post"})
         expect(controller).to set_flash[:success]
       end 
-    end
 
+      it "It redirects you back" do
+        process(:destroy, params: {id: post.id, type: "Post"})
+        expect(controller).to redirect_to root_path
+      end 
+    end
+    describe 'creating a comment' do
+       before :each do
+        request.cookies["auth_token"] = user.auth_token
+      end
+
+      it "comments can be created in the db" do 
+        expect{process(:create, params: {id: post.id, type: "Post", comment: {body: "balalalalaala"}}) 
+        }.to change(Comment, :count).by(1)
+      end  
+ 
+      it "comments yields a flash" do
+        process(:create, params: {id: post2.id, type: "Post", comment: {body: "balalalalaala"}})
+        expect(controller).to set_flash[:success]
+      end 
+
+      it "It redirects you back" do
+        process(:create, params: {id: post.id, type: "Post", comment: {body: "balalalalaala"}})
+        expect(controller).to redirect_to root_path
+      end 
+    end
 end

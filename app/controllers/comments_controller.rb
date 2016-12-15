@@ -15,7 +15,6 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    p params
     @comment = current_user.comments.where(commentable_id: params[:id], commentable_type: params[:type])
     unless @comment.empty?
 

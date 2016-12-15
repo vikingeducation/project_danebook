@@ -17,6 +17,9 @@ gem 'faker'
 gem 'binding_of_caller'
 gem 'bcrypt', '~> 3.1.7'
 
+gem 'paperclip'
+gem 'aws-sdk'
+
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'jazz_fingers'

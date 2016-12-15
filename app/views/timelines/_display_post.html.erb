@@ -37,8 +37,6 @@
                     <% if comment.persisted? %>
                     <%= render partial: 'comments/posted_comment', locals: { user: user, comment: comment, post: post } %>
                   <% end %>
-
-
                 </p>
 
                   <% if comment.likes.find_by_user_id(current_user.id) %>

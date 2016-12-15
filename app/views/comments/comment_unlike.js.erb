@@ -1,4 +1,3 @@
-console.log("unlike");
 var comment = $('[data-id='+<%= @comment.id %>+'].comment')
 comment.find('.like_link').html('Like');
 comment.find('.like_link').attr('href', comment.find('.like_link').attr('href').replace('unlike', 'like'));

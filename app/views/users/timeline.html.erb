@@ -83,12 +83,12 @@
             <% end %>
           <% end %>
 
-          <% @posts.each do |p| %>
-            <%= render partial: 'posts/post', locals: {p: p} %>
-          <% end %>
-
-          <% @photos.each do |p| %>
-            <%= render partial: 'photos/photo', locals: {p: p} %>
+          <% @articles.each do |p| %>
+            <% if p.class == Post %>
+              <%= render partial: 'posts/post', locals: {p: p} %>
+            <% else p.class == Photo %>
+              <%= render partial: 'photos/photo', locals: {p: p} %>
+            <% end %>
           <% end %>
         </div>
       </div>

@@ -7,7 +7,7 @@
       <% end %>
     </a>
   <div class="media-body">
-    <%= link_to comment.author.name, about_user_path(comment.author), class: "media-heading"%></a> <span class="text-muted"><%= comment.commented_on %></span>
+    <%= link_to comment.author.name, timeline_user_path(comment.author), class: "media-heading"%></a> <span class="text-muted"><%= comment.commented_on %></span>
     <p><%= comment.text %></p>
       <% unless comment_liked_by_current_user(comment, @comment_likes) %>
         <%= link_to "Like", like_post_comment_path(p,comment), class: :like_link, remote: true %></a>

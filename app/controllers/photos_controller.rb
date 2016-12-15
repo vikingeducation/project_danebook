@@ -33,7 +33,8 @@ class PhotosController < ApplicationController
   end
 
   def show
-    @photo = Photo.includes(:user).find(params[:id])
+    @photo = Photo.includes(:user, :comments => [{:author => :profile_photo}]).find(params[:id])
+    @comments = @photo.comments.order(created_at: :desc);
     @user = @photo.user
     @profile_photo = @photo.user.profile_photo
     @comment = Comment.new

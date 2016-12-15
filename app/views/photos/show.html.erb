@@ -5,17 +5,18 @@
       <div class ="row">
         <!-- Page Heading -->
         <div class="col-md-12 heading">
-          <h1>Photo</h1>
         </div>
       </div>
       <div class="row">
         <div class="col-md-8 text-center large-photo-container">
           <%= image_tag @photo.image, :class => "photo-show" %><br>
-          <div class="pull-right">
-            <%= link_to "Set as Profile", profile_photo_path(@photo) %><br>
-            <%= link_to "Set as Cover", cover_photo_path(@photo) %><br>
-            <%= link_to "Delete Photo", photo_path(@photo), method: "DELETE" %><br>
-          </div>
+          <% if @photo.user == current_user %>
+            <div class="pull-right">
+              <%= link_to "Set as Profile", profile_photo_path(@photo) %><br>
+              <%= link_to "Set as Cover", cover_photo_path(@photo) %><br>
+              <%= link_to "Delete Photo", photo_path(@photo), method: "DELETE" %><br>
+            </div>
+          <% end %>
         </div>
         <div class="col-md-4 photo-comments-container">
           <div class="row">
@@ -33,10 +34,12 @@
               <% end %>
             </div>
           </div>
-          <div class="row photo-comments-container">
+          <div class="row timeline-heading photo-comments-container">
             <%= link_to "Like", "#" %> 3 others like this.
-            <%= render partial: 'comments/comment_photo_form', locals: {photo: @photo, comment: @comment} %>
-            <%= render partial: 'photos/comments', locals: {p: @photo, comments: @photo.comments } %>
+            <div id="photo-show">
+              <%= render partial: 'comments/comment_photo_form', locals: {photo: @photo, comment: @comment} %>
+              <%= render partial: 'photos/comments', locals: {p: @photo, comments: @comments } %>
+            </div>
 
           </div>
         </div>

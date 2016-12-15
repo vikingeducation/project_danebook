@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(whitelisted_comments_params)
     if @comment.save
-      flash[:success] = "Successfully commented on the post"
+      # flash[:success] = "Successfully commented on the post"
       # User.delay.send_comment_email(@comment.commentable.user_id)
       respond_to do |format|
         format.html { redirect_to timeline_user_path(current_user) }

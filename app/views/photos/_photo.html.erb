@@ -10,12 +10,14 @@
           <% end %>
         </a>
         <div class="media-body">
-          <a href="#" class="media-heading"><%= link_to p.user.name, about_user_path(p.user) %></a>
+          <a href="#" class="media-heading"><%= link_to p.user.name, timeline_user_path(p.user) %></a>
           <p class="text-muted"><%= p.posted_on %></p>
         </div>
       </div>
       <div class="timeline-image-container">
+        <%= link_to(p) do %>
         <%= image_tag(p.image , :class => "timeline-image") %>
+        <% end %>
       </div>
     </div>
   </div>

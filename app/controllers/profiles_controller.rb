@@ -4,6 +4,8 @@ class ProfilesController < ApplicationController
   def edit
     @profile = Profile.find(params[:id])
     @user =  @profile.user
+    @profile_photo = @user.profile_photo
+    @cover_photo = @user.cover_photo
   end
 
   def update

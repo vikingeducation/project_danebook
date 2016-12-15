@@ -27,7 +27,7 @@
                 <% end %>
               </div>
               <div class="media-body media-middle">
-                <%= link_to friend.name, about_user_path(friend), class: "media-heading" %>
+                <%= link_to friend.name, timeline_user_path(friend), class: "media-heading" %>
                 <P><%= friend.friendships_count%> Friends</P></div>
               <div class="media-right ">
                 <%= link_to "Unfriend Me", friendship_path(friend.id), method: "DELETE", class: "btn btn-default unfriend-btn" %>
@@ -46,7 +46,7 @@
                 <% end %>
               </div>
               <div class="media-body media-middle">
-                <%= link_to friend.name, about_user_path(friend), class: "media-heading" %>
+                <%= link_to friend.name, timeline_user_path(friend), class: "media-heading" %>
                 <i class="text-danger">(Request Pending)</i>
                 <P><%= friend.friendships_count%> Friends</P>
 

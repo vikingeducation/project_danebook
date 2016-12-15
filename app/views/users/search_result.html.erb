@@ -17,7 +17,7 @@
                 <img class="media-object" src="user_silhouette_generic.gif">
               </div>
               <div class="media-body media-middle">
-                <%= link_to user.name, about_user_path(user), class: "media-heading" %>
+                <%= link_to user.name, timeline_user_path(user), class: "media-heading" %>
                 <P><%= user.friendships_count%> Friends</P>
                 <p>Currently lives in <%= user.profile.address %></p>
                 <p>From <%= user.profile.hometown %></p>

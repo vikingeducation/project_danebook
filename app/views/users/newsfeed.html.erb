@@ -18,7 +18,7 @@
                 <% end %>
               </div>
               <div class="media-body">
-                <a href="#" class="media-heading"><%= link_to current_user.name, about_user_path(current_user) %></a>
+                <a href="#" class="media-heading"><%= link_to current_user.name, timeline_user_path(current_user) %></a>
                 <%= link_to "Edit Profile", edit_profile_path(current_user.profile)  %>
               </div>
             </div>

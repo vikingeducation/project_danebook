@@ -10,7 +10,7 @@ class LikesController < ApplicationController
     @likeable.like_count += 1
     @likeable.save
 
-    redirect_to user_timeline_url(current_user)
+    redirect_to :back
   end
 
   def destroy
@@ -19,8 +19,8 @@ class LikesController < ApplicationController
     like = @likeable.likes.find_by_user_id(current_user.id)
     like.destroy
     @likeable.like_count -= 1
-    @likeable.save #go back to
-    redirect_to user_timeline_url(current_user)
+    @likeable.save
+    redirect_to :back
   end
 
   private

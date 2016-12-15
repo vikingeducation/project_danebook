@@ -12,7 +12,6 @@ class SessionsController < ApplicationController
       end
       flash[:success] = "Welcome!"
       redirect_to user_timeline_path(current_user)
-      # redirect_to edit_user_profile_url(current_user)
     else
       flash.now[:error] = "Couldn't log in"
       redirect_to root_url

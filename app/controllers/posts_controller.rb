@@ -1,7 +1,6 @@
 class PostsController < ApplicationController
 
   skip_before_action :require_login, only: [:show, :index]
-  # before_action :require_current_user, :only => [:create]
 
   def new
     @post = Post.new

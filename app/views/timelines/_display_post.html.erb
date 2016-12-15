@@ -49,7 +49,9 @@
 
                   <%= "#{pluralize(comment.like_count, "like")}" if comment.like_count > 0 %>
 
-
+                  <% if comment.user_id == current_user.id %>
+                    <%= link_to "Delete", { :controller => 'comments', :action => 'destroy', :id => comment.id }, method: :delete, data: { confirm: 'Delete comment?' } %>
+                  <% end %>
 
 
                 <% end %>

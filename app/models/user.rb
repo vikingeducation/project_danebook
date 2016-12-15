@@ -3,6 +3,7 @@ class User < ApplicationRecord
   has_one :profile, dependent: :destroy, inverse_of: :user
   has_many :posts
   has_many :comments
+  has_many :photos
 
   has_many :initiated_friendings, foreign_key: :friender_id, class_name: "Friending", dependent: :destroy
   has_many :friended_users, through: :initiated_friendings, source: :friend_recipient

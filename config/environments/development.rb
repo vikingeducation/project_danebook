@@ -52,6 +52,8 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
+  Paperclip.options[:command_path] = "/usr/bin/convert"
+
   config.paperclip_defaults = {
 
     # Don't forget to make S3 your storage option!

@@ -1,0 +1,8 @@
+<div class="text-center">
+  <p>Paste the URL to a photo on the web (TODO)</p>
+  <p>Select a photo from your hard drive:</p>
+  <%= form_for [@user, @photo] do |f| %>
+    <%= f.file_field :photo_data, class: "center-block" %>
+    <%= f.submit %>
+  <% end %>
+</div>

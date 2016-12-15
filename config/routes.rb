@@ -17,6 +17,7 @@ Rails.application.routes.draw do
         get "unlike" => "likes#destroy"
       end
     end
+    resources :photos, except: [:edit, :update]
   end
 
   resource :session, only: [:new, :create, :destroy]

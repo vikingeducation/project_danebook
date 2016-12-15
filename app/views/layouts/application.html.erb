@@ -12,7 +12,7 @@
   </head>
 
   <body>
-    <% if current_page?(root_url) || current_page?('/users/new') %>
+    <% if !current_user %>
       <%= render 'shared/navbar_homepage' %>
     <% else %>
       <%= render 'shared/navbar' %>

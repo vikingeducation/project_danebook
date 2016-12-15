@@ -51,15 +51,14 @@
             start_year: Date.today.year, end_year: Date.today.year-90 , prompt: true %>
       </row>
       <row>
-        <%= field_with_errors(@user,:gender_cd) %>
         <div class="form-group">
-          <div class="col-md-4 radio-button">
+          <div class="col-md-5 radio-button">
             <%= user_fields.radio_button(:gender_cd, 0) %>
             <%= user_fields.label(:gender_cd, "Female") %>
           </div>
         </div>
         <div class="form-group">
-          <div class="col-md-4 radio-button">
+          <div class="col-md-5 radio-button">
             <%= user_fields.radio_button(:gender_cd, 1) %>
             <%= user_fields.label(:gender_cd, "Male") %>
           </div>

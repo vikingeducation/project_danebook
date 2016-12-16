@@ -12,7 +12,8 @@ class ApplicationController < ActionController::Base
         notices.each do |notice|
           flash[:info] << notice.message
         end
-        Notice.destroy_for_user(current_user)
+        current_user.notices.destroy_all
+        # p Notice.destroy_for_user(current_user)
       end
     end
 

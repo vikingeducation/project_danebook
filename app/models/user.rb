@@ -3,8 +3,8 @@ class User < ApplicationRecord
 
   validates :first_name, :last_name, presence: true
   validates :email, presence: true, uniqueness: true
-  validates :birthday, presence: true
-  validates :gender_cd, presence: true
+  validates :birthday, presence: true, :if => "provider.blank?"
+  validates :gender_cd, presence: true, :if => "provider.blank?"
   validates :password,
             :length => { :in => 8..24 },
             :allow_nil => true
@@ -53,6 +53,26 @@ class User < ApplicationRecord
     initiated_friends.where(id: recieved_friends.pluck(:id))
     # self.initiated_friends & self.recieved_friends
   end
+
+  def self.from_omniauth(auth)
+    return nil unless auth
+    where(auth.slice("provider", "uid").to_hash).first || create_from_omniauth(auth)
+  end
+
+  def self.create_from_omniauth(auth)
+    create! do |user|
+      user.provider = auth["provider"]
+      user.uid      = auth["uid"]
+      user.email    = auth["info"]["email"]
+      user.name     = auth["info"]["name"]
+      user.password = "password123"
+    end
+  end
+
+  def password_required?
+    super && provider.blank?
+  end
+
   private
   def self.send_welcome_email(id)
     user = User.find(id)

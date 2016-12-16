@@ -16,7 +16,7 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
+    @user = User.from_omniauth(env["omniauth.auth"]) || User.new(user_params)
     if @user.save && @user.build_profile.save
       permanent_sign_in(@user)
       User.delay.send_welcome_email(@user.id)

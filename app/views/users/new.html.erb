@@ -68,6 +68,11 @@
       <row>
         <%= user_fields.submit "Sign Up!", class:"btn btn-success col-md-12" %>
       </row>
+      <row>
+        <%= link_to "/auth/github" do %>
+        <button type="button" class="btn btn-primary github"> Sign Up with Github! </button>
+        <% end %>
+      </row>
       <% end %>
     </div>
   </div>

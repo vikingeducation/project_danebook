@@ -6,7 +6,7 @@
   </div>
   <div class="row">
     <div class="col-xs-12">
-      <span class="timeline-field">Born on: </span><%=user.birthday.to_formatted_s(:long_ordinal)%>
+      <span class="timeline-field">Born on: </span><%= user.birthday ? user.birthday.to_formatted_s(:long_ordinal) : "nil"%>
     </div>
   </div>
   <div class="row">

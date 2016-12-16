@@ -30,7 +30,7 @@
           </div>
           <div class="row fixed-form-row">
             <p class="col-xs-4">Birthday</p>
-            <p class="col-xs-8"><%= @user.birthday.to_formatted_s(:long_ordinal) %></p>
+            <p class="col-xs-8"><%= @user.birthday ? @user.birthday.to_formatted_s(:long_ordinal) : "nil" %></p>
           </div>
           <div class="row">
             <p class="col-xs-4 fixed-form-row">College</p>

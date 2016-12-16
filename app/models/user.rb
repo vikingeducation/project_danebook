@@ -24,7 +24,7 @@ class User < ApplicationRecord
 
   has_many :notices, dependent: :destroy
 
-  has_many :galleries
+  has_many :galleries, dependent: :destroy
 
 
   has_secure_password

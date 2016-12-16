@@ -1,6 +1,8 @@
 class Profile < ApplicationRecord
   before_save :format_input
 
+  after_create :send_welcome_email
+
   enum gender_type: [:Male, :Female, :Other]
 
   belongs_to :user, inverse_of: :profile
@@ -32,6 +34,10 @@ class Profile < ApplicationRecord
     def format_input
       first_name.capitalize! if first_name
       last_name.capitalize! if last_name
+    end
+
+    def send_welcome_email
+      ProfileMailer.welcome(self.id).deliver_later
     end
 
 end

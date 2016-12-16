@@ -1,5 +1,5 @@
 class ProcessImageJob < ApplicationJob
-  queue_as :default
+  queue_as :images
 
   def perform(id)
     # Do something later

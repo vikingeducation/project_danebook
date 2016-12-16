@@ -8,7 +8,9 @@
           Photos
         </div>
         <div class="panel-body">
-
+          <% @photos.each do |photo| %>
+            <%= image_tag photo.image.expiring_url %>
+          <% end %>
         </div>
       </div>
     </div>

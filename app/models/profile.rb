@@ -9,9 +9,9 @@ class Profile < ApplicationRecord
   validates :about_me, length: { maximum: 5000 }
   validates :sex, length: { maximum: 10 }
 
-  has_attached_file :photo
+  has_attached_file :photo, default_url: '/assets/user_silhouette_generic.gif'
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\z/
-  has_attached_file :background
+  has_attached_file :background, default_url: '/assets/hogwarts_small.jpg'
   validates_attachment_content_type :background, content_type: /\Aimage\/.*\z/
 
   def name

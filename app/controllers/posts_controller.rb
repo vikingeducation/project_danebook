@@ -6,6 +6,7 @@ class PostsController < ApplicationController
   end
 
   def create
+    sdfdsl
     @user = current_user
     @post = @user.posts.build(whitelisted_params)
     if @post.save

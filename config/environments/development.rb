@@ -45,10 +45,31 @@ Rails.application.configure do
   # Suppress logger output for asset requests.
   config.assets.quiet = true
 
+  config.paperclip_defaults = {
+
+    storage: :s3,
+
+    s3_region: Rails.application.secrets.s3_region,
+
+    s3_credentials: {
+
+      s3_host_name: "s3-us-west-2.amazonaws.com",
+
+      bucket: Rails.application.secrets.s3_bucket_name,
+      access_key_id: Rails.application.secrets.aws_access_key_id,
+      secret_access_key: Rails.application.secrets.aws_secret_access_key
+
+    }
+
+  }
+
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+
+  Paperclip.options[:command_path] = "/usr/local/bin"
+
 end

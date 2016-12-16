@@ -3,9 +3,15 @@ Rails.application.routes.draw do
   root 'users#new'
 
   resources :users do
+
     resources :posts do
       resources :comments
     end
+
+    resources :photos do
+      resources :comments
+    end
+    
   end
 
   resources :likes, only: [:create, :destroy]

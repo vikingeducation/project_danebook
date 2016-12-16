@@ -1,4 +1,7 @@
 FactoryGirl.define do
+  factory :photo do
+    
+  end
 
   factory :user, aliases: [:author] do
     sequence(:first_name) { |n| "Foo#{n}" }
@@ -14,6 +17,7 @@ FactoryGirl.define do
     birth_year "2006"
     gender "Female"
     user
+
   end
 
   factory :post do

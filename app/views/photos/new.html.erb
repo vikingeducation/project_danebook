@@ -1,0 +1,40 @@
+<section id ="interior-page">
+
+  <%= render partial: "shared/header", locals: { user: @user } %>  
+
+  <main class="container">
+    <div class="row">
+      <div class="panel panel-default col-xs-offset-1 col-xs-10">
+        <div class="panel-heading row">
+          <div class="panel-title">
+            <h4 class="col-xs-offset-5 col-xs-2 text-center">
+            Photos</h4>
+
+          </div>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+
+            <p>Paste the URL to a photo on the web...</p>
+
+            <%= form_for [@user, @photo] do |p| %>
+              <%= p.text_field :photo, placeholder: "http://example.com/photo1.jpg" %>
+              <%= p.submit "Use Web Photo" %>
+            <% end %>
+
+            <p>or...</p>
+
+            <p>Select a photo from your hard drive...</p>
+
+            <%= form_for [@user, @photo] do |p| %>
+              <%= p.file_field :photo %>
+              <%= p.submit "Upload Photo" %>
+            <% end %>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+</section>

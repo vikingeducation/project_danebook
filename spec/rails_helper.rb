@@ -30,6 +30,7 @@ ActiveRecord::Migration.maintain_test_schema!
 
 RSpec.configure do |config|
   
+  config.include UserMacros
   config.include FeatureMacros
   config.include FactoryGirl::Syntax::Methods
 

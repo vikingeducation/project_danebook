@@ -9,7 +9,9 @@
         </div>
         <div class="panel-body">
           <% @photos.each do |photo| %>
-            <%= image_tag photo.image.expiring_url %>
+            <%= link_to photo_path(photo) do %>
+              <%= image_tag photo.image.expiring_url %>
+            <% end %>
           <% end %>
         </div>
       </div>

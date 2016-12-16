@@ -17,6 +17,8 @@ class User < ApplicationRecord
   validates :email, presence:true, length: { maximum: 50 }, uniqueness: true
   validates :password, length: { minimum: 8, maximum: 256 }, allow_nil: true
 
+  after_create :queue_welcome_email
+
   def generate_token
     begin
       self[:auth_token] = SecureRandom.urlsafe_base64
@@ -32,5 +34,10 @@ class User < ApplicationRecord
   def name
     self.first_name + ' ' + self.last_name
   end
+
+  private
+    def queue_welcome_email
+      UserMailer.welcome(self).deliver_later
+    end
 
 end

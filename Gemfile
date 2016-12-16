@@ -21,6 +21,8 @@ gem 'aws-sdk'
 
 gem 'figaro'
 
+gem 'delayed_job_active_record'
+
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'jazz_fingers'

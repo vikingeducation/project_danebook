@@ -58,7 +58,7 @@ RSpec.describe Post, type: :model do
     my_post.save
     my_post.likes.create(user_id: bob.id)
     my_post.likes.create(user_id: larry.id)
-    expect(my_post.likes.map { |like| like.user_id }).to eq([bob.id, larry.id])
+    expect(my_post.likes.map { |like| like.user_id }).to match_array([bob.id, larry.id])
   end
 
 end

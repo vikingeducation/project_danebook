@@ -39,30 +39,30 @@ class UsersController < ApplicationController
   def timeline
     @post = Post.new
     @comment = Comment.new
-    @posts = Post.includes(:likes, :user, :comments => [{:author => :profile_photo}, :likes])
+    @posts = Post.includes(:user, :comments => [{:author => :profile_photo}])
                  .where(user_id: @user.id).order(created_at: :desc)
     @user = User.find(params[:id])
     @friends = @user.friends.includes(:profile_photo)
-    @photos = Photo.includes(:likes, :user, :comments => [{:author => :profile_photo}, :likes])
+    @photos = Photo.includes(:user, :comments => [{:author => :profile_photo}])
                    .where(user_id: @user.id)
     @articles = @posts + @photos
     @articles = @articles.sort_by(&:created_at).reverse
-    @comment_likes = current_user.initiated_likes.where(likable_type: "Comment")
-    @post_likes = current_user.initiated_likes.where(likable_type: "Post")
-    @photo_likes = current_user.initiated_likes.where(likable_type: "Photo")
+    @comment_likes_cu = current_user.initiated_likes.where(likable_type: "Comment")
+    @post_likes_cu    = current_user.initiated_likes.where(likable_type: "Post")
+    @photo_likes_cu   = current_user.initiated_likes.where(likable_type: "Photo")
   end
 
   def newsfeed
     @post = Post.new
     @comment = Comment.new
-    @posts = Post.includes(:user, :comments => [:author]).order(created_at: :desc)
-    @photos = Photo.includes({:comments => [:author]}, :user => [:profile_photo])
+    @posts = Post.includes(:user, :comments => [{:author => :profile_photo}]).order(created_at: :desc)
+    @photos = Photo.includes({:comments => [{:author => :profile_photo}]}, :user => [:profile_photo])
                    .order(created_at: :desc)
     @articles = @posts + @photos
     @articles = @articles.sort_by(&:created_at).reverse
     @articles = @articles.paginate(:page => params[:page], :per_page => 5)
 
-    @comments = Comment.includes(:author => [:profile_photo]).where(user_id: current_user.friends.pluck(:id))
+    @comments = Comment.includes(:likes, :author => [:profile_photo]).where(user_id: current_user.friends.pluck(:id))
     @likes = Like.includes(:initiated_user).where(user_id: current_user.friends.pluck(:id))
     @activities = (@articles + @comments + @likes).sort_by(&:created_at).reverse.first(10)
 

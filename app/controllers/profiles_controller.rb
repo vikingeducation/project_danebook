@@ -2,7 +2,7 @@ class ProfilesController < ApplicationController
   before_action :current_user_profile
 
   def edit
-    @profile = Profile.find(params[:id])
+    @profile = Profile.includes(:user => [:profile_photo, :cover_photo]).find(params[:id])
     @user =  @profile.user
     @profile_photo = @user.profile_photo
     @cover_photo = @user.cover_photo

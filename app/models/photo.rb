@@ -1,4 +1,4 @@
-class Photo < ApplicationRecord
+  class Photo < ApplicationRecord
   has_attached_file :image, :styles => {
                             :thumb => "64x64",
                             :small  => "150x150",

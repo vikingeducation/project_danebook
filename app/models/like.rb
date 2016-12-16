@@ -3,7 +3,6 @@ class Like < ApplicationRecord
 
   belongs_to :likable, polymorphic: true, counter_cache: true
 
-
   def initiated_user_name
     self.initiated_user.name
   end

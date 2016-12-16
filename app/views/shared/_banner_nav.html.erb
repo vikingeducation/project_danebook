@@ -17,10 +17,9 @@
 
         <a class="btn btn-default col-sm-2<%= ' active' if current_page?(user_profile_path) %>" href="<%= user_profile_path  %>" role="button">About</a>
 
-        <a class="btn btn-default col-sm-2" href="#" role="button">Photos<span class="badge">123</span>
-        </a>
+        <a class="btn btn-default col-sm-2<%= ' active' if current_page?(user_photos_path) %>" href="<%= user_photos_path %>" role="button">Photos<span class="badge"><%= @user.photos.count %></span></a>
 
-        <a class="btn btn-default col-sm-2" href="#" role="button">Friends<span class="badge">542</span>
+        <a class="btn btn-default col-sm-2<%= ' active' if current_page?(user_friendings_path) %>" href="<%= user_friendings_path %>" role="button">Friends<span class="badge"><%= current_user.friended_users.count %></span>
         </a>
 
 
@@ -42,3 +41,4 @@
 
     </section>
 </header>
+<br>

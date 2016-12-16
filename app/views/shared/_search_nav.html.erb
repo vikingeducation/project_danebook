@@ -8,7 +8,7 @@
                 <span class="icon-bar"></span>
             </button>
 
-            <%= link_to "#", class: "navbar-brand" do %>
+            <%= link_to user_timeline_path(current_user.id), class: "navbar-brand" do %>
             <%= image_tag "danish_flag.gif", class: "img-circle img-responsive img-small"  %>
             <span>Danebook</span>
             <% end %>

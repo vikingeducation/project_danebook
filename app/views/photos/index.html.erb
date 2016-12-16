@@ -1,0 +1,154 @@
+<%= render 'shared/search_nav' %>
+<%= render 'shared/banner_nav' %>
+
+<main class="container">
+    <div class="row">
+        <div class="panel panel-default col-xs-offset-1 col-xs-10">
+            <div class="panel-heading row">
+                <div class="panel-title">
+                    <h4 class="col-xs-offset-5 col-xs-2 text-center">
+                        Photos
+                    </h4>
+
+                  <% if current_user.id == @user.id %>
+                    <%= button_to "Add Photo!", new_user_photo_path(@user), :method => "get", class: "btn btn-info col-xs-2 col-xs-offset-3" %>
+                  <% end %>
+
+                </div>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+
+                <% @photos.each do |photo| %>
+                  <%= render partial: 'picture_grid', locals: { user: @user, photo: photo } %>
+                <% end %>
+
+              </div>
+
+
+
+                <!--icon_photo_small.png-->
+                <!-- <div class="row">
+                    <div class="col-sm-3 img-caption">
+                        <a class="thumbnail word" href="#"><img alt="User's Medium Photo" class="img-responsive" src="assets/images/icon_photo_small.png">
+                            <h5 class="pub-date text-center">Posted on
+                                <time datetime="2014-06-14">6/1/2014</time>
+                            </h5>
+                        </a>
+                    </div>
+                    <div class="col-sm-3 img-caption">
+                        <a class="thumbnail word" href="#"><img alt="User's Medium Photo" class="img-responsive" src="assets/images/icon_photo_small.png">
+                            <h5 class="pub-date text-center">Posted on
+                                <time datetime="2014-06-14">6/1/2014</time>
+                            </h5>
+                        </a>
+                    </div>
+                    <div class="col-sm-3 img-caption">
+                        <a class="thumbnail word" href="#"><img alt="User's Medium Photo" class="img-responsive" src="assets/images/icon_photo_small.png">
+                            <h5 class="pub-date text-center">Posted on
+                                <time datetime="2014-06-14">6/1/2014</time>
+                            </h5>
+                        </a>
+                    </div>
+                    <div class="col-sm-3 img-caption">
+                        <a class="thumbnail word" href="#"><img alt="User's Medium Photo" class="img-responsive" src="assets/images/icon_photo_small.png">
+                            <h5 class="pub-date text-center">Posted on
+                                <time datetime="2014-06-14">6/1/2014</time>
+                            </h5>
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3 img-caption">
+                        <a class="thumbnail word" href="#"><img alt="User's Medium Photo" class="img-responsive" src="assets/images/icon_photo_small.png">
+                            <h5 class="pub-date text-center">Posted on
+                                <time datetime="2014-06-14">6/1/2014</time>
+                            </h5>
+                        </a>
+                    </div>
+                    <div class="col-sm-3 img-caption">
+                        <a class="thumbnail word" href="#"><img alt="User's Medium Photo" class="img-responsive" src="assets/images/icon_photo_small.png">
+                            <h5 class="pub-date text-center">Posted on
+                                <time datetime="2014-06-14">6/1/2014</time>
+                            </h5>
+                        </a>
+                    </div>
+                    <div class="col-sm-3 img-caption">
+                        <a class="thumbnail word" href="#"><img alt="User's Medium Photo" class="img-responsive" src="assets/images/icon_photo_small.png">
+                            <h5 class="pub-date text-center">Posted on
+                                <time datetime="2014-06-14">6/1/2014</time>
+                            </h5>
+                        </a>
+                    </div>
+                    <div class="col-sm-3 img-caption">
+                        <a class="thumbnail word" href="#"><img alt="User's Medium Photo" class="img-responsive" src="assets/images/icon_photo_small.png">
+                            <h5 class="pub-date text-center">Posted on
+                                <time datetime="2014-06-14">6/1/2014</time>
+                            </h5>
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3 img-caption">
+                        <a class="thumbnail word" href="#"><img alt="User's Medium Photo" class="img-responsive" src="assets/images/icon_photo_small.png">
+                            <h5 class="pub-date text-center">Posted on
+                                <time datetime="2014-06-14">6/1/2014</time>
+                            </h5>
+                        </a>
+                    </div>
+                    <div class="col-sm-3 img-caption">
+                        <a class="thumbnail word" href="#"><img alt="User's Medium Photo" class="img-responsive" src="assets/images/icon_photo_small.png">
+                            <h5 class="pub-date text-center">Posted on
+                                <time datetime="2014-06-14">6/1/2014</time>
+                            </h5>
+                        </a>
+                    </div>
+                    <div class="col-sm-3 img-caption">
+                        <a class="thumbnail word" href="#"><img alt="User's Medium Photo" class="img-responsive" src="assets/images/icon_photo_small.png">
+                            <h5 class="pub-date text-center">Posted on
+                                <time datetime="2014-06-14">6/1/2014</time>
+                            </h5>
+                        </a>
+                    </div>
+                    <div class="col-sm-3 img-caption">
+                        <a class="thumbnail word" href="#"><img alt="User's Medium Photo" class="img-responsive" src="assets/images/icon_photo_small.png">
+                            <h5 class="pub-date text-center">Posted on
+                                <time datetime="2014-06-14">6/1/2014</time>
+                            </h5>
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-3 img-caption">
+                        <a class="thumbnail word" href="#"><img alt="User's Medium Photo" class="img-responsive" src="assets/images/icon_photo_small.png">
+                            <h5 class="pub-date text-center">Posted on
+                                <time datetime="2014-06-14">6/1/2014</time>
+                            </h5>
+                        </a>
+                    </div>
+                    <div class="col-sm-3 img-caption">
+                        <a class="thumbnail word" href="#"><img alt="User's Medium Photo" class="img-responsive" src="assets/images/icon_photo_small.png">
+                            <h5 class="pub-date text-center">Posted on
+                                <time datetime="2014-06-14">6/1/2014</time>
+                            </h5>
+                        </a>
+                    </div>
+                    <div class="col-sm-3 img-caption">
+                        <a class="thumbnail word" href="#"><img alt="User's Medium Photo" class="img-responsive" src="assets/images/icon_photo_small.png">
+                            <h5 class="pub-date text-center">Posted on
+                                <time datetime="2014-06-14">6/1/2014</time>
+                            </h5>
+                        </a>
+                    </div>
+                    <div class="col-sm-3 img-caption">
+                        <a class="thumbnail word" href="#"><img alt="User's Medium Photo" class="img-responsive" src="assets/images/icon_photo_small.png">
+                            <h5 class="pub-date text-center">Posted on
+                                <time datetime="2014-06-14">6/1/2014</time>
+                            </h5>
+                        </a>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+    </div>
+</main>

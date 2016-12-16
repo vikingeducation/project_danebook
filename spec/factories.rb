@@ -1,4 +1,7 @@
 FactoryGirl.define do
+  factory :photo do
+    
+  end
 #call back to create profile
   factory :user do
     email 'asdf@asdf.com'

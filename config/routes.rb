@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   resources :users do
     resource :profile
     resource :timeline, only: [:show]
+    resources :photos
+    resources :friendings, only: [:index, :create, :destroy]
     resources :posts, only: [:new, :create, :destroy]
   end
 

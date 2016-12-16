@@ -13,22 +13,30 @@ class PhotosController < ApplicationController
 
   def show
     @user = User.find(params[:user_id])
+    @photo = @user.photos.find(params[:id])
   end
 
   def create
     @photo = current_user.photos.build(photo_params)
-
     if @photo.save
       redirect_to user_photos_path
-      # 'Photo was successfully created.'
     else
-    render action: 'new'
+      render action: 'new'
     end
   end
 
-  def destroy
+  def edit
   end
 
+  def destroy
+    @photo = current_user.photos.find(params[:id])
+    
+    if @photo.destroy
+      redirect_to user_photos_path
+    else
+      render action: 'show'
+    end
+  end
 
   private
     def photo_params

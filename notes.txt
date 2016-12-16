@@ -1,3 +1,29 @@
+**photo upload page add!
+**photo show page add!
+
+
+
+3 PHOTO SIZES:
+
+The photo collection should display a thumbnail-sized photo which
+is a smaller version of the main photo (ie. two separate files)
+
+As a user browsing photos
+I want to see a single photo large version
+To fully appreciate it
+~~~~~~
+
+**COVER PHOTO
+**PROFILE PHOTO
+
+
+
+
+
+
+
+
+
 # print page.html
 # save_and_open_pag
 

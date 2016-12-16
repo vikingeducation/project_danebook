@@ -20,6 +20,8 @@ gem 'bcrypt', '~> 3.1.7'
 gem 'paperclip'
 gem 'aws-sdk'
 
+gem 'figaro'
+
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'jazz_fingers'

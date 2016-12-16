@@ -11,7 +11,19 @@ class PhotosController < ApplicationController
     @photo = current_user.photos.build
   end
 
+  def create
+    @photo = current_user.photos.build(photo_params)
+    if @photo.save
+      flash[:success] = "Photo uploaded!"
+      redirect_to user_photos_path(current_user)
+    else
+      flash[:warning] = @photo.errors.full_messages
+      render :new
+    end
+  end
+
   def photo_params
-    require(:photo).permit(:photo_data)
+    p params
+    params.require(:photo).permit(:image)
   end
 end

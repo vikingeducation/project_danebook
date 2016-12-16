@@ -54,9 +54,6 @@ Rails.application.configure do
 
   Paperclip.options[:command_path] = "/usr/bin/convert"
 
-  p ENV['AWS_HOST_NAME']
-  p ENV['AWS_REGION']
-
   config.paperclip_defaults = {
     storage: :s3,
     s3_credentials: {

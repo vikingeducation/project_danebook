@@ -1,0 +1,35 @@
+<article class="recent-activities">
+  <div class="row timeline-heading">
+    <div class="col-xs-12 ">
+      <h4 class="text-center">Recent Activities</h4>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <% @activities.each do |p| %>
+          <div class="media">
+          <a class="media-left" href="#">
+            <% if p.user.profile_photo %>
+              <%= image_tag(p.user.profile_photo.image.url(:thumb) ) %>
+            <% else %>
+              <%= image_tag("user_silhouette_generic.gif", class: :profile_photo) %>
+            <% end %>
+          </a>
+          <div class="media-body">
+            <a href="#" class="media-heading"><%= link_to p.user.name, timeline_user_path(p.user) %></a>
+            <% if p.class == Post || p.class == Photo %>
+              <p class="text-muted"><%= p.posted_on %></p>
+            <% elsif p.class == Comment %>
+              <p class="text-muted"><%= p.commented_on %></p>
+            <% elsif p.class == Like %>
+              <p class="text-muted"><%= p.liked_on %></p>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+      <div class="text-center">
+        <%= link_to "See All Your Friends", friends_user_path(current_user) %>
+      </div>
+    </div>
+  </div>
+</article>

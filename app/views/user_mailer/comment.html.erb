@@ -1,0 +1,10 @@
+<h1>Welcome!</h1>
+
+<p>
+  Hi <%= @user.name %>,
+</p>
+
+<p>
+  Someone has commented on your post/photo.
+  <%= link_to "#{timeline_user_url(@user.id)}", timeline_user_url(@user.id) %>
+</p>

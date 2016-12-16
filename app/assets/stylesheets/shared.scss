@@ -1,0 +1,145 @@
+$primary-font: helvetica, Arial, sans-serif;
+
+body {
+  padding-top: 51px;
+  padding-bottom: 20px;
+  font-family: $primary-font;
+}
+
+.alert {
+  margin-top: 20px;
+}
+
+.shared {
+  #bg {
+    background-size: 100% 300px;
+    height: 300px;
+    .jumbotron {
+      background-color: transparent;
+      color: #eee;
+      position: relative;
+      padding: 0;
+      img.cover-image {
+        height: 300px;
+        width: 100%;
+      }
+      img.profile-image {
+        position: absolute;
+        top: 155px;
+        left: 7px;
+        width: 150px;
+        height: 150px;
+      }
+      h3 {
+        position: absolute;
+        top: 250px;
+        left: 160px;
+      }
+    }
+  }
+  /* _nav_logged_in.html.erb */
+  #nav-links {
+    padding-left: 176px;
+    border: 1px solid #666;
+    .nav-pills>li>a {
+      border-radius: 0;
+    }
+    .nav-pills>li {
+      width: 150px;
+      margin: -1px;
+      border-radius: 0;
+      border: 1px solid #666;
+    }
+    li.edit-profile {
+      border: none;
+      float: right;
+      text-decoration: underline;
+      text-align: right;
+      background: transparent;
+    }
+  }
+}
+/* _navbar.html.erb and _navbar_homepage.html.erb */
+nav.homepage {
+  .container {
+    position: relative;
+  }
+
+  .brand {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 10px;
+  }
+  .navbar-header {
+    button {
+      border: 1px solid #fff;
+      span {
+        background-color: #fff;
+      }
+    }
+  }
+  .btn {
+    width: 80px;
+    margin-top: 19px;
+    background-color: #9FC5F8;
+    font-weight: 800;
+  }
+  p {
+    margin-bottom: 2px;
+    color: #fff;
+    font-size: 12px;
+    line-height: 20px;
+  }
+}
+
+/* top navbar brand and search */
+nav {
+  .navbar {
+    margin-bottom: 0 !important;
+  }
+  background-color: #2B78E4;
+  .navbar-brand {
+    color: #fff;
+  }
+  #query-navbar-form {
+    width: 100%;
+  }
+  #query {
+    width: 80%;
+  }
+
+  #logout {
+    margin: 10px;
+    a {
+      color: #fff;
+      text-decoration: none;
+    }
+  }
+  #search-btn {
+    margin-left: 10px;
+  }
+  .container {
+    padding-left: 0;
+  }
+  img {
+    height: 40px;
+    margin: 5px 5px 5px 0;
+  }
+ .navbar-form .search {
+    width: 100%;
+    .form-group {
+      width: 100%;
+    }
+    .form-control {
+      width: 100%;
+    }
+  }
+  p {
+    color: #fff;
+    font-size: 18px;
+    line-height: 50px;
+    padding-right: 5px;
+    margin-bottom: 0;
+  }
+}

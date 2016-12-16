@@ -1,0 +1,5 @@
+var comment = $('[data-id='+<%= @comment.id %>+'].comment')
+comment.find('.like_link').html('Unlike');
+comment.find('.like_link').attr('href', comment.find('.like_link').attr('href').replace('like', 'unlike'));
+var num = Number(comment.find('.x-people-like-this').html().split(" ")[0]) + 1;
+comment.find('.x-people-like-this').html(''+num+' people like this');

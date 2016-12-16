@@ -1,0 +1,33 @@
+<article class="photo" data-id="<%= p.id %>">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="media">
+        <a class="media-left" href="#">
+          <% if p.user.profile_photo %>
+            <%= image_tag(p.user.profile_photo.image.url(:thumb) ) %>
+          <% else %>
+            <%= image_tag("user_silhouette_generic.gif") %>
+          <% end %>
+        </a>
+        <div class="media-body">
+          <a href="#" class="media-heading"><%= link_to p.user.name, timeline_user_path(p.user) %></a>
+          <p class="text-muted"><%= p.posted_on %></p>
+        </div>
+      </div>
+      <div class="timeline-image-container">
+        <%= link_to(p) do %>
+        <%= image_tag(p.image , :class => "timeline-image") %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="row timeline-heading">
+
+    <%= render partial: 'photos/likes', locals: {p: p} %>
+    <hr>
+    <%= render partial: 'posts/comments', locals: {p: p, comments: p.comments } %>
+
+    <%= render partial: 'comments/comment_photo_form', locals: {photo: p, comment: @comment} %>
+
+  </div>
+</article>

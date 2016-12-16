@@ -1,0 +1,5 @@
+var photo = $('[data-id='+<%= @photo.id %>+'].photo')
+photo.find('.like_link').html('Unlike');
+photo.find('.like_link').attr('href', '/photos/'+<%= @photo.id %>+'/unlike');
+var num = Number(photo.find('.x-people-like-this').html().split(" ")[0]) + 1;
+photo.find('.x-people-like-this').html(''+num+' people like this')

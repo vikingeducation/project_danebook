@@ -1,0 +1,35 @@
+main.photos-show {
+  .large-photo-container {
+    margin: 10px auto;
+    border: 1px solid;
+    padding: 10px;
+  }
+  .photo-comments-container {
+    margin: 10px auto;
+    #comment_text {
+      width: 100%;
+    }
+    .timeline-heading {
+      background-color: #eee;
+    }
+  }
+  .profile-image {
+    width: 64px;
+    height: 64px;
+  }
+  .photo-show {
+    width: 100%;
+  }
+}
+main.photos-new {
+  .heading {
+    background-color: #eee;
+    position: relative;
+    text-align: center;
+    border: 1px solid #666;
+    margin-bottom: 10px;
+    h1 {
+      display: inline-block;
+    }
+  }
+}

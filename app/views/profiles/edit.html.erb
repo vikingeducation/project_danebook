@@ -1,0 +1,79 @@
+<main class="users-about">
+  <!-- Header -->
+  <%= render partial: 'shared/header', locals: {user: @user}%>
+
+  <!-- Navigation -->
+  <%= render partial: 'shared/nav_loggedin', locals: {user: @user, active: 'about'} %>
+
+
+  <!-- Bootstrap grid system -->
+  <section class="content">
+    <div class="container">
+      <div class ="row">
+        <!-- Page Heading -->
+        <div class="col-md-12 heading">
+          <h1>About</h1>
+        </div>
+      </div>
+
+      <%= form_for @profile do |f| %>
+      <div class="row">
+        <!-- Left column -->
+        <div class="col-md-5 col-md-offset-1">
+          <div class="row">
+            <h2 class="col-xs-12">Basic Information</h2>
+          </div>
+          <div class="row fixed-form-row">
+            <p class="col-xs-4">Birthday</p>
+            <p class="col-xs-8"><%= @user.birthday ? @user.birthday.to_formatted_s(:long_ordinal) : "nil" %></p>
+          </div>
+          <%= field_with_errors(@profile,:college) %>
+          <div class="row">
+            <p class="col-xs-4 fixed-form-row">College</p>
+            <%= f.text_field :college, class: "col-xs-6" %>
+          </div>
+          <%= field_with_errors(@profile,:hometown) %>
+          <div class="row">
+            <p class="col-xs-4 fixed-form-row">Hometown</p>
+            <%= f.text_field :hometown, class: "col-xs-6" %>
+          </div>
+          <%= field_with_errors(@profile,:address) %>
+          <div class="row">
+            <p class="col-xs-4 fixed-form-row">Currently Lives</p>
+            <%= f.text_field :address, class: "col-xs-6" %>
+          </div>
+          <div class="row">
+            <h2 class="col-xs-12">Contact Information</h2>
+          </div>
+          <div class="row fixed-form-row">
+            <p class="col-xs-4">Email</p>
+            <p class="col-xs-8"><%= @user.email %></p>
+          </div>
+          <div class="row">
+            <p class="col-xs-4 fixed-form-row">Telephone</p>
+            <%= f.text_field :phone, class: "col-xs-6" %>
+          </div>
+          <%= field_with_errors(@profile,:phone) %>
+        </div>
+        <!-- Right Column -->
+        <div class="words group col-md-5">
+          <h2>Words to Live By</h2>
+          <%= field_with_errors(@profile,:status) %>
+          <%= f.text_area :status, rows: 4 %>
+
+          <h2>About Me</h2>
+          <%= field_with_errors(@profile,:about) %>
+          <%= f.text_area :about, rows: 6 %>
+        </div>
+      </div>
+      <% f.hidden_field :user_id, value: @user.id %>
+        <!-- Save Changes Button  -->
+      <div class="row save-changes-btn">
+        <div class="col-xs-12 text-center">
+          <%= f.submit "Save Changes", class: "btn btn-lg btn-primary" %>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </section>
+</main>

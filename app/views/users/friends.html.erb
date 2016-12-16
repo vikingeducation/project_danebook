@@ -1,0 +1,63 @@
+<main class="users-friends">
+  <!-- Header -->
+  <%= render partial: 'shared/header', locals: {user: @user}%>
+
+  <!-- Navigation -->
+  <%= render partial: 'shared/nav_loggedin', locals: {user: @user, active: 'friends'} %>
+
+   <!-- Bootstrap grid system -->
+  <section class="content">
+    <div class="container">
+      <div class ="row">
+        <!-- Page Heading -->
+        <div class="col-md-12 heading">
+          <h1>Friends</h1>
+        </div>
+      </div>
+      <div class="row">
+        <!-- Left Column -->
+        <% @friends.each do |friend| %>
+          <div class="col-md-6">
+            <article class="media friend-container">
+              <div class="media-left media-middle">
+                <% if friend.profile_photo %>
+                  <%= image_tag(friend.profile_photo.image.url(:thumb) ) %>
+                <% else %>
+                  <%= image_tag("user_silhouette_generic.gif", class: :profile_photo) %>
+                <% end %>
+              </div>
+              <div class="media-body media-middle">
+                <%= link_to friend.name, timeline_user_path(friend), class: "media-heading" %>
+                <P><%= friend.friendships_count%> Friends</P></div>
+              <div class="media-right ">
+                <%= link_to "Unfriend Me", friendship_path(friend.id), method: "DELETE", class: "btn btn-default unfriend-btn" %>
+              </div>
+            </article>
+          </div>
+        <% end %>
+        <% @pending_friends.each do |friend| %>
+          <div class="col-md-6">
+            <article class="media friend-container">
+              <div class="media-left media-middle">
+                <% if friend.profile_photo %>
+                  <%= image_tag(friend.profile_photo.image.url(:thumb) ) %>
+                <% else %>
+                  <%= image_tag("user_silhouette_generic.gif", class: :profile_photo) %>
+                <% end %>
+              </div>
+              <div class="media-body media-middle">
+                <%= link_to friend.name, timeline_user_path(friend), class: "media-heading" %>
+                <i class="text-danger">(Request Pending)</i>
+                <P><%= friend.friendships_count%> Friends</P>
+
+              </div>
+              <div class="media-right ">
+                <%= link_to "Unfriend Me", friendship_path(friend.id), method: "DELETE", class: "btn btn-default unfriend-btn" %>
+              </div>
+            </article>
+          </div>
+        <% end %>
+      </div>
+    </div> <!-- end of container -->
+  </section>
+</main>

@@ -1,0 +1,97 @@
+<!-- Main -->
+<main class="users-timeline">
+  <!-- Header -->
+  <%= render partial: 'shared/header', locals: {user: @user } %>
+
+  <!-- Navigation -->
+  <%= render partial: 'shared/nav_loggedin', locals: {user: @user, active: 'timeline'} %>
+
+  <!-- Bootstrap Grid system -->
+  <section class="content">
+    <div class="container">
+      <div class="row">
+        <!-- Left Column -->
+        <div class="col-sm-4">
+
+          <!-- Article About -->
+          <%= render partial: 'users/timeline_about', locals: {user: @user, profile: @profile } %>
+
+          <!-- Article Photo -->
+          <article class="text-center">
+            <div class="row timeline-heading">
+              <div class="col-xs-12 ">
+                <h4 class="text-center">Photos (<%= @photos.count %>) </h4>
+              </div>
+            </div>
+            <div class="row">
+              <% @photos.each do |photo| %>
+                <div class="col-md-4">
+                  <%= image_tag(photo.image.url(:thumb) ) %>
+                </div>
+              <% end %>
+            </div>
+            <%= link_to "See More Photos", photos_user_path(@user) %>
+          </article>
+
+          <!-- Article Friends -->
+          <article class="text-center">
+            <div class="row timeline-heading">
+              <div class="col-xs-12 ">
+                <h4 class="text-center">Friends (<%= @friends.count %>)</h4>
+              </div>
+            </div>
+            <div class="row">
+            <% @friends.each do |friend| %>
+              <div class="col-md-4 user-image">
+                <% if friend.profile_photo %>
+                  <%= image_tag(friend.profile_photo.image.url(:thumb) ) %>
+                <% else %>
+                  <%= image_tag("user_silhouette_generic.gif") %>
+                <% end %>
+                <%= link_to friend.name, about_user_path(friend) %>
+              </div>
+            <% end %>
+            </div>
+            <%= link_to "See More Friends", friends_user_path(@user) %>
+          </article>
+        </div>
+
+        <!-- Right Column -->
+        <div class="col-sm-8">
+
+          <% if current_user_page %>
+            <!-- Article Post-form -->
+            <%= simple_form_for @post, :remote => true do |f| %>
+            <article class="post-form">
+              <div class="row timeline-heading">
+                <div class="col-xs-12 ">
+                  <h4 class="text-center">Post</h4>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-12">
+                  <%= f.input :text, label: false, :input_html => { :rows => 4 } %>
+                </div>
+              </div>
+              <div class="row timeline-heading">
+                <div class="col-xs-12 ">
+                  <%= f.input :user_id, :as => :hidden, :input_html => { :value => @user.id } %>
+                  <%= f.button :submit, 'Post', class: "btn btn-primary pull-right" %>
+                </div>
+              </div>
+            </article>
+            <% end %>
+          <% end %>
+
+          <% @articles.each do |p| %>
+            <% if p.class == Post %>
+              <%= render partial: 'posts/post', locals: {p: p} %>
+            <% else p.class == Photo %>
+              <%= render partial: 'photos/photo', locals: {p: p} %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div> <!-- end of container -->
+  </section>
+</main>

@@ -1,0 +1,79 @@
+<main class="container users-new">
+  <div class="row">
+    <!-- Info Container -->
+    <div class="col-md-7 info-container">
+      <h1>Connect with all your friends!</h1>
+      <ul>
+        <p><li>See photos and updates in you news feed</li></p>
+        <p><li>Post your status for the world to see from your profile</li></p>
+        <p><li>Get in touch with your friends by friending them</li></p>
+        <p><li>Like things because you're a positive person!</li></p>
+      </ul>
+    </div>
+    <!-- Signup-container -->
+    <div class="col-md-5 signup-container">
+      <h1>Sign Up</h1>
+      <%= form_for @user do |user_fields| %>
+      <div class="row">
+        <div class="form-group col-md-6">
+          <%= field_with_errors(@user,:first_name) %>
+          <%= user_fields.text_field :first_name, placeholder: "First Name", class: "form-control" %>
+        </div>
+        <div class="form-group col-md-6">
+          <%= field_with_errors(@user,:last_name) %>
+          <%= user_fields.text_field :last_name, placeholder: "Last Name", class: "form-control" %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-md-12">
+          <%= field_with_errors(@user,:email) %>
+          <%= user_fields.email_field :email, placeholder: "Your Email", class: "form-control" %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-md-12">
+          <%= field_with_errors(@user,:password) %>
+          <%= user_fields.password_field :password, placeholder: "Your New Password", class: "form-control" %>
+        </div>
+      </div>
+      <div class="row">
+        <div class="form-group col-md-12">
+          <%= field_with_errors(@user,:password_confirmation) %>
+          <%= user_fields.password_field :password_confirmation, placeholder: "Confirm Your Password", class: "form-control" %>
+        </div>
+      </div>
+      <row>
+        <h4 class="form-group col-md-12 birthday-label">Birthday</h4>
+      </row>
+      <row>
+        <%= field_with_errors(@user,:birthday) %>
+        <%= user_fields.date_select :birthday, class: "form-group col-md-12",
+            start_year: Date.today.year, end_year: Date.today.year-90 , prompt: true %>
+      </row>
+      <row>
+        <div class="form-group">
+          <div class="col-md-5 radio-button">
+            <%= user_fields.radio_button(:gender_cd, 0) %>
+            <%= user_fields.label(:gender_cd, "Female") %>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-md-5 radio-button">
+            <%= user_fields.radio_button(:gender_cd, 1) %>
+            <%= user_fields.label(:gender_cd, "Male") %>
+          </div>
+        </div>
+      </row>
+      <!-- Sign up button -->
+      <row>
+        <%= user_fields.submit "Sign Up!", class:"btn btn-success col-md-12" %>
+      </row>
+      <row>
+        <%= link_to "/auth/github" do %>
+        <button type="button" class="btn btn-primary github"> Sign Up with Github! </button>
+        <% end %>
+      </row>
+      <% end %>
+    </div>
+  </div>
+</main>

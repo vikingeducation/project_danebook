@@ -1,0 +1,70 @@
+<main class="users-about">
+  <!-- Header -->
+  <%= render partial: 'shared/header', locals: {user: @user}%>
+
+  <!-- Navigation -->
+  <%= render partial: 'shared/nav_loggedin', locals: {user: @user, active: 'about'} %>
+
+  <!-- Bootstrap grid system -->
+  <section class="content">
+    <div class="container">
+      <div class ="row heading">
+        <!-- Page Heading -->
+        <div class="col-md-10">
+          <h1>About</h1>
+        </div>
+        <div class="col-md-2">
+          <% if current_user_page %>
+            <%= link_to "Edit your profile", edit_profile_path(@profile), class: "btn btn-primary pull-right edit-profile-btn" %>
+          <% else %>
+            <%= render partial: 'friendships/friend_unfriend', locals: { profile: @profile, user: @user, friends: @friends, pending_friends: @pending_friends, friendship: @friendship} %>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="row">
+        <!-- Left column -->
+        <div class="col-md-5 col-md-offset-1">
+          <div class="row">
+            <h2 class="col-xs-12">Basic Information</h2>
+          </div>
+          <div class="row fixed-form-row">
+            <p class="col-xs-4">Birthday</p>
+            <p class="col-xs-8"><%= @user.birthday ? @user.birthday.to_formatted_s(:long_ordinal) : "nil" %></p>
+          </div>
+          <div class="row">
+            <p class="col-xs-4 fixed-form-row">College</p>
+            <p class="col-xs-8"><%= @profile.college %></p>
+          </div>
+          <div class="row">
+            <p class="col-xs-4 fixed-form-row">Hometown</p>
+            <p class="col-xs-8"><%= @profile.hometown %></p>
+          </div>
+          <div class="row">
+            <p class="col-xs-4 fixed-form-row">Currently Lives</p>
+            <p class="col-xs-8"><%= @profile.address %></p>
+          </div>
+          <div class="row">
+            <h2 class="col-xs-12">Contact Information</h2>
+          </div>
+          <div class="row fixed-form-row">
+            <p class="col-xs-4">Email</p>
+            <p class="col-xs-8"><%= @user.email %></p>
+          </div>
+          <div class="row">
+            <p class="col-xs-4 fixed-form-row">Telephone</p>
+            <p class="col-xs-8"><%= @profile.phone %></p>
+          </div>
+        </div>
+        <!-- Right Column -->
+        <div class="words group col-md-5">
+          <h2>Words to Live By</h2>
+          <p><%= @profile.status %></p><br>
+
+          <h2>About Me</h2>
+          <p><%= @profile.about %></p>
+        </div>
+       </div>
+     </div>
+  </section>
+</main>

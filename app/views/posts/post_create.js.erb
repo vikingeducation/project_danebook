@@ -1,0 +1,3 @@
+var postRow = "<%= j( render partial: 'posts/post', locals: {p: @new_post} ) %>"
+$(postRow).hide().insertBefore($('.post').first()).slideDown(1000);
+$('#post_text').val("");

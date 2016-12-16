@@ -1,0 +1,515 @@
+  // Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+$primary-font: helvetica, Arial, sans-serif;
+
+main.users-new {
+  padding-top: 30px;
+  margin-top: 10px;
+  .info-container {
+    margin-top: 100px;
+    li {
+      color: #666;
+    }
+  }
+  .signup-container {
+    .birthday-label {
+      margin-left: -15px;
+    }
+    .birthday-select {
+      margin-left: -15px;
+    }
+    select {
+      border-radius: 0;
+      color: #aaa;
+    }
+    .radio-button {
+      margin-left: -15px;
+      margin-bottom: 10px;
+    }
+    .btn {
+      font-weight: 800;
+    }
+    .github {
+      font-weight: 800;
+      color: #fff;
+      margin-top: 10px;
+      width: 100%;
+    }
+  }
+}
+main.users-about {
+  .content>.container {
+    margin-top: 10px;
+    border: 1px solid #666;
+    .heading {
+      background-color: #eee;
+      position: relative;
+      text-align: center;
+      border-bottom: 1px solid #666;
+      h1 {
+        display: inline-block;
+      }
+    }
+    .fixed-form-row {
+      height: 30px;
+      line-height: 30px;
+    }
+    textarea {
+      width: 95%;
+    }
+    .save-changes-btn {
+      margin-top: 20px;
+      margin-bottom: 50px;
+    }
+  }
+
+  .friend_button {
+    margin-top: 3px;
+    margin-right: 40px;
+  }
+  .edit-profile-btn {
+    margin-top: 20px;
+    margin-right: 40px;
+  }
+}
+
+main.users-timeline {
+  article {
+    border: 1px solid;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    .timeline-heading {
+      background-color: #eee;
+      margin: 0;
+      margin-bottom: 10px;
+    }
+    .timeline-field {
+      padding-left: 10px;
+      font-weight: bold;
+    }
+    .photo-container {
+      margin: 0 auto;
+      text-align: center;
+      img {
+        width: 64px;
+        height: 64px;
+      }
+    }
+    .timeline-image {
+      display: block;
+      margin: 10px auto 10px auto;
+      width: 80%;
+    }
+    .see-more {
+      text-decoration: underline;
+      display: block;
+      margin-top: 10px;
+    }
+    .user-image {
+      padding: 20px;
+      img {
+        width: 64px;
+        height: 64px
+      }
+      a {
+        text-decoration: underline;
+      }
+    }
+  }
+  article.post-form {
+    textarea {
+      width: 100%;
+      display: block;
+      margin: 0 auto;
+      margin-bottom: 10px;
+    }
+    .row:last-child {
+      margin-bottom: -10px;
+      button {
+        margin: 5px;
+      }
+    }
+  }
+
+  article.post {
+    padding-top: 5px;
+    .media {
+      img {
+        width: 64px;
+        height: 64px;
+      }
+      padding-left: 10px;
+      p {
+        padding: 0;
+      }
+    }
+    .post-text {
+      padding: 10px;
+    }
+    a {
+      text-decoration: underline;
+      padding-right: 5px;
+    }
+    .row:last-child {
+      margin-bottom: -10px;
+      padding: 5px;
+    }
+    .like-annotation {
+      display: block;
+      padding-top: 5px;
+    }
+    hr {
+      border-top: 1px solid #666;
+    }
+    .comment-form {
+      margin-top: 30px;
+    }
+    .cancel-link {
+      display: inline-block;
+      margin-top: 6px;
+    }
+    .inline {
+      display: inline-block;
+    }
+  }
+
+  article.photo {
+    padding-top: 5px;
+    .media {
+      img {
+        width: 64px;
+        height: 64px;
+      }
+      padding-left: 10px;
+      p {
+        padding: 0;
+      }
+    }
+    .post-text {
+      padding: 10px;
+    }
+    a {
+      text-decoration: underline;
+      padding-right: 5px;
+    }
+    .row:last-child {
+      margin-bottom: -10px;
+      padding: 5px;
+    }
+    .like-annotation {
+      display: block;
+      padding-top: 5px;
+    }
+    hr {
+      border-top: 1px solid #666;
+    }
+    .comment-form {
+      margin-top: 30px;
+    }
+    .cancel-link {
+      display: inline-block;
+      margin-top: 6px;
+    }
+    .inline {
+      display: inline-block;
+    }
+  }
+  .media-body {
+    width: 100%;
+  }
+  #comment_text {
+    width: 100%;
+  }
+}
+
+main.users-newsfeed {
+  .profile_photo {
+    width: 64px;
+    height: 64px;
+  }
+  article {
+    border: 1px solid;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    .timeline-heading {
+      background-color: #eee;
+      margin: 0;
+      margin-bottom: 10px;
+    }
+    .timeline-field {
+      padding-left: 10px;
+      font-weight: bold;
+    }
+    .photo-container {
+      margin: 0 auto;
+      text-align: center;
+      img {
+        width: 64px;
+        height: 64px;
+      }
+    }
+    .timeline-image {
+      display: block;
+      margin: 10px auto 10px auto;
+      width: 80%;
+    }
+    .see-more {
+      text-decoration: underline;
+      display: block;
+      margin-top: 10px;
+    }
+    .user-image {
+      padding: 20px;
+      img {
+        width: 64px;
+        height: 64px
+      }
+      a {
+        text-decoration: underline;
+      }
+    }
+    .media {
+      padding: 10px;
+    }
+  }
+  article.post-form {
+    textarea {
+      width: 100%;
+      display: block;
+      margin: 0 auto;
+      margin-bottom: 10px;
+    }
+    .row:last-child {
+      margin-bottom: -10px;
+      button {
+        margin: 5px;
+      }
+    }
+  }
+  article.photo {
+    padding-top: 5px;
+    .media {
+      img {
+        width: 64px;
+        height: 64px;
+      }
+      padding-left: 10px;
+      p {
+        padding: 0;
+      }
+    }
+    .post-text {
+      padding: 10px;
+    }
+    a {
+      text-decoration: underline;
+      padding-right: 5px;
+    }
+    .row:last-child {
+      margin-bottom: -10px;
+      padding: 5px;
+    }
+    .like-annotation {
+      display: block;
+      padding-top: 5px;
+    }
+    hr {
+      border-top: 1px solid #666;
+    }
+    .comment-form {
+      margin-top: 30px;
+    }
+    .cancel-link {
+      display: inline-block;
+      margin-top: 6px;
+    }
+    .inline {
+      display: inline-block;
+    }
+  }
+  article.post {
+    padding-top: 5px;
+    .media {
+      img {
+        width: 64px;
+        height: 64px;
+      }
+      padding-left: 10px;
+      p {
+        padding: 0;
+      }
+    }
+    .post-text {
+      padding: 10px;
+    }
+    a {
+      text-decoration: underline;
+      padding-right: 5px;
+    }
+    .row:last-child {
+      margin-bottom: -10px;
+      padding: 5px;
+    }
+    .like-annotation {
+      display: block;
+      padding-top: 5px;
+    }
+    hr {
+      border-top: 1px solid #666;
+    }
+    .comment-form {
+      margin-top: 30px;
+    }
+    .cancel-link {
+      display: inline-block;
+      margin-top: 6px;
+    }
+    .inline {
+      display: inline-block;
+    }
+  }
+  .media-body {
+    width: 100%;
+    a {
+      display: block;
+    }
+  }
+  #comment_text {
+    width: 100%;
+  }
+}
+
+main.users-friends {
+  .content>.container {
+    margin-top: 10px;
+    border: 1px solid #666;
+    .heading {
+      background-color: #eee;
+      position: relative;
+      text-align: center;
+      border-bottom: 1px solid #666;
+      h1 {
+        display: inline-block;
+      }
+    }
+    .fixed-form-row {
+      height: 30px;
+      line-height: 30px;
+    }
+    textarea {
+      width: 95%;
+    }
+    .save-changes-btn {
+      margin-top: 20px;
+      margin-bottom: 50px;
+    }
+  }
+  .row:last-child {
+    margin-bottom: 20px;
+  }
+  .media:first-child {
+    margin-top: 15px;
+  }
+  .friend-container {
+    position: relative;
+    border: 1px solid;
+    img {
+      width: 64px;
+      margin: 10px;
+    }
+    a.media-heading {
+      display: inline-block;
+      margin-bottom: 0;
+      text-decoration: underline;
+    }
+    p {
+      color: #aaa;
+    }
+    .friend-btn {
+      position: absolute;
+      right:10px;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .unfriend-btn {
+      position: absolute;
+      right:10px;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: #ccc;
+    }
+    .req-pending {
+      position: absolute;
+      right: 10px;
+      top: 20%;
+      transform: translateY(-50%);
+    }
+  }
+}
+
+main.users-photos {
+  .content>.container {
+    margin-top: 10px;
+    border: 1px solid #666;
+    .heading {
+      background-color: #eee;
+      position: relative;
+      text-align: center;
+      border-bottom: 1px solid #666;
+      h1 {
+        display: inline-block;
+      }
+    }
+    .fixed-form-row {
+      height: 30px;
+      line-height: 30px;
+    }
+    textarea {
+      width: 95%;
+    }
+    .save-changes-btn {
+      margin-top: 20px;
+      margin-bottom: 50px;
+    }
+  }
+  .edit-profile-btn {
+    margin-top: 20px;
+    margin-right: 40px;
+  }
+  .photo-container {
+    margin: 10px auto;
+    width: 150px;
+    height: 150px;
+    position: relative;
+    .annotation {
+      width: 150px;
+      height: 0;
+      background-color: #666;
+      font-size: 12px;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      color: #fff;
+      text-align: center;
+      -webkit-transition: height 0.5s;
+      transition: height 0.5s;
+    }
+
+  }
+  .photo-container:hover {
+    .annotation {
+      height: 24px;
+    }
+  }
+  .photo-row {
+    margin-top: 20px;
+  }
+}
+
+.field_with_errors {
+  border: 1px solid red;
+}

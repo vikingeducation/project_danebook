@@ -1,0 +1,5 @@
+var post = $('[data-id='+<%= @post.id %>+'].post')
+post.find('.like_link').html('Like');
+post.find('.like_link').attr('href', '/posts/'+<%= @post.id %>+'/like');
+var num = Math.max(Number(post.find('.x-people-like-this').html().split(" ")[0]) - 1, 0);
+post.find('.x-people-like-this').html(''+num+' people like this')

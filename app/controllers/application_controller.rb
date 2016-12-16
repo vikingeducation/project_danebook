@@ -1,8 +1,20 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate
+  before_action :set_notice
   protect_from_forgery with: :exception
 
   private
+
+    def set_notice
+      if signed_in_user?
+        notices = current_user.notices
+        flash[:info] = [] if notices.length > 0
+        notices.each do |notice|
+          flash[:info] << notice.message
+        end
+        Notice.destroy_for_user(current_user)
+      end
+    end
 
     def decrypt(msg)
       Crypt.decrypt(msg)

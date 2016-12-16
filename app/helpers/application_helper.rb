@@ -21,7 +21,7 @@ module ApplicationHelper
 
   def render_profile_img(profile)
     if Rails.configuration.aws_images && profile.profile_img
-      profile.profile_img.url || "//s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif"
+      profile.profile_img.picture.url(:medium) || "//s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif"
     else
       "//s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif"
     end

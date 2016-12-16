@@ -28,7 +28,7 @@
     color: #fff;
     text-shadow:  -1px 0 1px black, 0 1px 1px black, 1px 0 1px black, 0 -1px 1px black;
   }
-  
+
 
   .profile-img {
     position:absolute;
@@ -39,6 +39,7 @@
     z-index:2;
     left:15px;
     bottom:-35px;
+    background-color: #f0f8ff;
     img {
       width:100%
     }
@@ -61,7 +62,7 @@
       background:transparent;
       color: #555;
     }
-    
+
     @media (min-width: 768px) {
       &:nth-last-child(2) {
         border-right:$nav-border;
@@ -75,7 +76,7 @@
         }
       }
     }
-    
+
     .active {
       background: #eee;
     }

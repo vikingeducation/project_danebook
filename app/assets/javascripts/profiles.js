@@ -44,6 +44,9 @@ $(document).on('turbolinks:load', function(){
           }
           reader.readAsDataURL(uploadFile);
           fileList.append(imgPreview);
+          console.log(form.data('form-data'))
+          form.data('form-data')['Content Type'] = uploadFile.type
+          console.log(form.data('form-data'))
         }
 
         $(form).off().on('submit', function(e){
@@ -79,7 +82,7 @@ $(document).on('turbolinks:load', function(){
 
         // extract key and generate URL from response
         var key   = $(data.jqXHR.responseXML).find("Key").text();
-        var url   = '//' + form.data('host') + '/' + key;
+        var url   = 'https://' + form.data('host') + '/' + key;
 
         // create hidden field
         var input = $("<input />", { type:'hidden', name: fileInput.attr('name'), value: url })

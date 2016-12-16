@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161211173051) do
+ActiveRecord::Schema.define(version: 20161216045136) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,21 @@ ActiveRecord::Schema.define(version: 20161211173051) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["profile_id"], name: "index_bios_on_profile_id", using: :btree
+  end
+
+  create_table "delayed_jobs", force: :cascade do |t|
+    t.integer  "priority",   default: 0, null: false
+    t.integer  "attempts",   default: 0, null: false
+    t.text     "handler",                null: false
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
   end
 
   create_table "friend_requests", force: :cascade do |t|
@@ -54,8 +69,12 @@ ActiveRecord::Schema.define(version: 20161211173051) do
     t.integer  "gallery_id"
     t.string   "url"
     t.string   "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
+    t.string   "picture_file_name"
+    t.string   "picture_content_type"
+    t.integer  "picture_file_size"
+    t.datetime "picture_updated_at"
     t.index ["gallery_id"], name: "index_images_on_gallery_id", using: :btree
   end
 
@@ -67,6 +86,14 @@ ActiveRecord::Schema.define(version: 20161211173051) do
     t.index ["post_id", "user_id"], name: "index_likes_on_post_id_and_user_id", unique: true, using: :btree
     t.index ["post_id"], name: "index_likes_on_post_id", using: :btree
     t.index ["user_id"], name: "index_likes_on_user_id", using: :btree
+  end
+
+  create_table "notices", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_notices_on_user_id", using: :btree
   end
 
   create_table "posts", force: :cascade do |t|
@@ -116,5 +143,6 @@ ActiveRecord::Schema.define(version: 20161211173051) do
   add_foreign_key "images", "galleries"
   add_foreign_key "likes", "posts"
   add_foreign_key "likes", "users"
+  add_foreign_key "notices", "users"
   add_foreign_key "posts", "users"
 end

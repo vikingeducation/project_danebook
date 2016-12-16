@@ -30,7 +30,14 @@ gem 'bootstrap-sass'
 gem 'bcrypt', '~> 3.1.7'
 gem 'conversation_forms', '~> 2.0.1'
 gem "jwt"
+gem 'figaro'
+gem 'delayed_job'
+gem 'delayed_job_active_record'
+gem 'daemons'
 
+gem 'paperclip', :git=> 'https://github.com/thoughtbot/paperclip', :ref => '523bd46c768226893f23889079a7aa9c73b57d68'
+gem 'aws-sdk'
+gem 'pull_tempfile'
 # direct AWS bucket file uploads
 gem 'aws-sdk-rails'
 # Use Capistrano for deployment
@@ -55,6 +62,7 @@ group :development, :test do
   gem 'guard'
   gem 'guard-rspec'
   gem 'shoulda'
+  gem 'brakeman'
 end
 
 group :development do

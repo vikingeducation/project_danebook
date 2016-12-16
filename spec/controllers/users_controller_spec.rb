@@ -4,8 +4,10 @@ require 'rails_helper'
 describe UsersController do
   let(:profile){ create(:profile)}
   let(:user){ profile.user }
+  let(:another){create(:user)}
 
   before do
+    another
     user
   end
 
@@ -16,10 +18,14 @@ describe UsersController do
         create_session(user)
       end
 
+      describe "#set_user" do
+
+      end
+
       describe 'GET #index' do
 
         it "renders the :index template" do
-          get :index
+          process :index
           assert_response :success
         end
 
@@ -28,10 +34,37 @@ describe UsersController do
       describe 'GET #new' do
 
         it "GET #new redirects to index" do
-          get :new
+          process :new
           expect(response).to redirect_to users_path
         end
 
+      end
+
+      describe 'GET #edit' do
+        it "allows viewing the edit page" do
+          process :edit, params: {id: user.id }
+          assert_response :success
+        end
+
+        it "does not allow viewing another user's edit page" do
+          process :edit, params: {id: another.id }
+          assert_response :redirect
+        end
+      end
+
+      describe 'POST #update' do
+
+        it_has_behavior 'valid_update', :user, { current_password: "!23456Yuiopasdf", email: "foo@email.com" }, :user_path do
+          let(:checked) { user }
+        end
+
+        it_has_behavior 'invalid_update', :user, { email: "new@email.com" } do
+          let(:checked) { user }
+        end
+
+        it_has_behavior 'unauthorized_update', :user, { current_password: "!23456Yuiopasdf", email: "foo@email.com" } do
+          let(:checked) { another }
+        end
       end
 
     end
@@ -41,7 +74,7 @@ describe UsersController do
   describe 'GET #new' do
 
     it "does not require authentication" do
-      get :new
+      process :new
       assert_response :success
     end
 
@@ -49,33 +82,13 @@ describe UsersController do
 
   describe 'POST #create' do
 
-    it "creates a new user and redirects to the index page on success" do
-      expect{process :create, method: :post, params: {
-                                                      user: {
-                                                              email: "new@email.com",
-                                                              password: user.password
-                                                            }
-                                                      }
-            }.to change(User, :count).by(1)
+    it_has_behavior 'valid_create', :user, :users_path, 1
 
-      expect(flash[:success]).to_not be_nil
-      expect(flash[:danger]).to be_nil
-      expect(response).to redirect_to(users_path)
-    end
-
-    it "renders the current page with errors on failure" do
-      expect{process :create, method: :post, params: {
-                                                      user: {
-                                                              email: "newemail.com",
-                                                              password: user.password
-                                                            }
-                                                      }
-            }.to_not change(User, :count)
-
-      expect(flash[:success]).to be_nil
-      expect(flash[:danger]).to_not be_nil
-      assert_response :success
-    end
+    it_has_behavior 'invalid_create', :user, { user: {
+                                                  email: "newemail.com",
+                                                  password: "asdf"
+                                                  }
+                                                }
 
   end
 end

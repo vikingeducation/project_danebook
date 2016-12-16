@@ -10,7 +10,7 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @comment = @post.comments.build(user_id: current_user.id, body: params[:post][:body], post_type: "Comment")
+    @comment = @post.comments.build(whitelisted)
     if @comment.save
       flash[:success] = ["Comment Successfull"]
       redirect_to user_post_path(@user, @post)
@@ -31,5 +31,9 @@ class CommentsController < ApplicationController
         flash[:danger] = ["Post does not exist"]
         redirect_to root_path
       end
+    end
+
+    def whitelisted
+      params.require(:post).permit(:body).merge(post_type: "Comment", user_id: current_user.id)
     end
 end

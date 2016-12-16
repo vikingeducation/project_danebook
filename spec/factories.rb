@@ -1,4 +1,8 @@
 FactoryGirl.define do
+  factory :notice do
+    user nil
+    message "MyString"
+  end
   factory :user do
     sequence(:email) { |n| "foo#{n}@bar.com" }
     password "!23456Yuiopasdf"

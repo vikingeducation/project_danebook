@@ -1,3 +1,15 @@
+GIT
+  remote: https://github.com/thoughtbot/paperclip
+  revision: 523bd46c768226893f23889079a7aa9c73b57d68
+  ref: 523bd46c768226893f23889079a7aa9c73b57d68
+  specs:
+    paperclip (4.3.1)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      cocaine (~> 0.5.5)
+      mime-types
+      mimemagic (= 0.3.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -44,6 +56,8 @@ GEM
     autoprefixer-rails (6.5.4)
       execjs
     awesome_print (1.7.0)
+    aws-sdk (2.6.35)
+      aws-sdk-resources (= 2.6.35)
     aws-sdk-core (2.6.35)
       aws-sigv4 (~> 1.0)
       jmespath (~> 1.0)
@@ -63,6 +77,7 @@ GEM
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
+    brakeman (3.4.1)
     builder (3.2.2)
     bullet (5.4.2)
       activesupport (>= 3.0.0)
@@ -75,6 +90,10 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    climate_control (0.0.3)
+      activesupport (>= 3.0)
+    cocaine (0.5.8)
+      climate_control (>= 0.0.3, < 1.0)
     coderay (1.1.1)
     coffee-rails (4.2.1)
       coffee-script (>= 2.2.0)
@@ -91,7 +110,13 @@ GEM
       sass (>= 3.3.4)
     coolline (0.5.0)
       unicode_utils (~> 1.4)
+    daemons (1.2.4)
     debug_inspector (0.0.2)
+    delayed_job (4.1.2)
+      activesupport (>= 3.0, < 5.1)
+    delayed_job_active_record (4.1.1)
+      activerecord (>= 3.0, < 5.1)
+      delayed_job (>= 3.0, < 5)
     diff-lcs (1.2.5)
     erubis (2.7.0)
     execjs (2.7.0)
@@ -103,6 +128,8 @@ GEM
     faker (1.6.6)
       i18n (~> 0.5)
     ffi (1.9.14)
+    figaro (1.1.1)
+      thor (~> 0.14)
     formatador (0.2.5)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
@@ -156,6 +183,7 @@ GEM
     mime-types (3.1)
       mime-types-data (~> 3.2015)
     mime-types-data (3.2016.0521)
+    mimemagic (0.3.0)
     mini_portile2 (2.1.0)
     minitest (5.10.1)
     multi_json (1.12.1)
@@ -182,6 +210,7 @@ GEM
     pry-rails (0.3.4)
       pry (>= 0.9.10)
     public_suffix (2.0.4)
+    pull_tempfile (0.2.0)
     puma (3.6.2)
     rack (2.0.1)
     rack-mini-profiler (0.10.1)
@@ -291,18 +320,24 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  aws-sdk
   aws-sdk-rails
   bcrypt (~> 3.1.7)
   better_errors
   binding_of_caller
   bootstrap-sass
+  brakeman
   bullet
   byebug
   capybara
   coffee-rails (~> 4.2)
   conversation_forms (~> 2.0.1)
+  daemons
+  delayed_job
+  delayed_job_active_record
   factory_girl_rails (~> 4.0)
   faker (~> 1.6.6)
+  figaro
   guard
   guard-rspec
   jazz_fingers
@@ -312,8 +347,10 @@ DEPENDENCIES
   jwt
   launchy
   listen (~> 3.0.5)
+  paperclip!
   pg (~> 0.18)
   pry-rails
+  pull_tempfile
   puma (~> 3.0)
   rack-mini-profiler
   rails (~> 5.0.0, >= 5.0.0.1)

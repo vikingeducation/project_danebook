@@ -11,7 +11,7 @@ module UsersHelper
         render partial: 'shared/posts/post', locals: { user: post.user, post: post, size: "small"}
       end
     else
-      '<h2>No posts to show</h2>'
+      '<br><h2 class="text-center">No posts to show</h2>'.html_safe
     end
   end
 end

@@ -6,7 +6,7 @@ class PostsController < ApplicationController
   before_action :correct_user, except: [:show]
 
   def create
-    @post = @user.posts.build(body: params[:post][:body], post_type: "Post")
+    @post = @user.posts.build(whitelisted)
     if @post.save
       flash[:success] = ["Profile Created"]
       redirect_to user_post_path(@user, @post)
@@ -20,7 +20,13 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find_by_id(params[:id])
+    @post = Post.find_by(id: params[:id])
   end
+
+  private
+
+    def whitelisted
+      params.require(:post).permit(:body).merge(post_type: "Post")
+    end
 
 end

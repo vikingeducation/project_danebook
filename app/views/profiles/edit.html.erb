@@ -2,10 +2,16 @@
   <%= render 'shared/profile_header_block' %>
   <div class="row">
     <div class="col-sm-12">
-      <div class="panel panel-info">
-        <div class="panel-heading">Edit Profile</div>
-        <div class="row">
-          <%= form_for @profile, url: user_profile_path(current_user) do |form| %>
+      <%= form_for @profile, url: user_profile_path(current_user), html: { multipart: true } do |form| %>
+        <div class="panel panel-info">
+          <div class="panel-heading">Edit Profile</div>
+            <div class="row">
+              <div class="col-sm-12">
+                <label>Upload a new profile image: <%= form.file_field :photo %></label>
+                <label>Upload a new background image: <%= form.file_field :background %></label>
+            </div>
+          </div>
+          <div class="row">
             <div class="col-sm-5">
               <h3>Basic Information</h3>
 

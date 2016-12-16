@@ -1,9 +1,15 @@
 <div class="row">
   <div class="col-sm-12">
-    <div class="hero-image">
-      <%= image_tag "harry_potter_small.jpg", class: "profile-photo" %>
+    <div class="hero-image" <%= background_image(@profile) %> >
+      <% if @profile.photo %>
+        <%= image_tag @profile.photo.expiring_url, class: "profile-photo" %>
+      <% else %>
+        <%= image_tag "harry_potter_small.jpg", class: "profile-photo" %>
+      <% end %>
       <div class="username"><%= @profile.name %></div>
-      <% if current_user.friended_users.include? @profile.user %>
+      <% if current_user == @profile.user %>
+        <!-- No button; can't befriend yourself -->
+      <% elsif current_user.friended_users.include? @profile.user %>
         <%= button_to "Remove friend", user_unfriend_path(@profile.user), class: "btn btn-default friend-btn", method: :get %>
       <% else %>
         <%= button_to "Add user as friend", user_friend_path(@profile.user), class: "btn btn-default friend-btn", method: :get %>

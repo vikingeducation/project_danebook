@@ -29,6 +29,6 @@ class ProfilesController < ApplicationController
 
     def strong_profile_params
       # p params
-      params.require(:profile).permit(:birthday, :college, :hometown, :currently_lives, :telephone, :words_to_live_by, :about_me)
+      params.require(:profile).permit(:birthday, :college, :hometown, :currently_lives, :telephone, :words_to_live_by, :about_me, :photo, :background)
     end
 end

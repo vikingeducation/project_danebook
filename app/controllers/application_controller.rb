@@ -1,21 +1,8 @@
 class ApplicationController < ActionController::Base
   before_action :authenticate
-  before_action :set_notice
   protect_from_forgery with: :exception
 
   private
-
-    def set_notice
-      if signed_in_user?
-        notices = current_user.notices
-        flash[:info] = [] if notices.length > 0
-        notices.each do |notice|
-          flash[:info] << notice.message
-        end
-        current_user.notices.destroy_all
-        # p Notice.destroy_for_user(current_user)
-      end
-    end
 
     def decrypt(msg)
       Crypt.decrypt(msg)
@@ -41,7 +28,7 @@ class ApplicationController < ActionController::Base
 
     def current_user
       create_session unless session[:user_id]
-      @current_user ||= User.includes(:profile).find_by_id(decrypt(session[:user_id])) if session[:user_id]
+      @current_user ||= User.includes(:profile).includes(:notices).find_by_id(decrypt(session[:user_id])) if session[:user_id]
     end
     helper_method :current_user
 

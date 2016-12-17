@@ -1,0 +1,7 @@
+<li>
+  <% if notice.viewed %>
+    <%= link_to notice.title, notice_path(notice) %>
+  <% else %>
+    <%= link_to notice.title, notice_path(notice), class: "new-notice" %>
+  <% end %>
+</li>

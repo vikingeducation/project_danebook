@@ -9,7 +9,7 @@
 
       <div class="row">
         <section class="post-content col-xs-12">
-          <%= render partial: 'shared/info/basic', locals: {user: current_user} %>
+          <%= render partial: 'shared/info/basic', locals: { user: user } %>
         </section>
       </div>
 
@@ -25,7 +25,7 @@
       </div>
 
       <div class="row">
-        <%= render partial: 'shared/sidebar/photos' %>
+        <%= render partial: 'shared/sidebar/photos', locals: { user: user } %>
       </div>
 
     </section>
@@ -41,7 +41,7 @@
       </div>
 
       <div class="row">
-        <%= render partial: 'shared/sidebar/friends' %>
+        <%= render partial: 'shared/sidebar/friends', locals: { user: user } %>
       </div>
 
     </section>

@@ -14,13 +14,7 @@ class FriendsController < ApplicationController
   end
 
   def destroy
-    FriendsUser.
-      where(user_id: @user.id, friend_id: current_user.id).
-      or(
-        FriendsUser.
-          where(user_id: current_user.id, friend_id: @user.id)
-        ).
-      destroy_all
+    Friendify.clear_friendship(@user, current_user)
 
     redirect_to root_path
   end

@@ -1,0 +1,20 @@
+<%= content_for :usernav, true %>
+<section class="post post-gutters col-xs-12">
+  <div class="row">
+    <header class="post-header col-xs-12">
+      <a href="#" class="edit-button btn btn-primary">Add Photo!</a>
+      <h2><%= @gallery.title %></h2>
+    </header>
+  </div>
+
+  <div class="row">
+    <section class="post-content gallery col-xs-12">
+      <div class="row">
+        <% @gallery.images.each do |img| %>
+          <%= render partial: 'shared/photos/photo', locals: {photo: img } %>
+        <% end %>
+      </div>
+    </section>
+  </div>
+
+</section>

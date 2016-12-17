@@ -15,7 +15,7 @@ class ProfilesController < ApplicationController
 
   def update
     if @user.profile.update(whitelisted)
-      @user.profile.update_attribute(:edited, true)
+      @user.profile.update_attribute(:edited, true) unless @user.profile.edited
       flash[:success] = ["Profile Successfully Edited"]
       set_profile_img if params[:profile][:profile_gallery_attributes]
       redirect_to user_profile_path(@user)
@@ -62,9 +62,7 @@ class ProfilesController < ApplicationController
       @rails =  Rails.application
       if params[:profile][:profile_gallery_attributes][:images_attributes]["0"][:url]
         flash[:success] << "Your image has been uploaded." << "Your image will be viewable after processing"
-        url = params[:profile][:profile_gallery_attributes][:images_attributes]["0"][:url]
-        img = Image.where(url: url)[0]
-        @user.profile.update_attribute(:image_id, img.id) if img && img.id
+        @user.profile.fix_profile_image
       end
     end
 end

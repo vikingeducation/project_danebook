@@ -1,62 +1,12 @@
 <section class="post-content col-xs-12">
   <div class="row">
 
-    <div class="col-xs-6 col-md-4 photo">
-      <a href="#">
-        <img src="https://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png" alt="photo">
-      </a>
-    </div>
-
-    <div class="col-xs-6 col-md-4 photo">
-      <a href="#">
-        <img src="https://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png" alt="photo">
-      </a>
-    </div>
-
-    <div class="col-xs-6 col-md-4 photo">
-      <a href="#">
-        <img src="https://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png" alt="photo">
-      </a>
-    </div>
-
-    <div class="col-xs-6 col-md-4 photo">
-      <a href="#">
-        <img src="https://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png" alt="photo">
-      </a>
-    </div>
-
-    <div class="col-xs-6 col-md-4 photo">
-      <a href="#">
-        <img src="https://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png" alt="photo">
-      </a>
-    </div>
-
-    <div class="col-xs-6 col-md-4 photo">
-      <a href="#">
-        <img src="https://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png" alt="photo">
-      </a>
-    </div>
-
-    <div class="col-xs-6 col-md-4 photo">
-      <a href="#">
-        <img src="https://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png" alt="photo">
-      </a>
-    </div>
-
-    <div class="col-xs-6 col-md-4 photo">
-      <a href="#">
-        <img src="https://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png" alt="photo">
-      </a>
-    </div>
-
-    <div class="col-xs-6 col-md-4 photo">
-      <a href="#">
-        <img src="https://s3.amazonaws.com/viking_education/web_development/web_app_eng/icon_photo_small.png" alt="photo">
-      </a>
-    </div>
+    <% user.images.each do |image| %>
+      <%= render partial: 'shared/photos/photo_mini', locals: {photo: image} %>
+    <% end %>
 
     <div class="col-xs-12 text-center">
-      <h4><a href="#">See More Photos</a></h4>
+      <h4><%= link_to "See More Photos", user_galleries_path(user) %></h4>
     </div>
   </div>
 </section>

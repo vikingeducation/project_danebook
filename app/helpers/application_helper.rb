@@ -19,6 +19,10 @@ module ApplicationHelper
     end
   end
 
+  def render_notice_badge
+    " <span class=\"badge\">#{current_user.notice_count}</span>".html_safe if current_user.notice_count > 0
+  end
+
   def render_profile_img(profile)
     if Rails.configuration.aws_images && profile.profile_img
       profile.profile_img.picture.url(:medium) || "//s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif"

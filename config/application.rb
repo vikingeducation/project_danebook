@@ -15,5 +15,9 @@ module ProjectDanebook
     config.active_record.raise_in_transactional_callbacks = true
     config.active_job.queue_adapter = :delayed_job
 
+    config.after_initialize do
+      FixCountersJob.perform_later if Delayed::Job.all.none? {|job| !!(job.handler =~ /FixCountersJob/) }
+    end
+
   end
 end

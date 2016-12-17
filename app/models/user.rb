@@ -22,9 +22,11 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :liked_posts, through: :likes, source: :post
 
-  has_many :notices, dependent: :destroy
+  has_many :notices, -> { order(created_at: :desc) }, dependent: :destroy
 
   has_many :galleries, dependent: :destroy
+
+  has_many :images, -> { order(created_at: :desc).limit(9) }, through: :galleries
 
 
   has_secure_password

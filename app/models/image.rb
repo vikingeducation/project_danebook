@@ -9,6 +9,8 @@ class Image < ApplicationRecord
 
   validates_attachment_content_type :picture, content_type: /\Aimage.*\Z/
 
+  has_one :profile, dependent: :nullify
+
   def set_job
     ProcessImageJob.perform_later self.id
   end
@@ -21,9 +23,12 @@ class Image < ApplicationRecord
       end
       self.url = nil
       unless save
-        message = self.errors.full_messages.join(". ")
-        Notice.create(user: self.gallery.user, message: "Image Processing Failed. #{message}. Make sure you are using a web-safe image.")
-        Image.find(self).destroy
+        profile = self.profile
+        messages = self.errors.full_messages.select {|e| e !~ /Paperclip/}
+        messages << "Make sure you are using a web-safe image."
+        Notice.create(user: self.gallery.user, title: "Image Processing Failed", messages: messages )
+        self.destroy
+        profile.fix_profile_image if profile
       end
     end
   end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161216045136) do
+ActiveRecord::Schema.define(version: 20161216214852) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -90,7 +90,9 @@ ActiveRecord::Schema.define(version: 20161216045136) do
 
   create_table "notices", force: :cascade do |t|
     t.integer  "user_id"
-    t.string   "message"
+    t.boolean "viewed", default: false
+    t.string "title", null: false
+    t.string "messages", array: true, default: []
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_notices_on_user_id", using: :btree
@@ -134,6 +136,7 @@ ActiveRecord::Schema.define(version: 20161216045136) do
     t.datetime "last_attempt"
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.integer  "notice_count",    default: 0
     t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
 

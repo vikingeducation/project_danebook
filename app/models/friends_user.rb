@@ -5,4 +5,5 @@ class FriendsUser < ApplicationRecord
   default_scope {
     includes :user
   }
+
 end

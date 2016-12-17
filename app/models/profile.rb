@@ -30,6 +30,10 @@ class Profile < ApplicationRecord
     gender_types.keys.to_a.map{|v| [v.humanize, v.to_s.classify]}
   end
 
+  def fix_profile_image
+    self.update_attribute(:profile_img, profile_gallery.images.last)
+  end
+
   private
     def format_input
       first_name.capitalize! if first_name

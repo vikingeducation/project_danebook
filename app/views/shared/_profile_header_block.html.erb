@@ -1,11 +1,7 @@
 <div class="row">
   <div class="col-sm-12">
     <div class="hero-image" <%= background_image(@profile) %> >
-      <% if @profile.photo %>
-        <%= image_tag @profile.photo.expiring_url, class: "profile-photo" %>
-      <% else %>
-        <%= image_tag "harry_potter_small.jpg", class: "profile-photo" %>
-      <% end %>
+      <%= image_tag image_path(@profile.photo.expiring_url), class: "profile-photo" %>
       <div class="username"><%= @profile.name %></div>
       <% if current_user == @profile.user %>
         <!-- No button; can't befriend yourself -->

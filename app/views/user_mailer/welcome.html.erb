@@ -1,0 +1,5 @@
+<h1>Glad to have you with us!</h1>
+
+<p><%= @user.first_name %>, welcome to Danebook! All your friends and fellow warriors are here.</p>
+
+<p>Don't forget to <%= link_to "Update your account!", user_url(@user.id, host: 'localhost:3000/') %></p>

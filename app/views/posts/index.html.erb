@@ -10,7 +10,7 @@
         <div class="row bottom-box">
           <div class="col-sm-5">
             <%= render partial: "shared/about", locals: { user: @user } %>
-            <%= render partial: "shared/photos" %>
+            <%= render partial: "shared/photos", locals: { user: @user } %>
             <%= render partial: "shared/friends" %>
           </div>
 

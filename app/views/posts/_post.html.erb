@@ -12,7 +12,7 @@
               <div class="media-left media-middle col-xs-2">
                 <a href="#">
                   <figure>
-                    <%= image_tag "harry_potter_small.jpg", { class: 'img-responsive' } %>
+                    <%= display_profile_photo(user, "small") %>
                   </figure>
                 </a>
               </div>
@@ -42,6 +42,7 @@
           <div class="panel-body">
             <% if p.comments.any? %>
               <% p.comments.each do |comment| %>
+                <%= display_profile_photo(comment.author, "small") %>
                 <h4><%= comment.author.full_name %></h4>
                 <p><%= comment.body %></p>
                 <%= display_comment_delete(user, p, comment) %>

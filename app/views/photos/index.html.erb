@@ -10,7 +10,11 @@
             <h4 class="col-xs-offset-5 col-xs-2 text-center">
             Photos</h4>
 
-            <%= link_to "Add Photo!", new_user_photo_path(@user), class: 'btn btn-info col-xs-2 col-xs-offset-3' %>
+            <% if @user == current_user %>
+
+              <%= link_to "Add Photo!", new_user_photo_path(@user), class: 'btn btn-info col-xs-2 col-xs-offset-3' %>
+
+            <% end %>
 
           </div>
         </div>

@@ -4,6 +4,8 @@ Rails.application.routes.draw do
 
   resources :users do
 
+    resource :profiles, only: [:update]
+
     resources :posts do
       resources :comments
     end

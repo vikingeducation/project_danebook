@@ -45,6 +45,9 @@ Rails.application.configure do
   # Suppress logger output for asset requests.
   config.assets.quiet = true
 
+  config.action_mailer.delivery_method = :letter_opener
+  config.action_mailer.default_url_options = { host: 'localhost:3000' }
+
   config.paperclip_defaults = {
 
     storage: :s3,

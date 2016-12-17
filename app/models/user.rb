@@ -9,13 +9,13 @@ class User < ApplicationRecord
   validates :password, confirmation: true
   validates :password, length: { minimum: 6 }, allow_nil: true
 
-  has_one :profile, inverse_of: :user
+  has_one :profile, inverse_of: :user, dependent: :destroy
 
-  has_many :posts
-  has_many :photos
+  has_many :posts, dependent: :destroy
+  has_many :photos, dependent: :destroy
 
-  has_many :comments, foreign_key: :author_id
-  has_many :likes, foreign_key: :liker_id
+  has_many :comments, foreign_key: :author_id, dependent: :destroy
+  has_many :likes, foreign_key: :liker_id, dependent: :destroy
   has_many :liked_posts, through: :likes, source: :posts
   has_many :liked_comments, through: :likes, source: :comments
 
@@ -35,6 +35,10 @@ class User < ApplicationRecord
     self.auth_token = nil
     generate_token
     save!
+  end
+
+  def self.welcome_email(id)
+    UserMailer.welcome(find(id)).deliver
   end
             
 end

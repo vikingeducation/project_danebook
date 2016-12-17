@@ -7,10 +7,10 @@ class LikesController < ApplicationController
     @like = Like.new(likeable_id: params[:likeable_id], likeable_type: params[:likeable_type], liker_id: current_user.id)
     if @like.save
       flash[:success] = "Liked"
-      redirect_to user_posts_path(@user)
+      redirect_back( fallback_location: proc { user_path(@user) } )
     else
       flash[:error] = "Could not like post"
-      redirect_to user_posts_path(@user)      
+      redirect_back( fallback_location: proc { user_path(@user) } )      
     end
   end
 
@@ -19,10 +19,10 @@ class LikesController < ApplicationController
     @like = Like.where(likeable_type: params[:likeable_type], likeable_id: params[:likeable_id], liker_id: current_user.id).first
     if @like.destroy
       flash[:success] = "Like destroyed"
-      redirect_to user_posts_path(@user)
+      redirect_back( fallback_location: proc { user_path(@user) } )
     else
       flash[:error] = "Could not destroy like"
-      redirect_to user_posts_path(@user)      
+      redirect_back( fallback_location: proc { user_path(@user) } )    
     end
   end
 

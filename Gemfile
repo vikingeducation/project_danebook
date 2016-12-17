@@ -37,6 +37,8 @@ gem 'aws-sdk'
 
 gem 'figaro'
 
+gem 'delayed_job_active_record'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -59,6 +61,7 @@ group :development do
   gem 'faker'
   gem 'better_errors'
   gem 'guard-rspec'
+  gem 'letter_opener'
 end
 
 group 'test' do

@@ -6,12 +6,10 @@ Rails.application.routes.draw do
     get "friend" => "friends#create"
     get "unfriend" => "friends#destroy"
     resources :posts do
-      get "delete" => "posts#destroy"
       get "likes" => "likes#index"
       get "like" => "likes#create"
       get "unlike" => "likes#destroy"
       resources :comments do
-        get "delete" => "comments#destroy"
         get "likes" => "likes#index"
         get "like" => "likes#create"
         get "unlike" => "likes#destroy"

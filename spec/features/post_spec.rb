@@ -21,7 +21,7 @@ feature 'User posts, comments, and likes' do
     expect{ click_button('Post') }.to change( Post, :count).by 1
   end
 
-  scenario "Delete post" do pending
+  scenario "Delete post" do
     create_post_by(user1)
     click_link "Delete"
     expect(page).to have_content "This user has no posts"

@@ -9,10 +9,11 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
+    @profile = @user.profile
     if @user.save
-      flash[:success] = "Welcome to Danebook!"
+      flash[:success] = "Welcome to Danebook! Tell us some more about yourself!"
       sign_in(@user)
-      redirect_to @user
+      redirect_to edit_user_profile_path(@user.id)
     else
       flash.now[:error] = "Oops! Something went wrong. Our apes are researching this problem as we speak."
       render :new
@@ -35,7 +36,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @user = current_user
+    @user = User.find_by_id(params[:id])
   end
 
   def show
@@ -62,9 +63,8 @@ class UsersController < ApplicationController
               :city,
               :about_me,
               :words_to_live_by,
-              :telephone],
-            post_attributes: [
-              :body])
+              :telephone]
+            )
   end
 
 end

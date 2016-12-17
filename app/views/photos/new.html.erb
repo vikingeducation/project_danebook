@@ -1,0 +1,7 @@
+<h1>Upload a Photo!</h1>
+<br>
+<%= form_for @photo, :url => url_for(:controller => 'photos', :action => 'create') do |f| %>
+  <%= f.file_field :photo_data, :accept => "image/png, image/gif, image/jpeg" %>
+  <%= hidden_field_tag :user_id, params[:user_id] %>
+  <%= f.submit "Upload!" %>
+<% end %>

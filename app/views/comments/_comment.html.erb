@@ -1,0 +1,25 @@
+<div class="post-body unfolded">
+  <div class="temp-pic">
+    <img src="../assets/user_silhouette_generic.gif">
+  </div>
+
+  <div class="author-box">
+    <%= comment.author.full_name %>
+    commented on <%= comment.updated_at %>
+  </div>
+
+  <p><%= comment.body %></p>
+  <div class="clearfix"></div>
+  <div class="pull-left">
+    <%= render partial: "likes/comment_like", locals: { comment: comment, user: user } %>
+  </div>
+  <div class="pull-right">
+    <% if comment.author.id == current_user.id %>
+      <%= link_to "Delete", comment_path(comment), method: "delete", data: {confirm: "Are you totally sure mate? I mean, there ain't no goin' back once you push that button..."} %>
+    <% end %>
+  </div>
+  <div class="clearfix"></div>
+  <div class="pull-left">
+    <%= render partial: "likes/who_liked_comment", locals: { comment: comment, user: user } %>
+  </div>
+</div>

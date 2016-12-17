@@ -1,0 +1,43 @@
+Errors:
+
+- "Like" display may break w/ 3+ likes... test w/ custom seeds later
+- Fix comment styling
+- Fix time displays to be less robot
+- Add dependent: :nullify to User model Friend stuff (?)
+- Re-add "badge" counts to Friend and Photo nav
+- Don't jump to top of page w/ every like, post, comment, etc.
+- Security issues: malicious photo/post/like/comment creation/destruction/editing
+
+TODO:
+
+"Friends" page displays all User's friends
+- mini-"friends" widget on Timeline displays random selection of User's pals
+- both "fail gracefully" if User has no/few friends
+- display friend counts where it's appropriate
+
+Friend button
+- changes to "remove friend" after successful friending; deletes
+- no confirmation required currently
+
+Photos
+- Upload photos to Photos collection page (Photos new/create)
+  - Display thumbnail that is a separate file (Photos index)
+- Go to individual photo (Photos show)
+  - Only friends can access Show for photos (unclickable for non-friends)
+- If User == Current User, Show page can make that photo yr profile pic or cover pic
+- Comment on Photo Show page ("take same form" as comments on posts)
+  - Be able to delete yr photo comments if you made 'em
+  - Be able to like & unlike photo comments
+- Be able to "like" a photo; display the "who likes" biz
+  - & unlike said photo
+
+Tests, TDD, Friend Search, Mailer(s), Newsfeed (?), Refactoring
+
+Hundredletter words are split to new line at edge of their container
+  (BONUS: retain clickability if hyperlink)
+Prettify About view
+Use Presenter(s), use Helper(s), refactor generally
+Spiff up README file
+
+"Remember me" remembers across sessions; w/out, it doesn't (how to test for this??)
+

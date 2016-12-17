@@ -1,0 +1,7 @@
+<% this_like = post.likes.where(liker_id: current_user.id).first %>
+
+<% unless this_like %>
+  <%= link_to "Like", "/posts/#{post.id}/likes", method: :post %>
+<% else %>
+  <%= link_to "Unlike", "/posts/#{post.id}/likes/#{this_like.id}", method: "delete" %>
+<% end %>

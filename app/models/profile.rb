@@ -13,9 +13,9 @@ class Profile < ApplicationRecord
             :length => { :in => 0..14 },
             :allow_nil => true
   validates :words_to_live_by,
-            :length => { :in => 0..500 },
+            :length => { :in => 0..5000 },
             :allow_nil => true
   validates :about_me,
-            :length => { :in => 0..500 },
+            :length => { :in => 0..5000 },
             :allow_nil => true
 end

@@ -4,6 +4,22 @@ Rails.application.configure do
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
+  config.paperclip_defaults = {
+    :storage => :s3,
+      :s3_credentials => {
+        :s3_host_name =>  "s3.amazonaws.com",
+        :bucket => Rails.application.secrets.s3_bucket_name,
+        :access_key_id => Rails.application.secrets.aws_access_key_id,
+        :secret_access_key => Rails.application.secrets.aws_secret_access_key,
+        s3_region: ENV['AWS_REGION']
+      }
+    }
+  Paperclip.options[:command_path] = "/usr/local/bin"
+  config.cache_classes = false
+
+  # In the development environment your application's code is reloaded on
+  # every request. This slows down response time but is perfect for development
+  # since you don't have to restart the web server when you make code changes.
   config.cache_classes = false
 
   # Do not eager load code on boot.

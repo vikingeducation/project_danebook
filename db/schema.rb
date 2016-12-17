@@ -10,18 +10,45 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161209215142) do
+ActiveRecord::Schema.define(version: 20161216215421) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "comments", force: :cascade do |t|
+    t.integer  "author_id"
+    t.string   "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "post_id"
+    t.index ["author_id"], name: "index_comments_on_author_id", using: :btree
+    t.index ["post_id"], name: "index_comments_on_post_id", using: :btree
+  end
+
+  create_table "friendings", force: :cascade do |t|
+    t.integer "friender_id"
+    t.integer "friended_id"
+    t.index ["friender_id", "friended_id"], name: "index_friendings_on_friender_id_and_friended_id", using: :btree
+  end
+
   create_table "likes", force: :cascade do |t|
     t.integer  "liker_id"
-    t.integer  "liked_post_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.index ["liked_post_id"], name: "index_likes_on_liked_post_id", using: :btree
-    t.index ["liker_id"], name: "index_likes_on_liker_id", using: :btree
+    t.string   "likable_thing_type"
+    t.integer  "likable_thing_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.index ["likable_thing_type", "likable_thing_id"], name: "index_likes_on_likable_thing_type_and_likable_thing_id", using: :btree
+  end
+
+  create_table "photos", force: :cascade do |t|
+    t.integer  "owner_id"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.string   "photo_data_file_name"
+    t.string   "photo_data_content_type"
+    t.integer  "photo_data_file_size"
+    t.datetime "photo_data_updated_at"
+    t.index ["owner_id"], name: "index_photos_on_owner_id", using: :btree
   end
 
   create_table "posts", force: :cascade do |t|
@@ -57,7 +84,5 @@ ActiveRecord::Schema.define(version: 20161209215142) do
     t.index ["auth_token"], name: "index_users_on_auth_token", unique: true, using: :btree
   end
 
-  add_foreign_key "likes", "posts", column: "liked_post_id"
-  add_foreign_key "likes", "users", column: "liker_id"
   add_foreign_key "posts", "users", column: "author_id"
 end

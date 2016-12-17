@@ -27,8 +27,6 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def signed_in_user?
-    p current_user
-    puts "^^^ Above here be the currently signed-in User, matey! ^^^"
     !!current_user
   end
   helper_method :signed_in_user?

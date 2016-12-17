@@ -22,6 +22,14 @@
           <table class="tab-timeline">
             <tr>
               <th>
+                Name:
+              </th>
+              <td>
+                <%= @user.full_name %>
+              </td>
+            </tr>
+            <tr>
+              <th>
                   Born on:
               </th>
               <td>
@@ -249,29 +257,30 @@
 
   <!-- Post Entry -->
   <article class="col-xs-8">
-      <section class="post">
-          <header class="nav-post">
-              <h4>
-                Post
-              </h4>
-          </header>
-          <%= form_for @user do |f| %>
-          <%= f.fields_for @post do |ph| %>
-            <div class="post-body">
-              <div class="form-group">
-                <%= ph.text_area :body, class: "form-control", placeholder: "Tell the world what's on yer mind..." %>
-                <% end %>
+      <%= render partial: "friends/friending_button", locals: { user: @user } %>
+      <% if @user == current_user %>
+        <section class="post">
+            <header class="nav-post">
+                <h4>
+                  Post
+                </h4>
+            </header>
+            <%= form_for @post do |f| %>
+              <div class="post-body">
+                <div class="form-group">
+                  <%= f.text_area :body, class: "form-control", placeholder: "Tell the world what's on yer mind..." %>
+                </div>
               </div>
-            </div>
-            <div class="nav-footer">
-              <%= f.submit "Post", class: "btn btn-primary" %>
-            </div>
-          <% end %>
-      </section>
+              <div class="nav-footer">
+                <%= f.submit "Post", class: "btn btn-primary" %>
+              </div>
+            <% end %>
+        </section>
+      <% end %>
       
-      <!-- Top comments -->
-      <% @user.authored_posts.each do |post| %>
-        <%= render partial: "posts/post", locals: { post: post } if  post.persisted? %>
+      <!-- Posts -->
+      <% @user.authored_posts.reverse.each do |post| %>
+        <%= render partial: "posts/post", locals: { post: post, user: @user } if  post.persisted? %>
       <% end %>
     </article>
   </main>

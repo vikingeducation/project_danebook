@@ -1,0 +1,25 @@
+<% this_like = comment.likes.where(liker_id: user.id).first %>
+<% other_likes = comment.likes.where.not(liker_id: user.id)[0..2] %>
+<% first_few = 1 %>
+
+<%= "You " if this_like %>
+<%= "and " if this_like && other_likes.any? %>
+
+<% other_likes.take(3).each_with_index do |other_like, i| %>
+  <%= "#{other_like.liker.full_name} " %>
+  <% first_few += 1 %>
+<% end %>
+
+<% total_others_who_like_this = comment.likes.where.not(liker_id: user.id).count %>
+<% total_others_who_like_this -= first_few %>
+
+<% if total_others_who_like_this > 0 %>
+  <%= "and #{total_others_who_like_this} " %>
+  <% if total_others_who_like_this > 1 %>
+    <%= "others " %>
+  <% else %>
+    <%= "other " %>
+  <% end %>
+<% end %>
+<%= "like this" if comment.likes.any? && ( comment.likes.count > 1 || this_like ) %>
+<%= "likes this" if comment.likes.count == 1 && !(this_like) %>

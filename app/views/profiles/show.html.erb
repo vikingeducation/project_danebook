@@ -2,92 +2,101 @@
 
 <!-- Hero -->
 <div class="container">
-    <header class="hero">
-        <div class="avatar">
-        </div>
-    </header>
+  <header class="hero">
+    <div class="avatar">
+    </div>
+  </header>
 
-    <%= render partial: "shared/subnav", locals: { :user => @user } %>
+  <%= render partial: "shared/subnav", locals: { :user => @user } %>
 
-    <!-- Current location header -->
-    <section class="nav-about">
-        <h2>
-            About
-        </h2>
-        <%= link_to "Edit Profile", edit_user_profile_path(@user.id), class: "btn btn-primary" %>
-    </section>
+  <!-- Current location header -->
+  <section class="nav-about">
+    <h2>
+      About
+    </h2>
+
+    <%= render partial: "friends/friending_button", locals: { user: @user } %>
+  </section>
 
     <!-- Main -->
     <main class="main-about">
-        <div class="row">
-            <article class="col-xs-12 col-sm-6 interior">
-                <table class="tab-about">
-                    <caption>
-                        <h3>
-                            Basic Information
-                        </h3>
-                    </caption>
-                    <tr>
-                        <th>
-                            Birthday:
-                        </th>
-                        <td>
-                            <%= @user.profile.birthday %>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            College:
-                        </th>
-                        <td>
-                            <%= @user.profile.college %>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            Hometown:
-                        </th>
-                        <td>
-                            <%= @user.profile.hometown %>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            Currently Lives:
-                        </th>
-                        <td>
-                            <%= @user.profile.city %>
-                        </td>
-                    </tr>
-                </table>
-                <!-- Contact information -->
-                <table class="tab-about">
-                    <caption><h3>Current Information</h3></caption>
-                    <tr>
-                        <th>
-                            Email:
-                        </th>
-                        <td>
-                            <%= @user.email %>
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            Telephone:
-                        </th>
-                        <td>
-                            <%= @user.profile.telephone %>
-                        </td>
-                    </tr>
-                </table>
-            </article>
-            <!-- Righthand coloumn -->
-            <article class="col-xs-12 col-sm-6 interior">
-                <h3>Words to Live By</h3>
-                <p><%= @user.profile.words_to_live_by %></p>
-                <h3>About Me</h3>
-                <p><%= @user.profile.about_me %></p>
-            </article>
-        </div>
+      <div class="row">
+        <article class="col-xs-12 col-sm-6 interior">
+          <table class="tab-about">
+            <caption>
+              <h3>
+                Basic Information
+              </h3>
+            </caption>
+            <tr>
+              <th>
+                Name:
+              </th>
+              <td>
+                <%= @user.full_name %>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                Birthday:
+              </th>
+              <td>
+                <%= @user.profile.birthday %>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                College:
+              </th>
+              <td>
+                <%= @user.profile.college %>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                Hometown:
+              </th>
+              <td>
+                <%= @user.profile.hometown %>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                Currently Lives:
+              </th>
+              <td>
+                <%= @user.profile.city %>
+              </td>
+            </tr>
+          </table>
+          <!-- Contact information -->
+          <table class="tab-about">
+            <caption><h3>Current Information</h3></caption>
+            <tr>
+              <th>
+                  Email:
+              </th>
+              <td>
+                  <%= @user.email %>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                  Telephone:
+              </th>
+              <td>
+                  <%= @user.profile.telephone %>
+              </td>
+            </tr>
+          </table>
+        </article>
+        <!-- Righthand coloumn -->
+        <article class="col-xs-12 col-sm-6 interior">
+          <h3>Words to Live By</h3>
+          <p><%= @user.profile.words_to_live_by %></p>
+          <h3>About Me</h3>
+          <p><%= @user.profile.about_me %></p>
+        </article>
+      </div>
     </main>
 </div>

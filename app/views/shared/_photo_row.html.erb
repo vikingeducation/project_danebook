@@ -1,0 +1,8 @@
+<div class="row"> 
+<% times_to_do.times do |i| %>
+  <%= render "/shared/individual_photo", photo: @photos[4*index + i] %>
+<% end %>
+</div>
+
+<!-- image_tag(@photos.first.file.expiring_url(3600, :original),
+                  style: "max-width: 750px")  -->

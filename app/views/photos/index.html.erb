@@ -1,0 +1,21 @@
+
+      <div class="container">
+        <%= render "/shared/second_nav", user: @user %>
+          <!-- Current location bar -->
+          <section class="nav-about">
+              <h2>
+              Photos
+              </h2>
+              <a class="btn btn-primary" href="<%= new_user_photo_path(current_user) %>" role="button">
+                  Add Photo!
+              </a>
+          </section>
+
+          <!-- Main -->
+          <main class="main-about photos">
+            <% @variables[0].times do |i| %>
+              <%= render "/shared/photo_row", times_to_do: 4, index: i%>
+            <% end %> 
+            <%= render "/shared/photo_row", times_to_do: @variables[1], index: @variables[0] %>
+          </main>
+      </div>

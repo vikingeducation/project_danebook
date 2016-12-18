@@ -28,7 +28,7 @@
         <% end %>
 
         <% if comment.user_id == current_user.id %>
-           <%= link_to "Delete", comment_path(:id => post.id, :type => "Post"), method: "delete" %>
+           <%= link_to "Delete", comment_path(:id => post.id, :type => post.class.to_s), method: "delete" %>
         <% end %>
 
     </div>

@@ -1,0 +1,12 @@
+<div class="col-lg-3 col-sm-6 col-xs-12">
+    <div class="hovereffect">
+        <a href="<%= user_photo_path(@user, photo) %>">
+        <%= image_tag(photo.file.expiring_url(3600, :original),
+                  style: "max-width: 300px", class: "img-thumbnail" ) %>
+            
+            <time datetime="<%= photo.created_at %>" class="overlay">
+                <%= photo.created_at %>
+            </time>
+        </a>
+    </div>
+</div>

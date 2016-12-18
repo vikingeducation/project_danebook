@@ -1,0 +1,22 @@
+<div class="container">
+
+    <section class="nav-about">
+        <h2>
+        New Photo
+        </h2>
+    </section>
+    <main class="main-about photos">
+      <div class="row">
+        <div class="col-sm-6 col-sm-offset-5">
+          <%= form_for [current_user, @photo] do |f| %>
+            <%= f.file_field :file %>
+            <br>
+            <%= f.submit 'Upload', class: 'btn btn-primary' %>
+          <% end %>
+        </div>
+      </div>
+
+    </main>
+
+
+</div>

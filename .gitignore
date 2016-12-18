@@ -24,3 +24,6 @@
 # Ignore Byebug command history file.
 .byebug_history
 >>>>>>> 34e8fadcb110ba7bff0718e7f8607dd0a0796e32
+
+# Ignore application configuration
+/config/application.yml

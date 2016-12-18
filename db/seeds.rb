@@ -46,7 +46,7 @@ User.all.each do |user|
                    residence: Faker::Address.city,
                    telephone: Faker::PhoneNumber.phone_number,
                    summary: Faker::Hipster.paragraph(3, true, 4),
-                   about_me: Faker::Hipster.paragraphs(5, true)
+                   about_me: Faker::Hipster.paragraph(10, true)
                    )
 
 end

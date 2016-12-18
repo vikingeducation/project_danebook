@@ -1,0 +1,41 @@
+<div class="container">
+
+    <section class="nav-about">
+        <h2>
+        Photo
+        </h2>
+    </section>
+    <main class="main-about photos">
+      <div class="row">
+        <div class="col-sm-6 col-sm-offset-2">
+          <%= image_tag(@photo.file.expiring_url(3600, :original),
+                  style: "max-width: 750px") %>
+          <%= profile_photo_link(params[:user_id].to_i, @photo) %>
+          <%= cover_photo_link(params[:user_id].to_i, @photo) %>
+        </div>
+      </div>
+      <div class="row">
+      <div class="nav-footer">
+        <div class="col-sm-7 col-sm-offset-2">
+          <% if @photo.likes.where(user_id: current_user.id).empty? %>
+            <%= link_to "Like", likes_path(:id => @photo.id, :type => "Photo"), method: :post , class: "link pull-left" %>
+
+          <% else %>
+
+            <%= link_to "Unlike", like_path(@photo.id, :type => "Photo"), class: "link pull-left", method: "delete" %>
+
+          <% end %>
+
+          <% if @photo.user_id == current_user.id %>
+            <%= link_to "Delete", user_photo_path(@photo.user_id, @photo.id), method: "delete", class: "pull-right" %>
+          <% end %>
+          <br>
+          <%= show_comment_likes(@photo) %>
+          <%= render "/shared/comment_writer", post: @photo %>
+          </div>
+         </div>
+      </div>
+    </main>
+
+
+</div>

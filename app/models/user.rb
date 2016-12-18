@@ -14,9 +14,13 @@ class User < ApplicationRecord
  has_many :friended_users, through: :recived_friendships,
                                 source: :friendee
 
+ has_one :profile_photo, class_name: 'Photo', foreign_key: 'id'
+ has_many :photos, dependent: :destroy
 
-  def friends
-    self.friended_users
+
+
+  def cover_photo
+    self.profile.cover_photo
   end
                               
 

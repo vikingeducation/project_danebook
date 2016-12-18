@@ -18,7 +18,7 @@ module PostsHelper
     elsif likes.count == 0
       str = ""
     else
-      str = "<div class='liked-box'> <a href= '#{user_path(user)}' class='liking'>  #{user.first_name}, #{user.last_name} </a><p>and #{likes.count - 1} others like this </p></div>"
+      str = "<div class='liked-box'> <a href= '#{user_path(user)}' class='liking'>  #{user.first_name} #{user.last_name} </a><p>and #{likes.count - 1} others like this </p></div>"
     end 
     str.html_safe
   end

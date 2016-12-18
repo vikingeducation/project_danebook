@@ -5,7 +5,7 @@
     <% end %> 
  <br>
 
-  <%= form_for Comment.new, url: comments_path(:id => post.id, :type => "Post") do |f| %>               
+  <%= form_for Comment.new, url: comments_path(:id => post.id, :type => post.class.to_s) do |f| %>               
   <div class="form-group">
     <%= f.text_area :body, class: "form-control", placeholder: "Type a comment in here", rows: 4 %>
       <div class="nav-footer">

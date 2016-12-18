@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161209214236) do
+ActiveRecord::Schema.define(version: 20161218011608) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -44,6 +44,17 @@ ActiveRecord::Schema.define(version: 20161209214236) do
     t.index ["likeable_id", "likeable_type"], name: "index_likes_on_likeable_id_and_likeable_type", using: :btree
   end
 
+  create_table "photos", force: :cascade do |t|
+    t.integer  "user_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
+    t.index ["user_id"], name: "index_photos_on_user_id", using: :btree
+  end
+
   create_table "posts", force: :cascade do |t|
     t.text     "body"
     t.integer  "user_id"
@@ -55,14 +66,16 @@ ActiveRecord::Schema.define(version: 20161209214236) do
     t.integer  "user_id"
     t.date     "birthday"
     t.string   "gender"
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
-    t.string   "college",    default: " ", null: false
-    t.string   "hometown",   default: " ", null: false
-    t.string   "residence",  default: " ", null: false
-    t.string   "telephone",  default: " ", null: false
-    t.text     "summary",    default: " ", null: false
-    t.text     "about_me",   default: " ", null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.string   "college",          default: " ", null: false
+    t.string   "hometown",         default: " ", null: false
+    t.string   "residence",        default: " ", null: false
+    t.string   "telephone",        default: " ", null: false
+    t.text     "summary",          default: " ", null: false
+    t.text     "about_me",         default: " ", null: false
+    t.integer  "profile_photo_id"
+    t.integer  "cover_photo_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -76,4 +89,5 @@ ActiveRecord::Schema.define(version: 20161209214236) do
     t.index ["auth_token"], name: "index_users_on_auth_token", unique: true, using: :btree
   end
 
+  add_foreign_key "photos", "users"
 end

@@ -1,5 +1,5 @@
 class ProfileMailer < ApplicationMailer
-  default from: "Sampson Crowley <sendto:sampsonsprojects@gmail>"
+  default from: "Sampson Crowley <sampsonsprojects@gmail>"
 
   def welcome(profile_id)
     @profile = Profile.includes(:user).find(profile_id)

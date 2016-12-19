@@ -17,11 +17,11 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(strong_post_params)
     if @post.save
       flash[:success] = "Post published!"
-      redirect_to user_posts_path(current_user)
+      redirect_back(fallback_location: user_posts_path(current_user))
     else
       flash[:warning] = @post.errors.full_messages
       @profile = User.find(params[:user_id]).profile
-      render :index
+      redirect_back(fallback_location: user_posts_path(current_user))
     end
   end
 

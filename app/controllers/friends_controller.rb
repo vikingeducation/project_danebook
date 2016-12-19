@@ -3,7 +3,8 @@ class FriendsController < ApplicationController
   def index
     @user = User.find(params[:user_id])
     @profile = @user.profile
-    @timeline_posts = Post.where(user_id: @user.friended_users)
+    @timeline_posts = Post.where(user_id: @user.friended_users).or(Post.where(user_id: @user))
+    @post = current_user.posts.build
   end
 
   def create

@@ -2,6 +2,7 @@ class User < ApplicationRecord
   attr_accessor :current_password
 
   after_create :set_up_profile_gallery
+  after_destroy :destroy_orphans
 
   before_save :format_input
 
@@ -24,7 +25,7 @@ class User < ApplicationRecord
 
   has_many :notices, -> { order(created_at: :desc) }, dependent: :destroy
 
-  has_many :galleries, dependent: :destroy
+  has_many :galleries, dependent: :nullify
 
   has_many :images, -> { order(created_at: :desc).limit(9) }, through: :galleries
 
@@ -59,6 +60,10 @@ private
 
     def set_up_profile_gallery
       self.galleries.create(title: "Profile Images")
+    end
+
+    def destroy_orphans
+      Gallery.where(user_id: nil).destroy_all
     end
 
 

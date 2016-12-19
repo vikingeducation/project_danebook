@@ -6,5 +6,6 @@ class Photo < ApplicationRecord
   has_one :profile_with_profile_pic, foreign_key: :profile_pic_id
   has_one :profile_with_cover_photo, foreign_key: :cover_photo_id
   has_many :likes, as: :likable_thing, dependent: :destroy
+  has_many :comments, as: :commentable, dependent: :destroy
 
 end

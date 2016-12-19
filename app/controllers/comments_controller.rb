@@ -1,36 +1,41 @@
 class CommentsController < ApplicationController
   
   def create
-    @user = Post.find_by_id(params[:post]).author
-    post_id = params[:post]
-    @comment = current_user.comments.build(comment_params)
-    @comment.post_id = post_id
+    @post = Post.find_by_id(params[:post])
+    @photo = Photo.find_by_id(params[:photo])
+    if @post
+      @user = @post.author
+      @comment = @post.comments.build(author_id: current_user.id, body: params[:comment][:body])
+    elsif @photo
+      @user = @photo.owner
+      @comment = @photo.comments.build(author_id: current_user.id, body: params[:comment][:body])
+    end
     if @comment.save
       flash[:success] = "Sweet comment bro!"
-      redirect_to @user
+      redirect_to @user unless @photo
+      redirect_to @photo if @photo
     else
       flash[:error] = "Oops! Something went wrong. Our apes are researching this problem as we speak."
-      redirect_to @user
+      redirect_to @user unless @photo
+      redirect_to @photo if @photo
     end
   end
 
   def destroy
     @comment = Comment.find_by_id(params[:id])
-    @user = @comment.post.author
+    commentable_thing = @comment.commentable
+    @user = commentable_thing.author if commentable_thing.is_a?(Post)
+    @user = commentable_thing.owner if commentable_thing.is_a?(Photo)
+    @photo = commentable_thing if commentable_thing
     if @comment.destroy
       flash[:success] = "We nuked it dawg! It is gone!"
-      redirect_to @user
+      redirect_to @user unless @photo
+      redirect_to @photo if @photo
     else
       flash[:error] = "Oops! Something went wrong. Our apes are researching this problem as we speak."
-      redirect_to @user
+      redirect_to @user unless @photo
+      redirect_to @photo if @photo
     end
-  end
-
-  private
-
-  def comment_params
-    params.require(:comment).permit(
-      :body, :author_id, :post_id)
   end
 
 end

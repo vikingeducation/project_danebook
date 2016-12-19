@@ -34,11 +34,6 @@ Friend Search
 - Search form finds users where search terms match any part of first/last name
 - Display dem results "as in the mockup"
 
-Photos
-- Comment on Photo Show page ("take same form" as comments on posts)
-  - Be able to delete yr photo comments if you made 'em
-  - Be able to like & unlike photo comments
-
 Tests, Refactoring (presenter(s), helper(s), etc.)
 
 OPTIONAL

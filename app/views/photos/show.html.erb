@@ -32,7 +32,7 @@
 <%= render partial: "likes/who_liked_photo", locals: { photo: @photo, user: @user } %>
 <br>
 
-<% photo.comments.each do |comment| %>
+<% @photo.comments.each do |comment| %>
   <%= render partial: "comments/comment", locals: { user: @user, photo: @photo, comment: comment } if comment.persisted? %>
 <% end %>
 

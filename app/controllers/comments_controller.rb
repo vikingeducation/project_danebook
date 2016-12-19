@@ -3,6 +3,7 @@ class CommentsController < ApplicationController
   def create
     @comment = current_user.comments.build(commentable_id: params[:id], commentable_type: params[:type], body:comment_params[:body])
     if @comment.save
+      Comment.delay.send_email(@comment.commentable.user.id) if  Rails.env.production?
       flash[:success] = "Comment Posted!"
       redirect_back(fallback_location: root_path)
 

@@ -5,4 +5,9 @@ class Comment < ApplicationRecord
 
   validates :body, 
             length: { minimum: 8 }
+
+  def self.send_email(user_id)
+    user = User.find(user_id)
+    CommentMailer.commented_on(user).deliver!
+  end
 end

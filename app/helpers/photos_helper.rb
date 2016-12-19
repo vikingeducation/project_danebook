@@ -15,10 +15,6 @@ module PhotosHelper
     style: "max-height: #{size}"
   end
 
-    def photo_count(user_id)
-      Photo.where(user_id: user_id).count
-    end
-
   def cover_photo_link(user_id, photo)
      if current_user.id == user_id && current_user.cover_photo != photo
        create_cover_photo_link(current_user, photo.id)

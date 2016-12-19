@@ -35,7 +35,7 @@ class User < ApplicationRecord
     frienders + friendees
   end
 
-  def friends_sample(n = 6)
+  def friends_sample(n = 5)
     friends[0..n]
   end
 

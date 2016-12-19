@@ -13,8 +13,11 @@ Profile.destroy_all
 Post.destroy_all
 Comment.destroy_all
 Like.destroy_all
+Photo.destroy_all
+Friending.destroy_all
 
 NUM_USERS = 10
+NUM_FRIENDINGS = 5
 POSTS_PER_USER = (0..4).to_a
 COMMENTS_PER_POST = (0..2).to_a
 NUM_LIKES_PER_LIKEABLE = (0..5).to_a
@@ -49,6 +52,14 @@ users.each do |u|
                             )
 end
 
+puts 'creating friendships'
+
+users.each do |u|
+  NUM_FRIENDINGS.times do |n|
+    Friending.create(friender_id: u.id, friendee_id: (u.id + n))
+  end
+end
+
 puts 'creating posts and likes on posts'
 
 users.each do |u|
@@ -78,12 +89,13 @@ puts 'creating comments and likes on comments'
 users.each do |u|
   u.posts.each do |p|
     COMMENTS_PER_POST.sample.times do
-      p.comments << Comment.create( 
+      comment = Comment.create!( 
                                     body: Faker::StarWars.quote,
                                     author_id: u.id,
-                                    post_id: p.id
+                                    commentable_id: p.id,
+                                    commentable_type: "Post"
                                   )
-
+      p.comments << comment
       p.comments.each do |c|
 
         NUM_LIKES_PER_LIKEABLE.sample.times do |l|

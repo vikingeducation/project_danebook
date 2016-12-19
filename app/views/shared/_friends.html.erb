@@ -12,7 +12,7 @@
 
           <% if user.friends.any? %>
 
-            <% user.friends.each_with_index do |friend, index| %>
+            <% user.friends_sample.each_with_index do |friend, index| %>
 
               <% if index % 3 == 0 %>
                 </tr>

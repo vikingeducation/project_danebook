@@ -1,11 +1,11 @@
-<%= render partial: "shared/navbar", locals: { :user => @user } %>
+<%= render partial: "shared/navbar" %>
 <!-- Hero -->
 <div class="container">
     <header class="hero">
         <div class="avatar">
         </div>
     </header>
-    <%= render partial: "shared/subnav", locals: { :user => @user } %>
+    <%= render partial: "shared/subnav", locals: { :user => current_user } %>
     <!-- Current location header -->
     <section class="nav-about">
         <h2>
@@ -18,7 +18,7 @@
     <div class="row">
         
         <article class="col-sm-12 col-md-12">
-            <%= form_for @user do |f| %>
+            <%= form_for current_user do |f| %>
                 <%= f.fields_for :profile, @profile do |ph| %>
                     Birthday
                     <br>

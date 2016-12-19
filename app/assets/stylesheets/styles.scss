@@ -58,6 +58,16 @@ body {
   color: #000;
 }
 
+.bordered{
+  border: 2px solid #333;
+  border-radius: 6px;
+  padding: 15px;
+}
+.spaced {
+  margin-top: 20px;
+  margin-bottom: 20px
+}
+
 @import 'partials/navbar';
 @import 'partials/notices';
 @import 'partials/header';

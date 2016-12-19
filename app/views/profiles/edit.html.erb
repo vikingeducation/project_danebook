@@ -8,7 +8,7 @@
   </div>
   <div class="row">
     <section class="post-content col-xs-12">
-      <%= form_for([current_user, current_user.profile], html: { class: 'directUpload', data: set_aws_options }) do |f| %>
+      <%= form_for([current_user, current_user.profile], html: { class: 'syncronousUpload' }) do |f| %>
       <div class="row">
 
         <div class="information col-md-5">

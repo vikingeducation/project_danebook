@@ -23,6 +23,20 @@ module ApplicationHelper
     " <span class=\"badge\">#{current_user.notice_count}</span>".html_safe if current_user.notice_count > 0
   end
 
+  def render_gallery_image(photo)
+    if Rails.configuration.aws_images
+      if photo.post
+        link_to user_post_path(photo.gallery.user, photo.post) do
+          image_tag photo.picture.url(:medium)
+        end
+      else
+        image_tag photo.picture.url(:medium)
+      end
+    else
+      "//s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif"
+    end
+  end
+
   def render_profile_img(profile)
     if Rails.configuration.aws_images && profile.profile_img
       profile.profile_img.picture.url(:medium) || "//s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif"
@@ -48,7 +62,12 @@ module ApplicationHelper
 
   def image_upload_form(form, gallery, build = nil)
     if Rails.configuration.aws_images
-      render_image_upload(form, gallery, build)
+      "
+        <div class=\"alert alert-block alert-info\">
+          <p><strong>(If you both choose an image and enter a Url, the Url will take precedence and selected image will be discarded)</strong></p>
+        </div>
+        #{render_image_upload(form, gallery, build)}
+      ".html_safe
     else
       "<h4>Image Uploading disabled by admin</h4>".html_safe
     end

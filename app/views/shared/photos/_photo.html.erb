@@ -1,7 +1,5 @@
 <div class="col-xs-4 col-md-3 photo text-center">
-  <a href="#">
-    <%= image_tag photo.picture.url(:medium) %>
-  </a>
+  <%= render_gallery_image(photo) %>
   <div class="description">
     <%= photo.description %>
   </div>

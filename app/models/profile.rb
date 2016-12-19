@@ -1,5 +1,6 @@
 class Profile < ApplicationRecord
   before_save :format_input
+  before_save :normalize_blank_values
 
   after_create :send_welcome_email
 
@@ -21,6 +22,13 @@ class Profile < ApplicationRecord
   validates_presence_of :first_name, :last_name, :birthday, :gender
   validates_format_of :phone, with: /\A(?=.*\d)[0-9\- +]+\Z/, allow_nil: true, allow_blank: true
   validates :phone, length: { minimum: 4, maximum: 30 }, allow_nil: true, allow_blank: true
+
+
+  def normalize_blank_values
+    attributes.each do |column, value|
+      self[column].present? || self[column] = nil
+    end
+  end
 
   default_scope {
     includes :profile_img

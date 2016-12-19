@@ -1,0 +1,18 @@
+<div class="bordered spaced">
+  <p class="text-center">
+    <%= image_tag form.object.picture.url(:thumb) %>
+  </p>
+
+  <div class="form-group">
+    <%= form.label :description, "Image Description" %><br>
+    <%= form.text_field :description, class: "form-control", placeholder: "Enter a description (optional)"%>
+  </div>
+  <div class="form-group">
+    <%= form.label "_destroy" do %>
+      <%= form.check_box '_destroy' %> Destroy?
+    <% end %>
+    <%= form.label :set_profile_photo do %>
+      <%= form.check_box :set_profile_photo %> Set as Profile?
+    <% end %>
+  </div>
+</div>

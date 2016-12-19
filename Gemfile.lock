@@ -68,12 +68,6 @@ GEM
       aws-sdk-core (= 2.6.35)
     aws-sigv4 (1.0.0)
     bcrypt (3.1.11)
-    better_errors (2.1.1)
-      coderay (>= 1.0.0)
-      erubis (>= 2.6.6)
-      rack (>= 0.9.0)
-    binding_of_caller (0.7.2)
-      debug_inspector (>= 0.0.1)
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
@@ -117,6 +111,9 @@ GEM
     delayed_job_active_record (4.1.1)
       activerecord (>= 3.0, < 5.1)
       delayed_job (>= 3.0, < 5)
+    delayed_paperclip (3.0.1)
+      activejob (>= 4.2)
+      paperclip (>= 3.3)
     diff-lcs (1.2.5)
     erubis (2.7.0)
     execjs (2.7.0)
@@ -325,8 +322,6 @@ DEPENDENCIES
   aws-sdk
   aws-sdk-rails
   bcrypt (~> 3.1.7)
-  better_errors
-  binding_of_caller
   bootstrap-sass
   brakeman
   bullet
@@ -337,6 +332,7 @@ DEPENDENCIES
   daemons
   delayed_job
   delayed_job_active_record
+  delayed_paperclip
   factory_girl_rails (~> 4.0)
   faker (~> 1.6.6)
   figaro

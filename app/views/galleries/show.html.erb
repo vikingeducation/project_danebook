@@ -2,7 +2,13 @@
 <section class="post post-gutters col-xs-12">
   <div class="row">
     <header class="post-header col-xs-12">
-      <a href="#" class="edit-button btn btn-primary">Add Photo!</a>
+      <% if current_user == @user && @gallery.title != "Profile Images" %>
+        <%= link_to "Delete Gallery", user_gallery_path(current_user, @gallery), class: "pull-right btn btn-danger", method: :delete, data: {confirm: "Are you sure? All images in the gallery will be deleted"} %>
+      <% end %>
+      <% if current_user == @user %>
+        <%= link_to "Edit and Add Photos", edit_user_gallery_path(current_user, @gallery), class: "pull-right btn btn-primary" %>
+      <% end %>
+      <%= link_to "Back", user_galleries_path(@user), class: "pull-left btn btn-info" %>
       <h2><%= @gallery.title %></h2>
     </header>
   </div>

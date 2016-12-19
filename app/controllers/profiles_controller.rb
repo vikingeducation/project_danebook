@@ -50,6 +50,7 @@ class ProfilesController < ApplicationController
                                                                                               :id,
                                                                                               :gallery_id,
                                                                                               :url,
+                                                                                              :picture,
                                                                                               :description
                                                                                             ]
                                                                       }
@@ -59,8 +60,8 @@ class ProfilesController < ApplicationController
     end
 
     def set_profile_img
-      @rails =  Rails.application
-      if params[:profile][:profile_gallery_attributes][:images_attributes]["0"][:url]
+      attributes = params[:profile][:profile_gallery_attributes][:images_attributes]
+      if attributes["0"][:url] || attributes["0"][:picture]
         flash[:success] << "Your image has been uploaded." << "Your image will be viewable after processing"
         @user.profile.fix_profile_image
       end

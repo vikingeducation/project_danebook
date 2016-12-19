@@ -3,7 +3,7 @@ module ApplicationHelper
      if user.cover_photo
        user.cover_photo.expiring_url(3600, :original)
      else
-       "/assets/hogwarts_small.jpg"
+       "https://s3.amazonaws.com/danebook191919/hogwarts_small.jpg"
      end
    end
 
@@ -11,7 +11,7 @@ module ApplicationHelper
      if user.profile_photo
        user.profile_photo.expiring_url(3600, :cover)
      else
-       "/assets/user_silhouette.png"
+       "https://s3.amazonaws.com/danebook191919/user_silhouette.png"
      end
    end
 

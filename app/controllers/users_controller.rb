@@ -15,7 +15,7 @@ class UsersController < ApplicationController
       redirect_to @user
     else
       flash[:danger] = "Something went wrong!" 
-      redirect_back(fallback_location: root)
+      redirect_back(fallback_location: :new)
     end
   end
 

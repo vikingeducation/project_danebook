@@ -41,6 +41,10 @@ class ApplicationController < ActionController::Base
   end
 
   def require_current_user
-    redirect_to login_path unless params[:user_id] == current_user.id.to_s
+    user_id_key = controller_name == 'users' ? :id : :user_id
+     unless params[user_id_key] == current_user.id.to_s
+      flash[:error] = "Please sign in!"
+      redirect_to login_path
+    end
   end
 end

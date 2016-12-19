@@ -1,14 +1,16 @@
+<hr>
     <div class="row">
-        <div class="media-left media-middle col-xs-2">
-            <a href="#">
+        <div class="media-left media-middle col-xs-offset-1 col-xs-2">
                 <figure>
-                    <img alt="User's Extra-Small Avatar" class="img-responsive" src="">
+                    <!-- <img alt="User's Extra-Small Avatar" class="img-responsive" src=""> -->
+                    <%#= link_to user_timeline_path(friend.id), class: "thumbnail img-responsive" do %>
+                    <%= image_tag "default.gif", class: "thumbnail img-responsive" %>
+                    <%# end %>
                 </figure>
-            </a>
         </div>
-        <div class="media-body col-xs-8">
+        <div class="media-body col-xs-8 col-xs-offset-1">
             <a href="#">
-                <h4 class="media-heading"><%= "COMMENTER" %></h4>
+                <h4 class="media-heading"><%= "#{full_name_by_id(comment.user_id)}" %></h4>
             </a>
             <h6>
                 <%= "Posted on #{comment.created_at.strftime('%B, %d, %Y')}" %>
@@ -25,3 +27,4 @@
       </div>
     </div>
   </div>
+<hr>

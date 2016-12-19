@@ -1,5 +1,7 @@
 class PhotosController < ApplicationController
 
+  #before_action :require_current_user, only: [:new, :create, :destroy, :set_avatar, :set_banner]
+
   def index
     @user = User.find(params[:user_id])
     @posts = @user.posts
@@ -19,28 +21,41 @@ class PhotosController < ApplicationController
   def create
     @photo = current_user.photos.build(photo_params)
     if @photo.save
+      flash[:success] = "Photo Uploaded!"
       redirect_to user_photos_path
     else
       render action: 'new'
     end
   end
 
-  def edit
-  end
 
   def destroy
-    @photo = current_user.photos.find(params[:id])
-    
+
+    @photo = Photo.find(params[:id])# current_user.photos.find(params[:id])
     if @photo.destroy
-      redirect_to user_photos_path
+      redirect_to user_photos_path(current_user.id)
     else
-      render action: 'show'
+      redirect_to user_photos_path(current_user.id)
     end
+  end
+
+
+  def set_avatar
+    @photo = Photo.find(params[:photo_id])
+    current_user.profile.update_attributes(avatar_id: @photo)
+    redirect_to user_timeline_path(current_user)
+  end
+
+  def set_banner(photo)
+    @photo = Photo.find(params[:id])
+    current_user.profile.banner = @photo.id
+    redirect :back
   end
 
   private
     def photo_params
       params.require(:photo).permit(:picture)
     end
+
 
 end

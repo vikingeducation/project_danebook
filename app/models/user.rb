@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   before_create :generate_token
+
   after_save { email.downcase.strip }
 
   has_many :posts, dependent: :destroy
@@ -19,7 +20,9 @@ class User < ApplicationRecord
 
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
-  has_many :photos
+
+  has_many :photos, dependent: :destroy
+
 
   accepts_nested_attributes_for :profile
 
@@ -44,6 +47,11 @@ class User < ApplicationRecord
     self.auth_token = nil
     generate_token
     save!
+  end
+
+  def self.send_welcome_email(id)
+    user = User.find(id)
+    UserMailer.welcome(user).deliver
   end
 
 

@@ -1,7 +1,6 @@
 class PostsController < ApplicationController
 
-  skip_before_action :require_login, only: [:show, :index]
-  before_action :require_current_user, :only => [:edit, :update, :destroy]
+  before_action :require_current_user, only: [:new, :create, :destroy]
 
   def new
     @post = Post.new
@@ -21,7 +20,6 @@ class PostsController < ApplicationController
   end
 
   def show
-
   end
 
   def destroy

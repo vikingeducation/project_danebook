@@ -1,7 +1,5 @@
 class TimelinesController < ApplicationController
 
-  before_action :require_login#, :only => [:show ]
-
   def show
     @user = User.find(params[:user_id])
     @posts = @user.posts

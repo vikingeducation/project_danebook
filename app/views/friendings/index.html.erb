@@ -17,9 +17,7 @@
             <div class="col-sm-6">
               <ul class="list-inline row well well-sm">
                 <li class="col-xs-3">
-                  <a class="thumbnail" href="#"><img alt="User's Medium Photo"
-                  class="img-responsive" src=
-                  "assets/images/user_silhouette_generic.gif"></a>
+                  <%= image_tag "default.gif", class: "thumbnail img-responsive" %>
                 </li>
                 <li class="col-xs-5">
                   <h4>
@@ -30,7 +28,7 @@
                     </p>
                 </li>
 
-                <% if current_user.id == current_user.id %>
+                <% if current_user == @user %>
                 <li class="col-xs-4 vertical-align">
                   <%= button_to "Unfriend", friending_path(friend.id), method: :delete, data: { confirm: "Unfriend #{friend.profile.first_name} #{friend.profile.last_name}" }, class: "btn btn-danger" %>
                 </li>

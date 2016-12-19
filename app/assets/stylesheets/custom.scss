@@ -263,3 +263,28 @@ nav {
     .hidden{
       display: none;
     }
+
+.alert {
+  position: absolute;
+  margin-top: 55px;
+  text-align: center;
+  width: 100%;
+  z-index: 99;
+}
+
+#danebook-session {
+  text-decoration: none, !important;
+  color: white, !important;
+
+
+}
+
+hr {
+  background-color: black;
+  height: 2px;
+  opacity: .2;
+}
+// 
+// .cover-banner {
+//   border: 3px solid black;
+// }

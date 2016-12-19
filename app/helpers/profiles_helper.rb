@@ -1,5 +1,4 @@
 module ProfilesHelper
 
-  
 
 end

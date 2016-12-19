@@ -1,8 +1,4 @@
 class CommentsController < ApplicationController
-  before_action :require_login, :except => [:show ]
-
-  def new
-  end
 
   def create
     @post = Post.find(params[:post_id])

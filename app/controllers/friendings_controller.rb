@@ -1,8 +1,10 @@
 class FriendingsController < ApplicationController
 
+  before_action :require_current_user, except: [:index]
+
   def index
     @user = User.find(params[:user_id])
-    @friends = @user.friended_users
+    @friends = @user.friended_users + @user.users_friended_by
   end
 
   def create

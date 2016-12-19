@@ -1,87 +1,43 @@
-**photo upload page add!
-**photo show page add!
+** security issues
+
+**banner
+**avatar
+
+**can search for all friends
+~~~~~~~~~~~~~
+**personal news feed
+Redirect signed-in users automatically to their newsfeed instead of the home page
+
+Display a chronological listing of posts from the current user's friends
+
+Allow liking/commenting on all these posts
+
+Allow posting directly atop the newsfeed (like in the timeline)
+
+You can only view your own newsfeed
 
 
+~~~~~~~~~~~~~~~~~~
+Send a welcome email upon signup in both HTML and Plaintext form
 
-3 PHOTO SIZES:
+.glyphicon-thumbs-up
+Copy Toggle Dropdown
+
+.glyphicon-thumbs-down
 
-The photo collection should display a thumbnail-sized photo which
-is a smaller version of the main photo (ie. two separate files)
+~~~~~~~~~~~~~~~~~
 
-As a user browsing photos
-I want to see a single photo large version
-To fully appreciate it
-~~~~~~
-
-**COVER PHOTO
-**PROFILE PHOTO
-
-
+As a user who just had something commented on
+I want to receive a notification email
+So I can immediately respond
 
 
+An email is sent only when someone else comments on your photos or posts
 
+The email is both HTML and plaintext
 
-
-
-
-# print page.html
-# save_and_open_pag
-
-
-#check out shallow nesting --> http://guides.rubyonrails.org/routing.html
-~~
-# the explicit way
- get 'users/sample' => 'users#sample', :as => 'sample_users'
-~~
-
-  POST(deletable, should destroy all it's comments & likes)
-    -body:text
-    -like_count: integer
-
-  COMMENT(deletable, should destroy all it's likes)
-    -body:text
-    -like_count: integer
-
-
-
-
-  LIKE(deletable)
-    t.integer: user_id  AKA liker
-    t.integer: comment / post
-
-  -likeable_id:integer
-  -likeable_type:string
-
-  add_index :likes, [:likeable_type, :likeable_id]
-
-
-
-model:
-belongs_to :commentable, :polymorphic => true
-
-##
-class Comment < ActiveRecord::Base
-  has_many :likes, :as => :likeable
-end
-
-class Post < ActiveRecord::Base
-  has_many :likes, :as => :likeable
-end
-
-
-
-
-TODO:
-    http://localhost:3000/users/ path is broken
-    You must be logged into your own account to post on your timeline
-
-    Timelines render all Posts for that User
-
-    Users can "like" posts by clicking the "like" link
-
-Posts display the total number of Likes
-
-Posts display the first few names of who liked them
+The email uses asynchronous/background processing so it doesn't block your server
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 -add indexes

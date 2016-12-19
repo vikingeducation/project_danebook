@@ -25,4 +25,6 @@ Rails.application.routes.draw do
   get 'login' => 'sessions#new'
   get 'logout' => 'sessions#destroy'
 
+  get 'set_avatar' => 'photos#set_avatar'
+  get 'set_banner' => 'photos#set_banner'
 end

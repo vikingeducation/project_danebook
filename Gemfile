@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+gem 'delayed_job_active_record'
+
 gem 'paperclip'
 gem 'aws-sdk'
 gem 'figaro'
@@ -58,6 +60,7 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'faker'
+  gem 'letter_opener'
 end
 
 group :production do

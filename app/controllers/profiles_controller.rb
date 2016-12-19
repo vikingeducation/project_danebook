@@ -1,6 +1,6 @@
 class ProfilesController < ApplicationController
-    before_action :require_login
-    before_action :require_current_user, :only => [:update, :destroy]
+
+    before_action :require_current_user, only: [:edit, :update, :destroy]
 
     def show
       @user = User.find(params[:user_id])

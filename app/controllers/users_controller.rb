@@ -1,6 +1,12 @@
 class UsersController < ApplicationController
-  skip_before_action :require_login, :only => [:new, :create, :index, :show]
+  before_action :require_login, except: [:new, :create]
 
+  before_action :require_current_user, only: [:edit, :update, :destroy]
+
+
+  def index
+    @users = User.all
+  end
 
   def show
     @user = User.find(params[:id])
@@ -19,8 +25,10 @@ class UsersController < ApplicationController
   def create
     @user = User.new(whitelisted_params)
     if @user.save
+      User.send_welcome_email(@user.id)
       sign_in(@user)
       flash[:success] = "Welcome"
+      #welcome email
       redirect_to edit_user_profile_path(current_user)
     else
       flash[:error] = "Try again"

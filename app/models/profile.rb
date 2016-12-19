@@ -9,7 +9,7 @@ class Profile < ApplicationRecord
   validates :about_me, length: { maximum: 5000 }
   validates :sex, length: { maximum: 10 }
 
-  has_attached_file :photo, default_url: 'user_silhouette_generic.gif'
+  has_attached_file :photo, default_url: 'user_silhouette_generic.gif', styles: { profile_size: "200x200^"}
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\z/
   has_attached_file :background
   validates_attachment_content_type :background, content_type: /\Aimage\/.*\z/

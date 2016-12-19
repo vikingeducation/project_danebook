@@ -1,5 +1,7 @@
 class Comment < ApplicationRecord
 
+  after_create :comment_email
+
   belongs_to :author, class_name: 'User', foreign_key: :author_id
   belongs_to :commentable, polymorphic: true
 
@@ -14,6 +16,10 @@ class Comment < ApplicationRecord
 
   def random_liker
     likers.sample.full_name
+  end
+
+  def comment_email
+    CommentMailer.delay.comment(find(id)).deliver
   end
 
 end

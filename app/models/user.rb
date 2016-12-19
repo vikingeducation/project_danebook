@@ -9,6 +9,12 @@ class User < ApplicationRecord
   validates :password, confirmation: true
   validates :password, length: { minimum: 6 }, allow_nil: true
 
+  has_many :initiated_friendings, foreign_key: :friender_id, class_name: 'Friending'
+  has_many :friendees, through: :initiated_friendings, source: :friendee
+
+  has_many :received_friendings, foreign_key: :friendee_id, class_name: 'Friending'
+  has_many :frienders, through: :received_friendings, source: :friender
+
   has_one :profile, inverse_of: :user, dependent: :destroy
 
   has_many :posts, dependent: :destroy
@@ -23,6 +29,14 @@ class User < ApplicationRecord
 
   def full_name
     self.first_name + ' ' + self.last_name
+  end
+
+  def friends
+    frienders + friendees
+  end
+
+  def friends_sample(n = 6)
+    friends[0..n]
   end
 
   def generate_token

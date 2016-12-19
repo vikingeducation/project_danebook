@@ -1,7 +1,5 @@
 class LikesController < ApplicationController
 
-  before_action :require_login
-
   def create
     @user = User.find(params[:id])
     @like = Like.new(likeable_id: params[:likeable_id], likeable_type: params[:likeable_type], liker_id: current_user.id)

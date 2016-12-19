@@ -6,7 +6,6 @@ $ptc: #337ab7;
 
 //panel title styling
 .pts {
-
   color: white !important;
 }
 
@@ -36,7 +35,6 @@ $ptc: #337ab7;
 
 body {
   background-color: #eee;
-
 }
 
 
@@ -48,7 +46,6 @@ body {
     display: inline-block;
     margin-top: -6px;
   }
-
 }
 
 #flash {
@@ -95,30 +92,26 @@ body {
   position: absolute;
   bottom: 15px;
   left: 15px;
-    img {
-     height: 160px;
-    }
-
-    a {
-text-decoration: none;
-    }
-
-    h3 {
-      font-weight:900;
-      text-shadow: 0px 0px 15px black;
-      font-size: 200%;
-      color: white;
-    }
+  img {
+    height: 160px;
+  }
+  a {
+    text-decoration: none;
+  }
+  h3 {
+    font-weight:900;
+    text-shadow: 0px 0px 15px black;
+    font-size: 200%;
+    color: white;
+  }
 }
 
 .mid-title {
   border: 2px solid black;
   height: 80px;
-
   h2 {
     font-weight: bold;
   }
-
   a {
     margin-top: 14px;
   }
@@ -127,7 +120,6 @@ text-decoration: none;
 
 .bottom-box {
   margin: 20px 0;
-
   //EDIT PROFILE -- text input widths
   input[type=text] {
     width: 90%;
@@ -137,20 +129,17 @@ text-decoration: none;
 
 .post {
   border: 2px solid black;
-
   header {
     border-bottom: 2px solid black;
   }
-
   .form-control {
     //margin: 20px 0 20px 0;
   }
-
   footer {
     border-top: 2px solid black;
-      a {
-        margin: 15px 0 15px 0;
-      }
+    a {
+      margin: 15px 0 15px 0;
+    }
   }
 }
 
@@ -164,7 +153,7 @@ figure {
   //margin: 15px 5px 25px auto;
 
   img {
-  display: inline-block;
+    display: inline-block;
   }
 }
 
@@ -176,11 +165,11 @@ figure {
 
 figcaption {
   display: inline-block;
-  }
+}
 
 .word {
   position: relative;
-  }
+}
 
 
 .img-caption:hover .pub-date {
@@ -189,16 +178,14 @@ figcaption {
 
 .pub-date {
   visibility: hidden;
-
-    background-color: black;
-
-    color: white;
-    bottom: -7px;
-    left: 3%;
-    width: 94%;
-    display: inline;
-    position: absolute;
-    border-radius: 5px;
+  background-color: black;
+  color: white;
+  bottom: -7px;
+  left: 3%;
+  width: 94%;
+  display: inline;
+  position: absolute;
+  border-radius: 5px;
 }
 
 .vertical-align {
@@ -216,22 +203,22 @@ figcaption {
 //~!~
 
 nav {
-    h1,
-    h6 {
-        font-weight: bold;
-        color: white;
-    }
+  h1,
+  h6 {
+    font-weight: bold;
+    color: white;
+  }
 
-    h1 {
-        font-size: 40px;
-        display: inline-block;
-        vertical-align: middle;
-        margin: 10px 0;
-    }
+  h1 {
+    font-size: 40px;
+    display: inline-block;
+    vertical-align: middle;
+    margin: 10px 0;
+  }
 
-    .icon-bar {
-        // background-color: white;
-    }
+  .icon-bar {
+      // background-color: white;
+  }
 
 }
 
@@ -241,41 +228,64 @@ nav {
     display: inline-block;
     vertical-align: middle;
 
-    label { color: #fff; -webkit-font-smoothing: antialiased; font-size: 14px; }
+    label { 
+      color: #fff; -webkit-font-smoothing: antialiased; font-size: 14px; 
+    }
   }
 }
 
 
-    .navbar-default {
-        background-color: #3C5A99;
-    }
+.navbar-default {
+  background-color: #3C5A99;
+}
 
 .right-side {
-    h1,
-    h4 {
-        font-weight: bold;
-    }
-
+  h1,
+  h4 {
+    font-weight: bold;
+  }
 }
 
 
 .navbar-toggle {
   margin-top: 25px;
-
 }
 
 .navbar-default .navbar-toggle .icon-bar {
-    background-color: #f3f0f0;
+  background-color: #f3f0f0;
 }
 
 .short {
-        width: 200px;
-    }
-
-.big-three {
-    width: 400px;
+  width: 200px;
 }
 
-    #email-login {
-        margin: 10px 0;
-    }
+.big-three {
+  width: 400px;
+}
+
+#email-login {
+  margin: 10px 0;
+}
+
+
+.friend-button {
+  position: absolute;
+  bottom: 10%;
+  right: 10%;
+  -webkit-font-smoothing: antialiased;
+}
+
+.friend-button a {
+  background: #fff;
+  color: #337ab7;
+  border-radius: 4px;
+  padding: 7px 15px;
+  font-size: 18px;
+  transition: background 0.3s;
+  -webkit-transition: background 0.3s;
+}
+
+.friend-button a:hover {
+  text-decoration: none;
+  background: #ddd;
+}

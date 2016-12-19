@@ -11,7 +11,7 @@
           <div class="col-sm-5">
             <%= render partial: "shared/about", locals: { user: @user } %>
             <%= render partial: "shared/photos", locals: { user: @user } %>
-            <%= render partial: "shared/friends" %>
+            <%= render partial: "shared/friends", locals: { user: @user } %>
           </div>
 
           <div class="col-sm-7">

@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   end
 
   get "user/:id/timeline" => "users#index"
-
+  resources :search, only: [:index]
   resources :likes, only: [:create,:destroy]
   resources :comments, only: [:create,:destroy]
   resources :friends, only: [:create,:destroy]

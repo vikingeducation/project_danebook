@@ -65,4 +65,17 @@ class User < ApplicationRecord
   def cover_photo
     profile.cover_photo
   end
+
+  def self.search(query)
+    if query
+      # Parameterize that user input!!!
+      a = where("first_name LIKE ?", "%#{query}%")
+      b = where("last_name LIKE ?", "%#{query}%")
+      a + b
+    else
+      # If no search term provided, this returns
+      # a relation so we can chain this
+      where("")
+    end
+  end
 end

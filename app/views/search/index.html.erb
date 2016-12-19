@@ -1,0 +1,18 @@
+
+   <div class="container">
+   <!-- Current location header -->
+          <section class="nav-about">
+              <h2>
+              Results
+              </h2>
+          </section>
+
+          <!-- Main -->
+          <main class="main-about">
+              <div class="row"> 
+               <% @users.each do |user| %>
+                    <%= render "/shared/friend_display", friend: user%>
+                <% end %>
+              </div>
+          </main>
+      </div>

@@ -235,3 +235,97 @@ heading {
 
   }
 }
+
+.navbar-brand img {
+  height: 20px;
+  border-radius: 20px;
+  display: inline-block;
+}
+
+.hero-image {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  background-size: cover;
+}
+.profile-photo {
+  position: absolute;
+  bottom: -35px;
+  left: 15px;
+  width: 200px;
+  border: 2px solid white;
+}
+.hero-image .username {
+  position: absolute;
+  bottom: 10px;
+  left: 230px;
+  color: white;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+.profile-navigation-bar {
+  border: 1px solid black;
+}
+.profile-photo-spacer {
+  display: inline-block;
+  width: 220px;
+}
+.profile-navigation-item {
+  display: inline-block;
+  width: 130px;
+  border-left: 1px solid silver;
+  padding: 1em;
+}
+.profile-navigation-item a {
+  color: black;
+  text-decoration: none;
+}
+.profile-navigation-item .quantity {
+  color: silver;
+}
+.profile-navigation-item:last-of-type {
+  border-right: 1px solid silver;
+}
+.edit-profile-link {
+  float: right;
+  padding: 1em;
+}
+.panel {
+  margin-top: 1em;
+  position: relative;
+}
+.panel > .row {
+  margin: 1em;
+}
+.panel-heading {
+  text-align: center;
+  font-size: 1.5em;
+}
+.edit-profile-button {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+table td:first-of-type {
+  font-weight: bold;
+}
+.hundred-px {
+  width: 100px;
+  height: 100px;
+  margin: 4px;
+}
+.salmon {
+  // background-color: salmon;
+  background-image: image-url('icon_photo_small.png');
+  background-size: contain;
+}
+.flex-flow {
+  display: flex;
+  flex-wrap: wrap;
+}
+.danebook-post .media-heading {
+  padding-top: .25em;
+}
+.like {
+  margin-right: .75em;
+}

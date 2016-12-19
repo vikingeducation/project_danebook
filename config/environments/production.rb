@@ -124,5 +124,3 @@ Rails.application.configure do
     }
   }
 end
-
-ActiveRecord::Base.logger.level = 1

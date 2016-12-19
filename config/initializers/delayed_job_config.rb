@@ -1,5 +1,4 @@
-Delayed::Worker.default_log_level = "warn"
-# Rails.logger.level = Logger::INFO
+Rails.logger.level = Logger::INFO
 Delayed::Worker.destroy_failed_jobs = true
 Delayed::Worker.sleep_delay = 1
 Delayed::Worker.max_attempts = 3

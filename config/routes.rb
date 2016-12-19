@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resource :profile, on: :member, except: [:new, :create, :destroy, :index]
     get "friend" => "friends#create"
     get "unfriend" => "friends#destroy"
+    get "friends" => "friends#index"
     resources :posts do
       get "likes" => "likes#index"
       get "like" => "likes#create"

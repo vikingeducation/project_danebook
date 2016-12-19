@@ -1,5 +1,11 @@
 class FriendsController < ApplicationController
 
+  def index
+    @user = User.find(params[:user_id])
+    @profile = @user.profile
+    @timeline_posts = Post.where(user_id: @user.friended_users)
+  end
+
   def create
     @user = User.find(params[:user_id])
     if current_user.friended_users << @user

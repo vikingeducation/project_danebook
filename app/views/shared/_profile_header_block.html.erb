@@ -16,7 +16,7 @@
       <div class="profile-navigation-item"><%= link_to "Timeline", user_posts_path(@profile.user) %></div>
       <div class="profile-navigation-item"><%= link_to "About", user_profile_path(@profile) %></div>
       <div class="profile-navigation-item"><%= link_to "Photos", user_photos_path(@profile.user) %> <span class="badge"><%= @profile.user.photos.count %></span></div>
-      <div class="profile-navigation-item"><a href="#!">Friends</a> <span class="badge"><%= @profile.user.friended_users.count %></span></div>
+      <div class="profile-navigation-item"><%= link_to "Friends", user_friends_path(@profile) %> <span class="badge"><%= @profile.user.friended_users.count %></span></div>
     </nav>
   </div>
 </div>

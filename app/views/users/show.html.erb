@@ -68,196 +68,42 @@
       <section class="post">
         <header class="nav-post">
           <h4>
-            Photos (123)
+            Photos (<%= @user.photos.count %>)
           </h4>
         </header>
-          <div class="container-fluid">
-            <!-- 1st row -->
-            <!-- <div class="row"> 
-
-                <div class="col-md-4 col-xs-12">
-                    <div class="hovereffect">
-                        <a href="#">
-                            <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
-                        </a>
-                    </div>
-                </div>
-                 <div class="col-md-4 col-xs-12">
-                    <div class="hovereffect">
-                        <a href="#">
-                            <img class="img-thumbnail" src="icon_photo_small.png" alt="">
-                        </a>
-                    </div>
-                </div>
-                 <div class="col-md-4 col-xs-12">
-                    <div class="hovereffect">
-                        <a href="#">
-                            <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
-                        </a>
-                    </div>
-                </div>
-            </div> -->
-            <!-- 2nd row -->
-            <!-- <div class="row"> 
-
-              <div class="col-md-4 col-xs-12">
-                  <div class="hovereffect">
-                      <a href="#">
-                          <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
-                      </a>
-                  </div>
-              </div>
-               <div class="col-md-4 col-xs-12">
-                  <div class="hovereffect">
-                      <a href="#">
-                          <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
-                      </a>
-                  </div>
-              </div>
-               <div class="col-md-4 col-xs-12">
-                  <div class="hovereffect">
-                      <a href="#">
-                          <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
-                      </a>
-                  </div>
-              </div>
-            </div> -->
-            <!-- 3rd row -->
-            <!-- <div class="row"> 
-
-                <div class="col-md-4 col-xs-12">
-                    <div class="hovereffect">
-                        <a href="#">
-                            <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
-                        </a>
-                    </div>
-                </div>
-                 <div class="col-md-4 col-xs-12">
-                    <div class="hovereffect">
-                        <a href="#">
-                            <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
-                        </a>
-                    </div>
-                </div>
-                 <div class="col-md-4 col-xs-12">
-                    <div class="hovereffect">
-                        <a href="#">
-                            <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
-                        </a>
-                    </div>
-                </div>
-            </div> -->
+        <div class="container-fluid">
         </div>
         <div class="nav-bottom-link">
-            <a class="edit-profile" href="photos.html">
-                See More Photos
-            </a>
+          <%= link_to "See More Photos", photos_path(user_id: @user.id), class: "edit-profile" %>
         </div>
     </section>
 
-    <!-- Current location header -->
+    <!-- Friends aside -->
     <section class="post">
         <header class="nav-post">
             <h4>
-            Friends (542)
+            Friends (<%= @user.friends.count %>)
             </h4>
         </header>
-
         <div class="container-fluid">
-          <!-- 1st row -->
-          <div class="row"> 
-
-              <!-- <div class="col-md-4 col-sm-6 col-xs-12">
-                  <div class="hovereffect">
-                      <a href="#">
-                          <img class="img-thumbnail" src="icon_photo_small.png" alt="">
-                          Ron Weasley
-                      </a>
-                  </div>
-              </div>
-
-              <div class="col-md-4 col-sm-6 col-xs-12">
-                  <div class="hovereffect">
-                      <a href="#">
-                          <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
-                          Ricky Jervais
-                      </a>
-                  </div>
-              </div>
-              <div class="col-md-4 col-sm-6 col-xs-12">
-                  <div class="hovereffect">
-                      <a href="#">
-                          <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
-                          Bob Drake
-                      </a>
-                  </div>
-              </div>
-          </div> -->
-          <!-- 2nd row --> <!--
-          <div class="row">
-              <div class="col-md-4 col-sm-6 col-xs-12">
-                  <div class="hovereffect">
-                      <a href="#">
-                          <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
-                          Bugs Bunny
-                      </a>
-                  </div>
-              </div>
-              <div class="col-md-4 col-sm-6 col-xs-12">
-                  <div class="hovereffect">
-                      <a href="#">
-                          <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
-                          Frank Zappa
-                      </a>
-                  </div>
-              </div>
-              <div class="col-md-4 col-sm-6 col-xs-12">
-                  <div class="hovereffect">
-                      <a href="#">
-                          <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
-                          Don Van Vliet
-                      </a>
-                  </div>
-              </div>
-          </div> -->
-          <!-- 3rd row --> <!--
-          <div class="row">
-              <div class="col-md-4 col-sm-6 col-xs-12">
-                  <div class="hovereffect">
-                      <a href="#">
-                          <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
-                          James Joyce
-                      </a>
-                  </div>
-              </div>
-              <div class="col-md-4 col-sm-6 col-xs-12">
-                  <div class="hovereffect">
-                      <a href="#">
-                          <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
-                          Lauren Faust
-                      </a>
-                  </div>
-              </div>
-              <div class="col-md-4 col-sm-6 col-xs-12">
-                  <div class="hovereffect">
-                      <a href="#">
-                          <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
-                          Herman Melville
-                      </a>
-                  </div>
-              </div>
-          </div> -->
+        </div>
         <div class="nav-bottom-link">
-            <a class="edit-profile" href="friends.html">
-                See More Friends
-            </a>
+          <% @user.friends.each do |friend| %>
+            <%= link_to friend.full_name, friend %>
+          <% end %>
+          <% unless @user.friends.any? %>
+            THIS BLOKE AIN'T GOT NO FRIENDS YET!!!
+            <br>
+          <% else %>
+            <%= link_to "See More Friends", friendings_path(user_id: @user.id), class: "edit-profile" %>
+          <% end %>
         </div>
     </section>
   </article>
 
   <!-- Post Entry -->
   <article class="col-xs-8">
-      <%= render partial: "friends/friending_button", locals: { user: @user } %>
+      <%= render partial: "friendings/friending_button", locals: { user: @user } %>
       <% if @user == current_user %>
         <section class="post">
             <header class="nav-post">

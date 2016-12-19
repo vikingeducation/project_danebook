@@ -23,7 +23,7 @@
       </form>
       <ul class="nav navbar-nav navbar-right">
         <li>
-          <a href="#"><%= current_user.first_name %></a>
+          <%= link_to current_user.first_name, current_user %></a>
         </li>
         <li>
           <%= link_to "Logout", logout_path, method: :delete %>

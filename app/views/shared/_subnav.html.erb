@@ -17,7 +17,7 @@
           <%= link_to "Photos", photos_path(user_id: user.id) %>
         </li>
         <li role="presentation">
-            <%= link_to "Friends", "#" %>
+            <%= link_to "Friends", friendings_path(user_id: user.id) %>
         </li>
         <% if user == current_user %>
             <li class="edit-profile pull-right">

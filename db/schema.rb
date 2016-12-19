@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161216215421) do
+ActiveRecord::Schema.define(version: 20161219205435) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -18,11 +18,12 @@ ActiveRecord::Schema.define(version: 20161216215421) do
   create_table "comments", force: :cascade do |t|
     t.integer  "author_id"
     t.string   "body"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer  "post_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
     t.index ["author_id"], name: "index_comments_on_author_id", using: :btree
-    t.index ["post_id"], name: "index_comments_on_post_id", using: :btree
+    t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id", using: :btree
   end
 
   create_table "friendings", force: :cascade do |t|
@@ -71,6 +72,8 @@ ActiveRecord::Schema.define(version: 20161216215421) do
     t.string   "telephone"
     t.text     "words_to_live_by"
     t.text     "about_me"
+    t.integer  "profile_pic_id"
+    t.integer  "cover_photo_id"
   end
 
   create_table "users", force: :cascade do |t|

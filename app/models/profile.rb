@@ -1,5 +1,7 @@
 class Profile < ApplicationRecord
   belongs_to :user, inverse_of: :profile
+  belongs_to :profile_pic, class_name: "Photo", optional: true
+  belongs_to :cover_photo, class_name: "Photo", optional: true
   validates :college,
             :length => { :in => 0..30 },
             :allow_nil => true

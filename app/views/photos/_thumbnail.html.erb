@@ -1,0 +1,23 @@
+<div class="col-lg-3 col-sm-6 col-xs-12">
+  <div class="hovereffect">
+    <% if current_user.friends.include?(user) || user == current_user %>
+      <%= link_to photo do %> 
+        <%= image_tag photo.photo_data, class: "img-thumbnail" %>
+        <% if photo == user.profile.profile_pic %>
+            THIS IS DA PROFILE PIC!!
+        <% end %>
+        <% if photo == user.profile.cover_photo %>
+          THIS IS DA COVER PHOTO!!
+        <% end %>
+      <% end %>
+    <% else %>
+      <%= image_tag photo.photo_data, class: "img-thumbnail" %>
+      <% if photo == user.profile.profile_pic %>
+          THIS IS DA PROFILE PIC!!
+      <% end %>
+      <% if photo == user.profile.cover_photo %>
+        THIS IS DA COVER PHOTO!!
+      <% end %>
+    <% end %>
+  </div>
+</div>

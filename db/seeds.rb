@@ -9,7 +9,7 @@ puts "Users created."
 puts "Building Candlejack..."
 
 user = User.create(first_name: "Candlejack", last_name: "Martin", email: "cj@aol.com", password: "password")
-user.profile = Profile.new( birthday: Time.now, gender: ["Male", "Female", "IDK", "Other"].sample, college: "Buttface University", hometown: "Cool Place USA", city: "Rascal Flats", telephone: "555-EAT-FOOD", words_to_live_by: "MEOWMEOWMEOWMEOWMEOW", about_me: "UGH." )
+user.profile = Profile.new( birthday: Time.now, gender: ["Male", "Female", "IDK", "Other"].sample, college: "Buttface University", hometown: "Uncool Place USA", city: "Radlands Bumble USA", telephone: "555-EAT-GLUE", words_to_live_by: "ONCE UPON A HAT THERE WAS ME AND YEAH", about_me: "IDK BRO" )
 
 puts "Candlejack created."
 puts "Building posts..."

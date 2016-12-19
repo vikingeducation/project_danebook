@@ -11,24 +11,20 @@
   <!-- Current location bar -->
   <section class="nav-about">
     <h2>
-      Photos
+      Friends
     </h2>
-    <% if @user == current_user %>
-      <%= link_to "Add Photo!", new_photo_path(user_id: @user.id), class: "btn btn-primary", role: "button" %>
-    <% end %>
   </section>
 
   <!-- Main -->
-  <main class="main-about photos">
+  <main class="main-about friends">
     <!-- 1st row -->
     <div class="row">
 
-      <% @user.photos.each_with_index do |photo, i| %>
-        <%= render partial: "thumbnail", locals: { user: @user, photo: photo } %>
-        <% if (i + 1) % 4 == 0 %>
-          </div>
-          <div class="row">
-        <% end %>
+      <% @user.friends.each do |friend| %>
+        <%= link_to friend.full_name, friend %>
+      <% end %>
+      <% unless @user.friends.any? %>
+        THIS BLOKE AIN'T GOT NO FRIENDS YET!!!
       <% end %>
     </div>
   </main>

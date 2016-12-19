@@ -1,0 +1,46 @@
+<%= render partial: "shared/navbar", locals: { :user => @user } %>
+
+<%= image_tag @photo.photo_data %>
+
+<br>
+<% if @user == current_user && @photo != @user.profile.profile_pic %>
+  <%= link_to "This'll be mah new profile pic!", set_profile_pic_path(photo_id: @photo.id), class: "btn" %>
+<% end %>
+<% if @user.profile.profile_pic == @photo %>
+  THIS IS DA PROFILE PIC!
+  <% if @user == current_user %>
+    <br>
+    <%= link_to "Reset profile pic to default instead...", unset_profile_pic_path(photo_id: @photo.id), class: "btn" %>
+  <% end %>
+<% end %>
+
+<br>
+<% if @user == current_user && @photo != @user.profile.cover_photo %>
+  <%= link_to "This'll be mah new cover photo!", set_cover_photo_path(photo_id: @photo.id), class: "btn" %>
+<% end %>
+<% if @user.profile.cover_photo == @photo %>
+  THIS IS DA COVER PHOTO!
+  <% if @user == current_user %>
+  <br>
+    <%= link_to "Reset cover photo to default instead...", unset_cover_photo_path(photo_id: @photo.id), class: "btn" %>
+  <% end %>
+<% end %>
+<br>
+
+<%= render partial: "likes/photo_like", locals: { photo: @photo } %>
+<br>
+<%= render partial: "likes/who_liked_photo", locals: { photo: @photo, user: @user } %>
+<br>
+
+<% photo.comments.each do |comment| %>
+  <%= render partial: "comments/comment", locals: { user: @user, photo: @photo, comment: comment } if comment.persisted? %>
+<% end %>
+
+<div>
+  <!-- Comment Entry -->
+  <%= form_for Comment.new do |f| %>
+    <%= f.text_area :body, class: "form-control", placeholder: "If you could enter a comment here, what would it say?" %>
+    <%= hidden_field_tag :photo, @photo.id %>
+    <%= f.submit "Comment" %>
+  <% end %>
+</div>

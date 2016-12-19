@@ -63,7 +63,8 @@ class UsersController < ApplicationController
               :city,
               :about_me,
               :words_to_live_by,
-              :telephone]
+              :telephone,
+              :profile_pic_id]
             )
   end
 

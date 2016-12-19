@@ -1,43 +1,66 @@
 Errors:
 
 - "Like" display may break w/ 3+ likes... test w/ custom seeds later
+- "Remember me" remembers across sessions; w/out, it doesn't (how to test for this??)
+- Hundredletter words are split to new line at edge of their container
+  (BONUS: retain clickability if hyperlink)
+- Prettify About view
+- Spiff up README file
 - Fix comment styling
 - Fix time displays to be less robot
+- Ensure using ? & sub for SQL queries
 - Add dependent: :nullify to User model Friend stuff (?)
 - Re-add "badge" counts to Friend and Photo nav
 - Don't jump to top of page w/ every like, post, comment, etc.
 - Security issues: malicious photo/post/like/comment creation/destruction/editing
+- Thumbnail photo index croppin'
+- How to delete photos from S3 when deleted by user in my app?
+- Actually make profile pic & cover photo change on yr profile!
+- Mini-"friends" widget on Timeline displays random selection of User's pals
 
-TODO:
+Mailers
+- Send welcome e-mail upon signup in both html & plaintext
+- Send e-mail when user comments on yr photo or post (use asynchronous/BG processing)
 
-"Friends" page displays all User's friends
-- mini-"friends" widget on Timeline displays random selection of User's pals
-- both "fail gracefully" if User has no/few friends
-- display friend counts where it's appropriate
+Newsfeed
+- Redirect users to their newsfeed upon login
+- Only viewable by current user
+- Display chronological listing of posts from user's friends
+- Allow liking/commenting on these posts
+- Allow posting directly atop the newsfeed (like in Timeline)
+- Display recently-active list of friends on the left pane [late game]
 
-Friend button
-- changes to "remove friend" after successful friending; deletes
-- no confirmation required currently
+Friend Search
+- Search form finds users where search terms match any part of first/last name
+- Display dem results "as in the mockup"
 
 Photos
-- Upload photos to Photos collection page (Photos new/create)
-  - Display thumbnail that is a separate file (Photos index)
-- Go to individual photo (Photos show)
-  - Only friends can access Show for photos (unclickable for non-friends)
-- If User == Current User, Show page can make that photo yr profile pic or cover pic
 - Comment on Photo Show page ("take same form" as comments on posts)
   - Be able to delete yr photo comments if you made 'em
   - Be able to like & unlike photo comments
-- Be able to "like" a photo; display the "who likes" biz
-  - & unlike said photo
 
-Tests, TDD, Friend Search, Mailer(s), Newsfeed (?), Refactoring
+Tests, Refactoring (presenter(s), helper(s), etc.)
 
-Hundredletter words are split to new line at edge of their container
-  (BONUS: retain clickability if hyperlink)
-Prettify About view
-Use Presenter(s), use Helper(s), refactor generally
-Spiff up README file
+OPTIONAL
 
-"Remember me" remembers across sessions; w/out, it doesn't (how to test for this??)
+Suggested Friends
+- 5 minutes after signing up, send another email with a list of suggested friends
+-  Inc. at least 3 friends w/ their thumbnail photos & links to their profiles
+
+Delayed Photo Uploads
+- Make photo uploads part of BG processing; instantly redirect user to Photos page
+- While photo is uploading, thumbnail has temp "photo uploading" status
+- When user refreshes page after photo finishes uploading, appears as normal
+
+Friend request confirmations
+- "Friending" now creates a "friend request"; can "cancel request" if you want
+- Pending requests seen as small dropdown menu in the navbar (upon page refresh)
+- Top level of the dropdown displays the number of pending requests
+- Options to accept or reject are present in the dropdown for each request
+- If a request is rejected, it may be resent (unless you wanna keep track of rejections & disallow this... may be tougher)
+
+Newfeed extras
+- Photos also show up chronological w/ posts in the newsfeed
+- Style photos similar to posts
+- Pagination
 

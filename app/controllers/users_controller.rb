@@ -14,7 +14,7 @@ class UsersController < ApplicationController
       flash[:success] = "Welcome to Danebook!"
       redirect_to @user
     else
-      flash[:danger] = "Something went wrong!" 
+      flash[:danger] = @user.errors.first 
       redirect_back(fallback_location: :new)
     end
   end

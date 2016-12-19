@@ -1,6 +1,6 @@
                     <section class="post">
                       <div class="post-body">
-                          <img src="assets/user_silhouette_generic.gif">
+                          <img src="<%= set_avatar_photo(post.user) %>">
                           <div class="author-box">
                               <a href="<%= user_path(post.user_id) %>">
                                   <%= post.user.first_name %>

@@ -14,13 +14,16 @@ class User < ApplicationRecord
  has_many :friended_users, through: :recived_friendships,
                                 source: :friendee
 
- has_one :profile_photo, class_name: 'Photo', foreign_key: 'id'
  has_many :photos, dependent: :destroy
 
 
 
   def cover_photo
     self.profile.cover_photo
+  end
+
+  def profile_photo 
+    self.profile.profile_photo
   end
                               
 
@@ -55,4 +58,11 @@ class User < ApplicationRecord
     UserMailer.welcome(user).deliver!
   end
 
+  def cover_photo
+    profile.cover_photo
+  end
+
+  def cover_photo
+    profile.cover_photo
+  end
 end

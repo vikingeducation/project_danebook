@@ -2,8 +2,9 @@
 
 <div class="col-md-4 col-sm-6 col-xs-12">
   <div class="hovereffect">
-    <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
-      <% unless friend.nil? %>
+    <% unless friend.nil? %>
+    <img class="img-thumbnail" src="<%= set_avatar_photo(friend) %>" alt="">
+      
       <a href="/users/<%= friend.id %>">         
             <%= friend.first_name %> <%= friend.last_name %> </a>
           <% else %>

@@ -1,0 +1,21 @@
+ <style>
+.hero {
+  background: white url(<%= set_cover_photo(@user) %>) no-repeat;
+  background-size: cover;
+  background-position: 0 60%;
+  height: 400px;
+  margin-bottom: 0; }
+.hero .avatar {
+  width: 250px;
+  height: 250px;
+  border: 8px double #222;
+  position: relative;
+  top: 45%;
+  left: 3%;
+  background: url("<%= set_avatar_photo(@user) %>"); }
+
+ </style>
+<header class="hero">          
+    <div class="avatar">
+    </div>        
+</header>

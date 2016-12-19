@@ -9,4 +9,12 @@ class Profile < ApplicationRecord
   def over_thirteen
      errors.add(:age, "must be over 13 to sign up") unless birthday < 13.years.ago
    end
+
+    def cover_photo
+      Photo.where(id: cover_photo_id).first
+    end
+
+     def profile_photo
+      Photo.where(id: profile_photo_id).first
+    end
 end

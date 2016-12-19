@@ -1,6 +1,6 @@
  <style>
 .hero {
-  background: white url(<%= set_cover_photo(@user) %>) no-repeat;
+  background: white url(<%=  asset_path(set_cover_photo(@user)) %>) no-repeat;
   background-size: cover;
   background-position: 0 60%;
   height: 400px;
@@ -12,7 +12,7 @@
   position: relative;
   top: 45%;
   left: 3%;
-  background: url("<%= set_avatar_photo(@user) %>"); }
+  background: url("<%= asset_path(set_avatar_photo(@user)) %>"); }
 
  </style>
 <header class="hero">          

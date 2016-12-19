@@ -12,6 +12,7 @@ class CommentsController < ApplicationController
     @comment.commentable_id = find_commentable_id
     @comment.author_id = current_user.id
     if @comment.save
+      Comment.delay.comment_email(@user.id, current_user.id)
       flash[:success] = "Comment created"
       redirect_back(fallback_location: proc { user_path(@user) } )
     else

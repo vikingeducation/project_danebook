@@ -54,5 +54,6 @@ class User < ApplicationRecord
   def self.welcome_email(id)
     UserMailer.welcome(find(id)).deliver
   end
+
             
 end

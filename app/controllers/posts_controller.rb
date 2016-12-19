@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   def index
     @post = Post.new
-    @posts = Post.includes(:comments).last(30).reverse
+    @posts = Post.where(user_id: current_user.friended_users).or(Post.where(user_id: current_user)).includes(:comments).last(30).reverse
   end
  
   def create

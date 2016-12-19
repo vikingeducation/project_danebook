@@ -6,6 +6,7 @@ gem 'delayed_job_active_record'
 # Use sqlite3 as the database for Active Record
 gem 'pg'
 gem 'faker'
+gem 'delayed_job_active_record'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Use SCSS for stylesheets
@@ -55,6 +56,7 @@ end
 
 group :development do
   # Access an IRB console on exception pages or by using <%= console %> anywhere in the code.
+  gem "bullet"
   gem 'web-console'
   gem 'listen', '~> 3.0.5'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring

@@ -23,6 +23,10 @@ class PhotosController < ApplicationController
 
   def show
     @user = User.find(params[:user_id])
+    unless is_friend?(@user) || @user == current_user
+      flash[:warning] = "You are not friends with this user"
+      redirect_to :back
+    end
     @photo = Photo.find(params[:id])
   end
 

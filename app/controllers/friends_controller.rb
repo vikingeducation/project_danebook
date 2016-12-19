@@ -2,7 +2,10 @@ class FriendsController < ApplicationController
 
   def create
     @friend = Friend.new(friendee_id: params[:id], friender_id: current_user.id)
-    if @friend.save
+    if @friend == current_user
+      flash[:danger] = "You cannot friend yourself"
+      redirect_back(fallback_location: root_path)
+    elsif @friend.save
       flash[:success] = "Request sent"
       redirect_back(fallback_location: root_path)
     else 

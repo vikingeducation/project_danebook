@@ -46,4 +46,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def is_friend?(user)
+    user.friended_users.any? {|friend| friend == current_user}
+  end
+
 end

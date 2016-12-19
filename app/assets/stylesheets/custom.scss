@@ -10,6 +10,12 @@
   padding-left: 10px;
   margin-right: 120px
 }
+
+#body{
+
+  vertical-align: top;
+  display: inline-block;
+}
 /*
 =============================
 Global
@@ -250,14 +256,15 @@ article section.post .post-body img {
 article section.post .author-box {
   display: inline-block;
   vertical-align: top;
-  margin-top: 5px;
+  margin-top: 10px;
   width: 80%; }
 article section.post .author-box time {
   display: block;
   color: #666;
   font-size: 12px; }
 article section.post .comment-area {
-  padding: 8px; }
+  padding: 8px;
+  padding-bottom: 10px }
 article section.post .unfolded {
   background-color: #ddd; }
 article section.post .unfolded time {

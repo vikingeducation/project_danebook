@@ -1,12 +1,12 @@
 class PostsController < ApplicationController
 
-  before_action :require_current_user, only: [:new, :create, :destroy]
-
+  before_action :require_current_user
   def new
     @post = Post.new
   end
 
   def create
+    @user = current_user
     @post = current_user.posts.build(whitelisted_params)
     if @post.save
       flash[:success] = "Post created!"

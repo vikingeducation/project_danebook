@@ -87,16 +87,21 @@
                 <div class="panel-heading">
                   <h4 class="panel-title text-center">
                     Friends <span class="badge">
-                    <%= @user.friended_users.count %></span>
+                    <%= @user.friended_users.count + @user.users_friended_by.count %></span>
                   </h4>
                 </div>
 
 
                 <table class="table table-bordered row">
-                    <% @user.friended_users.each do |friend| %>
+                  <% all_friends = @user.friended_users + @user.users_friended_by %>
+                    <% all_friends.each do |friend| %>
                       <div class="col-xs-4">
                         <%= link_to user_timeline_path(friend.id), class: "thumbnail" do %>
-                        <%= image_tag "default.gif" %>
+                        <% if friend.avatar %>
+                        <%= image_tag friend.avatar.picture.expiring_url(10, :small), class: "img-thumbnail img-responsive" %>
+              <% else %>
+                          <%= image_tag "default.gif", class: "thumbnail img-responsive" %>
+                <% end %>
                         <h5 class="text-center">
                           <%= "#{friend.profile.first_name} #{friend.profile.last_name}" %>
                         </h5>

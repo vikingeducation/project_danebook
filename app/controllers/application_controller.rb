@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  #rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
+
   protect_from_forgery with: :exception
 
   before_action :require_login
@@ -47,4 +49,9 @@ class ApplicationController < ActionController::Base
       redirect_to login_path
     end
   end
+
+  # def record_not_found
+  #   redirect_to root_url
+  # end
+
 end

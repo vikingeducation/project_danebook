@@ -1,6 +1,6 @@
 class PhotosController < ApplicationController
 
-  #before_action :require_current_user, only: [:new, :create, :destroy, :set_avatar, :set_banner]
+  before_action :require_current_user, except: [:index, :show]
 
   def index
     @user = User.find(params[:user_id])
@@ -42,13 +42,13 @@ class PhotosController < ApplicationController
 
   def set_avatar
     @photo = Photo.find(params[:photo_id])
-    current_user.profile.update_attributes(avatar_id: @photo)
+    current_user.avatar = @photo
     redirect_to user_timeline_path(current_user)
   end
 
   def set_banner(photo)
     @photo = Photo.find(params[:id])
-    current_user.profile.banner = @photo.id
+    current_user.banner = @photo
     redirect :back
   end
 

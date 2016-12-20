@@ -6,6 +6,8 @@ gem 'paperclip'
 gem 'aws-sdk'
 gem 'figaro'
 
+gem 'faker'
+
 gem 'bootstrap-sass'
 gem 'binding_of_caller'
 

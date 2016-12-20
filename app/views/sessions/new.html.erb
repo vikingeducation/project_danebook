@@ -51,7 +51,12 @@
     </div>
 </nav>
 <div class="row text-center">
-  <h1>...or sign up and join us!</h1>
-  <%= button_to "Sign Up", root_url, :class => "btn btn-success", method: :get %>
-
+  <% unless current_user %>
+    <h1>...or sign up and join us!</h1>
+    <%= button_to "Sign Up", root_url, :class => "btn btn-success", method: :get %>
+ <% else %>
+ <br><br><br><br><br>
+ <h3 class="text-center">You don't have access to that</h3>
+ <%= button_to "Get back in the action!", user_timeline_path(current_user.id), :class => "btn btn-large btn-warning", method: :get %>
+  <% end %>
 </div>

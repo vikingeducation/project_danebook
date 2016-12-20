@@ -1,5 +1,6 @@
 class Photo < ApplicationRecord
   belongs_to :user
+
   has_attached_file :picture, styles: { thumb: "100x100",
                                         small: "200x200",
                                         large: "600x600",
@@ -9,9 +10,6 @@ class Photo < ApplicationRecord
 
 
   validates_attachment_content_type :picture, content_type: /\Aimage\/.*\Z/
-
-  belongs_to :profile
-
 
 
 end

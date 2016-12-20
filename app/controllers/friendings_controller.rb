@@ -1,6 +1,5 @@
 class FriendingsController < ApplicationController
-
-  before_action :require_current_user, except: [:index]
+  
 
   def index
     @user = User.find(params[:user_id])
@@ -9,14 +8,15 @@ class FriendingsController < ApplicationController
 
   def create
     friending_recipient = User.find(params[:id])
-
     current_user.friended_users << friending_recipient
+    flash[:success] = "You're now friends with #{friending_recipient.profile.first_name}"
     redirect_to :back
   end
 
   def destroy
     unfriended_user = User.find(params[:id])
     current_user.friended_users.delete(unfriended_user)
+    flash[:success] = "You're now no longer friends with #{unfriended_user.profile.first_name}"
     redirect_to :back
   end
 

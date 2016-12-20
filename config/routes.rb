@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :photos
     resources :friendings, only: [:index, :create, :destroy]
     resources :posts, only: [:new, :create, :destroy]
+    resource :newsfeed, only: [:show]
   end
 
   resources :posts, only: [:new, :create, :destroy] do
@@ -20,6 +21,7 @@ Rails.application.routes.draw do
   end
 
   resources :friendings, only: [:create, :destroy]
+
 
   resource :session, only: [:new, :create, :destroy]
   get 'login' => 'sessions#new'

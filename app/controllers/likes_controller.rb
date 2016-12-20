@@ -1,7 +1,5 @@
 class LikesController < ApplicationController
 
-  before_action :require_current_user
-
   def create
     type = params[:likeable]
     create_context

@@ -1,31 +1,23 @@
 <header class="container">
     <section class="banner row">
         <div class="col-sm-12 cover-banner">
-          <% if @user.profile.banner_id %>
-            <%= image_tag @user.profile.banner_id.expiring_url(10, :banner), class: "img-thumbnail img-responsive" %>
-            <% else %>
-            <%= image_tag "banner.png", class: "col-sm-10 col-sm-offset-1 cover-banner" %>
 
-          <% end %>
+          <%# if @user.banner %>
+            <%#= image_tag @user.banner.picture.expiring_url(10, :banner), class: "img-thumbnail img-responsive" %>
+            <%# else %>
+            <%= image_tag "banner.png", class: "col-sm-10 col-sm-offset-1 cover-banner" %>
+          <%# end %>
 
             <div class="avatar-lg">
-
-
-              <%# if @user.profile.avatar_id %>
-                <%#= link_to user_timeline_path(@user) do %>
-                  <%#= image_tag @user.photos.first.picture.expiring_url(10, :small), class: "img-thumbnail img-responsive" %>
-                <%# end %>
-              <%# else %>
-
-              <% if @user.profile.avatar_id %>
-                <%= image_tag Photo.find_(@user.profile.avatar_id).expiring_url(10, :avatar), class: "img-thumbnail img-responsive" %>
-
+              <% if @user.avatar %>
+                <%= image_tag @user.avatar.picture.expiring_url(10, :avatar), class: "img-thumbnail img-responsive" %>
                 <% else %>
                 <%= image_tag "default.gif", class: "img-thumbnail img-responsive" %>
               <% end %>
-              <%= link_to user_timeline_path(@user.id) do %>
-                    <h3 class="text-center"><%= @user.profile.first_name || "" %></h3>
-                    <% end %>
+
+              <%#= link_to user_timeline_path(@user.id) do %>
+                    <h3 class="text-center"><%= full_name_by_id(@user.id) || "" %></h3>
+                    <%# end %>
             </div>
         </div>
     </section>
@@ -38,7 +30,7 @@
 
         <a class="btn btn-default col-sm-2<%= ' active' if current_page?(user_photos_path) %>" href="<%= user_photos_path %>" role="button">Photos <span class="badge"><%= @user.photos.count %></span></a>
 
-        <a class="btn btn-default col-sm-2<%= ' active' if current_page?(user_friendings_path) %>" href="<%= user_friendings_path %>" role="button">Friends <span class="badge"><%= @user.friended_users.count %></span>
+        <a class="btn btn-default col-sm-2<%= ' active' if current_page?(user_friendings_path) %>" href="<%= user_friendings_path %>" role="button">Friends <span class="badge"><%= @user.friended_users.count + @user.users_friended_by.count %></span>
         </a>
 
 

@@ -16,8 +16,10 @@
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
+
             <form class="navbar-form navbar-left">
                 <div class="form-group">
+                  <%#= form_tag session_path do %>
                     <input class="form-control" placeholder="Search for Users" type="search">
                 </div>
                 <%= link_to '<i class="glyphicon glyphicon-search"></i>'.html_safe, users_path, class: 'btn btn-default' %>
@@ -25,7 +27,7 @@
 
             <ul class="nav navbar-nav navbar-right">
               <li>
-                <%= link_to '<i class="glyphicon glyphicon-globe"></i> News Feed'.html_safe, '#' %>
+                <%= link_to '<i class="glyphicon glyphicon-globe"></i> News Feed'.html_safe, user_newsfeed_path(current_user.id) %>
               </li>
                 <li>
                     <%= link_to "Sign Out", logout_path  %>

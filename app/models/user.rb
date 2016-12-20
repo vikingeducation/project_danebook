@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   before_create :generate_token
 
-  after_save { email.downcase.strip }
+  # after_save { email.downcase.strip }
 
   has_many :posts, dependent: :destroy
   has_one :profile, inverse_of: :user, dependent: :destroy
@@ -22,6 +22,9 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
 
   has_many :photos, dependent: :destroy
+
+  has_one :avatar, :class_name => "Photo", :foreign_key => "user_id"
+  has_one :banner, :class_name => "Photo", :foreign_key => "user_id"
 
 
   accepts_nested_attributes_for :profile

@@ -3,14 +3,15 @@
     <div class="profile-center">
 
       <div class="profile-img pull-left">
-        <a href="#">
-          <img src="https://s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif" alt="">
-          </a></div>
+        <%= link_to user_path(user, user.profile) do %>
+          <%= image_tag render_profile_img(user.profile) %>
+        <% end %>
+      </div>
 
 
       <div class="profile-info pull-left">
 
-        <%= link_to format_user_name(user), user_profile_path(user, user.profile) %>
+        <%= link_to format_user_name(user), user_path(user, user.profile) %>
 
         <p class="muted">432 Friends</p>
       </div>

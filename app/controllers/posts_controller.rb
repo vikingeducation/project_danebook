@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   include UserCheck
 
   before_action :set_user
-  before_action :correct_user, except: [:show]
+  before_action :correct_user, except: [:show, :index]
 
   def create
     @post = @user.posts.build(whitelisted)
@@ -21,6 +21,17 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find_by(id: params[:id])
+  end
+
+  def destroy
+    @post = Post.find_by(id: params[:id])
+    if @post
+      flash[:success] = ["Post deleted."]
+      @post.destroy
+    else
+      flash[:danger] = ["Post not found."]
+    end
+    redirect_to root_path
   end
 
   private

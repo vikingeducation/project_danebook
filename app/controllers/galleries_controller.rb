@@ -2,7 +2,7 @@ class GalleriesController < ApplicationController
   include UserCheck
 
   before_action :set_user
-  before_action :correct_user, except: [:show]
+  before_action :correct_user, except: [:show, :index]
 
   def index
     @galleries = @user.galleries

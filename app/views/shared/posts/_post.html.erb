@@ -9,7 +9,7 @@
         <div class="row">
           <div class="profile col-xs-12">
             <div class="profile-img pull-left">
-              <a href="about.html"><img src="<%= render_profile_img(post.user.profile) %>" alt=""></a>
+              <%= link_to user_path(post.user) do %><img src="<%= render_profile_img(post.user.profile) %>" alt=""><% end %>
             </div>
             <div class="profile-info pull-left">
               <%= link_to format_user_name(post.user), user_path(post.user) %>
@@ -33,7 +33,7 @@
             <%= render_like(post) %>
             <%= link_to "Comment", new_user_post_comment_path(post.user, post), class: "public"%>
             <% if post.user == current_user %>
-            <a href="#" class="private pull-right">Delete</a>
+              <%= link_to "Delete", user_post_path(post.user, post), method: :delete, class: "private pull-right" %>
             <% end %>
           </section>
           <% unless post.likes.size == 0 %>
@@ -44,7 +44,7 @@
           </section>
           <% end %>
         </div>
-        <%= render_post_comments(post) %>
+        <%= render_post_comments(post, limit) %>
 
         <% if content_for?(:post_footer) %>
         <%= yield :post_footer %>
@@ -54,4 +54,4 @@
     </div>
 
   </section>
-</end>
+</div>

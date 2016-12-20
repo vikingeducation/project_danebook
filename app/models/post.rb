@@ -9,6 +9,14 @@ class Post < ApplicationRecord
 
   has_many :comments, -> { order(:created_at) }, class_name: "Post", foreign_key: :post_id, dependent: :destroy
 
+  validate :posting_on_friend
+
+  def posting_on_friend
+    unless post == nil || post.user.friend_ids.include?(user_id)
+      errors.add(:post, :invalid, message: "- You can only post to you own or your friends' posts")
+    end
+  end
+
   default_scope {
     includes :user
   }

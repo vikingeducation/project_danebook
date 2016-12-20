@@ -3,10 +3,15 @@ class CommentsController < ApplicationController
 
   before_action :set_user
   before_action :get_post
-  before_action :correct_user, except: [:show]
+  before_action :correct_user, except: [:show, :new, :create]
 
   def new
-    @comment = @post.comments.build
+    if @user.friends.include?(current_user)
+      @comment = @post.comments.build
+    else
+      flash[:danger] = ["You can only comment on your friends' posts."]
+      redirect_to user_post_path(@user, @post)
+    end
   end
 
   def create
@@ -17,9 +22,9 @@ class CommentsController < ApplicationController
     else
       flash.now[:danger] = ["Something went wrong.."]
       @comment.errors.full_messages.each do |error|
-        flash.now[:danger] << error
+        flash[:danger] << error
       end
-      render :new
+      redirect_to user_post_path(@user, @post)
     end
   end
 

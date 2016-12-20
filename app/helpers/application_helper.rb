@@ -49,8 +49,12 @@ module ApplicationHelper
     render partial: 'shared/navbar/anon'
   end
 
-  def render_post_comments(post)
-    comments = post.comments.select{|com| com.user }
+  def render_post_comments(post, limit = nil)
+    if limit
+      comments = post.comments.limit(limit).select{|com| com.user }
+    else
+      comments = post.comments.select{|com| com.user }
+    end
     if comments.length > 0
       render partial: 'shared/posts/comments', locals: { comments: comments}
     end

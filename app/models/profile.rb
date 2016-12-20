@@ -19,6 +19,8 @@ class Profile < ApplicationRecord
 
   belongs_to :profile_img, class_name: "Image", foreign_key: :image_id, optional: :true
 
+  belongs_to :cover, class_name: "Image", foreign_key: :cover_id, optional: :true
+
   validates_presence_of :first_name, :last_name, :birthday, :gender
   validates_format_of :phone, with: /\A(?=.*\d)[0-9\- +]+\Z/, allow_nil: true, allow_blank: true
   validates :phone, length: { minimum: 4, maximum: 30 }, allow_nil: true, allow_blank: true

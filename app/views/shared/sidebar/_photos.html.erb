@@ -1,8 +1,11 @@
 <section class="post-content col-xs-12">
   <div class="row">
 
-    <% user.images.each do |image| %>
+    <% user.images.each_with_index do |image, i| %>
       <%= render partial: 'shared/photos/photo_mini', locals: {photo: image} %>
+      <% if i % 3 == 2 %>
+        <div class="clearfix"></div>
+      <% end %>
     <% end %>
 
     <div class="col-xs-12 text-center">

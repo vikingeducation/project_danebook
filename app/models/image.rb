@@ -1,6 +1,5 @@
 class Image < ApplicationRecord
   before_save :file_or_url
-  before_create :randomize_file_name
   after_create :set_job
 
   attr_reader :set_profile_photo
@@ -18,11 +17,14 @@ class Image < ApplicationRecord
 
   has_one :profile, dependent: :nullify
 
+  before_post_process :randomize_file_name
   after_post_process :create_post
 
   def randomize_file_name
-    extension = File.extname(picture_file_name).downcase
-    self.picture.instance_write(:file_name, "#{SecureRandom.hex}-#{picture_file_name.downcase}")
+    unless url and url != ""
+      extension = File.extname(picture_file_name).downcase
+      self.picture.instance_write(:file_name, "#{SecureRandom.hex}-#{picture_file_name.downcase}")
+    end
   end
 
   def set_profile_photo=(bool)
@@ -50,6 +52,7 @@ class Image < ApplicationRecord
 
   def file_or_url
     url = nil if url == ""
+    picture_file_name = File.basename(URI.parse(self.url).path) if url
     picture = nil if url
   end
 
@@ -60,11 +63,8 @@ class Image < ApplicationRecord
   end
 
   def process_img
-    PullTempfile.transaction(url: self.url, original_filename: File.basename(URI.parse(self.url).path)) do |tmp_image|
+    PullTempfile.transaction(url: self.url, original_filename: "#{SecureRandom.hex}-#{File.basename(URI.parse(self.url).path).downcase}") do |tmp_image|
       self.picture = tmp_image
-      obj = S3_BUCKET.objects.each do |obj|
-        obj.delete if obj.key == self.url.gsub(/^(?:\/\/|[^\/]+)*\//, "")
-      end
       self.url = nil
       unless save
         profile = self.profile

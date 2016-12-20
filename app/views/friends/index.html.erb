@@ -1,0 +1,15 @@
+<div class="container">
+  <%= render 'shared/profile_header_block' %>
+  <div class="row">
+    <div class="col-sm-4">
+      <%= render partial:'shared/friends_box', locals: { user: @user } %>
+    </div>
+    <div class="col-sm-8 newsfeed">
+      <%= render 'posts/authoring_box' if @user == current_user %>
+      <%= render partial: 'posts/show', collection: @timeline_posts, as: :post %>
+      <% if @timeline_posts.length == 0 %>
+        <p class="text-center" style="margin-top: 2em">No posts by your friends yet.</p>
+      <% end %>
+    </div>
+  </div>
+</div>

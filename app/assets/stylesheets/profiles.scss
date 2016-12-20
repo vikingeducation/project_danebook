@@ -1,0 +1,58 @@
+/////// Profile -- About & About Edit pages
+
+.profile {
+  margin-top: 15px;
+  .page-title {
+    background: #ddd;
+  }
+  h3 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 15px;
+  }
+  td {
+    padding: 10px;
+    box-sizing: border-box;
+    &.table-info {
+      width: 100%;
+      input {
+        width: 75%;
+      }
+    }
+  }
+  textarea {
+    width: 90%;
+  }
+  .table-label {
+    font-weight: 600;
+  }
+  .btn-lg {
+    width: 50%;
+    background-color: #50a1b9;
+    margin-left: 25%;
+    margin-top: 75px;
+    height: 75px;
+    color: #fff;
+    font-size: 32px;
+    font-weight: 700px;
+    border-radius: 0;
+    border:2px solid #000;
+  }
+  main {
+    border: 2px solid #000;
+    border-top: 0;
+    padding: 25px;
+    padding-bottom: 75px;
+    display: inline-block;
+  }
+}
+
+.friend-btn {
+  position: absolute;
+  bottom: 3em;
+  left: 230px;
+}
+
+.username {
+  text-shadow: 2px 2px 6px black;
+}

@@ -1,0 +1,331 @@
+/* global */
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+
+$danish-flag: #c60c30;
+
+/* navbar */
+
+#top-nav {
+  background-color: $danish-flag;
+  height: 75px;
+  .navbar-header {
+    margin-top: 12px;
+    .navbar-brand {
+      color: white;
+      font-size: 36px;
+    }
+  }
+  #navbar-form {
+    padding: 0;
+    .navbar-form {
+      padding: 0;
+      .form-group {
+        height: 50px;
+      }
+    }
+    label {
+      display: block;
+      color: white;
+      font-size: 12px;
+      margin: 0;
+      width: 10em;
+    }
+    input {
+      width: 10em;
+      border-radius: 0;
+      height: 30px;
+    }
+    button {
+      background-color: white;
+      text-align: center;
+      padding: 2.5px 12px;
+      width: 5em;
+    }
+  }
+}
+
+/* content */
+
+.content {
+  padding-top: 78px;
+  h1 {
+    font-size: 30px;
+    font-weight: 600;
+  }
+  ul {
+    margin-left: 25px;
+    li {
+      line-height: 35px;
+      font-size: 16px;
+    }
+  }
+}
+
+/* sign up */
+
+.sign-up {
+  h1{
+    font-size: 48px;
+  }
+  h2 {
+    font-size: 17px;
+    font-weight: 600;
+  }
+  input {
+    border-radius: 0;
+    border:1px solid #cccccc;
+    margin-top: 20px;
+  }
+  .first-name {
+    margin-right: 30px;
+  }
+  .name-field {
+    width: 163px;
+  }
+  .wide-input, button {
+    width: 100%;
+  }
+  .btn {
+    height: 35px;
+    border-radius: 0;
+    margin-top: 15px;
+    background-color: $danish-flag;
+    color: white;
+  }
+}
+
+/* application layout */
+
+// Top Nav
+
+.main-nav {
+  background-color: $danish-flag;
+  color: white;
+  border-radius: 0;
+  height: 40px;
+  min-height: 0px;
+  a {
+    color: white;
+  }
+  .navbar-brand {
+    height: 25px;
+    width: auto;
+    padding: 10px 15px;
+    img {
+      height: 25px;
+      width: 25px;
+      border-radius: 100%;
+      display: inline-block;
+      margin-top: -4px;
+    }
+  }
+  .navbar-text {
+    margin: 10px 15px;
+  }
+  .search-bar {
+    display: inline-block;
+    input {
+      -webkit-appearance: textfield;
+      box-sizing: border-box;
+      height: 24px;
+      width: 350px;
+      border-radius: 0;
+    }
+  }
+}
+
+heading {
+  display: inline-block;
+  width: 100%;
+  height: 385px;
+  position: relative;
+  border: 2px solid #000;
+
+  // Jumbotron
+
+  .cover-image {
+    margin-top: 25px;
+    background-image: image_url("cover_image.jpg");
+    background-size: cover;
+    color: #fff;
+    height: 320px;
+    border-radius: 0;
+    .image-mask {
+      width: 180px;
+      height: 180px;
+      overflow: hidden;
+      display: inline-block;
+      position: absolute;
+      top: 190px;
+      left: 20px;
+      z-index: 1;
+      .profile-pic {
+        width: 100%;
+      }
+    }
+    .profile-name {
+      position: absolute;
+      top: 270px;
+      left: 260px;
+      font-weight: 600;
+    }
+  }
+
+  // Middle Nav
+  .mid-nav {
+    box-sizing: border-box;
+    height: 40px;
+    width: 100%;
+    position: absolute;
+    top: 343px;
+    left: 0;
+    border-top: 2px solid #000;
+    ul {
+      margin-left: 220px;
+      list-style-type: none;
+      height: 40px;
+      display: inline-block;
+      padding: 0;
+      li {
+        float: left;
+        border-right: 2px solid #444;
+        &.current {
+          background: #ddd;
+        }
+        &:first-child {
+          border-left: 2px solid #444;
+        }
+        a {
+          display: block;
+          color: #444;
+          text-align: center;
+          padding: 8px 16px;
+          text-decoration: none;
+        }
+        a:hover {
+          background-color: #50a1b9;
+        }
+        .count-text {
+          color: #aaa;
+        }
+      }
+    }
+    .mid-nav-edit {
+      display: inline-block;
+      float: right;
+      line-height: 40px;
+      margin-right: 20px;
+    }
+  }
+
+}
+
+// Misc
+
+.page-title {
+  border: 2px solid #444;
+  text-align: center;
+  height: 40px;
+  h1 {
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0;
+    line-height: 40px;
+
+  }
+}
+
+.navbar-brand img {
+  height: 20px;
+  border-radius: 20px;
+  display: inline-block;
+}
+
+.hero-image {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  background-size: cover;
+}
+.profile-photo {
+  position: absolute;
+  bottom: -35px;
+  left: 15px;
+  width: 200px;
+  border: 2px solid white;
+}
+.hero-image .username {
+  position: absolute;
+  bottom: 10px;
+  left: 230px;
+  color: white;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+.profile-navigation-bar {
+  border: 1px solid black;
+}
+.profile-photo-spacer {
+  display: inline-block;
+  width: 220px;
+}
+.profile-navigation-item {
+  display: inline-block;
+  width: 130px;
+  border-left: 1px solid silver;
+  padding: 1em;
+}
+.profile-navigation-item a {
+  color: black;
+  text-decoration: none;
+}
+.profile-navigation-item .quantity {
+  color: silver;
+}
+.profile-navigation-item:last-of-type {
+  border-right: 1px solid silver;
+}
+.edit-profile-link {
+  float: right;
+  padding: 1em;
+}
+.panel {
+  margin-top: 1em;
+  position: relative;
+}
+.panel > .row {
+  margin: 1em;
+}
+.panel-heading {
+  text-align: center;
+  font-size: 1.5em;
+}
+.edit-profile-button {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+table td:first-of-type {
+  font-weight: bold;
+}
+.hundred-px {
+  width: 100px;
+  height: 100px;
+  margin: 4px;
+}
+.salmon {
+  // background-color: salmon;
+  background-image: image-url('icon_photo_small.png');
+  background-size: contain;
+}
+.flex-flow {
+  display: flex;
+  flex-wrap: wrap;
+}
+.danebook-post .media-heading {
+  padding-top: .25em;
+}
+.like {
+  margin-right: .75em;
+}

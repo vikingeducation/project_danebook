@@ -1,0 +1,17 @@
+<nav class="navbar navbar-fixed-top main-nav">
+  <a href="home.html" class="navbar-brand white-nav-text">
+    <%= image_tag("danish_flag.gif", options={}) %>
+    Danebook
+  </a>
+  <form action="#" role='search' class='navbar-form search-bar'>
+    <div class="form-group">
+      <input type="text" class='form-control' placeholder='Search for users' disabled>
+    </div>
+  </form>
+  <% if current_user %>
+    <p class="navbar-text navbar-right white-nav-text">
+      <%= link_to current_user.name, current_user %> | <%= link_to "Log out", logout_path %>
+    </p>
+  <% end %>
+</nav>
+<div style="height: 40px;"></div>

@@ -1,0 +1,10 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h3 class="panel-title">
+      Friends <span class="badge"><%= user.friended_users.count %></span>
+    </h3>
+  </div>
+  <div class="panel-body">
+    <%= list_friends_of(user) %>
+  </div>
+</div>

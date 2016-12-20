@@ -1,0 +1,60 @@
+<div class="container">
+  <%= render 'shared/profile_header_block' %>
+  <div class="row">
+    <div class="col-sm-12">
+      <%= form_for @profile, url: user_profile_path(current_user), html: { multipart: true } do |form| %>
+        <div class="panel panel-info">
+          <div class="panel-heading">Edit Profile</div>
+            <div class="row">
+              <div class="col-sm-12">
+                <label>Upload a new profile image: <%= form.file_field :photo %></label>
+                <label>Upload a new background image: <%= form.file_field :background %></label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-5">
+              <h3>Basic Information</h3>
+
+              <table class="table">
+                <tr>
+                  <td>Birthday:</td>
+                  <td><%= form.date_field :birthday %></td>
+                </tr>
+                <tr>
+                  <td>College:</td>
+                  <td><%= form.text_field :college %></td>
+                </tr>
+                <tr>
+                  <td>Hometown:</td>
+                  <td><%= form.text_field :hometown %></td>
+                </tr>
+                <tr>
+                  <td>Currently Lives:</td>
+                  <td><%= form.text_field :currently_lives %></td>
+                </tr>
+              </table>
+              <h3>Contact Information</h3>
+              <table class="table">
+                <tr>
+                  <td>Email:</td>
+                  <td><%= @profile.user.email %></td>
+                </tr>
+                <tr>
+                  <td>Telephone:</td>
+                  <td><%= form.text_field :telephone %></td>
+                </tr>
+              </table>
+              <%= form.submit class: "btn btn-block btn-success" %>
+            </div>
+            <div class="col-md-7">
+              <h3>Words to Live By</h3>
+              <%= form.text_area :words_to_live_by, rows: 5, cols: 75 %>
+              <h3>About Me</h3>
+              <%= form.text_area :about_me, rows: 10, cols: 75 %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

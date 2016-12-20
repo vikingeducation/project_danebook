@@ -1,0 +1,36 @@
+<div class="danebook-post panel panel-default">
+  <div class="media">
+    <div class="media-left">
+      <a href="#">
+        <%= image_tag 'user_silhouette_generic.gif', class: 'media-object', alt:'', height:50 %>
+      </a>
+    </div>
+    <div class="media-body">
+      <h4 class="media-heading"><a href="#"><%= post.user.name %></a></h4>
+      <time>Posted on <%= post.created_at.strftime('%c') %></time>
+    </div>
+  </div>
+  <div class="panel-body">
+    <p><%= post.body %></p>
+  </div>
+  <div class="panel-footer">
+    <% if current_user_likes?(post) %>
+      <%= link_to "Unlike", post_unlike_path(post), class: "like" %>
+    <% else %>
+      <%= link_to "Like", post_like_path(post), class: "like" %>
+    <% end %>
+    <%= link_to "Delete", post_path(post), method: :delete, class: "pull-right" %>
+
+    <%= render partial: 'likes/index', locals: { likes: post.likes } %>
+    <%= render partial: 'comments/show', collection: post.comments, as: :comment %>
+
+    <%= form_for [post, post.comments.build] do |f| %>
+      <%= f.text_field :body,
+        placeholder: "Write a comment...",
+        class: "form-control"
+      %>
+      <%= f.submit "Comment", class: "sr-only" %>
+
+    <% end %>
+  </div>
+</div>

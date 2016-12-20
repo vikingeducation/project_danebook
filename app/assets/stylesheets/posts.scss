@@ -1,0 +1,156 @@
+/////// Timeline
+
+.timeline {
+  section {
+    border: 2px solid #000;
+  }
+  section h2 {
+    background-color: #ddd;
+    border-bottom: 2px solid #000;
+    text-align: center;
+    margin-top: 0;
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 700;
+  }
+  section footer {
+    background-color: #ddd;
+    border-top: 2px solid #000;
+  }
+  a {
+    text-decoration: underline;
+  }
+
+  // left column
+  .left-column section {
+    margin-top: 15px;
+    img {
+      max-width: 100%;
+    }
+    a {
+      display: block;
+      text-align: center;
+      font-size: 14px;
+      line-height: 18px;
+    }
+  }
+  .about-info {
+    .about-list {
+      padding: 10px;
+    }
+  }
+  .timeline-photos {
+    padding-bottom: 10px;
+  }
+
+  // right column
+  .right-column section {
+    margin-top: 25px;
+    margin-left: 15px; // not reasonable
+  }
+  .submit-post {
+    textarea {
+      width: 95%;
+      margin-left: 2.5%;
+      margin-right: 2.5%;
+    }
+    footer {
+      background-color: #ddd;
+      height: 40px;
+      .new-post-submit {
+        margin-top: 1%;
+        float: right;
+        color: #fff;
+        background-color: #50a1b9;
+        margin-right: 5%;
+      }
+    }
+  }
+
+  // Post
+  .post {
+    .poster {
+      padding: 10px;
+      img {
+        max-width: 50px;
+      }
+      .post-details {
+        padding: 10px;
+        display: inline-block;
+        vertical-align: middle;
+        line-height: 1.1em;
+        p {
+          color: #ccc;
+        }
+      }
+    }
+    .post-text {
+      padding: 10px;
+    }
+    footer {
+      padding: 10px;
+      .post-options {
+        a{
+          margin-right: 10px;
+        }
+        .delete-post {
+          display: block;
+          float: right;
+        }
+      }
+      p {
+        margin-bottom: 0;
+      }
+    }
+
+    // Comments section
+    .comments {
+      background-color: #ddd;
+      display: inline-block;
+      .commenter-image {
+        padding: 10px;
+        line-height: 1em;
+        img {
+          max-width: 50px;
+        }
+      }
+      .comment{
+        width: 100%;
+        background-color: #ddd;
+        padding-top: 10px;
+        display: inline-block;
+        &:first-child {
+          border-top: 1px solid #ccc;
+        }
+        .comment-text {
+          padding-bottom: 5px;
+        }
+        .comment-options {
+          line-height: 1;
+          .delete-comment {
+            float: right;
+          }
+        }
+        .comment-meta {
+          color: #666;
+          display: inline-block;
+          padding-bottom: 5px;
+        }
+      }
+      .comment-form {
+        form {
+          width: 90%;
+          margin: 5%;
+          textarea {
+            width: 100%;
+          }
+        }
+        .submit-comment {
+          float: right;
+          background-color: #50a1b9;
+          color: #fff;
+        }
+      }
+    }
+  }
+}

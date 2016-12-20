@@ -1,0 +1,53 @@
+<div class="container">
+  <%= render 'shared/profile_header_block' %>
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="panel panel-info">
+        <div class="panel-heading">About</div>
+        <% if @profile == current_user.profile %>
+          <a class="edit-profile-button btn btn-default" href="<%= edit_user_profile_path(current_user) %>">Edit your Profile</a>
+        <% end %>
+        <div class="row">
+          <div class="col-sm-5">
+            <h3>Basic Information</h3>
+            <table class="table">
+              <tr>
+                <td>Birthday:</td>
+                <td><%= @profile.birthday %></td>
+              </tr>
+              <tr>
+                <td>College:</td>
+                <td><%= @profile.college %></td>
+              </tr>
+              <tr>
+                <td>Hometown:</td>
+                <td><%= @profile.hometown %></td>
+              </tr>
+              <tr>
+                <td>Currently Lives:</td>
+                <td><%= @profile.currently_lives %></td>
+              </tr>
+            </table>
+            <h3>Contact Information</h3>
+            <table class="table">
+              <tr>
+                <td>Email:</td>
+                <td><%= @profile.user.email %></td>
+              </tr>
+              <tr>
+                <td>Telephone:</td>
+                <td><%= @profile.telephone %></td>
+              </tr>
+            </table>
+          </div>
+          <div class="col-md-7">
+            <h3>Words to Live By</h3>
+            <p><%= @profile.words_to_live_by %></p>
+            <h3>About Me</h3>
+            <p><%= @profile.about_me %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

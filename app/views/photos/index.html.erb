@@ -1,0 +1,20 @@
+<div class="container">
+  <%= render 'shared/profile_header_block' %>
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <%= button_to "Add Photo", new_user_photo_path, class: "btn btn-default pull-right", method: :get %>
+          Photos
+        </div>
+        <div class="panel-body">
+          <% @photos.each do |photo| %>
+            <%= link_to photo_path(photo) do %>
+              <%= image_tag photo.image.expiring_url %>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

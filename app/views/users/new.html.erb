@@ -1,0 +1,109 @@
+<nav class='navbar navbar-default' id='top-nav'>
+  <div class="container">
+
+    <div class="row">
+      <section class="col-sm-7">
+        <div class="navbar-header">
+          <a href="#" class="navbar-brand">Danebook</a>
+          <button id='navbar-toggle' class="navbar-toggle collpase btn-primary" data-target='#navbar-form' data-toggle='collapse'>Sign in</button>
+        </div> <!-- /navbar header -->
+      </section> <!-- /col md 7 -->
+
+      <!-- Login form -->
+      <div class="col-sm-5">
+        <div id='navbar-form' class="navbar-collapse collapse">
+          <%= form_tag session_path, class: "navbar-form navbar-left" do %>
+          <!-- <form action="<%= session_path %>" method="post" class='navbar-form navbar-right'> -->
+          <div class='form-group'>
+            <label for="email">Email</label>
+            <input type="text" class='form-control' id='email' name='email'>
+          </div>
+          <div class='form-group'>
+            <label for="password">Password</label>
+            <input type="password" class='form-control' id='password' name='password'>
+            <button type="submit" value='Sign in'>Log in</button>
+          </div>
+          <% end %>
+        </div>
+      </div> <!-- col-md-5 -->
+
+    </div> <!-- row -->
+  </div> <!-- /container -->
+</nav>
+
+<main class="container">
+  <div class="row">
+
+    <!-- Connect with friends -->
+    <section class="connect col-md-7">
+      <article class="content">
+        <h1>Connect with all your Danish friends</h1>
+        <ul>
+          <li>See photos and updates in your news feed</li>
+          <li>Post your status for the world to see from your profile</li>
+          <li>Get in touch with your friends by "friending" them</li>
+          <li>Like things because you're a positive person!</li>
+        </ul>
+      </article>
+    </section>
+
+    <!-- Sign up -->
+
+    <section class="sign-up col-md-4">
+      <h1>Sign Up</h1>
+      <aside class="sign-up-form">
+        <%= form_for(@user) do |f| %>
+          <%= f.text_field :first_name,
+            class: "name-field first-name",
+            placeholder: "First Name",
+            required: true
+          %>
+          <%= f.text_field :last_name,
+            class: "name-field",
+            placeholder: "Last Name",
+            required: true
+          %>
+          <%= f.text_field :email,
+            class: "wide-input",
+            placeholder: "Email",
+            required: true
+          %>
+          <%= f.password_field :password,
+            class: "wide-input",
+            placeholder: "Password",
+            required: true
+          %>
+          <%= f.password_field :password_confirmation,
+            class: "wide-input",
+            placeholder: "Confirm Your Password",
+            required: true
+          %>
+
+          <%= f.fields_for :profile, @profile do |profile_builder| %>
+            <h2>Birthday</h2>
+            <%= profile_builder.date_select :birthday, default: Date.yesterday, start_year: Date.today.year, end_year: 100.years.ago.year %>
+
+            <div>
+              <%= profile_builder.label :sex do %>
+                <%= profile_builder.radio_button :sex, "female", required: true %>
+                Female
+              <% end %>
+              <%= profile_builder.label :sex do %>
+                <%= profile_builder.radio_button :sex, "male", required: true %>
+                Male
+              <% end %>
+              <%= profile_builder.label :sex do %>
+                <%= profile_builder.radio_button :sex, "other", required: true %>
+                Other
+              <% end %>
+            </div>
+          <% end %>
+
+          <%= f.submit "Sign Up", class: 'btn btn-block' %>
+        <% end %>
+
+      </aside>
+    </section>
+
+  </div>
+</main>

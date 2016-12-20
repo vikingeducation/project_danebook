@@ -1,0 +1,55 @@
+<header class="container">
+    <section class="banner row">
+        <div class="col-sm-12 cover-banner">
+
+          <%# if @user.banner %>
+            <%#= image_tag @user.banner.picture.expiring_url(10, :banner), class: "img-thumbnail img-responsive" %>
+            <%# else %>
+            <%= image_tag "banner.png", class: "col-sm-10 col-sm-offset-1 cover-banner" %>
+          <%# end %>
+
+            <div class="avatar-lg">
+              <% if @user.avatar %>
+                <%= image_tag @user.avatar.picture.expiring_url(10, :avatar), class: "img-thumbnail img-responsive" %>
+                <% else %>
+                <%= image_tag "default.gif", class: "img-thumbnail img-responsive" %>
+              <% end %>
+
+              <%#= link_to user_timeline_path(@user.id) do %>
+                    <h3 class="text-center"><%= full_name_by_id(@user.id) || "" %></h3>
+                    <%# end %>
+            </div>
+        </div>
+    </section>
+    <br>
+    <section aria-label="..." class="row mid-nav" role="group">
+
+        <a class="btn btn-default col-sm-offset-1 col-sm-2<%= ' active' if current_page?(user_timeline_path) %>" href="<%= user_timeline_path  %>" role="button">Timeline</a>
+
+        <a class="btn btn-default col-sm-2<%= ' active' if current_page?(user_profile_path) %>" href="<%= user_profile_path  %>" role="button">About</a>
+
+        <a class="btn btn-default col-sm-2<%= ' active' if current_page?(user_photos_path) %>" href="<%= user_photos_path %>" role="button">Photos <span class="badge"><%= @user.photos.count %></span></a>
+
+        <a class="btn btn-default col-sm-2<%= ' active' if current_page?(user_friendings_path) %>" href="<%= user_friendings_path %>" role="button">Friends <span class="badge"><%= @user.friended_users.count + @user.users_friended_by.count %></span>
+        </a>
+
+
+
+        <% if current_user.id == @user.id %>
+          <a class="btn btn-default col-sm-2<%= ' active' if current_page?(edit_user_profile_path) %>" href="<%= edit_user_profile_path %>" role="button">Edit Profile</a>
+        <% end %>
+
+
+        <% if current_user.id != @user.id %>
+          <% if current_user.friended_users.pluck(:id).include?(@user.id) %>
+              <%= link_to "Unfriend", friending_path(@user), method: :delete, class: "btn btn-danger col-sm-2" %>
+            <% else %>
+              <%= link_to "Friend", friendings_path(id: @user.id), method: :post, class: "btn btn-success col-sm-2" %>
+            <% end %>
+        <% end %>
+
+
+
+    </section>
+</header>
+<br>

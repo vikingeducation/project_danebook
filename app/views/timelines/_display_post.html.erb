@@ -1,0 +1,78 @@
+<div class="panel panel-default">
+    <div class="panel-body">
+      <%= render partial: 'posts/posted_header', locals: { user: user, post: post } %>
+
+        <div class="row">
+            <br>
+            <p class="col-xs-12">
+              <%= post.body %>
+            </p>
+
+        </div>
+    </div>
+
+    <div class="panel-footer">
+        <div class="row">
+            <div class="col-xs-1">
+              <%= render partial: 'likes/like_button', locals: { user: user, post: post } %>
+              <%= render partial: 'likes/likes_display', locals: { user: user, post: post } %>
+            </div>
+
+
+
+
+
+            <div class="col-xs-2">
+                <!-- comment html  -->
+            </div>
+            <div class="col-xs-1 col-xs-offset-7">
+                <% if current_user.id == user.id %>
+                  <%= link_to "Delete", { :controller => 'posts', :action => 'destroy', :id => post.id }, method: :delete, data: { confirm: 'Delete Post?' } %>
+                <% end %>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <% post.comments.each do |comment| %>
+                  <p>
+                    <% if comment.persisted? %>
+                    <%= render partial: 'comments/posted_comment', locals: { user: user, comment: comment, post: post } %>
+                  <% end %>
+                </p>
+
+                  <% if comment.likes.find_by_user_id(current_user.id) %>
+                    <%= link_to "Unlike", comment_like_path(comment), method: :delete %>
+                  <% else %>
+                    <%= link_to "Like", comment_like_path(comment), method: :post %>
+                  <% end %>
+
+                  <%= "#{pluralize(comment.like_count, "like")}" if comment.like_count > 0 %>
+
+                  <% if comment.user_id == current_user.id %>
+                    <%= link_to "Delete", { :controller => 'comments', :action => 'destroy', :id => comment.id }, method: :delete, data: { confirm: 'Delete comment?' } %>
+                  <% end %>
+
+
+                <% end %>
+              </div>
+
+
+
+                <div class="col-xs-12">
+                    <%= form_for [post, post.comments.build]  do |comment_builder| %>
+
+                    <!-- <textarea class="col-xs-1 form-control" placeholder="Write a comment..." rows="5"></textarea> -->
+                    <%= comment_builder.label :body, class: 'hidden' %>
+                    <%= comment_builder.text_area :body, placeholder: placeholder="Write a comment...", rows: 2, class: 'form-control' %>
+                </div>
+            </div>
+            <div class="row rs30">
+                <div class="col-xs-12">
+                    <!-- <a href="#">Cancel</a> -->
+                    <%= comment_builder.submit "Comment", class: 'btn btn-success pull-right' %>
+                    <% end %>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

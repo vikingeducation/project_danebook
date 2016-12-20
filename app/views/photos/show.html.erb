@@ -1,0 +1,34 @@
+<%= render 'shared/search_nav' %>
+<%= render 'shared/banner_nav' %>
+
+<main class="container">
+    <div class="row">
+        <div class="panel panel-default col-xs-offset-1 col-xs-10">
+            <div class="panel-heading row">
+                <div class="panel-title">
+                    <h4 class="col-xs-offset-5 col-xs-2 text-center">
+                        Photos
+                    </h4>
+                    <% if current_user.id == @user.id %>
+                      <%= button_to "Add Photo!", new_user_photo_path(@user), :method => "get", class: "btn btn-info col-xs-2 col-xs-offset-3" %>
+                    <% end %>
+                </div>
+            </div>
+            <div class="panel-body">
+              <div class="col-xs-12 text-center">
+
+                <%= image_tag @photo.picture.expiring_url(10, :large), class: "img-responsive center-block" %>
+                <% if current_user.id == @user.id %>
+
+
+                  <br>
+                  <%= link_to "Delete", user_photo_path(@photo), method: :delete, class: "btn btn-danger col-sm-2 col-sm-offset-3" %>
+                  <%= link_to "Set as Avatar", { :controller => 'photos', :action => 'set_avatar', :photo_id => @photo.id }, class: "col-sm-offset-1 btn btn-default col-sm-2" %>
+                  <%#= link_to "Set as Cover", set_avatar_path((@photo), class: "btn btn-default col-sm-2" %>
+                <% end %>
+
+              </div>
+            </div>
+        </div>
+    </div>
+</main>

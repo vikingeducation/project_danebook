@@ -1,0 +1,14 @@
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <h4 class="panel-title text-center">Post</h4>
+  </div>
+  <div class="panel-body">
+    <%= form_for [@user, @post] do |post_builder|  %>
+      <%= post_builder.label :body, class: 'hidden' %>
+      <%= post_builder.text_area :body, placeholder: placeholder="Tell the world something...", rows: 4, class: 'form-control' %>
+  </div>
+  <div class="panel-footer text-right">
+    <%= post_builder.submit "Post", class: 'btn btn-success' %>
+    <% end %>
+  </div>
+</div>

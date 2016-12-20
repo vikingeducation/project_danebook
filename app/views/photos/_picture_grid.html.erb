@@ -1,0 +1,8 @@
+<div class="col-sm-3 img-caption">
+    <%= link_to user_photo_path(@user, photo), class: "thumbnail word" do %>
+    <%= image_tag photo.picture.expiring_url(10), class: "img-responsive" %>
+    <h5 class="pub-date text-center">
+        <%= "Posted on #{photo.created_at.strftime("%B %d, %Y")}" %>
+    </h5>
+    <% end %>
+</div>

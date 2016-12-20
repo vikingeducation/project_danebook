@@ -1,0 +1,72 @@
+<%= render 'nav' %>
+
+<!--LEFT SIDE MESSAGE-->
+
+<main class="container-fluid">
+    <div class="row">
+        <aside class="col-sm-offset-1 col-sm-4">
+            <header>
+                <h2>
+                    Connect with all your friends!
+                </h2>
+            </header>
+            <section>
+                <ul>
+                    <li>See photos and updates in your news feed</li>
+                    <li>Post your status for the world to see from your profile.</li>
+                    <li>Get in touch with your friends by "friending" them</li>
+                    <li>Like things because you're a positive person!</li>
+                </ul>
+            </section>
+        </aside>
+
+        <!--RIGHT SIDE SIGN UP      -->
+
+        <section class="col-sm-offset-2 col-sm-4">
+            <header>
+                <h1>
+                    Sign Up
+                </h1>
+            </header>
+            <%= @user.errors.full_messages.first if @user.errors.any? %>
+
+            <%= form_for @user do |user_fields| %>
+              <%= user_fields.label :email, class: 'big-three' %>
+              <%= user_fields.email_field :email, class: 'big-three', placeholder: "Your Email", :required => true %>
+
+              <%= user_fields.label :password, class: 'big-three' %>
+              <%= user_fields.password_field :password, class: 'big-three', placeholder: "Password", :required => true %>
+
+              <%= user_fields.label :password_confirmation, class: 'big-three' %>
+              <%= user_fields.password_field :password_confirmation, class: 'big-three', placeholder: "Confirm Password", :required => true %>
+              <br><br>
+
+              <%= user_fields.fields_for :profile do |profile_builder| %>
+
+                <%= profile_builder.label :first_name, class: 'big-three' %>
+                <%= profile_builder.text_field :first_name, class: 'big-three', placeholder: "First Name" %>
+
+                <%= profile_builder.label :last_name, class: 'big-three' %>
+                <%= profile_builder.text_field :last_name, class: 'big-three', placeholder: "Last Name", :required => true %>
+                <br><br>
+                <%= profile_builder.label :birthday %>
+                <br>
+                <%= profile_builder.date_select :birthday, { start_year: 18.years.ago.year, end_year: 100.years.ago.year,
+                                                order: [:month, :day, :year],
+                                                prompt: { day: 'Select day', month: 'Select month',
+                                                year: 'Select year' } },
+                                                { required: true } %>
+                <br><br>
+                <%= profile_builder.radio_button :gender, "male", {required: true} %>
+                <%= profile_builder.label "male" %>
+
+                <%= profile_builder.radio_button :gender, "female", {required: true} %>
+                <%= profile_builder.label "female" %>
+                <br>
+                <% end %>
+                <br>
+              <%= user_fields.submit "Create Account", class: 'btn btn-lg btn-success' %>
+            <% end %>
+        </section>
+    </div>
+</main>

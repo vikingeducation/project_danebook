@@ -1,0 +1,106 @@
+<%= render 'shared/search_nav' %>
+<%= render 'shared/banner_nav' %>
+
+<main class="container">
+  <div class="row">
+    <div class="panel panel-default col-xs-offset-1 col-xs-10">
+      <div class="panel-heading row">
+        <div class="panel-title">
+          <h2 class="text-center">About</h2>
+        </div>
+      </div>
+      <div class="panel-body">
+        <div class="row bottom-box">
+          <div class="col-md-6 col1">
+            <div class="row">
+              <div class="col-xs-12">
+                <h3>Basic Information</h3>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6">
+                <h3><strong>Birthday:</strong></h3>
+              </div>
+              <div class="col-xs-6">
+                <h4><%= @profile.birthday.strftime("%B %d, %Y") %></h4>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6">
+                <h3><strong>College:</strong></h3>
+              </div>
+              <div class="col-xs-6">
+                <h4><%= @profile.college || "" %></h4>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6">
+                <h3><strong>Hometown:</strong></h3>
+              </div>
+              <div class="col-xs-6">
+                <h4><%= @profile.hometown || "" %></h4>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6">
+                <h3><strong>Currently Lives:</strong></h3>
+              </div>
+              <div class="col-xs-6">
+                <h4><%= @profile.residing || "" %></h4>
+              </div>
+            </div><!--  -->
+            <!--END OF BASIC INFORMATION  -->
+            <!--  -->
+            <div class="row">
+              <div class="col-xs-12">
+                <h3>Contact Information</h3>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6">
+                <h4><strong>Email:</strong></h4>
+              </div>
+              <div class="col-xs-6">
+                <h4><%= @user.email || "" %></h4>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-6">
+                <h4><strong>Telephone:</strong></h4>
+              </div>
+              <div class="col-xs-6">
+                <h4><%= @profile.phone || "" %></h4>
+              </div>
+            </div>
+          </div><!--  -->
+          <!-- END OF LEFT HALF -->
+          <!--  -->
+          <div class="col-md-6 col2">
+            <div class="row">
+              <div class="col-xs-12">
+                <h3>Words to Live By</h3>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <p class="form-control" rows=
+                "2"><%= @profile.motto || "" %></p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <h3>About Me</h3>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <p class="form-control" rows=
+                "10"><%= @profile.about || "" %></p>
+              </div>
+            </div>
+          </div>
+        </div><!--Panel content-->
+      </div>
+    </div>
+  </div>
+</main>

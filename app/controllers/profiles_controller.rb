@@ -1,6 +1,7 @@
 class ProfilesController < ApplicationController
 
   def edit
+    @user = current_user
     @profile = Profile.where(user_id: current_user.id).first
   end
 

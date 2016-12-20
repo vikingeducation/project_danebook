@@ -1,6 +1,5 @@
 class PhotosController < ApplicationController
 
-  before_action :require_current_user, except: [:index, :show]
 
   def index
     @user = User.find(params[:user_id])

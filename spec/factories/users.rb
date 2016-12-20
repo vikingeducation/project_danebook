@@ -9,8 +9,12 @@ FactoryGirl.define do
     birthday { 2.days.ago }
   end
 
+  sequence(:first_name) do |i|
+    "Testy#{i}"
+  end
+
   factory :user do
-    first_name { "Testy" }
+    first_name
     last_name { "McTestFace" }
     email
     password { "testtesttest" }

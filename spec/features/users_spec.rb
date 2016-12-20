@@ -4,8 +4,13 @@ feature 'User accounts' do
 
   let(:profile1) { create(:profile) }
   let(:user1) { profile1.user }
+  let(:post1) { user1.post}
   let(:profile2) { create(:profile) }
   let(:user2) { profile2.user }
+  let(:post2) { user2.post}
+  let(:profile3) { create(:profile) }
+  let(:user3) { profile3.user }
+  let(:post3) { user3.post}
 
   before do
     # go to the home page
@@ -42,6 +47,26 @@ feature 'User accounts' do
     click_button "Add user as friend"
     click_button "Remove friend"
     expect(page).to have_content "No longer friends with #{user2.name}"
+  end
+
+  scenario "See posts by friends" do
+    log_in(user2)
+    click_link "Timeline"
+    fill_in "post_body", with: "Post from user2"
+    click_button('Post')
+
+    log_in(user1)
+    click_link "Timeline"
+    fill_in "post_body", with: "Post from user1"
+    click_button('Post')
+    visit user_profile_path(user2)
+    click_button "Add user as friend"
+    visit user_friends_path(user1)
+    within ".newsfeed" do
+      expect(page).to have_content "Post from user2"
+      expect(page).to have_content "Post from user1"
+      expect(page).not_to have_content user3.name
+    end
   end
 
 end

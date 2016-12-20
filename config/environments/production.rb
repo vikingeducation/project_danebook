@@ -85,7 +85,7 @@ Rails.application.configure do
 
     storage: :s3,
 
-    s3_region: Rails.application.secrets.s3_region,
+    aws_region: Rails.application.secrets.s3_region,
 
     s3_credentials: {
 

@@ -334,7 +334,7 @@ DEPENDENCIES
   delayed_job_active_record
   delayed_paperclip
   factory_girl_rails (~> 4.0)
-  faker (~> 1.6.6)
+  faker
   figaro
   guard
   guard-rspec

@@ -85,9 +85,9 @@ Rails.application.configure do
 
     storage: :s3,
 
-    aws_region: Rails.application.secrets.s3_region,
-
     s3_credentials: {
+
+      s3_region: Rails.application.secrets.s3_region,
 
       s3_host_name: "s3-us-west-2.amazonaws.com",
 

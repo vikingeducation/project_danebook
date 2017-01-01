@@ -1,0 +1,203 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+#username {
+    font-weight: bold;
+    display: inline;
+}
+#upper {
+    margin-bottom: 15px;
+    height: 375px;
+}
+.profile-bar-top {
+  margin-top: 15px;
+  margin-bottom: 5px;
+}
+
+.wrapper {
+    border: 1px solid;
+    border-radius: 5px;
+    padding-bottom: 20px;
+    #long-form {
+        height: 100px;
+    }
+}
+
+.nav>li {
+    @media only screen and (max-width: 768px) {
+      margin-left: 20px;
+      margin-right: 20px;
+    }
+}
+
+#user-search {
+  @media only screen and (max-width: 768px) {
+    width: 80%;
+    display: inline-block;
+  }
+}
+
+.dropdown-menu>li>a {
+  @media only screen and (max-width: 768px) {
+    color: white !important;
+  }
+}
+
+.navbar-form {
+    width: 60%;
+    @media only screen and (max-width: 768px) {
+      width: 80%;
+      border:none !important;
+      box-shadow:none !important;
+    }
+}
+.form-group {
+    width: 100%;
+    .form-control {
+        width: 100%;
+    }
+}
+.friend-row {
+    border: 1px solid;
+    margin-right: 15px;
+    margin-bottom: 15px;
+    div {
+        vertical-align: middle;
+        display: inline-block;
+    }
+    ul {
+        margin-bottom: 0;
+    }
+    li {
+        list-style-type: none;
+    }
+}
+.delete {
+    float: right;
+}
+.timeline-col {
+    .wrapper {
+        margin-bottom: 15px;
+    }
+}
+.timeline-col-2nd {
+    margin-right: -15px;
+    margin-left: 30px;
+    .wrapper {
+        margin-bottom: 15px;
+    }
+    textarea {
+        margin-left: 15px;
+    }
+}
+.post-rows {
+    div,
+    ul {
+        display: inline-block;
+        vertical-align: middle;
+        .comment {
+          display: block;
+        }
+    }
+    ul {
+        list-style-type: none;
+        margin-left: -15px;
+    }
+}
+.post-body {
+    margin-top: 15px;
+    font-size: 18px;
+}
+.friends-col {
+    height: 154px;
+    width: 100px;
+    margin: 10px;
+    display: inline-block;
+    overflow: hidden;
+    text-align: center;
+    span {
+        margin-top: 75px;
+    }
+}
+.more {
+    text-align: center;
+}
+#current-link {
+    background-color: lightgrey;
+}
+#profile-pic {
+    position: absolute;
+    height: 160px;
+    width: 160px;
+    margin-top: 170px;
+    margin-left: 10px;
+    border: 10px solid rgba(0, 0, 0, 0.8);
+    border-radius: 5px;
+    @media only screen and (max-width: 766px) {
+        margin-top: 120px;
+    }
+}
+#post-img {
+    margin-top: 10px;
+    height: 60px;
+    width: 60px;
+    display: inline-block;
+}
+#friend-pic {
+    height: 100px;
+    width: 100px;
+    display: inline-block;
+    overflow: hidden;
+    margin-top: 10px;
+}
+#banner {
+    background-size: cover;
+    background-repeat: none;
+    height: 300px;
+    z-index: -1;
+    border: 5px solid rgba(20, 20, 20, 0.8);
+    border-radius: 2px;
+}
+#cover-nav {
+    div {
+        font-size: 15px;
+        text-align: center;
+        z-index: -1;
+        display: inline-block;
+    }
+}
+.user-result {
+    margin: 15px;
+    background-color: ghostwhite;
+    span {
+        margin-left: 15px;
+        font-size: 20px;
+        font-weight: bold;
+    }
+}
+.signup-form {
+    .form-group {
+        margin-top: 10px;
+    }
+}
+.email {
+    font-size: 16px;
+}
+.user-show {
+    background-color: #F7F7F7;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.user-name {
+  color: white !important;
+  font-family: 'Oswald', sans-serif;
+}
+
+.git-source {
+  margin-top: 72px;
+}

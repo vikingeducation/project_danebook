@@ -1,0 +1,4 @@
+var $like = $(".like-<%= @likeable.class.to_s.downcase %>[data-id='<%= @likeable.id %>']")
+console.log($like)
+$like.empty();
+$like.append("<%= j(likeable_likes_link(@likeable)) %>")

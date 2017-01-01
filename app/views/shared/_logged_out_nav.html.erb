@@ -1,0 +1,27 @@
+<nav class="nav navbar-default navbar-fixed-top" id="navbar-custom">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <%= link_to "Bookish", root_path, class: 'navbar-brand', id: "navbar-brand" %>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <%= form_tag session_path, class: "navbar-form", id: "login-form" do %>
+                    <%= text_field_tag :email, nil, placeholder: "Email", class: 'form-control' %>
+                    <%= password_field_tag :password, nil, placeholder: "Password", class: 'form-control' %>
+                    <%= label_tag :remember_me, "Remember", class: 'text-white' %>
+                    <%= check_box_tag :remember_me, inline_label: 'Remember' %>
+                    <%= button_tag(type: "submit", class: "btn btn-sm") do%>
+                    Login
+                    <% end %>
+                    <% end %>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

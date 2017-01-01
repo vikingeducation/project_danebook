@@ -1,0 +1,19 @@
+<div class="container">
+    <%= render partial: "/shared/profile_bar", locals: { user: @user }%>
+    <div class="col-sm-8 col-sm-offset-2">
+      <h1>Photos</h1>
+      <% if @user == current_user %>
+        <div class="row">
+          <div class="col-sm-8 col-sm-offset-2">
+            <%= button_to "Add Photo", new_user_photo_path(current_user), method: :get, class: "btn btn-secondary btn-sm pull-right" %>
+        </div>
+      </div>
+      <br>
+      <% end %>
+        <% @photos.each do |photo| %>
+        <div class="image">
+            <%= link_to image_tag(photo.image.url(:thumb)), photo_path(photo, user_id: @user.id), class: 'fit-div' %>
+        </div>
+        <% end %>
+    </div>
+</div>

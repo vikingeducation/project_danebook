@@ -1,0 +1,23 @@
+// Place all the styles related to the comments controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.nested-comment {
+  margin-left: 20px;
+}
+
+.comment {
+  display: block;
+  border-right: 2px solid transparent;
+  border-bottom: 2px solid transparent;
+  background-color: #F7F7F7;
+  margin-bottom: 8px;
+  padding: 6px;
+  border-radius: 4px;
+  p, span {
+    padding-left: 5px;
+  }
+  &:hover {
+    border-right: 2px solid darkslategray;
+    border-bottom: 2px solid darkslategray;
+  }
+}

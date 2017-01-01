@@ -1,0 +1,18 @@
+<div class="comment" data-id="<%= comment.id %>">
+    <p>
+        <%=link_to comment.author, comment.author %>
+        says: 
+    </p>
+    <p>
+        <%= comment.body %>
+    </p>
+    <span class="like-comment" data-id="<%= comment.id %>"><%= likeable_likes_link(comment) %></span>
+    <span><%= delete_comment_link(comment, commentable) %></span>
+</div>
+
+<!-- <% comment.comments.each do |nested_comment|%>
+<div class="nested-comment">
+<br>
+<%= render partial: "/comments/comment", locals: {comment: nested_comment, commentable: comment } %>
+</div>
+<% end %> -->

@@ -1,0 +1,7 @@
+Welcome!
+
+Hi <%= @user %>, welcome to Bookish!
+
+View your account <%= link_to "here", user_url(@user.id) %>
+
+This is email was sent using Rail's ActionMailer gem and Heroku's SendGrid. The process was managed using the Delayed Job gem and through the use of a worker dyno.

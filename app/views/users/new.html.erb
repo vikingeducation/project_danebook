@@ -1,0 +1,43 @@
+<main class="container">
+    <div>
+        <div class="row">
+            <div class="col-sm-5 col-sm-offset-7">
+                <h1>Sign Up</h1>
+            </div>
+        </div>
+        <div class="col-sm-7">
+            <h1>Connect with all your friends!</h1>
+            <ul>
+                <li>
+                    <p>
+                        <b>See photos and updates</b>
+                        in your news feed</p>
+                </li>
+                <li>
+                    <p>
+                        <b>Post your status for the world to see</b>
+                        from your profile</p>
+                </li>
+                <li>
+                    <p>
+                        <b>Get in touch with your friends</b>
+                        by "friending" them</p>
+                </li>
+                <li>
+                    <p>
+                        <b>Like things</b>
+                        because you can!</p>
+                </li>
+            </ul>
+            <br>
+            <div class="col-sm-8 git-source">
+              <h3><%= link_to "Check out the source code on Github!", 'https://github.com/leosaysger/project_danebook' %></h3>
+                <%=link_to image_tag('luke.jpg', class: 'fit-div'), 'https://github.com/leosaysger/project_danebook' %>
+                <div>Now with 100% more <a href="https://circleci.com">CircleCI</a></div>
+            </div>
+        </div>
+        <div class="col-sm-5 signup">
+            <%= render partial: "/users/form" %>
+        </div>
+    </div>
+</main>

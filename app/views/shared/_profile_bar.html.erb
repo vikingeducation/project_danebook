@@ -1,0 +1,28 @@
+<style media="screen">
+    #banner {
+        background-image: url("<%= cover_pic_url(@user)%>");
+    }
+</style>
+
+<div id="upper">
+    <div class="container">
+        <div class="col-sm-12 profile-bar-top">
+            <h3 id="username">
+                <%= link_to @user, @user %>
+            </h3>
+            <span class="btn-group pull-right"><%= friending_link(@user) %></span>
+        </div>
+    </div>
+    <div id="profile-pic">
+        <%= profile_pic(@user) %>
+    </div>
+
+    <div class="col-sm-12" id="banner"></div>
+    <div class="cover-nav">
+        <div class="col-sm-4 pull-down"></div>
+        <h4><%= link_to "Home", @user, class: "col-sm-2 bar-link"  %></h4>
+        <h4><%= link_to "About", user_profile_path(@user), class: "col-sm-2 bar-link" %></h4>
+        <h4><%= link_to "Photos", user_photos_path(@user), class: "col-sm-2 bar-link" %></h4>
+        <h4><%= link_to "Newsfeed", newsfeed_path, class: "col-sm-2 bar-link" %></h4>
+    </div>
+</div>

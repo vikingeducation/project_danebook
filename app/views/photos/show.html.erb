@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="col-sm-10 col-sm-offset-1">
+
+        <div class="row">
+            <h3>
+                <%= link_to "#{@user}'s Picture", @user %>
+            </h3>
+
+
+            <%= link_to "Make Profile Pic", set_picture_profile_path(picture_id: @photo.id), method: :patch, class: "btn btn-sm btn-primary" %>
+            <%= link_to "Make Cover Pic", set_cover_profile_path(picture_id: @photo.id), method: :patch, class: "btn btn-sm btn-primary" %>
+            <% if @user == current_user %>
+            <%= link_to "Delete Photo", photo_path(@photo), method: :delete, class: "btn btn-danger btn-sm" %>
+            <% end %>
+            <br>
+        </div>
+        <div class="row">
+            <div class="col-sm-8">
+                <%= image_tag @photo.image.url, class: "fit-div show-photo" %>
+            </div>
+            <div class="col-sm-4">
+                <div class="col-sm-12">
+                  <%= likeable_likes_link(@photo) %>
+                    <%= render partial: "/comments/form", locals: { commentable: @photo } %>
+                </div>
+                <div class="col-sm-10 photo-comments" data-id='<%= @photo.id %>'>
+                    <% @photo.comments.each do |comment| %>
+                    <%= render partial: "/comments/comment", locals: { comment: comment, commentable: @photo } %>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

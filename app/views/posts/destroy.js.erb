@@ -1,0 +1,6 @@
+$(".post[data-id="+<%= @post.id %> +"]").slideUp("slow");
+
+$(".flash").slideUp();
+var $flash = $("<%= j(render partial: '/shared/flash', locals: { flash: flash }) %>")
+$('body').prepend($flash)
+$flash.hide().slideDown();

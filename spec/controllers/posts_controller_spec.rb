@@ -11,25 +11,25 @@ describe PostsController do
       login(user)
     end
 
-    context '#create' do
-      before { post :create, user_id: user, post: attributes_for(:post)}
+    # context '#create' do
+    #   before { post :create, user_id: user, post: attributes_for(:post)}
+    #
+    #   it 'should redirect to current user' do
+    #     expect(response).to redirect_to user
+    #   end
+    #   it { should set_flash[:success]}
+    # end
 
-      it 'should redirect to current user' do
-        expect(response).to redirect_to user
-      end
-      it { should set_flash[:success]}
-    end
-
-    context 'with a pre-existing post' do
-      before { user.posts << posty }
-      context '#destroy' do
-        before { delete :destroy, id: posty }
-        it 'should redirect to current user' do
-          expect(response).to redirect_to user
-        end
-        it { should set_flash[:success]}
-      end
-    end
+    # context 'with a pre-existing post' do
+    #   before { user.posts << posty }
+    #   context '#destroy' do
+    #     before { delete :destroy, id: posty }
+    #     it 'should redirect to current user' do
+    #       expect(response).to redirect_to user
+    #     end
+    #     it { should set_flash[:success]}
+    #   end
+    # end
     context 'with another user with a post' do
       before { other_user.posts << posty }
       context '#destroy another users post' do

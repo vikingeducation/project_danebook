@@ -53,7 +53,7 @@ describe User do
       it 'should make a friend' do
         user.make_friend(friend)
         user.save!
-        expect(user.friends).to contain_exactly(friend)
+        expect(user.friends).to include(friend)
       end
     end
 
@@ -67,7 +67,7 @@ describe User do
         it 'should unfriend a friend' do
           user.unfriend(friend)
           user.save!
-          expect(user.friends).to be_empty
+          expect(user.friends).not_to include(friend)
         end
       end
 

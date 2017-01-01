@@ -3,7 +3,7 @@ describe Like do
   let( :comment_like ) { build(:comment_like) }
   let( :post_like ) { build(:post_like) }
 
-  it { should validate_uniqueness_of(:user_id).scoped_to(:likeable_id)}
+  it { should validate_uniqueness_of(:user_id).scoped_to(:likeable_id, :likeable_type)}
   describe 'associations' do
     it { should belong_to(:likeable) }
     it { should belong_to(:user) }

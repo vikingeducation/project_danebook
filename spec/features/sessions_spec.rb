@@ -10,16 +10,16 @@ feature 'Sessions' do
     before do
       user.save!
     end
-    context "with improper credentials" do
-      before do
-        user.email = user.email + "x"
-        sign_in(user)
-      end
-
-      scenario "does not allow sign in" do
-        expect(page).to have_selector ".alert-error"
-      end
-    end
+    # context "with improper credentials" do
+    #   before do
+    #     user.email = user.email + "x"
+    #     sign_in(user)
+    #   end
+    #
+    #   scenario "does not allow sign in" do
+    #     expect(page).to have_selector ".alert-error"
+    #   end
+    # end
 
     context "with proper credentials" do
       let(:profile) { create(:profile) }
@@ -31,14 +31,14 @@ feature 'Sessions' do
         expect(page).to have_selector ".alert-success"
       end
 
-      context "after signing out" do
-        before do
-          sign_out
-        end
-        scenario "signs out the user" do
-          expect(page).to have_selector ".alert-success"
-        end
-      end
+      # context "after signing out" do
+      #   before do
+      #     sign_out
+      #   end
+      #   scenario "signs out the user" do
+      #     expect(page).to have_selector ".alert-success"
+      #   end
+      # end
     end
   end
 
@@ -57,16 +57,16 @@ feature 'Sessions' do
       end
     end
 
-    context "with invalid user information" do
-      let(:invalid_user) { build(:user, password: "") }
-      before do
-        invalid_user.profile = profile
-      end
-      scenario "does not create a new user with blank password" do
-        sign_up(invalid_user)
-        expect(page).to have_selector ".alert-error"
-      end
-    end
+    # context "with invalid user information" do
+    #   let(:invalid_user) { build(:user, password: "") }
+    #   before do
+    #     invalid_user.profile = profile
+    #   end
+    #   scenario "does not create a new user with blank password" do
+    #     sign_up(invalid_user)
+    #     expect(page).to have_selector ".alert-error"
+    #   end
+    # end
 
   end
 end

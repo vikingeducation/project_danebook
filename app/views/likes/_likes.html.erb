@@ -1,0 +1,15 @@
+<% if post.likes.where(user_id: current_user.id).empty? %>
+  <%= link_to "Like", likes_path(:id => post.id, :type => "Post", :format => "js"), method: :post , class: "link pull-left", remote: true %>
+
+<% else %>
+
+  <%= link_to "Unlike", like_path(post.id, :type => "Post", :format => "js"), class: "link pull-left", method: "delete", remote: true %>
+
+<% end %>
+
+
+<% if post.user_id == current_user.id %>
+  <%= link_to "Delete", user_post_path(post.user_id, post.id), method: "delete" %>
+<% end %>
+<br>
+<%= show_post_likes(post) %>

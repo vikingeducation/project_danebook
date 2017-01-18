@@ -1,0 +1,6 @@
+
+$("#<%= @likes.likeable_type.downcase %>-<%= @likes.likeable_id %>").siblings().children().first().remove()
+
+$("#<%= @likes.likeable_type.downcase %>-<%= @likes.likeable_id %>").siblings().children().first().remove()
+
+$("#<%= @likes.likeable_type.downcase %>-<%= @likes.likeable_id %>").siblings().eq(0).prepend("<%= j(render :partial => 'likes', :locals => { :post => Post.find(@likes.likeable_id) } ) %>")

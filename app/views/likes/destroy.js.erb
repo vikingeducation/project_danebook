@@ -1,0 +1,16 @@
+
+
+$("#<%= @like.first.likeable_type.downcase %>-<%= @like.first.likeable_id %>").siblings().children().first().remove()
+
+<% if Post.find(@like.first.likeable_id).user_id == current_user.id %>
+  $("#<%= @like.first.likeable_type.downcase %>-<%= @like.first.likeable_id %>").siblings().children().first().remove()
+
+  $("#<%= @like.first.likeable_type.downcase %>-<%= @like.first.likeable_id %>").siblings().children().first().remove()
+<% end %>
+
+$("#<%= @like.first.likeable_type.downcase %>-<%= @like.first.likeable_id %>").siblings().children().first().remove()
+
+$("#<%= @like.first.likeable_type.downcase %>-<%= @like.first.likeable_id %>").siblings().children().first().remove()
+
+
+$("#<%= @like.first.likeable_type.downcase %>-<%= @like.first.likeable_id %>").siblings().eq(0).prepend("<%= j(render :partial => 'likes', :locals => { :post => Post.find(@like.first.likeable_id) } ) %>")

@@ -14,7 +14,7 @@
 
               <!-- Post Entry -->
               <article class="col-xs-8">
-                  <%= form_for @post, url: user_posts_path(current_user.id) do |f| %>
+                  <%= form_for @post, url: user_posts_path(current_user.id, :format => "js"), remote: true do |f| %>
                   <section class="post">
                       <header class="nav-post">
                           <h4>
@@ -23,7 +23,7 @@
                       </header>
                       <div class="post-body">
                           <div class="form-group">
-                              <%= f.text_area :body, wrap: "hard", rows: "4", class: "form-control" %>
+                              <%= f.text_area :body, wrap: "hard", rows: "4", class: "form-control post-area" %>
                           </div>
                       </div>
                       <div class="nav-footer">
@@ -31,6 +31,8 @@
                       </div>
                   </section>
                   <% end %>
+
+                  <div class="cutoff"></div>
                   
                   <!-- Top comments -->
                   <% @posts.each do |post| %>

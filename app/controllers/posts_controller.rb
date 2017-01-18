@@ -6,12 +6,16 @@ class PostsController < ApplicationController
  
   def create
     @post =  current_user.posts.build(post_params)
-    if @post.save
-      flash[:success] = "Posted!"
-      redirect_back(fallback_location: root_path)
-    else
-      flash[:danger] = "Post failed! Did you remeber to include text?"
-      redirect_back(fallback_location: root_path)
+    respond_to do |format|
+      if @post.save
+        flash.now[:success] = "Posted!"
+        format.html {redirect_back(fallback_location: root_path)}
+        format.js {}
+      else
+        flash.now[:danger] = "Post failed! Did you remeber to include text?"
+        format.html {redirect_back(fallback_location: root_path)}
+        format.js {redirect_back(fallback_location: root_path)}
+      end
     end
   end
 

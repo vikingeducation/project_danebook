@@ -1,6 +1,18 @@
+<% if @likes.likeable_type.to_s == "Photo" %>
+  $(".photos").append("HHHHHH").children().find(".pull-left").first().text("AHAHAHHAHA")
 
-$("#<%= @likes.likeable_type.downcase %>-<%= @likes.likeable_id %>").siblings().children().first().remove()
+<% elsif @likes.likeable_type.to_s == "Comment" %>
+  $("#<%= @likes.likeable_type.downcase %>-<%= @likes.likeable_id %>").children().last().remove()
+  $("#<%= @likes.likeable_type.downcase %>-<%= @likes.likeable_id %>").children().last().after("<div class='like-area'><div class='clearfix'><%= j(render :partial => 'likes', :locals => { :obj => Comment.find(@likes.likeable_id) } ) %></div></div>")
+<% else %>
+  $("#<%= @likes.likeable_type.downcase %>-<%= @likes.likeable_id %>").siblings().children().first().remove()
 
-$("#<%= @likes.likeable_type.downcase %>-<%= @likes.likeable_id %>").siblings().children().first().remove()
+  $("#<%= @likes.likeable_type.downcase %>-<%= @likes.likeable_id %>").siblings().children().first().remove()
 
-$("#<%= @likes.likeable_type.downcase %>-<%= @likes.likeable_id %>").siblings().eq(0).prepend("<%= j(render :partial => 'likes', :locals => { :post => Post.find(@likes.likeable_id) } ) %>")
+  $("#<%= @likes.likeable_type.downcase %>-<%= @likes.likeable_id %>").parent().find(".nav-footer").text("")
+
+
+  $("#<%= @likes.likeable_type.downcase %>-<%= @likes.likeable_id %>").siblings().find(".liked-box").remove()
+
+  $("#<%= @likes.likeable_type.downcase %>-<%= @likes.likeable_id %>").siblings().eq(0).prepend("<%= j(render :partial => 'likes', :locals => { :obj => Post.find(@likes.likeable_id) } ) %>")
+<% end %>

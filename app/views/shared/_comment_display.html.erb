@@ -1,38 +1,22 @@
 <div id="comment-<%=comment.id%>">
-<div class="author-box">
-<img src="<%= set_avatar_photo(comment.user) %>">
-  <a href="<%= user_path(comment.user.id) %>">
+  <div class="author-box">
+    <img src="<%= set_avatar_photo(comment.user) %>">
+    <a href="<%= user_path(comment.user.id) %>">
       <%= "#{comment.user.first_name} #{comment.user.last_name}" %>
-  </a>
-  <time datetime= <%= "#{comment.created_at}" %> pubdate>
-  <%= "#{comment.created_at}" %>
-  </time>
-</div>
-<div class="comment-area" id="body">
-  <p>
+    </a>
+    <time datetime= <%= "#{comment.created_at}" %> pubdate>
+      <%= "#{comment.created_at}" %>
+    </time>
+  </div>
+  <div class="comment-area" id="body">
+    <p>
       <%= "#{comment.body}" %>
-  </p>
-</div>
+    </p>
+  </div>
 
   <div class="like-area">
-      <div class="clearfix">
-  
-        <%= show_comment_likes(comment) %>
-
-        <% if comment.likes.where(user_id: current_user.id).empty? %>
-          <%= link_to "Like", likes_path(:id => comment.id, :type => "Comment"), class: "link pull-left", method: "post"  %>
-
-          <% else %>
-
-          <%= link_to "Unlike", like_path(comment.id, :type => "Comment"), class: "link pull-left", method: "delete" %>
-
-        <% end %>
-
-        <% if comment.user_id == current_user.id %>
-           <%= link_to "Delete", comment_path(:id => post.id, :type => post.class.to_s, :format => "js"), method: "delete", remote: true%>
-        <% end %>
-
+    <div class="clearfix">
+      <%= render "/likes/likes", obj: comment %>
     </div>
-  
-</div>
+  </div>
 </div>

@@ -15,7 +15,7 @@
               <!-- Post Entry -->
               <article class="col-xs-8">
                   <% if @user == current_user %>
-                    <%= form_for @post, url: user_posts_path(current_user.id) do |f| %>
+                    <%= form_for @post, url: user_posts_path(current_user.id, :format => "js"), remote: true  do |f| %>
                       <section class="post">
                           <header class="nav-post">
                               <h4>
@@ -36,7 +36,7 @@
                     <%= render "/shared/are_friends" %>
                   <% end %>
 
-                 
+                 <div class="cutoff"></div>
 
                   <% @posts.each do |post| %>
                     <%= render "/shared/post", post: post%>

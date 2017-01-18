@@ -1,3 +1,10 @@
-$("#<%= @comment.commentable_type.downcase %>-<%= @comment.commentable_id %>").parent().children().last().children().last().before("<%= j(render :partial => '/shared/comment_display', :locals => { :comment => @comment, :post => Post.find(@comment.commentable_id) } ) %>")
 
-$("#comment-<%= @comment.id %>").siblings().last().find("textarea").val("")
+<% if @comment.commentable_type.to_s == "Photo" %>
+  $(".post-body").prepend("<%= j(render :partial => '/shared/comment_display', :locals => { :comment => @comment, :post => Photo.find(@comment.commentable_id) } ) %>")
+
+  $("textarea").val("")
+<% else %>
+  $("#<%= @comment.commentable_type.downcase %>-<%= @comment.commentable_id %>").parent().children().last().children().last().before("<%= j(render :partial => '/shared/comment_display', :locals => { :comment => @comment, :post => Post.find(@comment.commentable_id) } ) %>")
+
+  $("#comment-<%= @comment.id %>").siblings().last().find("textarea").val("")
+<% end %>

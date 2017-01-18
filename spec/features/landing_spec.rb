@@ -10,6 +10,7 @@ feature "Login" do
 
   context "not logged in" do
 
+
     scenario "Arrive at landing page" do
       expect(page).to have_content("Sign Up")
     end
@@ -64,6 +65,15 @@ feature "Login" do
       sign_in(user)
       visit new_user_path
       expect(page).to have_content("You already have an account!")
+    end
+
+    context 'Visiting a page' do
+      #i apparently need selenuim?
+      it 'should not have JavaScript errors', :js => true do
+        sign_in(user) 
+        visit root_path
+        expect(page).not_to have_errors
+      end
     end
 
     scenario "Can log out" do

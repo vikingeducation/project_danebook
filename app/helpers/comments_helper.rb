@@ -5,7 +5,7 @@ module CommentsHelper
   def show_comment_likes(item)
     likes = item.likes 
     user = likes.last.user unless likes.last == nil
-    user = likes[-2].user if user == current_user unless likes[-2] == nil
+    user = likes[-1].user if user == current_user unless likes[-1] == nil
     if likes.where(user_id: current_user.id).any? && likes.count == 1
       str = "<div id='adjust'><a href= '#{user_path(current_user)}'>You</a> like this</div>"
     elsif likes.where(user_id: current_user.id).any? && likes.count > 2

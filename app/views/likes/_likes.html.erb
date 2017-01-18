@@ -1,15 +1,22 @@
-<% if post.likes.where(user_id: current_user.id).empty? %>
-  <%= link_to "Like", likes_path(:id => post.id, :type => "Post", :format => "js"), method: :post , class: "link pull-left", remote: true %>
+<% if obj.class.to_s == "Comment" %>
+  <%= show_comment_likes(obj) %>
+<% end %>
+
+<% if obj.likes.where(user_id: current_user.id).empty? %>
+  
+  <%= link_to "Like", likes_path(:id => obj.id, :type => obj.class.to_s, :format => "js"), method: :post , class: "link pull-left", remote: true %>
 
 <% else %>
 
-  <%= link_to "Unlike", like_path(post.id, :type => "Post", :format => "js"), class: "link pull-left", method: "delete", remote: true %>
+  <%= link_to "Unlike", like_path(obj.id, :type => obj.class.to_s, :format => "js"), class: "link pull-left", method: "delete", remote: true %>
 
 <% end %>
 
 
-<% if post.user_id == current_user.id %>
-  <%= link_to "Delete", user_post_path(post.user_id, post.id, :format => "js"), method: "delete", remote: true %>
+<% if obj.user_id == current_user.id %>
+  <%= link_to "Delete", user_post_path(obj.user_id, obj.id, :format => "js"), method: "delete", remote: true %>
 <% end %>
 <br>
-<%= show_post_likes(post) %>
+<% if obj.class.to_s == "Post" %>
+  <%= show_post_likes(obj) %>
+<% end %>

@@ -1,4 +1,4 @@
-<div class="panel panel-default">
+<div class="panel panel-default post">
   <div class="panel-body">
     <div class="row">
       <div class="media-left media-middle col-xs-2">
@@ -33,7 +33,8 @@
   </div>
   <div class="panel-body">
     <% if p.comments.any? %>
-      <%= render partial: "shared/comments", locals: { p: p, user: user, comment: @comment } %>
+      <%= render partial: "shared/comments", locals: { p: p, user: user } %>
+      <%= render partial: "shared/comment_form", locals: { user: user, p: p, comment: @comment } %>
     <% end %>      
   </div>
 </div>

@@ -11,14 +11,23 @@ class CommentsController < ApplicationController
     @comment.commentable_type = find_commentable_type
     @comment.commentable_id = find_commentable_id
     @comment.author_id = current_user.id
-    if @comment.save
-      Comment.delay.comment_email(@user.id, current_user.id)
-      flash[:success] = "Comment created"
-      redirect_back(fallback_location: proc { user_path(@user) } )
-    else
-      flash[:error] = @comment.errors.full_messages
-      redirect_back(fallback_location: proc { user_path(@user) } )
-    end     
+
+    respond_to do |format|
+      if @comment.save
+        puts 'i ran'
+        @post = @comment.commentable
+        Comment.delay.comment_email(@user.id, current_user.id)
+        flash[:success] = "Comment created"
+        format.html { redirect_back(fallback_location: proc { user_path(@user) } ) }
+        format.js { render :new_comment }
+      else
+        puts 'no i ran'
+        flash[:error] = @comment.errors.full_messages
+        format.html { redirect_back(fallback_location: proc { user_path(@user) } ) }
+        format.js {}
+      end
+    end
+
   end
 
   def destroy

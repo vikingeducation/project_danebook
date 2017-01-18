@@ -1,0 +1,3 @@
+$("<%= j(render partial: 'shared/post', locals: { p: @post, user: @user } ) %>").addClass('new-post').prependTo("#posts").slideDown(600);
+
+$('#new-post-content').val('');

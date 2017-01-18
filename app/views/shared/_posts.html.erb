@@ -2,7 +2,9 @@
   <% if posts[0].persisted? %>
     <% posts.each do |p| %>
       <% if p.persisted? %>
-        <%= render partial: "shared/post", locals: { p: p, user: user } %>
+        <section id="posts">
+          <%= render partial: "shared/post", locals: { p: p, user: user } %>
+        </section>
       <% end %>
     <% end %>
   <% end %>

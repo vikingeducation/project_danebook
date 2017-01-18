@@ -8,13 +8,19 @@ class PostsController < ApplicationController
   def create
     @user = current_user
     @post = @user.posts.build(whitelisted_params)
-    if @post.save
-      flash[:success] = "Post saved"
-      redirect_to :back
-    else
-      flash.now[:error] = @post.errors.full_messages
-      render :index
+
+    respond_to do |format|
+      if @post.save
+        flash[:success] = "Post saved"
+        format.html { redirect_to :back }
+        format.js { render :new_post }
+      else
+        flash.now[:error] = @post.errors.full_messages
+        format.html { render Rails.application.routes.recognize_path(request.referer)[:action] }
+        format.js {}
+      end
     end
+
   end
 
   def index

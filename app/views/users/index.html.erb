@@ -10,7 +10,7 @@
     </div>
 
     <div class="col-md-6">
-      <%= render partial: "shared/form", locals: { user: current_user, post: @post } %>
+      <%= render partial: "shared/post_form", locals: { user: current_user, post: @post } %>
       <%= render partial: "shared/posts", locals: { user: current_user, post: @post, posts: @posts } %>
     </div>
 

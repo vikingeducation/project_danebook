@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :users do
 
     resource :profiles, only: [:update]
+    resources :friendings, only: [:index]
 
     resources :posts do
       resources :comments

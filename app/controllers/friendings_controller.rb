@@ -1,5 +1,10 @@
 class FriendingsController < ApplicationController
 
+  def index
+    @user = User.find(params[:user_id])
+    @users = @user.friends
+  end
+
   def create
     @user = User.find(params[:id])
     @friending = Friending.new(friendee_id: @user.id, friender_id: current_user.id )

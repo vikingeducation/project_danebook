@@ -15,8 +15,8 @@
           </div>
 
           <div class="col-sm-7">
-            <%= render partial: "form", locals: { user: @user, post: @post } %>
-            <%= render partial: "post", locals: { user: @user, post: @post, posts: @posts } %>
+            <%= render partial: "shared/form", locals: { user: @user, post: @post } %>
+            <%= render partial: "shared/post", locals: { user: @user, post: @post, posts: @posts } %>
           </div>
         </div>
 

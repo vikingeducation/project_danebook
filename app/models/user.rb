@@ -35,6 +35,18 @@ class User < ApplicationRecord
     frienders + friendees
   end
 
+  def frienders_recent_posts
+    frienders.joins(:posts).select(:id, :email, :first_name, :last_name, :content, :created_at).order(created_at: :desc)
+  end
+
+  def friendees_recent_posts
+    friendees.joins(:posts).select(:id, :email, :first_name, :last_name, :content, :created_at).order(created_at: :desc)
+  end
+
+  def friends_recent_posts
+    (frienders_recent_posts + friendees_recent_posts).slice(0, 10)
+  end
+
   def friends_sample(n = 5)
     friends[0..n]
   end

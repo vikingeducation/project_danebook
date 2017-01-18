@@ -9,15 +9,17 @@ class UsersController < ApplicationController
       @query = params[:query]
       render :search
     else
-      @users = current_user.friends
-      @user = User.find(params[:id])
+      @user = current_user
+      @post = @user.posts.build
+      @comment = @post.comments.build
+      @posts = Post.recent_posts_by_friends(@user)
     end
   end
 
   def new
     if signed_in_user?
       @user = current_user
-      redirect_to @user
+      redirect_to users_path
     else
       @user = User.new
       @user.profile = @user.build_profile

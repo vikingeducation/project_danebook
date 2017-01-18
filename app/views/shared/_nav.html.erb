@@ -1,7 +1,7 @@
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container">
     <div class="navbar-header">
-      <%= link_to user_posts_path(current_user), class: 'navbar-brand' do %>
+      <%= link_to users_path, class: 'navbar-brand' do %>
         <%= image_tag "danish_flag.gif", { class: 'img-circle img-responsive img-small' } %>
         <span>Danebook</span>
       <% end %>
@@ -17,7 +17,9 @@
 
       <ul class="nav navbar-nav navbar-right">
         <li>
-          <a>Welcome <%= current_user.first_name %></a>
+          <%= link_to user_path(current_user) do %>
+            Welcome <%= current_user.first_name %>
+          <% end %>
         </li>
         <li>
           <%= link_to "Sign Out", logout_path %>          

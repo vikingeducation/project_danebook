@@ -39,7 +39,7 @@
       </table>
 
       <div class="panel-body row">
-        <%= link_to users_path(id: user.id), class: "col-xs-12 text-center" do %>
+        <%= link_to user_friendings_path(user_id: user.id), class: "col-xs-12 text-center" do %>
           <h5>See More Friends</h5>
         <% end %>
       </div>

@@ -21,4 +21,8 @@ class Post < ApplicationRecord
     likers.sample.full_name
   end
 
+  def self.recent_posts_by_friends(user)
+    Post.joins(:user).where(user: user.friends)
+  end
+
 end

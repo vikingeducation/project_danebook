@@ -1,6 +1,6 @@
-
-<img src="<%= set_avatar_photo(comment.user) %>">
+<div id="comment-<%=comment.id%>">
 <div class="author-box">
+<img src="<%= set_avatar_photo(comment.user) %>">
   <a href="<%= user_path(comment.user.id) %>">
       <%= "#{comment.user.first_name} #{comment.user.last_name}" %>
   </a>
@@ -8,9 +8,8 @@
   <%= "#{comment.created_at}" %>
   </time>
 </div>
-<br>
 <div class="comment-area" id="body">
-  <p >
+  <p>
       <%= "#{comment.body}" %>
   </p>
 </div>
@@ -30,9 +29,10 @@
         <% end %>
 
         <% if comment.user_id == current_user.id %>
-           <%= link_to "Delete", comment_path(:id => post.id, :type => post.class.to_s), method: "delete" %>
+           <%= link_to "Delete", comment_path(:id => post.id, :type => post.class.to_s, :format => "js"), method: "delete", remote: true%>
         <% end %>
 
     </div>
   
+</div>
 </div>

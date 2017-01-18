@@ -1,0 +1,3 @@
+$("#<%= @comment.commentable_type.downcase %>-<%= @comment.commentable_id %>").parent().children().last().children().last().before("<%= j(render :partial => '/shared/comment_display', :locals => { :comment => @comment, :post => Post.find(@comment.commentable_id) } ) %>")
+
+$("#comment-<%= @comment.id %>").siblings().last().find("textarea").val("")

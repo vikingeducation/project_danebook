@@ -9,7 +9,7 @@
 
 
 <% if post.user_id == current_user.id %>
-  <%= link_to "Delete", user_post_path(post.user_id, post.id), method: "delete" %>
+  <%= link_to "Delete", user_post_path(post.user_id, post.id, :format => "js"), method: "delete", remote: true %>
 <% end %>
 <br>
 <%= show_post_likes(post) %>

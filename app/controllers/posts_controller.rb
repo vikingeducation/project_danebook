@@ -21,12 +21,17 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
-    if @post.user_id == current_user.id
-      @post.destroy
-      redirect_back(fallback_location: root_path)
-    else
-      flash[:danger] = "Bad bad bad!"
-      redirect_back(fallback_location: root_path)
+    respond_to do |format|
+      if @post.user_id == current_user.id
+        
+        format.html {redirect_back(fallback_location: root_path)}
+        format.js {}
+        @post.destroy
+      else
+        flash[:danger] = "Bad bad bad!"
+        format.html {redirect_back(fallback_location: root_path)}
+        format.js {redirect_back(fallback_location: root_path)}
+      end
     end
   end
 

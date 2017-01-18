@@ -1,0 +1,16 @@
+<% if(@posts.length > 0) %>
+(function(){
+  var posts = [
+    <% @posts.each do |post| %>
+    "<%= j(render partial: 'shared/posts/post', locals: {post: post, size: 'small', limit: 4 }) %>",
+    <% end %>
+  ];
+
+  for(var i = 0; i < posts.length; i++){
+    DANEBOOK.Posts.append(posts[i]);
+  }
+  DANEBOOK.Posts.setLastIndex(<%= @posts[-1].id %>)
+})()
+<% else %>
+  DANEBOOK.Posts.setLastIndex("end")
+<% end %>

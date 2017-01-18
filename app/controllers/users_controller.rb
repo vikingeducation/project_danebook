@@ -25,6 +25,7 @@ class UsersController < ApplicationController
   end
 
   def index
+    @user = current_user
     @post = current_user.posts.build
     allowed_ids = [current_user.id, *current_user.friend_ids]
     @posts = Post.includes(:comments).where(post_type: "Post", user_id: allowed_ids).order(created_at: :desc)

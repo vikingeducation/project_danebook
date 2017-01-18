@@ -21,7 +21,7 @@ class Image < ApplicationRecord
   after_post_process :create_post
 
   def randomize_file_name
-    unless url and url != ""
+    unless url && url != ""
       extension = File.extname(picture_file_name).downcase
       self.picture.instance_write(:file_name, "#{SecureRandom.hex}-#{picture_file_name.downcase}")
     end

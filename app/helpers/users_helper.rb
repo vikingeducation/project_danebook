@@ -9,7 +9,7 @@ module UsersHelper
     if posts.length > 0
       render partial: 'shared/posts/post', collection: posts, as: :post, locals: { size: "small", limit: 4}
     else
-      '<br><h2 class="text-center">No posts to show</h2>'.html_safe
+      '<div id="no-posts"><br><h2 class="text-center">No posts to show</h2></div>'.html_safe
     end
   end
 end

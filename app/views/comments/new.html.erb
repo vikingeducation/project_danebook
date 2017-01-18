@@ -1,10 +1,5 @@
 <%= content_for :usernav, true %>
 <%= content_for :post_footer do %>
-  <%= form_for [@post, @comment], url: user_post_comment_path do |com_f| %>
-    <%= com_f.label :body, "Write a Comment..", class: "sr-only" %>
-    <%= com_f.text_area :body, class: "form-control", rows: "3", placeholder: "Write a Comment.." %>
-    <%= link_to "Cancel", request.referer || root_path %>
-    <%= com_f.submit "Comment", class: "btn btn-primary pull-right" %>
-  <% end %>
+  <%= render partial: 'comment_form', locals: {post: @post, comment: @comment} %>
 <% end %>
-<%= render partial: 'shared/posts/post', locals: { post: @post, size: "large"} %>
+<%= render partial: 'shared/posts/post', locals: { post: @post, size: "large", limit:4} %>

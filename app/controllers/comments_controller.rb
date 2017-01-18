@@ -3,28 +3,43 @@ class CommentsController < ApplicationController
 
   before_action :set_user
   before_action :get_post
-  before_action :correct_user, except: [:show, :new, :create]
 
   def new
-    if @user.friends.include?(current_user)
+    if @user == current_user || @user.friends.include?(current_user)
       @comment = @post.comments.build
+      respond_to do |format|
+        format.js
+        format.html
+      end
     else
-      flash[:danger] = ["You can only comment on your friends' posts."]
-      redirect_to user_post_path(@user, @post)
+      respond_to do |format|
+        format.js do
+          @status = :danger
+          @msg = ["You can only comment on your friends' posts."]
+          render template: 'shared/flashes'
+        end
+        format.html do
+          flash[:danger] = ["You can only comment on your friends' posts."]
+          redirect_to user_post_path(@user, @post)
+        end
+      end
     end
   end
 
   def create
-    @comment = @post.comments.build(whitelisted)
-    if @comment.save
-      flash[:success] = ["Comment Successfull"]
-      redirect_to user_post_path(@user, @post)
-    else
-      flash.now[:danger] = ["Something went wrong.."]
-      @comment.errors.full_messages.each do |error|
-        flash[:danger] << error
+    if @user == current_user || @user.friends.include?(current_user)
+      @comment = @post.comments.build(whitelisted)
+      if @comment.save
+        p "made it"
+        flash[:success] = ["Comment Successfull"]
+        redirect_to user_post_path(@user, @post)
+      else
+        flash[:danger] = ["Something went wrong.."]
+        @comment.errors.full_messages.each do |error|
+          flash[:danger] << error
+        end
+        redirect_to user_post_path(@user, @post)
       end
-      redirect_to user_post_path(@user, @post)
     end
   end
 

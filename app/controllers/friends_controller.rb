@@ -8,9 +8,14 @@ class FriendsController < ApplicationController
   end
 
   def create
-    status, msg = Friendify.friendship(current_user, @user)
-    flash[status] = msg
-    redirect_to user_profile_path(@user.profile)
+    @status, @msg = Friendify.friendship(current_user, @user)
+    respond_to do |format|
+      format.js
+      format.html do
+        flash[@status] = @msg
+        redirect_to user_profile_path(@user.profile)
+      end
+    end
   end
 
   def destroy

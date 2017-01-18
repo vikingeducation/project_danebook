@@ -1,10 +1,8 @@
 <div class="row">
-  <section class="post post-<%= size %> col-xs-12">
+  <section class="post post-<%= size %> col-xs-12" data-post-id="<%= post.id %>">
 
     <div class="row">
-
-
-      <section class="post-content col-xs-12" onclick="location.href = '<%= user_post_path(post.user, post) %>'">
+      <section class="post-content col-xs-12">
 
         <div class="row">
           <div class="profile col-xs-12">
@@ -13,7 +11,7 @@
             </div>
             <div class="profile-info pull-left">
               <%= link_to format_user_name(post.user), user_path(post.user) %>
-              <p><small><%= post.created_at.strftime("Posted on %A, %d/%m/%Y") %></small></p>
+              <p onclick="location.href = '<%= user_post_path(post.user, post) %>'"><small><%= post.created_at.strftime("Posted on %A, %d/%m/%Y") %></small></p>
             </div>
           </div>
         </div>
@@ -31,7 +29,7 @@
         <div class="row">
           <section class="links col-xs-12">
             <%= render_like(post) %>
-            <%= link_to "Comment", new_user_post_comment_path(post.user, post), class: "public"%>
+            <%= link_to "Comment", new_user_post_comment_path(post.user, post), remote: true, class: "public"%>
             <% if post.user == current_user %>
               <%= link_to "Delete", user_post_path(post.user, post), method: :delete, class: "private pull-right" %>
             <% end %>
@@ -42,6 +40,11 @@
               <span class="muted"><%= post.likes.size %> <%= post.likes.size == 1 ? "person likes" : "people like" %> this</span>
             </p>
           </section>
+          <% end %>
+          <% unless post.comments.size == 0 %>
+            <section class="col-xs-12">
+              <a onclick="DANEBOOK.Posts.showComments(this)">Show Comments</a>
+            </section>
           <% end %>
         </div>
         <%= render_post_comments(post, limit) %>

@@ -16,7 +16,7 @@
         <span class="muted"><%= comment.likes_count %> people like this</span>
       <% end %>
       <% if comment.user == current_user %>
-        <a href="#" class="private pull-right">Delete</a>
+        <%= link_to "Delete", user_post_path(comment.user, comment), method: :delete, class: "private pull-right" %>
       <% end %>
     </p>
   </div>

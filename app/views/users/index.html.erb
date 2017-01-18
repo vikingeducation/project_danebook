@@ -6,10 +6,9 @@
       <%= render partial: 'shared/timeline_sidebar', locals: { user: @user || current_user } %>
     </div>
 
-    <div class="col-sm-7 col-md-8">
-
+    <div id="timeline" data-user-id="<%= @user.id %>" class="col-sm-7 col-md-8">
       <%= render_new_post(@user, @post) %>
-      <%= render_posts(@posts) %>
+      <%#= render_posts(@posts) %>
     </div>
 
   </div>

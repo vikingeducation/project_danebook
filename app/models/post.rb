@@ -12,7 +12,7 @@ class Post < ApplicationRecord
   validate :posting_on_friend
 
   def posting_on_friend
-    unless post == nil || post.user.friend_ids.include?(user_id)
+    unless post == nil || post.user.id == user_id || post.user.friend_ids.include?(user_id)
       errors.add(:post, :invalid, message: "- You can only post to you own or your friends' posts")
     end
   end

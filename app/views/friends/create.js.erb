@@ -1,0 +1,9 @@
+(function(){
+  var msg = [
+    <% @msg.each do |msg| %>
+      "<%= j(msg) %>",
+    <% end %>
+  ]
+  console.log("<%= j(@status.to_s) %>", msg)
+  DANEBOOK.Flashes("<%= j(@status.to_s) %>", msg)
+})()

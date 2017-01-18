@@ -16,9 +16,9 @@
         <p class="muted">432 Friends</p>
       </div>
       <% if current_user.friend_ids.include?(user.id) %>
-        <%= link_to "Unfriend", user_friends_path(user), method: :delete, class: "btn btn-default pull-right unfriend" %>
+        <%= link_to "Unfriend", user_friends_path(user), remote: true, method: :delete, class: "btn btn-default pull-right unfriend" %>
       <% elsif current_user.id != user.id %>
-        <%= link_to "+Friend", user_friends_path(user), method: :post, class: "btn btn-default pull-right friend" %>
+        <%= link_to "+Friend", user_friends_path(user), remote: true, method: :post, class: "btn btn-default pull-right friend" %>
       <% end %>
       <div class="clearfix"></div>
     </div>

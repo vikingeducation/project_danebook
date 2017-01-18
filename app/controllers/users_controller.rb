@@ -4,8 +4,14 @@ class UsersController < ApplicationController
   skip_before_action :require_login, :only => [:new, :create]
 
   def index
-    @users = current_user.friends
-    @user = User.find(params[:id])
+    if params.include?(:query)
+      @users = User.search(params[:query])
+      @query = params[:query]
+      render :search
+    else
+      @users = current_user.friends
+      @user = User.find(params[:id])
+    end
   end
 
   def new

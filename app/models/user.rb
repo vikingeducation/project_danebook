@@ -39,6 +39,14 @@ class User < ApplicationRecord
     friends[0..n]
   end
 
+  def self.search(query)
+    if query
+      self.where("first_name ILIKE ?", "%#{query}%").or(self.where("last_name ILIKE ?", "%#{query}%"))
+    else
+      self.where("")
+    end
+  end
+
   def generate_token
     begin
       self[:auth_token] = SecureRandom.urlsafe_base64

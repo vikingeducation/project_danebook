@@ -1,0 +1,18 @@
+<% p.comments.each do |comment| %>
+  <div class="row">
+    <div class="col-xs-2">
+      <%= link_to user_path(comment.author) do %>
+        <%= display_profile_photo(comment.author, "thumb") %>
+      <% end %>
+    </div>
+  </div>
+  <h4><%= comment.author.full_name %></h4>
+  <p><%= comment.body %></p>
+  <%= display_comment_delete(user, p, comment) %>
+  <%= display_like_button(user, comment) %>
+  <%= display_likers(user, comment) %>
+<% end %>
+<%= form_for [user, p, @comment] do |c| %>
+  <%= c.text_area :body, class: 'form-control' %>
+  <%= c.submit nil, class: 'btn btn-primary' %>
+<% end %>

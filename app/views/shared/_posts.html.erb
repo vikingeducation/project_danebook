@@ -1,0 +1,9 @@
+<% if posts.any? %>
+  <% if posts[0].persisted? %>
+    <% posts.each do |p| %>
+      <% if p.persisted? %>
+        <%= render partial: "shared/post", locals: { p: p, user: user } %>
+      <% end %>
+    <% end %>
+  <% end %>
+<% end %>

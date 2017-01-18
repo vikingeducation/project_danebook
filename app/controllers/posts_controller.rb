@@ -10,7 +10,7 @@ class PostsController < ApplicationController
     @post = @user.posts.build(whitelisted_params)
     if @post.save
       flash[:success] = "Post saved"
-      redirect_to user_posts_path
+      redirect_to :back
     else
       flash.now[:error] = @post.errors.full_messages
       render :index
@@ -38,7 +38,7 @@ class PostsController < ApplicationController
     @post = @user.posts.find(params[:id])
     if @post.destroy
       flash[:success] = "Post deleted"
-      redirect_to user_posts_path
+      redirect_to :back
     else
 
     end

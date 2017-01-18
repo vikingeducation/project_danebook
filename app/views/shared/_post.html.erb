@@ -1,66 +1,39 @@
-<% if posts.any? %>
-
-  <% if posts[0].persisted? %>
-
-    <% posts.each do |p| %>
-
-      <% if p.persisted? %>
-
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <div class="row">
-              <div class="media-left media-middle col-xs-2">
-                <a href="#">
-                  <figure>
-                    <%= display_profile_photo(user, "small") %>
-                  </figure>
-                </a>
-              </div>
-              <div class="media-body col-xs-8">
-                <a href="#">
-                <h4 class="media-heading"><%= user_full_name(user) %></h4></a>
-                <h6>Posted on <%= p.created_at.strftime('%A') %> <time datetime=
-                "<% p.created_at.strftime('%m/%d/%Y') %>"><%= p.created_at.strftime('%m/%d/%Y') %></time></h6>
-              </div>
-            </div>
-            <div class="row">
-              <br>
-              <p class="col-xs-12"><%= p.content %></p>
-            </div>
-          </div>
-          <div class="panel-footer">
-            <div class="row">
-              <div class="col-xs-1">
-                <%= display_like_button(user, p) %>
-              </div>
-              <div class="col-xs-1 col-xs-offset-7">
-                <%= display_post_delete(user, p) %>
-              </div>
-            </div>
-            <%= display_likers(user, p) %>
-          </div>
-          <div class="panel-body">
-            <% if p.comments.any? %>
-              <% p.comments.each do |comment| %>
-                <%= display_profile_photo(comment.author, "small") %>
-                <h4><%= comment.author.full_name %></h4>
-                <p><%= comment.body %></p>
-                <%= display_comment_delete(user, p, comment) %>
-                <%= display_like_button(user, comment) %>
-                <%= display_likers(user, comment) %>
-              <% end %>
-            <% end %>
-            <%= form_for [user, p, @comment] do |c| %>
-              <%= c.text_area :body %>
-              <%= c.submit %>
-            <% end %>
-          </div>
-        </div>
-
-      <% end %>
-
-    <% end %>
-
-  <% end %>
-
-<% end %>
+<div class="panel panel-default">
+  <div class="panel-body">
+    <div class="row">
+      <div class="media-left media-middle col-xs-2">
+        <%= link_to user_path(p.user) do %>
+          <%= display_profile_photo(p.user, "thumb") %>
+        <% end %>
+        </a>
+      </div>
+      <div class="media-body col-xs-8">
+        <%= link_to user_path(p.user) do %>
+          <h4 class="media-heading"><%= user_full_name(p.user) %></h4>
+        <% end %>
+        <h6>Posted on <%= p.created_at.strftime('%A') %> <time datetime=
+        "<% p.created_at.strftime('%m/%d/%Y') %>"><%= p.created_at.strftime('%m/%d/%Y') %></time></h6>
+      </div>
+    </div>
+    <div class="row">
+      <br>
+      <p class="col-xs-12"><%= p.content %></p>
+    </div>
+  </div>
+  <div class="panel-footer">
+    <div class="row">
+      <div class="col-xs-1">
+        <%= display_like_button(user, p) %>
+      </div>
+      <div class="col-xs-1 col-xs-offset-7">
+        <%= display_post_delete(p.user, p) %>
+      </div>
+    </div>
+    <%= display_likers(user, p) %>
+  </div>
+  <div class="panel-body">
+    <% if p.comments.any? %>
+      <%= render partial: "shared/comments", locals: { p: p, user: user, comment: @comment } %>
+    <% end %>      
+  </div>
+</div>

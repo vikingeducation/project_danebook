@@ -22,7 +22,7 @@ class Post < ApplicationRecord
   end
 
   def self.recent_posts_by_friends(user)
-    Post.joins(:user).where(user: user.friends)
+    Post.joins(:user).where(user: user.friends).or(Post.joins(:user).where(user: user)).order(created_at: :desc)
   end
 
 end

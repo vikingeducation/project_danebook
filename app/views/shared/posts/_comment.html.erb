@@ -1,0 +1,23 @@
+<div class="profile col-xs-12">
+  <div class="profile-img pull-left">
+    <a href="about.html"><img src="<%= render_profile_img(comment.user.profile) %>" alt=""></a>
+  </div>
+  <div class="comment pull-left">
+    <p>
+      <%= link_to format_user_name(comment.user), user_path(comment.user) %>
+      <small class="muted">
+        <%= comment.created_at.strftime("Said on %A, %d/%m/%Y") %>
+      </small>
+    </p>
+    <p><%= comment.body %></p>
+    <p>
+      <%= render_like(comment) %>
+      <% unless comment.likes.size == 0 %>
+        <span class="muted"><%= comment.likes_count %> people like this</span>
+      <% end %>
+      <% if comment.user == current_user %>
+        <%= link_to "Delete", user_post_path(comment.user, comment), method: :delete, class: "private pull-right" %>
+      <% end %>
+    </p>
+  </div>
+</div>

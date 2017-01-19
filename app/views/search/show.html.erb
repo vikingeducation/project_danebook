@@ -1,0 +1,18 @@
+<%= content_for :usernav, true %>
+<section class="post post-small col-xs-12">
+  <div class="row">
+    <header class="post-header col-xs-12">
+      <h2>Search Results</h2>
+    </header>
+  </div>
+  <div class="row">
+    <section class="post-content col-xs-12">
+      <div class="row">
+        <% @profiles.each do |profile| %>
+         <%= render partial: 'shared/friends/friend', locals: {user: profile.user} %>
+        <% end %>
+      </div>
+    </section>
+  </div>
+
+</section>

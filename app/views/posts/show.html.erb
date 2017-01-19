@@ -1,0 +1,4 @@
+<%= content_for :usernav, true %>
+<div class="col-xs-12">
+  <%= render partial: 'shared/posts/post', locals: { user: @user, post: @post, size: "large", limit: nil} %>
+</div>

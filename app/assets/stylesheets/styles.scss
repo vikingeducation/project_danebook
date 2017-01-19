@@ -1,0 +1,97 @@
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+
+$nav-font-color: #eee;
+$nav-font-hover-color: #fff;
+$nav-border: 1px solid rgba(0, 0, 0, .8);
+$content-border: 2px solid rgba(0, 0, 0, .8);
+$primary: #2b78e4;
+$primary-hover: #9fc5f8;
+$font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+
+.remove-cf, .show-cf {
+  margin-bottom:20px;
+}
+cf-chat{
+  min-height: 300px;
+  padding-bottom:30px !important;
+}
+cf-input{
+  position: relative !important;
+}
+#navbar, ul.nav, .navbar-default {
+
+  .navbar-nav > .open > a,
+  li.dropdown:hover,
+  ul.dropdown-menu a:hover{
+
+    &, &:active, &:hover{
+      background-color: $primary-hover;
+      color: #333;
+    }
+
+  }
+
+}
+
+ul.nav li.dropdown:hover > ul.dropdown-menu {
+    display: block;
+    background-color: $primary;
+
+}
+
+body {
+  font-family: $font-family;
+  padding: 50px 0 20px 0;
+}
+.btn-primary {
+  background-color: $primary;
+}
+.muted {
+  color: #999;
+}
+.right-gutter {
+  padding-right:2em
+}
+.btn.unfriend {
+  background: #ccc;
+  color: #000;
+}
+
+.bordered{
+  border: 2px solid #333;
+  border-radius: 6px;
+  padding: 15px;
+}
+.spaced {
+  margin-top: 20px;
+  margin-bottom: 20px
+}
+
+@import 'partials/navbar';
+@import 'partials/notices';
+@import 'partials/header';
+@import 'partials/post';
+@import 'partials/profile';
+@import 'partials/gallery';
+@import 'partials/animations';
+@import 'partials/form_components';
+
+
+input.invalid {
+  border-color: #DD2C00 !important;
+}
+
+#about {
+
+  .information, .personality, .submit-button {
+    margin-bottom:20px;
+  }
+  .submit-button {
+
+    .btn{
+      font-size:24px;
+    }
+
+  }
+}

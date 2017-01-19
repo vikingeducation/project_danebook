@@ -1,0 +1,101 @@
+<%= content_for :usernav, true %>
+<section id="signup" class="col-md-6 col-md-offset-3">
+  <h1>Edit Account</h1>
+  <div class="row">
+    <div class="col-xs-12">
+      <%= form_for @user do |f| %>
+      <%= f.fields_for :profile do |pf| %>
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="form-group">
+            <%= f.label :current_password, "Enter your current password to edit details" %>
+            <%= f.password_field :current_password, class: "form-control", placeholder: "Your Current Password", required: true %>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="form-group">
+                <%= pf.label :first_name, "First Name:", class:'sr-only' %>
+                <%= pf.text_field :first_name, class: "form-control", placeholder: "First Name" %>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="form-group">
+                <%= pf.label :last_name, "Last Name:", class:'sr-only' %>
+                <%= pf.text_field :last_name, class: "form-control", placeholder: "Last Name" %>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-xs-12">
+              <div class="form-group">
+                <%= f.label :email, "Your Email:", class:'sr-only' %>
+                <%= f.email_field :email, class: "form-control", placeholder: "Your Email" %>
+              </div>
+              <div class="form-group">
+                <%= f.label :password, "Change Password:", class:'sr-only' %>
+                <%= f.password_field :password, class: "form-control",
+                                                placeholder: "Change Password",
+                                                pattern: '(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{12,}'
+                                                 %>
+              </div>
+              <div class="form-group">
+                <%= f.label :password_confirmation, "Confirm Your Password:", class:'sr-only' %>
+                <%= f.password_field :password_confirmation, class: "form-control", placeholder: "Confirm New Password" %>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <% Profile.genders.each do |g| %>
+            <div class="col-xs-4">
+              <div class="form-group">
+                <label class="radio-inline" "cf-label": "Finally, please select your gender:">
+                  <%= pf.radio_button :gender, g[0], required: "true", "cf-questions": "Please Select your Gender:" %><%= g[1] %>
+                </label>
+              </div>
+            </div>
+            <% end %>
+          </div>
+          <% end %>
+          <div class="row">
+            <div class="col-sm-4 col-sm-offset-4">
+              <div class="form-group">
+                <%= f.submit "Edit Account Details", class: "btn btn-success btn-block btn-large" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </div>
+</section>
+<script>
+function validate(elem_id, msg) {
+  var input = document.getElementById(elem_id);
+  var form  = document.getElementById('flash-box');
+  var elem               = document.createElement('div');
+      elem.id            = 'form-errors';
+      elem.className     = 'hidden';
+      form.appendChild(elem);
+  input.addEventListener('invalid', function(event){
+    event.preventDefault();
+    if ( ! event.target.validity.valid ) {
+        elem.textContent   = msg;
+        elem.className     = 'alert alert-block alert-danger';
+
+        input.className    = 'form-control invalid animated shake';
+        input.addEventListener('input', function(event){
+          if ( 'block' === elem.style.display ) {
+            input.className = 'form-control';
+            elem.className     = 'hidden';
+          }
+        });
+    }
+  });
+}
+validate('user_profile_attributes_first_name', 'First Name is required');
+validate('user_profile_attributes_last_name', 'Last Name is required');
+validate('user_email', 'A valid email is required');
+validate('user_password', 'Passwords Must Be at least 12 characters, contain 1 number, 1 Uppercase and 1 Lowercase letter');
+
+</script>

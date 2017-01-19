@@ -1,0 +1,28 @@
+<div class="col-md-6">
+  <div class="profile profile-bordered">
+    <div class="profile-center">
+
+      <div class="profile-img pull-left">
+        <%= link_to user_path(user, user.profile) do %>
+          <%= image_tag render_profile_img(user.profile) %>
+        <% end %>
+      </div>
+
+
+      <div class="profile-info pull-left">
+
+        <%= link_to format_user_name(user), user_path(user, user.profile) %>
+
+        <p class="muted">432 Friends</p>
+      </div>
+      <% if current_user.friend_ids.include?(user.id) %>
+        <%= link_to "Unfriend", user_friends_path(user), remote: true, method: :delete, class: "btn btn-default pull-right unfriend" %>
+      <% elsif current_user.id != user.id %>
+        <%= link_to "+Friend", user_friends_path(user), remote: true, method: :post, class: "btn btn-default pull-right friend" %>
+      <% end %>
+      <div class="clearfix"></div>
+    </div>
+
+
+  </div>
+</div>

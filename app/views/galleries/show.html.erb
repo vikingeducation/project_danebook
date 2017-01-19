@@ -1,0 +1,29 @@
+<%= content_for :usernav, true %>
+<section class="post post-gutters col-xs-12">
+  <div class="row">
+    <header class="post-header col-xs-12">
+      <% if current_user == @user && @gallery.title != "Profile Images" %>
+        <%= link_to "Delete Gallery", user_gallery_path(current_user, @gallery), class: "pull-right btn btn-danger", method: :delete, data: {confirm: "Are you sure? All images in the gallery will be deleted"} %>
+      <% end %>
+      <% if current_user == @user %>
+        <%= link_to "Edit and Add Photos", edit_user_gallery_path(current_user, @gallery), class: "pull-right btn btn-primary" %>
+      <% end %>
+      <%= link_to "Back", user_galleries_path(@user), class: "pull-left btn btn-info" %>
+      <h2><%= @gallery.title %></h2>
+    </header>
+  </div>
+
+  <div class="row">
+    <section class="post-content gallery col-xs-12">
+      <div class="row">
+        <% @gallery.images.each_with_index do |img, i| %>
+          <%= render partial: 'shared/photos/photo', locals: {photo: img } %>
+          <% if i % 4 == 3 %>
+            <div class="clearfix"></div>
+          <% end %>
+        <% end %>
+      </div>
+    </section>
+  </div>
+
+</section>

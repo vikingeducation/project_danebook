@@ -1,0 +1,3 @@
+var el = document.createElement('div');
+el.innerHTML = "<%= j(render partial: 'comment_form', locals: {post: @post, comment: @comment}) %>"
+DANEBOOK.Posts.showCommentForm(<%= @post.id %>, el.firstChild)

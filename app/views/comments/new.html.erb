@@ -1,0 +1,5 @@
+<%= content_for :usernav, true %>
+<%= content_for :post_footer do %>
+  <%= render partial: 'comment_form', locals: {post: @post, comment: @comment} %>
+<% end %>
+<%= render partial: 'shared/posts/post', locals: { post: @post, size: "large", limit:4} %>

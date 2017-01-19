@@ -1,0 +1,52 @@
+<%= content_for :usernav, true %>
+
+<section id="about-edit" class="post col-xs-12">
+  <div class="row">
+    <header class="post-header col-xs-12">
+      <h2>New Gallery</h2>
+    </header>
+  </div>
+  <div class="row">
+    <section class="post-content col-xs-12">
+      <%= form_for([current_user, @gallery], html: { class: 'syncronousUpload' }) do |f| %>
+      <div class="row">
+        <div class="col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+          <div class="form-group">
+            <div class="form-group">
+              <%= f.label :title %><br>
+              <%= f.text_field :title, class: "form-control", placeholder: "Enter a title (required)", required: true %>
+            </div>
+            <div class="form-group">
+              <%= f.label :description, class: 'sr-only image-upload-description' %><br>
+              <%= f.text_field :description, class: "form-control", placeholder: "Enter a description (optional)"%>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <h3>Upload Images (up to 5 new images at once)</h3>
+          <div class="alert alert-block alert-info">
+            <p><strong>(If you both choose an image and enter a Url, the Url will take precedence and selected image will be discarded)</strong></p>
+          </div>
+          <div class="row">
+            <%= f.fields_for :images do |gif| %>
+              <% unless gif.object.persisted? %>
+                <div class="col-md-6 col-md-offset-0 col-sm-8 col-sm-offset-2">
+                  <%= render partial: 'shared/forms/img_upload_form' , locals: { form: gif } %>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="submit-button col-xs-12 col-md-6 col-md-offset-3">
+          <%= f.submit "Save Changes", class: "btn btn-block btn-primary" %>
+        </div>
+      </div>
+      <% end %>
+    </section>
+  </div>
+</section>

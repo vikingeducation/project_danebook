@@ -1,0 +1,28 @@
+<%= content_for :usernav, true %>
+<section class="post post-gutters col-xs-12">
+  <div class="row">
+    <header class="post-header col-xs-12">
+      <%= link_to "Add Gallery!", new_user_gallery_path(@user), class: "edit-button btn btn-primary" if @user == current_user %>
+      <h2>Galleries</h2>
+    </header>
+  </div>
+
+  <div class="row">
+    <section class="post-content gallery col-xs-12">
+      <div class="row">
+        <% @galleries.each do |gallery| %>
+          <div class="col-xs-4 col-md-3 photo text-center">
+            <%= link_to user_gallery_path(@user, gallery) do %>
+              <%= gallery_cover(gallery) %>
+            <% end %>
+
+            <div class="description">
+              <%= gallery.title %>
+            </div>
+        </div>
+        <% end %>
+      </div>
+    </section>
+  </div>
+
+</section>

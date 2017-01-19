@@ -1,0 +1,19 @@
+<section class="post-content col-xs-12">
+  <div class="row">
+    <% user.friends.first(9).each_with_index do |friend, i| %>
+      <div class="col-xs-6 col-md-4 photo text-center">
+        <%= link_to user_path(friend) do %>
+          <%= image_tag render_profile_img(friend.profile) %>
+          <p><%= format_user_name(friend) %></p>
+        <% end %>
+      </div>
+      <% if i % 3 == 2 %>
+        <div class="clearfix"></div>
+      <% end %>
+    <% end %>
+
+    <div class="col-xs-12 text-center">
+      <h4><%= link_to "See More Friends", user_friends_path(user) %></h4>
+    </div>
+  </div>
+</section>

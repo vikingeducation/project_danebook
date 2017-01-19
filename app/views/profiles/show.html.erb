@@ -1,0 +1,34 @@
+<%= content_for :usernav, true %>
+<section id="about" class="post col-xs-12">
+  <div class="row">
+    <header class="post-header col-xs-12">
+      <% if @user == current_user %>
+        <%= link_to "Edit Profile", edit_user_profile_path(current_user), class: "edit-button btn btn-primary" %>
+      <% end %>
+      <h2>About</h2>
+    </header>
+  </div>
+  <div class="row">
+    <section class="post-content col-xs-12">
+      <div class="row">
+        <div class="information col-md-5">
+          <h3>Basic Information</h3>
+          <%= render partial: 'shared/info/basic', locals: {user: @user} %>
+
+          <h3>Contact Information</h3>
+          <%= render partial: 'shared/info/contact', locals: {user: @user} %>
+
+        </div>
+
+        <div class="personality col-md-7">
+          <% if @user.profile.bio %>
+            <h3>Words To Live By</h3>
+            <p><%= @user.profile.bio.slogan %></p>
+            <h3>About Me</h3>
+            <p><%= @user.profile.bio.about%></p>
+          <% end %>
+        </div>
+      </div>
+    </section>
+  </div>
+</section>

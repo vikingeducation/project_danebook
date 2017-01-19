@@ -16,6 +16,8 @@ class CommentsController < ApplicationController
         format.js do
           @status = :danger
           @msg = ["You can only comment on your friends' posts."]
+          @target = @post.id
+          @target_type = "post"
           render template: 'shared/flashes'
         end
         format.html do

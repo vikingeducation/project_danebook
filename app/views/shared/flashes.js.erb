@@ -1,9 +1,12 @@
 (function(){
-  var msg = [
+  var target, type, msg = [
     <% @msg.each do |msg| %>
       "<%= j(msg) %>",
     <% end %>
-  ]
-  console.log("<%= j(@status.to_s) %>", msg)
-  DANEBOOK.Flashes("<%= j(@status.to_s) %>", msg)
+  ];
+  <% if defined?(@target) %>
+    target = <%= @target %>;
+    type = "<%= @target_type %>";
+  <% end %>
+  DANEBOOK.Flashes("<%= j(@status.to_s) %>", msg, target, type)
 })()

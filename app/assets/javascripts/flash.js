@@ -28,8 +28,15 @@ DANEBOOK.Flashes = (function($){
     $(wrapper).slideDown(500, removeFlash(target, wrapper));
   }
 
-  var addFlash = function(status, msgs, target){
-    target = target || document.getElementById('flash-box')
+  var flashAboveTarget = function flashAboveTarget(id, type){
+    var target = document.querySelector('[data-'+ type + '-id="'+id+'"]');
+    var el = document.createElement("DIV");
+    target.parentNode.insertBefore(el, target);
+    return el;
+  }
+
+  var addFlash = function(status, msgs, target, targetType){
+    target = target ? flashAboveTarget(target, targetType) : document.getElementById('flash-box');
     setFlash(target, msgs, status);
   }
 

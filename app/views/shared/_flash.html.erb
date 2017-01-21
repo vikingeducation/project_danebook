@@ -1,0 +1,13 @@
+<% if flash.any? %>
+  <div id="flash">
+    <div class='container'>
+      <% flash.each do |key, value| %>
+        <% if value.is_a?(Array) %>
+          <%= value.join(', ') %>
+        <% else %>
+          <%= value %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+<% end %>

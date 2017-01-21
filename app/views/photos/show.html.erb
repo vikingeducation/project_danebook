@@ -1,0 +1,78 @@
+<section id ="interior-page">
+
+  <%= render partial: "shared/header", locals: { user: @user } %>  
+
+  <main class="container">
+    <div class="row">
+      <div class="panel panel-default col-xs-offset-1 col-xs-10">
+        <div class="panel-heading row">
+          <div class="panel-title">
+            <h4 class="col-xs-offset-5 col-xs-2 text-center">
+            Photos</h4>
+          </div>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+
+            <div class="col-sm-8">
+
+              <%= image_tag @photo.photo.url(:medium) %>
+
+              <% if current_user == @user %>
+
+                <p><%= link_to "Set as Profile", user_profiles_path(current_user, current_user.profile, photo_id: @photo.id ), method: :patch %></p>
+                <p><%= link_to "Set as Cover", user_profiles_path(current_user, current_user.profile, cover_photo_id: @photo.id), method: :patch %></p>
+                <p><%= link_to "Delete Photo", user_photo_path(@user, @photo), method: :delete %></p>
+
+              <% end %>
+
+            </div>
+
+            <div class="col-sm-4">
+            
+              <div class="panel-body">
+
+                <%= display_profile_photo(@user, "small") %>
+
+                <p><%= @photo.user.full_name %></p>
+                <p><%= @photo.created_at.strftime('%B %d %Y') %></p>
+
+                <%= display_like_button(@user, @photo) %>
+                <%= display_likers(@user, @photo) %>
+
+
+                <%= form_for [@user, @photo, @comment] do |c| %>
+                  <%= c.text_area :body %>
+                  <%= c.submit "Comment" %>
+                <% end %>
+
+                <% if @photo.comments.any? %>
+
+                  <% @photo.comments.each do |comment| %>
+
+                    <% if comment.persisted? %>
+
+                      <%= display_profile_photo(comment.author, "small") %>  
+
+                      <h4><%= comment.author.full_name %></h4>
+                      <p><%= comment.body %></p>
+                      <%= display_comment_delete(@user, @photo, comment) %>
+                      <%= display_like_button(@user, comment) %>
+                      <%= display_likers(@user, comment) %>
+                    <% end %>
+
+                  <% end %>
+                <% end %>
+
+              </div>              
+            
+            </div>
+         
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+</section>

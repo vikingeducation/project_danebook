@@ -1,0 +1,93 @@
+<section id="interior-page">
+
+  <%= render partial: "shared/header", locals: { user: @user } %>
+
+  <main class="container">
+    <div class="row">
+      <div class="panel panel-default col-xs-offset-1 col-xs-10">
+        <div class="panel-heading row">
+          <div class="panel-title">
+            <h2 class="text-center col-xs-12">About</h2>
+          </div>
+        </div>
+        <div class="panel-body">
+          <div class="row bottom-box">
+            <div class="col-md-6 col1">
+              <div class="row">
+                <div class="col-xs-12">
+                  <h3>Basic Information</h3>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-6">
+                  <p><strong>Birthday:</strong></p>
+                </div>
+                <div class="col-xs-6">
+                  <p><%= user_birthday(@user) %></p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-6">
+                  <p><strong>College:</strong></p>
+                </div>
+                <div class="col-xs-6">
+                  <p><%= @user.profile.college %></p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-6">
+                  <p><strong>Hometown:</strong></p>
+                </div>
+                <div class="col-xs-6">
+                  <p><%= @user.profile.hometown %></p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-6">
+                  <p><strong>Currently Lives:</strong></p>
+                </div>
+                <div class="col-xs-6">
+                  <p><%= @user.profile.current_town %></p>
+                </div>
+              </div><!--  -->
+              <!--END OF BASIC INFORMATION  -->
+              <!--  -->
+              <div class="row">
+                <div class="col-xs-12">
+                  <h3>Contact Information</h3>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-6">
+                  <p><strong>Email:</strong></p>
+                </div>
+                <div class="col-xs-6">
+                  <p><%= @user.email %></p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-xs-6">
+                  <p><strong>Telephone:</strong></p>
+                </div>
+                <div class="col-xs-6">
+                  <p><%= @user.profile.phone %></p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-md-6 col2">
+
+              <h3>Words to Live By</h3>
+              <p><%= @user.profile.words_to_live_by %></p>
+
+              <h3>About Me</h3>
+              <p><%= @user.profile.about_me %></p>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>  
+
+</section>

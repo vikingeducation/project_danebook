@@ -1,0 +1,23 @@
+<section id="interior-page">
+
+  <%= render partial: "shared/nav" %>
+
+  <main class="container">
+
+    <p>Showing <%= pluralize(@users.count, 'User') %> whose first or last names contain <%= @query %></p>
+
+    <div class="panel">
+      <div class="panel-heading">
+        <h3>Search Results</h3>
+      </div>
+
+      <div class="panel-body">
+        <% @users.each do |user| %>
+          <%= render partial: "shared/search", locals: { user: user } %>
+        <% end %>
+      </div>
+    </div>
+
+  </main>
+
+</section>

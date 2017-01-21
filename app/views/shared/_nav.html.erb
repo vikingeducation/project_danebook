@@ -1,0 +1,30 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <%= link_to users_path, class: 'navbar-brand' do %>
+        <%= image_tag "danish_flag.gif", { class: 'img-circle img-responsive img-small' } %>
+        <span>Danebook</span>
+      <% end %>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+      <%= form_tag users_path, method: 'get', class: 'navbar-form navbar-left' do %>
+        <div class="form-group">
+          <%= text_field_tag :query, nil, class: 'form-control', placeholder: 'Search for Users' %>
+          <%= submit_tag "Search", class: 'btn btn-primary' %>
+        </div>
+      <% end %>      
+
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+          <%= link_to user_path(current_user) do %>
+            Welcome <%= current_user.first_name %>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to "Sign Out", logout_path %>          
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

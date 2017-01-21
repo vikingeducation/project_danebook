@@ -1,0 +1,23 @@
+<% if user == current_user %>
+
+  <div class="panel panel-default">
+
+    <%= form_for [user, post], remote: true do |f| %>
+
+      <div class="panel-heading">
+        <h4 class="panel-title text-center">Post</h4>
+      </div>
+
+      <div class="panel-body">
+        <%= f.text_area :content, class: "form-control", placeholder: "Tell the world something...", id: 'new-post-content' %>
+      </div>
+
+      <div class="panel-footer text-right">
+        <%= f.submit "Post", class: "btn btn-success" %>
+      </div>
+
+    <% end %>
+
+  </div>
+
+<% end %>

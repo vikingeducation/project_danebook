@@ -1,0 +1,4 @@
+<%= form_for [user, p, comment], remote: true do |c| %>
+  <%= c.text_area :body, class: 'form-control', id: "new-comment-content" %>
+  <%= c.submit nil, class: 'btn btn-primary' %>
+<% end %>

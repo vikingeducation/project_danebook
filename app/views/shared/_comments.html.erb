@@ -1,0 +1,5 @@
+<section id="comments">
+  <% p.comments.each do |comment| %>
+    <%= render partial: "shared/comment", locals: { comment: comment, user: user, p: p } %>
+  <% end %>
+</section>

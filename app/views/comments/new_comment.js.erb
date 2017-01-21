@@ -1,0 +1,3 @@
+$("<%= j(render partial: 'shared/comment', locals: { user: @user, p: @post, comment: @comment }) %>").addClass("new-comment").appendTo("#comments").slideDown(600);
+
+$("#new-comment-content").val('');

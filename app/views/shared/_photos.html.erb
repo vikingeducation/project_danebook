@@ -1,0 +1,50 @@
+<div class="row">
+  <div class="col-xs-12">
+    <div class="panel panel-default">
+
+      <div class="panel-heading">
+        <h4 class="panel-title text-center">Photos <span class=
+        "badge"><%= user.photos.count %></span></h4>
+      </div>
+
+      <table class="table col-xs-12 table-bordered">
+
+        <% if user.photos.any? %>
+
+          <tr>
+
+            <% user.photos.each_with_index do |photo, index| %>
+
+              <% if index % 3 == 0 %>
+                </tr>
+                <tr>
+              <% end %>
+
+              <td>
+                <%= link_to user_photo_path(user, photo) do %>
+                  <%= image_tag photo.photo.url(:small), { class: 'img-responsive' } %>
+                <% end %>
+              </td>
+
+            <% end %>
+
+          </tr>
+
+        <% else %>
+
+          <p><%= user.first_name %> doesn't have any photos yet.</p>
+
+        <% end %>
+
+        
+      </table>
+
+      <div class="panel-body row">
+        <%= link_to user_photos_path(@user), class: 'col-xs-12 text-center' do %>
+          <h5>See More Photos</h5>
+        <% end %>
+      </div>
+
+    </div>
+  </div>
+</div>

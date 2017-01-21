@@ -1,0 +1,83 @@
+<section id="interior-page">
+
+  <%= render partial: "shared/header", locals: { user: @user } %>
+  
+  <main class="container">
+    <div class="row">
+      <div class="panel panel-default col-xs-offset-1 col-xs-10">
+        <div class="panel-heading row">
+          <div class="panel-title">
+            <h2 class="text-center">About</h2>
+          </div>
+        </div>
+        <div class="panel-body">
+          <div class="row bottom-box">
+            <div class="col-md-6 col1">
+
+              <%= form_for @user do |f| %>
+
+                  <h3>Basic Information</h3>
+
+                  <%= f.fields_for :profile do |p| %>
+
+                  <div class="row">
+                    <div class="col-sm-6">
+
+                    <%= p.label :birth_month %>
+                    <%= p.text_field :birth_month %>
+
+                    <%= p.label :birth_day %>
+                    <%= p.text_field :birth_day %>
+
+                    <%= p.label :birth_year %>
+                    <%= p.text_field :birth_year %>
+
+                    <%= p.label :college %>
+                    <%= p.text_field :college %>
+
+                    <%= p.label :hometown %>
+                    <%= p.text_field :hometown %>
+
+                    <%= p.label :current_town %>
+                    <%= p.text_field :current_town %>
+
+                    <h3>Contact Information</h3>
+
+                    <%= f.label :email %>
+                    <%= f.text_field :email %>
+
+                    <%= p.label :phone %>
+                    <%= p.text_field :phone %>                  
+
+                    </div>
+                    <div class="col-sm-6">
+
+                    <h3>Words to Live By</h3>
+
+                    <%= p.label :words_to_live_by %>
+                    <%= p.text_area :words_to_live_by %>
+
+                    <h3>About Me</h3>
+
+                    <%= p.label :about_me %>
+                    <%= p.text_area :about_me %>
+
+                    </div>
+                  </div>
+
+                <% end %>
+
+                <div class="row">
+                  <div class="col-xs-12 text-center rs30">
+                    <%= f.submit 'Save Changes', class: 'btn btn-success btn-lg' %>
+                  </div>
+                </div>
+
+              <% end %>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>

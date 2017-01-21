@@ -1,0 +1,48 @@
+<div class="row">
+  <div class="col-xs-12">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title text-center">Friends <span class=
+        "badge"><%= user.friends.count %></span></h4>
+      </div>
+
+      <table class="table table-bordered col-xs-12">
+
+        <tr>
+
+          <% if user.friends.any? %>
+
+            <% user.friends_sample.each_with_index do |friend, index| %>
+
+              <% if index % 3 == 0 %>
+                </tr>
+                <tr>
+              <% end %>
+
+              <td class="text-center">
+                <%= link_to user_path(friend), class: "thumbnail" do %>
+                  <%= display_profile_photo(friend, "small") %>
+                  <%= friend.full_name %>
+                <% end %>
+              </td>              
+
+            <% end %>
+
+          <% else %>
+
+            <p><%= user.full_name %> doesn't have any friends yet</p>
+
+          <% end %>
+
+        </tr>
+
+      </table>
+
+      <div class="panel-body row">
+        <%= link_to user_friendings_path(user_id: user.id), class: "col-xs-12 text-center" do %>
+          <h5>See More Friends</h5>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

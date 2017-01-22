@@ -1,0 +1,231 @@
+nav {
+  background-color: #3b5998; }
+  nav .navbar-brand {
+    margin-top: -5px; }
+    nav .navbar-brand img {
+      width: 30px;
+      height: 30px;
+      border-radius: 100%; }
+    nav .navbar-brand a {
+      color: white;
+      font-size: 20px;
+      font-weight: 100;
+      padding-left: 5px; }
+  nav .navbar-form input {
+    width: 800px !important; }
+  nav .navbar-right a {
+    color: white;
+    font-size: 15px;
+    font-weight: 300; }
+
+main {
+  margin-top: 70px; }
+
+/*
+============================
+HEADER
+============================
+*/
+header {
+  height: 350px;
+  width: 100%;
+  background-color: blue;
+  background-image: url(images/hogwarts_small.jpg);
+  background-size: 100%;
+  border: 2px solid black;
+  margin-top: -20px;
+  position: relative; }
+  header img {
+    position: absolute;
+    top: 135px;
+    left: 20px;
+    border: 2px solid black; }
+  header h3 {
+    position: absolute;
+    top: 270px;
+    font-size: 40px; }
+  header a {
+    position: absolute;
+    bottom: -33px;
+    right: 10px; }
+
+.toolbar {
+  height: 42px;
+  width: 100%;
+  border: 2px solid black;
+  border-top: none;
+  padding-left: 260px; }
+  .toolbar .active {
+    background-color: #ddd; }
+
+.section-title {
+  margin-top: 30px;
+  border: 2px solid black;
+  background-color: #eee;
+  position: relative; }
+  .section-title button {
+    position: absolute;
+    top: 20px;
+    right: 20px; }
+
+.table-borderless td {
+  border: 0 !important; }
+
+.content {
+  border: 2px solid black;
+  border-top: none;
+  margin-bottom: 40px;
+  padding-bottom: 30px; }
+
+/*
+============================
+EDIT ABOUT
+============================
+*/
+.save-changes {
+  margin: 50px 0 100px 0; }
+  .save-changes button {
+    padding: 20px 150px; }
+
+/*
+============================
+FRIENDS
+============================
+*/
+.friend {
+  border: 2px solid #000;
+  padding: 10px;
+  margin-top: 30px;
+  position: relative; }
+  .friend img {
+    width: 90px;
+    height: 90px;
+    margin-right: 10px; }
+  .friend .friend-name {
+    position: absolute;
+    top: 25px;
+    left: 110px; }
+    .friend .friend-name a {
+      font-size: 25px; }
+  .friend button {
+    position: absolute;
+    top: 50px;
+    right: 20px; }
+
+/*
+============================
+PHOTOS
+============================
+*/
+.photos-content {
+  padding: 20px; }
+
+.photo {
+  border: 2px solid black;
+  height: 235px;
+  width: 235px;
+  display: inline-block;
+  margin: 21px; }
+  .photo img {
+    width: 100%; }
+  .photo .publish-wrap {
+    position: relative;
+    height: 243px; }
+  .photo .publish-date {
+    position: absolute;
+    top: 200px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.72);
+    color: #fff;
+    visibility: hidden;
+    opacity: 0; }
+  .photo .publish-wrap:hover .publish-date {
+    padding-left: 40px;
+    visibility: visible;
+    opacity: 1; }
+
+/*
+============================
+TIMELINE
+============================
+*/
+.left {
+  background-color: red;
+  height: 500px; }
+
+.right {
+  background-color: blue;
+  height: 500px; }
+
+.timeline-title {
+  background-color: #ddd;
+  border: 2px solid black;
+  border-bottom: none;
+  margin-top: 25px;
+  padding: 10px;
+  text-align: center; }
+  .timeline-title h5 {
+    font-size: 20px;
+    padding: 5px; }
+
+.timeline-content {
+  border: 2px solid black;
+  margin-top: -10px;
+  padding-top: 10px;
+  padding-bottom: 10px; }
+  .timeline-content img,
+  .timeline-content .friend-photo {
+    display: inline-block;
+    width: 100px;
+    margin: 5px; }
+    .timeline-content img a,
+    .timeline-content .friend-photo a {
+      text-align: center; }
+  .timeline-content img {
+    height: 100px; }
+  .timeline-content a {
+    display: block;
+    text-decoration: underline; }
+  .timeline-content .poster {
+    position: relative; }
+    .timeline-content .poster img {
+      display: inline-block;
+      height: 70px;
+      width: 70px; }
+    .timeline-content .poster .poster-name {
+      position: absolute;
+      top: 15px;
+      left: 90px; }
+      .timeline-content .poster .poster-name a {
+        font-size: 18px; }
+      .timeline-content .poster .poster-name span {
+        color: #ddd; }
+
+.post-bar {
+  background-color: #ddd;
+  border: 2px solid black;
+  margin-top: -10px;
+  padding: 10px;
+  margin-bottom: 30px; }
+  .post-bar a {
+    padding-right: 10px;
+    text-decoration: underline; }
+
+.comment {
+  position: relative;
+  height: 150px; }
+  .comment img {
+    display: inline-block;
+    background-color: #333;
+    height: 70px;
+    width: 70px;
+    margin-left: 10px; }
+  .comment .comment-text {
+    position: absolute;
+    left: 100px;
+    width: 600px;
+    top: 0; }
+
+/*# sourceMappingURL=styles.css.map */

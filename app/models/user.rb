@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  before_create :generate_token
   has_secure_password
 
   validates :first_name,
@@ -6,8 +7,7 @@ class User < ApplicationRecord
             :email,
             :birth_date,
             :birth_month,
-            :birth_year, 
-            :password, 
+            :birth_year,  
             :presence => true
 
   validates :first_name, :last_name, :length => { :in => 1..50}
@@ -20,4 +20,18 @@ class User < ApplicationRecord
 
   validates :password, :length => { :in => 6..30 }, 
                        :allow_nil => true
+
+  def generate_token
+    begin
+      self[:auth_token] = SecureRandom.urlsafe_base64
+    end while User.exists?(:auth_token => self[:auth_token])
+  end
+
+  def regenerate_auth_token
+    self.auth_token = nil
+    generate_token
+    save!
+  end
+
+
 end

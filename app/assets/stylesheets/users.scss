@@ -1,4 +1,75 @@
+/*
+============================
+NEW-NAV + SIGNUP
+============================
+*/
 
+.gender-form,
+.birth-form {
+  margin-right: 15px;
+}
+
+.btn-default {
+  margin-left: 10px;
+}
+
+.navbar {
+  background-color: #3b5998;
+  color: #fff;
+  padding: 10px;
+}
+
+.navbar-brand {
+  font-size: 45px;
+  color: #fff;
+  margin-top: 10px;
+
+}
+  .navbar-form {
+  color: #000;
+  }
+.connectheading {
+  margin-top: 80px;
+}
+
+li {
+  font-size: 20px;
+  font-weight: 200;
+  color: #999;
+  line-height: 2em;
+  margin-left: 40px;
+  margin-top: 20px;
+}
+
+/*ul {
+  list-style-type: disc !important;
+  padding-left: 1em;
+}*/
+
+
+.signup {
+  margin-top: 20px;
+}
+
+.sign-heading {
+  font-size: 50px;
+  margin-top: 80px;
+}
+
+/*.birthday {
+width:auto;
+display:inline-block;
+}
+
+.gender {
+  margin-bottom: 20px;
+}*/
+
+/*
+============================
+ABOUT-NAV
+============================
+*/
 
 nav {
   background-color: #3b5998;
@@ -77,12 +148,19 @@ header {
   width: 100%;
   border: 2px solid black;
   border-top: none;
-  padding-left: 260px;
+  .menu-item {
+    height: 42px;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    padding-top: 10px;
+  }
   .active {
     background-color: #ddd;
   }
-  .inactive {
-    background-color: #fff;
+  .menu-link {
+    height: 42px;
+    padding-left: 70px;
+    padding-top: 10px;
   }
 }
 

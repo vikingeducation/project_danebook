@@ -1,0 +1,47 @@
+<%= form_for @user, html: { class: 'signup' } do |user_fields| %>
+
+<div class="form-inline form-group">
+  <%= user_fields.label :first_name %>
+  <%= user_fields.text_field :first_name, placeholder: 'First Name' %>
+</div>
+
+
+<% end %>
+<!-- <form class="signup">
+    <div class="form-inline form-group">
+      <input class="form-control" type="text" name="fname" placeholder="First Name">
+      <input class="form-control" type="text" name="lname" placeholder="Last Name">
+    </div>
+
+    <input class="form-group form-control" type="text" name="email" placeholder="Your Email">
+    <input class="form-group form-control" type="password" name="password" placeholder="Your New Password">
+    <input class="form-group form-control" type="password" name="confirm-pass" placeholder="Confirm Your Password">
+
+
+    <div class="form-group">
+      <label>Birthday</label><br>
+      <select name="Month" class="form-control birthday">
+        <option value="--" selected="true" disabled="disabled">Month</option>
+        <option value="January">January</option>
+        <option value="February">February</option>
+      </select>
+
+      <select name="Day" class="form-control birthday">
+        <option value="--" selected="true" disabled="disabled">Day</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+      </select>
+
+      <select name="Year" class="form-control birthday">
+        <option value="--" selected="true" disabled="disabled">Year</option>
+        <option value="1980">1980</option>
+        <option value="1990">1990</option>
+      </select>
+    </div>
+
+    <div class="form-group gender">
+       <label class="radio-inline"><input type="radio" name="female">Female</label>
+        <label class="radio-inline"><input type="radio" name="male">Male</label><br><br>
+        <button type="button" class="btn btn-success btn-lg btn-block">Sign Up!
+        </button>
+    </div> -->

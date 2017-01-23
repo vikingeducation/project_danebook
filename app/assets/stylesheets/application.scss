@@ -17,6 +17,10 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+.gender-form,
+.birth-form {
+  margin-right: 15px;
+}
 
 .btn-default {
   margin-left: 10px;

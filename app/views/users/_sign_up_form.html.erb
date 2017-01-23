@@ -1,47 +1,56 @@
 <%= form_for @user, html: { class: 'signup' } do |user_fields| %>
+  
+<div class="form-group">
+  <div class="row">
+    <div class="col-sm-6">
+      <%= user_fields.text_field :first_name, placeholder: 'First Name', class: 'form-control name-form' %>
+    </div>
+    <div class="col-sm-6">
+      <%= user_fields.text_field :last_name, placeholder: 'Last Name', class: 'form-control' %>      
+    </div>        
+  </div>
+</div>
+
+<%= user_fields.text_field :email, placeholder: 'Your Email', class: 'form-group form-control' %>
+
+
+<%= user_fields.password_field :password, placeholder: 'Your New Password', class: 'form-group form-control' %>
+<%= user_fields.password_field :password_confirmation, placeholder: "Confirm Your Password", class: 'form-group form-control' %>
+
+<h3>Birthday</h3>
 
 <div class="form-inline form-group">
-  <%= user_fields.label :first_name %>
-  <%= user_fields.text_field :first_name, placeholder: 'First Name' %>
+  <%= user_fields.select :birth_month, 
+                         (1..12).map{ |i| [i,i] }, 
+                         { prompt: 'Month' },
+                         class: 'birth-form form-control' %>
+  <%= user_fields.select :birth_date,
+                         (1..31).map{ |i| [i,i] }, 
+                         { prompt: 'Date' },
+                         class: 'birth-form form-control' %>
+  <%= user_fields.select :birth_year,
+                         (1900..2017).map{ |i| [i,i] }, 
+                         { prompt: 'Year' },
+                         class: 'birth-form form-control' %>
 </div>
+
+
+<div class="form-group">
+  <%= user_fields.radio_button :gender, true %>
+  <%= user_fields.label :gender, "Female", class: 'gender-form' %>
+
+  <%= user_fields.radio_button :gender, false %>
+  <%= user_fields.label :gender, 'Male' %>  
+</div>
+
+<%= user_fields.submit 'Sign Up!', class: 'btn btn-success btn-block' %>
 
 
 <% end %>
 <!-- <form class="signup">
-    <div class="form-inline form-group">
-      <input class="form-control" type="text" name="fname" placeholder="First Name">
-      <input class="form-control" type="text" name="lname" placeholder="Last Name">
-    </div>
-
-    <input class="form-group form-control" type="text" name="email" placeholder="Your Email">
-    <input class="form-group form-control" type="password" name="password" placeholder="Your New Password">
-    <input class="form-group form-control" type="password" name="confirm-pass" placeholder="Confirm Your Password">
-
-
-    <div class="form-group">
-      <label>Birthday</label><br>
-      <select name="Month" class="form-control birthday">
-        <option value="--" selected="true" disabled="disabled">Month</option>
-        <option value="January">January</option>
-        <option value="February">February</option>
-      </select>
-
-      <select name="Day" class="form-control birthday">
-        <option value="--" selected="true" disabled="disabled">Day</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-      </select>
-
-      <select name="Year" class="form-control birthday">
-        <option value="--" selected="true" disabled="disabled">Year</option>
-        <option value="1980">1980</option>
-        <option value="1990">1990</option>
-      </select>
-    </div>
 
     <div class="form-group gender">
-       <label class="radio-inline"><input type="radio" name="female">Female</label>
-        <label class="radio-inline"><input type="radio" name="male">Male</label><br><br>
+
         <button type="button" class="btn btn-success btn-lg btn-block">Sign Up!
         </button>
     </div> -->

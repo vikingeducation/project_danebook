@@ -21,16 +21,3 @@ class User < ApplicationRecord
   validates :password, :length => { :in => 6..30 }, 
                        :allow_nil => true
 end
-
-
-  create_table "users", force: :cascade do |t|
-    t.string   "email"
-    t.string   "password_digest"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.string   "first_name"
-    t.string   "last_name"
-    t.integer  "birth_date"
-    t.integer  "birth_month"
-    t.integer  "birth_year"
-    t.boolean  "gender"

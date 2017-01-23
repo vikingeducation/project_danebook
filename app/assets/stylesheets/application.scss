@@ -17,6 +17,8 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.right-link,
 .gender-form,
 .birth-form {
   margin-right: 15px;
@@ -54,10 +56,10 @@ li {
   margin-top: 20px;
 }
 
-ul {
+/*ul {
   list-style-type: disc !important;
   padding-left: 1em;
-}
+}*/
 
 
 .signup {
@@ -69,11 +71,11 @@ ul {
   margin-top: 80px;
 }
 
-.birthday {
+/*.birthday {
 width:auto;
 display:inline-block;
 }
 
 .gender {
   margin-bottom: 20px;
-}
+}*/

@@ -1,0 +1,67 @@
+<%= render 'about_nav' %>
+
+<%= render 'header' %>
+
+
+<!-ABOUT->
+
+
+<div class="row section-title">
+  <h1 class="text-center">About</h1>
+<!--   <%= link_to 'Edit Your Profile', edit_user_path(@user), class: 'btn btn-primary' %> -->
+</div>
+
+<div class="row">
+  <div class="content col-sm-12">
+       <div class="col-sm-5">
+          <section>
+              <h3>Basic Information</h3>
+              <table class="table table-borderless">
+                <tr>
+                  <td>Birthday:</td>
+                  <td><%= @user.birth_month %>/<%= @user.birth_date %>/<%= @user.birth_year %></td>
+                </tr>
+                 <tr>
+                  <td>College:</td>
+                  <td><%= @user.profile ? @user.profile.college : 'n/a' %></td>
+                </tr>
+                 <tr>
+                  <td>Hometown:</td>
+                  <td><%= @user.profile ? @user.profile.hometown : 'n/a' %></td>
+                </tr>
+                 <tr>
+                  <td>Current Location:</td>
+                  <td><%= @user.profile ? @user.profile.current_location : 'n/a' %></td>
+                </tr>
+              </table>
+            </section>
+
+            <section>
+              <h3>Contact Information</h3>
+              <table class="table table-borderless">
+                <tr>
+                  <td>Email:</td>
+                  <td><%= @user.email %></td>
+                </tr>
+                <tr>
+                  <td>Telephone:</td>
+                  <td><%= @user.profile ? @user.profile.telephone : 'n/a' %></td>
+                </tr>
+              </table>
+            </section>
+        </div>
+
+        <div class="col-sm-6 col-sm-offset-1">
+          <section>
+            <h3>Words to Live By</h3>
+            <p><%= @user.profile ? @user.profile.words : 'n/a' %></p>
+          </section>
+
+          <section>
+            <h3>About Me</h3>
+            <p><%= @user.profile ? @user.profile.about_me : 'n/a' %></p>
+          </section>
+        </div>
+
+  </div>
+</div>

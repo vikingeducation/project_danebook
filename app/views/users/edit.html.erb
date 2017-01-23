@@ -1,0 +1,93 @@
+<%= render 'about_nav' %>
+
+<%= render 'header' %>
+
+<!-EDIT PROFILE->
+
+
+<div class="row section-title">
+  <h1 class="text-center">Edit Profile</h1>
+</div>
+
+<div class="row">
+<div class="content col-sm-12">
+<%= form_for @user do |user_fields| %>
+  <%= user_fields.fields_for(:profile) do |profile_fields| %>
+
+     <div class="col-sm-5">
+        <section>
+            <h3>Basic Information</h3>
+            <table class="table table-borderless">
+              <tr>
+                <td>Birthday:</td>
+                <td><%= @user.birth_month %>/<%= @user.birth_date %>/<%= @user.birth_year %></td>
+              </tr>
+               <tr>
+                <td>College:</td>
+                <td>
+                    <%= profile_fields.text_field :college, class: 'form-control' %>
+                  </div
+                </td>
+              </tr>
+               <tr>
+                <td>Hometown:</td>
+                <td>
+                   <%= profile_fields.text_field :hometown, class: 'form-control' %>
+                </td>
+              </tr>
+               <tr>
+                <td>Current Location:</td>
+                <td>
+                    <%= profile_fields.text_field :current_location, class: 'form-control' %>
+                </td>
+              </tr>
+            </table>
+          </section>
+
+          <section>
+            <h3>Contact Information</h3>
+            <table class="table table-borderless">
+              <tr>
+                <td>Email:</td>
+                <!-ABOUT->
+                <td><%= @user.email %></td>
+              </tr>
+              <tr>
+                <td>Telephone:</td>
+                <td>
+                    <%= profile_fields.text_field :telephone, class: 'form-control' %>
+                </td>
+              </tr>
+            </table>
+          </section>
+      </div>
+
+      <div class="col-sm-6 col-sm-offset-1">
+        <section>
+          <h3>Words to Live By</h3>
+          <div class="form-group">
+              <%= profile_fields.text_area :words, class: 'form-control' %>
+          </div>
+        
+        </section>
+
+        <section>
+            <h3>About Me</h3>
+
+            <div class="form-group">
+                <%= profile_fields.text_area :about_me, class: 'form-control' %>
+            </div>
+      
+        </section>
+      </div>
+
+      
+  <div class="col-sm-12 text-center save-changes">
+      <%= profile_fields.submit 'Save Changes', class: 'btn btn-lg brn-primary' %>
+  </div> 
+
+<% end %>
+<% end %>
+
+</div>
+</div>

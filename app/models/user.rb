@@ -1,4 +1,8 @@
 class User < ApplicationRecord
+
+
+  has_one :profile, inverse_of: :user, dependent: :destroy
+
   before_create :generate_token
   has_secure_password
 
@@ -20,6 +24,9 @@ class User < ApplicationRecord
 
   validates :password, :length => { :in => 6..30 }, 
                        :allow_nil => true
+
+  accepts_nested_attributes_for :profile, :reject_if => :all_blank, 
+                                          :allow_destroy => true
 
   def generate_token
     begin

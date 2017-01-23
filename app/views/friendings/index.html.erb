@@ -1,0 +1,38 @@
+
+<%= render partial: 'shared/navbar' %>
+<main>
+  <header class = "container" id="cover">
+
+    <%= render partial: 'shared/cover_images' %>
+
+    <!--secondary navbar-->
+    <%= render partial: 'shared/second_nav' %>
+
+  </header>
+
+
+
+<!-- THIS PART CHANGES PAGE BY PAGE -->
+  <section class="container" id="information-pane">
+    <header class="row">
+      <div class="col-md-offset-2 col-md-8 about-header">
+        <h2>Friends</h2>
+      </div>
+    </header>
+
+    <!-- Friends bar -->
+    <% unless @friended_users.empty? %>
+
+      <% @friended_users.each do |friend| %>
+        <%= render partial: "friend", locals: { friend: friend } %>
+      <% end %>
+
+    <% else %>
+
+      <h3 class="text-center">No friends yet, use the search bar to find them!</h3>
+
+    <% end %>
+
+  </section>
+
+</main>

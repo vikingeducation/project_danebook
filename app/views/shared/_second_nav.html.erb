@@ -2,9 +2,9 @@
   <div class = "col-md-7 col-md-offset-3">
     <ul class = "nav nav-tabs " role = "profile-nav">
       <li><%= link_to "Timeline", user_timeline_path(@user) %></li>
-      <li><%= link_to "About", user_path(@user) %></li>
+      <li><%= link_to "About", user_profile_path(@user) %></li>
       <li><%= link_to "Photos (123)", photos_path  %></li>
-      <li><%= link_to "Friends (542)", friends_path %></li>
+      <li><%= link_to "Friends (#{@user.friended_users.count})", user_friendings_path(@user) %></li>
   </div>
 
   <% if current_user %>

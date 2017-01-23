@@ -14,6 +14,14 @@ class User < ApplicationRecord
   has_many :liked_posts, through: :likes, source: :likable, source_type: "Post"
   has_many :liked_comments, through: :likes, source: :likable, source_type: "Comment"
 
+  # when acting as the initiator of the friending
+  has_many :initiated_friendings, foreign_key: :friender_id, class_name: "Friending"
+  has_many :friended_users, through: :initiated_friendings, source: :friend_recipient
+
+  # when acting as the recipient of the friending
+  has_many :received_friendings, foreign_key: :friend_id, class_name: "Friending"
+  has_many :users_friended_by, through: :received_friendings, source: :friend_initiator
+
   has_secure_password
 
   validates :password, :length => { :in => 3..24 }, :allow_nil => true

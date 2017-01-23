@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :users do
     get '/timeline' => 'posts#index'
     resource :profile, only: [:edit, :update, :show]
+    resources :friendings, only: [:index, :create, :destroy]
   end
 
   resource :session, :only => [:new, :create, :destroy]

@@ -1,42 +1,31 @@
 <!-NAV BAR->
 <nav class="navbar navbar-stacked-top">
-<div class="container">
+  <div class="container">
 
-  <a class="navbar-brand" href="#">Danebook</a>
+    <a class="navbar-brand" href="#">Danebook</a>
 
-  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-    <span class="sr-only">Toggle navigation</span>
-    <span class="icon-bar"></span>
-    <span class="icon-bar"></span>
-    <span class="icon-bar"></span>
-  </button>
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+      <span class="sr-only">Toggle navigation</span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
 
-  <%= form_tag session_path, class: 'navbar-form navbar-right' do %>
+    <%= form_tag session_path, class: 'navbar-form navbar-right' do %>
 
-    <%= label_tag do %>
-      Email
-      <%= text_field_tag :email %>
+      <%= label_tag do %>
+        Email
+        <%= text_field_tag :email %>
+      <% end %>
+
+      <%= label_tag do %>
+        Password
+        <%= password_field_tag :password %>
+      <% end %>
+
+      <%= submit_tag "Log In", class: 'btn btn-default' %>
+
     <% end %>
 
-    <%= label_tag do %>
-      Password
-      <%= password_field_tag :password %>
-    <% end %>
-
-    <%= submit_tag "Log In", class: 'btn btn-default' %>
-
-  <% end %>
-
-<!--   <form class="navbar-form navbar-right">
-    <div class="form-group">
-      <label>Email</label><br>
-      <input type="text" name="email" class="form-control">
-    </div>
-    <div class="form-group">
-      <label>Password</label><br>
-      <input type="Password" name="password" class="form-control">
-    </div>
-  </form> -->
-
-</div>
+  </div>
 </nav>

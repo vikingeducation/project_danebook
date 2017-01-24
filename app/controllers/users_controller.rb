@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   def new
     if signed_in_user?
       @user = current_user
-      redirect_to users_path
+      redirect_to user_timeline_path(@user)
     else
       @user = User.new
       @user.profile = @user.build_profile
@@ -25,7 +25,7 @@ class UsersController < ApplicationController
     if @user.save
       sign_in(@user)
       flash[:success] = 'Welcome to Danebook!'
-      redirect_to users_path
+      redirect_to about_user_path(@user)
     else
       flash[:warning] = "Sorry, there was something wrong with your form!"
       render :new
@@ -46,6 +46,10 @@ class UsersController < ApplicationController
       flash[:warning] = 'Error! Profile could not be updated!'
       render :edit
     end
+  end
+
+  def timeline
+    @user = User.find(params[:id])
   end
 
   private

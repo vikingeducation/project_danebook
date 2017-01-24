@@ -1,7 +1,8 @@
 class User < ApplicationRecord
 
-
   has_one :profile, inverse_of: :user, dependent: :destroy
+  has_many :posts
+  has_many :comments
 
   before_create :generate_token
   has_secure_password

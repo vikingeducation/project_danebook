@@ -118,7 +118,7 @@ HEADER
 header {
   height: 350px;
   width: 100%;
-  background-color: blue;
+  background-color: #eee;
   background-image: url(images/hogwarts_small.jpg);
   background-size: 100%;
   border: 2px solid black;
@@ -135,10 +135,9 @@ header {
     top: 270px;
     font-size: 40px;
   }
-  a {
+  .friend-button {
     position: absolute;
-    bottom: -33px;
-    right: 10px;
+    top: 300px;
   }
 }
 

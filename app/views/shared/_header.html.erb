@@ -5,7 +5,13 @@
   <header class="col-sm-12">
     <img src="images/user_silhouette_generic.gif" alt="profile-pic" class="">
 
-    <h3 class="col-sm-offset-2">Harry Potter</h3>
+
+    <div class="col-sm-offset-2">
+      <h3 >Harry Potter</h3>
+      
+      <%= render 'shared/add_button' if @user == current_user %>     
+    </div>
+
 
   </header>  
 </div>
@@ -25,7 +31,7 @@
       <b><%= link_to 'Friends'%></b>
     </div>
     <div class="col-sm-offset-4 col-sm-2 menu-link">
-      <%= link_to "Edit Profile", edit_user_path(@user), class: '' %>
+      <%= link_to "Edit Profile", edit_user_path(@user), class: 'pull-right' %>
     </div>
   </div>
 </div>

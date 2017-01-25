@@ -1,0 +1,16 @@
+<!-NEW POST section->
+    <section class="row">
+      <h5 class="timeline-title col-xs-11 col-xs-offset-1">
+        Post
+      </h5>
+      <%= form_for [@user, @post] do |post_fields| %>
+        <section class="timeline-content col-xs-11 col-xs-offset-1">
+          <div class="form-group">
+            <%= post_fields.text_area :content, class: 'form-control' %>
+          </div>
+        </section>
+        <div class="post-bar col-xs-11 col-xs-offset-1">
+          <%= post_fields.submit 'Post', class: 'btn btn-primary pull-right' %>
+        </div>
+      <% end %>
+    </section>

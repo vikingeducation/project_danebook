@@ -1,0 +1,74 @@
+<div class="col-sm-4">
+
+  <!-ABOUT section->
+  <section class="row">
+      <h5 class="timeline-title">About</h5>
+      <section class="timeline-content col-sm-12">
+        <table class="table table-borderless">
+            <tr>
+              <td>Birthday:</td>
+              <td><%= @user.birth_month %>/<%= @user.birth_date %>/<%= @user.birth_year %></td>
+            </tr>
+             <tr>
+              <td>College:</td>
+              <td><%= @user.profile ? @user.profile.college : 'n/a' %></td>
+            </tr>
+             <tr>
+              <td>Hometown:</td>
+              <td><%= @user.profile ? @user.profile.hometown : 'n/a' %></td>
+            </tr>
+             <tr>
+              <td>Current Location:</td>
+              <td><%= @user.profile ? @user.profile.current_location : 'n/a' %></td>
+            </tr>
+          </table>
+      </section>
+  </section>
+
+  <!-PHOTOS section->
+  <section class="row">
+    <h5 class="timeline-title">Photos (123)</h5>
+    <section class="timeline-content col-sm-12">
+      <img class="photos-img" src="images/icon_photo_small.png">
+      <img class="photos-img" src="images/icon_photo_small.png">
+      <img class="photos-img" src="images/icon_photo_small.png">
+      <img class="photos-img" src="images/icon_photo_small.png">
+      <img class="photos-img" src="images/icon_photo_small.png">
+      <img class="photos-img" src="images/icon_photo_small.png">
+      <img class="photos-img" src="images/icon_photo_small.png">
+      <img class="photos-img" src="images/icon_photo_small.png">
+      <img class="photos-img" src="images/icon_photo_small.png">     
+      <a class="text-center"  href="photos.html">See more Photos</a>
+    </section>
+
+  </section>
+
+  <!-FRIENDS section->
+  <section class="row">
+    <h5 class="timeline-title">Friends (542)</h5>
+    <section class="timeline-content col-sm-12">
+
+    <div class="friend-photo">
+      <img class="photos-img" src="images/icon_photo_small.png">
+      <a href="#">Ron Weasley</a>       
+    </div>
+    <div class="friend-photo">
+      <img class="photos-img" src="images/icon_photo_small.png">
+      <a href="#">Ron Weasley</a>       
+    </div>    <div class="friend-photo">
+      <img class="photos-img" src="images/icon_photo_small.png">
+      <a href="#">Ron Weasley</a>       
+    </div>    <div class="friend-photo">
+      <img class="photos-img" src="images/icon_photo_small.png">
+      <a href="#">Ron Weasley</a>       
+    </div>    <div class="friend-photo">
+      <img class="photos-img" src="images/icon_photo_small.png">
+      <a href="#">Ron Weasley</a>       
+    </div>    <div class="friend-photo">
+      <img class="photos-img" src="images/icon_photo_small.png">
+      <a href="#">Ron Weasley</a>       
+    </div>    
+      <a class="text-center" href="friends.html">See more Friends</a>
+    </section>
+  </section>
+</div>

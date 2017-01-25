@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
 
   root 'users#new'
-  resources :users, :only => [:new, :create, :index, :edit, :update]
+  resources :users, 
+            :only => [:new, :create, :index, :edit, :update] do
+
+    resources :posts, :only => [:create, :destroy]
+    get '/timeline' => 'posts#index'
+  end
   resource :session, :only => [:new, :create, :destroy]
 
   get 'login' => 'users#new'
@@ -11,9 +16,7 @@ Rails.application.routes.draw do
     to: 'users#about',
     as: 'about_user'
 
-  get 'users/:id/timeline', 
-      to: 'users#timeline', 
-      as: 'user_timeline'
+
 
 
 end

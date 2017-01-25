@@ -1,0 +1,37 @@
+<section class="row">
+
+  <section class="post-content col-xs-11 col-xs-offset-1">
+  <!-- User Info -->
+     <div class="poster">
+         <img src="images/icon_photo_small.png">
+         <div class="poster-name">
+           <%= link_to post.user.first_name, about_user_path(post.user) %>
+           <span>Posted on <%= post.created_at %></span>
+         </div>
+     </div>
+
+  <!-- Post Body -->
+  <p><%= post.content %></p>
+`
+  </section>
+    <div class="post-bar col-xs-11 col-xs-offset-1">
+
+      <%= render partial: 'post_actions', locals: { post: post, user: user } %>
+      <br>
+
+  <!-- Comments -->
+  <% unless post.comments.empty? %>
+
+  <% end %>
+
+      <% post.comments.each do |comment| %>
+          <%= render partial: 'comment', locals: { comment: comment } %>
+      <% end %>
+        
+      <%= render partial: 'new_comment_form', locals: { post: post } %>
+
+    </div>
+
+   </section>
+
+</section>  

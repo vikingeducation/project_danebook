@@ -14,9 +14,7 @@ Rails.application.routes.draw do
   
   resource :session, :only => [:new, :create, :destroy]
 
-  resources :comments, :only => [:create, :destroy]
-
-
+  resources :comments, :likes, :only => [:create, :destroy]
 
   get '/users/:id/about',
     to: 'users#about',

@@ -346,19 +346,55 @@ TIMELINE
   }
 }
 
+.comment-media {
+  border: 1px solid black;
+  height: 50px;
+  width: 50px;
+  margin-left: 30px;
+}
+
+.post-content {
+  border: 2px solid black;
+  margin-top: 25px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  img {
+    height: 100px;
+  }
+  a {
+    display: block;
+    text-decoration: underline;
+  }
+  .poster {
+  position: relative;
+  img {
+    display: inline-block;
+    height: 70px;
+    width: 70px;
+  }
+    .poster-name {
+      position: absolute;
+      top: 15px;
+      left: 90px;
+      a {
+      font-size: 18px;
+      }
+      span {
+        color: #ddd;
+      }
+    }
+  }
+}
+
 .post-bar {
   background-color: #ddd;
   border: 2px solid black;
   margin-top: -10px;
   padding: 10px;
   margin-bottom: 30px;
-  a {
-  padding-right: 10px;
-  text-decoration: underline;
-  }
 }
 
-.comment {
+/*.comment {
   position: relative;
   height: 150px;
   img {
@@ -374,5 +410,5 @@ TIMELINE
     width: 600px;
     top: 0;
   }
-}
+}*/
 

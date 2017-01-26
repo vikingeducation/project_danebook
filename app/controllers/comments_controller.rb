@@ -14,6 +14,13 @@ class CommentsController < ApplicationController
   end
 
   def destroy
+    @comment = current_user.comments.find(params[:id])
+    if @comment.destroy
+      flash[:success] = "Deleted!"
+    else
+      flash[:warning] = "Couldn't delete!"
+    end
+    redirect_back(fallback_location: root_path)
   end
 
   private

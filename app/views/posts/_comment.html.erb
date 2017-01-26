@@ -2,15 +2,24 @@
   <div class="col-sm-12">
 
     <div class="row">
+
       <div class="col-sm-2">
         <img class='comment-media' src="images/icon_photo_small.png">
       </div>
+
       <div class="col-sm-10">
-      <p>
-        <%= link_to comment.user.first_name, user_timeline_path(comment.user) %>
-        said on <%= comment.created_at %>
-      </p>
-      <p><%= comment.content %></p>
+        <p>
+          <%= link_to comment.user.first_name, user_timeline_path(comment.user) %>
+          said on <%= comment.created_at %>
+        </p>
+        <p><%= comment.content %></p>
+        <p>
+          <span><%= like_or_unlike(comment) %></span>
+          <span><%= like_count(comment) %></span>
+          <span class='pull-right'>
+            <%= delete_comment_link(comment) %>  
+          </span>
+        </p>
       </div>
       
     </div>

@@ -2,7 +2,7 @@ module LikesHelper
 
   def like_or_unlike(likable)
     if likable.likes.find_by_user_id(current_user.id)
-      link_to 'Unlike'
+      link_to 'Unlike', like_path(likable.likes.find_by_user_id(current_user.id)), method: :delete
     else
       link_to 'Like ', likes_path(
           like: { likable_type: likable.class, likable_id: likable.id } ), 

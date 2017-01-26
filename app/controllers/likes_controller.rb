@@ -12,6 +12,13 @@ class LikesController < ApplicationController
   end
 
   def destroy
+    @like = current_user.likes.find(params[:id])
+    if @like.destroy
+      flash[:success] = 'Unliked'
+    else
+      flash[:warning] = @like.errors.full_messages
+    end
+    redirect_back(fallback_location: root_path)
   end
 
   private

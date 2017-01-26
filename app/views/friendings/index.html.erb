@@ -21,9 +21,9 @@
     </header>
 
     <!-- Friends bar -->
-    <% unless @friended_users.empty? %>
+    <% unless all_friends(@user).empty? %>
 
-      <% @friended_users.each do |friend| %>
+      <% all_friends(@user).each do |friend| %>
         <%= render partial: "friend", locals: { friend: friend } %>
       <% end %>
 

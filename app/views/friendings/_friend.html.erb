@@ -1,31 +1,32 @@
-<article class="col-sm-4">
-  <div class="panel panel-default">
 
-    <div class="row ">
-      <div class="col-sm-12">
-        <div class="col-sm-4">
-          <%= image_tag("user_silhouette_generic.png") %>
-        </div>
+<div id="friends-list">
 
-        <div class="col-sm-8">
-          <h4><%= link_to "#{friend.first_name} #{friend.last_name}", user_timeline_path(friend) %></h4>
-          <h4><%= @user.friended_users.count %> Friend(s)</h4>
-        </div>
-
-      <% if current_user && current_user.friended_users.include?(friend) %>
-        <div class="form-group text-center">
-          <%= button_to "Remove Friend", user_friending_path(current_user, friend), method: :delete, class: "btn btn-primary" %>
-        </div>
-
-      <% elsif current_user && !current_user.friended_users.include?(friend) %>
-        <div class="form-group text-center">
-          <%= button_to "Add Friend", user_friending_path(current_user, friend), class: "btn btn-success" %>
-        </div>
-
-      <% end %>
-
+  <!--Individual friend surrounded by border-->
+  <div class="col-md-6 friend-list-entry">
+    <div class="row">
+      <div class="col-md-3 col-xs-6">
+        <a href="#">
+          <%= image_tag("user_silhouette_generic.png", width: '100px', height: '100px') %>
+        </a>
       </div>
-    </div>
+      <div class="col-md-5 col-xs-6">
+        <p><%= link_to "#{friend.first_name} #{friend.last_name}", user_timeline_path(friend) %></p>
+        <p><%= all_friends_count(friend) %> Friend(s)</p>
+      </div>
+      <form class="col-md-4 col-xs-12">
+        <div class="form-group">
 
-  </div>
-</article>
+          <% if !current_user.friended_users.include?(friend) && friend != current_user %>
+            <%= button_to "Friend Me!", user_friendings_path(friend), method: :post, class: "btn btn-primary" %>
+
+          <% elsif current_user && current_user.friended_users.include?(friend) %>
+            <%= button_to "Unfriend Me", user_friending_path(current_user, friend), method: :delete, class: "btn btn-primary" %>
+
+          <% end %>
+
+        </div>
+      </form>
+    </div>
+  </div><!--friend entry-->
+
+</div>

@@ -45,10 +45,6 @@ class User < ApplicationRecord
     "#{first_name} #{last_name}"
   end
 
-  def posts_chronologically
-    posts.order("created_at DESC")
-  end
-
   def likes?(likable_obect)
     Like::LIKABLES.any? do |likable_type|
       self.send("liked_#{likable_type}").include?(likable_object)

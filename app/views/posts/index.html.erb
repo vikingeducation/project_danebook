@@ -16,9 +16,8 @@
       <aside class = "col-md-4" id = "details">
         <section class = "row" id = "timeline-about">
           <header class="col-md-12">
-              <h4>About (text area)</h4>
+              <h4>About</h4>
           </header>
-
 
           <table class = "table about-table col-md-12">
             <tr>
@@ -42,7 +41,7 @@
 
         <section class = "row" id= "timeline-photos">
           <header class="col-md-12">
-              <h4>Photos (123) (copied text area)</h4>
+              <h4>Photos (123)</h4>
           </header>
 
           <div class="col-md-4 photo">
@@ -125,48 +124,20 @@
 
         <section class = "row" id = "timeline-friends">
           <header class="col-md-12">
-              <h4>Friends: 542 (copy text area)</h4>
+              <h4>Friends: <%= all_friends_count(@user) %></h4>
           </header>
 
-          <div class="col-md-4 friend">
-            <a class = "photo-link" href="#">
-              <%= image_tag("user_silhouette_generic.png") %>
-            </a>
-            <p><a href="#">Ron<br> Weasley</a></p>
-          </div>
-          <div class="col-md-4 friend">
-            <a class = "photo-link" href="#">
-              <%= image_tag("user_silhouette_generic.png") %>
-            </a>
-            <p><a href="#">Ginny<br> Weasley</a></p>
-          </div>
-          <div class="col-md-4 friend">
-            <a class = "photo-link" href="#">
-              <%= image_tag("user_silhouette_generic.png") %>
-            </a>
-            <p><a href="#">Hermione<br> Granger</a></p>
-          </div>
-          <div class="col-md-4 friend">
-            <a class = "photo-link" href="#">
-              <%= image_tag("user_silhouette_generic.png") %>
-            </a>
-            <p><a href="#">paragraph<br> text</a></p>
-          </div>
-          <div class="col-md-4 friend">
-            <a class = "photo-link" href="#">
-              <%= image_tag("user_silhouette_generic.png") %>
-            </a>
-            <p><a href="#">paragraph<br> text</a></p>
-          </div>
-          <div class="col-md-4 friend">
-            <a class = "photo-link" href="#">
-              <%= image_tag("user_silhouette_generic.png") %>
-            </a>
-            <p><a href="#">paragraph<br> text</a></p>
-          </div>
+          <% all_friends(@user).each do |friend| %>
+            <div class="col-md-4 friend">
+              <a class = "photo-link" href="#">
+                <%= image_tag("user_silhouette_generic.png") %>
+              </a>
+              <p><%= link_to "#{friend.first_name} #{friend.last_name}", user_timeline_path(friend) %></p>
+            </div>
+          <% end %>
 
           <div class="col-md-12">
-            <a href="friends.html">See more friends</a>
+            <%= link_to "See more friends", user_friendings_path(@user) %>
           </div>
         </section>
 

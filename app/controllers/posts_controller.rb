@@ -2,8 +2,8 @@ class PostsController < ApplicationController
 
   def index
     @user = User.find(params[:user_id])
-    @posts = @user.posts_chronologically
-    @post = current_user.posts.build if @user == current_user
+    @posts = Post.where(user_id: params[:user_id]).order(created_at: :desc)
+    @post = current_user.posts.build if signed_in_user?
   end
 
   def create

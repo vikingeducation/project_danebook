@@ -10,21 +10,20 @@ class FriendingsController < ApplicationController
 
   def create
     # this is current_user from params, need to get it from authentication system <--- CHANGE THIS
-    @friender = current_user
-    @friending_recipient = User.find(params[:user_id])
+    friending_recipient = User.find(params[:user_id])
 
-    if current_user.friended_users << @friending_recipient
-      flash[:success] = "Successfully friended #{@friending_recipient.name}"
+    if current_user.friended_users << friending_recipient
+      flash[:success] = "Successfully friended #{friending_recipient.name}"
       redirect_to :back
     else
-      flash[:error] = "Failed to friend! Sad :("
+      flash[:error] = "Failed to friend!"
       redirect_to :back
     end
   end
 
   def destroy
     # again, pulling user from params instead of authentication <--- CHANGE THIS
-    current_user = User.find(params[:user_id])
+
     unfriended_user = User.find(params[:id])
 
     # only look within current users's friendships, don't want to destroy other's friendships!

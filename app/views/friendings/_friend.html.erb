@@ -13,8 +13,7 @@
         <p><%= link_to "#{friend.first_name} #{friend.last_name}", user_timeline_path(friend) %></p>
         <p><%= all_friends_count(friend) %> Friend(s)</p>
       </div>
-      <form class="col-md-4 col-xs-12">
-        <div class="form-group">
+        <div class="col-md-4 col-xs-12">
 
           <% if !current_user.friended_users.include?(friend) && friend != current_user %>
             <%= button_to "Friend Me!", user_friendings_path(friend), method: :post, class: "btn btn-primary" %>
@@ -25,7 +24,6 @@
           <% end %>
 
         </div>
-      </form>
     </div>
   </div><!--friend entry-->
 

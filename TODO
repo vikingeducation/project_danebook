@@ -1,3 +1,22 @@
+Friend Search
+Newsfeed
+Testing
+Refactoring (presenter(s), helper(s), etc.)
+Fix yr damn errors
+Mailers
+
+Friend Search
+- Search form finds users where search terms match any part of first/last name
+- Display dem results "as in the mockup"
+
+Newsfeed
+- Redirect users to their newsfeed upon login
+- Only viewable by current user
+- Display chronological listing of posts from user's friends
+- Allow liking/commenting on these posts
+- Allow posting directly atop the newsfeed (like in Timeline)
+- Display recently-active list of friends on the left pane [late game]
+
 Errors:
 
 - "Like" display may break w/ 3+ likes... test w/ custom seeds later
@@ -18,24 +37,16 @@ Errors:
 - How to delete photos from S3 when deleted by user in my app?
 - Actually make profile pic & cover photo change on yr profile!
 - Mini-"friends" widget on Timeline displays random selection of User's pals
+---
+- can upload on other people's photos
+- extra templateUsers#edit
+- users/index incomplete
+- sez https://gentle-sierra-62675.herokuapp.com/photos?user_id=1 on photo index page
+- when I try to edit someone else's page, it redirects me to my own edit, but has their id still in the route
 
 Mailers
 - Send welcome e-mail upon signup in both html & plaintext
 - Send e-mail when user comments on yr photo or post (use asynchronous/BG processing)
-
-Newsfeed
-- Redirect users to their newsfeed upon login
-- Only viewable by current user
-- Display chronological listing of posts from user's friends
-- Allow liking/commenting on these posts
-- Allow posting directly atop the newsfeed (like in Timeline)
-- Display recently-active list of friends on the left pane [late game]
-
-Friend Search
-- Search form finds users where search terms match any part of first/last name
-- Display dem results "as in the mockup"
-
-Tests, Refactoring (presenter(s), helper(s), etc.)
 
 OPTIONAL
 

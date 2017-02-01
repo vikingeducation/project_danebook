@@ -2,9 +2,6 @@ class UsersController < ApplicationController
   before_action :require_current_user, :only => [:edit, :update, :destroy]
   skip_before_action :require_login, :only => [:new, :create]
 
-  def index
-  end
-
   def about
     @user = User.find(params[:id])
   end

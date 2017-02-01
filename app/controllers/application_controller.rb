@@ -36,7 +36,7 @@ class ApplicationController < ActionController::Base
     def signed_in_user?
       !!current_user
     end
-    helper_method :signed_in_user
+    helper_method :signed_in_user?
 
     def require_current_user
       unless params[:id] == current_user.id.to_s

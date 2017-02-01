@@ -4,18 +4,17 @@
 <div class="row">
   <header class="col-sm-12">
 
-    <div class="col-sm-1">
+<!--     <div class="col-sm-1">
     <img src="images/user_silhouette_generic.gif" alt="profile-pic" class="">    
-    </div>
-
+    </div> -->
 
 
     <div class="col-sm-offset-1 col-sm-3">
-      <h3>Harry Potter</h3>
+      <h3><%= full_name(user) %></h3>
     </div>
 
     <div class="col-sm-1">
-     <%= render 'shared/add_button' if @user != current_user %>     
+     <%= render 'shared/add_button' if user != current_user %>     
     </div>
 
 
@@ -36,8 +35,10 @@
     <div class="col-sm-1 menu-item">
       <b><%= link_to 'Friends'%></b>
     </div>
+    <% if user == current_user %>
     <div class="col-sm-offset-4 col-sm-2 menu-link">
-      <%= link_to "Edit Profile", edit_user_path(@user), class: 'pull-right' %>
+      <%= link_to "Edit Profile", edit_user_path(user), class: 'pull-right' %>
     </div>
+    <% end %>
   </div>
 </div>

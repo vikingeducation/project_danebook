@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   delete 'logout' => 'sessions#destroy'
 
   resources :users, 
-            :only => [:new, :create, :index, :edit, :update] do
+            :only => [:new, :create, :edit, :update] do
 
   resources :posts, :only => [:create, :destroy]
     get '/timeline' => 'posts#index'
@@ -19,8 +19,6 @@ Rails.application.routes.draw do
   get '/users/:id/about',
     to: 'users#about',
     as: 'about_user'
-
-
 
 
 end

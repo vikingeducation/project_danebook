@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170123095958) do
+ActiveRecord::Schema.define(version: 20170128100243) do
 
   create_table "comments", force: :cascade do |t|
     t.integer  "user_id"
@@ -38,6 +38,16 @@ ActiveRecord::Schema.define(version: 20170123095958) do
     t.index ["likable_id", "likable_type", "user_id"], name: "index_likes_on_likable_id_and_likable_type_and_user_id", unique: true
   end
 
+  create_table "photos", force: :cascade do |t|
+    t.integer  "user_id",            null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
   create_table "posts", force: :cascade do |t|
     t.text     "body",       null: false
     t.integer  "user_id",    null: false
@@ -59,20 +69,26 @@ ActiveRecord::Schema.define(version: 20170123095958) do
     t.integer  "year"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.integer  "picture_id"
+    t.integer  "cover_id"
     t.index ["user_id"], name: "index_profiles_on_user_id", unique: true
   end
 
   create_table "users", force: :cascade do |t|
     t.string   "username"
     t.string   "email"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
     t.string   "auth_token"
     t.string   "password_digest"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "gender"
     t.datetime "birthday"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
     t.index ["auth_token"], name: "index_users_on_auth_token", unique: true
   end
 

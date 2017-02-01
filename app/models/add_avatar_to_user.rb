@@ -1,0 +1,2 @@
+class AddAvatarToUser < ApplicationRecord
+end

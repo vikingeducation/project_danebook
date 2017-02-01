@@ -86,9 +86,9 @@
               <label for='birthday'>Birthday</label><br/>
                 <div class="row">
                   <div class='col-xs-12'>
-                    <%= profile_fields.select :month, (1..12), {prompt: 'Month'}, {class: 'form-control col-xs-4'} %>
-                    <%= profile_fields.select :day, (1..31), {prompt: 'Day'}, {class: 'form-control col-xs-4'} %>
-                    <%= profile_fields.select :year, (1905..Date.today.year), {prompt: 'Year', selected: Date.today.year}, {class: 'form-control col-xs-4'} %>
+                    <%= profile_fields.select :month, (1..12), {prompt: 'Month'}, {class: 'form-control col-md-2'} %>
+                    <%= profile_fields.select :day, (1..31), {prompt: 'Day'}, {class: 'form-control col-md-2'} %>
+                    <%= profile_fields.select :year, (1905..Date.today.year), {prompt: 'Year'}, {class: 'form-control col-md-2'} %>
                   </div>
                 </div>
               </div>

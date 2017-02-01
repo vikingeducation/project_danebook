@@ -1,5 +1,10 @@
 class User < ApplicationRecord
 
+  has_attached_file :avatar, :styles => { :medium => "300x300",
+                                          :thumb  => "100x100" },
+                                        default_url: "user_silhouette_generic.png"
+  validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
+
   before_create :generate_token
   before_create :create_profile
 
@@ -13,6 +18,7 @@ class User < ApplicationRecord
 
   has_many :liked_posts, through: :likes, source: :likable, source_type: "Post"
   has_many :liked_comments, through: :likes, source: :likable, source_type: "Comment"
+  has_many :liked_photos, through: :likes, source: :likable, source_type: "Photo"
 
   # when acting as the initiator of the friending
   has_many :initiated_friendings, foreign_key: :friender_id, class_name: "Friending"
@@ -21,6 +27,12 @@ class User < ApplicationRecord
   # when acting as the recipient of the friending
   has_many :received_friendings, foreign_key: :friend_id, class_name: "Friending"
   has_many :users_friended_by, through: :received_friendings, source: :friend_initiator
+
+  has_one :profile, dependent: :destroy
+  has_many :photos
+
+  belongs_to :profile_photo, class_name: "Photo"
+  belongs_to :cover_photo, class_name: "Photo"
 
   has_secure_password
 

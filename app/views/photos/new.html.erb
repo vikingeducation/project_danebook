@@ -1,0 +1,24 @@
+<%= render partial: 'shared/navbar' %>
+<main class="container" id="information-pane">
+  <header class="row">
+    <div class="col-md-offset-2 col-md-8 about-header">
+      <h2>Photos</h2>
+    </div>
+  </header>
+
+  <div class="col-md-4 col-md-offset-4">
+  <%= form_for @photo, url: user_photos_path(@user) do |photo_fields| %>
+    <br/>
+    <div class="field">
+      <%= photo_fields.label "Select a Photo to upload." %>
+      <%= photo_fields.file_field :image %>
+    </div>
+
+    <br/>
+
+    <div class="actions">
+      <%= photo_fields.submit "Upload Photo", class: "btn btn-success btn-md" %>
+    </div>
+  <% end %>
+
+</main>

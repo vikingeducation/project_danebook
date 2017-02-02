@@ -1,9 +1,9 @@
 class User < ApplicationRecord
 
   has_one :profile, inverse_of: :user, dependent: :destroy
-  has_many :posts
-  has_many :comments
-  has_many :likes
+  has_many :posts, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :likes, dependent: :destroy
 
   before_create :generate_token
   has_secure_password
@@ -18,14 +18,17 @@ class User < ApplicationRecord
 
   validates :first_name, :last_name, :length => { :in => 1..50}
 
-  validates :email, :format => { :with => /@/ }
+  validates :email, :format => { :with => /@/ },
+                    :uniqueness => true
 
-  validates :birth_date, :inclusion => { :in => 1..31 }
-  validates :birth_month, :inclusion => { :in => 1..12 }
-  validates :birth_year, :inclusion => { :in => 1900..2017 }
+  validates :birth_date, :inclusion => { :in => 1..31 },
+                         :numericality => { only_integer: true }
+  validates :birth_month, :inclusion => { :in => 1..12 },
+                          :numericality => { only_integer: true }
+  validates :birth_year, :inclusion => { :in => 1900..2017 },
+                         :numericality => { only_integer: true }
 
-  validates :password, :length => { :in => 6..30 }, 
-                       :allow_nil => true
+  validates :password, :length => { :in => 6..30 }
 
   accepts_nested_attributes_for :profile, :reject_if => :all_blank, 
                                           :allow_destroy => true

@@ -48,6 +48,8 @@ group :development, :test do
   gem 'byebug', platform: :mri
   # Rspec
   gem 'rspec-rails'
+  # Factory Girl
+  gem 'factory_girl_rails', '~> 4.0'
 end
 
 group :development do
@@ -59,6 +61,12 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   # Guard
   gem 'guard-rspec', require: false
+end
+
+group :test do
+  gem 'capybara'
+  gem 'launchy'
+  gem 'shoulda-matchers', require: false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

@@ -17,9 +17,9 @@ describe User do
       should validate_length_of(:last_name).is_at_least(1).is_at_most(50)
     end
 
-    it 'password is acceptable length' do
-      should validate_length_of(:password).is_at_least(6).is_at_most(30)
-    end
+    # it 'password is acceptable length' do
+    #   should validate_length_of(:password).is_at_least(1).is_at_most(30)
+    # end
 
     it 'birthday values should only accept integer values' do
       should validate_numericality_of(:birth_date).only_integer

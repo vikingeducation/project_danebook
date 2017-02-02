@@ -7,6 +7,7 @@ FactoryGirl.define do
     birth_date 24
     birth_month 10
     birth_year 1986
+    gender true
     password 'legend'
   end
 

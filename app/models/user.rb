@@ -28,8 +28,6 @@ class User < ApplicationRecord
   validates :birth_year, :inclusion => { :in => 1900..2017 },
                          :numericality => { only_integer: true }
 
-  validates :password, :length => { :in => 6..30 }
-
   accepts_nested_attributes_for :profile, :reject_if => :all_blank, 
                                           :allow_destroy => true
 

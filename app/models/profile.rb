@@ -7,10 +7,10 @@ class Profile < ApplicationRecord
   validates :college, 
             :hometown, 
             :current_location, 
-            :length => { :in => 1..50 }
+            :length => { :maximum => 50 }
 
-  validates :telephone, :length => { :in => 10..11 }
+  validates :telephone, :length => { :maximum => 11 }
 
-  validates :words, :about_me, :length => { :in => 1..300 }
+  validates :words, :about_me, :length => { :maximum => 300 }
   
 end

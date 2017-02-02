@@ -24,7 +24,7 @@ class UsersController < ApplicationController
       flash[:success] = 'Welcome to Danebook!'
       redirect_to about_user_path(@user)
     else
-      flash[:warning] = "Sorry, there was something wrong with your form!"
+      flash[:warning] = @user.errors.full_messages
       render :new
     end
   end
@@ -40,7 +40,7 @@ class UsersController < ApplicationController
       flash[:success] = "Profile updated!"
       redirect_to about_user_path(@user)
     else
-      flash[:warning] = 'Error! Profile could not be updated!'
+      flash[:warning] = @user.errors.full_messages
       render :edit
     end
   end

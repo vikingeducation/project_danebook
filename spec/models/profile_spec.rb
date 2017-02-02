@@ -23,12 +23,12 @@ describe Profile do
       expect(invalid_profile).not_to be_valid
     end
 
-    it { should validate_length_of(:college).is_at_least(1).is_at_most(50) }
-    it { should validate_length_of(:hometown).is_at_least(1).is_at_most(50) }
-    it { should validate_length_of(:current_location).is_at_least(1).is_at_most(50) }
-    it { should validate_length_of(:telephone).is_at_least(10).is_at_most(11) }
-    it {should validate_length_of(:words).is_at_least(1).is_at_most(300) }
-    it {should validate_length_of(:about_me).is_at_least(1).is_at_most(300) }
+    it { should validate_length_of(:college).is_at_most(50) }
+    it { should validate_length_of(:hometown).is_at_most(50) }
+    it { should validate_length_of(:current_location).is_at_most(50) }
+    it { should validate_length_of(:telephone).is_at_most(11) }
+    it {should validate_length_of(:words).is_at_most(300) }
+    it {should validate_length_of(:about_me).is_at_most(300) }
 
   end
 

@@ -10,11 +10,11 @@ class ApplicationController < ActionController::Base
       @current_user = user
     end
 
-    def permanent_sign_in(user)
-      user.regenerate_auth_token
-      cookies.permanent_sign_in[:auth_token] = user.auth_token
-      @current_user = user
-    end
+    # def permanent_sign_in(user)
+    #   user.regenerate_auth_token
+    #   cookies.permanent_sign_in[:auth_token] = user.auth_token
+    #   @current_user = user
+    # end
 
     def sign_out
       @current_user = nil

@@ -67,6 +67,7 @@ group :test do
   gem 'capybara'
   gem 'launchy'
   gem 'shoulda-matchers', require: false
+    gem 'pry-rails'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

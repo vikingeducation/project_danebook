@@ -17,3 +17,34 @@
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+/*
+============================
+FLASH
+============================
+*/
+
+.alert {
+  margin-top: -20px;
+}
+
+/*
+============================
+NAV + SIGNUP
+============================
+*/
+
+.navbar-static-top {
+  background-color: #3b5998;
+  .navbar-brand {
+    color: #fff;
+  }
+  .navbar-form {
+    .search {
+      width: 400px;
+    }
+  }
+  a {
+    color: #fff;
+  }
+}

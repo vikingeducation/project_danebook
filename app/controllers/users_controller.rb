@@ -36,6 +36,7 @@ class UsersController < ApplicationController
 
   def update
     @user = current_user
+    set_photos
     if @user.update(user_params)
       flash[:success] = "Profile updated!"
       redirect_to about_user_path(@user)

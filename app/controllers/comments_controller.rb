@@ -3,13 +3,13 @@ class CommentsController < ApplicationController
 
   def create
     @comment = current_user.comments.build(comment_params)
-    @user = post_author(@comment.post.id)
+    user = @comment.commentable.user
     if @comment.save
       flash[:success] = "Comment added!"
-      redirect_to user_timeline_path(@user)
+      redirect_to user_timeline_path(user)
     else
       flash[:warning] = @comment.errors.full_messages
-      redirect_to user_timeline_path(@user)
+      redirect_to user_timeline_path(user)
     end
   end
 
@@ -26,7 +26,7 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:content, :post_id)
+    params.require(:comment).permit(:content, :commentable_id, :commentable_type)
   end
 
 end

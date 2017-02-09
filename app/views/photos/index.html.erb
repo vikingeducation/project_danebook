@@ -1,0 +1,45 @@
+<%= render partial: 'shared/header', locals: { user: current_user } %>
+
+<div class="row section-title">
+  <h1 class="col-sm-offset-2 col-sm-8 text-center">Photos</h1>
+  <% if @user == current_user %>
+    <div class="col-sm-2 add-photo">
+      <%= link_to 'Add Photo', new_photo_path, class: 'pull-right btn btn-primary' %>
+    </div>
+    
+  <% end %>
+</div>
+
+<!-PHOTOS->
+
+<div class="row">
+<div class="content col-sm-12 photos-content">
+
+<% @user.photos.each do |photo| %>
+
+<section class="photo">
+  <div class="publish-wrap">
+    <%= photo_link(photo) %>
+    <p class="publish-date"><%= photo.created_at %></p>
+  </div>
+</section>
+
+<% end %>
+
+</div>
+</div>
+
+
+
+
+
+
+
+
+  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+
+</body>
+</html>

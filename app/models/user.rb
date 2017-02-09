@@ -4,7 +4,21 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :likes, dependent: :destroy
+  has_many :photos, dependent: :destroy
+  belongs_to :profile_photo, class_name: "Photo", optional: true
+  belongs_to :cover_photo, class_name: "Photo", optional: true
 
+  has_many :initiated_friendings, :dependent => :destroy,
+                                  :foreign_key => :friender_id,
+                                  :class_name => "Friending"
+  has_many :friendee_users,       :through => :initiated_friendings,
+                                  :source => :friend_recipient
+
+  has_many :received_friendings,  :dependent => :destroy,
+                                  :foreign_key => :friendee_id,
+                                  :class_name => 'Friending'
+  has_many :friender_users,       :through => :received_friendings,
+                                  :source => :friend_initiator
   before_create :generate_token
   has_secure_password
 
@@ -41,6 +55,27 @@ class User < ApplicationRecord
     self.auth_token = nil
     generate_token
     save!
+  end
+
+  def friends?(user_id)
+    friender_user_ids.include?(user_id) || friendee_user_ids.include?(user_id)
+  end
+
+  def number_of_friends
+    friender_users.count + friendee_users.count
+  end
+
+  def all_friends
+    friender_users + friendee_users
+  end
+
+  def delete_friendship(friend)
+    return false unless friends?(friend.id)
+    if friender_user_ids.include?(friend.id)
+      friender_users.destroy(friend)
+    elsif friendee_user_ids.include?(friend.id)
+      friendee_users.destroy(friend)
+    end
   end
 
 

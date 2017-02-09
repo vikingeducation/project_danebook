@@ -7,19 +7,19 @@
         <table class="table table-borderless">
             <tr>
               <td>Birthday:</td>
-              <td><%= @user.birth_month %>/<%= @user.birth_date %>/<%= @user.birth_year %></td>
+              <td><%= user.birth_month %>/<%= user.birth_date %>/<%= user.birth_year %></td>
             </tr>
              <tr>
               <td>College:</td>
-              <td><%= @user.profile ? @user.profile.college : 'n/a' %></td>
+              <td><%= user.profile ? user.profile.college : 'n/a' %></td>
             </tr>
              <tr>
               <td>Hometown:</td>
-              <td><%= @user.profile ? @user.profile.hometown : 'n/a' %></td>
+              <td><%= user.profile ? user.profile.hometown : 'n/a' %></td>
             </tr>
              <tr>
               <td>Current Location:</td>
-              <td><%= @user.profile ? @user.profile.current_location : 'n/a' %></td>
+              <td><%= user.profile ? user.profile.current_location : 'n/a' %></td>
             </tr>
           </table>
       </section>
@@ -27,48 +27,34 @@
 
   <!-PHOTOS section->
   <section class="row">
-    <h5 class="timeline-title">Photos (123)</h5>
+    <h5 class="timeline-title">Photos</h5>
     <section class="timeline-content col-sm-12">
-      <img class="photos-img" src="images/icon_photo_small.png">
-      <img class="photos-img" src="images/icon_photo_small.png">
-      <img class="photos-img" src="images/icon_photo_small.png">
-      <img class="photos-img" src="images/icon_photo_small.png">
-      <img class="photos-img" src="images/icon_photo_small.png">
-      <img class="photos-img" src="images/icon_photo_small.png">
-      <img class="photos-img" src="images/icon_photo_small.png">
-      <img class="photos-img" src="images/icon_photo_small.png">
-      <img class="photos-img" src="images/icon_photo_small.png">     
-      <a class="text-center"  href="photos.html">See more Photos</a>
+      <% user.photos.each do |photo| %>    
+        <%= image_tag photo.image.url('thumb') %>
+      <% end %>
+      <p class='text-center'>
+        <%= link_to 'See More Photos', user_photos_path(user) %>
+      </p>
     </section>
 
   </section>
 
   <!-FRIENDS section->
   <section class="row">
-    <h5 class="timeline-title">Friends (542)</h5>
+    <h5 class="timeline-title">Friends (<%= user.number_of_friends %>)</h5>
     <section class="timeline-content col-sm-12">
+    <% user.all_friends.each do |friend| %>
+      <div class="friend-photo">
+        <%= profile_photo(friend, 'thumb') %>
+        <span class="text-center">
+          <%= link_to full_name(friend), user_timeline_path(friend) %>
+        </span>      
+      </div>
+    <% end %>
 
-    <div class="friend-photo">
-      <img class="photos-img" src="images/icon_photo_small.png">
-      <a href="#">Ron Weasley</a>       
-    </div>
-    <div class="friend-photo">
-      <img class="photos-img" src="images/icon_photo_small.png">
-      <a href="#">Ron Weasley</a>       
-    </div>    <div class="friend-photo">
-      <img class="photos-img" src="images/icon_photo_small.png">
-      <a href="#">Ron Weasley</a>       
-    </div>    <div class="friend-photo">
-      <img class="photos-img" src="images/icon_photo_small.png">
-      <a href="#">Ron Weasley</a>       
-    </div>    <div class="friend-photo">
-      <img class="photos-img" src="images/icon_photo_small.png">
-      <a href="#">Ron Weasley</a>       
-    </div>    <div class="friend-photo">
-      <img class="photos-img" src="images/icon_photo_small.png">
-      <a href="#">Ron Weasley</a>       
-    </div>    
-      <a class="text-center" href="friends.html">See more Friends</a>
+      <p class='text-center'>
+        <%= link_to 'See More Friends', user_friends_path(user) %>
+      </p>
     </section>
   </section>
 </div>

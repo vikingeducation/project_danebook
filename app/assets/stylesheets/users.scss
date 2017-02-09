@@ -1,36 +1,5 @@
 /*
 ============================
-FLASH
-============================
-*/
-
-.alert {
-  margin-top: -20px;
-}
-
-/*
-============================
-NAV + SIGNUP
-============================
-*/
-
-.navbar-static-top {
-  background-color: #3b5998;
-  .navbar-brand {
-    color: #fff;
-  }
-  .navbar-form {
-    .search {
-      width: 400px;
-    }
-  }
-  a {
-    color: #fff;
-  }
-}
-
-/*
-============================
 SIGN UP
 ============================
 */
@@ -67,21 +36,30 @@ HEADER
 header {
   height: 350px;
   width: 100%;
-  background-color: #eee;
-  background-image: url(images/hogwarts_small.jpg);
   background-size: 100%;
-  border: 2px solid black;
+  border: 2px solid #eee;
   margin-top: -20px;
   position: relative;
-  img {
+  .cover-photo {
+    overflow: hidden;
+    img {
+      width: 100%;
+      height: 346px;
+    }
+  }
+  .profile-photo {
     position: absolute;
-    top: 135px;
-    left: 20px;
+    top: -90px;
+    left: 15px;
     border: 2px solid black;
+    img {
+      width: 100px;
+      height: 100px;
+    }
   }
   h3 {
     position: absolute; 
-    top: 270px;
+    top: -80px;
     font-size: 40px;
   }
   .friend-button {
@@ -93,12 +71,12 @@ header {
 .toolbar {
   height: 42px;
   width: 100%;
-  border: 2px solid black;
+  border: 2px solid #ddd;
   border-top: none;
   .menu-item {
     height: 42px;
-    border-left: 1px solid black;
-    border-right: 1px solid black;
+/*    border-left: 1px solid black;
+    border-right: 1px solid black;*/
     padding-top: 10px;
   }
   .active {
@@ -188,12 +166,16 @@ PHOTOS
 ============================
 */
 
+.add-photo {
+  margin-top: 15px;
+}
+
 .photos-content {
   padding: 20px;
 }
 
 .photo {
-  border: 2px solid black;
+  border: 2px solid #ddd;
   height: 235px;
   width: 235px;
   display: inline-block;
@@ -223,26 +205,30 @@ PHOTOS
   }
 }
 
+.photo-poster {
+  margin-bottom: 110px;
+}
+.photo-likes {
+  margin-bottom: 20px;
+}
+
+.profile-photo {
+  img {
+    width: 100px;
+    height: 100px;
+    border: 2px solid black;
+  }
+}
+
 /*
 ============================
 TIMELINE
 ============================
 */
 
-
-.left {
-  background-color: red;
-  height: 500px;
-}
-
-.right {
-  background-color: blue;
-  height: 500px;
-}
-
 .timeline-title {
-  background-color: #ddd;
-  border: 2px solid black;
+  background-color: #eee;
+  border: 2px solid #ddd;
   border-bottom: none;
   margin-top: 25px;
   padding: 10px;
@@ -254,14 +240,14 @@ TIMELINE
 }
 
 .timeline-content {
-  border: 2px solid black;
+  border: 2px solid #ddd;
   margin-top: -10px;
   padding-top: 10px;
   padding-bottom: 10px;
   img,
   .friend-photo {
     display: inline-block;
-    width:100px;
+    width: 100px;
     margin: 5px;
     a {
     text-align: center;
@@ -269,10 +255,6 @@ TIMELINE
   }
   img {
     height: 100px;
-  }
-  a {
-    display: block;
-    text-decoration: underline;
   }
   .poster {
   position: relative;
@@ -299,69 +281,25 @@ TIMELINE
   margin-bottom: 3px;
 }
 
-.comment-media {
-  border: 1px solid black;
-  height: 50px;
-  width: 50px;
-  margin-left: 30px;
-}
-
-.post-content {
-  border: 2px solid black;
-  margin-top: 25px;
-  padding-top: 10px;
-  padding-bottom: 10px;
+.photo-container {
   img {
-    height: 100px;
-  }
-  a {
-    display: block;
-    text-decoration: underline;
-  }
-  .poster {
-  position: relative;
-  img {
-    display: inline-block;
     height: 70px;
     width: 70px;
   }
-    .poster-name {
-      position: absolute;
-      top: 15px;
-      left: 90px;
-      a {
-      font-size: 18px;
-      }
-      span {
-        color: #ddd;
-      }
-    }
-  }
+}
+
+.post-content {
+  border: 2px solid #ddd;
+  margin-top: 25px;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 .post-bar {
-  background-color: #ddd;
-  border: 2px solid black;
+  background-color: #eee;
+  border: 2px solid #ddd;
   margin-top: -10px;
   padding: 10px;
   margin-bottom: 30px;
 }
-
-/*.comment {
-  position: relative;
-  height: 150px;
-  img {
-    display: inline-block;
-    background-color: #333;
-    height: 70px;
-    width: 70px;
-    margin-left: 10px;
-  }
-  .comment-text {
-    position: absolute;
-    left: 100px;
-    width: 600px;
-    top: 0;
-  }
-}*/
 

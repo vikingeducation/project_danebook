@@ -2,17 +2,23 @@
 
   <section class="post-content col-xs-11 col-xs-offset-1">
   <!-- User Info -->
-     <div class="poster">
-         <img src="images/icon_photo_small.png">
-         <div class="poster-name">
-           <%= link_to post.user.first_name, about_user_path(post.user) %>
-           <span>Posted on <%= post.created_at %></span>
-         </div>
-     </div>
+
+  <div class="row">
+    <div class="col-sm-2">
+      <div class="photo-container">
+        <%= profile_photo(user) %>
+      </div>
+    </div>
+
+    <div class="col-sm-10">
+      <%= link_to post.user.first_name, about_user_path(post.user) %>
+      <span>Posted on <%= post.created_at %></span>
+      <p><%= post.content %></p>
+    </div>
+  </div>
 
   <!-- Post Body -->
-  <p><%= post.content %></p>
-`
+
   </section>
     <div class="post-bar col-xs-11 col-xs-offset-1">
 
@@ -28,7 +34,7 @@
           <%= render partial: 'comment', locals: { comment: comment } %>
       <% end %>
         
-      <%= render partial: 'new_comment_form', locals: { post: post } %>
+      <%= render partial: 'new_comment_form', locals: { commentable: post } %>
 
     </div>
 

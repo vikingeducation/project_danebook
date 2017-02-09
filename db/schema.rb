@@ -10,17 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170125063928) do
+ActiveRecord::Schema.define(version: 20170209012011) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "comments", force: :cascade do |t|
     t.integer  "user_id"
-    t.integer  "post_id"
     t.string   "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
+    t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id", using: :btree
+  end
+
+  create_table "friendings", force: :cascade do |t|
+    t.integer  "friender_id", null: false
+    t.integer  "friendee_id", null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["friender_id", "friendee_id"], name: "index_friendings_on_friender_id_and_friendee_id", unique: true, using: :btree
   end
 
   create_table "likes", force: :cascade do |t|
@@ -30,6 +40,16 @@ ActiveRecord::Schema.define(version: 20170125063928) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.index ["likable_type", "likable_id"], name: "index_likes_on_likable_type_and_likable_id", using: :btree
+  end
+
+  create_table "photos", force: :cascade do |t|
+    t.integer  "user_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -54,8 +74,8 @@ ActiveRecord::Schema.define(version: 20170125063928) do
   create_table "users", force: :cascade do |t|
     t.string   "email"
     t.string   "password_digest"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.string   "first_name"
     t.string   "last_name"
     t.integer  "birth_date"
@@ -63,6 +83,8 @@ ActiveRecord::Schema.define(version: 20170125063928) do
     t.integer  "birth_year"
     t.boolean  "gender"
     t.string   "auth_token"
+    t.integer  "profile_photo_id"
+    t.integer  "cover_photo_id"
     t.index ["auth_token"], name: "index_users_on_auth_token", unique: true, using: :btree
   end
 

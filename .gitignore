@@ -24,3 +24,6 @@
 
 .sass-cache
 >>>>>>> 5d673ed28d9ecc6caea75b04498ce02b10a67b76
+
+# Ignore application configuration
+/config/application.yml

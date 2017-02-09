@@ -5,33 +5,48 @@
 </div>
 
 <div class="row">
-  <div class="content col-sm-12 photos-content">
+  <div class="section-content col-sm-12 photos-content">
 
     <div class="col-sm-7">
-          <div class="row">
-            <div class="col-sm-12">
-              <div class="pull-right">
-                <%= image_tag @photo.image.url(:large) %>
-              </div>
-            </div>
-          </div>
-              
-          <div class="row">
-            <div class="col-sm-12">
-              <div class="pull-right">
-                <%= render partial: 'shared/photo_actions', locals: { user: current_user, photo: @photo } if @user == current_user %>
-              </div>
-            </div>
-          </div>
+      <%= render partial: 'photo_on_show', locals: { photo: @photo } %>
     </div>
+
         
     <div class="col-sm-5">
-      <%= render partial: 'photo_poster', locals: { photo: @photo } %> 
 
-      <%= render partial: 'photo_comments', locals: { photo: @photo } unless @photo.comments.empty? %>
+          <%= render partial: 'photo_poster', locals: { photo: @photo } %> 
 
-      <%= render partial: 'posts/new_comment_form', locals: { commentable: @photo } %>
+
+    <div class="row">
+
+      <div class="col-sm-12">
+
+        <div class="photo-comments">
+          <p class="photo-likes">
+            <%= like_or_unlike(@photo) %> <%= like_count(@photo) %>
+          </p>  
+
+          <%= render partial: 'photo_comments', locals: { photo: @photo } unless @photo.comments.empty? %>
+
+
+        <%= render partial: 'posts/new_comment_form', locals: { commentable: @photo } %>
+
+        </div>
+   
+
+
+
+      </div>
+
     </div>
+
+
+
+    </div>
+
+
+
+
 
   </div>
 </div>

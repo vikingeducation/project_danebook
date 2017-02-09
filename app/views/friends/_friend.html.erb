@@ -1,12 +1,17 @@
 <div class="col-sm-6">
   <section class="friend">
-      <img src="images/icon_photo_small.png">
+      <%= profile_photo(friend) %>
+
       <div class="friend-name">
-          <a href="#"><%= link_to full_name(friend), user_timeline_path(friend) %></a>
-          <p><%= pluralize(friend.number_of_friends, 'friend') %></p>
+          <%= link_to full_name(friend), user_timeline_path(friend) %>
+          <p class='sub-heading'><%= pluralize(friend.number_of_friends, 'friend') %></p>
       </div>
       <% if current_user == user %>
-        <button class="btn">Unfriend Me</button>
+        <%= link_to 'Unfriend', user_friend_path(id: current_user.id), method: "DELETE", class: 'btn btn-info' %>
       <% end %>
+
+
+
+
   </section>    
 </div>

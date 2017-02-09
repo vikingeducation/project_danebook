@@ -5,12 +5,17 @@
 
 
 <div class="row section-title">
-  <h1 class="text-center">About</h1>
-<!--   <%= link_to 'Edit Your Profile', edit_user_path(@user), class: 'btn btn-primary' %> -->
+  <h1 class="col-sm-offset-2 col-sm-8 text-center">About</h1>
+  <% if @user == current_user %>
+    <div class="col-sm-2 section-button">
+        <%= link_to 'Edit Your Profile', edit_user_path(@user), class: 'pull-right btn btn-info' %>  
+    </div>
+  <% end %>
+
 </div>
 
 <div class="row">
-  <div class="content col-sm-12">
+  <div class="section-content col-sm-12">
        <div class="col-sm-5">
           <section>
               <h3>Basic Information</h3>

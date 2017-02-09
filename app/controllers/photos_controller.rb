@@ -1,4 +1,5 @@
 class PhotosController < ApplicationController
+  before_action :redirect_if_empty_form, only: [:create]
 
   def index
     @user = User.find(params[:user_id])
@@ -14,10 +15,10 @@ class PhotosController < ApplicationController
   end
 
   def create
-    if params[:photo][:url].present?
+    if params[:photo] && params[:photo][:url]
       @photo = current_user.photos.build
       @photo.picture_from_url(params[:photo][:url])
-    else
+    elsif params[:photo]
       @photo = current_user.photos.build(photo_params)
     end
 
@@ -31,7 +32,7 @@ class PhotosController < ApplicationController
   end
 
   def update
-    set_photos
+    set_photo
     if current_user.save
       flash[:success] = "Photo set"
       redirect_to user_photos_path(current_user)
@@ -42,6 +43,14 @@ class PhotosController < ApplicationController
   end
 
   def destroy
+    photo = Photo.find(params[:id])
+    if photo.destroy
+      flash[:success] = 'Photo deleted!'
+      redirect_to user_photos_path(current_user)
+    else
+      flash[:warning] = "Couldn't delete photo!"
+      redirect_to user_photos_path(current_user)
+    end
   end
 
   private
@@ -50,7 +59,7 @@ class PhotosController < ApplicationController
     params.require(:photo).permit(:user_id, :url, :image, :delete_image)
   end
 
-  def set_photos
+  def set_photo
     if params[:profile_photo_id]
       current_user.profile_photo = Photo.find(params[:profile_photo_id])
     elsif params[:cover_photo_id]
@@ -58,5 +67,11 @@ class PhotosController < ApplicationController
     end
   end
 
+def redirect_if_empty_form
+  unless params[:photo]
+    flash[:warning] = 'Empty form!'
+    redirect_to new_photo_path
+  end
+end
 
 end

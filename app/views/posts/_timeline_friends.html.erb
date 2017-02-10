@@ -1,0 +1,20 @@
+<section class="row">
+  <h5 class="timeline-title">Friends (<%= user.number_of_friends %>)</h5>
+  <section class="timeline-content col-sm-12">
+  <% user.all_friends.each do |friend| %>
+    <div class="friend-photo">
+      <%= profile_photo(friend, 'thumb') %>
+      <span class="text-center">
+        <%= link_to full_name(friend), user_timeline_path(friend) %>
+      </span>      
+    </div>
+  <% end %>
+
+    <p class='text-center'>
+    <br>
+      <strong>
+        <%= link_to 'See More Friends', user_friends_path(user) %>
+      </strong>
+    </p>
+  </section>
+</section>

@@ -9,7 +9,7 @@
 <div class="row">
   <div class="col-sm-12">
     <div class="pull-right">
-      <%= render partial: 'shared/photo_actions', locals: { user: current_user, photo: photo } if @user == current_user %>
+      <%= render partial: 'photo_actions', locals: { user: current_user, photo: photo } if @user == current_user %>
     </div>
   </div>
 </div>

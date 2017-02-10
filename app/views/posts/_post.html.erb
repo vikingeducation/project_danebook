@@ -11,8 +11,10 @@
       </div>
 
       <div class="col-sm-10">
-        <%= link_to post.user.first_name, about_user_path(post.user) %>
-        <p class="sub-heading">Posted on <%= post.created_at %></p>
+        <strong>
+          <%= link_to full_name(post.user), about_user_path(post.user) %>
+        </strong>
+        <p class="sub-heading"><%= posted_on(post.created_at) %></p>
         <p><%= post.content %></p>
       </div>
     </div>
@@ -24,15 +26,17 @@
   <section class="post-bar col-xs-11 col-xs-offset-1">
 
     <%= render partial: 'posts/post_actions', locals: { post: post, user: user } %>
-    <br>
 
 <!-- Comments -->
 
+<div class="col-xs-offset-2 col-xs-10">
     <% post.comments.each do |comment| %>
-        <%= render partial: 'comment', locals: { comment: comment } %>
-    <% end %>
+        <%= render partial: 'comments/comment', locals: { comment: comment } %>
+    <% end %>  
+</div>
+
       
-    <%= render partial: 'posts/new_comment_form', locals: { commentable: post } %>
+    <%= render partial: 'comments/new_comment_form', locals: { commentable: post } %>
 
   </section>
 

@@ -1,8 +1,7 @@
 module ApplicationHelper
 
-  def post_author(post_id)
-    post = Post.find(post_id)
-    user = User.find(post.user_id)
+  def posted_on(time)
+    time.strftime("Posted on %m/%d/%Y")
   end
 
 end

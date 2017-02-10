@@ -22,19 +22,19 @@
               <table class="table table-borderless">
                 <tr>
                   <td>Birthday:</td>
-                  <td><%= @user.birth_month %>/<%= @user.birth_date %>/<%= @user.birth_year %></td>
+                  <td><%= display_birthday(@user) %></td>
                 </tr>
                  <tr>
                   <td>College:</td>
-                  <td><%= @user.profile ? @user.profile.college : 'n/a' %></td>
+                  <td><%= display_college(@user) %></td>
                 </tr>
                  <tr>
                   <td>Hometown:</td>
-                  <td><%= @user.profile ? @user.profile.hometown : 'n/a' %></td>
+                  <td><%= display_hometown(@user) %></td>
                 </tr>
                  <tr>
                   <td>Current Location:</td>
-                  <td><%= @user.profile ? @user.profile.current_location : 'n/a' %></td>
+                  <td><%= display_location(@user) %></td>
                 </tr>
               </table>
             </section>
@@ -48,7 +48,7 @@
                 </tr>
                 <tr>
                   <td>Telephone:</td>
-                  <td><%= @user.profile ? @user.profile.telephone : 'n/a' %></td>
+                  <td><%= display_telephone(@user) %></td>
                 </tr>
               </table>
             </section>
@@ -57,12 +57,12 @@
         <div class="col-sm-6 col-sm-offset-1">
           <section>
             <h3>Words to Live By</h3>
-            <p><%= @user.profile ? @user.profile.words : 'n/a' %></p>
+            <p><%= display_words(@user) %></p>
           </section>
 
           <section>
             <h3>About Me</h3>
-            <p><%= @user.profile ? @user.profile.about_me : 'n/a' %></p>
+            <p><%= display_about_me(@user) %></p>
           </section>
         </div>
 

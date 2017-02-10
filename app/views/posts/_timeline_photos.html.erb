@@ -1,0 +1,14 @@
+<section class="row">
+  <h5 class="timeline-title">Photos</h5>
+  <section class="timeline-content col-sm-12">
+    <% user.photos.each do |photo| %>    
+      <%= image_tag photo.image.url('thumb') %>
+    <% end %>
+    <p class='text-center'>
+    <br>
+      <strong>
+        <%= link_to 'See More Photos', user_photos_path(user) %>
+      </strong>
+    </p>
+  </section>
+</section>

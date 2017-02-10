@@ -1,57 +1,13 @@
-<div class="row">
+<div class="row">  
+  <%= render partial: 'newsfeed_sidebar', locals: { user: @user, friends: @friends } %>
+</div>
+
+<div class="col-sm-8">
+  <%= render partial: 'posts/new_post' %>
   
-  <div class="newsfeed-sidebar col-sm-4">
-
-  <div class="row">
-    <div class="user-profile col-sm-3">
-      <div class="row">
-        <%= profile_photo(@user) %>
-      </div>
-    </div>
-
-    <div class="col-sm-9">
-      <h2><%= link_to full_name(@user), user_timeline_path(@user) %></h2>
-      <h4><%= link_to 'Edit Profile', edit_user_path(@user) %></h4>
-    </div>
-  </div>
-
-  <div class="row">
-    <h3>Recently Active</h3>
-    <% @friends.each do |friend| %>
-
-
-
-<div class="col-sm-2">
-        <div class="row">
-          <div class="photo-container">
-            <%= profile_photo(User.find(friend), 'thumb') %>
-          </div>        
-        </div>
-      </div>
-
-      <div class="col-sm-10">
-        <div class="row">
-
-          <%= link_to full_name(User.find(friend), user_timeline_path(User.find(friend) %>
-          <p><%= User.find(friend.posts.last.created_at %></p>            
-        </div>
-    
-      </div>  
-
-
-
-
-
-
-    <% end %>
-  </div>
-    
-  </div>
-
-  <div class="col-sm-8">
-    <%= render partial: 'posts/new_post' %>
-    <% @posts.all.each do |post| %>
-      <p><%= render partial: 'posts/post', locals: { post: post, user: post.user } %></p>
-    <% end %>
-  </div>
+  <% @posts.all.each do |post| %>
+    <p>
+      <%= render partial: 'posts/post', locals: { post: post, user: post.user } %>  
+    </p>
+  <% end %> 
 </div>

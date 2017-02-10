@@ -5,15 +5,15 @@
       <div class="col-sm-3">
         <div class="row">
           <div class="profile-photo">
-            <%= profile_photo(photo.user, 'thumb') %>
+            <%= profile_photo(user, 'thumb') %>
           </div>        
         </div>
       </div>
 
       <div class="col-sm-8">
         <div class="row">
-          <strong><%= link_to full_name(photo.user), about_user_path(photo.user) %></strong>
-          <p><%= posted_on(photo.created_at) %></p>            
+          <%= link_to user.first_name, about_user_path(user) %>
+          <p class="sub-heading"><%= posted_on(time) %></p>          
         </div>
     
       </div>  

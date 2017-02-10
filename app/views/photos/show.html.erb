@@ -14,30 +14,23 @@
         
     <div class="col-sm-5">
 
-          <%= render partial: 'photo_poster', locals: { photo: @photo } %> 
+    <%= render partial: 'photo_poster', locals: { photo: @photo } %> 
 
 
     <div class="row">
-
       <div class="col-sm-12">
-
         <div class="photo-comments">
-          <p class="photo-likes">
-            <%= like_or_unlike(@photo) %> <%= like_count(@photo) %>
-          </p>  
+          <div class="photo-likes">
+          <strong><%= like_or_unlike(@photo) %> </strong>
+          <p><%= like_count(@photo) %></p>
+          
+            </div>  
 
           <%= render partial: 'photo_comments', locals: { photo: @photo } unless @photo.comments.empty? %>
 
-
-        <%= render partial: 'posts/new_comment_form', locals: { commentable: @photo } %>
-
+          <%= render partial: 'comments/new_comment_form', locals: { commentable: @photo } %>
         </div>
-   
-
-
-
       </div>
-
     </div>
 
 

@@ -2,6 +2,7 @@
 
 <div class="row">
   <%= render partial: 'timeline_sidebar', locals: { user: @user } %>
+
 <div class="col-sm-8">
 
 <%= render 'new_post' if @user == current_user %>
@@ -9,5 +10,9 @@
 <% @user.posts.each do |post| %>
   <%= render partial: 'post', locals: { post: post, user: @user } %> 
 <% end %>
+
+</div>
+
+</div>
 
 

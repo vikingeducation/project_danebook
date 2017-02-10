@@ -1,0 +1,28 @@
+<div class="row">
+  <div class="col-sm-12">
+
+  <div class="photo-poster">
+      <div class="col-sm-3">
+        <div class="row">
+          <div class="photo-container">
+            <%= profile_photo(comment.user, 'thumb') %>
+          </div>        
+        </div>
+      </div>
+
+      <div class="col-sm-9">
+        <div class="row">
+          <strong><%= link_to full_name(comment.user), user_timeline_path(comment.user) %></strong>
+          <p class="sub-heading"><%= posted_on(comment.created_at) %></p>            
+          <p><%= comment.content %></p>
+          <strong><%= like_or_unlike(comment) %></strong>
+          <strong><%= delete_comment_link(comment) if comment.user == current_user %></strong>
+          <p><%= like_count(comment) %></p>
+        </div>
+    
+      </div>  
+    </div>
+
+  </div>      
+</div>
+<br>

@@ -11,10 +11,12 @@ gem 'hirb'
 gem 'paperclip'
 gem 'figaro'
 gem 'aws-sdk'
+gem 'delayed_job_active_record'
 
 group :development do
   gem "better_errors"
   gem "binding_of_caller"
+  gem "letter_opener"
 end
 
 

@@ -9,7 +9,7 @@ class UsersController < ApplicationController
   def new
     if signed_in_user?
       @user = current_user
-      redirect_to user_timeline_path(@user)
+      redirect_to newsfeed_path
     else
       @user = User.new
       @user.profile = @user.build_profile
@@ -21,6 +21,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       sign_in(@user)
+      User.delay.send_welcome_email(@user.id)
       flash[:success] = 'Welcome to Danebook!'
       redirect_to about_user_path(@user)
     else

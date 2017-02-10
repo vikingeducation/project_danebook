@@ -23,7 +23,7 @@
 
   <section class="post-bar col-xs-11 col-xs-offset-1">
 
-    <%= render partial: 'post_actions', locals: { post: post, user: user } %>
+    <%= render partial: 'posts/post_actions', locals: { post: post, user: user } %>
     <br>
 
 <!-- Comments -->
@@ -32,7 +32,7 @@
         <%= render partial: 'comment', locals: { comment: comment } %>
     <% end %>
       
-    <%= render partial: 'new_comment_form', locals: { commentable: post } %>
+    <%= render partial: 'posts/new_comment_form', locals: { commentable: post } %>
 
   </section>
 

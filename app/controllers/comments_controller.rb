@@ -6,6 +6,7 @@ class CommentsController < ApplicationController
     user = @comment.commentable.user
     if @comment.save
       flash[:success] = "Comment added!"
+      Comment.delay.send_new_comment_notification(@comment)
       redirect_to user_timeline_path(user)
     else
       flash[:warning] = @comment.errors.full_messages

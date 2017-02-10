@@ -78,5 +78,14 @@ class User < ApplicationRecord
     end
   end
 
+  def self.send_welcome_email(user_id)
+    user = User.find(user_id)
+    UserMailer.welcome(user).deliver!
+  end
+
+  def newsfeed_posts
+    posts = Post.newsfeed(self)
+  end
+
 
 end

@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   get 'login' => 'users#new'
   delete 'logout' => 'sessions#destroy'
+  get 'newsfeed' => 'newsfeeds#index'
 
   resources :users, :only => [:new, 
                               :create, 

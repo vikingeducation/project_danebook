@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   root to: 'static_pages#home'
   get 'home', to: 'static_pages#home', as: 'home'
   get 'timeline', to: 'static_pages#timeline', as: 'timeline'
+  get 'friends', to: 'static_pages#friends', as: 'friends'
 end

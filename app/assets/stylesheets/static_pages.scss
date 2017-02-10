@@ -1,3 +1,73 @@
 // Place all the styles related to the StaticPages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$brand-color: #2B78E4;
+
+/* NAVBAR */
+.navbar-default .navbar-brand {
+  color : #fff;
+  font-size:36px;
+}
+.navbar-default .navbar-brand:hover {
+  color: #fff;
+}
+.navbar {
+  background-color: $brand-color;
+  border-radius: 0;
+  border:0;
+}
+.navbar-default .navbar-toggle .icon-bar {
+  color: #fff;
+  background-color: #fff;
+}
+.navbar-default .navbar-toggle {
+  border-color: #fff;
+}
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+  border-color: $brand-color;
+  margin:0;
+  padding-top: 5px;
+}
+.navbar-form label {
+  display:block;
+  color: #fff;
+}
+.navbar-form .form-button {
+  vertical-align: bottom;
+}
+.navbar-form .btn {
+  height: 26px;
+}
+
+/* MAIN */
+.main {
+  margin-top: 50px;
+}
+.connect-message {
+  margin-top:50px;
+}
+
+/* SIGN UP LIST */
+.signup-list li, .signup-list{
+  margin: 16px 0;
+  font-size:16px;
+}
+
+/* BUTTON MOD */
+.btn.btn-action {
+  background-color: #9FC5F8;
+  border: 0;
+}
+.btn {
+  border-radius: 0;
+}
+
+/* MEDIA QUERIES */
+@media screen and (max-width: 991px){
+  .connect-message, .main {
+    margin-top: 0;
+  }
+  .signup-list {
+    margin-bottom: 40px;
+  }
+}

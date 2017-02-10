@@ -1,4 +1,6 @@
 danebook_goes_live
 ==================
 
-This is your README!
+[Yi-Xuan Lau](https://github.com/yxlau/assignment_danebook_goes_live)
+
+A [Viking Code School](http://vikingcodeschool.com) Project

@@ -1,21 +1,5 @@
  <main class="main container">
-    <header class="row">
-      <div class="profile-top col-xs-12">
-        <div class="profile-cover" style="background-image: url('images/hogwarts_small.jpg')">
-        </div>
-        <h2 class="profile-name">Harry Potter</h2>
-        <img src="images/user_silhouette_generic.png" alt="" class="img-thumbnail profile-pic">
-        <nav class="profile-nav">
-          <ul class="nav nav-pills">
-            <li><a href="timeline.html">Timeline</a></li>
-            <li class="current"><a href="#">About</a></li>
-            <li><a href="photos.html">Photos <span class="text-muted">(123)</span></a></li>
-            <li><a href="friends.html">Friends <span class="text-muted">(123)</span></a></li>
-          </ul>
-          <p class="profile-edit"><a href="about_edit.html">Edit Profile</a></p>
-        </nav>
-      </div>
-    </header>
+     <%= render 'profile_header' %>
     <section class="row">
       <div class="col-xs-12">
         <div class="info-box row">

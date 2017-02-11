@@ -1,138 +1,24 @@
- <main class="main container">
-   <%= render 'profile_header' %>
-    <section class="row">
+<main class="main container">
+<%= render 'profile_header' %>
+<section class="row">
+  <div class="col-xs-12">
+    <div class="info-box row">
+      <header class="col-xs-12">
+        <h2 class="module-title">About</h2>
+        <%= link_to "Edit Your Profile", about_edit_path, {class: 'btn btn-primary btn-sm module-edit'} %>
+      </header>
       <div class="col-xs-12">
-        <div class="info-box row">
-          <header class="col-xs-12">
-            <h2 class="module-title">About</h2>
-              <a href="about_edit.html" class="btn btn-primary btn-sm module-edit">Edit Your Profile</a>
-          </header>
-          <div class="col-xs-12">
-       <div class="friend-grid row">
-        <div class="col-md-6">
-          <div class="friend-item">
-            <div class="media">
-              <div class="media-left">
-                <a href="#">
-                  <img src="images/user_silhouette_generic.png" alt="" class="media-object img-thumbnail">
-                </a>
-              </div>
-              <div class="media-body media-middle">
-                <div class="media-heading">
-                  <h4 class="h5"><a href="#">Hermione Granger</a></h4>
-                  <p class="text-muted">432 Friends</p>
-                </div>
-              </div>
-              <div class="media-right media-middle">
-                <a href="#" class="btn btn-primary">Unfriend</a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="friend-item">
-            <div class="media">
-              <div class="media-left">
-                <a href="#">
-                  <img src="images/user_silhouette_generic.png" alt="" class="media-object img-thumbnail">
-                </a>
-              </div>
-              <div class="media-body media-middle">
-                <div class="media-heading">
-                  <h4 class="h5"><a href="#">Hermione Granger</a></h4>
-                  <p class="text-muted">432 Friends</p>
-                </div>
-              </div>
-              <div class="media-right media-middle">
-                <a href="#" class="btn btn-primary">Unfriend</a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="friend-item">
-            <div class="media">
-              <div class="media-left">
-                <a href="#">
-                  <img src="images/user_silhouette_generic.png" alt="" class="media-object img-thumbnail">
-                </a>
-              </div>
-              <div class="media-body media-middle">
-                <div class="media-heading">
-                  <h4 class="h5"><a href="#">Hermione Granger</a></h4>
-                  <p class="text-muted">432 Friends</p>
-                </div>
-              </div>
-              <div class="media-right media-middle">
-                <a href="#" class="btn btn-primary">Unfriend</a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="friend-item">
-            <div class="media">
-              <div class="media-left">
-                <a href="#">
-                  <img src="images/user_silhouette_generic.png" alt="" class="media-object img-thumbnail">
-                </a>
-              </div>
-              <div class="media-body media-middle">
-                <div class="media-heading">
-                  <h4 class="h5"><a href="#">Hermione Granger</a></h4>
-                  <p class="text-muted">432 Friends</p>
-                </div>
-              </div>
-              <div class="media-right media-middle">
-                <a href="#" class="btn btn-primary">Unfriend</a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="friend-item">
-            <div class="media">
-              <div class="media-left">
-                <a href="#">
-                  <img src="images/user_silhouette_generic.png" alt="" class="media-object img-thumbnail">
-                </a>
-              </div>
-              <div class="media-body media-middle">
-                <div class="media-heading">
-                  <h4 class="h5"><a href="#">Hermione Granger</a></h4>
-                  <p class="text-muted">432 Friends</p>
-                </div>
-              </div>
-              <div class="media-right media-middle">
-                <a href="#" class="btn btn-primary">Unfriend</a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="friend-item">
-            <div class="media">
-              <div class="media-left">
-                <a href="#">
-                  <img src="images/user_silhouette_generic.png" alt="" class="media-object img-thumbnail">
-                </a>
-              </div>
-              <div class="media-body media-middle">
-                <div class="media-heading">
-                  <h4 class="h5"><a href="#">Hermione Granger</a></h4>
-                  <p class="text-muted">432 Friends</p>
-                </div>
-              </div>
-              <div class="media-right media-middle">
-                <a href="#" class="btn btn-primary">Unfriend</a>
-              </div>
-            </div>
-          </div>
+        <div class="friend-grid row">
+          <%= render 'friend_grid_item' %>
+          <%= render 'friend_grid_item' %>
+          <%= render 'friend_grid_item' %>
+          <%= render 'friend_grid_item' %>
+          <%= render 'friend_grid_item' %>
+          <%= render 'friend_grid_item' %>
         </div>
       </div>
-      </div>
-        </div>
-      </div>
-      
-    </section>
-    </main>
+    </div>
+  </div>
+  
+</section>
+</main>

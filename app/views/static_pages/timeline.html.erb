@@ -1,135 +1,18 @@
- <main class="main container">
-     <%= render 'profile_header' %>
-    <section class="row">
-      <aside class="col-sm-4 timeline-sidebar">
-        <div class="info-box row">
-          <header class="col-xs-12">
-            <h4>About</h4>
-          </header>
-          <div class="col-xs-12">
-            <p><b>Born on:</b> July 31st, 1980</p>
-            <p><b>Went to school at:</b> Hogwarts</p>
-            <p><b>Hometown:</b> Godrick's Hollow, England</p>
-            <p><b>Currently Lives:</b> Godrick's Hollow</p>
-          </div>
-        </div>
-        <div class="info-box row">
-          <header class="col-xs-12">
-            <h4>Photos (123)</h4>
-          </header>
-          <div class="col-xs-12 ">
-            <div class="row thumbnail-grid">
-              <div class="col-xs-4"><a href="#"><img src="images/icon_photo_small.png" alt="" class="img-thumbnail"></a></div>
-              <div class="col-xs-4"><a href="#"><img src="images/icon_photo_small.png" alt="" class="img-thumbnail"></a></div>
-              <div class="col-xs-4"><a href="#"><img src="images/icon_photo_small.png" alt="" class="img-thumbnail"></a></div>
-              <div class="col-xs-4"><a href="#"><img src="images/icon_photo_small.png" alt="" class="img-thumbnail"></a></div>
-              <div class="col-xs-4"><a href="#"><img src="images/icon_photo_small.png" alt="" class="img-thumbnail"></a></div>
-              <div class="col-xs-4"><a href="#"><img src="images/icon_photo_small.png" alt="" class="img-thumbnail"></a></div>
-              <div class="col-xs-4"><a href="#"><img src="images/icon_photo_small.png" alt="" class="img-thumbnail"></a></div>
-              <div class="col-xs-4"><a href="#"><img src="images/icon_photo_small.png" alt="" class="img-thumbnail"></a></div>
-              <div class="col-xs-4"><a href="#"><img src="images/icon_photo_small.png" alt="" class="img-thumbnail"></a></div>
-            </div>
-            <p class="text-center"><a href="photos.html">See More Photos</a></p>
-          </div>
-        </div>
-        <div class="info-box row">
-          <header class="col-xs-12">
-            <h4>Friends (542)</h4>
-          </header>
-          <div class="col-xs-12">
-            <div class="row thumbnail-grid text-center">
-              <div class="col-xs-4">
-                <a href="#"><img src="images/user_silhouette_generic.png" alt="" class="img-thumbnail"></a>
-                <p class="name"><a href="#">Ron Weasley</a></p>
-              </div>
-              <div class="col-xs-4">
-                <a href="#"><img src="images/user_silhouette_generic.png" alt="" class="img-thumbnail"></a>
-                <p class="name"><a href="#">Ron Weasley</a></p>
-              </div>
-              <div class="col-xs-4">
-                <a href="#"><img src="images/user_silhouette_generic.png" alt="" class="img-thumbnail"></a>
-                <p class="name"><a href="#">Ginny Weasley</a></p>
-              </div>
-              <div class="col-xs-4">
-                <a href="#"><img src="images/user_silhouette_generic.png" alt="" class="img-thumbnail"></a>
-                <p class="name"><a href="#">Hermione Granger</a></p>
-              </div>
-              <div class="col-xs-4">
-                <a href="#"><img src="images/user_silhouette_generic.png" alt="" class="img-thumbnail"></a>
-                <p class="name"><a href="#">paragraph text</a></p>
-              </div>
-              <div class="col-xs-4">
-                <a href="#"><img src="images/user_silhouette_generic.png" alt="" class="img-thumbnail"></a>
-                <p class="name"><a href="#">paragraph text</a></p>
-              </div>
-              <p class="text-center"><a href="#">See More Friends</a></p>
-            </div>
-          </div>
-        </aside>
-        <div class="col-sm-8">
-          <section class="timeline-feed">
-            <div class="row info-box">
-              <header class="col-xs-12">
-                <h4>Post</h4>
-              </header>
-              <form class="form-group post-form col-xs-12">
-                <textarea name="post-form" cols="30" rows="2" class="form-control"></textarea>
-                <footer class="row post-footer">
-                  <div class="col-xs-12">
-                    <button type="submit" class="btn btn-primary pull-right">Post</button>
-                  </div>
-                </footer>
-              </form>
-            </div>
-            <article class="row post">
-              <header class="col-xs-12 media">
-                <div class="media-left">
-                  <img src="images/user_silhouette_generic.png" alt="" class="img-thumbnail media-object">
-                </div>
-                <div class="media-body">
-                  <h5 class="media-heading"><a href="about.html">Harry Potter</a></h5>
-                  <p class="small text-muted">Posted on Thursday <time datetime="2014-6-1">6/1/2014</time></p>
-                </div>
-              </header>
-              <div class="col-xs-12">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate doloremque vel fugit, nulla atque voluptatibus ex iusto mollitia labore, cumque, ullam. Rerum sunt nesciunt numquam maxime eligendi ex. Quas, voluptatibus.</p>
-              </div>
-              <footer class="post-footer col-xs-12">
-                <span class="post-action"><a href="#">Like</a><a href="#">Comment</a></span>
-                <span class="pull-right"><a href="#">Delete</a></span>
-              </footer>
-            </article>
-            <article class="row post">
-              <header class="col-xs-12 media">
-                <div class="media-left">
-                  <img src="images/user_silhouette_generic.png" alt="" class="img-thumbnail media-object">
-                </div>
-                <div class="media-body">
-                  <h5 class="media-heading"><a href="about.html">Harry Potter</a></h5>
-                  <p class="small text-muted">Posted on Thursday <time datetime="2014-6-1">6/1/2014</time></p>
-                </div>
-              </header>
-              <div class="col-xs-12">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate doloremque vel fugit, nulla atque voluptatibus ex iusto mollitia labore, cumque, ullam. Rerum sunt nesciunt numquam maxime eligendi ex. Quas, voluptatibus.</p>
-              </div>
-              <footer class="post-footer col-xs-12">
-                <span class="post-action"><a href="#">Like</a><a href="#">Comment</a></span>
-                <span class="pull-right"><a href="#">Delete</a></span>
-                <div class="post-reaction">
-                  <span><a href="#">Hermione Granger</a> likes this</span>
-                </div>
-              </footer>
-            </article>
-            <article class="row post">
-              <header class="col-xs-12 media">
-                <div class="media-left">
-                  <img src="images/user_silhouette_generic.png" alt="" class="img-thumbnail media-object">
-                </div>
-                <div class="media-body">
-                  <h5 class="media-heading"><a href="about.html">Harry Potter</a></h5>
-                  <p class="small text-muted">Posted on Thursday <time datetime="2014-6-1">6/1/2014</time></p>
-                </div>
-              </header>
-              <div class="col-xs-12">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate doloremque vel fugit, nulla atque voluptatibus ex iusto mollitia labore, cumque, ullam. Rerum sunt nesciunt numquam maxime eligendi ex. Quas, voluptatibus.</p>
-              </div>
+<main class="main container">
+<%= render 'profile_header' %>
+<section class="row">
+  <aside class="col-sm-4 timeline-sidebar">
+    <%= render 'info_box_about' %>
+    <%= render 'info_box_photos' %>
+    <%= render 'info_box_friends' %>
+  </aside>
+  <div class="col-sm-8">
+    <section class="timeline-feed">
+      <%= render 'post_form' %>
+      <%= render 'post' %>
+      <%= render 'post' %>
+      <%= render 'post' %>
+    </section>
+  </div>
+</section>
+</main>

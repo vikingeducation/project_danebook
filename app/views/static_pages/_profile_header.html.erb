@@ -1,9 +1,9 @@
  <header class="row">
       <div class="profile-top col-xs-12">
-        <div class="profile-cover" style="background-image: url('images/hogwarts_small.jpg')">
+        <div class="profile-cover" style="background-image: url('<%= image_path('hogwarts_small.jpg') %>')">
         </div>
         <h2 class="profile-name">Harry Potter</h2>
-        <img src="images/user_silhouette_generic.png" alt="" class="img-thumbnail profile-pic">
+           <%=  image_tag('user_silhouette_generic.png', alt: 'Generic User Silhouette', class: 'img-thumbnail profile-pic')  %>
         <nav class="profile-nav">
           <ul class="nav nav-pills">
             <li><%= link_to "Timeline", timeline_path %></li>

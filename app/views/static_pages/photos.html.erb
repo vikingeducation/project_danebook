@@ -5,14 +5,15 @@
         <div class="info-box row">
          <header class="col-xs-12">
             <h2 class="module-title">Photos</h2>
-              <a href="about_edit.html" class="btn btn-primary btn-sm module-edit">Add Photos</a>
+            <%= link_to "Add Photos", about_edit_path, {:class => "btn btn-primary btn-sm module-edit"} %>
+             
           </header>
        <div class="col-xs-12">
           <div class="row photo-grid">
            <div class="col-xs-4 col-sm-3">
              <figure class="photo-item">
                <a href="#">
-                 <div class="photo-bg" style="background-image: url('images/icon_photo_small.png')"></div>
+                 <div class="photo-bg" style="background-image: url('<%= image_path('icon_photo_small.png') %>')"></div>
                </a>
                <figcaption><span>Uploaded January 1, 2015</span></figcaption>
              </figure>
@@ -20,7 +21,7 @@
            <div class="col-xs-4 col-sm-3">
              <figure class="photo-item">
                <a href="#">
-                 <div class="photo-bg" style="background-image: url('images/icon_photo_small.png')"></div>
+                 <div class="photo-bg" style="background-image: url('<%= image_path('icon_photo_small.png') %>')"></div>
                </a>
                <figcaption>Uploaded January 1, 2015</figcaption>
              </figure>
@@ -28,7 +29,7 @@
            <div class="col-xs-4 col-sm-3">
              <figure class="photo-item">
                <a href="#">
-                 <div class="photo-bg" style="background-image: url('images/icon_photo_small.png')"></div>
+                 <div class="photo-bg" style="background-image: url('<%= image_path('icon_photo_small.png') %>')"></div>
                </a>
                <figcaption><span>Uploaded January 1, 2015</span></figcaption>
              </figure>
@@ -36,7 +37,7 @@
            <div class="col-xs-4 col-sm-3">
              <figure class="photo-item">
                <a href="#">
-                 <div class="photo-bg" style="background-image: url('images/icon_photo_small.png')"></div>
+                 <div class="photo-bg" style="background-image: url('<%= image_path('icon_photo_small.png') %>')"></div>
                </a>
                <figcaption>Uploaded January 1, 2015</figcaption>
              </figure>
@@ -44,7 +45,7 @@
            <div class="col-xs-4 col-sm-3">
              <figure class="photo-item">
                <a href="#">
-                 <div class="photo-bg" style="background-image: url('images/icon_photo_small.png')"></div>
+                 <div class="photo-bg" style="background-image: url('<%= image_path('icon_photo_small.png') %>')"></div>
                </a>
                <figcaption>Uploaded January 1, 2015</figcaption>
              </figure>
@@ -52,7 +53,7 @@
            <div class="col-xs-4 col-sm-3">
              <figure class="photo-item">
                <a href="#">
-                 <div class="photo-bg" style="background-image: url('images/icon_photo_small.png')"></div>
+                 <div class="photo-bg" style="background-image: url('<%= image_path('icon_photo_small.png') %>')"></div>
                </a>
                <figcaption>Uploaded January 1, 2015</figcaption>
              </figure>
@@ -60,7 +61,7 @@
            <div class="col-xs-4 col-sm-3">
              <figure class="photo-item">
                <a href="#">
-                 <div class="photo-bg" style="background-image: url('images/icon_photo_small.png')"></div>
+                 <div class="photo-bg" style="background-image: url('<%= image_path('icon_photo_small.png') %>')"></div>
                </a>
                <figcaption>Uploaded January 1, 2015</figcaption>
              </figure>
@@ -68,7 +69,7 @@
            <div class="col-xs-4 col-sm-3">
              <figure class="photo-item">
                <a href="#">
-                 <div class="photo-bg" style="background-image: url('images/icon_photo_small.png')"></div>
+                 <div class="photo-bg" style="background-image: url('<%= image_path('icon_photo_small.png') %>')"></div>
                </a>
                <figcaption>Uploaded January 1, 2015</figcaption>
              </figure>

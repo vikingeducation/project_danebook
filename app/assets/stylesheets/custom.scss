@@ -60,6 +60,22 @@ nav.navbar-custom ul li a:hover {
 #login-btn {
   background-color: #5cb85c;
 }
+.remember-me-label {
+  font-weight: normal;
+  color: white;
+  font-size: 90%;
+  position: relative;
+  bottom: -11px;
+  left: -20px;
+}
+#remember_me {
+  position: relative;
+  top: -3px;
+}
+.login-form {
+  position: relative;
+  left: 84px;
+}
 
 /*
 =============================

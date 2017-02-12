@@ -22,12 +22,10 @@ class LikesController < ApplicationController
     end
     if @like.save
       flash[:success] = "Likin' it!"
-      redirect_to @user unless @photo || commentable_thing.is_a?(Photo)
-      redirect_to @photo if @photo || commentable_thing.is_a?(Photo)
+      go_back
     else
       flash.now[:error] = "Dagnabbit! Something dun goofed."
-      redirect_to @user unless @photo || commentable_thing.is_a?(Photo)
-      redirect_to @photo if @photo || commentable_thing.is_a?(Photo)
+      go_back
     end
   end
 
@@ -51,12 +49,10 @@ class LikesController < ApplicationController
     @like = Like.find_by_id(params[:id])
     if @like.destroy
       flash[:success] = "Unlikin' it!"
-      redirect_to @user unless @photo || commentable_thing.is_a?(Photo)
-       redirect_to @photo if @photo || commentable_thing.is_a?(Photo)
+      go_back
     else
       flash[:error] = "Oops! Something went wrong. Our apes are researching this problem as we speak."
-      redirect_to @user unless @photo || commentable_thing.is_a?(Photo)
-       redirect_to @photo if @photo || commentable_thing.is_a?(Photo)
+      go_back
     end
   end
 

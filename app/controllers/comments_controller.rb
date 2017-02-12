@@ -12,12 +12,10 @@ class CommentsController < ApplicationController
     end
     if @comment.save
       flash[:success] = "Sweet comment bro!"
-      redirect_to @user unless @photo
-      redirect_to @photo if @photo
+      go_back
     else
       flash[:error] = "Oops! Something went wrong. Our apes are researching this problem as we speak."
-      redirect_to @user unless @photo
-      redirect_to @photo if @photo
+      go_back
     end
   end
 
@@ -29,12 +27,10 @@ class CommentsController < ApplicationController
     @photo = commentable_thing if commentable_thing
     if @comment.destroy
       flash[:success] = "We nuked it dawg! It is gone!"
-      redirect_to @user unless @photo
-      redirect_to @photo if @photo
+      go_back
     else
       flash[:error] = "Oops! Something went wrong. Our apes are researching this problem as we speak."
-      redirect_to @user unless @photo
-      redirect_to @photo if @photo
+      go_back
     end
   end
 

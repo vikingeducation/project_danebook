@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
-  skip_before_action :require_login, :only => [:new, :create]
-  before_action :require_logged_out, :only => [:new, :create]
+  skip_before_action :require_login, only: [:new, :create]
+  before_action :require_logged_out, only: [:new, :create]
+  before_action :require_current_user, only: [:edit, :update, :destroy]
 
   def new
     reset_session
@@ -21,28 +22,26 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = current_user
-    if @user.update(user_params)
-      redirect_to user_profile_path(@user.id)
+    if current_user.update(user_params)
+      flash[:success] = "It is done."
+      redirect_to user_profile_path(current_user.id)
     else
       flash[:error] = "Your changes were not saved. Our apes are currently weeping openly in a mad dash to rectify this egregious blunder."
     end
   end
 
-  def edit
-  end
-
-  def destroy
-  end
-
   def index
     @user = User.find_by_id(params[:id])
+    @users = User.user_search(params[:query])
   end
 
   def show
     @user = User.find_by_id(params[:id])
     @posts = @user.authored_posts
     @post = current_user.authored_posts.build
+  end
+
+  def destroy
   end
 
   private

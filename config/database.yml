@@ -8,7 +8,7 @@ production:
   adapter: postgresql   
 
 test:
-  adapter: sqlite3
+  adapter: postgresql
   pool: 5
   timeout: 5000
-  database: db/test.sqlite3
+  database: danebook-test

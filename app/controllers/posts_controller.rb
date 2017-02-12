@@ -1,5 +1,10 @@
 class PostsController < ApplicationController
 
+  def index
+    @posts = Post.all_friend_posts(current_user)
+    @post = Post.new
+  end
+
   def create
     @post = current_user.authored_posts.build(post_params)
     if @post.save

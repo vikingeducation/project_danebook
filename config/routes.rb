@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :users do
     resource :profile, :only => [:show, :edit]
   end
-  resources :posts, :only => [:create, :destroy] do
+  resources :posts, :only => [:index, :create, :destroy] do
     resources :likes
   end
   resources :comments do

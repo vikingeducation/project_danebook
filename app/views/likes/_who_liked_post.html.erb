@@ -1,5 +1,5 @@
-<% this_like = post.likes.where(liker_id: user.id).first %>
-<% other_likes = post.likes.where.not(liker_id: user.id)[0..2] %>
+<% this_like = post.likes.where(liker_id: current_user.id).first %>
+<% other_likes = post.likes.where.not(liker_id: current_user.id)[0..2] %>
 <% first_few = 1 %>
 
 <%= "You " if this_like %>
@@ -10,7 +10,7 @@
   <% first_few += 1 %>
 <% end %>
 
-<% total_others_who_like_this = post.likes.where.not(liker_id: user.id).count %>
+<% total_others_who_like_this = post.likes.where.not(liker_id: current_user.id).count %>
 <% total_others_who_like_this -= first_few %>
 
 <% if total_others_who_like_this > 0 %>

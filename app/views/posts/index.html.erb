@@ -1,0 +1,31 @@
+<%= render partial: "shared/navbar" %>
+
+<!-- Post Entry -->
+<article class="col-xs-8">
+  <section class="post">
+      <header class="nav-post">
+          <h4>
+            Post
+          </h4>
+      </header>
+      <%= form_for @post do |f| %>
+        <div class="post-body">
+          <div class="form-group">
+            <%= f.text_area :body, class: "form-control", placeholder: "Tell the world what's on yer mind..." %>
+          </div>
+        </div>
+        <div class="nav-footer">
+          <%= f.submit "Post", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+  </section>
+  
+  <!-- Posts -->
+  <% if @posts.any? %>
+    <% @posts.each do |post| %>
+      <%= render partial: "posts/post", locals: { post: post, user: post.author, newsfeed: @newsfeed } if  post.persisted? %>
+    <% end %>
+  <% else %>
+    YOU AIN'T GOT NO FRIENDS, LOSER!
+  <% end %>
+</article>

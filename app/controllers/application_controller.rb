@@ -4,6 +4,10 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def go_back
+    redirect_to URI(request.referer).path
+  end
+
   def sign_in(user)
     user.regenerate_auth_token
     cookies[:auth_token] = user.auth_token
@@ -38,8 +42,16 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def require_logged_out  
-    redirect_to @current_user if signed_in_user?
+  def require_current_user
+    # the params are a string
+    unless params[:id] == current_user.id.to_s
+      flash[:error] == "You're not authorized to do that, pal."
+      redirect_to root_url
+    end
+  end
+
+  def require_logged_out
+    redirect_to posts_path if signed_in_user?
   end
 
 end

@@ -10,7 +10,7 @@ class SessionController < ApplicationController
         sign_in(@user)
       end
       flash[:success] = "You've successfully signed in! Our apes are shrieking with joy to witness once again your gorgeous visage."
-      redirect_to @user
+      redirect_to posts_path
     else
       flash[:error] = "We couldn't sign you in. Make sure you entered a valid e-mail/password combo. Dingus."
       redirect_to new_user_path

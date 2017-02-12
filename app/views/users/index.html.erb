@@ -1,12 +1,11 @@
 <%= render partial: "shared/navbar", locals: { :user => @user } %>
-
-<!-- Hero -->
-<div class="container">
-  <header class="hero">
-    <div class="avatar">
-    </div>
-  </header>
-
-
-
-</div>
+<br>
+<% if @users.any? %>
+  <ul>
+  <% @users.each do |user| %>
+    <%= render partial: "users/user", locals: { user: user } %>
+  <% end %>
+  </ul>
+<% else %>
+  Nothin' to see here, mate!
+<% end %>

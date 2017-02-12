@@ -1,29 +1,22 @@
-Friend Search
-Newsfeed
 Testing
 Refactoring (presenter(s), helper(s), etc.)
 Fix yr damn errors
 Mailers
 
-Friend Search
-- Search form finds users where search terms match any part of first/last name
-- Display dem results "as in the mockup"
-
 Newsfeed
-- Redirect users to their newsfeed upon login
 - Only viewable by current user
-- Display chronological listing of posts from user's friends
-- Allow liking/commenting on these posts
 - Allow posting directly atop the newsfeed (like in Timeline)
 - Display recently-active list of friends on the left pane [late game]
 
 Errors:
 
 - "Like" display may break w/ 3+ likes... test w/ custom seeds later
+- add way to destroy user... also, does editing user/profile work?
 - "Remember me" remembers across sessions; w/out, it doesn't (how to test for this??)
 - Hundredletter words are split to new line at edge of their container
   (BONUS: retain clickability if hyperlink)
 - Prettify About view
+- Prettify Friend Search results
 - Spiff up README file
 - Fix comment styling
 - Be able to destroy yr photo(s)

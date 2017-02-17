@@ -7,13 +7,10 @@ feature "Signing up" do
 
   before do
     visit root_path
+    fill_in_signup_forms(bob)
   end
 
   context "sign up" do
-
-    before do
-      fill_in_signup_forms(bob)
-    end
 
     scenario "sign up a new valid user" do
       expect{ click_on("Sign Up!") }.to change(User, :count).by(1)
@@ -41,11 +38,19 @@ feature "Signing up" do
 
   context "quit" do
 
-    scenario "allow a user to delete his account, redirecting to the sign up page"
+    before do
+      click_on("Sign Up!")
+    end
 
-    scenario "don't log in a deleted user to his/her deleted account"
+    scenario "allow a user to delete his/her account, redirecting to the sign up page" do
+      expect { click_on("Delete Account") }.to change(User, :count).by(-1)
+    end
 
-    scenario "disallow a user from deleting someone else's account"
+    scenario "don't log in a deleted user to his/her deleted account" do
+      click_on("Delete Account")
+      login(bob)
+      expect(page).not_to have_content("Logout")
+    end
 
   end
 

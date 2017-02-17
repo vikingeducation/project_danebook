@@ -20,10 +20,10 @@
     <!-- 1st row -->
     <div class="row">
 
-      <% @user.friends.each do |friend| %>
+      <% @friends.each do |friend| %>
         <%= link_to friend.full_name, friend %>
       <% end %>
-      <% unless @user.friends.any? %>
+      <% unless @friends.any? %>
         THIS BLOKE AIN'T GOT NO FRIENDS YET!!!
       <% end %>
     </div>

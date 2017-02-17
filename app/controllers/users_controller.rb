@@ -42,6 +42,14 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    if current_user.destroy
+      flash[:success] = "Account deleted."
+      sign_out
+      redirect_to root_path
+    else
+      flash[:error] = "Oops! Something went wrong!"
+      redirect_to edit_user_profile_path(current_user.id)
+    end
   end
 
   private

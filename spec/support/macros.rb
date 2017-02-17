@@ -9,4 +9,20 @@ module Macros
     choose("Other")
   end
 
+  def login(user)
+    fill_in "email", with: user.email
+    fill_in "password", with: user.password
+    click_on("Log In")
+  end
+
+  def create_post(text)
+    fill_in "post_body", with: text
+    click_on "Post"
+  end
+
+  def create_comment(text)
+    fill_in "comment_body", with: text
+    click_on "Comment"
+  end
+
 end

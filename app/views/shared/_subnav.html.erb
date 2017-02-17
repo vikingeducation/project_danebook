@@ -21,7 +21,7 @@
         </li>
         <% if user == current_user %>
             <li class="edit-profile pull-right">
-                <%= link_to "Edit Profile", edit_user_profile_path(user.id) %>
+                <%= link_to "Edit Profile", edit_user_profile_path(current_user.id) %>
             </li>
         <% end %>
       </ul>

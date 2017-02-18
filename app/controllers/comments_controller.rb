@@ -11,8 +11,11 @@ class CommentsController < ApplicationController
       @comment = @photo.comments.build(author_id: current_user.id, body: params[:comment][:body])
     end
     if @comment.save
-      flash[:success] = "Sweet comment bro!"
-      go_back
+      flash.now[:success] = "Sweet comment bro!"
+      respond_to do |f|
+        f.js { render :create_success }
+        f.html { go_back }
+      end
     else
       flash[:error] = "Oops! Something went wrong. Our apes are researching this problem as we speak."
       go_back

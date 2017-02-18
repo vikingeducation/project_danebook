@@ -1,0 +1,5 @@
+var commentPartial = "<%= j(render partial: "comment", locals: { post: @post, comment: @comment, user: @post.author }) %>";
+$commentPartial = $(commentPartial);
+var $post = CommentModule.getPost(<%= @post.id %>);
+$commentPartial.hide().appendTo($post).slideDown();
+$("#comment-form")[0].reset();

@@ -29,14 +29,14 @@
         <%= render partial: "likes/who_liked_post", locals: { post: post, user: user } %>
       </p>
     </div>
-    <div class="clearfix">
+    <div class="clearfix" data-post-id="<%= post.id %>">
       <% post.comments.each do |comment| %>
         <%= render partial: "comments/comment", locals: { user: user, post: post, comment: comment } if comment.persisted? %>
       <% end %>
     </div>
     <div>
       <!-- Comment Entry -->
-      <%= form_for Comment.new do |f| %>
+      <%= form_for Comment.new, remote: true, html: {id: "comment-form"} do |f| %>
         <%= f.text_area :body, class: "form-control", placeholder: "If you could enter a comment here, what would it say?" %>
         <%= hidden_field_tag :post, post.id %>
         <%= f.submit "Comment" %>

@@ -111,7 +111,7 @@
                   Post
                 </h4>
             </header>
-            <%= form_for @post do |f| %>
+            <%= form_for @post, remote: true, html: {id: "post-form"} do |f| %>
               <div class="post-body">
                 <div class="form-group">
                   <%= f.text_area :body, class: "form-control", placeholder: "Tell the world what's on yer mind..." %>
@@ -125,9 +125,11 @@
       <% end %>
       
       <!-- Posts -->
-      <% @user.authored_posts.reverse.each do |post| %>
-        <%= render partial: "posts/post", locals: { post: post, user: @user } if  post.persisted? %>
-      <% end %>
+      <div data-content="posts">
+        <% @user.authored_posts.reverse.each do |post| %>
+          <%= render partial: "posts/post", locals: { post: post, user: @user } if  post.persisted? %>
+        <% end %>
+      </div>
     </article>
   </main>
 </div>

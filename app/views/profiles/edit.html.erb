@@ -1,0 +1,69 @@
+<%= render partial: "shared/navbar" %>
+<!-- Hero -->
+<div class="container">
+  <header class="hero">
+    <div class="avatar">
+    </div>
+  </header>
+  <%= render partial: "shared/subnav", locals: { :user => current_user } %>
+  <!-- Current location header -->
+  <section class="nav-about">
+    <h2>
+    Edit Profile
+    </h2>
+  </section>
+  <!-- Main -->
+    
+  <main class="main-about">
+  <div class="row">
+      
+    <article class="col-sm-12 col-md-12">
+      <%= form_for current_user do |f| %>
+          <%= f.fields_for :profile, @profile do |ph| %>
+              Birthday
+              <br>
+              <%= ph.date_select :birthday, { start_year: 1900, end_year: 2012 }, class: "btn btn-default dropdown-toggle" %>
+              <br>
+              College
+              <br>
+              <%= ph.text_field :college %>
+              <br>
+              Hometown
+              <br>
+              <%= ph.text_field :hometown %>
+              <br>
+              City
+              <br>
+              <%= ph.text_field :city %>
+          <% end %>
+          <br>
+          <!-- Contact information -->
+          E-mail
+          <br>
+          <%= f.email_field :email %>
+          <br>
+          <%= f.fields_for :profile, @profile do |ph| %>
+              Telephone #
+              <br>
+              <%= ph.text_field :telephone %>
+              <!-- Righhand column -->
+              <br>
+              <h3>Words to Live By</h3>
+              <br>
+              <%= ph.text_area :words_to_live_by %>
+              <!-- Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis sequi magni, voluptatibus dolore illo. Non quae mollitia dolores in tempora. Maiores natus odit quia et, officia iure molestiae ullam repellendus. -->
+              <br>
+              <h3>About Me</h3>
+              <br>
+              <%= ph.text_area :about_me %> <!-- Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere magnam, velit, nam pariatur aut amet excepturi modi aperiam atque placeat expedita quaerat voluptatem cum fuga nisi vitae temporibus quas possimus necessitatibus. Ipsum fuga recusandae odit molestiae ab excepturi, voluptates rerum ullam tempore repellat commodi similique autem deleniti illum enim error reprehenderit ut iste, dicta et veniam quasi, amet nihil perspiciatis. Officia, perspiciatis amet. Fugiat tenetur, minima facere et repellat. -->
+          <% end %>
+          <%= f.submit "Save Changes", class: "btn btn-primary btn-large btn-save" %>
+        <% end %>
+        <br>
+        <%= link_to "Delete Account", user_path(current_user), method: "delete", data: {confirm: "Are you totally sure mate? I mean, there ain't no goin' back once you push that button..."} %>
+    </article>
+      
+  </div>
+
+  </main>
+</div>

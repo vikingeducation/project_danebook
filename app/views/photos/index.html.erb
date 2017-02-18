@@ -1,0 +1,35 @@
+<%= render partial: "shared/navbar" %>
+<!-- Hero -->
+<div class="container">
+  <header class="hero">
+    <div class="avatar">
+    </div>
+  </header>
+
+  <%= render partial: "shared/subnav", locals: { :user => @user } %>
+
+  <!-- Current location bar -->
+  <section class="nav-about">
+    <h2>
+      Photos
+    </h2>
+    <% if @user == current_user %>
+      <%= link_to "Add Photo!", new_photo_path(user_id: @user.id), class: "btn btn-primary", role: "button" %>
+    <% end %>
+  </section>
+
+  <!-- Main -->
+  <main class="main-about photos">
+    <!-- 1st row -->
+    <div class="row">
+
+      <% @user.photos.each_with_index do |photo, i| %>
+        <%= render partial: "thumbnail", locals: { user: @user, photo: photo } %>
+        <% if (i + 1) % 4 == 0 %>
+          </div>
+          <div class="row">
+        <% end %>
+      <% end %>
+    </div>
+  </main>
+</div>

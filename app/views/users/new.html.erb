@@ -1,0 +1,269 @@
+<nav class="navbar navbar-inverse navbar-fixed-top login-navbar">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Danebook</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse login-navbar-inner-bit">
+
+      <%= form_tag login_path, class: "navbar-form navbar-right login-form" do %>
+        <div class="form-group">
+          <%= text_field_tag :email, nil, class: "form-control", placeholder: "E-mail" %>
+        </div>
+        <div class="form-group">
+          <%= password_field_tag :password, nil, class: "form-control", placeholder: "Password" %>
+        </div>
+        <%= submit_tag "Log In", class: "btn btn-success", id: "login-btn" %>
+        <%= check_box_tag :remember_me %>
+        <%= label_tag :remember_me, "Remember me?", class: "remember-me-label" %>
+      <% end %>
+
+    </div><!--/.navbar-collapse -->
+  </div>
+</nav>
+
+
+<main class="container">
+  <section class="row">
+    <div class="col-md-7 hi-there">
+      
+
+      <p><h3>Connect with all your friends!</h3></p>
+      <p>
+        <ul>
+          <li>See photos and updates in your news feed.</li>
+          <li>Post your status for the world to see from your profile</li>
+          <li>Get in touch with your friends by "friending" them</li>
+          <li>Like things because you're a positive person!</li>
+        </ul>
+      </p>
+    </div>
+
+    <div class="col-md-5">
+      <h2 class="form-signin-heading">Sign Up</h2>
+      <%= form_for @user, html: {class: "form-signin"} do |f| %>
+
+      <%= f.text_field :first_name, class: "name, form-control", id: "firstName", placeholder: "First Name" %>
+
+      <%= f.text_field :last_name, class: "name, form-control", id: "lastName",  placeholder: "Last Name" %>
+
+      <%= f.email_field :email, class: "form-control", id: "inputEmail", placeholder: "Your E-mail"%>
+
+      <%= f.password_field :password, class: "form-control", id: "inputPassword", placeholder: "Your Password" %>
+
+      <%= f.password_field :password_confirmation, class: "form-control", id: "inputPassword", placeholder: "Confirm Password"  %>
+
+        <%= f.fields_for :profile, Profile.new do |profile_helper| %>
+          <%= profile_helper.collection_radio_buttons :gender, ["Male", "Female", "Other", "IDK"], :itself, :itself, {}, class: "radio-group" %>
+          <br>
+          <div class="btn-group">
+            <%= profile_helper.date_select :birthday, { start_year: 1900, end_year: 2012 }, class: "btn btn-default dropdown-toggle" %>
+          </div>
+        <% end %>
+        <br>
+        <br>
+      <%= f.submit "Sign Up!", class: "btn btn-lg btn-primary btn-block final" %>
+
+
+
+      <% end %>
+
+      <!-- <h4>Birthday</h4>
+        
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Month <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+          <li><a href="#">January</a></li>
+          <li><a href="#">February</a></li>
+          <li><a href="#">March</a></li>
+          <li><a href="#">April</a></li>
+          <li><a href="#">May</a></li>
+          <li><a href="#">June</a></li>
+          <li><a href="#">July</a></li>
+          <li><a href="#">August</a></li>
+          <li><a href="#">September</a></li>
+          <li><a href="#">October</a></li>
+          <li><a href="#">November</a></li>
+          <li><a href="#">December</a></li>
+        </ul>
+      </div><div class="btn-group">
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Day <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+          <li><a>1</a></li>
+          <li><a>2</a></li>
+          <li><a>3</a></li>
+          <li><a>4</a></li>
+          <li><a>5</a></li>
+          <li><a>6</a></li>
+          <li><a>7</a></li>
+          <li><a>8</a></li>
+          <li><a>9</a></li>
+          <li><a>10</a></li>
+          <li><a>11</a></li>
+          <li><a>12</a></li>
+          <li><a>13</a></li>
+          <li><a>14</a></li>
+          <li><a>15</a></li>
+          <li><a>16</a></li>
+          <li><a>17</a></li>
+          <li><a>18</a></li>
+          <li><a>19</a></li>
+          <li><a>20</a></li>
+          <li><a>21</a></li>
+          <li><a>22</a></li>
+          <li><a>23</a></li>
+          <li><a>24</a></li>
+          <li><a>25</a></li>
+          <li><a>26</a></li>
+          <li><a>27</a></li>
+          <li><a>28</a></li>
+          <li><a>29</a></li>
+          <li><a>30</a></li>
+          <li><a>31</a></li>
+        </ul>
+      </div><div class="btn-group">
+        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Year <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu">
+          <<li><a>2016</a></li>
+            <li><a>2015</a></li>
+            <li><a>2014</a></li>
+            <li><a>2013</a></li>
+            <li><a>2012</a></li>
+            <li><a>2011</a></li>
+            <li><a>2010</a></li>
+            <li><a>2009</a></li>
+            <li><a>2008</a></li>
+            <li><a>2007</a></li>
+            <li><a>2006</a></li>
+            <li><a>2005</a></li>
+            <li><a>2004</a></li>
+            <li><a>2003</a></li>
+            <li><a>2002</a></li>
+            <li><a>2001</a></li>
+            <li><a>2000</a></li>
+            <li><a>1999</a></li>
+            <li><a>1998</a></li>
+            <li><a>1997</a></li>
+            <li><a>1996</a></li>
+            <li><a>1995</a></li>
+            <li><a>1994</a></li>
+            <li><a>1993</a></li>
+            <li><a>1992</a></li>
+            <li><a>1991</a></li>
+            <li><a>1990</a></li>
+            <li><a>1989</a></li>
+            <li><a>1988</a></li>
+            <li><a>1987</a></li>
+            <li><a>1986</a></li>
+            <li><a>1985</a></li>
+            <li><a>1984</a></li>
+            <li><a>1983</a></li>
+            <li><a>1982</a></li>
+            <li><a>1981</a></li>
+            <li><a>1980</a></li>
+            <li><a>1979</a></li>
+            <li><a>1978</a></li>
+            <li><a>1977</a></li>
+            <li><a>1976</a></li>
+            <li><a>1975</a></li>
+            <li><a>1974</a></li>
+            <li><a>1973</a></li>
+            <li><a>1972</a></li>
+            <li><a>1971</a></li>
+            <li><a>1970</a></li>
+            <li><a>1969</a></li>
+            <li><a>1968</a></li>
+            <li><a>1967</a></li>
+            <li><a>1966</a></li>
+            <li><a>1965</a></li>
+            <li><a>1964</a></li>
+            <li><a>1963</a></li>
+            <li><a>1962</a></li>
+            <li><a>1961</a></li>
+            <li><a>1960</a></li>
+            <li><a>1959</a></li>
+            <li><a>1958</a></li>
+            <li><a>1957</a></li>
+            <li><a>1956</a></li>
+            <li><a>1955</a></li>
+            <li><a>1954</a></li>
+            <li><a>1953</a></li>
+            <li><a>1952</a></li>
+            <li><a>1951</a></li>
+            <li><a>1950</a></li>
+            <li><a>1949</a></li>
+            <li><a>1948</a></li>
+            <li><a>1947</a></li>
+            <li><a>1946</a></li>
+            <li><a>1945</a></li>
+            <li><a>1944</a></li>
+            <li><a>1943</a></li>
+            <li><a>1942</a></li>
+            <li><a>1941</a></li>
+            <li><a>1940</a></li>
+            <li><a>1939</a></li>
+            <li><a>1938</a></li>
+            <li><a>1937</a></li>
+            <li><a>1936</a></li>
+            <li><a>1935</a></li>
+            <li><a>1934</a></li>
+            <li><a>1933</a></li>
+            <li><a>1932</a></li>
+            <li><a>1931</a></li>
+            <li><a>1930</a></li>
+            <li><a>1929</a></li>
+            <li><a>1928</a></li>
+            <li><a>1927</a></li>
+            <li><a>1926</a></li>
+            <li><a>1925</a></li>
+            <li><a>1924</a></li>
+            <li><a>1923</a></li>
+            <li><a>1922</a></li>
+            <li><a>1921</a></li>
+            <li><a>1920</a></li>
+            <li><a>1919</a></li>
+            <li><a>1918</a></li>
+            <li><a>1917</a></li>
+            <li><a>1916</a></li>
+            <li><a>1915</a></li>
+            <li><a>1914</a></li>
+            <li><a>1913</a></li>
+            <li><a>1912</a></li>
+            <li><a>1911</a></li>
+            <li><a>1910</a></li>
+            <li><a>1909</a></li>
+            <li><a>1908</a></li>
+            <li><a>1907</a></li>
+            <li><a>1906</a></li>
+            <li><a>1905</a></li>
+            <li><a>1904</a></li>
+            <li><a>1903</a></li>
+            <li><a>1902</a></li>
+            <li><a>1901</a></li>
+        </ul>
+      </div>
+      <div class="radio-inline">
+        <label>
+          <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="Female"> Female<div class="inputno2"><input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="Male"> Male</div>
+        </label>
+      </div>
+      <button class="btn btn-lg btn-primary btn-block final" type="submit">Sign Up!</button>
+    </form> -->
+    </div>
+  </section>
+</main>
+
+
+
+
+         

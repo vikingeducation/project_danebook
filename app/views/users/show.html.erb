@@ -1,0 +1,135 @@
+<%= render partial: "shared/navbar" %>
+
+<!-- Hero -->
+<div class="container">
+  <header class="hero">
+    <div class="avatar">
+    </div>
+  </header>
+
+  <%= render partial: "shared/subnav", locals: { :user => @user } %>
+
+  <!-- Current location header -->
+  <main class="row">
+    <article class="col-xs-4">
+      <section class="post">
+        <header class="nav-post">
+          <h4>
+            About
+          </h4>
+        </header>
+        <div class="post-body">
+          <table class="tab-timeline">
+            <tr>
+              <th>
+                Name:
+              </th>
+              <td>
+                <%= @user.full_name %>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                  Born on:
+              </th>
+              <td>
+                  <%= @user.profile.birthday %>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                  Went to school:
+              </th>
+              <td>
+              <%= @user.profile.college %>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                  Hometown:
+              </th>
+              <td>
+                  <%= @user.profile.hometown %>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                  Currently Lives:
+              </th>
+              <td>
+                  <%= @user.profile.city %>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </section>
+        
+      <!-- Photos aside -->
+      <section class="post">
+        <header class="nav-post">
+          <h4>
+            Photos (<%= @user.photos.count %>)
+          </h4>
+        </header>
+        <div class="container-fluid">
+        </div>
+        <div class="nav-bottom-link">
+          <%= link_to "See More Photos", photos_path(user_id: @user.id), class: "edit-profile" %>
+        </div>
+    </section>
+
+    <!-- Friends aside -->
+    <section class="post">
+        <header class="nav-post">
+            <h4>
+            Friends (<%= @user.friends.count %>)
+            </h4>
+        </header>
+        <div class="container-fluid">
+        </div>
+        <div class="nav-bottom-link">
+          <% @user.friends.each do |friend| %>
+            <%= link_to friend.full_name, friend %>
+          <% end %>
+          <% unless @user.friends.any? %>
+            THIS BLOKE AIN'T GOT NO FRIENDS YET!!!
+            <br>
+          <% else %>
+            <%= link_to "See More Friends", friendings_path(user_id: @user.id), class: "edit-profile" %>
+          <% end %>
+        </div>
+    </section>
+  </article>
+
+  <!-- Post Entry -->
+  <article class="col-xs-8">
+      <%= render partial: "friendings/friending_button", locals: { user: @user } %>
+      <% if @user == current_user %>
+        <section class="post">
+            <header class="nav-post">
+                <h4>
+                  Post
+                </h4>
+            </header>
+            <%= form_for @post, remote: true, html: {id: "post-form"} do |f| %>
+              <div class="post-body">
+                <div class="form-group">
+                  <%= f.text_area :body, class: "form-control", placeholder: "Tell the world what's on yer mind..." %>
+                </div>
+              </div>
+              <div class="nav-footer">
+                <%= f.submit "Post", class: "btn btn-primary" %>
+              </div>
+            <% end %>
+        </section>
+      <% end %>
+      
+      <!-- Posts -->
+      <div data-content="posts">
+        <% @user.authored_posts.reverse.each do |post| %>
+          <%= render partial: "posts/post", locals: { post: post, user: @user } if  post.persisted? %>
+        <% end %>
+      </div>
+    </article>
+  </main>
+</div>

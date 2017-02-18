@@ -1,0 +1,7 @@
+console.log("ARGH");
+var postPartial = "<%= j(render partial: "post", locals: { post: @post, user: @post.author }) %>";
+$postPartial = $(postPartial);
+var $post = PostModule.getPostsDiv();
+$postPartial.hide().prependTo($post).slideDown();
+$("#post-form")[0].reset();
+console.log("YAY");

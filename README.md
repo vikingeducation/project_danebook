@@ -1,4 +1,3 @@
-danebook
-========
+Dexter Ford
 
-This is the Real Dane Deal.
+  

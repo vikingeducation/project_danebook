@@ -1,0 +1,46 @@
+<section class="post">
+  <div class="post-body">
+    <img src="../assets/user_silhouette_generic.gif">
+    <div class="author-box">
+        <%= link_to post.author.full_name, @user %>
+      <time datetime="6/1/2013" pubdate>
+        Posted on <%= post.updated_at %>
+      </time>
+    </div>
+    <p class="comment-area">
+      <%= post.body %>
+    </p>
+  </div>
+  <div class="nav-footer">
+    <div class="comment pull-left">
+      <%= render partial: "likes/post_like", locals: { post: post, user: user } %>
+    </div>
+    <div class="comment pull-left">
+      Comment
+    </div>
+    <% if current_user == user %>
+      <div class="delete pull-right">
+        <%= link_to "Delete", post_path(post), method: "delete", data: {confirm: "Are you totally sure mate? I mean, there ain't no goin' back once you push that button..."} %>
+      </div>
+    <% end %>
+
+    <div class="clearfix">
+      <p class="pull-left">
+        <%= render partial: "likes/who_liked_post", locals: { post: post, user: user } %>
+      </p>
+    </div>
+    <div class="clearfix" data-post-id="<%= post.id %>">
+      <% post.comments.each do |comment| %>
+        <%= render partial: "comments/comment", locals: { user: user, post: post, comment: comment } if comment.persisted? %>
+      <% end %>
+    </div>
+    <div>
+      <!-- Comment Entry -->
+      <%= form_for Comment.new, remote: true, html: {id: "comment-form"} do |f| %>
+        <%= f.text_area :body, class: "form-control", placeholder: "If you could enter a comment here, what would it say?" %>
+        <%= hidden_field_tag :post, post.id %>
+        <%= f.submit "Comment" %>
+      <% end %>
+    </div>
+  </div>
+</section>

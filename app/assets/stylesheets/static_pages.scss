@@ -15,7 +15,6 @@ $bordertype: 2px solid #222;
 }
 
 body {
-    padding-top: 50px;
     padding-bottom: 20px;
     @media  screen and (max-width: 600px){
         width: 620px;
@@ -24,10 +23,57 @@ body {
 
 
 /*=============================
+HOME NAVIGATION
+=============================*/
+
+
+nav.navbar-default {
+  background-color: #2b78e4;
+  border-color: black;
+  color: #ecf0f1; }
+  nav.navbar-default .navbar-brand h1 {
+    margin-top: 0px;
+    color: white; }
+  nav.navbar-default .collapse button {
+    background-color: #0af;
+    color: black;
+    font-weight: bold; }
+  nav.navbar-default .collapse button:hover {
+    background-color: #bef;
+    color: black; }
+.navbar-right .collapse .form-group {
+  padding-right: 0;
+}
+
+.container .row aside {
+  margin-top: 50px;
+}
+
+.container .row aside h2 {
+  padding-bottom: 5px;
+  font-weight: bold; }
+.container .row aside ul li {
+  padding-bottom: 20px;
+  color: gray;
+  font-size: 19px;
+  font-weight: light; }
+
+
+section form fieldset input {
+  margin-bottom: 15px; }
+section form fieldset #dropdownDay {
+  margin-left: 5px; }
+
+/*# sourceMappingURL=styles.css.map */
+
+
+
+
+/*=============================
 NAVIGATION
 =============================*/
 nav.navbar-custom {
-    background-color: $colortheme;
+    background-color: $colortheme ;
     border-bottom: 2px solid #333;
     .logo-container {
         img{
@@ -70,8 +116,8 @@ nav.navbar-custom {
 HERO
 =============================*/
 
-.hero {
-    background: white url("assets/hogwarts_small.jpg") no-repeat;
+header.hero {
+    background: white url("hogwarts_small.jpg") no-repeat;
     background-size: cover;
     background-position: 0 60%;
     height: 400px;
@@ -83,7 +129,7 @@ HERO
         position: relative;
         top: 45%;
         left: 3%;
-        background: url("assets/harry_potter_small.jpg");
+        background: url("harry_potter_small.jpg");
     }
 }
 

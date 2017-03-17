@@ -1,0 +1,449 @@
+// Place all the styles related to the Static_Pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+$colortheme: #337ab7;
+$fontsize: 16px;
+$grid-float-breakpoint: 0px;
+$bordertype: 2px solid #222;
+
+.border-3d {
+    border-bottom: 1px solid #333;
+    border-left: 1px solid #333;
+    border-right: 1px solid #333;
+}
+
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+    @media  screen and (max-width: 600px){
+        width: 620px;
+    }
+}
+
+
+/*=============================
+NAVIGATION
+=============================*/
+nav.navbar-custom {
+    background-color: $colortheme;
+    border-bottom: 2px solid #333;
+    .logo-container {
+        img{
+            width: 30px;
+            height: 30px;
+            border-radius: 100%;
+            display: inline-block;
+            margin-top: -8px;
+        }
+        h3 {
+            display: inline-block;
+            margin-top: -8px;
+        }
+    }
+    .navbar-header {
+        .navbar-brand {
+            color: white;
+        }
+        button .icon-bar {
+            background-color: white;
+        }
+        a.navbar-brand:hover {
+            color: black;
+        }
+    }
+    form .form-group input {
+       width: 450px;
+    }
+    ul li a {
+        color: white;
+        font-size: $fontsize +2;
+    }
+    ul li a:hover {
+        color: black;
+        background-color: white;
+    }
+}
+
+/*=============================
+HERO
+=============================*/
+
+.hero {
+    background: white url("assets/hogwarts_small.jpg") no-repeat;
+    background-size: cover;
+    background-position: 0 60%;
+    height: 400px;
+    margin-bottom: 0;
+    .avatar {
+        width: 250px;
+        height: 250px;
+        border: 8px double #222;
+        position: relative;
+        top: 45%;
+        left: 3%;
+        background: url("assets/harry_potter_small.jpg");
+    }
+}
+
+/*=============================
+SUB-NAVIGATION
+=============================*/
+.sub-navigation {
+    background-color:white;
+    margin-left: 0px;
+    margin-right: 0px;
+    line-height: 40px;
+    @extend .border-3d;
+    ul.nav.nav-pills {
+        margin-left: 280px;
+        font-size: $fontsize;
+        color: black;
+    }
+    ul.nav.nav-pills li.active a {
+        background-color: #aaa;
+        border-radius: 0;
+    }
+    ul li .badge {
+        color: $colortheme;
+        background-color: inherit;
+    }
+    .edit-profile {
+        text-decoration: underline;
+    }
+    .edit-profile a:hover {
+        background-color: inherit;
+    }
+    @media (max-width: 990px) {
+        button.navbar-toggle {
+            display: block;
+            margin-top:0;
+            margin-bottom: 0;
+            font-size: 18px;
+            text-align: center;
+            @media (max-width: 420px) {
+                width: 155px;
+            }
+        }
+        .navbar-collapse {
+            border-top: 1px solid transparent;
+            box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+        }
+        .navbar-collapse.collapse {
+            display: none!important;
+        }
+        .collapse.in{
+            display:block !important;
+        }
+        ul li {
+            clear: both;
+            content: "";
+            margin: 0 auto;
+            display: block;
+            width: 100%;
+            text-align: center;
+            font-size: 18px;
+            border-top: 1px solid black;
+        }
+        ul {
+            border: 1px solid black;
+        }
+    }
+}
+
+
+
+/*=============================
+MAIN PART ABOUT
+=============================*/
+
+.nav-about {
+  @extend .border-3d;
+  background: #ccc;
+  text-align: center;
+  position: relative;
+    h2 {
+        display: inline-block;
+    }
+    a.btn {
+        display: inline-block;
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+}
+
+.main-about {
+    @extend .border-3d;
+}
+
+table.tab-about {
+    font-size: 14px;
+    margin: -10px auto 0 auto;
+    width: 350px;
+    table caption {
+        text-align: left;
+    }
+    table.tab-about th {
+        font-weight: bold;
+        text-align: left;
+        padding-top: 10px;
+        width: 130px;
+    }
+    tr td{
+        padding-top: 10px;
+        padding-left: 5px;
+        width: 250px;
+    }
+}
+
+/*=============================
+MAIN PART ABOUT EDIT
+=============================*/
+.main-about {
+    .input-group .form-control {
+    height: 28px;
+    width: 200px;
+    font-size: 13px;
+    }
+    textarea {
+        width: 90%;
+        min-height: 80px;
+        font-size: 12px;
+        color: gray;
+        text-align: left;
+        padding: 5px;
+        overflow: auto;
+    }
+    button.btn-save{
+        display: block;
+        margin: 180px auto;
+        width: 350px;
+        height: 80px;
+        font-size: 30px;
+    }
+}
+
+/*=============================
+TIMELINE SECTION
+=============================*/
+article section.post {
+    margin-top: 20px;
+    border: 2px solid black;
+    header.nav-post {
+        background-color: #ddd;
+        text-align: center;
+        border-bottom: 2px solid black;
+            h4 {
+                display: inline-block;
+            }
+        }
+    textarea {
+        width: 95%;
+        margin: 8px auto;
+    }
+    
+    .container-fluid .row {
+        padding-top: 1em;
+    }
+
+    .nav-footer  {
+        border-top: 2px solid black;
+        text-align: right;
+        background-color: #ddd;
+        padding: 5px;
+        min-height: 60px;
+        a {
+            display: inline-block;
+            margin-left: 5px;
+            margin-right: 5px;
+        }
+        .clearfix:after,
+        .clearfix:before  {
+            content: "";
+            clear: both;
+        }
+        .liked-box {
+            display: block;
+            text-align: left;
+            margin-top: 8px;
+            p {
+                display: inline-block;
+            }
+        }
+    }
+    .nav-bottom-link {
+        text-align: center;
+        margin: 6px 0;
+    }
+    .container-fluid .row div {
+        padding-left: 3px;
+        padding-right: 3px;
+    }
+    .post-body img {
+        width: 60px;
+        height: 60px;
+        margin: 8px;
+        display: inline-block;
+    }
+    .author-box {
+        display: inline-block;
+        vertical-align: top;
+        margin-top: 5px;
+        width: 80%;
+        time {
+            display: block;
+            color: #666;
+            font-size: 12px;
+        }
+    }
+    .comment-area {
+        padding: 8px;
+    }
+    .unfolded {
+        background-color: #ddd;
+        time {
+            display: inline-block;
+        }
+        p,
+        .like-area {
+            display: inline-block;
+            padding-left: 75px;
+            width: 100%;
+            @media (min-width: 800px) {
+                margin-top: -40px;
+            }
+            a {
+                margin-right: 10px;
+            }
+        }
+        .liked-box  {
+            margin-left: 30px;
+        }
+        .form-group .nav-footer {
+            border-top: 0;
+        }
+    }
+}
+
+
+
+table.tab-timeline {
+    font-size: 12px;
+    margin: 5px 0 5px 10px;
+    tr th {
+        padding-top: 8px;
+    }
+    tr td {
+        padding-left: 8px;
+        padding-top: 8px;
+    }
+}
+
+
+
+
+/*=============================
+PHOTOS SECTION
+=============================*/
+a time.overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 50px;
+    width: 100%;
+    background-color: #999;
+    color: #FFF;
+    font-size: 1.5em;
+    text-align: center;
+    padding-top: 5px;
+        -moz-transition: all 0.4s;
+     -webkit-transition: all 0.4s;
+          -o-transition: all 0.4s;
+    transition: all 0.4s;
+    opacity: 0;
+    filter: Alpha(opacity=0);
+    border-radius: 4px;
+    }
+
+a time.overlay:hover {
+    overflow: visible;
+    cursor: pointer;
+}
+
+.hovereffect:hover .overlay{
+    opacity: 0.9;
+    filter: Alpha(opacity=100);
+    z-index: 20;
+    left: 0;
+    top: auto;
+    bottom: 0;
+    padding: 1em;
+    height: 4.75em;
+}
+
+.hovereffect {
+    overflow: hidden;
+    position: relative;
+    text-align: center;
+    width: 100%;
+    cursor: default;
+}
+
+
+.hovereffect img {
+    width: 98%;
+    -webkit-transition: -webkit-transform 0.35s;
+            transition: transform 0.35s;
+
+}
+
+.hovereffect:hover img {
+    -webkit-transform: translate3d(0,-10%,0);
+            transform: translate3d(0,-10%,0);
+}
+
+
+/*=============================
+FRIENDS SECTION
+=============================*/
+
+.main-about .row {
+    padding: 15px;
+}
+.main-about .row .friend-box {
+    border: 1px solid black;
+    width: 430px;
+    height: 150px;
+    padding: 15px;
+    margin: 5px auto;
+    img {
+        height: 120px;
+        width: 120px;
+        float: left;
+    }
+    .friend-name {
+        float: left;
+        margin-top: 30px;
+        margin-left: 20px;
+        a {
+            display: block;
+        }
+    }
+    button.unfriend {
+        float: right;
+        width: 27%;
+        background-color: #aaa;
+        font-weight: bold;
+        margin-top: 30px;
+    }
+    button.unfriend:hover {
+        background-color: #ddd;
+        font-weight: bold;
+    }
+}
+
+
+

@@ -1,0 +1,574 @@
+/* line 11, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+.border-3d, .sub-navigation, .nav-about, .main-about {
+  border-bottom: 1px solid #333;
+  border-left: 1px solid #333;
+  border-right: 1px solid #333;
+}
+
+/* line 17, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+body {
+  padding-bottom: 20px;
+}
+@media screen and (max-width: 600px) {
+  /* line 17, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+  body {
+    width: 620px;
+  }
+}
+
+/*=============================
+HOME NAVIGATION
+=============================*/
+/* line 30, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+nav.navbar-default {
+  background-color: #2b78e4;
+  border-color: black;
+  color: #ecf0f1;
+}
+
+/* line 34, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+nav.navbar-default .navbar-brand h1 {
+  margin-top: 0px;
+  color: white;
+}
+
+/* line 37, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+nav.navbar-default .collapse button {
+  background-color: #0af;
+  color: black;
+  font-weight: bold;
+}
+
+/* line 41, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+nav.navbar-default .collapse button:hover {
+  background-color: #bef;
+  color: black;
+}
+
+/* line 44, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+.navbar-right .collapse .form-group {
+  padding-right: 0;
+}
+
+/* line 48, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+.container .row aside {
+  margin-top: 50px;
+}
+
+/* line 52, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+.container .row aside h2 {
+  padding-bottom: 5px;
+  font-weight: bold;
+}
+
+/* line 55, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+.container .row aside ul li {
+  padding-bottom: 20px;
+  color: gray;
+  font-size: 19px;
+  font-weight: light;
+}
+
+/* line 62, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+section form fieldset input {
+  margin-bottom: 15px;
+}
+
+/* line 64, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+section form fieldset #dropdownDay {
+  margin-left: 5px;
+}
+
+/*# sourceMappingURL=styles.css.map */
+/*=============================
+NAVIGATION
+=============================*/
+/* line 75, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+nav.navbar-custom {
+  background-color: #337ab7;
+  border-bottom: 2px solid #333;
+}
+/* line 79, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+nav.navbar-custom .logo-container img {
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  display: inline-block;
+  margin-top: -8px;
+}
+/* line 86, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+nav.navbar-custom .logo-container h3 {
+  display: inline-block;
+  margin-top: -8px;
+}
+/* line 92, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+nav.navbar-custom .navbar-header .navbar-brand {
+  color: white;
+}
+/* line 95, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+nav.navbar-custom .navbar-header button .icon-bar {
+  background-color: white;
+}
+/* line 98, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+nav.navbar-custom .navbar-header a.navbar-brand:hover {
+  color: black;
+}
+/* line 102, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+nav.navbar-custom form .form-group input {
+  width: 450px;
+}
+/* line 105, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+nav.navbar-custom ul li a {
+  color: white;
+  font-size: 18px;
+}
+/* line 109, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+nav.navbar-custom ul li a:hover {
+  color: black;
+  background-color: white;
+}
+
+/*=============================
+HERO
+=============================*/
+/* line 119, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+header.hero {
+  background: white url("hogwarts_small.jpg") no-repeat;
+  background-size: cover;
+  background-position: 0 60%;
+  height: 400px;
+  margin-bottom: 0;
+}
+/* line 125, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+header.hero .avatar {
+  width: 250px;
+  height: 250px;
+  border: 8px double #222;
+  position: relative;
+  top: 45%;
+  left: 3%;
+  background: url("harry_potter_small.jpg");
+}
+
+/*=============================
+SUB-NAVIGATION
+=============================*/
+/* line 139, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+.sub-navigation {
+  background-color: white;
+  margin-left: 0px;
+  margin-right: 0px;
+  line-height: 40px;
+}
+/* line 145, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+.sub-navigation ul.nav.nav-pills {
+  margin-left: 280px;
+  font-size: 16px;
+  color: black;
+}
+/* line 150, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+.sub-navigation ul.nav.nav-pills li.active a {
+  background-color: #aaa;
+  border-radius: 0;
+}
+/* line 154, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+.sub-navigation ul li .badge {
+  color: #337ab7;
+  background-color: inherit;
+}
+/* line 158, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+.sub-navigation .edit-profile {
+  text-decoration: underline;
+}
+/* line 161, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+.sub-navigation .edit-profile a:hover {
+  background-color: inherit;
+}
+@media (max-width: 990px) {
+  /* line 165, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+  .sub-navigation button.navbar-toggle {
+    display: block;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 18px;
+    text-align: center;
+  }
+}
+@media (max-width: 990px) and (max-width: 420px) {
+  /* line 165, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+  .sub-navigation button.navbar-toggle {
+    width: 155px;
+  }
+}
+@media (max-width: 990px) {
+  /* line 175, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+  .sub-navigation .navbar-collapse {
+    border-top: 1px solid transparent;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+  /* line 179, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+  .sub-navigation .navbar-collapse.collapse {
+    display: none !important;
+  }
+  /* line 182, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+  .sub-navigation .collapse.in {
+    display: block !important;
+  }
+  /* line 185, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+  .sub-navigation ul li {
+    clear: both;
+    content: "";
+    margin: 0 auto;
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+    border-top: 1px solid black;
+  }
+  /* line 195, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+  .sub-navigation ul {
+    border: 1px solid black;
+  }
+}
+
+/*=============================
+MAIN PART ABOUT
+=============================*/
+/* line 207, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+.nav-about {
+  background: #ccc;
+  text-align: center;
+  position: relative;
+}
+/* line 212, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+.nav-about h2 {
+  display: inline-block;
+}
+/* line 215, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+.nav-about a.btn {
+  display: inline-block;
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* line 228, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+table.tab-about {
+  font-size: 14px;
+  margin: -10px auto 0 auto;
+  width: 350px;
+}
+/* line 232, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+table.tab-about table caption {
+  text-align: left;
+}
+/* line 235, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+table.tab-about table.tab-about th {
+  font-weight: bold;
+  text-align: left;
+  padding-top: 10px;
+  width: 130px;
+}
+/* line 241, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+table.tab-about tr td {
+  padding-top: 10px;
+  padding-left: 5px;
+  width: 250px;
+}
+
+/*=============================
+MAIN PART ABOUT EDIT
+=============================*/
+/* line 252, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+.main-about .input-group .form-control {
+  height: 28px;
+  width: 200px;
+  font-size: 13px;
+}
+/* line 257, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+.main-about textarea {
+  width: 90%;
+  min-height: 80px;
+  font-size: 12px;
+  color: gray;
+  text-align: left;
+  padding: 5px;
+  overflow: auto;
+}
+/* line 266, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+.main-about button.btn-save {
+  display: block;
+  margin: 180px auto;
+  width: 350px;
+  height: 80px;
+  font-size: 30px;
+}
+
+/*=============================
+TIMELINE SECTION
+=============================*/
+/* line 278, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+article section.post {
+  margin-top: 20px;
+  border: 2px solid black;
+}
+/* line 281, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+article section.post header.nav-post {
+  background-color: #ddd;
+  text-align: center;
+  border-bottom: 2px solid black;
+}
+/* line 285, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+article section.post header.nav-post h4 {
+  display: inline-block;
+}
+/* line 289, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+article section.post textarea {
+  width: 95%;
+  margin: 8px auto;
+}
+/* line 294, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+article section.post .container-fluid .row {
+  padding-top: 1em;
+}
+/* line 298, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+article section.post .nav-footer {
+  border-top: 2px solid black;
+  text-align: right;
+  background-color: #ddd;
+  padding: 5px;
+  min-height: 60px;
+}
+/* line 304, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+article section.post .nav-footer a {
+  display: inline-block;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+/* line 309, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+article section.post .nav-footer .clearfix:after,
+article section.post .nav-footer .clearfix:before {
+  content: "";
+  clear: both;
+}
+/* line 314, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+article section.post .nav-footer .liked-box {
+  display: block;
+  text-align: left;
+  margin-top: 8px;
+}
+/* line 318, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+article section.post .nav-footer .liked-box p {
+  display: inline-block;
+}
+/* line 323, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+article section.post .nav-bottom-link {
+  text-align: center;
+  margin: 6px 0;
+}
+/* line 327, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+article section.post .container-fluid .row div {
+  padding-left: 3px;
+  padding-right: 3px;
+}
+/* line 331, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+article section.post .post-body img {
+  width: 60px;
+  height: 60px;
+  margin: 8px;
+  display: inline-block;
+}
+/* line 337, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+article section.post .author-box {
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 5px;
+  width: 80%;
+}
+/* line 342, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+article section.post .author-box time {
+  display: block;
+  color: #666;
+  font-size: 12px;
+}
+/* line 348, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+article section.post .comment-area {
+  padding: 8px;
+}
+/* line 351, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+article section.post .unfolded {
+  background-color: #ddd;
+}
+/* line 353, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+article section.post .unfolded time {
+  display: inline-block;
+}
+/* line 356, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+article section.post .unfolded p,
+article section.post .unfolded .like-area {
+  display: inline-block;
+  padding-left: 75px;
+  width: 100%;
+}
+@media (min-width: 800px) {
+  /* line 356, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+  article section.post .unfolded p,
+  article section.post .unfolded .like-area {
+    margin-top: -40px;
+  }
+}
+/* line 364, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+article section.post .unfolded p a,
+article section.post .unfolded .like-area a {
+  margin-right: 10px;
+}
+/* line 368, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+article section.post .unfolded .liked-box {
+  margin-left: 30px;
+}
+/* line 371, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+article section.post .unfolded .form-group .nav-footer {
+  border-top: 0;
+}
+
+/* line 379, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+table.tab-timeline {
+  font-size: 12px;
+  margin: 5px 0 5px 10px;
+}
+/* line 382, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+table.tab-timeline tr th {
+  padding-top: 8px;
+}
+/* line 385, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+table.tab-timeline tr td {
+  padding-left: 8px;
+  padding-top: 8px;
+}
+
+/*=============================
+PHOTOS SECTION
+=============================*/
+/* line 397, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+a time.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 50px;
+  width: 100%;
+  background-color: #999;
+  color: #FFF;
+  font-size: 1.5em;
+  text-align: center;
+  padding-top: 5px;
+  -moz-transition: all 0.4s;
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  transition: all 0.4s;
+  opacity: 0;
+  filter: Alpha(opacity=0);
+  border-radius: 4px;
+}
+
+/* line 417, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+a time.overlay:hover {
+  overflow: visible;
+  cursor: pointer;
+}
+
+/* line 422, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+.hovereffect:hover .overlay {
+  opacity: 0.9;
+  filter: Alpha(opacity=100);
+  z-index: 20;
+  left: 0;
+  top: auto;
+  bottom: 0;
+  padding: 1em;
+  height: 4.75em;
+}
+
+/* line 433, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+.hovereffect {
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  width: 100%;
+  cursor: default;
+}
+
+/* line 442, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+.hovereffect img {
+  width: 98%;
+  -webkit-transition: -webkit-transform 0.35s;
+  transition: transform 0.35s;
+}
+
+/* line 449, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+.hovereffect:hover img {
+  -webkit-transform: translate3d(0, -10%, 0);
+  transform: translate3d(0, -10%, 0);
+}
+
+/*=============================
+FRIENDS SECTION
+=============================*/
+/* line 459, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+.main-about .row {
+  padding: 15px;
+}
+
+/* line 462, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+.main-about .row .friend-box {
+  border: 1px solid black;
+  width: 430px;
+  height: 150px;
+  padding: 15px;
+  margin: 5px auto;
+}
+/* line 468, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+.main-about .row .friend-box img {
+  height: 120px;
+  width: 120px;
+  float: left;
+}
+/* line 473, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+.main-about .row .friend-box .friend-name {
+  float: left;
+  margin-top: 30px;
+  margin-left: 20px;
+}
+/* line 477, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+.main-about .row .friend-box .friend-name a {
+  display: block;
+}
+/* line 481, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+.main-about .row .friend-box button.unfriend {
+  float: right;
+  width: 27%;
+  background-color: #aaa;
+  font-weight: bold;
+  margin-top: 30px;
+}
+/* line 488, /Users/Visiona/Documents/Viking_School/Ruby/assignment_danebook_goes_live/app/assets/stylesheets/static_pages.scss */
+.main-about .row .friend-box button.unfriend:hover {
+  background-color: #ddd;
+  font-weight: bold;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+
+
+ */
+

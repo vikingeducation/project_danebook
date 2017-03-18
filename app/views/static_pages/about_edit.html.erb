@@ -1,0 +1,113 @@
+<% content_for :navbar do %>
+<%= render "shared/logged_navbar" %>
+<% end %>
+<!--HERO-->
+<div class="container">
+    <header class="hero">
+        <div class="avatar">
+        </div>
+    </header>
+    <!--SUB-NAVIGATION-->
+    <%= render "shared/sub_navbar" %>
+    <!--SECTION BAR-->
+    <section class="nav-about">
+        <h2>
+        Edit Profile
+        </h2>
+    </section>
+    <!--DATA TABLE-->
+    
+    <main class="main-about">
+    <div class="row">
+        
+        <article class="col-sm-12 col-md-6  interior">
+            <table class="tab-about">
+                <caption>
+                <h3>
+                Basic Information
+                </h3>
+                </caption>
+                <tr>
+                    <th>
+                        Birthday:
+                    </th>
+                    <td>
+                        July 31st, 1980
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        College:
+                    </th>
+                    <td>
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Hogwarts College">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Hometown:
+                    </th>
+                    <td>
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Godrick's Hollow, England">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Currently Lives:
+                    </th>
+                    <td>
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Godrick's Hollow, England">
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            <!--CONTACT INFO TABLE-->
+            <table class="tab-about">
+                <caption><h3>Current Information</h3></caption>
+                <tr>
+                    <th>
+                        Email:
+                    </th>
+                    <td>
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="harry_poter@hogwarts.edu">
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Telephone:
+                    </th>
+                    <td>
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="555-123-4567">
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </article>
+        <!-- ABOUT RIGHT COLUMN-->
+        <article class="col-sm-12 col-md-6  interior">
+            <h3>Words to Live By</h3>
+            <textarea wrap="hard" rows="4" name="words-to-live-by">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis sequi magni, voluptatibus dolore illo. Non quae mollitia dolores in tempora. Maiores natus odit quia et, officia iure molestiae ullam repellendus.
+            </textarea>
+            <h3>About Me</h3>
+            <textarea name="about-me" rows="8">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere magnam, velit, nam pariatur aut amet excepturi modi aperiam atque placeat expedita quaerat voluptatem cum fuga nisi vitae temporibus quas possimus necessitatibus. Ipsum fuga recusandae odit molestiae ab excepturi, voluptates rerum ullam tempore repellat commodi similique autem deleniti illum enim error reprehenderit ut iste, dicta et veniam quasi, amet nihil perspiciatis. Officia, perspiciatis amet. Fugiat tenetur, minima facere et repellat.
+            </textarea>
+        </article>
+        
+    </div>
+    <div class="row">
+        <div class="col-xs-12">
+            <button type="button" class="btn btn-primary btn-lg btn-save">
+            Save Changes
+            </button>
+        </div>
+    </div>
+    </main>
+</div>

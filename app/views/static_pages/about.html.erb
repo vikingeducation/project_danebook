@@ -1,80 +1,14 @@
-<!--NAVIGATION-->
-<nav class="navbar navbar-custom navbar-fixed-top">
-    <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#login-navbar-collapse" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand logo-container" href="home.html">
-                <img src="assets/danish_flag.gif" alt="Brand">
-                <h3>Danebook</h3>
-            </a>
-        </div>
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="login-navbar-collapse">
-            <form class="navbar-form navbar-left search-form">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search for User">
-                </div>
-            </form>
-            <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a href="#">Harry</a>
-                </li>
-            </ul>
-        </div><!-- /.navbar-collapse -->
-    </div><!-- /.container -->
-</nav>
-        <!--HERO-->
+<% content_for :navbar do %>
+<%= render "shared/logged_navbar" %>
+<% end %>
+<!--HERO-->
 <div class="container">
     <header class="hero">
         <div class="avatar">
         </div>
     </header>
-
     <!--SUB-NAVIGATION-->
-    <nav class="sub-navigation" role="navigation">
-        <div class="container-fluid">
-            <!-- Brand and toggle get grouped for better mobile display -->
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sub-nav-collapse" aria-expanded="false"><span class="caret"></span>Menu
-            </button>
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="sub-nav-collapse">
-                <ul class="nav nav-pills">
-                    <li role="presentation">
-                        <a href="timeline.html">
-                            Timeline
-                        </a>
-                    </li>
-                    <li role="presentation" class="active">
-                        <a href="about.html">
-                            About
-                        </a>
-                    </li>
-                    <li role="presentation">
-                        <a href="photos.html">
-                            Photos<span class="badge">(123)</span>
-                        </a>
-                    </li>
-                    <li role="presentation">
-                        <a href="friends.html">
-                            Friends<span class="badge">(542)</span>
-                        </a>
-                    </li>
-                    <li class="edit-profile pull-right">
-                        <a href="about_edit.html">
-                            Edit Profile
-                        </a>
-                    </li>
-                </ul>
-            </div><!-- /.navbar-collapse -->
-        </div><!-- /.container-fluid -->
-    </nav>
-
+    <%= render "shared/sub_navbar" %>
     <!--SECTION BAR-->
     <section class="nav-about">
         <h2>
@@ -84,78 +18,77 @@
             Edit Your Profile
         </a>
     </section>
-
     <!--DATA TABLE-->
     <main class="main-about">
-        <div class="row">
-            <article class="col-xs-12 col-sm-6 interior">
-                <table class="tab-about">
-                    <caption>
-                    <h3>
-                    Basic Information
-                    </h3>
-                    </caption>
-                    <tr>
-                        <th>
-                            Birthday:
-                        </th>
-                        <td>
-                            July 31st, 1980
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            College:
-                        </th>
-                        <td>
-                            Hogwarts College
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            Hometown:
-                        </th>
-                        <td>
-                            Godrick's Hollow, England
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            Currently Lives:
-                        </th>
-                        <td>
-                            Godrick's Hollow, England
-                        </td>
-                    </tr>
-                </table>
-                <!--CONTACT INFO TABLE-->
-                <table class="tab-about">
-                    <caption><h3>Current Information</h3></caption>
-                    <tr>
-                        <th>
-                            Email:
-                        </th>
-                        <td>
-                            harry_poter@hogwarts.edu
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            Telephone:
-                        </th>
-                        <td>
-                            555-123-4567
-                        </td>
-                    </tr>
-                </table>
-            </article>
-            <!-- ABOUT RIGHT COLUMN-->
-            <article class="col-xs-12 col-sm-6 interior">
-                <h3>Words to Live By</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis sequi magni, voluptatibus dolore illo. Non quae mollitia dolores in tempora. Maiores natus odit quia et, officia iure molestiae ullam repellendus.</p>
-                <h3>About Me</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere magnam, velit, nam pariatur aut amet excepturi modi aperiam atque placeat expedita quaerat voluptatem cum fuga nisi vitae temporibus quas possimus necessitatibus. Ipsum fuga recusandae odit molestiae ab excepturi, voluptates rerum ullam tempore repellat commodi similique autem deleniti illum enim error reprehenderit ut iste, dicta et veniam quasi, amet nihil perspiciatis. Officia, perspiciatis amet. Fugiat tenetur, minima facere et repellat. </p>
-            </article>
-        </div>
+    <div class="row">
+        <article class="col-xs-12 col-sm-6 interior">
+            <table class="tab-about">
+                <caption>
+                <h3>
+                Basic Information
+                </h3>
+                </caption>
+                <tr>
+                    <th>
+                        Birthday:
+                    </th>
+                    <td>
+                        July 31st, 1980
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        College:
+                    </th>
+                    <td>
+                        Hogwarts College
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Hometown:
+                    </th>
+                    <td>
+                        Godrick's Hollow, England
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Currently Lives:
+                    </th>
+                    <td>
+                        Godrick's Hollow, England
+                    </td>
+                </tr>
+            </table>
+            <!--CONTACT INFO TABLE-->
+            <table class="tab-about">
+                <caption><h3>Current Information</h3></caption>
+                <tr>
+                    <th>
+                        Email:
+                    </th>
+                    <td>
+                        harry_poter@hogwarts.edu
+                    </td>
+                </tr>
+                <tr>
+                    <th>
+                        Telephone:
+                    </th>
+                    <td>
+                        555-123-4567
+                    </td>
+                </tr>
+            </table>
+        </article>
+        <!-- ABOUT RIGHT COLUMN-->
+        <article class="col-xs-12 col-sm-6 interior">
+            <h3>Words to Live By</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nobis sequi magni, voluptatibus dolore illo. Non quae mollitia dolores in tempora. Maiores natus odit quia et, officia iure molestiae ullam repellendus.</p>
+            <h3>About Me</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere magnam, velit, nam pariatur aut amet excepturi modi aperiam atque placeat expedita quaerat voluptatem cum fuga nisi vitae temporibus quas possimus necessitatibus. Ipsum fuga recusandae odit molestiae ab excepturi, voluptates rerum ullam tempore repellat commodi similique autem deleniti illum enim error reprehenderit ut iste, dicta et veniam quasi, amet nihil perspiciatis. Officia, perspiciatis amet. Fugiat tenetur, minima facere et repellat. </p>
+        </article>
+    </div>
     </main>
 </div>

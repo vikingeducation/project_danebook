@@ -1,9 +1,5 @@
 class User < ApplicationRecord
 
-  has_attached_file :avatar, :styles => { :medium => "300x300",
-                                          :thumb  => "100x100" },
-                                        default_url: "user_silhouette_generic.png"
-  validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/
 
   before_create :generate_token
   before_create :create_profile
@@ -28,7 +24,6 @@ class User < ApplicationRecord
   has_many :received_friendings, foreign_key: :friend_id, class_name: "Friending"
   has_many :users_friended_by, through: :received_friendings, source: :friend_initiator
 
-  has_one :profile, dependent: :destroy
   has_many :photos
 
   belongs_to :profile_photo, class_name: "Photo"

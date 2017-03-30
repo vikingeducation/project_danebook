@@ -6,60 +6,26 @@
     </div>
   </header>
 
-  <section class="container">
+  <section >
     <div class="row">
-      <aside class="col-md-7">
-        <section class="row">
-          <%= image_tag @photo.image.url, class: 'img-responsive photo-link' %>
-        </section>
-        <section class="row text-right">
-          <%= link_to "Set as Profile", user_profile_path(current_user, profile: { picture_id: @photo.id }), method: :put %><br/>
-          <%= link_to "Set as Cover", user_profile_path(current_user, profile: { cover_id: @photo.id }), method: :put %><br/>
-          <% if current_user == @photo.user %>
-            <%= link_to "Delete Photo", user_photo_path(@photo.user, @photo), method: :delete, data: { confirm: "Are you sure?" } %>
-          <% end %>
-        </section>
-      </aside>
-
-      <aside class="col-md-5">
-        <div class="row">
-          <div class="col-md-12">
-            <%= like_link(@photo) %>
-            <%= like_sentence(@photo) %>
-          </div>
-        </div>
-
-        <div class = "comments-wrapper">
-          <% @photo.comments.each do |comment| %>
-            <%= render partial: "shared/single_comment", locals: {comment: comment} %>
-          <% end %>
-        </div>
-
-        <div class = "row">
-          <!--post a comment form -->
-          <div class = "col-sm-12 col-xs-12 comment-form">
-            <%= form_for @photo.comments.build, remote: true do |f| %>
-              <%= f.hidden_field :commentable_type, value: "Photo" %>
-              <%= f.hidden_field :commentable_id, value: @photo.id %>
-              <div class="form-group row">
-                <div class = "col-sm-12">
-                  <%= f.text_area :body, class: "form-control", rows: "4", placeholder: "Write a comment..." %>
-                </div>
-              </div>
-              <div class="form-group row">
-                <div class = "link-wrapper col-sm-2 col-xs-2">
-                  <a href="#">Cancel</a>
-                </div>
-                <div class = "submit-wrapper col-sm-6 col-xs-6 col-sm-offset-4 col-xs-offset-4">
-                  <%= f.submit "Comment", class: "btn btn-block btn-primary"%>
-                </div>
-              </div>
-            <% end %>
-        </div>
-
-      </aside>
-
+      <div class='col-sm-12'>
+        <%= image_tag @photo.image.url, class: 'img-responsive photo-link' %>
+      </div>
+      <div class="col-sm-6">
+        <%= like_link(@photo) %>
+        <%= like_sentence(@photo) %>
+      </div>
+      <section class="text-right">
+        <%= link_to "Set as Profile", user_path(current_user, :user => { :profile_photo_id => @photo.id }), method: "PUT" %><br/>
+        <%= link_to "Set as Cover", user_path(current_user, :user => { :cover_photo_id => @photo.id }), method: "PUT" %><br/>
+        <% if current_user == @photo.user %>
+          <%= link_to "Delete Photo", photo_path(@photo), method: :delete, data: { confirm: "Are you sure?" } %>
+        <% end %>
+      </section>
     </div>
+    <aside id="post-feed">
+      <%= render partial: 'photo_comments', locals: {parent: @photo} %>
+    </aside>
   </section>
 
 </main>

@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
-  before_action :require_current_user, :only => [:edit, :update, :destroy]
+  before_action :set_return_path, only: [:update]
+
   skip_before_action :require_login, :only => [:new, :create]
+  before_action :skip_login, :only => [:new]
 
 
   def index
@@ -33,15 +35,14 @@ class UsersController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if current_user.update(user_params)
-        format.html { redirect_to current_user, notice: 'User was successfully updated.' }
-        format.json { render :show, status: :ok, location: @user }
-      else
-        format.html { render :edit }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+    @user = current_user
+
+    if @user.update(user_params)
+      flash[:success] = "Photo updated."
+    else
+      flash[:error] = "Sorry, that didn't work."
     end
+    redirect_to session.delete(:return_to)
   end
 
   def destroy
@@ -59,7 +60,6 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :avatar,
-                                   :profile_attributes => [:month, :day, :year, :gender, :user_id])
+      params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation, :cover_photo_id, :profile_photo_id, :profile_attributes => [:month, :day, :year, :gender, :user_id])
     end
 end

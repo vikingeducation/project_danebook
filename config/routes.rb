@@ -6,10 +6,8 @@ Rails.application.routes.draw do
   get 'photos', to: 'static_pages#photos', as: 'photos'
 
   resources :likes, :comments, only: [:create, :destroy]
-
-  resources :posts, only: [:index]
-
-  resources :photos, :only => [:show, :new, :create] do
+  resources :posts, only: [:index, :show, :create, :destroy]
+  resources :photos, :only => [:show, :new, :create, :destroy] do
     get "serve"  #photo_serve_path, e.g. /photos/1/serve
   end
 

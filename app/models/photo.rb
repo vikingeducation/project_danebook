@@ -1,15 +1,17 @@
+require 'open-uri'
+
 class Photo < ApplicationRecord
 
   has_attached_file :image
 
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
-  attr_accessor :delete_image
+  attr_accessor :url
 
   belongs_to :user
 
-  has_one :profile_photo_user, foreign_key: :picture_id, class_name: "Profile"
-  has_one :cover_photo_user, foreign_key: :cover_id, class_name: "Profile"
+  has_one :profile_photo_user, foreign_key: :profile_photo_id, class_name: "User"
+  has_one :cover_photo_user, foreign_key: :cover_photo_id, class_name: "User"
 
   has_many :likes, as: :likable, dependent: :destroy
   has_many :likers, through: :likes, source: :user

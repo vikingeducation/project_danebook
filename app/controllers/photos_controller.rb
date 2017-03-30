@@ -1,6 +1,5 @@
 class PhotosController < ApplicationController
 
-  before_action :require_login
   #before_action :require_object_owner, only: [:new, :create, :destroy]
 
   def index

@@ -1,0 +1,159 @@
+
+<main>
+<header class = "container" id="cover">
+
+  <%= render partial: 'cover_images' %>
+
+    <!--secondary navbar-->
+    <div id = "profile-nav" class = "row">
+      <div class = "col-md-7 col-md-offset-3">
+        <ul class = "nav nav-tabs " role = "profile-nav">
+          <li><%= link_to "Timeline", timeline_path %></li>
+          <li><%= link_to "About", about_path %></li>
+          <li ><%= link_to "Photos (123)", photos_path  %></li>
+          <li class = "active"><%= link_to "Friends (542)", friends_path %></li>
+      </div>
+
+      <div class = "col-md-2">
+        <ul class = "nav">
+        <li><a class = "edit-profile-link" href = "about_edit.html">Edit Profile</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+<!-- This part changes page by page -->
+  <section class="container" id="information-pane">
+    <header class="row">
+      <div class="col-md-offset-2 col-md-8 about-header">
+        <h2>Friends</h2>
+      </div>
+    </header>
+
+
+    <div class = "row" id="friends-list">
+
+      <!--Individual friend surrounded by border-->
+      <div class="col-md-6 friend-list-entry">
+        <div class="row">
+          <div class="col-md-3 col-xs-6">
+            <a href="#">
+              <%= image_tag("user_silhouette_generic.png", width: '100px', height: '100px') %>
+            </a>
+          </div>
+          <div class="col-md-5 col-xs-6">
+            <p><a href="#">Hermione Granger</a></p>
+            <p>432 Friends</p>
+          </div>
+          <form class="col-md-4 col-xs-12">
+            <div class="form-group">
+              <button type="submit" class="btn btn-default btn-unfriend">Unfriend Me</button>
+            </div>
+          </form>
+        </div>
+      </div><!--friend entry-->
+
+      <!--Individual friend surrounded by border-->
+      <div class="col-md-6 friend-list-entry">
+        <div class="row">
+          <div class="col-md-3 col-xs-6">
+            <a href="#">
+              <%= image_tag("user_silhouette_generic.png", width: '100px', height: '100px') %>
+            </a>
+          </div>
+          <div class="col-md-5 col-xs-6">
+            <p><a href="#">Hermione Granger</a></p>
+            <p>432 Friends</p>
+          </div>
+          <form class="col-md-4 col-xs-12">
+            <div class="form-group">
+              <button type="submit" class="btn btn-default btn-unfriend">Unfriend Me</button>
+            </div>
+          </form>
+        </div>
+      </div><!--friend entry-->
+
+      <!--Individual friend surrounded by border-->
+      <div class="col-md-6 friend-list-entry">
+        <div class="row">
+          <div class="col-md-3 col-xs-6">
+            <a href="#">
+              <%= image_tag("user_silhouette_generic.png", width: '100px', height: '100px') %>
+            </a>
+          </div>
+          <div class="col-md-5 col-xs-6">
+            <p><a href="#">Hermione Granger</a></p>
+            <p>432 Friends</p>
+          </div>
+          <form class="col-md-4 col-xs-12">
+            <div class="form-group">
+              <button type="submit" class="btn btn-default btn-unfriend">Unfriend Me</button>
+            </div>
+          </form>
+        </div>
+      </div><!--friend entry-->
+
+      <!--Individual friend surrounded by border-->
+      <div class="col-md-6 friend-list-entry">
+        <div class="row">
+          <div class="col-md-3 col-xs-6">
+            <a href="#">
+              <%= image_tag("user_silhouette_generic.png", width: '100px', height: '100px') %>
+            </a>
+          </div>
+          <div class="col-md-5 col-xs-6">
+            <p><a href="#">Hermione Granger</a></p>
+            <p>432 Friends</p>
+          </div>
+          <form class="col-md-4 col-xs-12">
+            <div class="form-group">
+              <button type="submit" class="btn btn-default btn-unfriend">Unfriend Me</button>
+            </div>
+          </form>
+        </div>
+      </div><!--friend entry-->
+
+      <!--Individual friend surrounded by border-->
+      <div class="col-md-6 friend-list-entry">
+        <div class="row">
+          <div class="col-md-3 col-xs-6">
+            <a href="#">
+              <%= image_tag("user_silhouette_generic.png", width: '100px', height: '100px') %>
+            </a>
+          </div>
+          <div class="col-md-5 col-xs-6">
+            <p><a href="#">Hermione Granger</a></p>
+            <p>432 Friends</p>
+          </div>
+          <form class="col-md-4 col-xs-12">
+            <div class="form-group">
+              <button type="submit" class="btn btn-default btn-unfriend">Unfriend Me</button>
+            </div>
+          </form>
+        </div>
+      </div><!--friend entry-->
+
+      <!--Individual friend surrounded by border-->
+      <div class="col-md-6 friend-list-entry">
+        <div class="row">
+          <div class="col-md-3 col-xs-6">
+            <a href="#">
+              <%= image_tag("user_silhouette_generic.png", width: '100px', height: '100px') %>
+            </a>
+          </div>
+          <div class="col-md-5 col-xs-6">
+            <p><a href="#">Hermione Granger</a></p>
+            <p>432 Friends</p>
+          </div>
+          <form class="col-md-4 col-xs-12">
+            <div class="form-group">
+              <button type="submit" class="btn btn-default btn-unfriend">Unfriend Me</button>
+            </div>
+          </form>
+        </div>
+      </div><!--friend entry-->
+
+    </div>
+  </section>
+
+</main>

@@ -1,0 +1,72 @@
+<%= render partial: 'shared/navbar' %>
+<main>
+  <header class = "container" id="cover">
+
+    <%= render partial: 'shared/cover_images' %>
+
+    <!--secondary navbar-->
+    <%= render partial: 'shared/second_nav' %>
+
+  </header>
+
+<!-- THIS PART CHANGES PAGE BY PAGE -->
+  <section class="container" id="information-pane">
+    <header class="row">
+      <div class="col-md-offset-2 col-md-8 about-header">
+        <h2>About</h2>
+      </div>
+      <% if @profile.user == current_user %>
+        <form class="col-md-2 about-header" action="about_edit.html">
+          <div class="form-group">
+            <%= link_to "Edit your Profile", edit_user_profile_path(current_user), class: 'btn btn-default', id: 'edit-profile-button' %>
+          </div>
+        </form>
+      <% end %>
+    </header>
+
+    <div class = "row">
+      <div class = "col-md-5 col-md-offset-1">
+        <h3>Basic Information</h3>
+        <table class = "table about-table">
+          <tr>
+            <td>Birthday:</td>
+            <td><%= @profile.user.profile.month %></td>
+          </tr>
+          <tr>
+            <td>College:</td>
+            <td><%= @profile.user.profile.college if @profile.user.profile.college %></td>
+          </tr>
+          <tr>
+            <td>Hometown:</td>
+            <td><%= @profile.user.profile.hometown if @profile.user.profile.hometown %></td>
+          </tr>
+          <tr>
+            <td>Currently Lives:</td>
+            <td><%= @profile.user.profile.current_city if @profile.user.profile.current_city %></td>
+          </tr>
+        </table>
+
+        <h3>Contact Information</h3>
+        <table class = "table about-table">
+          <tr>
+            <td>Email:</td>
+            <td><%= @profile.user.email %></td>
+          </tr>
+          <tr>
+            <td>Telephone:</td>
+            <td><%= @profile.user.profile.telephone if @profile.user.profile.telephone %></td>
+          </tr>
+        </table>
+
+      </div>
+
+      <div class = "col-md-5">
+        <h3>Words to live by</h3>
+        <p><%= @profile.user.profile.words_to_live_by %></p>
+        <h3>About me</h3>
+        <p><%= @profile.user.profile.about_me %></p>
+      </div>
+    </div>
+  </section>
+
+</main>

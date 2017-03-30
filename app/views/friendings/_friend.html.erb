@@ -1,0 +1,30 @@
+
+<div id="friends-list">
+
+  <!--Individual friend surrounded by border-->
+  <div class="col-md-6 friend-list-entry">
+    <div class="row">
+      <div class="col-md-3 col-xs-6">
+        <a href="#">
+          <%= image_tag("user_silhouette_generic.png", width: '100px', height: '100px') %>
+        </a>
+      </div>
+      <div class="col-md-5 col-xs-6">
+        <p><%= link_to "#{friend.first_name} #{friend.last_name}", user_timeline_path(friend) %></p>
+        <p><%= all_friends_count(friend) %> Friend(s)</p>
+      </div>
+        <div class="col-md-4 col-xs-12">
+
+          <% if !current_user.friended_users.include?(friend) && friend != current_user %>
+            <%= button_to "Friend Me!", user_friendings_path(friend), method: :post, class: "btn btn-primary" %>
+
+          <% elsif current_user && current_user.friended_users.include?(friend) %>
+            <%= button_to "Unfriend Me", user_friending_path(current_user, friend), method: :delete, class: "btn btn-primary" %>
+
+          <% end %>
+
+        </div>
+    </div>
+  </div><!--friend entry-->
+
+</div>

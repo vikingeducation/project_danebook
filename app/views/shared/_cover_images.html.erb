@@ -1,0 +1,19 @@
+<!--cover images-->
+<div class = "row">
+
+  <% if @user && @user.cover_photo && @user.cover_photo.image %>
+    <%= image_tag(@user.cover_photo.image.url, width: '100%', height: '350px', class: "cover-photo hidden-sm hidden-xs" )%>
+  <% else %>
+    <%= image_tag('hogwarts_small.jpg', width: '100%', height: '350px', class: "cover-photo hidden-sm hidden-xs") %>
+  <% end %>
+
+  <div class="col-md-12 hidden-xs hidden-sm profile-image">
+    <% if @user && @user.profile_photo && @user.profile_photo.image %>
+      <%= image_tag(@user.profile_photo.image.url, width: '100%', height: '350px') %>
+    <% else %>
+      <%= image_tag('harry_potter_small.jpg', width: '180px', height: '200px') %>
+    <% end %>
+  </div>
+
+
+</div>

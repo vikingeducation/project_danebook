@@ -1,0 +1,122 @@
+<%= render partial: 'sessions/navbar_home' %>
+<!-- Main Content -->
+<main id="main-content" class="container">
+
+  <div class="row">
+
+    <!-- Info -->
+    <section class="col-xs-12 col-md-6 col-md-offset-1">
+
+      <div class="info">
+
+        <div class="info-title-container">
+          <h1>Connect with all your friends!</h1>
+        </div>
+
+        <div class="info-list-container">
+
+          <ul class="info-list">
+            <li>See photos and updates in your news feed.</li>
+            <li>Post your status for the world to see form your profile.</li>
+            <li>Get in touch with your friends by "friending" them. Hooray!</li>
+            <li>Like things because you're a positive person.</li>
+          </ul>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Sign Up Form -->
+    <section class="col-xs-12 col-md-4">
+
+      <h1>Sign Up</h1>
+      <%= form_for @user do |user_fields| %>
+        <% if @user.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+            <ul>
+            <% @user.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+      <form id="signup">
+
+        <div class="row">
+
+          <!-- Name -->
+          <div class="col-xs-6">
+            <div class="form-group">
+              <%= user_fields.label :first_name %>
+              <%= user_fields.text_field :first_name, class: 'form-control', placeholder: 'First Name' %>
+            </div>
+          </div>
+          <div class="col-xs-6">
+            <div class="form-group">
+              <%= user_fields.label :last_name %>
+              <%= user_fields.text_field :last_name, class: 'form-control', placeholder: 'Last Name' %>
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="col-xs-12">
+            <div class="form-group">
+              <%= user_fields.label :email %>
+              <%= user_fields.text_field :email, class: 'form-control', placeholder: 'Your Email Address' %>
+            </div>
+          </div>
+          <!-- Password -->
+          <div class="col-xs-12">
+            <div class="form-group">
+              <%= user_fields.label :password %>
+              <%= user_fields.text_field :password, class: 'form-control', placeholder: 'Your New Password' %>
+            </div>
+          </div>
+          <div class="col-xs-12">
+            <div class="form-group">
+              <%= user_fields.label :password_confirmation %>
+              <%= user_fields.text_field :password_confirmation, class: 'form-control', placeholder: 'Confirm Your Password' %>
+            </div>
+          </div>
+          <!-- Birthday -->
+          <div id= 'birthday' class="col-xs-12">
+            <%= user_fields.fields_for :profile do |profile_fields| %>
+              <label for='birthday'>Birthday</label><br/>
+                <div class="row">
+                  <div class='col-xs-12'>
+                    <%= profile_fields.select :month, (1..12), {prompt: 'Month'}, {class: 'form-control col-md-2'} %>
+                    <%= profile_fields.select :day, (1..31), {prompt: 'Day'}, {class: 'form-control col-md-2'} %>
+                    <%= profile_fields.select :year, (1905..Date.today.year), {prompt: 'Year'}, {class: 'form-control col-md-2'} %>
+                  </div>
+                </div>
+              </div>
+              <!-- Gender -->
+              <div class='col-xs-12'>
+                <label for='Gender'>Gender</label><br/>
+              </div>
+              <div class="col-xs-4">
+                <div class="form-group">
+                  <%= profile_fields.radio_button(:gender, "Female") %>
+                  <%= profile_fields.label :gender, 'Female' %>
+                </div>
+              </div>
+              <div class="col-xs-4">
+                <div class="form-group">
+                  <%= profile_fields.radio_button(:gender, "Male") %>
+                  <%= profile_fields.label :gender, 'Male' %>
+                </div>
+              </div>
+            <% end %>
+        </div>
+        <!-- Submit Sign Up -->
+        <%= user_fields.submit "Sign Up!", class: 'btn btn-success btn-lg btn-block' %>
+      <% end %>
+      </form>
+
+    </section>
+
+  </div>
+
+</main>

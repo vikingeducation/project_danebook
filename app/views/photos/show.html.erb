@@ -1,0 +1,31 @@
+<%= render partial: 'shared/navbar' %>
+<main class="container" id="information-pane">
+  <header class="row">
+    <div class="col-md-offset-2 col-md-8 about-header">
+      <h2>Photos</h2>
+    </div>
+  </header>
+
+  <section >
+    <div class="row">
+      <div class='col-sm-12'>
+        <%= image_tag @photo.image.url, class: 'img-responsive photo-link' %>
+      </div>
+      <div class="col-sm-6">
+        <%= like_link(@photo) %>
+        <%= like_sentence(@photo) %>
+      </div>
+      <section class="text-right">
+        <%= link_to "Set as Profile", user_path(current_user, :user => { :profile_photo_id => @photo.id }), method: "PUT" %><br/>
+        <%= link_to "Set as Cover", user_path(current_user, :user => { :cover_photo_id => @photo.id }), method: "PUT" %><br/>
+        <% if current_user == @photo.user %>
+          <%= link_to "Delete Photo", photo_path(@photo), method: :delete, data: { confirm: "Are you sure?" } %>
+        <% end %>
+      </section>
+    </div>
+    <aside id="post-feed">
+      <%= render partial: 'photo_comments', locals: {parent: @photo} %>
+    </aside>
+  </section>
+
+</main>

@@ -1,0 +1,82 @@
+<%= render partial: 'shared/navbar' %>
+<main>
+<header class = "container" id="cover">
+
+  <%= render partial: 'shared/cover_images' %>
+
+    <!--secondary navbar-->
+    <%= render partial: 'shared/second_nav' %>
+
+  </header>
+
+<!-- This part changes page by page -->
+  <section class="container" id="information-pane">
+    <header class="row">
+      <div class="col-md-offset-2 col-md-8 about-header">
+        <h2>Edit Profile</h2>
+      </div>
+    </header>
+
+
+    <div class = "row">
+    <%= form_for [@user, @profile] do |profile_fields| %>
+      <% if @profile.errors.any? %>
+          <div id="error_explanation">
+            <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this user from being saved:</h2>
+            <ul>
+            <% @profile.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+            </ul>
+          </div>
+        <% end %>
+      <div class = "col-md-5 col-md-offset-1">
+        <h3>Basic Information</h3>
+        <table class = "table about-table">
+          <tr>
+            <td>Birthday:</td>
+            <td><%= @profile.month %></td>
+          </tr>
+          <tr>
+            <td>College:</td>
+            <td><%= profile_fields.text_field :college, class: 'form-control' %></td>
+          </tr>
+          <tr>
+            <td>Hometown:</td>
+            <td><%= profile_fields.text_field :hometown, class: 'form-control' %></td>
+          </tr>
+          <tr>
+            <td>Currently Lives:</td>
+            <td><%= profile_fields.text_field :current_city, class: 'form-control' %></td>
+          </tr>
+        </table>
+
+        <h3>Contact Information</h3>
+        <table class = "table about-table">
+          <tr>
+            <td>Email:</td>
+            <td><%= @user.email %></td>
+          </tr>
+          <tr>
+            <td>Telephone:</td>
+            <td><%= profile_fields.text_field :telephone, class: 'form-control' %></td>
+          </tr>
+        </table>
+
+      </div>
+
+      <div class = "col-md-5">
+        <h3>Words to live by</h3>
+        <%= profile_fields.text_area :words_to_live_by, size: '40x5', class: 'form-control' %>
+        <h3>About me</h3>
+        <%= profile_fields.text_area :about_me, size: '40x5', class: 'form-control' %>
+      </div>
+
+      <div class="form-group col-md-6 col-md-offset-3">
+        <%= profile_fields.submit "Save Changes", class: 'btn btn-lg btn-block btn-default', id: 'save-profile' %>
+      </div>
+    <% end %>
+    </div>
+  </section>
+
+</main>

@@ -1,0 +1,41 @@
+<%= render partial: 'shared/navbar' %>
+
+<main>
+  <header class = "container" id="cover">
+
+    <%= render partial: 'shared/cover_images' %>
+
+    <!--secondary navbar-->
+    <%= render partial: 'shared/second_nav'  %>
+
+  </header>
+
+<!-- THIS PART CHANGES PAGE BY PAGE -->
+  <section class="container" id="information-pane">
+    <header class="row">
+      <div class="col-md-offset-2 col-md-8 about-header">
+        <h2>Photos</h2>
+      </div>
+      <% if @user == current_user %>
+        <form class="col-md-2 about-header" action="about_edit.html">
+          <div class="form-group">
+            <%= link_to "Add Photo", new_user_photo_path(current_user), class: 'btn btn-default', id: 'edit-profile-button' %>
+          </div>
+        </form>
+      <% end %>
+    </header>
+
+    <% unless @photos.empty? %>
+      <div class="row" id="photo-field">
+        <% @photos.each do |photo| %>
+          <div class="col-sm-3 photo">
+            <%= image_tag photo.image.url, class: 'img-responsive photo-link' %>
+            <%= link_to "Uploaded #{photo.created_at.strftime("%B %d, %Y")}", user_photo_path(photo.user, photo), class: "photo-upload-date" %>
+          </div>
+        <% end %>
+      </div>
+    <% else %>
+      <h3 class="text-center">No photos have been added yet</h3>
+    <% end %>
+
+</main>

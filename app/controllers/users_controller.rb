@@ -1,8 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_return_path, only: [:update]
-
   skip_before_action :require_login, :only => [:new, :create]
-  before_action :skip_login, :only => [:new]
 
 
   def index

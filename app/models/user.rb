@@ -26,8 +26,8 @@ class User < ApplicationRecord
 
   has_many :photos
 
-  belongs_to :profile_photo, class_name: "Photo"
-  belongs_to :cover_photo, class_name: "Photo"
+  belongs_to :profile_photo, class_name: "Photo", optional: true
+  belongs_to :cover_photo, class_name: "Photo", optional: true
 
   has_secure_password
 

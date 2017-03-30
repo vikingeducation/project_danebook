@@ -2,6 +2,9 @@ class Profile < ApplicationRecord
 
   belongs_to :user, optional: true
 
+  belongs_to :profile_photo, class_name: "Photo", optional: true
+  belongs_to :cover_photo, class_name: "Photo", optional: true
+
   def birthday
     "#{month}\/#{day}\/#{year}"
   end

@@ -1,7 +1,19 @@
 class StaticPagesController < ApplicationController
 
-  def index
-    render :home
+  def home
+    @home = true
+  end
+
+  def timeline
+  end
+
+  def friends
+  end
+
+  def about
+  end
+
+  def photos
   end
 
 end

@@ -1,1 +1,98 @@
-<h1>Hello World</h1>
+<nav class="navbar navbar-default ">
+  <div class="container">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <h1>
+        <a class="navbar-brand " href="#">Danebook</a>
+      </h1>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+
+      <form class="navbar-form navbar-right">
+        <div class="form-group">
+          <label for="login_email">Email</label><br>
+          <input id="login_email" type="text" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="login_password">Password</label><br>
+          <input id="login_password" type="text" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for=""> </label><br>
+          <button style="margin-top:5px" type="submit" class="btn btn-default">Log in</button>
+        </div>
+      </form>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container -->
+</nav>
+
+<div class="container">
+  <div class="row">
+
+    <div class="col-md-7">
+      <div id="info-msgs">
+        <h2>Connect with all your friends!</h2>
+        <ul>
+          <li>See photos and updates in your news feed.</li>
+          <li>Post your status for the world to see from your profile</li>
+          <li>Get in touch with your friends by "friending" them</li>
+          <li>Like things because you're a positive person!</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="col-md-5">
+      <div id="signup-form">
+        <h1>Sign Up</h1>
+        <form>
+          <!-- name -->
+          <div class="row">
+            <div class="form-group col-sm-6">
+              <input class="form-control" type="text" placeholder="First Name">
+            </div>
+            <div class="form-group col-sm-6">
+              <input class="form-control" type="text" placeholder="Last Name">
+            </div>
+          </div>
+          <!-- email -->
+          <div class="form-group">
+            <input class="form-control" type="email" placeholder="Your Email">
+          </div>
+          <!-- passwords -->
+          <div class="form-group">
+            <input class="form-control" type="password" placeholder="Your New Password">
+          </div>
+          <div class="form-group">
+            <input class="form-control" type="password" placeholder="Confirm Your Password">
+          </div>
+          <!-- birthday -->
+          <div class="form-group">
+            <label for="signup-birthday">Birthday</label>
+            <input id="signup-birthday" class="form-control" type="date">
+          </div>
+          <!-- gender -->
+          <div class="form-group">
+            <label class="radio-inline">
+              <input type="radio" name="" value="">
+              Male
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="" value="">
+              Female
+            </label>
+          </div>
+
+          <button class="btn btn-lg btn-success btn-block" type="button" name="button">Sign Up!</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

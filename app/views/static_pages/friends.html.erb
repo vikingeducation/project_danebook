@@ -1,28 +1,7 @@
 <!-- cover -->
-<div class="jumbotron">
-  <div class="container">
-    <div class="dp">
-      <a href="#" class="dp-profile-name">
-        <img class="dp-img" src="https://s3.amazonaws.com/viking_education/web_development/web_app_eng/harry_potter_small.jpg" alt="user image">
-        Henry Potter
-        <i class="glyphicon glyphicon-ok"></i>
-      </a>
-    </div>
-  </div>
-</div>
+<%= render :partial => "shared/jumbotron" %>
 
-<div class="timeline-nav">
-  <div class="container">
-    <div class="nav nav-pills">
-      <li><a href="timeline.html">Timeline</a></li>
-      <li><a href="about.html">About</a></li>
-      <li class="active"><a href="friends.html">Friends <span class="label label-primary">26k</span></a></li>
-      <li><a href="photos.html">Photos <span class="label label-primary">555</span></a></li>
-      <li class="pull-right"><a href="about_edit.html">Edit profile</a></li>
-    </div>
-
-  </div>
-</div>
+<%= render :partial => "shared/timeline_nav" %>
 
 <div class="container">
   <div class="panel panel-default user-panel">
@@ -38,13 +17,13 @@
 
             <div class="row">
               <div class="col-sm-4 vcenter">
-                <a href="#">
+                <%= link_to "#" do %>
                   <img src="https://s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif" alt="...">
-                </a>
+                <% end %>
               </div>
               <div class="col-sm-4 vcenter">
                 <div class="friend-info">
-                  <a href="#">Hermione Granger</a><br>
+                  <%= link_to "Hermione Granger", "#" %> <br>
                   <span class="text-info">432 friends</span>
                 </div>
               </div>
@@ -60,61 +39,13 @@
 
             <div class="row">
               <div class="col-sm-4 vcenter">
-                <a href="#">
+                <%= link_to "#" do %>
                   <img src="https://s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif" alt="...">
-                </a>
+                <% end %>
               </div>
               <div class="col-sm-4 vcenter">
                 <div class="friend-info">
-                  <a href="#">Hermione Granger</a><br>
-                  <span class="text-info">432 friends</span>
-                </div>
-              </div>
-              <div class="col-sm-3 vcenter">
-                <button class="btn btn-default">Unfriend Me</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-
-      <div class="row">
-
-        <div class="col-sm-6">
-          <div class="thumbnail">
-
-            <div class="row">
-              <div class="col-sm-4 vcenter">
-                <a href="#">
-                  <img src="https://s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif" alt="...">
-                </a>
-              </div>
-              <div class="col-sm-4 vcenter">
-                <div class="friend-info">
-                  <a href="#">Hermione Granger</a><br>
-                  <span class="text-info">432 friends</span>
-                </div>
-              </div>
-              <div class="col-sm-3 vcenter">
-                <button class="btn btn-default">Unfriend Me</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-sm-6">
-          <div class="thumbnail">
-
-            <div class="row">
-              <div class="col-sm-4 vcenter">
-                <a href="#">
-                  <img src="https://s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif" alt="...">
-                </a>
-              </div>
-              <div class="col-sm-4 vcenter">
-                <div class="friend-info">
-                  <a href="#">Hermione Granger</a><br>
+                  <%= link_to "Hermione Granger", "#" %> <br>
                   <span class="text-info">432 friends</span>
                 </div>
               </div>
@@ -134,13 +65,13 @@
 
             <div class="row">
               <div class="col-sm-4 vcenter">
-                <a href="#">
+                <%= link_to "#" do %>
                   <img src="https://s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif" alt="...">
-                </a>
+                <% end %>
               </div>
               <div class="col-sm-4 vcenter">
                 <div class="friend-info">
-                  <a href="#">Hermione Granger</a><br>
+                  <%= link_to "Hermione Granger", "#" %> <br>
                   <span class="text-info">432 friends</span>
                 </div>
               </div>
@@ -156,13 +87,61 @@
 
             <div class="row">
               <div class="col-sm-4 vcenter">
-                <a href="#">
+                <%= link_to "#" do %>
                   <img src="https://s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif" alt="...">
-                </a>
+                <% end %>
               </div>
               <div class="col-sm-4 vcenter">
                 <div class="friend-info">
-                  <a href="#">Hermione Granger</a><br>
+                  <%= link_to "Hermione Granger", "#" %> <br>
+                  <span class="text-info">432 friends</span>
+                </div>
+              </div>
+              <div class="col-sm-3 vcenter">
+                <button class="btn btn-default">Unfriend Me</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row">
+
+        <div class="col-sm-6">
+          <div class="thumbnail">
+
+            <div class="row">
+              <div class="col-sm-4 vcenter">
+                <%= link_to "#" do %>
+                  <img src="https://s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif" alt="...">
+                <% end %>
+              </div>
+              <div class="col-sm-4 vcenter">
+                <div class="friend-info">
+                  <%= link_to "Hermione Granger", "#" %> <br>
+                  <span class="text-info">432 friends</span>
+                </div>
+              </div>
+              <div class="col-sm-3 vcenter">
+                <button class="btn btn-default">Unfriend Me</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <div class="thumbnail">
+
+            <div class="row">
+              <div class="col-sm-4 vcenter">
+                <%= link_to "#" do %>
+                  <img src="https://s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif" alt="...">
+                <% end %>
+              </div>
+              <div class="col-sm-4 vcenter">
+                <div class="friend-info">
+                  <%= link_to "Hermione Granger", "#" %> <br>
                   <span class="text-info">432 friends</span>
                 </div>
               </div>

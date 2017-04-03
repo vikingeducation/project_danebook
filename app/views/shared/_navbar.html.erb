@@ -10,7 +10,7 @@
           <span class="icon-bar"></span>
         </button>
         <h1>
-          <a class="navbar-brand " href="#">Danebook</a>
+          <%= link_to "Danebook", root_path, class: "navbar-brand" %>
         </h1>
       </div>
 
@@ -45,9 +45,9 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand " href="index.html">
-          <%= image_tag "danish_flag.gif" %>
-          danebook</a>
+        <%= link_to(root_path, class: "navbar-brand") do %>
+          <%= image_tag "danish_flag.gif" %> danebook
+        <% end %>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->

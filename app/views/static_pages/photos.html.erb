@@ -1,25 +1,4 @@
 <!-- cover -->
-<div class="jumbotron">
-  <div class="container">
-    <div class="dp">
-      <a href="#" class="dp-profile-name">
-        <img class="dp-img" src="https://s3.amazonaws.com/viking_education/web_development/web_app_eng/harry_potter_small.jpg" alt="user image">
-        Henry Potter
-        <i class="glyphicon glyphicon-ok"></i>
-      </a>
-    </div>
-  </div>
-</div>
+<%= render :partial => "shared/jumbotron" %>
 
-<div class="timeline-nav">
-  <div class="container">
-    <div class="nav nav-pills">
-      <li><a href="#">Timeline</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="friends.html">Friends <span class="label label-primary">26k</span></a></li>
-      <li class="active"><a href="photos.html">Photos <span class="label label-primary">555</span></a></li>
-      <li class="pull-right"><a href="about_edit.html">Edit profile</a></li>
-    </div>
-
-  </div>
-</div>
+<%= render :partial => "shared/timeline_nav" %>

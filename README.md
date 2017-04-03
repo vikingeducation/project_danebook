@@ -1,4 +1,10 @@
 danebook_goes_live
 ==================
 
-This is your README!
+# Danebook
+
+## [Efraim](http://github.com/efraimmgon)
+
+Description
+
+[Viking Code School](http://vikingcodeschool.com)

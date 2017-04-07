@@ -1,0 +1,59 @@
+<article class="row post">
+              <header class="col-xs-12 media">
+                <div class="media-left">
+  <%= link_to image_tag('user_silhouette_generic.png', class: 'img-thumbnail media-object', alt: 'Generic User Image') %>
+                </div>
+                <div class="media-body">
+                  <h5 class="media-heading"><a href="about.html">Harry Potter</a></h5>
+                  <p class="small text-muted">Posted on Thursday <time datetime="2014-6-1">6/1/2014</time></p>
+                </div>
+              </header>
+              <div class="col-xs-12">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cupiditate doloremque vel fugit, nulla atque voluptatibus ex iusto mollitia labore, cumque, ullam. Rerum sunt nesciunt numquam maxime eligendi ex. Quas, voluptatibus.</p>
+              </div>
+              <footer class="post-footer col-xs-12">
+                <span class="post-action"><a href="#">Unlike</a></span>
+                <span class="pull-right"><a href="#">Delete</a></span>
+                <div class="post-reaction">
+                  <span>You and <a href="#">Hermione Granger</a> and 3 others like this</span>
+                </div>
+              </footer>
+              <div class="post-comments col-xs-12 post-footer">
+                <article class="row post-comment">
+                  <div class="col-xs-12 media">
+                    <div class="media-left">
+      <%= link_to image_tag('user_silhouette_generic.png', class: 'img-thumbnail media-object', alt: 'Generic User Image') %>
+                    </div>
+                    <div class="media-body">
+                      <span class="media-heading h5"><a href="#">Ron Weasley</a></span>
+                      <span class="small text-muted">Posted on Thursday <time datetime="2014-6-1">6/1/2014</time></span>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae commodi, iste. Voluptatibus enim similique velit adipisci dolore reprehenderit qui! Veniam quod nisi, quia voluptas assumenda tenetur perspiciatis modi sunt animi.</p>
+                      <footer>
+                        <span class="post-action"><a href="#">Like</a><a href="#">Comment</a></span>
+                      </footer>
+                    </div>
+                  </div>
+                </article>
+                
+                <article class="row post-comment">
+                  <div class="col-xs-12 media">
+                    <div class="media-left">
+      <%= link_to image_tag('user_silhouette_generic.png', class: 'img-thumbnail media-object', alt: 'Generic User Image') %>
+                    </div>
+                    <div class="media-body">
+                      <span class="media-heading h5"><a href="about.html">Harry Potter</a></span>
+                      <span class="small">Posted on Thursday <time datetime="2014-6-1">6/1/2014</time></span>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repudiandae commodi, iste. Voluptatibus enim similique velit adipisci dolore reprehenderit qui! Veniam quod nisi, quia voluptas assumenda tenetur perspiciatis modi sunt animi.</p>
+                      <footer>
+                        <span class="post-action"><a href="#">Like</a><a href="#">Comment</a><span><span class="text-muted">3 other people like this</span><span class="pull-right"><a href="#">Delete</a></span>
+                      </span></span></footer>
+                    </div>
+                  </div>
+                </article>
+              </div>
+              <form class="col-xs-12 form-group comment-form">
+                <textarea name="comment" id="" cols="30" rows="2" class="form-control" placeholder="Write a comment"></textarea>
+                <span><a href="#">Cancel</a></span>
+                <button type="submit" class="btn btn-primary pull-right">Comment</button>
+              </form>
+            </article>

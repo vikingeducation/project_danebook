@@ -1,0 +1,24 @@
+<main class="main container">
+<%= render 'profile_header' %>
+<section class="row">
+  <div class="col-xs-12">
+    <div class="info-box row">
+      <header class="col-xs-12">
+        <h2 class="module-title">About</h2>
+        <%= link_to "Edit Your Profile", about_edit_path, {class: 'btn btn-primary btn-sm module-edit'} %>
+      </header>
+      <div class="col-xs-12">
+        <div class="friend-grid row">
+          <%= render 'friend_grid_item' %>
+          <%= render 'friend_grid_item' %>
+          <%= render 'friend_grid_item' %>
+          <%= render 'friend_grid_item' %>
+          <%= render 'friend_grid_item' %>
+          <%= render 'friend_grid_item' %>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+</section>
+</main>

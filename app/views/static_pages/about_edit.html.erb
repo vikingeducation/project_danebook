@@ -1,0 +1,49 @@
+<main class="main container">
+       <%= render 'profile_header' %>
+    <section class="row">
+      <div class="col-xs-12">
+        <div class="info-box row">
+          <header class="col-xs-12">
+            <h2 class="module-title">About</h2>
+            <%= link_to "Edit Your Profile", about_edit_path, {class: 'btn btn-primary btn-sm module-edit'} %>
+          </header>
+          <div class="col-xs-12">
+      <div class="row">
+        <form class="form-group about-form">
+          <div class="col-md-5 col-md-offset-1">
+            <h3>Basic Information</h3>
+            <dl class="dl-horizontal bio">
+              <dt>Birthday:</dt>
+              <dd>July 31st, 1980</dd>
+              <dt><label for="college">College</label></dt>
+              <dd><input type="text" class="form-control" name="college" value="Hogwarts College"></dd>
+              <dt><label for="hometown">Hometown</label></dt>
+              <dd><input type="text" class="form-control" value="Godrick's Hollow, England" name="hometown"></dd>
+              <dt><label for="currently-lives">Currently Lives:</label></dt>
+              <dd><input type="text" class="form-control" name="current-lives" value="Godrick's Hollow, England"></dd>
+            </dl>
+            <h3>Contact Information</h3>
+            <dl class="dl-horizontal bio">
+              <dt>Email:</dt>
+              <dd>harry_potter@hogwarts.edu</dd>
+              <dt><label for="telephone">Telephone:</label></dt>
+              <dd><input type="tel" class="form-control" name="telephone" value="555-123-4567"></dd>
+            </dl>
+          </div>
+          <div class="col-md-5">
+            <h3><label for="quote">Words to Live By</label></h3>
+            <textarea class="form-control" rows="3" name="quote">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus ratione aliquid pariatur optio voluptatum accusantium est debitis, nisi rem, vel, voluptas aut maxime maiores voluptates, officiis magnam officia adipisci ad.</textarea>
+            <h3><label for="about">About Me</label></h3>
+            <textarea class="form-control" rows="7" name="about">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit voluptas commodi pariatur sapiente consequatur praesentium ut saepe ea aliquid quam, officiis excepturi id perferendis, quasi, necessitatibus rerum ipsam reiciendis, magnam quaerat. Illum ad cumque quaerat, rem perspiciatis porro amet sint unde accusantium vel dignissimos totam ducimus sequi, hic, deleniti ut.</textarea>
+          </div>
+          <div class="col-xs-12">
+            <button type="submit" class="btn btn-primary btn-block">Save Changes</button>
+          </div>
+      </form>
+        </div>
+      </div>
+        </div>
+      </div>
+      
+    </section>
+    </main>

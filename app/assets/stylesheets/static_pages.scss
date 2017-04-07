@@ -1,0 +1,356 @@
+// Place all the styles related to the StaticPages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+/* VARS */
+$brand-color:#2B78E4;
+$border-color-light: #ccc;
+$light-gray: #f9f9f9;
+
+/* NAVBAR */
+.logged-out {
+  .navbar-default .navbar-brand {
+    color: #fff;
+    font-size: 36px;
+  }
+  .navbar-default .navbar-brand:hover {
+    color: #fff;
+  }
+  .navbar {
+    background-color: $brand-color;
+    border-radius: 0;
+    border: 0;
+  }
+  .navbar-default .navbar-toggle .icon-bar {
+    color: #fff;
+    background-color: #fff;
+  }
+  .navbar-default .navbar-toggle {
+    border-color: #fff;
+  }
+  .navbar-default .navbar-collapse, .navbar-default .navbar-form {
+    border-color: $brand-color;
+    margin: 0;
+    padding-top: 5px;
+  }
+  .navbar-form label {
+    display: block;
+    color: #fff;
+  }
+  .navbar-form .form-button {
+    vertical-align: bottom;
+  }
+  .navbar-form .btn {
+    height: 26px;
+  }
+
+  /* MAIN */
+  .main {
+    margin-top: 50px;
+  }
+  .connect-message {
+    margin-top: 50px;
+  }
+
+  /* SIGN UP LIST */
+  .signup-list li, .signup-list {
+    margin: 16px 0;
+    font-size: 16px;
+  }
+
+  /* BUTTON MOD */
+  .btn.btn-action {
+    background-color: #9FC5F8;
+    border: 0;
+  }
+  .btn {
+    border-radius: 0;
+  }
+
+  /* MEDIA QUERIES */
+  @media screen and (max-width:991px) {
+    .connect-message, .main {
+      margin-top: 0;
+    }
+    .signup-list {
+      margin-bottom: 40px;
+    }
+  }
+}
+.logged-in {
+
+  /* GLOBAL SETTINGS */
+  a:hover {
+    text-decoration: none;
+  }
+  .btn {
+    border-radius: 0;
+  }
+  .container {
+    max-width: 900px;
+  }
+  .img-thumbnail {
+    border-radius: 0;
+  }
+
+  /* NAVBAR */
+  .navbar {
+    background-color: $brand-color;
+    border-radius: 0;
+    border: 0;
+  }
+  .navbar-logo {
+    width: 20px;
+    height: 20px;
+    float: left;
+    margin-right: 10px;
+  }
+  .navbar-default .navbar-brand, .navbar-default .navbar-brand:hover, .navbar-default a, .navbar-default a:hover {
+    color: #fff;
+  }
+  .navbar-collapse {
+    border: 0;
+  }
+  .navbar-form {
+    width: 100%;
+    border: 0;
+
+    .form-group, .form-control {
+      width: 100%;
+    }
+  }
+  .navbar-right {
+    margin-right: 0;
+  }
+
+  /* MAIN */
+
+  /* compensate for fixed navbar */
+  .main {
+    margin-top: 50px;
+  }
+
+  /* PROFILE */
+  .profile-top {
+    border: 1px solid $border-color-light;
+    position: relative;
+    border-top: 0;
+    margin-bottom: 20px;
+    padding: 0;
+  }
+  .profile-name {
+    position: absolute;
+    left: 170px;
+    margin: 0;
+    bottom: 50px;
+    color: #fff;
+  }
+  .profile-pic {
+    width: 150px;
+    height: 150px;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    z-index: 1;
+  }
+  .profile-nav {
+    padding-left: 170px;
+    border-top: 1px solid $border-color-light;
+    position: relative;
+
+    .nav-pills a:hover {
+      border-radius: 0;
+      background-color: transparent;
+    }
+    .nav-pills li {
+      border-left: 1px solid $border-color-light;
+      margin-left: 0;
+    }
+    .nav-pills li:last-of-type {
+      border-right: 1px solid $border-color-light;
+    }
+    .current {
+      background-color: $light-gray;
+    }
+    .current a {
+      color: #333;
+      cursor: default;
+    }
+  }
+  .profile-cover {
+    height: 300px;
+    width: auto;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+  }
+  .profile-edit {
+    position: absolute;
+    right: 10px;
+    bottom: 0;
+  }
+
+  /* PHOTO GRID */
+  .photo-grid {
+    .photo-item {
+      position: relative;
+      overflow: hidden;
+      margin: 10px auto;
+
+      figcaption {
+        position: absolute;
+        opacity: 0;
+        bottom: 0;
+        background: rgba(102, 102, 102, .7);
+        color: #fff;
+        padding: 5px;
+        transition: all 0.3s ease;
+        width: 100%;
+      }
+    }
+    .photo-item:hover {
+      figcaption {
+        opacity: 1;
+      }
+    }
+    .photo-bg {
+      height: 150px;
+      background-size: cover;
+      background-position: 50% 50%;
+      background-repeat: no-repeat;
+    }
+  }
+
+  /* FRIEND GRID */
+  .friend-grid {
+    padding: 10px;
+  }
+  .friend-item {
+    border: 1px solid $border-color-light;
+    padding: 10px;
+    margin: 10px 0;
+
+    .img-thumbnail {
+      width: 80px;
+      height: 80px;
+    }
+  }
+
+  /* TIMELINE */
+  .info-box {
+    border: 1px solid $border-color-light;
+    margin-bottom: 20px;
+
+    header {
+      background-color: $light-gray;
+      border-bottom: 1px solid $border-color-light;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+    .module-title {
+      display: inline-block;
+      margin-top: 10px;
+    }
+    .module-edit {
+      right: 10px;
+      @extend .vertical-middle;
+    }
+    .thumbnail-grid .img-thumbnail {
+      margin-bottom: 10px;
+    }
+    .thumbnail-grid .name {
+      margin-top: -5px;
+      line-height: 1.2;
+    }
+  }
+
+  /* TIMELINE POST */
+  .post-footer {
+    border-top: 1px solid $border-color-light;
+    background-color: $light-gray;
+    margin-top: 10px;
+    padding: 5px 0;
+
+    .post-action a {
+      padding-right: 10px;
+    }
+  }
+  .post-form {
+    margin-bottom: 0;
+  }
+  .post {
+    border: 1px solid $border-color-light;
+    padding: 10px 0 0;
+    margin-bottom: 20px;
+
+    .post-footer {
+      padding: 10px;
+    }
+  }
+  .post-reaction {
+    margin: 10px 0 0;
+  }
+  .post-comments {
+    margin-top: 0;
+
+    .post-comment {
+      margin-bottom: 10px;
+    }
+  }
+  .post .img-thumbnail {
+    width: 40px;
+    height: 40px;
+  }
+  .post .media-heading {
+    margin-top: 5px;
+  }
+
+  /* COMMENT FORM */
+  .comment-form {
+    background: $light-gray;
+    margin-bottom: 0;
+    padding-bottom: 10px;
+
+    textarea {
+      margin-bottom: 10px;
+    }
+  }
+
+  /* ABOUT FORM */
+  .about-form {
+    button {
+      margin: 40px auto;
+      max-width: 400px;
+    }
+  }
+  .bio {
+    dd {
+      margin-bottom: 10px;
+      margin-top: 10px;
+    }
+    dt {
+      text-align: left;
+    }
+  }
+
+  /* HELPER CLASS */
+  .vertical-middle {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  .absolute-right {
+    right: 10px;
+  }
+
+  /* WIDE SCREEN SETTINGS */
+  @media screen and (min-width:768px) {
+    .navbar-form {
+      width: 60%;
+      margin-top: 10px;
+    }
+    .timeline-feed {
+      margin-left: 15px;
+    }
+  }
+}

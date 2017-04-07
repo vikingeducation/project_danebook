@@ -1,0 +1,22 @@
+<nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapsible" aria-expanded="false">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          </button>
+          <%= link_to image_tag('danish_flag.gif', alt: 'Danebook logo', class: 'navbar-logo img-circle'), timeline_path, { class: 'navbar-brand'} %>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-collapsible">
+          <form class="navbar-form navbar-left" role="search">
+            <div class="form-group form-group-sm">
+              <label for="user-search" class="sr-only">Search for Users</label>
+              <input type="text" class="form-control" name="user-search" placeholder="Search for Users">
+            </div>
+          </form>
+          <p class="navbar-text navbar-right"><a href="about.html">Harry</a></p>
+        </div>
+      </div>
+    </nav>

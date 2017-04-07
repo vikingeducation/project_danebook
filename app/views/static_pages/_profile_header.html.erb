@@ -1,0 +1,17 @@
+ <header class="row">
+      <div class="profile-top col-xs-12">
+        <div class="profile-cover" style="background-image: url('<%= image_path('hogwarts_small.jpg') %>')">
+        </div>
+        <h2 class="profile-name">Harry Potter</h2>
+           <%=  image_tag('user_silhouette_generic.png', alt: 'Generic User Silhouette', class: 'img-thumbnail profile-pic')  %>
+        <nav class="profile-nav">
+          <ul class="nav nav-pills">
+            <li><%= link_to "Timeline", timeline_path %></li>
+            <li><%= link_to "About", about_path %></li>
+            <li><%= link_to "Photos", photos_path %></li>
+            <li class="current"><%= link_to "Friends", friends_path %></li>
+          </ul>
+          <p class="profile-edit"><%= link_to "Edit Profile", about_edit_path %></p>
+        </nav>
+      </div>
+    </header>

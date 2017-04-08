@@ -24,4 +24,4 @@ production:
   <<: *default
   adapter: postgresql
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  database: db/production.sqlite3
+  database: project_danebook

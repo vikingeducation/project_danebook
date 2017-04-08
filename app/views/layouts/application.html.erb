@@ -8,7 +8,8 @@
   </head>
 
   <body <%= body_class %>>
-  <%= render nav_bar %>
+  <%= render partial: 'shared/flash' %>
+  <%= render partial: 'shared/nav_home' %>
     <%= yield %>
      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   </body>

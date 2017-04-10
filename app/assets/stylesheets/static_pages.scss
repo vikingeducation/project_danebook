@@ -8,15 +8,29 @@ $border-color-light: #ccc;
 $light-gray: #f9f9f9;
 
 /* NAVBAR */
+
+.navbar-form {
+  border:0;
+}
+.navbar-default .navbar-collapse, .navbar-default .navbar-form {
+  border: 0;
+}
+.navbar-collapse {
+  box-shadow: none;
+}
+.navbar-default .navbar-text {
+  color: #fff;
+}
+
 .logged-out {
-  .navbar-default .navbar-brand {
+ .navbar-brand {
     color: #fff;
     font-size: 36px;
   }
-  .navbar-default .navbar-brand:hover {
+ &.navbar-brand:hover {
     color: #fff;
   }
-  .navbar {
+  &.navbar {
     background-color: $brand-color;
     border-radius: 0;
     border: 0;
@@ -78,6 +92,9 @@ $light-gray: #f9f9f9;
   }
 }
 .logged-in {
+  a {
+    color: #fff;
+  }
 
   /* GLOBAL SETTINGS */
   a:hover {
@@ -94,7 +111,7 @@ $light-gray: #f9f9f9;
   }
 
   /* NAVBAR */
-  .navbar {
+  &.navbar {
     background-color: $brand-color;
     border-radius: 0;
     border: 0;

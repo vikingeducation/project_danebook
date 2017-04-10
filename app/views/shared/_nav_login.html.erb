@@ -1,0 +1,11 @@
+ <%= form_tag session_path, class: 'navbar-right navbar-form' do  %>
+ <div class="form-group">
+  <%= label_tag :email %>
+<%= text_field_tag :email %>
+</div>
+<div class="form-group">
+  <%= label_tag :password %>
+<%= password_field_tag :password %>
+</div>
+<div class="form-group form-button"><%= submit_tag "Sign In",  class: 'btn btn-action' %></div>
+<% end %>

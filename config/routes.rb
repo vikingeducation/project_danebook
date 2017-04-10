@@ -8,4 +8,7 @@ Rails.application.routes.draw do
   get 'about', to: 'static_pages#about', as: 'about'
   get 'about_edit', to: 'static_pages#about_edit', as: 'about_edit'
   resources :users, only: [:new, :create, :show]
+  resource :session, only: [:new, :create, :destroy] do
+    delete 'logout' => 'sessions#destroy'
+  end
 end

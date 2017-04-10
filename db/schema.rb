@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170407141035) do
+ActiveRecord::Schema.define(version: 20170409100012) do
 
   create_table "profiles", force: :cascade do |t|
     t.string   "first_name"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20170407141035) do
     t.string   "password_digest", null: false
     t.datetime "created_at",      null: false
     t.datetime "updated_at",      null: false
+    t.string   "auth_token"
     t.index ["email"], name: "index_users_on_email"
   end
 

@@ -6,13 +6,12 @@ class SessionsController < ApplicationController
   def create
     @user = User.find_by(email: params[:email])
     if @user && @user.authenticate(params[:password])
-      flash[:success] = "Welcome back, #{@user.first_name}"
       if params[:remember_me]
         permanent_sign_in(@user)
       else
         sign_in(@user)
       end
-      redirect_to @user
+      redirect_to user_about_path(@user)
     else
       flash[:error] = "We had trouble signing you in. Please check your login details"
       render :new

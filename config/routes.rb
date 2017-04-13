@@ -5,9 +5,11 @@ Rails.application.routes.draw do
   get 'timeline', to: 'static_pages#timeline', as: 'timeline'
   get 'friends', to: 'static_pages#friends', as: 'friends'
   get 'photos', to: 'static_pages#photos', as: 'photos'
-  get 'about', to: 'static_pages#about', as: 'about'
+  # get 'about', to: 'static_pages#about', as: 'about'
   get 'about_edit', to: 'static_pages#about_edit', as: 'about_edit'
-  resources :users, only: [:new, :create, :show]
+  resources :users,  only: [:new, :create, :edit, :update] do
+    get 'about' => 'users#show'
+  end
   resource :session, only: [:new, :create, :destroy] do
     delete 'logout' => 'sessions#destroy'
   end

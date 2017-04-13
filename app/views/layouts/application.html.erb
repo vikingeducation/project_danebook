@@ -2,15 +2,18 @@
 <html>
   <head>
     <title>Danebook</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <%= csrf_meta_tags %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-    <%= render partial: 'shared/flash' %>
     <%= render partial: 'shared/nav_login' unless signed_in_user? %>
     <%= render partial: 'shared/nav_logged_in' if signed_in_user? %>
-    <%= yield %>
+    <main class="main container">
+    <%= render partial: 'shared/flash' %>
+      <%= yield %>
+    </main>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   </body>
 </html>

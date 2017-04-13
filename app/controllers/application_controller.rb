@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  helper_method :current_user, :signed_in_user?
+  helper_method :current_user, :signed_in_user?, :require_current_user, :is_authorized?
   protect_from_forgery with: :exception
 
   private
@@ -29,17 +29,21 @@ class ApplicationController < ActionController::Base
     !!current_user
   end
 
+  def is_authorized?
+    signed_in_user? && params[:user_id] == current_user.id.to_s
+  end
+
   def require_login
     unless signed_in_user?
       flash[:error] = "Sorry, you need to be signed in to view this page"
-      redirect_to login_session_path
+      redirect_to root_path
     end
   end
 
   def require_current_user
-    unless params[:id] == current_user.id.to_s
-      flash[:error] = "Guards! Seize #{['him', 'her'].sample}! Just kidding. You can look but you can't touch!"
-      redirect_to root_path
+    if current_user &&  params[:id] != current_user.id.to_s
+      flash[:error] = "Sorry! You're not authorized to do that"
+      return redirect_to root_path
     end
   end
 

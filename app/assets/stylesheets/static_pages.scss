@@ -147,6 +147,121 @@ $light-gray: #f9f9f9;
     margin-top: 50px;
   }
 
+
+
+  /* PHOTO GRID */
+  .photo-grid {
+    .photo-item {
+      position: relative;
+      overflow: hidden;
+      margin: 10px auto;
+
+      figcaption {
+        position: absolute;
+        opacity: 0;
+        bottom: 0;
+        background: rgba(102, 102, 102, .7);
+        color: #fff;
+        padding: 5px;
+        transition: all 0.3s ease;
+        width: 100%;
+      }
+    }
+    .photo-item:hover {
+      figcaption {
+        opacity: 1;
+      }
+    }
+    .photo-bg {
+      height: 150px;
+      background-size: cover;
+      background-position: 50% 50%;
+      background-repeat: no-repeat;
+    }
+  }
+
+  /* FRIEND GRID */
+  .friend-grid {
+    padding: 10px;
+  }
+  .friend-item {
+    border: 1px solid $border-color-light;
+    padding: 10px;
+    margin: 10px 0;
+
+    .img-thumbnail {
+      width: 80px;
+      height: 80px;
+    }
+  }
+
+ 
+  /* TIMELINE POST */
+  .post-footer {
+    border-top: 1px solid $border-color-light;
+    background-color: $light-gray;
+    margin-top: 10px;
+    padding: 5px 0;
+
+    .post-action a {
+      padding-right: 10px;
+    }
+  }
+  .post-form {
+    margin-bottom: 0;
+  }
+  .post {
+    border: 1px solid $border-color-light;
+    padding: 10px 0 0;
+    margin-bottom: 20px;
+
+    .post-footer {
+      padding: 10px;
+    }
+  }
+  .post-reaction {
+    margin: 10px 0 0;
+  }
+  .post-comments {
+    margin-top: 0;
+
+    .post-comment {
+      margin-bottom: 10px;
+    }
+  }
+  .post .img-thumbnail {
+    width: 40px;
+    height: 40px;
+  }
+  .post .media-heading {
+    margin-top: 5px;
+  }
+
+  /* COMMENT FORM */
+  .comment-form {
+    background: $light-gray;
+    margin-bottom: 0;
+    padding-bottom: 10px;
+
+    textarea {
+      margin-bottom: 10px;
+    }
+  }
+
+
+
+  /* WIDE SCREEN SETTINGS */
+  @media screen and (min-width:768px) {
+    .navbar-form {
+      width: 60%;
+      margin-top: 10px;
+    }
+    .timeline-feed {
+      margin-left: 15px;
+    }
+  }
+}
+
   /* PROFILE */
   .profile-top {
     border: 1px solid $border-color-light;
@@ -207,53 +322,25 @@ $light-gray: #f9f9f9;
     bottom: 0;
   }
 
-  /* PHOTO GRID */
-  .photo-grid {
-    .photo-item {
-      position: relative;
-      overflow: hidden;
-      margin: 10px auto;
-
-      figcaption {
-        position: absolute;
-        opacity: 0;
-        bottom: 0;
-        background: rgba(102, 102, 102, .7);
-        color: #fff;
-        padding: 5px;
-        transition: all 0.3s ease;
-        width: 100%;
-      }
+  
+  /* ABOUT FORM */
+  .about-form {
+    button {
+      margin: 40px auto;
+      max-width: 400px;
     }
-    .photo-item:hover {
-      figcaption {
-        opacity: 1;
-      }
+  }
+  .bio {
+    dd {
+      margin-bottom: 10px;
+      margin-top: 10px;
     }
-    .photo-bg {
-      height: 150px;
-      background-size: cover;
-      background-position: 50% 50%;
-      background-repeat: no-repeat;
+    dt {
+      text-align: left;
     }
   }
 
-  /* FRIEND GRID */
-  .friend-grid {
-    padding: 10px;
-  }
-  .friend-item {
-    border: 1px solid $border-color-light;
-    padding: 10px;
-    margin: 10px 0;
-
-    .img-thumbnail {
-      width: 80px;
-      height: 80px;
-    }
-  }
-
-  /* TIMELINE */
+   /* TIMELINE */
   .info-box {
     border: 1px solid $border-color-light;
     margin-bottom: 20px;
@@ -281,76 +368,7 @@ $light-gray: #f9f9f9;
     }
   }
 
-  /* TIMELINE POST */
-  .post-footer {
-    border-top: 1px solid $border-color-light;
-    background-color: $light-gray;
-    margin-top: 10px;
-    padding: 5px 0;
-
-    .post-action a {
-      padding-right: 10px;
-    }
-  }
-  .post-form {
-    margin-bottom: 0;
-  }
-  .post {
-    border: 1px solid $border-color-light;
-    padding: 10px 0 0;
-    margin-bottom: 20px;
-
-    .post-footer {
-      padding: 10px;
-    }
-  }
-  .post-reaction {
-    margin: 10px 0 0;
-  }
-  .post-comments {
-    margin-top: 0;
-
-    .post-comment {
-      margin-bottom: 10px;
-    }
-  }
-  .post .img-thumbnail {
-    width: 40px;
-    height: 40px;
-  }
-  .post .media-heading {
-    margin-top: 5px;
-  }
-
-  /* COMMENT FORM */
-  .comment-form {
-    background: $light-gray;
-    margin-bottom: 0;
-    padding-bottom: 10px;
-
-    textarea {
-      margin-bottom: 10px;
-    }
-  }
-
-  /* ABOUT FORM */
-  .about-form {
-    button {
-      margin: 40px auto;
-      max-width: 400px;
-    }
-  }
-  .bio {
-    dd {
-      margin-bottom: 10px;
-      margin-top: 10px;
-    }
-    dt {
-      text-align: left;
-    }
-  }
-
-  /* HELPER CLASS */
+   /* HELPER CLASS */
   .vertical-middle {
     position: absolute;
     top: 50%;
@@ -359,15 +377,10 @@ $light-gray: #f9f9f9;
   .absolute-right {
     right: 10px;
   }
-
-  /* WIDE SCREEN SETTINGS */
-  @media screen and (min-width:768px) {
-    .navbar-form {
-      width: 60%;
-      margin-top: 10px;
-    }
-    .timeline-feed {
-      margin-left: 15px;
-    }
-  }
+.mts {
+  margin-top:1em;
 }
+.mbs {
+  margin-bottom: 1em;
+}
+

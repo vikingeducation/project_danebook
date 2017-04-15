@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  devise_for :users, controllers: {
+    sessions: 'users/sessions'
+  }
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: 'users#new'
   get 'home', to: 'static_pages#home', as: 'home'
@@ -10,7 +13,6 @@ Rails.application.routes.draw do
   resources :users,  only: [:new, :create, :edit, :update] do
     get 'about' => 'users#show'
   end
-  resource :session, only: [:new, :create, :destroy] do
-    delete 'logout' => 'sessions#destroy'
-  end
+
+
 end

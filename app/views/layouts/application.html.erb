@@ -8,10 +8,9 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
   <body>
-    <%= render partial: 'shared/nav_login' unless signed_in_user? %>
-    <%= render partial: 'shared/nav_logged_in' if signed_in_user? %>
+    <%= render partial: 'shared/nav_bar' %>
     <main class="main container">
-    <%= render partial: 'shared/flash' %>
+      <%= render partial: 'shared/flash' %>
       <%= yield %>
     </main>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>

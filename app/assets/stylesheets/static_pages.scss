@@ -8,7 +8,6 @@ $border-color-light: #ccc;
 $light-gray: #f9f9f9;
 
 /* NAVBAR */
-
 .navbar-form {
   border:0;
 }
@@ -21,6 +20,15 @@ $light-gray: #f9f9f9;
 .navbar-default .navbar-text {
   color: #fff;
 }
+
+  /* MAIN */
+
+  /* compensate for fixed navbar */
+  .main {
+    position: relative;
+    top: 50px;
+  }
+
 
 .logged-out {
  .navbar-brand {
@@ -59,9 +67,7 @@ $light-gray: #f9f9f9;
   }
 
   /* MAIN */
-  .main {
-    margin-top: 50px;
-  }
+
   .connect-message {
     margin-top: 50px;
   }
@@ -140,12 +146,6 @@ $light-gray: #f9f9f9;
     margin-right: 0;
   }
 
-  /* MAIN */
-
-  /* compensate for fixed navbar */
-  .main {
-    margin-top: 50px;
-  }
 
 
 

@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
-  before_action :require_current_user, only: [:update, :destroy, :create, :edit]
-  before_action :require_login, except: [:show, :new, :create]
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  skip_before_action :authenticate_user!, only: [:index, :new, :create]
+
 
   def new
     @user = User.new
@@ -40,6 +41,10 @@ class UsersController < ApplicationController
 
 
   private
+
+  def set_user
+    @user = User.find(params[:id])
+  end
 
   def user_params
     # TODO add birthdate

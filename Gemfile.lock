@@ -65,8 +65,16 @@ GEM
     coolline (0.5.0)
       unicode_utils (~> 1.4)
     debug_inspector (0.0.2)
+    devise (4.2.1)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 4.1.0, < 5.1)
+      responders
+      warden (~> 1.2.3)
     erubis (2.7.0)
     execjs (2.7.0)
+    faker (1.6.6)
+      i18n (~> 0.5)
     ffi (1.9.17)
     globalid (0.3.7)
       activesupport (>= 4.1.0)
@@ -110,6 +118,7 @@ GEM
     nio4r (1.2.1)
     nokogiri (1.7.0.1)
       mini_portile2 (~> 2.1.0)
+    orm_adapter (0.5.0)
     pg (0.19.0)
     pry (0.10.4)
       coderay (~> 1.1.0)
@@ -154,6 +163,8 @@ GEM
     rb-fsevent (0.9.8)
     rb-inotify (0.9.8)
       ffi (>= 0.5.0)
+    responders (2.3.0)
+      railties (>= 4.2.0, < 5.1)
     sass (3.4.23)
     sass-rails (5.0.6)
       railties (>= 4.0.0, < 6)
@@ -161,6 +172,9 @@ GEM
       sprockets (>= 2.8, < 4.0)
       sprockets-rails (>= 2.0, < 4.0)
       tilt (>= 1.1, < 3)
+    simple_form (3.4.0)
+      actionpack (> 4, < 5.1)
+      activemodel (> 4, < 5.1)
     slop (3.6.0)
     spring (2.0.1)
       activesupport (>= 4.2)
@@ -192,6 +206,8 @@ GEM
       execjs (>= 0.3.0, < 3)
     unicode_utils (1.4.0)
     uniform_notifier (1.10.0)
+    warden (1.2.7)
+      rack (>= 1.0)
     web-console (3.4.0)
       actionview (>= 5.0)
       activemodel (>= 5.0)
@@ -212,6 +228,8 @@ DEPENDENCIES
   bullet
   byebug
   coffee-rails (~> 4.2)
+  devise
+  faker
   jazz_fingers
   jbuilder (~> 2.5)
   jquery-rails
@@ -220,6 +238,7 @@ DEPENDENCIES
   puma (~> 3.0)
   rails (~> 5.0.1)
   sass-rails (~> 5.0)
+  simple_form
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3

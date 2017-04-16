@@ -11,6 +11,16 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :email, profile_attributes: [:first_name, :last_name]])
   end
 
+  def authenticate_user!
+    if user_signed_in?
+      super
+    else
+      redirect_to new_user_path, :error => "Sorry, you need to be logged in to do that"
+      ## if you want render 404 page
+      ## render :file => File.join(Rails.root, 'public/404'), :formats => [:html], :status => 404, :layout => false
+    end
+  end
+
   private
   def is_self?
     user_signed_in? && @user.id == current_user.id

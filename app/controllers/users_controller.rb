@@ -3,8 +3,6 @@ class UsersController < ApplicationController
   skip_before_action :authenticate_user!, only: [:new, :create]
   helper_method :is_self?
 
-
-
   def new
     @user = User.new
     @user.build_profile
@@ -42,12 +40,6 @@ class UsersController < ApplicationController
   end
 
   private
-
-  # move this to application controller?
-  def is_self?
-    user_signed_in? && @user.id == current_user.id
-  end
-
 
   def set_user
     @user = User.find(params[:id])

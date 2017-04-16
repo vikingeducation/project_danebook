@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   get 'about_edit', to: 'static_pages#about_edit', as: 'about_edit'
   resources :users,  only: [:new, :create, :edit, :update] do
     get 'about' => 'users#show'
+    get 'profile' => 'posts#index'
+    resources :posts, only: [:new, :create, :destroy]
   end
 
 

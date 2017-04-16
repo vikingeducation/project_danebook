@@ -1,0 +1,14 @@
+<%= render 'shared/profile_header' %>
+<section class="row">
+  <aside class="col-sm-4 timeline-sidebar">
+    <%= render 'info_box_about' %>
+    <%= render 'info_box_photos' %>
+    <%= render 'info_box_friends' %>
+  </aside>
+  <div class="col-sm-8">
+    <section class="timeline-feed">
+      <%= render 'post_form' %>
+      <%= render partial: 'post', collection: @posts, as: :post %>
+    </section>
+  </div>
+</section>

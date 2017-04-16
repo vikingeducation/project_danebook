@@ -3,8 +3,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
-  # before_action :is_self?, only: [:update, :destroy, :edit]
-
+  helper_method :is_self?
 
   protected
 
@@ -13,6 +12,9 @@ class ApplicationController < ActionController::Base
   end
 
   private
+  def is_self?
+    user_signed_in? && @user.id == current_user.id
+  end
 
   def after_sign_out_path_for(resource_or_scope)
     root_path

@@ -368,6 +368,22 @@ $light-gray: #f9f9f9;
   }
   .img-thumbnail {
     border-radius: 0;
+    min-width: 40px;
+    min-height: 40px;
+  }
+
+  /* BUTTON */
+  .btn-plain {
+    padding: 0;
+  }
+
+  /* MISSING BOOTSTRAP CLASS?! */
+  .media-body, .media-left, .media-right {
+        display: table-cell;
+    vertical-align: top;
+  }
+  .media-left {
+    padding-right: 10px;
   }
 
 
@@ -379,6 +395,9 @@ $light-gray: #f9f9f9;
   }
   .absolute-right {
     right: 10px;
+  }
+  .display-inline {
+    display: inline;
   }
 .mts {
   margin-top:1em;

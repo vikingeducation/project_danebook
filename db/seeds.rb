@@ -15,4 +15,18 @@ puts "Populating users..."
   u.build_profile(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, sex: ['female', 'male'].sample, birthdate: Faker::Date.between(80.years.ago, 13.years.ago), college: Faker::University.name, hometown: Faker::Address.city, current_city: Faker::Address.city, telephone: Faker::PhoneNumber.phone_number, quote: Faker::Hacker.say_something_smart, about: Faker::Hipster.sentence(3))
   u.save
 end
+
+puts 'Populating posts...'
+User.all.each do |u|
+  rand(1..5).times do
+    u.posts.create(body: Faker::Hipster.sentence(5))
+  end
+end
+
+puts 'Populating likes...'
+Post.all.each do |po|
+  rand(1..5).times do
+    po.likes.create(user_id: User.all.pluck(:id).sample)
+  end
+end
 puts "Done!"

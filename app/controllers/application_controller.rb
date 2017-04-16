@@ -30,6 +30,10 @@ class ApplicationController < ActionController::Base
     root_path
   end
 
+  def after_sign_in_path_for(resource_or_scope)
+    user_profile_path(current_user)
+  end
+
   def permanent_sign_in(user)
     user.regenerate_auth_token
     cookies.permanent[:auth_token] = user.auth_token

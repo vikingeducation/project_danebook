@@ -4,7 +4,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable
   has_one :profile, inverse_of: :user, dependent: :destroy
-  has_many :posts
+  has_many :posts, dependent: :destroy
+  has_many :likes
   validates :email, presence: true, uniqueness: true, length: { minimum: 6}, on: [:create]
   validates :password, :password_confirmation, presence: true, length: {minimum: 12 }, on: :create
   accepts_nested_attributes_for :profile
@@ -12,6 +13,10 @@ class User < ApplicationRecord
 
   def first_name
     profile.first_name
+  end
+
+  def full_name
+    profile.first_name + ' ' + profile.last_name
   end
 
   def birthday

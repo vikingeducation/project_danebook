@@ -16,7 +16,7 @@
           <input type="text" class="form-control" name="user-search" placeholder="Search for Users">
         </div>
       </form>
-      <p class="navbar-text navbar-right"><a href="about.html">Harry</a></p>
+      <p class="navbar-text navbar-right"><%= link_to current_user.first_name, user_about_path(current_user) %> </p>
     </div>
   </div>
 </nav>

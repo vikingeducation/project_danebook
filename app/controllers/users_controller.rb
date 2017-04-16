@@ -1,6 +1,8 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
-  skip_before_action :authenticate_user!, only: [:index, :new, :create]
+  before_action :set_user, only: [:edit, :update, :destroy]
+  skip_before_action :authenticate_user!, only: [:new, :create]
+  helper_method :is_self?
+
 
 
   def new
@@ -39,8 +41,13 @@ class UsersController < ApplicationController
     @user = User.find(params[:user_id])
   end
 
-
   private
+
+  # move this to application controller?
+  def is_self?
+    user_signed_in? && @user.id == current_user.id
+  end
+
 
   def set_user
     @user = User.find(params[:id])

@@ -12,53 +12,6 @@
     </section>
     <section class="col-sm-6 col-md-4">
       <h2 class="h1">Sign Up</h2>
-      <%= form_for @user do |f| %>
-        <div class="row">
-          <div class="col-md-6 form-group <%= form_error_class(@user, :'profile.first_name') %>">
-            <%= f.fields_for :profile do |profile| %>
-              <%= profile.label :first_name, class: 'sr-only form-control' %>
-              <%= profile.text_field :first_name, placeholder: 'First Name', class: 'form-control', id: 'first-name' %>
-              <%= form_error(@user, :'profile.first_name') %>
-            </div>
-            <div class="col-md-6 form-group <%= form_error_class(@user, :'profile.last_name') %>">
-              <%= profile.label :last_name, class: 'sr-only form-control' %>
-              <%= profile.text_field :last_name, placeholder: 'Last Name', class: 'form-control', id: 'last-name' %>
-              <%= form_error(@user, :'profile.last_name') %>
-            </div>
-          </div>
-          <div class="form-group <%= form_error_class(@user, :email) %>">
-            <%= f.label :email, class: 'sr-only' %>
-            <%= f.email_field :email, placeholder: 'Email', id: 'email', class: 'form-control' %>
-            <%= form_error(@user, :email) %>
-          </div>
-          <div class="form-group <%= form_error_class(@user, :password) %>">
-            <%= f.label :password, class: 'sr-only' %>
-            <%= f.password_field :password, class: 'form-control', id: 'password', placeholder: 'Your New Password' %>
-            <%= form_error(@user, :password) %>
-          </div>
-          <div class="form-group <%= form_error_class(@user, :password_confirmation) %>">
-            <%= f.label :password_confirmation, class: 'sr-only' %>
-            <%= f.password_field :password_confirmation, class: 'form-control', id: 'password-confirmation', placeholder: 'Confirm your password' %>
-            <%= form_error(@user, :password_confirmation) %>
-          </div>
-          <div class="form-group <%= form_error_class(@user, :'profile.birthdate') %>">
-            <div><%= profile.label :birthdate, "Birthday" %></div>
-            <%= profile.date_select :birthdate, order: [:day, :month, :year], start_year: Date.today.year - 110, end_year: Date.today.year %>
-            <%= form_error(@user, :'profile.birthdate') %>
-          </div>
-          <div class="form-group <%= form_error_class(@user, :'profile.sex') %>">
-            <label>
-              <%= profile.radio_button :sex, 'female', id: 'female' %>
-              Female
-        </label>
-            <label>
-              <%= profile.radio_button :sex, 'male', id: 'male'%>
-              Male
-        </label>
-            <%= form_error(@user, :'profile.sex') %>
-          </div>
-          <%= f.submit "Sign up!", class: 'btn btn-block btn-success' %>
-        <% end %>
-      <% end %>
+      <%= render template: 'users/registrations/new', locals: {resource: @user} %>
     </section>
   </div>

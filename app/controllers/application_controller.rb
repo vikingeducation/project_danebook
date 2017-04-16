@@ -1,12 +1,22 @@
 class ApplicationController < ActionController::Base
-  helper_method :current_user, :signed_in_user?, :require_current_user, :is_authorized?
+  # helper_method :current_user, :signed_in_user?, :require_current_user, :is_authorized?
   protect_from_forgery with: :exception
   before_action :authenticate_user!
+  before_action :configure_permitted_parameters, if: :devise_controller?
+  # before_action :is_self?, only: [:update, :destroy, :edit]
 
+
+  protected
+
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:username, :email, profile_attributes: [:first_name, :last_name]])
+  end
 
   private
 
-
+  def after_sign_out_path_for(resource_or_scope)
+    root_path
+  end
 
   def permanent_sign_in(user)
     user.regenerate_auth_token

@@ -6,12 +6,13 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+puts "Destroying existing records..."
 User.destroy_all
 
 puts "Populating users..."
 ('a' .. 'z').each do |a|
   u = User.new(email: "#{a}@#{a}.com", password: a * 12, password_confirmation: a * 12)
-  u.build_profile(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, sex: ['female', 'male'].sample, birthdate: Faker::Date.between(80.years.ago, 13.years.ago), college: Faker::University.name, hometown: Faker::Address.city, current_city: Faker::Address.city, telephone: Faker::PhoneNumber.phone_number, quote: Faker::Hacker.say_something_smart, about: Faker::Hipster.sentences(3))
+  u.build_profile(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, sex: ['female', 'male'].sample, birthdate: Faker::Date.between(80.years.ago, 13.years.ago), college: Faker::University.name, hometown: Faker::Address.city, current_city: Faker::Address.city, telephone: Faker::PhoneNumber.phone_number, quote: Faker::Hacker.say_something_smart, about: Faker::Hipster.sentence(3))
   u.save
 end
 puts "Done!"

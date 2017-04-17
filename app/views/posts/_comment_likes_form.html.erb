@@ -1,0 +1,3 @@
+  <%= simple_form_for comment.comment_likes.build, url: comment_comment_likes_path(comment), method: :create, html: {class: 'display-inline'} do |f| %>
+  <%= f.button :submit, 'Like', class: 'btn btn-link btn-plain' %>
+<% end %>

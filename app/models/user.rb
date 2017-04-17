@@ -5,7 +5,9 @@ class User < ApplicationRecord
     :recoverable, :rememberable, :trackable, :validatable
   has_one :profile, inverse_of: :user, dependent: :destroy
   has_many :posts, dependent: :destroy
-  has_many :likes
+  has_many :likes, dependent: :destroy
+  has_many :comments, dependent: :destroy
+  has_many :comment_likes, dependent: :destroy
   validates :email, presence: true, uniqueness: true, length: { minimum: 6}, on: [:create]
   validates :password, :password_confirmation, presence: true, length: {minimum: 12 }, on: :create
   accepts_nested_attributes_for :profile

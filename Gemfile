@@ -60,6 +60,7 @@ group :development do
   gem 'jazz_fingers'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'bullet'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

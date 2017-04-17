@@ -1,21 +1,16 @@
 class Post < ApplicationRecord
   belongs_to :user
   has_many :likes, dependent: :destroy
+  has_many :comments, dependent: :destroy
   validates :body, presence: true
 
-  def date
-    self.created_at.strftime('%A, %d %B %Y') if self.created_at
-  end
+  include Reusable
 
   def liked_by(id)
     ! self.likes.where('user_id = ?', id).blank?
   end
 
   def post_likes(current_user)
-    # always two names
-    # You, x and z like
-    # You and x like this post
-    # X and Y like this post
     return '' unless self.likes_count
     msg = ''
     if self.liked_by(current_user.id)

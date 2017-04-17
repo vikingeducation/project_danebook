@@ -1,0 +1,4 @@
+<%= simple_form_for comment, url: post_comments_path(post), html: {class: 'col-xs-12 comment-form' }, method: :create do |f| %>
+  <%= f.input :body, label: false, placeholder: 'Write a comment', required: true %>
+  <%= f.button :submit, 'Comment', class: 'btn btn-primary pull-right' %>
+<% end %>

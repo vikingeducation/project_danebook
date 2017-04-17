@@ -23,10 +23,20 @@ User.all.each do |u|
   end
 end
 
-puts 'Populating likes...'
+puts 'Populating comments and likes...'
 Post.all.each do |po|
   rand(1..5).times do
     po.likes.create(user_id: User.all.pluck(:id).sample)
+    po.comments.create(user_id: User.all.pluck(:id).sample, body: Faker::Hacker.say_something_smart)
   end
 end
+
+puts 'Populating comment likes...'
+Comment.all.each do |co|
+  rand(0..5).times do
+    co.comment_likes.create(user_id: User.all.pluck(:id).sample)
+  end
+end
+
+
 puts "Done!"

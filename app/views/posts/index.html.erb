@@ -1,9 +1,9 @@
 <%= render 'shared/profile_header' %>
 <section class="row">
   <aside class="col-sm-4 timeline-sidebar">
-    <%= render 'info_box_about' %>
+    <%= render 'info_box_about', profile: @user.profile %>
     <%= render 'info_box_photos' %>
-    <%= render 'info_box_friends' %>
+    <%= render 'info_box_friends', friends: @user.friendees, user: @user %>
   </aside>
   <div class="col-sm-8">
     <section class="timeline-feed">

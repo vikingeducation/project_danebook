@@ -12,14 +12,14 @@ User.destroy_all
 puts "Populating users..."
 ('a' .. 'z').each do |a|
   u = User.new(email: "#{a}@#{a}.com", password: a * 12, password_confirmation: a * 12)
-  u.build_profile(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, sex: ['female', 'male'].sample, birthdate: Faker::Date.between(80.years.ago, 13.years.ago), college: Faker::University.name, hometown: Faker::Address.city, current_city: Faker::Address.city, telephone: Faker::PhoneNumber.phone_number, quote: Faker::Hacker.say_something_smart, about: Faker::Hipster.sentence(3))
-  u.save
+  u.build_profile(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, sex: ['female', 'male'].sample, birthdate:Faker::Date.birthday(13, 99), college: Faker::University.name, hometown: Faker::Address.city, current_city: Faker::Address.city, telephone: Faker::PhoneNumber.phone_number, quote: Faker::Hacker.say_something_smart, about: Faker::Hipster.sentence(3))
+  u.save!
 end
 
 puts 'Populating posts...'
 User.all.each do |u|
   rand(1..5).times do
-    u.posts.create(body: Faker::Hipster.sentence(5))
+    u.posts.create(body: Faker::Hacker.say_something_smart)
   end
 end
 
@@ -35,6 +35,19 @@ puts 'Populating comment likes...'
 Comment.all.each do |co|
   rand(0..5).times do
     co.comment_likes.create(user_id: User.all.pluck(:id).sample)
+  end
+end
+
+puts 'Populating friends...'
+
+User.all.each do |u|
+  ids = User.all.pluck(:id)
+  rand(3..10).times do
+    if [true, false].sample
+      u.initiated_friendships.create(friendee_id: ids.sample)
+    else
+      u.received_friendships.create(friender_id: ids.sample)
+    end
   end
 end
 

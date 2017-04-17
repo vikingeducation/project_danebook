@@ -1,27 +1,14 @@
 <div class="info-box row">
-          <header class="col-xs-12">
-            <h4>Friends (542)</h4>
-          </header>
-          <div class="col-xs-12">
-            <div class="row thumbnail-grid text-center">
-              <div class="col-xs-4"><%= image_tag('user_silhouette_generic.png', class: 'img-thumbnail') %>
-                <p class="name"><a href="#">Ron Weasley</a></p>
-              </div>
-               <div class="col-xs-4"><%= image_tag('user_silhouette_generic.png', class: 'img-thumbnail') %>
-                <p class="name"><a href="#">Ron Weasley</a></p>
-              </div>
-               <div class="col-xs-4"><%= image_tag('user_silhouette_generic.png', class: 'img-thumbnail') %>
-                <p class="name"><a href="#">Ron Weasley</a></p>
-              </div>
-              <div class="col-xs-4"><%= image_tag('user_silhouette_generic.png', class: 'img-thumbnail') %>
-                <p class="name"><a href="#">Ron Weasley</a></p>
-              </div>
-              <div class="col-xs-4"><%= image_tag('user_silhouette_generic.png', class: 'img-thumbnail') %>
-                <p class="name"><a href="#">Ron Weasley</a></p>
-              </div>
-        <div class="col-xs-4"><%= image_tag('user_silhouette_generic.png', class: 'img-thumbnail') %>
-                <p class="name"><a href="#">Ron Weasley</a></p>
-              </div>
-              <p class="text-center"><a href="#">See More Friends</a></p>
-            </div>
-          </div>
+  <header class="col-xs-12">
+    <h4>Friends (<%= user.friendships_count %>)</h4>
+  </header>
+  <div class="col-xs-12">
+    <% if friends.empty?  %>
+      <p class="text-center">This user has no friends yet</p>
+    <% else %>
+      <div class="row thumbnail-grid text-center">
+        <%=  render partial: 'friend', collection: friends.includes(:profile), as: :friend %>
+      </div>
+      <%= '<p class="text-center"><a href="#">See More Friends</a></p>'.html_safe if user.friendships_count > 9 %>
+    <% end %>
+  </div>

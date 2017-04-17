@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     get 'about' => 'users#show'
     get 'profile' => 'posts#index'
     resources :posts, only: [:new, :create, :destroy]
+    resources :friendships, only: [:create, :destroy]
   end
   resources :posts, only: [] do
     resources :likes, only: [:create, :destroy]
@@ -24,7 +25,6 @@ Rails.application.routes.draw do
   resources :comments, only: [] do
     resources :comment_likes, only: [:create, :destroy]
   end
-
 
 
 end

@@ -2,16 +2,24 @@
   <div class="profile-top col-xs-12">
     <div class="profile-cover" style="background-image: url('<%= image_path('hogwarts_small.jpg') %>')">
     </div>
-    <h2 class="profile-name"><%= @user.full_name %></h2>
+    <div class="profile-text">
+      <h2 class="profile-name"><%= @user.full_name %></h2>
+      <%= if @user.is_friends_with?(current_user.id) 
+        link_to "Remove Friend", user_friendship_path(@user, current_user.id), method: :delete, class: 'btn btn-dull'
+      else
+      link_to "Add Friend", user_friendships_path(@user), method: :create, class: 'btn btn-primary' unless is_self?
+      end
+      %>
+    </div>
     <%=  image_tag('user_silhouette_generic.png', alt: 'Generic User Silhouette', class: 'img-thumbnail profile-pic')  %>
     <nav class="profile-nav">
       <ul class="nav nav-pills">
         <li><%= link_to "Timeline", user_profile_path(@user) %></li>
         <li><%= link_to "About", user_about_path(@user) %></li>
         <li><%= link_to "Photos", photos_path %></li>
-        <li class="current"><%= link_to "Friends", friends_path %></li>
+        <li class="current"><%= link_to "Friends", friends_path %> (<%= @user.friendships_count %>)</li>
       </ul>
-      <p class="profile-edit"><%#= link_to "Edit Profile", about_edit_path if is_authorized? %></p>
+      <p class="profile-edit"><%= link_to "Edit Profile", about_edit_path if is_self? %></p>
     </nav>
   </div>
 </header>

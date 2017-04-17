@@ -253,12 +253,18 @@ $light-gray: #f9f9f9;
     margin-bottom: 20px;
     padding: 0;
   }
-  .profile-name {
+  .profile-text {
     position: absolute;
     left: 170px;
     margin: 0;
     bottom: 50px;
     color: #fff;
+    .btn {
+      vertical-align: top;
+    }
+  }
+  .profile-name {
+    display: inline;
   }
   .profile-pic {
     width: 150px;
@@ -389,8 +395,19 @@ $light-gray: #f9f9f9;
     width: 100%;
   }
 
+  .btn-dull:hover, .btn-dull {
+    background: #999;
+    color: #fff;
+  }
+  .btn-dull:hover {
+    background: #666;
+  }
+
 
    /* HELPER CLASS */
+   .pan {
+    padding: 0;
+   }
   .vertical-middle {
     position: absolute;
     top: 50%;

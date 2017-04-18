@@ -43,11 +43,7 @@ puts 'Populating friends...'
 User.all.each do |u|
   ids = User.all.pluck(:id)
   rand(3..10).times do
-    if [true, false].sample
-      u.initiated_friendships.create(friendee_id: ids.sample)
-    else
-      u.received_friendships.create(friender_id: ids.sample)
-    end
+    u.initiated_friendships.create(friendee_id: ids.sample)
   end
 end
 

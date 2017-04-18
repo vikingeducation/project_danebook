@@ -14,10 +14,10 @@
     <%=  image_tag('user_silhouette_generic.png', alt: 'Generic User Silhouette', class: 'img-thumbnail profile-pic')  %>
     <nav class="profile-nav">
       <ul class="nav nav-pills">
-        <li><%= link_to "Timeline", user_profile_path(@user) %></li>
+        <li class="current"><%= link_to "Timeline", user_profile_path(@user) %></li>
         <li><%= link_to "About", user_about_path(@user) %></li>
         <li><%= link_to "Photos", photos_path %></li>
-        <li class="current"><%= link_to "Friends", friends_path %> (<%= @user.friendships_count %>)</li>
+        <li><%= link_to "Friends", user_friendships_path(@user) %> <span class="text-light">(<%= @user.friendships_count %>)</span></li>
       </ul>
       <p class="profile-edit"><%= link_to "Edit Profile", about_edit_path if is_self? %></p>
     </nav>

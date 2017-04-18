@@ -6,7 +6,7 @@ class Profile < ApplicationRecord
   validates :sex, inclusion: {in: %w(female male) }, on: :create
 
   def birthday
-    self.birthdate.strftime('%d %B %Y') if self.created_at
+    self.birthdate.strftime('%-d %B %Y') if self.created_at
   end
 
   private

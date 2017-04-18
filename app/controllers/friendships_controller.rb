@@ -21,6 +21,11 @@ class FriendshipsController < ApplicationController
       flash[:success] = "You're no longer friends with #{@friend.first_name}"
     end
     redirect_to user_profile_path(@friend)
-
   end
+
+  def index
+    @user = User.find(params[:user_id])
+    @friends = @user.friendees
+  end
+
 end

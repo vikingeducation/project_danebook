@@ -24,11 +24,11 @@ class User < ApplicationRecord
     profile.first_name
   end
 
-  def make_friends(friend)
-    self.initiated_friendships.build(friendee_id: friend)
-    self.received_friendships.build(friender_id: friend)
-    self
-  end
+  # def make_friends(friend)
+  #   self.initiated_friendships.build(friendee_id: friend)
+  #   self.received_friendships.build(friender_id: friend)
+  #   self
+  # end
 
 
   def friendships(id)

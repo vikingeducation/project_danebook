@@ -1,7 +1,7 @@
 class FriendshipsController < ApplicationController
 
   def create
-    @friendship = current_user.make_friends(params[:user_id].to_i)
+    @friendship = current_user.initiated_friendships.build(friendee_id: params[:user_id])
     @recipient = User.find(params[:user_id])
     if @friendship.save
       flash[:success] = "You and #{@recipient.first_name} are now friends"

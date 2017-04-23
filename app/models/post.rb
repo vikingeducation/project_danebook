@@ -1,19 +1,20 @@
 class Post < ApplicationRecord
   belongs_to :user
   has_many :likes, dependent: :destroy
+  has_many :likers, through: :likes, source: :user
   has_many :comments, dependent: :destroy
   validates :body, presence: true
 
   include Reusable
 
-  def liked_by(id)
+  def liked_by?(id)
     ! self.likes.where('user_id = ?', id).blank?
   end
 
   def post_likes(current_user)
     return '' unless self.likes_count
     msg = ''
-    if self.liked_by(current_user.id)
+    if self.liked_by?(current_user.id)
       msg += 'You'
       remaining_likes = self.likes.where('user_id IS NOT ?', current_user.id).order('created_at DESC')
       case

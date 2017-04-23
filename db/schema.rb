@@ -23,10 +23,10 @@ ActiveRecord::Schema.define(version: 20170417110545) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.text     "body"
+    t.text     "body",                            null: false
     t.integer  "comment_likes_count", default: 0
-    t.integer  "user_id"
-    t.integer  "post_id"
+    t.integer  "user_id",                         null: false
+    t.integer  "post_id",                         null: false
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
     t.index ["post_id"], name: "index_comments_on_post_id"
@@ -52,11 +52,11 @@ ActiveRecord::Schema.define(version: 20170417110545) do
   end
 
   create_table "posts", force: :cascade do |t|
-    t.text     "body"
-    t.integer  "user_id"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
-    t.integer  "likes_count"
+    t.text     "body",                    null: false
+    t.integer  "user_id",                 null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.integer  "likes_count", default: 0, null: false
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
@@ -91,7 +91,6 @@ ActiveRecord::Schema.define(version: 20170417110545) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.integer  "friendee_id_count",      default: 0
     t.integer  "friendships_count",      default: 0
     t.index ["email"], name: "index_users_on_email"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true

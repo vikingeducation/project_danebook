@@ -12,7 +12,7 @@ class FriendshipsController < ApplicationController
   end
 
   def destroy
-    @friendships = current_user.friendships(params[:user_id].to_i)
+    @friendships = current_user.initiated_friendships(params[:user_id].to_i)
     @friend = User.find(params[:user_id])
     fdsjkl
     if @friendships.destroy_all.blank?

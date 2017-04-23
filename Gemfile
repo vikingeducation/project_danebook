@@ -1,5 +1,4 @@
 source 'https://rubygems.org'
-ruby '2.3.1'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -33,7 +32,6 @@ gem 'jbuilder', '~> 2.5'
 gem 'bcrypt', '~> 3.1.7'
 gem "twitter-bootstrap-rails"
 gem 'simple_form'
-gem 'faker'
 gem 'devise'
 
 group :production do
@@ -47,6 +45,12 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
   gem 'sqlite3'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails', '~> 4.0'
+  gem 'capybara'
+  gem 'launchy'
+  gem 'faker'
+
 end
 
 group :development do
@@ -60,7 +64,7 @@ group :development do
   gem 'jazz_fingers'
   gem 'better_errors'
   gem 'binding_of_caller'
-  gem 'bullet'
+  gem 'guard-rspec', require: false
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

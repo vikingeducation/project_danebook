@@ -6,14 +6,14 @@ class Comment < ApplicationRecord
 
   include Reusable
 
-  def liked_by(id)
+  def liked_by?(id)
     ! self.comment_likes.where('user_id = ?', id).blank?
   end
 
   def likers(id)
     return '' unless self.comment_likes_count
     msg = ''
-    if self.liked_by(id)
+    if self.liked_by?(id)
       msg += 'You'
       remaining_likes = self.comment_likes.where('user_id IS NOT ?', id).order('created_at DESC')
       case

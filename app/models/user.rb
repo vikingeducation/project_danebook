@@ -24,19 +24,8 @@ class User < ApplicationRecord
     profile.first_name
   end
 
-  # def make_friends(friend)
-  #   self.initiated_friendships.build(friendee_id: friend)
-  #   self.received_friendships.build(friender_id: friend)
-  #   self
-  # end
-
-
-  def friendships(id)
-    Friendship.where('(friender_id = ? AND friendee_id = ?) OR (friender_id = ? AND friendee_id = ?)', self.id, id, id, self.id)
-  end
-
   def is_friends_with?(id)
-    ! Friendship.where('(friender_id = ? AND friendee_id = ?) OR (friender_id = ? AND friendee_id = ?)', self.id, id, id, self.id).blank?
+    ! Friendship.where('friender_id = ? AND friendee_id = ?', self.id, id).blank?
   end
 
   def full_name

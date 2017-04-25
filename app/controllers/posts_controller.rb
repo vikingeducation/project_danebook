@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   
   def index
     @user = User.find(params[:user_id])
+    @posts = @current_user.posts.order("created_at DESC")
     @post = current_user.posts.build if @user == current_user
   end
 

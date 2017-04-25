@@ -24,8 +24,14 @@ class User < ApplicationRecord
     profile.first_name
   end
 
-  def is_friends_with?(id)
-    ! Friendship.where('friender_id = ? AND friendee_id = ?', self.id, id).blank?
+  def is_friends_with?(user)
+    return false unless user
+    ! Friendship.where('friender_id = ? AND friendee_id = ?', self.id, user.id).blank?
+  end
+
+  def is_friend_of?(user)
+    return false unless user
+    ! Friendship.where('friender_id = ? AND friendee_id = ?', user.id, self.id).blank?
   end
 
   def full_name
@@ -33,7 +39,7 @@ class User < ApplicationRecord
   end
 
   def birthday
-    self.profile.birthdate #.strftime('%B %e, %Y')
+    self.profile.birthday
   end
 
 

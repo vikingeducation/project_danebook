@@ -1,0 +1,33 @@
+ <%= form_for user, url: user_update_path(user) do |f| %>
+  <%= f.fields_for :profile do |profile| %>
+    <div class="col-md-5 col-md-offset-1">
+      <h3>Basic Information</h3>
+      <dl class="dl-horizontal bio">
+        <dt>Birthday:</dt>
+        <dd><%= user.birthday %></dd>
+        <dt><%= profile.label :college, "College:" %></dt>
+        <dd><%= profile.text_field :college, class: 'form-control' %></dd>
+        <dt><%= profile.label :hometown, "Hometown:" %></dt>
+        <dd><%= profile.text_field :hometown, class: 'form-control' %></dd>
+        <dt><%= profile.label :current_city, "Currently lives:" %></dt>
+        <dd><%= profile.text_field :current_city, class: 'form-control' %></dd>
+      </dl>
+      <h3>Contact Information</h3>
+      <dl class="dl-horizontal bio">
+        <dt>Email:</dt>
+        <dd>harry_potter@hogwarts.edu</dd>
+        <dt><%= profile.label :telephone, "Telephone:" %></dt>
+        <dd><%= profile.text_field :telephone, class: 'form-control' %></dd>
+      </dl>
+    </div>
+    <div class="col-md-5">
+      <h3><%= profile.label :quote, "Words to Live By" %></h3>
+      <%= profile.text_area :quote, rows: 3, class: 'form-control' %>
+      <h3><%= profile.label :about %></h3>
+      <%= profile.text_area :about, rows: 7, class: 'form-control' %>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-sm-offset-3 mbs mts">
+      <button type="submit" class="btn btn-primary btn-block">Save Changes</button>
+    </div>
+  <% end %>
+<% end %>

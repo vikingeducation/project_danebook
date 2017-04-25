@@ -4,10 +4,12 @@
     </div>
     <div class="profile-text">
       <h2 class="profile-name"><%= @user.full_name %></h2>
-      <%= if @user.is_friends_with?(current_user.id) 
-        link_to "Remove Friend", user_friendship_path(@user, current_user.id), method: :delete, class: 'btn btn-dull'
+      <%= if ! current_user
+        link_to 'Add Friend', new_user_path, class: 'btn btn-primary' 
+      elsif @user.is_friend_of?(current_user) 
+        link_to "Remove Friend", user_friendship_path(@user, current_user), method: :delete, class: 'btn btn-dull'
       else
-      link_to "Add Friend", user_friendships_path(@user), method: :create, class: 'btn btn-primary' unless is_self?
+      link_to "Add Friend", user_friendships_path(@user), method: :post, class: 'btn btn-primary' unless is_self?
       end
       %>
     </div>
@@ -19,7 +21,7 @@
         <li><%= link_to "Photos", photos_path %></li>
         <li><%= link_to "Friends", user_friendships_path(@user) %> <span class="text-light">(<%= @user.friendships_count %>)</span></li>
       </ul>
-      <p class="profile-edit"><%= link_to "Edit Profile", about_edit_path if is_self? %></p>
+      <p class="profile-edit"><%= link_to "Edit Profile", edit_user_path(@user) if is_self? %></p>
     </nav>
   </div>
 </header>

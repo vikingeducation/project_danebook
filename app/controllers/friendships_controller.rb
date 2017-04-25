@@ -14,7 +14,6 @@ class FriendshipsController < ApplicationController
   def destroy
     @friendships = current_user.initiated_friendships(params[:user_id].to_i)
     @friend = User.find(params[:user_id])
-    fdsjkl
     if @friendships.destroy_all.blank?
       flash[:error] = "Looks like you're true BFFs"
     else

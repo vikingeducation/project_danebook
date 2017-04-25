@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
-  devise_for :users , controllers: {
-    sessions: 'users/sessions',
+  devise_for :users,
+  controllers: {
+    # sessions: 'users/sessions',
     registrations: 'users'
   }
+
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: 'users#new'
   get 'home', to: 'static_pages#home', as: 'home'
@@ -11,7 +14,7 @@ Rails.application.routes.draw do
   get 'photos', to: 'static_pages#photos', as: 'photos'
   get 'about', to: 'static_pages#about', as: 'about'
   get 'about_edit', to: 'static_pages#about_edit', as: 'about_edit'
-  resources :users,  only: [:new, :create, :edit, :update] do
+  resources :users,  only: [:new, :create, :update, :edit ] do
     get 'about' => 'users#show'
     get 'profile' => 'posts#index'
     resources :posts, only: [:new, :create, :destroy]
@@ -21,8 +24,7 @@ Rails.application.routes.draw do
     resources :likes, only: [:create, :destroy]
     resources :comments, only: [:create]
   end
-  resources :comments, only: [:destroy]
-  resources :comments, only: [] do
+  resources :comments, only: [:destroy] do
     resources :comment_likes, only: [:create, :destroy]
   end
 

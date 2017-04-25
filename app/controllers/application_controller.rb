@@ -15,7 +15,8 @@ class ApplicationController < ActionController::Base
     if user_signed_in?
       super
     else
-      redirect_to new_user_path, :error => "Sorry, you need to be logged in to do that"
+      flash[:error] = "Sorry, you need to be logged in to do that"
+      redirect_to new_user_path
       ## if you want render 404 page
       ## render :file => File.join(Rails.root, 'public/404'), :formats => [:html], :status => 404, :layout => false
     end

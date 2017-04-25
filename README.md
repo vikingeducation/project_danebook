@@ -1,7 +1,2 @@
-danebook
-========
-
-This is the Real Dane Deal.
-
-Tingting
+https://boiling-eyrie-81768.herokuapp.com
 

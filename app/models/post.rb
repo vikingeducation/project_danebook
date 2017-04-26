@@ -7,16 +7,17 @@ class Post < ApplicationRecord
 
   include Reusable
 
-  def liked_by?(id)
-    ! self.likes.where('user_id = ?', id).blank?
+  def liked_by?(user)
+    return false unless user
+    ! self.likes.where('user_id = ?', user.id).blank?
   end
 
-  def post_likes(current_user)
+  def post_likes(user)
     return '' unless self.likes_count
     msg = ''
-    if self.liked_by?(current_user.id)
+    if self.liked_by?(user)
       msg += 'You'
-      remaining_likes = self.likes.where('user_id IS NOT ?', current_user.id).order('created_at DESC')
+      remaining_likes = self.likes.where('user_id IS NOT ?', user.id).order('created_at DESC')
       case
       when self.likes_count == 1
         msg += ' like this'

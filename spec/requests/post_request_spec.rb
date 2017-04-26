@@ -5,6 +5,9 @@ describe 'PostsRequests' do
   def create_post(user)
     post user_posts_path(user), params: {post: attributes_for(:post, user: user)}
   end
+  def create_invalid_post(user)
+    post user_posts_path(user), params: {post: attributes_for(:post, user: user, body: nil)}
+  end
   describe 'GET #index' do
     it 'does not require login to show posts' do
       get user_profile_path(user)
@@ -24,6 +27,9 @@ describe 'PostsRequests' do
       end
       it 'creates a post' do
         expect{ create_post(user) }.to change(user.posts, :count).by(1)
+      end
+      it 'create invalid post' do
+        expect{ create_invalid_post(user) }.not_to change(user.posts, :count)
       end
       it 'refreshes the page on post creation' do
         create_post(user)

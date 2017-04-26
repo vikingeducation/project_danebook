@@ -1,9 +1,10 @@
 class ApplicationController < ActionController::Base
+  include ApplicationHelper
   # helper_method :current_user, :signed_in_user?, :require_current_user, :is_authorized?
   protect_from_forgery with: :exception
   before_action :authenticate_user!
   before_action :configure_permitted_parameters, if: :devise_controller?
-  helper_method :is_self?
+  # helper_method :is_self?
 
   protected
 
@@ -23,9 +24,7 @@ class ApplicationController < ActionController::Base
   end
 
   private
-  def is_self?
-    user_signed_in? && @user.id == current_user.id
-  end
+
 
   def after_sign_out_path_for(resource_or_scope)
     root_path
@@ -46,19 +45,8 @@ class ApplicationController < ActionController::Base
     cookies.delete(:auth_token)
   end
 
-  helper_method :resource_name, :resource, :devise_mapping
 
-  def resource_name
-    :user
-  end
 
-  def resource
-    @resource ||= User.new
-  end
-
-  def devise_mapping
-    @devise_mapping ||= Devise.mappings[:user]
-  end
 
 
 end

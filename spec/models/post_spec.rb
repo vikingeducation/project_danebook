@@ -28,8 +28,8 @@ describe Post do
     it 'correctly tells us if post is liked by a user' do
       post.likers << user
       post.save
-      expect(post.liked_by?(user.id)).to eq(true)
-      expect(post.liked_by?(5)).to eq(false)
+      expect(post.liked_by?(user)).to eq(true)
+      expect(post.liked_by?(create(:user))).to eq(false)
     end
   end
 end

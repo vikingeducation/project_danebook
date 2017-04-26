@@ -3,7 +3,6 @@ require 'pry'
 
 describe 'UsersRequests' do
   let(:user){ create(:profile).user }
-  let(:atts){ attributes_for(:profile, quote: 'This is a quote')}
   describe 'POST #create'
   describe 'PUT #update' do
     context 'logged out' do
@@ -24,7 +23,8 @@ describe 'UsersRequests' do
             :user,
             profile_attributes: attributes_for(
               :profile,
-        quote: 'Howdy'))}
+              id: user.profile.id,
+        quote: 'This is a quote'))}
         user.reload
         expect(user.profile.quote).to eq('This is a quote')
       end

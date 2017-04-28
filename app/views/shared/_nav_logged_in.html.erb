@@ -16,7 +16,14 @@
           <input type="text" class="form-control" name="user-search" placeholder="Search for Users">
         </div>
       </form>
-      <p class="navbar-text navbar-right"><%= link_to current_user.first_name, user_about_path(current_user) %> </p>
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to current_user.first_name, user_about_path(current_user) %> </li>
+        <li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><%= link_to 'Sign out', destroy_user_session_path, method: :delete %></li>
+          </ul>
+        </li>
+      </ul>
     </div>
   </div>
 </nav>

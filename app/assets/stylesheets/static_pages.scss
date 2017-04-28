@@ -20,6 +20,14 @@ $light-gray: #f9f9f9;
 .navbar-default .navbar-text {
   color: #fff;
 }
+/* NAVBAR DROPDOWN */
+.navbar-default .navbar-nav>li>a, .navbar-default .navbar-nav>li>a:hover {
+  color: #fff;
+}
+.navbar-default .navbar-nav>.open>a, .navbar-default .navbar-nav>.open>a:hover, .navbar-default .navbar-nav>.open>a:focus {
+  background-color: #2561b3;
+  color: #fff;
+}
 
   /* MAIN */
 

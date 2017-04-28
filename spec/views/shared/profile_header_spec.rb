@@ -20,6 +20,14 @@ describe 'shared/_profile_header.html.erb' do
     render
     expect(render).to have_content('Add Friend')
   end
+  it 'has links to user\'s other pages' do
+    assign(:user, user)
+    render
+    expect(rendered).to match(user_profile_path(user))
+    expect(rendered).to match(user_about_path(user))
+    expect(rendered).to match(user_photos_path(user))
+    expect(rendered).to match(user_friends_path(user))
+  end
   context 'logged in' do
     let(:friend){ create(:profile).user}
     let(:user){ create(:profile).user}

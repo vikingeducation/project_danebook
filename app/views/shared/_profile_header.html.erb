@@ -7,9 +7,9 @@
       <%= if ! current_user
         link_to 'Add Friend', new_user_path, class: 'btn btn-primary' 
       elsif @user.is_friend_of?(current_user) 
-        link_to "Remove Friend", user_friendship_path(@user, current_user), method: :delete, class: 'btn btn-dull'
+        link_to "Remove Friend", user_friend_path(@user, current_user), method: :delete, class: 'btn btn-dull'
       else
-      link_to "Add Friend", user_friendships_path(@user), method: :post, class: 'btn btn-primary' unless is_self?
+      link_to "Add Friend", user_friends_path(@user), method: :post, class: 'btn btn-primary' unless is_self?
       end
       %>
     </div>
@@ -18,8 +18,8 @@
       <ul class="nav nav-pills">
         <li class="current"><%= link_to "Timeline", user_profile_path(@user) %></li>
         <li><%= link_to "About", user_about_path(@user) %></li>
-        <li><%= link_to "Photos", photos_path %></li>
-        <li><%= link_to "Friends", user_friendships_path(@user) %> <span class="text-light">(<%= @user.friendships_count %>)</span></li>
+        <li><%= link_to "Photos", user_photos_path(@user) %></li>
+        <li><%= link_to "Friends", user_friends_path(@user) %> <span class="text-light">(<%= @user.friendships_count %>)</span></li>
       </ul>
       <p class="profile-edit"><%= link_to "Edit Profile", edit_user_path(@user) if is_self? %></p>
     </nav>

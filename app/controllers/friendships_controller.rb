@@ -11,6 +11,9 @@ class FriendshipsController < ApplicationController
     redirect_to user_profile_path(@recipient)
   end
 
+  def update
+  end
+
   def destroy
     @friendships = current_user.initiated_friendships(params[:user_id].to_i)
     @friend = User.find(params[:user_id])

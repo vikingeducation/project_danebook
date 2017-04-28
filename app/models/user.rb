@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :comment_likes, dependent: :destroy
+  has_many :photos
 
   #  self join for friendship
   has_many :initiated_friendships, class_name: 'Friendship', foreign_key: :friender_id

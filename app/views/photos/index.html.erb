@@ -1,0 +1,18 @@
+       <%= render 'shared/profile_header' %>
+    <section class="row">
+      <div class="col-xs-12">
+        <div class="info-box row">
+         <header class="col-xs-12">
+            <h2 class="module-title">Photos</h2>
+            <%= link_to "Add Photos", user_photo_upload_path(@user), {:class => "btn btn-primary btn-sm module-edit"} %>
+             
+          </header>
+       <div class="col-xs-12">
+          <div class="row photo-grid">
+           <%= render partial: 'photo_grid_item', collection: @photos %>
+           
+         </div>
+       </div>
+        </div>
+        </div>
+      </section>

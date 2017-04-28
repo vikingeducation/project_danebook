@@ -1,4 +1,29 @@
 Rails.application.configure do
+
+  # Paperclip Amazon S3
+
+  config.paperclip_defaults = {
+
+    # Don't forget to make S3 your storage option!
+    :storage => :s3,
+
+    :s3_credentials => {
+
+      # put your host name here if needed
+      #   see the reading below for more details
+      # NOTE: These must be the correct region for YOUR bucket
+      :s3_host_name => "s3-ap-southeast-1.amazonaws.com",
+      :s3_region => "ap-southeast-1",
+
+      # NOTE: these lines are changed to use secrets.yml
+      # from the examples (which use ENV vars instead)
+      :bucket => Rails.application.secrets.s3_bucket_name,
+      :access_key_id => Rails.application.secrets.aws_access_key_id,
+      :secret_access_key => Rails.application.secrets.aws_secret_access_key
+    }
+  }
+
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.

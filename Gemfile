@@ -33,6 +33,9 @@ gem 'bcrypt', '~> 3.1.7'
 gem "twitter-bootstrap-rails"
 gem 'simple_form'
 gem 'devise'
+gem 'paperclip'
+gem 'aws-sdk'
+gem 'figaro'
 
 group :production do
   gem 'pg'

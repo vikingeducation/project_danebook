@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170417110545) do
+ActiveRecord::Schema.define(version: 20170428031223) do
 
   create_table "comment_likes", force: :cascade do |t|
     t.integer  "user_id"
@@ -38,6 +38,7 @@ ActiveRecord::Schema.define(version: 20170417110545) do
     t.integer  "friendee_id", null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+    t.boolean  "rejected"
     t.index ["friender_id", "friendee_id"], name: "index_friendships_on_friender_id_and_friendee_id", unique: true
   end
 
@@ -49,6 +50,17 @@ ActiveRecord::Schema.define(version: 20170417110545) do
     t.index ["post_id"], name: "index_likes_on_post_id"
     t.index ["user_id", "post_id"], name: "index_likes_on_user_id_and_post_id", unique: true
     t.index ["user_id"], name: "index_likes_on_user_id"
+  end
+
+  create_table "photos", force: :cascade do |t|
+    t.integer  "user_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.index ["user_id"], name: "index_photos_on_user_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -75,6 +87,15 @@ ActiveRecord::Schema.define(version: 20170417110545) do
     t.string   "quote"
     t.text     "about"
     t.index ["user_id"], name: "index_profiles_on_user_id"
+  end
+
+  create_table "sessions", force: :cascade do |t|
+    t.string   "session_id", null: false
+    t.text     "data"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["session_id"], name: "index_sessions_on_session_id", unique: true
+    t.index ["updated_at"], name: "index_sessions_on_updated_at"
   end
 
   create_table "users", force: :cascade do |t|

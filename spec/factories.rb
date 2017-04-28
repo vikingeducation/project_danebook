@@ -1,5 +1,8 @@
 
 FactoryGirl.define do
+  factory :photo do
+    user nil
+  end
   factory :user, aliases: [:friender, :friendee] do
     sequence(:email){ |n| "foo#{n}@bar.com"}
     password 'foobarfoobar'

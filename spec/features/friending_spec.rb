@@ -28,6 +28,11 @@ feature 'Friending' do
       visit user_profile_path(friend)
       expect(page).to have_content 'Add Friend'
     end
+    scenario 'clicking button to add friend changes button to "Cancel Request"' do
+      visit user_profile_path(friend)
+      click_button 'Add Friend'
+      expect(page).to have_content 'Cancel Request'
+    end
     scenario 'clicking "add friend" button adds user as friend' do
       visit user_about_path(friend)
       expect{ click_link 'Add Friend' }.to change(Friendship, :count).by(1)

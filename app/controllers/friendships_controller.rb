@@ -4,9 +4,9 @@ class FriendshipsController < ApplicationController
     @friendship = current_user.initiated_friendships.build(friendee_id: params[:user_id])
     @recipient = User.find(params[:user_id])
     if @friendship.save
-      flash[:success] = "You and #{@recipient.first_name} are now friends"
+      flash[:success] = "Your request to add #{@recipient.full_name} as a friend has been sent"
     else
-      flash[:error] = "Sorry, but you can't be #{@recipient.first_name}'s friend"
+      flash[:error] = "Sorry, but you can't send a friend invite to #{@recipient.full_name}"
     end
     redirect_to user_profile_path(@recipient)
   end

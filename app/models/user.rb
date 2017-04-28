@@ -25,6 +25,18 @@ class User < ApplicationRecord
     profile.first_name
   end
 
+  def friendship_status(user)
+    return nil unless user
+    # if rejected is true, return rejected
+    return 'rejected' if self.request_rejected?(user)
+    # if rejected is nil, return pending
+    return 'pending' if self.request_pending?(user)
+    return 'friends' if self.request_accepted?(user)
+
+  end
+
+
+
   def is_friends_with?(user)
     return false unless user
     ! Friendship.where('friender_id = ? AND friendee_id = ?', self.id, user.id).blank?
@@ -42,6 +54,24 @@ class User < ApplicationRecord
   def birthday
     self.profile.birthday
   end
+
+  protected
+
+  def request_accepted?(user)
+    return false unless user
+    Friendship.where('friender_id = ? AND friendee_id = ? AND rejected IS ?', user.id, self.id, false).present?
+  end
+
+  def request_pending?(user)
+    return false unless user
+    Friendship.where('friender_id = ? AND friendee_id = ? AND rejected IS ?', user.id, self.id, nil).present?
+  end
+
+  def request_rejected?(user)
+    return false unless user
+    Friendship.where('friender_id = ? AND friendee_id = ? AND rejected = ?', user.id, self.id, true).present?
+  end
+
 
 
 end

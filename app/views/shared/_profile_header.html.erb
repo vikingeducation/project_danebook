@@ -4,14 +4,17 @@
     </div>
     <div class="profile-text">
       <h2 class="profile-name"><%= @user.full_name %></h2>
-      <%= if ! current_user
-        link_to 'Add Friend', new_user_path, class: 'btn btn-primary' 
-      elsif @user.is_friend_of?(current_user) 
-        link_to "Remove Friend", user_friend_path(@user, current_user), method: :delete, class: 'btn btn-dull'
-      else
-      link_to "Add Friend", user_friends_path(@user), method: :post, class: 'btn btn-primary' unless is_self?
-      end
-      %>
+      <%= case @user.friendship_status(current_user)
+          when 'pending' 
+            link_to 'Cancel Request', '#', class: 'btn btn-dull'
+          when 'friends'
+            link_to "Remove Friend", user_friend_path(@user, current_user), method: :delete, class: 'btn btn-dull'
+          when 'rejected'
+            link_to 'Add Friend', '#', class: 'btn btn-dull' 
+          else 
+             link_to 'Add Friend', new_user_path, class: 'btn btn-primary' 
+           end 
+        %>
     </div>
     <%=  image_tag('user_silhouette_generic.png', alt: 'Generic User Silhouette', class: 'img-thumbnail profile-pic')  %>
     <nav class="profile-nav">

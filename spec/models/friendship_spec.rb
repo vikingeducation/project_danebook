@@ -2,6 +2,7 @@ require 'rails_helper'
 
 describe Friendship do
   let(:user){ create(:user)}
+
   context 'validations' do
     it 'raises error if friendship already exists' do
       friend = create(:user)
@@ -15,5 +16,6 @@ describe Friendship do
       expect{user.friendee_ids = [user.id]}.to raise_error(ActiveRecord::RecordInvalid)
     end
   end
+
 
 end

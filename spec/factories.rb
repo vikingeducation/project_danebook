@@ -11,6 +11,23 @@ FactoryGirl.define do
     trait :with_profile do
       association :profile
     end
+    trait :with_pending_friend_request do
+      after(:create) do |user|
+        user.friendees << create(:friendee)
+      end
+    end
+    trait :with_rejected_friend_request do
+      after(:create) do |user|
+        user.friendees << create(:friendee)
+        Friendship.last.update(rejected: true)
+      end
+    end
+    trait :with_accepted_friend_request do
+      after(:create) do |user|
+        user.friendees << create(:friendee)
+        Friendship.last.update(rejected: false)
+      end
+    end
   end
   factory :profile do
     first_name { Faker::Name.first_name }

@@ -41,6 +41,10 @@ group :production do
   gem 'pg'
 end
 
+group :test do
+  gem 'shoulda-matchers', git: 'https://github.com/thoughtbot/shoulda-matchers.git', branch: 'rails-5'
+end
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 

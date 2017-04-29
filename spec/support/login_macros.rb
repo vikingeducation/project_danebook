@@ -8,8 +8,7 @@ module LoginMacros
   end
 
   def log_out
-    visit root_path
-    click_link "Logout"
+    click_link "Sign out"
   end
 
   def sign_up(user)

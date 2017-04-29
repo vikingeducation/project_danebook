@@ -1,9 +1,11 @@
 require 'rails_helper'
+require 'pry'
 
 feature 'Friending' do
   let(:users){ create_list(:profile, 3)}
-  let(:user){ create(:profile).user}
-  let(:friend){ create(:profile).user}
+  let(:user){ create(:user, :with_profile)}
+  let(:friend){ create(:user, :with_profile)}
+  let(:friend_invite){ create(:friendship, friender_id: friend.id, friendee_id: user.id)}
   before do
     users
   end
@@ -23,27 +25,19 @@ feature 'Friending' do
       visit root_path
       log_in(user)
     end
-    scenario 'has button to add friend if not already friends' do
-      friend = create(:profile)
+    scenario 'clicking button to add friend sends a friendship invite' do
       visit user_profile_path(friend)
-      expect(page).to have_content 'Add Friend'
+      click_link 'Add Friend'
+      expect(Friendship.last.friend_initiator).to eq(user)
+      expect(Friendship.last.friend_recipient).to eq(friend)
+      expect(Friendship.last.rejected).to be_nil
     end
-    scenario 'clicking button to add friend changes button to "Cancel Request"' do
+    scenario 'can accept a friend request' do
+      friend_invite
       visit user_profile_path(friend)
-      click_button 'Add Friend'
-      expect(page).to have_content 'Cancel Request'
+      expect{ click_link 'Accept'}.to change(Friendship, :count).by(1)
     end
-    scenario 'clicking "add friend" button adds user as friend' do
-      visit user_about_path(friend)
-      expect{ click_link 'Add Friend' }.to change(Friendship, :count).by(1)
-      expect(page).to have_content "You and #{friend.first_name} are now friends"
-    end
-    scenario 'clicking "remove friend" removes user as friend' do
-      user.friendees << friend
-      visit user_about_path(friend)
-      expect{ click_link 'Remove Friend'}.to change(Friendship, :count).by(-1)
-    end
+    scenario 'clicking "remove friend" removes user as friend'
 
   end
-
 end

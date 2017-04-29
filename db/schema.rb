@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170428031223) do
+ActiveRecord::Schema.define(version: 20170429061502) do
 
   create_table "comment_likes", force: :cascade do |t|
     t.integer  "user_id"
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 20170428031223) do
     t.integer  "friendee_id", null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.boolean  "rejected"
+    t.string   "status"
     t.index ["friender_id", "friendee_id"], name: "index_friendships_on_friender_id_and_friendee_id", unique: true
   end
 

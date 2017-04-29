@@ -29,6 +29,21 @@ $light-gray: #f9f9f9;
   color: #fff;
 }
 
+.dropdown-menu.friend-requests {
+  li {
+    padding: 3px 20px 10px;
+    border-bottom: 1px solid #ccc;
+  }
+  li:last-child {
+    border-bottom: 0;
+  }
+  li a {
+    display:inline;
+    margin:0px 5px;
+  
+  }
+}
+
   /* MAIN */
 
   /* compensate for fixed navbar */

@@ -9,28 +9,27 @@ describe 'shared/_profile_header.html.erb' do
     def view.user_signed_in?
       false
     end
+    assign(:user, user)
   end
   it 'shows the user\'s name' do
-    assign(:user, user)
     render
     expect(render).to have_content(user.full_name)
   end
   it 'shows button do add friend' do
-    assign(:user, user)
     render
     expect(render).to have_content('Add Friend')
   end
   it 'has links to user\'s other pages' do
-    assign(:user, user)
     render
     expect(rendered).to match(user_profile_path(user))
     expect(rendered).to match(user_about_path(user))
     expect(rendered).to match(user_photos_path(user))
     expect(rendered).to match(user_friends_path(user))
   end
+
   context 'logged in' do
-    let(:friend){ create(:profile).user}
-    let(:user){ create(:profile).user}
+    let(:friend){ create(:user, :with_profile)}
+    let(:user){ create(:user, :with_profile)}
     before do
       assign(:user, user)
       @friend = friend
@@ -45,10 +44,15 @@ describe 'shared/_profile_header.html.erb' do
       render
       expect(rendered).to have_content('Add Friend')
     end
-    it 'shows button to delete friend' do
-      friend.friendees << user
+    it 'shows button to delete friend'
+    it 'does not show friend action button if on own page' do
+      def view.current_user
+        @user
+      end
       render
-      expect(rendered).to have_content('Remove Friend')
+      expect(rendered).not_to have_content('Add Friend')
+      expect(rendered).not_to have_content('Remove Friend')
+      expect(rendered).not_to have_content('Cancel Request')
     end
   end
 

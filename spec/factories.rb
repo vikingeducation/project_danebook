@@ -1,9 +1,14 @@
 
 FactoryGirl.define do
+  factory :friendship_status do
+    description "MyString"
+  end
+
   factory :photo do
     user nil
   end
-  factory :user, aliases: [:friender, :friendee] do
+
+  factory :user, aliases: [:friender, :friendee, :friend] do
     sequence(:email){ |n| "foo#{n}@bar.com"}
     password 'foobarfoobar'
     password_confirmation 'foobarfoobar'
@@ -13,22 +18,24 @@ FactoryGirl.define do
     end
     trait :with_pending_friend_request do
       after(:create) do |user|
-        user.friendees << create(:friendee)
+        user.friendees << create(:friendee, :with_profile)
       end
     end
     trait :with_rejected_friend_request do
       after(:create) do |user|
-        user.friendees << create(:friendee)
+        user.friendees << create(:friendee, :with_profile)
         Friendship.last.update(rejected: true)
       end
     end
     trait :with_accepted_friend_request do
       after(:create) do |user|
-        user.friendees << create(:friendee)
-        Friendship.last.update(rejected: false)
+        friend = create(:friend, :with_profile)
+        create(:friendship, rejected: false, friendee_id: friend.id, friender_id: user.id)
+        create(:friendship, :not_rejected,  friendee_id: user.id, friender_id: friend.id)
       end
     end
   end
+
   factory :profile do
     first_name { Faker::Name.first_name }
     last_name { Faker::Name.last_name }
@@ -45,10 +52,17 @@ FactoryGirl.define do
       sex 'male'
     end
   end
+
   factory :friendship do
-    friender
-    friendee
+    association :friend_initiator, factory: :friender
+    association :friend_recipient, factory: :friendee
+    rejected nil
+    trait :not_rejected do
+      rejected false
+    end
+
   end
+
   factory :post do
     body  { Faker::Hacker.say_something_smart }
     user
@@ -76,5 +90,6 @@ FactoryGirl.define do
     comment
     user
   end
+
 
 end

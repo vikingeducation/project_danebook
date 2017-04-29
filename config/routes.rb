@@ -21,7 +21,8 @@ Rails.application.routes.draw do
       get 'upload' => 'photos#new', on: :collection
     end
     resources :posts, only: [:new, :create, :destroy]
-    resources :friendships, path: 'friends', as: 'friends', only: [:create, :destroy, :index, :update]
+    resources :friendships, path: 'friends', as: 'friends', only: [:create, :destroy, :index] do
+    end
   end
   resources :posts, only: [] do
     resources :likes, only: [:create, :destroy]
@@ -29,6 +30,11 @@ Rails.application.routes.draw do
   end
   resources :comments, only: [:destroy] do
     resources :comment_likes, only: [:create, :destroy]
+  end
+  resources :friendships, path: 'friends', as: 'friends', only: [] do
+    patch 'accept' => 'friendships#accept', on: :member
+    patch 'reject' => 'friendships#reject', on: :member
+    delete 'cancel' => 'friendships#cancel', on: :member
   end
 
 

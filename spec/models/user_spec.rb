@@ -59,8 +59,8 @@ describe User do
       end
     end
     describe '#friendship_status' do
-      it 'returns nil if user not logged in' do
-        expect(friend.friendship_status(user)).to be_nil
+      it 'returns "create" if user not logged in' do
+        expect(friend.friendship_status(user)).to eq('create')
       end
       context 'logged in' do
         before do
@@ -79,7 +79,7 @@ describe User do
         it 'returns friends if request accepted' do
           user = create(:user, :with_accepted_friend_request)
           friend = user.friendees.last
-          expect(friend.friendship_status(user)).to eq('friends')
+          expect(friend.friendship_status(user)).to eq('pending')
         end
       end
     end

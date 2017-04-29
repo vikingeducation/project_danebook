@@ -1,8 +1,7 @@
 require 'rails_helper'
 
 describe Friendship do
-  let(:user){ create(:user)}
-
+  let(:user){ create(:user, :with_profile)}
   context 'validations' do
     it 'raises error if friendship already exists' do
       friend = create(:user)

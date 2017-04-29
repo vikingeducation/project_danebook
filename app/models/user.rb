@@ -11,8 +11,8 @@ class User < ApplicationRecord
   has_many :photos
 
   #  self join for friendship
-  has_many :initiated_friendships, class_name: 'Friendship', foreign_key: :friender_id
-  has_many :received_friendships, class_name: 'Friendship', foreign_key: :friendee_id
+  has_many :initiated_friendships, class_name: 'Friendship', foreign_key: :friender_id, dependent: :destroy
+  has_many :received_friendships, class_name: 'Friendship', foreign_key: :friendee_id, dependent: :destroy
   has_many :friendees, through: :initiated_friendships, source: :friend_recipient
   has_many :frienders, through: :received_friendships, source: :friend_initiator
 
@@ -25,21 +25,27 @@ class User < ApplicationRecord
     profile.first_name
   end
 
+
   def friendship_status(user)
     return nil unless user
-    # if rejected is true, return rejected
-    return 'rejected' if self.request_rejected?(user)
-    # if rejected is nil, return pending
-    return 'pending' if self.request_pending?(user)
-    return 'friends' if self.request_accepted?(user)
-
+    as_recipient = Friendship.where('friender_id = ? AND friendee_id = ?', user.id, self.id)
+    return as_recipient.first.status if as_recipient.present?
+    # as_friender = Friendship.where('friender_id = ? AND friendee_id = ?', self.id, user.id)
+    # return as_friender.first.status if as_friender.present?
+    'create'
   end
 
+  def friendship_recipient(user)
+    self.initiated_friendships.where('friendee_id = ? AND status = ?', user.id, 'sent').first
+  end
 
+  def friend_requests
+    self.frienders.where('friendee_id = ? AND status = ?', self.id, 'sent')
+  end
 
   def is_friends_with?(user)
     return false unless user
-    ! Friendship.where('friender_id = ? AND friendee_id = ?', self.id, user.id).blank?
+    ! Friendship.where('friender_id = ? AND friendee_id = ? AND rejected IS ?', self.id, user.id, false).blank?
   end
 
   def is_friend_of?(user)
@@ -55,22 +61,7 @@ class User < ApplicationRecord
     self.profile.birthday
   end
 
-  protected
 
-  def request_accepted?(user)
-    return false unless user
-    Friendship.where('friender_id = ? AND friendee_id = ? AND rejected IS ?', user.id, self.id, false).present?
-  end
-
-  def request_pending?(user)
-    return false unless user
-    Friendship.where('friender_id = ? AND friendee_id = ? AND rejected IS ?', user.id, self.id, nil).present?
-  end
-
-  def request_rejected?(user)
-    return false unless user
-    Friendship.where('friender_id = ? AND friendee_id = ? AND rejected = ?', user.id, self.id, true).present?
-  end
 
 
 

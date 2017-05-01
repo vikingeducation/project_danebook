@@ -2,7 +2,6 @@ class FriendshipsController < ApplicationController
 
   def create
     @friendship = current_user.initiated_friendships.where(friendee_id: params[:user_id]).first_or_initialize
-    @friendship.status = 'sent'
     @recipient = User.find(params[:user_id])
     if @friendship.save
       flash[:success] = "Your request to add #{@recipient.full_name} as a friend has been sent"
@@ -12,36 +11,34 @@ class FriendshipsController < ApplicationController
     redirect_to user_profile_path(@recipient)
   end
 
-  def accept
+  def update
     @friender = User.find(params[:id])
     @friendship = current_user.received_friendships.find_by(friender_id: @friender.id)
-    if @friendship.update(accepted_params)
+    case request.path
+    when reject_friend_path(@friender)
+      @friendship.update(rejected: true, friender_id: @friender.id)
+      flash[:notice] = "You have rejected #{@friender.full_name}'s friend request"
+    when accept_friend_path(@friender)
+      @friendship.update(rejected: false, friender_id: @friender.id)
       flash[:success] = "You are now friends with #{@friender.full_name}"
-    else
-      flash[:error] = "Sorry, you couldn't accept the friend invite"
+    when cancel_friend_path(@friender)
+      @friendship = current_user.initiated_friendships.find_by(friendee_id: @friender.id)
+      if @friendship.destroy
+        flash[:success] = "Your friendship request has been cancelled"
+      else
+        flash[:error] = "We couldn't cancel your friendship request"
+      end
     end
-    redirect_to user_profile_path(@friender)
-  end
-
-  def reject
-    @friender = User.find(params[:id])
-    @friendship = current_user.received_friendships.find_by(friender_id: @friender.id, friendee_id: current_user.id)
-    if @friendship.update(status: 'rejected')
-      flash[:success] = "You successfully rejected #{@friender.full_name}'s friend invitation"
-    else
-      flash[:error] = "Sorry, we couldn't reject the invite. It will just remain as 'pending'"
-    end
-    # this should not redirect to rejected friend path
     redirect_to user_profile_path(@friender)
   end
 
   def destroy
-    @friend = User.find(params[:user_id])
-    @friendships = current_user.initiated_friendships(friendee_id: @friend.id)
-    if @friendships.destroy_all.blank?
-      flash[:error] = "Looks like you're true BFFs"
+    @friend = User.find(params[:id])
+    @friendships = current_user.initiated_friendships.find_by(friendee_id: @friend.id)
+    if @friendships.destroy
+      flash[:success] = "You're no longer friends with #{@friend.full_name}"
     else
-      flash[:success] = "You're no longer friends with #{@friend.first_name}"
+      flash[:error] = "You couldn't unfriend #{@friend.full_name}"
     end
     redirect_to user_profile_path(@friend)
   end
@@ -53,7 +50,7 @@ class FriendshipsController < ApplicationController
 
   def cancel
     @friendee = User.find(params[:id])
-    @friendship = current_user.friendship_recipient(@friendee)
+    @friendship = current_user.initiated_friendships.find_by(friendee_id: @friendee)
     if @friendship.destroy
       flash[:success] = "Your friendship request has been cancelled"
     else
@@ -63,6 +60,7 @@ class FriendshipsController < ApplicationController
   end
 
   private
+
 
   def accepted_params
     params.permit(:status).merge(friender_id: @friender.id)

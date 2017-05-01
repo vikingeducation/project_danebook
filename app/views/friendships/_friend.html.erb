@@ -13,7 +13,7 @@
         </div>
       </div>
       <div class="media-right media-middle">
-        <%=  link_to "Remove Friend", user_friend_path(@user, current_user.id), method: :delete, class: 'btn btn-dull' %>
+        <%=  link_to "Remove Friend", friend_path(friend), method: :delete, class: 'btn btn-dull' if is_self? %>
       </div>
     </div>
   </div>

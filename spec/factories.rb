@@ -18,20 +18,20 @@ FactoryGirl.define do
     end
     trait :with_pending_friend_request do
       after(:create) do |user|
-        user.friendees << create(:friendee, :with_profile)
+        friend = create(:friendee, :with_profile)
+        user.initiated_friendships.create(friendee_id: friend.id)
       end
     end
     trait :with_rejected_friend_request do
       after(:create) do |user|
-        user.friendees << create(:friendee, :with_profile)
-        Friendship.last.update(rejected: true)
+        friend = create(:user, :with_profile)
+        create(:friendship, rejected: true, friendee_id: friend.id, friender_id: user.id)
       end
     end
     trait :with_accepted_friend_request do
       after(:create) do |user|
         friend = create(:friend, :with_profile)
         create(:friendship, rejected: false, friendee_id: friend.id, friender_id: user.id)
-        create(:friendship, :not_rejected,  friendee_id: user.id, friender_id: friend.id)
       end
     end
   end
@@ -54,11 +54,14 @@ FactoryGirl.define do
   end
 
   factory :friendship do
-    association :friend_initiator, factory: :friender
-    association :friend_recipient, factory: :friendee
+    association :friend_initiator, factory: [:friender, :with_profile]
+    association :friend_recipient, factory: [:friendee, :with_profile]
     rejected nil
-    trait :not_rejected do
+    trait :accepted do
       rejected false
+    end
+    trait :pending do
+      rejected nil
     end
 
   end

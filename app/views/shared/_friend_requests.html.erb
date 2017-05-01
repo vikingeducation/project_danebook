@@ -1,2 +1,2 @@
-<li><span><%= friender.full_name %></span>
-  <%= link_to 'Accept', accept_friend_path(friender, status: 'accepted'), method: :patch, class: 'btn btn-primary' %> <%= link_to 'Reject', reject_friend_path(friender), method: :patch, class: 'btn btn-primary' %></li>
+<li><span><%= link_to friender.full_name, user_profile_path(friender) %></span>
+  <%= link_to 'Accept', accept_friend_path(friender), method: :patch, class: 'btn btn-primary' %> <%= link_to 'Reject', reject_friend_path(friender), method: :patch, class: 'btn btn-primary' %></li>

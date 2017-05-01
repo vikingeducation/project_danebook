@@ -16,6 +16,7 @@ class User < ApplicationRecord
   has_many :friendees, through: :initiated_friendships, source: :friend_recipient
   has_many :frienders, through: :received_friendships, source: :friend_initiator
 
+
   validates :email, presence: true, uniqueness: true, length: { minimum: 6}, on: [:create]
   validates :password, :password_confirmation, presence: true, length: {minimum: 12 }, on: :create
   accepts_nested_attributes_for :profile
@@ -25,32 +26,17 @@ class User < ApplicationRecord
     profile.first_name
   end
 
-
   def friendship_status(user)
     return nil unless user
-    as_recipient = Friendship.where('friender_id = ? AND friendee_id = ?', user.id, self.id)
-    return as_recipient.first.status if as_recipient.present?
-    # as_friender = Friendship.where('friender_id = ? AND friendee_id = ?', self.id, user.id)
-    # return as_friender.first.status if as_friender.present?
-    'create'
-  end
+    friendship = user.initiated_friendships.find_by(friendee_id: self.id)
+    return friendship.rejected if friendship.present?
+    return 'received' if user.friend_requests.present?
 
-  def friendship_recipient(user)
-    self.initiated_friendships.where('friendee_id = ? AND status = ?', user.id, 'sent').first
+    return 'create'
   end
 
   def friend_requests
-    self.frienders.where('friendee_id = ? AND status = ?', self.id, 'sent')
-  end
-
-  def is_friends_with?(user)
-    return false unless user
-    ! Friendship.where('friender_id = ? AND friendee_id = ? AND rejected IS ?', self.id, user.id, false).blank?
-  end
-
-  def is_friend_of?(user)
-    return false unless user
-    ! Friendship.where('friender_id = ? AND friendee_id = ?', user.id, self.id).blank?
+    self.frienders.where('friendee_id = ? AND rejected IS ?', self.id, nil)
   end
 
   def full_name
@@ -60,8 +46,6 @@ class User < ApplicationRecord
   def birthday
     self.profile.birthday
   end
-
-
 
 
 

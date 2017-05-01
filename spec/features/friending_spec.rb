@@ -10,14 +10,10 @@ feature 'Friending' do
     users
   end
   context 'signed out' do
-    scenario 'clicking button to add friend takes user to sign in page' do
+    scenario 'cannot add friend' do
       visit user_about_path(User.first)
       click_link 'Add Friend'
       expect(page).to have_content('Connect with all your friends!')
-    end
-    scenario 'does not have a link to edit profile' do
-      visit user_about_path(User.last)
-      expect(page).not_to have_content('Edit your profile')
     end
   end
   context 'signed in' do
@@ -25,19 +21,24 @@ feature 'Friending' do
       visit root_path
       log_in(user)
     end
-    scenario 'clicking button to add friend sends a friendship invite' do
+    scenario 'can send a friend invite' do
       visit user_profile_path(friend)
       click_link 'Add Friend'
       expect(Friendship.last.friend_initiator).to eq(user)
       expect(Friendship.last.friend_recipient).to eq(friend)
       expect(Friendship.last.rejected).to be_nil
     end
-    scenario 'can accept a friend request' do
+    scenario 'can accept friend requests' do
       friend_invite
       visit user_profile_path(friend)
       expect{ click_link 'Accept'}.to change(Friendship, :count).by(1)
     end
-    scenario 'clicking "remove friend" removes user as friend'
+    scenario 'can remove friends' do
+      create(:friendship, friender_id: user.id, friendee_id: friend.id, rejected: false)
+      create(:friendship, friender_id: friend.id, friendee_id: user.id, rejected: false)
+      visit user_profile_path(friend)
+      expect{ click_link 'Remove Friend'}.to change(Friendship, :count).by(-2)
+    end
 
   end
 end

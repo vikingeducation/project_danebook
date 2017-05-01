@@ -5,19 +5,23 @@
     <div class="profile-text">
       <h2 class="profile-name"><%= @user.full_name %></h2>
       <%= unless is_self?
-      case @user.friendship_status(current_user)
-          when 'sent' 
-            link_to 'Cancel Request', cancel_friend_path(@user), method: :delete, class: 'btn btn-dull'
-          when 'accepted'
-            link_to "Remove Friend", user_friend_path(@user, current_user), method: :delete, class: 'btn btn-dull'
-          when 'rejected'
-            link_to 'Add Friend', '#', class: 'btn btn-dull' 
-          when 'create'
-            link_to 'Add Friend', user_friends_path(@user), method: :post, class: 'btn btn-primary'
-          else 
-             link_to 'Add Friend', new_user_path, class: 'btn btn-primary' 
+        if current_user.nil?
+          link_to 'Add Friend', new_user_path, class: 'btn btn-primary' 
+        else
+          case @user.friendship_status(current_user)
+            when nil
+             link_to 'Cancel Request', cancel_friend_path(@user), method: :patch, class: 'btn btn-dull'
+            when false
+              link_to "Remove Friend", friend_path(@user, current_user), method: :delete, class: 'btn btn-dull'
+            when true
+              '<div class="btn btn-dull">Add Friend</div>'.html_safe
+            when 'received'
+              link_to 'Accept Request', accept_friend_path(@user), method: :patch, class: 'btn btn-success'
+            when 'create'
+              link_to 'Add Friend', user_friends_path(@user), method: :post, class: 'btn btn-primary'
+          end
+        end
            end 
-         end
         %>
     </div>
     <%=  image_tag('user_silhouette_generic.png', alt: 'Generic User Silhouette', class: 'img-thumbnail profile-pic')  %>

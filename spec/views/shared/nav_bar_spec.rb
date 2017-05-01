@@ -1,7 +1,9 @@
 require 'rails_helper'
 
 describe 'shared/_nav_bar.html.erb' do
-  let(:user){ create(:profile).user }
+  let(:user){ create(:user, :with_profile)}
+  let(:friend){ create(:user, :with_profile)}
+  let(:request_received){ create(:friendship, friender_id: friend.id, friendee_id: user.id)}
   context 'logged in' do
     before do
       assign(:user, user)
@@ -14,7 +16,14 @@ describe 'shared/_nav_bar.html.erb' do
     end
     it 'shows user\'s first name' do
       render
-      expect(rendered).to have_content(user.first_name)
+      expect(rendered).to have_link(user.first_name)
+    end
+    it 'shows accept and reject options if friend requuest received' do
+      request_received
+      render
+      expect(rendered).to have_link(user.first_name)
+      expect(rendered).to have_link('Accept')
+      expect(rendered).to have_link('Reject')
     end
   end
   context 'logged out' do

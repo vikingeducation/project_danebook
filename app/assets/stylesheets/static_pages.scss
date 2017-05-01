@@ -38,9 +38,11 @@ $light-gray: #f9f9f9;
     border-bottom: 0;
   }
   li a {
-    display:inline;
+    color: #000;
+  }
+  li a.btn {
+    display:inline-block;
     margin:0px 5px;
-  
   }
 }
 

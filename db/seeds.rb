@@ -48,5 +48,9 @@ User.all.each do |u|
   end
 end
 
+Friendship.all.each do |f|
+  f.update(rejected: false)
+end
+
 
 puts "Done!"

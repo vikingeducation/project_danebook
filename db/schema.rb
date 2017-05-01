@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(version: 20170429061502) do
     t.integer  "friendee_id", null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
-    t.string   "status"
+    t.boolean  "rejected"
     t.index ["friender_id", "friendee_id"], name: "index_friendships_on_friender_id_and_friendee_id", unique: true
   end
 

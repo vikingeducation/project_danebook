@@ -45,19 +45,7 @@ describe User do
         expect(user.first_name).to eq(user.profile.first_name)
       end
     end
-    describe '#is_friends_with?' do
-      let(:user){ create(:user)}
-      let(:friend){ create(:user)}
-      it 'returns true if user is friends with another user' do
-        user.friendees << friend
-        expect(user.is_friends_with?(friend)).to eq(true)
-      end
-      it 'returns false if user is not friends with another user' do
-        user.friendees << friend
-        friend2 = create(:user)
-        expect(user.is_friends_with?(friend2)).to eq(false)
-      end
-    end
+
     describe '#friendship_status' do
       it 'returns "create" if user not logged in' do
         expect(friend.friendship_status(user)).to eq('create')
@@ -66,20 +54,21 @@ describe User do
         before do
           login_as(user, user: :user)
         end
-        it 'returns pending if request not accepted' do
-          user = create(:user, :with_pending_friend_request)
-          friend = user.friendees.last
-          expect(friend.friendship_status(user)).to eq('pending')
+        it 'returns nil if request not accepted' do
+          create(:friendship, friender_id: user.id, friendee_id: friend.id, rejected: nil)
+          expect(friend.friendship_status(user)).to be_nil
         end
-        it 'returns rejected if request rejected' do
-          user = create(:user, :with_rejected_friend_request)
-          friend = user.friendees.last
-          expect(friend.friendship_status(user)).to eq('rejected')
+        it 'returns true if request rejected' do
+          create(:friendship, friender_id: user.id, friendee_id: friend.id, rejected: true)
+          expect(friend.friendship_status(user)).to eq(true)
         end
         it 'returns friends if request accepted' do
           user = create(:user, :with_accepted_friend_request)
           friend = user.friendees.last
-          expect(friend.friendship_status(user)).to eq('pending')
+          expect(friend.friendship_status(user)).to eq(false)
+        end
+        it "returns 'create' if no friendship record" do
+          expect(friend.friendship_status(user)).to eq('create')
         end
       end
     end

@@ -31,10 +31,10 @@ Rails.application.routes.draw do
   resources :comments, only: [:destroy] do
     resources :comment_likes, only: [:create, :destroy]
   end
-  resources :friendships, path: 'friends', as: 'friends', only: [] do
-    patch 'accept' => 'friendships#accept', on: :member
-    patch 'reject' => 'friendships#reject', on: :member
-    delete 'cancel' => 'friendships#cancel', on: :member
+  resources :friendships, path: 'friends', as: 'friends', only: [:destroy] do
+    patch 'accept' => 'friendships#update', on: :member
+    patch 'reject' => 'friendships#update', on: :member
+    patch 'cancel' => 'friendships#update', on: :member
   end
 
 

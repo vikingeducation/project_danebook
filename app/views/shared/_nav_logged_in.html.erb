@@ -17,7 +17,7 @@
         </div>
       </form>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to current_user.first_name, user_about_path(current_user) %> </li>
+        <li><%= link_to current_user.first_name, user_profile_path(current_user) %> </li>
         <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span></a>
           <ul class="dropdown-menu friend-requests">
             <%= render partial: 'shared/friend_requests', collection: current_user.friend_requests.includes(:profile), as: :friender %>

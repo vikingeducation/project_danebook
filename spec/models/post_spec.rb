@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe Post do
-  let(:post){ build(:post)}
+  let(:post){ create(:post)}
   let(:user){ create(:user)}
   context 'validations' do
     it 'is valid with body and user' do
@@ -27,7 +27,6 @@ describe Post do
   context '#liked_by?' do
     it 'correctly tells us if post is liked by a user' do
       post.likers << user
-      post.save
       expect(post.liked_by?(user)).to eq(true)
       expect(post.liked_by?(create(:user))).to eq(false)
     end

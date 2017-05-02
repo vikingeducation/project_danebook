@@ -17,16 +17,20 @@ Rails.application.routes.draw do
   resources :users,  only: [:new, :create, :update, :edit ] do
     get 'about' => 'users#show'
     get 'profile' => 'posts#index'
-    resources :photos, only: [:create, :show, :index] do
+    resources :photos, only: [:create, :index, :destroy] do
       get 'upload' => 'photos#new', on: :collection
     end
     resources :posts, only: [:new, :create, :destroy]
     resources :friendships, path: 'friends', as: 'friends', only: [:create, :destroy, :index] do
     end
   end
+  resources :photos, only: [:show, :destroy] do
+    resources :comments, only: [:create], defaults: { commentable: 'Photo'}
+    resources :likes, only: [:create, :destroy], defaults: { likeable: 'Photo'}
+  end
   resources :posts, only: [] do
-    resources :likes, only: [:create, :destroy]
-    resources :comments, only: [:create]
+    resources :likes, only: [:create, :destroy], defaults: { likeable: 'Post'}
+    resources :comments, only: [:create], defaults: { commentable: 'Post'}
   end
   resources :comments, only: [:destroy] do
     resources :comment_likes, only: [:create, :destroy]

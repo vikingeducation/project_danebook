@@ -1,24 +1,34 @@
 class CommentLikesController < ApplicationController
 
   def create
-    @timeline = Comment.find(params[:comment_id]).post.user
+    @comment = Comment.find(params[:comment_id])
+    @timeline = Comment.find(params[:comment_id]).commentable.user
     @like = current_user.comment_likes.build(comment_id: params[:comment_id].to_i)
     if @like.save
       flash[:success] = "Comment liked"
     else
-      flash[:error] = "Comment unliked"
+      flash[:error] = "You can't like that comment"
     end
-    redirect_to user_profile_path(@timeline)
+    if @comment.commentable_type == 'Photo'
+      redirect_to photo_path(@comment.commentable_id)
+    elsif @comment.commentable_type == 'Post'
+      redirect_to user_profile_path(@timeline)
+    end
   end
 
   def destroy
-    @comment = CommentLike.find_by(comment_id: params[:comment_id], user_id: current_user.id)
-    if @comment.destroy
-      flash[:success] = "Comment deleted"
+    @like = CommentLike.find_by(comment_id: params[:comment_id], user_id: current_user.id)
+    @comment = @like.comment
+    if @like.destroy
+      flash[:success] = "Unliked"
     else
-      flash[:error] = "Couldn't delete the comment"
+      flash[:error] = "You can't unlike that comment"
     end
-    redirect_to user_profile_path(@comment.user)
-  end
+    if @comment.commentable_type == 'Photo'
+      redirect_to photo_path(@comment.commentable_id)
+    elsif @comment.commentable_type == 'Post'
+      redirect_to user_profile_path(@like.user)
+    end
 
+  end
 end

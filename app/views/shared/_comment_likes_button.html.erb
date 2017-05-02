@@ -1,6 +1,6 @@
  <%=  if comment.liked_by?(current_user)
       link_to "Unlike", comment_comment_like_path(comment, current_user.id), method: :delete
       else
-       render 'comment_likes_form', comment: comment 
+        link_to 'Like', comment_comment_likes_path(comment), method: :create, class: 'btn btn-link pan'
      end
 %>

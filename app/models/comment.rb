@@ -1,6 +1,6 @@
 class Comment < ApplicationRecord
+  belongs_to :commentable, polymorphic: true
   belongs_to :user
-  belongs_to :post
   has_many :comment_likes, dependent: :destroy
   validates :body, presence: true
 
@@ -22,7 +22,7 @@ class Comment < ApplicationRecord
       when self.comment_likes_count == 2
         msg += ' and ' + remaining_likes.first.user.full_name + 'like this'
       when self.comment_likes_count == 3
-        msg += ', ' + remaining_likes.first.user.full_name + ' ' + 'and' + remaining_likes.second.user.full_name + ' like this'
+        msg += ', ' + remaining_likes.first.user.full_name + ' ' + 'and ' + remaining_likes.second.user.full_name + ' like this'
       when self.comment_likes_count > 3
         msg += ', ' + remaining_likes.first.user.full_name + ' and ' + (self.comment_likes_count - 3).to_s + ' others like this'
       end

@@ -1,6 +1,8 @@
 Rails.application.configure do
 
   # Paperclip Amazon S3
+  Paperclip.options[:command_path] = "/usr/local/bin"
+
 
   config.paperclip_defaults = {
 

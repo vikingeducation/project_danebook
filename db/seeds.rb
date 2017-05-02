@@ -27,7 +27,7 @@ end
 puts 'Populating comments and likes...'
 Post.all.each do |po|
   rand(1..5).times do
-    po.likes.create(user_id: User.all.pluck(:id).sample)
+    po.likes.create(user_id: User.all.pluck(:id).sample, likeable_type: 'Post')
     po.comments.create(user_id: User.all.pluck(:id).sample, body: Faker::Hacker.say_something_smart)
   end
 end

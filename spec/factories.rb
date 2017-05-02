@@ -5,7 +5,8 @@ FactoryGirl.define do
   end
 
   factory :photo do
-    user nil
+    user
+    image {  Rack::Test::UploadedFile.new(Rails.root.join('spec/requests/medium_missing.png'), 'image/png')}
   end
 
   factory :user, aliases: [:friender, :friendee, :friend] do
@@ -70,25 +71,40 @@ FactoryGirl.define do
     body  { Faker::Hacker.say_something_smart }
     user
 
+    after(:create) do |post|
+      create(:profile, user: post.user)
+    end
+
     trait :with_likes do
       transient do
         likes_count 3
       end
       after(:create) do |post, evaluator|
-        create_list(:like, evaluator.likes_count, post: post)
+        create_list(:like, evaluator.likes_count, :for_post, likeable: post)
       end
     end
   end
   factory :like do
-    post
     user
-
+    trait :for_post do
+      association :likeable, factory: :post
+    end
   end
   factory :comment do
     body Faker::Hacker.say_something_smart
     user
-    post
+    trait :for_post do
+      commentable_type 'Post'
+      association :commentable, factory: :post
+    end
+    trait :for_photo do
+      commentable_type 'Photo'
+      association :commentable, factory: :photo
+    end
+
   end
+
+
   factory :comment_like do
     comment
     user

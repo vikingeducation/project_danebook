@@ -1,6 +1,6 @@
 class Like < ApplicationRecord
-  belongs_to :post, counter_cache: true
+  belongs_to :likeable, polymorphic: true, counter_cache: :likes_count
   belongs_to :user
 
-  validates_uniqueness_of :user_id,  scope: :post_id
+  validates :user, uniqueness: { scope: [:likeable_type, :likeable_id]}
 end

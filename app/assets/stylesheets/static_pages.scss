@@ -188,6 +188,21 @@ $light-gray: #f9f9f9;
     }
   }
 
+  /* PHOTO COMMENTS */
+  .photo-comments {
+    .comment-form {
+      background: transparent;
+      margin-top: 15px;
+      padding-left: 0;
+    }
+    .post-comment {
+      background: $light-gray;
+      // padding-top: 10px;
+      margin-right:10px;
+      padding: 10px 0;
+    }
+  }
+
 
   /* PHOTO GRID */
   .photo-grid {
@@ -364,6 +379,8 @@ $light-gray: #f9f9f9;
     }
   }
 
+
+
    /* TIMELINE */
 
 .timeline-feed {
@@ -459,10 +476,22 @@ $light-gray: #f9f9f9;
   .display-inline {
     display: inline;
   }
+  .full-width {
+    width: 100%;
+  }
 .mts {
   margin-top:1em;
 }
 .mbs {
   margin-bottom: 1em;
+}
+.mbm {
+  margin-bottom: 1.5em;
+}
+.mtm {
+  margin-top: 1.5em;
+}
+.background-light {
+  background-color: $light-gray;
 }
 

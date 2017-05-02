@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe CommentLike do
   let(:user){ create(:user)}
-  let(:comment){ create(:comment)}
+  let(:comment){ create(:comment, :for_post)}
   let(:like){ create(:like)}
   context 'validations' do
     it 'does not allow duplicate likes' do

@@ -1,8 +1,8 @@
 require 'rails_helper'
 
 describe Comment do
-  let(:comment){ build(:comment)}
-  let(:like){ create(:comment_like)}
+  let(:comment){ create(:comment, :for_post)}
+  let(:like){ create(:comment_like, comment: comment)}
   context 'validations' do
     it 'is invalid without body' do
       comment.body = nil
@@ -14,15 +14,13 @@ describe Comment do
     end
   end
   it 'likes count is zero by default' do
-    comment.save
     expect(comment.comment_likes_count).to eq(0)
   end
 
   context '#liked_by?' do
     it 'correctly tells us if comment is liked by a user' do
-      comment.save
       user = create(:user, id: 77)
-      like = create(:comment_like, user_id: 77)
+      like = create(:comment_like, user_id: 77, comment: comment)
       comment.comment_likes << like
       expect(comment.liked_by?(77)).to eq(true)
       expect(comment.liked_by?(5)).to eq(false)

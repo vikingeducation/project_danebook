@@ -15,12 +15,14 @@
     <span class="post-action"><%= link_to 'Unlike', post_like_path(post, current_user), method: :delete if post.liked_by?(current_user) %> </span>
     <span class="pull-right"><%= link_to "Delete", user_post_path(post.user, post), method: :delete, data: {confirm: 'Are you sure you want to delete this post?'} if is_self? %></span>
     <div class="post-reaction">
-      <span class="post-action"><%= render 'like_form', post: post unless post.liked_by?(current_user) %><a href="#">Comment</a></span>
+      <span class="post-action">
+        <%= link_to 'Like', post_likes_path(post), method: :create unless post.liked_by?(current_user) %>
+        <a href="#">Comment</a></span>
       <span><%= post.post_likes(current_user) %></span>
     </div>
   </footer>
   <div class="post-comments col-xs-12 post-footer">
-    <%= render partial: 'comment', collection: post.comments.includes(user: [:profile]), as: :comment %>
+    <%= render partial: 'shared/comment', collection: post.comments.includes(user: [:profile]), as: :comment %>
   </div>
-  <%= render partial: 'comment_form', locals: { post: post, comment: post.comments.build}  %>
+  <%= render partial: 'shared/comment_form', locals: { post: post, comment: post.comments.build}  %>
 </article>

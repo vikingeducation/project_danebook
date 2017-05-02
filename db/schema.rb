@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170429061502) do
+ActiveRecord::Schema.define(version: 20170502070041) do
 
   create_table "comment_likes", force: :cascade do |t|
     t.integer  "user_id"
@@ -26,10 +26,11 @@ ActiveRecord::Schema.define(version: 20170429061502) do
     t.text     "body",                            null: false
     t.integer  "comment_likes_count", default: 0
     t.integer  "user_id",                         null: false
-    t.integer  "post_id",                         null: false
     t.datetime "created_at",                      null: false
     t.datetime "updated_at",                      null: false
-    t.index ["post_id"], name: "index_comments_on_post_id"
+    t.string   "commentable_type"
+    t.integer  "commentable_id"
+    t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
@@ -43,23 +44,24 @@ ActiveRecord::Schema.define(version: 20170429061502) do
   end
 
   create_table "likes", force: :cascade do |t|
-    t.integer  "post_id",    null: false
-    t.integer  "user_id",    null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["post_id"], name: "index_likes_on_post_id"
-    t.index ["user_id", "post_id"], name: "index_likes_on_user_id_and_post_id", unique: true
+    t.integer  "user_id",       null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.string   "likeable_type"
+    t.integer  "likeable_id"
+    t.index ["user_id", "likeable_id", "likeable_type"], name: "index_likes_on_user_id_and_likeable_id_and_likeable_type", unique: true
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "photos", force: :cascade do |t|
     t.integer  "user_id"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.integer  "likes_count",        default: 0
     t.index ["user_id"], name: "index_photos_on_user_id"
   end
 
@@ -113,6 +115,10 @@ ActiveRecord::Schema.define(version: 20170429061502) do
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.integer  "friendships_count",      default: 0
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
     t.index ["email"], name: "index_users_on_email"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

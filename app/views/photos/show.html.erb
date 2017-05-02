@@ -1,0 +1,51 @@
+       <%= render 'shared/profile_header' %>
+<section class="row">
+  <div class="col-xs-12">
+    <div class="info-box row">
+      <header class="col-xs-12">
+        <h2 class="module-title">Photos</h2>
+      </header>
+      <div class="col-xs-12">
+        <div class="row">
+          <div class="col-xs-12 col-sm-8">
+            <%= image_tag @photo.image.url(:original), class: 'full-width' %>
+            <div class="photo-actions text-right">
+              <%= link_to 'Set as Profile', '#' %><br>
+              <%= link_to 'Set as Cover', '#' %><br>
+              <%= link_to 'Delete Photo', photo_path(@photo), method: :delete %>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-4 photo-comments">
+            <div class="row">
+              <div class="col-xs-12">
+                <div class="media-left">
+                  <%= link_to image_tag('user_silhouette_generic.png', class: 'img-thumbnail media-object', alt: 'Generic User Image'), '#' %>
+                </div>
+                <div class="media-body">
+                  <h5 class="media-heading"><%= link_to @user.full_name, user_about_path(@user) %></h5>
+                  <p class="small text-muted"><%= @photo.upload_date %></p>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <% if @photo.liked_by?(current_user) %>
+                  <%= link_to 'Unlike', photo_like_path(@photo), method: :delete %>
+                <% else %>
+                  <%= link_to 'Like', photo_likes_path(@photo), method: :create unless @photo.liked_by?(current_user) %>
+                <% end %>
+                <span><%= @photo.post_likes(current_user) %></span>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-xs-12">
+                <%= render partial: 'shared/comment_form', locals: { post: @photo, comment: @comment} %>
+              </div>
+            </div>
+            <%= render partial: 'shared/comment', collection: @photo.comments.includes(:user), as: :comment, locals: { user: @user}  %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

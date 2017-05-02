@@ -4,7 +4,7 @@ require 'pry'
 describe 'LikesRequests' do
   let(:user){ create(:profile).user }
   let(:posting){ create(:post)}
-  let(:like){ create(:like, post: posting, user: user)}
+  let(:like){ create(:like, :for_post, likeable: posting, user: user)}
   describe 'POST #create' do
     it 'must be logged in to like' do
       expect { post post_likes_path(posting)}.to change(posting, :likes_count).by(0)

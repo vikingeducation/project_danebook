@@ -1,6 +1,6 @@
 <header class="row">
   <div class="profile-top col-xs-12">
-    <div class="profile-cover" style="background-image: url('<%= image_path('hogwarts_small.jpg') %>')">
+    <div class="profile-cover" style="background-image: url('<%= @user.cover_photo %>')">
     </div>
     <div class="profile-text">
       <h2 class="profile-name"><%= @user.full_name %></h2>
@@ -24,7 +24,7 @@
            end 
         %>
     </div>
-    <%=  image_tag('user_silhouette_generic.png', alt: 'Generic User Silhouette', class: 'img-thumbnail profile-pic')  %>
+    <%=  image_tag("#{@user.avatar(:avatar)}", alt: 'Generic User Silhouette', class: 'img-thumbnail profile-pic')  %>
     <nav class="profile-nav">
       <ul class="nav nav-pills">
         <li class="current"><%= link_to "Timeline", user_profile_path(@user) %></li>

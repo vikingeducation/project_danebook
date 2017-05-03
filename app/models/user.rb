@@ -9,8 +9,6 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :comment_likes, dependent: :destroy
   has_many :photos
-  has_attached_file :avatar, styles: {thumb: '128x128>', medium: '170x170>', tiny: '36x36'}
-  validates_attachment_content_type :avatar, :content_type => /\Aimage\/.*\Z/, if: -> { avatar.present?}
 
   #  self join for friendship
   has_many :initiated_friendships, class_name: 'Friendship', foreign_key: :friender_id, dependent: :destroy
@@ -24,6 +22,15 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :profile
   validates_associated :profile
 
+  def cover_photo(size=:original)
+    return self.profile.cover.image.url(size) if self.profile.cover
+  end
+
+  def avatar(size)
+    return self.profile.avatar.image.url(size) if self.profile.avatar
+  end
+
+
   def first_name
     profile.first_name
   end
@@ -33,7 +40,6 @@ class User < ApplicationRecord
     friendship = user.initiated_friendships.find_by(friendee_id: self.id)
     return friendship.rejected if friendship.present?
     return 'received' if user.friend_requests.present?
-
     return 'create'
   end
 

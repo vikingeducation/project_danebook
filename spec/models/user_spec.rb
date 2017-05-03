@@ -73,6 +73,7 @@ describe User do
       end
     end
   end
+
   context 'associations' do
     it 'responds to posts associations' do
       expect(user).to respond_to(:posts)

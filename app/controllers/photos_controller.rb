@@ -1,6 +1,6 @@
 class PhotosController < ApplicationController
   before_action :set_user, only: [:index, :new, :create]
-  skip_before_action :authenticate_user!, only: [:new, :create, :show]
+  skip_before_action :authenticate_user!, only: [:new, :index, :show, :create]
 
   def index
     @photos = @user.photos
@@ -26,6 +26,7 @@ class PhotosController < ApplicationController
   def show
     @photo = Photo.find(params[:id])
     @user = @photo.user
+    return redirect_to user_photos_path(@user) unless @user.friendees.include?(current_user) || is_self?
     @comment = @photo.comments.build
   end
 
@@ -53,5 +54,6 @@ class PhotosController < ApplicationController
       params.require(:photo).permit(:image, :user_id)
     end
   end
+
 
 end

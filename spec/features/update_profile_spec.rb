@@ -1,11 +1,11 @@
 require 'rails_helper'
 
 feature 'Update User Profile' do
-  let(:user){ create(:profile)}
+  let(:user){ create(:user, :with_profile)}
   context 'logged in' do
     before do
       visit root_path
-      log_in(user.user)
+      log_in(user)
       click_link 'Edit Profile'
     end
     scenario 'clicking "edit profile" takes user to edit profile page' do

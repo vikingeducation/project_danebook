@@ -48,9 +48,16 @@ FactoryGirl.define do
     telephone { Faker::PhoneNumber.phone_number }
     quote { Faker::Hacker.say_something_smart }
     about { Faker::Hipster.sentence(3) }
+    association :avatar, factory: :photo
+    association :cover, factory: :photo
     user
+
     trait :male do
       sex 'male'
+    end
+    trait :without_images do
+      avatar_id nil
+      cover_id nil
     end
   end
 

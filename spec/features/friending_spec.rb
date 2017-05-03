@@ -1,17 +1,16 @@
 require 'rails_helper'
-require 'pry'
 
 feature 'Friending' do
-  let(:users){ create_list(:profile, 3)}
+  let(:users){ create_list(:user, 3, :with_profile)}
   let(:user){ create(:user, :with_profile)}
   let(:friend){ create(:user, :with_profile)}
   let(:friend_invite){ create(:friendship, friender_id: friend.id, friendee_id: user.id)}
-  before do
-    users
-  end
   context 'signed out' do
+    before do
+      users
+    end
     scenario 'cannot add friend' do
-      visit user_about_path(User.first)
+      visit user_about_path(users.first)
       click_link 'Add Friend'
       expect(page).to have_content('Connect with all your friends!')
     end

@@ -24,7 +24,7 @@ module Reusable
       when self.likes_count == 2
         msg += ' and ' + remaining_likes.first.user.full_name + 'like this'
       when self.likes_count == 3
-        msg += ', ' + remaining_likes.first.user.full_name + ' ' + 'and' + remaining_likes.second.user.full_name + ' like this'
+        msg += ', ' + remaining_likes.first.user.full_name + ' ' + 'and ' + remaining_likes.second.user.full_name + ' like this'
       when self.likes_count > 3
         msg += ', ' + remaining_likes.first.user.full_name + ' and ' + (self.likes_count - 3).to_s + ' others like this'
       end

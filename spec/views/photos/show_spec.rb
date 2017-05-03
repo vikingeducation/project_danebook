@@ -20,6 +20,12 @@ describe 'photos/show.html.erb' do
     render
     expect(rendered).to have_link(user.full_name)
   end
+  it 'does not show action buttons' do
+    render
+    expect(rendered).not_to have_link('Set as Profile')
+    expect(rendered).not_to have_link('Set as Cover')
+    expect(rendered).not_to have_link('Delete Photo')
+  end
   context 'logged in and current user' do
     before do
       assign(:user, friend)
@@ -31,8 +37,14 @@ describe 'photos/show.html.erb' do
         true
       end
     end
-    it 'has action buttons' do
-
+    it 'does not show action buttons on friend\'s photo page' do
+      render
+      expect(rendered).not_to have_link('Set as Profile')
+      expect(rendered).not_to have_link('Set as Cover')
+      expect(rendered).not_to have_link('Delete Photo')
+    end
+    it 'shows action buttons on own photo page' do
+      assign(:user, user)
       render
       expect(rendered).to have_link('Set as Profile')
       expect(rendered).to have_link('Set as Cover')

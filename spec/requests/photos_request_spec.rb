@@ -7,6 +7,34 @@ describe 'PhotosRequests' do
   let(:photo_upload){ post user_photos_path(user), params: { photo: { image: image}} }
   let(:friend_photo){ create(:photo, user: friend)}
   let(:photo){ create(:photo, user: user)}
+
+
+  describe 'POST #create' do
+    it 'redirects user if not logged in' do
+      user
+      expect{ photo_upload }.not_to change(Photo, :count)
+      expect(response).to redirect_to user_photos_path(user)
+    end
+    context 'logged in' do
+      before do
+        login_as(user, scope: :user)
+      end
+      it 'creates a new photo' do
+        expect{ photo_upload }.to change(Photo, :count).by(1)
+      end
+      it 'redirects user to all their photos' do
+        photo_upload
+        expect(response).to redirect_to user_photos_path(user)
+      end
+      it 'redirects to upload path if upload fails' do
+        post user_photos_path(user)
+        expect(response).to redirect_to upload_user_photos_path(user)
+        expect(flash[:error]).not_to be_nil
+      end
+
+    end
+  end
+
   describe 'GET #new' do
     it 'redirects to photos index if not logged in' do
       get upload_user_photos_path(user)
@@ -31,36 +59,20 @@ describe 'PhotosRequests' do
     end
   end
 
-  describe 'POST #create' do
-    it 'redirects user if not logged in' do
-      expect{ post user_photos_path(user) }.not_to change(Photo, :count)
-      expect(response).to redirect_to user_photos_path(user)
+
+  describe 'GET #show' do
+    it 'requires login' do
+      get photo_path(photo)
+      expect(response).to have_http_status(302)
     end
     context 'logged in' do
       before do
         login_as(user, scope: :user)
       end
-      it 'creates a new photo' do
-        expect{ photo_upload }.to change(Photo, :count).by(1)
+      it 'only friends can view' do
+        get photo_path(friend_photo)
+        expect(response).to have_http_status(302)
       end
-      it 'redirects user to all their photos' do
-        photo_upload
-        expect(response).to redirect_to user_photos_path(user)
-      end
-      it 'redirects to upload path if upload fails' do
-        post user_photos_path(user)
-        expect(response).to redirect_to upload_user_photos_path(user)
-        expect(flash[:error]).not_to be_nil
-      end
-
-    end
-  end
-
-  describe 'GET #show' do
-    it 'loads for logged out user' do
-      create(:photo, user: user)
-      get photo_path(Photo.first)
-      expect(response).to have_http_status(200)
     end
   end
 

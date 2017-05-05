@@ -36,6 +36,9 @@ gem 'devise'
 gem 'paperclip'
 gem 'aws-sdk'
 gem 'figaro'
+gem 'delayed_job_active_record'
+gem 'daemons'
+
 
 group :production do
   gem 'pg'
@@ -69,6 +72,7 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'guard-rspec', require: false
+  gem 'letter_opener'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

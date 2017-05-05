@@ -8,6 +8,8 @@ Rails.application.configure do
   Paperclip::Attachment.default_options[:path] = "#{Rails.root}/spec/test_files/:class/:id_partition/:style.:extension"
 
 
+  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
   config.cache_classes = true
 
   # Do not eager load code on boot. This avoids loading your whole application

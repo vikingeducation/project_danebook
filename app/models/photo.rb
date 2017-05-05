@@ -3,13 +3,15 @@ class Photo < ApplicationRecord
   belongs_to :user
   has_many :comments, as: :commentable, dependent: :destroy
   has_attached_file :image,
-    styles: { medium: '300x300', avatar: '150x150#', cover: '900x300', thumb: '36x36', small: '200x150'},
+    styles: {  small: '200x150'},
     default_url: ':style_missing.png'
   has_many :likes, as: :likeable, dependent: :destroy
   has_many :likers, through: :likes, source: :user
 
-  validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
-  validates :image, presence: true
+  validates_attachment :image,
+    presence: true,
+    content_type: { content_type: /\Aimage\/.*\Z/},
+    size: { in: 0..3.megabytes}
 
   include Reusable
 

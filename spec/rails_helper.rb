@@ -38,6 +38,7 @@ RSpec.configure do |config|
   config.include PostMacros
   config.include Warden::Test::Helpers
   config.include ActionDispatch::TestProcess::FixtureFile
+  config.include ActiveJob::TestHelper
 
   config.before :suite do
     Warden.test_mode!

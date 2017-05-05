@@ -1,12 +1,15 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  # Letter Opener
+  config.action_mailer.delivery_method = :letter_opener
+
+
+
   # Paperclip Amazon S3
   Paperclip.options[:command_path] = "/usr/local/bin"
 
-
   config.paperclip_defaults = {
-
     # Don't forget to make S3 your storage option!
     :storage => :s3,
 
@@ -78,6 +81,10 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+  # ActionMailer add asset host
+  config.action_mailer.asset_host = ':s3_domain_url'
+  config.action_controller.asset_host = 'http://s3.com'
 
   # Bullet Gem
   config.after_initialize do

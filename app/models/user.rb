@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+  after_create :queue_welcome_email
+
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable
   has_one :profile, inverse_of: :user, dependent: :destroy
@@ -22,12 +24,16 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :profile
   validates_associated :profile
 
-  def cover_photo(size=:original)
-    return self.profile.cover.image.url(size) if self.profile.cover
+  def cover(size=:medium)
+    self.profile.cover.url(size)
   end
 
-  def avatar(size)
-    return self.profile.avatar.image.url(size) if self.profile.avatar
+  def avatar(size=:medium)
+    self.profile.avatar.url(size)
+  end
+
+  def self.recommended_friends(user)
+    User.limit(5).order('random()').where('id != ?', user.id)
   end
 
 
@@ -53,6 +59,12 @@ class User < ApplicationRecord
 
   def birthday
     self.profile.birthday
+  end
+
+  private
+
+  def queue_welcome_email
+    UserMailer.welcome(self).deliver_later
   end
 
 

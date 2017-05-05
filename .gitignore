@@ -26,3 +26,6 @@ tasks.md
 
 # Ignore application configuration
 /config/application.yml
+
+# Ignore test files
+/spec/test_files/*

@@ -1,5 +1,4 @@
 class UserMailer < ApplicationMailer
-  require 'open-uri'
 
   default from: 'no-reply@danebook.com'
 
@@ -7,6 +6,13 @@ class UserMailer < ApplicationMailer
     @user = user
     @friends = User.recommended_friends(@user)
     mail(to: @user.email, subject: 'Welcome to Danebook!')
+  end
+
+  def comment_notification(comment)
+    @comment = comment
+    @commenter = @comment.user
+    @recipient = @comment.commentable.user
+    mail(to: @recipient.email, subject: "New Comment from #{@commenter.full_name}")
   end
 
 end

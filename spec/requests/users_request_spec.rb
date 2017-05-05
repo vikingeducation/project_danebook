@@ -3,7 +3,13 @@ require 'pry'
 
 describe 'UsersRequests' do
   let(:user){ create(:profile).user }
-  describe 'POST #create'
+  let(:create_user){ post user_registration_path(user), params: {user: attributes_for(:user, profile_attributes: attributes_for(:profile))}}
+  describe 'POST #create' do
+    it 'creates a new user' do
+      expect{create_user}.to change(User, :count).by(1)
+    end
+
+  end
   describe 'PUT #update' do
     context 'logged out' do
       it 'cannot update' do

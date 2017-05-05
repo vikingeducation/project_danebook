@@ -11,5 +11,8 @@ module Danebook
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
+    config.active_job.queue_adapter = :delayed_job
+    # config.action_mailer.asset_host = ':s3_domain_url'
+
   end
 end

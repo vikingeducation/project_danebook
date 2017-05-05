@@ -1,0 +1,3 @@
+<h1>Welcome to Danebook!</h1>
+<p>Hi <%= @user.first_name %>, welcome to Danebook!</p>
+<p>View your account at <%= link_to "#{user_url(@user.id)}", user_profile_url(@user.id) %></p>

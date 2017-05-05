@@ -30,6 +30,7 @@ describe User do
     copycat = build(:user, email: 'a@a.com')
     expect(copycat).to be_invalid
   end
+
   context 'instance methods' do
     let(:user){ create(:user, :with_profile)}
     let(:friend){ create(:user, :with_profile)}
@@ -89,6 +90,13 @@ describe User do
     end
     it 'responds to initiated_friendships' do
       expect(user).to respond_to (:initiated_friendships)
+    end
+  end
+
+  context 'emails' do
+    let(:queue){ ActiveJob::Base.queue_adapter.enqueued_jobs }
+    it 'queues a welcome email on creation' do
+      expect{ create(:user)}.to change(queue , :count).by(1)
     end
   end
 

@@ -1,18 +1,21 @@
 require 'rails_helper'
 
 feature 'Registration' do
-  let(:user){ create(:profile)}
+  let(:user){ {:first_name => 'A', :last_name => 'B', :password => 'foobarfoobar'} }
   before do
+
     visit root_path
   end
   context 'with valid inputs' do
+    after do
+      ActiveJob::Base.queue_adapter.enqueued_jobs.clear
+    end
     scenario 'can register when inputs are valid' do
-      sign_up(user)
-      expect{ click_button "Sign up" }.to change(User, :count).by(1)
+      expect{ sign_up(user) }.to change(User, :count).by(1)
     end
     scenario 'displays welcome message' do
       sign_up(user)
-      expect(page).not_to have_content "Success! Welcome to Danebook"
+      expect(page).to have_content "Success! Welcome to Danebook,"
     end
   end
   context 'with invalid inputs' do

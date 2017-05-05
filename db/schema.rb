@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170503032533) do
+ActiveRecord::Schema.define(version: 20170505021349) do
 
   create_table "comment_likes", force: :cascade do |t|
     t.integer  "user_id"
@@ -32,6 +32,21 @@ ActiveRecord::Schema.define(version: 20170503032533) do
     t.integer  "commentable_id"
     t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "delayed_jobs", force: :cascade do |t|
+    t.integer  "priority",   default: 0, null: false
+    t.integer  "attempts",   default: 0, null: false
+    t.text     "handler",                null: false
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.string   "queue"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["priority", "run_at"], name: "delayed_jobs_priority"
   end
 
   create_table "friendships", force: :cascade do |t|
@@ -80,8 +95,8 @@ ActiveRecord::Schema.define(version: 20170503032533) do
     t.string   "sex"
     t.date     "birthdate"
     t.integer  "user_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
     t.string   "college"
     t.string   "hometown"
     t.string   "current_city"
@@ -90,6 +105,14 @@ ActiveRecord::Schema.define(version: 20170503032533) do
     t.text     "about"
     t.integer  "cover_id"
     t.integer  "avatar_id"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
+    t.string   "cover_file_name"
+    t.string   "cover_content_type"
+    t.integer  "cover_file_size"
+    t.datetime "cover_updated_at"
     t.index ["avatar_id"], name: "index_profiles_on_avatar_id"
     t.index ["cover_id"], name: "index_profiles_on_cover_id"
     t.index ["user_id"], name: "index_profiles_on_user_id"

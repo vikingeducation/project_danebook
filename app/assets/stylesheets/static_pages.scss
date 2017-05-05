@@ -435,6 +435,14 @@ $light-gray: #f9f9f9;
     padding: 0;
   }
 
+  /* NEWSFEED */
+  .newsfeed-sidebar {
+    .media-object.small {
+      width:50px;
+      height:50px;
+    } 
+  }
+
   /* MISSING BOOTSTRAP CLASS?! */
   .media-body, .media-left, .media-right {
         display: table-cell;

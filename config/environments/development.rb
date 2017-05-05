@@ -84,10 +84,6 @@ Rails.application.configure do
   config.action_mailer.asset_host = 'http://localhost:3000'
 
 
-  # ActionMailer add asset host
-  config.action_mailer.asset_host = ':s3_domain_url'
-  config.action_controller.asset_host = 'http://s3.com'
-
   # Bullet Gem
   config.after_initialize do
     Bullet.enable = true

@@ -27,4 +27,5 @@ feature 'Authentication' do
     log_in(create(:profile).user)
     expect(page).to have_selector('.timeline-sidebar')
   end
+
 end

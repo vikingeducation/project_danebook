@@ -4,6 +4,9 @@ Rails.application.routes.draw do
     # sessions: 'users/sessions',
     registrations: 'users'
   }
+  authenticated :user do
+    root 'users#index'
+  end
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
@@ -14,6 +17,8 @@ Rails.application.routes.draw do
   get 'photos', to: 'static_pages#photos', as: 'photos'
   get 'about', to: 'static_pages#about', as: 'about'
   get 'about_edit', to: 'static_pages#about_edit', as: 'about_edit'
+  # get 'newsfeed', to: 'newsfeed#show'
+  get 'newsfeed' => 'users#index'
   resources :users,  only: [:new, :create, :update, :edit ] do
     get 'about' => 'users#show'
     get 'profile' => 'posts#index'

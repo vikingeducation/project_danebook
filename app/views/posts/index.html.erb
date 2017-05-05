@@ -7,8 +7,8 @@
   </aside>
   <div class="col-sm-8">
     <section class="timeline-feed">
-      <%= render 'post_form' %>
-      <%= render partial: 'post', collection: @posts, as: :post %>
+      <%= render partial: 'shared/post_form', locals: { user: @user, post: @post} %>
+      <%= render partial: 'shared/post', collection: @posts, as: :post %>
     </section>
   </div>
 </section>

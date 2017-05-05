@@ -3,7 +3,7 @@ class PostsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index]
 
   def index
-    @user = User.find(params[:user_id])
+    @user =  params[:user_id] ? User.find(params[:user_id]) : current_user
     @posts = @user.posts.order('created_at DESC')
     @post = @user.posts.build
   end

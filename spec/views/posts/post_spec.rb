@@ -15,13 +15,13 @@ describe 'posts/_post.html.erb' do
   end
   it 'displays the total number of likes' do
     popular_post
-    render partial: 'post', locals: {post: popular_post}
+    render partial: 'shared/post', locals: {post: popular_post}
     expect(rendered).to have_content('5 likes')
   end
   it 'displays the first few names of those who liked the post' do
     post.likers << [user, friend]
     post.reload
-    render partial: 'post', locals: {post: post}
+    render partial: 'shared/post', locals: {post: post}
     expect(rendered).to have_content(friend.first_name)
     expect(rendered).to have_content(user.first_name)
   end
@@ -38,7 +38,7 @@ describe 'posts/_post.html.erb' do
     it 'displays the unlike link if post is liked by user' do
       post.likers << [user, friend]
       post.reload
-      render partial: 'post', locals: {post: post}
+      render partial: 'shared/post', locals: {post: post}
       expect(rendered).to have_content("You and #{friend.full_name}")
     end
   end

@@ -3,6 +3,9 @@ require 'rails_helper'
 describe Comment do
   let(:comment){ create(:comment, :for_post)}
   let(:like){ create(:comment_like, comment: comment)}
+  let(:user){ create(:user, :with_profile)}
+  let(:friend){ create(:user ,:with_profile)}
+  let(:posting){ create(:post, user: user)}
   context 'validations' do
     it 'is invalid without body' do
       comment.body = nil
@@ -30,7 +33,20 @@ describe Comment do
     it 'responds to comment_likes' do
       expect(comment).to respond_to(:comment_likes)
     end
-
+  end
+  context 'callbacks' do
+    describe 'notification emails' do
+      before do
+        posting
+        friend
+      end
+      it 'queues a notification email if comment created by friend' do
+        expect{create(:comment, user: friend, commentable: posting)}.to change(ActiveJob::Base.queue_adapter.enqueued_jobs, :count).by(1)
+      end
+      it 'does not queue a notification email if comment created by self' do
+        expect{ create(:comment, user: user, commentable: posting)}.not_to change(ActiveJob::Base.queue_adapter.enqueued_jobs, :count)
+      end
+    end
   end
 
 end

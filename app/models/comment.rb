@@ -3,6 +3,8 @@ class Comment < ApplicationRecord
   belongs_to :user
   has_many :comment_likes, dependent: :destroy
   validates :body, presence: true
+  validates :user, presence: true
+  after_create :queue_notification_email, unless: Proc.new{ self.user_id == self.commentable.user_id }
 
   include Reusable
 
@@ -30,6 +32,12 @@ class Comment < ApplicationRecord
       msg += self.comment_likes_count.to_s + ' likes'.pluralize(self.comment_likes_count) if self.comment_likes_count > 0
     end
     msg
+  end
+
+  private
+
+  def queue_notification_email
+    UserMailer.comment_notification(self).deliver_later
   end
 
 

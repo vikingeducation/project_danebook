@@ -93,7 +93,9 @@ FactoryGirl.define do
       after(:create) do |post, evaluator|
         create_list(:like, evaluator.likes_count, :for_post, likeable: post)
       end
+
     end
+
   end
   factory :like do
     user
@@ -101,6 +103,7 @@ FactoryGirl.define do
       association :likeable, factory: :post
     end
   end
+
   factory :comment do
     body Faker::Hacker.say_something_smart
     user

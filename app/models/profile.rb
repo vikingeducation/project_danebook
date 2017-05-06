@@ -7,11 +7,11 @@ class Profile < ApplicationRecord
 
   has_attached_file :avatar,
     styles: { medium: '300x300#', thumb: '26x36', small: '150x150#' },
-    default_url: 'avatar_missing.png'
+    default_url: 'http://yxlau-danebook.s3.amazonaws.com/defaults/avatar_missing.png'
 
   has_attached_file :cover,
     styles: { medium: '900x300'},
-    default_url: 'cover_missing.png'
+    default_url: 'http://yxlau-danebook.s3.amazonaws.com/defaults/cover_missing.png'
 
   validates_attachment :cover,
     content_type: { content_type: /\Aimage\/.*\Z/},

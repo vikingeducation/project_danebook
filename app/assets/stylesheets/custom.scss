@@ -95,7 +95,7 @@ $light-gray: #f9f9f9;
     vertical-align: bottom;
   }
   .navbar-form .btn {
-    height: 26px;
+    vertical-align: bottom;
   }
 
   /* MAIN */
@@ -113,11 +113,9 @@ $light-gray: #f9f9f9;
   /* BUTTON MOD */
   .btn.btn-action {
     background-color: #9FC5F8;
-    border: 0;
+    border: 1px solid #9FC5F8;
   }
-  .btn {
-    border-radius: 0;
-  }
+
 
   /* MEDIA QUERIES */
   @media screen and (max-width:991px) {
@@ -139,7 +137,6 @@ $light-gray: #f9f9f9;
   /* NAVBAR */
   &.navbar {
     background-color: $brand-color;
-    border-radius: 0;
     border: 0;
   }
   .navbar-logo {
@@ -428,9 +425,7 @@ $light-gray: #f9f9f9;
   a:hover {
     text-decoration: none;
   }
-  .btn {
-    border-radius: 0;
-  }
+
   .container {
     max-width: 900px;
   }

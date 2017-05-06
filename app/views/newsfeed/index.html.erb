@@ -3,7 +3,7 @@
     <div class="media">
       <div class="media-left">
         <%= link_to user_profile_path(@user) do %>
-          <%= image_tag @user.avatar(:thumbnail), class: 'media-object small', alt: "Avatar for #{@user.full_name}" %>
+          <%= image_tag @user.avatar(:thumb), class: 'media-object small', alt: "Avatar for #{@user.full_name}" %>
         <% end %>
       </div>
       <div class="media-body">

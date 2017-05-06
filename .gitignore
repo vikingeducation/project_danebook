@@ -29,3 +29,5 @@ tasks.md
 
 # Ignore test files
 /spec/test_files/*
+
+# Ignore these since we don't want to push them to heroku

@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe "users/show.html.erb" do
-  let(:user){ create(:profile).user}
+  let(:user){ create(:user, :with_profile) }
   context 'logged in' do
     before do
       assign(:user, user)
@@ -17,12 +17,12 @@ describe "users/show.html.erb" do
       expect(rendered).to have_text('Edit Your Profile')
     end
     it 'cannot see button to edit profile if is not current user' do
-      @not_current = create(:profile).user
-      @user = create(:profile).user
+      @not_current = create(:user, :with_profile)
+      @user = create(:user, :with_profile)
       def view.current_user
         @not_current
       end
-      assign(:user, create(:profile).user)
+      assign(:user, create(:user, :with_profile))
       render
       expect(rendered).not_to have_text('Edit Your Profile')
     end

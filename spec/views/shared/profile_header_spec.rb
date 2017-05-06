@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'shared/_profile_header.html.erb' do
-  let(:user){ create(:profile).user }
+  let(:user){ create(:user, :with_profile) }
 
   before do
     def view.current_user

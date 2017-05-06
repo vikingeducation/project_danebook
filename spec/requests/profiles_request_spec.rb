@@ -2,7 +2,7 @@ require 'rails_helper'
 require 'pry'
 
 describe 'ProfilesRequest' do
-  let(:user){ create(:profile).user }
+  let(:user){ create(:user, :with_profile) }
   let(:profile_atts){ attributes_for(:profile, id: user.profile.id, quote: 'This is a quote')}
   context 'logged_in' do
     before do

@@ -6,6 +6,7 @@ feature 'Update User Profile' do
     before do
       visit root_path
       log_in(user)
+      visit user_profile_path(user)
       click_link 'Edit Profile'
     end
     scenario 'clicking "edit profile" takes user to edit profile page' do

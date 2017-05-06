@@ -46,6 +46,13 @@ $light-gray: #f9f9f9;
   }
 }
 
+/* NAVBAR SIGN UP */
+.navbar.sign-up {
+  .btn {
+    margin-top: 1em;
+  }
+}
+
   /* MAIN */
 
   /* compensate for fixed navbar */
@@ -59,7 +66,7 @@ $light-gray: #f9f9f9;
     color: #fff;
     font-size: 36px;
   }
- &.navbar-brand:hover {
+ &.navbar-default .navbar-brand:hover, &.navbar-default .navbar-brand:focus {
     color: #fff;
   }
   &.navbar {
@@ -168,6 +175,11 @@ $light-gray: #f9f9f9;
   }
 }
 
+/* DEDICATED LOG IN PAGE */
+.login-box {
+  max-width:500px;
+  margin: 0 auto;
+}
 
     /* FRIEND GRID */
   .friend-grid {
@@ -442,6 +454,11 @@ $light-gray: #f9f9f9;
       height:50px;
     } 
   }
+  .friend-feed {
+    .media {
+      padding-left:0
+    }
+  }
 
   /* MISSING BOOTSTRAP CLASS?! */
   .media-body, .media-left, .media-right {
@@ -467,6 +484,9 @@ $light-gray: #f9f9f9;
 
 
    /* HELPER CLASS */
+   .text-bold {
+    font-weight: bold;
+   }
    .text-light {
     color: #999;
    }

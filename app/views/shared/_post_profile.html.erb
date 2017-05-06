@@ -1,0 +1,9 @@
+<header class="media col-xs-12">
+  <div class="media-left">
+    <%= link_to image_tag(post.user.avatar(:thumb), class: 'img-thumbnail media-object', alt: 'Missing Avatar'), user_profile_path(post.user) %>
+  </div>
+  <div class="media-body">
+    <h5 class="media-heading"><%= link_to post.user.full_name, user_profile_path(post.user) %></h5>
+    <p class="small text-muted"><%= post.date %></p>
+  </div>
+</header>

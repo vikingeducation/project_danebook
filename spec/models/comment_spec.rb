@@ -23,15 +23,15 @@ describe Comment do
   context '#liked_by?' do
     it 'correctly tells us if comment is liked by a user' do
       user = create(:user, id: 77)
-      like = create(:comment_like, user_id: 77, comment: comment)
-      comment.comment_likes << like
+      like = create(:like, user_id: 77, likeable: comment)
+      comment.likes << like
       expect(comment.liked_by?(77)).to eq(true)
       expect(comment.liked_by?(5)).to eq(false)
     end
   end
   context 'associations' do
     it 'responds to comment_likes' do
-      expect(comment).to respond_to(:comment_likes)
+      expect(comment).to respond_to(:likes)
     end
   end
   context 'callbacks' do

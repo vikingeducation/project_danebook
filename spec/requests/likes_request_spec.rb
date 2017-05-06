@@ -2,7 +2,7 @@ require 'rails_helper'
 require 'pry'
 
 describe 'LikesRequests' do
-  let(:user){ create(:profile).user }
+  let(:user){ create(:user, :with_profile) }
   let(:posting){ create(:post)}
   let(:like){ create(:like, :for_post, likeable: posting, user: user)}
   describe 'POST #create' do

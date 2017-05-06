@@ -11,13 +11,14 @@ class PostsController < ApplicationController
   def create
     @user = User.find(params[:user_id])
     @post = @user.posts.build(post_params)
+    fallback = request.origin == root_path ? root_path : user_profile_path(@user)
     if is_self?
       if @post.save
         flash[:success] = "Yay! Posted."
-        redirect_to user_profile_path(@user)
+        redirect_back(fallback_location: fallback)
       else
         flash[:error] = "Sorry, but you can't post nothing."
-        render :index
+        redirect_back(fallback_location: fallback)
       end
     else
       flash[:error] = "Sorry, you can only post on your own timeline for now"

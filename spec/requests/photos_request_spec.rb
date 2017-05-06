@@ -81,7 +81,7 @@ describe 'PhotosRequests' do
     it 'requires current user' do
       friend_photo
       expect{ delete photo_path(friend_photo) }.not_to change(Photo, :count)
-      expect(response).to redirect_to new_user_path
+      expect(response).to redirect_to new_user_session_path
     end
 
     context 'logged in' do

@@ -11,7 +11,7 @@ describe 'FriendshipsRequest', type: :request do
     it 'requires logged in user' do
       send_friend_request
       expect(flash[:error]).not_to be_nil
-      expect(response).to redirect_to new_user_path
+      expect(response).to redirect_to new_user_session_path
     end
 
     context 'logged in' do
@@ -33,7 +33,7 @@ describe 'FriendshipsRequest', type: :request do
   describe 'PATCH #accept' do
     it 'requires logged in user' do
       patch accept_friend_path(friend)
-      expect(response).to redirect_to new_user_path
+      expect(response).to redirect_to new_user_session_path
     end
     context 'logged in' do
       before do
@@ -56,7 +56,7 @@ describe 'FriendshipsRequest', type: :request do
   describe 'PATCH #reject' do
     it 'requires logged in user' do
       patch reject_friend_path(friend)
-      expect(response).to redirect_to new_user_path
+      expect(response).to redirect_to new_user_session_path
     end
     context 'logged in' do
       before do
@@ -74,7 +74,7 @@ describe 'FriendshipsRequest', type: :request do
     it 'requires logged in user' do
       friend_request_sent
       patch cancel_friend_path(friend)
-      expect(response).to redirect_to new_user_path
+      expect(response).to redirect_to new_user_session_path
     end
     context 'logged in' do
       before do

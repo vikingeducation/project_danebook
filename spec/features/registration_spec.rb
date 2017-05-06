@@ -3,7 +3,6 @@ require 'rails_helper'
 feature 'Registration' do
   let(:user){ {:first_name => 'A', :last_name => 'B', :password => 'foobarfoobar'} }
   before do
-
     visit root_path
   end
   context 'with valid inputs' do

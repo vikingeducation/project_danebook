@@ -2,7 +2,7 @@ require 'rails_helper'
 require 'pry'
 
 describe 'UsersRequests' do
-  let(:user){ create(:profile).user }
+  let(:user){ create(:user, :with_profile) }
   let(:create_user){ post user_registration_path(user), params: {user: attributes_for(:user, profile_attributes: attributes_for(:profile))}}
   describe 'POST #create' do
     it 'creates a new user' do

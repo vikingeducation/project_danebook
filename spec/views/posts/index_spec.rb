@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'posts/index.html.erb' do
-  let(:user){ create(:profile).user }
+  let(:user){ create(:user, :with_profile) }
   let(:posting){ create(:post, user: user)}
   context 'logged out' do
     before do

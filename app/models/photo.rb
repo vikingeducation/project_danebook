@@ -7,6 +7,7 @@ class Photo < ApplicationRecord
     default_url: ':style_missing.png'
   has_many :likes, as: :likeable, dependent: :destroy
   has_many :likers, through: :likes, source: :user
+  validates :user, presence: true
 
   validates_attachment :image,
     presence: true,

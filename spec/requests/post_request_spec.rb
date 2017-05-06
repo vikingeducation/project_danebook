@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'PostsRequests' do
-  let(:user){ create(:profile).user}
+  let(:user){ create(:user, :with_profile)}
   def create_post(user)
     post user_posts_path(user), params: {post: attributes_for(:post, user: user)}
   end

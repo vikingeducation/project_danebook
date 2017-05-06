@@ -23,7 +23,7 @@ end
 puts 'Populating posts...'
 User.all.each do |u|
   rand(1..5).times do
-    u.posts.create(body: Faker::Hacker.say_something_smart)
+    u.posts.create(body: Faker::Hacker.say_something_smart, created_at: Faker::Date.between(5.months.ago, Date.today))
   end
 end
 
@@ -38,7 +38,7 @@ end
 puts 'Populating comment likes...'
 Comment.all.each do |co|
   rand(0..5).times do
-    co.likes.create(user_id: User.all.pluck(:id).sample )
+    co.likes.create(user_id: User.all.pluck(:id).sample, created_at: Faker::Date.between(5.months.ago, Date.today) )
   end
 end
 

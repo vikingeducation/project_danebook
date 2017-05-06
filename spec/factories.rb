@@ -37,10 +37,18 @@ FactoryGirl.define do
         create(:friendship, rejected: false, friendee_id: friend.id, friender_id: user.id)
       end
     end
+    trait :with_friends do
+      transient do
+        friend_count 3
+      end
+      after(:create) do |u, evaluator|
+        friends = create_list(:friend, evaluator.friend_count, :with_profile)
+        u.friendees << friends
+      end
+    end
   end
 
   factory :profile do
-
     sex 'female'
     birthdate { Faker::Date.birthday(13,99)}
     college { Faker::University.name }
@@ -50,7 +58,7 @@ FactoryGirl.define do
     quote { Faker::Hacker.say_something_smart }
     about { Faker::Hipster.sentence(3) }
     trait :with_user do
-      association :user
+      user
     end
     trait :with_images do
       association :avatar, factory: :photo
@@ -103,6 +111,9 @@ FactoryGirl.define do
     trait :for_post do
       association :likeable, factory: :post
     end
+    trait :for_comment do
+      association :likeable, factory: :comment
+    end
   end
 
   factory :comment do
@@ -119,11 +130,6 @@ FactoryGirl.define do
 
   end
 
-
-  factory :comment_like do
-    comment
-    user
-  end
 
 
 end

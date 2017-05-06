@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe 'CommentsRequests' do
-  let(:user){ create(:profile).user}
+  let(:user){ create(:user, :with_profile)}
   let(:posting){ create(:post, user: user)}
   let(:comment){ create(:comment, :for_post)}
 
@@ -11,7 +11,7 @@ describe 'CommentsRequests' do
   describe 'POST #create' do
     it 'requires logged in user' do
       expect{ post post_comments_path(posting) }.not_to change(Comment, :count)
-      expect(response).to redirect_to new_user_path
+      expect(response).to redirect_to new_user_session_path
     end
     context 'logged in' do
       before do

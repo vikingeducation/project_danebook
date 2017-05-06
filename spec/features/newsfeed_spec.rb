@@ -16,6 +16,14 @@ feature 'Newsfeed Browsing' do
     it 'shows the newsfeed' do
       expect(page).to have_selector('.newsfeed-sidebar')
     end
+    it 'posting to newsfeed reloads page on success' do
+      within ('.post-form') do
+        fill_in 'post[body]', with: :'The quick brown fox'
+        click_button 'Post'
+      end
+      expect(page).to have_text('The quick brown fox')
+      expect(page).to have_selector('.newsfeed-sidebar')
+    end
   end
 
 end

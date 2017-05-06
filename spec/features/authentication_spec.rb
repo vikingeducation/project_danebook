@@ -7,8 +7,7 @@ feature 'Authentication' do
     visit root_path
     user.password = 'xxx'
     log_in(user)
-    click_button 'Sign in'
-    expect(page).to have_content('Connect with all your friends')
+    expect(page).to have_content('Log in to Danebook')
   end
   scenario 'can sign in with proper credentials' do
     visit root_path
@@ -17,15 +16,15 @@ feature 'Authentication' do
   end
   scenario 'can sign in from another page' do
     user
-    visit user_about_path(profile.user)
-    log_in(create(:profile).user)
+    visit user_about_path(user)
+    log_in(profile.user)
     expect(page).to have_content('Signed in successfully.')
   end
-  scenario 'successful sign ins redirects users to their timeline' do
+  scenario 'successful sign ins redirects users to their newsfeed' do
     user
     visit root_path
-    log_in(create(:profile).user)
-    expect(page).to have_selector('.timeline-sidebar')
+    log_in(profile.user)
+    expect(page).to have_selector('.newsfeed-sidebar')
   end
 
 end

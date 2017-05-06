@@ -3,7 +3,6 @@ class ProfilesController < ApplicationController
     @user = User.find(params[:user_id])
   end
 
-
   def update
     require 'open-uri'
     @photo = Photo.find(params[:id])

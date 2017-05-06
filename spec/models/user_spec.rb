@@ -30,6 +30,11 @@ describe User do
     copycat = build(:user, email: 'a@a.com')
     expect(copycat).to be_invalid
   end
+  it 'is invalid without first or last name' do
+    expect(build(:user, first_name: nil)).to be_invalid
+    expect(build(:user, last_name: nil)).to be_invalid
+    expect(build(:user, first_name: nil, last_name: nil)).to be_invalid
+  end
 
   context 'instance methods' do
     let(:user){ create(:user, :with_profile)}
@@ -41,9 +46,9 @@ describe User do
       user.friendees << friend
       f = Friendship.last.update(rejected: true)
     end
-    describe '#first_name' do
-      it 'returns a User\'s first name' do
-        expect(user.first_name).to eq(user.profile.first_name)
+    describe '#full_name' do
+      it 'returns a user\'s full name' do
+        expect(user.full_name).to eq(user.first_name + ' ' + user.last_name)
       end
     end
 

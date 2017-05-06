@@ -47,7 +47,7 @@ class UsersController < ApplicationController
 
   def user_params
     # TODO add birthdate
-    params.require(:user).permit(:email, :password, :password_confirmation, profile_attributes: [:id, :sex, :first_name, :last_name, :'birthdate(1i)', :'birthdate(2i)', :'birthdate(3i)'])
+    params.require(:user).permit(:email, :password, :password_confirmation, :first_name, :last_name, profile_attributes: [:id, :sex, :'birthdate(1i)', :'birthdate(2i)', :'birthdate(3i)'])
   end
 
   def profile_params

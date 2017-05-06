@@ -11,4 +11,4 @@
     </li>
   <% end %>
 </ul>
-<p>View your account at <%= link_to "#{user_url(@user.id)}", user_profile_url(@user.id) %></p>
+<p>View your account at <%= link_to user_profile_url(@user.id), user_profile_url(@user.id) %></p>

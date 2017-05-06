@@ -31,3 +31,4 @@ tasks.md
 /spec/test_files/*
 
 # Ignore these since we don't want to push them to heroku
+public/assets

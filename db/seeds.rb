@@ -6,6 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+# disable mailing
+ActionMailer::Base.perform_deliveries = false
+
 puts "Destroying existing records..."
 User.destroy_all
 
@@ -28,14 +31,14 @@ puts 'Populating comments and likes...'
 Post.all.each do |po|
   rand(1..5).times do
     po.likes.create(user_id: User.all.pluck(:id).sample, likeable_type: 'Post')
-    po.comments.create(user_id: User.all.pluck(:id).sample, body: Faker::Hacker.say_something_smart)
+    po.comments.create(user_id: User.all.pluck(:id).sample, body: Faker::Hacker.say_something_smart, created_at: Faker::Date.between(5.months.ago, Date.today))
   end
 end
 
 puts 'Populating comment likes...'
 Comment.all.each do |co|
   rand(0..5).times do
-    co.comment_likes.create(user_id: User.all.pluck(:id).sample)
+    co.likes.create(user_id: User.all.pluck(:id).sample )
   end
 end
 

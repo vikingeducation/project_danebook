@@ -10,24 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170505021349) do
-
-  create_table "comment_likes", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "comment_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["comment_id"], name: "index_comment_likes_on_comment_id"
-    t.index ["user_id", "comment_id"], name: "index_comment_likes_on_user_id_and_comment_id", unique: true
-    t.index ["user_id"], name: "index_comment_likes_on_user_id"
-  end
+ActiveRecord::Schema.define(version: 20170506020348) do
 
   create_table "comments", force: :cascade do |t|
-    t.text     "body",                            null: false
-    t.integer  "comment_likes_count", default: 0
-    t.integer  "user_id",                         null: false
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.text     "body",                         null: false
+    t.integer  "likes_count",      default: 0
+    t.integer  "user_id",                      null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.string   "commentable_type"
     t.integer  "commentable_id"
     t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id"
@@ -103,8 +93,6 @@ ActiveRecord::Schema.define(version: 20170505021349) do
     t.string   "telephone"
     t.string   "quote"
     t.text     "about"
-    t.integer  "cover_id"
-    t.integer  "avatar_id"
     t.string   "avatar_file_name"
     t.string   "avatar_content_type"
     t.integer  "avatar_file_size"
@@ -113,8 +101,6 @@ ActiveRecord::Schema.define(version: 20170505021349) do
     t.string   "cover_content_type"
     t.integer  "cover_file_size"
     t.datetime "cover_updated_at"
-    t.index ["avatar_id"], name: "index_profiles_on_avatar_id"
-    t.index ["cover_id"], name: "index_profiles_on_cover_id"
     t.index ["user_id"], name: "index_profiles_on_user_id"
   end
 

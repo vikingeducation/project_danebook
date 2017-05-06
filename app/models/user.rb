@@ -9,7 +9,7 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
-  has_many :comment_likes, dependent: :destroy
+  has_many :comment_likes, through: :comments, source: :likes, dependent: :destroy
   has_many :photos
 
   #  self join for friendship

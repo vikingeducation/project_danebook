@@ -12,8 +12,8 @@ describe CommentLike do
   end
   context 'associations' do
     it 'automatically updates like counts on parent ' do
-      expect{ create_list(:comment_like, 2, comment: comment)}.to change(comment, :comment_likes_count).by(2)
-      expect{ comment.comment_likes.destroy_all}.to change(comment, :comment_likes_count).by(-2)
+      expect{ create_list(:comment_like, 2, comment: comment)}.to change(comment, :likes_count).by(2)
+      expect{ comment.comment_likes.destroy_all}.to change(comment, :likes_count).by(-2)
     end
   end
 end

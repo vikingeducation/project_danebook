@@ -17,7 +17,7 @@ describe Comment do
     end
   end
   it 'likes count is zero by default' do
-    expect(comment.comment_likes_count).to eq(0)
+    expect(comment.likes_count).to eq(0)
   end
 
   context '#liked_by?' do

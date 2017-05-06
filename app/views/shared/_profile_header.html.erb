@@ -1,6 +1,6 @@
 <header class="row">
   <div class="profile-top col-xs-12">
-    <div class="profile-cover" style="background-image: url('<%= @user.cover %>')">
+    <div class="profile-cover" style="background-image: url('<%= asset_url(@user.cover) %>')">
     </div>
     <div class="profile-text">
       <h2 class="profile-name"><%= @user.full_name %></h2>

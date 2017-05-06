@@ -22,7 +22,7 @@
     </div>
   </footer>
   <div class="post-comments col-xs-12 post-footer">
-    <%= render partial: 'shared/comment', collection: post.comments.includes(user: [:profile]), as: :comment %>
+    <%= render partial: 'shared/comment', collection: post.comments.includes(:user), as: :comment %>
   </div>
   <%= render partial: 'shared/comment_form', locals: { post: post, comment: post.comments.build}  %>
 </article>

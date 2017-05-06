@@ -21,6 +21,7 @@ class User < ApplicationRecord
 
   validates :email, presence: true, uniqueness: true, length: { minimum: 6}, on: [:create]
   validates :password, :password_confirmation, presence: true, length: {minimum: 12 }, on: :create
+  validates :first_name, :last_name, presence: true
   accepts_nested_attributes_for :profile
   validates_associated :profile
 
@@ -37,10 +38,6 @@ class User < ApplicationRecord
   end
 
 
-  def first_name
-    profile.first_name
-  end
-
   def friendship_status(user)
     return nil unless user
     friendship = user.initiated_friendships.find_by(friendee_id: self.id)
@@ -54,7 +51,7 @@ class User < ApplicationRecord
   end
 
   def full_name
-    profile.first_name + ' ' + profile.last_name
+    self.first_name + ' ' + self.last_name
   end
 
   def birthday

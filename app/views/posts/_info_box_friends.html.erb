@@ -6,7 +6,7 @@
     <% if friends.empty?  %>
       <p class="text-center">This user has no friends yet</p>
     <% else %>
-      <%=  render partial: 'friend', collection: friends.includes(:profile), as: :friend %>
+      <%=  render partial: 'friend', collection: friends, as: :friend %>
       <%= '<p class="text-center"><a href="#">See More Friends</a></p>'.html_safe if user.friendships_count > 9 %>
     <% end %>
   </div>

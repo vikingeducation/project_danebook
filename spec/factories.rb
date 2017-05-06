@@ -14,6 +14,8 @@ FactoryGirl.define do
     password 'foobarfoobar'
     password_confirmation 'foobarfoobar'
     friendships_count 0
+    first_name { Faker::Name.first_name }
+    last_name { Faker::Name.last_name }
     trait :with_profile do
       association :profile
     end
@@ -38,8 +40,7 @@ FactoryGirl.define do
   end
 
   factory :profile do
-    first_name { Faker::Name.first_name }
-    last_name { Faker::Name.last_name }
+
     sex 'female'
     birthdate { Faker::Date.birthday(13,99)}
     college { Faker::University.name }

@@ -44,15 +44,6 @@ class PostsController < ApplicationController
 
   private
 
-  # def reject_unauthorized
-  #   unless is_self?
-  #     flash[:error] = "Sorry, you're not authorized to do that"
-  #     params.delete('action')
-  #     return redirect_to user_profile_path(@user)
-  #   end
-  #   return
-  # end
-
   def post_params
     params.require(:post).permit(:body)
   end

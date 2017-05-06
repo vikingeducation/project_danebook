@@ -20,7 +20,7 @@ class Profile < ApplicationRecord
   validates_attachment :avatar,
     content_type: { content_type: /\Aimage\/.*\Z/},
     size: { in: 0..2.megabytes}
-  validates :first_name, :last_name, :sex, :birthdate, presence: true, on: :create
+  validates :sex, :birthdate, presence: true, on: :create
   validate :birthdate_not_in_future, on: :create
   validates :sex, inclusion: {in: %w(female male) }, on: :create
 

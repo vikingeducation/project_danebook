@@ -15,8 +15,8 @@ User.destroy_all
 
 puts "Populating users..."
 ('a' .. 'g').each do |a|
-  u = User.new(email: "#{a}@#{a}.com", password: a * 12, password_confirmation: a * 12)
-  u.build_profile(first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, sex: ['female', 'male'].sample, birthdate:Faker::Date.birthday(13, 99), college: Faker::University.name, hometown: Faker::Address.city, current_city: Faker::Address.city, telephone: Faker::PhoneNumber.phone_number, quote: Faker::Hacker.say_something_smart, about: Faker::Hipster.sentence(3))
+  u = User.new(email: "#{a}@#{a}.com", password: a * 12, password_confirmation: a * 12, first_name: Faker::Name.first_name, last_name: Faker::Name.last_name, )
+  u.build_profile(sex: ['female', 'male'].sample, birthdate:Faker::Date.birthday(13, 99), college: Faker::University.name, hometown: Faker::Address.city, current_city: Faker::Address.city, telephone: Faker::PhoneNumber.phone_number, quote: Faker::Hacker.say_something_smart, about: Faker::Hipster.sentence(3))
   u.save!
 end
 

@@ -10,7 +10,7 @@ class ProfilesController < ApplicationController
     @user = @photo.user
     return redirect_to user_photos_path(@user) unless is_self?
     if request.path == cover_photo_path(@photo)
-      if current_user.profile.update(cover: @photo.image.url)
+      if current_user.profile.update(cover: @photo.image)
         flash[:success] = "Your cover photo has been updated"
       else
         flash[:error] = "You can't use that as your cover photo"

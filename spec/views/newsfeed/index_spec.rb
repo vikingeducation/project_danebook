@@ -12,8 +12,5 @@ describe 'newsfeed/index.html.erb' do
         true
       end
     end
-    it 'shows friend\'s latest posts in chronological order' do
-      # binding.pry
-    end
   end
 end

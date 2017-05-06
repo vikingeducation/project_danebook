@@ -1,3 +1,14 @@
- <div class="info-box row">
-         <%= render 'photo_grid_small' %>
+<div class="info-box row">
+  <header class="col-xs-12">
+    <h4>Photos (<%= photos.count %>)</h4>
+  </header>
+  <div class="col-xs-12 ">
+    <%= render partial: 'photo_grid_small', collection: photos, as: :photo  %>
+    <% if photos.count > 9 %>
+      <p class="text-center"><%= link_to "See More Photos", user_photos_path(user) %></p>
+    <% elsif photos.count == 0 %>
+      <p class="text-center">This user has no photos yet</p>
+    <% end %>
+  </div>
+</div>
 </div>

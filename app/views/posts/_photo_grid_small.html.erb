@@ -1,17 +1,10 @@
- <header class="col-xs-12">
-            <h4>Photos (123)</h4>
-          </header>
-          <div class="col-xs-12 ">
-            <div class="row thumbnail-grid">
-              <div class="col-xs-4"><%= image_tag('icon_photo_small.png', class: 'img-thumbnail') %> </div>
-               <div class="col-xs-4"><%= image_tag('icon_photo_small.png', class: 'img-thumbnail') %></div>
-               <div class="col-xs-4"><%= image_tag('icon_photo_small.png', class: 'img-thumbnail') %></div>
-               <div class="col-xs-4"><%= image_tag('icon_photo_small.png', class: 'img-thumbnail') %></div>
-               <div class="col-xs-4"><%= image_tag('icon_photo_small.png', class: 'img-thumbnail') %></div>
-               <div class="col-xs-4"><%= image_tag('icon_photo_small.png', class: 'img-thumbnail') %></div>
-               <div class="col-xs-4"><%= image_tag('icon_photo_small.png', class: 'img-thumbnail') %></div>
-               <div class="col-xs-4"><%= image_tag('icon_photo_small.png', class: 'img-thumbnail') %></div>
-               <div class="col-xs-4"><%= image_tag('icon_photo_small.png', class: 'img-thumbnail') %></div>
-            </div>
-            <p class="text-center"><%= link_to "See More Photos", photos_path %></p>
-          </div>
+    <% index = photo_counter + 1 %>
+<% if index % 3 == 0 %>
+  <div class="row thumbnail-grid">
+  <% end %>
+  <div class="col-xs-4">
+    <%= link_to image_tag(photo.image.url(:small), class: 'img-thumbnail'), photo_path(photo)  %>
+  </div>
+  <% if index % 3 == 0 %>
+  </div>
+<% end %>

@@ -30,7 +30,10 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:body)
+    if params[:comment]
+      return params.require(:comment).permit(:body)
+    end
+    {}
   end
 
   def commentable_set_up

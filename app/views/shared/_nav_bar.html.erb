@@ -1,6 +1,9 @@
-<% if current_page?(new_user_session_path) %>
-  <%= render partial: 'shared/nav_sign_up' %>
+<% if user_signed_in? %>
+  <%= render partial: 'shared/nav_logged_in' %>
 <% else %>
-  <%= render partial: 'shared/nav_login' unless user_signed_in?  %>
-  <%= render partial: 'shared/nav_logged_in' if user_signed_in? %>
+  <% if current_page?(new_user_path) || current_page?(root_path) %>
+    <%= render partial: 'shared/nav_login' %>
+  <% else %>
+    <%= render partial: 'shared/nav_sign_up' %>
+  <% end %>
 <% end %>

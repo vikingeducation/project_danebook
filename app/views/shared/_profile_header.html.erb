@@ -27,10 +27,10 @@
     <%=  image_tag("#{@user.avatar(:medium)}", alt: 'Generic User Silhouette', class: 'img-thumbnail profile-pic')  %>
     <nav class="profile-nav">
       <ul class="nav nav-pills">
-        <li class="current"><%= link_to "Timeline", user_profile_path(@user) %></li>
-        <li><%= link_to "About", user_about_path(@user) %></li>
-        <li><%= link_to "Photos", user_photos_path(@user) %></li>
-        <li><%= link_to "Friends", user_friends_path(@user) %> <span class="text-light">(<%= @user.friendships_count %>)</span></li>
+        <li <%= 'class="current"'.html_safe if current_page?(user_profile_path(@user)) %>><%= link_to "Timeline", user_profile_path(@user) %></li>
+        <li <%= 'class="current"'.html_safe if current_page?(user_about_path(@user)) %>><%= link_to "About", user_about_path(@user) %></li>
+        <li <%= 'class="current"'.html_safe if current_page?(user_photos_path(@user)) %>><%= link_to "Photos", user_photos_path(@user) %></li>
+        <li <%= 'class="current"'.html_safe if current_page?(user_friends_path(@user)) %>><%= link_to "Friends", user_friends_path(@user) %> <span class="text-light">(<%= @user.friendships_count %>)</span></li>
       </ul>
       <p class="profile-edit"><%= link_to "Edit Profile", edit_user_path(@user) if is_self? %></p>
     </nav>

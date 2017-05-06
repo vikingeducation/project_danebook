@@ -1,14 +1,16 @@
 <h1>Welcome to Danebook!</h1>
 <p>Hi <%= @user.first_name %>, welcome to Danebook!</p>
-<p>Here are some people we thought you might like to be friends with:</p>
-<ul>
-  <% @friends.each do |f| %>
-    <li style="margin: 3px 0;">
-      <%= link_to user_profile_url(f), style: 'text-decoration: none;' do %>
-        <%= image_tag f.avatar(:thumb), style: 'width: 50px; height:50px; vertical-align: middle;' %>
-        <span><%= f.full_name %></span>
-      <% end %>
-    </li>
-  <% end %>
-</ul>
+<% if @friends.present? %>
+  <p>Here are some people we thought you might like to be friends with:</p>
+  <ul>
+    <% @friends.each do |f| %>
+      <li style="margin: 3px 0;">
+        <%= link_to user_profile_url(f), style: 'text-decoration: none;' do %>
+          <%= image_tag f.avatar(:thumb), style: 'width: 50px; height:50px; vertical-align: middle;' %>
+          <span><%= f.full_name %></span>
+        <% end %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>
 <p>View your account at <%= link_to user_profile_url(@user.id), user_profile_url(@user.id) %></p>

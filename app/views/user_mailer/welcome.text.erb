@@ -1,7 +1,7 @@
 <h1>Welcome to Danebook!</h1>
 <p>Hi <%= @user.first_name %>, welcome to Danebook!</p>
-<<<<<<< HEAD
-=======
+
+<% if @friends.present? %>
 <p>Here are some people we thought you might like to be friends with:</p>
 <ul>
   <% @friends.each do |f| %>
@@ -13,5 +13,5 @@
     </li>
   <% end %>
 </ul>
->>>>>>> newsfeed
-<p>View your account at <%= link_to "#{user_url(@user.id)}", user_profile_url(@user.id) %></p>
+<% end %>
+<p>View your account at <%= link_to user_profile_url(@user.id), user_profile_url(@user.id) %></p>

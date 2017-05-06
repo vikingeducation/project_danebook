@@ -1,7 +1,7 @@
 Rails.application.configure do
 
   # mailer host
-  config.action_mailer.default_url_options = { :host => 'https://tranquil-basin-42173.herokuapp.com/' }
+  config.action_mailer.default_url_options = { :host => 'https://tranquil-basin-42173.herokuapp.com' }
 
   #sendgrid set up
   config.action_mailer.smtp_settings = {

@@ -1,7 +1,10 @@
 class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  after_create :queue_welcome_email
+
+  after_create :send_welcome_email
+
+  after_create :send_welcome_email
 
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable
@@ -60,9 +63,15 @@ class User < ApplicationRecord
 
   private
 
-  def queue_welcome_email
-    UserMailer.welcome(self).deliver_later
+  def send_welcome_email
+    # if we set ENV['USE_DELAYED_EMAILS'] to true, it will use delayed emails
+    if Rails.application.secrets.use_delayed_emails
+      UserMailer.welcome(self).deliver_later
+    else
+      UserMailer.welcome(self).deliver!
+    end
   end
+
 
 
 

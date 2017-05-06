@@ -1,8 +1,11 @@
 Rails.application.configure do
 
+  # mailer host
+  config.action_mailer.default_url_options = { :host => 'https://tranquil-basin-42173.herokuapp.com/' }
+
+
   # Paperclip Amazon S3
   Paperclip.options[:command_path] = "/usr/local/bin"
-
 
   config.paperclip_defaults = {
 

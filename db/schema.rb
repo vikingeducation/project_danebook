@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20170506031628) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "comments", force: :cascade do |t|
     t.text     "body",                         null: false
     t.integer  "likes_count",      default: 0
@@ -20,8 +23,8 @@ ActiveRecord::Schema.define(version: 20170506031628) do
     t.datetime "updated_at",                   null: false
     t.string   "commentable_type"
     t.integer  "commentable_id"
-    t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id"
-    t.index ["user_id"], name: "index_comments_on_user_id"
+    t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id", using: :btree
+    t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
   end
 
   create_table "delayed_jobs", force: :cascade do |t|
@@ -36,7 +39,7 @@ ActiveRecord::Schema.define(version: 20170506031628) do
     t.string   "queue"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.index ["priority", "run_at"], name: "delayed_jobs_priority"
+    t.index ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
   end
 
   create_table "friendships", force: :cascade do |t|
@@ -45,7 +48,7 @@ ActiveRecord::Schema.define(version: 20170506031628) do
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
     t.boolean  "rejected"
-    t.index ["friender_id", "friendee_id"], name: "index_friendships_on_friender_id_and_friendee_id", unique: true
+    t.index ["friender_id", "friendee_id"], name: "index_friendships_on_friender_id_and_friendee_id", unique: true, using: :btree
   end
 
   create_table "likes", force: :cascade do |t|
@@ -54,8 +57,8 @@ ActiveRecord::Schema.define(version: 20170506031628) do
     t.datetime "updated_at",    null: false
     t.string   "likeable_type"
     t.integer  "likeable_id"
-    t.index ["user_id", "likeable_id", "likeable_type"], name: "index_likes_on_user_id_and_likeable_id_and_likeable_type", unique: true
-    t.index ["user_id"], name: "index_likes_on_user_id"
+    t.index ["user_id", "likeable_id", "likeable_type"], name: "index_likes_on_user_id_and_likeable_id_and_likeable_type", unique: true, using: :btree
+    t.index ["user_id"], name: "index_likes_on_user_id", using: :btree
   end
 
   create_table "photos", force: :cascade do |t|
@@ -67,7 +70,7 @@ ActiveRecord::Schema.define(version: 20170506031628) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.integer  "likes_count",        default: 0
-    t.index ["user_id"], name: "index_photos_on_user_id"
+    t.index ["user_id"], name: "index_photos_on_user_id", using: :btree
   end
 
   create_table "posts", force: :cascade do |t|
@@ -76,7 +79,7 @@ ActiveRecord::Schema.define(version: 20170506031628) do
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
     t.integer  "likes_count", default: 0, null: false
-    t.index ["user_id"], name: "index_posts_on_user_id"
+    t.index ["user_id"], name: "index_posts_on_user_id", using: :btree
   end
 
   create_table "profiles", force: :cascade do |t|
@@ -99,7 +102,7 @@ ActiveRecord::Schema.define(version: 20170506031628) do
     t.string   "cover_content_type"
     t.integer  "cover_file_size"
     t.datetime "cover_updated_at"
-    t.index ["user_id"], name: "index_profiles_on_user_id"
+    t.index ["user_id"], name: "index_profiles_on_user_id", using: :btree
   end
 
   create_table "sessions", force: :cascade do |t|
@@ -107,8 +110,8 @@ ActiveRecord::Schema.define(version: 20170506031628) do
     t.text     "data"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.index ["session_id"], name: "index_sessions_on_session_id", unique: true
-    t.index ["updated_at"], name: "index_sessions_on_updated_at"
+    t.index ["session_id"], name: "index_sessions_on_session_id", unique: true, using: :btree
+    t.index ["updated_at"], name: "index_sessions_on_updated_at", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -128,8 +131,13 @@ ActiveRecord::Schema.define(version: 20170506031628) do
     t.integer  "friendships_count",      default: 0
     t.string   "first_name"
     t.string   "last_name"
-    t.index ["email"], name: "index_users_on_email"
-    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["email"], name: "index_users_on_email", using: :btree
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   end
 
+  add_foreign_key "comments", "users"
+  add_foreign_key "likes", "users"
+  add_foreign_key "photos", "users"
+  add_foreign_key "posts", "users"
+  add_foreign_key "profiles", "users"
 end

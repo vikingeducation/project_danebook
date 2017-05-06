@@ -4,12 +4,14 @@ describe 'CommentsRequests' do
   let(:user){ create(:user, :with_profile)}
   let(:posting){ create(:post, user: user)}
   let(:comment){ create(:comment, :for_post)}
-
-  def create_comment(user)
-    post post_comments_path(posting), params: { comment: attributes_for(:comment, user: user)  }
+  before do
+    def create_comment(user)
+      post post_comments_path(posting), params: { comment: attributes_for(:comment, user: user)  }
+    end
   end
   describe 'POST #create' do
     it 'requires logged in user' do
+      # works in dev env.
       expect{ post post_comments_path(posting) }.not_to change(Comment, :count)
       expect(response).to redirect_to new_user_session_path
     end

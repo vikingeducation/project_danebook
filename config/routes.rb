@@ -22,8 +22,8 @@ Rails.application.routes.draw do
     end
   end
   resources :photos, only: [:show, :destroy] do
-    patch 'cover' => 'profiles#update', on: :member
-    patch 'avatar' => 'profiles#update', on: :member
+    patch 'cover' => 'profiles#update', on: :member, defaults: {photo_type: 'Cover'}
+    patch 'avatar' => 'profiles#update', on: :member, defaults: {photo_type: 'Avatar'}
     resources :comments, only: [:create], defaults: { commentable: 'Photo'}
     resources :likes, only: [:create, :destroy], defaults: { likeable: 'Photo'}
   end

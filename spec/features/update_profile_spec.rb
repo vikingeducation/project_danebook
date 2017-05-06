@@ -10,7 +10,7 @@ feature 'Update User Profile' do
       click_link 'Edit Profile'
     end
     scenario 'clicking "edit profile" takes user to edit profile page' do
-      expect(page).to have_selector('.edit_user')
+      expect(page).to have_link('Edit Profile')
     end
     scenario 'can update profile information' do
       fill_in 'Currently lives', with: 'Qwaszx'

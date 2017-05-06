@@ -1,40 +1,39 @@
 class LikesController < ApplicationController
   before_action :authenticate_user!
+  before_action :likeable_set_up, only: [:create, :destroy]
 
   def create
-    if params[:likeable] == 'Post'
-      @like = current_user.likes.build(likeable_id: params[:post_id], likeable_type: params[:likeable])
-      @poster = Post.find(params[:post_id]).user
-      if @like.save
-        flash[:success] = "Post liked"
-      else
-        flash[:error] = "You've already liked that post'"
-      end
-      redirect_to user_profile_path(@poster)
-    elsif params[:likeable] == 'Photo'
-      @photo = Photo.find(params[:photo_id])
-      @like = current_user.likes.build(likeable_id: params[:photo_id], likeable_type: params[:likeable])
-      @poster = Photo.find(params[:photo_id]).user
-      if @like.save
-        flash[:success] = "Photo liked"
-      else
-        flash[:error] = "You've already liked that photo"
-      end
-      redirect_to photo_path(@photo)
+    @like = current_user.likes.build(likeable_id: @id, likeable_type: params[:likeable])
+    if @like.save
+      flash[:success] = 'Post liked'
+    else
+      flash[:error] = "You've already liked that post"
     end
+    redirect_to @redirect_path
   end
 
   def destroy
-    @like = Like.find_by(user_id: current_user.id, likeable_id: params[:post_id], likeable_type: params[:likeable])
-    @poster = Post.find(params[:post_id]).user
+    @like = Like.find_by(user_id: current_user.id, likeable_id: @id, likeable_type: params[:likeable])
     if @like.destroy
       flash[:success] = "Unliked"
     else
       flash[:error] = "Couldn't unlike"
     end
-    redirect_to user_profile_path(@poster)
+    redirect_to @redirect_path
   end
 
   private
+
+  def likeable_set_up
+    if params[:likeable] == 'Post'
+      @id = params[:post_id]
+      @poster = Post.find(@id).user
+      @redirect_path = user_profile_path(@poster)
+    elsif params[:likeable] == 'Photo'
+      @id = params[:photo_id]
+      @post = Photo.find(@id)
+      @redirect_path = photo_path(@post)
+    end
+  end
 
 end

@@ -21,10 +21,10 @@
             <div class="row">
               <div class="col-xs-12">
                 <div class="media-left">
-                  <%= link_to image_tag('user_silhouette_generic.png', class: 'img-thumbnail media-object', alt: 'Generic User Image'), '#' %>
+                  <%= link_to image_tag(@user.avatar(:thumb), class: 'img-thumbnail media-object', alt: 'Generic User Image'), user_profile_path(@user) %>
                 </div>
                 <div class="media-body">
-                  <h5 class="media-heading"><%= link_to @user.full_name, user_about_path(@user) %></h5>
+                  <h5 class="media-heading"><%= link_to @user.full_name, user_profile_path(@user) %></h5>
                   <p class="small text-muted"><%= @photo.upload_date %></p>
                 </div>
               </div>

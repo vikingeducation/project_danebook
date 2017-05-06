@@ -4,37 +4,23 @@ class ProfilesController < ApplicationController
   end
 
   def update
-    require 'open-uri'
     @photo = Photo.find(params[:id])
     @user = @photo.user
-    return redirect_to user_photos_path(@user) unless is_self?
-    if request.path == cover_photo_path(@photo)
-      if current_user.profile.update(cover: @photo.image)
-        flash[:success] = "Your cover photo has been updated"
-      else
-        flash[:error] = "You can't use that as your cover photo"
-      end
-    elsif request.path == avatar_photo_path(@photo)
-      current_user.profile.avatar = @photo.image
-      if current_user.save
-        flash[:success] = "Your avatar has been updated"
-      else
-        flash[:error] = "You can't use that as your avatar"
-      end
+    return redirect_to photo_path(@photo) unless is_self?
+    type = params[:photo_type].downcase
+    if current_user.profile.update(type.to_sym => @photo.image)
+      flash[:success] = "Your #{type} photo has been updated"
+    else
+      flash[:error] = "You can't use that as your #{type} photo"
     end
-
     redirect_to user_photos_path(@user)
 
   end
 
+  private
+
   def profile_params
     params.require(:user).permit(profile_attributes: [:id, :college, :hometown, :current_city, :telephone, :about, :quote])
   end
-
-  def cover_params
-  end
-
-
-
 
 end

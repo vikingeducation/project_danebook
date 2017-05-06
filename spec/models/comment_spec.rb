@@ -25,8 +25,8 @@ describe Comment do
       user = create(:user, id: 77)
       like = create(:like, user_id: 77, likeable: comment)
       comment.likes << like
-      expect(comment.liked_by?(77)).to eq(true)
-      expect(comment.liked_by?(5)).to eq(false)
+      expect(comment.liked_by?(like.user)).to eq(true)
+      expect(comment.liked_by?(build(:user))).to eq(false)
     end
   end
   context 'associations' do

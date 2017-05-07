@@ -4,7 +4,7 @@ describe Comment do
   let(:comment){ create(:comment, :for_post)}
   let(:like){ create(:comment_like, comment: comment)}
   let(:user){ create(:user, :with_profile)}
-  let(:friend){ create(:user ,:with_profile)}
+  let(:friend){ build(:user ,:with_profile)}
   let(:posting){ create(:post, user: user)}
   context 'validations' do
     it 'is invalid without body' do
@@ -34,9 +34,10 @@ describe Comment do
       expect(comment).to respond_to(:likes)
     end
   end
-  context 'callbacks' do
-    describe 'notification emails' do
+  describe 'notification emails' do
+    context 'delayed emails on' do
       before do
+        Rails.application.secrets.use_delayed_emails = 'true'
         posting
         friend
       end
@@ -46,6 +47,19 @@ describe Comment do
       it 'does not queue a notification email if comment created by self' do
         expect{ create(:comment, user: user, commentable: posting)}.not_to change(ActiveJob::Base.queue_adapter.enqueued_jobs, :count)
       end
+    end
+  end
+  context 'delayed emails off' do
+    before do
+      Rails.application.secrets.use_delayed_emails = nil
+      posting
+      friend
+    end
+    it 'sends a notification email if comment created by friend' do
+      expect{create(:comment, user: friend, commentable: posting)}.to change(ActionMailer::Base.deliveries, :count).by(1)
+    end
+    it 'does not send a notification email if comment created by self' do
+      expect{ create(:comment, user: user, commentable: posting)}.not_to change(ActionMailer::Base.deliveries, :count)
     end
   end
 

@@ -1,34 +1,40 @@
 require "rails_helper"
 
 describe UserMailer, type: :mailer do
-  let(:user){ create(:user, :with_profile)}
+  let(:user){ create(:user, :with_profile, :with_welcome_email)}
   let(:comment){ create(:comment, :for_post, user: user)}
   let(:mail){ ActionMailer::Base.deliveries}
   let(:friends){ create_list(:user, 3, :with_profile)}
 
   describe 'welcome email' do
-    before do
-      user.email = 'test@gmail.com'
-      user.friendees << friends
-      UserMailer.welcome(user).deliver
+    context 'without friends' do
+      it 'creates an email' do
+        user
+        expect(mail.count).to eq(1)
+      end
     end
-    it 'creates an email' do
-      expect(mail.count).to eq(1)
-    end
-    it 'should have the right recipient' do
-      expect(mail.last.to.first).to eq('test@gmail.com')
-    end
-    it 'should have the correct subject line' do
-      expect(mail.last.subject).to eq('Welcome to Danebook!')
-    end
-    it 'should be sent from the correct address' do
-      expect(mail.last.from).to eq(['no-reply@danebook.com'])
-    end
-    it 'should include friends' do
-      expect(mail.last.body.encoded).to match(friends.first.full_name)
-    end
-    it 'should have link to friend\'s page' do
-      expect(mail.last.body.encoded).to match(user_profile_url(friends.first))
+    context 'with friends' do
+      before do
+        user.email = 'test@gmail.com'
+        user.friendees << friends
+        UserMailer.welcome(user).deliver
+      end
+
+      it 'should have the right recipient' do
+        expect(mail.last.to.first).to eq('test@gmail.com')
+      end
+      it 'should have the correct subject line' do
+        expect(mail.last.subject).to eq('Welcome to Danebook!')
+      end
+      it 'should be sent from the correct address' do
+        expect(mail.last.from).to eq(['no-reply@danebook.com'])
+      end
+      it 'should include friends' do
+        expect(mail.last.body.encoded).to match(friends.first.full_name)
+      end
+      it 'should have link to friend\'s page' do
+        expect(mail.last.body.encoded).to match(user_profile_url(friends.first))
+      end
     end
   end
   describe 'comment notification email' do

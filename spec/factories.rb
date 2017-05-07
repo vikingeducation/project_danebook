@@ -10,12 +10,27 @@ FactoryGirl.define do
   end
 
   factory :user, aliases: [:friender, :friendee, :friend] do
-    sequence(:email){ |n| "foo#{n}@bar.com"}
+    sequence(:first_name){ |n| "Foo#{n}"}
+    sequence(:last_name){ |n| "Bar#{n}"}
+    email { "#{first_name}@#{last_name}.com"}
     password 'foobarfoobar'
     password_confirmation 'foobarfoobar'
     friendships_count 0
-    first_name { Faker::Name.first_name }
-    last_name { Faker::Name.last_name }
+
+    after(:build) do |user|
+      class << user
+        def send_welcome_email; true; end
+      end
+    end
+
+    trait :with_welcome_email do
+      after(:build) do |user|
+        class << user
+          def send_welcome_email; super; end
+        end
+      end
+    end
+
     trait :with_profile do
       association :profile
     end
@@ -46,6 +61,7 @@ FactoryGirl.define do
         u.friendees << friends
       end
     end
+
   end
 
   factory :profile do

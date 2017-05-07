@@ -28,6 +28,10 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :profile
   validates_associated :profile
 
+  def self.search(term)
+    User.where('first_name ILIKE ? OR last_name ILIKE ?', "%#{term}%", "%#{term}%")
+  end
+
   def cover(size=:medium)
     self.profile.cover.url(size)
   end

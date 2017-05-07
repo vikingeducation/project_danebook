@@ -4,8 +4,6 @@ Rails.application.configure do
   # Letter Opener
   config.action_mailer.delivery_method = :letter_opener
 
-
-
   # Paperclip Amazon S3
   Paperclip.options[:command_path] = "/usr/local/bin"
 

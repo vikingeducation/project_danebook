@@ -10,12 +10,12 @@
       <%= link_to image_tag("#{current_user.avatar(:thumb)}", alt: 'Danebook logo', class: 'navbar-logo img-circle'), root_path, { class: 'navbar-brand'}  %>
     </div>
     <div class="navbar-collapse collapse" id="navbar-collapsible">
-      <form class="navbar-form navbar-left" role="search">
+      <%= form_tag users_path, method: :get, class: 'navbar-form navbar-left navbar-search' do %>
         <div class="form-group form-group-sm">
-          <label for="user-search" class="sr-only">Search for Users</label>
-          <input type="text" class="form-control" name="user-search" placeholder="Search for Users">
+          <%= label_tag 'q', {}, class: 'sr-only' %>
+          <%= text_field_tag 'q', '', class: 'form-control', placeholder: 'Search for Users' %>
         </div>
-      </form>
+      <% end %>
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to current_user.first_name, user_profile_path(current_user) %> </li>
         <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user"></span></a>

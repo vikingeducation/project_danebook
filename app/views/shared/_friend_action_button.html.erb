@@ -1,0 +1,19 @@
+<%= unless is_self?
+      if current_user.nil?
+        link_to 'Add Friend', new_user_path, class: 'btn btn-primary' 
+      else
+        case friend.friendship_status(current_user)
+          when nil
+           link_to 'Cancel Request', cancel_friend_path(friend), method: :patch, class: 'btn btn-dull'
+          when false
+            link_to "Remove Friend", friend_path(friend, current_user), method: :delete, class: 'btn btn-dull'
+          when true
+            '<div class="btn btn-dull">Add Friend</div>'.html_safe
+          when 'received'
+            link_to 'Accept Request', accept_friend_path(friend), method: :patch, class: 'btn btn-success'
+          when 'create'
+            link_to 'Add Friend', user_friends_path(friend), method: :post, class: 'btn btn-primary'
+        end
+      end
+    end 
+%>

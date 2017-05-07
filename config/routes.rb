@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root to: 'users#new'
   get 'newsfeed', to: 'newsfeed#index'
-  resources :users,  only: [:new, :create, :update, :edit ] do
+  resources :users,  only: [:new, :create, :update, :edit, :index] do
     get 'about' => 'users#show'
     get 'profile' => 'posts#index'
     resources :photos, only: [:create, :index, :destroy] do

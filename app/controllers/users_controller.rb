@@ -2,6 +2,11 @@ class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :update, :destroy]
   skip_before_action :authenticate_user!, only: [:new, :create, :show]
 
+  def index
+    @term = params[:q]
+    @users = User.search(@term)
+  end
+
   def new
     @user = User.new
     @user.build_profile
@@ -45,7 +50,6 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    # TODO add birthdate
     params.require(:user).permit(:email, :password, :password_confirmation, :first_name, :last_name, profile_attributes: [:id, :sex, :'birthdate(1i)', :'birthdate(2i)', :'birthdate(3i)'])
   end
 

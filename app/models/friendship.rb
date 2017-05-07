@@ -19,7 +19,7 @@ class Friendship < ApplicationRecord
   def update_user_friendships_count
     # we use this instead of the built-in rails counter_cache because we don't want to count friendships where rejected is true
     friender = self.friend_initiator
-    friender.friendships_count = Friendship.where('rejected IS ? AND friender_id = ?', false, friender.id).count
+    friender.friendships_count = Friendship.where('rejected = ? AND friender_id = ?', false, friender.id).count
     friender.save
   end
 

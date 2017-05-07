@@ -17,7 +17,7 @@ module Reusable
     msg = ''
     if self.liked_by?(user)
       msg += 'You'
-      remaining_likes = self.likes.where('user_id IS NOT ?', user.id).order('created_at DESC')
+      remaining_likes = self.likes.where('user_id != ?', user.id).order('created_at DESC')
       case
       when self.likes_count == 1
         msg += ' like this'

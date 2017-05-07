@@ -46,7 +46,7 @@ puts 'Populating friends...'
 
 User.all.each do |u|
   ids = User.all.pluck(:id)
-  rand(3..10).times do
+  rand(1..5).times do
     u.initiated_friendships.create(friendee_id: ids.sample)
   end
 end

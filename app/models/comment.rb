@@ -13,7 +13,7 @@ class Comment < ApplicationRecord
 
   def send_notification_email
     # if we set ENV['USE_DELAYED_EMAILS'] to true, it will use delayed emails
-    if Rails.application.secrets.use_delayed_emails
+    if Rails.application.secrets.use_delayed_emails == 'true'
       UserMailer.comment_notification(self).deliver_later
     else
       UserMailer.comment_notification(self).deliver!

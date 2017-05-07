@@ -7,6 +7,7 @@ module LoginMacros
     click_button 'Sign in'
   end
 
+
   def log_out
     click_link "Sign out"
   end

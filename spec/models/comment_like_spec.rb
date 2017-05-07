@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe Like do
-  let(:user){ build(:user)}
+  let(:user){ build(:user, :with_profile)}
   let(:comment){ build(:comment, :for_post)}
   let(:like){ build(:like)}
   let(:posting){ build(:post) }

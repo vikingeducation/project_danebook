@@ -459,6 +459,14 @@ $light-gray: #f9f9f9;
     }
   }
 
+  /* SEARCH RESULTS */
+.search-item {
+  .media-body p {
+  margin-bottom:0;
+  }
+}
+
+
   /* MISSING BOOTSTRAP CLASS?! */
   .media-body, .media-left, .media-right {
         display: table-cell;
@@ -482,46 +490,53 @@ $light-gray: #f9f9f9;
 
 
 
+
    /* HELPER CLASS */
-   .text-bold {
-    font-weight: bold;
-   }
-   .text-light {
-    color: #999;
-   }
-   .pan {
-    padding: 0;
-   }
-  .vertical-middle {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-  .absolute-right {
-    right: 10px;
-  }
-  .display-inline {
-    display: inline;
-  }
-  .full-width {
-    width: 100%;
-  }
+ .text-bold {
+  font-weight: bold;
+ }
+ .text-light {
+  color: #999;
+ }
+ .pan {
+  padding: 0;
+ }
+.vertical-middle {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.absolute-right {
+  right: 10px;
+}
+.display-inline {
+  display: inline;
+}
+.full-width {
+  width: 100%;
+}
 .mts {
-  margin-top:1em;
+margin-top:1em;
 }
 .mbs {
-  margin-bottom: 1em;
+margin-bottom: 1em;
 }
 .mbm {
-  margin-bottom: 1.5em;
+margin-bottom: 1.5em;
 }
 .mtm {
-  margin-top: 1.5em;
+margin-top: 1.5em;
 }
 .background-light {
-  background-color: $light-gray;
+background-color: $light-gray;
 }
 .pbs {
-  margin-bottom: 1em;
+margin-bottom: 1em;
+}
+.mbn {
+margin-bottom:0;
+}
+.i {
+  font-style: italic;
 }
 

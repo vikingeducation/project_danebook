@@ -98,10 +98,23 @@ describe User do
     end
   end
 
-  context 'emails' do
+  describe 'emails' do
     let(:queue){ ActiveJob::Base.queue_adapter.enqueued_jobs }
-    it 'queues a welcome email on creation' do
-      expect{ create(:user)}.to change(queue , :count).by(1)
+    context 'delayed emails on' do
+      before do
+        Rails.application.secrets.use_delayed_emails = 'true'
+      end
+      it 'queues a welcome email on creation' do
+        expect{ create(:user, :with_profile, :with_welcome_email)}.to change(queue, :count).by(1)
+      end
+    end
+    context 'immediate email notification' do
+      before do
+        Rails.application.secrets.use_delayed_emails = nil
+      end
+      it 'sends a welcome email on creation' do
+        expect{ create(:user, :with_profile, :with_welcome_email)}.to change(ActionMailer::Base.deliveries, :count).by(1)
+      end
     end
   end
 

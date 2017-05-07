@@ -37,6 +37,7 @@ module ApplicationHelper
   end
 
   def is_self?
+    return false unless @user
     user_signed_in? && @user.id == current_user.id
   end
 

@@ -1,7 +1,7 @@
 <% if user_signed_in? %>
   <%= render partial: 'shared/nav_logged_in' %>
 <% else %>
-  <% if current_page?(new_user_path) %>
+  <% if request.path == new_user_session_path %>
     <%= render partial: 'shared/nav_sign_up' %>
   <% else %>
     <%= render partial: 'shared/nav_login' %>

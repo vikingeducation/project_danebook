@@ -42,4 +42,21 @@ describe 'UsersRequests' do
       expect(response).to be_success
     end
   end
+
+  describe 'GET #index' do
+    it 'must be logged in to visit' do
+      get users_path, params: {q: 'blah'}
+      expect(response).to redirect_to new_user_session_path
+    end
+    context 'logged in' do
+      before do
+        login_as(user, scope: :user)
+      end
+      it 'responds to request' do
+        get users_path, params: {q: 'Foo'}
+        expect(response).to be_success
+      end
+    end
+
+  end
 end

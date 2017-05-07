@@ -36,7 +36,19 @@ describe User do
     expect(build(:user, first_name: nil, last_name: nil)).to be_invalid
   end
 
-  context 'instance methods' do
+  describe 'class methods' do
+    describe 'search' do
+      it 'returns the correct search results' do
+        create(:user, first_name: 'afa')
+        create(:user, first_name: 'faa')
+        create(:user, last_name: 'aaf')
+        expect(User.search('f').count).to eq(3)
+        expect(User.search('g').count).to eq(0)
+      end
+    end
+  end
+
+  describe 'instance methods' do
     let(:user){ create(:user, :with_profile)}
     let(:friend){ create(:user, :with_profile)}
     def add_friend(user, friend)

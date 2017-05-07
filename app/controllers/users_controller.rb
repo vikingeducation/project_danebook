@@ -3,8 +3,12 @@ class UsersController < ApplicationController
   skip_before_action :authenticate_user!, only: [:new, :create, :show]
 
   def index
-    @term = params[:q]
-    @users = User.search(@term)
+    if params[:q]
+      @term = params[:q].to_s
+      @users = User.search(@term).includes(:profile)
+    else
+      @users = []
+    end
   end
 
   def new

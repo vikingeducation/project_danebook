@@ -29,7 +29,7 @@ class User < ApplicationRecord
   validates_associated :profile
 
   def self.search(term)
-    User.where('first_name ILIKE ? OR last_name ILIKE ?', "%#{term}%", "%#{term}%")
+    User.where("first_name ILIKE ? OR last_name ILIKE ?", "%#{term}%", "%#{term}%")
   end
 
   def cover(size=:medium)
@@ -69,7 +69,7 @@ class User < ApplicationRecord
 
   def send_welcome_email
     # if we set ENV['USE_DELAYED_EMAILS'] to true, it will use delayed emails
-    if Rails.application.secrets.use_delayed_emails
+    if Rails.application.secrets.use_delayed_emails == 'true'
       UserMailer.welcome(self).deliver_later
     else
       UserMailer.welcome(self).deliver!

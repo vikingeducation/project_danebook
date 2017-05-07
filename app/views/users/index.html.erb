@@ -1,13 +1,13 @@
 <section class="row">
   <div class="col-xs-12">
-    <p class="text-center text-light i mtm">Showing <%= @users.count %> users whose first or last names contain '<%= @term %>'</p>
+    <p class="text-center text-light i mtm">Showing <%= @users.count ? pluralize(@users.count, 'users') : '0 users' %> whose first or last names contain '<%= @term %>'</p>
     <div class="info-box row">
       <header class="col-xs-12">
         <h2 class="module-title">Search Results</h2>
       </header>
       <div class="col-xs-12">
         <div class="friend-grid-row">
-          <%= render partial: 'search_results', collection: @users.includes(:profile), as: :friend %>
+          <%= render partial: 'search_results', collection: @users, as: :friend %>
         </div>
       </div>
     </div>

@@ -14,6 +14,7 @@ class Post < ApplicationRecord
   def self.newsfeed_posts(user=nil)
     return nil unless user
     friend_ids = user.friendee_ids.clone
-    Post.limit(10).order('created_at DESC').where('user_id IN (?)', friend_ids << user.id).includes(user: [:profile])
+    Post.order('created_at DESC').where('user_id IN (?)', friend_ids << user.id).includes(user: [:profile])
   end
+
 end

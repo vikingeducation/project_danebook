@@ -38,6 +38,7 @@ gem 'aws-sdk'
 gem 'figaro'
 gem 'delayed_job_active_record'
 gem 'daemons'
+gem 'will_paginate', '~> 3.1.0'
 
 
 group :production do

@@ -33,10 +33,6 @@ class User < ApplicationRecord
     User.where("first_name ILIKE ? OR last_name ILIKE ?", "%#{term}%", "%#{term}%")
   end
 
-  def friend_feed
-    Activity.friend_feed(self)
-  end
-
   def cover(size=:medium)
     self.profile.cover.url(size)
   end

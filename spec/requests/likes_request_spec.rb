@@ -13,7 +13,7 @@ describe 'LikesRequests' do
       before do
         login_as(user, scope: :user)
       end
-      it 'creates a like' do
+      it 'creates a like for posts' do
         expect{ post post_likes_path(posting)}.to change(Like, :count ).by(1)
       end
     end

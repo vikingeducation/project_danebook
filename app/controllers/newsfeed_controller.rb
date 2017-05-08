@@ -2,8 +2,8 @@ class NewsfeedController < ApplicationController
 
   def index
     @user = current_user
-    @posts = Post.limit(10).order('created_at DESC').where('user_id IN (?)', @user.friendee_ids.clone << @user.id).includes(user: [:profile])
+    @posts = Post.newsfeed_posts(@user)
     @post = current_user.posts.build
-    @feed = @posts.where('user_id != ?', @user.id)
+    @feed = Activity.friend_feed(@user)
   end
 end

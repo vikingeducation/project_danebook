@@ -14,6 +14,7 @@ class User < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :comment_likes, through: :comments, source: :likes, dependent: :destroy
   has_many :photos
+  has_many :activities, as: :activable
 
   #  self join for friendship
   has_many :initiated_friendships, class_name: 'Friendship', foreign_key: :friender_id, dependent: :destroy
@@ -30,6 +31,10 @@ class User < ApplicationRecord
 
   def self.search(term)
     User.where("first_name ILIKE ? OR last_name ILIKE ?", "%#{term}%", "%#{term}%")
+  end
+
+  def friend_feed
+    Activity.friend_feed(self)
   end
 
   def cover(size=:medium)

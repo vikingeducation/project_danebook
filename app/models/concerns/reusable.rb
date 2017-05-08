@@ -3,6 +3,10 @@ require 'active_support/concern'
 module Reusable
   extend ActiveSupport::Concern
 
+  def create_activity_feed_record
+    self.create_activity!(user: self.user)
+  end
+
   def date
     self.created_at.strftime('%A, %d %B %Y') if self.created_at
   end

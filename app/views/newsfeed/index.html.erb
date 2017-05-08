@@ -13,7 +13,7 @@
     </div>
     <h4 class="mtm">Recently Active</h4>
     <div class="activity-feed">
-      <%= render partial: 'activity_feed', collection: @feed, as: :post %>
+      <%= render partial: 'activity_feed', collection: @feed.includes(:activable), as: :activity %>
       <p class="text-center mts text-bold">
         <%= link_to "See All Your Friends", user_friends_path(@user) %>
       </p>

@@ -1,8 +1,5 @@
 
 FactoryGirl.define do
-  factory :friendship_status do
-    description "MyString"
-  end
 
   factory :photo do
     user
@@ -136,14 +133,39 @@ FactoryGirl.define do
     body Faker::Hacker.say_something_smart
     user
     trait :for_post do
-      commentable_type 'Post'
+      # commentable_type 'Post'
       association :commentable, factory: :post
     end
     trait :for_photo do
-      commentable_type 'Photo'
+      # commentable_type 'Photo'
       association :commentable, factory: :photo
     end
 
+    # this is so we don't send notification emails automatically when testing
+    after(:build) do |comment|
+      class << comment
+        def send_notification_email; true; end
+      end
+    end
+
+    trait :with_notification_email do
+      after(:build) do |comment|
+        class << comment
+          def send_notification_email; super; end
+        end
+      end
+    end
+
+  end
+
+  factory :activity do
+    user
+    trait :for_photo do
+      association :activable, factory: :photo
+    end
+    trait :for_post do
+      association :activable, factory: :post
+    end
   end
 
 

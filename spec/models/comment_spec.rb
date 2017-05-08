@@ -42,10 +42,11 @@ describe Comment do
         friend
       end
       it 'queues a notification email if comment created by friend' do
-        expect{create(:comment, user: friend, commentable: posting)}.to change(ActiveJob::Base.queue_adapter.enqueued_jobs, :count).by(1)
+
+        expect{create(:comment, :with_notification_email, user: friend, commentable: posting)}.to change(ActiveJob::Base.queue_adapter.enqueued_jobs, :count).by(1)
       end
       it 'does not queue a notification email if comment created by self' do
-        expect{ create(:comment, user: user, commentable: posting)}.not_to change(ActiveJob::Base.queue_adapter.enqueued_jobs, :count)
+        expect{ create(:comment, :with_notification_email, user: user, commentable: posting)}.not_to change(ActiveJob::Base.queue_adapter.enqueued_jobs, :count)
       end
     end
   end
@@ -56,10 +57,10 @@ describe Comment do
       friend
     end
     it 'sends a notification email if comment created by friend' do
-      expect{create(:comment, user: friend, commentable: posting)}.to change(ActionMailer::Base.deliveries, :count).by(1)
+      expect{create(:comment, :for_post, :with_notification_email, user: friend)}.to change(ActionMailer::Base.deliveries, :count).by(1)
     end
     it 'does not send a notification email if comment created by self' do
-      expect{ create(:comment, user: user, commentable: posting)}.not_to change(ActionMailer::Base.deliveries, :count)
+      expect{ create(:comment, :with_notification_email, commentable: posting, user: user)}.not_to change(ActionMailer::Base.deliveries, :count)
     end
   end
 

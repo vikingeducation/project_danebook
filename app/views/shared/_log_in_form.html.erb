@@ -1,8 +1,8 @@
 <%= form_tag session_path, class: 'navbar-form navbar-right' do %>
 
-    <%= text_field_tag :email, 'email' , class: 'form-control' %>
+    <%= text_field_tag :email, 'Email' , class: 'form-control' %>
     
-    <%= password_field_tag :password, 'password', class: 'form-control' %>
+    <%= password_field_tag :password, nil, :placeholder => 'Password', class: 'form-control' %>
 
     <%= submit_tag "Log In", class: 'btn btn-default' %>
 

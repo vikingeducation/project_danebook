@@ -6,6 +6,4 @@ describe 'create friendship' do
 
   context ''
 
-
-
 end

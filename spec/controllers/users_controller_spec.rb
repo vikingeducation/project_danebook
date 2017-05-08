@@ -37,14 +37,6 @@ describe UsersController do
       expect(response).to be_success
     end
 
-    # blergh
-    it 'can update user profile upon submission' do
-      # profile = build(:profile, :user => existing_user)
-      # put :update, params: { 
-      #                 user: { :profile => attributes_for(:profile) } 
-      #                      }
-    end
-
   end
 
 

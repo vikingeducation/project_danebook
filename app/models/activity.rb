@@ -3,9 +3,14 @@ class Activity < ApplicationRecord
   belongs_to :activable, polymorphic: true
   validates :user, :activable, presence: true
 
-  def self.friend_feed(user=nil)
+  def self.recently_active(user=nil)
     return nil unless user
     Activity.limit(10).order('created_at DESC').where('user_id IN (?)', user.friendee_ids).includes(user: [:profile])
+  end
+
+  def self.newsfeed(user=nil)
+    return nil unless user
+    Activity.where('(activable_type = ? OR activable_type = ? ) AND user_id IN (?)', 'Photo', 'Post', user.friendee_ids.clone << user.id ).order('created_at DESC').includes(activable: [:user])
   end
 
   def date

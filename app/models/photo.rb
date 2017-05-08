@@ -3,7 +3,7 @@ class Photo < ApplicationRecord
   belongs_to :user
   has_many :comments, as: :commentable, dependent: :destroy
   has_attached_file :image,
-    styles: {  small: '200x150'},
+    styles: {  small: '200x150', medium: '476x259'},
     default_url: ':style_missing.png'
   has_many :likes, as: :likeable, dependent: :destroy
   has_many :likers, through: :likes, source: :user

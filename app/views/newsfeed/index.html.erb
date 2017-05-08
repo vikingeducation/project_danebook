@@ -22,7 +22,7 @@
   <div class="col-sm-8">
     <section class="timeline-feed">
       <%= render partial: 'shared/post_form', locals: { user: @user, post: @post} %>
-      <%= render partial: 'shared/post', collection: @posts, as: :post %>
+      <%= render partial: 'newsfeed', collection: @posts, as: :post %>
       <%= will_paginate @posts, class: 'custom-pagination', previous_label: '&laquo;', next_label: '&raquo;' %>
     </section>
   </div>

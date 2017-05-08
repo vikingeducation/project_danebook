@@ -1,7 +1,10 @@
 <article class="row post">
   <%= render partial: 'shared/post_profile', locals: {post: post} %>
   <div class="col-xs-12">
-    <p><%= post.body %></p>
+    <p>
+      <%= (link_to (image_tag post.image.url(:medium)), photo_path(post)) if post.class.name == 'Photo' %>
+      <%= post.body if post.class.name == 'Post' %>
+    </p>
   </div>
   <footer class="post-footer col-xs-12">
     <span class="post-action"><%= link_to 'Unlike', post_like_path(post, current_user), method: :delete if post.liked_by?(current_user) %> </span>

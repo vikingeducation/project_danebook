@@ -14,15 +14,26 @@ describe Activity do
     end
   end
   context 'class methods' do
-    describe 'friend_feed' do
+    describe 'recently_active' do
       it 'does not throw an error if argument missing' do
-        expect{Activity.friend_feed}.not_to raise_error
+        expect{Activity.recently_active}.not_to raise_error
       end
-      it 'returns activities in reverse chronological error' do
+      it 'returns activities in reverse chronological order' do
         user.friendees.each do |f|
           create(:activity, :for_post, user: f)
         end
-        expect(Activity.friend_feed(user).first.created_at).to be > (Activity.friend_feed(user).last.created_at)
+        expect(Activity.recently_active(user).first.created_at).to be > (Activity.recently_active(user).last.created_at)
+      end
+    end
+    describe 'newsfeed' do
+      it 'does not throw error if argument missing' do
+        expect{ Activity.newsfeed}.not_to raise_error
+      end
+      it 'returns posts in reverse chronological order' do
+        user.friendees.each do |f|
+          create(:activity, :for_post, user: f)
+        end
+        expect(Activity.newsfeed(user).first.created_at).to be > (Activity.recently_active(user).last.created_at)
       end
     end
   end

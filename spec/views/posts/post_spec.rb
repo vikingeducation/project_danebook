@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'posts/_post.html.erb' do
+describe 'shared/_post.html.erb' do
   let(:user){ create(:user, :with_profile)}
   let(:friend){ create(:user, :with_profile)}
   let(:popular_post){ create(:post, :with_likes, likes_count: 5, )}
@@ -40,6 +40,11 @@ describe 'posts/_post.html.erb' do
       post.reload
       render partial: 'shared/post', locals: {post: post}
       expect(rendered).to have_content("You and #{friend.full_name}")
+    end
+    it 'has link to photo page if post is a photo' do
+      post = create(:photo, user: user)
+      render partial: 'shared/post', locals: {post: post}
+      expect(rendered).to match(photo_path(post))
     end
   end
 

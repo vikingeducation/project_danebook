@@ -1,6 +1,7 @@
 class PhotosController < ApplicationController
   before_action :set_user, only: [:index, :new, :create]
   skip_before_action :authenticate_user!, only: [:new, :index, :show, :create]
+  layout 'single_column'
 
   def index
     @photos = @user.photos

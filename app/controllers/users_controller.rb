@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:edit, :update, :destroy]
   skip_before_action :authenticate_user!, only: [:new, :create, :show]
+  layout :set_layout
 
   def index
     if params[:q]
@@ -14,6 +15,7 @@ class UsersController < ApplicationController
   def new
     @user = User.new
     @user.build_profile
+    render layout: 'plain'
   end
 
   def create
@@ -59,6 +61,17 @@ class UsersController < ApplicationController
 
   def profile_params
     params.require(:user).permit(profile_attributes: [:id, :college, :hometown, :current_city, :telephone, :about, :quote])
+  end
+
+  private
+
+  def set_layout
+    case action_name
+    when 'index'
+      'application'
+    else
+      'single_column'
+    end
   end
 
 

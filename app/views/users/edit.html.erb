@@ -1,16 +1,7 @@
-       <%= render partial: 'shared/profile_header' %>
-<section class="row">
-  <div class="col-xs-12">
-    <div class="info-box row">
-      <header class="col-xs-12">
-        <h2 class="module-title">About</h2>
-        <%= link_to "Edit Your Profile", edit_user_path(@user), {class: 'btn btn-primary btn-sm module-edit'} %>
-      </header>
-      <div class="col-xs-12">
-        <div class="row">
-          <%= render partial: 'profile_form', locals: {user: @user} %>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+<%= content_for :module_title do %>
+  About
+  <%= link_to "Edit Your Profile", edit_user_path(@user), {class: 'btn btn-primary btn-sm module-edit'} %>
+<% end %>
+<%= content_for :module_body do %>
+  <%= render partial: 'profile_form', locals: {user: @user} %>
+<% end %>

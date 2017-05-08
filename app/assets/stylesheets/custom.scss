@@ -28,6 +28,18 @@ $light-gray: #f9f9f9;
   background-color: #2561b3;
   color: #fff;
 }
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #fff;
+}
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+  background-color: transparent;
+}
+
+@media (max-width: 767px) {
+.navbar-default .navbar-nav .open .dropdown-menu>li>a {
+  color: #fff;
+}
+}
 
 .dropdown-menu.friend-requests {
   li {

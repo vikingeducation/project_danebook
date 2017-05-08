@@ -1,4 +1,5 @@
 class FriendshipsController < ApplicationController
+  layout 'single_column'
 
   def create
     @friendship = current_user.initiated_friendships.where(friendee_id: params[:user_id]).first_or_initialize

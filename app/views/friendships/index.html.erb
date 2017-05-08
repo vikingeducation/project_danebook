@@ -1,15 +1,6 @@
-<%= render partial: 'shared/profile_header' %>
-<section class="row">
-  <div class="col-xs-12">
-    <div class="info-box row">
-      <header class="col-xs-12">
-        <h2 class="module-title">Friends</h2>
-      </header>
-      <div class="col-xs-12">
-        <div class="friend-grid row">
-          <%= render partial: 'friend', collection: @friends.includes(:profile), as: :friend %>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+<% content_for :module_title do  
+  'Friends'
+  end %>
+<%= content_for :module_body do 
+render partial: 'friend', collection: @friends.includes(:profile), as: :friend
+ end %>

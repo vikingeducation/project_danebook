@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
-
   skip_before_action :authenticate_user!, only: [:index]
+  layout 'timeline'
 
   def index
     @user =  params[:user_id] ? User.find(params[:user_id]) : current_user

@@ -10,6 +10,8 @@
 
 <ul class="nav navbar-nav navbar-right">
 
+  <li><%= link_to "Requests" %></li>
+  
   <li><%= link_to current_user.first_name, newsfeed_path %></li>
   
   <li><%= link_to "Log Out", logout_path, method: :delete %></li>

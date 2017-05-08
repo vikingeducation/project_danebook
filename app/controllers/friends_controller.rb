@@ -19,10 +19,6 @@ class FriendsController < ApplicationController
 
   def destroy
     friend = User.find(params[:user_id])
-    # @friending = Friending.where(friendee_id: friend.id,
-    #                             friender_id: current_user.id) ||
-    #             Friending.where(friendee_id: current_user.id,
-    #                             friender_id: friend.id)
     if current_user.delete_friendship(friend)
       flash[:success] = 'Unfriended!'
       redirect_to user_timeline_path(friend.id)

@@ -9,25 +9,17 @@
   <% end %>
 </div>
 
-<!-PHOTOS->
-
 <div class="row">
-    <div class="section-content col-sm-12 photos-content">
+    <div class="section-content col-sm-12">
 
         <% @user.photos.each do |photo| %>
-        <section class="photo">
-          <div class="publish-wrap">
-            <%= photo_link(photo) %>
-            <p class="publish-date"><%= posted_on(photo.created_at) %></p>
-          </div>
-        </section>
-
+          <section class="photo">
+            <div class="publish-wrap">
+              <%= photo_link(photo) %>
+              <p class="publish-date"><%= posted_on(photo.created_at) %></p>
+            </div>
+          </section>
         <% end %>
 
     </div>
 </div>
-
-  <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.min.js"></script>

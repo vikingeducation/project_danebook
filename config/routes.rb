@@ -18,15 +18,14 @@ Rails.application.routes.draw do
                                   :index]
     resources :photos, :only => [:index, :show]
   end
-  
-  resource :session, :only => [:new, :create, :destroy]
-
-  resources :comments, :likes, :only => [:create, :destroy]
-  resources :photos, :only => [:new, :create, :destroy, :update]
 
   get '/users/:id/about',
     to: 'users#about',
     as: 'about_user'
-
+  
+  resource :session, :only => [:new, :create, :destroy]
+  resources :friend_requests, only: [:index]
+  resources :comments, :likes, :only => [:create, :destroy]
+  resources :photos, :only => [:new, :create, :destroy, :update]
 
 end

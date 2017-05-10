@@ -4,6 +4,7 @@ class Friending < ApplicationRecord
   belongs_to :friend_recipient, :foreign_key => :friendee_id,
                                 :class_name => 'User'
 
+  validates :friender, :friendee, presence: true
   validates :friendee_id, uniqueness: { scope: :friender_id }
 
 end

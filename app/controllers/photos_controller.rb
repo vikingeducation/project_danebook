@@ -32,9 +32,8 @@ class PhotosController < ApplicationController
   end
 
   def update
-    set_photo
-    if current_user.save
-      flash[:success] = "Photo set"
+    if set_photo && current_user.save
+      flash[:success] = "Photos updated!"
       redirect_to user_photos_path(current_user)
     else
       flash[:warning] = current_user.errors.full_messages
@@ -67,11 +66,11 @@ class PhotosController < ApplicationController
     end
   end
 
-def redirect_if_empty_form
-  unless params[:photo]
-    flash[:warning] = 'Empty form!'
-    redirect_to new_photo_path
+  def redirect_if_empty_form
+    unless params[:photo]
+      flash[:warning] = 'Empty form!'
+      redirect_to new_photo_path
+    end
   end
-end
 
 end

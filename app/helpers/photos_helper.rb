@@ -18,7 +18,7 @@ module PhotosHelper
 
   def cover_photo(user)
     if user.cover_photo.nil?
-      image_tag 'default.jpg'
+      image_tag 'default.jpg', class: "img-responsive"
     else
       image_tag user.cover_photo.image.url
     end

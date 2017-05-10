@@ -9,7 +9,7 @@ class FriendsController < ApplicationController
     if current_user != @friendee
       current_user.friendee_users << @friendee
       current_user.save
-      flash[:success] = 'You have a new friend!'
+      flash[:success] = 'Friend request sent!'
       redirect_to user_timeline_path(params[:user_id])
     else
       flash[:warning] = @friending.errors.full_messages
@@ -23,7 +23,7 @@ class FriendsController < ApplicationController
       flash[:success] = 'Unfriended!'
       redirect_to user_timeline_path(friend.id)
     else
-      flash[:warning] = 'still friends sorry'
+      flash[:warning] = 'Something went wrong when unfriending.'
       redirect_to user_timeline_path(friend.id)
     end
   end

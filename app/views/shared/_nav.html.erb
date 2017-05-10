@@ -9,7 +9,8 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand">Danebook</a>
+        <li><%= link_to "Danebook", user_timeline_path(current_user.id), class: "navbar-brand" %></li>
+        <!-- <a class="navbar-brand">Danebook</a> -->
     </div>
 
     <% if signed_in_user? %>

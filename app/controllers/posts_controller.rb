@@ -9,7 +9,7 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build(post_params)
     if @post.save
-      flash[:success] = 'Post created'
+      flash[:success] = 'Your post was successfully created!'
       redirect_to user_timeline_path(current_user)
     else
       flash[:warning] = @post.errors.full_messages
@@ -20,7 +20,7 @@ class PostsController < ApplicationController
   def destroy
     @post = current_user.posts.find(params[:id])
     if @post.destroy
-      flash[:success] = "Post deleted!"
+      flash[:success] = "Your post was successfully deleted!"
       redirect_to user_timeline_path(current_user)
     else
       flash[:warning] = @post.errors.full_messages

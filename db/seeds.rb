@@ -40,5 +40,4 @@ Post.all.each do |post|
 end
 puts "DONE"
 
-
 puts "SEEDING COMPLETE"

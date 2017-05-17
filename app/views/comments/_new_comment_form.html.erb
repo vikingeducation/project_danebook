@@ -1,0 +1,11 @@
+<%= form_for commentable.comments.build do |comment_fields| %>
+
+  <%= comment_fields.hidden_field :commentable_type, value: commentable.class %>
+  
+  <%= comment_fields.hidden_field :commentable_id, value: commentable.id %>
+
+  <%= comment_fields.text_area :content, placeholder: 'Write a comment...', class: 'form-control' %><br>
+
+  <%= comment_fields.submit 'Comment', class: 'pull-right btn btn-info' %>
+
+<% end %>

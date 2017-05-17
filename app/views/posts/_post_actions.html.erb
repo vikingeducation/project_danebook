@@ -1,0 +1,12 @@
+<div class="post-actions">
+
+  <%= like_or_unlike(post) %>
+
+  <% if user == current_user %>
+    <%= link_to 'Delete', user_post_path(user, post), method: :delete, data: { confirm: 'Are you sure?' }, class: 'pull-right' %>
+  <% end %>  
+
+  <p><%= like_count(post) %></p>
+
+</div>
+

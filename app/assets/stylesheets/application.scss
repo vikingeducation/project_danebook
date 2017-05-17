@@ -1,0 +1,138 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+/*
+============================
+FLASH
+============================
+*/
+
+.alert {
+  margin-top: -20px;
+}
+
+/*
+============================
+NAVIGATION BAR
+============================
+*/
+
+.navbar-static-top {
+  background-color: #6666ff;
+  .navbar-brand {
+    color: #fff;
+  }
+  .navbar-form {
+    .search {
+      width: 400px;
+    }
+  }
+  a {
+    color: #fff;
+  }
+}
+
+/*
+============================
+HEADER
+============================
+*/
+
+
+header {
+  height: 350px;
+  width: 100%;
+  background-size: 100%;
+  border: 2px solid #ddd;
+  margin-top: -20px;
+  position: relative;
+  .cover-photo {
+    overflow: hidden;
+    width: 100%;
+    height: 346px;
+  }
+  .profile-photo {
+    position: absolute;
+    top: -90px;
+    left: 15px;
+    border: 2px solid black;;
+    img {
+      width: 100px;
+      height: 100px;
+    }
+  }
+  h3 {
+    position: absolute; 
+    top: -80px;
+    font-size: 40px;
+  }
+  .friend-button {
+    position: absolute;
+    top: -50px;
+  }
+}
+
+.toolbar {
+  height: 42px;
+  width: 100%;
+  border: 2px solid #ddd;
+  border-top: none;
+  .menu-item {
+    height: 42px;
+    padding-top: 10px;
+  }
+  .menu-link {
+    height: 42px;
+    padding-top: 10px;
+  }
+}
+
+.section-title {
+  margin-top: 30px;
+  border: 2px solid #eee;
+  background-color: #eee;
+}
+
+.section-button {
+  margin-top: 15px;
+}
+
+.table-borderless {
+    td {
+    border: none !important;
+    }
+}
+
+.section-content {
+  border: 2px solid #eee;
+  border-top: none;
+  margin-bottom: 40px;
+  padding-bottom: 30px;
+}
+
+/*
+============================
+FOOTER
+============================
+*/
+
+footer {
+  margin-top: 100px;
+}

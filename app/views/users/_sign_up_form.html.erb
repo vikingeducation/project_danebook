@@ -1,0 +1,49 @@
+<%= form_for @user, html: { class: 'signup' } do |user_fields| %>
+  
+  <div class="form-group">
+    <div class="row">
+      <div class="col-sm-6">
+        <%= user_fields.text_field :first_name, placeholder: 'First Name', class: 'form-control name-form' %>
+      </div>
+      <div class="col-sm-6">
+        <%= user_fields.text_field :last_name, placeholder: 'Last Name', class: 'form-control' %>      
+      </div>        
+    </div>
+  </div>
+
+  <%= user_fields.text_field :email, placeholder: 'Your Email', class: 'form-group form-control' %>
+
+
+  <%= user_fields.password_field :password, placeholder: 'Your New Password', class: 'form-group form-control' %>
+  <%= user_fields.password_field :password_confirmation, placeholder: "Confirm Your Password", class: 'form-group form-control' %>
+
+  <h3>Birthday</h3>
+
+  <div class="form-inline form-group">
+    <%= user_fields.select :birth_month, 
+                           (1..12).map{ |i| [i,i] }, 
+                           { prompt: 'Month' },
+                           class: 'birth-form form-control' %>
+    <%= user_fields.select :birth_date,
+                           (1..31).map{ |i| [i,i] }, 
+                           { prompt: 'Date' },
+                           class: 'birth-form form-control' %>
+    <%= user_fields.select :birth_year,
+                           (1900..2017).map{ |i| [i,i] }, 
+                           { prompt: 'Year' },
+                           class: 'birth-form form-control' %>
+  </div>
+
+
+  <div class="form-group">
+    <%= user_fields.radio_button :gender, true %>
+    <%= user_fields.label :gender, "Female", class: 'gender-form' %>
+
+    <%= user_fields.radio_button :gender, false %>
+    <%= user_fields.label :gender, 'Male' %>  
+  </div>
+
+  <%= user_fields.submit 'Sign Up!', class: 'btn btn-success btn-block' %>
+
+
+<% end %>

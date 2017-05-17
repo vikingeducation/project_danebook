@@ -1,0 +1,17 @@
+<%= render partial: 'shared/header', locals: { user: @user } %>
+
+<div class="row section-title">
+  <h1 class="text-center">Friends</h1>
+</div>
+
+<div class="row">
+  <div class="section-content col-sm-12 ">
+    
+    <% @user.all_friends.each do |friend| %>
+      <%= render partial: 'friend', locals: { friend: friend, 
+                                              user: @user } %>
+    <% end %>
+
+  </div>
+</div>
+

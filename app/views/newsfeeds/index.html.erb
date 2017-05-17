@@ -1,0 +1,12 @@
+<div class="row">  
+      <%= render partial: 'newsfeed_sidebar', locals: { user: @user, friends: @friends } %>
+      <div class="col-sm-8">
+        <%= render partial: 'posts/new_post' %>
+        
+        <% @posts.all.each do |post| %>
+          <p>
+            <%= render partial: 'posts/post', locals: { post: post, user: post.user } %>  
+          </p>
+        <% end %> 
+      </div>
+</div>

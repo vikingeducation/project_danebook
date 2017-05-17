@@ -1,0 +1,10 @@
+<div class="newsfeed-sidebar col-sm-4">
+  <%= render partial: 'newsfeed_user', locals: { user: user } %>
+  <div class="row">
+    <h3>Recently Active</h3>
+    <hr>
+    <% friends.each do |friend| %>
+      <%= render partial: 'recently_active_friend', locals: { friend: friend } %>
+    <% end %>
+  </div>
+</div>

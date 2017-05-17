@@ -1,0 +1,25 @@
+<%= render partial: 'shared/header', locals: { user: current_user } %>
+
+<div class="row section-title">
+  <h1 class="col-sm-offset-2 col-sm-8 text-center">Photos</h1>
+  <% if @user == current_user %>
+    <div class="col-sm-2 section-button">
+      <%= link_to 'Add Photo', new_photo_path, class: 'pull-right btn btn-info' %>
+    </div>
+  <% end %>
+</div>
+
+<div class="row">
+    <div class="section-content col-sm-12">
+
+        <% @user.photos.each do |photo| %>
+          <section class="photo">
+            <div class="publish-wrap">
+              <%= photo_link(photo) %>
+              <p class="publish-date"><%= posted_on(photo.created_at) %></p>
+            </div>
+          </section>
+        <% end %>
+
+    </div>
+</div>

@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="user-profile col-sm-3">
+    <div class="row">
+      <%= profile_photo(@user) %>
+    </div>
+  </div>
+
+  <div class="col-sm-9">
+    <h2><%= link_to full_name(@user), user_timeline_path(@user) %></h2>
+    <h4><%= link_to 'Edit Profile', edit_user_path(@user) %></h4>
+  </div>
+</div>

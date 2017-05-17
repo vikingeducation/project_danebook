@@ -1,0 +1,45 @@
+<%= render partial: 'shared/header', locals: { user: @user } %>
+
+<div class="row section-title">
+  <h1 class="text-center">Photos</h1>
+</div>
+
+<div class="row">
+  <div class="section-content col-sm-12 photos-content">
+
+    <div class="col-sm-7">
+      <%= render partial: 'photo_on_show', locals: { photo: @photo } %>
+    </div>
+
+        
+    <div class="col-sm-5">
+
+    <%= render partial: 'photo_poster', locals: { photo: @photo } %> 
+
+
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="photo-comments">
+          <div class="photo-likes">
+          <strong><%= like_or_unlike(@photo) %> </strong>
+          <p><%= like_count(@photo) %></p>
+          
+            </div>  
+
+          <%= render partial: 'photo_comments', locals: { photo: @photo } unless @photo.comments.empty? %>
+
+          <%= render partial: 'comments/new_comment_form', locals: { commentable: @photo } %>
+        </div>
+      </div>
+    </div>
+
+
+
+    </div>
+
+
+
+
+
+  </div>
+</div>

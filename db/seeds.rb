@@ -40,11 +40,5 @@ Post.all.each do |post|
 end
 puts "DONE"
 
-puts "creating photos..."
-User.all.each do |user|
-    
-end
-puts "DONE"
-
 
 puts "SEEDING COMPLETE"

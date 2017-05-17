@@ -6,8 +6,7 @@ class FriendsController < ApplicationController
 
   def create
     @friendee = User.find([params[:user_id]])
-    if current_user != @friendee
-      current_user.friendee_users << @friendee
+    if current_user.friendee_users << @friendee
       current_user.save
       flash[:success] = 'Friend request sent!'
       redirect_to user_timeline_path(params[:user_id])

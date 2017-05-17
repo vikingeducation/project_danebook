@@ -22,9 +22,9 @@ describe UsersController do
       cookies[:auth_token] = existing_user.auth_token
     end
 
-    it 'redirects to user timeline if already signed in' do
+    it 'redirects to newsfeed if already signed in' do
       get :new
-      expect(response).to redirect_to user_timeline_path(existing_user)
+      expect(response).to redirect_to newsfeed_path
     end
 
     it 'cannot access edit form if unauthorized' do

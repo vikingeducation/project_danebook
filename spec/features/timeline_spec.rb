@@ -51,36 +51,5 @@ feature 'Timeline' do
     end         
   end
 
-  context "other's timeline" do
-    before do
-      visit root_path
-      sign_in(other_user)
-      fill_in 'post[content]', with: 'beyonce is having twins'
-      click_button('Post')
-      click_link('Log Out')
-      sign_in(user)
-      visit user_timeline_path(other_user)
-    end
-
-    specify 'comment and delete own comments' do
-      # add comment
-      expect(page).to have_field('comment[content]')
-      fill_in 'comment[content]', with: 'amazing'
-      expect{ click_button('Comment') }.to change(Comment, :count).by(1)
-
-      # delete comment
-      expect(page).to have_link('Delete')
-      expect{ click_link('Delete') }.to change(Comment, :count).by(-1)
-    end
-
-    specify 'like and unlike post' do
-      expect(page).to have_link('Like')
-      expect{ click_link('Like') }.to change(Like, :count).by(1)
-
-      expect(page).to have_link('Unlike')
-      expect{ click_link('Unlike') }.to change(Like, :count).by(-1)
-    end
-  end
-
 
 end

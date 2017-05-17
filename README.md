@@ -4,25 +4,29 @@ A social network clone inspired by Facebook.
 
 ## Features
 
-- Session authentication
+- Sign up and log in via sessions authentication
 
 ![Sign Up](https://github.com/eating247/danebook/blob/master/screenshots/signup.png)
 
-- Update personal information in their profiles
+- Share personal information in profiles
 
 ![Edit Profile](https://github.com/eating247/danebook/blob/master/screenshots/about-edit.png)
 
+- Profile page
+
 ![Profile](https://github.com/eating247/danebook/blob/master/screenshots/about.png)
 
-- Upload and view photos
+- Upload photos
 
 ![Photos](https://github.com/eating247/danebook/blob/master/screenshots/photos-index.png)
+
+- View, comment, and like other user's photos
 
 ![View Photo](https://github.com/eating247/danebook/blob/master/screenshots/photos-show.png)
 
 - Add friends
 
-![Friends](https://github.com/eating247/danebook/blob/master/screenshots/friends.png)
+![Friends](https://github.com/eating247/danebook/blob/master/screenshots/friends-index.png)
 
 - Share posts
 - Comment + like posts and photos

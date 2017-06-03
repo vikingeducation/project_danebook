@@ -10,19 +10,20 @@ LIGHTBOX.Main = (function() {
     _isHovering = false;
     _$contents = contents;
     _setUpContents();
-    _setUpFrame();
     _voila();
     _setUpClose();
 
   }
 
   function _setUpContents() {
-    $('body').append(_$contents);
+    var promise = $('body').append(_$contents).promise();
+    promise.done(function() {
+      _setUpFrame();
+    });
   }
 
   function _setUpClose() {
     $('.close-toggle').on('click', function() {
-
       $('#lightbox').remove();
     });
     $('#lightbox .frame').on('mouseenter', function() {
@@ -50,6 +51,7 @@ LIGHTBOX.Main = (function() {
     var windowWidth = $(window).width();
     var contentWidth = _$contents.width() > 800 ? 800 : _$contents.width();
     var contentHeight = $('#lightbox .frame').height();
+    console.log(windowHeight, windowWidth, contentWidth, contentHeight);
 
     $('#lightbox .frame').css({
       top: (windowHeight - contentHeight) / 2 + 'px',

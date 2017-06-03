@@ -1,4 +1,4 @@
-<%= simple_form_for [post, comment], html: {class: 'col-xs-12 comment-form' } do |f| %>
-  <%= f.input :body, label: false, placeholder: 'Write a comment', required: true %>
+<%= simple_form_for [post, comment], html: {class: 'col-xs-12 comment-form' }, remote: true do |f| %>
+  <%= f.input :body, label: false, placeholder: 'Write a comment', required: true, input_html: {data: {'for-clearance': 'comment'}} %>
   <%= f.button :submit, 'Comment', class: 'btn btn-primary pull-right' %>
 <% end %>

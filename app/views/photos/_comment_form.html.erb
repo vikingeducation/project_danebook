@@ -1,4 +1,4 @@
-<%= simple_form_for [@photo, @comment], html: {class: 'col-xs-12 comment-form mtm mbm' } do |f| %>
+<%= simple_form_for [@photo, @comment], html: {class: 'col-xs-12 comment-form mtm mbm' }, remote: true do |f| %>
   <%= f.input :body, label: false, placeholder: 'Write a comment', required: true %>
   <%= f.button :submit, 'Comment', class: 'btn btn-primary pull-right' %>
 <% end %>

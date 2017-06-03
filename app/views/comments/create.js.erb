@@ -1,0 +1,13 @@
+console.log('hello from create comment.js.erb');
+
+var $comment = $("<%= j(render partial: 'shared/comment', locals: { comment: @comment}) %>").hide();
+var $flash = $("<%= j(render partial: 'shared/flash') %>");
+var $article = $('article[data-post-id="<%= @comment.commentable_id %>"');
+
+$article.find('div[data-content="comments"]').append($comment);
+
+$comment.delay(300).slideDown(1000);
+$('main').prepend($flash);
+
+// clear comment form
+$article.find('[data-for-clearance=comment]').val(null);

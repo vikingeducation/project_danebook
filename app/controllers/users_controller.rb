@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   def new
     @user = User.new
     @user.build_profile
-    render layout: 'plain'
+    render layout: 'application'
   end
 
   def create

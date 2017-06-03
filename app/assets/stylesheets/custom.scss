@@ -299,6 +299,11 @@ $light-gray: #f9f9f9;
     margin-top: 5px;
   }
 
+  /* COMMENT CONTAINER */
+  div[data-toggle-target=comments] {
+    display:none;
+  }
+
   /* COMMENT FORM */
   .comment-form {
     background: $light-gray;

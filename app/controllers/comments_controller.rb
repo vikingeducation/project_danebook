@@ -4,11 +4,20 @@ class CommentsController < ApplicationController
   def create
     @comment = current_user.comments.build(comment_params.merge({commentable_id: @params, commentable_type: params[:commentable]}))
     if @comment.save
-      flash[:success] = "Comment posted!"
+      respond_to do |format|
+        format.html do
+          redirect_to @redirection_path
+          flash[:success] = "Comment posted!"
+        end
+        format.js
+      end
     else
-      flash[:error] = "We couldn't post that comment"
+      respond_to do |format|
+        format.html { flash[:error] = "We couldn't post that comment"}
+        format.js
+      end
+      redirect_to @redirection_path
     end
-    redirect_to @redirection_path
   end
 
   def destroy
@@ -17,14 +26,28 @@ class CommentsController < ApplicationController
     @user = @comment.user
     if is_self?
       if @comment.destroy
-        flash[:success] = "Your comment has been deleted"
+        respond_to do |format|
+          format.html do
+            redirect_to :back
+            flash[:success] = "Your comment has been deleted"
+          end
+          format.js
+        end
       else
+        respond_to do |format|
+          format.html {redirect_to :back}
+          format.js
+        end
         flash[:error] = "That comment cannot be deleted"
       end
+      # if trying to delete someone else's comment:
     else
       flash[:error] = "Sorry, you can't delete that comment"
+      respond_to do |format|
+        format.html { redirect_to :back}
+        format.js
+      end
     end
-    redirect_to :back
   end
 
   private

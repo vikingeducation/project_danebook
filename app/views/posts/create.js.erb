@@ -1,0 +1,11 @@
+console.log('create.js.erb');
+
+var $post = $("<%= j(render partial: 'shared/post', locals: { post: @post}) %>").hide();
+var $flash = $("<%= j(render partial: 'shared/flash') %>");
+$('div[data-content="posts"]').prepend($post);
+
+$post.delay(300).slideDown(1000);
+$('main').prepend($flash);
+
+// clear form
+$('#post-form').find('[data-for-clearance=true]').val(null);

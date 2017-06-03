@@ -14,11 +14,17 @@ class PostsController < ApplicationController
     fallback = request.origin == root_path ? root_path : user_profile_path(@user)
     if is_self?
       if @post.save
-        flash[:success] = "Yay! Posted."
-        redirect_back(fallback_location: fallback)
+        flash.now[:success] = "Yay! Posted."
+        respond_to do |format|
+          format.html { redirect_back(fallback_location: fallback) }
+          format.js
+        end
       else
-        flash[:error] = "Sorry, but you can't post nothing."
-        redirect_back(fallback_location: fallback)
+        flash.now[:error] = "Sorry, but you can't post nothing."
+        respond_to do |format|
+          format.html { redirect_back(fallback_location: fallback)}
+          format.js { render :create_fail }
+        end
       end
     else
       flash[:error] = "Sorry, you can only post on your own timeline for now"
@@ -31,11 +37,17 @@ class PostsController < ApplicationController
     @user = @post.user
     if is_self?
       if @post.destroy
-        flash[:success] = "Your post has been deleted"
-        redirect_to user_profile_path(@post.user)
+        respond_to do |format|
+          format.html { redirect_to user_profile_path(@post.user) }
+          format.js
+        end
+        flash.now[:success] = "Your post has been deleted"
       else
-        flash[:error] = "Sorry, we couldn't delete that post"
-        render :index
+        respond_to do |format|
+          format.html {  render :index}
+          format.js { render :destroy_fail }
+        end
+        flash.now[:error] = "Sorry, we couldn't delete that post"
       end
     else
       flash[:error] = "Sorry, you can't do that"

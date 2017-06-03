@@ -13,7 +13,7 @@ class User < ApplicationRecord
   has_many :likes, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :comment_likes, through: :comments, source: :likes, dependent: :destroy
-  has_many :photos
+  has_many :photos, dependent: :destroy
   has_many :activities, as: :activable
 
   #  self join for friendship
@@ -59,7 +59,7 @@ class User < ApplicationRecord
   end
 
   def full_name
-    first_name + ' ' + last_name
+    self.first_name + ' ' + self.last_name
   end
 
   def birthday

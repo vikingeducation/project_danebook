@@ -1,5 +1,5 @@
 <% if comment.persisted? %>
-  <article class="row post-comment">
+  <article class="row post-comment" data-comment-id="<%= comment.id %>">
     <div class="col-xs-12 media">
       <div class="media-left">
         <%= link_to image_tag('user_silhouette_generic.png', class: 'img-thumbnail media-object', alt: 'Generic User Image') %>
@@ -11,7 +11,7 @@
         <footer>
           <span class="post-action">
             <%= render partial: 'shared/comment_likes_button', locals: { comment: comment}  %>
-            <span class="text-muted"><%= comment.post_likes(current_user) %></span><span class="pull-right"><%= link_to "Delete", comment_path(comment), method: :delete, data: {confirm: 'Are you sure you want to delete this comment?'} if comment.user == current_user %></span></span>
+            <span class="text-muted"><%= comment.post_likes(current_user) %></span><span class="pull-right"><%= link_to "Delete", comment_path(comment), method: :delete, data: {confirm: 'Are you sure you want to delete this comment?'}, remote: true if comment.user == current_user %></span></span>
         </span></span></footer>
   </div>
 </div>

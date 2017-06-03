@@ -1,6 +1,6 @@
 <%= content_for :module_title do %>
   Photos
-  <%= link_to "Add Photos", upload_user_photos_path(@user), {:class => "btn btn-primary btn-sm module-edit"} if is_self? %>
+  <%= link_to "Add Photos", upload_user_photos_path(@user), html: {:class => "btn btn-primary btn-sm module-edit"} if is_self? %>
 <% end %>
 <%= content_for :module_body do %>
   <div class="col-xs-12">

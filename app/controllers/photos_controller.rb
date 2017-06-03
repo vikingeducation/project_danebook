@@ -28,6 +28,11 @@ class PhotosController < ApplicationController
     @photo = Photo.find(params[:id])
     @user = @photo.user
     return redirect_to user_photos_path(@user) unless @user.friendees.include?(current_user) || is_self?
+
+    respond_to do |format|
+      format.html
+      format.js
+    end
     @comment = @photo.comments.build
   end
 

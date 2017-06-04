@@ -15,7 +15,7 @@ class UsersController < ApplicationController
   def new
     @user = User.new
     @user.build_profile
-    render layout: 'application'
+    render layout: 'application', template: 'users/new'
   end
 
   def create
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
       redirect_to user_about_path(@user)
     else
       flash[:error] = "We couldn't sign you up. Please check the form for errors"
-      render :new
+      render layout: 'application', template: 'users/new'
     end
   end
 

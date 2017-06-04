@@ -4,8 +4,6 @@ class User < ApplicationRecord
 
   after_create :send_welcome_email
 
-  after_create :send_welcome_email
-
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable
   has_one :profile, inverse_of: :user, dependent: :destroy
@@ -59,7 +57,7 @@ class User < ApplicationRecord
   end
 
   def full_name
-    self.first_name + ' ' + self.last_name
+    first_name + ' ' + last_name
   end
 
   def birthday

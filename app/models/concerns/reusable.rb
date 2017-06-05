@@ -17,6 +17,7 @@ module Reusable
   end
 
   def post_likes(user)
+    self.reload # if we don't reload this, the likes_count won't be updated and the code below will blow up
     return '' unless self.likes_count
     msg = ''
     if self.liked_by?(user)

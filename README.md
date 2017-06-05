@@ -11,11 +11,12 @@ A [Viking Code School](http://vikingcodeschool.com) Project
 
 - User Authentication and registration with Devise gem 
 - Web and local image file uploads to Amazon S3 
-- User activity feed 
-- Delayed welcome emails with Delayed Job gem
+- Delayed welcome emails with Delayed Job gem. Welcome emails include friend recommendations.
 - Lightbox for viewing photos in the gallery
 - Limited access to photos for logged out users
 - Limited posting and commenting ability for logged out users
+- Notification emails for comments 
+-
 
 ### Notes
 - Set `ENV['USE_DELAYED_EMAILS']`  to `'true'` to enable delayed emails, then do the other stuff to get them sent out. 

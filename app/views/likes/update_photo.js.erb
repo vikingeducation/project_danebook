@@ -1,0 +1,5 @@
+var $newButton = $('<%= j(render partial: "shared/photo_like_button", locals: {post: @post} ) %>');
+
+var $originalButton = $('[data-content="photo-reaction"]')
+
+$originalButton.html($newButton);

@@ -32,7 +32,8 @@ Rails.application.routes.draw do
     resources :comments, only: [:create], defaults: { commentable: 'Post'}
   end
   resources :comments, only: [:destroy] do
-    resources :comment_likes, only: [:create, :destroy]
+    resources :likes, only: [:create, :destroy], defaults: { likeable: 'Comment'}
+    # resources :comment_likes, only: [:create, :destroy]
   end
   resources :friendships, path: 'friends', as: 'friends', only: [:destroy] do
     patch 'accept' => 'friendships#update', on: :member

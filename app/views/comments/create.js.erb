@@ -7,7 +7,6 @@ if ("<%= j(@comment.commentable_type) %>" == 'Post'){
 $article.find('div[data-content="comments"]').append($comment);
 }
 else {
-  console.log('photo ');
   $article = $('.photo-comments');
   $article.append($comment);
 }

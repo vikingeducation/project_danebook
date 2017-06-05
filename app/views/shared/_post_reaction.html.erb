@@ -1,0 +1,12 @@
+<% unlike_path = post.class.name == 'Photo' ? photo_like_path(post, current_user) : post_like_path(post, current_user) %>
+<% like_path = post.class.name == 'Photo' ? photo_likes_path(post, current_user) : post_likes_path(post) %>
+<span class="post-action">
+  <%= if post.liked_by?(current_user)
+  link_to 'Unlike', unlike_path, method: :delete, data: {'post-id': post.id, 'content': 'post-like-button'}, remote: true
+else
+  link_to 'Like', like_path, method: :post, remote: true, data: {'post-id': post.id, 'content': 'post-like-button'}
+end
+%>
+  <a data-toggle="comments" data-post-id="<%= post.id %>" class="fake-link">Comment</a>
+</span>
+<span><%= post.post_likes(current_user) %></span>

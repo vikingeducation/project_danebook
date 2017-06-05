@@ -1,0 +1,35 @@
+<div class="col-xs-12 col-sm-8">
+  <%= image_tag @photo.image.url(:original), class: 'full-width pbs', id: 'photo' %>
+  <div class="photo-actions text-right">
+    <% if is_self? %>
+      <%= link_to 'Set as Profile', avatar_photo_path(@photo), method: :patch %><br>
+      <%= link_to 'Set as Cover', cover_photo_path(@photo), method: :patch %><br>
+      <%= link_to 'Delete Photo', photo_path(@photo), method: :delete %>
+    <% end %>
+  </div>
+</div>
+<div class="col-xs-12 col-sm-4 photo-comments">
+  <div class="row">
+    <div class="col-xs-12">
+      <div class="media-left">
+        <%= link_to image_tag(@user.avatar(:thumb), class: 'img-thumbnail media-object', alt: 'Generic User Image'), user_profile_path(@user) %>
+      </div>
+      <div class="media-body">
+        <h5 class="media-heading"><%= link_to @user.full_name, user_profile_path(@user) %></h5>
+        <p class="small text-muted"><%= @photo.upload_date %></p>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12" data-content="photo-reaction">
+      <%= render partial: 'shared/photo_like_button', locals: {post: @photo} %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-12">
+      <%= render partial: 'shared/comment_form', locals: { post: @photo, comment: @comment} %>
+    </div>
+  </div>
+  <%= render partial: 'shared/comment', collection: @photo.comments.includes(:user), as: :comment, locals: { user: @user}  %>
+</div>
+</div>

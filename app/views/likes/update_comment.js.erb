@@ -1,0 +1,5 @@
+var $newButton = $('<%= j(render partial: "shared/comment_likes_button", locals: {comment: @comment}) %>');
+
+var $originalButton = $('a[data-content="comment-like-button"][data-comment-id=<%= @comment.id %>]');
+
+$originalButton.replaceWith($newButton);

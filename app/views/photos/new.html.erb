@@ -1,0 +1,17 @@
+<% content_for :module_title do %>
+  Photos
+<% end %>
+<%= content_for :module_body do %>
+  <div class="col-xs-12 text-center">
+    <p class="h5">Paste the URL to a photo on the web...</p>
+    <%= form_for [@user, @photo] do |f| %>
+      <%= f.text_field :image, class: 'form-control', value: '' %>
+      <%= f.submit 'Use Web Photo', class: 'btn btn-primary mts' %>
+    <% end %>
+    <p class="h5">Select a photo from your hard drive...</p>
+    <%= simple_form_for [@user, @photo] do |f| %>
+      <%= f.file_field :image, accept: 'image/png,image/gif,image/jpeg' %>
+      <%= f.submit 'Upload Photo', class: 'btn btn-success mbs' %>
+    <% end %>
+  </div>
+<% end %>

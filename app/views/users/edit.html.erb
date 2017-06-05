@@ -1,0 +1,7 @@
+<%= content_for :module_title do %>
+  About
+  <%= link_to "Edit Your Profile", edit_user_path(@user), {class: 'btn btn-primary btn-sm module-edit'} %>
+<% end %>
+<%= content_for :module_body do %>
+  <%= render partial: 'profile_form', locals: {user: @user} %>
+<% end %>

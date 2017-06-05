@@ -1,0 +1,5 @@
+var $post = $('article[data-post-id=<%= @post.id %>]');
+var $flash = $("<%= j(render partial: 'shared/flash') %>");
+$('main').prepend($flash);
+
+$post.delay(300).fadeOut();

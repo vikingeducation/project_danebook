@@ -1,0 +1,3 @@
+<p>Hi, <%= @recipient.first_name %>,</p>
+<p><%= link_to @commenter.full_name, user_profile_url(@commenter) %> left the following comment on your post:</p>
+<blockquote><%= @comment.body %></blockquote>

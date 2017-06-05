@@ -1,0 +1,19 @@
+
+var $comment = $("<%= j(render partial: 'shared/comment', locals: { comment: @comment}) %>").hide();
+var $flash = $("<%= j(render partial: 'shared/flash') %>");
+var $article;
+if ("<%= j(@comment.commentable_type) %>" == 'Post'){
+  $article = $('article[data-post-id="<%= @comment.commentable_id %>"');
+$article.find('div[data-content="comments"]').append($comment);
+}
+else {
+  $article = $('.photo-comments');
+  $article.append($comment);
+}
+
+
+$comment.delay(300).slideDown(1000);
+$('main').prepend($flash);
+
+// clear comment form
+$article.find('[data-for-clearance=comment]').val(null);

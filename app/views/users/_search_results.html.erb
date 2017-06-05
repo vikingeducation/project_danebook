@@ -1,0 +1,23 @@
+<div class="col-md-6">
+  <div class="friend-item search-item">
+    <div class="media">
+      <div class="media-left">
+        <%= link_to user_profile_path(friend) do  %>
+          <%= image_tag friend.avatar(:small), class: 'media-object img-thumbnail' %>
+        <% end %>
+      </div>
+      <div class="media-body media-middle">
+        <div class="media-heading">
+          <h4 class="h5 mbn"><%= link_to friend.full_name, user_profile_path(friend) %></h4>
+          <p class="text-muted"><%= friend.friendships_count %> Friends</p>
+          <p class="mts">Currently lives in <%= friend.profile.current_city %></p>
+          <p>From <%= friend.profile.hometown %></p>
+          <p>Born on <%= friend.profile.birthday %></p>
+        </div>
+      </div>
+      <div class="media-right media-middle">
+        <%= render partial: 'shared/friend_action_button', locals: { friend: friend} %>
+      </div>
+    </div>
+  </div>
+</div>

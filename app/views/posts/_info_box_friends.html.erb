@@ -1,0 +1,12 @@
+<div class="info-box row">
+  <header class="col-xs-12">
+    <h4>Friends (<%= user.friendships_count %>)</h4>
+  </header>
+  <div class="col-xs-12">
+    <% if friends.empty?  %>
+      <p class="text-center">This user has no friends yet</p>
+    <% else %>
+      <%=  render partial: 'friend', collection: friends, as: :friend %>
+      <%= '<p class="text-center"><a href="#">See More Friends</a></p>'.html_safe if user.friendships_count > 9 %>
+    <% end %>
+  </div>

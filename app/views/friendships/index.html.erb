@@ -1,0 +1,6 @@
+<% content_for :module_title do  
+  'Friends'
+  end %>
+<%= content_for :module_body do 
+render partial: 'friend', collection: @friends.includes(:profile), as: :friend
+ end %>

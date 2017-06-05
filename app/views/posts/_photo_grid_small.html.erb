@@ -1,0 +1,10 @@
+    <% index = photo_counter + 1 %>
+<% if index % 3 == 0 %>
+  <div class="row thumbnail-grid">
+  <% end %>
+  <div class="col-xs-4">
+    <%= link_to image_tag(photo.image.url(:small), class: 'img-thumbnail'), photo_path(photo)  %>
+  </div>
+  <% if index % 3 == 0 %>
+  </div>
+<% end %>

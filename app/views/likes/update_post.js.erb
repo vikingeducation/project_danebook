@@ -1,0 +1,4 @@
+ var $newContent= $('<%= j(render partial: "shared/post_reaction", locals: {post: @post} ) %>');
+var $originalContent = $('article[data-post-id=<%= @post.id %>] [data-content="post-reaction"]');
+
+$originalContent.html($newContent);

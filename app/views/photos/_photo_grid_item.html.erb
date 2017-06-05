@@ -1,0 +1,12 @@
+<div class="col-xs-4 col-sm-3">
+  <figure class="photo-item">
+    <% if @user.friendees.include?(current_user) || is_self? %>
+      <%= link_to photo_path(photo) do %>
+        <div class="photo-bg" style="background-image: url('<%= photo.image.url(:small) %>')"></div>
+      <% end  %>
+    <% else  %>
+      <div class="photo-bg" style="background-image: url('<%= photo.image.url(:small) %>')"></div>
+    <% end %>
+    <figcaption><span>Uploaded <%= photo.upload_date %></span></figcaption>
+  </figure>
+</div>

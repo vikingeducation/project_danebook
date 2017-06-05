@@ -1,0 +1,11 @@
+<% content_for :sidebar do %>
+  <%= render 'info_box_about', profile: @user.profile %>
+  <%= render partial: 'info_box_photos', locals: {photos: @user.photos.limit(9), user: @user } %>
+  <%= render 'info_box_friends', friends: @user.friendees, user: @user %>
+<% end %>
+<% content_for :main do %>
+  <%= render partial: 'shared/post_form', locals: { user: @user, post: @post} %>
+  <div data-content="posts">
+    <%= render partial: 'shared/post', collection: @posts, as: :post %>
+  </div>
+<% end %>

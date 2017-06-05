@@ -1,0 +1,21 @@
+<article class="row post" data-post-id="<%= post.id %>">
+  <%= render partial: 'shared/post_profile', locals: {post: post} %>
+  <div class="col-xs-12">
+    <p>
+      <%= (link_to (image_tag post.image.url(:medium)), photo_path(post)) if post.class.name == 'Photo' %>
+      <%= post.body if post.class.name == 'Post' %>
+    </p>
+  </div>
+  <footer class="post-footer col-xs-12">
+    <span class="pull-right"><%= link_to "Delete", user_post_path(post.user, post), method: :delete, data: {confirm: 'Are you sure you want to delete this post?'}, remote: true if post.user == current_user %></span>
+    <div class="post-reaction" data-content="post-reaction">
+      <%= render partial: 'shared/post_reaction', locals: {post: post} %>
+    </div>
+  </footer>
+  <div data-toggle-target="comments">
+    <div class="post-comments col-xs-12 post-footer" data-content="comments">
+      <%= render partial: 'shared/comment', collection: post.comments.order('created_at ASC').includes(:user), as: :comment %>
+    </div>
+    <%= render partial: 'shared/comment_form', locals: { post: post, comment: post.comments.build}  %>
+  </div>
+</article>

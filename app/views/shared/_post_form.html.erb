@@ -1,0 +1,13 @@
+<div class="row info-box">
+  <header class="col-xs-12">
+    <h4>Post</h4>
+  </header>
+  <%= simple_form_for [user, post], html: {class: 'form-group post-form col-xs-12', id: 'post-form'}, remote: true do |f| %>
+    <%= f.input :body, label: false, input_html: {data: { 'for-clearance': 'post'}} %>
+    <footer class="row post-footer">
+      <div class="col-xs-12">
+        <%= f.button :submit, "Post", class: 'btn btn-primary pull-right' %>
+      </div>
+    </footer>
+  <% end %>
+</div>

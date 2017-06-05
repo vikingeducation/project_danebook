@@ -1,0 +1,6 @@
+ <%=  if comment.liked_by?(current_user)
+      link_to "Unlike", comment_like_path(comment, current_user.id), method: :delete, remote: true,  data: { 'comment-id': comment.id, content: 'comment-like-button'}
+      else
+        link_to 'Like', comment_likes_path(comment), method: :post, remote: true, class: 'btn btn-link pan', data: { 'comment-id': comment.id, content: 'comment-like-button'}
+     end
+%>

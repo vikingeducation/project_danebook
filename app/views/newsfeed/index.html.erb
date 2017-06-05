@@ -1,0 +1,31 @@
+<section class="row mts">
+  <aside class="col-sm-4 newsfeed-sidebar">
+    <div class="media">
+      <div class="media-left">
+        <%= link_to user_profile_path(@user) do %>
+          <%= image_tag @user.avatar(:thumb), class: 'media-object small', alt: "Avatar for #{@user.full_name}" %>
+        <% end %>
+      </div>
+      <div class="media-body">
+        <h4 class="media-heading"><%= link_to @user.full_name, user_profile_path(@user)  %></h4>
+        <%= link_to 'Edit Profile', user_about_path(@user) %>
+      </div>
+    </div>
+    <h4 class="mtm">Recently Active</h4>
+    <div class="activity-feed">
+      <%= render partial: 'activity_feed', collection: @feed, as: :activity %>
+      <p class="text-center mts text-bold">
+        <%= link_to "See All Your Friends", user_friends_path(@user) %>
+      </p>
+    </div>
+  </aside>
+  <div class="col-sm-8">
+    <section class="timeline-feed">
+      <%= render partial: 'shared/post_form', locals: { user: @user, post: @post} %>
+      <div data-content="posts">
+        <%= render partial: 'newsfeed', collection: @posts, as: :post %>
+      </div>
+      <%= will_paginate @posts, class: 'custom-pagination', previous_label: '&laquo;', next_label: '&raquo;' %>
+    </section>
+  </div>
+</section>

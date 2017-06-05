@@ -1,0 +1,15 @@
+<%= content_for :module_title do %>
+  Photos
+  <%= link_to "Add Photos", upload_user_photos_path(@user), {:class => "btn btn-primary btn-sm module-edit"} if is_self? %>
+<% end %>
+<%= content_for :module_body do %>
+  <div class="col-xs-12">
+    <div class="row photo-grid">
+      <% if @photos.blank? %>
+        <h3 class="text-center">No photos yet.</h3>
+      <% else %>
+        <%= render partial: 'photo_grid_item', collection: @photos, as: :photo %>
+      <% end %>
+    </div>
+  </div>
+<% end %>

@@ -14,7 +14,7 @@ describe "users/show.html.erb" do
     end
     it 'can see button to edit profile' do
       render
-      expect(rendered).to have_text('Edit Your Profile')
+      expect(view.content_for(:module_title)).to have_text('Edit Your Profile')
     end
     it 'cannot see button to edit profile if is not current user' do
       @not_current = create(:user, :with_profile)
@@ -24,7 +24,7 @@ describe "users/show.html.erb" do
       end
       assign(:user, create(:user, :with_profile))
       render
-      expect(rendered).not_to have_text('Edit Your Profile')
+      expect(view.content_for(:module_title)).not_to have_text('Edit Your Profile')
     end
   end
   context 'logged out' do
@@ -39,7 +39,7 @@ describe "users/show.html.erb" do
     end
     it 'can\'t see button to edit profile' do
       render
-      expect(rendered).not_to have_text('Edit Your Profile')
+      expect(view.content_for(:module_title)).not_to have_text('Edit Your Profile')
     end
   end
 end

@@ -16,14 +16,15 @@ describe 'posts/index.html.erb' do
     end
     it 'shows the new form post' do
       render
-      expect(rendered).to match('name="post\[body\]"')
+      expect(view.content_for(:main)).to match('name="post\[body\]"')
+
     end
     it 'shows a user\'s posts' do
       assign(:posts, create_list(:post, 3, user: user))
       render
-      expect(rendered).to have_text(user.posts.last.body)
-      expect(rendered).to have_text(user.posts.first.body)
-      expect(rendered).to have_text(user.posts.second.body)
+      expect(view.content_for(:main)).to have_text(user.posts.last.body)
+      expect(view.content_for(:main)).to have_text(user.posts.first.body)
+      expect(view.content_for(:main)).to have_text(user.posts.second.body)
     end
 
   end

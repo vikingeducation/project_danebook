@@ -15,11 +15,11 @@ describe 'photos/new.html.erb' do
     end
     it 'has button to add photo from web' do
       render
-      expect(rendered).to match('Use Web Photo')
+      expect(view.content_for(:module_body)).to match('Use Web Photo')
     end
     it 'has button to upload photo' do
       render
-      expect(rendered).to match('Upload Photo')
+      expect(view.content_for(:module_body)).to match('Upload Photo')
     end
   end
 end

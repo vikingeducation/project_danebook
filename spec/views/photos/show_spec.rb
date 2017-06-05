@@ -18,7 +18,7 @@ describe 'photos/show.html.erb' do
   end
   it 'displays poster\'s name' do
     render
-    expect(rendered).to have_link(user.full_name)
+    expect(view.content_for(:module_body)).to have_link(user.full_name)
   end
   it 'does not show action buttons' do
     render
@@ -39,16 +39,16 @@ describe 'photos/show.html.erb' do
     end
     it 'does not show action buttons on friend\'s photo page' do
       render
-      expect(rendered).not_to have_link('Set as Profile')
-      expect(rendered).not_to have_link('Set as Cover')
-      expect(rendered).not_to have_link('Delete Photo')
+      expect(view.content_for(:module_body)).not_to have_link('Set as Profile')
+      expect(view.content_for(:module_body)).not_to have_link('Set as Cover')
+      expect(view.content_for(:module_body)).not_to have_link('Delete Photo')
     end
     it 'shows action buttons on own photo page' do
       assign(:user, user)
       render
-      expect(rendered).to have_link('Set as Profile')
-      expect(rendered).to have_link('Set as Cover')
-      expect(rendered).to have_link('Delete Photo')
+      expect(view.content_for(:module_body)).to have_link('Set as Profile')
+      expect(view.content_for(:module_body)).to have_link('Set as Cover')
+      expect(view.content_for(:module_body)).to have_link('Delete Photo')
     end
   end
 end

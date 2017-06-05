@@ -13,10 +13,12 @@ class CommentsController < ApplicationController
       end
     else
       respond_to do |format|
-        format.html { flash[:error] = "We couldn't post that comment"}
+        format.html do
+          flash[:error] = "We couldn't post that comment"
+          redirect_to @redirection_path
+        end
         format.js
       end
-      redirect_to @redirection_path
     end
   end
 
@@ -69,6 +71,7 @@ class CommentsController < ApplicationController
       @post = Photo.find(@params)
       @redirection_path = photo_path(@post)
     end
+
   end
 
 end

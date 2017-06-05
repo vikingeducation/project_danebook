@@ -15,7 +15,8 @@ APP.Main = (function() {
   function _listenForCommentToggle() {
     console.log('listen for comment toggle');
     $('a[data-toggle="comments"]').on('click', function() {
-      var $post = $('article[data-post-id=' + $(this).data('post-id') + ']')
+      console.log('comments clicked');
+      var $post = $('article[data-post-id=' + $(this).data('post-id') + ']');
       $post.find('[data-toggle-target=comments]').slideToggle();
     })
   }
@@ -27,6 +28,6 @@ APP.Main = (function() {
 
 })();
 
-$(document).ready(function() {
+$(document).on('turbolinks:load', function() {
   APP.Main.init();
 });

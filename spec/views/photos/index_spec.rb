@@ -14,7 +14,7 @@ describe 'photos/index.html.erb' do
     end
     it 'has button to upload photos if logged in' do
       render
-      expect(rendered).to have_link('Add Photos')
+      expect(view.content_for(:module_title)).to have_link('Add Photos')
     end
   end
   context 'logged out' do

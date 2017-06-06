@@ -1,7 +1,11 @@
 class StaticPagesController < ApplicationController
 
   def home
-    @home = true
+    if signed_in_user?
+      render :timeline
+    else
+      redirect_to new_user_path
+    end
   end
 
   def timeline

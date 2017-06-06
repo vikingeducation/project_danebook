@@ -12,9 +12,16 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
   </head>
 
-  <body <% if @home %>style="padding: 0 0"<% end %>>
+  <body <% unless signed_in_user? %>style="padding: 0 0"<% end %>>
 
-    <%= render :partial => "shared/navbar" %>
+    <% if signed_in_user? %>
+      <%= render :partial => "shared/signed_in_navbar" %>
+    <% else %>
+      <%= render :partial => "shared/not_signed_in_navbar" %>
+    <% end %>
+
+    <%= render partial: "shared/flash_msgs" %>
+
     <%= yield %>
   </body>
 </html>

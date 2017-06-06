@@ -1,0 +1,9 @@
+<% unless flash.blank? %>
+<div class="flash-msgs">
+  <% flash.each do |k, v| %>
+  <div class="alert alert-<%= k %> text-center">
+    <%= v %>
+  </div>
+  <% end %>
+</div>
+<% end %>

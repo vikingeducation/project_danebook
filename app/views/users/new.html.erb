@@ -1,0 +1,27 @@
+
+<div id="homepage" class="container">
+  <div class="row">
+
+    <div class="col-md-7">
+      <div id="info-msgs">
+        <h2>Connect with all your friends!</h2>
+        <br>
+        <ul>
+          <li><h4>See photos and updates in your news feed.</h4></li> <br>
+          <li><h4>Post your status for the world to see from your profile</h4></li> <br>
+          <li><h4>Get in touch with your friends by "friending" them</h4></li> <br>
+          <li><h4>Get in touch with your friends by "friending" them</h4></li> <br>
+        </ul>
+      </div>
+    </div>
+
+    <div class="col-md-5">
+      <div id="signup-form">
+        <h1>Sign Up</h1>
+        <%= render partial: "shared/form_errors", locals: {obj: @user} %>
+        <%= render partial: "sign_up_form", locals: {user: @user} %>
+
+      </div>
+    </div>
+  </div>
+</div>

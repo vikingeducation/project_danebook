@@ -2,6 +2,12 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
   root "static_pages#home"
 
+  resources :users
+
+  resource :session, only: [:new, :create, :destroy]
+  get "/login" => "sessions#create"
+  get "/logout" => "sessions#destroy"
+
   get "/" => "static_pages#home"
   get "/timeline" => "static_pages#timeline"
   get "/friends" => "static_pages#friends"

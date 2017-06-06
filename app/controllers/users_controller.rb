@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      sign_in(@user)
+      permanent_sign_in(@user)
       flash[:success] = "User created successfully"
       redirect_to root_path
     else
@@ -28,8 +28,10 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
+      flash[:success] = "Profile updated successfully"
       redirect_to user_path(@user.id)
     else
+      flash.now[:danger] = "Failed to update profile"
       render :edit
     end
   end

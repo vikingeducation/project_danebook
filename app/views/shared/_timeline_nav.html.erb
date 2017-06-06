@@ -1,0 +1,19 @@
+<div class="timeline-nav">
+  <div class="container">
+    <div class="nav nav-pills">
+      <li><%= link_to "Timeline", timeline_path %></li>
+      <li><%= link_to "About", about_path %></li>
+      <li>
+        <%= link_to friends_path do %>
+          Friends <span class="label label-primary">26k</span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to photos_path do %>
+          Photos <span class="label label-primary">555</span>
+        <% end %>
+      </li>
+    </div>
+
+  </div>
+</div>

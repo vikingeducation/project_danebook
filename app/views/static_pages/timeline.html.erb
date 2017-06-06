@@ -1,0 +1,120 @@
+<!-- cover -->
+<%= render :partial => "shared/jumbotron" %>
+
+<%= render :partial => "shared/timeline_nav" %>
+
+<div class="container">
+
+  <div class="row">
+    <!-- sidebar -->
+    <%= render :partial => "shared/sidebar" %>
+
+    <div class="col-sm-8">
+      <!-- new post -->
+      <%= render :partial => "shared/new_post" %>
+
+      <!-- post -->
+      <%= render :partial => "shared/post" %>
+      
+      <!-- liked post -->
+      <div class="panel">
+        <div class="panel-heading">
+          <div class="media">
+            <div class="pull-left">
+              <a href="#">
+                <img class="user-thumbnail" src="https://s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif" alt="...">
+              </a>
+            </div>
+            <div class="media-body">
+              <h4 class="media-heading"><a href="#">Hermione Granger</a></h4>
+              <span class="text-info">Posted on Thursday 6/1/2014</span>
+            </div>
+          </div>
+
+        </div>
+        <div class="panel-body">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </div>
+        <div class="panel-footer">
+          <p>
+            <a href="#">Like</a> |
+            <a href="#">Comment</a> |
+            <a href="#">Delete</a>
+          </p>
+          <p>
+            <a href="#">Hermione Granger</a> likes this.
+          </p>
+        </div>
+      </div>
+      <!-- post with comments and comment form -->
+      <div class="panel">
+        <div class="panel-heading">
+          <div class="media">
+            <div class="pull-left">
+              <a href="#">
+                <img class="user-thumbnail" src="https://s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif" alt="...">
+              </a>
+            </div>
+            <div class="media-body">
+              <h4 class="media-heading"><a href="#">Hermione Granger</a></h4>
+              <span class="text-info">Posted on Thursday 6/1/2014</span>
+            </div>
+          </div>
+
+        </div>
+        <div class="panel-body">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </div>
+        <div class="panel-footer">
+          <!-- actions -->
+          <p>
+            <a href="#">Unlike</a> |
+            <a href="#">Delete</a>
+          </p>
+          <!-- likes -->
+          <p>
+            You and <a href="#">Hermione Granger</a> and 3 others like this.
+          </p>
+          <!-- comments -->
+          <ul class="media-list">
+            <!-- a comment -->
+            <li class="media">
+              <div class="pull-left">
+                <a href="#">
+                  <img class="user-thumbnail" src="https://s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif" alt="...">
+                </a>
+              </div>
+              <div class="media-body">
+                <p class="media-heading"><a href="#">Hermione Granger</a> said on Thusday 6/1/2014:</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <p><a href="#">Like</a> | 3 other people like this.</p>
+              </div>
+            </li>
+            <!-- another comment -->
+            <li class="media">
+              <div class="pull-left">
+                <a href="#">
+                  <img class="user-thumbnail" src="https://s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif" alt="...">
+                </a>
+              </div>
+              <div class="media-body">
+                <p class="media-heading"><a href="#">Hermione Granger</a> said on Thusday 6/1/2014:</p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <p><a href="#">Like</a> | 3 other people like this. | <a href="#">Delete</a></p>
+              </div>
+            </li>
+          </ul>
+          <!-- comment form -->
+          <p><textarea class="form-control" rows="8" cols="80" placeholder="Write a comment..."></textarea></p>
+          <p class="text-right">
+            <button class="btn btn-danger">Cancel</button>
+            <button class="btn btn-primary">Comment</button>
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>

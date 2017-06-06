@@ -1,0 +1,139 @@
+// Place all the styles related to the static_pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+#homepage {
+  .navbar-default {
+    background-color: #4278ca;
+    color: white;
+    padding-bottom: 15px;
+
+    .navbar-brand {
+      font-size: inherit;
+      color: white;
+    }
+  }
+}
+
+body {
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+
+// ----------------------------------------------------------------
+// main nav
+// ----------------------------------------------------------------
+
+.navbar-default {
+  background-color: #4278ca;
+  color: white;
+
+  .navbar-brand {
+    img {
+      height: 25px;
+    }
+    font-size: 36px;
+    height: auto;
+    color: white;
+  }
+
+  .navbar-nav {
+    li {
+      a {
+        color: white;
+        font-size: 20px;
+      }
+    }
+  }
+}
+
+// ----------------------------------------------------------------
+// jumbotron cover
+// ----------------------------------------------------------------
+
+.jumbotron {
+  height: 520px !important;
+  padding: 48px 0;
+  background-image: linear-gradient(rgba(30,30,30,0.5), rgba(30,30,30,0.5)), url(https://s3.amazonaws.com/viking_education/web_development/web_app_eng/hogwarts_small.jpg);
+  background-position: center;
+  background-attachment: fixed;
+}
+
+// ----------------------------------------------------------------
+// dp
+// ----------------------------------------------------------------
+
+.dp {
+  position: absolute;
+  top: 6rem;
+  margin-top: 27em;
+}
+
+.dp-img {
+  width: 156px;
+  max-height: 200px;
+}
+
+.dp-profile-name {
+  color: white;
+  text-decoration: none;
+  font-size: 2.3em;
+  margin-left: 1.7rem;
+}
+
+// ----------------------------------------------------------------
+// timeline nav
+// ----------------------------------------------------------------
+
+.timeline-nav {
+  .nav {
+    margin-left: 17%;
+  }
+  background: white;
+  margin-top: -2.1em;
+  padding: 1.6rem;
+}
+
+// ----------------------------------------------------------------
+// user panel
+// ----------------------------------------------------------------
+
+.user-panel {
+  .panel-heading {
+    text-align: center;
+  }
+  .edit-btn {
+    position: relative;
+    top: -3.4em;
+  }
+  .panel-body {
+    margin: 15px 30px;
+  }
+
+  .save-btn {
+    margin-top: 20px;
+    width: 100%;
+  }
+  .form-control {
+    display: inline-block;
+    width: auto;
+  }
+}
+
+// ----------------------------------------------------------------
+// friends
+// ----------------------------------------------------------------
+
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+
+.user-thumbnail {
+  max-height: 64px;
+  max-width: 64px;
+}
+
+.panel {
+  border: 1px solid #ddd
+}

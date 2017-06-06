@@ -16,13 +16,19 @@ ActiveRecord::Schema.define(version: 20170606140616) do
   enable_extension "plpgsql"
 
   create_table "profiles", force: :cascade do |t|
-    t.integer  "user_id",    null: false
+    t.integer  "user_id",         null: false
     t.string   "first_name"
     t.string   "last_name"
     t.datetime "birthday"
     t.string   "gender"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "college"
+    t.string   "hometown"
+    t.string   "currently_lives"
+    t.string   "telephone"
+    t.text     "words"
+    t.text     "about"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.index ["user_id"], name: "index_profiles_on_user_id", unique: true, using: :btree
   end
 

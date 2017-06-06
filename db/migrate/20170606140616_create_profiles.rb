@@ -6,6 +6,12 @@ class CreateProfiles < ActiveRecord::Migration[5.0]
       t.string :last_name
       t.datetime :birthday
       t.string :gender
+      t.string :college
+      t.string :hometown
+      t.string :currently_lives
+      t.string :telephone
+      t.text :words
+      t.text :about
 
       t.timestamps
     end

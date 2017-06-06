@@ -1,7 +1,7 @@
 <!-- cover -->
-<%= render :partial => "shared/jumbotron" %>
+<%= render :partial => "shared/jumbotron", locals: {user: @user} %>
 
-<%= render :partial => "shared/timeline_nav" %>
+<%= render :partial => "shared/timeline_nav", locals: {user: @user} %>
 
 <div class="container">
 
@@ -15,7 +15,7 @@
 
       <!-- post -->
       <%= render :partial => "shared/post" %>
-      
+
       <!-- liked post -->
       <div class="panel">
         <div class="panel-heading">

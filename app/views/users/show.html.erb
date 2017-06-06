@@ -1,0 +1,60 @@
+<!-- cover -->
+<%= render :partial => "shared/jumbotron", locals: {user: @user} %>
+
+<%= render partial: "shared/timeline_nav", locals: {user: @user} %>
+
+<% profile = @user.profile %>
+
+<div class="container">
+  <div class="panel panel-default user-panel">
+    <div class="panel-heading">
+      <h1>About</h1>
+      <% if current_user.id == @user.id %>
+        <%= link_to "Edit your profile",
+                    edit_user_path(current_user.id),
+                    class: "btn btn-primary btn-small pull-right edit-btn" %>
+      <% end %>
+    </div>
+    <div class="panel-body">
+      <div class="row">
+        <div class="col-md-5">
+          <div class="row">
+            <h3>Basic Information</h3>
+            <div class="col-md-4">
+              <p><strong>Birthday</strong>:</p>
+              <p><strong>College</strong>:</p>
+              <p><strong>Hometown</strong>:</p>
+              <p><strong>Currently lives</strong>:</p>
+            </div>
+            <div class="col-md-8">
+              <p><%= profile.birthday.strftime '%b %d, %Y' %></p>
+              <p><%= profile.college %></p>
+              <p><%= profile.hometown %></p>
+              <p><%= profile.currently_lives %></p>
+            </div>
+          </div>
+
+          <div class="row">
+            <h3>Contact Information</h3>
+            <div class="col-md-4">
+              <p><strong>Email</strong>:</p>
+              <p><strong>Telephone</strong>:</p>
+            </div>
+            <div class="col-md-8">
+              <p><%= @user.email %></p>
+              <p><%= profile.telephone %></p>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-md-7">
+          <h3>Words to Live By</h3>
+          <p><%= profile.words %></p>
+
+          <h3>About Me</h3>
+          <p><%= profile.about %></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

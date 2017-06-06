@@ -1,5 +1,4 @@
 class SessionsController < ApplicationController
-  before_action :require_current_user
 
   def create
     @user = User.find_by(email: params[:email])
@@ -11,9 +10,6 @@ class SessionsController < ApplicationController
       flash.now[:danger] = "Failed to log in"
       render :new
     end
-  end
-
-
   end
 
   def destroy

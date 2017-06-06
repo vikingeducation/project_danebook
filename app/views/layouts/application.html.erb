@@ -15,7 +15,7 @@
   <body <% unless signed_in_user? %>style="padding: 0 0"<% end %>>
 
     <% if signed_in_user? %>
-      <%= render :partial => "shared/signed_in_navbar" %>
+      <%= render :partial => "shared/signed_in_navbar", locals: {user: @user} %>
     <% else %>
       <%= render :partial => "shared/not_signed_in_navbar" %>
     <% end %>

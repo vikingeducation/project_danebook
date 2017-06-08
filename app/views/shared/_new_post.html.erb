@@ -1,11 +1,17 @@
-<div class="panel panel-default">
-  <div class="panel-heading text-center">
-    Post
+<%= form_for [user, post], method: :post do |f| %>
+  <div class="panel panel-default">
+    <div class="panel-heading text-center">
+      Post
+    </div>
+    <div class="panel-body">
+      <%= f.text_area :body,
+                      {class: "form-control",
+                       rows: 8,
+                       cols: 80,
+                       placeholder: "What's on your mind?"} %>
+    </div>
+    <div class="panel-footer text-right">
+      <%= f.submit "Post", class: "btn btn-primary" %>
+    </div>
   </div>
-  <div class="panel-body">
-    <textarea class="form-control" rows="8" cols="80" placeholder="What's on your mind?"></textarea>
-  </div>
-  <div class="panel-footer text-right">
-    <button class="btn btn-primary">Post</button>
-  </div>
-</div>
+<% end %>

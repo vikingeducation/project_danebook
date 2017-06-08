@@ -6,6 +6,7 @@ class User < ApplicationRecord
   # -----------------------------------------------------------------
 
   has_one :profile, inverse_of: :user
+  has_many :posts
 
   # -----------------------------------------------------------------
   # Validations

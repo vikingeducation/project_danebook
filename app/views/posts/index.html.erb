@@ -14,7 +14,11 @@
       <%= render :partial => "shared/new_post", locals: {post: @post, user: current_user} %>
 
       <!-- post -->
-      <%= render :partial => "shared/post" %>
+      <% @posts.each do |post| %>
+        <%= render :partial => "shared/post", locals: {post: post} %>
+      <% end %>
+
+      <% if false %>
 
       <!-- liked post -->
       <div class="panel">
@@ -112,6 +116,8 @@
           </p>
         </div>
       </div>
+
+      <% end %>
 
     </div>
 

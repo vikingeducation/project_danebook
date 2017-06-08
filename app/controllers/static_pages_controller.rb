@@ -2,7 +2,7 @@ class StaticPagesController < ApplicationController
 
   def home
     if signed_in_user?
-      redirect_to action: :timeline
+      redirect_to user_posts_path(current_user)
     else
       redirect_to new_user_path
     end
@@ -10,6 +10,7 @@ class StaticPagesController < ApplicationController
 
   def timeline
     @user = current_user
+    @post = current_user.posts.build
   end
 
   def friends

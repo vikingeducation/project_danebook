@@ -25,10 +25,14 @@ class ApplicationController < ActionController::Base
   end
 
   def require_current_user
-    unless params[:id].to_i == current_user.id
+    unless check_user(params[:user_id] || params[:id])
       flash[:warning] = "Unauthorized action"
       redirect_to root_path
     end
+  end
+
+  def check_user(user_id)
+    user_id.to_i == current_user.id
   end
 
   def signed_in_user?

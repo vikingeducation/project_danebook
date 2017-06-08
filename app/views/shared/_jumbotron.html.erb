@@ -4,8 +4,12 @@
       <%= link_to user_path(user.id), class: "dp-profile-name" do %>
         <img class="dp-img" src="https://s3.amazonaws.com/viking_education/web_development/web_app_eng/harry_potter_small.jpg" alt="user image">
         <% profile = user.profile %>
-        <%= profile.first_name %> <%= profile.last_name %>
+        <%= profile.full_name %>
         <i class="glyphicon glyphicon-ok"></i>
+      <% end %>
+
+      <% if user.id != current_user.id %>
+        <%= link_to "Add as Friend", "#", {class: "btn btn-primary btn-small"} %>
       <% end %>
     </div>
   </div>

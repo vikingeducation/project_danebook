@@ -6,6 +6,15 @@ Rails.application.routes.draw do
     resources :posts
   end
 
+  resources :posts do
+    resources :likes, defaults: {likable: "Post"}, only: [:create, :destroy]
+    resources :comments, defaults: {commentable: "Post"}, only: [:new, :create, :destroy]
+  end
+
+  resources :comments do
+    resources :likes, defaults: {likable: "Comment"}, only: [:create, :destroy]
+  end
+
   resource :session, only: [:new, :create, :destroy]
   get "/login" => "sessions#create"
   get "/logout" => "sessions#destroy"

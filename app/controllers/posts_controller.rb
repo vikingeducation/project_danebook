@@ -14,7 +14,7 @@ class PostsController < ApplicationController
       redirect_to root_path
     else
       flash[:danger] = "Failed to create post"
-      render "static_pages/timeline"
+      render :index
     end
   end
 

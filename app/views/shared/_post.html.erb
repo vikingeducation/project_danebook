@@ -3,6 +3,7 @@
     <div class="media">
       <div class="pull-left">
         <%= link_to user_path(post.user.id) do %>
+          <!-- TODO: user profile picture -->
           <img class="user-thumbnail" src="https://s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif" alt="...">
         <% end %>
       </div>
@@ -19,18 +20,65 @@
   <div class="panel-footer">
     <!-- Actions -->
     <p>
-      <u><%= link_to "Like", "#" %></u>
+      <!-- Like -->
+      <% if like = post.liked_by_user?(current_user.id)  %>
+        <u><%= link_to "Unlike", post_like_path(post, like), method: :delete %></u>
+      <% else %>
+        <u><%= link_to "Like", post_likes_path(post), method: :post %></u>
+      <% end %>
+      <!-- end of Like -->
+      <!-- TODO: show comment form with javascript -->
       <u><%= link_to "Comment", "#" %></u>
       <% if post.user.id == current_user.id %>
         <u><%= link_to "Delete", user_post_path(current_user, post), method: :delete, class: "pull-right" %></u>
       <% end %>
     </p>
-    <!-- TODO -->
+
+    <!-- Likes -->
+    <p><%= get_like_text(post, current_user) %></p>
+
+    <!-- comments -->
+    <ul class="media-list">
+      <% post.comments.each do |comment| %>
+        <li class="media">
+          <div class="pull-left">
+            <%= link_to user_path(comment.user.id) do %>
+              <!-- TODO: user profile picture -->
+              <img class="user-thumbnail" src="https://s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif" alt="...">
+            <% end %>
+          </div>
+          <div class="media-body">
+            <p class="media-heading">
+              <%= link_to comment.user.full_name, user_path(comment.user) %>
+              said on <%= comment.created_at.strftime('%b %d, %Y') %>:
+            </p>
+            <p><%= comment.body %></p>
+            <!-- Like -->
+            <p>
+            <% if like = comment.liked_by_user?(current_user.id)  %>
+              <u><%= link_to "Unlike", comment_like_path(comment, like), method: :delete %></u>
+            <% else %>
+              <u><%= link_to "Like", comment_likes_path(comment), method: :post %></u>
+            <% end %>
+            <!-- Likes -->
+            <%= get_like_text(comment, current_user) %>
+            <% if author_of?(comment, current_user) %>
+              <%= link_to "Delete", post_comment_path(post, comment), method: :delete, class: "pull-right" %>
+            <% end %>
+            </p>
+            <!-- end of like -->
+          </div>
+        </li>
+      <% end %>
+    </ul>
     <!-- Comment form -->
-      <p><textarea class="form-control" rows="8" cols="80" placeholder="Write a comment..."></textarea></p>
+    <%= form_for [post, Comment.new] do |f| %>
+      <p><%= f.text_area :body, {class: "form-control", rows: 8, cols: 80, placeholder: "Write a comment..."} %></p>
       <div>
+        <!-- TODO: hide comment form with javascript -->
         <button class="btn btn-danger">Cancel</button>
-        <button class="btn btn-primary pull-right">Comment</button>
+        <%= f.submit "Comment", {class: "btn btn-primary pull-right"} %>
       </div>
+    <% end %>
   </div>
 </div>

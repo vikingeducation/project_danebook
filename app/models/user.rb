@@ -7,6 +7,7 @@ class User < ApplicationRecord
 
   has_one :profile, inverse_of: :user
   has_many :posts
+  has_many :likes
 
   # -----------------------------------------------------------------
   # Validations
@@ -40,6 +41,10 @@ class User < ApplicationRecord
     self.auth_token = nil
     generate_token
     save!
+  end
+
+  def full_name
+    self.profile.first_name + " " + self.profile.last_name
   end
 
 end

@@ -1,7 +1,7 @@
 <div class="timeline-nav">
   <div class="container">
     <div class="nav nav-pills">
-      <li><%= link_to "Timeline", timeline_path %></li>
+      <li><%= link_to "Timeline", user_posts_path(user) %></li>
       <li><%= link_to "About", user_path(user.id) %></li>
       <li>
         <%= link_to friends_path do %>

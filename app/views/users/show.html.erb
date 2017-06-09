@@ -27,7 +27,7 @@
               <p><strong>Currently lives</strong>:</p>
             </div>
             <div class="col-md-8">
-              <p><%= profile.birthday.strftime '%b %d, %Y' %></p>
+              <p><%= humanize_date(profile.birthday) %></p>
               <p><%= profile.college %></p>
               <p><%= profile.hometown %></p>
               <p><%= profile.currently_lives %></p>

@@ -5,3 +5,60 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+def maybe(x)
+  [x, nil].sample
+end
+
+# reset db
+User.delete_all
+Post.delete_all
+Comment.delete_all
+Like.delete_all
+
+# create users
+5.times do
+  fname, lname = Faker::Name.first_name, Faker::Name.last_name
+  usr = User.create(
+    email: Faker::Internet.email(fname + "_" + lname),
+    password_digest: BCrypt::Password.create("foobar123")
+  )
+  # create the profile
+  Profile.create(
+    user_id: usr.id,
+    first_name: fname,
+    last_name: lname,
+    birthday: maybe(Time.now),
+    gender: ["Male", "Female"].sample,
+    college: maybe(Faker::Educator.university),
+    hometown: maybe([Faker::Address.city, Faker::Address.state_abbr].join(", ")),
+    currently_lives: maybe([Faker::Address.city, Faker::Address.state_abbr].join(", ")),
+    telephone: maybe(Faker::PhoneNumber.cell_phone),
+    words: maybe(Faker::Hacker.say_something_smart),
+    about: maybe(Faker::Lorem.paragraph)
+  )
+end
+# create posts
+10.times do
+  Post.create(
+    user_id: User.pluck(:id).sample,
+    body: Faker::Lorem.paragraph
+  )
+end
+
+# create comments
+20.times do
+  commentable = [Post].sample.all.sample
+  commentable.comments.create(
+    user_id: User.pluck(:id).sample,
+    body: Faker::Lorem.paragraph
+  )
+end
+
+# create likes
+40.times do
+  likable = [Post, Comment].sample.all.sample
+  likable.likes.create(
+    user_id: User.pluck(:id).sample
+  )
+end

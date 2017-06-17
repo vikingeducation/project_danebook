@@ -9,7 +9,7 @@
   <div class="panel panel-default user-panel">
     <div class="panel-heading">
       <h1>About</h1>
-      <% if current_user.id == @user.id %>
+      <% if signed_in_user? && current_user.id == @user.id %>
         <%= link_to "Edit your profile",
                     edit_user_path(current_user.id),
                     class: "btn btn-primary btn-small pull-right edit-btn" %>

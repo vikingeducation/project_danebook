@@ -14,6 +14,10 @@
  *= require_self
  */
 
-.field_with_errors input, textarea {
+.field_with_errors textarea {
+  border: 1px solid red;
+}
+
+.field_with_errors textarea {
   border: 1px solid red;
 }

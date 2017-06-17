@@ -13,6 +13,7 @@ class PostsController < ApplicationController
       flash[:success] = "Post created successfully"
       redirect_to root_path
     else
+      @posts = @user.posts
       flash[:danger] = "Failed to create post"
       render :index
     end

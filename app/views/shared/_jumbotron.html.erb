@@ -8,7 +8,7 @@
         <i class="glyphicon glyphicon-ok"></i>
       <% end %>
 
-      <% if user.id != current_user.id %>
+      <% if signed_in_user? && (user.id != current_user.id) %>
         <%= link_to "Add as Friend", "#", {class: "btn btn-primary btn-small"} %>
       <% end %>
     </div>

@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 #Danebook
 
 [Dariusz Biskupski](https://github.com/Visiona/assignment_danebook_goes_live)
@@ -12,5 +12,4 @@ This project comes from [Viking Code School](http://vikingcodeschool.com) course
 danebook
 ========
 
-This is the Real Dane Deal.
->>>>>>> 5d92a86445ce8cb1e62f1a14b9d019bbeaa2e2f0
+

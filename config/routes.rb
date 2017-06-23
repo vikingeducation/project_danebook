@@ -9,9 +9,9 @@ Rails.application.routes.draw do
   get 'about_edit' => 'static_pages#about_edit'
 
   resource :users, :only => [:new, :create]
-  # resource :session => [:new, :create]
-  # get 'login' => 'sessions#new'
-  # get 'logout' => 'sessions#destroy'
+  resource :session, :only => [:new, :create, :destroy]
+  get 'login' => 'sessions#new'
+  delete 'logout' => 'sessions#destroy'
 
   # resources :static_pages, :only => [:home, :timeline]
 end

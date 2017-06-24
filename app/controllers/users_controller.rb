@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @profile = @user.profile.build
   end
 
   def create  
@@ -19,10 +20,29 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+    @user = User.find(params[:id])
+  end
+
 
   private
   def user_params
-  params.require(:user).permit(:first_name, :last_name, :email, :password, :password_confirmation)
+  params.require(:user).permit( :email, :password, 
+                                        :password_confirmation,
+                                        :profile_attributes =>
+                                            [ :user_id,
+                                              :first_name, 
+                                              :last_name, 
+                                              :birth_date, 
+                                              :gender,
+                                              :college,
+                                              :hometown,
+                                              :current_town,
+                                              :telephone,
+                                              :words_to_live,
+                                              :about_me,
+                                              :id,
+                                              :_destroy ])
   end
 
 end

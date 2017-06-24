@@ -19,12 +19,13 @@
   </head>
 
   <body>
-    
-    <%= render "shared/home_navbar"  %>
+    <% if signed_in_user? %>
+      <%= render "shared/logged_navbar"  %>
+    <% else %>
+      <%= render "shared/home_navbar"  %>
+    <% end %>
     
     <%= render "shared/error"  %>
-
-    
 
     <%= yield %>
   </body>

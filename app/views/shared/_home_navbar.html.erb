@@ -16,29 +16,24 @@
       <!--NAVBAR RIGHT-->
       <div class="navbar-right">
         <div class="collapse navbar-collapse" id="form-collapse">
-          <% if signed_in_user? %>
-            <%= submit_tag "#{current_user.email}", class: "btn btn-primary pull-right" %>
-          <% else %>
-            <%= form_tag session_path, :html => {:class => "navbar-form form-group container"} do %>
-              <div class="row">
-                <%= label_tag "Email", nil, class: "control-label col-sm-5" %>
-                <%= label_tag "Password", nil, class: "control-label col-sm-5" %>
-              </div>
-    
-              <div class="row">
-                <div class="col-xs-5">
-                  <%= text_field_tag :email, nil, class: "form-control" %>
-                </div>
-                <div class="col-xs-5">
-                  <%= text_field_tag :password, nil, class: "form-control" %>
-                </div>
-                <div class="col-xs-2">
-                  <%= submit_tag "Log in", class: "btn btn-primary pull-right" %>
-                </div>
-              </div>
-            <% end %>
-          <% end %>
+          <%= form_tag session_path, :html => {:class => "navbar-form form-group container"} do %>
+            <div class="row">
+              <%= label_tag "Email", nil, class: "control-label col-sm-5" %>
+              <%= label_tag "Password", nil, class: "control-label col-sm-5" %>
+            </div>
 
+            <div class="row">
+              <div class="col-xs-5">
+                <%= text_field_tag :email, nil, class: "form-control" %>
+              </div>
+              <div class="col-xs-5">
+                <%= text_field_tag :password, nil, class: "form-control" %>
+              </div>
+              <div class="col-xs-2">
+                <%= submit_tag "Log in", class: "btn btn-primary pull-right" %>
+              </div>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>

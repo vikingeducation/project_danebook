@@ -11,8 +11,8 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       sign_in(@user)
-      flash[:success] = "Congratulated! You have successfully create an account!"
-      redirect_to :about
+      flash[:success] = "Congratulation! You have successfully created an account!"
+      redirect_to root_url
     else
       flash[:notice] = "Error! We couldn't create your account!"
       render :new

@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'static_pages#home'
+  root 'users#new'
 
   get 'home' => 'static_pages#home'
   get 'timeline' => 'static_pages#timeline'

@@ -11,9 +11,7 @@
     <h2>
     About
     </h2>
-    <a class="btn btn-primary" href="about_edit.html" role="button">
-      Edit Your Profile
-    </a>
+    <%= link_to "Edit Your Profile", edit_user_path(@user.id), class: "btn btn-primary" %>
   </section>
   <!--DATA TABLE-->
   <main class="main-about">

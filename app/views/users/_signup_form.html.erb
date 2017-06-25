@@ -21,8 +21,12 @@
         <h4>Birthday</h4>
       </div>
       <div class="col-xs-12">
-        <div class="dropdown col-xs-7">
-          <%= profile_fields.date_select :birth_date, {order: [:year, :month, :day], prompt: { day: 'Day', month: 'Month', year: 'Year' }, start_year: Date.today.year - 18, end_year: Date.today.year - 100, with_css_classes: {class: "dropdown-menu"}, :prefix => ['profile_attributes']['birth_date'] }, {required: true, class: "btn btn-default btn-sm dropdown-toggle col-xs-3"} %>
+        <div class="form-group col-xs-8">
+          <%= profile_fields.select :birth_day, (1..31).map {|d| [d,d]}, {prompt: 'Day'}, class: "btn btn-default btn-sm dropdown-toggle col-xs-3"  %>
+
+          <%= profile_fields.select :birth_month, (1..12).map {|d| [d,d]}, {prompt: 'Month'}, class: "btn btn-default btn-sm dropdown-toggle col-xs-3"  %>
+
+          <%= profile_fields.select :birth_year, (1910..Date.today.year).map {|d| [d,d]}, {prompt: 'Year'}, class: "btn btn-default btn-sm dropdown-toggle col-xs-3"  %>
         </div>
       </div>
       <div class="col-xs-12">

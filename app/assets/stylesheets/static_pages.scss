@@ -15,7 +15,8 @@ $bordertype: 2px solid #222;
 }
 
 body {
-    padding-bottom: 20px;
+    margin-top: 65px;
+    padding-bottom: 60px;
     @media  screen and (max-width: 600px){
         width: 620px;
     }
@@ -245,14 +246,14 @@ table.tab-about {
     table caption {
         text-align: left;
     }
-    table.tab-about th {
+    th {
         font-weight: bold;
         text-align: left;
-        padding-top: 10px;
+        padding-top: 8px;
+        padding-bottom: 8px;
         width: 130px;
     }
     tr td{
-        padding-top: 10px;
         padding-left: 5px;
         width: 250px;
     }

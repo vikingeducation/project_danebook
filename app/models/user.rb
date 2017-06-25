@@ -1,6 +1,6 @@
 class User < ApplicationRecord
 
-  has_one :profile
+  has_one :profile, inverse_of: :user, autosave: true
 
   accepts_nested_attributes_for :profile,
                                 :allow_destroy => true

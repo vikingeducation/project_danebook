@@ -1,27 +1,27 @@
 <nav class="sub-navigation" role="navigation">
-    <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sub-nav-collapse" aria-expanded="false"><span class="caret"></span>Menu
-        </button>
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="sub-nav-collapse">
-            <ul class="nav nav-pills">
-                <li role="presentation" class="<%= current_page?(action: 'timeline') ? 'active' : ' ' %>">
-                    <%= link_to "Timeline", timeline_path %>
-                </li>
-                <li role="presentation" class="<%= current_page?(action: 'about') ? 'active' : ' ' %>">
-                    <%= link_to "About", about_path %>
-                </li>
-                <li role="presentation" class="<%= current_page?(action: 'photos') ? 'active' : ' ' %>">
-                    <%= link_to "Photos<span class='badge'>(123)</span>".html_safe, photos_path %>
-                </li>
-                <li role="presentation" class="<%= current_page?(action: 'friends') ? 'active' : ' ' %>">
-                    <%= link_to "Friends<span class='badge'>(542)</span>".html_safe, friends_path %>
-                </li>
-                <li class="edit-profile pull-right">
-                    <%= link_to "Edit Profile", about_edit_path %>
-                </li>
-            </ul>
-        </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
-</nav>
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sub-nav-collapse" aria-expanded="false"><span class="caret"></span>Menu
+    </button>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="sub-nav-collapse">
+      <ul class="nav nav-pills">
+        <li role="presentation" class=" current_page?(action: '') ? 'active' : ' ' %>">
+          <%= link_to "Timeline", timeline_path %>
+        </li>
+        <li role="presentation" class="<%= current_page?(action: 'show') ? 'active' : ' ' %>">
+          <%= link_to "About", about_path %>
+        </li>
+        <li role="presentation" class=" current_page?(action: '') ? 'active' : ' ' %>">
+          <%= link_to "Photos<span class='badge'>(123)</span>".html_safe, photos_path %>
+        </li>
+        <li role="presentation" class=" current_page?(action: '') ? 'active' : ' ' %>">
+          <%= link_to "Friends<span class='badge'>(542)</span>".html_safe, friends_path %>
+        </li>
+        <li class="edit-profile pull-right">
+          <%= link_to "Edit Profile", about_edit_path %>
+        </li>
+      </ul>
+      </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>

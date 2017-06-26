@@ -12,5 +12,9 @@ class User < ApplicationRecord
             :length => { :in => 4..16},
             :allow_nil => true
 
+  validates   :email,
+              :format => { :with => /@/ },
+              :uniqueness => true
+
 
 end

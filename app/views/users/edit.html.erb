@@ -32,7 +32,7 @@
           </th>
           <td>
             <div class="input-group">
-            <%= profile_fields.text_field :birth_day, :value => "#{@profile.date_of_birth_numbered}", class: "form-control" %>
+              <%= @profile.date_of_birth %>
             </div>
           </td>
         </tr>
@@ -76,7 +76,7 @@
           </th>
           <td>
             <div class="input-group">
-              <%= user_fields.text_field :email, class: "form-control" %>
+              <%= @profile.user.email %>
             </div>
           </td>
         </tr>

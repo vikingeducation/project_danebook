@@ -1,8 +1,5 @@
 class StaticPagesController < ApplicationController
 
-  def home
-
-  end
 
   def timeline
     
@@ -12,16 +9,10 @@ class StaticPagesController < ApplicationController
 
   end
 
-  def about
-
-  end
 
   def photos
 
   end
 
-  def about_edit
-
-  end
 
 end

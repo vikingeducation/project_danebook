@@ -33,8 +33,6 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @profile = @user.profile
-    # current_params = params[:user][:profile_attributes]
-    # params[:user][:profile_attributes] = split_date_to_three_cols(current_params)
     if @user.update(user_params)
       flash[:success] = "Congratulation! You have successfully edited your profile!"
       redirect_to @user
@@ -66,12 +64,5 @@ class UsersController < ApplicationController
                                               :_destroy ]})
   end
 
-  # def split_date_to_three_cols(current_params)
-  #   date_arr = current_params[:birth_day].split('.')
-  #   current_params[:birth_day] = date_arr[0]
-  #   current_params[:birth_month] = date_arr[1]
-  #   current_params[:birth_year] = date_arr[2]
-  #   current_params
-  # end
 
 end

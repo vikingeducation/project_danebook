@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 puts "Deleting users"
 User.destroy_all
+Profile.destroy_all
 
 
 puts "Creating users"

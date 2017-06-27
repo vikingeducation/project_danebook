@@ -9,16 +9,17 @@ class Profile < ApplicationRecord
 
   validates :college, 
             :hometown, 
-            :current_town, :length => { :within => 2..20 },
-            :allow_nil => true
+            :current_town, 
+            :length => { :within => 2..20 },
+            :allow_blank => true
 
   validates :words_to_live, 
             :about_me, :length => { :within => 20..250 },
-            :allow_nil => true
+            :allow_blank => true
 
   validates :telephone, :length => { :within => 6..20 },
                         :numericality => true,
-                        :allow_nil => true
+                        :allow_blank => true
 
   validates :birth_day, :birth_month, :birth_year, :gender, :presence => true
 

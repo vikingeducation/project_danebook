@@ -17,95 +17,96 @@
   
   <main class="main-about">
   <div class="row">
-  <%= form_for @user, :html => {:class => "form-horizontal"} do |user_fields| %>
-    <%= user_fields.fields_for :profile do |profile_fields| %>
-    <article class="col-sm-12 col-md-6  interior">
-      <table class="tab-about">
-        <caption>
-        <h3>
-        Basic Information
-        </h3>
-        </caption>
-        <tr>
-          <th>
-            Birthday:
-          </th>
-          <td>
-            <div class="input-group">
-              <%= @profile.date_of_birth %>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <th>
-            College:
-          </th>
-          <td>
-            <div class="input-group">
-              <%= profile_fields.text_field :college, class: "form-control" %>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <th>
-            Hometown:
-          </th>
-          <td>
-            <div class="input-group">
-              <%= profile_fields.text_field :hometown, class: "form-control" %>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <th>
-            Currently Lives:
-          </th>
-          <td>
-            <div class="input-group">
-              <%= profile_fields.text_field :current_town, class: "form-control" %>
-            </div>
-          </td>
-        </tr>
-      </table>
-      <!--CONTACT INFO TABLE-->
-      <table class="tab-about">
-        <caption><h3>Current Information</h3></caption>
-        <tr>
-          <th>
-            Email:
-          </th>
-          <td>
-            <div class="input-group">
-              <%= @profile.user.email %>
-            </div>
-          </td>
-        </tr>
-        <tr>
-          <th>
-            Telephone:
-          </th>
-          <td>
-            <div class="input-group">
-              <%= profile_fields.text_field :telephone, class: "form-control" %>
-            </div>
-          </td>
-        </tr>
-      </table>
-    </article>
-    <!-- ABOUT RIGHT COLUMN-->
-    <article class="col-sm-12 col-md-6  interior">
-      <h3>Words to Live By</h3>
-      <%= profile_fields.text_area :words_to_live, wrap: "hard", rows: "4", class: "form-control" %>
-      <h3>About Me</h3>
-      <%= profile_fields.text_area :about_me, wrap: "hard", rows: "7", class: "form-control" %>
-    </article>
-    
-  </div>
-  <div class="row">
-    <div class="col-xs-12">
-      <%= profile_fields.button "Save Changes", class: "btn btn-primary btn-lg btn-save"  %>
-    </div>
-    <% end %>
+    <%= form_for @user, :html => {:class => "form-horizontal"} do |user_fields| %>
+      <%= user_fields.fields_for :profile do |profile_fields| %>
+        <article class="col-sm-12 col-md-6  interior">
+          <table class="tab-about">
+            <caption>
+            <h3>
+            Basic Information
+            </h3>
+            </caption>
+            <tr>
+              <th>
+                Birthday:
+              </th>
+              <td>
+                <div class="input-group">
+                  <%= @profile.date_of_birth %>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                College:
+              </th>
+              <td>
+                <div class="input-group">
+                  <%= profile_fields.text_field :college, class: "form-control" %>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                Hometown:
+              </th>
+              <td>
+                <div class="input-group">
+                  <%= profile_fields.text_field :hometown, class: "form-control" %>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                Currently Lives:
+              </th>
+              <td>
+                <div class="input-group">
+                  <%= profile_fields.text_field :current_town, class: "form-control" %>
+                </div>
+              </td>
+            </tr>
+          </table>
+          <!--CONTACT INFO TABLE-->
+          <table class="tab-about">
+            <caption><h3>Current Information</h3></caption>
+            <tr>
+              <th>
+                Email:
+              </th>
+              <td>
+                <div class="input-group">
+                  <%= @profile.user.email %>
+                </div>
+              </td>
+            </tr>
+            <tr>
+              <th>
+                Telephone:
+              </th>
+              <td>
+                <div class="input-group">
+                  <%= profile_fields.text_field :telephone, class: "form-control" %>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </article>
+      <!-- ABOUT RIGHT COLUMN-->
+        <article class="col-sm-12 col-md-6  interior">
+          <h3>Words to Live By</h3>
+          <%= profile_fields.text_area :words_to_live, wrap: "hard", rows: "4", class: "form-control" %>
+          <h3>About Me</h3>
+          <%= profile_fields.text_area :about_me, wrap: "hard", rows: "7", class: "form-control" %>
+        </article>
+      <% end %>
+
+
+      <div class="row">
+        <div class="col-xs-12">
+          <%= user_fields.submit "Save Changes", class: "btn btn-primary btn-lg btn-save"  %>
+        </div>
+      </div>
     <% end %>
   </div>
   </main>

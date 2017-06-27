@@ -9,8 +9,8 @@
         <li role="presentation" class=" current_page?(action: '') ? 'active' : ' ' %>">
           <%= link_to "Timeline", timeline_path %>
         </li>
-        <li role="presentation" class="<%= current_page?(edit_user_path(@user)) || current_page?(user_path(@user)) ? 'active' : ' ' %>">
-          <%= link_to "About", user_path %>
+        <li role="presentation" class="< current_page?(edit_user_path(@user)) || current_page?(user_path(@user)) ? 'active' : ' ' >">
+          <%= link_to "About", user_path(current_user.id) %>
         </li>
         <li role="presentation" class=" current_page?(action: '') ? 'active' : ' ' %>">
           <%= link_to "Photos<span class='badge'>(123)</span>".html_safe, photos_path %>
@@ -19,7 +19,7 @@
           <%= link_to "Friends<span class='badge'>(542)</span>".html_safe, friends_path %>
         </li>
         <li class="edit-profile pull-right">
-          <%= link_to "Edit Profile", edit_user_path(@user.id) %>
+          <%= link_to "Edit Profile", edit_user_path(current_user.id) %>
         </li>
       </ul>
       </div><!-- /.navbar-collapse -->

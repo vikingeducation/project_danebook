@@ -4,6 +4,9 @@ class User < ApplicationRecord
                     autosave: true,
                     :dependent => :destroy
 
+  has_many  :posts, 
+            :dependent => :destroy
+
   accepts_nested_attributes_for :profile,
                                 :allow_destroy => true
                                 # :reject_if => :all_blank,

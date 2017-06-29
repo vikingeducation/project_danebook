@@ -1,0 +1,43 @@
+    <section class="post">
+      <header class="nav-post">
+        <h4>
+        About (text area)
+        </h4>
+      </header>
+      <div class="post-body">
+        <table class="tab-timeline">
+          <tr>
+            <th>
+              Born on:
+            </th>
+            <td>
+              <%= @user.profile.date_of_birth %>
+            </td>
+          </tr>
+          <tr>
+            <th>
+              Went to school:
+            </th>
+            <td>
+              <%= @user.profile.college %>
+            </td>
+          </tr>
+          <tr>
+            <th>
+              Hometown:
+            </th>
+            <td>
+              <%= @user.profile.hometown %>
+            </td>
+          </tr>
+          <tr>
+            <th>
+              Currently live:
+            </th>
+            <td>
+              <%= @user.profile.current_town %>
+            </td>
+          </tr>
+        </table>
+      </div>
+    </section>

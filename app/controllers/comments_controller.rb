@@ -1,36 +1,41 @@
 class CommentsController < ApplicationController
-  before_action :set_post
 
   def new
   end
 
   def create
-    @comment = @post.comments.build(comment_params)
-    @comment.user_id = current_user.id
+    @commentable = extract_commentable
+    @comment = @commentable.comments.build(comment_params)
+    @comment.user = current_user
     if @comment.save
       flash[:success] = "Comment created successfully"
-      redirect_back(fallback_location: root_path)
     else
-      render :new
+      flash[:success] = "Failed to create comment"
     end
+    redirect_back(fallback_location: root_path)
   end
 
   def destroy
-    @comment = @post.comments.find(params[:id])
+    @commentable = extract_commentable
+    @comment = @commentable.comments.find(params[:id])
     if @comment.delete
       flash[:success] = "Comment deleted successfully"
-      redirect_back(fallback_location: root_path)
+    else
+      flash[:danger] = "Failed to delete comment"
     end
+    redirect_back(fallback_location: root_path)
   end
 
   private
 
-  def set_post
-    @post = Post.find(params[:post_id])
-  end
-
   def comment_params
     params.require(:comment).permit(:body)
+  end
+
+  def extract_commentable
+    model = params[:commentable].classify.constantize
+    id_key = (params[:commentable].downcase + "_id").to_sym
+    model.find(params[id_key])
   end
 
 end

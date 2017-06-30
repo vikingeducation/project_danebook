@@ -6,6 +6,7 @@ describe "UsersRequests" do
     create(:profile, user: user)
     user
   end
+  before{ create(:status, :accepted)}
 
   describe "GET #show" do
     it "returns a successfull response if the user exists" do
@@ -16,7 +17,7 @@ describe "UsersRequests" do
     it "raises an error if the users does not exist" do
       expect{
         get user_path(user.id + 1)
-      }.to raise_error(ActiveRecord::RecordNotFound)
+      }.to raise_error(ActionView::Template::Error)
     end
   end
 
@@ -98,6 +99,13 @@ describe "UsersRequests" do
       other_user.reload
       expect(response.code.to_i).to be 302
       expect(other_user.email).not_to be == good_user_params[:email]
+    end
+  end
+
+  describe "GET #search" do
+    it "returns a successful response" do
+      get users_search_path
+      expect(response.code.to_i).to be 200
     end
   end
 

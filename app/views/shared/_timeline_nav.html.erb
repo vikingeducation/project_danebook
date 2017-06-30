@@ -5,12 +5,12 @@
       <li><%= link_to "About", user_path(user.id) %></li>
       <li>
         <%= link_to friends_path do %>
-          Friends <span class="label label-primary">26k</span>
+          Friends <span class="label label-primary"><%= user.friends.count %></span>
         <% end %>
       </li>
       <li>
-        <%= link_to photos_path do %>
-          Photos <span class="label label-primary">555</span>
+        <%= link_to user_photos_path(user.id) do %>
+          Photos <span class="label label-primary"><%= user.photos.count %></span>
         <% end %>
       </li>
     </div>

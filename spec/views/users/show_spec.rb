@@ -4,7 +4,11 @@ describe "users/show.html.erb" do
   let(:user){ create(:user) }
   let(:other_user){ create(:user) }
   let(:profile){ create(:profile, user: user) }
-  before{ [user, profile, other_user] }
+  before do
+    ## eager load resources
+    [user, profile, other_user]
+    create(:status, :accepted)
+  end
 
   it "shows the edit profile button if it's the same user" do
     @user = user

@@ -24,15 +24,22 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find_by(auth_token: cookies[:auth_token]) if cookies[:auth_token]
   end
 
-  def require_current_user
-    unless check_user(params[:user_id] || params[:id])
+  def require_login
+    unless current_user
       flash[:warning] = "Unauthorized action"
       redirect_to root_path
     end
   end
 
-  def check_user(user_id)
-    user_id.to_i == current_user.id
+  def require_current_user
+    unless current_user?(params[:user_id] || params[:id])
+      flash[:warning] = "Unauthorized action"
+      redirect_to root_path
+    end
+  end
+
+  def current_user?(user_id)
+    current_user && (user_id.to_i == current_user.id)
   end
 
   def signed_in_user?
@@ -40,6 +47,7 @@ class ApplicationController < ActionController::Base
   end
 
   helper_method :current_user
+  helper_method :current_user?
   helper_method :signed_in_user?
 
 

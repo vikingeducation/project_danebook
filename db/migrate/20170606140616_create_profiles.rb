@@ -13,6 +13,9 @@ class CreateProfiles < ActiveRecord::Migration[5.0]
       t.text :words
       t.text :about
 
+      t.integer :profile_photo_id
+      t.integer :cover_photo_id
+
       t.timestamps
     end
 

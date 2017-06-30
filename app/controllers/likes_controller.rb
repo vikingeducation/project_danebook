@@ -22,9 +22,9 @@ class LikesController < ApplicationController
   private
 
   def set_likable
-    cls = params[:likable].constantize
+    model = params[:likable].classify.constantize
     likable_key = (params[:likable].downcase + "_id").to_sym
-    @likable = cls.find(params[likable_key])
+    @likable = model.find(params[likable_key])
   end
 
 end

@@ -6,6 +6,6 @@
   <%= render :partial => "shared/photos_panel" %>
 
   <!-- friends -->
-  <%= render :partial => "shared/friends_panel" %>
+  <%= render :partial => "shared/friends_panel", locals: {user: user} %>
 
 </div> <!-- /sidebar -->

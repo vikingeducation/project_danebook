@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170608223636) do
+ActiveRecord::Schema.define(version: 20170628104220) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,15 @@ ActiveRecord::Schema.define(version: 20170608223636) do
     t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id", using: :btree
   end
 
+  create_table "friend_requests", force: :cascade do |t|
+    t.integer  "user_one_id", null: false
+    t.integer  "user_two_id", null: false
+    t.integer  "status_id",   null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.index ["user_one_id", "user_two_id"], name: "index_friend_requests_on_user_one_id_and_user_two_id", unique: true, using: :btree
+  end
+
   create_table "likes", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "likable_id"
@@ -32,6 +41,17 @@ ActiveRecord::Schema.define(version: 20170608223636) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.index ["likable_type", "likable_id"], name: "index_likes_on_likable_type_and_likable_id", using: :btree
+  end
+
+  create_table "photos", force: :cascade do |t|
+    t.integer  "user_id",            null: false
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "asset_file_name"
+    t.string   "asset_content_type"
+    t.integer  "asset_file_size"
+    t.datetime "asset_updated_at"
+    t.index ["user_id"], name: "index_photos_on_user_id", using: :btree
   end
 
   create_table "posts", force: :cascade do |t|
@@ -43,7 +63,7 @@ ActiveRecord::Schema.define(version: 20170608223636) do
   end
 
   create_table "profiles", force: :cascade do |t|
-    t.integer  "user_id",         null: false
+    t.integer  "user_id",          null: false
     t.string   "first_name"
     t.string   "last_name"
     t.datetime "birthday"
@@ -54,9 +74,18 @@ ActiveRecord::Schema.define(version: 20170608223636) do
     t.string   "telephone"
     t.text     "words"
     t.text     "about"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
+    t.integer  "profile_photo_id"
+    t.integer  "cover_photo_id"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.index ["user_id"], name: "index_profiles_on_user_id", unique: true, using: :btree
+  end
+
+  create_table "statuses", force: :cascade do |t|
+    t.string   "message",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["message"], name: "index_statuses_on_message", using: :btree
   end
 
   create_table "users", force: :cascade do |t|

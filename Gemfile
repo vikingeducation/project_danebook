@@ -67,3 +67,5 @@ group :test do
 end
 
 gem "binding_of_caller"
+
+gem "paperclip"

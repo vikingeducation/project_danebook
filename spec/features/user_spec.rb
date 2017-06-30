@@ -1,5 +1,9 @@
 require "rails_helper"
 
+# ------------------------------------------------------------------
+# Helpers
+# ------------------------------------------------------------------
+
 def fill_sign_up_form(params)
   fill_in "user_profile_attributes_first_name", with: params[:first_name]
   fill_in "user_profile_attributes_last_name", with: params[:last_name]
@@ -21,8 +25,13 @@ def fill_post_form(params)
   click_button "Post"
 end
 
+# ------------------------------------------------------------------
+# Test
+# ------------------------------------------------------------------
+
 feature "User events" do
   before do
+    create(:status, :accepted)
     visit root_path
   end
   let(:user) do

@@ -1,0 +1,49 @@
+<%= render :partial => "shared/jumbotron", locals: {user: @user} %>
+
+<%= render :partial => "shared/timeline_nav", locals: {user: @user} %>
+
+<div class="container">
+
+  <div class="row">
+    <div class="col-sm-12">
+
+      <div class="panel panel-default">
+        <div class="panel-heading text-center">
+          <h3>Photos
+            <%= link_to "Add Photo!", new_user_photo_path(@user.id), class: "btn btn-primary pull-right" %>
+          </h3>
+
+        </div>
+        <div class="panel-body">
+
+          <% if @user.photos.blank? %>
+            <h3 class="text-center">No photos yet</h3>
+          <% else %>
+            <% @user.photos.each_slice(4) do |quartet| %>
+            <div class="row">
+              <% quartet.each do |photo| %>
+              <div class="col-sm-3">
+                <div class="thumbnail">
+                  <% # only the user's friends should see the thumbnail as clickable %>
+                  <% if current_user?(@user.id) || @user.friends_with?(current_user.id) %>
+                    <%= link_to user_photo_path(@user.id, photo.id) do %>
+                      <%= image_tag photo.asset.url(:medium) %>
+                    <% end %>
+                  <% else %>
+                    <%= image_tag photo.asset.url(:medium) %>
+                  <% end %>
+                </div>
+              </div>
+              <% end %>
+            </div>
+            <% end %>
+          <% end %>
+
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+
+</div>

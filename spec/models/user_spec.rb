@@ -15,6 +15,19 @@ describe User do
     it "has many likes" do
       expect{user.likes}.not_to raise_error
     end
+
+    it "has many initiated friend requests" do
+      expect{user.initiated_friend_requests}.not_to raise_error
+    end
+
+    it "has many received friend requests" do
+      expect{user.received_friend_requests}.not_to raise_error
+    end
+
+    it "has many photos" do
+      expect{user.photos}.not_to raise_error
+    end
+
   end
 
   context "validations" do
@@ -44,27 +57,90 @@ describe User do
     end
   end
 
-  # Custom Methods
-  context "#generate_token" do
-    it "generates a token for an existing user" do
-      expect{user.generate_token}.not_to raise_error
+  describe "custom methods" do
+    context "#generate_token" do
+      it "generates a token for an existing user" do
+        expect{user.generate_token}.not_to raise_error
+      end
+
+      it "generates a unique token" do
+        expect(user.generate_token).not_to be eq(user.generate_token)
+      end
     end
 
-    it "generates a unique token" do
-      expect(user.generate_token).not_to be eq(user.generate_token)
+    context "#regenerate_auth_token" do
+      it "generates a new token" do
+        expect{user.regenerate_auth_token}.not_to raise_error
+      end
     end
-  end
 
-  context "#regenerate_auth_token" do
-    it "generates a new token" do
-      expect{user.regenerate_auth_token}.not_to raise_error
+    context "#full_name" do
+      it "returns the concatenation of the user's first and last names" do
+        p = create(:profile, user: user)
+        expect(user.full_name).to be == p.first_name + " " + p.last_name
+      end
     end
-  end
 
-  context "#full_name" do
-    it "returns the concatenation of the user's first and last names" do
-      p = create(:profile, user: user)
-      expect(user.full_name).to be == p.first_name + " " + p.last_name
+    context "#relationship_with" do
+      let(:other_user){ create(:user) }
+      let(:friend_request) do
+        create(:friend_request,
+        user_one_id: user.id,
+        user_two_id: other_user.id,
+        status_id: create(:status, :accepted).id)
+      end
+      ## persist
+      before { friend_request }
+
+      it "returns the FriendRequest instance between the users" do
+        result = user.relationship_with(other_user.id)
+        expect(result).to be == friend_request
+      end
+
+      it "returns nil if there is no relationship between them" do
+        result = create(:user).relationship_with(user.id)
+        expect(result).to be nil
+      end
+    end
+
+    context ".search" do
+      let(:profile){ create(:profile, user: user)}
+      before{ profile }
+
+      it "returns the user with first_name containing the string" do
+        # full match
+        search1 = User.search(user.profile.first_name)
+        expect(search1).to be == [user]
+        # partial match
+        half = user.profile.first_name.length / 2
+        search2 = User.search(user.profile.first_name[0..half])
+        expect(search2).to be == [user]
+      end
+
+      it "returns the user with last_name containing the string" do
+        # full match
+        search1 = User.search(user.profile.last_name)
+        expect(search1).to be == [user]
+        # partial match
+        half = user.profile.last_name.length / 2
+        search2 = User.search(user.profile.last_name[0..half])
+        expect(search2).to be == [user]
+      end
+
+      it "returns an empty array if first_name and last_name does not contain the string" do
+        # first name
+        search1 = User.search(user.profile.first_name + "won't find me")
+        expect(search1).to be == []
+        # last name
+        search2 = User.search(user.profile.last_name + "won't find me")
+        expect(search2).to be == []
+      end
+    end
+
+    context "#friends_with?" do
+      it "returns whether a boolean whether two users are friends" do
+        expect(user.friends_with?(create(:user).id)).to be nil
+      end
     end
   end
 

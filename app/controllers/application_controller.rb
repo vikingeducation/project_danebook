@@ -42,6 +42,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
+
+
   # def permanent_sign_in(user)
   #   user.regenerate_auth_token
   #   cookies.permanent[:auth_token] = user.auth_token

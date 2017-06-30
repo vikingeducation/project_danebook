@@ -8,11 +8,11 @@
 puts "Deleting users"
 User.destroy_all
 Profile.destroy_all
+Post.destroy_all
 
 
 puts "Creating users"
 3.times { |i| User.create(:email => "foo#{i}@onet.pl", :password => "lol#{i}", :password_confirmation => "lol#{i}") }
-User.all.each { |u| puts "#{u}"}
 
 puts "Creating users profiles"
 User.all.each do |user|
@@ -24,4 +24,15 @@ User.all.each do |user|
   profile.first_name = "Foo#{rand(1..27)}"
   profile.last_name = "Zoo#{rand(1..27)}"
   user.profile.save
+end
+
+puts "Creating posts"
+User.all.each do |u|
+
+  4.times do
+    u.posts.build(:body => "I keep trying and #{rand(34)}")
+    puts "#{u.email}"
+    puts "#{u.posts.last.body}"
+    u.save!
+  end
 end

@@ -1,0 +1,33 @@
+<section class="post">
+  <div class="post-body">
+  <img src="assets/user_silhouette_generic.gif">
+  <div class="author-box">
+    <%= link_to "#{post.user.profile.first_name} #{post.user.profile.last_name}", @user %>
+  <time datetime="6/1/2013" pubdate>
+    <%= formatted_date(post.created_at) %>
+  </time>
+  </div>
+    <p class="comment-area">
+      <%= post.body %>
+    </p>
+  </div>
+  <div class="nav-footer">
+    <%= link_to "Like", "", class: "link pull-left" %>
+    <%= link_to "Comment", "", class: "comment pull-left" %>
+    <%= link_to "Delete", "", class: "delete pull-right" %>
+  </div>
+  <% if nil %>
+    <div class="liked-box">
+      <%= link_to "Hermione Granger", "", class: "liking" %>
+      <p>likes this</p>
+    </div>
+  <% else %>
+    <div class="liked-box">
+      <p>
+        You and
+      </p>
+      <%= link_to "Hermione Granger", "", class: "liking" %>
+      <p>and 3 other like this</p>
+    </div>
+  <% end %>
+</section>

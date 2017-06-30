@@ -1,17 +1,17 @@
 <section class="post">
   <header class="nav-post">
     <h4>
-    Post (copied)
+      Post (copied)
     </h4>
   </header>
-  <div class="post-body">
-    <div class="form-group">
-      <textarea class="form-control" placeholder="Message">Tell the world something...</textarea>
+  <%= form_for [@user, @post] do |post_field| %>
+    <div class="post-body">
+      <div class="form-group">
+        <%= post_field.text_area :body, :placeholder => "Tell the world something", :class => "form-control" %>
+      </div>
     </div>
-  </div>
-  <div class="nav-footer">
-    <button class="btn btn-primary" type="button">
-    Post
-    </button>
-  </div>
+    <div class="nav-footer">
+      <%= post_field.submit "Post", :class => "btn btn-primary" %>
+    </div>
+  <% end %>
 </section>

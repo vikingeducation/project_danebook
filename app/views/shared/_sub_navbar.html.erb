@@ -7,7 +7,7 @@
     <div class="collapse navbar-collapse" id="sub-nav-collapse">
       <ul class="nav nav-pills">
         <li role="presentation" class=" current_page?(action: '') ? 'active' : ' ' %>">
-          <%= link_to "Timeline", timeline_path %>
+          <%= link_to "Timeline", user_timeline_path(@user) %>
         </li>
         <li role="presentation" class="< current_page?(edit_user_path(@user)) || current_page?(user_path(@user)) ? 'active' : ' ' >">
           <%= link_to "About", user_path(current_user.id) %>

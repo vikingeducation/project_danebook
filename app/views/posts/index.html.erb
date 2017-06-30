@@ -20,40 +20,14 @@
 
   <article class="col-xs-8">
     <%= render "new_post" %>
-    <% @user.posts.each do |post| %>
+
+    <% @posts.each do |post| %>
       <% if post %>
-
-      <% else %>
-
+        <%= render partial: "post", :locals => {:post => post, :user => @user} %>
       <% end %>
     <% end %>
-<section class="post">
-<div class="post-body">
-<img src="assets/user_silhouette_generic.gif">
-<div class="author-box">
-<a href="#">
-  Harry Potter
-</a>
-<time datetime="6/1/2013" pubdate>
-Posted on Thursday 6/1/2013
-</time>
-</div>
-<p class="comment-area">
-Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum tempora inventore praesentium, distinctio saepe facere, dolores laboriosam magnam id cum eius repellendus harum, excepturi, dolorem vero quisquam. Fugiat, quod ad.
-</p>
-</div>
-<div class="nav-footer">
-<a href="#" class="link pull-left">
-Like
-</a>
-<a href="#" class="comment pull-left">
-Comment
-</a>
-<a href="#" class="delete pull-right">
-Delete
-</a>
-</div>
-</section>
+
+
 <!--COMMENT-LIKED POST BOX-->
 <section class="post">
 <div class="post-body">
@@ -70,6 +44,9 @@ Posted on Thursday 5/21/2014
 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum tempora inventore praesentium, distinctio saepe facere, dolores laboriosam magnam id cum eius repellendus harum, excepturi, dolorem vero quisquam. Fugiat, quod ad.
 </p>
 </div>
+
+
+
 <div class="nav-footer">
 <div class="clearfix">
 <a href="#" class="like pull-left">

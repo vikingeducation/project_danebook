@@ -336,7 +336,7 @@ article section.post {
         text-align: right;
         background-color: #ddd;
         padding: 5px;
-        min-height: 45px;
+        min-height: 35px;
         a {
             display: inline-block;
             margin-left: 5px;
@@ -388,6 +388,18 @@ article section.post {
         background-color: #ddd;
         time {
             display: inline-block;
+        }
+        .author-box-comment {
+            display: inline-block;
+            vertical-align: top;
+            margin-top: 5px;
+            position: left;
+            width: 80%;
+            time {
+                display: block;
+                color: #666;
+                font-size: 12px;
+            }
         }
         p,
         .like-area {

@@ -1,11 +1,13 @@
 class User < ApplicationRecord
 
-  has_one :profile, inverse_of: :user, 
+  has_one :profile, inverse_of: :user,
                     autosave: true,
                     :dependent => :destroy
 
-  has_many  :posts, 
+  has_many  :posts,
             :dependent => :destroy
+
+  has_many :comments
 
   accepts_nested_attributes_for :profile,
                                 :allow_destroy => true

@@ -37,7 +37,7 @@ end
 
 puts "Creating comments"
 Post.all.each do |post|
-  n = rand(1..4)
+  n = rand(0..2)
   n.times do
     post.comments.build(:body => "This is my comment no #{rand(12334)}", :user_id => User.pluck(:id).sample)
     puts "#{post.inspect}"

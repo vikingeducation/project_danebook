@@ -7,7 +7,7 @@
   <%= form_for [@user, @post] do |post_field| %>
     <div class="post-body">
       <div class="form-group">
-        <%= post_field.text_area :body, :placeholder => "Tell the world something", :class => "form-control" %>
+        <%= post_field.text_area :body, wrap: "hard", rows: "5", :placeholder => "Tell the world something", :class => "form-control" %>
       </div>
     </div>
     <div class="nav-footer">

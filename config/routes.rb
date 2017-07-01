@@ -7,7 +7,9 @@ Rails.application.routes.draw do
   get 'photos' => 'static_pages#photos'
 
   resources :users do
-    resources :posts,  :only => [:index, :create, :destroy]
+    resources :posts,  :only => [:index, :create, :destroy] do
+      resources :comments, :defaults => { :commentable => 'Post' }
+    end
     get 'timeline' => 'posts#index'
   end
   resource :session, :only => [:new, :create, :destroy]

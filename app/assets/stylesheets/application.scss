@@ -375,6 +375,7 @@ article section.post {
         vertical-align: top;
         margin-top: 5px;
         width: 80%;
+
         time {
             display: block;
             color: #666;
@@ -382,10 +383,11 @@ article section.post {
         }
     }
     .comment-area {
-        padding: 8px;
+        margin: 8px;
     }
     .unfolded {
         background-color: #ddd;
+        margin-top: 12px;
         time {
             display: inline-block;
         }
@@ -395,16 +397,16 @@ article section.post {
             margin-top: 5px;
             position: left;
             width: 80%;
+            text-align: left;
             time {
                 display: block;
                 color: #666;
                 font-size: 12px;
             }
         }
-        p,
         .like-area {
             display: inline-block;
-            padding-left: 75px;
+            // padding-left: 75px;
             width: 100%;
             @media (min-width: 800px) {
                 margin-top: -40px;
@@ -452,6 +454,7 @@ a time.overlay {
     color: #FFF;
     font-size: 1.5em;
     text-align: center;
+    padding-bottom: 8px;
     padding-top: 5px;
         -moz-transition: all 0.4s;
      -webkit-transition: all 0.4s;

@@ -6,20 +6,20 @@
     <time datetime="#{formatted_date(comment.created_at)}" pubdate>
       <%= formatted_date(comment.created_at) %>
     </time>
-  </div>
-  <div class="comment-area">
-    <p>
-      <%= comment.body %>
+    <p class="comment-area">
+        <%= comment.body %>
     </p>
-    <div class="like-area">
-      <div class="clearfix">
-        <a href="#" class="like pull-left">
-          Like
-        </a>
-        3 other people like this
-        <%= link_to "Delete", "", method: 'delete', class: "delete pull-right", data: { confirm: 'Are you Sure?', remote: true } %>
-      </div>
+
+  <div class="clearfix">
+  <div class="like-area">
+
+      <a href="#" class="like pull-left">
+        Like
+      </a>
+      3 other people like this
+      <%= link_to "Delete", "", method: 'delete', class: "delete pull-right", data: { confirm: 'Are you Sure?', remote: true } %>
     </div>
+      </div>
   </div>
 </div>
 <% end %>

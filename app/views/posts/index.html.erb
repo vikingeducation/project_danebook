@@ -3,7 +3,7 @@
   <header class="hero">
     <div class="avatar"></div>
     <div class="user-name">
-      <%= @user.profile.first_name %> <%= @user.profile.last_name %>
+      <%= full_name(@user.profile) %>
     </div>
   </header>
 
@@ -19,7 +19,7 @@
   </article>
 
   <article class="col-xs-8">
-    <%= render "new_post" %>
+    <%= render "new_post" if @post %>
 
     <% @posts.each do |post| %>
       <% if post %>

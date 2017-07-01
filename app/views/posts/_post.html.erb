@@ -2,7 +2,7 @@
   <div class="post-body">
   <img src="assets/user_silhouette_generic.gif">
   <div class="author-box">
-    <%= link_to "#{post.user.profile.first_name} #{post.user.profile.last_name}", @user %>
+    <%= link_to full_name(post), @user %>
   <time datetime="6/1/2013" pubdate>
     <%= formatted_date(post.created_at) %>
   </time>
@@ -14,20 +14,22 @@
   <div class="nav-footer">
     <%= link_to "Like", "", class: "link pull-left" %>
     <%= link_to "Comment", "", class: "comment pull-left" %>
-    <%= link_to "Delete", "", class: "delete pull-right" %>
+    <%= link_to "Delete", user_post_path(user.id, post.id), method: 'delete', class: "delete pull-right", data: { confirm: 'Are you Sure?', remote: true } %>
   </div>
   <% if nil %>
     <div class="liked-box">
-      <%= link_to "Hermione Granger", "", class: "liking" %>
-      <p>likes this</p>
+      <p>
+        <%= link_to "Hermione Granger", "", class: "liking" %>
+        likes this
+      </p>
     </div>
   <% else %>
     <div class="liked-box">
       <p>
         You and
+        <%= link_to "Hermione Granger", "", class: "liking" %>
+        and 3 other like this
       </p>
-      <%= link_to "Hermione Granger", "", class: "liking" %>
-      <p>and 3 other like this</p>
     </div>
   <% end %>
 </section>

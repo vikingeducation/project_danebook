@@ -31,8 +31,17 @@ User.all.each do |u|
 
   4.times do
     u.posts.build(:body => "I keep trying and #{rand(34)}")
-    puts "#{u.email}"
-    puts "#{u.posts.last.body}"
     u.save!
   end
+end
+
+puts "Creating comments"
+Post.all.each do |post|
+  n = rand(1..4)
+  n.times do
+    post.comments.build(:body => "This is my comment no #{rand(12334)}", :user_id => User.pluck(:id).sample)
+    puts "#{post.inspect}"
+    post.save!
+  end
+
 end

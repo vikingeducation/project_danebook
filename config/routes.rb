@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :posts,  :only => [:index, :create, :destroy] do
-      resources :comments, :defaults => { :commentable => 'Post' }
+      # resources :comments, :defaults => { :commentable => 'Post' }
     end
     get 'timeline' => 'posts#index'
   end

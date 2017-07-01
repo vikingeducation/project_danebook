@@ -1,6 +1,6 @@
 <section class="post">
   <div class="post-body">
-  <img src="assets/user_silhouette_generic.gif">
+  <%= image_tag("user_silhouette_generic.gif") %>
   <div class="author-box">
     <%= link_to full_name(post), @user %>
   <time datetime="6/1/2013" pubdate>
@@ -16,6 +16,7 @@
     <%= link_to "Comment", "", class: "comment pull-left" %>
     <%= link_to "Delete", user_post_path(user.id, post.id), method: 'delete', class: "delete pull-right", data: { confirm: 'Are you Sure?', remote: true } %>
   </div>
+
   <% if nil %>
     <div class="liked-box">
       <p>
@@ -26,10 +27,22 @@
   <% else %>
     <div class="liked-box">
       <p>
+        <div class="clearfix">
+          <a href="#" class="like pull-left">
+            Unike
+          </a>
+          <%= link_to "Delete", "", method: 'delete', class: "delete pull-right", data: { confirm: 'Are you Sure?', remote: true } %>
+        </div>
         You and
         <%= link_to "Hermione Granger", "", class: "liking" %>
         and 3 other like this
       </p>
     </div>
   <% end %>
+
+  <% if post.comments.any? %>
+    <%= render partial: 'comment', :locals => {:post => post} %>
+  <% end %>
+  <%= render partial: 'comment_form' %>  
+
 </section>

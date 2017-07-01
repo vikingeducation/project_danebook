@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20170701141733) do
     t.integer  "commentable_id"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
-    t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id", unique: true
+    t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable_type_and_commentable_id"
   end
 
   create_table "posts", force: :cascade do |t|

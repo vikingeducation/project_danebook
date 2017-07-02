@@ -8,6 +8,7 @@ class User < ApplicationRecord
             :dependent => :destroy
 
   has_many :comments
+  has_many :likes
 
   accepts_nested_attributes_for :profile,
                                 :allow_destroy => true

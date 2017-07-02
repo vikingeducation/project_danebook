@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     end
     get 'timeline' => 'posts#index'
   end
+  resource :likes, :only => [:create, :destroy]
   resource :comments, :only => [:new, :create, :destroy]
   resource :session, :only => [:new, :create, :destroy]
   get 'login' => 'sessions#new'

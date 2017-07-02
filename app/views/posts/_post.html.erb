@@ -14,7 +14,7 @@
   </div>
 
   <div class="nav-footer">
-    <%= link_to "Like", "", class: "link pull-left" %>
+    <%= link_to "Like", likes_path(:like => [:likeable_id => post.id, :likeable_type => post.class.name] ), :method=>:post, class: "link pull-left" %>
     <%= link_to "Comment", "", class: "comment pull-left" %>
     <%= link_to "Delete", user_post_path(user.id, post.id), method: 'delete', class: "delete pull-right", data: { confirm: 'Are you Sure?', remote: true } %>
 

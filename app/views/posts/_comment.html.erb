@@ -7,19 +7,21 @@
       <%= formatted_date(comment.created_at) %>
     </time>
     <p class="comment-area">
-        <%= comment.body %>
+      <%= comment.body %>
     </p>
 
-  <div class="clearfix">
-  <div class="like-area">
+    <div class="clearfix">
+      <div class="like-area">
 
-      <a href="#" class="like pull-left">
-        Like
-      </a>
-      3 other people like this
-      <%= link_to "Delete", "", method: 'delete', class: "delete pull-right", data: { confirm: 'Are you Sure?', remote: true } %>
-    </div>
+        <a href="#" class="like pull-left">
+          Like
+        </a>
+        3 other people like this
+        <% if current_user.id == comment.user_id %>
+          <%= link_to "Delete", comments_path(id: comment.id, user_id: comment.user_id), method: 'delete', class: "delete pull-right", data: { confirm: 'Are you Sure?' } %>
+        <% end %>
       </div>
+    </div>
   </div>
 </div>
 <% end %>

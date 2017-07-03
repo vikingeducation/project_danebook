@@ -1,0 +1,9 @@
+
+      <% first_few_likes(post).each do |link| %>
+        <% if link.id == current_user.id %>
+          "You"
+        <% else %>
+          <%= link_to "#{full_name(link)}", link.user, class: "liking" %>
+        <% end  %>
+        <%= 'and' unless first_few_likes(post).last == link %>
+      <% end %>

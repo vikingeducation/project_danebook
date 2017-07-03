@@ -16,7 +16,7 @@
   <div class="nav-footer">
     <div class="liked-box">
       <% if current_user_liked?(post) %>
-        <%= link_to "Unlike", "", class: "link pull-left" %>
+        <%= link_to "Unlike", likes_path(:like => {:likeable_id => post.id, :likeable_type => post.class.name} ), method: 'delete', class: "link pull-left" %>
       <% else %>
         <%= link_to "Like", likes_path(:like => {:likeable_id => post.id, :likeable_type => post.class.name} ), :method=>:post, class: "link pull-left" %>
       <% end %>
@@ -34,7 +34,7 @@
     </div>
 
     <div class="clearfix"></div>
-    
+
     <div class="post-body unfolded">
       <% if post.comments.any? %>
       <%= render partial: 'comment', :locals => {:post => post} %>

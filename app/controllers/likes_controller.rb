@@ -11,16 +11,16 @@ class LikesController < ApplicationController
     end
   end
 
-  # def destroy
-  #   @comment = Comment.find(params[:id])
-  #   if @comment.destroy
-  #     flash[:success] = "You have deleted comment successfully!"
-  #     redirect_to user_timeline_path(current_user.id)
-  #   else
-  #     flash.now[:danger] = "Deleting comment didn't work :("
-  #     redirect_to :back
-  #   end
-  # end
+  def destroy
+    @like = Like.all.where(like_params)[0]
+    if @like.destroy
+      flash[:success] = "You have unliked successfully!"
+      redirect_to user_timeline_path(current_user.id)
+    else
+      flash.now[:danger] = "Unliking didn't work :("
+      redirect_to :back
+    end
+  end
 
   private
   def like_params

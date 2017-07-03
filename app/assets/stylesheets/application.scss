@@ -161,11 +161,14 @@ header.hero {
         background: url("harry_potter_small.jpg");
     }
     div.user-name {
-        position: relative;
-        left: 45%;
-        // top: 40%;
-        color: #ddd;
-        font-size: 24px;
+        float: left;
+        margin-top: 90px;
+        font-weight: 600;
+        color: #eee;
+        font-size: 33px;
+    }
+    div.user-name-wrapper {
+      margin-left: 330px;;
     }
 }
 

@@ -29,4 +29,23 @@ module LikesHelper
     txt + "this."
   end
 
+  def like_button(likable, user)
+    like = likable.liked_by_user?(user.id)
+    ### Likes and comments for photos have different routes...
+    ### Gotta fix this eventually
+    if likable.class.to_s == "Photo"
+      if like
+        link_to "Unlike", url_for([likable.user, likable, like]), method: :delete
+      else
+        link_to "Like", url_for([likable.user, likable, :likes]), method: :post
+      end
+    else
+      if like
+        link_to "Unlike", url_for([likable, like]), method: :delete
+      else
+        link_to "Like", url_for([likable, :likes]), method: :post
+      end
+    end
+  end
+
 end

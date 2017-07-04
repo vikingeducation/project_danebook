@@ -7,16 +7,21 @@
   <%= form_for [@user, @photo], method: :post do |f| %>
     <%= render partial: "shared/form_errors", locals: {obj: @photo} %>
     <div class="panel panel-default">
+
       <div class="panel-heading text-center">
         <h3>Photo</h3>
       </div>
+
       <div class="panel-body">
+
         <div class="form-group">
           <%= f.label :asset, "Add a new photo:" %>
           <%= f.file_field :asset, class: "form-control" %>
         </div>
+        
       </div>
       <%= f.submit "Upload Photo", class: "btn btn-block btn-primary" %>
+
     </div>
   <% end %>
 </div>

@@ -3,7 +3,7 @@
   <%= render :partial => "shared/about_panel" %>
 
   <!-- photos -->
-  <%= render :partial => "shared/photos_panel" %>
+  <%= render :partial => "shared/photos_panel", locals: {user: user} %>
 
   <!-- friends -->
   <%= render :partial => "shared/friends_panel", locals: {user: user} %>

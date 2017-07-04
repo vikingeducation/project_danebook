@@ -13,6 +13,7 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
+      send_welcome_email
       permanent_sign_in(@user)
       flash[:success] = "User created successfully"
       redirect_to root_path
@@ -53,6 +54,14 @@ class UsersController < ApplicationController
 
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def send_welcome_email
+    UserMailer.welcome(@user.id).deliver_later
+  end
+
+  def send_suggest_friends_email
+    UserMailer.delay(run_at: 5.minutes.from.now).suggest_friends(@user.id)
   end
 
 end

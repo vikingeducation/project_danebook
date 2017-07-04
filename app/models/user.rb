@@ -59,14 +59,14 @@ class User < ApplicationRecord
   def friends
     status = Status.find_by(message: "Accepted")
     User.find_by_sql [
-    "SELECT u1.id
+    "SELECT u1.*
       FROM users u1
       JOIN friend_requests f ON u1.id = f.user_one_id
       JOIN users u2 ON u2.id = f.user_two_id
       WHERE u2.id = ?
         AND f.status_id = ?
       UNION
-      SELECT u1.id
+      SELECT u1.*
         FROM users u1
         JOIN friend_requests f ON u1.id = f.user_two_id
         JOIN users u2 ON u2.id = f.user_one_id
@@ -74,6 +74,20 @@ class User < ApplicationRecord
           AND status_id = ?", self.id, status.id, self.id, status.id
     ]
   end
+
+  ## Recent activity measured by posts.created_at
+  ## Relies upon User#friends to get the ids
+  def recently_active
+    User.find_by_sql [
+      "SELECT DISTINCT u.id, MAX(p.created_at) AS last_created_post
+        FROM posts p
+        JOIN users u ON p.user_id = u.id
+        WHERE u.id IN (?)
+        GROUP BY 1
+        ORDER BY 2 DESC", self.friends.map(&:id)
+    ]
+  end
+
 
   def relationship_with(user_id)
     FriendRequest.relationship_between(self.id, user_id)
@@ -91,6 +105,11 @@ class User < ApplicationRecord
         WHERE (p.first_name ILIKE :param) OR (p.last_name ILIKE :param)",
       param: "%#{param}%"
     ]
+  end
+
+  def self.suggest_friends(options)
+    users = User.all.shuffle
+    users[0...options[:limit]] if options[:limit]
   end
 
 end

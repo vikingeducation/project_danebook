@@ -19,14 +19,16 @@
           <% if @user.photos.blank? %>
             <h3 class="text-center">No photos yet</h3>
           <% else %>
+            <!-- Photos -->
             <% @user.photos.each_slice(4) do |quartet| %>
             <div class="row">
               <% quartet.each do |photo| %>
               <div class="col-sm-3">
+                <!-- Photo -->
                 <div class="thumbnail">
                   <% # only the user's friends should see the thumbnail as clickable %>
                   <% if current_user?(@user.id) || @user.friends_with?(current_user.id) %>
-                    <%= link_to user_photo_path(@user.id, photo.id) do %>
+                    <%= link_to user_photo_path(@user, photo) do %>
                       <%= image_tag photo.asset.url(:medium) %>
                     <% end %>
                   <% else %>

@@ -1,0 +1,7 @@
+Hello <%= @user.full_name %>,
+
+<%= @comment.user.full_name %> has commented on your <%= @comment.commentable_type %>!
+
+Check it out:
+
+<%= url_for([@user, @comment.commentable]) %>

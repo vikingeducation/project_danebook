@@ -4,7 +4,7 @@
       <li><%= link_to "Timeline", user_posts_path(user) %></li>
       <li><%= link_to "About", user_path(user.id) %></li>
       <li>
-        <%= link_to friends_path do %>
+        <%= link_to user_friends_path(user) do %>
           Friends <span class="label label-primary"><%= user.friends.count %></span>
         <% end %>
       </li>

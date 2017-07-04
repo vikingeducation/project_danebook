@@ -13,9 +13,9 @@
         <div class="col-sm-4">
           <div class="thumbnail">
             <%= link_to user_posts_path(friend.id) do %>
-              <img class="user-thumbnail" src="https://s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif" alt="...">
+              <%= image_tag profile_photo_or_default(friend.profile.profile_photo), class: "user-thumbnail" %>
             <% end %>
-            <p class="text-center"><a href="#"><%= link_to friend.full_name, user_posts_path(friend.id) %></p>
+            <p class="text-center"><%= link_to friend.full_name, user_posts_path(friend.id) %></p>
           </div>
         </div>
         <% end %>

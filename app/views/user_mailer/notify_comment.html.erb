@@ -1,0 +1,7 @@
+<h1>Hello <%= @user.full_name %>, </h1>
+
+<p><%= @comment.user.full_name %> has commented on your <%= @comment.commentable_type %>!</p>
+
+<p>Check it out: </p>
+
+<%= link_to url_for([@user, @comment.commentable]), [@user, @comment.commentable] %>

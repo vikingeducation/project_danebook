@@ -13,6 +13,7 @@
       <% if @friends.blank? %>
         <h3 class="text-center">No one likes you</h3>
       <% else %>
+        <!-- Friends -->
         <% @friends.each_slice(2) do |pair| %>
           <div class="row">
             <% pair.each do |friend| %>
@@ -20,12 +21,14 @@
                 <div class="thumbnail">
 
                   <div class="row">
+                    <!-- Profile photo -->
                     <div class="col-sm-3 vcenter">
                       <%= link_to user_posts_path(friend.id) do %>
-                        <img src="https://s3.amazonaws.com/viking_education/web_development/web_app_eng/user_silhouette_generic.gif" alt="...">
+                        <%= image_tag profile_photo_or_default(friend.profile.profile_photo) %>
                       <% end %>
                     </div>
 
+                    <!-- Name & friends count -->
                     <div class="col-sm-4 vcenter">
                       <div class="friend-info">
                         <%= link_to friend.full_name, user_posts_path(friend.id) %> <br>
@@ -33,6 +36,7 @@
                       </div>
                     </div>
 
+                    <!-- Friendship -->
                     <div class="col-sm-3 vcenter">
                       <%= friend_action_button(friend, "btn btn-default") %>
                     </div>

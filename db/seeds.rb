@@ -102,7 +102,7 @@ end
 # set profile photos
 User.all.each do |user|
   unless user.photos.blank?
-    user.profile.photo = user.photos.first
+    user.profile.profile_photo = user.photos.first
     user.save
   end
 end

@@ -8,6 +8,7 @@ class CommentsController < ApplicationController
     @comment = @commentable.comments.build(comment_params)
     @comment.user = current_user
     if @comment.save
+      send_comment_notification_email
       flash[:success] = "Comment created successfully"
     else
       flash[:success] = "Failed to create comment"
@@ -36,6 +37,13 @@ class CommentsController < ApplicationController
     model = params[:commentable].classify.constantize
     id_key = (params[:commentable].downcase + "_id").to_sym
     model.find(params[id_key])
+  end
+
+  # An email is sent only when someone else comments on your photos or posts
+  def send_comment_notification_email
+    if current_user != @commentable.user
+      UserMailer.notify_comment(@commentable.user.id, @comment.id).deliver_later
+    end
   end
 
 end

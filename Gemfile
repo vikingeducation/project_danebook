@@ -54,6 +54,7 @@ group :development do
   gem "better_errors"
   # Testing
   gem 'guard-rspec', require: false
+  gem "letter_opener"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -69,3 +70,4 @@ end
 gem "binding_of_caller"
 
 gem "paperclip"
+gem 'delayed_job_active_record'

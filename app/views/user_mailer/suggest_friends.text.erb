@@ -1,0 +1,10 @@
+Hello <%= @user.full_name %>,
+
+We have some suggested friends for you. Have fun!
+
+<% User.suggest_friends(limit: 3).each do |user| %>
+  <%= user.full_name %>
+  <%= url_for(user) %>
+
+
+<% end %>

@@ -1,0 +1,27 @@
+<div class="panel panel-default">
+  <div class="panel-heading text-center">
+    Friends
+  </div>
+  <div class="panel-body">
+
+    <% if user.friends.blank? %>
+      <h3 class="text-center">No friends yet</h3>
+    <% else %>
+      <% user.friends.shuffle[0..5].each_slice(3) do |trio| %>
+      <div class="row">
+        <% trio.each do |friend| %>
+        <div class="col-sm-4">
+          <div class="thumbnail">
+            <%= link_to user_posts_path(friend.id) do %>
+              <%= image_tag profile_photo_or_default(friend.profile.profile_photo), class: "user-thumbnail" %>
+            <% end %>
+            <p class="text-center"><%= link_to friend.full_name, user_posts_path(friend.id) %></p>
+          </div>
+        </div>
+        <% end %>
+      </div>
+      <% end %>
+      <p class="text-center"><%= link_to "See More Friends", user_friends_path(user.id) %></p>
+    <% end %>
+  </div>
+</div>

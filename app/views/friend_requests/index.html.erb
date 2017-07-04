@@ -1,0 +1,55 @@
+<!-- cover -->
+<%= render :partial => "shared/jumbotron", locals: {user: @user} %>
+
+<%= render :partial => "shared/timeline_nav", locals: {user: @user} %>
+
+<div class="container">
+  <div class="panel panel-default user-panel">
+    <div class="panel-heading">
+      <h1>Friends</h1>
+    </div>
+    <div class="panel-body">
+
+      <% if @friends.blank? %>
+        <h3 class="text-center">No one likes you</h3>
+      <% else %>
+        <!-- Friends -->
+        <% @friends.each_slice(2) do |pair| %>
+          <div class="row">
+            <% pair.each do |friend| %>
+              <div class="col-sm-6">
+                <div class="thumbnail">
+
+                  <div class="row">
+                    <!-- Profile photo -->
+                    <div class="col-sm-3 vcenter">
+                      <%= link_to user_posts_path(friend.id) do %>
+                        <%= image_tag profile_photo_or_default(friend.profile.profile_photo) %>
+                      <% end %>
+                    </div>
+
+                    <!-- Name & friends count -->
+                    <div class="col-sm-4 vcenter">
+                      <div class="friend-info">
+                        <%= link_to friend.full_name, user_posts_path(friend.id) %> <br>
+                        <span class="text-info"><%= "#{friend.friends.count} #{'friend'.pluralize(friend.friends.count)}" %></span>
+                      </div>
+                    </div>
+
+                    <!-- Friendship -->
+                    <div class="col-sm-3 vcenter">
+                      <%= friend_action_button(friend, "btn btn-default") %>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+
+      <% end %>
+
+    </div>
+  </div>
+</div>

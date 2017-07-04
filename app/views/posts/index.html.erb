@@ -1,0 +1,25 @@
+<!-- cover -->
+<%= render :partial => "shared/jumbotron", locals: {user: @user} %>
+
+<%= render :partial => "shared/timeline_nav", locals: {user: @user} %>
+
+<div class="container">
+
+  <div class="row">
+    <!-- sidebar -->
+    <%= render :partial => "shared/sidebar", locals: {user: @user} %>
+
+    <div class="col-sm-8">
+      <!-- new post -->
+      <%= render :partial => "shared/new_post", locals: {post: @post, user: current_user} %>
+
+      <!-- post -->
+      <% @posts.each do |post| %>
+        <%= render :partial => "shared/post", locals: {post: post} %>
+      <% end %>
+
+    </div>
+
+  </div>
+
+</div>

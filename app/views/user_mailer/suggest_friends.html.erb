@@ -1,0 +1,12 @@
+<h1>Hello <%= @user.full_name %></h1>
+
+<p>We have some suggested friends for you. Have fun!</p>
+
+<div>
+<% User.suggest_friends(limit: 3).each do |user| %>
+  <%= link_to user.full_name, user %> <br>
+  <% if user.profile.profile_photo %>
+    <%= image_tag(attach_image_inline(user.profile.profile_photo).url) %> <br>
+  <% end %>
+<% end %>
+</div> <br>

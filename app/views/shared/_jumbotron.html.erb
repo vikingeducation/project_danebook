@@ -1,0 +1,16 @@
+<div class="jumbotron"
+     style="background-image: linear-gradient(rgba(30,30,30,0.5), rgba(30,30,30,0.5)),
+
+            url(<%= cover_photo_or_default(user.profile.cover_photo) %>);">
+  <div class="container">
+    <div class="dp">
+      <%= link_to user_path(user.id), class: "dp-profile-name" do %>
+        <%= image_tag profile_photo_or_default(user.profile.profile_photo), class: "dp-img" %>
+        <%= user.full_name %>
+        <i class="glyphicon glyphicon-ok"></i>
+      <% end %>
+
+      <%= friend_action_button(user) %>
+    </div>
+  </div>
+</div>

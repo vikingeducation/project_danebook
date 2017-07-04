@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>AssignmentDanebookGoesLive</title>
+    <%= csrf_meta_tags %>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+
+
+    <%= stylesheet_link_tag    'application', media: 'all' %>
+    <%= javascript_include_tag 'application' %>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+  </head>
+
+  <body <% unless signed_in_user? %>style="padding: 0 0"<% end %>>
+
+    <% if signed_in_user? %>
+      <%= render :partial => "shared/signed_in_navbar", locals: {user: @user || current_user} %>
+    <% else %>
+      <%= render :partial => "shared/not_signed_in_navbar" %>
+    <% end %>
+
+    <%= render partial: "shared/flash_msgs" %>
+
+    <%= yield %>
+  </body>
+</html>

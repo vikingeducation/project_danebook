@@ -1,0 +1,19 @@
+<div class="timeline-nav">
+  <div class="container">
+    <div class="nav nav-pills">
+      <li><%= link_to "Timeline", user_posts_path(user) %></li>
+      <li><%= link_to "About", user_path(user.id) %></li>
+      <li>
+        <%= link_to user_friends_path(user) do %>
+          Friends <span class="label label-primary"><%= user.friends.count %></span>
+        <% end %>
+      </li>
+      <li>
+        <%= link_to user_photos_path(user.id) do %>
+          Photos <span class="label label-primary"><%= user.photos.count %></span>
+        <% end %>
+      </li>
+    </div>
+
+  </div>
+</div>

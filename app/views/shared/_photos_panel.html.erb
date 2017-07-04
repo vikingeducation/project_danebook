@@ -1,0 +1,36 @@
+<div class="panel panel-default">
+  <div class="panel-heading text-center">
+    Photos
+  </div>
+  <div class="panel-body">
+
+    <% if user.photos.blank? %>
+      <h3 class="text-center">No photos yet</h3>
+    <% else %>
+      <!-- Photos -->
+      <% user.photos.each_slice(3) do |trio| %>
+      <div class="row">
+        <% trio.each do |photo| %>
+        <div class="col-sm-4">
+          <!-- Photo -->
+          <div class="thumbnail">
+            <% # only the user's friends should see the thumbnail as clickable %>
+            <% if current_user?(user.id) || user.friends_with?(current_user.id) %>
+              <%= link_to user_photo_path(user, photo) do %>
+                <%= image_tag photo.asset.url(:thumb), class: "user-thumbnail" %>
+              <% end %>
+            <% else %>
+              <%= image_tag photo.asset.url(:thumb), class: "user-thumbnail" %>
+            <% end %>
+          </div>
+        </div>
+        <% end %>
+      </div>
+      <% end %>
+    <% end %>
+
+
+
+    <p class="text-center"><%= link_to "See More Photos", user_photos_path(user) %></p>
+  </div>
+</div> <!-- /photos -->

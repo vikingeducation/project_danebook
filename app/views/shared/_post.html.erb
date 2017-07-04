@@ -1,0 +1,81 @@
+<div class="panel">
+  <div class="panel-heading">
+    <div class="media">
+      <!-- Author profile photo -->
+      <div class="pull-left">
+        <%= link_to user_posts_path(post.user.id) do %>
+          <%= image_tag profile_photo_or_default(post.user.profile.profile_photo), class: "user-thumbnail" %>
+        <% end %>
+      </div>
+      <!-- Author & posted date -->
+      <div class="media-body">
+        <h4 class="media-heading"><%= link_to post.user.profile.full_name, user_posts_path(post.user.id) %></h4>
+        <span class="text-info">Posted on <%= post.created_at.strftime('%b %d, %Y') %></span>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Post body -->
+  <div class="panel-body">
+    <%= post.body %>
+  </div>
+
+  <!-- Action & Comments & Likes -->
+  <div class="panel-footer">
+    <!-- Actions -->
+    <p>
+      <!-- Like -->
+      <%= like_button(post, current_user) %>
+      <!-- TODO: show comment form with javascript -->
+      <%= link_to "Comment", "#" %>
+      <!-- Delete post -->
+      <%= delete_post_button(post, current_user) %>
+    </p>
+
+    <!-- Likes -->
+    <p><%= get_like_text(post, current_user) %></p>
+
+    <!-- Comments -->
+    <ul class="media-list">
+      <% post.comments.each do |comment| %>
+        <li class="media">
+          <!-- Profile Photo -->
+          <div class="pull-left">
+            <%= link_to user_posts_path(comment.user.id) do %>
+              <%= image_tag profile_photo_or_default(comment.user.profile.profile_photo), class: "user-thumbnail" %>
+            <% end %>
+          </div>
+          <div class="media-body">
+            <!-- User name & date -->
+            <p class="media-heading">
+              <%= link_to comment.user.full_name, user_posts_path(comment.user) %>
+              said on <%= comment.created_at.strftime('%b %d, %Y') %>:
+            </p>
+            <!-- Comment body -->
+            <p><%= comment.body %></p>
+
+            <!-- Actions & Likes -->
+            <p>
+              <%= like_button(comment, current_user) %>
+
+              <%= get_like_text(comment, current_user) %>
+
+              <%= delete_comment_button(comment, current_user) %>
+            </p>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+    
+    <!-- Comment form -->
+    <%= form_for [post, Comment.new] do |f| %>
+      <p><%= f.text_area :body, {class: "form-control", rows: 8, cols: 80, placeholder: "Write a comment..."} %></p>
+      <div>
+        <!-- TODO: hide comment form with javascript -->
+        <button class="btn btn-danger">Cancel</button>
+        <%= f.submit "Comment", {class: "btn btn-primary pull-right"} %>
+      </div>
+    <% end %>
+  </div>
+</div>

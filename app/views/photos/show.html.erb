@@ -1,0 +1,96 @@
+<!-- cover -->
+<%= render :partial => "shared/jumbotron", locals: {user: @user} %>
+
+<%= render :partial => "shared/timeline_nav", locals: {user: @user} %>
+
+<div class="container">
+  <div class="panel panel-default">
+    <div class="panel-heading text-center">
+      <h3>Photos</h3>
+    </div>
+    <div class="panel-body">
+
+      <div class="row">
+        <div class="col-md-7">
+          <%= image_tag @photo.asset.url, class: "view-photo" %>
+          <div class="text-right">
+            <% ## Users can only put THEIR photos up as profile or cover photos
+               if current_user?(@user.id) %>
+               <p><%= link_to "Set as Profile", user_photo_set_profile_path(current_user, @photo), method: :post %></p>
+               <p><%= link_to "Set as Cover", user_photo_set_cover_path(current_user, @photo), method: :post %></p>
+               <p><%= link_to "Delete Photo", user_photo_path(current_user, @photo), method: :delete %></p>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="col-md-5">
+
+          <div class="media">
+            <!-- Owner Profile Photo -->
+            <div class="pull-left">
+              <%= link_to user_posts_path(@user.id) do %>
+                <%= image_tag profile_photo_or_default(@user.profile.profile_photo), class: "user-thumbnail" %>
+              <% end %>
+            </div>
+            <!-- Owner's name & created_at -->
+            <div class="media-body">
+              <h4 class="media-heading"><%= link_to @user.full_name, user_posts_path(@user.id) %></h4>
+              <span class="text-info"><%= @photo.asset_updated_at.strftime('%b %d, %Y') %></span>
+            </div>
+          </div>
+
+          <p>
+            <%= like_button(@photo, current_user) %>
+          </p>
+
+          <!-- Likes -->
+          <p><%= get_like_text(@photo, current_user) %></p>
+
+          <!-- Comment form -->
+          <%= form_for [@user, @photo, Comment.new] do |f| %>
+            <p><%= f.text_area :body, {class: "form-control", rows: 8, cols: 80, placeholder: "Write a comment..."} %></p>
+            <div>
+              <!-- TODO: hide comment form with javascript -->
+              <button class="btn btn-danger">Cancel</button>
+              <%= f.submit "Comment", {class: "btn btn-primary pull-right"} %>
+            </div>
+          <% end %>
+
+          <br>
+          <!-- comments -->
+          <div class="panel-footer">
+            <ul class="media-list">
+              <% @photo.comments.each do |comment| %>
+              <li class="media">
+                <div class="pull-left">
+                  <%= link_to user_posts_path(comment.user) do %>
+                  <%= image_tag profile_photo_or_default(comment.user.profile.profile_photo), class: "user-thumbnail" %>
+                  <% end %>
+                </div>
+                <div class="media-body">
+                  <p class="media-heading">
+                    <%= link_to comment.user.full_name, user_posts_path(comment.user) %>
+                    said on <%= comment.created_at.strftime('%b %d, %Y') %>:
+                  </p>
+                  <p><%= comment.body %></p>
+                  <!-- Like -->
+                  <p><%= get_like_text(comment, current_user) %></p>
+                  <p>
+                    <%= like_button(comment, current_user) %>
+                    <% if author_of?(comment, current_user) %>
+                      <%= link_to "Delete", user_photo_comment_path(@user, @photo, comment), method: :delete, class: "pull-right" %>
+                    <% end %>
+                  </p>
+
+                </div>
+              </li>
+              <% end %>
+            </ul>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

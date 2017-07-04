@@ -25,10 +25,11 @@
 
       <p>
         <% if number_of_likes(post) > 3 %>
-          <%= render partial: 'likes_display', :locals => {:post => post} %>
+          <%= list_who_liked(post) %>
           <%= number_of_likes(post) - first_few_likes(post).size %> others like this
         <% elsif number_of_likes(post) > 0 %>
-          <%= render partial: 'likes_display', :locals => {:post => post} %> like this
+          <%= list_who_liked(post) %>
+          like this
         <% end %>
       </p>
     </div>
@@ -37,9 +38,9 @@
 
     <div class="post-body unfolded">
       <% if post.comments.any? %>
-      <%= render partial: 'comment', :locals => {:post => post} %>
+        <%= render partial: 'comment', :locals => {:post => post} %>
       <% end %>
-      <%= render partial: 'comments/new_comment_form', :locals => {:commentable => post} %>
+        <%= render partial: 'comments/new_comment_form', :locals => {:commentable => post} %>
     </div>
   </div>
 </section>

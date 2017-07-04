@@ -15,7 +15,7 @@ class UsersController < ApplicationController
       flash[:success] = "Congratulation! You have successfully created an account!"
       redirect_to @user
     else
-      flash[:notice] = "Error! We couldn't create your account!" + "#{@user.errors.full_messages}"
+      flash[:danger] = "Error! We couldn't create your account!" + "#{@user.errors.full_messages}"
       render :new
     end
   end
@@ -37,20 +37,20 @@ class UsersController < ApplicationController
       flash[:success] = "Congratulation! You have successfully edited your profile!"
       redirect_to @user
     else
-      flash[:notice] = "Error! We couldn't edit your profile!" + "#{@user.errors.full_messages}"
+      flash[:danger] = "Error! We couldn't edit your profile! #{@user.errors.full_messages}"
       render :edit
     end
   end
 
   private
   def user_params
-  params.require(:user).permit( :email, :password, 
+  params.require(:user).permit( :email, :password,
                                         :password_confirmation,
                                         {:profile_attributes =>
                                             [ :user_id,
-                                              :first_name, 
-                                              :last_name, 
-                                              :birth_day, 
+                                              :first_name,
+                                              :last_name,
+                                              :birth_day,
                                               :birth_month,
                                               :birth_year,
                                               :gender,

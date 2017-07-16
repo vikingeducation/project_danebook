@@ -1,6 +1,7 @@
-    <!-- <title>About</title> -->
-<%= render partial: '/shared/navbar' %>
-<div class="container">
+<% content_for :title do %>
+  <title>About</title>
+<% end %>
+<div class="container pages-controller">
   <%= render partial: '/shared/toolbar' %>
   <div class="row about-title">
     <div class="col-md-12">

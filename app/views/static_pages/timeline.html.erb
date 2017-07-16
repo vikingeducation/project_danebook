@@ -1,6 +1,7 @@
-    <!-- <title>Timeline</title> -->
-<%= render partial: '/shared/navbar' %>
-<div class="container">
+<% content_for :title do %>
+  <title>Timeline</title>
+<% end %>
+<div class="container pages-controller">
  <%= render partial: '/shared/toolbar' %>
   <div class="row timeline-container">
     <div class="col-md-5 left-pane">

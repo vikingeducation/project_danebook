@@ -36,7 +36,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_current_user
-    unless params[:id] == @current_user.id.to_s || params[:user_id] == @current_user.id.to_s
+    unless params[:id] == current_user.id.to_s || params[:user_id] == current_user.id.to_s #remove the second part, and use another method for checking comment creator etc.
       flash[:danger] = "Your are not authorized to do this."
       redirect_to root_url
     end

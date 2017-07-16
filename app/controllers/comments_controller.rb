@@ -30,7 +30,7 @@ class CommentsController < ApplicationController
   end
 
   def require_comment_creator
-    unless params[:user_id] == @current_user.id.to_s
+    unless params[:user_id] == current_user.id.to_s
       flash[:danger] = "Your are not authorized to do this."
       redirect_to root_url
     end

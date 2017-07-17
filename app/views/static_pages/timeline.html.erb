@@ -59,8 +59,7 @@
           </div>
           <div class="row">
             <div class="col-md-12 centre-text">
-              <a href="">See More Photos</a>
-            </div>
+              <%= link_to "See More Photos", "#" %>            </div>
           </div>
         </div>
 
@@ -73,36 +72,36 @@
            <div class="col-md-4">
             <div class="img-thumb-small row">
               <img class="col-md-12 friend-link" src="https://unsplash.it/50/50"/>
-              <a class="col-md-12" href="">Ronald Weasley</a>
+              <%= link_to "Ronald Weasley", "#", class: "col-md-12" %>
             </div>
             <div class="img-thumb-small row">
               <img class="col-md-12 friend-link" src="https://unsplash.it/50/50"/>
-              <a class="col-md-12" href="">Ginny Weasley</a>
+              <%= link_to "Ginny Weasley", "#", class: "col-md-12" %>
             </div>
           </div>
           <div class="col-md-4">
             <div class="img-thumb-small row">
               <img class="col-md-12 friend-link" src="https://unsplash.it/50/50">
-              <a class="col-md-12" href="">Hermione Granger</a>
+              <%= link_to "Hermione Granger", "#", class: "col-md-12" %>
             </div>
             <div class="img-thumb-small row">
               <img class="col-md-12 friend-link" src="https://unsplash.it/50/50"/>
-              <a class="col-md-12" <a href="">Slytherine</a>
+              <%= link_to "Slytherine", "#", class: "col-md-12" %> 
             </div>
           </div>
           <div class="col-md-4">
             <div class="img-thumb-small row">
               <img class="col-md-12 friend-link" src="https://unsplash.it/50/50"/>
-              <a class="col-md-12" ref="">Lord Voldemort</a>
+              <%= link_to "Lord Voldemort", "#", class: "col-md-12" %> 
             </div>
             <div class="img-thumb-small row">
               <img class="col-md-12 friend-link" src="https://unsplash.it/50/50">
-              <a class="col-md-12" href="">Severus Snape</a>
+              <%= link_to "Severus Snape", "#", class: "col-md-12" %>
             </div>
           </div>
           <div class="row">
             <div class="col-md-12 centre-text">
-              <a href="">See More Friends</a>
+              <%= link_to "See More Friends", "#" %>
             </div>
           </div>
         </div>
@@ -131,7 +130,7 @@
               <%= image_tag("harry_potter_small.jpg", size: "30x30") %>
             </div>
             <div class="col-md-11">
-              <a href="">Harry Potter</a>
+              <%= link_to "Harry Potter", "#" %>
               <p>Posted on Thursday 6/1/2004</p>
             </div>
           </div>
@@ -148,13 +147,13 @@
         </div>
         <div class="row comment-links section-footer">
           <div class="col-md-1">
-            <a href="">Like</a>
+            <%= link_to "Like", "#" %>
           </div>
           <div class="col-md-9">
-            <a href="">Comments</a>
+            <%= link_to "Comments", "#" %>
           </div>
           <div class="col-md-2">
-            <a href="">Delete</a>
+            <%= link_to "Delete", "#" %>
           </div>
         </div>
 
@@ -164,7 +163,7 @@
               <%= image_tag("harry_potter_small.jpg", size: "30x30") %>
             </div>
             <div class="col-md-11">
-              <a href="">Harry Potter</a>
+              <%= link_to "Harry Potter", "#" %>
               <p>Posted on Thursday 6/1/2004</p>
             </div>
           </div>
@@ -181,17 +180,17 @@
         </div>
         <div class="row comment-links section-footer">
           <div class="col-md-1">
-            <a href="">Like</a>
+            <%= link_to "Like", "#" %>
           </div>
           <div class="col-md-9">
-            <a href="">Comments</a>
+            <%= link_to "Comments", "#" %>
           </div>
           <div class="col-md-2">
-            <a href="">Delete</a>
+            <%= link_to "Delete", "#" %>
           </div>
           <div class="row">
             <div class="col-md-12">
-              <p><a href="">Hermione Granger likes this</a></p>
+              <p><%= link_to "Hermione Granger likes this", "#" %></p>
             </div>
           </div>
         </div>
@@ -202,7 +201,7 @@
               <%= image_tag("harry_potter_small.jpg", size: "30x30") %>
             </div>
             <div class="col-md-11">
-              <a href="">Harry Potter</a>
+              <%= link_to "Harry Potter", "#" %>
               <p>Posted on Thursday 6/1/2004</p>
             </div>
           </div>
@@ -219,14 +218,15 @@
           
           <div class="row comment-links last-post">
             <div class="col-md-10">
-              <a href="">Unlike</a>
+              <%= link_to "Unlike", "#" %>
             </div>
             <div class="col-md-2">
-              <a href="">Delete</a>
+              <%= link_to "Delete", "#" %>
             </div>
             <div class= "row">
               <div class="col-md-12">
-                <p>You and <a href="">Hermione Granger</a> and 3 others like this</p>
+
+                <p>You and <%= link_to "Hermione Granger", "#" %>  and 3 others like this</p>
               </div>
             </div>
             <hr></hr>
@@ -235,7 +235,7 @@
                 <%= image_tag("harry_potter_small.jpg", size: "30x30") %>
               </div>
               <div class="col-md-11">
-                <p><a href="">Ron Weasley</a> Said on Thursday 6/1/2004</p>
+                <p><%= link_to "Ron Weasley", "#" %> Said on Thursday 6/1/2004</p>
                 <div class="row">
                   <div class="col-md-12">
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -247,10 +247,10 @@
                   </div>
                   <div class="row">
                     <div class="col-md-10">
-                      <p><a href="">Like   </a>3 others people like this</p>
+                      <p><%= link_to "Like", "#" %> </a>3 others people like this</p>
                     </div>
                     <div class="col-md-2">
-                      <p><a href="">Delete</a></p>
+                      <p><%= link_to "Delete", "#" %></p>
                     </div>
                     </div>
                   </div>
@@ -262,7 +262,7 @@
                 <%= image_tag("harry_potter_small.jpg", size: "30x30") %>
               </div>
               <div class="col-md-11">
-                <p><a href="">Harry Potter</a> Said on Thursday 6/1/2004</p>
+                <p><%= link_to "Harry Potter", "#" %> Said on Thursday 6/1/2004</p>
                 <div class="row">
                   <div class="col-md-12">
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
@@ -274,10 +274,10 @@
                   </div>
                   <div class="row">
                     <div class="col-md-10">
-                      <p><a href="">Like   </a>3 others people like this</p>
+                      <p><%= link_to "Like", "#" %> 3 others people like this</p>
                     </div>
                     <div class="col-md-2">
-                      <p><a href="">Delete</a></p>
+                      <p><%= link_to "Delete", "#" %></p>
                     </div>
                   </div>
                 </div>
@@ -290,7 +290,7 @@
             </div>
             <div class="row add-comment">
               <div class="col-md-10">
-                <p><a href="">Cancel</a></p>
+                <p><%= link_to "Cancel", "#" %></p>
               </div>
               <div class="col-md-2">
                 <button class="btn btn-primary">Comment</button>

@@ -1,0 +1,20 @@
+<% if current_page?(static_pages_path) %>
+  <% on_homepage = true %>
+<% else %>
+  <% on_homepage = false %>
+<% end %>
+
+<% if on_homepage %>
+  <div class="homepage">
+    <div class="navbar">
+      <%= link_to static_pages_path do %>
+        Danebook
+      <% end %>
+      <div class="login-container navbar-form navbar-right">
+        <input type="text" class="form-control" id="emailInput1" placeholder="Email">
+        <input type="text" class="form-control" id="emailInput2" placeholder="Password">
+        <button type="button" class="btn btn-info">Sign in</button>
+      </div>
+    </div>
+  </div>
+<% end %>

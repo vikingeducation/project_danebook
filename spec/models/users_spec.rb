@@ -3,7 +3,6 @@ require 'rails_helper'
 describe User do
 
   let(:user){build(:user)}
-  let(:profile){build(:profile)}
 
 # ========== VALIDATIONS TESTS =======================
 # ----------USER -------------
@@ -37,56 +36,24 @@ describe User do
     end
   end
 
-# ---------- PROFILE -------------
-  it "with missing first name is invalid" do
-    test_profile = build(:profile, :first_name => '')
-    expect(test_profile).not_to be_valid
-  end
-
-  it "with too short last name is invalid" do
-    test_profile = build(:profile, :last_name => 'D')
-    expect(test_profile).not_to be_valid
-  end
-
-  it "with correct all details is valid" do
-    expect(profile).to be_valid
-  end
-
-  it "with letterized telephone num is invalid" do
-    test_profile = build(:profile, :telephone => '+123asd789')
-    expect(test_profile).not_to be_valid
-  end
 
   # ========== ASSOCIATION TESTS =======================
-  # ----------USER -------------
 
+  it "is responds to assocation with posts" do
+    expect(user).to respond_to(:comments)
+  end
 
-  # Comment
-  # -association with likes, user, posts  ---happy/sad x 2
-  # linking a valid Author succeeds
+  it "is responds to assocation with posts" do
+    expect(user).to respond_to(:likes)
+  end
 
-
-
-  # Like
-  # -associations with user, comments, posts  ---happy/sad x 2
-
-
-
-
-  # Post
-  # -associations with comments, user, likes  ---happy/sad x 2
-
-
-  # Profile
-  # -association with user  ---happy/sad
-
-
+  it "is responds to assocation with posts" do
+    expect(user).to respond_to(:profile)
+  end
   # User
   # -associations with comments, like, profile, posts ---happy/sad x 2
 
   # ========== METHODS TESTS =======================
-  # ----------USER -------------
-
 
   # helpers
   # -first_few_likes(post)---happy/sad

@@ -3,17 +3,17 @@ class Profile < ApplicationRecord
   belongs_to :user
   validates_presence_of :user
 
-  validates :first_name, 
+  validates :first_name,
             :last_name, :length => { :within => 2..20 },
             :presence => true
 
-  validates :college, 
-            :hometown, 
-            :current_town, 
+  validates :college,
+            :hometown,
+            :current_town,
             :length => { :within => 2..20 },
             :allow_blank => true
 
-  validates :words_to_live, 
+  validates :words_to_live,
             :about_me, :length => { :within => 20..250 },
             :allow_blank => true
 

@@ -5,7 +5,7 @@ FactoryGirl.define do
 
     password "loko12"
   end
- 
+
   factory :profile do
     sequence(:first_name){ |n| "Marek#{n}"}
     sequence(:last_name){ |n| "O'Neill#{n}"}
@@ -27,7 +27,7 @@ FactoryGirl.define do
     user
   end
 
-  factory :comment do
+  factory :comment  do
     association :commentable, factory: :post
     sequence(:body){ |n| "This is my comment number #{n}, and I am not going to stop! "}
     user

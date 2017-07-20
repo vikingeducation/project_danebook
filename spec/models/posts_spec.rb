@@ -3,9 +3,9 @@ require 'pry'
 
 describe Post do
 
-  
+
   let(:post){create(:post)}
-  let(:user){build(:user)}
+  let(:user){create(:user)}
 
   it { should have_many(:likes) }
   it { should have_many(:comments) }
@@ -25,6 +25,5 @@ describe Post do
   it "responds to likes assosiation" do
     expect(post).to respond_to(:likes)
   end
-
 
 end

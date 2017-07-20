@@ -50,12 +50,8 @@ describe User do
   it "is responds to assocation with posts" do
     expect(user).to respond_to(:profile)
   end
-  # User
-  # -associations with comments, like, profile, posts ---happy/sad x 2
 
   # ========== METHODS TESTS =======================
 
-  # helpers
-  # -first_few_likes(post)---happy/sad
-  # -current_user_liked?(post)---happy/sad
+
 end

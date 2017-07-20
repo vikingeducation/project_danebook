@@ -14,18 +14,14 @@ feature 'Posting a comment' do
   end
 
   scenario "Successfull posting" do
-    fill_in('post_body', :with => 'Hey, This is my new post!!!')
-    click_button "Post"
-    fill_in('comment_body', :with => 'Hey, This is my new comment!!!')
-    save_and_open_page
-    click_button "Comment"
+    have_created_post
+    have_created_comment
     expect(page).to have_content "You have created new comment"
     expect(page).to have_css ('div.alert-success')
   end
 
   scenario "Unable to post an empty comment" do
-    fill_in('post_body', :with => 'Hey, This is my new post!!!')
-    click_button "Post"
+    have_created_post
     fill_in('comment_body', :with => '')
     click_button "Comment"
     expect(page).to have_content "Something went wrong!"

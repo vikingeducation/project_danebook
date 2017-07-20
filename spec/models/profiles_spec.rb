@@ -17,7 +17,7 @@ describe Profile do
 
   it "with correct all details is valid" do
     expect(profile).to be_valid
-  end
+  end 
 
   it "with letterized telephone num is invalid" do
     test_profile = build(:profile, :telephone => '+123asd789')

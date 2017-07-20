@@ -17,7 +17,7 @@ describe Like do
     expect(comment_like).to respond_to(:likeable)
   end
 
-  it "do not allow invalid types" do
+  it "do not allow invalid types" do 
     invalid_like = build(:post_like, :likeable_type => 'User')
     expect(invalid_like).not_to be_valid
   end

@@ -4,12 +4,12 @@ class CommentsController < ApplicationController
 
   def create
     @comment = current_user.comments.build(comment_params)
-    if @comment.save!
+    if @comment.save
       flash[:success] = "You have created new comment"
       redirect_to user_timeline_path(@comment.user_id)
     else
       flash[:danger] = "Something went wrong! No post created!"
-      redirect_to user_timeline_path
+      redirect_to user_timeline_path(@comment.user_id)
     end
   end
 

@@ -1,3 +1,5 @@
+require 'pry'
+
 class UsersController < ApplicationController
 
   before_action :require_current_user, :only => [:edit, :update, :destroy]
@@ -33,6 +35,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     @profile = @user.profile
+    # binding.pry
     if @user.update(user_params)
       flash[:success] = "Congratulation! You have successfully edited your profile!"
       redirect_to @user

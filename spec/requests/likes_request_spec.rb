@@ -6,7 +6,6 @@ describe 'LikesRequests' do
   let(:user){create(:user)}
   let(:profile){create(:profile, :user_id => user.id)}
   let(:old_post){create(:post, :user_id => user.id)}
-  let(:old_like){create(:post_like)}
 
   before do
     user
@@ -29,13 +28,12 @@ describe 'LikesRequests' do
 
   describe "DELETE #destroy" do
 
+    let(:new_post){create(:post, :user_id => user.id)}
+
     before do
-      old_like
-      Post.all.each do |post|
-        post.likes.create(attributes_for(:post_like, :user_id => user.id))
-      end
-      Like.all
-      binding.pry
+      new_post
+      new_post.likes.create(attributes_for(:post_like, :user_id => user.id))
+      old_post.likes.create(attributes_for(:post_like, :user_id => user.id))
     end
 
     it "unlikes" do
@@ -43,7 +41,7 @@ describe 'LikesRequests' do
     end
 
     it "destroying post, will destroy the like also" do
-      expect{ delete user_post_path(user, Post.last.id) }.to change(Like, :count).by(-1)
+      expect{ delete user_post_path(user, new_post.id) }.to change(Like, :count).by(-1)
     end
   end
 

@@ -15,6 +15,7 @@ class CommentsController < ApplicationController
 
   def destroy
     @comment = Comment.find(params[:id])
+
     if @comment.destroy
       flash[:success] = "You have deleted comment successfully!"
       redirect_to user_timeline_path(current_user.id)

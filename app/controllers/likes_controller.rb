@@ -2,7 +2,7 @@ class LikesController < ApplicationController
 
   def create
     @like = current_user.likes.build(like_params)
-    if @like.save!
+    if @like.save
       flash[:success] = "You have created new like"
       redirect_to user_timeline_path(@like.user_id)
     else

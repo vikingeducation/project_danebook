@@ -33,12 +33,12 @@ FactoryGirl.define do
   end
 
   factory :post_like, :class => 'Like' do
-    association :likeable, factory: :comment
+    association :likeable, factory: :post
     user
   end
 
   factory :comment_like, :class => 'Like' do
-    association :likeable, factory: :post
+    association :likeable, factory: :comment
     user
   end
 

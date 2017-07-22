@@ -42,6 +42,18 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def regenerate_auth_token
+    self.auth_token = nil
+    generate_token
+    save!
+  end
+
+  def generate_token
+    begin
+      self[:auth_token] = SecureRandom.urlsafe_base64
+    end while User.exists?(:auth_token => self[:auth_token])
+  end
+
   # def permanent_sign_in(user)
   #   user.regenerate_auth_token
   #   cookies.permanent[:auth_token] = user.auth_token

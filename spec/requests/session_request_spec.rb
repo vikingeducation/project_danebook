@@ -4,19 +4,21 @@ require 'pry'
 describe 'SessionRequests' do
 
   let(:user){create(:user)}
-  before { user }
+  before do
+    user
+    login_as(user)
+  end
 
   describe "POST #create" do
 
-    it "proper submission creates a new user" do
-      login_as(user)
-      binding.pry
-      expect(cookies[:user_id]).to eq(user.id)
+    it "proper submission loggs in new user, create a cookie" do
+      expect(flash[:success]).to_not be_nil
+      expect(response.cookies["auth_token"]).to_not be_nil
     end
 
   end
 
- 
+
 end
 #........==========
 # user - create,

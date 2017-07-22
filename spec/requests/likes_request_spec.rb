@@ -3,6 +3,10 @@ require 'rails_helper'
 describe 'UsesRequests' do
 
   let(:user){create(:user)}
+
+
+
+  describe ""
 #........==========
 # user - create,
 # comments - create, delete
@@ -11,4 +15,4 @@ describe 'UsesRequests' do
 # profiles -  update
 # session - authentication tests
 
-end 
+end

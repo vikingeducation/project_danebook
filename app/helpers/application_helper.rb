@@ -16,7 +16,7 @@ module ApplicationHelper
     end
     str.html_safe
   end
-
+ 
   def current_user
     # @current_user ||= User.find(session[:user_id]) if session[:user_id]
     @current_user ||= User.find_by_auth_token(cookies[:auth_token]) if cookies[:auth_token]
@@ -24,6 +24,10 @@ module ApplicationHelper
 
   def signed_in_user?
     !!current_user
+  end
+
+  def full_name(post)
+    "#{post.user.profile.first_name} #{post.user.profile.last_name}"
   end
 
 end

@@ -1,5 +1,3 @@
-require 'pry'
-
 class UsersController < ApplicationController
 
   before_action :require_current_user, :only => [:edit, :update, :destroy]

@@ -21,7 +21,16 @@ class Profile < ApplicationRecord
                         :numericality => true,
                         :allow_blank => true
 
-  validates :birth_day, :birth_month, :birth_year, :gender, :presence => true
+  validates :gender, :presence => true
+
+  validates :birth_day, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 31 },
+                         :presence => true
+
+  validates :birth_month, numericality: { greater_than_or_equal_to: 1, less_than_or_equal_to: 12 },
+                         :presence => true
+
+  validates :birth_year, numericality: { greater_than_or_equal_to: 1918, less_than_or_equal_to: 2002 },
+                         :presence => true
 
 
 

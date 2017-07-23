@@ -1,4 +1,7 @@
 class ApplicationController < ActionController::Base
+
+  include ApplicationHelper
+
   protect_from_forgery with: :exception
 
   before_action :require_login
@@ -11,12 +14,6 @@ class ApplicationController < ActionController::Base
     @current_user = user
   end
 
-  def sign_out
-    @current_user = nil
-    # session.delete(:user_id)
-    cookies.delete(:auth_token)
-  end
-
   def current_user
     # @current_user ||= User.find(session[:user_id]) if session[:user_id]
     @current_user ||= User.find_by_auth_token(cookies[:auth_token]) if cookies[:auth_token]
@@ -26,7 +23,13 @@ class ApplicationController < ActionController::Base
   def signed_in_user?
     !!current_user
   end
-  helper_method :signed_in_user?
+  helper_method :current_user
+
+  def sign_out
+    @current_user = nil
+    # session.delete(:user_id)
+    cookies.delete(:auth_token)
+  end
 
   def require_login
     unless signed_in_user?

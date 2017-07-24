@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
 
   include ApplicationHelper
+  include ProfilesHelper
 
   protect_from_forgery with: :exception
 

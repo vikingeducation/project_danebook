@@ -5,22 +5,18 @@ require 'rails_helper'
 describe 'posts/index.html.erb' do
 
   let(:user){create(:user)}
+  let(:another_user){create(:user)}
   let(:profile){create(:profile, :user_id => user.id)}
   let(:post){create(:post, :user_id => user.id)}
-
-
+ 
   before do
-    users = [user, create(:user), create(:user), create(:user)]
-    profiles = [profile, create(:profile), create(:profile), create(:profile)]
-    users.each do |user|
-      assign(:user, user)
-    end
-
-    profiles.each do |profile|
-      assign(:profile, profile)
-    end
-
+    assign(:user, user)
     assign(:post, post)
+    assign(:profile, profile)
+
+    posts = create_list(:post, 1)
+    assign(:posts, posts)
+
     def view.signed_in_user?
       true
     end
@@ -37,6 +33,7 @@ describe 'posts/index.html.erb' do
       @user = user
     end
     it "with one user who liked " do
+            binding.pry
       render
 
       expect(rendered).to have_selector("a.liking[href=\'#{user_path(User.first)}\']", :text => "#{full_name(Like.all.last)}")

@@ -5,14 +5,15 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-puts "Deleting users"
+puts "Deleting records "
 User.destroy_all
 Profile.destroy_all
 Post.destroy_all
+Friending.destroy_all
 
 
 puts "Creating users"
-3.times { |i| User.create(:email => "foo#{i}@onet.pl", :password => "lol#{i}", :password_confirmation => "lol#{i}") }
+9.times { |i| User.create(:email => "foo#{i}@onet.pl", :password => "lol#{i}", :password_confirmation => "lol#{i}") }
 
 puts "Creating users profiles"
 User.all.each do |user|
@@ -43,5 +44,18 @@ Post.all.each do |post|
     puts "#{post.inspect}"
     post.save!
   end
+end
 
+
+puts "Creating friends"
+
+User.all.each do |user|
+  3.times do
+    random_userid = User.pluck(:id).sample
+    if Friending.all.where(:friender_id => random_userid).any? && user.id != random_userid
+      next
+    else
+      Friending.create(friend_id: user.id, friender_id: random_userid)
+    end
+  end
 end

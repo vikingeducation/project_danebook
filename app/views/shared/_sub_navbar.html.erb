@@ -6,17 +6,17 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="sub-nav-collapse">
       <ul class="nav nav-pills">
-        <li role="presentation" class=" current_page?(action: '') ? 'active' : ' ' %>">
+        <li role="presentation" class= <%= current_page?(user_timeline_path(current_user)) ? 'active' : ' ' %> >
           <%= link_to "Timeline", user_timeline_path(current_user) %>
         </li>
-        <li role="presentation" class="< current_page?(edit_user_path(@user)) || current_page?(user_path(@user)) ? 'active' : ' ' >">
+        <li role="presentation" class= <%= current_page?(edit_user_path(current_user)) || current_page?(user_path(current_user)) ? 'active' : ' ' %> >
           <%= link_to "About", user_path(current_user.id) %>
         </li>
-        <li role="presentation" class=" current_page?(action: '') ? 'active' : ' ' %>">
+        <li role="presentation" class= <%= current_page?(photos_path) ? 'active' : ' ' %> >
           <%= link_to "Photos<span class='badge'>(123)</span>".html_safe, photos_path %>
         </li>
-        <li role="presentation" class=" current_page?(action: '') ? 'active' : ' ' %>">
-          <%= link_to "Friends<span class='badge'>(542)</span>".html_safe, friends_path %>
+        <li role="presentation" class= <%= current_page?(user_friends_path(current_user)) ? 'active' : ' ' %> >
+          <%= link_to "Friends<span class='badge'>(542)</span>".html_safe, user_friends_path(current_user) %>
         </li>
         <li class="edit-profile pull-right">
           <%= link_to "Edit Profile", edit_user_path(current_user.id) %>

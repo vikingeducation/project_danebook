@@ -10,15 +10,19 @@ class User < ApplicationRecord
   has_many :comments
   has_many :likes
 
-  has_many :initiated_friendings, :class => 'Friendings',
+  has_many :initiated_friendings, :class_name => 'Friending',
                                   :foreign_key => :friender_id
 
-  # has_many :friended_users
-  
-  # has_many :users_who_initiated
+  has_many :friended_users, :through => :initiated_friendings,
+                            :source => :friend_recipent
 
-  has_many :accepted_friendings,  :class => 'Friendings',
+  has_many :users_who_initiated, :through => :accepted_friendings,
+                                  :source => :friend_initiator
+
+  has_many :accepted_friendings,  :class_name => 'Friending',
                                   :foreign_key => :friend_id
+
+
 
   accepts_nested_attributes_for :profile,
                                 :allow_destroy => true

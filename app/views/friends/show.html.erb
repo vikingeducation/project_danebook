@@ -2,22 +2,17 @@
 <div class="container">
 
   <header class="hero">
-    <div class="avatar"></div>
+    <div class="avatar">
+    </div>
     <div class="user-name">
       <div class="user-name-wrapper">
         <%= full_name_of_user(current_user) %>
       </div>
+      <div class="clearfix"></div>
     </div>
-    <div class="main-friend-btn-wrapper">
-      <% if params[:user_id] != current_user.id %>
-        <% if current_user_friended?(current_user.id, params[:user_id]) %>
-          <%= link_to "Remove Friend", friending_path(:friending => {friend_id: params[:user_id], friender_id: current_user.id }), method: 'delete', class: "btn btn-default btn-bg friender pull-right" %>
-        <% else %>
-          <%= link_to "Friend me", friending_path(:friending => {friend_id: params[:user_id], friender_id: current_user.id } ), method: 'post', class: "btn btn-default btn-bg friender pull-right" %>
-        <% end %>
-      <% end %>
-    </div>
-    <div class="clearfix"></div>
+
+    <%= render "shared/add_remove_friend_btn", :locals => {} %>
+
   </header>
 
   <!--SUB-NAVIGATION-->

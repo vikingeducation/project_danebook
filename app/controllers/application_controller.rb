@@ -58,6 +58,12 @@ class ApplicationController < ActionController::Base
     end while User.exists?(:auth_token => self[:auth_token])
   end
 
+  def find_friending(friending_params, inverse_params)
+      a = Friending.all.where(friending_params)[0]
+      b = Friending.all.where(inverse_params)[0]
+      a.empty? ? b : a
+  end
+
   # def permanent_sign_in(user)
   #   user.regenerate_auth_token
   #   cookies.permanent[:auth_token] = user.auth_token

@@ -1,30 +1,39 @@
 class FriendingsController < ApplicationController
 
   def create
-    @friending = current_user.friendings.build(friending_params)
+    recipient = User.find(params[:friending][:friender_id])
+    @friending = current_user.friended_users.build(friending_params)
     if @friending.save
-      flash[:success] = "You have created new friending"
-      redirect_to user_timeline_path(@friending.user_id)
+      flash[:success] = "You have created new friend"
+      redirect_to :back
     else
-      flash[:danger] = "Something went wrong! No friendings created!"
-      redirect_to user_timeline_path(@friending.user_id)
+      flash[:danger] = "Something went wrong! Couldn't make a new friend"
+      redirect_to :back
     end
   end
 
   def destroy
-    @friending = Like.all.where(friending_params)[0]
+    @friending = find_friending(friending_params, friending_params_inverse)
     if @friending.destroy
-      flash[:success] = "You have unfriendingd successfully!"
-      redirect_to user_timeline_path(current_user.id)
+      flash[:success] = "You have lost a friend successfully!"
+      redirect_to :back
     else
-      flash.now[:danger] = "Unliking didn't work :("
+      flash.now[:danger] = "Loosing friend didn't work"
       redirect_to :back
     end
   end
 
   private
   def friending_params
-    params.require(:friending).permit(:friendingable_id, :friendingable_type)
+    params.require(:friending).permit(:friend_id, :friender_id)
+  end
+
+  def friending_params_inverse
+    params.require(:friending).permit(:friend_id, :friender_id)
+    a = params[:friending][:friend_id]
+    b = params[:friending][:friender_id]
+    params[:friending][:friend_id] = b
+    params[:friending][:friender_id] = a
   end
 
 end

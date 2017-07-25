@@ -1,0 +1,9 @@
+<% if params[:user_id] != current_user.id.to_s %>
+  <div class="main-friend-btn-wrapper">
+    <% if current_user_friended?(current_user.id, params[:user_id]) %>
+      <%= link_to "Remove Friend", friending_path(:friending => {friend_id: params[:user_id], friender_id: current_user.id }), method: 'delete', class: "btn btn-default btn-bg friender pull-right" %>
+    <% else %>
+      <%= link_to "Friend me", friending_path(:friending => {friend_id: params[:user_id], friender_id: current_user.id } ), method: 'post', class: "btn btn-default btn-bg friender pull-right" %>
+    <% end %>
+  </div>
+<% end %>

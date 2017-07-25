@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
   root :to => 'users#new'
 
-  get 'timeline' => 'static_pages#timeline'
-
-  get 'friends' => 'static_pages#friends'
+  # get 'timeline' => 'static_pages#timeline'
+  # get 'friends' => 'static_pages#friends'
   get 'photos' => 'static_pages#photos'
 
   resources :users do
@@ -14,7 +13,7 @@ Rails.application.routes.draw do
   resource :likes, :only => [:create, :destroy]
   resource :comments, :only => [:new, :create, :destroy]
   resource :session, :only => [:new, :create, :destroy]
-
+  resource :friending, :only => [:new, :create, :destroy]
   get 'login' => 'sessions#new'
   delete 'logout' => 'sessions#destroy'
 

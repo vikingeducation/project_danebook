@@ -16,7 +16,7 @@
           <%= link_to "Photos<span class='badge'>(123)</span>".html_safe, photos_path %>
         </li>
         <li role="presentation" class= <%= current_page?(user_friends_path(params[:user_id] || params[:id])) ? 'active' : ' ' %> >
-          <%= link_to "Friends<span class='badge'>(542)</span>".html_safe, user_friends_path(params[:user_id] || params[:id]) %>
+          <%= link_to "Friends <span class='label label-default'>#{@user.friended_users.count}</span>".html_safe, user_friends_path(params[:user_id] || params[:id]) %>
         </li>
         <li class="edit-profile pull-right">
           <% if current_user.id.to_s == params[:user_id] %>

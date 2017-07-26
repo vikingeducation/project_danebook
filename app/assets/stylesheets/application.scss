@@ -522,7 +522,7 @@ FRIENDS SECTION
 }
 .main-about .row .friend-box {
     border: 1px solid black;
-    width: 430px;
+    // width: 430px;
     height: 150px;
     padding: 15px;
     margin: 5px auto;
@@ -539,14 +539,14 @@ FRIENDS SECTION
             display: block;
         }
     }
-    button.unfriend {
+    a.unfriend {
         float: right;
         width: 27%;
         background-color: #aaa;
         font-weight: bold;
         margin-top: 30px;
     }
-    button.unfriend:hover {
+    a.unfriend:hover {
         background-color: #ddd;
         font-weight: bold;
     }

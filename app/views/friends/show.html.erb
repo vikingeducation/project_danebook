@@ -26,93 +26,25 @@
   </section>
 
   <!--FRIENDS GRID -->
-  <main class="main-about">
-    <div class="row">
-      <div class="col-xs-12 col-md-6">
-        <div class="friend-box">
-          <img src="assets/user_silhouette_generic.gif" class="img-thumbnail">
-          <div class="friend-name">
-            <a href="#">
-              Hermione Granger
-            </a>
-            Friends<span class="badge">(432)</span>
+
+    <main class="main-about">
+      <div class="row">
+          <% @users.each do |user| %>
+        <div class="col-xs-12 col-sm-6">
+
+
+          <div class="friend-box">
+            <img src="assets/user_silhouette_generic.gif" class="img-thumbnail">
+            <div class="friend-name">
+              <%= link_to "#{user_full_name(user)}", user_path(user.id) %>
+              <%= user.friended_users.count %> Friends
+            </div>
+            <%= link_to "Unfriend me", friending_path(:user_id => user.id), method: 'delete', class: "btn btn-default btn-sm unfriend" %>
           </div>
-          <form>
-            <button type="submit" class="btn btn-default btn-sm unfriend">
-              Unfriend me
-            </button>
-          </form>
+
         </div>
-      </div>
-      <div class="col-xs-12 col-md-6">
-        <div class="friend-box">
-          <img src="assets/user_silhouette_generic.gif" class="img-thumbnail">
-          <div class="friend-name">
-            <a href="#">
-              Hermione Granger
-            </a>
-            Friends<span class="badge">(432)</span>
-          </div>
-          <form>
-            <button type="submit" class="btn btn-default btn-sm unfriend">Unfriend me</button>
-          </form>
-        </div>
-      </div>
-      <div class="col-xs-12 col-md-6">
-        <div class="friend-box">
-          <img src="assets/user_silhouette_generic.gif" class="img-thumbnail">
-          <div class="friend-name">
-            <a href="#">
-              Hermione Granger
-            </a>
-            Friends<span class="badge">(432)</span>
-          </div>
-          <form>
-            <button type="submit" class="btn btn-default btn-sm unfriend">Unfriend me</button>
-          </form>
-        </div>
-      </div>
-      <div class="col-xs-12 col-md-6">
-        <div class="friend-box">
-          <img src="assets/user_silhouette_generic.gif" class="img-thumbnail">
-          <div class="friend-name">
-            <a href="#">
-              Hermione Granger
-            </a>
-            Friends<span class="badge">(432)</span>
-          </div>
-          <form>
-            <button type="submit" class="btn btn-default btn-sm unfriend">Unfriend me</button>
-          </form>
-        </div>
-      </div>
-      <div class="col-xs-12 col-md-6">
-        <div class="friend-box">
-          <img src="assets/user_silhouette_generic.gif" class="img-thumbnail">
-          <div class="friend-name">
-            <a href="#">
-              Hermione Granger
-            </a>
-            Friends<span class="badge">(432)</span>
-          </div>
-          <form>
-            <button type="submit" class="btn btn-default btn-sm unfriend">Unfriend me</button>
-          </form>
-        </div>
-      </div>
-      <div class="col-xs-12 col-md-6">
-        <div class="friend-box">
-          <img src="assets/user_silhouette_generic.gif" class="img-thumbnail">
-          <div class="friend-name">
-            <a href="#">
-              Hermione Granger
-            </a>
-            Friends<span class="badge">(432)</span>
-          </div>
-          <form>
-            <button type="submit" class="btn btn-default btn-sm unfriend">Unfriend me</button>
-          </form>
-        </div>
+          <% end %>
       </div>
     </main>
-  </div>
+
+</div>

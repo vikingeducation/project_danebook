@@ -6,22 +6,24 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="sub-nav-collapse">
       <ul class="nav nav-pills">
-        <li role="presentation" class= <%= current_page?(user_timeline_path(current_user)) ? 'active' : ' ' %> >
-          <%= link_to "Timeline", user_timeline_path(current_user) %>
+        <li role="presentation" class= <%= current_page?(user_timeline_path(params[:user_id] || params[:id]) ) ? 'active' : ' ' %> >
+          <%= link_to "Timeline", user_timeline_path(params[:user_id] || params[:id]) %>
         </li>
-        <li role="presentation" class= <%= current_page?(edit_user_path(current_user)) || current_page?(user_path(current_user)) ? 'active' : ' ' %> >
-          <%= link_to "About", user_path(current_user.id) %>
+        <li role="presentation" class= <%= current_page?(edit_user_path(params[:user_id] || params[:id]) ) || current_page?(user_path(params[:user_id] || params[:id]) ) ? 'active' : ' ' %> >
+          <%= link_to "About", user_path(params[:user_id] || params[:id]) %>
         </li>
         <li role="presentation" class= <%= current_page?(photos_path) ? 'active' : ' ' %> >
           <%= link_to "Photos<span class='badge'>(123)</span>".html_safe, photos_path %>
         </li>
-        <li role="presentation" class= <%= current_page?(user_friends_path(current_user)) ? 'active' : ' ' %> >
-          <%= link_to "Friends<span class='badge'>(542)</span>".html_safe, user_friends_path(current_user) %>
+        <li role="presentation" class= <%= current_page?(user_friends_path(params[:user_id] || params[:id])) ? 'active' : ' ' %> >
+          <%= link_to "Friends<span class='badge'>(542)</span>".html_safe, user_friends_path(params[:user_id] || params[:id]) %>
         </li>
         <li class="edit-profile pull-right">
-          <%= link_to "Edit Profile", edit_user_path(current_user.id) %>
+          <% if current_user.id.to_s == params[:user_id] %>
+            <%= link_to "Edit Profile", edit_user_path(current_user.id) %>
+          <% end %>
         </li>
       </ul>
-      </div><!-- /.navbar-collapse -->
-      </div><!-- /.container-fluid -->
-    </nav>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>

@@ -6,17 +6,17 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="sub-nav-collapse">
       <ul class="nav nav-pills">
-        <li role="presentation" class= <%= current_page?(user_timeline_path(params[:user_id] || params[:id]) ) ? 'active' : ' ' %> >
-          <%= link_to "Timeline", user_timeline_path(params[:user_id] || params[:id]) %>
+        <li role="presentation" class= <%= current_page?(user_timeline_path(@user.id) ) ? 'active' : ' ' %> >
+          <%= link_to "Timeline", user_timeline_path(@user.id) %>
         </li>
-        <li role="presentation" class= <%= current_page?(edit_user_path(params[:user_id] || params[:id]) ) || current_page?(user_path(params[:user_id] || params[:id]) ) ? 'active' : ' ' %> >
-          <%= link_to "About", user_path(params[:user_id] || params[:id]) %>
+        <li role="presentation" class= <%= current_page?(edit_user_path(@user.id) ) || current_page?(user_path(@user.id) ) ? 'active' : ' ' %> >
+          <%= link_to "About", user_path(@user.id) %>
         </li>
         <li role="presentation" class= <%= current_page?(photos_path) ? 'active' : ' ' %> >
           <%= link_to "Photos<span class='badge'>(123)</span>".html_safe, photos_path %>
         </li>
-        <li role="presentation" class= <%= current_page?(user_friends_path(params[:user_id] || params[:id])) ? 'active' : ' ' %> >
-          <%= link_to "Friends <span class='label label-default'>#{@user.friended_users.count}</span>".html_safe, user_friends_path(params[:user_id] || params[:id]) %>
+        <li role="presentation" class= <%= current_page?(user_friends_path(@user.id)) ? 'active' : ' ' %> >
+          <%= link_to "Friends <span class='label label-default'>#{@user.friended_users.count}</span>".html_safe, user_friends_path(@user.id) %>
         </li>
         <li class="edit-profile pull-right">
           <% if current_user.id.to_s == params[:user_id] %>

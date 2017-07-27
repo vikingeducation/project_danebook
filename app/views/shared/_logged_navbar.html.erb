@@ -12,12 +12,15 @@
       <div class="logo-wrapper" >
         <%= link_to root_path, class: "navbar-brand logo-container" do %>
         <%= image_tag("danish_flag.gif") %>
-        
+
 <!--           <img src="danish_flag.gif" alt="Brand"> -->
           <h3>Danebook</h3>
         <% end %>
       </div>
     </div>
+
+
+
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="login-navbar-collapse">
       <form class="navbar-form navbar-left search-form">
@@ -30,6 +33,9 @@
           <%= link_to "#{current_user.profile.first_name} Log Out", logout_path, :method => :delete %>
         </li>
       </ul>
-      </div><!-- /.navbar-collapse -->
-      </div><!-- /.container -->
-    </nav>
+    </div><!-- /.navbar-collapse -->
+
+
+    
+  </div><!-- /.container -->
+</nav>

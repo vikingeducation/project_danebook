@@ -23,11 +23,11 @@
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="login-navbar-collapse">
-      <form class="navbar-form navbar-left search-form">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search for User">
-        </div>
-      </form>
+      <%= form_tag(user_search_path(current_user), :method => 'get', class: "navbar-form navbar-left search-form") do %>
+          <div class="form-group">
+            <%= text_field_tag :search, params[:search], :placeholder => "Search for User", :id => "search-area", :class => "form-control" %>
+          </div>
+      <% end %>
       <ul class="nav navbar-nav navbar-right">
         <li>
           <%= link_to "#{current_user.profile.first_name} Log Out", logout_path, :method => :delete %>
@@ -36,6 +36,6 @@
     </div><!-- /.navbar-collapse -->
 
 
-    
+
   </div><!-- /.container -->
 </nav>

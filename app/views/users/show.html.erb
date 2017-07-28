@@ -11,7 +11,9 @@
     <h2>
     About
     </h2>
-    <%= link_to "Edit Your Profile", edit_user_path(@user.id), class: "btn btn-primary" %>
+    <% if current_user.to_s == params[:id] %>
+      <%= link_to "Edit Your Profile", edit_user_path(@user.id), class: "btn btn-primary" %>
+    <% end %>
   </section>
   <!--DATA TABLE-->
   <main class="main-about">

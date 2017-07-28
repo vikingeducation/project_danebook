@@ -39,7 +39,7 @@
               <%= link_to "#{user_full_name(user)}", user_path(user.id) %>
               <%= user.friended_users.count %> Friends
             </div>
-            <%= link_to "Unfriend me", friending_path(:user_id => user.id), method: 'delete', class: "btn btn-default btn-sm unfriend" %>
+            <%= render partial: "shared/add_remove_friend_small_btn", :locals => {:user_id => user.id } %>
           </div>
 
         </div>

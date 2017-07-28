@@ -54,9 +54,6 @@ class User < ApplicationRecord
     save!
   end
 
-  def find_by_search
-    # profile.where() # first and last_name contains ......
-  end
 
 
 

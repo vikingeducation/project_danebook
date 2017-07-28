@@ -7,7 +7,7 @@ class FriendsController < ApplicationController
   end
 
   def index
-    # @users = User.find_by_search
+    @profiles = Profile.searching(params[:search])
   end
 
 end

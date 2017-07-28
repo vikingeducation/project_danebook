@@ -7,8 +7,9 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :posts,  :only => [:index, :new, :create, :destroy]
-    resource :friends, :only => [:new, :create, :destroy, :show]
+    resources :friends, :only => [:index, :show]
     get 'timeline' => 'posts#index'
+    get 'search' => 'friends#index'
   end
   resource :likes, :only => [:create, :destroy]
   resource :comments, :only => [:new, :create, :destroy]

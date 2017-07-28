@@ -3,7 +3,7 @@ module ApplicationHelper
   def formatted_date(date)
     date.strftime("Posted on %A %d/%m/%Y")
   end
- 
+
   def list_who_liked(post)
     str = ""
     first_few_likes(post).each do |like|
@@ -12,7 +12,7 @@ module ApplicationHelper
       else
         str += link_to("#{full_name(like)}", like.user, class: "liking")
       end
-      str += 'and ' unless first_few_likes(post).last == like
+      str += ' and ' unless first_few_likes(post).last == like
     end
     str.html_safe
   end

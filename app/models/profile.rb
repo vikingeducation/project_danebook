@@ -42,6 +42,10 @@ class Profile < ApplicationRecord
     "#{self.birth_day ? self.birth_day : ''}." + "#{self.birth_month ? self.birth_month : ''}." + "#{self.birth_year ? self.birth_year : ''}"
   end
 
+  def self.searching(param)
+    where("first_name LIKE ? OR last_name LIKE ?", "%#{param}%", "%#{param}%")
+  end
+
 
 
 end

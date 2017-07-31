@@ -4,6 +4,14 @@ class User < ApplicationRecord
                     autosave: true,
                     :dependent => :destroy
 
+  has_one :avatar, :class_name => "Photo",
+                    :foreign_key => :profile_photo_id
+
+  has_one :avatar, :class_name => "Photo",
+                    :foreign_key => :cover_photo_id
+
+  has_many :photos
+
   has_many  :posts,
             :dependent => :destroy
 

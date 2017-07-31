@@ -6,7 +6,7 @@ Rails.application.configure do
     :storage => :s3,
 
     :s3_credentials => {
-      :s3_host_name => "s3-us-west-1.amazonaws.com",
+      :s3_host_name => "s3-eu-west-1.amazonaws.com",
       :s3_region => "eu-west-1",
 
       :bucket => Rails.application.secrets.s3_bucket_name,
@@ -14,6 +14,8 @@ Rails.application.configure do
       :secret_access_key => Rails.application.secrets.aws_secret_access_key
     }
   }
+
+  Paperclip.options[:command_path] = "/usr/local/bin"
 
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development

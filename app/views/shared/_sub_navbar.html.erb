@@ -12,11 +12,11 @@
         <li role="presentation" class= <%= current_page?(edit_user_path(@user.id) ) || current_page?(user_path(@user.id) ) ? 'active' : ' ' %> >
           <%= link_to "About", user_path(@user.id) %>
         </li>
-        <li role="presentation" class= <%= current_page?(photos_path) ? 'active' : ' ' %> >
-          <%= link_to "Photos<span class='badge'>(123)</span>".html_safe, photos_path %>
+        <li role="presentation" class= <%= current_page?(user_photos_path(@user.id)) ? 'active' : ' ' %> >
+          <%= link_to "Photos<span class='badge'>(123)</span>".html_safe, user_photos_path(@user.id) %>
         </li>
-        <li role="presentation" class= <%= current_page?(user_friend_path(@user.id)) ? 'active' : ' ' %> >
-          <%= link_to "Friends <span class='label label-default'>#{@user.friended_users.count}</span>".html_safe, user_friend_path(@user.id) %>
+        <li role="presentation" class= <%= current_page?(user_friend_path(@user.id, @user.id)) ? 'active' : ' ' %> >
+          <%= link_to "Friends <span class='label label-default'>#{@user.friended_users.count}</span>".html_safe, user_friend_path(@user.id, @user.id) %>
         </li>
         <li class="edit-profile pull-right">
           <% if current_user.id.to_s == params[:user_id] %>

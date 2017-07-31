@@ -6,7 +6,7 @@ Rails.application.configure do
     :storage => :s3,
 
     :s3_credentials => {
-      :s3_host_name => "s3-us-west-1.amazonaws.com",
+      :s3_host_name => "s3-eu-west-1.amazonaws.com",
       :s3_region => "eu-west-1",
 
       :bucket => Rails.application.secrets.s3_bucket_name,

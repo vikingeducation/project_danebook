@@ -64,4 +64,8 @@ class ApplicationController < ActionController::Base
   #   @current_user = user
   # end
 
+  def url_with_image?(url)
+    url.match('\.(png|jpg|gif)$')
+  end
+
 end

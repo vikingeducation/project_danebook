@@ -5,9 +5,9 @@ class PhotosController < ApplicationController
     @photos = @user.photos
   end
 
-  def index
+  def show
     @user = User.find(params[:user_id])
-    @photos = @user.photos
+    @photo = Photo.find(params[:id])
   end
 
   def new
@@ -16,12 +16,15 @@ class PhotosController < ApplicationController
   end
 
   def create
-    @user = User.find(params[:user_id])
-    @photo = @user.build(user_params)
+    if params[:url] && url_with_image?(params[:url])
+      @photo = current_user.photos.build
+      @photo.image_from_url(params[:url])
+    else
+      @photo = current_user.photos.build(photo_params)
+    end
     if @photo.save
-      sign_in(@photo)
       flash[:success] = "Congratulations! You have successfully ulpoaded a photo!"
-      redirect_to @photo
+      redirect_to user_photo_path(current_user, @photo)
     else
       flash[:danger] = "Error! We couldn't upload your photo" + "#{@photo.errors.full_messages}"
       render :new
@@ -35,7 +38,7 @@ class PhotosController < ApplicationController
 
   private
   def photo_params
-    params.require(:photo).permit( :image )
+    params.permit( :image )
   end
 
 end

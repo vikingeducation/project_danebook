@@ -16,10 +16,11 @@
   <!--PHOTOS TABLE-->
   <main class="main-about photos">
     <div class="row">
-      <div class="col-xs-8 col-xs-push-2">
-
+      <div class="col-xs-6 col-xs-push-3 centralize">
+          <h3>Paste the url of the photo on the web ...</h3>
+          <br>
           <%= form_tag [@user, @photo], html: { class: "search-form" }, :multipart => true do %>
-            <h3>Paste the url of the photo on the web ...</h3>
+
             <div class="form-group">
               <%= text_field_tag :url, params[:url], :placeholder => "http://www.example.com/photo_1", :id => "search-area", :class => "form-control", required: true %>
             </div>

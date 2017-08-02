@@ -3,190 +3,36 @@
   <header class="hero">
     <div class="avatar"></div>
   </header>
-  <!--SECTION BAR-->
-  <!--SUB-NAVIGATION-->
 
+  <!--SUB-NAVIGATION-->
   <%= render "shared/sub_navbar" %>
   <section class="nav-about">
     <h2>
       Photos
     </h2>
-    <%= link_to "Add Photo!", user_upload_path(@user), :class => "btn btn-primary" %>
+    <% if current_user.id.to_s == params[:user_id] %>
+      <%= link_to "Add Photo!", user_upload_path(@user), :class => "btn btn-primary" %>
+    <% end %>
   </section>
 
   <!--PHOTOS TABLE-->
   <main class="main-about photos">
     <div class="row">
-      <!-- 1st ROW-->
+      <% @photos.each do |photo| %>
+
       <div class="col-lg-3 col-sm-6 col-xs-12">
         <div class="hovereffect">
-          <a href="#">
-            <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
-            <time datetime="01/15/2016" class="overlay">
-              Uploaded January 15, 2016
+          <%= link_to (require_current_user_friends(photo) ? user_photo_path(@user, photo) : "" ) do %>
+          <%= image_tag photo.image.url(:thumb) %>
+            <time datetime="<%= photo.created_at %>" class="overlay">
+              Uploaded
+              <%= created_at_formatted(photo) %>
             </time>
-          </a>
+          <% end %>
         </div>
       </div>
-      <div class="col-lg-3 col-sm-6 col-xs-12">
-        <div class="hovereffect">
-          <a href="#">
-            <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
-            <time datetime="01/15/2016" class="overlay">
-              Uploaded January 15, 2016
-            </time>
-          </a>
-        </div>
-      </div>
-      <div class="col-lg-3 col-sm-6 col-xs-12">
-        <div class="hovereffect">
-          <a href="#">
-            <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
-            <time datetime="01/15/2016" class="overlay">
-              Uploaded January 15, 2016
-            </time>
-          </a>
-        </div>
-      </div>
-      <div class="col-lg-3 col-sm-6 col-xs-12">
-        <div class="hovereffect">
-          <a href="#">
-            <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
-            <time datetime="01/15/2016" class="overlay">
-              Uploaded January 15, 2016
-            </time>
-          </a>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <!-- 2nd ROW-->
-      <div class="col-lg-3 col-sm-6 col-xs-12">
-        <div class="hovereffect">
-          <a href="#">
-            <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
-            <time datetime="01/15/2016" class="overlay">
-              Uploaded January 15, 2016
-            </time>
-          </a>
-        </div>
-      </div>
-      <div class="col-lg-3 col-sm-6 col-xs-12">
-        <div class="hovereffect">
-          <a href="#">
-            <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
-            <time datetime="01/15/2016" class="overlay">
-              Uploaded January 15, 2016
-            </time>
-          </a>
-        </div>
-      </div>
-      <div class="col-lg-3 col-sm-6 col-xs-12">
-        <div class="hovereffect">
-          <a href="#">
-            <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
-            <time datetime="01/15/2016" class="overlay">
-              Uploaded January 15, 2016
-            </time>
-          </a>
-        </div>
-      </div>
-      <div class="col-lg-3 col-sm-6 col-xs-12">
-        <div class="hovereffect">
-          <a href="#">
-            <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
-            <time datetime="01/15/2016" class="overlay">
-              Uploaded January 15, 2016
-            </time>
-          </a>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <!-- 3rd ROW-->
-      <div class="col-lg-3 col-sm-6 col-xs-12">
-        <div class="hovereffect">
-          <a href="#">
-            <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
-            <time datetime="01/15/2016" class="overlay">
-              Uploaded January 15, 2016
-            </time>
-          </a>
-        </div>
-      </div>
-      <div class="col-lg-3 col-sm-6 col-xs-12">
-        <div class="hovereffect">
-          <a href="#">
-            <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
-            <time datetime="01/15/2016" class="overlay">
-              Uploaded January 15, 2016
-            </time>
-          </a>
-        </div>
-      </div>
-      <div class="col-lg-3 col-sm-6 col-xs-12">
-        <div class="hovereffect">
-          <a href="#">
-            <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
-            <time datetime="01/15/2016" class="overlay">
-              Uploaded January 15, 2016
-            </time>
-          </a>
-        </div>
-      </div>
-      <div class="col-lg-3 col-sm-6 col-xs-12">
-        <div class="hovereffect">
-          <a href="#">
-            <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
-            <time datetime="01/15/2016" class="overlay">
-              Uploaded January 15, 2016
-            </time>
-          </a>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <!-- 4th ROW-->
-      <div class="col-lg-3 col-sm-6 col-xs-12">
-        <div class="hovereffect">
-          <a href="#">
-            <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
-            <time datetime="01/15/2016" class="overlay">
-              Uploaded January 15, 2016
-            </time>
-          </a>
-        </div>
-      </div>
-      <div class="col-lg-3 col-sm-6 col-xs-12">
-        <div class="hovereffect">
-          <a href="#">
-            <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
-            <time datetime="01/15/2016" class="overlay">
-              Uploaded January 15, 2016
-            </time>
-          </a>
-        </div>
-      </div>
-      <div class="col-lg-3 col-sm-6 col-xs-12">
-        <div class="hovereffect">
-          <a href="#">
-            <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
-            <time datetime="01/15/2016" class="overlay">
-              Uploaded January 15, 2016
-            </time>
-          </a>
-        </div>
-      </div>
-      <div class="col-lg-3 col-sm-6 col-xs-12">
-        <div class="hovereffect">
-          <a href="#">
-            <img class="img-thumbnail" src="assets/icon_photo_small.png" alt="">
-            <time datetime="01/15/2016" class="overlay">
-              Uploaded January 15, 2016
-            </time>
-          </a>
-        </div>
-      </div>
+
+      <% end %>
     </div>
   </main>
 </div>

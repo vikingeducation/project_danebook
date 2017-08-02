@@ -46,6 +46,17 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def require_specific_friends
+    friends = User.find(params[:user_id]).friended_users.ids
+    friends << User.find(params[:user_id]).id
+    unless friends.include? current_user.id
+      flash[:danger] = "Your are not authorized to do this."
+      redirect_to user_photos_path(params[:user_id])
+    end
+  end
+  helper_method :require_specific_friends
+
+
   def regenerate_auth_token
     self.auth_token = nil
     generate_token

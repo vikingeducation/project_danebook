@@ -34,4 +34,15 @@ module ApplicationHelper
     "#{user.profile.first_name} #{user.profile.last_name}"
   end
 
+  def created_at_formatted(model)
+    model.created_at.strftime("%A %d/%m/%Y")
+  end
+
+  def require_current_user_friends(photo)
+    friends = photo.user.friended_users.ids
+    friends << photo.user.id
+    friends.include? current_user.id
+  end
+
+
 end

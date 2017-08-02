@@ -8,7 +8,7 @@ class Photo < ApplicationRecord
 
   validates_presence_of(:user, :image)
 
-  has_attached_file :image, :styles => { :medium => "300x300", :thumb => "100x100" }
+  has_attached_file :image, :styles => { :medium => "500x500", :thumb => "100x100" }
 
   validates_attachment_content_type :image, :content_type => /\Aimage\/.*\Z/
   validates_attachment :image,
@@ -16,7 +16,7 @@ class Photo < ApplicationRecord
                       :content_type => { :content_type => [ "image/jpeg",
                                                             "image/gif",
                                                             "image/png"] },
-                      :size => { :in => 0..10.kilobytes }
+                      :size => { :in => 0..500.kilobytes }
 
   def image_from_url(url)
     self.image = open(url)

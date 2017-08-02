@@ -1,5 +1,7 @@
 class PhotosController < ApplicationController
 
+  before_action :require_specific_friends, :only => [:show]
+
   def index
     @user = User.find(params[:user_id])
     @photos = @user.photos
@@ -16,6 +18,7 @@ class PhotosController < ApplicationController
   end
 
   def create
+    @user = current_user
     if params[:url] && url_with_image?(params[:url])
       @photo = current_user.photos.build
       @photo.image_from_url(params[:url])
@@ -32,7 +35,14 @@ class PhotosController < ApplicationController
   end
 
   def destroy
-
+    @photo = Photo.find(params[:id])
+    if @photo.user_id == current_user.id && @photo.destroy
+      flash[:success] = "You have deleted your photo!"
+      redirect_to user_photos_path(current_user.id)
+    else
+      flash.now[:danger] = "We coildn't delete your photo :("
+      redirect_to :back
+    end
   end
 
 

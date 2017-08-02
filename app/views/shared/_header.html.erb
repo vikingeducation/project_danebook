@@ -1,0 +1,10 @@
+<header class="col-xs-12">
+  <%= image_tag "hogwarts_small.jpg", :class => "hero" %>
+  <%= image_tag "harry_potter_small.jpg", :class => "avatar" %>
+  <%= render "shared/add_remove_friend_btn", :locals => {} %>
+  <div class="user-name">
+    <div class="user-name-wrapper">
+      <%= full_name_of_user(@user) %>
+    </div>
+  </div>
+</header>

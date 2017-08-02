@@ -1,19 +1,7 @@
 <!--HERO-->
 <div class="container">
 
-  <header class="hero">
-    <div class="avatar">
-    </div>
-    <div class="user-name">
-      <div class="user-name-wrapper">
-        <%= full_name_of_user(current_user) %>
-      </div>
-      <div class="clearfix"></div>
-    </div>
-
-    <%= render "shared/add_remove_friend_btn", :locals => {} %>
-
-  </header>
+  <%= render "shared/header" %>
 
   <!--SUB-NAVIGATION-->
   <%= render "shared/sub_navbar" %>

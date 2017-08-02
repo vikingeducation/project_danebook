@@ -1,10 +1,7 @@
-  
+
 <!--HERO-->
 <div class="container">
-  <header class="hero">
-    <div class="avatar">
-    </div>
-  </header>
+  <%= render "shared/header" %>
   <!--SUB-NAVIGATION-->
   <%= render "shared/sub_navbar" %>
   <!--SECTION BAR-->
@@ -14,7 +11,7 @@
     </h2>
   </section>
   <!--DATA TABLE-->
-  
+
   <main class="main-about">
   <div class="row">
     <%= form_for @user, :html => {:class => "form-horizontal"} do |user_fields| %>

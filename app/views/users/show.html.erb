@@ -1,9 +1,6 @@
 <!--HERO-->
 <div class="container">
-  <header class="hero">
-    <div class="avatar">
-    </div>
-  </header>
+  <%= render "shared/header" %>
   <!--SUB-NAVIGATION-->
   <%= render "shared/sub_navbar" %>
   <!--SECTION BAR-->
@@ -11,7 +8,7 @@
     <h2>
     About
     </h2>
-    <% if current_user.to_s == params[:id] %>
+    <% if current_user.id.to_s == params[:id] %>
       <%= link_to "Edit Your Profile", edit_user_path(@user.id), class: "btn btn-primary" %>
     <% end %>
   </section>

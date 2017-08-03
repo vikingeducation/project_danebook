@@ -1,30 +1,32 @@
 <% post.comments.each do |comment| %>
-<div class="post-body unfolded">
-  <%= image_tag("user_silhouette_generic.gif") %>
-  <div class="author-box-comment">
-    <%= link_to "#{full_name(comment)}", user_path(comment.user.id) %>
-    <time datetime="#{formatted_date(comment.created_at)}" pubdate>
-      <%= formatted_date(comment.created_at) %>
-    </time>
-    <p class="comment-area">
-      <%= comment.body %>
-    </p>
+  <% if comment.id %>
+    <div class="post-body unfolded">
+      <%= image_tag comment.user.profile_photo_id ? current_user.photos.find(current_user.profile_photo_id).image.url(:thumb) : 'user_silhouette_generic.gif' %>
+      <div class="author-box-comment">
+        <%= link_to "#{full_name(comment)}", user_path(comment.user.id) %>
+        <time datetime="#{formatted_date(comment.created_at)}" pubdate>
+          <%= formatted_date(comment.created_at) %>
+        </time>
+        <p class="comment-area">
+          <%= comment.body %>
+        </p>
 
-    <div class="clearfix">
-      <div class="like-area">
-        <% if current_user_liked?(comment) %>
-          <%= link_to "Unlike", likes_path(:like => {:likeable_id => comment.id, :likeable_type => comment.class.name} ), method: 'delete', class: "link pull-left" %>
-        <% else %>
-          <%= link_to "Like", likes_path(:like => {:likeable_id => comment.id, :likeable_type => comment.class.name} ), :method=>:post, class: "link pull-left" %>
-        <% end %>
-        <% if number_of_likes(comment) > 0 %>
-          <%= number_of_likes(comment) %> other people like this
-        <% end %>
-        <% if current_user.id == comment.user_id %>
-          <%= link_to "Delete", comments_path(id: comment.id, user_id: comment.user_id), method: 'delete', class: "delete pull-right", data: { confirm: 'Are you Sure?' } %>
-        <% end %>
+        <div class="clearfix">
+          <div class="like-area">
+            <% if current_user_liked?(comment) %>
+              <%= link_to "Unlike", likes_path(:like => {:likeable_id => comment.id, :likeable_type => comment.class.name} ), method: 'delete', class: "link pull-left" %>
+            <% else %>
+              <%= link_to "Like", likes_path(:like => {:likeable_id => comment.id, :likeable_type => comment.class.name} ), :method=>:post, class: "link pull-left" %>
+            <% end %>
+            <% if number_of_likes(comment) > 0 %>
+              <%= number_of_likes(comment) %> other people like this
+            <% end %>
+            <% if current_user.id == comment.user_id %>
+              <%= link_to "Delete", comments_path(id: comment.id, user_id: comment.user_id), method: 'delete', class: "delete pull-right", data: { confirm: 'Are you Sure?' } %>
+            <% end %>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
+  <% end %>
 <% end %>

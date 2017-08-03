@@ -1,46 +1,25 @@
 <section class="post">
   <div class="post-body">
-    <%= image_tag("user_silhouette_generic.gif") %>
+    <%= image_tag @user.profile_photo_id ? @user.photos.find(@user.profile_photo_id).image.url(:thumb) : 'user_silhouette_generic.gif' %>
     <div class="author-box">
       <%= link_to full_name(post), @user %>
       <time datetime="6/1/2013" pubdate>
         <%= formatted_date(post.created_at) %>
       </time>
-
     </div>
     <p class="comment-area">
       <%= post.body %>
     </p>
   </div>
 
-  <div class="nav-footer">
-    <div class="liked-box">
-      <% if current_user_liked?(post) %>
-        <%= link_to "Unlike", likes_path(:like => {:likeable_id => post.id, :likeable_type => post.class.name} ), method: 'delete', class: "link pull-left" %>
-      <% else %>
-        <%= link_to "Like", likes_path(:like => {:likeable_id => post.id, :likeable_type => post.class.name} ), :method=>:post, class: "link pull-left" %>
-      <% end %>
-      <%= link_to "Comment", "", class: "comment pull-left" %>
-      <%= link_to "Delete", user_post_path(user.id, post.id), method: 'delete', class: "delete pull-right", data: { confirm: 'Are you Sure?', remote: true } %><br>
+  <%= render partial: 'liking_box', :locals => {:commentable => post, :post => post, :user => @user} %>
 
-      <p>
-        <% if number_of_likes(post) > 3 %>
-          <%= list_who_liked(post) %>
-          <%= number_of_likes(post) - first_few_likes(post).size %> others like this
-        <% elsif number_of_likes(post) > 0 %>
-          <%= list_who_liked(post) %>
-          like this
-        <% end %>
-      </p>
-    </div>
+  <div class="clearfix"></div>
 
-    <div class="clearfix"></div>
-
-    <div class="post-body unfolded">
-      <% if post.comments.any? %>
-        <%= render partial: 'comment', :locals => {:post => post} %>
-      <% end %>
-        <%= render partial: 'comments/new_comment_form', :locals => {:commentable => post} %>
-    </div>
+  <div class="post-body unfolded">
+    <% if post.comments.any? %>
+    <%= render partial: 'comment', :locals => {:post => post} %>
+    <% end %>
+    <%= render partial: 'comments/new_comment_form', :locals => {:commentable => post} %>
   </div>
 </section>

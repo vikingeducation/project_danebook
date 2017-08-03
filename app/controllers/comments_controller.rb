@@ -6,10 +6,11 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.build(comment_params)
     if @comment.save
       flash[:success] = "You have created new comment"
-      redirect_to user_timeline_path(@comment.user_id)
+      redirect_to :back
+      # user_timeline_path(@comment.user_id)
     else
       flash[:danger] = "Something went wrong! No post created!"
-      redirect_to user_timeline_path(@comment.user_id)
+      redirect_to :back
     end
   end
 
@@ -18,7 +19,7 @@ class CommentsController < ApplicationController
 
     if @comment.destroy
       flash[:success] = "You have deleted comment successfully!"
-      redirect_to user_timeline_path(current_user.id)
+      redirect_to :back
     else
       flash.now[:danger] = "Deleting comment didn't work :("
       redirect_to :back

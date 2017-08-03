@@ -568,11 +568,24 @@ div.main-friend-btn-wrapper {
 
 .image-menu-wrapper{
   display: block;
-  right: 15px;
+  right: 30px;
   position: absolute;
 }
 
 
 div.alert.alert-dismissible.alert {
   margin-bottom: 0px;
+}
+
+div.author-box {
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 5px;
+  width: 80%;
+
+  time {
+    display: block;
+    color: #666;
+    font-size: 12px;
+  }
 }

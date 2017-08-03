@@ -34,6 +34,23 @@ class PhotosController < ApplicationController
     end
   end
 
+  def update
+    @user = User.find(params[:user_id])
+    @photo = Photo.find(params[:id])
+    if params[:type] == 'cover'
+      @user.cover_photo_id = @photo.id
+    elsif params[:type] == 'profile'
+      @user.profile_photo_id = @photo.id
+    end
+    if @user.save
+      flash[:success] = "You have successfully updated photo in your #{params[:type]}"
+      redirect_to user_photo_path(current_user, @photo)
+    else
+      flash[:danger] = "Error! We couldn't update your photo" + "#{@photo.errors.full_messages}"
+      redirect_to user_photo_path(current_user, @photo)
+    end
+  end
+
   def destroy
     @photo = Photo.find(params[:id])
     if @photo.user_id == current_user.id && @photo.destroy

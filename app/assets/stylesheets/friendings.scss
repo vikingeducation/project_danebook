@@ -1,3 +1,54 @@
 // Place all the styles related to the friendings controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+/*=============================
+FRIENDS SECTION
+=============================*/
+.main-about .row {
+  padding: 15px;
+}
+
+.main-about .row .friend-box {
+  border: 1px solid black;
+  // width: 430px;
+  height: 150px;
+  padding: 15px;
+  margin: 5px auto;
+
+  img {
+    height: 120px;
+    width: 120px;
+    float: left;
+  }
+
+  .friend-name {
+    float: left;
+    margin-top: 30px;
+    margin-left: 20px;
+
+    a {
+      display: block;
+    }
+  }
+
+  a.unfriend {
+    float: right;
+    width: 27%;
+    background-color: #aaa;
+    font-weight: bold;
+    margin-top: 30px;
+  }
+
+  a.unfriend:hover {
+    background-color: #ddd;
+    font-weight: bold;
+  }
+}
+
+.no-style {
+  display: none;
+}
+
+.centralize {
+  text-align: center;
+}

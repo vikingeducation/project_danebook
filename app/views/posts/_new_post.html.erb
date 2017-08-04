@@ -5,10 +5,8 @@
     </h4>
   </header>
   <%= form_for [@user, @post] do |post_field| %>
-    <div class="post-body">
-      <div class="form-group">
-        <%= post_field.text_area :body, wrap: "hard", rows: "5", :placeholder => "Tell the world something", :class => "form-control" %>
-      </div>
+    <div class="form-group">
+      <%= post_field.text_area :body, wrap: "hard", rows: "5", :placeholder => "Tell the world something", :class => "form-control" %>
     </div>
     <div class="nav-footer">
       <%= post_field.submit "Post", :class => "btn btn-primary" %>

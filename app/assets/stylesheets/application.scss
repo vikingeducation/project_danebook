@@ -308,6 +308,8 @@ MAIN PART ABOUT EDIT
 /*=============================
 TIMELINE SECTION
 =============================*/
+
+// new_post block
 article section.post {
   margin-top: 20px;
   border: 2px solid black;
@@ -321,7 +323,6 @@ article section.post {
       display: inline-block;
     }
   }
-
   textarea {
     width: 95%;
     margin: 8px auto;
@@ -338,12 +339,13 @@ article section.post {
     padding: 5px;
     min-height: 35px;
     display: block;
+  }
 
-    a {
-      display: inline-block;
-      margin-left: 5px;
-      margin-right: 5px;
-    }
+    // a {
+    //   display: inline-block;
+    //   margin-left: 5px;
+    //   margin-right: 5px;
+    // }
 
     .clearfix:after,
     .clearfix:before {
@@ -359,7 +361,7 @@ article section.post {
       p {
         display: inline-block;
       }
-    }
+
   }
 
   .nav-bottom-link {
@@ -379,6 +381,7 @@ article section.post {
     display: inline-block;
   }
 
+
   .author-box {
     display: inline-block;
     vertical-align: top;
@@ -386,7 +389,7 @@ article section.post {
     width: 80%;
 
     time {
-      display: block;
+      display: inline-block;
       color: #666;
       font-size: 12px;
     }
@@ -400,6 +403,7 @@ article section.post {
     background-color: #ddd;
     margin-top: 10px;
 
+
     time {
       display: inline-block;
     }
@@ -411,6 +415,7 @@ article section.post {
       position: left;
       width: 80%;
       text-align: left;
+
 
       time {
         display: block;
@@ -565,12 +570,15 @@ div.main-friend-btn-wrapper {
   position: relative;
   max-width: 500px;
   max-height: 500px;
+
 }
 
 .image-menu-wrapper{
   display: block;
   right: 30px;
-  position: absolute;
+  margin-right: 30px;
+  margin-top: 10px;
+  // position: absolute;
 }
 
 
@@ -580,9 +588,10 @@ div.alert.alert-dismissible.alert {
 
 div.author-box {
   display: inline-block;
-  vertical-align: top;
-  margin-top: 5px;
-  width: 80%;
+  text-align: left;
+  a {
+    display: block;
+  }
 
   time {
     display: block;
@@ -593,4 +602,27 @@ div.author-box {
 
 div.wrapper {
   margin: 5px;
+}
+
+.post-body {
+    margin-bottom: 15px;
+}
+
+.thumb {
+  width: 60px;
+  height: 60px;
+}
+
+.gray-box  {
+  background-color: #ddd;
+
+}
+
+span.indent {
+  padding-left: 5px;
+}
+
+.image-wrapper {
+  border: 3px solid #999;
+  padding: 10px 0;
 }

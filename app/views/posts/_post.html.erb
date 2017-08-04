@@ -18,8 +18,8 @@
 
   <div class="post-body unfolded">
     <% if post.comments.any? %>
-    <%= render partial: 'comment', :locals => {:post => post} %>
+      <%= render partial: 'comment', :locals => {:post => post} %>
     <% end %>
-    <%= render partial: 'comments/new_comment_form', :locals => {:commentable => post} %>
+      <%= render partial: 'comments/new_comment_form', :locals => {:commentable => post} %>
   </div>
 </section>

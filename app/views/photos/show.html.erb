@@ -15,7 +15,11 @@
 
         <!-- LEFT COLUMN -->
         <div class="col-xs-7">
+          <div class="image-wrapper">
+
+
           <%= image_tag @photo.image.url(:medium), class: "centered-show-image" %><br>
+          </div>
           <div class="image-menu-wrapper">
             <% if @user.id == current_user.id %>
             <%= link_to "Set as Pofile", user_photo_path(@user, @photo, :type => 'profile'), :method=>:patch, class: "pull-right" %><br>
@@ -29,12 +33,11 @@
         <div class="col-xs-5 ">
           <div class="row ">
 
-
-            <div class="col-xs-3 post-body">
-              <%= image_tag @user.profile_photo_id ? @user.photos.find(@user.profile_photo_id).image.url(:thumb) : 'user_silhouette_generic.gif' %>
+            <div class="col-md-2 col-xs-5">
+              <%= image_tag @user.profile_photo_id ? @user.photos.find(@user.profile_photo_id).image.url(:thumb) : 'user_silhouette_generic.gif', :class => "thumb" %>
             </div>
 
-            <div class="col-xs-9">
+            <div class="col-md-10 col-xs-7">
               <div class="author-box">
                 <%= full_name(@photo) %>
                 <time datetime="<%= @photo.created_at %>" pubdate>
@@ -42,22 +45,21 @@
                 </time>
               </div>
             </div>
-          </div>
 
             <div class="col-xs-12">
               <%= render partial: 'posts/liking_box', :locals => {:post => @photo, :user => @user, :likeable => @photo} %>
             </div>
-          <div class="row">
+          </div>
 
-            <div class="col-xs-12">
-              <%= render partial: 'comments/new_comment_form', :locals => {:commentable => @photo} %>
-            </div>
+          <%= render partial: 'comments/new_comment_form', :locals => {:commentable => @photo} %>
 
+          <div class="row gray-box">
             <div class="col-xs-12">
               <%= render partial: 'posts/comment', :locals => {:post => @photo} %>
             </div>
-</div>
           </div>
+
+
         </div>
 
       </div>

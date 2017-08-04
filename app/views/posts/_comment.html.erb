@@ -18,9 +18,15 @@
             <% else %>
               <%= link_to "Like", likes_path(:like => {:likeable_id => comment.id, :likeable_type => comment.class.name} ), :method=>:post, class: "link pull-left" %>
             <% end %>
-            <% if number_of_likes(comment) > 0 %>
-              <%= number_of_likes(comment) %> other people like this
+
+            <% if number_of_likes(comment) > 3 %>
+              <%= list_who_liked(comment) %>
+              <%= number_of_likes(comment) - first_few_likes(comment).size %> others like this
+            <% elsif number_of_likes(comment) > 0 %>
+              <%= list_who_liked(comment) %>
+              like this
             <% end %>
+
             <% if current_user.id == comment.user_id %>
               <%= link_to "Delete", comments_path(id: comment.id, user_id: comment.user_id), method: 'delete', class: "delete pull-right", data: { confirm: 'Are you Sure?' } %>
             <% end %>

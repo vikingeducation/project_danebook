@@ -337,6 +337,7 @@ article section.post {
     background-color: #ddd;
     padding: 5px;
     min-height: 35px;
+    display: block;
 
     a {
       display: inline-block;
@@ -588,4 +589,8 @@ div.author-box {
     color: #666;
     font-size: 12px;
   }
+}
+
+div.wrapper {
+  margin: 5px;
 }

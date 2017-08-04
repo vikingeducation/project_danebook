@@ -1,22 +1,19 @@
-<!--HERO-->
 <div class="container">
   <%= render "shared/header" %>
-  <!--SECTION BAR-->
-  <!--SUB-NAVIGATION-->
 
   <%= render "shared/sub_navbar" %>
+
   <section class="nav-about">
     <h2>
       Photos
     </h2>
   </section>
 
-  <!--PHOTOS TABLE-->
   <main class="main-about photos">
-    <div class="container">
-
+    <div class="container-fluid">
       <div class="row">
 
+        <!-- LEFT COLUMN -->
         <div class="col-xs-7">
           <%= image_tag @photo.image.url(:medium), class: "centered-show-image" %><br>
           <div class="image-menu-wrapper">
@@ -28,35 +25,41 @@
           </div>
         </div>
 
-        <div class="col-xs-5">
+        <!-- RIGHT COLUMN -->
+        <div class="col-xs-5 ">
+          <div class="row ">
 
-          <div class="row">
-            <div class="post-body">
-              <div class="col-xs-3">
-                <%= image_tag @user.profile_photo_id ? @user.photos.find(@user.profile_photo_id).image.url(:thumb) : 'user_silhouette_generic.gif' %>
-              </div>
-              <div class="col-xs-9">
-                <div class="author-box">
-                  <%= full_name(@photo) %>
-                  <time datetime="<%= @photo.created_at %>" pubdate>
-                    <%= created_at_formatted(@photo) %>
-                  </time>
-                </div>
+
+            <div class="col-xs-3 post-body">
+              <%= image_tag @user.profile_photo_id ? @user.photos.find(@user.profile_photo_id).image.url(:thumb) : 'user_silhouette_generic.gif' %>
+            </div>
+
+            <div class="col-xs-9">
+              <div class="author-box">
+                <%= full_name(@photo) %>
+                <time datetime="<%= @photo.created_at %>" pubdate>
+                  <%= created_at_formatted(@photo) %>
+                </time>
               </div>
             </div>
           </div>
-          <div class="col-xs-12">
 
-          <%= render partial: 'posts/liking_box', :locals => {:commentable => @photo, :post => @photo, :user => @user} %>
+            <div class="col-xs-12">
+              <%= render partial: 'posts/liking_box', :locals => {:post => @photo, :user => @user, :likeable => @photo} %>
+            </div>
+          <div class="row">
 
-          <%= render partial: 'comments/new_comment_form', :locals => {:commentable => @photo} %>
+            <div class="col-xs-12">
+              <%= render partial: 'comments/new_comment_form', :locals => {:commentable => @photo} %>
+            </div>
 
-            <%= render partial: 'posts/comment', :locals => {:post => @photo} %>
-
+            <div class="col-xs-12">
+              <%= render partial: 'posts/comment', :locals => {:post => @photo} %>
+            </div>
+</div>
+          </div>
         </div>
 
       </div>
-
-    </div>
   </main>
 </div>

@@ -13,7 +13,7 @@
           <%= link_to "About", user_path(@user.id) %>
         </li>
         <li role="presentation" class= <%= current_page?(user_photos_path(@user.id)) ? 'active' : ' ' %> >
-          <%= link_to "Photos<span class='badge'>(123)</span>".html_safe, user_photos_path(@user.id) %>
+          <%= link_to "Photos <span class='label label-default'>#{@user.photos.count}</span>".html_safe, user_photos_path(@user.id) %>
         </li>
         <li role="presentation" class= <%= current_page?(user_friend_path(@user.id, @user.id)) ? 'active' : ' ' %> >
           <%= link_to "Friends <span class='label label-default'>#{@user.friended_users.count}</span>".html_safe, user_friend_path(@user.id, @user.id) %>

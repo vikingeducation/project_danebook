@@ -4,10 +4,11 @@ class LikesController < ApplicationController
     @like = current_user.likes.build(like_params)
     if @like.save
       flash[:success] = "You have created new like"
-      redirect_to user_timeline_path(@like.user_id)
-    else
+      redirect_to :back
+      user_timeline_path(@like.user_id)
+    else 
       flash[:danger] = "Something went wrong! No likes created!"
-      redirect_to user_timeline_path(@like.user_id)
+      redirect_to :back
     end
   end
 
@@ -15,7 +16,7 @@ class LikesController < ApplicationController
     @like = Like.all.where(like_params)[0]
     if @like.destroy
       flash[:success] = "You have unliked successfully!"
-      redirect_to user_timeline_path(current_user.id)
+      redirect_to :back
     else
       flash.now[:danger] = "Unliking didn't work :("
       redirect_to :back

@@ -1,6 +1,6 @@
 class Like < ApplicationRecord
 
-  ALLOWED_TYPES = ['Post', 'Comment']
+  ALLOWED_TYPES = ['Post', 'Comment', 'Photo']
 
   belongs_to :user
 

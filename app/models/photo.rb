@@ -6,7 +6,7 @@ class Photo < ApplicationRecord
   has_many :likers, :through => :likes,
                     :source => :user
 
-  validates_presence_of(:user, :image)
+  validates_presence_of(:user, :image, :image_file_name)
 
   has_attached_file :image, :styles => { :medium => "500x500", :thumb => "100x100" }
 

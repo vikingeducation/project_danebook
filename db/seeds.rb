@@ -10,6 +10,9 @@ User.destroy_all
 Profile.destroy_all
 Post.destroy_all
 Friending.destroy_all
+Photo.destroy_all
+Like.destroy_all
+Comment.destroy_all
 
 
 puts "Creating users"

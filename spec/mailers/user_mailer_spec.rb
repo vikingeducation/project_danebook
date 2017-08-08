@@ -13,7 +13,7 @@ RSpec.describe UserMailer, type: :mailer do
     ActionMailer::Base.deliveries = []
     UserMailer.welcome(user).deliver
   end
-
+ 
   after(:each) do
     ActionMailer::Base.deliveries.clear
   end

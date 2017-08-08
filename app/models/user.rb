@@ -54,6 +54,10 @@ class User < ApplicationRecord
     UserMailer.welcome(self).deliver!
   end
 
+  def send_comment_udpates_email(@comment)
+    UserMailer.new_comment_msg(self, @comment).deliver!
+  end
+
   def generate_token
     begin
       self[:auth_token] = SecureRandom.urlsafe_base64

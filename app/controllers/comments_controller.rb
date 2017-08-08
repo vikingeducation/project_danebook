@@ -5,6 +5,8 @@ class CommentsController < ApplicationController
   def create
     @comment = current_user.comments.build(comment_params)
     if @comment.save
+      commented_user = User.find(@comment.commentable.user_id)
+      commented_user.send_comment_udpates_email(@comment) if commented_user.id != @comment.user_id
       flash[:success] = "You have created new comment"
       redirect_to :back
       # user_timeline_path(@comment.user_id)

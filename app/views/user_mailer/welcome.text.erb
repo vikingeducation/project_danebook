@@ -1,0 +1,7 @@
+Welcome!
+
+Hi <%= @user.profile.first_name %>, welcome to Danebook network!
+
+Here you can meet your friends, share your experience and be up to date what's on in your network of friends.
+
+View your account at <%= link_to "#{user_url(@user.id)}", user_url(@user.id) %>

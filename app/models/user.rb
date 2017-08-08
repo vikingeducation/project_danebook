@@ -47,8 +47,12 @@ class User < ApplicationRecord
               :uniqueness => true
 
   before_create :generate_token
+  # after_create :send_welcome_email
 
 
+  def send_welcome_email
+    UserMailer.welcome(self).deliver!
+  end
 
   def generate_token
     begin

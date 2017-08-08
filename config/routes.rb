@@ -8,7 +8,9 @@ Rails.application.routes.draw do
     get 'upload' => 'photos#new'
     get 'timeline' => 'posts#index'
     get 'search' => 'friends#index'
+    get 'newsfeed' => 'newsfeed#index'
   end
+
   resource :likes, :only => [:create, :destroy]
   resource :comments, :only => [:new, :create, :destroy]
   resource :session, :only => [:new, :create, :destroy]

@@ -15,6 +15,7 @@ Rails.application.configure do
     }
   }
 
+  config.action_mailer.default_url_options = { :host => "www.danebook.io" }
 
   # Code is not reloaded between requests.
   config.cache_classes = true

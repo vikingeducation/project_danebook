@@ -54,9 +54,10 @@ class User < ApplicationRecord
     UserMailer.welcome(self).deliver!
   end
 
-  def send_comment_udpates_email(@comment)
-    UserMailer.new_comment_msg(self, @comment).deliver!
+  def send_comment_udpates_email(comment)
+    UserMailer.new_comment_msg(self, comment).deliver!
   end
+  handle_asynchronously :send_comment_udpates_email
 
   def generate_token
     begin

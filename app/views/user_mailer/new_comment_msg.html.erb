@@ -6,5 +6,5 @@
 
 
 <p>
-  View the latest comment at <%= link_to @comment.commentable_type, polymorphic_url(@comment) %>
+  View the latest comment made by <%= @comment.user.profile.first_name %> to your <%=  link_to "#{@comment.commentable_type}", user_timeline_url(@user.id) %>
 </p>

@@ -6,8 +6,9 @@ class UserMailer < ApplicationMailer
     mail(:to => @user.email, :subject => "Welcome to Danebook!")
   end
 
-  def new_comment_msg(user)
+  def new_comment_msg(user, comment)
     @user = user
+    @comment = comment
     mail(:to => @user.email, :subject => "You have got new comments today!")
   end
 

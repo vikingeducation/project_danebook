@@ -14,7 +14,7 @@ class UsersController < ApplicationController
       sign_in(@user)
       @user.send_welcome_email
       flash[:success] = "Congratulation! You have successfully created an account!"
-      redirect_to @user
+      redirect_to user_newsfeed(@user)
     else
       flash[:danger] = "Error! We couldn't create your account!" + "#{@user.errors.full_messages}"
       render :new

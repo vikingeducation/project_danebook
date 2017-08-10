@@ -75,6 +75,10 @@ class User < ApplicationRecord
     save!
   end
 
+  def friend_ids
+    friended_users.pluck(:id)
+  end
+
 
 
 

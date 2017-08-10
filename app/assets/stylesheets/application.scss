@@ -103,6 +103,10 @@ section form fieldset #dropdownDay {
 /*=============================
 NAVIGATION
 =============================*/
+
+input#search-area {
+  min-width: 400px;
+}
 nav.navbar-custom {
   background-color: $colortheme;
   border-bottom: 2px solid #333;
@@ -134,10 +138,6 @@ nav.navbar-custom {
     a.navbar-brand:hover {
       color: black;
     }
-  }
-
-  form .form-group input {
-    width: 450px;
   }
 
   ul li a {
@@ -275,6 +275,9 @@ table.tab-about {
 /*=============================
 MAIN PART ABOUT EDIT
 =============================*/
+
+
+
 .main-about {
   .input-group .form-control {
     height: 28px;

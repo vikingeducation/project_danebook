@@ -29,10 +29,10 @@ Rails.application.configure do
   # Rails also needs to know where your app is
   #   located to properly configure sending of emails
   config.action_mailer.default_url_options = {
-    :host => 'www.danebook.io',
+    :host => 'https://enigmatic-earth-17108.herokuapp.com',
   }
 
-  config.action_mailer.default_url_options = { :host => "www.danebook.io" }
+  config.action_mailer.default_url_options = { :host => "https://enigmatic-earth-17108.herokuapp.com" }
 
   # Code is not reloaded between requests.
   config.cache_classes = true

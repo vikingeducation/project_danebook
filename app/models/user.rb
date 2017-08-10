@@ -55,6 +55,10 @@ class User < ApplicationRecord
   end
 
   def send_comment_udpates_email(comment)
+    ENV["DELAY_EMAILS"] == 'off' ? comment_udpates_email(comment) : delay(queue: "comment_updates", priority: 2, run_at: 5.minutes.from_now).comment_udpates_email(comment)
+  end
+
+  def comment_udpates_email(comment)
     UserMailer.new_comment_msg(self, comment).deliver!
   end
   handle_asynchronously :send_comment_udpates_email

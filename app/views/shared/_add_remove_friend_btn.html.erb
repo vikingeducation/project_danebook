@@ -1,4 +1,4 @@
-<% if params[:user_id] != current_user.id.to_s %>
+<% if @user.id != current_user.id %>
   <div class="main-friend-btn-wrapper">
     <% if current_user.friended_users.pluck(:id).include?(@user.id) %>
       <%= link_to "Remove Friend", friending_path(:user_id => params[:user_id]), method: 'delete', class: "btn btn-default btn-bg friender pull-right" %>

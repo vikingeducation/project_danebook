@@ -16,7 +16,7 @@ class Post < ApplicationRecord
 
 
   def ten_recent_posts_of_uniq_users(user)
-      users = []
+      users = [user.id]
       users_posts = []
       Post.posts_of_friended_users(user).each do |post|
         unless users.include? post.user_id

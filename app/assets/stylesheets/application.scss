@@ -141,7 +141,8 @@ nav.navbar-custom {
   }
 
   ul li a {
-    color: white;
+    color: white
+;
     font-size: $fontsize +2;
   }
 
@@ -501,6 +502,7 @@ a time.overlay:hover {
   bottom: 0;
   padding: 1em;
   height: 2.75em;
+  margin: auto;
 }
 
 // .hovereffect {

@@ -1,10 +1,12 @@
 class NewsfeedController < ApplicationController
 
+  before_action :require_current_user, :only => [:index]
+
+  
   def index
     @user = current_user
     @post = Post.new
-    @posts = Post.where(:user_id => @user.friended_users.pluck(:id)).order(updated_at: :desc)
-    
-
+    @posts = Post.posts_of_friended_users(@user)
   end
+
 end

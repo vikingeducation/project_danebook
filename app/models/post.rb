@@ -9,4 +9,22 @@ class Post < ApplicationRecord
   validates_presence_of(:user)
 
   validates :body, :presence => true
+
+  def self.posts_of_friended_users(user)
+    where(:user_id => user.friended_users.pluck(:id)).order(updated_at: :desc)
+  end
+
+
+  def ten_recent_posts_of_uniq_users(user)
+      users = []
+      users_posts = []
+      Post.posts_of_friended_users(user).each do |post|
+        unless users.include? post.user_id
+          users << post.user_id
+          users_posts << post unless users_posts.length > 10
+        end
+      end
+      users_posts
+  end
+
 end

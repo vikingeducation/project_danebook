@@ -3,11 +3,34 @@
 
   <main class="row">
     <article class="col-xs-4">
-      <!-- Harry Potter -- edit profile -->
+      <!-- Owner - edit profile -->
+
+      <div class="newsfeed-owner">
+        <%= image_tag @user.profile_photo_id ? @user.photos.find(@user.profile_photo_id).image.url(:thumb) : 'user_silhouette_generic.gif' %>
+        <div class="name-edit-links">
+          <h3><%= link_to full_name_of_user(@user), @user %></h3>
+          <h4><%= link_to "Edit Profile", edit_user_path(@user) %></h4>
+        </div>
+      </div>
 
       <!-- RECENTLY ACTIVE -->
+      <div class="recently-active">
+        <h3>Recently Active</h3>
+        <% @post.ten_recent_posts_of_uniq_users(@user).each do |post| %>
+          <div class="post-body">
+            <%= image_tag post.user.profile_photo_id ? @user.photos.find(@user.profile_photo_id).image.url(:thumb) : 'user_silhouette_generic.gif' %>
+            <div class="author-box">
+              <%= link_to full_name(post), post.user %>
+              <time datetime="<%= post.created_at %>" pubdate>
+                <%= formatted_date(post.created_at) %>
+              </time>
+            </div>
+          </div>
+        <% end %>
+      </div>
 
-      <!-- See All Your Friends -->
+      <h4><%= link_to "See All Your Friends", user_friends_path(@user) %></h4>
+
     </article>
 
     <article class="col-xs-8">

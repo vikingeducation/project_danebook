@@ -8,11 +8,11 @@ class CommentsController < ApplicationController
       commented_user = User.find(@comment.commentable.user_id)
       commented_user.send_comment_udpates_email(@comment) if commented_user.id != @comment.user_id
       flash[:success] = "You have created new comment"
-      redirect_to :back
+      redirect_back(fallback_location: root_path)
       # user_timeline_path(@comment.user_id)
     else
       flash[:danger] = "Something went wrong! No post created!"
-      redirect_to :back
+      redirect_back(fallback_location: root_path)
     end
   end
 
@@ -21,10 +21,10 @@ class CommentsController < ApplicationController
 
     if @comment.destroy
       flash[:success] = "You have deleted comment successfully!"
-      redirect_to :back
+      redirect_back(fallback_location: root_path)
     else
       flash.now[:danger] = "Deleting comment didn't work :("
-      redirect_to :back
+      redirect_back(fallback_location: root_path)
     end
   end
 

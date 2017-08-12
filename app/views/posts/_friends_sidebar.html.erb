@@ -13,8 +13,12 @@
       <% @user.friended_users.each do |friend| %>
       <div class="col-md-4 col-xs-12">
         <div class="hovereffect">
-          <%= link_to (user_friend_path(@user, friend) ) do %>
+          <%= link_to (user_friends_path(@user) ) do %>
             <%= image_tag friend.profile_photo_id ? friend.photos.find(@user.profile_photo_id).image.url(:thumb) : 'user_silhouette_generic.gif', class: "img-thumbnail" %>
+            <div class="center">
+              <%= friend.profile.first_name %>
+              <%= friend.profile.last_name %>
+            </div>
           <% end %>
         </div>
       </div>
@@ -23,7 +27,7 @@
     </div>
 
     <div class="nav-bottom-link">
-      <%= link_to "See More Friends", user_friend_path(@user, @user), :class => "edit-profile" %>
+      <%= link_to "See More Friends", user_friends_path(@user), :class => "edit-profile" %>
     </div>
   </div>
 

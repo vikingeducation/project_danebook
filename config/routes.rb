@@ -1,13 +1,16 @@
 Rails.application.routes.draw do
+
+
+  # root :to => 'posts#index', :constraints => lambda { |request| request.cookies['auth_token'].present? }, :defaults => { :user_id => 94 }
   root :to => 'users#new'
 
   resources :users do
     resources :posts,  :only => [:index, :new, :create, :destroy]
-    resources :friends, :only => [:index, :show]
+    resources :friends, :only => [:index]
     resources :photos
     get 'upload' => 'photos#new'
     get 'timeline' => 'posts#index'
-    get 'search' => 'friends#index'
+    get 'search' => 'users#index'
     get 'newsfeed' => 'newsfeed#index'
   end
 

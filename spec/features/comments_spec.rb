@@ -8,8 +8,8 @@ feature 'Posting a comment' do
   before do
     user
     profile
-    visit root_path
     sign_in(user)
+    visit user_posts_path(user)
     click_link "Timeline"
   end
 

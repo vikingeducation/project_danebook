@@ -13,9 +13,8 @@ feature 'Publish post' do
     profile
     user_two
     profile_two
-    visit root_path
     sign_in(user)
-    click_link "Timeline"
+    visit user_posts_path(user)
   end
 
   scenario "Successfll posting" do

@@ -10,10 +10,8 @@
       <span class="icon-bar"></span>
       </button>
       <div class="logo-wrapper" >
-        <%= link_to root_path, class: "navbar-brand logo-container" do %>
+        <%= link_to signed_in_user? ? user_newsfeed_path(current_user) : root_path, class: "navbar-brand logo-container" do %>
         <%= image_tag("danish_flag.gif") %>
-
-<!--           <img src="danish_flag.gif" alt="Brand"> -->
           <h3>Danebook</h3>
         <% end %>
       </div>

@@ -44,7 +44,7 @@ describe 'posts/index.html.erb' do
 
     it "with another user who liked a post " do
       assign(:user, another_user)
-      assign(:profile, another_profile)
+      assign(:profile, another_profile) 
       post.likers << user
       render
       expect(rendered).to have_content("#{full_name(Like.last)} like this")

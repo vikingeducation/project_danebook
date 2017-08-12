@@ -3,6 +3,11 @@ class UsersController < ApplicationController
   before_action :require_current_user, :only => [:edit, :update, :destroy]
   skip_before_action :require_login, :only => [:new, :create]
 
+  def index
+    @user = User.find(params[:user_id])
+    @profiles = Profile.searching(params[:search])
+  end
+
   def new
     @user = User.new
     @profile = @user.build_profile
@@ -14,7 +19,7 @@ class UsersController < ApplicationController
       sign_in(@user)
       @user.send_welcome_email
       flash[:success] = "Congratulation! You have successfully created an account!"
-      redirect_to user_newsfeed(@user)
+      redirect_to user_newsfeed_path(@user)
     else
       flash[:danger] = "Error! We couldn't create your account!" + "#{@user.errors.full_messages}"
       render :new

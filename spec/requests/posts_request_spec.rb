@@ -16,7 +16,7 @@ describe 'PostsRequests' do
     it "publish new post with sufficietn flash messsage" do
       post user_posts_path(user), params: { :post => {:body => "New body", :user_id => user.id} }
       expect(flash[:success]).to_not be_nil
-    end
+    end 
 
     it "actually creates the post" do
      expect{ post user_posts_path(user), params: { :post => { :body => "New body",

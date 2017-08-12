@@ -4,7 +4,7 @@ class PostsController < ApplicationController
 
   def index
     @user = User.find(params[:user_id])
-    @posts = @user.posts.order('created_at DESC')
+    @posts = @user.posts.order(created_at: :desc)
     @post = @user.posts.build if signed_in_user?
   end
 

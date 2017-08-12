@@ -1,5 +1,4 @@
 require 'rails_helper'
-require 'pry'
 
 feature 'Sign up user account' do
 
@@ -19,7 +18,7 @@ feature 'Sign up user account' do
     choose('user_profile_attributes_gender_male')
     # click_button "Sign Up!"
     expect{ click_button "Sign Up!" }.to change(User, :count).by(1)
-    expect(page).to have_content "About Me"
+    expect(page).to have_content "Recently Active"
     expect(page).to have_content "Congratulation!"
     expect(page).to have_css ('div.alert-success')
   end

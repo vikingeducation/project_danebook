@@ -58,7 +58,7 @@ class PhotosController < ApplicationController
       redirect_to user_photos_path(current_user.id)
     else
       flash.now[:danger] = "We coildn't delete your photo :("
-      redirect_to :back
+      redirect_back(fallback_location: root_path)
     end
   end
 

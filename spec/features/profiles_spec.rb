@@ -7,8 +7,8 @@ feature 'Edit details in user account' do
   before do
     user
     profile
-    visit root_path
     sign_in(user)
+    visit user_path(user)
     click_link "Edit Your Profile"
   end
 
@@ -21,7 +21,6 @@ feature 'Edit details in user account' do
 
   scenario "Unable to edit with too short words to live by section" do
     fill_in('user_profile_attributes_words_to_live', :with => 'Hellohohoho')
-    save_and_open_page
     click_button "Save Changes"
     expect(page).to have_content "We couldn't edit your profile!"
     expect(page).to have_css ('div.alert-danger')

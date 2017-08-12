@@ -24,7 +24,7 @@ RSpec.describe UserMailer, type: :mailer do
 
   after(:each) do
     ActionMailer::Base.deliveries.clear
-  end
+  end 
 
   # it 'renders the receiver email' do
   #   puts  "#{ActionMailer::Base.deliveries.count}"

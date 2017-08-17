@@ -11,7 +11,7 @@ class Post < ApplicationRecord
   validates :body, :presence => true
 
   def self.posts_of_friended_users(user)
-    where(:user_id => user.friended_users.pluck(:id)).order(updated_at: :desc)
+    where(:user_id => user.friended_users.pluck(:id) << user.id).order(updated_at: :desc)
   end
 
 

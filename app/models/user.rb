@@ -46,6 +46,8 @@ class User < ApplicationRecord
               :format => { :with => /@/ },
               :uniqueness => true
 
+  validates_associated :initiated_friendings
+
   before_create :generate_token
   # after_create :send_welcome_email
 

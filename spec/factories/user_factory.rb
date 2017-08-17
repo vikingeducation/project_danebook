@@ -3,14 +3,14 @@ FactoryGirl.define do
   factory :user do
     sequence(:email) { |n| "Marek_#{n}@factory.com" }
     password "loko12"
-  end   
+  end
 
   factory :profile do
     sequence(:first_name){ |n| "Marek#{n}"}
     sequence(:last_name){ |n| "O'Neill#{n}"}
-    sequence(:birth_day){ |n| "#{n}"}
-    sequence(:birth_month){ |n| "#{n}"}
-    sequence(:birth_year){ |n| "#{n + 1970 }"}
+    sequence(:birth_day){ |n| "12"}
+    sequence(:birth_month){ |n| "6"}
+    sequence(:birth_year){ |n| "1980"}
     sequence(:gender){ |n| ["male", "female"][rand(2)]}
     sequence(:college){ |n| "Trinity College no#{n}"}
     sequence(:hometown){ |n| "Miami#{n}"}

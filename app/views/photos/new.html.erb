@@ -25,7 +25,7 @@
             <%= submit_tag "Use Web Photo", class: "btn btn-success btn-lg btn-upload" %>
           <% end %>
 
-          <h2>or ...</h2>
+          <h2>or..</h2>
           <h3>Select a photo from your hard drive...</h3>
 
           <%= form_tag( {  :controller => :photos,
@@ -39,7 +39,9 @@
             </label>
             <%= submit_tag "Upload Photo", class: "btn btn-primary btn-lg btn-upload" %>
           <% end %>
-
+          <h3 class="alert-message">
+            For this moment we accept only photos up to 500KB in size. We apologies for this inconvenience.
+          </h3>
       </div>
     </div>
   </main>

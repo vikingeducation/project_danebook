@@ -6,13 +6,12 @@ module ApplicationHelper
 
   def list_who_liked(post)
     str = ""
-    first_few_likes(post).each do |like|
-      if like.user_id == current_user.id
-        str = "You " + str
+    few_related_liker_ids(post).each do |liker_id|
+      if liker_id == current_user.id
+        str += "You "
       else
-        str += link_to("#{full_name(like)}", like.user, class: "liking")
+        str += link_to("#{user_full_name(User.find(liker_id))} ", User.find(liker_id), class: "liking")
       end
-      str += ' and ' unless first_few_likes(post).last == like
     end
     str.html_safe
   end

@@ -6,7 +6,7 @@ class FriendingsController < ApplicationController
       flash[:success] = "You have created new friend"
       redirect_back(fallback_location: root_path)
     else
-      flash[:danger] = "Something went wrong! Couldn't make a new friend"
+      flash[:danger] = "Something went wrong! Couldn't make a new friend.  #{current_user.errors.full_messages}"
       redirect_back(fallback_location: root_path)
     end
   end

@@ -10,7 +10,7 @@ describe 'LikesRequests' do
   before do
     user
     profile
-    old_post
+    old_post 
     login_as(user)
   end
 

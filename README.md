@@ -1,15 +1,40 @@
 
-#Danebook
+# Project Danebook
 
+Danebook is an web application, functionally similar to Facebook. This means users can securely signup and join the community, friend other users, upload their photos, post or comment others posts/photos. A user can also like others photos, comments or posts.
+
+## About the author
 [Dariusz Biskupski](https://github.com/Visiona/assignment_danebook_goes_live)
 
-[Danebook deployed on Heroku](https://fathomless-eyrie-59494.herokuapp.com/)
+## Getting Started
 
-###This is facebook like social/community portal. These few pages are simple structure of what would become a big portal for people.
+[Danebook deployed on Heroku](https://enigmatic-earth-17108.herokuapp.com)
 
-This project comes from [Viking Code School](http://vikingcodeschool.com) course.
-=======
-danebook
-========
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
+### Overview
 
+TBC
+
+### Installing
+
+To get the app started locally you'll need to:
+
+1. Clone the repo with `git clone REPO_URL`
+1. `cd` into the project
+1. Run
+  - `$ bundle install`
+  - `$ bundle exec rake db:migrate`
+  - `$ bundle exec rake db:seed`
+1. Start up the server with `rails s` command and visit `http://localhost:3000` in your browser
+
+## Running the tests
+
+A big part of the functionality is covered by rspec tests which can be run with following command:
+```
+bundle exec rspec
+```
+
+## Acknowledgments
+
+* I would like to thank to The Viking Code School for big help, as well as to my mentor Holman Gao who shared his experience in the most challenging moments of work. Last, but not the least - big thank you to [https://stackoverflow.com](https://enigmatic-earth-17108.herokuapp.com).

@@ -4,7 +4,7 @@
 Danebook is an web application, functionally similar to Facebook. This means users can securely signup and join the community, friend other users, upload their photos, post or comment others posts/photos. A user can also like others photos, comments or posts. Assets are stored on Amazon S3 Storage. Extra functions include welcome emails and delayed notification emails about activity related to user posts.
 
 ## About the author
-[Dariusz Biskupski](https://github.com/Visiona/assignment_danebook_goes_live)
+[Dariusz Biskupski](http://dariuszbiskupski.com/)
 
 ## Getting Started
 

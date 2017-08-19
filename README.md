@@ -1,7 +1,7 @@
 
 # Project Danebook
 
-Danebook is an web application, functionally similar to Facebook. This means users can securely signup and join the community, friend other users, upload their photos, post or comment others posts/photos. A user can also like others photos, comments or posts.
+Danebook is an web application, functionally similar to Facebook. This means users can securely signup and join the community, friend other users, upload their photos, post or comment others posts/photos. A user can also like others photos, comments or posts. Assets are stored on Amazon S3 Storage. Extra functions include welcome emails and delayed notification emails about activity related to user posts.
 
 ## About the author
 [Dariusz Biskupski](https://github.com/Visiona/assignment_danebook_goes_live)
@@ -10,6 +10,8 @@ Danebook is an web application, functionally similar to Facebook. This means use
 
 Live version of the app available here:
 [Deployed Danebook](https://enigmatic-earth-17108.herokuapp.com)
+
+If you like to play around you can set up your own account. If you use your real email, you will receive welcome email an notifications whenever someone else commented any of your posts. If you want to see all the users in the network - just press enter in the search bar on the top.
 
 
 ### Overview

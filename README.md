@@ -14,18 +14,18 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Overview
 
-![Signup page](https://github.com/visiona/project_danebook/public/assets/Danebook7.png)
+![Signup page](https://github.com/Visiona/project_danebook/blob/master/public/assets/Danebook7.png)
 
 
-![Upload Photo Page](https://github.com/visiona/project_danebook/public/assets/Danebook1.png)
+![Upload Photo Page](https://github.com/Visiona/project_danebook/blob/master/public/assets/Danebook1.png)
 
-![View your photos](https://github.com/visiona/project_danebook/public/assets/Danebook4.png)
+![View your photos](https://github.com/Visiona/project_danebook/blob/master/public/assets/Danebook4.png)
 
-![See your friends other users](https://github.com/visiona/project_danebook/public/assets/Danebook13.png)
+![See your friends other users](https://github.com/Visiona/project_danebook/blob/master/public/assets/Danebook13.png)
 
-![Newsfeed](https://github.com/visiona/project_danebook/public/assets/Danebook12.png)
+![Newsfeed](https://github.com/Visiona/project_danebook/blob/master/public/assets/Danebook12.png)
 
-![Edit your profile](https://github.com/visiona/project_danebook/public/assets/Danebook9.png)
+![Edit your profile](https://github.com/Visiona/project_danebook/blob/master/public/assets/Danebook9.png)
 
 ![Timeline](https://github.com/visiona/project_danebook/public/assets/Danebook14.png)
 

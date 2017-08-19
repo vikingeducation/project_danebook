@@ -4,6 +4,13 @@
 /*=============================
 MAIN PART ABOUT
 =============================*/
+
+.border-3d {
+  border-bottom: 1px solid #333;
+  border-left: 1px solid #333;
+  border-right: 1px solid #333;
+}
+
 .nav-about {
   @extend .border-3d;
   background: #ccc;

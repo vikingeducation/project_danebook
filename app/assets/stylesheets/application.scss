@@ -472,13 +472,12 @@ a time.overlay {
   position: absolute;
   bottom: 0;
   left: 0;
-  height: 30px;
-  width: 98%;
-  background-color: #999;
+  height: 25px;
+  width: 100%;
+  background-color: #444;
   color: #FFF;
   font-size: 1.2em;
   text-align: center;
-  padding-bottom: 8px;
   padding-top: 5px;
   -moz-transition: all 0.4s;
   -webkit-transition: all 0.4s;
@@ -486,6 +485,7 @@ a time.overlay {
   transition: all 0.4s;
   opacity: 0;
   filter: Alpha(opacity=0);
+
   // border-radius: 4px;
 }
 
@@ -495,24 +495,23 @@ a time.overlay:hover {
 }
 
 .hovereffect:hover .overlay {
-  opacity: 0.9;
+  opacity: 0.7;
   filter: Alpha(opacity=100);
   z-index: 20;
   left: 0;
-  top: auto;
   bottom: 0;
+  border-radius: 15px 15px 0 0;
   padding: 1em;
   height: 2.75em;
-  margin: auto;
 }
 
-// .hovereffect {
-//   overflow: hidden;
-//   position: relative;
-//   text-align: center;
-//   width: 100%;
-//   cursor: default;
-// }
+.hovereffect {
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  width: 100%;
+  cursor: default;
+}
 
 .hovereffect img {
   width: 98%;
@@ -526,7 +525,11 @@ a time.overlay:hover {
   transform: translate3d(0,-5%,0);
 }
 
-
+.images {
+  display: table-cell;
+  vertical-align: bottom;
+  float: none;
+}
 
 /*=============================
 HERO

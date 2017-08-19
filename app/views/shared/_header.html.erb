@@ -1,5 +1,5 @@
 <header class="col-xs-12">
-  <%= image_tag @user.cover_photo_id ? @user.photos.find(@user.cover_photo_id).image.url(:thumb) : '', :class => "hero" %>
+  <%= image_tag @user.cover_photo_id ? @user.photos.find(@user.cover_photo_id).image.url(:medium) : '', :class => "hero" %>
   <%= image_tag @user.profile_photo_id ? @user.photos.find(@user.profile_photo_id).image.url(:thumb) : 'user_silhouette_generic.gif', :class => "avatar" %>
   <%= render "shared/add_remove_friend_btn", :locals => {} %>
   <div class="user-name">

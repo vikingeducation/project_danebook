@@ -54,10 +54,11 @@ class PhotosController < ApplicationController
   def destroy
     @photo = Photo.find(params[:id])
     if @photo.user_id == current_user.id && @photo.destroy
+      nulify_cover_profile_photo(@photo)
       flash[:success] = "You have deleted your photo!"
       redirect_to user_photos_path(current_user.id)
     else
-      flash.now[:danger] = "We coildn't delete your photo :("
+      flash.now[:danger] = "We couldn't delete your photo :("
       redirect_back(fallback_location: root_path)
     end
   end
@@ -66,6 +67,12 @@ class PhotosController < ApplicationController
   private
   def photo_params
     params.permit( :image )
+  end
+
+  def nulify_cover_profile_photo(photo)
+    current_user.cover_photo_id = nil if current_user.cover_photo_id == photo.id
+    current_user.profile_photo_id = nil if current_user.profile_photo_id == photo.id
+    current_user.save
   end
 
 end

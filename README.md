@@ -37,4 +37,4 @@ bundle exec rspec
 
 ## Acknowledgments
 
-* I would like to thank to The Viking Code School for big help, as well as to my mentor Holman Gao who shared his experience in the most challenging moments of work. Last, but not the least - big thank you to [https://stackoverflow.com](https://enigmatic-earth-17108.herokuapp.com).
+* I would like to thank to The Viking Code School for big help in advancing with this application, as well as to my mentor Holman Gao who shared his experience in the most challenging stages of the project. Last, but not the least - big thank you to [https://stackoverflow.com](https://enigmatic-earth-17108.herokuapp.com).

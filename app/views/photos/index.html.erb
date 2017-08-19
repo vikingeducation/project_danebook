@@ -16,13 +16,12 @@
 
   <!--PHOTOS TABLE-->
   <main class="main-about photos">
-    <div class="row">
+    <div class="row images">
       <% @photos.each do |photo| %>
-
-      <div class="col-lg-3 col-sm-6 col-xs-12">
+      <div class="col-lg-3 col-sm-6 col-xs-12 images">
         <div class="hovereffect">
           <%= link_to (require_current_user_friends(photo) ? user_photo_path(@user, photo) : "" ) do %>
-          <%= image_tag photo.image.url(:thumb) %>
+          <%= image_tag photo.image.url(:medium) %>
             <time datetime="<%= photo.created_at %>" class="overlay">
               Uploaded
               <%= created_at_formatted(photo) %>

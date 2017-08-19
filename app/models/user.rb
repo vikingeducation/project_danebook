@@ -10,13 +10,24 @@ class User < ApplicationRecord
   has_one :avatar, :class_name => "Photo",
                     :foreign_key => :cover_photo_id
 
-  has_many :photos
+  has_many :photos,
+            :dependent => :destroy
 
   has_many  :posts,
             :dependent => :destroy
 
-  has_many :comments
-  has_many :likes
+  has_many :comments,
+            :dependent => :destroy
+  has_many :likes,
+            :dependent => :destroy
+
+  belongs_to :profile_photo,
+              :class_name => "Photo",
+              :optional => true
+
+  belongs_to :cover_photo,
+              :class_name => "Photo",
+              :optional => true
 
   has_many :initiated_friendings, :class_name => 'Friending',
                                   :foreign_key => :friender_id

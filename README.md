@@ -14,7 +14,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Overview
 
-![Signup page](https://github.com/visiona/project_danebook/public/assets/Danebook7.png)
+![Signup page](https://github.com/Visiona/project_danebook/public/assets/Danebook7.png)
 
 
 ![Upload Photo Page](https://github.com/visiona/project_danebook/public/assets/Danebook1.png)

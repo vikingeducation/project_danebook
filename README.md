@@ -8,28 +8,44 @@ Danebook is an web application, functionally similar to Facebook. This means use
 
 ## Getting Started
 
-[Danebook deployed on Heroku](https://enigmatic-earth-17108.herokuapp.com)
+Live version of the app available here:
+[Deployed Danebook](https://enigmatic-earth-17108.herokuapp.com)
 
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
 ### Overview
 
 
 ![Signup page](https://github.com/Visiona/project_danebook/blob/master/public/assets/Danebook7.png)
-
+**Sign Up to Danebook Social network. **
+***
 
 ![Upload Photo Page](https://github.com/Visiona/project_danebook/blob/master/public/assets/Danebook1.png)
+***Upload photos to your Danebook account. You can mark one as your profile prhoto or/wallpaper photo.  **
+***
 
 ![View your photos](https://github.com/Visiona/project_danebook/blob/master/public/assets/Danebook4.png)
+**Check your photo or photos of your friends. Like them, comment them or even like comments **
+***
 
-![See your friends other users](https://github.com/Visiona/project_danebook/blob/master/public/assets/Danebook13.png)
+![See your friends or other users friends](https://github.com/Visiona/project_danebook/blob/master/public/assets/Danebook13.png)
+**Check your friends of your or your friends if you click their name. Here you can also unfriend some of them if you changed your mind **
+***
 
 ![Newsfeed](https://github.com/Visiona/project_danebook/blob/master/public/assets/Danebook12.png)
+**Here you can see activity of your friends. You can check your posts and posts of your friends, comment them, like or unlike, and even see who liked them! **
+***
 
 ![Edit your profile](https://github.com/Visiona/project_danebook/blob/master/public/assets/Danebook9.png)
+**Here you can add of change about your profile **
+***
 
-![Timeline](https://github.com/visiona/project_danebook/public/assets/Danebook14.png)
+![Timeline](https://github.com/Visiona/project_danebook/blob/master/public/assets/Danebook14.png)
+**Here you see all your posts, comments - you can like any of other comments or comment them. Here is also small preview of your photos and friends.  **
+***
 
+![Search for friends](https://github.com/Visiona/project_danebook/blob/master/public/assets/Danebook5.png)
+**Here you can search for other people who are on Dnebook. You can check basic info of people in search results and friend or unfriend them.**
+***
 
 ### Installing
 

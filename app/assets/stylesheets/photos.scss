@@ -12,7 +12,7 @@ a time.overlay {
   width: 100%;
   background-color: #444;
   color: #FFF;
-  font-size: 1.2em;
+  font-size: 1em;
   text-align: center;
   padding-top: 5px;
   -moz-transition: all 0.4s;
@@ -34,9 +34,9 @@ a time.overlay:hover {
   z-index: 20;
   left: 0;
   bottom: 0;
-  border-radius: 15px 15px 0 0;
-  padding: 1em;
-  height: 2.75em;
+  padding-left: 3px;
+  padding-right: 3px;
+  height: 2.9em;
 }
 
 .hovereffect {

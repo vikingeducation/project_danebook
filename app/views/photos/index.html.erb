@@ -2,7 +2,6 @@
 <div class="container">
   <%= render "shared/header" %>
 
-
   <!--SUB-NAVIGATION-->
   <%= render "shared/sub_navbar" %>
   <section class="nav-about">
@@ -10,26 +9,30 @@
       Photos
     </h2>
     <% if current_user.id.to_s == params[:user_id] %>
-      <%= link_to "Add Photo!", user_upload_path(@user), :class => "btn btn-primary" %>
+    <%= link_to "Add Photo!", user_upload_path(@user), :class => "btn btn-primary" %>
     <% end %>
   </section>
 
   <!--PHOTOS TABLE-->
   <main class="main-about photos">
-    <div class="row images">
+    <div class="row">
       <% @photos.each do |photo| %>
-      <div class="col-lg-3 col-sm-6 col-xs-12 images">
+      <div class="col-lg-3 col-sm-6 col-xs-12">
         <div class="hovereffect">
+
           <%= link_to (require_current_user_friends(photo) ? user_photo_path(@user, photo) : "" ) do %>
-          <%= image_tag photo.image.url(:medium) %>
-            <time datetime="<%= photo.created_at %>" class="overlay">
-              Uploaded
-              <%= created_at_formatted(photo) %>
-            </time>
+          <div class="crop">
+
+            <%= image_tag photo.image.url(:medium) %>
+          </div>
+          <time datetime="<%= photo.created_at %>" class="overlay">
+            Uploaded
+            <%= created_at_formatted(photo) %>
+          </time>
           <% end %>
         </div>
-      </div>
 
+      </div>
       <% end %>
     </div>
   </main>

@@ -1,24 +1,9 @@
-# README
+# Danebook
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+<a href="https://github.com/MariahAcacia">Mariah Schneeberger</a>
 
-Things you may want to cover:
+<p>
+  A simple Rails app to deploy static Danebook pages.
+</p>
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+<a href="https://www.vikingcodeschool.com">A Viking Code School project</a>

@@ -1,0 +1,21 @@
+<form id="sign-up-form" method="post">
+  <h1 id="main-action">Sign up</h1>
+  <div class="form-elements">
+    <input id="first-name-box" class="smaller-input-box" type="text" placeholder="First Name">
+    <input class="smaller-input-box" type="text" placeholder="Last Name">
+    <input class="wide-box" type="text" placeholder="Email"><br>
+    <input class="wide-box" type="password" placeholder="Your New Password"><br>
+    <input class="wide-box" type="password" Placeholder="Confirm Your Password"><br>
+    <label id="birthday" for="birthday"><strong>Birthday</strong></label><br>
+
+    <%= select_month(14, prompt: 'Month') %>
+    <%= select_day(prompt: "Day") %>
+    <%= select_year(Date.today, start_year: 1920) %>
+
+    <br>
+
+    <input type="radio" name="gender" value="female">Female
+    <input type="radio" name="gender" value="male">Male<br>
+    <input type="submit" value="Sign Up!" id="sign-up-button">
+  </div>
+</form>

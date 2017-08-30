@@ -9,4 +9,7 @@ class StaticPagesController < ApplicationController
   def friends
   end
 
+  def about
+  end
+
 end

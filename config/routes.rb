@@ -4,4 +4,5 @@ Rails.application.routes.draw do
   get "/home", to: 'static_pages#home'
   get "/timeline", to: 'static_pages#timeline'
   get "/friends", to: 'static_pages#friends'
+  get "/about", to: 'static_pages#about'
 end

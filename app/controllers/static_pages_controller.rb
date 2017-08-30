@@ -4,4 +4,7 @@ class StaticPagesController < ApplicationController
     # render :partial => "signup_form"
   end
 
+  def timeline
+  end
+
 end

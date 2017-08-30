@@ -205,7 +205,8 @@ $darker-grey: #666;
 #profile-pic,
 #profile-name,
 .name-pic-block,
-#sign-up-form   {
+#sign-up-form,
+.photos-heading   {
 	display: inline-block;
 }
 
@@ -362,7 +363,9 @@ $darker-grey: #666;
 #sign-up-button,
 .post-links-area,
 .comment-area,
-.friend-link-section {
+.friend-link-section,
+.photos-wrapper,
+.photos-border {
   border: $main-border;
 }
 
@@ -416,12 +419,14 @@ $darker-grey: #666;
 	margin-top: 10px;
 }
 
-.about-title {
+.about-title,
+.photos-title {
 	width: 87%;
 }
 
 .about-title,
-.friends-title {
+.friends-title,
+.photos-title {
 	text-align: center;
 	font-size: 30px;
 	margin: 5px 0px;
@@ -501,27 +506,47 @@ td {
   margin-top: 50px;
 }
 
+/*
+below code for photos page
+*/
 
-// for table layout
-// .friend-table {
-//   width: 100%;
-// }
-//
-// .friend-name {
-//   padding: 15px;
-// }
-//
-// .unfriend {
-//   padding-right: 20px;
-//   padding-left: 20px;
-// }
-//
-//
-// .friend-summary {
-//   padding: 40px;
-//   margin-bottom: 20px;
-// }
-//
-// td:nth-child(odd) {
-//   margin-right: 20px;
-// }
+.photos-border {
+  div img {
+  align-content: center;
+  // margin-top: 20px;
+  // margin-bottom: 20px;
+  &:hover {
+    }
+  }
+}
+
+.img_wrapper {
+  position: relative;
+  height: 200px;
+  width: 250px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  p {
+    margin-top: 150px;
+  }
+}
+
+.on-hover-description {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(40, 40, 40, 0.72);
+  color: #fff;
+  visibility: hidden;
+  opacity: 0;
+  height: 50px;
+  text-align: center;
+
+}
+
+.img_wrapper:hover .on-hover-description {
+  visibility: visible;
+  opacity: .5;
+}

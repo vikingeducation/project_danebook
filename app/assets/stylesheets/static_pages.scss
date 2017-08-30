@@ -164,16 +164,6 @@ $darker-grey: #666;
   }
 }
 
-.comment-body:before,
-.comment-body:after {
-  content: " "; /* 1 */
-  display: table; /* 2 */
-}
-
-.comment-body:after {
-  clear: both;
-}
-
 .comment-area {
   padding-left: 10px;
 }
@@ -330,11 +320,10 @@ $darker-grey: #666;
 
 .top-main-section {
 	height: 460px;
+  width: 100%;
 }
 
-.top-main-section,
-.bar,
-.friend-container,
+
 #cover-photo,
 .info-section {
 	width: 80%;
@@ -370,11 +359,11 @@ $darker-grey: #666;
 .link,
 .time-link-links,
 .friend-summary,
-.friend-container,
 .submit-post-button-area,
 #sign-up-button,
 .post-links-area,
-.comment-area{
+.comment-area,
+.friend-link-section {
   border: $main-border;
 }
 
@@ -447,7 +436,6 @@ $darker-grey: #666;
 }
 
 .bar,
-.about-link,
 .friend-link  {
 	background-color: $light-grey;
 }
@@ -502,48 +490,43 @@ td {
 /*
  below code for friend page
 */
-
-.friend-container {
-	border-spacing: 20px 20px;
-	border-collapse: separate;
-}
+// for column layout
 
 .friend-summary {
-	padding: 10px;
-
+  padding: 20px;
+  margin: 20px 5px;
   img {
-  	margin-top: 30px;
-  	margin-bottom: 30px;
-  	margin-left: 20px;
-  }
-
-  input {
-  	position: relative;
-  	bottom: 110px;
-  	left: 50px;
-  	width: 150px;
-  	font-size: 16px;
-  	background: $light-grey;
-  }
-
-  a {
-  	font-size: 20px;
-  	letter-spacing: 1px;
-  }
-
-  p {
-  	font-size: 18px;
-  	color: $light-grey;
+    padding: 20px;
   }
 }
 
-.friend-bar {
-	margin-bottom: 5px;
+.unfriend {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-top: 50px;
 }
 
-.friend-name {
-	position: relative;
-	bottom: 90px;
-	left: 20px;
-	line-height: 1.5;
-}
+
+// for table layout
+// .friend-table {
+//   width: 100%;
+// }
+//
+// .friend-name {
+//   padding: 15px;
+// }
+//
+// .unfriend {
+//   padding-right: 20px;
+//   padding-left: 20px;
+// }
+//
+//
+// .friend-summary {
+//   padding: 40px;
+//   margin-bottom: 20px;
+// }
+//
+// td:nth-child(odd) {
+//   margin-right: 20px;
+// }

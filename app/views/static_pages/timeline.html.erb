@@ -1,202 +1,179 @@
 <main class="main timeline">
+  <%= render partial: 'profile_header_and_links' %>
 
-<div class="container">
-  <div class="row">
-    <article class="col-xs-12 col-offset-2 top-main-section">
-      <img id="cover-photo" href="./blooming_flower_garden_199003.jpg" style="height:300px; width:100%">
-      <nav>
-        <table class="timeline-links">
-          <tr>
-            <td class="link empty"></td>
-            <td class="first-link link grey-back-ground">Timeline</td>
-            <td class="link">About</td>
-            <td class="link">Photos <a href="photos.html"/>(347)</td>
-            <td class="link">Friends <a href="friends.html"/>(234)</td>
-            <td class="edit-profile-link link"><a href="profile.html">Edit Profile</a></td>
-          </tr>
-        </table>
-      </nav>
+  <div class="container">
+    <div class="bottom-main-section row">
+      <section class="left-section col-xs-4">
 
-      <div class="name-pic-block">
-        <img id="profile-pic"href="./cat.jpg" style="height: 200px; width: 200px;">
-        <h1 id="profile-name">Cat Doe</h1>
-      </div>
-    </article>
-  </div>
-</div>
+        <article class="about-text-area left-section-article-heading">
+          <h3 class="grey-back-ground">About</h3>
+          <p><strong>Born On:</strong> Date you were born</p>
+          <p><strong>Went to School at:</strong> nunyabiznas</p>
+          <p><strong>Hometown:</strong> Somewhere, USA</p>
+          <p><strong>Currently Lives:</strong> Somewhere else, USA</p>
+        </article>
 
-<div class="container">
-  <div class="bottom-main-section row">
-    <section class="left-section col-xs-4">
-
-      <article class="about-text-area left-section-article-heading">
-        <h3 class="grey-back-ground">About</h3>
-        <p><strong>Born On:</strong> Date you were born</p>
-        <p><strong>Went to School at:</strong> nunyabiznas</p>
-        <p><strong>Hometown:</strong> Somewhere, USA</p>
-        <p><strong>Currently Lives:</strong> Somewhere else, USA</p>
-      </article>
-
-      <article class="photos-copied-text-area left-section-article-heading">
-        <h3 class="grey-back-ground">Photos(293)</h3>
-        <img href="#" style="height:80px; width:80px;">
-        <img href="#" style="height:80px; width:80px;">
-        <img href="#" style="height:80px; width:80px;">
-        <br>
-        <img href="#" style="height:80px; width:80px;">
-        <img href="#" style="height:80px; width:80px;">
-        <img href="#" style="height:80px; width:80px;">
-        <br>
-        <img href="#" style="height:80px; width:80px;">
-        <img href="#" style="height:80px; width:80px;">
-        <img href="#" style="height:80px; width:80px;">
-        <br>
-        <!-- eventually will link to pictures page -->
-        <div class="more-link">
-          <a href="#">See More Photos</a>
-        </div>
-      </article>
-
-      <article class="friends-copied-text-area left-section-article-heading">
-        <h3 class="grey-back-ground">Friends(423)</h3>
-        <div class="friend-pic-link">
-          <img href="#" style="height:80px; width:80px;"><br>
-          <a href="#">Your Friend</a>
-        </div>
-        <div class="friend-pic-link">
-          <img href="#" style="height:80px; width:80px;"><br>
-          <a href="#">Your Friend</a>
-        </div>
-        <div class="friend-pic-link">
-          <img href="#" style="height:80px; width:80px;"><br>
-          <a href="#">Your Friend</a>
-        </div>
-        <div class="friend-pic-link">
-          <img href="#" style="height:80px; width:80px;"><br>
-          <a href="#">Your Friend</a>
-        </div>
-        <div class="friend-pic-link">
-          <img href="#" style="height:80px; width:80px;"><br>
-          <a href="#">Your Friend</a>
-        </div>
-        <div class="friend-pic-link">
-          <img href="#" style="height:80px; width:80px;"><br>
-          <a href="#">Your Friend</a>
-        </div>
-
-        <!-- eventually will link to friends page -->
-        <div class="more-link">
-          <a href="#">See More Friends</a>
-        </div>
-      </article>
-
-    </section>
-
-    <section class="right-section col-xs-8">
-
-      <article class="post-copied">
-        <h3 class="grey-back-ground">Post(copied)</h3>
-          <div class="outer-post-area">
-            <textarea class="make-new-post">Tell us what's on your mind...</textarea>
+        <article class="photos-copied-text-area left-section-article-heading">
+          <h3 class="grey-back-ground">Photos(293)</h3>
+          <img href="#" style="height:80px; width:80px;">
+          <img href="#" style="height:80px; width:80px;">
+          <img href="#" style="height:80px; width:80px;">
+          <br>
+          <img href="#" style="height:80px; width:80px;">
+          <img href="#" style="height:80px; width:80px;">
+          <img href="#" style="height:80px; width:80px;">
+          <br>
+          <img href="#" style="height:80px; width:80px;">
+          <img href="#" style="height:80px; width:80px;">
+          <img href="#" style="height:80px; width:80px;">
+          <br>
+          <!-- eventually will link to pictures page -->
+          <div class="more-link">
+            <a href="#">See More Photos</a>
           </div>
-          <div class="submit-post-button-area grey-back-ground" align="right">
-            <input type="submit" value="Post" method="post" action="#" class="submit-post-button">
-          </div>
-      </article>
+        </article>
 
-      <article>
-        <div class="post">
-          <img href="#" style="height:50px; width:50px;">
-          <div class="post-header">
-            <a href="#">Cat Doe</a>
-            <p>Posted on: date</p>
+        <article class="friends-copied-text-area left-section-article-heading">
+          <h3 class="grey-back-ground">Friends(423)</h3>
+          <div class="friend-pic-link">
+            <img href="#" style="height:80px; width:80px;"><br>
+            <a href="#">Your Friend</a>
           </div>
-          <div class="post-body">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+          <div class="friend-pic-link">
+            <img href="#" style="height:80px; width:80px;"><br>
+            <a href="#">Your Friend</a>
           </div>
-        </div>
-        <div class="post-links-area grey-back-ground">
-          <a href="#">Like</a>
-          <a href="#">Comment</a>
-          <a href="#">Delete</a>
-        </div>
-      </article>
+          <div class="friend-pic-link">
+            <img href="#" style="height:80px; width:80px;"><br>
+            <a href="#">Your Friend</a>
+          </div>
+          <div class="friend-pic-link">
+            <img href="#" style="height:80px; width:80px;"><br>
+            <a href="#">Your Friend</a>
+          </div>
+          <div class="friend-pic-link">
+            <img href="#" style="height:80px; width:80px;"><br>
+            <a href="#">Your Friend</a>
+          </div>
+          <div class="friend-pic-link">
+            <img href="#" style="height:80px; width:80px;"><br>
+            <a href="#">Your Friend</a>
+          </div>
 
-      <article>
-        <div class="post">
-          <img href="#" style="height:50px; width:50px;">
-          <div class="post-header">
-            <a href="#">Cat Doe</a>
-            <p>Posted on: date</p>
+          <!-- eventually will link to friends page -->
+          <div class="more-link">
+            <a href="#">See More Friends</a>
           </div>
-          <div class="post-body">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          </div>
-        </div>
-        <div class="post-links-area grey-back-ground">
-          <a href="#">Like</a>
-          <a href="#">Comment</a>
-          <a href="#">Delete</a>
-        </div>
-      </article>
+        </article>
 
-      <article>
-        <div class="post">
-          <img href="#" style="height:50px; width:50px;">
-          <div class="post-header">
-            <a href="#">Cat Doe</a>
-            <p>Posted on: date</p>
-          </div>
-          <div class="post-body">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          </div>
-        </div>
-        <div class="post-links-area grey-back-ground">
-          <a href="#">Like</a>
-          <a href="#">Comment</a>
-          <a href="#">Delete</a>
-        </div>
-      </article>
+      </section>
 
-      <article>
-        <div class="post post-with-comment">
-          <img href="#" style="height:50px; width:50px;">
-          <div class="post-header">
-            <a href="#">Cat Doe</a>
-            <p>Posted on: date</p>
-          </div>
-          <div class="post-comment-body">
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-          </div>
-        </div>
-        <div class="comment-area grey-back-ground">
-          <div class="comment-header-area">
-            <a href="#">Unlike</a>
-            <a href="#">Delete</a>
-            <p>You and 23 other people like this post</p>
-          </div>
-          <div class="comment-body">
+      <section class="right-section col-xs-8">
+
+        <article class="post-copied">
+          <h3 class="grey-back-ground">Post(copied)</h3>
+            <div class="outer-post-area">
+              <textarea class="make-new-post">Tell us what's on your mind...</textarea>
+            </div>
+            <div class="submit-post-button-area grey-back-ground" align="right">
+              <input type="submit" value="Post" method="post" action="#" class="submit-post-button">
+            </div>
+        </article>
+
+        <article>
+          <div class="post">
             <img href="#" style="height:50px; width:50px;">
-            <div class="inner-comment-body">
-              <a href="#">Your Friend</a>
-              <p>Said on: date</p>
-              <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-              <a href="#">Like</a>
-              <a href="#">Delete</a>
+            <div class="post-header">
+              <a href="#">Cat Doe</a>
+              <p>Posted on: date</p>
             </div>
-            <br>
-            <br>
-            <div class="comment-text-area-div">
-              <textarea class="comment-text-area">Write your commment...</textarea>
-              <a href="#">Cancel</a>
-              <input type="submit" value="Comment" method="post" action="#" class="submit-comment-button">
+            <div class="post-body">
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
             </div>
           </div>
-        </div>
-      </article>
+          <div class="post-links-area grey-back-ground">
+            <a href="#">Like</a>
+            <a href="#">Comment</a>
+            <a href="#">Delete</a>
+          </div>
+        </article>
 
-    </section>
+        <article>
+          <div class="post">
+            <img href="#" style="height:50px; width:50px;">
+            <div class="post-header">
+              <a href="#">Cat Doe</a>
+              <p>Posted on: date</p>
+            </div>
+            <div class="post-body">
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+          </div>
+          <div class="post-links-area grey-back-ground">
+            <a href="#">Like</a>
+            <a href="#">Comment</a>
+            <a href="#">Delete</a>
+          </div>
+        </article>
+
+        <article>
+          <div class="post">
+            <img href="#" style="height:50px; width:50px;">
+            <div class="post-header">
+              <a href="#">Cat Doe</a>
+              <p>Posted on: date</p>
+            </div>
+            <div class="post-body">
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+          </div>
+          <div class="post-links-area grey-back-ground">
+            <a href="#">Like</a>
+            <a href="#">Comment</a>
+            <a href="#">Delete</a>
+          </div>
+        </article>
+
+        <article>
+          <div class="post post-with-comment">
+            <img href="#" style="height:50px; width:50px;">
+            <div class="post-header">
+              <a href="#">Cat Doe</a>
+              <p>Posted on: date</p>
+            </div><br>
+            <br>
+            <div class="post-comment-body">
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+          </div>
+          <div class="comment-area grey-back-ground">
+            <div class="comment-header-area">
+              <a href="#">Unlike</a>
+              <a href="#">Delete</a>
+              <p>You and 23 other people like this post</p>
+            </div>
+            <div class="comment-body">
+              <img href="#" style="height:50px; width:50px;">
+              <div class="inner-comment-body">
+                <a href="#">Your Friend</a>
+                <p>Said on: date</p>
+                <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                <a href="#">Like</a>
+                <a href="#">Delete</a>
+              </div>
+              <br>
+              <br>
+              <div class="comment-text-area-div">
+                <textarea class="comment-text-area">Write your commment...</textarea>
+                <a href="#">Cancel</a>
+                <input type="submit" value="Comment" method="post" action="#" class="submit-comment-button">
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </section>
+    </div>
   </div>
-</div>
 
 </main>

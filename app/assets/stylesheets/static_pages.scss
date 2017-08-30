@@ -196,7 +196,6 @@ $darker-grey: #666;
 .left-side,
 .right-side,
 .far-right,
-.far-left,
 .right-top,
 .left-top,
 .friend-name,
@@ -211,7 +210,7 @@ $darker-grey: #666;
 }
 
 .form-elements,
-.top-bar,
+.not-loggedin-nav,
 #sign-up-button,
 .timeline-links,
 .blue-bar,
@@ -224,7 +223,7 @@ $darker-grey: #666;
   color: $whitetext;
 }
 
-.top-bar {
+.not-loggedin-nav {
   background: $primary-color;
   display: flex;
   padding: 5px;
@@ -233,6 +232,29 @@ $darker-grey: #666;
   justify-content: space-between;
   align-items: center;
 	z-index: 2;
+}
+
+.far-left {
+  margin-right: 50px;
+  img {
+    display: inline-block;
+    margin-bottom: 20px;
+  }
+  h1 {
+  display: inline-block;
+  }
+}
+
+.loggedin-nav {
+  background: $primary-color;
+  position: fixed;
+  height: 70px;
+  width: 100%;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+
+  align-items: center;
 }
 
 #email,
@@ -246,13 +268,17 @@ $darker-grey: #666;
   margin-right: 150px;
 }
 
-.nook {
+.not-loggedin-brand {
 		margin-left: 130px;
 }
 
-.nook,
+.not-loggedin-brand,
 .home-benefits h1 {
   font-size: 40px;
+}
+
+.loggedin-brand {
+  margin-right: 20px;
 }
 
 .home-benefits {
@@ -400,11 +426,6 @@ $darker-grey: #666;
 	font-size: 35px;
 }
 
-.blue-bar {
-	display: block;
-	padding-left: 140px;
-}
-
 .search-bar {
 	width: 550px;
 	height: 20px;
@@ -426,6 +447,7 @@ $darker-grey: #666;
 
 .about-title,
 .friends-title,
+
 .photos-title {
 	text-align: center;
 	font-size: 30px;
@@ -513,10 +535,6 @@ below code for photos page
 .photos-border {
   div img {
   align-content: center;
-  // margin-top: 20px;
-  // margin-bottom: 20px;
-  &:hover {
-    }
   }
 }
 

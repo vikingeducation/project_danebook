@@ -5,4 +5,10 @@ module StaticPagesHelper
     current_page?('http://localhost:3000/home') ? 'shared/navbar' : 'shared/loggedin_navbar'
   end
 
+
+  def find_class
+
+  end
+
+
 end

@@ -192,7 +192,7 @@ $darker-grey: #666;
 }
 
 
-.about-heading,
+
 .left-side,
 .right-side,
 .far-right,
@@ -395,6 +395,13 @@ $darker-grey: #666;
   border: $main-border;
 }
 
+.info-section {
+  border-right: $main-border;
+  border-left: $main-border;
+  border-bottom: $main-border;
+  padding: 20px;
+}
+
 .post-copied,
 .left-section-article-heading {
   h3 {
@@ -457,8 +464,20 @@ $darker-grey: #666;
 .edit {
 	background-color: $primary-color;
 	position: relative;
-	top: -5px;
-	right: -10px;
+	top: -36px;
+	right: 12px;
+}
+
+.save-changes-button {
+  font-size: 50px;
+  padding: 20px 5em;
+  display: block;
+  margin: 0px auto 80px auto;
+  background-color: $primary-color;
+}
+
+.bottom-spacer {
+  margin-bottom: 120px;
 }
 
 .bar,

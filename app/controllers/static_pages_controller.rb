@@ -15,4 +15,7 @@ class StaticPagesController < ApplicationController
   def photos
   end
 
+  def about_edit
+  end
+
 end

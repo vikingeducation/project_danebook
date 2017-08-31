@@ -1,10 +1,5 @@
-$main-border: 1px solid black;
-$quarter-width: 25%;
-$whitetext: #fff;
-$primary-color: #066DEE;
-$main-action: #00A600;
+
 $light-grey: #DDDDDD;
-$darker-grey: #666;
 
 /*
   profile header and links section styles
@@ -51,13 +46,9 @@ $darker-grey: #666;
 .timeline-link:hover,
 .about-link:hover,
 .photos-link:hover,
-.friends-link:hover {
-    background: $light-grey;
-}
-
-
+.friends-link:hover,
 .link-background {
-  background: $light-grey;
+    background: $light-grey;
 }
 
 #cover-photo {

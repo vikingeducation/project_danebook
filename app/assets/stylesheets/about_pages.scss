@@ -73,7 +73,7 @@ about and about_edit pages
 }
 
 .heading,
-#first-table {
+#basic-info-table {
 	margin-bottom: 20px;
 }
 
@@ -87,9 +87,14 @@ about and about_edit pages
 	margin-top: 20px;
 }
 
-#first-table tr,
-#second-table tr {
+#basic-info-table tr,
+#contact-info-table tr {
 	  height: 30px;
+}
+
+#basic-info-table,
+#contact-info-table {
+	width: 100%;
 }
 
 .bold {

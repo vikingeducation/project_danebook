@@ -3,10 +3,11 @@
 
   <div class="container">
 
-    <div class="row">
+    <div class="row bar-div">
       <header class="bar">
         <h1 class="photos-heading photos-title">Photos</h1>
-        <input type="submit" class="white-text photos-heading edit" value="Add Photo">
+        <%= button_to "Add Photo", photos_path, method: :get, :class => "photos-heading white-text edit pull-right" %>
+        <!-- <input type="submit" class="white-text photos-heading edit" value="Add Photo"> -->
       </header>
     </div>
 

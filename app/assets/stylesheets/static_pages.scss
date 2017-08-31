@@ -345,6 +345,10 @@ $darker-grey: #666;
 	margin-bottom: 40px;
 }
 
+.bar-div {
+  height: 45px;
+}
+
 .top-main-section {
 	height: 460px;
   width: 100%;
@@ -407,10 +411,7 @@ $darker-grey: #666;
 .submit-post-button-area,
 #sign-up-button,
 .post-links-area,
-.comment-area,
-.friend-link-section,
-.photos-wrapper,
-.photos-border {
+.comment-area {
   border: $main-border;
 }
 
@@ -468,12 +469,11 @@ $darker-grey: #666;
 
 .about-title,
 .photos-title {
-	width: 87%;
+	width: 96%;
 }
 
 .about-title,
 .friends-title,
-
 .photos-title {
 	text-align: center;
 	font-size: 30px;
@@ -566,11 +566,20 @@ td {
   margin-top: 50px;
 }
 
+.friend-link-section {
+  border-bottom: $main-border;
+  border-right: $main-border;
+  border-left: $main-border;
+}
+
 /*
 below code for photos page
 */
 
 .photos-border {
+  border-bottom: $main-border;
+  border-right: $main-border;
+  border-left: $main-border;
   div img {
   align-content: center;
   }

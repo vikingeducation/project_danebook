@@ -1,0 +1,33 @@
+// common stylings
+
+$main-border: 1px solid black;
+$quarter-width: 25%;
+$whitetext: #fff;
+$primary-color: #066DEE;
+$main-action: #00A600;
+$light-grey: #DDDDDD;
+$darker-grey: #666;
+
+/*
+ below code for friend page
+*/
+
+.friend-summary {
+  padding: 20px;
+  margin: 20px 5px;
+  img {
+    padding: 20px;
+  }
+}
+
+.unfriend {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-top: 50px;
+}
+
+.friend-link-section {
+  border-bottom: $main-border;
+  border-right: $main-border;
+  border-left: $main-border;
+}

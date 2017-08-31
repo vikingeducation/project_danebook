@@ -1,0 +1,97 @@
+$main-border: 1px solid black;
+$quarter-width: 25%;
+$whitetext: #fff;
+$primary-color: #066DEE;
+$main-action: #00A600;
+$light-grey: #DDDDDD;
+$darker-grey: #666;
+
+
+/* styles for
+about and about_edit pages
+ */
+
+.about-bar {
+	margin-bottom: 40px;
+}
+
+.info-section {
+  border-right: $main-border;
+  border-left: $main-border;
+  border-bottom: $main-border;
+  padding: 20px;
+}
+
+.post-copied,
+.left-section-article-heading {
+  h3 {
+		border: $main-border;
+    padding: 5px;
+    text-align: center;
+  }
+}
+
+.left-section-article-heading {
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+  border-left: 1px solid black;
+}
+
+.edit {
+	background-color: $primary-color;
+	position: relative;
+	top: -36px;
+	right: 12px;
+}
+
+.save-changes-button {
+  font-size: 50px;
+  padding: 20px 5em;
+  display: block;
+  margin: 0px auto 80px auto;
+  background-color: $primary-color;
+}
+
+.bottom-spacer {
+  margin-bottom: 120px;
+}
+
+.info-section {
+	height: auto;
+}
+
+
+.right-side,
+.left-side {
+		vertical-align: top;
+		line-height: 1.5;
+    width: 100%;
+}
+
+.left-side {
+  padding-left: 40px;
+}
+
+.heading,
+#first-table {
+	margin-bottom: 20px;
+}
+
+.heading {
+	font-size: 25px;
+	text-align: left;
+	letter-spacing: 2px;
+}
+
+.about-me {
+	margin-top: 20px;
+}
+
+#first-table tr,
+#second-table tr {
+	  height: 30px;
+}
+
+.bold {
+	font-weight: bold;
+}

@@ -5,12 +5,12 @@
       <nav>
         <table class="timeline-links">
           <tr>
-            <td class="link empty"></td>
-            <td class="first-link link timeline-link">Timeline</td>
-            <td class="link about-link">About</td>
-            <td class="link photos-link">Photos <a href="photos.html"/>(347)</td>
-            <td class="link friends-link">Friends <a href="friends.html"/>(234)</td>
-            <td class="edit-profile-link link"><a href="profile.html">Edit Profile</a></td>
+            <td class="link-wrapper empty"></td>
+            <td class="first-link link-wrapper timeline-link"><%= link_to "Timeline", timeline_path, class: "link" %></td>
+            <td class="link-wrapper about-link"><%= link_to "About", about_path, class: "link" %></td>
+            <td class="link-wrapper photos-link"><%= link_to "Photos(347)", photos_path, class: "link" %></td>
+            <td class="link-wrapper friends-link"><%= link_to "Friends(234)", friends_path, class: "link" %></td>
+            <td class="edit-profile-link link-wrapper"><%= link_to "Edit Profile", about_edit_path, class: "link" %></td>
           </tr>
         </table>
       </nav>

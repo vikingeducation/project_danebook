@@ -367,14 +367,32 @@ $darker-grey: #666;
   }
 }
 
-.link,
-.edit-profile-link {
-  width: $quarter-width;
+.empty {
+  width: 20%;
 }
 
 .edit-profile-link {
   text-align: right;
 	vertical-align: middle;
+  width: 35%;
+}
+
+.link {
+  color: black;
+  &:hover {
+    color: blue;
+  }
+}
+
+.timeline-link:hover,
+.about-link:hover,
+.photos-link:hover,
+.friends-link:hover {
+    background: $light-grey;
+}
+
+.timeline-link:active {
+  background: $light-grey;
 }
 
 #cover-photo {
@@ -382,7 +400,7 @@ $darker-grey: #666;
 }
 
 .bar,
-.link,
+.link-wrapper,
 .time-link-links,
 .friend-summary,
 .submit-post-button-area,

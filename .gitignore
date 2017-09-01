@@ -21,4 +21,4 @@
 .byebug_history
 
 
-/config/locales/secrets.yml
+/config/environments/locales/secrets.yml

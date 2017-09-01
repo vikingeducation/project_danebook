@@ -5,10 +5,4 @@ module StaticPagesHelper
     current_page?(home_path) ? 'shared/navbar' : 'shared/loggedin_navbar'
   end
 
-
-  def find_class
-
-  end
-
-
 end

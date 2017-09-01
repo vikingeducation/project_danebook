@@ -1,0 +1,1265 @@
+/* styles for
+about and about_edit pages
+ */
+/* line 8, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/about_pages.scss */
+.about-bar {
+  margin-bottom: 40px;
+}
+
+/* line 12, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/about_pages.scss */
+.info-section {
+  padding: 20px;
+  height: auto;
+}
+
+/* line 19, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/about_pages.scss */
+.post-copied h3,
+.left-section-article-heading h3 {
+  border: 1px solid black;
+  padding: 5px;
+  text-align: center;
+}
+
+/* line 26, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/about_pages.scss */
+.left-section-article-heading,
+.info-section {
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+  border-left: 1px solid black;
+}
+
+/* line 33, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/about_pages.scss */
+.edit,
+.save-changes-button {
+  background-color: #066DEE;
+}
+
+/* line 38, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/about_pages.scss */
+.edit {
+  position: relative;
+  top: -36px;
+  right: 12px;
+}
+
+/* line 44, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/about_pages.scss */
+.save-changes-button {
+  font-size: 50px;
+  padding: 20px 5em;
+  display: block;
+  margin: 0px auto 80px auto;
+}
+
+/* line 51, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/about_pages.scss */
+.bottom-spacer {
+  margin-bottom: 120px;
+}
+
+/* line 55, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/about_pages.scss */
+.right-side,
+.left-side {
+  vertical-align: top;
+  line-height: 1.5;
+  width: 100%;
+}
+
+/* line 62, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/about_pages.scss */
+.left-side {
+  padding-left: 40px;
+}
+
+/* line 66, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/about_pages.scss */
+.heading,
+#basic-info-table {
+  margin-bottom: 20px;
+}
+
+/* line 71, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/about_pages.scss */
+.heading {
+  font-size: 25px;
+  text-align: left;
+  letter-spacing: 2px;
+}
+
+/* line 77, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/about_pages.scss */
+.about-me {
+  margin-top: 20px;
+}
+
+/* line 81, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/about_pages.scss */
+#basic-info-table,
+#contact-info-table {
+  width: 100%;
+}
+/* line 84, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/about_pages.scss */
+#basic-info-table tr,
+#contact-info-table tr {
+  height: 30px;
+}
+
+/* line 89, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/about_pages.scss */
+.bold {
+  font-weight: bold;
+}
+/*
+ below code for friend page
+*/
+/* line 8, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/friends.scss */
+.friend-summary {
+  padding: 20px;
+  margin: 20px 5px;
+}
+/* line 11, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/friends.scss */
+.friend-summary img {
+  padding: 20px;
+}
+
+/* line 16, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/friends.scss */
+.unfriend {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-top: 50px;
+}
+
+/* line 22, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/friends.scss */
+.friend-link-section {
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+  border-left: 1px solid black;
+}
+/*
+ navbar styles
+*/
+/* line 10, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/navbars.scss */
+.not-loggedin-nav {
+  background: #066DEE;
+  display: flex;
+  padding: 5px;
+  position: fixed;
+  height: 70px;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 2;
+}
+
+/* line 21, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/navbars.scss */
+.not-loggedin-brand {
+  margin-left: 130px;
+}
+
+/* line 25, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/navbars.scss */
+.not-loggedin-brand,
+.home-benefits h1 {
+  font-size: 40px;
+}
+
+/* line 30, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/navbars.scss */
+.loggedin-brand {
+  margin-right: 20px;
+}
+
+/* line 34, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/navbars.scss */
+.home-benefits {
+  height: 400px;
+  line-height: 50px;
+  padding: 10px auto;
+  letter-spacing: 2px;
+  display: inline-block;
+  width: 50%;
+  vertical-align: top;
+  margin-top: 150px;
+  margin-left: 80px;
+}
+/* line 44, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/navbars.scss */
+.home-benefits ul {
+  list-style-type: disc;
+  padding-left: 40px;
+  color: #666;
+}
+
+/* line 51, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/navbars.scss */
+#email,
+#password {
+  width: 150px;
+}
+
+/* line 56, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/navbars.scss */
+.pwd {
+  float: right;
+  padding-left: 20px;
+  margin-right: 150px;
+}
+
+/* line 62, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/navbars.scss */
+.loggedin-nav {
+  background: #066DEE;
+  position: fixed;
+  height: 70px;
+  width: 100%;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* line 74, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/navbars.scss */
+.far-left {
+  margin-right: 50px;
+}
+/* line 76, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/navbars.scss */
+.far-left img {
+  display: inline-block;
+  margin-bottom: 20px;
+}
+/* line 80, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/navbars.scss */
+.far-left h1 {
+  display: inline-block;
+}
+
+/* line 85, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/navbars.scss */
+.search-bar {
+  width: 550px;
+  height: 20px;
+  margin-left: 40px;
+  margin-right: 220px;
+}
+/*
+below code for photos page
+*/
+/* line 7, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/photos.scss */
+.photos-border {
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+  border-left: 1px solid black;
+  padding-top: 30px;
+}
+/* line 12, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/photos.scss */
+.photos-border div img {
+  align-content: center;
+}
+
+/* line 17, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/photos.scss */
+.img_wrapper {
+  position: relative;
+  height: 200px;
+  width: 250px;
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+/* line 23, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/photos.scss */
+.img_wrapper p {
+  margin-top: 150px;
+}
+
+/* line 28, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/photos.scss */
+.on-hover-description {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(40, 40, 40, 0.72);
+  color: #fff;
+  visibility: hidden;
+  opacity: 0;
+  height: 50px;
+  text-align: center;
+}
+
+/* line 43, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/photos.scss */
+.img_wrapper:hover .on-hover-description {
+  visibility: visible;
+  opacity: .5;
+}
+/*
+  profile header and links section styles
+*/
+/* line 8, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/profile_header.scss */
+.top-main-section {
+  height: 460px;
+  width: 100%;
+}
+
+/* line 13, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/profile_header.scss */
+#cover-photo {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* line 20, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/profile_header.scss */
+.timeline-links {
+  text-align: center;
+  table-layout: fixed;
+}
+/* line 23, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/profile_header.scss */
+.timeline-links td {
+  vertical-align: middle;
+  padding: 20px 10px;
+}
+
+/* line 29, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/profile_header.scss */
+.empty {
+  width: 20%;
+}
+
+/* line 33, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/profile_header.scss */
+.edit-profile-link {
+  text-align: right;
+  vertical-align: middle;
+  width: 35%;
+}
+
+/* line 39, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/profile_header.scss */
+.link {
+  color: black;
+}
+/* line 41, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/profile_header.scss */
+.link:hover {
+  color: blue;
+}
+
+/* line 46, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/profile_header.scss */
+.timeline-link:hover,
+.about-link:hover,
+.photos-link:hover,
+.friends-link:hover,
+.link-background {
+  background: #DDDDDD;
+}
+
+/* line 54, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/profile_header.scss */
+#cover-photo {
+  margin-top: 60px;
+}
+
+/* line 58, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/profile_header.scss */
+.name-pic-block {
+  position: relative;
+  top: -240px;
+  left: 20px;
+  width: 400px;
+  height: 200px;
+  z-index: 1;
+}
+
+/* line 67, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/profile_header.scss */
+#profile-name {
+  height: 80px;
+  vertical-align: bottom;
+  margin-left: 10px;
+  font-size: 35px;
+}
+/* reset */
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+/* line 8, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/reset.scss */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  vertical-align: baseline;
+  font-family: 'Pangolin', cursive;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+/* line 19, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/reset.scss */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+/* line 22, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/reset.scss */
+body {
+  line-height: 1;
+}
+
+/* line 25, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/reset.scss */
+ol, ul {
+  list-style: none;
+}
+
+/* line 28, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/reset.scss */
+blockquote, q {
+  quotes: none;
+}
+
+/* line 32, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/reset.scss */
+blockquote:before, blockquote:after {
+  content: '';
+  content: none;
+}
+
+/* line 37, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/reset.scss */
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+/* line 41, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/reset.scss */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* end */
+/*
+  sign up form styles
+*/
+/* line 10, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/signup_form.scss */
+#sign-up-form {
+  width: 33.33%;
+  margin-top: 50px;
+  margin-left: 50px;
+}
+
+/* line 16, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/signup_form.scss */
+#main-action {
+  font-size: 50px;
+  padding: 30px 0;
+}
+
+/* line 21, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/signup_form.scss */
+.form-elements {
+  line-height: 2.5;
+}
+
+/* line 25, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/signup_form.scss */
+.wide-box {
+  width: 99%;
+}
+
+/* line 29, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/signup_form.scss */
+.smaller-input-box {
+  width: 45%;
+}
+
+/* line 33, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/signup_form.scss */
+#first-name-box {
+  margin-right: 30px;
+}
+
+/* line 37, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/signup_form.scss */
+#birthday {
+  font-size: 20px;
+  padding-bottom: 3px;
+}
+
+/* line 42, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/signup_form.scss */
+#sign-up-button {
+  background: #066DEE;
+  color: #fff;
+  height: auto;
+  font-size: 20px;
+}
+/*
+ general styles on multiple pages
+*/
+/* line 20, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.grey-back-ground {
+  background-color: #DDDDDD;
+}
+
+/* line 24, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.left-side,
+.right-side,
+.far-right,
+.right-top,
+.left-top,
+.friend-name,
+.friend-summary input,
+.login,
+#profile-pic,
+#profile-name,
+.name-pic-block,
+#sign-up-form,
+.photos-heading {
+  display: inline-block;
+}
+
+/* line 40, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.form-elements,
+.not-loggedin-nav,
+#sign-up-button,
+.timeline-links,
+.blue-bar,
+#first-table,
+#second-table {
+  width: 100%;
+}
+
+/* line 50, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.white-text {
+  color: #fff;
+}
+
+/* line 54, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.bar-div {
+  height: 45px;
+}
+
+/* line 58, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.bar,
+.link-wrapper,
+.time-link-links,
+.friend-summary,
+.submit-post-button-area,
+#sign-up-button,
+.post-links-area,
+.comment-area {
+  border: 1px solid black;
+}
+
+/* line 69, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.left-top,
+.right-top,
+.search-bar {
+  vertical-align: middle;
+  margin-top: 10px;
+}
+
+/* line 76, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.about-title,
+.photos-title {
+  width: 96%;
+}
+
+/* line 81, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.about-title,
+.friends-title,
+.photos-title {
+  text-align: center;
+  font-size: 30px;
+  margin: 5px 0px;
+}
+
+/* line 89, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.bar,
+.friend-link {
+  background-color: #DDDDDD;
+}
+
+/* line 93, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.about-link,
+.friend-link {
+  margin-bottom: 40px;
+}
+
+/* styles for
+about and about_edit pages
+ */
+/* line 102, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.about-bar {
+  margin-bottom: 40px;
+}
+
+/* line 106, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.info-section {
+  padding: 20px;
+  height: auto;
+}
+
+/* line 113, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.post-copied h3,
+.left-section-article-heading h3 {
+  border: 1px solid black;
+  padding: 5px;
+  text-align: center;
+}
+
+/* line 120, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.left-section-article-heading,
+.info-section {
+  border-right: 1px solid black;
+  border-bottom: 1px solid black;
+  border-left: 1px solid black;
+}
+
+/* line 127, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.edit,
+.save-changes-button {
+  background-color: #066DEE;
+}
+
+/* line 132, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.edit {
+  position: relative;
+  top: -36px;
+  right: 12px;
+}
+
+/* line 138, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.save-changes-button {
+  font-size: 50px;
+  padding: 20px 5em;
+  display: block;
+  margin: 0px auto 80px auto;
+}
+
+/* line 145, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.bottom-spacer {
+  margin-bottom: 120px;
+}
+
+/* line 149, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.right-side,
+.left-side {
+  vertical-align: top;
+  line-height: 1.5;
+  width: 100%;
+}
+
+/* line 156, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.left-side {
+  padding-left: 40px;
+}
+
+/* line 160, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.heading,
+#basic-info-table {
+  margin-bottom: 20px;
+}
+
+/* line 165, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.heading {
+  font-size: 25px;
+  text-align: left;
+  letter-spacing: 2px;
+}
+
+/* line 171, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.about-me {
+  margin-top: 20px;
+}
+
+/* line 175, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+#basic-info-table,
+#contact-info-table {
+  width: 100%;
+}
+/* line 178, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+#basic-info-table tr,
+#contact-info-table tr {
+  height: 30px;
+}
+
+/* line 183, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.bold {
+  font-weight: bold;
+}
+
+/*
+ below code for friend page
+*/
+/* line 192, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.friend-summary {
+  padding: 20px;
+  margin: 20px 5px;
+}
+/* line 195, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.friend-summary img {
+  padding: 20px;
+}
+
+/* line 200, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.unfriend {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-top: 50px;
+}
+
+/* line 206, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.friend-link-section {
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+  border-left: 1px solid black;
+}
+
+/*
+ navbar styles
+*/
+/* line 217, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.not-loggedin-nav {
+  background: #066DEE;
+  display: flex;
+  padding: 5px;
+  position: fixed;
+  height: 70px;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 2;
+}
+
+/* line 228, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.not-loggedin-brand {
+  margin-left: 130px;
+}
+
+/* line 232, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.not-loggedin-brand,
+.home-benefits h1 {
+  font-size: 40px;
+}
+
+/* line 237, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.loggedin-brand {
+  margin-right: 20px;
+}
+
+/* line 241, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.home-benefits {
+  height: 400px;
+  line-height: 50px;
+  padding: 10px auto;
+  letter-spacing: 2px;
+  display: inline-block;
+  width: 50%;
+  vertical-align: top;
+  margin-top: 150px;
+  margin-left: 80px;
+}
+/* line 251, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.home-benefits ul {
+  list-style-type: disc;
+  padding-left: 40px;
+  color: #666;
+}
+
+/* line 258, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+#email,
+#password {
+  width: 150px;
+}
+
+/* line 263, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.pwd {
+  float: right;
+  padding-left: 20px;
+  margin-right: 150px;
+}
+
+/* line 269, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.loggedin-nav {
+  background: #066DEE;
+  position: fixed;
+  height: 70px;
+  width: 100%;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* line 281, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.far-left {
+  margin-right: 50px;
+}
+/* line 283, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.far-left img {
+  display: inline-block;
+  margin-bottom: 20px;
+}
+/* line 287, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.far-left h1 {
+  display: inline-block;
+}
+
+/* line 292, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.search-bar {
+  width: 550px;
+  height: 20px;
+  margin-left: 40px;
+  margin-right: 220px;
+}
+
+/*
+below code for photos page
+*/
+/* line 303, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.photos-border {
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+  border-left: 1px solid black;
+  padding-top: 30px;
+}
+/* line 308, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.photos-border div img {
+  align-content: center;
+}
+
+/* line 313, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.img_wrapper {
+  position: relative;
+  height: 200px;
+  width: 250px;
+  margin-top: 20px;
+  margin-bottom: 50px;
+}
+/* line 319, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.img_wrapper p {
+  margin-top: 150px;
+}
+
+/* line 324, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.on-hover-description {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(40, 40, 40, 0.72);
+  color: #fff;
+  visibility: hidden;
+  opacity: 0;
+  height: 50px;
+  text-align: center;
+}
+
+/* line 339, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.img_wrapper:hover .on-hover-description {
+  visibility: visible;
+  opacity: .5;
+}
+
+/*
+  profile header and links section styles
+*/
+/* line 348, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.top-main-section {
+  height: 460px;
+  width: 100%;
+}
+
+/* line 353, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+#cover-photo {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* line 360, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.timeline-links {
+  text-align: center;
+  table-layout: fixed;
+}
+/* line 363, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.timeline-links td {
+  vertical-align: middle;
+  padding: 20px 10px;
+}
+
+/* line 369, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.empty {
+  width: 20%;
+}
+
+/* line 373, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.edit-profile-link {
+  text-align: right;
+  vertical-align: middle;
+  width: 35%;
+}
+
+/* line 379, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.link {
+  color: black;
+}
+/* line 381, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.link:hover {
+  color: blue;
+}
+
+/* line 386, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.timeline-link:hover,
+.about-link:hover,
+.photos-link:hover,
+.friends-link:hover,
+.link-background {
+  background: #DDDDDD;
+}
+
+/* line 394, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+#cover-photo {
+  margin-top: 60px;
+}
+
+/* line 398, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.name-pic-block {
+  position: relative;
+  top: -240px;
+  left: 20px;
+  width: 400px;
+  height: 200px;
+  z-index: 1;
+}
+
+/* line 407, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+#profile-name {
+  height: 80px;
+  vertical-align: bottom;
+  margin-left: 10px;
+  font-size: 35px;
+}
+
+/*
+  sign up form styles
+*/
+/* line 419, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+#sign-up-form {
+  width: 33.33%;
+  margin-top: 50px;
+  margin-left: 50px;
+}
+
+/* line 425, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+#main-action {
+  font-size: 50px;
+  padding: 30px 0;
+}
+
+/* line 430, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.form-elements {
+  line-height: 2.5;
+}
+
+/* line 434, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.wide-box {
+  width: 99%;
+}
+
+/* line 438, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.smaller-input-box {
+  width: 45%;
+}
+
+/* line 442, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+#first-name-box {
+  margin-right: 30px;
+}
+
+/* line 446, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+#birthday {
+  font-size: 20px;
+  padding-bottom: 3px;
+}
+
+/* line 451, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+#sign-up-button {
+  background: #066DEE;
+  color: #fff;
+  height: auto;
+  font-size: 20px;
+}
+
+/*
+ timeline page styles
+*/
+/* line 463, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.photos-copied-text-area img {
+  margin: 5px 18px;
+}
+
+/* line 469, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.post-copied h3 {
+  margin-bottom: 0px;
+}
+
+/* line 474, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.outer-post-area {
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  padding: 10px;
+}
+
+/* line 480, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.post {
+  margin-top: 20px;
+  border: 1px solid black;
+  padding: 10px;
+}
+/* line 484, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.post img {
+  float: left;
+}
+
+/* line 489, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.post-header {
+  display: inline-block;
+  vertical-align: bottom;
+}
+
+/* line 494, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.post-body {
+  margin-top: 20px;
+}
+
+/* line 498, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.post-links-area {
+  border-top: 1px solid black;
+  background-color: aaa;
+}
+/* line 501, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.post-links-area a {
+  padding: 5px;
+  display: inline-block;
+}
+/* line 504, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.post-links-area a:last-child {
+  float: right;
+}
+
+/* line 510, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.submit-post-button,
+.submit-comment-button {
+  color: white;
+  background-color: #066DEE;
+}
+
+/* line 516, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.make-new-post {
+  display: block;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* line 523, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.more-link {
+  margin: 5px;
+}
+
+/* line 527, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.more-link,
+.about-text-area {
+  text-align: center;
+}
+
+/* line 532, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.friend-pic-link {
+  display: inline-block;
+  margin: 5px 18px;
+}
+
+/* line 537, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.comment-header-area {
+  border-bottom: 1px solid #555555;
+  padding-top: 10px;
+}
+/* line 541, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.comment-header-area a:nth-child(2) {
+  float: right;
+  padding-right: 10px;
+}
+
+/* line 548, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.comment-body {
+  padding-top: 10px;
+}
+/* line 550, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.comment-body p {
+  display: inline-block;
+}
+/* line 552, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.comment-body p:last-child {
+  padding: 10px;
+}
+/* line 556, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.comment-body img {
+  float: left;
+}
+
+/* line 561, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.comment-area {
+  padding-left: 10px;
+}
+
+/* line 565, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.inner-comment-body {
+  padding: 0px 55px;
+}
+/* line 568, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.inner-comment-body a:last-child {
+  float: right;
+}
+
+/* line 574, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.comment-text-area-div {
+  padding: 0px 55px;
+  margin-bottom: 20px;
+}
+
+/* line 579, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.comment-text-area {
+  width: 100%;
+  height: 100px;
+}
+
+/* line 584, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
+.submit-comment-button {
+  float: right;
+}
+/*
+ timeline page styles
+*/
+/* line 10, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/timeline.scss */
+.photos-copied-text-area img {
+  margin: 5px 18px;
+}
+
+/* line 16, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/timeline.scss */
+.post-copied h3 {
+  margin-bottom: 0px;
+}
+
+/* line 21, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/timeline.scss */
+.outer-post-area {
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  padding: 10px;
+}
+
+/* line 27, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/timeline.scss */
+.post {
+  margin-top: 20px;
+  border: 1px solid black;
+  padding: 10px;
+}
+/* line 31, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/timeline.scss */
+.post img {
+  float: left;
+}
+
+/* line 36, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/timeline.scss */
+.post-header {
+  display: inline-block;
+  vertical-align: bottom;
+}
+
+/* line 41, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/timeline.scss */
+.post-body {
+  margin-top: 20px;
+}
+
+/* line 45, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/timeline.scss */
+.post-links-area {
+  border-top: 1px solid black;
+  background-color: aaa;
+}
+/* line 48, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/timeline.scss */
+.post-links-area a {
+  padding: 5px;
+  display: inline-block;
+}
+/* line 51, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/timeline.scss */
+.post-links-area a:last-child {
+  float: right;
+}
+
+/* line 57, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/timeline.scss */
+.submit-post-button,
+.submit-comment-button {
+  color: white;
+  background-color: #066DEE;
+}
+
+/* line 63, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/timeline.scss */
+.make-new-post {
+  display: block;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* line 70, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/timeline.scss */
+.more-link {
+  margin: 5px;
+}
+
+/* line 74, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/timeline.scss */
+.more-link,
+.about-text-area {
+  text-align: center;
+}
+
+/* line 79, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/timeline.scss */
+.friend-pic-link {
+  display: inline-block;
+  margin: 5px 18px;
+}
+
+/* line 84, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/timeline.scss */
+.comment-header-area {
+  border-bottom: 1px solid #555555;
+  padding-top: 10px;
+}
+/* line 88, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/timeline.scss */
+.comment-header-area a:nth-child(2) {
+  float: right;
+  padding-right: 10px;
+}
+
+/* line 95, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/timeline.scss */
+.comment-body {
+  padding-top: 10px;
+}
+/* line 97, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/timeline.scss */
+.comment-body p {
+  display: inline-block;
+}
+/* line 99, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/timeline.scss */
+.comment-body p:last-child {
+  padding: 10px;
+}
+/* line 103, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/timeline.scss */
+.comment-body img {
+  float: left;
+}
+
+/* line 108, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/timeline.scss */
+.comment-area {
+  padding-left: 10px;
+}
+
+/* line 112, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/timeline.scss */
+.inner-comment-body {
+  padding: 0px 55px;
+}
+/* line 115, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/timeline.scss */
+.inner-comment-body a:last-child {
+  float: right;
+}
+
+/* line 121, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/timeline.scss */
+.comment-text-area-div {
+  padding: 0px 55px;
+  margin-bottom: 20px;
+}
+
+/* line 126, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/timeline.scss */
+.comment-text-area {
+  width: 100%;
+  height: 100px;
+}
+
+/* line 131, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/timeline.scss */
+.submit-comment-button {
+  float: right;
+}
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+
+
+ */
+

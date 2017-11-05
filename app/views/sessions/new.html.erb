@@ -1,0 +1,7 @@
+<!-- app/views/sessions/new.html.erb -->
+<%= form_tag session_path do %>
+  <%= label_tag do %>
+    Remember me?
+    <%= check_box_tag :remember_me %>
+  <% end %>
+<% end %>

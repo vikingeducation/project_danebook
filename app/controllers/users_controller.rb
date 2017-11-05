@@ -1,4 +1,4 @@
-class UsersController 
+class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update]
 
   def index
@@ -14,11 +14,15 @@ class UsersController
     if @user.save
       sign_in(@user) 
       flash[:success] = "Created new user!"
-      redirect_to @user
+      redirect_to about_path
     else
       flash.now[:error] = "Failed to Create User!"
       render :new
     end
+  end
+
+  def show
+    @user = User.find(params[:id])
   end
 
   private

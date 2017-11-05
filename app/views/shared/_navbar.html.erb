@@ -1,5 +1,7 @@
 <% if current_page?(static_pages_path) %>
   <% not_homepage = false %>
+<% elsif current_page?(new_user_path) %>
+  <% not_homepage = false %>
 <% else %>
   <% not_homepage = true %>
 <% end %>

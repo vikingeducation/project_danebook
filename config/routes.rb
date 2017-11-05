@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   resources :static_pages, :only => [:index]
   resources :users
   resource :session, :only => [:new, :create, :destroy]
-  # get "login" => "sessions#new"
-  # delete "logout" => "sessions#destroy"
+  get "login" => "sessions#new"
+  delete "logout" => "sessions#destroy"
 
 
   get "/static_pages/timeline", to: "static_pages#timeline", as: "timeline"

@@ -1,0 +1,86 @@
+<% content_for :title do %>
+  <title>About</title>
+<% end %>
+<div class="container">
+  <div class="pages">
+    <%= render partial: '/shared/toolbar' %>
+    <div class="row about-title">
+      <div class="col-md-12">
+        <h3>Edit Profile</h3>
+      </div>
+    </div>
+    <div class="row about-container">
+        <div class="col-md-5">
+          <div class="row">
+            <div class="col-md-12">
+              <h2>Basic Information</h2></div>
+            </div>
+          <div class="row">
+            <div class="col-md-4">Birthday:</div>
+            <div class="col-md-8">July 31st 1990</div> 
+          </div>
+          <div class="row">
+            <div class="col-md-4">College:</div>
+            <div class="col-md-8">
+              <input type="text" class="edit-input" placeholder="Hogwarts College">
+            </div> 
+          </div>
+          <div class="row">
+            <div class="col-md-4">Hometown:</div>
+            <div class="col-md-8">
+              <input type="text" class="edit-input" placeholder="Godrick's Hollow, England"></div> 
+          </div>
+          <div class="row">
+            <div class="col-md-4">Currently Lives:</div>
+            <div class="col-md-8">
+              <input type="text" class="edit-input" placeholder="Godrick's Hollow, England">
+              </div> 
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <h2>Contact Information</h2>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-4">Email:</div>
+            <div class="col-md-8">
+              <input type="text" class="edit-input" placeholder="harry_potter@hogwarts.edu"></div>
+          </div> 
+          <div class="row">
+            <div class="col-md-4">Telephone:</div>
+            <div class="col-md-8">
+              <input type="text" class="edit-input" placeholder="111 234 5678"></div> 
+          </div>
+        </div>
+        <div class="col-md-7">
+          <div class="row">
+            <div class="col-md-12">
+              <h2>Words to Live By</h2>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <p><textarea class="live-by-input" placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."></textarea></p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <h2>About Me</h2>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+             <p><textarea class="about-me-input" placeholder="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum"></textarea></p>
+           </div>
+          </div>
+        </div>
+      <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+          <button class="btn btn-primary save-about-content">Save Changes</button>
+        </div>
+        <div class="col-md-4"></div>
+      </div>
+    </div>
+  </div>
+</div>

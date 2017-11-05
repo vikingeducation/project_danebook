@@ -1,0 +1,39 @@
+/*.homepage{*/
+  .navbar {
+    background-color: blue;
+    padding: 15px; }
+    .navbar a {
+      color: white;
+      font-size: 250%; }
+    .navbar .form-control {
+      margin-right: 20px; }
+    .navbar button {
+      border: 1px solid black; }
+
+  article {
+    padding: 30px 30px; }
+    article li {
+      margin: 20px 20px;
+      font-size: 150%; }
+    article .form-control {
+      margin-top: 20px; }
+    article h4 {
+      margin-top: 20px; }
+    article button {
+      margin-top: 20px; }
+    article .dummy-space {
+      margin-top: 40px; }
+
+  #input-lastname {
+    display: inline-block; }
+
+  .signup-form {
+    margin-top: 0;
+    padding-top: 0; }
+
+  .gender-container {
+    margin-top: 20px; }
+    .gender-container label {
+      margin-right: 10px; }
+/*}*/
+/*# sourceMappingURL=styles.css.map */

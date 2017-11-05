@@ -1,0 +1,249 @@
+
+
+/**
+*******************************************
+Navigation bar 
+*******************************************
+*/
+
+.pages {
+  .navbar{
+    background-color: #6699ff;
+    padding: 10px;
+    margin: 0;
+    border: 0;
+    .username {
+      color: white;
+    }
+    .navbar-text{
+      color: white;
+    }
+
+  }
+
+  .toolbar{
+    border: 1px solid black;
+  }
+
+  .nav-links{
+    border-left: 1px solid black;
+    a{
+      color: black
+    }
+   } 
+
+
+  /**
+  *******************************************
+  Images
+  *******************************************
+  */
+
+   .img-handler{
+    position: relative;
+   }
+
+    .banner-img{
+      padding: 0;
+    }
+
+   .profile-image{
+    position: absolute;
+    bottom: -17px;
+    left: 30px;
+   }
+
+   .img-thumb{
+    padding: 20px 20px;
+      .updated-time{
+        position: relative;
+        bottom:30px;
+        left:0px;
+        visibility:hidden;
+      }
+   }
+
+
+
+  .img-thumb:hover {
+    .updated-time {
+      visibility:visible;
+      color: white;
+    }
+  }
+
+   .img-thumb-small{
+    padding: 7px 7px;
+    margin: 0px;
+   }
+
+
+   /**
+   *******************************************
+   For all Danebook pages
+   *******************************************
+   */
+
+
+  .current-page{
+    background-color: #d9d9d9;
+   }
+
+
+   .about-title{
+    background-color: #d9d9d9;
+    margin-top: 10px;
+    text-align: center;
+    border: 1px solid black;
+
+    .btn{
+      margin-top: 15px;
+    }
+   }
+
+   .about-container{
+    padding: 60px;
+    border: 1px solid black;
+    .row{
+      padding: 10px;
+    }
+   }
+
+   .username-tag{
+    position: absolute;
+    bottom: 450px;
+    right: 170px;
+   }
+
+
+  .edit-input{
+    width: 100%;
+  }
+
+
+  .live-by-input{
+    width: 100%;
+    height: 100px;
+  }
+
+  .about-me-input{
+    width: 100%;
+    height: 200px;
+  }
+
+  .save-about-content{
+    width: 100%;
+    padding: 15px;
+  }
+
+
+  /**
+  *******************************************
+   Timeline page
+  *******************************************
+  */
+
+  .unfriend-btn{
+    background-color: #d9d9d9;
+  }
+
+  .friend{
+    border: 1px solid black;
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+
+
+
+  .left-pane{
+    margin-right: 0;
+      .section-outline{
+        border: 1px solid black;
+      padding: 10px;
+    }
+  }
+
+  .right-pane{
+    margin-right: 0;
+      .section-outline{
+        border: 1px solid black;
+        padding: 10px;
+        margin-top: 15px;
+    }
+
+    .row{
+      margin: 0;
+    }
+
+    textarea.post-input{
+      width: 100%;
+      height: 75px;
+    }
+  }
+
+  .about-summary{
+    border: 1px solid black;
+    padding: 10px;
+
+    textarea.post-input{
+      width: 100%;
+      height: 75px;
+    }
+  }
+
+
+
+
+  .section-title{
+    background-color: #d9d9d9;
+    margin-top: 10px;
+    text-align: center;
+    border: 1px solid black;
+  }
+
+  .section-footer{
+    background-color: #d9d9d9;
+    border: 1px solid black;
+    a{
+      padding: 7px 0 0 7px;
+    }
+    .btn{
+      margin: 5px;
+    }
+  }
+
+  .section-title{
+    background-color: #d9d9d9;
+    margin-top: 10px;
+    text-align: center;
+    border: 1px solid black;
+    a{
+      padding: 7px 0 0 7px;
+    }
+    .btn{
+      margin: 5px;
+    }
+  }
+
+
+
+
+  .last-post{
+    background-color: #d9d9d9;
+    border: 1px solid black;
+    margin: 10px;
+
+    .add-comment{
+      margin: 0 24px 10px 0;
+    }
+  }
+
+
+  .centre-text{
+    text-align: center;
+  }
+
+  .outline{
+    border: 1px solid black;
+  }
+}

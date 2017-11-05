@@ -1,0 +1,305 @@
+<% content_for :title do %>
+  <title>Timeline</title>
+<% end %>
+<div class="container">
+  <div class="pages">
+   <%= render partial: '/shared/toolbar' %>
+    <div class="row timeline-container">
+      <div class="col-md-5 left-pane">
+        <div class="row section-title">
+          <div class="col-md-12">
+            <h4>About (Text Area)</h4></div>
+          </div>
+        <div class="row about-summary">
+          <div class="col-md-12">
+            <p><span>Born on:</span>July 31st, 1980</p>
+            <p><span>Went to school at:</span>Hogwarts</p>
+            <p><span>Hometown:</span>Godrick's Hollow, England</p>
+            <p><span>Currently Lives:</span>Godrick's Hollow</p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12 section-title">
+            <h4>Photos(123) (Copied Text Area)</h4></div>
+          </div>
+        <div class="row section-outline">
+          <div class="col-md-4">
+            <div class="img-thumb-small">
+              <img src="https://unsplash.it/50/50"/>
+            </div>
+            <div class="img-thumb-small">
+              <img src="https://unsplash.it/50/50"/>
+            </div>
+            <div class="img-thumb-small">
+              <img src="https://unsplash.it/50/50">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="img-thumb-small">
+              <img src="https://unsplash.it/50/50"/>
+            </div>
+            <div class="img-thumb-small">
+              <img src="https://unsplash.it/50/50"/>
+            </div>
+            <div class="img-thumb-small">
+              <img src="https://unsplash.it/50/50">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="img-thumb-small">
+              <img src="https://unsplash.it/50/50"/>
+            </div>
+            <div class="img-thumb-small">
+              <img src="https://unsplash.it/50/50"/>
+            </div>
+            <div class="img-thumb-small">
+              <img src="https://unsplash.it/50/50">
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 centre-text">
+              <%= link_to "See More Photos", "#" %>            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12 section-title">
+            <h4>Friends(5+2) (Copied Text Area)</h4>
+          </div>
+        </div>
+        <div class="row section-outline">
+           <div class="col-md-4">
+            <div class="img-thumb-small row">
+              <img class="col-md-12 friend-link" src="https://unsplash.it/50/50"/>
+              <%= link_to "Ronald Weasley", "#", class: "col-md-12" %>
+            </div>
+            <div class="img-thumb-small row">
+              <img class="col-md-12 friend-link" src="https://unsplash.it/50/50"/>
+              <%= link_to "Ginny Weasley", "#", class: "col-md-12" %>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="img-thumb-small row">
+              <img class="col-md-12 friend-link" src="https://unsplash.it/50/50">
+              <%= link_to "Hermione Granger", "#", class: "col-md-12" %>
+            </div>
+            <div class="img-thumb-small row">
+              <img class="col-md-12 friend-link" src="https://unsplash.it/50/50"/>
+              <%= link_to "Slytherine", "#", class: "col-md-12" %> 
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="img-thumb-small row">
+              <img class="col-md-12 friend-link" src="https://unsplash.it/50/50"/>
+              <%= link_to "Lord Voldemort", "#", class: "col-md-12" %> 
+            </div>
+            <div class="img-thumb-small row">
+              <img class="col-md-12 friend-link" src="https://unsplash.it/50/50">
+              <%= link_to "Severus Snape", "#", class: "col-md-12" %>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12 centre-text">
+              <%= link_to "See More Friends", "#" %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-md-offset-1 right-pane">
+        <div class="row section-title">
+          <div class="col-md-12">
+            <h4>Post (copied)</h4>
+          </div>
+        </div>
+        <div class="row about-summary">
+          <div class="col-md-12">
+            <textarea class="post-input" placeholder="Tell the world something.."></textarea> 
+          </div>
+        </div>
+        <div class="row section-footer">
+          <div class="col-md-10"></div>
+          <div class="col-md-2"><button class="btn btn-primary">Post</button>
+          </div>
+        </div>
+
+        <div class="section-outline">
+          <div class="row comment-title">
+            <div class="col-md-1">
+              <%= image_tag("harry_potter_small.jpg", size: "30x30") %>
+            </div>
+            <div class="col-md-11">
+              <%= link_to "Harry Potter", "#" %>
+              <p>Posted on Thursday 6/1/2004</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+          </div>
+        </div>
+        <div class="row comment-links section-footer">
+          <div class="col-md-1">
+            <%= link_to "Like", "#" %>
+          </div>
+          <div class="col-md-9">
+            <%= link_to "Comments", "#" %>
+          </div>
+          <div class="col-md-2">
+            <%= link_to "Delete", "#" %>
+          </div>
+        </div>
+
+        <div class="section-outline">
+          <div class="row comment-title">
+            <div class="col-md-1">
+              <%= image_tag("harry_potter_small.jpg", size: "30x30") %>
+            </div>
+            <div class="col-md-11">
+              <%= link_to "Harry Potter", "#" %>
+              <p>Posted on Thursday 6/1/2004</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+          </div>
+        </div>
+        <div class="row comment-links section-footer">
+          <div class="col-md-1">
+            <%= link_to "Like", "#" %>
+          </div>
+          <div class="col-md-9">
+            <%= link_to "Comments", "#" %>
+          </div>
+          <div class="col-md-2">
+            <%= link_to "Delete", "#" %>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <p><%= link_to "Hermione Granger likes this", "#" %></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-outline">
+          <div class="row comment-title">
+            <div class="col-md-1">
+              <%= image_tag("harry_potter_small.jpg", size: "30x30") %>
+            </div>
+            <div class="col-md-11">
+              <%= link_to "Harry Potter", "#" %>
+              <p>Posted on Thursday 6/1/2004</p>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-12">
+              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+              quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+              consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+              cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+              proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+          </div>
+          
+          <div class="row comment-links last-post">
+            <div class="col-md-10">
+              <%= link_to "Unlike", "#" %>
+            </div>
+            <div class="col-md-2">
+              <%= link_to "Delete", "#" %>
+            </div>
+            <div class= "row">
+              <div class="col-md-12">
+
+                <p>You and <%= link_to "Hermione Granger", "#" %>  and 3 others like this</p>
+              </div>
+            </div>
+            <hr></hr>
+            <div class="row comment-title">
+              <div class="col-md-1">
+                <%= image_tag("harry_potter_small.jpg", size: "30x30") %>
+              </div>
+              <div class="col-md-11">
+                <p><%= link_to "Ron Weasley", "#" %> Said on Thursday 6/1/2004</p>
+                <div class="row">
+                  <div class="col-md-12">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-10">
+                      <p><%= link_to "Like", "#" %> </a>3 others people like this</p>
+                    </div>
+                    <div class="col-md-2">
+                      <p><%= link_to "Delete", "#" %></p>
+                    </div>
+                    </div>
+                  </div>
+              </div>     
+            </div>
+
+            <div class="row comment-title">
+              <div class="col-md-1">
+                <%= image_tag("harry_potter_small.jpg", size: "30x30") %>
+              </div>
+              <div class="col-md-11">
+                <p><%= link_to "Harry Potter", "#" %> Said on Thursday 6/1/2004</p>
+                <div class="row">
+                  <div class="col-md-12">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                    consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+                    cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-10">
+                      <p><%= link_to "Like", "#" %> 3 others people like this</p>
+                    </div>
+                    <div class="col-md-2">
+                      <p><%= link_to "Delete", "#" %></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>    
+            <div class="row">
+              <div class="col-md-12">
+                <textarea class="post-input" placeholder="Write a comment"></textarea> 
+              </div>
+            </div>
+            <div class="row add-comment">
+              <div class="col-md-10">
+                <p><%= link_to "Cancel", "#" %></p>
+              </div>
+              <div class="col-md-2">
+                <button class="btn btn-primary">Comment</button>
+              </div>
+            </div>
+          </div> <!-- last post div -->
+        </div>
+
+      </div> <!-- left pane div -->
+    </div> <!-- whole timeline content div -->
+  </div> <!-- pages div to speparate stylesheet from homepage -->
+</div>        

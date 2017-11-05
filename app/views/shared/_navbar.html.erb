@@ -1,0 +1,30 @@
+<% if current_page?(static_pages_path) %>
+  <% not_homepage = false %>
+<% else %>
+  <% not_homepage = true %>
+<% end %>
+
+<% if not_homepage %>
+  <div class="pages">
+    <div class="navbar navbar-default">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-2">
+            <%= link_to static_pages_path do %>
+              <%= image_tag("danish_flag.gif", size:"20x20", class: "img-logo img-circle") %>
+            <% end %>
+            <h3 class="navbar-text">Danebook</h3>
+          </div>
+          <div class="col-md-7">
+            <div class="search-container navbar-block">
+              <input type="text" class="form-control" id="input1" placeholder="Search for Users">
+            </div>
+          </div>
+          <div class="col-md-3">
+            <a class="navbar-brand navbar-right username" href="#">Harry</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

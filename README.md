@@ -1,11 +1,14 @@
-danebook
-========
-
-This is the Real Dane Deal.
+Andrea A
 =======
 
+Danebook
+==================
 
-[A project of the Viking Code School](http://www.vikingcodeschool.com)
 
-Andrea A
+Static pages of a social networking profile from Viking code school
+http://vikingcodeschool.com
+
+
+[A project from the Viking Code School](http://www.vikingcodeschool.com)
+
 

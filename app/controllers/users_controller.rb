@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+    @profile = @user.build
   end
 
   def new
@@ -13,10 +14,10 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       sign_in(@user) 
-      flash[:success] = "Created new user!"
+      flash[:success] = Created new user!
       redirect_to about_path
     else
-      flash.now[:error] = "Failed to Create User!"
+      flash.now[:error] = Failed to Create User!
       render :new
     end
   end
@@ -32,6 +33,18 @@ class UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:username, :email, :password, :password_confirmation)
+    params.require(:user).permit(:email, :password, :password_confirmation, 
+      :profile_attributes =>
+                            [:id,
+                             :firstname
+                             :lastname
+                             :birthday
+                             :gender
+                             :telephone
+                             :college
+                             :hometown
+                             :currenty_lives
+                             :words_to_live_by
+                             :about_me])
   end
 end

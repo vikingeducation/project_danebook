@@ -1,6 +1,13 @@
 class User < ApplicationRecord
   before_create :generate_token
 
+  has_one :profile, inverse_of: :user,
+                    :dependent => :destroy
+
+  accepts_nested_attributes_for :profile,
+                                reject_if: :all_blank,
+                                :allow_destroy => true
+
   has_secure_password
   
   validates :password, 
@@ -19,5 +26,4 @@ class User < ApplicationRecord
     generate_token
     save!
   end
-
 end

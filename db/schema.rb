@@ -21,11 +21,12 @@ ActiveRecord::Schema.define(version: 20171106161121) do
     t.string   "telephone"
     t.string   "college"
     t.string   "hometown"
-    t.string   "currenty_lives"
+    t.string   "currently_lives"
     t.text     "words_to_live_by"
     t.text     "about_me"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.index ["user_id"], name: "index_profiles_on_user_id", unique: true
   end
 
   create_table "users", force: :cascade do |t|

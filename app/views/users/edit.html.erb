@@ -1,0 +1,97 @@
+<% content_for :title do %>
+  <title>About</title>
+<% end %>
+<div class="container">
+  <div class="pages">
+    <%= render partial: '/shared/toolbar' %>
+    <div class="row about-title">
+      <div class="col-md-12">
+        <h3>Edit Profile</h3>
+      </div>
+    </div>
+    <div class="row about-container">
+      <%= form_for(current_user) do |f| %>
+        <%= f.fields_for :profile do |profile_fields| %>
+          <div class="col-md-5">
+            <div class="row">
+              <div class="col-md-12">
+                <h2>Basic Information</h2></div>
+              </div>
+              <div class="row">
+                <div class="col-md-4">Birthday:</div>
+                <div class="col-md-8">
+                  <%= profile_fields.date_field :birthday %>
+                </div> 
+              </div>
+              <div class="row">
+                <div class="col-md-4">College:</div>
+                <div class="col-md-8">
+                  <%= profile_fields.text_field :college, class: "form-control" %>
+                </div> 
+              </div>
+              <div class="row">
+                <div class="col-md-4">Hometown:</div>
+                <div class="col-md-8">
+                  <%= profile_fields.text_field :hometown, class: "form-control" %>
+                </div> 
+              </div>
+              <div class="row">
+                <div class="col-md-4">Currently Lives:</div>
+                <div class="col-md-8">
+                  <%= profile_fields.text_field :currently_lives, class: "form-control" %>
+                </div> 
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <h2>Contact Information</h2>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4">Email:</div>
+                <div class="col-md-8">
+                  <%= f.text_field :email, class: "form-control" %>
+                </div>
+              </div> 
+              <div class="row">
+                <div class="col-md-4">Telephone:</div>
+                <div class="col-md-8">
+                  <%= profile_fields.text_field :telephone, class: "form-control" %>
+                </div> 
+              </div>
+          </div>
+          <div class="col-md-7">
+            <div class="row">
+              <div class="col-md-12">
+                <h2>Words to Live By</h2>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <p><%= profile_fields.text_area :words_to_live_by, class: "form-control"%>
+                </p>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+                <h2>About Me</h2>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-12">
+               <p><%= profile_fields.text_area :about_me, class: "form-control", placeholder: "All about me!" %>
+               </p>
+             </div>
+            </div>
+          </div>
+        <% end %>
+        <div class="row">
+          <div class="col-md-4"></div>
+          <div class="col-md-4">
+            <%= f.submit "Save Changes", class: "btn btn-primary save-about-content" %>
+          </div>
+          <div class="col-md-4"></div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

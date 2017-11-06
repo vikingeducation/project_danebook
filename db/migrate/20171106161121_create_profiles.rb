@@ -9,10 +9,11 @@ class CreateProfiles < ActiveRecord::Migration[5.0]
       t.string :telephone
       t.string :college
       t.string :hometown
-      t.string :currenty_lives
+      t.string :currently_lives
       t.text :words_to_live_by
       t.text :about_me
       t.timestamps
     end
+    add_index :profiles, :user_id, unique: true
   end
 end

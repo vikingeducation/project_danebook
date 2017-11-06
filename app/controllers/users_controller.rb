@@ -3,27 +3,42 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
-    @profile = @user.build
   end
 
   def new
     @user = User.new
+    @profile = @user.build_profile
   end
 
   def create
     @user = User.new(user_params)
     if @user.save
       sign_in(@user) 
-      flash[:success] = Created new user!
-      redirect_to about_path
+      flash[:success] = "Created new user!"
+      redirect_to edit_user_path(@user)
     else
-      flash.now[:error] = Failed to Create User!
+      @user.build_profile
+      flash.now[:error] = "Failed to Create User!"
       render :new
     end
   end
 
   def show
     @user = User.find(params[:id])
+    @profile = @user.profile
+  end
+
+  def edit
+  end
+
+  def update
+    if current_user.update(user_params)
+      flash[:success] = "Update user details!"
+      redirect_to user_path(current_user.id)
+    else
+      flash.now[:error] = "Failed to update user details!"
+      render :edit
+    end
   end
 
   private
@@ -36,15 +51,15 @@ class UsersController < ApplicationController
     params.require(:user).permit(:email, :password, :password_confirmation, 
       :profile_attributes =>
                             [:id,
-                             :firstname
-                             :lastname
-                             :birthday
-                             :gender
-                             :telephone
-                             :college
-                             :hometown
-                             :currenty_lives
-                             :words_to_live_by
+                             :firstname,
+                             :lastname,
+                             :birthday,
+                             :gender,
+                             :telephone,
+                             :college,
+                             :hometown,
+                             :currently_lives,
+                             :words_to_live_by,
                              :about_me])
   end
 end

@@ -11,7 +11,7 @@ class Profile < ApplicationRecord
 
   validates :college,
             :hometown,
-            :currenty_lives,
+            :currently_lives,
             :length => { :within => 2..30 },
             :allow_blank => true
 end

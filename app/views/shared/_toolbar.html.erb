@@ -1,6 +1,6 @@
   <div class="row">
     <%= image_tag("hogwarts_small.jpg", size: "2200x300", class: " col-md-12 banner-img") %>
-    <h2 class="username-tag">Harry Potter</h2>
+    <h2 class="username-tag"><%= profile.firstname %> <%= profile.lastname %></h2>
   </div>
   <div class="row toolbar">
     <div class="col-md-3 img-handler">
@@ -10,7 +10,7 @@
       <%= link_to "Timeline", timeline_path %>
     </div>
     <div class="col-md-1 nav-links current-page">
-      <%= link_to "About", about_path %>
+      <%= link_to "About", user_path(user) %>
     </div>
     <div class="col-md-1 nav-links">
       <%= link_to "Photos(123)", photos_path %>
@@ -19,6 +19,6 @@
       <%= link_to "Friends(542)", friends_path %>
     </div>
     <div class="col-md-5 nav-links">
-      <%= link_to "Edit Profile", about_edit_path %>
+      <%= link_to "Edit Profile", edit_user_path(user) %>
     </div>  
   </div>

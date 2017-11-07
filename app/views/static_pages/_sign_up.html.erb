@@ -38,6 +38,14 @@
               <%= f.password_field :password_confirmation, id:"password3", class: "form-control", placeholder: "Confirm New Password" %>
             </div>
           </div>
+          <div class="row">
+            <div class ="col-md-12">
+              <h4>Birthday</h4>
+            </div>
+            <div class="col-md-12">
+              <%= profile_fields.date_field :birthday, class: "form-control" %>
+            </div>
+          </div>
           <div class="row gender-container">
             <div class ="col-md-12">
               <%= profile_fields.radio_button(:gender, "female") %>
@@ -45,13 +53,6 @@
               <%= profile_fields.radio_button(:gender, "male") %>
               <%= label :gender, "Male" %>
             </div>
-          </div>
-          <div class="row">
-          <div class ="col-md-12">
-            <h4>Birthday</h4>
-          </div>
-          <div class="col-md-12">
-            <%= profile_fields.date_field :birthday %>
           </div>
         <% end %>
         <div class="row">

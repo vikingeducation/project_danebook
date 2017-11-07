@@ -3,13 +3,13 @@
 <% end %>
 <div class="container">
   <div class="pages">
-    <%= render partial: '/shared/toolbar' %>
+    <%= render partial: '/shared/toolbar', locals: { user: @user, profile: @user.profile } %>
     <div class="row about-title">
       <div class="col-md-10">
         <h3>About</h3>
       </div>
       <div class="col-md-2">
-        <button class="btn btn-primary">Edit your profile</button>
+        <%= link_to "Edit your profile", edit_user_path(@user), class: "btn btn-primary" %>
       </div>
     </div>
     <div class="row about-container">

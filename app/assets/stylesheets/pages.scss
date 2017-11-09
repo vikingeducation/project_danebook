@@ -9,6 +9,13 @@
 } /* .sidebar-left */
 
 .sidebar-right {
+  header {
+    background-color: white;
+    color: $brand-secondary;
+    font-weight: bold;
+    padding: 4%;
+    border: 0;
+  } /* header */
 
 } /* .sidebar-left */
 
@@ -26,10 +33,12 @@ article {
     font-size: 0.75em;
   } /* header */
 }
-article.feed-article {
-  section {
-    padding: 5%;
-  } /* section */
+
+.status-box {
+  color: $brand-secondary;
+} /* .status-box */
+
+.feed-article {
   .image-container {
     width: 100%;
     overflow: auto;

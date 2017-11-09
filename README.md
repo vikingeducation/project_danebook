@@ -14,3 +14,4 @@ There is some simple HTML with styles in place for a feeds page. No db synced ye
 - DB: postgres 0.18
 - Ruby: 2.4.2
 - Repo: [assignment_danebook_goes_live](https://github.com/lortza/assignment_danebook_goes_live)
+- Heroku is set up to auto-deploy when I push to GitHub master. FTW!

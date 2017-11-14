@@ -3,7 +3,7 @@
 <% end %>
 <div class="container">
   <div class="pages">
-    <%= render partial: '/shared/toolbar', locals: { user: @user, profile: @user.profile } %>
+    <%= render partial: '/shared/toolbar', locals: { user: current_user, profile: current_user.profile } %>
     <div class="row timeline-container">
       <div class="col-md-5 left-pane">
         <div class="row section-title">
@@ -12,10 +12,10 @@
           </div>
         <div class="row about-summary">
           <div class="col-md-12">
-            <p><span>Born on:</span> July 31st, 1980</p>
-            <p><span>Went to school at:</span>Hogwarts</p>
-            <p><span>Hometown:</span>Godrick's Hollow, England</p>
-            <p><span>Currently Lives:</span>Godrick's Hollow</p>
+            <p><span>Born on:</span> <%= current_user.profile.birthday %></p>
+            <p><span>Went to school at:</span> <%= current_user.profile.college %></p>
+            <p><span>Hometown:</span> <%= current_user.profile.hometown %></p>
+            <p><span>Currently Lives:</span> <%= current_user.profile.currently_lives %></p>
           </div>
         </div>
 

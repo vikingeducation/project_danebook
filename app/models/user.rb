@@ -14,6 +14,9 @@ class User < ApplicationRecord
             :length => { :in => 3..24 }, 
             :allow_nil => true
 
+
+  has_many :posts
+  
   def generate_token
     begin
       self[:auth_token] = SecureRandom.urlsafe_base64

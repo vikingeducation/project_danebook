@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update]
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :is_authorized?, only: [:edit, :update, :destroy]
 
   def index
     @users = User.all
@@ -61,5 +62,11 @@ class UsersController < ApplicationController
                              :currently_lives,
                              :words_to_live_by,
                              :about_me])
+  end
+
+  def is_authorized?
+    if current_user.id != params[:id]
+      redirect_to root_url, :flash => { error: 'You are not authorized to do this action.' }
+    end
   end
 end

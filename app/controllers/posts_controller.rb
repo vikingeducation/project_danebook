@@ -3,9 +3,9 @@ class PostsController < ApplicationController
 
   def index
     @user = User.find(params[:user_id])
-    # @posts = @user.posts.order(created_at: :desc)
+    @posts = @user.posts.order(created_at: :desc)
     # @posts = Post.all
-    # @post = @user.posts.build if signed_in_user?
+    @post = @user.posts.build if is_authorized?
   end
 
   def new
@@ -32,8 +32,14 @@ class PostsController < ApplicationController
      params.require(:post).permit(:body, :user_id)
   end
 
-
   def timeline
      @posts = Post.all
+  end
+
+  private
+  def is_authorized?
+    if current_user.id != params[:id]
+      redirect_to root_url, :flash => { error: 'You are not authorized to do this action.' }
+    end
   end
 end

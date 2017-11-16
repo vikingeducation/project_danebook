@@ -1,10 +1,13 @@
 class ApplicationController < ActionController::Base
   # protect_from_forgery with: :exception
-  private
+  # before_action :require_login
+
+  protected
   # regenerate the token as well
   def sign_in(user)
     user.regenerate_auth_token
     cookies[:auth_token] = user.auth_token
+    binding.pry
     @current_user = user
   end
 
@@ -25,5 +28,18 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.find_by_auth_token(cookies[:auth_token]) if cookies[:auth_token]
   end
   helper_method :current_user
+
+  def signed_in_user?
+    !!current_user
+  end
+  helper_method :current_user
+
+# this method not found in session controller
+  def require_login
+    unless signed_in_user?
+      flash[:error] = "Not Authorized, please sign in"
+      redirect_to root_url
+    end
+  end
 
 end

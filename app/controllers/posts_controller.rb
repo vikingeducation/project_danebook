@@ -1,7 +1,11 @@
 class PostsController < ApplicationController
-  
+  before_action :require_current_user => [:create, :destroy]
+
   def index
-    @posts = Post.all
+    @user = User.find(params[:user_id])
+    # @posts = @user.posts.order(created_at: :desc)
+    # @posts = Post.all
+    # @post = @user.posts.build if signed_in_user?
   end
 
   def new

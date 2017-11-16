@@ -23,7 +23,7 @@ class User < ApplicationRecord
     end while User.exists?(:auth_token => self[:auth_token])
   end
 
-  # Convenience method for generating the token buy first clearing it
+  # Convenience method for generating the token by first clearing it
   def regenerate_auth_token
     self.auth_token = nil
     generate_token

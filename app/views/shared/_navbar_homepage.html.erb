@@ -2,12 +2,14 @@
   <% on_homepage = true %>
 <% elsif current_page?(new_user_path)%>
   <% on_homepage = true %>
+<% elsif current_page?root_url%>
+  <% on_homepage = true %>
 <% else %>
   <% on_homepage = false %>
 <% end %>
 
 <% if on_homepage %>
-  <%= form_tag session_path do %>
+  <%= form_tag sessions_path do %>
     <div class="homepage">
       <div class="navbar">
         <%= link_to static_pages_path do %>
@@ -15,7 +17,7 @@
         <% end %>
         <div class="login-container navbar-form navbar-right">
           <%= text_field_tag :email, nil, id:"emailInput1", class: "form-control", placeholder: "Email" %>
-          <%= password_field_tag :email, nil, id:"emailInput2", class: "form-control", placeholder: "Password" %>
+          <%= password_field_tag :password, nil, id:"emailInput2", class: "form-control", placeholder: "Password" %>
         <!--   <input type="text" class="form-control" id="emailInput1" placeholder="Email">
           <input type="text" class="form-control" id="emailInput2" placeholder="Password"> -->
           <%= submit_tag "Sign in", class: "btn btn-info" %>

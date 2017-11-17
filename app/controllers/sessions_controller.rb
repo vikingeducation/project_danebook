@@ -12,11 +12,12 @@ class SessionsController < ApplicationController
       else
         sign_in(@user)
       end
+      binding.pry
       flash[:success] = "You've successfully signed in"
-      redirect_to root_url
+      redirect_to user_posts_path(@user)
     else
       flash.now[:error] = "We couldn't sign you in"
-      render :new
+      redirect_to root_url
     end
   end
 

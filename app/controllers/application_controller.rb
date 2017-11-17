@@ -1,8 +1,8 @@
 class ApplicationController < ActionController::Base
-  # protect_from_forgery with: :exception
-  # before_action :require_login
+  protect_from_forgery with: :exception
+  before_action :require_login
 
-  protected
+  private
   # regenerate the token as well
   def sign_in(user)
     user.regenerate_auth_token
@@ -34,7 +34,14 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_user
 
-# this method not found in session controller
+  def require_current_user
+    binding.pry
+    unless params[:id] == current_user.id.to_s
+      flash[:error] = "You're not authorized to view this"
+      redirect_to root_url
+    end
+  end 
+
   def require_login
     unless signed_in_user?
       flash[:error] = "Not Authorized, please sign in"

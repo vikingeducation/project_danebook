@@ -5,6 +5,7 @@ class PostsController < ApplicationController
     @user = User.find(params[:user_id])
     @posts = @user.posts.order(created_at: :desc)
     # @posts = Post.all
+    binding.pry
     @post = @user.posts.build if is_authorized?
   end
 
@@ -38,7 +39,8 @@ class PostsController < ApplicationController
 
   private
   def is_authorized?
-    if current_user.id != params[:id]
+    binding.pry
+    if current_user.id.to_s != params[:user_id]
       redirect_to root_url, :flash => { error: 'You are not authorized to do this action.' }
     end
   end

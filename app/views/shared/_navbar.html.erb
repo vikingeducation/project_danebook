@@ -2,6 +2,8 @@
   <% not_homepage = false %>
 <% elsif current_page?(new_user_path) %>
   <% not_homepage = false %>
+<% elsif current_page?(root_url) %>
+  <% not_homepage = false %>
 <% else %>
   <% not_homepage = true %>
 <% end %>
@@ -23,7 +25,7 @@
             </div>
           </div>
           <div class="col-md-3">
-              <!-- link_to "#{current_user.profile.firstname}", user_path(current_user), class: "navbar-brand navbar-right username" %> -->
+              <%= link_to "#{current_user.profile.firstname}", user_path(current_user), class: "navbar-brand navbar-right username" %> 
           </div>
         </div>
       </div>

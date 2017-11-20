@@ -1,5 +1,5 @@
 module PostsHelper
-  def fullname(user)
-    "#{user.profile.firstname} #{user.profile.lastname}"
-  end
+  # def fullname(post)
+  #   "#{post.user.profile.firstname} #{post.user.profile.lastname}"
+  # end
 end

@@ -16,6 +16,10 @@ class User < ApplicationRecord
 
 
   has_many :posts
+
+  has_many :likes,
+           :dependent => :destroy
+           
   
   def generate_token
     begin

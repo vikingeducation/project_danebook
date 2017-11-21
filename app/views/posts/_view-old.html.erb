@@ -15,13 +15,16 @@
       </div>
     </div>
   </div>
-  <div class="row comment-links last-post">
-    <div class="col-md-10">
+  <div class="row comment-links section-footer">
+    <div class="col-md-1">
       <% if current_user_liked?(post) %>
         <%= link_to "Unlike", likes_path(:like => {:likeable_id => post.id, :likeable_type => post.class.name} ), method: 'delete' %>
       <% else %>
          <%= link_to "Like", likes_path(:like => {:likeable_id => post.id, :likeable_type => post.class.name} ), method: 'post' %>
       <% end %>
+    </div>
+    <div class="col-md-9">
+      <%= link_to "Comments", "#" %>
     </div>
     <div class="col-md-2">
       <%= link_to "Delete", user_post_path(user, post),
@@ -38,8 +41,5 @@
         <% end %>
       </div>
     </div>
-    <hr></hr>
-    <%= render partial: 'comments/view_comment', locals: { user: user, post: post} %>
-    <%= render partial: 'comments/post_comment', locals: { user: user, post: post} %>
   </div>
 <% end %>

@@ -4,24 +4,24 @@ class PostsController < ApplicationController
   def index
     @user = User.find(params[:user_id])
     @posts = @user.posts.order(created_at: :desc)
-    @post = @user.posts.build if is_authorized?
-    # binding.pry
-    
+    @post = current_user.posts.build
   end
 
   def new
-    @post = current_user.posts.build
+    @post = @user.posts.build
   end
 
   def create
     @post = Post.new(post_params)
+    session[:return_to] ||= request.referer
     if @post.save
-      redirect_to user_posts_path(@post.user)
+      redirect_to session.delete(:return_to)
+      # redirect_to user_posts_path(@post.user)
       flash[:success] = "Created new post!"
     else
-      @post.user.build_post
       flash.now[:error] = "Failed to Create Post!"
-      redirect_to user_posts_path(@post.user)
+      redirect_to session.delete(:return_to)
+      # redirect_to user_posts_path(@post.user)
     end
   end
 
@@ -41,7 +41,7 @@ class PostsController < ApplicationController
       redirect_to user_posts_path(@post.user)
     else
       flash[:error] = "Post not deleted"
-      current_user.build_post
+      # current_user.build_post
       redirect_to session.delete(:return_to)
     end
   end
@@ -49,7 +49,8 @@ class PostsController < ApplicationController
   private
   def is_authorized?
     if current_user.id.to_s != params[:user_id]
-      redirect_to root_url, :flash => { error: 'You are not authorized to do this action.' }
+      session[:return_to] ||= request.referer
+      redirect_to session.delete(:return_to), :flash => { error: 'You are not authorized to do this action.' }
     else
       true
     end

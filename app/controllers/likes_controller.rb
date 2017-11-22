@@ -18,9 +18,7 @@ class LikesController < ApplicationController
 
   def destroy
     session[:return_to] ||= request.referer
-    # @like = Like.find(params[:id])
-
-    @like = Like.all.where(like_params)[0]
+    @like = Like.find(params[:id])
 
     if @like.destroy
       flash[:success] = "Unliked item successfully."

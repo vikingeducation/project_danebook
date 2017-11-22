@@ -18,7 +18,7 @@
   <div class="row comment-links last-post">
     <div class="col-md-10">
       <% if current_user_liked?(post) %>
-        <%= link_to "Unlike", likes_path(:like => {:likeable_id => post.id, :likeable_type => post.class.name} ), method: 'delete' %>
+        <%= link_to "Unlike", like_path(Like.find_by(user: current_user, likeable: post)), method: 'delete' %>
       <% else %>
          <%= link_to "Like", likes_path(:like => {:likeable_id => post.id, :likeable_type => post.class.name} ), method: 'post' %>
       <% end %>
@@ -40,6 +40,6 @@
     </div>
     <hr></hr>
      <%= render partial: 'comments/view_comment', locals: { user: user, post: post, comments: post.comments} %> 
-     <%= render partial: 'comments/post_comment', locals: { user: user, post: post, comment: user.comments.build} %> 
+     <%= render partial: 'comments/post_comment', locals: { user: user, post: post, comment: post.comments.build} %> 
   </div>
 <% end %>

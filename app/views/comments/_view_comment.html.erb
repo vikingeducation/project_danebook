@@ -1,20 +1,20 @@
-<%= comments.each do |comment| %>
+<% comments.each do |comment| %>
   <div class="row comment-title">
     <div class="col-md-1">
       <%= image_tag("harry_potter_small.jpg", size: "30x30") %>
     </div>
     <div class="col-md-11">
-      <p><%= link_to "#{post_user_fullname(post)}", user_path(user) %> Said on <%= comment.created_at %></p>
+      <p><%= link_to "#{comment_user_fullname(comment)}", user_path(user) %> Said on <%= comment.created_at %></p>
       <div class="row">
         <div class="col-md-12">
           <p><%= comment.body %></p>
         </div>
         <div class="row">
           <div class="col-md-10">
-            <p><% if current_user_liked?(post) %>
-                  <%= link_to "Unlike", likes_path(:like => {:likeable_id => post.id, :likeable_type => post.class.name} ), method: 'delete' %>
+            <p><% if current_user_liked?(comment) %>
+                  <%= link_to "Unlike", like_path(Like.find_by(user: current_user, likeable: comment)), method: 'delete' %>
                 <% else %>
-                     <%= link_to "Like", likes_path(:like => {:likeable_id => post.id, :likeable_type => post.class.name} ), method: 'post' %>
+                     <%= link_to "Like", likes_path(:like => {:likeable_id => comment.id, :likeable_type => comment.class.name} ), method: 'post' %>
                 <% end %>
             </p>
           </div>

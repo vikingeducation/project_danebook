@@ -5,6 +5,7 @@ class PostsController < ApplicationController
     @user = User.find(params[:user_id])
     @posts = @user.posts.order(created_at: :desc)
     @post = @user.posts.build if is_authorized?
+    # binding.pry
     
   end
 

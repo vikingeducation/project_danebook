@@ -39,7 +39,7 @@
       </div>
     </div>
     <hr></hr>
-    <%= render partial: 'comments/view_comment', locals: { user: user, post: post} %>
-    <%= render partial: 'comments/post_comment', locals: { user: user, post: post} %>
+     <%= render partial: 'comments/view_comment', locals: { user: user, post: post, comments: post.comments} %> 
+     <%= render partial: 'comments/post_comment', locals: { user: user, post: post, comment: user.comments.build} %> 
   </div>
 <% end %>

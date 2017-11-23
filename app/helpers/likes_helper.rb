@@ -23,9 +23,7 @@ module LikesHelper
   end
 
   def current_user_liked?(item)
-    # user = item.user
     item.likes.where( :user_id => current_user.id ).any?
-    # item.likes.where( :user_id => user.id ).any?
   end
 end
 

@@ -12,33 +12,70 @@ Post.destroy_all
 Comment.destroy_all
 Like.destroy_all
 
-puts "Create users"
+puts "Creating users"
+10.times do |i|
+  name = Faker::HarryPotter.unique.character.split
+  puts "#{name}"
+  firstname = name[0]
+  
+  if name.length == 1
+    lastname = "Smith"
+  else
+    lastname = name[1]
+  end
+  email = "foo#{i}@foo.com"
+  birthday = DateTime.new(1985+i,1+i,5+i)
+  telephone = Faker::PhoneNumber.phone_number
+  words_to_live_by = Faker::Lorem.paragraph
+  hometown = Faker::HarryPotter.location.truncate(30)
+  currently_lives = Faker::HarryPotter.location.truncate(30)
+  about_me = Faker::HarryPotter.quote
+  password_digest = BCrypt::Password.create("foobar#{i}")
 
-5.times do
-  firstname = Faker::Name.first_name
-  lastname = Faker::Name.last_name
-  email = Faker::Internet.email
-  birthday= 
-  telephone = Faker::PhoneNumber
-  password_digest = BCrypt::Password.create("foobar123")
   u = User.create!(
-                  :lastname => lastname,
+                  :email => email,
                   :password_digest => password_digest)
-  Profile.create!(:firstname => firstname,
+   Profile.create!(:user_id => u.id,
+                  :firstname => firstname,
                   :lastname => lastname,
-
+                  :birthday => birthday,
                   :gender => ["Male", "Female"].sample,
                   :telephone => telephone,
-                  :college)
-  }
+                  :college => "Hogwarts",
+                  :hometown => hometown,
+                  :currently_lives => currently_lives,
+                  :words_to_live_by => words_to_live_by,
+                  :about_me => about_me 
+                  ) 
+  u.save!
 end
+puts "Created users complete"
 
-    t.integer  "user_id"
-    t.datetime "birthday"
-    t.string   "college"
-    t.string   "hometown"
-    t.string   "currently_lives"
-    t.text     "words_to_live_by"
-    t.text     "about_me"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_a
+puts "Creating posts"
+50.times do |i|
+  Post.create!(:body => "#{i+1} #{Faker::Lorem.paragraph}", :user_id => User.all.sample.id)
+end
+puts "Created posts complete"
+
+puts "Creating comments"
+20.times do |i|
+  commentable_type = "Post"
+  commentable_id = commentable_type.constantize.all.sample.id
+  Comment.create!(:body => "#{i+1} #{Faker::Lorem.sentence}", 
+                  :user_id => User.all.sample.id, 
+                  :commentable_id => commentable_id,
+                  :commentable_type => commentable_type)
+end
+puts "Created comments complete"
+
+puts "Creating likes"
+20.times do |i|
+  likeable_type = ["Comment","Post"].sample
+  likeable_id = likeable_type.constantize.all.sample.id
+  Like.create!(   :user_id => User.all.sample.id, 
+                  :likeable_id => likeable_id,
+                  :likeable_type => likeable_type)
+end
+puts "Created likes complete"
+
+

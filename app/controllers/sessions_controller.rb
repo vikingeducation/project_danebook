@@ -12,7 +12,6 @@ class SessionsController < ApplicationController
       else
         sign_in(@user)
       end
-      binding.pry
       flash[:success] = "You've successfully signed in"
       redirect_to user_posts_path(@user)
     else

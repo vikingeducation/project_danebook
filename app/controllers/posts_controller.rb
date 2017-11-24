@@ -9,12 +9,15 @@ class PostsController < ApplicationController
 
   def new
     # @post = @user.posts.build
+
+    # current
     @post = current_user.posts.build
   end
 
   def create
-    @post = Post.new(post_params)
-    session[:return_to] ||= request.referer
+    @post = current_user.posts.build(post_params)
+    # @post = Post.new(post_params)
+    session[:return_to] = request.referer
     if @post.save
       binding.pry
       redirect_to session.delete(:return_to)
@@ -36,14 +39,13 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    session[:return_to] ||= request.referer
+    session[:return_to] = request.referer
     @post = Post.find(params[:id])
     if @post.destroy
       flash[:success] = "Post deleted successfully."
       redirect_to user_posts_path(@post.user)
     else
       flash[:error] = "Post not deleted"
-      # current_user.build_post
       redirect_to session.delete(:return_to)
     end
   end

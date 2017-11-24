@@ -53,6 +53,7 @@ group :development do
   gem 'binding_of_caller'
   gem 'hirb'
   gem 'pry'
+  gem 'faker'
 end
 
 group :production do

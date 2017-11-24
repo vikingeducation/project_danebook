@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:create, :show, :edit, :update, :destroy]
-  # before_action :is_authorized?, only: [:edit, :update, :destroy]
+  before_action :is_authorized?, only: [:edit, :update, :destroy]
 
   skip_before_action :require_login, :only => [:new, :create]
   before_action :require_current_user, :only => [:edit, :update, :destroy]
@@ -69,9 +69,11 @@ class UsersController < ApplicationController
                              :about_me])
   end
 
-  # def is_authorized?
-  #   if current_user.id != params[:id]
-  #     redirect_to root_url, :flash => { error: 'You are not authorized to do this action.' }
-  #   end
-  # end
+  def is_authorized?
+    # session[:return_to] = request.referer
+    binding.pry
+    if current_user.id.to_s != params[:id]
+      redirect_to user_path(current_user), :flash => { error: 'You are not authorized to do this action.' }
+    end
+  end
 end

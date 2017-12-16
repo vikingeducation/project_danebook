@@ -8,8 +8,6 @@ class PostsController < ApplicationController
   end
 
   def new
-    # @post = @user.posts.build
-
     # current
     @post = current_user.posts.build
   end
@@ -19,7 +17,6 @@ class PostsController < ApplicationController
     # @post = Post.new(post_params)
     session[:return_to] = request.referer
     if @post.save
-      binding.pry
       redirect_to session.delete(:return_to)
       # redirect_to user_posts_path(@post.user)
       flash[:success] = "Created new post!"

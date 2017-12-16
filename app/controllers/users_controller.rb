@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:create, :show, :edit, :update, :destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy]
   before_action :is_authorized?, only: [:edit, :update, :destroy]
 
   skip_before_action :require_login, :only => [:new, :create]
@@ -21,9 +21,8 @@ class UsersController < ApplicationController
       flash[:success] = "Created new user!"
       redirect_to edit_user_path(@user)
     else
-      @user.build_profile
       flash.now[:error] = "Failed to Create User!"
-      render :new
+      redirect_to root_path
     end
   end
 
@@ -71,7 +70,6 @@ class UsersController < ApplicationController
 
   def is_authorized?
     # session[:return_to] = request.referer
-    binding.pry
     if current_user.id.to_s != params[:id]
       redirect_to user_path(current_user), :flash => { error: 'You are not authorized to do this action.' }
     end

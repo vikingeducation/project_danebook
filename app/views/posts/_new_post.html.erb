@@ -6,7 +6,7 @@
   </div>
   <div class="row about-summary">
     <div class="col-md-12">
-      <%= f.text_area :body, class: "post-input", placeholder:"Tell the world something.." %>
+      <%= f.text_area :body, class: "post-input", placeholder:"Tell the world something..",id:"post-text-area" %>
       <%= f.hidden_field :user_id, value: post.user.id %>
     </div>
   </div>

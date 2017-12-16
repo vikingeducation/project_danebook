@@ -38,6 +38,12 @@ gem 'bcrypt', '~> 3.1.7'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+  gem 'rspec-rails'
+  gem 'guard-rspec', require: false
+  gem 'factory_girl_rails', '~> 4.0'
+  gem 'capybara'
+  gem 'launchy'
+  gem 'pry'
 end
 
 group :development do
@@ -52,7 +58,6 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'hirb'
-  gem 'pry'
   gem 'faker'
 end
 

@@ -33,13 +33,6 @@ describe User do
   end
 
 end
-  
-
-# Pending tests
-# cREATE A lastname that is too long
-# as a signed in user I can create a post
-# as a signed in user i CAN CREATE A COMMENT
-
 
 # Feature Integration testing using Capybara
 feature 'Visitor' do

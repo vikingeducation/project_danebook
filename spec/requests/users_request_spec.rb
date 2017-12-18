@@ -1,4 +1,5 @@
-# # spec/requests/users_request_spec.rb
+
+# spec/requests/users_request_spec.rb
 require 'rails_helper'
 
 describe 'UsersRequests' do
@@ -17,50 +18,87 @@ describe 'UsersRequests' do
       expect(response).to be_success
     end
 
-    it "creates a user" do
-        expect{ post users_path, params: { :user => attributes_for(:user),
+     it "GET #edit path works" do
+        get edit_user_path(user)
+        expect(response).to be_success
+      end
+
+    # it "creates a user" do
+    #     expect{ post users_path, params: { :user => attributes_for(:user) }}.to change(User, :count).by(1)
+    # end
+
+
+     it  "creates a new user" do
+       expect{ post users_path, params: { :user => attributes_for(:user),
                                   :profile_attributes => attributes_for(:profile) } }.to change(User, :count).by(1)
-                                  
+     end
+ 
+     it "sets up auth token" do
+       post users_path, params: { :user => attributes_for(:user)}
+       expect(response.cookies["auth_token"]).to_not be_nil
+     end
+ 
+ 
+
+    it "redirects once the user is created" do
+        post users_path, params: { :user => attributes_for(:user) }
+        expect(response).to have_http_status(:redirect)
     end
 
-    it "Verify that an improper submission will not create a new User" do
-      expect{
-        get users_path, params: { user: attributes_for(:user) }
-      }.to change(User, :count).by(0)
-    end
 
     it "creates a flash message" do
       post users_path, params: { :user => attributes_for(:user) }
       expect(flash[:success]).to_not be_nil
     end
+
+
+
+
+    describe "Verify that authorized users can perform actions they should be able to like #update" do
+
+      let(:updated_name){ "updated_foo" }
+
+      it "actually updates the user" do
+        put user_path(user), params: {
+          :user => attributes_for(
+            :user), :profile_attributes => attributes_for(:profile,  
+            :firstname => updated_name)
+        } 
+
+        user.reload
+        profile.reload
+        expect(user.profile.firstname).to eq(updated_name)
+      end
+    end
+
   end
-
-  # describe 'GET #edit' do
-  #   it "GET #edit works as normal" do
-  #     get edit_user_path(user)
-  #     expect(response).to be_success
-  #   end
-  # end
-
-  # describe "Verify that authorized users can perform actions they should be able to like #update" do
-  #   before { user }
-
-  #   context "with valid attributes" do
-  #     let(:updated_name){ "updated_foo" }
-
-  #     it "actually updates the user" do
-  #       put user_path(user), params: {
-  #         :user => attributes_for(
-  #           :user, 
-  #           :name => updated_name)
-  #       } 
-
-  #       # This won't work properly if you don't reload!!!
-  #       # The user in that case would be the same one
-  #       # you set in the `let` method
-  #       user.reload
-  #       expect(user.name).to eq(updated_name)
-  #     end
-  #   end
-  # end
 end
+
+describe 'PostRequests' do
+  describe 'Posts' do
+    let(:user){ create(:user) }
+    let(:profile){ create(:profile,:user => user)}
+    let(:post_new){ create(:post,:user => user)}
+
+    before :each do 
+      user
+      profile
+      post_new
+      post sessions_path, params: { :email => user.email, :password => user.password }
+    end
+
+    it "creates a post" do
+      expect{ post user_posts_path(user), params: { :post => { :body => "New body", :user_id => user.id } } }.to change(Post, :count).by(1)
+     end
+
+     it "destroys the post" do
+        expect{
+          delete user_post_path(user, post_new)
+        }.to change(Post, :count).by(-1)
+      end
+  end
+end
+
+
+
+  

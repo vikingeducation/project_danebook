@@ -2,7 +2,7 @@
 require 'rails_helper'
 
 
-describe "users/show.html.erb" do
+describe "users/edit.html.erb" do
   let(:user){create(:user)}
   let(:profile){ create(:profile, user: user)}
   
@@ -26,12 +26,11 @@ describe "users/show.html.erb" do
     end
   end
 
-  it "A logged in user can see their profile page" do
+  it "A logged in user can go to their edit profile" do
     # render the view
     render
 
-    expect(rendered).to have_content("Words to Live By")
-    expect(rendered).to have_content(profile.firstname)
+    expect(rendered).to match("<h3>Edit Profile</h3>")
   end
 
 end

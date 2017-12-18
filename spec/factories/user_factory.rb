@@ -13,7 +13,7 @@ FactoryGirl.define do
   end
 
   sequence(:birthday) do |n|
-    DateTime.new(1960+n,1+n,5+n)
+    DateTime.new(1960,1,1)
   end
 
   factory :user do |n|

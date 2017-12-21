@@ -1,5 +1,4 @@
 FactoryGirl.define do
-
   sequence(:email) do |n|
     "foo#{n}@bar.com"         
   end

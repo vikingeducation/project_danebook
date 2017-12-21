@@ -8,13 +8,11 @@ class PostsController < ApplicationController
   end
 
   def new
-    # current
     @post = current_user.posts.build
   end
 
   def create
     @post = current_user.posts.build(post_params)
-    # @post = Post.new(post_params)
     session[:return_to] = request.referer
     if @post.save
       redirect_to user_posts_path(@post.user)

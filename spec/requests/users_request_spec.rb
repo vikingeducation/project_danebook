@@ -1,4 +1,3 @@
-
 # spec/requests/users_request_spec.rb
 require 'rails_helper'
 
@@ -23,37 +22,28 @@ describe 'UsersRequests' do
       expect(response).to be_success
     end
 
-     it  "creates a new user" do
-        profile_attributes = attributes_for(:profile)
-        user_hash = attributes_for(:user)
-        user_hash[:profile_attributes] = profile_attributes
+    it  "creates a new user" do
+      profile_attributes = attributes_for(:profile)
+      user_hash = attributes_for(:user)
+      user_hash[:profile_attributes] = profile_attributes
 
-        # post users_path, params: {
-        #   :user => user_hash
-        # } 
-
-        expect{ 
-          post users_path, params: {
-          :user => user_hash
-          } 
-        }.to change(User, :count).by(1)
-
-       # expect{ post users_path, params: 
-       #  { :user => attributes_for(:user),
-       #                            :profile_attributes => attributes_for(:profile) }
-       #                             }.to change(User, :count).by(1)
-     end
+      expect{ 
+        post users_path, params: {
+        :user => user_hash
+        } 
+      }.to change(User, :count).by(1)
+    end
  
-     it "sets up auth token" do
-       post users_path, params: { :user => attributes_for(:user)}
-       expect(response.cookies["auth_token"]).to_not be_nil
-     end
+    it "sets up auth token" do
+      post users_path, params: { :user => attributes_for(:user)}
+      expect(response.cookies["auth_token"]).to_not be_nil
+    end
  
  
 
     it "redirects once the user is created" do
-        post users_path, params: { :user => attributes_for(:user) }
-        expect(response).to have_http_status(:redirect)
+      post users_path, params: { :user => attributes_for(:user) }
+      expect(response).to have_http_status(:redirect)
     end
 
 
@@ -61,9 +51,6 @@ describe 'UsersRequests' do
       post users_path, params: { :user => attributes_for(:user) }
       expect(flash[:success]).to_not be_nil
     end
-
-
-
 
     describe "Verify that authorized users can perform actions like #update" do
 
@@ -85,7 +72,6 @@ describe 'UsersRequests' do
         expect(user.profile.firstname).to eq(updated_name)
       end
     end
-
   end
 end
 
@@ -104,12 +90,12 @@ describe 'PostRequests' do
 
     it "creates a post" do
       expect{ post user_posts_path(user), params: { :post => { :body => "New body", :user_id => user.id } } }.to change(Post, :count).by(1)
-     end
+    end
 
-     it "destroys the post" do
-        expect{
-          delete user_post_path(user, post_new)
-        }.to change(Post, :count).by(-1)
-      end
+    it "destroys the post" do
+      expect{
+        delete user_post_path(user, post_new)
+      }.to change(Post, :count).by(-1)
+    end
   end
 end

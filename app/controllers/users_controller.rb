@@ -70,7 +70,6 @@ class UsersController < ApplicationController
   end
 
   def is_authorized?
-    # session[:return_to] = request.referer
     if current_user.id.to_s != params[:id]
       redirect_to user_path(current_user), :flash => { error: 'You are not authorized to do this action.' }
     end

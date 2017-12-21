@@ -48,7 +48,6 @@ feature "Signed in User" do
     click_button "Post"
     click_link "Like"
 
-
     expect{ click_link "Unlike" }.to change(Like, :count).by(-1)
     expect(page).to have_content "Unliked item successfully."
   end

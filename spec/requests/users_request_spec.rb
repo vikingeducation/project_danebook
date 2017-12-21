@@ -18,19 +18,30 @@ describe 'UsersRequests' do
       expect(response).to be_success
     end
 
-     it "GET #edit path works" do
-        get edit_user_path(user)
-        expect(response).to be_success
-      end
-
-    # it "creates a user" do
-    #     expect{ post users_path, params: { :user => attributes_for(:user) }}.to change(User, :count).by(1)
-    # end
-
+    it "GET #edit path works" do
+      get edit_user_path(user)
+      expect(response).to be_success
+    end
 
      it  "creates a new user" do
-       expect{ post users_path, params: { :user => attributes_for(:user),
-                                  :profile_attributes => attributes_for(:profile) } }.to change(User, :count).by(1)
+        profile_attributes = attributes_for(:profile)
+        user_hash = attributes_for(:user)
+        user_hash[:profile_attributes] = profile_attributes
+
+        # post users_path, params: {
+        #   :user => user_hash
+        # } 
+
+        expect{ 
+          post users_path, params: {
+          :user => user_hash
+          } 
+        }.to change(User, :count).by(1)
+
+       # expect{ post users_path, params: 
+       #  { :user => attributes_for(:user),
+       #                            :profile_attributes => attributes_for(:profile) }
+       #                             }.to change(User, :count).by(1)
      end
  
      it "sets up auth token" do
@@ -54,19 +65,23 @@ describe 'UsersRequests' do
 
 
 
-    describe "Verify that authorized users can perform actions they should be able to like #update" do
+    describe "Verify that authorized users can perform actions like #update" do
 
       let(:updated_name){ "updated_foo" }
 
       it "actually updates the user" do
-        put user_path(user), params: {
-          :user => attributes_for(
-            :user), :profile_attributes => attributes_for(:profile,  
-            :firstname => updated_name)
-        } 
 
+        profile_attributes = attributes_for(:profile)
+        profile_attributes[:firstname] = updated_name
+
+        user_hash = attributes_for(:user)
+        user_hash[:profile_attributes] = profile_attributes
+
+
+        put user_path(user), params: {
+          :user => user_hash
+        } 
         user.reload
-        profile.reload
         expect(user.profile.firstname).to eq(updated_name)
       end
     end
@@ -98,7 +113,3 @@ describe 'PostRequests' do
       end
   end
 end
-
-
-
-  

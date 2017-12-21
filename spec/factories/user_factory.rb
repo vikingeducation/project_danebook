@@ -17,7 +17,8 @@ FactoryGirl.define do
   end
 
   factory :user do |n|
-    email       
+    email
+    password { "foobar" }       
     password_digest  { BCrypt::Password.create("foobar") }
   end
 

@@ -17,13 +17,11 @@ class PostsController < ApplicationController
     # @post = Post.new(post_params)
     session[:return_to] = request.referer
     if @post.save
-      redirect_to session.delete(:return_to)
-      # redirect_to user_posts_path(@post.user)
+      redirect_to user_posts_path(@post.user)
       flash[:success] = "Created new post!"
     else
       flash.now[:error] = "Failed to Create Post!"
-      redirect_to session.delete(:return_to)
-      # redirect_to user_posts_path(@post.user)
+      redirect_to user_posts_path(current_user)
     end
   end
 
@@ -43,7 +41,7 @@ class PostsController < ApplicationController
       redirect_to user_posts_path(@post.user)
     else
       flash[:error] = "Post not deleted"
-      redirect_to session.delete(:return_to)
+      redirect_to user_posts_path(@post.user)
     end
   end
 

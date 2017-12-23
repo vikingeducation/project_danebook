@@ -16,7 +16,7 @@
       <%= link_to "Photos(123)", photos_path %>
     </div>
     <div class="col-md-1 nav-links">
-      <%= link_to "Friends(542)", friends_path %>
+      <%= link_to "Friends(#{count_user_friends(user)})", friending_path(user) %>
     </div>
     <div class="col-md-5 nav-links">
       <%= link_to "Edit Profile", edit_user_path(user) %>

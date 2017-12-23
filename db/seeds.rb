@@ -79,3 +79,20 @@ end
 puts "Created likes complete"
 
 
+puts "Creating likes"
+5.times do |i|
+  friend_id = User.all.sample.id
+  sample_user = User.all.sample.id 
+  if user != friend_id
+    friender_id = sample_user
+  else
+    friender_id - 1
+  end
+
+  end
+  Friending.create!(:friend_id => friend_id, 
+                  :friender_id => friender_id)
+end
+puts "Created likes complete"
+
+

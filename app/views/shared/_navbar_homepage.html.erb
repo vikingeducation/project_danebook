@@ -1,4 +1,4 @@
-<% if current_page?(static_pages_path) %>
+<% if current_page?(root_url) %>
   <% on_homepage = true %>
 <% elsif current_page?(new_user_path)%>
   <% on_homepage = true %>
@@ -12,7 +12,7 @@
   <%= form_tag sessions_path do %>
     <div class="homepage">
       <div class="navbar">
-        <%= link_to static_pages_path do %>
+        <%= link_to root_url do %>
           Danebook
         <% end %>
         <div class="login-container navbar-form navbar-right">

@@ -66,45 +66,11 @@
 
         <div class="row">
           <div class="col-md-12 section-title">
-            <h4>Friends(5+2) (Copied Text Area)</h4>
+            <h4><%= "Friends #{count_user_friends(@user)}"%></h4>
           </div>
         </div>
         <div class="row section-outline">
-           <div class="col-md-4">
-            <div class="img-thumb-small row">
-              <img class="col-md-12 friend-link" src="https://unsplash.it/50/50"/>
-              <%= link_to "Ronald Weasley", "#", class: "col-md-12" %>
-            </div>
-            <div class="img-thumb-small row">
-              <img class="col-md-12 friend-link" src="https://unsplash.it/50/50"/>
-              <%= link_to "Ginny Weasley", "#", class: "col-md-12" %>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="img-thumb-small row">
-              <img class="col-md-12 friend-link" src="https://unsplash.it/50/50">
-              <%= link_to "Hermione Granger", "#", class: "col-md-12" %>
-            </div>
-            <div class="img-thumb-small row">
-              <img class="col-md-12 friend-link" src="https://unsplash.it/50/50"/>
-              <%= link_to "Slytherine", "#", class: "col-md-12" %> 
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="img-thumb-small row">
-              <img class="col-md-12 friend-link" src="https://unsplash.it/50/50"/>
-              <%= link_to "Lord Voldemort", "#", class: "col-md-12" %> 
-            </div>
-            <div class="img-thumb-small row">
-              <img class="col-md-12 friend-link" src="https://unsplash.it/50/50">
-              <%= link_to "Severus Snape", "#", class: "col-md-12" %>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-md-12 centre-text">
-              <%= link_to "See More Friends", "#" %>
-            </div>
-          </div>
+          <%= render partial: 'subset_friends', locals: { friends: @user.users_friended_by, user: @user} %>
         </div>
       </div>
       <div class="col-md-6 col-md-offset-1 right-pane">

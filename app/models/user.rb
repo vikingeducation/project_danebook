@@ -34,7 +34,6 @@ class User < ApplicationRecord
   has_many :users_friended_by,    :through => :received_friendings,
                                   :source => :friend_initiator
 
-           
   
   def generate_token
     begin

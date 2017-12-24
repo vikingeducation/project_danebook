@@ -9,13 +9,11 @@ class FriendingsController < ApplicationController
     @friends = current_user.users_friended_by
   end
 
-  def new
-    @friend = Friending.new
-  end
-
   def create
-    @friend = Friending.new(friending_params)
-    if @friend.save
+    friend_recipient = User.find(params[:id])
+    # @friend = Friending.new(friending_params)
+    if current_user.friended_users << friend_recipient
+    # if @friend.save
       flash[:success] = "Added a friend!"
       # redirect_to edit_user_path(@user)
     else

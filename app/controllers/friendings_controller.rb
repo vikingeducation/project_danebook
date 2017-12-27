@@ -1,29 +1,34 @@
 class FriendingsController < ApplicationController
   before_action :require_current_user => [:create, :destroy, :show]
 
-  # def index
-  #   @friends = Friending.all
-  # end
-
   def show
     @friends = current_user.users_friended_by
   end
 
   def create
-    friend_recipient = User.find(params[:id])
-    # @friend = Friending.new(friending_params)
-    if current_user.friended_users << friend_recipient
-    # if @friend.save
+    @new_friending = Friending.new(friending_params)
+    if @new_friending.save
       flash[:success] = "Added a friend!"
-      # redirect_to edit_user_path(@user)
+      redirect_to user_path(current_user)
     else
       flash.now[:error] = "Failed to add a friend"
-      # redirect_to root_path
+      redirect_to user_path(current_user)
     end
   end
 
-  private
+  def destroy
+    @friending = Friending.find(params[:id])
 
+    if @friending.destroy
+      redirect_to user_path(current_user)
+      flash[:success] = "Removed friend successfully."
+    else
+      redirect_to user_path(current_user)
+      flash[:error] = "Failed to remove friend"
+    end
+  end
+  
+  private
   def friending_params
     params.require(:friending).permit(:friend_id, :friender_id)
   end

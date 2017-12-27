@@ -7,13 +7,11 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :profile,
                                 reject_if: :all_blank,
                                 :allow_destroy => true
-
   has_secure_password
   
   validates :password, 
             :length => { :in => 3..24 }, 
             :allow_nil => true
-
 
   has_many :posts
 
@@ -33,7 +31,6 @@ class User < ApplicationRecord
                                   :class_name => "Friending"
   has_many :users_friended_by,    :through => :received_friendings,
                                   :source => :friend_initiator
-
   
   def generate_token
     begin

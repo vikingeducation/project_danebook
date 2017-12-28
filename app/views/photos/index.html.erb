@@ -1,16 +1,15 @@
 <% content_for :title do %>
   <title>Photos</title>
 <% end %>
-
 <div class="container">
   <div class="pages">
-    <%= render partial: '/shared/toolbar' %>
+    <%= render partial: '/shared/toolbar', locals: { user: current_user, profile: current_user.profile } %>
     <div class="row about-title">
       <div class="col-md-10">
         <h3>Photos</h3>
       </div>
       <div class="col-md-2">
-        <button class="btn btn-primary">Add Photo</button>
+        <%= button_to "Add Photo", new_photo_path, class:"btn btn-primary", method: "get" %>
       </div>
     </div>
     <div class="row about-container">

@@ -44,6 +44,9 @@ group :development, :test do
   gem 'capybara'
   gem 'launchy'
   gem 'pry'
+  gem 'figaro'
+  gem 'paperclip'
+  gem 'aws-sdk'
 end
 
 group :development do

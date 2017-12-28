@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   resources :likes
   resources :comments
   resources :friendings
+  resources :photos
 
-  get "/static_pages/photos", to: "static_pages#photos", as: "photos"
+  # get "/static_pages/photos", to: "static_pages#photos", as: "photos"
 end

@@ -14,6 +14,7 @@ class User < ApplicationRecord
             :allow_nil => true
 
   has_many :posts
+  has_many :photos, :dependent => :destroy
 
   has_many :likes,
            :dependent => :destroy

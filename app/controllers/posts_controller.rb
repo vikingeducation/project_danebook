@@ -28,9 +28,6 @@ class PostsController < ApplicationController
     binding.pry
   end
 
-  def post_params
-     params.require(:post).permit(:body, :user_id)
-  end
 
   def destroy
     session[:return_to] = request.referer
@@ -45,6 +42,11 @@ class PostsController < ApplicationController
   end
 
   private
+  
+  def post_params
+     params.require(:post).permit(:body, :user_id)
+  end
+
   def is_authorized?
     if current_user.id.to_s != params[:user_id]
       session[:return_to] ||= request.referer

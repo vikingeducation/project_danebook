@@ -13,7 +13,7 @@
     </article>
     <article class="col-md-5 signup-form">
       <h2>Sign Up</h2>
-      <%= form_for(user) do |f| %>
+      <%= form_for(photo) do |f| %>
         <%= f.fields_for :profile do |profile_fields| %>
           <div class="row names">
             <div class ="col-md-6">
@@ -52,6 +52,15 @@
               <%= label :gender, "Female" %>
               <%= profile_fields.radio_button(:gender, "male") %>
               <%= label :gender, "Male" %>
+            </div>
+          </div>
+          <div class="row">
+            <div class ="col-md-12">
+              <h4>Choose Image</h4>
+            </div>
+            <div class="col-md-12">
+              <%= f.file_field :avatar, class: "form-control" %>
+            </br>
             </div>
           </div>
         <% end %>

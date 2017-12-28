@@ -62,8 +62,8 @@ Rails.application.configure do
       # put your host name here if needed
       #   see the reading below for more details
       # NOTE: These must be the correct region for YOUR bucket
-      :s3_host_name => "s3-us-west-2.amazonaws.com",
-      :s3_region => "us-west-2",
+      :s3_host_name => "s3-eu-west-2.amazonaws.com",
+      :s3_region => "eu-west-2",
 
       # NOTE: these lines are changed to use secrets.yml
       # from the examples (which use ENV vars instead)

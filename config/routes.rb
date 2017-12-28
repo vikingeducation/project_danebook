@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   root 'users#new'
   
-  resources :static_pages, :only => [:index]
   resources :users do
     resources :posts 
   end
@@ -13,6 +12,4 @@ Rails.application.routes.draw do
   resources :comments
   resources :friendings
   resources :photos
-
-  # get "/static_pages/photos", to: "static_pages#photos", as: "photos"
 end

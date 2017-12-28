@@ -1,0 +1,27 @@
+<% content_for :title do %>
+  <title>Photos</title>
+<% end %>
+<div class="container">
+  <div class="pages">
+    <%= render partial: '/shared/toolbar', locals: { user: @user, profile: @user.profile } %>
+    <div class="row about-title">
+      <div class="col-md-12">
+        <h3>Photos</h3>
+      </div>
+    </div>
+    <div class="row about-container">
+      <div class="col-md-7">
+        <%= image_tag photo.avatar.url %>
+        <p><%= link_to "Set as Profile" %></p>
+        <p><%= link_to "Set as Cover" %></p>
+        <p><%= link_to "Delete Photo", 
+                  data: { confirm: "Are you sure?" },
+                  method: :delete %> %></p>
+      </div>
+      <div class="col-md-5">
+        <%= render partial: 'comments/post_photo_comment', locals: { user: current_user, photo: photo, comment: photo.comments.build} %>
+        <%= render partial: 'comments/view_photo_comment', locals: { user: user, photo: photo, comments: photo.comments} %> 
+      </div>
+    </div>
+  </div>
+</div>

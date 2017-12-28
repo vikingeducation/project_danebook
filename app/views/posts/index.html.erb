@@ -21,32 +21,11 @@
 
         <div class="row">
           <div class="col-md-12 section-title">
-            <h4>Photos(123) (Copied Text Area)</h4></div>
+            <h4><%= "Photos(#{@user.photos.count})" %></h4></div>
           </div>
         <div class="row section-outline">
-          <div class="col-md-4">
-            <div class="img-thumb-small">
-              <img src="https://unsplash.it/50/50"/>
-            </div>
-            <div class="img-thumb-small">
-              <img src="https://unsplash.it/50/50"/>
-            </div>
-            <div class="img-thumb-small">
-              <img src="https://unsplash.it/50/50">
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="img-thumb-small">
-              <img src="https://unsplash.it/50/50"/>
-            </div>
-            <div class="img-thumb-small">
-              <img src="https://unsplash.it/50/50"/>
-            </div>
-            <div class="img-thumb-small">
-              <img src="https://unsplash.it/50/50">
-            </div>
-          </div>
-          <div class="col-md-4">
+          <%= render partial: 'subset_photos', locals: { photos: @user.photos, user: @user} %>
+         <!--  <div class="col-md-4">
             <div class="img-thumb-small">
               <img src="https://unsplash.it/50/50"/>
             </div>
@@ -59,9 +38,9 @@
           </div>
           <div class="row">
             <div class="col-md-12 centre-text">
-              <%= link_to "See More Photos", "#" %>            
+              %= link_to "See More Photos", "#" %>            
             </div>
-          </div>
+          </div> -->
         </div>
 
         <div class="row">

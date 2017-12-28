@@ -2,9 +2,7 @@ class PhotosController < ApplicationController
   before_action :require_current_user => [:create, :destroy]
   def index
     @photos = current_user.photos
-    # @user = User.find(params[:user_id])
-    # @posts = @user.posts.order(created_at: :desc)
-    # @post = current_user.posts.build
+    @user = current_user
   end
 
   def new
@@ -14,17 +12,29 @@ class PhotosController < ApplicationController
   def create
     @photo = current_user.photos.build(photo_params)
     if @photo.save
-      # redirect_to user_posts_path(@post.user)
+      redirect_to photos_path
       flash[:success] = "Uploaded new photo!"
     else
       flash.now[:error] = "Failed to upload photo!"
-      # redirect_to user_posts_path(current_user)
+      redirect_to photos_path
+    end
+  end
+
+  def destroy
+    @user = current_user
+    @user.avatar = nil
+    if @user.save
+      redirect_to photos_path
+      flash[:success] = "Deleted photo!"
+    else
+      flash.now[:error] = "Failed to delete photo!"
+      redirect_to photos_path
     end
   end
 
   private
   def photo_params
-    params.require(:photo).permit(:user_id)
+    params.require(:photo).permit(:user_id, :avatar)
   end
 
   def is_authorized?

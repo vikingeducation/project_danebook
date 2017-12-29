@@ -4,6 +4,12 @@ Rails.application.routes.draw do
   resources :users do
     resources :posts 
   end
+
+  post "profile_photo" => 'photos#profile_photo'
+  post "cover_photo" => 'photos#cover_photo'
+
+  get "photos/:id/profile_photo" => 'photos#profile_photo'
+
   resource :sessions, :only => [:new, :create, :destroy]
   get "login" => "sessions#new"
   delete "logout" => "sessions#destroy"

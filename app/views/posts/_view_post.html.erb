@@ -2,7 +2,7 @@
   <div class="section-outline">
     <div class="row comment-title"> 
       <div class="col-md-1">
-        <%= image_tag("harry_potter_small.jpg", size: "30x30") %>
+        <%= image_tag(get_profile_photo(user), size: "30x30") %>
       </div>
       <div class="col-md-11">
          <%= link_to "#{post_user_fullname(post)}", user_path(post.user) %>

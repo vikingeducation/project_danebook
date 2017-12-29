@@ -1,34 +1,73 @@
 class PhotosController < ApplicationController
-  before_action :require_current_user => [:create, :destroy]
+  before_action :require_current_user => [:create, :destroy, :profile_photo, :cover_photo]
   def index
     @photos = current_user.photos
     @user = current_user
   end
 
   def new
+    @user = current_user
     @photo = Photo.new
   end
 
   def create
-    @photo = current_user.photos.build(photo_params)
+    # Get the picture or url depending on the method of upload
+    if params[:url]
+      @photo = current_user.photos.build
+      @photo.picture_from_url(params[:url])
+    else
+      @photo = current_user.photos.build(photo_params)
+    end
+
     if @photo.save
       redirect_to photos_path
       flash[:success] = "Uploaded new photo!"
+      # This does show the flash message when the picture is uploaded
     else
       flash.now[:error] = "Failed to upload photo!"
       redirect_to photos_path
     end
   end
 
+  def show
+    @user = current_user
+    @photo = Photo.find(params[:id])
+  end
+
   def destroy
     @user = current_user
-    @user.avatar = nil
-    if @user.save
+    @photo = Photo.find(params[:id])
+    @photo.avatar = nil
+
+
+    if @photo.destroy
       redirect_to photos_path
       flash[:success] = "Deleted photo!"
     else
       flash.now[:error] = "Failed to delete photo!"
       redirect_to photos_path
+    end
+  end
+
+  def profile_photo
+    @photo = Photo.find(params[:id])
+    @user = current_user
+    @user.profile_photo_id = @photo.id
+    @user.save 
+    flash[:success] = "Photo is now your profile photo"
+    redirect_to photo_path(@photo)
+  end
+
+  def cover_photo
+    @photo = Photo.find(params[:id])
+    @user = current_user
+    if @user.cover_photo_id.nil?
+      flash.now[:error] = "Failed to make photo your cover photo"
+    else
+      user.cover_photo_id = @photo.id
+      @user.save 
+      redirect_to photo_path(@photo)
+      flash[:success] = "Photo is now your cover photo"
     end
   end
 

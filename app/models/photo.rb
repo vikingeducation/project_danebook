@@ -15,6 +15,6 @@ class Photo < ApplicationRecord
   # Get the picture from a given url.
   # Check to make sure the 'rest-open-uri' is in your gemfile first
   def picture_from_url(url)
-      self.picture = open(url)
+      self.avatar = open(url)
   end
 end

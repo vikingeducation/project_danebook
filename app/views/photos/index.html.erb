@@ -18,30 +18,12 @@
         <div class="col-md-3">
           <% photo_set.each do |photo| %>
             <div class="img-thumb">
-              <%= image_tag photo.avatar.url(:medium) %>
+              <%=link_to image_tag(photo.avatar.url(:medium)), photo_path(photo) %>
               <p class="updated-time"><%="Updated #{photo.updated_at}" %></p>
             </div>
           <% end %>
         </div>
       <% end %>
-      <!-- <div class="col-md-3">
-        <div class="img-thumb">
-          <img src="https://unsplash.it/120/120"/>
-          <p class="updated-time">Updated 10/1/2004</p>
-        </div>
-        <div class="img-thumb">
-          <img src="https://unsplash.it/120/120"/>
-          <p class="updated-time">Updated 10/1/2004</p>
-        </div>
-        <div class="img-thumb">
-          <img src="https://unsplash.it/120/120"/>
-          <p class="updated-time">Updated 10/1/2004</p>
-        </div>
-        <div class="img-thumb">
-          <img src="https://unsplash.it/120/120"/>
-          <p class="updated-time">Updated 10/1/2004</p>
-        </div>
-      </div> -->
     </div>
   </div>
 </div>

@@ -10,17 +10,19 @@
       </div>
     </div>
     <div class="row ">
-      <%= form_for(@photo) do |f| %>
-        <div class="col-md-12 photo-main-content">
+      <div class="col-md-12 photo-main-content">
+        <%= form_tag [@photo], :multipart => true do %>
           <h4>Paste the URL to a photo on the web...</h4>
-          <p><%= button_to "Use Web Photo", class: "btn btn-primary" %></p>
-          <h2>or..</h2>
+          <p><%= text_field_tag :url, params[:url], class: "form-control", placeholder: "http://www.example.com/photo.jpg", required: true %>
+          <p><%= submit_tag "Use Web Photo", class: "btn btn-primary" %></p>
+        <% end %>
+        <h2>or..</h2>
+        <%= form_for(@photo) do |f| %>
           <h4>Select a photo from your hard drive</h4>
           <p><%= f.file_field :avatar, class: "form-control" %>
-          <p><%= f.submit "Upload Photo", class: "btn btn-block btn-success" %></p>
-          </div>
-        </div>
-      <% end %>      
+          <p><%= f.submit "Upload Photo", class: "btn btn-success" %></p>
+        <% end %>      
+      </div>
     </div>
   </div>
 </div>

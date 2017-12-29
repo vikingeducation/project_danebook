@@ -45,4 +45,8 @@ class User < ApplicationRecord
     generate_token
     save!
   end
+
+  def profile_photo
+    Photo.find(profile_photo_id) unless profile_photo_id.nil?
+  end
 end

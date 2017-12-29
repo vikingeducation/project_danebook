@@ -11,16 +11,16 @@
     </div>
     <div class="row about-container">
       <div class="col-md-7">
-        <%= image_tag photo.avatar.url %>
-        <p><%= link_to "Set as Profile" %></p>
-        <p><%= link_to "Set as Cover" %></p>
-        <p><%= link_to "Delete Photo", 
+        <%= image_tag @photo.avatar.url %>
+        <p><%= link_to "Set as Profile", profile_photo_path, data: { confirm: "Are you sure?"}, method: :post %></p>
+        <p><%= link_to "Set as Cover", cover_photo_path, data: { confirm: "Are you sure?"}, method: :post %></p>
+        <p><%= link_to "Delete Photo", photo_path(@photo),
                   data: { confirm: "Are you sure?" },
-                  method: :delete %> %></p>
+                  method: :delete %></p>
       </div>
-      <div class="col-md-5">
-        <%= render partial: 'comments/post_photo_comment', locals: { user: current_user, photo: photo, comment: photo.comments.build} %>
-        <%= render partial: 'comments/view_photo_comment', locals: { user: user, photo: photo, comments: photo.comments} %> 
+      <div class="col-md-5 right-pane">
+        <%= render partial: 'comments/post_photo_comment', locals: { user: current_user, photo: @photo, comment: Comment.new} %>
+        <%= render partial: 'comments/view_photo_comment', locals: { user: @user, photo: @photo, comments: @photo.comments} %> 
       </div>
     </div>
   </div>

@@ -49,4 +49,8 @@ class User < ApplicationRecord
   def profile_photo
     Photo.find(profile_photo_id) unless profile_photo_id.nil?
   end
+
+  def cover_photo
+    Photo.find(cover_photo_id) unless cover_photo_id.nil?
+  end
 end

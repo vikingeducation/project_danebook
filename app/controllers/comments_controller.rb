@@ -1,25 +1,22 @@
 class CommentsController < ApplicationController
-  def index
-    @user = User.find(params[:user_id])
-    @comments = @post.comments.order(created_at: :desc)
-    @comment = @post.comments.build
-  end
+  # def index
+  #   @user = User.find(params[:user_id])
+  #   @comments = @post.comments.order(created_at: :desc)
+  #   @comment = @post.comments.build
+  # end
 
-  def new
+  # def new
     # @comment = @post.comments.build
-  end
+  # end
 
   def create
     @comment = Comment.new(comments_params)
     session[:return_to] ||= request.referer
     if @comment.save
-
-    #   @comment.commentable_type == "Post" ? redirect_to user_posts_path(current_user) : redirect_to photos_path
       redirect_to session.delete(:return_to)
       flash[:success] = "Commented on the item!"
     else
       flash.now[:error] = "Failed to comment on the item"
-      # redirect_to user_posts_path(current_user)
       redirect_to session.delete(:return_to)
     end
   end
@@ -31,7 +28,6 @@ class CommentsController < ApplicationController
 
     if @comment.destroy
       flash[:success] = "Destroyed the comment"
-      # redirect_to user_posts_path(@comment.user)
       redirect_to session.delete(:return_to)
     else
       flash[:error] = "Didn't destroy the comment"

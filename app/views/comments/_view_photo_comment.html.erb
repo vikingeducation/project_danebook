@@ -1,11 +1,11 @@
-<% comments.each do |comment| %>
+<% comments.order(created_at: :desc).each do |comment| %>
   <div class="section-outline">
     <div class="row comment-title"> 
       <div class="col-md-1">
-        <%= image_tag("harry_potter_small.jpg", size: "30x30") %>
+        <%= image_tag(get_cover_photo(user), size: "30x30") %>
       </div>
       <div class="col-md-11">
-         <!-- %= link_to "#{comment_user_fullname(comment)}", user_path(comment.user) %> -->
+         <%= link_to "#{comment_user_fullname(comment)}", user_path(comment.user) %>
         <p>Said on <%= comment.created_at %></p>
       </div>
     </div>
@@ -24,9 +24,9 @@
       <% end %>
     </div>
     <div class="col-md-2">
-     <!--  %= link_to "Delete", comment_path(comment),
+      <%= link_to "Delete", comment_path(comment),
            data: { confirm: "Are you sure?" },
-            method: :delete %> -->
+            method: :delete %>
     </div>
     <div class="row">
       <div class="col-md-12">

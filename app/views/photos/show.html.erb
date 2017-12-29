@@ -17,12 +17,6 @@
         <p><%= link_to "Delete Photo", photo_path(@photo),
                   data: { confirm: "Are you sure?" },
                   method: :delete %></p>
-
-       <!--  %= form_for(@user) do |f| %>
-           %= f.hidden_field :cover_photo_id, value: @photo.id %>
-           %= f.hidden_field :profile_photo_id, value: @photo.id %>
-           %= link_to "Set as Profile 2", profile_photo_path, data: { confirm: "Are you sure?"}, method: :post %>
-        % end %> -->
       </div>
       <div class="col-md-5 right-pane">
         <%= render partial: 'comments/post_photo_comment', locals: { user: current_user, photo: @photo, comment: Comment.new} %>

@@ -1,4 +1,4 @@
- <% @posts.each do |post| %>
+ <% @posts.order(created_at: :desc).each do |post| %>
   <div class="section-outline">
     <div class="row comment-title"> 
       <div class="col-md-1">

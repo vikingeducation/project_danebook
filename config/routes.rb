@@ -5,9 +5,6 @@ Rails.application.routes.draw do
     resources :posts 
   end
 
-  # post "profile_photo" => 'photos#profile_photo'
-  # get "cover_photo" => 'photos#cover_photo'
-
   get "photos/:id/cover_photo" => 'photos#cover_photo', as: "cover_photo"
   get "photos/:id/profile_photo" => 'photos#profile_photo', as: "profile_photo"
 

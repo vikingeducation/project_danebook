@@ -31,6 +31,10 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
+gem 'figaro'
+gem 'paperclip'
+gem 'aws-sdk'
+gem 'faker'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -44,9 +48,6 @@ group :development, :test do
   gem 'capybara'
   gem 'launchy'
   gem 'pry'
-  gem 'figaro'
-  gem 'paperclip'
-  gem 'aws-sdk'
 end
 
 group :development do
@@ -61,7 +62,6 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'hirb'
-  gem 'faker'
 end
 
 group :production do

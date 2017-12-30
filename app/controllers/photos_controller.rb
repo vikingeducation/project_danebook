@@ -48,32 +48,32 @@ class PhotosController < ApplicationController
     end
   end
 
-  def profile_photo
-    @photo = Photo.find(params[:id])
-    @user = current_user
-    @user.profile_photo_id = @photo.id
-    if @user.save 
-      flash[:success] = "Photo is now your profile photo"
-      redirect_to photo_path(@photo)
-    else
-      flash[:success] = "Failed to make photo your profile photo"
-      redirect_to photo_path(@photo)
-    end
-  end
+  # def profile_photo
+  #   @photo = Photo.find(params[:id])
+  #   @user = current_user
+  #   @user.profile_photo_id = @photo.id
+  #   if @user.save 
+  #     flash[:success] = "Photo is now your profile photo"
+  #     redirect_to photo_path(@photo)
+  #   else
+  #     flash[:success] = "Failed to make photo your profile photo"
+  #     redirect_to photo_path(@photo)
+  #   end
+  # end
 
-  def cover_photo
-    @photo = Photo.find(params[:id])
-    @user = current_user
+  # def cover_photo
+  #   @photo = Photo.find(params[:id])
+  #   @user = current_user
 
-    @user.cover_photo_id = @photo.id
-    if @user.save 
-      flash[:success] = "Photo is now your cover photo"
-      redirect_to photo_path(@photo)
-    else
-      flash[:success] = "Failed to make photo your cover photo"
-      redirect_to photo_path(@photo)
-    end
-  end
+  #   @user.cover_photo_id = @photo.id
+  #   if @user.save 
+  #     flash[:success] = "Photo is now your cover photo"
+  #     redirect_to photo_path(@photo)
+  #   else
+  #     flash[:success] = "Failed to make photo your cover photo"
+  #     redirect_to photo_path(@photo)
+  #   end
+  # end
 
   private
   def photo_params

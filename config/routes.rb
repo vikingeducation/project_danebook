@@ -5,8 +5,8 @@ Rails.application.routes.draw do
     resources :posts 
   end
 
-  get "photos/:id/cover_photo" => 'photos#cover_photo', as: "cover_photo"
-  get "photos/:id/profile_photo" => 'photos#profile_photo', as: "profile_photo"
+  get "users/:user_id/cover_photo/:id" => 'users#cover_photo', as: "user_cover_photo"
+  get "users/:user_id/profile_photo/:id" => 'users#profile_photo', as: "user_profile_photo"
 
   resource :sessions, :only => [:new, :create, :destroy]
   get "login" => "sessions#new"

@@ -12,8 +12,8 @@
     <div class="row about-container">
       <div class="col-md-7">
         <%= image_tag @photo.avatar.url %>
-        <p><%= link_to "Set as Profile", profile_photo_path(@photo), data: { confirm: "Are you sure?"}, method: :post %></p>
-        <p><%= link_to "Set as Cover", cover_photo_path(@photo), data: { confirm: "Are you sure?"}, method: :get %></p>
+        <p><%= link_to "Set as Profile", user_profile_photo_path(@user, @photo), data: { confirm: "Are you sure?"}, method: :post %></p>
+        <p><%= link_to "Set as Cover", user_cover_photo_path(@user, @photo), data: { confirm: "Are you sure?"}, method: :get %></p>
         <p><%= link_to "Delete Photo", photo_path(@photo),
                   data: { confirm: "Are you sure?" },
                   method: :delete %></p>

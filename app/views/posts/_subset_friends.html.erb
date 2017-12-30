@@ -2,7 +2,7 @@
   <div class="col-md-4">
     <% friend_set.each do |friend| %>
       <div class="img-thumb-small row">
-        <img class="col-md-12 friend-link" src="https://unsplash.it/50/50"/>
+        <%= image_tag(get_profile_photo(friend), size: "50") %>
         <%= link_to "#{user_fullname(friend)}", user_path(friend), class: "col-md-12" %>
       </div>
     <% end %>

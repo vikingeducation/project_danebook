@@ -18,7 +18,7 @@
         <div class="col-md-3">
           <% photo_set.each do |photo| %>
             <div class="img-thumb">
-              <%=link_to image_tag(photo.avatar.url(:medium)), photo_path(photo) %>
+              <%=link_to image_tag(photo.avatar.url(:medium), size: "150" ), photo_path(photo) %>
               <p class="updated-time"><%="Updated #{photo.updated_at}" %></p>
             </div>
           <% end %>

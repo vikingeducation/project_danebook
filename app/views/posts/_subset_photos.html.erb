@@ -2,7 +2,7 @@
   <div class="col-md-4">
     <% photo_set.each do |photo| %>
       <div class="img-thumb-small">
-        <%= image_tag photo.avatar.url(:thumb) %>
+        <%= image_tag photo.avatar.url(:thumb), size: "50" %>
       </div>
     <% end %>
   </div>

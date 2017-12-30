@@ -85,6 +85,7 @@ Rails.application.configure do
 
   config.active_record.dump_schema_after_migration = false
 
+
   config.paperclip_defaults = {
   # Don't forget to make S3 your storage option!
   :storage => :s3,
@@ -102,6 +103,8 @@ Rails.application.configure do
       :bucket => Rails.application.secrets.s3_bucket_name,
       :access_key_id => Rails.application.secrets.aws_access_key_id,
       :secret_access_key => Rails.application.secrets.aws_secret_access_key
+
     }
   }
+  config.secret_key_base = ENV["SECRET_KEY_BASE"]
 end

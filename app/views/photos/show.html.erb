@@ -19,6 +19,35 @@
                   method: :delete %></p>
       </div>
       <div class="col-md-5 right-pane">
+        <div class="row">
+          <div class="col-md-2"> 
+            <%= image_tag(get_profile_photo(@user), size: "55x55") %>
+          </div>
+          <div class="col-md-10"> 
+            <%= link_to user_fullname(@user), user_path(@user) %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <% if current_user_liked?(@photo) %>
+              <%= link_to "Unlike", like_path(Like.find_by(user: current_user, likeable: @photo)), method: 'delete' %>
+            <% else %>
+               <%= link_to "Like", likes_path(:like => {:likeable_id => @photo.id, :likeable_type => @photo.class.name} ), method: 'photo' %>
+            <% end %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <% if count_likes(@photo) > 0 %>
+              <p>
+                <% @photo.likes.each do |like| %>
+                  <%= link_to user_fullname(like.user), user_path(like.user) %>
+                  <% end %>
+                <%= " likes this" %>
+              </p>
+            <% end %>
+          </div>
+        </div>
         <%= render partial: 'comments/post_photo_comment', locals: { user: current_user, photo: @photo, comment: Comment.new} %>
         <%= render partial: 'comments/view_photo_comment', locals: { user: @user, photo: @photo, comments: @photo.comments} %> 
       </div>

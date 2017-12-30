@@ -32,7 +32,9 @@
       <div class="col-md-12">
         <% if count_likes(post) > 0 %>
           <p>
-            <%= link_to "#{display_likes(post)}", user_path(user) %> 
+            <% post.likes.each do |like| %>
+              <%= link_to user_fullname(like.user), user_path(like.user) %>
+              <% end %>
             <%= " likes this" %>
           </p>
         <% end %>

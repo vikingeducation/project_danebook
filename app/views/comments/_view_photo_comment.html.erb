@@ -17,10 +17,10 @@
   </div>
   <div class="row comment-links last-post">
     <div class="col-md-10">
-      <% if current_user_liked?(photo) %>
-        <%= link_to "Unlike", like_path(Like.find_by(user: current_user, likeable: photo)), method: 'delete' %>
+      <% if current_user_liked?(comment) %>
+        <%= link_to "Unlike", like_path(Like.find_by(user: current_user, likeable: comment)), method: 'delete' %>
       <% else %>
-         <%= link_to "Like", likes_path(:like => {:likeable_id => photo.id, :likeable_type => photo.class.name} ), method: 'photo' %>
+         <%= link_to "Like", likes_path(:like => {:likeable_id => comment.id, :likeable_type => comment.class.name} ), method: 'post' %>
       <% end %>
     </div>
     <div class="col-md-2">
@@ -30,8 +30,11 @@
     </div>
     <div class="row">
       <div class="col-md-12">
-        <% if count_likes(photo) > 0 %>
+        <% if count_likes(comment) > 0 %>
           <p>
+            <% comment.likes.each do |like| %>
+              <%= link_to user_fullname(like.user), user_path(like.user) %>
+              <% end %>
             <%= " likes this" %>
           </p>
         <% end %>

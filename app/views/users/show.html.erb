@@ -34,6 +34,7 @@
         </div>
         <div class="row">
           <div class="col-md-5">Currently Lives:</div>
+          <div class="col-md-7"><%= @profile.currently_lives %></div>
         </div>
         <div class="row">
           <div class="col-md-12">
@@ -69,7 +70,6 @@
         </div>
         <div class="row">
           <% if is_friend?(@user) %>
-          <%= "#{@user.profile.firstname} is user and current user is #{current_user.profile.firstname}" %>
             <%= button_to "Remove Friend", friending_path(Friending.find_by(friend_id: @user, :friender_id => current_user.id)), class: "btn btn-primary", method: 'delete' %>
           <% elsif (current_user != @user) %>
            <%= button_to "Add Friend", friendings_path(:friending => {:friend_id => @user.id, :friender_id => current_user.id} ), class: "btn btn-primary", method: 'post' %>

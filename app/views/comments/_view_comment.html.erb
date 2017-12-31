@@ -1,7 +1,7 @@
 <% comments.order(created_at: :desc).each do |comment| %>
   <div class="row comment-title">
     <div class="col-md-1">
-      <%= image_tag(get_cover_photo(comment.user), size: "30x30") %>
+      <%= image_tag(get_profile_photo(comment.user), size: "30x30") %>
     </div>
     <div class="col-md-11">
       <p><%= link_to "#{comment_user_fullname(comment)}", user_path(comment.user) %> Said on <%= comment.created_at %></p>

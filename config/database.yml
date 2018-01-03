@@ -23,13 +23,13 @@ default: &default
 
 development:
   <<: *default
-  database: assignment_danebook_goes_live_development
+  database: project_danebook_development
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
   # When left blank, postgres will use the default role. This is
   # the same name as the operating system user that initialized the database.
-  #username: assignment_danebook_goes_live
+  #username: project_danebook
 
   # The password associated with the postgres role (username).
   #password:
@@ -57,7 +57,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: assignment_danebook_goes_live_test
+  database: project_danebook_test
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -80,6 +80,6 @@ test:
 #
 production:
   <<: *default
-  database: assignment_danebook_goes_live_production
-  username: assignment_danebook_goes_live
-  password: <%= ENV['ASSIGNMENT_DANEBOOK_GOES_LIVE_DATABASE_PASSWORD'] %>
+  database: project_danebook_production
+  username: project_danebook
+  password: <%= ENV['PROJECT_DANEBOOK_DATABASE_PASSWORD'] %>

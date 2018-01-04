@@ -1,14 +1,51 @@
-<p id="notice"><%= notice %></p>
+<main>
+  <%= render 'user_header', user: @user %>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
+  <article class="about-content">
+    <header>
+      <%= link_to 'Edit Profile', edit_user_path(@user), class: "right #{button_classes}" if @user == current_user %>
+      <h1>About</h1>
+    </header>
 
-<p>
-  <strong>Password digest:</strong>
-  <%= @user.password_digest %>
-</p>
+    <section class="personal-stats">
+      <h2>Basic Information</h2>
+      <table>
+        <tr>
+          <th>Birthday:</th>
+          <td><%= display_stat(@user, :birthday) %></td>
+        </tr>
+        <tr>
+          <th>College:</th>
+          <td><%= display_stat(@user, :college) %></td>
+        </tr>
+        <tr>
+          <th>Hometown:</th>
+          <td><%= display_stat(@user, :hometown) %></td>
+        </tr>
+        <tr>
+          <th>Currently Lives:</th>
+          <td><%= display_stat(@user, :current_town) %></td>
+        </tr>
+      </table>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+      <h2>Contact Information</h2>
+      <table>
+        <tr>
+          <th>Email:</th>
+          <td><%= display_stat(@user, :email) %></td>
+        </tr>
+        <tr>
+          <th>Telephone:</th>
+          <td><%= display_stat(@user, :phone) %></td>
+        </tr>
+      </table>
+    </section> <!-- personal-stats -->
+    <section class="about-me-copy">
+      <h2>Words to Live By</h2>
+      <p><%= display_stat(@user, :quote) %></p>
+
+      <h2>About Me</h2>
+      <p><%= display_stat(@user, :bio) %></p>
+    </section> <!-- about-me-copy -->
+  </article>
+</main>

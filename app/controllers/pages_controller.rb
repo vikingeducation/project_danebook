@@ -4,4 +4,8 @@ class PagesController < ApplicationController
 
   def my_feed
   end
+
+  def fakelook_index
+  end
+
 end

@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
+
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  skip_before_action :require_login, :only => [:new, :create]
+  before_action :require_current_user, :only => [:edit, :update, :destroy]
+
 
   def index
     @users = User.all
@@ -20,7 +24,8 @@ class UsersController < ApplicationController
 
     respond_to do |format|
       if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
+        sign_in(@user)
+        format.html { redirect_to @user, notice: "Hi #{@user.email}! Welcome to Danebook!" }
         format.json { render :show, status: :created, location: @user }
       else
         format.html { render :new }
@@ -31,7 +36,7 @@ class UsersController < ApplicationController
 
   def update
     respond_to do |format|
-      if @user.update(user_params)
+      if @current_user.update(user_params)
         format.html { redirect_to @user, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: @user }
       else
@@ -55,6 +60,6 @@ class UsersController < ApplicationController
     end
 
     def user_params
-      params.require(:user).permit(:email, :password, :password_digest)
+      params.require(:user).permit(:email, :password, :password_digest, :name, :birthday, :college, :hometown, :current_town, :phone, :quote, :bio, :headshot_pic, :cover_pic)
     end
 end

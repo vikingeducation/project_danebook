@@ -1,6 +1,10 @@
-@import "variables";
+@import "theme_and_colors";
+
+.navbar {
+  margin-bottom: 50px;
+} /* .navbar */
 
 
 .navbar-dark {
-  background-color: $brand-blue;
+  background-color: $brand-color;
 }

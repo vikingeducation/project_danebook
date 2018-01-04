@@ -1,4 +1,4 @@
-@import "variables";
+@import "theme_and_colors";
 
 .main-content {
 
@@ -25,7 +25,7 @@ article {
   margin-bottom: 20px;
   border-radius: $corner;
   header {
-    color: $brand-blue;
+    color: $brand-color;
     border-bottom: 1px solid $border;
     border-radius: $corner $corner 0px 0px;
     background-color: $brand-secondary-bg;

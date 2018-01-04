@@ -1,6 +1,79 @@
-<h1>Editing User</h1>
+<%= render 'user_header', user: @user %>
 
-<%= render 'form', user: @user %>
+<%= form_for @user do |f| %>
+  <article class="about-content">
+    <header>
+      <%= link_to 'Cancel', user_path(@user), class: "right #{button_classes}" %>
+      <h1>Editing Profile</h1>
+    </header>
 
-<%= link_to 'Show', @user %> |
-<%= link_to 'Back', users_path %>
+    <section class="personal-stats">
+      <h2>Basic Information</h2>
+      <table>
+        <tr>
+          <th>Name:</th>
+          <td>
+            <%= display_error(@user, :name) %>
+            <%= f.text_field :name, class: 'form-control' %>
+          </td>
+        </tr>
+        <tr>
+          <th>Birthday:</th>
+          <td>
+            <%= display_error(@user, :birthday) %>
+            <%= f.date_field :birthday, class: 'form-control' %>
+          </td>
+        </tr>
+        <tr>
+          <th>College:</th>
+          <td>
+            <%= display_error(@user, :college) %>
+            <%= f.text_field :college, class: 'form-control' %>
+          </td>
+        </tr>
+        <tr>
+          <th>Hometown:</th>
+          <td>
+            <%= display_error(@user, :hometown) %>
+            <%= f.text_field :hometown, class: 'form-control' %>
+          </td>
+        </tr>
+        <tr>
+          <th>Currently Lives:</th>
+          <td>
+            <%= display_error(@user, :current_town) %>
+            <%= f.text_field :current_town, class: 'form-control' %>
+          </td>
+        </tr>
+      </table>
+
+      <h2>Contact Information</h2>
+      <table>
+        <tr>
+          <th>Email:</th>
+          <td><%= @user.email %></td>
+        </tr>
+        <tr>
+          <th>Telephone:</th>
+          <td>
+            <%= display_error(@user, :phone) %>
+            <%= f.text_field :phone, class: 'form-control' %>
+          </td>
+        </tr>
+      </table>
+    </section> <!-- personal-stats -->
+    <section class="about-me-copy">
+      <h2>Words to Live By</h2>
+      <%= display_error(@user, :quote) %>
+      <%= f.text_area :quote, class: 'form-control' %>
+
+      <h2>About Me</h2>
+      <%= display_error(@user, :bio) %>
+      <%= f.text_area :bio, class: 'form-control' %>
+    </section> <!-- about-me-copy -->
+  </article>
+
+  <%= f.submit class: "#{button_classes} btn-block" %>
+
+<% end %> <!-- form_for @user -->
+

@@ -1,0 +1,18 @@
+<header class="about-header">
+  <div class="cover-photo-container">
+    <%= display_cover_pic(user) %>
+  </div> <!-- cover-photo-container -->
+  <div class="profile-pic-container">
+    <%= display_headshot(user) %>
+  </div> <!-- profile-pic-container -->
+  <h2 class="user-name"><%= user.display_name %></h2>
+  <nav>
+    <ul>
+      <li><%= link_to 'Timeline', my_feed_path %></a></li>
+      <li><%= link_to 'About', user_path(user), class: 'active' %></li>
+      <li><a href="#">Photos <span class="qty-count">(123)</span></a></li>
+      <li><a href="#">Friends <span class="qty-count">(123)</span></a></li>
+      <li><%= link_to 'Edit Profile', edit_user_path(user) %></li>
+    </ul>
+  </nav>
+</header>

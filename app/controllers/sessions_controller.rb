@@ -12,6 +12,7 @@ class SessionsController < ApplicationController
       flash[:success] = "You've successfully signed in"
       redirect_to root_url
     else
+      binding.pry
       flash.now[:error] = "We couldn't sign you in"
       render :new
     end

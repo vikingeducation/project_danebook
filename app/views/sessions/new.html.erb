@@ -3,20 +3,16 @@
 <%= form_tag session_path do %>
 
 <div class="field">
-  <%= label_tag do %>
-    Email
-    <%= text_field_tag :email %>
-  <% end %>
+  <%= label_tag :email %>
+  <%= text_field_tag :email, '', class: 'form-control' %>
 </div> <!-- field -->
 
 <div class="field">
-  <%= label_tag do %>
-    Password
-    <%= password_field_tag :password %>
-  <% end %>
+  <%= label_tag :password %>
+  <%= password_field_tag :password, '', class: 'form-control' %>
 </div> <!-- field -->
 
-  <%= submit_tag "Log in" %>
+  <%= submit_tag "Log in", class: button_classes %>
 <% end %>
 
 

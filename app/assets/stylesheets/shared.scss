@@ -1,4 +1,4 @@
-@import "variables";
+@import "theme_and_colors";
 
 body {
   background-color: $brand-background;
@@ -11,3 +11,26 @@ body {
 section {
   padding: 5%;
 }
+
+
+
+/* --------------- Alignment --------------- */
+
+.right {
+  float: right;
+} /* .right */
+
+
+/* --------------- Forms --------------- */
+
+input[type=submit] {
+  margin-top: 20px;
+}
+
+.field_with_errors input, .field_with_errors textarea, .field_with_errors select {
+  border: 1px solid red;
+}
+.error-message {
+  color: red;
+}
+

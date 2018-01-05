@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  include Pundit
   protect_from_forgery with: :exception
 
   # locks down everything sitewide, then we'll go to other controllers to permit actions
@@ -23,6 +24,11 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_user
 
+  def current_user?
+    params[:id].to_i == current_user.id || params[:user_id].to_i == current_user.id
+  end
+  helper_method :current_user?
+
   def signed_in_user?
     !!current_user
   end
@@ -36,9 +42,10 @@ class ApplicationController < ActionController::Base
   end
 
   def require_current_user
-    unless params[:id] == current_user.id.to_s
-      flash[:error] = "You're not authorized to view this"
-      redirect_to root_url
+    unless current_user?
+      respond_to do |format|
+        format.html { redirect_to root_path, notice: "You're not authorized to view this" }
+      end
     end
   end
 

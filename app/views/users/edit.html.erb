@@ -70,6 +70,15 @@
       <h2>About Me</h2>
       <%= display_error(@user, :bio) %>
       <%= f.text_area :bio, class: 'form-control' %>
+
+      <h2>Photos</h2>
+      <%= f.label :headshot_pic %>
+      <%= display_error(@user, :headshot_pic) %>
+      <%= f.text_field :headshot_pic, class: 'form-control' %>
+
+      <%= f.label :cover_pic %>
+      <%= display_error(@user, :cover_pic) %>
+      <%= f.text_field :cover_pic, class: 'form-control' %>
     </section> <!-- about-me-copy -->
   </article>
 

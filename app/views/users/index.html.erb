@@ -15,9 +15,9 @@
   <tbody>
     <% @users.each do |user| %>
       <tr>
-        <td><%= user.email %></td>
+        <td><%= user.display_name %></td>
         <td><%= user.created_at.to_date %></td>
-        <td><%= link_to 'Show', user %></td>
+        <td><%= link_to 'Timeline', user_timelines_path(user) %></td>
         <td><%= link_to 'Edit', edit_user_path(user) %></td>
         <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

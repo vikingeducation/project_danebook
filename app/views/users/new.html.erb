@@ -4,6 +4,12 @@
 <%= form_for(@user) do |f| %>
 
   <div class="field">
+    <%= f.label :name %>
+    <%= display_error(@user, :name) %>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+
+  <div class="field">
     <%= f.label :email %>
     <%= display_error(@user, :email) %>
     <%= f.text_field :email, class: 'form-control' %>

@@ -9,10 +9,19 @@ body {
 }
 
 section {
-  padding: 5%;
+  padding: 2% 5%;
 }
 
-
+footer {
+  clear: both;
+  overflow: auto;
+  background-color: $brand-secondary-bg;
+  padding: $padding;
+  a {
+    font-size: 0.75em;
+    margin-right: 15px;
+  }
+}
 
 /* --------------- Alignment --------------- */
 

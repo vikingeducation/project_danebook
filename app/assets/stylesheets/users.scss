@@ -4,18 +4,22 @@
 .about-header {
   position: relative;
   margin-bottom: 20px;
-  border: 1px solid black;
+  background-color: white;
+  border: $border;
 }
 
 .cover-photo-container {
   width: 100%;
   img {
+  border-radius: $corner $corner 0px 0px;
+
     width: 100%;
     height: auto;
   }
 }
 
 .profile-pic-container {
+  background-color: $brand-background;
   position: absolute;
   bottom: 15px;
   left: 15px;
@@ -30,6 +34,7 @@
 
 
 .about-header {
+  border-radius: $corner;
   h2.user-name {
     position: absolute;
     left: 180px;
@@ -43,7 +48,7 @@
   }
   nav {
     width: 100%;
-    border-top: 1px solid black;
+    border-top: $border;
     font-size: 0.75em;
     ul {
       list-style-type: none;
@@ -63,8 +68,8 @@
         font-weight: 700;
         text-decoration: none;
         background-color: white;
-        border-left: 1px solid black;
-        border-right: 1px solid black;
+        border-left: $border;
+        border-right: $border;
         &:hover { background-color: $secondary-color; }
       }/* a */
     }/* li */
@@ -73,7 +78,7 @@
 
 
 .about-content {
-  border: 1px solid black;
+  border: $border;
   display: grid;
   grid-template-areas: "header header"
                       "stats about-me";

@@ -11,12 +11,16 @@ $brand-background: #e9ebee;
 $brand-color-light: #A0C6F7; /* light blue */
 $secondary-color: #EEEEEE; /* light gray */
 $tertiary-color: #2C9C20; /* green */
-$border: #dddfe2;
+$border-color: #dddfe2;
 
 
 /* DIMENSIONS */
 $corner: 5px;
 $shadow: 3px 3px 3px black;
+$thumbnail-small: 35px;
+$thumbnail-medium: 55px;
+$padding: 2%;
+$border: 1px solid $border-color;
 
 
 /* from earlier html project */

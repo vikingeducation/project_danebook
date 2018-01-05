@@ -21,15 +21,15 @@
 
 article {
   background-color: white;
-  border: 1px solid $border;
+  border: $border;
   margin-bottom: 20px;
   border-radius: $corner;
   header {
     color: $brand-color;
-    border-bottom: 1px solid $border;
+    border-bottom: $border;
     border-radius: $corner $corner 0px 0px;
     background-color: $brand-secondary-bg;
-    padding: 2%;
+    padding: $padding;
     font-size: 0.75em;
   } /* header */
 }

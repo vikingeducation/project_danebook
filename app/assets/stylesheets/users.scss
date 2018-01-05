@@ -82,13 +82,16 @@
   display: grid;
   grid-template-areas: "header header"
                       "stats about-me";
-  h1 { display: inline; }
   header {
     grid-area: header;
-    border-bottom: 1px solid black;
+    border-bottom: $border;
     background-color: $secondary-color;
-    padding: 1%;
+    padding: $padding $padding 1% $padding;
     text-align: center;
+    h1 {
+      text-align: left;
+      font-size: 2.12em;
+    }
     button {
       background-color: $brand-color;
       border:0 none;
@@ -98,7 +101,14 @@
       float: right;
     }
   }/* header */
-  section { padding: 20px; }
+  section {
+    padding: 0px 20px 20px 20px;
+    h2 {
+      font-size: 1em;
+      font-weight: bold;
+      margin-top: 25px;
+    }
+  }
 }/* about-content */
 
 

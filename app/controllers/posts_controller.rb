@@ -44,6 +44,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    authorize @post
     @post.destroy
     respond_to do |format|
       format.html { redirect_to user_timelines_path(@post.user), notice: "Post '#{truncate(@post.body, length: 25)}' was successfully destroyed." }

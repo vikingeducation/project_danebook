@@ -11,7 +11,7 @@ class User < ApplicationRecord
             :allow_nil => true
 
   def display_name
-    email if name.blank?
+    name.blank? ? email : name
   end
 
 end

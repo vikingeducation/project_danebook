@@ -1,6 +1,6 @@
 puts 'Deleting existing...'
 
-resources = [User]
+resources = [User, Post]
 resources.each do |resource|
   puts "#{resource.count} #{resource}s"
   resource.destroy_all
@@ -17,7 +17,7 @@ User.create!([
 puts 'Users with profiles'
 5.times do
   user_name = Faker::HarryPotter.unique.character
-  User.create!({
+  user = User.create!({
     name: user_name,
     email: Faker::Internet.email(user_name),
     birthday: Faker::Date.birthday(15, 25),
@@ -31,9 +31,22 @@ puts 'Users with profiles'
     cover_pic: Faker::LoremPixel.image("770x230", false, 'nature'),
     password: 'password'
   })
+  puts "Building user posts"
+  3.times do
+    user.posts.create!(body: "#{Faker::HarryPotter.quote} #{Faker::Lorem.paragraph}")
+  end
 end
 
 puts "User count: #{User.count}"
 
+# User.all.each do |user|
+#   3.times do
+#     user.posts.create!(body: "#{Faker::HarryPotter.quote} #{Faker::Lorem.paragraph}")
+#   end
+# end
 
+# User.all.each do |user|
+#   user.headshot_pic = 'headshot.png'
+#   user.save
+# end
 

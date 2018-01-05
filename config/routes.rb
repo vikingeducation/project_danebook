@@ -6,8 +6,13 @@ Rails.application.routes.draw do
   get "login" => "sessions#new"
   delete "logout" => "sessions#destroy"
 
-  resources :users
+  # users
+  resources :users do
+    resources :posts
+    resources :timelines, only: [:index]
+  end
 
+  # pages
   get 'pages/home'
   get '/home' => 'pages#home', as: 'home'
 

@@ -12,7 +12,9 @@
       <li><%= link_to 'About', user_path(user), class: 'active' %></li>
       <li><a href="#">Photos <span class="qty-count">(123)</span></a></li>
       <li><a href="#">Friends <span class="qty-count">(123)</span></a></li>
-      <li><%= link_to 'Edit Profile', edit_user_path(user) %></li>
+      <% if policy(user).edit? %>
+        <li><%= link_to 'Edit Profile', edit_user_path(user) %></li>
+      <% end %>
     </ul>
   </nav>
 </header>

@@ -17,6 +17,7 @@ class UsersController < ApplicationController
   end
 
   def edit
+    authorize @user
   end
 
   def create
@@ -35,6 +36,7 @@ class UsersController < ApplicationController
   end
 
   def update
+    authorize @user
     respond_to do |format|
       if @current_user.update(user_params)
         format.html { redirect_to @user, notice: 'Your profile has been updated.' }
@@ -47,6 +49,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
+    authorize @user
     @user.destroy
     respond_to do |format|
       format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }

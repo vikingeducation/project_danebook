@@ -14,7 +14,7 @@ class LikesController < ApplicationController
   def destroy
     set_parent
     post_author = @parent.user
-    like = Like.where("user_id = :user_id AND likeable_id = :likeable_id AND likeable_type = :likeable_type", {user_id: current_user.id, likeable_type: params[:likeable], likeable_id: @parent.id}).first
+    like = Like.find(params[:id])
     like.destroy
     redirect_to user_timelines_path(post_author)
   end

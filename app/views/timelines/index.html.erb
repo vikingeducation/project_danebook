@@ -48,9 +48,10 @@
             <p><%= post.id %>: <%= post.body %></p>
           </section>
           <footer>
-            <%= display_like_unlike(post) %> <%= link_to 'Comment' %> <%= link_to 'Delete', user_post_path(@timeline.user, post), method: :delete, data: {confirm: 'Are you sure you want to delete this post?'} if policy(@timeline.post).destroy? %>
-            <br>
-            <%= display_likes(post) %>
+            <div class="links">
+              <%= link_to 'Comment', '#' %> <%= link_to 'Delete', user_post_path(@timeline.user, post), method: :delete, data: {confirm: 'Are you sure you want to delete this post?'} if policy(@timeline.post).destroy? %>
+            </div>
+            <%= render 'likes', post: post %>
           </footer>
         </article>
       <% end %>

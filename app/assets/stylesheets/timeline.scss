@@ -22,13 +22,21 @@ article.timeline-article {
     font-size: 0.8em;
     margin: 0;
   }
-  .likes {
-    font-size: 0.75em;
-    color: gray;
-    a {
-      font-size: 1em;
-    }
-  } /* .likes */
+  footer {
+    .links {
+      text-align: right;
+      float: right;
+      margin-left: 15px;
+    } /* .links */
+    .likes {
+      font-size: 0.75em;
+      color: gray;
+      a {
+        font-size: 1em;
+      }
+    } /* .likes */
+
+  }
 } /* article.timeline-article */
 
 .status-box {

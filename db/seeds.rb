@@ -28,7 +28,7 @@ puts 'Users with profiles'
     quote: Faker::HarryPotter.quote,
     bio: Faker::Lorem.paragraph,
     headshot_pic: Faker::LoremPixel.image("150x150", false, 'people'),
-    cover_pic: Faker::LoremPixel.image("770x230", false, 'nature'),
+    cover_pic: 'http://via.placeholder.com/770x230',
     password: 'password'
   })
   puts "Building user posts"

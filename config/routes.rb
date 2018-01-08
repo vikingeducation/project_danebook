@@ -8,7 +8,9 @@ Rails.application.routes.draw do
 
   # users
   resources :users do
-    resources :posts
+    resources :likes, :defaults => { :likeable => 'Post' }
+    resources :posts do
+    end
     resources :timelines, only: [:index]
   end
 

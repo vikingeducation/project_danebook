@@ -4,8 +4,8 @@ class Timeline
 
   def initialize(user_id:)
     @user = User.find(user_id)
-    @posts = @user.posts.order(created_at: :DESC)
-    @post = @user.posts.new
+    @posts = @user.authored_posts.order(created_at: :DESC)
+    @post = @user.authored_posts.new
   end
 
 end

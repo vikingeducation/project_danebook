@@ -29,12 +29,16 @@ article.timeline-article {
       margin-left: 15px;
     } /* .links */
     .likes {
-      font-size: 0.75em;
       color: gray;
-      a {
-        font-size: 1em;
-      }
     } /* .likes */
+    .comments {
+      clear: both;
+      border-top: $border;
+      padding-top: $padding;
+      .comment {
+        // font-size: 1em;
+      }
+    } /* .comments */
 
   }
 } /* article.timeline-article */

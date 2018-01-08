@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :users do
     resources :likes, :defaults => { :likeable => 'Post' }
     resources :posts do
+      resources :comments, :defaults => { :commentable => 'Post' }
     end
     resources :timelines, only: [:index]
   end

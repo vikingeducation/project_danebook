@@ -1,0 +1,5 @@
+<%= form_for [current_user, post, comment] do |f| %>
+  <%= f.text_area :body, placeholder: 'Write a comment', class: 'form-control' %>
+  <%= f.submit "Comment", class: "#{button_classes} right" %>
+
+<% end %> <!-- form_for [post, comment] -->

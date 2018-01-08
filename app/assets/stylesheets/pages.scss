@@ -19,20 +19,7 @@
 
 } /* .sidebar-left */
 
-article {
-  background-color: white;
-  border: $border;
-  margin-bottom: 20px;
-  border-radius: $corner;
-  header {
-    color: $brand-color;
-    border-bottom: $border;
-    border-radius: $corner $corner 0px 0px;
-    background-color: $brand-secondary-bg;
-    padding: $padding;
-    font-size: 0.75em;
-  } /* header */
-}
+
 
 .status-box {
   color: $brand-secondary;

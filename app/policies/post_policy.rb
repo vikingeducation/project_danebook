@@ -6,7 +6,7 @@ class PostPolicy < ApplicationPolicy
   end
 
   def destroy?
-    # allow only if the current_user on their own timeline
+    # allow only if the current_user is on their own timeline
     record.user_id == user.id
   end
 

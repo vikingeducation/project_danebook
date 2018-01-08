@@ -50,3 +50,11 @@ puts "User count: #{User.count}"
 #   user.save
 # end
 
+post_count = Post.all.count
+posts = Post.all.sample(post_count)
+posts.each do |post|
+  post.comments.create!(body: "Really? I think #{Faker::Lorem.paragraph}.", user_id: User.all.sample.id)
+end
+ p = Post.find(25)
+ p.comments.create!(body: "Really? I think #{Faker::Lorem.paragraph}.", user_id: 26)
+

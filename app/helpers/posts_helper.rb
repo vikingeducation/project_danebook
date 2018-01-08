@@ -2,7 +2,7 @@ module PostsHelper
 
   def display_like_unlike(post)
     if current_user.posts_they_like.include?(post)
-      link_to 'Unlike', user_likes_path(post_id: post.id), method: :delete
+      link_to 'Unlike', user_like_path(id: 0, post_id: post.id), method: :delete
     else
       link_to 'Like', user_likes_path(post_id: post.id), method: :post
     end

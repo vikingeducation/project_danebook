@@ -9,7 +9,7 @@
   <nav>
     <ul>
       <li><%= link_to 'Timeline', user_timelines_path(user) %></a></li>
-      <li><%= link_to 'About', user_path(user), class: 'active' %></li>
+      <li><%= link_to 'About', user_path(user) %></li>
       <li><a href="#">Photos <span class="qty-count">(123)</span></a></li>
       <li><a href="#">Friends <span class="qty-count">(123)</span></a></li>
       <% if policy(user).edit? %>

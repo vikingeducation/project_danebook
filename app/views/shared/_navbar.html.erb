@@ -16,14 +16,12 @@
           <%= current_user.display_name %>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <%= link_to "Logout", logout_path, :method => :delete, class: 'dropdown-item' %>
-          <a class="dropdown-item" href="#">My Account</a>
           <%#= link_to 'Show Page', user_path(current_user), class: 'dropdown-item' %>
           <%= link_to 'About', current_user, class: 'dropdown-item' %>
           <%= link_to 'Timeline', user_timelines_path(current_user), class: 'dropdown-item' %>
 
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
+          <%= link_to "Logout", logout_path, :method => :delete, class: 'dropdown-item' %>
         </div>
       </li>
       <% else %>

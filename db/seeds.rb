@@ -1,6 +1,6 @@
 puts 'Deleting existing...'
 
-resources = [User, Post]
+resources = [Like, Comment, Post, User]
 resources.each do |resource|
   puts "#{resource.count} #{resource}s"
   resource.destroy_all
@@ -8,6 +8,7 @@ end
 
 puts '','Building new...'
 puts 'Users w/o profiles'
+User.create!(name: 'anne', email: 'anne@email.com', password: 'password')
 3.times do
   user_name = Faker::Hobbit.unique.character
   user = User.create!({

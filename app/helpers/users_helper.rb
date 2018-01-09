@@ -24,4 +24,14 @@ module UsersHelper
     end
   end
 
+  def friending_button(user)
+    if current_user == user
+    elsif current_user.friends.include?(user)
+      link_to 'Unfriend', friending_path(id: user.id), method: :delete, data: {confirm: "Are you sure you want to unfriend #{user.name}?"}, class: "#{button_classes('danger')} friend-link"
+    else
+      link_to '+ Add as Friend', friendings_path(id: user), method: :post, class: "#{button_classes} friend-link"
+    end
+
+  end
+
 end

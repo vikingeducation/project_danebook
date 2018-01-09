@@ -13,7 +13,10 @@ Rails.application.routes.draw do
       resources :comments, :defaults => { :commentable => 'Post' }
     end
     resources :timelines, only: [:index]
+    resources :friends, only: [:index]
   end
+
+  resources :friendings, :only => [:create, :destroy]
 
   # pages
   get 'pages/home'

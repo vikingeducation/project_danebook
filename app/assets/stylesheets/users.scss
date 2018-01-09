@@ -6,34 +6,6 @@
   margin-bottom: 20px;
   background-color: white;
   border: $border;
-}
-
-.cover-photo-container {
-  width: 100%;
-  img {
-  border-radius: $corner $corner 0px 0px;
-
-    width: 100%;
-    height: auto;
-  }
-}
-
-.profile-pic-container {
-  background-color: $brand-background;
-  position: absolute;
-  bottom: 15px;
-  left: 15px;
-  width: $profile-pic;
-  height: $profile-pic;
-  border: 3px solid white;
-  margin-right: 25px;
-  img {
-    width: 100%;
-  }
-}
-
-
-.about-header {
   border-radius: $corner;
   h2.user-name {
     position: absolute;
@@ -73,8 +45,39 @@
       }/* a */
     }/* li */
   }/* nav */
-}/* about-header */
+  .friend-link {
+    position: absolute;
+    z-index: 1;
+    right: 5px;
+    bottom: 50px;
+    box-shadow: $shadow;
 
+  } /* .friend-link */
+}
+
+.cover-photo-container {
+  width: 100%;
+  img {
+  border-radius: $corner $corner 0px 0px;
+
+    width: 100%;
+    height: auto;
+  }
+}
+
+.profile-pic-container {
+  background-color: $brand-background;
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  width: $profile-pic;
+  height: $profile-pic;
+  border: 3px solid white;
+  margin-right: 25px;
+  img {
+    width: 100%;
+  }
+}
 
 .about-content {
   border: $border;

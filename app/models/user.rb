@@ -11,6 +11,22 @@ class User < ApplicationRecord
   has_many :posts_they_like, through: :likes, source: :likeable, source_type: :Post
   has_many :comments_they_like, through: :likes, source: :likeable, source_type: :Comment
 
+  # Friendings initiator
+  has_many :initiated_friendings,
+           :class_name => "Friending",
+           :foreign_key => :initiator_id
+  has_many :friended_users,
+           :through => :initiated_friendings,
+           :source => :friend_recipient
+
+  # Friendings recipient
+  has_many :received_friendings,
+           :class_name => "Friending",
+           :foreign_key => :recipient_id
+  has_many :users_friended_by,
+           :through => :received_friendings,
+           :source => :friend_initiator
+
 
   validates :name, presence: true
 
@@ -25,6 +41,11 @@ class User < ApplicationRecord
 
   def display_name
     name.blank? ? email : name
+  end
+
+  def friends
+    # currently, friend requests do not require approval
+    (friended_users + users_friended_by).uniq
   end
 
 end

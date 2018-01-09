@@ -43,6 +43,7 @@ group :development, :test do
   gem 'pry-awesome_print'
   gem 'better_errors' #creates console in browser for errors
   gem 'binding_of_caller' #goes with better_errors
+  gem 'rspec-rails'
 end
 
 group :development do
@@ -54,6 +55,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'bullet' #detects N+1 queries via config/initializers/bullet.rb
   gem 'rails-erd', require: false # generates ERD chart for your schema
+  gem 'guard-rspec', require: false # runs rspec automatically
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem

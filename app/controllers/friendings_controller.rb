@@ -4,10 +4,10 @@ class FriendingsController < ApplicationController
     friending_recipient = User.find(params[:id])
     if current_user.friended_users << friending_recipient
       flash[:success] = "Successfully friended #{friending_recipient.name}"
-      redirect_to user_timelines_path(friending_recipient)
+      redirect_to user_timeline_path(friending_recipient)
     else
       flash[:error] = "Failed to friend!"
-      redirect_to user_timelines_path(friending_recipient)
+      redirect_to user_timeline_path(friending_recipient)
     end
   end
 
@@ -16,7 +16,7 @@ class FriendingsController < ApplicationController
 
     current_user.friended_users.delete(unfriended_user)
     flash[:success] = "Successfully unfriended"
-    redirect_to user_timelines_path(unfriended_user)
+    redirect_to user_timeline_path(unfriended_user)
 
   end
 

@@ -8,8 +8,8 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to user_timelines_path(@post.user), notice: 'Comment was successfully created.' }
-        format.json { render 'users/timeline', status: :created, location: user_timelines_path(@post.user) }
+        format.html { redirect_to user_timeline_path(@post.user), notice: 'Comment was successfully created.' }
+        format.json { render 'users/timeline', status: :created, location: user_timeline_path(@post.user) }
       else
         format.html { render :new }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
@@ -25,7 +25,7 @@ class CommentsController < ApplicationController
     comment.destroy
 
     respond_to do |format|
-      format.html { redirect_to user_timelines_path(timeline_user), notice: "Comment '#{truncate(comment.body, length: 25)}' was successfully destroyed." }
+      format.html { redirect_to user_timeline_path(timeline_user), notice: "Comment '#{truncate(comment.body, length: 25)}' was successfully destroyed." }
       format.json { head :no_content }
     end
   end

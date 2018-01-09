@@ -17,7 +17,7 @@
       <tr>
         <td><%= user.id %>: <%= user.display_name %></td>
         <td><%= user.email %></td>
-        <td><%= link_to 'Timeline', user_timelines_path(user) %></td>
+        <td><%= link_to 'Timeline', user_timeline_path(user) %></td>
         <td><%= link_to 'Edit', edit_user_path(user) %></td>
         <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>

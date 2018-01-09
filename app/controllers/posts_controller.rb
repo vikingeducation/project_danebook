@@ -22,8 +22,8 @@ class PostsController < ApplicationController
     authorize @post
     respond_to do |format|
       if @post.save
-        format.html { redirect_to user_timelines_path(current_user), notice: 'Post was successfully created.' }
-        format.json { render 'users/timeline', status: :created, location: user_timelines_path(current_user) }
+        format.html { redirect_to user_timeline_path(current_user), notice: 'Post was successfully created.' }
+        format.json { render 'users/timeline', status: :created, location: user_timeline_path(current_user) }
       else
         format.html { render :new }
         format.json { render json: @post.errors, status: :unprocessable_entity }
@@ -47,7 +47,7 @@ class PostsController < ApplicationController
     authorize @post
     @post.destroy
     respond_to do |format|
-      format.html { redirect_to user_timelines_path(@post.user), notice: "Post '#{truncate(@post.body, length: 25)}' was successfully destroyed." }
+      format.html { redirect_to user_timeline_path(@post.user), notice: "Post '#{truncate(@post.body, length: 25)}' was successfully destroyed." }
       format.json { head :no_content }
     end
   end

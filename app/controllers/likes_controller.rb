@@ -5,10 +5,10 @@ class LikesController < ApplicationController
     set_redirect_destination
     @like = @parent.likes.new(user_id: current_user.id)
     if @like.save
-      redirect_to user_timelines_path(@redirect_destination)
+      redirect_to user_timeline_path(@redirect_destination)
     else
       flash[:error] = "Something went wrong."
-      redirect_to user_timelines_path(@redirect_destination)
+      redirect_to user_timeline_path(@redirect_destination)
     end
   end
 
@@ -18,7 +18,7 @@ class LikesController < ApplicationController
     author = @parent.user
     like = Like.find(params[:id])
     like.destroy
-    redirect_to user_timelines_path(@redirect_destination)
+    redirect_to user_timeline_path(@redirect_destination)
   end
 
 

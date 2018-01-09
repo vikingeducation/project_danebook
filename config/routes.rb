@@ -12,7 +12,7 @@ Rails.application.routes.draw do
       resources :likes
       resources :comments, :defaults => { :commentable => 'Post' }
     end
-    resources :timelines, only: [:index]
+    resource :timeline, only: [:show]
     resources :friends, only: [:index]
   end
 

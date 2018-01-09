@@ -1,9 +1,7 @@
 <% if object.has_likes? %>
   <p class='likes'>
     Likes: <%= display_likes_count(object) %>
-    <% object.likes.limit(3).map do |like| %>
-      <%= link_to like.user.name, like.user %>,
-    <% end %>
-    <%#= object.likes.map{|like| like.user.name}.join(", ") %>
+   <%= likes_list(object.likes) %>...
   </p>
 <% end %>
+

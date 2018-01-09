@@ -4,9 +4,9 @@ module CommentsHelper
     like = Like.current_user_like(comment, current_user)
 
     if current_user.comments_they_like.include?(comment)
-      link_to 'Unlike', user_like_path(id: like, comment_id: comment.id), method: :delete
+      link_to 'Unlike', user_post_like_path(id: like, post_id: comment.commentable.id, comment_id: comment.id, likeable: 'Comment'), method: :delete
     else
-      link_to 'Like', user_likes_path(comment_id: comment.id), method: :post
+      link_to 'Like', user_post_likes_path(post_id: comment.commentable.id, comment_id: comment.id, likeable: 'Comment'), method: :post
     end
   end
 

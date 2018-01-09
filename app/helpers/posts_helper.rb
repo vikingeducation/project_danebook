@@ -4,9 +4,9 @@ module PostsHelper
     like = Like.current_user_like(post, current_user)
 
     if current_user.posts_they_like.include?(post)
-      link_to 'Unlike', user_like_path(id: like, post_id: post.id), method: :delete
+      link_to 'Unlike', user_post_like_path(id: like, post_id: post.id, likeable: 'Post'), method: :delete
     else
-      link_to 'Like', user_likes_path(post_id: post.id), method: :post
+      link_to 'Like', user_post_likes_path(post_id: post.id, likeable: 'Post'), method: :post
     end
   end
 

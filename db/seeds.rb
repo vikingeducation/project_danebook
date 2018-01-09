@@ -58,6 +58,16 @@ posts.each do |post|
   end
 end
 
+puts "Adding likes to comments"
+comment_count = Comment.all.count
+comments = Comment.all.sample(comment_count)
+comments.each do |comment|
+  (1..4).to_a.sample.times do
+    # comment.comments.create!(body: "#{Faker::Lorem.paragraph}.", user_id: User.all.sample.id)
+    comment.likes.create!(user_id: User.all.sample.id)
+  end
+end
+
 # User.all.each do |user|
 #   3.times do
 #     user.posts.create!(body: "#{Faker::HarryPotter.quote} #{Faker::Lorem.paragraph}")
@@ -69,5 +79,11 @@ end
 #   user.save
 # end
 
+
+# like = Like.new
+# like.user_id = 26
+# like.likeable_type = 'Comment'
+# like.likeable_id = 141
+# like.save
 
 

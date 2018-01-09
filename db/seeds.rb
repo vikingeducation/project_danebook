@@ -8,11 +8,19 @@ end
 
 puts '','Building new...'
 puts 'Users w/o profiles'
-User.create!([
-  {email: 'alex@email.com', password: 'password'},
-  {email: 'violet@email.com', password: 'password'},
-  {email: 'zorro@email.com', password: 'password'}
-])
+3.times do
+  user_name = Faker::Hobbit.unique.character
+  user = User.create!({
+    name: user_name,
+    email: Faker::Internet.email(user_name),
+    password: 'password'
+  })
+  puts "Building user posts"
+  3.times do
+    user.posts.create!(body: "#{Faker::Hobbit.quote} #{Faker::Lorem.paragraph}")
+  end
+end
+
 
 puts 'Users with profiles'
 5.times do
@@ -39,6 +47,16 @@ end
 
 puts "User count: #{User.count}"
 
+puts "Adding comments and likes to posts"
+post_count = Post.all.count
+posts = Post.all.sample(post_count)
+posts.each do |post|
+  (1..4).to_a.sample.times do
+    post.comments.create!(body: "#{Faker::Lorem.paragraph}.", user_id: User.all.sample.id)
+    post.likes.create!(user_id: User.all.sample.id)
+  end
+end
+
 # User.all.each do |user|
 #   3.times do
 #     user.posts.create!(body: "#{Faker::HarryPotter.quote} #{Faker::Lorem.paragraph}")
@@ -50,11 +68,5 @@ puts "User count: #{User.count}"
 #   user.save
 # end
 
-post_count = Post.all.count
-posts = Post.all.sample(post_count)
-posts.each do |post|
-  post.comments.create!(body: "Really? I think #{Faker::Lorem.paragraph}.", user_id: User.all.sample.id)
-end
- p = Post.find(25)
- p.comments.create!(body: "Really? I think #{Faker::Lorem.paragraph}.", user_id: 26)
+
 

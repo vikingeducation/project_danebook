@@ -1,6 +1,6 @@
 module PostsHelper
 
-  def display_like_unlike(post)
+  def display_post_like_unlike(post)
     like = Like.current_user_like(post, current_user)
 
     if current_user.posts_they_like.include?(post)

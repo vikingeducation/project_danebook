@@ -1,11 +1,10 @@
-<%= display_like_unlike(post) %>
 
-<% if post.has_likes? %>
+<% if object.has_likes? %>
   <p class='likes'>
-    Likes: <%= display_likes_count(post) %>
-    <% post.likes.limit(3).map do |like| %>
+    Likes: <%= display_likes_count(object) %>
+    <% object.likes.limit(3).map do |like| %>
       <%= link_to like.user.name, like.user %>,
     <% end %>
-    <%#= post.likes.map{|like| like.user.name}.join(", ") %>
+    <%#= object.likes.map{|like| like.user.name}.join(", ") %>
   </p>
 <% end %>

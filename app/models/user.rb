@@ -4,11 +4,13 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :authored_posts, class_name: :Post
 
-  has_many :likes
-  has_many :posts_they_like, through: :likes, source: :likeable, source_type: :Post
-
   has_many :comments
   has_many :authored_comments, through: :comments, source: :commentable, source_type: :Comment
+
+  has_many :likes
+  has_many :posts_they_like, through: :likes, source: :likeable, source_type: :Post
+  has_many :comments_they_like, through: :likes, source: :likeable, source_type: :Comment
+
 
   validates :name, presence: true
 

@@ -1,0 +1,10 @@
+<!-- app/views/user_mailer/welcome.html.erb -->
+<h1>Welcome!</h1>
+
+<p>
+  Hi <%= @user.profile.firstname  %>, Welcome to Danebook!
+</p>
+
+<p>
+  View your account at <%= link_to "#{user_url(@user.id)}", user_url(@user.id) %>
+</p>

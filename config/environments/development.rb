@@ -72,4 +72,9 @@ Rails.application.configure do
       :secret_access_key => Rails.application.secrets.aws_secret_access_key
     }
   }
+
+  # Setup emails
+  config.action_mailer.default_url_options = {:host => "localhost:3000"}
+
+  config.action_mailer.delivery_method = :letter_opener
 end

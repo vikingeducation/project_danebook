@@ -48,6 +48,7 @@ group :development, :test do
   gem 'capybara'
   gem 'launchy'
   gem 'pry'
+  gem 'letter_opener'
 end
 
 group :development do

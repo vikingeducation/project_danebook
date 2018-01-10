@@ -22,6 +22,7 @@ class UsersController < ApplicationController
     if @user.save
 
       permanent_sign_in(@user)
+      User.send_welcome_email(@user.id)
       flash[:success] = "Created new user!"
       redirect_to edit_user_path(@user)
     else

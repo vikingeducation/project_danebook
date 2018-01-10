@@ -65,4 +65,11 @@ class User < ApplicationRecord
   #     where("")
   #   end
   # end
+
+  def self.send_welcome_email(id)
+    # Note that the bang (!) method will blow
+    # up (roll back) the save transaction on failure
+    user = User.find(id)
+    UserMailer.welcome(user).deliver!
+  end
 end

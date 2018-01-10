@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  include Searchable
   before_create :generate_token
 
   has_one :profile, inverse_of: :user,
@@ -53,4 +54,15 @@ class User < ApplicationRecord
   def cover_photo
     Photo.find(cover_photo_id) unless cover_photo_id.nil?
   end
+
+  # def self.search(query)
+  #   if query
+  #     # Parameterize that user input!!!
+  #     where("firstname LIKE ?", "%#{query}%")
+  #   else
+  #     # If no search term provided, this returns
+  #     # a relation so we can chain this
+  #     where("")
+  #   end
+  # end
 end

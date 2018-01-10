@@ -6,7 +6,10 @@ class UsersController < ApplicationController
   before_action :require_current_user, :only => [:edit, :update, :destroy]
 
   def index
-    @users = User.all
+    # @users = User.all
+    # @users = User.search(params[:query])
+    @users = Profile.search(query_params[:query])
+    render 'search'
   end
 
   def new
@@ -74,10 +77,20 @@ class UsersController < ApplicationController
     end
   end
 
+  def search 
+    # @users = User.search(params[:query])
+    @users = Profile.search(query_params[:query])
+  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
   def set_user
     @user = User.find(params[:id])
+  end
+
+  def query_params 
+    params.permit(:query => [:firstname, :lastname])
   end
 
   def user_params

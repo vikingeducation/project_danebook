@@ -41,6 +41,12 @@ class PostsController < ApplicationController
     end
   end
 
+  def newsfeed
+    @users = current_user.users_friended_by
+    @user = current_user
+    @post = current_user.posts.build
+  end
+
   private
   
   def post_params

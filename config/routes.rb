@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get "users/:user_id/profile_photo/:id" => 'users#profile_photo', as: "user_profile_photo"
 
   # get "search/:query" => 'users#search', as: "users_search"
+  get "newsfeed" => 'posts#newsfeed', as: "newsfeed"
 
   resource :sessions, :only => [:new, :create, :destroy]
   get "login" => "sessions#new"

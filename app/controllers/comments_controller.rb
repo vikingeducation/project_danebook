@@ -13,6 +13,14 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comments_params)
     session[:return_to] ||= request.referer
     if @comment.save
+
+      # every time a comment is created that is not the author, send a notification to the post, photo owner as an asynchronous message
+
+      if @comment.user_id != current_user.id
+        User.delay.send_notification_email(@user.id)
+      end
+
+
       redirect_to session.delete(:return_to)
       flash[:success] = "Commented on the item!"
     else

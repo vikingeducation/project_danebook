@@ -1,0 +1,10 @@
+<!-- app/views/user_mailer/notification.html.erb -->
+<h1>See what's happening on Danebook!</h1>
+
+<p>
+  Hi <%= @user.profile.firstname  %>, Notification of a comment!
+</p>
+
+<p>
+  View your account at <%= link_to "#{user_url(@user.id)}", user_url(@user.id) %>
+</p>

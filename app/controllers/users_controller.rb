@@ -20,7 +20,6 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-
       permanent_sign_in(@user)
       User.delay.send_welcome_email(@user.id)
       flash[:success] = "Created new user!"

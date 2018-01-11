@@ -19,7 +19,7 @@
                 <%= image_tag(get_profile_photo(user), size: "30x30") %>
               </div>
               <div class="col-md-11">
-                 <%= link_to "#{user_fullname(post)}", user_path(user) %>
+                 <%= link_to "#{user_fullname(user)}", user_path(user) %>
               </div>
             <% end %>
 

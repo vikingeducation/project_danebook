@@ -35,6 +35,7 @@ gem 'figaro'
 gem 'paperclip'
 gem 'aws-sdk'
 gem 'faker'
+gem 'delayed_job_active_record'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

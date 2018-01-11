@@ -8,7 +8,7 @@ class UsersController < ApplicationController
   def index
     # @users = User.all
     # @users = User.search(params[:query])
-    @users = Profile.search(query_params[:query])
+    @users = User.joins(:profile).search(query_params[:query])
     render 'search'
   end
 
@@ -22,7 +22,7 @@ class UsersController < ApplicationController
     if @user.save
 
       permanent_sign_in(@user)
-      User.send_welcome_email(@user.id)
+      User.delay.send_welcome_email(@user.id)
       flash[:success] = "Created new user!"
       redirect_to edit_user_path(@user)
     else

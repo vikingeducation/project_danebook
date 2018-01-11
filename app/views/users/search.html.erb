@@ -3,7 +3,6 @@
 <% end %>
 <div class="container">
   <div class="pages">
-     <!-- %= render partial: '/shared/toolbar', locals: { user: current_user, profile: @user.profile } %> -->
     <div class="row about-title">
       <div class="col-md-12">
         <h3>Search</h3>
@@ -11,21 +10,29 @@
     </div>
     <div class="row about-container">
       <div class="col-md-12">
-          <!-- <div class="col-md-12"> -->
         <% @users.each do |user| %>
-          <div class="row">
-             <div class="col-md-1">
+          <div class="row section-title">
+             <div class="col-md-3">
                 <%= image_tag(get_profile_photo(user), size: "100x100") %>
               </div>
-            <div class="col-md-11">
+            <div class="col-md-7">
                <%= link_to "#{user_fullname(user)}", user_path(user) %>
+               <p><%="#{count_user_friends(user)} Friends"%></p>
+               <p></p>
+               <p><%="Currently lives in #{user.profile.currently_lives} Friends"%></p>
+               <p><%="From #{user.profile.hometown}"%></p>
+               <p><%="Born on #{user.profile.birthday} Friends"%></p>
+            </div>
+            <div class="col-md-2">
+              <% if is_friend?(user) %>
+                <%= button_to "Remove Friend", friending_path(Friending.find_by(friend_id: user, :friender_id => current_user.id)), class: "btn btn-primary", method: 'delete' %>
+              <% elsif (current_user != user) %>
+               <%= button_to "Add Friend", friendings_path(:friending => {:friend_id => user.id, :friender_id => current_user.id} ), class: "btn btn-primary", method: 'post' %>
+              <% end %>
             </div>
           </div>
         <% end %>
-          <!-- </div> -->
-        
       </div>
-     
     </div>
   </div>
 </div>

@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     resource :timeline, only: [:show]
     resource :feed, only: [:show]
     resources :friends, only: [:index]
+    resources :photos, only: [:index]
   end
 
   resources :friendings, :only => [:create, :destroy]

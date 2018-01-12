@@ -1,0 +1,18 @@
+<%= render 'users/user_header', user: @user %>
+
+<div class="photos-list">
+  <article class="user-profile">
+    <header>
+      <h1>Photos</h1>
+    </header>
+    <section>
+
+      <% 10.times do %>
+        <div class="image-tile">
+          <%= image_tag 'https://placeimg.com/150/150/nature' %>
+        </div> <!-- image-tile -->
+      <% end %>
+
+    </section>
+  </article>
+</div> <!-- row -->

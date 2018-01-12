@@ -1,7 +1,7 @@
 @import 'theme_and_colors';
 
 
-.about-header {
+.user-header {
   position: relative;
   margin-bottom: 20px;
   background-color: white;
@@ -79,7 +79,7 @@
   }
 }
 
-.about-content {
+.user-profile {
   border: $border;
   display: grid;
   grid-template-areas: "header header"
@@ -104,7 +104,7 @@
     }
   }/* header */
   section {
-    padding: 0px 20px 20px 20px;
+    padding: 10px 20px 20px 20px;
     h2 {
       font-size: 1em;
       font-weight: bold;
@@ -132,6 +132,15 @@
   grid-area: about-me;
 }
 
+/* Friends & Photos Pages */
+.friends-list, .photos-list {
+  .image-tile {
+    img {width: 100%;}
+    width: $profile-pic;
+    float: left;
+    margin: 0px 20px 20px 0px;
+  }
+} /* .friends-list */
 
 
 /* ----------------------------------- *

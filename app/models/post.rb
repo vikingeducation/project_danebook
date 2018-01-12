@@ -3,6 +3,8 @@ class Post < ApplicationRecord
   has_many :likes, as: :likeable
   has_many :comments, as: :commentable
 
+  validates :user_id, :user, :body, presence: true
+
   def has_likes?
     likes.count > 0
   end

@@ -44,6 +44,7 @@ group :development, :test do
   gem 'better_errors' #creates console in browser for errors
   gem 'binding_of_caller' #goes with better_errors
   gem 'rspec-rails'
+  gem "factory_bot_rails", "~> 4.0"
 end
 
 group :development do

@@ -36,8 +36,8 @@ puts 'Users with profiles'
     phone: Faker::PhoneNumber.phone_number,
     quote: Faker::HarryPotter.quote,
     bio: Faker::Lorem.paragraph,
-    headshot_pic: Faker::LoremPixel.image("150x150", false, 'people'),
-    cover_pic: 'http://via.placeholder.com/770x230',
+    headshot_pic: 'https://placeimg.com/150/150/people',
+    cover_pic: 'https://placeimg.com/770/230/nature',
     password: 'password'
   })
   puts "Building user posts"
@@ -75,7 +75,7 @@ end
 # end
 
 # User.all.each do |user|
-#   user.headshot_pic = 'headshot.png'
+#   user.cover_pic = 'https://placeimg.com/770/230/nature'
 #   user.save
 # end
 

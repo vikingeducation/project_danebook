@@ -10,7 +10,7 @@ class SessionsController < ApplicationController
     if @user && @user.authenticate(params[:password])
       sign_in(@user)
       flash[:success] = "You've successfully signed in"
-      redirect_to user_timeline_path(current_user)
+      redirect_to user_feed_path(current_user)
     else
       flash.now[:error] = "We couldn't sign you in"
       render :new

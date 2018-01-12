@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       resources :comments, :defaults => { :commentable => 'Post' }
     end
     resource :timeline, only: [:show]
+    resource :feed, only: [:show]
     resources :friends, only: [:index]
   end
 

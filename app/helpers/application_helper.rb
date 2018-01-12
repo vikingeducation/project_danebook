@@ -26,4 +26,8 @@ module ApplicationHelper
     end
   end
 
+  def home_link
+    current_user ? user_feed_path(current_user) : root_url
+  end
+
 end

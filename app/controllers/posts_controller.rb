@@ -34,7 +34,7 @@ class PostsController < ApplicationController
   def update
     respond_to do |format|
       if @post.update(post_params)
-        format.html { redirect_to timeline_path(@user), notice: 'Post was successfully updated.' }
+        format.html { redirect_to user_timeline_path(@user), notice: 'Post was successfully updated.' }
         format.json { render 'users/timeline', status: :ok, location: timeline_path(@user) }
       else
         format.html { render :edit }

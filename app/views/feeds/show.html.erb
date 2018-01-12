@@ -1,3 +1,5 @@
+<%= render 'users/user_header', user: @feed.user %>
+
 <div class="row top-row">
   <div class="col col-2 sidebar-left">
     <ul>
@@ -23,6 +25,10 @@
         <p>What's on Your Mind?</p>
       </section>
     </article>
+
+    <% @feed.posts.each do |post| %>
+      <%= render 'posts/post', post: post %>
+    <% end %>
 
     <article class="feed-article">
       <div class="image-container">

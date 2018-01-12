@@ -4,7 +4,7 @@
       <div class="image-container">
         <%= display_headshot(post.user) %>
       </div> <!-- image-container -->
-      <p><%= link_to post.user.display_name, post.user %></p>
+      <p><%= link_to post.user.display_name, user_timeline_path(post.user) %></p>
       <p class="posted">Posted on <%= post.created_at.to_date %></p>
     </header>
     <section>

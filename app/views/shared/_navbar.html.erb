@@ -14,9 +14,9 @@
           <%= current_user.display_name %>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <%= link_to 'About', current_user, class: 'dropdown-item' %>
-          <%= link_to 'Timeline', user_timeline_path(current_user), class: 'dropdown-item' %>
-          <%= link_to 'Feed', user_feed_path(current_user), class: 'dropdown-item' %>
+          <%= link_to 'My Feed', user_feed_path(current_user), class: 'dropdown-item' %>
+          <%= link_to 'My Timeline', user_timeline_path(current_user), class: 'dropdown-item' %>
+          <%= link_to 'My Profile', current_user, class: 'dropdown-item' %>
 
           <div class="dropdown-divider"></div>
           <%= link_to "Logout", logout_path, :method => :delete, class: 'dropdown-item' %>

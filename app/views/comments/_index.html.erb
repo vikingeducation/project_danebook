@@ -5,7 +5,7 @@
         <div class="image-container">
           <%= display_headshot(comment.user) %>
         </div> <!-- image-container -->
-        <p><%= link_to comment.user.display_name, comment.user %></p>
+        <p><%= link_to comment.user.display_name, user_timeline_path(comment.user) %></p>
         <p class="posted">Said on <%= comment.created_at.to_date %></p>
       </header>
       <section><%= comment.id %>: <%= comment.body %>

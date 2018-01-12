@@ -12,7 +12,7 @@ module UsersHelper
     if user.headshot_pic.blank?
       image_tag 'headshot-placeholder.png'
     else
-      image_tag user.headshot_pic, alt: 'Profile Pic'
+      link_to (image_tag user.headshot_pic, alt: 'Profile Pic'), user_timeline_path(user)
     end
   end
 

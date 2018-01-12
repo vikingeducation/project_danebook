@@ -16,15 +16,19 @@
       <header>Photos (123)</header>
       <section>
         <p>Photos go here.</p>
-        <%= link_to 'See more photos' %>
+        <%= link_to 'See more photos', user_photos_path(@timeline.user)  %>
       </section>
     </article>
 
     <article>
-      <header>Friends (123)</header>
+      <header>Friends (<%= @timeline.friends.count %>)</header>
       <section>
-        <p>Friends go here.</p>
-        <%= link_to 'See more friends' %>
+        <ul>
+        <% @timeline.friends.each do |friend| %>
+        <li><%= link_to friend.name, user_timeline_path(friend) %></li>
+        <% end %>
+        </ul>
+        <%= link_to 'See more friends', user_friends_path(@timeline.user) %>
       </section>
     </article>
   </div><!-- col col-4 -->

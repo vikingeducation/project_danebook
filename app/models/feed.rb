@@ -8,7 +8,8 @@ class Feed
   end
 
   def posts
-    @posts ||= Post.where(user: @user.friends).order(created_at: :DESC)
+    feed_users = @user.friends + [@user]
+    @posts ||= Post.where(user: feed_users).order(created_at: :DESC)
   end
 
 end

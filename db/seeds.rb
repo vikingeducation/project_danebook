@@ -53,7 +53,7 @@ post_count = Post.all.count
 posts = Post.all.sample(post_count)
 posts.each do |post|
   (1..4).to_a.sample.times do
-    post.comments.create!(body: "#{Faker::Lorem.paragraph}.", user_id: User.all.sample.id)
+    post.comments.create!(body: "#{Faker::Lorem.paragraph}", user_id: User.all.sample.id)
     post.likes.create!(user_id: User.all.sample.id)
   end
 end

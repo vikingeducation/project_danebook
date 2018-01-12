@@ -1,7 +1,7 @@
 <main>
   <%= render 'user_header', user: @user %>
 
-  <article class="about-content">
+  <article class="user-profile">
     <header>
       <%= link_to 'Edit Profile', edit_user_path(@user), class: "right #{button_classes}" if @user == current_user %>
       <h1>About</h1>

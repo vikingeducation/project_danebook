@@ -1,9 +1,17 @@
 <%= render 'users/user_header', user: @user %>
 
 <div class="friends-list">
-  <article>
-  <% @friends.each do |friend| %>
-      <%= link_to (image_tag friend.headshot_pic), user_feed_path(friend) %>
-  <% end %>
+  <article class="user-profile">
+    <header>
+      <h1>Friends</h1>
+    </header>
+    <section>
+
+    <% @friends.each do |friend| %>
+      <div class="image-tile">
+        <%= link_to (image_tag friend.headshot_pic), user_timeline_path(friend) %>
+      </div> <!-- image-tile -->
+    <% end %>
+    </section>
   </article>
 </div> <!-- row -->

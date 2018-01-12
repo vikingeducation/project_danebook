@@ -6,8 +6,8 @@ class Timeline
     @user = User.find(user_id)
     @posts = @user.authored_posts.order(created_at: :DESC)
     @post = @user.authored_posts.new
-    @friends = @user.friends
-    # @photos = @user.photos
+    @friends = @user.friends.sample(9)
+    # @photos = @user.photos.sample(9)
   end
 
 end

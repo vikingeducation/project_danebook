@@ -16,7 +16,7 @@
       <header>Photos (123)</header>
       <section>
         <p>Photos go here.</p>
-        <%= link_to 'See more photos', user_photos_path(@timeline.user)  %>
+        <%= link_to 'See all photos', user_photos_path(@timeline.user)  %>
       </section>
     </article>
 
@@ -25,10 +25,10 @@
       <section>
         <ul>
         <% @timeline.friends.each do |friend| %>
-        <li><%= link_to friend.name, user_timeline_path(friend) %></li>
+          <li><%= link_to friend.name, user_timeline_path(friend) %></li>
         <% end %>
         </ul>
-        <%= link_to 'See more friends', user_friends_path(@timeline.user) %>
+        <%= link_to 'See all friends', user_friends_path(@timeline.user) %>
       </section>
     </article>
   </div><!-- col col-4 -->

@@ -9,14 +9,12 @@
   <h2 class="user-name"><%= user.display_name %></h2>
   <nav>
     <ul>
-      <li><%= link_to 'Feed', user_feed_path(user) %></a></li>
+      <li><%= link_to 'Feed', user_feed_path(user) if current_user? %></a></li>
       <li><%= link_to 'Timeline', user_timeline_path(user) %></a></li>
       <li><%= link_to 'About', user_path(user) %></li>
       <li><%= link_to raw("Photos <span class='qty-count'>(#{user.id})</span>"), user_photos_path(user) %></li>
       <li><%= link_to raw("Friends <span class='qty-count'>(#{user.friends.count})</span>"), user_friends_path(user) %></li>
-      <% if policy(user).edit? %>
-        <li><%= link_to 'Edit Profile', edit_user_path(user) %></li>
-      <% end %>
+      <li><%= link_to 'Edit Profile', edit_user_path(user) if policy(user).edit? %></li>
     </ul>
   </nav>
 </header>

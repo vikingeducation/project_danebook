@@ -1,24 +1,27 @@
 class LikesController < ApplicationController
 
   def create
+    session[:return_to] ||= request.referer
+
     set_parent
-    set_redirect_destination
+    set_redirect_destination_user
     @like = @parent.likes.new(user_id: current_user.id)
     if @like.save
-      redirect_to user_timeline_path(@redirect_destination)
+      redirect_to session.delete(:return_to)
     else
       flash[:error] = "Something went wrong."
-      redirect_to user_timeline_path(@redirect_destination)
+      redirect_to session.delete(:return_to)
     end
   end
 
   def destroy
+    session[:return_to] ||= request.referer
+
     set_parent
-    set_redirect_destination
     author = @parent.user
     like = Like.find(params[:id])
     like.destroy
-    redirect_to user_timeline_path(@redirect_destination)
+    redirect_to session.delete(:return_to)
   end
 
 
@@ -36,13 +39,5 @@ class LikesController < ApplicationController
     @parent = klass_name.constantize.find(id)
   end
 
-  def set_redirect_destination
-    if @parent.class == Post
-      @redirect_destination = @parent.user
-    elsif @parent.class == Comment
-      @redirect_destination = @parent.commentable.user
-    else
-    end
-  end
 
 end

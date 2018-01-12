@@ -2,14 +2,16 @@ class CommentsController < ApplicationController
   include ActionView::Helpers::TextHelper
 
   def create
+    session[:return_to] ||= request.referer
+
     @post = Post.find(params[:post_id])
     @comment = @post.comments.new(comment_params)
     @comment.user_id = current_user.id
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to user_timeline_path(@post.user), notice: 'Comment was successfully created.' }
-        format.json { render 'users/timeline', status: :created, location: user_timeline_path(@post.user) }
+        format.html { redirect_to session.delete(:return_to), notice: 'Comment was successfully created.' }
+        format.json { render 'feeds/show', status: :created, location:  session.delete(:return_to) }
       else
         format.html { render :new }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
@@ -18,14 +20,14 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    comment = Comment.find(params[:id])
-    timeline_user = comment.commentable.user
+    session[:return_to] ||= request.referer
 
+    comment = Comment.find(params[:id])
     authorize comment
     comment.destroy
 
     respond_to do |format|
-      format.html { redirect_to user_timeline_path(timeline_user), notice: "Comment '#{truncate(comment.body, length: 25)}' was successfully destroyed." }
+      format.html { redirect_to session.delete(:return_to), notice: "Comment '#{truncate(comment.body, length: 25)}' was successfully destroyed." }
       format.json { head :no_content }
     end
   end

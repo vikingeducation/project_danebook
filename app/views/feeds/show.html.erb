@@ -10,21 +10,12 @@
       <li>stuff</li>
       <li>stuff</li>
       <li>stuff</li>
-      <li>stuff</li>
-      <li>stuff</li>
-      <li>stuff</li>
-      <li>stuff</li>
-      <li>stuff</li>
-      <li>stuff</li>
     </ul>
   </div>
   <div class="col col-6 main-content">
-    <article class="status-box">
-      <header>Make Post | Upload Video | Something Else</header>
-      <section>
-        <p>What's on Your Mind?</p>
-      </section>
-    </article>
+    <% if policy(@feed.post).create? %>
+      <%= render 'posts/form', user: @feed.user, post: @feed.post %>
+    <% end %>
 
     <% @feed.posts.each do |post| %>
       <%= render 'posts/post', post: post %>
@@ -39,17 +30,8 @@
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
       </section>
     </article>
+  </div><!-- col col-6 main-content -->
 
-    <article class="feed-article">
-      <div class="image-container">
-        <a href="https://placeholder.com"><img src="http://via.placeholder.com/350x250"></a>
-      </div> <!-- image-container -->
-      <section>
-        <h1>Some header</h1>
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-      </section>
-    </article>
-  </div>
   <div class="col col-4 sidebar-right">
     <article>
       <header>Sponsored Content</header>

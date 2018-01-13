@@ -48,7 +48,12 @@ class User < ApplicationRecord
   end
 
   def profile_photo
-    Photo.find(profile_photo_id) unless profile_photo_id.nil?
+    if profile_photo_id && photo = Photo.find(profile_photo_id) #unless profile_photo_id.nil?
+        photo
+      else
+        # Photo.default_photo #=> Photo(url: "images/harry_potter)")
+        nil
+      end
   end
 
   def cover_photo

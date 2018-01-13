@@ -4,7 +4,6 @@ class PostsController < ApplicationController
   def index
     @user = User.find(params[:user_id])
     @posts = @user.posts.order(created_at: :desc)
-    # @posts = Post.search(params[:query])
     @post = current_user.posts.build
   end
 
@@ -28,7 +27,6 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
   end
 
-
   def destroy
     session[:return_to] = request.referer
     @post = Post.find(params[:id])
@@ -42,9 +40,9 @@ class PostsController < ApplicationController
   end
 
   def newsfeed
-    @users = current_user.users_friended_by
     @user = current_user
     @post = current_user.posts.build
+    @posts = Post.newsfeed(current_user)
   end
 
   private

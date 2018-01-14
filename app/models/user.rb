@@ -50,26 +50,20 @@ class User < ApplicationRecord
   def profile_photo
     if profile_photo_id && photo = Photo.find(profile_photo_id) #unless profile_photo_id.nil?
         photo
-      else
-        # Photo.default_photo #=> Photo(url: "images/harry_potter)")
-        nil
-      end
+    else
+      # Photo.default_photo #=> Photo(url: "images/harry_potter)")
+      nil
+    end
   end
 
   def cover_photo
-    Photo.find(cover_photo_id) unless cover_photo_id.nil?
+    if cover_photo_id && photo = Photo.find(cover_photo_id)
+      photo
+      # Photo.find(cover_photo_id) unless cover_photo_id.nil?
+    else
+      nil
+    end
   end
-
-  # def self.search(query)
-  #   if query
-  #     # Parameterize that user input!!!
-  #     where("firstname LIKE ?", "%#{query}%")
-  #   else
-  #     # If no search term provided, this returns
-  #     # a relation so we can chain this
-  #     where("")
-  #   end
-  # end
 
   def self.send_welcome_email(id)
     # Note that the bang (!) method will blow

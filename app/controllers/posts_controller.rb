@@ -15,11 +15,13 @@ class PostsController < ApplicationController
     @post = current_user.posts.build(post_params)
     session[:return_to] = request.referer
     if @post.save
-      redirect_to user_posts_path(@post.user)
+      # redirect_to user_posts_path(@post.user)
+      redirect_to session.delete(:return_to)
       flash[:success] = "Created new post!"
     else
       flash.now[:error] = "Failed to Create Post!"
-      redirect_to user_posts_path(current_user)
+      redirect_to session.delete(:return_to)
+      # redirect_to user_posts_path(current_user)
     end
   end
 
@@ -46,7 +48,6 @@ class PostsController < ApplicationController
   end
 
   private
-  
   def post_params
      params.require(:post).permit(:body, :user_id)
   end

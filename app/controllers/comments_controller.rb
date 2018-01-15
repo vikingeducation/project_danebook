@@ -1,23 +1,11 @@
 class CommentsController < ApplicationController
-  # def index
-  #   @user = User.find(params[:user_id])
-  #   @comments = @post.comments.order(created_at: :desc)
-  #   @comment = @post.comments.build
-  # end
-
-  # def new
-    # @comment = @post.comments.build
-  # end
-
   def create
     @comment = Comment.new(comments_params)
     session[:return_to] ||= request.referer
     if @comment.save
 
-      # every time a comment is created that is not the author, send a notification to the post, photo owner as an asynchronous message
-
       if @comment.user_id != current_user.id
-        User.delay.send_notification_email(@user.id)
+        User.send_notification_email(@user.id)
       end
 
 

@@ -48,7 +48,7 @@ class User < ApplicationRecord
   end
 
   def profile_photo
-    if profile_photo_id && photo = Photo.find(profile_photo_id) #unless profile_photo_id.nil?
+    if profile_photo_id && photo = Photo.find(profile_photo_id) 
         photo
     else
       # Photo.default_photo #=> Photo(url: "images/harry_potter)")
@@ -59,7 +59,6 @@ class User < ApplicationRecord
   def cover_photo
     if cover_photo_id && photo = Photo.find(cover_photo_id)
       photo
-      # Photo.find(cover_photo_id) unless cover_photo_id.nil?
     else
       nil
     end
@@ -69,15 +68,13 @@ class User < ApplicationRecord
     # Note that the bang (!) method will blow
     # up (roll back) the save transaction on failure
     user = User.find(id)
-    UserMailer.welcome(user).deliver!
+    UserMailer.delay.welcome(user).deliver!
   end
 
   def self.send_notification_email(id)
     # Note that the bang (!) method will blow
     # up (roll back) the save transaction on failure
     user = User.find(id)
-    UserMailer.notification(user).deliver!
+    UserMailer.delay.notification(user).deliver!
   end
-  # handle_asynchronously :send_notification_email
-
 end

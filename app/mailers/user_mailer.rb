@@ -5,11 +5,11 @@ class UserMailer < ApplicationMailer
     @user = user
     mail(to: @user.email, subject: 'Welcome to Danebook!')
   end
-  handle_asynchronously :send_notification_email
+  # handle_asynchronously :welcome
 
   def notification(user)
     @user = user
     mail(to: @user.email, subject: 'You received a comment!')
   end
-  handle_asynchronously :notification
+  # handle_asynchronously :notification
 end

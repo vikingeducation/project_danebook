@@ -108,7 +108,7 @@ Rails.application.configure do
   }
   config.secret_key_base = ENV["SECRET_KEY_BASE"]
 
-  config.action_mailer.default_url_options = { :host => 'danebook-aa.herokuapp.com' }
+  config.action_mailer.default_url_options = { :host => 'danebook-aa.heroku.com' }
 
 
   config.action_mailer.smtp_settings = {

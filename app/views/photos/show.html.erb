@@ -24,7 +24,7 @@
             <%= image_tag(get_profile_photo(@user), size: "55x55") %>
           </div>
           <div class="col-md-10"> 
-            <%= link_to user_fullname(@user), user_path(@user) %>
+            <%= link_to user_fullname(@user), user_posts_path(@user) %>
           </div>
         </div>
         <div class="row">

@@ -18,7 +18,10 @@
     <div class="col-md-1 nav-links">
       <%= link_to "Friends(#{count_user_friends(user)})", friending_path(user) %>
     </div>
-    <div class="col-md-5 nav-links">
+    <div class="col-md-1 nav-links">
+      <%= link_to "Newsfeed", newsfeed_path(user) %>
+    </div> 
+    <div class="col-md-4 nav-links">
       <%= link_to "Edit Profile", edit_user_path(user) %>
     </div>  
   </div>

@@ -4,7 +4,7 @@
       <%= image_tag(get_profile_photo(comment.user), size: "30x30") %>
     </div>
     <div class="col-md-11">
-      <p><%= link_to "#{comment_user_fullname(comment)}", user_path(comment.user) %> Said on <%= comment.created_at %></p>
+      <p><%= link_to "#{comment_user_fullname(comment)}", user_posts_path(comment.user) %> Said on <%= comment.created_at %></p>
       <div class="row">
         <div class="col-md-12">
           <p><%= comment.body %></p>

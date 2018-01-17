@@ -16,7 +16,7 @@
                 <%= image_tag(get_profile_photo(user), size: "100x100") %>
               </div>
             <div class="col-md-7">
-               <%= link_to "#{user_fullname(user)}", user_path(user) %>
+               <%= link_to "#{user_fullname(user)}", user_posts_path(user) %>
                <p><%="#{count_user_friends(user)} Friends"%></p>
                <p></p>
                <p><%="Currently lives in #{user.profile.currently_lives} Friends"%></p>

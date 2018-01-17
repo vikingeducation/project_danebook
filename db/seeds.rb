@@ -74,10 +74,11 @@ end
 
 puts "Adding likes to comments"
 comment_count = Comment.all.count
-comments = Comment.all.sample(comment_count)
-comments.each do |comment|
-  (1..4).to_a.sample.times do
-    # comment.comments.create!(body: "#{Faker::Lorem.paragraph}.", user_id: User.all.sample.id)
+comments = Comment.all.sample(comment_count / 2)
+user_count = User.all.count
+users = User.all.sample(user_count * 0.8)
+users.each do |user|
+  comments.each do |comment|
     comment.likes.create!(user_id: User.all.sample.id)
   end
 end

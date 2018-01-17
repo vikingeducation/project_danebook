@@ -1,0 +1,13 @@
+<%= form_for comment do |f| %>
+  <div class="section-outline">
+    <div class="row">
+      <div class="col-md-12">
+        <%= f.text_area :body, class: "post-input", placeholder:"Write a comment..", size: "58x5" %>
+        <%= f.hidden_field :user_id, value: current_user.id %>
+        <%= f.hidden_field :commentable_id, value: photo.id %>
+        <%= f.hidden_field :commentable_type, value: photo.class.name %>
+        <%= f.submit "Comment", class: "btn btn-primary" %>
+      </div>
+    </div>
+  </div>
+<% end %>

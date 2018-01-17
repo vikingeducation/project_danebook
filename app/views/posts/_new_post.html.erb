@@ -1,0 +1,19 @@
+<%= form_for [user, post] do |f| %>
+  <div class="row section-title">
+    <div class="col-md-12">
+      <h4>Post</h4>
+    </div>
+  </div>
+  <div class="row about-summary">
+    <div class="col-md-12">
+      <%= f.text_area :body, class: "post-input", placeholder:"Tell the world something..",id:"post-text-area" %>
+      <%= f.hidden_field :user_id, value: post.user.id %>
+    </div>
+  </div>
+  <div class="row section-footer">
+    <div class="col-md-10"></div>
+    <div class="col-md-2">
+      <%= f.submit "Post", class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>

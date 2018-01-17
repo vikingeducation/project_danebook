@@ -1,0 +1,29 @@
+<% content_for :title do %>
+  <title>Friends</title>
+<% end %>
+<div class="container">
+  <div class="pages">
+    <%= render partial: '/shared/toolbar', locals: { user: current_user, profile: current_user.profile } %>
+    <div class="row about-title">
+      <div class="col-md-12">
+        <h3>Friends</h3>
+      </div>
+    </div>
+    <div class="row about-container">
+      <% @friends.each do |friend| %>
+        <div class="col-md-5 col-md-offset-1 friend">
+          <div class="row">
+            <div class="col-md-2">
+              <img src="https://unsplash.it/70/70"/>
+            </div>
+            <div class="col-md-6">
+              <%= link_to "#{user_fullname(friend)}", user_posts_path(friend) %>
+              <p><%="#{count_user_friends(friend)} Friends"%></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+     
+    </div>
+  </div>
+</div>

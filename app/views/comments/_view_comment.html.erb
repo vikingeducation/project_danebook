@@ -1,0 +1,29 @@
+<% comments.order(created_at: :desc).each do |comment| %>
+  <div class="row comment-title">
+    <div class="col-md-1">
+      <%= image_tag(get_profile_photo(comment.user), size: "30x30") %>
+    </div>
+    <div class="col-md-11">
+      <p><%= link_to "#{comment_user_fullname(comment)}", user_posts_path(comment.user) %> Said on <%= comment.created_at %></p>
+      <div class="row">
+        <div class="col-md-12">
+          <p><%= comment.body %></p>
+        </div>
+        <div class="row">
+          <div class="col-md-10">
+            <% if current_user_liked?(comment) %>
+              <%= link_to "Unlike", like_path(Like.find_by(user: current_user, likeable: comment)), method: 'delete' %>
+            <% else %>
+              <%= link_to "Like", likes_path(:like => {:likeable_id => comment.id, :likeable_type => comment.class.name} ), method: 'post' %>
+            <% end %>
+          </div>
+          <div class="col-md-2">
+            <%= link_to "Delete", comment_path(comment),
+           data: { confirm: "Are you sure?" },
+            method: :delete %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

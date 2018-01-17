@@ -1,0 +1,53 @@
+.homepage{
+  .navbar{
+    background-color: blue;
+    padding: 15px;
+    a {
+      color: white;
+      font-size: 250%;
+    }
+    .form-control{
+      margin-right: 20px;
+    }
+    button{
+      border: 1px solid black;
+    }
+  }
+
+  article{
+    padding: 30px 30px;
+
+    li{
+      margin: 20px 20px;
+      font-size: 150%
+    }
+    .form-control{
+      margin-top: 20px;
+    }
+    h4{
+      margin-top: 20px;
+    }
+    button{
+      margin-top: 20px;
+    }
+    .dummy-space{
+      margin-top: 40px;
+    }
+  }
+
+  #input-lastname{
+    display: inline-block;
+  }
+
+  .signup-form{
+    margin-top: 0;
+    padding-top: 0;
+  }
+
+  .gender-container{
+    margin-top: 20px;
+    label{
+      margin-right: 10px;
+    }
+  }
+}

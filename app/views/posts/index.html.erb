@@ -1,0 +1,46 @@
+<% content_for :title do %>
+  <title>Timeline</title>
+<% end %>
+<div class="container">
+  <div class="pages">
+    <%= render partial: '/shared/toolbar', locals: { user: current_user, profile: @user.profile } %>
+    <div class="row timeline-container">
+      <div class="col-md-5 left-pane">
+        <div class="row section-title">
+          <div class="col-md-12">
+            <h4>About</h4></div>
+          </div>
+        <div class="row about-summary">
+          <div class="col-md-12">
+            <p><span>Born on:</span> <%= @user.profile.birthday %></p>
+            <p><span>Went to school at:</span> <%= @user.profile.college %></p>
+            <p><span>Hometown:</span> <%= @user.profile.hometown %></p>
+            <p><span>Currently Lives:</span> <%= @user.profile.currently_lives %></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 section-title">
+            <h4><%= "Photos(#{@user.photos.count})" %></h4></div>
+          </div>
+        <div class="row section-outline">
+          <%= render partial: 'subset_photos', locals: { photos: @user.photos, user: @user} %>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12 section-title">
+            <h4><%= "Friends #{count_user_friends(@user)}"%></h4>
+          </div>
+        </div>
+        <div class="row section-outline">
+          <%= render partial: 'subset_friends', locals: { friends: @user.users_friended_by, user: @user} %>
+        </div>
+      </div>
+      <div class="col-md-6 col-md-offset-1 right-pane">
+        <%= render partial: 'new_post', locals: { user: current_user, post: @post} %>
+
+         <%= render partial: 'view_post', locals: { user: @user, post: @post} %>
+        </div>
+      </div> <!-- left pane div -->
+    </div> <!-- whole timeline content div -->
+  </div> <!-- pages div to separate stylesheet from homepage -->
+</div>        

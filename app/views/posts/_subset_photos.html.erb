@@ -1,0 +1,9 @@
+<% photos.sample(9).each_slice(3) do |photo_set| %>
+  <div class="col-md-4">
+    <% photo_set.each do |photo| %>
+      <div class="img-thumb-small">
+        <%= image_tag photo.avatar.url(:thumb), size: "50" %>
+      </div>
+    <% end %>
+  </div>
+<% end %>

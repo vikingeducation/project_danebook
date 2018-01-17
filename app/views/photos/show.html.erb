@@ -1,0 +1,56 @@
+<% content_for :title do %>
+  <title>Photos</title>
+<% end %>
+<div class="container">
+  <div class="pages">
+    <%= render partial: '/shared/toolbar', locals: { user: @user, profile: @user.profile } %>
+    <div class="row about-title">
+      <div class="col-md-12">
+        <h3>Photos</h3>
+      </div>
+    </div>
+    <div class="row about-container">
+      <div class="col-md-7">
+        <%= image_tag @photo.avatar.url, size: "525x350" %>
+        <p><%= link_to "Set as Profile", user_profile_photo_path(@user, @photo), data: { confirm: "Are you sure?"}, method: :get %></p>
+        <p><%= link_to "Set as Cover", user_cover_photo_path(@user, @photo), data: { confirm: "Are you sure?"}, method: :get %></p>
+        <p><%= link_to "Delete Photo", photo_path(@photo),
+                  data: { confirm: "Are you sure?" },
+                  method: :delete %></p>
+      </div>
+      <div class="col-md-5 right-pane">
+        <div class="row">
+          <div class="col-md-2"> 
+            <%= image_tag(get_profile_photo(@user), size: "55x55") %>
+          </div>
+          <div class="col-md-10"> 
+            <%= link_to user_fullname(@user), user_posts_path(@user) %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <% if current_user_liked?(@photo) %>
+              <%= link_to "Unlike", like_path(Like.find_by(user: current_user, likeable: @photo)), method: 'delete' %>
+            <% else %>
+               <%= link_to "Like", likes_path(:like => {:likeable_id => @photo.id, :likeable_type => @photo.class.name} ), method: 'photo' %>
+            <% end %>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <% if count_likes(@photo) > 0 %>
+              <p>
+                <% @photo.likes.each do |like| %>
+                  <%= link_to user_fullname(like.user), user_path(like.user) %>
+                  <% end %>
+                <%= " likes this" %>
+              </p>
+            <% end %>
+          </div>
+        </div>
+        <%= render partial: 'comments/post_photo_comment', locals: { user: current_user, photo: @photo, comment: Comment.new} %>
+        <%= render partial: 'comments/view_photo_comment', locals: { user: @user, photo: @photo, comments: @photo.comments} %> 
+      </div>
+    </div>
+  </div>
+</div>

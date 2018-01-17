@@ -1,0 +1,29 @@
+<% content_for :title do %>
+  <title>Photos</title>
+<% end %>
+<div class="container">
+  <div class="pages">
+    <%= render partial: '/shared/toolbar', locals: { user: @user, profile: @user.profile } %>
+    <div class="row about-title">
+      <div class="col-md-10">
+        <h3>Photos</h3>
+      </div>
+      <div class="col-md-2">
+        <%= button_to "Add Photo", new_photo_path, class:"btn btn-primary", method: "get"%>
+      </div>
+    </div>
+
+    <div class="row about-container">
+      <% @user.photos.each_slice(4) do |photo_set| %>
+        <div class="col-md-3">
+          <% photo_set.each do |photo| %>
+            <div class="img-thumb">
+              <%=link_to image_tag(photo.avatar.url(:medium), size: "150" ), photo_path(photo) %>
+              <p class="updated-time"><%="Updated #{photo.updated_at}" %></p>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

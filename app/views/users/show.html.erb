@@ -1,0 +1,81 @@
+<% content_for :title do %>
+  <title>About</title>
+<% end %>
+<div class="container">
+  <div class="pages">
+     <%= render partial: '/shared/toolbar', locals: { user: current_user, profile: @user.profile } %>
+    <!-- %= render partial: '/shared/toolbar', locals: { user: current_user, profile: current_user.profile } %> -->
+    <div class="row about-title">
+      <div class="col-md-10">
+        <h3>About</h3>
+      </div>
+      <div class="col-md-2">
+        <%= link_to "Edit your profile", edit_user_path(@user), class: "btn btn-primary" %>
+      </div>
+    </div>
+    <div class="row about-container">
+      <div class="col-md-5">
+        <div class="row">
+          <div class="col-md-12">
+            <h2>Basic Information</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-5">Birthday:</div>
+          <div class="col-md-7"><%= @profile.birthday %></div> 
+        </div>
+        <div class="row">
+          <div class="col-md-5">College:</div>
+          <div class="col-md-7"><%= @profile.college %></div> 
+        </div>
+        <div class="row">
+          <div class="col-md-5">Hometown:</div>
+          <div class="col-md-7"><%= @profile.hometown %></div> 
+        </div>
+        <div class="row">
+          <div class="col-md-5">Currently Lives:</div>
+          <div class="col-md-7"><%= @profile.currently_lives %></div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <h2>Contact Information</h2></div>
+          </div>
+        <div class="row">
+          <div class="col-md-5">Email:</div>
+          <div class="col-md-7"><%= @user.email %></div>
+        </div> 
+        <div class="row">
+          <div class="col-md-5">Telephone:</div>
+          <div class="col-md-7"><%= @profile.telephone %></div> 
+        </div>
+      </div>
+      <div class="col-md-7">
+        <div class="row">
+          <div class="col-md-12">
+            <h2>Words to Live By</h2></div>
+          </div>
+        <div class="row">
+          <div class="col-md-12">
+            <p><%= @profile.words_to_live_by %></p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <h2>About Me</h2></div>
+          </div>
+        <div class="row">
+          <div class="col-md-12">
+            <p><%= @profile.about_me %></p>
+          </div>
+        </div>
+        <div class="row">
+          <% if is_friend?(@user) %>
+            <%= button_to "Remove Friend", friending_path(Friending.find_by(friend_id: @user, :friender_id => current_user.id)), class: "btn btn-primary", method: 'delete' %>
+          <% elsif (current_user != @user) %>
+           <%= button_to "Add Friend", friendings_path(:friending => {:friend_id => @user.id, :friender_id => current_user.id} ), class: "btn btn-primary", method: 'post' %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

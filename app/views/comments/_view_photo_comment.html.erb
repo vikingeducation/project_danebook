@@ -1,0 +1,44 @@
+<% comments.order(created_at: :desc).each do |comment| %>
+  <div class="section-outline">
+    <div class="row comment-title"> 
+      <div class="col-md-1">
+        <%= image_tag(get_cover_photo(user), size: "30x30") %>
+      </div>
+      <div class="col-md-11">
+         <%= link_to "#{comment_user_fullname(comment)}", user_posts_path(comment.user) %>
+        <p>Said on <%= comment.created_at %></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <p><%= comment.body %></p>
+      </div>
+    </div>
+  </div>
+  <div class="row comment-links last-post">
+    <div class="col-md-10">
+      <% if current_user_liked?(comment) %>
+        <%= link_to "Unlike", like_path(Like.find_by(user: current_user, likeable: comment)), method: 'delete' %>
+      <% else %>
+         <%= link_to "Like", likes_path(:like => {:likeable_id => comment.id, :likeable_type => comment.class.name} ), method: 'post' %>
+      <% end %>
+    </div>
+    <div class="col-md-2">
+      <%= link_to "Delete", comment_path(comment),
+           data: { confirm: "Are you sure?" },
+            method: :delete %>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <% if count_likes(comment) > 0 %>
+          <p>
+            <% comment.likes.each do |like| %>
+              <%= link_to user_fullname(like.user), user_posts_path(like.user) %>
+              <% end %>
+            <%= " likes this" %>
+          </p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>

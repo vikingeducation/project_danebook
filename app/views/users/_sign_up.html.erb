@@ -1,0 +1,75 @@
+<div class="container">
+  <div class="row>">
+    <article class="col-md-7">
+      <div class="row dummy-space">
+      </div>
+      <h2>Connect with all your friends!</h2>
+      <ul>
+        <li>See photos and updates in your news feed.</li>
+        <li>Post your status for the world to see from your profile</li>
+        <li>Get in touch with your friends by "friending" them</li>
+        <li>Like things because you're a positive person!</li>
+      </ul>
+    </article>
+    <article class="col-md-5 signup-form">
+      <h2>Sign Up</h2>
+      <%= form_for(user) do |f| %>
+        <%= f.fields_for :profile do |profile_fields| %>
+          <div class="row names">
+            <div class ="col-md-6">
+              <%= profile_fields.text_field :firstname, id:"input-firstname", class: "form-control", placeholder: "First Name" %>
+            </div>
+            <div class="col-md-6">
+              <%= profile_fields.text_field :lastname, id:"input-lastname", class: "form-control", placeholder: "Last Name" %>
+            </div>
+          </div>
+          <div class="row">
+            <div class ="col-md-12">
+               <%= f.text_field :email, id:"inputEmail2", class: "form-control", placeholder: "Your Email" %>
+            </div>
+          </div>
+          <div class="row">
+            <div class ="col-md-12">
+              <%= f.password_field :password, id:"password2", class: "form-control", placeholder: "Your New Password" %>
+            </div>
+          </div>
+          <div class="row">
+            <div class ="col-md-12">
+              <%= f.password_field :password_confirmation, id:"password3", class: "form-control", placeholder: "Confirm New Password" %>
+            </div>
+          </div>
+          <div class="row">
+            <div class ="col-md-12">
+              <h4>Birthday</h4>
+            </div>
+            <div class="col-md-12">
+              <%= profile_fields.date_field :birthday, class: "form-control" %>
+            </div>
+          </div>
+          <div class="row gender-container">
+            <div class ="col-md-12">
+              <%= profile_fields.radio_button(:gender, "female") %>
+              <%= label :gender, "Female" %>
+              <%= profile_fields.radio_button(:gender, "male") %>
+              <%= label :gender, "Male" %>
+            </div>
+          </div>
+          <div class="row">
+            <div class ="col-md-12">
+              <h4>Choose Image</h4>
+            </div>
+            <div class="col-md-12">
+              <%= f.file_field :avatar, class: "form-control" %>
+            </br>
+            </div>
+          </div>
+        <% end %>
+        <div class="row">
+          <div class ="col-md-12">
+            <%= f.submit "Sign Up!", class: "btn btn-block btn-success" %>
+          </div>
+        </div>
+      <% end %>
+    </article>
+  </div>
+</div>

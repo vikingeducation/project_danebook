@@ -1,0 +1,18 @@
+<%= form_for comment do |f| %>
+  <div class="row">
+    <div class="col-md-12">
+      <%= f.text_area :body, class: "post-input", placeholder:"Write a comment.." %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.hidden_field :commentable_id, value: post.id %>
+      <%= f.hidden_field :commentable_type, value: post.class.name %>
+    </div>
+  </div>
+  <div class="row add-comment">
+    <div class="col-md-10">
+      <p><%= link_to "Cancel", "#" %></p>
+    </div>
+    <div class="col-md-2">
+      <%= f.submit "Comment", class: "btn btn-primary" %>
+    </div>
+  </div>
+<% end %>

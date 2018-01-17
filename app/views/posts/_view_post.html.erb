@@ -1,0 +1,47 @@
+ <% @posts.order(created_at: :desc).each do |post| %>
+  <div class="section-outline">
+    <div class="row comment-title"> 
+      <div class="col-md-1">
+        <%= image_tag(get_profile_photo(user), size: "30x30") %>
+      </div>
+      <div class="col-md-11">
+         <%= link_to "#{post_user_fullname(post)}", user_posts_path(post.user) %>
+        <p>Posted on <%= post.created_at %></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <p><%= post.body %></p>
+      </div>
+    </div>
+  </div>
+  <div class="row comment-links last-post">
+    <div class="col-md-10">
+      <% if current_user_liked?(post) %>
+        <%= link_to "Unlike", like_path(Like.find_by(user: current_user, likeable: post)), method: 'delete' %>
+      <% else %>
+         <%= link_to "Like", likes_path(:like => {:likeable_id => post.id, :likeable_type => post.class.name} ), method: 'post' %>
+      <% end %>
+    </div>
+    <div class="col-md-2">
+      <%= link_to "Delete", user_post_path(user, post),
+           data: { confirm: "Are you sure?" },
+            method: :delete %>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <% if count_likes(post) > 0 %>
+          <p>
+            <% post.likes.each do |like| %>
+              <%= link_to user_fullname(like.user), user_posts_path(like.user) %>
+              <% end %>
+            <%= " likes this" %>
+          </p>
+        <% end %>
+      </div>
+    </div>
+    <hr></hr>
+     <%= render partial: 'comments/view_comment', locals: { user: user, post: post, comments: post.comments} %> 
+     <%= render partial: 'comments/post_comment', locals: { user: current_user, post: post, comment: post.comments.build} %> 
+  </div>
+<% end %>

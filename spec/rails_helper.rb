@@ -58,4 +58,5 @@ RSpec.configure do |config|
   # config.filter_gems_from_backtrace("gem name")
   config.include StringHelper
   config.include AuthenticationMacros
+  config.include FormFillingMacros
 end

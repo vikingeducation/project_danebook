@@ -1,7 +1,7 @@
 FactoryBot.define do
 
   factory :post do
-    body "this is the post body"
+    sequence(:body){ |n| "this is the post body #{n}"}
     user
   end #post
 

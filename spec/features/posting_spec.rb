@@ -1,16 +1,12 @@
 require 'rails_helper'
 
-RSpec.feature 'Timeline', type: :feature do
+RSpec.feature 'Posting', type: :feature do
   let(:user){ create(:user) }
   before do
     visit root_path
   end
 
   context "A visitor" do
-    scenario 'can not view a timeline' do
-      visit user_timeline_path(user)
-      expect(current_path).to eq(login_path)
-    end
 
     scenario 'can not make a new post' do
       visit new_user_post_path(user)
@@ -21,10 +17,12 @@ RSpec.feature 'Timeline', type: :feature do
   context 'As a signed-in user' do
     before do
       login(user)
-      visit user_timeline_path(user)
     end
 
-    context 'Posting' do
+    context 'on their Timeline' do
+      before do
+        visit user_timeline_path(user)
+      end
 
       scenario 'can post on my own timeline' do
         post_body = 'This is a sample post'
@@ -58,14 +56,14 @@ RSpec.feature 'Timeline', type: :feature do
       end
 
       scenario "other people can't delete my posts"
-    end #Posting
+    end #Timeline
 
-    context 'Commenting' do
-    end #Commenting
-
-    context 'Liking' do
-    end #Liking
+    context 'on their Feed' do
+      before do
+        visit user_feed_path(user)
+      end
+    end #Feed
 
   end #signed-in user
 
-end
+end #Timeline

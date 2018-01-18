@@ -6,11 +6,11 @@ class Post < ApplicationRecord
   validates :user_id, :user, :body, presence: true
 
   def has_likes?
-    likes.count > 0
+    likes.any?
   end
 
   def has_comments?
-    comments.count > 0
+    comments.any?
   end
 
 end

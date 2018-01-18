@@ -4,7 +4,7 @@ class LikesController < ApplicationController
     session[:return_to] ||= request.referer
 
     set_parent
-    set_redirect_destination_user
+    # set_redirect_destination_user
     @like = @parent.likes.new(user_id: current_user.id)
     if @like.save
       redirect_to session.delete(:return_to)

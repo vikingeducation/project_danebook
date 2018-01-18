@@ -6,6 +6,6 @@ class Comment < ApplicationRecord
   validates :body, presence: true
 
   def has_likes?
-    likes.count > 0
+    likes.any?
   end
 end

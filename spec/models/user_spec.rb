@@ -148,6 +148,19 @@ RSpec.describe User, type: :model do
       end
     end
 
+    describe "#has_friends?" do
+      let(:user_1){ build(:user) }
+
+      it 'returns false if a user does not have friends' do
+        expect(user.has_friends?).to eq(false)
+      end
+
+      it 'returns true if a user has friends' do
+        user.friended_users = [user_1]
+        expect(user.has_friends?).to eq(true)
+      end
+    end
+
     describe "#post_count" do
       let(:num_posts){ 3 }
 

@@ -54,7 +54,7 @@ feature 'Authentication', type: :feature do
 
     scenario "can sign out" do
       login(existing_user)
-      click_link('Log Out')
+      logout
       expect(current_path).to eq(root_path)
     end
   end #signed-in user

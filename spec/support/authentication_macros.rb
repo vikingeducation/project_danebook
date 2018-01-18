@@ -7,4 +7,8 @@ module AuthenticationMacros
     click_button("Sign In")
   end
 
+  def logout
+    click_link('Log Out')
+  end
+
 end

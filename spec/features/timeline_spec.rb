@@ -6,8 +6,16 @@ RSpec.feature 'Timeline', type: :feature do
     visit root_path
   end
 
-  context "As a visitor" do
-    scenario 'I should not be able to make a new post'
+  context "A visitor" do
+    scenario 'can not view a timeline' do
+      visit user_timeline_path(user)
+      expect(current_path).to eq(login_path)
+    end
+
+    scenario 'can not make a new post' do
+      visit new_user_post_path(user)
+      expect(current_path).to eq(login_path)
+    end
   end #visitors
 
   context 'As a signed-in user' do

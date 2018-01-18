@@ -3,6 +3,7 @@ class SessionsController < ApplicationController
   skip_before_action :require_login, :only => [:new, :create]
 
   def new
+    redirect_to user_feed_path(current_user) if signed_in_user?
   end
 
   def create

@@ -26,10 +26,6 @@ module ApplicationHelper
     end
   end
 
-  def home_link
-    current_user ? user_feed_path(current_user) : root_url
-  end
-
   def active_if(destination_url)
     'active' if current_page?(destination_url)
   end

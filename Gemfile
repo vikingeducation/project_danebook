@@ -60,5 +60,10 @@ group :development do
   gem 'guard-rspec', require: false # runs rspec automatically
 end
 
+group :test do
+  gem 'capybara'
+  gem 'launchy'
+end
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

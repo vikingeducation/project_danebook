@@ -53,7 +53,7 @@ class PostsController < ApplicationController
     authorize @post
     @post.destroy
     respond_to do |format|
-      format.html { redirect_to redirect_to session.delete(:return_to), notice: "Post '#{truncate(@post.body, length: 25)}' was successfully destroyed." }
+      format.html { redirect_to session.delete(:return_to), notice: "Post '#{truncate(@post.body, length: 25)}' was successfully destroyed." }
       format.json { head :no_content }
     end
   end

@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   # users
   resources :users do
-    resources :posts do
+    resources :posts, except: [:index, :show] do
       resources :likes
       resources :comments, :defaults => { :commentable => 'Post' }
     end

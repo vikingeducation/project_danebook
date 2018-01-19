@@ -1,14 +1,7 @@
 class PostsController < ApplicationController
   include ActionView::Helpers::TextHelper
 
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
-
-  def index
-    @posts = Post.all
-  end
-
-  def show
-  end
+  before_action :set_post, only: [:edit, :update, :destroy]
 
   def new
     @post = Post.new

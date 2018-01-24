@@ -23,6 +23,7 @@ article.timeline-article {
     margin: 0;
   }
   footer {
+    a {color: $brand-color;}
     .right-side-links {
       text-align: right;
       float: right;
@@ -48,6 +49,7 @@ article.timeline-article {
 } /* article.timeline-article */
 
 .status-box {
+  color: $brand-secondary;
   .post-form {
     textarea  {
       margin: 0px;

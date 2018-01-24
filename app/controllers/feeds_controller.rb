@@ -4,6 +4,7 @@ class FeedsController < ApplicationController
 
   def show
     @feed = Feed.new(user_id: params[:user_id])
+    @photo = params[:photo]
   end
 
 end

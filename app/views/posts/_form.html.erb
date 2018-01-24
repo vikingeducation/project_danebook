@@ -1,13 +1,18 @@
 <article class="status-box">
-  <header>Make Post | Upload Video | Something Else</header>
+  <header><%= link_to 'Make Post', url_for(photo: 'false') %> | <%= link_to 'Upload Photo', url_for(photo: 'true') %> | Something Else</header>
+
   <div class="post-form">
-    <%= form_for [user, post] do |f| %>
-      <section>
-        <%= f.text_area :body, placeholder: "What's on Your Mind?" %>
-      </section>
-      <footer>
-        <%= f.submit "Post", class: "#{button_classes} right" %>
-      </footer>
-    <% end %> <!-- form_for @user.posts -->
+    <% if @photo == 'true' %>
+      <h1>Photo form goes here</h1>
+    <% else %>
+      <%= form_for [user, post] do |f| %>
+        <section>
+          <%= f.text_area :body, placeholder: "What's on Your Mind?" %>
+        </section>
+        <footer>
+          <%= f.submit "Post", class: "#{button_classes} right" %>
+        </footer>
+      <% end %> <!-- form_for @user.posts -->
+    <% end %>
   </div> <!-- post-form -->
 </article>

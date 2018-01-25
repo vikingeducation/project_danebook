@@ -16,4 +16,15 @@ module LikesHelper
     end
   end
 
+    def display_like_unlike(object)
+      klass = object.class.to_s
+
+      if current_user.send("#{klass.downcase.pluralize}_they_like").include?(object)
+        like = Like.current_user_like(object, current_user)
+        link_to 'Unlike', polymorphic_url([current_user, object, like], likeable: klass), method: :delete
+      else
+        link_to 'Like', polymorphic_url([current_user, object, :likes], likeable: klass), method: :post
+      end
+    end
+
 end

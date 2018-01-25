@@ -12,9 +12,9 @@
     </section>
     <footer>
       <div class="right-side-links">
-        <%= link_to 'Delete Post', user_post_path(post.user, post), method: :delete, data: {confirm: 'Are you sure you want to delete this post?'} if policy(post).destroy? %>
+        <%= link_to 'Delete Post', [post.user, post], method: :delete, data: {confirm: 'Are you sure you want to delete this?'} if policy(post).destroy? %>
       </div><!-- right-side-links -->
-      <%= display_post_like_unlike(post) %>
+      <%= display_like_unlike(post) %>
       <%= render 'shared/likes', object: post %>
       <div class="comments">
         <%= render 'comments/index', object: post %>

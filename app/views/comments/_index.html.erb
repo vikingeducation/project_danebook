@@ -10,7 +10,7 @@
       </header>
       <section><%= comment.id %>: <%= comment.body %>
 
-      <%= display_comment_like_unlike(comment) %>
+      <%= display_like_unlike(comment) %>
       <%= render 'shared/likes', object: comment %>
       </section>
       <div class="right-side-links">

@@ -16,6 +16,9 @@ Rails.application.routes.draw do
       resources :likes
       resources :comments, :defaults => { :commentable => 'Photo' }
     end
+    resources :comments, except: [:index, :show] do
+      resources :likes
+    end
     resource :timeline, only: [:show]
     resource :feed, only: [:show]
     resources :friends, only: [:index]

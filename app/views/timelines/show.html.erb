@@ -39,7 +39,7 @@
 
   <div class="col col-8 main-content">
     <% if policy(@timeline.post).create? %>
-      <%= render 'posts/form', user: @timeline.user, post: @timeline.post, photo: @timeline.photo %>
+      <%= render 'shared/activity_form', user: @timeline.user, post: @timeline.post, photo: @timeline.photo %>
     <% end %>
 
     <% @timeline.activities.each do |activity| %>

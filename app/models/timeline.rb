@@ -25,7 +25,7 @@ class Timeline
   end
 
   def sidebar_photos
-    photos.sample(9)
+    photos.sample(8)
   end
 
   def friends_count
@@ -33,7 +33,7 @@ class Timeline
   end
 
   def sidebar_friends
-    @user.friends.sample(9)
+    @user.friends.sample(8)
   end
 
 

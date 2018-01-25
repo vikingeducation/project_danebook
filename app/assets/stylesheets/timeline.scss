@@ -63,16 +63,15 @@ article.timeline-article {
     input[type=submit] {
       text-align: right;
       margin-top: 0px;
-
     }
   } /* .post-form input */
-
 } /* .status-box */
 
 
 /* SIDEBAR */
 .photo-teaser {
   img {
+    width: $thumbnail-pic;
     margin: 0px 5px 5px 0px;
   }
 } /* section.photo-teaser */

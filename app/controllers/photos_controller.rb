@@ -17,7 +17,7 @@ class PhotosController < ApplicationController
         format.html { redirect_to session.delete(:return_to), notice: 'Photo was successfully created.' }
         format.json { render 'users/timeline', status: :created, location: session.delete(:return_to) }
       else
-        format.html { render :new }
+        format.html { redirect_to session.delete(:return_to), alert: "There was a problem with your photo file. #{@photo.errors.messages[:photo_data][0]}" }
         format.json { render json: @photo.errors, status: :unprocessable_entity }
       end
     end

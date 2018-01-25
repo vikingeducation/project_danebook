@@ -17,8 +17,8 @@
       <%= display_post_like_unlike(post) %>
       <%= render 'shared/likes', object: post %>
       <div class="comments">
-        <%= render 'comments/index', post: post %>
-        <%= render 'comments/form',  post: post, comment: post.comments.new %>
+        <%= render 'comments/index', object: post %>
+        <%= render 'comments/form',  object: post, comment: post.comments.new %>
       </div> <!-- comments -->
     </footer>
   </article>

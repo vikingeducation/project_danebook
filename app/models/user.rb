@@ -10,6 +10,7 @@ class User < ApplicationRecord
 
   has_many :likes
   has_many :posts_they_like, through: :likes, source: :likeable, source_type: :Post
+  has_many :photos_they_like, through: :likes, source: :likeable, source_type: :Photo
   has_many :comments_they_like, through: :likes, source: :likeable, source_type: :Comment
 
   # Friendings initiator

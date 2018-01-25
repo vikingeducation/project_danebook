@@ -1,13 +1,40 @@
 class Timeline
 
-  attr_reader :user, :posts, :post, :friends #, :photos
+  attr_reader :user, :post, :photo
 
   def initialize(user_id:)
     @user = User.find(user_id)
-    @posts = @user.authored_posts.order(created_at: :DESC)
     @post = @user.authored_posts.new
-    @friends = @user.friends.sample(9)
-    # @photos = @user.photos.sample(9)
+    @photo = @user.photos.new
   end
+
+  def timeline_posts
+    @timeline_posts ||= [posts.to_a, photos.to_a].flatten.sort_by { |t| t[:created_at] }.reverse!
+  end
+
+  def posts
+    @posts ||= Post.where(user: @user).order(created_at: :DESC)
+  end
+
+  def photos
+    @photos ||= Photo.where(user: @user).order(created_at: :DESC)
+  end
+
+  def photos_count
+    photos.count
+  end
+
+  def sidebar_photos
+    photos.sample(9)
+  end
+
+  def friends_count
+    @user.friends.count
+  end
+
+  def sidebar_friends
+    @user.friends.sample(9)
+  end
+
 
 end

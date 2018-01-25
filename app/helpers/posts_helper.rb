@@ -9,14 +9,4 @@ module PostsHelper
     end
   end
 
-  def display_likes_count(post)
-    post.likes.count
-  end
-
-  def display_users_who_liked(post)
-    post.likes.map do |like|
-      link_to like.user.name, like.user
-    end
-  end
-
 end

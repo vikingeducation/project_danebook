@@ -14,7 +14,7 @@
       <div class="right-side-links">
         <%= link_to 'Delete Photo', user_photo_path(photo.user, photo), method: :delete, data: {confirm: 'Are you sure you want to delete this photo?'} if policy(photo).destroy? %>
       </div><!-- right-side-links -->
-      <%= display_post_like_unlike(photo) %>
+      <%= display_photo_like_unlike(photo) %>
       <%= render 'shared/likes', object: photo %>
       <div class="comments">
         <%= render 'comments/index', object: photo %>

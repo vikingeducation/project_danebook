@@ -1,8 +1,17 @@
 <div class="row">
-  <div class="col-sm-6" style="margin: 0 auto;">
 
+  <div class="col-sm-8">
+    <h1>Connect with all your friends!</h1>
+      <ul>
+        <li><strong>See photos and updates</strong> in your news feed</li>
+        <li><strong>Post your status for the world to see</strong> from your profile</li>
+        <li><strong>Get in touch with your friends</strong> by "friending" them</li>
+        <li><strong>Like things</strong> because you're a positive person!</li>
+      </ul>
+  </div><!-- col-sm-8 -->
+
+  <div class="col-sm-4">
     <h1>Sign Up</h1>
-
     <%= form_for(@user) do |f| %>
 
       <div class="field">
@@ -33,7 +42,7 @@
         <%= f.submit 'Create Account', class: button_classes('success btn-block') %>
       </div>
     <% end %>
-    <%= link_to 'Cancel', root_path, class: button_classes %>
-  </div> <!-- col-sm-6 -->
+    <%= link_to 'Sign In', login_path, class: button_classes %>
+  </div> <!-- col-sm-4 -->
 </div> <!-- row -->
 

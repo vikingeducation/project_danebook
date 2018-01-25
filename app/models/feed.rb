@@ -8,8 +8,8 @@ class Feed
     @photo = @user.photos.new
   end
 
-  def feed_posts
-    @feed_posts ||= [posts.to_a, photos.to_a].flatten.sort_by { |p| p[:created_at] }.reverse!
+  def activities
+    @activities ||= [posts.to_a, photos.to_a].flatten.sort_by { |a| a[:created_at] }.reverse!
   end
 
   def posts

@@ -42,12 +42,8 @@
       <%= render 'posts/form', user: @timeline.user, post: @timeline.post, photo: @timeline.photo %>
     <% end %>
 
-    <% @timeline.timeline_posts.each do |timeline_post| %>
-      <% if timeline_post.class == Post %>
-        <%= render 'posts/post', post: timeline_post %>
-      <% else %>
-        <%= render 'photos/photo', photo: timeline_post %>
-      <% end %>
+    <% @timeline.activities.each do |activity| %>
+      <%= render activity %>
     <% end %>
 
   </div> <!-- col col-8 -->

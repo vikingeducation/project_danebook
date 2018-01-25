@@ -8,8 +8,8 @@ class Timeline
     @photo = @user.photos.new
   end
 
-  def timeline_posts
-    @timeline_posts ||= [posts.to_a, photos.to_a].flatten.sort_by { |t| t[:created_at] }.reverse!
+  def activities
+    @activities ||= [posts.to_a, photos.to_a].flatten.sort_by { |a| a[:created_at] }.reverse!
   end
 
   def posts

@@ -17,12 +17,8 @@
       <%= render 'posts/form', user: @feed.user, post: @feed.post, photo: @feed.photo %>
     <% end %>
 
-    <% @feed.feed_posts.each do |feed_post| %>
-      <% if feed_post.class == Post %>
-        <%= render 'posts/post', post: feed_post %>
-      <% else %>
-        <%= render 'photos/photo', photo: feed_post %>
-      <% end %>
+    <% @feed.activities.each do |activity| %>
+      <%= render activity %>
     <% end %>
 
     <article class="feed-article">

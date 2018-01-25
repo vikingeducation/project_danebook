@@ -4,8 +4,9 @@ class CommentsController < ApplicationController
   def create
     session[:return_to] ||= request.referer
 
-    @post = Post.find(params[:post_id])
-    @comment = @post.comments.new(comment_params)
+    @commented_on = Post.find(params[:post_id]) if params[:post_id]
+    @commented_on = Photo.find(params[:photo_id]) if params[:photo_id]
+    @comment = @commented_on.comments.new(comment_params)
     @comment.user_id = current_user.id
 
     respond_to do |format|
@@ -35,7 +36,7 @@ class CommentsController < ApplicationController
   private
 
   def comment_params
-    params.require(:comment).permit(:body, :post_id, :user_id)
+    params.require(:comment).permit(:body, :post_id, :photo_id, :user_id)
   end
 
 end

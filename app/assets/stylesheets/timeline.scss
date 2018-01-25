@@ -18,13 +18,15 @@ article.timeline-article {
       color: gray;
     } /* .posted */
   }
-  section p {
-    font-size: 0.8em;
-    margin: 0;
-  }
-  section.photo-post {
+
+  section.activity-body {
     img { width: 100%; }
+    p {
+      font-size: 0.8em;
+      margin: 0;
+    }
   }
+
   footer {
     a {color: $brand-color;}
     .right-side-links {
@@ -42,9 +44,7 @@ article.timeline-article {
       .comment {
         margin-bottom: 20px;
         overflow: auto;
-        section {
-          margin-left: 30px;
-        } /* section */
+        border-bottom: $border;
       }
     } /* .comments */
 

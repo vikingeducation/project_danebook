@@ -6,13 +6,11 @@
       <h1>Photos</h1>
     </header>
     <section>
-
-      <% 10.times do %>
+      <% @user.photos.each do |photo| %>
         <div class="image-tile">
-          <%= image_tag 'https://placeimg.com/150/150/nature' %>
+          <%= image_tag photo.photo_data.url(:tile) %>
         </div> <!-- image-tile -->
       <% end %>
-
     </section>
   </article>
 </div> <!-- row -->

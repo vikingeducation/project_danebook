@@ -1,0 +1,25 @@
+<% unless photo.new_record? %>
+  <article class="timeline-article">
+    <header>
+      <div class="image-container">
+        <%= display_headshot(photo.user) %>
+      </div> <!-- image-container -->
+      <p><%= link_to photo.user.display_name, user_timeline_path(photo.user) %></p>
+      <p class="posted">Posted on <%= photo.created_at.to_date %></p>
+    </header>
+    <section class="photo-post">
+      <%= image_tag photo.photo_data.url(:feed) %>
+    </section>
+    <footer>
+      <div class="right-side-links">
+        <%= link_to 'Delete Photo', user_photo_path(photo.user, photo), method: :delete, data: {confirm: 'Are you sure you want to delete this photo?'} if policy(photo).destroy? %>
+      </div><!-- right-side-links -->
+      <%= display_post_like_unlike(photo) %>
+      <%= render 'shared/likes', object: photo %>
+      <div class="comments">
+        <%= render 'comments/index', object: photo %>
+        <%= render 'comments/form',  object: photo, comment: photo.comments.new %>
+      </div> <!-- comments -->
+    </footer>
+  </article>
+<% end %>

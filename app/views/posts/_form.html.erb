@@ -1,9 +1,18 @@
 <article class="status-box">
-  <header><%= link_to 'Make Post', url_for(photo: 'false') %> | <%= link_to 'Upload Photo', url_for(photo: 'true') %> | Something Else</header>
+  <header><%= link_to 'Make Post', url_for(photo_post: 'false') %> | <%= link_to 'Upload Photo', url_for(photo_post: 'true') %></header>
 
   <div class="post-form">
-    <% if @photo == 'true' %>
-      <h1>Photo form goes here</h1>
+    <% if @photo_post == 'true' %>
+      <%= form_for [user, photo] do |f| %>
+        <section>
+          <%= f.file_field :photo_data %><br>
+          <%= f.label :delete_photo_data, "Remove Photo" %>
+          <%= f.check_box :delete_photo_data %>
+        </section>
+        <footer>
+          <%= f.submit "Post", class: "#{button_classes} right" %>
+        </footer>
+      <% end %> <!-- form_for @user.photos -->
     <% else %>
       <%= form_for [user, post] do |f| %>
         <section>

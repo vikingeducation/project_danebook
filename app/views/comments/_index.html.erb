@@ -1,5 +1,5 @@
-<% if post.has_comments? %>
-  <% post.comments.order(created_at: :asc).each do |comment| %>
+<% if object.has_comments? %>
+  <% object.comments.order(created_at: :asc).each do |comment| %>
     <div class="comment">
       <header>
         <div class="image-container">
@@ -14,7 +14,7 @@
       <%= render 'shared/likes', object: comment %>
       </section>
       <div class="right-side-links">
-        <%= link_to 'Delete Comment', user_post_comment_path(post.user, post, comment), method: :delete, data: {confirm: 'Are you sure you want to delete this comment?'} if policy(comment).destroy? %>
+        <%= link_to 'Delete Comment', user_post_comment_path(object.user, object, comment), method: :delete, data: {confirm: 'Are you sure you want to delete this comment?'} if policy(comment).destroy? %>
       </div><!-- right-side-links -->
 
     </div><!-- comment -->

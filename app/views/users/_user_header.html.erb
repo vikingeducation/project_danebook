@@ -12,7 +12,7 @@
       <% if current_user? %><li><%= link_to 'Feed', user_feed_path(user), class: active_if(user_feed_url(user)) %></a></li><% end %>
       <li><%= link_to 'Timeline', user_timeline_path(user), class: active_if(user_timeline_url(user)) %></a></li>
       <li><%= link_to 'About', user_path(user), class: active_if(user_url(user)) %></li>
-      <li><%= link_to raw("Photos <span class='qty-count'>#{user.id}</span>"), user_photos_path(user), class: active_if(user_photos_url(user)) %></li>
+      <li><%= link_to raw("Photos <span class='qty-count'>#{user.photos.count}</span>"), user_photos_path(user), class: active_if(user_photos_url(user)) %></li>
       <li><%= link_to raw("Friends <span class='qty-count'>#{user.friends.count}</span>"), user_friends_path(user), class: active_if(user_friends_url(user)) %></li>
       <li><%= link_to 'Edit Profile', edit_user_path(user), class: active_if(edit_user_url(user)) if policy(user).edit? %></li>
     </ul>

@@ -9,8 +9,8 @@ article.timeline-article {
     .image-container {
       float: left;
       margin-right: 10px;
-      height: $thumbnail-small;
-      width: $thumbnail-small;
+      height: $thumbnail-pic;
+      width: $thumbnail-pic;
       background-color: $brand-background;
       img {width: 100%;}
     } /* .image-container */
@@ -21,6 +21,9 @@ article.timeline-article {
   section p {
     font-size: 0.8em;
     margin: 0;
+  }
+  section.photo-post {
+    img { width: 100%; }
   }
   footer {
     a {color: $brand-color;}

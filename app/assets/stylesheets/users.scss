@@ -153,8 +153,19 @@
 /* Friends & Photos Pages */
 .friends-list, .photos-list {
   .image-tile {
-    img {width: 100%;}
-    width: $profile-pic;
+    position: relative;
+    img { /* sizing is handled via paperclip, but just for redundancy, these styles will make sure the image fits in the tile */
+      height: 100%;
+      max-width: 100%;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+    }
+    width: $image-tile;
+    height: $image-tile;
     float: left;
     margin: 0px 20px 20px 0px;
     background-color: $brand-background;

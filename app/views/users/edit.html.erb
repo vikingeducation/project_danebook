@@ -74,11 +74,12 @@
       <h2>Photos</h2>
       <%= f.label :profile_pic_id %>
       <%= display_error(@user, :profile_pic_id) %>
-      <%= f.text_field :profile_pic_id, class: 'form-control' %>
+      <%= f.collection_select :profile_pic_id, @user.photos, :id, :photo_data_file_name, include_blank: true, prompt: '-- Select a Pic --', class: 'form-control' %>
 
       <%= f.label :cover_pic_id %>
       <%= display_error(@user, :cover_pic_id) %>
-      <%= f.text_field :cover_pic_id, class: 'form-control' %>
+      <%= f.collection_select :cover_pic_id, @user.photos, :id, :photo_data_file_name, include_blank: true, prompt: '-- Select a Pic --', class: 'form-control' %>
+
     </section> <!-- about-me-copy -->
   </article>
 

@@ -9,6 +9,8 @@ class PhotosController < ApplicationController
   end
 
   def create
+    session[:return_to] ||= request.referer
+
     @photo = current_user.photos.new(photo_params)
     authorize @photo
     respond_to do |format|
@@ -23,6 +25,8 @@ class PhotosController < ApplicationController
   end
 
   def update
+    session[:return_to] ||= request.referer
+
     respond_to do |format|
       if @photo.update(photo_params)
         format.html { redirect_to session.delete(:return_to), notice: 'Photo was successfully updated.' }
@@ -35,6 +39,8 @@ class PhotosController < ApplicationController
   end
 
   def destroy
+    session[:return_to] ||= request.referer
+
     authorize @photo
     @photo.destroy
     respond_to do |format|

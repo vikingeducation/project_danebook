@@ -3,15 +3,11 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   # locks down everything sitewide, then we'll go to other controllers to permit actions
-  before_action :require_login, :set_return_to
+  before_action :require_login
 
 
 
   private
-
-  def set_return_to
-    session[:return_to] ||= request.referer
-  end
 
   def sign_in(user)
     session[:user_id] = user.id

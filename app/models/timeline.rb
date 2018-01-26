@@ -20,16 +20,8 @@ class Timeline
     @photos ||= Photo.where(user: @user).order(created_at: :DESC)
   end
 
-  def photos_count
-    photos.count
-  end
-
   def sidebar_photos
     photos.sample(8)
-  end
-
-  def friends_count
-    @user.friends.count
   end
 
   def sidebar_friends

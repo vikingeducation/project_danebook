@@ -13,7 +13,7 @@
       </section>
     </article>
     <article>
-      <header><%= link_to 'Photos', user_photos_path(@timeline.user) %> (<%= @timeline.photos_count %>)</header>
+      <header><%= link_to 'Photos', user_photos_path(@timeline.user) %> (<%= @timeline.user.photos_count %>)</header>
       <section>
         <div class="photo-teaser">
         <% @timeline.sidebar_photos.each do |photo| %>
@@ -25,7 +25,7 @@
     </article>
 
     <article>
-      <header><%= link_to 'Friends', user_friends_path(@timeline.user) %> (<%= @timeline.friends_count %>)</header>
+      <header><%= link_to 'Friends', user_friends_path(@timeline.user) %> (<%= @timeline.user.friends_count %>)</header>
       <section>
         <div class="photo-teaser">
         <% @timeline.sidebar_friends.each do |friend| %>

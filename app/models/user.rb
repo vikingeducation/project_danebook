@@ -53,12 +53,20 @@ class User < ApplicationRecord
     (friended_users + users_friended_by).uniq
   end
 
+  def friends_count
+    friends.count
+  end
+
   def has_friends?
     friends.any?
   end
 
   def post_count
     authored_posts.count
+  end
+
+  def photos_count
+    photos.count
   end
 
 end

@@ -3,14 +3,54 @@
 <div class="photos-list">
   <article class="user-profile">
     <header>
+      <!-- Button trigger modal -->
+      <!-- <button type="button" class="<%#= button_classes('primary right') %>" data-toggle="modal" data-target="#uploadModal">Upload A Photo</button> -->
+      <%= link_to "Upload a Photo", '#uploadModal', 'data-toggle' => 'modal', class: button_classes('primary right') %>
       <h1>Photos</h1>
     </header>
     <section>
       <% @user.photos.each do |photo| %>
-        <div class="image-tile">
-          <%= image_tag photo.photo_data.url(:tile) %>
-        </div> <!-- image-tile -->
+        <% unless photo.new_record?  %>
+          <div class="image-tile">
+            <%= link_to (image_tag photo.photo_data.url(:tile)), "#photo_#{photo.id}", 'data-toggle' => 'modal' %>
+
+            <!-- Modal -->
+            <div class="modal fade" id='photo_<%= photo.id %>' tabindex="-1" role="dialog" aria-labelledby="uploadModalLabel" aria-hidden="true">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content modal-dark">
+                  <div class="modal-body" id='modal-photo'>
+                    <%= image_tag photo.photo_data.url(:feed) %>
+                  </div><!-- body -->
+                </div>
+              </div>
+            </div><!-- Modal -->
+
+          </div> <!-- image-tile -->
+        <% end %>
       <% end %>
     </section>
   </article>
 </div> <!-- row -->
+
+<!-- Modal -->
+<div class="modal fade" id="uploadModal" tabindex="-1" role="dialog" aria-labelledby="uploadModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="uploadModalLabel">Upload a Photo</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <%= form_for [@user, @photo] do |f| %>
+          <%= f.file_field :photo_data %><br>
+      </div><!-- body -->
+      <div class="modal-footer">
+        <%= f.submit "Upload", class: "#{button_classes} right" %>
+        <% end %> <!-- form_for @user.photos -->
+      </div><!-- footer -->
+    </div>
+  </div>
+</div>
+

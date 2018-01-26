@@ -1,17 +1,27 @@
 <%= render 'users/user_header', user: @user %>
 
-<div class="friends-list">
-  <article class="user-profile">
-    <header>
-      <h1>Friends</h1>
-    </header>
-    <section>
+<article class="user-profile">
+  <header>
+    <h1>Friends</h1>
+  </header>
 
-    <% @friends.each do |friend| %>
-      <div class="image-tile">
-        <%= link_to display_profile_pic(friend, :tile), user_timeline_path(friend) %>
-      </div> <!-- image-tile -->
-    <% end %>
-    </section>
-  </article>
-</div> <!-- row -->
+  <section class="friends-list">
+    <div class="row">
+
+      <% @friends.each do |friend| %>
+        <div class="col-sm-6">
+          <div class="friend-tile">
+                <%= link_to display_profile_pic(friend, :tile), user_timeline_path(friend) %>
+              <div class="name-info">
+                <p><%= link_to friend.display_name, user_timeline_path(friend) %></p>
+                <p><%= friend.friends_count %> Friends</p>
+              </div> <!-- name-info -->
+              <div class="right"><%= friending_button(friend) %></div>
+              <%#= link_to 'Unfriend', friending_path(friend), class: button_classes('danger right') %>
+          </div> <!-- friend-tile -->
+        </div> <!-- col-sm-6 -->
+      <% end %>
+
+    </div> <!-- row -->
+  </section> <!-- friends-list -->
+</article>

@@ -1,6 +1,5 @@
 <%= render 'users/user_header', user: @user %>
 
-<div class="photos-list">
   <article class="user-profile">
     <header>
       <!-- Button trigger modal -->
@@ -8,7 +7,8 @@
       <%= link_to "Upload a Photo", '#uploadModal', 'data-toggle' => 'modal', class: button_classes('primary right') if policy(@photo).create? %>
       <h1>Photos</h1>
     </header>
-    <section>
+
+    <section class="photos-list">
       <% @user.photos.each do |photo| %>
         <% unless photo.new_record?  %>
           <div class="image-tile">
@@ -19,6 +19,5 @@
       <% end %>
     </section>
   </article>
-</div> <!-- row -->
 
 <%= render 'photos/upload_modal', user: @user, photo: @photo %>

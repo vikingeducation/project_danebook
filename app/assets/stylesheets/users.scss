@@ -97,8 +97,10 @@
   }
 }
 
+/* About, Edit, Friends, Photos */
 .user-profile {
   border: $border;
+  overflow: auto;
   .row {margin-bottom: 15px;}
   header {
     border-bottom: $border;
@@ -132,8 +134,63 @@
     form {
       .col-sm-6 { padding-right: 0;}
     }
-  }
-}/* about-content */
+  }/* section */
+  section.friends-list {
+    .friend-tile {
+      overflow: auto;
+      padding: 15px;
+      margin-bottom: 15px;
+      border: $border;
+      img {
+        width: $image-tile / 2;
+        margin-right: 15px;
+        float: left;
+      }
+      .name-info {
+        float: left;
+        margin-top: 20px;
+        font-size: 0.8em;
+        line-height: 1em;
+        a {
+          margin-bottom: 5px;
+          color: $brand-color;
+        }
+        p {
+          margin-bottom: 5px;
+          color: gray;
+        }
+      }
+    } /* .friend-tile */
+  } /* .friends-list */
+  section.photos-list {
+    .image-tile {
+      position: relative;
+      img { /* sizing is handled via paperclip, but just for redundancy, these styles will make sure the image fits in the tile */
+        height: 100%;
+        max-width: 100%;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+      }
+      #modal-photo {
+        padding: 0;
+        img {
+          position: relative;
+          width: 100%;
+          height: 100%;
+        }
+      }
+      width: $image-tile;
+      height: $image-tile;
+      float: left;
+      margin: 0px 19px 19px 0px;
+      background-color: $brand-background;
+    }
+  } /* .photos-list */
+}/* user-profile */
 
 
 

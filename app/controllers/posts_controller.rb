@@ -7,8 +7,6 @@ class PostsController < ApplicationController
   end
 
   def create
-    session[:return_to] ||= request.referer
-
     @post = current_user.posts.new(post_params)
     authorize @post
     respond_to do |format|
@@ -23,8 +21,6 @@ class PostsController < ApplicationController
   end
 
   def update
-    session[:return_to] ||= request.referer
-
     respond_to do |format|
       if @post.update(post_params)
         format.html { redirect_to session.delete(:return_to), notice: 'Post was successfully updated.' }
@@ -37,8 +33,6 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    session[:return_to] ||= request.referer
-
     authorize @post
     @post.destroy
     respond_to do |format|

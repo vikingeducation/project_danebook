@@ -19,15 +19,3 @@
 
 } /* .sidebar-left */
 
-
-.feed-article {
-  .image-container {
-    width: 100%;
-    overflow: auto;
-    border-radius: $corner $corner 0px 0px;
-    img {
-      width: 100%;
-      margin-bottom: 10px;
-    } /* img */
-  } /* .image-container */
-}

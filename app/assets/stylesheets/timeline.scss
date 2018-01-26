@@ -1,7 +1,7 @@
 @import 'theme_and_colors';
 
 
-article.timeline-article {
+article.activity {
   header {
     background-color: transparent;
     border: 0;
@@ -49,7 +49,7 @@ article.timeline-article {
     } /* .comments */
 
   }
-} /* article.timeline-article */
+} /* article.activity */
 
 .status-box {
   color: $brand-secondary;

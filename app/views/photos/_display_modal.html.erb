@@ -1,0 +1,15 @@
+<!-- Modal -->
+<div class="modal fade" id='photo_<%= photo.id %>' tabindex="-1" role="dialog" aria-labelledby="uploadModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content modal-dark">
+      <div class="modal-body" id='modal-photo'>
+        <%= image_tag photo.photo_data.url(:feed) %>
+      </div><!-- body -->
+      <% if policy(photo).edit? %>
+      <div class="modal-footer">
+        <%= link_to "Delete Photo", user_photo_path(user, photo), method: :delete, data: {confirm: 'Are you sure?'} %> | <%= link_to "Set as Profile Pic", user_photo_profile_pic_assignments_path(current_user, photo), method: :post %> | <%= link_to "Set as Cover Pic", user_photo_cover_pic_assignments_path(current_user, photo), method: :post %>
+      </div> <!-- modal-footer -->
+      <% end %>
+    </div><!--  modal-content -->
+  </div><!-- modal-dialog -->
+</div><!-- Modal -->

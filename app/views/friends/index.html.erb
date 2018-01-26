@@ -9,7 +9,7 @@
 
     <% @friends.each do |friend| %>
       <div class="image-tile">
-        <%= link_to display_headshot(friend, :tile), user_timeline_path(friend) %>
+        <%= link_to display_profile_pic(friend, :tile), user_timeline_path(friend) %>
       </div> <!-- image-tile -->
     <% end %>
     </section>

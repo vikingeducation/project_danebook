@@ -3,7 +3,7 @@
     <div class="comment">
       <header>
         <div class="image-container">
-          <%= display_headshot(comment.user, :thumb) %>
+          <%= display_profile_pic(comment.user, :thumb) %>
         </div> <!-- image-container -->
         <p><%= link_to comment.user.display_name, user_timeline_path(comment.user) %></p>
         <p class="posted">Said on <%= comment.created_at.to_date %></p>

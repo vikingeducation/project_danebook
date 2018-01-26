@@ -8,7 +8,7 @@ module UsersHelper
     end
   end
 
-  def display_headshot(user, photo_type)
+  def display_profile_pic(user, photo_type)
     if user.profile_pic.blank?
       image_tag 'profile_pic_missing.jpg'
     else

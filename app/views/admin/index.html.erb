@@ -1,0 +1,31 @@
+<div class="right">
+  <%= link_to 'New User', new_user_path, class: button_classes %>
+</div> <!-- right -->
+<h1>Users</h1>
+
+<table class="<%= table_classes %>">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Friends</th>
+      <th>Posts</th>
+      <th>Comments</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.id %>: <%= link_to user.display_name, user_timeline_path(user) %></td>
+        <td><%= user.email %></td>
+        <td><%= user.friends.count %></td>
+        <td><%= user.posts.count %></td>
+        <td><%= user.comments.count %></td>
+        <td><%= link_to 'Edit', edit_user_path(user) %></td>
+        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

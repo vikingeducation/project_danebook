@@ -17,6 +17,7 @@ article {
   border: $border;
   margin-bottom: 20px;
   border-radius: $corner;
+  overflow: auto;
   header {
     color: $brand-color;
     border-bottom: $border;
@@ -36,6 +37,34 @@ footer {
   background-color: $brand-secondary-bg;
   padding: $padding;
 }
+
+
+/* --------------- Navbar Search --------------- */
+nav {
+  .search{
+    position:relative;
+    width: 200px;
+    border: $border;
+    background-color: white;
+    border-radius: $corner;
+  }
+  .search input[type="text"] {
+    border: none;
+    font-size: 0.9em;
+  }
+  .search input[type="submit"] {
+    width: 22px;
+    height: 22px;
+    background: url("search.png") -9px -3px no-repeat;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    outline: none;
+    top: -12px;
+    right: 2px;
+  }
+}
+
 
 /* --------------- Alignment --------------- */
 

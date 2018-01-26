@@ -1,31 +1,31 @@
-<div class="right">
-  <%= link_to 'New User', new_user_path, class: button_classes %>
-</div> <!-- right -->
-<h1>Users</h1>
+<article class="page-content">
+  <header>
+    <%= link_to 'Clear Results', users_path, class: "right #{button_classes}" %>
+    <h1>Search Results</h1>
+  </header>
 
-<table class="<%= table_classes %>">
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Email</th>
-      <th>Friends</th>
-      <th>Posts</th>
-      <th>Comments</th>
-      <th colspan="2"></th>
-    </tr>
-  </thead>
+  <section>
+    <div class="row">
 
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= user.id %>: <%= link_to user.display_name, user_timeline_path(user) %></td>
-        <td><%= user.email %></td>
-        <td><%= user.friends.count %></td>
-        <td><%= user.posts.count %></td>
-        <td><%= user.comments.count %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      <% @users.each do |user| %>
+        <div class="col-sm-12">
+          <div class="person-listing-tile user-index">
+              <%= link_to display_profile_pic(user, :tile), user_timeline_path(user) %>
+              <div class="name-info">
+                <%= link_to user.display_name, user_timeline_path(user) %>
+                <p class="friends-count"><%= user.friends_count %> Friends</p>
+                <p>Currently lives in <%= user.current_town %>
+                </p>
+                <p>From <%= user.hometown %></p>
+                <p>Born <%= user.birthday.to_date if user.birthday%></p>
+                <p><%= user.email %></p>
+
+              </div> <!-- name-info -->
+              <div class="right"><%= friending_button(user) %></div>
+          </div> <!-- friend-tile -->
+        </div> <!-- col-sm-12 -->
+      <% end %>
+
+    </div> <!-- row -->
+  </section>
+</article>

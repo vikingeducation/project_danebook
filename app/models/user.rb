@@ -44,6 +44,10 @@ class User < ApplicationRecord
             :length => { :in => 8..24 },
             :allow_nil => true
 
+  def self.search(search_terms)
+    where("lower(name) LIKE ?", "%#{search_terms.downcase}%")
+  end
+
   def display_name
     name.blank? ? email : name
   end

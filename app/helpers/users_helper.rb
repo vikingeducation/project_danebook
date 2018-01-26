@@ -31,7 +31,6 @@ module UsersHelper
     else
       link_to '+ Add as Friend', friendings_path(id: user), method: :post, class: button_classes('primary friend-link')
     end
-
   end
 
 end

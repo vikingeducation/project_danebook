@@ -97,13 +97,9 @@
   }
 }
 
-/* About, Edit, Friends, Photos */
-.user-profile {
-  border: $border;
-  overflow: auto;
+.page-content {
   .row {margin-bottom: 15px;}
   header {
-    border-bottom: $border;
     background-color: $secondary-color;
     padding: $padding $padding 1% $padding;
     text-align: center;
@@ -135,33 +131,36 @@
       .col-sm-6 { padding-right: 0;}
     }
   }/* section */
-  section.friends-list {
-    .friend-tile {
-      overflow: auto;
-      padding: 15px;
-      margin-bottom: 15px;
-      border: $border;
-      img {
-        width: $image-tile / 2;
-        margin-right: 15px;
-        float: left;
+
+  .person-listing-tile {
+    overflow: auto;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: $border;
+    img {
+      margin-right: 15px;
+      float: left;
+    }
+    .name-info {
+      margin-top: 20px;
+      float: left;
+      font-size: 0.8em;
+      line-height: 1.2em;
+      a { color: $brand-color; }
+      p { margin-bottom: 2px; }
+      p.friends-count {
+        margin-bottom: 15px;
+        color: gray;
       }
-      .name-info {
-        float: left;
-        margin-top: 20px;
-        font-size: 0.8em;
-        line-height: 1em;
-        a {
-          margin-bottom: 5px;
-          color: $brand-color;
-        }
-        p {
-          margin-bottom: 5px;
-          color: gray;
-        }
-      }
-    } /* .friend-tile */
-  } /* .friends-list */
+    }
+  } /* .person-listing-tile */
+  .user-index {
+    img {width: $image-tile;}
+  }
+  .friend-list {
+    img {width: $image-tile / 2;}
+  }
+
   section.photos-list {
     .image-tile {
       position: relative;
@@ -190,7 +189,7 @@
       background-color: $brand-background;
     }
   } /* .photos-list */
-}/* user-profile */
+}/* page-content */
 
 
 

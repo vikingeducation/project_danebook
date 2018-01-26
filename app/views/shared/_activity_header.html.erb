@@ -1,6 +1,6 @@
 <header>
   <div class="image-container">
-    <%= display_headshot(object.user) %>
+    <%= display_headshot(object.user, :thumb) %>
   </div> <!-- image-container -->
   <p><%= link_to object.user.display_name, user_timeline_path(object.user) %></p>
   <p class="posted">Posted on <%= object.created_at.to_date %></p>

@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     resources :photos, except: [:index, :show] do
       resources :likes
       resources :comments, :defaults => { :commentable => 'Photo' }
+      resources :photo_assignments, only: [:create]
     end
     resources :comments, except: [:index, :show] do
       resources :likes

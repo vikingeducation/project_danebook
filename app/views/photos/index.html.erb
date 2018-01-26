@@ -5,7 +5,7 @@
     <header>
       <!-- Button trigger modal -->
       <!-- <button type="button" class="<%#= button_classes('primary right') %>" data-toggle="modal" data-target="#uploadModal">Upload A Photo</button> -->
-      <%= link_to "Upload a Photo", '#uploadModal', 'data-toggle' => 'modal', class: button_classes('primary right') %>
+      <%= link_to "Upload a Photo", '#uploadModal', 'data-toggle' => 'modal', class: button_classes('primary right') if policy(@photo).create? %>
       <h1>Photos</h1>
     </header>
     <section>
@@ -21,8 +21,13 @@
                   <div class="modal-body" id='modal-photo'>
                     <%= image_tag photo.photo_data.url(:feed) %>
                   </div><!-- body -->
-                </div>
-              </div>
+                  <% if policy(photo).edit? %>
+                  <div class="modal-footer">
+                    <%= link_to "Delete Photo", user_photo_path(@user, photo), method: :delete, data: {confirm: 'Are you sure?'} %> | <%= link_to "Set as Profile Pic", user_photo_photo_assignments_path(current_user, photo, photo_type: :profile_pic), method: :post %> | <%= link_to "Set as Cover Pic", user_photo_photo_assignments_path(current_user, photo, photo_type: :cover_pic), method: :post %>
+                  </div> <!-- modal-footer -->
+                  <% end %>
+                </div><!--  modal-content -->
+              </div><!-- modal-dialog -->
             </div><!-- Modal -->
 
           </div> <!-- image-tile -->

@@ -4,12 +4,15 @@ class Photo < ApplicationRecord
       default_url: ":style_pic_missing.jpg"
 
   belongs_to :user
+  has_one :profile_pic, class_name: :User, foreign_key: 'profile_pic_id'
+  has_one :cover_pic, class_name: :User, foreign_key: 'cover_pic_id'
+
   has_many :likes, as: :likeable
   has_many :comments, as: :commentable
 
   validates_attachment :photo_data, presence:  true,
     content_type: { content_type: ["image/jpeg", "image/jpg", "image/gif", "image/png"] },
-    size: { in: 0..2.megabytes }
+    size: { in: 0..3.megabytes }
 
   def has_likes?
    likes.any?

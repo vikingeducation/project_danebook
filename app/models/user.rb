@@ -2,6 +2,9 @@ class User < ApplicationRecord
   has_secure_password
 
   has_many :photos, dependent: :destroy
+  belongs_to :profile_pic, class_name: :Photo, required: false
+  belongs_to :cover_pic, class_name: :Photo, required: false
+
   has_many :posts, dependent: :destroy
   has_many :authored_posts, class_name: :Post
 

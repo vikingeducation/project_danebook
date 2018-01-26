@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180125020155) do
+ActiveRecord::Schema.define(version: 20180126021516) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,8 +75,8 @@ ActiveRecord::Schema.define(version: 20180125020155) do
     t.string   "phone",           default: "", null: false
     t.text     "quote",           default: "", null: false
     t.text     "bio",             default: "", null: false
-    t.string   "headshot_pic",    default: "", null: false
-    t.string   "cover_pic",       default: "", null: false
+    t.integer  "profile_pic_id"
+    t.integer  "cover_pic_id"
   end
 
   add_foreign_key "comments", "users"

@@ -8,19 +8,19 @@ module UsersHelper
     end
   end
 
-  def display_headshot(user)
-    if user.headshot_pic.blank?
-      image_tag 'headshot-placeholder.png'
+  def display_headshot(user, photo_type)
+    if user.profile_pic.blank?
+      image_tag 'profile_pic_missing.jpg'
     else
-      link_to (image_tag user.headshot_pic, alt: 'Profile Pic'), user_timeline_path(user)
+      image_tag user.profile_pic.photo_data.url(photo_type)
     end
   end
 
   def display_cover_pic(user)
     if user.cover_pic.blank?
-      image_tag 'cover-pic-placeholder.jpg'
+      image_tag 'cover_pic_missing.jpg'
     else
-      image_tag user.cover_pic, alt: "Cover Photo"
+      image_tag user.cover_pic.photo_data.url(:cover), alt: "Cover Photo"
     end
   end
 

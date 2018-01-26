@@ -99,11 +99,8 @@
 
 .user-profile {
   border: $border;
-  display: grid;
-  grid-template-areas: "header header"
-                      "stats about-me";
+  .row {margin-bottom: 15px;}
   header {
-    grid-area: header;
     border-bottom: $border;
     background-color: $secondary-color;
     padding: $padding $padding 1% $padding;
@@ -128,57 +125,16 @@
       font-weight: bold;
       margin-top: 25px;
     }
+    h3 {
+      font-size: 1em;
+      font-weight: bold;
+    }
+    form {
+      .col-sm-6 { padding-right: 0;}
+    }
   }
 }/* about-content */
 
-
-.personal-stats {
-  grid-area: stats;
-  table { width: 100%; }
-  td, th {
-    padding: 4% 2%;
-    font-size: 0.9em;
-  }
-  th {
-    width: 100px;
-    text-align: left;
-    font-weight: 500;
-  }
-}/* personal-stats */
-
-.about-me-copy {
-  grid-area: about-me;
-}
-
-/* Friends & Photos Pages */
-.friends-list, .photos-list {
-  .image-tile {
-    position: relative;
-    img { /* sizing is handled via paperclip, but just for redundancy, these styles will make sure the image fits in the tile */
-      height: 100%;
-      max-width: 100%;
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      margin: auto;
-    }
-    #modal-photo {
-      padding: 0;
-      img {
-        position: relative;
-        width: 100%;
-        height: 100%;
-      }
-    }
-    width: $image-tile;
-    height: $image-tile;
-    float: left;
-    margin: 0px 19px 19px 0px;
-    background-color: $brand-background;
-  }
-} /* .friends-list */
 
 
 /* ----------------------------------- *

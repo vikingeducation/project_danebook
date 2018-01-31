@@ -1,0 +1,13 @@
+<header>
+  <%= link_to 'DaneBook', root_url, class: "navbar-brand" %>
+</header>
+
+<main>
+  <h1>Hi <%= @user.name %>!</h1>
+
+  <p>Welcome to DaneBook!</p>
+
+  <p>Join your friends in posting thoughts and pics here:</p>
+
+  <p><%= link_to 'Come on In!', root_url, class: 'button' %><p>
+</main>

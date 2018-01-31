@@ -53,6 +53,9 @@ group :development, :test do
   gem 'binding_of_caller' #goes with better_errors
   gem 'rspec-rails'
   gem "factory_bot_rails", "~> 4.0"
+
+  gem 'premailer-rails' # configures inline styles for mailer templates
+  gem 'nokogiri' # parses html for premailer-rails (and other things)
 end
 
 group :development do
@@ -65,6 +68,7 @@ group :development do
   gem 'bullet' #detects N+1 queries via config/initializers/bullet.rb
   gem 'rails-erd', require: false # generates ERD chart for your schema
   gem 'guard-rspec', require: false # runs rspec automatically
+  gem 'letter_opener'
 end
 
 group :test do

@@ -1,4 +1,7 @@
 class User < ApplicationRecord
+
+  after_create :send_welcome_email
+
   has_secure_password
 
   has_many :photos, dependent: :destroy
@@ -54,7 +57,7 @@ class User < ApplicationRecord
 
   def friends
     # currently, friend requests do not require approval
-    (friended_users.includes(:profile_pic, :received_friendings, :initiated_friendings, :friended_users, :users_friended_by) + users_friended_by).uniq
+    (friended_users.includes(:profile_pic, :received_friendings, :initiated_friendings, :friended_users, :users_friended_by) + users_friended_by.includes(:profile_pic, :received_friendings, :initiated_friendings, :friended_users, :users_friended_by)).uniq
   end
 
   def friends_count
@@ -71,6 +74,12 @@ class User < ApplicationRecord
 
   def photos_count
     photos.count
+  end
+
+  private
+
+  def send_welcome_email
+    UserMailer.welcome(self).deliver!
   end
 
 end

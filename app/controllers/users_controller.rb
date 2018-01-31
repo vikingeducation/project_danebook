@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     if @search_terms
       @users = User.search(@search_terms).order(:name)
     else
-      @users = User.all.order(:name)
+      @users = User.includes(:profile_pic, :received_friendings, :users_friended_by).all.order(:name)
     end
   end
 

@@ -7,7 +7,7 @@
       <section>
         <div class="photo-teaser">
         <% @feed.recently_active_friends.each do |friend| %>
-          <%= link_to (display_profile_pic(friend, :thumb)), user_feed_path(friend) %>
+          <%= link_to (display_profile_pic(friend, :thumb)), user_timeline_path(friend) %>
         <% end %>
         </div>
         <%= link_to 'See all friends', user_friends_path(@feed.user) %>

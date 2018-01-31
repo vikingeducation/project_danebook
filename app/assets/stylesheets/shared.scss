@@ -38,6 +38,13 @@ footer {
   padding: $padding;
 }
 
+.navbar-headshot {
+  border: 1px solid white;
+  margin-right: 10px;
+  border-radius: $corner;
+  img {border-radius: $corner;}
+}
+
 
 /* --------------- Navbar Search --------------- */
 nav {

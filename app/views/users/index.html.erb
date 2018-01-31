@@ -1,7 +1,11 @@
 <article class="page-content">
   <header>
-    <%= link_to 'Clear Results', users_path, class: "right #{button_classes}" %>
-    <h1>Search Results</h1>
+    <% if @search_terms %>
+      <%= link_to 'Clear Results', users_path, class: "right #{button_classes}" %>
+      <h1>Search Results</h1>
+    <% else %>
+      <h1>All Users</h1>
+    <% end %>
   </header>
 
   <section>

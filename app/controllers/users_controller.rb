@@ -6,9 +6,9 @@ class UsersController < ApplicationController
 
 
   def index
-    search_terms = params[:search]
-    if search_terms
-      @users = User.search(search_terms).order(:name)
+    @search_terms = params[:search]
+    if @search_terms
+      @users = User.search(@search_terms).order(:name)
     else
       @users = User.all.order(:name)
     end

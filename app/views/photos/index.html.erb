@@ -2,14 +2,12 @@
 
   <article class="page-content">
     <header>
-      <!-- Button trigger modal -->
-      <!-- <button type="button" class="<%#= button_classes('primary right') %>" data-toggle="modal" data-target="#uploadModal">Upload A Photo</button> -->
       <%= link_to "Upload a Photo", '#uploadModal', 'data-toggle' => 'modal', class: button_classes('primary right') if policy(@photo).create? %>
       <h1>Photos</h1>
     </header>
 
     <section class="photos-list">
-      <% @user.photos.each do |photo| %>
+      <% @photos.each do |photo| %>
         <% unless photo.new_record?  %>
           <div class="image-tile">
             <%= link_to (image_tag photo.photo_data.url(:tile)), "#photo_#{photo.id}", 'data-toggle' => 'modal' %>
@@ -21,3 +19,5 @@
   </article>
 
 <%= render 'photos/upload_modal', user: @user, photo: @photo %>
+
+<%= will_paginate @photos %>

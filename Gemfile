@@ -40,6 +40,8 @@ gem 'paperclip'
 gem 'figaro'
 gem 'aws-sdk', '< 3.0'
 
+gem 'will_paginate', '~> 3.1.0'
+
 gem 'seed_dump'
 
 group :development, :test do

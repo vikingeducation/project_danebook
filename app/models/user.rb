@@ -54,7 +54,7 @@ class User < ApplicationRecord
 
   def friends
     # currently, friend requests do not require approval
-    (friended_users.includes(:profile_pic, :received_friendings, :users_friended_by) + users_friended_by).uniq
+    (friended_users.includes(:profile_pic, :received_friendings, :initiated_friendings, :friended_users, :users_friended_by) + users_friended_by).uniq
   end
 
   def friends_count

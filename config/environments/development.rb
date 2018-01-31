@@ -70,7 +70,7 @@ Rails.application.configure do
   # Bullet gem config
   config.after_initialize do
     Bullet.enable = true
-    Bullet.alert = false
+    Bullet.alert = true
     Bullet.bullet_logger = false
     Bullet.console = false
     Bullet.add_footer = true

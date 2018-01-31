@@ -14,12 +14,12 @@ module LikesHelper
 
   def display_like_unlike(object)
     klass = object.class.to_s
+    like = object.likes.to_a.find { |l| l.user_id == current_user.id }
 
-    if current_user.send("#{klass.downcase.pluralize}_they_like").include?(object)
-      like = Like.current_user_like(object, current_user)
-      link_to 'Unlike', polymorphic_url([current_user, object, like], likeable: klass), method: :delete
-    else
+    if like == nil
       link_to 'Like', polymorphic_url([current_user, object, :likes], likeable: klass), method: :post
+    else
+      link_to 'Unlike', polymorphic_url([current_user, object, like], likeable: klass), method: :delete
     end
   end
 

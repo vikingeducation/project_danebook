@@ -14,4 +14,14 @@ class Photo < ApplicationRecord
     content_type: { content_type: ["image/jpeg", "image/jpg", "image/gif", "image/png"] },
     size: { in: 0..3.megabytes }
 
+  def self.display_in_activity(users)
+    where(user: users)
+    .includes(:user,
+      likes: [:user],
+      comments: [:user,
+        likes: [:user]])
+    .order(created_at: :DESC)
+  end
+
+
 end

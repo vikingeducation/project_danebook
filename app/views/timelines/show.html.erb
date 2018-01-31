@@ -2,7 +2,7 @@
 
 
 <div class="row top-row">
-  <div class="col col-4">
+  <div class="col col-sm-4">
     <article>
       <header>About</header>
       <section>
@@ -37,7 +37,7 @@
     </article>
   </div><!-- col col-4 -->
 
-  <div class="col col-8 main-content">
+  <div class="col col-sm-8 main-content">
     <% if policy(@timeline.post).create? %>
       <%= render 'shared/activity_form', user: @timeline.user, post: @timeline.post, photo: @timeline.photo %>
     <% end %>

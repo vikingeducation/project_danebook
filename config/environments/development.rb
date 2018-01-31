@@ -66,4 +66,14 @@ Rails.application.configure do
       secret_access_key: Rails.application.secrets.aws_secret_access_key
     }
   }
+
+  # Bullet gem config
+  config.after_initialize do
+    Bullet.enable = true
+    Bullet.alert = false
+    Bullet.bullet_logger = false
+    Bullet.console = false
+    Bullet.add_footer = true
+  end
+
 end

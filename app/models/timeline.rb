@@ -13,11 +13,11 @@ class Timeline
   end
 
   def posts
-    @posts ||= Post.where(user: @user).order(created_at: :DESC)
+    @posts ||= Post.where(user: @user).includes(:user, :likes, :comments).order(created_at: :DESC)
   end
 
   def photos
-    @photos ||= Photo.where(user: @user).order(created_at: :DESC)
+    @photos ||= Photo.where(user: @user).includes(:user, :likes, :comments).order(created_at: :DESC)
   end
 
   def sidebar_photos

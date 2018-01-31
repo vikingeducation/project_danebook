@@ -7,18 +7,11 @@ class Photo < ApplicationRecord
   has_one :profile_pic, class_name: :User, foreign_key: 'profile_pic_id'
   has_one :cover_pic, class_name: :User, foreign_key: 'cover_pic_id'
 
-  has_many :likes, as: :likeable
-  has_many :comments, as: :commentable
+  include Liking
+  include Commenting
 
   validates_attachment :photo_data, presence:  true,
     content_type: { content_type: ["image/jpeg", "image/jpg", "image/gif", "image/png"] },
     size: { in: 0..3.megabytes }
 
-  def has_likes?
-   likes.any?
-  end
-
-  def has_comments?
-    comments.any?
-  end
 end

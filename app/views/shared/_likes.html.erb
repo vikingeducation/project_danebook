@@ -1,6 +1,6 @@
 <% if object.has_likes? %>
   <p class='likes'>
-    Likes: <%= display_likes_count(object) %>
+    Likes: <%= object.likes_count %>
    <%= list_likes(object.likes) %>...
   </p>
 <% end %>

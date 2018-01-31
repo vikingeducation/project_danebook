@@ -1,11 +1,8 @@
 class Comment < ApplicationRecord
   belongs_to :user
   belongs_to :commentable, polymorphic: true
-  has_many :likes, as: :likeable
+  include Liking
 
   validates :body, presence: true
 
-  def has_likes?
-    likes.any?
-  end
 end

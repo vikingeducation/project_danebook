@@ -312,7 +312,6 @@ DEPENDENCIES
   nokogiri
   paperclip
   pg (~> 0.18)
-  premailer
   premailer-rails
   pry-awesome_print
   pry-rails

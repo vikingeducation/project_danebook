@@ -54,7 +54,6 @@ group :development, :test do
   gem 'rspec-rails'
   gem "factory_bot_rails", "~> 4.0"
 
-  gem 'premailer'
   gem 'premailer-rails' # configures inline styles for mailer templates
   gem 'nokogiri' # parses html for premailer-rails (and other things)
 end

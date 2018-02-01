@@ -76,6 +76,10 @@ class User < ApplicationRecord
     photos.count
   end
 
+  def send_comment_notification(commented_object, comment)
+    UserMailer.comment_notification(self, commented_object, comment).deliver!
+  end
+
   private
 
   def send_welcome_email

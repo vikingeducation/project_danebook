@@ -7,7 +7,12 @@
 
   <body>
     <div class="mailer">
-      <%= yield %>
+      <header>
+        <%= link_to 'DaneBook', root_url, class: "navbar-brand" %>
+      </header>
+      <main>
+        <%= yield %>
+      </main>
     </div>
   </body>
 </html>

@@ -1,0 +1,9 @@
+Hi <%= @user.name %>!
+
+Someone commented on your <%= @activity_name %>!
+
+On <%= @comment.created_at.to_date %>, <%= @comment.user.name %> said:
+"<%= @comment.body %>"
+
+Join the Conversation!
+<%= user_feed_url(@user) %>

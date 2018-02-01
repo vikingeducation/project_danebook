@@ -11,6 +11,8 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
+        comment_recipient = @commented_on.user
+        comment_recipient.send_comment_notification(@commented_on, @comment) unless comment_recipient == current_user
         format.html { redirect_to session.delete(:return_to), notice: 'Comment was successfully created.' }
         format.json { render 'feeds/show', status: :created, location:  session.delete(:return_to) }
       else

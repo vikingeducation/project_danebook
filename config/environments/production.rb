@@ -57,6 +57,17 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "project_danebook_#{Rails.env}"
   config.action_mailer.perform_caching = false
 
+  config.action_mailer.smtp_settings = {
+    :address        => 'smtp.sendgrid.net',
+    :port           => '587',
+    :authentication => :plain,
+    :user_name      => Rails.application.secrets.sendgrid_username,
+    :password       => Rails.application.secrets.sendgrid_password,
+    :domain         => 'heroku.com',
+    :enable_starttls_auto => true
+  }
+  config.action_mailer.delivery_method ||= :smtp
+
   config.action_mailer.default_url_options = { host: 'lortzdanebook.herokuapp.com' }
 
   # Ignore bad email addresses and do not raise email delivery errors.

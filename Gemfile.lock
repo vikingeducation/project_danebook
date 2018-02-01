@@ -312,6 +312,7 @@ DEPENDENCIES
   nokogiri
   paperclip
   pg (~> 0.18)
+  premailer
   premailer-rails
   pry-awesome_print
   pry-rails
@@ -333,4 +334,4 @@ RUBY VERSION
    ruby 2.4.2p198
 
 BUNDLED WITH
-   1.15.2
+   1.16.1

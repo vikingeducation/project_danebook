@@ -1,0 +1,15 @@
+<section class="post">
+  <header class="nav-post">
+    <h4>
+      Post (copied)
+    </h4>
+  </header>
+  <%= form_for [@user, @post] do |post_field| %>
+    <div class="form-group">
+      <%= post_field.text_area :body, wrap: "hard", rows: "5", :placeholder => "Tell the world something", :class => "form-control" %>
+    </div>
+    <div class="nav-footer">
+      <%= post_field.submit "Post", :class => "btn btn-primary" %>
+    </div>
+  <% end %>
+</section>

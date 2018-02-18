@@ -1,0 +1,48 @@
+<!--HERO-->
+<div class="container">
+  <%= render "shared/header" %>
+  <!--SECTION BAR-->
+  <!--SUB-NAVIGATION-->
+
+  <%= render "shared/sub_navbar" %>
+  <section class="nav-about">
+    <h2>
+      Photos
+    </h2>
+  </section>
+
+  <!--PHOTOS TABLE-->
+  <main class="main-about photos">
+    <div class="row">
+      <div class="col-xs-6 col-xs-push-3 centralize">
+          <h3>Paste the url of the photo on the web ...</h3>
+          <br>
+          <%= form_tag [@user, @photo], html: { class: "search-form" }, :multipart => true do %>
+
+            <div class="form-group">
+              <%= text_field_tag :url, params[:url], :placeholder => "http://www.example.com/photo_1", :id => "search-area", :class => "form-control", required: true %>
+            </div>
+            <%= submit_tag "Use Web Photo", class: "btn btn-success btn-lg btn-upload" %>
+          <% end %>
+
+          <h2>or..</h2>
+          <h3>Select a photo from your hard drive...</h3>
+
+          <%= form_tag( {  :controller => :photos,
+                  :action => :create }, class: "search-form", :multipart => true) do %>
+
+            <label class="btn btn-primary btn-md btn-upload">
+              Add a file!
+              <span class = "no-style">
+                <%= file_field_tag :image, required: true %>
+              </span>
+            </label>
+            <%= submit_tag "Upload Photo", class: "btn btn-primary btn-lg btn-upload" %>
+          <% end %>
+          <h3 class="alert-message">
+            For this moment we accept only photos up to 500KB in size. We apologies for this inconvenience.
+          </h3>
+      </div>
+    </div>
+  </main>
+</div>

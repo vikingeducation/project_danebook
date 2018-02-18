@@ -1,0 +1,10 @@
+<h1>Welcome!</h1>
+
+<p>
+  Hi <%= @user.profile.first_name %>!
+</p>
+
+
+<p>
+  View the latest comment made by <%= @comment.user.profile.first_name %> to your <%=  link_to "#{@comment.commentable_type}", user_timeline_url(@user.id) %>
+</p>

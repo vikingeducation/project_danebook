@@ -1,0 +1,333 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+// Place all the styles related to the Static_Pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+$colortheme: #337ab7;
+$fontsize: 16px;
+$grid-float-breakpoint: 0;
+$bordertype: 2px solid #222;
+
+.border-3d {
+  border-bottom: 1px solid #333;
+  border-left: 1px solid #333;
+  border-right: 1px solid #333;
+}
+
+body {
+  margin-top: 65px;
+  padding-bottom: 60px;
+  @media screen and (max-width: 600px) {
+    width: 620px;
+  }
+}
+/*=============================
+HOME NAVIGATION
+=============================*/
+nav.navbar-default {
+  background-color: #2b78e4;
+  border-color: black;
+  color: #ecf0f1;
+}
+
+nav.navbar-default .navbar-brand h1 {
+  margin-top: 0;
+  display: inline;
+  color: white;
+}
+
+nav.navbar-default .collapse button {
+  background-color: #0af;
+  color: black;
+  font-weight: bold;
+}
+
+nav.navbar-default .collapse button:hover {
+  background-color: #bef;
+  color: black;
+}
+
+.navbar-right .collapse .form-group {
+  padding-right: 0;
+}
+
+.navbar-right {
+  margin-bottom: 10px;
+  margin-top: 5px;
+}
+
+.container .row aside,
+section {
+  margin-top: 50px;
+}
+
+.container .row aside h2 {
+  padding-bottom: 5px;
+  font-weight: bold;
+}
+
+.container .row aside ul li {
+  padding-bottom: 20px;
+  color: gray;
+  font-size: 19px;
+  font-weight: light;
+}
+
+section form fieldset input {
+  margin-bottom: 15px;
+}
+
+section form fieldset #dropdownDay {
+  margin-left: 5px;
+}
+/*# sourceMappingURL=styles.css.map */
+/*=============================
+NAVIGATION
+=============================*/
+input#search-area {
+  min-width: 400px;
+}
+
+nav.navbar-custom {
+  background-color: $colortheme;
+  border-bottom: 2px solid #333;
+
+  .logo-container {
+    img {
+      width: 30px;
+      height: 30px;
+      border-radius: 100%;
+      display: inline-block;
+      margin-top: -8px;
+    }
+
+    h3 {
+      display: inline-block;
+      margin-top: -8px;
+    }
+  }
+
+  .navbar-header {
+    .navbar-brand {
+      color: white;
+    }
+
+    button .icon-bar {
+      background-color: white;
+    }
+
+    a.navbar-brand:hover {
+      color: black;
+    }
+  }
+
+  ul li a {
+    color: white;
+    font-size: $fontsize +2;
+  }
+
+  ul li a:hover {
+    color: black;
+    background-color: white;
+  }
+}
+/*=============================
+SUB-NAVIGATION
+=============================*/
+.sub-navigation {
+  background-color: white;
+  margin-left: 0;
+  margin-right: 0;
+  line-height: 40px;
+  @extend .border-3d;
+
+  ul.nav.nav-pills {
+    margin-left: 280px;
+    font-size: $fontsize;
+    color: black;
+  }
+
+  ul.nav.nav-pills li.active a {
+    background-color: #aaa;
+    border-radius: 0;
+  }
+
+  ul li .badge {
+    color: $colortheme;
+    background-color: inherit;
+  }
+
+  .edit-profile {
+    text-decoration: underline;
+  }
+
+  .edit-profile a:hover {
+    background-color: inherit;
+  }
+  @media (max-width: 990px) {
+    button.navbar-toggle {
+      display: block;
+      margin-top: 0;
+      margin-bottom: 0;
+      font-size: 18px;
+      text-align: center;
+      @media (max-width: 420px) {
+        width: 155px;
+      }
+    }
+
+    .navbar-collapse {
+      border-top: 1px solid transparent;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.1);
+    }
+
+    .navbar-collapse.collapse {
+      display: none!important;
+    }
+
+    .collapse.in {
+      display: block !important;
+    }
+
+    ul li {
+      clear: both;
+      content: "";
+      margin: 0 auto;
+      display: block;
+      width: 100%;
+      text-align: center;
+      font-size: 18px;
+      border-top: 1px solid black;
+    }
+
+    ul {
+      border: 1px solid black;
+    }
+  }
+}
+/*=============================
+HERO
+=============================*/
+.hero {
+  width: calc(100% + 30px);
+  height: 400px;
+  margin-left: -15px;
+  margin-right: -30px;
+  margin-bottom: 0;
+}
+
+.avatar {
+  width: 250px;
+  height: 250px;
+  border: 8px double #222;
+  margin-top: 180px;
+  left: 120px;
+  margin-left: -80px;
+  position: absolute;
+}
+
+div.user-name {
+  float: left;
+  margin-top: 60px;
+  font-weight: 600;
+  color: #eee;
+  font-size: 33px;
+}
+
+div.user-name-wrapper {
+  margin-top: 220px;
+  left: 320px;
+  position: absolute;
+}
+
+div.main-friend-btn-wrapper {
+  margin-top: -50px;
+  right: 20px;
+  margin-left: -80px;
+  position: absolute;
+}
+
+.centered-show-image {
+  display: block;
+  margin: 0 auto;
+  position: relative;
+  max-width: 500px;
+  max-height: 500px;
+}
+
+.image-menu-wrapper {
+  display: block;
+  right: 30px;
+  margin-right: 30px;
+  margin-top: 10px;
+}
+
+div.alert.alert-dismissible.alert {
+  margin-bottom: 0;
+}
+
+div.author-box {
+  display: inline-block;
+  text-align: left;
+
+  a {
+    display: block;
+  }
+
+  time {
+    display: block;
+    color: #666;
+    font-size: 12px;
+  }
+}
+
+div.wrapper {
+  margin: 5px;
+}
+
+.post-body {
+  margin-bottom: 15px;
+}
+
+.thumb {
+  width: 60px;
+  height: 60px;
+}
+
+.gray-box {
+  background-color: #ddd;
+}
+
+span.indent {
+  padding-left: 5px;
+}
+
+.image-wrapper {
+  border: 3px solid #999;
+  padding: 10px 0;
+}
+
+div.center {
+  text-align: center;
+}
+
+div#red-notice {
+  color: #f90e9b;
+  font-size: 18px;
+  padding: 7px;
+  border: 2px solid #f90e9b;
+  width: 95%;
+}

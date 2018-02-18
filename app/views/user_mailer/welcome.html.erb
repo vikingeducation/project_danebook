@@ -1,0 +1,11 @@
+<h1>Welcome!</h1>
+
+<p>
+  Hi <%= @user.profile.first_name %>, welcome to Danebook network!
+</p>
+
+<h3>Here you can meet your friends, share your experience and be up to date what's on in your network of friends.</h3>
+
+<p>
+  View your account at <%= link_to "#{user_url(@user.id)}", user_url(@user.id) %>
+</p>

@@ -1,0 +1,38 @@
+<!--HERO-->
+<div class="container">
+  <br><br><br>
+  <!--SECTION BAR-->
+  <section class="nav-about">
+    <h2>
+      Search Results
+    </h2>
+  </section>
+
+  <!--FRIENDS GRID -->
+
+  <main class="main-about">
+    <div class="row">
+      <% @profiles.each do |profile| %>
+      <div class="col-sm-8 col-sm-offset-2">
+        <div class="friend-box">
+          <%= image_tag profile.user.profile_photo_id ? Photo.find(profile.user.profile_photo_id).image.url(:thumb) : 'user_silhouette_generic.gif', class: "img-thumbnail" %>
+          <div class="friend-name">
+            <%= link_to "#{user_full_name(profile.user)}", user_path(profile.user_id) %>
+            <%= profile.user.friended_users.count %>
+            Friends
+            <br>
+            Currently Lives:
+            <%= profile.current_town %><br>
+            From:
+            <%= profile.hometown %><br>
+            Born on:
+            <%= profile.date_of_birth %><br>
+          </div>
+          <%= render partial: "shared/add_remove_friend_small_btn", :locals => {:user_id => profile.user_id } %>
+        </div>
+      </div>
+      <% end %>
+    </div>
+  </main>
+
+</div>

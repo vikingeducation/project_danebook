@@ -1,0 +1,45 @@
+<%= form_for user, :html => {:class => "form-horizontal"} do |user_fields| %>
+  <%= user_fields.fields_for :profile do |profile_fields| %>
+    <fieldset class="form-group row">
+      <div class="col-xs-6">
+        <%= profile_fields.text_field :first_name, class: "form-control", placeholder: "First Name" %>
+      </div>
+      <div class="col-xs-6">
+        <%= profile_fields.text_field :last_name, class: "form-control", placeholder: "Last Name" %>
+      </div>
+      <div class="col-xs-12">
+        <%= user_fields.text_field :email, class: "form-control", placeholder: "Email" %>
+      </div>
+      <div class="col-xs-12">
+        <%= user_fields.password_field :password, class: "form-control", placeholder: "Your New Password" %>
+      </div>
+      <div class="col-xs-12">
+        <%= user_fields.password_field :password_confirmation, class: "form-control", placeholder: "Confirm Your Password" %>
+      </div>
+
+      <div class="col-xs-12">
+        <h4>Birthday</h4>
+      </div>
+      <div class="col-xs-12">
+        <div class="form-group col-xs-8">
+          <%= profile_fields.select :birth_day, (1..31).map {|d| [d,d]}, {prompt: 'Day'}, class: "btn btn-default btn-sm dropdown-toggle col-xs-3"  %>
+
+          <%= profile_fields.select :birth_month, (1..12).map {|d| [d,d]}, {prompt: 'Month'}, class: "btn btn-default btn-sm dropdown-toggle col-xs-3"  %>
+
+          <%= profile_fields.select :birth_year, (1910..Date.today.year).map {|d| [d,d]}, {prompt: 'Year'}, class: "btn btn-default btn-sm dropdown-toggle col-xs-3"  %>
+        </div>
+      </div>
+      <div class="col-xs-12">
+        <div class="col-xs-3 radio-inline">
+          <%= profile_fields.radio_button(:gender, "male") %>
+          <%= label :gender, "male" %>
+        </div>
+        <div class="col-xs-3 radio-inline">
+          <%= profile_fields.radio_button(:gender, "female") %>
+          <%= label :gender, "female" %>
+        </div>
+      </div>
+    </fieldset>
+    <% end %>
+  <%= user_fields.submit "Sign Up!", class: "btn btn-success btn-lg btn-block" %>
+<% end %>

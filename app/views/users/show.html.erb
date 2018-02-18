@@ -1,0 +1,88 @@
+<!--HERO-->
+<div class="container">
+  <%= render "shared/header" %>
+  <!--SUB-NAVIGATION-->
+  <%= render "shared/sub_navbar" %>
+  <!--SECTION BAR-->
+  <section class="nav-about">
+    <h2>
+    About
+    </h2>
+    <% if current_user.id.to_s == params[:id] %>
+      <%= link_to "Edit Your Profile", edit_user_path(@user.id), class: "btn btn-primary" %>
+    <% end %>
+  </section>
+  <!--DATA TABLE-->
+  <main class="main-about">
+  <div class="row">
+    <article class="col-xs-12 col-sm-6 interior">
+      <table class="tab-about">
+        <caption>
+        <h3>
+        Basic Information
+        </h3>
+        </caption>
+        <tr>
+          <th>
+            Birthday:
+          </th>
+          <td>
+            <%= @profile.date_of_birth %>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            College:
+          </th>
+          <td>
+            <%= @profile.college %>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            Hometown:
+          </th>
+          <td>
+            <%= @profile.hometown %>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            Currently Lives:
+          </th>
+          <td>
+            <%= @profile.current_town %>
+          </td>
+        </tr>
+      </table>
+      <!--CONTACT INFO TABLE-->
+      <table class="tab-about">
+        <caption><h3>Current Information</h3></caption>
+        <tr>
+          <th>
+            Email:
+          </th>
+          <td>
+            <%= @profile.user.email %>
+          </td>
+        </tr>
+        <tr>
+          <th>
+            Telephone:
+          </th>
+          <td>
+            <%= @profile.telephone %>
+          </td>
+        </tr>
+      </table>
+    </article>
+    <!-- ABOUT RIGHT COLUMN-->
+    <article class="col-xs-12 col-sm-6 interior">
+      <h3>Words to Live By</h3>
+        <p><%= @profile.words_to_live %></p><br>
+      <h3>About Me</h3>
+        <p><%= @profile.about_me %></p>
+    </article>
+  </div>
+  </main>
+</div>

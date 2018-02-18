@@ -1,0 +1,26 @@
+<section class="post">
+  <header class="nav-post">
+    <h4>
+      Photos
+    </h4>
+  </header>
+  <div class="container-fluid">
+    <div class="row">
+
+      <% @user.photos.each do |photo| %>
+      <div class="col-md-4 col-xs-12">
+        <div class="hovereffect">
+          <%= link_to (require_current_user_friends(photo) ? user_photo_path(@user, photo) : "" ) do %>
+          <%= image_tag photo.image.url(:thumb), :class => "img-thumbnail" %>
+          <% end %>
+        </div>
+      </div>
+      <% end %>
+
+    </div>
+
+  <div class="nav-bottom-link">
+    <%= link_to "See More Photos", user_photos_path(@user), :class => "edit-profile" %>
+  </div>
+</div>
+</section>

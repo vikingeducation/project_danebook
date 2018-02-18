@@ -1,0 +1,606 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+
+
+ */
+/* line 26, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+.border-3d, .sub-navigation, .nav-about, .main-about {
+  border-bottom: 1px solid #333;
+  border-left: 1px solid #333;
+  border-right: 1px solid #333;
+}
+
+/* line 32, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+body {
+  margin-top: 65px;
+  padding-bottom: 60px;
+}
+@media screen and (max-width: 600px) {
+  /* line 32, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+  body {
+    width: 620px;
+  }
+}
+
+/*=============================
+HOME NAVIGATION
+=============================*/
+/* line 51, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+nav.navbar-default {
+  background-color: #2b78e4;
+  border-color: black;
+  color: #ecf0f1;
+}
+
+/* line 55, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+nav.navbar-default .navbar-brand h1 {
+  margin-top: 0px;
+  display: inline;
+  color: white;
+}
+
+/* line 59, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+nav.navbar-default .collapse button {
+  background-color: #0af;
+  color: black;
+  font-weight: bold;
+}
+
+/* line 63, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+nav.navbar-default .collapse button:hover {
+  background-color: #bef;
+  color: black;
+}
+
+/* line 66, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+.navbar-right .collapse .form-group {
+  padding-right: 0;
+}
+
+/* line 70, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+.navbar-right {
+  margin-bottom: 10px;
+  margin-top: 5px;
+}
+
+/* line 77, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+.container .row aside {
+  margin-top: 50px;
+}
+
+/* line 81, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+.container .row aside h2 {
+  padding-bottom: 5px;
+  font-weight: bold;
+}
+
+/* line 84, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+.container .row aside ul li {
+  padding-bottom: 20px;
+  color: gray;
+  font-size: 19px;
+  font-weight: light;
+}
+
+/* line 91, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+section form fieldset input {
+  margin-bottom: 15px;
+}
+
+/* line 93, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+section form fieldset #dropdownDay {
+  margin-left: 5px;
+}
+
+/*# sourceMappingURL=styles.css.map */
+/*=============================
+NAVIGATION
+=============================*/
+/* line 104, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+nav.navbar-custom {
+  background-color: #337ab7;
+  border-bottom: 2px solid #333;
+}
+/* line 108, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+nav.navbar-custom .logo-container img {
+  width: 30px;
+  height: 30px;
+  border-radius: 100%;
+  display: inline-block;
+  margin-top: -8px;
+}
+/* line 115, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+nav.navbar-custom .logo-container h3 {
+  display: inline-block;
+  margin-top: -8px;
+}
+/* line 121, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+nav.navbar-custom .navbar-header .navbar-brand {
+  color: white;
+}
+/* line 124, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+nav.navbar-custom .navbar-header button .icon-bar {
+  background-color: white;
+}
+/* line 127, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+nav.navbar-custom .navbar-header a.navbar-brand:hover {
+  color: black;
+}
+/* line 131, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+nav.navbar-custom form .form-group input {
+  width: 450px;
+}
+/* line 134, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+nav.navbar-custom ul li a {
+  color: white;
+  font-size: 18px;
+}
+/* line 138, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+nav.navbar-custom ul li a:hover {
+  color: black;
+  background-color: white;
+}
+
+/*=============================
+HERO
+=============================*/
+/* line 148, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+header.hero {
+  background: white url("hogwarts_small.jpg") no-repeat;
+  background-size: cover;
+  background-position: 0 60%;
+  height: 400px;
+  margin-bottom: 0;
+}
+/* line 154, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+header.hero .avatar {
+  width: 250px;
+  height: 250px;
+  border: 8px double #222;
+  position: relative;
+  top: 45%;
+  left: 3%;
+  background: url("harry_potter_small.jpg");
+}
+/* line 163, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+header.hero div.user-name {
+  float: left;
+  margin-top: 90px;
+  font-weight: 600;
+  color: #eee;
+  font-size: 33px;
+}
+/* line 170, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+header.hero div.user-name-wrapper {
+  margin-left: 330px;
+}
+
+/*=============================
+SUB-NAVIGATION
+=============================*/
+/* line 178, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+.sub-navigation {
+  background-color: white;
+  margin-left: 0px;
+  margin-right: 0px;
+  line-height: 40px;
+}
+/* line 184, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+.sub-navigation ul.nav.nav-pills {
+  margin-left: 280px;
+  font-size: 16px;
+  color: black;
+}
+/* line 189, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+.sub-navigation ul.nav.nav-pills li.active a {
+  background-color: #aaa;
+  border-radius: 0;
+}
+/* line 193, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+.sub-navigation ul li .badge {
+  color: #337ab7;
+  background-color: inherit;
+}
+/* line 197, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+.sub-navigation .edit-profile {
+  text-decoration: underline;
+}
+/* line 200, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+.sub-navigation .edit-profile a:hover {
+  background-color: inherit;
+}
+@media (max-width: 990px) {
+  /* line 204, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+  .sub-navigation button.navbar-toggle {
+    display: block;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: 18px;
+    text-align: center;
+  }
+}
+@media (max-width: 990px) and (max-width: 420px) {
+  /* line 204, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+  .sub-navigation button.navbar-toggle {
+    width: 155px;
+  }
+}
+@media (max-width: 990px) {
+  /* line 214, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+  .sub-navigation .navbar-collapse {
+    border-top: 1px solid transparent;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+  /* line 218, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+  .sub-navigation .navbar-collapse.collapse {
+    display: none !important;
+  }
+  /* line 221, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+  .sub-navigation .collapse.in {
+    display: block !important;
+  }
+  /* line 224, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+  .sub-navigation ul li {
+    clear: both;
+    content: "";
+    margin: 0 auto;
+    display: block;
+    width: 100%;
+    text-align: center;
+    font-size: 18px;
+    border-top: 1px solid black;
+  }
+  /* line 234, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+  .sub-navigation ul {
+    border: 1px solid black;
+  }
+}
+
+/*=============================
+MAIN PART ABOUT
+=============================*/
+/* line 246, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+.nav-about {
+  background: #ccc;
+  text-align: center;
+  position: relative;
+}
+/* line 251, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+.nav-about h2 {
+  display: inline-block;
+}
+/* line 254, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+.nav-about a.btn {
+  display: inline-block;
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* line 267, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+table.tab-about {
+  font-size: 14px;
+  margin: -10px auto 0 auto;
+  width: 350px;
+}
+/* line 271, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+table.tab-about table caption {
+  text-align: left;
+}
+/* line 274, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+table.tab-about th {
+  font-weight: bold;
+  text-align: left;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  width: 130px;
+}
+/* line 281, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+table.tab-about tr td {
+  padding-left: 5px;
+  width: 250px;
+}
+
+/*=============================
+MAIN PART ABOUT EDIT
+=============================*/
+/* line 291, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+.main-about .input-group .form-control {
+  height: 28px;
+  width: 200px;
+  font-size: 13px;
+}
+/* line 296, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+.main-about textarea {
+  width: 90%;
+  min-height: 80px;
+  font-size: 12px;
+  color: gray;
+  text-align: left;
+  padding: 5px;
+  overflow: auto;
+}
+/* line 305, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+.main-about input.btn-save {
+  display: block;
+  margin: 60px auto;
+  width: 350px;
+  height: 80px;
+  font-size: 30px;
+}
+
+/*=============================
+TIMELINE SECTION
+=============================*/
+/* line 317, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+article section.post {
+  margin-top: 20px;
+  border: 2px solid black;
+}
+/* line 320, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+article section.post header.nav-post {
+  background-color: #ddd;
+  text-align: center;
+  border-bottom: 2px solid black;
+}
+/* line 324, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+article section.post header.nav-post h4 {
+  display: inline-block;
+}
+/* line 328, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+article section.post textarea {
+  width: 95%;
+  margin: 8px auto;
+}
+/* line 333, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+article section.post .container-fluid .row {
+  padding-top: 1em;
+}
+/* line 337, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+article section.post .nav-footer {
+  border-top: 2px solid black;
+  text-align: right;
+  background-color: #ddd;
+  padding: 5px;
+  min-height: 35px;
+}
+/* line 343, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+article section.post .nav-footer a {
+  display: inline-block;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+/* line 348, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+article section.post .nav-footer .clearfix:after,
+article section.post .nav-footer .clearfix:before {
+  content: "";
+  clear: both;
+}
+/* line 353, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+article section.post .nav-footer .liked-box {
+  display: block;
+  text-align: left;
+  margin-top: 8px;
+}
+/* line 357, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+article section.post .nav-footer .liked-box p {
+  display: inline-block;
+}
+/* line 362, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+article section.post .nav-bottom-link {
+  text-align: center;
+  margin: 6px 0;
+}
+/* line 366, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+article section.post .container-fluid .row div {
+  padding-left: 3px;
+  padding-right: 3px;
+}
+/* line 370, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+article section.post .post-body img {
+  width: 60px;
+  height: 60px;
+  margin: 8px;
+  display: inline-block;
+}
+/* line 376, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+article section.post .author-box {
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 5px;
+  width: 80%;
+}
+/* line 382, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+article section.post .author-box time {
+  display: block;
+  color: #666;
+  font-size: 12px;
+}
+/* line 388, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+article section.post .comment-area {
+  margin: 8px;
+}
+/* line 391, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+article section.post .unfolded {
+  background-color: #ddd;
+  margin-top: 10px;
+}
+/* line 394, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+article section.post .unfolded time {
+  display: inline-block;
+}
+/* line 397, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+article section.post .unfolded .author-box-comment {
+  display: inline-block;
+  vertical-align: top;
+  margin-top: 5px;
+  position: left;
+  width: 80%;
+  text-align: left;
+}
+/* line 404, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+article section.post .unfolded .author-box-comment time {
+  display: block;
+  color: #666;
+  font-size: 12px;
+}
+/* line 410, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+article section.post .unfolded .like-area {
+  display: inline-block;
+  width: 100%;
+}
+@media (min-width: 800px) {
+  /* line 410, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+  article section.post .unfolded .like-area {
+    margin-top: -40px;
+  }
+}
+/* line 417, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+article section.post .unfolded .like-area a {
+  margin-right: 10px;
+}
+/* line 421, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+article section.post .unfolded .liked-box {
+  margin-left: 30px;
+}
+/* line 424, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+article section.post .unfolded .form-group .nav-footer {
+  border-top: 0;
+}
+
+/* line 432, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+table.tab-timeline {
+  font-size: 12px;
+  margin: 5px 0 5px 10px;
+}
+/* line 435, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+table.tab-timeline tr th {
+  padding-top: 8px;
+}
+/* line 438, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+table.tab-timeline tr td {
+  padding-left: 8px;
+  padding-top: 8px;
+}
+
+/*=============================
+PHOTOS SECTION
+=============================*/
+/* line 450, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+a time.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 50px;
+  width: 100%;
+  background-color: #999;
+  color: #FFF;
+  font-size: 1.5em;
+  text-align: center;
+  padding-bottom: 8px;
+  padding-top: 5px;
+  -moz-transition: all 0.4s;
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  transition: all 0.4s;
+  opacity: 0;
+  filter: Alpha(opacity=0);
+  border-radius: 4px;
+}
+
+/* line 471, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+a time.overlay:hover {
+  overflow: visible;
+  cursor: pointer;
+}
+
+/* line 476, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+.hovereffect:hover .overlay {
+  opacity: 0.9;
+  filter: Alpha(opacity=100);
+  z-index: 20;
+  left: 0;
+  top: auto;
+  bottom: 0;
+  padding: 1em;
+  height: 4.75em;
+}
+
+/* line 487, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+.hovereffect {
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  width: 100%;
+  cursor: default;
+}
+
+/* line 496, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+.hovereffect img {
+  width: 98%;
+  -webkit-transition: -webkit-transform 0.35s;
+  transition: transform 0.35s;
+}
+
+/* line 503, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+.hovereffect:hover img {
+  -webkit-transform: translate3d(0, -10%, 0);
+  transform: translate3d(0, -10%, 0);
+}
+
+/*=============================
+FRIENDS SECTION
+=============================*/
+/* line 513, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+.main-about .row {
+  padding: 15px;
+}
+
+/* line 516, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+.main-about .row .friend-box {
+  border: 1px solid black;
+  width: 430px;
+  height: 150px;
+  padding: 15px;
+  margin: 5px auto;
+}
+/* line 522, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+.main-about .row .friend-box img {
+  height: 120px;
+  width: 120px;
+  float: left;
+}
+/* line 527, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+.main-about .row .friend-box .friend-name {
+  float: left;
+  margin-top: 30px;
+  margin-left: 20px;
+}
+/* line 531, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+.main-about .row .friend-box .friend-name a {
+  display: block;
+}
+/* line 535, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+.main-about .row .friend-box button.unfriend {
+  float: right;
+  width: 27%;
+  background-color: #aaa;
+  font-weight: bold;
+  margin-top: 30px;
+}
+/* line 542, /Users/Visiona/Documents/Viking_School/Ruby/project_danebook/app/assets/stylesheets/application.scss */
+.main-about .row .friend-box button.unfriend:hover {
+  background-color: #ddd;
+  font-weight: bold;
+}

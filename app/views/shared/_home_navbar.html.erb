@@ -1,0 +1,41 @@
+<!--NAVBAR-->
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="row">
+      <div class="navbar-header">
+        <%= link_to root_path, class: "navbar-brand" do %>
+          <h1>Danebook</h1>
+        <% end %>
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#form-collapse" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        </button>
+      </div>
+      <!--NAVBAR RIGHT-->
+      <div class="navbar-right">
+        <div class="collapse navbar-collapse" id="form-collapse">
+          <%= form_tag session_path, :html => {:class => "navbar-form form-group container"} do %>
+            <div class="row">
+              <%= label_tag "Email", nil, class: "control-label col-sm-5" %>
+              <%= label_tag "Password", nil, class: "control-label col-sm-5" %>
+            </div>
+
+            <div class="row">
+              <div class="col-xs-5">
+                <%= text_field_tag :email,'darragh@test.ie', class: "form-control" %>
+              </div>
+              <div class="col-xs-5">
+                <%= text_field_tag :password, 'darragh12', class: "form-control" %>
+              </div>
+              <div class="col-xs-2">
+                <%= submit_tag "Log in", class: "btn btn-primary pull-right" %>
+              </div>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

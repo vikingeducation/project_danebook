@@ -1,0 +1,75 @@
+// Place all the styles related to the Photos controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+/*=============================
+PHOTOS SECTION
+=============================*/
+a time.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 25px;
+  width: 100%;
+  background-color: #444;
+  color: #FFF;
+  font-size: 1em;
+  text-align: center;
+  padding-top: 5px;
+  -moz-transition: all 0.4s;
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  transition: all 0.4s;
+  opacity: 0;
+  filter: Alpha(opacity=0);
+}
+
+a time.overlay:hover {
+  overflow: visible;
+  cursor: pointer;
+}
+
+.hovereffect:hover .overlay {
+  opacity: 0.7;
+  filter: Alpha(opacity=100);
+  z-index: 20;
+  left: 0;
+  bottom: 0;
+  padding-left: 3px;
+  padding-right: 3px;
+  height: 2.9em;
+}
+
+.hovereffect {
+  overflow: hidden;
+  position: relative;
+  text-align: center;
+  width: 100%;
+  cursor: default;
+}
+
+.hovereffect {
+  .crop {
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+  }
+
+  .crop img {
+    max-height: 200px;
+    margin: auto 0;
+    -webkit-transition: -webkit-transform 0.35s;
+    transition: transform 0.35s;
+  }
+}
+
+.hovereffect:hover img {
+  width: 98%;
+  -webkit-transform: translate3d(0,-5%,0);
+  transform: translate3d(0,-5%,0);
+}
+
+h3.alert-message {
+  color: #c16060;
+  font-size: 16px;
+  font-style: italic;
+}

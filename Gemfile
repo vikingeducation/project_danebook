@@ -56,6 +56,8 @@ group :development, :test do
 
   gem 'premailer-rails' # configures inline styles for mailer templates
   gem 'nokogiri' # parses html for premailer-rails (and other things)
+  gem "rubycritic", require: false # provides stats on code build
+
 end
 
 group :development do
@@ -69,6 +71,7 @@ group :development do
   gem 'rails-erd', require: false # generates ERD chart for your schema
   gem 'guard-rspec', require: false # runs rspec automatically
   gem 'letter_opener'
+  gem 'rails-erd', require: false
 end
 
 group :test do

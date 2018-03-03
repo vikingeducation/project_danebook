@@ -71,7 +71,6 @@ group :development do
   gem 'rails-erd', require: false # generates ERD chart for your schema
   gem 'guard-rspec', require: false # runs rspec automatically
   gem 'letter_opener'
-  gem 'rails-erd', require: false
 end
 
 group :test do

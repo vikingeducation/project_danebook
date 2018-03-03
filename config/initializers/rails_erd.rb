@@ -1,5 +1,3 @@
-require 'rails_erd/domain/relationship'
-
 module RailsERD
   class Domain
     class Relationship

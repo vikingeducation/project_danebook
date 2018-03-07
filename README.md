@@ -11,7 +11,7 @@ You can see it here:
 - DB: postgres 0.18
 - Ruby: 2.4.2
 - Repos:
-  - Current codebase: [project_danebook](https://github.com/lortza/project_danebook)
+  - Production codebase: [project_danebook](https://github.com/lortza/project_danebook)
   - Original markup: [assignment_danebook_goes_live](https://github.com/lortza/assignment_danebook_goes_live)
 - Heroku is set up to auto-deploy when I push to GitHub master. FTW!
 - Images hosted on AWS S3
@@ -19,6 +19,7 @@ You can see it here:
 ## Features
 
 - basic user authentication (hand-rolled)
+- granular user authorization policies
 - publish text posts & photos
 - comment on and delete their own comments from text and photo posts
 - like/unlike any post, photo, or comment
@@ -28,14 +29,14 @@ You can see it here:
 - set profile pic and cover pic for profile
 - see others' timelines
 - see your own newsfeed
-- granular user authorization policies
+- mailer notifications for when a user comments on your post
 - suite of tests
 
 # Tour of the App
 
-Though you can [go here](https://lortzadanebook.herokuapp.com/) to sign up and see a working version of this app (delayed spin-up courtesy of free heroku dynos ;) ), here is an overview of the features.
+Though you can [go here](https://lortzadanebook.herokuapp.com/) to sign up and see a working version of this app (delayed spin-up courtesy of free heroku dynos ;) ), here is an overview of the features. Starting with...
 
-Look! It's a timeline page for Clark "Mouth" Devereaux from the 80s classic movie _The Goonies_! And here he is having a comment thread about the Truffle Shuffle. Awww. So you get the drill. This app looks and acts like Facebook.
+A timeline page for Clark "Mouth" Devereaux from the 80s classic movie _The Goonies_! And here he is having a not-so-friendly comment thread about the Truffle Shuffle. Jeeze you guys, it's been _decades_. Anyway, you get the drill. This app looks and acts like Facebook.
 
 ![Alt text](/app/assets/images/screenshots/timeline.jpg?raw=true "User Timeline Page")
 
@@ -48,7 +49,7 @@ See your friend's photos:
 Have admin options in the close-up modal for your photos:
 ![Alt text](/app/assets/images/screenshots/photos_index.png?raw=true "Photo management modal")
 
-And, among other other features, see your list of friends:
+And see your list of friends:
 ![Alt text](/app/assets/images/screenshots/friends.jpg?raw=true "Friends Page")
 
 
@@ -66,7 +67,7 @@ Explanation WIP as of 3/7/2018
 In the mean time, check out the [blog post I wrote](http://lortza.github.io/2018/01/30/polymorphic-likes.html) about it.
 
 ### User Authorization
-Since there are a lot of little decision to be made about who gets to do what to what, I implemented user authorization with the help of `gem 'pundit'`. This keeps all of my policies organized and logical in one tidy spot:
+Since there are a lot of little decisions to be made about who gets to do what to what, I implemented user authorization with the help of `gem 'pundit'`. This keeps all of my policies organized and logical in one tidy spot:
 
 ```
 /app
@@ -78,25 +79,24 @@ Since there are a lot of little decision to be made about who gets to do what to
     - user_policy.rb
 ```
 
-For example, users are not permitted to post photos on another user's timeline, nor are they allowed to delete or edit another user's photo. The photo policy makes these rules very clear:
+For example, users are not permitted to write posts on another user's timeline, nor are they allowed to delete or edit another user's post. The post policy makes these rules very clear:
 
 ```ruby
-# app/policies/photo_policy.rb
+# app/policies/post_policy.rb
 
-class PhotoPolicy < ApplicationPolicy
+class PostPolicy < ApplicationPolicy
+
+  # Allow these actions only if...
 
   def create?
-    # allow only if the current_user on their own timeline
     record.user_id == user.id
   end
 
   def destroy?
-    # allow only if the current_user is on their own timeline
     record.user_id == user.id
   end
 
   def edit?
-    # allow only if the current_user is viewing their own photo
     record.user_id == user.id
   end
 end
@@ -105,22 +105,32 @@ end
 Writing the policy is half of the task. The other half is invoking it. Since the policies are conveniently named to match controller actions, the gem knows which policy to invoke when referenced in a controller:
 
 ```ruby
-# app/controllers/photos_controller.rb
+# app/controllers/posts_controller.rb
 
-class PhotosController < ApplicationController
+class PostsController < ApplicationController
 ...
 
   def create
   ...
-    photo = current_user.photos.new(photo_params)
+    post = current_user.posts.new(post_params)
 
-    # checks if photo.user_id == user.id
-    authorize photo
+    # checks if post.user_id == user.id
+    authorize post
 
-    if photo.save
+    if post.save
     ...
 ```
 
+These policies are great gate keepers too. For example, if a user isn't allowed to create a new post on another user's timeline, it's best we don't even show them the form:
+
+```erb
+<!-- app/views/timelines/show -->
+...
+
+<% if policy(@timeline.post).create? %>
+  <%= render 'shared/activity_form', user: @timeline.user, post: @timeline.post, photo: @timeline.photo %>
+<% end %>
+```
 
 ### App Architecture Evaluation
 The current codebase has a RubyCritic score of 93.84, which is nice while still has plenty of room for improvement.

@@ -138,26 +138,28 @@ RSpec.describe User, type: :model do
     end
 
     describe "#friends" do
-      let(:user_1){ build(:user) }
-      let(:user_2){ build(:user) }
+      let(:user_1){ create(:user) }
+      let(:user_2){ create(:user) }
+      let(:user_3){ create(:user) }
 
       it 'lists all friends' do
-        user.friended_users = [user_1]
-        user.users_friended_by = [user_1, user_2]
-        expect(user.friends.count).to eq(2)
+        user_1.friended_users = [user_2]
+        user_1.users_friended_by = [user_2, user_3]
+        expect(user_1.friends.count).to eq(2)
       end
     end
 
     describe "#has_friends?" do
-      let(:user_1){ build(:user) }
+      let(:user_1){ create(:user) }
+      let(:user_2){ create(:user) }
 
       it 'returns false if a user does not have friends' do
-        expect(user.has_friends?).to eq(false)
+        expect(user_1.has_friends?).to eq(false)
       end
 
       it 'returns true if a user has friends' do
-        user.friended_users = [user_1]
-        expect(user.has_friends?).to eq(true)
+        user_1.friended_users = [user_2]
+        expect(user_1.has_friends?).to eq(true)
       end
     end
 

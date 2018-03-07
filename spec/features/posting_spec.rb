@@ -7,7 +7,6 @@ RSpec.feature 'Posting', type: :feature do
   end
 
   context "A visitor" do
-
     scenario 'can not make a new post' do
       visit new_user_post_path(user)
       expect(current_path).to eq(login_path)

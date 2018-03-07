@@ -1,17 +1,17 @@
 class CommentsController < ApplicationController
   include ActionView::Helpers::TextHelper
 
+  before_action :set_commented_on, only: [:create]
 
   def create
     session[:return_to] ||= request.referer
 
-    commented_on = set_commented_on
-    comment = commented_on.comments.new(comment_params)
+    comment = @commented_on.comments.new(comment_params)
     comment.user_id = current_user.id
 
     if comment.save
-      comment_recipient = commented_on.user
-      comment_recipient.send_comment_notification(commented_on, comment) unless comment_recipient == current_user
+      comment_recipient = @commented_on.user
+      comment_recipient.send_comment_notification(@commented_on, comment) unless comment_recipient == current_user
       redirect_to session.delete(:return_to), notice: 'Comment was successfully created.'
     else
       render :new
@@ -34,8 +34,8 @@ class CommentsController < ApplicationController
     post_id = params[:post_id]
     photo_id = params[:photo_id]
 
-    Post.find(post_id) if post_id
-    Photo.find(photo_id) if photo_id
+    @commented_on = Post.find(post_id) if post_id
+    @commented_on = Photo.find(photo_id) if photo_id
   end
 
   def comment_params

@@ -60,7 +60,86 @@ This app's architecture is a little complicated, with self-referencing `User`s t
 ![Alt text](/app/assets/images/screenshots/erd.png?raw=true "Schema ERD")
 
 ### Self-Referencing Users for Friending
-Explanation WIP as of 3/7/2018
+A self-referencing model can be a little confusing, since the association is taking the place of 2 fully-independent classes... which happen to be the same class. Fortunately, Rails will let you name things whatever you want. And I think that's the secret sauce right there: the naming.
+
+In my app, a `friending` does not need to be confirmed, so all friends count regardles of who initiates with whom. That said, for clarity of roles my `User` model has `initiated` and `received` friendings:
+
+```ruby
+# app/models/user.rb
+
+class User < ApplicationRecord
+...
+
+  # Friendings initiator
+  has_many :initiated_friendings,
+           :class_name => "Friending",
+           :foreign_key => :initiator_id
+  has_many :friended_users,
+           :through => :initiated_friendings,
+           :source => :friend_recipient
+
+  # Friendings recipient
+  has_many :received_friendings,
+           :class_name => "Friending",
+           :foreign_key => :recipient_id
+  has_many :users_friended_by,
+           :through => :received_friendings,
+           :source => :friend_initiator
+  ...
+```
+
+And these correspond with the `Friending`s table associations:
+
+```ruby
+# app/models/friending.rb
+
+class Friending < ApplicationRecord
+
+  # The Initiator side
+  belongs_to :friend_initiator,
+             :foreign_key => :initiator_id,
+             :class_name => "User"
+
+  # The Recipient side
+  belongs_to :friend_recipient,
+             :foreign_key => :recipient_id,
+             :class_name => "User"
+  ...
+```
+
+ Since a friend can be either one you initiate or receive, we'd can't call just `received_friendings` or just `initiated_friendings` to see all of a user's friends. That means we need to fake a "friends" association on the `User` model.
+
+```ruby
+# app/models/user.rb
+
+class User < ApplicationRecord
+...
+
+  def friends
+    (friended_users + users_friended_by).uniq
+  end
+```
+
+It does require a little more fancy footwork in the controller to "unfriend" someone, but no one ever said friendships were easy:
+
+```ruby
+# app controllers/friendings_controller.rb
+
+class FriendingsController < ApplicationController
+...
+
+  def destroy
+  ...
+    unfriended_user = User.find(params[:id])
+
+    if current_user.friended_users.include?(unfriended_user)
+      current_user.friended_users.delete(unfriended_user)
+    elsif current_user.users_friended_by.include?(unfriended_user)
+      current_user.users_friended_by.delete(unfriended_user)
+    else
+      ...
+  end
+```
 
 ### Polymorphic Associations
 Explanation WIP as of 3/7/2018

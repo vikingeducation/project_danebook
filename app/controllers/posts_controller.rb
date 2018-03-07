@@ -4,6 +4,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: [:edit, :update, :destroy]
 
   def edit
+    authorize @post
   end
 
   def create

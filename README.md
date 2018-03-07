@@ -40,20 +40,20 @@ It's got pages where you can update your profile info:
 ![Alt text](/app/assets/images/screenshots/profile_edit.png?raw=true "Profile Edit Page")
 
 See all of your friends photos:
-![Alt text](/app/assets/images/screenshots/photos_index.png?raw=true "Photos index page")
+![Alt text](/app/assets/images/screenshots/photos.png?raw=true "Photos index page")
 
-Have admin options if the photo is yours:
-![Alt text](/app/assets/images/screenshots/photos_edit.png?raw=true "Photos closeup modal")
+Have admin options in the close-up modal if the photo is yours:
+![Alt text](/app/assets/images/screenshots/photos_index.png?raw=true "Photo management modal")
 
 And, among other other features, see your list of friends:
 ![Alt text](/app/assets/images/screenshots/friends.jpg?raw=true "Friends Page")
 
 
 ## App Architecture
-Now that we've got the basic functionality out of the way, let's get down to the interesting parts of the code that makes this happen.
+Now that we've got the basic functionality out of the way, let's get down to the interesting parts of the code that make this happen.
 
 This app's architecture is a little complicated, with self-referencing `User`s table associations and some polymorphism with `Like`s and `Comment`s available for use with `Post`s and `Photo`s. Thanks to [rails-erd](https://github.com/voormedia/rails-erd) for the sweet ERD gem that makes this image:
-![Alt text](/app/assets/images/screenshots/erb.png?raw=true "Schema ERD")
+![Alt text](/app/assets/images/screenshots/erd.png?raw=true "Schema ERD")
 
 ### Self-Referencing Users for Friending
 Explanation WIP as of 3/7/2018

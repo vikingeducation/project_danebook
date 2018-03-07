@@ -9,30 +9,22 @@ class PostsController < ApplicationController
   def create
     session[:return_to] ||= request.referer
 
-    @post = current_user.posts.new(post_params)
-    authorize @post
-    respond_to do |format|
-      if @post.save
-        format.html { redirect_to session.delete(:return_to), notice: 'Post was successfully created.' }
-        format.json { render 'users/timeline', status: :created, location: session.delete(:return_to) }
-      else
-        format.html { render :new }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
+    post = current_user.posts.new(post_params)
+    authorize post
+    if post.save
+      redirect_to session.delete(:return_to), notice: 'Post was successfully created.'
+    else
+      render :new
     end
   end
 
   def update
     session[:return_to] ||= request.referer
 
-    respond_to do |format|
-      if @post.update(post_params)
-        format.html { redirect_to session.delete(:return_to), notice: 'Post was successfully updated.' }
-        format.json { render 'users/timeline', status: :ok, location: session.delete(:return_to) }
-      else
-        format.html { render :edit }
-        format.json { render json: @post.errors, status: :unprocessable_entity }
-      end
+    if @post.update(post_params)
+      redirect_to session.delete(:return_to), notice: 'Post was successfully updated.'
+    else
+      render :edit
     end
   end
 
@@ -41,10 +33,7 @@ class PostsController < ApplicationController
 
     authorize @post
     @post.destroy
-    respond_to do |format|
-      format.html { redirect_to session.delete(:return_to), notice: "Post '#{truncate(@post.body, length: 25)}' was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    redirect_to session.delete(:return_to), notice: "Post '#{truncate(@post.body, length: 25)}' was successfully destroyed."
   end
 
   private

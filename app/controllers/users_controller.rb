@@ -28,38 +28,27 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
-    respond_to do |format|
-      if @user.save
-        sign_in(@user)
-        format.html { redirect_to @user, notice: "Hi #{@user.email}! Welcome to Danebook!" }
-        format.json { render :show, status: :created, location: @user }
-      else
-        format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+    if @user.save
+      sign_in(@user)
+      redirect_to @user, notice: "Hi #{@user.email}! Welcome to Danebook!"
+    else
+      render :new
     end
   end
 
   def update
     authorize @user
-    respond_to do |format|
-      if @current_user.update(user_params)
-        format.html { redirect_to @user, notice: 'Your profile has been updated.' }
-        format.json { render :show, status: :ok, location: @user }
-      else
-        format.html { render :edit }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+    if @current_user.update(user_params)
+      redirect_to @user, notice: 'Your profile has been updated.'
+    else
+      render :edit
     end
   end
 
   def destroy
     authorize @user
     @user.destroy
-    respond_to do |format|
-      format.html { redirect_to users_url, notice: 'User was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to users_url, notice: 'User was successfully destroyed.'
   end
 
   private

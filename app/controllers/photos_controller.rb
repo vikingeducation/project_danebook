@@ -4,37 +4,32 @@ class PhotosController < ApplicationController
 
   def index
     @user = User.find(params[:user_id])
-    @photos = @user.photos.paginate(page: params[:page], per_page: 15)
-    @photo = @user.photos.new
+    user_photos = @user.photos
+
+    @photos = user_photos.paginate(page: params[:page], per_page: 15)
+    @photo = user_photos.new
   end
 
   def create
     session[:return_to] ||= request.referer
 
-    @photo = current_user.photos.new(photo_params)
-    authorize @photo
-    respond_to do |format|
-      if @photo.save
-        format.html { redirect_to session.delete(:return_to), notice: 'Photo was successfully created.' }
-        format.json { render 'users/timeline', status: :created, location: session.delete(:return_to) }
-      else
-        format.html { redirect_to session.delete(:return_to), alert: "There was a problem with your photo file. #{@photo.errors.messages[:photo_data][0]}" }
-        format.json { render json: @photo.errors, status: :unprocessable_entity }
-      end
+    photo = current_user.photos.new(photo_params)
+    authorize photo
+
+    if photo.save
+      redirect_to session.delete(:return_to), notice: 'Photo was successfully created.'
+    else
+      redirect_to session.delete(:return_to), alert: "There was a problem with your photo file. The file #{photo.errors.messages[:photo_data][0]}"
     end
   end
 
   def update
     session[:return_to] ||= request.referer
 
-    respond_to do |format|
-      if @photo.update(photo_params)
-        format.html { redirect_to session.delete(:return_to), notice: 'Photo was successfully updated.' }
-        format.json { render 'users/timeline', status: :ok, location: session.delete(:return_to) }
-      else
-        format.html { render :edit }
-        format.json { render json: @photo.errors, status: :unprocessable_entity }
-      end
+    if @photo.update(photo_params)
+      redirect_to session.delete(:return_to), notice: 'Photo was successfully updated.'
+    else
+      render :edit
     end
   end
 
@@ -43,19 +38,17 @@ class PhotosController < ApplicationController
 
     authorize @photo
     @photo.destroy
-    respond_to do |format|
-      format.html { redirect_to session.delete(:return_to), notice: "Photo was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    redirect_to session.delete(:return_to), notice: "Photo was successfully destroyed."
   end
 
   private
-    def set_photo
-      @photo = Photo.find(params[:id])
-    end
 
-    def photo_params
-      params.require(:photo).permit(:photo_data, :delete_photo_data)
-    end
+  def set_photo
+    @photo = Photo.find(params[:id])
+  end
+
+  def photo_params
+    params.require(:photo).permit(:photo_data, :delete_photo_data)
+  end
 
 end

@@ -1,24 +1,20 @@
 class CommentsController < ApplicationController
   include ActionView::Helpers::TextHelper
 
+
   def create
     session[:return_to] ||= request.referer
 
-    @commented_on = Post.find(params[:post_id]) if params[:post_id]
-    @commented_on = Photo.find(params[:photo_id]) if params[:photo_id]
-    @comment = @commented_on.comments.new(comment_params)
-    @comment.user_id = current_user.id
+    commented_on = set_commented_on
+    comment = commented_on.comments.new(comment_params)
+    comment.user_id = current_user.id
 
-    respond_to do |format|
-      if @comment.save
-        comment_recipient = @commented_on.user
-        comment_recipient.send_comment_notification(@commented_on, @comment) unless comment_recipient == current_user
-        format.html { redirect_to session.delete(:return_to), notice: 'Comment was successfully created.' }
-        format.json { render 'feeds/show', status: :created, location:  session.delete(:return_to) }
-      else
-        format.html { render :new }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
-      end
+    if comment.save
+      comment_recipient = commented_on.user
+      comment_recipient.send_comment_notification(commented_on, comment) unless comment_recipient == current_user
+      redirect_to session.delete(:return_to), notice: 'Comment was successfully created.'
+    else
+      render :new
     end
   end
 
@@ -29,13 +25,18 @@ class CommentsController < ApplicationController
     authorize comment
     comment.destroy
 
-    respond_to do |format|
-      format.html { redirect_to session.delete(:return_to), notice: "Comment '#{truncate(comment.body, length: 25)}' was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    redirect_to session.delete(:return_to), notice: "Comment '#{truncate(comment.body, length: 25)}' was successfully destroyed."
   end
 
   private
+
+  def set_commented_on
+    post_id = params[:post_id]
+    photo_id = params[:photo_id]
+
+    Post.find(post_id) if post_id
+    Photo.find(photo_id) if photo_id
+  end
 
   def comment_params
     params.require(:comment).permit(:body, :post_id, :photo_id, :user_id)

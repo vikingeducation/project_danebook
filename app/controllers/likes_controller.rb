@@ -3,9 +3,10 @@ class LikesController < ApplicationController
   def create
     session[:return_to] ||= request.referer
 
-    set_parent
-    @like = @parent.likes.new(user_id: current_user.id)
-    if @like.save
+    parent = set_parent
+    like = parent.likes.new(user_id: current_user.id)
+
+    if like.save
       redirect_to session.delete(:return_to)
     else
       flash[:error] = "Something went wrong."
@@ -16,8 +17,6 @@ class LikesController < ApplicationController
   def destroy
     session[:return_to] ||= request.referer
 
-    set_parent
-    author = @parent.user
     like = Like.find(params[:id])
     like.destroy
     redirect_to session.delete(:return_to)
@@ -32,10 +31,10 @@ class LikesController < ApplicationController
 
   def set_parent
     klass_name = params[:likeable]
-    parent_key = params.keys.select{|k| k.match(klass_name.downcase + '_id')}.first
+    parent_key = params.keys.select{|key| key.match(klass_name.downcase + '_id')}.first
 
     id = params[parent_key]
-    @parent = klass_name.constantize.find(id)
+    klass_name.constantize.find(id)
   end
 
 

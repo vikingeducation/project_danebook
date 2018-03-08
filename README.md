@@ -120,7 +120,15 @@ class User < ApplicationRecord
   end
 ```
 
-It does require a little more fancy footwork in the controller to "unfriend" someone, but no one ever said friendships were easy:
+Though honestly, in order to wrangle in those nasty N+1 queries, the method I actually used looks like this:
+
+```ruby
+def friends
+  (friended_users.includes(:profile_pic, :received_friendings, :initiated_friendings, :friended_users, :users_friended_by) + users_friended_by.includes(:profile_pic, :received_friendings, :initiated_friendings, :friended_users, :users_friended_by)).uniq
+end
+```
+
+And it requires a little more fancy footwork in the controller to "unfriend" someone, but no one ever said friendships were easy:
 
 ```ruby
 # app controllers/friendings_controller.rb
@@ -142,8 +150,80 @@ class FriendingsController < ApplicationController
 ```
 
 ### Polymorphic Associations
-Explanation WIP as of 3/7/2018
-In the mean time, check out the [blog post I wrote](http://lortza.github.io/2018/01/30/polymorphic-likes.html) about it.
+I wrote a more extensive [blog post about this](http://lortza.github.io/2018/01/30/polymorphic-likes.html), so I'll keep this explanation short and limit it to just "likes". In a nutshell, in order to be able to "like" a text `post`, `photo` post, or `comment`, I needed to implement some polymorphic relationships -- and that happened via a `likes` table which tracks the liked object's class and id.
+
+```ruby
+# db/schema.rb
+...
+
+create_table "likes", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "likeable_type"
+    t.integer  "likeable_id"
+    ...
+  end
+```
+
+The associations between the `User` (the object doing the liking) and the objects being liked is called `:likeable` and it looks like this:
+
+```ruby
+# app/models/user.rb
+...
+has_many :photos_they_like, through: :likes,
+         source: :likeable, source_type: :Photo
+
+# app/models/photo.rb
+has_many :likes, as: :likeable
+```
+
+But since liking can happen to _3_ different classes, it made sense to pull the redundant code out into a concern called `Liking` and then just include that in the models that are likeable:
+
+```ruby
+# app/models/concerns/liking.rb
+
+module Liking
+  extend ActiveSupport::Concern
+
+  included do
+    has_many :likes, as: :likeable
+  end
+end
+
+
+# app/models/photo.rb
+class Photo < ApplicationRecord
+...
+  include Liking
+...
+
+# app/models/post.rb
+class Post < ApplicationRecord
+...
+  include Liking
+...
+
+# app/models/comment.rb
+class Comment < ApplicationRecord
+...
+  include Liking
+...
+```
+
+From the views, the "Like"/"Unlike" links pass the information to the `likes_controller` via the polymorphic url helper:
+
+```ruby
+link_to 'Like', polymorphic_url([current_user, object, :likes], likeable: klass), method: :post
+```
+
+which is then parsed by the `likes_controller` in a smidge of metaprogramming by pulling the value from the `:likeable` param and then eventually storing that in the `likes` table:
+
+```ruby
+klass_name = params[:likeable]
+
+parent_key = params.keys.select{|key| key.match(klass_name.downcase + '_id')}.first
+```
+
+As I was building these relationships, I was focused on keeping this as clean, non-klugey, and rails-typical as possible. #nosurprises #itscomplicated
 
 ### User Authorization
 Since there are a lot of little decisions to be made about who gets to do what to what, I implemented user authorization with the help of `gem 'pundit'`. This keeps all of my policies organized and logical in one tidy spot:

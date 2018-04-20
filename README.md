@@ -22,7 +22,7 @@ You can see it here:
 - granular user authorization policies
 - publish text posts & photos
 - comment on and delete their own comments from text and photo posts
-- like/unlike any post, photo, or comment
+- like/unlike any post, photo, or comment seamlessly via ajax
 - friend/unfriend other users
 - search for users
 - add personal info to profile
@@ -212,7 +212,7 @@ class Comment < ApplicationRecord
 From the views, the "Like"/"Unlike" links pass the information to the `likes_controller` via the polymorphic url helper:
 
 ```ruby
-link_to 'Like', polymorphic_url([current_user, object, :likes], likeable: klass), method: :post
+link_to 'Like', polymorphic_url([current_user, object, :likes], likeable: klass), remote: true, method: :post
 ```
 
 which is then parsed by the `likes_controller` in a smidge of metaprogramming by pulling the value from the `:likeable` param and then eventually storing that in the `likes` table:

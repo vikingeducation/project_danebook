@@ -1,25 +1,22 @@
 class LikesController < ApplicationController
 
   def create
-    session[:return_to] ||= request.referer
+    @parent = set_parent
 
-    parent = set_parent
-    like = parent.likes.new(user_id: current_user.id)
+    like = @parent.likes.new(user_id: current_user.id)
 
     if like.save
-      redirect_to session.delete(:return_to)
+      respond_to :js
     else
       flash[:error] = "Something went wrong."
-      redirect_to session.delete(:return_to)
     end
   end
 
   def destroy
-    session[:return_to] ||= request.referer
+    @parent = set_parent
 
     like = Like.find(params[:id])
     like.destroy
-    redirect_to session.delete(:return_to)
   end
 
 

@@ -1,7 +1,8 @@
+<%= toggle_like_link(object) %>
+
 <% if object.has_likes? %>
   <p class='likes'>
     Likes: <%= object.likes_count %>
    <%= list_likes(object.likes) %>...
   </p>
 <% end %>
-

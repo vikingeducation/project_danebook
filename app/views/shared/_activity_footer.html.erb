@@ -1,10 +1,11 @@
 <footer>
-  <%= display_like_unlike(object) %>
-  <%= render 'shared/likes', object: object %>
-
   <div class="right-side-links">
     <%= link_to "Delete #{object.class.to_s}", [object.user, object], method: :delete, data: {confirm: 'Are you sure you want to delete this?'} if policy(object).destroy? %>
   </div><!-- right-side-links -->
+
+  <section id='<%= dom_id(object) %>'>
+    <%= render partial: 'likes/likes', locals: { object: object } %>
+  </section>
 
   <div class="comments">
     <%= render 'comments/index', object: object %>

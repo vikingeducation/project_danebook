@@ -12,14 +12,14 @@ module LikesHelper
     end
   end
 
-  def display_like_unlike(object)
+  def toggle_like_link(object)
     klass = object.class.to_s
     like = object.likes.to_a.find { |l| l.user_id == current_user.id }
 
     if like == nil
-      link_to 'Like', polymorphic_url([current_user, object, :likes], likeable: klass), method: :post
+      link_to 'Like', polymorphic_url([current_user, object, :likes], likeable: klass), remote: true, method: :post
     else
-      link_to 'Unlike', polymorphic_url([current_user, object, like], likeable: klass), method: :delete
+      link_to 'Unlike', polymorphic_url([current_user, object, like], likeable: klass), remote: true, method: :delete
     end
   end
 

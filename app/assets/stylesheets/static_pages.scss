@@ -1,0 +1,91 @@
+// // Place all the styles related to the StaticPages controller here.
+// // They will automatically be included in application.css.
+// // You can use Sass (SCSS) here: http://sass-lang.com/
+//
+// common stylings
+
+$main-border: 1px solid black;
+$whitetext: #fff;
+$light-grey: #DDDDDD;
+
+/*
+ general styles on multiple pages
+*/
+
+.grey-back-ground {
+    background-color: $light-grey;
+}
+
+.left-side,
+.right-side,
+.far-right,
+.right-top,
+.left-top,
+.friend-name,
+.friend-summary input,
+.login,
+#profile-pic,
+#profile-name,
+.name-pic-block,
+#sign-up-form,
+.photos-heading   {
+	display: inline-block;
+}
+
+.form-elements,
+.not-loggedin-nav,
+#sign-up-button,
+.timeline-links,
+.blue-bar,
+#first-table,
+#second-table {
+  width: 100%;
+}
+
+.white-text {
+  color: $whitetext;
+}
+
+.bar-div {
+  height: 45px;
+}
+
+.bar,
+.link-wrapper,
+.time-link-links,
+.friend-summary,
+.submit-post-button-area,
+#sign-up-button,
+.post-links-area,
+.comment-area {
+  border: $main-border;
+}
+
+.left-top,
+.right-top,
+.search-bar {
+	vertical-align: middle;
+	margin-top: 10px;
+}
+
+.about-title,
+.photos-title {
+	width: 96%;
+}
+
+.about-title,
+.friends-title,
+.photos-title {
+	text-align: center;
+	font-size: 30px;
+	margin: 5px 0px;
+}
+
+.bar,
+.friend-link  {
+	background-color: $light-grey;
+}
+.about-link,
+.friend-link {
+	margin-bottom: 40px;
+}

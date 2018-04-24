@@ -1,0 +1,26 @@
+
+$main-border: 1px solid black;
+
+/*
+ below code for friend page
+*/
+
+.friend-summary {
+  padding: 20px;
+  margin: 20px 5px;
+  img {
+    padding: 20px;
+  }
+}
+
+.unfriend {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-top: 50px;
+}
+
+.friend-link-section {
+  border-bottom: $main-border;
+  border-right: $main-border;
+  border-left: $main-border;
+}

@@ -1,0 +1,46 @@
+
+$main-border: 1px solid black;
+/*
+below code for photos page
+*/
+
+.photos-border {
+  border-bottom: $main-border;
+  border-right: $main-border;
+  border-left: $main-border;
+  padding-top: 30px;
+  div img {
+  align-content: center;
+  }
+}
+
+.img_wrapper {
+  position: relative;
+  height: 200px;
+  width: 250px;
+  margin-top: 20px;
+  margin-bottom: 50px;
+  p {
+    margin-top: 150px;
+  }
+}
+
+.on-hover-description {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(40, 40, 40, 0.72);
+  color: #fff;
+  visibility: hidden;
+  opacity: 0;
+  height: 50px;
+  text-align: center;
+
+}
+
+.img_wrapper:hover .on-hover-description {
+  visibility: visible;
+  opacity: .5;
+}

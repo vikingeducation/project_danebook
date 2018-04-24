@@ -1,0 +1,90 @@
+
+$quarter-width: 25%;
+$primary-color: #066DEE;
+$darker-grey: #666;
+
+/*
+ navbar styles
+*/
+
+.not-loggedin-nav {
+  background: $primary-color;
+  display: flex;
+  padding: 5px;
+  position: fixed;
+  height: 70px;
+  justify-content: space-between;
+  align-items: center;
+	z-index: 2;
+}
+
+.not-loggedin-brand {
+		margin-left: 130px;
+}
+
+.not-loggedin-brand,
+.home-benefits h1 {
+  font-size: 40px;
+}
+
+.loggedin-brand {
+  margin-right: 20px;
+}
+
+.home-benefits {
+  height: 400px;
+  line-height: 50px;
+	padding: 10px auto;
+	letter-spacing: 2px;
+	display: inline-block;
+	width: $quarter-width*2;
+	vertical-align: top;
+	margin-top: 150px;
+	margin-left: 80px;
+  ul {
+  list-style-type: disc;
+  padding-left: 40px;
+  color: $darker-grey;
+  }
+}
+
+#email,
+#password {
+  width: 150px;
+}
+
+.pwd {
+  float: right;
+  padding-left: 20px;
+  margin-right: 150px;
+}
+
+.loggedin-nav {
+  background: $primary-color;
+  position: fixed;
+  height: 70px;
+  width: 100%;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+
+  align-items: center;
+}
+
+.far-left {
+  margin-right: 50px;
+  img {
+    display: inline-block;
+    margin-bottom: 20px;
+  }
+  h1 {
+  display: inline-block;
+  }
+}
+
+.search-bar {
+	width: 550px;
+	height: 20px;
+	margin-left: 40px;
+	margin-right: 220px;
+}

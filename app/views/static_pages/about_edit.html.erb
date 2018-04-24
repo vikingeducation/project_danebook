@@ -1,0 +1,31 @@
+<main>
+
+  <%= render 'profile_header_and_links' %>
+
+  <div class="container">
+
+    <div class="row">
+      <header class="bar">
+        <h1 class="about-heading about-title">Edit About</h1>
+      </header>
+    </div>
+
+    <div class="info-section row">
+      <div class="col-xs-6">
+
+        <%= render 'shared/about/edit/leftside' %>
+
+      </div>
+
+      <div class="col-xs-6 bottom-spacer">
+
+        <%= render 'shared/about/edit/rightside' %> 
+
+      </div>
+
+      <%= button_to "Save Changes", about_path, class: "white-text save-changes-button" %>
+
+    </div>
+  </div>
+
+</main>

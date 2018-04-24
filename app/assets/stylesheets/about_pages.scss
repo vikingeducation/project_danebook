@@ -1,0 +1,91 @@
+$main-border: 1px solid black;
+$primary-color: #066DEE;
+
+/* styles for
+about and about_edit pages
+ */
+
+.about-bar {
+	margin-bottom: 40px;
+}
+
+.info-section {
+  padding: 20px;
+	height: auto;
+}
+
+.post-copied,
+.left-section-article-heading {
+  h3 {
+		border: $main-border;
+    padding: 5px;
+    text-align: center;
+  }
+}
+
+.left-section-article-heading,
+.info-section {
+  border-right: $main-border;
+  border-bottom: $main-border;
+  border-left: $main-border;
+}
+
+.edit,
+.save-changes-button {
+	background-color: $primary-color;
+}
+
+.edit {
+	position: relative;
+	top: -36px;
+	right: 12px;
+}
+
+.save-changes-button {
+  font-size: 50px;
+  padding: 20px 5em;
+  display: block;
+  margin: 0px auto 80px auto;
+}
+
+.bottom-spacer {
+  margin-bottom: 120px;
+}
+
+.right-side,
+.left-side {
+		vertical-align: top;
+		line-height: 1.5;
+    width: 100%;
+}
+
+.left-side {
+  padding-left: 40px;
+}
+
+.heading,
+#basic-info-table {
+	margin-bottom: 20px;
+}
+
+.heading {
+	font-size: 25px;
+	text-align: left;
+	letter-spacing: 2px;
+}
+
+.about-me {
+	margin-top: 20px;
+}
+
+#basic-info-table,
+#contact-info-table {
+	width: 100%;
+	tr {
+	  height: 30px;
+	}
+}
+
+.bold {
+	font-weight: bold;
+}

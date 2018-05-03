@@ -1,0 +1,39 @@
+<%= form_tag session_path do %>
+  <div class="login email">
+    <%= display_form_errors(@user, :email) %>
+    <%= label_tag :email, nil, class: 'white-text' %><br>
+    <%= text_field_tag :email %>
+  </div>
+  <div class="login pwd">
+    <%= display_form_errors(@user, :password) %>
+    <%= label_tag :password, nil, class: 'white-text'%><br>
+    <%= password_field_tag :password %>
+
+    <%= submit_tag "Log In" %>
+  </div>
+  <div class="remember-me">
+    <%= label_tag :remember_me %>
+    <%= check_box_tag :remember_me %>
+  </div>
+
+<% end %>
+
+<!--
+
+<form method="post">
+   <div class="login email">
+     <label class="white-text" for="email">Email</label><br>
+     <input name="email" id="email" type="text">
+   </div>
+   <div class="login pwd">
+     <label class="white-text" for="password">Password</label><br>
+     <input name="password" id="password" type="password">
+     <input type="submit" value="Log In" style="background:#96C2FE">
+     <div class="remember-me">
+       <%= label_tag do %>
+         Remember Me?
+         <%= check_box_tag :remember_me %>
+       <% end %>
+     </div>
+   </div>
+</form> -->

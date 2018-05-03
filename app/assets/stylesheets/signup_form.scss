@@ -8,14 +8,12 @@ $primary-color: #066DEE;
 */
 
 #sign-up-form {
-  width: 33.33%;
-	margin-top: 50px;
 	margin-left: 50px;
 }
 
 #main-action {
   font-size: 50px;
-	padding: 30px 0;
+	padding-bottom: 30px;
 }
 
 .form-elements {
@@ -44,4 +42,13 @@ $primary-color: #066DEE;
 	color: $whitetext;
 	height: auto;
 	font-size: 20px;
+}
+
+
+.home-sign-up-form {
+  display: inline-block;
+  width: 40%;
+  margin-top: 150px;
+  height: 400px;
+  vertical-align: top;
 }

@@ -16,6 +16,7 @@ $darker-grey: #666;
   justify-content: space-between;
   align-items: center;
 	z-index: 2;
+  padding-top: 15px;
 }
 
 .not-loggedin-brand {
@@ -28,7 +29,10 @@ $darker-grey: #666;
 }
 
 .loggedin-brand {
-  margin-right: 20px;
+  margin-left: 20px;
+  margin-bottom: auto;
+  margin-top: auto;
+
 }
 
 .home-benefits {
@@ -37,7 +41,7 @@ $darker-grey: #666;
 	padding: 10px auto;
 	letter-spacing: 2px;
 	display: inline-block;
-	width: $quarter-width*2;
+	width: 48%;
 	vertical-align: top;
 	margin-top: 150px;
 	margin-left: 80px;
@@ -87,4 +91,8 @@ $darker-grey: #666;
 	height: 20px;
 	margin-left: 40px;
 	margin-right: 220px;
+}
+
+.flash-msgs {
+  width: auto;
 }

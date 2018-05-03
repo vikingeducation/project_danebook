@@ -1,3 +1,19 @@
+<%= form_for @user, html: {id: "sign-up-form"} do |user_fields| %>
+  <h1 id="main-action">Sign up</h1>
+  <div class="form-elements">
+    <%= display_form_errors(@user, :email) %>
+    <%= user_fields.text_field :email, placeholder: "Email", class: "wide-box" %>
+    <%= display_form_errors(@user, :password) %>
+    <%= user_fields.password_field :password, placeholder: "Your New Password", class: "wide-box" %>
+    <%= display_form_errors(@user, :password_confirmation) %>
+    <%= user_fields.password_field :password_confirmation, placeholder: "Confirm Your Pasword", class: "wide-box" %>
+
+    <%= user_fields.submit "Sign Up!", id: "sign-up-button" %>
+  </div>
+<% end %>
+
+<!--
+
 <form id="sign-up-form" method="post">
   <h1 id="main-action">Sign up</h1>
   <div class="form-elements">
@@ -18,4 +34,4 @@
     <input type="radio" name="gender" value="male">Male<br>
     <input type="submit" value="Sign Up!" id="sign-up-button">
   </div>
-</form>
+</form> -->

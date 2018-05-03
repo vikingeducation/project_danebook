@@ -1,14 +1,9 @@
-<header class="not-loggedin-nav">
-  <h1 class="not-loggedin-brand white-text">Danebook</h1>
-    <form method="post">
-       <div class="login email">
-         <label class="white-text" for="email">Email</label><br>
-         <input name="email" id="email" type="text">
-       </div>
-       <div class="login pwd">
-         <label class="white-text" for="password">Password</label><br>
-         <input name="password" id="password" type="password">
-         <input type="submit" value="Log In" style="background:#96C2FE">
-       </div>
-    </form>
-</header>
+<% if signed_in_user? %>
+  <nav>
+    <%= render partial: 'shared/logged_in_navbar', locals: { current_user: @current_user } %>
+  </nav>
+<% else %>
+  <nav>
+    <%= render 'shared/not_logged_in_navbar' %>
+  </nav>
+<% end %>

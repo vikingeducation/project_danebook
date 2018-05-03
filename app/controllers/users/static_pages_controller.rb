@@ -1,4 +1,6 @@
-class StaticPagesController < ApplicationController
+class Users::StaticPagesController < ApplicationController
+
+  before_action :set_user
 
   def home
   end

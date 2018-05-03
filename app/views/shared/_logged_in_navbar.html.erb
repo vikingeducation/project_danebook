@@ -1,0 +1,10 @@
+<div class="loggedin-nav">
+  <div class="far-left">
+    <h1 class="loggedin-brand white-text">Danebook</h1>
+  </div>
+  <input class="search-bar" type="text" placeholder="Search for Users">
+  <div>
+    <%= link_to current_user.email, user_timeline_path(current_user), class: "far-right white-text"%>
+    <%= link_to "Logout", logout_path, method: "DELETE", class: "far-right white-text" %>
+  </div>
+</div>

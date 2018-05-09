@@ -20,17 +20,15 @@ $primary-color: #066DEE;
 	line-height: 2.5;
 }
 
+
 .wide-box {
 	width: 99%;
 }
 
-.smaller-input-box {
-	width: 45%;
-}
-
-#first-name-box {
+#user_profile_first_name {
   margin-right: 30px;
 }
+
 
 #birthday {
  font-size: 20px;
@@ -47,8 +45,8 @@ $primary-color: #066DEE;
 
 .home-sign-up-form {
   display: inline-block;
-  width: 40%;
+  width: auto;
   margin-top: 150px;
-  height: 400px;
   vertical-align: top;
+	line-height: 2.5em;
 }

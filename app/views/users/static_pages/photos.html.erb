@@ -1,5 +1,5 @@
 <main class="main photos-wrapper">
-  <%= render 'profile_header_and_links' %>
+  <%= render partial:'shared/profile_header_and_links', locals: { user: @current_user } %>
 
   <div class="container">
 

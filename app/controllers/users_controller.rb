@@ -5,6 +5,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    @profile = @user.build_profile
   end
 
 
@@ -40,7 +41,7 @@ private
 
 
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation)
+    params.require(:user).permit(:email, :password, :password_confirmation, { profile_attributes: [ :last_name, :first_name, :birthday, :gender] })
   end
 
 end

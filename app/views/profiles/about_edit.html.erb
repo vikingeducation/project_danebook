@@ -1,6 +1,6 @@
 <main>
 
-  <%= render 'profile_header_and_links' %>
+  <%= render partial: 'shared/profile_header_and_links', locals: { user: @current_user } %>
 
   <div class="container">
 
@@ -13,13 +13,13 @@
     <div class="info-section row">
       <div class="col-xs-6">
 
-        <%= render 'shared/about/edit/leftside' %>
+        <%= render 'profiles/about/edit/leftside' %>
 
       </div>
 
       <div class="col-xs-6 bottom-spacer">
 
-        <%= render 'shared/about/edit/rightside' %>
+        <%= render 'profiles/about/edit/rightside' %>
 
       </div>
 

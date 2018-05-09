@@ -1,6 +1,9 @@
 class User < ApplicationRecord
 
   has_secure_password
+  has_one :profile, inverse_of: :user
+
+  accepts_nested_attributes_for :profile, reject_if: :all_blank
 
   validates :password, length: {in: 3..20}, allow_nil: true
   validates :email, presence: true, uniqueness: true

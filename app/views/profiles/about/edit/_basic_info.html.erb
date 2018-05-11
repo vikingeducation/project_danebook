@@ -1,18 +1,19 @@
-<table id="basic-info-table">
-  <caption class="heading">Basic Information</caption>
-  <tr>
-    <td class="bold">Birthday:</td>
-    <td><input type="text" placeholder="July 30, 1986"></td>
-  </tr>
-  <tr>
-    <td class="bold">College:</td>
-    <td><input type="text" placeholder="Some College"></td>
-  </tr>
-  <tr>
-    <td class="bold">Hometown:</td>
-    <td><input type="text" placeholder="That Place, USA"></td>
-  </tr>
-    <td class="bold">Currently Lives:</td>
-    <td><input type="text" placeholder="This Place, USA"></td>
-  </tr>
-</table>
+<h1 class="heading">Basic Information</h1>
+<div id="basic-info-table">
+  <div class="form-group">
+    <%= profile_fields.label :birthday %>
+    <%= profile_fields.date_field :birthday %>
+  </div>
+  <div class="form-group">
+    <%= profile_fields.label :college %>
+    <%= profile_fields.text_field :college %>
+  </div>
+  <div class="form-group">
+    <%= profile_fields.label :hometown %>
+    <%= profile_fields.text_field :hometown %>
+  </div>
+  <div class="form-group">
+    <%= profile_fields.label :current_town %>
+    <%= profile_fields.text_field :current_town %>
+  </div>
+</div>

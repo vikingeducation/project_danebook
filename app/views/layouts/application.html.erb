@@ -3,7 +3,6 @@
   <head>
     <title>Welcome to Danebook</title>
 
-    <link href="./sassystyle.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Pangolin" rel="stylesheet">
 
     <%= csrf_meta_tags %>
@@ -27,7 +26,7 @@
     <div class="navbar">
       <%= render 'shared/navbar' %>
     </div>
-    
+
     <div class="flash-msgs">
       <% flash.each do |key, value| %>
         <div class="alert alert-<%= key %>">

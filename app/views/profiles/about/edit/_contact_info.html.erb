@@ -1,11 +1,11 @@
-<table id="contact-info-table">
-  <caption class="heading">Contact Information</caption>
-  <tr>
-    <td class="bold">Email:</td>
-    <td><input type="text" placeholder="emailaddress@place.com"></td>
-  </tr>
-  <tr>
-    <td class="bold">Phone Number:</td>
-    <td><input type="text" placeholder="(234)234-2345"></td>
-  </tr>
-</table>
+<h1 class="heading">Contact Information</h1>
+<div id="contact-info-table">
+  <div class="form-group">
+    <%= user_fields.label :email %>
+    <%= user_fields.text_field :email %>
+  </div>
+  <div class="form-group">
+    <%= profile_fields.label :telephone %>
+    <%= profile_fields.text_field :telephone %>
+  </div>
+</div>

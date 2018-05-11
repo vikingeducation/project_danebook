@@ -20,8 +20,8 @@ class SessionsController < ApplicationController
       end
     else
       flash[:danger] = "Unable to sign in - Please check your email and password."
-      render action: :new, controller: :user
-    end 
+      redirect_to root_path
+    end
   end
 
   def destroy

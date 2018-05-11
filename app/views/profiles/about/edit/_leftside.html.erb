@@ -1,7 +1,9 @@
-<article class="left-side">
+<div class="left-side">
 
-  <%= render 'profiles/about/edit/basic_info' %>
+  <%= render partial: 'profiles/about/edit/basic_info',
+              locals: { profile_fields: profile_fields } %>
 
-  <%= render 'profiles/about/edit/contact_info' %>
+  <%= render partial: 'profiles/about/edit/contact_info',
+              locals: { profile_fields: profile_fields, user_fields: user_fields } %>
 
-</article>
+</div>

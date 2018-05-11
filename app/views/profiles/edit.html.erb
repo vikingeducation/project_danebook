@@ -13,15 +13,16 @@
     <div class="info-section row">
       <%= form_for @current_user, url: user_path(@current_user), method: :put do |user_fields| %>
         <%= user_fields.fields_for :profile do |profile_fields| %>
+        
           <div class="col-xs-6">
             <%= render partial: 'profiles/about/edit/leftside', locals: { profile_fields: profile_fields,
                                                                              user_fields: user_fields } %>
           </div>
 
-
           <div class="col-xs-6 col-offset-6 bottom-spacer">
             <%= render partial: 'profiles/about/edit/rightside', locals: { profile_fields: profile_fields } %>
           </div>
+
         <% end %>
         <%= user_fields.submit "Update Information", class: "white-text save-changes-button" %>
       <% end %>

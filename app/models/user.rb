@@ -1,7 +1,12 @@
 class User < ApplicationRecord
 
   has_secure_password
+
   has_one :profile, inverse_of: :user
+  has_many :posts, dependent: :destroy
+  has_many :likes
+  has_many :liked_posts, through: :likes, source: :post
+  has_many :comments 
 
   accepts_nested_attributes_for :profile, reject_if: :all_blank
 

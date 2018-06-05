@@ -1,6 +1,6 @@
 <main>
 
-  <%= render partial: 'shared/profile_header_and_links', locals: { user: @current_user } %>
+  <%= render partial: 'profile_header_and_links', locals: { user: @current_user } %>
 
   <div class="container">
 
@@ -13,7 +13,7 @@
     <div class="info-section row">
       <%= form_for @current_user, url: user_path(@current_user), method: :put do |user_fields| %>
         <%= user_fields.fields_for :profile do |profile_fields| %>
-        
+
           <div class="col-xs-6">
             <%= render partial: 'profiles/about/edit/leftside', locals: { profile_fields: profile_fields,
                                                                              user_fields: user_fields } %>

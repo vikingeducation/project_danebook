@@ -1,0 +1,9 @@
+<article>
+  <% unless @users.empty? %>
+  <ul>
+    <% @users.each do |user| %>
+      <li><%= link_to "#{full_name(user)}", user_timeline_path(user) %></li>
+    <% end %>
+  </ul>
+  <% end %>
+</article>

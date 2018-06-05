@@ -1,0 +1,22 @@
+<article>
+  <div class="post">
+    <img href="#" style="height:50px; width:50px;">
+    <div class="post-header">
+      <a href="#"><%= user_full_name(post) %></a>
+      <p>Posted on <%= date_posted(post) %></p>
+    </div>
+    <div class="post-body">
+      <p><%= post.body %></p>
+    </div>
+  </div>
+  <div class="post-links-area grey-back-ground">
+    <%= link_to liked?(post, current_user)? "unlike" : "like", like_path(user_id: current_user.id, post_id: post.id), method: 'POST' %>
+    <%= link_to "Comment", "#" %>
+    <%= link_to "Delete", user_post_path(current_user, post),
+                          method: "DELETE",
+                          data: {
+                            confirm: "Are you sure you would like to delete this post? This action cannot be undone"
+                          } %>
+  </div>
+
+</article>

@@ -2,7 +2,6 @@ class ProfilesController < ApplicationController
 
   before_action :set_user
 
-
   def create
   end
 

@@ -1,0 +1,7 @@
+<div>
+  <% unless user.posts.empty? %>
+    <% user.posts.reverse_each.to_a.each do |post| %>
+      <%= render partial: 'post_with_comment', locals: { post: post } %>
+    <% end %>
+  <% end %>
+</div>

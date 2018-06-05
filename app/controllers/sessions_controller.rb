@@ -1,6 +1,5 @@
 class SessionsController < ApplicationController
 
-
   def new
     @user = User.find_by_email(params[:email])
   end

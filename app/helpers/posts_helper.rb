@@ -28,12 +28,12 @@ module PostsHelper
     post.created_at.strftime("%A %m/%d/%Y")
   end
 
-  def list_likes(post, user)
+  def list_likes(post, user, type)
     @users = first_user_likes(post)
-    if liked?(post,user)
+    if liked?(post,user, type)
       if @users.include?(user.id)
         @users.delete(user.id)
-      elsif liked?(post, user)
+      elsif liked?(post, user, type)
         @users.pop
       end
       @users = @users.map { |x| User.find(x).profile.name }
@@ -61,8 +61,8 @@ module PostsHelper
     end
   end
 
-  def liked?(post, user)
-    if Like.find_by(user_id: user.id, post_id: post.id)
+  def liked?(post, user, type)
+    if Like.find_by(user_id: user.id, likable_id: post.id, likable_type: type)
       true
     else
       false

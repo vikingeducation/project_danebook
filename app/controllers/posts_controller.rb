@@ -1,11 +1,12 @@
 class PostsController < ApplicationController
 
   before_action :set_user
-  before_action :require_login, only: [ :create, :update ]
+  before_action :require_login
 
   def index
     @posts = current_user.posts
     @post = Post.new
+    @like = @post.likes.build
   end
 
   def new
@@ -21,12 +22,6 @@ class PostsController < ApplicationController
       flash[:danger] = "Unable to create your post"
       render :index
     end
-  end
-
-  def edit
-  end
-
-  def update
   end
 
   def destroy

@@ -16,7 +16,7 @@ class UsersController < ApplicationController
       flash[:success] = "Created New User Successfully!"
       redirect_to user_timeline_path(@user)
     else
-      flash[:error] = "Unable to Create New User"
+      flash[:danger] = "Unable to Create New User"
       render :new
     end
   end
@@ -46,7 +46,7 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
-  end 
+  end
 
 private
 

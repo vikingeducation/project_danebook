@@ -10,7 +10,7 @@
     </div>
   </div>
   <div class="post-links-area grey-back-ground">
-    <%= link_to liked?(post, current_user)? "unlike" : "like", like_path(user_id: current_user.id, post_id: post.id), method: 'POST' %>
+    <%= link_to liked?(post, current_user, "post")? "unlike" : "like", like_path(like: {user_id: current_user.id, likable_id: post.id, likable_type: "post"}), method: 'PUT' %>
     <%= link_to "Comment", "#" %>
     <%= link_to "Delete", user_post_path(current_user, post),
                           method: "DELETE",

@@ -36,6 +36,10 @@ $primary-color: #066DEE;
 .post-header {
   display: inline-block;
   vertical-align: bottom;
+  p,
+  .timeline-name-link {
+  padding-left: 10px;
+  }
 }
 
 .post-body {
@@ -79,55 +83,4 @@ $primary-color: #066DEE;
 .friend-pic-link {
   display: inline-block;
   margin: 5px 18px;
-}
-
-.comment-header-area {
-  border-bottom: 1px solid #555555;
-  padding-top: 10px;
-  a {
-    &:nth-child(2) {
-      float: right;
-      padding-right: 10px;
-    }
-  }
-}
-
-.comment-body {
-  padding-top: 10px;
-  p {
-    display: inline-block;
-    &:last-child {
-      padding: 10px;
-    }
-  }
-  img {
-    float: left;
-  }
-}
-
-.comment-area {
-  padding-left: 10px;
-}
-
-.inner-comment-body {
-  padding: 0px 55px;
-  a {
-    &:last-child {
-    float: right;
-    }
-  }
-}
-
-.comment-text-area-div {
-  padding: 0px 55px;
-  margin-bottom: 20px;
-}
-
-.comment-text-area {
-  width: 100%;
-  height: 100px;
-}
-
-.submit-comment-button {
-  float: right;
 }

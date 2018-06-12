@@ -10,8 +10,11 @@ Rails.application.routes.draw do
     get '/friends', to: 'users/static_pages#friends', as: '/friends'
     get '/photos', to: 'users/static_pages#photos', as: '/photos'
     resource :profile, only: [:show, :edit, :update, :create]
-    resources :posts, except: [:index]
+    resources :posts, except: [:index, :edit, :update]
   end
-  post '/like', to: 'likes#like_unlike' 
+  resource :like, only: [:create, :destroy]
+  resources :posts, only: [:index] do
+    resources :comments, except: [:edit, :update, :show]
+  end
 
 end

@@ -2,7 +2,9 @@
   <h3 class="grey-back-ground">Post</h3>
     <div class="outer-post-area">
       <%= form_for @post, url: user_posts_path do |post| %>
-        <div class="make-new-post"><%= post.text_area :body %></div>
+        <div class="make-new-post">
+          <%= post.text_area :body, placeholder: "Write your post here..." %>
+        </div>
     </div>
     <div class="submit-post-button-area grey-back-ground" align="right">
       <%= post.submit "Submit", html: { class: "submit-post-button"} %>

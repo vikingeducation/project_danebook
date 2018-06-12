@@ -16,7 +16,11 @@
 
         <%= render 'posts/new' %>
 
-        <%= render partial: 'posts/post_index', locals: { user: find_user } %>
+        <% unless find_user.posts.empty? %>
+
+          <%= render partial: 'posts/post_index', locals: { user: find_user } %>
+
+        <% end %> 
 
       </section>
     </div>

@@ -1,6 +1,7 @@
 class ProfilesController < ApplicationController
 
   before_action :set_user
+  before_action :require_login
 
   def create
   end

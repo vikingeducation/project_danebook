@@ -4,12 +4,9 @@ class User < ApplicationRecord
 
   has_one :profile, inverse_of: :user
   has_many :posts, dependent: :destroy
-  has_many :comment
-  has_many :likes
-  has_many :liked_posts, through: :likes, source: :post
-  has_many :liked_comments, through: :likes, source: :comment
-
-
+  has_many :comments
+  has_many :likes, as: :likable
+  
   accepts_nested_attributes_for :profile, reject_if: :all_blank
 
   validates :password, length: {in: 3..20}, allow_nil: true

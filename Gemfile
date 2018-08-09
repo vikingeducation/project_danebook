@@ -38,6 +38,10 @@ gem 'pg'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri
+  # testing
+  gem 'rspec-rails'
+  gem 'factory_girl_rails', '~> 4.0'
+  gem 'faker'
 end
 
 group :development do
@@ -48,17 +52,25 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'pry'
-  gem 'faker'
   gem "better_errors"
   gem "binding_of_caller"
   gem 'bullet'
   gem 'hirb'
+
+  # testing
+  gem 'guard-rspec', require: false
+
   # Gems for efficiency
   gem 'counter_culture'
   gem 'rack-mini-profiler'
   gem 'lol_dba'
 end
 
+group :testing do
+  gem 'capybara'
+  gem 'launchy'
+  gem 'rails-controller-testing'
+end
 
 group :production do
   gem 'rails_12factor'

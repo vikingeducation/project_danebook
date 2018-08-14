@@ -1,11 +1,9 @@
 <%= form_tag session_path do %>
   <div class="login email">
-    <%= display_form_errors(@user, :email) %>
     <%= label_tag :email, nil, class: 'white-text' %><br>
     <%= text_field_tag :email %>
   </div>
   <div class="login pwd">
-    <%= display_form_errors(@user, :password) %>
     <%= label_tag :password, nil, class: 'white-text'%><br>
     <%= password_field_tag :password %>
 

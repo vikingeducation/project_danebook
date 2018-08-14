@@ -43,15 +43,19 @@ RSpec.feature 'UserInteractions' do
       expect(page).to have_content comment
     end
 
-    scenario "I want to like an interesting post" do
+    scenario "I want to like/unlik an interesting post" do
       sign_in(user)
       new_post = create(:post, user_id: 2)
       visit '/users/2/timeline'
       click_link "like"
       expect(page).to have_link "unlike"
+      expect(current_path).to eq('/users/2/timeline')
+      click_link "unlike"
+      expect(page).to have_link "like"
+      expect(current_path).to eq('/users/2/timeline')
     end
 
-    scenario "I want to like an interesting comment" do
+    scenario "I want to like/unlik an interesting comment" do
       sign_in(user)
       new_post = create(:post, user_id: 2)
       new_comment = create(:comment, user_id: 2, post_id: new_post.id)
@@ -60,6 +64,10 @@ RSpec.feature 'UserInteractions' do
         click_link "like"
       end
       expect(page).to have_link "unlike"
+      expect(current_path).to eq('/users/2/timeline')
+      click_link "unlike"
+      expect(page).to have_link "like"
+      expect(current_path).to eq('/users/2/timeline')
     end
 
     scenario "I want to see my profile" do
@@ -92,10 +100,19 @@ RSpec.feature 'UserInteractions' do
       expect(page).to have_content "#{second_user.profile.name}"
     end
 
-    scenario "I want to edit someone else's profile" do
+    scenario "I try to edit someone else's profile" do
       sign_in(user)
       visit '/users/2/profile'
       click_link "Edit Your Profile"
+      expect(page).to have_content "Edit About"
+      expect(page).to have_content "#{user.profile.name}"
+    end
+
+    scenario "When editing my profile I try to save without a valid attribute" do
+      sign_in(user)
+      click_link "Edit Profile"
+      fill_in "Email", with: ""
+      click_button "Update Information"
       expect(page).to have_content "Edit About"
       expect(page).to have_content "#{user.profile.name}"
     end

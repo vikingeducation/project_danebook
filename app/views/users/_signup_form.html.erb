@@ -7,15 +7,12 @@
       <%= profile_fields.text_field :last_name, placeholder: "Last Name", class: "pull-right"%>
     </div>
     <div class="form-group">
-      <%= display_form_errors(@user, :email) %>
       <%= user_fields.text_field :email, placeholder: "Email", class: "wide-box" %>
     </div>
     <div class="form-group">
-      <%= display_form_errors(@user, :password) %>
       <%= user_fields.password_field :password, placeholder: "Your New Password", class: "wide-box" %>
     </div>
     <div class="form-group">
-      <%= display_form_errors(@user, :password_confirmation) %>
       <%= user_fields.password_field :password_confirmation, placeholder: "Confirm Your Pasword", class: "wide-box" %>
     </div>
     <h1>Birthday</h1>
@@ -27,7 +24,7 @@
         <%= profile_fields.radio_button :gender, 'Male' %> Male
       </div>
     <% end %>
-    
+
     <%= user_fields.submit "Sign Up!", id: "sign-up-button" %>
   </div>
 <% end %>

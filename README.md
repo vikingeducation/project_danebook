@@ -1,15 +1,16 @@
-danebook
-========
+# Social Media App
 
-This is the Real Dane Deal. It's an imitation of Facebook.
-You can see it here:
+[![Maintainability](https://api.codeclimate.com/v1/badges/691acf792a9adc3f750c/maintainability)](https://codeclimate.com/github/lortza/project_danebook/maintainability)
 
-[lortzadanebook.herokuapp.com/](https://lortzadanebook.herokuapp.com/)
+Create an account, create posts and upload photos, friend and unfriend people, like and unlike posts and comments (instantly via javascript). It's a FakeBook app with image hosting on AWS. It's rocking RESTful routes, polymorphic associations, self-referencing models, and some nifty metaprogramming.
+
+See it here: [lortzadanebook.herokuapp.com/](https://lortzadanebook.herokuapp.com/)
 
 ## Stats
 - Rails 5.0.6
 - DB: postgres 0.18
 - Ruby: 2.4.2
+- RSpec
 - Repos:
   - Production codebase: [project_danebook](https://github.com/lortza/project_danebook)
   - Original markup: [assignment_danebook_goes_live](https://github.com/lortza/assignment_danebook_goes_live)
@@ -303,5 +304,3 @@ The files in the second group, floating around up there in the high complexity r
 For the logic that determines parents, I'm thinking about a model that may be able to handle these kinds of processes. As for the redirects, incorporating an AJAX call to handle the create/destroy actions for `like`s and `comment`s will take away the need for the redirect logic. And that's convenient, because that's on my to-do list for features.
 
 The green dot on the far right is the `User` model. Given that users have their hands in every interaction and a good deal of those involve that self-referencing logic, I know the churn is going to stay high on this file. I'm thinking my best bet is to reduce the complexity of the file. At the moment, I don't have any great ideas on how to do that and I'd love to hear suggestions.
-
-

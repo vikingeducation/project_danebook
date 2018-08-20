@@ -62,7 +62,7 @@ describe 'UsersRequests' do
           patch user_path(new_user), params: { user: attributes_for(:user, email: "") }
           expect(flash[:danger]).not_to be_nil
         end
-        
+
       end
 
   end

@@ -3,43 +3,42 @@ class ProfilesController < ApplicationController
   before_action :set_user
   before_action :require_login
 
-  def create
-  end
-
-
   def show
   end
 
 
   def edit
-    @profile = @current_user.profile
+    if params[:user_id].to_i == @current_user.id
+      @profile = @current_user.profile
+      render :edit
+    else
+      flash[:danger] = "Sorry - you may not edit another user's profile"
+      redirect_to user_profile_path(params[:user_id])
+    end
   end
 
 
   def update
     @profile = @current_user.profile
-    if @profile.update!(profile_params)
-      flash[:success] = "'About Me' successfully updated!"
+    if @profile.update(profile_params)
+      flash[:success] = "Profile successfully updated!"
       redirect_to user_profile_path
     else
-      flash[:danger] = "Unable to update 'About Me'"
+      flash[:danger] = "Unable to update Profile"
       render :edit
     end
-  end
-
-
-  def destroy
   end
 
 private
 
     def profile_params
-      params.require(:profile).permit( :college,
+      params.require(:profile).permit( :birthday,
+                                       :college,
                                        :hometown,
                                        :current_town,
                                        :telephone,
                                        :words_to_live_by,
-                                       :about_me )
+                                       :about_me)
     end
 
 

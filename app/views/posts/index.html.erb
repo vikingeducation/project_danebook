@@ -14,13 +14,13 @@
 
       <section class="right-section col-xs-8">
 
-        <%= render 'posts/new' %>
+        <%= render template: 'posts/new' %>
 
         <% unless find_user.posts.empty? %>
 
           <%= render partial: 'posts/post_index', locals: { user: find_user } %>
 
-        <% end %> 
+        <% end %>
 
       </section>
     </div>

@@ -13,7 +13,7 @@ describe User do
       expect(new_user).not_to be_valid
     end
   end
-  
+
   describe "validations" do
     it "with a duplicate email is invalid" do
       new_user = build(:user, email: user.email)
@@ -30,6 +30,13 @@ describe User do
     it "responds to profile association" do
       expect(user).to respond_to(:profile)
     end
+    it "accepts nested attributes for profiles" do
+      expect{ create(:user,
+                      profile_attributes:
+                    { first_name: "Bob", last_name: "Jobs", birthday: '12/12/2182'}
+                    )}.to change(Profile, :count).by(1)
+    end
+
     it "responds to post association" do
       expect(user).to respond_to(:posts)
     end

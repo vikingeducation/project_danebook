@@ -104,8 +104,9 @@ RSpec.feature 'UserInteractions' do
       sign_in(user)
       visit '/users/2/profile'
       click_link "Edit Your Profile"
-      expect(page).to have_content "Edit About"
-      expect(page).to have_content "#{user.profile.name}"
+      expect(page).to have_content "About"
+      expect(page).to have_content "#{second_user.profile.name}"
+      expect(page).to have_content "Sorry - you may not edit another user's profile"
     end
 
     scenario "When editing my profile I try to save without a valid attribute" do

@@ -66,7 +66,7 @@ group :development do
   gem 'lol_dba'
 end
 
-group :testing do
+group :test do
   gem 'capybara'
   gem 'launchy'
   gem 'rails-controller-testing'

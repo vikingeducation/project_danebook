@@ -20,12 +20,15 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+  end
+
   def update
     if @current_user.update(user_params)
-      flash[:success] = "'About Me' successfully updated!"
+      flash[:success] = "Profile successfully updated!"
       redirect_to user_profile_path(@current_user)
     else
-      flash[:danger] = "Unable to update 'About Me'"
+      flash[:danger] = "Unable to update Profile"
       redirect_to edit_user_profile_path(@current_user)
     end
   end

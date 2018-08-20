@@ -1,5 +1,5 @@
 <div class="comment-text-area-div">
-  <%= form_for post.comments.build, url: post_comments_path(post) do |comment| %>
+  <%= form_for([post, comment]) do |comment| %>
   <div class="comment-text-area">
     <%= comment.text_area :body, placeholder: "Write your comment here..." %>
     <%= comment.hidden_field :user_id, value: current_user.id %>

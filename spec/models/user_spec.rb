@@ -27,14 +27,16 @@ describe User do
   end
 
   describe "associations" do
+
     it "responds to profile association" do
       expect(user).to respond_to(:profile)
     end
+
     it "accepts nested attributes for profiles" do
-      expect{ create(:user,
-                      profile_attributes:
-                    { first_name: "Bob", last_name: "Jobs", birthday: '12/12/2182'}
-                    )}.to change(Profile, :count).by(1)
+      params = { user: {email: 'bob@burgers.com', password: '123456', password_confirmation: '123456', profile_attributes: { first_name: "Bob", last_name: "Jobs", birthday: '12/12/1982' } } }
+      user = User.new(params[:user])
+      expect{ user.save
+      }.to change(Profile, :count).by(1)
     end
 
     it "responds to post association" do

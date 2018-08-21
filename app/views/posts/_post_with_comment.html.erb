@@ -27,11 +27,11 @@
     <br>
     <article class="comment-body">
     <% if post.comments.empty? %>
-      <%= render partial: '/posts/comments/new', locals: { post: post, user: current_user, comment: post.comments.build } %>
+      <%= render template: '/posts/comments/new', locals: { post: post, user: current_user, comment: post.comments.build } %>
     <% else %>
-      <%= render partial: '/posts/comments/index', locals: { post: post, user: current_user, comments: post.comments } %>
+      <%= render template: '/posts/comments/index', locals: { post: post, user: current_user, comments: post.comments } %>
       <hr style="border-color:black;">
-      <%= render partial: '/posts/comments/new', locals: { post: post, user: current_user, comment: post.comments.build } %>
+      <%= render template: '/posts/comments/new', locals: { post: post, user: current_user, comment: post.comments.build } %>
     <% end %>
   </article>
 </article>

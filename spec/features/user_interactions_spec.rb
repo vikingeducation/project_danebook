@@ -43,7 +43,7 @@ RSpec.feature 'UserInteractions' do
       expect(page).to have_content comment
     end
 
-    scenario "I want to like/unlik an interesting post" do
+    scenario "I want to like/unlike an interesting post" do
       sign_in(user)
       new_post = create(:post, user_id: 2)
       visit '/users/2/timeline'

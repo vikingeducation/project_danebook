@@ -2,7 +2,7 @@ class Profile < ApplicationRecord
 
   belongs_to :user, inverse_of: :profile
 
-  validates :birthday, :first_name, :last_name, :user_id, presence: true, allow_nil: false
+  validates :birthday, :first_name, :last_name, presence: true, allow_nil: false
   validates :first_name, :last_name, length: { in: 3..30 }
 
   def name

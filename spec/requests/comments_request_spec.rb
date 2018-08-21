@@ -8,12 +8,9 @@ describe 'CommentsRequests' do
     let(:user){ create(:user) }
     let(:user_profile){ create(:profile, user_id: user.id) }
     let(:user_post){ create(:post, user_id: user.id) }
-    let(:user_comment){ create(:comment, user_id: user.id, post_id: user_post.id) }
+    let(:user_comment){ create(:comment, post: user_post) }
 
     before :each do
-      user
-      user_profile
-      user_post
       post session_path, params: { email: user.email, password: user.password }
     end
 
@@ -25,7 +22,6 @@ describe 'CommentsRequests' do
 
     describe 'GET #new' do
       it 'works as normal' do
-
       end
     end
 

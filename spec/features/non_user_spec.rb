@@ -8,16 +8,16 @@ RSpec.feature 'NonUserInteractions' do
 
     scenario "I would like to sign up to be a user" do
       visit root_path
-      fill_in "First Name", with: "Bob"
-      fill_in "Last Name", with: "Burger"
-      fill_in "user_email", with: "bob@burgers.com"
+      fill_in "First Name", with: "Nob"
+      fill_in "Last Name", with: "Nurger"
+      fill_in "user_email", with: "nob@nurgers.com"
       fill_in "user_password", with: "123456"
       fill_in "user_password_confirmation", with: "123456"
-      fill_in "user_profile_attributes_birthday", with: "12/12/1928"
+      fill_in "user_profile_attributes_birthday", with: "12/12/1958"
       choose "user_profile_attributes_gender_male"
-      expect{click_button "Sign Up!"}.to change(User, :count).by(1)
+      expect{click_button "Sign Up!"}.to change{ User.count }.by(1)
       expect(page).to have_content "Created New User Successfully!"
-      expect(page).to have_content "Bob Burger"
+      expect(page).to have_content "Nob Nurger"
     end
 
     scenario "I could try to see a user's timeline" do

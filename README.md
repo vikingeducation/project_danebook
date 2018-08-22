@@ -12,4 +12,4 @@ danebook_goes_live
 
 <a href="https://www.vikingcodeschool.com">A Viking Code School Project</a>
 
-<p>For deployed version click <a href="https://intense-depths-68448.herokuapp.com/">here</a></p>
+<p>For deployed version click <a href="https://mighty-eyrie-78191.herokuapp.com/">here</a></p>

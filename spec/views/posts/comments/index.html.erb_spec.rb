@@ -31,7 +31,15 @@ describe 'posts/comments/index.html.erb' do
     expect(rendered).to have_content(@comments.last.body)
   end
 
-  it 'has like link if user has not liked comment'
-  it 'has unlike link if user has previously liked comment'
+  it 'has like link if user has not liked comment' do
+    render
+    expect(rendered).to have_link('like')
+  end
+
+  it 'has unlike link if user has previously liked comment' do
+    @like = Like.create(user_id: @user.id, likable_id: @comments.first.id, likable_type: 'Comment')
+    render
+    expect(rendered).to have_link('unlike')
+  end
 
 end

@@ -37,6 +37,19 @@ describe 'posts/index.html.erb' do
       expect(rendered).to have_content(@user_posts.last.body)
     end
 
+    it 'has like link' do
+      @post = Post.create(user_id: @user.id, body: "This is a really cool post")
+      render
+      expect(rendered).to have_link('like')
+    end
+
+    it 'has unlike link if post previously liked' do
+      @post = Post.create(user_id: @user.id, body: "This is a really cool post")
+      @like = Like.create(user_id: @user.id, likable_id: @post.id, likable_type: 'Post')
+      render
+      expect(rendered).to have_link('unlike')
+    end
+
   end
 
   context 'user has no posts' do

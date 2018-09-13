@@ -1,14 +1,15 @@
-<article class="friends-copied-text-area left-section-article-heading">
-  <h3 class="grey-back-ground">Friends(423)</h3>
-   <%= render 'users/timeline/friend_thumbnail' %>
-   <%= render 'users/timeline/friend_thumbnail' %>
-   <%= render 'users/timeline/friend_thumbnail' %>
-   <%= render 'users/timeline/friend_thumbnail' %>
-   <%= render 'users/timeline/friend_thumbnail' %>
-   <%= render 'users/timeline/friend_thumbnail' %>
-
-  <!-- eventually will link to friends page -->
-  <div class="more-link">
-    <a href="#">See More Friends</a>
-  </div>
+<article class="left-section-article-heading">
+  <h3 class="grey-back-ground">Friends(<%= link_to "#{friend_list(user).count}", "#" %>)</h3>
+  <% if friend_list(user).empty? %>
+    <div class="find-friends-link">
+      <%= link_to "Find Friends", "#"%>
+    </div>
+  <% else %>
+    <% friend_list(user).each do |friend| %>
+      <%= render partial: 'users/timeline/friend_thumbnail', locals: { friend: User.find(friend) } %>
+    <% end %>
+    <div class="more-link">
+      <%= link_to "See More Friends", user_friends_path %>
+    </div>
+  <% end %>
 </article>

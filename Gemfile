@@ -29,8 +29,17 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
-#use postgresql for development and production
+# use postgresql for development and production
 gem 'pg'
+
+# Use Paperclip for uploading images
+gem 'paperclip'
+
+# Use Figaro for ENV variable management
+gem 'figaro'
+
+# Use AWS s3 for storage
+gem 'aws-sdk'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development

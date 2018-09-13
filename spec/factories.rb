@@ -1,5 +1,10 @@
 FactoryGirl.define do
 
+  factory :friendship do
+    friendee { create(:user) }
+    friender { create(:user) }
+  end
+
   factory :user do
     sequence(:email) { |n| "person#{n}@example.com" }
     password "password"

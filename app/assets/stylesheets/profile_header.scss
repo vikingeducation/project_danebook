@@ -69,3 +69,14 @@ $light-grey: #DDDDDD;
 	margin-left: 10px;
 	font-size: 35px;
 }
+
+.add-as-friend,
+.remove-as-friend {
+	margin-top: 4em;
+	margin-left: 1em;
+}
+
+.remove-as-friend {
+	background-color: gray;
+	color: black;
+}

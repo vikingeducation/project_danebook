@@ -1,8 +1,10 @@
 <article class="friend-summary">
   <img href="cat.jpg" style="height:150px; width:150px;">
   <div class="friend-name">
-    <a href="soandsoprofilepage.html">Your Friend</a>
-    <p>324 Friends</p>
+    <%= link_to "#{full_name(friend)}", user_timeline_path(friend) %>
+    <p><%= link_to "#{friend_count(friend)} friends", user_friends_path(friend) %></p>
   </div>
-  <input type="submit" class="unfriend pull-right" value="Unfriend Me">
+  <% if @current_user == current_page_user %>
+    <%= link_to "Unfriend Me", friendship_path, method: :delete, class: "unfriend pull-right remove-as-friend" %>
+  <% end %> 
 </article>

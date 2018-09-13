@@ -9,6 +9,8 @@ module ApplicationHelper
     end
   end
 
-
+  def current_page_user
+    User.find(params[:user_id].to_i)
+  end
 
 end

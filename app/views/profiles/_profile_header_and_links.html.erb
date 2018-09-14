@@ -8,7 +8,7 @@
             <td class="link-wrapper empty"></td>
             <td class="first-link link-wrapper timeline-link <%= current_page?(user_timeline_path) ? 'link-background' : '' %>"><%= link_to "Timeline", user_timeline_path, class: "link" %></td>
             <td class="link-wrapper about-link <%= current_page?(user_profile_path) ? 'link-background' : '' %>"><%= link_to "About", user_profile_path, class: "link" %></td>
-            <td class="link-wrapper photos-link <%= current_page?(user_photos_path) ? 'link-background' : '' %>"><%= link_to "Photos(347)", "#", class: "link" %></td>
+            <td class="link-wrapper photos-link <%= current_page?(user_photos_path) ? 'link-background' : '' %>"><%= link_to "Photos(347)", user_photos_path, class: "link" %></td>
             <td class="link-wrapper friends-link <%= current_page?(user_friends_path) ? 'link-background' : '' %>"><%= link_to "Friends(#{friend_count(current_page_user)})", user_friends_path, class: "link" %></td>
             <td class="edit-profile-link link-wrapper"><%= link_to "Edit Profile", edit_user_profile_path, class: "link" %></td>
           </tr>

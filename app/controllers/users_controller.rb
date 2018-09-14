@@ -39,7 +39,9 @@ class UsersController < ApplicationController
 
   def friends
   end
-  
+
+  def Photos
+  end 
 
 private
 

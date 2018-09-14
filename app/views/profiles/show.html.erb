@@ -1,13 +1,13 @@
-<main class="main about">
+<main class="main">
 
  <%= render partial: 'profiles/profile_header_and_links', locals: { user: current_page_user } %>
 
   <div class="container">
 
     <div class="row bar-div">
-      <header class="bar about-bar">
-        <h1 class="about-heading about-title">About</h1>
-        <%= link_to "Edit Your Profile", edit_user_profile_path, method: :get, :class => "white-text edit pull-right btn btn-primary" %>
+      <header class="bar">
+        <h1 class="about-title">About</h1>
+        <%= link_to "Edit Your Profile", edit_user_profile_path, method: :get, class: "white-text edit pull-right btn btn-primary" %>
       </header>
     </div>
 

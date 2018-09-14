@@ -8,9 +8,9 @@ Rails.application.routes.draw do
     get '/home', to: 'users/static_pages#home'
     get '/timeline', to: 'posts#index', as: '/timeline'
     get '/friends', to: 'users#friends', as: '/friends'
-    get '/photos', to: 'users/static_pages#photos', as: '/photos'
     resource :profile, only: [:show, :edit, :update, :create]
     resources :posts, except: [:index, :edit, :update]
+    resources :photos, except: [:edit, :update]
   end
   resource :like, only: [:create, :destroy]
   resources :posts, only: [:index] do

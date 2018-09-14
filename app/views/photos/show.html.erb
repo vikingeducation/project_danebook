@@ -1,0 +1,19 @@
+<main class="main photos-section">
+  <%= render partial: '/profiles/profile_header_and_links', locals: { user: current_page_user }%>
+  <div class="container">
+    <div class="row bar-div">
+      <header class="bar">
+        <h1 class="photos-title">Photos</h1>
+      </header>
+    </div>
+
+    <div class="info-section row">
+      <div class="col-xs-8">
+        <%= image_tag @photo.photo.url(:medium) %>
+      </div>
+      <div class="col-xs-4">
+        <%= render_template '/posts/comments/new' %> 
+      </div>
+    </div>
+  </div>
+</main>

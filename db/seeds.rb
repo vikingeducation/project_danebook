@@ -72,7 +72,7 @@ end
 Post.all.each do |post|
   user_id = User.all.sample.id
   body = Faker::RickAndMorty.quote
-  post.comments.build(user_id: user_id, body: body)
+  post.comments.build(user_id: user_id, body: body, commentable_id: post.id, commentable_type: 'Post')
   if post.save
     puts "comment created"
   end
@@ -88,7 +88,7 @@ end
 
 100.times do |x|
   user_id = User.all.sample.id
-  likable_id = Comment.all.sample.id 
+  likable_id = Comment.all.sample.id
   likable_type = "Comment"
   Like.create(user_id: user_id, likable_id: likable_id, likable_type: likable_type)
 end

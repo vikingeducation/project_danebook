@@ -1,5 +1,10 @@
 FactoryGirl.define do
 
+  factory :photo do
+    image { File.new("#{Rails.root}/spec/support/fixtures/image.jpg") }
+    user
+  end
+
   factory :friendship do
     friendee { create(:user) }
     friender { create(:user) }

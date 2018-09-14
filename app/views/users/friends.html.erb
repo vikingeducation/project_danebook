@@ -1,15 +1,15 @@
-<main class="main friends">
+<main class="main friends-section">
   <% user = User.find(params[:user_id]) %>
   <%= render partial: '/profiles/profile_header_and_links', locals: { user: user }%>
 
   <div class="container">
     <div class="row">
-      <header class="bar friend-bar">
+      <header class="bar">
         <h1 class="friends-title">Friends</h1>
       </header>
     </div>
 
-    <div class="row friend-link-section">
+    <div class="info-section row">
       <% if friend_list(user).empty? %>
         <div class="find-friend-link-section">
           <%= link_to "Find Friends", "#" %>
@@ -18,7 +18,7 @@
         <%= render partial: '/users/friends/column', locals: { user: user, friends: split_list_of_friends(user)[0] } %>
         <% unless split_list_of_friends(user)[1].nil? %>
           <%= render partial: '/users/friends/column', locals: { user: user, friends: split_list_of_friends(user)[1]  } %>
-        <% end %> 
+        <% end %>
       <% end %>
     </div>
 

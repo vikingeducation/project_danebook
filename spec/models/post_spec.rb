@@ -14,7 +14,7 @@ describe Post do
 
   describe "user associations" do
 
-    it "should responsd to user" do
+    it "should respond to user" do
       expect(post).to respond_to(:user)
     end
 

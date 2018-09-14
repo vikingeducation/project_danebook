@@ -1,0 +1,19 @@
+<main class="main photos-section">
+  <%= render partial: '/profiles/profile_header_and_links', locals: { user: current_page_user }%>
+
+  <div class="container">
+    <div class="row bar-div">
+      <header class="bar">
+        <h1 class="photos-title">Photos</h1>
+        <% if @current_user == current_page_user %>
+          <%= link_to "Add Photo", new_user_photo_path(@current_user), method: :get, class: "white-text edit pull-right btn btn-primary"  %>
+        <% end %>
+      </header>
+    </div>
+
+    <div class="info-section row">
+      
+    </div>
+  </div>
+
+</main>

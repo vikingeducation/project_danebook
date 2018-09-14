@@ -14,7 +14,12 @@ describe 'LikesRequests' do
     describe 'POST #create' do
 
       it 'actually creates a like' do
-        expect{ post like_path, params: { like: {likable_id: user_post.id, likable_type: 'Post', user_id: user.id}}}.to change(Like, :count).by(1)
+        expect{ post like_path, params: {
+                                  like: { likable_id: user_post.id,
+                                        likable_type: 'Post',
+                                             user_id: user.id }
+                                             }
+                                           }.to change(Like, :count).by(1)
       end
 
       it 'creates a flash message' do

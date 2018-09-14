@@ -1,0 +1,21 @@
+<main class="main photos-section">
+  
+  <%= render partial: '/profiles/profile_header_and_links', locals: { user: current_page_user }%>
+
+  <div class="container">
+    <div class="row bar-div">
+      <header class="bar">
+        <h1 class="photos-title">Photos</h1>
+      </header>
+    </div>
+
+    <div class="info-section row">
+      <%= form_for [@current_user, @photo] do |img| %>
+        <%= img.label "Upload photo to your album" %>
+        <%= img.file_field :photo, accept: 'image/png, image/jpg' %>
+        <%= img.submit %>
+      <% end %>
+    </div>
+  </div>
+
+</main>

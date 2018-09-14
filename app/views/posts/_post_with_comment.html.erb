@@ -27,11 +27,11 @@
     <br>
     <article class="comment-body">
     <% if post.comments.empty? %>
-      <%= render template: '/posts/comments/new', locals: { post: post, user: current_user, comment: post.comments.build } %>
+      <%= render template: '/comments/new', locals: {user: current_user, comment: post.comments.build, commentable_id: post.id, commentable_type: 'Post'  } %>
     <% else %>
-      <%= render template: '/posts/comments/index', locals: { post: post, user: current_user, comments: post.comments } %>
+      <%= render template: '/comments/index', locals: {user: current_user, comments: post.comments } %>
       <hr style="border-color:black;">
-      <%= render template: '/posts/comments/new', locals: { post: post, user: current_user, comment: post.comments.build } %>
+      <%= render template: '/comments/new', locals: {user: current_user, comment: post.comments.build, commentable_id: post.id, commentable_type: 'Post'  } %>
     <% end %>
   </article>
 </article>

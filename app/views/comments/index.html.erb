@@ -13,7 +13,7 @@
       <% else %>
         <%= link_to "like", like_path(like: {user_id: current_user.id, likable_id: comment.id, likable_type: "Comment"}), method: :post %>
       <% end %>
-      <%= link_to "Delete", post_comment_path(current_user, comment),
+      <%= link_to "Delete", comment_path(current_user, comment),
                             method: :delete,
                             class: "pull-right",
                             data: {

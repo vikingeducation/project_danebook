@@ -13,9 +13,8 @@ Rails.application.routes.draw do
     resources :photos, except: [:edit, :update]
   end
   resource :like, only: [:create, :destroy]
-  resources :posts, only: [:index] do
-    resources :comments, except: [:edit, :update, :show]
-  end
+  resources :posts, only: [:index]
+  resources :comments, except: [:show]
 
   resource :friendship, only: [:create, :destroy]
 

@@ -2,25 +2,25 @@ class CommentsController < ApplicationController
 
   before_action :set_user
   before_action :require_login, only: [:create, :destroy]
-  before_action :set_post
+  before_action :set_resource
 
   def index
-    @comments = @post.comments
-    @comment = @post.comments.build
+    @comments = @resource.comments
+    @comment = @resource.comments.build
   end
 
   def new
-    @comment = @post.comments.build
+    @comment = Comment.new
   end
 
   def create
-    @comment = @post.comments.build(whitelisted_comment_params)
+    @comment = Comment.new(whitelisted_comment_params)
     if @comment.save
       flash[:success] = "Comment saved!"
-      redirect_to user_timeline_path(User.find(Post.find(@post.id).user.id))
+      redirect_to user_timeline_path(User.find(whitelisted_comment_params[:user_id]))
     else
       flash[:danger] = "Unable to save your comment"
-      redirect_to user_timeline_path(User.find(Post.find(@post.id).user.id))
+      redirect_to user_timeline_path(User.find(whitelisted_comment_params[:user_id]))
     end
   end
 
@@ -42,12 +42,16 @@ class CommentsController < ApplicationController
 
 private
 
-  def set_post
-    @post = Post.find(params[:post_id].to_i)
+  def set_resource
+    if params[:commentable_type] == 'Post'
+      @resource = Post.find(params[:commentable_id].to_i)
+    elsif params[:commentable_type] == 'Photo'
+      @resource = Photo.find(params[:commentable_id].to_i)
+    end
   end
 
   def whitelisted_comment_params
-    params.require(:comment).permit(:body, :user_id, :post_id)
+    params.require(:comment).permit(:body, :user_id, :commentable_id, :commentable_type)
   end
 
 end

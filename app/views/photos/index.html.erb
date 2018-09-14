@@ -10,24 +10,29 @@
       </header>
     </div>
 
-
     <% if @current_user != current_page_user %>
     <div class="row no-photos-border">
       <h4>This user has no uploaded photos</h4>
-    </div> 
+    </div>
     <% elsif @photos.empty? %>
       <div class="row no-photos-border">
-        <h4>Upload photos to your Album</h4>
+      <h4>Upload photos to your Album</h4>
         <%= button_to "Add Photo", new_user_photo_path, method: :get, class: "btn btn-primary btn-large" %>
       </div>
     <% else %>
       <% @photos.in_groups_of(4, false).each do |group| %>
         <div class="row photos-border">
           <% group.each do |photo| %>
-            <div class="col-xs-3 img_wrapper" style="height:200px; width:200px;">
+            <div class="col-xs-3">
               <%= image_tag Photo.find(photo).photo.url(:medium) %>
-              <p class="on-hover-description">Updated on this date</p>
+              <p class="on-hover-description">Updated on <%= photo.updated_at.strftime('%B %e, %Y') %></p>
             </div>
+          <% end %>
+          <% if group.count < 4 %>
+            <% (4 - group.count).times do |blank_photo| %>
+              <div class="col-xs-3" >
+              </div>
+            <% end %>
           <% end %>
         </div>
       <% end %>

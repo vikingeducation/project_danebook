@@ -22,3 +22,5 @@
 
 
 /.config/secrets.yml
+
+/public/system

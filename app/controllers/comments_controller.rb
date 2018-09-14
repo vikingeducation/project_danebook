@@ -6,7 +6,6 @@ class CommentsController < ApplicationController
 
   def index
     @comments = @resource.comments
-    @comment = @resource.comments.build
   end
 
   def new
@@ -17,10 +16,10 @@ class CommentsController < ApplicationController
     @comment = Comment.new(whitelisted_comment_params)
     if @comment.save
       flash[:success] = "Comment saved!"
-      redirect_to user_timeline_path(User.find(whitelisted_comment_params[:user_id]))
+      redirect_back(fallback_location: user_timeline_path(User.find(params[:comment][:user_id].to_i)))
     else
       flash[:danger] = "Unable to save your comment"
-      redirect_to user_timeline_path(User.find(whitelisted_comment_params[:user_id]))
+      redirect_back(fallback_location: user_timeline_path(User.find(params[:comment][:user_id].to_i)))
     end
   end
 

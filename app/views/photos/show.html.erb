@@ -1,6 +1,7 @@
 <main class="main photos-section">
   <%= render partial: '/profiles/profile_header_and_links', locals: { user: current_page_user }%>
   <div class="container">
+
     <div class="row bar-div">
       <header class="bar">
         <h1 class="photos-title">Photos</h1>
@@ -8,11 +9,41 @@
     </div>
 
     <div class="info-section row">
-      <div class="col-xs-8">
-        <%= image_tag @photo.photo.url(:medium) %>
+
+      <div class="col-xs-6 photo-show-section">
+        <%= image_tag @photo.photo.url(:medium), class: 'pull-right' %><br>
+        <div class="photo-action-links">
+          <%= link_to "Set As Profile", "#", class: 'pull-right' %><br>
+          <%= link_to "Set As Cover", "#", class: 'pull-right' %><br>
+          <% if current_user == @photo.user %>
+            <%= link_to "Delete", comment_path(current_user, @photo),
+                                  method: :delete,
+                                  class: 'pull-right',
+                                  data: {
+                                    confirm: "Are you sure you would like to delete this resource? This action cannot be undone"
+                                  } %>
+          <% end %>
+        </div>
       </div>
-      <div class="col-xs-4">
+
+      <div class="col-xs-1">
+      </div>
+
+      <div class="col-xs-5">
+        <div class="header-new-comment-area">
+          <%= render partial: '/shared/author_thumbnail', locals: { resource: @photo } %>
+          <%= render partial: 'shared/display_likes', locals: { current_user: @current_user, resource: @photo, } %>
+          <p><%= list_likes(@photo, @current_user) %></p>
+          <%= render template: '/comments/new', locals: { current_user: @current_user, comment: Comment.new, commentable_id: @photo.id, commentable_type: 'Photo' } %>
+        </div>
+        <% unless @photo.comments.empty? %>
+          <div class="photo-comment-area">
+            <%= render template: '/comments/index', locals: { comments: @photo.comments } %>
+          </div>
+        <% end %>
       </div>
     </div>
+
   </div>
+
 </main>

@@ -1,10 +1,7 @@
 <article>
-  <div class="post post-with-comment">
-    <img href="#" style="height:50px; width:50px;">
-    <div class="post-header">
-      <%=link_to user_full_name(post), user_timeline_path(post.user_id), class: "timeline-name-link" %>
-      <p>Posted on <%= date_posted(post) %></p>
-    </div><br>
+  <div class="post-area post-with-comment">
+    <br>
+    <%= render partial: '/shared/author_thumbnail', locals: { resource: post } %>
     <br>
     <div class="post-comment-body">
       <p><%= post.body %></p>
@@ -12,17 +9,16 @@
   </div>
   <div class="comment-area grey-back-ground">
     <div class="comment-header-area">
-      <% if liked?(post, current_user, "Post") %>
-        <%= link_to("unlike", like_path(like: {user_id: current_user.id, likable_id: post.id, likable_type: "Post" }), method: :delete) %>
-      <% else %>
-        <%= link_to("like", like_path(like: {user_id: current_user.id, likable_id: post.id, likable_type: "Post" }), method: :post) %>
+      <%= render partial: '/shared/display_likes', locals: { resource: post } %>
+      <% if current_user == post.user %>
+        <%= link_to "Delete", comment_path(current_user, post),
+                              method: :delete,
+                              class: "pull-right",
+                              data: {
+                                confirm: "Are you sure you would like to delete this resource? This action cannot be undone"
+                              } %>
       <% end %>
-      <%= link_to "Delete", user_post_path(current_user, post),
-                            method: "DELETE",
-                            data: {
-                              confirm: "Are you sure you would like to delete this post? This action cannot be undone"
-                            } %>
-      <p><%= list_likes(post, current_user, "Post") %></p>
+      <p><%= list_likes(post, current_user) %></p>
     </div>
     <br>
     <article class="comment-body">
@@ -31,7 +27,9 @@
     <% else %>
       <%= render template: '/comments/index', locals: {user: current_user, comments: post.comments } %>
       <hr style="border-color:black;">
-      <%= render template: '/comments/new', locals: {user: current_user, comment: post.comments.build, commentable_id: post.id, commentable_type: 'Post'  } %>
+      <div class="comment-text-area-div">
+        <%= render template: '/comments/new', locals: {comment: post.comments.build, commentable_id: post.id, commentable_type: 'Post'  } %>
+      </div>
     <% end %>
   </article>
 </article>

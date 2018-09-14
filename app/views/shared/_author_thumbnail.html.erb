@@ -1,0 +1,5 @@
+<div class="author-thumbnail">
+  <img href="#" style="height:50px; width:50px;">
+  <p><%= link_to User.find(resource.user_id).profile.name, user_timeline_path(resource.user) %><br>
+  Said on <%= resource.created_at.strftime("%A %m/%d/%Y") %></p>
+</div>

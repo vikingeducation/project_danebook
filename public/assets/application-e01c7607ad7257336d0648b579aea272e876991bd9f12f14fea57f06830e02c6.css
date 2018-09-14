@@ -985,7 +985,7 @@ below code for photos page
 }
 
 /* line 489, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/static_pages.scss */
-.post-header {
+.author-thumbnail {
   display: inline-block;
   vertical-align: bottom;
 }
@@ -1132,7 +1132,7 @@ below code for photos page
 }
 
 /* line 36, /Users/Mariah/Documents/coding_shiz/danebook/app/assets/stylesheets/timeline.scss */
-.post-header {
+.author-thumbnail {
   display: inline-block;
   vertical-align: bottom;
 }

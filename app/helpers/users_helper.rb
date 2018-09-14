@@ -18,4 +18,9 @@ module UsersHelper
       friends.each_slice((friends.size/2.0).round).to_a
     end
   end
+
+  def photo_count(user)
+    user.photos.count
+  end
+  
 end

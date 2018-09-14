@@ -5,7 +5,10 @@
     <p><%= link_to "#{friend_count(friend)} friends", user_friends_path(friend) %></p>
   </div>
   <% if @current_user == current_page_user %>
-    <%= link_to "Unfriend Me", friendship_path, method: :delete,
-                                                 class: "unfriend pull-right remove-as-friend"%>
+    <%= link_to "Unfriend Me", friendship_path(friendship: {
+                                              friender_id: @current_user.id,
+                                              friendee_id: friend.id}),
+                                                   method: :delete,
+                                                    class: "unfriend pull-right remove-as-friend" %>
   <% end %>
 </article>

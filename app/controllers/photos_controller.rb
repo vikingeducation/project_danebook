@@ -4,7 +4,10 @@ class PhotosController < ApplicationController
   before_action :require_login
 
   def index
-    @photos = @current_user.photos
+    @photos = current_page_user.photos
+    @grouped_photos = @current_user.photo_ids.each_slice(4).to_a
+    @num_groups = @grouped_photos.count
+
   end
 
   def new

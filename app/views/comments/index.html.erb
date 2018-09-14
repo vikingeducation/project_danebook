@@ -1,26 +1,19 @@
 <% comments.each do |comment| %>
-  <img href="#" style="height:50px; width:50px;">
-  <div class="post-header">
-    <p><%= link_to User.find(comment.user_id).profile.name, user_timeline_path(comment.user) %>
-    Said on <%= comment.created_at.strftime("%A %m/%d/%Y") %></p>
-  </div>
+  <%= render partial: '/shared/author_thumbnail', locals: { resource: comment } %>
   <br>
   <div class="inner-comment-body">
     <p><%= comment.body %></p>
     <br>
-      <% if liked?(comment, current_user, "Comment") %>
-        <%= link_to "unlike", like_path(like: {user_id: current_user.id, likable_id: comment.id, likable_type: "Comment"}), method: :delete %>
-      <% else %>
-        <%= link_to "like", like_path(like: {user_id: current_user.id, likable_id: comment.id, likable_type: "Comment"}), method: :post %>
+      <%= render partial: 'shared/display_likes', locals: { resource: comment } %>
+      <% if current_user == comment.user %>
+        <%= link_to "Delete", comment_path(current_user, comment),
+                              method: :delete,
+                              class: "pull-right",
+                              data: {
+                                confirm: "Are you sure you would like to delete this resource? This action cannot be undone"
+                              } %>
       <% end %>
-      <%= link_to "Delete", comment_path(current_user, comment),
-                            method: :delete,
-                            class: "pull-right",
-                            data: {
-                              confirm: "Are you sure you would like to delete this comment? This action cannot be undone"
-                            } %>
-    <p><%= list_likes(comment, current_user, "Comment") %></p>
-
+      <p><%= list_likes(comment, current_user) %></p>
   </div>
 
 <% end %>

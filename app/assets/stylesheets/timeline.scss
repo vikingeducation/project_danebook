@@ -24,21 +24,25 @@ $primary-color: #066DEE;
   padding: 10px;
 }
 
-.post {
+.post-area {
   margin-top: 20px;
   border: $main-border;
   padding: 10px;
   img {
     float: left;
   }
+  p {
+    margin-left: 10px;
+  }
 }
 
-.post-header {
+.author-thumbnail {
   display: inline-block;
   vertical-align: bottom;
-  p,
-  .timeline-name-link {
-  padding-left: 10px;
+  width: 100%;
+  p {
+    display: inline-block;
+    padding: 0px 10px 10px 10px;
   }
 }
 

@@ -1,17 +1,30 @@
 
 $main-border: 1px solid black;
+$light-grey: #DDDDDD;
+
 /*
 below code for photos page
 */
 
-.photos-border {
-  border-bottom: $main-border;
+.photos-border div img {
+  align-content: center;
+}
+
+.photos-border,
+.no-photos-border {
   border-right: $main-border;
   border-left: $main-border;
   padding-top: 30px;
-  div img {
-  align-content: center;
-  }
+}
+
+.no-photos-border {
+  text-align: center;
+  padding-bottom: 4em;
+}
+
+.photos-wrapper {
+  border-bottom: $main-border;
+  margin-bottom: 4em;
 }
 
 .img_wrapper {
@@ -37,10 +50,32 @@ below code for photos page
   opacity: 0;
   height: 50px;
   text-align: center;
+  width: 200px;
 
 }
 
 .img_wrapper:hover .on-hover-description {
   visibility: visible;
   opacity: .5;
+}
+
+.photo-comment-area {
+  background-color: $light-grey;
+  border: 1px solid black;
+  padding: 2em;
+}
+
+.header-new-comment-area {
+  margin-bottom: 3em;
+  p {
+  display: inline-block;
+  }
+}
+
+.photo-show-section {
+  display: inline-block;
+}
+
+.photo-action-links {
+  clear: both;
 }

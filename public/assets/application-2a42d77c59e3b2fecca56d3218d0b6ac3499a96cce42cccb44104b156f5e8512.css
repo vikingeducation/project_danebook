@@ -693,13 +693,13 @@ table {
 }
 
 /* line 36, /Users/Mariah/Documents/coding_shiz/project_danebook/app/assets/stylesheets/timeline.scss */
-.post-header {
+.author-thumbnail {
   display: inline-block;
   vertical-align: bottom;
 }
 /* line 39, /Users/Mariah/Documents/coding_shiz/project_danebook/app/assets/stylesheets/timeline.scss */
-.post-header p,
-.post-header .timeline-name-link {
+.author-thumbnail p,
+.author-thumbnail .timeline-name-link {
   padding-left: 10px;
 }
 
@@ -1322,13 +1322,13 @@ table {
 }
 
 /* line 36, /Users/Mariah/Documents/coding_shiz/project_danebook/app/assets/stylesheets/timeline.scss */
-.post-header {
+.author-thumbnail {
   display: inline-block;
   vertical-align: bottom;
 }
 /* line 39, /Users/Mariah/Documents/coding_shiz/project_danebook/app/assets/stylesheets/timeline.scss */
-.post-header p,
-.post-header .timeline-name-link {
+.author-thumbnail p,
+.author-thumbnail .timeline-name-link {
   padding-left: 10px;
 }
 

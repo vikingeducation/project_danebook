@@ -51,10 +51,10 @@ private
   end
 
 
-  def current_page_user
+  def find_current_page_user
     User.find(params[:user_id].to_i)
   end
-  helper_method :current_page_user 
+  helper_method :find_current_page_user
 
 
 end

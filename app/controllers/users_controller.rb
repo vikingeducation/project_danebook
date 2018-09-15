@@ -37,11 +37,12 @@ class UsersController < ApplicationController
     @users = User.all
   end
 
+  def timeline
+  end
+
   def friends
   end
 
-  def Photos
-  end 
 
 private
 

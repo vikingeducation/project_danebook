@@ -1,6 +1,6 @@
 <main class="main">
 
- <%= render partial: 'profiles/profile_header_and_links', locals: { user: current_page_user } %>
+ <%= render partial: 'profiles/profile_header_and_links', locals: { user: find_current_page_user } %>
 
   <div class="container">
 
@@ -15,13 +15,13 @@
     <div class="info-section row">
       <div class="col-xs-6">
 
-        <%= render partial: 'profiles/about/leftside', locals: { user: current_page_user } %>
+        <%= render partial: 'profiles/about/leftside', locals: { user: find_current_page_user } %>
 
       </div>
 
       <div class="col-xs-6">
 
-        <%= render partial: 'profiles/about/rightside', locals: { user: current_page_user } %>
+        <%= render partial: 'profiles/about/rightside', locals: { user: find_current_page_user } %>
 
       </div>
 

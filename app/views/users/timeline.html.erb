@@ -1,0 +1,23 @@
+<main class="main timeline">
+  <%= render partial: 'profiles/profile_header_and_links', locals: { user: find_current_page_user } %>
+  <div class="container">
+    <div class="bottom-main-section row">
+      <section class="left-section col-xs-4">
+
+      <%= render partial: 'users/timeline/about_block', locals: { user: find_current_page_user } %>
+
+        <%= render partial: 'users/timeline/photo_block', locals: { user: find_current_page_user } %>
+
+        <%= render partial: 'users/timeline/friend_block', locals: { user: find_current_page_user } %>
+
+      </section>
+
+      <section class="right-section col-xs-8">
+
+        <%= render template: 'posts/index', locals: { user: find_current_page_user } %>
+
+      </section>
+    </div>
+  </div>
+
+</main>

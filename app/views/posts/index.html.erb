@@ -1,29 +1,13 @@
-<main class="main timeline">
-  <%= render partial: 'profiles/profile_header_and_links', locals: { user: find_user } %>
-  <div class="container">
-    <div class="bottom-main-section row">
-      <section class="left-section col-xs-4">
+<% if current_user == user %>
+  <%= render template: 'posts/new', locals: { user: user, post: Post.new }%>
+<% end %>
 
-      <%= render partial: 'users/timeline/about_block', locals: { user: find_user } %>
+<% unless user.posts.empty? %>
 
-        <%= render partial: 'users/timeline/photo_block', locals: { user: find_user } %>
-
-        <%= render partial: 'users/timeline/friend_block', locals: { user: find_user } %>
-
-      </section>
-
-      <section class="right-section col-xs-8">
-
-        <%= render template: 'posts/new' %>
-
-        <% unless find_user.posts.empty? %>
-
-          <%= render partial: 'posts/post_index', locals: { user: find_user } %>
-
-        <% end %>
-
-      </section>
-    </div>
+  <div>
+    <% user.posts.reverse_each.to_a.each do |post| %>
+      <%= render partial: 'posts/post_with_comment', locals: { post: post } %>
+    <% end %>
   </div>
 
-</main>
+<% end %>

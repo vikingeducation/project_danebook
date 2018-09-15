@@ -14,11 +14,11 @@ below code for photos page
 .no-photos-border {
   border-right: $main-border;
   border-left: $main-border;
-  padding-bottom: 4em;
+  padding-bottom: 2em;
 }
 
-.photos-wrapper div:nth-child(2) {
-  padding-top: 4em;
+.photo-row-0 {
+  padding-top: 2em;
 }
 
 .no-photos-border {
@@ -32,33 +32,39 @@ below code for photos page
 
 .img_wrapper {
   position: relative;
-  height: 200px;
-  width: 250px;
-  margin-top: 20px;
-  margin-bottom: 50px;
-  p {
-    margin-top: 150px;
-  }
+  width: 50%;
+}
+
+.image {
+  opacity: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: .5s ease;
+  backface-visibility: hidden;
 }
 
 .on-hover-description {
   position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
+  transition: .5s ease;
+  top: 100%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
   background: rgba(40, 40, 40, 0.72);
   color: #fff;
-  visibility: hidden;
   opacity: 0;
-  height: 50px;
   text-align: center;
-  width: 200px;
+  height: 2em;
+  width: 15em;
 }
 
-.img_wrapper:hover .on-hover-description {
-  visibility: visible;
-  opacity: .5;
+.img-wrapper:hover .image {
+  opacity: 0.3;
+}
+
+.img-wrapper:hover .on-hover-description {
+  opacity: 1;
 }
 
 .photo-comment-area {

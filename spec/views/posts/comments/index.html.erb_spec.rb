@@ -12,7 +12,7 @@ describe 'posts/comments/index.html.erb' do
     @user_profile = user_profile
     @user_post = user_post
     @comments = post_comments
-    def view.find_user
+    def view.find_current_page_user
       @user
     end
     def view.current_user

@@ -6,14 +6,13 @@ Rails.application.routes.draw do
   delete 'logout' => 'sessions#destroy'
   resources :users do
     get '/home', to: 'users/static_pages#home'
-    get '/timeline', to: 'posts#index', as: '/timeline'
+    get '/timeline', to: 'users#timeline', as: '/timeline'
     get '/friends', to: 'users#friends', as: '/friends'
     resource :profile, only: [:show, :edit, :update, :create]
-    resources :posts, except: [:index, :edit, :update]
+    resources :posts, except: [ :edit, :update]
     resources :photos, except: [:edit, :update]
   end
   resource :like, only: [:create, :destroy]
-  resources :posts, only: [:index]
   resources :comments, except: [:show]
 
   resource :friendship, only: [:create, :destroy]

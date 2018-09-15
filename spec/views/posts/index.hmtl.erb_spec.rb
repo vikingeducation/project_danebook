@@ -9,7 +9,7 @@ describe 'posts/index.html.erb' do
     @user = user
     @user_profile = user_profile
     @post = Post.new
-    def view.find_user
+    def view.find_current_page_user
       @user
     end
     def view.current_user

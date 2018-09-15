@@ -16,10 +16,6 @@ module PostsHelper
     user.profile.current_town
   end
 
-  def find_user
-    User.find(params[:user_id])
-  end
-
   def user_full_name(post)
     User.find(post[:user_id]).profile.name
   end

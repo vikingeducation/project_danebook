@@ -8,8 +8,8 @@
             <td class="link-wrapper empty"></td>
             <td class="first-link link-wrapper timeline-link <%= current_page?(user_timeline_path) ? 'link-background' : '' %>"><%= link_to "Timeline", user_timeline_path, class: "link" %></td>
             <td class="link-wrapper about-link <%= current_page?(user_profile_path) ? 'link-background' : '' %>"><%= link_to "About", user_profile_path, class: "link" %></td>
-            <td class="link-wrapper photos-link <%= current_page?(user_photos_path) ? 'link-background' : '' %>"><%= link_to "Photos(#{photo_count(current_page_user)})", user_photos_path, class: "link" %></td>
-            <td class="link-wrapper friends-link <%= current_page?(user_friends_path) ? 'link-background' : '' %>"><%= link_to "Friends(#{friend_count(current_page_user)})", user_friends_path, class: "link" %></td>
+            <td class="link-wrapper photos-link <%= current_page?(user_photos_path) ? 'link-background' : '' %>"><%= link_to "Photos(#{photo_count(find_current_page_user)})", user_photos_path, class: "link" %></td>
+            <td class="link-wrapper friends-link <%= current_page?(user_friends_path) ? 'link-background' : '' %>"><%= link_to "Friends(#{friend_count(find_current_page_user)})", user_friends_path, class: "link" %></td>
             <td class="edit-profile-link link-wrapper"><%= link_to "Edit Profile", edit_user_profile_path, class: "link" %></td>
           </tr>
         </table>
@@ -18,11 +18,11 @@
       <div class="name-pic-block">
         <img id="profile-pic"href="./cat.jpg" style="height: 200px; width: 200px;">
         <h1 id="profile-name"> <%= user.profile.name %></h1>
-        <% if @current_user == current_page_user %>
-        <% elsif friends?(@current_user, current_page_user) %>
-          <%= link_to( "Remove as Friend", friendship_path(friendship: {friender_id: @current_user.id, friendee_id: current_page_user}), method: :delete, class: 'btn remove-as-friend') %>
+        <% if @current_user == find_current_page_user %>
+        <% elsif friends?(@current_user, find_current_page_user) %>
+          <%= link_to( "Remove as Friend", friendship_path(friendship: {friender_id: @current_user.id, friendee_id: find_current_page_user}), method: :delete, class: 'btn remove-as-friend') %>
         <% else %>
-          <%= link_to( "Add as Friend", friendship_path(friendship: {friender_id: @current_user.id, friendee_id: current_page_user}), method: :post, class: 'btn btn-primary add-as-friend') %>
+          <%= link_to( "Add as Friend", friendship_path(friendship: {friender_id: @current_user.id, friendee_id: find_current_page_user}), method: :post, class: 'btn btn-primary add-as-friend') %>
         <% end %>
       </div>
     </article>

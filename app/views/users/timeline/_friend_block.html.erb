@@ -1,8 +1,13 @@
 <article class="left-section-article-heading">
-  <h3 class="grey-back-ground">Friends(<%= link_to "#{friend_list(user).count}", "#" %>)</h3>
+  <h3 class="grey-back-ground">Friends(<%= link_to "#{friend_list(user).count}", user_friends_path(user) %>)</h3>
   <% if friend_list(user).empty? %>
     <div class="find-friends-link">
-      <%= link_to "Find Friends", "#"%>
+      <% if user == @current_user %>
+        <%= link_to "Find Friends", "#"%>
+      <% else %>
+        <p>Be this user's first friend</p>
+        <%= link_to( "Add as Friend", friendship_path(friendship: {friender_id: @current_user.id, friendee_id: user}), method: :post, class: 'btn btn-primary') %>
+      <% end %>
     </div>
   <% else %>
     <% friend_list(user).each do |friend| %>

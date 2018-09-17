@@ -38,6 +38,7 @@ class UsersController < ApplicationController
   end
 
   def timeline
+    @photos = @current_user.photos
   end
 
   def friends

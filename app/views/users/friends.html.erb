@@ -12,7 +12,13 @@
     <div class="info-section row">
       <% if friend_list(user).empty? %>
         <div class="find-friend-link-section">
-          <%= link_to "Find Friends", "#" %>
+          <% if user == @current_user %>
+            <%= link_to "Find Friends", "#" %>
+          <% else %>
+            <p>This user has no friends</p>
+            <p>Be this user's first friend</p>
+            <%= link_to( "Add as Friend", friendship_path(friendship: {friender_id: @current_user.id, friendee_id: find_current_page_user}), method: :post, class: 'btn btn-primary') %>
+          <% end %>
         </div>
       <% else %>
         <%= render partial: '/users/friends/column', locals: { user: user, friends: split_list_of_friends(user)[0] } %>

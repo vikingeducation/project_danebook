@@ -5,7 +5,7 @@ class PhotosController < ApplicationController
 
   def index
     @photos = find_current_page_user.photos
-    @grouped_photos = @current_user.photo_ids.each_slice(4).to_a
+    @grouped_photos = @photos.ids.each_slice(4).to_a
     @num_groups = @grouped_photos.count
 
   end

@@ -1,12 +1,12 @@
-
-$light-grey: #DDDDDD;
-
 /*
   profile header and links section styles
 */
 
+$light-grey: #DDDDDD;
+$primary-color: #066DEE;
+
 .top-main-section {
-	height: 460px;
+	height: 28em;
   width: 100%;
 }
 
@@ -16,6 +16,44 @@ $light-grey: #DDDDDD;
 	margin-right: auto;
 }
 
+#empty-profile-pic,
+#empty-cover-photo {
+	p {
+		color: white;
+		font-size: 1em;
+	}
+}
+
+#empty-cover-photo,
+#empty-profile-pic {
+	background: $primary-color;
+	opacity: 0.5;
+	text-align: center;
+	p {
+		color: white;
+	}
+}
+
+#empty-profile-pic p {
+	padding-top: 50%;
+}
+
+#empty-cover-photo p {
+	padding-top: 10%;
+}
+
+#profile-pic,
+#empty-profile-pic {
+	height: 200px;
+	width: 200px;
+}
+
+#cover-photo,
+.cover-photo-image,
+#empty-cover-photo {
+	height: 300px;
+	width: 100%;
+}
 
 .timeline-links {
 	text-align: center;
@@ -51,9 +89,6 @@ $light-grey: #DDDDDD;
     background: $light-grey;
 }
 
-#cover-photo {
-	margin-top: 60px;
-}
 
 .name-pic-block {
 	position: relative;

@@ -10,7 +10,7 @@
       <% end %>
     </div>
   <% else %>
-    <% friend_list(user).each do |friend| %>
+    <% friend_list(user).sample(6).each do |friend| %>
       <%= render partial: 'users/timeline/friend_thumbnail', locals: { friend: User.find(friend) } %>
     <% end %>
     <div class="more-link">

@@ -1,5 +1,5 @@
 <main class="main photos-section">
-  
+
   <%= render partial: '/profiles/profile_header_and_links', locals: { user: find_current_page_user }%>
 
   <div class="container">
@@ -9,11 +9,11 @@
       </header>
     </div>
 
-    <div class="info-section row">
-      <%= form_for [@current_user, @photo] do |img| %>
+    <div class="info-section row upload-photo-form">
+      <%= form_for [@current_user, @photo], :html => { :class => "form-horizontal center" } do |img| %>
         <%= img.label "Upload photo to your album" %>
         <%= img.file_field :photo, accept: 'image/png, image/jpg' %>
-        <%= img.submit %>
+        <%= img.submit "Upload Photo", class: "btn btn-lg btn btn-success" %>
       <% end %>
     </div>
   </div>

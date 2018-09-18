@@ -13,8 +13,8 @@
       <div class="col-xs-6 photo-show-section">
         <%= image_tag @photo.photo.url(:medium), class: 'pull-right' %><br>
         <div class="photo-action-links">
-          <%= link_to "Set As Profile", "#", class: 'pull-right' %><br>
-          <%= link_to "Set As Cover", "#", class: 'pull-right' %><br>
+          <%= link_to "Set As Profile", user_profile_path(profile: { profile_photo_id: @photo.id }), method: :patch, class: 'pull-right' %><br>
+          <%= link_to "Set As Cover", user_profile_path(profile: { cover_photo_id: @photo.id }), method: :patch, class: 'pull-right' %><br>
           <% if current_user == @photo.user %>
             <%= link_to "Delete", comment_path(current_user, @photo),
                                   method: :delete,

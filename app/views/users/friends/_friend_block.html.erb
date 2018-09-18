@@ -1,5 +1,9 @@
 <article class="friend-summary">
-  <img href="cat.jpg" style="height:150px; width:150px;">
+    <% if friend.profile.profile_photo_id %>
+      <%= image_tag Photo.find(friend.profile.profile_photo_id).photo.url(:medium), style: "height:150px; width:150px;" %>
+    <% else %>
+      <%= image_tag image_url('no_photo_medium.jpg'), style: "heigth:150px; width:150px;" %>
+    <% end %>
   <div class="friend-name">
     <%= link_to "#{full_name(friend)}", user_timeline_path(friend) %>
     <p><%= link_to "#{friend_count(friend)} friends", user_friends_path(friend) %></p>
@@ -9,6 +13,6 @@
                                               friender_id: @current_user.id,
                                               friendee_id: friend.id}),
                                                    method: :delete,
-                                                    class: "unfriend pull-right remove-as-friend" %>
+                                                    class: "unfriend pull-right" %>
   <% end %>
 </article>

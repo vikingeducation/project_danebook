@@ -1,4 +1,8 @@
 <div class="friend-pic-link">
-  <img href="#" style="height:80px; width:80px;"><br>
-  <%= link_to "#{full_name(friend)}", user_timeline_path(friend) %> 
+  <% if friend.profile.profile_photo_id %>
+    <%= image_tag Photo.find(friend.profile.profile_photo_id).photo.url(:thumb) %><br>
+  <% else %>
+    <%= image_tag image_url('no_photo_thumbnail.jpg') %><br>
+  <% end %>
+  <%= link_to "#{full_name(friend)}", user_timeline_path(friend) %>
 </div>

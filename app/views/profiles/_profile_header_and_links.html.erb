@@ -1,7 +1,15 @@
 <div class="container">
   <div class="row">
     <article class="top-main-section">
-      <img id="cover-photo" href="./blooming_flower_garden_199003.jpg" style="height:300px; width:100%">
+      <% if find_current_page_user.profile.cover_photo_id %>
+        <div id="cover-photo">
+          <%= image_tag Photo.find(find_current_page_user.profile.cover_photo_id).photo.url(:large), class: "cover-photo-image" %>
+        </div>
+      <% else %>
+        <div id="empty-cover-photo">
+          <p>No Photo Selected</p>
+        </div>
+      <% end %> 
       <nav>
         <table class="timeline-links">
           <tr>
@@ -16,7 +24,15 @@
       </nav>
 
       <div class="name-pic-block">
-        <img id="profile-pic"href="./cat.jpg" style="height: 200px; width: 200px;">
+        <% if find_current_page_user.profile.profile_photo_id %>
+          <div id="profile-pic">
+            <%= image_tag Photo.find(find_current_page_user.profile.profile_photo_id).photo.url(:medium) %>
+          </div>
+        <% else %>
+          <div id="empty-profile-pic">
+            <p>No Photo Selected</p>
+          </div>
+        <% end %>
         <h1 id="profile-name"> <%= user.profile.name %></h1>
         <% if @current_user == find_current_page_user %>
         <% elsif friends?(@current_user, find_current_page_user) %>

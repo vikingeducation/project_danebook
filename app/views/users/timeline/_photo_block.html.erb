@@ -4,10 +4,10 @@
     <% if find_current_page_user == @current_user %>
       <%= link_to "Add Photos", new_user_photo_path(@current_user) %>
     <% else %>
-      <p>This user has no photos</p>
+      <p class="text-center">This user has no photos</p>
     <% end %>
   <% else %>
-    <% user.photos.each do |photo| %>
+    <% user.photos.sample(6).each do |photo| %>
       <%= image_tag photo.photo.url(:thumb) %>
     <% end %>
     <br>

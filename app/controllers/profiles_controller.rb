@@ -38,7 +38,9 @@ private
                                        :current_town,
                                        :telephone,
                                        :words_to_live_by,
-                                       :about_me )
+                                       :about_me,
+                                       :cover_photo_id,
+                                       :profile_photo_id )
     end
 
 

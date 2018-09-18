@@ -1,7 +1,9 @@
 class Profile < ApplicationRecord
 
+  # belongs_to and is created by user
   belongs_to :user, inverse_of: :profile
 
+  # validations
   validates :birthday, :first_name, :last_name, presence: true, allow_nil: false
   validates :first_name, :last_name, length: { in: 3..30 }
 

@@ -6,7 +6,7 @@ class User < ApplicationRecord
   has_one :profile, inverse_of: :user, autosave: true
   accepts_nested_attributes_for :profile, allow_destroy: true, reject_if: :all_blank
 
-  # associations 
+  # associations
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :photos, dependent: :destroy

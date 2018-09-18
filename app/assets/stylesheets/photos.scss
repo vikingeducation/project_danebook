@@ -90,7 +90,12 @@ below code for photos page
 
 .upload-photo-form {
   text-align: center;
-  input {
-    align-items: center; 
+  label {
+    padding-bottom: 2em;
   }
+}
+
+.upload-photo-input {
+  margin-left: 41%;
+  padding-bottom: 2em;
 }

@@ -19,7 +19,13 @@ about and about_edit pages
 		border: $main-border;
     padding: 5px;
     text-align: center;
+    margin-top: 0px;
   }
+}
+
+.left-section-article-heading {
+  padding-bottom: 1em;
+  margin-bottom: 2em;
 }
 
 .left-section-article-heading,

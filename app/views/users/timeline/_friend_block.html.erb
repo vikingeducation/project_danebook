@@ -1,4 +1,4 @@
-<article class="left-section-article-heading">
+<article class="left-section-article-heading row">
   <h3 class="grey-back-ground">Friends(<%= link_to "#{friend_list(user).count}", user_friends_path(user) %>)</h3>
   <% if friend_list(user).empty? %>
     <div class="find-friends-link">
@@ -13,8 +13,9 @@
     <% friend_list(user).sample(6).each do |friend| %>
       <%= render partial: 'users/timeline/friend_thumbnail', locals: { friend: User.find(friend) } %>
     <% end %>
+    <br>
     <div class="more-link">
-      <%= link_to "See More Friends", user_friends_path %>
+      <%= link_to "See More Friends", user_friends_path, class: 'center'%>
     </div>
   <% end %>
 </article>

@@ -6,7 +6,7 @@ class LikesController < ApplicationController
     else
       flash[:danger] = "Unable to like"
     end
-    redirect_back fallback_location: { action: 'index', controller: 'posts', id: whitelisted_like_params[:user_id] }
+    redirect_back fallback_location: user_timeline_path(whitelisted_like_params[:user_id])
   end
 
   def destroy
@@ -16,7 +16,7 @@ class LikesController < ApplicationController
     else
       flash[:danger] = "Unable to unlike"
     end
-    redirect_back fallback_location: { action: 'index', controller: 'posts', id: whitelisted_like_params[:user_id] }
+    redirect_back fallback_location: user_timeline_path(whitelisted_like_params[:user_id])
   end
 
   private

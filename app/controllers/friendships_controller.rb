@@ -9,7 +9,7 @@ class FriendshipsController < ApplicationController
     else
       flash[:danger] = "Could not create friendship"
     end
-    redirect_back fallback_location: { action: 'index', controller: 'posts', id: friendship_params[:friender_id] }
+    redirect_back fallback_location: user_timeline_url(@current_user)
   end
 
   def destroy
@@ -19,7 +19,7 @@ class FriendshipsController < ApplicationController
     else
       flash[:danger] = "Unable to unfriendship"
     end
-    redirect_back fallback_location: { action: 'index', controller: 'posts', id: friendship_params[:friender_id] }
+    redirect_back fallback_location: user_timeline_url(@current_user)
   end
 
   private

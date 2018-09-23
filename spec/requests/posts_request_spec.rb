@@ -17,7 +17,7 @@ describe 'PostsRequests' do
 
     describe 'get #index' do
       it 'works as normal' do
-        get user_timeline_path(user)
+        get user_posts_path(user)
         expect(response).to be_success
       end
     end
@@ -38,7 +38,7 @@ describe 'PostsRequests' do
       end
       it 'creates a flash message' do
         post user_posts_path(user), params: { post: attributes_for(:post) }
-        expect(flash[:success]).not_to be_nil 
+        expect(flash[:success]).not_to be_nil
       end
 
       it 'redirects if successful'

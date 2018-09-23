@@ -7,10 +7,12 @@ describe 'ProfilesRequests' do
   describe 'User Access' do
 
     describe 'GET #show' do
+
       it 'denies access if not logged in' do
         get user_profile_path(user)
         expect(response).to_not be_success
       end
+
       it 'works as normal if signed in' do
         profile = create(:profile, user_id: user.id)
         post session_path, params: { email: user.email, password: user.password }
@@ -49,6 +51,7 @@ describe 'ProfilesRequests' do
       before :each do
         user
         post session_path, params: { email: user.email, password: user.password }
+        allow_any_instance_of(ApplicationController).to receive(:find_current_page_user).and_return(user)
       end
 
       context 'with valid attributes' do
@@ -82,9 +85,10 @@ describe 'ProfilesRequests' do
         end
 
         let(:users_profile){ create(:profile, user_id: user.id) }
+        let(:new_bday){ nil }
 
         it 'does not update attributes' do
-          patch user_profile_path(users_profile), params: { profile: attributes_for(:profile, birthday: nil) }
+          patch user_profile_path(users_profile), params: { profile: attributes_for(:profile, birthday: new_bday) }
           expect(users_profile.birthday).to eq(user.profile.birthday)
         end
 

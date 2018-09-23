@@ -26,19 +26,48 @@ describe Comment do
 
   end
 
-  describe "post associations" do 
+  describe "post associations" do
 
     specify "linking a valid post is successful" do
       parent_post = create(:post)
-      valid_comment.post = parent_post
+      valid_comment.commentable_id = parent_post.id
       expect(valid_comment).to be_valid
     end
 
     specify "linking an invalid post is not successful" do
-      valid_comment.post_id = 12345
+      valid_comment.commentable_id = 12345
       expect(valid_comment).not_to be_valid
     end
 
   end
+
+  describe "photo associations" do
+
+    specify "linking a valid photo is successful" do
+      parent_photo = create(:photo)
+      valid_comment.commentable_id = parent_photo.id
+      valid_comment.commentable_type = "Photo"
+      expect(valid_comment).to be_valid
+      expect(valid_comment.commentable_id).to eq(parent_photo.id)
+    end
+
+    specify "linking an invalid photo is not successful" do
+      parent_photo = create(:photo)
+      valid_comment.commentable_id = 12354
+      valid_comment.commentable_type = "Photo"
+      expect(valid_comment).not_to be_valid
+    end
+
+  end
+
+
+  describe "like associations" do
+
+    it "responds to likes" do
+      expect(valid_comment).to respond_to(:likes)
+    end
+
+  end
+
 
 end

@@ -1,7 +1,7 @@
 FactoryGirl.define do
 
   factory :photo do
-    image { File.new("#{Rails.root}/spec/support/fixtures/image.jpg") }
+    photo { File.new("#{Rails.root}/spec/support/fixtures/image.jpg") }
     user
   end
 
@@ -23,8 +23,9 @@ FactoryGirl.define do
 
   factory :comment do
     user
-    post
     body {Faker::Simpsons.quote}
+    commentable_type { "Post" }
+    commentable_id { create(:post).id }
   end
 
   factory :profile do

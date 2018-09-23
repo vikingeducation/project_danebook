@@ -7,7 +7,7 @@ RSpec.describe Photo, type: :model do
    let(:photo){ create(:photo, user_id: user.id) }
 
    it 'belongs to a user' do
-     expect(photo).to belong_to(user)
+     expect(photo.user).to eq(user)
    end
    it 'is valid with valid attributes'
  end

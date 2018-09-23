@@ -2,7 +2,7 @@
   <% if resource.user.profile.profile_photo_id %>
     <%= image_tag Photo.find(resource.user.profile.profile_photo_id).photo.url(:thumb) %>
   <% else %>
-    <%= image_tag image_url('no_photo_thumbnail.jpg') %> 
+    <%= image_tag image_url('no_photo_thumbnail.jpg', host: "http://localhost:3000") %> 
   <% end %>
   <p><%= link_to User.find(resource.user_id).profile.name, user_timeline_path(resource.user) %><br>
   Said on <%= resource.created_at.strftime("%A %m/%d/%Y") %></p>

@@ -1,11 +1,11 @@
 require 'rails_helper'
 
-describe 'posts/comments/index.html.erb' do
+describe 'comments/index.html.erb' do
 
   let(:user){ create(:user) }
   let(:user_profile){ create(:profile, user_id: user.id) }
   let(:user_post){ create(:post, user_id: user.id) }
-  let(:post_comments){ create_list(:comment, 3, post_id: user_post.id, user_id: user.id)}
+  let(:post_comments){ create_list(:comment, 3, commentable_id: user_post.id, user_id: user.id, commentable_type: "Post") }
 
   before do
     @user = user
@@ -21,6 +21,7 @@ describe 'posts/comments/index.html.erb' do
     def view.comments
       @comments
     end
+
     controller.request.path_parameters[:user_id] = @user.id
     controller.request.path_parameters[:post_id] = @user_post.id
   end

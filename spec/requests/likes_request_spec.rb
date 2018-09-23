@@ -15,9 +15,9 @@ describe 'LikesRequests' do
 
       it 'actually creates a like' do
         expect{ post like_path, params: {
-                                  like: { likable_id: user_post.id,
-                                        likable_type: 'Post',
-                                             user_id: user.id }
+                                  like: {   likable_id: user_post.id,
+                                          likable_type: 'Post',
+                                               user_id: user.id }
                                              }
                                            }.to change(Like, :count).by(1)
       end

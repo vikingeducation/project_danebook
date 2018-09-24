@@ -22,32 +22,32 @@ describe 'posts/index.html.erb' do
   context 'user has posts' do
 
     it 'shows users name' do
-      render
+      render template: 'posts/index.html.erb', locals: { user: @user }
       expect(rendered).to match(@user_profile.name)
     end
 
     it 'renders new post form' do
-      render
+      render template: 'posts/index.html.erb', locals: { user: @user }
       expect(rendered).to match('<form class="new_post"')
     end
 
     it 'lists all users posts' do
       user_posts = create_list(:post, 5, user_id: @user.id)
-      render
+      render template: 'posts/index.html.erb', locals: { user: @user }
       expect(rendered).to have_content(user_posts.first.body)
       expect(rendered).to have_content(user_posts.last.body)
     end
 
     it 'has like link' do
       post = Post.create(user_id: @user.id, body: "This is a really cool post")
-      render
+      render template: 'posts/index.html.erb', locals: { user: @user }
       expect(rendered).to have_link('like')
     end
 
     it 'has unlike link if post previously liked' do
       post = Post.create(user_id: @user.id, body: "This is a really cool post")
       like = Like.create(user_id: @user.id, likable_id: @post.id, likable_type: 'Post')
-      render
+      render template: 'posts/index.html.erb', locals: { user: @user }
       expect(rendered).to have_link('unlike')
     end
 
@@ -55,8 +55,10 @@ describe 'posts/index.html.erb' do
 
   context 'user has no posts' do
 
+    @post = nil
+
     it 'still renders new post form if user has no posts' do
-      render
+      render template: 'posts/index.html.erb', locals: { user: @user }
       expect(rendered).to match('<form class="new_post"')
       expect(rendered).not_to match('<div class="post post-with-comment">')
     end

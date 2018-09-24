@@ -36,11 +36,11 @@ RSpec.feature 'UserInteractions' do
     scenario "I want to comment on my friends post" do
       sign_in(user)
       new_post = create(:post, user_id: 2)
-      comment = "This is my comment, read it and weap"
+      new_comment = "This is my comment, read it and weap"
       visit '/users/2/timeline'
-      fill_in "comment_body", with: comment
+      fill_in "comment_body", with: new_comment
       click_button "Comment"
-      expect(page).to have_content comment
+      expect(page).to have_content new_comment
     end
 
     scenario "I want to like/unlike an interesting post" do
@@ -55,10 +55,10 @@ RSpec.feature 'UserInteractions' do
       expect(current_path).to eq('/users/2/timeline')
     end
 
-    scenario "I want to like/unlik an interesting comment" do
+    scenario "I want to like/unlike an interesting comment" do
       sign_in(user)
       new_post = create(:post, user_id: 2)
-      new_comment = create(:comment, user_id: 2, post_id: new_post.id)
+      new_comment = create(:comment, user_id: 2, commentable_id: new_post.id, commentable_type: 'Post')
       visit '/users/2/timeline'
       within(".inner-comment-body") do
         click_link "like"
@@ -92,18 +92,10 @@ RSpec.feature 'UserInteractions' do
       expect(page).to have_content "#{second_user.email}"
     end
 
-    scenario "I want to post a message on my friends timeline" do
-      sign_in(user)
-      visit '/users/2/timeline'
-      fill_in "post_body", with: "Hello Friend"
-      expect(page).to have_content "Hello Friend"
-      expect(page).to have_content "#{second_user.profile.name}"
-    end
-
     scenario "I try to edit someone else's profile" do
       sign_in(user)
       visit '/users/2/profile'
-      click_link "Edit Your Profile"
+      click_link "Edit Profile"
       expect(page).to have_content "About"
       expect(page).to have_content "#{second_user.profile.name}"
       expect(page).to have_content "Sorry - you may not edit another user's profile"

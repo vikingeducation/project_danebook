@@ -1,7 +1,9 @@
+include ActionDispatch::TestProcess
+
 FactoryGirl.define do
 
   factory :photo do
-    photo { File.new("#{Rails.root}/spec/support/fixtures/image.jpg") }
+    photo { fixture_file_upload("#{Rails.root}/spec/support/fixtures/image.jpg") }
     user
   end
 
@@ -26,6 +28,13 @@ FactoryGirl.define do
     body {Faker::Simpsons.quote}
     commentable_type { "Post" }
     commentable_id { create(:post).id }
+  end
+
+  factory :photo_comment do
+    user
+    body {Faker::RickAndMorty.quote}
+    commentable_type { "Photo" }
+    commentable_id { create(:photo).id }
   end
 
   factory :profile do

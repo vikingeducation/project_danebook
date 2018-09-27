@@ -59,7 +59,7 @@ end
 
 
 User.all.each do |u|
-  rand(1..20).times do |x|
+  rand(1..7).times do |x|
     body = Faker::Simpsons.quote
     u.posts.build(body: body)
     if u.save
@@ -79,14 +79,14 @@ Post.all.each do |post|
 end
 
 
-100.times do |x|
+60.times do |x|
   user_id = User.all.sample.id
   likable_id = Post.all.sample.id
   likable_type = "Post"
   Like.create(user_id: user_id, likable_id: likable_id, likable_type: likable_type)
 end
 
-100.times do |x|
+60.times do |x|
   user_id = User.all.sample.id
   likable_id = Comment.all.sample.id
   likable_type = "Comment"

@@ -8,11 +8,6 @@ describe 'ProfilesRequests' do
 
     describe 'GET #show' do
 
-      it 'denies access if not logged in' do
-        get user_profile_path(user)
-        expect(response).to_not be_success
-      end
-
       it 'works as normal if signed in' do
         profile = create(:profile, user_id: user.id)
         post session_path, params: { email: user.email, password: user.password }
@@ -22,27 +17,22 @@ describe 'ProfilesRequests' do
     end
 
     describe 'GET #edit' do
-      context 'not logged in' do
-        it 'denies access' do
-          get edit_user_profile_path(user)
-          expect(response).to_not be_success
-        end
+
+      before :each do
+        profile = create(:profile, user_id: user.id)
+        post session_path, params: { email: user.email, password: user.password }
       end
-      context 'logged in' do
-        before :each do
-          profile = create(:profile, user_id: user.id)
-          post session_path, params: { email: user.email, password: user.password }
-        end
-        it 'works as normal when logged in' do
-          get edit_user_profile_path(user)
-          expect(response).to be_success
-        end
-        it 'for another user redirects to owns profile to edit' do
-          other_user = create(:user)
-          get edit_user_profile_path(other_user)
-          expect(response).to have_http_status(:redirect)
-        end
+
+      it 'works as normal when logged in' do
+        get edit_user_profile_path(user)
+        expect(response).to be_success
       end
+      it 'for another user redirects to owns profile to edit' do
+        other_user = create(:user)
+        get edit_user_profile_path(other_user)
+        expect(response).to have_http_status(:redirect)
+      end
+      
     end
 
 

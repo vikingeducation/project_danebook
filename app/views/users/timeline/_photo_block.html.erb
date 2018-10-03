@@ -2,7 +2,7 @@
   <h3 class="grey-back-ground">Photos(<%=link_to photo_count(user), user_photos_path(user)%>)</h3>
   <% if user.photos.empty? %>
     <% if find_current_page_user == @current_user %>
-      <%= link_to "Add Photos", new_user_photo_path(@current_user) %>
+      <p class="text-center"><%= link_to "Add Photos", new_user_photo_path(@current_user) %></p>
     <% else %>
       <p class="text-center">This user has no photos</p>
     <% end %>

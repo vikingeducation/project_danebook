@@ -10,12 +10,22 @@
       <% end %>
     </div>
   <% else %>
-    <% friend_list(user).sample(6).each do |friend| %>
-      <%= render partial: 'users/timeline/friend_thumbnail', locals: { friend: User.find(friend) } %>
-    <% end %>
-    <br>
-    <div class="more-link">
-      <%= link_to "See More Friends", user_friends_path, class: 'center'%>
+      <% friend_list(user).sample(6).in_groups_of(3, false).each do |group_of_friends| %>
+      <div class="row">
+        <div class="col-xs-1">
+        </div>
+        <% group_of_friends.each do |friend| %>
+          <div class="col-xs-3">
+            <%= render partial: 'users/timeline/friend_thumbnail', locals: { friend: User.find(friend) } %>
+          </div>
+        <% end %>
+        <div class="col-xs-1">
+        </div>
+      </div>
+
+      <% end %>
+    <div class="more-link row">
+      <p class="text-center"><%= link_to "See More Friends", user_friends_path%></p>
     </div>
   <% end %>
 </article>

@@ -9,19 +9,25 @@ module UsersHelper
   end
 
   def display_profile_pic(user, photo_type)
-    if user.profile_pic.blank?
-      image_tag 'profile_pic_missing.jpg'
-    else
-      image_tag user.profile_pic.photo_data.url(photo_type)
-    end
+    image_tag 'profile_pic_missing.jpg'
+
+    # Image logic removed because of deleted S3 bucket
+    # if user.profile_pic.blank?
+    #   image_tag 'profile_pic_missing.jpg'
+    # else
+    #   image_tag user.profile_pic.photo_data.url(photo_type)
+    # end
   end
 
   def display_cover_pic(user)
-    if user.cover_pic.blank?
-      image_tag 'cover_pic_missing.jpg'
-    else
-      image_tag user.cover_pic.photo_data.url(:cover), alt: "Cover Photo"
-    end
+    image_tag 'cover_pic_missing.jpg'
+
+    # Image logic removed because of deleted S3 bucket
+    # if user.cover_pic.blank?
+    #   image_tag 'cover_pic_missing.jpg'
+    # else
+    #   image_tag user.cover_pic.photo_data.url(:cover), alt: "Cover Photo"
+    # end
   end
 
   def friending_button(user)

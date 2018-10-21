@@ -91,18 +91,20 @@
           <%= f.text_area :bio, class: 'form-control' %>
 
           <h2>Photos</h2>
+          <p>Image logic removed because of deleted S3 bucket</p>
+
           <div class="row">
             <div class="col-sm-12">
-              <%= f.label :profile_pic_id %>
-              <%= display_error(@user, :profile_pic_id) %>
-              <%= f.collection_select :profile_pic_id, @user.photos, :id, :photo_data_file_name, include_blank: true, prompt: '-- Select a Pic --', class: 'form-control' %>
+              <!-- Image logic removed because of deleted S3 bucket -->
+              <%#= f.label :profile_pic_id %>
+              <%#= display_error(@user, :profile_pic_id) %>
+              <%#= f.collection_select :profile_pic_id, @user.photos, :id, :photo_data_file_name, include_blank: true, prompt: '-- Select a Pic --', class: 'form-control' %>
             </div> <!-- col-sm-12 -->
           </div> <!-- row -->
           <div class="row">
             <div class="col-sm-12">
-              <%= f.label :cover_pic_id %>
-              <%= display_error(@user, :cover_pic_id) %>
-              <%= f.collection_select :cover_pic_id, @user.photos, :id, :photo_data_file_name, include_blank: true, prompt: '-- Select a Pic --', class: 'form-control' %>
+              <%#= display_error(@user, :cover_pic_id) %>
+              <%#= f.collection_select :cover_pic_id, @user.photos, :id, :photo_data_file_name, include_blank: true, prompt: '-- Select a Pic --', class: 'form-control' %>
             </div> <!-- col-sm-12 -->
           </div> <!-- row -->
         </section> <!-- about-me-copy -->
@@ -117,4 +119,3 @@
 
   </article>
 <% end %> <!-- form_for @user -->
-

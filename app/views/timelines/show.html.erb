@@ -17,7 +17,9 @@
       <section>
         <div class="photo-teaser">
         <% @timeline.sidebar_photos.each do |photo| %>
-          <%= link_to (image_tag photo.photo_data.url(:thumb)), user_photos_path(@timeline.user) %>
+          <!-- Image logic removed because of deleted S3 bucket -->
+          <%= image_tag 'thumb_pic_missing.jpg'%>
+          <%#= link_to (image_tag photo.photo_data.url(:thumb)), user_photos_path(@timeline.user) %>
         <% end %>
         </div> <!-- photo-teaser -->
         <%= link_to 'See all photos', user_photos_path(@timeline.user)  %>
@@ -47,4 +49,3 @@
     <% end %>
 
   </div> <!-- col col-8 -->
-

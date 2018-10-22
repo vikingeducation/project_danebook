@@ -1,6 +1,6 @@
 # Social Media App
 
-[![Maintainability](https://api.codeclimate.com/v1/badges/691acf792a9adc3f750c/maintainability)](https://codeclimate.com/github/lortza/project_danebook/maintainability)
+[![Maintainability](https://api.codeclimate.com/v1/badges/691acf792a9adc3f750c/maintainability)](https://codeclimate.com/github/lortza/project_danebook/maintainability) [![Build Status](https://travis-ci.com/lortza/project_danebook.svg?branch=master)](https://travis-ci.com/lortza/project_danebook)
 
 Create an account, create posts and upload photos, friend and unfriend people, like and unlike posts and comments (instantly via javascript). It's a FakeBook app with image hosting on AWS. It's rocking RESTful routes, polymorphic associations, self-referencing models, and some nifty metaprogramming.
 

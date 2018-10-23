@@ -2,13 +2,15 @@ require 'rails_helper'
 
 RSpec.feature 'Posting', type: :feature do
   let(:user){ create(:user) }
+
   before do
     visit root_path
   end
 
   context "A visitor" do
-    scenario 'can not make a new post' do
+    xscenario 'can not make a new post' do
       visit new_user_post_path(user)
+      save_and_open_page
       expect(current_path).to eq(login_path)
     end
   end #visitors

@@ -19,7 +19,7 @@ feature 'Liking', type: :feature do
       login(user)
     end
 
-    context 'on their Timeline' do
+    xcontext 'on their Timeline' do
       before do
         visit user_timeline_path(user)
       end
@@ -58,7 +58,7 @@ feature 'Liking', type: :feature do
 
     end #Timeline
 
-    context 'on their Feed' do
+    xcontext 'on their Feed' do
       before do
         visit user_feed_path(user)
       end

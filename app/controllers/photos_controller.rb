@@ -15,7 +15,7 @@ class PhotosController < ApplicationController
   end
 
   def create
-    @photo = current_user.photos.build(whitelisted_photo_params)
+    @photo = @current_user.photos.build(whitelisted_photo_params)
     if @photo.save
       flash[:success] = "Success! You've successfully uploaded a photo!"
       redirect_to user_photo_path(@current_user, @photo)

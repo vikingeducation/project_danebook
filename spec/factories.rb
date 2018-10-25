@@ -3,7 +3,7 @@ include ActionDispatch::TestProcess
 FactoryGirl.define do
 
   factory :photo do
-    photo { fixture_file_upload("#{Rails.root}/spec/support/fixtures/image.jpg") }
+    photo { fixture_file_upload("#{Rails.root}/spec/support/fixtures/no_photo_medium.jpg") }
     user
   end
 

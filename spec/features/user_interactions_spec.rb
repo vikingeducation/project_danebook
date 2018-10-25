@@ -7,6 +7,7 @@ RSpec.feature 'UserInteractions' do
   let(:profile) { create(:profile, user_id: 1) }
   let(:second_user) { create(:user, id: 2) }
   let(:second_profile) { create(:profile, user_id: 2)}
+  let(:users){ create_list(:profile, 3, first_name: "Zachariah")}
 
   before do
     user
@@ -108,6 +109,32 @@ RSpec.feature 'UserInteractions' do
       click_button "Update Information"
       expect(page).to have_content "Edit About"
       expect(page).to have_content "#{user.profile.name}"
+    end
+
+    scenario "I want to be able to search for more friends by first name" do
+      sign_in(user)
+      fill_in "Search for Users", with: "#{second_user.profile.first_name}"
+      click_button "Search"
+      expect(page).to have_content "Search Results"
+      expect(page).to have_content "#{second_user.profile.name}"
+    end
+
+    scenario "I want to be able to search for more friends by last name" do
+      sign_in(user)
+      fill_in "Search for Users", with: "#{second_user.profile.last_name}"
+      click_button "Search"
+      expect(page).to have_content "Search Results"
+      expect(page).to have_content "#{second_user.profile.name}"
+    end
+
+    scenario "Searching for friends with one letter brings up all users with names containing that letter" do
+      users
+      sign_in(user)
+      fill_in "Search for Users", with: "Z"
+      click_button "Search"
+      expect(page).to have_content "Search Results"
+      expect(page).to have_content "Zachariah"
+      expect(page).to_not have_content "#{second_user.profile.name}"
     end
 
   end

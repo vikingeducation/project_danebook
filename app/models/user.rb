@@ -38,7 +38,6 @@ class User < ApplicationRecord
     save!
   end
 
-
 private
 
 

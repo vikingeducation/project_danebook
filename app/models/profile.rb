@@ -17,4 +17,12 @@ class Profile < ApplicationRecord
     last_name = full.last
   end
 
+  def self.search(query)
+    if query
+      where("first_name LIKE ? OR last_name LIKE ?", "%#{query}%", "%#{query}%")
+    else
+      where("")
+    end
+  end
+
 end

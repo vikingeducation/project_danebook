@@ -1,9 +1,5 @@
 <article class="friend-summary">
-    <% if friend.profile.profile_photo_id %>
-      <%= image_tag Photo.find(friend.profile.profile_photo_id).photo.url(:medium), style: "height:150px; width:150px;" %>
-    <% else %>
-      <%= image_tag image_url('no_photo_medium.jpg'), style: "heigth:150px; width:150px;" %>
-    <% end %>
+    <%= render partial: 'shared/medium_photo', locals: { user: friend, photo_size: 150 } %> 
   <div class="friend-name">
     <%= link_to "#{full_name(friend)}", user_timeline_path(friend) %>
     <p><%= link_to "#{friend_count(friend)} friends", user_friends_path(friend) %></p>

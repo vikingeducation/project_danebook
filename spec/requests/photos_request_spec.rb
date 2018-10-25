@@ -71,12 +71,6 @@ describe "PhotosRequests" do
         expect(response).to have_http_status(:redirect)
       end
 
-
-      it 'for another user does not create a photo' do
-        expect{ post user_photos_path(another_user), params: { photo: attributes_for(:photo)}}.to change(Photo, :count).by(0)
-      end
-
-
       it 'for another user redirects' do
         post user_photos_path(another_user), params: { photo: attributes_for(:photo) }
         expect(response).to have_http_status(:redirect)

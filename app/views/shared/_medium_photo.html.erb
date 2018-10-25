@@ -1,0 +1,5 @@
+<% if user.profile.profile_photo_id %>
+  <%= image_tag Photo.find(user.profile.profile_photo_id).photo.url(:medium), style: "height:#{photo_size}px; width:#{photo_size}px;" %>
+<% else %>
+  <%= image_tag image_url('no_photo_medium.jpg'), style: "heigth:#{photo_size}px; width:#{photo_size}px;" %>
+<% end %>

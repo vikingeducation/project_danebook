@@ -53,7 +53,8 @@ $light-grey: #DDDDDD;
 .submit-post-button-area,
 #sign-up-button,
 .post-links-area,
-.comment-area {
+.comment-area,
+.search-results-bar {
   border: $main-border;
 }
 
@@ -65,20 +66,23 @@ $light-grey: #DDDDDD;
 }
 
 .about-title,
-.photos-title {
+.photos-title,
+.search-results-title{
 	width: 96%;
 }
 
 .about-title,
 .friends-title,
-.photos-title {
+.photos-title,
+.search-results-title {
 	text-align: center;
 	font-size: 30px;
 	margin: 5px 0px;
 }
 
 .bar,
-.friend-link  {
+.friend-link,
+.search-results-bar  {
 	background-color: $light-grey;
 }
 .about-link,

@@ -5,9 +5,9 @@ class FriendshipsController < ApplicationController
   def create
     new_friendship = Friendship.new(friendship_params)
     if new_friendship.save
-      flash[:success] = "You are now friends!"
+      flash[:success] = "You are now Friends!"
     else
-      flash[:danger] = "Could not create friendship"
+      flash[:danger] = "Unable to Friend"
     end
     redirect_back fallback_location: user_timeline_url(@current_user)
   end
@@ -15,9 +15,9 @@ class FriendshipsController < ApplicationController
   def destroy
     @friendship =  Friendship.find_by(friender_id: friendship_params[:friender_id], friendee_id: friendship_params[:friendee_id])
     if @friendship.destroy
-      flash[:success] = "You've 'Unfriendshipd' sucessfully"
+      flash[:success] = "You are no longer Friends"
     else
-      flash[:danger] = "Unable to unfriendship"
+      flash[:danger] = "Unable to unfriend"
     end
     redirect_back fallback_location: user_timeline_url(@current_user)
   end

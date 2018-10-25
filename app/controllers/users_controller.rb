@@ -34,7 +34,7 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.all
+    @users = Profile.search(params[:user_query])
   end
 
   def timeline

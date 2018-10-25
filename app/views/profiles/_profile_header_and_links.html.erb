@@ -34,12 +34,7 @@
           </div>
         <% end %>
         <h1 id="profile-name"> <%= user.profile.name %></h1>
-        <% if @current_user == find_current_page_user %>
-        <% elsif friends?(@current_user, find_current_page_user) %>
-          <%= link_to( "Remove as Friend", friendship_path(friendship: {friender_id: @current_user.id, friendee_id: find_current_page_user}), method: :delete, class: 'btn remove-as-friend') %>
-        <% else %>
-          <%= link_to( "Add as Friend", friendship_path(friendship: {friender_id: @current_user.id, friendee_id: find_current_page_user}), method: :post, class: 'btn btn-primary add-as-friend') %>
-        <% end %>
+        <%= render partial: 'shared/friend_unfriend_button', locals: { current_user: @current_user, friend: find_current_page_user } %> 
       </div>
     </article>
   </div>

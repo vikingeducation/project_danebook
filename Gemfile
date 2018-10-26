@@ -41,6 +41,9 @@ gem 'figaro'
 # Use AWS s3 for storage
 gem 'aws-sdk'
 
+# Delayed Jobs for email
+gem 'delayed_job_active_record'
+
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -65,6 +68,9 @@ group :development do
   gem "binding_of_caller"
   gem 'bullet'
   gem 'hirb'
+
+  # fake sending emails
+  gem 'letter_opener'
 
   # testing
   gem 'guard-rspec', require: false

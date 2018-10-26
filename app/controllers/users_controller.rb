@@ -12,6 +12,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       sign_in(@user)
+      User.delay.send_welcome_email(@user)
       flash[:success] = "Created New User Successfully!"
       redirect_to user_timeline_path(@user)
     else
@@ -44,6 +45,21 @@ class UsersController < ApplicationController
   def friends
   end
 
+  def destroy
+    @user = User.find(params[:user_id])
+    if @user == @current_user
+      if @user.destroy
+        flash[:success] = "Account DELETED (this action cannot be undone)"
+        redirect_to root_path
+      else
+        flash[:danger] = "Account could not be deleted"
+        redirect_back(fallback_location: root_path)
+      end
+    else
+      flash[:danger] = "You cannot delete another user's account"
+    end
+  end
+
 
 private
 
@@ -51,5 +67,6 @@ private
   def user_params
     params.require(:user).permit(:email, :password, :password_confirmation, profile_attributes: [:id, :last_name, :first_name, :birthday, :gender, :college, :hometown, :current_town, :telephone, :about_me, :words_to_live_by, :_destroy])
   end
+
 
 end

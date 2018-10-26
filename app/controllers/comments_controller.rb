@@ -15,6 +15,9 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(whitelisted_comment_params)
     if @comment.save
+      unless @comment.user_id == @comment.commentable_type.constantize.find(@comment.commentable_id).user.id
+        Comment.delay.send_comment_notification(@comment.id)
+      end
       flash[:success] = "Comment saved!"
       redirect_back(fallback_location: user_timeline_path(User.find(params[:comment][:user_id].to_i)))
     else

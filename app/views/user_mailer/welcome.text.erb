@@ -1,0 +1,10 @@
+Welcome, <%= @user.profile.name %>!
+
+Thank you for signing up with Danebook. The world is now your oyster, go forth and friend.
+
+Visit your page <%= link_to "here", user_url(@user.id) %>.
+
+Sincerly,
+Danebook
+
+<%= link_to "unsubscribe", "#" %>

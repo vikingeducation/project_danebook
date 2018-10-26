@@ -1,0 +1,16 @@
+Hello, <%= @user.profile.name %>!
+
+  You have a new comment from <%= @commenting_user.profile.name %>
+
+  <%= @commenting_user.profile.name %> said on <%= @comment.created_at.strftime("%B %d, %Y")%>:
+
+  "<%= @comment.body %>"
+
+  <%= link_to "Click here to see comment", "#" %>
+
+
+Sincerly,
+
+Danebook
+
+<%= link_to "unsubscribe", "#" %>

@@ -12,15 +12,18 @@
       </header>
     </div>
 
-    <% if @current_user != find_current_page_user %>
-    <div class="row no-photos-border">
-      <h4>This user has no uploaded photos</h4>
-    </div>
-    <% elsif @photos.empty? %>
-      <div class="row no-photos-border text-center">
-        <h4>Upload photos to your Album</h4>
-        <%= button_to "Add Photo", new_user_photo_path, method: :get, class: "btn btn-primary btn-large" %>
-      </div>
+
+    <% if @photos.empty? %>
+      <% if @current_user != find_current_page_user %>
+        <div class="row no-photos-border">
+          <h4>This user has no uploaded photos</h4>
+        </div>
+      <% else %>
+        <div class="row no-photos-border text-center">
+          <h4>Upload photos to your Album</h4>
+          <%= button_to "Add Photo", new_user_photo_path, method: :get, class: "btn btn-primary btn-large" %>
+        </div>
+      <% end %>
     <% else %>
       <% photos_grouped_by_fours(@photos).each do |group| %>
         <div class="row photos-border photo-row-<%=@grouped_photos.index(group)%>">

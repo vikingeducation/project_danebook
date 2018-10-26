@@ -1,0 +1,19 @@
+<h1>Welcome, <%= @user.profile.name %>!</h1>
+
+<p>
+  Thank you for signing up with Danebook. The world is now your oyster, go forth and friend.
+</p>
+
+<p>
+  Visit your page <%= link_to "here", user_url(@user.id) %>.
+</p>
+
+<p>
+  Sincerly,
+  <br>
+  Danebook
+</p>
+
+<p>
+  <%= link_to "unsubscribe", "#" %>
+</p>

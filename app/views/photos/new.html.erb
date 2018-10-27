@@ -11,8 +11,8 @@
 
     <div class="info-section row upload-photo-form">
       <%= form_for [@current_user, @photo], :html => { :class => "form-horizontal center" } do |img| %>
-        <%= img.label "Upload photo to your album" %>
-        <%= img.file_field :photo, accept: 'image/png, image/jpg', class: "upload-photo-input" %>
+        <%= img.label :data, "Upload photo to your album" %>
+        <%= img.file_field :data, accept: 'image/png, image/jpg', class: "upload-photo-input" %>
         <%= img.submit "Upload Photo", class: "btn btn-lg btn btn-success" %>
       <% end %>
     </div>

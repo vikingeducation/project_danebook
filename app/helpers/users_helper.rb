@@ -22,5 +22,16 @@ module UsersHelper
   def photo_count(user)
     user.photos.count
   end
-  
+
+  def friends_recent_posts(user)
+    friends = friend_list(user)
+    posts = []
+    friends.each do |id|
+      friend = User.find(id)
+      posts << friend.posts.where(["updated_at >= ?", 7.days.ago])
+    end
+    posts.flatten.empty? ? nil : posts.flatten.sort_by(&:updated_at).reverse
+  end
+
+
 end

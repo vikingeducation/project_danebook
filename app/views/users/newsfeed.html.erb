@@ -1,0 +1,29 @@
+<main class="main newsfeed">
+
+  <%= render partial: 'profiles/profile_header_and_links', locals: { user: @current_user } %>
+
+  <div class="container">
+
+    <div class="bottom-main-section row">
+
+      <section class="left-section col-xs-4">
+
+        <%= render partial: 'recently_active_friends', locals: { friends: friend_list(@current_user) } %>
+
+      </section>
+
+      <section class="right-section col-xs-8">
+
+        <%= render template: 'posts/new', locals: { post: @current_user.posts.build} %>
+
+        <% if friends_recent_posts(@current_user) %>
+          <% friends_recent_posts(@current_user).each do |post| %>
+            <%= render partial: 'posts/post_with_comment', locals: { post: post, current_user: @current_user } %>
+          <% end %>
+        <% end %>
+
+      </section>
+    </div>
+  </div>
+
+</main>

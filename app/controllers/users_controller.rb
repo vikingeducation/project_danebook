@@ -45,6 +45,9 @@ class UsersController < ApplicationController
   def friends
   end
 
+  def newsfeed
+  end 
+
   def destroy
     @user = User.find(params[:user_id])
     if @user == @current_user

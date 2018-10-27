@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     get '/home', to: 'users/static_pages#home'
     get '/timeline', to: 'users#timeline', as: '/timeline'
     get '/friends', to: 'users#friends', as: '/friends'
+    get '/newsfeed', to: 'users#newsfeed', as: '/newsfeed'
     resource :profile, only: [:show, :edit, :update, :create]
     resources :posts, except: [ :edit, :update]
     resources :photos, except: [:edit, :update]

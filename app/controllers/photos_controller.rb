@@ -15,13 +15,18 @@ class PhotosController < ApplicationController
   end
 
   def create
-    @photo = @current_user.photos.build(whitelisted_photo_params)
-    if @photo.save
-      flash[:success] = "Success! You've successfully uploaded a photo!"
-      redirect_to user_photo_path(@current_user, @photo)
+    if params[:photo].nil?
+      flash[:danger] = "No photo selected - NO PHOTO UPLOADED"
+      redirect_to user_photos_path(@current_user)
     else
-      flash[:danger] = "Unable to upload your photo"
-      render :new
+      @photo = @current_user.photos.build(whitelisted_photo_params)
+      if @photo.save
+        flash[:success] = "Success! You've successfully uploaded a photo!"
+        redirect_to user_photo_path(@current_user, @photo)
+      else
+        flash[:danger] = "Unable to upload your photo"
+        render :new
+      end
     end
   end
 
@@ -48,6 +53,6 @@ class PhotosController < ApplicationController
   private
 
   def whitelisted_photo_params
-    params.require(:photo).permit(:user_id, :photo)
+    params.fetch(:photo).permit(:user_id, :data)
   end
 end

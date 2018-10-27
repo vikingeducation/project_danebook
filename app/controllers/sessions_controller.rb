@@ -11,11 +11,11 @@ class SessionsController < ApplicationController
       if params[:remember_me]
         permanent_sign_in(@user)
         flash[:success] = "User Signed in Successfully!"
-        redirect_to user_timeline_path(@user)
+        redirect_to user_newsfeed_path(@user)
       else
         sign_in(@user)
         flash[:success] = "User Signed in Successfully!"
-        redirect_to user_timeline_path(@user)
+        redirect_to user_newsfeed_path(@user)
       end
     else
       flash[:danger] = "Unable to sign in - Please check your email and password."

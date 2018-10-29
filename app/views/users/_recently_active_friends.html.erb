@@ -1,4 +1,29 @@
 <article class="left-section-article-heading row">
-  <h3 class="grey-back-ground">Recently Active Friends</h3>
-  
+  <div class="col">
+    <h3 class="grey-back-ground">Recently Active Friends</h3>
+    <% friends.each do |id| %>
+      <div class="row">
+        <% friend = User.find(id) %>
+        <div class="col-xs-2">
+        </div>
+        <div class="col-xs-3">
+          <%= link_to user_timeline_path(friend) do %>
+            <% if profile_photo_present?(friend) %>
+              <%= image_tag Photo.find(friend.profile.profile_photo_id).photo.url(:thumb) %>
+            <% else %>
+              <%= image_tag image_url('no_photo_thumbnail.jpg') %>
+            <% end %>
+          <% end %>
+
+        </div>
+        <div class="col-xs-7">
+          <h5><%= link_to "#{friend.profile.name}", user_timeline_path(friend) %></h5>
+        </div>
+      </div>
+      <br>
+
+    <% end %>
+
+  </div>
+
 </article>

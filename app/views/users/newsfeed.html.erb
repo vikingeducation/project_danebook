@@ -8,11 +8,15 @@
 
       <section class="left-section col-xs-4">
 
-        <%= render partial: 'recently_active_friends', locals: { friends: friend_list(@current_user) } %>
+        <%= render partial: 'recently_active_friends', locals: { friends: recently_active_friends(@current_user) } %>
 
       </section>
 
       <section class="right-section col-xs-8">
+
+        <div class="grey-back-ground" id="newsfeed-title">
+          <h1>Newsfeed</h1>
+        </div>
 
         <%= render template: 'posts/new', locals: { post: @current_user.posts.build} %>
 

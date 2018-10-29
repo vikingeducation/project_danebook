@@ -34,7 +34,7 @@
           </div>
         <% end %>
         <h1 id="profile-name"> <%= user.profile.name %></h1>
-        <%= render partial: 'shared/friend_unfriend_button', locals: { current_user: @current_user, friend: find_current_page_user } %> 
+        <%= render partial: 'shared/friend_unfriend_button', locals: { current_user: @current_user, friend: find_current_page_user } %>
       </div>
     </article>
   </div>

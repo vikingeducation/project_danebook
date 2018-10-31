@@ -13,12 +13,12 @@
     <div class="info-section row">
       <%= form_for @current_user, url: user_path(@current_user), method: :patch do |user_fields| %>
         <%= user_fields.fields_for :profile do |profile_fields| %>
-          <div class="col-xs-6">
+          <div class="col-md-6">
             <%= render partial: 'profiles/about/edit/leftside', locals: { profile_fields: profile_fields,
                                                                              user_fields: user_fields } %>
           </div>
 
-          <div class="col-xs-6 col-offset-6 bottom-spacer">
+          <div class="col-md-6 col-offset-6 bottom-spacer">
             <%= render partial: 'profiles/about/edit/rightside', locals: { profile_fields: profile_fields,
                                                                                   profile: @current_user.profile } %>
           </div>

@@ -1,3 +1,19 @@
 // Place all the styles related to the posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+$main-border: 1px solid black;
+
+
+.show-post-container {
+  padding: 3em;
+}
+
+.post-body {
+  padding-bottom: 1em;
+  border-bottom: $main-border;
+  margin-bottom: 0;
+}
+
+.comment-section {
+  padding: 1em 2em 3em 2em;
+}

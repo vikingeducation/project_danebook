@@ -46,7 +46,7 @@ class UsersController < ApplicationController
   end
 
   def newsfeed
-  end 
+  end
 
   def destroy
     @user = User.find(params[:user_id])
@@ -60,6 +60,7 @@ class UsersController < ApplicationController
       end
     else
       flash[:danger] = "You cannot delete another user's account"
+      redirect_back(fallback_location: root_path)
     end
   end
 

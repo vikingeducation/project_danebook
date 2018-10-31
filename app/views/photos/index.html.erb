@@ -28,7 +28,7 @@
       <% photos_grouped_by_fours(@photos).each do |group| %>
         <div class="row photos-border photo-row-<%=@grouped_photos.index(group)%>">
           <% group.each do |photo| %>
-            <div class="col-xs-3 img-wrapper">
+            <div class="col-md-3 img-wrapper">
               <%= link_to image_tag(Photo.find(photo).photo.url(:medium)), user_photo_path(photo.user, photo), class: "image" %>
               <div class="on-hover-description">
                 <div class="text">Updated on <%= photo.updated_at.strftime('%B %e, %Y') %></div>
@@ -37,7 +37,7 @@
           <% end %>
           <% if group.count < 4 %>
             <% (4 - group.count).times do |blank_photo| %>
-              <div class="col-xs-3" >
+              <div class="col-md-3" >
               </div>
             <% end %>
           <% end %>

@@ -1,0 +1,5 @@
+<% if resource.user.profile.profile_photo_id %>
+  <%= image_tag Photo.find(resource.user.profile.profile_photo_id).photo.url(:thumb) %>
+<% else %>
+  <%= image_tag image_url('no_photo_thumbnail.jpg') %>
+<% end %>

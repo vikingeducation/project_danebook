@@ -10,6 +10,7 @@ $primary-color: #066DEE;
 #sign-up-form {
 	margin-left: 50px;
 	width: 80%;
+	margin-bottom: 5em;
 }
 
 #main-action {
@@ -49,4 +50,8 @@ $primary-color: #066DEE;
   margin-top: 150px;
   vertical-align: top;
 	line-height: 2.5em;
+}
+
+.last-name-input {
+	width: 60%;
 }

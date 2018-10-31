@@ -3,35 +3,22 @@
     <br>
     <%= render partial: '/shared/author_thumbnail', locals: { resource: post } %>
     <br>
-    <div class="post-comment-body">
-      <p><%= post.body %></p>
-    </div>
-  </div>
-  <div class="comment-area grey-back-ground">
-    <div class="comment-header-area">
-      <%= render partial: '/shared/display_likes', locals: { resource: post } %>
-      <% if current_user == post.user %>
-        <%= link_to "Delete", comment_path(current_user, post),
-                              method: :delete,
-                              class: "pull-right",
-                              data: {
-                                confirm: "Are you sure you would like to delete this resource? This action cannot be undone"
-                              } %>
-      <% end %>
-      <p><%= list_likes(post, current_user) %></p>
-    </div>
-    <br>
-    <article class="comment-body">
-    <% if post.comments.empty? %>
-      <div class="comment-text-area-div">
-        <%= render template: '/comments/new', locals: {user: current_user, comment: post.comments.build, commentable_id: post.id, commentable_type: 'Post'  } %>
-      </div>
-    <% else %>
-      <%= render template: '/comments/index', locals: {user: current_user, comments: post.comments } %>
-      <hr style="border-color:black; width:95%;">
-      <div class="comment-text-area-div">
-        <%= render template: '/comments/new', locals: {comment: post.comments.build, commentable_id: post.id, commentable_type: 'Post'  } %>
+    <%= link_to user_post_path(post.user, post) do %>
+      <div class="post-comment-body">
+        <p style="color:black;">
+          <%= post.body %>
+        </p>
       </div>
     <% end %>
-  </article>
+  </div>
+  <div class="comment-area grey-background">
+    <div class="comment-header-area">
+      <%= render partial: '/shared/like_unlike_link', locals: { resource: post } %>
+      <%= render partial: 'shared/delete_link', locals: { resource: post, current_user: @current_user, link_path: user_post_path(@current_user, post) } %>
+      <p>
+        <%= list_likes(post, current_user) %>
+      </p>
+    </div>
+    <br>
+    <%= render partial: 'comments/comment_area', locals: { current_user: @current_user, post: post } %>
 </article>

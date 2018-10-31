@@ -5,8 +5,8 @@
   <div class="container">
 
     <div class="bottom-main-section row">
-      
-      <section class="left-section col-xs-4">
+
+      <section class="left-section col-md-4">
 
       <%= render partial: 'users/timeline/about_block', locals: { user: find_current_page_user } %>
 
@@ -16,7 +16,7 @@
 
       </section>
 
-      <section class="right-section col-xs-8">
+      <section class="right-section col-md-8">
 
         <%= render template: 'posts/index', locals: { user: find_current_page_user } %>
 

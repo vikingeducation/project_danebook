@@ -1,22 +1,20 @@
-<main class="main newsfeed">
-
-  <%= render partial: 'profiles/profile_header_and_links', locals: { user: @current_user } %>
-
-  <div class="container">
+<main class="main newsfeed container">
 
     <div class="bottom-main-section row">
 
-      <section class="left-section col-xs-4">
-
+      <section class="left-section recently-active-friends-section col-md-4">
+        <% if @current_user.profile.profile_photo_id? %>
+          <%= image_tag Photo.find(@current_user.profile.profile_photo_id).photo.url(:medium) %>
+        <% else %>
+          <%= image_tag image_url('no_photo_medium.jpg') %>
+        <% end %>
+        <h4><%= link_to "#{@current_user.profile.name}", user_timeline_path(@current_user) %></h4>
+        <%= link_to "Edit Profile", edit_user_profile_path(@current_user) %>
         <%= render partial: 'recently_active_friends', locals: { friends: recently_active_friends(@current_user) } %>
 
       </section>
 
-      <section class="right-section col-xs-8">
-
-        <div class="grey-back-ground" id="newsfeed-title">
-          <h1>Newsfeed</h1>
-        </div>
+      <section class="right-section col-md-8">
 
         <%= render template: 'posts/new', locals: { post: @current_user.posts.build} %>
 
@@ -28,6 +26,5 @@
 
       </section>
     </div>
-  </div>
 
 </main>

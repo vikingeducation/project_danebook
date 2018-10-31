@@ -1,19 +1,16 @@
 <% comments.each do |comment| %>
+  <br>
   <%= render partial: '/shared/author_thumbnail', locals: { resource: comment } %>
   <br>
   <div class="inner-comment-body">
-    <p><%= comment.body %></p>
+    <p>
+      <%= comment.body %>
+    </p>
     <br>
-      <%= render partial: 'shared/display_likes', locals: { resource: comment } %>
-      <% if current_user == comment.user %>
-        <%= link_to "Delete", comment_path(current_user, comment),
-                              method: :delete,
-                              class: "pull-right",
-                              data: {
-                                confirm: "Are you sure you would like to delete this resource? This action cannot be undone"
-                              } %>
-      <% end %>
-      <p><%= list_likes(comment, current_user) %></p>
+    <%= render partial: 'shared/like_unlike_link', locals: { resource: comment } %>
+    <%= render partial: 'shared/delete_link', locals: { resource: comment, current_user: current_user, link_path: comment_path(current_user, comment) } %>
+    <p>
+      <%= list_likes(comment, current_user) %>
+    </p>
   </div>
-
 <% end %>

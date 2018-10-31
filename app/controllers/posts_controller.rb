@@ -24,8 +24,12 @@ class PostsController < ApplicationController
     end
   end
 
+  def show
+    set_post
+  end
+
   def destroy
-    @post = Post.find(params[:id])
+    set_post
     if @post.user != current_user
       flash[:danger] = "You can NOT delete other user's posts"
       redirect_back(fallback_location: user_timeline_path(current_user))
@@ -45,5 +49,9 @@ private
 
   def whitelisted_post_params
     params.require(:post).permit(:body)
+  end
+
+  def set_post
+    @post = Post.find(params[:id])
   end
 end

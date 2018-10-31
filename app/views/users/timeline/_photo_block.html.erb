@@ -1,5 +1,5 @@
 <article class="photos-copied-text-area left-section-article-heading row">
-  <h3 class="grey-back-ground">Photos(<%=link_to photo_count(user), user_photos_path(user)%>)</h3>
+  <h3 class="grey-background">Photos(<%=link_to photo_count(user), user_photos_path(user)%>)</h3>
   <% if user.photos.empty? %>
     <% if find_current_page_user == @current_user %>
       <p class="text-center"><%= link_to "Add Photos", new_user_photo_path(@current_user) %></p>

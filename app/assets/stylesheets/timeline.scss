@@ -27,6 +27,7 @@ $primary-color: #066DEE;
 .post-area {
   margin-top: 20px;
   border: $main-border;
+  border-bottom: none;
   padding: 10px;
   img {
     float: left;
@@ -66,6 +67,10 @@ $primary-color: #066DEE;
 .submit-comment-button {
   color: white;
   background-color: $primary-color;
+}
+
+.submit-post-button {
+  margin: 1em;
 }
 
 .make-new-post {

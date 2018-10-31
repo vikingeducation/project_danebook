@@ -1,0 +1,44 @@
+<main class="container show-post-container">
+
+    <div class="row bar-div">
+      <header class="bar">
+        <h1 class="photos-title">Posts</h1>
+      </header>
+    </div>
+
+    <div class="info-section row">
+
+      <div class="col-md-3" style="text-align:right;">
+        <div class="row">
+          <%= render partial: 'shared/thumbnail_photo', locals: { resource: @post } %>
+        </div>
+      </div>
+
+      <div class="col-md-7">
+        <h4>
+          <%= link_to "#{@post.user.profile.name}", user_timeline_path(@post.user) %>
+          <br>
+          <%= @post.created_at.strftime("%A %m/%d/%Y") %>
+        </h4>
+        <p class="post-body">
+          <%= @post.body %>
+        </p>
+
+        <div class="comment-section grey-background">
+          <%= render partial: 'shared/like_unlike_link', locals: { resource: @post} %>
+          <%= render partial: 'shared/delete_link', locals: { resource: @post, link_path: user_post_path(@post.user, @post) } %>
+          <p>
+            <%= list_likes(@post, @post.user) %>
+          </p>
+          <%= render partial: 'comments/comment_area', locals: { post: @post } %>
+        </div>
+
+      </div>
+
+      <div class="col-md-2">
+        <%= link_to "Back", user_timeline_path(@post.user) %>
+      </div>
+
+    </div>
+
+</main>

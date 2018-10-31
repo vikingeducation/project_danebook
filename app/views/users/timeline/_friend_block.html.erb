@@ -1,5 +1,5 @@
 <article class="left-section-article-heading row">
-  <h3 class="grey-back-ground">Friends(<%= link_to "#{friend_list(user).count}", user_friends_path(user) %>)</h3>
+  <h3 class="grey-background">Friends(<%= link_to "#{friend_list(user).count}", user_friends_path(user) %>)</h3>
   <% if friend_list(user).empty? %>
     <div class="find-friends-link">
       <% if user == @current_user %>
@@ -12,14 +12,14 @@
   <% else %>
       <% friend_list(user).sample(6).in_groups_of(3, false).each do |group_of_friends| %>
       <div class="row">
-        <div class="col-xs-1">
+        <div class="col-md-1">
         </div>
         <% group_of_friends.each do |friend| %>
-          <div class="col-xs-3">
+          <div class="col-md-3">
             <%= render partial: 'users/timeline/friend_thumbnail', locals: { friend: User.find(friend) } %>
           </div>
         <% end %>
-        <div class="col-xs-1">
+        <div class="col-md-1">
         </div>
       </div>
 

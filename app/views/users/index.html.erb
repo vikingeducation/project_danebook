@@ -14,17 +14,17 @@
       <div class="col">
         <% @users.each do |profile| %>
           <div class="row" id="search-result-cell">
-            <div class="col-xs-4 cell-columns">
+            <div class="col-md-4 cell-columns">
               <%= render partial: 'shared/medium_photo', locals: { user: profile.user, photo_size: 200 } %>
             </div>
-            <div class="col-xs-5 cell-columns about-friend-column">
+            <div class="col-md-5 cell-columns about-friend-column">
               <h3><%= link_to "#{profile.name}", user_timeline_path(profile.user) %></h3>
               <h4><%= link_to "#{friend_count(User.find(profile.user.id))} Friends", user_friends_path(profile.user) %></h4>
               <p>Currently lives in <%= profile.current_town%></p>
               <p>From <%= profile.hometown %></p>
               <p>Born on <%= profile.birthday.strftime("%B %d, %Y") %></p>
             </div>
-            <div class="col-xs-3 cell-columns">
+            <div class="col-md-3 cell-columns">
               <%= render partial: 'shared/friend_unfriend_button', locals: { current_user: @current_user, friend: User.find(profile.user.id) } %>
             </div>
           </div>

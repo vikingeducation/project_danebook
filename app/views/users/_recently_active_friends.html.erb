@@ -1,6 +1,6 @@
 <article class="rows">
   <div class="col">
-    <h3>Recently Active Friends</h3>
+    <h3 style="margin-top:4em; margin-bottom:2em;">Recently Active Friends</h3>
     <% friends.each do |id| %>
       <div class="row">
         <% friend = User.find(id) %>
@@ -8,16 +8,15 @@
         </div>
         <div class="col-md-3">
           <%= link_to user_timeline_path(friend) do %>
-            <% if profile_photo_present?(friend) %>
-              <%= image_tag Photo.find(friend.profile.profile_photo_id).photo.url(:thumb) %>
-            <% else %>
-              <%= image_tag image_url('no_photo_thumbnail.jpg') %>
-            <% end %>
+
+            <%= render partial: 'shared/photo_or_no_photo', locals: { user: friend, image_size: :thumb, file: 'no_photo_thumbnail.jpg' } %> 
+
           <% end %>
 
         </div>
         <div class="col-md-7">
           <h5><%= link_to "#{friend.profile.name}", user_timeline_path(friend) %></h5>
+          <p>Posted on <%= friend.posts.last.created_at.strftime("%A %m/%d/%Y")  %></p>
         </div>
       </div>
       <br>

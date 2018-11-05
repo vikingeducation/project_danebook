@@ -10,7 +10,7 @@
 
       <div class="col-md-3" style="text-align:right;">
         <div class="row">
-          <%= render partial: 'shared/thumbnail_photo', locals: { resource: @post } %>
+          <%= render partial: 'shared/photo_or_no_photo', locals: { user: @post.user, image_size: :thumb, file: 'no_photo_thumbnail.jpg' } %>
         </div>
       </div>
 

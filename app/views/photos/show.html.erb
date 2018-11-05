@@ -25,7 +25,7 @@
       <div class="col-md-5">
         <div class="header-new-comment-area">
           <div class="author-thumbnail">
-            <%= render partial: '/shared/thumbnail_photo', locals: { resource: @photo } %>
+            <%= render partial: 'shared/photo_or_no_photo', locals: { user: @photo.user, image_size: :thumb, file: 'no_photo_thumbnail.jpg' } %>
             <p>
               <%= link_to @photo.user.profile.name, user_timeline_path(@photo.user) %>
               <br>

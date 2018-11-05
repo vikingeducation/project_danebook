@@ -45,11 +45,11 @@ module UsersHelper
 
   def recently_active_friends(user)
     friends = friend_list(user)
-    recently_active_friends = []
+    active_friends = []
     friends.each do |id|
-      recently_active_friends << active_user(id) unless nil
+      active_friends << active_user(id) unless nil
     end
-    recently_active_friends
+    active_friends
   end
 
   def profile_photo_present?(user)

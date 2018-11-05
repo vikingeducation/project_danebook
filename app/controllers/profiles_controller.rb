@@ -40,7 +40,8 @@ private
                                        :words_to_live_by,
                                        :about_me,
                                        :cover_photo_id,
-                                       :profile_photo_id )
+                                       :profile_photo_id
+                                     )
     end
 
 

@@ -1,21 +1,23 @@
 <main class="main photos-section">
 
-  <%= render partial: '/profiles/profile_header_and_links', locals: { user: find_current_page_user }%>
+  <%= render partial: 'profiles/profile_header_and_links', locals: { user: find_current_page_user } %>
 
   <div class="container">
+
     <div class="row bar-div">
       <header class="bar">
-        <h1 class="photos-title">Photos</h1>
+        <h1 class="photos-heading photos-title">Photos</h1>
+        <p class="pull-right photos-back-link"><%= link_to "back", user_photos_path(@current_user) %></p>
       </header>
     </div>
 
     <div class="info-section row upload-photo-form">
-      <%= form_for [@current_user, @photo], :html => { :class => "form-horizontal center" } do |img| %>
+      <%= form_for [@current_user, @photo], class: "form-horizontal center" do |img| %>
         <%= img.label :data, "Upload photo to your album" %>
         <%= img.file_field :data, accept: 'image/png, image/jpg', class: "upload-photo-input" %>
         <%= img.submit "Upload Photo", class: "btn btn-lg btn btn-success" %>
       <% end %>
     </div>
-  </div>
 
+  </div>
 </main>

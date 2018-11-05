@@ -2,15 +2,15 @@ class PostsController < ApplicationController
 
   before_action :set_user
   before_action :require_login
+  before_action :new_post, only: [:index, :new]
+  before_action :set_post, only: [:show, :destroy]
 
   def index
     @posts = current_user.posts
-    @post = Post.new
     @like = @post.likes.build
   end
 
   def new
-    @post = Post.new
   end
 
   def create
@@ -25,22 +25,19 @@ class PostsController < ApplicationController
   end
 
   def show
-    set_post
   end
 
   def destroy
-    set_post
     if @post.user != current_user
       flash[:danger] = "You can NOT delete other user's posts"
       redirect_back(fallback_location: user_timeline_path(current_user))
     else
       if @post.delete
         flash[:success] = "Post has been successfully deleted"
-        redirect_to user_timeline_path(current_user)
       else
         flash[:danger] = "Unable to delete post"
-        redirect_to user_timeline_path(current_user)
       end
+      redirect_to user_timeline_path(current_user)
     end
   end
 
@@ -54,4 +51,9 @@ private
   def set_post
     @post = Post.find(params[:id])
   end
+
+  def new_post
+    @post = Post.new
+  end
+
 end

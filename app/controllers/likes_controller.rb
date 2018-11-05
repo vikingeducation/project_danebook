@@ -22,7 +22,10 @@ class LikesController < ApplicationController
   private
 
   def whitelisted_like_params
-    params.require(:like).permit(:likable_id, :likable_type, :user_id)
+    params.require(:like).permit( :likable_id,
+                                  :likable_type,
+                                  :user_id
+                                )
   end
 
 

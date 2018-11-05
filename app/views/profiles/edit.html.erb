@@ -5,25 +5,39 @@
   <div class="container">
 
     <div class="row">
+
       <header class="bar">
         <h1 class="about-title">Edit About</h1>
       </header>
+
     </div>
 
     <div class="info-section row">
+
       <%= form_for @current_user, url: user_path(@current_user), method: :patch do |user_fields| %>
+
         <%= user_fields.fields_for :profile do |profile_fields| %>
+
           <div class="col-md-6">
+
             <%= render partial: 'profiles/about/edit/leftside', locals: { profile_fields: profile_fields,
                                                                              user_fields: user_fields } %>
           </div>
 
           <div class="col-md-6 col-offset-6 bottom-spacer">
+
             <%= render partial: 'profiles/about/edit/rightside', locals: { profile_fields: profile_fields,
                                                                                   profile: @current_user.profile } %>
           </div>
 
         <% end %>
+
         <%= user_fields.submit "Update Information", class: "white-text save-changes-button" %>
+
       <% end %>
+
+    </div>
+
+  </div>
+
 </main>

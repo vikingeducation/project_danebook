@@ -1,7 +1,9 @@
 <div class="col-md-6 friend-link-box">
 
   <% friends.each do |friend| %>
+
     <%= render partial: '/users/friends/friend_block', locals: { friend: User.find(friend) } %>
+
   <% end %>
 
 </div>

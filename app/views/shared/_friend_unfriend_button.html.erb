@@ -1,6 +1,23 @@
 <% if current_user == friend %>
+
 <% elsif friends?(current_user, friend) %>
-  <%= link_to( "Remove as Friend", friendship_path(friendship: {friender_id: current_user.id, friendee_id: friend}), method: :delete, class: 'btn remove-as-friend') %>
+
+  <%= link_to( "Remove as Friend", friendship_path( friendship: { friender_id: current_user.id,
+                                                                  friendee_id: friend
+                                                                }
+                                                              ),
+                                                        method: :delete,
+                                                         class: 'btn remove-as-friend'
+                                                         ) %>
+
 <% else %>
-  <%= link_to( "Add as Friend", friendship_path(friendship: {friender_id: current_user.id, friendee_id: friend}), method: :post, class: 'btn btn-primary add-as-friend') %>
+
+  <%= link_to( "Add as Friend", friendship_path( friendship: { friender_id: current_user.id,
+                                                               friendee_id: friend
+                                                             }
+                                                           ),
+                                                     method: :post,
+                                                      class: 'btn btn-primary add-as-friend'
+                                                      ) %>
+
 <% end %>

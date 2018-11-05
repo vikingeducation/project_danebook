@@ -1,14 +1,22 @@
 <article class="friend-summary">
-    <%= render partial: 'shared/medium_photo', locals: { user: friend, photo_size: 150 } %> 
+
+    <%= render partial: 'shared/photo_or_no_photo', locals: { user: friend,
+                                                        image_size: :medium,
+                                                              file: 'no_photo_medium.jpg'
+                                                            } %>
   <div class="friend-name">
     <%= link_to "#{full_name(friend)}", user_timeline_path(friend) %>
-    <p><%= link_to "#{friend_count(friend)} friends", user_friends_path(friend) %></p>
+    <p>
+      <%= link_to "#{friend_count(friend)} friends", user_friends_path(friend) %>
+    </p>
   </div>
+
   <% if @current_user == find_current_page_user %>
-    <%= link_to "Unfriend Me", friendship_path(friendship: {
-                                              friender_id: @current_user.id,
-                                              friendee_id: friend.id}),
-                                                   method: :delete,
-                                                    class: "unfriend pull-right" %>
+    <%= link_to "Unfriend Me", friendship_path( friendship: {
+                                               friender_id: @current_user.id,
+                                               friendee_id: friend.id}),
+                                                    method: :delete,
+                                                     class: "unfriend pull-right" %>
   <% end %>
+
 </article>

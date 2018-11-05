@@ -1,16 +1,28 @@
 <% comments.each do |comment| %>
+
   <br>
-  <%= render partial: '/shared/author_thumbnail', locals: { resource: comment } %>
+
+  <%= render partial: 'shared/author_thumbnail', locals: { resource: comment } %>
+
   <br>
+
   <div class="inner-comment-body">
+
     <p>
       <%= comment.body %>
     </p>
+
     <br>
+
     <%= render partial: 'shared/like_unlike_link', locals: { resource: comment } %>
-    <%= render partial: 'shared/delete_link', locals: { resource: comment, current_user: current_user, link_path: comment_path(current_user, comment) } %>
+
+    <%= render partial: 'shared/delete_link', locals: { resource: comment,
+                                                    current_user: current_user,
+                                                       link_path: comment_path(current_user, comment) } %>
     <p>
       <%= list_likes(comment, current_user) %>
     </p>
+
   </div>
+  
 <% end %>

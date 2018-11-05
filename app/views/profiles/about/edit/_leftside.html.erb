@@ -1,9 +1,12 @@
 <div class="left-side">
 
   <%= render partial: 'profiles/about/edit/basic_info',
-              locals: { profile_fields: profile_fields } %>
+              locals: { profile_fields: profile_fields
+                         } %>
 
   <%= render partial: 'profiles/about/edit/contact_info',
-              locals: { profile_fields: profile_fields, user_fields: user_fields } %>
+              locals: { profile_fields: profile_fields,
+                           user_fields: user_fields
+                         } %>
 
 </div>

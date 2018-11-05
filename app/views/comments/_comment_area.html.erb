@@ -1,13 +1,30 @@
 <article class="comment-body">
+
   <% if post.comments.empty? %>
+
     <div class="comment-text-area-div">
-      <%= render template: '/comments/new', locals: {user: current_user, comment: post.comments.build, commentable_id: post.id, commentable_type: 'Post'  } %>
+      <%= render template: 'comments/new', locals: { user: current_user,
+                                                   comment: post.comments.build,
+                                            commentable_id: post.id,
+                                          commentable_type: 'Post'
+                                        } %>
     </div>
+
   <% else %>
-    <%= render template: '/comments/index', locals: {user: current_user, comments: post.comments } %>
+
+    <%= render template: 'comments/index', locals: { user: current_user,
+                                                  comments: post.comments
+                                                } %>
+
     <hr style="border-color:black; width:95%;">
+
     <div class="comment-text-area-div">
-      <%= render template: '/comments/new', locals: {comment: post.comments.build, commentable_id: post.id, commentable_type: 'Post'  } %>
+      <%= render template: 'comments/new', locals: { comment: post.comments.build,
+                                               commentable_id: post.id,
+                                             commentable_type: 'Post'
+                                           } %>
     </div>
+
   <% end %>
+  
 </article>

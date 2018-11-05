@@ -1,8 +1,10 @@
 <div class="friend-pic-link col-md-4">
-  <% if friend.profile.profile_photo_id %>
-    <%= image_tag Photo.find(friend.profile.profile_photo_id).photo.url(:thumb) %><br>
-  <% else %>
-    <%= image_tag image_url('no_photo_thumbnail.jpg') %><br>
-  <% end %>
+
+  <%= render partial: 'shared/photo_or_no_photo', locals: { user: friend,
+                                                      image_size: :thumb,
+                                                            file: 'no_photo_thumbnail.jpg' }
+                                                             %>
+
   <%= link_to "#{full_name(friend)}", user_timeline_path(friend) %>
+
 </div>

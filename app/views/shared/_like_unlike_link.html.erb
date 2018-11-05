@@ -1,5 +1,17 @@
 <% if liked?(resource, current_user) %>
-  <%= link_to "Unlike", like_path(like: {user_id: current_user.id, likable_id: resource.id, likable_type: resource.class.to_s}), method: :delete %>
+
+  <%= link_to "Unlike", like_path( like: { user_id: current_user.id,
+                                        likable_id: resource.id,
+                                      likable_type: resource.class.to_s
+                                    } ),
+                                 method: :delete %>
+
 <% else %>
-  <%= link_to "Like", like_path(like: {user_id: current_user.id, likable_id: resource.id, likable_type: resource.class.to_s}), method: :post %>
+
+  <%= link_to "Like", like_path( like: { user_id: current_user.id,
+                                      likable_id: resource.id,
+                                    likable_type: resource.class.to_s
+                                  } ), 
+                               method: :post %>
+
 <% end %>

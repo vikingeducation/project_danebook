@@ -1,4 +1,5 @@
 <article>
+
   <div class="post-area post-with-comment">
     <br>
     <%= render partial: '/shared/author_thumbnail', locals: { resource: post } %>
@@ -11,6 +12,7 @@
       </div>
     <% end %>
   </div>
+
   <div class="comment-area grey-background">
     <div class="comment-header-area">
       <%= render partial: '/shared/like_unlike_link', locals: { resource: post } %>
@@ -21,4 +23,6 @@
     </div>
     <br>
     <%= render partial: 'comments/comment_area', locals: { current_user: @current_user, post: post } %>
+  </div>
+
 </article>

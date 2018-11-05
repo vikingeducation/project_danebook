@@ -1,5 +1,7 @@
 <% if current_user == user %>
+
   <%= render template: 'posts/new', locals: { user: user, post: Post.new }%>
+
 <% end %>
 
 <% unless user.posts.empty? %>

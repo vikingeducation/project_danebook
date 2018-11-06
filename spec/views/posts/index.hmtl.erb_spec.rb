@@ -10,6 +10,7 @@ describe 'posts/index.html.erb' do
     @user = user
     @user_profile = user_profile
     @post = post
+    @current_user = user
     def view.find_current_page_user
       @user
     end
@@ -17,6 +18,7 @@ describe 'posts/index.html.erb' do
       @user
     end
     controller.request.path_parameters[:user_id] = @user.id
+
   end
 
   context 'user has posts' do
@@ -41,14 +43,14 @@ describe 'posts/index.html.erb' do
     it 'has like link' do
       post = Post.create(user_id: @user.id, body: "This is a really cool post")
       render template: 'posts/index.html.erb', locals: { user: @user }
-      expect(rendered).to have_link('like')
+      expect(rendered).to have_link('Like')
     end
 
     it 'has unlike link if post previously liked' do
       post = Post.create(user_id: @user.id, body: "This is a really cool post")
       like = Like.create(user_id: @user.id, likable_id: @post.id, likable_type: 'Post')
       render template: 'posts/index.html.erb', locals: { user: @user }
-      expect(rendered).to have_link('unlike')
+      expect(rendered).to have_link('Unlike')
     end
 
   end

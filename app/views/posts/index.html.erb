@@ -1,4 +1,4 @@
-<% if current_user == user %>
+<% if @current_user == user %>
 
   <%= render template: 'posts/new', locals: { user: user, post: Post.new }%>
 
@@ -7,7 +7,7 @@
 <% unless user.posts.empty? %>
 
   <div>
-    <% user.posts.reverse_each.to_a.each do |post| %>
+    <% user.posts.order({ created_at: :desc }).each do |post| %>
       <%= render partial: 'posts/post_with_comment', locals: { post: post } %>
     <% end %>
   </div>

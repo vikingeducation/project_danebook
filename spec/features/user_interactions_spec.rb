@@ -21,14 +21,15 @@ RSpec.feature 'UserInteractions' do
 
     scenario "I want to see my timeline" do
       sign_in(user)
-      click_link "Timeline"
+      click_link  class: 'timeline-link'
+      expect(page).to have_content "Timeline"
       expect(page).to have_content "#{user.profile.name}"
     end
 
     scenario "I want to post on my timeline" do
       post = "This is my new post!!!"
       sign_in(user)
-      click_link "Timeline"
+      click_link class: "timeline-link"
       fill_in "post_body", with: post
       click_button "Submit"
       expect(page).to have_content post
@@ -48,11 +49,11 @@ RSpec.feature 'UserInteractions' do
       sign_in(user)
       new_post = create(:post, user_id: 2)
       visit '/users/2/timeline'
-      click_link "like"
-      expect(page).to have_link "unlike"
+      click_link "Like"
+      expect(page).to have_link "Unlike"
       expect(current_path).to eq('/users/2/timeline')
-      click_link "unlike"
-      expect(page).to have_link "like"
+      click_link "Unlike"
+      expect(page).to have_link "Like"
       expect(current_path).to eq('/users/2/timeline')
     end
 
@@ -62,17 +63,18 @@ RSpec.feature 'UserInteractions' do
       new_comment = create(:comment, user_id: 2, commentable_id: new_post.id, commentable_type: 'Post')
       visit '/users/2/timeline'
       within(".inner-comment-body") do
-        click_link "like"
+        click_link "Like"
       end
-      expect(page).to have_link "unlike"
+      expect(page).to have_link "Unlike"
       expect(current_path).to eq('/users/2/timeline')
-      click_link "unlike"
-      expect(page).to have_link "like"
+      click_link "Unlike"
+      expect(page).to have_link "Like"
       expect(current_path).to eq('/users/2/timeline')
     end
 
     scenario "I want to see my profile" do
       sign_in(user)
+      click_link class: "timeline-link"
       click_link "About"
       expect(page).to have_content "Basic Information"
       expect(page).to have_content "#{user.email}"

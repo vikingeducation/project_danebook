@@ -34,13 +34,13 @@ describe 'comments/index.html.erb' do
 
   it 'has like link if user has not liked comment' do
     render
-    expect(rendered).to have_link('like')
+    expect(rendered).to have_link('Like')
   end
 
   it 'has unlike link if user has previously liked comment' do
     @like = Like.create(user_id: @user.id, likable_id: @comments.first.id, likable_type: 'Comment')
     render
-    expect(rendered).to have_link('unlike')
+    expect(rendered).to have_link('Unlike')
   end
 
 end

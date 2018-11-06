@@ -22,6 +22,7 @@ describe 'CommentsRequests' do
 
     describe 'GET #new' do
       it 'works as normal' do
+        
       end
     end
 

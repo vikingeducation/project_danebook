@@ -2,9 +2,9 @@ class CommentsController < ApplicationController
 
   before_action :set_user
   before_action :require_login, only: [:create, :destroy]
-  before_action :set_resource
 
   def index
+    @resource = params[:comment][:commentable_type].constantize.find(params[:comment][:commentable_id].to_i)
     @comments = @resource.comments
   end
 
@@ -40,10 +40,6 @@ class CommentsController < ApplicationController
   end
 
 private
-
-  def set_resource
-    @resource = params[:comment][:commentable_type].constantize.find(params[:comment][:commentable_id].to_i)
-  end
 
   def whitelisted_comment_params
     params.require(:comment).permit( :body,

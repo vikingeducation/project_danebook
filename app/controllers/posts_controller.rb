@@ -32,7 +32,7 @@ class PostsController < ApplicationController
       flash[:danger] = "You can NOT delete other user's posts"
       redirect_back(fallback_location: user_timeline_path(current_user))
     else
-      if @post.delete
+      if @post.destroy
         flash[:success] = "Post has been successfully deleted"
       else
         flash[:danger] = "Unable to delete post"

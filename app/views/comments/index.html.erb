@@ -18,11 +18,11 @@
 
     <%= render partial: 'shared/delete_link', locals: { resource: comment,
                                                     current_user: current_user,
-                                                       link_path: comment_path(current_user, comment) } %>
+                                                       link_path: comment_path(comment) } %>
     <p>
       <%= list_likes(comment, current_user) %>
     </p>
 
   </div>
-  
+
 <% end %>

@@ -30,7 +30,7 @@ class CommentsController < ApplicationController
     if @comment.user != current_user
       flash[:danger] = "You can NOT delete other user's comments"
     else
-      if @comment.delete
+      if @comment.destroy
         flash[:success] = "Comment has been successfully deleted"
       else
         flash[:danger] = "Unable to delete comment"

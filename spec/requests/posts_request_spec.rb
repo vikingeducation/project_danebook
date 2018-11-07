@@ -55,5 +55,5 @@ describe 'PostsRequests' do
     end
 
   end
-  
+
 end

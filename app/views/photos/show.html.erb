@@ -36,15 +36,15 @@
           </div>
           <%= render partial: 'shared/like_unlike_link', locals: { current_user: @current_user, resource: @photo, } %>
           <p><%= list_likes(@photo, @current_user) %></p>
-          <%= render template: '/comments/new', locals: { current_user: @current_user, comment: Comment.new, commentable_id: @photo.id, commentable_type: 'Photo' } %>
+          <%= render template: 'comments/new', locals: { current_user: @current_user, comment: Comment.new, commentable_id: @photo.id, commentable_type: 'Photo' } %>
         </div>
         <% unless @photo.comments.empty? %>
           <div class="photo-comment-area">
-            <%= render template: '/comments/index', locals: { comments: @photo.comments } %>
+            <%= render template: 'comments/index', locals: { comments: @photo.comments } %>
           </div>
         <% end %>
       </div>
-      
+
     </div>
 
   </div>

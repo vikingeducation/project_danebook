@@ -1,12 +1,12 @@
 Hello, <%= @user.profile.name %>!
 
-  You have a new comment from <%= @commenting_user.profile.name %>
+  You have a new comment from <%= @commenting_user.profile.name %>.
 
   <%= @commenting_user.profile.name %> said on <%= @comment.created_at.strftime("%B %d, %Y")%>:
 
   "<%= @comment.body %>"
 
-  <%= link_to "Click here to see comment", "#" %>
+  <%= link_to "Click here to see comment", @comment.commentable_type == "Post" ? user_post_url(@user, Post.find(@comment.commentable_id)) : user_photo_url(@user, Photo.find(@comment.commentable_id)) %>
 
 
 Sincerly,
@@ -14,3 +14,7 @@ Sincerly,
 Danebook
 
 <%= link_to "unsubscribe", "#" %>
+
+Danebook, Inc.
+123 Fake Street
+Fake Town, USA

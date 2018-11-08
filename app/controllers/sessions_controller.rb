@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
 
   before_action :set_user, only: [ :new, :create ]
 
-  
+
   def new
   end
 
@@ -11,11 +11,10 @@ class SessionsController < ApplicationController
     if @user && @user.authenticate(params[:password])
       if params[:remember_me]
         permanent_sign_in(@user)
-        flash[:success] = "User Signed in Successfully!"
       else
         sign_in(@user)
-        flash[:success] = "User Signed in Successfully!"
       end
+      flash[:success] = "User Signed in Successfully!"
       redirect_to user_newsfeed_path(@user)
     else
       flash[:danger] = "Unable to sign in - Please check your email and password."

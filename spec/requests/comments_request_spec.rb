@@ -9,7 +9,7 @@ describe 'CommentsRequests' do
     let(:user){ create(:user) }
     let(:user_profile){ create(:profile, user_id: user.id) }
     let(:user_post){ create(:post, user_id: user.id) }
-    let(:user_comment){ create(:comment, commentable_id: user_post.id) }
+    let(:user_comment){ create(:comment, commentable_id: user_post.id, user: user) }
 
     before :each do
       post session_path, params: { email: user.email, password: user.password }
@@ -43,7 +43,7 @@ describe 'CommentsRequests' do
         expect(response).to redirect_to user_timeline_path(user)
       end
 
-      it 'for another user does not delete comment, creats flash message and redirects' do
+      it 'for another user does not delete comment, creates flash message and redirects' do
         another_user = create(:user)
         user_comment
         post session_path, params: { email: another_user.email, password: another_user.password }
@@ -63,7 +63,8 @@ describe 'CommentsRequests' do
     let(:user){ create(:user) }
     let(:user_profile){ create(:profile, user_id: user.id) }
     let(:user_post){ create(:post, user_id: user.id) }
-    let(:user_comment){ create(:comment, commentable_id: user_post.id) }
+    let(:user_comment){ create(:comment, commentable_id: user_post.id, user: user) }
+    let(:another_user){ create(:user) }
 
     describe 'POST #create' do
 
@@ -81,11 +82,18 @@ describe 'CommentsRequests' do
 
     describe 'DELETE #destroy' do
 
-      it 'does not destroy comment' do
+      before do
+        user_comment
+      end
 
+      it 'does not destroy comment' do
+        expect { delete comment_path(user_comment) }.to change(Comment, :count).by(0)
       end
 
       it 'redirects you to homepage and creates flash message' do
+        delete comment_path(user_comment)
+        expect(response).to redirect_to root_path
+        expect(flash[:danger]).not_to be_nil
       end
 
     end

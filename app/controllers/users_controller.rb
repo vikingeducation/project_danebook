@@ -30,7 +30,7 @@ class UsersController < ApplicationController
       redirect_to user_profile_path(@current_user)
     else
       flash[:danger] = "Profile NOT updated"
-      render "profile/edit"
+      render "profiles/edit"
     end
   end
 

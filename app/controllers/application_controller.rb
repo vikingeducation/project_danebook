@@ -52,7 +52,7 @@ private
 
 
   def find_current_page_user
-    User.find(params[:user_id].to_i)
+    User.find(params[:user_id].to_i)  
   end
   helper_method :find_current_page_user
 

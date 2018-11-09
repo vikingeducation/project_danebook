@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resource :session, only: [:create, :destroy]
   get 'login' => 'sessions#new'
   delete 'logout' => 'sessions#destroy'
-  resources :users do
+  resources :users, except: [:update] do
     get '/home', to: 'users/static_pages#home'
     get '/timeline', to: 'users#timeline', as: '/timeline'
     get '/friends', to: 'users#friends', as: '/friends'
@@ -13,7 +13,11 @@ Rails.application.routes.draw do
     resources :posts, except: [ :edit, :update]
     resources :photos, except: [:edit, :update]
   end
+
+  resources :users, only: [:update], param: :user_id
+
   resource :like, only: [:create, :destroy]
+
   resources :comments, except: [:show]
 
   resource :friendship, only: [:create, :destroy]

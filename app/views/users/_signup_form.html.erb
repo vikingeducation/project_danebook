@@ -3,7 +3,7 @@
   <h1 id="main-action">Sign up</h1>
 
   <div class="form-elements">
-    <%= user_fields.fields_for :profile do |profile_fields| %>
+    <%= user_fields.fields_for :profile, @user.build_profile do |profile_fields| %>
 
     <div class="form-group">
       <%= display_form_errors(@user.profile, :first_name) %>

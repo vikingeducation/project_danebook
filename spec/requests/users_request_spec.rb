@@ -5,7 +5,9 @@ describe 'UsersRequests' do
   describe 'User Access' do
 
       let(:new_user) { create(:user) }
+      let(:user_profile) { create(:profile, user: new_user) }
       let(:another_user) { create(:user) }
+      let(:another_profile) { create(:profile, user: another_user) }
 
       describe 'POST #create' do
 
@@ -30,6 +32,15 @@ describe 'UsersRequests' do
         it 'sets an authorization token' do
           expect(response.cookies["auth_token"]).not_to be_nil
         end
+
+        it 'creates a new profile for user' do
+          expect { post users_path, params: {
+                                        user: attributes_for(:user, user_id: new_user.id,
+                                                             profile: attributes_for(:profile, profile_id: user_profile.id))
+                                              }
+                                            }.to change(Profile, :count).by(1)
+
+        end
       end
 
       describe 'PATCH #update' do
@@ -50,8 +61,9 @@ describe 'UsersRequests' do
         end
 
         it 'renders #edit if not successful' do
-          patch user_path(new_user), params: { user: attributes_for(:user, email: "") }
-          expect(response).to redirect_to edit_user_profile_path(new_user)
+
+          patch user_path(new_user), params: { user: attributes_for(:user, user_id: new_user.id, email: "", profile: user_profile)  }
+          expect(response).to render_template('profiles/edit')
         end
 
         it 'creates flash message when successful' do
@@ -60,7 +72,7 @@ describe 'UsersRequests' do
         end
 
         it 'creates flash message when not successful' do
-          patch user_path(new_user), params: { user: attributes_for(:user, email: "") }
+          patch user_path(new_user), params: { user: attributes_for(:user, email: "", profile: user_profile) }
           expect(flash[:danger]).not_to be_nil
         end
 

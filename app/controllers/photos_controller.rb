@@ -16,7 +16,7 @@ class PhotosController < ApplicationController
 
   def create
     if params[:photo].nil?
-      flash[:danger] = "No photo selected - NO PHOTO UPLOADED"
+      flash[:danger] = "Unable to upload photo - NO PHOTO SELECTED"
       redirect_to new_user_photo_path(@current_user)
     else
       @photo = @current_user.photos.build(whitelisted_photo_params)
@@ -24,7 +24,7 @@ class PhotosController < ApplicationController
         flash[:success] = "Success! You've successfully uploaded a photo!"
         redirect_to user_photo_path(@current_user, @photo)
       else
-        flash[:danger] = "Unable to upload your photo"
+        flash[:danger] = "Unable to upload your photo - #{@photo.errors[:data].first}"
         render :new
       end
     end

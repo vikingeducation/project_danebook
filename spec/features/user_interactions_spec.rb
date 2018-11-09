@@ -6,7 +6,7 @@ RSpec.feature 'UserInteractions' do
   let(:user) { create(:user, id: 1) }
   let(:profile) { create(:profile, user_id: 1) }
   let(:second_user) { create(:user, id: 2) }
-  let(:second_profile) { create(:profile, user_id: 2)}
+  let(:second_profile) { create(:profile, user_id: 2, first_name: "Bob", last_name: "Bobbert")}
   let(:users){ create_list(:profile, 3, first_name: "Zachariah")}
 
   before do

@@ -3,26 +3,28 @@
 <div id="basic-info-table">
 
   <div class="form-group">
-    <%= display_form_errors(profile, :birthday) %>
+
     <%= profile_fields.label :birthday %>
+    <p class="error-msg"><%= display_form_errors(profile, :birthday) %></p>
     <%= profile_fields.date_field :birthday %>
   </div>
 
   <div class="form-group">
-    <%= display_form_errors(profile, :college) %>
     <%= profile_fields.label :college %>
+    <p class="error-msg"><%= display_form_errors(profile, :college) %></p>
+
     <%= profile_fields.text_field :college %>
   </div>
 
   <div class="form-group">
-    <%= display_form_errors(profile, :hometown) %>
     <%= profile_fields.label :hometown %>
+    <p class="error-msg"><%= display_form_errors(profile, :hometown) %></p>
     <%= profile_fields.text_field :hometown %>
   </div>
 
   <div class="form-group">
-    <%= display_form_errors(profile, :current_town) %> 
     <%= profile_fields.label :current_town %>
+    <p class="error-msg"><%= display_form_errors(profile, :current_town) %></p>
     <%= profile_fields.text_field :current_town %>
   </div>
 

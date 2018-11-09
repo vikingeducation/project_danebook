@@ -19,8 +19,8 @@ class PostsController < ApplicationController
       flash[:success] = "Congrats! You've successfully created a post"
       redirect_to user_timeline_path(current_user)
     else
-      flash[:danger] = "Unable to create your post"
-      render :index
+      flash[:danger] = "Unable to create your post - #{:body.to_s.titleize} #{@post.errors[:body].first}"
+      redirect_to user_timeline_path(current_user)
     end
   end
 

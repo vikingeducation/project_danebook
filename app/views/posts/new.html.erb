@@ -4,16 +4,16 @@
 
     <div class="outer-post-area">
 
-      <%= form_for post, url: user_posts_path do |post| %>
+      <%= form_for post, url: user_posts_path do |p| %>
         <div class="make-new-post">
-          <%= post.text_area :body, placeholder: "Write your post here..." %>
+          <%= p.text_area :body, placeholder: "Write your post here..." %>
         </div>
     </div>
 
     <div class="submit-post-button-area grey-background" align="right">
-      <%= post.submit "Submit", class: "submit-post-button" %>
+      <%= p.submit "Submit", class: "submit-post-button" %>
     </div>
-    
+
     <% end %>
 
 </article>

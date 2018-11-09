@@ -20,7 +20,7 @@ class CommentsController < ApplicationController
       end
       flash[:success] = "Comment saved!"
     else
-      flash[:danger] = "Unable to save your comment"
+      flash[:danger] = "Unable to save your comment - #{:body.to_s.titleize} #{@comment.errors[:body].first}"
     end
     redirect_back(fallback_location: user_timeline_path(User.find(params[:comment][:user_id].to_i)))
   end

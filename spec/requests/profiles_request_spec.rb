@@ -3,6 +3,7 @@ require 'rails_helper'
 describe 'ProfilesRequests' do
 
   let(:user){ create(:user) }
+  let(:another_user){ create(:user) }
 
   describe 'User Access' do
 
@@ -32,7 +33,7 @@ describe 'ProfilesRequests' do
         get edit_user_profile_path(other_user)
         expect(response).to have_http_status(:redirect)
       end
-      
+
     end
 
 
@@ -40,6 +41,7 @@ describe 'ProfilesRequests' do
 
       before :each do
         user
+        another_user
         post session_path, params: { email: user.email, password: user.password }
         allow_any_instance_of(ApplicationController).to receive(:find_current_page_user).and_return(user)
       end
@@ -50,7 +52,7 @@ describe 'ProfilesRequests' do
         let(:words_this_guy_lives_by){ "Jo Mama" }
 
         before :each do
-          patch user_profile_path(users_profile), params: { profile: attributes_for(:profile, words_to_live_by: words_this_guy_lives_by)}
+          patch user_profile_path(users_profile.user_id), params: { profile: attributes_for(:profile, words_to_live_by: words_this_guy_lives_by)}
         end
 
         it 'actually updates profile' do
@@ -78,21 +80,44 @@ describe 'ProfilesRequests' do
         let(:new_bday){ nil }
 
         it 'does not update attributes' do
-          patch user_profile_path(users_profile), params: { profile: attributes_for(:profile, birthday: new_bday) }
+          patch user_profile_path(users_profile.user_id), params: { profile: attributes_for(:profile, birthday: new_bday) }
           expect(users_profile.birthday).to eq(user.profile.birthday)
         end
 
         it 'creates flash message' do
-          patch user_profile_path(users_profile), params: { profile: attributes_for(:profile, birthday: nil) }
+          patch user_profile_path(users_profile.user_id), params: { profile: attributes_for(:profile, birthday: nil) }
           expect(flash[:danger]).to_not be_nil
         end
 
         it 're-renders form' do
-          patch user_profile_path(users_profile), params: { profile: attributes_for(:profile, birthday: nil) }
+          patch user_profile_path(users_profile.user_id), params: { profile: attributes_for(:profile, birthday: nil) }
           expect(response).to render_template(:edit)
         end
 
       end
+
+      context 'for another user' do
+
+        let(:another_profile){ create(:profile, user_id: another_user.id) }
+
+        before do
+          another_user
+          another_profile
+        end 
+
+        it 'does not allow you to update' do
+          patch user_profile_path(another_profile.user_id), params: { profile: attributes_for(:profile) }
+          expect(response).to_not be_success
+        end
+
+        it 'creates flash message and redirects back to profile' do
+          patch user_profile_path(another_profile.user_id), params: { profile: attributes_for(:profile) }
+          expect(flash[:danger]).not_to be_nil
+          expect(response).to redirect_to user_profile_path(another_user)
+        end
+
+      end
+
     end
 
   end

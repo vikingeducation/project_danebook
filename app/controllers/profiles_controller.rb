@@ -18,16 +18,16 @@ class ProfilesController < ApplicationController
   end
 
 
-  def update
-    @profile = @current_user.profile
-    if @profile.update(profile_params)
-      flash[:success] = "Profile successfully updated!"
-      redirect_to user_profile_path
-    else
-      flash[:danger] = "Unable to update Profile"
-      render :edit
-    end
-  end
+  # def update
+  #   @profile = @current_user.profile
+  #   if @profile.update(profile_params)
+  #     flash[:success] = "Successfully updated profile!"
+  #     redirect_to user_profile_path(@current_user)
+  #   else
+  #     flash[:danger] = "Unable to update Profile"
+  #     render action: :edit
+  #   end
+  # end
 
 private
 

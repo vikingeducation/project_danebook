@@ -37,7 +37,6 @@ class CommentsController < ApplicationController
       end
     end
     redirect_back(fallback_location: user_timeline_path(current_user))
-
   end
 
 private

@@ -5,7 +5,7 @@ class Profile < ApplicationRecord
 
   # validations
   validates :user, :birthday, :first_name, :last_name, presence: true, allow_nil: false
-  validates :first_name, :last_name, length: { in: 3..30 }
+  validates :first_name, :last_name, length: { in: 2..30 }
 
   def name
     first_name + " " + last_name

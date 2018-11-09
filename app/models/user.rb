@@ -4,7 +4,7 @@ class User < ApplicationRecord
 
   # creates profile upon sign up
   has_one :profile, inverse_of: :user, autosave: true, dependent: :destroy
-  accepts_nested_attributes_for :profile, allow_destroy: true, reject_if: :all_blank
+  accepts_nested_attributes_for :profile, allow_destroy: true, reject_if: :all_blank, update_only: true
 
   # associations
   has_many :posts, dependent: :destroy

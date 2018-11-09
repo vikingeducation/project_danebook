@@ -17,7 +17,7 @@ class UsersController < ApplicationController
       redirect_to user_timeline_path(@user)
     else
       flash[:danger] = "Unable to Create New User"
-      redirect_to root_path
+      render action: :new
     end
   end
 
@@ -29,8 +29,8 @@ class UsersController < ApplicationController
       flash[:success] = "Profile successfully updated!"
       redirect_to user_profile_path(@current_user)
     else
-      flash[:danger] = "Unable to update Profile"
-      redirect_to edit_user_profile_path(@current_user)
+      flash[:danger] = "Profile NOT updated"
+      render "profile/edit"
     end
   end
 
@@ -49,7 +49,7 @@ class UsersController < ApplicationController
   end
 
   def destroy
-    @user = User.find(params[:user_id])
+    @user = User.find(params[:id])
     if @user == @current_user
       if @user.destroy
         flash[:success] = "Account DELETED (this action cannot be undone)"
@@ -80,7 +80,7 @@ private
                                                        :current_town,
                                                        :telephone,
                                                        :about_me,
-                                                       :words_to_live_by, 
+                                                       :words_to_live_by,
                                                        :_destroy
                                                        ]
                                                      )

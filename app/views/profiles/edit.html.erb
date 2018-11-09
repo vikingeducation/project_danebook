@@ -21,7 +21,8 @@
           <div class="col-md-6">
 
             <%= render partial: 'profiles/about/edit/leftside', locals: { profile_fields: profile_fields,
-                                                                             user_fields: user_fields } %>
+                                                                             user_fields: user_fields,
+                                                                                 profile: @current_user.profile } %>
           </div>
 
           <div class="col-md-6 col-offset-6 bottom-spacer">

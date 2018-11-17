@@ -16,7 +16,7 @@ class CommentsController < ApplicationController
     @comment = Comment.new(whitelisted_comment_params)
     if @comment.save
       unless @comment.user_id == @comment.commentable_type.constantize.find(@comment.commentable_id).user.id
-        Comment.delay.send_comment_notification(@comment.id)
+        Comment.delay.send_comment_notification(@comment.id) unless on_do_not_email_list?(@comment)
       end
       flash[:success] = "Comment saved!"
     else
@@ -47,6 +47,10 @@ private
                                      :commentable_id,
                                      :commentable_type
                                    )
+  end
+
+  def on_do_not_email_list?(comment)
+    User.find(comment.commentable_type.constantize.find(comment.commentable_id).user.id).unsubscribe 
   end
 
 end

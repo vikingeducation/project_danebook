@@ -1,19 +1,20 @@
 <article class="post-copied">
 
-  <h3 class="grey-background">Post</h3>
+  <h3 class="grey-background">
+    Post
+  </h3>
 
-    <div class="outer-post-area">
+  <div class="outer-post-area">
+    <%= form_for post, url: user_posts_path do |p| %>
+      <div class="make-new-post">
+        <%= p.text_area :body, placeholder: "Write your post here..." %>
+      </div>
+  </div>
 
-      <%= form_for post, url: user_posts_path do |p| %>
-        <div class="make-new-post">
-          <%= p.text_area :body, placeholder: "Write your post here..." %>
-        </div>
-    </div>
+  <div class="submit-post-button-area grey-background" align="right">
+    <%= p.submit "Submit", class: "submit-post-button" %>
+  </div>
 
-    <div class="submit-post-button-area grey-background" align="right">
-      <%= p.submit "Submit", class: "submit-post-button" %>
-    </div>
-
-    <% end %>
+  <% end %>
 
 </article>

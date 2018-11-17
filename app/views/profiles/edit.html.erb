@@ -29,6 +29,8 @@
 
             <%= render partial: 'profiles/about/edit/rightside', locals: { profile_fields: profile_fields,
                                                                                   profile: @current_user.profile } %>
+
+            <%= link_to "Delete Account? or Unsubscribe to Email", user_unsubscribe_or_delete_path(@current_user) %>  
           </div>
 
         <% end %>

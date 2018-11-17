@@ -21,7 +21,7 @@
           <tr>
             <td class="link-wrapper empty"></td>
             <td class="first-link link-wrapper timeline-link <%= add_gray_background_if(user_timeline_path) %>">
-              <%= link_to "Timeline", user_timeline_path, class: "link" %>
+              <%= link_to "Timeline", user_timeline_path, data: { turbolinks: false }, class: "link" %>
             </td>
             <td class="link-wrapper about-link <%= add_gray_background_if(user_profile_path) %>">
               <%= link_to "About", user_profile_path, class: "link" %>

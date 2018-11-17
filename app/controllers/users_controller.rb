@@ -48,6 +48,19 @@ class UsersController < ApplicationController
   def newsfeed
   end
 
+  def unsubcribe_or_delete
+  end
+
+  def unsubscribe
+    if @current_user.update(user_params )
+      flash[:success] = "You have been put on a DO NOT EMAIL list"
+      redirect_to user_profile_path(@current_user)
+    else
+      flash[:danger] = "Unable to put you on DO NOT EMAIL list, please contact admin"
+      render :unsubscribe
+    end
+  end
+
   def destroy
     @user = User.find(params[:id])
     if @user == @current_user
@@ -70,6 +83,7 @@ private
     params.require(:user).permit(:email,
                                  :password,
                                  :password_confirmation,
+                                 :unsubscribe,
                                  profile_attributes: [ :id,
                                                        :last_name,
                                                        :first_name,

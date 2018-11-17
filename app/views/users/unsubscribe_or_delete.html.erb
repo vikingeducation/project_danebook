@@ -1,0 +1,34 @@
+<main>
+
+  <%= render partial: 'profiles/profile_header_and_links', locals: { user: @current_user } %>
+
+  <div class="container">
+
+    <div class="row">
+
+      <header class="bar">
+        <h1 class="delete-title">Destructive Account Actions</h1>
+      </header>
+
+    </div>
+
+    <div class="row info-section">
+
+      <div class="col-xs-1">
+      </div>
+
+      <div class="col-xs-5 friend-summary">
+        <%= render partial: 'delete_account', locals: { user: @current_user } %>
+      </div>
+
+      <div class="col-xs-5 friend-summary">
+        <%= render partial: 'unsubscribe_from_email', locals: { user: @current_user } %> 
+      </div>
+
+      <div class="col-xs-1">
+      </div>
+
+    </div>
+
+  </div>
+</main>

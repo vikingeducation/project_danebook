@@ -9,6 +9,8 @@ Rails.application.routes.draw do
     get '/timeline', to: 'users#timeline', as: '/timeline'
     get '/friends', to: 'users#friends', as: '/friends'
     get '/newsfeed', to: 'users#newsfeed', as: '/newsfeed'
+    get '/unsubscribe_or_delete', to: 'users#unsubscribe_or_delete', as: '/unsubscribe_or_delete' 
+    patch '/unsubscribe', to: 'users#unsubscribe', as: '/unsubscribe'
     resource :profile, only: [:show, :edit, :update, :create]
     resources :posts, except: [ :edit, :update]
     resources :photos, except: [:edit, :update]

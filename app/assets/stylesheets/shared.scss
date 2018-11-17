@@ -67,14 +67,16 @@ $light-grey: #DDDDDD;
 
 .about-title,
 .photos-title,
-.search-results-title{
+.search-results-title,
+.delete-title {
 	width: 96%;
 }
 
 .about-title,
 .friends-title,
 .photos-title,
-.search-results-title {
+.search-results-title,
+.delete-title {
 	text-align: center;
 	font-size: 30px;
 	margin: 5px 0px;

@@ -10,8 +10,8 @@
   <% end %>
 
   <div>
-    <%= link_to current_user.profile.name, user_timeline_path(current_user), class: "far-right white-text"%> |
+    <%= link_to current_user.profile.name, user_timeline_path(@current_user), data: { turbolinks: false }, class: "far-right white-text"%> |
     <%= link_to "Logout", logout_path, method: "DELETE", class: "far-right white-text" %>
   </div>
-  
+
 </div>

@@ -18,6 +18,12 @@
 
       <section class="col-md-8" id="right-section">
 
+        <% if @current_user == find_current_page_user %>
+
+          <%= render template: 'posts/new', locals: { user: find_current_page_user, post: Post.new } %>
+
+        <% end %>
+
         <%= render template: 'posts/index', locals: { user: find_current_page_user } %>
 
       </section>

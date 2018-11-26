@@ -6,8 +6,8 @@ class Comment < ApplicationRecord
   validates :user, :commentable, presence: true
   validates :body, presence: true, length: { minimum: 2 }
 
-  has_many :likes, as: :likable
-  has_many :user_likes, through: :likes, source: :user
+  has_many :likes, as: :likable, dependent: :destroy
+  has_many :user_likes, through: :likes, source: :user, dependent: :destroy 
 
 
   private

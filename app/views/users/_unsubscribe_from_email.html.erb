@@ -1,16 +1,16 @@
 <article>
   <h4>
-    UNSUBSCRIBE FROM EMAIL
+    <%= action.upcase %>
   </h4>
   <p>
-    By clicking below you will be removed from the email list. You will no longer receive any email updates. This action cannot be undone.
+    <%= description %> 
   </p>
 
   <%= form_for user, url: user_unsubscribe_path(user), method: :patch do |f| %>
-    <%= f.hidden_field :unsubscribe, value: true %>
-    <%= f.submit "Unsubscribe", class: "btn btn-primary",
+    <%= f.hidden_field :unsubscribe, value: value %>
+    <%= f.submit action, class: "btn btn-primary",
                                  data: {
-                                   confirm: "Are you sure you want to unsubscribe from email? This action cannot be undone."
+                                   confirm: confirm_msg
                                  } %>
   <% end %>
 

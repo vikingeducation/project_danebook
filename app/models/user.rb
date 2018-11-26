@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
   has_many :photos, dependent: :destroy
-  has_many :likes, as: :likable, dependent: :destroy
+  has_many :likes, dependent: :destroy
 
   # self-referencing / friending functionality
   has_many :frienders, through: :friender_friendships, source: :friender, dependent: :destroy

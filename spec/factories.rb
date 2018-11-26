@@ -51,4 +51,10 @@ FactoryGirl.define do
   end
 
 
+  factory :like do
+    user
+    likable_id { post.id }
+    likable_type { "Post" }
+  end
+
 end

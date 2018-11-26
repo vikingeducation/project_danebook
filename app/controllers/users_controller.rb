@@ -53,12 +53,13 @@ class UsersController < ApplicationController
 
   def unsubscribe
     if @current_user.update(user_params )
-      flash[:success] = "You have been put on a DO NOT EMAIL list"
-      redirect_to user_profile_path(@current_user)
-    else
-      flash[:danger] = "Unable to put you on DO NOT EMAIL list, please contact admin"
-      render :unsubscribe
-    end
+      if @current_user.unsubscribe == true
+        flash[:danger] = "You have been put on a DO NOT EMAIL list"
+      else
+        flash[:success] = "You've been removed from the DO NOT EMAIL list"
+      end
+    end 
+    redirect_back fallback_location: user_timeline_path(@current_user)
   end
 
   def destroy

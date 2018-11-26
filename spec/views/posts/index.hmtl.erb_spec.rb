@@ -28,11 +28,6 @@ describe 'posts/index.html.erb' do
       expect(rendered).to match(@user_profile.name)
     end
 
-    it 'renders new post form' do
-      render template: 'posts/index.html.erb', locals: { user: @user }
-      expect(rendered).to match('<form class="new_post"')
-    end
-
     it 'lists all users posts' do
       user_posts = create_list(:post, 5, user_id: @user.id)
       render template: 'posts/index.html.erb', locals: { user: @user }
@@ -54,18 +49,5 @@ describe 'posts/index.html.erb' do
     end
 
   end
-
-  context 'user has no posts' do
-
-    @post = nil
-
-    it 'still renders new post form if user has no posts' do
-      render template: 'posts/index.html.erb', locals: { user: @user }
-      expect(rendered).to match('<form class="new_post"')
-      expect(rendered).not_to match('<div class="post post-with-comment">')
-    end
-
-  end
-
 
 end

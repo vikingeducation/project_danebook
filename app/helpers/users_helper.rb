@@ -52,8 +52,5 @@ module UsersHelper
     active_friends
   end
 
-  def profile_photo_present?(user)
-    user.profile.profile_photo_id
-  end
 
 end

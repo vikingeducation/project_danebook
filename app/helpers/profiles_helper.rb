@@ -5,5 +5,9 @@ module ProfilesHelper
     current_page?(current_page) ? 'link-background' : ''
   end
 
+  def profile_photo_present?(user)
+    user.profile.profile_photo_id.nil? ? false : true 
+  end
+
 
 end

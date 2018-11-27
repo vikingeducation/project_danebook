@@ -21,6 +21,10 @@
 .byebug_history
 
 
-/.config/secrets.yml
+/config/secrets.yml
 
 /public/system
+
+/config/application.yml
+
+.env

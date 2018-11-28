@@ -4,7 +4,7 @@
 
     <article class="top-main-section">
 
-      <% if find_current_page_user.profile.cover_photo_id %>
+      <% if find_current_page_user.profile.cover_photo_id.present? && Photo.exists?(find_current_page_user.profile.cover_photo_id) %>
         <div id="cover-photo">
           <%= image_tag Photo.find(find_current_page_user.profile.cover_photo_id).photo.url(:large), class: "cover-photo-image" %>
         </div>
@@ -42,7 +42,7 @@
 
       <div class="name-pic-block">
 
-        <% if find_current_page_user.profile.profile_photo_id %>
+        <% if find_current_page_user.profile.profile_photo_id && Photo.exists?(find_current_page_user.profile.profile_photo_id) %>
           <div id="profile-pic">
             <%= image_tag Photo.find(find_current_page_user.profile.profile_photo_id).photo.url(:medium) %>
           </div>

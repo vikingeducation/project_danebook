@@ -22,7 +22,11 @@
           <div class="row" id="search-result-cell">
 
             <div class="col-md-4 cell-columns">
-              <%= render partial: 'shared/photo_or_no_photo', locals: { user: profile.user, image_size: :medium, file: 'no_photo_medium.jpg' } %>
+              <%= render partial: 'shared/photo_or_no_photo', locals: { user: profile.user,
+                                                                  image_size: :medium,
+                                                                        file: 'no_photo_medium.jpg',
+                                                                        size: '200x200'
+                                                                      } %>
             </div>
 
             <div class="col-md-5 cell-columns about-friend-column">
@@ -42,7 +46,7 @@
         <% end %>
 
       </div>
-      
+
       <% end %>
 
     </div>

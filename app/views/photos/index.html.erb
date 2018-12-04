@@ -36,7 +36,7 @@
         <div class="row photos-border photo-row-<%=@grouped_photos.index(group)%>">
           <% group.each do |photo| %>
             <div class="col-md-3 img-wrapper">
-              <%= link_to image_tag(Photo.find(photo).photo.url(:medium)), user_photo_path(photo.user, photo), class: "image" %>
+              <%= link_to image_tag(Photo.find(photo).photo.url(:medium), size: '200x200'), user_photo_path(photo.user, photo), class: "image" %>
               <div class="on-hover-description">
                 <div class="text">Updated on <%= photo.updated_at.strftime('%B %e, %Y') %></div>
               </div>

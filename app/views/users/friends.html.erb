@@ -19,7 +19,7 @@
 
         <div class="find-friend-link-section">
           <% if user == @current_user %>
-            <%= link_to "Find Friends", "#" %>
+            <%= link_to "Find Friends", users_path %>
           <% else %>
             <p>This user has no friends</p>
             <p>Be this user's first friend</p>

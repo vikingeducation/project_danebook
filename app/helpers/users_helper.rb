@@ -33,21 +33,17 @@ module UsersHelper
     posts.flatten.empty? ? nil : posts.flatten.sort_by(&:updated_at).reverse
   end
 
-  def active_user(id)
-    if Post.where("updated_at >= ? AND user_id = ?", 7.days.ago, id) ||
-       Comment.where("updated_at >=? AND user_id = ?", 7.days.ago, id) ||
-       Photo.where("updated_at >=? AND user_id =?", 7.days.ago, id)
-      id
-    else
-      nil
-    end
+  def active_user(user_id)
+    Post.exists?(["updated_at >= ? AND user_id = ?", 7.days.ago, user_id])
   end
 
   def recently_active_friends(user)
     friends = friend_list(user)
     active_friends = []
-    friends.each do |id|
-      active_friends << active_user(id) unless nil
+    friends.each do |friend_id|
+      if active_user(friend_id)
+        active_friends << friend_id
+      end
     end
     active_friends
   end

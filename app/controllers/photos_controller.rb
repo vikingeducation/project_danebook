@@ -51,7 +51,7 @@ class PhotosController < ApplicationController
 
   def whitelisted_photo_params
     params.fetch(:photo).permit( :user_id,
-                                 :data
+                                 :photo
                                )
   end
 

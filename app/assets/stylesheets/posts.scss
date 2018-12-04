@@ -21,3 +21,8 @@ $main-border: 1px solid black;
 .submit-post-button-area {
   margin-bottom: 20px;
 }
+
+.new-post-title {
+  border-left: $main-border;
+  border-right: $main-border;
+}

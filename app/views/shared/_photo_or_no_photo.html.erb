@@ -1,6 +1,6 @@
 <% if profile_photo_present?(user) && Photo.exists?(user.profile.profile_photo_id) %>
 
-  <%= image_tag Photo.find(user.profile.profile_photo_id).photo.url(image_size) %>
+  <%= image_tag Photo.find(user.profile.profile_photo_id).photo.url(image_size), size: size %>
 
 <% else %>
 

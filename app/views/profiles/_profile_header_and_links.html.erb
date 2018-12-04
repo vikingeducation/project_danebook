@@ -44,7 +44,7 @@
 
         <% if find_current_page_user.profile.profile_photo_id && Photo.exists?(find_current_page_user.profile.profile_photo_id) %>
           <div id="profile-pic">
-            <%= image_tag Photo.find(find_current_page_user.profile.profile_photo_id).photo.url(:medium) %>
+            <%= image_tag Photo.find(find_current_page_user.profile.profile_photo_id).photo.url(:medium), size: '200x200' %>
           </div>
         <% else %>
           <div id="empty-profile-pic">

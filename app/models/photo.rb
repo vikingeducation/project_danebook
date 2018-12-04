@@ -10,7 +10,7 @@ class Photo < ApplicationRecord
   has_many :user_likes, through: :likes, source: :user, dependent: :destroy
 
   has_many :comments, as: :commentable, dependent: :destroy
-  has_many :user_comments, through: :comments, source: :user, dependent: :destroy 
+  has_many :user_comments, through: :comments, source: :user, dependent: :destroy
 
 
 end

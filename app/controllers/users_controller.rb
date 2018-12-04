@@ -58,7 +58,7 @@ class UsersController < ApplicationController
       else
         flash[:success] = "You've been removed from the DO NOT EMAIL list"
       end
-    end 
+    end
     redirect_back fallback_location: user_timeline_path(@current_user)
   end
 

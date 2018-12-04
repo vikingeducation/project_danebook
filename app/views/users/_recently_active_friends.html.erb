@@ -18,7 +18,11 @@
         <div class="col-md-3">
           <%= link_to user_timeline_path(friend) do %>
 
-            <%= render partial: 'shared/photo_or_no_photo', locals: { user: friend, image_size: :thumb, file: 'no_photo_thumbnail.jpg' } %>
+            <%= render partial: 'shared/photo_or_no_photo', locals: { user: friend,
+                                                                image_size: :thumb,
+                                                                      file: 'no_photo_thumbnail.jpg',
+                                                                      size: '50x50'
+                                                                    } %>
 
           <% end %>
         </div>
@@ -28,7 +32,9 @@
             <%= link_to "#{friend.profile.name}", user_timeline_path(friend) %>
           </h5>
           <p>
-            Posted on <%= friend.posts.last.created_at.strftime("%A %m/%d/%Y")  %>
+            <% if friend.posts.last %>
+              Posted on <%= friend.posts.last.created_at.strftime("%A %m/%d/%Y") %>
+            <% end %>
           </p>
         </div>
 

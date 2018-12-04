@@ -17,7 +17,8 @@ about and about_edit pages
 .post-copied,
 .left-section-article-heading {
   h3 {
-		border: $main-border;
+		border-top: $main-border;
+    border-bottom: $main-border;
     padding: 5px;
     text-align: center;
     margin-top: 0px;

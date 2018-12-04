@@ -1,8 +1,9 @@
 <article class="friend-summary">
 
-    <%= render partial: 'shared/photo_or_no_photo', locals: { user: friend,
+  <%= render partial: 'shared/photo_or_no_photo', locals: { user: friend,
                                                         image_size: :medium,
-                                                              file: 'no_photo_medium.jpg'
+                                                              file: 'no_photo_medium.jpg',
+                                                              size: '200x200'
                                                             } %>
   <div class="friend-name">
     <%= link_to "#{full_name(friend)}", user_timeline_path(friend) %>

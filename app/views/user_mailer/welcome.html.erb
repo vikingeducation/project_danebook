@@ -1,0 +1,28 @@
+<h1>Welcome, <%= @user.profile.name %>!</h1>
+
+<p>
+  Thank you for signing up with Danebook. The world is now your oyster, go forth and friend.
+</p>
+
+<p>
+  Visit your page <%= link_to "here", user_timeline_url(@user.id) %>.
+</p>
+
+<p>
+  Sincerly,
+  <br>
+  Danebook
+</p>
+
+<p>
+  <%= link_to "Unsubscribe from Email", user_unsubscribe_or_delete_url(@user) %>
+</p>
+
+
+<p>
+  Danebook, Inc.
+  <br>
+  123 Fake Street
+  <br>
+  Fake Town, USA
+</p>

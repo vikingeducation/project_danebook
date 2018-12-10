@@ -1,0 +1,14 @@
+<div class="author-thumbnail">
+
+  <%= render partial: 'shared/photo_or_no_photo', locals: { user: resource.user,
+                                                      image_size: :thumb,
+                                                            file: 'no_photo_thumbnail.jpg',
+                                                            size: '50x50'
+                                                          } %>
+
+  <p>
+    <%= link_to User.find(resource.user_id).profile.name, user_timeline_path(resource.user) %><br>
+    Said on <%= resource.created_at.strftime("%A %m/%d/%Y") %>
+  </p>
+
+</div>

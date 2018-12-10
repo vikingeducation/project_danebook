@@ -1,0 +1,17 @@
+<article>
+  <h4>
+    <%= action.upcase %>
+  </h4>
+  <p>
+    <%= description %> 
+  </p>
+
+  <%= form_for user, url: user_unsubscribe_path(user), method: :patch do |f| %>
+    <%= f.hidden_field :unsubscribe, value: value %>
+    <%= f.submit action, class: "btn btn-primary",
+                                 data: {
+                                   confirm: confirm_msg
+                                 } %>
+  <% end %>
+
+</article>

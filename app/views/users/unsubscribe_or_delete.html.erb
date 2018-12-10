@@ -1,0 +1,50 @@
+<main>
+
+  <%= render partial: 'profiles/profile_header_and_links', locals: { user: @current_user } %>
+
+  <div class="container">
+
+    <div class="row">
+
+      <header class="bar">
+        <h1 class="delete-title">Destructive Account Actions</h1>
+      </header>
+
+    </div>
+
+    <div class="row info-section">
+
+      <div class="col-xs-1">
+      </div>
+
+      <div class="col-xs-5 friend-summary">
+        <%= render partial: 'delete_account', locals: { user: @current_user } %>
+      </div>
+
+      <div class="col-xs-5 friend-summary">
+        <% if @current_user.unsubscribe == true %>
+          <%= render partial: 'unsubscribe_from_email',
+                      locals: {
+                          user: @current_user,
+                        action: "Subscribe to Email",
+                         value: false,
+                   confirm_msg: "Are you sure you want to subscribe to email?",
+                   description: "By clicking below you will be re-added to the email list. You will receive email notification of comments, and changes in your account." } %>
+        <% else %>
+          <%= render partial: 'unsubscribe_from_email',
+                      locals: {
+                          user: @current_user,
+                        action: "Unsubscribe from Email",
+                         value: true,
+                   confirm_msg: "Are you sure you want to unsubscribe from email?",
+                   description: "By clicking below you will be removed from the email list. You will no longer receive any email updates." } %>
+        <% end %>
+      </div>
+
+      <div class="col-xs-1">
+      </div>
+
+    </div>
+
+  </div>
+</main>

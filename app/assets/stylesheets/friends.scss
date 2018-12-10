@@ -1,0 +1,43 @@
+
+$main-border: 1px solid black;
+$primary-color: #066DEE;
+/*
+ below code for friend page
+*/
+
+.friend-summary {
+  padding: 20px;
+  margin: 20px 5px;
+
+}
+
+.unfriend {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-top: 13%;
+  background: gray;
+  color: black;
+}
+
+.friend-link-section {
+  border-bottom: $main-border;
+  border-right: $main-border;
+  border-left: $main-border;
+}
+
+.find-friend-link-section {
+  text-align: center;
+  margin: 5em 0;
+  font-size: 1.5em;
+  }
+
+.friend-with-no-profile-pic {
+  background: $primary-color;
+  opacity: 0.5;
+  color: white;
+  display: inline-block;
+  text-align: center;
+  p {
+    padding-top: 50%;
+  }
+}

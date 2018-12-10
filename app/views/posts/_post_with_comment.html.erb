@@ -1,0 +1,33 @@
+<article>
+
+  <div class="post-area post-with-comment">
+    <br>
+    <%= render partial: 'shared/author_thumbnail', locals: { resource: post } %>
+    <br>
+    <%= link_to user_post_path(post.user, post) do %>
+      <div class="post-comment-body">
+        <p style="color:black;">
+          <%= post.body %>
+        </p>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="comment-area grey-background">
+    <div class="comment-header-area">
+      <%= render partial: 'shared/like_unlike_link', locals: { resource: post } %>
+      <%= render partial: 'shared/delete_link', locals: { resource: post,
+                                                      current_user: current_user,
+                                                         link_path: user_post_path(current_user, post)
+                                                       } %>
+      <p>
+        <%= list_likes(post, current_user) %>
+      </p>
+    </div>
+    <br>
+    <%= render partial: 'comments/comment_area', locals: { current_user: current_user,
+                                                                   post: post
+                                                                 } %>
+  </div>
+
+</article>

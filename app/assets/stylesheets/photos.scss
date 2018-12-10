@@ -1,0 +1,101 @@
+
+$main-border: 1px solid black;
+$light-grey: #DDDDDD;
+
+/*
+below code for photos page
+*/
+
+.photos-border div img {
+  align-content: center;
+}
+
+.photos-border,
+.no-photos-border {
+  border-right: $main-border;
+  border-left: $main-border;
+  padding-bottom: 2em;
+}
+
+.photo-row-0 {
+  padding-top: 2em;
+}
+
+.no-photos-border {
+  text-align: center;
+}
+
+.photos-wrapper {
+  border-bottom: $main-border;
+  margin-bottom: 4em;
+}
+
+.img_wrapper {
+  position: relative;
+  width: 50%;
+}
+
+.image {
+  opacity: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+.on-hover-description {
+  position: absolute;
+  transition: .5s ease;
+  top: 100%;
+  left: 39%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background: rgba(40, 40, 40, 0.72);
+  color: #fff;
+  opacity: 0;
+  text-align: center;
+  height: 2em;
+  width: 14em;
+}
+
+.img-wrapper:hover .image {
+  opacity: 0.3;
+}
+
+.img-wrapper:hover .on-hover-description {
+  opacity: 1;
+}
+
+.photo-comment-area {
+  background-color: $light-grey;
+  border: 1px solid black;
+  padding: 2em;
+}
+
+.header-new-comment-area {
+  margin-bottom: 3em;
+  p {
+  display: inline-block;
+  }
+}
+
+.photo-show-section {
+  display: inline-block;
+}
+
+.photo-action-links {
+  clear: both;
+}
+
+.upload-photo-form {
+  text-align: center;
+  label {
+    padding-bottom: 2em;
+  }
+}
+
+.upload-photo-input {
+  margin-left: 41%;
+  padding-bottom: 2em;
+}

@@ -1,0 +1,56 @@
+<article class="left-section-article-heading row">
+
+  <h3 class="grey-background">Friends(<%= link_to "#{friend_list(user).count}", user_friends_path(user) %>)</h3>
+
+  <% if friend_list(user).empty? %>
+
+    <div class="find-friends-link">
+      <% if user == @current_user %>
+        <%= link_to "Find Friends", "#"%>
+      <% else %>
+        <p>Be this user's first friend</p>
+        <%= link_to( "Add as Friend", friendship_path( friendship: { friender_id: @current_user.id,
+                                                                     friendee_id: user
+                                                                   }
+                                                                 ),
+                                                           method: :post,
+                                                            class: 'btn btn-primary'
+                                                            ) %>
+      <% end %>
+    </div>
+
+  <% else %>
+
+      <% friend_list(user).sample(6).in_groups_of(3, false).each do |group_of_friends| %>
+      
+      <div class="row">
+
+        <div class="col-md-1">
+        </div>
+
+        <% group_of_friends.each do |friend| %>
+
+          <div class="col-md-3">
+            <%= render partial: 'users/timeline/friend_thumbnail', locals: { friend: User.find(friend) } %>
+          </div>
+
+        <% end %>
+
+        <div class="col-md-1">
+        </div>
+
+      </div>
+
+      <% end %>
+
+      <div class="more-link row">
+
+        <p class="text-center">
+          <%= link_to "See More Friends", user_friends_path%>
+        </p>
+
+      </div>
+
+  <% end %>
+
+</article>

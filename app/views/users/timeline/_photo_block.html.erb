@@ -1,0 +1,38 @@
+<article class="photos-copied-text-area left-section-article-heading row">
+
+  <h3 class="grey-background">
+    Photos(<%=link_to photo_count(user), user_photos_path(user)%>)
+  </h3>
+
+  <% if user.photos.empty? %>
+
+    <% if find_current_page_user == @current_user %>
+      <p class="text-center">
+        <%= link_to "Add Photos", new_user_photo_path(@current_user) %>
+      </p>
+    <% else %>
+      <p class="text-center">
+        This user has no photos
+      </p>
+    <% end %>
+
+  <% else %>
+
+    <% user.photos.sample(6).each do |photo| %>
+      <%= image_tag photo.photo.url(:thumb) %>
+    <% end %>
+
+    <br>
+
+    <% if user.frienders.include?(@current_user) ||
+          user.friendees.include?(@current_user) || user == @current_user %>
+
+      <div class="more-link">
+        <%= link_to "See More Photos", user_photos_path(find_current_page_user) %>
+      </div>
+
+    <% end %>
+
+  <% end %>
+
+</article>

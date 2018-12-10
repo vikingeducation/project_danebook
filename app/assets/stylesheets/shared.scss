@@ -1,0 +1,107 @@
+
+$main-border: 1px solid black;
+$whitetext: #fff;
+$light-grey: #DDDDDD;
+
+/*
+ general styles on multiple pages
+*/
+
+.grey-background {
+    background-color: $light-grey;
+}
+
+.left-side,
+.right-side,
+.far-right,
+.right-top,
+.left-top,
+.friend-name,
+.friend-summary input,
+.login,
+#profile-pic,
+#empty-profile-pic,
+#profile-name,
+.name-pic-block,
+#sign-up-form,
+.photos-heading   {
+	display: inline-block;
+}
+
+.form-elements,
+.not-loggedin-nav,
+#sign-up-button,
+.timeline-links,
+.blue-bar,
+#first-table,
+#second-table {
+  width: 100%;
+}
+
+.white-text {
+  color: $whitetext;
+}
+
+.bar-div {
+  height: 45px;
+}
+
+.bar,
+.link-wrapper,
+.time-link-links,
+.friend-summary,
+.submit-post-button-area,
+#sign-up-button,
+.post-links-area,
+.comment-area,
+.search-results-bar {
+  border: $main-border;
+}
+
+.left-top,
+.right-top,
+.search-bar {
+	vertical-align: middle;
+	margin-top: 10px;
+}
+
+.about-title,
+.photos-title,
+.search-results-title,
+.delete-title {
+	width: 96%;
+}
+
+.about-title,
+.friends-title,
+.photos-title,
+.search-results-title,
+.delete-title {
+	text-align: center;
+	font-size: 30px;
+	margin: 5px 0px;
+}
+
+.bar,
+.friend-link,
+.search-results-bar  {
+	background-color: $light-grey;
+}
+.about-link,
+.friend-link {
+	margin-bottom: 40px;
+}
+
+.main {
+  margin-bottom: 5em;
+}
+
+.photos-back-link {
+  display: inline-block;
+  padding-top: 1em;
+  padding-right: 20px;
+}
+
+.error-msg {
+  color: red;
+}

@@ -1,0 +1,48 @@
+<article class="row">
+
+  <div class="col">
+
+    <h3 style="margin-top:4em; margin-bottom:2em;">
+      Recently Active Friends
+    </h3>
+
+    <% friends.each do |id| %>
+
+      <div class="row">
+
+        <% friend = User.find(id) %>
+
+        <div class="col-md-2">
+        </div>
+
+        <div class="col-md-3">
+          <%= link_to user_timeline_path(friend) do %>
+
+            <%= render partial: 'shared/photo_or_no_photo', locals: { user: friend,
+                                                                image_size: :thumb,
+                                                                      file: 'no_photo_thumbnail.jpg',
+                                                                      size: '50x50'
+                                                                    } %>
+
+          <% end %>
+        </div>
+
+        <div class="col-md-7">
+          <h5>
+            <%= link_to "#{friend.profile.name}", user_timeline_path(friend) %>
+          </h5>
+          <p>
+            <% if friend.posts.last %>
+              Posted on <%= friend.posts.last.created_at.strftime("%A %m/%d/%Y") %>
+            <% end %>
+          </p>
+        </div>
+
+      </div>
+      <br>
+
+    <% end %>
+
+  </div>
+
+</article>

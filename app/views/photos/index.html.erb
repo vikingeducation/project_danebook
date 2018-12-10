@@ -1,0 +1,57 @@
+<main class="main">
+
+  <%= render partial:'profiles/profile_header_and_links', locals: { user: find_current_page_user } %>
+
+  <div class="container photos-wrapper">
+
+    <div class="row bar-div">
+      <header class="bar">
+        <h1 class="photos-heading photos-title">Photos</h1>
+        <% if @current_user == find_current_page_user %>
+          <%= button_to "Add Photo", new_user_photo_path, method: :get, class: "photos-heading white-text edit pull-right" %>
+        <% end %>
+      </header>
+    </div>
+
+
+    <% if @photos.empty? %>
+      <% if @current_user != find_current_page_user %>
+
+        <div class="row no-photos-border">
+          <h4>This user has no uploaded photos</h4>
+        </div>
+
+      <% else %>
+
+        <div class="row no-photos-border text-center">
+          <h4>Upload photos to your Album</h4>
+          <%= button_to "Add Photo", new_user_photo_path, method: :get, class: "btn btn-primary btn-large" %>
+        </div>
+
+      <% end %>
+
+    <% else %>
+
+      <% photos_grouped_by_fours(@photos).each do |group| %>
+        <div class="row photos-border photo-row-<%=@grouped_photos.index(group)%>">
+          <% group.each do |photo| %>
+            <div class="col-md-3 img-wrapper">
+              <%= link_to image_tag(Photo.find(photo).photo.url(:medium), size: '200x200'), user_photo_path(photo.user, photo), class: "image" %>
+              <div class="on-hover-description">
+                <div class="text">Updated on <%= photo.updated_at.strftime('%B %e, %Y') %></div>
+              </div>
+            </div>
+          <% end %>
+          <% if group.count < 4 %>
+            <% (4 - group.count).times do |blank_photo| %>
+              <div class="col-md-3" >
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
+    <% end %>
+
+  </div>
+
+</main>

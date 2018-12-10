@@ -1,0 +1,101 @@
+
+$quarter-width: 25%;
+$primary-color: #066DEE;
+$darker-grey: #666;
+
+/*
+ navbar styles
+*/
+
+.not-loggedin-nav {
+  background: $primary-color;
+  display: flex;
+  padding: 15px 5px 5px 5px;
+  position: fixed;
+  height: 100px;
+  justify-content: space-between;
+  align-items: center;
+	z-index: 2;
+  top: 0;
+}
+
+.not-loggedin-brand {
+		margin-left: 130px;
+}
+
+.not-loggedin-brand,
+.home-benefits h1 {
+  font-size: 40px;
+}
+
+.loggedin-brand {
+  margin-left: 20px;
+  margin-bottom: auto;
+  margin-top: auto;
+}
+
+.home-benefits {
+  height: 400px;
+  line-height: 50px;
+	padding: 10px auto;
+	letter-spacing: 2px;
+	display: inline-block;
+	width: 48%;
+	vertical-align: top;
+	margin-top: 100px;
+	margin-left: 80px;
+  ul {
+    list-style-type: disc;
+    padding-left: 40px;
+    color: $darker-grey;
+  }
+}
+
+#email,
+#password {
+  width: 150px;
+}
+
+.pwd {
+  float: right;
+  padding-left: 20px;
+  margin-right: 150px;
+}
+
+.loggedin-nav {
+  background: $primary-color;
+  position: fixed;
+  height: 100px;
+  width: 100%;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+}
+
+.far-left {
+  margin-right: 50px;
+  img {
+    display: inline-block;
+    margin-bottom: 20px;
+  }
+  h1 {
+  display: inline-block;
+  }
+}
+
+.search-bar {
+	width: 550px;
+	height: 20px;
+	margin-left: 40px;
+	margin-right: 220px;
+  input#user_query {
+    width: 80%;
+  }
+}
+
+.flash-msgs {
+  width: auto;
+  margin-top: 50px;
+}

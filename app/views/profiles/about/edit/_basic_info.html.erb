@@ -1,0 +1,29 @@
+<h1 class="heading">Basic Information</h1>
+
+<div id="basic-info-table">
+
+  <div class="form-group">
+    <p class="error-msg"><%= display_form_errors(profile, :birthday) %></p>
+    <%= profile_fields.label :birthday %>
+    <%= profile_fields.date_field :birthday %>
+  </div>
+
+  <div class="form-group">
+    <p class="error-msg"><%= display_form_errors(profile, :college) %></p>
+    <%= profile_fields.label :college %>
+    <%= profile_fields.text_field :college %>
+  </div>
+
+  <div class="form-group">
+    <p class="error-msg"><%= display_form_errors(profile, :hometown) %></p>
+    <%= profile_fields.label :hometown %>
+    <%= profile_fields.text_field :hometown %>
+  </div>
+
+  <div class="form-group">
+    <p class="error-msg"><%= display_form_errors(profile, :current_town) %></p>
+    <%= profile_fields.label :current_town %>
+    <%= profile_fields.text_field :current_town %>
+  </div>
+
+</div>

@@ -1,0 +1,117 @@
+/*
+  profile header and links section styles
+*/
+
+$light-grey: #DDDDDD;
+$primary-color: #066DEE;
+
+.top-main-section {
+	height: 28em;
+  width: 100%;
+}
+
+#cover-photo {
+	width: 80%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+#empty-profile-pic,
+#empty-cover-photo {
+	p {
+		color: white;
+		font-size: 1em;
+	}
+}
+
+#empty-cover-photo,
+#empty-profile-pic {
+	background: $primary-color;
+	opacity: 0.5;
+	text-align: center;
+	p {
+		color: white;
+	}
+}
+
+#empty-profile-pic p {
+	padding-top: 50%;
+}
+
+#empty-cover-photo p {
+	padding-top: 10%;
+}
+
+#profile-pic,
+#empty-profile-pic {
+	height: 200px;
+	width: 200px;
+}
+
+#cover-photo,
+.cover-photo-image,
+#empty-cover-photo {
+	height: 300px;
+	width: 100%;
+}
+
+.timeline-links {
+	text-align: center;
+	table-layout: fixed;
+  td {
+    vertical-align: middle;
+  	padding: 20px 10px;
+  }
+}
+
+.empty {
+  width: 20%;
+}
+
+.edit-profile-link {
+  text-align: right;
+	vertical-align: middle;
+  width: 35%;
+}
+
+.link {
+  color: black;
+  &:hover {
+    color: blue;
+  }
+}
+
+.timeline-link:hover,
+.about-link:hover,
+.photos-link:hover,
+.friends-link:hover,
+.link-background {
+    background: $light-grey;
+}
+
+
+.name-pic-block {
+	position: relative;
+	top: -240px;
+	left: 20px;
+	height: 200px;
+	z-index: 1;
+}
+
+#profile-name {
+	height: 80px;
+	vertical-align: bottom;
+	margin-left: 10px;
+	font-size: 35px;
+}
+
+.add-as-friend,
+.remove-as-friend {
+	margin-top: 4em;
+	margin-left: 1em;
+}
+
+.remove-as-friend {
+	background-color: gray;
+	color: black;
+}

@@ -1,0 +1,52 @@
+// Place all the styles related to the users controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+$main-border: 1px solid black;
+
+.search-results {
+  margin-top: 8em;
+  margin-bottom: 8em;
+}
+
+.search-results-section {
+  padding: 5em;
+  border: $main-border;
+  border-top: none;
+}
+
+#search-result-cell {
+  border: $main-border;
+  margin: 2em;
+  padding: 2em;
+  width: 80%;
+  margin-left: 10%;
+  height: 100%;
+  .cell-columns {
+    display: inline-block;
+  }
+}
+
+.about-friend-column {
+  p {
+    height: 1.25em;
+  }
+  h4 {
+    padding-bottom: 1.25em;
+  }
+}
+
+.recently-active-friends-section {
+  padding-top: 3em;
+}
+
+#feed-section {
+  padding-top: 3em;
+  padding-left: 5em;
+  padding-bottom: 5em;
+  border-left: $main-border;
+}
+
+#right-section {
+  padding-top: 0px;
+  padding-right: 0px;
+}

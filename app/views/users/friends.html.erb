@@ -1,0 +1,53 @@
+<main class="main friends-section">
+
+  <% user = User.find(params[:user_id]) %>
+
+  <%= render partial: 'profiles/profile_header_and_links', locals: { user: user }%>
+
+  <div class="container">
+
+    <div class="row">
+
+      <header class="bar">
+        <h1 class="friends-title">Friends</h1>
+      </header>
+
+    </div>
+
+    <div class="info-section row">
+      <% if friend_list(user).empty? %>
+
+        <div class="find-friend-link-section">
+          <% if user == @current_user %>
+            <%= link_to "Find Friends", users_path %>
+          <% else %>
+            <p>This user has no friends</p>
+            <p>Be this user's first friend</p>
+            <%= link_to( "Add as Friend", friendship_path( friendship: { friender_id: @current_user.id,
+                                                                         friendee_id: find_current_page_user
+                                                                        }
+                                                                      ),
+                                                               method: :post,
+                                                                class: 'btn btn-primary'
+                                                                ) %>
+          <% end %>
+        </div>
+
+      <% else %>
+
+        <%= render partial: 'users/friends/column', locals: { user: user,
+                                                           friends: split_list_of_friends(user)[0]
+                                                         } %>
+
+        <% unless split_list_of_friends(user)[1].nil? %>
+          <%= render partial: 'users/friends/column', locals: { user: user,
+                                                             friends: split_list_of_friends(user)[1]
+                                                           } %>
+        <% end %>
+
+      <% end %>
+    </div>
+
+  </div>
+
+</main>

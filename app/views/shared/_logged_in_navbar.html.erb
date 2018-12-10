@@ -1,0 +1,17 @@
+<div class="loggedin-nav">
+
+  <div class="far-left">
+    <h1 class="loggedin-brand"><%= link_to "Danebook", user_newsfeed_path(@current_user), class: "white-text" %></h1>
+  </div>
+
+  <%= form_tag users_path, method: "get", class: "search-bar" do %>
+    <%= text_field_tag :user_query, nil, placeholder: "Search for Users" %>
+    <%= submit_tag "Search" %>
+  <% end %>
+
+  <div>
+    <%= link_to current_user.profile.name, user_timeline_path(@current_user), data: { turbolinks: false }, class: "far-right white-text"%> |
+    <%= link_to "Logout", logout_path, method: "DELETE", class: "far-right white-text" %>
+  </div>
+
+</div>

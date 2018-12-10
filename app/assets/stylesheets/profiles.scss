@@ -1,0 +1,106 @@
+// Place all the styles related to the profiles controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+$main-border: 1px solid black;
+$primary-color: #066DEE;
+
+/* styles for profile
+about and about_edit pages
+ */
+
+.info-section {
+  padding: 20px;
+	height: auto;
+  margin-bottom: 2em;
+}
+
+.post-copied,
+.left-section-article-heading {
+  h3 {
+		border-top: $main-border;
+    border-bottom: $main-border;
+    padding: 5px;
+    text-align: center;
+    margin-top: 0px;
+  }
+}
+
+.left-section-article-heading {
+  padding-bottom: 1em;
+  margin-bottom: 20px;
+}
+
+.left-section-article-heading,
+.info-section {
+  border-right: $main-border;
+  border-bottom: $main-border;
+  border-left: $main-border;
+}
+
+.edit,
+.save-changes-button {
+	background-color: $primary-color;
+}
+
+.edit {
+	position: relative;
+	top: -38px;
+	right: 12px;
+}
+
+.save-changes-button {
+  font-size: 50px;
+  padding: 20px 5em;
+  display: block;
+  margin: 0px auto 80px auto;
+}
+
+.bottom-spacer {
+  margin-bottom: 120px;
+}
+
+.right-side,
+.left-side {
+		vertical-align: top;
+		line-height: 1.5;
+    width: 100%;
+}
+
+.left-side {
+  padding-left: 40px;
+}
+
+.heading,
+#basic-info-table {
+	margin-bottom: 20px;
+}
+
+.heading {
+	font-size: 25px;
+	text-align: left;
+	letter-spacing: 2px;
+}
+
+.about-me {
+	margin-top: 20px;
+}
+
+#basic-info-table,
+#contact-info-table {
+	width: 100%;
+	tr {
+	  height: 30px;
+	}
+}
+
+.bold {
+	font-weight: bold;
+}
+
+#telephone-group {
+  margin-bottom: 3em;
+}
+
+#destructive_actions_link {
+  margin-top: 5em;
+}

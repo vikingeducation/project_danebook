@@ -1,0 +1,13 @@
+<nav>
+
+  <% if signed_in_user? %>
+
+      <%= render partial: 'shared/logged_in_navbar', locals: { current_user: @current_user } %>
+
+  <% else %>
+
+      <%= render 'shared/not_logged_in_navbar' %>
+
+  <% end %>
+
+</nav>

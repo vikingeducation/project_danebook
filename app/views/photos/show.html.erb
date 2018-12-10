@@ -1,0 +1,56 @@
+<main class="main photos-section">
+
+  <%= render partial: '/profiles/profile_header_and_links', locals: { user: find_current_page_user }%>
+
+  <div class="container">
+
+    <div class="row bar-div">
+      <header class="bar">
+        <h1 class="photos-title">Photos</h1>
+      </header>
+    </div>
+
+    <div class="info-section row">
+
+      <div class="col-md-6 photo-show-section">
+        <%= image_tag @photo.photo.url(:medium), class: 'pull-right' %><br>
+        <div class="photo-action-links">
+          <%= link_to "Set As Profile", user_profile_path(profile: { profile_photo_id: @photo.id }), method: :patch, class: 'pull-right' %><br>
+          <%= link_to "Set As Cover", user_profile_path(profile: { cover_photo_id: @photo.id }), method: :patch, class: 'pull-right' %><br>
+          <%= render partial: 'shared/delete_link', locals: { resource: @photo, current_user: @current_user, link_path: user_photo_path(@current_user, @photo) } %>
+        </div>
+      </div>
+
+      <div class="col-md-1">
+      </div>
+
+      <div class="col-md-5">
+        <div class="header-new-comment-area">
+          <div class="author-thumbnail">
+            <%= render partial: 'shared/photo_or_no_photo', locals: { user: @photo.user,
+                                                                image_size: :thumb,
+                                                                      file: 'no_photo_thumbnail.jpg',
+                                                                      size: '50x50'
+                                                                    } %>
+            <p>
+              <%= link_to @photo.user.profile.name, user_timeline_path(@photo.user) %>
+              <br>
+              <%= @photo.created_at.strftime("%A %m/%d/%Y") %>
+            </p>
+          </div>
+          <%= render partial: 'shared/like_unlike_link', locals: { current_user: @current_user, resource: @photo, } %>
+          <p><%= list_likes(@photo, @current_user) %></p>
+          <%= render template: 'comments/new', locals: { current_user: @current_user, comment: Comment.new, commentable_id: @photo.id, commentable_type: 'Photo' } %>
+        </div>
+        <% unless @photo.comments.empty? %>
+          <div class="photo-comment-area">
+            <%= render template: 'comments/index', locals: { comments: @photo.comments } %>
+          </div>
+        <% end %>
+      </div>
+
+    </div>
+
+  </div>
+
+</main>

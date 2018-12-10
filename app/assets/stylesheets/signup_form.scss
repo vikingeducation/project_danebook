@@ -1,0 +1,57 @@
+// common stylings
+
+$whitetext: #fff;
+$primary-color: #066DEE;
+
+/*
+  sign up form styles
+*/
+
+#sign-up-form {
+	margin-left: 50px;
+	width: 80%;
+	margin-bottom: 5em;
+}
+
+#main-action {
+  font-size: 50px;
+	padding-bottom: 30px;
+}
+
+.form-elements {
+	line-height: 2.5;
+}
+
+
+.wide-box {
+	width: 99%;
+}
+
+#user_profile_first_name {
+  margin-right: 30px;
+}
+
+
+#birthday {
+ font-size: 20px;
+ padding-bottom: 3px;
+}
+
+#sign-up-button {
+	background: $primary-color;
+	color: $whitetext;
+	height: auto;
+	font-size: 20px;
+}
+
+
+.home-sign-up-form {
+  display: inline-block;
+  margin-top: 100px;
+  vertical-align: top;
+	line-height: 2.5em;
+}
+
+.last-name-input {
+	width: 60%;
+}

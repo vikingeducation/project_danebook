@@ -1,0 +1,33 @@
+<h1>Hello, <%= @user.profile.name %>!</h1>
+
+<p>
+  You have a new comment from <%= @commenting_user.profile.name %>.
+</p>
+
+<p>
+  <%= @commenting_user.profile.name %> said on <%= @comment.created_at.strftime("%B %d, %Y")%>:
+</p>
+
+<p>
+  "<%= @comment.body %>"
+</p>
+
+<%= link_to "Click here to see comment", @comment.commentable_type == "Post" ? user_post_url(@user, Post.find(@comment.commentable_id)) : user_photo_url(@user, Photo.find(@comment.commentable_id)) %>
+
+<p>
+  Sincerly,
+  <br>
+  Danebook
+</p>
+
+
+<%= link_to "Unsubscribe from Email", user_unsubscribe_or_delete_url(@user) %>
+
+
+<p>
+  Danebook, Inc.
+  <br>
+  123 Fake Street
+  <br>
+  Fake Town, USA
+</p>

@@ -10,13 +10,13 @@ $darker-grey: #666;
 .not-loggedin-nav {
   background: $primary-color;
   display: flex;
-  padding: 5px;
+  padding: 15px 5px 5px 5px;
   position: fixed;
   height: 100px;
   justify-content: space-between;
   align-items: center;
 	z-index: 2;
-  padding-top: 15px;
+  top: 0;
 }
 
 .not-loggedin-brand {
@@ -32,7 +32,6 @@ $darker-grey: #666;
   margin-left: 20px;
   margin-bottom: auto;
   margin-top: auto;
-
 }
 
 .home-benefits {
@@ -43,12 +42,12 @@ $darker-grey: #666;
 	display: inline-block;
 	width: 48%;
 	vertical-align: top;
-	margin-top: 150px;
+	margin-top: 100px;
 	margin-left: 80px;
   ul {
-  list-style-type: disc;
-  padding-left: 40px;
-  color: $darker-grey;
+    list-style-type: disc;
+    padding-left: 40px;
+    color: $darker-grey;
   }
 }
 
@@ -71,8 +70,8 @@ $darker-grey: #666;
   z-index: 2;
   display: flex;
   justify-content: center;
-
   align-items: center;
+  top: 0;
 }
 
 .far-left {

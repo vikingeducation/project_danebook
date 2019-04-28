@@ -4,7 +4,9 @@
 
 Create an account, create posts and upload photos, friend and unfriend people, like and unlike posts and comments (instantly via javascript). It's a FakeBook app with image hosting on AWS. It's rocking RESTful routes, polymorphic associations, self-referencing models, and some nifty metaprogramming.
 
-See it here: [lortzadanebook.herokuapp.com/](https://lortzadanebook.herokuapp.com/)
+Hosted on heroku: [lortzadanebook.herokuapp.com/](https://lortzadanebook.herokuapp.com/)
+
+_App is currently turned off_
 
 ## Stats
 - Rails 5.0.6

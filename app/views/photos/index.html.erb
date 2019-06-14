@@ -1,0 +1,26 @@
+<%= render 'users/user_header', user: @user %>
+
+  <article class="page-content">
+    <header>
+      <!-- Image logic removed because of deleted S3 bucket -->
+      <%#= link_to "Upload a Photo", '#uploadModal', 'data-toggle' => 'modal', class: button_classes('primary right') if policy(@photo).create? %>
+      <h1>Photos</h1>
+    </header>
+
+    <section class="photos-list">
+      <% @photos.each do |photo| %>
+        <% unless photo.new_record?  %>
+          <div class="image-tile">
+            <%= image_tag 'tile_pic_missing.jpg' %>
+            <!-- Image logic removed because of deleted S3 bucket -->
+            <%#= link_to (image_tag photo.photo_data.url(:tile)), "#photo_#{photo.id}", 'data-toggle' => 'modal' %>
+            <%= render 'photos/display_modal', user: @user, photo: photo %>
+          </div> <!-- image-tile -->
+        <% end %>
+      <% end %>
+    </section>
+  </article>
+
+<%= render 'photos/upload_modal', user: @user, photo: @photo %>
+
+<%= will_paginate @photos %>

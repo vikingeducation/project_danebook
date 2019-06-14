@@ -1,0 +1,13 @@
+<% unless post.new_record? %>
+  <article class="activity">
+
+    <%= render 'shared/activity_header', object: post %>
+
+    <section class="activity-body">
+      <p><%= post.body %></p>
+    </section>
+
+    <%= render 'shared/activity_footer', object: post %>
+
+  </article>
+<% end %>

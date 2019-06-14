@@ -1,0 +1,27 @@
+<%= render 'users/user_header', user: @feed.user %>
+
+<div class="row top-row">
+  <div class="col col-sm-4 sidebar-left">
+    <article>
+      <header>Recently Active Friends</header>
+      <section>
+        <div class="photo-teaser">
+        <% @feed.recently_active_friends.each do |friend| %>
+          <%= link_to (display_profile_pic(friend, :thumb)), user_timeline_path(friend) %>
+        <% end %>
+        </div>
+        <%= link_to 'See all friends', user_friends_path(@feed.user) %>
+      </section>
+    </article>
+  </div><!-- col-sm-4 -->
+  <div class="col col-sm-8 main-content">
+    <% if policy(@feed.post).create? %>
+      <%= render 'shared/activity_form', user: @feed.user, post: @feed.post, photo: @feed.photo %>
+    <% end %>
+
+    <% @feed.activities.each do |activity| %>
+      <%= render activity %>
+    <% end %>
+
+  </div><!-- col col-sm-8 main-content -->
+

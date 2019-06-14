@@ -1,0 +1,16 @@
+<% unless photo.new_record? %>
+  <article class="activity">
+
+    <%= render 'shared/activity_header', object: photo %>
+
+    <section class="activity-body">
+      <%= image_tag 'feed_pic_missing.jpg' %>
+
+      <!-- Image logic removed because of deleted S3 bucket -->
+      <%#= image_tag photo.photo_data.url(:feed) %>
+    </section>
+
+    <%= render 'shared/activity_footer', object: photo %>
+
+  </article>
+<% end %>

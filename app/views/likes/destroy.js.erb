@@ -1,0 +1,5 @@
+let likedObjectId = '<%= "#{dom_id(@parent)}" %>'
+
+let likeSection = document.querySelector(`#${likedObjectId}`)
+
+likeSection.innerHTML = "<%= escape_javascript(render partial: 'likes/likes', locals: { object: @parent }) %>"

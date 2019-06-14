@@ -1,0 +1,27 @@
+<% if object.has_comments? %>
+  <% object.comments.order(created_at: :asc).each do |comment| %>
+    <div class="comment">
+      <header>
+        <div class="image-container">
+          <%= display_profile_pic(comment.user, :thumb) %>
+        </div> <!-- image-container -->
+        <p><%= link_to comment.user.display_name, user_timeline_path(comment.user) %></p>
+        <p class="posted">Said on <%= comment.created_at.to_date %></p>
+      </header>
+
+      <section>
+        <%= comment.body %>
+      </section>
+
+      <div class="right-side-links">
+        <%= link_to 'Delete Comment', user_post_comment_path(object.user, object, comment), method: :delete, data: {confirm: 'Are you sure you want to delete this comment?'} if policy(comment).destroy? %>
+      </div><!-- right-side-links -->
+
+      <section id='<%= dom_id(comment) %>'>
+        <%= render 'likes/likes', object: comment %>
+      </section>
+
+    </div><!-- comment -->
+
+  <% end %>
+<% end %>

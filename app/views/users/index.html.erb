@@ -1,0 +1,35 @@
+<article class="page-content">
+  <header>
+    <% if @search_terms %>
+      <%= link_to 'Clear Results', users_path, class: "right #{button_classes}" %>
+      <h1>Search Results</h1>
+    <% else %>
+      <h1>All Users</h1>
+    <% end %>
+  </header>
+
+  <section>
+    <div class="row">
+
+      <% @users.each do |user| %>
+        <div class="col-sm-12">
+          <div class="person-listing-tile user-index">
+              <%= link_to display_profile_pic(user, :tile), user_timeline_path(user) %>
+              <div class="name-info">
+                <%= link_to user.display_name, user_timeline_path(user) %>
+                <p class="friends-count"><%= user.friends_count %> Friends</p>
+                <p>Currently lives in <%= user.current_town %>
+                </p>
+                <p>From <%= user.hometown %></p>
+                <p>Born <%= user.birthday.to_date if user.birthday%></p>
+                <p><%= user.email %></p>
+
+              </div> <!-- name-info -->
+              <div class="right"><%= friending_button(user) %></div>
+          </div> <!-- friend-tile -->
+        </div> <!-- col-sm-12 -->
+      <% end %>
+
+    </div> <!-- row -->
+  </section>
+</article>

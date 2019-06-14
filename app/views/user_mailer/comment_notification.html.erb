@@ -1,0 +1,10 @@
+<h1>Hi <%= @user.name %>!</h1>
+
+<h2>Someone commented on your <%= @activity_name %>!</h2>
+
+<p>On <%= @comment.created_at.to_date %>, <%= @comment.user.name %> said:</p>
+<p>"<%= @comment.body %>"</p>
+
+<div class="button-holder">
+  <%= link_to 'Join the Conversation!', user_feed_url(@user), class: 'button' %>
+</div> <!-- button-holder -->

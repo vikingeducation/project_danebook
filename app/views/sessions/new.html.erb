@@ -1,0 +1,19 @@
+<h1>Sign In</h1>
+
+<%= form_tag session_path do %>
+
+<div class="field">
+  <%= label_tag :email %>
+  <%= text_field_tag :email, '', class: 'form-control' %>
+</div> <!-- field -->
+
+<div class="field">
+  <%= label_tag :password %>
+  <%= password_field_tag :password, '', class: 'form-control' %>
+</div> <!-- field -->
+
+  <%= submit_tag "Sign In", class: button_classes %>
+<% end %>
+
+
+<p>Or <%= link_to "Sign Up", new_user_path %></p>

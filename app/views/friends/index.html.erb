@@ -1,0 +1,26 @@
+<%= render 'users/user_header', user: @user %>
+
+<article class="page-content">
+  <header>
+    <h1>Friends</h1>
+  </header>
+
+  <section>
+    <div class="row">
+
+      <% @friends.each do |friend| %>
+        <div class="col-sm-6">
+          <div class="person-listing-tile friend-list">
+              <%= link_to display_profile_pic(friend, :tile), user_timeline_path(friend) %>
+              <div class="name-info">
+                <%= link_to friend.display_name, user_timeline_path(friend) %>
+                <p class="friends-count"><%= friend.friends_count %> Friends</p>
+              </div> <!-- name-info -->
+              <div class="right"><%= friending_button(friend) %></div>
+          </div> <!-- friend-tile -->
+        </div> <!-- col-sm-6 -->
+      <% end %>
+
+    </div> <!-- row -->
+  </section> <!-- friends-list -->
+</article>

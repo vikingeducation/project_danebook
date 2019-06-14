@@ -1,0 +1,41 @@
+@import 'theme_and_colors';
+
+body {
+  background-color: $brand-background;
+  box-sizing: border-box;
+}
+.mailer {
+  font-family: $main-font;
+  border: $border;
+  border-radius: $corner;
+  background-color: white;
+  width: 90%;
+  margin: 0 auto;
+  header {
+    border-radius: $corner $corner 0 0;
+    padding: 10px;
+    background-color: $brand-color;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+    a {
+      color: white;
+      text-decoration: none;
+    }
+    img {
+      margin-right: 10px;
+    }
+  }/* header */
+  main {
+    padding: 20px;
+    .button-holder {
+      margin-top: 30px;
+      a.button {
+        background-color: green;
+        padding: 10px;
+        text-align: center;
+        color: white;
+        text-decoration: none;
+        border-radius: $corner;
+      }
+    } /* .button-holder */
+  }
+} /* .mailer */

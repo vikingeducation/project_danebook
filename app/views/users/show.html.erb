@@ -1,0 +1,88 @@
+<main>
+  <%= render 'user_header', user: @user %>
+
+  <article class="page-content">
+    <header>
+      <%= link_to 'Edit Profile', edit_user_path(@user), class: "right #{button_classes}" if @user == current_user %>
+      <h1>About</h1>
+    </header>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <section>
+          <h2>Basic Information</h2>
+          <div class="row">
+            <div class="col-sm-6">
+              <h3>Name:</h3>
+            </div> <!-- col-sm-6 -->
+            <div class="col-sm-6">
+              <%= display_stat(@user, :name) %>
+            </div> <!-- col-sm-6 -->
+          </div> <!-- row -->
+          <div class="row">
+            <div class="col-sm-6">
+              <h3>Birthday:</h3>
+            </div> <!-- col-sm-6 -->
+            <div class="col-sm-6">
+              <%= display_stat(@user, :birthday) %>
+            </div> <!-- col-sm-6 -->
+          </div> <!-- row -->
+          <div class="row">
+            <div class="col-sm-6">
+              <h3>College:</h3>
+            </div> <!-- col-sm-6 -->
+            <div class="col-sm-6">
+              <%= display_stat(@user, :college) %>
+            </div> <!-- col-sm-6 -->
+          </div> <!-- row -->
+          <div class="row">
+            <div class="col-sm-6">
+              <h3>Hometown:</h3>
+            </div> <!-- col-sm-6 -->
+            <div class="col-sm-6">
+              <%= display_stat(@user, :hometown) %>
+            </div> <!-- col-sm-6 -->
+          </div> <!-- row -->
+          <div class="row">
+            <div class="col-sm-6">
+              <h3>Currently Lives:</h3>
+            </div> <!-- col-sm-6 -->
+            <div class="col-sm-6">
+              <%= display_stat(@user, :current_town) %>
+            </div> <!-- col-sm-6 -->
+          </div> <!-- row -->
+
+          <h2>Contact Information</h2>
+          <div class="row">
+            <div class="col-sm-6">
+              <h3>Email:</h3>
+            </div> <!-- col-sm-6 -->
+            <div class="col-sm-6">
+              <%= display_stat(@user, :email) %>
+            </div> <!-- col-sm-6 -->
+          </div> <!-- row -->
+          <div class="row">
+            <div class="col-sm-6">
+              <h3>Telephone:</h3>
+            </div> <!-- col-sm-6 -->
+            <div class="col-sm-6">
+              <%= display_stat(@user, :phone) %>
+            </div> <!-- col-sm-6 -->
+          </div> <!-- row -->
+        </section> <!-- personal-stats -->
+      </div> <!-- col-sm-6 -->
+
+
+      <div class="col-sm-6">
+        <section>
+          <h2>Words to Live By</h2>
+          <p><%= display_stat(@user, :quote) %></p>
+
+          <h2>About Me</h2>
+          <p><%= display_stat(@user, :bio) %></p>
+        </section> <!-- about-me-copy -->
+      </div> <!-- col-sm-6 -->
+
+    </div> <!-- row -->
+  </article>
+</main>

@@ -1,0 +1,25 @@
+<article class="status-box">
+  <header><%= link_to 'Make Post', url_for(photo_post: nil) %> | <%= link_to 'Upload Photo', url_for(photo_post: 'true') %></header>
+
+  <div class="post-form">
+    <% if @photo_post == 'true' %>
+      <%= form_for [user, photo] do |f| %>
+        <section>
+          <%= f.file_field :photo_data %><br>
+        </section>
+        <footer>
+          <%= f.submit "Post", class: "#{button_classes} right" %>
+        </footer>
+      <% end %> <!-- form_for @user.photos -->
+    <% else %>
+      <%= form_for [user, post] do |f| %>
+        <section>
+          <%= f.text_area :body, placeholder: "What's on Your Mind?" %>
+        </section>
+        <footer>
+          <%= f.submit "Post", class: "#{button_classes} right" %>
+        </footer>
+      <% end %> <!-- form_for @user.posts -->
+    <% end %>
+  </div> <!-- post-form -->
+</article>

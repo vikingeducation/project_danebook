@@ -1,0 +1,206 @@
+@import 'theme_and_colors';
+
+
+.user-header {
+  position: relative;
+  margin-bottom: 20px;
+  background-color: white;
+  border: $border;
+  border-radius: $corner;
+  h2.user-name {
+    position: absolute;
+    left: 180px;
+    bottom: 35px;
+    color: white;
+    text-shadow: $shadow;
+  }
+  .qty-count {
+    color: gray;
+    font-size: 0.8em;
+    font-weight: normal;
+  }
+  nav {
+    width: 100%;
+    border-top: $border;
+    font-size: 0.75em;
+    ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      margin-left: 180px;
+    }
+    li:first-child { border-left: $border;}
+    li {
+      float: left;
+      position: relative;
+      a {
+        display: block;
+        text-align: center;
+        padding: 12px 16px;
+        color: $brand-color;
+        font-weight: 700;
+        text-decoration: none;
+        background-color: white;
+        border-right: $border;
+        &:hover { background-color: $brand-secondary-bg; }
+      }/* a */
+      a.active {
+        color: black;
+        &:hover { background-color: white; }
+      }
+      a.active:after {
+        content:'';
+        position: absolute;
+        top: 83%;
+        left: 39%;
+        margin-left: 0;
+        width: 0;
+        height: 0;
+        border-bottom: solid 9px $brand-background;
+        border-left: solid 9px transparent;
+        border-right: solid 9px transparent;
+      }/* a.active:after */
+    }/* li */
+  }/* nav */
+  .friend-link {
+    position: absolute;
+    z-index: 1;
+    right: 5px;
+    bottom: 50px;
+    box-shadow: $shadow;
+
+  } /* .friend-link */
+}
+
+.cover-photo-container {
+  width: 100%;
+  img {
+  border-radius: $corner $corner 0px 0px;
+
+    width: 100%;
+    height: auto;
+  }
+}
+
+.profile-pic-container {
+  background-color: $brand-background;
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  width: $profile-pic;
+  height: $profile-pic;
+  border: 3px solid white;
+  margin-right: 25px;
+  img {
+    width: 100%;
+  }
+}
+
+.page-content {
+  .row {margin-bottom: 15px;}
+  header {
+    background-color: $secondary-color;
+    padding: $padding $padding 1% $padding;
+    text-align: center;
+    h1 {
+      text-align: left;
+      font-size: 2.12em;
+    }
+    button {
+      background-color: $brand-color;
+      border:0 none;
+      cursor:pointer;
+      color: white;
+      padding: 0.75% 1%;
+      float: right;
+    }
+  }/* header */
+  section {
+    padding: 10px 20px 5px 20px;
+    h2 {
+      font-size: 1em;
+      font-weight: bold;
+      margin-top: 25px;
+    }
+    h3 {
+      font-size: 1em;
+      font-weight: bold;
+    }
+    form {
+      .col-sm-6 { padding-right: 0;}
+    }
+  }/* section */
+
+  .person-listing-tile {
+    overflow: auto;
+    padding: 15px;
+    margin-bottom: 15px;
+    border: $border;
+    img {
+      margin-right: 15px;
+      float: left;
+    }
+    .name-info {
+      margin-top: 20px;
+      float: left;
+      font-size: 0.8em;
+      line-height: 1.2em;
+      a { color: $brand-color; }
+      p { margin-bottom: 2px; }
+      p.friends-count {
+        margin-bottom: 15px;
+        color: gray;
+      }
+    }
+  } /* .person-listing-tile */
+  .user-index {
+    img {width: $image-tile;}
+  }
+  .friend-list {
+    img {width: $image-tile / 2;}
+  }
+
+  section.photos-list {
+    .image-tile {
+      position: relative;
+      img { /* sizing is handled via paperclip, but just for redundancy, these styles will make sure the image fits in the tile */
+        height: 100%;
+        max-width: 100%;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+      }
+      #modal-photo {
+        padding: 0;
+        img {
+          position: relative;
+          width: 100%;
+          height: 100%;
+        }
+      }
+      width: $image-tile;
+      height: $image-tile;
+      float: left;
+      margin: 0px 19px 19px 0px;
+      background-color: $brand-background;
+    }
+  } /* .photos-list */
+}/* page-content */
+
+
+
+/* ----------------------------------- *
+ *           MEDIA QUERIES
+ * ----------------------------------- */
+
+/* NARROW SCREEN */
+@media (max-width: $narrow-max) {
+} /* narrow */
+
+/* WIDE SCREEN */
+@media (min-width: $wide-min) {
+} /* wide */

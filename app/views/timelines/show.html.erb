@@ -1,0 +1,51 @@
+<%= render 'users/user_header', user: @timeline.user %>
+
+
+<div class="row top-row">
+  <div class="col col-sm-4">
+    <article>
+      <header>About</header>
+      <section>
+        <p><strong>Born on:</strong> <%= @timeline.user.birthday.to_date if @timeline.user.birthday %></p>
+        <p><strong>Went to school at:</strong> <%= @timeline.user.college %></p>
+        <p><strong>Hometown:</strong> <%= @timeline.user.hometown %></p>
+        <p><strong>Currently Lives:</strong> <%= @timeline.user.current_town %></p>
+      </section>
+    </article>
+    <article>
+      <header><%= link_to 'Photos', user_photos_path(@timeline.user) %> (<%= @timeline.user.photos_count %>)</header>
+      <section>
+        <div class="photo-teaser">
+        <% @timeline.sidebar_photos.each do |photo| %>
+          <!-- Image logic removed because of deleted S3 bucket -->
+          <%= image_tag 'thumb_pic_missing.jpg'%>
+          <%#= link_to (image_tag photo.photo_data.url(:thumb)), user_photos_path(@timeline.user) %>
+        <% end %>
+        </div> <!-- photo-teaser -->
+        <%= link_to 'See all photos', user_photos_path(@timeline.user)  %>
+      </section>
+    </article>
+
+    <article>
+      <header><%= link_to 'Friends', user_friends_path(@timeline.user) %> (<%= @timeline.user.friends_count %>)</header>
+      <section>
+        <div class="photo-teaser">
+        <% @timeline.sidebar_friends.each do |friend| %>
+          <%= link_to (display_profile_pic(friend, :thumb)), user_timeline_path(friend) %>
+        <% end %>
+        </div>
+        <%= link_to 'See all friends', user_friends_path(@timeline.user) %>
+      </section>
+    </article>
+  </div><!-- col col-4 -->
+
+  <div class="col col-sm-8 main-content">
+    <% if policy(@timeline.post).create? %>
+      <%= render 'shared/activity_form', user: @timeline.user, post: @timeline.post, photo: @timeline.photo %>
+    <% end %>
+
+    <% @timeline.activities.each do |activity| %>
+      <%= render activity %>
+    <% end %>
+
+  </div> <!-- col col-8 -->

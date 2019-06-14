@@ -1,0 +1,98 @@
+@import "theme_and_colors";
+
+body {
+  background-color: $brand-background;
+}
+
+.top-row {
+  margin-top: 20px;
+}
+
+section {
+  padding: 2% 5%;
+}
+
+article {
+  background-color: white;
+  border: $border;
+  margin-bottom: 20px;
+  border-radius: $corner;
+  overflow: auto;
+  header {
+    color: $brand-color;
+    border-bottom: $border;
+    border-radius: $corner $corner 0px 0px;
+    background-color: $brand-secondary-bg;
+    padding: $padding;
+    font-size: 12px;
+    line-height: 15px;
+    a { color: $brand-color; }
+  } /* header */
+}
+
+footer {
+  font-size: 0.75em;
+  clear: both;
+  overflow: auto;
+  background-color: $brand-secondary-bg;
+  padding: $padding;
+}
+
+.navbar-headshot {
+  border: 1px solid white;
+  margin-right: 10px;
+  border-radius: $corner;
+  img {
+    border-radius: $corner - 1px;
+    width: $thumbnail-pic;
+  }
+}
+
+
+/* --------------- Navbar Search --------------- */
+nav {
+  .search{
+    position:relative;
+    width: 200px;
+    border: $border;
+    background-color: white;
+    border-radius: $corner;
+  }
+  .search input[type="text"] {
+    border: none;
+    font-size: 0.9em;
+  }
+  .search input[type="submit"] {
+    width: 22px;
+    height: 22px;
+    background: url("search.png") -9px -3px no-repeat;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    outline: none;
+    top: -12px;
+    right: 2px;
+  }
+}
+
+
+/* --------------- Alignment --------------- */
+
+.right {
+  float: right;
+} /* .right */
+
+
+/* --------------- Forms --------------- */
+
+input[type=submit] {
+  margin-top: 20px;
+}
+
+.field_with_errors input, .field_with_errors textarea, .field_with_errors select {
+  border: 1px solid red;
+}
+.error-message {
+  color: red;
+}
+

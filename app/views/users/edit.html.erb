@@ -1,0 +1,121 @@
+<%= render 'user_header', user: @user %>
+
+
+<%= form_for @user do |f| %>
+  <article class="page-content">
+    <header>
+      <%= link_to 'Cancel', user_path(@user), class: "right #{button_classes}" %>
+      <h1>Editing Profile</h1>
+    </header>
+
+    <div class="row">
+      <div class="col-sm-6">
+        <section>
+          <h2>Basic Information</h2>
+          <div class="row">
+            <div class="col-sm-6">
+              <h3>Name:</h3>
+            </div> <!-- col-sm-6 -->
+            <div class="col-sm-6">
+              <%= display_error(@user, :name) %>
+              <%= f.text_field :name, class: 'form-control' %>
+            </div> <!-- col-sm-6 -->
+          </div> <!-- row -->
+          <div class="row">
+            <div class="col-sm-6">
+              <h3>Birthday:</h3>
+            </div> <!-- col-sm-6 -->
+            <div class="col-sm-6">
+              <%= display_error(@user, :birthday) %>
+              <%= f.date_field :birthday, class: 'form-control' %>
+            </div> <!-- col-sm-6 -->
+          </div> <!-- row -->
+          <div class="row">
+            <div class="col-sm-6">
+              <h3>College:</h3>
+            </div> <!-- col-sm-6 -->
+            <div class="col-sm-6">
+              <%= display_error(@user, :college) %>
+              <%= f.text_field :college, class: 'form-control' %>
+            </div> <!-- col-sm-6 -->
+          </div> <!-- row -->
+          <div class="row">
+            <div class="col-sm-6">
+              <h3>Hometown:</h3>
+            </div> <!-- col-sm-6 -->
+            <div class="col-sm-6">
+              <%= display_error(@user, :hometown) %>
+              <%= f.text_field :hometown, class: 'form-control' %>
+            </div> <!-- col-sm-6 -->
+          </div> <!-- row -->
+          <div class="row">
+            <div class="col-sm-6">
+              <h3>Currently Lives:</h3>
+            </div> <!-- col-sm-6 -->
+            <div class="col-sm-6">
+              <%= display_error(@user, :current_town) %>
+              <%= f.text_field :current_town, class: 'form-control' %>
+            </div> <!-- col-sm-6 -->
+          </div> <!-- row -->
+
+          <h2>Contact Information</h2>
+          <div class="row">
+            <div class="col-sm-6">
+              <h3>Email:</h3>
+            </div> <!-- col-sm-6 -->
+            <div class="col-sm-6">
+              <%= display_stat(@user, :email) %>
+            </div> <!-- col-sm-6 -->
+          </div> <!-- row -->
+          <div class="row">
+            <div class="col-sm-6">
+              <h3>Telephone:</h3>
+            </div> <!-- col-sm-6 -->
+            <div class="col-sm-6">
+              <%= display_error(@user, :phone) %>
+                <%= f.text_field :phone, class: 'form-control' %>
+            </div> <!-- col-sm-6 -->
+          </div> <!-- row -->
+        </section> <!-- personal-stats -->
+      </div> <!-- col-sm-6 -->
+
+
+      <div class="col-sm-6">
+        <section>
+          <h2>Words to Live By</h2>
+          <%= display_error(@user, :quote) %>
+          <%= f.text_area :quote, class: 'form-control' %>
+
+          <h2>About Me</h2>
+          <%= display_error(@user, :bio) %>
+          <%= f.text_area :bio, class: 'form-control' %>
+
+          <h2>Photos</h2>
+          <p>Image logic removed because of deleted S3 bucket</p>
+
+          <div class="row">
+            <div class="col-sm-12">
+              <!-- Image logic removed because of deleted S3 bucket -->
+              <%#= f.label :profile_pic_id %>
+              <%#= display_error(@user, :profile_pic_id) %>
+              <%#= f.collection_select :profile_pic_id, @user.photos, :id, :photo_data_file_name, include_blank: true, prompt: '-- Select a Pic --', class: 'form-control' %>
+            </div> <!-- col-sm-12 -->
+          </div> <!-- row -->
+          <div class="row">
+            <div class="col-sm-12">
+              <%#= display_error(@user, :cover_pic_id) %>
+              <%#= f.collection_select :cover_pic_id, @user.photos, :id, :photo_data_file_name, include_blank: true, prompt: '-- Select a Pic --', class: 'form-control' %>
+            </div> <!-- col-sm-12 -->
+          </div> <!-- row -->
+        </section> <!-- about-me-copy -->
+      </div> <!-- col-sm-6 -->
+    </div> <!-- row -->
+
+    <div class="row">
+      <div class="col-sm-12">
+        <%= f.submit class: button_classes('primary btn-block') %>
+      </div> <!-- col-sm-12 -->
+    </div> <!-- row -->
+
+  </article>
+<% end %> <!-- form_for @user -->
